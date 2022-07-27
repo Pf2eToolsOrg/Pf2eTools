@@ -158,38 +158,41 @@
 					]
 				},
 				{
-					"type": "pf2-sidebar",
-					"page": 45,
-					"source": "LOAG",
-					"name": "Droon",
-					"entries": [
-						"Long before the birth of Azlant, iruxi realms girdled Golarion. Today, only one nation recalls the splendor of that bygone era: Droon, a vast empire on the coast of southern Garund. Here, lizardfolk rule astride dinosaurs. Iruxi nobles settle feuds via ceratosaur duels. Sauropod caravan trains haul goods across seemingly impossible distances. Wizards breed spell-laced rhamphorhynchus familiars, and no thief worth their salt pulls a job without a whistling velociraptor lookout."
-					]
-				},
-				{
-					"type": "pf2-sidebar",
-					"page": 46,
-					"source": "LOAG",
-					"name": "Iruxi",
-					"entries": [
-						"While most lizardfolk permit humans and others to refer to them by that moniker, they call themselves iruxi. This ancient word arose from the Draconic tongue, though its exact etymology is unclear. In Droon, iruxi astronomers point to the jagged constellation of the Maw and the starry figure who stands against it. Today, while this constellation is called the Lone Mother and features in fables about environmental conservation, she once had another name in dragon lore: Erux, meaning \"defiance.\""
-					]
-				},
-				{
-					"type": "pf2-sidebar",
-					"page": 46,
-					"source": "LOAG",
-					"name": "Iruxi Ancestors",
-					"entries": [
-						"Ancestor worship is central to iruxi spiritual life. Lizardfolk keep their elders' physical remains close, incorporating them into the architecture of their settlements. The bones of deceased iruxi shore up protective walls and fill great vaulting ossuaries. Preserved and suffused with ritual veneration, these bones become magical reservoirs of power. It's rumored that in times of great need, iruxi ancestors will reanimate their bones and fight for their descendants."
-					]
-				},
-				{
 					"type": "pf2-h2",
 					"page": 44,
 					"name": "Lizardfolk of Golarion",
 					"source": "LOAG",
 					"entries": [
+						{
+							"type": "pf2-sidebar",
+							"page": 45,
+							"reference": {
+								"auto": true
+							},
+							"source": "LOAG",
+							"name": "Droon",
+							"entries": []
+						},
+						{
+							"type": "pf2-sidebar",
+							"page": 46,
+							"source": "LOAG",
+							"name": "Iruxi",
+							"reference": {
+								"auto": true
+							},
+							"entries": []
+						},
+						{
+							"type": "pf2-sidebar",
+							"page": 46,
+							"source": "LOAG",
+							"reference": {
+								"auto": true
+							},
+							"name": "Iruxi Ancestors",
+							"entries": []
+						},
 						"Outsiders often don't perceive the finer subtleties of iruxi culture. Many humans have trouble even telling individuals apart, relying on only obvious details like scale color and fin size. In truth, iruxi civilization is rich and varied with dozens of ethnicities across Golarion\u2014including several in the Inner Sea region.",
 						{
 							"type": "pf2-h3",
@@ -198,7 +201,7 @@
 							"source": "LOAG",
 							"entries": [
 								"When most Avistani think of lizardfolk, they picture Essaris. Immediately identifiable by the dorsal fins that start atop their heads, Essaris tend to have scales of mottled dark green or blue that pale with age. Primarily swamp-dwellers, Essaris eschew unnecessary clothing, opting for simple tabards, loincloths, arm wraps, and cloaks. They live across Avistan, especially in the west, though they've lost much of their historic territory to other ancestries. Family trees are vital to Essari culture. Every Essari can recite their clan lineage, and the bones of their precursors likely fortified the walls of their childhood home. Even the most nontraditional Essari has a spiritual connection to their ancestors that their closest companions might never suspect\u2014until it saves their lives. Most Essaris harbor suspicions of those from New Thassilon, as the runelords and their giant servitors are dread figures in Essari lore.",
-								"Essaris typically take the frilled or wetlander lizardfolk heritage."
+								"Essaris typically take the {@ancestry lizardfolk|locg|frilled|frilled} or {@ancestry lizardfolk|locg|wetlander lizardfolk|wetlander} heritage."
 							]
 						},
 						{
@@ -208,7 +211,7 @@
 							"source": "LOAG",
 							"entries": [
 								"At first glance, Ikelek iruxi resemble their Essari neighbors. Instead of a fin, Ikeleks typically have dorsal spines or no adornment at all, and their duller, pebbled scales tend toward browns and grays amid olive greens. Their reach across Golarion isn't as broad, mainly concentrated among the waterways and forests of the Broken Lands and Shining Kingdoms. Ikelek architecture and crafts favor using glass, made from colored sand acquired in trade with their desert kin to the east, over bone. They're superlative javelin throwers, and some take up archery. Battling the pollutants and monsters that wash down from the Eye of Dread has made Ikeleks revere the druidic arts and nature deities like Gozreh. However, isolated settlements sometimes fall under the sway of other forces, with some in the wilds of the River Kingdoms worshipping demons or crueler patrons.",
-								"Ikeleks often take the cloudleaper or woodstalker lizardfolk heritage."
+								"Ikeleks often take the {@ancestry lizardfolk|locg|cloudleaper|cloudleaper} or {@ancestry lizardfolk|locg|woodstalker lizardfolk|woodstalker} heritage."
 							]
 						},
 						{
@@ -219,7 +222,7 @@
 							"entries": [
 								"The deserts of northern Garund and western Casmaron house lizardfolk clans such as the armor-scaled Hazairs, blood-spewing Shaikims, dune-surfing Barrukas, and camouflaged Nazegs\u2014united by their love of the hot sands, independence, and privacy. Many have adopted the heat-resistant cloaks and head wraps of their human neighbors, which also serve them when they want to roam Kelesh's city streets without comment.",
 								"While Sand Brethren iruxi vary wildly in physiognomy, they share traditions of hospitality, desert flower cultivation, and scimitar sword dances that involve nicking the tips of their rivals' tails. The slender Zephyr Kin, nocturnal traders, share news and tall tales from Rahadoum to Taldor and into Casmaron, reinforcing the shared culture of the otherwise disparate desert iruxi.",
-								"Sand Brethren mostly take the cliffscale or sandstrider lizardfolkheritage."
+								"Sand Brethren mostly take the {@ancestry lizardfolk|locg|cliffscale|cliffscale} or {@ancestry lizardfolk|locg|sandstrider lizardfolk|sandstrider} heritage."
 							]
 						},
 						{
@@ -228,9 +231,8 @@
 							"source": "LOAG",
 							"page": 45,
 							"entries": [
-								"Rasp goblins, or simply \"Rasps,\" named after the section of Varisia's Lost Coast where they tend to live, are some of the most commonly encountered goblins in the Inner Sea region, particularly in Varisia and the neighboring nations. Unlike frost goblins and monkey goblins, who are limited to smaller geographic areas, and forest goblins, who suffered terrible population losses during the Goblinblood Wars, Rasp goblins remain exceptionally populous and can quickly spread to any area that is vaguely capable of sustaining life. Rasp goblins stand just over 3 feet tall and weigh roughly 35 pounds. While many Rasp goblins are some shade of green (typically lighter and sicklier shades than their forest goblin cousins), some Rasp goblins have rarer skin colors, such as gray or purple.",
-								"Rasp goblins have inhabited the southern and western reaches of Varisia for longer than any of the country's human inhabitants, resulting in frequent conflict as humans push deeper and deeper into the goblins' ancestral territory. Encounters with particularly aggressive and malevolent goblin communities mean that pioneer towns like Sandpoint often view goblins as little more than dangerous pests, and hire guards and adventurers to drive off any nearby goblins out of a sense of public safety. As a result, though their population numbers remain somewhat stable, Rasp goblins rarely have anything resembling clan elders or even anyone in their communities with more than a few years of knowledge or experience. This in turn means that the teaching songs goblins traditionally use to pass on their lore and skills are largely lost to the Rasp goblin tribes, who retain little more than war songs and death chants. Their aversion to literacy and lack of elders has lead to many Rasp goblins living and dying in a state of perpetual childhood, which\u2014perhaps due to the frequent conflicts between Rasp goblin tribes and other peoples\u2014has led to the spread of a number of unfortunate stereotypes not only about Rasp goblins, but about all goblins, such as the assertion that all goblins are bloodthirsty raiders, murderers, and Lamashtu worshippers. By contrast, however, those Rasp goblins who've had the opportunity to integrate with other cultures have begun to paint a very different and improved picture of their people.",
-								"Rasp goblins can have almost any heritage, though they tend to most commonly exhibit the charhide goblin and razortooth goblin heritages."
+								"Outside of Droon, western Garund is the center of iruxi culture\u2014and Terwazash iruxi certainly hold themselves as paragons of their ancestry. Terwazashes are brightly colored, usually with green scales and paler underbellies, though historical association with dragons and lunar nagas means that entirely white, black, and emerald individuals also appear. Terwazashes also tend to have expressive fin and neck frills, and have strong artistic traditions focused on jewelry. The clothing they wear is made of waterproof material such as woven reeds. ",
+								"Terwazashes most often take the {@ancestry lizardfolk|locg|frilled|frilled} or {@ancestry lizardfolk|locg|unseen lizardfolk|unseen} heritage."
 							]
 						},
 						{
@@ -255,11 +257,11 @@
 							"type": "pf2-h3",
 							"page": 128,
 							"name": "Lizardfolk",
+							"reference": {
+								"auto": true
+							},
 							"source": "LOME",
-							"entries": [
-								"The lizardfolk of the Mwangi Expanse are far less insular than lizardfolk (also known as iruxis) elsewhere. Many Mwangi iruxis utilize their skills as rangers and fighters to serve as mercenaries on the behalf of the nations that once encroached on their territories. Others work as merchants who open and manage trade hubs and waystations across the Expanse\u2014always staffed in groups of three and with extremely strict terms on fair trade. Crossing an iruxi trader is ill-advised; betraying an iruxi mercenary even more so. Due to the potential competition and market share as guides, iruxi and Mwangi kobolds often clash. Kobolds often undercut the prices of iruxis and are willing to work for almost anyone. Iruxi rarely negotiate with adventurers who consider hiring kobolds, citing their capriciousness and potential untrustworthiness.",
-								"While the Terwa Lords are the only established lizardfolk nation in the Sodden Lands and wider Mwangi Expanse, all major lizardfolk nations and several smaller congregations can be found represented in the Sodden Lands. Though the reason behind this has never been made clear, many speculate that the Sodden Lands act as the seat of a lizardfolk council."
-							]
+							"entries": []
 						}
 					]
 				}

@@ -75,20 +75,20 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 		}
 		it._fGranted = (it.granted || []).map(a => Renderer.stripTags(a));
 		if (it.abilityMods) {
-			it._fStr = it.abilityMods.Str;
-			it._fDex = it.abilityMods.Dex;
-			it._fCon = it.abilityMods.Con;
-			it._fInt = it.abilityMods.Int;
-			it._fWis = it.abilityMods.Wis;
-			it._fCha = it.abilityMods.Cha;
+			it._fStr = it.abilityMods.str;
+			it._fDex = it.abilityMods.dex;
+			it._fCon = it.abilityMods.con;
+			it._fInt = it.abilityMods.int;
+			it._fWis = it.abilityMods.wis;
+			it._fCha = it.abilityMods.cha;
 		}
 		if (it.stats) {
-			it._fStr = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Str)) - 10) / 2);
-			it._fDex = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Dex)) - 10) / 2);
-			it._fCon = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Con)) - 10) / 2);
-			it._fInt = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Int)) - 10) / 2);
-			it._fWis = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Wis)) - 10) / 2);
-			it._fCha = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Cha)) - 10) / 2);
+			it._fStr = Math.floor((Math.max(...it.stats.map(s => s.abilityScores.str)) - 10) / 2);
+			it._fDex = Math.floor((Math.max(...it.stats.map(s => s.abilityScores.dex)) - 10) / 2);
+			it._fCon = Math.floor((Math.max(...it.stats.map(s => s.abilityScores.con)) - 10) / 2);
+			it._fInt = Math.floor((Math.max(...it.stats.map(s => s.abilityScores.int)) - 10) / 2);
+			it._fWis = Math.floor((Math.max(...it.stats.map(s => s.abilityScores.wis)) - 10) / 2);
+			it._fCha = Math.floor((Math.max(...it.stats.map(s => s.abilityScores.cha)) - 10) / 2);
 		}
 		it._fSenses = { precise: [], imprecise: [], vague: [], other: [] }
 		if (it.senses) {

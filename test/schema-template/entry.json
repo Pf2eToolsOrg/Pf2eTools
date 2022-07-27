@@ -123,8 +123,25 @@
 						"reference": {
 							"$comment": "Add the source requirement to the schema if reference is true.",
 							"description": "Adds a reference string to the entry. Requires a source.",
-							"type": "boolean",
-							"const": true
+							"type": "object",
+							"properties": {
+								"auto": {
+									"description": "The hopefully working automatic setting.",
+									"type": "boolean",
+									"const": true
+								},
+								"note": {
+									"description": "Custom note to insert.",
+									"type": "array",
+									"items": {
+										"$ref": "#"
+									}
+								},
+								"index": {
+									"description": "Index at which it should insert the reference, starts from 0.",
+									"type": "integer"
+								}
+							}
 						},
 						"data": {
 							"type": "object"
