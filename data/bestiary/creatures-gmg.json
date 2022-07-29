@@ -5165,7 +5165,7 @@
 			"name": "Fence",
 			"isNpc": false,
 			"source": "GMG",
-			"page": 212,
+			"page": 210,
 			"level": 5,
 			"traits": [
 				"ne",
@@ -5292,32 +5292,23 @@
 					]
 				}
 			],
+			"items": [
+				"{@item dagger} (10)",
+				"{@item lesser darkvision elixir}",
+				"{@item disguise kit}",
+				"{@item bird feather token}",
+				"{@item lesser smokestick} (2)",
+				"{@item shortsword}",
+				"{@item thieves' tools}"
+			],
 			"abilities": {
 				"top": [
 					{
 						"entries": [
-							"+11, {@skill Intimidation} +11, {@skill Society} +11, {@skill Stealth} +10, {@skill Thievery} +10, Underworld."
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+15 Str +0, Dex +3, Con +0, Int +4, Wis +2, Cha +4 Items dagger (10), lesser darkvision elixir, disguise kit, bird feather token, lesser smokestick (2), shortsword, thieves' tools."
-						],
-						"name": "Lore"
-					},
-					{
-						"entries": [
-							"Fences live by their ability to recognize a viable trade. They can use."
-						],
-						"name": "Fence's Eye"
-					},
-					{
-						"entries": [
-							"{@skill Lore} to identify an item's value and {@action Identify Magic} on an item.",
+							"Fences live by their ability to recognize a viable trade. They can use {@skill Lore||Underworld Lore} to identify an item's value and {@action Identify Magic} on an item.",
 							"They gain a +2 circumstance bonus to {@skill Lore||Underworld Lore} checks when doing so, and to {@skill Lore||Underworld Lore} checks to determine whether an item was stolen, whether a stolen item would be too recognizable to easily move, and who would be interested in purchasing such an item."
 						],
-						"name": "Underworld"
+						"name": "Fence's Eye"
 					}
 				],
 				"bot": [
@@ -5327,7 +5318,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The fence always has a few items close at hand. The fence Interacts to draw a weapon or item that takes a single action to activate, and then Strikes with the weapon or Activates the Item."
+							"The fence always has a few items close at hand. The fence Interacts to draw a weapon or item that takes a single action to activate, and then {@action Strike||Strikes} with the weapon or {@action Activate an Item||Activates the Item}."
 						],
 						"name": "Quick Rummage"
 					},

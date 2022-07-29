@@ -140,7 +140,7 @@ class PageFilterSpells extends PageFilter {
 		// TODO: Figure out how to make various configurations of components work in filters
 		// Example: [V], [V and S], [V and S and M]
 		// Right now we'll just live with this.
-		spell._fComponents = [...new Set((spell.components || []).flat())];
+		spell._fComponents = [...new Set((spell.components || []).flat())].map(x => Parser.COMPONENTS_TO_FULL[x].toTitleCase());
 		if (spell.cost != null) spell._fComponents.push("Cost");
 		spell._fMisc = [];
 		if (spell.requirements !== null) spell._fMisc.push("Has Requirements");
@@ -177,6 +177,7 @@ class PageFilterSpells extends PageFilter {
 		this._spellTypeFilter.addItem(spell._fSpellType);
 		this._classFilter.addItem(spell._fClasses);
 		this._domainFilter.addItem(spell.domains);
+		this._componentsFilter.addItem(spell._fComponents);
 		spell._fSubClasses.forEach(sc => {
 			this._subClassFilter.addNest(sc.nest, {isHidden: true});
 			this._subClassFilter.addItem(sc);
