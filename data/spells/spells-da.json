@@ -1788,6 +1788,181 @@
 			]
 		},
 		{
+			"name": "Pact Broker",
+			"source": "DA",
+			"subclass": {
+				"Witch|Patron": [
+					"Pacts"
+				]
+			},
+			"page": 159,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"rare",
+				"cantrip",
+				"enchantment",
+				"hex",
+				"mental",
+				"witch"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You offer to broker a pact of peace. If the target accepts and doesn't take {@condition hostile} actions against you and your allies, you take a \u20131 status penalty to {@skill Deception} checks to {@action Lie} to them.",
+				"If they refuse and take a {@condition hostile} action against you or an ally, they must attempt a Will save. If they accepted the offer and then take a {@condition hostile} action against you or an ally, they must attempt a Will save and treat the result as one category worse. Regardless of the outcome, the target is then temporarily immune for 1 minute.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"The target takes a \u20131 status penalty to attack and damage rolls against you and your allies."
+						],
+						"Critical Failure": [
+							"The target takes a \u20132 status penalty to attack and damage rolls against you and your allies."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Return the Favor",
+			"source": "DA",
+			"subclass": {
+				"Witch|Patron": [
+					"Pacts"
+				]
+			},
+			"page": 159,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"rare",
+				"hex",
+				"necromancy",
+				"witch"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S"
+				]
+			],
+			"trigger": "An ally uses a reaction to grant you a beneficial effect during a combat encounter.",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 ally",
+			"entries": [
+				"You're unable to leave any debts unpaid. When an ally supports you in a fight, you offer assistance in turn for the favor. The triggering ally gains 12 temporary Hit Points for 1 minute."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The temporary Hit Points increase by 4."
+					]
+				}
+			}
+		},
+		{
+			"name": "Over the Coals",
+			"source": "DA",
+			"subclass": {
+				"Witch|Patron": [
+					"Pacts"
+				]
+			},
+			"page": 159,
+			"type": "Focus",
+			"level": 5,
+			"traits": [
+				"rare",
+				"hex",
+				"mental",
+				"necromancy",
+				"witch"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You accuse the target of breaking its word to you and invoke the wrath of your patron to claim what's due, demanding the target pay you in currency, fulfill an order, or stand down. The demand can't be obviously self-destructive, or the spell fails. If the target resists, you take your payment from its life force. The target must attempt a Will save. Regardless of the result of its save, the target is temporarily immune for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected and is immune to your pact broker cantrips for 1 day."
+						],
+						"Success": [
+							"If the target doesn't comply with your request by the end of its next turn, it takes {@damage 3d8} {@condition persistent damage ||persistent negative damage}. If it later complies, the spell automatically ends."
+						],
+						"Failure": [
+							"As success, but if the target doesn't comply, it is {@condition drained||drained 1} and takes {@damage 6d8} {@condition persistent damage ||persistent negative damage}."
+						],
+						"Critical Failure": [
+							"As success, but if the target doesn't comply, it is {@condition drained||drained 2}, {@condition doomed||doomed 1}, and takes {@damage 6d8} {@condition persistent damage ||persistent negative damage}. Even if the target completes your commands later, the spell doesn't end until all the conditions end."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"9": [
+						"You can target up to two creatures."
+					]
+				}
+			}
+		},
+		{
 			"name": "Euphoric Renewal",
 			"source": "DA",
 			"page": 142,

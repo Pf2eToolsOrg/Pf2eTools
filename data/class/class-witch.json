@@ -133,6 +133,16 @@
 			],
 			"subclasses": [
 				{
+					"name": "Pacts",
+					"type": "Patron Theme",
+					"shortName": "Pacts",
+					"source": "DA",
+					"page": 159,
+					"subclassFeatures": [
+						"Patron|Witch|APG|Pacts|DA|1"
+					]
+				},
+				{
 					"name": "Baba Yaga",
 					"type": "Patron Theme",
 					"shortName": "Baba Yaga",
@@ -1325,6 +1335,53 @@
 									"type": "item",
 									"name": "Granted Spell",
 									"entry": "{@spell gust of wind}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Patron",
+			"source": "DA",
+			"page": 159,
+			"className": "Witch",
+			"classSource": "APG",
+			"subclassShortName": "Pacts",
+			"subclassSource": "DA",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Pacts ({@trait Rare})",
+					"source": "DA",
+					"page": 159,
+					"entries": [
+						"Your patron deals only in promises and bargains, and no lesson is ever given for free.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entry": "{@filter occult|spells||tradition & spell list=occult}"
+								},
+								{
+									"type": "item",
+									"name": "Patron Skill",
+									"entry": "{@skill Occultism}"
+								},
+								{
+									"type": "item",
+									"name": "Hex Cantrip",
+									"entry": "{@spell pact broker|DA}"
+								},
+								{
+									"type": "item",
+									"name": "Granted Spell",
+									"entry": "{@spell command}"
 								}
 							]
 						}

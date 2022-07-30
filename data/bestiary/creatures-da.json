@@ -1,0 +1,224 @@
+{
+	"creature": [
+		{
+			"name": "Mother Mitera",
+			"source": "DA",
+			"page": 152,
+			"level": 8,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human"
+			],
+			"perception": {
+				"std": 18
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				]
+			},
+			"skills": {
+				"deception": {
+					"std": 20
+				},
+				"diplomacy": {
+					"std": 18
+				},
+				"ludovica lore": {
+					"std": 16
+				},
+				"nature": {
+					"std": 18
+				},
+				"religion": {
+					"std": 18
+				},
+				"society": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 0,
+				"int": 2,
+				"wis": 4,
+				"cha": 4
+			},
+			"items": [
+				"ceremonial robes",
+				"crystal flower crown",
+				"+1 striking dagger"
+			],
+			"ac": {
+				"std": 25
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 14
+				},
+				"ref": {
+					"std": 17
+				},
+				"will": {
+					"std": 18
+				}
+			},
+			"hp": [
+				{
+					"hp": 140,
+					"abilities": [
+						"crystal vitality link"
+					]
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"name": "dagger",
+					"bonus": 18,
+					"damage": "{@damage 2d4+7} piercing plus {@damage 1d6} mental and {@damage 1d6} {@condition persistent damage ||persistent bleed}"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"magical",
+						"thrown",
+						"versatile S"
+					],
+					"name": "dagger",
+					"bonus": 18,
+					"damage": "{@damage 2d4+7} piercing plus {@damage 1d6} mental and {@damage 1d6} {@condition persistent damage ||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Prepared",
+					"tradition": "Primal",
+					"type": "Prepared",
+					"DC": 26,
+					"attack": 18,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "entangle"
+								},
+								{
+									"name": "glitterdust"
+								},
+								{
+									"name": "tree shape"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "lightning bolt"
+								},
+								{
+									"name": "mind of menace",
+									"source": "som"
+								},
+								{
+									"name": "soothing blossoms",
+									"source": "som"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "freedom of movement"
+								},
+								{
+									"name": "murderous vine",
+									"source": "som"
+								},
+								{
+									"name": "petal storm",
+									"source": "som"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Crystal Vitality Link",
+						"entries": [
+							"The power of the island links Mitera's vitality to her followers. As long as any of the three quartz formations are intact (see above), whenever Mitera takes damage, any of her followers within 10 miles lose the same amount of Hit Points."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Ascension is Near",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"concentrate",
+							"emotion",
+							"incapacitation",
+							"mental"
+						],
+						"frequency": {
+							"freq": 1,
+							"customUnit": "ascension"
+						},
+						"entries": [
+							"Mitera activates the moonflower link with her followers. Any followers within 30 feet who failed their saving throw against the moonflower tea become {@condition sickened||sickened 1}.",
+							"Anyone who critically failed and did not receive an antidote explodes (this is about half of Mitera's congregation if the PCs didn't successfully administer the antidote). If anyone's body explodes, Mitera gains 30 temporary Hit Points and is {@condition quickened} for 3 rounds; she can use this additional action each round only for {@action Strike} and {@action Stride} actions."
+						]
+					}
+				]
+			}
+		}
+	]
+}
