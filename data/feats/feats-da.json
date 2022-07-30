@@ -1,6 +1,310 @@
 {
 	"feat": [
 		{
+			"name": "Devil's Eye",
+			"source": "DA",
+			"page": 55,
+			"level": 4,
+			"traits": [
+				"rare",
+				"aftermath"
+			],
+			"prerequisites": "You made a bargain with a devil or won a legal case or other similar duel of wits against a devil.",
+			"entries": [
+				"Your experience in the finer points of bargaining with a devil has awakened a sinister power that now inhabits your left eye. The eye is the same shape and iris color as your normal eye would be, but the sclera is a deep red instead of white and the pupil is a narrow, vertical slit. The eye grants you an abnormal understanding of the loopholes and legal processes employed to trap poor creatures that don't know any better.",
+				"You gain the Objection reaction. You also become an expert in {@skill Lore||Legal Lore} and gain a +1 circumstance bonus to any check you make to read or negotiate a treatise, contract, or similar text. At 7th level you become a master of {@skill Lore||Legal Lore}, and at 15th level you become legendary in {@skill Lore||Legal Lore}. You can use {@skill Lore||Legal Lore} in place of {@skill Perception} to detect verbal loopholes, double entendres, {@condition hidden} meanings, code, or contradictions in a conversation you can hear. This doesn't let you fully understand coded speech but alerts you to its presence.",
+				{
+					"name": "Objection",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"fortune"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"trigger": "You're about to attempt a saving throw against a {@trait linguistic} effect",
+					"entries": [
+						"Your devil's eye crackles with infernal glee as you discover a loophole in the wording of the triggering effect. You roll your saving throw twice, taking the higher result."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Echo of the Fallen",
+			"source": "DA",
+			"page": 55,
+			"level": 4,
+			"traits": [
+				"rare",
+				"aftermath"
+			],
+			"prerequisites": "You helped to lay a haunt, ghost, or spirit to rest.",
+			"entries": [
+				"With the utmost gratitude for your help in releasing them from their unearthly coil, a tiny sliver of a ghostly entity has remained attached to you. This manifests as an echo of their former self that follows you around and that you and anyone capable of casting divine or occult spells can see and speak with. When you take this feat, work with your GM to choose one martial weapon and one skill (or an advanced weapon if you're trained in all martial weapons) that are appropriate for the spirit; once you've chosen the weapon and skill, you can't change them. You gain the Accept Echo action.",
+				{
+					"name": "Accept Echo",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You allow the echo to inhabit your body, gaining a glowing aura around you, shining pale-green irises, a resonating voice, and the silhouette of the spirit around your own body, all of which can be seen clearly by others. While in this state, you become trained in the weapon you chose and an expert in the skill you chose. Additionally, while you're in this state, the echo can speak and interact with the Material Plane using your body, and you gain a +4 status bonus to all saves against {@trait possession} effects, as the possessing spirit protects you from other possessions.",
+						"This state lasts for 10 minutes, after which the echo disappears completely until the next time you make your daily preparations. You can {@action Dismiss} this effect.",
+						"At 7th level you become a master of the skill you chose, at 13th level you become an expert with the weapon you chose, and at 15th level you become legendary with the skill you chose."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Lingering Chill",
+			"source": "DA",
+			"page": 55,
+			"level": 4,
+			"traits": [
+				"rare",
+				"aftermath",
+				"cold"
+			],
+			"prerequisites": "You've been brought to 0 Hit Points by an enemy that has the {@trait cold} trait or an enemy's ability that has the {@trait cold} trait.",
+			"entries": [
+				"The chill of ice entered your veins and never left, adjusting the internal temperature of your body. Your breath comes out in puffs, and your skin is as cold and smooth as the ice in your veins. You can cast {@spell ray of frost} as a primal innate cantrip. You gain resistance to cold damage equal to half your level, and you're protected from severe cold temperatures."
+			]
+		},
+		{
+			"name": "Elysium's Cadence",
+			"source": "DA",
+			"page": 56,
+			"level": 6,
+			"traits": [
+				"rare",
+				"aftermath"
+			],
+			"prerequisites": "You've partied extensively with an azata or entered a romantic relationship with an azata.",
+			"entries": [
+				"You've been ensnared by an azata's infectious enthusiasm for life, love, and freedom that manifests as a pearlescent afterimage in your graceful movements, a spring in your soft steps, an ever-present melody in your euphonic voice, and eddies of passionate colors in your mesmerizing eyes. You gain a +1 circumstance bonus to checks to {@action Make an Impression}, or a +2 circumstance bonus if the target is chaotic good. You gain the {@deity Set|BotD} Free reaction.",
+				{
+					"name": "Set Free",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"fortune"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You attempt a check to remove or counteract an effect with the {@condition confused}, {@condition controlled}, {@condition fascinated}, {@condition immobilized}, {@condition paralyzed}, or {@condition restrained} conditions",
+					"entries": [
+						"You roll twice and use the better result."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Jelly Body",
+			"source": "DA",
+			"page": 56,
+			"level": 6,
+			"traits": [
+				"rare",
+				"aftermath",
+				"magical",
+				"transmutation"
+			],
+			"prerequisites": "You've been reduced to 0 Hit Points while engulfed by an ooze.",
+			"entries": [
+				"Some of the ooze that surrounded you made its way permanently into parts of your body, turning you soft to the touch and semitransparent enough to show bones. You gain resistance equal to your level to precision damage and damage from critical hits. You can submerge up to 1 Bulk of items within your body by sticking them inside of yourself. While the protrusion of the item is still visible from the outside, the items don't count toward making you {@condition encumbered} or your maximum Bulk while stored in you. You can {@action Interact} to retrieve or store an item submerged into your body."
+			]
+		},
+		{
+			"name": "Gift of the Hoard",
+			"source": "DA",
+			"page": 56,
+			"level": 10,
+			"traits": [
+				"rare",
+				"aftermath",
+				"magical",
+				"transmutation"
+			],
+			"prerequisites": "You have succeeded at an important task given by a dragon, such as procuring a special treasure for their hoard.",
+			"entries": [
+				"In pleasing the cravings of a mighty dragon, they have deigned to impart some of their magical essence into your body. Your eyes begin to glow and change color while your limbs and neck grow a veneer of scales, all the same color as the associated dragon, accompanied by a near-insatiable desire to amass a hoard of your own. You gain the dragon breath sorcerer bloodline spell, emulating the breath of the associated dragon, and a focus pool of 1 Focus Point. If you already have a focus pool, increase your number of Focus Points by 1. You {@action Refocus} by counting and arranging your treasure."
+			]
+		},
+		{
+			"name": "Siphon Life",
+			"source": "DA",
+			"page": 56,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"rare",
+				"aftermath",
+				"flourish",
+				"magical",
+				"necromancy",
+				"negative"
+			],
+			"prerequisites": "You've been reduced to 0 Hit Points by an enemy with the {@trait negative} trait.",
+			"entries": [
+				"Experiences with necromantic energy have left a permanent mark on you, casting you in a deathlike pallor, chilling your body temperature to be ice-cold, turning your very blood black, and giving you the power to rip out an enemy's life force. {@action Strike} with an unarmed attack. If you hit and the target is a living creature, it takes {@dice 4d6} additional negative damage, depending on its Fortitude save. If the target takes any negative damage, you gain an equal number of temporary Hit Points, which last for 1 minute.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The enemy takes no additional negative damage and becomes temporarily immune for 1 minute."
+						],
+						"Success": [
+							"The enemy takes half the additional negative damage."
+						],
+						"Failure": [
+							"The enemy takes full additional negative damage."
+						],
+						"Critical Failure": [
+							"The enemy takes double the additional negative damage."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Petrified Skin",
+			"source": "DA",
+			"page": 56,
+			"level": 12,
+			"traits": [
+				"rare",
+				"aftermath",
+				"transmutation"
+			],
+			"prerequisites": "You have been {@condition petrified} by an enemy.",
+			"entries": [
+				"It might have been a medusa, dracolisk, or even a fossil golem; regardless of the source, you were the target of some petrifying effect, and an element of that stony gaze has remained with Archive you, both protecting and slowly consuming you. Your limbs are coated with a layer of stone that rests atop your skin and covers more of your body as you lose health. You gain a stone fist unarmed attack that deals {@damage 1d8} bludgeoning damage, has the {@trait shove} trait, and is in the brawling weapon group (unlike a normal fist, it doesn't have the {@trait agile} or {@trait finesse} traits). Additionally, you become more {@condition petrified} as your life force ebbs. When you have fewer than half your maximum Hit Points, you increase the damage die size of your stone fist from {@dice 1d8} to {@dice 1d10} and gain resistance to physical damage (except adamantine) equal to your Constitution modifier.",
+				"If you would gain the {@condition dying} condition, you can choose to instead be permanently {@condition petrified} and avoid the risk of death. When you do, you enter your {@condition petrified} form with your full maximum Hit Points instead of the normal number. If you become unpetrified, you return to 0 Hit Points, as normal. You can't voluntarily end this petrification. Counteracting this petrification requires a casting of stone to flesh of a spell level equal to at least half your level, and a successful counteract check against the hard DC for your level. Other effects like stone to flesh have similar limitations, as determined by the GM. Each time you recover from this petrification, you gain a new scar on your skin in the shape of a long, thin crack."
+			]
+		},
+		{
+			"name": "Dormant Eruption",
+			"source": "DA",
+			"page": 57,
+			"level": 14,
+			"traits": [
+				"rare",
+				"aftermath",
+				"fire"
+			],
+			"prerequisites": "You've been brought to 0 Hit Points by an enemy that has the {@trait fire} trait or an enemy's ability that has the {@trait fire} trait.",
+			"entries": [
+				"A sweltering heat and sparks of flame that take the form of tiny copies of you surround your body. You're hot to the touch, gaining resistance 5 to cold and fire. Whenever an adjacent creature Strikes you with a melee attack or touches you, it takes {@damage 1d6} {@condition persistent damage ||persistent fire damage}. You gain the Thermal Eruption action.",
+				{
+					"name": "Thermal Eruption[two-actions]",
+					"traits": [
+						"evocation",
+						"fire",
+						"primal"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You concentrate your thermal energy and explode it outward. All creatures in a 20-foot emanation take {@damage 14d6} fire damage with a basic Reflex save. Afterward, you lose all effects of the Dormant Eruption feat until your next daily preparations."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Sink and Swim",
+			"source": "DA",
+			"page": 57,
+			"level": 14,
+			"traits": [
+				"rare",
+				"aftermath",
+				"water"
+			],
+			"prerequisites": "You've been brought to 0 Hit Points by an enemy that has the {@trait water} trait or an enemy's ability that has the {@trait water} trait.",
+			"entries": [
+				"Your body looks like it's made of flowing water, clear and pristine, providing a natural grace to all your movements. You gain a swim Speed equal to your land Speed. If you already had a swim Speed, it's increased by 10 feet. You gain the Water Transfer activity, which enables you to teleport through a body of water.",
+				{
+					"name": "Water Transfer[two-actions]",
+					"traits": [
+						"conjuration",
+						"primal",
+						"teleportation",
+						"water"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"requirements": "You're on land and adjacent to a body of water",
+					"entries": [
+						"You sink into the water and emerge back onto land in another space within 120 feet that's adjacent to the same body of water. You can transport yourself, any items you're wearing and holding, and up to one other willing creature."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Fey Life",
+			"source": "DA",
+			"page": 57,
+			"level": 16,
+			"traits": [
+				"rare",
+				"aftermath",
+				"healing",
+				"necromancy",
+				"primal"
+			],
+			"prerequisites": "You helped to save a fey from a terrible fate, and you're not a fey.",
+			"entries": [
+				"There are some fates worse than death\u2013and you worked to save a fey from one such fate. In return, your life became bound to theirs. Fey magic has since become a part of you, bringing the vibrant colors of the First World to you and all that surrounds you. Your skin, hair, all that you touch, and anything within 5 feet of you changes to the most brilliant hues possible, though the colors fade as you cease to touch an object or you move away. You gain the ability to cast {@spell summon fey} as a 7th-level primal innate spell once per day. At 18th level the spell heightens to 8th level, and at 20th level it heightens to 9th level.",
+				"The first time you die after gaining this feat, the bond you made with the fey invokes the power of the First World to return you to life. Immediately after {@condition dying}, you revive, becoming conscious (and {@condition wounded} as normal) at 27 Hit Points, and you gain the {@trait fey} trait. Your eyes become a rainbow of colors, and you take on a visual aspect of the fey with whom you are bound, such as by growing wings, horns, or a plantlike body. The change has no {@trait mechanical} effect; for instance, the wings wouldn't allow you to fly, nor would horns grant a horn unarmed attack.",
+				"The second time you die, you reawaken in the First World with the full appearance of the fey that was bound to you. You become an NPC, unconcerned with your old mortal life. You can be returned to your previous life in the Material Plane by having allies spend 3 days building a shrine to the First World, giving three offerings that hold deep sentimental value for you or another, and holding a raucous, three-day long feast.",
+				"Any time that you die after that, you reawaken again in the First World with no memories of your previous life, and you can only be brought back by powerful magic such as a {@spell wish} spell."
+			]
+		},
+		{
+			"name": "Walk on the Wind",
+			"source": "DA",
+			"page": 57,
+			"level": 16,
+			"traits": [
+				"rare",
+				"aftermath",
+				"air",
+				"magical",
+				"transmutation"
+			],
+			"prerequisites": "You've been brought to 0 Hit Points by an enemy that has the {@trait air} trait or an enemy's ability that has the {@trait air} trait.",
+			"entries": [
+				"A flighty breeze follows you wherever you go, granting a dramatic flair to everything you do. You're light on your feet, your voice gains an airy quality that allows it to travel further than normal, and your clothing and hair rustle gently around you at all times. You can {@action Stride} at half your land Speed across calm air. If you attempt to carry another creature with you while walking on air, even if it's in an extradimensional space, you fall."
+			]
+		},
+		{
 			"name": "Psychic Dedication",
 			"source": "DA",
 			"page": 48,
