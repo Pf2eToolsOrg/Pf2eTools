@@ -1,6 +1,305 @@
 {
 	"feat": [
 		{
+			"name": "Psychic Dedication",
+			"source": "DA",
+			"page": 48,
+			"level": 2,
+			"traits": [
+				"archetype",
+				"dedication",
+				"multiclass"
+			],
+			"prerequisites": "Intelligence 14 or Charisma 14",
+			"entries": [
+				"You feel something awaken within your mind. You become trained in {@skill Occultism}; if you were already trained in {@skill Occultism}, you become trained in a skill of your choice. You cast spells like a psychic and gain the {@action Cast a Spell} activity; as you don't have a subconscious mind, your thought components are simple intentions. Choose a conscious mind. You gain a spell repertoire with one standard psi cantrip of your choice from your conscious mind, which you cast as a psi cantrip. You gain the normal benefits and the amp for this psi cantrip, but not any other benefits from the conscious mind. If you don't have one, you gain a focus pool of 1 Focus Point, which you can use to amp your psi cantrips, and you can {@action Refocus} by meditating on your new powers. If you already have a focus pool, increase the number of points in your pool by 1. You're trained in occult spell attack rolls and occult spell DCs. Your key spellcasting ability for psychic archetype spells is the ability you used to qualify for the archetype, and they are occult psychic spells."
+			],
+			"featType": {
+				"archetype": [
+					"Psychic"
+				]
+			},
+			"special": [
+				"You can't select another dedication feat until you have gained two other feats from the psychic archetype."
+			],
+			"leadsTo": [
+				"Basic Thoughtform|DA",
+				"Advanced Thoughtform|DA",
+				"Basic Psychic Spellcasting|DA",
+				"Expert Psychic Spellcasting|DA",
+				"Master Psychic Spellcasting|DA",
+				"Psi Development|DA"
+			]
+		},
+		{
+			"name": "Basic Thoughtform",
+			"source": "DA",
+			"page": 48,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Psychic"
+				]
+			},
+			"prerequisites": "{@feat Psychic Dedication|DA}",
+			"entries": [
+				"You gain a {@filter 1st- or 2nd-level psychic|feats||Class=psychic|level=[1;2]} feat of your choice."
+			],
+			"leadsTo": [
+				"Advanced Thoughtform|DA"
+			]
+		},
+		{
+			"name": "Basic Psychic Spellcasting",
+			"source": "DA",
+			"page": 48,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Psychic"
+				]
+			},
+			"prerequisites": "{@feat Psychic Dedication|DA}",
+			"entries": [
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes}. When you gain a spell slot of a new level from the psychic archetype, add a spell of the appropriate spell level to your repertoire: a common occult spell, one of the granted spells from your conscious mind, or another spell you've learned or discovered."
+			],
+			"leadsTo": [
+				"Expert Psychic Spellcasting|DA",
+				"Master Psychic Spellcasting|DA"
+			]
+		},
+		{
+			"name": "Advanced Thoughtform",
+			"source": "DA",
+			"page": 48,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Psychic"
+				]
+			},
+			"prerequisites": "{@feat Basic Thoughtform|DA}",
+			"entries": [
+				"You gain one {@filter psychic|feats||Class=psychic} feat. For the purpose of meeting its prerequisites, your psychic level is equal to half your character level."
+			],
+			"special": [
+				"You can select this feat more than once. Each time you select it, you gain another psychic feat."
+			]
+		},
+		{
+			"name": "Psi Development",
+			"source": "DA",
+			"page": 48,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Psychic"
+				]
+			},
+			"prerequisites": "{@feat Psychic Dedication|DA}",
+			"entries": [
+				"You've found a new mental form. You gain another psi cantrip from your conscious mind: either the standard cantrip you didn't take with Psychic Dedication, or the unique surface psi cantrip.",
+				"You gain the benefits and the amp for this second psi cantrip. Increase the number of Focus Points in your focus pool by 1."
+			]
+		},
+		{
+			"name": "Expert Psychic Spellcasting",
+			"source": "DA",
+			"page": 48,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Psychic"
+				]
+			},
+			"prerequisites": "{@feat Basic Psychic Spellcasting|DA}",
+			"entries": [
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes}."
+			],
+			"leadsTo": [
+				"Master Psychic Spellcasting|DA"
+			]
+		},
+		{
+			"name": "Master Psychic Spellcasting",
+			"source": "DA",
+			"page": 48,
+			"level": 12,
+			"featType": {
+				"archetype": [
+					"Psychic"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Expert Psychic Spellcasting|DA}",
+			"entries": [
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
+			]
+		},
+		{
+			"name": "Thaumaturge Dedication",
+			"source": "DA",
+			"page": 49,
+			"level": 2,
+			"traits": [
+				"archetype",
+				"dedication",
+				"multiclass"
+			],
+			"featType": {
+				"archetype": [
+					"Thaumaturge"
+				]
+			},
+			"prerequisites": "Charisma 14",
+			"entries": [
+				"You've uncovered basic thaumaturgy. You become trained in thaumaturge class DC. Choose an implement; you can use it to Glimpse Vulnerability, but don't gain its benefits. You also gain a few esoterica, allowing you to use esoterica actions (page 32). You become trained in your choice of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; if you were already trained in these, you become trained in a skill of your choice. You gain the Glimpse Vulnerability action.",
+				{
+					"name": "Glimpse Vulnerability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"esoterica",
+						"manipulate"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"requirements": "You are holding your implement",
+					"entries": [
+						"You glimpse a {@condition hidden} vulnerability and then strengthen it to aid you. Select a creature you can see. Until you Glimpse Vulnerability again, that target gains weakness 2 against your unarmed and weapon Strikes."
+					],
+					"type": "ability"
+				}
+			],
+			"special": [
+				"You can't select another dedication feat until you have gained two other feats from the thaumaturge archetype."
+			],
+			"leadsTo": [
+				"Basic Thaumaturgy|DA",
+				"Advanced Thaumaturgy|DA",
+				"Implement Initiate|DA",
+				"Magical Knowledge|DA",
+				"Resolute|DA"
+			]
+		},
+		{
+			"name": "Basic Thaumaturgy",
+			"source": "DA",
+			"page": 49,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Thaumaturge"
+				]
+			},
+			"prerequisites": "{@feat Thaumaturge Dedication|DA}",
+			"entries": [
+				"You gain a {@filter 1st- or 2nd-level thaumaturge|feats||Class=thaumaturge|level=[1;2]} feat of your choice."
+			],
+			"leadsTo": [
+				"Advanced Thaumaturgy|DA"
+			]
+		},
+		{
+			"name": "Advanced Thaumaturgy",
+			"source": "DA",
+			"page": 49,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Thaumaturge"
+				]
+			},
+			"prerequisites": "{@feat Basic Thaumaturgy|DA}",
+			"entries": [
+				"You gain one {@filter psychic|feats||Class=Thaumaturge} feat. For the purpose of meeting its prerequisites, your thaumaturge level is equal to half your character level."
+			],
+			"special": [
+				"You can select this feat more than once. Each time you select it, you gain another thaumaturge feat."
+			]
+		},
+		{
+			"name": "Implement Initiate",
+			"source": "DA",
+			"page": 49,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Thaumaturge"
+				]
+			},
+			"prerequisites": "{@feat Thaumaturge Dedication|DA}",
+			"entries": [
+				"You gain your implement's initiate benefit. If the benefit affects the target of {@action Exploit Vulnerability|DA}, for you it affects the target of Glimpse Vulnerability instead."
+			]
+		},
+		{
+			"name": "Magical Knowledge",
+			"source": "DA",
+			"page": 49,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Thaumaturge"
+				]
+			},
+			"prerequisites": "{@feat Thaumaturge Dedication|DA}, trained in one of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} and expert in another",
+			"entries": [
+				"Increase your proficiency rank in one of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} from expert to master and in another from trained to expert. You gain a skill feat associated with the skill you chose."
+			]
+		},
+		{
+			"name": "Resolute",
+			"source": "DA",
+			"page": 49,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Thaumaturge"
+				]
+			},
+			"prerequisites": "{@feat Thaumaturge Dedication|DA}, expert in Will",
+			"entries": [
+				"You've tempered your mind and become resolute against effects that strain your willpower. Your proficiency rank for Will saves increases to master."
+			]
+		},
+		{
 			"name": "Ammunition Thaumaturgy",
 			"source": "DA",
 			"page": 42,
@@ -660,212 +959,6 @@
 			"prerequisites": "legendary in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
 			"entries": [
 				"The thaumaturge's path culminates with the working of wonders. Once per day, you can align your esoterica to cast a spell of 8th level or lower that takes 1, 2, or 3 actions to cast. The spell must be common or one to which you have access. You can choose a spell of any tradition for which you're legendary in the associated skill ({@skill Arcana} for arcane, {@skill Nature} for primal, {@skill Occultism} for occult, or {@skill Religion} for divine). Use your thaumaturge class DC in place of any necessary spell DC and your thaumaturge class DC \u2013 10 in place of any necessary counteract modifier or spell attack modifier."
-			]
-		},
-		{
-			"name": "Psychic Dedication",
-			"source": "DA",
-			"page": 48,
-			"level": 2,
-			"traits": [
-				"archetype",
-				"dedication",
-				"multiclass"
-			],
-			"prerequisites": "Intelligence 14 or Charisma 14",
-			"entries": [
-				"You feel something awaken within your mind. You become trained in {@skill Occultism}; if you were already trained in {@skill Occultism}, you become trained in a skill of your choice. You cast spells like a psychic and gain the {@action Cast a Spell} activity; as you don't have a subconscious mind, your thought components are simple intentions. Choose a conscious mind. You gain a spell repertoire with one standard psi cantrip of your choice from your conscious mind, which you cast as a psi cantrip. You gain the normal benefits and the amp for this psi cantrip, but not any other benefits from the conscious mind. If you don't have one, you gain a focus pool of 1 Focus Point, which you can use to amp your psi cantrips, and you can {@action Refocus} by meditating on your new powers. If you already have a focus pool, increase the number of points in your pool by 1. You're trained in occult spell attack rolls and occult spell DCs. Your key spellcasting ability for psychic archetype spells is the ability you used to qualify for the archetype, and they are occult psychic spells."
-			],
-			"special": [
-				"You can't select another dedication feat until you have gained two other feats from the psychic archetype."
-			]
-		},
-		{
-			"name": "Basic Thoughtform",
-			"source": "DA",
-			"page": 48,
-			"level": 4,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Psychic Dedication",
-			"entries": [
-				"You gain a 1st- or 2nd-level psychic feat of your choice."
-			]
-		},
-		{
-			"name": "Basic Psychic Spellcasting",
-			"source": "DA",
-			"page": 48,
-			"level": 4,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Psychic Dedication",
-			"entries": [
-				"You gain the basic spellcasting benefits (Core Rulebook 219). When you gain a spell slot of a new level from the psychic archetype, add a spell of the appropriate spell level to your repertoire: a common occult spell, one of the granted spells from your conscious mind, or another spell you've learned or discovered."
-			]
-		},
-		{
-			"name": "Advanced Thoughtform",
-			"source": "DA",
-			"page": 48,
-			"level": 6,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Basic Thoughtform",
-			"entries": [
-				"You gain one psychic feat. For the purpose of meeting its prerequisites, your psychic level is equal to half your character level."
-			],
-			"special": [
-				"You can select this feat more than once. Each time you select it, you gain another psychic feat."
-			]
-		},
-		{
-			"name": "Psi Development",
-			"source": "DA",
-			"page": 48,
-			"level": 6,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Psychic Dedication",
-			"entries": [
-				"You've found a new mental form. You gain another psi cantrip from your conscious mind: either the standard cantrip you didn't take with Psychic Dedication, or the unique surface psi cantrip.",
-				"You gain the benefits and the amp for this second psi cantrip. Increase the number of Focus Points in your focus pool by 1."
-			]
-		},
-		{
-			"name": "Expert Psychic Spellcasting",
-			"source": "DA",
-			"page": 48,
-			"level": 12,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Basic Psychic Spellcasting",
-			"entries": [
-				"You gain the expert spellcasting benefits (Core Rulebook 219)."
-			]
-		},
-		{
-			"name": "Master Psychic Spellcasting",
-			"source": "DA",
-			"page": 48,
-			"level": 12,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Expert Psychic Spellcasting",
-			"entries": [
-				"You gain the master spellcasting benefits (Core Rulebook 219)."
-			]
-		},
-		{
-			"name": "Thaumaturge Dedication",
-			"source": "DA",
-			"page": 49,
-			"level": 2,
-			"traits": [
-				"archetype",
-				"dedication",
-				"multiclass"
-			],
-			"prerequisites": "Charisma 14",
-			"entries": [
-				"You've uncovered basic thaumaturgy. You become trained in thaumaturge class DC. Choose an implement; you can use it to Glimpse Vulnerability, but don't gain its benefits. You also gain a few esoterica, allowing you to use esoterica actions (page 32). You become trained in your choice of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; if you were already trained in these, you become trained in a skill of your choice. You gain the Glimpse Vulnerability action.",
-				{
-					"name": "Glimpse Vulnerability",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"esoterica",
-						"manipulate"
-					],
-					"frequency": {
-						"freq": 1,
-						"unit": "round"
-					},
-					"requirements": "You are holding your implement",
-					"entries": [
-						"You glimpse a {@condition hidden} vulnerability and then strengthen it to aid you. Select a creature you can see. Until you Glimpse Vulnerability again, that target gains weakness 2 against your unarmed and weapon Strikes."
-					],
-					"type": "ability"
-				}
-			],
-			"special": [
-				"You can't select another dedication feat until you have gained two other feats from the thaumaturge archetype."
-			]
-		},
-		{
-			"name": "Basic Thaumaturgy",
-			"source": "DA",
-			"page": 49,
-			"level": 4,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Thaumaturge Dedication",
-			"entries": [
-				"You gain a 1st- or 2nd-level thaumaturge feat of your choice."
-			]
-		},
-		{
-			"name": "Advanced Thaumaturgy",
-			"source": "DA",
-			"page": 49,
-			"level": 6,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Basic Thaumaturgy",
-			"entries": [
-				"You gain one thaumaturge feat. For the purpose of meeting its prerequisites, your thaumaturge level is equal to half your character level."
-			],
-			"special": [
-				"You can select this feat more than once. Each time you select it, you gain another thaumaturge feat."
-			]
-		},
-		{
-			"name": "Implement Initiate",
-			"source": "DA",
-			"page": 49,
-			"level": 6,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Thaumaturge Dedication",
-			"entries": [
-				"You gain your implement's initiate benefit. If the benefit affects the target of Exploit Vulnerability, for you it affects the target of Glimpse Vulnerability instead."
-			]
-		},
-		{
-			"name": "Magical Knowledge",
-			"source": "DA",
-			"page": 49,
-			"level": 8,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Thaumaturge Dedication, trained in one of",
-			"entries": [
-				"{@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} and expert in another Increase your proficiency rank in one of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} from expert to master and in another from trained to expert. You gain a skill feat associated with the skill you chose."
-			]
-		},
-		{
-			"name": "Resolute",
-			"source": "DA",
-			"page": 49,
-			"level": 12,
-			"traits": [
-				"archetype"
-			],
-			"prerequisites": "Thaumaturge Dedication, expert in Will",
-			"entries": [
-				"You've tempered your mind and become resolute against effects that strain your willpower. Your proficiency rank for Will saves increases to master."
 			]
 		},
 		{

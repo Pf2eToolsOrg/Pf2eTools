@@ -1,6 +1,773 @@
 {
 	"spell": [
 		{
+			"name": "Distortion Lens",
+			"source": "DA",
+			"page": 23,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"conjuration",
+				"psychic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "one 5-foot square",
+				"types": [
+					"Misc."
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You create a magical lens that distorts space as best suits you.",
+				"You create the lens in a space in range, even suspended in midair.",
+				"If your or an ally's ranged attack passes through the lens, the attack gains an additional 10 feet of range; if an enemy's ranged attack would pass through the lens, it requires an additional 10 feet of range to move through, though the enemy knows before using its ability whether the interference puts the target out of range. An ally whose space overlaps the lens can increase the range of its ranged attacks, but an enemy whose space overlaps the lens doesn't reduce the range of its ranged attacks.",
+				"The first time each round you Sustain the Spell, you can choose to relocate it to another square within range. The lens disappears if you cast distortion lens again."
+			],
+			"heightened": {
+				"plusX": {
+					"3": [
+						"The lens increases or decreases the range of abilities by an additional 5 feet."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"The lens can interfere with creatures as well as attacks. Once during a Medium or smaller ally's move action, the ally can move into and out of the lens's square without that square counting against the total distance moved. Conversely, the lens is difficult terrain for your enemies."
+				]
+			}
+		},
+		{
+			"name": "Ghostly Shift",
+			"source": "DA",
+			"page": 23,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"conjuration",
+				"psychic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your body becomes insubstantial as you partially phase out. You gain resistance 2 to all damage (except force)."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The resistance increases by 1."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"Your insubstantiality is complete enough that you can pass through other creatures, causing painful interference effects when you do so. Once each round when you {@action Stride}, {@action Burrow}, {@action Swim}, or {@action Fly}, you can pass through one creature's space during that action without needing to attempt a check to {@action Tumble Through}, though you can't end your turn in its space. When you pass through a creature's space in this way, you deal {@damage 2d6} force damage to that creature, with a basic Fortitude save."
+				],
+				"heightened": {
+					"plusX": {
+						"2": [
+							"Increase the damage dealt by phasing through a creature by {@dice 1d6}."
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Tesseract Tunnel",
+			"source": "DA",
+			"page": 23,
+			"type": "Cantrip",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"conjuration",
+				"psychic",
+				"teleportation"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You race from point to point, tearing open a tunnel in space. You create a portal in your current space and then {@action Stride}, creating another portal in the space you end your {@action Stride}. Until the beginning of your next turn, any creature that enters the first portal can immediately transport itself to the exit portal as part of its move action, which adds the {@trait teleportation} trait to its movement.",
+				"You can have only one tesseract tunnel open at a time; creating another causes the first to immediately close. You can use tesseract tunnel while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type."
+			],
+			"amp": {
+				"entries": [
+					"Physical movement is no longer necessary to connect two points in space. When you cast tesseract tunnel, you simply create a tunnel that ends in a square within a range equal to your Speed; you can choose to immediately teleport to the space at the far end of the tunnel. Furthermore, the tunnel can be traversed in both directions, instead of only from entrance to exit. Finally, the spell's duration changes to 1 minute. You can {@action Dismiss} the spell."
+				]
+			}
+		},
+		{
+			"name": "Imaginary Weapon",
+			"source": "DA",
+			"page": 22,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"attack",
+				"cantrip",
+				"evocation",
+				"force",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You create a simple weapon of force. Make a melee spell attack roll against your target's AC. If you hit, you deal your choice of bludgeoning or slashing damage equal to {@dice 1d8} plus your spellcasting ability modifier. On a critical success, you deal double damage and can choose to detonate your weapon to push the target 10 feet away from you."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 1d8}."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"You form multiple force weapons to lash out at multiple foes. You make two imaginary weapon Strikes, each against a different target. Your multiple attack penalty doesn't increase until you've made both Strikes."
+				],
+				"heightened": {
+					"plusX": {
+						"1": [
+							"The damage increases by {@dice 2d8} instead of {@dice 1d8}."
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Astral Rain",
+			"source": "DA",
+			"page": 22,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"evocation",
+				"force",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "one 5-foot cube",
+				"types": [
+					"Misc."
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"entries": [
+				"You fling a mass of furious thoughts into the air, where they expand into numerous blades or other shapes that rain down. Any creature that's in the area or enters the area before the start of your next turn takes your choice of bludgeoning or piercing damage equal to {@dice 2d4} plus your spellcasting ability modifier, with a basic Reflex saving throw."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 1d4}."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"The area changes to a 5-foot burst, and you can Sustain the Spell up to 1 minute. The first time each round that you Sustain the Spell, you can move the burst up to 20 feet."
+				]
+			}
+		},
+		{
+			"name": "Hologram Cage",
+			"source": "DA",
+			"page": 22,
+			"type": "Cantrip",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"illusion",
+				"light",
+				"psychic"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "1 cube 20 feet on each side",
+				"types": [
+					"Misc."
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You weave light into a cube of vivid and fantastic patterns. The walls shed bright light for 10 feet (and dim light for the next 20 feet) and completely block line of sight; creatures within the cage can't be seen by creatures outside of it, though they can see each other, and creatures outside of it can't see into it. You can {@action Dismiss} the spell, and if you Cast the Spell again, your previous hologram cage ends."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"The range of the spell increases to 80 feet, and you can expand the cube to be 25 feet on each side."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"Force walls make the cage's barrier physical as well as visual. Each 10-foot-by-10-foot section of the cage's wall has AC 10, Hardness equal to double the spell's level, and HP equal to quadruple the spell's level. The spell is disrupted if any of its walls would pass through a creature when you cast it."
+				]
+			}
+		},
+		{
+			"name": "Forbidden Thought",
+			"source": "DA",
+			"page": 21,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"enchantment",
+				"mental",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You place a psychic lock in a foe's mind that prevents it from a specific action. Choose \"{@action Strike},\" \"{@action Stride},\" \"{@action Cast a Spell},\" or a specific action you know the creature to have (such as \"Breath Weapon\" against a dragon). If the creature attempts that action on its next turn, it must surmount your lock to do so, causing it to take {@damage 1d6} mental damage plus your spellcasting ability modifier (with a basic Will save). The target is then temporarily immune for 1 minute."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 1d6}."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"Your telepathic push is particularly shocking to those who resist it. If the target fails its save, it's also {@condition stunned||stunned 1}."
+				]
+			}
+		},
+		{
+			"name": "Shatter Mind",
+			"source": "DA",
+			"page": 21,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"evocation",
+				"mental",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You telepathically assail the minds of your foes. You deal mental damage equal to {@dice 2d4} plus your spellcasting ability modifier to all enemies in the area, with a basic Will save."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 1d4}."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"You increase the area of the spell to your choice of a 30-foot cone or 60-foot cone, and the damage dice for the spell change to d10s. Creatures that fail are {@condition stupefied||stupefied 1} until the start of your next turn (or {@condition stupefied||stupefied 2} on a critical failure)."
+				]
+			}
+		},
+		{
+			"name": "Contagious Idea",
+			"source": "DA",
+			"page": 21,
+			"type": "Cantrip",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"emotion",
+				"enchantment",
+				"mental",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 or 2 creatures other than yourself (see text) Nothing is so contagious as a thought. You place either a pleasant thought or a terrifying one in a creature's mind. You can then plant the same thought in a second creature's mind.",
+			"entries": [
+				"You can't choose a creature that's already been a target of this casting of contagious idea, nor can you choose yourself. The second target can be beyond the range of the spell, but it must be within 30 feet of the first target.",
+				{
+					"type": "list",
+					"items": [
+						"Pleasant Thought The target is soothed, gaining 5 temporary Hit Points that last for 1 minute.",
+						"Terrifying Thought The target must attempt a Will save."
+					]
+				},
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected and is temporarily immune for 1 minute."
+						],
+						"Success": [
+							"The target is {@condition frightened||frightened 1} and is then temporarily immune for 1 minute."
+						],
+						"Failure": [
+							"The target becomes {@condition frightened||frightened 2}."
+						],
+						"Critical Failure": [
+							"The target becomes {@condition frightened||frightened 3}."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The temporary Hit Points for a pleasant thought increase by 1."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"You can choose to spread the thought from the second target to a third target, in the same manner as spreading it from the first target to the second. A pleasant thought grants twice as many temporary Hit Points (10, plus an additional 2 for each level heightened)."
+				]
+			}
+		},
+		{
+			"name": "Thermal Stasis",
+			"source": "DA",
+			"page": 20,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"cantrip",
+				"psychic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the start of your next turn"
+			},
+			"entries": [
+				"The same abilities that let you raise or lower thermal energy also let you keep it at a safe medium. The target gains resistance 2 against fire damage and resistance 2 against cold damage."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Each resistance increases by 2."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"The spell's duration becomes 1 minute."
+				]
+			}
+		},
+		{
+			"name": "Entropic Wheel",
+			"source": "DA",
+			"page": 20,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"cold",
+				"evocation",
+				"fire",
+				"psychic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"trigger": "You deal cold or fire damage to an enemy.",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You stockpile thermal energy in a magical wheel-like construct that lets you burn opponents with cold or freeze their bodies with heat. When you Cast the Spell, the wheel has one mote of thermal energy, and when you use a {@trait cold} or {@trait fire} effect or deal cold or fire damage, the wheel spins, siphoning off a bit of energy and gaining another mote. The wheel can't gain motes more than once on a given turn, and the maximum number of motes is equal to entropic wheel's level.",
+				"When you {@action Cast a Spell} that deals fire damage, the target also takes cold damage equal to the number of motes in the entropic wheel. When you {@action Cast a Spell} that deals cold damage, the target also takes fire damage equal to the number of motes in the entropic wheel. This applies only to the initial damage of the spell, not to any {@condition persistent damage} or ongoing effects."
+			],
+			"amp": {
+				"entries": [
+					"You gain two motes instead of one when you Cast the Spell and each time the wheel gains another mote."
+				]
+			}
+		},
+		{
+			"name": "Redistribute Potential",
+			"source": "DA",
+			"page": 20,
+			"type": "Cantrip",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"cold",
+				"evocation",
+				"fire",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "2 adjacent 5-foot squares",
+				"types": [
+					"Misc."
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				],
+				"basic": true
+			},
+			"entries": [
+				"Energy attempts to balance out, but with your magic, you can shunt all the energy in one area to another. Creatures in either area take {@dice 4d4} damage with a basic Fortitude save. Choose one of the squares to steal heat, dealing cold damage, and the other to concentrate the stolen heat, dealing fire damage. A creature that fails its save also becomes {@condition clumsy||clumsy 1} from numbness if it's in the area of stolen heat or {@condition enfeebled||enfeebled 1} from heat stroke if it's in the area of concentrated heat; these conditions last until the start of your next turn. If a creature is large enough to be in both squares, you choose only one of the areas for it to attempt its save against; it's unaffected by the other area."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 1d4}."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"You can affect the flow of energy on a much grander scale. Instead of two 5-foot squares, you create two 10-foot bursts. They still must be adjacent to one another and can overlap. A creature in both areas can still be affected by only one of your choice. The spell's damage increases to {@dice 6d6}. The conditions last for 1 minute."
+				],
+				"heightened": {
+					"plusX": {
+						"1": [
+							"Increase the damage by {@dice 2d6} instead of {@dice 1d4}."
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Glimpse Weakness",
+			"source": "DA",
+			"page": 18,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"divination",
+				"psychic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You glimpse a loose scale, a seam in a foe's armor, or a similar weakness, aiding your allies in landing a precise hit. The first ally that hits the target with a successful {@action Strike} deals additional precision damage equal to 1 + this spell's level, and then the spell ends."
+			],
+			"amp": {
+				"entries": [
+					"The additional precision damage is {@dice 1d4+1}."
+				],
+				"heightened": {
+					"plusX": {
+						"2": [
+							"The additional precision damage increases by {@dice 1d4+1}."
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Omnidirectional Scan",
+			"source": "DA",
+			"page": 18,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"divination",
+				"psychic",
+				"scrying"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"area": {
+				"entry": "30-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"targets": "1 ally and 1 enemy",
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the start of your next turn"
+			},
+			"entries": [
+				"You quickly view your surroundings from a variety of angles, your senses constructing an overall mental picture. You can choose to {@action Seek} the entire emanation of the spell. Regardless of whether you {@action Seek}, target one ally and one enemy in the area; if a target is {@condition concealed} or {@condition hidden} from you, you automatically succeed at the flat check to target it with this spell. You prepare to {@action Aid} the target ally on an attack roll against the target enemy. If you take this {@action Aid} reaction, you use your spell attack modifier and proficiency rank on your check to {@action Aid}.",
+				"If you critically fail the roll to {@action Aid}, you get a failure instead."
+			],
+			"amp": {
+				"entries": [
+					"Your scans are so minute that you can project your foe's likely strengths and weaknesses. You learn which of the target enemy's saving throws is highest and which is lowest, and you and all allies within 30 feet gain a +1 circumstance bonus to attacks and damage against the creature.",
+					"If you take the {@action Aid} reaction you prepared for and succeed at your roll, these bonuses increase to +2 on the attack you're Aiding. On a critical success, they increase to +3, or to +4 if you have legendary proficiency in spell attack rolls."
+				]
+			}
+		},
+		{
+			"name": "Foresee the Path",
+			"source": "DA",
+			"page": 18,
+			"type": "Cantrip",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"divination",
+				"psychic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 ally and 1 enemy",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You see just a split second into the future and glean how an enemy will move, making it easier for your allies to strike it mid-action. Make a {@skill Perception} check against the target enemy's Will DC or {@skill Deception} DC, whichever is higher. The GM may judge a different DC is more appropriate if it's higher; for instance, using the {@skill Lore||Warfare Lore} DC of a military captain. The target is then temporarily immune for 1 minute.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target ally gains a reaction that lets it make a melee {@action Strike} against the target enemy, triggered if the enemy leaves a square within the ally's reach. If the ally already has an ability that lets it make melee Strikes as a reaction, such as {@action Attack of Opportunity}, the ally can forgo gaining the temporary reaction to instead gain a +2 status bonus to melee Strikes it makes as reactions."
+						],
+						"Success": [
+							"As critical success, but the status bonus an ally gets if it forgoes the reaction is +1."
+						],
+						"Failure": [
+							"The spell has no effect."
+						]
+					}
+				}
+			],
+			"amp": {
+				"entries": [
+					"The spell has the same result on a failure as on a success (but still no effect on a critical failure). Each time you Sustain the Spell, you can choose an additional ally to target, granting them the same benefit as the initial target ally."
+				]
+			}
+		},
+		{
 			"name": "Telekinetic Rend",
 			"source": "DA",
 			"page": 17,
@@ -34,6 +801,7 @@
 			},
 			"savingThrow": {
 				"type": [
+					"F",
 					"F"
 				],
 				"basic": true
@@ -44,21 +812,139 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The damage increases by {@damage 1d6}."
+						"The damage increases by {@dice 1d6}."
 					]
 				}
 			},
 			"amp": {
 				"entries": [
-					"Your thoughts expand in scope and power. The bursts deal {@damage 1d6} bludgeoning damage and {@damage 1d6} slashing damage, instead of the usual damage. A creature that critically fails its save is also {@condition stunned 1}."
+					"Your thoughts expand in scope and power. The bursts deal {@damage 1d6} bludgeoning damage and {@damage 1d6} slashing damage, instead of the usual damage. A creature that critically fails its save is also {@condition stunned||stunned 1}."
 				],
 				"heightened": {
 					"plusX": {
 						"2": [
-							"Both types of damage increase by {@damage 1d6} instead of just one. Add a third non-overlapping 5-foot burst to the area."
+							"Both types of damage increase by {@dice 1d6} instead of just one. Add a third non-overlapping 5-foot burst to the area."
 						]
 					}
 				}
+			}
+		},
+		{
+			"name": "Vector Screen",
+			"source": "DA",
+			"page": 17,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"cantrip",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "one 5-foot square",
+				"types": [
+					"Misc."
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the start of your next turn"
+			},
+			"entries": [
+				"You set up a transparent, rippling screen of telekinetic energy that seizes small, fast-moving projectiles. Creatures can pass through the screen, but ammunition from physical ranged attacks\u2014such as arrows, bolts, sling bullets, and other objects of similar size\u2014is automatically trapped in the screen, clattering to the ground once the spell ends. Attacks with bigger ranged weapons, such as javelins, take a \u20132 circumstance penalty to their attack rolls if their paths pass through the screen. Massive ranged weapons and spell effects that don't create physical objects pass through the screen with no penalty."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"The screen is 10 feet wide."
+					],
+					"6": [
+						"The screen is 10 feet wide and can interfere even with massless attacks, like magical blasts or gouts of flame. The screen imposes a \u20132 circumstance penalty to the attack rolls of spell effects even if they don't create physical objects. It also protects against area effects that pass through the screen, granting standard cover to creatures on the opposite side of the screen from the center or origin point of an area."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"Your screen persists for longer, and you can detonate it in an explosive counterattack. The duration of the spell increases to 1 minute. You can {@action Dismiss} the spell. If there are any projectiles trapped in the screen, you can cast {@spell telekinetic projectile} to fire them at one creature as part of Dismissing the spell. Measure the range for the telekinetic projectile from where the vector screen was, instead of from you."
+				]
+			}
+		},
+		{
+			"name": "Dancing Blade",
+			"source": "DA",
+			"page": 17,
+			"type": "Cantrip",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"evocation",
+				"psychic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You telekinetically animate a weapon that's unattended or on your person. It brandishes itself at a foe of your choice as if wielded by an {@condition invisible} duelist. When you first Cast the Spell, the weapon automatically flies to the target and Strikes. It moves along with its target, always remaining within reach.",
+				"Each time you Sustain the Spell, the weapon either Changes Partners or Strikes. The weapon's attacks use and contribute to your multiple attack penalty.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Change Partners} Change the weapon's target to a different creature within 30 feet. The weapon flies to its new target.",
+						"{@b Strike} ({@trait attack}) The weapon attacks its target using your spell attack roll. On a hit, the weapon deals damage equal to {@dice 2d6} plus your spellcasting ability modifier, of a type determined by the weapon (if the weapon has the {@trait versatile} trait or can otherwise deal multiple types of damage, you choose each time you attack)."
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage increases by {@dice 1d6}."
+					]
+				}
+			},
+			"amp": {
+				"entries": [
+					"The weapon's attacks increase in strength, and your control is fine enough for advanced technique. The damage dice for the weapon's {@action Strike} change from d6s to d10s. When you Cast or Sustain the spell, you can choose from the following options in addition to the standard ones.",
+					{
+						"type": "list",
+						"items": [
+							"{@b Guard} Rather than attacking, the weapon grants a +2 circumstance bonus to AC against melee attacks to the creature it's following. The bonus lasts until the start of your next turn or until the weapon Changes Partners, whichever comes first.",
+							"{@b Push} ({@trait attack}) The weapon attempts to Push its target, using your spell attack roll instead of an {@skill Athletics} check to determine the results of the Push."
+						]
+					}
+				]
 			}
 		}
 	]
