@@ -1493,6 +1493,419 @@
 			"entries": [
 				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
 			]
+		},{
+			"name": "Alter Ego Dedication",
+			"source": "DA",
+			"page": 126,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in {@skill Deception} and {@skill Stealth}",
+			"entries": [
+				"You make yourself into a living mirror, becoming a double of someone unremarkable, and you slip into exactly the role that can get you past security or into a sensitive facility. You become an expert in {@skill Deception}. You gain the Assume a Role activity.",
+				{
+					"name": "Assume a Role",
+					"traits": [
+						"concentrate"
+					],
+					"requirements": "You've spent at least 1 hour studying a creature whose role you intend to copy and have done so within the last 3 days. This could include meeting and learning from someone in that role, tailing and spying on someone, using magic to observe them at work, or some other method, as long as you have a visual source of information",
+					"entries": [
+						"You quickly and accurately learn how to do mundane jobs or at least copy the movements enough to appear as if you do. A chosen role can take many forms\u2014from cook, cleaner, or librarian to cult member, priest, or duke\u2014but it's always a role and never a specific individual.",
+						"You perform the {@action Impersonate} activity to pass as a member of the role you {@condition observed} and gain a +1 circumstance bonus to any {@skill Deception} checks you attempt in your impersonation. This takes the normal amount of time it takes you to {@action Impersonate}. You also choose one {@skill Lore} skill relevant to that role (such as {@skill Lore||Farming Lore} for a farmer). While in your role, you gain a +1 circumstance bonus to checks for that {@skill Lore} skill, and if you're untrained in it, you can use your level as your proficiency bonus.",
+						"You stop assuming the role after 24 hours, if you start studying for a new role, or if you choose to."
+					],
+					"type": "ability"
+				}
+			],
+			"special": [
+				"You can't select another dedication feat until you've gained two other feats from the alter ego archetype."
+			]
+		},
+		{
+			"name": "Change of Face",
+			"source": "DA",
+			"page": 126,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"level": 4,
+			"traits": [
+				"archetype",
+				"skill"
+			],
+			"prerequisites": "{@feat Alter Ego Dedication|DA}",
+			"entries": [
+				"You know that for the best disguise to work, one requires not only the right skills but also the right look\u2014luckily you can copy both using special magical techniques. When you {@action Impersonate}, you don't need a disguise kit; instead, simple illusions or temporary transmutations ripple over your body like mirror shards, providing the supplies that the kit ordinarily would. When you {@action Impersonate} in this way, your {@action Impersonate} activity gains the {@trait occult} trait."
+			]
+		},
+		{
+			"name": "Fake It Till You Make It",
+			"source": "DA",
+			"page": 127,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Alter Ego Dedication|DA}",
+			"entries": [
+				"When you take on a role, you become more capable with all sorts of tasks involving that role. When you Assume a Role, choose two skills associated with the role in some way; if you're untrained, you can use your level as your proficiency bonus for those skills, and you gain a +1 circumstance bonus to skill checks with those skills as long as you remain in that role. You and the GM determine which skills you assume."
+			]
+		},
+		{
+			"name": "In Plain Sight",
+			"source": "DA",
+			"page": 127,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"level": 4,
+			"traits": [
+				"archetype",
+				"skill"
+			],
+			"prerequisites": "{@feat Alter Ego Dedication|DA}",
+			"entries": [
+				"People often only see what they want to see, a weakness you know how to take full advantage of. While you've Assumed a Role, you can use {@skill Deception} in place of {@skill Stealth} when using the {@action Avoid Notice} exploration activity in an area where someone with your role wouldn't be unusual, such as when impersonating a sailor or fisher when infiltrating the docks."
+			]
+		},
+		{
+			"name": "Sound Mirror",
+			"source": "DA",
+			"page": 127,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Alter Ego Dedication|DA}",
+			"entries": [
+				"You twist not just the visual, but the auditory as well, allowing you to pass without a sound and create minor noises as distractions\u2014perfect for misdirection and infiltration. You can cast {@spell silence} on yourself as a 2nd-level innate occult spell and {@spell ventriloquism} as a 1st-level innate occult spell, both once per day. You also can cast {@spell ghost sound} as an innate occult cantrip. You become trained in occult spell attack rolls and spell DCs, and your key spellcasting ability is Charisma."
+			]
+		},
+		{
+			"name": "Muscle Mimicry",
+			"source": "DA",
+			"page": 127,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 7,
+			"traits": [
+				"archetype",
+				"concentrate",
+				"skill"
+			],
+			"prerequisites": "{@feat Alter Ego Dedication|DA}; trained in {@skill Athletics}, master in {@skill Deception}",
+			"trigger": "An enemy makes a successful {@action Disarm}, {@action Escape},",
+			"entries": [
+				"{@action Grapple}, {@action Shove}, or {@action Trip} attempt.",
+				"Your study of another allows you to mirror their movements subtly, even in the heat of combat. You study the successful maneuver of an enemy and instinctively learn to do it. The next time you take the same action they did, you gain a +1 circumstance bonus to your {@skill Athletics} check, or a +2 circumstance bonus if the enemy critically succeeded on their triggering action. You lose this benefit if you don't use it before the end of your next turn."
+			]
+		},
+		{
+			"name": "Swap Reflections",
+			"source": "DA",
+			"page": 127,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"archetype",
+				"conjuration",
+				"extradimensional",
+				"incapacitation",
+				"occult",
+				"teleportation"
+			],
+			"prerequisites": "{@feat Alter Ego Dedication|DA}",
+			"frequency": {
+				"freq": 1,
+				"interval": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You've learned how to use even your reflection to your advantage. You send your own reflection to forcibly swap places with the reflection of an enemy, pulling each of you through opposite ends and switching places. The enemy must be within 120 feet, you must both be adjacent to reflective surfaces (such as glass, mirrors, or calm water), and you must be able to see the target's reflection and have line of effect to it. The target attempts a Will save against your spell DC or class DC, whichever is higher.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The spell has no effect."
+						],
+						"Success": [
+							"You swap positions with your target or arrive adjacent to your target, whichever your target prefers."
+						],
+						"Failure": [
+							"You swap positions with your target or arrive adjacent to your target, whichever you prefer."
+						],
+						"Critical Failure": [
+							"You instantaneously swap positions with your target, and the target becomes trapped in its own reflection for 1 minute. Once on each of its turns, the target can spend 1 action to attempt another Will save to escape. If the save succeeds, the effect ends early."
+						]
+					}
+				}
+			]
+		},{
+			"name": "Living Vessel Dedication",
+			"source": "DA",
+			"page": 140,
+			"featType": {
+				"archetype": [
+					"Living Vessel"
+				]
+			},
+			"level": 2,
+			"traits": [
+				"rare",
+				"archetype",
+				"dedication"
+			],
+			"entries": [
+				"Whether willingly or not, you've become a vessel for a being of unimaginable power. You and your GM should work together to determine the being's nature and decide how much you know and how much remains a mystery to you for now. Some decisions might influence your options later.",
+				"You might need to decide whether the entity is a demon, for instance, to know if you qualify for later feats.",
+				"You need to spend at least an hour each day assuaging the entity within you or you take a \u20131 penalty to Will saves for 24 hours. The process of assuaging the entity is determined together between you and the GM. It might be as simple as meditating with the entity to learn more about them, but it might be as extreme as committing gruesome, unspeakable sacrifices to keep their unknowable blessings. After a full week of failing to assuage your entity, you become {@condition doomed||doomed 1}, and you can't remove or ameliorate the condition until you allow your entity to take full possession of your body for 24 hours, during which time it pursues its own agenda.",
+				"You also gain the Entity's Resurgence reaction, allowing you to unleash your entity in lieu of falling {@condition unconscious}, though at the risk of letting it enact its will.",
+				{
+					"name": "Entity's Resurgence",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "You would be reduced to 0 Hit Points but not immediately killed",
+					"entries": [
+						"Instead of letting you fall {@condition unconscious}, your entity takes control.",
+						"You remain at 1 Hit Point and gain temporary Hit Points equal to your level + your key ability modifier that last for 1 minute. However, the entity is in control for 1 minute or until you fall {@condition unconscious}, whichever comes first. While the entity is in control, you gain a +1 status bonus to attack rolls and damage rolls, and the GM usually controls your character, roleplaying the entity. The GM might decide to have you roleplay the entity instead, but they retain final say over any decisions you make.",
+						"No matter the entity's nature, the entity is sure to wreak vengeance upon the foe who jeopardized the life of their vessel\u2014even an evil entity won't change allegiances or ignore danger except in the most extreme circumstances."
+					],
+					"type": "ability"
+				}
+			],
+			"special": [
+				"You can't select another dedication feat until you've gained two other feats from the living vessel archetype."
+			]
+		},
+		{
+			"name": "Entity's Strike",
+			"source": "DA",
+			"page": 140,
+			"featType": {
+				"archetype": [
+					"Living Vessel"
+				]
+			},
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Living Vessel Dedication",
+			"entries": [
+				"The more you try to force your body to stay yours, the more it warps to channel the energy flowing through you.",
+				"Whether you grow horns to match the wild hunt fey within you, develop a claw like that of the treachery demon sharing your soul, or feel a tentacle rip out of you from the outer being that imprinted itself on your psyche, the entity within you refuses to be contained. You gain an unarmed attack of your choice with its type determined by your entity. It deals {@dice 1d6} damage of a damage type appropriate for the unarmed attack (such as bludgeoning for the tentacle). This unarmed attack is in the brawling weapon group and has the agile, {@trait finesse}, and {@trait magical} traits."
+			]
+		},
+		{
+			"name": "Tap Vitality",
+			"source": "DA",
+			"page": 140,
+			"featType": {
+				"archetype": [
+					"Living Vessel"
+				]
+			},
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"archetype",
+				"concentrate",
+				"healing",
+				"necromancy",
+				"positive"
+			],
+			"prerequisites": "Living Vessel Dedication",
+			"frequency": {
+				"freq": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You tap into the entity's life force to heal your wounds, though at the cost of the entity's personality bleeding into your own. You recover a number of Hit Points equal to four times your level. Each time you use Tap Vitality, you begin to bleed more and more of the entity's personality and instincts into your own until the next time you spend an hour or more assuaging the entity, bringing your mind back under your own control."
+			],
+			"special": [
+				"This action has the tradition trait appropriate to your entity, typically divine for a demon, occult for an aberration or outer entity, or primal for a fey."
+			]
+		},
+		{
+			"name": "Exude Abyssal Corruption",
+			"source": "DA",
+			"page": 141,
+			"featType": {
+				"archetype": [
+					"Living Vessel"
+				]
+			},
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"archetype",
+				"manipulate",
+				"poison"
+			],
+			"prerequisites": "Living Vessel Dedication, your entity is a demon",
+			"entries": [
+				"Most of the changes from the demon within you have harmed you so far, but you've found a way to expel some of the corruption within you to poison others. Until the beginning of your next turn, you and your weapons are covered in toxic sludge or another similar manifestation of the demonic corruption; your melee Strikes deal an additional {@damage 1d6} poison damage, and each time a creature hits you with a melee unarmed attack or otherwise touches you, it takes {@damage 1d6} poison damage.",
+				"At 14th level, the poison damage increases to {@dice 2d6}, and at 20th level, the poison damage increases to {@dice 3d6}."
+			]
+		},
+		{
+			"name": "Fey's Trickery",
+			"source": "DA",
+			"page": 141,
+			"featType": {
+				"archetype": [
+					"Living Vessel"
+				]
+			},
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"archetype",
+				"illusion",
+				"primal",
+				"visual"
+			],
+			"prerequisites": "Living Vessel Dedication, your entity is a fey",
+			"frequency": {
+				"freq": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You connect with the fey trickster within yourself to create whimsical illusory duplicates that distract your foes. This has the effects of mirror image."
+			]
+		},
+		{
+			"name": "Warped Constriction",
+			"source": "DA",
+			"page": 141,
+			"featType": {
+				"archetype": [
+					"Living Vessel"
+				]
+			},
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Living Vessel Dedication, your entity is an aberration or outer entity",
+			"requirements": "You have a foe {@condition grabbed} or {@condition restrained}.",
+			"entries": [
+				"The entity inhabiting your body is an aberrant being with unfathomable motivations, and when you hold a foe close, tendrils and tentacles unfurl from your body to crush your foe and pollute it with alien wrongness. Your {@condition grabbed} or {@condition restrained} foe takes bludgeoning damage equal to your level and mental damage equal to your highest mental ability modifier. The creature attempts a basic Will save that applies to both types of damage and uses the higher of your class DC or spell DC."
+			]
+		},
+		{
+			"name": "Vessel's Form",
+			"source": "DA",
+			"page": 141,
+			"featType": {
+				"archetype": [
+					"Living Vessel"
+				]
+			},
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 16,
+			"traits": [
+				"archetype",
+				"concentrate",
+				"polymorph",
+				"transmutation"
+			],
+			"prerequisites": "Living Vessel Dedication",
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"You symbiotically combine your form with that of the entity within you, taking a powerful hybrid form to temporarily boost your abilities in combat while maintaining control. For 1 minute, you gain the following effects.",
+				{
+					"type": "list",
+					"items": [
+						"If you were Medium or smaller, you become Large, and your reach increases to 10 feet.",
+						"You gain a +2 status bonus to attack and damage rolls and a +1 status bonus on saving throws against spells. If you use Entity's Resurgence, the status bonuses to attack and damage rolls increase to +3 during the time that the two effects overlap.",
+						"If you have the Entity's {@action Strike} feat, the unarmed attack you gained from that feat increases its damage die from {@dice 1d6} to {@dice 1d8}.",
+						"You gain 40 temporary Hit Points.",
+						"You gain a fly Speed equal to your Speed."
+					]
+				}
+			],
+			"special": [
+				"This action has the tradition trait appropriate to your entity, typically divine for a demon, occult for an aberration or outer entity, or primal for a fey."
+			]
+		},
+		{
+			"name": "Borrow Memories",
+			"source": "DA",
+			"page": 127,
+			"featType": {
+				"archetype": [
+					"Alter Ego"
+				]
+			},
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"archetype"
+			],
+			"prerequisites": "{@feat Alter Ego Dedication|DA}",
+			"entries": [
+				"Knowing how someone thinks makes it much easier to know where they'll be, or even replace them altogether. You can cast {@spell mind probe} as an innate occult spell once per day, using your class DC or spell DC, whichever is higher.",
+				"If you cast {@spell mind probe} on a target you're studying for the purpose of Assuming their Role, and the target fails their save, you can delay the spell from coming into effect until you Assume their Role. When you use the spell this way, you can Sustain it up to 10 times during its duration, asking a question each time. The spell lasts until you ask all 10 questions or are no longer Assuming the Role, whichever comes first. You don't need to Sustain the Spell to extend its duration\u2014only when asking a question\u2014nor do you need to be in range or have line of effect to Sustain it."
+			]
 		},
 		{
 			"name": "Thaumaturge Dedication",
