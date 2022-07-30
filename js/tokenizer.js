@@ -76,7 +76,7 @@ class TokenizerUtils {
 	}
 	static get cast () {
 		return [
-			{regex: /^Cast(ing)?\s/, type: "CAST", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Cast(ing)?(?=\s|\[)/, type: "CAST", lookbehind: /(\n|[;.)]\s)$/},
 		]
 	}
 	static get cost () {
@@ -91,7 +91,7 @@ class TokenizerUtils {
 	}
 	static get effect () {
 		return [
-			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)\]]\s)$/, lookahead: true},
+			{regex: /^Effects?\s(?![^A-Z\W])/, type: "EFFECT", lookbehind: /(\n|[;.)\]]\s)$/, lookahead: true},
 		]
 	}
 	static get frequency () {
