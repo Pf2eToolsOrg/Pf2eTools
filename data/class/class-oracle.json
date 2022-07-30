@@ -224,6 +224,17 @@
 						"Mystery|Oracle|APG|Tempest|APG|1",
 						"Major Curse|Oracle|APG|Tempest|APG|11"
 					]
+				},
+				{
+					"name": "Time",
+					"type": "Mystery",
+					"shortName": "Time",
+					"source": "DA",
+					"page": 188,
+					"subclassFeatures": [
+						"Mystery|Oracle|APG|Time|DA|1",
+						"Major Curse|Oracle|APG|Time|DA|11"
+					]
 				}
 			],
 			"flavor": [
@@ -1834,6 +1845,101 @@
 					"entries": [
 						"Your minor curse's aura expands to a 15-foot emanation and grows stronger. High winds blowing outward in the aura impede creatures' progress. The aura is {@quickref difficult terrain||3|terrain} for Large and smaller creatures on the ground, and for Huge or smaller flying creatures. You aren't affected by this {@quickref difficult terrain||3|terrain}.",
 						"The electricity arcing through you becomes dangerous. Any creature that touches you, including with a touch spell or a melee unarmed attack, takes {@dice 1d6} electricity damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mystery",
+			"source": "DA",
+			"page": 188,
+			"className": "Oracle",
+			"classSource": "APG",
+			"subclassShortName": "Time",
+			"subclassSource": "DA",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"source": "DA",
+					"page": 188,
+					"name": "Time",
+					"entries": [
+						"Whether by accident, fate, or purposeful meddling, you exist slightly outside of time. While initially unmoored by moments, the countless march of milliseconds builds up to drift you further and further out of sync with your natural timeline, often in contradictory directions. You might view this as a blessing, perhaps as a sign you’re somehow beyond mortality or you can’t be contained within reality’s limitations, or you might view it as a cruel curse that causes your own life to slip by adrift even as you gain power over time. Many oracles of time are without faith and either come to rely upon their own instincts to survive or else turn to strange rituals and forbidden magic in an attempt to break free of time’s grasp. Those oracles who worship deities most often worship Pharasma, goddess of fate who sees all possible futures for all who ever lived, or Alseta, goddess of transitions and the passage through time.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"Time passes more swiftly for you than it does for those around you, enabling you to cover more distance in what others perceive as the same amount of time. You gain a +10-foot status bonus to your Speed. At 6th level, this increases to a +15-foot status bonus; at 10th level, this increases to a +20-foot status bonus; at 14th level, this increases to a +25-foot status bonus; and at 18th level, it increases to a +30-foot status bonus. Your disjointed movement makes it harder for creatures to hit you as you move. You gain a +1 status bonus to AC against attacks made against you from reactions or free actions while you’re moving."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Occultism}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell time sense|DA}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell temporal distortion|DA}; advanced: {@spell time skip|DA}; greater: {@spell manifold lives|DA}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter fate, time|spells||domains=fate; time|level=1}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"source": "DA",
+					"page": 189,
+					"name": "Curse of Turbulent Moments",
+					"entries": [
+						"Time passes differently for you than everyone else. You experience fluxes that might manifest as minor day-to-day changes in your apparent age, such as a gray lock of hair or a disappearing wrinkle, or as occasional ghostly temporal afterimages that slightly trail your movement.",
+						"{@b Minor Curse} As you draw upon your mystery, time’s passage becomes more disjointed, aging, regressing, or warping you out of sync. You become enfeebled 1. In addition, you take a –2 penalty to saving throws against effects that would make you fatigued or slowed.",
+						"{@b Moderate Curse} Time distorts further, increasing your muscular atrophy, age regression, or warping while making effects pass you by at an increased rate. The value of your enfeebled condition increases to 2 and the penalty from your minor curse increases to –3. Your status bonus to AC against attacks made against you from reactions or free actions while you’re moving increases to +2. In addition, spells affecting you last less time; their duration is reduced by half, to a minimum of 1 round. This doesn’t reduce the spell’s duration for other targets affected by the same spell. Finally, all non-permanent conditions affecting you that have a duration measured in rounds, minutes, or hours have their duration reduced by half, to a minimum of 1 round. Any afflictions (such as poisons, diseases, and curses) affecting you have their maximum duration, onset time, and time for each stage reduced by half. Spells, conditions, and afflictions that last “until your next daily preparations” last for 12 hours or until your next daily preparations, whichever comes first. This doesn’t change the duration you’re temporarily immune, the rate at which you can use abilities that have a frequency, or any other features based on the passage of time."
+					]
+				}
+			]
+		},
+		{
+			"name": "Major Curse",
+			"source": "DA",
+			"page": 189,
+			"className": "Oracle",
+			"classSource": "APG",
+			"subclassShortName": "Time",
+			"subclassSource": "DA",
+			"level": 11,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"page": 189,
+					"source": "DA",
+					"name": "Time",
+					"entries": [
+						"You become so out of sync with time that it’s hard for you to act, but when you do act, you do so with incredible speed. You become {@condition slowed 1}, the value of your {@condition enfeebled} condition increases to 3, and the penalty from your minor curse increases to –4. Time passes so much faster for you that your steps appear as a blur of motion to others. You gain a +4 status bonus to initiative rolls. Whenever you move, you’re {@condition concealed} while you’re moving and until the start of your next turn. As normal for concealment where your location is still obvious, you can’t use this concealment to {@action Hide} or {@action Sneak}. Your status bonus to AC against attacks made against you from reactions or free actions while you’re moving increases to +4."
 					]
 				}
 			]

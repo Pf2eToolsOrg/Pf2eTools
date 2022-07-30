@@ -1963,6 +1963,739 @@
 			}
 		},
 		{
+			"name": "Awaken Entropy",
+			"source": "DA",
+			"page": 181,
+			"type": "Spell",
+			"level": 6,
+			"traits": [
+				"necromancy"
+			],
+			"traditions": [
+				"Arcane",
+				"Divine",
+				"Occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "10-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				],
+				"basic": true
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"All things age, all things die, and at the end of days even the universe will grow quiet and still. You awaken the cosmic principle of entropy, accelerating time in an area\u2014flesh falters, plants shrivel, and even stone begins to crumble.",
+				"Any creature that enters or begins its turn in the area must succeed at a basic Fortitude save or take {@damage 8d6} negative damage, or {@damage 8d6} force damage if the creature normally doesn't take negative damage, such as if the creature is a construct or undead. Even beings such as fiends with unlimited lifespans can be worn away by entropy.",
+				"The first time you Sustain the Spell on each subsequent turn, the entropic zone grows stronger in addition to having its duration increased. The radius of the burst increases by 10 feet (to a maximum of 40 feet), and the size of the damage dice increases by one step (from d6 to d8, then to d10, and finally to d12)."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Behold the Weave",
+			"source": "DA",
+			"page": 181,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"divination",
+				"incapacitation",
+				"prediction"
+			],
+			"traditions": [
+				"Divine",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You behold the many timelines that weave around a creature, and in so doing, you make one more likely to occur. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"You can make neither heads nor tails of the target's timeline, and the target is unaffected."
+						],
+						"Success": [
+							"The target must commit to a single action that it will take at some point during its next turn: \"{@action Stride} toward Valeros,\" \"Cast {@spell shield},\" \"{@action Strike} at Amiri with my jaws. \" That action is now locked in, and the creature must attempt it, even if the situation has changed\u2014if the creature stated that it would {@action Strike} at Amiri with its jaws, it must try to do so. If the creature is entirely unable to fulfill the action it committed to\u2014for instance, if it had only 1 action left and Amiri was out of the range of its jaws {@action Strike}\u2014it loses the last action of its turn as it reels in a temporal paradox. The creature can choose to lock in a 2- or 3-action activity if it prefers to do so, but if it does, it loses all the associated actions if it can't perform the activity on its turn. If the situation changes oddly (perhaps the creature is forcibly teleported away and has no idea which direction is \"toward Valeros\" any longer), the GM determines what happens."
+						],
+						"Failure": [
+							"As success, but the creature must commit at least two of its actions for the next turn\u2014\"I will {@action Stride} toward Valeros and then {@action Strike} with my claws. \" All of these actions are similarly locked in and can't be changed, but the creature can take them in any order."
+						],
+						"Critical Failure": [
+							"As failure, but the creature must commit all of its actions for the next turn."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"Instead of affecting a single target, the spell affects all enemies within a 30-foot emanation."
+					]
+				}
+			}
+		},
+		{
+			"name": "Loose Time's Arrow",
+			"source": "DA",
+			"page": 182,
+			"type": "Spell",
+			"level": 2,
+			"traits": [
+				"transmutation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult",
+				"Primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "up to 6 creatures",
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the end of your next turn"
+			},
+			"entries": [
+				"You pluck the time stream like a bow\u2014pull one string back, release, and watch a creature fly. All affected targets are {@condition quickened}. They can use the extra action only to {@action Step} or {@action Stride}."
+			]
+		},
+		{
+			"name": "Morass of Ages",
+			"source": "DA",
+			"page": 182,
+			"type": "Spell",
+			"level": 4,
+			"traits": [
+				"aura",
+				"transmutation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "5-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You surround yourself in temporal eddies that draw out time for those around you, making every step feel like an eternity endured. A creature in the emanation, or that later enters the emanation, must attempt a Fortitude save. The creature makes this save only once and uses the same effect for the duration of the spell. Each time you Sustain the Spell, you can choose to increase the emanation's radius by 5 feet, to a maximum of 60 feet.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"Squares in the emanation are difficult terrain for the creature."
+						],
+						"Failure": [
+							"Squares in the emanation are difficult terrain for the creature, and the creature is {@condition slowed||slowed 1} when it starts its turn in the emanation."
+						],
+						"Critical Failure": [
+							"As failure, plus the creature also becomes {@condition restrained}. The creature can attempt to {@action Escape} against your spell DC to remove the {@condition restrained} condition."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Quicken Time",
+			"source": "DA",
+			"page": 182,
+			"type": "Spell",
+			"level": 5,
+			"traits": [
+				"transmutation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You speed up the time stream in an area, stretching and pulling it until time flows swift and wild. Any creature that begins its turn in the area is {@condition quickened} and can use the extra action each round to {@action Stride} or {@action Strike}. Unfortunately, speeding up time is much more difficult than slowing it down, and the effect is uneven and jittery, making accuracy between times painfully difficult; creatures inside the area are {@condition concealed} to those outside it, and vice versa."
+			]
+		},
+		{
+			"name": "Stagnate Time",
+			"source": "DA",
+			"page": 182,
+			"type": "Spell",
+			"level": 5,
+			"traits": [
+				"transmutation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You examine the time stream in a particular area, then proceed to stick a few metaphorical pins into it, thickening and slowing down the flow of time until it rumbles along like a river of molasses. Any creature that begins its turn in the area must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is {@condition slowed||slowed 1} this turn."
+						],
+						"Critical Failure": [
+							"The creature is {@condition slowed||slowed 2} this turn."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Summon Irii",
+			"source": "DA",
+			"page": 182,
+			"type": "Spell",
+			"level": 8,
+			"traits": [
+				"rare",
+				"conjuration",
+				"incarnate"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the end of your next turn"
+			},
+			"entries": [
+				"You cast your spell, whisper your words of power, and find that an irii is already here\u2014indeed, they have always been here, and always were, and always will be. The temporal being occupies the space of a Medium creature and has a Speed of 60 feet and a fly Speed of 60 feet. When you Cast this Spell, choose whether it summons a fate irii or a fortune irii.",
+				{
+					"type": "list",
+					"items": [
+						"Fate The fate stands before you with its stained-glass wings and animal-headed gaze, floating eyes circling about it; Arrive (divination, fortune, lawful, prediction) Decree the Immutability of Time While within 30 feet of the fate, you and your allies who roll below 10 on a d20 for an attack roll, {@skill Perception} check, saving throw, or skill check get a 10 instead; Depart (divination, misfortune, prediction) Observe the Inevitability of Destiny Each enemy within a 30-foot emanation must attempt a Will save. If a creature fails its save, until the end of its next turn, any time it rolls above 10 on a d20 for an attack roll, {@skill Perception} check, saving throw, or skill check, it gets a 10 instead.",
+						"Fortune The fortune stands before you with its golden horns and moth-scale wings, a sly smirk on its elfin face; Arrive (chaotic, divination, fortune, prediction) Decree the Chaos of Infinity While within 30 feet of the fortune, you and your allies roll twice and take the higher roll on all damage rolls, {@skill Perception} checks, and saving throws; Depart (divination, misfortune, prediction) Sunder Eternity's Authority Each enemy within a 30-foot emanation must attempt a Will save. A creature that fails its save must roll twice and take the lower result on all damage rolls, {@skill Perception} checks, and saving throws until the end of its next turn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Suspended Retribution",
+			"source": "DA",
+			"page": 183,
+			"type": "Spell",
+			"level": 6,
+			"traits": [
+				"curse",
+				"divination",
+				"mental",
+				"prediction"
+			],
+			"traditions": [
+				"Divine",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"All life dances one step from the precipice, one heartbeat from disaster. You open your eyes wide and see doom waiting in the wings, then invite it to step forward. A spectral omen of disaster appears above the target's head\u2014 traditionally, this is a downward-pointing sword, but some spellcasters report seeing a hangman's noose or a grinning skull instead. When you Cast this Spell, pick one of the following triggers.",
+				{
+					"type": "list",
+					"items": [
+						"The target moves more than its Speed in a single round.",
+						"The target makes more than one {@action Strike} in a single round.",
+						"The target Casts a Spell.",
+						"The target uses a specific skill you name.",
+						"The target uses a specific ability you name. If the target takes the triggering action, the portent of doom activates\u2014the sword strikes down, the noose loops around the target's neck, the skull bares its fangs\u2014and the target takes 70 mental damage with a basic Reflex save. The target instinctively knows which action will trigger the omen and can ward off the omen by spending a total of 3 actions, which have the {@trait concentrate} trait, to pray, make signs against doom, or similar apotropaic actions. These actions need not be consecutive. After the creature spends the actions, the spell ends."
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by 10."
+					]
+				}
+			}
+		},
+		{
+			"name": "Temporal Twin",
+			"source": "DA",
+			"page": 183,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"conjuration"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "one willing ally",
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the end of your next turn"
+			},
+			"entries": [
+				"You pull a fleeting duplicate of your ally from the recent past.",
+				"The duplicate appears in an unoccupied space of your choice within 30 feet of you and repeats a basic single action the target took since the end of your last turn, such as making a {@action Strike} or Interacting to pull a lever. Because the other basic single actions don't produce much of a result on their own, this is typically used for {@action Strike} and {@action Interact}, though occasionally it could be useful to have a temporal twin {@action Stride} through a potentially dangerous area to expose a hazard.",
+				"The target ally spends a reaction to create the duplicate, makes any decisions, and rolls for the repeated action, such as choosing a target for a {@action Strike} and making the attack roll.",
+				"If the ally doesn't have a reaction to spend, temporal twin fails. Use the duplicate's location for determining flanking, cover, and the like. Using this spell requires remembering what your ally did, and if you don't remember the details, the GM might not allow you to cast temporal twin. This action can't be used for anything but a basic single action (Core Rulebook 469), nor can it use limited resources. The action can have a different target than the original action but must be very similar in form. For example, if the original action were to {@action Interact} to pull a lever, the time duplicate could pull a different lever, but couldn't turn a doorknob or pick up an item from a table.",
+				"Being pulled through time to create a twin destabilizes the target's timeline. Once an ally has been the target of temporal twin, they're temporarily immune for 1 day."
+			]
+		},
+		{
+			"name": "Time Pocket",
+			"source": "DA",
+			"page": 183,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"transmutation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "one item of 1 Bulk or less that a willing creature is holding",
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the next time you make your daily preparations"
+			},
+			"entries": [
+				"You fling the target item forward in time and link it to the future of the creature holding it. The item disappears. When the spell ends, the item reappears with the creature that was holding it when you Cast the Spell. If the creature has enough hands free to hold the item, it appears in their hands.",
+				"Otherwise, it falls to the ground in the creature's space. You can {@action Dismiss} the spell, and it automatically ends if you're reduced to 0 Hit Points or cast time pocket again."
+			]
+		},{
+			"name": "Temporal Distortion",
+			"source": "DA",
+			"page": 189,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cursebound",
+				"oracle",
+				"transmutation"
+			],
+			"subclass": {
+				"Oracle|Mystery": [
+					"Time"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You share some of your own temporal distortions with a foe, altering their mind and body unpredictably as they're thrown backward or forward in time. Roll {@dice 1d4}. On a 1, the foe becomes {@condition clumsy}; on a 2, it becomes {@condition enfeebled}; on a 3, it becomes {@condition stupefied}; and on a 4, you choose which condition applies.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is either {@condition clumsy||clumsy 1}, {@condition enfeebled||enfeebled 1}, or {@condition stupefied||stupefied 1} for 4 rounds, depending on the result of the d4."
+						],
+						"Critical Failure": [
+							"As failure, but the time warp is stronger, increasing the condition's effects but making it run its course faster. The condition's value is 3, and the condition lasts for 2 rounds."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Time Skip",
+			"source": "DA",
+			"page": 189,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cursebound",
+				"oracle",
+				"transmutation"
+			],
+			"subclass": {
+				"Oracle|Mystery": [
+					"Time"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing creature other than yourself",
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You manipulate time around your ally, pushing them forward a few moments in time. The target is {@condition quickened} on its next turn and can use the action only to {@action Step}, {@action Stride}, or {@action Strike}."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"You can one additional willing creature other than yourself within range."
+					]
+				}
+			}
+		},
+		{
+			"name": "Manifold Lives",
+			"source": "DA",
+			"page": 189,
+			"type": "Focus",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"cursebound",
+				"divination",
+				"emotion",
+				"mental",
+				"oracle"
+			],
+			"subclass": {
+				"Oracle|Mystery": [
+					"Time"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You cast a creature's mind back through time, forcing them to take other paths and make other choices, experiencing countless alternate lives in an instant. The creature becomes overwhelmed with regret over paths untraveled, lives unlived, and times unrealized. The creature takes {@damage 6d6} mental damage and must attempt a Will save. After the effect is resolved, the target is then temporarily immune for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage and is {@condition stupefied||stupefied 2} for 1 round."
+						],
+						"Failure": [
+							"The creature takes full damage and is {@condition stupefied||stupefied 2} for 1 minute. While affected, the creature must attempt another save at the start of its turn; on a failure, it's {@condition slowed||slowed 1} for that turn as it sobs uncontrollably."
+						],
+						"Critical Failure": [
+							"The creature takes double damage and for 1 minute, it's {@condition stupefied||stupefied 4} and {@condition slowed||slowed 1} as it sobs uncontrollably."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The mental damage increases by {@dice 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Path of Least Resistance",
+			"source": "DA",
+			"page": 185,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"divination"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"entries": [
+				"You trace several possible routes, quickly resetting the timeline until you find the safest one. Choose three spaces you could reach with two {@action Stride} actions. Each must be at least 20 feet from the other two. You {@action Stride} twice to one of the spaces, determined randomly by the GM from among the paths you chose. If some of the paths contain a {@condition hidden} danger, such as a trap that you would trigger by walking into the trap's affected area, the GM doesn't consider this path when randomly determining which one you take, but if all options have a {@condition hidden} danger, the GM randomly chooses between all three paths. This movement doesn't trigger reactions."
+			]
+		},
+		{
+			"name": "Time Sense",
+			"source": "DA",
+			"page": 183,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"divination"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"entries": [
+				"When you Cast the Spell, you gain a perfect sense of time. You can learn exactly what time it is, down to the second. You can instead choose to gain a perfect sense of the calendar if you have knowledge in that area\u2014if you're trained in {@skill Nature}, you can learn exactly how long it is until sunrise and how many days until the next solstice. If you're trained in {@skill Lore||Astronomy Lore}, you can learn precisely when any known predictable astronomical conjunction will begin and end, and so on.",
+				"You can gain a +1 status bonus to one attack roll, {@skill Perception} check, saving throw, or skill check you take on the same turn you cast time sense that requires extremely precise timing. If you choose to gain this bonus, you can't gain it again for 1 hour."
+			]
+		},
+		{
 			"name": "Euphoric Renewal",
 			"source": "DA",
 			"page": 142,
@@ -2170,7 +2903,7 @@
 							"The target is unaffected."
 						],
 						"Success": [
-							"The target becomes {@condition invisible}, but only to its allies. Any creature not allied with the target can see it normally. Effects such as see invisibility enable an ally to see the target. The target's allies still know the target is present and can still see all the effects of the target's actions."
+							"The target becomes {@condition invisible}, but only to its allies. Any creature not allied with the target can see it normally. Effects such as {@spell see invisibility} enable an ally to see the target. The target's allies still know the target is present and can still see all the effects of the target's actions."
 						],
 						"Failure": [
 							"As success, except the target also becomes inaudible to its allies and imperceptible to them through any other senses."
