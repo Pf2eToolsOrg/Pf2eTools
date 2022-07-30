@@ -168,6 +168,558 @@
 				}
 			],
 			"trigger": "varies, see entry"
+		},{
+			"name": "Book of Lost Days",
+			"source": "DA",
+			"page": 160,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"unique",
+				"cursed",
+				"enchantment",
+				"magical"
+			],
+			"usage": "held in 2 hands",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This massive tome's yellowed pages curl at the edges, and the letters on its face and spine are too worn to be read. When you open the book, it always opens to a page that seems to perfectly answer the question you had in mind, but reading more than a few lines causes your head to swim alarmingly.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"requirements": "You aren't {@condition drained}",
+					"entries": [
+						"You open the book while trying to learn information about any topic.",
+						"The Book of Lost Days permits you to view another's memory, which contains information about that subject commensurate to rolling a total of 40 to {@action Recall Knowledge} about the topic, with additional context provided on a success or critical success.",
+						"The price for this knowledge is the memory of a day in your past, and the vitality of a day in your future. You lose the memory of that day completely, and the total of all the knowledge you learned on that date is added to the book's repository of information. The book, not you, chooses which memories are taken, preferring days with concentrated emotional resonance, and thus tends to steal significant life moments. This loss affects only your memories; it has no effect on your level, class, feats, or other character choices.",
+						"Your natural lifespan is also shortened by 1 day. The loss of this life energy causes you to be {@condition drained||drained 2}. You can't reduce the {@condition drained} condition for 2 days, after which you can recover normally from the condition.",
+						"Creatures have occasionally managed to use the Book of Lost Days not to gain others' knowledge but to wipe their minds clean of painful memories or deadly secrets. Their memories aren't destroyed but merely stored in the book, where someone else might later retrieve them."
+					]
+				}
+			]
+		},
+		{
+			"name": "Calamity Glass",
+			"source": "DA",
+			"page": 160,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"cursed",
+				"divination",
+				"magical",
+				"scrying"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This mirror appears to give warnings about the future, but subtle and malevolent hands designed the silver-framed glass to lure heroes into bringing doom upon those they hope to save.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "week"
+					},
+					"entries": [
+						"You activate the calamity glass and obtain a vision related to a likely action or event within the next 48 hours. The calamity glass decides what vision to show, though if you think about a specific event, the vision is typically at least tangentially related.",
+						"No matter what, the mirror shows only tragedies. The mirror's visions are accurate but misleading, as they depict tragedies that could be averted but in so doing might lead to greater suffering.",
+						"For example, a calamity glass might show a family starving as the result of harbor officials turning away a boatload of improperly documented grain. Without intervention, this future will come to pass.",
+						"What the mirror didn't show is the grain was improperly labeled and carelessly stored, resulting in its contamination with poisonous mold capable of killing hundreds. Purifying and then distributing the grain would avert both the calamity glass's vision and the greater suffering its curse attempted to create."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gift of the Poisoned Heart",
+			"source": "DA",
+			"page": 160,
+			"type": "Item",
+			"level": 16,
+			"traits": [
+				"rare",
+				"consumable",
+				"cursed",
+				"evil",
+				"magical",
+				"necromancy"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "\u2013",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "minute"
+				},
+				"components": [
+					"command",
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Those who fail to see the curse view this object as a priceless gift, capable of restoring life to the deceased, but deep in the heart of this diamond lies a single flaw: a fissured occlusion of sickly, tainted red. To activate the diamond, place it on the relatively intact body of a creature that died within the past year. The stone shatters, restoring the recipient to life with the effects of a successful resurrect ritual, except there is no limit to the level of the creature that may be revived.",
+				"This gift of life comes with a terrible cost: the recipient believes you\u2014and anyone else who aided in the resurrection\u2014 deliberately caused their death and revived them only in furtherance of some nefarious scheme. Having a proxy activate the gift of the poisoned heart is of no use, as the item's magic sniffs out all coconspirators and uses your attempt to avoid the drawback to feed the resurrected creature's paranoia.",
+				"No amount of information or persuasion can alleviate this mistrust, as the cursed creature twists the facts endlessly to fit their delusion. Only magic such as remove curse can neutralize this effect, and the subject resists any attempt to alter their beliefs by magic."
+			]
+		},
+		{
+			"name": "Golden Goose",
+			"source": "DA",
+			"page": 160,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"cursed",
+				"evil",
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This life-sized, hollow, golden goose statuette has an open, fanged mouth and an unsettling aura of hunger. Fiends sometimes present it as a gift to mortals whose greed makes them susceptible to temptation. While the golden goose can be used without malice, those who possess such a thing often find its glittering lure erodes their morals over time.",
+				{
+					"type": "ability",
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You feed the Archive goose the warm, still-bloody heart of any sapient, non-evil creature who died within the past hour. The golden goose's eyes flare red as it chews the heart into pulp. Once the heart is destroyed, the goose lays a golden egg worth 50 gp, or 100 gp if you murdered the creature for no reason other than to feed the goose.",
+						"After 12 such eggs are laid, the next time you activate the golden goose, it transmutes your heart to gold. This effect functions as flesh to stone, with a DC 30 Fortitude save to resist. If you become {@condition petrified}, you turn to solid, transparent stone. Your heart becomes a golden egg worth 100 gp, which can be retrieved only by shattering your body. Whether or not you turn to stone, the golden goose dissipates with a honk into sulfurous smoke."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mistranslator's Draft",
+			"source": "DA",
+			"page": 161,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"consumable",
+				"cursed",
+				"divination",
+				"magical",
+				"potion"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"A pickled lizard's tongue, tied into a knot, floats in this oily potion. When you drink it, you can speak and understand all spoken (but not written) languages for 1 hour. However, if you attempt to translate any spoken language, your translation is always erroneous in a way likely to cause substantial confusion or anger, typically reducing the listener's attitude toward you by one step. You aren't aware of your error, and any attempt to correct the mistake only compounds it."
+			]
+		},
+		{
+			"name": "Ring of Sneering Charity",
+			"source": "DA",
+			"page": 161,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"cursed",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"usage": "worn ring",
+			"bulk": "\u2013",
+			"category": "Worn",
+			"entries": [
+				"This gold ring seems to offer good fortune to the wearer when they are charitable to those in need, but its curse was created to tear societies apart by inflaming class resentments and discrediting good works of true charity.",
+				"Upon donning the ring, you must attempt a secret DC 25 Will save to avoid activating its magic. If you succeed, the ring's curse remains dormant, and it appears to be an exhausted item with no magic left. If you fail, the curse awakens, and the ring fuses to you.",
+				"You are compelled to spend 10% of your wealth\u2014and 10% of any future wealth you obtain\u2014on charity. However, your acts of charity are insensitive and so insulting that they earn the recipients' enmity. For example, upon learning someone lost a child, you might toss money at them \"to buy a new one. \" You can't understand why your gifts aren't met with gratitude and resent the unappreciative recipients, and you firmly believe you should be able to call upon them for favors. You consider yourself an ideal philanthropist, and you constantly try to ingratiate yourself with other charitable organizations and individuals by offering to guide their donations to be more like your own."
+			]
+		},
+		{
+			"name": "Rose of Loves Lost",
+			"source": "DA",
+			"page": 161,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"consumable",
+				"cursed",
+				"enchantment",
+				"evil",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"No thorns are visible on this ruby-red crystal rose, which seems to grant a boon to a loved one, but it draws three beads of blood when first bestowed upon an unwitting recipient. Hags delight in using the rose's curse to ruin young lovers, but it can be found anywhere\u2014even buried innocently in a treasure hoard.",
+				"You activate the rose of loves lost by giving it to someone toward whom you feel romantic attraction. This item functions only if you feel genuine attraction and desire, and it doesn't function if you know the item's curse. If the target accepts the gift, they must succeed at a DC 27 Will save with the effects of charm, except the duration is unlimited. Every 24 hours, the victim attempts another Will save to break the spell. If they fail three consecutive Will saves, they become {@condition doomed||doomed 1}, as the rose inflicts a lethal wasting disease upon the recipient. This value can't decrease while the curse continues. Instead, it worsens every 3 days the victim fails to break the rose's spell, until the victim either dies or shakes off the enchantment. A successful saving throw or remove curse ends the charm and enables the victim to begin decreasing their {@condition doomed} value."
+			]
+		},
+		{
+			"name": "Tablet of Chained Souls",
+			"source": "DA",
+			"page": 161,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"cursed",
+				"magical",
+				"necromancy"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Half-formed, unreadable runes drift across this weathered stone tablet, which resembles a tombstone too eroded to be legible. Created by a long-dead order of scholars dedicated to {@deity Pharasma}, the tablet of chained souls can be a powerful tool in laying uneasy spirits to rest, but its magic exacts a heavy cost.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"entries": [
+						"You present the tablet to a ghost, or lay it on a haunted site. The tablet's words resolve into a cryptic but accurate clue about the unfinished business that keeps this spirit from rest. Upon reading the tablet's words, you are subject to a geas that requires you to right that wrong and lay the ghost to rest. If you die without completing the task, you become a ghost, cursed to remain until another recovers the tablet and discharges your duty"
+					]
+				}
+			]
+		},
+		{
+			"name": "Taleteller's Ring",
+			"source": "DA",
+			"page": 161,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"cursed",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"usage": "worn ring",
+			"bulk": "\u2013",
+			"category": "Worn",
+			"entries": [
+				"Smiling faces are inscribed about this silver band. You become a fluent weaver of fictions, gaining a +2 item bonus to {@skill Deception} checks to {@action Lie}, {@skill Deception} DCs against {@action Sense Motive}, and {@skill Performance} checks for storytelling. Whenever you're under suspicion or being questioned by an authority figure, you find yourself compulsively spinning absurd, tall tales that are so unconvincing that they make you look guilty even when you're innocent. The ring's bonuses vanish, and any listener can quickly determine you're lying. Nevertheless, you're completely unable to be honest in such situations."
+			]
+		},
+		{
+			"name": "Bottomless Purse",
+			"source": "DA",
+			"page": 164,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"With a handshake, you traded future wealth for a bottomless purse of gems and other valuables. Using the purse, you can always sell items for their normal sell value during downtime, even if you aren't anywhere near a settlement. You just put them into the purse, and within a day, the proper sale price appears in coins and gems. Once per day, from any distance, the entity that holds your bargained contract automatically sells a common consumable item in your possession, giving you back only half the normal amount for a sold item.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You deposit up to 30 gp of gems and coins in a separate pouch of the bottomless purse while thinking of a common consumable item costing that amount of money.",
+						"You then upend the pouch. The item you envisioned comes tumbling out into your hand."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cryolite Eye",
+			"source": "DA",
+			"page": 164,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"You tore your eye from the socket and offered it to whatever spirit would take it. In return, you received a glass eye in its place.",
+				"This eye allows you to see as normal, and when you succeed at a {@skill Perception} check against an illusion, you get a critical success instead. Once per day, from any distance, the entity that holds your bargained contract can overwhelm your cryolite eye with magical energy, causing images to float over your vision that inflict the {@condition dazzled} condition on you for 1 minute.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You look through the glass eye sealing your bargained contract. The contract casts see invisibility affecting you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hand-Hewed Face",
+			"source": "DA",
+			"page": 164,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"At the crossroads under a new moon, you traded your face for one that you can mold as though it were clay, sealed with a ribbon worn around your neck to hide the seam. Your true appearance changes to that of a generic member of your ancestry. You can shape your facial features with your hands and thus don't need a disguise kit to {@action Impersonate}, and you don't take circumstance penalties to {@action Impersonate} someone due to the difference in your facial features. Once per day, from any distance, the entity that holds your bargained contract can change their appearance to match your appearance from before you sealed the contract, or the appearance you are currently using through {@action Impersonate}. When they do, your face transforms to your new true appearance, that of a generic member of your ancestry, and you become {@condition stunned||stunned 3} by the sudden backlash.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"requirements": "You have used {@action Impersonate} and molded your face into a different face",
+					"entries": [
+						"You peel your current face from your skin, revealing the true generic appearance from your bargained contract. Archive This allows you to duck out of sight and remove the facial component of your disguise almost immediately, though clothing or other elements might still give you away."
+					]
+				}
+			]
+		},
+		{
+			"name": "Key to the Stomach",
+			"source": "DA",
+			"page": 165,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"Whether due to the inconvenience of having a physical body or the desperation of impending starvation, you were drawn to a person offering relief from hunger. You swallowed a key, which remains in your stomach, that continuously satiates you. You no longer need to eat or drink. Once per day, from any distance, the entity that holds your bargained contract can have the key sealing your bargained contract absorb all items in your stomach, which prevents you from benefiting from items that require you to eat or drink them, such as potions and elixirs, for 10 minutes.",
+				"During this time, the entity gains the benefits of these items instead.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You absorb any poisons with the key sealing your bargained contract. You gain the benefits of a casting of neutralize poison."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lost Ember",
+			"source": "DA",
+			"page": 165,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"Sealed with a vial containing the ashes from your childhood home, you traded the memories of your early life to stay focused on the present, allowing you to avoid distractions during combat. Once per day, from any distance, the entity that holds your bargained contract can take one of your memories.",
+				"This functions as a casting of modify memory that doesn't grant you a saving throw and can't be reversed by any means without stealing the memory back first.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You start your turn {@condition flat-footed} or {@condition confused}",
+					"entries": [
+						"A speck of ash from the vial sealing your bargained contract appears out of nowhere on your tongue, bringing your senses into focus. You suppress the {@condition flat-footed} or {@condition confused} condition until the start of your next turn. You can use this free action when you are {@condition confused}, even though you normally can't take actions of your choice when {@condition confused}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Stone of Unrivaled Skill",
+			"source": "DA",
+			"page": 165,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"You traded your senses to a hag for unrivaled expertise stolen from various souls who were once the greatest in their field.",
+				"Your bargained contract is sealed by sleeping with a pitch-black stone under your pillow every night. Choose one skill when you seal this bargained contract. You become an expert in that skill; if you were already an expert, you become a master, and if you were already a master, you become legendary. Once per day, from any distance, the hag that holds your contract can take over your senses for 10 minutes, during which time the hag hears, sees, smells, tastes, and feels everything you would typically experience. During this time, you are {@condition dazzled} by your own disjointed senses.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You place the stone sealing your bargained contract in your mouth. For the next 10 minutes, you gain a +3 status bonus to skill checks using the skill you chose for your contract."
+					]
+				}
+			]
+		},
+		{
+			"name": "Vial of the Immortal Wellspring",
+			"source": "DA",
+			"page": 165,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"At a wellspring, you gave your blood to a force of nature and received a vial from the wellspring's heart in return. Once per 10 minutes, when your {@condition dying} value would increase above 3, you instead become {@condition unconscious} and are no longer {@condition dying}; this doesn't prevent you from being killed by {@trait death} effects or the {@condition doomed} condition. Once per day, from any distance, the entity that holds your bargained contract can possess you and control your actions, leaving you unaware of what goes on. This possession automatically succeeds, regardless of any countermeasures you might take. Normally this lasts for only 1 round if during an encounter, or no longer than a few minutes during exploration. However, the more you rely on the power of the wellspring's heart to survive death, the longer it can possess you the next time it chooses to do so, doubling the amount of time with each use, to a maximum duration of 1 day. Once the entity possesses you, this duration resets.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You drink from the vial of water that seals your bargained contract. You gain the effects of a 9th-level, 2-action {@spell heal} spell."
+					]
+				}
+			]
+		},
+		{
+			"name": "Self-Emptying Pocket",
+			"source": "DA",
+			"page": 165,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"magical"
+			],
+			"category": "Contract",
+			"entries": [
+				"You never perform to an empty crowd after promising any profits to a phantom in a playhouse, sealed by holes that appear in your pockets. By meeting with the attendees at your events, you can use {@skill Performance} instead of {@skill Diplomacy} to {@action Gather Information}. When you would use {@skill Performance} to {@action Earn Income}, you don't earn any gold pieces, as the money disappears before you can even count it.",
+				"The entity that holds your bargained contract can influence your reception any time you perform for a crowd or Activate the pocket. If they influence your performance favorably, you gain a +2 item bonus to your {@skill Performance} check. If they influence your performance unfavorably, you gain a -2 item penalty to your {@skill Performance} check. If you've failed to earn the entity money in quite a while, it typically influences your performance unfavorably.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You exercise all of your charm on a creature, turning a chance meeting into an impromptu performance that commands attention. Attempt a single {@skill Performance} check against the {@skill Perception} DC of the creature. On a success, the creature is affected as though by a successful {@skill Deception} check to {@action Create a Diversion}. The entity that holds your contract can influence this performance as well."
+					]
+				}
+			]
 		},
 		{
 			"name": "Horn of the Aoyin",

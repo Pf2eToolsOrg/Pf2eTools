@@ -1342,6 +1342,399 @@
 			]
 		},
 		{
+			"name": "Sociable Vow",
+			"source": "DA",
+			"page": 166,
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"level": 4,
+			"traits": [
+				"archetype",
+				"skill"
+			],
+			"prerequisites": "{@feat Pactbinder Dedication|DA}, expert in {@skill Diplomacy}",
+			"entries": [
+				"You can leverage your vow in more social interactions. The circumstance bonus from your Binding Vow also applies to attempts to {@action Gather Information}, {@action Make an Impression}, or {@action Demoralize} you make directly in service of fulfilling the vow."
+			]
+		},
+		{
+			"name": "Pact of Fey Glamour",
+			"source": "DA",
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"page": 166,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"illusion",
+				"primal"
+			],
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with fey powers, granting you the otherworldly appearance of your dreams in exchange for oaths of hospitality. As long as you keep your end of the bargain, your base appearance changes indefinitely to any one appearance you wish that's within the bounds of possibility for your ancestry; this effect can't be counteracted or removed except by violating the pact. Additionally, you can cast {@spell illusory disguise} as a primal innate spell once per hour, using the higher of your class DC and your spell DC to determine the DC.",
+				"In exchange, you promise to accept any fey's request for hospitality, granting them food, drink, and lodging for up to 3 days and 3 nights. You also promise not to harm any creature to whom you've offered hospitality or who has shown hospitality to you, whether or not that creature is fey, unless that creature does harm first. If you refuse hospitality to a fey or violate hospitality, you lose the benefits of this feat until you atone for your transgressions, instantly reverting your appearance to the one you had before the pact."
+			]
+		},
+		{
+			"name": "Pact of Draconic Fury",
+			"source": "DA",
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"page": 166,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"arcane",
+				"archetype",
+				"evocation"
+			],
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with a dragon, giving you the ability to tap into the dragon's immeasurable power in exchange for adding to their hoard. You gain the Dragon Breath activity. In exchange, you promise to search for objects the dragon wants for its hoard upon request. These requests might be extremely specific unique objects, or they might be a broad category of objects. While the dragon agrees to pay you a fair price for the item you retrieve, the pact requires you to give your time and service.",
+				{
+					"name": "Dragon Breath[two-actions]Frequency once per hour;",
+					"entries": [
+						"You breathe deeply and exhale a line or cone of powerful breath, much like the dragon with which you made the pact. If the dragon had a cone-shaped breath weapon, your breath weapon is a 30-foot cone. If they had a line-shaped breath weapon, your breath weapon is a 60-foot line. If they had a burst-shaped breath weapon, your breath weapon is a 10-foot burst within 60 feet. No matter the shape, it deals {@dice 1d6} damage per level, of the same damage type as the dragon's Breath Weapon, with a basic Reflex save, using the higher of your class DC or spell DC. This action has the same traits as the breath weapon of the dragon you made the pact with."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Pact of Infernal Prowess",
+			"source": "DA",
+			"page": 167,
+			"level": 8,
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"divination",
+				"divine"
+			],
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with devils, granting you success in life in exchange for your soul in the afterlife. Once per hour, when you critically fail a check, you can reroll the check as a free action; this is a {@trait fortune} effect. Additionally, you can choose to automatically succeed at checks to {@action Earn Income} for tasks below your level, without rolling. However, when you die, your soul is consigned to Hell. You can't be returned to life except by powerful magic such as miracle, and even then, the devils responsible for the contract can track your every move for 1 year. The devils gain the effects of a {@spell discern location} spell. They can also use 10th-level {@spell scrying} on you at will, and you automatically critically fail your saving throw."
+			],
+			"special": [
+				"You can't retrain out of a Pact of Infernal Prowess without journeying to Hell and destroying the devil's written contract spelling out the terms of your pact."
+			]
+		},
+		{
+			"name": "Pact of the Final Breath",
+			"source": "DA",
+			"page": 167,
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"divine",
+				"necromancy"
+			],
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with a powerful psychopomp\u2014typically an olethros advocate or yamaraj judge\u2014granting you a reprieve before your soul will be collected in exchange for respect for the dead and assistance against the undead.",
+				"As long as you keep your end of the bargain, you live twice as long as you normally would before {@condition dying} of natural causes. Additionally, the first time each day that you would be reduced to 0 Hit Points and gain the {@condition dying} condition, you instead regain a number of Hit Points equal to twice your level (starting from 0 HP), remain conscious, and gain fast healing equal to your level for 3 rounds.",
+				"In exchange, you swear to treat the dead you come across with respect, performing last rites and final dispositions to ensure their spirits rest in peace and are less likely to rise as undead. Furthermore, you swear to destroy undead you come across, so long as it's within your power to do so without inordinate risk to yourself. Violating your part of the pact causes its protections to immediately end. If at that point you had already lived beyond your natural lifespan, the psychopomps typically give you a few moments to make any last farewells, and then you simply breathe your final breath and pass on."
+			]
+		},{
+			"name": "Curse Maelstrom Dedication",
+			"source": "DA",
+			"page": 168,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"traits": [
+				"rare",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "You are cursed or have previously been cursed.",
+			"entries": [
+				"A horrible curse has left a lingering stain on your soul, and its effects continue to plague you even if the curse's other effects have ended. You can choose to suppress it, but if you instead let it manifest, you can channel its power in your favor. During an encounter, when you succeed at a check, the GM can offer to have you roll again, taking the second result.",
+				"This is a {@trait misfortune} effect. If you do so, you enter a curse maelstrom state. If the {@trait misfortune} effect is somehow canceled or negated (by a {@trait fortune} effect, for example), you don't enter a curse maelstrom state.",
+				"In addition, the curse is jealous of its place within your soul and gladly lashes out whenever others dare to usurp that position, granting you its power without the usual price. If a foe places a {@trait misfortune} effect on your roll and the effect applies to your roll, you enter a curse maelstrom state, and if you fail a saving throw against a foe's {@trait curse} effect and are affected by the curse, you also enter a curse maelstrom state.",
+				"No matter the source, you can only enter a curse maelstrom state during an encounter, and if you don't end the state on your own, it ends at the end of the encounter. Once it ends, you can't enter a curse maelstrom state again for 1 minute.",
+				"While in a curse maelstrom state, you can't benefit from {@trait fortune} effects, and they also don't cancel {@trait misfortune} effects on you; they simply have no effect. While in this state, all creatures other than you within a 10-foot emanation take a \u20131 status penalty to all saving throws and skill checks due to the storm of bad luck swirling out of your body. You gain the Expel Maelstrom action, which you can use to focus the brunt of your curses onto an unlucky target.",
+				{
+					"name": "Expel Maelstrom",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"curse",
+						"necromancy",
+						"occult"
+					],
+					"requirements": "You are in a curse maelstrom state",
+					"entries": [
+						"You expel the maelstrom from your body, sending the energy to reside in one unlucky creature within 60 feet. Your curse maelstrom state ends. The result depends on the creature's Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected, and the curse's Archive energy dissipates harmlessly."
+								],
+								"Success": [
+									"The creature comes to house the maelstrom's wrath within it. It takes a \u20131 status penalty to all saving throws and skill checks for 1 minute."
+								],
+								"Failure": [
+									"The maelstrom strikes deep into the creature's soul. It takes a \u20132 status penalty to all saving throws and skill checks for 10 minutes."
+								],
+								"Critical Failure": [
+									"The maelstrom pitches the creature into a single fit of utter misfortune before burrowing into its soul. As failure, but the creature also must roll twice and take the lower result on its next saving throw or skill check; this is a {@trait misfortune} effect."
+								]
+							}
+						}
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Familiar Oddities",
+			"source": "DA",
+			"page": 169,
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"level": 2,
+			"traits": [
+				"archetype",
+				"skill"
+			],
+			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}, trained in",
+			"entries": [
+				"{@skill Occultism} or {@skill Lore||Curse Lore} Perhaps due to the curse within you, curses occasionally perceive you as an extension of themselves and readily reveal themselves to you. You gain a +2 circumstance bonus to checks to {@action Identify Magic} on a cursed item or a spell that has the {@trait curse} trait."
+			]
+		},
+		{
+			"name": "Unnerving Expansion",
+			"source": "DA",
+			"page": 169,
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}",
+			"entries": [
+				"You gather your curse around you and impel it to pour outward, expanding your maelstrom. The radius of the emanation of your curse maelstrom state increases by 5 feet until the end of your curse maelstrom state. The outpouring of the curse is unnerving. You attempt to {@action Demoralize} a creature within the emanation of your curse maelstrom; you don't take penalties for not sharing a language with that creature."
+			]
+		},
+		{
+			"name": "Share Burden",
+			"source": "DA",
+			"page": 169,
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}",
+			"trigger": "An ally within 60 feet would be affected by a {@trait curse} or {@trait misfortune} effect, and you wouldn't be affected but you are an eligible target for the effect.",
+			"entries": [
+				"You draw the misfortune or curse into yourself, potentially enabling you to enter your curse maelstrom state. Instead of affecting your ally, the triggering {@trait curse} or {@trait misfortune} effect affects you."
+			]
+		},
+		{
+			"name": "Accursed Magic",
+			"source": "DA",
+			"page": 169,
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}",
+			"entries": [
+				"When the curse within you spills out, you can lay curses on others and claim them for yourself with ease. You can cast {@spell claim curse|SoM} (Secrets of Magic 95). At 10th level, you can also cast {@spell seal fate|APG} (Advanced Player's Guide 224), and at 12th level, you can also cast {@spell inevitable disaster|SoM} (Secrets of Magic 111). You can cast these spells once per day as occult innate spells, but only while within your curse maelstrom state.",
+				"If you couldn't already cast occult spells, these spells use Wisdom as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for occult spells."
+			]
+		},
+		{
+			"name": "Counter Curse",
+			"source": "DA",
+			"page": 169,
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}",
+			"trigger": "You or an ally within 30 feet is targeted by or in the emanation of a {@trait curse} or {@trait misfortune} effect from an opponent or object of which you are aware.",
+			"requirements": "You are in a curse maelstrom state.",
+			"entries": [
+				"You gather the energy of your maelstrom and fling its unleashed power into the enemy's curse, attempting to neutralize it. Attempt a counteract check against the triggering effect, using half your level rounded up as your counteract level and the higher of your class DC and spell DC as the counteract modifier. On a success, you neutralize the {@trait curse} or {@trait misfortune} effect. If the effect was constant, such as a misfortune aura, it returns automatically at the beginning of the creature or object's next turn. Whether you succeed or fail, your curse maelstrom state ends."
+			]
+		},
+		{
+			"name": "Torrential Backlash",
+			"source": "DA",
+			"page": 169,
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}",
+			"requirements": "You are in a curse maelstrom state.",
+			"entries": [
+				"Calling upon forbidden practices, you release the curse from within yourself, allowing it free rein to destroy everything around you. All creatures within your curse maelstrom emanation except you take {@damage 1d6} negative damage for each level you have, with a basic Fortitude save. Your curse maelstrom state then ends."
+			]
+		},
+		{
+			"name": "Reverse Curse",
+			"source": "DA",
+			"featType": {
+				"archetype": [
+					"Curse Maelstrom"
+				]
+			},
+			"page": 169,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Counter Curse",
+			"entries": [
+				"When you counter a {@trait curse} or {@trait misfortune} effect, you send it back to destroy its originator. Whenever you succeed at the counteract check to Counter Curse, the creature is affected by its own {@trait curse} or {@trait misfortune} effect, attempting a saving throw against its own DC if the effect allows a saving throw.",
+				"In the case of a constant ability, such as a misfortune aura, the creature is affected only until the beginning of its next turn, when the ability reasserts itself."
+			]
+		},
+		{
+			"name": "Pactbinder Dedication",
+			"source": "DA",
+			"page": 166,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "trained in {@skill Diplomacy} as well as either {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
+			"entries": [
+				"The first step toward forming a successful pact is an understanding of the magic behind it, along with skill at negotiation. It doesn't hurt that you also learned how to magically bind yourself to keep your word, enabling you to bargain more easily. You increase your proficiency from trained to expert in {@skill Diplomacy} and in one of the following: {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}.",
+				{
+					"type": "ability",
+					"name": "Binding Vow",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"concentrate",
+						"enchantment",
+						"occult"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You bind yourself by formally speaking a binding vow. Supernatural power flows through and around you as you speak it, and all those present to hear it intrinsically know that it binds you. Breaking this vow is anathema to you, and if you break it willingly, you lose all pactbinder benefits until you fulfill your vow or, if that's impossible, participate in an atone ritual. The vow doesn't prevent unwilling violations and can't be used to try to circumvent mind-control magic, confusion, or similar situations where you perform an action not entirely of your own volition. A Binding Vow doesn't end until you've fulfilled it. Even if you die, the vow still binds you if you return to life. The vow doesn't force you to go to ridiculous extremes, such as {@condition dying}, to fulfill your vow unless you specifically swear to go to such extremes. Trying to subvert your binding vow by making selfish promises (such as swearing to an ally that you'll kill someone you already wanted to kill) is in itself a violation of your vow, as is attempting to subvert other vows you've made (such as those from other pactbinder feats or a champion's code).",
+						"When you make a {@action Request} or {@action Coerce} directly in service of fulfilling your vow, you gain a +1 circumstance bonus to your check against any creatures aware of your vow."
+					]
+				}
+			],
+			"special": [
+				"You can't select another dedication feat until you've gained two other feats from the pactbinder archetype."
+			]
+		},
+		{
+			"name": "Pact of Eldritch Eyes",
+			"source": "DA",
+			"page": 167,
+			"level": 14,
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"divination",
+				"occult"
+			],
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with an entity beyond mortal comprehension, granting you distant visions and insights. You can cast {@spell prying eye} as an occult innate spell once per hour, using the higher of your class DC and your spell DC to determine the DC.",
+				"In exchange, you allow the entity to peer through you at your world. The entity's touch creates strange dreams, typically nightmares. Every morning, you awaken trained in an unexpected {@skill Lore} skill determined by the GM, which you retain until the next time you rest for the night. While the entity contacts you most often while you sleep, it occasionally peers at you during the day, leading to disorientation and visions. You can generally determine what's going on during these visions, so normally this occurrence imparts no mechanical penalty.",
+				"However, in the unlikely event that an encounter begins while you're experiencing visions from the entity, you might take a circumstance penalty to your initiative roll."
+			],
+			"special": [
+				"The entity isn't particularly attached to its pact with you. If you want it gone, you can retrain out of Pact of Eldritch Eyes, after which the entity withdraws its eyes to the void."
+			]
+		},
+		{
 			"name": "Psychic Dedication",
 			"source": "DA",
 			"page": 48,
