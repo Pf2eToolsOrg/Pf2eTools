@@ -885,6 +885,860 @@
 			}
 		},
 		{
+			"name": "Bilocation",
+			"source": "DA",
+			"page": 104,
+			"type": "Spell",
+			"level": 9,
+			"traits": [
+				"conjuration"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You exist in two places at once. When you Cast the Spell, another copy of yourself appears in an adjacent square. During bilocation's duration, whenever you act, you can choose which of your selves does so, and whenever one of you uses a move action, you can both move. Your two selves share Hit Points, and any condition or effect on one affects both. If both of your selves are in the area of the same effect, or targeted by the same multitarget effect, you are only affected once. Even if you are reduced to 0 Hit Points or killed, both selves remain until the duration expires. Your link continues at any distance, even across planar boundaries. You can {@action Dismiss} the Spell, and if you do so, you choose which of the selves vanishes and which becomes you, allowing you to extricate one of your selves from a dangerous situation."
+			]
+		},
+		{
+			"name": "Bracing Tendrils",
+			"source": "DA",
+			"page": 104,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"evocation",
+				"force"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Visible tendrils of force anchor your body to the ground, preventing unwanted movement. Whenever you're on the ground and a creature or effect attempts to forcibly move you from your space, you can use your spell DC in place of your Fortitude DC as the DC of the check to move you. If a creature wouldn't normally need a check to move you, it must succeed at an appropriate check (usually an {@skill Athletics} check for physical movement) against your spell DC or you are unmoved; if an effect wouldn't normally need a check to move you, it must counteract bracing tendrils or you are unmoved. When a creature fails to move you in this way, you can choose to have the tendrils lash back and push them 5 feet away from you.",
+				"While the tendrils anchor you in place when you come to a stop, they uproot easily to cooperate with your own voluntary movement, so you can still move freely while under the effect of the spell."
+			]
+		},
+		{
+			"name": "Empty Pack",
+			"source": "DA",
+			"page": 105,
+			"type": "Spell",
+			"level": 2,
+			"traits": [
+				"illusion"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 container of 2 Bulk or less",
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You render every item inside the container you touch {@condition invisible}, although the container itself remains visible. The items within are {@condition undetected} to all creatures, though a creature can attempt to find an item by reaching into the bag, making an item {@condition hidden} to them instead if they succeed. Additionally, the spell doesn't prevent the items from making protrusions in the bag, adding weight, making noise when jostling around, and so on.",
+				"However, the spell prevents anything within the container from falling out if it's upended. Any object removed from the container becomes visible and remains visible even if returned to the container."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The duration is until the next time you make your daily preparations."
+					]
+				}
+			}
+		},
+		{
+			"name": "Etheric Shards",
+			"source": "DA",
+			"page": 105,
+			"type": "Spell",
+			"level": 5,
+			"traits": [
+				"evocation",
+				"force"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You reach out and sow glittering splinters of force throughout the area, otherworldly caltrops of will and ectoplasm. The area is difficult terrain, even to flying or incorporeal creatures.",
+				"Any creature that moves through the area takes {@damage 1d4} piercing damage per square traversed, with a basic Reflex save made at the end of each move action they take through the area."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The spell's area increases by 5 feet, and the piercing damage increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Falling Sky",
+			"source": "DA",
+			"page": 105,
+			"type": "Spell",
+			"level": 8,
+			"traits": [
+				"evocation",
+				"incapacitation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "60-foot tall, 30-foot radius cylinder",
+				"types": [
+					"Cylinder"
+				]
+			},
+			"entries": [
+				"Extraordinary telekinetic pressure smashes down through the area, battering creatures within it to the ground. All flying creatures in the area descend to the bottom of the spell's area, taking twice as much bludgeoning damage as if they had fallen the distance moved, to a maximum of 60 falling damage if they fall 60 feet. They take this falling damage even if the spell's area is entirely in the air and they don't hit the ground, as they concuss against the bottom of the spell's area at great speed. Creatures on the ground and within the spell's area, including flying creatures forced to the ground, must attempt Fortitude saves.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected, and if it was flying, it isn't knocked {@condition prone} even though it took falling damage."
+						],
+						"Success": [
+							"The creature is knocked {@condition prone}."
+						],
+						"Failure": [
+							"The creature is knocked {@condition prone} and {@condition stunned||stunned 2}."
+						],
+						"Critical Failure": [
+							"The creature is knocked {@condition prone} and {@condition stunned} for 1 round."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Focusing Hum",
+			"source": "DA",
+			"page": 105,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"divination",
+				"enchantment"
+			],
+			"traditions": [
+				"Divine",
+				"Occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot emanation centered on you",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You infuse the air around you with a sustained hum that allows creatures within it to resist distractions. The DC of any flat check to {@action Cast a Spell} while {@condition stupefied} for creatures within the area is 2 lower. {@condition Confused} creatures in the area don't attack anyone, including themselves, and instead lose the ability to speak coherently. You take a \u20132 penalty to {@skill Stealth} checks to {@action Hide} and {@action Sneak}."
+			]
+		},
+		{
+			"name": "Implement of Destruction",
+			"source": "DA",
+			"page": 105,
+			"type": "Spell",
+			"level": 4,
+			"traits": [
+				"emotion",
+				"enchantment",
+				"fear",
+				"mental"
+			],
+			"traditions": [
+				"Divine",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 enemy, and 1 weapon that is either unattended or wielded by you or a willing ally",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You solemnly declare that the target weapon will bring death to a foe, implanting an irrational fear of the weapon into the target enemy. This link echoes at the forefront of the enemy's mind, forming a looming sense of omnipresent dread. The effect is based on the target enemy's Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target enemy is unaffected."
+						],
+						"Success": [
+							"The target weapon deals an additional {@damage 2d6} mental damage the first time it hits the target enemy before the end of the spell's duration."
+						],
+						"Failure": [
+							"The target weapon deals an additional {@damage 2d6} {@condition persistent damage ||persistent mental damage} to the target enemy. If the enemy is critically hit by the weapon, the enemy is {@condition doomed||doomed 1} for as long as it takes this {@condition persistent damage ||persistent mental damage}."
+						],
+						"Critical Failure": [
+							"The target weapon deals an additional {@damage 4d6} {@condition persistent damage ||persistent mental damage} to the target enemy. If the enemy is critically hit by the weapon, the enemy is {@condition doomed||doomed 1}."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"Increase the mental damage by {@dice 1d6} on a success, and increase the {@condition persistent damage ||persistent mental damage} by {@dice 1d6} on a failure or by {@dice 2d6} on a critical failure."
+					]
+				}
+			}
+		},
+		{
+			"name": "Kinetic Ram",
+			"source": "DA",
+			"page": 105,
+			"type": "Spell",
+			"level": 1,
+			"traits": [
+				"evocation",
+				"force"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 3}"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"range": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"targets": "1 or more creatures",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"Gathering kinetic energy, you either focus it in a straight line or disperse it as an encircling ripple. Any creature targeted by this spell must succeed at a Fortitude saving throw or be pushed 10 feet away from you (or 20 feet on a critical failure). The spell's area or range and how many creatures it affects is based on how many actions you spend when Casting the Spell.",
+				"{@as 1} The spell targets one creature within 15 feet. {@as 2} The spell targets one creature within 30 feet. The distance the target is pushed if it fails is doubled, and on a critical failure, the target is also knocked {@condition prone} and takes {@damage 1d6} bludgeoning damage.",
+				"{@as 3} The spell targets all creatures in a 5-foot emanation."
+			]
+		},
+		{
+			"name": "Momentary Recovery",
+			"source": "DA",
+			"page": 106,
+			"type": "Spell",
+			"level": 7,
+			"traits": [
+				"conjuration",
+				"teleportation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"entries": [
+				"You instantly teleport yourself and any items you're wearing or holding from your current space to a clear space within range that you can see. If this teleportation would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the spell is lost. After you vanish but before you arrive, you can take up to 2 actions (or the number of actions you spent to cast momentary recovery, if it was fewer than 2 actions). You can't target any other creatures or objects with anything during these actions and {@trait any} effect with a duration that you create during these actions ends immediately when you arrive. After you arrive, you are {@condition slowed||slowed 1} until the end of your next turn."
+			]
+		},
+		{
+			"name": "Moth's Supper",
+			"source": "DA",
+			"page": 106,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"necromancy"
+			],
+			"traditions": [
+				"Occult",
+				"Primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You sigh, and your breath transforms into delicate, black-winged butterflies and huge death's-head hawkmoths. They flutter about you briefly, and then range forth in search of sustenance\u2014 fresh-spilled blood, by preference, but rotting corpses, flowering plants, or even left-behind food will do in a pinch. They then return, perching on your hair or shoulders and whispering their secrets into your ears. This has three effects.",
+				{
+					"type": "list",
+					"items": [
+						"You heal {@dice 2d4} Hit Points every 10 minutes.",
+						"The first time during the duration when someone successfully Treats your Wounds, you regain an additional {@dice 4d4} Hit Points.",
+						"You gain an imprecise sense out to 30 feet that senses only freshly spilled blood and rotten flesh."
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The amount of Hit Points healed every 10 minutes increases by {@dice 1d4} and the amount of Hit Points regained from the first {@action Treat Wounds} increases by {@dice 2d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Phase Bolt",
+			"source": "DA",
+			"page": 106,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"attack",
+				"cantrip",
+				"evocation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You point your finger and project a bolt of magical energy that stutters in and out of phase until it reaches the target. Make a ranged spell attack roll against your target's AC; if the target has any circumstance bonuses to AC (such as from a shield or cover), reduce that bonus by 2 for this attack. On a success, you deal {@damage 1d4} piercing damage plus your spellcasting ability modifier. On a critical success, the target takes double damage."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The bolt's damage increases by {@dice 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Poltergeist's Fury",
+			"source": "DA",
+			"page": 106,
+			"type": "Spell",
+			"level": 6,
+			"traits": [
+				"evocation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "20-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your fury spills over in a telekinetic storm of terrifying proportions. Any loose, unattended objects of 1 Bulk or less within range are picked up and begin to orbit you at breathtaking speeds. All creatures in the area take {@damage 6d4} piercing damage with a basic Reflex save. Each time you Sustain the Spell, you can increase the radius of the storm by 10 feet, to a maximum of 100 feet. The storm moves with you and provides you with lesser cover, though you can't use this cover to {@action Hide} or {@action Sneak}.",
+				"Allies within the storm who roll a success on their Reflex save against your poltergeist's fury get a critical success instead, as you attempt to avoid hitting them."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Rally Point",
+			"source": "DA",
+			"page": 106,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"conjuration",
+				"teleportation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"area": {
+				"entry": "one 5-foot square",
+				"types": [
+					"Misc."
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You mark the area touched as a rally point. During the spell's duration, you can take a single action, which has the {@trait concentrate} trait, to teleport to the rally point along with items you are wearing or holding. This teleportation fails if the area is occupied, if the rally point is more than 120 feet away, or if you try to bring along any other creature, even if it's in an extradimensional container. Once you teleport to the rally point, the spell's duration ends."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"You can target up to four other creatures within 30 feet, in addition to yourself. Each of you can teleport to the rally point once during the spell's duration, by taking a single action, which has the {@trait concentrate} trait.",
+						"The duration no longer ends once you teleport to the rally point, though you still can't teleport to the rally point again."
+					]
+				}
+			}
+		},
+		{
+			"name": "Sea of Thought",
+			"source": "DA",
+			"page": 106,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"conjuration"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "15-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You cover the area in a sloshing torrent of semi-solidified thought, roughly ankle high. The area becomes difficult terrain, similarly to a shallow bog. Each round that a creature starts its turn in the area, it must attempt a Fortitude save against the shifting waves of thought. On a failure, it takes a 10-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure, it is also knocked {@condition prone}."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The radius of the spell's area increases by 5 feet."
+					]
+				}
+			}
+		},
+		{
+			"name": "Shadow Spy",
+			"source": "DA",
+			"page": 107,
+			"type": "Spell",
+			"level": 3,
+			"traits": [
+				"necromancy"
+			],
+			"traditions": [
+				"Occult",
+				"Primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the next time you make your daily preparations"
+			},
+			"entries": [
+				"You mix blood, soil, and shadow together to form a half-real homunculus in the shape of a crow, sparrow, or other bird. You then command the bird to fly to a location within range and observe all around it. The bird has the statistics of a homunculus, save that it has all of your senses and shares your {@skill Perception} modifier. Once the spell's duration elapses or upon a trigger you set (which must be fairly simple\u2014\"at dusk\" or \"when the judge leaves\"), the bird flies to your location.",
+				"If you wring its neck and drink its blood, you learn all that it saw since its creation."
+			]
+		},
+		{
+			"name": "Soft Landing",
+			"source": "DA",
+			"page": 107,
+			"type": "Spell",
+			"level": 4,
+			"traits": [
+				"abjuration"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult",
+				"Primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "mile",
+				"number": 1
+			},
+			"area": {
+				"entry": "20-foot tall, 60-foot radius cylinder with the ground at the bottom",
+				"types": [
+					"Cylinder"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You create a magical field that buoys any creature or object falling into the area, providing a harmless landing from any height. As you generally fall 1,500 feet per round, you can cast this spell while you are falling to ensure a safe landing, provided you can see your landing point and it's within range."
+			]
+		},
+		{
+			"name": "Telekinetic Bombardment",
+			"source": "DA",
+			"page": 107,
+			"type": "Spell",
+			"level": 7,
+			"traits": [
+				"evocation"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 500
+			},
+			"area": {
+				"entry": "10-foot burst or 30-foot line",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"entries": [
+				"You grasp a piece of the landscape\u2014such as a tree, carriage, or piece of masonry\u2014and lob it in your foe's direction. Your missile crashes down in either a 10-foot burst (for most missiles) or a 30-foot line (for something long and tall, like a tree or a ship's mast), dealing {@damage 14d6} bludgeoning damage and turning its area into difficult terrain as it breaks into rubble. All creatures in the area must attempt a Reflex save. If the area is a line, it doesn't have to start from your square but can instead start anywhere in range, as long as the entire area remains within range.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage and is knocked {@condition prone}."
+						],
+						"Critical Failure": [
+							"The creature takes double damage, is knocked {@condition prone}, and is {@condition stunned||stunned 1}."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@dice 2d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Warp Step",
+			"source": "DA",
+			"page": 107,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"cantrip",
+				"conjuration"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"entries": [
+				"When you walk, the earth warps beneath your feet\u2014your steps extend, distance contracts, and everything is just a little bit closer. You gain a +5-foot status bonus to your Speed until the end of your turn. You then {@action Stride} twice. You can use warp step to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
+			]
+		},
+		{
+			"name": "False Nature",
+			"source": "DA",
+			"page": 78,
+			"type": "Spell",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"illusion"
+			],
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "one unattended item or one item you're holding",
+			"duration": {
+				"unit": "unknown",
+				"entry": "until your next daily preparations"
+			},
+			"entries": [
+				"You create an illusion that makes an object seem to be something entirely different. When you Cast this Spell, speak aloud a declarative statement that the target is a different, nonspecific object. Your statement can't presuppose any other facts. For instance, you could claim an object is \"a stone\" or \"an antidote,\" but not \"the Starstone\" or \"the antidote to the lethal poison you already drank. \" Creatures who previously {@condition observed} the target receive an immediate Will save to disbelieve, but on a failure, the illusion temporarily rewrites their memory that the object was something different. A creature who failed their Will save, or didn't already see the item's original form, must {@action Interact} with the illusion as normal to receive a {@skill Perception} check against the spell DC to disbelieve.",
+				"When the spell ends, targets remember the object's true nature, even if they never disbelieved the spell."
+			]
+		},
+		{
 			"name": "Dancing Blade",
 			"source": "DA",
 			"page": 17,

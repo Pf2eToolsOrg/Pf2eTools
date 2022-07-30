@@ -268,6 +268,1043 @@
 			]
 		},
 		{
+			"name": "Cryptic Spell",
+			"source": "DA",
+			"page": 64,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"druid",
+				"manipulate",
+				"metamagic"
+			],
+			"requirements": "You're in natural terrain.",
+			"entries": [
+				"You hide your magic in the croak of a frog, in the sway of the trees, in the howl of the wind, and the flicker of the will-o'-wisp.",
+				"If the next action you take is to {@action Cast a Spell}, attempt a {@skill Nature} check against all observers' {@skill Perception} DCs. If you succeed at your check against an observer's {@skill Perception} DC, that observer doesn't notice that you're {@action Cast a Spell||Casting a Spell}, even though verbal, somatic, and material components are usually noticeable, and spells normally have sensory manifestations that would make spellcasting obvious to those nearby. All of these are instead {@condition hidden} in the natural sights and sounds of the environment.",
+				"This ability hides only the spell's spellcasting actions and manifestations, not its effects, so an observer might still see you transform into a giant bear."
+			]
+		},
+		{
+			"name": "Wolf in Sheep's Clothing",
+			"source": "DA",
+			"page": 64,
+			"level": 4,
+			"traits": [
+				"ranger"
+			],
+			"prerequisites": "trained in {@skill Deception}",
+			"entries": [
+				"With a bit of hide, some antlers, and some cast-off fur, you can create a disguise that will fool even an experienced hunter.",
+				"You can {@action Impersonate} creatures with the animal, {@trait beast}, or {@trait plant} traits, so long as they are either the same size or one size larger than you and have a body shape that conforms at least vaguely to your own (in other words, a typical humanoid could {@action Impersonate} a bear or an arboreal, but not a horse, giant scorpion, or assassin vine). Impersonating a larger creature doesn't change your actual size."
+			]
+		},
+		{
+			"name": "Can't You See?",
+			"source": "DA",
+			"page": 64,
+			"level": 8,
+			"traits": [
+				"druid",
+				"ranger"
+			],
+			"prerequisites": "trained in {@skill Occultism}, expert in {@skill Stealth}",
+			"entries": [
+				"The eye rebels, the mind recoils\u2014no matter how much those who can see you try to explain what's there, their friends' gazes just skitter over you, like a bird afraid to land. A character who attempts to {@action Point Out} your location must attempt a DC {@flatDC 14} flat check. If they fail, their allies misunderstand them and aren't sure where you are. On a critical failure, their allies think they pointed you out in a different location entirely, chosen by the GM. Similarly, when a creature critically fails to {@action Seek} you while you're {@condition hidden} to or {@condition undetected} by it, it thinks you're in a different location chosen by the GM. In either case, you appear to be {@condition hidden} to a creature that thinks you're in a different location, though you're actually {@condition undetected} by it for targeting and further uses of the {@action Seek} action."
+			]
+		},
+		{
+			"name": "Eerie Environs",
+			"source": "DA",
+			"page": 65,
+			"level": 8,
+			"traits": [
+				"druid",
+				"ranger"
+			],
+			"prerequisites": "trained in {@skill Intimidation}, trained in {@skill Stealth}",
+			"entries": [
+				"The natural world can be scary to those not used to it\u2014and you make it scarier still. If you're {@condition hidden} from a creature, you can attempt to {@action Demoralize} it without losing your {@condition hidden} condition\u2014 imitating the sounds of strange beasts or causing the foliage to rustle menacingly. When you do so, you don't take a penalty to your check if the target doesn't understand your language."
+			]
+		},
+		{
+			"name": "Eerie Traces",
+			"source": "DA",
+			"page": 65,
+			"level": 8,
+			"traits": [
+				"concentrate",
+				"druid",
+				"exploration",
+				"move",
+				"ranger"
+			],
+			"prerequisites": "trained in {@skill Intimidation}, trained in {@skill Survival}",
+			"entries": [
+				"The tracks you leave behind are strange, somehow disconcerting and unnerving\u2014they might travel backward, or through places no one would think to pass through. You change your tracks into eerie traces, moving up to half your travel speed as you do so. You don't need to attempt a {@skill Survival} check to change your tracks, but anyone tracking you must attempt a Will save against the higher of your class DC or spell DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The tracker is unaffected."
+						],
+						"Failure": [
+							"The tracker becomes {@condition frightened||frightened 1} for as long as it follows your tracks. This condition doesn't decrease until the tracker stops following you, and it comes back if the tracker resumes following your tracks. If the tracker enters into an encounter with you after following your tracks, it begins the encounter {@condition frightened||frightened 1}."
+						],
+						"Critical Failure": [
+							"As failure, but your disturbing traces cause the tracker to be {@condition frightened||frightened 2} instead."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Forgotten Presence",
+			"source": "DA",
+			"page": 65,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"druid"
+			],
+			"entries": [
+				"The world conspires to keep you forgotten and {@condition unnoticed}\u2014 memories cloud, ink stains out your name in ledgers, and portraits of you crack and warp over your face. Characters attempting to {@action Recall Knowledge} about you take a \u20132 circumstance penalty.",
+				"Add {@spell modify memory} to your spell list as a primal spell."
+			]
+		},
+		{
+			"name": "Eerie Proclamation",
+			"source": "DA",
+			"page": 65,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"curse",
+				"druid",
+				"linguistic",
+				"manipulate",
+				"necromancy",
+				"primal",
+				"ranger"
+			],
+			"prerequisites": "expert in {@skill Occultism}, expert in {@skill Survival}",
+			"frequency": {
+				"freq": 1,
+				"unit": "hour"
+			},
+			"requirements": "You must be in either natural terrain or in abandoned or relatively unused artificial terrain (such as a darkened alley or haunted house).",
+			"entries": [
+				"You know there are places in the world that are just wrong\u2014 places where the birds don't sing and where you always feel like you're being watched. You can spot these places, and you can awaken them. To do so, you must gesture toward a 10-foot by 10- foot square you can see and make an ominous proclamation of some manner (i.e. \"This is cursed ground,\" \"That is an ill-omened place.\"). The next creature that enters the marked territory must attempt a Will save against your spell DC (if you're a druid) or class DC (if you're a ranger).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"Something goes horribly awry for the victim in the cursed ground. The details are up to the GM\u2014it can be a purely \"natural\" accident (they step into an old bear trap, perhaps) or something stranger and more spectral. The target gains a condition for 2 rounds. Roll 1d4 on the table and use the failure column to determine which condition."
+						],
+						"Critical Failure": [
+							"As failure, but the effect is astonishingly gruesome. Use the critical failure column, and the condition lasts for 1 minute."
+						]
+					}
+				},
+				{
+					"type": "table",
+					"source": "DA",
+					"page": 65,
+					"labelRowIdx": [
+						0
+					],
+					"colStyles": [
+						"text-left",
+						"text-left",
+						"text-left"
+					],
+					"rows": [
+						[
+							"d4",
+							"Failure",
+							"Critical Failure"
+						],
+						[
+							"1",
+							"{@condition Clumsy 2}",
+							"{@condition Clumsy 3}"
+						],
+						[
+							"2",
+							"{@condition Enfeebled 2}",
+							"{@condition Enfeebled 3}"
+						],
+						[
+							"3",
+							"{@condition Stupefied 2}",
+							"{@condition Stupefied 3}"
+						],
+						[
+							"4",
+							"{@condition Dazzled}",
+							"{@condition Blinded} for 1 round, then {@condition dazzled}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Obscured Emergence",
+			"source": "DA",
+			"page": 65,
+			"level": 12,
+			"traits": [
+				"ranger"
+			],
+			"prerequisites": "expert in {@skill Stealth}",
+			"entries": [
+				"You are, by nature, a thing of gloomy woods and barren wilds, and when you choose show yourself, a bit of this gloom clings to you, obscuring your form with strange distortions or mist.",
+				"When you stop being {@condition hidden} due to your own actions (not due to someone successfully finding you), you gain concealment until the start of your next turn as people's eyes find it oddly hard to focus on you. As usual for concealment involving an obvious visual manifestation, you can't use this concealment to {@action Hide}."
+			]
+		},
+		{
+			"name": "Bizarre Transformation",
+			"source": "DA",
+			"page": 65,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 14,
+			"traits": [
+				"druid",
+				"manipulate",
+				"metamagic"
+			],
+			"prerequisites": "Wild Shape",
+			"entries": [
+				"The forms you take on defy belief\u2014chimerical sights of twisted antlers or acidic drool. If your next action is to cast {@spell wild shape}, you can change the damage type of a single unarmed attack granted by the wild shape form to one of the following: acid, bludgeoning, cold, electricity, fire, poison, piercing, or slashing.",
+				"The chosen attack gains the appropriate trait."
+			]
+		},
+		{
+			"name": "Aura Sight",
+			"source": "DA",
+			"page": 78,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"exploration",
+				"general",
+				"secret",
+				"skill"
+			],
+			"prerequisites": "expert in {@skill Occultism}",
+			"frequency": {
+				"freq": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You've learned how to read the natural auras of other living creatures. To do this, you must focus on a single living target without blinking for 1 minute. You can do this while performing some other minor task\u2014such as making conversation to distract from your intentions\u2014but you can't blink or otherwise lose your concentration. You can then perceive any or all of the following information.",
+				{
+					"type": "list",
+					"items": [
+						"The target's current apparent attitude toward you ({@condition friendly}, {@condition indifferent}, and so on).",
+						"The target's current apparent emotional state.",
+						"A general assessment of the target's physical health, such as what conditions or afflictions it has. You might need to succeed at an {@skill Occultism} check against the affliction or condition's DC to detect the presence of a specifically {@condition hidden} or subtle condition or affliction. In addition, the GM rolls a secret {@skill Occultism} check for you against the target's {@skill Deception} DC. If your result exceeds your target's, you can identify if they're being deceptive in some way (such as expressing a false attitude toward you or faking an emotional state). This doesn't allow you to automatically identify the exact nature of that deception, only to tell the outward appearance is false."
+					]
+				}
+			]
+		},
+		{
+			"name": "Automatic Writing",
+			"source": "DA",
+			"page": 78,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"exploration",
+				"general",
+				"manipulate",
+				"skill"
+			],
+			"prerequisites": "expert in {@skill Occultism}",
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"When confronted with the unknown, you can receive knowledge beyond your own experience via written messages delivered by your hand. You spend 10 minutes seated while holding a writing utensil, using it to make small circular motions as you open your mind to the forces around you. You receive information as your hand writes on its own, guided by spirits. At the end of these 10 minutes, {@action Recall Knowledge} with any {@skill Lore} skill in which you are not trained, using your {@skill Occultism} modifier instead of your modifier with that skill. The strain of this spirit channeling leaves you {@condition stupefied||stupefied 1} for the next 10 minutes."
+			]
+		},
+		{
+			"name": "Chromotherapy",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"general",
+				"healing",
+				"manipulate",
+				"skill"
+			],
+			"prerequisites": "expert in {@skill Medicine}",
+			"entries": [
+				"You firmly believe in the technique of strengthening one's life force, spiritual energies, and bodily fluids through the application of colored light. When using a torch, lantern, or other artificial light source to illuminate an area of dim light or darker, you use a combination of alchemical reagents, medicinal components, and colored lenses to turn that light one of seven colors, allowing you to help an ally recover from {@condition persistent damage}. You give that target an assisted recovery, but the target can be anywhere within the bright light of the light source instead of needing to be adjacent to you.",
+				"Ambient bright light (like sunlight) drowns out your artificial illumination and prevents you from using Chromotherapy. The color of the light you choose determines the type of {@condition persistent damage} from which you help the target recover. Color Description Red You increase blood flow to heat the body, attempting to end {@condition persistent damage ||persistent cold damage}.",
+				"Orange You cancel out electric charge, attempting to end {@condition persistent damage ||persistent electricity damage}.",
+				"Yellow You reduce pain and mental stress, attempting to end {@condition persistent damage ||persistent mental damage}.",
+				"Green You promote blood flow in a way that helps clot wounds, attempting to end {@condition persistent damage ||persistent bleed damage}.",
+				"Blue You cool the body, attempting to end {@condition persistent damage ||persistent fire damage}.",
+				"Indigo You render acids inert, attempting to end {@condition persistent damage ||persistent acid damage}.",
+				"Violet You purify the body, attempting to end {@condition persistent damage ||persistent poison damage}."
+			]
+		},
+		{
+			"name": "Crystal Healing",
+			"source": "DA",
+			"page": 78,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"general",
+				"healing",
+				"manipulate",
+				"skill"
+			],
+			"prerequisites": "trained in {@skill Occultism}",
+			"entries": [
+				"You know how to stimulate a body's natural healing abilities through the application of resonant crystals. Doing so requires you to use at least two semiprecious stones with a total value of 5 gp or more in place of healer's tools, which allows you to attempt to {@action Treat Disease} or {@action Treat Poison} using {@skill Occultism} rather than {@skill Medicine}. Examples and prices of semiprecious stones can be found on page 114 of the Pathfinder Gamemastery Guide.",
+				"If you're an expert in {@skill Occultism} and you use gems whose total value equals or exceeds 50 gp, you gain a +1 item bonus to your {@skill Occultism} check. If you're a master and the gems' value equals or exceeds 700 gp, the item bonus increases to +2; if you're legendary in {@skill Occultism} and the gems' value equals or exceeds 15,000 gp, the item bonus increases to +3."
+			]
+		},
+		{
+			"name": "Folk Dowsing",
+			"source": "DA",
+			"page": 78,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"general",
+				"skill"
+			],
+			"prerequisites": "trained in {@skill Survival}",
+			"entries": [
+				"You can find what you're looking for using a dowsing rod or pendulum. If you {@action Search} while wielding a dowsing rod or pendulum, in addition to the normal checks for Searching, the GM rolls a secret {@skill Survival} check for you to detect the largest source of water, oil, or another natural non-bodily fluid in the area. Even if the liquid is {@condition concealed} from you\u2014for example, if it stems from an underground spring or is piped through a wall\u2014this technique points you in the right direction. The GM determines the DC, which is usually the trained simple DC with a hard or very hard adjustment if the source of water is small.",
+				"If you're an expert in {@skill Survival}, the GM also makes a {@skill Survival} check for you to detect sizable deposits of metal, minerals, and nearby graves. The DC is usually the expert simple DC, with DC adjustments for smaller deposits."
+			]
+		},
+		{
+			"name": "Morphic Manipulation",
+			"source": "DA",
+			"page": 78,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"exploration",
+				"general",
+				"necromancy",
+				"positive",
+				"primal",
+				"skill"
+			],
+			"prerequisites": "master in {@skill Nature}",
+			"entries": [
+				"You've attuned your natural aura to that of plant life, coaxing it to grow faster than normal. You sit for 10 minutes with a small, natural non-creature plant\u2014such as a lone flower, a small bush, or a potted succulent\u2014while you bring your aura in tune through meditation. You coax the plant to advance one stage in its life cycle: from seed to sprout, sprout to plant, plant to flower, or flower to fruit. If the plant doesn't have proper nutrients (if you're sprouting a seed without soil or water, for example), the plant withers 5 minutes after you complete the activity. Performing this activity more than once per day renders you {@condition fatigued} and unable to use Morphic Manipulation until your next full night's rest."
+			]
+		},
+		{
+			"name": "Read Psychometric Resonance",
+			"source": "DA",
+			"page": 78,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"divination",
+				"emotion",
+				"exploration",
+				"general",
+				"mental",
+				"occult",
+				"skill"
+			],
+			"prerequisites": "trained in {@skill Occultism}",
+			"entries": [
+				"With a touch, you can read the psychic impressions left on objects by their previous owners. This exploration activity functions similarly to {@action Detect Magic} in that you move at half your travel speed or slower while looking for psychometric resonance. You must brush your bare hands over any objects you pass while you do this. This detects objects with significant emotional resonance attached to them, such as the joy from a child's beloved teddy bear, the sorrow from a widower's wedding ring, or the fear from a victim's murder weapon. If you're looking for a particular type of emotional resonance, you can choose to ignore other emotions. If you find an item with that resonance, you can explore that resonance with the following action.",
+				{
+					"name": "Psychometric Assessment",
+					"traits": [
+						"concentrate",
+						"divination",
+						"emotion",
+						"exploration",
+						"mental",
+						"occult"
+					],
+					"requirements": "Your bare hands are touching an object in which you detected psychometric resonance",
+					"entries": [
+						"You spend 1 minute concentrating on the object to get a vision of the face of the person who imbued the item with such emotion in the first place. If the associated emotion is painfully negative, you might take {@damage 1d6} psychic damage, as determined by the GM."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Skeptic's Defense",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"general",
+				"skill"
+			],
+			"prerequisites": "master in {@skill Intimidation}",
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"trigger": "You are targeted by or are in the area of a mental spell or effect.",
+			"entries": [
+				"You don't believe in any mental twaddle, and you're certainly not afraid of it. You scoff and verbally refute the triggering effect, attempting a counteract check using your {@skill Intimidation} modifier with a counteract level of half your level rounded up. If you succeed, you ignore the triggering effect, though any other creatures that were also targeted or in the area are still affected.",
+				"If the source of the effect you successfully counteracted understands your language and has an Intelligence modifier of \u20133 or higher, that creature becomes {@condition stupefied} for 1 round."
+			]
+		},
+		{
+			"name": "Awakened Power",
+			"source": "DA",
+			"page": 78,
+			"level": 4,
+			"traits": [
+				"rare",
+				"deviant"
+			],
+			"entries": [
+				"Your power spontaneously evolves or reconfigures itself. You gain one awakening benefit for a deviant feat of 4th level or lower."
+			],
+			"special": [
+				"You can take this feat multiple times. Each time you do, choose a different deviant feat of 4th level or lower, and gain one of its awakening benefits."
+			]
+		},
+		{
+			"name": "Greater Awakened Power",
+			"source": "DA",
+			"page": 78,
+			"level": 10,
+			"traits": [
+				"rare",
+				"deviant"
+			],
+			"entries": [
+				"Your power undergoes yet another awakening. You gain one awakening benefit for a deviant feat of 10th level or lower."
+			],
+			"special": [
+				"You can take this feat multiple times. Each time you do, choose a different deviant feat of 10th level or lower, and gain one of its awakening benefits."
+			]
+		},
+		{
+			"name": "Blasting Beams",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"rare",
+				"attack",
+				"deviant",
+				"evocation",
+				"magical"
+			],
+			"requirements": "You have a free hand.",
+			"entries": [
+				"A directed beam of heat or an arc of lightning is one of the simplest ways to project energy. You fire a blast or beam from one hand. Make an attack roll against a creature within 30 feet.",
+				"If you succeed, the beam deals {@dice 1d6} damage for every 2 levels you have to the target, or double damage on a critical success.",
+				"Awakening Your beams blast through targets. Instead of making an attack roll to damage a single creature within 30 feet, you can use Blasting Beams as a 2-action activity to damage all creatures in a 60-foot line, with a basic Reflex save.",
+				"Awakening You can choose to launch smaller, quicker beams from your eyes instead. These deal d4s instead of d6s, but the attack has the {@trait agile} trait, and you don't need a hand free to make it, though your eyes must be uncovered."
+			]
+		},
+		{
+			"name": "Consume Energy",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 2,
+			"traits": [
+				"rare",
+				"abjuration",
+				"deviant",
+				"magical"
+			],
+			"trigger": "An enemy within 60 feet uses an ability that has the trait corresponding to your deviation damage type.",
+			"entries": [
+				"Your connection to energy is so much stronger than the offending display in front of you, allowing you to claim it for yourself. Attempt a counteract check against the triggering effect as you draw it into your body. If you successfully counteract the ability, you gain temporary Hit Points equal to double the counteract level of the ability, which last for 1 minute.",
+				"Awakening The energy you consume helps empower your abilities. The next ability from the dragon classification that you use increases its range by 30 feet if it has a range, or increases its area by 10 feet if it's a cone or line. If you don't use this benefit within 1 minute, it fades. Awakening You channel some of the seized energy into your next attack. Choose one of your weapons or unarmed attacks. Until the end of your next turn, Strikes with the chosen weapon or unarmed attack deal an additional {@dice 1d6} damage of a type matching the energy you consumed."
+			]
+		},
+		{
+			"name": "Storming Breath",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"rare",
+				"deviant",
+				"evocation",
+				"magical"
+			],
+			"entries": [
+				"You spit out a freezing breath or sonic scream. You deal {@dice 4d6} damage, plus {@dice 1d6} damage for every level you have beyond 6th, to all creatures in a 30-foot cone, with a basic Reflex save.",
+				"Awakening Your blast powerfully batters your foes. A creature that critically fails its save is knocked {@condition prone}.",
+				"Awakening The kickback of your blast helps you make a speedy escape. When you use this ability, you {@action Fly} backward 15 feet in a straight line directly opposite your blast. This movement doesn't trigger reactions based on movement."
+			]
+		},
+		{
+			"name": "Propulsive Leap",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"rare",
+				"deviant",
+				"evocation",
+				"magical"
+			],
+			"entries": [
+				"By expelling flames from your feet or levitating through electrical repulsion, you propel yourself through the air. For 1 minute, you gain a fly Speed equal to your Speed or 20 feet, whichever is greater. If you aren't on solid ground at the end of your turn, you must attempt another backlash check for your deviation, though you remain airborne even if you fail your check unless the damage from the check renders you {@condition unconscious}.",
+				"Awakening You blast through the air at great speed, gaining a +15-foot status bonus to your {@action Fly} speed from Propulsive {@action Leap}.",
+				"Awakening You can use your propulsion as a makeshift weapon. The first time each round you {@action Fly} starting from the ground, all creatures adjacent to you take {@dice 1d4} damage for every 2 levels you have, with a basic Reflex save."
+			]
+		},
+		{
+			"name": "Bone Spikes",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"rare",
+				"deviant",
+				"evocation",
+				"magical"
+			],
+			"entries": [
+				"Sharp shards of bone tear forth from your elbows, wrists, or other parts of your body. For 1 minute, you can make bone spike unarmed Strikes, which deal {@damage 1d6} piercing damage and have the versatile S and sweep trails. When you take the Bone Spikes action, you can choose one weapon on your person and duplicate its weapon runes onto your bone spikes (with the exception of any runes that couldn't apply to the bone spears). Awakening Your bones grow longer, lashing flexibly at range. While you have bone spikes, you can {@action Interact} to give your bone spikes reach 10 feet until the end of the current turn.",
+				"Awakening Grooves in your bone spikes form a channel for venom. Your bone spikes deal {@damage 1d4} {@condition persistent damage ||persistent poison damage}, which increases to {@dice 2d4} at 10th level and {@dice 3d4} at 18th level."
+			]
+		},
+		{
+			"name": "Titan Swing",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"rare",
+				"deviant",
+				"magical",
+				"transmutation"
+			],
+			"entries": [
+				"Your limbs tense as you deliver a mighty swing. Make a melee {@action Strike}. If it hits, you deal an extra die of weapon damage and push the target back by 5 feet. If you're at least 10th level, increase this to two extra dice and push the target by 10 feet, and if you're at least 18th level, increase it to three extra dice and push the target by 15 feet. Awakening On a critical hit, you push the target back double the normal distance and knock it {@condition prone}.",
+				"Awakening On a hit, you deal {@damage 1d6} {@condition persistent damage ||persistent bleed damage}. This increases to {@dice 2d6} at 10th level and {@dice 3d6} at 18th level."
+			]
+		},
+		{
+			"name": "High-Speed Regeneration",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 6,
+			"traits": [
+				"rare",
+				"deviant",
+				"healing",
+				"magical",
+				"necromancy"
+			],
+			"trigger": "Your turn begins.",
+			"entries": [
+				"Your wounds knit together with barely a thought. You regain Hit Points equal to double your level. When you gain this deviation, the GM secretly selects one type of energy damage or precious material, such as fire or cold iron. When you take damage of that type, your wound smokes until the end of your next turn, preventing you from using High-Speed Regeneration.",
+				"Awakening Your regeneration can automatically save you from the brink of death. Once per day, you can use High-Speed Regeneration when your Hit Points would be reduced to 0 instead of the usual trigger. You avoid being knocked out and remain at the number of HP you regained.",
+				"Awakening Regrowth invigorates you. You gain a +10-foot status bonus to your Speed until the end of your turn."
+			]
+		},
+		{
+			"name": "Tectonic Stomp",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"rare",
+				"deviant",
+				"evocation",
+				"magical"
+			],
+			"entries": [
+				"You cause minor tremors that topple your enemies. All creatures in a 30-foot emanation who are standing on the ground take {@damage 1d6} bludgeoning damage for every 2 levels you have, with a basic Reflex save. A creature that fails its save also falls {@condition prone}.",
+				"Awakening Your stomp also ejects large fragments from the ground. You raise up to three stone chunks from the ground in unoccupied squares in the emanation; the stones can't be adjacent to one another. The chunks are 5 feet tall, block movement, and are large enough to {@action Take Cover} behind. They have AC 10, Hardness 8, and Hit Points equal to your level.",
+				"They are immune to critical hits and precision damage. A stone chunk crumbles away when it has 0 Hit Points, and all of them crumble after 1 minute or when you use Tectonic Stomp again.",
+				"Awakening Your stomp rattles those who fail horribly. A creature that critically fails its save is also {@condition stunned||stunned 1}."
+			]
+		},
+		{
+			"name": "Eerie Flicker",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 2,
+			"traits": [
+				"rare",
+				"conjuration",
+				"deviant",
+				"magical"
+			],
+			"trigger": "A enemy's {@action Strike} would hit you and you weren't already {@condition concealed}, {@condition hidden}, or {@condition undetected} by that enemy.",
+			"entries": [
+				"Your body flickers momentarily into the Ethereal Plane. You become {@condition concealed} for 1 round, and the flat check for concealment applies to the {@action Strike} that would have hit you. If the flat check fails, the {@action Strike} misses you.",
+				"Awakening When your body flickers, you momentarily assume a terrifying form. If a creature fails the flat check against concealment from your Eerie Flicker, it becomes {@condition frightened||frightened 1}, and it doesn't reduce the {@condition frightened} condition from this effect at the end of the same turn it gained the condition.",
+				"Awakening You can choose to compress your flickering movement into a single moment, increasing your chance to avoid the triggering attack in exchange for a shorter-lived effect. If you choose to do so, the flat check for concealment against the triggering attack increases to DC 9, but the concealment affects only the triggering {@action Strike}."
+			]
+		},
+		{
+			"name": "Ghostly Grasp",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"rare",
+				"deviant",
+				"evocation",
+				"magical"
+			],
+			"entries": [
+				"An {@condition invisible} arm extends from you to grab and manipulate objects. The arm reaches up to 15 feet, grabs an unattended object of 1 Bulk or less, and immediately deposits it in one of your free hands or at your feet. Alternatively, it reaches up to 15 feet and performs a simple {@action Interact} action like pushing o p e n a window, though it can't perform actions that require significant mechanical dexterity. For every 5 levels you have, the amount the hand can lift increases by 1 Bulk, and the arm's range increases by 15 feet. Being ghostly, the arm can affect ghosts, spirits, and other incorporeal entities, though in most cases, you need an awakening for this to be useful.",
+				"Awakening Your {@condition invisible} arm can grab on to an unsuspecting target. You can modify the power's target to be 1 creature within range. You make an attack roll against the creature's Fortitude DC and add the {@trait attack} trait to the action. On a success, the target is {@condition grabbed} by the arm (or {@condition restrained} on a critical success). This lasts for 1 round or until the creature Escapes.",
+				"Awakening You summon additional ghostly arms that entwine together to push targets. You can modify the power's target to be 1 creature within range. You make an attack roll against the creature's Fortitude DC and add the {@trait attack} trait to the action. On a success, you can move the target 5 feet in any direction (10 feet on a critical success)."
+			]
+		},
+		{
+			"name": "Enervating Wail",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"rare",
+				"auditory",
+				"deviant",
+				"magical",
+				"necromancy"
+			],
+			"entries": [
+				"You release a terrible wail that tears at the spirits of all nearby.",
+				"All living creatures in a 20-foot emanation take negative damage with a basic Fortitude save. The damage is {@dice 4d6}, plus {@dice 1d6} for every level you have beyond 6th.",
+				"Awakening Your scream echoes in the mind. You can choose to emit a silent psychic wail instead, which changes the damage type to mental, changes the save to a Will save, removes the {@trait auditory} trait, and adds the {@trait mental} trait.",
+				"Awakening Your wail saps your foes' strength. In addition to the normal effects, living creatures in the area are {@condition enfeebled||enfeebled 1} for 1 round on a success (but not a critical success), {@condition enfeebled||enfeebled 1} for 1 minute on a failure, and {@condition enfeebled||enfeebled 2} for 1 minute on a critical failure."
+			]
+		},
+		{
+			"name": "Clone-Risen",
+			"source": "DA",
+			"page": 120,
+			"level": 1,
+			"traits": [
+				"lineage",
+				"reflection"
+			],
+			"entries": [
+				"You were formed from a clone ritual or alchemical experiment. Created as a vessel for another creature, you can suppress your sentience momentarily, making your mind harder to alter. You gain the Empty Vessel reaction.",
+				{
+					"name": "Empty Vessel",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You would take mental damage or be affected by a {@trait mental} effect",
+					"entries": [
+						"You gain a +2 circumstance bonus to Will saves and resistance to mental damage equal to your level against the triggering effect. This applies only to the initial effect, not successive saves, {@condition persistent damage ||persistent mental damage}, or other repeated effects."
+					],
+					"type": "ability"
+				}
+			],
+			"leadsTo": [
+				"Replicate|DA"
+			]
+		},
+		{
+			"name": "Mirror-Risen",
+			"source": "DA",
+			"page": 120,
+			"level": 1,
+			"traits": [
+				"lineage",
+				"reflection"
+			],
+			"entries": [
+				"You were created from magic involving mirrors and still retain some ability to seek refuge in reflected illusions. You gain the Mirror's Trickery reaction.",
+				{
+					"name": "Mirror's Trickery",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"concentrate",
+						"illusion",
+						"occult",
+						"visual"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You would be hit by a {@action Strike}",
+					"entries": [
+						"You create an illusory duplicate at the last instant and attempt to trick your foe into striking it instead of you. The attacker attempts a DC {@flatDC 11} flat check; on a failure, the attack hits the duplicate, changing the result from a critical success to a success or a success to a failure."
+					],
+					"type": "ability"
+				}
+			],
+			"leadsTo": [
+				"Reflective Pocket|DA",
+				"Mirror Refuge|DA"
+			]
+		},
+		{
+			"name": "Morph-Risen",
+			"source": "DA",
+			"page": 120,
+			"level": 1,
+			"traits": [
+				"lineage",
+				"reflection"
+			],
+			"entries": [
+				"You were once a shapeshifter or spellcaster using polymorph magic, but something went wrong, and you became trapped in the form of the creature you were imitating. This accident might have {@condition drained} your power, or you might have retained some of your skills, but either way, your form resists further forced transformation. You gain a +1 circumstance bonus to saving throws against {@trait transmutation} effects, and if you roll a success on a saving throw against a {@condition hostile} {@trait morph} or {@trait polymorph} effect, you get a critical success instead."
+			],
+			"leadsTo": [
+				"Warp Likeness|DA"
+			]
+		},
+		{
+			"name": "Progenitor Lore",
+			"source": "DA",
+			"page": 120,
+			"level": 1,
+			"traits": [
+				"reflection"
+			],
+			"entries": [
+				"You didn't just inherit your physical form from your progenitor; you also retained some of their knowledge. You're trained in {@skill Deception} and {@skill Occultism}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in a {@skill Lore} corresponding to your ancestry (e. g., {@skill Lore||Elf Lore} if your progenitor is an elf)."
+			]
+		},
+		{
+			"name": "Warped Reflection",
+			"source": "DA",
+			"page": 120,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"emotion",
+				"fear",
+				"mental",
+				"reflection",
+				"visual"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Due to your origins, your form is more flexible than most. You shift your appearance to resemble a creature within 30 feet but with an unsettling, horrifying twist. Though this transformation is momentary, witnessing it gives the target deep existential dread. It must succeed at a Will save against the higher of your class DC or spell DC or become {@condition frightened||frightened 1} ({@condition frightened||frightened 2} on a critical failure) and be {@condition stupefied||stupefied 1} as long as the {@condition frightened} condition lasts. Once you've used Warped Reflection against a creature, it's temporarily immune for 24 hours."
+			]
+		},
+		{
+			"name": "Mistaken Identity",
+			"source": "DA",
+			"page": 120,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 5,
+			"traits": [
+				"concentrate",
+				"fortune",
+				"mental",
+				"reflection"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "minute"
+			},
+			"trigger": "You're about to attempt a saving throw against a {@trait mental} effect.",
+			"entries": [
+				"You feel a strong connection with your progenitor and can convince yourself an effect targeting your mind was meant for theirs instead, allowing you to shrug off harmful effects. Roll the saving throw twice, and take the higher result. However, subsuming your identity is disturbing, and you're {@condition frightened||frightened 1}."
+			]
+		},
+		{
+			"name": "Reflective Pocket",
+			"source": "DA",
+			"page": 120,
+			"level": 5,
+			"traits": [
+				"extradimensional",
+				"reflection"
+			],
+			"prerequisites": "{@feat Mirror-Risen|DA}",
+			"entries": [
+				"You've formed a connection with a small hand mirror, allowing you to use it as an extradimensional storage space. You can store one item of light Bulk in your mirror at a time. Storing or retrieving an item requires an {@action Interact} action and any creature can do so. While an item is stored within the mirror, the mirror reflects the item's image. You gain a +2 circumstance bonus to Archive {@skill Stealth} checks to Conceal the Object unless someone checks the mirror's reflection."
+			]
+		},
+		{
+			"name": "Replicate",
+			"source": "DA",
+			"page": 121,
+			"level": 5,
+			"traits": [
+				"reflection"
+			],
+			"prerequisites": "{@feat Clone-Risen|DA}",
+			"entries": [
+				"You've learned to reshape your malleable form. You can cast {@spell illusory disguise} once per day as an innate occult spell. This is a {@trait transmutation} and {@trait morph} effect, as your body physically transforms, rather than an {@trait illusion} effect."
+			]
+		},
+		{
+			"name": "Warp Likeness",
+			"source": "DA",
+			"page": 121,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 5,
+			"traits": [
+				"morph",
+				"occult",
+				"reflection",
+				"transmutation"
+			],
+			"prerequisites": "{@feat Morph-Risen|DA}",
+			"frequency": {
+				"freq": 1,
+				"unit": "minute"
+			},
+			"requirements": "You hit a creature with a melee {@action Strike} on your last action.",
+			"entries": [
+				"You channel some of your own nature through your blow, temporarily warping your target's form to resemble your own. The creature you hit must attempt a Fortitude save against the higher of your class DC or spell DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target resists the effect but its form twists in the process. It's {@condition clumsy||clumsy 1} until the end of its next turn."
+						],
+						"Failure": [
+							"The target's body briefly warps to resemble yours. It's {@condition clumsy||clumsy 1} until the end of its next turn and {@condition sickened||sickened 1}."
+						],
+						"Critical Failure": [
+							"The target's body warps to resemble yours for a significant time. It's {@condition clumsy||clumsy 1} for 1 minute and {@condition sickened||sickened 2}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Mirror Refuge",
+			"source": "DA",
+			"page": 121,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 9,
+			"traits": [
+				"conjuration",
+				"extradimensional",
+				"occult",
+				"reflection"
+			],
+			"prerequisites": "{@feat Mirror-Risen|DA}",
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"requirements": "You're within 5 feet of a mirrored surface.",
+			"entries": [
+				"Your origin in the space behind mirrors enables you to use a mirror as a hideaway, like the spell meld into stone. You meld into an adjacent mirror. You can hear but not see outside this space, and creatures outside can't see or hear you. You can cast spells while within the mirror, but no effects can cross the mirror. Your Mirror Refuge lasts for 10 minutes unless the mirror is {@condition broken}, which expels you and deals {@dice 10d6} damage to you. You can {@action Dismiss} the effect. You appear in a space adjacent to the mirror when the effect ends."
+			]
+		},
+		{
+			"name": "Two Truths",
+			"source": "DA",
+			"page": 121,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 9,
+			"traits": [
+				"reflection"
+			],
+			"prerequisites": "master in {@skill Deception}",
+			"entries": [
+				"Your ability to imitate your progenitor is so strong, you can even convince yourself. When you use this action, you alter your thought processes to your progenitor or from your progenitor back to yourself. As long as what you say is true from the point of view of your current identity, you can say it even under effects like zone of truth that force you to speak truly."
+			]
+		},
+		{
+			"name": "Unyielding Disguise",
+			"source": "DA",
+			"page": 121,
+			"level": 9,
+			"traits": [
+				"reflection",
+				"transmutation"
+			],
+			"prerequisites": "ability to cast {@spell humanoid form} or {@spell illusory disguise}",
+			"entries": [
+				"When you cast {@spell humanoid form} or {@spell illusory disguise} to alter your appearance, the spell's duration is 2 hours. At the end of the duration, you can extend the spell's duration for another hour, but doing so is taxing, making you {@condition drained||drained 1}. You can keep extending it in this way, increasing your {@condition drained} condition by 1 each time, to a maximum duration of 6 hours."
+			]
+		},
+		{
+			"name": "Malleable Form",
+			"source": "DA",
+			"page": 121,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 13,
+			"traits": [
+				"reflection",
+				"transmutation"
+			],
+			"prerequisites": "ability to cast at least one {@trait polymorph} spell",
+			"requirements": "You're polymorphed by a spell that has multiple choices of battle form.",
+			"entries": [
+				"You adroitly shift your form, taking on another appearance. Choose a different battle form of the polymorph spell affecting you, and change to that form instead of the current one. This destabilizes the spell's magic, reducing its duration by 1 round.",
+				"Use the level of the spell to determine the statistics, as normal."
+			]
+		},
+		{
+			"name": "Redirect Attention",
+			"source": "DA",
+			"page": 121,
+			"level": 13,
+			"traits": [
+				"reflection"
+			],
+			"entries": [
+				"Through your strong connection with your progenitor, you're able to redirect those attempting to spy on you. Whenever you would be directly targeted with a {@trait scrying} effect, the effect must attempt a counteract check against the higher of your spell DC or class DC. If the check fails, the effect targets your progenitor instead of you."
+			]
+		},
+		{
+			"name": "Reflect Foe",
+			"source": "DA",
+			"page": 121,
+			"level": 17,
+			"traits": [
+				"reflection"
+			],
+			"entries": [
+				"You create a copy of a foe by calling them forth from a nearby reflection, clonally growing them in an instant from one of your hairs or otherwise creating them in a way that matches your own nature as a reflection. You can cast {@spell duplicate foe} once per day as an innate occult spell. At 20th level, your innate duplicate foe is heightened to 8th level."
+			]
+		},
+		{
+			"name": "Distant Wandering",
+			"source": "DA",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"rare",
+				"deviant",
+				"evocation",
+				"magical"
+			],
+			"entries": [
+				"Your body falls {@condition unconscious} and your spirit projects out of it.",
+				"While in spirit form, you can't consciously move your body, and you are {@condition invisible} and inaudible, though a creature still might notice the signs of your presence and passing, just like for an {@condition invisible} creature affected by silence, or a prying eye. You can freely move about, though you can't touch or move anything, cast spells, attack, or otherwise affect anything around you.",
+				"Despite your ghostly form, you are not incorporeal and can't pass through barriers you couldn't in your body. Most effects can't harm your spirit form, though some spells, like spirit blast and spirit song, explicitly damage a creature's spirit.",
+				"You can return to your body as a free action. If you are in spirit form at the beginning of your turn, you must attempt another backlash check for your deviation, returning to your body if you fail.",
+				"Awakening Your spirit moves at the speed of thought. You gain a fly Speed and a +20-foot status bonus to your Speed while in spirit form.",
+				"Awakening Time seems to pass more slowly while you are projecting your spirit, letting you notice things around you. When you enter spirit form, you can {@action Recall Knowledge} or {@action Seek}. You are {@condition quickened} while in spirit form and can use the extra action only to {@action Recall Knowledge} or {@action Seek}."
+			]
+		},
+		{
 			"name": "Fey Life",
 			"source": "DA",
 			"page": 57,
