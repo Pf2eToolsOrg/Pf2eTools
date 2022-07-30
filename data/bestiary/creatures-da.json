@@ -1,214 +1,215 @@
 {
-	"creature": [{
-		"name": "K.H.W.'s Echo",
-		"source": "DA",
-		"page": 214,
-		"level": 14,
-		"traits": [
-			"unique",
-			"ln",
-			"medium",
-			"human",
-			"humanoid"
-		],
-		"perception": {
-			"std": 30
-		},
-		"languages": {
-			"languages": [
-				"Common",
-				"Tien"
-			]
-		},
-		"skills": {
-			"acrobatics": {
-				"std": 28
-			},
-			"arcana": {
-				"std": 25
-			},
-			"athletics": {
-				"std": 25
-			},
-			"esoteric lore": {
+	"creature": [
+		{
+			"name": "K.H.W.'s Echo",
+			"source": "DA",
+			"page": 214,
+			"level": 14,
+			"traits": [
+				"unique",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
 				"std": 30
 			},
-			"nature": {
-				"std": 25
-			},
-			"occultism": {
-				"std": 25
-			},
-			"religion": {
-				"std": 25
-			}
-		},
-		"abilityMods": {
-			"str": 4,
-			"dex": 5,
-			"con": 4,
-			"int": 5,
-			"wis": 5,
-			"cha": 8
-		},
-		"ac": {
-			"std": 36
-		},
-		"savingThrows": {
-			"fort": {
-				"std": 23
-			},
-			"ref": {
-				"std": 24
-			},
-			"will": {
-				"std": 28
-			}
-		},
-		"hp": [
-			{
-				"hp": 280,
-				"abilities": [
-					"destabilized form"
+			"languages": {
+				"languages": [
+					"Common",
+					"Tien"
 				]
-			}
-		],
-		"speed": {
-			"walk": 25
-		},
-		"attacks": [
-			{
-				"range": "Melee",
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"traits": [
-					"disarm",
-					"finesse",
-					"magical",
-					"sweep",
-					"tethered",
-					"trip"
-				],
-				"name": "rope dart",
-				"bonus": 29,
-				"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
 			},
-			{
-				"range": "Ranged",
-				"activity": {
-					"number": 1,
-					"unit": "action"
+			"skills": {
+				"acrobatics": {
+					"std": 28
 				},
-				"traits": [
-					"disarm",
-					"finesse",
-					"magical",
-					"sweep",
-					"tethered",
-					"thrown 80 feet",
-					"trip"
-				],
-				"name": "rope dart",
-				"bonus": 29,
-				"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
-			}
-		],
-		"abilities": {
-			"mid": [
+				"arcana": {
+					"std": 25
+				},
+				"athletics": {
+					"std": 25
+				},
+				"esoteric lore": {
+					"std": 30
+				},
+				"nature": {
+					"std": 25
+				},
+				"occultism": {
+					"std": 25
+				},
+				"religion": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 4,
+				"int": 5,
+				"wis": 5,
+				"cha": 8
+			},
+			"ac": {
+				"std": 36
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 23
+				},
+				"ref": {
+					"std": 24
+				},
+				"will": {
+					"std": 28
+				}
+			},
+			"hp": [
 				{
-					"name": "Destabilized Form When the",
-					"entries": [
-						"Echo has fewer than 140 Hit Points, his form destabilizes, large chunks disintegrating from his face, limbs, and torso. White moths constantly stream from the missing spaces, creating a 10-foot emanation that deals {@damage 6d6} mental damage with a DC 34 basic Will save.",
-						"As long as the aura persists, he can dissolve into moths and re-form at another location within 15 feet as a free action at the beginning of each of his turns; this has the occult, {@trait conjuration}, and {@trait teleportation} traits."
+					"hp": 280,
+					"abilities": [
+						"destabilized form"
 					]
-				},
-				{
-					"name": "Attack of Opportunity",
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"The Echo has reach 15 for the purpose of determining when {@action Attack of Opportunity} triggers and when making Attacks of Opportunity."
-					],
-					"generic": {
-						"tag": "ability"
-					}
 				}
 			],
-			"bot": [
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
 				{
-					"name": "Astral Spindle Implement The",
-					"entries": [
-						"Echo carries a drop spindle that constantly spins red astral thread, which is both his thaumaturgic implement and weapon. If his rope dart is lost or {@condition broken}, he can re-form it with an {@action Interact} action. If he critically succeeds at a rope dart {@action Strike}, overwhelming thoughts and figments flow down the thread into the target's mind. The target becomes {@condition confused} for 1 round."
-					]
-				},
-				{
-					"name": "Astral Thread Control",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": {
-						"freq": 1,
-						"unit": "round"
-					},
-					"requirements": "The Echo's previous action was a successful thrown rope dart {@action Strike}",
-					"entries": [
-						"The Echo flicks his wrist and makes a follow-up thrown rope dart {@action Strike} at a different target within 30 feet of the first target, using the same multiple attack penalty as his previous {@action Strike}. Regardless of whether his attack hits, he then retrieves the weapon."
-					]
-				},
-				{
-					"name": "Contingency Oathday-Nine-Rova",
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"frequency": {
-						"freq": 1,
-						"unit": "day"
-					},
-					"trigger": "The Echo's turn begins and he's {@condition stunned}, {@condition slowed}, {@condition confused}, {@condition controlled}, {@condition immobilized}, {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, or otherwise can't act",
-					"entries": [
-						"The Echo has set up numerous contingencies in the event he's compromised.",
-						"Talismans on his body shatter, counteracting the triggering effect. The Echo can use this free action even if he can't act."
-					]
-				},
-				{
-					"name": "Reconstitute from Thought",
+					"range": "Melee",
 					"activity": {
 						"number": 1,
 						"unit": "action"
 					},
 					"traits": [
-						"necromancy",
-						"healing"
+						"disarm",
+						"finesse",
+						"magical",
+						"sweep",
+						"tethered",
+						"trip"
 					],
-					"requirements": "The Echo is standing on one of the eight large islands of the map, and the island hasn't darkened",
-					"entries": [
-						"The Echo throws his rope dart into the island and uses it to absorb mental essence from the mindscape, repairing himself. He regains 45 Hit Points and the island turns a desaturated gray for 1 day, preventing future absorption and disabling the call of the void hazard on that island (see below)."
-					]
+					"name": "rope dart",
+					"bonus": 29,
+					"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
 				},
 				{
-					"name": "Spindle's Web[two-actions] The",
-					"entries": [
-						"Echo's spindle revolves faster and faster until it's a blur, lashing red threads in every direction. The threads deal {@damage 7d6} slashing damage and {@damage 7d6} mental damage to all creatures in a 30-foot emanation, with a DC 34 basic Reflex save. If a creature fails its save, the threads awaken the mindscape anchor within it, affecting it differently based on which anchor that creature used to gain access to the center of the mindscape. (If there is a PC who didn't absorb a mindscape anchor, for instance because there are more than four PCs in the party, then use the anchor of the PC closest to them.) The Echo then can't use Spindle's Web for {@dice 1d4} rounds.",
-						{
-							"type": "list",
-							"items": [
-								"Lantern The lantern outlines the creature with searing faerie fire that deals {@damage 2d6} {@condition persistent damage ||persistent fire damage}.",
-								"Mirror The mirror reflects the creature to another location, teleporting them to a clear space within 25 feet of their current location.",
-								"Chalice The chalice drains life force, granting the Echo temporary HP equal to half the damage dealt.",
-								"Tome The tome floods the creature's mind with information; the target is {@condition slowed||slowed 1} for 1 round."
-							]
-						}
-					]
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"disarm",
+						"finesse",
+						"magical",
+						"sweep",
+						"tethered",
+						"thrown 80 feet",
+						"trip"
+					],
+					"name": "rope dart",
+					"bonus": 29,
+					"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
 				}
-			]
-		}
-	},
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Destabilized Form When the",
+						"entries": [
+							"Echo has fewer than 140 Hit Points, his form destabilizes, large chunks disintegrating from his face, limbs, and torso. White moths constantly stream from the missing spaces, creating a 10-foot emanation that deals {@damage 6d6} mental damage with a DC 34 basic Will save.",
+							"As long as the aura persists, he can dissolve into moths and re-form at another location within 15 feet as a free action at the beginning of each of his turns; this has the occult, {@trait conjuration}, and {@trait teleportation} traits."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The Echo has reach 15 for the purpose of determining when {@action Attack of Opportunity} triggers and when making Attacks of Opportunity."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Astral Spindle Implement The",
+						"entries": [
+							"Echo carries a drop spindle that constantly spins red astral thread, which is both his thaumaturgic implement and weapon. If his rope dart is lost or {@condition broken}, he can re-form it with an {@action Interact} action. If he critically succeeds at a rope dart {@action Strike}, overwhelming thoughts and figments flow down the thread into the target's mind. The target becomes {@condition confused} for 1 round."
+						]
+					},
+					{
+						"name": "Astral Thread Control",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"requirements": "The Echo's previous action was a successful thrown rope dart {@action Strike}",
+						"entries": [
+							"The Echo flicks his wrist and makes a follow-up thrown rope dart {@action Strike} at a different target within 30 feet of the first target, using the same multiple attack penalty as his previous {@action Strike}. Regardless of whether his attack hits, he then retrieves the weapon."
+						]
+					},
+					{
+						"name": "Contingency Oathday-Nine-Rova",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "day"
+						},
+						"trigger": "The Echo's turn begins and he's {@condition stunned}, {@condition slowed}, {@condition confused}, {@condition controlled}, {@condition immobilized}, {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, or otherwise can't act",
+						"entries": [
+							"The Echo has set up numerous contingencies in the event he's compromised.",
+							"Talismans on his body shatter, counteracting the triggering effect. The Echo can use this free action even if he can't act."
+						]
+					},
+					{
+						"name": "Reconstitute from Thought",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy",
+							"healing"
+						],
+						"requirements": "The Echo is standing on one of the eight large islands of the map, and the island hasn't darkened",
+						"entries": [
+							"The Echo throws his rope dart into the island and uses it to absorb mental essence from the mindscape, repairing himself. He regains 45 Hit Points and the island turns a desaturated gray for 1 day, preventing future absorption and disabling the call of the void hazard on that island (see below)."
+						]
+					},
+					{
+						"name": "Spindle's Web[two-actions] The",
+						"entries": [
+							"Echo's spindle revolves faster and faster until it's a blur, lashing red threads in every direction. The threads deal {@damage 7d6} slashing damage and {@damage 7d6} mental damage to all creatures in a 30-foot emanation, with a DC 34 basic Reflex save. If a creature fails its save, the threads awaken the mindscape anchor within it, affecting it differently based on which anchor that creature used to gain access to the center of the mindscape. (If there is a PC who didn't absorb a mindscape anchor, for instance because there are more than four PCs in the party, then use the anchor of the PC closest to them.) The Echo then can't use Spindle's Web for {@dice 1d4} rounds.",
+							{
+								"type": "list",
+								"items": [
+									"Lantern The lantern outlines the creature with searing faerie fire that deals {@damage 2d6} {@condition persistent damage ||persistent fire damage}.",
+									"Mirror The mirror reflects the creature to another location, teleporting them to a clear space within 25 feet of their current location.",
+									"Chalice The chalice drains life force, granting the Echo temporary HP equal to half the damage dealt.",
+									"Tome The tome floods the creature's mind with information; the target is {@condition slowed||slowed 1} for 1 round."
+								]
+							}
+						]
+					}
+				]
+			}
+		},
 		{
 			"name": "Mother Mitera",
 			"source": "DA",

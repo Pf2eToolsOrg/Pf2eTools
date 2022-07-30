@@ -2416,6 +2416,7 @@ function Renderer () {
 					case "@place":
 					case "@plane":
 					case "@nation":
+					case "@mindscape":
 					case "@settlement":
 						fauxEntry.href.path = UrlUtil.PG_PLACES;
 						fauxEntry.href.hover = {
@@ -5490,6 +5491,7 @@ Renderer.creatureTemplate = {
 Renderer.place = {
 	getRenderedString (it, opts) {
 		if (it.category.toLowerCase() === "plane") return Renderer.plane.getRenderedString(it, opts)
+		if (it.category.toLowerCase() === "mindscape") return Renderer.plane.getRenderedString(it, opts)
 		if (it.category.toLowerCase() === "settlement") return Renderer.settlement.getRenderedString(it, opts)
 		if (it.category.toLowerCase() === "nation") return Renderer.nation.getRenderedString(it, opts)
 	},
@@ -5500,8 +5502,8 @@ Renderer.plane = {
 		opts = opts | {}
 		const renderer = Renderer.get()
 		const renderStack = []
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "plane", UrlUtil.PLACES))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: "PLANE", ...opts }))
+		renderStack.push(Renderer.utils.getExcludedDiv(it, it.category.toLowerCase() ?? "plane", UrlUtil.PLACES))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: it.category.toUpperCase() ?? "PLANE", ...opts }))
 		renderStack.push(Renderer.utils.getDividerDiv())
 		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
 		renderStack.push(Renderer.plane.getSubHead(it))
@@ -5510,11 +5512,12 @@ Renderer.plane = {
 		return renderStack.join("");
 	},
 	getSubHead (it) {
+		if (!it.planeData) return "";
 		const renderer = Renderer.get()
 		const renderStack = []
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
+		if (it.planeData.category) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
+		if (it.planeData.divinities) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
+		if (it.planeData.inhabitants) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
 		renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("")
 	},
@@ -8023,6 +8026,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@trait":
 					case "@place":
 					case "@plane":
+					case "@mindscape":
 					case "@nation":
 					case "@ritual":
 					case "@settlement":
