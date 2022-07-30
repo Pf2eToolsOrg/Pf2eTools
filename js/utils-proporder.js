@@ -342,7 +342,7 @@ PropOrder._CREATURE = [
 	new PropOrder._ObjectKey("languages", {
 		order: [
 			"languages",
-			"languageAbilities",
+			"abilities",
 		],
 	}),
 	"skills",
