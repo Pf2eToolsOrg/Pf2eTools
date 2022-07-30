@@ -1739,6 +1739,670 @@
 			]
 		},
 		{
+			"name": "Cinder Gaze",
+			"source": "DA",
+			"page": 142,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"rare",
+				"cleric",
+				"divination",
+				"prediction"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Fire (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"entries": [
+				"You've learned to read the future in the patterns of flames and smoke. Though inexact and often symbolic, these readings help prepare you for upcoming events. When Casting this Spell, you must be near a fire (of any size) for the duration.",
+				"Upon completion, roll {@dice 1d4} for your prediction. The benefit lasts for 10 minutes or until expended, whichever comes first. After casting cinder gaze, you can't cast it again for 10 minutes.",
+				"1. Terrible Danger You gain a +2 status bonus to your next initiative roll.",
+				"2. New Life The next time you take damage, just before taking the damage, you gain temporary Hit Points equal to 1 plus your spellcasting ability modifier.",
+				"3. Vivid Insight (fortune) The next time you attempt a check to {@action Recall Knowledge}, roll twice and take the higher result. 4. Good Fortune (fortune) The next time you attempt a saving throw, roll twice and take the better result."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The number of temporary Hit Points from new life increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Euphoric Renewal",
+			"source": "DA",
+			"page": 142,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"necromancy"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Death (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You view death not as an ending but a beginning, and you delight in dancing on its edge. Each time you gain the {@condition dying} condition and then regain consciousness while under the effect of euphoric renewal, you gain three benefits.",
+				{
+					"type": "list",
+					"items": [
+						"You're {@condition quickened} on your next turn. You can use the extra action only to {@action Stand}.",
+						"You gain a +1 circumstance bonus to saves for 1 minute.",
+						"You gain 8 temporary Hit Points that last for 1 minute."
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The number of temporary HP increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Frenzied Revelry",
+			"source": "DA",
+			"page": 142,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"rare",
+				"cleric",
+				"emotion",
+				"enchantment",
+				"mental"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Indulgence (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "5-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"targets": "you and allies in the area",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You recall memories of hedonistic rites to send yourself into an infectious frenzy, dancing and howling wildly to encourage your companions to join in. You and your allies gain a +1 status bonus to saving throws against {@trait mental} effects while in the area. Whenever someone benefiting from this bonus critically succeeds at a saving throw against an enemy's {@trait mental} effect, its revelry increases, granting it a +1 status bonus to attack rolls and damage rolls for 1 round."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The emanation's radius is 10 feet, and the status bonus to saves is +2."
+					],
+					"7": [
+						"The emanation's radius is 15 feet, and the status bonus to saves is +3."
+					]
+				}
+			}
+		},
+		{
+			"name": "Hollow Heart",
+			"source": "DA",
+			"page": 142,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"rare",
+				"cleric",
+				"emotion",
+				"enchantment",
+				"fear",
+				"mental"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Ambition (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You stoke the target's ambition beyond reason, until it believes no one is capable of helping it, or that others aren't to be trusted. The target attempts a Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target treats no other creature as an ally for 1 round. Archive"
+						],
+						"Failure": [
+							"The target treats no other creature as an ally for 3 rounds."
+						],
+						"Critical Failure": [
+							"As failure, and the target is {@condition frightened||frightened 1} as it realizes it can't rely on anyone but itself."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Isolation",
+			"source": "DA",
+			"page": 143,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"illusion"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Darkness (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 3,
+				"unit": "round"
+			},
+			"entries": [
+				"You summon a tangible manifestation of loneliness to cloak the target from view as surely as if it were wreathed in darkness. The target attempts a Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target becomes {@condition invisible}, but only to its allies. Any creature not allied with the target can see it normally. Effects such as see invisibility enable an ally to see the target. The target's allies still know the target is present and can still see all the effects of the target's actions."
+						],
+						"Failure": [
+							"As success, except the target also becomes inaudible to its allies and imperceptible to them through any other senses."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Inevitable Destination",
+			"source": "DA",
+			"page": 143,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"conjuration"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Travel (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "you and 1 enemy",
+			"duration": {
+				"number": 2,
+				"unit": "round"
+			},
+			"entries": [
+				"You twist the paths of the target, ensuring that each one leads to you. The target attempts a Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"As failure, plus the target is pulled 10 feet closer to you and falls {@condition prone}, tripping in its haste to move toward you."
+						],
+						"Success": [
+							"Your pull hampers the target's footsteps. It takes a \u201310-foot circumstance penalty to its Speeds until the end of its next turn."
+						],
+						"Failure": [
+							"The target can't move any farther from you than it was when you Cast the Spell, though it can move in such a way that it maintains an equal distance. If you move farther away from the target than the initial distance, the spell ends. The targeted foe can attempt to {@action Escape} against your spell DC. If it succeeds, the spell ends."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Purifying Veil",
+			"source": "DA",
+			"page": 143,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"evocation",
+				"good",
+				"water"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Water (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 Large or smaller creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Drawing on the purifying powers of water, you call forth a veil of fine water droplets suffused with holy energy. The veil surrounds the target. Everything on each side of the veil is {@condition concealed} from creatures on the opposite side, but the water doesn't impede attacks or movement across the veil. If the target moves through the veil, it takes {@damage 4d6} good damage with a basic Will save. If the target leaves the veil, the spell ends."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The good damage increases by {@dice 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Shaken Confidence",
+			"source": "DA",
+			"page": 143,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"emotion",
+				"enchantment",
+				"mental",
+				"misfortune"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Confidence (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"trigger": "An enemy within 30 feet of you critically fails an attack roll, {@skill Perception} check, or skill check.",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You mock the target for all its failings, twisting its selfconfidence into doubt. The enemy attempts a Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"The target is briefly shaken and unsure of its abilities. It must roll twice and take the worse result on the next roll of the same type as the critical failure that triggered the spell (such as the target's next {@skill Acrobatics} check if the spell's trigger was a critical failure on an {@skill Acrobatics} check). If the target doesn't attempt any qualifying checks, the spell ends at the end of the target's next turn."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "String of Fate",
+			"source": "DA",
+			"page": 143,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"rare",
+				"abjuration",
+				"cleric",
+				"fortune"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Fate (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "you and 1 ally",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You bond yourself to a cherished friend, vowing to share their fate for good or for ill. Whenever an effect would require both you and the target to attempt a saving throw, if one of you succeeds at your saving throw and the other critically fails, you can choose to both fail instead. You and the ally must agree to fail; otherwise, use your normal save results instead."
+			]
+		},
+		{
+			"name": "Victory Cry",
+			"source": "DA",
+			"page": 143,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"rare",
+				"cleric",
+				"evocation",
+				"sonic"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Might (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"trigger": "An ally within range critically succeeds at a melee {@action Strike}.",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "the triggering ally",
+			"entries": [
+				"Your true might comes from your bonds with your allies, and you glory in their achievements. The weapon used to make the {@action Strike} deals an additional {@damage 1d6} sonic damage (not doubled due to the critical hit), and the ally can immediately attempt to {@action Shove} the creature struck, even if the ally's hands are full.",
+				"Your ally can use its item bonus to the triggering attack roll on the {@skill Athletics} check, if any, and it gains a +1 status bonus to the {@skill Athletics} check if the triggering {@action Strike} was with a weapon that has the {@trait trip} trait or an unarmed attack that has the {@trait trip} trait."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The sonic damage increases by {@dice 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Weaponize Secret",
+			"source": "DA",
+			"page": 143,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"divination",
+				"mental"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Secrecy (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "up to 3 creatures",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You understand that holding a secret is in itself a kind of power. Each target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"A rune symbolizing a secret the target is keeping (at the GM's discretion) appears floating in front of you. If that creature attempts a {@action Strike} or spell attack against you while you hold their secret, you can discharge the rune as a reaction to deal {@damage 7d6} mental damage to the creature."
+						],
+						"Critical Failure": [
+							"As failure, but the target becomes convinced you know their secret and takes {@damage 1d6} {@condition persistent damage ||persistent mental damage} from worry. If the rune with the secret is discharged while the creature is still taking the {@condition persistent damage ||persistent mental damage}, the {@condition persistent damage ||persistent mental damage} immediately ends."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The mental damage increases by {@dice 2d6}, and the {@condition persistent damage ||persistent mental damage} on a critical failure increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wind Whispers",
+			"source": "DA",
+			"page": 144,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"enchantment",
+				"linguistic",
+				"mental"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Air (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "mile",
+				"number": 1
+			},
+			"entries": [
+				"You call forth numerous breezes in which you weave gossip, whispering subtly into the ears of those around. Choose a rumor or information you wish to spread, which may or may not be true, about a single subject. Those within range of the spell overhear the rumor at some point over the next hour, though they'll be unable to pin it down to a source. Attempt a check with a modifier equal to your spell DC \u2013 10 against a hard DC for your level. The GM might modify the DC depending on how plausible the rumor is. Repeated castings to spread the same rumor or information have no effect unless circumstances have substantially changed, as determined by the GM.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"Your rumor spreads far and wide, and it's at the tip of people's tongues. For 1 week, anyone who succeeds at a check to {@action Gather Information} on the specific subject learns your rumor in preference to other rumors about the subject. Skill checks to convince people that the rumor is true get a +2 circumstance bonus."
+						],
+						"Success": [
+							"Enough people take note of the rumor that it begins to spread, though those who heard the rumor aren't necessarily convinced. For 1 week, anyone who succeeds at a check to {@action Gather Information} on the specific subject adds your rumor to the list of rumors they could learn about the subject, and skill checks to convince people that the rumor is true get a +1 circumstance bonus."
+						],
+						"Failure": [
+							"Most in the area dismiss the rumor as wild gossip and pay it little mind, granting no effect."
+						],
+						"Critical Failure": [
+							"The winds' gossip is misinterpreted and spreads information contradictory to the rumor you were attempting to spread. A contradictory rumor spreads, and skill checks to convince others that your original rumor is true take a \u20132 circumstance penalty."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Wordsmith",
+			"source": "DA",
+			"page": 144,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"rare",
+				"cleric",
+				"transmutation"
+			],
+			"subclass": {
+				"Cleric|Domain": [
+					"Knowledge (Apocryphal)"
+				]
+			},
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 document written by a single author and comprised of written text in a single language",
+			"duration": {
+				"unit": "unknown",
+				"entry": "until the next time you {@action Refocus}"
+			},
+			"entries": [
+				"You're a devotee of knowledge with an unmatched command of the language used to spread that knowledge, and you can reshape the written word into a form more understandable to your audience. The language of the target's written text shifts to a language you know. This shift doesn't change the text's contents beyond minor translation differences, nor does it grant the reader any understanding of the original language."
+			]
+		},
+		{
 			"name": "Dancing Blade",
 			"source": "DA",
 			"page": 17,

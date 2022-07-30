@@ -1493,7 +1493,8 @@
 			"entries": [
 				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
 			]
-		},{
+		},
+		{
 			"name": "Alter Ego Dedication",
 			"source": "DA",
 			"page": 126,
@@ -1527,6 +1528,15 @@
 			],
 			"special": [
 				"You can't select another dedication feat until you've gained two other feats from the alter ego archetype."
+			],
+			"leadsTo": [
+				"Change of Face|DA",
+				"Fake It Till You Make It|DA",
+				"In Plain Sight|DA",
+				"Sound Mirror|DA",
+				"Muscle Mimicry|DA",
+				"Swap Reflections|DA",
+				"Borrow Memories|DA"
 			]
 		},
 		{
@@ -1677,7 +1687,8 @@
 					}
 				}
 			]
-		},{
+		},
+		{
 			"name": "Living Vessel Dedication",
 			"source": "DA",
 			"page": 140,
@@ -1714,6 +1725,14 @@
 			],
 			"special": [
 				"You can't select another dedication feat until you've gained two other feats from the living vessel archetype."
+			],
+			"leadsTo": [
+				"Entity's Strike|DA",
+				"Tap Vitality|DA",
+				"Exude Abyssal Corruption|DA",
+				"Fey's Trickery|DA",
+				"Warped Constriction|DA",
+				"Vessel's Form|DA"
 			]
 		},
 		{
@@ -1729,7 +1748,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Living Vessel Dedication",
+			"prerequisites": "{@feat Living Vessel Dedication|DA}",
 			"entries": [
 				"The more you try to force your body to stay yours, the more it warps to channel the energy flowing through you.",
 				"Whether you grow horns to match the wild hunt fey within you, develop a claw like that of the treachery demon sharing your soul, or feel a tentacle rip out of you from the outer being that imprinted itself on your psyche, the entity within you refuses to be contained. You gain an unarmed attack of your choice with its type determined by your entity. It deals {@dice 1d6} damage of a damage type appropriate for the unarmed attack (such as bludgeoning for the tentacle). This unarmed attack is in the brawling weapon group and has the agile, {@trait finesse}, and {@trait magical} traits."
@@ -1756,7 +1775,7 @@
 				"necromancy",
 				"positive"
 			],
-			"prerequisites": "Living Vessel Dedication",
+			"prerequisites": "{@feat Living Vessel Dedication|DA}",
 			"frequency": {
 				"freq": 1,
 				"unit": "hour"
@@ -1787,7 +1806,7 @@
 				"manipulate",
 				"poison"
 			],
-			"prerequisites": "Living Vessel Dedication, your entity is a demon",
+			"prerequisites": "{@feat Living Vessel Dedication|DA}, your entity is a demon",
 			"entries": [
 				"Most of the changes from the demon within you have harmed you so far, but you've found a way to expel some of the corruption within you to poison others. Until the beginning of your next turn, you and your weapons are covered in toxic sludge or another similar manifestation of the demonic corruption; your melee Strikes deal an additional {@damage 1d6} poison damage, and each time a creature hits you with a melee unarmed attack or otherwise touches you, it takes {@damage 1d6} poison damage.",
 				"At 14th level, the poison damage increases to {@dice 2d6}, and at 20th level, the poison damage increases to {@dice 3d6}."
@@ -1813,7 +1832,7 @@
 				"primal",
 				"visual"
 			],
-			"prerequisites": "Living Vessel Dedication, your entity is a fey",
+			"prerequisites": "{@feat Living Vessel Dedication|DA}, your entity is a fey",
 			"frequency": {
 				"freq": 1,
 				"unit": "hour"
@@ -1839,7 +1858,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Living Vessel Dedication, your entity is an aberration or outer entity",
+			"prerequisites": "{@feat Living Vessel Dedication|DA}, your entity is an aberration or outer entity",
 			"requirements": "You have a foe {@condition grabbed} or {@condition restrained}.",
 			"entries": [
 				"The entity inhabiting your body is an aberrant being with unfathomable motivations, and when you hold a foe close, tendrils and tentacles unfurl from your body to crush your foe and pollute it with alien wrongness. Your {@condition grabbed} or {@condition restrained} foe takes bludgeoning damage equal to your level and mental damage equal to your highest mental ability modifier. The creature attempts a basic Will save that applies to both types of damage and uses the higher of your class DC or spell DC."
@@ -1865,7 +1884,7 @@
 				"polymorph",
 				"transmutation"
 			],
-			"prerequisites": "Living Vessel Dedication",
+			"prerequisites": "{@feat Living Vessel Dedication|DA}",
 			"frequency": {
 				"freq": 1,
 				"unit": "day"
@@ -1877,7 +1896,7 @@
 					"items": [
 						"If you were Medium or smaller, you become Large, and your reach increases to 10 feet.",
 						"You gain a +2 status bonus to attack and damage rolls and a +1 status bonus on saving throws against spells. If you use Entity's Resurgence, the status bonuses to attack and damage rolls increase to +3 during the time that the two effects overlap.",
-						"If you have the Entity's {@action Strike} feat, the unarmed attack you gained from that feat increases its damage die from {@dice 1d6} to {@dice 1d8}.",
+						"If you have the {@feat Entity's Strike|DA} feat, the unarmed attack you gained from that feat increases its damage die from {@dice 1d6} to {@dice 1d8}.",
 						"You gain 40 temporary Hit Points.",
 						"You gain a fly Speed equal to your Speed."
 					]

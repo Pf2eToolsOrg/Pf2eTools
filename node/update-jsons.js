@@ -60,6 +60,10 @@ function updateFolder (folder) {
 						x.range.unit = x.range.type
 						delete x.range.type
 					}
+					if (x.subclass["Cleric|Domain"]) {
+						x.domains = x.subclass["Cleric|Domain"]
+						delete x.subclass["Cleric|Domain"]
+					}
 					return x
 				})
 			}
