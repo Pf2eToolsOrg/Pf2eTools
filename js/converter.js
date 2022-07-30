@@ -72,6 +72,7 @@ class Converter {
 		this._page = 0;
 		this._tokenStack = [];
 		this._isParsingCreature = null;
+		this._parsing = null;
 	}
 
 	_preprocessString (string) {
@@ -162,6 +163,7 @@ class Converter {
 		spell.source = this._source;
 		spell.page = this._page;
 		spell.entries = [""];
+		this._parsing = spell.name;
 		this._parseTraits(spell);
 		this._parseProperties(spell);
 		this._parseEntries(spell, {getEntriesOpts: {doFinalize: true}});
@@ -169,6 +171,7 @@ class Converter {
 			this._cbWarn(`Token stack was not empty after parsing spell "${spell.name}"!`);
 			this._tokenStack = [];
 		}
+		this._parsing = null;
 		return PropOrder.getOrdered(spell, "spell");
 	}
 	_parseFeat () {
@@ -184,6 +187,7 @@ class Converter {
 		feat.source = this._source;
 		feat.page = this._page;
 		feat.entries = [""];
+		this._parsing = feat.name;
 		this._parseTraits(feat);
 		this._parseProperties(feat);
 		this._parseEntries(feat, {getEntriesOpts: {doFinalize: true}});
@@ -191,6 +195,7 @@ class Converter {
 			this._cbWarn(`Token stack was not empty after parsing feat "${feat.name}"!`);
 			this._tokenStack = [];
 		}
+		this._parsing = null;
 		return PropOrder.getOrdered(feat, "feat");
 	}
 	// TODO: Intelligent Items (n=8)
@@ -206,6 +211,7 @@ class Converter {
 		item.source = this._source;
 		item.page = this._page;
 		item.entries = [""];
+		this._parsing = item.name;
 		this._parseTraits(item);
 		this._parseProperties(item);
 		this._parseItemCategory(item);
@@ -220,6 +226,7 @@ class Converter {
 			this._cbWarn(`Token stack was not empty after parsing item "${item.name}"!`);
 			this._tokenStack = [];
 		}
+		this._parsing = null;
 		return PropOrder.getOrdered(item, "item");
 	}
 	_parseBackground () {
@@ -231,6 +238,7 @@ class Converter {
 		background.name = name.toTitleCase();
 		background.source = this._source;
 		background.page = this._page;
+		this._parsing = background.name;
 		this._parseTraits(background);
 		this._parseProperties(background);
 		this._parseEntries(background, {getEntriesOpts: {doFinalize: true}});
@@ -242,6 +250,7 @@ class Converter {
 			this._cbWarn(`Token stack was not empty after parsing background "${background.name}"!`);
 			this._tokenStack = [];
 		}
+		this._parsing = null;
 		return PropOrder.getOrdered(background, "background");
 	}
 	_parseCreature () {
@@ -255,6 +264,7 @@ class Converter {
 		creature.level = Number(level);
 		creature.source = this._source;
 		creature.page = this._page;
+		this._parsing = creature.name;
 		this._parseTraits(creature);
 		if (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
 			const entries = this._getEntries();
@@ -267,6 +277,7 @@ class Converter {
 			this._tokenStack = [];
 		}
 		this._isParsingCreature = null;
+		this._parsing = null;
 		return PropOrder.getOrdered(creature, "creature");
 	}
 
@@ -689,13 +700,39 @@ class Converter {
 		this._consumeToken(this._tokenizerUtils.languages);
 		const entries = this._getEntries();
 		const languages = {};
-		// FIXME: Newlines will ruin this. Also very ill conditioned
-		if (this._tokensAreTypes(entries, [this._tokenizerUtils.sentences])) {
-			languages.languages = this._renderEntries(entries, {asString: true}).split(", ");
-		} else if (this._tokensAreTypes(entries, [this._tokenizerUtils.sentencesSemiColon, this._tokenizerUtils.sentences])) {
-			languages.languages = this._renderEntries([entries[0]], {asString: true}).split(", ");
-			languages.abilities = this._renderEntries([entries[1]], {asString: true}).split(", ");
-		} else throw new Error(`Couldnt parse languages: ${entries}`)
+
+		const numSemis = entries.filter(e => this._tokenIsType(this._tokenizerUtils.sentencesSemiColon, e)).length;
+		if (numSemis === 0) {
+			// assume no abilities
+			languages.languages = [];
+			entries.forEach(entry => {
+				if (this._tokenIsType(this._tokenizerUtils.sentences, entry)) {
+					const rendered = this._renderEntries([entry], {asString: true});
+					languages.languages.push(...rendered.split(", "));
+				} else if (this._tokenIsType(this._tokenizerUtils.parenthesis, entry)) {
+					languages.languages[languages.languages.length - 1] += ` ${this._renderToken(entry)}`;
+				} else {
+					throw new Error(`Unexpected token while paring languages: "${entry.type}"`);
+				}
+			});
+		} else if (numSemis === 1) {
+			const ixSemi = entries.findIndex(e => this._tokenIsType(this._tokenizerUtils.sentencesSemiColon, e));
+			languages.languages = this._renderEntries(entries.slice(0, ixSemi + 1), {asString: true}).split(", ");
+			languages.abilities = this._renderEntries(entries.slice(ixSemi + 1), {asString: true}).split(", ");
+		} else {
+			// assume no abilities, languages seperated by semicolon
+			languages.languages = [];
+			entries.forEach(entry => {
+				if (this._tokenIsType(this._tokenizerUtils.sentences, entry)) {
+					const rendered = this._renderEntries([entry], {asString: true});
+					languages.languages.push(...rendered);
+				} else if (this._tokenIsType(this._tokenizerUtils.parenthesis, entry)) {
+					languages.languages[languages.languages.length - 1] += ` ${this._renderToken(entry)}`;
+				} else {
+					throw new Error(`Unexpected token while paring languages: "${entry.type}"`);
+				}
+			});
+		}
 		creature.languages = languages;
 	}
 	_parseSkills (creature) {
@@ -705,7 +742,7 @@ class Converter {
 		const regexOtherBonus = /\+(\d+)\s([\w\s]+)/g;
 		while (this._tokenIsType(this._tokenizerUtils.skills)) {
 			const token = this._consumeToken(this._tokenizerUtils.skills);
-			const skill = token.value.trim().toLowerCase();
+			const skill = token.value.trim().toLowerCase().replace(/\s/g, " ");
 			skills[skill] = {};
 			for (let i = 0; i < 2; i++) {
 				if (this._tokenIsType("PARENTHESIS")) {
@@ -721,6 +758,7 @@ class Converter {
 		}
 		// FIXME: Skill abilities! Could also be regular ability? Probably not.
 		const entries = this._getEntries();
+		if (entries.length) throw new Error(`Skill abilities are not implemented yet! ${entries}`);
 		creature.skills = skills;
 	}
 	_parseAbilityScores (creature) {
@@ -954,7 +992,9 @@ class Converter {
 				const matchSource = reSources.exec(e.replace(/[^\w\s]/g, ""));
 				const src = Parser._parse_bToA(Parser.SOURCE_JSON_TO_FULL, matchSource[0]).toLowerCase();
 				if (src && src !== SRC_CRB.toLowerCase()) spells[spells.length - 1].source = src;
-			} else spells[spells.length - 1].note = str;
+			} else {
+				spells[spells.length - 1].note = [...(spells[spells.length - 1].note || "").split("; ").filter(Boolean), e].join("; ");
+			}
 		});
 	}
 	_parseSpells_parseSpells () {
@@ -1053,15 +1093,9 @@ class Converter {
 		const lookAhead = this._getLookahead();
 		if (lookAhead && this._tokenIsType(this._tokenizerUtils.afflictions, lookAhead)) {
 			const affliction = this._parseAffliction();
-			// affliction.isAffliction = true;
 			creature.abilities[section].push(affliction);
 		} else {
-			const nameToken = this._consumeToken(this._tokenizerUtils.sentences);
-			const rendered = this._renderToken(nameToken);
-			const abilityName = this._getAbilityName(rendered);
-			if (abilityName == null) throw new Error(`"${rendered}" isn't an ability name!`);
-			ability.name = abilityName.name;
-			if (abilityName.entry.length) this._push({type: nameToken.type, value: abilityName.entry});
+			ability.name = this._getAbilityName({doConsumeTokens: true})
 			this._parsedAbilities.push(ability.name);
 
 			// TODO (?): Currently there seem to be no creature abilities with time unit minute, hour,...
@@ -1134,6 +1168,7 @@ class Converter {
 		const parseEntryTypes = (token) => {
 			if (this._tokenIsType(this._tokenizerUtils.successDegrees, token)) entriesOut.push(this._parseSuccessDegrees());
 			else if (this._tokenIsType(this._tokenizerUtils.shieldData)) this._parseShieldData(obj, opts);
+			else if (this._tokenIsType(this._tokenizerUtils.amp, token)) this._parseAmp(obj);
 			else if (this._tokenIsType(this._tokenizerUtils.heightened, token)) this._parseHeightened(obj);
 			else if (this._tokenIsType(this._tokenizerUtils.listMarker, token)) entriesOut.push(this._parseList());
 			else if (!opts.noAbilities && this._tokenIsType(this._tokenizerUtils.activate, token)) entriesOut.push(this._parseActivate());
@@ -1177,9 +1212,34 @@ class Converter {
 
 		return {type: "successDegree", entries};
 	}
+	_parseAmp (obj) {
+		const amp = {};
+		while (this._tokenIsType(this._tokenizerUtils.amp)) {
+			const token = this._consumeToken(this._tokenizerUtils.amp);
+			switch (token.type) {
+				case "AMP": {
+					amp.entries = this._renderEntries(this._getEntries());
+					break;
+				} case "AMP_HEIGHTENED_PLUS_X": {
+					amp.heightened = amp.heightened || {};
+					amp.heightened.plusX = amp.heightened.plusX || {};
+					const level = /\d+/.exec(token.value)[0];
+					amp.heightened.plusX[level] = this._renderEntries(this._getEntries({checkLookahead: true}));
+					break;
+				} case "AMP_HEIGHTENED_X": {
+					amp.heightened = amp.heightened || {};
+					amp.heightened.X = amp.heightened.X || {};
+					const level = /\d+/.exec(token.value)[0];
+					amp.heightened.X[level] = this._renderEntries(this._getEntries({checkLookahead: true}));
+					break;
+				} default: throw new Error(`Unimplemented! ${token.type}`)
+			}
+		}
+
+		obj.amp = amp;
+	}
 	_parseHeightened (obj) {
 		const entries = {};
-		// FIXME: Change this to conform to the sites data
 		const getHeightenedEntries = () => {
 			const token = this._consumeToken(this._tokenizerUtils.heightened);
 			if (token.type === "HEIGHTENED_PLUS_X") {
@@ -1525,16 +1585,80 @@ class Converter {
 		return rendered;
 	}
 
-	// TODO: NPC names fuck this up as well
-	// TODO: Ability names with special characters.
-	_getAbilityName (str) {
-		const words = str.split(" ");
-		const wordsCleaned = words.map(w => w.replace(/(^\W+|\W+$)/, ""));
-		const ixFirstLower = wordsCleaned.findIndex(w => !/^[A-Z]/.test(w) && !StrUtil.TITLE_LOWER_WORDS.includes(w));
-		if (ixFirstLower === -1) return {name: words.join(" "), entry: ""};
-		const ixNameEnd = ixFirstLower - wordsCleaned.slice(0, ixFirstLower).reverse().findIndex(w => /^[A-Z]/.test(w));
-		if (ixNameEnd > 1) return {name: words.slice(0, ixNameEnd - 1).join(" "), entry: words.slice(ixNameEnd - 1).join(" ")};
-		return null;
+	// Cases:
+	// [Ability Name] (Activation/Parenthesis)					| The entire text is the name.
+	// [Ability Name] The entry of the ability.					| Generally, the last consecutive uppercase word is the first word of the entry.
+	// [Ability Name] The [Name of Creature] does something.	| Named NPCs are an exception.
+	// [Ability Name] Something the [Name of Creature] does.	| Names need not be at the start of the entry!
+	// [Name of Ability!] The entry of the ability.				| Punctuation and TitleCase is another exception.
+	// Just some text.											| If only one uppercase word is at the start, it's not an ability name.
+	_getAbilityName (opts) {
+		opts = opts || {doConsumeTokens: false};
+		const tokens = [this._peek()];
+		let i = 1;
+		while (this._peek(i) && this._tokenIsType(this._tokenizerUtils.sentences, this._peek(i)) && !this._peek(i).isStartNewLine) {
+			tokens.push(this._peek(i++));
+		}
+		const renderedLine = this._renderEntries(tokens, {noTags: true, asString: true});
+		const nameWords = this._parsing != null ? this._parsing.split(" ").map(w => w.escapeRegexp()) : [];
+		let name;
+
+		const getName = (str) => {
+			// Find the longest run of word such that:
+			// - All Words are title-cased
+			// - The last word is uppercase
+			// - The next word is uppercase
+			const parts = [];
+			const split = str.split(" ").reverse();
+			// push all title-case words onto the name, then remove fewest to match conditions
+			// Numbers count as uppercase: Aura ranges and others
+			while (split.length && (/^\W?[A-Z\d]/.test(split.last()) || StrUtil.TITLE_LOWER_WORDS.includes(split.last()))) {
+				parts.push(split.pop());
+			}
+			while (parts.length && (!/^\W?[A-Z\d]/.test(parts.last()) || !/^\W?[A-Z\d]/.test(split.last()))) {
+				split.push(parts.pop());
+			}
+			return parts.join(" ");
+		}
+
+		if (/^([^\w\s]?[A-Z]\S+ )+$/.test(renderedLine)) {
+			// All words capitalized
+			name = renderedLine;
+		} else if (renderedLine === renderedLine.toTitleCase()) {
+			// All words TitleCase
+			name = renderedLine;
+		} else if (nameWords.length) {
+			const reGroup = nameWords.map((x, i) => `${nameWords.slice(0, i + 1).join(" ")}${i === nameWords.length - 1 ? ".+" : "$"}`).join("|");
+			const regex = new RegExp(`^(.*?) (${reGroup})`);
+			const match = regex.exec(renderedLine);
+			name = match ? getName(match[1]) : getName(renderedLine);
+		} else {
+			name = getName(renderedLine);
+		}
+		name = name.replace(/ The$/, "");
+		name = name.replace(/ ?As( .+$|$)/, "");
+
+		if (opts.doConsumeTokens) {
+			// Find first token such that name is entirely contained in tokens up to it
+			let idx = 0;
+			let startOfLine = "";
+
+			if (!name) throw new Error(`Error while parsing ability name: expected name but found none.`);
+
+			while (!startOfLine.startsWith(name)) {
+				if (idx > tokens.length) throw new Error(`Error while parsing ability name: "${name}"`);
+				startOfLine = this._renderEntries(tokens.slice(0, idx + 1), {noTags: true, asString: true});
+				idx += 1;
+			}
+			let lastConsumedToken = null;
+			for (let i = 0; i < idx; i++) lastConsumedToken = this._consumeToken(tokens[i].type);
+			if (startOfLine !== name) {
+				lastConsumedToken.value = startOfLine.replace(new RegExp(name), "").trim();
+				this._push(lastConsumedToken);
+			}
+		}
+
+		return name;
 	}
 	_isAbilityName () {
 		const peeked = this._peek();
@@ -1544,7 +1668,7 @@ class Converter {
 		if (/^[^A-Z]/.test(rendered)) return false;
 		if (/^[A-Z]\w+\.$/.test(rendered)) return false;
 		if (this._parsedAbilities && this._parsedAbilities.length && this._parsedAbilities.some(a => rendered.startsWith(a))) return false;
-		if (this._getAbilityName(rendered)) return true;
+		if (this._getAbilityName()) return true;
 		return null;
 	}
 	_getLookahead (maxDepth = 3, lookAheadTypes = null) {
