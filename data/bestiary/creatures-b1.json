@@ -19596,6 +19596,20 @@
 							"The desert drake spits a ball of electrically charged sand to a range of 60 feet that explodes into a cloud with a 15-foot-radius burst. Creatures in the area take {@damage 9d6} electricity damage (DC 27 basic Reflex save). The cloud remains for {@dice 1d4} rounds, granting concealment to everything within. The desert drake can't use Sandstorm Breath again for {@dice 1d6} rounds."
 						],
 						"name": "Sandstorm Breath"
+					},
+					{
+						"name": "Speed Surge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": "three",
+							"unit": "day"
+						},
+						"entries": [
+							"The desert drake {@action Stride||Strides} or {@action Fly||Flies} twice."
+						]
 					}
 				]
 			},
@@ -26457,6 +26471,20 @@
 							"The flame drake expels a ball of flame to a range of 180 feet that explodes in a 20-foot burst. Creatures in the burst take {@damage 6d6} fire damage (DC 22 basic Reflex save). The flame drake can't use Fireball Breath again for {@dice 1d6} rounds."
 						],
 						"name": "Fireball Breath"
+					},
+					{
+						"name": "Speed Surge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": "three",
+							"unit": "day"
+						},
+						"entries": [
+							"The flame drake {@action Stride||Strides} or {@action Fly||Flies} twice."
+						]
 					}
 				]
 			},
@@ -26900,6 +26928,20 @@
 							"A frost drake can climb on ice as though it had the listed climb Speed. It ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} from ice and snow and doesn't risk falling when crossing ice."
 						],
 						"name": "Ice Climb"
+					},
+					{
+						"name": "Speed Surge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": "three",
+							"unit": "day"
+						},
+						"entries": [
+							"The frost drake {@action Stride||Strides} or {@action Fly||Flies} twice."
+						]
 					}
 				]
 			},
@@ -40315,9 +40357,42 @@
 					},
 					{
 						"entries": [
-							"Grab, but the jungle drake's Grab does not end if it moves away. Instead, it carries the {@condition grabbed} creature with it. A jungle drake can't {@action Fly} while grabbing a creature unless that creature can also {@action Fly}."
+							"As {@ability Grab}, but the jungle drake's {@ability Grab} does not end if it moves away. Instead, it carries the {@condition grabbed} creature with it. A jungle drake can't {@action Fly} while grabbing a creature unless that creature can also {@action Fly}."
 						],
-						"name": "Predatory Grab As"
+						"name": "Predatory Grab"
+					},
+					{
+						"name": "Speed Surge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": "three",
+							"unit": "day"
+						},
+						"entries": [
+							"The jungle drake {@action Stride||Strides} or {@action Fly||Flies} twice."
+						]
+					},
+					{
+						"name": "Spit Venom",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"A jungle drake can spit a sticky glob of its venom to a range of 50 feet that explodes in a 10-foot burst. Those in the burst must succeed at a DC 24 Reflex save or be exposed to jungle drake venom. The jungle drake can't use Spit Venom again for {@dice 1d6} rounds."
+						]
+					},
+					{
+						"name": "Woodland Stride",
+						"entries": [
+							"The jungle drake ignores difficult terrain and greater difficult terrain from non-magical foliage."
+						]
 					}
 				]
 			},
@@ -57418,6 +57493,20 @@
 							"The river drake makes one fangs {@action Strike} and two tail Strikes in any order."
 						],
 						"name": "Draconic Frenzy"
+					},
+					{
+						"name": "Speed Surge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": "three",
+							"unit": "day"
+						},
+						"entries": [
+							"The river drake {@action Stride||Strides} or {@action Fly||Flies} twice."
+						]
 					}
 				]
 			},

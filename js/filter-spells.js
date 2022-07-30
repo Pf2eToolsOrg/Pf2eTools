@@ -99,7 +99,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Battle Form", "Has Requirements", "Has Targets", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained", "Summoning", "Grants Temporary Hit Points"],
+			items: [],
 		});
 	}
 
@@ -143,9 +143,9 @@ class PageFilterSpells extends PageFilter {
 		spell._fComponents = [...new Set((spell.components || []).flat())].map(x => Parser.COMPONENTS_TO_FULL[x].toTitleCase());
 		if (spell.cost != null) spell._fComponents.push("Cost");
 		spell._fMisc = [];
-		if (spell.requirements !== null) spell._fMisc.push("Has Requirements");
-		if (spell.trigger !== null) spell._fMisc.push("Has Trigger");
-		if (spell.targets !== null) spell._fMisc.push("Has Targets");
+		if (spell.requirements) spell._fMisc.push("Has Requirements");
+		if (spell.trigger) spell._fMisc.push("Has Trigger");
+		if (spell.targets) spell._fMisc.push("Has Targets");
 		if (spell.heightened) spell._fMisc.push("Can be Heightened");
 		if (spell.duration && spell.duration.sustain) spell._fMisc.push("Sustained");
 		if (spell.duration && spell.duration.dismiss) spell._fMisc.push("Can be Dismissed");

@@ -116,7 +116,7 @@ class SpellsPage extends ListPage {
 
 		const statTab = Renderer.utils.tabButton(
 			"Spell",
-			() => {},
+			() => { },
 			buildStatsTab,
 		);
 
@@ -162,7 +162,12 @@ class SpellsPage extends ListPage {
 				const toRender = toList[Hist.lastLoadedId];
 
 				if (evt.shiftKey) {
-					const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+					let $content = ""
+					if (evt.ctrlKey) {
+						$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
+					} else {
+						$content = Renderer.hover.$getHoverContent_statsCode(toRender)
+					}
 					Renderer.hover.getShowWindow(
 						$content,
 						Renderer.hover.getWindowPositionFromEvent(evt),
@@ -201,7 +206,7 @@ class SpellsPage extends ListPage {
 
 	async _pPageInit (loadedSources) {
 		Object.keys(loadedSources)
-			.map(src => new FilterItem({item: src, pFnChange: this._multiSource.pLoadSource.bind(this._multiSource)}))
+			.map(src => new FilterItem({ item: src, pFnChange: this._multiSource.pLoadSource.bind(this._multiSource) }))
 			.forEach(fi => this._pageFilter.sourceFilter.addItem(fi));
 
 		this._list = ListUtil.initList({
@@ -209,7 +214,7 @@ class SpellsPage extends ListPage {
 			fnSort: PageFilterSpells.sortSpells,
 			syntax: this._listSyntax,
 		});
-		ListUtil.setOptions({primaryLists: [this._list]});
+		ListUtil.setOptions({ primaryLists: [this._list] });
 		SortUtil.initBtnSortHandlers($(`#filtertools`), this._list);
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
@@ -304,7 +309,7 @@ class SpellsPage extends ListPage {
 			hasPrintColumns: true,
 		});
 
-		return {list: this._list, subList: this._subList};
+		return { list: this._list, subList: this._subList };
 	}
 
 	_addSpells (data) {
@@ -342,7 +347,7 @@ class SpellsPage extends ListPage {
 
 	_getSearchCache (entity) {
 		if (this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
-		const ptrOut = {_: ""};
+		const ptrOut = { _: "" };
 		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
 		return ptrOut._;
 	}
