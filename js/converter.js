@@ -548,8 +548,12 @@ class Converter {
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const altTraditions = entries.map(e => this._renderToken(e)).join(" ").split(", ").map(tr => tr.trim().toTitleCase());
 		obj.subclass = obj.subclass || {};
-		const key = `${this._tokenizerUtils.traditionsSubclasses.find(it => it.type === token.type).class}|${token.value.trim()}`
-		obj.subclass[key] = altTraditions;
+		const key = `${this._tokenizerUtils.traditionsSubclasses.find(it => it.type === token.type).class}|${token.value.trim()}`;
+		if (token.type === "DOMAIN") {
+			obj.domains = altTraditions;
+		} else {
+			obj.subclass[key] = altTraditions;
+		}
 	}
 	_parseTrigger (obj, opts) {
 		this._parseGenericProperty(obj, this._tokenizerUtils.trigger, "trigger", opts);
