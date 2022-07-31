@@ -93,7 +93,7 @@
 						"trip"
 					],
 					"name": "rope dart",
-					"bonus": 29,
+					"attack": 29,
 					"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
 				},
 				{
@@ -112,16 +112,16 @@
 						"trip"
 					],
 					"name": "rope dart",
-					"bonus": 29,
+					"attack": 29,
 					"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
 				}
 			],
 			"abilities": {
 				"mid": [
 					{
-						"name": "Destabilized Form When the",
+						"name": "Destabilized Form",
 						"entries": [
-							"Echo has fewer than 140 Hit Points, his form destabilizes, large chunks disintegrating from his face, limbs, and torso. White moths constantly stream from the missing spaces, creating a 10-foot emanation that deals {@damage 6d6} mental damage with a DC 34 basic Will save.",
+							"When the Echo has fewer than 140 Hit Points, his form destabilizes, large chunks disintegrating from his face, limbs, and torso. White moths constantly stream from the missing spaces, creating a 10-foot emanation that deals {@damage 6d6} mental damage with a DC 34 basic Will save.",
 							"As long as the aura persists, he can dissolve into moths and re-form at another location within 15 feet as a free action at the beginning of each of his turns; this has the occult, {@trait conjuration}, and {@trait teleportation} traits."
 						]
 					},
@@ -193,16 +193,20 @@
 						]
 					},
 					{
-						"name": "Spindle's Web[two-actions] The",
+						"name": "Spindle's Web",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"entries": [
-							"Echo's spindle revolves faster and faster until it's a blur, lashing red threads in every direction. The threads deal {@damage 7d6} slashing damage and {@damage 7d6} mental damage to all creatures in a 30-foot emanation, with a DC 34 basic Reflex save. If a creature fails its save, the threads awaken the mindscape anchor within it, affecting it differently based on which anchor that creature used to gain access to the center of the mindscape. (If there is a PC who didn't absorb a mindscape anchor, for instance because there are more than four PCs in the party, then use the anchor of the PC closest to them.) The Echo then can't use Spindle's Web for {@dice 1d4} rounds.",
+							"The Echo's spindle revolves faster and faster until it's a blur, lashing red threads in every direction. The threads deal {@damage 7d6} slashing damage and {@damage 7d6} mental damage to all creatures in a 30-foot emanation, with a DC 34 basic Reflex save. If a creature fails its save, the threads awaken the mindscape anchor within it, affecting it differently based on which anchor that creature used to gain access to the center of the mindscape. (If there is a PC who didn't absorb a mindscape anchor, for instance because there are more than four PCs in the party, then use the anchor of the PC closest to them.) The Echo then can't use Spindle's Web for {@dice 1d4} rounds.",
 							{
 								"type": "list",
 								"items": [
-									"Lantern The lantern outlines the creature with searing faerie fire that deals {@damage 2d6} {@condition persistent damage ||persistent fire damage}.",
-									"Mirror The mirror reflects the creature to another location, teleporting them to a clear space within 25 feet of their current location.",
-									"Chalice The chalice drains life force, granting the Echo temporary HP equal to half the damage dealt.",
-									"Tome The tome floods the creature's mind with information; the target is {@condition slowed||slowed 1} for 1 round."
+									"{@b Lantern} The lantern outlines the creature with searing faerie fire that deals {@damage 2d6} {@condition persistent damage ||persistent fire damage}.",
+									"{@b Mirror} The mirror reflects the creature to another location, teleporting them to a clear space within 25 feet of their current location.",
+									"{@b Chalice} The chalice drains life force, granting the Echo temporary HP equal to half the damage dealt.",
+									"{@b Tome} The tome floods the creature's mind with information; the target is {@condition slowed||slowed 1} for 1 round."
 								]
 							}
 						]
@@ -219,7 +223,8 @@
 				"unique",
 				"ne",
 				"medium",
-				"human"
+				"human",
+				"humanoid"
 			],
 			"perception": {
 				"std": 18
@@ -301,7 +306,7 @@
 						"versatile S"
 					],
 					"name": "dagger",
-					"bonus": 18,
+					"attack": 18,
 					"damage": "{@damage 2d4+7} piercing plus {@damage 1d6} mental and {@damage 1d6} {@condition persistent damage ||persistent bleed}"
 				},
 				{
@@ -317,7 +322,7 @@
 						"versatile S"
 					],
 					"name": "dagger",
-					"bonus": 18,
+					"attack": 18,
 					"damage": "{@damage 2d4+7} piercing plus {@damage 1d6} mental and {@damage 1d6} {@condition persistent damage ||persistent bleed}"
 				}
 			],
@@ -505,7 +510,7 @@
 						"reach 10"
 					],
 					"name": "claw",
-					"bonus": 29,
+					"attack": 29,
 					"damage": "{@damage 3d8+14} slashing plus drain potential"
 				}
 			],
