@@ -114,7 +114,7 @@
 						"versatile fire"
 					],
 					"name": "holy spear",
-					"bonus": 33,
+					"attack": 33,
 					"damage": "{@damage 3d12+19} piercing"
 				},
 				{
@@ -130,7 +130,7 @@
 						"versatile fire"
 					],
 					"name": "fist",
-					"bonus": 33,
+					"attack": 33,
 					"damage": "{@damage 3d6+19} bludgeoning plus Improved Grab"
 				},
 				{
@@ -145,7 +145,7 @@
 						"range increment 120 feet"
 					],
 					"name": "sunfire",
-					"bonus": 31,
+					"attack": 31,
 					"damage": "{@damage 3d8+18} fire"
 				}
 			],
@@ -474,7 +474,7 @@
 						"deadly d12"
 					],
 					"name": "jaws",
-					"bonus": 27,
+					"attack": 27,
 					"damage": "{@damage 3d8+14} piercing plus {@damage 1d10} {@condition persistent damage ||persistent acid}"
 				},
 				{
@@ -488,7 +488,7 @@
 						"range increment 60 feet"
 					],
 					"name": "spit",
-					"bonus": 23,
+					"attack": 23,
 					"damage": "{@damage 6d6} acid"
 				}
 			],
@@ -647,7 +647,7 @@
 						"shove"
 					],
 					"name": "maul",
-					"bonus": 23,
+					"attack": 23,
 					"damage": "{@damage 2d12+12} bludgeoning"
 				},
 				{
@@ -657,7 +657,7 @@
 						"unit": "action"
 					},
 					"name": "jaws",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 2d8+12} piercing"
 				},
 				{
@@ -670,7 +670,7 @@
 						"thrown 20 feet"
 					],
 					"name": "spear",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 1d6+12} piercing"
 				}
 			],
@@ -776,7 +776,7 @@
 					"Requian",
 					"Sphinx"
 				],
-				"languageAbilities": [
+				"abilities": [
 					"{@spell speak with animals}",
 					"{@spell speak with plants}",
 					"telepathy 300 feet"
@@ -875,7 +875,7 @@
 						"reach 20 feet"
 					],
 					"name": "branch",
-					"bonus": 44,
+					"attack": 44,
 					"damage": "{@damage 5d10+20} bludgeoning plus Improved Knockdown"
 				},
 				{
@@ -890,7 +890,7 @@
 						"range increment 120 feet"
 					],
 					"name": "mental blast",
-					"bonus": 44,
+					"attack": 44,
 					"damage": "{@damage 5d6+20} mental plus"
 				}
 			],
@@ -1224,7 +1224,7 @@
 						"agile"
 					],
 					"name": "claw",
-					"bonus": 26,
+					"attack": 26,
 					"damage": "{@damage 3d6+13} slashing plus Grab"
 				},
 				{
@@ -1234,7 +1234,7 @@
 						"unit": "action"
 					},
 					"name": "jaws",
-					"bonus": 26,
+					"attack": 26,
 					"damage": "{@damage 3d10+13} piercing"
 				}
 			],
@@ -1401,7 +1401,7 @@
 						"sweep"
 					],
 					"name": "deflecting branch",
-					"bonus": 24,
+					"attack": 24,
 					"damage": "{@damage 3d10+13} bludgeoning"
 				},
 				{
@@ -1411,7 +1411,7 @@
 						"unit": "action"
 					},
 					"name": "jaws",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 2d8+13} piercing plus Grab"
 				},
 				{
@@ -1424,7 +1424,7 @@
 						"thrown 20 feet"
 					],
 					"name": "spear",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 1d6+13} piercing"
 				}
 			],
@@ -1616,7 +1616,7 @@
 						"reach 10 feet"
 					],
 					"name": "fist",
-					"bonus": 28,
+					"attack": 28,
 					"damage": "{@damage 3d10+12} bludgeoning"
 				}
 			],
@@ -1935,7 +1935,7 @@
 					"Common",
 					"Necril"
 				],
-				"languageAbilities": [
+				"abilities": [
 					"can't speak any language"
 				]
 			},
@@ -2002,7 +2002,7 @@
 						"reach 10 feet"
 					],
 					"name": "beak",
-					"bonus": 24,
+					"attack": 24,
 					"damage": "{@damage 2d10+16} piercing plus grave blight"
 				},
 				{
@@ -2016,7 +2016,7 @@
 						"magical"
 					],
 					"name": "claw",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 2d8+13} slashing plus grave blight"
 				},
 				{
@@ -2029,7 +2029,7 @@
 						"magical"
 					],
 					"name": "talon",
-					"bonus": 24,
+					"attack": 24,
 					"damage": "{@damage 2d6+13} piercing plus Grab"
 				}
 			],
@@ -2227,7 +2227,7 @@
 						"shove"
 					],
 					"name": "warhammer",
-					"bonus": 16,
+					"attack": 16,
 					"damage": "{@damage 2d8+7} bludgeoning plus {@damage 1d6} electricity"
 				},
 				{
@@ -2241,7 +2241,7 @@
 						"electricity"
 					],
 					"name": "fist",
-					"bonus": 15,
+					"attack": 15,
 					"damage": "{@damage 2d4+7} bludgeoning plus {@damage 1d6} electricity"
 				}
 			],
@@ -2393,7 +2393,7 @@
 						"magical"
 					],
 					"name": "greatpick",
-					"bonus": 31,
+					"attack": 31,
 					"damage": "{@damage 3d10+16} slashing plus {@damage 1d6} fire"
 				},
 				{
@@ -2407,7 +2407,7 @@
 						"fire"
 					],
 					"name": "fist",
-					"bonus": 30,
+					"attack": 30,
 					"damage": "{@damage 3d6+16} bludgeoning plus {@damage 1d6} fire"
 				},
 				{
@@ -2424,7 +2424,7 @@
 						"reload 0"
 					],
 					"name": "composite shortbow",
-					"bonus": 28,
+					"attack": 28,
 					"damage": "{@damage 3d6+10} piercing plus {@damage 1d6} fire"
 				}
 			],
@@ -2616,7 +2616,7 @@
 						"magical"
 					],
 					"name": "spear",
-					"bonus": 23,
+					"attack": 23,
 					"damage": "{@damage 2d8+13} piercing"
 				},
 				{
@@ -2632,7 +2632,7 @@
 						"unarmed"
 					],
 					"name": "fist",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 1d4+13} bludgeoning plus Grab"
 				},
 				{
@@ -2646,7 +2646,7 @@
 						"thrown 20 feet"
 					],
 					"name": "spear",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 2d8+13} piercing"
 				}
 			],
@@ -2835,7 +2835,7 @@
 						"versatile P"
 					],
 					"name": "frond",
-					"bonus": 30,
+					"attack": 30,
 					"damage": "{@damage 3d10+15} slashing plus {@damage 1d6} bleed and Improved Grab"
 				},
 				{
@@ -2850,7 +2850,7 @@
 						"trip"
 					],
 					"name": "root",
-					"bonus": 28,
+					"attack": 28,
 					"damage": "{@damage 3d8+15} bludgeoning"
 				},
 				{
@@ -2864,7 +2864,7 @@
 						"range increment 60 feet"
 					],
 					"name": "thorn",
-					"bonus": 28,
+					"attack": 28,
 					"damage": "{@damage 3d6+15} piercing"
 				}
 			],
@@ -3043,7 +3043,7 @@
 						"reach 15 feet"
 					],
 					"name": "arm",
-					"bonus": 28,
+					"attack": 28,
 					"damage": "{@damage 3d12+11} bludgeoning plus Grab"
 				},
 				{
@@ -3057,7 +3057,7 @@
 						"reach 20 feet"
 					],
 					"name": "spear",
-					"bonus": 28,
+					"attack": 28,
 					"damage": "{@damage 3d12+11} piercing"
 				},
 				{
@@ -3073,7 +3073,7 @@
 						"range increment 100 feet"
 					],
 					"name": "sunfire beam",
-					"bonus": 28,
+					"attack": 28,
 					"damage": "{@damage 3d8+11} fire"
 				}
 			],
@@ -3249,7 +3249,7 @@
 						"trip"
 					],
 					"name": "sickle",
-					"bonus": 27,
+					"attack": 27,
 					"damage": "{@damage 2d4+10} slashing"
 				},
 				{
@@ -3264,7 +3264,7 @@
 						"reload 1"
 					],
 					"name": "hand crossbow",
-					"bonus": 27,
+					"attack": 27,
 					"damage": "{@damage 2d6+10} piercing"
 				}
 			],
@@ -3550,7 +3550,7 @@
 						"versatile S"
 					],
 					"name": "dagger",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 3d4+6} piercing plus {@damage 1d6} fire"
 				},
 				{
@@ -3566,7 +3566,7 @@
 						"unarmed"
 					],
 					"name": "fist",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 1d4+6} bludgeoning plus {@damage 1d6} fire"
 				},
 				{
@@ -3582,7 +3582,7 @@
 						"versatile S"
 					],
 					"name": "dagger",
-					"bonus": 22,
+					"attack": 22,
 					"damage": "{@damage 3d4+6} piercing plus {@damage 1d6} fire"
 				}
 			],
@@ -3804,7 +3804,7 @@
 						"unarmed"
 					],
 					"name": "fist",
-					"bonus": 19,
+					"attack": 19,
 					"damage": "{@damage 1d4+4} bludgeoning plus {@damage 2d6} fire"
 				},
 				{
@@ -3818,7 +3818,7 @@
 						"two-hand d8"
 					],
 					"name": "staff",
-					"bonus": 17,
+					"attack": 17,
 					"damage": "{@damage 1d4+4} bludgeoning"
 				},
 				{
@@ -3833,7 +3833,7 @@
 						"range increment 40 feet"
 					],
 					"name": "sunfire",
-					"bonus": 19,
+					"attack": 19,
 					"damage": "{@damage 3d6+12} fire"
 				}
 			],
@@ -4147,7 +4147,7 @@
 						"magical"
 					],
 					"name": "spear",
-					"bonus": 24,
+					"attack": 24,
 					"damage": "{@damage 3d8+11} piercing plus {@damage 1d6} fire"
 				},
 				{
@@ -4163,7 +4163,7 @@
 						"unarmed"
 					],
 					"name": "fist",
-					"bonus": 23,
+					"attack": 23,
 					"damage": "{@damage 1d4+11} bludgeoning plus {@damage 1d6} fire and Grab"
 				},
 				{
@@ -4177,7 +4177,7 @@
 						"thrown 20 feet"
 					],
 					"name": "spear",
-					"bonus": 23,
+					"attack": 23,
 					"damage": "{@damage 3d8+11} piercing plus {@damage 1d6} fire"
 				}
 			],
@@ -4747,7 +4747,7 @@
 						"finesse"
 					],
 					"name": "claw",
-					"bonus": 29,
+					"attack": 29,
 					"damage": "{@damage 3d6+13} slashing plus {@damage 2d8} fire and Grab and residual light"
 				},
 				{
@@ -4760,7 +4760,7 @@
 						"range increment 40 feet"
 					],
 					"name": "sunfire",
-					"bonus": 25,
+					"attack": 25,
 					"damage": "{@damage 7d6} fire"
 				}
 			],
@@ -4935,7 +4935,7 @@
 						"unit": "action"
 					},
 					"name": "golden blade",
-					"bonus": 32,
+					"attack": 32,
 					"damage": "{@damage 3d6+16} piercing plus {@damage 2d6} fire"
 				},
 				{
@@ -4948,7 +4948,7 @@
 						"thrown 20 feet"
 					],
 					"name": "golden blade",
-					"bonus": 27,
+					"attack": 27,
 					"damage": "{@damage 3d6+16} piercing plus {@damage 2d6} fire"
 				}
 			],

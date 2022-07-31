@@ -261,12 +261,12 @@ const ListUtil = {
 		if (storedHeight) $wrpList.css("height", storedHeight);
 	},
 
-	getOrTabRightButton: (id, icon) => {
+	getOrTabRightButton: (id, icon, tag = "button") => {
 		const btnExisting = document.getElementById(id);
 		if (btnExisting) return $(btnExisting);
 
 		const btn = e_({
-			tag: "button",
+			tag,
 			clazz: "ui-tab__btn-tab-head btn btn-default",
 			id,
 			children: [

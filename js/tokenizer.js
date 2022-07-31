@@ -17,17 +17,18 @@ class TokenizerUtils {
 
 	static get dataHeaders () {
 		return [
-			{regex: /^(.+)\s(SPELL|CANTRIP|FOCUS) (\d{1,2})\n/, type: "SPELL", mode: "spell"},
-			{regex: /^([^\n[]*?)\s(\[.+]\s)?FEAT (\d{1,2})\n/, type: "FEAT", mode: "feat"},
-			{regex: /^(.+)\s(ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\n/, type: "ITEM", mode: "item"},
-			{regex: /^(.*?)\sBACKGROUND\n/, type: "BACKGROUND", mode: "background"},
-			{regex: /^(.*?)\sCREATURE (–?\d{1,2})\n/, type: "CREATURE", mode: "creature"},
+			{regex: /^(.+)\s(SPELL|CANTRIP|FOCUS) (\d{1,2})\s/, type: "SPELL", mode: "spell"},
+			{regex: /^([^\n[]*?)\s(\[.+]\s)?FEAT (\d{1,2})\s/, type: "FEAT", mode: "feat"},
+			{regex: /^(.+)\s(ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\s/, type: "ITEM", mode: "item"},
+			{regex: /^(.*?)\sBACKGROUND\s/, type: "BACKGROUND", mode: "background"},
+			{regex: /^(.*?)\sCREATURE (–?\d{1,2})\s/, type: "CREATURE", mode: "creature"},
 		]
 	}
 	static get unimplemented () {
 		return [
 			{regex: /^(.+)HAZARD[\s\S]*?\n{2,}/, type: "UNIMPLEMENTED"},
 			{regex: /^(.+)RITUAL[\s\S]*?\n{2,}/, type: "UNIMPLEMENTED"},
+			{regex: /^(.+)VEHICLE[\s\S]*?\n{2,}/, type: "UNIMPLEMENTED"},
 		]
 	}
 
@@ -75,7 +76,7 @@ class TokenizerUtils {
 	}
 	static get cast () {
 		return [
-			{regex: /^Cast(ing)?\s/, type: "CAST", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Cast(ing)?(?=\s|\[)/, type: "CAST", lookbehind: /(\n|[;.)]\s)$/},
 		]
 	}
 	static get cost () {
@@ -90,7 +91,7 @@ class TokenizerUtils {
 	}
 	static get effect () {
 		return [
-			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)\]]\s)$/, lookahead: true},
+			{regex: /^Effects?\s(?![^A-Z\W])/, type: "EFFECT", lookbehind: /(\n|[;.)\]]\s)$/, lookahead: true},
 		]
 	}
 	static get frequency () {
@@ -194,7 +195,7 @@ class TokenizerUtils {
 			{regex: /^Intimidate\s/, type: "INTIMIDATION"},
 			{regex: /^([A-Z][a-z]*?)\sLore\s/, type: "LORE"},
 			// We are back with ugly regex
-			{regex: /^((?:\b(?!Skills\b)[A-Z][\w-]*?\s)+)Lore\s/, type: "LORE"},
+			{regex: /^((?:\b[\w-]*?\s)+)Lore\s/, type: "LORE"},
 			{regex: /^Lore\s/, type: "LORE_ALL"},
 			{regex: /^Medicine\s/, type: "MEDICINE"},
 			{regex: /^Nature\s/, type: "NATURE"},
@@ -272,7 +273,7 @@ class TokenizerUtils {
 	}
 	static get speed () {
 		return [
-			{regex: /^Speed\s/, type: "SPEED", lookbehind: /\n$/},
+			{regex: /^Speed\s(?![A-Z])/, type: "SPEED", lookbehind: /\n$/},
 		]
 	}
 	static get damage () {
@@ -478,6 +479,14 @@ class TokenizerUtils {
 		]
 	}
 
+	static get amp () {
+		return [
+			{regex: /^Amp Heightened\s\(\+\d+\)[\s:]/, type: "AMP_HEIGHTENED_PLUS_X", lookbehind: /\n$/},
+			{regex: /^Amp Heightened\s\(\d+(st|nd|rd|th)\)[\s:]/, type: "AMP_HEIGHTENED_X", lookbehind: /\n$/},
+			{regex: /^Amp Heightened[\s:]/, type: "AMP_HEIGHTENED", lookbehind: /\n$/},
+			{regex: /^Amp[\s:]/, type: "AMP", lookbehind: /\n$/},
+		]
+	}
 	static get heightened () {
 		return [
 			{regex: /^Heightened\s\(\+\d+\)[\s:]/, type: "HEIGHTENED_PLUS_X"},
@@ -564,11 +573,11 @@ class TokenizerUtils {
 
 	static get words () {
 		return [
-			{regex: /^[\S]*;(?=\n)/, type: "WORD_SEMICOLON_NEWLINE"},
+			{regex: /^[\S]*;(?=\s*\n)/, type: "WORD_SEMICOLON_NEWLINE"},
 			{regex: /^[\S]*;/, type: "WORD_SEMICOLON"},
-			{regex: /^[\S]*[.!?:](?=\n)/, type: "WORD_TERM_NEWLINE"},
+			{regex: /^[\S]*[.!?:](?=\s*\n)/, type: "WORD_TERM_NEWLINE"},
 			{regex: /^[\S]*[.!?:]/, type: "WORD_TERM"},
-			{regex: /^[\S]+(?=\n)/, type: "WORD_NEWLINE"},
+			{regex: /^[\S]+(?=\s*\n)/, type: "WORD_NEWLINE"},
 			{regex: /^[\S]+/, type: "WORD"},
 		]
 	}
@@ -593,6 +602,7 @@ class TokenizerUtils {
 				// DATA ENTRIES
 				...this.traits,
 				...this.successDegrees,
+				...this.amp,
 				...this.heightened,
 				...this.afflictions,
 				...this.lvlEffect,
