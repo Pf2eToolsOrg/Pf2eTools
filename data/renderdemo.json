@@ -635,6 +635,45 @@
 										{
 											"type": "item",
 											"entries": [
+												"{@b Afflictions} to render afflictions.",
+												{
+													"type": "affliction",
+													"savingThrow": "Fortitude",
+													"DC": 16,
+													"onset": "1 hour",
+													"stages": [
+														{
+															"stage": 1,
+															"entry": "carrier with no ill effect",
+															"duration": "1 day"
+														},
+														{
+															"stage": 2,
+															"entry": "{@damage 1d6} negative damage",
+															"duration": "1 day"
+														},
+														{
+															"stage": 3,
+															"entry": "{@damage 1d6} negative damage",
+															"duration": "1 day"
+														},
+														{
+															"stage": 4,
+															"entry": "{@damage 1d6} negative damage",
+															"duration": "1 day"
+														},
+														{
+															"stage": 5,
+															"entry": "dead, rising as a {@creature plague zombie} immediately.",
+															"duration": "1 day"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "item",
+											"entries": [
 												"{@b Abilities} and actions are used all over the place. Many items have activations, which are abilities. The ability name defaults to \"Activate\".",
 												{
 													"type": "ability",

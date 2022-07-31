@@ -914,7 +914,7 @@ class Converter {
 			throw new Error(`Failed parsing ${attack.range} attack! Missing attack name or bonus: "${renderedText}"`);
 		}
 		attack.name = match[1];
-		attack.bonus = Number(match[2]);
+		attack.attack = Number(match[2]);
 		this._consumeToken(this._tokenizerUtils.damage);
 		const damageEntries = this._getEntries({checkContinuedLines: true});
 		attack.damage = this._renderEntries(damageEntries, {asString: true});
