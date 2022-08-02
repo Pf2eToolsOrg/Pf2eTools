@@ -37,7 +37,6 @@ async function replaceReferences (folder) {
 					const hash = obj.hash || UrlUtil.URL_TO_HASH_BUILDER[page](obj);
 					const out = {type: "data", tag: obj.tag, data: Renderer.hover._getFromCache(page, obj.source, hash)};
 					if (!out) throw new Error(`Could not find ${page}:${obj.source}:${hash}`);
-					delete out.data.__prop;
 					return out;
 				}
 				return obj

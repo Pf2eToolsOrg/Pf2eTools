@@ -3735,7 +3735,7 @@ class TraitsFilter extends MultiFilter {
 			for (let i = 0; i < len; ++i) this.addItem(item[i]);
 		} else {
 			this._getTraitCategories(item).forEach(cat => {
-				this._getFilterFromCategory(cat).addItem(item.toTitleCase())
+				this._getFilterFromCategory(cat).addItem(item)
 			});
 		}
 	}

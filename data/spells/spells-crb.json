@@ -211,7 +211,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage for each type increases by {@dice 1d6}."
+						"The damage for each type increases by {@scaledamage 4d6|5-10|1d6}."
 					]
 				}
 			}
@@ -252,7 +252,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The initial damage increases by {@damage 2d8}, and the {@condition persistent damage ||persistent acid damage} increases by {@dice 1d6}."
+						"The initial damage increases by {@scaledamage 3d8|4,6,8,10|2d8}, and the {@condition persistent damage||persistent acid damage} increases by {@scaledamage 1d6|4,6,8,10|1d6}."
 					]
 				}
 			}
@@ -674,7 +674,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@damage 1d6}."
+						"The damage increases by {@scaledamage 4d6|4-10|1d6}."
 					]
 				}
 			}
@@ -1789,7 +1789,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@damage 1d8}."
+						"The damage increases by {@scaledamage 7d8|6-10|1d8}."
 					]
 				}
 			}
@@ -8904,7 +8904,7 @@
 				}
 			},
 			"entries": [
-				"You create a sphere of flame in a square within range. The sphere must be supported by a solid surface, such as a stone floor. The sphere deals {@damage 3d6} fire damage to each creature in the square where it first appears; each creature must attempt a basic Reflex save. On subsequent rounds, the first time you {@action Sustain a Spell||Sustain this Spell} each round, leaving the sphere in its square or rolling it to another square within range and dealing {@damage 3d6} fire damage; each creature in its square must attempt a basic Reflex save.",
+				"You create a sphere of flame in a square within range. The sphere must be supported by a solid surface, such as a stone floor. The sphere deals {@damage 3d6} fire damage to each creature in the square where it first appears; each creature must attempt a basic Reflex save. On subsequent rounds, the first time you {@action Sustain a Spell||Sustain this Spell} each round, you can leave the sphere in its square or roll it to another square within range. It deals {@damage 3d6} fire damage (basic Reflex save) to each creature in that square.",
 				"Creatures that succeed at their save take no damage (instead of half)."
 			],
 			"heightened": {
@@ -9171,7 +9171,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The damage increases by {@damage 1d4+1}."
+						"The damage increases by {@scaledamage 1d4+1|1,3,5,7,9|1d4+1}."
 					]
 				}
 			}
@@ -9852,7 +9852,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The temporary Hit Points increase by {@dice 1d6}."
+						"The temporary Hit Points increase by {@scaledamage 1d6|1,3,5,7,9|1d6}."
 					]
 				}
 			},
@@ -10083,7 +10083,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@damage 2d6}."
+						"The damage increases by {@scaledamage 6d6|5-10|2d6}."
 					]
 				}
 			}
@@ -20556,7 +20556,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The guardian's damage increases by {@damage 1d8}, and its Hit Points increase by 20."
+						"The guardian's damage increases by {@scaledamage 2d8|5,7,9|1d8}, and its Hit Points increase by {@scaledice 50|5,7,9|20}."
 					]
 				}
 			}
@@ -20606,7 +20606,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The weapon's damage increases by {@damage 1d8}."
+						"The weapon's damage increases by {@scaledamage 1d8|2,4,6,8,10|1d8}."
 					]
 				}
 			}
@@ -22100,7 +22100,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The damage increases by {@damage 1d6}, and the initial radius increases by 5 feet."
+						"The damage increases by {@scaledamage 1d6|3,5,7,9|1d6}, and the initial radius increases by {@scaledice 5|3,5,7,9|5} feet."
 					]
 				}
 			}
@@ -22917,12 +22917,12 @@
 				}
 			},
 			"entries": [
-				"Your arms turn into long, pliable tentacles, increasing your reach when you're delivering touch range spells and making unarmed Strikes with your arms (such as fist and claw Strikes) to 10 feet. This doesn't change the reach of your melee weapon attacks. During the duration, whenever you {@action Cast a Spell}, you can add an additional action to that spell's casting to temporarily extend your reach to 20 feet to deliver that spell."
+				"Your arms turn into long, pliable tentacles, increasing your reach when you're delivering touch range spells and making unarmed {@action Strike||Strikes} with your arms (such as fist and claw Strikes) to 10 feet. This doesn't change the reach of your melee weapon attacks. During the duration, whenever you {@action Cast a Spell}, you can add an additional action to that spell's casting to temporarily extend your reach to 20 feet to deliver that spell."
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"When you add an additional action to a spell to temporarily extend your reach, your reach increases by an additional 10 feet to deliver that spell."
+						"When you add an additional action to a spell to temporarily extend your reach, your reach increases by an additional {@scaledice 20|3,5,7,9|10} feet to deliver that spell."
 					]
 				}
 			}
@@ -25608,7 +25608,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"If you choose to regain Hit Points, the Hit Points regained increase by 8."
+						"If you choose to regain Hit Points, the Hit Points regained increase by {@scaledamage 8|2-10|8}."
 					]
 				}
 			}
