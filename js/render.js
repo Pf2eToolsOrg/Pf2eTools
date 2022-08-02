@@ -1392,7 +1392,7 @@ function Renderer () {
 		if (entry.data) {
 			const renderFn = Renderer.hover._pageToRenderFn(page);
 			const rendered = renderFn ? renderFn(entry.data, { isEmbedded: true, noPage: true }) : `<div class="pf2-stat">Failed to render ${entry.data.name}.</div>`;
-			textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
+			textStack[0] += typeof rendered === "object" ? [...rendered].map(e => e.outerHTML).join("") : rendered;
 		} else {
 			const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
 			textStack[0] += `<div class="pf2-stat" data-stat-tag="${tag.qq()}" data-stat-name="${name.qq()}" data-stat-hash="${hash.qq()}" data-stat-page="${page.qq()}" data-stat-source="${source.qq()}">
@@ -3947,7 +3947,7 @@ Renderer.companionfamiliar = {
 		if (it.__prop === "familiarAbility") return Renderer.familiar.getRenderedFamiliarAbility(it, opts)
 		if (it.__prop === "companionAbility") return Renderer.companion.getRenderedCompanionAbility(it, opts)
 		if (it.__prop === "companion") return Renderer.companion.getRenderedString(it, opts);
-		if (it.__prop === "familiar") return Renderer.familiar.getRenderedString(it, opts);
+		if (it.__prop === "familiar") return Renderer.familiar.$getRenderedString(it, opts);
 		if (it.__prop === "eidolon") return Renderer.eidolon.getRenderedString(it, opts);
 	},
 
@@ -3963,7 +3963,7 @@ Renderer.companion = {
 	getRenderedString (companion, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get();
-		return $$`${Renderer.utils.getExcludedDiv(companion, "companion", UrlUtil.PG_COMPANIONS_FAMILIARS)}
+		return `${Renderer.utils.getExcludedDiv(companion, "companion", UrlUtil.PG_COMPANIONS_FAMILIARS)}
 		${Renderer.utils.getNameDiv(companion, { type: "Companion", ...opts })}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(companion.traits)}
@@ -3980,7 +3980,7 @@ Renderer.companion = {
 		${companion.support ? `<p class="pf2-stat pf2-stat__section"><strong>Support Benefit&nbsp;</strong>${renderer.render(companion.support)}</p>` : ""}
 		${companion.maneuver ? `<p class="pf2-stat pf2-stat__section mb-4"><strong>Advanced Maneuver&nbsp;</strong>${companion.maneuver.name}</p>` : ""}
 		${companion.maneuver ? Renderer.action.getRenderedString(companion.maneuver, { noPage: true }) : ""}
-		${Renderer.utils.getPageP(companion)}`;
+		${opts.noPage ? "" : Renderer.utils.getPageP(companion)}`;
 	},
 	getRenderedCompanionAbility (it, opts) {
 		return `${Renderer.utils.getNameDiv(it)}
@@ -3991,7 +3991,7 @@ Renderer.companion = {
 	},
 };
 Renderer.familiar = {
-	getRenderedString (familiar, opts) {
+	$getRenderedString (familiar, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get();
 		return $$`${Renderer.utils.getExcludedDiv(familiar, "familiar", UrlUtil.PG_COMPANIONS_FAMILIARS)}
@@ -4004,7 +4004,7 @@ Renderer.familiar = {
 		${familiar.granted && !familiar.granted.length === 0 ? `<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${renderer.render(familiar.granted.join(", "))}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		${familiar.abilities.map(a => Renderer.creature.getRenderedAbility(a))}
-		${Renderer.utils.getPageP(familiar)}`;
+		${opts.noPage ? "" : Renderer.utils.getPageP(familiar)}`;
 	},
 
 	getRenderedFamiliarAbility (it, opts) {
@@ -4020,7 +4020,7 @@ Renderer.eidolon = {
 	getRenderedString (eidolon, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(false);
-		return $$`${Renderer.utils.getExcludedDiv(eidolon, "eidolon", UrlUtil.PG_COMPANIONS_FAMILIARS)}
+		return `${Renderer.utils.getExcludedDiv(eidolon, "eidolon", UrlUtil.PG_COMPANIONS_FAMILIARS)}
 		${Renderer.utils.getNameDiv(eidolon, { type: "Eidolon", ...opts })}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(eidolon.traits)}
@@ -4031,15 +4031,15 @@ Renderer.eidolon = {
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size.map(t => `{@trait ${t}}`).joinConjunct(", ", " or "))}</p>
 		${eidolon.extraStats ? eidolon.extraStats.map(es => `<p class="pf2-stat pf2-stat__section"><strong>${es.name}&nbsp;</strong>${renderer.render(es.entries)}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
-		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityScores).map(([k, v]) => `<i>${k.toTitleCase()}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`)}
+		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityScores).map(([k, v]) => `<i>${k.toTitleCase()}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`).join("")}
 		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s}}`).join(", "))}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
 		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
 		${Renderer.creature.getSpeed(eidolon)}
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Eidolon Abilities&nbsp;</strong>${eidolon.abilities.map(a => `<i>${a.type.toTitleCase()}</i> ${a.name}`).join("; ")}</p>
-		${eidolon.abilities.map(a => `${renderer.render({ type: "pf2-h4", name: a.name, level: a.level, entries: a.entries })}`)}
-		${Renderer.utils.getPageP(eidolon)}`;
+		${eidolon.abilities.map(a => `${renderer.render({ type: "pf2-h4", name: a.name, level: a.level, entries: a.entries })}`).join("")}
+		${opts.noPage ? "" : Renderer.utils.getPageP(eidolon)}`;
 	},
 
 };
