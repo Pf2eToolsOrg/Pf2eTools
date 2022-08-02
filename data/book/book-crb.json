@@ -5550,7 +5550,79 @@
 					"page": 306,
 					"name": "Reading Spells",
 					"entries": [
-						"Each spell uses the following format. Entries appear only when applicable, so not all spells will have every entry described here. The spell's name line also lists the type of spell if it's a cantrip or focus spell, as well as the level."
+						"Each spell uses the following format. Entries appear only when applicable, so not all spells will have every entry described here. The spell's name line also lists the type of spell if it's a cantrip or focus spell, as well as the level.",
+						{
+							"type": "data",
+							"tag": "generic",
+							"style": "book",
+							"data": {
+								"name": "SPELL NAME",
+								"traits": [
+									"traits"
+								],
+								"category": "SPELL",
+								"level": "(LEVEL)",
+								"sections": [
+									[
+										[
+											{
+												"type": "pf2-options",
+												"skipSort": true,
+												"noColon": true,
+												"items": [
+													{
+														"name": "Tradition",
+														"entries": [
+															"This entry lists the magical traditions the spell belongs to. Some feats or other abilities might add a spell to your spell list even if you don't follow the listed traditions."
+														]
+													},
+													{
+														"name": "Cast",
+														"entries": [
+															"The number of actions required to Cast the Spell are listed here. Spells that can be cast during a single turn have the appropriate icon, as do those that can be cast as a free action or a reaction. Spells that take longer to cast list the time required, such as \"1 minute.\" After this, the spell's components are listed. If Casting the Spell has a cost, requirements, or a trigger, that information is also listed in this section. A cost includes any money, valuable materials, or other resources that must be expended to cast the spell."
+														]
+													},
+													{
+														"name": "Range, Area, and Targets",
+														"entries": [
+															"This entry lists the range of the spell, the area it affects, and the targets it can affect, if any. If none of these entries are present, the spell affects only the caster."
+														]
+													},
+													{
+														"name": "Saving Throw and Duration",
+														"entries": [
+															"If a spell allows the target to attempt a saving throw, the type of save appears here. Any details on the particular results and timing of the save appear in the text unless the entry specifies a basic saving throw, which follows the rules found on page 449. If the spell requires a save only under certain circumstances or at a certain time, this entry is omitted, since the text needs to explain it in more detail. A spell that doesn't list a duration takes place instantaneously, and anything created by it persists after the spell."
+														]
+													}
+												]
+											}
+										]
+									],
+									[
+										[
+											"A horizontal line follows saving throws and duration, and the effects of the spell are described after this line. This section might also detail the possible results of a saving throw: critical success, success, failure, and critical failure."
+										]
+									],
+									[
+										[
+											{
+												"type": "pf2-options",
+												"skipSort": true,
+												"noColon": true,
+												"items": [
+													{
+														"name": "Heightened (level)",
+														"entries": [
+															"If the spell has special effects when heightened, those effects appear at the end of the stat block."
+														]
+													}
+												]
+											}
+										]
+									]
+								]
+							}
+						}
 					],
 					"data": {
 						"quickref": 3
