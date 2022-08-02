@@ -1171,16 +1171,16 @@ class Converter {
 		const entriesOut = [];
 		const parseEntryTypes = (token) => {
 			if (this._tokenIsType(this._tokenizerUtils.successDegrees, token)) entriesOut.push(this._parseSuccessDegrees());
-			else if (this._tokenIsType(this._tokenizerUtils.shieldData)) this._parseShieldData(obj, opts);
-			else if (this._tokenIsType(this._tokenizerUtils.amp, token)) this._parseAmp(obj);
-			else if (this._tokenIsType(this._tokenizerUtils.heightened, token)) this._parseHeightened(obj);
 			else if (this._tokenIsType(this._tokenizerUtils.listMarker, token)) entriesOut.push(this._parseList());
+			else if (!opts.entriesOnly && this._tokenIsType(this._tokenizerUtils.shieldData)) this._parseShieldData(obj, opts);
+			else if (!opts.entriesOnly && this._tokenIsType(this._tokenizerUtils.amp, token)) this._parseAmp(obj);
+			else if (!opts.entriesOnly && this._tokenIsType(this._tokenizerUtils.heightened, token)) this._parseHeightened(obj);
 			else if (!opts.noAbilities && this._tokenIsType(this._tokenizerUtils.activate, token)) entriesOut.push(this._parseActivate());
-			else if (this._tokenIsType(this._tokenizerUtils.itemVariants, token)) this._parseItemVariants(obj);
-			else if (this._tokenIsType(this._tokenizerUtils.afflictions, token)) entriesOut.push(this._parseAffliction());
-			else if (this._tokenIsType(this._tokenizerUtils.lvlEffect, token)) entriesOut.push(this._parseLvlEffect(obj));
-			else if (!opts.noAbilities && this._tokenIsType(this._tokenizerUtils.special, token)) this._parseSpecial(obj);
-			else if (!opts.noAbilities && this._tokenIsType(this._tokenizerUtils.effect, token)) entriesOut.push(this._parseAbility());
+			else if (!opts.entriesOnly && this._tokenIsType(this._tokenizerUtils.itemVariants, token)) this._parseItemVariants(obj);
+			else if (!opts.entriesOnly && this._tokenIsType(this._tokenizerUtils.afflictions, token)) entriesOut.push(this._parseAffliction());
+			else if (!opts.entriesOnly && this._tokenIsType(this._tokenizerUtils.lvlEffect, token)) entriesOut.push(this._parseLvlEffect(obj));
+			else if (!opts.entriesOnly && !opts.noAbilities && this._tokenIsType(this._tokenizerUtils.special, token)) this._parseSpecial(obj);
+			else if (!opts.entriesOnly && !opts.noAbilities && this._tokenIsType(this._tokenizerUtils.effect, token)) entriesOut.push(this._parseAbility());
 		}
 
 		while (this._tokenStack.length) {
@@ -1192,7 +1192,8 @@ class Converter {
 			if (lookAhead || !this._tokenIsType(this._tokenizerUtils.stringEntries)) parseEntryTypes(lookAhead);
 			if (breakOnLength === this._tokenStack.length) break;
 		}
-		obj.entries = entriesOut;
+		if (opts.entriesOnly) return entriesOut;
+		else obj.entries = entriesOut;
 	}
 
 	_parseSuccessDegrees () {
@@ -1222,19 +1223,19 @@ class Converter {
 			const token = this._consumeToken(this._tokenizerUtils.amp);
 			switch (token.type) {
 				case "AMP": {
-					amp.entries = this._renderEntries(this._getEntries());
+					amp.entries = this._parseEntries(null, {entriesOnly: true});
 					break;
 				} case "AMP_HEIGHTENED_PLUS_X": {
 					amp.heightened = amp.heightened || {};
 					amp.heightened.plusX = amp.heightened.plusX || {};
 					const level = /\d+/.exec(token.value)[0];
-					amp.heightened.plusX[level] = this._renderEntries(this._getEntries({checkLookahead: true}));
+					amp.heightened.plusX[level] = this._parseEntries(null, {entriesOnly: true});
 					break;
 				} case "AMP_HEIGHTENED_X": {
 					amp.heightened = amp.heightened || {};
 					amp.heightened.X = amp.heightened.X || {};
 					const level = /\d+/.exec(token.value)[0];
-					amp.heightened.X[level] = this._renderEntries(this._getEntries({checkLookahead: true}));
+					amp.heightened.X[level] = this._parseEntries(null, {entriesOnly: true});
 					break;
 				} default: throw new Error(`Unimplemented! ${token.type}`)
 			}
@@ -1249,11 +1250,11 @@ class Converter {
 			if (token.type === "HEIGHTENED_PLUS_X") {
 				entries.plusX = entries.plusX || {};
 				const level = /\d+/.exec(token.value)[0];
-				entries.plusX[level] = this._renderEntries(this._getEntries({checkLookahead: true}));
+				entries.plusX[level] = this._parseEntries(null, {entriesOnly: true});
 			} else if (token.type === "HEIGHTENED_X") {
 				entries.X = entries.X || {};
 				const level = /\d+/.exec(token.value)[0];
-				entries.X[level] = this._renderEntries(this._getEntries({checkLookahead: true}));
+				entries.X[level] = this._parseEntries(null, {entriesOnly: true});
 			} else if (token.type === "HEIGHTENED") {
 				// TODO?
 				throw new Error(`Heightened without level is not supported.`);
@@ -1725,15 +1726,21 @@ class Converter {
 		return this._tokenIsType(this._parsedProperties, token);
 	}
 	_isShortLine (entries) {
-		const text = [...entries, this._peek()].map(it => it.value.trim()).join(" ");
+		const lastIx = entries.map(e => e.isStartNewLine).lastIndexOf(true);
+		const text = entries.slice(~lastIx ? lastIx : 0, entries.length).map(it => it.value.trim()).join(" ");
 		const len = text.length;
 		// TODO: fiddle with number to improve this
 		// If the line is more than 10% shorter than the average length, its probably still a list entry,
 		// otherwise don't add the line to the list item. (It's a line after the list?).
-		if (entries.length === 0) return true;
-		if (/^[^A-Z]/.test(text)) return true;
 		if (Math.abs(this._avgLineLength - len) / this._avgLineLength > 0.10) return true;
 		return null;
+	}
+	_isLastListToken (entries) {
+		if (entries.length === 0) return false;
+		if (!this._peek().isStartNewLine) return false;
+		if (/^[^A-Z]/.test(this._renderToken(this._peek()))) return false;
+		if (this._isShortLine(entries)) return false;
+		return !this._getLookahead(5, "LIST_MARKER");
 	}
 	// FIXME: Clean this up. This is creating almost all errors.
 	/**
@@ -1759,7 +1766,7 @@ class Converter {
 			if (doCheckBreak && this._isParsingCreature && this._isAbilityName()) break;
 			if (doCheckBreak && opts.checkLookahead && this._getLookahead()) break;
 			if (doCheckBreak && opts.noCap && /^[A-Z\d]/.test(this._renderToken(this._peek()))) break;
-			if (doCheckBreak && opts.isListMode && !this._isShortLine(entries) && !this._getLookahead(5, "LIST_MARKER")) break;
+			if (doCheckBreak && opts.isListMode && this._isLastListToken(entries)) break;
 			entries.push(this._consumeToken(this._tokenizerUtils.stringEntries));
 			if (doCheckBreak && opts.checkContinuedLines && !this._isContinuedLine(entries.last())) break;
 			if (doCheckBreak && opts.breakAfterNewline && this._tokenIsType(this._tokenizerUtils.sentencesNewLine, entries.last())) break;
