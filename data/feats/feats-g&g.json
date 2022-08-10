@@ -1840,8 +1840,8 @@
 			],
 			"prerequisites": "Medium or Small size",
 			"entries": [
-				"You've empowered your core to support a larger body, granting you size and additional reach. You gain the effects of enlarge constantly.",
-				"{@b Enhancement} Your core's empowerment has stabilized, allowing for greater support. You are no longer {@condition clumsy} due to the effects of enlarge."
+				"You've empowered your core to support a larger body, granting you size and additional reach. You gain the effects of {@spell enlarge} constantly.",
+				"{@b Enhancement} Your core's empowerment has stabilized, allowing for greater support. You are no longer {@condition clumsy} due to the effects of {@spell enlarge}."
 			]
 		},
 		{
@@ -3919,6 +3919,18 @@
 			"trigger": "A critical hit deals physical damage to you.",
 			"entries": [
 				"Your body is designed to be particularly resilient. Your chassis is medium armor in the plate armor group that grants a +4 item bonus to AC, a Dex cap of +1, a check penalty of \u20132, a speed penalty of \u20135 feet, and a Strength value of 16. You can never wear other armor or remove your chassis; however, you still don't become fatigued from sleeping. Finally, you can etch armor runes onto your chassis as normal.",
+				{
+					"type": "ability",
+					"name": "Chassis Deflection",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A critical hit deals physical damage to you",
+					"entries": [
+						"Attempt a DC {@flatDC 17} flat check. If you are successful, the attack becomes a normal hit."
+					]
+				},
 				"{@b Enhancement} Your chassis becomes difficult to overcome. You gain the Chassis Deflection reaction."
 			]
 		},
