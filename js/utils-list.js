@@ -833,12 +833,10 @@ const ListUtil = {
 	},
 
 	genericPinKeyMapper (pMapUid = ListUtil._pCustomHashHandler) {
-		return Object.entries(ListUtil.getSublisted()).map(([id, it]) => {
-			return Object.keys(it).map(k => {
-				const it = ListUtil._allItems[id];
-				return k === "_" ? Promise.resolve(MiscUtil.copy(it)) : pMapUid(it, k);
-			}).reduce((a, b) => a.concat(b), []);
-		}).reduce((a, b) => a.concat(b), []);
+		return ListUtil.sublist.items.map(({ix, data}) => {
+			const it = ListUtil._allItems[ix];
+			return pMapUid && data.customHashId ? pMapUid(it, data.customHashId) : Promise.resolve(MiscUtil.copy(it));
+		});
 	},
 
 	_handleJsonDownload () {
