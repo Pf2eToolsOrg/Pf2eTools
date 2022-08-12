@@ -808,7 +808,10 @@ class ScaleCreature {
 						let randomSpell = null;
 						let tries = 20;
 						while ((sc.entry[lvl].spells.map(it => it.name.toLowerCase()).includes(randomSpell) || !randomSpell) && tries-- > 0) {
-							randomSpell = this._spells[sc.tradition][lvl][RollerUtil.roll(this._spells[sc.tradition][lvl].length, this._rng)];
+							const tradition = sc.tradition.toLowerCase();
+							// FIXME/TODO: This will stop the errors, but we still trust the data
+							if (!this._spells[tradition]) return;
+							randomSpell = this._spells[tradition][lvl][RollerUtil.roll(this._spells[tradition][lvl].length, this._rng)];
 						}
 						sc.entry[lvl].spells.push({"name": randomSpell});
 					}
@@ -838,13 +841,12 @@ class ScaleCreature {
 		});
 	}
 
-	_pInitSpellCache () {
+	async _pInitSpellCache () {
 		if (this._spells) return Promise.resolve();
 
 		this._spells = {};
-		return this._spells = DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/spells-crb.json`).then(data => {
-			this.__initSpellCache(data);
-		});
+		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/spells-crb.json`);
+		this.__initSpellCache(data);
 	}
 	__initSpellCache (data) {
 		data.spell.forEach(sp => {
