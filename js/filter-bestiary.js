@@ -186,7 +186,7 @@ class PageFilterBestiary extends PageFilter {
 		cr._fSpeedtypes = [];
 		cr._fSpeed = 0;
 		Object.keys(cr.speed).forEach((k) => {
-			if (k !== "abilities") {
+			if (k !== "abilities" && k !== "speedNote") {
 				cr._fSpeed = Math.max(cr.speed[k], cr._fSpeed);
 				cr._fSpeedtypes.push(k);
 			}

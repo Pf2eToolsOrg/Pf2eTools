@@ -4252,9 +4252,9 @@ Renderer.creature = {
 	getSpeed (cr) {
 		const renderer = Renderer.get();
 		const speeds = cr.speed.walk != null ? [`${cr.speed.walk} feet`] : [];
-		speeds.push(...Object.keys(cr.speed).filter(k => !(["abilities", "walk"].includes(k))).map(k => `${k} ${cr.speed[k]} feet`));
+		speeds.push(...Object.keys(cr.speed).filter(k => !(["abilities", "walk", "speedNote"].includes(k))).map(k => `${k} ${cr.speed[k]} feet`));
 		return `<p class="pf2-stat pf2-stat__section">
-				<strong>Speed&nbsp;</strong>${speeds.join(", ")}${cr.speed.abilities != null ? `; ${renderer.render(cr.speed.abilities.join(", "))}` : ""}</p>`
+				<strong>Speed&nbsp;</strong>${speeds.join(", ")}${cr.speed.abilities != null ? `; ${renderer.render(cr.speed.abilities.join(", "))}` : ""}${cr.speed.speedNote ? ` ${cr.speed.speedNote}` : ""}</p>`
 	},
 
 	getAttacks (cr) {

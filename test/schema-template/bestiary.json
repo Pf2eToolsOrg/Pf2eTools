@@ -189,26 +189,33 @@
 						"uniqueItems": true,
 						"minItems": 1
 					},
-					"abilitiesTop": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/abilityBlock"
-						},
-						"uniqueItems": true,
-						"minItems": 1
-					},
-					"abilitiesMid": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/abilityBlock"
-						},
-						"uniqueItems": true,
-						"minItems": 1
-					},
-					"abilitiesBot": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/abilityBlock"
+					"abilities": {
+						"type": "object",
+						"properties": {
+							"top": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"mid": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"bot": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
 						},
 						"uniqueItems": true,
 						"minItems": 1
