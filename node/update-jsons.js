@@ -4,7 +4,7 @@ const fs = require("fs");
 const ut = require("./util");
 require("../js/utils");
 
-function updateFolder (folder) {
+function updateFolder(folder) {
 	console.log(`Updating directory ${folder}...`);
 	const files = ut.listFiles({ dir: folder });
 	files
@@ -113,6 +113,17 @@ function updateFolder (folder) {
 						x.traits.push(x.creatureType.map(t => t.toLowerCase()))
 						delete x.creatureType
 						x.traits = [...new Set(x.traits.flat())]
+					}
+					if (x.skills && Object.keys(x.skills).find(k => k.match(/[A-Z]/g))) {
+						// Stolen from https://bobbyhadz.com/blog/javascript-lowercase-object-keys
+						console.log(`\tUpdating ${x.name} skill to lowercase in ${file}...`)
+						function toLowerKeys(obj) {
+							return Object.keys(obj).reduce((accumulator, key) => {
+								accumulator[key.toLowerCase()] = obj[key];
+								return accumulator;
+							}, {});
+						}
+						x.skills = toLowerKeys(x.skills)
 					}
 					return x
 				})
