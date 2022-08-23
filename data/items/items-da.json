@@ -85,8 +85,8 @@
 						"number": 1,
 						"unit": "action"
 					},
+					"traits": ["concentrate"],
 					"components": [
-						"concentrate",
 						"{@action Interact}"
 					],
 					"frequency": {
@@ -134,7 +134,8 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "varies, see entry"
 			},
 			"category": "Talisman",
 			"entries": [
@@ -147,28 +148,46 @@
 					"level": 3,
 					"price": {
 						"amount": 7,
-						"coin": "gp",
-						"note": "; Trigger You attempt a"
+						"coin": "gp"
+					},
+					"activate": {
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"components": [
+							"envision"
+						],
+						"trigger": "You attempt a {@skill Diplomacy} check to {@action Make an Impression}."
 					},
 					"entries": [
-						"{@skill Diplomacy} check to {@action Make an Impression}.",
 						"This coin has small wings like an arbiter, the messenger and diplomat aeon. When you activate the coin, you gain a +2 circumstance bonus on the {@skill Diplomacy} check, which increases to a +3 circumstance bonus to {@action Make an Impression} on a lawful creature."
-					]
+					],
+					"variantType": "arbiter"
 				},
 				{
 					"name": "bythos",
 					"level": 10,
 					"price": {
 						"amount": 200,
-						"coin": "gp",
-						"note": "; Trigger You're targeted with an attack but the opponent hasn't rolled yet."
+						"coin": "gp"
+					},
+					"activate": {
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"components": [
+							"envision"
+						],
+						"trigger": "You're targeted with an attack but the opponent hasn't rolled yet."
 					},
 					"entries": [
 						"This cog-like coin bears an hourglass on one side and the four-armed silhouette of a bythos\u2014aeons that steward over time\u2014on the other. When activated, you catch a glimpse of your body moving on one of its potential timelines in response to danger and you follow those movements to dodge. You gain a +2 circumstance bonus to AC against the attack, and after resolving the attack, you can {@action Stride} up to 10 feet without triggering reactions. If you have the Nimble Roll feat and the attack misses, you can {@action Stride} up to 20 feet instead."
-					]
+					],
+					"variantType": "bythos"
 				}
-			],
-			"trigger": "varies, see entry"
+			]
 		},
 		{
 			"name": "Book of Lost Days",
@@ -817,6 +836,7 @@
 				{
 					"type": "ability",
 					"activity": {
+						"number": 0,
 						"unit": "varies",
 						"entry": "Interact"
 					},
@@ -944,6 +964,7 @@
 				{
 					"type": "ability",
 					"activity": {
+						"number": 0,
 						"unit": "varies",
 						"entry": "Interact"
 					},

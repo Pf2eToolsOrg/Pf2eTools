@@ -58,7 +58,7 @@
 					"perception": {
 						"type": "object",
 						"properties": {
-							"default": {
+							"std": {
 								"type": "integer"
 							}
 						},
@@ -96,11 +96,11 @@
 						"propertyNames": {
 							"oneOf": [
 								{
-									"$ref": "utils.json#/definitions/skillNameUpper"
+									"$ref": "utils.json#/definitions/skillName"
 								},
 								{
 									"type": "string",
-									"pattern": "^[a-zA-Z]+ Lore$"
+									"pattern": "^[a-z]+ lore$"
 								}
 							]
 						},
@@ -119,24 +119,28 @@
 						}
 					},
 					"senses": {
-						"type": "object",
-						"propertyNames": {
-							"enum": [
-								"precise",
-								"imprecise",
-								"vague",
-								"other"
-							]
-						},
-						"additionalProperties": {
-							"type": "array",
-							"items": {
-								"type": "string"
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"precise",
+										"imprecise",
+										"vague",
+										"other"
+									]
+								},
+								"range": {
+									"type": "integer"
+								}
 							},
-							"minItems": 1,
-							"uniqueItems": true
-						},
-						"minProperties": 1
+							"minProperties": 1
+						}
 					},
 					"abilityMods": {
 						"$ref": "utils.json#/definitions/abilityMods"

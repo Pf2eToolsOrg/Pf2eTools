@@ -266,7 +266,10 @@
 						"uniqueItems": true
 					},
 					"craftReq": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
 					}
 				},
 				"additionalProperties": false,

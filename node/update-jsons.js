@@ -106,6 +106,17 @@ function updateFolder (folder) {
 					return x
 				})
 			}
+			if (json.creature) {
+				json.creature = json.creature.map(x => {
+					if (x.creatureType) {
+						console.log(`\tUpdating ${x.name} creature type in ${file}...`)
+						x.traits.push(x.creatureType.map(t => t.toLowerCase()))
+						delete x.creatureType
+						x.traits = [...new Set(x.traits.flat())]
+					}
+					return x
+				})
+			}
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
 }
