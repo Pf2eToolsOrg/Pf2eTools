@@ -334,7 +334,6 @@ class IndexableDirectoryBestiary extends IndexableDirectory {
 				if (cr.alignment != null) traits.push(cr.alignment);
 				if (cr.size != null) traits.push(cr.size);
 				if (cr.traits != null && cr.traits.length) traits.push(...cr.traits);
-				if (cr.creatureType != null) traits.push(...cr.creatureType);
 				return traits;
 			},
 		});

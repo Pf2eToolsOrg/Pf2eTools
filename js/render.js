@@ -3221,7 +3221,7 @@ Renderer.utils = {
 		const DC = opts.level != null ? Number(opts.level) : Number(it.level)
 		const level = opts.level != null ? `${opts.level}` : (!isNaN(Number(it.level)) || typeof it.level === "string") ? ` ${it.level}` : ""
 		const activity = opts.activity ? ` ${it.activity != null && Parser.timeToFullEntry(it.activity).includes("@as") ? Renderer.get().render(Parser.timeToFullEntry(it.activity)) : ``}` : ``
-		let typesForSkills = it.creatureType || it.traditions || it.traits || it.type || ""
+		let typesForSkills = it.traditions || it.traits || it.type || ""
 		const $ele = $$`<div class="flex ${opts.isEmbedded ? "pf2-embedded-name" : ""}" ${dataPart}>
 			<p class="pf2-stat pf2-stat__name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
 			<p class="pf2-stat pf2-stat__name pf2-stat__name--level">${opts.$btnScaleLvl ? opts.$btnScaleLvl : ""}${opts.$btnResetScaleLvl ? opts.$btnResetScaleLvl : ""}

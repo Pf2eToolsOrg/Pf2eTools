@@ -335,7 +335,7 @@ PropOrder._CREATURE = [
 
 	"level",
 	"traits",
-	"creatureType",
+	// "creatureType", // Does removing this break anything?
 
 	"perception",
 	"senses",

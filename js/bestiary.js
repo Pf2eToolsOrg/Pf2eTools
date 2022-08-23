@@ -56,7 +56,7 @@ class BestiaryPage extends ListPage {
 				hash,
 				source,
 				level: cr.level,
-				type: cr.creatureType,
+				type: cr._fCreatureType,
 			},
 			{
 				uniqueId: cr.uniqueId ? cr.uniqueId : mI,
@@ -95,7 +95,7 @@ class BestiaryPage extends ListPage {
 
 		const name = cr._displayName || cr.name;
 		const hash = `${UrlUtil.autoEncodeHash(cr)}${subHash}`;
-		const type = cr.creatureType && cr.creatureType.length ? cr.creatureType.join(", ") : "\u2014";
+		const type = cr._fCreatureType.join(", ") ?? "\u2014";
 		const level = cr.level;
 
 		const $hovStatblock = $(`<span class="col-1-9 text-center help--hover ecgen__visible">Statblock</span>`)
