@@ -168,7 +168,15 @@
 									"minimum": 1
 								},
 								"abilities": {
-									"type": "object"
+									"type": "array",
+									"items": {
+										"type": "string",
+										"enum": [
+											"//TODO"
+										]
+									},
+									"minItems": 1,
+									"uniqueItems": true
 								}
 							},
 							"additionalProperties": false,
@@ -243,28 +251,14 @@
 						"additionalProperties": false,
 						"minProperties": 1
 					},
+					"weaknesses": {
+						"$ref": "utils.json#/definitions/defenses/properties/weaknesses"
+					},
 					"immunities": {
-						"type": "object",
-						"properties": {
-							"damage": {
-								"type": "array",
-								"items": {
-									"$ref": "utils.json#/definitions/damageType"
-								},
-								"minItems": 1,
-								"uniqueItems": true
-							},
-							"condition": {
-								"type": "array",
-								"items": {
-									"$ref": "utils.json#/definitions/conditions"
-								},
-								"minItems": 1,
-								"uniqueItems": true
-							}
-						},
-						"additionalProperties": false,
-						"minProperties": 1
+						"$ref": "utils.json#/definitions/defenses/properties/immunities"
+					},
+					"resistances": {
+						"$ref": "utils.json#/definitions/defenses/properties/resistances"
 					},
 					"misc": {
 						"type": "array",
@@ -292,14 +286,12 @@
 								"type": {
 									"type": "string",
 									"enum": [
-										"Innate"
+										"Innate",
+										"Prepared"
 									]
 								},
 								"tradition": {
-									"type": "string",
-									"enum": [
-										"Arcane"
-									]
+									"$ref": "utils.json#/definitions/tradition"
 								},
 								"attack": {
 									"type": "integer",
