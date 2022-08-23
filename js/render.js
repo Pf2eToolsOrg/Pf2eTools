@@ -2416,6 +2416,7 @@ function Renderer () {
 					case "@place":
 					case "@plane":
 					case "@nation":
+					case "@mindscape":
 					case "@settlement":
 						fauxEntry.href.path = UrlUtil.PG_PLACES;
 						fauxEntry.href.hover = {
@@ -4765,6 +4766,7 @@ Renderer.feat = {
 			${Renderer.utils.getTraitsDiv(feat.traits)}
 			${Renderer.feat.getSubHead(feat)}
 			${Renderer.generic.getRenderedEntries(feat)}
+			${feat.amp ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getAmpEntry(feat)}` : ""}
 			${opts.renderLeadsTo ? Renderer.feat.getLeadsTo(feat) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(feat)}`;
 	},
@@ -5489,6 +5491,7 @@ Renderer.creatureTemplate = {
 Renderer.place = {
 	getRenderedString (it, opts) {
 		if (it.category.toLowerCase() === "plane") return Renderer.plane.getRenderedString(it, opts)
+		if (it.category.toLowerCase() === "mindscape") return Renderer.plane.getRenderedString(it, opts)
 		if (it.category.toLowerCase() === "settlement") return Renderer.settlement.getRenderedString(it, opts)
 		if (it.category.toLowerCase() === "nation") return Renderer.nation.getRenderedString(it, opts)
 	},
@@ -5499,8 +5502,8 @@ Renderer.plane = {
 		opts = opts | {}
 		const renderer = Renderer.get()
 		const renderStack = []
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "plane", UrlUtil.PLACES))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: "PLANE", ...opts }))
+		renderStack.push(Renderer.utils.getExcludedDiv(it, it.category.toLowerCase() ?? "plane", UrlUtil.PLACES))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: it.category.toUpperCase() ?? "PLANE", ...opts }))
 		renderStack.push(Renderer.utils.getDividerDiv())
 		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
 		renderStack.push(Renderer.plane.getSubHead(it))
@@ -5509,11 +5512,12 @@ Renderer.plane = {
 		return renderStack.join("");
 	},
 	getSubHead (it) {
+		if (!it.planeData) return "";
 		const renderer = Renderer.get()
 		const renderStack = []
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
+		if (it.planeData.category) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
+		if (it.planeData.divinities) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
+		if (it.planeData.inhabitants) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
 		renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("")
 	},
@@ -5679,6 +5683,7 @@ Renderer.spell = {
 		${Renderer.spell.getSubHead(sp)}
 		${entryStack.join("")}
 		${sp.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(sp)}` : ""}
+		${sp.amp ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getAmpEntry(sp)}` : ""}
 		${opts.noPage ? "" : Renderer.utils.getPageP(sp)}`;
 	},
 
@@ -5702,7 +5707,7 @@ Renderer.spell = {
 		if (sp.duration && sp.duration.type != null) stDurationParts.push(`<strong>Duration&nbsp;</strong>${renderer.render(sp.duration.entry)}`);
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${renderer.render(sp.traditions.map(it => `{@trait ${it}}`).join(", ").toLowerCase())}</p>` : ""}
-		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it}|deities||domain=${it}}`).join(", "))}` : ""}
+		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it.toLowerCase()}|deities||domain=${it.replace("(Apocryphal)", "")}}`).join(", "))}` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]}</strong> ${renderer.render(k.split("|")[1].toLowerCase() === "mystery" ? sp.subclass[k].map(it => `{@class Oracle|APG|${it}|${it}}`).join(", ") : sp.subclass[k].join(", ").toLowerCase())}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castPart}</p>
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
@@ -5720,16 +5725,48 @@ Renderer.spell = {
 				else renderer.recursiveRender(e, renderStack, { prefix: "<span class='pf2-stat__section'>", suffix: "</span>" });
 			});
 		};
-		if (sp.heightened.plusX != null) {
+		if (sp.heightened?.plusX != null) {
 			Object.entries(sp.heightened.plusX).forEach(([x, entries]) => {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${x})&nbsp;</strong>`);
 				renderArray(entries);
 				renderStack.push(`</p>`);
 			});
 		}
-		if (sp.heightened.X != null) {
+		if (sp.heightened?.X) {
 			Object.entries(sp.heightened.X).forEach(([x, entries]) => {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
+				renderArray(entries);
+				renderStack.push(`</p>`);
+			});
+		}
+		return renderStack.join("")
+	},
+
+	getAmpEntry (sp) {
+		if (!sp.amp) return "";
+		const renderer = Renderer.get();
+		const renderStack = [""];
+		const renderArray = (a) => {
+			a.forEach((e, i) => {
+				if (i === 0) renderer.recursiveRender(e, renderStack, { prefix: "<span>", suffix: "</span>" });
+				else renderer.recursiveRender(e, renderStack, { prefix: "<span class='pf2-stat__section'>", suffix: "</span>" });
+			});
+		};
+		if (sp.amp?.entries) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Amp&nbsp;</strong>`);
+			renderArray(sp.amp.entries);
+			renderStack.push(`</p>`);
+		}
+		if (sp.amp?.heightened?.plusX) {
+			Object.entries(sp.amp.heightened.plusX).forEach(([x, entries]) => {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${x})&nbsp;</strong>`);
+				renderArray(entries);
+				renderStack.push(`</p>`);
+			});
+		}
+		if (sp.amp?.heightened?.X) {
+			Object.entries(sp.amp.heightened.X).forEach(([x, entries]) => {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Amp Heightened (${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
 				renderArray(entries);
 				renderStack.push(`</p>`);
 			});
@@ -7989,6 +8026,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@trait":
 					case "@place":
 					case "@plane":
+					case "@mindscape":
 					case "@nation":
 					case "@ritual":
 					case "@settlement":

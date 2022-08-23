@@ -1597,6 +1597,7 @@ ContextUtil = {
 
 		this._userData = null;
 
+		// TODO: Sort the spell levels properly (1, 2, 3... 10; not 1, 10, 2, 3...)
 		const $elesAction = this._actions.map(it => {
 			if (it == null) return $(`<div class="my-1 w-100 ui-ctx__divider"></div>`);
 

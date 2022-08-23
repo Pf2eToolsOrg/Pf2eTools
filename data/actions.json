@@ -1,6 +1,409 @@
 {
 	"action": [
 		{
+			"name": "Recenter",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 201,
+			"traits": [
+				"concentrate"
+			],
+			"requirements": "You're in a psychic duel and are trained in the skill matching the psychic center you are changing to.",
+			"entries": [
+				"You adopt the psychic center matching the emotion of your choice. If you were already psychically centered, you lose your old psychic center when you adopt the new one."
+			]
+		},
+		{
+			"name": "Psychic Defense",
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"source": "DA",
+			"page": 201,
+			"traits": [
+				"concentrate",
+				"magical"
+			],
+			"trigger": "Your opponent uses a psychic manifestation against you.",
+			"requirements": "You're in a psychic duel and are psychically centered.",
+			"entries": [
+				"You gain the benefit matching your psychic center against thet riggering manifestation. Then your psychic center is expended.",
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"name": "Armor of Insight ({@skill Perception})",
+							"entries": [
+								"Sensing the incoming attack, you make your mind resist psychic harm. You gain resistance equal to half your level (minimum 1) to mental damage against the triggering effect. This resistance is doubled if you're a master in Perception and tripled if you're legendary. "
+							]
+						},
+						{
+							"name": "Empathic Orbit ({@skill Diplomacy})",
+							"entries": [
+								"Displaying empathy, you sow doubt in your attacker to diminish their resolve for psychic combat. The opponent is stupefied 1 until the end of their next turn or stupefied 2 if you're legendary in Diplomacy. "
+							]
+						},
+						{
+							"name": "Ire's Spear ({@skill Intimidation})",
+							"entries": [
+								"Blazing anger surges in your mind, causing backlash to anyone who harms you. If the manifestation damages you, the opponent takes damage equal to the counteract level of the manifestation it used against you. This damage is doubled if you're a master of Intimidation or tripled if you're legendary. "
+							]
+						},
+						{
+							"name": "Rational Labyrinth ({@skill Occultism})",
+							"entries": [
+								"Analytically breaking down the attack, you realign your mind's defenses into a puzzle designed to confound it. You gain a +2 status bonus to your Will save or Will DC, or a +4 status bonus if the effect has the emotion trait. "
+							]
+						},
+						{
+							"name": "Sensory Phantasm ({@skill Deception})",
+							"entries": [
+								"Using your guile, you send psychic illusions through your mental link to your foe, making yourself harder to pinpoint. You're concealed against the opponent until the end of its next turn."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Exploit Vulnerability",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 32,
+			"traits": [
+				"esoterica",
+				"manipulate",
+				"thaumaturge"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "round"
+			},
+			"requirements": "You are holding your implement.",
+			"entries": [
+				"You scour your experiences and learning to identify something that might repel your foe. You retrieve an object from your esoterica with the appropriate supernatural qualities, then use your implement to stoke the remnants of its power into a blaze. Select a creature you can see and attempt an {@skill Lore||Esoteric Lore} check against a standard DC for its level, as you retrieve the right object from your esoterica and use your implement to empower it. You gain the following effects until you Exploit Vulnerabilities again.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You remember the creature's weaknesses, and Archive as you empower your esoterica, you have a flash of insight that grants even more knowledge about the creature. You learn all of the creature's resistances, weaknesses, and immunities, including the amounts of the resistances and weaknesses and any unusual weaknesses or vulnerabilities, such as what spells will pass through a golem's antimagic. You can exploit either the creature's mortal weakness or personal antithesis. Your unarmed and weapon {@action Strike||Strikes} against the creature also become {@trait magical} if they weren't already.",
+						"Success": "You recall an important fact about the creature, learning its highest weakness (or one of its highest weaknesses, if it has multiple with the same value) but not its other weaknesses, resistances, or immunities. You can exploit either the creature's mortal weakness or personal antithesis. Your unarmed and weapon {@action Strike||Strikes} against the creature also become {@trait magical} if they weren't already.",
+						"Failure": "Failing to recall a salient weakness about the creature, you instead attempt to exploit a more personal vulnerability. You can exploit only the creature's personal antithesis. Your unarmed and weapon {@action Strike||Strikes} against the creature also become {@trait magical} if they weren't already.",
+						"Critical Failure": "You couldn't remember the right object to use and become distracted while you rummage through your esoterica. You become {@condition flat-footed} until the beginning of your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Intensify Vulnerability",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 35,
+			"traits": [
+				"concentrate",
+				"divination",
+				"esoterica",
+				"magical",
+				"thaumaturge"
+			],
+			"prerequisites": "{@action Exploit Vulnerability|DA}",
+			"frequency": {
+				"freq": 1,
+				"unit": "round"
+			},
+			"requirements": "You're benefiting from {@action Exploit Vulnerability|DA}, you can see the subject, and you haven't used {@action Exploit Vulnerability|DA} this round.",
+			"entries": [
+				"You present your implement and esoterica again, intensifying their effects on the target in a way unique to your implement. You gain the intensified vulnerability benefit from one of the implements you're holding, which lasts until the beginning of your next turn."
+			]
+		},
+		{
+			"name": "Amulet's Abeyance",
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"source": "DA",
+			"page": 36,
+			"traits": [
+				"abjuration",
+				"magical",
+				"manipulate",
+				"thaumaturge"
+			],
+			"trigger": "The target of your {@action Exploit Vulnerability|DA} would damage you or an ally within 15 feet of you.",
+			"requirements": "You're holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|amulet|DA|1||amulet implement} and are benefiting from {@action Exploit Vulnerability|DA}.",
+			"entries": [
+				"You forcefully present your amulet to turn away harm. You or a target ally within 15 feet gain resistance to all damage against the triggering damage. The resistance is equal to 2 + your level."
+			]
+		},
+		{
+			"name": "Ring Bell",
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"source": "DA",
+			"page": 37,
+			"traits": [
+				"auditory",
+				"emotion",
+				"enchantment",
+				"magical",
+				"manipulate",
+				"mental",
+				"thaumaturge"
+			],
+			"trigger": "The target of your {@action Exploit Vulnerability|DA} makes a Strike or Casts a Spell that would affect you or one of your allies.",
+			"requirements": "You are holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|bell|DA|1||bell implement}, and the triggering creature is within 30 feet of you.",
+			"entries": [
+				"{@subclassFeature First Implement and Esoterica|Thaumaturge|DA|Your|DA|1||Your implement} sings out abruptly, disrupting your foe. The piece played depends on whether the trigger was a Strike or Spell, and it applies to the triggering Strike or Spell, except where noted otherwise.",
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"name": "Distracting Cacophony",
+							"entries": [
+								"The trigger is a spell. You create a musical crash of sonic energy that assails the target and breaks its concentration. The target must succeed at a Fortitude save against your class DC or become stupefied 1 until the end of your next turn (stupefied 2 on a critical failure). The target doesn't have to attempt a flat check to avoid losing the triggering spell, but the discordant ring does lower the spell attack roll or spell DC of the triggering spell from stupefied."
+							]
+						},
+						{
+							"name": "Disrupting Harmony",
+							"entries": [
+								"The trigger is a Strike. You create a strangely discordant harmony that sinks into your foe's mind and throws its movements off. The target must succeed at a Will save against your class DC or become your choice of enfeebled 1 or clumsy 1 until the end of your next turn (enfeebled 2 or clumsy 2 on a critical failure)."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Drink from the Chalice",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 37,
+			"traits": [
+				"magical",
+				"manipulate",
+				"necromancy",
+				"thaumaturge"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "round"
+			},
+			"requirements": "You are holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|chalice|DA|1||chalice implement}.",
+			"entries": [
+				"You drink from the liquid that slowly collects in your chalice or administer it to an adjacent ally. The drinker chooses whether to take a small sip or to drain the contents.",
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"name": "Sip",
+							"entries": [
+								"A sip grants the drinker an amount of temporary Hit Points equal to 2 + half your level that last until the end of your next turn."
+							]
+						},
+						{
+							"name": "Drain",
+							"traits": [
+								"healing",
+								"positive"
+							],
+							"entries": [
+								"Drinking deep instead heals the drinker 3 Hit Points for each level you have. After the chalice is drained, it's left with only its slowly collecting dregs; the chalice can't be drained again, though it can still be sipped from. If 10 minutes pass without anyone drinking from the chalice, it refills itself and can be drained again. If the drinker has {@ability negative healing}, it can still heal in this way, and the effect has the {@trait negative} trait instead of {@trait healing} and {@trait positive}."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mirror's Reflection",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 39,
+			"traits": [
+				"illusion",
+				"magical",
+				"manipulate",
+				"thaumaturge"
+			],
+			"requirements": "You're holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|mirror|DA|1||mirror implement}.",
+			"entries": [
+				"You reflect an illusory image of yourself into another unoccupied space within 15 feet that you can see. You are treated as being in both spaces until the start of your next turn. For example, you can attack, Seek, and provide flanking\u2014even with yourself. You occupy both spaces.",
+				"Your mirror self mimics your actions exactly, but any effects you generate come from only one of your positions; you decide which each time you act. For example, if you made a melee Strike against a creature within reach of the reflection, you'd mime the actions of the Strike, but only the reflection would actually make the Strike. Anything that targets or would affect your reflection affects you and uses your statistics. Something that would target or affect both of you affects you only once. For example, a fireball that included both of you in its area would require only one save from you and damage you no more than once. When you move, you choose which square to move from, but the mirror effect ends (see below).",
+				"Some events force you to determine which image is the real you, and then end the effect and cause your mirror self to disappear; this happens automatically at the start of your next turn. It also happens if you choose to move out of your space. Other benefits of {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|this|DA|1||this implement} add more events that can end the reflection. The effect also ends when you fall unconscious, at which point you decide which version is truly you."
+			]
+		},
+		{
+			"name": "Fling Magic",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 41,
+			"traits": [
+				"concentrate",
+				"evocation",
+				"magical",
+				"manipulate",
+				"thaumaturge"
+			],
+			"requirements": "You are holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|wand|DA|1||wand implement}.",
+			"entries": [
+				"You fling magical energy at a target within 60 feet, dealing damage equal to {@damage 1d4} + your Charisma modifier to the target, with a basic Reflex save against your class DC. The damage is of the type you selected when you gained your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|wand|DA|1||wand implement}. At 3rd level and every 2 levels thereafter, the damage increases by {@scaledamage 1d4|1-10|1d4}.",
+				"You can expend more energy than usual to boost the effect of Fling Magic, dealing {@scaledamage 1d6|1-10|d6}s of damage instead of {@damage d4}s. After you do so, the wand takes {@dice 1d4} rounds to recharge, during which you can't boost the wand's damage but can continue to Fling Magic normally. If you critically hit with a {@action Strike}, your wand recharges immediately as it draws in power from the clash."
+			],
+			"special": [
+				"This activity has the trait corresponding to the damage type you selected."
+			]
+		},
+		{
+			"name": "Implement's Interruption",
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"source": "DA",
+			"page": 41,
+			"traits": [
+				"evocation",
+				"magical",
+				"thaumaturge"
+			],
+			"trigger": "The target of your {@action Exploit Vulnerability|DA} uses a {@trait concentrate}, {@trait manipulate}, or {@trait move} action, or leaves a square during a move action it's using.",
+			"requirements": "You're holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|weapon|DA|1||weapon implement} and are benefiting from {@action Exploit Vulnerability|DA} against a creature. The creature must be within your reach if you're wielding a melee weapon, or within 10 feet if you're wielding a ranged weapon.",
+			"entries": [
+				"Your weapon senses a moment of weakness and guides your hand to strike down a foe. Make a {@action Strike} against the triggering creature with your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|weapon|DA|1||weapon implement}. If your attack is a critical hit, you disrupt the triggering action. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
+			]
+		},
+		{
+			"name": "Fade Into Daydreams",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 16,
+			"traits": [
+				"illusion",
+				"psyche",
+				"psychic"
+			],
+			"entries": [
+				"Your flights of imagination spill into the real world, causing you to become indistinct, hazy, or cloaked in figments. You become {@condition concealed} until the start of your next turn. This concealment can't be used to {@action Hide}, as normal for concealing effects that leave your location obvious."
+			]
+		},
+		{
+			"name": "Calculate Threats",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"source": "DA",
+			"page": 16,
+			"traits": [
+				"mental",
+				"psyche",
+				"psychic"
+			],
+			"entries": [
+				"Your subconscious automatically calculates vectors and forces when your mind is unleashed, showing you the likely path of incoming attacks to avoid. You gain a +2 circumstance bonus to AC and Reflex saves until the beginning of your next turn."
+			]
+		},
+		{
+			"name": "Recall The Teachings",
+			"source": "DA",
+			"page": 15,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"divination",
+				"occult",
+				"psyche",
+				"psychic"
+			],
+			"entries": [
+				"The heightened power of your psyche lets you recall every lesson you've ever learned. You search your mind for the right teaching, which at first seems cryptic but comes into clarity when it's most relevant. Until the start of your next turn, you count as having prepared to {@action Aid} all allies within 30 feet of you. If you use the {@action Aid} reaction to help one of them during that time, you roll an {@skill Occultism} check for {@action Aid} as you recall a lesson to help them. Most lessons take the form of short axioms, parables, or sayings, meaning that conveying them to your ally usually grants your {@action Aid} reaction the {@trait auditory} and {@trait linguistic} traits."
+			]
+		},
+		{
+			"name": "Restore The Mind",
+			"source": "DA",
+			"page": 15,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"emotion",
+				"enchantment",
+				"healing",
+				"mental",
+				"psyche",
+				"psychic"
+			],
+			"entries": [
+				"Your unleashed psyche gives you closer connections to the emotions of your allies, letting you project reassurance and strength that replenishes their mind and body. Choose one of the two benefits to grant one ally within 30 feet that you can see. That ally is then temporarily immune for 10 minutes.",
+				{
+					"type": "list",
+					"items": [
+						"The ally gains a +1 status bonus to saving throws against {@trait mental} effects until your psyche ends.",
+						"The ally regains Hit Points equal to 2 + double your level."
+					]
+				}
+			]
+		},
+		{
+			"name": "Unleash Psyche",
+			"source": "DA",
+			"page": 12,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"psychic"
+			],
+			"actionType": {
+				"class": [
+					"Psychic|DA"
+				]
+			},
+			"requirements": "You're in an encounter, you {@spell Cast a Spell} on your previous turn, and you aren't {@condition stupefied}.",
+			"trigger": "Your turn begins.",
+			"entries": [
+				"You call on the depths of your mind and let psychic power flood through. Your Psyche remains Unleashed for 2 rounds or until your fall unconscious, whichever comes first. You can't voluntarily quell your unleashed psyche. While your Psyche is Unleashed, the following effects occur.",
+				{
+					"type": "list",
+					"items": [
+						"You're constantly surrounded by the visual manifestation of your psychic magic.",
+						"When you cast a damaging spell, you gain a status bonus to its damage equal to double the spell's level. This applies only to spells that don't have a duration and that you cast using psychic spellcasting.",
+						"You can use actions that have the psyche trait."
+					]
+				},
+				"After your unleashed psyche subsides, your mind must recover from the strain of channeling its full power. You can't use Unleash Psyche again for 2 rounds, and you're {@condition stupefied 1} for 2 rounds."
+			]
+		},
+		{
 			"name": "Accidental Shot",
 			"source": "G&G",
 			"page": 142,

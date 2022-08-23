@@ -1,0 +1,590 @@
+{
+	"creature": [
+		{
+			"name": "K.H.W.'s Echo",
+			"source": "DA",
+			"page": 214,
+			"level": 14,
+			"traits": [
+				"unique",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 30
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Tien"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 28
+				},
+				"arcana": {
+					"std": 25
+				},
+				"athletics": {
+					"std": 25
+				},
+				"esoteric lore": {
+					"std": 30
+				},
+				"nature": {
+					"std": 25
+				},
+				"occultism": {
+					"std": 25
+				},
+				"religion": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 4,
+				"int": 5,
+				"wis": 5,
+				"cha": 8
+			},
+			"ac": {
+				"std": 36
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 23
+				},
+				"ref": {
+					"std": 24
+				},
+				"will": {
+					"std": 28
+				}
+			},
+			"hp": [
+				{
+					"hp": 280,
+					"abilities": [
+						"destabilized form"
+					]
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"disarm",
+						"finesse",
+						"magical",
+						"sweep",
+						"tethered",
+						"trip"
+					],
+					"name": "rope dart",
+					"attack": 29,
+					"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"disarm",
+						"finesse",
+						"magical",
+						"sweep",
+						"tethered",
+						"thrown 80 feet",
+						"trip"
+					],
+					"name": "rope dart",
+					"attack": 29,
+					"damage": "{@damage 4d4+13} piercing plus {@damage 2d6} mental"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Destabilized Form",
+						"entries": [
+							"When the Echo has fewer than 140 Hit Points, his form destabilizes, large chunks disintegrating from his face, limbs, and torso. White moths constantly stream from the missing spaces, creating a 10-foot emanation that deals {@damage 6d6} mental damage with a DC 34 basic Will save.",
+							"As long as the aura persists, he can dissolve into moths and re-form at another location within 15 feet as a free action at the beginning of each of his turns; this has the occult, {@trait conjuration}, and {@trait teleportation} traits."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The Echo has reach 15 for the purpose of determining when {@action Attack of Opportunity} triggers and when making Attacks of Opportunity."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Astral Spindle Implement The",
+						"entries": [
+							"Echo carries a drop spindle that constantly spins red astral thread, which is both his thaumaturgic implement and weapon. If his rope dart is lost or {@condition broken}, he can re-form it with an {@action Interact} action. If he critically succeeds at a rope dart {@action Strike}, overwhelming thoughts and figments flow down the thread into the target's mind. The target becomes {@condition confused} for 1 round."
+						]
+					},
+					{
+						"name": "Astral Thread Control",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"requirements": "The Echo's previous action was a successful thrown rope dart {@action Strike}",
+						"entries": [
+							"The Echo flicks his wrist and makes a follow-up thrown rope dart {@action Strike} at a different target within 30 feet of the first target, using the same multiple attack penalty as his previous {@action Strike}. Regardless of whether his attack hits, he then retrieves the weapon."
+						]
+					},
+					{
+						"name": "Contingency Oathday-Nine-Rova",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "day"
+						},
+						"trigger": "The Echo's turn begins and he's {@condition stunned}, {@condition slowed}, {@condition confused}, {@condition controlled}, {@condition immobilized}, {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, or otherwise can't act",
+						"entries": [
+							"The Echo has set up numerous contingencies in the event he's compromised.",
+							"Talismans on his body shatter, counteracting the triggering effect. The Echo can use this free action even if he can't act."
+						]
+					},
+					{
+						"name": "Reconstitute from Thought",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy",
+							"healing"
+						],
+						"requirements": "The Echo is standing on one of the eight large islands of the map, and the island hasn't darkened",
+						"entries": [
+							"The Echo throws his rope dart into the island and uses it to absorb mental essence from the mindscape, repairing himself. He regains 45 Hit Points and the island turns a desaturated gray for 1 day, preventing future absorption and disabling the call of the void hazard on that island (see below)."
+						]
+					},
+					{
+						"name": "Spindle's Web",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The Echo's spindle revolves faster and faster until it's a blur, lashing red threads in every direction. The threads deal {@damage 7d6} slashing damage and {@damage 7d6} mental damage to all creatures in a 30-foot emanation, with a DC 34 basic Reflex save. If a creature fails its save, the threads awaken the mindscape anchor within it, affecting it differently based on which anchor that creature used to gain access to the center of the mindscape. (If there is a PC who didn't absorb a mindscape anchor, for instance because there are more than four PCs in the party, then use the anchor of the PC closest to them.) The Echo then can't use Spindle's Web for {@dice 1d4} rounds.",
+							{
+								"type": "list",
+								"items": [
+									"{@b Lantern} The lantern outlines the creature with searing faerie fire that deals {@damage 2d6} {@condition persistent damage ||persistent fire damage}.",
+									"{@b Mirror} The mirror reflects the creature to another location, teleporting them to a clear space within 25 feet of their current location.",
+									"{@b Chalice} The chalice drains life force, granting the Echo temporary HP equal to half the damage dealt.",
+									"{@b Tome} The tome floods the creature's mind with information; the target is {@condition slowed||slowed 1} for 1 round."
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Mother Mitera",
+			"source": "DA",
+			"page": 152,
+			"level": 8,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 18
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				]
+			},
+			"skills": {
+				"deception": {
+					"std": 20
+				},
+				"diplomacy": {
+					"std": 18
+				},
+				"ludovica lore": {
+					"std": 16
+				},
+				"nature": {
+					"std": 18
+				},
+				"religion": {
+					"std": 18
+				},
+				"society": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 0,
+				"int": 2,
+				"wis": 4,
+				"cha": 4
+			},
+			"items": [
+				"ceremonial robes",
+				"crystal flower crown",
+				"+1 striking dagger"
+			],
+			"ac": {
+				"std": 25
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 14
+				},
+				"ref": {
+					"std": 17
+				},
+				"will": {
+					"std": 18
+				}
+			},
+			"hp": [
+				{
+					"hp": 140,
+					"abilities": [
+						"crystal vitality link"
+					]
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"name": "dagger",
+					"attack": 18,
+					"damage": "{@damage 2d4+7} piercing plus {@damage 1d6} mental and {@damage 1d6} {@condition persistent damage ||persistent bleed}"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"magical",
+						"thrown",
+						"versatile S"
+					],
+					"name": "dagger",
+					"attack": 18,
+					"damage": "{@damage 2d4+7} piercing plus {@damage 1d6} mental and {@damage 1d6} {@condition persistent damage ||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Prepared",
+					"tradition": "Primal",
+					"type": "Prepared",
+					"DC": 26,
+					"attack": 18,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "entangle"
+								},
+								{
+									"name": "glitterdust"
+								},
+								{
+									"name": "tree shape"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "lightning bolt"
+								},
+								{
+									"name": "mind of menace",
+									"source": "som"
+								},
+								{
+									"name": "soothing blossoms",
+									"source": "som"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "freedom of movement"
+								},
+								{
+									"name": "murderous vine",
+									"source": "som"
+								},
+								{
+									"name": "petal storm",
+									"source": "som"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Crystal Vitality Link",
+						"entries": [
+							"The power of the island links Mitera's vitality to her followers. As long as any of the three quartz formations are intact (see above), whenever Mitera takes damage, any of her followers within 10 miles lose the same amount of Hit Points."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Ascension is Near",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"concentrate",
+							"emotion",
+							"incapacitation",
+							"mental"
+						],
+						"frequency": {
+							"freq": 1,
+							"customUnit": "ascension"
+						},
+						"entries": [
+							"Mitera activates the moonflower link with her followers. Any followers within 30 feet who failed their saving throw against the moonflower tea become {@condition sickened||sickened 1}.",
+							"Anyone who critically failed and did not receive an antidote explodes (this is about half of Mitera's congregation if the PCs didn't successfully administer the antidote). If anyone's body explodes, Mitera gains 30 temporary Hit Points and is {@condition quickened} for 3 rounds; she can use this additional action each round only for {@action Strike} and {@action Stride} actions."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Morrowkin",
+			"source": "DA",
+			"page": 192,
+			"level": 14,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"aberration",
+				"time"
+			],
+			"perception": {
+				"std": 24
+			},
+			"skills": {
+				"athletics": {
+					"std": 26
+				},
+				"deception": {
+					"std": 24
+				},
+				"intimidation": {
+					"std": 28
+				},
+				"occultism": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 7,
+				"con": 7,
+				"int": 5,
+				"wis": 4,
+				"cha": 4
+			},
+			"ac": {
+				"std": 34
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 28
+				},
+				"ref": {
+					"std": 25
+				},
+				"will": {
+					"std": 25
+				}
+			},
+			"hp": [
+				{
+					"hp": 320
+				}
+			],
+			"speed": {
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"reach 10"
+					],
+					"name": "claw",
+					"attack": 29,
+					"damage": "{@damage 3d8+14} slashing plus drain potential"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Disgusted by Food",
+						"entries": [
+							"The morrowkin eats dreams and potential, not food. A creature that spends an action to brandish food at the morrowkin automatically makes the creature {@condition sickened||sickened 1} (or increases its {@condition sickened} value by 1, to a maximum of {@condition sickened||sickened 6}), decreasing the morrowkin's AC, attack rolls, saves, skills, and ability DCs accordingly, as normal for the {@condition sickened} condition.",
+							"The morrowkin can't retch to reduce its {@condition sickened} condition."
+						]
+					},
+					{
+						"name": "Endless",
+						"entries": [
+							"If reduced to 0 Hit Points or incapacitated for more than a few rounds, the morrowkin vanishes. In 1 minute, it reappears refreshed completely as if the previous battle never happened, with full HP, with all effects on it cleared, and with its Swallow Future ability ready to use again."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Drain Potential",
+						"traits": [
+							"misfortune",
+							"negative"
+						],
+						"entries": [
+							"The morrowkin tries to drain the motivation from its target, who must attempt a DC 31 Fortitude save. If the target fails, it is {@condition doomed||doomed 1} ({@condition doomed||doomed 2} on a critical failure) and must roll twice and use the worse result on all checks for 1 minute. Creatures wearing a hope talisman are unaffected."
+						]
+					},
+					{
+						"name": "Swallow Future",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"mental",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"The morrowkin inhales and draws forth the future deeds of all creatures around it. All creatures within a 30-foot emanation of the morrowkin take {@damage 6d8+18} mental damage and must attempt a DC 39 Will save. The morrowkin can't Swallow Future again for 1 minute. Creatures wearing hope talismans can choose to let their hope talisman break in order to ignore the effect after seeing the result of their Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature takes no damage."
+									],
+									"Success": [
+										"The creature takes half damage and is {@condition doomed||doomed 1}."
+									],
+									"Failure": [
+										"The creature takes full damage and is {@condition doomed||doomed 2}."
+									],
+									"Critical Failure": [
+										"The creature takes double damage and becomes {@condition doomed||doomed 4} (likely causing it to die immediately)."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Tomorrow's Fury",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The morrowkin makes claw attacks against any number of targets within reach. The claw attacks count against the morrowkin's multiple attack penalty, but don't apply the penalty until after all attacks have been made."
+						]
+					}
+				]
+			}
+		}
+	]
+}

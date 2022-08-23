@@ -29,7 +29,7 @@ function updateFolder (folder) {
 							}
 						})
 					}
-					if (x.destruction || x.special || x.craftReq) {
+					if (typeof (x.destruction || x.special || x.craftReq) === 'string') {
 						console.log(`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`)
 						if (typeof x.special === "string") {
 							x.special = [x.special]
@@ -60,6 +60,13 @@ function updateFolder (folder) {
 						x.range.unit = x.range.type
 						delete x.range.type
 					}
+					if (x?.subclass?.["Cleric|Domain"]) {
+						x.domains = x.subclass["Cleric|Domain"]
+						delete x.subclass["Cleric|Domain"]
+						if (Object.keys(x.subclass.length).length === 0) {
+							delete x.subclass
+						}
+					}
 					return x
 				})
 			}
@@ -83,7 +90,7 @@ function updateFolder (folder) {
 			}
 			if (json.vehicle) {
 				json.vehicle = json.vehicle.map(x => {
-					if (x.destruction || x.special || x.craftReq) {
+					if (typeof (x.destruction || x.special || x.craftReq) === 'string') {
 						console.log(`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`)
 						if (typeof x.special === "string") {
 							x.special = [x.special]
