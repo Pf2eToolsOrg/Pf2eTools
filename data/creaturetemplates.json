@@ -618,7 +618,7 @@
 						"Add the {@trait undead} and {@trait wight} traits.",
 						"Add the {@language Necril} language.",
 						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}.",
-						"Add drain life to any number of the creature's Strikes and reduce the damage of each of those Strikes by half the creature's level."
+						"Add drain life to any number of the creature's {@action Strike||Strikes} and reduce the damage of each of those {@action Strike||Strikes} by half the creature's level."
 					]
 				}
 			],
@@ -657,6 +657,487 @@
 						],
 						"entries": [
 							"When the creature damages a living creature with this {@action Strike}, it gains temporary HP equal to its level, and the target must succeed at a Fortitude save or become {@condition drained 1}. This save uses the moderate DC for the {@table DCs by Level||wight creature's level}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Rumored Cryptid",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "DA",
+			"page": 60,
+			"entries": [
+				"You can turn an existing creature into a rumored cryptid by completing the following steps. Increase the creature’s level by 1 and change its statistics as follows.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait rare} trait. If the creature was an {@trait animal}, it loses the {@trait animal} trait and gains the {@trait beast} trait.",
+						"If the creature’s Intelligence modifier is –4 or lower, increase it to –3.",
+						"Add {@skill Stealth} with a modifier equal to its highest skill modifier.",
+						"Increase the creature’s AC, attack bonuses, DCs, {@skill Perception} modifier, saving throws, and skill modifiers by 1.",
+						"Increase the damage of the creature’s {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon’s Breath Weapon), increase the damage by 2 instead.",
+						"Increase the creature’s HP by the amount listed on the table."
+					]
+				},
+				{
+					"type": "table",
+					"source": "DA",
+					"page": 60,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase"
+						],
+						[
+							"1 or lower",
+							"10"
+						],
+						[
+							"2–4",
+							"15"
+						],
+						[
+							"5–19",
+							"20"
+						],
+						[
+							"20+",
+							"30"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Rumored Cryptid Abilities",
+						"entries": [
+							"All rumored cryptids gain the following abilities, unless they conflict with the theme of the creature."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Burning Eyes",
+						"entries": [
+							"The cryptid's eyes are distinctive perhaps they burn bright red in the dark night. The rumored cryptid gains {@ability darkvision}. If the base creature already has {@ability darkvision}, it gains {@ability greater darkvision}."
+						]
+					},
+					{
+						"name": "Creature Obscura",
+						"entries": [
+							"The cryptid appears in so many urban legends, it can be identified using {@skill Society} or a {@skill Lore} skill connected to a nearby settlement, in addition to the normal skills. However, much of the information known about it is dubious. The DC to identify a rumored cryptid is {@table DC Adjustments||incredibly hard} (rather than very hard for most rare creatures), but all failures to identify a rumored cryptid gain the effects of the {@feat Dubious Knowledge} skill feat."
+						]
+					},
+					{
+						"name": "Shifting Form",
+						"entries": [
+							"The cryptid is sustained by localized tales or reports from witnesses. As a result, its appearance morphs between different appearances.",
+							"If all records of the rumored cryptid are destroyed or all witnesses die, the rumored cryptid ceases to exist."
+						]
+					},
+					{
+						"name": "Obscura Vulnerability",
+						"entries": [
+							"The cryptid is weakened by those who seek its truth. Whenever a creature succeeds at a {@action Recall Knowledge} check to identify the rumored cryptid, the rumored cryptid becomes {@condition drained||drained 1} (or {@condition drained||drained 2} if the {@action Recall Knowledge} check was a critical success)."
+						]
+					},
+					{
+						"name": "Stalk",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The rumored cryptid is {@condition undetected}",
+						"entries": [
+							"The rumored cryptid swiftly stalks prey from hiding. It {@action Stride||Strides}, then {@action Strike||Strikes}."
+						]
+					},
+					{
+						"name": "Vanishing Escape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The rumored cryptid breaks away and fades into the background. It {@action Stride||Strides}, then {@action Hide||Hides}."
+						]
+					}
+				]
+			},
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Optional Abilities",
+						"entries": [
+							"The rumored cryptid might have one or both of the following optional abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Hybrid Form",
+						"entries": [
+							"The cryptid's form morphs to be like a specific animal as the tales get longer. The rumored cryptid gains either a burrow, climb, or swim Speed equal to its land Speed."
+						]
+					},
+					{
+						"name": "Howl",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"The rumored cryptid calls out with a wretched sound no living creature should make. Each creature in a 30-foot emanation must attempt a Will save. A creature that fails is {@condition frightened||frightened 1} (or {@condition frightened||frightened 2} on a critical failure). A creature that succeeds is temporarily immune for 1 minute. The DC is the high DC for a creature of the rumored cryptid's level."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Primeval Cryptid",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "DA",
+			"page": 60,
+			"entries": [
+				"You can turn an existing, living creature into a primeval cryptid by completing the following steps. Increase the creature’s level by 1 and change its statistics as follows.",
+				{
+					"type": "list",
+					"items": [
+						"Increase the creature’s rarity to {uncommon} if it was common or {rare} if it was {@trait uncommon}. If the creature was an {@trait animal}, it loses the {@trait animal} trait and gains the {@trait beast} trait.",
+						"Increase the creature’s size by one size. If this makes the creature {@trait Huge} or {@trait Gargantuan}, increase the reach of all its {@action Strikes} by 5 feet.",
+						"If the creature’s Intelligence modifier is –4 or lower, increase it to –3.",
+						"Increase the creature’s AC, attack bonuses, DCs, {@skill Perception} modifier, saving throws, and skill modifiers by 1.",
+						"Increase the damage of the creature’s {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon’s Breath Weapon), increase the damage by 2 instead.",
+						"Increase the creature’s HP by the amount listed on the table."
+					]
+				},
+				{
+					"type": "table",
+					"source": "DA",
+					"page": 60,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase"
+						],
+						[
+							"1 or lower",
+							"10"
+						],
+						[
+							"2–4",
+							"15"
+						],
+						[
+							"5–19",
+							"20"
+						],
+						[
+							"20+",
+							"30"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Primeval Cryptid Abilities",
+						"entries": [
+							"Primeval cryptids gain two abilities from the list below. You can add more than two abilities if you wish to make an especially tough primeval cryptid, but you might need to weaken it in some other way to avoid making it too powerful."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Unusual Bane",
+						"entries": [
+							"The mutant cryptid gains an unusual weakness to a specific bane\u2014such as aversion to saffron or to the sound of children's laughter. The first time each round the creature comes within 15 feet of its bane or interacts with its bane (such as stepping over a line of saffron or hearing children laugh) it takes an amount of mental damage equal to its level and must attempt a Will save with a hard DC for its level. On a failure, it's {@condition stunned||stunned 1} ({@condition stunned||stunned 3} on a critical failure)."
+						]
+					},
+					{
+						"name": "Stench",
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"30 feet. A creature entering the emanation or starting its turn in the emanation must succeed at a Fortitude save against the standard DC for the creature's level or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} as long as it's {@condition sickened} on a critical failure). While within the emanation, affected creatures take a \u20132 circumstance penalty to saves against diseases and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+						]
+					},
+					{
+						"name": "Broken Arsenal",
+						"entries": [
+							"Fragments of {@condition broken} blades and spears, the remnants of countless failed attempts to fell the primeval cryptid, remain lodged in its flesh. When an adjacent creature hits the primeval cryptid with a melee attack or otherwise touches it, that creature takes piercing damage equal to half the primeval cryptid's level (minimum 1 damage)."
+						]
+					},
+					{
+						"name": "Grasp for Life",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"healing"
+						],
+						"frequency": {
+							"freq": 1,
+							"unit": "week"
+						},
+						"trigger": "The primeval cryptid would be reduced to 0 Hit Points",
+						"entries": [
+							"The cryptid's will to live is second nature, and its second wind has allowed it to survive when others of its kind went extinct. The creature shrugs off death. Instead of being reduced to 0 Hit Points, its Hit Points become equal to four times its level (or 4 Hit Points for a level 0 creature)."
+						]
+					},
+					{
+						"name": "Shockwave",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The primeval cryptid creates a shockwave by stomping on the ground, beating its tail on the ground, or making another similarly violent, percussive slam. Creatures on the ground within 30 feet of the primeval cryptid take {@damage 1d6} bludgeoning damage per level of the primeval cryptid (minimum {@dice 2d6} damage), with a basic Reflex save. On a critical failure, a creature is also knocked {@condition prone}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Mutant Cryptid",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "DA",
+			"page": 59,
+			"entries": [
+				"You can turn an existing, living creature into a mutant cryptid by completing the following steps.",
+				"Increase the creature’s level by 1 and change its statistics as follows.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait rare} trait.",
+						"Increase the creature’s AC, attack bonuses, DCs, {@skill Perception} modifier, saving throws, and skill modifiers by 1.",
+						"Increase the damage of its {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon’s Breath Weapon), increase the damage by 2 instead.",
+						"Increase the creature’s HP by the amount listed on the table."
+					]
+				},
+				{
+					"type": "table",
+					"source": "DA",
+					"page": 59,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase"
+						],
+						[
+							"1 or lower",
+							"10"
+						],
+						[
+							"2–4",
+							"15"
+						],
+						[
+							"5–19",
+							"20"
+						],
+						[
+							"20+",
+							"30"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Mutant Cryptid Abilities",
+						"entries": [
+							"A mutant cryptid should typically either have all four the following abilities or just two abilities, not including unusual bane.",
+							"You might decide to give a specific mutant cryptid a unique mutant ability created just for that creature (or copied from a different creature). Such an ability replaces one of the three abilities that increases the monster’s power, or replaces unusual bane if it’s detrimental."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Unusual Bane",
+						"entries": [
+							"The mutant cryptid gains an unusual weakness to a specific bane\u2014such as aversion to saffron or to the sound of children's laughter. The first time each round the creature comes within 15 feet of its bane or interacts with its bane (such as stepping over a line of saffron or hearing children laugh) it takes an amount of mental damage equal to its level and must attempt a Will save with a hard DC for its level. On a failure, it's {@condition stunned||stunned 1} ({@condition stunned||stunned 3} on a critical failure)."
+						]
+					},
+					{
+						"name": "Explosive End",
+						"entries": [
+							"The mutant cryptid's death reveals one last surprise as it explodes into flame, acid, a pile of toxic goop, or something stranger still. Choose a damage type appropriate for the mutant cryptid. When it dies, it explodes, dealing {@dice 1d6} damage of the chosen type to each creature in a 10-foot emanation, with a basic Reflex save against a standard DC of the creature's level. The damage increases by {@damage 1d6} at 3rd level and every odd level thereafter."
+						]
+					},
+					{
+						"name": "Shifting Iridescence",
+						"traits": [
+							"abjuration",
+							"magical"
+						],
+						"entries": [
+							"Whenever the mutant cryptid takes energy damage to which it isn't resistant or immune, after taking the damage normally, it gains resistance 5 to that damage type. If it had a resistance to a different damage type from shifting iridescence, it replaces the old resistance with the new resistance. The resistance increases to 10 at 9th level and 15 at 17th level."
+						]
+					},
+					{
+						"name": "Marrowlance",
+						"entries": [
+							"The mutant cryptid can make wicked spears of bone erupt from its body. The creature can make marrowlance ranged unarmed attacks. Use the highest attack modifier from the creature's highest ranged {@action Strike}, as well as the damage from that {@action Strike}. If it has no ranged attacks, use moderate accuracy and low damage for the creature's level. Marrowlance unarmed attacks have a range of 60 feet and the versatile {@trait S} trait."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Experimental Cryptid",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "DA",
+			"page": 58,
+			"entries": [
+				"You can turn an existing creature into an experimental cryptid by completing the following steps. Increase the creature’s level by 1 and change its statistics as follows.",
+				{
+					"type": "list",
+					"items": [
+						"Increase the creature’s AC, attack bonuses, DCs, {@skill Perception} modifier, saving throws, and skill modifiers by 1.",
+						"Increase the damage of {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon’s Breath Weapon), increase the damage by 2 instead.",
+						"Increase the creature’s HP by the amount listed on the table."
+					]
+				},
+				{
+					"type": "table",
+					"source": "DA",
+					"page": 58,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase"
+						],
+						[
+							"1 or lower",
+							"10"
+						],
+						[
+							"2–4",
+							"15"
+						],
+						[
+							"5–19",
+							"20"
+						],
+						[
+							"20+",
+							"30"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Experimental Cryptid Abilities",
+						"entries": [
+							"An experimental cryptid gains the {@trait experiment} trait and, depending on the type of construct parts, might gain the {@trait alchemical} trait, {@trait clockwork} trait, or another construct-related trait as appropriate. An experimental cryptid gains the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Augmented",
+						"entries": [
+							"An experimental cryptid is partially artificial and designed in a way to specifically prevent biological afflictions and instant death. It gains a +2 circumstance bonus to saving throws against {@trait death} effects, {@trait disease}, and {@trait poison}."
+						]
+					},
+					{
+						"name": "Operational Flaw",
+						"entries": [
+							"An experimental cryptid has a flaw in its construction that can be identified with a successful {@skill Perception} check to {@action Seek} against the hard DC of the creature's level. An experimental cryptid has weakness equal to its level to the attacks of any creature that has successfully located the experiment's operational flaw."
+						]
+					},
+					{
+						"name": "Clobber",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The experimental cryptid {@action Strike||Strikes} a creature. On a hit, the creature is pushed 5 feet (10 feet on a critical hit) and knocked {@condition prone}. If this causes the creature to collide with a solid object, the creature takes an additional {@dice 1d10} damage. If the experimental cryptid is at least 5th level, this {@action Strike} deals one additional weapon damage die of damage, and if the experimental cryptid is at least 15th level, this {@action Strike} deals two additional weapon damage dice of damage."
+						]
+					},
+					{
+						"name": "Energy Wave",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The experimental cryptid unleashes a 30-foot line of energy of a type specific to the experimental cryptid (typically electricity or fire). Creatures in the area take {@dice 1d6} damage per level of the cryptid with a basic Reflex save. The experimental cryptid can use this ability once every {@dice 1d4} rounds. This action has the damage type's trait. If the experiments that reshaped the creature were magical, this action also has the {@trait evocation} trait and the trait matching the magical tradition of the experiments ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal})."
+						]
+					},
+					{
+						"name": "Power Surge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The experimental cryptid draws on its augmentations to empower its attacks. It attempts a DC {@flatDC 5} flat check. On a success, the experimental cryptid deals {@damage 1d6} additional damage with its {@action Strike||Strikes} until the end of its turn. On a failure, the experimental cryptid takes that much damage instead. The damage and traits for Power Surge are the same as those of Energy Wave.",
+							"This additional damage increases to {@dice 2d6} if the experimental cryptid is 9th level or higher, {@dice 3d6} if the experimental cryptid is 15th level or higher, and {@dice 4d6} if the experimental cryptid is 18th level or higher."
 						]
 					}
 				]
@@ -1052,7 +1533,7 @@
 						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}.",
 						"Add the following weaknesses, with a value based on the creature's level: force, {@item ghost touch}, positive.",
 						"If the creature can't fly, change its highest Speed to a fly Speed. Remove all other Speeds.",
-						"The damage of the creature's physical Strikes changes to negative damage, and those Strikes are {@trait magical}.",
+						"The damage of the creature's physical {@action Strike||Strikes} changes to negative damage, and those {@action Strike||Strikes} are {@trait magical}.",
 						"Add {@spell darkness} as an innate divine spell usable once per day."
 					]
 				},
@@ -1139,7 +1620,7 @@
 						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}.",
 						"Add the following weaknesses, with a value based on the creature's level: force, {@item ghost touch}, positive.",
 						"If the creature can't fly, change its highest Speed to a fly Speed. Remove all other Speeds.",
-						"The damage of the creature's physical Strikes changes to negative damage, and those Strikes are magical."
+						"The damage of the creature's physical {@action Strike||Strikes} changes to negative damage, and those {@action Strike||Strikes} are magical."
 					]
 				},
 				{
@@ -1484,7 +1965,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Increase its attack rolls, AC, saving throws, Perception, and skills by 1, its HP by 5, and its Strike damage by 1."
+						"Increase its attack rolls, AC, saving throws, {@skill Perception}  and skills by 1, its HP by 5, and its Strike damage by 1."
 					]
 				}
 			]
@@ -1620,7 +2101,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Increase AC, saves, Perception, DCs, and skill modifiers by 2. Increase the most appropriate melee attack modifier by 4 to become ghostly hand (described below), and other attack modifiers by 2.",
+						"Increase AC, saves, {@skill Perception}  DCs, and skill modifiers by 2. Increase the most appropriate melee attack modifier by 4 to become ghostly hand (described below), and other attack modifiers by 2.",
 						"A ghost has a Strength modifier of \u20135 and a Constitution modifier of +0.",
 						"Do not modify the ghost's Hit Points due to its new level."
 					]
@@ -1791,7 +2272,7 @@
 					"type": "list",
 					"items": [
 						"Increase its AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
-						"Increase its damage with Strikes and other offensive abilities by 1. If the creature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead."
+						"Increase its damage with {@action Strike||Strikes} and other offensive abilities by 1. If the creature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead."
 					]
 				}
 			],
@@ -2234,7 +2715,7 @@
 						"They gain the undead trait and the {@language Necril} language.",
 						"Increase their AC, attack bonuses, DCs, saving throws, and skill modifiers by 2.",
 						"They gain weakness to good damage and more HP (see below).",
-						"The ravener's melee strikes deal an additional {@damage 2d6} negative damage, and their damaging Breath Weapon deals an additional {@damage 4d6} persistent negative damage."
+						"The ravener's melee {@action Strike||Strikes} deal an additional {@damage 2d6} negative damage, and their damaging Breath Weapon deals an additional {@damage 4d6} persistent negative damage."
 					]
 				},
 				{
