@@ -629,23 +629,21 @@ class ScaleCreature {
 		const rangesIn = map[lvlIn];
 		const toRanges = map[toLvl];
 		const lowerIdx = rangesIn.findIndex(it => it < value);
-		const upperIdx = rangesIn.length - 1 - MiscUtil.copy(rangesIn).reverse().findIndex(it => it >= value);
+		const upperIdx = rangesIn.length - 1 - MiscUtil.copy(rangesIn).reverse().findIndex(it => it > value);
 
-		const a = rangesIn[lowerIdx] || 0;
-		const b = rangesIn[upperIdx] || value;
+		const a = rangesIn[lowerIdx] || value - (rangesIn[upperIdx] - value);
+		const b = rangesIn[upperIdx] || value + (value - rangesIn[lowerIdx]);
 		let c, d;
 		// There was no suggested value less than the value we are scaling.
-		// TODO: Why shouldn't this be less than 1?
-		if (lowerIdx === -1) c = Math.max(1, toRanges[upperIdx] - b + a);
+		if (lowerIdx === -1) c = toRanges[upperIdx] - (b - a);
 		else c = toRanges[lowerIdx];
 
-		// There was no suggested value greater than or equal to the value we are scaling.
-		if (upperIdx === rangesIn.length) d = c + b - a;
+		// There was no suggested value greater than the value we are scaling.
+		if (upperIdx === rangesIn.length) d = c + (b - a);
 		else d = toRanges[upperIdx];
 
-		// Handle singletons, then finally scale the interval [a,b] to [c,d] linearly, and return the scaled value.
-		if (a === b) return a;
-		// CRITICAL FIXME: This rounding is making everything wrong. You could floor it instead but it doesn't alleviate the issue of wrong calculations from the start.
+		// Scale the interval [a,b] to [c,d] linearly, and return the scaled value.
+		// N.B: a =/= b is ensured above
 		return Math.round((value - a) * ((d - c) / (b - a)) + c);
 	}
 
