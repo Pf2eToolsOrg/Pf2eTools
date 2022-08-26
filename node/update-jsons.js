@@ -125,6 +125,10 @@ function updateFolder(folder) {
 						}
 						x.skills = toLowerKeys(x.skills)
 					}
+					if (x?.languages?.languages && x.languages.languages.length && x.languages.languages.find(k => k.match(/[A-Z]/g))) {
+						console.log(`\tUpdating ${x.name} languages to lowercase in ${file}...`)
+						x.languages.languages = x.languages.languages.map(k => k.toLowerCase())
+					}
 					return x
 				})
 			}
