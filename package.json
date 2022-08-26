@@ -29,7 +29,9 @@
 		"build:seo": "node node/generate-seo.js",
 		"build:sw": "node node/build-sw.mjs",
 		"build:sw:prod": "node node/build-sw.mjs prod",
-		"build:schema:traits": "node node/compile-traits-schema.js",
+		"build:schema": "npm run build:schema:traits && npm run build:schema:languages",
+		"build:schema:traits": "node test/scripts/compile-traits-schema.js",
+		"build:schema:languages": "node test/scripts/compile-languages-schema.js",
 		"preversion": "npm test",
 		"version": "node node/version-bump.js"
 	},

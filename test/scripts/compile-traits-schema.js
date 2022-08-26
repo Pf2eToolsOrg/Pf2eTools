@@ -1,8 +1,8 @@
 "use strict";
 
 const fs = require("fs");
-const ut = require("./util");
-require("../js/utils");
+const ut = require("../../node/util");
+require("../../js/utils");
 
 const schemaTemplate = {
 	$schema: "http://json-schema.org/draft-07/schema#",
@@ -16,9 +16,10 @@ const schemaTemplate = {
 			type: "string",
 			description: "Any Trait in the game.",
 			anyOf: [],
+			uniqueItems: true,
 		},
 	},
-}
+};
 
 function generateTraitSchema (file) {
 	const traitsFile = ut.readJson("./data/traits.json");
@@ -34,7 +35,7 @@ function generateTraitSchema (file) {
 
 		// For each category, add it to the schema.
 		trait.categories.forEach(category => {
-			let categoryName = `${category.replace(/[^a-zA-Z ]/g, "").toCamelCase()}Trait`
+			let categoryName = `${category.replace(/[^a-zA-Z ]/g, "").toCamelCase()}Trait`;
 
 			// If category doesn't exist, create it.
 			if (!schema.definitions[categoryName]) {
@@ -44,10 +45,10 @@ function generateTraitSchema (file) {
 					enum: [],
 				};
 			}
-			schema.definitions[categoryName].enum.push(trait.name.toLowerCase())
-			schema.definitions[categoryName].enum.sort(SortUtil.ascSort)
-		})
-	})
+			schema.definitions[categoryName].enum.push(trait.name.toLowerCase());
+			schema.definitions[categoryName].enum.sort(SortUtil.ascSort);
+		});
+	});
 	let allCategories = Object.keys(schema.definitions).filter(e => e !== "anyTrait");
 	console.log("Created the following categories:", allCategories);
 
