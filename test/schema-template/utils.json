@@ -665,7 +665,7 @@
 			},
 			"minProperties": 1
 		},
-		"anyTrait": {
+		"anyTraitOld": {
 			"type": "string",
 			"description": "Any Trait in the game.",
 			"anyOf": [
@@ -877,6 +877,9 @@
 					]
 				}
 			]
+		},
+		"anyTrait": {
+			"$ref": "./_generated/traits.json#/definitions/anyTrait"
 		},
 		"loreSubjects": {
 			"type": "string",

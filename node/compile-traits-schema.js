@@ -44,7 +44,7 @@ function generateTraitSchema (file) {
 					enum: [],
 				};
 			}
-			schema.definitions[categoryName].enum.push(trait.name)
+			schema.definitions[categoryName].enum.push(trait.name.toLowerCase())
 			schema.definitions[categoryName].enum.sort(SortUtil.ascSort)
 		})
 	})
