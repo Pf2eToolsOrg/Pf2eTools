@@ -4132,7 +4132,7 @@ Renderer.creature = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
 			renderStack.push(`<span>`)
-			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.join(", ") : "— ")
+			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.map(t => t.toTitleCase()).join(", ") : "— ")
 			if (cr.languages.abilities && cr.languages.abilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
 				renderStack.push(renderer.render(cr.languages.abilities.join(", ")))
