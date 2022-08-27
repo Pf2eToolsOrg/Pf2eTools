@@ -482,18 +482,12 @@ Parser.genderToFull = function (g) {
 	}
 }
 Parser.savingThrowAbvToFull = function (abv) {
-	switch (abv) {
+	switch (abv.toLowerCase()) {
 		case "f":
-		case "F":
-		case "Fort":
 		case "fort": return "Fortitude";
 		case "r":
-		case "R":
-		case "Ref":
 		case "ref": return "Reflex";
 		case "w":
-		case "W":
-		case "Will":
 		case "will": return "Will";
 		default: throw new Error(`Unknown saving throw abv ${abv}.`)
 	}
