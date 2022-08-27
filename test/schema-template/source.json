@@ -1,0 +1,56 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"version": "0.0.1",
+	"$id": "source.json",
+	"title": "Source Schema",
+	"description": "Schema for Pf2eTools source file.",
+	"type": "object",
+	"properties": {
+		"source": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string",
+						"format": "date"
+					},
+					"store": {
+						"type": "string",
+						"format": "url"
+					},
+					"adventure": {
+						"description": "Whether it appears below usual sources, in the Adventure category.",
+						"type": "boolean",
+						"enum": [true]
+					},
+					"vanilla": {
+						"description": "Whether it is considered a \"Core\" source, and is filterable through the \"Select Vanilla Sources\" option.",
+						"type": "boolean",
+						"enum": [true]
+					},
+					"defaultSource": {
+						"description": "This array determines what source is considered the default for certain page or type of tag.\nDO NOT MODIFY UNLESS YOU KNOW WHAT YOU ARE DOING",
+						"type": "array"
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"store"
+				],
+				"additionalProperties": false
+			},
+			"minItems": 1
+		}
+	},
+	"required": [
+		"source"
+	]
+}
