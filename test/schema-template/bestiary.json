@@ -143,48 +143,8 @@
 						},
 						"minItems": 1
 					},
-					"ac": {
-						"type": "object",
-						"properties": {
-							"default": {
-								"type": "integer"
-							}
-						},
-						"additionalProperties": {
-							"type": "integer"
-						},
-						"minProperties": 1
-					},
-					"savingThrows": {
-						"$ref": "utils.json#/definitions/savingThrows"
-					},
-					"hp": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"hp": {
-									"type": "integer",
-									"minimum": 1
-								},
-								"abilities": {
-									"type": "array",
-									"items": {
-										"type": "string",
-										"enum": [
-											"//TODO"
-										]
-									},
-									"minItems": 1,
-									"uniqueItems": true
-								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"hp"
-							]
-						},
-						"minItems": 1
+					"defenses": {
+						"$ref": "utils.json#/definitions/defenses"
 					},
 					"speed": {
 						"$ref": "utils.json#/definitions/speed"
@@ -250,15 +210,6 @@
 						},
 						"additionalProperties": false,
 						"minProperties": 1
-					},
-					"weaknesses": {
-						"$ref": "utils.json#/definitions/defenses/properties/weaknesses"
-					},
-					"immunities": {
-						"$ref": "utils.json#/definitions/defenses/properties/immunities"
-					},
-					"resistances": {
-						"$ref": "utils.json#/definitions/defenses/properties/resistances"
 					},
 					"misc": {
 						"type": "array",
