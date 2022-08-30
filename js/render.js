@@ -441,7 +441,7 @@ function Renderer () {
 
 	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
 		this._getReference(entry)
-		if (entry.entries && entry.entries.length) {
+		if (entry.entries && entry?.entries?.length) {
 			textStack[0] += `<div class="pf2-wrp-other-source mb-3">`;
 			textStack[0] += `<hr class="hr-other-source">`;
 			entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {
@@ -804,7 +804,7 @@ function Renderer () {
 		textStack[0] += `<p class="m-0"><span class="${entry.style || "bold"} list-item-title">${this.render(entry.name)}</span> `;
 		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
 		else if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, { prefix: i > 0 ? `<span class="rd__p-cont-indent">` : "", suffix: i > 0 ? "</span>" : "" });
 		}
 		textStack[0] += "</p>";
@@ -865,7 +865,7 @@ function Renderer () {
 		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) {
 			textStack[0] += `${this.render(entry.entries[0], { isAbility: true })}</span>`;
-			for (let i = 1; i < entry.entries.length; i++) {
+			for (let i = 1; i < entry?.entries?.length; i++) {
 				textStack[0] += this.render(entry.entries[i], { isAbility: true, pf2StatFix: true });
 			}
 		} else textStack[0] += "</span>";
@@ -936,7 +936,7 @@ function Renderer () {
 		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, { prefix: `<p class="pf2-p">`, suffix: `</p>` });
 			}
@@ -948,7 +948,7 @@ function Renderer () {
 	this._renderPf2H1Flavor = function (entry, textStack, meta, options) {
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				textStack[0] += `<p class="pf2-h1-flavor rd__h${entry.centered ? " pf2-h1-flavor--centered" : ""}">${this.render(entry.entries[i])}</p>`;
 			}
@@ -987,7 +987,7 @@ function Renderer () {
 		}
 		textStack[0] += `</div>`
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, { prefix: `<p class="pf2-p">`, suffix: `</p>` });
 			}
@@ -1010,7 +1010,7 @@ function Renderer () {
 		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, { prefix: `<p class="pf2-p">`, suffix: `</p>` });
 			}
@@ -1033,7 +1033,7 @@ function Renderer () {
 		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, { prefix: `<p class="pf2-p">`, suffix: `</p>` });
 			}
@@ -1052,7 +1052,7 @@ function Renderer () {
 		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, { prefix: `<p class="pf2-p">`, suffix: `</p>` });
 			}
@@ -1074,7 +1074,7 @@ function Renderer () {
 		}
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, options);
 			}
@@ -1092,7 +1092,7 @@ function Renderer () {
 		}
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: `<p class="pf2-sidebar__text">`,
@@ -1113,7 +1113,7 @@ function Renderer () {
 		}
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: `<p class="${options.beige ? "pf2-beige-box__text" : "pf2-sample-box__text"}">`,
@@ -1130,7 +1130,7 @@ function Renderer () {
 
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta);
 			}
@@ -1148,7 +1148,7 @@ function Renderer () {
 		}
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: "<p class=\"pf2-tips-box__text\">",
@@ -1181,7 +1181,7 @@ function Renderer () {
 		}
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, { prefix: "<p class='pf2-box__text'>", suffix: "</p>" });
 			}
@@ -1203,7 +1203,7 @@ function Renderer () {
 		}
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: "<p class='pf2-box__text'>",
@@ -1224,7 +1224,7 @@ function Renderer () {
 		}
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: `<p class="pf2-key-box__text">`,
@@ -1282,7 +1282,7 @@ function Renderer () {
 
 	this._renderQuote = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get();
-		const len = entry.entries.length;
+		const len = entry?.entries?.length;
 		for (let i = 0; i < len; ++i) {
 			textStack[0] += `<p class="rd__quote-line ${i === len - 1 && entry.by ? `rd__quote-line--last` : ""}">${i === 0 && !entry.skipMarks ? "&ldquo;" : ""}`;
 			this._recursiveRender(entry.entries[i], textStack, meta, { prefix: "<i>", suffix: "</i>" });
@@ -1321,7 +1321,7 @@ function Renderer () {
 
 		textStack[0] += `<div class="pf2-paper__entries">`;
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: `<p class="pf2-paper__text" ${entry.noIndentLastEntry && i === len - 1 ? "style='text-indent: 0;'" : ""}>`,
@@ -1360,7 +1360,7 @@ function Renderer () {
 	this._renderInline = function (entry, textStack, meta, options) {
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta);
 		}
 	};
@@ -1369,7 +1369,7 @@ function Renderer () {
 		this._getReference(entry);
 		this._renderPrefix(entry, textStack, meta, options);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta);
 		}
 		this._renderSuffix(entry, textStack, meta, options);
@@ -1458,7 +1458,7 @@ function Renderer () {
 		textStack[0] += `</div>`;
 
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: "<p>",
@@ -1492,7 +1492,7 @@ function Renderer () {
 		textStack[0] += `<hr class="${entry.style ? entry.style : "rd__hr"}">`;
 		this._getReference(entry);
 		if (entry.entries) {
-			const len = entry.entries.length;
+			const len = entry?.entries?.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: "<p>",
@@ -1519,11 +1519,11 @@ function Renderer () {
 			let source = `<a href="${Parser.sourceJsonToStore(entry.source)}">${Parser.sourceJsonToFull(entry.source)}</a>`
 			if (entry.reference.index || entry.reference.auto !== true) {
 				entry.entries.splice(entry.reference.index, 0, entry.reference.note ?? `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
-			} else if (!entry.entries.length) {
+			} else if (!entry?.entries?.length) {
 				entry.entries = []
 				entry.entries.push(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
 			} else {
-				const len = entry.entries.length;
+				const len = entry?.entries?.length;
 				for (let i = 0; i < len; ++i) {
 					// If there are no strings, assume there is no content inside the entry itself, meaning it's a 100% reference to the source.
 					// Else, check if the entry contains any objects. If it does, put the reference *before* the objects.
