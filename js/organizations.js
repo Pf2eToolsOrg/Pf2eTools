@@ -25,10 +25,12 @@ class OrganizationsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(g.source);
 		const hash = UrlUtil.autoEncodeHash(g);
 
-		const alignment = g.followerAlignment.map(it => it.main).join(", ") || "\u2014";
+		const alignment = g.followerAlignment.map(it => Parser.getTraitName(it.main)).join(", ") || "\u2014";
+		const size = g.traits.find(t => Renderer.trait.isTraitInCategory(t, "Size")).toTitleCase();
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-7 pl-0">${g.name}</span>
-			<span class="col-3 text-center">${alignment}</span>
+			<span class="bold col-6 pl-0">${g.name}</span>
+			<span class="col-2 text-center">${alignment}</span>
+			<span class="col-2 text-center">${size}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)}" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
@@ -60,11 +62,13 @@ class OrganizationsPage extends ListPage {
 	}
 	getSublistItem (g, pinId) {
 		const hash = UrlUtil.autoEncodeHash(g);
-		const alignment = g.followerAlignment.map(it => it.main).join(", ") || "\u2014";
+		const alignment = g.followerAlignment.map(it => Parser.getTraitName(it.main)).join(", ") || "\u2014";
+		const size = g.traits.find(t => Renderer.trait.isTraitInCategory(t, "Size")).toTitleCase();
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-9 pl-0">${g.name}</span>
+				<span class="bold col-6 pl-0">${g.name}</span>
 				<span class="col-3 text-center">${alignment}</span>
+				<span class="col-3 text-center">${size}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));

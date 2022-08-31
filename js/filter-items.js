@@ -153,7 +153,7 @@ class PageFilterItems extends PageFilter {
 		} else throw new Error(`"${it.name}" has no entries?`)
 		it._fDamage = undefined; // FIXME: set by trait implies
 		this.handleTraitImplies(it, { traitProp: "traits", entityTypes: ["item"] });
-		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
+		it._fTraits = (it.traits || []).concat(it?.weaponData?.traits || []).concat(it?.comboWeaponData?.traits || []).map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 
 		// RuneItem Builder

@@ -2369,9 +2369,19 @@
 						],
 						"requirements": "The spellskein is folded into its lizard shape",
 						"entries": [
-							"The spellskein puffs out its cloth frills and shakes them from side to side to look fierce. The first creature hit by its sharp edge {@action Strike} before the start of its next turn must succeed on a DC 14 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure). Refold {@as 1} The spellskein folds itself into a crane, frog, or lizard shape, as it chooses."
+							"The spellskein puffs out its cloth frills and shakes them from side to side to look fierce. The first creature hit by its sharp edge {@action Strike} before the start of its next turn must succeed on a DC 14 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
 						],
 						"name": "Lizard Frill"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The spellskein folds itself into a crane, frog, or lizard shape, as it chooses."
+						],
+						"name": "Refold"
 					}
 				]
 			}

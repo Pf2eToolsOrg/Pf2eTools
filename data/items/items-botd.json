@@ -168,7 +168,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 2,
 					"price": {
 						"amount": 7,
@@ -180,7 +179,6 @@
 					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 4,
 					"price": {
 						"amount": 20,
@@ -192,7 +190,6 @@
 					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 12,
 					"price": {
 						"amount": 360,
@@ -204,7 +201,6 @@
 					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 18,
 					"price": {
 						"amount": 4500,
@@ -284,42 +280,44 @@
 						"freq": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "dawnlight",
-							"level": 3,
-							"price": {
-								"amount": 60,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "greater dawnlight",
-							"level": 7,
-							"price": {
-								"amount": 320,
-								"coin": "gp"
-							},
-							"entries": [
-								"Whenever you successfully counteract magical darkness while holding this symbol, the clash of magic unleashes a momentary flash of light. Creatures with darkvision in the area of the {@spell light} spell or targeted by it must succeed at a DC 23 Fortitude save or be {@condition dazzled} for 1 round. Those with light blindness are also exposed to bright light.",
-								"Change the list of spells to 3rd-level versions of disrupt undead, light, and searing light. The spell attack roll and counteract modifier are +13."
-							]
-						},
-						{
-							"name": "major dawnlight",
-							"level": 11,
-							"price": {
-								"amount": 1300,
-								"coin": "gp"
-							},
-							"entries": [
-								"A major dawnlight creates a flash of light like a greater dawnlight, but the DC is 28. Change the list of spells to 5th-level versions of disrupt undead and light, and 4th-level versions of searing light and vital beacon. The spell attack roll and counteract modifier are +18."
-							]
-						}
-					],
 					"entries": [
 						"The dawnlight casts 1st-level {@spell disrupt undead} or light. The dawnlight's spell attack roll and counteract modifier are +7, and any spell with the {@trait light} trait is treated as though its counteract level were 1 higher for counteracting darkness."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "dawnlight",
+					"name": "Dawnlight",
+					"level": 3,
+					"price": {
+						"amount": 60,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"variantType": "greater",
+					"level": 7,
+					"price": {
+						"amount": 320,
+						"coin": "gp"
+					},
+					"entries": [
+						"Whenever you successfully counteract magical darkness while holding this symbol, the clash of magic unleashes a momentary flash of light. Creatures with darkvision in the area of the {@spell light} spell or targeted by it must succeed at a DC 23 Fortitude save or be {@condition dazzled} for 1 round. Those with light blindness are also exposed to bright light.",
+						"Change the list of spells to 3rd-level versions of disrupt undead, light, and searing light. The spell attack roll and counteract modifier are +13."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 11,
+					"price": {
+						"amount": 1300,
+						"coin": "gp"
+					},
+					"entries": [
+						"A major dawnlight creates a flash of light like a greater dawnlight, but the DC is 28. Change the list of spells to 5th-level versions of disrupt undead and light, and 4th-level versions of searing light and vital beacon. The spell attack roll and counteract modifier are +18."
 					]
 				}
 			],
