@@ -137,6 +137,18 @@ class ItemsPage extends ListPage {
 			$content.append(renderStack.join(""));
 		}
 
+		const buildImageTab = async () => {
+			const pGetImages = async () => {
+				const item = this._dataList[Hist.lastLoadedId];
+				const fluff = await Renderer.item.pGetFluff(item);
+				return fluff ? fluff.images || [] : [];
+			}
+			const fluffImages = await pGetImages();
+			const renderStack = [];
+			Renderer.get().recursiveRender(fluffImages.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`), renderStack);
+			$content.append(renderStack.join(""));
+		}
+
 		const statTab = Renderer.utils.tabButton(
 			"Item",
 			() => { },
@@ -147,8 +159,14 @@ class ItemsPage extends ListPage {
 			() => { },
 			buildFluffTab,
 		);
+		const imageTab = Renderer.utils.tabButton(
+			"Images",
+			() => {},
+			buildImageTab,
+		);
 		const tabs = [statTab];
 		if (item.hasFluff) tabs.push(fluffTab);
+		if (item.hasImages) tabs.push(imageTab);
 
 		Renderer.utils.bindTabButtons(...tabs);
 

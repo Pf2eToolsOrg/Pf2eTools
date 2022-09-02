@@ -5155,6 +5155,14 @@ Renderer.item = {
 		} else return ""
 	},
 
+	async pGetFluff (item) {
+		return Renderer.utils.pGetFluff({
+			entity: item,
+			fluffBaseUrl: `data/items/`,
+			fluffProp: "itemFluff",
+		});
+	},
+
 	_builtLists: {},
 
 	_lockBuildList: null,
@@ -5213,14 +5221,6 @@ Renderer.item = {
 		const items = [...(homebrew.baseitem || []), ...(homebrew.item || [])];
 		const expanded = await Promise.all(items.map(it => DataUtil.item.expandVariants(it)));
 		return expanded.flat();
-	},
-
-	pGetFluff (item) {
-		return Renderer.utils.pGetFluff({
-			entity: item,
-			fluffProp: "itemFluff",
-			fluffBaseUrl: `data/items/`,
-		});
 	},
 
 	getRenderedFluff (item) {
@@ -7717,6 +7717,8 @@ Renderer.hover = {
 
 	_pageToFluffFn (page) {
 		switch (page) {
+			case UrlUtil.PG_ITEM:
+				return Renderer.item.pGetFluff;
 			case UrlUtil.PG_BESTIARY:
 				return Renderer.creature.pGetFluff;
 			case UrlUtil.PG_ITEMS:
