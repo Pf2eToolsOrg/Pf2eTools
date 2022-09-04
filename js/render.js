@@ -2833,6 +2833,36 @@ Renderer.getEntryDice = function (entry, name, isAddHandlers = true) {
 	else return toDisplay;
 };
 
+Renderer.getRenderedLore = function (entity) {
+	const textStack = [""];
+	const renderer = Renderer.get().setFirstSection(true);
+	if (entity.lore) entity.lore.forEach(l => renderer.recursiveRender(l, textStack));
+	return textStack.join("");
+}
+
+Renderer.getImage = function (entity) {
+	const textStack = [""];
+	if (entity.images) {
+		const img = entity.images[0];
+		if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+		else if (img.includes("demiplane.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Demiplane.</a>`);
+		else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
+	}
+	return textStack.join("");
+}
+
+Renderer.pGetFluff = async function (entity) {
+	//TODO: Make sure every entity has a _prop (see items) or make _prop a part of the constructor.name. I'd prefer the latter - MrV.
+	console.log(entity._prop)
+	return Renderer.utils.pGetFluff({
+		entity: entity,
+		// This is cursed, but it's the only way without making a function turning every _prop from singular to plural
+		// eslint-disable-next-line no-eval
+		fluffUrl: `data/fluff-${UrlUtil.PG_TO_NAME[UrlUtil.CAT_TO_PAGE[eval(`Parser.CAT_ID_${entity.__prop.toUpperCase()}`)]].toLowerCase()}.json`,
+		fluffProp: `${entity.__prop}Fluff`,
+	});
+}
+
 Renderer.getRollableEntryDice = function (entry, name, isAddHandlers = true, toDisplay) {
 	const toPack = MiscUtil.copy(entry);
 	if (typeof toPack.toRoll !== "string") {

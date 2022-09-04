@@ -116,22 +116,22 @@ function renderStatblock (deity) {
 	function buildStatsTab () {
 		$content.append(Renderer.deity.getRenderedString(deity));
 	}
-	async function buildLoreTab () {
-		const pGetFluff = async () => {
-			const fluff = await Renderer.deity.pGetFluff(deity);
-			return fluff ? fluff.entries || [] : [];
-		}
-		$content.append(Renderer.deity.getRenderedLore({lore: await pGetFluff()}))
-	}
 	function buildIntercessionTab () {
 		$content.append(Renderer.deity.getIntercession(deity))
+	}
+	async function buildFluffTab () {
+		const pGetFluff = async () => {
+			const fluff = await Renderer.pGetFluff(deity);
+			return fluff ? fluff.entries || [] : [];
+		}
+		$content.append(Renderer.getRenderedLore({lore: await pGetFluff()}))
 	}
 	const buildInfoTab = async () => {
 		const quickRules = await Renderer.utils.pGetQuickRules("deity");
 		$content.append(quickRules);
 	}
 	const buildImageTab = async () => {
-		$content.append(Renderer.deity.getImage(deity))
+		$content.append(Renderer.getImage(deity))
 	}
 	const statTab = Renderer.utils.tabButton(
 		"Deity",
@@ -146,7 +146,7 @@ function renderStatblock (deity) {
 	const loreTab = Renderer.utils.tabButton(
 		"Lore",
 		() => {},
-		buildLoreTab,
+		buildFluffTab,
 	);
 	const infoTab = Renderer.utils.tabButton(
 		"Quick Rules",
