@@ -2853,7 +2853,7 @@ Renderer.getImage = function (entity) {
 
 Renderer.pGetFluff = async function (entity) {
 	//TODO: Make sure every entity has a _prop (see items) or make _prop a part of the constructor.name. I'd prefer the latter - MrV.
-	console.log(entity._prop)
+	// console.log(entity._prop)
 	return Renderer.utils.pGetFluff({
 		entity: entity,
 		// This is cursed, but it's the only way without making a function turning every _prop from singular to plural
