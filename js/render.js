@@ -1388,7 +1388,6 @@ function Renderer () {
 		const source = entry.source || Parser.TAG_TO_DEFAULT_SOURCE[tag];
 		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, tag);
 		const page = entry.page || UrlUtil.CAT_TO_PAGE[catId];
-		// FIXME: Doesn't render "data" structures. See SoM dragon and soul gifts.
 		if (entry.data) {
 			const renderFn = Renderer.hover._pageToRenderFn(page);
 			const rendered = renderFn ? renderFn(entry.data, { isEmbedded: true, noPage: true }) : `<div class="pf2-stat">Failed to render ${entry.data.name}.</div>`;
@@ -2852,7 +2851,7 @@ Renderer.getImage = function (entity) {
 }
 
 Renderer.pGetFluff = async function (entity) {
-	//TODO: Make sure every entity has a _prop (see items) or make _prop a part of the constructor.name. I'd prefer the latter - MrV.
+	// TODO: Make sure every entity has a _prop (see items, creatures) or make _prop a part of the constructor.name. I'd prefer the latter - MrV.
 	// console.log(entity._prop)
 	return Renderer.utils.pGetFluff({
 		entity: entity,
