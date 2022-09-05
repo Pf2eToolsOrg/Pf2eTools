@@ -2852,13 +2852,15 @@ Renderer.getImage = function (entity) {
 
 Renderer.pGetFluff = async function (entity) {
 	// TODO: Make sure every entity has a _prop (see items, creatures) or make _prop a part of the constructor.name. I'd prefer the latter - MrV.
+	// TODO: Make this compatible with index files... somehow.
 	// console.log(entity._prop)
+	const entityProp = entity.__prop ?? entity.type
 	return Renderer.utils.pGetFluff({
 		entity: entity,
 		// This is cursed, but it's the only way without making a function turning every _prop from singular to plural
 		// eslint-disable-next-line no-eval
-		fluffUrl: `data/fluff-${UrlUtil.PG_TO_NAME[UrlUtil.CAT_TO_PAGE[eval(`Parser.CAT_ID_${entity.__prop.toUpperCase()}`)]].toLowerCase()}.json`,
-		fluffProp: `${entity.__prop}Fluff`,
+		fluffUrl: `data/fluff-${UrlUtil.PG_TO_NAME[UrlUtil.CAT_TO_PAGE[eval(`Parser.CAT_ID_${entityProp.toUpperCase()}`)]].toLowerCase()}.json`,
+		fluffProp: `${entityProp}Fluff`,
 	});
 }
 
