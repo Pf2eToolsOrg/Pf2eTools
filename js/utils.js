@@ -3130,7 +3130,7 @@ DataUtil = {
 			}
 			variant.type = generic.type || "Item";
 			variant.generic = "V";
-			variant.genericItem = `${generic.name} (generic)${generic.source.toLowerCase() !== "crb" ? `|${generic.source}` : "||"}${generic.name}`;
+			variant.genericItem = `${generic.name} (generic)|${generic.source.toLowerCase() !== "crb" ? `${generic.source}` : ""}|${generic.name}`;
 			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
 			delete variant.variants;
 			return variant;
