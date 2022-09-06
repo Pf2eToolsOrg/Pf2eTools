@@ -52,26 +52,6 @@
 				"wis": 2,
 				"cha": 3
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 6
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 5
-				}
-			},
-			"hp": [
-				{
-					"hp": 20,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 20,
 				"burrow": 10
@@ -107,6 +87,28 @@
 							"Any living creature slain by the almiraj's horn {@action Strike} immediately becomes {@condition petrified} with no saving throw, in addition to {@condition dying}. A severed almiraj horn retains a wisp of its former magic; in combat, the horn can be wielded as a +1 dagger or, if affixed to a shaft, a +1 spear."
 						],
 						"name": "Magic Horn"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 20,
+						"abilities": null
 					}
 				]
 			}
@@ -156,27 +158,6 @@
 				"wooden shield",
 				"splint mail"
 			],
-			"ac": {
-				"std": 15,
-				"with Shield Raised": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 5
-				},
-				"ref": {
-					"std": 2
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 9,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 15
 			},
@@ -224,7 +205,30 @@
 						}
 					}
 				}
-			]
+			],
+			"defenses": {
+				"ac": {
+					"std": 15,
+					"with Shield Raised": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 5
+					},
+					"ref": {
+						"std": 2
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 9,
+						"abilities": null
+					}
+				]
+			}
 		},
 		{
 			"name": "Battle Leader Rekarek",
@@ -271,26 +275,6 @@
 				"wis": 1,
 				"cha": 1
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 12
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 5
-				}
-			},
-			"hp": [
-				{
-					"hp": 40,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
@@ -351,6 +335,28 @@
 						"name": "Haphazard Hack"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 40,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -392,37 +398,6 @@
 				"wis": 1,
 				"cha": 0
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 12
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 25,
-					"abilities": [
-						"negative healing"
-					]
-				}
-			],
-			"immunities": [
-				"death effects",
-				"disease"
-			],
-			"resistances": [
-				{
-					"name": "all"
-				}
-			],
 			"speed": {
 				"fly": 25
 			},
@@ -498,6 +473,39 @@
 						"name": "Dual Assault"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 25,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease"
+				],
+				"resistances": [
+					{
+						"name": "all"
+					}
+				]
 			}
 		},
 		{
@@ -549,26 +557,6 @@
 				"battle axe",
 				"studded leather armor"
 			],
-			"ac": {
-				"std": 14
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 7
-				},
-				"ref": {
-					"std": 6
-				},
-				"will": {
-					"std": 3
-				}
-			},
-			"hp": [
-				{
-					"hp": 13,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
@@ -604,6 +592,28 @@
 							"Bolar gains 3 temporary Hit Points that last until the rage ends. While raging, he deals 2 additional damage with melee attacks and takes a \u20131 penalty to AC. The rage lasts for 1 minute, until there are no enemies Bolar can perceive, or until Bolar falls {@condition unconscious}. Once the rage ends, Bolar can't {@action Rage} again for 1 minute."
 						],
 						"name": "Rage"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 14
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 3
+					}
+				},
+				"hp": [
+					{
+						"hp": 13,
+						"abilities": null
 					}
 				]
 			}
@@ -647,40 +657,6 @@
 				"wis": 3,
 				"cha": 0
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 10
-				},
-				"ref": {
-					"std": 12
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 20,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"precision",
-				"swarm mind"
-			],
-			"weaknesses": [
-				{
-					"amount": 3,
-					"name": "area damage"
-				},
-				{
-					"amount": 3,
-					"name": "splash damage"
-				}
-			],
 			"speed": {
 				"walk": 20,
 				"burrow": 10
@@ -733,6 +709,42 @@
 						"name": "Pummeling Assault"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 20,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"precision",
+					"swarm mind"
+				],
+				"weaknesses": [
+					{
+						"amount": 3,
+						"name": "area damage"
+					},
+					{
+						"amount": 3,
+						"name": "splash damage"
+					}
+				]
 			}
 		},
 		{
@@ -779,26 +791,6 @@
 				"dagger",
 				"spellbook"
 			],
-			"ac": {
-				"std": 15
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 4
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 10
-				}
-			},
-			"hp": [
-				{
-					"hp": 20,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -819,7 +811,29 @@
 						"piercing"
 					]
 				}
-			]
+			],
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 20,
+						"abilities": null
+					}
+				]
+			}
 		},
 		{
 			"name": "Gref",
@@ -870,26 +884,6 @@
 				"wis": 2,
 				"cha": 0
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 12
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 40,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -970,6 +964,28 @@
 						"name": "Swarming See Pathfinder Bestiary"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 40,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1023,32 +1039,6 @@
 				"wis": 3,
 				"cha": -1
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 10
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 12
-				}
-			},
-			"hp": [
-				{
-					"hp": 40,
-					"abilities": null
-				}
-			],
-			"resistances": [
-				{
-					"amount": 3,
-					"name": "physical"
-				}
-			],
 			"speed": {
 				"walk": 30,
 				"climb": 20
@@ -1107,6 +1097,34 @@
 						"name": "Vermicular Movement"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 40,
+						"abilities": null
+					}
+				],
+				"resistances": [
+					{
+						"amount": 3,
+						"name": "physical"
+					}
+				]
 			}
 		},
 		{
@@ -1162,26 +1180,6 @@
 				"wis": 1,
 				"cha": 3
 			},
-			"ac": {
-				"std": 24
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 18
-				},
-				"ref": {
-					"std": 12
-				},
-				"will": {
-					"std": 16
-				}
-			},
-			"hp": [
-				{
-					"hp": 140,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -1242,6 +1240,28 @@
 							"Lavarsus has trained to take down suspects without killing them. He can choose to make nonlethal attacks with any bludgeoning weapon without taking the usual penalty to his attack roll."
 						],
 						"name": "Nonlethal Training"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 16
+					}
+				},
+				"hp": [
+					{
+						"hp": 140,
+						"abilities": null
 					}
 				]
 			}
@@ -1309,26 +1329,6 @@
 				"wis": 1,
 				"cha": 5
 			},
-			"ac": {
-				"std": 24
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 12
-				},
-				"ref": {
-					"std": 16
-				},
-				"will": {
-					"std": 15
-				}
-			},
-			"hp": [
-				{
-					"hp": 100,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1427,6 +1427,28 @@
 						"name": "Sword Cane Duelist"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 100,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1478,26 +1500,6 @@
 				"wis": 2,
 				"cha": 0
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 12
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 40,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -1578,6 +1580,28 @@
 						"name": "Swarming See Pathfinder Bestiary"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 40,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1623,27 +1647,6 @@
 				"wis": 3,
 				"cha": 1
 			},
-			"ac": {
-				"std": 15,
-				"without mage armor": 14
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 3
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 11
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -1725,6 +1728,29 @@
 						}
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15,
+					"without mage armor": 14
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 3
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1785,26 +1811,6 @@
 			"items": [
 				"trident"
 			],
-			"ac": {
-				"std": 14
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 7
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 9
-				}
-			},
-			"hp": [
-				{
-					"hp": 38,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -1830,6 +1836,28 @@
 							"+8, {@skill Survival} +9 Str +3, Dex +4, Con +1, Int \u20131, Wis +3, Cha +0 Items trident."
 						],
 						"name": "Stealth"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 14
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 38,
+						"abilities": null
 					}
 				]
 			}
@@ -1883,26 +1911,6 @@
 				"crossbow with 10 bolts",
 				"dagger"
 			],
-			"ac": {
-				"std": 13
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 1
-				},
-				"ref": {
-					"std": 7
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 5,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1950,6 +1958,28 @@
 						"name": "Cantrips"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 1
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 5,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1995,37 +2025,6 @@
 				"wis": 0,
 				"cha": -3
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 9
-				},
-				"will": {
-					"std": 3
-				}
-			},
-			"hp": [
-				{
-					"hp": 20,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"death effects",
-				"disease",
-				"paralyzed"
-			],
-			"weaknesses": [
-				{
-					"amount": 2,
-					"name": "fire"
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
@@ -2064,6 +2063,39 @@
 							"When a pickled punk hits a target larger than itself, it uses bizarre excretions to adhere to that creature. This is similar to Grabbing the creature, but the pickled punk is not {@condition flat-footed}, and it moves with that creature rather than holding it in place. Each turn while attached, the pickled punk automatically deals the damage from its jaws {@action Strike} to the creature to which it's attached. It also wriggles about, gaining a +2 circumstance bonus to AC as long as it's not also {@condition grabbed} or {@condition restrained}."
 						],
 						"name": "Attach"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 3
+					}
+				},
+				"hp": [
+					{
+						"hp": 20,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed"
+				],
+				"weaknesses": [
+					{
+						"amount": 2,
+						"name": "fire"
 					}
 				]
 			}
@@ -2126,26 +2158,6 @@
 				"wis": 1,
 				"cha": 2
 			},
-			"ac": {
-				"std": 22
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 14
-				},
-				"will": {
-					"std": 9
-				}
-			},
-			"hp": [
-				{
-					"hp": 55,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2214,6 +2226,28 @@
 						"name": "Sneak"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 55,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2262,30 +2296,6 @@
 				"wis": 0,
 				"cha": 2
 			},
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 6
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"critical hits (except slashing)",
-				"death effects"
-			],
 			"speed": {
 				"fly": 30
 			},
@@ -2349,6 +2359,32 @@
 						"name": "Control Body"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"critical hits (except slashing)",
+					"death effects"
+				]
 			}
 		},
 		{
@@ -2387,33 +2423,6 @@
 				"wis": 2,
 				"cha": -4
 			},
-			"ac": {
-				"std": 19,
-				"when broken": 15
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 12
-				},
-				"ref": {
-					"std": 6
-				},
-				"will": {
-					"std": 9
-				}
-			},
-			"hp": [
-				{
-					"hp": 37,
-					"abilities": null
-				}
-			],
-			"hardness": 5,
-			"immunities": [
-				"bleed",
-				"death effects",
-				"disease"
-			],
 			"speed": {
 				"fly": 25
 			},
@@ -2517,6 +2526,35 @@
 						"name": "Rejuvenation"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19,
+					"when broken": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hardness": 5,
+				"hp": [
+					{
+						"hp": 37,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease"
+				]
 			}
 		},
 		{
@@ -2565,26 +2603,6 @@
 			"items": [
 				"daggers (4)",
 				"studded leather armor"
-			],
-			"ac": {
-				"std": 15
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 3
-				},
-				"ref": {
-					"std": 7
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 7,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -2662,6 +2680,28 @@
 						}
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 3
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 7,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2705,26 +2745,6 @@
 				"wis": 3,
 				"cha": -1
 			},
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 10
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"fly": 25
 			},
@@ -2826,6 +2846,28 @@
 						]
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2875,29 +2917,6 @@
 				"wis": -1,
 				"cha": -1
 			},
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 5
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"sleep"
-			],
 			"speed": {
 				"walk": 20,
 				"climb": 20,
@@ -2944,6 +2963,31 @@
 						],
 						"name": "Dubious Shifting"
 					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"sleep"
 				]
 			}
 		}

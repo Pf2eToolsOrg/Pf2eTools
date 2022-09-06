@@ -49,26 +49,6 @@
 				"bottles (2)",
 				"dagger"
 			],
-			"ac": {
-				"std": 13
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 5
-				},
-				"ref": {
-					"std": 5
-				},
-				"will": {
-					"std": 2
-				}
-			},
-			"hp": [
-				{
-					"hp": 8,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -138,6 +118,28 @@
 						"name": "Opening Threat"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 5
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 2
+					}
+				},
+				"hp": [
+					{
+						"hp": 8,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -186,36 +188,6 @@
 				"wis": 2,
 				"cha": 0
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 15
-				},
-				"ref": {
-					"std": 9
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 70,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 5,
-					"name": "cold iron"
-				},
-				{
-					"amount": 5,
-					"name": "good"
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -311,6 +283,38 @@
 						"name": "Wreck"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 70,
+						"abilities": null
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "cold iron"
+					},
+					{
+						"amount": 5,
+						"name": "good"
+					}
+				]
 			}
 		},
 		{
@@ -361,38 +365,6 @@
 				"wis": 2,
 				"cha": -1
 			},
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 9
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 50,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 3,
-					"name": "good"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "electricity"
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -443,6 +415,40 @@
 							"The blood wolf's Strikes deal an extra {@dice 1d6} damage to creatures within reach of at least two of the wolf's allies."
 						],
 						"name": "Pack Attack"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 50,
+						"abilities": null
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 3,
+						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "electricity"
 					}
 				]
 			}
@@ -496,41 +502,6 @@
 				"wis": 2,
 				"cha": 5
 			},
-			"ac": {
-				"std": 22
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 14
-				},
-				"will": {
-					"std": 14
-				}
-			},
-			"hp": [
-				{
-					"hp": 50,
-					"abilities": [
-						"negative healing"
-					]
-				}
-			],
-			"immunities": [
-				"death effects",
-				"disease"
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "cold"
-				},
-				{
-					"name": "piercing"
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -634,6 +605,43 @@
 						"name": "Roll the Bones"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 50,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease"
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "cold"
+					},
+					{
+						"name": "piercing"
+					}
+				]
 			}
 		},
 		{
@@ -694,26 +702,6 @@
 				"{@item wooden religious symbol}",
 				"{@item scale mail}",
 				"{@item wand} of {@spell heal} (2nd)"
-			],
-			"ac": {
-				"std": 22
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 13
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 15
-				}
-			},
-			"hp": [
-				{
-					"hp": 83,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 20
@@ -883,6 +871,28 @@
 						"name": "Profane"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 83,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -930,35 +940,6 @@
 				"wis": 1,
 				"cha": -2
 			},
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 10
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 5
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"acid"
-			],
-			"weaknesses": [
-				{
-					"amount": 3,
-					"name": "good"
-				}
-			],
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -1018,6 +999,37 @@
 						"name": "Lurching Charge"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"acid"
+				],
+				"weaknesses": [
+					{
+						"amount": 3,
+						"name": "good"
+					}
+				]
 			}
 		},
 		{
@@ -1068,26 +1080,6 @@
 				"gray robes",
 				"{@item trident}",
 				"{@item wooden religious symbol} of {@deity Gozreh} defaced with demonic runes"
-			],
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 5
-				},
-				"will": {
-					"std": 11
-				}
-			},
-			"hp": [
-				{
-					"hp": 45,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -1195,6 +1187,28 @@
 						"name": "Demonic Strength"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 45,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1241,27 +1255,6 @@
 				"gray robes",
 				"{@item trident}",
 				"{@item wooden shield} (Hardness 3)"
-			],
-			"ac": {
-				"std": 19,
-				"with shield raised": 21
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 6
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -1333,6 +1326,29 @@
 						"name": "Tainted Rage"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19,
+					"with shield raised": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1381,26 +1397,6 @@
 				"lion tamer's outfit",
 				"short stool",
 				"whip"
-			],
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 7
-				},
-				"ref": {
-					"std": 9
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -1459,6 +1455,28 @@
 						"name": "Sting of the Lash"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1503,36 +1521,6 @@
 				"wis": 1,
 				"cha": -4
 			},
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 15
-				},
-				"ref": {
-					"std": 16
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 55,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"precision",
-				"disease",
-				"swarm mind"
-			],
-			"weaknesses": [
-				{
-					"name": "area"
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1572,6 +1560,38 @@
 							"Each enemy in the swarm's space takes {@damage 2d4+7} piercing damage and must attempt a DC 22 basic Reflex save. A creature that fails its save is exposed to flea fever."
 						],
 						"name": "Swarming Bites"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 55,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"precision",
+					"disease",
+					"swarm mind"
+				],
+				"weaknesses": [
+					{
+						"name": "area"
 					}
 				]
 			}
@@ -1617,26 +1637,6 @@
 				"wis": 1,
 				"cha": -4
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 12
-				},
-				"ref": {
-					"std": 12
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 50,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1676,6 +1676,28 @@
 							"Drain from flea fever can't be reduced or recovered from naturally until the disease is cured. Saving Throw DC 18 Fortitude; Stage 1 {@condition drained|CRB|drained 1} ({@dice 1d4} hours), Stage 2 {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} (1 day), Stage 3 {@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1} (1 day), Stage 4."
 						],
 						"name": "Flea Fever"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 50,
+						"abilities": null
 					}
 				]
 			}
@@ -1722,26 +1744,6 @@
 			},
 			"items": [
 				"leather armor"
-			],
-			"ac": {
-				"std": 14
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 4
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 27,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -1804,6 +1806,28 @@
 						"name": "Improvised Surprise"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 14
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 4
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 27,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1844,26 +1868,6 @@
 				"wis": 0,
 				"cha": 1
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 7
-				},
-				"ref": {
-					"std": 9
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 32,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1971,6 +1975,28 @@
 						"name": "Juggler If"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 32,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2016,26 +2042,6 @@
 				"wis": 1,
 				"cha": -2
 			},
-			"ac": {
-				"std": 15
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 3
-				},
-				"will": {
-					"std": 5
-				}
-			},
-			"hp": [
-				{
-					"hp": 16,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -2077,6 +2083,28 @@
 						"name": "Boar Charge"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 3
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 16,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2116,32 +2144,6 @@
 				"wis": 0,
 				"cha": 1
 			},
-			"ac": {
-				"std": 11
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 3
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 80,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"electricity",
-				"mental",
-				"precision",
-				"critical hits"
-			],
 			"speed": {
 				"walk": 25,
 				"climb": 15
@@ -2210,6 +2212,34 @@
 						"name": "Light Up"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 11
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 3
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 80,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"electricity",
+					"mental",
+					"precision",
+					"critical hits"
+				]
 			}
 		},
 		{
@@ -2256,44 +2286,6 @@
 				"wis": 0,
 				"cha": 2
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 33,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"bleed",
-				"death effects",
-				"disease",
-				"doomed"
-			],
-			"weaknesses": [
-				{
-					"name": "electricity"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 3,
-					"name": "physical",
-					"note": "(except adamantine)"
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2330,6 +2322,46 @@
 							"A severely damaged mechanical carny has a chance of malfunctioning. If a mechanical carny has 15 or fewer Hit Points at the start of its turn, it must succeed at a DC {@flatDC 5} flat check or go haywire. A haywire mechanical carny wildly attacks the nearest living creature, or the nearest object if no creatures are nearby. It takes a \u20131 circumstance penalty to Strikes but deals an additional {@damage 1d6} bludgeoning damage plus Knockdown. This effect lasts 10 minutes or until the mechanical carny is destroyed."
 						],
 						"name": "Haywire"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 33,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed"
+				],
+				"weaknesses": [
+					{
+						"name": "electricity"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 3,
+						"name": "physical",
+						"note": "(except adamantine)"
 					}
 				]
 			}
@@ -2387,26 +2419,6 @@
 				"wis": 4,
 				"cha": 1
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 11
-				}
-			},
-			"hp": [
-				{
-					"hp": 45,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
@@ -2573,6 +2585,28 @@
 						"name": "Wildwood Halfling"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 45,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2621,34 +2655,6 @@
 				"wis": 2,
 				"cha": 1
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 50,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"bleed",
-				"death effects",
-				"disease",
-				"doomed",
-				"drained",
-				"fatigued"
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2700,6 +2706,36 @@
 						"name": "Surface-Bound"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 50,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued"
+				]
 			}
 		},
 		{
@@ -2735,26 +2771,6 @@
 				"wis": 2,
 				"cha": -1
 			},
-			"ac": {
-				"std": 21
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 12
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 70,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2806,6 +2822,28 @@
 						"generic": {
 							"tag": "ability"
 						}
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 70,
+						"abilities": null
 					}
 				]
 			}
@@ -2865,26 +2903,6 @@
 			"items": [
 				"chain mail"
 			],
-			"ac": {
-				"std": 20
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 46,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
@@ -2935,6 +2953,28 @@
 							}
 						],
 						"name": "Haymaker"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 46,
+						"abilities": null
 					}
 				]
 			}
@@ -2990,28 +3030,6 @@
 			},
 			"items": [
 				"composite shortbow (20 arrows)"
-			],
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 12
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 45,
-					"abilities": [
-						"negative healing"
-					]
-				}
 			],
 			"speed": {
 				"walk": 30,
@@ -3162,6 +3180,30 @@
 						"name": "Swift Leap"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 45,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				]
 			}
 		},
 		{
@@ -3210,42 +3252,6 @@
 				"wis": 1,
 				"cha": -2
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 45,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 3,
-					"name": "good"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "electricity"
-				},
-				{
-					"amount": 5,
-					"name": "poison"
-				}
-			],
 			"speed": {
 				"walk": 30,
 				"climb": 20
@@ -3326,6 +3332,44 @@
 						}
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 45,
+						"abilities": null
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 3,
+						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "electricity"
+					},
+					{
+						"amount": 5,
+						"name": "poison"
+					}
+				]
 			}
 		},
 		{
@@ -3380,41 +3424,6 @@
 				"wis": 1,
 				"cha": 2
 			},
-			"ac": {
-				"std": 16,
-				"while Inhabiting a Body": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 55,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 5,
-					"name": "cold iron"
-				},
-				{
-					"amount": 5,
-					"name": "good"
-				},
-				{
-					"amount": 5,
-					"name": "sonic"
-				}
-			],
 			"speed": {
 				"walk": 25,
 				"burrow": 15
@@ -3529,6 +3538,43 @@
 						"name": "Unsettling Movement"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16,
+					"while Inhabiting a Body": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 55,
+						"abilities": null
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "cold iron"
+					},
+					{
+						"amount": 5,
+						"name": "good"
+					},
+					{
+						"amount": 5,
+						"name": "sonic"
+					}
+				]
 			}
 		},
 		{
@@ -3571,26 +3617,6 @@
 			},
 			"items": [
 				"batons doused in flammable oil (2)"
-			],
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 40,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -3655,6 +3681,28 @@
 						"name": "Set on Fire If"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 40,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -3701,26 +3749,6 @@
 				"wis": 1,
 				"cha": -2
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 10
-				},
-				"ref": {
-					"std": 4
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 24,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -3782,6 +3810,28 @@
 						"name": "Eat Anything"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 4
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 24,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -3837,26 +3887,6 @@
 			},
 			"items": [
 				"2 daggers"
-			],
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -3978,6 +4008,28 @@
 								"duration": "1 minute"
 							}
 						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
 					}
 				]
 			}

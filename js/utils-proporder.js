@@ -358,13 +358,17 @@ PropOrder._CREATURE = [
 	}),
 	"items",
 
-	"ac",
-	"savingThrows",
-	"hp",
-	"hardness",
-	"immunities",
-	"weaknesses",
-	"resistances",
+	new PropOrder._ObjectKey("defenses", {
+		order: [
+			"ac",
+			"savingThrows",
+			"hp",
+			"hardness",
+			"immunities",
+			"weaknesses",
+			"resistances",
+		],
+	}),
 
 	"speed",
 	"attacks",
