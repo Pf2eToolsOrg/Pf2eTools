@@ -1756,12 +1756,14 @@
 		},
 		"defenses": {
 			"type": "object",
+			"$comment": "HP will NOT match for creatures.",
 			"properties": {
 				"ac": {
 					"type": "object",
 					"properties": {
-						"default": {
-							"type": "integer"
+						"std": {
+							"type": "integer",
+							"exclusiveMinimum": 0
 						},
 						"note": {
 							"type": "string"
@@ -1774,24 +1776,43 @@
 				},
 				"savingThrows": {
 					"type": "object",
-					"propertyNames": {
-						"enum": [
-							"fort",
-							"ref",
-							"will"
-						]
-					},
-					"additionalProperties": {
-						"type": "object",
-						"properties": {
-							"std": {
-								"type": "integer",
-								"minimum": 0
+					"properties": {
+						"fort": {
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"minimum": 0
+								}
 							}
 						},
-						"additionalProperties": false,
-						"minProperties": 1
+						"ref": {
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						},
+						"will": {
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						},
+						"abilities": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"minItems": 1
+						}
 					},
+					"additionalProperties": false,
 					"minProperties": 1
 				},
 				"hardness": {
@@ -1812,38 +1833,28 @@
 					"minProperties": 1
 				},
 				"hp": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"hp": {
-								"type": "integer",
-								"minimum": 1
-							},
-							"abilities": {
-								"type": "array",
-								"items": {
-									"type": "string",
-									"enum": [
-										"//TODO"
-									]
-								},
-								"minItems": 1,
-								"uniqueItems": true
-							}
-						},
-						"additionalProperties": false,
-						"required": [
-							"hp"
-						]
+					"description": "Hit Points",
+					"type": "object",
+					"properties": {
+						"std": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
 					},
-					"minItems": 1
+					"patternProperties": {
+						"^.+$": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
 				},
 				"bt": {
 					"description": "Broken Threshold",
 					"type": "object",
 					"properties": {
-						"default": {
+						"std": {
 							"type": "integer",
 							"minimum": 0
 						}
