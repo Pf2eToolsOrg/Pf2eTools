@@ -3773,7 +3773,7 @@ Renderer.action = {
 						versatileHeritageName = v ? v.split(`|`)[0] : null
 						versatileHeritageSource = v ? v.split(`|`)[1] || "" : ""
 						if (!it.actionType.ancestry) renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-						renderStack.push(`<strong>Versatile Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName ? `${ancestryName}|${ancestrySource}` : "Human|CRB"}|${versatileHeritageName}|${versatileHeritageName}|${versatileHeritageSource}|}`)}`);
+						renderStack.push(`<strong>Versatile Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${it.actionType.ancestry ? `${ancestryName}|${ancestrySource}` : "Human|CRB"}|${versatileHeritageName}|${versatileHeritageName}|${versatileHeritageSource}|}`)}`);
 					})
 				}
 				renderStack.push(`</p>`)

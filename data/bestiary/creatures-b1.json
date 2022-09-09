@@ -19500,9 +19500,6 @@
 		},
 		{
 			"name": "Dhampir Wizard",
-			"isNpc": false,
-			"source": "B1",
-			"page": 95,
 			"level": 2,
 			"traits": [
 				"ne",
@@ -19521,8 +19518,8 @@
 			],
 			"languages": {
 				"languages": [
-					"common",
-					"necril"
+					"Common",
+					"Necril"
 				]
 			},
 			"skills": {
@@ -19573,7 +19570,10 @@
 				},
 				"will": {
 					"std": 6
-				}
+				},
+				"abilities": [
+					"+2 circumstance to all saves vs. disease"
+				]
 			},
 			"hp": [
 				{
@@ -19589,73 +19589,120 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "dagger",
-					"attack": 7,
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile S"
 					],
-					"effects": [],
-					"damage": "{@damage 1d4+2} piercing",
-					"types": [
-						"piercing"
-					]
+					"name": "dagger",
+					"attack": 7,
+					"damage": "{@damage 1d4+2} piercing"
 				},
 				{
 					"range": "Melee",
-					"name": "staff",
-					"attack": 6,
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
 					"traits": [
 						"two-handed d8"
 					],
-					"effects": [],
-					"damage": "{@damage 1d6+2} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
+					"name": "staff",
+					"attack": 6,
+					"damage": "{@damage 1d6+2} bludgeoning"
 				},
 				{
 					"range": "Melee",
-					"name": "fist",
-					"attack": 7,
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
 					"traits": [
 						"agile",
 						"finesse",
 						"nonlethal"
 					],
-					"effects": [],
-					"damage": "{@damage 1d4+2} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
+					"name": "fist",
+					"attack": 7,
+					"damage": "{@damage 1d4+2} bludgeoning"
 				},
 				{
 					"range": "Ranged",
-					"name": "dagger",
-					"attack": 7,
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile s"
+						"versatile S"
 					],
-					"effects": [],
-					"damage": "{@damage 1d4+2} piercing",
-					"types": [
-						"piercing"
-					]
+					"name": "dagger",
+					"attack": 7,
+					"damage": "{@damage 1d4+2} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Prepared",
+					"tradition": "Arcane",
+					"type": "Prepared",
+					"DC": 18,
+					"attack": 8,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "grim tendrils",
+									"amount": 2
+								},
+								{
+									"name": "magic missile"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
 				"mid": [
 					{
+						"name": "Blood of the Night",
 						"entries": [
 							"The dhampir's penalty and Hit Point reduction from the {@condition drained} condition are reduced as though the condition value were 1 lower."
-						],
-						"name": "Blood of the Night"
+						]
 					}
 				]
 			},
+			"source": "B1",
+			"page": 95,
 			"hasImages": true
 		},
 		{
