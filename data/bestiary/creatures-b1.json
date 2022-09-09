@@ -19698,7 +19698,6 @@
 		},
 		{
 			"name": "Dhampir Wizard",
-			"isNpc": false,
 			"source": "B1",
 			"page": 95,
 			"level": 2,
@@ -19759,80 +19758,6 @@
 				"spellbook containing their prepared spells",
 				"staff"
 			],
-			"speed": {
-				"walk": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "dagger",
-					"attack": 7,
-					"traits": [
-						"agile",
-						"finesse",
-						"versatile s"
-					],
-					"effects": [],
-					"damage": "{@damage 1d4+2} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "staff",
-					"attack": 6,
-					"traits": [
-						"two-handed d8"
-					],
-					"effects": [],
-					"damage": "{@damage 1d6+2} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "fist",
-					"attack": 7,
-					"traits": [
-						"agile",
-						"finesse",
-						"nonlethal"
-					],
-					"effects": [],
-					"damage": "{@damage 1d4+2} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "dagger",
-					"attack": 7,
-					"traits": [
-						"agile",
-						"thrown 10 feet",
-						"versatile s"
-					],
-					"effects": [],
-					"damage": "{@damage 1d4+2} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"entries": [
-							"The dhampir's penalty and Hit Point reduction from the {@condition drained} condition are reduced as though the condition value were 1 lower."
-						],
-						"name": "Blood of the Night"
-					}
-				]
-			},
-			"hasImages": true,
 			"defenses": {
 				"ac": {
 					"std": 17
@@ -19846,13 +19771,134 @@
 					},
 					"will": {
 						"std": 6
-					}
+					},
+					"abilities": [
+						"+2 circumstance to all saves vs. disease"
+					]
 				},
 				"hp": [
 					{
 						"hp": 22,
 						"abilities": [
 							"negative healing"
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"name": "dagger",
+					"attack": 7,
+					"damage": "{@damage 1d4+2} piercing"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"two-handed d8"
+					],
+					"name": "staff",
+					"attack": 6,
+					"damage": "{@damage 1d6+2} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal"
+					],
+					"name": "fist",
+					"attack": 7,
+					"damage": "{@damage 1d4+2} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"name": "dagger",
+					"attack": 7,
+					"damage": "{@damage 1d4+2} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Prepared",
+					"tradition": "Arcane",
+					"type": "Prepared",
+					"DC": 18,
+					"attack": 8,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "grim tendrils",
+									"amount": 2
+								},
+								{
+									"name": "magic missile"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Blood of the Night",
+						"entries": [
+							"The dhampir's penalty and Hit Point reduction from the {@condition drained} condition are reduced as though the condition value were 1 lower."
 						]
 					}
 				]
