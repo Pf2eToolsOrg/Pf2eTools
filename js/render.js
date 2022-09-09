@@ -4218,66 +4218,70 @@ Renderer.creature = {
 		} else return ""
 	},
 
-	getDefenses (cr) {
-		let renderStack = [];
+	getDefenses (creature) {
+		if (!creature.defenses) return "";
+		const acPart = Renderer.creature.getDefenses_getACPart(creature);
+		const savingThrowPart = Renderer.creature.getDefenses_getSavingThrowPart(creature);
+		const hpHardnessPart = Renderer.creature.getDefenses_getHPHardnessPart(creature);
+		const immunitiesPart = Renderer.creature.getDefenses_getImmunitiesPart(creature);
+		const weakPart = Renderer.creature.getDefenses_getResWeakPart(creature.defenses.weaknesses, "Weaknesses");
+		const resistPart = Renderer.creature.getDefenses_getResWeakPart(creature.defenses.resistances, "Resistances");
+		const sect1 = [acPart, savingThrowPart].filter(Boolean);
+		const sect2 = [hpHardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
+		return `<p class="pf2-stat pf2-stat__section">
+					${sect1.join("; ")}
+					${sect1.length && sect2.length ? "</p><p class='pf2-stat pf2-stat__section'>" : ""}
+					${sect2.join("; ")}
+				</p>`;
+	},
+	getDefenses_getACPart (creature) {
+		if (!creature.defenses.ac) return null;
 		const renderer = Renderer.get();
-		renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-		const ac = cr.ac;
-		renderStack.push(`<span><strong>AC&nbsp;</strong>${ac.std}${Renderer.utils.getNotes(ac, { exclude: ["std", "abilities"] })}`);
-		if (ac.abilities != null) renderStack.push(`; ${renderer.render(ac.abilities)}`);
-		const st = cr.savingThrows
-		renderStack.push(`; <strong>Fort&nbsp;</strong>`);
-		renderStack.push(Renderer.get().render(`{@d20 ${st.fort.std}||Fortitude Save}`));
-		renderStack.push(Renderer.utils.getNotes(st.fort, { exclude: ["std", "abilities"], dice: { name: "Fortitude Save" } }));
-		renderStack.push(`, <strong>Ref&nbsp;</strong>`);
-		renderStack.push(Renderer.get().render(`{@d20 ${st.ref.std}||Reflex Save}`));
-		renderStack.push(Renderer.utils.getNotes(st.ref, { exclude: ["std", "abilities"], dice: { name: "Reflex Save" } }));
-		renderStack.push(`, <strong>Will&nbsp;</strong>`);
-		renderStack.push(Renderer.get().render(`{@d20 ${st.will.std}||Will Save}`));
-		renderStack.push(Renderer.utils.getNotes(st.will, { exclude: ["std", "abilities"], dice: { name: "Will Save" } }));
-		if (st.abilities != null) renderStack.push(`, ${renderer.render(st.abilities)}`);
-		renderStack.push(`</span>`)
-		renderStack.push(`</p>`)
+		const mainPart = Object.keys(creature.defenses.ac).filter(k => k !== "note" && k !== "abilities")
+			.map(k => `<strong>${k === "std" ? "" : `${k} `}AC&nbsp;</strong>${creature.defenses.ac[k]}`).join(", ");
+		// TODO: deprecate ac.note
+		const notePart = creature.defenses.ac.note ? renderer.render(creature.defenses.ac.note) : "";
+		const abilitiesPart = creature.defenses.ac.abilities ? `; ${renderer.render(creature.defenses.ac.abilities)}` : "";
+		return `${mainPart}${notePart}${abilitiesPart}`;
+	},
+	getDefenses_getSavingThrowPart (creature) {
+		if (!creature.defenses.savingThrows) return null;
+		const renderer = Renderer.get();
+		const savingThrowParts = Object.keys(creature.defenses.savingThrows).filter(k => k !== "abilities")
+			.map(k => {
+				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
+				const std = renderer.render(`<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${creature.defenses.savingThrows[k].std}||${saveName}}`);
+				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: {name: saveName}});
+				return `${std}${note}`;
+			});
+		if (creature.defenses.savingThrows.abilities) savingThrowParts.push(renderer.render(creature.defenses.savingThrows.abilities));
+		return savingThrowParts.join(", ");
+	},
+	getDefenses_getHPHardnessPart (creature) {
+		if (!creature.defenses.hp) return null;
+		const renderer = Renderer.get();
+		const hp = creature.defenses.hp || [];
+		const hard = creature.defenses.hardness || {};
+		const out = [];
+		hp.forEach(hpObj => {
+			const hpPart = `<strong>HP&nbsp;</strong>${hpObj.note ? `${hpObj.note} ` : ``}${hpObj.hp}`;
+			const abilities = hpObj.abilities ? ["", ...hpObj.abilities].map(a => renderer.render(a)).join(", ") : "";
+			out.push(`${hpPart}${abilities}`);
+		});
+		if (creature.defenses.hardness) out.push(`<strong>Hardness&nbsp;</strong>${creature.defenses.hardness}`);
 
-		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-		renderStack.push(cr.hp.map(hp => {
-			return `<span><strong>HP&nbsp;</strong>${hp.note != null ? `${hp.note} ` : ``}${hp.hp}${renderer.render(`${hp.abilities != null ? `, ${hp.abilities.join(", ")}` : ``}`)}`;
-		}).join(" "));
-		if (cr.hardness != null) {
-			renderStack.push(`; <strong>Hardness&nbsp;</strong>${cr.hardness}`)
-		}
-		if (cr.immunities != null) {
-			renderStack.push(`; <strong>Immunities&nbsp;</strong>`)
-			renderStack.push(renderer.render(cr.immunities.join(", ")));
-		}
-		if (cr.weaknesses != null) {
-			renderStack.push(`; <strong>Weaknesses&nbsp;</strong>`)
-			let ws = []
-			for (let x of cr.weaknesses) {
-				if (typeof (x) === "string") {
-					ws.push(x)
-				} else {
-					ws.push(`${x.name}${x.amount ? ` ${x.amount}` : ""}${x.note ? ` ${x.note}` : ``}`)
-				}
-			}
-			renderStack.push(ws.join(", "))
-		}
-		if (cr.resistances != null) {
-			renderStack.push(`; <strong>Resistances&nbsp;</strong>`)
-			let rs = []
-			for (let x of cr.resistances) {
-				if (typeof (x) === "string") {
-					rs.push(x)
-				} else {
-					rs.push(`${x.name}${x.amount ? ` ${x.amount}` : ""}${x.note ? ` ${renderer.render(x.note)}` : ``}`)
-				}
-			}
-			renderStack.push(rs.join(", "))
-		}
-		renderStack.push(`</span>`)
-		renderStack.push(`</p>`)
-
-		return renderStack.join("")
+		return out.join("; ");
+	},
+	getDefenses_getImmunitiesPart (creature) {
+		if (!creature.defenses.immunities) return null;
+		const renderer = Renderer.get();
+		return `<strong>Immunities&nbsp;</strong>${creature.defenses.immunities.map(i => renderer.render(i)).join(", ")}`;
+	},
+	getDefenses_getResWeakPart (arr, prop) {
+		if (!arr || arr.length === 0) return null;
+		const renderer = Renderer.get();
+		const vals = arr.map(it => `${it.name}${it.amount ? ` ${it.amount}` : ""}${it.note ? ` ${renderer.render(it.note)}` : ""}`);
+		return `<strong>${prop}&nbsp;</strong>${vals.join("; ")}`;
 	},
 
 	getSpeed (cr) {
@@ -4856,39 +4860,7 @@ Renderer.hazard = {
 			disableStack.push(`</p>`);
 			renderStack.push(disableStack.join(""));
 		}
-		if (hazard.defenses) {
-			const def = hazard.defenses
-			const defensesStack = [`<p class="pf2-stat pf2-stat__section">`];
-			const sectionAcSt = []
-			const sectionTwo = []
-			if (def.ac) {
-				sectionAcSt.push(Object.keys(def.ac)
-					.map(k => `<strong>${k === "default" ? "" : `${k} `}AC&nbsp;</strong>${def.ac[k]}`).join(", "));
-			}
-			if (def.savingThrows) {
-				sectionAcSt.push(Object.keys(def.savingThrows).filter(k => def.savingThrows[k] != null)
-					.map(k => `<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${def.savingThrows[k]}||${Parser.savingThrowAbvToFull(k)}}`).join(", "));
-			}
-			defensesStack.push(renderer.render(sectionAcSt.join("; ")))
-			if (sectionAcSt.length) defensesStack.push(`</p><p class="pf2-stat pf2-stat__section">`);
-			if (def.hardness != null && def.hp != null) {
-				// FIXME: KILL ME
-				sectionTwo.push(Object.keys(def.hardness).map(k => `<strong>${k === "default" ? "" : `${k} `}Hardness&nbsp;</strong>${def.hardness[k]}${def.hp[k] != null ? `, <strong>${k === "default" ? "" : `${k} `}HP&nbsp;</strong>${def.hp[k]}${def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}` : ""}`).join("; "));
-			} else if (def.hp != null) {
-				sectionTwo.push(Object.keys(def.hp)
-					.map(k => `<strong>${k === "default" ? "" : `${k} `}HP&nbsp;</strong>${def.hp[k]}${def.bt && def.bt[k] != null ? `, (BT ${def.bt[k]})` : ""}`).join("; "));
-			} else if (def.hp == null && def.hardness != null) {
-				throw new Error("What? Hardness but no HP?") // TODO: ...Maybe?
-			} else {
-				sectionTwo.push("")
-			}
-			if (def.immunities) sectionTwo.push(`<strong>Immunities&nbsp;</strong>${def.immunities.join(", ")}`);
-			if (def.weaknesses) sectionTwo.push(`<strong>Weaknesses&nbsp;</strong>${def.weaknesses.join(", ")}`);
-			if (def.resistances) sectionTwo.push(`<strong>Resistances&nbsp;</strong>${def.resistances.join(", ")}`);
-			defensesStack.push(renderer.render(sectionTwo.join("; ")))
-			defensesStack.push(`</p>`);
-			renderStack.push(defensesStack.join(""));
-		}
+		renderStack.push(Renderer.hazard.getDefenses(hazard));
 		if (hazard.actions) {
 			hazard.actions.forEach(a => {
 				if (a.type === "attack") {
@@ -4915,6 +4887,38 @@ Renderer.hazard = {
 		}
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(hazard))
 		return renderStack.join("")
+	},
+
+	getDefenses (hazard) {
+		if (!hazard.defenses) return "";
+		const acPart = Renderer.creature.getDefenses_getACPart(hazard);
+		const savingThrowPart = Renderer.creature.getDefenses_getSavingThrowPart(hazard);
+		const hpHardnessPart = Renderer.hazard.getDefenses_getHPHardnessPart(hazard);
+		const immunitiesPart = Renderer.creature.getDefenses_getImmunitiesPart(hazard);
+		const weakPart = Renderer.creature.getDefenses_getResWeakPart(hazard.defenses.weaknesses, "Weaknesses");
+		const resistPart = Renderer.creature.getDefenses_getResWeakPart(hazard.defenses.resistances, "Resistances");
+		const sect1 = [acPart, savingThrowPart].filter(Boolean);
+		const sect2 = [hpHardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
+		return `<p class="pf2-stat pf2-stat__section">
+					${sect1.join("; ")}
+					${sect1.length && sect2.length ? "</p><p class='pf2-stat pf2-stat__section'>" : ""}
+					${sect2.join("; ")}
+				</p>`;
+	},
+	getDefenses_getHPHardnessPart (hazard) {
+		if (!hazard.defenses.hp) return null;
+		const rdk = (key) => key === "std" ? "" : `${key} `;
+		const hp = hazard.defenses.hp || {};
+		const bt = hazard.defenses.bt || {};
+		const hard = hazard.defenses.hardness || {};
+		const out = [];
+		// FIXME/TODO: We completely omit hardness keys that have no hp counterpart. This seems OK on first glance.
+		Object.keys(hp).forEach(hpk => {
+			const hardPart = hard[hpk] ? `<strong>${rdk(hpk)}Hardness&nbsp;</strong>${hard[hpk]}, ` : "";
+			const btPart = bt[hpk] ? ` (BT ${bt[hpk]})` : "";
+			out.push(`${hardPart}<strong>${rdk(hpk)}HP&nbsp;</strong>${hp[hpk]}${btPart}`);
+		});
+		return out.join("; ");
 	},
 };
 

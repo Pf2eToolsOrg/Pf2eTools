@@ -568,10 +568,10 @@ class ScaleCreature {
 	}
 
 	_scaleEliteWeak (creature, opts) {
-		Object.keys(creature.ac).forEach(key => {
-			if (key !== "abilities") creature.ac[key] += opts.flatAddProf;
+		Object.keys(creature.defenses.ac).forEach(key => {
+			if (key !== "abilities") creature.defenses.ac[key] += opts.flatAddProf;
 		});
-		["fort", "ref", "will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] += opts.flatAddProf));
+		["fort", "ref", "will"].forEach(st => Object.keys(creature.defenses.savingThrows[st]).forEach(key => creature.defenses.savingThrows[st][key] += opts.flatAddProf));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += opts.flatAddProf);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += opts.flatAddProf));
 		if (creature.spellcasting != null) {
@@ -700,19 +700,19 @@ class ScaleCreature {
 	}
 
 	_adjustAC (creature, lvlIn, toLvl, opts) {
-		const defaultAc = creature.ac.std;
-		creature.ac.std = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC) + opts.flatAddProf;
-		Object.keys(creature.ac).forEach(key => {
-			if (key !== "std" && key !== "abilities") creature.ac[key] += creature.ac.std - defaultAc;
+		const defaultAc = creature.defenses.ac.std;
+		creature.defenses.ac.std = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC) + opts.flatAddProf;
+		Object.keys(creature.defenses.ac).forEach(key => {
+			if (key !== "std" && key !== "abilities") creature.defenses.ac[key] += creature.defenses.ac.std - defaultAc;
 		});
 	}
 
 	_adjustSavingThrows (creature, lvlIn, toLvl, opts) {
 		["fort", "ref", "will"].forEach(st => {
-			const defaultSave = creature.savingThrows[st].std;
-			creature.savingThrows[st].std = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows) + opts.flatAddProf;
-			Object.keys(creature.savingThrows[st]).forEach(key => {
-				if (key !== "std") creature.savingThrows[st][key] += creature.savingThrows[st].std - defaultSave;
+			const defaultSave = creature.defenses.savingThrows[st].std;
+			creature.defenses.savingThrows[st].std = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows) + opts.flatAddProf;
+			Object.keys(creature.defenses.savingThrows[st]).forEach(key => {
+				if (key !== "std") creature.defenses.savingThrows[st][key] += creature.defenses.savingThrows[st].std - defaultSave;
 			});
 		});
 	}
@@ -722,7 +722,7 @@ class ScaleCreature {
 	}
 
 	_adjustHP (creature, lvlIn, toLvl, opts) {
-		for (let hp of creature.hp) {
+		for (let hp of creature.defenses.hp) {
 			hp.hp = this._scaleValue(lvlIn, toLvl, hp.hp, this._LvlHP);
 			if (hp.hp > 100) {
 				hp.hp += 2;
@@ -738,14 +738,14 @@ class ScaleCreature {
 	}
 
 	_adjustResistancesWeaknesses (creature, lvlIn, toLvl, opts) {
-		if (creature.resistances) {
-			creature.resistances.forEach(r => {
+		if (creature.defenses.resistances) {
+			creature.defenses.resistances.forEach(r => {
 				if (r.amount) r.amount = this._scaleValue(lvlIn, toLvl, r.amount, this._LvlResistanceWeakness);
 			});
 		}
 
-		if (creature.weaknesses) {
-			creature.weaknesses.forEach(w => {
+		if (creature.defenses.weaknesses) {
+			creature.defenses.weaknesses.forEach(w => {
 				if (w.amount) w.amount = this._scaleValue(lvlIn, toLvl, w.amount, this._LvlResistanceWeakness);
 			});
 		}

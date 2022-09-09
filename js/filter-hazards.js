@@ -39,14 +39,14 @@ class PageFilterHazards extends PageFilter {
 
 	mutateForFilters (it) {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
-		it._fstealth = it.stealth.dc == null ? it.stealth.bonus + 10 : it.stealth.dc;
+		it._fstealth = it.stealth.dc == null ? (it.stealth.bonus || 0) + 10 : it.stealth.dc;
 		if (it.defenses != null) {
-			if (it.defenses.ac) it._fac = it.defenses.ac[Object.keys(it.defenses.ac)[0]];
-			if (it.defenses.hardness) it._fhardness = it.defenses.hardness[Object.keys(it.defenses.hardness)[0]];
-			if (it.defenses.hp) it._fhp = it.defenses.hp[Object.keys(it.defenses.hp)[0]];
-			if (it.defenses.savingThrows) it._ffort = it.defenses.savingThrows.fort;
-			if (it.defenses.savingThrows) it._fref = it.defenses.savingThrows.ref;
-			if (it.defenses.savingThrows) it._fwill = it.defenses.savingThrows.will;
+			if (it.defenses.ac) it._fac = Math.max(...Object.values(it.defenses.ac).filter(v => typeof v === "number"));
+			if (it.defenses.hardness) it._fhardness = Math.max(...Object.values(it.defenses.hardness).filter(v => typeof v === "number"));
+			if (it.defenses.hp) it._fhp = Math.max(...Object.values(it.defenses.hp).filter(v => typeof v === "number"));
+			if (it.defenses.savingThrows) it._ffort = it.defenses.savingThrows.fort ? it.defenses.savingThrows.fort.std : null;
+			if (it.defenses.savingThrows) it._fref = it.defenses.savingThrows.ref ? it.defenses.savingThrows.ref.std : null;
+			if (it.defenses.savingThrows) it._fwill = it.defenses.savingThrows.will ? it.defenses.savingThrows.will.std : null;
 			if (it.defenses.immunities) it._fimmunities = it.defenses.immunities;
 		}
 		it._ftraits = it.traits.map(t => Parser.getTraitName(t));
