@@ -125,16 +125,12 @@ class ItemsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(Renderer.item.getRenderedString(item));
 		}
-		const buildFluffTab = async () => {
+		async function buildFluffTab () {
 			const pGetFluff = async () => {
-				const item = this._dataList[Hist.lastLoadedId];
 				const fluff = await Renderer.item.pGetFluff(item);
 				return fluff ? fluff.entries || [] : [];
 			}
-			const fluffEntries = await pGetFluff();
-			const renderStack = [];
-			Renderer.get().recursiveRender(fluffEntries, renderStack);
-			$content.append(renderStack.join(""));
+			$content.append(Renderer.getRenderedLore({lore: await pGetFluff()}))
 		}
 
 		const buildImageTab = async () => {
