@@ -953,7 +953,9 @@ function Renderer () {
 				textStack[0] += `<p class="pf2-h1-flavor rd__h${entry.centered ? " pf2-h1-flavor--centered" : ""}">${this.render(entry.entries[i])}</p>`;
 			}
 		}
-		textStack[0] += this._getPf2ChapterSwirl()
+		// TODO: Swirls
+		// textStack[0] += this._getPf2ChapterSwirl()
+		textStack[0] += `<div class="flex"><div class="pf2-chapter__line mb-4" style="width: calc(100% - 2em); margin-left: 1em; height: 2px"></div></div>`
 	};
 
 	this._getPf2ChapterSwirl = function () {
@@ -1170,10 +1172,12 @@ function Renderer () {
 	this._renderPf2BrownBox = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div ${dataString} class="flex">`;
-		textStack[0] += `<div class="pf2-box pf2-box--brown">`;
-		textStack[0] += this._getPf2BoxSwirl(false, "pf2-box--brown")
-		textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--brown"></div>`
-		textStack[0] += this._getPf2BoxSwirl(true, "pf2-box--brown")
+		// TODO: Swirl in peace...
+		textStack[0] += `<div class="pf2-box pf2-box--brown" style="border-radius: 6px">`;
+		textStack[0] += `<div style="margin-bottom: 8px"></div>`
+		// textStack[0] += this._getPf2BoxSwirl(false, "pf2-box--brown")
+		// textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--brown"></div>`
+		// textStack[0] += this._getPf2BoxSwirl(true, "pf2-box--brown")
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1192,10 +1196,12 @@ function Renderer () {
 	this._renderPf2RedBox = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div ${dataString} class="flex">`;
-		textStack[0] += `<div class="pf2-box pf2-box--red">`;
-		textStack[0] += this._getPf2BoxSwirl(false, "pf2-box--red")
-		textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--red"></div>`
-		textStack[0] += this._getPf2BoxSwirl(true, "pf2-box--red")
+		// TODO: Swirl
+		textStack[0] += `<div class="pf2-box pf2-box--red" style="border-radius: 6px">`;
+		textStack[0] += `<div style="margin-bottom: 8px"></div>`
+		// textStack[0] += this._getPf2BoxSwirl(false, "pf2-box--red")
+		// textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--red"></div>`
+		// textStack[0] += this._getPf2BoxSwirl(true, "pf2-box--red")
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
