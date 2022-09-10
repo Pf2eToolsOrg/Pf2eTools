@@ -1,6 +1,697 @@
 {
 	"hazard": [
 		{
+			"name": "Call of the Void",
+			"source": "DA",
+			"page": 214,
+			"level": 12,
+			"traits": [
+				"unique",
+				"complex",
+				"environmental",
+				"magical"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert",
+				"notes": "to notice a slight tugging feeling"
+			},
+			"description": [
+				"A supernatural compulsion to leap into the unknown exerts itself on anyone who approaches the ledge."
+			],
+			"disable": {
+				"entries": [
+					"DC 34 {@skill Occultism} or DC 36 {@skill Arcana} to expel the magical compulsion from the current island and from any of the red ropes directly attached to it, darkening the rope in color. The Echo also automatically disables the hazard from any island he's standing on, and any of the red ropes directly attached to it, when he Reconstitutes from Thought on that island."
+				]
+			},
+			"actions": [
+				{
+					"name": "Leap into the Unknown",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"enchantment",
+						"mental"
+					],
+					"trigger": "A creature enters a square adjacent to the ledge of an island or steps onto one of the red ropes",
+					"entries": [
+						"The call of the void tugs at the mind of intruders, compelling them to leap off the ledge. The creature must succeed at a DC 34 Will save or"
+					]
+				},
+				{
+					"name": "DC 32",
+					"entries": [
+						"{@skill Acrobatics} check to {@action Balance} or else drop off the ledge. If the creature falls off, it drops 100 feet, loops through the closed space of the mindscape, and lands in the square it fell from, taking falling damage as normal (usually 50 bludgeoning Archive damage). The call of the void then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The call targets all creatures adjacent to a ledge or on one of the red ropes and tugs at their minds. A creature who has already fallen this round is immune."
+			],
+			"reset": [
+				"The call of the void persists as long as the Echo exists, though it doesn't activate until the Echo has rolled initiative.",
+				"The hazard resets each day"
+			]
+		},{
+			"name": "Mirror Door",
+			"source": "DA",
+			"page": 122,
+			"level": null,
+			"traits": [
+				"magical",
+				"trap",
+				"visual"
+			],
+			"stealth": {
+				"dc": 15
+			},
+			"description": [
+				"The reflection of a wall shows a phantom door where none exists. This door can only be manipulated while viewed through the mirror's reflection."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} to open the door while viewing the reflection"
+				]
+			},
+			"actions": [
+				{
+					"name": "Appear",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"illusion"
+					],
+					"trigger": "A creature views the wall through a mirror's reflection",
+					"entries": [
+						"A door appears in the mirror's reflection of the wall. The triggering creature can open and manipulate this door only as long as they view it through the mirror and only by succeeding at a DC 18 {@skill Thievery} check to disable the trap."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Shuffling Hall",
+			"source": "DA",
+			"page": 122,
+			"level": null,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 15
+			},
+			"description": [
+				"Four pressure plates along this mirrored hall rotate vertically when stepped on, sending a creature on the pressure plate tipping into an adjacent featureless room while simultaneously replacing the pressure plate and walls in the hall. Each pressure plate dumps creatures into a different room."
+			],
+			"disable": {
+				"entries": [
+					"DC 12 {@skill Thievery} to deactivate one pressure plate"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 2
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"std": 4
+				},
+				"hp": {
+					"std": 12
+				},
+				"bt": {
+					"std": 6
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Flip",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on a pressure plate",
+					"entries": [
+						"The floor and adjoining wall rotate up and over on a central axle, tipping the triggering creature into an adjacent featureless room and simultaneously replacing the pressure plate and wall with another set on the same axle. The triggering creature is pushed into an adjoining room, takes {@damage 1d8} bludgeoning damage, and lands {@condition prone}. A creature who succeeds at a DC 19 Reflex save takes no damage and rolls out of the way of the trap, returning to the space they were in before stepping on the pressure plate."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Confounding Portal",
+			"source": "DA",
+			"page": 122,
+			"level": 0,
+			"traits": [
+				"illusion",
+				"magical",
+				"mental",
+				"trap"
+			],
+			"stealth": {
+				"dc": 16
+			},
+			"description": [
+				"Tiny runes carved around a doorframe or on a hall's walls surreptitiously confound creatures into circling the room or hallway they attempted to exit or pass through."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Thievery} to scratch out the runes, or DC 16 {@skill Arcana} to destroy the runes"
+				]
+			},
+			"actions": [
+				{
+					"name": "Confounding Misdirection",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"illusion",
+						"mental"
+					],
+					"trigger": "A creature passes through the rune-carved doorway or hallway",
+					"entries": [
+						"The creature is {@condition confused} by the illusions and directed back into the room they attempted to exit through another doorway or back to the hallway's beginning. This feels no different to the triggering creature than walking through the doorway or hallway, and onlookers are similarly befuddled. A creature who succeeds at a DC 19 Will save resists this illusion and exits the room or proceeds down the hall without being misdirected."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Disorienting Illusions",
+			"source": "DA",
+			"page": 122,
+			"level": 1,
+			"traits": [
+				"illusion",
+				"magical",
+				"trap",
+				"visual"
+			],
+			"stealth": {
+				"dc": 20
+			},
+			"description": [
+				"Illusions cloaking this chamber cause it to appear distorted and constantly shifting, with the room and all its contents appearing tilted, irregular, and in motion."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Crafting} (trained) to calculate the room's dimensions despite the illusions, or dispel magic (1st level; counteract DC 17) to counteract the illusions"
+				]
+			},
+			"actions": [
+				{
+					"name": "Disorient",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"illusion",
+						"mental",
+						"visual"
+					],
+					"trigger": "A creature enters the room",
+					"entries": [
+						"Illusions cause the appearance of the room and the objects inside it to constantly warp, shift, bend, and distort for 1 minute. Each creature in the room while it's distorting must attempt a DC 17 {@skill Perception} check.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature disbelieves the illusions and is unaffected."
+								],
+								"Success": [
+									"The creature disbelieves the illusions but still sees them. It treats the room as difficult terrain."
+								],
+								"Failure": [
+									"The creature is fooled by the illusions. It treats the room as difficult terrain and becomes {@condition sickened||sickened 1}. As long as it remains in the room, it can't reduce its {@condition sickened} value below 1."
+								],
+								"Critical Failure": [
+									"As failure, but each time the creature Archive attempts a move action, it must succeed at a DC {@flatDC 5} flat check or they lose the action, and on a critical failure, it also falls {@condition prone}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"1 minute"
+			]
+		},{
+			"name": "Reflected Desires",
+			"source": "SOURCE",
+			"page": 123,
+			"level": 1,
+			"traits": [
+				"enchantment",
+				"magical",
+				"mental",
+				"trap",
+				"visual"
+			],
+			"stealth": {
+				"dc": 17,
+				"notes": "(0 to notice the mirror)"
+			},
+			"description": [
+				"This mirror reflects the viewer's deepest desires."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} (trained) to shroud the mirror without looking at it, or DC 17 {@skill Occultism} (trained) to erect mental barriers"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 4
+					}
+				},
+				"hardness": {
+					"std": 6
+				},
+				"hp": {
+					"std": 24
+				},
+				"bt": {
+					"std": 12
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Tempt",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"enchantment",
+						"mental",
+						"occult",
+						"visual"
+					],
+					"trigger": "A creature looks into the mirror",
+					"entries": [
+						"The triggering creature sees themselves enjoying their deepest desires in the mirror's reflection, becoming {@condition fascinated} (Will DC 20 negates). This fascination ends automatically when the mirror is {@condition broken} or covered up."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Shrinking Hall",
+			"source": "SOURCE",
+			"page": 123,
+			"level": 2,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 18
+			},
+			"description": [
+				"This hallway is designed to shrink as creatures traverse it, making access to the door at the hall's end impossible."
+			],
+			"disable": {
+				"entries": [
+					"DC 21 {@skill Thievery} (trained) to jam the scales built into the floor"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shrink",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "100 pounds of weight or more is placed on the hallway's floor",
+					"entries": [
+						"The hall's last 40 feet of walls angle inward, causing the hall to shrink and contract down, reaching 6 inches in height and width at the hall's far end and completely blocking access to the hall's exit door for anything but a Tiny creature Squeezing."
+					]
+				}
+			],
+			"reset": [
+				"After 10 minutes without weight being placed on this hall's floor, this trap resets, returning the hall to its original size."
+			]
+		},
+		{
+			"name": "False Floor",
+			"source": "SOURCE",
+			"page": 123,
+			"level": 3,
+			"traits": [
+				"illusion",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 23,
+				"notes": "(trained; or 0 if the illusory floor is dispelled)"
+			},
+			"description": [
+				"The floor in this chamber is an illusion, which conceals a 40-foot drop to the true floor below. Additionally, the area beneath the floor is magically silenced\u2014no sound is audible within nor does sound leave this space."
+			],
+			"disable": {
+				"entries": [
+					"Succeeding on a {@skill Perception} check against the {@skill Stealth} DC of 21 (including the check to find the trap) disbelieves the illusory floor, or dispel magic (2nd level; counteract DC 18) to dispel the illusory floor; dispel magic (2nd level; counteract DC 20) to dispel the magical silence"
+				]
+			},
+			"actions": [
+				{
+					"name": "Drop",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature walks onto the illusory floor",
+					"entries": [
+						"The triggering creature falls through the illusory floor and takes falling damage (typically 20 bludgeoning damage). That creature can use the {@action Grab an Edge} reaction to avoid falling. The DC to {@action Climb} the walls or {@action Grab an Edge} is 20."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Entrapping Chair",
+			"source": "SOURCE",
+			"page": 123,
+			"level": 5,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 26,
+				"notes": "(0 to notice the chair)"
+			},
+			"description": [
+				"A chair on {@condition concealed} tracks surges forward, knocking a creature into the chair's seat and trapping them in place with clamping armrests."
+			],
+			"disable": {
+				"entries": [
+					"DC 23 {@skill Thievery} (expert) to disrupt the tracks"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 54
+				},
+				"bt": {
+					"std": 27
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Take a Seat!",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on the track",
+					"entries": [
+						"The chair rockets forward along the track and slams into the triggering creature, dealing {@damage 3d8+15} bludgeoning damage. A creature who succeeds at a DC 22 Reflex save takes no damage and moves out of the chair's path into a random adjacent square not containing the track.",
+						"A creature who fails this saving throw is knocked into the chair's seat and immediately captured by the armrests, becoming {@condition grabbed} ({@condition restrained} on a critical failure; {@action Escape} DC 26)."
+					]
+				}
+			],
+			"reset": [
+				"The trap resets automatically over 2 rounds if the chair is unoccupied."
+			]
+		},
+		{
+			"name": "False Step Floor",
+			"source": "SOURCE",
+			"page": 123,
+			"level": 6,
+			"traits": [
+				"conjuration",
+				"magical",
+				"teleportation",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25
+			},
+			"description": [
+				"Each time a creature enters the room, it slips through the floor, tumbles through an interdimensional void, and falls back into the room through the ceiling, landing on the floor."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (trained) to disrupt the magical energy, or DC 27 {@skill Arcana} or {@skill Occultism} (trained) to realign the magical energy"
+				]
+			},
+			"actions": [
+				{
+					"name": "False Step",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"conjuration",
+						"teleportation"
+					],
+					"trigger": "A creature enters the room and steps onto the floor",
+					"entries": [
+						"The creature slips through the floor; it tumbles through an interdimensional void before falling back into the room through the ceiling and landing on the floor. The triggering creature takes 40 bludgeoning damage from the fall. That creature can try to {@action Grab an Edge} (DC 24) to avoid falling."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Distortion Mirror",
+			"source": "SOURCE",
+			"page": 123,
+			"level": 14,
+			"traits": [
+				"magical",
+				"transmutation",
+				"trap"
+			],
+			"stealth": {
+				"dc": 38,
+				"notes": "0 to notice the mirror"
+			},
+			"description": [
+				"Fun-house mirrors distort a viewer's reflection, painfully reshaping their body to match what appears in the reflected images."
+			],
+			"disable": {
+				"entries": [
+					"DC 38 {@skill Thievery} (master) to deface the mirror's pane, or dispel magic (7th level; counteract DC 36) to dispel the mirror or counteract the transformation"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 33
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 22
+					}
+				},
+				"hardness": {
+					"std": 24
+				},
+				"hp": {
+					"std": 90
+				},
+				"bt": {
+					"std": 45
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Painful Transformation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A creature is reflected in the mirror",
+					"entries": [
+						"The triggering creature's body is painfully squished, stretched, and distorted to match their reflection. The creature takes {@damage 6d10+30} force damage and must attempt a DC 39 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target is unaffected."
+								],
+								"Success": [
+									"The target takes half damage and is {@condition clumsy||clumsy 1} and {@condition enfeebled||enfeebled 1} for 1 round."
+								],
+								"Failure": [
+									"The target takes full damage and is {@condition clumsy||clumsy 2} and {@condition enfeebled||enfeebled 2} for 4 rounds."
+								],
+								"Critical Failure": [
+									"The target takes double damage and is {@condition clumsy||clumsy 2} and {@condition enfeebled||enfeebled 2} for 1 minute. As long as the creature is {@condition clumsy} or {@condition enfeebled}, it additionally takes a \u201310-foot status penalty to its Speeds.",
+									"When the effects of this trap end, the triggering creature's transformation ends, and its body reverts to its natural form."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"1 day"
+			]
+		},{
+			"name": "Sigil of Deepest Fears",
+			"source": "SOURCE",
+			"page": 124,
+			"level": 17,
+			"traits": [
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 43,
+				"minProf": "master"
+			},
+			"description": [
+				"An arcane sigil forces creatures to confront their greatest fear."
+			],
+			"disable": {
+				"entries": [
+					"DC 43 {@skill Thievery} (master) to drain the sigil's power harmlessly, or dispel magic (9th level; counteract DC 42) to counteract the sigil"
+				]
+			},
+			"actions": [
+				{
+					"name": "Face Your Fear",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"death",
+						"emotion",
+						"fear",
+						"illusion",
+						"mental"
+					],
+					"trigger": "A creature moves within 10 feet of the sigil",
+					"entries": [
+						"All creatures within 120 feet of the sigil are affected by a {@spell weird} spell (DC 40 Will save)."
+					]
+				}
+			],
+			"reset": [
+				"1 day"
+			]
+		},
+		{
+			"name": "Thalassophobic Pool",
+			"source": "DA",
+			"page": 212,
+			"level": 12,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "trained"
+			},
+			"description": [
+				"The pool sucks in creatures that fall into it, making Archive them sink into its endless depths."
+			],
+			"disable": {
+				"entries": [
+					"DC 32 (master) {@skill Diplomacy} or {@skill Deception} to quell the fear and calm the pool or DC 35 {@skill Intimidation} to give the pool something worse to fear; three successes required."
+				]
+			},
+			"actions": [
+				{
+					"name": "Downpour",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature falls into the pool",
+					"entries": [
+						"More water pours forth from the chalice. Creatures in the pool become {@condition clumsy||clumsy 1}, and they can't decrease their {@condition clumsy} condition so long as they remain in the pool. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) Water from the chalice increases the depth of the water by 10 feet for each action. Each time this happens, creatures in the pool are pushed 10 feet down and take {@damage 1d6} bludgeoning damage. As the pool has no bottom, creatures in it can fall down indefinitely; they must {@action Swim} up to avoid drowning, but the water is especially choppy, so the {@skill Athletics} DC is 25. The pool never overflows. Each successful check to Disable reduces the pool's actions by 1, and once the pool is completely Disabled, the water becomes still and the {@skill Athletics} DC to {@action Swim} becomes 10."
+			],
+			"reset": [
+				"The trap resets once there are no moving creatures in it."
+			]
+		},
+		{
 			"name": "Acidic Needle Launcher",
 			"source": "AoA5",
 			"page": 54,
@@ -10418,7 +11109,7 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "Strike [one-action] shattering urn",
+					"name": "shattering urn",
 					"attack": 12,
 					"traits": [
 						"deadly 1d10"

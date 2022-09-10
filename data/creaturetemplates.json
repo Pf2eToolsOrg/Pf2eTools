@@ -1,6 +1,166 @@
 {
 	"creatureTemplate": [
 		{
+			"name": "Secret Society Member",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "DA",
+			"page": 80,
+			"entries": [
+				"You can turn an existing creature into a secret society member by completing the following steps. This adjustment is best applied to NPCs and other humanoid creatures rather than beasts or other monsters.",
+				"Increase the creature’s level by 1 and change its statistics as follows.",
+				{
+					"type": "list",
+					"items": [
+						"Increase AC, attack bonuses, DCs, the Perception modifier, saving throws, and skill modifiers by 1.",
+						"Increase Deception and Society to be primary skills for the creature’s new level.",
+						"Increase either Diplomacy or Intimidation to be a primary skill for the creature’s new level, and the other to be a secondary skill.",
+						"Increase damage with Strikes and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon’s Breath Weapon), increase the damage by 2 instead.",
+						"Increase HP by the amount listed on the table."
+					]
+				},
+				{
+					"type": "table",
+					"source": "DA",
+					"page": 80,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase"
+						],
+						[
+							"1 or lower",
+							"10"
+						],
+						[
+							"2–4",
+							"15"
+						],
+						[
+							"5–19",
+							"20"
+						],
+						[
+							"20+",
+							"30"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"abilities": [
+					{
+						"name": "Connected",
+						"entries": [
+							"The secret society member has numerous connections, especially within the broad band of social class from which the society recruits, but stretching further through friendships, extortion, and other forms of influence. Whenever encountering a character from a settlement where the secret society has influence, the secret society member can attempt a {@skill Society} check with an easy DC for the level of the encountered character if that character is a member of the demographic from which the secret society recruits, and a DC of hard or higher for other characters. On a success, the secret society member has a connection with that character they can use to ingratiate themself or push that character into acting the way the secret society member wants. This grants the secret society member a +2 circumstance bonus to {@action Make an Impression}, {@action Coerce}, {@action Demoralize}, or {@action Request}. On a critical success, the connection is especially strong or powerful and might even include a direct connection with the secret society. The circumstance bonus increases to +4. A secret society member can use this ability on a PC, though beyond {@action Demoralize}, the connection is more of a roleplay note informing their interactions with the PC."
+						]
+					},
+					{
+						"name": "Shibboleth",
+						"entries": [
+							"Secret society members can communicate with other members of their secret society using coded language that seems innocuous enough to go {@condition unnoticed}"
+						]
+					}
+				],
+				"entries": [
+					"All secret society members gain the following abilities."
+				]
+			},
+			"optAbilities": {
+				"entries": [
+					"A given secret society member gains two to three of the following abilities, as befit the nature of their secret society and their role within that society. For instance, a society among the downtrodden, planning a violent uprising, might grant the tag team ability, whereas a society within a wealthy aristocracy might be unwilling to get its hands dirty and grant the get out of jail ability instead."
+				],
+				"abilities": [
+					{
+						"name": "Get out of Jail",
+						"entries": [
+							"It's almost impossible to force the secret society member to face the consequences of their actions. Their society has fingers in the halls of law and justice, and where it can't sway the verdict, it can at least arrange the escape. When the secret society member would be brought to justice for their crimes, they attempt a {@skill Society} check against a simple DC, depending on the severity of their crimes and the exposure of the evidence to the public. This is typically an expert simple DC of 20.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"Not only is the secret society member exonerated but they also manage to stay clean in the eyes of the public. Those who attempted to bring them to justice are called in for harassment, libel, filing frivolous charges, or other trumped-up indictments."
+									],
+									"Success": [
+										"The secret society member is declared not guilty and exonerated of their crimes in the eyes of the law."
+									],
+									"Failure": [
+										"While the secret society member is initially declared guilty, they're released on a technicality, or manage to bribe or sneak their way out. While they're free, their reputation has been damaged."
+									],
+									"Critical Failure": [
+										"Justice prevails, and the secret society member can't escape their sentence. Their society likely cuts ties with them and might turn to more dramatic means to ensure they can't expose the society."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Not Today!",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "day"
+						},
+						"trigger": "The secret society member is reduced to 0 Hit Points",
+						"entries": [
+							"Whether it's a fellow society member waiting in the wings to spirit them away, a clever contraption, a contingent spell, or some other means, a secret society member always has an escape plan. Instead of being reduced to 0 Hit Points, the secret society member remains at 1 Hit Point. They gain temporary Hit Points equal to their level and then {@action Stride} twice. If they have the appropriate forms of movement, they can instead choose to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim}."
+						]
+					},
+					{
+						"name": "Prepared Diversion",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "hour"
+						},
+						"entries": [
+							"The secret society member has fellow members in all sorts of places, ready to make a distraction to help them duck from sight or make a quick attack against their foe. The secret society member either Creates a Diversion or Feints. If they {@action Create a Diversion}, it doesn't gain either the auditory, {@trait linguistic}, or {@trait manipulate} trait (since someone else has provided the diversion), and onlookers who have already been diverted by the secret society member don't receive a +4 circumstance bonus against the attempt. If they {@action Feint}, they don't need to be in melee reach of their target, and the benefit applies to both melee and ranged attacks against their target."
+						]
+					},
+					{
+						"name": "Prepared Trap",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "hour"
+						},
+						"entries": [
+							"The secret society member's agents trapped the area in advance, and the secret society member arms one such snare. The secret society member chooses an unoccupied space within 60 feet and activates a snare {@condition hidden} there; the snare can be any common snare of the secret society's member's level \u2013 2 or lower (minimum level 1). From this point on, creatures can trigger the snare as normal. During the activation, the secret society member must attempt a {@skill Deception} check against the {@skill Perception} DCs of creatures observing them; on a failure, those creatures realize where the secret society member activated the snare."
+						]
+					},
+					{
+						"name": "Skill Savvy",
+						"entries": [
+							"The secret society member has a few tricks most others do not. They gain two of the following skill feats: {@feat Charming Liar}, {@feat Courtly Graces}, {@feat Glean Contents}, {@feat Hobnobber}, {@feat Lengthy Diversion}, {@feat Lie to Me}, {@feat Quick Coercion}, or {@feat Streetwise}. If they are at least 2nd level, they can also choose from among the following: {@feat Discreet Inquiry}, {@feat Glad Hand}, or {@feat Lasting Coercion}. If they are at least 7th level, they can also choose {@feat Shameless Request} or {@feat Slippery Secrets}."
+						]
+					},
+					{
+						"name": "Tag Team",
+						"entries": [
+							"A secret society member works best with other members of the same society (whether they have the secret society member adjustment and this ability or not). Any creature is {@condition flat-footed} against a secret society member's melee attacks due to flanking as long as the enemy is within both the secret society member's reach and the reach of one allied creature that is a member of the same secret society. Against a creature within the reach of two or more allied creatures that are members of the same secret society, the secret society member's Strikes deal an additional {@damage 1d6} precision damage."
+						]
+					}
+				]
+			}
+		},
+		{
 			"name": "Vampire, Vetalarana",
 			"type": "Template",
 			"hasLore": true,

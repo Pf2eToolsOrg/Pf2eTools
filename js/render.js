@@ -3872,6 +3872,10 @@ Renderer.affliction = {
 		`);
 		if (affliction.usage) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Usage </strong>${renderer.render(affliction.usage)}</p>${Renderer.utils.getDividerDiv()}`)
 		renderer.recursiveRender(affliction.entries, renderStack, { pf2StatFix: true });
+		if (affliction.temptedCurse) {
+			renderStack.push(Renderer.utils.getDividerDiv());
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Tempted Curse</strong> ${renderer.render(affliction.temptedCurse)}</p>`);
+		}
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(affliction))
 
 		return renderStack.join("");
