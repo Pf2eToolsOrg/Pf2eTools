@@ -502,7 +502,11 @@
 			},
 			"targets": "1 creature",
 			"duration": {
-				"unit": "unknown",
+				"type": "timed",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				},
 				"entry": "until the start of your next turn"
 			},
 			"entries": [
@@ -699,7 +703,11 @@
 			},
 			"targets": "1 ally and 1 enemy",
 			"duration": {
-				"unit": "unknown",
+				"type": "timed",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				},
 				"entry": "until the start of your next turn"
 			},
 			"entries": [
@@ -862,7 +870,11 @@
 				]
 			},
 			"duration": {
-				"unit": "unknown",
+				"type": "timed",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				},
 				"entry": "until the start of your next turn"
 			},
 			"entries": [
@@ -2122,8 +2134,12 @@
 			},
 			"targets": "up to 6 creatures",
 			"duration": {
-				"unit": "unknown",
-				"entry": "until the end of your next turn"
+				"type": "timed",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				},
+				"entry": "until the start of your next turn"
 			},
 			"entries": [
 				"You pluck the time stream like a bow\u2014pull one string back, release, and watch a creature fly. All affected targets are {@condition quickened}. They can use the extra action only to {@action Step} or {@action Stride}."
@@ -2323,8 +2339,12 @@
 				"number": 100
 			},
 			"duration": {
-				"unit": "unknown",
-				"entry": "until the end of your next turn"
+				"type": "timed",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				},
+				"entry": "until the start of your next turn"
 			},
 			"entries": [
 				"You cast your spell, whisper your words of power, and find that an irii is already here\u2014indeed, they have always been here, and always were, and always will be. The temporal being occupies the space of a Medium creature and has a Speed of 60 feet and a fly Speed of 60 feet. When you Cast this Spell, choose whether it summons a fate irii or a fortune irii.",
@@ -2429,8 +2449,12 @@
 			},
 			"targets": "one willing ally",
 			"duration": {
-				"unit": "unknown",
-				"entry": "until the end of your next turn"
+				"type": "timed",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				},
+				"entry": "until the start of your next turn"
 			},
 			"entries": [
 				"You pull a fleeting duplicate of your ally from the recent past.",
