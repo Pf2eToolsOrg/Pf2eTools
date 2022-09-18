@@ -1,6 +1,275 @@
 {
 	"deity": [
 		{
+			"name": "Suyuddha",
+			"alias": [
+				"The Warrior Queen"
+			],
+			"source": "LOKL",
+			"page": 64,
+			"alignment": [
+				"ln"
+			],
+			"category": "Other Gods",
+			"edicts": [
+				"study the art of warfare and strategy",
+				"strive to take and maintain control of your situation",
+				"hunt and slay hounds of Tindalos"
+			],
+			"anathema": [
+				"let your emotions dictate your tactics",
+				"hunt felines for sport",
+				"permit others of your rank or lower to calculate tactics on your behalf"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"lg",
+					"ng",
+					"n",
+					"ln",
+					"le"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"harm",
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"int",
+						"wis"
+					],
+					"entry": "Intelligence or Wisdom"
+				},
+				"skill": [
+					"athletics"
+				],
+				"domains": [
+					"duty",
+					"perfection",
+					"trickery",
+					"zeal"
+				],
+				"alternateDomains": [
+					"swarm",
+					"travel"
+				],
+				"spells": {
+					"1": [
+						"mindlink"
+					],
+					"2": [
+						"mirror image"
+					],
+					"5": [
+						"strange geometry|apg"
+					]
+				},
+				"weapon": [
+					"whip"
+				],
+				"avatar": {
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": [
+						{
+							"name": "tekko-kagi",
+							"traits": [
+								"agile",
+								"disarm",
+								"finesse",
+								"parry",
+								"reach 15 feet",
+								"trip"
+							],
+							"damage": "6d4+6",
+							"damageType": "slashing"
+						}
+					],
+					"ranged": [
+						{
+							"name": "calculated countermeasures",
+							"traits": [
+								"versatile bludgeoning",
+								"versatile slashing"
+							],
+							"range": 60,
+							"damage": "6d4+3",
+							"damageType": "piercing"
+						}
+					]
+				}
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Gendowyn",
+			"alias": [
+				"Lady of The Fangwood"
+			],
+			"source": "LOKL",
+			"page": 55,
+			"alignment": [
+				"cn"
+			],
+			"category": "Other Gods",
+			"edicts": [
+				"preserve primal areas",
+				"destroy blighted fey and agents of Cyth-V’sug",
+				"protect those who placate you with offerings"
+			],
+			"anathema": [
+				"a parley or make a deal with fiends",
+				"forgive those who deceive you",
+				"harm an innocent child"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"cg",
+					"n",
+					"cn",
+					"ce"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"dex",
+						"cha"
+					],
+					"entry": "Dexterity or Charisma"
+				},
+				"skill": [
+					"stealth"
+				],
+				"domains": [
+					"earth",
+					"family",
+					"luck",
+					"nature"
+				],
+				"spells": {
+					"1": [
+						"summon fey"
+					],
+					"2": [
+						"barkskin"
+					],
+					"5": [
+						"tree stride"
+					]
+				},
+				"weapon": [
+					"whip"
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Arqueros",
+			"alias": [
+				"The Golden Bulwark"
+			],
+			"source": "LOKL",
+			"page": 53,
+			"alignment": [
+				"lg"
+			],
+			"category": "Other Gods",
+			"edicts": [
+				"protect those weaker than you",
+				"remain alert for danger",
+				"create, maintain, or patrol defenses"
+			],
+			"anathema": [
+				"abandon others while you retreat",
+				"engage in needless destruction or bloodshed",
+				"intentionally fall asleep or grow lax on watch"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"lg",
+					"ng",
+					"ln"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"str",
+						"con"
+					],
+					"entry": "Strength or Constitution"
+				},
+				"skill": [
+					"athletics"
+				],
+				"domains": [
+					"duty",
+					"might",
+					"protection",
+					"zeal"
+				],
+				"alternateDomains": [
+					"family"
+				],
+				"spells": {
+					"1": [
+						"endure|LOGM"
+					],
+					"4": [
+						"stoneskin (appears as gold)"
+					],
+					"5": [
+						"wall of stone"
+					]
+				},
+				"weapon": [
+					"spear"
+				],
+				"avatar": {
+					"speed": {
+						"walk": 60
+					},
+					"immune": [
+						"immobilized"
+					],
+					"shield": 15,
+					"melee": [
+						{
+							"name": "spear",
+							"traits": [
+								"reach 15 feet"
+							],
+							"damage": "6d8+6",
+							"damageType": "piercing"
+						}
+					],
+					"ranged": [
+						{
+							"name": "gaze of the stalwart guardian",
+							"traits": [
+								"visual"
+							],
+							"range": 60,
+							"damage": "6d6+3",
+							"damageType": "mental"
+						}
+					]
+				}
+			},
+			"hasLore": true
+		},
+		{
 			"name": "Abadar",
 			"alias": [
 				"The Master of the First Vault"
@@ -992,6 +1261,11 @@
 			"alias": [
 				"The Unyielding"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOKL|52"
+				]
+			},
 			"source": "LOGM",
 			"page": 54,
 			"alignment": [
@@ -3398,6 +3672,220 @@
 			"hasLore": true
 		},
 		{
+			"name": "Keepers of The Hearth",
+			"source": "LOKL",
+			"page": 68,
+			"alignment": [
+				"ng"
+			],
+			"category": "Pantheon",
+			"edicts": [
+				"protect those in need of help", "stand up to bullies", "teach communities to defend themselves"
+			],
+			"anathema": [
+				"prey on the weak, abuse power", "sow discord in a community"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"lg", "ng", "cg", "ln"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"str",
+						"wis"
+					],
+					"entry": "Strength or Wisdom"
+				},
+				"skill": [
+					"society"
+				],
+				"domains": [
+					"family", "freedom", "might", "protection"
+				],
+				"spells": {
+					"1": [
+						"mage armor"
+					],
+					"2": [
+						"enlarge"
+					],
+					"4": [
+						"stoneskin"
+					]
+				},
+				"weapon": [
+					"light hammer"
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Sorrow’S Sword",
+			"source": "LOKL",
+			"page": 69,
+			"alignment": [
+				"lg"
+			],
+			"category": "Pantheon",
+			"edicts": [
+				"avenge the wronged", "destroy evildoers", "lead the charge in battle", "remember your community’s history"
+			],
+			"anathema": [
+				"cower from combat", "forgive those who have committed grave offenses", "abandon or deceive allies"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"lg", "cg", "cn"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal",
+					"harm"
+				],
+				"ability": {
+					"abilities": [
+						"str",
+						"con"
+					],
+					"entry": "Strength or Constitution"
+				},
+				"skill": [
+					"intimidation"
+				],
+				"domains": [
+					"duty", "might", "sorrow", "zeal"
+				],
+				"alternateDomains": ["confidence", "fire"],
+				"spells": {
+					"1": [
+						"true strike"
+					],
+					"4": [
+						"fire shield"
+					],
+					"6": [
+						"disintegrate"
+					]
+				},
+				"weapon": [
+					"bastard sword"
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Gravelady’s Guard",
+			"source": "LOKL",
+			"page": 68,
+			"alignment": [
+				"n"
+			],
+			"category": "Pantheon",
+			"edicts": [
+				"destroy undead", "lay bodies to rest", "battle the evils of necromancy"
+			],
+			"anathema": [
+				"create undead", "practice necromancy", "desecrate a corpse", "cower from battle"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"ng", "cg", "ln", "n", "cn"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"con",
+						"wis"
+					],
+					"entry": "Constitution or Wisdom"
+				},
+				"skill": [
+					"athletics"
+				],
+				"domains": [
+					"confidence", "death", "fate", "protection"
+				],
+				"spells": {
+					"1": [
+						"magic missile"
+					],
+					"3": [
+						"ghostly weapon"
+					],
+					"6": [
+						"wall of force"
+					]
+				},
+				"weapon": [
+					"dagger"
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "The Endless Road",
+			"source": "LOKL",
+			"page": 68,
+			"alignment": [
+				"ng"
+			],
+			"category": "Pantheon",
+			"edicts": [
+				"see the world to find your place in it", "seek common bonds", "share community histories"
+			],
+			"anathema": [
+				"close your ears and heart to others", "do not seek to better yourself", "resist the call to explore new places"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"lg", "ng", "cg", "n", "cn"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"wis",
+						"cha"
+					],
+					"entry": "Wisdom or Charisma"
+				},
+				"skill": [
+					"society"
+				],
+				"domains": [
+					"confidence", "knowledge", "travel", "truth"
+				],
+				"spells": {
+					"1": [
+						"share lore|logm"
+					],
+					"4": [
+						"creation"
+					],
+					"7": [
+						"unfettered pack"
+					]
+				},
+				"weapon": [
+					"starknife"
+				]
+			},
+			"hasLore": true
+		},
+		{
 			"name": "Cosmic Caravan",
 			"source": "AV0",
 			"page": 5,
@@ -4867,6 +5355,11 @@
 			"alias": [
 				"Warrior's Ring"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOKL|54"
+				]
+			},
 			"source": "LOGM",
 			"page": 128,
 			"alignment": [
@@ -4923,7 +5416,32 @@
 				},
 				"weapon": [
 					"longsword"
-				]
+				],
+				"avatar": {
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": [
+						{
+							"name": "longsword",
+							"traits": [
+								"reach 15 feet",
+								"versatile piercing"
+							],
+							"damage": "6d8+6",
+							"damageType": "slashing"
+						}
+					],
+					"ranged": [
+						{
+							"name": "ring salvo",
+							"range": 120,
+							"damage": "6d6+3",
+							"damageType": "bludgeoning"
+						}
+					]
+				}
 			},
 			"hasLore": true
 		},
@@ -5180,7 +5698,42 @@
 				},
 				"weapon": [
 					"whip"
-				]
+				],
+				"avatar": {
+					"speed": {
+						"walk": 60,
+						"burrow": 30,
+						"climb": 30
+					},
+					"airWalk": true,
+					"melee": [
+						{
+							"name": "whip of lashing vines",
+							"traits": [
+								"disarm",
+								"finesse",
+								"nonlethal",
+								"reach 20 feet",
+								"trip"
+							],
+							"damage": "6d4+6",
+							"damageType": "slashing"
+						}
+					],
+					"ranged": [
+						{
+							"name": "nature’s wrath unbound",
+							"traits": [
+								"ranged trip",
+								"versatile piercing",
+								"versatile slashing"
+							],
+							"range": 60,
+							"damage": "6d6+3",
+							"damageType": "bludgeoning"
+						}
+					]
+				}
 			}
 		},
 		{
@@ -6874,7 +7427,8 @@
 			"page": 438,
 			"otherSources": {
 				"Expanded": [
-					"LOGM|28"
+					"LOGM|28",
+					"LOKL|56"
 				]
 			},
 			"core": true,
@@ -7575,8 +8129,13 @@
 		{
 			"name": "Kazutal",
 			"alias": [
-				"Duke of Thunder"
+				"Mother Jaguar"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOKL|57"
+				]
+			},
 			"source": "LOGM",
 			"page": 64,
 			"alignment": [
@@ -7990,11 +8549,17 @@
 		},
 		{
 			"name": "Kols",
+			"hasLore": true,
 			"alias": [
 				"Oath-Keeper"
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOKL|58"
+				]
+			},
 			"alignment": [
 				"ln"
 			],
@@ -8049,7 +8614,40 @@
 				},
 				"weapon": [
 					"light hammer"
-				]
+				],
+				"avatar": {
+					"speed": {
+						"walk": 50
+					},
+					"ignoreTerrain": true,
+					"immune": [
+						"immobilized"
+					],
+					"melee": [
+						{
+							"name": "decisive gavel",
+							"traits": [
+								"agile",
+								"reach 15 feet",
+								"thrown 40 feet"
+							],
+							"damage": "6d6+6",
+							"damageType": "bludgeoning"
+						}
+					],
+					"ranged": [
+						{
+							"name": "pronounce judgment",
+							"traits": [
+								"auditory",
+								"nonlethal"
+							],
+							"range": 120,
+							"damage": "6d6+3",
+							"damageType": "sonic"
+						}
+					]
+				}
 			}
 		},
 		{
@@ -9708,6 +10306,11 @@
 			"alias": [
 				"The Everbloom"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOKL|59"
+				]
+			},
 			"source": "LOGM",
 			"page": 66,
 			"alignment": [
@@ -11512,6 +12115,11 @@
 			"alias": [
 				"General of Vengeance"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOKL|61"
+				]
+			},
 			"source": "LOGM",
 			"page": 128,
 			"alignment": [
@@ -11567,7 +12175,38 @@
 				},
 				"weapon": [
 					"bastard sword"
-				]
+				],
+				"avatar": {
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [
+						{
+							"name": "bastard sword",
+							"traits": [
+								"reach 15 feet",
+								"silver",
+								"two-handed d12"
+							],
+							"damage": "5d8+6",
+							"damageType": "slashing",
+							"damage2": "1d8",
+							"damageType2": "fire"
+						}
+					],
+					"ranged": [
+						{
+							"name": "flames of righteous vengeance",
+							"range": 60,
+							"damage": "4d6+3",
+							"damageType": "fire",
+							"damage2": "1d6",
+							"damageType2": "fire splash",
+							"note": "The caster is immune to this splash damage"
+						}
+					]
+				}
 			},
 			"hasLore": true
 		},
@@ -12082,7 +12721,8 @@
 			"page": 439,
 			"otherSources": {
 				"Expanded": [
-					"LOGM|42"
+					"LOGM|42",
+					"LOKL|62"
 				]
 			},
 			"core": true,
@@ -12479,7 +13119,8 @@
 			"page": 440,
 			"otherSources": {
 				"Expanded": [
-					"LOGM|44"
+					"LOGM|44",
+					"LOKL|63"
 				]
 			},
 			"core": true,
@@ -14561,6 +15202,11 @@
 			"alias": [
 				"The Cardinal Martyr"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOKL|65"
+				]
+			},
 			"source": "LOGM",
 			"page": 128,
 			"alignment": [
@@ -14616,7 +15262,35 @@
 				},
 				"weapon": [
 					"dagger"
-				]
+				],
+				"avatar": {
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [
+						{
+							"name": "dagger",
+							"traits": [
+								"agile", "finesse", "reach 15 feet", "thrown 40 feet", "versatile slashing"
+							],
+							"damage": "5d4+6",
+							"damageType": "piercing",
+							"damage2": "1d6",
+							"damageType2": "persistent bleed damage"
+						}
+					],
+					"ranged": [
+						{
+							"name": "cry of the martyred",
+							"range": 120,
+							"damage": "5d6+3",
+							"damageType": "sonic",
+							"damage2": "1d6",
+							"damageType2": "persistent mental"
+						}
+					]
+				}
 			},
 			"hasLore": true
 		},
@@ -14701,7 +15375,7 @@
 			],
 			"category": "Mwangi Gods",
 			"info": [
-				"The god-king is the unquestioned ruler of Mzali. His sphere of influence encompasses not only the city, but aspirations for greater conquest of the Mwangi Expanse. He is also a god of exclusion and xenophobia, treating his own people as supreme and foreigners as dangerous influences that taint the purity of his city and its people."
+				"The god-king is the unquestioned ruler of Mzali. His sphere of influence encompasses not only the city but aspirations for greater conquest of the Mwangi Expanse. He is also a god of exclusion and xenophobia, treating his own people as supreme and foreigners as dangerous influences that taint the purity of his city and its people."
 			],
 			"edicts": [
 				"uphold {@place Mzali|lome}'s laws",

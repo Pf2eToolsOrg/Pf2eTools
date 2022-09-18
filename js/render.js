@@ -448,7 +448,7 @@ function Renderer () {
 				prefix: `<p class="pf2-other-source">`,
 				suffix: `</p>`,
 			}));
-			textStack[0] += Renderer.utils.getPageP(entry, { prefix: "\u2014", noReprints: true });
+			if (!entry.reference) textStack[0] += Renderer.utils.getPageP(entry, { prefix: "\u2014", noReprints: true });
 			textStack[0] += `</div>`;
 		}
 	};
