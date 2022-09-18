@@ -1,465 +1,465 @@
 {
-    "feat": [
-        {
-            "name": "Divine Healing",
-            "source": "LOKL",
-            "page": 74,
-            "level": 8,
-            "traits": [
-                "archetype"
-            ],
+	"feat": [
+		{
+			"name": "Divine Healing",
+			"source": "LOKL",
+			"page": 74,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, expert in religion, worship a deity with a divine font that grants heal",
-            "entries": [
-                "Although you aren't a proper champion of your faith, your deity still recognizes your efforts and provides you with a small divine ability to help others. You gain the {@spell lay on hands} devotion spell (Core Rulebook 387). You gain a focus pool of 1 Focus Point or increase the number of Focus Points in your focus pool by 1. You refill your focus pool during your daily preparations, and you regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to pray to your deity or perform service toward their causes. The full rules for focus spells are on page 300 of the Core Rulebook. You are trained in divine spell attack rolls and spell DCs. Your spellcasting ability is Charisma.",
-                "You must refrain from performing your deity's anathema or lose the ability to cast this spell until you atone."
-            ]
-        },
-        {
-            "name": "Interrupt Charge",
-            "source": "LOKL",
-            "page": 74,
-            "activity": {
-                "number": 1,
-                "unit": "reaction"
-            },
-            "level": 8,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, expert in religion, worship a deity with a divine font that grants heal",
+			"entries": [
+				"Although you aren't a proper champion of your faith, your deity still recognizes your efforts and provides you with a small divine ability to help others. You gain the {@spell lay on hands} devotion spell (Core Rulebook 387). You gain a focus pool of 1 Focus Point or increase the number of Focus Points in your focus pool by 1. You refill your focus pool during your daily preparations, and you regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to pray to your deity or perform service toward their causes. The full rules for focus spells are on page 300 of the Core Rulebook. You are trained in divine spell attack rolls and spell DCs. Your spellcasting ability is Charisma.",
+				"You must refrain from performing your deity's anathema or lose the ability to cast this spell until you atone."
+			]
+		},
+		{
+			"name": "Interrupt Charge",
+			"source": "LOKL",
+			"page": 74,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
-            "trigger": "A foe within reach attempts to move away from you.",
-            "requirements": "You have a hand free.",
-            "entries": [
-                "You attempt to snag the foe before they run away.",
-                "Attempt an {@skill Athletics} check against the higher of the triggering creature's {@skill Athletics} DC or Fortitude DC.",
-                {
-                    "type": "successDegree",
-                    "entries": {
-                        "Critical Success": [
-                            "You disrupt the movement."
-                        ],
-                        "Success": [
-                            "You are able to slow the triggering creature down. It takes a \u201310-foot circumstance penalty to its Speed for the rest of its triggering movement. This penalty might cause the triggering creature's movement to end immediately based on its affected Speed."
-                        ],
-                        "Failure": [
-                            "As success, but the creature instead takes a \u20135-foot circumstance penalty to its Speed."
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Phalanx Formation",
-            "source": "LOKL",
-            "page": 74,
-            "level": 8,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"trigger": "A foe within reach attempts to move away from you.",
+			"requirements": "You have a hand free.",
+			"entries": [
+				"You attempt to snag the foe before they run away.",
+				"Attempt an {@skill Athletics} check against the higher of the triggering creature's {@skill Athletics} DC or Fortitude DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"You disrupt the movement."
+						],
+						"Success": [
+							"You are able to slow the triggering creature down. It takes a \u201310-foot circumstance penalty to its Speed for the rest of its triggering movement. This penalty might cause the triggering creature's movement to end immediately based on its affected Speed."
+						],
+						"Failure": [
+							"As success, but the creature instead takes a \u20135-foot circumstance penalty to its Speed."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Phalanx Formation",
+			"source": "LOKL",
+			"page": 74,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
-            "entries": [
-                "You know how to clear a line of fire for your allies. You don't provide lesser cover to enemies against your allies' attacks."
-            ]
-        },
-        {
-            "name": "Emissary of Peace",
-            "source": "LOKL",
-            "page": 74,
-            "activity": {
-                "number": 3,
-                "unit": "action"
-            },
-            "level": 10,
-            "traits": [
-                "archetype",
-                "skill"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"entries": [
+				"You know how to clear a line of fire for your allies. You don't provide lesser cover to enemies against your allies' attacks."
+			]
+		},
+		{
+			"name": "Emissary of Peace",
+			"source": "LOKL",
+			"page": 74,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"archetype",
+				"skill"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, master in {@skill Diplomacy}",
-            "entries": [
-                "Even when bloodshed is inevitable, you would rather see your foes surrender. You attempt a {@skill Diplomacy} check to {@action Make an Impression} against a single foe whose Hit Points are at less than half of their maximum value, followed by an immediate {@action Request} to convince that creature to cease fighting. You take a \u20135 penalty to your {@skill Diplomacy} check. The GM sets the DC of the {@action Request} based on the circumstances; it's generally at least a very hard DC for the creature's level. Some creatures might simply refuse, and those who agree to parley might find your arguments lacking and start fighting again."
-            ]
-        },
-        {
-            "name": "Instant Armor",
-            "source": "LOKL",
-            "page": 75,
-            "level": 10,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, master in {@skill Diplomacy}",
+			"entries": [
+				"Even when bloodshed is inevitable, you would rather see your foes surrender. You attempt a {@skill Diplomacy} check to {@action Make an Impression} against a single foe whose Hit Points are at less than half of their maximum value, followed by an immediate {@action Request} to convince that creature to cease fighting. You take a \u20135 penalty to your {@skill Diplomacy} check. The GM sets the DC of the {@action Request} based on the circumstances; it's generally at least a very hard DC for the creature's level. Some creatures might simply refuse, and those who agree to parley might find your arguments lacking and start fighting again."
+			]
+		},
+		{
+			"name": "Instant Armor",
+			"source": "LOKL",
+			"page": 75,
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
-            "entries": [
-                "A knight is nothing without their armor, and you know how to keep yours ready. You can perform a 10-minute ritual, which has the {@trait conjuration} and {@trait magical} traits, to divert a set of heavy armor you are wearing into an extradimensional space connected to you. While the armor is in this space, you can use a three-action activity, which has the concentrate, {@trait conjuration}, and {@trait teleportation} traits, to phase the armor back and instantly don it. The armor automatically phases away if you don another set of armor, if you become {@condition unconscious}, or if you die. If you are incapable of wearing the armor when it phases back, it appears in your square instead."
-            ]
-        },
-        {
-            "name": "Lead the Way",
-            "source": "LOKL",
-            "page": 75,
-            "activity": {
-                "number": 2,
-                "unit": "action"
-            },
-            "level": 10,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"entries": [
+				"A knight is nothing without their armor, and you know how to keep yours ready. You can perform a 10-minute ritual, which has the {@trait conjuration} and {@trait magical} traits, to divert a set of heavy armor you are wearing into an extradimensional space connected to you. While the armor is in this space, you can use a three-action activity, which has the concentrate, {@trait conjuration}, and {@trait teleportation} traits, to phase the armor back and instantly don it. The armor automatically phases away if you don another set of armor, if you become {@condition unconscious}, or if you die. If you are incapable of wearing the armor when it phases back, it appears in your square instead."
+			]
+		},
+		{
+			"name": "Lead the Way",
+			"source": "LOKL",
+			"page": 75,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
-            "entries": [
-                "You move forward, creating an opening for others to follow. Choose one adjacent ally who has a reaction available. You {@action Stride}, and that ally can use their reaction to immediately {@action Stride}. The ally must end their {@action Stride} adjacent to you. If the ally Strides in this way, they don't trigger reactions that are normally triggered by movement. You, however, still trigger those reactions normally."
-            ]
-        },
-        {
-            "name": "Guarded Advance",
-            "source": "LOKL",
-            "page": 75,
-            "activity": {
-                "number": 1,
-                "unit": "action"
-            },
-            "level": 12,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"entries": [
+				"You move forward, creating an opening for others to follow. Choose one adjacent ally who has a reaction available. You {@action Stride}, and that ally can use their reaction to immediately {@action Stride}. The ally must end their {@action Stride} adjacent to you. If the ally Strides in this way, they don't trigger reactions that are normally triggered by movement. You, however, still trigger those reactions normally."
+			]
+		},
+		{
+			"name": "Guarded Advance",
+			"source": "LOKL",
+			"page": 75,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
-            "entries": [
-                "You slowly advance on the battlefield, taking utmost caution. You either {@action Step} and {@action Raise a Shield} or {@action Raise a Shield} and {@action Step}."
-            ]
-        },
-        {
-            "name": "Vigilant Benediction",
-            "source": "LOKL",
-            "page": 75,
-            "level": 12,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"entries": [
+				"You slowly advance on the battlefield, taking utmost caution. You either {@action Step} and {@action Raise a Shield} or {@action Raise a Shield} and {@action Step}."
+			]
+		},
+		{
+			"name": "Vigilant Benediction",
+			"source": "LOKL",
+			"page": 75,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, alignment permitted by the chosen deity",
-            "entries": [
-                "Unwilling to be outdone by the Crimson Reclaimers and their oath, you've petitioned the gods of good for a sliver of divine magic. Choose one of the following deities whose requirements you meet\u2014for the Any Deity option below, you can select any of the deities with an entry on pages 52\u201365 or a deity the GM deems appropriate\u2014and one of the listed spells. You can Cast that Spell once per day as a 4th-level divine innate spell, and you become trained in divine spell DCs and divine spell attack rolls. At 14th level, the spell heightens to 5th level; at 16th level, the spell heightens to 6th level. Once you've selected a deity and a spell, you can't change this selection. You don't need to worship the deity as your patron deity, as they are willing to grant this boon on behalf of your worthy cause. You must refrain from performing your deity's anathema or lose the ability to cast this spell until you atone.",
-                {
-                    "type": "list",
-                    "items": [
-                        "Any Deity: freedom of movement, remove curse, resist energy, spell immunity, status",
-                        "{@deity Gendowyn|LOGM}: barkskin",
-                        "{@deity Iomedae}: fire shield",
-                        "{@deity Irori}: stoneskin",
-                        "{@deity Kazutal|LOGM}: mage armor, stoneskin",
-                        "{@deity Milani|LOGM}: fire shield, mage armor",
-                        "{@deity Ragathiel|LOGM}: fire shield",
-                        "{@deity Sarenrae}: wall of fire"
-                    ]
-                }
-            ],
-            "special": [
-                "You can select this feat a second time at 14th level, gaining a second spell to cast once per day from your chosen deity's list or the Any Deity list, and you become an expert in divine spell DCs and divine spell attack rolls. You can select this feat a third time at 18th level. If you do, you gain a third spell to cast once per day from your chosen deity's list or the Any Deity list, and all three spells are heightened to 7th level."
-            ]
-        },
-        {
-            "name": "Instinctual Interception",
-            "source": "LOKL",
-            "page": 75,
-            "level": 14,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, alignment permitted by the chosen deity",
+			"entries": [
+				"Unwilling to be outdone by the Crimson Reclaimers and their oath, you've petitioned the gods of good for a sliver of divine magic. Choose one of the following deities whose requirements you meet\u2014for the Any Deity option below, you can select any of the deities with an entry on pages 52\u201365 or a deity the GM deems appropriate\u2014and one of the listed spells. You can Cast that Spell once per day as a 4th-level divine innate spell, and you become trained in divine spell DCs and divine spell attack rolls. At 14th level, the spell heightens to 5th level; at 16th level, the spell heightens to 6th level. Once you've selected a deity and a spell, you can't change this selection. You don't need to worship the deity as your patron deity, as they are willing to grant this boon on behalf of your worthy cause. You must refrain from performing your deity's anathema or lose the ability to cast this spell until you atone.",
+				{
+					"type": "list",
+					"items": [
+						"Any Deity: freedom of movement, remove curse, resist energy, spell immunity, status",
+						"{@deity Gendowyn|LOGM}: barkskin",
+						"{@deity Iomedae}: fire shield",
+						"{@deity Irori}: stoneskin",
+						"{@deity Kazutal|LOGM}: mage armor, stoneskin",
+						"{@deity Milani|LOGM}: fire shield, mage armor",
+						"{@deity Ragathiel|LOGM}: fire shield",
+						"{@deity Sarenrae}: wall of fire"
+					]
+				}
+			],
+			"special": [
+				"You can select this feat a second time at 14th level, gaining a second spell to cast once per day from your chosen deity's list or the Any Deity list, and you become an expert in divine spell DCs and divine spell attack rolls. You can select this feat a third time at 18th level. If you do, you gain a third spell to cast once per day from your chosen deity's list or the Any Deity list, and all three spells are heightened to 7th level."
+			]
+		},
+		{
+			"name": "Instinctual Interception",
+			"source": "LOKL",
+			"page": 75,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, Interrupt Charge",
-            "entries": [
-                "You react to movement with hardly a thought, seeming constantly poised to spring. At the start of each of your turns, you gain an additional reaction that you can use only to Interrupt Charge."
-            ]
-        },
-        {
-            "name": "Keep Up the Good Fight",
-            "source": "LOKL",
-            "page": 75,
-            "activity": {
-                "number": 1,
-                "unit": "reaction"
-            },
-            "level": 14,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, Interrupt Charge",
+			"entries": [
+				"You react to movement with hardly a thought, seeming constantly poised to spring. At the start of each of your turns, you gain an additional reaction that you can use only to Interrupt Charge."
+			]
+		},
+		{
+			"name": "Keep Up the Good Fight",
+			"source": "LOKL",
+			"page": 75,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
-            "frequency": {
-                "freq": 1,
-                "unit": "hour"
-            },
-            "trigger": "A foe's {@action Strike} reduces you to 0 Hit Points.",
-            "requirements": "You had more than 1 Hit Point before the triggering {@action Strike}, and the {@action Strike} wouldn't kill you.",
-            "entries": [
-                "Your devotion to helping others and doing good keeps you going, even against insurmountable odds. Instead of being knocked out, you are reduced to 1 Hit Point, gain a number of temporary Hit Points equal to your level for 1 round, and increase your {@condition wounded} value by 1."
-            ]
-        },
-        {
-            "name": "Empyreal Aura",
-            "source": "LOKL",
-            "page": 75,
-            "level": 20,
-            "traits": [
-                "archetype",
-                "aura"
-            ],
-            "prerequisites": "Knight Vigilant, legendary in {@skill Religion}",
-            "entries": [
-                "As an ultimate foe of evil and protector of the innocent, your very presence is a ward against evil. Each evil creature within 30 feet of you at the end of your turn must succeed at a Will save against the higher of your class DC or spell DC or else become {@condition slowed||slowed 1} ({@condition slowed||slowed 2} on a critical failure). On a successful save, the creature is temporarily immune for 10 minutes."
-            ]
-        },
-        {
-            "name": "Tower Shield Mastery",
-            "source": "LOKL",
-            "page": 75,
-            "level": 20,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"frequency": {
+				"freq": 1,
+				"unit": "hour"
+			},
+			"trigger": "A foe's {@action Strike} reduces you to 0 Hit Points.",
+			"requirements": "You had more than 1 Hit Point before the triggering {@action Strike}, and the {@action Strike} wouldn't kill you.",
+			"entries": [
+				"Your devotion to helping others and doing good keeps you going, even against insurmountable odds. Instead of being knocked out, you are reduced to 1 Hit Point, gain a number of temporary Hit Points equal to your level for 1 round, and increase your {@condition wounded} value by 1."
+			]
+		},
+		{
+			"name": "Empyreal Aura",
+			"source": "LOKL",
+			"page": 75,
+			"level": 20,
+			"traits": [
+				"archetype",
+				"aura"
+			],
+			"prerequisites": "Knight Vigilant, legendary in {@skill Religion}",
+			"entries": [
+				"As an ultimate foe of evil and protector of the innocent, your very presence is a ward against evil. Each evil creature within 30 feet of you at the end of your turn must succeed at a Will save against the higher of your class DC or spell DC or else become {@condition slowed||slowed 1} ({@condition slowed||slowed 2} on a critical failure). On a successful save, the creature is temporarily immune for 10 minutes."
+			]
+		},
+		{
+			"name": "Tower Shield Mastery",
+			"source": "LOKL",
+			"page": 75,
+			"level": 20,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Vigilant"
 				]
 			},
-            "prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
-            "entries": [
-                "You've learned how to maximize the defensive abilities of your tower shield. You are constantly {@condition quickened} and can use the additional action only to {@action Take Cover} behind your tower shield after you have Raised it."
-            ]
-        },
-        {
-            "name": "Ashen Veil",
-            "source": "LOKL",
-            "page": 76,
-            "activity": {
-                "number": 3,
-                "unit": "action"
-            },
-            "level": 7,
-            "traits": [
-                "archetype",
-                "manipulate",
-                "skill"
-            ],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"entries": [
+				"You've learned how to maximize the defensive abilities of your tower shield. You are constantly {@condition quickened} and can use the additional action only to {@action Take Cover} behind your tower shield after you have Raised it."
+			]
+		},
+		{
+			"name": "Ashen Veil",
+			"source": "LOKL",
+			"page": 76,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"level": 7,
+			"traits": [
+				"archetype",
+				"manipulate",
+				"skill"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, expert in {@skill Religion}, master in {@skill Stealth}",
-            "entries": [
-                "By smearing ash or tainted earth over your skin and armor, you shroud yourself from the dead. You become {@condition concealed} to undead using vision or lifesense, allowing you to {@action Hide} and {@action Sneak} without other sources of cover or concealment. This effect lasts only as long as you continue to take no actions other than to {@action Hide}, {@action Sneak}, or other surreptitious actions. The GM determines which actions end the effect, but attacking, casting spells, activating items, and the like always do."
-            ]
-        },
-        {
-            "name": "Voice Cold as Death",
-            "source": "LOKL",
-            "page": 76,
-            "activity": {
-                "number": 1,
-                "unit": "action"
-            },
-            "level": 7,
-            "traits": [
-                "archetype",
-                "auditory",
-                "concentrate",
-                "emotion",
-                "fear",
-                "mental",
-                "skill"
-            ],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, expert in {@skill Religion}, master in {@skill Stealth}",
+			"entries": [
+				"By smearing ash or tainted earth over your skin and armor, you shroud yourself from the dead. You become {@condition concealed} to undead using vision or lifesense, allowing you to {@action Hide} and {@action Sneak} without other sources of cover or concealment. This effect lasts only as long as you continue to take no actions other than to {@action Hide}, {@action Sneak}, or other surreptitious actions. The GM determines which actions end the effect, but attacking, casting spells, activating items, and the like always do."
+			]
+		},
+		{
+			"name": "Voice Cold as Death",
+			"source": "LOKL",
+			"page": 76,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 7,
+			"traits": [
+				"archetype",
+				"auditory",
+				"concentrate",
+				"emotion",
+				"fear",
+				"mental",
+				"skill"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, master in {@skill Intimidation}",
-            "requirements": "You are not {@condition fatigued}.",
-            "entries": [
-                "Channeling the energy of the Crimson Oath into your voice, you pronounce a threat in a tone so icy it freezes the blood. Attempt an {@skill Intimidation} check to {@action Demoralize}; you don't suffer a penalty if the target doesn't understand the language you're speaking, but this otherwise functions as normal. You can't use Intimidating Glare or any other effect that would cause your {@action Demoralize} attempt to lose the {@trait auditory} trait as part of using this feat. If you critically succeed at your {@skill Intimidation} check, the target becomes {@condition stunned||stunned 1}, or {@condition stunned||stunned 2} if the target is undead. After using this feat, you are {@condition fatigued} until the end of your next turn, and you can't use this feat again until the end of your next turn."
-            ]
-        },
-        {
-            "name": "Hilt Hammer",
-            "source": "LOKL",
-            "page": 76,
-            "level": 10,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, master in {@skill Intimidation}",
+			"requirements": "You are not {@condition fatigued}.",
+			"entries": [
+				"Channeling the energy of the Crimson Oath into your voice, you pronounce a threat in a tone so icy it freezes the blood. Attempt an {@skill Intimidation} check to {@action Demoralize}; you don't suffer a penalty if the target doesn't understand the language you're speaking, but this otherwise functions as normal. You can't use Intimidating Glare or any other effect that would cause your {@action Demoralize} attempt to lose the {@trait auditory} trait as part of using this feat. If you critically succeed at your {@skill Intimidation} check, the target becomes {@condition stunned||stunned 1}, or {@condition stunned||stunned 2} if the target is undead. After using this feat, you are {@condition fatigued} until the end of your next turn, and you can't use this feat again until the end of your next turn."
+			]
+		},
+		{
+			"name": "Hilt Hammer",
+			"source": "LOKL",
+			"page": 76,
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}",
-            "entries": [
-                "You know how to turn any weapon into a bone-crushing implement of skeletal destruction. Melee weapons you wield gain the versatile B trait. You can use the weapon only to deal bludgeoning damage when making melee attacks. At the GM's discretion, specific weapons might not be able to gain the versatile B trait."
-            ]
-        },
-        {
-            "name": "For Love, for Lightning",
-            "source": "LOKL",
-            "page": 76,
-            "level": 12,
-            "traits": [
-                "rare",
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}",
+			"entries": [
+				"You know how to turn any weapon into a bone-crushing implement of skeletal destruction. Melee weapons you wield gain the versatile B trait. You can use the weapon only to deal bludgeoning damage when making melee attacks. At the GM's discretion, specific weapons might not be able to gain the versatile B trait."
+			]
+		},
+		{
+			"name": "For Love, for Lightning",
+			"source": "LOKL",
+			"page": 76,
+			"level": 12,
+			"traits": [
+				"rare",
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}",
-            "access": "A character who performs a specialized mission for Clarethe Iomedar has access to this option.",
-            "entries": [
-                "Rumors suggest this technique was pioneered by knights who undertook missions for Clarethe Iomedar at the half-moon, but many Crimson Reclaimers have since mastered it. You learn the for love, for lightning focus spell (see below). If you don't already have one, you gain a focus pool of 1 Focus Point, which you can regain using the {@action Refocus} activity to recite the Crimson Oath and meditate on its teachings; if you already have a focus pool, increase the number of Focus Points in your focus pool by 1. Your knight reclaimant focus spells are divine spells; when you gain this feat, you become trained in divine spell attacks and spell DCs. Charisma is the key spellcasting ability for knight reclaimant focus spells."
-            ]
-        },
-        {
-            "name": "Reclaimant Plea",
-            "source": "LOKL",
-            "page": 76,
-            "level": 12,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}",
+			"access": "A character who performs a specialized mission for Clarethe Iomedar has access to this option.",
+			"entries": [
+				"Rumors suggest this technique was pioneered by knights who undertook missions for Clarethe Iomedar at the half-moon, but many Crimson Reclaimers have since mastered it. You learn the for love, for lightning focus spell (see below). If you don't already have one, you gain a focus pool of 1 Focus Point, which you can regain using the {@action Refocus} activity to recite the Crimson Oath and meditate on its teachings; if you already have a focus pool, increase the number of Focus Points in your focus pool by 1. Your knight reclaimant focus spells are divine spells; when you gain this feat, you become trained in divine spell attacks and spell DCs. Charisma is the key spellcasting ability for knight reclaimant focus spells."
+			]
+		},
+		{
+			"name": "Reclaimant Plea",
+			"source": "LOKL",
+			"page": 76,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, ability to cast divine spells",
-            "entries": [
-                "You call on the power of the Crimson Oath to gain magical aid. Choose one of the following spells: {@spell air walk}, {@spell dimensional anchor}, {@spell freedom of movement}, {@spell invisibility}, {@spell remove curse}, {@spell searing light}. You can Cast that Spell once per day as a 4th-level divine innate spell. At 14th level, the spell heightens to 5th level, and at 16th level, the spell heightens to 6th level. If you anger the mysterious source of the Crimson Oath's power, you lose the ability to cast the spell until you atone."
-            ],
-            "special": [
-                "You can select this feat a second time at 14th level, gaining a second spell from the list above, death ward, or flame strike, which you can cast once per day; you also become an expert in divine spell DCs and divine spell attack rolls. You can select this feat a third time at 18th level, gaining either a third spell from the list above, death ward, flame strike, or sunburst, which you can cast once per day; additionally, all three spells from this feat heighten to 7th level, and you become a master of divine spell attacks and spell DCs."
-            ]
-        },
-        {
-            "name": "Shepherd of Desolation",
-            "source": "LOKL",
-            "page": 76,
-            "level": 12,
-            "traits": [
-                "archetype",
-                "aura"
-            ],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, ability to cast divine spells",
+			"entries": [
+				"You call on the power of the Crimson Oath to gain magical aid. Choose one of the following spells: {@spell air walk}, {@spell dimensional anchor}, {@spell freedom of movement}, {@spell invisibility}, {@spell remove curse}, {@spell searing light}. You can Cast that Spell once per day as a 4th-level divine innate spell. At 14th level, the spell heightens to 5th level, and at 16th level, the spell heightens to 6th level. If you anger the mysterious source of the Crimson Oath's power, you lose the ability to cast the spell until you atone."
+			],
+			"special": [
+				"You can select this feat a second time at 14th level, gaining a second spell from the list above, death ward, or flame strike, which you can cast once per day; you also become an expert in divine spell DCs and divine spell attack rolls. You can select this feat a third time at 18th level, gaining either a third spell from the list above, death ward, flame strike, or sunburst, which you can cast once per day; additionally, all three spells from this feat heighten to 7th level, and you become a master of divine spell attacks and spell DCs."
+			]
+		},
+		{
+			"name": "Shepherd of Desolation",
+			"source": "LOKL",
+			"page": 76,
+			"level": 12,
+			"traits": [
+				"archetype",
+				"aura"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, {@feat Survivor of Desolation|LOCG}",
-            "entries": [
-                "You know how to keep others alive in the Gravelands' murkiest shadows. Allies within 10 feet of you gain the benefit of Survivor of Desolation. If you are a champion, this aura is a champion aura, even though you gained it from Knight Reclaimant instead of a champion feat or feature."
-            ]
-        },
-        {
-            "name": "Crimson Oath Devotion",
-            "source": "LOKL",
-            "page": 76,
-            "level": 14,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, {@feat Survivor of Desolation|LOCG}",
+			"entries": [
+				"You know how to keep others alive in the Gravelands' murkiest shadows. Allies within 10 feet of you gain the benefit of Survivor of Desolation. If you are a champion, this aura is a champion aura, even though you gained it from Knight Reclaimant instead of a champion feat or feature."
+			]
+		},
+		{
+			"name": "Crimson Oath Devotion",
+			"source": "LOKL",
+			"page": 76,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, ability to cast focus spells",
-            "entries": [
-                "You've made the Crimson Oath a part of yourself; you mumble it in your sleep and recite it under your breath as you march.",
-                "You become an expert in divine spell attacks and spell DCs. If you have spent at least 2 Focus Points since the last time you Refocused, you recover 2 Focus Points when you {@action Refocus} instead of 1."
-            ]
-        },
-        {
-            "name": "The Tyrant Falls!",
-            "source": "LOKL",
-            "page": 76,
-            "activity": {
-                "number": 2,
-                "unit": "action"
-            },
-            "level": 20,
-            "traits": [
-                "archetype"
-            ],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, ability to cast focus spells",
+			"entries": [
+				"You've made the Crimson Oath a part of yourself; you mumble it in your sleep and recite it under your breath as you march.",
+				"You become an expert in divine spell attacks and spell DCs. If you have spent at least 2 Focus Points since the last time you Refocused, you recover 2 Focus Points when you {@action Refocus} instead of 1."
+			]
+		},
+		{
+			"name": "The Tyrant Falls!",
+			"source": "LOKL",
+			"page": 76,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 20,
+			"traits": [
+				"archetype"
+			],
 			"featType": {
 				"archetype": [
 					"Knight Reclaimant"
 				]
 			},
-            "prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, Invoke the Crimson Oath (Character Guide 95)",
-            "frequency": {
-                "freq": 1,
-                "unit": "day"
-            },
-            "entries": [
-                "You've reached the apex of the Crimson Oath's power.",
-                "The oath's power is overwhelming\u2014too much for a mortal frame\u2014but victory is worth any price. When you use this feat, you cry out the final line of the Crimson Oath, unleashing unbridled power for 1 minute. You can {@action Dismiss} this effect. While this effect is active, you gain the following effects:",
-                {
-                    "type": "list",
-                    "items": [
-                        "At the beginning of each of your turns, you become {@condition drained||drained 1} or increase the value of your {@condition drained} condition by 1 if you are already {@condition drained}. You can't reduce the value of your {@condition drained} condition or remove it while The Tyrant Falls! is active. While The Tyrant Falls! is active, your {@condition drained} condition does not penalize your Fortitude save.",
-                        "You can cast {@spell invoke the Crimson Oath|LOCG} (Character Guide 90) at will without expending Focus Points. When you do, increase the area to a 40-foot cone.",
-                        "You gain resistance to all damage equal to half your character level.",
-                        "Any melee weapon you wield gains the {@trait reach} trait if it didn't already possess it, or increases its reach by 5 feet if it already has the {@trait reach} trait. Your {@action Strike||Strikes} with that weapon deal an extra {@damage 2d6} positive or negative damage (whichever is more effective against the target)."
-                    ]
-                }
-            ]
-        },
-        {
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, Invoke the Crimson Oath (Character Guide 95)",
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"You've reached the apex of the Crimson Oath's power.",
+				"The oath's power is overwhelming\u2014too much for a mortal frame\u2014but victory is worth any price. When you use this feat, you cry out the final line of the Crimson Oath, unleashing unbridled power for 1 minute. You can {@action Dismiss} this effect. While this effect is active, you gain the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"At the beginning of each of your turns, you become {@condition drained||drained 1} or increase the value of your {@condition drained} condition by 1 if you are already {@condition drained}. You can't reduce the value of your {@condition drained} condition or remove it while The Tyrant Falls! is active. While The Tyrant Falls! is active, your {@condition drained} condition does not penalize your Fortitude save.",
+						"You can cast {@spell invoke the Crimson Oath|LOCG} (Character Guide 90) at will without expending Focus Points. When you do, increase the area to a 40-foot cone.",
+						"You gain resistance to all damage equal to half your character level.",
+						"Any melee weapon you wield gains the {@trait reach} trait if it didn't already possess it, or increases its reach by 5 feet if it already has the {@trait reach} trait. Your {@action Strike||Strikes} with that weapon deal an extra {@damage 2d6} positive or negative damage (whichever is more effective against the target)."
+					]
+				}
+			]
+		},
+		{
 			"name": "Always Ready",
 			"source": "LOKL",
 			"page": 78,
@@ -760,7 +760,7 @@
 				"Through repeated exposure, you've trained to resist the damage wrought by undead. Your resistance to negative damage also applies to damage dealt by the attacks and abilities of undead creatures, regardless of damage type."
 			]
 		},
-        {
+		{
 			"name": "Angel of Vindication",
 			"source": "LOKL",
 			"page": 80,
@@ -780,7 +780,7 @@
 				"To aid with your mission of destroying undead, you've specialized in techniques to destroy them, much as other assassins learn to kill the living. When you {@action Strike} a {@condition flat-footed} undead foe with a weapon that has the backstabber weapon trait, you deal 3 extra precision damage instead of 1. If the weapon is a +3 weapon, you deal 6 extra precision damage instead of 2. If you have the Angel of Death feat, your attacks also instantly destroy undead at 0 Hit Points, and attempts for the undead to rejuvenate\u2014such as via a lich's soul cage or a ghost's rejuvenation ability\u2014fail unless the effect's counteract level is higher than half your level when you killed the creature (rounded up), or originates from an artifact or deity. Finally, if you have the Assassinate feat and an undead mark critically fails its save against your Assassinate, it is destroyed."
 			]
 		},
-        {
+		{
 			"name": "Eclipsed Vitality",
 			"source": "LOKL",
 			"page": 80,
@@ -800,7 +800,7 @@
 				"You shroud yourself in ashes that hide the vital essence sought by life-sensing undead. You're always taking precautions when {@action Avoid Notice||Avoiding Notice}, Hiding, and Sneaking to foil lifesense, and you're {@condition concealed} to any creature using only precise lifesense to observe you."
 			]
 		},
-        {
+		{
 			"name": "Gravelands Herbalist",
 			"source": "LOKL",
 			"page": 80,
@@ -949,8 +949,8 @@
 			},
 			"prerequisites": "{@feat Cavalier's Banner|APG}, {@feat Knight Vigilant Dedication|LOCG}",
 			"entries": [
-                "Your banner makes it harder for your foes to push your allies around and encourages your allies to protect the innocent. Allies benefiting from your Cavalier's Banner feat also gain a +1 circumstance bonus to their Fortitude and Reflex DCs against attempts to {@action Disarm}, {@action Grapple}, {@action Shove}, and {@action Trip}. Each benefited ally also gains a +1 status bonus to attack rolls against any creature that has dealt damage to an innocent of a lower level than that ally within the last round; summoned creatures, companions, or any creatures you or your allies put into danger on purpose to attempt to gain this bonus don't count."
-            ]
+				"Your banner makes it harder for your foes to push your allies around and encourages your allies to protect the innocent. Allies benefiting from your Cavalier's Banner feat also gain a +1 circumstance bonus to their Fortitude and Reflex DCs against attempts to {@action Disarm}, {@action Grapple}, {@action Shove}, and {@action Trip}. Each benefited ally also gains a +1 status bonus to attack rolls against any creature that has dealt damage to an innocent of a lower level than that ally within the last round; summoned creatures, companions, or any creatures you or your allies put into danger on purpose to attempt to gain this bonus don't count."
+			]
 		},
 		{
 			"name": "Wave the Flag",
@@ -979,10 +979,10 @@
 				"You wave your banner, inspiring allies to throw off the shackles of fear. Each ally presently benefiting from your Cavalier's Banner feat reduces their current {@condition frightened} condition by 1 and can choose to immediately attempt a new saving throw against any one {@trait mental} effect currently affecting them. Regardless of the result, any ally that attempts a save is temporarily immune to Wave the Flag for 10 minutes."
 			]
 		},
-        {
+		{
 			"name": "Agile Shield Grip",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 82,
 			"activity": {
 				"number": 1,
@@ -1002,7 +1002,7 @@
 		{
 			"name": "Devoted Guardian",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 82,
 			"activity": {
 				"number": 1,
@@ -1022,7 +1022,7 @@
 		{
 			"name": "Reliable Squire",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 82,
 			"level": 2,
 			"traits": [
@@ -1037,7 +1037,7 @@
 		{
 			"name": "Resilient Mind",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 82,
 			"level": 2,
 			"traits": [
@@ -1052,7 +1052,7 @@
 		{
 			"name": "United Assault",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 82,
 			"activity": {
 				"number": 1,
@@ -1072,7 +1072,7 @@
 		{
 			"name": "Chemical Purification",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 83,
 			"activity": {
 				"number": 1,
@@ -1098,7 +1098,7 @@
 		{
 			"name": "Ghost Wrangler",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 83,
 			"activity": {
 				"number": 1,
@@ -1121,7 +1121,7 @@
 		{
 			"name": "Inspiring Resilience",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 83,
 			"activity": {
 				"number": 1,
@@ -1144,7 +1144,7 @@
 		{
 			"name": "Knock Sense",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 83,
 			"activity": {
 				"number": 1,
@@ -1163,7 +1163,7 @@
 		{
 			"name": "Prayer-Touched Weapon",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 83,
 			"activity": {
 				"number": 1,
@@ -1188,7 +1188,7 @@
 		{
 			"name": "Detonating Spell",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 83,
 			"activity": {
 				"number": 1,
@@ -1212,7 +1212,7 @@
 		{
 			"name": "Divine Emissary",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 83,
 			"level": 6,
 			"traits": [
@@ -1232,7 +1232,7 @@
 		{
 			"name": "Shield Wall",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 84,
 			"activity": {
 				"number": 1,
@@ -1253,7 +1253,7 @@
 		{
 			"name": "Knight's Retaliation",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 84,
 			"activity": {
 				"number": 1,
@@ -1274,7 +1274,7 @@
 		{
 			"name": "Retaliatory Cleansing",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 84,
 			"activity": {
 				"number": 1,
@@ -1294,7 +1294,7 @@
 		{
 			"name": "Consecrate Spell",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 84,
 			"activity": {
 				"number": 1,
@@ -1317,7 +1317,7 @@
 		{
 			"name": "Corpse-Killer's Defiance",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 85,
 			"activity": {
 				"number": 1,
@@ -1337,7 +1337,7 @@
 		{
 			"name": "Holy Light",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 85,
 			"activity": {
 				"number": 2,
@@ -1361,7 +1361,7 @@
 		{
 			"name": "Miraculous Intervention",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 85,
 			"activity": {
 				"number": 1,
@@ -1382,7 +1382,7 @@
 		{
 			"name": "Necromantic Deflection",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 85,
 			"level": 12,
 			"traits": [
@@ -1397,7 +1397,7 @@
 		{
 			"name": "Shared Sight",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 85,
 			"activity": {
 				"number": 1,
@@ -1412,12 +1412,14 @@
 				"sorcerer"
 			],
 			"prerequisites": "{@feat Soulsight (Bard)|APG|Soulsight}",
-			"entries": ["You bestow the mystical vision granted to you by your muse upon your allies. If your next action is to cast a non-cantrip spell that affects one or more of your allies, all affected allies gain your spiritsense for 1 minute."]
+			"entries": [
+				"You bestow the mystical vision granted to you by your muse upon your allies. If your next action is to cast a non-cantrip spell that affects one or more of your allies, all affected allies gain your spiritsense for 1 minute."
+			]
 		},
 		{
 			"name": "Purifying Breeze",
 			"source": "LOKL",
-            "access": "{@organization Knights of Lastwall} have access to this feat.",
+			"access": "{@organization Knights of Lastwall} have access to this feat.",
 			"page": 85,
 			"activity": {
 				"number": 1,
@@ -1436,5 +1438,5 @@
 				"You transfer the divine essence of your magic to the air around you, cleansing it of toxins. Attempt a counteract check against each airborne {@trait disease} or {@trait poison} effect in a 15-foot radius around you. Regardless of your success or failure, until the beginning of your next turn, all creatures in the purified area gain a +1 status bonus to Fortitude saving throws."
 			]
 		}
-    ]
+	]
 }
