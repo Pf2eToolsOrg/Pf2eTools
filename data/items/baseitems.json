@@ -1,6 +1,64 @@
 {
 	"baseitem": [
 		{
+			"name": "War Lance",
+			"source": "LOKL",
+			"page": 86,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"deadly d8",
+				"jousting d6",
+				"parry",
+				"shove"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This lance appears shorter and stockier in comparison to other weapons of its type. The war lance most notably features shielding integrated into its vamplate, exchanging its reach for a sturdier base when defending against attacks or attempting to overpower an opponent."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Spear"
+			}
+		},
+		{
+			"name": "Bladed Gauntlet",
+			"source": "LOKL",
+			"page": 86,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"agile",
+				"finesse",
+				"free-hand",
+				"modular B, P, or S"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A dagger attached to a retractable mechanism is integrated in this gauntlet's dorsum, so a combatant can quickly arm themself with a blade to exploit the weak points in an enemy's armor. Switching configurations on the gauntlet reveals or retracts the contained dagger as appropriate. The dagger isn't removable, and thus can't be wielded or etched with runes separately from the gauntlet."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "modular",
+				"group": "Brawling"
+			}
+		},
+		{
 			"name": "Ogre Hook",
 			"source": "B1",
 			"page": 253,
@@ -793,6 +851,35 @@
 				"damageType": "B",
 				"range": 20,
 				"group": "Sling"
+			}
+		},
+		{
+			"name": "Armored Coat",
+			"source": "LOKL",
+			"page": 86,
+			"equipment": true,
+			"type": "Equipment",
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"traits": [
+				"comfort",
+				"flexible"
+			],
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"A custom, lightweight mail is fitted within the lining of a coat or similar apparel, physically hiding the armor while maintaining the wearer's fashion. While not nearly as protective as heavier armors, the armored coat allows the wearer to blend in more aesthetically during civilian functions. Like other suits of armor, the armored coat is custom-fitted to an individual's body type, ensuring comfort without sacrificing its defensive capabilities."
+			],
+			"armorData": {
+				"speedPen": 0,
+				"ac": 2,
+				"dexCap": 2,
+				"str": 14,
+				"checkPen": 1,
+				"group": "Leather"
 			}
 		},
 		{
