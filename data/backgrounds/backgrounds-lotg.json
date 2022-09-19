@@ -20,7 +20,9 @@
 			"lore": [
 				"Astrology"
 			],
-			"ability": true
+			"spells": [
+				"augury"
+			]
 		},
 		{
 			"name": "Doomcaller",
@@ -89,7 +91,9 @@
 			"lore": [
 				"Any"
 			],
-			"ability": true
+			"spells": [
+				"ill omen"
+			]
 		},
 		{
 			"name": "Nocturnal Navigator",
@@ -111,7 +115,7 @@
 			"skills": [
 				"Survival"
 			],
-			"ability": true
+			"miscBenefit": true
 		},
 		{
 			"name": "Sign Bound",
@@ -234,7 +238,21 @@
 			"lore": [
 				"Astrology"
 			],
-			"ability": true
+			"spells": [
+				"ghost sound",
+				"light",
+				"charm",
+				"endure elements",
+				"guidance",
+				"phantom steed",
+				"know direction",
+				"longstrider",
+				"speak with animals",
+				"remove fear",
+				"true strike",
+				"message",
+				"stabilize"
+			]
 		},
 		{
 			"name": "Starless One",
@@ -273,13 +291,63 @@
 				"Charisma",
 				"Free"
 			],
-			"skill": [
+			"skills": [
 				"Occultism"
 			],
 			"lore": [
 				"Astrology"
 			],
 			"ability": true
+		},
+		{
+			"name": "Sun Dancer",
+			"source": "LOTG",
+			"page": 123,
+			"traits": [
+				"rare"
+			],
+			"entries": [
+				"You’ve been taught the Burning Mother’s blessings could be invited through dances done under its presence, such as in welcoming the first rays of warmth in the spring. You could have been the apprentice of some {@trait primal} caster who wished to harness the sun’s power for their incantations or lived in a community who reveres the Daughter of the {@deity Cosmic Caravan|LOTG} through displays of veneration for the sun. Whatever the case, you developed a supernatural connection to the sun.",
+				"Choose two ability boosts. One must be to Charisma or Dexterity, and one is a free ability boost.",
+				"You’re trained in {@skill Performance}. You gain the {@feat Fascinating Performance} skill feat. If you use this feat outdoors in direct sunlight, you gain a +1 circumstance bonus to the skill check."
+			],
+			"boosts": [
+				"Charisma",
+				"Dexterity",
+				"Free"
+			],
+			"skills": [
+				"Performance"
+			],
+			"feat": [
+				"Fascinating Performance"
+			],
+			"miscBenefit": true
+		},
+		{
+			"name": "Tide Watcher",
+			"source": "LOTG",
+			"page": 123,
+			"traits": [
+				"rare"
+			],
+			"entries": [
+				"Where you hail from, the ocean is the lifeblood of your community; knowing how it changes according to the moon was integral to everyday life. You’ve studied the moon’s phases to predict the rise and fall of the ocean waters. Eventually, you gained a supernatural ability to foretell to some degree of accuracy the coming of more severe changes, such as tidal waves or encroaching storms. At times, it fell on you to warn settlements of such oncoming natural disasters.",
+				"Choose two ability boosts. One must be to Charisma or Intelligence, and one is a free ability boost.",
+				"You’re trained in {@skill Nature} and {@skill Lore||Ocean Lore}. During the night when you can see the moon, you gain a +1 circumstance bonus to {@skill Survival} checks to discern weather patterns and predict upcoming weather conditions—this bonus increases to +2 if you’re in the vicinity of the ocean."
+			],
+			"boosts": [
+				"Charisma",
+				"Intelligence",
+				"Free"
+			],
+			"skills": [
+				"Nature"
+			],
+			"lore": [
+				"Ocean"
+			],
+			"miscBenefit": true
 		}
 	]
 }
