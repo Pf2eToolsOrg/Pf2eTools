@@ -117,7 +117,7 @@
 								},
 								"minItems": 1
 							},
-							"ability": {
+							"divineAbility": {
 								"type": "object",
 								"properties": {
 									"abilities": {
@@ -136,12 +136,24 @@
 									"abilities"
 								]
 							},
-							"skill": {
-								"type": "array",
-								"items": {
-									"$ref": "utils.json#/definitions/skillName"
+							"divineSkill": {
+								"type": "object",
+								"properties": {
+									"skills": {
+										"type": "array",
+										"items": {
+											"$ref": "utils.json#/definitions/skillName"
+										},
+										"minItems": 1
+									},
+									"entry": {
+										"type": "string"
+									}
 								},
-								"minItems": 1
+								"additionalProperties": false,
+								"required": [
+									"skills"
+								]
 							},
 							"domains": {
 								"type": "array",
