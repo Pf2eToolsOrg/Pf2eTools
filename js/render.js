@@ -4589,17 +4589,13 @@ Renderer.deity = {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
-		if (deity.info && deity.info.length) {
-			renderStack.push(Renderer.utils.getDividerDiv());
-			renderer.recursiveRender(deity.info, renderStack, { pf2StatFix: true });
-		}
 		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
-			${Renderer.utils.getNameDiv(deity, { type: `${deity.alignment && deity.alignment.length === 1 ? `${deity.alignment[0]}` : ""} ${deity.category === "Pantheon" ? "Pantheon" : "Deity"}`, ...opts })}
+			${Renderer.utils.getNameDiv(deity, { type: deity.category === "Philosophy" || deity.category === "Pantheon" ? deity.category : "Deity", ...opts })}
 			${renderStack.join("")}
+			${Renderer.utils.getDividerDiv()}
 			${deity.pantheonMembers ? Renderer.deity.getPantheonMembers(deity) : ""}
 			${deity.areasOfConcern ? Renderer.deity.getAreasOfConcern(deity) : ""}
-			${deity.anathema || deity.edicts || deity.followerAlignment ? Renderer.utils.getDividerDiv() : ""}
-			${Renderer.deity.getEdictsAnathemaAlign(deity)}
+			${Renderer.deity.getEdictsAnathema(deity)}
 			${deity.devoteeBenefits ? Renderer.utils.getDividerDiv() : ""}
 			${Renderer.deity.getDevoteeBenefits(deity)}
 			${opts.noPage ? "" : Renderer.utils.getPageP(deity)}`;
@@ -4619,14 +4615,13 @@ Renderer.deity = {
 		return `<p class="pf2-stat__section"><strong>Areas of Concern&nbsp;</strong>${deity.areasOfConcern.join(", ")}</p>`;
 	},
 
-	getEdictsAnathemaAlign (deity) {
+	getEdictsAnathema (deity) {
 		let out = [];
 		const renderer = Renderer.get();
 		const edictsDelim = (deity.edicts || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
 		const anathemaDelim = (deity.anathema || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
 		if (deity.edicts) out.push(`<p class="pf2-stat__section"><strong>Edicts&nbsp;</strong>${renderer.render(deity.edicts.join(edictsDelim))}</p>`);
 		if (deity.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.render(deity.anathema.join(anathemaDelim))}</p>`);
-		if (deity.followerAlignment) out.push(renderer.render(`<p class="pf2-stat__section"><strong>Follower Alignments&nbsp;</strong>${deity.followerAlignment.entry ? deity.followerAlignment.entry : deity.followerAlignment.alignment.map(a => a.toUpperCase()).map(a => a.length > 2 ? a : `{@trait ${a}}`).join(", ")}</p>`));
 		return out.join("");
 	},
 
@@ -4641,7 +4636,7 @@ Renderer.deity = {
 		const b = deity.devoteeBenefits;
 		// FIXME: See FEAT-39 on Discords
 		if (b.font) out.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`);
-		if (b.ability) out.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>`);
+		if (b.divineAbility) out.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.divineAbility.entry ? b.divineAbility.entry : b.divineAbility.abilities.join(", "))}</p>`);
 		if (b.divineSkill) out.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.divineSkill.entry ? b.divineSkill.entry : b.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`);
 		if (b.domains) out.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
 		if (b.alternateDomains) out.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);

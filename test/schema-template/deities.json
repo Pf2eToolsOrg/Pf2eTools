@@ -38,26 +38,27 @@
 						]
 					},
 					"alignment": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/alignmentTraits"
-						},
-						"minItems": 1
-					},
-					"followerAlignment": {
 						"type": "object",
 						"properties": {
-							"entry": {
-								"type": "string"
-							},
 							"alignment": {
 								"type": "array",
 								"items": {
 									"$ref": "utils.json#/definitions/alignmentTraits"
 								},
 								"minItems": 1
+							},
+							"followerAlignment": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/alignmentTraits"
+								},
+								"minItems": 1
+							},
+							"entry": {
+								"type": "string"
 							}
-						}
+						},
+						"additionalProperties": false
 					},
 					"category": {
 						"type": "string",
