@@ -4596,7 +4596,7 @@ Renderer.deity = {
 		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
 			${Renderer.utils.getNameDiv(deity, { type: `${deity.alignment && deity.alignment.length === 1 ? `${deity.alignment[0]}` : ""} ${deity.category === "Pantheon" ? "Pantheon" : "Deity"}`, ...opts })}
 			${renderStack.join("")}
-			${deity.pantheonMembers ? Renderer.deity.getPantheonMemebers(deity) : ""}
+			${deity.pantheonMembers ? Renderer.deity.getPantheonMembers(deity) : ""}
 			${deity.areasOfConcern ? Renderer.deity.getAreasOfConcern(deity) : ""}
 			${deity.anathema || deity.edicts || deity.followerAlignment ? Renderer.utils.getDividerDiv() : ""}
 			${Renderer.deity.getEdictsAnathemaAlign(deity)}
@@ -4613,11 +4613,11 @@ Renderer.deity = {
 			}).join(", ")
 		);
 		return `<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${pantheonMembers}</p>`;
-	}
+	},
 	
 	getAreasOfConcern (deity) {
 		return `<p class="pf2-stat__section"><strong>Areas of Concern&nbsp;</strong>${deity.areasOfConcern.join(", ")}</p>`;
-	}
+	},
 
 	getEdictsAnathemaAlign (deity) {
 		let out = [];
