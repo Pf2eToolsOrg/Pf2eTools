@@ -4606,7 +4606,7 @@ Renderer.deity = {
 	},
 
 	getPantheonMembers (deity) {
-		const pantheonMembers = renderer.render(
+		const pantheonMembers = Renderer.get().render(
 			deity.pantheonMembers.map(m => {
 				const [name, src] = m.split("|");
 				return `{@deity ${name}|${src}}`
