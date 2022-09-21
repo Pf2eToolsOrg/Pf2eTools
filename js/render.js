@@ -4588,41 +4588,63 @@ Renderer.deity = {
 	getRenderedString (deity, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(true);
-		const renderStack = [];
-		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
-			${Renderer.utils.getNameDiv(deity, { type: deity.category === "Philosophy" || deity.category === "Pantheon" ? deity.category : "Deity", ...opts })}
-			${renderStack.join("")}
-			${Renderer.utils.getDividerDiv()}
-			${deity.pantheonMembers ? Renderer.deity.getPantheonMembers(deity) : ""}
-			${deity.areasOfConcern ? Renderer.deity.getAreasOfConcern(deity) : ""}
-			${Renderer.deity.getEdictsAnathema(deity)}
-			${deity.devoteeBenefits ? Renderer.utils.getDividerDiv() : ""}
-			${Renderer.deity.getDevoteeBenefits(deity)}
-			${opts.noPage ? "" : Renderer.utils.getPageP(deity)}`;
+		const renderStack = [
+			Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES),
+			Renderer.utils.getNameDiv(deity, { type: deity.category === "Philosophy" || deity.category === "Pantheon" ? deity.category : "Deity", ...opts }),
+			Renderer.utils.getDividerDiv()
+		];
+		
+		if (deity.pantheonMembers) {
+			const pantheonMembers = renderer.render(
+				deity.pantheon.map(m => {
+					const [name, src] = m.split("|");
+					return `{@deity ${name}|${src}}`
+				}).join(", ")
+			);
+			renderStack.push(`<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${deity.pantheonMembers}</p>`);
+		}
+		if (deity.areasOfConcern) renderStack.push(`<p class="pf2-stat__section"><strong>Areas of Concern&nbsp;</strong>${deity.areasOfConcern.join(", ")}</p>`);
+		if (deity.alignment) renderStack.push(Renderer.deity.getAlignment(deity.alignment));
+		if (deity.font) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(deity.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`);
+		if (deity.divineAbility) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(deity.divineAbility.entry ? deity.divineAbility.entry : deity.divineAbility.abilities.join(", "))}</p>`);
+		if (deity.divineSkill) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(deity.divineSkill.entry ? deity.divineSkill.entry : deity.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`);
+		if (deity.domains) renderStack.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(deity.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
+		if (deity.alternateDomains) renderStack.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(deity.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
+		if (deity.spells) renderStack.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(deity.spells))}</p>`);
+		if (deity.edicts) renderStack.push(getCommandments(deity.edicts, "Edicts"));
+		if (deity.anathema) renderStack.push(getCommandments(deity.anathema, "Anathema"));
+		// FIXME: See FEAT-39 on Discord (add optionality to `weapon` re: Kabriri)
+		if (deity.weapon) renderStack.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(deity.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>`);
+		
+		if (deity.entries) renderer.recursiveRender(deity.entries, renderStack, { pf2StatFix: true });
+		
+		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(deity));
+		
+		return renderStack.join("");
 	},
 
-	getPantheonMembers (deity) {
-		const pantheonMembers = Renderer.get().render(
-			deity.pantheonMembers.map(m => {
-				const [name, src] = m.split("|");
-				return `{@deity ${name}|${src}}`
-			}).join(", ")
-		);
-		return `<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${pantheonMembers}</p>`;
-	},
-	
-	getAreasOfConcern (deity) {
-		return `<p class="pf2-stat__section"><strong>Areas of Concern&nbsp;</strong>${deity.areasOfConcern.join(", ")}</p>`;
+	getAlignment (alignment) {
+		if (alignment.entry) {
+			const renderer = Renderer.get();
+			return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(alignment.entry)}</p>`;
+		} else {
+			if (alignment.alignment && alignment.followerAlignment) {
+				return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment)} (${formatAlignmentList(alignment.followerAlignment)})</p>`
+			} else {
+				return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment || alignment.followerAlignment)}</p>`
+			}
+		}
+		
+		function formatAlignmentList (alignments) {
+			const renderer = Renderer.get();
+			return renderer.render(alignments.map(a => a.length > 2 ? a : `{@trait ${a.toUpperCase()}}`).join(", "));
+		}
 	},
 
-	getEdictsAnathema (deity) {
-		let out = [];
+	getCommandments (commandments, type) {
 		const renderer = Renderer.get();
-		const edictsDelim = (deity.edicts || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
-		const anathemaDelim = (deity.anathema || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
-		if (deity.edicts) out.push(`<p class="pf2-stat__section"><strong>Edicts&nbsp;</strong>${renderer.render(deity.edicts.join(edictsDelim))}</p>`);
-		if (deity.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.render(deity.anathema.join(anathemaDelim))}</p>`);
-		return out.join("");
+		const delim = commandments.some(str => str.includes(",")) ? "; " : ", ";
+		return `<p class="pf2-stat__section"><strong>${type}&nbsp;</strong>${renderer.render(commandments.join(delim))}</p>`
 	},
 
 	getClericSpells (spells) {
@@ -4630,18 +4652,7 @@ Renderer.deity = {
 	},
 
 	getDevoteeBenefits (deity) {
-		if (deity.devoteeBenefits == null) return "";
-		let out = [];
-		const renderer = Renderer.get();
-		const b = deity.devoteeBenefits;
 		// FIXME: See FEAT-39 on Discords
-		if (b.font) out.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`);
-		if (b.divineAbility) out.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.divineAbility.entry ? b.divineAbility.entry : b.divineAbility.abilities.join(", "))}</p>`);
-		if (b.divineSkill) out.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.divineSkill.entry ? b.divineSkill.entry : b.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`);
-		if (b.domains) out.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
-		if (b.alternateDomains) out.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
-		if (b.spells) out.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>`);
-		if (b.weapon) out.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>`);
 		if (b.avatar) {
 			out.push(`<p class="pf2-h3">Avatar</p>`);
 			if (b.avatar.preface) out.push(`<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>`);

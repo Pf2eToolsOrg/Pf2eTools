@@ -59,17 +59,13 @@ class PageFilterDeities extends PageFilter {
 		if (g.hasLore === true) g._fMisc.push("Has Lore")
 		if (g.images) g._fMisc.push("Has Images")
 
-		if (g.followerAlignment) g._fFollowerAlignment = g.followerAlignment.alignment;
-		if (g.devoteeBenefits) {
-			if (g.devoteeBenefits.font) g._fFont = g.devoteeBenefits.font;
-			if (g.devoteeBenefits.skill) g._fSkill = g.devoteeBenefits.skill;
-			if (g.devoteeBenefits.weapon) g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
-			if (g.devoteeBenefits.domains) g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
-			if (g.devoteeBenefits.spells) g._fSpells = [...Array(11).keys()].map(l => (g.devoteeBenefits.spells[l] || []).map(s => s.split("|")[0]));
-			if (g.devoteeBenefits.avatar) g._fMisc.push("Has Battle Form")
-		} else {
-			g._fDomains = [VeCt.STR_NONE];
-		}
+		if (g.alignment?.followerAlignment) g._fFollowerAlignment = g.alignment.followerAlignment;
+		if (g.font) g._fFont = g.font;
+		if (g.divineSkill) g._fSkill = g.divineSkill.skills;
+		if (g.weapon) g._fWeapon = g.weapon.map(w => w.split("|")[0]);
+		if (g.domains) g._fDomains = g.domains || [VeCt.STR_NONE];
+		if (g.spells) g._fSpells = [...Array(11).keys()].map(l => (g.spells[l] || []).map(s => s.split("|")[0]));
+		if (g.avatar) g._fMisc.push("Has Battle Form")
 		if (g.domains) g._fDomains.sort(SortUtil.ascSort);
 	}
 
@@ -80,8 +76,8 @@ class PageFilterDeities extends PageFilter {
 		if (g._fFont) this._fontFilter.addItem(g._fFont);
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
-		if (g.alignment) this._alignmentFilter.addItem(g.alignment);
-		if (g.followerAlignment) this._followerAlignmentFilter.addItem(g.followerAlignment.alignment);
+		if (g.alignment?.alignment) this._alignmentFilter.addItem(g.alignment.alignment);
+		if (g.alignment?.followerAlignment) this._followerAlignmentFilter.addItem(g.alignment.followerAlignment);
 		this._domainFilter.addItem(g._fDomains);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
@@ -120,7 +116,7 @@ class PageFilterDeities extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			g._fSources,
-			g.alignment,
+			g.alignment?.alignment,
 			g._fFollowerAlignment,
 			g.category,
 			[
