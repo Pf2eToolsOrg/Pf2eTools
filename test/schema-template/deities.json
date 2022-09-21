@@ -86,6 +86,21 @@
 							"Vudrani Gods"
 						]
 					},
+					"pantheonMembers": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"pattern": "^[^\\|]+\\|[^\\|]+$"
+						},
+						"minItems": 2
+					},
+					"areasOfConcern": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
 					"info": {
 						"type": "array",
 						"items": {
