@@ -91,7 +91,8 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"pattern": "^[^\\|]+\\|[^\\|]+$"
+							"pattern": "^[^\\|]+\\|[^\\|]+$",
+							"description": "A deity identifier in the form of `Name|Source`, e.g. `Abadar|CRB`"
 						},
 						"minItems": 2
 					},
@@ -136,7 +137,7 @@
 							"abilities": {
 								"type": "array",
 								"items": {
-									"$ref": "utils.json#/definitions/abilityAbbv"
+									"$ref": "utils.json#/definitions/ability"
 								},
 								"minItems": 1
 							},
@@ -196,12 +197,24 @@
 						"additionalProperties": false,
 						"minProperties": 1
 					},
-					"weapon": {
-						"type": "array",
-						"items": {
-							"type": "string"
+					"favoredWeapon": {
+						"type": "object",
+						"properties": {
+							"weapons": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"entry": {
+								"type": "string"
+							}
 						},
-						"minItems": 1
+						"additionalProperties": false,
+						"required": [
+							"weapons"
+						]
 					},
 					"avatar": {
 						"type": "object",

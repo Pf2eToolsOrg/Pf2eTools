@@ -4594,29 +4594,70 @@ Renderer.deity = {
 			Renderer.utils.getDividerDiv()
 		];
 		
+		// Pantheon block
 		if (deity.pantheonMembers) {
-			const pantheonMembers = renderer.render(
-				deity.pantheon.map(m => {
+			const pantheon = renderer.render(
+				deity.pantheonMembers.map(m => {
 					const [name, src] = m.split("|");
 					return `{@deity ${name}|${src}}`
 				}).join(", ")
 			);
-			renderStack.push(`<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${deity.pantheonMembers}</p>`);
+			renderStack.push(`<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${pantheon}</p>`);
+			renderStack.push(Renderer.utils.getDividerDiv());
 		}
-		if (deity.areasOfConcern) renderStack.push(`<p class="pf2-stat__section"><strong>Areas of Concern&nbsp;</strong>${deity.areasOfConcern.join(", ")}</p>`);
+		
+		// Morality block
 		if (deity.alignment) renderStack.push(Renderer.deity.getAlignment(deity.alignment));
+		if (deity.areasOfConcern) renderStack.push(`<p class="pf2-stat__section"><strong>Areas of Concern&nbsp;</strong>${deity.areasOfConcern.join(", ")}</p>`);
+		if (deity.edicts) renderStack.push(Renderer.deity.getCommandments(deity.edicts, "Edicts"));
+		if (deity.anathema) renderStack.push(Renderer.deity.getCommandments(deity.anathema, "Anathema"));
+		if ((deity.edicts || deity.anathema) && deity.font) renderStack.push(Renderer.utils.getDividerDiv());
+		
+		// Cleric stuff
 		if (deity.font) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(deity.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`);
 		if (deity.divineAbility) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(deity.divineAbility.entry ? deity.divineAbility.entry : deity.divineAbility.abilities.join(", "))}</p>`);
 		if (deity.divineSkill) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(deity.divineSkill.entry ? deity.divineSkill.entry : deity.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`);
 		if (deity.domains) renderStack.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(deity.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
 		if (deity.alternateDomains) renderStack.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(deity.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
 		if (deity.spells) renderStack.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(deity.spells))}</p>`);
-		if (deity.edicts) renderStack.push(getCommandments(deity.edicts, "Edicts"));
-		if (deity.anathema) renderStack.push(getCommandments(deity.anathema, "Anathema"));
-		// FIXME: See FEAT-39 on Discord (add optionality to `weapon` re: Kabriri)
-		if (deity.weapon) renderStack.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(deity.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>`);
+		if (deity.favoredWeapon) renderStack.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(deity.favoredWeapon.entry ? deity.favoredWeapon.entry : deity.favoredWeapon.weapons.map(w => `{@item ${w}}`).join(", "))}</p>`);
 		
 		if (deity.entries) renderer.recursiveRender(deity.entries, renderStack, { pf2StatFix: true });
+		
+		if (deity.avatar) {
+			renderStack.push(`<p class="pf2-h3">Avatar</p>`);
+			if (deity.avatar.preface) renderStack.push(`<p class="pf2-stat">${renderer.render(deity.avatar.preface)}</p>`);
+			renderStack.push(`<p class="pf2-stat"><strong>${deity.name}</strong> `);
+			
+			if (deity.avatar.speed) renderStack.push(`${deity.avatar.speed.walk ? `Speed ${deity.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(deity.avatar.speed).filter(type => type !== "walk").map(s => (typeof deity.avatar.speed[s] === "number") ? `, ${s} Speed ${deity.avatar.speed[s]} feet` : "").join("")}`);
+			
+			let notes = [];
+			if (deity.avatar.airWalk) notes.push(`{@spell air walk}`);
+			if (deity.avatar.immune) notes.push(`immune to ${deity.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`);
+			if (deity.avatar.ignoreTerrain) notes.push("ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}");
+			if (deity.avatar.speed.speedNote) notes.push(`${deity.avatar.speed.speedNote}`);
+			if (notes.length > 0) renderStack.push(`, ${renderer.render(notes.join(", "))}`);
+			if (deity.avatar.shield) renderStack.push(`; shield (${deity.avatar.shield} Hardness, can't be damaged)`);
+			
+			if (deity.avatar.melee || deity.avatar.ranged) {
+				renderStack.push(`; `);
+				if (deity.avatar.melee) {
+					deity.avatar.melee.forEach((element, index, array) => {
+						renderStack.push(Renderer.deity.getRenderedMeleeAttack(element));
+						renderStack.push(array.length - 1 === index ? "" : "; ");
+					});
+				}
+				if (deity.avatar.ranged) {
+					if (deity.avatar.melee && Object.keys(deity.avatar.melee).length) renderStack.push(`; `);
+					deity.avatar.ranged.forEach((element, index, array) => {
+						renderStack.push(Renderer.deity.getRenderedRangedAttack(element));
+						renderStack.push(array.length - 1 === index ? "" : "; ");
+					});
+				}
+				renderStack.push(`.`);
+			}
+			renderStack.push(`</p>`);
+		}
 		
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(deity));
 		
@@ -4649,43 +4690,6 @@ Renderer.deity = {
 
 	getClericSpells (spells) {
 		return Object.keys(spells).map(k => `${Parser.getOrdinalForm(k)}: ${spells[k].map(s => `{@spell ${s}}`).join(", ")}`).join(", ").replace(/ \((.+)\)\}/g, `} ($1)`);
-	},
-
-	getDevoteeBenefits (deity) {
-		// FIXME: See FEAT-39 on Discords
-		if (b.avatar) {
-			out.push(`<p class="pf2-h3">Avatar</p>`);
-			if (b.avatar.preface) out.push(`<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>`);
-			out.push(`<p class="pf2-stat"><strong>${deity.name}</strong> `);
-			if (b.avatar.speed) out.push(`${b.avatar.speed.walk ? `Speed ${b.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(b.avatar.speed).filter(type => type !== "walk").map(s => (typeof b.avatar.speed[s] === "number") ? `, ${s} Speed ${b.avatar.speed[s]} feet` : "").join("")}`);
-			let notes = [];
-			if (b.avatar.airWalk) notes.push(`{@spell air walk}`);
-			if (b.avatar.immune) notes.push(`immune to ${b.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`);
-			if (b.avatar.ignoreTerrain) notes.push("ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}");
-			if (b.avatar.speed.speedNote) notes.push(`${b.avatar.speed.speedNote}`);
-			if (notes.length > 0) out.push(`, ${renderer.render(notes.join(", "))}`);
-			if (b.avatar.shield) out.push(`; shield (${b.avatar.shield} Hardness, can't be damaged)`);
-			if (b.avatar.melee || b.avatar.ranged) {
-				out.push(`; `);
-				if (b.avatar.melee) {
-					b.avatar.melee.forEach((element, index, array) => {
-						out.push(Renderer.deity.getRenderedMeleeAttack(element));
-						out.push(array.length - 1 === index ? "" : "; ");
-					});
-				}
-				if (b.avatar.ranged) {
-					if (b.avatar.melee && Object.keys(b.avatar.melee).length) out.push(`; `);
-					b.avatar.ranged.forEach((element, index, array) => {
-						out.push(Renderer.deity.getRenderedRangedAttack(element));
-						out.push(array.length - 1 === index ? "" : "; ");
-					});
-				}
-				out.push(`.`);
-			}
-			out.push(`</p>`);
-		}
-
-		return out.join("");
 	},
 
 	getRenderedRangedAttack (attack) {
