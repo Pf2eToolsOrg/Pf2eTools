@@ -90,39 +90,21 @@
 						"minItems": 1,
 						"uniqueItems": true
 					],
-					"ability": {
-						"type": "boolean",
-						"enum": [
-							true
-						]
-					},
-					"equipment": {
-						"description": "Used when a background grants free items (not access/proficiency\u2014the actual concrete thing). Mostly in adventure paths.",
-						"type": "boolean",
-						"enum": [
-							true
-						]
-					},
-					"sense": {
-						"description": "Used when a background grants a sense (e.g. darkvision, scent).",
-						"type": "boolean",
-						"enum": [
-							true
-						]
-					},
-					"situationalBenefit": {
-						"description": "Used when a background grants a benefit that isn't a skill/feat/spell/etc., but also isn't explicitly a new ability (e.g. a +1 circumstance bonus to Seek on cloudy days).",
-						"type": "boolean",
-						"enum": [
-							true
-						]
-					},
-					"drawback": {
-						"description": "Used when a background comes with an objective, mandatory drawback (e.g. penalty to some check, inability to use an item or spell; not something that is both good and bad)",
-						"type": "boolean",
-						"enum": [
-							true
-						]
+					"miscTags": {
+						"description": "ability = Used when a background grants an active, voluntary ability\n equipment = Used when a background grants free items (not access/proficiency\u2014the actual concrete thing)\n sense = Used when a background grants a sense (e.g. darkvision, scent)\n situationalBenefit = Used when a background grants a benefit that isn't a skill/feat/spell/etc., but also isn't explicitly a new ability (e.g. a +1 circumstance bonus to Seek on cloudy days)\n drawback = Used when a background comes with an objective, mandatory drawback (e.g. penalty to some check, inability to use an item or spell; not something that is both good and bad)",
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"ability",
+								"equipment",
+								"sense",
+								"situationalBenefit",
+								"drawback"
+							]
+						}
+						"minItems": 1,
+						"uniqueItems": true
 					}
 				},
 				"additionalProperties": false,

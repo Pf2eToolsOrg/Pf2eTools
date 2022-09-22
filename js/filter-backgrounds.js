@@ -24,12 +24,15 @@ class PageFilterBackgrounds extends PageFilter {
 		bg._fSources = SourceFilter.getCompleteFilterSources(bg);
 		bg._fTraits = (bg.traits || []).map(t => Parser.getTraitName(t));
 		bg._fSpells = (bg.spells || []).map(s => s.split("|")[0]);
-		bg._fMisc = [];
-		if (bg.ability === true) bg._fMisc.push("Grants Ability");
-		if (bg.equipment === true) bg._fMisc.push("Grants Equipment");
-		if (bg.sense === true) bg._fMisc.push("Grants Sense");
-		if (bg.situationalBenefit === true) bg._fMisc.push("Grants Situational Benefit");
-		if (bg.drawback === true) bg._fMisc.push("Has Drawback");
+		bg._fMisc = (bg.miscTags || []).map(tag => {
+			switch (tag) {
+				case "ability": return "Grants Ability";
+				case "equipment": return "Grants Equipment";
+				case "sense": return "Grants Sense";
+				case "situationalBenefit": return "Grants Situational Benefit";
+				case "drawback": return "Has Drawback";
+			}
+		});
 	}
 
 	addToFilters (bg, isExcluded) {
