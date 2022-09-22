@@ -13,17 +13,23 @@ class PageFilterBackgrounds extends PageFilter {
 			itemSortFn: null,
 		});
 		this._featFilter = new Filter({header: "Feats", displayFn: (it) => it.toTitleCase()});
-		this._abilityFilter = new Filter({
+		this._spellFilter = new Filter({header: "Spells", displayFn: (it) => it.toTitleCase()});
+		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Gives Ability"],
+			items: ["Grants Ability", "Grants Equipment", "Grants Sense", "Grants Situational Benefit", "Has Drawback"],
 		});
 	}
 
 	mutateForFilters (bg) {
 		bg._fSources = SourceFilter.getCompleteFilterSources(bg);
 		bg._fTraits = (bg.traits || []).map(t => Parser.getTraitName(t));
-		bg._fAbility = [];
-		if (bg.ability === true) bg._fAbility.push("Gives Ability");
+		bg._fSpells = (bg.spells || []).map(s => s.split("|")[0]);
+		bg._fMisc = [];
+		if (bg.ability === true) bg._fMisc.push("Grants Ability");
+		if (bg.equipment === true) bg._fMisc.push("Grants Equipment");
+		if (bg.sense === true) bg._fMisc.push("Grants Sense");
+		if (bg.situationalBenefit === true) bg._fMisc.push("Grants Situational Benefit");
+		if (bg.drawback === true) bg._fMisc.push("Has Drawback");
 	}
 
 	addToFilters (bg, isExcluded) {
@@ -35,7 +41,8 @@ class PageFilterBackgrounds extends PageFilter {
 		this._loreFilter.addItem(bg.lore);
 		this._boostFilter.addItem(bg.boosts);
 		this._featFilter.addItem(bg.feat);
-		this._abilityFilter.addItem(bg._fAbility);
+		this._spellFilter.addItem(bg._fSpells)
+		this._miscFilter.addItem(bg._fMisc);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -46,7 +53,8 @@ class PageFilterBackgrounds extends PageFilter {
 			this._skillFilter,
 			this._loreFilter,
 			this._featFilter,
-			this._abilityFilter,
+			this._spellFilter,
+			this._miscFilter,
 		];
 	}
 
@@ -59,7 +67,8 @@ class PageFilterBackgrounds extends PageFilter {
 			bg.skills,
 			bg.lore,
 			bg.feat,
-			bg._fAbility,
+			bg._fSpells,
+			bg._fMisc,
 		)
 	}
 }
