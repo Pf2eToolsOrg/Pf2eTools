@@ -4588,82 +4588,108 @@ Renderer.deity = {
 	getRenderedString (deity, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(true);
-		const renderStack = [];
-		if (deity.info && deity.info.length) {
+		const renderStack = [
+			Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES),
+			Renderer.utils.getNameDiv(deity, { type: deity.category === "Philosophy" || deity.category === "Pantheon" ? deity.category : "Deity", ...opts }),
+			Renderer.utils.getDividerDiv()
+		];
+		
+		// Pantheon block
+		if (deity.pantheonMembers) {
+			const pantheon = renderer.render(
+				deity.pantheonMembers.map(m => {
+					const [name, src] = m.split("|");
+					return `{@deity ${name}|${src}}`
+				}).join(", ")
+			);
+			renderStack.push(`<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${pantheon}</p>`);
 			renderStack.push(Renderer.utils.getDividerDiv());
-			renderer.recursiveRender(deity.info, renderStack, { pf2StatFix: true });
 		}
-		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
-			${Renderer.utils.getNameDiv(deity, { type: `${deity.alignment && deity.alignment.length === 1 ? `${deity.alignment[0]}` : ""} Deity`, ...opts })}
-			${renderStack.join("")}
-			${deity.anathema || deity.edicts || deity.followerAlignment ? Renderer.utils.getDividerDiv() : ""}
-			${Renderer.deity.getEdictsAnathemaAlign(deity)}
-			${deity.devoteeBenefits ? Renderer.utils.getDividerDiv() : ""}
-			${Renderer.deity.getDevoteeBenefits(deity)}
-			${opts.noPage ? "" : Renderer.utils.getPageP(deity)}`;
+		
+		// Morality block
+		if (deity.alignment) renderStack.push(Renderer.deity.getAlignment(deity.alignment));
+		if (deity.areasOfConcern) renderStack.push(`<p class="pf2-stat__section"><strong>Areas of Concern&nbsp;</strong>${deity.areasOfConcern.join(", ")}</p>`);
+		if (deity.edicts) renderStack.push(Renderer.deity.getCommandments(deity.edicts, "Edicts"));
+		if (deity.anathema) renderStack.push(Renderer.deity.getCommandments(deity.anathema, "Anathema"));
+		
+		// Cleric stuff
+		if ((deity.edicts || deity.anathema) && deity.font) renderStack.push(Renderer.utils.getDividerDiv());
+		if (deity.font) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(deity.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`);
+		if (deity.divineAbility) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(deity.divineAbility.entry ? deity.divineAbility.entry : deity.divineAbility.abilities.join(", "))}</p>`);
+		if (deity.divineSkill) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(deity.divineSkill.entry ? deity.divineSkill.entry : deity.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`);
+		if (deity.domains) renderStack.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(deity.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
+		if (deity.alternateDomains) renderStack.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(deity.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
+		if (deity.spells) renderStack.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(deity.spells))}</p>`);
+		if (deity.favoredWeapon) renderStack.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(deity.favoredWeapon.entry ? deity.favoredWeapon.entry : deity.favoredWeapon.weapons.map(w => `{@item ${w}}`).join(", "))}</p>`);
+		
+		if (deity.entries) renderer.recursiveRender(deity.entries, renderStack, { pf2StatFix: true });
+		
+		if (deity.avatar) {
+			renderStack.push(`<p class="pf2-h3">Avatar</p>`);
+			if (deity.avatar.preface) renderStack.push(`<p class="pf2-stat">${renderer.render(deity.avatar.preface)}</p>`);
+			renderStack.push(`<p class="pf2-stat"><strong>${deity.name}</strong> `);
+			
+			if (deity.avatar.speed) renderStack.push(`${deity.avatar.speed.walk ? `Speed ${deity.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(deity.avatar.speed).filter(type => type !== "walk").map(s => (typeof deity.avatar.speed[s] === "number") ? `, ${s} Speed ${deity.avatar.speed[s]} feet` : "").join("")}`);
+			
+			let notes = [];
+			if (deity.avatar.airWalk) notes.push(`{@spell air walk}`);
+			if (deity.avatar.immune) notes.push(`immune to ${deity.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`);
+			if (deity.avatar.ignoreTerrain) notes.push("ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}");
+			if (deity.avatar.speed.speedNote) notes.push(`${deity.avatar.speed.speedNote}`);
+			if (notes.length > 0) renderStack.push(`, ${renderer.render(notes.join(", "))}`);
+			if (deity.avatar.shield) renderStack.push(`; shield (${deity.avatar.shield} Hardness, can't be damaged)`);
+			
+			if (deity.avatar.melee || deity.avatar.ranged) {
+				renderStack.push(`; `);
+				if (deity.avatar.melee) {
+					deity.avatar.melee.forEach((element, index, array) => {
+						renderStack.push(Renderer.deity.getRenderedMeleeAttack(element));
+						renderStack.push(array.length - 1 === index ? "" : "; ");
+					});
+				}
+				if (deity.avatar.ranged) {
+					if (deity.avatar.melee && Object.keys(deity.avatar.melee).length) renderStack.push(`; `);
+					deity.avatar.ranged.forEach((element, index, array) => {
+						renderStack.push(Renderer.deity.getRenderedRangedAttack(element));
+						renderStack.push(array.length - 1 === index ? "" : "; ");
+					});
+				}
+				renderStack.push(`.`);
+			}
+			renderStack.push(`</p>`);
+		}
+		
+		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(deity));
+		
+		return renderStack.join("");
 	},
 
-	getEdictsAnathemaAlign (deity) {
-		let out = [];
+	getAlignment (alignment) {
+		if (alignment.entry) {
+			const renderer = Renderer.get();
+			return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(alignment.entry)}</p>`;
+		} else {
+			if (alignment.alignment && alignment.followerAlignment) {
+				return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment)} (${formatAlignmentList(alignment.followerAlignment)})</p>`
+			} else {
+				return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment || alignment.followerAlignment)}</p>`
+			}
+		}
+		
+		function formatAlignmentList (alignments) {
+			const renderer = Renderer.get();
+			return renderer.render(alignments.map(a => a.length > 2 ? a : `{@trait ${a.toUpperCase()}}`).join(", "));
+		}
+	},
+
+	getCommandments (commandments, type) {
 		const renderer = Renderer.get();
-		const edictsDelim = (deity.edicts || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
-		const anathemaDelim = (deity.anathema || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
-		if (deity.edicts) out.push(`<p class="pf2-stat__section"><strong>Edicts&nbsp;</strong>${renderer.render(deity.edicts.join(edictsDelim))}</p>`)
-		if (deity.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.render(deity.anathema.join(anathemaDelim))}</p>`)
-		if (deity.followerAlignment) out.push(renderer.render(`<p class="pf2-stat__section"><strong>Follower Alignments&nbsp;</strong>${deity.followerAlignment.entry ? deity.followerAlignment.entry : deity.followerAlignment.alignment.map(a => a.toUpperCase()).map(a => a.length > 2 ? a : `{@trait ${a}}`).join(", ")}</p>`))
-		return out.join("")
+		const delim = commandments.some(str => str.includes(",")) ? "; " : ", ";
+		return `<p class="pf2-stat__section"><strong>${type}&nbsp;</strong>${renderer.render(commandments.join(delim))}</p>`
 	},
 
 	getClericSpells (spells) {
 		return Object.keys(spells).map(k => `${Parser.getOrdinalForm(k)}: ${spells[k].map(s => `{@spell ${s}}`).join(", ")}`).join(", ").replace(/ \((.+)\)\}/g, `} ($1)`);
-	},
-
-	getDevoteeBenefits (deity) {
-		if (deity.devoteeBenefits == null) return "";
-		let out = [];
-		const renderer = Renderer.get()
-		const b = deity.devoteeBenefits;
-		// FIXME: See FEAT-39 on Discords
-		if (b.font) out.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`)
-		if (b.ability) out.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>`)
-		if (b.skill) out.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`)
-		if (b.domains) out.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`)
-		if (b.alternateDomains) out.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`)
-		if (b.spells) out.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>`)
-		if (b.weapon) out.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>`)
-		if (b.avatar) {
-			out.push(`<p class="pf2-h3">Avatar</p>`)
-			if (b.avatar.preface) out.push(`<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>`)
-			out.push(`<p class="pf2-stat"><strong>${deity.name}</strong> `)
-			if (b.avatar.speed) out.push(`${b.avatar.speed.walk ? `Speed ${b.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(b.avatar.speed).filter(type => type !== "walk").map(s => (typeof b.avatar.speed[s] === "number") ? `, ${s} Speed ${b.avatar.speed[s]} feet` : "").join("")}`)
-			let notes = []
-			if (b.avatar.airWalk) notes.push(`{@spell air walk}`)
-			if (b.avatar.immune) notes.push(`immune to ${b.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`)
-			if (b.avatar.ignoreTerrain) notes.push("ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}")
-			if (b.avatar.speed.speedNote) notes.push(`${b.avatar.speed.speedNote}`)
-			if (notes.length > 0) out.push(`, ${renderer.render(notes.join(", "))}`)
-			if (b.avatar.shield) out.push(`; shield (${b.avatar.shield} Hardness, can't be damaged)`)
-			if (b.avatar.melee || b.avatar.ranged) {
-				out.push(`; `)
-				if (b.avatar.melee) {
-					b.avatar.melee.forEach((element, index, array) => {
-						out.push(Renderer.deity.getRenderedMeleeAttack(element))
-						out.push(array.length - 1 === index ? "" : "; ")
-					});
-				}
-				if (b.avatar.ranged) {
-					if (b.avatar.melee && Object.keys(b.avatar.melee).length) out.push(`; `)
-					b.avatar.ranged.forEach((element, index, array) => {
-						out.push(Renderer.deity.getRenderedRangedAttack(element))
-						out.push(array.length - 1 === index ? "" : "; ")
-					});
-				}
-				out.push(`.`)
-			}
-			out.push(`</p>`)
-		}
-
-		return out.join("")
 	},
 
 	getRenderedRangedAttack (attack) {
@@ -4982,17 +5008,18 @@ Renderer.item = {
 			if (item.activate.activity != null) {
 				renderStack.push(`${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
 			}
+			const activateTextIndex = renderStack.length; // This index is referenced to see if anything is appended after the action symbol
 			if (item.activate.components != null) {
 				renderStack.push(`${renderer.render(item.activate.components)}`);
 			}
 			if (item.activate.frequency != null) {
-				renderStack.push(`; <strong>Frequency&nbsp;</strong>${renderer.render(Parser.freqToFullEntry(item.activate.frequency))}`);
+				renderStack.push(`${renderStack[activateTextIndex] ? "; " : ""}<strong>Frequency&nbsp;</strong>${renderer.render(Parser.freqToFullEntry(item.activate.frequency))}`);
 			}
 			if (item.activate.trigger != null) {
-				renderStack.push(`; <strong>Trigger&nbsp;</strong>${renderer.render(item.activate.trigger)}`);
+				renderStack.push(`${renderStack[activateTextIndex] ? "; " : ""}<strong>Trigger&nbsp;</strong>${renderer.render(item.activate.trigger)}`);
 			}
 			if (item.activate.requirements != null) {
-				renderStack.push(`; <strong>Requirements&nbsp;</strong>${renderer.render(item.activate.requirements)}`);
+				renderStack.push(`${renderStack[activateTextIndex] ? "; " : ""}<strong>Requirements&nbsp;</strong>${renderer.render(item.activate.requirements)}`);
 			}
 			renderStack.push(`</p>`);
 		}

@@ -246,6 +246,7 @@ class Converter {
 		this._parseBackgroundAbilityBoosts(background);
 		this._parseBackgroundSkills(background);
 		this._parseBackgroundFeats(background);
+		this._parseBackgroundSpells(background);
 		this._parseBackgroundMisc(background);
 		if (this._tokenStack.length > 0) {
 			this._cbWarn(`Token stack was not empty after parsing background "${background.name}"!`);
@@ -652,8 +653,18 @@ class Converter {
 		const feats = Array.from(new Set(Array.from(entriesString.matchAll(reFeat)).filter(Boolean).map(m => m[1])));
 		if (feats.length) background.feats = feats;
 	}
+	_parseBackgroundSpells (background) {
+		// Look for "cast {@spell ...}" as a tell that there's a granted spell
+		const spells = background.entries.filter(e => typeof e === "string").join(" ").match(/(?<=\bcast (the )?\{@spell )[^{}]+(?=\})/gi);
+		if (spells) background.spells = spells;
+	}
 	_parseBackgroundMisc (background) {
-		if (background.entries.some(it => it.type === "ability")) background.ability = true;
+		let miscTags = [];
+		if (background.entries.some(it => it.type === "ability")) miscTags.push("ability");
+		if (background.entries.some(it => typeof it === "string" ? !!it.match(/\+\d \w+ bonus/) : false)) miscTags.push("situationalBenefit"); // will catch most
+		if (background.entries.some(it => typeof it === "string" ? !!it.match(/low-light vision|darkvision|scent|thoughtsense|tremorsense|wavesense/) : false)) miscTags.push("sense"); // best attempt
+		// equipment and drawbacks deemed infeasible to automatically recognise
+		if (miscTags.length) background.miscTags = miscTags;
 	}
 
 	_parseCreatureProperties (obj) {
