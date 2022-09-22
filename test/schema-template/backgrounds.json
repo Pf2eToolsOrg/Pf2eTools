@@ -81,7 +81,7 @@
 						"minItems": 1,
 						"uniqueItems": true
 					},
-					"spells": [
+					"spells": {
 						"description": "List each spell the background grants in the form of `name|source` (e.g. `fireball`, `ill omens|LOGM`)",
 						"type": "array",
 						"items": {
@@ -89,7 +89,7 @@
 						},
 						"minItems": 1,
 						"uniqueItems": true
-					],
+					},
 					"miscTags": {
 						"description": "ability = Used when a background grants an active, voluntary ability\n equipment = Used when a background grants free items (not access/proficiency\u2014the actual concrete thing)\n sense = Used when a background grants a sense (e.g. darkvision, scent)\n situationalBenefit = Used when a background grants a benefit that isn't a skill/feat/spell/etc., but also isn't explicitly a new ability (e.g. a +1 circumstance bonus to Seek on cloudy days)\n drawback = Used when a background comes with an objective, mandatory drawback (e.g. penalty to some check, inability to use an item or spell; not something that is both good and bad)",
 						"type": "array",
@@ -102,7 +102,7 @@
 								"situationalBenefit",
 								"drawback"
 							]
-						}
+						},
 						"minItems": 1,
 						"uniqueItems": true
 					}
