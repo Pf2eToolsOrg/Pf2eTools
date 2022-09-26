@@ -335,7 +335,7 @@ PropOrder._CREATURE = [
 
 	"level",
 	"traits",
-	"creatureType",
+	// "creatureType", // Does removing this break anything?
 
 	"perception",
 	"senses",
@@ -358,13 +358,17 @@ PropOrder._CREATURE = [
 	}),
 	"items",
 
-	"ac",
-	"savingThrows",
-	"hp",
-	"hardness",
-	"immunities",
-	"weaknesses",
-	"resistances",
+	new PropOrder._ObjectKey("defenses", {
+		order: [
+			"ac",
+			"savingThrows",
+			"hp",
+			"hardness",
+			"immunities",
+			"weaknesses",
+			"resistances",
+		],
+	}),
 
 	"speed",
 	"attacks",

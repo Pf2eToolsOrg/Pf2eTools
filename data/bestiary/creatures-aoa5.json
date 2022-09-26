@@ -13,9 +13,6 @@
 				"construct",
 				"mindless"
 			],
-			"creatureType": [
-				"Construct"
-			],
 			"perception": {
 				"std": 17
 			},
@@ -25,7 +22,7 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 23
 				}
 			},
@@ -37,41 +34,6 @@
 				"wis": 1,
 				"cha": -5
 			},
-			"ac": {
-				"std": 30
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 21
-				},
-				"ref": {
-					"std": 18
-				},
-				"will": {
-					"std": 15
-				}
-			},
-			"hp": [
-				{
-					"hp": 145,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"bleed",
-				"disease",
-				"death effects",
-				"doomed",
-				"drained",
-				"fatigued"
-			],
-			"resistances": [
-				{
-					"name": "physical",
-					"amount": 10,
-					"note": "(except adamantine)"
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -142,6 +104,43 @@
 						"name": "Soul Shriek"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 145,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"disease",
+					"death effects",
+					"doomed",
+					"drained",
+					"fatigued"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 10,
+						"note": "(except adamantine)"
+					}
+				]
 			}
 		},
 		{
@@ -156,9 +155,6 @@
 				"large",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 20
 			},
@@ -172,15 +168,15 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Jotun"
+					"common",
+					"jotun"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 25
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 24
 				}
 			},
@@ -194,29 +190,6 @@
 			},
 			"items": [
 				"+1 striking longsword (2)"
-			],
-			"ac": {
-				"std": 35
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 23
-				},
-				"ref": {
-					"std": 22
-				},
-				"will": {
-					"std": 20
-				}
-			},
-			"hp": [
-				{
-					"hp": 235,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"electricity"
 			],
 			"speed": {
 				"walk": 35
@@ -345,6 +318,31 @@
 						"name": "Sixfold Flurry"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 35
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 23
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 20
+					}
+				},
+				"hp": [
+					{
+						"hp": 235,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"electricity"
+				]
 			}
 		},
 		{
@@ -359,9 +357,6 @@
 				"devil",
 				"fiend"
 			],
-			"creatureType": [
-				"Fiend"
-			],
 			"perception": {
 				"std": 28
 			},
@@ -372,29 +367,29 @@
 			],
 			"languages": {
 				"languages": [
-					"Celestial",
-					"Common",
-					"Draconic",
-					"Infernal;"
+					"celestial",
+					"common",
+					"draconic",
+					"infernal"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 28
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 32
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 30
 				},
-				"Religion": {
+				"religion": {
 					"std": 28
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 26
 				},
-				"Warfare Lore": {
+				"warfare lore": {
 					"std": 30
 				}
 			},
@@ -408,35 +403,6 @@
 			},
 			"items": [
 				"+2 greater striking unholy spiked chain"
-			],
-			"ac": {
-				"std": 38
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 31
-				},
-				"ref": {
-					"std": 26
-				},
-				"will": {
-					"std": 26
-				}
-			},
-			"hp": [
-				{
-					"hp": 300,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"fire"
-			],
-			"weaknesses": [
-				{
-					"amount": 15,
-					"name": "good"
-				}
 			],
 			"speed": {
 				"walk": 25,
@@ -644,6 +610,37 @@
 						"name": "Stunning Chain"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 38
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 31
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 26
+					}
+				},
+				"hp": [
+					{
+						"hp": 300,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"fire"
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "good"
+					}
+				]
 			}
 		},
 		{
@@ -657,9 +654,6 @@
 				"medium",
 				"daemon",
 				"fiend"
-			],
-			"creatureType": [
-				"Fiend"
 			],
 			"perception": {
 				"std": 26
@@ -678,31 +672,31 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Draconic",
-					"Infernal"
+					"abyssal",
+					"draconic",
+					"infernal"
 				],
 				"abilities": [
 					"telepathy 100 feet"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 30
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 26
 				},
-				"Deception": {
+				"deception": {
 					"std": 26
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 28
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 30
 				},
-				"Thievery": {
+				"thievery": {
 					"std": 26
 				}
 			},
@@ -714,41 +708,6 @@
 				"wis": 7,
 				"cha": 5
 			},
-			"ac": {
-				"std": 38
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 26
-				},
-				"ref": {
-					"std": 30
-				},
-				"will": {
-					"std": 26
-				}
-			},
-			"hp": [
-				{
-					"hp": 225,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"death effects"
-			],
-			"weaknesses": [
-				{
-					"name": "good"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 10,
-					"name": "physical",
-					"note": "(except adamantine)"
-				}
-			],
 			"speed": {
 				"abilities": [
 					"air walk"
@@ -831,7 +790,7 @@
 				"top": [
 					{
 						"entries": [
-							"+30, {@skill Thievery} +26 Str +4, Dex +7, Con +7, Int +3, Wis +7,"
+							"+30, {@skill Thievery} +26 Str +4, Dex +7, Con +7, Int +3, Wis +7"
 						],
 						"name": "Stealth"
 					},
@@ -881,6 +840,43 @@
 						"name": "Manifest Dagger"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 38
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 26
+					}
+				},
+				"hp": [
+					{
+						"hp": 225,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"death effects"
+				],
+				"weaknesses": [
+					{
+						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "physical",
+						"note": "(except adamantine)"
+					}
+				]
 			}
 		},
 		{
@@ -893,9 +889,6 @@
 				"n",
 				"gargantuan",
 				"animal"
-			],
-			"creatureType": [
-				"Animal"
 			],
 			"perception": {
 				"std": 30
@@ -911,13 +904,13 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 33
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 35
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 33,
 					"in deserts": 37
 				}
@@ -930,26 +923,6 @@
 				"wis": 4,
 				"cha": -4
 			},
-			"ac": {
-				"std": 42
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 31
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 28
-				}
-			},
-			"hp": [
-				{
-					"hp": 340,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 50,
 				"burrow": 25,
@@ -1030,6 +1003,28 @@
 						"name": "Venom Spray"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 31
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 28
+					}
+				},
+				"hp": [
+					{
+						"hp": 340,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1043,9 +1038,6 @@
 				"medium",
 				"animal"
 			],
-			"creatureType": [
-				"Animal"
-			],
 			"perception": {
 				"std": 6
 			},
@@ -1055,13 +1047,13 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 8
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 6
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 6,
 					"in deserts": 10
 				}
@@ -1074,26 +1066,6 @@
 				"wis": 1,
 				"cha": -4
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 6
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 20,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 35,
 				"climb": 25
@@ -1151,6 +1123,28 @@
 						}
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 20,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1164,9 +1158,6 @@
 				"ne",
 				"medium",
 				"ooze"
-			],
-			"creatureType": [
-				"Ooze"
 			],
 			"perception": {
 				"std": 20
@@ -1182,23 +1173,23 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Aklo",
-					"Infernal",
-					"Undercommon"
+					"abyssal",
+					"aklo",
+					"infernal",
+					"undercommon"
 				],
 				"abilities": [
 					"telepathy 100 feet"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 30
 				},
-				"Religion": {
+				"religion": {
 					"std": 29
 				},
-				"Ancient History Lore": {
+				"ancient history lore": {
 					"std": 30
 				}
 			},
@@ -1210,34 +1201,6 @@
 				"wis": 6,
 				"cha": 6
 			},
-			"ac": {
-				"std": 26
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 30
-				},
-				"ref": {
-					"std": 20
-				},
-				"will": {
-					"std": 29
-				}
-			},
-			"hp": [
-				{
-					"hp": 350,
-					"abilities": [
-						"{@ability regeneration} 15 (deactivated by good)"
-					]
-				}
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "physical"
-				}
-			],
 			"speed": {
 				"walk": 20,
 				"fly": 20
@@ -1405,6 +1368,36 @@
 						"name": "Resanguinate"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 20
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 350,
+						"abilities": [
+							"{@ability regeneration} 15 (deactivated by good)"
+						]
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "physical"
+					}
+				]
 			}
 		},
 		{
@@ -1419,9 +1412,6 @@
 				"large",
 				"beast"
 			],
-			"creatureType": [
-				"Beast"
-			],
 			"perception": {
 				"std": 29
 			},
@@ -1431,20 +1421,20 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 33
 				},
-				"Crafting": {
+				"crafting": {
 					"std": 31,
 					"for poison": 35
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 30
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 29
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 33
 				}
 			},
@@ -1456,30 +1446,6 @@
 				"wis": 3,
 				"cha": 6
 			},
-			"ac": {
-				"std": 41
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 27
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 29
-				}
-			},
-			"hp": [
-				{
-					"hp": 340,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"poison",
-				"controlled"
-			],
 			"speed": {
 				"walk": 40,
 				"climb": 40,
@@ -1616,6 +1582,32 @@
 						"name": "Poison Weapon"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 41
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 340,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"poison",
+					"controlled"
+				]
 			}
 		},
 		{
@@ -1630,9 +1622,6 @@
 				"demon",
 				"fiend"
 			],
-			"creatureType": [
-				"Fiend"
-			],
 			"perception": {
 				"std": 25
 			},
@@ -1646,34 +1635,34 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Celestial",
-					"Draconic"
+					"abyssal",
+					"celestial",
+					"draconic"
 				],
 				"abilities": [
 					"telepathy 100 feet"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 25
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 28
 				},
-				"Deception": {
+				"deception": {
 					"std": 26
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 24
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 28
 				},
-				"Religion": {
+				"religion": {
 					"std": 25
 				},
-				"Abyss Lore": {
+				"abyss lore": {
 					"std": 25
 				}
 			},
@@ -1685,36 +1674,6 @@
 				"wis": 5,
 				"cha": 4
 			},
-			"ac": {
-				"std": 34
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 26
-				},
-				"ref": {
-					"std": 22
-				},
-				"will": {
-					"std": 23
-				}
-			},
-			"hp": [
-				{
-					"hp": 360,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 15,
-					"name": "cold iron"
-				},
-				{
-					"amount": 15,
-					"name": "good"
-				}
-			],
 			"speed": {
 				"walk": 30,
 				"fly": 40
@@ -1885,6 +1844,38 @@
 						"name": "to the Light of"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 360,
+						"abilities": null
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "cold iron"
+					},
+					{
+						"amount": 15,
+						"name": "good"
+					}
+				]
 			}
 		},
 		{
@@ -1899,40 +1890,37 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 30
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Gnoll",
-					"Kelish",
-					"Osiriani"
+					"common",
+					"gnoll",
+					"kelish",
+					"osiriani"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 32
 				},
-				"Deception": {
+				"deception": {
 					"std": 29
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 27
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 31
 				},
-				"Society": {
+				"society": {
 					"std": 28
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 30
 				},
-				"Thievery": {
+				"thievery": {
 					"std": 33
 				}
 			},
@@ -1944,26 +1932,6 @@
 				"wis": 5,
 				"cha": 4
 			},
-			"ac": {
-				"std": 39
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 27
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 29
-				}
-			},
-			"hp": [
-				{
-					"hp": 315,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -2028,7 +1996,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Scarlet Triad boss Feints a target, {@action Stride||Strides} up to their Speed, and makes a {@action Strike} with their shortbow in any order. They can {@action Feint} any target within 30 feet when using this ability."
+							"The Scarlet Triad boss {@action Feint||Feints} a target, {@action Stride||Strides} up to their Speed, and makes a {@action Strike} with their shortbow in any order. They can {@action Feint} any target within 30 feet when using this ability."
 						],
 						"name": "Darting Shot"
 					},
@@ -2040,6 +2008,28 @@
 						"generic": {
 							"tag": "ability"
 						}
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 315,
+						"abilities": null
 					}
 				]
 			}
@@ -2057,29 +2047,26 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 25
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Osiriani"
+					"common",
+					"osiriani"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 30
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 28
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 27
 				},
-				"Underworld Lore": {
+				"underworld lore": {
 					"std": 26
 				}
 			},
@@ -2091,26 +2078,6 @@
 				"wis": 4,
 				"cha": 5
 			},
-			"ac": {
-				"std": 36
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 30
-				},
-				"ref": {
-					"std": 26
-				},
-				"will": {
-					"std": 24
-				}
-			},
-			"hp": [
-				{
-					"hp": 275,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2209,6 +2176,28 @@
 						"name": "Efficient Capture"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 36
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 24
+					}
+				},
+				"hp": [
+					{
+						"hp": 275,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2224,9 +2213,6 @@
 				"humanoid",
 				"tiefling"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 26
 			},
@@ -2237,23 +2223,23 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Common",
-					"Daemonic",
-					"Draconic,"
+					"abyssal",
+					"common",
+					"daemonic",
+					"draconic"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 30
 				},
-				"Crafting": {
+				"crafting": {
 					"std": 27
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 25
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 27
 				}
 			},
@@ -2265,26 +2251,6 @@
 				"wis": 4,
 				"cha": 7
 			},
-			"ac": {
-				"std": 37
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 23
-				},
-				"ref": {
-					"std": 26
-				},
-				"will": {
-					"std": 29
-				}
-			},
-			"hp": [
-				{
-					"hp": 270,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2404,7 +2370,7 @@
 				"top": [
 					{
 						"entries": [
-							"Skills {@skill Arcana} +30, {@skill Crafting} +27, {@skill Intimidation} +25,"
+							"Skills {@skill Arcana} +30, {@skill Crafting} +27, {@skill Intimidation} +25"
 						],
 						"name": "Infernal, Osiriani"
 					},
@@ -2413,6 +2379,28 @@
 							"+27 Str +3, Dex +6, Con +4, Int +5, Wis +4, Cha +7 Items +2 striking dagger, greater healing potion, wand of crushing despair."
 						],
 						"name": "Occultism"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 23
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 270,
+						"abilities": null
 					}
 				]
 			}
@@ -2430,29 +2418,26 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 26
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 30
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 30
 				},
-				"Deception": {
+				"deception": {
 					"std": 28
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 33
 				},
-				"Performance": {
+				"performance": {
 					"std": 33
 				},
-				"Society": {
+				"society": {
 					"std": 28
 				}
 			},
@@ -2464,26 +2449,6 @@
 				"wis": 3,
 				"cha": 5
 			},
-			"ac": {
-				"std": 40
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 29
-				},
-				"ref": {
-					"std": 32
-				},
-				"will": {
-					"std": 27
-				}
-			},
-			"hp": [
-				{
-					"hp": 330,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -2606,6 +2571,28 @@
 						"name": "Weapon Master"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 330,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2622,9 +2609,6 @@
 				"mindless",
 				"soulbound"
 			],
-			"creatureType": [
-				"Construct"
-			],
 			"perception": {
 				"std": 28
 			},
@@ -2634,7 +2618,7 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 33
 				}
 			},
@@ -2646,29 +2630,6 @@
 				"wis": 4,
 				"cha": -2
 			},
-			"ac": {
-				"std": 39
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 30
-				},
-				"ref": {
-					"std": 25
-				},
-				"will": {
-					"std": 28
-				}
-			},
-			"hp": [
-				{
-					"hp": 255,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"as aluum enforcer"
-			],
 			"speed": {
 				"walk": 25,
 				"fly": 25
@@ -2790,6 +2751,31 @@
 						"name": "Soul Shriek"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 28
+					}
+				},
+				"hp": [
+					{
+						"hp": 255,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"as aluum enforcer"
+				]
 			}
 		},
 		{
@@ -2804,9 +2790,6 @@
 				"tiny",
 				"undead"
 			],
-			"creatureType": [
-				"Undead"
-			],
 			"perception": {
 				"std": 25
 			},
@@ -2820,29 +2803,29 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Ancient Osiriani",
-					"Daemonic",
-					"Draconic,"
+					"abyssal",
+					"ancient osiriani",
+					"daemonic",
+					"draconic"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 31
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 38
 				},
-				"Deception": {
+				"deception": {
 					"std": 33
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 35
 				},
-				"Religion": {
+				"religion": {
 					"std": 31
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 33
 				}
 			},
@@ -2856,38 +2839,6 @@
 			},
 			"items": [
 				"demilich eye gem (2)"
-			],
-			"ac": {
-				"std": 44
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 29
-				},
-				"ref": {
-					"std": 32
-				},
-				"will": {
-					"std": 35
-				}
-			},
-			"hp": [
-				{
-					"hp": 300,
-					"abilities": [
-						"negative healing"
-					]
-				}
-			],
-			"immunities": [
-				"disease",
-				"paralyzed"
-			],
-			"resistances": [
-				{
-					"amount": 10,
-					"name": "cold"
-				}
 			],
 			"speed": {
 				"fly": 30
@@ -2967,7 +2918,7 @@
 				"top": [
 					{
 						"entries": [
-							"Skills {@skill Acrobatics} +31, {@skill Arcana} +38, {@skill Deception} +33,"
+							"Skills {@skill Acrobatics} +31, {@skill Arcana} +38, {@skill Deception} +33"
 						],
 						"name": "Elven, Infernal, Necril"
 					},
@@ -3083,6 +3034,40 @@
 						"entries_as_xyz": "Ability not found: 'Trap Soul As demilich, but DC 43 Fortitude.' in Teyam Ishtori, p.61"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 44
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": [
+					{
+						"hp": 300,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed"
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "cold"
+					}
+				]
 			}
 		},
 		{
@@ -3098,44 +3083,41 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 35
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic",
-					"Dwarven",
-					"Gnoll",
-					"Kelesh,"
+					"common",
+					"draconic",
+					"dwarven",
+					"gnoll",
+					"kelesh"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 37
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 37
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 37
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 40
 				},
-				"Society": {
+				"society": {
 					"std": 27
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 31
 				},
-				"Thievery": {
+				"thievery": {
 					"std": 33
 				},
-				"Underworld Lore": {
+				"underworld lore": {
 					"std": 31
 				}
 			},
@@ -3147,27 +3129,6 @@
 				"wis": 8,
 				"cha": 9
 			},
-			"ac": {
-				"std": 43,
-				"with shield raised": 45
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 32
-				},
-				"ref": {
-					"std": 29
-				},
-				"will": {
-					"std": 35
-				}
-			},
-			"hp": [
-				{
-					"hp": 350,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -3220,7 +3181,7 @@
 				"top": [
 					{
 						"entries": [
-							"Skills {@skill Acrobatics} +37, {@skill Arcana} + 33, {@skill Athletics} +37, {@skill Deception} +40, {@skill Diplomacy} +37, {@skill Intimidation} +40, {@skill Society} +27,"
+							"Skills {@skill Acrobatics} +37, {@skill Arcana} + 33, {@skill Athletics} +37, {@skill Deception} +40, {@skill Diplomacy} +37, {@skill Intimidation} +40, {@skill Society} +27"
 						],
 						"name": "Osiriani"
 					},
@@ -3314,6 +3275,29 @@
 						"name": "Reactionary"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 43,
+					"with shield raised": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": [
+					{
+						"hp": 350,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -3328,9 +3312,6 @@
 				"medium",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 12
 			},
@@ -3344,24 +3325,24 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic"
+					"common",
+					"draconic"
 				],
 				"abilities": [
 					"one or"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 16
 				},
-				"Deception": {
+				"deception": {
 					"std": 15
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 15
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 15
 				}
 			},
@@ -3375,32 +3356,6 @@
 			},
 			"items": [
 				"+1 ranseur"
-			],
-			"ac": {
-				"std": 22
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 13
-				},
-				"ref": {
-					"std": 13
-				},
-				"will": {
-					"std": 15
-				}
-			},
-			"hp": [
-				{
-					"hp": 110,
-					"abilities": null
-				}
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "force"
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -3517,7 +3472,7 @@
 				"top": [
 					{
 						"entries": [
-							"+14, {@skill Diplomacy} +15,"
+							"+14, {@skill Diplomacy} +15"
 						],
 						"name": "Desert Lore"
 					},
@@ -3573,6 +3528,34 @@
 						"name": "Force Bolt"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 110,
+						"abilities": null
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "force"
+					}
+				]
 			}
 		},
 		{
@@ -3588,9 +3571,6 @@
 				"animal",
 				"fire"
 			],
-			"creatureType": [
-				"Animal"
-			],
 			"perception": {
 				"std": 29
 			},
@@ -3605,13 +3585,13 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 34
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 31
 				},
-				"Survival": {
+				"survival": {
 					"std": 29
 				}
 			},
@@ -3623,31 +3603,6 @@
 				"wis": 4,
 				"cha": 5
 			},
-			"ac": {
-				"std": 40
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 31
-				},
-				"ref": {
-					"std": 29
-				},
-				"will": {
-					"std": 23
-				}
-			},
-			"hp": [
-				{
-					"hp": 340,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"chaotic",
-				"evil",
-				"fire"
-			],
 			"speed": {
 				"walk": 40,
 				"burrow": 40,
@@ -3759,6 +3714,33 @@
 						"name": "Heat Surge"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 31
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 340,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"chaotic",
+					"evil",
+					"fire"
+				]
 			}
 		},
 		{
@@ -3774,23 +3756,20 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 24
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 28
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 24
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 24
 				},
-				"Society": {
+				"society": {
 					"std": 22
 				}
 			},
@@ -3802,26 +3781,6 @@
 				"wis": 4,
 				"cha": 4
 			},
-			"ac": {
-				"std": 36
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 26
-				},
-				"ref": {
-					"std": 26
-				},
-				"will": {
-					"std": 29
-				}
-			},
-			"hp": [
-				{
-					"hp": 255,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -3910,6 +3869,28 @@
 							"Guard takes no penalty for making nonlethal attacks with a weapon that doesn't have the {@trait nonlethal} trait. The guard's nonlethal Strikes against a creature that is not wielding a weapon deal an additional {@dice 2d6} damage."
 						],
 						"name": "Subduing Strikes A Zephyr"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 36
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 255,
+						"abilities": null
 					}
 				]
 			}

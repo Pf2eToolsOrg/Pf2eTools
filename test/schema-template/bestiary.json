@@ -46,19 +46,10 @@
 						"minItems": 1,
 						"uniqueItems": true
 					},
-					"creatureType": {
-						"type": "array",
-						"items": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/creatureTypes"
-						},
-						"minItems": 1,
-						"uniqueItems": true
-					},
 					"perception": {
 						"type": "object",
 						"properties": {
-							"default": {
+							"std": {
 								"type": "integer"
 							}
 						},
@@ -96,11 +87,11 @@
 						"propertyNames": {
 							"oneOf": [
 								{
-									"$ref": "utils.json#/definitions/skillNameUpper"
+									"$ref": "utils.json#/definitions/skillName"
 								},
 								{
 									"type": "string",
-									"pattern": "^[a-zA-Z]+ Lore$"
+									"pattern": "([a-z]+ |)lore( \\(.+?\\)|)$"
 								}
 							]
 						},
@@ -119,24 +110,28 @@
 						}
 					},
 					"senses": {
-						"type": "object",
-						"propertyNames": {
-							"enum": [
-								"precise",
-								"imprecise",
-								"vague",
-								"other"
-							]
-						},
-						"additionalProperties": {
-							"type": "array",
-							"items": {
-								"type": "string"
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"precise",
+										"imprecise",
+										"vague",
+										"other"
+									]
+								},
+								"range": {
+									"type": "integer"
+								}
 							},
-							"minItems": 1,
-							"uniqueItems": true
-						},
-						"minProperties": 1
+							"minProperties": 1
+						}
 					},
 					"abilityMods": {
 						"$ref": "utils.json#/definitions/abilityMods"
@@ -148,40 +143,8 @@
 						},
 						"minItems": 1
 					},
-					"ac": {
-						"type": "object",
-						"properties": {
-							"default": {
-								"type": "integer"
-							}
-						},
-						"additionalProperties": {
-							"type": "integer"
-						},
-						"minProperties": 1
-					},
-					"savingThrows": {
-						"$ref": "utils.json#/definitions/savingThrows"
-					},
-					"hp": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"hp": {
-									"type": "integer",
-									"minimum": 1
-								},
-								"abilities": {
-									"type": "object"
-								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"hp"
-							]
-						},
-						"minItems": 1
+					"defenses": {
+						"$ref": "utils.json#/definitions/defenses"
 					},
 					"speed": {
 						"$ref": "utils.json#/definitions/speed"
@@ -194,54 +157,38 @@
 						"uniqueItems": true,
 						"minItems": 1
 					},
-					"abilitiesTop": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/abilityBlock"
-						},
-						"uniqueItems": true,
-						"minItems": 1
-					},
-					"abilitiesMid": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/abilityBlock"
-						},
-						"uniqueItems": true,
-						"minItems": 1
-					},
-					"abilitiesBot": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/abilityBlock"
+					"abilities": {
+						"type": "object",
+						"properties": {
+							"top": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"mid": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"bot": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
 						},
 						"uniqueItems": true,
 						"minItems": 1
 					},
 					"inflicts": {
-						"type": "object",
-						"properties": {
-							"damage": {
-								"type": "array",
-								"items": {
-									"$ref": "utils.json#/definitions/damageType"
-								},
-								"minItems": 1,
-								"uniqueItems": true
-							},
-							"condition": {
-								"type": "array",
-								"items": {
-									"$ref": "utils.json#/definitions/conditions"
-								},
-								"minItems": 1,
-								"uniqueItems": true
-							}
-						},
-						"additionalProperties": false,
-						"minProperties": 1
-					},
-					"immunities": {
 						"type": "object",
 						"properties": {
 							"damage": {
@@ -290,14 +237,12 @@
 								"type": {
 									"type": "string",
 									"enum": [
-										"Innate"
+										"Innate",
+										"Prepared"
 									]
 								},
 								"tradition": {
-									"type": "string",
-									"enum": [
-										"Arcane"
-									]
+									"$ref": "utils.json#/definitions/tradition"
 								},
 								"attack": {
 									"type": "integer",

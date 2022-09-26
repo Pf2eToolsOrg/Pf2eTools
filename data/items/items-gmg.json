@@ -579,7 +579,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -599,7 +599,7 @@
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition unconscious} and can ask a question with the effects of augury except the flat check DC is 10",
+							"entry": "{@condition unconscious} and can ask a question with the effects of {@spell augury} except the flat check DC is {@flatDC 10}",
 							"duration": "10 minutes"
 						}
 					]

@@ -530,7 +530,9 @@
 				"Angel Of Death|APG",
 				"Assassinate|APG",
 				"Expert Backstabber|APG",
-				"Surprise Attack|APG"
+				"Surprise Attack|APG",
+				"Angel of Vindication|LOKL",
+				"Eclipsed Vitality|LOKL"
 			]
 		},
 		{
@@ -1654,7 +1656,7 @@
 				"skill"
 			],
 			"prerequisites": "trained in {@skill Medicine}",
-			"requirements": "You are holding or wearing {@item healer's tools}.",
+			"requirements": "You are holding or wearing {@item healer's tools} and have a hand free.",
 			"entries": [
 				"You can patch up yourself or an adjacent ally, even in combat. Attempt a {@skill Medicine} check with the same DC as for {@action Treat Wounds}, and restore a corresponding amount of Hit Points; this does not remove the {@condition wounded} condition. As with {@action Treat Wounds}, you can attempt checks against higher DCs if you have the minimum proficiency rank. The target is then temporarily immune to your {@feat Battle Medicine} for 1 day."
 			],
@@ -1664,6 +1666,7 @@
 				"Resuscitate|APG",
 				"Treat Condition|APG",
 				"Holistic Care|APG",
+				"Preventative Treatment|LOKL",
 				"Godless Healing|LOWG",
 				"Mortal Healing|LOGM",
 				"Paragon Battle Medicine|LOL"
@@ -1688,8 +1691,7 @@
 			},
 			"requirements": "Your most recent action was to cast a non-cantrip spell.",
 			"entries": [
-				"You siphon the residual energy from the last spell you cast into one weapon you're wielding.",
-				"Until the end of your turn, the weapon deals an extra {@dice 1d6} damage of a type depending on the school of the spell you just cast.",
+				"You siphon the residual energy from the last spell you cast into one weapon you're wielding. Until the end of your turn, the weapon deals an extra {@dice 1d6} damage of a type depending on the school of the spell you just cast.",
 				{
 					"type": "list",
 					"items": [
@@ -1727,7 +1729,7 @@
 					"items": [
 						"{@b Abjuration} force damage",
 						"{@bold Conjuration or Transmutation} the same type as the weapon",
-						"{@bold Divination, Enchantment, or} Illusion mental damage",
+						"{@bold Divination, Enchantment, or Illusion} mental damage",
 						"{@b Evocation} a type the spell dealt, or force damage if the spell didn't deal damage",
 						"{@b Necromancy} negative damage"
 					]
@@ -2005,7 +2007,7 @@
 				"monk"
 			],
 			"entries": [
-				"You know how to make the most of your attacks when fighting hand-to-hand. You gain access to the critical specialization effects of unarmed strikes in the {@group brawling} group and weapons in the {@group brawling} group. If you have Monastic Weaponry, you also gain the critical specialization effects of all monk weapons in which you are trained."
+				"You know how to make the most of your attacks when fighting hand-to-hand. You gain access to the critical specialization effects of unarmed strikes in the {@group brawling} group and weapons in the {@group brawling} group. If you have {@feat Monastic Weaponry}, you also gain the critical specialization effects of all monk weapons in which you are trained."
 			]
 		},
 		{
@@ -2493,8 +2495,7 @@
 			],
 			"prerequisites": "trained in {@skill Deception}",
 			"entries": [
-				"Your charm allows you to win over those you lie to. When you get a critical success using the {@action Lie} action, the target's attitude toward you improves by one step, as though you'd succeeded at using {@skill Diplomacy} to {@action Make an Impression}. This works only once per conversation, and if you critically succeed against multiple targets using the same result, you choose one creature's attitude to improve. You must be lying to impart seemingly important information, inflate your status, or ingratiate yourself, which trivial or irrelevant lies can't achieve.",
-				"{@action Impersonate} to pretend to be a noble if you aren't one. If you want to impersonate a specific noble, you still need to use {@skill Deception} to {@action Impersonate} normally, and to {@action Lie} when necessary."
+				"Your charm allows you to win over those you lie to. When you get a critical success using the {@action Lie} action, the target's attitude toward you improves by one step, as though you'd succeeded at using {@skill Diplomacy} to {@action Make an Impression}. This works only once per conversation, and if you critically succeed against multiple targets using the same result, you choose one creature's attitude to improve. You must be lying to impart seemingly important information, inflate your status, or ingratiate yourself, which trivial or irrelevant lies can't achieve."
 			]
 		},
 		{
@@ -3648,7 +3649,7 @@
 			],
 			"prerequisites": "scoundrel racket",
 			"entries": [
-				"Your Feints are far more distracting than normal, drawing your foes' attention and allowing you and your allies to take greater advantage. While a creature is {@condition flat-footed} by your {@action Feint}, it also takes a \u20132 circumstance penalty to {@skill Perception} checks and Reflex saves."
+				"Your {@action Feint||Feints} are far more distracting than normal, drawing your foes' attention and allowing you and your allies to take greater advantage. While a creature is {@condition flat-footed} by your {@action Feint}, it also takes a \u20132 circumstance penalty to {@skill Perception} checks and Reflex saves."
 			]
 		},
 		{
@@ -8757,7 +8758,7 @@
 				"monk"
 			],
 			"entries": [
-				"You have trained with the traditional weaponry of your monastery or school. You gain access to uncommon weapons that have the {@trait monk} trait and become trained in simple."
+				"You have trained with the traditional weaponry of your monastery or school. You gain access to {@filter uncommon weapons|items||rarity=uncommon|class=monk} that have the {@trait monk} trait and become trained in {@filter simple and martial monk weapons|items||subcategory=simple;martial|class=monk}. When your proficiency rank for unarmed attacks increases to expert or master, your proficiency rank for these weapons increases to expert or master as well. You can use melee monk weapons with any of your monk feats or monk abilities that normally require unarmed attacks, though not if the feat or ability requires you to use a single specific type of attack, such as {@feat Crane Stance}."
 			],
 			"leadsTo": [
 				"Ancestral Weaponry|APG",
@@ -9091,7 +9092,8 @@
 				"Endemic Herbs|APG",
 				"Expert Herbalism|APG",
 				"Fresh Ingredients|APG",
-				"Poultice Preparation|APG"
+				"Poultice Preparation|APG",
+				"Gravelands Herbalist|LOKL"
 			]
 		},
 		{
@@ -9251,7 +9253,7 @@
 			],
 			"prerequisites": "trained in {@skill Occultism}",
 			"entries": [
-				"You have a sense for spells that twist minds or reveal secrets. You gain a +2 circumstance bonus to {@skill Occultism} checks to {@action Identify Magic} with the mental, possession, {@trait prediction}, or {@trait scrying} traits."
+				"You have a sense for spells that twist minds or reveal secrets. You gain a +2 circumstance bonus to {@skill Occultism} checks to {@action Identify Magic} with the {@trait mental}, {@trait possession}, {@trait prediction}, or {@trait scrying} traits."
 			]
 		},
 		{
@@ -11489,6 +11491,7 @@
 				"Disarming Block|APG",
 				"Nimble Shield Hand|APG",
 				"Shield Salvation|APG",
+				"Drive Back|LOKL",
 				"Lastwall Sentry Dedication|LOWG",
 				"Eye Of Ozem|LOWG",
 				"Grave Sense|LOWG",
@@ -11496,6 +11499,21 @@
 				"Necromantic Resistance|LOWG",
 				"Necromantic Tenacity|LOWG",
 				"Rescuer's Press|LOL",
+				"Always Ready|LOKL",
+				"Bless Shield|LOKL",
+				"Familiar Foe|LOKL",
+				"Final Rest|LOKL",
+				"Nonlethal Takedown|LOKL",
+				"Practiced Opposition|LOKL",
+				"Repulse the Wicked|LOKL",
+				"Sacred Armaments|LOKL",
+				"Flashing Shield|LOKL",
+				"Necromantic Bulwark|LOKL",
+				"Grave Sight|LOKL",
+				"No Stranger to Death|LOKL",
+				"Resolute Defender|LOKL",
+				"Thwart Evil|LOKL",
+				"Withstand Death|LOKL",
 				"Aegis Of Arnisant|LOCG",
 				"Vigil's Walls Rise Anew!|LOL",
 				"Fortify Shield|LOAG"
@@ -13398,6 +13416,9 @@
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
 				"You make a dazzling series of attacks with both weapons, using the first attack to throw your foe off guard against a second attack at a different angle. Make one {@action Strike} with each of your two melee weapons, both against the same target. The target is automatically {@condition flat-footed} against the second attack. Apply your multiple attack penalty to the {@action Strike|CRB|Strikes} normally."
+			],
+			"leadsTo": [
+				"Twin Distraction|APG"
 			]
 		},
 		{

@@ -482,18 +482,12 @@ Parser.genderToFull = function (g) {
 	}
 }
 Parser.savingThrowAbvToFull = function (abv) {
-	switch (abv) {
+	switch (abv.toLowerCase()) {
 		case "f":
-		case "F":
-		case "Fort":
 		case "fort": return "Fortitude";
 		case "r":
-		case "R":
-		case "Ref":
 		case "ref": return "Reflex";
 		case "w":
-		case "W":
-		case "Will":
 		case "will": return "Will";
 		default: throw new Error(`Unknown saving throw abv ${abv}.`)
 	}
@@ -1191,11 +1185,11 @@ SRC_LOME = "LOME";
 SRC_LOACLO = "LOACLO";
 SRC_AAWS = "AAWS";
 SRC_GNG = "G&G";
-SRC_LOTGB = "LOTGB"
-SRC_LOMM = "LOMM"
-SRC_LOKL = "LOKL"
-SRC_LOTG = "LOTG"
-SRC_BotD = "BotD"
+SRC_LOTGB = "LOTGB";
+SRC_LOMM = "LOMM";
+SRC_LOKL = "LOKL";
+SRC_LOTG = "LOTG";
+SRC_BotD = "BotD";
 SRC_AOA0 = "AoA0";
 SRC_AOA1 = "AoA1";
 SRC_AOA2 = "AoA2";
@@ -1543,6 +1537,8 @@ Parser.SOURCE_JSON_TO_DATE[SRC_GNG] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTGB] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOMM] = "2021-12-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_BotD] = "2022-04-27";
+Parser.SOURCE_JSON_TO_DATE[SRC_DA] = "2022-07-27";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOTG] = "2022-08-31";
 // Turn JSON to Paizo Store
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";

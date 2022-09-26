@@ -1902,7 +1902,7 @@
 			"category": "Worn",
 			"entries": [
 				"Diving suits are bulky, waterproofed leather outfits with copper helmets, worn by divers and underwater salvagers.",
-				"The suit grants a +1 item bonus to {@action Swim} checks made underwater, and the helmet features tubes for connecting bottled air (Core Rulebook 572). When connected to a diving suit, bottled air doesn't need to be held and can be used to breathe as a free action. If you wear armor over a diving suit, you become {@condition clumsy|CRB|clumsy 1} until you remove the diving suit."
+				"The suit grants a +1 item bonus to {@action Swim} checks made underwater, and the helmet features tubes for connecting {@item bottled air}. When connected to a diving suit, bottled air doesn't need to be held and can be used to breathe as a free action. If you wear armor over a diving suit, you become {@condition clumsy|CRB|clumsy 1} until you remove the diving suit."
 			]
 		},
 		{
@@ -3138,7 +3138,7 @@
 			"category": "Worn",
 			"entries": [
 				"Experimental clothing is custom tailored in radical, avant-garde styles by independent dressmakers, utilizing expensive or eccentric materials and unconventional patterns.",
-				"At the GM's discretion, wearing experimental clothing may impart a +1 item bonus or \u20131 item penalty on checks to Make An Impression, depending on the target's fashion sense."
+				"At the GM's discretion, wearing experimental clothing may impart a +1 item bonus or \u20131 item penalty on checks to {@action Make An Impression}, depending on the target's fashion sense."
 			]
 		},
 		{
@@ -4284,7 +4284,7 @@
 			"entries": [
 				"While inubrix weapons don't pack the same punch as more durable weapons, they have the unique ability to bypass some of the protections offered by metal armors and shields.",
 				"A weapon crafted from inubrix reduces the weapon's damage die by 1 size. However, they ignore the resistance to damage from metal armor's armor specialization effects and the circumstance bonus to AC from metal shields.",
-				"Strikes with inubrix weapons don't trigger the Shield Block reaction from a metal shield. Weapons that normally deal {@dice 1d4} damage can't be crafted from inubrix."
+				"Strikes with inubrix weapons don't trigger the Shield Block reaction from a metal shield. Weapons that normally deal {@damage 1d4} damage can't be crafted from inubrix."
 			],
 			"generic": "G",
 			"variants": [
@@ -9123,9 +9123,18 @@
 						"amount": 4250
 					},
 					"entries": [
-						"The bonus to Speed is +10 feet, and the minimum speed is 10 feet.",
-						"\"It's not a competition.\" It's hard to believe that Summit & Sundry started out of a cart. Today, the large building has an impressive silhouette, adorned with climbing roses, moonflowers, and other flowering vines. A large, painted wooden sign spells out the shop's name over a snowy mountain peak and forested valley reminiscent of the shopkeeper's homeland. Perceptive observers might connect the small {@condition broken} chain carved into the sign's corner with the rose wreath on the door and infer that Nadian and her family venerate {@deity Milani|LOGM}. A sign in the window welcomes travelers of all origins and backgrounds."
+						"The bonus to Speed is +10 feet, and the minimum speed is 10 feet."
 					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "5",
+								"with": "10"
+							}
+						],
+						"entriesMode": "generic"
+					},
 					"variantType": "greater wind-catcher"
 				}
 			]

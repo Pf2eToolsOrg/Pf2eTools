@@ -12,14 +12,11 @@
 				"construct",
 				"mindless"
 			],
-			"creatureType": [
-				"Construct"
-			],
 			"perception": {
 				"std": 6
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 9
 				}
 			},
@@ -31,33 +28,6 @@
 				"wis": 0,
 				"cha": -5
 			},
-			"ac": {
-				"std": 17,
-				"when broken": 13
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 5
-				},
-				"will": {
-					"std": 3
-				}
-			},
-			"hp": [
-				{
-					"hp": 20,
-					"abilities": null
-				}
-			],
-			"hardness": 5,
-			"immunities": [
-				"bleed",
-				"death effects",
-				"disease"
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -108,6 +78,35 @@
 							"tag": "ability"
 						}
 					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17,
+					"when broken": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 3
+					}
+				},
+				"hardness": 5,
+				"hp": [
+					{
+						"hp": 20,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease"
 				]
 			}
 		}

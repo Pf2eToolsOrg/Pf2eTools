@@ -22,11 +22,11 @@ class TokenizerUtils {
 			{regex: /^(.+)\s(ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\s/, type: "ITEM", mode: "item"},
 			{regex: /^(.*?)\sBACKGROUND\s/, type: "BACKGROUND", mode: "background"},
 			{regex: /^(.*?)\sCREATURE (–?\d{1,2})\s/, type: "CREATURE", mode: "creature"},
+			{regex: /^(.*?)\sHAZARD (–?\d{1,2})\s/, type: "HAZARD", mode: "hazard"},
 		]
 	}
 	static get unimplemented () {
 		return [
-			{regex: /^(.+)HAZARD[\s\S]*?\n{2,}/, type: "UNIMPLEMENTED"},
 			{regex: /^(.+)RITUAL[\s\S]*?\n{2,}/, type: "UNIMPLEMENTED"},
 			{regex: /^(.+)VEHICLE[\s\S]*?\n{2,}/, type: "UNIMPLEMENTED"},
 		]
@@ -334,6 +334,52 @@ class TokenizerUtils {
 		]
 	}
 
+	static get stealth () {
+		return [
+			{regex: /^Stealth\s/, type: "HAZARD_STEALTH", lookbehind: /\n$/, mode: "h_stealth"},
+		]
+	}
+	static get description () {
+		return [
+			{regex: /^Description\s/, type: "DESCRIPTION", lookbehind: /\n$/},
+		]
+	}
+	static get disable () {
+		return [
+			{regex: /^Disable\s/, type: "DISABLE", lookbehind: /\n$/},
+		]
+	}
+	static get hazardHP () {
+		return [
+			{regex: /^([A-Z]\w+\s)?HP\s(\d+)[\s;,.]/, type: "HAZARD_HP"},
+		]
+	}
+	static get hazardBT () {
+		return [
+			{regex: /^\(BT\s\d+\)[\s;,.]/, type: "HAZARD_BT", prev: {depth: 1, types: [...this.hazardHP.map(it => it.type)]}},
+		]
+	}
+	static get hazardHardness () {
+		return [
+			{regex: /^([A-Z]\w+\s)?Hardness\s(\d+)[\s;,.]/, type: "HAZARD_HARDNESS"},
+		]
+	}
+	static get atkNoMAP () {
+		return [
+			{regex: /^no multiple attack penalty/, type: "ATK_NO_MAP"},
+		]
+	}
+	static get reset () {
+		return [
+			{regex: /^Reset/, type: "RESET", lookbehind: /\n$/},
+		]
+	}
+	static get routine () {
+		return [
+			{regex: /^Routine/, type: "ROUTINE", lookbehind: /\n$/},
+		]
+	}
+
 	// TODO: propertiesSpells and propertiesFeats dont seem quite right...
 	static get properties () {
 		return [
@@ -463,6 +509,26 @@ class TokenizerUtils {
 			...this.ritualCasting,
 		]
 	}
+	static get propertiesHazards () {
+		return [
+			...this.stealth,
+			...this.description,
+			...this.disable,
+			...this.ac,
+			...this.creatureSavingThrows,
+			...this.hazardHardness,
+			...this.hazardHP,
+			...this.hazardBT,
+			...this.immunities,
+			...this.weaknesses,
+			...this.resistances,
+			...this.attacks,
+			...this.damage,
+			...this.atkNoMAP,
+			...this.reset,
+			...this.routine,
+		]
+	}
 
 	static get itemVariants () {
 		return [
@@ -527,7 +593,7 @@ class TokenizerUtils {
 
 	static get special () {
 		return [
-			{regex: /^Special/, type: "SPECIAL"},
+			{regex: /^Special\s/, type: "SPECIAL", lookbehind: /\n$/},
 		]
 	}
 
@@ -706,6 +772,31 @@ class TokenizerUtils {
 				{regex: /^([a-z][a-z-'’*!?]+\s?)+([A-Z\d]{2,})?/, type: "CR_SPELL"},
 				{regex: /^[A-Z]([a-z-'’*!?]+\s?)+/, type: "CR_SPELL", prev: {depth: 1, types: ["SPELL_CASTING", "RITUAL_CASTING", "CR_SPELL_LEVEL", "CR_SPELL_SLOTS", "SPELL_DC", "CONSTANT", "CANTRIPS", "SPELL_ATTACK", "FOCUS_POINT"]}},
 				...this.parenthesis,
+				{regex: /^[,;]\s/, type: null},
+				{regex: /^\s+/, type: null},
+			],
+			hazard: [
+				...this.endData,
+
+				// PROPERTIES
+				...this.propertiesHazards,
+				...this.propertiesAbilities,
+
+				// DATA ENTRIES
+				...this.traits,
+				...this.successDegrees,
+				...this.afflictions,
+
+				// Generic
+				...this.actions,
+				...this.genericEntries,
+				...this.words,
+				{regex: /^\s+/, type: null},
+			],
+			h_stealth: [
+				{regex: /^\+\s?\d+/, type: "H_STEALTH_BONUS"},
+				{regex: /^DC\s\d+/, type: "H_STEALTH_DC"},
+				{regex: /^\((untrained|trained|expert|master|legendary)\)/i, type: "H_STEALTH_MINPROF"},
 				{regex: /^[,;]\s/, type: null},
 				{regex: /^\s+/, type: null},
 			],

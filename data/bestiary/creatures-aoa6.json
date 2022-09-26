@@ -15,10 +15,6 @@
 				"undead",
 				"wraith"
 			],
-			"creatureType": [
-				"Astral",
-				"Undead"
-			],
 			"perception": {
 				"std": 33
 			},
@@ -33,19 +29,19 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Elven",
-					"Necril"
+					"common",
+					"elven",
+					"necril"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 35
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 31
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 35
 				}
 			},
@@ -57,38 +53,6 @@
 				"wis": 7,
 				"cha": 8
 			},
-			"ac": {
-				"std": 45
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 33
-				},
-				"ref": {
-					"std": 37
-				},
-				"will": {
-					"std": 33
-				}
-			},
-			"hp": [
-				{
-					"hp": 300,
-					"abilities": [
-						"negative healing"
-					]
-				}
-			],
-			"immunities": [
-				"death effects"
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "all damage",
-					"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
-				}
-			],
 			"speed": {
 				"abilities": [
 					"instantaneous movement"
@@ -157,6 +121,40 @@
 						"name": "Instantaneous Movement"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 37
+					},
+					"will": {
+						"std": 33
+					}
+				},
+				"hp": [
+					{
+						"hp": 300,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects"
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "all damage",
+						"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
+					}
+				]
 			}
 		},
 		{
@@ -172,9 +170,6 @@
 				"construct",
 				"mindless"
 			],
-			"creatureType": [
-				"Construct"
-			],
 			"perception": {
 				"std": 30
 			},
@@ -184,7 +179,7 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 35
 				}
 			},
@@ -196,56 +191,6 @@
 				"wis": 5,
 				"cha": -5
 			},
-			"ac": {
-				"std": 42
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 33
-				},
-				"ref": {
-					"std": 30
-				},
-				"will": {
-					"std": 27
-				}
-			},
-			"hp": [
-				{
-					"hp": 255,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"bleed",
-				"death effects",
-				"disease",
-				"doomed"
-			],
-			"weaknesses": [
-				{
-					"amount": 20,
-					"name": "good"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "acid"
-				},
-				{
-					"amount": 15,
-					"name": "cold"
-				},
-				{
-					"amount": 15,
-					"name": "electricity"
-				},
-				{
-					"amount": 15,
-					"name": "fire"
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -305,6 +250,58 @@
 						"name": "Dragonstorm Strike"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 255,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed"
+				],
+				"weaknesses": [
+					{
+						"amount": 20,
+						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "acid"
+					},
+					{
+						"amount": 15,
+						"name": "cold"
+					},
+					{
+						"amount": 15,
+						"name": "electricity"
+					},
+					{
+						"amount": 15,
+						"name": "fire"
+					}
+				]
 			}
 		},
 		{
@@ -320,9 +317,6 @@
 				"incorporeal",
 				"spirit"
 			],
-			"creatureType": [
-				"Spirit"
-			],
 			"perception": {
 				"std": 35
 			},
@@ -333,22 +327,22 @@
 			],
 			"languages": {
 				"languages": [
-					"Draconic",
-					"Elven",
-					"Sylvan"
+					"draconic",
+					"elven",
+					"sylvan"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 40
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 36
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 40
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 34
 				}
 			},
@@ -360,35 +354,6 @@
 				"wis": 7,
 				"cha": 8
 			},
-			"ac": {
-				"std": 46
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 30
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 36
-				}
-			},
-			"hp": [
-				{
-					"hp": 315,
-					"abilities": [
-						"negative healing",
-						"rejuvenation"
-					]
-				}
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "all damage"
-				}
-			],
 			"speed": {
 				"fly": 25
 			},
@@ -603,6 +568,37 @@
 						"name": "Telekinetic Assault"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 46
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 36
+					}
+				},
+				"hp": [
+					{
+						"hp": 315,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "all damage"
+					}
+				]
 			}
 		},
 		{
@@ -617,9 +613,6 @@
 				"large",
 				"construct"
 			],
-			"creatureType": [
-				"Construct"
-			],
 			"perception": {
 				"std": 39
 			},
@@ -632,7 +625,7 @@
 				}
 			],
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 30
 				}
 			},
@@ -644,50 +637,6 @@
 				"wis": 7,
 				"cha": -5
 			},
-			"ac": {
-				"std": 48
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 39
-				},
-				"ref": {
-					"std": 36
-				},
-				"will": {
-					"std": 33
-				}
-			},
-			"hp": [
-				{
-					"hp": 430,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"bleed",
-				"death effects",
-				"disease",
-				"doomed",
-				"drained",
-				"fatigued"
-			],
-			"weaknesses": [
-				{
-					"amount": 24,
-					"name": "sonic"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 24,
-					"name": "fire"
-				},
-				{
-					"amount": 24,
-					"name": "physical"
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -784,6 +733,52 @@
 						"name": "Breath Weapon"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 48
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 39
+					},
+					"ref": {
+						"std": 36
+					},
+					"will": {
+						"std": 33
+					}
+				},
+				"hp": [
+					{
+						"hp": 430,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued"
+				],
+				"weaknesses": [
+					{
+						"amount": 24,
+						"name": "sonic"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 24,
+						"name": "fire"
+					},
+					{
+						"amount": 24,
+						"name": "physical"
+					}
+				]
 			}
 		},
 		{
@@ -799,10 +794,6 @@
 				"giant",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid",
-				"Giant"
-			],
 			"perception": {
 				"std": 30
 			},
@@ -813,20 +804,20 @@
 			],
 			"languages": {
 				"languages": [
-					"Auran",
-					"Common",
-					"Draconic",
-					"Jotun"
+					"auran",
+					"common",
+					"draconic",
+					"jotun"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 31
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 35
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 35
 				}
 			},
@@ -838,45 +829,6 @@
 				"wis": 5,
 				"cha": 2
 			},
-			"ac": {
-				"std": 42
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 33
-				},
-				"ref": {
-					"std": 27
-				},
-				"will": {
-					"std": 30
-				}
-			},
-			"hp": [
-				{
-					"hp": 400,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"fire"
-			],
-			"weaknesses": [
-				{
-					"amount": 20,
-					"name": "good"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 20,
-					"name": "acid"
-				},
-				{
-					"amount": 20,
-					"name": "electricity"
-				}
-			],
 			"speed": {
 				"walk": 35
 			},
@@ -980,6 +932,47 @@
 						}
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 27
+					},
+					"will": {
+						"std": 30
+					}
+				},
+				"hp": [
+					{
+						"hp": 400,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"fire"
+				],
+				"weaknesses": [
+					{
+						"amount": 20,
+						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 20,
+						"name": "acid"
+					},
+					{
+						"amount": 20,
+						"name": "electricity"
+					}
+				]
 			}
 		},
 		{
@@ -997,10 +990,6 @@
 				"undead",
 				"wraith"
 			],
-			"creatureType": [
-				"Dragon",
-				"Undead"
-			],
 			"perception": {
 				"std": 40
 			},
@@ -1015,25 +1004,25 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic",
-					"Necril"
+					"common",
+					"draconic",
+					"necril"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 38
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 38
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 43
 				},
-				"Religion": {
+				"religion": {
 					"std": 43
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 43
 				}
 			},
@@ -1045,37 +1034,6 @@
 				"wis": 9,
 				"cha": 11
 			},
-			"ac": {
-				"std": 49
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 32
-				},
-				"ref": {
-					"std": 38
-				},
-				"will": {
-					"std": 42
-				}
-			},
-			"hp": [
-				{
-					"hp": 450,
-					"abilities": [
-						"negative healing"
-					]
-				}
-			],
-			"immunities": [
-				"as wyrmwraith"
-			],
-			"resistances": [
-				{
-					"amount": 25,
-					"name": "all"
-				}
-			],
 			"speed": {
 				"walk": 50,
 				"fly": 100
@@ -1297,6 +1255,39 @@
 						"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though it were incorporeal. It must begin and end its movement outside of any physical obstacles, and passing through solid material is difficult terrain.' in Wyrmwraith, p.84"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 49
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 38
+					},
+					"will": {
+						"std": 42
+					}
+				},
+				"hp": [
+					{
+						"hp": 450,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"as wyrmwraith"
+				],
+				"resistances": [
+					{
+						"amount": 25,
+						"name": "all"
+					}
+				]
 			}
 		},
 		{
@@ -1312,36 +1303,33 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 36
 			},
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Common",
-					"Draconic,"
+					"abyssal",
+					"common",
+					"draconic"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 32
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 41
 				},
-				"Deception": {
+				"deception": {
 					"std": 38
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 38
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 34
 				},
-				"Society": {
+				"society": {
 					"std": 34
 				}
 			},
@@ -1356,26 +1344,6 @@
 			"items": [
 				"anklets of alacrity",
 				"Flawed Orb of Gold"
-			],
-			"ac": {
-				"std": 45
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 30
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 36
-				}
-			},
-			"hp": [
-				{
-					"hp": 375,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25,
@@ -1606,11 +1574,11 @@
 				"top": [
 					{
 						"entries": [],
-						"name": "Dwarven, Kelish, Osiriani, Ignan, Infernal,"
+						"name": "Dwarven, Kelish, Osiriani, Ignan, Infernal"
 					},
 					{
 						"entries": [
-							"Skills {@skill Acrobatics} +32, {@skill Arcana} +41, {@skill Deception} +38,"
+							"Skills {@skill Acrobatics} +32, {@skill Arcana} +41, {@skill Deception} +38"
 						],
 						"name": "Undercommon"
 					},
@@ -1674,6 +1642,28 @@
 						"name": "Emaliza"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 36
+					}
+				},
+				"hp": [
+					{
+						"hp": 375,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1689,9 +1679,6 @@
 				"aberration",
 				"mutant"
 			],
-			"creatureType": [
-				"Aberration"
-			],
 			"perception": {
 				"std": 35
 			},
@@ -1701,7 +1688,7 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 37
 				}
 			},
@@ -1713,26 +1700,6 @@
 				"wis": 3,
 				"cha": -4
 			},
-			"ac": {
-				"std": 43
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 36
-				},
-				"ref": {
-					"std": 28
-				},
-				"will": {
-					"std": 27
-				}
-			},
-			"hp": [
-				{
-					"hp": 380,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1781,6 +1748,28 @@
 						"name": "Grasping Hands"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 43
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 380,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1796,41 +1785,38 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 39
 			},
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Common",
-					"Draconic",
-					"Dwarven",
-					"Ignan,"
+					"abyssal",
+					"common",
+					"draconic",
+					"dwarven",
+					"ignan"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 35
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 28
 				},
-				"Deception": {
+				"deception": {
 					"std": 34
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 32
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 35
 				},
-				"Religion": {
+				"religion": {
 					"std": 28
 				},
-				"Plane of Fire Lore": {
+				"plane of fire lore": {
 					"std": 39
 				}
 			},
@@ -1842,26 +1828,6 @@
 				"wis": 5,
 				"cha": 6
 			},
-			"ac": {
-				"std": 28
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 17
-				},
-				"ref": {
-					"std": 19
-				},
-				"will": {
-					"std": 19
-				}
-			},
-			"hp": [
-				{
-					"hp": 350,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2076,13 +2042,13 @@
 				"top": [
 					{
 						"entries": [
-							"Skills {@skill Arcana} +35, {@skill Athletics} +28, {@skill Deception} +34,"
+							"Skills {@skill Arcana} +35, {@skill Athletics} +28, {@skill Deception} +34"
 						],
 						"name": "Infernal, Undercommon"
 					},
 					{
 						"entries": [
-							"+32, Plane of {@skill Lore||Fire Lore} +39, {@skill Occultism} +35,"
+							"+32, Plane of {@skill Lore||Fire Lore} +39, {@skill Occultism} +35"
 						],
 						"name": "Intimidation"
 					},
@@ -2129,6 +2095,28 @@
 						"name": "Overwhelming Energy"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 19
+					},
+					"will": {
+						"std": 19
+					}
+				},
+				"hp": [
+					{
+						"hp": 350,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2144,35 +2132,32 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 33
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic"
+					"common",
+					"draconic"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 36
 				},
-				"Crafting": {
+				"crafting": {
 					"std": 39
 				},
-				"Deception": {
+				"deception": {
 					"std": 32
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 32
 				},
-				"Medicine": {
+				"medicine": {
 					"std": 38
 				},
-				"Society": {
+				"society": {
 					"std": 36
 				}
 			},
@@ -2184,26 +2169,6 @@
 				"wis": 5,
 				"cha": 2
 			},
-			"ac": {
-				"std": 43
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 35
-				},
-				"ref": {
-					"std": 29
-				},
-				"will": {
-					"std": 32
-				}
-			},
-			"hp": [
-				{
-					"hp": 350,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2303,6 +2268,28 @@
 						"name": "Quick Bomber"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 43
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 32
+					}
+				},
+				"hp": [
+					{
+						"hp": 350,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2318,22 +2305,19 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 29
 			},
 			"languages": {
 				"languages": [
-					"Common"
+					"common"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 33
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 33
 				}
 			},
@@ -2348,28 +2332,6 @@
 			"items": [
 				"+2 greater resilient full plate",
 				"+2 greater striking longsword"
-			],
-			"ac": {
-				"std": 43
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 32
-				},
-				"ref": {
-					"std": 26
-				},
-				"will": {
-					"std": 29
-				}
-			},
-			"hp": [
-				{
-					"hp": 330,
-					"abilities": [
-						"fast healing 20"
-					]
-				}
 			],
 			"speed": {
 				"walk": 30
@@ -2413,6 +2375,30 @@
 						"name": "Death Throes"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 43
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 330,
+						"abilities": [
+							"fast healing 20"
+						]
+					}
+				]
 			}
 		},
 		{
@@ -2428,32 +2414,29 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 36
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic"
+					"common",
+					"draconic"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 32
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 38
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 38
 				},
-				"Medicine": {
+				"medicine": {
 					"std": 34
 				},
-				"Society": {
+				"society": {
 					"std": 38
 				}
 			},
@@ -2465,27 +2448,6 @@
 				"wis": 2,
 				"cha": 4
 			},
-			"ac": {
-				"std": 46,
-				"with shield raised": 48
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 36
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 31
-				}
-			},
-			"hp": [
-				{
-					"hp": 375,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -2580,6 +2542,29 @@
 						"name": "Weapon Supremacy"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 46,
+					"with shield raised": 48
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 31
+					}
+				},
+				"hp": [
+					{
+						"hp": 375,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2594,9 +2579,6 @@
 				"gargantuan",
 				"dragon",
 				"fire"
-			],
-			"creatureType": [
-				"Dragon"
 			],
 			"perception": {
 				"std": 39
@@ -2616,32 +2598,32 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Common",
-					"Draconic",
-					"Elven"
+					"abyssal",
+					"common",
+					"draconic",
+					"elven"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 37
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 42
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 42
 				},
-				"Deception": {
+				"deception": {
 					"std": 42
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 37
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 45
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 35
 				}
 			},
@@ -2653,31 +2635,6 @@
 				"wis": 6,
 				"cha": 7
 			},
-			"ac": {
-				"std": 50
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 36
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 39
-				}
-			},
-			"hp": [
-				{
-					"hp": 500,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"fire",
-				"paralyzed",
-				"sleep"
-			],
 			"speed": {
 				"walk": 60,
 				"fly": 240
@@ -2777,7 +2734,7 @@
 				"top": [
 					{
 						"entries": [
-							"+42, {@skill Diplomacy} +37, {@skill Intimidation} +45,"
+							"+42, {@skill Diplomacy} +37, {@skill Intimidation} +45"
 						],
 						"name": "Deception"
 					},
@@ -2906,6 +2863,33 @@
 						"name": "Sustained the"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 50
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 39
+					}
+				},
+				"hp": [
+					{
+						"hp": 500,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"fire",
+					"paralyzed",
+					"sleep"
+				]
 			}
 		},
 		{
@@ -2925,9 +2909,6 @@
 				"fire",
 				"poison"
 			],
-			"creatureType": [
-				"Dragon"
-			],
 			"perception": {
 				"std": 46
 			},
@@ -2946,39 +2927,39 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Celestial",
-					"Common",
-					"Draconic",
-					"Elven,"
+					"abyssal",
+					"celestial",
+					"common",
+					"draconic",
+					"elven"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 38
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 45
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 45
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 38
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 48
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 40
 				},
-				"Religion": {
+				"religion": {
 					"std": 40
 				},
-				"Society": {
+				"society": {
 					"std": 38
 				},
-				"Dragon Lore": {
+				"dragon lore": {
 					"std": 48
 				}
 			},
@@ -2990,45 +2971,6 @@
 				"wis": 8,
 				"cha": 9
 			},
-			"ac": {
-				"std": 52
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 42
-				},
-				"ref": {
-					"std": 36
-				},
-				"will": {
-					"std": 38
-				}
-			},
-			"hp": [
-				{
-					"hp": 600,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"fire",
-				"paralyzed",
-				"sleep"
-			],
-			"resistances": [
-				{
-					"amount": 26,
-					"name": "acid"
-				},
-				{
-					"amount": 26,
-					"name": "cold"
-				},
-				{
-					"amount": 26,
-					"name": "electricity"
-				}
-			],
 			"speed": {
 				"walk": 60,
 				"fly": 200
@@ -3244,9 +3186,9 @@
 				"top": [
 					{
 						"entries": [
-							"Sylvan; telepathy 200 feet Skills {@skill Acrobatics} +38, {@skill Arcana} +45, {@skill Athletics} +45, {@skill Deception} +45, {@skill Diplomacy} +38, {@skill Lore||Dragon Lore} +48, {@skill Intimidation} +48,"
+							"Sylvan; telepathy 200 feet Skills {@skill Acrobatics} +38, {@skill Arcana} +45, {@skill Athletics} +45, {@skill Deception} +45, {@skill Diplomacy} +38, {@skill Lore||Dragon Lore} +48, {@skill Intimidation} +48"
 						],
-						"name": "Infernal, Jotun, Orcish,"
+						"name": "Infernal, Jotun, Orcish"
 					},
 					{
 						"entries": [
@@ -3407,6 +3349,47 @@
 						"name": "Focused Breath Weapon"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 52
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 42
+					},
+					"ref": {
+						"std": 36
+					},
+					"will": {
+						"std": 38
+					}
+				},
+				"hp": [
+					{
+						"hp": 600,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"fire",
+					"paralyzed",
+					"sleep"
+				],
+				"resistances": [
+					{
+						"amount": 26,
+						"name": "acid"
+					},
+					{
+						"amount": 26,
+						"name": "cold"
+					},
+					{
+						"amount": 26,
+						"name": "electricity"
+					}
+				]
 			}
 		},
 		{
@@ -3421,9 +3404,6 @@
 				"gargantuan",
 				"dragon",
 				"fire"
-			],
-			"creatureType": [
-				"Dragon"
 			],
 			"perception": {
 				"std": 40
@@ -3440,39 +3420,39 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic",
-					"Dwarven",
-					"Elven",
-					"Gnomish,"
+					"common",
+					"draconic",
+					"dwarven",
+					"elven",
+					"gnomish"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 32
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 38
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 36
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 43
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 43
 				},
-				"Medicine": {
+				"medicine": {
 					"std": 36
 				},
-				"Nature": {
+				"nature": {
 					"std": 32
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 38
 				},
-				"Society": {
+				"society": {
 					"std": 43
 				}
 			},
@@ -3484,37 +3464,6 @@
 				"wis": 7,
 				"cha": 7
 			},
-			"ac": {
-				"std": 50
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 37
-				},
-				"ref": {
-					"std": 34
-				},
-				"will": {
-					"std": 42
-				}
-			},
-			"hp": [
-				{
-					"hp": 575,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"fire",
-				"paralyzed",
-				"sleep"
-			],
-			"weaknesses": [
-				{
-					"amount": 25,
-					"name": "cold"
-				}
-			],
 			"speed": {
 				"walk": 60,
 				"fly": 200,
@@ -3773,13 +3722,13 @@
 				"top": [
 					{
 						"entries": [
-							"Skills {@skill Acrobatics} +32, {@skill Arcana} +38, {@skill Athletics} +36,"
+							"Skills {@skill Acrobatics} +32, {@skill Arcana} +38, {@skill Athletics} +36"
 						],
 						"name": "Infernal, Sylvan, Utopian"
 					},
 					{
 						"entries": [
-							"+43, {@skill Intimidation} +43, {@skill Medicine} +36,"
+							"+43, {@skill Intimidation} +43, {@skill Medicine} +36"
 						],
 						"name": "Diplomacy"
 					},
@@ -3906,6 +3855,39 @@
 						"name": "Explosive Breath"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 50
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 37
+					},
+					"ref": {
+						"std": 34
+					},
+					"will": {
+						"std": 42
+					}
+				},
+				"hp": [
+					{
+						"hp": 575,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"fire",
+					"paralyzed",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"amount": 25,
+						"name": "cold"
+					}
+				]
 			}
 		},
 		{
@@ -3921,35 +3903,32 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 29
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic"
+					"common",
+					"draconic"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 33
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 30
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 33
 				},
-				"Society": {
+				"society": {
 					"std": 30
 				},
-				"Survival": {
+				"survival": {
 					"std": 28
 				},
-				"Hermea Lore": {
+				"hermea lore": {
 					"std": 33
 				}
 			},
@@ -3961,27 +3940,6 @@
 				"wis": 3,
 				"cha": 2
 			},
-			"ac": {
-				"std": 43,
-				"with shield raised": 45
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 32
-				},
-				"ref": {
-					"std": 26
-				},
-				"will": {
-					"std": 29
-				}
-			},
-			"hp": [
-				{
-					"hp": 330,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -4099,6 +4057,29 @@
 						"name": "Sudden Charge"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 43,
+					"with shield raised": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 330,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -4115,9 +4096,6 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 32
 			},
@@ -4128,25 +4106,25 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic",
-					"Elven"
+					"common",
+					"draconic",
+					"elven"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 32
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 38
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 34
 				},
-				"Religion": {
+				"religion": {
 					"std": 38
 				},
-				"Hermea Lore": {
+				"hermea lore": {
 					"std": 32
 				}
 			},
@@ -4158,26 +4136,6 @@
 				"wis": 4,
 				"cha": 10
 			},
-			"ac": {
-				"std": 45
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 36
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 30
-				}
-			},
-			"hp": [
-				{
-					"hp": 400,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -4544,6 +4502,28 @@
 						"name": "Spell Strike"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 30
+					}
+				},
+				"hp": [
+					{
+						"hp": 400,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -4557,9 +4537,6 @@
 				"ce",
 				"gargantuan",
 				"beast"
-			],
-			"creatureType": [
-				"Beast"
 			],
 			"perception": {
 				"std": 48
@@ -4576,14 +4553,14 @@
 			],
 			"languages": {
 				"languages": [
-					"Aklo (can't speak any language)"
+					"aklo (can't speak any language)"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 47
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 50
 				}
 			},
@@ -4595,53 +4572,6 @@
 				"wis": 9,
 				"cha": 7
 			},
-			"ac": {
-				"std": 54
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 47
-				},
-				"ref": {
-					"std": 37
-				},
-				"will": {
-					"std": 39
-				},
-				"abilities": "+2 status to all saves vs. {@trait magical||magic}"
-			},
-			"hp": [
-				{
-					"hp": 540,
-					"abilities": [
-						"{@ability regeneration} 50"
-					]
-				}
-			],
-			"immunities": [
-				"acid",
-				"clumsy",
-				"disease",
-				"drained",
-				"enfeebled",
-				"mental",
-				"paralyzed",
-				"persistent damage",
-				"petrified",
-				"poison",
-				"polymorph",
-				"stupefied"
-			],
-			"resistances": [
-				{
-					"amount": 25,
-					"name": "fire"
-				},
-				{
-					"amount": 25,
-					"name": "physical"
-				}
-			],
 			"speed": {
 				"walk": 50,
 				"swim": 50
@@ -4855,6 +4785,55 @@
 						}
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 54
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 47
+					},
+					"ref": {
+						"std": 37
+					},
+					"will": {
+						"std": 39
+					},
+					"abilities": "+2 status to all saves vs. {@trait magical||magic}"
+				},
+				"hp": [
+					{
+						"hp": 540,
+						"abilities": [
+							"{@ability regeneration} 50"
+						]
+					}
+				],
+				"immunities": [
+					"acid",
+					"clumsy",
+					"disease",
+					"drained",
+					"enfeebled",
+					"mental",
+					"paralyzed",
+					"persistent damage",
+					"petrified",
+					"poison",
+					"polymorph",
+					"stupefied"
+				],
+				"resistances": [
+					{
+						"amount": 25,
+						"name": "fire"
+					},
+					{
+						"amount": 25,
+						"name": "physical"
+					}
+				]
 			}
 		},
 		{
@@ -4870,9 +4849,6 @@
 				"electricity",
 				"undead"
 			],
-			"creatureType": [
-				"Undead"
-			],
 			"perception": {
 				"std": 32
 			},
@@ -4886,29 +4862,29 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Aklo",
-					"Celestial",
-					"Common"
+					"abyssal",
+					"aklo",
+					"celestial",
+					"common"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 33
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 37
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 33
 				},
-				"Nature": {
+				"nature": {
 					"std": 37
 				},
-				"Occultism": {
+				"occultism": {
 					"std": 37
 				},
-				"Religion": {
+				"religion": {
 					"std": 40
 				}
 			},
@@ -4920,52 +4896,6 @@
 				"wis": 7,
 				"cha": 8
 			},
-			"ac": {
-				"std": 43
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 29
-				},
-				"ref": {
-					"std": 32
-				},
-				"will": {
-					"std": 35
-				}
-			},
-			"hp": [
-				{
-					"hp": 390,
-					"abilities": [
-						"fast healing 15",
-						"negative healing"
-					]
-				}
-			],
-			"immunities": [
-				"cold",
-				"death"
-			],
-			"weaknesses": [
-				{
-					"amount": 15,
-					"name": "good"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "cold"
-				},
-				{
-					"amount": 15,
-					"name": "fire"
-				},
-				{
-					"name": "physical"
-				}
-			],
 			"speed": {
 				"walk": 50,
 				"fly": 60
@@ -5141,6 +5071,54 @@
 						"name": "Eclipse"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 43
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": [
+					{
+						"hp": 390,
+						"abilities": [
+							"fast healing 15",
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"cold",
+					"death"
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "cold"
+					},
+					{
+						"amount": 15,
+						"name": "fire"
+					},
+					{
+						"name": "physical"
+					}
+				]
 			}
 		},
 		{
@@ -5156,10 +5134,6 @@
 				"aberration",
 				"astral"
 			],
-			"creatureType": [
-				"Aberration",
-				"Astral"
-			],
 			"perception": {
 				"std": 33
 			},
@@ -5170,30 +5144,30 @@
 			],
 			"languages": {
 				"languages": [
-					"Abyssal",
-					"Aklo",
-					"Celestial",
-					"Daemonic",
-					"Infernal",
-					"Protean",
-					"Requian",
-					"Utopian"
+					"abyssal",
+					"aklo",
+					"celestial",
+					"daemonic",
+					"infernal",
+					"protean",
+					"requian",
+					"utopian"
 				]
 			},
 			"skills": {
-				"Arcana": {
+				"arcana": {
 					"std": 38
 				},
-				"Deception": {
+				"deception": {
 					"std": 38
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 34
 				},
-				"Thievery": {
+				"thievery": {
 					"std": 32
 				},
-				"Portal Lore": {
+				"portal lore": {
 					"std": 41
 				}
 			},
@@ -5205,41 +5179,6 @@
 				"wis": 8,
 				"cha": 5
 			},
-			"ac": {
-				"std": 45
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 30
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 36
-				}
-			},
-			"hp": [
-				{
-					"hp": 380,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"acid",
-				"paralyzed",
-				"sleep"
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "cold"
-				},
-				{
-					"amount": 10,
-					"name": "physical"
-				}
-			],
 			"speed": {
 				"walk": 30,
 				"climb": 30
@@ -5362,6 +5301,43 @@
 						"name": "Redirect Portal"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 36
+					}
+				},
+				"hp": [
+					{
+						"hp": 380,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"acid",
+					"paralyzed",
+					"sleep"
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "cold"
+					},
+					{
+						"amount": 10,
+						"name": "physical"
+					}
+				]
 			}
 		},
 		{
@@ -5379,10 +5355,6 @@
 				"undead",
 				"wraith"
 			],
-			"creatureType": [
-				"Dragon",
-				"Undead"
-			],
 			"perception": {
 				"std": 29
 			},
@@ -5397,25 +5369,25 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Draconic",
-					"Necril"
+					"common",
+					"draconic",
+					"necril"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 30
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 30
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 33
 				},
-				"Religion": {
+				"religion": {
 					"std": 33
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 33
 				}
 			},
@@ -5427,46 +5399,6 @@
 				"wis": 7,
 				"cha": 9
 			},
-			"ac": {
-				"std": 39
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 29
-				},
-				"ref": {
-					"std": 32
-				},
-				"will": {
-					"std": 32
-				}
-			},
-			"hp": [
-				{
-					"hp": 280,
-					"abilities": [
-						"negative healing"
-					]
-				}
-			],
-			"immunities": [
-				"poison",
-				"death effects",
-				"disease",
-				"paralyzed"
-			],
-			"resistances": [
-				{
-					"amount": 20,
-					"name": "all"
-				},
-				{
-					"name": "ghost touch"
-				},
-				{
-					"name": "or"
-				}
-			],
 			"speed": {
 				"walk": 50,
 				"fly": 80
@@ -5699,6 +5631,48 @@
 						"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though it were incorporeal. It must begin and end its movement outside of any physical obstacles, and passing through solid material is difficult terrain.' in Wyrmwraith, p.84"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 32
+					}
+				},
+				"hp": [
+					{
+						"hp": 280,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"poison",
+					"death effects",
+					"disease",
+					"paralyzed"
+				],
+				"resistances": [
+					{
+						"amount": 20,
+						"name": "all"
+					},
+					{
+						"name": "ghost touch"
+					},
+					{
+						"name": "or"
+					}
+				]
 			}
 		},
 		{
@@ -5713,9 +5687,6 @@
 				"gargantuan",
 				"beast",
 				"fire"
-			],
-			"creatureType": [
-				"Beast"
 			],
 			"perception": {
 				"std": 39
@@ -5732,11 +5703,11 @@
 			],
 			"languages": {
 				"languages": [
-					"Aklo (can't speak any language)"
+					"aklo (can't speak any language)"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 41
 				}
 			},
@@ -5748,48 +5719,6 @@
 				"wis": 7,
 				"cha": 6
 			},
-			"ac": {
-				"std": 48
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 36
-				},
-				"ref": {
-					"std": 33
-				},
-				"will": {
-					"std": 30
-				}
-			},
-			"hp": [
-				{
-					"hp": 385,
-					"abilities": [
-						"{@ability regeneration} 25"
-					]
-				}
-			],
-			"immunities": [
-				"clumsy",
-				"disease",
-				"drained",
-				"enfeebled"
-			],
-			"resistances": [
-				{
-					"amount": 22,
-					"name": "electricity"
-				},
-				{
-					"amount": 22,
-					"name": "physical"
-				},
-				{
-					"amount": 22,
-					"name": "sonic"
-				}
-			],
 			"speed": {
 				"walk": 60,
 				"burrow": 40,
@@ -5947,6 +5876,50 @@
 						"generic": {
 							"tag": "ability"
 						}
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 48
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 30
+					}
+				},
+				"hp": [
+					{
+						"hp": 385,
+						"abilities": [
+							"{@ability regeneration} 25"
+						]
+					}
+				],
+				"immunities": [
+					"clumsy",
+					"disease",
+					"drained",
+					"enfeebled"
+				],
+				"resistances": [
+					{
+						"amount": 22,
+						"name": "electricity"
+					},
+					{
+						"amount": 22,
+						"name": "physical"
+					},
+					{
+						"amount": 22,
+						"name": "sonic"
 					}
 				]
 			}

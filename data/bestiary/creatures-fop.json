@@ -12,9 +12,6 @@
 				"animal",
 				"swarm"
 			],
-			"creatureType": [
-				"Animal"
-			],
 			"perception": {
 				"std": 5
 			},
@@ -24,10 +21,10 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 9
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 7
 				}
 			},
@@ -39,30 +36,6 @@
 				"wis": 1,
 				"cha": -4
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 4
-				},
-				"ref": {
-					"std": 9
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 18,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"precision",
-				"swarm mind"
-			],
 			"speed": {
 				"fly": 20
 			},
@@ -90,6 +63,32 @@
 						"name": "Beestings"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 18,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"precision",
+					"swarm mind"
+				]
 			}
 		},
 		{
@@ -104,9 +103,6 @@
 				"mindless",
 				"ooze"
 			],
-			"creatureType": [
-				"Ooze"
-			],
 			"perception": {
 				"std": 8
 			},
@@ -120,10 +116,10 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 13
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 4,
 					"if hiding inside a dead body": 12
 				}
@@ -136,33 +132,6 @@
 				"wis": 0,
 				"cha": -5
 			},
-			"ac": {
-				"std": 12
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 15
-				},
-				"ref": {
-					"std": 6
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 90,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"mental",
-				"precision",
-				"critical hits",
-				"unconscious",
-				"visual"
-			],
 			"speed": {
 				"walk": 10,
 				"climb": 10
@@ -227,6 +196,35 @@
 						"name": "Siphon Vitality"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 12
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 90,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"mental",
+					"precision",
+					"critical hits",
+					"unconscious",
+					"visual"
+				]
 			}
 		},
 		{
@@ -240,9 +238,6 @@
 				"small",
 				"plant"
 			],
-			"creatureType": [
-				"Plant"
-			],
 			"perception": {
 				"std": 6
 			},
@@ -254,10 +249,10 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 8
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 6
 				}
 			},
@@ -269,35 +264,6 @@
 				"wis": 0,
 				"cha": 0
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 10
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 35,
-					"abilities": null
-				}
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "bludgeoning"
-				},
-				{
-					"name": "piercing"
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
@@ -348,6 +314,37 @@
 						"name": "Weeping Wounds"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 35,
+						"abilities": null
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "bludgeoning"
+					},
+					{
+						"name": "piercing"
+					}
+				]
 			}
 		},
 		{
@@ -361,9 +358,6 @@
 				"n",
 				"medium",
 				"animal"
-			],
-			"creatureType": [
-				"Animal"
 			],
 			"perception": {
 				"std": 8
@@ -379,16 +373,16 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 8
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 8
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 8
 				},
-				"Survival": {
+				"survival": {
 					"std": 8
 				}
 			},
@@ -400,26 +394,6 @@
 				"wis": 2,
 				"cha": 2
 			},
-			"ac": {
-				"std": 18
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 6
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 35
 			},
@@ -463,6 +437,28 @@
 						"name": "Howl"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -477,22 +473,19 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 2
 			},
 			"languages": {
 				"languages": [
-					"Common"
+					"common"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 5
 				},
-				"Farming Lore": {
+				"farming lore": {
 					"std": 5
 				}
 			},
@@ -506,26 +499,6 @@
 			},
 			"items": [
 				"durable farm clothes (counts as padded armor)"
-			],
-			"ac": {
-				"std": 13
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 5
-				},
-				"ref": {
-					"std": 3
-				},
-				"will": {
-					"std": 2
-				}
-			},
-			"hp": [
-				{
-					"hp": 16,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 25
@@ -574,7 +547,29 @@
 						"bludgeoning"
 					]
 				}
-			]
+			],
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 5
+					},
+					"ref": {
+						"std": 3
+					},
+					"will": {
+						"std": 2
+					}
+				},
+				"hp": [
+					{
+						"hp": 16,
+						"abilities": null
+					}
+				]
+			}
 		},
 		{
 			"name": "Fiery Leopard",
@@ -587,9 +582,6 @@
 				"n",
 				"medium",
 				"animal"
-			],
-			"creatureType": [
-				"Animal"
 			],
 			"perception": {
 				"std": 6
@@ -605,13 +597,13 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 8
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 6
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 8
 				}
 			},
@@ -623,29 +615,6 @@
 				"wis": 1,
 				"cha": -2
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 6
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 20,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"fire"
-			],
 			"speed": {
 				"walk": 30,
 				"climb": 20
@@ -692,6 +661,31 @@
 						"name": "Fiery Pelt"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 20,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"fire"
+				]
 			}
 		},
 		{
@@ -705,9 +699,6 @@
 				"n",
 				"medium",
 				"animal"
-			],
-			"creatureType": [
-				"Animal"
 			],
 			"perception": {
 				"std": 7
@@ -723,16 +714,16 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 9
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 8
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 8
 				},
-				"Survival": {
+				"survival": {
 					"std": 6
 				}
 			},
@@ -744,26 +735,6 @@
 				"wis": 1,
 				"cha": -2
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 7
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 27,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 20,
 				"climb": 20,
@@ -832,6 +803,28 @@
 						"name": "Lightning Rattle"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 27,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -847,9 +840,6 @@
 				"humanoid",
 				"orc"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 9
 			},
@@ -860,21 +850,21 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Orc"
+					"common",
+					"orc"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 11
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 8
 				},
-				"Nature": {
+				"nature": {
 					"std": 7
 				},
-				"Survival": {
+				"survival": {
 					"std": 7
 				}
 			},
@@ -886,26 +876,6 @@
 				"wis": 2,
 				"cha": 0
 			},
-			"ac": {
-				"std": 21
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 10
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 47,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -985,6 +955,28 @@
 						"name": "Double Shot"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 47,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1000,31 +992,28 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 9
 			},
 			"languages": {
 				"languages": [
-					"Common"
+					"common"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 8
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 11
 				},
-				"Nature": {
+				"nature": {
 					"std": 7
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 8
 				},
-				"Survival": {
+				"survival": {
 					"std": 7
 				}
 			},
@@ -1036,26 +1025,6 @@
 				"wis": 2,
 				"cha": 0
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 8
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 44,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1154,6 +1123,28 @@
 						"name": "Sneak"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 44,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1167,9 +1158,6 @@
 				"n",
 				"small",
 				"animal"
-			],
-			"creatureType": [
-				"Animal"
 			],
 			"perception": {
 				"std": 5
@@ -1185,14 +1173,14 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 5
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 3,
 					"to Climb or Swim": 5
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 7
 				}
 			},
@@ -1204,29 +1192,6 @@
 				"wis": 1,
 				"cha": -3
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 6
-				},
-				"ref": {
-					"std": 7
-				},
-				"will": {
-					"std": 3
-				}
-			},
-			"hp": [
-				{
-					"hp": 15,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"cold"
-			],
 			"speed": {
 				"walk": 30,
 				"climb": 10
@@ -1257,6 +1222,31 @@
 						"name": "Icy Death"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 3
+					}
+				},
+				"hp": [
+					{
+						"hp": 15,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"cold"
+				]
 			}
 		},
 		{
@@ -1272,9 +1262,6 @@
 				"humanoid",
 				"orc"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 9
 			},
@@ -1285,18 +1272,18 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Orc"
+					"common",
+					"orc"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 13
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 8
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 8
 				}
 			},
@@ -1313,26 +1300,6 @@
 				"+1 greatclub",
 				"hatchet (2)",
 				"hide armor"
-			],
-			"ac": {
-				"std": 21
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 8
-				},
-				"will": {
-					"std": 9
-				}
-			},
-			"hp": [
-				{
-					"hp": 68,
-					"abilities": null
-				}
 			],
 			"speed": {
 				"walk": 30
@@ -1425,6 +1392,28 @@
 						"name": "Rage"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 68,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1437,9 +1426,6 @@
 				"n",
 				"medium",
 				"animal"
-			],
-			"creatureType": [
-				"Animal"
 			],
 			"perception": {
 				"std": 5
@@ -1455,10 +1441,10 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 4
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 4
 				}
 			},
@@ -1470,26 +1456,6 @@
 				"wis": 1,
 				"cha": -2
 			},
-			"ac": {
-				"std": 15
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 4
-				},
-				"ref": {
-					"std": 6
-				},
-				"will": {
-					"std": 3
-				}
-			},
-			"hp": [
-				{
-					"hp": 8,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 35
 			},
@@ -1519,6 +1485,28 @@
 						"name": "Fleas"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 3
+					}
+				},
+				"hp": [
+					{
+						"hp": 8,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1533,9 +1521,6 @@
 				"medium",
 				"animal"
 			],
-			"creatureType": [
-				"Animal"
-			],
 			"perception": {
 				"std": 9
 			},
@@ -1547,13 +1532,13 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 9
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 11
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 9
 				}
 			},
@@ -1565,26 +1550,6 @@
 				"wis": 2,
 				"cha": -2
 			},
-			"ac": {
-				"std": 19
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 9
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 45,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 35
 			},
@@ -1629,6 +1594,28 @@
 						"name": "Tear"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 45,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1642,9 +1629,6 @@
 				"n",
 				"large",
 				"animal"
-			],
-			"creatureType": [
-				"Animal"
 			],
 			"perception": {
 				"std": 6
@@ -1660,10 +1644,10 @@
 				}
 			],
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 5
 				},
-				"Athletics": {
+				"athletics": {
 					"std": 10
 				}
 			},
@@ -1675,26 +1659,6 @@
 				"wis": 2,
 				"cha": -1
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 5
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -1719,6 +1683,28 @@
 						"name": "Shattering Hooves"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 30,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1732,9 +1718,6 @@
 				"ce",
 				"large",
 				"aberration"
-			],
-			"creatureType": [
-				"Aberration"
 			],
 			"perception": {
 				"std": 11
@@ -1751,17 +1734,17 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Elven",
-					"Goblin",
-					"Orc"
+					"common",
+					"elven",
+					"goblin",
+					"orc"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 15
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 10
 				}
 			},
@@ -1773,26 +1756,6 @@
 				"wis": 1,
 				"cha": 0
 			},
-			"ac": {
-				"std": 20
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 12
-				},
-				"ref": {
-					"std": 10
-				},
-				"will": {
-					"std": 9
-				}
-			},
-			"hp": [
-				{
-					"hp": 65,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 20,
 				"climb": 10,
@@ -1866,6 +1829,28 @@
 						"name": "Too Many Limbs"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 65,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -1880,9 +1865,6 @@
 				"large",
 				"construct"
 			],
-			"creatureType": [
-				"Construct"
-			],
 			"perception": {
 				"std": 7
 			},
@@ -1893,17 +1875,17 @@
 			],
 			"languages": {
 				"languages": [
-					"Common (can't speak)"
+					"common (can't speak)"
 				],
 				"abilities": [
 					"empathy link"
 				]
 			},
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 12
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 7
 				}
 			},
@@ -1915,31 +1897,6 @@
 				"wis": 0,
 				"cha": -2
 			},
-			"ac": {
-				"std": 17
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 6
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 60,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"bleed",
-				"death effects",
-				"disease"
-			],
 			"speed": {
 				"walk": 20
 			},
@@ -2005,6 +1962,33 @@
 						"name": "Stomp"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 60,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease"
+				]
 			}
 		},
 		{
@@ -2020,9 +2004,6 @@
 				"humanoid",
 				"orc"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 9
 			},
@@ -2033,24 +2014,24 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Orcish"
+					"common",
+					"orcish"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 9
 				},
-				"Crafting": {
+				"crafting": {
 					"std": 13
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 8
 				},
-				"Medicine": {
+				"medicine": {
 					"std": 9
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 9
 				}
 			},
@@ -2062,26 +2043,6 @@
 				"wis": 1,
 				"cha": 0
 			},
-			"ac": {
-				"std": 21
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 11
-				},
-				"will": {
-					"std": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 54,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2135,7 +2096,7 @@
 				"top": [
 					{
 						"entries": [
-							"+8, {@skill Medicine} +9, {@skill Stealth} +9 Str +1, Dex +3, Con +3, Int +4, Wis +1,"
+							"+8, {@skill Medicine} +9, {@skill Stealth} +9 Str +1, Dex +3, Con +3, Int +4, Wis +1"
 						],
 						"name": "Diplomacy"
 					},
@@ -2177,6 +2138,28 @@
 						"name": "Quick Bomber"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 54,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2193,35 +2176,32 @@
 				"human",
 				"humanoid"
 			],
-			"creatureType": [
-				"Humanoid"
-			],
 			"perception": {
 				"std": 10
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Elven"
+					"common",
+					"elven"
 				]
 			},
 			"skills": {
-				"Acrobatics": {
+				"acrobatics": {
 					"std": 11
 				},
-				"Arcana": {
+				"arcana": {
 					"std": 11
 				},
-				"Crafting": {
+				"crafting": {
 					"std": 13
 				},
-				"Diplomacy": {
+				"diplomacy": {
 					"std": 7
 				},
-				"Intimidation": {
+				"intimidation": {
 					"std": 7
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 11
 				}
 			},
@@ -2233,26 +2213,6 @@
 				"wis": 1,
 				"cha": 0
 			},
-			"ac": {
-				"std": 22
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 11
-				},
-				"ref": {
-					"std": 13
-				},
-				"will": {
-					"std": 8
-				}
-			},
-			"hp": [
-				{
-					"hp": 68,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2328,6 +2288,28 @@
 						"name": "Diplomacy"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 68,
+						"abilities": null
+					}
+				]
 			}
 		},
 		{
@@ -2341,9 +2323,6 @@
 				"small",
 				"plant"
 			],
-			"creatureType": [
-				"Plant"
-			],
 			"perception": {
 				"std": 4
 			},
@@ -2355,10 +2334,10 @@
 				}
 			],
 			"skills": {
-				"Athletics": {
+				"athletics": {
 					"std": 6
 				},
-				"Stealth": {
+				"stealth": {
 					"std": 5
 				}
 			},
@@ -2370,26 +2349,6 @@
 				"wis": 0,
 				"cha": 0
 			},
-			"ac": {
-				"std": 16
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 6
-				},
-				"ref": {
-					"std": 7
-				},
-				"will": {
-					"std": 4
-				}
-			},
-			"hp": [
-				{
-					"hp": 15,
-					"abilities": null
-				}
-			],
 			"speed": {
 				"walk": 25
 			},
@@ -2418,6 +2377,28 @@
 							"A creature {@condition grabbed} by a vine lasher is not {@condition immobilized}, but the {@condition grabbed} creature's space and every adjacent square use the rules for difficult terrain. If the creature moves, the vine lasher moves with it, always keeping the {@condition grabbed} creature within 10 feet of itself. If two or more vine lashers have a creature {@condition grabbed} in this way, then the target's space and adjacent square instead use the rules for greater difficult terrain."
 						],
 						"name": "Light Hold"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 15,
+						"abilities": null
 					}
 				]
 			}

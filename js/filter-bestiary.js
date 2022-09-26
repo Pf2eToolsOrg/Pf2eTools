@@ -168,7 +168,7 @@ class PageFilterBestiary extends PageFilter {
 			})
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
-		cr._flanguages = cr._flanguages.map(l => l.replace(/\s\(.+/, "")).filter(l => !l.includes(" "));
+		cr._flanguages = cr._flanguages.map(l => l.replace(/\s\(.+/, "")).filter(l => !l.includes(" ")).map(l => l.toTitleCase());
 		cr._fskills = new Set();
 		Object.keys(cr.skills).forEach((k) => {
 			if (k.match(/lore/i)) cr._fskills.add("Lore");
@@ -177,16 +177,16 @@ class PageFilterBestiary extends PageFilter {
 		cr._fskills = Array.from(cr._fskills);
 
 		cr._fHP = 0;
-		cr.hp.forEach((d) => {
+		cr.defenses.hp.forEach((d) => {
 			cr._fHP += d.hp;
 		})
 
-		cr._fResistances = cr.resistances ? cr.resistances.map(r => r.name === "all" ? "all damage" : r.name) : [];
-		cr._fWeaknesses = cr.weaknesses ? cr.weaknesses.map(w => w.name === "all" ? "all damage" : w.name) : [];
+		cr._fResistances = cr.defenses.resistances ? cr.defenses.resistances.map(r => r.name === "all" ? "all damage" : r.name) : [];
+		cr._fWeaknesses = cr.defenses.weaknesses ? cr.defenses.weaknesses.map(w => w.name === "all" ? "all damage" : w.name) : [];
 		cr._fSpeedtypes = [];
 		cr._fSpeed = 0;
 		Object.keys(cr.speed).forEach((k) => {
-			if (k !== "abilities") {
+			if (k !== "abilities" && k !== "speedNote") {
 				cr._fSpeed = Math.max(cr.speed[k], cr._fSpeed);
 				cr._fSpeedtypes.push(k);
 			}
@@ -242,12 +242,12 @@ class PageFilterBestiary extends PageFilter {
 		this._languageFilter.addItem(cr._flanguages);
 		this._skillsFilter.addItem(cr._fskills);
 
-		this._ACFilter.addItem(cr.ac.std);
+		this._ACFilter.addItem(cr.defenses.ac.std);
 		this._HPFilter.addItem(cr._fHP);
-		this._fortitudeFilter.addItem(cr.savingThrows.fort.std);
-		this._reflexFilter.addItem(cr.savingThrows.ref.std);
-		this._willFilter.addItem(cr.savingThrows.will.std);
-		this._immunityFilter.addItem(cr.immunities);
+		this._fortitudeFilter.addItem(cr.defenses.savingThrows.fort.std);
+		this._reflexFilter.addItem(cr.defenses.savingThrows.ref.std);
+		this._willFilter.addItem(cr.defenses.savingThrows.will.std);
+		this._immunityFilter.addItem(cr.defenses.immunities);
 		this._weaknessFilter.addItem(cr._fWeaknesses);
 		this._resistanceFilter.addItem(cr._fResistances);
 
@@ -302,12 +302,12 @@ class PageFilterBestiary extends PageFilter {
 				c.abilityMods.cha,
 			],
 			[
-				c.ac.default,
+				c.defenses.ac.std,
 				c._fHP,
-				c.savingThrows.fort.std,
-				c.savingThrows.ref.std,
-				c.savingThrows.will.std,
-				c.immunities,
+				c.defenses.savingThrows.fort.std,
+				c.defenses.savingThrows.ref.std,
+				c.defenses.savingThrows.will.std,
+				c.defenses.immunities,
 				c._fWeaknesses,
 				c._fResistances,
 			],

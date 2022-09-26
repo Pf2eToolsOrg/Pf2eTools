@@ -568,10 +568,10 @@ class ScaleCreature {
 	}
 
 	_scaleEliteWeak (creature, opts) {
-		Object.keys(creature.ac).forEach(key => {
-			if (key !== "abilities") creature.ac[key] += opts.flatAddProf;
+		Object.keys(creature.defenses.ac).forEach(key => {
+			if (key !== "abilities") creature.defenses.ac[key] += opts.flatAddProf;
 		});
-		["fort", "ref", "will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] += opts.flatAddProf));
+		["fort", "ref", "will"].forEach(st => Object.keys(creature.defenses.savingThrows[st]).forEach(key => creature.defenses.savingThrows[st][key] += opts.flatAddProf));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += opts.flatAddProf);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += opts.flatAddProf));
 		if (creature.spellcasting != null) {
@@ -625,28 +625,26 @@ class ScaleCreature {
 		return creature;
 	}
 
-	_scaleValue (lvlIn, toLvl, value, map) {
+	_scaleValue (lvlIn, toLvl, value, map, precision = 1) {
 		const rangesIn = map[lvlIn];
 		const toRanges = map[toLvl];
 		const lowerIdx = rangesIn.findIndex(it => it < value);
-		const upperIdx = rangesIn.length - 1 - MiscUtil.copy(rangesIn).reverse().findIndex(it => it >= value);
+		const upperIdx = rangesIn.length - 1 - MiscUtil.copy(rangesIn).reverse().findIndex(it => it > value);
 
-		const a = rangesIn[lowerIdx] || 0;
-		const b = rangesIn[upperIdx] || value;
+		const a = rangesIn[lowerIdx] || value - (rangesIn[upperIdx] - value);
+		const b = rangesIn[upperIdx] || value + (value - rangesIn[lowerIdx]);
 		let c, d;
 		// There was no suggested value less than the value we are scaling.
-		// TODO: Why shouldn't this be less than 1?
-		if (lowerIdx === -1) c = Math.max(1, toRanges[upperIdx] - b + a);
+		if (lowerIdx === -1) c = toRanges[upperIdx] - (b - a);
 		else c = toRanges[lowerIdx];
 
-		// There was no suggested value greater than or equal to the value we are scaling.
-		if (upperIdx === rangesIn.length) d = c + b - a;
+		// There was no suggested value greater than the value we are scaling.
+		if (upperIdx === rangesIn.length) d = c + (b - a);
 		else d = toRanges[upperIdx];
 
-		// Handle singletons, then finally scale the interval [a,b] to [c,d] linearly, and return the scaled value.
-		if (a === b) return a;
-		// CRITICAL FIXME: This rounding is making everything wrong. You could floor it instead but it doesn't alleviate the issue of wrong calculations from the start.
-		return Math.round((value - a) * ((d - c) / (b - a)) + c);
+		// Scale the interval [a,b] to [c,d] linearly, and return the scaled value.
+		// N.B: a =/= b is ensured above
+		return Math.round(precision * ((value - a) * ((d - c) / (b - a)) + c)) / precision;
 	}
 
 	_getDiceEV (diceExp) {
@@ -702,19 +700,19 @@ class ScaleCreature {
 	}
 
 	_adjustAC (creature, lvlIn, toLvl, opts) {
-		const defaultAc = creature.ac.std;
-		creature.ac.std = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC) + opts.flatAddProf;
-		Object.keys(creature.ac).forEach(key => {
-			if (key !== "std" && key !== "abilities") creature.ac[key] += creature.ac.std - defaultAc;
+		const defaultAc = creature.defenses.ac.std;
+		creature.defenses.ac.std = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC) + opts.flatAddProf;
+		Object.keys(creature.defenses.ac).forEach(key => {
+			if (key !== "std" && key !== "abilities") creature.defenses.ac[key] += creature.defenses.ac.std - defaultAc;
 		});
 	}
 
 	_adjustSavingThrows (creature, lvlIn, toLvl, opts) {
 		["fort", "ref", "will"].forEach(st => {
-			const defaultSave = creature.savingThrows[st].std;
-			creature.savingThrows[st].std = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows) + opts.flatAddProf;
-			Object.keys(creature.savingThrows[st]).forEach(key => {
-				if (key !== "std") creature.savingThrows[st][key] += creature.savingThrows[st].std - defaultSave;
+			const defaultSave = creature.defenses.savingThrows[st].std;
+			creature.defenses.savingThrows[st].std = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows) + opts.flatAddProf;
+			Object.keys(creature.defenses.savingThrows[st]).forEach(key => {
+				if (key !== "std") creature.defenses.savingThrows[st][key] += creature.defenses.savingThrows[st].std - defaultSave;
 			});
 		});
 	}
@@ -724,7 +722,7 @@ class ScaleCreature {
 	}
 
 	_adjustHP (creature, lvlIn, toLvl, opts) {
-		for (let hp of creature.hp) {
+		for (let hp of creature.defenses.hp) {
 			hp.hp = this._scaleValue(lvlIn, toLvl, hp.hp, this._LvlHP);
 			if (hp.hp > 100) {
 				hp.hp += 2;
@@ -740,14 +738,14 @@ class ScaleCreature {
 	}
 
 	_adjustResistancesWeaknesses (creature, lvlIn, toLvl, opts) {
-		if (creature.resistances) {
-			creature.resistances.forEach(r => {
+		if (creature.defenses.resistances) {
+			creature.defenses.resistances.forEach(r => {
 				if (r.amount) r.amount = this._scaleValue(lvlIn, toLvl, r.amount, this._LvlResistanceWeakness);
 			});
 		}
 
-		if (creature.weaknesses) {
-			creature.weaknesses.forEach(w => {
+		if (creature.defenses.weaknesses) {
+			creature.defenses.weaknesses.forEach(w => {
 				if (w.amount) w.amount = this._scaleValue(lvlIn, toLvl, w.amount, this._LvlResistanceWeakness);
 			});
 		}
@@ -759,7 +757,7 @@ class ScaleCreature {
 		creature.attacks.forEach(a => {
 			a.attack = this._scaleValue(lvlIn, toLvl, a.attack, this._LvlAttackBonus) + opts.flatAddProf;
 			const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
-			const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage);
+			const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage, 2);
 			a.damage = a.damage.replaceAll(/\d+d\d+([+-]?\d*)/g, (formula, mod) => {
 				const scaleTo = this._getDiceEV(formula) * scaledDpr / dpr;
 				const opts = mod ? {} : {noMod: true};
@@ -808,7 +806,10 @@ class ScaleCreature {
 						let randomSpell = null;
 						let tries = 20;
 						while ((sc.entry[lvl].spells.map(it => it.name.toLowerCase()).includes(randomSpell) || !randomSpell) && tries-- > 0) {
-							randomSpell = this._spells[sc.tradition][lvl][RollerUtil.roll(this._spells[sc.tradition][lvl].length, this._rng)];
+							const tradition = sc.tradition.toLowerCase();
+							// FIXME/TODO: This will stop the errors, but we still trust the data
+							if (!this._spells[tradition]) return;
+							randomSpell = this._spells[tradition][lvl][RollerUtil.roll(this._spells[tradition][lvl].length, this._rng)];
 						}
 						sc.entry[lvl].spells.push({"name": randomSpell});
 					}
@@ -838,13 +839,12 @@ class ScaleCreature {
 		});
 	}
 
-	_pInitSpellCache () {
+	async _pInitSpellCache () {
 		if (this._spells) return Promise.resolve();
 
 		this._spells = {};
-		return this._spells = DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/spells-crb.json`).then(data => {
-			this.__initSpellCache(data);
-		});
+		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/spells-crb.json`);
+		this.__initSpellCache(data);
 	}
 	__initSpellCache (data) {
 		data.spell.forEach(sp => {

@@ -206,7 +206,56 @@
 			},
 			"entries": [
 				"You evoke the energy of an Abyssal realm. The damage types of the spell (one energy and one physical) are based on the result of rolling on the table below.",
-				"{@dice 1d4} Realm Manifestation Damage Type 1 Skies Bolts of lightning Bludgeoning and flying debris and electricity 2 Depths Acid and demonic Acid and slashing shells 3 Frozen Frigid air and ice Bludgeoning and cold 4 Volcanic Jagged volcanic rocks Fire and piercing and magma You deal {@dice 4d6} damage of each of the corresponding damage types to each creature in the cone ({@damage 8d6} total damage)."
+				{
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						1,
+						2,
+						4,
+						4
+					],
+					"colStyles": [
+						"text-left",
+						"text-left",
+						"text-left",
+						"text-left"
+					],
+					"rows": [
+						[
+							"{@dice 1d4}",
+							"Realm",
+							"Manifestation",
+							"Damage Type"
+						],
+						[
+							"1",
+							"Skies",
+							"Bolts of lightning and flying debris",
+							"Bludgeoning and electricity"
+						],
+						[
+							"2",
+							"Depths",
+							"Acid and demonic shells",
+							"Acid and slashing"
+						],
+						[
+							"3",
+							"Frozen",
+							"Frigid air and ice",
+							"Bludgeoning and cold"
+						],
+						[
+							"4",
+							"Volcanic",
+							"Jagged volcanic rocks and magma",
+							"Fire and piercing"
+						]
+					],
+					"type": "table"
+				}
 			],
 			"heightened": {
 				"plusX": {
@@ -2102,7 +2151,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -2430,7 +2479,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d12}."
+						"The damage increases by {@damage 1d12}."
 					]
 				}
 			}
@@ -2638,7 +2687,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -2751,7 +2800,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The cold damage increases by {@dice 2d6}, and the evil damage against celestials increases by {@dice 2d6}."
+						"The cold damage increases by {@damage 2d6}, and the evil damage against celestials increases by {@dice 2d6}."
 					]
 				}
 			}
@@ -3106,7 +3155,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d8}."
+						"The damage increases by {@damage 1d8}."
 					]
 				}
 			}
@@ -3463,7 +3512,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -3885,7 +3934,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6} (or by {@dice 2d8} if the target is a divine spellcaster)."
+						"The damage increases by {@damage 2d6} (or by {@dice 2d8} if the target is a divine spellcaster)."
 					]
 				}
 			}
@@ -4054,7 +4103,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d8}."
+						"The damage increases by {@damage 1d8}."
 					]
 				}
 			}
@@ -4317,7 +4366,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -5320,14 +5369,14 @@
 				]
 			},
 			"entries": [
-				"You fire a green ray at your target. Make a spell attack. On a hit you deal {@dice 12d10} damage, and the target must attempt a basic Fortitude save. On a critical hit, treat the save result as one degree worse. A creature reduced to 0 HP is reduced to fine powder; its gear remains.",
+				"You fire a green ray at your target. Make a spell attack. On a hit you deal {@damage 12d10} damage, and the target must attempt a basic Fortitude save. On a critical hit, treat the save result as one degree worse. A creature reduced to 0 HP is reduced to fine powder; its gear remains.",
 				"An object you hit is destroyed (no save), regardless of Hardness, unless it's an artifact or similarly hard to destroy.",
 				"A single casting can destroy no more than a 10-foot cube of matter. This automatically destroys any force construct, such as a wall of force."
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d10}."
+						"The damage increases by {@damage 2d10}."
 					]
 				}
 			}
@@ -5471,7 +5520,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -5616,7 +5665,7 @@
 			},
 			"entries": [
 				"You utter a potent litany from your faith, a mandate that harms those who oppose your ideals. Choose an alignment your deity has (chaotic, evil, good, or lawful). You can't cast this spell if you don't have a deity or your deity is true neutral. This spell gains the trait of the alignment you chose.",
-				"You deal {@dice 7d10} damage to creatures in the area; each creature must attempt a Fortitude save. Creatures with an alignment that matches the one you chose are unaffected by the spell.",
+				"You deal {@damage 7d10} damage to creatures in the area; each creature must attempt a Fortitude save. Creatures with an alignment that matches the one you chose are unaffected by the spell.",
 				"Those that neither match nor oppose it treat the result of their saving throw as one degree better and don't suffer effects other than damage.",
 				{
 					"type": "successDegree",
@@ -5631,7 +5680,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d10}, and the level of creatures that must attempt a second save on a critical failure increases by 2."
+						"The damage increases by {@damage 1d10}, and the level of creatures that must attempt a second save on a critical failure increases by 2."
 					]
 				}
 			}
@@ -5702,7 +5751,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d4}."
+						"The damage increases by {@damage 1d4}."
 					]
 				}
 			}
@@ -5749,7 +5798,7 @@
 						"A +1 status bonus to saves against spells.",
 						"{@ability Darkvision}.",
 						"Your unarmed attacks and weapons deal 1 additional damage of the chosen alignment type.",
-						"One or more unarmed melee attacks. If you chose good or lawful, your fist attacks deal {@dice 2d8} damage. If you chose chaotic, you gain a bite unarmed attack that deals {@damage 2d10} piercing damage. If you chose evil, you gain a claws unarmed attack that deals {@damage 2d8} slashing damage and has the {@trait agile} and {@trait finesse} traits."
+						"One or more unarmed melee attacks. If you chose good or lawful, your fist attacks deal {@damage 2d8} damage. If you chose chaotic, you gain a bite unarmed attack that deals {@damage 2d10} piercing damage. If you chose evil, you gain a claws unarmed attack that deals {@damage 2d8} slashing damage and has the {@trait agile} and {@trait finesse} traits."
 					]
 				}
 			],
@@ -5801,7 +5850,7 @@
 				]
 			},
 			"entries": [
-				"You can channel the fury of your deity against foes of opposed alignment. Choose an alignment your deity has (chaotic, evil, good, or lawful). You can't cast this spell if you don't have a deity or your deity is true neutral. This spell gains the trait of the alignment you chose. You deal {@dice 4d10} damage of the alignment you chose; each creature in the area must attempt a Fortitude save. Creatures that match the alignment you chose are unaffected. Those that neither match nor oppose it treat the result of their saving throw as one degree better.",
+				"You can channel the fury of your deity against foes of opposed alignment. Choose an alignment your deity has (chaotic, evil, good, or lawful). You can't cast this spell if you don't have a deity or your deity is true neutral. This spell gains the trait of the alignment you chose. You deal {@damage 4d10} damage of the alignment you chose; each creature in the area must attempt a Fortitude save. Creatures that match the alignment you chose are unaffected. Those that neither match nor oppose it treat the result of their saving throw as one degree better.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -5815,7 +5864,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d10}."
+						"The damage increases by {@damage 1d10}."
 					]
 				}
 			}
@@ -6115,7 +6164,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -6336,7 +6385,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d4}."
+						"The damage increases by {@damage 1d4}."
 					]
 				}
 			},
@@ -6869,10 +6918,17 @@
 						"Critical Success": "The creature or object is unaffected.",
 						"Success": "The creature or object takes half damage.",
 						"Failure": "The creature or object takes full damage.",
-						"Critical Failure": "The creature or object takes double damage. If it's a creature, it becomes {@condition blinded} by the darkness for an unlimited duration. Heightened (+1) The cold damage increases by {@dice 1d10} and the negative damage against the living increases by {@dice 1d4}."
+						"Critical Failure": "The creature or object takes double damage. If it's a creature, it becomes {@condition blinded} by the darkness for an unlimited duration."
 					}
 				}
-			]
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The cold damage increases by {@damage 1d10} and the negative damage against the living increases by {@dice 1d4}."
+					]
+				}
+			}
 		},
 		{
 			"name": "Electric Arc",
@@ -6915,7 +6971,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d4}."
+						"The damage increases by {@damage 1d4}."
 					]
 				}
 			}
@@ -6971,7 +7027,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -7164,7 +7220,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d8}."
+						"The damage increases by {@damage 1d8}."
 					]
 				}
 			}
@@ -7669,7 +7725,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d12}."
+						"The damage increases by {@damage 1d12}."
 					]
 				}
 			}
@@ -8601,7 +8657,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The ray's initial damage increases by {@dice 2d6}, and the {@condition persistent damage ||persistent fire damage} on a critical success increases by {@dice 1d4}."
+						"The ray's initial damage increases by {@damage 2d6}, and the {@condition persistent damage ||persistent fire damage} on a critical success increases by {@dice 1d4}."
 					]
 				}
 			}
@@ -8703,7 +8759,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The cold resistance increases by 5, and the fire damage increases by {@dice 1d6}."
+						"The cold resistance increases by 5, and the fire damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -8756,7 +8812,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -8848,7 +8904,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -8910,7 +8966,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -10190,7 +10246,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The negative damage increases by {@dice 2d4}, and the {@condition persistent damage ||persistent bleed damage} increases by 1."
+						"The negative damage increases by {@damage 2d4}, and the {@condition persistent damage ||persistent bleed damage} increases by 1."
 					]
 				}
 			}
@@ -10228,7 +10284,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -10273,7 +10329,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -10483,7 +10539,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The amount of healing or damage increases by {@dice 1d8}, and the extra healing for the 2-action version increases by 8."
+						"The amount of healing or damage increases by {@damage 1d8}, and the extra healing for the 2-action version increases by 8."
 					]
 				}
 			}
@@ -10582,7 +10638,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The amount of healing or damage increases by {@dice 1d8}, and the extra healing for the 2-action version increases by 8."
+						"The amount of healing or damage increases by {@damage 1d8}, and the extra healing for the 2-action version increases by 8."
 					]
 				}
 			}
@@ -10731,7 +10787,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The fire damage increases by {@dice 1d6}, and the evil damage increases by {@dice 1d6}."
+						"The fire damage increases by {@damage 1d6}, and the evil damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -10922,7 +10978,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The bludgeoning damage increases by {@dice 1d6}, and the additional positive and good damage each increase by {@dice 2d6}."
+						"The bludgeoning damage increases by {@damage 1d6}, and the additional positive and good damage each increase by {@dice 2d6}."
 					]
 				}
 			}
@@ -10970,7 +11026,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d10}."
+						"The damage increases by {@damage 1d10}."
 					]
 				}
 			}
@@ -11166,7 +11222,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The stone's damage increases by {@dice 1d6}."
+						"The stone's damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -11216,7 +11272,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -11265,7 +11321,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -12227,7 +12283,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}, or by {@dice 2d6} if you use 2 or 3 actions."
+						"The damage increases by {@damage 1d6}, or by {@dice 2d6} if you use 2 or 3 actions."
 					]
 				}
 			}
@@ -12282,7 +12338,7 @@
 			"heightened": {
 				"plusX": {
 					"4": [
-						"The extra damage increases by {@dice 1d6}."
+						"The extra damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -12421,7 +12477,7 @@
 			"targets": "1 willing living creature or 1 undead creature",
 			"entries": [
 				"Your hands become infused with positive energy, healing a living creature or damaging an undead creature with a touch.",
-				"If you use lay on hands on a willing living target, you restore 6 Hit Points; if the target is one of your allies, they also gain a +2 status bonus to AC for 1 round. Against an undead target, you deal {@dice 1d6} damage and it must attempt a basic Fortitude save; if it fails, it also takes a \u20132 status penalty to AC for 1 round."
+				"If you use lay on hands on a willing living target, you restore 6 Hit Points; if the target is one of your allies, they also gain a +2 status bonus to AC for 1 round. Against an undead target, you deal {@damage 1d6} damage and it must attempt a basic Fortitude save; if it fails, it also takes a \u20132 status penalty to AC for 1 round."
 			],
 			"heightened": {
 				"plusX": {
@@ -12594,7 +12650,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d12}."
+						"The damage increases by {@damage 1d12}."
 					]
 				}
 			}
@@ -12742,7 +12798,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -13919,7 +13975,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The bludgeoning damage increases by {@dice 1d10}, and the fire damage increases by {@dice 2d6}."
+						"The bludgeoning damage increases by {@damage 1d10}, and the fire damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -14516,7 +14572,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The ray's damage increases by {@dice 1d6}."
+						"The ray's damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -14554,7 +14610,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -15465,7 +15521,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -15521,7 +15577,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6} on a failure and by {@dice 3d6} on a critical failure."
+						"The damage increases by {@damage 2d6} on a failure and by {@dice 3d6} on a critical failure."
 					]
 				}
 			}
@@ -15582,7 +15638,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d4} and the {@condition persistent damage} by {@dice 1d4}."
+						"The damage increases by {@damage 2d4} and the {@condition persistent damage} by {@dice 1d4}."
 					]
 				}
 			}
@@ -17361,7 +17417,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d4}."
+						"The damage increases by {@damage 1d4}."
 					]
 				}
 			}
@@ -18522,7 +18578,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The initial damage increases by {@dice 1d4} and the {@condition persistent damage} increases by {@dice 1d4}."
+						"The initial damage increases by {@damage 1d4} and the {@condition persistent damage} increases by {@dice 1d4}."
 					]
 				}
 			}
@@ -18724,7 +18780,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The fire damage increases by {@dice 2d6}, and the good damage against fiends and undead increases by {@dice 2d6}."
+						"The fire damage increases by {@damage 2d6}, and the good damage against fiends and undead increases by {@dice 2d6}."
 					]
 				}
 			}
@@ -18894,7 +18950,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d8}."
+						"The damage increases by {@damage 1d8}."
 					]
 				}
 			}
@@ -19178,7 +19234,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d10}, and the Hardness the spell ignores increases by 2."
+						"The damage increases by {@damage 1d10}, and the Hardness the spell ignores increases by 2."
 					]
 				}
 			}
@@ -19215,7 +19271,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -19396,7 +19452,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d12}, and the {@condition persistent damage ||persistent electricity damage} increases by 1."
+						"The damage increases by {@damage 1d12}, and the {@condition persistent damage ||persistent electricity damage} increases by 1."
 					]
 				}
 			}
@@ -19965,7 +20021,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d10}."
+						"The damage increases by {@damage 1d10}."
 					]
 				}
 			}
@@ -20357,7 +20413,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -20452,7 +20508,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -22038,7 +22094,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The fire damage increases by {@dice 1d10}, and the positive damage against undead increases by {@dice 1d10}."
+						"The fire damage increases by {@damage 1d10}, and the positive damage against undead increases by {@dice 1d10}."
 					]
 				}
 			}
@@ -22602,7 +22658,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -22835,7 +22891,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The initial damage increases by {@dice 1d12}, and the {@condition persistent damage ||persistent electricity damage} on a failure increases by 1."
+						"The initial damage increases by {@damage 1d12}, and the {@condition persistent damage ||persistent electricity damage} on a failure increases by 1."
 					]
 				}
 			}
@@ -22970,14 +23026,7 @@
 						"Critical Failure": "You move the target up to 10 feet in any direction along the ground or 20 feet in any direction through a body of water."
 					}
 				}
-			],
-			"heightened": {
-				"X": {
-					"5": [
-						"You can choose to gain a fly Speed."
-					]
-				}
-			}
+			]
 		},
 		{
 			"name": "Time Stop",
@@ -23262,7 +23311,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -23590,7 +23639,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -24122,7 +24171,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The resistances increase by 5, and the acid damage increases by {@dice 1d6}."
+						"The resistances increase by 5, and the acid damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -24171,7 +24220,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			},
@@ -24221,7 +24270,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			},
@@ -24560,7 +24609,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The mental damage increases by {@dice 1d8}."
+						"The mental damage increases by {@damage 1d8}."
 					]
 				}
 			}
@@ -24824,7 +24873,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The fire damage increases by {@dice 1d6}."
+						"The fire damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -25016,7 +25065,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The Hit Points of each section of the wall increase by 5, and the piercing damage increases by {@dice 1d4}."
+						"The Hit Points of each section of the wall increase by 5, and the piercing damage increases by {@damage 1d4}."
 					]
 				}
 			}
@@ -25370,7 +25419,7 @@
 			"heightened": {
 				"X": {
 					"10": [
-						"The force damage increases by {@dice 1d10}."
+						"The force damage increases by {@damage 1d10}."
 					]
 				}
 			}

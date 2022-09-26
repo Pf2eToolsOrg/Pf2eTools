@@ -29,7 +29,7 @@ function updateFolder (folder) {
 							}
 						})
 					}
-					if (x.destruction || x.special || x.craftReq) {
+					if (typeof (x.destruction || x.special || x.craftReq) === "string") {
 						console.log(`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`)
 						if (typeof x.special === "string") {
 							x.special = [x.special]
@@ -60,6 +60,13 @@ function updateFolder (folder) {
 						x.range.unit = x.range.type
 						delete x.range.type
 					}
+					if (x && x.subclass && x.subclass["Cleric|Domain"]) {
+						x.domains = x.subclass["Cleric|Domain"]
+						delete x.subclass["Cleric|Domain"]
+						if (Object.keys(x.subclass.length).length === 0) {
+							delete x.subclass
+						}
+					}
 					return x
 				})
 			}
@@ -83,7 +90,7 @@ function updateFolder (folder) {
 			}
 			if (json.vehicle) {
 				json.vehicle = json.vehicle.map(x => {
-					if (x.destruction || x.special || x.craftReq) {
+					if (typeof (x.destruction || x.special || x.craftReq) === "string") {
 						console.log(`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`)
 						if (typeof x.special === "string") {
 							x.special = [x.special]
@@ -98,6 +105,84 @@ function updateFolder (folder) {
 					}
 					return x
 				})
+			}
+			if (json.creature) {
+				json.creature = json.creature.map(cr => {
+					if (cr.creatureType) {
+						console.log(`\tUpdating ${cr.name} creature type in ${file}...`)
+						cr.traits.push(cr.creatureType.map(t => t.toLowerCase()))
+						delete cr.creatureType
+						cr.traits = [...new Set(cr.traits.flat())]
+					}
+					if (cr.skills && Object.keys(cr.skills).find(k => k.match(/[A-Z]/g))) {
+						// Stolen from https://bobbyhadz.com/blog/javascript-lowercase-object-keys
+						console.log(`\tUpdating ${cr.name} skill to lowercase in ${file}...`)
+
+						cr.skills = Object.keys(cr.skills).reduce((accumulator, key) => {
+							accumulator[key.toLowerCase()] = cr.skills[key];
+							return accumulator;
+						}, {})
+					}
+					if (cr.ac || cr.savingThrows || cr.hardness || cr.hp || cr.bt || cr.immunities || cr.weaknesses || cr.resistances) {
+						cr.defenses = cr.defenses || {};
+						console.log(`\tUpdating ${cr.name} defenses in ${file}...`)
+						for (let k of ["ac", "savingThrows", "hardness", "hp", "bt", "immunities", "weaknesses", "resistances"]) {
+							if (cr[k]) {
+								cr.defenses[k] = cr[k];
+								delete cr[k];
+							}
+						}
+					}
+					if (cr.languages && cr.languages.languages && cr.languages.languages.length && cr.languages.languages.find(k => k.match(/[A-Z]/g))) {
+						console.log(`\tUpdating ${cr.name} languages to lowercase in ${file}...`)
+						cr.languages.languages = cr.languages.languages.map(k => k.toLowerCase())
+					}
+					return cr;
+				});
+			}
+			if (json.hazard) {
+				json.hazard = json.hazard.map(h => {
+					if (h.actions && h.actions.filter(a => a.type === "attack").length) {
+						console.log(`\tUpdating ${h.name} actions in ${file}...`)
+						h.attacks = h.actions.filter(a => a.type === "attack");
+						h.actions = h.actions.filter(a => a.type !== "attack");
+					}
+					if (h.actions) h.actions.forEach(a => delete a.type);
+					if (h.attacks) h.attacks.forEach(a => delete a.type);
+
+					if (h.defenses) {
+						for (let k of ["ac", "hardness", "hp", "bt"]) {
+							if (h.defenses[k] && h.defenses[k].default) {
+								h.defenses[k].std = h.defenses[k].default;
+								delete h.defenses[k].default;
+							}
+						}
+						if (h.defenses.savingThrows) {
+							for (let k of ["fort", "ref", "will"]) {
+								if (typeof h.defenses.savingThrows[k] === "number") {
+									h.defenses.savingThrows[k] = {std: h.defenses.savingThrows[k]}
+								} else if (h.defenses.savingThrows[k] && h.defenses.savingThrows[k].default) {
+									h.defenses.savingThrows[k].std = h.defenses.savingThrows[k].default;
+									delete h.defenses.savingThrows[k].default;
+								}
+							}
+						}
+						if (h.defenses.notes) {
+							// :grimacing:
+							if (h.defenses.notes.default) {
+								h.defenses.notes.std = h.defenses.notes.default;
+								delete h.defenses.notes.default;
+							}
+							// Old data assumed notes was only for hp
+							h.defenses.hp.notes = h.defenses.notes
+							delete h.defenses.notes
+						}
+						if (h.defenses && h.defenses.hp && h.defenses.hp.notes) {
+							Object.keys(h.defenses.hp.notes).forEach(k => h.defenses.hp.notes[k] = h.defenses.hp.notes[k].trimAnyChar(".,;"))
+						}
+					}
+					return h;
+				});
 			}
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})

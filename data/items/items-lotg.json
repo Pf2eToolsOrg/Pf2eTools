@@ -1,0 +1,163 @@
+{
+	"item": [
+		{
+			"name": "Artevil Suspension",
+			"source": "LOTG",
+			"page": 101,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 11
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Treat Poison}"
+				]
+			},
+			"category": "Plant",
+			"entries": [
+				"This dried herb is known for its ability to draw toxins from the body, albeit violently. You can administer the suspension orally, {@action Activate an Item||Activating} the item as part of the same activity you use to {@action Treat Poison}. If you succeed at your {@skill Medicine} check to {@action Treat Poison} against an ingested poison, you can reduce the stage of the toxin by one stage, though this can't reduce the stage below stage 1 or cure the poison entirely. If you do, the creature becomes {@condition sickened} 2 as its body purges the toxin. An artevil suspension doesn't work unless the poison was administered through ingestion; for instance, if a poison can be administered through either ingestion or injury and was administered through injury, the suspension won't work."
+			]
+		},
+		{
+			"name": "Curled Cure Gel",
+			"source": "LOTG",
+			"page": 101,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 60
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Treat Wounds}"
+				]
+			},
+			"category": "Plant",
+			"entries": [
+				"Curled cure secretes a gel that gently warms the skin and stimulates healing. You can {@action Activate an Item||Activate the item} as part of the same activity you use to {@action Treat Wounds}. If you successfully {@action Treat Wounds}, you can also reduce the value of one of the targets' {@condition clumsy}, {@condition enfeebled}, or {@condition stupefied} conditions by 1. The target of your {@action Treat Wounds} is then temporarily immune to curled cure gel for 24 hours, whether or not your attempt to {@action Treat Wounds} was successful"
+			]
+		},
+		{
+			"name": "Drowsy Sun Eye Drops",
+			"source": "LOTG",
+			"page": 101,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 9
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Seek}"
+				]
+			},
+			"category": "Plant",
+			"entries": [
+				"These drops are made from luminescent mushrooms and refined into eye drops, which simulates a creature's natural night vision. When you attempt a {@skill Perception} check to {@action Seek}, you can draw and apply a dose of drowsy sun to your eyes as part of the same action, which grants you {@ability darkvision} to a range of 30 feet for 1 round. If you do, your {@action Seek} action gains the {@trait manipulate} trait, due to drawing and applying the eye drops."
+			]
+		},
+		{
+			"name": "Lady's Blessing Oil",
+			"source": "LOTG",
+			"page": 101,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 3
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Administer First Aid}"
+				]
+			},
+			"category": "Plant",
+			"entries": [
+				"Lady's blessing oil is favored by Pharasmin healers who ease the transitions of life. You can {@action Activate an Item||Activate the item} as part of the same activity you use to {@action Administer First Aid} to stabilize a creature. If you use lady's blessing oil, the DC of the check to {@action Administer First Aid} is reduced to the creature's recovery roll DC, rather than 5 + the recovery roll DC. However, if you roll a failure on the check, you get a critical failure instead."
+			]
+		},
+		{
+			"name": "Toothwort Extract",
+			"source": "LOTG",
+			"page": 101,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"additive 1",
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 9
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"trigger": "You use {@action Quick Alchemy} to craft an {@filter alchemical poison|items||item=alchemical;poison} that's at least 1 level lower than your advanced alchemy level."
+			},
+			"category": "Plant",
+			"entries": [
+				"Originally used in dental procedures, toothwort numbs the gums by deadening nerves. When the oils are extracted and distilled, toothwort has a secondary reputation among alchemists for enhancing the duration of poisons. When adding toothwort extract to an {@filter alchemical poison|items||item=alchemical;poison}, you can extend the maximum duration of the poison by 1 round."
+			]
+		},
+		{
+			"name": "Yarrow-Root Bandage",
+			"source": "LOTG",
+			"page": 101,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 12
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Administer First Aid}"
+				]
+			},
+			"category": "Plant",
+			"entries": [
+				"This root is often infused into bandages for life-threatening bleeding. {@action Activate an Item||Activating the item} is part of the same activity you use to {@action Administer First Aid} to stop bleeding on a creature who's also {@condition dying}. When you do, you can {@action Administer First Aid} to stop bleeding and {@condition dying} as part of the same activity with only one {@skill Medicine} check. However, the DC for the {@skill Medicine} check is equal to the 5 + the higher of the two DCs to {@action Administer First Aid}."
+			]
+		}
+	]
+}
