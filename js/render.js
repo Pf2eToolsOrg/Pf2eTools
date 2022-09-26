@@ -4591,7 +4591,7 @@ Renderer.deity = {
 		const renderStack = [
 			Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES),
 			Renderer.utils.getNameDiv(deity, { type: deity.category === "Philosophy" || deity.category === "Pantheon" ? deity.category : "Deity", ...opts }),
-			Renderer.utils.getDividerDiv()
+			Renderer.utils.getDividerDiv(),
 		];
 
 		// Pantheon block
@@ -4600,7 +4600,7 @@ Renderer.deity = {
 				deity.pantheonMembers.map(m => {
 					const [name, src] = m.split("|");
 					return `{@deity ${name}|${src}}`
-				}).join(", ")
+				}).join(", "),
 			);
 			renderStack.push(`<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${pantheon}</p>`);
 			renderStack.push(Renderer.utils.getDividerDiv());
