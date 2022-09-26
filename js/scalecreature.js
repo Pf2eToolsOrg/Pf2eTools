@@ -625,7 +625,7 @@ class ScaleCreature {
 		return creature;
 	}
 
-	_scaleValue (lvlIn, toLvl, value, map) {
+	_scaleValue (lvlIn, toLvl, value, map, precision = 1) {
 		const rangesIn = map[lvlIn];
 		const toRanges = map[toLvl];
 		const lowerIdx = rangesIn.findIndex(it => it < value);
@@ -644,7 +644,7 @@ class ScaleCreature {
 
 		// Scale the interval [a,b] to [c,d] linearly, and return the scaled value.
 		// N.B: a =/= b is ensured above
-		return Math.round((value - a) * ((d - c) / (b - a)) + c);
+		return Math.round(precision * ((value - a) * ((d - c) / (b - a)) + c)) / precision;
 	}
 
 	_getDiceEV (diceExp) {
@@ -757,7 +757,7 @@ class ScaleCreature {
 		creature.attacks.forEach(a => {
 			a.attack = this._scaleValue(lvlIn, toLvl, a.attack, this._LvlAttackBonus) + opts.flatAddProf;
 			const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
-			const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage);
+			const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage, 2);
 			a.damage = a.damage.replaceAll(/\d+d\d+([+-]?\d*)/g, (formula, mod) => {
 				const scaleTo = this._getDiceEV(formula) * scaledDpr / dpr;
 				const opts = mod ? {} : {noMod: true};
