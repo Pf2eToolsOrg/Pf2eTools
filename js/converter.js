@@ -677,7 +677,8 @@ class Converter {
 				this._push(actionToken);
 				this._push(atkToken);
 				breakOnLength += 1;
-			} else if (this._tokenIsType(this._tokenizerUtils.stringEntries)) this._parseCreatureAbilities(obj);
+			} else if (this._tokenIsType(this._tokenizerUtils.stringEntries) && this._peek().isStartNewLine) this._parseCreatureAbilities(obj);
+			else this._cbWarn(`Unexpected token "${this._peek().value}"`);
 			if (breakOnLength === this._tokenStack.length) break;
 		}
 	}
@@ -1234,7 +1235,8 @@ class Converter {
 				this._push(actionToken);
 				this._push(atkToken);
 				breakOnLength += 1;
-			} else if (this._tokenIsType(this._tokenizerUtils.stringEntries)) this._parseCreatureAbilities(obj, {hazardMode: true});
+			} else if (this._tokenIsType(this._tokenizerUtils.stringEntries) && this._peek().isStartNewLine) this._parseCreatureAbilities(obj, {hazardMode: true});
+			else this._cbWarn(`Unexpected token "${this._peek().value}"`);
 			if (breakOnLength === this._tokenStack.length) break;
 		}
 	}
@@ -1290,7 +1292,18 @@ class Converter {
 		obj.defenses.hardness = obj.defenses.hardness || {};
 		const token = this._consumeToken(this._tokenizerUtils.hazardHardness);
 		const regex = this._tokenizerUtils.hazardHardness.find(it => it.regex.test(token.value)).regex;
-		const [match, name, value] = regex.exec(token.value);
+		let [match, name, value] = regex.exec(token.value);
+		if (this._tokenIsType(this._tokenizerUtils.parenthesis)) {
+			const innerText = this._getParenthesisInnerText(this._peek());
+			if (innerText.split(" ").length <= 2) {
+				this._consumeToken(this._tokenizerUtils.parenthesis);
+				if (name == null) name = innerText.uppercaseFirst();
+			}
+		}
+		if (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
+			obj.defenses.hardness.notes = obj.defenses.hardness.notes || {};
+			obj.defenses.hardness.notes[name || "std"] = this._renderEntries(this._getEntries(), {asString: true}).trimAnyChar(".");
+		}
 		obj.defenses.hardness[name || "std"] = Number(value);
 	}
 	_parseHazardHP (obj) {
@@ -1299,13 +1312,24 @@ class Converter {
 		const token = this._consumeToken(this._tokenizerUtils.hazardHP);
 		const regex = this._tokenizerUtils.hazardHP.find(it => it.regex.test(token.value)).regex;
 		const [match, name, value] = regex.exec(token.value);
-		const key = name || "std";
+		let key = name || "std";
+		if (key === "std" && obj.defenses.hardness) {
+			const lastKey = Object.keys(obj.defenses.hardness).filter(k => obj.defenses.hp[k] === undefined).last();
+			key = lastKey || key;
+		}
+		if (this._tokenIsType(this._tokenizerUtils.parenthesis)) {
+			if (name == null) key = this._getParenthesisInnerText(this._consumeToken(this._tokenizerUtils.parenthesis)).uppercaseFirst();
+		}
 		obj.defenses.hp[key] = Number(value);
 		if (this._tokenIsType(this._tokenizerUtils.hazardBT)) {
 			const btToken = this._consumeToken(this._tokenizerUtils.hazardBT);
 			obj.defenses.bt = obj.defenses.bt || {};
 			const btVal = /\d+/.exec(btToken.value)
 			obj.defenses.bt[key] = Number(btVal);
+		}
+		if (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
+			obj.defenses.hp.notes = obj.defenses.hp.notes || {};
+			obj.defenses.hp.notes[key] = this._renderEntries(this._getEntries(), {asString: true}).trimAnyChar(".");
 		}
 	}
 	_parseReset (obj) {
@@ -1800,7 +1824,7 @@ class Converter {
 			let idx = 0;
 			let startOfLine = "";
 
-			if (!name) throw new Error(`Error while parsing ability name: expected name but found none.`);
+			if (!name) throw new Error(`Error while parsing ability name of "${this._parsing}": expected name at "${renderedLine}" but found none.`);
 
 			while (!startOfLine.startsWith(name)) {
 				if (idx > tokens.length) throw new Error(`Error while parsing ability name: "${name}"`);
