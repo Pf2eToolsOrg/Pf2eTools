@@ -1,6 +1,457 @@
 {
 	"hazard": [
 		{
+			"name": "Spirit Window",
+			"source": "DA",
+			"page": 124,
+			"level": 20,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 51
+			},
+			"description": [
+				"Spirits trapped inside a haunted window harm those who touch the window."
+			],
+			"disable": {
+				"entries": [
+					"DC 48 {@skill Occultism} (legendary) to free the spirits from the mirror, or DC 48 {@skill Religion} (legendary) to banish the spirits"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 30
+					}
+				},
+				"hardness": {
+					"Window": 35
+				},
+				"hp": {
+					"Window": 132
+				},
+				"bt": {
+					"Window": 66
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Siphon Soul",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"evil",
+						"necromancy",
+						"negative",
+						"occult"
+					],
+					"trigger": "A creature touches the window",
+					"entries": [
+						"The triggering creature takes {@damage 8d10+44} negative damage (DC 42 basic Will save) as the window attempts to steal their soul. If this damage would kill the target, its soul is trapped inside the window with the effects of bind soul."
+					]
+				}
+			],
+			"reset": [
+				"1 round"
+			]
+		},
+		{
+			"name": "Clone Mirrors",
+			"source": "DA",
+			"page": 124,
+			"level": 6,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 21
+			},
+			"description": [
+				"Two opposing mirrors spawn illusory duplicates of creatures in the hall in an unending tide."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (expert) to reposition each mirror, or dispel magic (3rd level; counteract DC 25) to counteract each mirror"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 17
+					}
+				},
+				"hardness": {
+					"notes": {
+						"std": "per mirror"
+					},
+					"std": 13
+				},
+				"hp": {
+					"std": 54,
+					"Reflection ": 30
+				},
+				"bt": {
+					"std": 27
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Spawn Reflection",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"illusion"
+					],
+					"trigger": "A creature is reflected in the mirror",
+					"entries": [
+						"The mirror creates a reflection of the triggering creature, which Steps out of the mirror and into the hall. The trap then rolls initiative."
+					]
+				},
+				{
+					"name": "Reflection AC",
+					"entries": [
+						"24"
+					]
+				},
+				{
+					"name": "Reflection Routine",
+					"traits": [
+						"2 actions"
+					],
+					"entries": [
+						"Each reflection has 2 actions which it uses to {@action Step}, {@action Stride}, or {@action Strike} (in any combination). Reflections can act on the same turn they're created."
+					]
+				},
+				{
+					"name": "Reflection Speed",
+					"entries": [
+						"50 feet"
+					]
+				}
+			],
+			"routine": [
+				"(2 actions) This trap loses 1 action for each mirror disabled. Each mirror uses 1 action to Spawn a Reflection of a creature reflected in the mirror. The hazard can have a maximum of four reflections spawned at once."
+			],
+			"reset": [
+				"1 day"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"versatile P",
+						"versatile S"
+					],
+					"name": "reflected weapon",
+					"attack": 17,
+					"damage": "{@damage 2d6+8} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Constricting Hall",
+			"source": "DA",
+			"page": 124,
+			"level": 8,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 31
+			},
+			"description": [
+				"A hall's four walls become fluid and elastic when a creature reaches the hall's midpoint."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (trained) to stabilize each wall, or dispel magic (4th level; counteract DC 26) to counteract each wall"
+				]
+			},
+			"actions": [
+				{
+					"name": "Lose Form",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"occult",
+						"transmutation"
+					],
+					"trigger": "A creature reaches the hall's midpoint",
+					"entries": [
+						"The hall's walls lose their rigidity, becoming fluid and elastic. The hall becomes difficult terrain, and each creature in the hall is knocked Archive {@condition prone} unless they succeed at a DC 26 Reflex save. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(4 actions) This trap loses 1 action each round for each wall that has been disabled. Each wall uses 1 action to slam back and forth rapidly, pummeling one creature in the hall with a wall {@action Strike}. On a hit, the target is additionally knocked {@condition prone}. The walls distribute the attacks as evenly as possible among creatures in the hall, and the Strikes don't apply the trap's multiple attack penalty."
+			],
+			"reset": [
+				"1 hour"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "wall",
+					"attack": 20,
+					"damage": "{@damage 2d10+11} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Exhaling Portal",
+			"source": "DA",
+			"page": 125,
+			"level": 9,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 33
+			},
+			"description": [
+				"Magic runes carved into a doorframe connect a door to the Plane of Air when opened, blowing creatures down the connecting hall."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Thievery} (expert) twice to scratch out the runes, or dispel magic (5th level; counteract DC 30) to counteract the planar runes; DC 32 {@skill Athletics} to shut the door if it's open (using {@skill Athletics} only stops the trap, it doesn't fully disable it)"
+				]
+			},
+			"actions": [
+				{
+					"name": "Gust",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"air",
+						"conjuration"
+					],
+					"trigger": "A creature opens the door",
+					"entries": [
+						"The hall is buffeted by powerful winds for as long as the door remains open. A creature must succeed at a DC 32 {@skill Athletics} check to move toward the door. A creature who fails at this check is pushed back 5 feet and falls {@condition prone}.",
+						"Additionally, the triggering creature is blasted by a powerful gust of wind and must attempt a DC 32 Fortitude save. The trap then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is pushed back 5 feet."
+								],
+								"Failure": [
+									"The creature is pushed back 10 feet."
+								],
+								"Critical Failure": [
+									"The creature is pushed back 10 feet and knocked {@condition prone}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The trap uses 1 action to blow powerful winds down the hall. Each creature in the hall must attempt a DC 32 Fortitude save with the same results as Gust. If this forced movement would cause a creature to collide with a solid object or fall downstairs or out a window, that creature takes an additional {@damage 2d10+11} bludgeoning damage (or 20 damage due to a fall)."
+			],
+			"reset": [
+				"Automatic after the door is shut"
+			]
+		},
+		{
+			"name": "Bounding Hounds",
+			"source": "DA",
+			"page": 125,
+			"level": 13,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 37
+			},
+			"description": [
+				"Three phantom hounds chase down intruders, damaging any they pass through."
+			],
+			"disable": {
+				"entries": [
+					"DC 36 {@skill Nature} (expert) to calm each hound, or DC 38"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 20
+					}
+				},
+				"hp": {
+					"std": 60,
+					"notes": {
+						"std": "per hound; Resistance all damage 10 (except force, ghost touch, or positive; double resistance to non-magical)"
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Occultism",
+					"activity": {
+						"unit": "varies",
+						"entry": "master"
+					},
+					"components": [
+						"to banish each hound"
+					],
+					"entries": []
+				},
+				{
+					"name": "Bay",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"evocation",
+						"sonic"
+					],
+					"trigger": "A creature enters the area",
+					"entries": [
+						"The hounds manifest and bay loudly, dealing {@damage 3d10+16} sonic damage to all creatures within 30 feet of the hounds (DC 33 basic Fortitude save). On a failed check, a creature is additionally {@condition frightened||frightened 2}. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(9 actions) The trap loses 3 actions each round for each hound disabled. Each hound uses three actions to {@action Stride} 40 feet after creatures in the room, passing through corporeal creatures during this movement if possible. Each creature the hound moves through during its movement takes {@damage 2d8+7} negative damage (DC 37 Reflex negates). A creature can only be damaged by each hound once each round, no matter how many times the hound moves through their space."
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Shrouded Assailant",
+			"source": "DA",
+			"page": 125,
+			"level": 17,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 43
+			},
+			"description": [
+				"A spirit steps out of a covered mirror, pulling off and becoming shrouded in the cloth, which reveals the mirror. The shrouded figure attacks the living until the cloth is yanked off, which banishes the formless spirit."
+			],
+			"disable": {
+				"entries": [
+					"DC 43 {@skill Thievery} (master) to steal the cloth before the spirit manifests, or DC 47 {@skill Athletics} to pull the cloth off the spirit after it manifests"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": {
+					"Spirit": 230,
+					"notes": {
+						"Spirit": "Resistance all damage 20 (except force, ghost touch, or positive; double resistance to non-magical)"
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Don Shroud",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"occult"
+					],
+					"trigger": "A creature enters the area",
+					"entries": [
+						"The spirit steps out of the mirror, wearing the cloth as a shroud and revealing the mirror. The triggering creature is {@condition frightened||frightened 3} unless they succeed at a DC 38 Will save. The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The spirit uses 3 actions to {@action Step}, fly 60 feet, or {@action Strike}, in any order. On a successful {@action Strike} the spirit's target is {@condition frightened||frightened 1}, and on a critical success, the target is {@condition frightened||frightened 2}."
+			],
+			"reset": [
+				"The haunt can be reset if the mirror is covered in a cloth or shroud."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "shrouded touch",
+					"attack": 33,
+					"damage": "{@damage 3d12+19} force"
+				}
+			]
+		},
+		{
 			"name": "Call of the Void",
 			"source": "DA",
 			"page": 214,
@@ -267,7 +718,7 @@
 		},
 		{
 			"name": "Reflected Desires",
-			"source": "SOURCE",
+			"source": "DA",
 			"page": 123,
 			"level": 1,
 			"traits": [
@@ -339,7 +790,7 @@
 		},
 		{
 			"name": "Shrinking Hall",
-			"source": "SOURCE",
+			"source": "DA",
 			"page": 123,
 			"level": 2,
 			"traits": [
@@ -376,7 +827,7 @@
 		},
 		{
 			"name": "False Floor",
-			"source": "SOURCE",
+			"source": "DA",
 			"page": 123,
 			"level": 3,
 			"traits": [
@@ -415,7 +866,7 @@
 		},
 		{
 			"name": "Entrapping Chair",
-			"source": "SOURCE",
+			"source": "DA",
 			"page": 123,
 			"level": 5,
 			"traits": [
@@ -479,7 +930,7 @@
 		},
 		{
 			"name": "False Step Floor",
-			"source": "SOURCE",
+			"source": "DA",
 			"page": 123,
 			"level": 6,
 			"traits": [
@@ -523,7 +974,7 @@
 		},
 		{
 			"name": "Distortion Mirror",
-			"source": "SOURCE",
+			"source": "DA",
 			"page": 123,
 			"level": 14,
 			"traits": [
@@ -608,7 +1059,7 @@
 		},
 		{
 			"name": "Sigil of Deepest Fears",
-			"source": "SOURCE",
+			"source": "DA",
 			"page": 124,
 			"level": 17,
 			"traits": [
