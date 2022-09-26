@@ -433,7 +433,7 @@ class Converter {
 		this._parsedProperties.push(...this._tokenizerUtils.duration);
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const rendered = this._renderEntries(entries, {asString: true});
-		const regExpDuration = new RegExp(`(sustained)?(?: up to )?(\\d+)? ?(${this._tokenizerUtils.timeUnits.map(u => u.regex.source).join("|")})?`);
+		const regExpDuration = new RegExp(`(sustained)?(?: up to )?(\\d+)? ?(${this._tokenizerUtils.timeUnits.map(u => u.regex.source).join("|")})?$`);
 		const matched = regExpDuration.exec(rendered);
 		if (matched && matched[0]) {
 			obj.duration = {};
