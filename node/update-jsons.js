@@ -167,6 +167,19 @@ function updateFolder (folder) {
 								}
 							}
 						}
+						if (h.defenses.notes) {
+							// :grimacing:
+							if (h.defenses.notes.default) {
+								h.defenses.notes.std = h.defenses.notes.default;
+								delete h.defenses.notes.default;
+							}
+							// Old data assumed notes was only for hp
+							h.defenses.hp.notes = h.defenses.notes
+							delete h.defenses.notes
+						}
+						if (h.defenses && h.defenses.hp && h.defenses.hp.notes) {
+							Object.keys(h.defenses.hp.notes).forEach(k => h.defenses.hp.notes[k] = h.defenses.hp.notes[k].trimAnyChar(".,;"))
+						}
 					}
 					return h;
 				});

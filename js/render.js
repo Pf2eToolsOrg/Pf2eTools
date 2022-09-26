@@ -4943,16 +4943,19 @@ Renderer.hazard = {
 	},
 	getDefenses_getHPHardnessPart (hazard) {
 		if (!hazard.defenses.hp) return null;
+		const renderer = Renderer.get();
 		const rdk = (key) => key === "std" ? "" : `${key} `;
 		const hp = hazard.defenses.hp || {};
 		const bt = hazard.defenses.bt || {};
 		const hard = hazard.defenses.hardness || {};
 		const out = [];
-		// FIXME/TODO: We completely omit hardness keys that have no hp counterpart. This seems OK on first glance.
-		Object.keys(hp).forEach(hpk => {
-			const hardPart = hard[hpk] ? `<strong>${rdk(hpk)}Hardness&nbsp;</strong>${hard[hpk]}, ` : "";
+		// FIXME: We completely omit hardness keys that have no hp counterpart. This seems OK on first glance. NO!
+		Object.keys(hp).filter(it => it !== "notes").forEach(hpk => {
+			const hardNotes = hard.notes && hard.notes[hpk] ? ` ${renderer.render(hard.notes[hpk])}; ` : ", ";
+			const hardPart = hard[hpk] ? `<strong>${rdk(hpk)}Hardness&nbsp;</strong>${hard[hpk]}${hardNotes}` : "";
 			const btPart = bt[hpk] ? ` (BT ${bt[hpk]})` : "";
-			out.push(`${hardPart}<strong>${rdk(hpk)}HP&nbsp;</strong>${hp[hpk]}${btPart}`);
+			const hpNotes = hp.notes && hp.notes[hpk] ? ` ${renderer.render(hp.notes[hpk])}` : "";
+			out.push(`${hardPart}<strong>${rdk(hpk)}HP&nbsp;</strong>${hp[hpk]}${btPart}${hpNotes}`);
 		});
 		return out.join("; ");
 	},

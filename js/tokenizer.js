@@ -593,7 +593,7 @@ class TokenizerUtils {
 
 	static get special () {
 		return [
-			{regex: /^Special/, type: "SPECIAL"},
+			{regex: /^Special\s/, type: "SPECIAL", lookbehind: /\n$/},
 		]
 	}
 

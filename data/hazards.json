@@ -1262,7 +1262,11 @@
 				},
 				"hp": {
 					"Nozzle": 40,
-					"Tank": 100
+					"Tank": 100,
+					"notes": {
+						"Tank": "to damage the tank enough to stop it from spewing gas",
+						"Nozzle": "to destroy a nozzle"
+					}
 				},
 				"bt": {
 					"Nozzle": 20,
@@ -1272,11 +1276,7 @@
 					"critical hits",
 					"object immunities",
 					"precision damage"
-				],
-				"notes": {
-					"Tank": "to damage the tank enough to stop it from spewing gas",
-					"Nozzle": "to destroy a nozzle"
-				}
+				]
 			},
 			"actions": [
 				{
@@ -1558,10 +1558,10 @@
 					}
 				},
 				"hp": {
-					"std": 120
-				},
-				"notes": {
-					"default": "per flower."
+					"std": 120,
+					"notes": {
+						"std": "per flower"
+					}
 				},
 				"immunities": [
 					"mental"
@@ -2929,13 +2929,13 @@
 					"std": 20
 				},
 				"hp": {
-					"std": 80
+					"std": 80,
+					"notes": {
+						"std": "per launching mechanism"
+					}
 				},
 				"bt": {
 					"std": 40
-				},
-				"notes": {
-					"default": "per launching mechanism."
 				},
 				"immunities": [
 					"critical hits",
@@ -3148,13 +3148,13 @@
 					"Arm": 15
 				},
 				"hp": {
-					"Arm": 50
+					"Arm": 50,
+					"notes": {
+						"Arm": "to destroy one arm"
+					}
 				},
 				"bt": {
 					"Arm": 25
-				},
-				"notes": {
-					"Arm": "to destroy one arm."
 				},
 				"immunities": [
 					"critical hits",
@@ -3257,15 +3257,15 @@
 				},
 				"hp": {
 					"Nozzle": 20,
-					"Tank": 80
+					"Tank": 80,
+					"notes": {
+						"Nozzle": "to ruin the nozzle (making it impossible to disable, in which case the only way to disarm the bomb is to destroy both its tanks)",
+						"Tank": "to destroy one of the tanks (both tanks must be destroyed to disarm the bomb)"
+					}
 				},
 				"bt": {
 					"Nozzle": 10,
 					"Tank": 40
-				},
-				"notes": {
-					"Nozzle": "to ruin the nozzle (making it impossible to disable, in which case the only way to disarm the bomb is to destroy both its tanks)",
-					"Tank": "to destroy one of the tanks (both tanks must be destroyed to disarm the bomb)"
 				},
 				"immunities": [
 					"critical hits",
@@ -3732,13 +3732,13 @@
 					"std": 43
 				},
 				"hp": {
-					"std": 128
+					"std": 128,
+					"notes": {
+						"std": "dagger"
+					}
 				},
 				"bt": {
 					"std": 64
-				},
-				"notes": {
-					"default": "dagger."
 				}
 			},
 			"actions": [
@@ -3816,13 +3816,13 @@
 					"std": 1
 				},
 				"hp": {
-					"std": 4
+					"std": 4,
+					"notes": {
+						"std": " the mirror can't be damaged while any mirror duplicate is alive"
+					}
 				},
 				"bt": {
 					"std": 2
-				},
-				"notes": {
-					"default": ", the mirror can't be damaged while any mirror duplicate is alive."
 				}
 			},
 			"actions": [
@@ -3890,13 +3890,13 @@
 					"std": 10
 				},
 				"hp": {
-					"std": 60
+					"std": 60,
+					"notes": {
+						"std": "to destroy the seal and disable the trap"
+					}
 				},
 				"bt": {
 					"std": 30
-				},
-				"notes": {
-					"default": "to destroy the seal and disable the trap."
 				},
 				"immunities": [
 					"critical hits",
@@ -3975,13 +3975,13 @@
 					"std": 1
 				},
 				"hp": {
-					"std": 4
+					"std": 4,
+					"notes": {
+						"std": " the mirror can't be damaged while any mirror duplicate is alive"
+					}
 				},
 				"bt": {
 					"std": 2
-				},
-				"notes": {
-					"default": ", the mirror can't be damaged while any mirror duplicate is alive."
 				}
 			},
 			"actions": [
@@ -7229,14 +7229,14 @@
 				},
 				"hp": {
 					"Channel": 48,
-					"Floor": 72
+					"Floor": 72,
+					"notes": {
+						"Channel": "to destroy a channel gate (this prevents that channel from being disabled and stops the trap from resetting)"
+					}
 				},
 				"bt": {
 					"Channel": 24,
 					"Floor": 36
-				},
-				"notes": {
-					"Channel": "to destroy a channel gate (this prevents that channel from being disabled and stops the trap from resetting)"
 				},
 				"immunities": [
 					"critical hits",
@@ -7589,13 +7589,13 @@
 					"std": 10
 				},
 				"hp": {
-					"std": 70
+					"std": 70,
+					"notes": {
+						"std": "per mannequin"
+					}
 				},
 				"bt": {
 					"std": 35
-				},
-				"notes": {
-					"default": "per mannequin"
 				},
 				"immunities": [
 					"critical hits",
@@ -7672,13 +7672,13 @@
 					"std": 18
 				},
 				"hp": {
-					"std": 48
+					"std": 48,
+					"notes": {
+						"std": "per statue"
+					}
 				},
 				"bt": {
 					"std": 24
-				},
-				"notes": {
-					"default": "per statue"
 				},
 				"immunities": [
 					"critical hits",
@@ -7968,13 +7968,13 @@
 					"std": 8
 				},
 				"hp": {
-					"std": 25
+					"std": 25,
+					"notes": {
+						"std": "to break the spring under the step and make that step safe to stand on"
+					}
 				},
 				"bt": {
 					"std": 12
-				},
-				"notes": {
-					"default": "to break the spring under the step and make that step safe to stand on."
 				}
 			},
 			"actions": [
@@ -8396,13 +8396,13 @@
 					"std": 14
 				},
 				"hp": {
-					"std": 56
+					"std": 56,
+					"notes": {
+						"std": "to destroy the control panel and disable the trap"
+					}
 				},
 				"bt": {
 					"std": 28
-				},
-				"notes": {
-					"default": "to destroy the control panel and disable the trap."
 				},
 				"immunities": [
 					"critical hits",
@@ -10519,10 +10519,10 @@
 					}
 				},
 				"hp": {
-					"std": 24
-				},
-				"notes": {
-					"default": "per spirit."
+					"std": 24,
+					"notes": {
+						"std": "per spirit"
+					}
 				},
 				"immunities": [
 					"death effects",
@@ -10863,13 +10863,13 @@
 					"std": 22
 				},
 				"hp": {
-					"std": 88
+					"std": 88,
+					"notes": {
+						"std": "per telekinetic cloud"
+					}
 				},
 				"bt": {
 					"std": 44
-				},
-				"notes": {
-					"default": "per telekinetic cloud."
 				}
 			},
 			"actions": [
@@ -11311,13 +11311,13 @@
 					"Branch": 10
 				},
 				"hp": {
-					"Branch": 40
+					"Branch": 40,
+					"notes": {
+						"Branch": "to break each branch"
+					}
 				},
 				"bt": {
 					"Branch": 20
-				},
-				"notes": {
-					"Branch": "to break each branch."
 				},
 				"immunities": [
 					"critical hits",
@@ -11532,13 +11532,13 @@
 					"std": 6
 				},
 				"hp": {
-					"std": 4
+					"std": 4,
+					"notes": {
+						"std": "Immunities critical hits, sneak attack"
+					}
 				},
 				"bt": {
 					"std": 2
-				},
-				"notes": {
-					"default": "Immunities critical hits, sneak attack."
 				},
 				"immunities": [
 					"critical hits",
@@ -11698,13 +11698,13 @@
 					"std": 30
 				},
 				"hp": {
-					"std": 120
+					"std": 120,
+					"notes": {
+						"std": "per junction"
+					}
 				},
 				"bt": {
 					"std": 60
-				},
-				"notes": {
-					"default": "per junction."
 				},
 				"immunities": [
 					"critical hits",
@@ -11796,13 +11796,13 @@
 					"std": 18
 				},
 				"hp": {
-					"std": 72
+					"std": 72,
+					"notes": {
+						"std": "per 5-foot patch"
+					}
 				},
 				"bt": {
 					"std": 36
-				},
-				"notes": {
-					"default": "per 5-foot patch."
 				}
 			},
 			"actions": [
@@ -11917,15 +11917,15 @@
 				},
 				"hp": {
 					"Tub": 104,
-					"std": 72
+					"std": 72,
+					"notes": {
+						"Tub": "to destroy a tub and prevent it from making any further attacks",
+						"std": "to destroy the wax on a sealed door and allow anyone to escape through the door"
+					}
 				},
 				"bt": {
 					"Tub": 52,
 					"std": 36
-				},
-				"notes": {
-					"Tub": "to destroy a tub and prevent it from making any further attacks.",
-					"default": "to destroy the wax on a sealed door and allow anyone to escape through the door."
 				},
 				"immunities": [
 					"critical hits",
@@ -13300,11 +13300,11 @@
 				"hardness": {
 					"std": 9
 				},
-				"notes": {
-					"default": "(wall)"
-				},
 				"hp": {
-					"std": 30
+					"std": 30,
+					"notes": {
+						"std": "(wall)"
+					}
 				},
 				"bt": {
 					"std": 15
