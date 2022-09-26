@@ -1,6 +1,1151 @@
 {
 	"hazard": [
 		{
+			"name": "Spirit Window",
+			"source": "DA",
+			"page": 124,
+			"level": 20,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 51
+			},
+			"description": [
+				"Spirits trapped inside a haunted window harm those who touch the window."
+			],
+			"disable": {
+				"entries": [
+					"DC 48 {@skill Occultism} (legendary) to free the spirits from the mirror, or DC 48 {@skill Religion} (legendary) to banish the spirits"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 30
+					}
+				},
+				"hardness": {
+					"Window": 35
+				},
+				"hp": {
+					"Window": 132
+				},
+				"bt": {
+					"Window": 66
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Siphon Soul",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"evil",
+						"necromancy",
+						"negative",
+						"occult"
+					],
+					"trigger": "A creature touches the window",
+					"entries": [
+						"The triggering creature takes {@damage 8d10+44} negative damage (DC 42 basic Will save) as the window attempts to steal their soul. If this damage would kill the target, its soul is trapped inside the window with the effects of bind soul."
+					]
+				}
+			],
+			"reset": [
+				"1 round"
+			]
+		},
+		{
+			"name": "Clone Mirrors",
+			"source": "DA",
+			"page": 124,
+			"level": 6,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 21
+			},
+			"description": [
+				"Two opposing mirrors spawn illusory duplicates of creatures in the hall in an unending tide."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (expert) to reposition each mirror, or dispel magic (3rd level; counteract DC 25) to counteract each mirror"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 17
+					}
+				},
+				"hardness": {
+					"notes": {
+						"std": "per mirror"
+					},
+					"std": 13
+				},
+				"hp": {
+					"std": 54,
+					"Reflection ": 30
+				},
+				"bt": {
+					"std": 27
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Spawn Reflection",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"illusion"
+					],
+					"trigger": "A creature is reflected in the mirror",
+					"entries": [
+						"The mirror creates a reflection of the triggering creature, which Steps out of the mirror and into the hall. The trap then rolls initiative."
+					]
+				},
+				{
+					"name": "Reflection AC",
+					"entries": [
+						"24"
+					]
+				},
+				{
+					"name": "Reflection Routine",
+					"traits": [
+						"2 actions"
+					],
+					"entries": [
+						"Each reflection has 2 actions which it uses to {@action Step}, {@action Stride}, or {@action Strike} (in any combination). Reflections can act on the same turn they're created."
+					]
+				},
+				{
+					"name": "Reflection Speed",
+					"entries": [
+						"50 feet"
+					]
+				}
+			],
+			"routine": [
+				"(2 actions) This trap loses 1 action for each mirror disabled. Each mirror uses 1 action to Spawn a Reflection of a creature reflected in the mirror. The hazard can have a maximum of four reflections spawned at once."
+			],
+			"reset": [
+				"1 day"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"versatile P",
+						"versatile S"
+					],
+					"name": "reflected weapon",
+					"attack": 17,
+					"damage": "{@damage 2d6+8} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Constricting Hall",
+			"source": "DA",
+			"page": 124,
+			"level": 8,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 31
+			},
+			"description": [
+				"A hall's four walls become fluid and elastic when a creature reaches the hall's midpoint."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (trained) to stabilize each wall, or dispel magic (4th level; counteract DC 26) to counteract each wall"
+				]
+			},
+			"actions": [
+				{
+					"name": "Lose Form",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"occult",
+						"transmutation"
+					],
+					"trigger": "A creature reaches the hall's midpoint",
+					"entries": [
+						"The hall's walls lose their rigidity, becoming fluid and elastic. The hall becomes difficult terrain, and each creature in the hall is knocked Archive {@condition prone} unless they succeed at a DC 26 Reflex save. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(4 actions) This trap loses 1 action each round for each wall that has been disabled. Each wall uses 1 action to slam back and forth rapidly, pummeling one creature in the hall with a wall {@action Strike}. On a hit, the target is additionally knocked {@condition prone}. The walls distribute the attacks as evenly as possible among creatures in the hall, and the Strikes don't apply the trap's multiple attack penalty."
+			],
+			"reset": [
+				"1 hour"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "wall",
+					"attack": 20,
+					"damage": "{@damage 2d10+11} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Exhaling Portal",
+			"source": "DA",
+			"page": 125,
+			"level": 9,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 33
+			},
+			"description": [
+				"Magic runes carved into a doorframe connect a door to the Plane of Air when opened, blowing creatures down the connecting hall."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Thievery} (expert) twice to scratch out the runes, or dispel magic (5th level; counteract DC 30) to counteract the planar runes; DC 32 {@skill Athletics} to shut the door if it's open (using {@skill Athletics} only stops the trap, it doesn't fully disable it)"
+				]
+			},
+			"actions": [
+				{
+					"name": "Gust",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"air",
+						"conjuration"
+					],
+					"trigger": "A creature opens the door",
+					"entries": [
+						"The hall is buffeted by powerful winds for as long as the door remains open. A creature must succeed at a DC 32 {@skill Athletics} check to move toward the door. A creature who fails at this check is pushed back 5 feet and falls {@condition prone}.",
+						"Additionally, the triggering creature is blasted by a powerful gust of wind and must attempt a DC 32 Fortitude save. The trap then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is pushed back 5 feet."
+								],
+								"Failure": [
+									"The creature is pushed back 10 feet."
+								],
+								"Critical Failure": [
+									"The creature is pushed back 10 feet and knocked {@condition prone}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The trap uses 1 action to blow powerful winds down the hall. Each creature in the hall must attempt a DC 32 Fortitude save with the same results as Gust. If this forced movement would cause a creature to collide with a solid object or fall downstairs or out a window, that creature takes an additional {@damage 2d10+11} bludgeoning damage (or 20 damage due to a fall)."
+			],
+			"reset": [
+				"Automatic after the door is shut"
+			]
+		},
+		{
+			"name": "Bounding Hounds",
+			"source": "DA",
+			"page": 125,
+			"level": 13,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 37
+			},
+			"description": [
+				"Three phantom hounds chase down intruders, damaging any they pass through."
+			],
+			"disable": {
+				"entries": [
+					"DC 36 {@skill Nature} (expert) to calm each hound, or DC 38"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 20
+					}
+				},
+				"hp": {
+					"std": 60,
+					"notes": {
+						"std": "per hound; Resistance all damage 10 (except force, ghost touch, or positive; double resistance to non-magical)"
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Occultism",
+					"activity": {
+						"unit": "varies",
+						"entry": "master"
+					},
+					"components": [
+						"to banish each hound"
+					],
+					"entries": []
+				},
+				{
+					"name": "Bay",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"evocation",
+						"sonic"
+					],
+					"trigger": "A creature enters the area",
+					"entries": [
+						"The hounds manifest and bay loudly, dealing {@damage 3d10+16} sonic damage to all creatures within 30 feet of the hounds (DC 33 basic Fortitude save). On a failed check, a creature is additionally {@condition frightened||frightened 2}. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(9 actions) The trap loses 3 actions each round for each hound disabled. Each hound uses three actions to {@action Stride} 40 feet after creatures in the room, passing through corporeal creatures during this movement if possible. Each creature the hound moves through during its movement takes {@damage 2d8+7} negative damage (DC 37 Reflex negates). A creature can only be damaged by each hound once each round, no matter how many times the hound moves through their space."
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Shrouded Assailant",
+			"source": "DA",
+			"page": 125,
+			"level": 17,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 43
+			},
+			"description": [
+				"A spirit steps out of a covered mirror, pulling off and becoming shrouded in the cloth, which reveals the mirror. The shrouded figure attacks the living until the cloth is yanked off, which banishes the formless spirit."
+			],
+			"disable": {
+				"entries": [
+					"DC 43 {@skill Thievery} (master) to steal the cloth before the spirit manifests, or DC 47 {@skill Athletics} to pull the cloth off the spirit after it manifests"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": {
+					"Spirit": 230,
+					"notes": {
+						"Spirit": "Resistance all damage 20 (except force, ghost touch, or positive; double resistance to non-magical)"
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Don Shroud",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"occult"
+					],
+					"trigger": "A creature enters the area",
+					"entries": [
+						"The spirit steps out of the mirror, wearing the cloth as a shroud and revealing the mirror. The triggering creature is {@condition frightened||frightened 3} unless they succeed at a DC 38 Will save. The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The spirit uses 3 actions to {@action Step}, fly 60 feet, or {@action Strike}, in any order. On a successful {@action Strike} the spirit's target is {@condition frightened||frightened 1}, and on a critical success, the target is {@condition frightened||frightened 2}."
+			],
+			"reset": [
+				"The haunt can be reset if the mirror is covered in a cloth or shroud."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "shrouded touch",
+					"attack": 33,
+					"damage": "{@damage 3d12+19} force"
+				}
+			]
+		},
+		{
+			"name": "Call of the Void",
+			"source": "DA",
+			"page": 214,
+			"level": 12,
+			"traits": [
+				"unique",
+				"complex",
+				"environmental",
+				"magical"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert",
+				"notes": "to notice a slight tugging feeling"
+			},
+			"description": [
+				"A supernatural compulsion to leap into the unknown exerts itself on anyone who approaches the ledge."
+			],
+			"disable": {
+				"entries": [
+					"DC 34 {@skill Occultism} or DC 36 {@skill Arcana} to expel the magical compulsion from the current island and from any of the red ropes directly attached to it, darkening the rope in color. The Echo also automatically disables the hazard from any island he's standing on, and any of the red ropes directly attached to it, when he Reconstitutes from Thought on that island."
+				]
+			},
+			"actions": [
+				{
+					"name": "Leap into the Unknown",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"enchantment",
+						"mental"
+					],
+					"trigger": "A creature enters a square adjacent to the ledge of an island or steps onto one of the red ropes",
+					"entries": [
+						"The call of the void tugs at the mind of intruders, compelling them to leap off the ledge. The creature must succeed at a DC 34 Will save or"
+					]
+				},
+				{
+					"name": "DC 32",
+					"entries": [
+						"{@skill Acrobatics} check to {@action Balance} or else drop off the ledge. If the creature falls off, it drops 100 feet, loops through the closed space of the mindscape, and lands in the square it fell from, taking falling damage as normal (usually 50 bludgeoning Archive damage). The call of the void then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The call targets all creatures adjacent to a ledge or on one of the red ropes and tugs at their minds. A creature who has already fallen this round is immune."
+			],
+			"reset": [
+				"The call of the void persists as long as the Echo exists, though it doesn't activate until the Echo has rolled initiative.",
+				"The hazard resets each day"
+			]
+		},
+		{
+			"name": "Mirror Door",
+			"source": "DA",
+			"page": 122,
+			"level": null,
+			"traits": [
+				"magical",
+				"trap",
+				"visual"
+			],
+			"stealth": {
+				"dc": 15
+			},
+			"description": [
+				"The reflection of a wall shows a phantom door where none exists. This door can only be manipulated while viewed through the mirror's reflection."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} to open the door while viewing the reflection"
+				]
+			},
+			"actions": [
+				{
+					"name": "Appear",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"illusion"
+					],
+					"trigger": "A creature views the wall through a mirror's reflection",
+					"entries": [
+						"A door appears in the mirror's reflection of the wall. The triggering creature can open and manipulate this door only as long as they view it through the mirror and only by succeeding at a DC 18 {@skill Thievery} check to disable the trap."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Shuffling Hall",
+			"source": "DA",
+			"page": 122,
+			"level": null,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 15
+			},
+			"description": [
+				"Four pressure plates along this mirrored hall rotate vertically when stepped on, sending a creature on the pressure plate tipping into an adjacent featureless room while simultaneously replacing the pressure plate and walls in the hall. Each pressure plate dumps creatures into a different room."
+			],
+			"disable": {
+				"entries": [
+					"DC 12 {@skill Thievery} to deactivate one pressure plate"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 2
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"std": 4
+				},
+				"hp": {
+					"std": 12
+				},
+				"bt": {
+					"std": 6
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Flip",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on a pressure plate",
+					"entries": [
+						"The floor and adjoining wall rotate up and over on a central axle, tipping the triggering creature into an adjacent featureless room and simultaneously replacing the pressure plate and wall with another set on the same axle. The triggering creature is pushed into an adjoining room, takes {@damage 1d8} bludgeoning damage, and lands {@condition prone}. A creature who succeeds at a DC 19 Reflex save takes no damage and rolls out of the way of the trap, returning to the space they were in before stepping on the pressure plate."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Confounding Portal",
+			"source": "DA",
+			"page": 122,
+			"level": 0,
+			"traits": [
+				"illusion",
+				"magical",
+				"mental",
+				"trap"
+			],
+			"stealth": {
+				"dc": 16
+			},
+			"description": [
+				"Tiny runes carved around a doorframe or on a hall's walls surreptitiously confound creatures into circling the room or hallway they attempted to exit or pass through."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Thievery} to scratch out the runes, or DC 16 {@skill Arcana} to destroy the runes"
+				]
+			},
+			"actions": [
+				{
+					"name": "Confounding Misdirection",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"illusion",
+						"mental"
+					],
+					"trigger": "A creature passes through the rune-carved doorway or hallway",
+					"entries": [
+						"The creature is {@condition confused} by the illusions and directed back into the room they attempted to exit through another doorway or back to the hallway's beginning. This feels no different to the triggering creature than walking through the doorway or hallway, and onlookers are similarly befuddled. A creature who succeeds at a DC 19 Will save resists this illusion and exits the room or proceeds down the hall without being misdirected."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Disorienting Illusions",
+			"source": "DA",
+			"page": 122,
+			"level": 1,
+			"traits": [
+				"illusion",
+				"magical",
+				"trap",
+				"visual"
+			],
+			"stealth": {
+				"dc": 20
+			},
+			"description": [
+				"Illusions cloaking this chamber cause it to appear distorted and constantly shifting, with the room and all its contents appearing tilted, irregular, and in motion."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Crafting} (trained) to calculate the room's dimensions despite the illusions, or dispel magic (1st level; counteract DC 17) to counteract the illusions"
+				]
+			},
+			"actions": [
+				{
+					"name": "Disorient",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"illusion",
+						"mental",
+						"visual"
+					],
+					"trigger": "A creature enters the room",
+					"entries": [
+						"Illusions cause the appearance of the room and the objects inside it to constantly warp, shift, bend, and distort for 1 minute. Each creature in the room while it's distorting must attempt a DC 17 {@skill Perception} check.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature disbelieves the illusions and is unaffected."
+								],
+								"Success": [
+									"The creature disbelieves the illusions but still sees them. It treats the room as difficult terrain."
+								],
+								"Failure": [
+									"The creature is fooled by the illusions. It treats the room as difficult terrain and becomes {@condition sickened||sickened 1}. As long as it remains in the room, it can't reduce its {@condition sickened} value below 1."
+								],
+								"Critical Failure": [
+									"As failure, but each time the creature Archive attempts a move action, it must succeed at a DC {@flatDC 5} flat check or they lose the action, and on a critical failure, it also falls {@condition prone}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"1 minute"
+			]
+		},
+		{
+			"name": "Reflected Desires",
+			"source": "DA",
+			"page": 123,
+			"level": 1,
+			"traits": [
+				"enchantment",
+				"magical",
+				"mental",
+				"trap",
+				"visual"
+			],
+			"stealth": {
+				"dc": 17,
+				"notes": "(0 to notice the mirror)"
+			},
+			"description": [
+				"This mirror reflects the viewer's deepest desires."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} (trained) to shroud the mirror without looking at it, or DC 17 {@skill Occultism} (trained) to erect mental barriers"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 4
+					}
+				},
+				"hardness": {
+					"std": 6
+				},
+				"hp": {
+					"std": 24
+				},
+				"bt": {
+					"std": 12
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Tempt",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"enchantment",
+						"mental",
+						"occult",
+						"visual"
+					],
+					"trigger": "A creature looks into the mirror",
+					"entries": [
+						"The triggering creature sees themselves enjoying their deepest desires in the mirror's reflection, becoming {@condition fascinated} (Will DC 20 negates). This fascination ends automatically when the mirror is {@condition broken} or covered up."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Shrinking Hall",
+			"source": "DA",
+			"page": 123,
+			"level": 2,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 18
+			},
+			"description": [
+				"This hallway is designed to shrink as creatures traverse it, making access to the door at the hall's end impossible."
+			],
+			"disable": {
+				"entries": [
+					"DC 21 {@skill Thievery} (trained) to jam the scales built into the floor"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shrink",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "100 pounds of weight or more is placed on the hallway's floor",
+					"entries": [
+						"The hall's last 40 feet of walls angle inward, causing the hall to shrink and contract down, reaching 6 inches in height and width at the hall's far end and completely blocking access to the hall's exit door for anything but a Tiny creature Squeezing."
+					]
+				}
+			],
+			"reset": [
+				"After 10 minutes without weight being placed on this hall's floor, this trap resets, returning the hall to its original size."
+			]
+		},
+		{
+			"name": "False Floor",
+			"source": "DA",
+			"page": 123,
+			"level": 3,
+			"traits": [
+				"illusion",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 23,
+				"notes": "(trained; or 0 if the illusory floor is dispelled)"
+			},
+			"description": [
+				"The floor in this chamber is an illusion, which conceals a 40-foot drop to the true floor below. Additionally, the area beneath the floor is magically silenced\u2014no sound is audible within nor does sound leave this space."
+			],
+			"disable": {
+				"entries": [
+					"Succeeding on a {@skill Perception} check against the {@skill Stealth} DC of 21 (including the check to find the trap) disbelieves the illusory floor, or dispel magic (2nd level; counteract DC 18) to dispel the illusory floor; dispel magic (2nd level; counteract DC 20) to dispel the magical silence"
+				]
+			},
+			"actions": [
+				{
+					"name": "Drop",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature walks onto the illusory floor",
+					"entries": [
+						"The triggering creature falls through the illusory floor and takes falling damage (typically 20 bludgeoning damage). That creature can use the {@action Grab an Edge} reaction to avoid falling. The DC to {@action Climb} the walls or {@action Grab an Edge} is 20."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Entrapping Chair",
+			"source": "DA",
+			"page": 123,
+			"level": 5,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 26,
+				"notes": "(0 to notice the chair)"
+			},
+			"description": [
+				"A chair on {@condition concealed} tracks surges forward, knocking a creature into the chair's seat and trapping them in place with clamping armrests."
+			],
+			"disable": {
+				"entries": [
+					"DC 23 {@skill Thievery} (expert) to disrupt the tracks"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 54
+				},
+				"bt": {
+					"std": 27
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Take a Seat!",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on the track",
+					"entries": [
+						"The chair rockets forward along the track and slams into the triggering creature, dealing {@damage 3d8+15} bludgeoning damage. A creature who succeeds at a DC 22 Reflex save takes no damage and moves out of the chair's path into a random adjacent square not containing the track.",
+						"A creature who fails this saving throw is knocked into the chair's seat and immediately captured by the armrests, becoming {@condition grabbed} ({@condition restrained} on a critical failure; {@action Escape} DC 26)."
+					]
+				}
+			],
+			"reset": [
+				"The trap resets automatically over 2 rounds if the chair is unoccupied."
+			]
+		},
+		{
+			"name": "False Step Floor",
+			"source": "DA",
+			"page": 123,
+			"level": 6,
+			"traits": [
+				"conjuration",
+				"magical",
+				"teleportation",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25
+			},
+			"description": [
+				"Each time a creature enters the room, it slips through the floor, tumbles through an interdimensional void, and falls back into the room through the ceiling, landing on the floor."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (trained) to disrupt the magical energy, or DC 27 {@skill Arcana} or {@skill Occultism} (trained) to realign the magical energy"
+				]
+			},
+			"actions": [
+				{
+					"name": "False Step",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"conjuration",
+						"teleportation"
+					],
+					"trigger": "A creature enters the room and steps onto the floor",
+					"entries": [
+						"The creature slips through the floor; it tumbles through an interdimensional void before falling back into the room through the ceiling and landing on the floor. The triggering creature takes 40 bludgeoning damage from the fall. That creature can try to {@action Grab an Edge} (DC 24) to avoid falling."
+					]
+				}
+			],
+			"reset": [
+				"automatic"
+			]
+		},
+		{
+			"name": "Distortion Mirror",
+			"source": "DA",
+			"page": 123,
+			"level": 14,
+			"traits": [
+				"magical",
+				"transmutation",
+				"trap"
+			],
+			"stealth": {
+				"dc": 38,
+				"notes": "0 to notice the mirror"
+			},
+			"description": [
+				"Fun-house mirrors distort a viewer's reflection, painfully reshaping their body to match what appears in the reflected images."
+			],
+			"disable": {
+				"entries": [
+					"DC 38 {@skill Thievery} (master) to deface the mirror's pane, or dispel magic (7th level; counteract DC 36) to dispel the mirror or counteract the transformation"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 33
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 22
+					}
+				},
+				"hardness": {
+					"std": 24
+				},
+				"hp": {
+					"std": 90
+				},
+				"bt": {
+					"std": 45
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"name": "Painful Transformation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A creature is reflected in the mirror",
+					"entries": [
+						"The triggering creature's body is painfully squished, stretched, and distorted to match their reflection. The creature takes {@damage 6d10+30} force damage and must attempt a DC 39 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target is unaffected."
+								],
+								"Success": [
+									"The target takes half damage and is {@condition clumsy||clumsy 1} and {@condition enfeebled||enfeebled 1} for 1 round."
+								],
+								"Failure": [
+									"The target takes full damage and is {@condition clumsy||clumsy 2} and {@condition enfeebled||enfeebled 2} for 4 rounds."
+								],
+								"Critical Failure": [
+									"The target takes double damage and is {@condition clumsy||clumsy 2} and {@condition enfeebled||enfeebled 2} for 1 minute. As long as the creature is {@condition clumsy} or {@condition enfeebled}, it additionally takes a \u201310-foot status penalty to its Speeds.",
+									"When the effects of this trap end, the triggering creature's transformation ends, and its body reverts to its natural form."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"1 day"
+			]
+		},
+		{
+			"name": "Sigil of Deepest Fears",
+			"source": "DA",
+			"page": 124,
+			"level": 17,
+			"traits": [
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 43,
+				"minProf": "master"
+			},
+			"description": [
+				"An arcane sigil forces creatures to confront their greatest fear."
+			],
+			"disable": {
+				"entries": [
+					"DC 43 {@skill Thievery} (master) to drain the sigil's power harmlessly, or dispel magic (9th level; counteract DC 42) to counteract the sigil"
+				]
+			},
+			"actions": [
+				{
+					"name": "Face Your Fear",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"death",
+						"emotion",
+						"fear",
+						"illusion",
+						"mental"
+					],
+					"trigger": "A creature moves within 10 feet of the sigil",
+					"entries": [
+						"All creatures within 120 feet of the sigil are affected by a {@spell weird} spell (DC 40 Will save)."
+					]
+				}
+			],
+			"reset": [
+				"1 day"
+			]
+		},
+		{
+			"name": "Thalassophobic Pool",
+			"source": "DA",
+			"page": 212,
+			"level": 12,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "trained"
+			},
+			"description": [
+				"The pool sucks in creatures that fall into it, making Archive them sink into its endless depths."
+			],
+			"disable": {
+				"entries": [
+					"DC 32 (master) {@skill Diplomacy} or {@skill Deception} to quell the fear and calm the pool or DC 35 {@skill Intimidation} to give the pool something worse to fear; three successes required."
+				]
+			},
+			"actions": [
+				{
+					"name": "Downpour",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature falls into the pool",
+					"entries": [
+						"More water pours forth from the chalice. Creatures in the pool become {@condition clumsy||clumsy 1}, and they can't decrease their {@condition clumsy} condition so long as they remain in the pool. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) Water from the chalice increases the depth of the water by 10 feet for each action. Each time this happens, creatures in the pool are pushed 10 feet down and take {@damage 1d6} bludgeoning damage. As the pool has no bottom, creatures in it can fall down indefinitely; they must {@action Swim} up to avoid drowning, but the water is especially choppy, so the {@skill Athletics} DC is 25. The pool never overflows. Each successful check to Disable reduces the pool's actions by 1, and once the pool is completely Disabled, the water becomes still and the {@skill Athletics} DC to {@action Swim} becomes 10."
+			],
+			"reset": [
+				"The trap resets once there are no moving creatures in it."
+			]
+		},
+		{
 			"name": "Acidic Needle Launcher",
 			"source": "AoA5",
 			"page": 54,
@@ -24,20 +1169,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 39
+					"std": 39
 				},
 				"savingThrows": {
-					"fort": 30,
-					"ref": 22
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 22
+					}
 				},
 				"hardness": {
-					"default": 26
+					"std": 26
 				},
 				"hp": {
-					"default": 104
+					"std": 104
 				},
 				"bt": {
-					"default": 52
+					"std": 52
 				},
 				"immunities": [
 					"critical hits",
@@ -58,11 +1207,14 @@
 					"entries": [
 						"The trap shoots an acidic needle at a random target in the area indicated on the map, then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Needle Rain"
-				},
+				}
+			],
+			"routine": [
+				"(3 actions) The acidic needle launcher fires a needle at a random target in the area indicated on the map."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Ranged",
 					"name": "acidic needle",
 					"attack": 35,
@@ -73,9 +1225,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"routine": [
-				"(3 actions) The acidic needle launcher fires a needle at a random target in the area indicated on the map."
 			]
 		},
 		{
@@ -103,7 +1252,7 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 34
+					"std": 34
 				},
 				"fort": 28,
 				"ref": 20,
@@ -113,7 +1262,11 @@
 				},
 				"hp": {
 					"Nozzle": 40,
-					"Tank": 100
+					"Tank": 100,
+					"notes": {
+						"Tank": "to damage the tank enough to stop it from spewing gas",
+						"Nozzle": "to destroy a nozzle"
+					}
 				},
 				"bt": {
 					"Nozzle": 20,
@@ -123,11 +1276,7 @@
 					"critical hits",
 					"object immunities",
 					"precision damage"
-				],
-				"notes": {
-					"Tank": "to damage the tank enough to stop it from spewing gas",
-					"Nozzle": "to destroy a nozzle"
-				}
+				]
 			},
 			"actions": [
 				{
@@ -139,7 +1288,6 @@
 					"entries": [
 						"The trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Spew Cloud"
 				}
 			],
@@ -170,17 +1318,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 20
+					"std": 20
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 9
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 9
+					}
 				},
 				"hp": {
-					"default": 60
+					"std": 60
 				},
 				"bt": {
-					"default": 30
+					"std": 30
 				},
 				"immunities": [
 					"mental"
@@ -201,11 +1353,11 @@
 					"entries": [
 						"The vines wrap around the triggering creature. The creature must succeed at a DC 22 Reflex save or be {@condition grabbed} until it Escapes (DC 22). Whether or not the creature is {@condition grabbed}, the plants make a gnawing plants {@action Strike} against the creature."
 					],
-					"type": "ability",
 					"name": "Trapping Vines"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "gnawing plants",
 					"attack": 17,
@@ -244,11 +1396,11 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 35,
-					"note": "(40 vs. reactions and ranged weapon\nattacks)"
+					"std": 35,
+					"vs. reactions and ranged weapon attacks": 40
 				},
 				"hp": {
-					"default": 220
+					"std": 220
 				},
 				"weaknesses": [
 					"earth vulnerability"
@@ -259,8 +1411,7 @@
 					"name": "Earth Vulnerability",
 					"entries": [
 						"The Elemental Plane of Air is opposed by the Plane of Earth. Any spell or {@trait magical} effect with the {@trait earth} trait that targets a creature or area within 50 feet of the rift deals 10 damage to the rift per spell levels (or per 2 levels for magic items, feats, and so forth). For example, a 3rd-level {@spell earthbind} spell cast on a creature near the air rift deals 30 points of damage to the rift."
-					],
-					"type": "ability"
+					]
 				},
 				{
 					"activity": {
@@ -271,7 +1422,6 @@
 					"entries": [
 						"The air rift creates a shroud of subjective gravity around the creature for 1 minute. The creature can use a free action, which has the {@trait concentrate} trait, to choose any direction they wish for gravity to pull them. This allows a creature to {@action Stride} along any surface or {@action Fly} in a straight line by choosing a direction into midair. For unattended objects and mindless creatures, this is microgravity: they float in place unless pushed off a surface."
 					],
-					"type": "ability",
 					"name": "Weightlessness"
 				}
 			],
@@ -312,20 +1462,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 25
+					"std": 25
 				},
 				"savingThrows": {
-					"fort": 18,
-					"ref": 10
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 10
+					}
 				},
 				"hardness": {
-					"default": 15
+					"std": 15
 				},
 				"hp": {
-					"default": 60
+					"std": 60
 				},
 				"bt": {
-					"default": 30
+					"std": 30
 				},
 				"immunities": [
 					"critical hits",
@@ -346,11 +1500,14 @@
 					"entries": [
 						"Six talons swing out from the walls, each striking a different random creature in the room. No creature can be struck by more than one talon until every creature in the room has been attacked by at least one talon."
 					],
-					"type": "ability",
 					"name": "Raking Strike"
-				},
+				}
+			],
+			"reset": [
+				"The trap resets after 1 minute."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "talon",
 					"attack": 22,
@@ -363,9 +1520,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"reset": [
-				"The trap resets after 1 minute."
 			]
 		},
 		{
@@ -393,17 +1547,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 37
+					"std": 37
 				},
 				"savingThrows": {
-					"fort": 33,
-					"ref": 30
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 30
+					}
 				},
 				"hp": {
-					"default": 120
-				},
-				"notes": {
-					"default": "per flower."
+					"std": 120,
+					"notes": {
+						"std": "per flower"
+					}
 				},
 				"immunities": [
 					"mental"
@@ -422,7 +1580,6 @@
 					"entries": [
 						"The blooms open, spawning a single {@creature wemmuth} that acts on the hazard's initiative, and the hazard rolls for initiative."
 					],
-					"type": "ability",
 					"name": "Bloom"
 				}
 			],
@@ -471,11 +1628,11 @@
 					"entries": [
 						"The trap makes a stone spike attack against the triggering creature. For the next 1 minute thereafter, the ripples are stronger, giving the trap a +2 circumstance bonus on stone spike Strikes during this time."
 					],
-					"type": "ability",
 					"name": "Stone Spike"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "stone spike",
 					"attack": 31,
@@ -552,14 +1709,18 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 28
+					"std": 28
 				},
 				"savingThrows": {
-					"fort": 22,
-					"ref": 14
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 14
+					}
 				},
 				"hp": {
-					"default": 100
+					"std": 100
 				},
 				"immunities": [
 					"acid",
@@ -580,11 +1741,9 @@
 					"entries": [
 						"Requirements The ash web is not in direct sunlight. The triggering creature and all creatures within 10 feet of that creature are exposed to ash web spores."
 					],
-					"type": "ability",
 					"name": "Spore Explosion"
 				},
 				{
-					"type": "affliction",
 					"name": "Ash Web Spores",
 					"traits": [
 						"inhaled",
@@ -652,7 +1811,6 @@
 					"entries": [
 						"Each creature within 20 feet of the door is targeted by baleful polymorph (DC 42 Will save), except the effect transforms creatures into the form of an {@creature arbiter||arbiter aeon} rather than that of an animal."
 					],
-					"type": "ability",
 					"name": "Axiomatic Polymorph"
 				}
 			],
@@ -737,11 +1895,18 @@
 					"entries": [
 						"The hounds appear before the chosen target and begin to chase that creature, howling wildly. The haunt rolls initiative. Others cannot see or hear this baying and must {@action Seek} to determine the hounds' location."
 					],
-					"type": "ability",
 					"name": "Begin the Hunt"
-				},
+				}
+			],
+			"routine": [
+				"(2 actions) The haunt uses its first action to {@action Stride}, then its second action for a jaws {@action Strike} against its designated target if it is in reach. If the target is not in reach, the haunt resets.",
+				"Speed 60 feet."
+			],
+			"reset": [
+				"If their designated target dies or the hounds can't reach it in a turn, the hounds vanish into noxious smoke, but they manifest again elsewhere in the city after the next sunset."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 20,
@@ -755,13 +1920,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"routine": [
-				"(2 actions) The haunt uses its first action to {@action Stride}, then its second action for a jaws {@action Strike} against its designated target if it is in reach. If the target is not in reach, the haunt resets.",
-				"Speed 60 feet."
-			],
-			"reset": [
-				"If their designated target dies or the hounds can't reach it in a turn, the hounds vanish into noxious smoke, but they manifest again elsewhere in the city after the next sunset."
 			]
 		},
 		{
@@ -789,11 +1947,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 31
+					"std": 31
 				},
 				"savingThrows": {
-					"fort": 24,
-					"ref": 18
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 18
+					}
 				},
 				"hardness": {
 					"Nozzle": 20
@@ -820,7 +1982,6 @@
 					"entries": [
 						"Gas fills the chamber. Creatures within the chamber must succeed on a DC 30 Fortitude save or become {@condition stupefied|CRB|stupefied 1} ({@condition stupefied|CRB|stupefied 2} on a critical failure). The trap then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Gas Release"
 				}
 			],
@@ -874,11 +2035,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 26
+					"std": 26
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 8
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
 					"Hidden Keg": 5
@@ -911,7 +2076,6 @@
 					"entries": [
 						"The keg explodes, causing {@damage 5d6} fire damage (DC 24 basic Reflex) in a 20-foot emanation; this can cause an instantaneous chain reaction if either of the other kegs are in this area (note that as positioned, all three kegs are in range to trigger a chain reaction). Fire damage in overlapping areas isn't cumulative, but if all three kegs are in their initial positions when the explosion occurs, the temple itself collapses, causing {@damage 8d6} bludgeoning damage to all creatures in the temple (DC 24 basic Reflex)."
 					],
-					"type": "ability",
 					"name": "Destructive Explosion"
 				}
 			]
@@ -939,20 +2103,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 40
+					"std": 40
 				},
 				"savingThrows": {
-					"fort": 38,
-					"ref": 30
+					"fort": {
+						"std": 38
+					},
+					"ref": {
+						"std": 30
+					}
 				},
 				"hardness": {
-					"default": 30
+					"std": 30
 				},
 				"hp": {
-					"default": 150
+					"std": 150
 				},
 				"bt": {
-					"default": 75
+					"std": 75
 				},
 				"immunities": [
 					"object immunities"
@@ -972,11 +2140,9 @@
 					"entries": [
 						"Trigger A creature opens the door without first whispering the name Blackfingers; The metal trapdoor emits toxic vapors. Each creature within 30 feet must save against a potent strain of blackfinger blight."
 					],
-					"type": "ability",
 					"name": "Blackfingers's Prayer"
 				},
 				{
-					"type": "affliction",
 					"name": "Blackfinger Blight",
 					"traits": [
 						"inhaled",
@@ -1045,7 +2211,6 @@
 					"entries": [
 						"A 30-foot cone of force issues forth from the lock. Creatures within the cone must succeed a DC 29 basic Fortitude saving throw or take {@damage 8d12} force damage. Those who fail the save are pushed 10 feet, and those who critically fail are pushed 20 feet and are {@condition stunned|CRB|stunned 2}."
 					],
-					"type": "ability",
 					"name": "Force Blast"
 				}
 			],
@@ -1076,14 +2241,18 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 19
+					"std": 19
 				},
 				"savingThrows": {
-					"fort": 6,
-					"ref": 9
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 9
+					}
 				},
 				"hp": {
-					"default": 50
+					"std": 50
 				},
 				"immunities": [
 					"critical hits",
@@ -1111,7 +2280,6 @@
 					"entries": [
 						"A ghastly image of Belcorra, seemingly composed of fresh blood, rises from the bloodstain on the floor and rotates in place like a lighthouse. Beams of cold blue light shine from Belcorra's eyes and open mouth, causing blisters and decay to spread across flesh. Living creatures within a 30-foot burst from the center of area A11 must attempt a DC 20 Fortitude save. The haunt then rolls initiative. Critical Success The creature is unaffected. Success The creature takes {@damage 1d8} negative damage. Failure The creature takes {@damage 1d8+6} negative damage and is {@condition dazzled} for 1 round. Critical Failure The creature takes {@damage 2d8+6} negative damage and is {@condition blinded} for 1 round then {@condition dazzled} for 1 round."
 					],
-					"type": "ability",
 					"name": "Gauntlight Beam"
 				}
 			],
@@ -1198,11 +2366,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 15
+					"std": 15
 				},
 				"savingThrows": {
-					"fort": 8,
-					"ref": 5
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 5
+					}
 				},
 				"hardness": {
 					"Fountain": 8
@@ -1228,7 +2400,6 @@
 					"entries": [
 						"The fountains spray boiling water across their own squares and the 10-footby- 20-foot area between them (marked with dotted lines), dealing {@damage 4d6+4} fire damage to any creatures in the area (DC 22 basic Reflex save)."
 					],
-					"type": "ability",
 					"name": "Scalding Spray"
 				}
 			],
@@ -1267,7 +2438,6 @@
 					"entries": [
 						"An acid flask detonates, spraying acid at nearby creatures and causing the tub of boiling water to burst in the same direction. All creatures in a 5-foot cone east of the triggered boiling tub trap take {@damage 3d6} {@condition persistent damage ||persistent acid damage}, 3 acid splash damage, and {@damage 8d6+20} fire damage (DC 31 basic Reflex save)."
 					],
-					"type": "ability",
 					"name": "Overflowing Boiling Water"
 				}
 			]
@@ -1296,11 +2466,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 28
+					"std": 28
 				},
 				"savingThrows": {
-					"fort": 12,
-					"ref": 12
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 12
+					}
 				},
 				"hardness": {
 					"Trapdoor": 9
@@ -1362,7 +2536,6 @@
 					"entries": [
 						"Creatures within 10 feet of the cave entrance take {@dice 4d10+18} damage (DC 25 basic Reflex save)."
 					],
-					"type": "ability",
 					"name": "Deadfall"
 				}
 			],
@@ -1403,7 +2576,6 @@
 					"entries": [
 						"A {@condition Broken} Rebus monk grabs the creature and yanks them toward the room's center. The triggering creature must attempt a DC 36 Fortitude save. The haunt can use this reaction any number of times per round, but only once per creature that tries to leave the room. The haunt then rolls initiative, if it hasn't already. Critical Success The creature is unaffected. Success The creature is pulled 10 feet into the room. Failure The creature is pulled 15 feet into the room. Critical Failure The creature is pulled 15 feet into the room, knocked {@condition prone}, and takes {@damage 2d6} bludgeoning damage."
 					],
-					"type": "ability",
 					"name": "Ghostly Pull"
 				}
 			],
@@ -1441,11 +2613,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 36
+					"std": 36
 				},
 				"savingThrows": {
-					"fort": 27,
-					"ref": 22
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 22
+					}
 				},
 				"hardness": {
 					"Chandelier": 30,
@@ -1481,7 +2657,6 @@
 					"entries": [
 						"Trigger A creature touches the cage door, the closet door, or any wooden stand; Both double doors leading out of the room shut and lock; while the trap is active, the key doesn't work to open these doors (although their locks can be picked normally). The chandeliers drop several feet on elongated chains, allowing them to swing around the room. The closest chandelier to the triggering creature makes a swinging chandelier {@action Strike} against it. The trap then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Extending Chandeliers"
 				}
 			],
@@ -1544,20 +2719,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 33
+					"std": 33
 				},
 				"savingThrows": {
-					"fort": 25,
-					"ref": 19
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 19
+					}
 				},
 				"hardness": {
-					"default": 21
+					"std": 21
 				},
 				"hp": {
-					"default": 84
+					"std": 84
 				},
 				"bt": {
-					"default": 42
+					"std": 42
 				},
 				"immunities": [
 					"critical hits",
@@ -1581,7 +2760,6 @@
 					"entries": [
 						"The trap makes a loud buzz and deals {@damage 5d10} electricity damage and {@damage 5d10} sonic damage to the triggering creature (DC 32 basic Reflex save; this save applies to both the electricity damage and the sonic damage). Further, the creature must attempt a DC 32 Fortitude save. Critical Success No effect. Success The target is {@condition paralyzed} for 1 round. Failure The target is {@condition paralyzed} for {@dice 1d4} rounds. At the end of each of its turns, it can attempt a new DC 32 Fortitude save to reduce the remaining duration by 1 round, or end it entirely on a critical success. Critical Failure The target is {@condition paralyzed} for 1 minute. At the end of each of its turns, it can attempt a new Fortitude save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
 					],
-					"type": "ability",
 					"name": "Jolting Buzz"
 				}
 			],
@@ -1612,11 +2790,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 20
+					"std": 20
 				},
 				"savingThrows": {
-					"fort": 13,
-					"ref": 8
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
 					"Trapdoor": 10
@@ -1638,7 +2820,6 @@
 					"entries": [
 						"One round after the trap is triggered, all creatures in the room fall 40 feet down the shaft to area E36, taking 20 bludgeoning damage from the fall plus {@damage 2d6} piercing damage as they land in the spiked pit. The creatures can {@action Grab an Edge} to snag the hammock or one of the hanging storage containers to avoid falling. The DC to {@action Climb} the walls or {@action Grab an Edge} is 20."
 					],
-					"type": "ability",
 					"name": "Flush"
 				}
 			]
@@ -1666,20 +2847,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 12,
-					"ref": 8
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
-					"default": 11
+					"std": 11
 				},
 				"hp": {
-					"default": 44
+					"std": 44
 				},
 				"bt": {
-					"default": 22
+					"std": 22
 				},
 				"immunities": [
 					"critical hits",
@@ -1700,7 +2885,6 @@
 					"entries": [
 						"Massive stones in the ceiling fall, dealing {@damage 4d6} bludgeoning damage to the triggering creature and all creatures within 10 feet (DC 18 basic Reflex save). Creatures that fail the saving throw are also buried and begin to suffocate. A buried creature can attempt a DC 20 {@skill Athletics} check every round, breaking free on a success. Other characters who are not buried can {@action Aid} on this check."
 					],
-					"type": "ability",
 					"name": "Falling Stones"
 				}
 			]
@@ -1731,23 +2915,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 31
+					"std": 31
 				},
 				"savingThrows": {
-					"fort": 24,
-					"ref": 15
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 15
+					}
 				},
 				"hardness": {
-					"default": 20
+					"std": 20
 				},
 				"hp": {
-					"default": 80
+					"std": 80,
+					"notes": {
+						"std": "per launching mechanism"
+					}
 				},
 				"bt": {
-					"default": 40
-				},
-				"notes": {
-					"default": "per launching mechanism."
+					"std": 40
 				},
 				"immunities": [
 					"critical hits",
@@ -1768,7 +2956,6 @@
 					"entries": [
 						"The trap makes an acid dart against three different random creatures in the hall. The trap then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Dart Barrage"
 				}
 			],
@@ -1826,11 +3013,9 @@
 					"entries": [
 						"The trap activates and fills the area with caustic nightmare vapor, exposing all creatures within."
 					],
-					"type": "ability",
 					"name": "Breath Snatcher"
 				},
 				{
-					"type": "affliction",
 					"name": "Caustic Nightmare Vapor",
 					"traits": [
 						"acid",
@@ -1888,11 +3073,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 22
+					"std": 22
 				},
 				"savingThrows": {
-					"fort": 15,
-					"ref": 9
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					}
 				},
 				"hardness": {
 					"Carcass": 12
@@ -1914,7 +3103,6 @@
 					"entries": [
 						"Each creature within 30 feet of any centipede carcass takes {@damage 4d4} piercing damage (DC 22 basic Reflex save), and the area becomes difficult terrain due to the many sharpened legs on the ground. Each creature that {@action Stride||Strides} more than 10 feet through the area must succeed at a DC 20 {@skill Acrobatics} check or take {@damage 1d4} piercing damage. The trap then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Volley of Legs"
 				}
 			],
@@ -1946,23 +3134,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 37
+					"std": 37
 				},
 				"savingThrows": {
-					"fort": 23,
-					"ref": 26
+					"fort": {
+						"std": 23
+					},
+					"ref": {
+						"std": 26
+					}
 				},
 				"hardness": {
 					"Arm": 15
 				},
 				"hp": {
-					"Arm": 50
+					"Arm": 50,
+					"notes": {
+						"Arm": "to destroy one arm"
+					}
 				},
 				"bt": {
 					"Arm": 25
-				},
-				"notes": {
-					"Arm": "to destroy one arm."
 				},
 				"immunities": [
 					"critical hits",
@@ -1980,7 +3172,6 @@
 					"entries": [
 						"Inkmaster enters the room; The trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Arm Activation"
 				}
 			],
@@ -2050,11 +3241,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 32
+					"std": 32
 				},
 				"savingThrows": {
-					"fort": 24,
-					"ref": 26
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 26
+					}
 				},
 				"hardness": {
 					"Nozzle": 5,
@@ -2062,15 +3257,15 @@
 				},
 				"hp": {
 					"Nozzle": 20,
-					"Tank": 80
+					"Tank": 80,
+					"notes": {
+						"Nozzle": "to ruin the nozzle (making it impossible to disable, in which case the only way to disarm the bomb is to destroy both its tanks)",
+						"Tank": "to destroy one of the tanks (both tanks must be destroyed to disarm the bomb)"
+					}
 				},
 				"bt": {
 					"Nozzle": 10,
 					"Tank": 40
-				},
-				"notes": {
-					"Nozzle": "to ruin the nozzle (making it impossible to disable, in which case the only way to disarm the bomb is to destroy both its tanks)",
-					"Tank": "to destroy one of the tanks (both tanks must be destroyed to disarm the bomb)"
 				},
 				"immunities": [
 					"critical hits",
@@ -2092,7 +3287,6 @@
 					"entries": [
 						"The bomb releases a smoky cloud of blackfinger blight in a 20-foot radius. Creatures within the smoke are {@condition concealed} from other creatures. Any creature that starts its turn in the smoke must roll a saving throw to avoid being afflicted by blackfinger blight poison (see page 78). The cloud remains for 1 minute or until dispersed by strong winds."
 					],
-					"type": "ability",
 					"name": "Poisonous Cloud"
 				}
 			],
@@ -2157,7 +3351,6 @@
 					"entries": [
 						"The building trembles. The floors of the building and the streets within 30 feet of the building become difficult terrain; creatures on this difficult terrain take a \u20132 circumstance penalty to attack rolls, AC, and skill checks. The hazard rolls initiative."
 					],
-					"type": "ability",
 					"name": "Shake Apart"
 				}
 			],
@@ -2194,20 +3387,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 45
+					"std": 45
 				},
 				"savingThrows": {
-					"fort": 33,
-					"ref": 28
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 28
+					}
 				},
 				"hardness": {
-					"default": 30
+					"std": 30
 				},
 				"hp": {
-					"default": 460
+					"std": 460
 				},
 				"bt": {
-					"default": 230
+					"std": 230
 				},
 				"immunities": [
 					"object immunities (except mental effects)"
@@ -2223,7 +3420,6 @@
 					"entries": [
 						"The lattice's clockworks begin to move and it rolls for initiative."
 					],
-					"type": "ability",
 					"name": "Begin Convergence"
 				}
 			],
@@ -2258,20 +3454,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 40
+					"std": 40
 				},
 				"savingThrows": {
-					"fort": 32,
-					"ref": 25
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 25
+					}
 				},
 				"hardness": {
-					"default": 26
+					"std": 26
 				},
 				"hp": {
-					"default": 104
+					"std": 104
 				},
 				"bt": {
-					"default": 52
+					"std": 52
 				},
 				"immunities": [
 					"critical hits",
@@ -2292,14 +3492,12 @@
 					"entries": [
 						"The two falling doors deal {@damage 6d12+35} bludgeoning damage (DC 37 basic Reflex save) to all creatures within 15 feet of the gate. On a failure, a creature is also pinned beneath the door and {@condition immobilized} until the door is moved (DC 34 {@skill Athletics}) or destroyed; each door has the same AC, Fortitude save,"
 					],
-					"type": "ability",
 					"name": "Gate Collapse"
 				},
 				{
 					"entries": [
 						"Points as the trap itself. On a critical failure, the creature is trapped in such a way that it can't attempt to free itself. Moving or destroying one door doesn't help free anyone trapped by the other door."
 					],
-					"type": "ability",
 					"name": "Hardness, and Hit"
 				}
 			]
@@ -2339,7 +3537,6 @@
 					"entries": [
 						"The hazard deals {@damage 9d6} piercing damage (DC 32 basic Reflex save) to the triggering creature and all other non-fiend creatures within 20 feet. A creature that critically fails the saving throw is {@condition confused} for {@dice 1d4} rounds."
 					],
-					"type": "ability",
 					"name": "Gnawing Fog"
 				}
 			],
@@ -2384,11 +3581,22 @@
 					"entries": [
 						"{@deity Dahak|LOGM}'s shell Strikes the triggering creature with a random eye beam. Roll {@dice 1d8} to determine the color (1\u2013red, 2\u2013orange, 3\u2013yellow, 4\u2013green, 5\u2013blue, 6\u2013indigo, 7\u2013violet, 8\u2013black)."
 					],
-					"type": "ability",
 					"name": "Prismatic Beam"
 				},
 				{
-					"type": "attack",
+					"traits": [
+						"abjuration",
+						"divine",
+						"light"
+					],
+					"entries": [
+						"When a creature physically passes through the shell, the creature is affected simultaneously by all colors of energy currently active in the shell; apply these effects in the following order: red, orange, yellow, green, blue, indigo, violet, black. These effects are the same as that of the eye beams described on page 29, but with a save DC of 32. Each effect requires its own save."
+					],
+					"name": "Shell Defense"
+				}
+			],
+			"attacks": [
+				{
 					"range": "Ranged",
 					"name": "eye beam",
 					"attack": 20,
@@ -2403,18 +3611,6 @@
 					],
 					"damage": "The target suffers an effect corresponding to the eye beam's color, as described on page 29, but with a save DC of 32. On a critical hit, the target's save result is one degree worse.",
 					"noMAP": true
-				},
-				{
-					"traits": [
-						"abjuration",
-						"divine",
-						"light"
-					],
-					"entries": [
-						"When a creature physically passes through the shell, the creature is affected simultaneously by all colors of energy currently active in the shell; apply these effects in the following order: red, orange, yellow, green, blue, indigo, violet, black. These effects are the same as that of the eye beams described on page 29, but with a save DC of 32. Each effect requires its own save."
-					],
-					"type": "ability",
-					"name": "Shell Defense"
 				}
 			]
 		},
@@ -2444,20 +3640,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 24
+					"std": 24
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 8
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
-					"default": 14
+					"std": 14
 				},
 				"hp": {
-					"default": 56
+					"std": 56
 				},
 				"bt": {
-					"default": 28
+					"std": 28
 				},
 				"immunities": [
 					"critical hits",
@@ -2481,7 +3681,6 @@
 					"entries": [
 						"One of the dragon skull's eye sockets shoots an eye beam at the triggering creature, then the hazard rolls initiative."
 					],
-					"type": "ability",
 					"name": "Dahak's Glance"
 				}
 			],
@@ -2530,16 +3729,16 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 43
+					"std": 43
 				},
 				"hp": {
-					"default": 128
+					"std": 128,
+					"notes": {
+						"std": "dagger"
+					}
 				},
 				"bt": {
-					"default": 64
-				},
-				"notes": {
-					"default": "dagger."
+					"std": 64
 				}
 			},
 			"actions": [
@@ -2555,7 +3754,6 @@
 					"entries": [
 						"The ghostly elf causes a dagger to rise out of the waters and then fling toward the triggering creature. If the attack is a hit, it is a critical hit instead. The haunt then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Surprise Strike"
 				}
 			],
@@ -2604,23 +3802,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 34
+					"std": 34
 				},
 				"savingThrows": {
-					"fort": 25,
-					"ref": 20
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 20
+					}
 				},
 				"hardness": {
-					"default": 1
+					"std": 1
 				},
 				"hp": {
-					"default": 4
+					"std": 4,
+					"notes": {
+						"std": " the mirror can't be damaged while any mirror duplicate is alive"
+					}
 				},
 				"bt": {
-					"default": 2
-				},
-				"notes": {
-					"default": ", the mirror can't be damaged while any mirror duplicate is alive."
+					"std": 2
 				}
 			},
 			"actions": [
@@ -2674,23 +3876,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 22
+					"std": 22
 				},
 				"savingThrows": {
-					"fort": 13,
-					"ref": 7
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 7
+					}
 				},
 				"hardness": {
-					"default": 10
+					"std": 10
 				},
 				"hp": {
-					"default": 60
+					"std": 60,
+					"notes": {
+						"std": "to destroy the seal and disable the trap"
+					}
 				},
 				"bt": {
-					"default": 30
-				},
-				"notes": {
-					"default": "to destroy the seal and disable the trap."
+					"std": 30
 				},
 				"immunities": [
 					"critical hits",
@@ -2708,7 +3914,6 @@
 					"entries": [
 						"The trap makes up to four dart Strikes against creatures standing on the seal, then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Dart Volley"
 				}
 			],
@@ -2759,20 +3964,24 @@
 			},
 			"defenses": {
 				"savingThrows": {
-					"fort": 25,
-					"ref": 20
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 20
+					}
 				},
 				"hardness": {
-					"default": 1
+					"std": 1
 				},
 				"hp": {
-					"default": 4
+					"std": 4,
+					"notes": {
+						"std": " the mirror can't be damaged while any mirror duplicate is alive"
+					}
 				},
 				"bt": {
-					"default": 2
-				},
-				"notes": {
-					"default": ", the mirror can't be damaged while any mirror duplicate is alive."
+					"std": 2
 				}
 			},
 			"actions": [
@@ -2790,7 +3999,6 @@
 					"entries": [
 						"The mirror absorbs the creature into the mirror, replacing it with an evil mirror duplicate (DC 41 Reflex to avoid being absorbed into the mirror), and rolls initiative."
 					],
-					"type": "ability",
 					"name": "Reflection of Evil"
 				}
 			],
@@ -2824,20 +4032,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 15,
-					"ref": 8
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
-					"default": 8
+					"std": 8
 				},
 				"hp": {
-					"default": 56
+					"std": 56
 				},
 				"bt": {
-					"default": 28
+					"std": 28
 				},
 				"immunities": [
 					"critical hits",
@@ -2855,11 +4067,14 @@
 					"entries": [
 						"The trap fires an apocalypse beam at that creature."
 					],
-					"type": "ability",
 					"name": "Apocalypse Beam"
-				},
+				}
+			],
+			"reset": [
+				"Each trap resets automatically after 1 hour."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Ranged",
 					"name": "apocalypse beam",
 					"attack": 16,
@@ -2880,9 +4095,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"reset": [
-				"Each trap resets automatically after 1 hour."
 			]
 		},
 		{
@@ -2910,20 +4122,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 24
+					"std": 24
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 8
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
-					"default": 14
+					"std": 14
 				},
 				"hp": {
-					"default": 56
+					"std": 56
 				},
 				"bt": {
-					"default": 28
+					"std": 28
 				},
 				"immunities": [
 					"critical hits",
@@ -2942,7 +4158,6 @@
 					"entries": [
 						"The dragon pillar makes an eye beam {@action Strike} against the triggering creature, then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Dragon Pillar Glance"
 				}
 			],
@@ -3119,7 +4334,6 @@
 					"entries": [
 						"Roll {@dice 1d10} to determine which effect manifests from the following possibilities. The placement of these effects is guided by {@deity Dahak|LOGM}'s will, and they should manifest in the most detrimental locations possible to."
 					],
-					"type": "ability",
 					"name": "Localized Dragonstorm"
 				},
 				{
@@ -3134,7 +4348,6 @@
 						"Creatures that critically fail their saves also take 5 {@condition persistent damage ||persistent fire damage}.",
 						"9\u201310: Poison Miasma (poison) Poisonous mist rolls forth, covering a 20-foot burst for 1 round. Creatures within the mist become {@condition concealed}, and creatures outside it become {@condition concealed} to creatures within it. Creatures within the mist take {@damage 6d10} poison damage (DC 42 basic Fortitude save). Creatures that critically fail their saves become {@condition enfeebled|CRB|enfeebled 2}."
 					],
-					"type": "ability",
 					"name": "the PCs."
 				}
 			]
@@ -3163,20 +4376,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 18
+					"std": 18
 				},
 				"savingThrows": {
-					"fort": 9,
-					"ref": 3
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 3
+					}
 				},
 				"hardness": {
-					"default": 1
+					"std": 1
 				},
 				"hp": {
-					"default": 32
+					"std": 32
 				},
 				"bt": {
-					"default": 16
+					"std": 16
 				},
 				"immunities": [
 					"critical hits",
@@ -3194,7 +4411,6 @@
 					"entries": [
 						"A pod makes a pollen spray {@action Strike} against an adjacent creature or the creature that opened the door, the door falls off the wagon, and the trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Pollen Burst"
 				}
 			],
@@ -3321,7 +4537,6 @@
 					"entries": [
 						"The haunt takes control of all creatures in the prison, affecting them with confusion (8th level, DC 37)."
 					],
-					"type": "ability",
 					"name": "Confuse"
 				}
 			],
@@ -3374,10 +4589,10 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 24
+					"std": 24
 				},
 				"hp": {
-					"default": 60
+					"std": 60
 				},
 				"immunities": [
 					"critical hits",
@@ -3387,8 +4602,12 @@
 					"positive 10"
 				],
 				"savingThrows": {
-					"fort": 13,
-					"will": 15
+					"fort": {
+						"std": 13
+					},
+					"will": {
+						"std": 15
+					}
 				}
 			},
 			"actions": [
@@ -3405,7 +4624,6 @@
 					"entries": [
 						"A spectral minister appears before the pulpit, resembling an ever-shifting amalgamation of several past priests. The spectral minister delivers fervent exhortations about faithlessness. Each creature on the dais must succeed at a DC 24 Will save or become {@condition drained|CRB|drained 2}. On a critical failure, the creature is {@condition drained|CRB|drained 4}."
 					],
-					"type": "ability",
 					"name": "Phantom Sermon"
 				}
 			],
@@ -3482,7 +4700,6 @@
 					"entries": [
 						"28 {@skill Occultism} (expert) to harmlessly bleed away the electrical energy from the rune. Once the trap has been activated, the electrical energy is stronger, so three successful checks (of any combination of the relevant skills) are necessary to deactivate it, but these checks can be attempted from anywhere in the room."
 					],
-					"type": "ability",
 					"name": "or DC"
 				},
 				{
@@ -3498,7 +4715,6 @@
 					"entries": [
 						"Trigger A creature passes over the {@condition invisible} underwater rune between the north and south doors; The trap deals {@damage 4d10} electricity damage (DC 26 basic Reflex save) to creatures touching the water, and then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Electrocution"
 				}
 			],
@@ -3537,7 +4753,6 @@
 					"entries": [
 						"20; Fort +13, Ref +5 Painting Hardness 15; Painting HP 30 per square (6 squares must be destroyed to disable the haunt); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "Painting AC"
 				},
 				{
@@ -3553,7 +4768,6 @@
 					"entries": [
 						"The haunt activates and rolls initiative."
 					],
-					"type": "ability",
 					"name": "Lifelike Scintillation"
 				}
 			],
@@ -3614,20 +4828,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 18
+					"std": 18
 				},
 				"savingThrows": {
-					"fort": 10,
-					"ref": 4
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 4
+					}
 				},
 				"hardness": {
-					"default": 5
+					"std": 5
 				},
 				"hp": {
-					"default": 28
+					"std": 28
 				},
 				"bt": {
-					"default": 14
+					"std": 14
 				},
 				"immunities": [
 					"critical hits",
@@ -3648,11 +4866,11 @@
 					"entries": [
 						"The trap's poisoned thorns attack the creature or object touching the trip wire."
 					],
-					"type": "ability",
 					"name": "Thorny Branch"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "poisoned thorns",
 					"attack": 14,
@@ -3688,20 +4906,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 6,
-					"ref": 12
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 12
+					}
 				},
 				"hardness": {
-					"default": 5
+					"std": 5
 				},
 				"hp": {
-					"default": 30
+					"std": 30
 				},
 				"bt": {
-					"default": 15
+					"std": 15
 				},
 				"immunities": [
 					"critical hits",
@@ -3719,7 +4941,6 @@
 					"entries": [
 						"The statue explodes, spraying shrapnel to the west in a 5-foot cone and dealing {@damage 1d10+7} piercing and {@damage 1d10} fire damage to all creatures in the affected area (DC 18 basic Reflex save)."
 					],
-					"type": "ability",
 					"name": "Explosion"
 				}
 			]
@@ -3746,17 +4967,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 15
+					"std": 15
 				},
 				"savingThrows": {
-					"fort": 11,
-					"ref": 3
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 3
+					}
 				},
 				"hardness": {
-					"default": 1
+					"std": 1
 				},
 				"hp": {
-					"default": 5
+					"std": 5
 				},
 				"immunities": [
 					"object immunities",
@@ -3773,7 +4998,6 @@
 					"entries": [
 						"The barrels explode, dealing {@damage 3d6+8} fire damage to everything within a 20-foot radius (basic DC 20 Reflex save)."
 					],
-					"type": "ability",
 					"name": "Explode"
 				}
 			]
@@ -3801,20 +5025,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 33
+					"std": 33
 				},
 				"savingThrows": {
-					"fort": 25,
-					"ref": 19
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 19
+					}
 				},
 				"hardness": {
-					"default": 21
+					"std": 21
 				},
 				"hp": {
-					"default": 84
+					"std": 84
 				},
 				"bt": {
-					"default": 42
+					"std": 42
 				},
 				"immunities": [
 					"critical hits",
@@ -3832,7 +5060,6 @@
 					"entries": [
 						"The pile of furniture and entangling wires explodes outward. The trap deals {@damage 6d10+27} slashing damage (DC 32 basic Reflex save). On a failed save, the target takes a \u201310-foot penalty to all its Speeds for 1 round (1 minute on a critical failure)."
 					],
-					"type": "ability",
 					"name": "Unsprung Wires"
 				}
 			]
@@ -3861,11 +5088,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 33
+					"std": 33
 				},
 				"savingThrows": {
-					"fort": 29,
-					"ref": 26
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 26
+					}
 				},
 				"hardness": {
 					"Tank": 2
@@ -3892,7 +5123,6 @@
 					"entries": [
 						"The trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Eye-Opener"
 				}
 			],
@@ -3989,20 +5219,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 16
+					"std": 16
 				},
 				"savingThrows": {
-					"fort": 8,
-					"ref": 2
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 2
+					}
 				},
 				"hardness": {
-					"default": 5
+					"std": 5
 				},
 				"hp": {
-					"default": 20
+					"std": 20
 				},
 				"bt": {
-					"default": 10
+					"std": 10
 				},
 				"immunities": [
 					"critical hits",
@@ -4020,7 +5254,6 @@
 					"entries": [
 						"The ceiling in the crawlway collapses in the square where the passage turns, and also in the two adjacent squares. Anyone in these three squares takes {@damage 3d6} bludgeoning damage and can attempt a DC 14 Reflex save to reduce the damage. For the creature in the center square, where the trap is triggered, this is a basic save. Creatures in the two adjacent squares take no damage on a success or critical success as they avoid the falling debris entirely, but take full damage on a failed save, and take double damage on a critical failure. Creatures that take damage from the debris are {@condition immobilized}, trapped under the crushing weight. Clearing out a square of debris requires a successful DC 17 {@skill Athletics} skill check, with the following effects. Critical Success The square is cleared in 1 minute. Success The square is cleared in 5 minutes. Failure The square is cleared in 10 minutes. Critical Failure The ceiling above the square collapses further, dealing an additional {@dice 2d6} to the character digging out the square and any character trapped in that square. This takes 1 minute and no progress is made."
 					],
-					"type": "ability",
 					"name": "Falling Debris"
 				}
 			]
@@ -4049,20 +5282,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 31
+					"std": 31
 				},
 				"savingThrows": {
-					"fort": 23,
-					"ref": 17
+					"fort": {
+						"std": 23
+					},
+					"ref": {
+						"std": 17
+					}
 				},
 				"hardness": {
-					"default": 25
+					"std": 25
 				},
 				"hp": {
-					"default": 100
+					"std": 100
 				},
 				"bt": {
-					"default": 50
+					"std": 50
 				},
 				"immunities": [
 					"critical hits",
@@ -4085,7 +5322,6 @@
 					"entries": [
 						"The creature is targeted by purple worm sting (DC 32 Fortitude save)."
 					],
-					"type": "ability",
 					"name": "Purple Worm Sting"
 				}
 			]
@@ -4114,11 +5350,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 45
+					"std": 45
 				},
 				"savingThrows": {
-					"fort": 33,
-					"ref": 30
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 30
+					}
 				},
 				"hardness": {
 					"Face": 20
@@ -4145,7 +5385,6 @@
 						"teleportation"
 					],
 					"trigger": "A creature moves between the two glass faces of Olansa Terimor",
-					"type": "ability",
 					"name": "Spawn Mirror Duplicate",
 					"entries": [
 						"The planar rift disgorges an evil mirror duplicate of the creature (see below), and the duplicate rolls initiative. The field of opposition can use this reaction once per round but can't spawn a duplicate of a creature that already has a mirror duplicate in existence."
@@ -4156,7 +5395,6 @@
 						"A mirror duplicate rolls initiative with a +45 modifier. It uses the same statistics as the original creature, but with a +2 status bonus to AC, attacks, and saving throws. The duplicate is evil, and any abilities reliant on alignment change accordingly. The duplicate is also aggressive, attacking and taking other {@condition hostile} actions available to it against anyone other than mirror duplicates. It has three actions and one reaction and can use any of the original creature's abilities. Any limited-use abilities (such as spell slots) are based on what the original had when duplicated and are used up separately from the original creature's. The duplicate also has duplicates of the creature's worn and held items, but not consumables.",
 						"A duplicate is destroyed when reduced to 0 HP, when the trap is disabled or destroyed, or when the duplicate leaves area E2. Its duplicated items disappear when they leave its grip, though they last long enough for ranged Strikes."
 					],
-					"type": "ability",
 					"name": "Mirror Duplicate"
 				}
 			]
@@ -4197,7 +5435,6 @@
 					"entries": [
 						"A blast of energy ripples outward from the door, dealing {@damage 4d10} force damage to all creatures within 20 feet and forcing them to make a DC 25 Fortitude save. Fiends treat the result of their saving throw as one degree worse. Critical Success The creature is unaffected. Success The creature takes half damage. Failure The creature takes full damage and is {@condition sickened|CRB|sickened 1}. Critical Failure The creature takes double damage and is {@condition sickened|CRB|sickened 2}; while it is {@condition sickened}, it's also {@condition slowed|CRB|slowed 1}."
 					],
-					"type": "ability",
 					"name": "Forceful Blast"
 				}
 			],
@@ -4274,20 +5511,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 42
+					"std": 42
 				},
 				"savingThrows": {
-					"fort": 30,
-					"ref": 33
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 33
+					}
 				},
 				"hardness": {
-					"default": 25
+					"std": 25
 				},
 				"hp": {
-					"default": 100
+					"std": 100
 				},
 				"bt": {
-					"default": 50
+					"std": 50
 				},
 				"immunities": [
 					"fire"
@@ -4307,7 +5548,6 @@
 					"entries": [
 						"The trap roars with fire and rolls initiative."
 					],
-					"type": "ability",
 					"name": "Blaze"
 				}
 			],
@@ -4341,11 +5581,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 23
+					"std": 23
 				},
 				"savingThrows": {
-					"fort": 9,
-					"ref": 17
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 17
+					}
 				},
 				"hardness": {
 					"Blade": 13
@@ -4372,7 +5616,6 @@
 					"entries": [
 						"One round after a creature enters the room, the door to the room slams shut and locks (two DC 20 {@skill Thievery} checks to pick), and the guillotine blade detaches from its housing and begins flying around the room as the trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Flying Blade"
 				}
 			],
@@ -4431,7 +5674,6 @@
 					"entries": [
 						"The floor of the entire 10-foot-by-15-foot antechamber freezes over, sending deadly magical frost creeping up the legs of the intruders. Any creatures standing in the room must roll a DC 45 Reflex save. Critical Success The creature is unaffected. Success The creature takes {@damage 3d10+5} cold damage. Failure The creature takes {@damage 6d10+10} cold damage and is {@condition slowed|CRB|slowed 1} for {@dice 1d4} rounds. Critical Failure The creature takes {@damage 12d10+20} cold damage and is {@condition slowed|CRB|slowed 1} for 1 minute. Additionally, the golems in area B10 become aware of the intruders. The golems activate and come to this room to attack, if they haven't been destroyed already."
 					],
-					"type": "ability",
 					"name": "Freeze Floor"
 				}
 			],
@@ -4466,11 +5708,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 36
+					"std": 36
 				},
 				"savingThrows": {
-					"fort": 33,
-					"ref": 30
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 30
+					}
 				},
 				"hardness": {
 					"Sensor": 20
@@ -4498,7 +5744,6 @@
 					"entries": [
 						"The trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Frigid Floor"
 				}
 			],
@@ -4585,7 +5830,6 @@
 					"entries": [
 						"The door to the room slams shut and locks and the trap rolls initiative. (The trap can also be triggered manually or disarmed from area E30.)"
 					],
-					"type": "ability",
 					"name": "Toxic Gas"
 				}
 			],
@@ -4619,14 +5863,18 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 27
+					"std": 27
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 13
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 13
+					}
 				},
 				"hp": {
-					"default": 70
+					"std": 70
 				},
 				"immunities": [
 					"critical hits",
@@ -4644,11 +5892,9 @@
 					"entries": [
 						"All creatures within 10 feet of the corpse are exposed to the ghost crystal cloud."
 					],
-					"type": "ability",
 					"name": "Ectoplasmic Explosion"
 				},
 				{
-					"type": "affliction",
 					"name": "Ghost Crystal Cloud",
 					"traits": [
 						"inhaled",
@@ -4704,14 +5950,18 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 13,
-					"ref": 9
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 9
+					}
 				},
 				"hp": {
-					"default": 52
+					"std": 52
 				},
 				"immunities": [
 					"critical hits",
@@ -4732,7 +5982,6 @@
 					"entries": [
 						"The mushrooms can't use this reaction if the damage was cold damage. The triggering creature and all creatures within 10 feet are sprayed with itchy, distracting, glowing spores and must attempt a DC 22 Reflex save. On a failed save, the creatures become {@condition sickened|CRB|sickened 1} and {@condition stupefied|CRB|stupefied 1} (or {@condition sickened|CRB|sickened 2} and {@condition stupefied|CRB|stupefied 2} on a critical failure) and take a \u20134 penalty to {@skill Stealth} checks until the spores lose potency in 24 hours or are removed. This requires washing them off by bathing in water for a minute, a {@spell prestidigitation} spell, or a similar measure allowed by the GM."
 					],
-					"type": "ability",
 					"name": "Glowing Spores"
 				}
 			]
@@ -4773,7 +6022,6 @@
 					"entries": [
 						"The creature must succeed at a DC 44 Will save or be drawn into the rift. A creature so drawn in becomes {@condition stunned|CRB|stunned 3} and immediately teleports to a different random area in Kharnas's ruins."
 					],
-					"type": "ability",
 					"name": "Greater Planar Rift"
 				}
 			]
@@ -4802,14 +6050,18 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 42
+					"std": 42
 				},
 				"savingThrows": {
-					"fort": 35,
-					"ref": 29
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 29
+					}
 				},
 				"hp": {
-					"default": 150
+					"std": 150
 				},
 				"immunities": [
 					"critical hits",
@@ -4827,7 +6079,6 @@
 					"entries": [
 						"The rocks of the area begin to crumble. The hazard rolls for initiative."
 					],
-					"type": "ability",
 					"name": "Rumbling Rocks"
 				}
 			],
@@ -4889,20 +6140,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 30
+					"std": 30
 				},
 				"savingThrows": {
-					"fort": 21,
-					"ref": 15
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 15
+					}
 				},
 				"hardness": {
-					"default": 16
+					"std": 16
 				},
 				"hp": {
-					"default": 80
+					"std": 80
 				},
 				"bt": {
-					"default": 40
+					"std": 40
 				}
 			},
 			"actions": [
@@ -4915,7 +6170,6 @@
 					"entries": [
 						"The wheel begins to spin and rolls initiative."
 					],
-					"type": "ability",
 					"name": "Wheel Spin"
 				}
 			],
@@ -4950,17 +6204,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 24
+					"std": 24
 				},
 				"savingThrows": {
-					"fort": 0,
-					"ref": 0
+					"fort": {
+						"std": 0
+					},
+					"ref": {
+						"std": 0
+					}
 				},
 				"hardness": {
 					"default": 0
 				},
 				"hp": {
-					"default": 1
+					"std": 1
 				},
 				"immunities": [
 					"critical hits",
@@ -5010,11 +6268,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 32
+					"std": 32
 				},
 				"savingThrows": {
-					"fort": 24,
-					"ref": 15
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 15
+					}
 				},
 				"hardness": {
 					"Hammer": 22,
@@ -5050,9 +6312,13 @@
 						"The hammer swings down, making an attack against the triggering creature."
 					],
 					"name": "Forbid Entry"
-				},
+				}
+			],
+			"reset": [
+				"The trap resets over the course of the round, and is ready to swing again 1 round later."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "hammer",
 					"attack": 28,
@@ -5065,9 +6331,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"reset": [
-				"The trap resets over the course of the round, and is ready to swing again 1 round later."
 			]
 		},
 		{
@@ -5105,7 +6368,6 @@
 					"entries": [
 						"Misty blue hands stretch out from the hallway's stone tiles and grasp at the triggering creature, which must attempt a DC 26 Reflex save to avoid becoming hindered or harmed by the ethereal hands. Critical Success The target is unaffected. Success The target is {@condition slowed|CRB|slowed 1} for 1 round. Failure The target is {@condition slowed|CRB|slowed 2} for 1 round and takes {@damage 2d10+10} negative damage. Critical Failure The target is {@condition slowed|CRB|slowed 2} for 1 round and takes {@damage 4d10+15} negative damage."
 					],
-					"type": "ability",
 					"name": "Waylay"
 				}
 			]
@@ -5133,11 +6395,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 12
+					"std": 12
 				},
 				"savingThrows": {
-					"fort": 10,
-					"ref": 6
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 6
+					}
 				},
 				"hardness": {
 					"Trapdoor": 5
@@ -5159,7 +6425,6 @@
 					"entries": [
 						"The triggering creature falls 30 feet down the shaft to area E33, taking 15 bludgeoning damage and landing {@condition prone} in the ochre jelly's pit. The creature can {@action Grab an Edge} to avoid falling. The DC to {@action Climb} the walls or {@action Grab an Edge} is 22."
 					],
-					"type": "ability",
 					"name": "Pitfall"
 				}
 			]
@@ -5187,11 +6452,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 10
+					"std": 10
 				},
 				"savingThrows": {
-					"fort": 1,
-					"ref": 1
+					"fort": {
+						"std": 1
+					},
+					"ref": {
+						"std": 1
+					}
 				},
 				"hardness": {
 					"Trapdoor": 3
@@ -5257,7 +6526,6 @@
 					"entries": [
 						"The haunt attempts a ghostly hand {@action Strike} against the target creature, and then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Embrace of Death"
 				}
 			],
@@ -5312,20 +6580,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 20
+					"std": 20
 				},
 				"savingThrows": {
-					"fort": 11,
-					"ref": 7
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 7
+					}
 				},
 				"hardness": {
-					"default": 8
+					"std": 8
 				},
 				"hp": {
-					"default": 44
+					"std": 44
 				},
 				"bt": {
-					"default": 22
+					"std": 22
 				},
 				"immunities": [
 					"critical hits",
@@ -5343,7 +6615,6 @@
 					"entries": [
 						"A freezing alchemical slurry is dumped into the room, dealing {@damage 4d6} cold damage to everyone in the area (DC 20 basic Reflex save)."
 					],
-					"type": "ability",
 					"name": "Ice Fall"
 				}
 			]
@@ -5386,14 +6657,12 @@
 					"entries": [
 						"The triggering creature takes {@damage 2d10+10} mental damage (DC 32 basic Will save) as it recalls its past failures. A creature that takes damage hears a soft whisper offering, \"Let me take something from you and I can stop the pain.\" A creature who agrees loses access to a random skill feat that isn't a prerequisite for another feat, and the creature doesn't take further damage from."
 					],
-					"type": "ability",
 					"name": "Echoes of Defeat"
 				},
 				{
 					"entries": [
 						"This effect lasts for 1 week and can be ended by effects that remove curses."
 					],
-					"type": "ability",
 					"name": "Echoes of Defeat."
 				}
 			],
@@ -5439,14 +6708,12 @@
 					"entries": [
 						"The triggering creature takes {@damage 2d10+10} mental damage (DC 32 basic Will save) as it considers its future failures. A creature that takes damage hears a soft whisper offering, \"Let me take something from you and I can stop the pain.\" A creature who agrees loses access to a random class feat that isn't a prerequisite for another feat, and the creature doesn't take further damage from."
 					],
-					"type": "ability",
 					"name": "Flood of Despair"
 				},
 				{
 					"entries": [
 						"This effect lasts for 1 week and can be ended by effects that remove curses. The creature also immediately detects the secret door at the end of the hall, no matter how far away from the end of the hall they are."
 					],
-					"type": "ability",
 					"name": "Flood of Despair."
 				}
 			],
@@ -5480,20 +6747,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 41
+					"std": 41
 				},
 				"savingThrows": {
-					"fort": 32,
-					"ref": 27
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 27
+					}
 				},
 				"hardness": {
-					"default": 1
+					"std": 1
 				},
 				"hp": {
-					"default": 4
+					"std": 4
 				},
 				"bt": {
-					"default": 2
+					"std": 2
 				}
 			},
 			"actions": [
@@ -5511,7 +6782,6 @@
 					"entries": [
 						"The mirror absorbs the creature into the mirror, replacing it with an evil mirror duplicate (DC 42 Reflex to avoid being absorbed into the mirror), and rolls initiative."
 					],
-					"type": "ability",
 					"name": "Reflection of Evil"
 				}
 			],
@@ -5548,11 +6818,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 39
+					"std": 39
 				},
 				"savingThrows": {
-					"fort": 30,
-					"ref": 27
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 27
+					}
 				},
 				"hardness": {
 					"Door": 22
@@ -5574,7 +6848,6 @@
 					"entries": [
 						"The trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Fill Tank"
 				}
 			],
@@ -5630,11 +6903,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 42
+					"std": 42
 				},
 				"savingThrows": {
-					"fort": 36,
-					"ref": 39
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 39
+					}
 				},
 				"hardness": {
 					"Tentacle": 5
@@ -5656,7 +6933,6 @@
 					"entries": [
 						"The hazard makes a tentacle {@action Strike} against the triggering creature and the hazard rolls initiative."
 					],
-					"type": "ability",
 					"name": "Tendrils Come Alive"
 				}
 			],
@@ -5724,20 +7000,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 25
+					"std": 25
 				},
 				"savingThrows": {
-					"fort": 20,
-					"ref": 14
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 14
+					}
 				},
 				"hardness": {
-					"default": 15
+					"std": 15
 				},
 				"hp": {
-					"default": 60
+					"std": 60
 				},
 				"bt": {
-					"default": 30
+					"std": 30
 				},
 				"immunities": [
 					"object immunities"
@@ -5783,11 +7063,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 25
+					"std": 25
 				},
 				"savingThrows": {
-					"fort": 0,
-					"ref": 0
+					"fort": {
+						"std": 0
+					},
+					"ref": {
+						"std": 0
+					}
 				}
 			},
 			"actions": [
@@ -5795,7 +7079,6 @@
 					"entries": [
 						"6; Pressure Plate HP 24 (BT 12); Iron Maiden Hardness 12; Iron Maiden HP 46 (BT 23); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "Pressure Plate Hardness"
 				},
 				{
@@ -5807,14 +7090,12 @@
 					"entries": [
 						"The front of the iron maiden slams shut with incredible force and locks itself. The triggering creature takes {@damage 4d10+10} piercing damage and {@damage 2d6} {@condition persistent damage ||persistent bleed damage} (DC 26 basic Reflex save; if the creature critically succeeds, they avoid the trap completely). The triggering creature is also {@condition immobilized}. The victim can end their immobilization only once a creature outside the iron maiden unlocks the device (requiring two successful DC 28 {@skill Thievery} checks."
 					],
-					"type": "ability",
 					"name": "Slam Shut"
 				},
 				{
 					"entries": [
 						"{@action Disable a Device}) or breaks the iron maiden, after which the trapped creature must succeed at a DC 25 check to {@action Escape} the trap's spike-lined interior."
 					],
-					"type": "ability",
 					"name": "to"
 				}
 			],
@@ -5856,7 +7137,6 @@
 					"entries": [
 						"A surge of the Radiant Spark's latent power courses through the glyph and washes over the triggering creature. If the creature is undead, it takes {@damage 10d10} positive damage. If it's living, it instead regains {@dice 10d10} Hit Points. It then must succeed at a DC 40 Will save or be affected by a 6th-level {@spell dominate} spell. The spell commands the affected creature to attack the nearest creature who doesn't bear the sigil of Kharnas."
 					],
-					"type": "ability",
 					"name": "Dominate"
 				}
 			],
@@ -5902,7 +7182,6 @@
 					"entries": [
 						"The trap summons a krooth (Bestiary 215). The krooth rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the krooth disappears. The krooth also disappears if someone disables the trap before the duration expires. Unlike most summoned creatures, the krooth can use 3 actions each round and can use reactions."
 					],
-					"type": "ability",
 					"name": "Summon Monster"
 				}
 			],
@@ -5934,11 +7213,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 30
+					"std": 30
 				},
 				"savingThrows": {
-					"fort": 20,
-					"ref": 16
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 16
+					}
 				},
 				"hardness": {
 					"Channel": 12,
@@ -5946,14 +7229,14 @@
 				},
 				"hp": {
 					"Channel": 48,
-					"Floor": 72
+					"Floor": 72,
+					"notes": {
+						"Channel": "to destroy a channel gate (this prevents that channel from being disabled and stops the trap from resetting)"
+					}
 				},
 				"bt": {
 					"Channel": 24,
 					"Floor": 36
-				},
-				"notes": {
-					"Channel": "to destroy a channel gate (this prevents that channel from being disabled and stops the trap from resetting)"
 				},
 				"immunities": [
 					"critical hits",
@@ -6015,7 +7298,6 @@
 					"entries": [
 						"Trigger A creature attempts to activate Vengegate; The chamber within {@deity Alseta|LOGM}'s Ring fills with a dragonstorm. Creatures within this area take {@dice 10d8} damage, equally split between acid, cold, electricity, fire, and poison."
 					],
-					"type": "ability",
 					"name": "Manifest Lesser Dragonstorm"
 				}
 			],
@@ -6048,11 +7330,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 28
+					"std": 28
 				},
 				"savingThrows": {
-					"fort": 20,
-					"ref": 18
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 18
+					}
 				},
 				"hardness": {
 					"Magnet": 14,
@@ -6082,7 +7368,6 @@
 					"entries": [
 						"The magical panel {@condition hidden} in the far corner of the chamber (either the western or the eastern corner, depending on which side of the room the creature was closest to when it triggered the trap) \"magnetizes\" the triggering creature and violently pulls it toward the corner, automatically dealing {@damage 2d10+10} bludgeoning damage to the creature. The trap then rolls initiative if it hasn't already done so."
 					],
-					"type": "ability",
 					"name": "Magnetize the Living"
 				}
 			],
@@ -6118,20 +7403,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 31
+					"std": 31
 				},
 				"savingThrows": {
-					"fort": 24,
-					"ref": 12
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 12
+					}
 				},
 				"hardness": {
-					"default": 20
+					"std": 20
 				},
 				"hp": {
-					"default": 80
+					"std": 80
 				},
 				"bt": {
-					"default": 40
+					"std": 40
 				},
 				"immunities": [
 					"critical hits (except bludgeoning or sonic)",
@@ -6152,7 +7441,6 @@
 					"entries": [
 						"The crystals twist and slash, animating and cutting into the creature as it walks, dealing {@damage 5d8} slashing damage. The creature must attempt a DC 28 Reflex saving throw. Critical Success The creature is unaffected. Success The creature takes full damage and is {@condition drained|CRB|drained 1}. Failure The creature takes double damage and is {@condition drained|CRB|drained 2}. Critical Failure As failure, plus the creature's blood causes fresh growth. A new 10-foot-square patch of lifeleech crystals grows in an adjacent space to the current patch of crystals."
 					],
-					"type": "ability",
 					"name": "Slice Legs"
 				}
 			]
@@ -6193,7 +7481,6 @@
 					"entries": [
 						"The brushes animate and attempt to paint all creatures within 30 feet. The creatures must succeed at a DC 41 Reflex save to avoid the brushes and splashes from paint cans or be converted into living artwork for 1 hour. A creature that becomes living artwork is immediately bound to the nearest flat surface of its size or larger within 30 feet. The creature can move only along flat surfaces such as floors and walls. This allows it to end its movement wrapped around corners when on a continuous surface. While bound to a surface, the creature can attack from its space as normal, including against other creatures bound to the same surface. If the surface it's on is destroyed (such as a portrait hit by a {@spell fireball} spell or a wall being demolished), the creature takes {@dice 10d6} damage and is shunted to the nearest flat surface. If there is no flat surface within 5 feet, the creature is destroyed."
 					],
-					"type": "ability",
 					"name": "Capture Subject"
 				}
 			]
@@ -6233,7 +7520,6 @@
 					"entries": [
 						"All creatures within 20 feet of the door are scorched with brilliant light, taking {@damage 20d6} fire damage (DC 40 basic Reflex save). A creature that fails this save is {@condition blinded} for 1 hour (or permanently on a critical failure)."
 					],
-					"type": "ability",
 					"name": "Radiant Explosion"
 				}
 			],
@@ -6289,23 +7575,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 35
+					"std": 35
 				},
 				"savingThrows": {
-					"fort": 26,
-					"ref": 28
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 28
+					}
 				},
 				"hardness": {
-					"default": 10
+					"std": 10
 				},
 				"hp": {
-					"default": 70
+					"std": 70,
+					"notes": {
+						"std": "per mannequin"
+					}
 				},
 				"bt": {
-					"default": 35
-				},
-				"notes": {
-					"default": "per mannequin"
+					"std": 35
 				},
 				"immunities": [
 					"critical hits",
@@ -6370,7 +7660,7 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 30
+					"std": 30
 				},
 				"fort": {
 					"default": 20
@@ -6379,16 +7669,16 @@
 					"default": 16
 				},
 				"hardness": {
-					"default": 18
+					"std": 18
 				},
 				"hp": {
-					"default": 48
+					"std": 48,
+					"notes": {
+						"std": "per statue"
+					}
 				},
 				"bt": {
-					"default": 24
-				},
-				"notes": {
-					"default": "per statue"
+					"std": 24
 				},
 				"immunities": [
 					"critical hits",
@@ -6409,7 +7699,6 @@
 					"entries": [
 						"The trap casts phantasmal killer (DC 27) against the creature, creating an image of the statue lunging forth. The trap then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Unmasked Statues"
 				}
 			],
@@ -6453,7 +7742,6 @@
 					"entries": [
 						"to dispel the minotaur AC 28; Fort +29, Ref +14 Hardness 18; HP 64 (BT 32); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "Occultism or Religion"
 				},
 				{
@@ -6465,14 +7753,12 @@
 					"entries": [
 						"Creatures in the maze can't escape it except by use of teleportation magic or as described in Trapped in the."
 					],
-					"type": "ability",
 					"name": "The Maze Awakens"
 				},
 				{
 					"entries": [
 						"The trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Maze."
 				},
 				{
@@ -6489,7 +7775,6 @@
 							}
 						}
 					],
-					"type": "ability",
 					"name": "Trapped in the Maze"
 				}
 			],
@@ -6549,7 +7834,6 @@
 					"entries": [
 						"A psychic wail affects all creatures within 10 feet of the marked area, requiring them to attempt a DC 41 Will save. Critical Success The target is unaffected. Success The target is {@condition stunned|CRB|stunned 2}. Failure The target is {@condition paralyzed} for 1 round, then {@condition stunned|CRB|stunned 2} when the paralysis ends. Critical Failure The target is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
 					],
-					"type": "ability",
 					"name": "Psychic Screech"
 				}
 			]
@@ -6582,7 +7866,6 @@
 					"entries": [
 						"53 {@skill Deception} (legendary) to momentarily divert Mogaru's attention."
 					],
-					"type": "ability",
 					"name": "or DC"
 				},
 				{
@@ -6594,7 +7877,6 @@
 					"entries": [
 						"Mogaru breathes a 120-foot cone of fire toward the object of his ire. Flammable objects in the area immediately combust, and stone or metal surfaces warp into difficult terrain. Creatures in the area take {@damage 20d6} fire damage (DC 44 basic Reflex save). On a failed or critically failed save, a creature also takes {@damage 3d6} {@condition persistent damage ||persistent fire damage}."
 					],
-					"type": "ability",
 					"name": "Volcanic Breath"
 				}
 			],
@@ -6641,7 +7923,6 @@
 					"entries": [
 						"The trap summons a mukradi (Bestiary 239). The mukradi rolls initiative and remains for 1 minute, after which the spell ends and the mukradi disappears. The mukradi also disappears if someone disables the trap before the duration expires. The mukradi can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
-					"type": "ability",
 					"name": "Summon Monster"
 				}
 			],
@@ -6673,23 +7954,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 28
+					"std": 28
 				},
 				"savingThrows": {
-					"fort": 22,
-					"ref": 19
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 19
+					}
 				},
 				"hardness": {
-					"default": 8
+					"std": 8
 				},
 				"hp": {
-					"default": 25
+					"std": 25,
+					"notes": {
+						"std": "to break the spring under the step and make that step safe to stand on"
+					}
 				},
 				"bt": {
-					"default": 12
-				},
-				"notes": {
-					"default": "to break the spring under the step and make that step safe to stand on."
+					"std": 12
 				}
 			},
 			"actions": [
@@ -6702,7 +7987,6 @@
 					"entries": [
 						"The trap makes a poisoned needle {@action Strike} against the triggering creature, then rolls initiative."
 					],
-					"type": "ability",
 					"name": "First Step"
 				}
 			],
@@ -6773,7 +8057,6 @@
 					"entries": [
 						"If a creature that can see moves 10 feet into the affected area, the hazard rolls {@skill Stealth} (+16) for its initiative."
 					],
-					"type": "ability",
 					"name": "Step into Nightmares"
 				}
 			],
@@ -6826,7 +8109,6 @@
 					"entries": [
 						"A frightful moan echoes through the room, and a hoarse telepathic voice shouts, \"Get out!\" This shout deals {@damage 6d12} mental damage to creatures in the room (DC 26 basic Will save). Creatures who fail this saving throw must immediately leave the room and can't willingly reenter it for 1 minute (1 hour on a critical failure)."
 					],
-					"type": "ability",
 					"name": "Counterfeit Haunting"
 				}
 			],
@@ -6872,7 +8154,6 @@
 					"entries": [
 						"The light expands to fill the room, and each nondevil creature within the room must attempt a DC 26 Will save. A high-pitched chime sounds in the barracks (area D15), audible in this room as well. The trap then rolls initiative. Critical Success The target is unaffected. Success The target is {@condition stunned|CRB|stunned 2}. Failure The target is {@condition paralyzed} for 1 round. Critical Failure The target is {@condition stupefied|CRB|stupefied 2} for {@dice 1d4} rounds and {@condition paralyzed} for 1 round."
 					],
-					"type": "ability",
 					"name": "Stasis Field"
 				}
 			],
@@ -6911,7 +8192,6 @@
 					"entries": [
 						"22 (expert) to {@action Perform} an opposing composition."
 					],
-					"type": "ability",
 					"name": "Performance DC"
 				},
 				{
@@ -6927,7 +8207,6 @@
 					"entries": [
 						"Sounds of creaking metal fill the area as the phantom bells begin to swing and the haunt rolls initiative."
 					],
-					"type": "ability",
 					"name": "Distant Ringing"
 				}
 			],
@@ -7044,11 +8323,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 22
+					"std": 22
 				},
 				"savingThrows": {
-					"fort": 14,
-					"ref": 8
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
 					"Trapdoor": 10
@@ -7070,7 +8353,6 @@
 					"entries": [
 						"Anyone within 10 feet of the room's northern wall falls 40 feet down the shaft to area E33, taking 20 bludgeoning damage and landing {@condition prone} in the ochre jelly's pit. The victims can {@action Grab an Edge} to avoid falling. The DC to {@action Grab an Edge} is 20; the DC to {@action Climb} the walls is 22."
 					],
-					"type": "ability",
 					"name": "Pitfall and Plunger"
 				}
 			]
@@ -7100,23 +8382,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 27
+					"std": 27
 				},
 				"savingThrows": {
-					"fort": 13,
-					"ref": 17
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 17
+					}
 				},
 				"hardness": {
-					"default": 14
+					"std": 14
 				},
 				"hp": {
-					"default": 56
+					"std": 56,
+					"notes": {
+						"std": "to destroy the control panel and disable the trap"
+					}
 				},
 				"bt": {
-					"default": 28
-				},
-				"notes": {
-					"default": "to destroy the control panel and disable the trap."
+					"std": 28
 				},
 				"immunities": [
 					"critical hits",
@@ -7224,11 +8510,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 34
+					"std": 34
 				},
 				"savingThrows": {
-					"fort": 20,
-					"ref": 25
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 25
+					}
 				}
 			},
 			"actions": [
@@ -7236,7 +8526,6 @@
 					"entries": [
 						"24; Control Panel HP 96 (BT 48); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "Control Panel Hardness"
 				},
 				{
@@ -7248,7 +8537,6 @@
 					"entries": [
 						"{@skill Stealth} check; The trap makes a poisoned dart {@action Strike} against the triggering creature, then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Dart Volley"
 				}
 			],
@@ -7332,20 +8620,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 15
+					"std": 15
 				},
 				"savingThrows": {
-					"fort": 8,
-					"ref": 4
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 4
+					}
 				},
 				"hardness": {
-					"default": 6
+					"std": 6
 				},
 				"hp": {
-					"default": 24
+					"std": 24
 				},
 				"bt": {
-					"default": 12
+					"std": 12
 				},
 				"immunities": [
 					"critical hits",
@@ -7369,21 +8661,6 @@
 					"name": "Spring"
 				},
 				{
-					"type": "attack",
-					"range": "Melee",
-					"name": "spine",
-					"attack": 13,
-					"effects": [
-						"cladis poison"
-					],
-					"damage": "1 piercing plus cladis poison",
-					"types": [
-						"piercing"
-					],
-					"noMAP": true
-				},
-				{
-					"type": "affliction",
 					"name": "Cladis Poison",
 					"traits": [
 						"poison"
@@ -7408,6 +8685,21 @@
 							"duration": "1 hour"
 						}
 					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spine",
+					"attack": 13,
+					"effects": [
+						"cladis poison"
+					],
+					"damage": "1 piercing plus cladis poison",
+					"types": [
+						"piercing"
+					],
+					"noMAP": true
 				}
 			]
 		},
@@ -7434,11 +8726,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 15
+					"std": 15
 				},
 				"savingThrows": {
-					"fort": 8,
-					"ref": 4
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 4
+					}
 				},
 				"immunities": [
 					"critical hits",
@@ -7459,25 +8755,9 @@
 					"entries": [
 						"A spine springs out and attacks the triggering creature."
 					],
-					"type": "ability",
 					"name": "Spring Dart"
 				},
 				{
-					"type": "attack",
-					"range": "Melee",
-					"name": "spine",
-					"attack": 13,
-					"effects": [
-						"cladis poison"
-					],
-					"damage": "1 piercing plus cladis poison",
-					"types": [
-						"piercing"
-					],
-					"noMAP": true
-				},
-				{
-					"type": "affliction",
 					"name": "Cladis Poison",
 					"traits": [
 						"poison"
@@ -7502,6 +8782,21 @@
 							"duration": "1 hour"
 						}
 					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spine",
+					"attack": 13,
+					"effects": [
+						"cladis poison"
+					],
+					"damage": "1 piercing plus cladis poison",
+					"types": [
+						"piercing"
+					],
+					"noMAP": true
 				}
 			]
 		},
@@ -7532,7 +8827,6 @@
 					"entries": [
 						"39 {@skill Perception} (master) to identify the three stones that, when pressed, prevent the trap from triggering AC 36; Fort +28, Ref +19 Hardness 23; HP 92 (BT 46); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "or DC"
 				},
 				{
@@ -7547,11 +8841,29 @@
 					"entries": [
 						"Needles pop out of the door at the triggering creature."
 					],
-					"type": "ability",
 					"name": "Spring"
 				},
 				{
-					"type": "attack",
+					"traits": [
+						"poison"
+					],
+					"entries": [
+						"Saving Throw DC 34."
+					],
+					"name": "Purple Worm Venom"
+				},
+				{
+					"entries": [
+						"6 rounds; Stage 1 {@damage 5d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 2 {@damage 6d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 3 {@damage 8d6} poison and {@condition enfeebled|CRB|enfeebled 2} (1 round)"
+					],
+					"name": "Fortitude; Maximum Duration"
+				}
+			],
+			"reset": [
+				"If disabled, the trap resets after 1 minute."
+			],
+			"attacks": [
+				{
 					"range": "Melee",
 					"name": "needles",
 					"attack": 32,
@@ -7563,27 +8875,7 @@
 						"piercing"
 					],
 					"noMAP": true
-				},
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw DC 34."
-					],
-					"type": "ability",
-					"name": "Purple Worm Venom"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 5d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 2 {@damage 6d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 3 {@damage 8d6} poison and {@condition enfeebled|CRB|enfeebled 2} (1 round)"
-					],
-					"type": "ability",
-					"name": "Fortitude; Maximum Duration"
 				}
-			],
-			"reset": [
-				"If disabled, the trap resets after 1 minute."
 			]
 		},
 		{
@@ -7645,20 +8937,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 16
+					"std": 16
 				},
 				"savingThrows": {
-					"fort": 10,
-					"ref": 2
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 2
+					}
 				},
 				"hardness": {
-					"default": 5
+					"std": 5
 				},
 				"hp": {
-					"default": 25
+					"std": 25
 				},
 				"bt": {
-					"default": 12
+					"std": 12
 				},
 				"immunities": [
 					"critical hits",
@@ -7676,7 +8972,6 @@
 					"entries": [
 						"The wall collapses, dealing {@damage 2d8} bludgeoning damage to creatures on it or within 10 feet of it. A creature that succeeds at a DC 18 Reflex save takes half damage and rolls out of the way in a random direction. On a critical success, they take no damage and can choose the direction."
 					],
-					"type": "ability",
 					"name": "Collapse"
 				}
 			]
@@ -7710,7 +9005,6 @@
 					"entries": [
 						"The ground shakes in a 120-foot emanation from Mogaru's space. This creates a variety of effects, depending on where the player characters are at the time of the quake. In most parts of the city, the ground becomes difficult terrain, and creatures on it are {@condition clumsy|CRB|clumsy 2} for 1 round. In parts of the city with existing underground spaces (like sewers, sinkholes, or catacombs), fissures open up in the ground. Creatures in the area tumble into the resulting 40-foot-deep hole unless they succeed at a DC 40 Reflex save. In bays, on beaches, and in other relatively substantial but shallow bodies of water, Mogaru's movement creates dangerous waves. Creatures in the water or within 60 feet of the waterline are struck by waves that deal {@damage 3d8} bludgeoning damage (DC 35 basic Reflex save). On a critically failed save, a creature is instantly swept 60 feet out to sea and 60 feet under the water's surface."
 					],
-					"type": "ability",
 					"name": "Quake"
 				}
 			],
@@ -7751,7 +9045,6 @@
 					"entries": [
 						"The trap rolls initiative."
 					],
-					"type": "ability",
 					"name": "Opened Sluices"
 				}
 			],
@@ -7853,7 +9146,6 @@
 					"entries": [
 						"Each creature in the sealed room is targeted by nightmare (DC 30 Will save). The haunt counts as having met the targets. It then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Raving Diatribe"
 				}
 			],
@@ -7887,17 +9179,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 25
+					"std": 25
 				},
 				"savingThrows": {
-					"fort": 0,
-					"ref": 0
+					"fort": {
+						"std": 0
+					},
+					"ref": {
+						"std": 0
+					}
 				},
 				"hardness": {
 					"default": 0
 				},
 				"hp": {
-					"default": 1
+					"std": 1
 				},
 				"immunities": [
 					"critical hits",
@@ -7915,7 +9211,6 @@
 					"entries": [
 						"The heavy bricks above the cubby collapse, leaving the sickle unscathed but dealing {@damage 4d6+10} bludgeoning damage."
 					],
-					"type": "ability",
 					"name": "Collapse"
 				}
 			]
@@ -7942,20 +9237,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 11
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					}
 				},
 				"hardness": {
-					"default": 14
+					"std": 14
 				},
 				"hp": {
-					"default": 56
+					"std": 56
 				},
 				"bt": {
-					"default": 28
+					"std": 28
 				},
 				"immunities": [
 					"critical hits",
@@ -7973,7 +9272,6 @@
 					"entries": [
 						"The triggering creature falls in and takes falling damage (20 bludgeoning damage). That creature can use the {@action Grab an Edge} reaction to avoid falling. Whether or not the creature Grabs an Edge, the rusty winch above crashes down atop the triggering creature, dealing {@damage 3d10} bludgeoning damage and dislodging its grip (DC 24 basic Reflex save). The creature can still try to {@action Grab an Edge} again."
 					],
-					"type": "ability",
 					"name": "Pitfall"
 				}
 			]
@@ -8009,7 +9307,6 @@
 					"entries": [
 						"A powerful wind pulls the creature back into the room. The triggering creature must attempt a DC 39 Fortitude save. The haunt can use this reaction any number of times per round, but only once per creature that tries to leave the room. The haunt then rolls initiative, if it hasn't already. Critical Success The creature is unaffected. Success The creature is pulled back 10 feet into the room. Failure The creature is pulled back 15 feet into the room and is {@condition blinded} for 1 round. Critical Failure The creature is pulled back 15 feet into the room and is {@condition blinded} for 1 minute."
 					],
-					"type": "ability",
 					"name": "Sand Vacuum"
 				}
 			],
@@ -8045,11 +9342,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 28
+					"std": 28
 				},
 				"savingThrows": {
-					"fort": 21,
-					"ref": 15
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 15
+					}
 				},
 				"hardness": {
 					"Symbol": 16,
@@ -8086,7 +9387,6 @@
 					"entries": [
 						"Both double doors leading out of the room shut and lock. While the trap is active, the doors must be battered open (Hardness 18; Panel HP 72 [BT 36]; {@skill Athletics} DC 29 to {@action Force Open}). The closest symbol to the triggering creature shoots an electricity bolt attack at it. The trap then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Reactive Charge"
 				}
 			],
@@ -8135,20 +9435,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 12,
-					"ref": 8
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
-					"default": 11
+					"std": 11
 				},
 				"hp": {
-					"default": 44
+					"std": 44
 				},
 				"bt": {
-					"default": 22
+					"std": 22
 				},
 				"immunities": [
 					"critical hits",
@@ -8170,9 +9474,13 @@
 						"Both blades swing down, each one attacking all creatures under the ceiling grooves."
 					],
 					"name": "Falling Scythes"
-				},
+				}
+			],
+			"reset": [
+				"The trap resets after 15 minutes."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "scythe",
 					"attack": 17,
@@ -8185,9 +9493,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"reset": [
-				"The trap resets after 15 minutes."
 			]
 		},
 		{
@@ -8265,11 +9570,21 @@
 					"entries": [
 						"Fiery spears make one {@action Strike} against each living creature within 5 feet of the marked area."
 					],
-					"type": "ability",
 					"name": "Cataclysmic Rain"
 				},
 				{
-					"type": "attack",
+					"entries": [
+						"A creature struck by a seismic spear is {@condition clumsy|CRB|clumsy 3} for 1 round as their body shakes uncontrollably.",
+						"On a critical hit, a target must succeed at a DC 39 Fortitude save or be {@condition petrified} for 1 minute, or permanently on a critical failure."
+					],
+					"name": "Personal Quake"
+				}
+			],
+			"reset": [
+				"The trap resets after 1 minute."
+			],
+			"attacks": [
+				{
 					"range": "Ranged",
 					"name": "seismic spear",
 					"attack": 40,
@@ -8282,18 +9597,7 @@
 						"piercing"
 					],
 					"noMAP": true
-				},
-				{
-					"entries": [
-						"A creature struck by a seismic spear is {@condition clumsy|CRB|clumsy 3} for 1 round as their body shakes uncontrollably.",
-						"On a critical hit, a target must succeed at a DC 39 Fortitude save or be {@condition petrified} for 1 minute, or permanently on a critical failure."
-					],
-					"type": "ability",
-					"name": "Personal Quake"
 				}
-			],
-			"reset": [
-				"The trap resets after 1 minute."
 			]
 		},
 		{
@@ -8333,7 +9637,6 @@
 					"entries": [
 						"Hissing, illusionary snakes leap from the door. Each living creature within 30 feet is subjected to the curse of potent poison. If a living creature opened the door, that creature must roll its saving throw against the curse twice and take the worse result (this is a {@trait misfortune} effect)."
 					],
-					"type": "ability",
 					"name": "Curse the Intruders"
 				}
 			]
@@ -8363,11 +9666,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 27
+					"std": 27
 				},
 				"savingThrows": {
-					"fort": 19,
-					"ref": 13
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 13
+					}
 				}
 			},
 			"actions": [
@@ -8375,7 +9682,6 @@
 					"entries": [
 						"16, Scythe Blade HP 30 (BT 15); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "Scythe Blade Hardness"
 				},
 				{
@@ -8387,7 +9693,6 @@
 					"entries": [
 						"The trap uses Scythe Shuffle; each blade makes a scythe {@action Strike} against each creature in its region, then it uses Scythe Shuffle again. The trap then rolls for initiative."
 					],
-					"type": "ability",
 					"name": "Dicing Scythes"
 				},
 				{
@@ -8399,7 +9704,6 @@
 						"The blades travel erratically throughout the hallway's branches, out of sight under the floors or behind the walls. For each blade, roll {@dice 1d4} to determine the region in which it next makes scythe Strikes. A creature can {@action Seek} (DC 22) to learn clues about blades in the region they're currently occupying. On a success, the creature knows how many blades are currently in its region.",
 						"1. Main intersection (the 15-foot-by-25-foot area where the hallways connect, as marked on area B20) 2. North branch (from the main intersection to the secret door to area B14) 3. Central hall (from the main intersection to the secret door to area B24) 4. South branch (from the main intersection to the wall shared with area B25)"
 					],
-					"type": "ability",
 					"name": "Scythe Shuffle"
 				}
 			],
@@ -8454,20 +9758,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 16
+					"std": 16
 				},
 				"savingThrows": {
-					"fort": 10,
-					"ref": 2
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 2
+					}
 				},
 				"hardness": {
-					"default": 5
+					"std": 5
 				},
 				"hp": {
-					"default": 20
+					"std": 20
 				},
 				"bt": {
-					"default": 10
+					"std": 10
 				},
 				"immunities": [
 					"critical hits",
@@ -8512,20 +9820,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 18
+					"std": 18
 				},
 				"savingThrows": {
-					"fort": 11,
-					"ref": 3
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 3
+					}
 				},
 				"hardness": {
-					"default": 8
+					"std": 8
 				},
 				"hp": {
-					"default": 32
+					"std": 32
 				},
 				"bt": {
-					"default": 16
+					"std": 16
 				},
 				"immunities": [
 					"critical hits",
@@ -8547,9 +9859,10 @@
 						"The trap shoots a spear, making an attack against the creature or object on the floor tile."
 					],
 					"name": "Spear"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Ranged",
 					"name": "spear",
 					"attack": 14,
@@ -8584,20 +9897,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 18
+					"std": 18
 				},
 				"savingThrows": {
-					"fort": 11,
-					"ref": 3
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 3
+					}
 				},
 				"hardness": {
-					"default": 8
+					"std": 8
 				},
 				"hp": {
-					"default": 32
+					"std": 32
 				},
 				"bt": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"actions": [
@@ -8613,11 +9930,11 @@
 					"entries": [
 						"The trap makes an attack against the creature that manipulated the rope."
 					],
-					"type": "ability",
 					"name": "Spear"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Ranged",
 					"name": "spear",
 					"attack": 14,
@@ -8654,7 +9971,6 @@
 					"entries": [
 						"12 {@skill Acrobatics} to step over a trip line (this doesn't disarm the trap, but avoids triggering it) AC 16; Fort +9, Ref +3 Hardness 3; HP 16 (BT 8); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "or DC"
 				},
 				{
@@ -8666,11 +9982,11 @@
 					"entries": [
 						"A spike launches along the trip line's path against the triggering creature, making a ranged {@action Strike}."
 					],
-					"type": "ability",
 					"name": "Spike"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Ranged",
 					"name": "spike",
 					"attack": 11,
@@ -8708,20 +10024,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 34
+					"std": 34
 				},
 				"savingThrows": {
-					"fort": 26,
-					"ref": 18
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 18
+					}
 				},
 				"hardness": {
-					"default": 22
+					"std": 22
 				},
 				"hp": {
-					"default": 88
+					"std": 88
 				},
 				"bt": {
-					"default": 44
+					"std": 44
 				},
 				"immunities": [
 					"critical hits",
@@ -8745,11 +10065,14 @@
 					"entries": [
 						"Wedges of sharpened stone extend from the barricade in all directions and attack all creatures within 10 feet."
 					],
-					"type": "ability",
 					"name": "Spike Jab"
-				},
+				}
+			],
+			"reset": [
+				"The trap must be manually reset by pushing the wedges back into place."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "spike",
 					"attack": 31,
@@ -8762,9 +10085,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"reset": [
-				"The trap must be manually reset by pushing the wedges back into place."
 			]
 		},
 		{
@@ -8790,20 +10110,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 12,
-					"ref": 8
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
-					"default": 11
+					"std": 11
 				},
 				"hp": {
-					"default": 44
+					"std": 44
 				},
 				"bt": {
-					"default": 22
+					"std": 22
 				},
 				"immunities": [
 					"critical hits",
@@ -8824,11 +10148,11 @@
 					"entries": [
 						"The trap makes an attack against the creature that opened the door."
 					],
-					"type": "ability",
 					"name": "Spikes"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "spikes",
 					"attack": 17,
@@ -8865,11 +10189,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 10,
-					"ref": 12
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 12
+					}
 				},
 				"hardness": {
 					"Pillar": 12,
@@ -8933,20 +10261,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 41
+					"std": 41
 				},
 				"savingThrows": {
-					"fort": 36,
-					"ref": 27
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 27
+					}
 				},
 				"hardness": {
-					"default": 30
+					"std": 30
 				},
 				"hp": {
-					"default": 120
+					"std": 120
 				},
 				"bt": {
-					"default": 60
+					"std": 60
 				},
 				"immunities": [
 					"critical hits",
@@ -8969,11 +10301,20 @@
 					"entries": [
 						"The stabbing sentinel animates, making one {@action Strike} against the triggering creature."
 					],
-					"type": "ability",
 					"name": "Animated Attack"
 				},
 				{
-					"type": "attack",
+					"entries": [
+						"On a critical hit, the target is {@condition petrified} for 1 round. Additionally, if another stabbing sentinel has already been triggered, that sentinel immediately resets. If no other stabbing sentinels have been triggered, then another random statue in the room becomes infused with animating magic and becomes another stabbing sentinel hazard (to a maximum of four at a time)."
+					],
+					"name": "Petrification Overcharge"
+				}
+			],
+			"reset": [
+				"The magical energy that animates the statue builds up again over 24 hours and the trap resets."
+			],
+			"attacks": [
+				{
 					"range": "Melee",
 					"name": "blade",
 					"attack": 38,
@@ -8985,17 +10326,7 @@
 						"piercing"
 					],
 					"noMAP": true
-				},
-				{
-					"entries": [
-						"On a critical hit, the target is {@condition petrified} for 1 round. Additionally, if another stabbing sentinel has already been triggered, that sentinel immediately resets. If no other stabbing sentinels have been triggered, then another random statue in the room becomes infused with animating magic and becomes another stabbing sentinel hazard (to a maximum of four at a time)."
-					],
-					"type": "ability",
-					"name": "Petrification Overcharge"
 				}
-			],
-			"reset": [
-				"The magical energy that animates the statue builds up again over 24 hours and the trap resets."
 			]
 		},
 		{
@@ -9036,7 +10367,6 @@
 					"entries": [
 						"Consortium badge crosses the center of the yard; The trap summons an {@creature invisible stalker}. The invisible stalker rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the {@condition invisible} stalker disappears. The {@condition invisible} stalker also disappears if someone disables the trap before the duration expires. The {@condition invisible} stalker can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
-					"type": "ability",
 					"name": "Summon Monster"
 				}
 			],
@@ -9069,20 +10399,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 20
+					"std": 20
 				},
 				"savingThrows": {
-					"fort": 12,
-					"ref": 12
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 12
+					}
 				},
 				"hardness": {
-					"default": 12
+					"std": 12
 				},
 				"hp": {
-					"default": 48
+					"std": 48
 				},
 				"bt": {
-					"default": 24
+					"std": 24
 				},
 				"immunities": [
 					"object immunities"
@@ -9139,7 +10473,6 @@
 					"entries": [
 						"Six ghostly kobolds surge out of the rubble with eerie yowls. Each creature in area A7 must attempt a DC 18 Will save with the following results. The haunt then rolls initiative. Critical Success The creature is unaffected, is temporarily immune to Confusing Confrontation for 24 hours, and realizes that a display of intimidating dominance might quell the ghostly kobolds' assault. Success The creature is {@condition frightened|CRB|frightened 1}. Failure The creature is {@condition confused} for 1 round and is {@condition frightened|CRB|frightened 2}. Critical Failure The creature is {@condition confused} for 2 rounds and is {@condition frightened|CRB|frightened 3}."
 					],
-					"type": "ability",
 					"name": "Confusing Confrontation"
 				}
 			],
@@ -9175,17 +10508,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 39
+					"std": 39
 				},
 				"savingThrows": {
-					"fort": 27,
-					"ref": 31
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 31
+					}
 				},
 				"hp": {
-					"default": 24
-				},
-				"notes": {
-					"default": "per spirit."
+					"std": 24,
+					"notes": {
+						"std": "per spirit"
+					}
 				},
 				"immunities": [
 					"death effects",
@@ -9212,7 +10549,6 @@
 					"entries": [
 						"The haunt rolls for initiative."
 					],
-					"type": "ability",
 					"name": "Wendigo Remnants"
 				}
 			],
@@ -9274,7 +10610,6 @@
 					"entries": [
 						"Two rounds after a creature enters the room, the room's door slams shut and locks (two DC 20 {@skill Thievery} checks to pick), and two {@creature cinder rat||cinder rat fire elementals} emerge from the floor. The elementals roll initiative and remain for {@dice 3d6} rounds, after which the spell ends and the creatures disappear. The elementals also disappear if someone disables the trap before the duration expires. The summoned elementals can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
-					"type": "ability",
 					"name": "Summon Elementals"
 				}
 			],
@@ -9319,7 +10654,6 @@
 					"entries": [
 						"One round after a creature touches the triggering area, the door to the room slams shut and locks (two DC 20 {@skill Thievery} checks to pick) and a {@creature barbazu||barbazu devil} appears in the summoning circle. The devil rolls initiative and remains for {@dice 3d6} rounds, after which the spell ends and the devil disappears. The devil also disappears if someone disables the trap before the duration expires. The summoned devil can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
-					"type": "ability",
 					"name": "Summon Devil"
 				}
 			],
@@ -9390,22 +10724,26 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 34
+					"std": 34
 				},
 				"savingThrows": {
-					"fort": 20,
-					"ref": 28
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 28
+					}
 				},
 				"hardness": {
 					"Statue": 22
 				},
 				"hp": {
 					"Statue": 96,
-					"default": 20
+					"std": 20
 				},
 				"bt": {
 					"Statue": 48,
-					"default": 10
+					"std": 10
 				}
 			},
 			"actions": [
@@ -9418,7 +10756,6 @@
 					"entries": [
 						"The trap makes a statue shortsword {@action Strike} against the triggering creature, activates its predictive impediment ability, and then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Animated Statues"
 				},
 				{
@@ -9429,7 +10766,6 @@
 					"entries": [
 						"The statues continually slide around to bump into creatures and block their passage through the room. The first time on its turn that a creature attempts to move within the room, it must succeed at a DC 36 Reflex save or treat the entire room as difficult terrain for 1 round. On a critical failure, the creature is also knocked {@condition prone}."
 					],
-					"type": "ability",
 					"name": "Predictive Impediment"
 				}
 			],
@@ -9481,7 +10817,6 @@
 					"entries": [
 						"Creatures in the area must succeed at a DC 40 Reflex save or take {@damage 6d10+28} bludgeoning damage. Critical Success The creature is unaffected. Success The creature takes half damage and is pushed 20 feet away. If flying, it descends 20 feet. Failure The creature takes full damage, is pushed 40 feet, and descends 60 feet (if flying) or is knocked {@condition prone}. Critical Failure The creature takes double damage, is pushed 60 feet away, descends 120 feet (if flying) or is knocked {@condition prone}, and is {@condition stunned|CRB|stunned 2}."
 					],
-					"type": "ability",
 					"name": "Tail Swat"
 				}
 			],
@@ -9514,23 +10849,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 33
+					"std": 33
 				},
 				"savingThrows": {
-					"fort": 24,
-					"ref": 19
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 19
+					}
 				},
 				"hardness": {
-					"default": 22
+					"std": 22
 				},
 				"hp": {
-					"default": 88
+					"std": 88,
+					"notes": {
+						"std": "per telekinetic cloud"
+					}
 				},
 				"bt": {
-					"default": 44
-				},
-				"notes": {
-					"default": "per telekinetic cloud."
+					"std": 44
 				}
 			},
 			"actions": [
@@ -9604,7 +10943,6 @@
 					"entries": [
 						"The mural casts weird (DC 43 Will save) on all creatures in the gallery. A snarl fills the creatures' minds."
 					],
-					"type": "ability",
 					"name": "Tegresin's Greeting"
 				}
 			],
@@ -9636,20 +10974,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 43
+					"std": 43
 				},
 				"savingThrows": {
-					"fort": 32,
-					"ref": 35
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 35
+					}
 				},
 				"hardness": {
-					"default": 15
+					"std": 15
 				},
 				"hp": {
-					"default": 250
+					"std": 250
 				},
 				"bt": {
-					"default": 125
+					"std": 125
 				},
 				"immunities": [
 					"critical hits",
@@ -9667,7 +11009,6 @@
 					"entries": [
 						"The Winder rolls initiative."
 					],
-					"type": "ability",
 					"name": "Wind Up"
 				}
 			],
@@ -9722,7 +11063,6 @@
 					"entries": [
 						"The runes unleash a gout of fire roaring up the chute. Anyone in the chute and within 5 feet of its openings is dealt {@damage 8d10+44} fire damage (DC 42 basic Reflex save). Immediately thereafter, the runes emanate a 4th-level {@spell silence} effect for 1 minute, so anyone injured in the chute can't call out for help."
 					],
-					"type": "ability",
 					"name": "Explosion"
 				}
 			],
@@ -9754,17 +11094,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 26
+					"std": 26
 				},
 				"savingThrows": {
-					"fort": 15,
-					"ref": 13
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 13
+					}
 				},
 				"hardness": {
 					"default": 0
 				},
 				"hp": {
-					"default": 54
+					"std": 54
 				},
 				"immunities": [
 					"critical hits",
@@ -9782,7 +11126,6 @@
 					"entries": [
 						"Several thunderstones bounce down the stairs and explode. Each creature within 10 feet of the lower half of the stairs takes {@damage 6d10} sonic damage (DC 24 basic Fortitude save). Creatures that fail this save are additionally {@condition deafened} for 1 minute; creatures that critically fail this save are instead {@condition deafened} for 1 hour."
 					],
-					"type": "ability",
 					"name": "Thunderstone Explosion"
 				}
 			]
@@ -9838,7 +11181,6 @@
 						"If a PC does want to carry the water, it's 150 feet from the chamber's southern door to a pump, so it 6 actions are usually needed to reach the pumps or return. Filling a bucket requires an {@action Interact} action.",
 						"Other methods might also help control the fire, as you determine. For example, the PCs might be able to find something to barricade the fire with to control its path, or use a cloak to beat out some of the fire."
 					],
-					"type": "ability",
 					"name": "Fountain"
 				}
 			],
@@ -9876,20 +11218,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 30
+					"std": 30
 				},
 				"savingThrows": {
-					"fort": 22,
-					"ref": 14
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 14
+					}
 				},
 				"hardness": {
-					"default": 18
+					"std": 18
 				},
 				"hp": {
-					"default": 72
+					"std": 72
 				},
 				"bt": {
-					"default": 36
+					"std": 36
 				},
 				"immunities": [
 					"critical hits",
@@ -9907,7 +11253,6 @@
 					"entries": [
 						"The trap makes a sharpened fragment {@action Strike} against a random target in area A1, then rolls for initiative."
 					],
-					"type": "ability",
 					"name": "Unleash Fragments"
 				}
 			],
@@ -9952,23 +11297,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 30
+					"std": 30
 				},
 				"savingThrows": {
-					"fort": 22,
-					"ref": 14
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 14
+					}
 				},
 				"hardness": {
 					"Branch": 10
 				},
 				"hp": {
-					"Branch": 40
+					"Branch": 40,
+					"notes": {
+						"Branch": "to break each branch"
+					}
 				},
 				"bt": {
 					"Branch": 20
-				},
-				"notes": {
-					"Branch": "to break each branch."
 				},
 				"immunities": [
 					"critical hits",
@@ -9985,7 +11334,6 @@
 					"entries": [
 						"The tree of dreadful dreams can attempt up to six Attacks of Opportunity each round."
 					],
-					"type": "ability",
 					"name": "Attack of Opportunity"
 				}
 			],
@@ -10054,20 +11402,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 21
+					"std": 21
 				},
 				"savingThrows": {
-					"fort": 15,
-					"ref": 8
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 8
+					}
 				},
 				"hardness": {
-					"default": 13
+					"std": 13
 				},
 				"hp": {
-					"default": 60
+					"std": 60
 				},
 				"bt": {
-					"default": 30
+					"std": 30
 				},
 				"immunities": [
 					"critical hits",
@@ -10095,7 +11447,6 @@
 					"entries": [
 						"Burning ghosts burst from the furnace, exposing the triggering creature to the haunt's burn knowledge effect. The haunt rolls initiative."
 					],
-					"type": "ability",
 					"name": "Ghostly Assault"
 				},
 				{
@@ -10117,7 +11468,6 @@
 							}
 						}
 					],
-					"type": "ability",
 					"name": "Burn Knowledge"
 				}
 			],
@@ -10171,20 +11521,24 @@
 			},
 			"defenses": {
 				"savingThrows": {
-					"fort": 8,
-					"ref": 5
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 5
+					}
 				},
 				"hardness": {
-					"default": 6
+					"std": 6
 				},
 				"hp": {
-					"default": 4
+					"std": 4,
+					"notes": {
+						"std": "Immunities critical hits, sneak attack"
+					}
 				},
 				"bt": {
-					"default": 2
-				},
-				"notes": {
-					"default": "Immunities critical hits, sneak attack."
+					"std": 2
 				},
 				"immunities": [
 					"critical hits",
@@ -10203,13 +11557,13 @@
 					"entries": [
 						"When someone pulls the trip wire, the urn smashes against a creature in the doorway, making a shattering urn {@action Strike} against that creature, then releases a viper (page 32) into the square that contained the trap. The viper attacks any non-plant creature it detects."
 					],
-					"type": "ability",
 					"name": "Topple"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
-					"name": "Strike [one-action] shattering urn",
+					"name": "shattering urn",
 					"attack": 12,
 					"traits": [
 						"deadly 1d10"
@@ -10248,14 +11602,18 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 27
+					"std": 27
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 13
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 13
+					}
 				},
 				"hp": {
-					"default": 130
+					"std": 130
 				},
 				"immunities": [
 					"critical hits",
@@ -10277,7 +11635,6 @@
 					"entries": [
 						"The vision of {@deity Dahak|LOGM} appears in a 15-foot space adjacent to that creature and rolls initiative."
 					],
-					"type": "ability",
 					"name": "Manifest"
 				}
 			],
@@ -10327,23 +11684,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 43
+					"std": 43
 				},
 				"savingThrows": {
-					"fort": 32,
-					"ref": 32
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 32
+					}
 				},
 				"hardness": {
-					"default": 30
+					"std": 30
 				},
 				"hp": {
-					"default": 120
+					"std": 120,
+					"notes": {
+						"std": "per junction"
+					}
 				},
 				"bt": {
-					"default": 60
-				},
-				"notes": {
-					"default": "per junction."
+					"std": 60
 				},
 				"immunities": [
 					"critical hits",
@@ -10368,7 +11729,17 @@
 					"name": "Total Decapitation"
 				},
 				{
-					"type": "attack",
+					"entries": [
+						"On a critical hit, a target must succeed at a DC 39 Fortitude save or be decapitated, {@condition dying} instantly unless it can survive without a head."
+					],
+					"name": "Decapitation"
+				}
+			],
+			"reset": [
+				"The trap resets over the course of the round and can be triggered again 1 round later."
+			],
+			"attacks": [
+				{
 					"range": "Melee",
 					"name": "saw blade",
 					"attack": 40,
@@ -10383,16 +11754,7 @@
 						"slashing"
 					],
 					"noMAP": true
-				},
-				{
-					"entries": [
-						"On a critical hit, a target must succeed at a DC 39 Fortitude save or be decapitated, {@condition dying} instantly unless it can survive without a head."
-					],
-					"name": "Decapitation"
 				}
-			],
-			"reset": [
-				"The trap resets over the course of the round and can be triggered again 1 round later."
 			]
 		},
 		{
@@ -10420,23 +11782,27 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 34
+					"std": 34
 				},
 				"savingThrows": {
-					"fort": 26,
-					"ref": 18
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 18
+					}
 				},
 				"hardness": {
-					"default": 18
+					"std": 18
 				},
 				"hp": {
-					"default": 72
+					"std": 72,
+					"notes": {
+						"std": "per 5-foot patch"
+					}
 				},
 				"bt": {
-					"default": 36
-				},
-				"notes": {
-					"default": "per 5-foot patch."
+					"std": 36
 				}
 			},
 			"actions": [
@@ -10452,7 +11818,6 @@
 					"entries": [
 						"A despairing chorus of cries echoes off the crystals, working its way into the minds of all living creatures in Jewelgate Way Station, affecting them with crushing despair (7th level, DC 33). The hazard rolls initiative."
 					],
-					"type": "ability",
 					"name": "Echoing Cry"
 				}
 			],
@@ -10537,26 +11902,30 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 39
+					"std": 39
 				},
 				"savingThrows": {
-					"fort": 30,
-					"ref": 25
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 25
+					}
 				},
 				"hardness": {
 					"Tub": 25
 				},
 				"hp": {
 					"Tub": 104,
-					"default": 72
+					"std": 72,
+					"notes": {
+						"Tub": "to destroy a tub and prevent it from making any further attacks",
+						"std": "to destroy the wax on a sealed door and allow anyone to escape through the door"
+					}
 				},
 				"bt": {
 					"Tub": 52,
-					"default": 36
-				},
-				"notes": {
-					"Tub": "to destroy a tub and prevent it from making any further attacks.",
-					"default": "to destroy the wax on a sealed door and allow anyone to escape through the door."
+					"std": 36
 				},
 				"immunities": [
 					"critical hits",
@@ -10575,7 +11944,6 @@
 					"entries": [
 						"The fires beneath the vats blaze to life, magically melting the wax in the tubs. The tubs emit gouts of wax over the room's exits, sealing them shut. The trap then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Seal Room"
 				}
 			],
@@ -10616,11 +11984,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 19
+					"std": 19
 				},
 				"savingThrows": {
-					"fort": 9,
-					"ref": 9
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 9
+					}
 				}
 			},
 			"actions": [
@@ -10659,11 +12031,15 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 18
+					"std": 18
 				},
 				"savingThrows": {
-					"fort": 11,
-					"ref": 5
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 5
+					}
 				}
 			},
 			"actions": [
@@ -10680,9 +12056,10 @@
 						"The web lurker noose makes a noose {@action Strike} against the triggering creature."
 					],
 					"name": "Web Noose"
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "noose",
 					"attack": 13,
@@ -10744,20 +12121,24 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 24
+					"std": 24
 				},
 				"savingThrows": {
-					"fort": 15,
-					"ref": 13
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 13
+					}
 				},
 				"hardness": {
-					"default": 14
+					"std": 14
 				},
 				"hp": {
-					"default": 56
+					"std": 56
 				},
 				"bt": {
-					"default": 28
+					"std": 28
 				},
 				"immunities": [
 					"critical hits",
@@ -10820,7 +12201,6 @@
 					"entries": [
 						"The creature must succeed at a DC 38 Will save or be subjected to the witch-priests' curse. Whenever a cursed creature takes at least 10 piercing or slashing damage from a single attack, it also takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}. In addition, the cursed creature regains only half as many Hit Points as normal from all healing. The effect is permanent unless removed by magic."
 					],
-					"type": "ability",
 					"name": "Hex of the Bloody Thief"
 				}
 			],
@@ -10857,7 +12237,6 @@
 						"29 (expert) to placate the wrathful energies, or dispel magic (5th level; counteract DC 26)",
 						"AC 30; Fort +22, Ref +14 Door Hardness 18; Door HP 72 (BT 36); Immunities critical hits, fire, object immunities, precision damage."
 					],
-					"type": "ability",
 					"name": "Religion DC"
 				},
 				{
@@ -10869,7 +12248,6 @@
 					"entries": [
 						"The hazard targets the creature with Face of the Fatal Divine, then rolls initiative."
 					],
-					"type": "ability",
 					"name": "Expunge"
 				}
 			],
@@ -10938,7 +12316,6 @@
 							}
 						}
 					],
-					"type": "ability",
 					"name": "Ki Storm"
 				}
 			],
@@ -10969,14 +12346,18 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 27
+					"std": 27
 				},
 				"savingThrows": {
-					"fort": 17,
-					"ref": 13
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 13
+					}
 				},
 				"hp": {
-					"default": 70
+					"std": 70
 				},
 				"immunities": [
 					"critical hits",
@@ -10997,7 +12378,6 @@
 					"name": "Spore Explosion"
 				},
 				{
-					"type": "affliction",
 					"name": "Yellow Mold Spores",
 					"traits": [
 						"inhaled",
@@ -11281,9 +12661,10 @@
 					"entries": [
 						"The toy animates for a split second, biting the triggering creature with a ferocious jaws {@action Strike}."
 					]
-				},
+				}
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"activity": {
 						"number": 1,
@@ -11912,21 +13293,21 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 15
+					"std": 15
 				},
 				"fort": 11,
 				"ref": 5,
 				"hardness": {
-					"default": 9
-				},
-				"notes": {
-					"default": "(wall)"
+					"std": 9
 				},
 				"hp": {
-					"default": 30
+					"std": 30,
+					"notes": {
+						"std": "(wall)"
+					}
 				},
 				"bt": {
-					"default": 15
+					"std": 15
 				},
 				"immunities": [
 					"object immunities"
@@ -11981,7 +13362,7 @@
 			},
 			"defenses": {
 				"hardness": {
-					"default": 10
+					"std": 10
 				},
 				"hp": {
 					"per instrument": 22
@@ -12059,7 +13440,7 @@
 			},
 			"defenses": {
 				"hardness": {
-					"default": 10
+					"std": 10
 				},
 				"hp": {
 					"per instrument": 22
@@ -12157,12 +13538,12 @@
 			},
 			"defenses": {
 				"ac": {
-					"default": 40
+					"std": 40
 				},
 				"fort": 23,
 				"ref": 29,
 				"hardness": {
-					"default": 25
+					"std": 25
 				},
 				"hp": {
 					"per aurochs skull": 20

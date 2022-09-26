@@ -1,6 +1,91 @@
 {
 	"baseitem": [
 		{
+			"name": "War Lance",
+			"source": "LOKL",
+			"page": 86,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"deadly d8",
+				"jousting d6",
+				"parry",
+				"shove"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This lance appears shorter and stockier in comparison to other weapons of its type. The war lance most notably features shielding integrated into its vamplate, exchanging its reach for a sturdier base when defending against attacks or attempting to overpower an opponent."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Spear"
+			}
+		},
+		{
+			"name": "Bladed Gauntlet",
+			"source": "LOKL",
+			"page": 86,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"agile",
+				"finesse",
+				"free-hand",
+				"modular B, P, or S"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A dagger attached to a retractable mechanism is integrated in this gauntlet's dorsum, so a combatant can quickly arm themself with a blade to exploit the weak points in an enemy's armor. Switching configurations on the gauntlet reveals or retracts the contained dagger as appropriate. The dagger isn't removable, and thus can't be wielded or etched with runes separately from the gauntlet."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "modular",
+				"group": "Brawling"
+			}
+		},
+		{
+			"name": "Ogre Hook",
+			"source": "B1",
+			"page": 253,
+			"type": "Equipment",
+			"traits": [
+				"deadly d10",
+				"trip",
+				"uncommon"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Ogres are known for using immense, curved picks called ogre hooks. These uncommon weapons cost 1 gp, deal {@damage 1d10} piercing damage, have 2 Bulk, and require two hands to use. Ogre hooks are in the {@group pick} weapon group. Ogre hooks have the {@trait deadly 1d10} and {@trait trip} weapon traits."
+			],
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"group": "Pick"
+			}
+		},
+		{
 			"name": "Adze",
 			"source": "LOAG",
 			"page": 139,
@@ -106,7 +191,7 @@
 			"category": "Weapon",
 			"subCategory": "Simple",
 			"entries": [
-				"This crossbow can deliver alchemically infused bolts. The strange weapon has a metal bracket mounted on the side of the stock near the lath. As an action, you can load a single {@filter lesser alchemical bomb|items||Category=Bomb|Item=Alchemical|Type=Specific Variant|Level=[1;1]} into the bracket; this bomb must be one that deals energy damage (such as an {@item lesser acid flask||acid flask}, {@item lesser alchemist's fire||alchemist's fire}, {@item lesser bottled lightning||bottled lightning}, {@item lesser frost vial||frost vial}, or {@item lesser thunderstone||thunderstone}). The next three attacks made with the crossbow deal {@dice 1d6} damage of the bomb's damage type in addition to the crossbow's normal damage. If the second and third attacks are not all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and are not modified by any abilities that add to or modify a bomb's effect. The addition of the bracket serves to unbalance the weapon, reducing its range to 30 feet.",
+				"This crossbow can deliver alchemically infused bolts. The strange weapon has a metal bracket mounted on the side of the stock near the lath. As an action, you can load a single {@filter lesser alchemical bomb|items||Category=Bomb|Item=Alchemical|Type=Specific Variant|Level=[1;2]} into the bracket; this bomb must be one that deals energy damage (such as an {@item lesser acid flask||acid flask}, {@item lesser alchemist's fire||alchemist's fire}, {@item lesser bottled lightning||bottled lightning}, {@item lesser frost vial||frost vial}, or {@item lesser thunderstone||thunderstone}). The next three attacks made with the crossbow deal {@damage 1d6} damage of the bomb's damage type in addition to the crossbow's normal damage. If the second and third attacks are not all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and are not modified by any abilities that add to or modify a bomb's effect. The addition of the bracket serves to unbalance the weapon, reducing its range to 30 feet.",
 				"It otherwise functions as a {@item crossbow} (when determining damage, reload, and so on). Creatures use their crossbow proficiency when using the alchemical crossbow. The alchemical crossbow costs 25 gp."
 			],
 			"weaponData": {
@@ -425,6 +510,7 @@
 			"traits": [
 				"uncommon",
 				"cobbled",
+				"goblin",
 				"modular b, p, or s",
 				"fatal d12"
 			],
@@ -765,6 +851,35 @@
 				"damageType": "B",
 				"range": 20,
 				"group": "Sling"
+			}
+		},
+		{
+			"name": "Armored Coat",
+			"source": "LOKL",
+			"page": 86,
+			"equipment": true,
+			"type": "Equipment",
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"traits": [
+				"comfort",
+				"flexible"
+			],
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"A custom, lightweight mail is fitted within the lining of a coat or similar apparel, physically hiding the armor while maintaining the wearer's fashion. While not nearly as protective as heavier armors, the armored coat allows the wearer to blend in more aesthetically during civilian functions. Like other suits of armor, the armored coat is custom-fitted to an individual's body type, ensuring comfort without sacrificing its defensive capabilities."
+			],
+			"armorData": {
+				"speedPen": 0,
+				"ac": 2,
+				"dexCap": 2,
+				"str": 14,
+				"checkPen": 1,
+				"group": "Leather"
 			}
 		},
 		{
@@ -1865,7 +1980,7 @@
 			"category": "Weapon",
 			"subCategory": "Advanced",
 			"entries": [
-				"An explosive dogslicer is a sneaky, explosive weapon that often brings perverse joy to the goblins who use them. At first glance, it appears to be a triple-bladed dogslicer with an oversized guard."
+				"An explosive dogslicer is a sneaky, explosive weapon that often brings perverse joy to the goblins who use them. At first glance, it appears to be a triple-bladed {@item dogslicer} with an oversized guard."
 			],
 			"weaponData": {
 				"type": "Ranged",
@@ -1888,9 +2003,9 @@
 				"damageType": "S",
 				"traits": [
 					"backstabber",
+					"goblin",
 					"critical fusion",
-					"finesse",
-					"goblin"
+					"finesse"
 				]
 			}
 		},
@@ -3799,7 +3914,7 @@
 			}
 		},
 		{
-			"name": "Longbow",
+			"name": "Daikyu",
 			"source": "APG",
 			"page": 248,
 			"equipment": true,
@@ -3908,6 +4023,41 @@
 				"damage": "1d8",
 				"damageType": "S",
 				"group": "Sword"
+			}
+		},
+		{
+			"name": "Shobhad Longrifle",
+			"source": "SoT5",
+			"page": 78,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"rare",
+				"backstabber",
+				"concussive",
+				"fatal d12",
+				"kickback",
+				"volley"
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The shobhad longrifle is a firearm with a long, rifled barrel. Often mounted with a multi-lensed scope for targeting at an array of ranges and a chambering mechanism that can adjust the speed and penetrating power of each shot, it's the preferred weapon of many shobhad warriors. Shobhad longrifles are equipped with a built-in {@item silencer|g&g} so they make no more noise than a crossbow when fired.",
+				"For more information on firearms, see Pathfinder Guns & Gears. If you don't wish to include firearms in your Strength of Thousands campaign, simply substitute the longrifles wielded by shobhads in this adventure with {@item composite longbow||composite longbows}."
+			],
+			"weaponData": {
+				"ammunition": "Round|G&G",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 120,
+				"hands": 2,
+				"group": "Firearm|G&G"
 			}
 		},
 		{
@@ -4814,8 +4964,9 @@
 				"uncommon",
 				"repeating"
 			],
+			"level": 1,
 			"price": {
-				"amount": 10,
+				"amount": 15,
 				"coin": "gp"
 			},
 			"bulk": 1,
@@ -4827,10 +4978,10 @@
 			],
 			"weaponData": {
 				"ammunition": "Repeating Crossbow Magazine|G&G",
-				"damage": "1d6",
+				"damage": "1d8",
 				"damageType": "P",
 				"reload": 0,
-				"range": 60,
+				"range": 120,
 				"group": "Bow"
 			}
 		},
@@ -4838,6 +4989,7 @@
 			"name": "Repeating Hand Crossbow",
 			"source": "G&G",
 			"page": 63,
+			"level": 1,
 			"otherSources": {
 				"Reprinted": [
 					"AV3|73"
@@ -4872,6 +5024,7 @@
 			"name": "Repeating Heavy Crossbow",
 			"source": "G&G",
 			"page": 63,
+			"level": 1,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",

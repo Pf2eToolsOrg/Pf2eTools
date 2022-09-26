@@ -13,13 +13,12 @@
 				"std": 0
 			},
 			"languages": {
-				"languages": [],
 				"abilities": [
 					"(understands its creator)"
 				]
 			},
 			"skills": {
-				"Stealth": {
+				"stealth": {
 					"std": 8
 				}
 			},
@@ -31,42 +30,6 @@
 				"wis": 0,
 				"cha": 0
 			},
-			"ac": {
-				"std": 13
-			},
-			"savingThrows": {
-				"fort": {
-					"std": 0
-				},
-				"ref": {
-					"std": 4
-				},
-				"will": {
-					"std": 0
-				}
-			},
-			"hp": [
-				{
-					"hp": 4,
-					"abilities": null
-				}
-			],
-			"immunities": [
-				"disease",
-				"mental",
-				"non-magical attacks",
-				"paralysis",
-				"poison",
-				"precision",
-				"unconscious"
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "all damage",
-					"note": "except force or {@item ghost touch}"
-				}
-			],
 			"speed": {
 				"fly": 30
 			},
@@ -85,6 +48,43 @@
 							"An unseen servant's physical body is made of force. It can't use {@trait attack} actions. It can move and use {@action Interact} actions to do things such as fetch objects, open unstuck or unlocked doors, hold chairs, and clean. It can't pass through solid objects."
 						],
 						"name": "Force Body"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 0
+					},
+					"ref": {
+						"std": 4
+					},
+					"will": {
+						"std": 0
+					}
+				},
+				"hp": [
+					{
+						"hp": 4
+					}
+				],
+				"immunities": [
+					"disease",
+					"mental",
+					"non-magical attacks",
+					"paralysis",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "all damage",
+						"note": "except force or {@item ghost touch}"
 					}
 				]
 			}

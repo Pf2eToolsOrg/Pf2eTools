@@ -229,7 +229,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The mental damage increases by {@dice 1d4}."
+						"The mental damage increases by {@damage 1d4}."
 					]
 				}
 			}
@@ -478,7 +478,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The initial damage increases by {@dice 2d10} and the subsequent damage increases by {@dice 1d10}."
+						"The initial damage increases by {@damage 2d10} and the subsequent damage increases by {@damage 1d10}."
 					]
 				}
 			}
@@ -1144,7 +1144,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The mental damage increases by {@dice 1d8}."
+						"The mental damage increases by {@damage 1d8}."
 					]
 				}
 			}
@@ -1450,6 +1450,7 @@
 			"source": "APG",
 			"page": 237,
 			"level": 1,
+			"focus": true,
 			"traits": [
 				"uncommon",
 				"cantrip",
@@ -1506,7 +1507,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d4}."
+						"The damage increases by {@damage 1d4}."
 					]
 				}
 			}
@@ -1610,7 +1611,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -1741,7 +1742,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -1905,7 +1906,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -1990,7 +1991,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 3d6}."
+						"The damage increases by {@damage 3d6}."
 					]
 				}
 			}
@@ -2263,7 +2264,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -2616,6 +2617,7 @@
 			"source": "APG",
 			"page": 238,
 			"level": 1,
+			"focus": true,
 			"traits": [
 				"uncommon",
 				"cantrip",
@@ -2757,7 +2759,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -3081,7 +3083,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -3244,7 +3246,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The initial damage increases by {@dice 2d6} and the {@condition persistent damage} increases by {@dice 1d4}."
+						"The initial damage increases by {@damage 2d6} and the {@condition persistent damage} increases by {@dice 1d4}."
 					]
 				}
 			}
@@ -3511,7 +3513,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 2d6}."
+						"The damage increases by {@damage 2d6}."
 					]
 				}
 			}
@@ -3520,6 +3522,11 @@
 			"name": "Imprint Message",
 			"source": "APG",
 			"page": 221,
+			"otherSources": {
+				"Originally": [
+					"AoA3|74"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"divination"
@@ -3632,7 +3639,7 @@
 				"entry": "until the start of your next turn",
 				"duration": {
 					"number": 1,
-					"unit": "turn"
+					"unit": "round"
 				}
 			},
 			"entries": [
@@ -3694,7 +3701,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The cold damage increases by {@dice 1d6}."
+						"The cold damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -4283,7 +4290,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The {@action Strike} damage increases by {@dice 1d10}."
+						"The {@action Strike} damage increases by {@damage 1d10}."
 					]
 				}
 			}
@@ -4476,7 +4483,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d6}."
+						"The damage increases by {@damage 1d6}."
 					]
 				}
 			}
@@ -4485,6 +4492,7 @@
 			"name": "Nudge Fate",
 			"source": "APG",
 			"page": 239,
+			"focus": true,
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -4581,6 +4589,11 @@
 			"name": "Object Reading",
 			"source": "APG",
 			"page": 222,
+			"otherSources": {
+				"Originally": [
+					"AoA3|74"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"divination"
@@ -5646,7 +5659,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The negative damage increases by {@dice 2d4}. Oracle"
+						"The negative damage increases by {@damage 2d4}. Oracle"
 					]
 				}
 			}
@@ -5698,6 +5711,7 @@
 			"name": "Shroud Of Night",
 			"source": "APG",
 			"page": 239,
+			"focus": true,
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -6263,6 +6277,7 @@
 			"name": "Stoke The Heart",
 			"source": "APG",
 			"page": 239,
+			"focus": true,
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -6414,7 +6429,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@dice 1d10}."
+						"The damage increases by {@damage 1d10}."
 					]
 				}
 			}
@@ -7189,7 +7204,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The damage increases by {@dice 3d6}, and you can add another nonoverlapping 5-foot burst to the area. Ranger"
+						"The damage increases by {@damage 3d6}, and you can add another nonoverlapping 5-foot burst to the area. Ranger"
 					]
 				}
 			}
@@ -7198,6 +7213,7 @@
 			"name": "Wilding Word",
 			"source": "APG",
 			"page": 239,
+			"focus": true,
 			"level": 1,
 			"traits": [
 				"uncommon",

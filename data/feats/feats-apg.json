@@ -853,7 +853,8 @@
 				"Advanced Bow Training|APG",
 				"Archer's Aim|APG",
 				"Crossbow Terror|APG",
-				"Quick Shot|APG"
+				"Quick Shot|APG",
+				"Staggering Fire|LOKL"
 			]
 		},
 		{
@@ -1041,7 +1042,9 @@
 				"Angel Of Death|APG",
 				"Assassinate|APG",
 				"Expert Backstabber|APG",
-				"Surprise Attack|APG"
+				"Surprise Attack|APG",
+				"Angel of Vindication|LOKL",
+				"Eclipsed Vitality|LOKL"
 			]
 		},
 		{
@@ -1550,7 +1553,8 @@
 				"Destructive Block|APG",
 				"Disarming Block|APG",
 				"Nimble Shield Hand|APG",
-				"Shield Salvation|APG"
+				"Shield Salvation|APG",
+				"Drive Back|LOKL"
 			]
 		},
 		{
@@ -2555,6 +2559,8 @@
 			],
 			"leadsTo": [
 				"Cavalier's Banner|APG",
+				"Stalwart Standard|LOKL",
+				"Wave the Flag|LOKL",
 				"Cavalier's Charge|APG",
 				"Defend Mount|APG",
 				"Impressive Mount|APG",
@@ -2589,6 +2595,10 @@
 			"entries": [
 				"You fly the banner of your pledge from your mount, raising your allies' spirits. You and all allies within 30 feet gain a +1 circumstance bonus to Will saves and DCs against {@trait fear} effects.",
 				"If your banner is destroyed or removed, allies within 30 feet become {@condition frightened 1}."
+			],
+			"leadsTo": [
+				"Stalwart Standard|LOKL",
+				"Wave the Flag|LOKL"
 			]
 		},
 		{
@@ -3155,7 +3165,7 @@
 			],
 			"requirements": "You must be pursuing at least two leads.",
 			"entries": [
-				"Ephemeral connections between people, places, and concepts are {@condition invisible} to most, but seeing them is your stock and trade. You spend 10 minutes considering two different leads you're pursuing. You then attempt a check to investigate how connected the two are. Unless the GM determines otherwise, this is a {@skill Crafting} check if they're both items or a {@skill Society} check for other combinations of leads. If any subjects are creatures, this check usually uses the highest DC among their {@skill Deception} and Will DCs.",
+				"Ephemeral connections between people, places, and concepts are invisible to most, but seeing them is your stock and trade. You spend 10 minutes considering two different leads you're pursuing. You then attempt a check to investigate how connected the two are. Unless the GM determines otherwise, this is a {@skill Crafting} check if they're both items or a {@skill Society} check for other combinations of leads. If any subjects are creatures, this check usually uses the highest DC among their {@skill Deception} and Will DCs.",
 				"If no subjects are creatures, but at least one is an item, the DC is usually a hard DC for the level of the highest-level item. If neither case applies, the DC is usually a hard expert or hard master DC (22 or 32). Once you try to Connect the Dots between two particular leads, you can never try to Connect the Dots between those same leads again unless the GM allows it after you've learned a substantial amount of new information.",
 				{
 					"type": "successDegree",
@@ -6479,7 +6489,7 @@
 				"monk"
 			],
 			"prerequisites": "{@feat Monastic Archer Stance|APG}",
-			"requirements": "You are in Monastic Archer Stance.",
+			"requirements": "You are in {@feat Monastic Archer Stance|APG}.",
 			"entries": [
 				"You achieve a state of perfect calm before unleashing your attack, opening your mind to the minute movements of the world around you to increase your accuracy. Make a ranged weapon {@action Strike} against a target within your weapon's first range increment. This {@action Strike} ignores the target's {@condition concealed} condition and all cover."
 			]
@@ -7469,7 +7479,8 @@
 				"Endemic Herbs|APG",
 				"Expert Herbalism|APG",
 				"Fresh Ingredients|APG",
-				"Poultice Preparation|APG"
+				"Poultice Preparation|APG",
+				"Gravelands Herbalist|LOKL"
 			]
 		},
 		{
@@ -8537,7 +8548,7 @@
 			],
 			"entries": [
 				"You channel your draconic exemplar's power into a gout of energy that manifests as a 30-foot line or a 15-foot cone, dealing {@dice 1d4} damage. Each creature in the area must attempt a basic saving throw against the higher of your class DC or spell DC. You can't use this ability again for {@dice 1d4} rounds.",
-				"At 3rd level and every 2 levels thereafter, the damage increases by {@dice 1d4}. The shape of the breath, the damage type, and the saving throw match those of your draconic exemplar (see Table 1\u20131). This ability has the trait associated with the type of damage it deals."
+				"At 3rd level and every 2 levels thereafter, the damage increases by {@damage 1d4}. The shape of the breath, the damage type, and the saving throw match those of your draconic exemplar (see Table 1\u20131). This ability has the trait associated with the type of damage it deals."
 			],
 			"leadsTo": [
 				"Dragon's Breath|APG",
@@ -9274,7 +9285,8 @@
 				"Steel Yourself!|APG",
 				"Target Of Opportunity|APG",
 				"To Battle!|APG",
-				"Topple Foe|APG"
+				"Topple Foe|APG",
+				"Push Back the Dead!|LOKL"
 			]
 		},
 		{
@@ -9516,7 +9528,8 @@
 				"Doctor's Visitation|APG",
 				"Resuscitate|APG",
 				"Treat Condition|APG",
-				"Holistic Care|APG"
+				"Holistic Care|APG",
+				"Preventative Treatment|LOKL"
 			]
 		},
 		{
@@ -9695,7 +9708,7 @@
 				"You enter a specialized stance for a unique martial art centered around the use of a bow. While in this stance, the only {@action Strike|CRB|Strikes} you can make are those using {@item longbow||longbows}, {@item shortbow||shortbows}, or bows with the {@trait monk} trait. You can use {@action Flurry of Blows} with these bows. You can use your other monk feats or monk abilities that normally require unarmed attacks with these bows when attacking within half the first range increment (normally 50 feet for a longbow and 30 feet for a shortbow), so long as the feat or ability doesn't require a single, specific {@action Strike}."
 			],
 			"special": [
-				"When you select this feat, you become trained in the {@trait longbow}, {@trait shortbow}, and any simple and martial bows with the {@trait monk} trait. If you gain the expert strikes class feature, your proficiency rank for these weapons increases to expert, and if you gain the master strikes class feature, your proficiency rank for these weapons increases to master."
+				"When you select this feat, you become trained in the {@item longbow}, {@item shortbow}, and any simple and martial bows with the {@trait monk} trait. If you gain the expert strikes class feature, your proficiency rank for these weapons increases to expert, and if you gain the master strikes class feature, your proficiency rank for these weapons increases to master."
 			],
 			"leadsTo": [
 				"Focused Shot|APG",
@@ -10885,7 +10898,7 @@
 					"name": "Boarding Assault",
 					"activity": {
 						"number": 2,
-						"unit": "a"
+						"unit": "action"
 					},
 					"traits": [
 						"flourish"
@@ -11098,7 +11111,7 @@
 			"prerequisites": "{@feat Poisoner Dedication|APG}, trained in {@skill Medicine}",
 			"requirements": "Your last action was a successful melee {@action Strike} that dealt damage against a target that is afflicted by a poison, and you know which poison.",
 			"entries": [
-				"Poisons attack specific parts of the body\u2014one venom might target the lungs, another the circulatory system, while another deteriorates the nerves. You know how to take advantage of such weaknesses. You deal {@dice 1d6} damage of the required {@action Strike}'s damage type and {@damage 1d6} poison damage to the target. If you're at least 18th level, you deal {@dice 2d6} damage of each type."
+				"Poisons attack specific parts of the body\u2014one venom might target the lungs, another the circulatory system, while another deteriorates the nerves. You know how to take advantage of such weaknesses. You deal {@damage 1d6} damage of the required {@action Strike}'s damage type and {@damage 1d6} poison damage to the target. If you're at least 18th level, you deal {@damage 2d6} damage of each type."
 			]
 		},
 		{
@@ -12008,7 +12021,7 @@
 			],
 			"entries": [
 				"You have a keen sense for avoiding spurious lines of inquiry.",
-				"When you {@action Pursue a Lead|APG}, the GM tells you if the lead you chose is inconsequential. For example, if you found a splatter of gray mud on the wall, thought it was suspicious, and Pursued it as a Lead, the GM would tell you if there was no greater mystery related to it. When the GM tells you a lead is inconsequential, you can decline to Pursue the Lead, keeping any leads you were already pursuing. You still can't use {@action Pursue a Lead|APG} again for 10 minutes, as normal."
+				"When you {@action Pursue a Lead|APG}, the GM tells you if the lead you chose is inconsequential. For example, if you found a splatter of gray mud on the wall, thought it was suspicious, and {@action Pursue a Lead|APG|Pursued it as a Lead}, the GM would tell you if there was no greater mystery related to it. When the GM tells you a lead is inconsequential, you can decline to {@action Pursue a Lead|APG|Pursue the Lead}, keeping any leads you were already pursuing. You still can't use {@action Pursue a Lead|APG} again for 10 minutes, as normal."
 			]
 		},
 		{
@@ -12727,7 +12740,8 @@
 				"Scout's Charge|APG",
 				"Scout's Pounce|APG",
 				"Scout's Speed|APG",
-				"Terrain Scout|APG"
+				"Terrain Scout|APG",
+				"Eclipsed Vitality|LOKL"
 			]
 		},
 		{
@@ -13851,6 +13865,9 @@
 			],
 			"entries": [
 				"Your muse has opened your senses to the world beyond. You gain spiritsense as an imprecise sense with a range of 60 feet. Spiritsense enables you to sense the spirits of creatures, including living creatures, most non-mindless undead, and haunts within the listed range. As with your hearing and other imprecise senses, you still need to {@action Seek} to locate an {@condition undetected} creature. As spiritsense detects spiritual essence, not physical bodies, it can detect spirits projected by spells such as project image or possessing otherwise soulless objects. It can't detect soulless bodies, constructs, or objects, and like most senses, it doesn't penetrate through solid objects."
+			],
+			"leadsTo": [
+				"Shared Sight|LOKL"
 			]
 		},
 		{
@@ -14431,9 +14448,10 @@
 						"Which of the enemy's weaknesses is highest",
 						"Which of the enemy's resistances is highest",
 						"Which of the enemy's saving throws is lowest",
-						"One immunity the enemy has The GM can choose deliberately or at random, but they can't choose information that doesn't apply (such as choosing an immunity for an enemy that has no immunities). This applies only the first time you critically hit a given creature."
+						"One immunity the enemy has"
 					]
-				}
+				},
+				"The GM can choose deliberately or at random, but they can't choose information that doesn't apply (such as choosing an immunity for an enemy that has no immunities). This applies only the first time you critically hit a given creature."
 			]
 		},
 		{
@@ -15564,7 +15582,8 @@
 				}
 			],
 			"leadsTo": [
-				"Holistic Care|APG"
+				"Holistic Care|APG",
+				"Preventative Treatment|LOKL"
 			]
 		},
 		{
@@ -15662,7 +15681,7 @@
 				"swashbuckler"
 			],
 			"entries": [
-				"Your tumbling catches your foe off guard. When you {@action Tumble Through} successfully, the foe you Tumbled Through is flatfooted against the next attack you make before the end of your turn."
+				"Your tumbling catches your foe off guard. When you {@action Tumble Through} successfully, the foe you {@action Tumble Through||Tumbled Through} is {@condition flat-footed} against the next attack you make before the end of your turn."
 			]
 		},
 		{
@@ -15764,10 +15783,10 @@
 			"traits": [
 				"rogue"
 			],
-			"prerequisites": "Twin {@action Feint}",
+			"prerequisites": "{@feat Twin Feint}",
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
-				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using Twin Feint, if both your {@action Strike|CRB|Strikes} deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied 1} until the end of your next turn."
+				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using {@feat Twin Feint}, if both your {@action Strike|CRB|Strikes} deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied 1} until the end of your next turn."
 			]
 		},
 		{
@@ -16210,7 +16229,8 @@
 				"Hurling Charge|APG",
 				"Second Shield|APG",
 				"Viking Weapon Familiarity|APG",
-				"Viking Weapon Specialist|APG"
+				"Viking Weapon Specialist|APG",
+				"Viking Vindicator|LOKL"
 			]
 		},
 		{

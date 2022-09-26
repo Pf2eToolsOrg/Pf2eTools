@@ -8,6 +8,9 @@ class PageFilterOrganizations extends PageFilter {
 			itemSortFn: SortUtil.alignmentSort,
 			displayFn: Parser.alignToFull,
 		});
+		this._traitFilter = new TraitsFilter({
+			header: "Traits",
+		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			items: [],
@@ -18,6 +21,7 @@ class PageFilterOrganizations extends PageFilter {
 		it._fMisc = [];
 		it._fFollowerAlignment = [];
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
+		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
 		if (it.hasLore === true) it._fMisc.push("Has Lore")
 		if (it.images) it._fMisc.push("Has Images")
 		if (it.followerAlignment) it.followerAlignment.map(i => it._fFollowerAlignment.push(i.main))
@@ -28,6 +32,7 @@ class PageFilterOrganizations extends PageFilter {
 
 		this._sourceFilter.addItem(it._fSources);
 		this._AlignmentFilter.addItem(it._fFollowerAlignment);
+		this._traitFilter.addItem(it._fTraits)
 		this._miscFilter.addItem(it._fMisc);
 	}
 
@@ -35,6 +40,7 @@ class PageFilterOrganizations extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._AlignmentFilter,
+			this._traitFilter,
 			this._miscFilter,
 		];
 	}
@@ -44,6 +50,7 @@ class PageFilterOrganizations extends PageFilter {
 			values,
 			it._fSources,
 			it._fFollowerAlignment,
+			it._fTraits,
 			it._fMisc,
 		)
 	}

@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.6.4"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.0"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -1597,6 +1597,7 @@ ContextUtil = {
 
 		this._userData = null;
 
+		// TODO: Sort the spell levels properly (1, 2, 3... 10; not 1, 10, 2, 3...)
 		const $elesAction = this._actions.map(it => {
 			if (it == null) return $(`<div class="my-1 w-100 ui-ctx__divider"></div>`);
 
@@ -3129,7 +3130,7 @@ DataUtil = {
 			}
 			variant.type = generic.type || "Item";
 			variant.generic = "V";
-			variant.genericItem = `${generic.name} (generic)${generic.source.toLowerCase() !== "crb" ? `|${generic.source}` : "||"}${generic.name}`;
+			variant.genericItem = `${generic.name} (generic)|${generic.source.toLowerCase() !== "crb" ? `${generic.source}` : ""}|${generic.name}`;
 			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
 			delete variant.variants;
 			return variant;

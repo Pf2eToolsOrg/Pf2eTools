@@ -125,15 +125,23 @@ class ItemsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(Renderer.item.getRenderedString(item));
 		}
-		const buildFluffTab = async () => {
+		async function buildFluffTab () {
 			const pGetFluff = async () => {
-				const item = this._dataList[Hist.lastLoadedId];
 				const fluff = await Renderer.item.pGetFluff(item);
 				return fluff ? fluff.entries || [] : [];
 			}
-			const fluffEntries = await pGetFluff();
+			$content.append(Renderer.getRenderedLore({lore: await pGetFluff()}))
+		}
+
+		const buildImageTab = async () => {
+			const pGetImages = async () => {
+				const item = this._dataList[Hist.lastLoadedId];
+				const fluff = await Renderer.item.pGetFluff(item);
+				return fluff ? fluff.images || [] : [];
+			}
+			const fluffImages = await pGetImages();
 			const renderStack = [];
-			Renderer.get().recursiveRender(fluffEntries, renderStack);
+			Renderer.get().recursiveRender(fluffImages.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`), renderStack);
 			$content.append(renderStack.join(""));
 		}
 
@@ -147,8 +155,14 @@ class ItemsPage extends ListPage {
 			() => { },
 			buildFluffTab,
 		);
+		const imageTab = Renderer.utils.tabButton(
+			"Images",
+			() => {},
+			buildImageTab,
+		);
 		const tabs = [statTab];
 		if (item.hasFluff) tabs.push(fluffTab);
+		if (item.hasImages) tabs.push(imageTab);
 
 		Renderer.utils.bindTabButtons(...tabs);
 

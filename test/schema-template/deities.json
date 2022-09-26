@@ -38,26 +38,27 @@
 						]
 					},
 					"alignment": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/alignmentTraits"
-						},
-						"minItems": 1
-					},
-					"followerAlignment": {
 						"type": "object",
 						"properties": {
-							"entry": {
-								"type": "string"
-							},
 							"alignment": {
 								"type": "array",
 								"items": {
 									"$ref": "utils.json#/definitions/alignmentTraits"
 								},
 								"minItems": 1
+							},
+							"followerAlignment": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/alignmentTraits"
+								},
+								"minItems": 1
+							},
+							"entry": {
+								"type": "string"
 							}
-						}
+						},
+						"additionalProperties": false
 					},
 					"category": {
 						"type": "string",
@@ -86,7 +87,23 @@
 							"Vudrani Gods"
 						]
 					},
-					"info": {
+					"pantheonMembers": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"pattern": "^[^\\|]+\\|[^\\|]+$",
+							"description": "A deity identifier in the form of `Name|Source`, e.g. `Abadar|CRB`"
+						},
+						"minItems": 2
+					},
+					"areasOfConcern": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"entries": {
 						"type": "array",
 						"items": {
 							"$ref": "entry.json"
@@ -107,260 +124,277 @@
 						},
 						"minItems": 1
 					},
-					"devoteeBenefits": {
+					"font": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"divineAbility": {
 						"type": "object",
 						"properties": {
-							"font": {
+							"abilities": {
 								"type": "array",
 								"items": {
-									"type": "string"
+									"$ref": "utils.json#/definitions/ability"
 								},
 								"minItems": 1
 							},
-							"ability": {
-								"type": "object",
-								"properties": {
-									"abilities": {
-										"type": "array",
-										"items": {
-											"$ref": "utils.json#/definitions/abilityAbbv"
-										},
-										"minItems": 1
-									},
-									"entry": {
-										"type": "string"
-									}
-								},
-								"additionalProperties": false,
-								"required": [
-									"abilities"
-								]
-							},
-							"skill": {
+							"entry": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"abilities"
+						]
+					},
+					"divineSkill": {
+						"type": "object",
+						"properties": {
+							"skills": {
 								"type": "array",
 								"items": {
 									"$ref": "utils.json#/definitions/skillName"
 								},
 								"minItems": 1
 							},
-							"domains": {
+							"entry": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"skills"
+						]
+					},
+					"domains": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/domains"
+						},
+						"minItems": 1
+					},
+					"alternateDomains": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/domains"
+						},
+						"minItems": 1
+					},
+					"spells": {
+						"type": "object",
+						"patternProperties": {
+							"^(10|[1-9])$": {
 								"type": "array",
 								"items": {
-									"$ref": "utils.json#/definitions/domains"
+									"type": "string"
 								},
 								"minItems": 1
-							},
-							"alternateDomains": {
-								"type": "array",
-								"items": {
-									"$ref": "utils.json#/definitions/domains"
-								},
-								"minItems": 1
-							},
-							"spells": {
-								"type": "object",
-								"patternProperties": {
-									"^(10|[1-9])$": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										},
-										"minItems": 1
-									}
-								},
-								"additionalProperties": false,
-								"minProperties": 1
-							},
-							"weapon": {
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"favoredWeapon": {
+						"type": "object",
+						"properties": {
+							"weapons": {
 								"type": "array",
 								"items": {
 									"type": "string"
 								},
 								"minItems": 1
 							},
-							"avatar": {
-								"type": "object",
-								"properties": {
-									"preface": {
-										"type": "string",
-										"not": {
-											"enum": [
-												""
-											]
+							"entry": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"weapons"
+						]
+					},
+					"avatar": {
+						"type": "object",
+						"properties": {
+							"preface": {
+								"type": "string",
+								"not": {
+									"enum": [
+										""
+									]
+								}
+							},
+							"speed": {
+								"$ref": "utils.json#/definitions/speed"
+							},
+							"immune": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/conditions"
+								},
+								"minItems": 1
+							},
+							"shield": {
+								"type": "integer",
+								"enum": [
+									15
+								]
+							},
+							"ignoreTerrain": {
+								"type": "boolean",
+								"enum": [
+									true
+								]
+							},
+							"airWalk": {
+								"type": "boolean",
+								"enum": [
+									true
+								]
+							},
+							"melee": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"traits": {
+											"type": "array",
+											"items": {
+												"$ref": "utils.json#/definitions/anyTrait"
+											},
+											"minItems": 1
+										},
+										"damage": {
+											"type": "string"
+										},
+										"damageType": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/damageType"
+										},
+										"damage2": {
+											"type": "string"
+										},
+										"preciousMetal": {
+											"type": "array",
+											"minItems": 1
+										},
+										"traitNote": {
+											"type": "string"
+										},
+										"note": {
+											"type": "string"
+										},
+										"damageType2": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/damageType"
 										}
 									},
-									"speed": {
-										"$ref": "utils.json#/definitions/speed"
+									"additionalProperties": false,
+									"minProperties": 1
+								},
+								"properties": {
+									"name": {
+										"type": "string"
 									},
-									"immune": {
+									"traits": {
 										"type": "array",
 										"items": {
-											"$ref": "utils.json#/definitions/conditions"
+											"$ref": "utils.json#/definitions/anyTrait"
 										},
 										"minItems": 1
 									},
-									"shield": {
-										"type": "integer",
-										"enum": [
-											15
-										]
+									"damage": {
+										"type": "string"
 									},
-									"ignoreTerrain": {
-										"type": "boolean",
-										"enum": [
-											true
-										]
+									"damageType": {
+										"type": "string",
+										"$ref": "utils.json#/definitions/damageType"
 									},
-									"airWalk": {
-										"type": "boolean",
-										"enum": [
-											true
-										]
+									"damage2": {
+										"type": "string"
 									},
-									"melee": {
+									"preciousMetal": {
 										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"name": {
-													"type": "string"
-												},
-												"traits": {
-													"type": "array",
-													"items": {
-														"$ref": "utils.json#/definitions/anyTrait"
-													},
-													"minItems": 1
-												},
-												"damage": {
-													"type": "string"
-												},
-												"damageType": {
-													"type": "string",
-													"$ref": "utils.json#/definitions/damageType"
-												},
-												"damage2": {
-													"type": "string"
-												},
-												"preciousMetal": {
-													"type": "array",
-													"minItems": 1
-												},
-												"traitNote": {
-													"type": "string"
-												},
-												"note": {
-													"type": "string"
-												},
-												"damageType2": {
-													"type": "string",
-													"$ref": "utils.json#/definitions/damageType"
-												}
-											},
-											"additionalProperties": false,
-											"minProperties": 1
-										},
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"traits": {
-												"type": "array",
-												"items": {
-													"$ref": "utils.json#/definitions/anyTrait"
-												},
-												"minItems": 1
-											},
-											"damage": {
-												"type": "string"
-											},
-											"damageType": {
-												"type": "string",
-												"$ref": "utils.json#/definitions/damageType"
-											},
-											"damage2": {
-												"type": "string"
-											},
-											"preciousMetal": {
-												"type": "array",
-												"minItems": 1
-											},
-											"traitNote": {
-												"type": "string"
-											},
-											"note": {
-												"type": "string"
-											},
-											"damageType2": {
-												"type": "string",
-												"$ref": "utils.json#/definitions/damageType"
-											}
-										},
-										"additionalProperties": false,
-										"minProperties": 1
+										"minItems": 1
 									},
-									"ranged": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"additionalProperties": false,
-											"minProperties": 1,
-											"properties": {
-												"name": {
-													"type": "string"
-												},
-												"note": {
-													"type": "string"
-												},
-												"traitNote": {
-													"type": "string"
-												},
-												"range": {
-													"type": "integer",
-													"exclusiveMinimum": 0,
-													"examples": [
-														120
-													]
-												},
-												"rangedIncrement": {
-													"type": "boolean",
-													"enum": [
-														true
-													]
-												},
-												"reload": {
-													"type": "integer",
-													"exclusiveMinimum": 0
-												},
-												"traits": {
-													"type": "array",
-													"items": {
-														"$ref": "utils.json#/definitions/anyTrait"
-													},
-													"minItems": 1
-												},
-												"preciousMetal": {
-													"type": "array",
-													"minItems": 1
-												},
-												"damage": {
-													"type": "string"
-												},
-												"damageType": {
-													"type": "string",
-													"$ref": "utils.json#/definitions/damageType"
-												},
-												"damage2": {
-													"type": "string"
-												},
-												"damageType2": {
-													"type": "string",
-													"$ref": "utils.json#/definitions/damageType"
-												}
-											}
+									"traitNote": {
+										"type": "string"
+									},
+									"note": {
+										"type": "string"
+									},
+									"damageType2": {
+										"type": "string",
+										"$ref": "utils.json#/definitions/damageType"
+									}
+								},
+								"additionalProperties": false,
+								"minProperties": 1
+							},
+							"ranged": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"additionalProperties": false,
+									"minProperties": 1,
+									"properties": {
+										"name": {
+											"type": "string"
 										},
-										"additionalProperties": false,
-										"minProperties": 1
+										"note": {
+											"type": "string"
+										},
+										"traitNote": {
+											"type": "string"
+										},
+										"range": {
+											"type": "integer",
+											"exclusiveMinimum": 0,
+											"examples": [
+												120
+											]
+										},
+										"rangedIncrement": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										},
+										"reload": {
+											"type": "integer",
+											"exclusiveMinimum": 0
+										},
+										"traits": {
+											"type": "array",
+											"items": {
+												"$ref": "utils.json#/definitions/anyTrait"
+											},
+											"minItems": 1
+										},
+										"preciousMetal": {
+											"type": "array",
+											"minItems": 1
+										},
+										"damage": {
+											"type": "string"
+										},
+										"damageType": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/damageType"
+										},
+										"damage2": {
+											"type": "string"
+										},
+										"damageType2": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/damageType"
+										}
 									}
 								},
 								"additionalProperties": false,

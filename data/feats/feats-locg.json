@@ -101,7 +101,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "{@feat Knight Vigilant|LOCG}, {@feat Shield Block}, master in {@skill Religion}",
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, {@feat Shield Block}, master in {@skill Religion}",
 			"requirements": "You are wielding a shield.",
 			"entries": [
 				"Inspired by the tale of Arnisant, you transform your shield into a magic ward. Until the beginning of your next turn, you gain the following reaction:",
@@ -908,7 +908,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "{@feat Knight Vigilant|LOCG}, expert in medium or heavy armor",
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, expert in medium or heavy armor",
 			"trigger": "An undead hits you with an unarmed attack.",
 			"requirements": "You are wearing medium or heavy armor in which you have expert proficiency.",
 			"entries": [
@@ -1972,7 +1972,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "{@feat Knight Vigilant|LOCG}; expert in light armor, medium armor, or unarmored defense; trained in heavy armor",
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}; expert in light armor, medium armor, or unarmored defense; trained in heavy armor",
 			"entries": [
 				"As a knight in shining armor, you train daily in the heaviest armor, expanding your expertise to heavy armor. You gain expert proficiency in heavy armor.",
 				"Knight Reclaimant Knights reclaimant spend much of their time amid the horrors of the Gravelands, rescuing civilians that remain and striking back against the Whispering Tyrant's agents. Accomplishing these goals requires the adoption of subtle tactics, with a focus on stealth and survival."
@@ -2005,11 +2005,19 @@
 				"Invoke The Crimson Oath|LOCG",
 				"Reaper Of Repose|LOCG",
 				"Survivor Of Desolation|LOCG",
-				"Shall Not Falter, Shall Not Rout|LOL"
+				"Shepherd of Desolation|LOKL",
+				"Shall Not Falter, Shall Not Rout|LOL",
+				"Ashen Veil|LOKL",
+				"Voice Cold as Death|LOKL",
+				"Hilt Hammer|LOKL",
+				"For Love, for Lightning|LOKL",
+				"Reclaimant Plea|LOKL",
+				"Crimson Oath Devotion|LOKL",
+				"The Tyrant Falls!|LOKL"
 			]
 		},
 		{
-			"name": "Knight Vigilant",
+			"name": "Knight Vigilant Dedication",
 			"source": "LOCG",
 			"page": 94,
 			"level": 6,
@@ -2034,7 +2042,19 @@
 				"Aegis Of Arnisant|LOCG",
 				"Endure Death's Touch|LOCG",
 				"Knight In Shining Armor|LOCG",
-				"Unshakable Idealism|LOCG"
+				"Unshakable Idealism|LOCG",
+				"Divine Healing|LOKL",
+				"Interrupt Charge|LOKL",
+				"Phalanx Formation|LOKL",
+				"Emissary of Peace|LOKL",
+				"Instant Armor|LOKL",
+				"Lead the Way|LOKL",
+				"Guarded Advance|LOKL",
+				"Vigilant Benediction|LOKL",
+				"Instinctual Interception|LOKL",
+				"Keep Up the Good Fight|LOKL",
+				"Tower Shield Mastery|LOKL",
+				"Stalwart Standard|LOKL"
 			]
 		},
 		{
@@ -3209,6 +3229,9 @@
 			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}",
 			"entries": [
 				"You gain a +2 circumstance bonus to saving throws against unnatural weather events or environmental hazards occurring in blighted or otherwise unnaturally marred regions. If you roll a success on a saving throw against such an effect, you get a critical success instead; if you roll a critical failure, you get a failure instead. This does not apply to unnatural events created or directed by active effects, such as spells that create anomalous weather or hazardous areas."
+			],
+			"leadsTo": [
+				"Shepherd of Desolation|LOKL"
 			]
 		},
 		{
@@ -3578,7 +3601,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "{@feat Knight Vigilant|LOCG}, expert in Will saves",
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, expert in Will saves",
 			"entries": [
 				"Your faith and hope can't be shaken, and you won't flee when lives are at stake. You gain a +1 circumstance bonus on saves against {@trait fear} effects and {@trait emotion} effects that inflict despair. When you would gain the {@condition fleeing} condition, you can choose to stand your ground and be {@condition stunned} for the effect's duration as well, preventing you from running and allowing you to re-enter the fight more quickly when the effect ends."
 			]

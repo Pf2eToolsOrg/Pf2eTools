@@ -19,6 +19,11 @@ class PageFilterDeities extends PageFilter {
 			displayFn: Parser.alignToFull,
 		});
 		this._fontFilter = new Filter({header: "Divine Font", displayFn: StrUtil.toTitleCase});
+		this._abilityFilter = new Filter({
+			header: "Divine Ability",
+			items: ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"],
+			itemSortFn: null,
+		});
 		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});
 		this._weaponFilter = new Filter({header: "Favored Weapon", displayFn: StrUtil.toTitleCase});
 		this._domainFilter = new Filter({header: "Domain", displayFn: StrUtil.toTitleCase});
@@ -39,7 +44,7 @@ class PageFilterDeities extends PageFilter {
 		});
 		this._benefitsFilter = new MultiFilter({
 			header: "Devotee Benefits",
-			filters: [this._fontFilter, this._skillFilter, this._weaponFilter, this._domainFilter],
+			filters: [this._fontFilter, this._abilityFilter, this._skillFilter, this._weaponFilter, this._domainFilter],
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -59,17 +64,15 @@ class PageFilterDeities extends PageFilter {
 		if (g.hasLore === true) g._fMisc.push("Has Lore")
 		if (g.images) g._fMisc.push("Has Images")
 
-		if (g.followerAlignment) g._fFollowerAlignment = g.followerAlignment.alignment;
-		if (g.devoteeBenefits) {
-			if (g.devoteeBenefits.font) g._fFont = g.devoteeBenefits.font;
-			if (g.devoteeBenefits.skill) g._fSkill = g.devoteeBenefits.skill;
-			if (g.devoteeBenefits.weapon) g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
-			if (g.devoteeBenefits.domains) g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
-			if (g.devoteeBenefits.spells) g._fSpells = [...Array(11).keys()].map(l => (g.devoteeBenefits.spells[l] || []).map(s => s.split("|")[0]));
-			if (g.devoteeBenefits.avatar) g._fMisc.push("Has Battle Form")
-		} else {
-			g._fDomains = [VeCt.STR_NONE];
-		}
+		if (g.alignment?.followerAlignment) g._fFollowerAlignment = g.alignment.followerAlignment;
+		if (g.font) g._fFont = g.font;
+		if (g.divineAbility) g._fAbility = g.divineAbility.abilities.map(a => a.toTitleCase());
+		if (g.divineSkill) g._fSkill = g.divineSkill.skills;
+		if (g.favoredWeapon) g._fWeapon = g.favoredWeapon.weapons.map(w => w.split("|")[0]);
+		if (g.domains) g._fDomains = g.domains || [VeCt.STR_NONE];
+		if (g.alternateDomains) g._fDomains = g._fDomains.concat(g.alternateDomains);
+		if (g.spells) g._fSpells = [...Array(11).keys()].map(l => (g.spells[l] || []).map(s => s.split("|")[0]));
+		if (g.avatar) g._fMisc.push("Has Battle Form")
 		if (g.domains) g._fDomains.sort(SortUtil.ascSort);
 	}
 
@@ -78,10 +81,11 @@ class PageFilterDeities extends PageFilter {
 
 		this._sourceFilter.addItem(g._fSources);
 		if (g._fFont) this._fontFilter.addItem(g._fFont);
+		if (g._fAbility) this._abilityFilter.addItem(g._fAbility);
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
-		if (g.alignment) this._alignmentFilter.addItem(g.alignment);
-		if (g.followerAlignment) this._followerAlignmentFilter.addItem(g.followerAlignment.alignment);
+		if (g.alignment?.alignment) this._alignmentFilter.addItem(g.alignment.alignment);
+		if (g.alignment?.followerAlignment) this._followerAlignmentFilter.addItem(g.alignment.followerAlignment);
 		this._domainFilter.addItem(g._fDomains);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
@@ -120,11 +124,12 @@ class PageFilterDeities extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			g._fSources,
-			g.alignment,
+			g.alignment?.alignment,
 			g._fFollowerAlignment,
 			g.category,
 			[
 				g._fFont,
+				g._fAbility,
 				g._fSkill,
 				g._fWeapon,
 				g._fDomains,

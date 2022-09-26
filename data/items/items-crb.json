@@ -605,7 +605,6 @@
 					"page": 121,
 					"entries": [
 						"This aeon stone allows you to cast 2nd-level {@spell augury} as a divine innate spell once per day.",
-						"Secrets of the Pathfinder Society Whether stored in the vaults of the Grand Lodge, {@condition hidden} in the minds of various agents, or lost to time from the {@skill Society}'s ancient past, the Pathfinder Society is rife with secrets. Some take the form of unusual magic items; others are spells or special techniques. Agents who discover and use these secrets gain an edge that can help them as they undertake {@skill Society} missions. All characters affiliated with the Pathfinder Society have access to the uncommon options in this section.",
 						"The resonant power causes the {@spell augury} spell from the aeon stone to always succeed at the DC {@flatDC 6} flat check to give an answer other than \"nothing.\""
 					]
 				},
@@ -3247,12 +3246,13 @@
 						"entry": "{@as R}"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
 						"freq": 1
 					},
+					"trigger": "A ranged weapon attack hits you but doesn't critically hit",
 					"requirements": "You are aware of the attack and not {@condition flat-footed}",
 					"entries": [
 						"The bracers send the missile off-course. You gain a +2 circumstance bonus to AC against the triggering attack. If this would cause the attack to be a failure, the attack misses you."
@@ -8424,7 +8424,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -8535,6 +8535,32 @@
 					"entries": [
 						"This feather transforms into a +1 striking dancing whip when activated. The whip immediately jumps from your grasp and proceeds to attack your enemies until 1 minute has passed or it fails its flat check for dancing, at which point it vanishes.",
 						"If the whip's target isn't {@condition prone}, the whip uses its actions to attempt to {@action Trip} that creature instead of making a {@action Strike}. The whip's total attack modifier for Striking or Tripping is +18 instead of the normal bonus for a dancing weapon."
+					]
+				},
+				{
+					"variantType": "balloon",
+					"level": 6,
+					"source": "PFUM",
+					"page": 0,
+					"price": {
+						"coin": "gp",
+						"amount": 50
+					},
+					"entries": [
+						"This feather can't be activated underwater. When activated, the feather transforms into a balloon of waxed cloth that is 3 feet in diameter and filled with hot air. Handles on the bottom of the balloon allow up to two creatures sized Medium or smaller to hold onto the balloon. One round after being activated, the balloon rises up into the air at a speed of 20 feet per round. After rising for 3 rounds, the balloon floats in place for two rounds as the air inside cools, then descends at a speed of 20 feet per round. When the balloon reaches its original elevation, the balloon deflates."
+					]
+				},
+				{
+					"variantType": "puddle",
+					"level": 3,
+					"source": "PFUM",
+					"page": 0,
+					"price": {
+						"coin": "gp",
+						"amount": 8
+					},
+					"entries": [
+						"When activated, the feather transforms into two gallons of fresh, clear water. If no one drinks it, the water evaporates after 1 day."
 					]
 				}
 			]
@@ -20784,7 +20810,7 @@
 				"Weapon"
 			],
 			"entries": [
-				"A striking rune stores destructive magic in the weapon, increasing the weapon damage dice it deals to two instead of one. For instance, a +1 striking dagger would deal {@dice 2d4} damage instead of {@dice 1d4} damage.",
+				"A striking rune stores destructive magic in the weapon, increasing the weapon damage dice it deals to two instead of one. For instance, a +1 striking dagger would deal {@damage 2d4} damage instead of {@dice 1d4} damage.",
 				"You can upgrade the striking rune already etched on a weapon to a stronger version, increasing the values of the existing rune to those of the new rune. You must have the formula of the stronger rune to do so, and the Price of the upgrade is the difference between the two runes' Prices."
 			],
 			"generic": "G",

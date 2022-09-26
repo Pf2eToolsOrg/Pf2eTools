@@ -256,7 +256,7 @@
 			],
 			"entries": [
 				"You have full control over your shape and can transform into your inherent animal.",
-				"You can use {@action Change Shape (Beastkin)|LOAG} to enter an animal shape. When you gain this feat, choose either {@spell aerial form}, {@spell animal form}, {@spell dinosaur form} or {@spell insect form}; after you choose a form, you can't change the form. While in animal shape, you gain the effects of a 5th-level casting of your chosen form spell, except you always transform into an animal matching your inherent animal and can use your humanoid form's AC if it's higher than what the animal form grants. If your inherent animal isn't among the animals listed in the form, you default to the statistics and abilities of the bird battle form, cat battle form, deinonychus battle form or ant battle form for {@spell aerial form}, {@spell animal form}, {@spell dinosaur form}, and {@spell insect form}, respectively (at the GM's discretion, you instead default to a different form that is closest to your inherent animal). You can remain in animal shape indefinitely and can use {@action Change Shape (Beastkin)|LOAG} to return to your humanoid or hybrid shape at any time.",
+				"You can use {@action Change Shape (Beastkin)|LOAG|Change Shape} to enter an animal shape. When you gain this feat, choose either {@spell aerial form}, {@spell animal form}, {@spell dinosaur form} or {@spell insect form}; after you choose a form, you can't change the form. While in animal shape, you gain the effects of a 5th-level casting of your chosen form spell, except you always transform into an animal matching your inherent animal and can use your humanoid form's AC if it's higher than what the animal form grants. If your inherent animal isn't among the animals listed in the form, you default to the statistics and abilities of the bird battle form, cat battle form, deinonychus battle form or ant battle form for {@spell aerial form}, {@spell animal form}, {@spell dinosaur form}, and {@spell insect form}, respectively (at the GM's discretion, you instead default to a different form that is closest to your inherent animal). You can remain in animal shape indefinitely and can use {@action Change Shape (Beastkin)|LOAG|Change Shape} to return to your humanoid or hybrid shape at any time.",
 				"If you have the {@feat Critter Shape|LOAG} feat, you can choose to gain the effects of a 4th-level {@spell pest form}, can remain in critter shape indefinitely, and can return to your critter shape at any time after leaving the shape, just as you can with Animal Shape."
 			]
 		},
@@ -1041,7 +1041,7 @@
 				"beastkin"
 			],
 			"entries": [
-				"Once per hour, you can use {@action Change Shape (Beastkin)|LOAG} to enter a critter shape. While in critter shape, you gain the effect of a 1st-level {@spell pest form}, except you can only transform into an animal matching your inherent animal. You can remain in critter shape for up to 10 minutes, after which you transform back into your hybrid shape and can't enter your critter shape again for 1 hour. You can instead use {@action Change Shape (Beastkin)|LOAG} to return to your humanoid or hybrid shape at any time during the duration of Critter Shape. If your inherent animal is normally larger than Tiny, you transform into a smaller, younger version of the animal, such as a Tiny bear cub. If your inherent animal has a fly Speed, you can turn into that animal (unlike normal for 1st-level {@spell pest form}), but you still don't gain a fly Speed."
+				"Once per hour, you can use {@action Change Shape (Beastkin)|LOAG|Change Shape} to enter a critter shape. While in critter shape, you gain the effect of a 1st-level {@spell pest form}, except you can only transform into an animal matching your inherent animal. You can remain in critter shape for up to 10 minutes, after which you transform back into your hybrid shape and can't enter your critter shape again for 1 hour. You can instead use {@action Change Shape (Beastkin)|LOAG|Change Shape} to return to your humanoid or hybrid shape at any time during the duration of Critter Shape. If your inherent animal is normally larger than Tiny, you transform into a smaller, younger version of the animal, such as a Tiny bear cub. If your inherent animal has a fly Speed, you can turn into that animal (unlike normal for 1st-level {@spell pest form}), but you still don't gain a fly Speed."
 			]
 		},
 		{
@@ -2495,7 +2495,7 @@
 				"kitsune"
 			],
 			"entries": [
-				"When you {@action Change Shape (Beastkin)|LOAG}, you retain elements of your kitsune form, allowing you to speak in a fox form, use kitsune unarmed attacks in a tailless form, or gain a tail in your tailless form to use abilities that require one. You can {@action Change Shape (Beastkin)|LOAG} to alter the details of your hybrid form without fully changing into your true form or your alternate form. While in hybrid form, your foxlike features make it obvious that you aren't a normal humanoid."
+				"When you {@action Change Shape (Kitsune)|LOAG|Change Shape}, you retain elements of your kitsune form, allowing you to speak in a fox form, use kitsune unarmed attacks in a tailless form, or gain a tail in your tailless form to use abilities that require one. You can {@action Change Shape (Kitsune)|LOAG|Change Shape} to alter the details of your hybrid form without fully changing into your true form or your alternate form. While in hybrid form, your foxlike features make it obvious that you aren't a normal humanoid."
 			]
 		},
 		{
@@ -2756,7 +2756,7 @@
 				"freq": 1
 			},
 			"entries": [
-				"You summon an aura of shimmering heat, flurrying snow, crashing waves, or swirling wind and lightning. For 1 minute, you gain concealment against creatures more than 5 feet away, and any creature that ends its turn within 5 feet of you suffers {@dice 1d12} damage (basic Reflex save using your class DC or spell DC, whichever is higher). At 13th and 17th level, this damage increases by {@dice 1d12}. A veil may changeling deals fire damage, a snow may changeling deals cold damage, a brine may changeling deals bludgeoning damage and the effect gains the {@trait water} trait, and a virga may changeling deals electricity damage."
+				"You summon an aura of shimmering heat, flurrying snow, crashing waves, or swirling wind and lightning. For 1 minute, you gain concealment against creatures more than 5 feet away, and any creature that ends its turn within 5 feet of you suffers {@dice 1d12} damage (basic Reflex save using your class DC or spell DC, whichever is higher). At 13th and 17th level, this damage increases by {@damage 1d12}. A veil may changeling deals fire damage, a snow may changeling deals cold damage, a brine may changeling deals bludgeoning damage and the effect gains the {@trait water} trait, and a virga may changeling deals electricity damage."
 			],
 			"leadsTo": [
 				"Stormy Heart|LOAG"
@@ -3390,7 +3390,7 @@
 				"kitsune"
 			],
 			"entries": [
-				"With a bit of self-discovery, you find a new form. You gain the alternate form of a kitsune heritage other than your own, adding it to the options for your {@action Change Shape (Beastkin)|LOAG}."
+				"With a bit of self-discovery, you find a new form. You gain the alternate form of a kitsune heritage other than your own, adding it to the options for your {@action Change Shape (Kitsune)|LOAG|Change Shape}."
 			]
 		},
 		{
@@ -3825,7 +3825,7 @@
 			"trigger": "You roll initiative.",
 			"entries": [
 				"Your instincts kick in and you take on an aggressive stance.",
-				"You use {@action Change Shape (Beastkin)|LOAG} to enter your hybrid form or a new form granted by a beastkin feat."
+				"You use {@action Change Shape (Beastkin)|LOAG|Change Shape} to enter your hybrid form or a new form granted by a beastkin feat."
 			]
 		},
 		{

@@ -76,7 +76,9 @@
 				"QFF2",
 				"QFF3",
 				"TiO",
-				"BotD"
+				"BotD",
+				"DA",
+				"LOKL"
 			]
 		},
 		"alignmentTraits": {
@@ -290,7 +292,7 @@
 		"otherSources": {
 			"type": "object",
 			"patternProperties": {
-				"^(Reprinted|Expanded)$": {
+				"^(Reprinted|Expanded|Originally)$": {
 					"type": "array",
 					"items": {
 						"type": "string",
@@ -642,29 +644,7 @@
 				"maximum": 30
 			}
 		},
-		"savingThrows": {
-			"type": "object",
-			"propertyNames": {
-				"enum": [
-					"fort",
-					"ref",
-					"will"
-				]
-			},
-			"additionalProperties": {
-				"type": "object",
-				"properties": {
-					"default": {
-						"type": "integer",
-						"minimum": 0
-					}
-				},
-				"additionalProperties": false,
-				"minProperties": 1
-			},
-			"minProperties": 1
-		},
-		"anyTrait": {
+		"anyTraitOld": {
 			"type": "string",
 			"description": "Any Trait in the game.",
 			"anyOf": [
@@ -767,13 +747,20 @@
 						"plant",
 						"fungus",
 						"olfactory",
+						"tethered",
 						"inhaled",
 						"incarnate",
 						"shove",
 						"alchemical",
+						"mutant",
+						"serpentfolk",
 						"death",
+						"mindless",
 						"light",
 						"emotion",
+						"catalyst",
+						"companion",
+						"ingested",
 						"fear",
 						"charm",
 						"summoned",
@@ -869,6 +856,9 @@
 					]
 				}
 			]
+		},
+		"anyTrait": {
+			"$ref": "./_generated/traits.json#/definitions/anyTrait"
 		},
 		"loreSubjects": {
 			"type": "string",
@@ -979,6 +969,9 @@
 			]
 		},
 		"languages": {
+			"$ref": "./_generated/languages.json#/definitions/language"
+		},
+		"languagesOld": {
 			"type": "string",
 			"enum": [
 				"Common",
@@ -989,7 +982,10 @@
 				"Goblin",
 				"Undercommon",
 				"Draconic",
-				"Mwangi"
+				"Mwangi",
+				"Aklo",
+				"Taldane",
+				"Tien"
 			]
 		},
 		"skillName": {
@@ -1060,6 +1056,8 @@
 				"summoner|SoM",
 				"swashbuckler|APG",
 				"witch|APG",
+				"psychic|DA",
+				"thaumaturge|DA",
 				"wizard"
 			]
 		},
@@ -1073,6 +1071,8 @@
 				"cleric",
 				"druid",
 				"fighter",
+				"psychic",
+				"thaumaturge",
 				"gunslinger",
 				"inventor",
 				"investigator",
@@ -1757,11 +1757,12 @@
 		},
 		"defenses": {
 			"type": "object",
+			"$comment": "HP will NOT match for creatures.",
 			"properties": {
 				"ac": {
 					"type": "object",
 					"properties": {
-						"default": {
+						"std": {
 							"type": "integer",
 							"exclusiveMinimum": 0
 						},
@@ -1769,23 +1770,47 @@
 							"type": "string"
 						}
 					},
-					"additionalProperties": false,
+					"additionalProperties": {
+						"type": "integer"
+					},
 					"minProperties": 1
 				},
 				"savingThrows": {
 					"type": "object",
 					"properties": {
 						"fort": {
-							"type": "integer",
-							"minimum": 0
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
 						},
 						"ref": {
-							"type": "integer",
-							"minimum": 0
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
 						},
 						"will": {
-							"type": "integer",
-							"minimum": 0
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						},
+						"abilities": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"minItems": 1
 						}
 					},
 					"additionalProperties": false,
@@ -1794,7 +1819,7 @@
 				"hardness": {
 					"type": "object",
 					"properties": {
-						"default": {
+						"std": {
 							"type": "integer",
 							"minimum": 0
 						}
@@ -1812,7 +1837,7 @@
 					"description": "Hit Points",
 					"type": "object",
 					"properties": {
-						"default": {
+						"std": {
 							"type": "integer",
 							"exclusiveMinimum": 0
 						}
@@ -1830,7 +1855,7 @@
 					"description": "Broken Threshold",
 					"type": "object",
 					"properties": {
-						"default": {
+						"std": {
 							"type": "integer",
 							"minimum": 0
 						}
@@ -1882,7 +1907,20 @@
 				"resistances": {
 					"type": "array",
 					"items": {
-						"type": "string"
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"amount": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"note": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
 					},
 					"minItems": 1
 				},
