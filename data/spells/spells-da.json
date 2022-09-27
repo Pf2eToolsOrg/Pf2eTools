@@ -51,7 +51,7 @@
 			},
 			"amp": {
 				"entries": [
-					"The lens can interfere with creatures as well as attacks. Once during a Medium or smaller ally's move action, the ally can move into and out of the lens's square without that square counting against the total distance moved. Conversely, the lens is difficult terrain for your enemies."
+					"The lens can interfere with creatures as well as attacks. Once during a Medium or smaller ally's move action, the ally can move into and out of the lens's square without that square counting against the total distance moved. Conversely, the lens is {@quickref difficult terrain||3|terrain} for your enemies."
 				]
 			}
 		},
@@ -1048,7 +1048,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You reach out and sow glittering splinters of force throughout the area, otherworldly caltrops of will and ectoplasm. The area is difficult terrain, even to flying or incorporeal creatures.",
+				"You reach out and sow glittering splinters of force throughout the area, otherworldly caltrops of will and ectoplasm. The area is {@quickref difficult terrain||3|terrain}, even to flying or incorporeal creatures.",
 				"Any creature that moves through the area takes {@damage 1d4} piercing damage per square traversed, with a basic Reflex save made at the end of each move action they take through the area."
 			],
 			"heightened": {
@@ -1528,7 +1528,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You cover the area in a sloshing torrent of semi-solidified thought, roughly ankle high. The area becomes difficult terrain, similarly to a shallow bog. Each round that a creature starts its turn in the area, it must attempt a Fortitude save against the shifting waves of thought. On a failure, it takes a –10-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure, it is also knocked {@condition prone}."
+				"You cover the area in a sloshing torrent of semi-solidified thought, roughly ankle high. The area becomes {@quickref difficult terrain||3|terrain}, similarly to a shallow bog. Each round that a creature starts its turn in the area, it must attempt a Fortitude save against the shifting waves of thought. On a failure, it takes a –10-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure, it is also knocked {@condition prone}."
 			],
 			"heightened": {
 				"plusX": {
@@ -1656,7 +1656,7 @@
 				]
 			},
 			"entries": [
-				"You grasp a piece of the landscape\u2014such as a tree, carriage, or piece of masonry\u2014and lob it in your foe's direction. Your missile crashes down in either a 10-foot burst (for most missiles) or a 30-foot line (for something long and tall, like a tree or a ship's mast), dealing {@damage 14d6} bludgeoning damage and turning its area into difficult terrain as it breaks into rubble. All creatures in the area must attempt a Reflex save. If the area is a line, it doesn't have to start from your square but can instead start anywhere in range, as long as the entire area remains within range.",
+				"You grasp a piece of the landscape\u2014such as a tree, carriage, or piece of masonry\u2014and lob it in your foe's direction. Your missile crashes down in either a 10-foot burst (for most missiles) or a 30-foot line (for something long and tall, like a tree or a ship's mast), dealing {@damage 14d6} bludgeoning damage and turning its area into {@quickref difficult terrain||3|terrain} as it breaks into rubble. All creatures in the area must attempt a Reflex save. If the area is a line, it doesn't have to start from your square but can instead start anywhere in range, as long as the entire area remains within range.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2194,10 +2194,10 @@
 							"The creature is unaffected."
 						],
 						"Success": [
-							"Squares in the emanation are difficult terrain for the creature."
+							"Squares in the emanation are {@quickref difficult terrain||3|terrain} for the creature."
 						],
 						"Failure": [
-							"Squares in the emanation are difficult terrain for the creature, and the creature is {@condition slowed||slowed 1} when it starts its turn in the emanation."
+							"Squares in the emanation are {@quickref difficult terrain||3|terrain} for the creature, and the creature is {@condition slowed||slowed 1} when it starts its turn in the emanation."
 						],
 						"Critical Failure": [
 							"As failure, plus the creature also becomes {@condition restrained}. The creature can attempt to {@action Escape} against your spell DC to remove the {@condition restrained} condition."
