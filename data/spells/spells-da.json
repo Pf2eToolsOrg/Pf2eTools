@@ -37,10 +37,8 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You create a magical lens that distorts space as best suits you.",
-				"You create the lens in a space in range, even suspended in midair.",
-				"If your or an ally's ranged attack passes through the lens, the attack gains an additional 10 feet of range; if an enemy's ranged attack would pass through the lens, it requires an additional 10 feet of range to move through, though the enemy knows before using its ability whether the interference puts the target out of range. An ally whose space overlaps the lens can increase the range of its ranged attacks, but an enemy whose space overlaps the lens doesn't reduce the range of its ranged attacks.",
-				"The first time each round you Sustain the Spell, you can choose to relocate it to another square within range. The lens disappears if you cast distortion lens again."
+				"You create a magical lens that distorts space as best suits you. You create the lens in a space in range, even suspended in midair. If your or an ally's ranged attack passes through the lens, the attack gains an additional 10 feet of range; if an enemy's ranged attack would pass through the lens, it requires an additional 10 feet of range to move through, though the enemy knows before using its ability whether the interference puts the target out of range. An ally whose space overlaps the lens can increase the range of its ranged attacks, but an enemy whose space overlaps the lens doesn't reduce the range of its ranged attacks.",
+				"The first time each round you {@action Sustain a Spell||Sustain the Spell}, you can choose to relocate it to another square within range. The lens disappears if you cast distortion lens again."
 			],
 			"heightened": {
 				"plusX": {
@@ -139,7 +137,7 @@
 			},
 			"entries": [
 				"You race from point to point, tearing open a tunnel in space. You create a portal in your current space and then {@action Stride}, creating another portal in the space you end your {@action Stride}. Until the beginning of your next turn, any creature that enters the first portal can immediately transport itself to the exit portal as part of its move action, which adds the {@trait teleportation} trait to its movement.",
-				"You can have only one tesseract tunnel open at a time; creating another causes the first to immediately close. You can use tesseract tunnel while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type."
+				"You can have only one tesseract tunnel open at a time; creating another causes the first to immediately close. You can use tesseract tunnel while {@action Burrow||Burrowing}, {@action Climb||Climbing}, {@action Fly||Flying}, or {@action Swim||Swimming} instead of {@action Stride||Striding} if you have the corresponding movement type."
 			],
 			"amp": {
 				"entries": [
@@ -248,7 +246,7 @@
 			},
 			"amp": {
 				"entries": [
-					"The area changes to a 5-foot burst, and you can Sustain the Spell up to 1 minute. The first time each round that you Sustain the Spell, you can move the burst up to 20 feet."
+					"The area changes to a 5-foot burst, and you can {@action Sustain a Spell||Sustain the Spell} up to 1 minute. The first time each round that you {@action Sustain a Spell||Sustain the Spell}, you can move the burst up to 20 feet."
 				]
 			}
 		},
@@ -291,7 +289,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You weave light into a cube of vivid and fantastic patterns. The walls shed bright light for 10 feet (and dim light for the next 20 feet) and completely block line of sight; creatures within the cage can't be seen by creatures outside of it, though they can see each other, and creatures outside of it can't see into it. You can {@action Dismiss} the spell, and if you Cast the Spell again, your previous hologram cage ends."
+				"You weave light into a cube of vivid and fantastic patterns. The walls shed bright light for 10 feet (and dim light for the next 20 feet) and completely block line of sight; creatures within the cage can't be seen by creatures outside of it, though they can see each other, and creatures outside of it can't see into it. You can {@action Dismiss} the spell, and if you {@action Cast a Spell||Cast the Spell} again, your previous hologram cage ends."
 			],
 			"heightened": {
 				"X": {
@@ -434,9 +432,9 @@
 				"unit": "feet",
 				"number": 30
 			},
-			"targets": "1 or 2 creatures other than yourself (see text) Nothing is so contagious as a thought. You place either a pleasant thought or a terrifying one in a creature's mind. You can then plant the same thought in a second creature's mind.",
+			"targets": "1 or 2 creatures other than yourself (see text)",
 			"entries": [
-				"You can't choose a creature that's already been a target of this casting of contagious idea, nor can you choose yourself. The second target can be beyond the range of the spell, but it must be within 30 feet of the first target.",
+				" Nothing is so contagious as a thought. You place either a pleasant thought or a terrifying one in a creature's mind. You can then plant the same thought in a second creature's mind. You can't choose a creature that's already been a target of this casting of contagious idea, nor can you choose yourself. The second target can be beyond the range of the spell, but it must be within 30 feet of the first target.",
 				{
 					"type": "list",
 					"items": [
@@ -554,12 +552,12 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You stockpile thermal energy in a magical wheel-like construct that lets you burn opponents with cold or freeze their bodies with heat. When you Cast the Spell, the wheel has one mote of thermal energy, and when you use a {@trait cold} or {@trait fire} effect or deal cold or fire damage, the wheel spins, siphoning off a bit of energy and gaining another mote. The wheel can't gain motes more than once on a given turn, and the maximum number of motes is equal to entropic wheel's level.",
+				"You stockpile thermal energy in a magical wheel-like construct that lets you burn opponents with cold or freeze their bodies with heat. When you {@action Cast a Spell||Cast the Spell}, the wheel has one mote of thermal energy, and when you use a {@trait cold} or {@trait fire} effect or deal cold or fire damage, the wheel spins, siphoning off a bit of energy and gaining another mote. The wheel can't gain motes more than once on a given turn, and the maximum number of motes is equal to entropic wheel's level.",
 				"When you {@action Cast a Spell} that deals fire damage, the target also takes cold damage equal to the number of motes in the entropic wheel. When you {@action Cast a Spell} that deals cold damage, the target also takes fire damage equal to the number of motes in the entropic wheel. This applies only to the initial damage of the spell, not to any {@condition persistent damage} or ongoing effects."
 			],
 			"amp": {
 				"entries": [
-					"You gain two motes instead of one when you Cast the Spell and each time the wheel gains another mote."
+					"You gain two motes instead of one when you {@action Cast a Spell||Cast the Spell} and each time the wheel gains another mote."
 				]
 			}
 		},
@@ -599,7 +597,6 @@
 			},
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				],
 				"basic": true
@@ -711,8 +708,8 @@
 				"entry": "until the start of your next turn"
 			},
 			"entries": [
-				"You quickly view your surroundings from a variety of angles, your senses constructing an overall mental picture. You can choose to {@action Seek} the entire emanation of the spell. Regardless of whether you {@action Seek}, target one ally and one enemy in the area; if a target is {@condition concealed} or {@condition hidden} from you, you automatically succeed at the flat check to target it with this spell. You prepare to {@action Aid} the target ally on an attack roll against the target enemy. If you take this {@action Aid} reaction, you use your spell attack modifier and proficiency rank on your check to {@action Aid}.",
-				"If you critically fail the roll to {@action Aid}, you get a failure instead."
+				"You quickly view your surroundings from a variety of angles, your senses constructing an overall mental picture. You can choose to {@action Seek} the entire emanation of the spell.",
+				"Regardless of whether you {@action Seek}, target one ally and one enemy in the area; if a target is {@condition concealed} or {@condition hidden} from you, you automatically succeed at the flat check to target it with this spell. You prepare to {@action Aid} the target ally on an attack roll against the target enemy. If you take this {@action Aid} reaction, you use your spell attack modifier and proficiency rank on your check to {@action Aid}. If you critically fail the roll to {@action Aid}, you get a failure instead."
 			],
 			"amp": {
 				"entries": [
@@ -771,7 +768,7 @@
 			],
 			"amp": {
 				"entries": [
-					"The spell has the same result on a failure as on a success (but still no effect on a critical failure). Each time you Sustain the Spell, you can choose an additional ally to target, granting them the same benefit as the initial target ally."
+					"The spell has the same result on a failure as on a success (but still no effect on a critical failure). Each time you {@action Sustain a Spell||Sustain the Spell}, you can choose an additional ally to target, granting them the same benefit as the initial target ally."
 				]
 			}
 		},
@@ -809,7 +806,6 @@
 			},
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				],
 				"basic": true
@@ -878,7 +874,7 @@
 				"entry": "until the start of your next turn"
 			},
 			"entries": [
-				"You set up a transparent, rippling screen of telekinetic energy that seizes small, fast-moving projectiles. Creatures can pass through the screen, but ammunition from physical ranged attacks\u2014such as arrows, bolts, sling bullets, and other objects of similar size\u2014is automatically trapped in the screen, clattering to the ground once the spell ends. Attacks with bigger ranged weapons, such as javelins, take a \u20132 circumstance penalty to their attack rolls if their paths pass through the screen. Massive ranged weapons and spell effects that don't create physical objects pass through the screen with no penalty."
+				"You set up a transparent, rippling screen of telekinetic energy that seizes small, fast-moving projectiles. Creatures can pass through the screen, but ammunition from physical ranged attacks\u2014such as {@item arrow||arrows}, {@item bolt||bolts}, {@item sling bullets}, and other objects of similar size\u2014is automatically trapped in the screen, clattering to the ground once the spell ends. Attacks with bigger ranged weapons, such as {@item javelin||javelins}, take a \u20132 circumstance penalty to their attack rolls if their paths pass through the screen. Massive ranged weapons and spell effects that don't create physical objects pass through the screen with no penalty."
 			],
 			"heightened": {
 				"X": {
@@ -886,7 +882,7 @@
 						"The screen is 10 feet wide."
 					],
 					"6": [
-						"The screen is 10 feet wide and can interfere even with massless attacks, like magical blasts or gouts of flame. The screen imposes a \u20132 circumstance penalty to the attack rolls of spell effects even if they don't create physical objects. It also protects against area effects that pass through the screen, granting standard cover to creatures on the opposite side of the screen from the center or origin point of an area."
+						"The screen is 10 feet wide and can interfere even with massless attacks, like magical blasts or gouts of flame. The screen imposes a \u20132 circumstance penalty to the attack rolls of spell effects even if they don't create physical objects. It also protects against area effects that pass through the screen, granting {@quickref standard cover||3|Cover} to creatures on the opposite side of the screen from the center or origin point of an area."
 					]
 				}
 			},
@@ -924,7 +920,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You exist in two places at once. When you Cast the Spell, another copy of yourself appears in an adjacent square. During bilocation's duration, whenever you act, you can choose which of your selves does so, and whenever one of you uses a move action, you can both move. Your two selves share Hit Points, and any condition or effect on one affects both. If both of your selves are in the area of the same effect, or targeted by the same multitarget effect, you are only affected once. Even if you are reduced to 0 Hit Points or killed, both selves remain until the duration expires. Your link continues at any distance, even across planar boundaries. You can {@action Dismiss} the Spell, and if you do so, you choose which of the selves vanishes and which becomes you, allowing you to extricate one of your selves from a dangerous situation."
+				"You exist in two places at once. When you {@action Cast a Spell||Cast the Spell}, another copy of yourself appears in an adjacent square. During bilocation's duration, whenever you act, you can choose which of your selves does so, and whenever one of you uses a move action, you can both move. Your two selves share Hit Points, and any condition or effect on one affects both. If both of your selves are in the area of the same effect, or targeted by the same multitarget effect, you are only affected once. Even if you are reduced to 0 Hit Points or killed, both selves remain until the duration expires. Your link continues at any distance, even across planar boundaries. You can {@action Dismiss} the Spell, and if you do so, you choose which of the selves vanishes and which becomes you, allowing you to extricate one of your selves from a dangerous situation."
 			]
 		},
 		{
@@ -1252,13 +1248,13 @@
 			"targets": "1 or more creatures",
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				]
 			},
 			"entries": [
 				"Gathering kinetic energy, you either focus it in a straight line or disperse it as an encircling ripple. Any creature targeted by this spell must succeed at a Fortitude saving throw or be pushed 10 feet away from you (or 20 feet on a critical failure). The spell's area or range and how many creatures it affects is based on how many actions you spend when Casting the Spell.",
-				"{@as 1} The spell targets one creature within 15 feet. {@as 2} The spell targets one creature within 30 feet. The distance the target is pushed if it fails is doubled, and on a critical failure, the target is also knocked {@condition prone} and takes {@damage 1d6} bludgeoning damage.",
+				"{@as 1} The spell targets one creature within 15 feet.",
+				"{@as 2} The spell targets one creature within 30 feet. The distance the target is pushed if it fails is doubled, and on a critical failure, the target is also knocked {@condition prone} and takes {@damage 1d6} bludgeoning damage.",
 				"{@as 3} The spell targets all creatures in a 5-foot emanation."
 			]
 		},
@@ -1291,7 +1287,7 @@
 				"number": 60
 			},
 			"entries": [
-				"You instantly teleport yourself and any items you're wearing or holding from your current space to a clear space within range that you can see. If this teleportation would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the spell is lost. After you vanish but before you arrive, you can take up to 2 actions (or the number of actions you spent to cast momentary recovery, if it was fewer than 2 actions). You can't target any other creatures or objects with anything during these actions and {@trait any} effect with a duration that you create during these actions ends immediately when you arrive. After you arrive, you are {@condition slowed||slowed 1} until the end of your next turn."
+				"You instantly teleport yourself and any items you're wearing or holding from your current space to a clear space within range that you can see. If this teleportation would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the spell is lost. After you vanish but before you arrive, you can take up to 2 actions (or the number of actions you spent to cast momentary recovery, if it was fewer than 2 actions). You can't target any other creatures or objects with anything during these actions and any effect with a duration that you create during these actions ends immediately when you arrive. After you arrive, you are {@condition slowed||slowed 1} until the end of your next turn."
 			]
 		},
 		{
@@ -1371,7 +1367,7 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"You point your finger and project a bolt of magical energy that stutters in and out of phase until it reaches the target. Make a ranged spell attack roll against your target's AC; if the target has any circumstance bonuses to AC (such as from a shield or cover), reduce that bonus by 2 for this attack. On a success, you deal {@damage 1d4} piercing damage plus your spellcasting ability modifier. On a critical success, the target takes double damage."
+				"You point your finger and project a bolt of magical energy that stutters in and out of phase until it reaches the target. Make a ranged spell attack roll against your target's AC; if the target has any circumstance bonuses to AC (such as from a shield or {@quickref cover||3|Cover}), reduce that bonus by 2 for this attack. On a success, you deal {@damage 1d4} piercing damage plus your spellcasting ability modifier. On a critical success, the target takes double damage."
 			],
 			"heightened": {
 				"plusX": {
@@ -1423,8 +1419,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"Your fury spills over in a telekinetic storm of terrifying proportions. Any loose, unattended objects of 1 Bulk or less within range are picked up and begin to orbit you at breathtaking speeds. All creatures in the area take {@damage 6d4} piercing damage with a basic Reflex save. Each time you Sustain the Spell, you can increase the radius of the storm by 10 feet, to a maximum of 100 feet. The storm moves with you and provides you with lesser cover, though you can't use this cover to {@action Hide} or {@action Sneak}.",
-				"Allies within the storm who roll a success on their Reflex save against your poltergeist's fury get a critical success instead, as you attempt to avoid hitting them."
+				"Your fury spills over in a telekinetic storm of terrifying proportions. Any loose, unattended objects of 1 Bulk or less within range are picked up and begin to orbit you at breathtaking speeds. All creatures in the area take {@damage 6d4} piercing damage with a basic Reflex save. Each time you {@action Sustain a Spell||Sustain the Spell}, you can increase the radius of the storm by 10 feet, to a maximum of 100 feet. The storm moves with you and provides you with {@quickref lesser cover||3|Cover}, though you can't use this cover to {@action Hide} or {@action Sneak}. Allies within the storm who roll a success on their Reflex save against your poltergeist's fury get a critical success instead, as you attempt to avoid hitting them."
 			],
 			"heightened": {
 				"plusX": {
@@ -1479,8 +1474,7 @@
 			"heightened": {
 				"X": {
 					"7": [
-						"You can target up to four other creatures within 30 feet, in addition to yourself. Each of you can teleport to the rally point once during the spell's duration, by taking a single action, which has the {@trait concentrate} trait.",
-						"The duration no longer ends once you teleport to the rally point, though you still can't teleport to the rally point again."
+						"You can target up to four other creatures within 30 feet, in addition to yourself. Each of you can teleport to the rally point once during the spell's duration, by taking a single action, which has the {@trait concentrate} trait. The duration no longer ends once you teleport to the rally point, though you still can't teleport to the rally point again."
 					]
 				}
 			}
@@ -1571,8 +1565,7 @@
 				"entry": "until the next time you make your daily preparations"
 			},
 			"entries": [
-				"You mix blood, soil, and shadow together to form a half-real homunculus in the shape of a crow, sparrow, or other bird. You then command the bird to fly to a location within range and observe all around it. The bird has the statistics of a {@creature homunculus|b1}, save that it has all of your senses and shares your {@skill Perception} modifier. Once the spell's duration elapses or upon a trigger you set (which must be fairly simple\u2014\"at dusk\" or \"when the judge leaves\"), the bird flies to your location.",
-				"If you wring its neck and drink its blood, you learn all that it saw since its creation."
+				"You mix blood, soil, and shadow together to form a half-real homunculus in the shape of a crow, sparrow, or other bird. You then command the bird to fly to a location within range and observe all around it. The bird has the statistics of a {@creature homunculus|b1}, save that it has all of your senses and shares your {@skill Perception} modifier. Once the spell's duration elapses or upon a trigger you set (which must be fairly simple\u2014\"at dusk\" or \"when the judge leaves\"), the bird flies to your location. If you wring its neck and drink its blood, you learn all that it saw since its creation."
 			]
 		},
 		{
@@ -1843,8 +1836,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You offer to broker a pact of peace. If the target accepts and doesn't take {@condition hostile} actions against you and your allies, you take a \u20131 status penalty to {@skill Deception} checks to {@action Lie} to them.",
-				"If they refuse and take a {@condition hostile} action against you or an ally, they must attempt a Will save. If they accepted the offer and then take a {@condition hostile} action against you or an ally, they must attempt a Will save and treat the result as one category worse. Regardless of the outcome, the target is then temporarily immune for 1 minute.",
+				"You offer to broker a pact of peace. If the target accepts and doesn't take {@condition hostile} actions against you and your allies, you take a \u20131 status penalty to {@skill Deception} checks to {@action Lie} to them. If they refuse and take a {@condition hostile} action against you or an ally, they must attempt a Will save. If they accepted the offer and then take a {@condition hostile} action against you or an ally, they must attempt a Will save and treat the result as one category worse. Regardless of the outcome, the target is then temporarily immune for 1 minute.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2013,7 +2005,6 @@
 			},
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				],
 				"basic": true
@@ -2026,7 +2017,7 @@
 			"entries": [
 				"All things age, all things die, and at the end of days even the universe will grow quiet and still. You awaken the cosmic principle of entropy, accelerating time in an area\u2014flesh falters, plants shrivel, and even stone begins to crumble.",
 				"Any creature that enters or begins its turn in the area must succeed at a basic Fortitude save or take {@damage 8d6} negative damage, or {@damage 8d6} force damage if the creature normally doesn't take negative damage, such as if the creature is a construct or undead. Even beings such as fiends with unlimited lifespans can be worn away by entropy.",
-				"The first time you Sustain the Spell on each subsequent turn, the entropic zone grows stronger in addition to having its duration increased. The radius of the burst increases by 10 feet (to a maximum of 40 feet), and the size of the damage dice increases by one step (from d6 to d8, then to d10, and finally to d12)."
+				"The first time you {@action Sustain a Spell||Sustain the Spell} on each subsequent turn, the entropic zone grows stronger in addition to having its duration increased. The radius of the burst increases by 10 feet (to a maximum of 40 feet), and the size of the damage dice increases by one step (from d6 to d8, then to d10, and finally to d12)."
 			],
 			"heightened": {
 				"plusX": {
@@ -2176,7 +2167,6 @@
 			},
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				]
 			},
@@ -2186,7 +2176,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You surround yourself in temporal eddies that draw out time for those around you, making every step feel like an eternity endured. A creature in the emanation, or that later enters the emanation, must attempt a Fortitude save. The creature makes this save only once and uses the same effect for the duration of the spell. Each time you Sustain the Spell, you can choose to increase the emanation's radius by 5 feet, to a maximum of 60 feet.",
+				"You surround yourself in temporal eddies that draw out time for those around you, making every step feel like an eternity endured. A creature in the emanation, or that later enters the emanation, must attempt a Fortitude save. The creature makes this save only once and uses the same effect for the duration of the spell. Each time you {@action Sustain a Spell||Sustain the Spell}, you can choose to increase the emanation's radius by 5 feet, to a maximum of 60 feet.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2456,10 +2446,7 @@
 				"entry": "until the start of your next turn"
 			},
 			"entries": [
-				"You pull a fleeting duplicate of your ally from the recent past.",
-				"The duplicate appears in an unoccupied space of your choice within 30 feet of you and repeats a basic single action the target took since the end of your last turn, such as making a {@action Strike} or Interacting to pull a lever. Because the other basic single actions don't produce much of a result on their own, this is typically used for {@action Strike} and {@action Interact}, though occasionally it could be useful to have a temporal twin {@action Stride} through a potentially dangerous area to expose a hazard.",
-				"The target ally spends a reaction to create the duplicate, makes any decisions, and rolls for the repeated action, such as choosing a target for a {@action Strike} and making the attack roll.",
-				"If the ally doesn't have a reaction to spend, temporal twin fails. Use the duplicate's location for determining flanking, cover, and the like. Using this spell requires remembering what your ally did, and if you don't remember the details, the GM might not allow you to cast temporal twin. This action can't be used for anything but a basic single action (Core Rulebook 469), nor can it use limited resources. The action can have a different target than the original action but must be very similar in form. For example, if the original action were to {@action Interact} to pull a lever, the time duplicate could pull a different lever, but couldn't turn a doorknob or pick up an item from a table.",
+				"You pull a fleeting duplicate of your ally from the recent past. The duplicate appears in an unoccupied space of your choice within 30 feet of you and repeats a basic single action the target took since the end of your last turn, such as making a {@action Strike} or {@action Interact||Interacting} to pull a lever. Because the other basic single actions don't produce much of a result on their own, this is typically used for {@action Strike} and {@action Interact}, though occasionally it could be useful to have a temporal twin {@action Stride} through a potentially dangerous area to expose a hazard. The target ally spends a reaction to create the duplicate, makes any decisions, and rolls for the repeated action, such as choosing a target for a {@action Strike} and making the attack roll. If the ally doesn't have a reaction to spend, temporal twin fails. Use the duplicate's location for determining flanking, cover, and the like. Using this spell requires remembering what your ally did, and if you don't remember the details, the GM might not allow you to cast temporal twin.", "This action can't be used for anything but a {@filter basic single action|actions||source=|activity=action}, nor can it use limited resources. The action can have a different target than the original action but must be very similar in form. For example, if the original action were to {@action Interact} to pull a lever, the time duplicate could pull a different lever, but couldn't turn a doorknob or pick up an item from a table.",
 				"Being pulled through time to create a twin destabilizes the target's timeline. Once an ally has been the target of temporal twin, they're temporarily immune for 1 day."
 			]
 		},
@@ -2496,8 +2483,7 @@
 				"entry": "until the next time you make your daily preparations"
 			},
 			"entries": [
-				"You fling the target item forward in time and link it to the future of the creature holding it. The item disappears. When the spell ends, the item reappears with the creature that was holding it when you Cast the Spell. If the creature has enough hands free to hold the item, it appears in their hands.",
-				"Otherwise, it falls to the ground in the creature's space. You can {@action Dismiss} the spell, and it automatically ends if you're reduced to 0 Hit Points or cast time pocket again."
+				"You fling the target item forward in time and link it to the future of the creature holding it. The item disappears. When the spell ends, the item reappears with the creature that was holding it when you {@action Cast a Spell||Cast the Spell}. If the creature has enough hands free to hold the item, it appears in their hands. Otherwise, it falls to the ground in the creature's space.", "You can {@action Dismiss} the spell, and it automatically ends if you're reduced to 0 Hit Points or cast time pocket again."
 			]
 		},
 		{
@@ -2718,7 +2704,7 @@
 				]
 			],
 			"entries": [
-				"When you Cast the Spell, you gain a perfect sense of time. You can learn exactly what time it is, down to the second. You can instead choose to gain a perfect sense of the calendar if you have knowledge in that area\u2014if you're trained in {@skill Nature}, you can learn exactly how long it is until sunrise and how many days until the next solstice. If you're trained in {@skill Lore||Astronomy Lore}, you can learn precisely when any known predictable astronomical conjunction will begin and end, and so on.",
+				"When you {@action Cast a Spell||Cast the Spell}, you gain a perfect sense of time. You can learn exactly what time it is, down to the second. You can instead choose to gain a perfect sense of the calendar if you have knowledge in that area\u2014if you're trained in {@skill Nature}, you can learn exactly how long it is until sunrise and how many days until the next solstice. If you're trained in {@skill Lore||Astronomy Lore}, you can learn precisely when any known predictable astronomical conjunction will begin and end, and so on.",
 				"You can gain a +1 status bonus to one attack roll, {@skill Perception} check, saving throw, or skill check you take on the same turn you cast time sense that requires extremely precise timing. If you choose to gain this bonus, you can't gain it again for 1 hour."
 			]
 		},
@@ -2929,7 +2915,7 @@
 							"The target is unaffected."
 						],
 						"Success": [
-							"The target is distracted by the visions and treats all other creatures as {@condition concealed} for 1 round, and you can't Sustain the Spell to increase the duration."
+							"The target is distracted by the visions and treats all other creatures as {@condition concealed} for 1 round, and you can't {@action Sustain a Spell||Sustain the Spell} to increase the duration."
 						],
 						"Failure": [
 							"The target is {@condition confused}. In addition to the creatures present, the target might also attack wildly at thin air, attempting to fend off the dreams. It can attempt a new save at the end of each of its turns to end the confusion.",
@@ -3042,7 +3028,7 @@
 							"Your pull hampers the target's footsteps. It takes a \u201310-foot circumstance penalty to its Speeds until the end of its next turn."
 						],
 						"Failure": [
-							"The target can't move any farther from you than it was when you Cast the Spell, though it can move in such a way that it maintains an equal distance. If you move farther away from the target than the initial distance, the spell ends. The targeted foe can attempt to {@action Escape} against your spell DC. If it succeeds, the spell ends."
+							"The target can't move any farther from you than it was when you {@action Cast a Spell||Cast the Spell}, though it can move in such a way that it maintains an equal distance. If you move farther away from the target than the initial distance, the spell ends. The targeted foe can attempt to {@action Escape} against your spell DC. If it succeeds, the spell ends."
 						]
 					}
 				}
@@ -3421,8 +3407,8 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You telekinetically animate a weapon that's unattended or on your person. It brandishes itself at a foe of your choice as if wielded by an {@condition invisible} duelist. When you first Cast the Spell, the weapon automatically flies to the target and Strikes. It moves along with its target, always remaining within reach.",
-				"Each time you Sustain the Spell, the weapon either Changes Partners or Strikes. The weapon's attacks use and contribute to your multiple attack penalty.",
+				"You telekinetically animate a weapon that's unattended or on your person. It brandishes itself at a foe of your choice as if wielded by an {@condition invisible} duelist. When you first {@action Cast a Spell||Cast the Spell}, the weapon automatically flies to the target and Strikes. It moves along with its target, always remaining within reach.",
+				"Each time you {@action Sustain a Spell||Sustain the Spell}, the weapon either Changes Partners or Strikes. The weapon's attacks use and contribute to your multiple attack penalty.",
 				{
 					"type": "list",
 					"items": [
@@ -3440,12 +3426,12 @@
 			},
 			"amp": {
 				"entries": [
-					"The weapon's attacks increase in strength, and your control is fine enough for advanced technique. The damage dice for the weapon's {@action Strike} change from d6s to d10s. When you Cast or Sustain the spell, you can choose from the following options in addition to the standard ones.",
+					"The weapon's attacks increase in strength, and your control is fine enough for advanced technique. The damage dice for the weapon's {@action Strike} change from d6s to d10s. When you {@action Cast a Spell||Cast} or {@action Sustain a Spell||Sustain the Spell}, you can choose from the following options in addition to the standard ones.",
 					{
 						"type": "list",
 						"items": [
 							"{@b Guard} Rather than attacking, the weapon grants a +2 circumstance bonus to AC against melee attacks to the creature it's following. The bonus lasts until the start of your next turn or until the weapon Changes Partners, whichever comes first.",
-							"{@b Push} ({@trait attack}) The weapon attempts to Push its target, using your spell attack roll instead of an {@skill Athletics} check to determine the results of the Push."
+							"{@b Push} ({@trait attack}) The weapon attempts to {@action Shove} its target, using your spell attack roll instead of an {@skill Athletics} check to determine the results of the {@action Shove}."
 						]
 					}
 				]
