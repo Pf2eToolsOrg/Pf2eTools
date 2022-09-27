@@ -5835,7 +5835,7 @@ Renderer.spell = {
 		}
 		if (sp.amp?.heightened?.plusX) {
 			Object.entries(sp.amp.heightened.plusX).forEach(([x, entries]) => {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${x})&nbsp;</strong>`);
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Amp Heightened (+${x})&nbsp;</strong>`);
 				renderArray(entries);
 				renderStack.push(`</p>`);
 			});
