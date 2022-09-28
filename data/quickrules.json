@@ -1075,28 +1075,132 @@
 			]
 		},
 		"deity": {
-			"source": "CRB",
-			"page": 437,
+			"source": "LOGM",
+			"page": 7,
 			"entries": [
 				{
-					"type": "pf2-h1",
-					"name": "Religion",
-					"source": "CRB",
-					"page": 437,
+					"type": "pf2-h2",
+					"name": "Using the Entries",
+					"source": "LOGM",
+					"page": 10,
 					"entries": [
-						{
-							"type": "pf2-h1-flavor",
-							"entries": [
-								"Selection of a deity is critical for certain classes\u2014like champion and cleric\u2014but most characters pay respect to at least one deity to find a focus in life and guide their choices, especially in times of hardship or need. Some people instead worship a group of deities arranged in a pantheon, follow a nondeific religion like the Green Faith, or adhere to a specific philosophy. Note that far more deities, religions, and philosophies exist on any world, Golarion included, than those detailed below."
-							]
-						},
-						{
-							"type": "pf2-h2",
-							"name": "Deities",
-							"entries": [
-								"Anyone can worship a deity, but those who do so devoutly should take care to pursue the faith's edicts (behaviors the faith encourages) and avoid its anathemas (actions considered blasphemous). Each deity below has their alignment listed in parentheses after their name, followed by a short description and their edicts, anathemas, and the alignments permitted for followers. Following that are benefits available to the most ardent devotees of the deities. You get these benefits only if you're a cleric of the deity or some other rule specifically gives you a devotee benefit."
-							]
-						}
+						"The entries for deities use the stat block format described below to present the vital information required for worship.",
+						"{@b Name:} The deity's name plus a common title or epithet.",
+						"{@b Areas of Concern:} The topics that the deity cares most deeply about.",
+						"{@b Alignment:} The deity's alignment. In parentheses, the entry lists other character alignments that this deity accepts from worshippers. For instance, {@deity Kazutal|LOGM}, the goddess of protection and community, accepts any good-aligned clerics. {@deity Arazni|LOGM}, who is embittered and prone to cruelty, nonetheless has some sympathy for victims of abuse and accepts evil, neutral, and good worshippers, since she is less concerned about her worshippers' morality.",
+						"{@b Divine Font:} This entry presents whether the deity grants worshippers {@spell heal} or {@spell harm}, or can grant both. {@spell Heal} heals the living and harms undead, while {@spell harm} harms the living and heals undead. Usually, good deities channel {@spell heal}, evil deities channel {@spell harm}, and neutral deities can channel {@spell harm} or {@spell heal}, but there are exceptions.",
+						"{@b Divine Ability:} This section lists the two ability boosts the deity grants as options for characters with the {@background raised by belief|LOGM} background.",
+						"{@b Divine Skill:} This section lists a skill that is especially associated with this deity, which their followers would naturally be good at due to their worship or association with this deity.",
+						"{@b Domains:} The domains that best represent this deity.",
+						"{@b Alternate Domains:} If the deity offers {@book additional domains|LOGM|1|Alternate Domains}, they are listed here. If the deity doesn't offer alternate domains, this section is omitted.",
+						"{@b Cleric Spells:} Each deity provides at least three additional spells to the spell list of {@class cleric||clerics} who worship them. Typically these are a 1st-level spell and two other thematically appropriate spells.",
+						"{@b Edicts:} These are things that the deity urges their followers to do. Followers must adhere to these as closely as possible if they wish to gain favor with this deity.",
+						"{@b Anathema:} These are things that are absolutely abhorrent to the deity; committing these acts will likely earn a follower disfavor or punishment.",
+						"{@b Favored Weapon:} The deity's {@book favored weapon|LOGM|1|Favored Weapon}."
+					]
+				}
+			]
+		},
+		"deityWithIntercession": {
+			"source": "LOGM",
+			"page": 7,
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Using the Entries",
+					"source": "LOGM",
+					"page": 10,
+					"entries": [
+						"The entries for deities use the stat block format described below to present the vital information required for worship.",
+						"{@b Name:} The deity's name plus a common title or epithet.",
+						"{@b Areas of Concern:} The topics that the deity cares most deeply about.",
+						"{@b Alignment:} The deity's alignment. In parentheses, the entry lists other character alignments that this deity accepts from worshippers. For instance, {@deity Kazutal|LOGM}, the goddess of protection and community, accepts any good-aligned clerics. {@deity Arazni|LOGM}, who is embittered and prone to cruelty, nonetheless has some sympathy for victims of abuse and accepts evil, neutral, and good worshippers, since she is less concerned about her worshippers' morality.",
+						"{@b Divine Font:} This entry presents whether the deity grants worshippers {@spell heal} or {@spell harm}, or can grant both. {@spell Heal} heals the living and harms undead, while {@spell harm} harms the living and heals undead. Usually, good deities channel {@spell heal}, evil deities channel {@spell harm}, and neutral deities can channel {@spell harm} or {@spell heal}, but there are exceptions.",
+						"{@b Divine Ability:} This section lists the two ability boosts the deity grants as options for characters with the {@background raised by belief|LOGM} background.",
+						"{@b Divine Skill:} This section lists a skill that is especially associated with this deity, which their followers would naturally be good at due to their worship or association with this deity.",
+						"{@b Domains:} The domains that best represent this deity.",
+						"{@b Alternate Domains:} If the deity offers {@book additional domains|LOGM|1|Alternate Domains}, they are listed here. If the deity doesn't offer alternate domains, this section is omitted.",
+						"{@b Cleric Spells:} Each deity provides at least three additional spells to the spell list of {@class cleric||clerics} who worship them. Typically these are a 1st-level spell and two other thematically appropriate spells.",
+						"{@b Edicts:} These are things that the deity urges their followers to do. Followers must adhere to these as closely as possible if they wish to gain favor with this deity.",
+						"{@b Anathema:} These are things that are absolutely abhorrent to the deity; committing these acts will likely earn a follower disfavor or punishment.",
+						"{@b Favored Weapon:} The deity's {@book favored weapon|LOGM|1|Favored Weapon}."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Divine Intercession",
+					"source": "LOGM",
+					"page": 9,
+					"entries": [
+						"To make their influence on Golarion felt directly\u2014but without manifesting on the planet in all their divine glory\u2014each god has the tool of divine intercession. Divine intercession manifests as a boon or a curse, of varying duration and power, visited upon a mortal. Curses are not triggered simply by doing something a god does not like, or everyone in Golarion would be cursed all the time; they are often reserved for followers of the god who commit anathema that aren't strong enough to warrant ejection from the faith, or those who have committed shocking blasphemies. Conversely, an unaffiliated worshipper embroiled in high-profile actions that are anathema to a god could earn a curse. Similarly, boons are not automatically granted to anyone petitioning the god. Certainly, someone who upholds a deity's edicts could earn a boon, especially when acting under adverse circumstances. Most often, as befits their inscrutable nature, a deity will bestow a boon or a curse for their own reasons. Perhaps a mission is of dire importance to a god's plan for a specific place or people, or perhaps the survival of a particular character figures in their plans decades from now.",
+						"The divine intercessions provided in each entry are examples, and the GM can have any deity grant a different effect than the intercessions provided. These intercessions are special and are always at the deity's, and thus the GM's, direct discretion, with the GM deciding when a boon or curse goes into effect. The GM is also at liberty to remove a boon or curse as is appropriate for the game's story. A PC or NPC can never select a feat, spell, or other rules option that entitles them to a divine boon or bestows a divine curse upon foes. Minor intercessions are memorable for the recipient, providing either a relatively modest and long-lasting effect or a spectacular but fleeting one. Moderate intercessions are hugely significant events that typically come with permanent consequences, and major intercessions can pivotally reshape a recipient's life, granting powers wildly beyond their innate abilities or inflicting life-changing curses."
+					]
+				}
+			]
+		},
+		"deityPantheon": {
+			"source": "LOGM",
+			"page": 7,
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Using the Entries",
+					"source": "LOGM",
+					"page": 10,
+					"entries": [
+						"The entries for deities use the stat block format described below to present the vital information required for worship.",
+						"{@b Name:} The deity's name plus a common title or epithet.",
+						"{@b Areas of Concern:} The topics that the deity cares most deeply about.",
+						"{@b Alignment:} The deity's alignment. In parentheses, the entry lists other character alignments that this deity accepts from worshippers. For instance, {@deity Kazutal|LOGM}, the goddess of protection and community, accepts any good-aligned clerics. {@deity Arazni|LOGM}, who is embittered and prone to cruelty, nonetheless has some sympathy for victims of abuse and accepts evil, neutral, and good worshippers, since she is less concerned about her worshippers' morality.",
+						"{@b Divine Font:} This entry presents whether the deity grants worshippers {@spell heal} or {@spell harm}, or can grant both. {@spell Heal} heals the living and harms undead, while {@spell harm} harms the living and heals undead. Usually, good deities channel {@spell heal}, evil deities channel {@spell harm}, and neutral deities can channel {@spell harm} or {@spell heal}, but there are exceptions.",
+						"{@b Divine Ability:} This section lists the two ability boosts the deity grants as options for characters with the {@background raised by belief|LOGM} background.",
+						"{@b Divine Skill:} This section lists a skill that is especially associated with this deity, which their followers would naturally be good at due to their worship or association with this deity.",
+						"{@b Domains:} The domains that best represent this deity.",
+						"{@b Alternate Domains:} If the deity offers {@book additional domains|LOGM|1|Alternate Domains}, they are listed here. If the deity doesn't offer alternate domains, this section is omitted.",
+						"{@b Cleric Spells:} Each deity provides at least three additional spells to the spell list of {@class cleric||clerics} who worship them. Typically these are a 1st-level spell and two other thematically appropriate spells.",
+						"{@b Edicts:} These are things that the deity urges their followers to do. Followers must adhere to these as closely as possible if they wish to gain favor with this deity.",
+						"{@b Anathema:} These are things that are absolutely abhorrent to the deity; committing these acts will likely earn a follower disfavor or punishment.",
+						"{@b Favored Weapon:} The deity's {@book favored weapon|LOGM|1|Favored Weapon}."
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Pantheons",
+					"source": "LOGM",
+					"page": 92,
+					"entries": [
+						"A pantheon is a group of related gods worshipped either individually or together. Most pantheons are associated with a specific ancestry or geopolitical region, but rarely, a pantheon consists of deities with overlapping areas of concern. Followers work to advance the shared interests of their pantheon, directing prayers to whichever god presides over their current activity or circumstance. At the GM's discretion, {@class champion||champions} and {@class cleric||clerics} can dedicate themselves to a pantheon. In such cases, the characters still worship a specific patron deity among those in the pantheon, but also follow the edicts and anathema of the pantheon as a whole. A character who worships a pantheon this way can gain the domains, alternate domains, and spells from the pantheon instead of those from their patron deity. They must uphold the ideals of both their patron deity and the pantheon, though the patron deity's edicts and anathema take precedence. For example, a worshipper of {@deity Iomedae} could worship {@deity the Godclaw|LOGM}, but they wouldn't take the {@filter tyranny domain|spells||domains=tyranny}, as it would be in conflict with {@deity Iomedae||Iomedae's} edicts. In rare cases, a character can worship a pantheon without following a patron deity. Such cases are unique and subject to GM approval."
+					]
+				}
+			]
+		},
+		"deityPhilosophy": {
+			"source": "LOGM",
+			"page": 7,
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Using the Entries",
+					"source": "LOGM",
+					"page": 10,
+					"entries": [
+						"The entries for deities use the stat block format described below to present the vital information required for worship.",
+						"{@b Name:} The deity's name plus a common title or epithet.",
+						"{@b Areas of Concern:} The topics that the deity cares most deeply about.",
+						"{@b Alignment:} The deity's alignment. In parentheses, the entry lists other character alignments that this deity accepts from worshippers. For instance, {@deity Kazutal|LOGM}, the goddess of protection and community, accepts any good-aligned clerics. {@deity Arazni|LOGM}, who is embittered and prone to cruelty, nonetheless has some sympathy for victims of abuse and accepts evil, neutral, and good worshippers, since she is less concerned about her worshippers' morality.",
+						"{@b Divine Ability:} This section lists the two ability boosts the deity grants as options for characters with the {@background raised by belief|LOGM} background.",
+						"{@b Divine Skill:} This section lists a skill that is especially associated with this deity, which their followers would naturally be good at due to their worship or association with this deity.",
+						"{@b Edicts:} These are things that the deity urges their followers to do. Followers must adhere to these as closely as possible if they wish to gain favor with this deity.",
+						"{@b Anathema:} These are things that are absolutely abhorrent to the deity; committing these acts will likely earn a follower disfavor or punishment."
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Faiths and Philosophies",
+					"source": "CRB",
+					"page": 440,
+					"entries": [
+						"Of course, faith can express itself in more ways than venerating a single deity\u2014or a deity at all. A few examples of nondeific religions and philosophies are presented below. {@class cleric||Clerics} can work with allied faiths and philosophies, but the organizations here turn to other classes\u2014such as {@class sorcerer||sorcerers} with divine bloodlines, {@class druid||druids}, or {@class monk||monks}\u2014to serve as their leaders. These faiths and philosophies don't have an external godhead that offers benefits to devotees."
 					]
 				}
 			]
