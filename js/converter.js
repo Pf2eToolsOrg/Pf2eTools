@@ -428,6 +428,7 @@ class Converter {
 		this._parseGenericProperty(obj, this._tokenizerUtils.craftRequirements, "craftReq", opts);
 	}
 	_parseDuration (obj, opts) {
+		// TODO: Dismissible spells
 		opts = opts || {};
 		this._consumeToken(this._tokenizerUtils.duration);
 		this._parsedProperties.push(...this._tokenizerUtils.duration);

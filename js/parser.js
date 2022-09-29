@@ -981,6 +981,15 @@ Parser.timeToTableStr = function (time) {
 	return `${time.number} ${time.unit.uppercaseFirst()}${time.number >= 2 ? "s" : ""}`;
 }
 
+Parser.durationToFull = function (duration) {
+	if (duration == null) return null;
+	if (duration.entry) return duration.entry;
+	if (duration.sustained && (duration.unit == null || duration.unit === "unlimited")) return "sustained";
+	const rendered = `${duration.number == null ? "" : `${duration.number} `}${duration.number > 1 ? `${duration.unit}s` : duration.unit}`;
+	if (duration.sustained) return `sustained up to ${rendered}`;
+	else return rendered;
+}
+
 UNT_FEET = "feet";
 UNT_MILES = "mile";
 Parser.INCHES_PER_FOOT = 12;
@@ -1068,39 +1077,31 @@ Parser.getFilterRange = function (object) {
 }
 
 Parser.getFilterDuration = function (object) {
-	const duration = object.duration || {type: "special"}
-	switch (duration.type) {
-		case null: return "Instant";
-		case "timed": {
-			if (!duration.duration) return "Special";
-			switch (duration.duration.unit) {
-				case "turn":
-				case "round": return "1 Round";
-
-				case "minute": {
-					const amt = duration.duration.number || 0;
-					if (amt <= 1) return "1 Minute";
-					if (amt <= 10) return "10 Minutes";
-					if (amt <= 60) return "1 Hour";
-					if (amt <= 8 * 60) return "8 Hours";
-					return "24+ Hours";
-				}
-
-				case "hour": {
-					const amt = duration.duration.number || 0;
-					if (amt <= 1) return "1 Hour";
-					if (amt <= 8) return "8 Hours";
-					return "24+ Hours";
-				}
-
-				case "week":
-				case "day":
-				case "year": return "24+ Hours";
-				default: return "Special";
-			}
+	const duration = object.duration || {}
+	switch (duration.unit) {
+		case null:
+		case undefined:
+			return "Instant"
+		case "turn":
+		case "round": return "1 Round";
+		case "minute": {
+			const amt = duration.number || 0;
+			if (amt <= 1) return "1 Minute";
+			if (amt <= 10) return "10 Minutes";
+			if (amt <= 60) return "1 Hour";
+			if (amt <= 8 * 60) return "8 Hours";
+			return "24+ Hours";
 		}
+		case "hour": {
+			const amt = duration.number || 0;
+			if (amt <= 1) return "1 Hour";
+			if (amt <= 8) return "8 Hours";
+			return "24+ Hours";
+		}
+		case "week":
+		case "day":
+		case "year": return "24+ Hours";
 		case "unlimited": return "Unlimited";
-		case "special":
 		default: return "Special";
 	}
 }

@@ -27,11 +27,9 @@
 				]
 			],
 			"duration": {
-				"sustain": true,
-				"duration": {
-					"number": 5,
-					"unit": "round"
-				}
+				"number": 5,
+				"unit": "round",
+				"sustained": true
 			},
 			"entries": [
 				"You surround yourself in holy light that restores the living and rebuffs undead. You glow with bright light in a 30-foot radius and dim light to the next 30 feet. Living creatures that begin their turn adjacent to you recover {@dice 2d4} Hit Points. Undead creatures that begin their turn adjacent to you take {@damage 4d4} positive damage."
@@ -260,10 +258,8 @@
 			},
 			"targets": "1 willing creature",
 			"duration": {
-				"duration": {
-					"number": 10,
-					"unit": "minute"
-				}
+				"number": 10,
+				"unit": "minute"
 			},
 			"entries": [
 				"You wrap the target in shadows, granting them a +1 status bonus to {@skill Stealth} checks to {@action Hide} while in dim light or darkness. In addition, the shadows mask the creature's features. While the creature is in dim light or darkness, other creatures must succeed at a {@action Seek} action against the spell's DC to discern details about the target's appearance.",
@@ -322,10 +318,8 @@
 				]
 			},
 			"duration": {
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You create an area of bright light. Creatures with light blindness (Bestiary 343) that are {@condition blinded} by radiant field and remain in the area must attempt a Fortitude save at the start of their turns. On a failure, a creature remains {@condition blinded} for 1 round; this is an {@trait incapacitation} effect. This spell also suppresses magical darkness of your radiant field spell's level or lower."
@@ -368,10 +362,8 @@
 				"unit": "feet"
 			},
 			"duration": {
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You form a wall of brilliant light that obscures creatures. You create a thin wall of light in a straight line up to 60 feet long and 10 feet high. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. The wall stands vertically. If you wish, the wall can be of a shorter length or height. Creatures adjacent to the wall are {@condition dazzled}. Creatures that move through the wall take {@damage 2d6} fire damage (basic Fortitude save) as the concentrated light burns them."
@@ -414,10 +406,8 @@
 				"unit": "feet"
 			},
 			"duration": {
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You form a wall of pure darkness in a straight line up to 60 feet long and 10 feet high. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. The wall stands vertically and, if you wish, can be of a shorter length or height. The wall prevents light from passing through and appears as a sheet of pure darkness to creatures observing it.",
