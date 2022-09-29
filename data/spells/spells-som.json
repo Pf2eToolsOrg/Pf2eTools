@@ -737,7 +737,7 @@
 				"unit": "round"
 			},
 			"entries": [
-				"You focus deeply on the link between you and your eidolon and boost the power of your eidolon's attacks. Your eidolon gains a +2 status bonus to damage rolls with its unarmed attacks. If your eidolon's Strikes deal more than one weapon damage die, the status bonus increases to 2 per weapon damage die, to a maximum of +8 with four weapon damage dice."
+				"You focus deeply on the link between you and your eidolon and boost the power of your eidolon's attacks. Your eidolon gains a +2 status bonus to damage rolls with its unarmed attacks. If your eidolon's {@action Strike||Strikes} deal more than one weapon damage die, the status bonus increases to 2 per weapon damage die, to a maximum of +8 with four weapon damage dice."
 			]
 		},
 		{
@@ -2104,7 +2104,7 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +22, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher. You also gain specific abilities based on the type of demon you choose:",
-						"{@bold Babau} Speed 25 feet; {@b Melee} {@as 1} longspear (reach 10 feet), {@b Damage} {@damage 2d8+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 2d4} slashing plus {@damage 1d6} evil; all Strikes deal {@dice 2d6} additional precision damage to flatfooted creatures.",
+						"{@bold Babau} Speed 25 feet; {@b Melee} {@as 1} longspear (reach 10 feet), {@b Damage} {@damage 2d8+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 2d4} slashing plus {@damage 1d6} evil; all {@action Strike||Strikes} deal {@dice 2d6} additional precision damage to flatfooted creatures.",
 						"{@bold Hezrou} Speed 30 feet, swim 30 feet; {@b Melee} {@as 1} jaws (reach 10 feet), {@b Damage} {@damage 2d12+10} piercing plus {@damage 1d6} evil, and you can spend an action after a hit to Grab the target; {@b Melee} {@as 1} claw (agile, reach 10 feet), {@b Damage} {@damage 2d8} slashing plus {@damage 1d6} evil.",
 						"{@bold Nabasu} Speed 25 feet, fly 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil.",
 						"{@bold Vrock} Speed 25 feet, fly 35 feet; resistance 10 to electricity; {@b Melee} {@as 1} beak, {@b Damage} {@damage 2d8+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil."
@@ -2450,7 +2450,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You channel magical energy into the target weapon, and the air around it faintly hums each time you strike a blow, as the impact is absorbed into the weapon. If a creature is wielding the weapon at the end of its turn, the weapon discharges a burst of sound targeting one creature adjacent to the wielder (if any). The sonic damage this deals is equal to the number of successful Strikes with the target weapon that the wielder made that turn (to a maximum of 4 sonic damage if the wielder hits with four Strikes)."
+				"You channel magical energy into the target weapon, and the air around it faintly hums each time you strike a blow, as the impact is absorbed into the weapon. If a creature is wielding the weapon at the end of its turn, the weapon discharges a burst of sound targeting one creature adjacent to the wielder (if any). The sonic damage this deals is equal to the number of successful {@action Strike||Strikes} with the target weapon that the wielder made that turn (to a maximum of 4 sonic damage if the wielder hits with four {@action Strike||Strikes})."
 			],
 			"heightened": {
 				"plusX": {
@@ -2805,7 +2805,7 @@
 					"items": [
 						"{@bold Air} The target gains a +30-foot status bonus to its land Speed and gains a fly Speed equal to its land Speed without the status bonus.",
 						"{@bold Earth} While on the ground, the target gets a +2 status bonus to Fortitude and Reflex saves against effects that would {@action Shove} or {@action Trip} it, and to saves against effects that would attempt to knock it {@condition prone}. In addition, the ground adjacent to the target is {@quickref difficult terrain||3|terrain}, and the {@quickref difficult terrain||3|terrain} moves with the target, though the target ignores this {@quickref difficult terrain||3|terrain} with its own movement.",
-						"{@bold Fire} The target's melee unarmed Strikes and melee weapon Strikes deal {@damage 1d6} {@condition persistent damage ||persistent fire damage} on a hit.",
+						"{@bold Fire} The target's melee unarmed {@action Strike||Strikes} and melee weapon {@action Strike||Strikes} deal {@damage 1d6} {@condition persistent damage ||persistent fire damage} on a hit.",
 						"{@bold Water} The target takes on a watery sheen, gaining resistance 5 to fire and a swim Speed equal to its land Speed."
 					]
 				}
@@ -3175,7 +3175,7 @@
 						"{@bold Elananx} Speed 30 feet; resistance 5 to fire; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 1d6+8} piercing plus {@damage 1d6} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 1d6} slashing.",
 						"{@bold Naiad} Speed 25 feet, swim 25 feet; resistance 5 to fire; {@b Melee} {@as 1} aqueous fist ({@trait water}), {@b Damage} {@damage 1d8+8} bludgeoning.",
 						"{@bold Redcap} Speed 40 feet; Size Small; {@b Melee} {@as 1} scythe (deadly d10, trip), {@b Damage} {@damage 1d10+8} slashing; {@b Melee} {@as 1} boot (agile, versatile B), {@b Damage} {@damage 1d6} piercing.",
-						"Unicorn gain the {@trait beast} trait in addition to fey; Speed 40 feet; resistance 5 to poison; Size Large; {@b Melee} {@as 1} horn, {@b Damage} {@damage 1d10+8} piercing plus 1 good; {@b Melee} {@as 1} hoof ({@trait agile}), {@b Damage} {@damage 1d8} bludgeoning; all Strikes have the effects of a ghost touch property rune."
+						"Unicorn gain the {@trait beast} trait in addition to fey; Speed 40 feet; resistance 5 to poison; Size Large; {@b Melee} {@as 1} horn, {@b Damage} {@damage 1d10+8} piercing plus 1 good; {@b Melee} {@as 1} hoof ({@trait agile}), {@b Damage} {@damage 1d8} bludgeoning; all {@action Strike||Strikes} have the effects of a ghost touch property rune."
 					]
 				}
 			],
@@ -5707,7 +5707,7 @@
 					"type": "list",
 					"items": [
 						"You immediately become aware of the surrounding terrain features, and you gain {@ability tremorsense} as an imprecise sense with a range of 200 feet.",
-						"You can make terrain vengeance Strikes by commanding plants, rocks, and other natural features to attack your foes. These are melee Strikes that use your spell attack roll, can target any creature within 60 feet of you, and deal {@damage 5d12} bludgeoning, piercing, or slashing damage. You choose the damage type each time you make a terrain vengeance {@action Strike}.",
+						"You can make terrain vengeance {@action Strike||Strikes} by commanding plants, rocks, and other natural features to attack your foes. These are melee {@action Strike||Strikes} that use your spell attack roll, can target any creature within 60 feet of you, and deal {@damage 5d12} bludgeoning, piercing, or slashing damage. You choose the damage type each time you make a terrain vengeance {@action Strike}.",
 						"By spending a single action, which has the {@trait concentrate} trait, you can increase or decrease the environmental temperature changing it to either one step warmer than normal, one step colder than normal, or the normal temperature.",
 						"As a 2-action activity that has the {@trait concentrate} trait, you can create or remove {@quickref difficult terrain||3|terrain} caused by natural terrain in a 20-foot burst within 200 feet"
 					]
@@ -7980,7 +7980,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You attune yourself to a spiritual plane of the Outer Sphere (see sidebar on page 131), connecting your spirit without fully transporting to it. Your Strikes and spells gain the alignment traits of the plane you chose, which deals additional damage to creatures with a weakness to either of those alignment traits. Furthermore, the plane protects you from energy of the alignments that oppose the plane. You gain resistance 5 to damage of the alignments that oppose those of your chosen plane. For example, if you chose Heaven, your Strikes would gain the {@trait good} and {@trait lawful} traits, and you would gain resistance to chaotic and evil. If you choose the Boneyard, the resistance is to negative and positive damage instead."
+				"You attune yourself to a spiritual plane of the Outer Sphere (see sidebar on page 131), connecting your spirit without fully transporting to it. Your {@action Strike||Strikes} and spells gain the alignment traits of the plane you chose, which deals additional damage to creatures with a weakness to either of those alignment traits. Furthermore, the plane protects you from energy of the alignments that oppose the plane. You gain resistance 5 to damage of the alignments that oppose those of your chosen plane. For example, if you chose Heaven, your {@action Strike||Strikes} would gain the {@trait good} and {@trait lawful} traits, and you would gain resistance to chaotic and evil. If you choose the Boneyard, the resistance is to negative and positive damage instead."
 			],
 			"heightened": {
 				"plusX": {

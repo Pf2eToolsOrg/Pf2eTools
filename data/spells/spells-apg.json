@@ -157,7 +157,7 @@
 				"sustained": true
 			},
 			"entries": [
-				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from Strikes with the ghost touch property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't {@action Cast a Spell||Cast Spells} (but you can {@action Sustain Spells||Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
+				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from {@action Strike||Strikes} with the ghost touch property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't {@action Cast a Spell||Cast Spells} (but you can {@action Sustain Spells||Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
 			],
 			"heightened": {
 				"plusX": {
@@ -1460,7 +1460,7 @@
 				"unit": "special"
 			},
 			"entries": [
-				"You adopt the stance of clinging shadows. You can make shadow grasp Strikes. These deal {@damage 1d4} negative damage; are in the brawling group; and have the agile, grapple, {@trait reach}, and {@trait unarmed} traits.",
+				"You adopt the stance of clinging shadows. You can make shadow grasp {@action Strike||Strikes}. These deal {@damage 1d4} negative damage; are in the brawling group; and have the agile, grapple, {@trait reach}, and {@trait unarmed} traits.",
 				"While in clinging shadows stance, you gain a +2 circumstance bonus to {@skill Athletics} checks to {@action Grapple}, and to the DC for creatures to {@action Escape} from you."
 			]
 		},
@@ -2454,13 +2454,13 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You bind a part of your essence to your surroundings, creating a warded area that grants you power within it, but drains you outside of it. While within the area, you can make nature's wrath Strikes by commanding plants, wind, rocks, and other natural features to attack enemies. These are melee Strikes that use your spell attack modifier, can target any creature within the ward, and deal bludgeoning, piercing, or slashing damage equal to {@dice 2d8} plus your spellcasting ability modifier.",
-				"Upon {@action Cast a Spell||Casting the Spell}, you can immediately make a single nature's wrath {@action Strike}. You are {@condition quickened} while inside the ward, and can use the additional action only to make nature's wrath Strikes. You are {@condition slowed 1} while outside the area."
+				"You bind a part of your essence to your surroundings, creating a warded area that grants you power within it, but drains you outside of it. While within the area, you can make nature's wrath {@action Strike||Strikes} by commanding plants, wind, rocks, and other natural features to attack enemies. These are melee {@action Strike||Strikes} that use your spell attack modifier, can target any creature within the ward, and deal bludgeoning, piercing, or slashing damage equal to {@dice 2d8} plus your spellcasting ability modifier.",
+				"Upon {@action Cast a Spell||Casting the Spell}, you can immediately make a single nature's wrath {@action Strike}. You are {@condition quickened} while inside the ward, and can use the additional action only to make nature's wrath {@action Strike||Strikes}. You are {@condition slowed 1} while outside the area."
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The area increases by 5 feet, and the Strikes deal an additional {@dice 1d8} damage."
+						"The area increases by 5 feet, and the {@action Strike||Strikes} deal an additional {@dice 1d8} damage."
 					]
 				}
 			}
@@ -3573,7 +3573,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"Drawing from deep wells of spiritual power, you take on a special ki form. In your ki form, your hair, feathers, skin, or scales change color and begin to glow. In this form you gain a fly Speed equal to your land Speed. Choose force, lawful (only if you are lawful), negative, or positive damage. All your Strikes deal {@damage 1d6} additional damage of the chosen type. Your entire body is also surrounded by a glowing corona of the same color as your inner ki; this is a {@trait light} effect. Your corona is a 5-foot emanation that deals {@dice 2d6} damage of the chosen type to creatures who start their turn within the emanation. If the emanation overlaps with a {@trait darkness} effect, the corona's glow attempts to counteract the {@trait darkness} effect. Regardless of the outcome, the corona can't attempt to counteract that effect again for 1 day. As a single action, which has the {@trait concentrate} trait, you can flare your corona out to become a 30-foot emanation.",
+				"Drawing from deep wells of spiritual power, you take on a special ki form. In your ki form, your hair, feathers, skin, or scales change color and begin to glow. In this form you gain a fly Speed equal to your land Speed. Choose force, lawful (only if you are lawful), negative, or positive damage. All your {@action Strike||Strikes} deal {@damage 1d6} additional damage of the chosen type. Your entire body is also surrounded by a glowing corona of the same color as your inner ki; this is a {@trait light} effect. Your corona is a 5-foot emanation that deals {@dice 2d6} damage of the chosen type to creatures who start their turn within the emanation. If the emanation overlaps with a {@trait darkness} effect, the corona's glow attempts to counteract the {@trait darkness} effect. Regardless of the outcome, the corona can't attempt to counteract that effect again for 1 day. As a single action, which has the {@trait concentrate} trait, you can flare your corona out to become a 30-foot emanation.",
 				"In your ki form, your emotions surge to the forefront and it's difficult to moderate your attacks. Your weapons and unarmed attacks lose the {@trait nonlethal} trait. You take a \u20132 status penalty to saves against {@trait emotion} effects but gain a +2 status bonus to saves against all other {@trait mental} effects."
 			]
 		},
@@ -3705,7 +3705,7 @@
 			},
 			"entries": [
 				"You transcend your physical form, becoming a beacon of healing energy. Your body exudes bright light like a torch.",
-				"You gain resistance 5 to precision damage and weakness 5 to negative damage, and your unarmed Strikes deal an extra {@damage 1d4} positive damage.",
+				"You gain resistance 5 to precision damage and weakness 5 to negative damage, and your unarmed {@action Strike||Strikes} deal an extra {@damage 1d4} positive damage.",
 				"You can touch a living creature with an {@action Interact} action to restore {@dice 6d8} Hit Points to it, and when a creature touches you with an {@action Interact} action you can allow it to gain the same healing; either way, the creature becomes temporarily immune to life-giving form's healing for 1 minute. This is a positive {@trait healing} effect. You can't heal yourself with life-giving form. A creature harmed by positive damage (such as an undead) that touches you or damages you with an unarmed attack or non-reach melee weapon instead takes {@damage 3d4} positive damage, and it doesn't become temporarily immune.",
 				"You can {@action Dismiss} this spell."
 			],
@@ -4035,7 +4035,7 @@
 			},
 			"entries": [
 				"You reshape the target's shadow into a deadly form, such as strangling hands, a dangerous weapon, harrying runes, or the like, and command it to attack the target. When you {@action Cast a Spell||Cast the Spell}, and each time you {@action Sustain a Spell||Sustain the Spell}, the shadow makes a {@action Strike} against the target. The shadow moves along with the foe, always remaining within reach. If you {@action Sustain a Spell||Sustain the Spell} multiple times in a round, you gain this effect each time. The shadow uses and contributes to your multiple attack penalty.",
-				"The shadow's Strikes are melee spell attacks. Regardless of its shape, the shadow's Strikes deal damage equal to {@dice 1d10} plus your spellcasting ability modifier. You choose the type of damage when you {@action Cast a Spell||Cast the Spell}, choosing from bludgeoning, piercing, or slashing damage. The shadow doesn't take up space, grant flanking, or have any other attributes a creature would. The shadow can't make any attacks other than its {@action Strike}.",
+				"The shadow's {@action Strike||Strikes} are melee spell attacks. Regardless of its shape, the shadow's {@action Strike||Strikes} deal damage equal to {@dice 1d10} plus your spellcasting ability modifier. You choose the type of damage when you {@action Cast a Spell||Cast the Spell}, choosing from bludgeoning, piercing, or slashing damage. The shadow doesn't take up space, grant flanking, or have any other attributes a creature would. The shadow can't make any attacks other than its {@action Strike}.",
 				"The shadow vanishes if the target moves into an area of complete darkness or enters an area with light from all directions such that the target doesn't cast a shadow. If another effect is controlling the target's shadow when you cast {@spell malicious shadow|APG}, you can attempt to counteract that effect to temporarily take control of the shadow, but the original effect resumes when malicious shadow ends."
 			],
 			"heightened": {
@@ -6772,7 +6772,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Mouths} The wall has countless toothy mouths along its surface. The mouths {@action Strike} any creature that ends its turn within 5 feet of the wall, using your spell attack roll for these Strikes and dealing piercing damage equal to {@dice 1d6} + your spellcasting ability modifier. The mouths are capable of consuming potions; since the wall is alive, it can recover Hit Points from a potion of healing, but it can't benefit from any effect that would give it the ability to move. Otherwise, the GM determines which potions can affect the wall.",
+						"{@bold Mouths} The wall has countless toothy mouths along its surface. The mouths {@action Strike} any creature that ends its turn within 5 feet of the wall, using your spell attack roll for these {@action Strike||Strikes} and dealing piercing damage equal to {@dice 1d6} + your spellcasting ability modifier. The mouths are capable of consuming potions; since the wall is alive, it can recover Hit Points from a potion of healing, but it can't benefit from any effect that would give it the ability to move. Otherwise, the GM determines which potions can affect the wall.",
 						"{@bold Eyes} The wall sprouts hundreds of unblinking eyes. You can see through these eyes, gaining a +2 circumstance bonus to visual {@skill Perception} checks within the wall's line of sight. You can also use the eyes for determining line of sight for ranged attacks and spells, but you don't have line of effect through the wall.",
 						"{@bold Arms} The wall is a mass of grasping arms. Any creature that ends its turn within 5 feet of the wall must attempt a Reflex save."
 					]

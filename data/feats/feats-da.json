@@ -215,7 +215,7 @@
 			],
 			"prerequisites": "You've been brought to 0 Hit Points by an enemy that has the {@trait fire} trait or an enemy's ability that has the {@trait fire} trait.",
 			"entries": [
-				"A sweltering heat and sparks of flame that take the form of tiny copies of you surround your body. You're hot to the touch, gaining resistance 5 to cold and fire. Whenever an adjacent creature Strikes you with a melee attack or touches you, it takes {@damage 1d6} {@condition persistent damage ||persistent fire damage}. You gain the Thermal Eruption action.",
+				"A sweltering heat and sparks of flame that take the form of tiny copies of you surround your body. You're hot to the touch, gaining resistance 5 to cold and fire. Whenever an adjacent creature {@action Strike||Strikes} you with a melee attack or touches you, it takes {@damage 1d6} {@condition persistent damage ||persistent fire damage}. You gain the Thermal Eruption action.",
 				{
 					"name": "Thermal Eruption[two-actions]",
 					"traits": [
@@ -764,7 +764,7 @@
 			"trigger": "An enemy within 60 feet uses an ability that has the trait corresponding to your deviation damage type.",
 			"entries": [
 				"Your connection to energy is so much stronger than the offending display in front of you, allowing you to claim it for yourself. Attempt a counteract check against the triggering effect as you draw it into your body. If you successfully counteract the ability, you gain temporary Hit Points equal to double the counteract level of the ability, which last for 1 minute.",
-				"Awakening The energy you consume helps empower your abilities. The next ability from the dragon classification that you use increases its range by 30 feet if it has a range, or increases its area by 10 feet if it's a cone or line. If you don't use this benefit within 1 minute, it fades. Awakening You channel some of the seized energy into your next attack. Choose one of your weapons or unarmed attacks. Until the end of your next turn, Strikes with the chosen weapon or unarmed attack deal an additional {@dice 1d6} damage of a type matching the energy you consumed."
+				"Awakening The energy you consume helps empower your abilities. The next ability from the dragon classification that you use increases its range by 30 feet if it has a range, or increases its area by 10 feet if it's a cone or line. If you don't use this benefit within 1 minute, it fades. Awakening You channel some of the seized energy into your next attack. Choose one of your weapons or unarmed attacks. Until the end of your next turn, {@action Strike||Strikes} with the chosen weapon or unarmed attack deal an additional {@dice 1d6} damage of a type matching the energy you consumed."
 			]
 		},
 		{
@@ -825,7 +825,7 @@
 				"magical"
 			],
 			"entries": [
-				"Sharp shards of bone tear forth from your elbows, wrists, or other parts of your body. For 1 minute, you can make bone spike unarmed Strikes, which deal {@damage 1d6} piercing damage and have the versatile S and sweep trails. When you take the Bone Spikes action, you can choose one weapon on your person and duplicate its weapon runes onto your bone spikes (with the exception of any runes that couldn't apply to the bone spears). Awakening Your bones grow longer, lashing flexibly at range. While you have bone spikes, you can {@action Interact} to give your bone spikes reach 10 feet until the end of the current turn.",
+				"Sharp shards of bone tear forth from your elbows, wrists, or other parts of your body. For 1 minute, you can make bone spike unarmed {@action Strike||Strikes}, which deal {@damage 1d6} piercing damage and have the versatile S and sweep trails. When you take the Bone Spikes action, you can choose one weapon on your person and duplicate its weapon runes onto your bone spikes (with the exception of any runes that couldn't apply to the bone spears). Awakening Your bones grow longer, lashing flexibly at range. While you have bone spikes, you can {@action Interact} to give your bone spikes reach 10 feet until the end of the current turn.",
 				"Awakening Grooves in your bone spikes form a channel for venom. Your bone spikes deal {@damage 1d4} {@condition persistent damage ||persistent poison damage}, which increases to {@dice 2d4} at 10th level and {@dice 3d4} at 18th level."
 			]
 		},
@@ -2229,7 +2229,7 @@
 			],
 			"prerequisites": "{@feat Mind Smith Dedication|DA}",
 			"entries": [
-				"You have learned to stretch your mind's influence further, releasing projectiles with a swing of your mind weapon. You can make ranged mind weapon Strikes; these are ranged Strikes with a maximum range of 30 feet that deal {@dice 1d6} damage of the same type as your mind weapon. Your ranged mind weapon {@action Strike} gains all the benefits of your mind weapon's runes as long as they still apply to a ranged weapon.",
+				"You have learned to stretch your mind's influence further, releasing projectiles with a swing of your mind weapon. You can make ranged mind weapon {@action Strike||Strikes}; these are ranged {@action Strike||Strikes} with a maximum range of 30 feet that deal {@dice 1d6} damage of the same type as your mind weapon. Your ranged mind weapon {@action Strike} gains all the benefits of your mind weapon's runes as long as they still apply to a ranged weapon.",
 				"For example, if your weapon had +1, striking, and spell storing runes, you would get a +1 item bonus to hit with your ranged mind weapon {@action Strike}, and it would deal the additional damage from the striking rune, but it wouldn't be able to unleash a spell from the spell storing rune, as that rune can be etched onto only melee weapons."
 			]
 		},
@@ -2517,7 +2517,7 @@
 			],
 			"prerequisites": "{@feat Mind Smith Dedication|DA}",
 			"entries": [
-				"You always account for every weakness, allowing your mind to imagine just the right physical form to take advantage of your opponents. Choose between cold iron or silver; all your mind weapon Strikes are treated as the chosen type of metal."
+				"You always account for every weakness, allowing your mind to imagine just the right physical form to take advantage of your opponents. Choose between cold iron or silver; all your mind weapon {@action Strike||Strikes} are treated as the chosen type of metal."
 			]
 		},
 		{
@@ -3370,7 +3370,7 @@
 			],
 			"prerequisites": "{@feat Living Vessel Dedication|DA}, your entity is a demon",
 			"entries": [
-				"Most of the changes from the demon within you have harmed you so far, but you've found a way to expel some of the corruption within you to poison others. Until the beginning of your next turn, you and your weapons are covered in toxic sludge or another similar manifestation of the demonic corruption; your melee Strikes deal an additional {@damage 1d6} poison damage, and each time a creature hits you with a melee unarmed attack or otherwise touches you, it takes {@damage 1d6} poison damage.",
+				"Most of the changes from the demon within you have harmed you so far, but you've found a way to expel some of the corruption within you to poison others. Until the beginning of your next turn, you and your weapons are covered in toxic sludge or another similar manifestation of the demonic corruption; your melee {@action Strike||Strikes} deal an additional {@damage 1d6} poison damage, and each time a creature hits you with a melee unarmed attack or otherwise touches you, it takes {@damage 1d6} poison damage.",
 				"At 14th level, the poison damage increases to {@dice 2d6}, and at 20th level, the poison damage increases to {@dice 3d6}."
 			]
 		},
@@ -3522,7 +3522,7 @@
 					},
 					"requirements": "You are holding your implement",
 					"entries": [
-						"You glimpse a {@condition hidden} vulnerability and then strengthen it to aid you. Select a creature you can see. Until you Glimpse Vulnerability again, that target gains weakness 2 against your unarmed and weapon Strikes."
+						"You glimpse a {@condition hidden} vulnerability and then strengthen it to aid you. Select a creature you can see. Until you Glimpse Vulnerability again, that target gains weakness 2 against your unarmed and weapon {@action Strike||Strikes}."
 					],
 					"type": "ability"
 				}
@@ -3844,7 +3844,7 @@
 			],
 			"prerequisites": "Exploit Vulnerability",
 			"entries": [
-				"You can find the one weak point in a creature's scales, wards, or armor to get past its resistances. When you succeed at Exploit Vulnerability, you learn about the highest of the creature's resistances that can be bypassed (for example, if the creature has resistance to physical damage except silver), if the creature has one. If you prefer, you can choose the following benefit instead of one of the usual two benefits from Exploit Vulnerability Breached Defenses You can choose this benefit only if you succeeded at Exploit Vulnerability and learned the creature has at least one resistance that can be bypassed. Choose one such resistance. Your unarmed and weapon Strikes bypass the chosen resistance."
+				"You can find the one weak point in a creature's scales, wards, or armor to get past its resistances. When you succeed at Exploit Vulnerability, you learn about the highest of the creature's resistances that can be bypassed (for example, if the creature has resistance to physical damage except silver), if the creature has one. If you prefer, you can choose the following benefit instead of one of the usual two benefits from Exploit Vulnerability Breached Defenses You can choose this benefit only if you succeeded at Exploit Vulnerability and learned the creature has at least one resistance that can be bypassed. Choose one such resistance. Your unarmed and weapon {@action Strike||Strikes} bypass the chosen resistance."
 			]
 		},
 		{
@@ -3934,7 +3934,7 @@
 			"entries": [
 				"When you apply your will to invoke a vulnerability, the result is more powerful, and the vulnerability ripples out in a web from your main target to affect a broader range of creatures.",
 				"This has one of two effects, based on the type of vulnerability you invoked.",
-				"While you have mortal weakness applied, your Strikes also apply that weakness against any creature that has that weakness, not just creatures of the exact same kind. For instance, if you used mortal weakness against a red dragon to apply its weakness to cold to your Strikes, those Strikes would also apply to the weakness to cold of fire elementals or any other creature with a weakness to cold.",
+				"While you have mortal weakness applied, your {@action Strike||Strikes} also apply that weakness against any creature that has that weakness, not just creatures of the exact same kind. For instance, if you used mortal weakness against a red dragon to apply its weakness to cold to your {@action Strike||Strikes}, those {@action Strike||Strikes} would also apply to the weakness to cold of fire elementals or any other creature with a weakness to cold.",
 				"While you have personal antithesis applied to a non-humanoid creature, you can apply your custom weakness to all creatures of the exact same kind. For example, if you used personal antithesis against an imp, the custom weakness would apply to other imps but not to other non-imp devils."
 			]
 		},
@@ -4016,7 +4016,7 @@
 			"prerequisites": "Exploit Vulnerability, mortal weakness",
 			"requirements": "You are Exploiting a creature's Vulnerability using mortal weakness.",
 			"entries": [
-				"You select an object from your esoterica that has great personal value to you, such as a locket or treasured ring, and you grant it to an ally, establishing a personal link that allows your ally to affect an enemy as if they were you. The ally's Strikes apply the weakness from your mortal weakness the same way your Strikes do. This benefit ends when your Exploit Vulnerability ends or you Share Weakness again."
+				"You select an object from your esoterica that has great personal value to you, such as a locket or treasured ring, and you grant it to an ally, establishing a personal link that allows your ally to affect an enemy as if they were you. The ally's {@action Strike||Strikes} apply the weakness from your mortal weakness the same way your {@action Strike||Strikes} do. This benefit ends when your Exploit Vulnerability ends or you Share Weakness again."
 			]
 		},
 		{
@@ -4239,7 +4239,7 @@
 			],
 			"requirements": "You're holding an implement.",
 			"entries": [
-				"Your implement supercharges your weapon to shoot an impossible volley or carve through your foes. Make a {@action Strike} with your weapon against each enemy within 30 feet of you. You don't increase your multiple attack penalty until after making all the attacks. If your weapon is a melee weapon and any of the attacks are outside your reach, you {@action Release} the weapon before the Strikes, and it returns to your grasp after all of them. If your hands are full when the weapon returns, it falls to the ground in your space."
+				"Your implement supercharges your weapon to shoot an impossible volley or carve through your foes. Make a {@action Strike} with your weapon against each enemy within 30 feet of you. You don't increase your multiple attack penalty until after making all the attacks. If your weapon is a melee weapon and any of the attacks are outside your reach, you {@action Release} the weapon before the {@action Strike||Strikes}, and it returns to your grasp after all of them. If your hands are full when the weapon returns, it falls to the ground in your space."
 			]
 		},
 		{
@@ -4265,7 +4265,7 @@
 			],
 			"prerequisites": "Share Weakness",
 			"entries": [
-				"You've nurtured your bonds with your comrades, allowing you to share the benefits of your esoterica. When you use Exploit Vulnerability and choose mortal weakness, select any number of allies within 30 feet of you. Their Strikes apply the weakness from mortal weakness the same way your Strikes do. This benefit ends when you stop benefiting from Exploit Vulnerability. Since this effect depends on magically strengthening your bond to your allies, only allies with whom you've developed a rapport over the course of one or more days gain the benefit."
+				"You've nurtured your bonds with your comrades, allowing you to share the benefits of your esoterica. When you use Exploit Vulnerability and choose mortal weakness, select any number of allies within 30 feet of you. Their {@action Strike||Strikes} apply the weakness from mortal weakness the same way your {@action Strike||Strikes} do. This benefit ends when you stop benefiting from Exploit Vulnerability. Since this effect depends on magically strengthening your bond to your allies, only allies with whom you've developed a rapport over the course of one or more days gain the benefit."
 			]
 		},
 		{

@@ -500,7 +500,7 @@ class ScaleCreature {
 		that would otherwise be trivial, or show that one enemy is stronger than its kin. To do this quickly and easily,
 		apply the elite adjustments to its statistics as follows:
 		• Increase the creature’s AC, attack modifiers, DCs, saving throws, Perception, and skill modifiers by 2.
-		• Increase the damage of its Strikes and other offensive abilities by 2. If the creature has limits on how many
+		• Increase the damage of its {@action Strike||Strikes} and other offensive abilities by 2. If the creature has limits on how many
 		  times or how often it can use an ability (such as a spellcaster’s spells or a dragon’s Breath Weapon),
 		  increase the damage by 4 instead.
 		• Increase the creature’s Hit Points based on its starting level (see the table below).
@@ -537,7 +537,7 @@ class ScaleCreature {
 	challenging, or show that one enemy is weaker than its kin. To do this quickly and easily, apply the weak
 	adjustments to its statistics as follows.
 	• Decrease the creature’s AC, attack modifiers, DCs, saving throws, and skill modifiers by 2.
-	• Decrease the damage of its Strikes and other offensive abilities by 2. If the creature has limits on how many
+	• Decrease the damage of its {@action Strike||Strikes} and other offensive abilities by 2. If the creature has limits on how many
 	  times or how often it can use an ability (such as a spellcaster’s spells or a dragon’s Breath Weapon),
 	  decrease the damage by 4 instead.
 	• Decrease the creature’s HP based on its starting level.

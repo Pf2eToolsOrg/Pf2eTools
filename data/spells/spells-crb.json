@@ -6368,14 +6368,14 @@
 			},
 			"entries": [
 				"You try to create a temporary duplicate of an enemy to fight on your behalf. The target can attempt a Fortitude save to disrupt the spell. The duplicate appears in an unoccupied space adjacent to the target and has the target's attack modifier, AC, saving throw modifiers, {@skill Perception}, and skill modifiers, but it has only 70 Hit Points and lacks the target's special abilities, including immunities, resistances, and weaknesses. It has no magic items except weapon potency runes.",
-				"The duplicate gains the minion trait, and it can only {@action Stride} and {@action Strike}. Its Strikes deal the target's normal damage but don't apply added effects, since it doesn't have special abilities. The spell automatically ends if the duplicate's Hit Points drop to 0.",
+				"The duplicate gains the minion trait, and it can only {@action Stride} and {@action Strike}. Its {@action Strike||Strikes} deal the target's normal damage but don't apply added effects, since it doesn't have special abilities. The spell automatically ends if the duplicate's Hit Points drop to 0.",
 				"The duplicate attacks your enemies to the best of its abilities. You can also try to give it additional instructions; when you {@action Sustain a Spell||Sustain the Spell}, you can also Command a Minion as part of your action, but the GM determines whether the duplicate follows your command.",
 				"The duplicate is unstable, so each turn after it takes its actions, it loses {@dice 4d6} Hit Points. It's not a living creature, and it can never regain its lost Hit Points in any way.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You fail to create a duplicate.",
-						"Success": "The duplicate deals half damage with its Strikes and the duration is reduced to a maximum of 2 rounds.",
+						"Success": "The duplicate deals half damage with its {@action Strike||Strikes} and the duration is reduced to a maximum of 2 rounds.",
 						"Failure": "The duplicate works as described."
 					}
 				}
@@ -10850,14 +10850,14 @@
 				"The image can't speak, but you can use your actions to speak through the creature, with the spell disguising your voice as appropriate. You might need to attempt a {@skill Deception} or {@skill Performance} check to mimic the creature, as determined by the GM. This is especially likely if you're trying to imitate a specific person and engage with someone that person knows.",
 				"In combat, the illusion can use 2 actions per turn, which it uses when you {@action Sustain a Spell||Sustain the Spell}. It uses your spell attack roll for attack rolls and your spell DC for its AC. Its saving throw modifiers are equal to your spell DC \u2013 10. It is substantial enough that it can flank other creatures. If the image is hit by an attack or fails a save, the spell ends.",
 				"The illusion can cause damage by making the target believe the illusion's attacks are real, but it cannot otherwise directly affect the physical world. If the illusory creature hits with a {@action Strike}, the target takes mental damage equal to {@dice 1d4} plus your spellcasting ability modifier. This is a {@trait mental} effect.",
-				"The illusion's Strikes are nonlethal. If the damage doesn't correspond to the image of the monster\u2014for example, if an illusory Large dragon deals only 5 damage\u2014the GM might allow the target to attempt an immediate {@skill Perception} check to disbelieve the spell. Any relevant resistances and weaknesses apply if the target thinks they do, as judged by the GM. For example, if the illusion wields a warhammer and attacks a creature resistant to bludgeoning damage, the creature would take less mental damage. However, illusory damage does not deactivate regeneration or trigger other effects that require a certain damage type. The GM should track illusory damage dealt by the illusion.",
+				"The illusion's {@action Strike||Strikes} are nonlethal. If the damage doesn't correspond to the image of the monster\u2014for example, if an illusory Large dragon deals only 5 damage\u2014the GM might allow the target to attempt an immediate {@skill Perception} check to disbelieve the spell. Any relevant resistances and weaknesses apply if the target thinks they do, as judged by the GM. For example, if the illusion wields a warhammer and attacks a creature resistant to bludgeoning damage, the creature would take less mental damage. However, illusory damage does not deactivate regeneration or trigger other effects that require a certain damage type. The GM should track illusory damage dealt by the illusion.",
 				"Any creature that touches the image or uses the {@action Seek} action to examine it can attempt to {@quickref disbelieve your illusion|CRB|2|disbelieving illusions|0}.",
 				"When a creature {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0}, it recovers from half the damage it had taken from it (if any) and doesn't take any further damage from it."
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage of the image's Strikes increases by {@dice 1d4}, and the maximum size of creature you can create increases by one (to a maximum of Gargantuan)."
+						"The damage of the image's {@action Strike||Strikes} increases by {@dice 1d4}, and the maximum size of creature you can create increases by one (to a maximum of Gargantuan)."
 					]
 				}
 			}
@@ -11677,7 +11677,7 @@
 				]
 			],
 			"entries": [
-				"You focus your ki into magical attacks. Make an unarmed {@action Strike} or {@action Flurry of Blows} (this doesn't change the limit on using only one flourish per turn). You gain a +1 status bonus to your attack rolls with the Strikes, and the Strikes deal {@damage 1d6} extra damage. This damage can be any of the following types of your choice, chosen each time you {@action Strike}: force, lawful (only if you're lawful), negative, or positive."
+				"You focus your ki into magical attacks. Make an unarmed {@action Strike} or {@action Flurry of Blows} (this doesn't change the limit on using only one flourish per turn). You gain a +1 status bonus to your attack rolls with the {@action Strike||Strikes}, and the {@action Strike||Strikes} deal {@damage 1d6} extra damage. This damage can be any of the following types of your choice, chosen each time you {@action Strike}: force, lawful (only if you're lawful), negative, or positive."
 			],
 			"heightened": {
 				"plusX": {
@@ -19513,7 +19513,7 @@
 			"entries": [
 				"A Medium guardian made of magical force appears and attacks foes you designate within range. The spiritual guardian is translucent and appears to be holding your deity's favored weapon.",
 				"When you {@action Cast a Spell||Cast the Spell}, the spiritual guardian appears in an unoccupied space next to a foe of your choice within range and makes a {@action Strike} against it. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the spiritual guardian to an unoccupied space next to a target within range (if necessary) and make a {@action Strike} with it. The guardian uses and contributes to your multiple attack penalty. Alternatively, when you {@action Sustain a Spell||Sustain the Spell}, you can have the guardian move adjacent to an ally and protect that ally. If you do, each time the ally would take damage, the guardian takes the first 10 damage instead of your ally. It continues to do so until you move the guardian to attack an enemy or defend a different ally, or until the guardian is destroyed (it has 50 Hit Points and can't recover Hit Points by any means). The guardian can't usually take damage except when protecting an ally, though {@spell disintegrate} automatically destroys it if it hits the spiritual guardian's AC of 25.",
-				"The guardian's Strikes are melee spell attacks. Regardless of the appearance of the guardian's weapon, the guardian deals force damage equal to {@dice 2d8} plus your spellcasting ability modifier, but you can deal damage of the type normally dealt by the weapon it holds instead of force damage. No other traits or statistics of the weapon apply, and even a ranged weapon attacks adjacent creatures only. Despite making a spell attack, the spiritual guardian's weapon is a weapon for the purposes of triggers, resistances, and so forth.",
+				"The guardian's {@action Strike||Strikes} are melee spell attacks. Regardless of the appearance of the guardian's weapon, the guardian deals force damage equal to {@dice 2d8} plus your spellcasting ability modifier, but you can deal damage of the type normally dealt by the weapon it holds instead of force damage. No other traits or statistics of the weapon apply, and even a ranged weapon attacks adjacent creatures only. Despite making a spell attack, the spiritual guardian's weapon is a weapon for the purposes of triggers, resistances, and so forth.",
 				"The guardian takes up space and allies can use it when flanking, but it doesn't have any other attributes a creature would normally have aside from Hit Points, and creatures can move through its space without hindrance. The guardian can't make any attack other than its {@action Strike}, and feats or spells that affect weapons or enhance allies do not apply to the guardian."
 			],
 			"heightened": {
@@ -19559,7 +19559,7 @@
 			"entries": [
 				"A weapon made of pure magical force materializes and attacks foes you designate within range. This weapon has a ghostly appearance and manifests as a club, a dagger, or your deity's favored weapon.",
 				"When you cast the spell, the weapon appears next to a foe you choose within range and makes a {@action Strike} against it. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the weapon to a new target within range (if needed) and {@action Strike} with it. The spiritual weapon uses and contributes to your multiple attack penalty.",
-				"The weapon's Strikes are melee spell attacks. Regardless of its appearance, the weapon deals force damage equal to {@dice 1d8} plus your spellcasting ability modifier. You can deal damage of the type normally dealt by the weapon instead of force damage (or any of the available damage types for a versatile weapon). No other statistics or traits of the weapon apply, and even a ranged weapon attacks adjacent creatures only. Despite making a spell attack, the spiritual weapon is a weapon for purposes of triggers, resistances, and so forth.",
+				"The weapon's {@action Strike||Strikes} are melee spell attacks. Regardless of its appearance, the weapon deals force damage equal to {@dice 1d8} plus your spellcasting ability modifier. You can deal damage of the type normally dealt by the weapon instead of force damage (or any of the available damage types for a versatile weapon). No other statistics or traits of the weapon apply, and even a ranged weapon attacks adjacent creatures only. Despite making a spell attack, the spiritual weapon is a weapon for purposes of triggers, resistances, and so forth.",
 				"The weapon doesn't take up space, grant flanking, or have any other attributes a creature would. The weapon can't make any attack other than its {@action Strike}, and feats or spells that affect weapons do not apply to it."
 			],
 			"heightened": {
@@ -21749,7 +21749,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"Your arms turn into long, pliable tentacles, increasing your reach when you're delivering touch range spells and making unarmed {@action Strike||Strikes} with your arms (such as fist and claw Strikes) to 10 feet. This doesn't change the reach of your melee weapon attacks. During the duration, whenever you {@action Cast a Spell}, you can add an additional action to that spell's casting to temporarily extend your reach to 20 feet to deliver that spell."
+				"Your arms turn into long, pliable tentacles, increasing your reach when you're delivering touch range spells and making unarmed {@action Strike||Strikes} with your arms (such as fist and claw {@action Strike||Strikes}) to 10 feet. This doesn't change the reach of your melee weapon attacks. During the duration, whenever you {@action Cast a Spell}, you can add an additional action to that spell's casting to temporarily extend your reach to 20 feet to deliver that spell."
 			],
 			"heightened": {
 				"plusX": {
@@ -24034,10 +24034,10 @@
 			},
 			"entries": [
 				"An immense weapon of force appears, hovering in the air above the target. The weapon has the ghostly visual appearance of your deity's favored weapon. Name war or peace when you cast this spell.",
-				"If you name \"war,\" mentally choose one creature. This must be a creature both you and the target can see. The target instinctively knows which creature this is. At the end of each of the target's turns, if the target did not use a {@condition hostile} action against the creature you chose during that turn, the weapon Strikes the target.",
-				"If you name \"peace,\" mentally choose up to five allies. The target instinctively knows who those allies are. The weapon Strikes the target each time the target uses a {@condition hostile} action against you or one of your allies. The weapon Strikes only once per action, even if the action targets multiple allies (such as for a {@spell fireball} or a {@feat Whirlwind Strike})",
-				"Strikes with the weapon are melee weapon attacks, but they use your spell attack modifier. Regardless of its appearance, the weapon deals force damage equal to {@dice 3d10} plus your spellcasting ability modifier. The weapon takes a multiple attack penalty, which increases throughout the target's turn, but its penalty is separate from yours.",
-				"When the weapon Strikes, you can deal damage of the normal damage type of the weapon instead of force damage (or any of the available damage types, for a versatile weapon)",
+				"If you name \"war,\" mentally choose one creature. This must be a creature both you and the target can see. The target instinctively knows which creature this is. At the end of each of the target's turns, if the target did not use a {@condition hostile} action against the creature you chose during that turn, the weapon {@action Strike||Strikes} the target.",
+				"If you name \"peace,\" mentally choose up to five allies. The target instinctively knows who those allies are. The weapon {@action Strike||Strikes} the target each time the target uses a {@condition hostile} action against you or one of your allies. The weapon {@action Strike||Strikes} only once per action, even if the action targets multiple allies (such as for a {@spell fireball} or a {@feat Whirlwind Strike})",
+				"{@action Strike||Strikes} with the weapon are melee weapon attacks, but they use your spell attack modifier. Regardless of its appearance, the weapon deals force damage equal to {@dice 3d10} plus your spellcasting ability modifier. The weapon takes a multiple attack penalty, which increases throughout the target's turn, but its penalty is separate from yours.",
+				"When the weapon {@action Strike||Strikes}, you can deal damage of the normal damage type of the weapon instead of force damage (or any of the available damage types, for a versatile weapon)",
 				"No other statistics or attributes of the weapon apply, and even a ranged weapon attacks adjacent creatures only. A weapon of judgment is a weapon for the purposes of triggers, resistances, and so forth.",
 				"The weapon doesn't take up space, grant flanking, or have any other attributes a creature would. The weapon can't make any attack other than its {@action Strike}, and feats or spells that affect weapons do not apply to this weapon."
 			],
@@ -24398,7 +24398,7 @@
 				"unit": "special"
 			},
 			"entries": [
-				"You take on the stance of the flowing winds, sending out waves of energy at a distance. You can make wind crash unarmed Strikes as ranged Strikes against targets within 30 feet. These deal {@damage 1d6} bludgeoning damage, use the brawling group, and have the agile, nonlethal, {@trait propulsive}, and {@trait unarmed} traits. Wind crash Strikes ignore concealment and all cover.",
+				"You take on the stance of the flowing winds, sending out waves of energy at a distance. You can make wind crash unarmed {@action Strike||Strikes} as ranged {@action Strike||Strikes} against targets within 30 feet. These deal {@damage 1d6} bludgeoning damage, use the brawling group, and have the agile, nonlethal, {@trait propulsive}, and {@trait unarmed} traits. Wind crash {@action Strike||Strikes} ignore concealment and all cover.",
 				"While in wild winds stance, you gain a +2 circumstance bonus to AC against ranged attacks."
 			]
 		},

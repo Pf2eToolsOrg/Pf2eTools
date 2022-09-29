@@ -765,7 +765,7 @@
 						],
 						"trigger": "An enemy within 15 feet damages the antipaladin",
 						"entries": [
-							"The antipaladin increases the amount of damage they take by {@dice 2d6} and deals {@dice 2d6} damage to the triggering enemy, choosing evil or negative damage. In addition, the antipaladin deals 2 extra damage of the chosen type with their Strikes against the triggering creature until the end of the antipaladin's next turn."
+							"The antipaladin increases the amount of damage they take by {@dice 2d6} and deals {@dice 2d6} damage to the triggering enemy, choosing evil or negative damage. In addition, the antipaladin deals 2 extra damage of the chosen type with their {@action Strike||Strikes} against the triggering creature until the end of the antipaladin's next turn."
 						],
 						"name": "Destructive Vengeance"
 					}
@@ -1315,7 +1315,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The assassin Interacts to draw a weapon, then Strikes with that weapon."
+							"The assassin Interacts to draw a weapon, then {@action Strike||Strikes} with that weapon."
 						],
 						"name": "Quick Draw"
 					},
@@ -2452,7 +2452,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The bosun Strikes with their naval pike.",
+							"The bosun {@action Strike||Strikes} with their naval pike.",
 							"If this {@action Strike} hits, the bosun can either move the target 5 feet within the pike's reach or make a fist {@action Strike} against the target without increasing their multiple attack penalty until after the fist {@action Strike}."
 						],
 						"name": "Pike and Strike"
@@ -4769,7 +4769,7 @@
 						},
 						"requirements": "The executioner is adjacent to a {@condition dying} creature or a creature specifically prepared for a killing blow",
 						"entries": [
-							"The executioner Strikes the creature with their greataxe. On a hit, in addition to taking damage, the target must attempt a Fortitude save or be reduced to 0 HP and become {@condition dying 1}. If the creature was already {@condition dying} (including if it was reduced to 0 HP by the {@action Strike}'s damage), the creature's {@condition dying} value increases by 1, in addition to any increase from the {@action Strike}. On a critical failure, the creature dies instantly. If the executioner's {@action Strike} was a critical hit, the target uses the outcome for one degree of success worse than the result of their saving throw."
+							"The executioner {@action Strike||Strikes} the creature with their greataxe. On a hit, in addition to taking damage, the target must attempt a Fortitude save or be reduced to 0 HP and become {@condition dying 1}. If the creature was already {@condition dying} (including if it was reduced to 0 HP by the {@action Strike}'s damage), the creature's {@condition dying} value increases by 1, in addition to any increase from the {@action Strike}. On a critical failure, the creature dies instantly. If the executioner's {@action Strike} was a critical hit, the target uses the outcome for one degree of success worse than the result of their saving throw."
 						],
 						"name": "Behead"
 					},
@@ -4786,7 +4786,7 @@
 						],
 						"entries": [
 							"The executioner makes a melee {@action Strike}. If it hits and deals damage, the target is {@condition frightened 1}, or {@condition frightened 2} on a critical hit.",
-							"Mark for Death {@as 1} (concentrate) The executioner marks a single creature they can see for death. The first time each round the executioner Strikes that creature, the {@action Strike} deals {@dice 1d12} additional precision damage. The creature remains marked for death until the executioner is knocked out, marks a different creature for death, or the encounter ends."
+							"Mark for Death {@as 1} (concentrate) The executioner marks a single creature they can see for death. The first time each round the executioner {@action Strike||Strikes} that creature, the {@action Strike} deals {@dice 1d12} additional precision damage. The creature remains marked for death until the executioner is knocked out, marks a different creature for death, or the encounter ends."
 						],
 						"name": "Intimidating Strike"
 					}
@@ -5422,7 +5422,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The gang leader Interacts to draw a weapon, then Strikes with that weapon."
+							"The gang leader Interacts to draw a weapon, then {@action Strike||Strikes} with that weapon."
 						],
 						"name": "Quick Draw"
 					},
@@ -9707,7 +9707,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The reckless scientist Interacts to draw a bomb, then Strikes with it."
+							"The reckless scientist Interacts to draw a bomb, then {@action Strike||Strikes} with it."
 						],
 						"name": "Quick Bomber"
 					},
@@ -10551,7 +10551,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The captain makes two Strikes, one with their rapier and one with their main-gauche (in either order). If both Strikes hit, the ship captain can attempt to {@action Disarm} the target. Their multiple attack penalty increases only after all the attacks are made."
+							"The captain makes two {@action Strike||Strikes}, one with their rapier and one with their main-gauche (in either order). If both {@action Strike||Strikes} hit, the ship captain can attempt to {@action Disarm} the target. Their multiple attack penalty increases only after all the attacks are made."
 						],
 						"name": "Dual Disarm"
 					},
@@ -10837,7 +10837,7 @@
 							"freq": 1
 						},
 						"entries": [
-							"The spy draws a weapon and then Strikes with it. The target of the {@action Strike} is {@condition flat-footed} against the attack."
+							"The spy draws a weapon and then {@action Strike||Strikes} with it. The target of the {@action Strike} is {@condition flat-footed} against the attack."
 						],
 						"name": "Hidden Blade"
 					},
@@ -10962,7 +10962,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The surgeon attempts a {@skill Medicine} check against the Fortitude DC of one living creature they can see within 60 feet. On a success, the surgeon's melee Strikes deal an extra {@damage 1d6} precision damage against that creature ({@dice 2d6} on a critical success) until 1 minute passes or the surgeon critically hits that creature, whichever comes first. Using this action again designates a new target and ends the effect for any previous target. A surgeon can target an individual creature no more than once per day with this ability."
+							"The surgeon attempts a {@skill Medicine} check against the Fortitude DC of one living creature they can see within 60 feet. On a success, the surgeon's melee {@action Strike||Strikes} deal an extra {@damage 1d6} precision damage against that creature ({@dice 2d6} on a critical success) until 1 minute passes or the surgeon critically hits that creature, whichever comes first. Using this action again designates a new target and ends the effect for any previous target. A surgeon can target an individual creature no more than once per day with this ability."
 						],
 						"name": "Medical Malpractice"
 					}
@@ -12055,7 +12055,7 @@
 						},
 						"trigger": "One of the warden's enemies within 100 feet attacks one of the warden's allies or a person the warden is sworn to protect",
 						"entries": [
-							"The warden Strikes the triggering enemy. If the {@action Strike} hits, the enemy's attack is deflected, reducing its damage by 8, or by 16 if the warden's {@action Strike} was a critical hit."
+							"The warden {@action Strike||Strikes} the triggering enemy. If the {@action Strike} hits, the enemy's attack is deflected, reducing its damage by 8, or by 16 if the warden's {@action Strike} was a critical hit."
 						],
 						"name": "Warding Strike"
 					}
