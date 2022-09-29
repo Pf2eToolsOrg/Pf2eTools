@@ -61,6 +61,19 @@ function updateFolder (folder) {
 						sp.range.unit = sp.range.type
 						delete sp.range.type
 					}
+					if (sp && sp.type) {
+						console.log(`\tUpdating ${sp.name} type in ${file}...`)
+						if (sp.type.toLowerCase() === "focus") sp.focus = true
+						delete sp.type
+					}
+					if (sp && typeof sp.components === "object" && !Array.isArray(sp.components)) {
+						console.log(`\tUpdating ${sp.name} spell components in ${file}...`)
+						sp.components = [Object.keys(sp.components)]
+					}
+					if (sp && sp.traditions && sp.traditions.some(rx => rx.match(/[A-Z]/g))) {
+						console.log(`\tUpdating ${sp.name} traditions in ${file}...`)
+						sp.traditions = sp.traditions.map(t => t.toLowerCase())
+					}
 					if (sp && sp.subclass && sp.subclass["Cleric|Domain"]) {
 						sp.domains = sp.subclass["Cleric|Domain"]
 						delete sp.subclass["Cleric|Domain"]
@@ -239,4 +252,5 @@ function updateFolder (folder) {
 }
 
 updateFolder(`./data`);
+// updateFolder(`./homebrew/pf2e-homebrew`);
 console.log("Updating complete.");
