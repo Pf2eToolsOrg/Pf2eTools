@@ -4733,38 +4733,37 @@ Renderer.deity = {
 	},
 
 	getIntercession (deity) {
-		const textStack = [""];
+		const renderStack = [];
 		const renderer = Renderer.get().setFirstSection(true)
-		if (deity.intercession) {
-			const entry = {
+		
+		if (deity.intercession.flavor) renderer.recursiveRender(
+			{
 				type: "pf2-h2",
 				name: "Divine Intercession",
 				entries: deity.intercession.flavor ? deity.intercession.flavor : [],
-			};
-			renderer.recursiveRender(entry, textStack);
-			if (deity.intercession.boon) {
-				Object.keys(deity.intercession.boon)
-					.map(key => `<p class="pf2-book__option"><strong>${key}&nbsp;</strong>${renderer.render(deity.intercession.boon[key])}</p>`)
-					.forEach(it => textStack.push(it))
+			},
+			renderStack
+		);
+		
+		Object.keys(deity.intercession).forEach(key => {
+			if (key.match(/^(Minor|Moderate|Major) (Boon|Curse)$/)) {
+				renderStack.push(`<p class="pf2-book__option"><strong>${key}:&nbsp;</strong>${renderer.render(deity.intercession[key])}</p>`);
 			}
-			if (deity.intercession.curse) {
-				Object.keys(deity.intercession.curse)
-					.map(key => `<p class="pf2-book__option"><strong>${key}&nbsp;</strong>${renderer.render(deity.intercession.curse[key])}</p>`)
-					.forEach(it => textStack.push(it))
-			}
-			// textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
-		}
-		return textStack.join("");
+		});
+		
+		renderStack.push(Renderer.utils.getPageP(deity.intercession));
+		
+		return renderStack.join("");
 	},
 
 	getImage (deity) {
-		const textStack = [""];
+		const renderStack = [""];
 		if (deity.images) {
 			const img = deity.images[0];
-			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
-			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
+			if (img.includes("2e.aonprd.com")) renderStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			else renderStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
 		}
-		return textStack.join("");
+		return renderStack.join("");
 	},
 
 	async pGetFluff (deity) {
