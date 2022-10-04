@@ -78,7 +78,8 @@
 				"TiO",
 				"BotD",
 				"DA",
-				"LOKL"
+				"LOKL",
+				"LOTG"
 			]
 		},
 		"alignmentTraits": {
@@ -1397,12 +1398,16 @@
 			"type": "array",
 			"items": {
 				"type": "string",
-				"enum": [
-					"{@action Strike}",
-					"{@action Interact}",
-					"{@action Cast a Spell}",
-					"envision",
-					"command"
+				"oneOf": [
+					{
+						"enum": [
+							"envision",
+							"command"
+						]
+					},
+					{
+						"pattern": "\\{@action .+?\\}"
+					}
 				]
 			},
 			"minItems": 1

@@ -3955,7 +3955,7 @@ BrewUtil = {
 		if (!IS_VTT && !IS_DEPLOYED) {
 			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${VeCt.JSON_HOMEBREW_INDEX}`);
 			// auto-load from `homebrew/`, for custom versions of the site
-			if (data.toImport.length) {
+			if (data.toImport && data.toImport.length) {
 				const page = BrewUtil._PAGE || UrlUtil.getCurrentPage();
 				const allData = await Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`)));
 				await Promise.all(allData.map(d => callbackFn(d, page)));
