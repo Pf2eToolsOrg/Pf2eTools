@@ -8,7 +8,7 @@ const VERSION_REPLACE_REGEXP = new RegExp(`${VERSION_MARKER_START.escapeRegexp()
 
 async function main () {
 	const sources = JSON.parse(fs.readFileSync("data/sources.json", "utf-8")).source;
-	const SRC = sources.map(it => `SRC_${it.source} = "SRC_${it.source}"`);
+	const SRC = sources.map(it => `SRC_${it.source} = "${it.source}"`);
 	const SOURCE_JSON_TO_FULL = sources.map(it => `Parser.SOURCE_JSON_TO_FULL[SRC_${it.source}] = "${it.name}"`);
 	const SOURCE_JSON_TO_ABV = sources.map(it => `Parser.SOURCE_JSON_TO_ABV[SRC_${it.source}] = "${it.source}"`);
 	const SOURCE_JSON_TO_DATE = sources.map(it => `Parser.SOURCE_JSON_TO_DATE[SRC_${it.source}] = "${it.date}"`);
@@ -27,7 +27,7 @@ async function main () {
 			});
 		}
 	});
-	TAG_TO_DEFAULT_SOURCE = [`Parser.TAG_TO_DEFAULT_SOURCE = ${JSON.stringify(TAG_TO_DEFAULT_SOURCE)}`.replace(/"(SRC.+?)"(,|)/g, " $1$2 ")];
+	TAG_TO_DEFAULT_SOURCE = [`Parser.TAG_TO_DEFAULT_SOURCE = ${JSON.stringify(TAG_TO_DEFAULT_SOURCE)};`.replace(/"(SRC.+?)"(,|)/g, " $1$2 ")];
 
 	console.log(TAG_TO_DEFAULT_SOURCE)
 
