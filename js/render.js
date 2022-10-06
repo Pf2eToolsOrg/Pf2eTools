@@ -904,7 +904,7 @@ function Renderer () {
 			if (entry.DC != null) textStack[0] += `DC ${renderer.render(entry.DC)} `
 			textStack[0] += `${renderer.render(entry.savingThrow)}.`
 		}
-		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
+		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${renderer.render(entry.onset)}`;
 		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
 		if (entry.stages) {
 			for (let stage of entry.stages) {
@@ -5025,7 +5025,7 @@ Renderer.item = {
 			renderStack.push(`</p>`);
 		}
 		if (item.onset) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${item.onset}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${renderer.render(item.onset)}</p>`);
 		}
 
 		renderStack.push(Renderer.item.getShieldStats(item));
