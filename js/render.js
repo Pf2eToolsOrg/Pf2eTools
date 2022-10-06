@@ -3762,7 +3762,7 @@ Renderer.action = {
 					it.actionType.ancestry.forEach(a => {
 						ancestryName = a ? a.split(`|`)[0] : null
 						ancestrySource = a ? a.split(`|`)[1] || "" : ""
-						renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|`)}`);
+						renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}}`)}`);
 						if (it.actionType.heritage || it.actionType.versatileHeritage) renderStack.push(`; `)
 					})
 				}
@@ -4734,23 +4734,22 @@ Renderer.deity = {
 
 	getIntercession (deity) {
 		const renderStack = [];
+		const renderObj = JSON.parse('{"type":"pf2-h2","name":"Divine Intercession","entries":[{"type": "pf2-options","skipSort":true,"items":[]}]}');
 		const renderer = Renderer.get().setFirstSection(true)
-		
-		if (deity.intercession.flavor) renderer.recursiveRender(
-			{
-				type: "pf2-h2",
-				name: "Divine Intercession",
-				entries: deity.intercession.flavor ? deity.intercession.flavor : [],
-			},
-			renderStack
-		);
 		
 		Object.keys(deity.intercession).forEach(key => {
 			if (key.match(/^(Minor|Moderate|Major) (Boon|Curse)$/)) {
-				renderStack.push(`<p class="pf2-book__option"><strong>${key}:&nbsp;</strong>${renderer.render(deity.intercession[key])}</p>`);
+				renderObj.entries[0].items.push({
+					type: "item",
+					name: key,
+					entries: deity.intercession[key]
+				});
 			}
 		});
 		
+		if (deity.intercession.flavor) renderObj.entries.unshift(...deity.intercession.flavor);
+
+		renderer.recursiveRender([renderObj], renderStack);
 		renderStack.push(Renderer.utils.getPageP(deity.intercession));
 		
 		return renderStack.join("");
