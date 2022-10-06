@@ -980,6 +980,37 @@
 	],
 	"curse": [
 		{
+			"name": "Slithering",
+			"source": "Sli",
+			"page": 7,
+			"type": "Curse",
+			"level": 15,
+			"traits": [
+				"unique",
+				"curse",
+				"virulent"
+			],
+			"entries": [
+				{
+					"type": "affliction",
+					"DC": 37,
+					"savingThrow": "Fortitude",
+					"onset": "{@dice 1d6×10} minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no symptoms, but anyone who touches or is touched by the carrier (skin-to-skin contact) must save against the curse",
+							"duration": "{@dice 1d4} days"
+						},
+						{
+							"stage": 2,
+							"entry": "The target dies and transforms into an ooze with a level no greater than the target's level plus 1 for each day since the target contracted the curse"
+						}
+					]
+				}	
+			]
+		},
+		{
 			"name": "Coward's Roots",
 			"source": "GMG",
 			"page": 116,
