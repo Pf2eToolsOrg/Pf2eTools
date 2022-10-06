@@ -29,8 +29,6 @@ async function main () {
 	});
 	TAG_TO_DEFAULT_SOURCE = [`Parser.TAG_TO_DEFAULT_SOURCE = ${JSON.stringify(TAG_TO_DEFAULT_SOURCE)};`.replace(/"(SRC.+?)"(,|)/g, " $1$2 ")];
 
-	console.log(TAG_TO_DEFAULT_SOURCE)
-
 	const combined = [...SRC, ...SOURCE_JSON_TO_FULL, ...SOURCE_JSON_TO_ABV, ...SOURCE_JSON_TO_DATE, ...SOURCE_JSON_TO_STORE, ...SOURCES_ADVENTURES, ...SOURCES_VANILLA, ...TAG_TO_DEFAULT_SOURCE].map(x => x.replace("&", "n").replace("\"undefined\"", "undefined")).join("\n")
 
 	const combinedWithMarkers = `${VERSION_MARKER_START}\n${combined}\n${VERSION_MARKER_END}`

@@ -61,34 +61,27 @@
 						}
 					}
 				},
-				"dependentRequired": {
+				"dependencies": {
 					"errata": [
 						"date"
 					]
 				},
-				"if": {
-					"properties": {
-						"unreleased": {
-							"enum": [
-								true
-							]
-						}
+				"oneOf": [
+					{
+						"required": [
+							"name",
+							"source",
+							"date",
+							"store",
+							"entries"
+						]
+					},
+					{
+						"required": [
+							"unreleased"
+						]
 					}
-				},
-				"then": {
-					"required": [
-						"unreleased"
-					]
-				},
-				"else": {
-					"required": [
-						"name",
-						"source",
-						"date",
-						"store",
-						"entries"
-					]
-				},
+				],
 				"additionalProperties": false
 			},
 			"minItems": 1
