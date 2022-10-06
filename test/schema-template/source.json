@@ -43,6 +43,13 @@
 							true
 						]
 					},
+					"unreleased": {
+						"description": "Whether a source is unreleased, with no information on it whatsoever yet.\nDisables required schema. Removes it from generated into the source list schema.",
+						"type": "boolean",
+						"enum": [
+							true
+						]
+					},
 					"defaultSource": {
 						"description": "This array determines what source is considered the default for certain page or type of tag.\nDO NOT MODIFY UNLESS YOU KNOW WHAT YOU ARE DOING",
 						"type": "array"
@@ -54,15 +61,33 @@
 						}
 					}
 				},
-				"required": [
-					"name",
-					"source",
-					"date",
-					"store",
-					"entries"
-				],
 				"dependentRequired": {
-					"errata": ["date"]
+					"errata": [
+						"date"
+					]
+				},
+				"if": {
+					"properties": {
+						"unreleased": {
+							"enum": [
+								true
+							]
+						}
+					}
+				},
+				"then": {
+					"required": [
+						"unreleased"
+					]
+				},
+				"else": {
+					"required": [
+						"name",
+						"source",
+						"date",
+						"store",
+						"entries"
+					]
 				},
 				"additionalProperties": false
 			},
