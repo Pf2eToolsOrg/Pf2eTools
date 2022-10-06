@@ -1170,8 +1170,8 @@ SRC_3PP_SUFFIX = " 3pp";
 AP_PREFIX = "Adventure Path: ";
 AP_PREFIX_SHORT = "AP: ";
 
-FotRP_PREFIX = "Fists of the Ruby Phoenix: "
-FotRP_PREFIX_SHORT = "FotRP: "
+FRP_PREFIX = "Fists of the Ruby Phoenix: "
+FRP_PREFIX_SHORT = "FRP: "
 
 AV_PREFIX = "Abomination Vaults: "
 AV_PREFIX_SHORT = "AV: "
@@ -1201,7 +1201,7 @@ LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
 
 Parser.COMPACT_PREFIX_MAP = [
-	{re: /Fists of the Ruby Phoenix #(\d): /, replaceWith: "FotRP$1: "},
+	{re: /Fists of the Ruby Phoenix #(\d): /, replaceWith: "FRP$1: "},
 	{re: /Abomination Vaults #(\d): /, replaceWith: "AV$1: "},
 	{re: /Agents of Edgewatch #(\d): /, replaceWith: "AoE$1: "},
 	{re: /Extinction Curse #(\d): /, replaceWith: "EC$1: "},
@@ -1216,7 +1216,7 @@ Parser.COMPACT_PREFIX_MAP = [
 Parser.SOURCE_PREFIX_TO_SHORT = {};
 Parser.SOURCE_PREFIX_TO_SHORT[LO_PREFIX] = LO_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[AP_PREFIX] = AP_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[FotRP_PREFIX] = FotRP_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[FRP_PREFIX] = FRP_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[AV_PREFIX] = AV_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[AoE_PREFIX] = AoE_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[EC_PREFIX] = EC_PREFIX_SHORT;
@@ -1685,9 +1685,11 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SoT5] = "https://paizo.com/products/btq027s2"
 Parser.SOURCE_JSON_TO_STORE[SRC_SoT6] = "https://paizo.com/products/btq027u1"
 Parser.SOURCE_JSON_TO_STORE[SRC_TiO] = "https://paizo.com/products/btq026k1"
 Parser.SOURCE_JSON_TO_STORE[SRC_ToK] = "https://paizo.com/products/btq027qf"
-Parser.SOURCES_ADVENTURES = new Set(["SRC_AV0", "SRC_AV1", "SRC_AV2", "SRC_AV3", "SRC_AVH", "SRC_AoA0", "SRC_AoA1", "SRC_AoA2", "SRC_AoA3", "SRC_AoA4", "SRC_AoA5", "SRC_AoA6", "SRC_AoE0", "SRC_AoE1", "SRC_AoE2", "SRC_AoE3", "SRC_AoE4", "SRC_AoE5", "SRC_AoE6", "SRC_BL0", "SRC_BL1", "SRC_BL2", "SRC_BL3", "SRC_BL4", "SRC_BL5", "SRC_BL6", "SRC_EC0", "SRC_EC1", "SRC_EC2", "SRC_EC3", "SRC_EC4", "SRC_EC5", "SRC_EC6", "SRC_FRP0", "SRC_FRP1", "SRC_FRP2", "SRC_FRP3", "SRC_FoP", "SRC_GW0", "SRC_GW1", "SRC_GW2", "SRC_LTiBA", "SRC_Mal", "SRC_NGD", "SRC_OoA0", "SRC_OoA1", "SRC_OoA2", "SRC_OoA3", "SRC_QFF0", "SRC_QFF1", "SRC_QFF2", "SRC_QFF3", "SRC_SaS", "SRC_AFoF", "SRC_Sli", "SRC_SoT0", "SRC_SoT1", "SRC_SoT2", "SRC_SoT3", "SRC_SoT4", "SRC_SoT5", "SRC_SoT6", "SRC_TiO", "SRC_ToK"])
-Parser.SOURCES_VANILLA = new Set(["SRC_APG", "SRC_B1", "SRC_B2", "SRC_B3", "SRC_BotD", "SRC_CRB", "SRC_DA", "SRC_GnG", "SRC_GMG", "SRC_SoM"])
+Parser.SOURCES_ADVENTURES = new Set([SRC_AV0, SRC_AV1, SRC_AV2, SRC_AV3, SRC_AVH, SRC_AoA0, SRC_AoA1, SRC_AoA2, SRC_AoA3, SRC_AoA4, SRC_AoA5, SRC_AoA6, SRC_AoE0, SRC_AoE1, SRC_AoE2, SRC_AoE3, SRC_AoE4, SRC_AoE5, SRC_AoE6, SRC_BL0, SRC_BL1, SRC_BL2, SRC_BL3, SRC_BL4, SRC_BL5, SRC_BL6, SRC_EC0, SRC_EC1, SRC_EC2, SRC_EC3, SRC_EC4, SRC_EC5, SRC_EC6, SRC_FRP0, SRC_FRP1, SRC_FRP2, SRC_FRP3, SRC_FoP, SRC_GW0, SRC_GW1, SRC_GW2, SRC_LTiBA, SRC_Mal, SRC_NGD, SRC_OoA0, SRC_OoA1, SRC_OoA2, SRC_OoA3, SRC_QFF0, SRC_QFF1, SRC_QFF2, SRC_QFF3, SRC_SaS, SRC_AFoF, SRC_Sli, SRC_SoT0, SRC_SoT1, SRC_SoT2, SRC_SoT3, SRC_SoT4, SRC_SoT5, SRC_SoT6, SRC_TiO, SRC_ToK ])
+Parser.SOURCES_VANILLA = new Set([SRC_APG, SRC_B1, SRC_B2, SRC_B3, SRC_BotD, SRC_CRB, SRC_DA, SRC_GnG, SRC_GMG, SRC_SoM ])
 Parser.TAG_TO_DEFAULT_SOURCE = {"versatileHeritage": SRC_APG, "familiar": SRC_APG, "optfeature": SRC_APG, "creatureTemplate": SRC_B1, "ability": SRC_B1, "creature": SRC_B1, "spell": SRC_CRB, "item": SRC_CRB, "class": SRC_CRB, "condition": SRC_CRB, "background": SRC_CRB, "ancestry": SRC_CRB, "archetype": SRC_CRB, "feat": SRC_CRB, "trap": SRC_CRB, "hazard": SRC_CRB, "deity": SRC_CRB, "action": SRC_CRB, "classFeature": SRC_CRB, "subclassFeature": SRC_CRB, "table": SRC_CRB, "language": SRC_CRB, "ritual": SRC_CRB, "trait": SRC_CRB, "group": SRC_CRB, "domain": SRC_CRB, "skill": SRC_CRB, "familiarAbility": SRC_CRB, "companion": SRC_CRB, "companionAbility": SRC_CRB, "disease": SRC_GMG, "curse": SRC_GMG, "variantrule": SRC_GMG, "vehicle": SRC_GMG, "place": SRC_GMG, "plane": SRC_GMG, "settlement": SRC_GMG, "nation": SRC_GMG, "organization": SRC_LOCG, "eidolon": SRC_SoM };
+[SRC_AAWS, SRC_APG, SRC_B1, SRC_B2, SRC_B3, SRC_BotD, SRC_CRB, SRC_DA, SRC_GnG, SRC_GMG, SRC_LOACLO, SRC_LOAG, SRC_LOCG, SRC_LOGM, SRC_LOGMWS, SRC_LOIL, SRC_LOKL, SRC_LOL, SRC_LOME, SRC_LOMM, SRC_LOPSG, SRC_LOTG, SRC_LOTGB, SRC_LOWG, SRC_PFUM, SRC_SoM ].forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src; Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src; });
+[SRC_AV0, SRC_AV1, SRC_AV2, SRC_AV3, SRC_AVH, SRC_AoA0, SRC_AoA1, SRC_AoA2, SRC_AoA3, SRC_AoA4, SRC_AoA5, SRC_AoA6, SRC_AoE0, SRC_AoE1, SRC_AoE2, SRC_AoE3, SRC_AoE4, SRC_AoE5, SRC_AoE6, SRC_BL0, SRC_BL1, SRC_BL2, SRC_BL3, SRC_BL4, SRC_BL5, SRC_BL6, SRC_EC0, SRC_EC1, SRC_EC2, SRC_EC3, SRC_EC4, SRC_EC5, SRC_EC6, SRC_FRP0, SRC_FRP1, SRC_FRP2, SRC_FRP3, SRC_FoP, SRC_GW0, SRC_GW1, SRC_GW2, SRC_LTiBA, SRC_Mal, SRC_NGD, SRC_OoA0, SRC_OoA1, SRC_OoA2, SRC_OoA3, SRC_QFF0, SRC_QFF1, SRC_QFF2, SRC_QFF3, SRC_SaS, SRC_AFoF, SRC_Sli, SRC_SoT0, SRC_SoT1, SRC_SoT2, SRC_SoT3, SRC_SoT4, SRC_SoT5, SRC_SoT6, SRC_TiO, SRC_ToK ].forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src; Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src; });
 /* PF2ETOOLS_SOURCE__CLOSE */
 
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));

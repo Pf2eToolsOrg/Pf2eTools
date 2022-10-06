@@ -14,10 +14,10 @@ async function main () {
 	const SOURCE_JSON_TO_DATE = sources.map(it => `Parser.SOURCE_JSON_TO_DATE[SRC_${it.source}] = "${it.date}"`);
 	const SOURCE_JSON_TO_STORE = sources.map(it => `Parser.SOURCE_JSON_TO_STORE[SRC_${it.source}] = "${it.store}"`);
 	const SOURCES_ADVENTURES = [
-		`Parser.SOURCES_ADVENTURES = new Set(${JSON.stringify(sources.filter(it => it.adventure).map(it => `SRC_${it.source}`))})`.replace(/,/g, ", "),
+		`Parser.SOURCES_ADVENTURES = new Set(${JSON.stringify(sources.filter(it => it.adventure).map(it => `SRC_${it.source}`))})`.replace(/"(SRC.+?)"(,|)/g, "$1$2 "),
 	]
 	const SOURCES_VANILLA = [
-		`Parser.SOURCES_VANILLA = new Set(${JSON.stringify(sources.filter(it => it.vanilla).map(it => `SRC_${it.source}`))})`.replace(/,/g, ", "),
+		`Parser.SOURCES_VANILLA = new Set(${JSON.stringify(sources.filter(it => it.vanilla).map(it => `SRC_${it.source}`))})`.replace(/"(SRC.+?)"(,|)/g, "$1$2 "),
 	]
 	let TAG_TO_DEFAULT_SOURCE = {};
 	sources.forEach(it => {
@@ -29,7 +29,15 @@ async function main () {
 	});
 	TAG_TO_DEFAULT_SOURCE = [`Parser.TAG_TO_DEFAULT_SOURCE = ${JSON.stringify(TAG_TO_DEFAULT_SOURCE)};`.replace(/"(SRC.+?)"(,|)/g, " $1$2 ")];
 
-	const combined = [...SRC, ...SOURCE_JSON_TO_FULL, ...SOURCE_JSON_TO_ABV, ...SOURCE_JSON_TO_DATE, ...SOURCE_JSON_TO_STORE, ...SOURCES_ADVENTURES, ...SOURCES_VANILLA, ...TAG_TO_DEFAULT_SOURCE].map(x => x.replace("&", "n").replace("\"undefined\"", "undefined")).join("\n")
+	const SOURCES_AVAILABLE_DOCS_BOOK = [
+		`${JSON.stringify(sources.filter(it => !it.adventure).map(it => `SRC_${it.source}`))}.forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src; Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src; });`.replace(/"(SRC.+?)"(,|)/g, "$1$2 "),
+	]
+
+	const SOURCES_AVAILABLE_DOCS_ADVENTURE = [
+		`${JSON.stringify(sources.filter(it => it.adventure).map(it => `SRC_${it.source}`))}.forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src; Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src; });`.replace(/"(SRC.+?)"(,|)/g, "$1$2 "),
+	]
+
+	const combined = [...SRC, ...SOURCE_JSON_TO_FULL, ...SOURCE_JSON_TO_ABV, ...SOURCE_JSON_TO_DATE, ...SOURCE_JSON_TO_STORE, ...SOURCES_ADVENTURES, ...SOURCES_VANILLA, ...TAG_TO_DEFAULT_SOURCE, ...SOURCES_AVAILABLE_DOCS_BOOK, ...SOURCES_AVAILABLE_DOCS_ADVENTURE].map(x => x.replace("&", "n").replace("\"undefined\"", "undefined")).join("\n")
 
 	const combinedWithMarkers = `${VERSION_MARKER_START}\n${combined}\n${VERSION_MARKER_END}`
 
