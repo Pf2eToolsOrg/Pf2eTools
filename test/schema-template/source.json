@@ -21,6 +21,10 @@
 						"type": "string",
 						"format": "date"
 					},
+					"errata": {
+						"type": "string",
+						"format": "date"
+					},
 					"store": {
 						"type": "string",
 						"format": "url"
@@ -57,6 +61,9 @@
 					"store",
 					"entries"
 				],
+				"dependentRequired": {
+					"errata": ["date"]
+				},
 				"additionalProperties": false
 			},
 			"minItems": 1
