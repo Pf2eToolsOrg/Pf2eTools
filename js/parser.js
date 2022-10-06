@@ -1164,10 +1164,77 @@ Parser.CONDITION_TO_COLOR = {
 	"Wounded": "#e81919",
 
 };
-// TODO: It would be nice to have everything in a json file...
-// Would also make it a lot easier to validate with a schema.
+
+SRC_3PP_SUFFIX = " 3pp";
+
+AP_PREFIX = "Adventure Path: ";
+AP_PREFIX_SHORT = "AP: ";
+
+FotRP_PREFIX = "Fists of the Ruby Phoenix: "
+FotRP_PREFIX_SHORT = "FotRP: "
+
+AV_PREFIX = "Abomination Vaults: "
+AV_PREFIX_SHORT = "AV: "
+
+AoE_PREFIX = "Agents of Edgewatch: "
+AoE_PREFIX_SHORT = "AoE: "
+
+EC_PREFIX = "Extinction Curse: "
+EC_PREFIX_SHORT = "EC: "
+
+AoA_PREFIX = "Age of Ashes: "
+AoA_PREFIX_SHORT = "AoA: "
+
+SoT_PREFIX = "Strength of Thousands: "
+SoT_PREFIX_SHORT = "SoT: "
+
+OoA_PREFIX = "Outlaws of Alkenstar: "
+OoA_PREFIX_SHORT = "OoA: "
+
+BL_PREFIX = "Blood Lords: "
+BL_PREFIX_SHORT = "BL: "
+
+GW_PREFIX = "Gatewalkers: "
+GW_PREFIX_SHORT = "GW: "
+
+LO_PREFIX = "Lost Omens: ";
+LO_PREFIX_SHORT = "LO: ";
+
+Parser.COMPACT_PREFIX_MAP = [
+	{re: /Fists of the Ruby Phoenix #(\d): /, replaceWith: "FotRP$1: "},
+	{re: /Abomination Vaults #(\d): /, replaceWith: "AV$1: "},
+	{re: /Agents of Edgewatch #(\d): /, replaceWith: "AoE$1: "},
+	{re: /Extinction Curse #(\d): /, replaceWith: "EC$1: "},
+	{re: /Age of Ashes #(\d): /, replaceWith: "AoA$1: "},
+	{re: /Strength of Thousands #(\d): /, replaceWith: "SoT$1: "},
+	{re: /Outlaws of Alkenstar #(\d): /, replaceWith: "OoA$1: "},
+	{re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: "},
+	{re: /Blood Lords #(\d): /, replaceWith: "BL$1: "},
+	{re: /Gatewalkers #(\d): /, replaceWith: "GW$1: "},
+];
+
+Parser.SOURCE_PREFIX_TO_SHORT = {};
+Parser.SOURCE_PREFIX_TO_SHORT[LO_PREFIX] = LO_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AP_PREFIX] = AP_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[FotRP_PREFIX] = FotRP_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AV_PREFIX] = AV_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AoE_PREFIX] = AoE_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[EC_PREFIX] = EC_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AoA_PREFIX] = AoA_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SoT_PREFIX] = SoT_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[OoA_PREFIX] = OoA_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[BL_PREFIX] = BL_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[GW_PREFIX] = GW_PREFIX_SHORT;
+
+Parser.SOURCE_JSON_TO_FULL = {};
+Parser.SOURCE_JSON_TO_ABV = {};
+Parser.SOURCE_JSON_TO_DATE = {};
+Parser.SOURCE_JSON_TO_STORE = {};
+Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
+Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 
 // Listing of all the sources
+/* PF2ETOOLS_SOURCE__OPEN */
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_B1 = "B1";
@@ -1255,68 +1322,7 @@ SRC_DA = "DA";
 SRC_LOIL = "LOIL";
 SRC_PFUM = "PFUM";
 
-SRC_3PP_SUFFIX = " 3pp";
-
-AP_PREFIX = "Adventure Path: ";
-AP_PREFIX_SHORT = "AP: ";
-
-FotRP_PREFIX = "Fists of the Ruby Phoenix: "
-FotRP_PREFIX_SHORT = "FotRP: "
-
-AV_PREFIX = "Abomination Vaults: "
-AV_PREFIX_SHORT = "AV: "
-
-AoE_PREFIX = "Agents of Edgewatch: "
-AoE_PREFIX_SHORT = "AoE: "
-
-EC_PREFIX = "Extinction Curse: "
-EC_PREFIX_SHORT = "EC: "
-
-AoA_PREFIX = "Age of Ashes: "
-AoA_PREFIX_SHORT = "AoA: "
-
-SoT_PREFIX = "Strength of Thousands: "
-SoT_PREFIX_SHORT = "SoT: "
-
-OoA_PREFIX = "Outlaws of Alkenstar: "
-OoA_PREFIX_SHORT = "OoA: "
-
-BL_PREFIX = "Blood Lords: "
-BL_PREFIX_SHORT = "BL: "
-
-GW_PREFIX = "Gatewalkers: "
-GW_PREFIX_SHORT = "GW: "
-
-LO_PREFIX = "Lost Omens: ";
-LO_PREFIX_SHORT = "LO: ";
-
-Parser.COMPACT_PREFIX_MAP = [
-	{re: /Fists of the Ruby Phoenix #(\d): /, replaceWith: "FotRP$1: "},
-	{re: /Abomination Vaults #(\d): /, replaceWith: "AV$1: "},
-	{re: /Agents of Edgewatch #(\d): /, replaceWith: "AoE$1: "},
-	{re: /Extinction Curse #(\d): /, replaceWith: "EC$1: "},
-	{re: /Age of Ashes #(\d): /, replaceWith: "AoA$1: "},
-	{re: /Strength of Thousands #(\d): /, replaceWith: "SoT$1: "},
-	{re: /Outlaws of Alkenstar #(\d): /, replaceWith: "OoA$1: "},
-	{re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: "},
-	{re: /Blood Lords #(\d): /, replaceWith: "BL$1: "},
-	{re: /Gatewalkers #(\d): /, replaceWith: "GW$1: "},
-];
-
-Parser.SOURCE_PREFIX_TO_SHORT = {};
-Parser.SOURCE_PREFIX_TO_SHORT[LO_PREFIX] = LO_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[AP_PREFIX] = AP_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[FotRP_PREFIX] = FotRP_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[AV_PREFIX] = AV_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[AoE_PREFIX] = AoE_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[EC_PREFIX] = EC_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[AoA_PREFIX] = AoA_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[SoT_PREFIX] = SoT_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[OoA_PREFIX] = OoA_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[BL_PREFIX] = BL_PREFIX_SHORT;
-Parser.SOURCE_PREFIX_TO_SHORT[GW_PREFIX] = GW_PREFIX_SHORT;
 // Turn JSON to Full Title
-Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
 Parser.SOURCE_JSON_TO_FULL[SRC_B1] = "Bestiary";
 Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
@@ -1416,7 +1422,6 @@ Parser.SOURCE_JSON_TO_FULL[SRC_FOP] = "The Fall of Plaguestone";
 Parser.SOURCE_JSON_TO_FULL[SRC_TIO] = "Troubles in Otari";
 Parser.SOURCE_JSON_TO_FULL[SRC_LTIBA] = "Little Trouble in Big Absalom";
 // Turn JSON to Abbreviations
-Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 Parser.SOURCE_JSON_TO_ABV[SRC_B1] = "B1";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
@@ -1516,7 +1521,6 @@ Parser.SOURCE_JSON_TO_ABV[SRC_FOP] = "FoP";
 Parser.SOURCE_JSON_TO_ABV[SRC_LTIBA] = "LTiBA";
 Parser.SOURCE_JSON_TO_ABV[SRC_TIO] = "TiO";
 // Turn JSON to Date of Release
-Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_B1] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOWG] = "2019-08-28";
@@ -1541,7 +1545,6 @@ Parser.SOURCE_JSON_TO_DATE[SRC_BotD] = "2022-04-27";
 Parser.SOURCE_JSON_TO_DATE[SRC_DA] = "2022-07-27";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTG] = "2022-08-31";
 // Turn JSON to Paizo Store
-Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";
 Parser.SOURCE_JSON_TO_STORE[SRC_B1] = "https://paizo.com/products/btq01zp4";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOWG] = "https://paizo.com/products/btq01zoj";
@@ -1699,10 +1702,10 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_GW2,
 	SRC_GW3,
 ]);
-Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
+
 Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_B1, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
 
-Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
+/* PF2ETOOLS_SOURCE__CLOSE */
 [
 	SRC_CRB,
 	SRC_APG,
@@ -1729,7 +1732,6 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
 });
-Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 [
 	SRC_AOA0,
 	SRC_AOA1,
@@ -1830,6 +1832,10 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"organization": SRC_LOCG,
 	"creatureTemplate": SRC_B1,
 };
+/* PF2ETOOLS_SOURCE__CLOSE */
+
+Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
+
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
 	tag = tag.trim();
