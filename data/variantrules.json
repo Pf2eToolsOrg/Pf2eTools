@@ -161,6 +161,126 @@
 											]
 										}
 									]
+								},{
+									"type": "pf2-h3",
+									"name": "Troll",
+									"collapsible": true,
+									"source": "DA",
+									"page": 101,
+									"entries": [
+										"Especially common when a deviant ability is born of scientific experimentation, the troll classification connotes improved physical abilities. While often thought of as biological mutation, clockwork implants and personal magical enhancements are equally likely mechanisms.",
+										{
+											"type": "list",
+											"columns": 2,
+											"items": [
+												"{@feat Bone Spikes|DA}",
+												"{@feat Titan Swing|DA}",
+												"{@feat High-Speed Regeneration|DA}",
+												"{@feat Tectonic Stomp|DA}"
+											]
+										},
+										{
+											"type": "pf2-h4",
+											"source": "DA",
+											"page": 102,
+											"name": "Backlash: Strained Metabolism",
+											"entries": [
+												"Your body’s overclocked physiology requires larger-thanusual amounts of nourishment, leaving you weakened when it kicks in mid-combat.",
+												{
+													"type": "pf2-options",
+													"noColon": true,
+													"items": [
+														{
+															"name": "Mild Backlash",
+															"entries": [
+																"Your metabolism immediately burns through your body’s energy stores, making you {@condition enfeebled 1} and {@condition clumsy 1} until you take a bite of food (which usually requires 2 {@action Interact} actions: one to retrieve the food and another to consume it)."
+															]
+														},
+														{
+															"name": "Moderate Backlash",
+															"entries": [
+																"Ravenous hunger wracks your body. You are {@condition enfeebled 1}, {@condition clumsy 1}, and {@condition fatigued} until you can eat a full meal, which requires at least 10 minutes."
+															]
+														},
+														{
+															"name": "Severe Backlash",
+															"entries": [
+																"The strain on your body is truly incapacitating. You become {@condition sickened 2} as nausea wracks you, and you are also {@condition enfeebled 1} and {@condition clumsy 1} until you can eat a full meal (which requires you to no longer be {@condition sickened}). You are {@condition fatigued} until you can get a full night’s rest."
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},{
+									"type": "pf2-h3",
+									"name": "Wraith",
+									"collapsible": true,
+									"source": "DA",
+									"page": 102,
+									"entries": [
+										"Wraith-type deviations often result from contact with otherworldly presences or artifacts, comprising a strange assortment of abilities that involve realms beyond our own.",
+										{
+											"type": "list",
+											"columns": 2,
+											"items": [
+												"{@feat Eerie Flicker|DA}",
+												"{@feat Ghostly Grasp|DA}",
+												"{@feat Enervating Wail|DA}",
+												"{@feat Distant Wandering|DA}"
+											]
+										},
+										{
+											"type": "pf2-h4",
+											"source": "DA",
+											"page": 103,
+											"name": "Backlash: Encroaching Presence",
+											"entries": [
+												"Seeing and touching the beyond leaves you open to its alien influence, warping your perceptions and thoughts.",
+												{
+													"type": "pf2-options",
+													"noColon": true,
+													"items": [
+														{
+															"name": "Mild Backlash",
+															"entries": [
+																"Something inexplicable touches your mind, leaving you with lingering horror. You become {@condition frightened 3}."
+															]
+														},
+														{
+															"name": "Moderate Backlash",
+															"entries": [
+																"Disorienting visions and figments cover your vision, as if you’re seeing through another set of alien senses. For 10 minutes, all creatures become {@condition concealed} to you as they are covered in visual distortions only you can see."
+															]
+														},
+														{
+															"name": "Severe Backlash",
+															"entries": [
+																"Your life force is siphoned away as the presence tugs your soul to wherever it resides. You become {@condition doomed 1} and {@condition drained 2} until your next daily preparations."
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "pf2-h2",
+									"name": "Quirks",
+									"source": "DA",
+									"page": 103,
+									"entries": [
+										"No two deviant abilities are exactly alike, and even when two characters gain the same ability in the same event, individual factors like age, ancestry, and personality alter how their abilities manifest. Every deviant ability has one or two quirks, determined when the ability is gained. If playing with background deviant abilities, collaborate with your player to decide the quirk, maybe each suggesting one. If playing with campaign deviant abilities, simply pick quirks that fit the story or roll randomly.",
+										"You can also use the quirks on {@table Ability Quirks|DA|Table 5} as a guide to invent new ones for your players. These quirks don’t normally have any mechanical effect, since their purpose is only to alter minor details of a power to make them stand out, though they may have narrative implications on occasion. If you want to give a quirk a mechanical effect, it should never grant more than a +1 status bonus or –1 status penalty, and even then the statistic or check it applies to should be narrow and not in the direct control of the character with the quirk.",
+										{
+											"type": "data",
+											"name": "Ability Quirks",
+											"source": "DA",
+											"tag": "table"
+										}
+									]
 								}
 							]
 						}
