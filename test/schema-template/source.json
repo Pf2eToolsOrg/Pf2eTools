@@ -42,12 +42,18 @@
 					"defaultSource": {
 						"description": "This array determines what source is considered the default for certain page or type of tag.\nDO NOT MODIFY UNLESS YOU KNOW WHAT YOU ARE DOING",
 						"type": "array"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
 					}
 				},
 				"required": [
 					"name",
 					"source",
-					"store"
+					"entries"
 				],
 				"additionalProperties": false
 			},

@@ -1705,7 +1705,50 @@ Parser.SOURCES_ADVENTURES = new Set([
 
 Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_B1, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
 
+Parser.TAG_TO_DEFAULT_SOURCE = {
+	"spell": SRC_CRB,
+	"item": SRC_CRB,
+	"class": SRC_CRB,
+	"creature": SRC_B1,
+	"condition": SRC_CRB,
+	"disease": SRC_GMG,
+	"curse": SRC_GMG,
+	"background": SRC_CRB,
+	"ancestry": SRC_CRB,
+	"versatileHeritage": SRC_APG,
+	"archetype": SRC_CRB,
+	"feat": SRC_CRB,
+	"trap": SRC_CRB,
+	"hazard": SRC_CRB,
+	"deity": SRC_CRB,
+	"variantrule": SRC_GMG,
+	"action": SRC_CRB,
+	"ability": SRC_B1,
+	"classFeature": SRC_CRB,
+	"subclassFeature": SRC_CRB,
+	"table": SRC_CRB,
+	"language": SRC_CRB,
+	"ritual": SRC_CRB,
+	"trait": SRC_CRB,
+	"vehicle": SRC_GMG,
+	"place": SRC_GMG,
+	"plane": SRC_GMG,
+	"settlement": SRC_GMG,
+	"nation": SRC_GMG,
+	"group": SRC_CRB,
+	"domain": SRC_CRB,
+	"skill": SRC_CRB,
+	"familiar": SRC_APG,
+	"familiarAbility": SRC_CRB,
+	"companion": SRC_CRB,
+	"companionAbility": SRC_CRB,
+	"eidolon": SRC_SOM,
+	"optfeature": SRC_APG,
+	"organization": SRC_LOCG,
+	"creatureTemplate": SRC_B1,
+};
 /* PF2ETOOLS_SOURCE__CLOSE */
+
 [
 	SRC_CRB,
 	SRC_APG,
@@ -1789,50 +1832,6 @@ Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_B1, SRC_GMG, SRC_APG, SRC_SOM, SR
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
 });
-
-Parser.TAG_TO_DEFAULT_SOURCE = {
-	"spell": SRC_CRB,
-	"item": SRC_CRB,
-	"class": SRC_CRB,
-	"creature": SRC_B1,
-	"condition": SRC_CRB,
-	"disease": SRC_GMG,
-	"curse": SRC_GMG,
-	"background": SRC_CRB,
-	"ancestry": SRC_CRB,
-	"versatileHeritage": SRC_APG,
-	"archetype": SRC_CRB,
-	"feat": SRC_CRB,
-	"trap": SRC_CRB,
-	"hazard": SRC_CRB,
-	"deity": SRC_CRB,
-	"variantrule": SRC_GMG,
-	"action": SRC_CRB,
-	"ability": SRC_B1,
-	"classFeature": SRC_CRB,
-	"subclassFeature": SRC_CRB,
-	"table": SRC_CRB,
-	"language": SRC_CRB,
-	"ritual": SRC_CRB,
-	"trait": SRC_CRB,
-	"vehicle": SRC_GMG,
-	"place": SRC_GMG,
-	"plane": SRC_GMG,
-	"settlement": SRC_GMG,
-	"nation": SRC_GMG,
-	"group": SRC_CRB,
-	"domain": SRC_CRB,
-	"skill": SRC_CRB,
-	"familiar": SRC_APG,
-	"familiarAbility": SRC_CRB,
-	"companion": SRC_CRB,
-	"companionAbility": SRC_CRB,
-	"eidolon": SRC_SOM,
-	"optfeature": SRC_APG,
-	"organization": SRC_LOCG,
-	"creatureTemplate": SRC_B1,
-};
-/* PF2ETOOLS_SOURCE__CLOSE */
 
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
 
