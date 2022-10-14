@@ -4,7 +4,7 @@
 			"name": "Hallowed Ground",
 			"source": "BotD",
 			"page": 25,
-			"type": "Focus",
+			"focus": true,
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -16,10 +16,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "feet",
 				"number": 60
@@ -35,7 +37,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"One small space becomes inhospitable to undead as you fill it with life-infused benevolent magic. Each undead creature in the area takes {@damage 1d6} positive damage and {@damage 1d4} good damage when you Cast the Spell, with a basic Fortitude save. After that, undead creatures have weakness 1 to positive damage and your necromancy spells while in the area.",
+				"One small space becomes inhospitable to undead as you fill it with life-infused benevolent magic. Each undead creature in the area takes {@damage 1d6} positive damage and {@damage 1d4} good damage when you {@action Cast a Spell||Cast the Spell}, with a basic Fortitude save. After that, undead creatures have weakness 1 to positive damage and your necromancy spells while in the area.",
 				"This spell also automatically attempts to counteract any attempt to raise undead in the area (if either the undead would appear in the area or the effect's caster or creator is in it). If you Cast this Spell again, any previous hallowed ground you had cast ends."
 			],
 			"heightened": {
@@ -50,7 +52,7 @@
 			"name": "Eyes of the Dead",
 			"source": "BotD",
 			"page": 35,
-			"type": "Focus",
+			"focus": true,
 			"level": 3,
 			"traits": [
 				"uncommon",
@@ -61,11 +63,13 @@
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"M": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "mile",
 				"number": 1
@@ -93,7 +97,7 @@
 			"name": "Shambling Horror",
 			"source": "BotD",
 			"page": 35,
-			"type": "Focus",
+			"focus": true,
 			"level": 6,
 			"traits": [
 				"uncommon",
@@ -104,11 +108,13 @@
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"M": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "touch"
 			},
@@ -118,7 +124,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You reanimate the corpse of a fallen creature as an undead minion under your control. The reanimated creature is an undead skeleton (Bestiary 298, Bestiary 3 236, page 146) or zombie (Bestiary 340, Bestiary 3 302, page 170). Choose a skeleton or zombie stat block of the same size as the original creature and of a level no higher than the creature's original level. The shambling horror keeps Speeds it had in life, as well as melee Strikes that deal only physical damage. These attacks use the highest attack modifier from the skeleton or zombie you choose. Some of the skeleton's or zombie's abilities might not make sense for the shambling horror, and some abilities the creature had in life might not persist in undeath; the GM makes the final choice of what abilities the horror has.",
+				"You reanimate the corpse of a fallen creature as an undead minion under your control. The reanimated creature is an undead skeleton (Bestiary 298, Bestiary 3 236, page 146) or zombie (Bestiary 340, Bestiary 3 302, page 170). Choose a skeleton or zombie stat block of the same size as the original creature and of a level no higher than the creature's original level. The shambling horror keeps Speeds it had in life, as well as melee {@action Strike||Strikes} that deal only physical damage. These attacks use the highest attack modifier from the skeleton or zombie you choose. Some of the skeleton's or zombie's abilities might not make sense for the shambling horror, and some abilities the creature had in life might not persist in undeath; the GM makes the final choice of what abilities the horror has.",
 				"A shambling horror has the {@trait minion} trait. You can't control more than one shambling horror at the same time\u2014if you create a new one while one is already under your control, you must choose one to release, causing it to lose the {@trait minion} trait. Shambling horrors that have been released expire when the spell duration does. After the duration expires, you can cast shambling horror again on the same corpse to animate it once more. However, after the next sunrise, you can no longer animate the corpse as a shambling horror."
 			]
 		},
@@ -126,7 +132,7 @@
 			"name": "Subjugate Undead",
 			"source": "BotD",
 			"page": 35,
-			"type": "Focus",
+			"focus": true,
 			"level": 3,
 			"traits": [
 				"uncommon",
@@ -137,11 +143,13 @@
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"M": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"M",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "feet",
 				"number": 30

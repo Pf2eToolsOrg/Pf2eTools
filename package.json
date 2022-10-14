@@ -1,7 +1,7 @@
 {
 	"name": "pf2etools",
 	"author": "Pf2eTools",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -29,9 +29,11 @@
 		"build:seo": "node node/generate-seo.js",
 		"build:sw": "node node/build-sw.mjs",
 		"build:sw:prod": "node node/build-sw.mjs prod",
-		"build:schema": "npm run build:schema:traits && npm run build:schema:languages",
+		"build:sources": "node node/update-sources.js",
+		"build:schema": "npm run build:schema:traits && npm run build:schema:languages && npm run build:schema:sources",
 		"build:schema:traits": "node test/scripts/compile-traits-schema.js",
 		"build:schema:languages": "node test/scripts/compile-languages-schema.js",
+		"build:schema:sources": "node test/scripts/compile-sources-schema.js",
 		"preversion": "npm test",
 		"version": "node node/version-bump.js"
 	},

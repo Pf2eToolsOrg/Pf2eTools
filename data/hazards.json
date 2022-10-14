@@ -211,12 +211,12 @@
 					],
 					"trigger": "A creature reaches the hall's midpoint",
 					"entries": [
-						"The hall's walls lose their rigidity, becoming fluid and elastic. The hall becomes difficult terrain, and each creature in the hall is knocked Archive {@condition prone} unless they succeed at a DC 26 Reflex save. The trap then rolls initiative."
+						"The hall's walls lose their rigidity, becoming fluid and elastic. The hall becomes {@quickref difficult terrain||3|terrain}, and each creature in the hall is knocked {@condition prone} unless they succeed at a DC 26 Reflex save. The trap then rolls initiative."
 					]
 				}
 			],
 			"routine": [
-				"(4 actions) This trap loses 1 action each round for each wall that has been disabled. Each wall uses 1 action to slam back and forth rapidly, pummeling one creature in the hall with a wall {@action Strike}. On a hit, the target is additionally knocked {@condition prone}. The walls distribute the attacks as evenly as possible among creatures in the hall, and the Strikes don't apply the trap's multiple attack penalty."
+				"(4 actions) This trap loses 1 action each round for each wall that has been disabled. Each wall uses 1 action to slam back and forth rapidly, pummeling one creature in the hall with a wall {@action Strike}. On a hit, the target is additionally knocked {@condition prone}. The walls distribute the attacks as evenly as possible among creatures in the hall, and the {@action Strike||Strikes} don't apply the trap's multiple attack penalty."
 			],
 			"reset": [
 				"1 hour"
@@ -494,7 +494,7 @@
 				{
 					"name": "DC 32",
 					"entries": [
-						"{@skill Acrobatics} check to {@action Balance} or else drop off the ledge. If the creature falls off, it drops 100 feet, loops through the closed space of the mindscape, and lands in the square it fell from, taking falling damage as normal (usually 50 bludgeoning Archive damage). The call of the void then rolls initiative."
+						"{@skill Acrobatics} check to {@action Balance} or else drop off the ledge. If the creature falls off, it drops 100 feet, loops through the closed space of the mindscape, and lands in the square it fell from, taking falling damage as normal (usually 50 bludgeoning damage). The call of the void then rolls initiative."
 					]
 				}
 			],
@@ -699,13 +699,13 @@
 									"The creature disbelieves the illusions and is unaffected."
 								],
 								"Success": [
-									"The creature disbelieves the illusions but still sees them. It treats the room as difficult terrain."
+									"The creature disbelieves the illusions but still sees them. It treats the room as {@quickref difficult terrain||3|terrain}."
 								],
 								"Failure": [
-									"The creature is fooled by the illusions. It treats the room as difficult terrain and becomes {@condition sickened||sickened 1}. As long as it remains in the room, it can't reduce its {@condition sickened} value below 1."
+									"The creature is fooled by the illusions. It treats the room as {@quickref difficult terrain||3|terrain} and becomes {@condition sickened||sickened 1}. As long as it remains in the room, it can't reduce its {@condition sickened} value below 1."
 								],
 								"Critical Failure": [
-									"As failure, but each time the creature Archive attempts a move action, it must succeed at a DC {@flatDC 5} flat check or they lose the action, and on a critical failure, it also falls {@condition prone}."
+									"As failure, but each time the creature attempts a move action, it must succeed at a DC {@flatDC 5} flat check or they lose the action, and on a critical failure, it also falls {@condition prone}."
 								]
 							}
 						}
@@ -1118,7 +1118,7 @@
 				"minProf": "trained"
 			},
 			"description": [
-				"The pool sucks in creatures that fall into it, making Archive them sink into its endless depths."
+				"The pool sucks in creatures that fall into it, making them sink into its endless depths."
 			],
 			"disable": {
 				"entries": [
@@ -1626,7 +1626,7 @@
 					],
 					"trigger": "A creature in area E1 casts an arcane spell or uses an arcane ability",
 					"entries": [
-						"The trap makes a stone spike attack against the triggering creature. For the next 1 minute thereafter, the ripples are stronger, giving the trap a +2 circumstance bonus on stone spike Strikes during this time."
+						"The trap makes a stone spike attack against the triggering creature. For the next 1 minute thereafter, the ripples are stronger, giving the trap a +2 circumstance bonus on stone spike {@action Strike||Strikes} during this time."
 					],
 					"name": "Stone Spike"
 				}
@@ -3101,7 +3101,7 @@
 					},
 					"trigger": "A carcass is touched or jostled",
 					"entries": [
-						"Each creature within 30 feet of any centipede carcass takes {@damage 4d4} piercing damage (DC 22 basic Reflex save), and the area becomes difficult terrain due to the many sharpened legs on the ground. Each creature that {@action Stride||Strides} more than 10 feet through the area must succeed at a DC 20 {@skill Acrobatics} check or take {@damage 1d4} piercing damage. The trap then rolls initiative."
+						"Each creature within 30 feet of any centipede carcass takes {@damage 4d4} piercing damage (DC 22 basic Reflex save), and the area becomes {@quickref difficult terrain||3|terrain} due to the many sharpened legs on the ground. Each creature that {@action Stride||Strides} more than 10 feet through the area must succeed at a DC 20 {@skill Acrobatics} check or take {@damage 1d4} piercing damage. The trap then rolls initiative."
 					],
 					"name": "Volley of Legs"
 				}
@@ -3176,7 +3176,7 @@
 				}
 			],
 			"routine": [
-				"(4 actions) The trap loses 1 action per arm destroyed or disabled. On its turn, the trap makes claw Strikes against creatures other than the Rumormonger or the.",
+				"(4 actions) The trap loses 1 action per arm destroyed or disabled. On its turn, the trap makes claw {@action Strike||Strikes} against creatures other than the Rumormonger or the.",
 				{
 					"entries": [
 						"If an arm already has a creature {@condition grabbed}, the trap spends 2 actions to use its Open Hatch ability."
@@ -3349,7 +3349,7 @@
 					},
 					"trigger": "Mogaru applies any amount of force to the structure",
 					"entries": [
-						"The building trembles. The floors of the building and the streets within 30 feet of the building become difficult terrain; creatures on this difficult terrain take a \u20132 circumstance penalty to attack rolls, AC, and skill checks. The hazard rolls initiative."
+						"The building trembles. The floors of the building and the streets within 30 feet of the building become {@quickref difficult terrain||3|terrain}; creatures on this {@quickref difficult terrain||3|terrain} take a \u20132 circumstance penalty to attack rolls, AC, and skill checks. The hazard rolls initiative."
 					],
 					"name": "Shake Apart"
 				}
@@ -3579,7 +3579,7 @@
 					],
 					"trigger": "a creature attempts and fails to disable one of the shell colors via {@skill Thievery} or dispel magic",
 					"entries": [
-						"{@deity Dahak|LOGM}'s shell Strikes the triggering creature with a random eye beam. Roll {@dice 1d8} to determine the color (1\u2013red, 2\u2013orange, 3\u2013yellow, 4\u2013green, 5\u2013blue, 6\u2013indigo, 7\u2013violet, 8\u2013black)."
+						"{@deity Dahak|LOGM}'s shell {@action Strike||Strikes} the triggering creature with a random eye beam. Roll {@dice 1d8} to determine the color (1\u2013red, 2\u2013orange, 3\u2013yellow, 4\u2013green, 5\u2013blue, 6\u2013indigo, 7\u2013violet, 8\u2013black)."
 					],
 					"name": "Prismatic Beam"
 				},
@@ -3912,7 +3912,7 @@
 					},
 					"trigger": "More than two Small or larger creatures step on the brass seal.",
 					"entries": [
-						"The trap makes up to four dart Strikes against creatures standing on the seal, then rolls initiative."
+						"The trap makes up to four dart {@action Strike||Strikes} against creatures standing on the seal, then rolls initiative."
 					],
 					"name": "Dart Volley"
 				}
@@ -5393,7 +5393,7 @@
 				{
 					"entries": [
 						"A mirror duplicate rolls initiative with a +45 modifier. It uses the same statistics as the original creature, but with a +2 status bonus to AC, attacks, and saving throws. The duplicate is evil, and any abilities reliant on alignment change accordingly. The duplicate is also aggressive, attacking and taking other {@condition hostile} actions available to it against anyone other than mirror duplicates. It has three actions and one reaction and can use any of the original creature's abilities. Any limited-use abilities (such as spell slots) are based on what the original had when duplicated and are used up separately from the original creature's. The duplicate also has duplicates of the creature's worn and held items, but not consumables.",
-						"A duplicate is destroyed when reduced to 0 HP, when the trap is disabled or destroyed, or when the duplicate leaves area E2. Its duplicated items disappear when they leave its grip, though they last long enough for ranged Strikes."
+						"A duplicate is destroyed when reduced to 0 HP, when the trap is disabled or destroyed, or when the duplicate leaves area E2. Its duplicated items disappear when they leave its grip, though they last long enough for ranged {@action Strike||Strikes}."
 					],
 					"name": "Mirror Duplicate"
 				}
@@ -5620,7 +5620,7 @@
 				}
 			],
 			"routine": [
-				"(1 action) The blade Flies up to 20 feet and Strikes any creatures whose squares it passes through. It cannot target the same creature more than once per round. The blade cannot be grappled and doesn't take a multiple attack penalty.",
+				"(1 action) The blade Flies up to 20 feet and {@action Strike||Strikes} any creatures whose squares it passes through. It cannot target the same creature more than once per round. The blade cannot be grappled and doesn't take a multiple attack penalty.",
 				"Speed fly 20 feet.",
 				{
 					"type": "attack",
@@ -7620,7 +7620,7 @@
 				}
 			],
 			"routine": [
-				"(9 actions) Each of the mannequins uses three of the haunt's actions on each turn, and the haunt loses three actions each turn for every disabled or destroyed mannequin. Each mannequin uses its first action to {@action Stride} up to 50 feet and its remaining two actions to make clockwork fist Strikes. Each has its own separate multiple attack penalty.",
+				"(9 actions) Each of the mannequins uses three of the haunt's actions on each turn, and the haunt loses three actions each turn for every disabled or destroyed mannequin. Each mannequin uses its first action to {@action Stride} up to 50 feet and its remaining two actions to make clockwork fist {@action Strike||Strikes}. Each has its own separate multiple attack penalty.",
 				{
 					"type": "attack",
 					"range": "Melee",
@@ -7875,7 +7875,7 @@
 					},
 					"trigger": "A creature takes a {@condition hostile} action against Mogaru, produces a visible area effect, or flies within 120 feet of Mogaru",
 					"entries": [
-						"Mogaru breathes a 120-foot cone of fire toward the object of his ire. Flammable objects in the area immediately combust, and stone or metal surfaces warp into difficult terrain. Creatures in the area take {@damage 20d6} fire damage (DC 44 basic Reflex save). On a failed or critically failed save, a creature also takes {@damage 3d6} {@condition persistent damage ||persistent fire damage}."
+						"Mogaru breathes a 120-foot cone of fire toward the object of his ire. Flammable objects in the area immediately combust, and stone or metal surfaces warp into {@quickref difficult terrain||3|terrain}. Creatures in the area take {@damage 20d6} fire damage (DC 44 basic Reflex save). On a failed or critically failed save, a creature also takes {@damage 3d6} {@condition persistent damage ||persistent fire damage}."
 					],
 					"name": "Volcanic Breath"
 				}
@@ -9003,7 +9003,7 @@
 					},
 					"trigger": "Mogaru moves at least 60 feet",
 					"entries": [
-						"The ground shakes in a 120-foot emanation from Mogaru's space. This creates a variety of effects, depending on where the player characters are at the time of the quake. In most parts of the city, the ground becomes difficult terrain, and creatures on it are {@condition clumsy|CRB|clumsy 2} for 1 round. In parts of the city with existing underground spaces (like sewers, sinkholes, or catacombs), fissures open up in the ground. Creatures in the area tumble into the resulting 40-foot-deep hole unless they succeed at a DC 40 Reflex save. In bays, on beaches, and in other relatively substantial but shallow bodies of water, Mogaru's movement creates dangerous waves. Creatures in the water or within 60 feet of the waterline are struck by waves that deal {@damage 3d8} bludgeoning damage (DC 35 basic Reflex save). On a critically failed save, a creature is instantly swept 60 feet out to sea and 60 feet under the water's surface."
+						"The ground shakes in a 120-foot emanation from Mogaru's space. This creates a variety of effects, depending on where the player characters are at the time of the quake. In most parts of the city, the ground becomes {@quickref difficult terrain||3|terrain}, and creatures on it are {@condition clumsy|CRB|clumsy 2} for 1 round. In parts of the city with existing underground spaces (like sewers, sinkholes, or catacombs), fissures open up in the ground. Creatures in the area tumble into the resulting 40-foot-deep hole unless they succeed at a DC 40 Reflex save. In bays, on beaches, and in other relatively substantial but shallow bodies of water, Mogaru's movement creates dangerous waves. Creatures in the water or within 60 feet of the waterline are struck by waves that deal {@damage 3d8} bludgeoning damage (DC 35 basic Reflex save). On a critically failed save, a creature is instantly swept 60 feet out to sea and 60 feet under the water's surface."
 					],
 					"name": "Quake"
 				}
@@ -9049,7 +9049,7 @@
 				}
 			],
 			"routine": [
-				"(6 actions) The trap loses 1 action per disabled or destroyed sluice. On each of its actions, the water rushing from the sluices flows through the room, creating a river of churning water that fills the room to several inches and makes the floor of the chamber into difficult terrain. The water level never rises above this level in the room, as it drains out of the chutes to the south and begins to flood the quarry pit (area.",
+				"(6 actions) The trap loses 1 action per disabled or destroyed sluice. On each of its actions, the water rushing from the sluices flows through the room, creating a river of churning water that fills the room to several inches and makes the floor of the chamber into {@quickref difficult terrain||3|terrain}. The water level never rises above this level in the room, as it drains out of the chutes to the south and begins to flood the quarry pit (area.",
 				{
 					"entries": [
 						"On the trap's second turn, the water starts filling the four slave pits in area J2. Each of the trap's actions fills the pits 4 inches (2 feet per round if all sluices are functional). If the slave pits fill to their total depth of 12 feet and the grates over the slave pits aren't open, the slaves begin to drown, {@condition dying} if they aren't freed in 5 rounds. Once the slave pits are full, the water continues to slowly fill the central area over the course of an hour until it empties the reservoir and floods area J2 to a depth of 15 feet.",
@@ -9701,7 +9701,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The blades travel erratically throughout the hallway's branches, out of sight under the floors or behind the walls. For each blade, roll {@dice 1d4} to determine the region in which it next makes scythe Strikes. A creature can {@action Seek} (DC 22) to learn clues about blades in the region they're currently occupying. On a success, the creature knows how many blades are currently in its region.",
+						"The blades travel erratically throughout the hallway's branches, out of sight under the floors or behind the walls. For each blade, roll {@dice 1d4} to determine the region in which it next makes scythe {@action Strike||Strikes}. A creature can {@action Seek} (DC 22) to learn clues about blades in the region they're currently occupying. On a success, the creature knows how many blades are currently in its region.",
 						"1. Main intersection (the 15-foot-by-25-foot area where the hallways connect, as marked on area B20) 2. North branch (from the main intersection to the secret door to area B14) 3. Central hall (from the main intersection to the secret door to area B24) 4. South branch (from the main intersection to the wall shared with area B25)"
 					],
 					"name": "Scythe Shuffle"
@@ -10764,7 +10764,7 @@
 						"divination"
 					],
 					"entries": [
-						"The statues continually slide around to bump into creatures and block their passage through the room. The first time on its turn that a creature attempts to move within the room, it must succeed at a DC 36 Reflex save or treat the entire room as difficult terrain for 1 round. On a critical failure, the creature is also knocked {@condition prone}."
+						"The statues continually slide around to bump into creatures and block their passage through the room. The first time on its turn that a creature attempts to move within the room, it must succeed at a DC 36 Reflex save or treat the entire room as {@quickref difficult terrain||3|terrain} for 1 round. On a critical failure, the creature is also knocked {@condition prone}."
 					],
 					"name": "Predictive Impediment"
 				}
@@ -13463,7 +13463,7 @@
 					},
 					"trigger": "At least two creatures enter the area",
 					"entries": [
-						"The earth shifts wildly as the hands of the dead spring forth from the ground. The area becomes difficult terrain. Creatures within the area are knocked {@condition prone} unless they succeed at a DC 26 Reflex save. The haunt then rolls initiative."
+						"The earth shifts wildly as the hands of the dead spring forth from the ground. The area becomes {@quickref difficult terrain||3|terrain}. Creatures within the area are knocked {@condition prone} unless they succeed at a DC 26 Reflex save. The haunt then rolls initiative."
 					]
 				}
 			],

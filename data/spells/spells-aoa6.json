@@ -28,12 +28,8 @@
 			},
 			"targets": "1 animal companion in your service",
 			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You focus on the energies of all members of your animal companion's species, transforming your animal companion into its apex battle form. Your animal companion gains the following statistics and abilities while in its apex form.",
@@ -45,7 +41,7 @@
 						"Darkvision.",
 						"Your animal companion's attack's damage dice increase by one step, and its attack gains the deadly d12 trait.",
 						"+10-foot status bonus to its Speeds.",
-						"Ignores difficult terrain and greater difficult terrain."
+						"Ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}."
 					]
 				}
 			]
@@ -78,13 +74,9 @@
 			},
 			"targets": "up to 4 dead creatures or up to 4 undead creatures",
 			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
 				"You chant a dirge or an elegy that either rouses the dead to action or reminds undead that they should lay to rest.",

@@ -126,7 +126,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The chemist Interacts to draw a bomb then Strikes with it."
+							"The chemist Interacts to draw a bomb then {@action Strike||Strikes} with it."
 						],
 						"name": "Quick Bomber"
 					}
@@ -519,7 +519,7 @@
 					},
 					{
 						"entries": [
-							"The clockwork assassin's Strikes deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+							"The clockwork assassin's {@action Strike||Strikes} deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -1160,7 +1160,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Japu Interacts to draw a bomb then Strikes with it."
+							"Japu Interacts to draw a bomb then {@action Strike||Strikes} with it."
 						],
 						"name": "Quick Bomber"
 					}
@@ -1460,7 +1460,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"30 feet. Flakfatter exudes an aura that makes poisons more potent. His melee Strikes deal an additional {@damage 2d8} {@condition persistent damage ||persistent poison damage}. Creatures in the aura attempting a flat check to remove {@condition persistent damage ||persistent poison damage} must roll twice and take the lower result. Flakfatter can suppress or resume this aura as a free action."
+							"30 feet. Flakfatter exudes an aura that makes poisons more potent. His melee {@action Strike||Strikes} deal an additional {@damage 2d8} {@condition persistent damage ||persistent poison damage}. Creatures in the aura attempting a flat check to remove {@condition persistent damage ||persistent poison damage} must roll twice and take the lower result. Flakfatter can suppress or resume this aura as a free action."
 						],
 						"name": "Call Toxins"
 					}
@@ -1738,7 +1738,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The jorogumo takes on the appearance of any Small or Medium spider. This doesn't change their Speed or Strikes."
+							"The jorogumo takes on the appearance of any Small or Medium spider. This doesn't change their Speed or {@action Strike||Strikes}."
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -2057,7 +2057,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Kalyn can masterfully manipulate vile, poisonous energy and increase its potency. Her melee and ranged Strikes deal an additional {@damage 2d6} poison damage, and a target that takes this poison damage has a \u20131 status penalty to saving throws against Kalyn's divine spells for 1 round. Poisons delivered by Kalyn have the {@trait virulent} trait."
+							"Kalyn can masterfully manipulate vile, poisonous energy and increase its potency. Her melee and ranged {@action Strike||Strikes} deal an additional {@damage 2d6} poison damage, and a target that takes this poison damage has a \u20131 status penalty to saving throws against Kalyn's divine spells for 1 round. Poisons delivered by Kalyn have the {@trait virulent} trait."
 						],
 						"name": "Toxic Mastery"
 					}
@@ -2514,7 +2514,7 @@
 							"poison"
 						],
 						"entries": [
-							"Cost 1 batch of infused reagents; The poisoner dribbles a few experimental chemicals over a melee weapon. Until the start of their next turn, Strikes with the weapon deal an additional {@damage 2d8} poison damage, and targets hit by Strikes with the weapon must succeed at a DC 27 Fortitude save or become {@condition enfeebled|CRB|enfeebled 1} or {@condition clumsy|CRB|clumsy 1} (the poisoner's choice) for {@dice 1d4} rounds."
+							"Cost 1 batch of infused reagents; The poisoner dribbles a few experimental chemicals over a melee weapon. Until the start of their next turn, {@action Strike||Strikes} with the weapon deal an additional {@damage 2d8} poison damage, and targets hit by {@action Strike||Strikes} with the weapon must succeed at a DC 27 Fortitude save or become {@condition enfeebled|CRB|enfeebled 1} or {@condition clumsy|CRB|clumsy 1} (the poisoner's choice) for {@dice 1d4} rounds."
 						],
 						"name": "Impromptu Toxin"
 					},
@@ -2678,7 +2678,7 @@
 							"manipulate"
 						],
 						"entries": [
-							"The poison eater uses an {@action Interact} action to draw a dose of poison and eats it, gaining strength. The poison-eater's Strikes deal two weapon dice of damage rather than one. The poison eater is affected by the consumed poison normally and, therefore, usually chooses poisons mitigated by their poison resistance and toxin-inured ability. At the end of each of their turns, the poison eater attempts a DC {@flatDC 17} flat check; on a success, this ability ends."
+							"The poison eater uses an {@action Interact} action to draw a dose of poison and eats it, gaining strength. The poison-eater's {@action Strike||Strikes} deal two weapon dice of damage rather than one. The poison eater is affected by the consumed poison normally and, therefore, usually chooses poisons mitigated by their poison resistance and toxin-inured ability. At the end of each of their turns, the poison eater attempts a DC {@flatDC 17} flat check; on a success, this ability ends."
 						],
 						"name": "Consume Poison"
 					},
@@ -2690,7 +2690,7 @@
 						"trigger": "the poison eater damages a creature while Consume Poison is in effect",
 						"requirements": "The poison eater isn't {@condition fatigued} or already in a frenzy",
 						"entries": [
-							"The poison eater flies into a frenzy that lasts for 1 minute. While in a frenzy, the poison eater gains a +1 status bonus to attack rolls with melee Strikes, gains a +4 status bonus to damage rolls with melee Strikes, gains 20 temporary Hit Points until the end of the frenzy, and takes a \u20132 status penalty to AC. The poison eater can't voluntarily end their frenzy. After their frenzy, the poison eater is {@condition fatigued}."
+							"The poison eater flies into a frenzy that lasts for 1 minute. While in a frenzy, the poison eater gains a +1 status bonus to attack rolls with melee {@action Strike||Strikes}, gains a +4 status bonus to damage rolls with melee {@action Strike||Strikes}, gains 20 temporary Hit Points until the end of the frenzy, and takes a \u20132 status penalty to AC. The poison eater can't voluntarily end their frenzy. After their frenzy, the poison eater is {@condition fatigued}."
 						],
 						"name": "Poison Frenzy"
 					}
@@ -3865,7 +3865,7 @@
 							"visual"
 						],
 						"entries": [
-							"Velberi designates one creature she can see within 30 feet as an apostate to the church of {@deity Norgorber}, regardless of the creature's actual religious leanings. She can have up to four apostates designated at a time; any additional apostate removes another apostate of her choice. Velberi treats all {@skill Perception} checks made to {@action Sense Motive} against an apostate as one degree of success better, and her Strikes deal an additional {@damage 2d8} mental damage to apostates."
+							"Velberi designates one creature she can see within 30 feet as an apostate to the church of {@deity Norgorber}, regardless of the creature's actual religious leanings. She can have up to four apostates designated at a time; any additional apostate removes another apostate of her choice. Velberi treats all {@skill Perception} checks made to {@action Sense Motive} against an apostate as one degree of success better, and her {@action Strike||Strikes} deal an additional {@damage 2d8} mental damage to apostates."
 						],
 						"name": "Designate Apostate"
 					}

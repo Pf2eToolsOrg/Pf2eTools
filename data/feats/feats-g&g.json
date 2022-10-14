@@ -734,7 +734,7 @@
 					],
 					"requirements": "You're unarmored and wielding a simple firearm, {@item bayonet|G&G}, or {@item reinforced stock|G&G}",
 					"entries": [
-						"You enter a specialized stance for a unique martial art centered around the use of simple firearms. While in this stance, the only Strikes you can make are those using bayonets, reinforced stocks, and simple firearms. You can use Flurry of Blows with these weapons. You can use your other monk feats or monk abilities that normally require unarmed attacks with bayonets and reinforced stocks, so long as the feat or ability doesn't require a single, specific Strike. You can also use them with simple firearms when attacking within half the first range increment."
+						"You enter a specialized stance for a unique martial art centered around the use of simple firearms. While in this stance, the only {@action Strike||Strikes} you can make are those using bayonets, reinforced stocks, and simple firearms. You can use Flurry of Blows with these weapons. You can use your other monk feats or monk abilities that normally require unarmed attacks with bayonets and reinforced stocks, so long as the feat or ability doesn't require a single, specific Strike. You can also use them with simple firearms when attacking within half the first range increment."
 					]
 				}
 			],
@@ -784,7 +784,7 @@
 			],
 			"requirements": "You're wielding a firearm or crossbow in one hand and a slashing (or versatile S) melee weapon in the other.",
 			"entries": [
-				"You carefully align your weapon with the edge of your blade, splitting the projectile in two as you fire to attack two different targets. Make two Strikes, one each against two separate targets. The targets must be adjacent to each other and within your weapon's maximum range. Each of these attacks takes a \u20132 penalty to the attack roll, but the two count as only one attack when calculating your multiple attack penalty."
+				"You carefully align your weapon with the edge of your blade, splitting the projectile in two as you fire to attack two different targets. Make two {@action Strike||Strikes}, one each against two separate targets. The targets must be adjacent to each other and within your weapon's maximum range. Each of these attacks takes a \u20132 penalty to the attack roll, but the two count as only one attack when calculating your multiple attack penalty."
 			]
 		},
 		{
@@ -1035,7 +1035,7 @@
 			],
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"entries": [
-				"You and your spotter combine your efforts to bring down your target. If you and your spotter both use the {@action Ready} activity to make a {@action Strike} against the same opponent and choose the same trigger for the readied action, resolve your attacks at the same time. Each of you can use the higher of the two attack rolls for your Strikes, each using your own modifier; this is a {@trait fortune} effect. If both attacks are successful, total the damage for both attacks for the purpose of resistances and weaknesses."
+				"You and your spotter combine your efforts to bring down your target. If you and your spotter both use the {@action Ready} activity to make a {@action Strike} against the same opponent and choose the same trigger for the readied action, resolve your attacks at the same time. Each of you can use the higher of the two attack rolls for your {@action Strike||Strikes}, each using your own modifier; this is a {@trait fortune} effect. If both attacks are successful, total the damage for both attacks for the purpose of resistances and weaknesses."
 			]
 		},
 		{
@@ -1128,7 +1128,7 @@
 			},
 			"entries": [
 				"You create a direct magical connection with your beast gun, allowing you to guide the beast gun's next shot by taking control of the projectile directly, steering it through the air, and swerving and veering it to continue to hit target after target. Make a beast gun {@action Strike} against a creature within the first range increment. On a hit, the shot tears through the target and continues toward another target you can see. You make a {@action Strike} against this new target. The new target must be no farther from the previous target than a distance equal to the beast gun's range increment. For example, the new target must be within 150 feet of the previous target when attacking with a drake rifle. On a hit, you can direct the bullet toward a new target.",
-				"You can continue to make Strikes against new targets in this same way until your attack misses, at which point your shot dissipates. You can't make a {@action Strike} against a target you already attacked during this use of Controlled Bullet, but you can otherwise continue to make attacks against valid targets until you miss. Each attack counts toward your multiple attack penalty, but don't increase your penalty until you've made all your attacks."
+				"You can continue to make {@action Strike||Strikes} against new targets in this same way until your attack misses, at which point your shot dissipates. You can't make a {@action Strike} against a target you already attacked during this use of Controlled Bullet, but you can otherwise continue to make attacks against valid targets until you miss. Each attack counts toward your multiple attack penalty, but don't increase your penalty until you've made all your attacks."
 			]
 		},
 		{
@@ -1192,7 +1192,7 @@
 			"entries": [
 				"Your body transforms into a powerful magical cannon.",
 				"While immobile as a cannon, you can fire blasts of energy directly from your core, devastating your foes. You become {@condition immobilized} until you use an {@action Interact} action to revert back to your standard form. While in your cannon form, the only actions you can use are to {@action Strike} with an energy blast unarmed attack or to {@action Interact} to revert back to your standard form. You can remain in your cannon form for up to 1 minute or until you take the action to revert back to your standard form, whichever comes first.",
-				"Energy blasts are a special ranged unarmed attack. You can only make energy blast Strikes while you're in your cannon form. Your energy blasts deal {@damage 3d8} fire damage and {@damage 3d6} force damage, which increases to {@damage 4d8} fire damage and {@damage 3d6} force damage at level 20. You gain the item bonus to attack rolls with your energy blasts from the highest potency rune on any handwraps of mighty blows you are wearing or any weapon you are wielding, but striking and property runes have no effect on your energy blasts. Energy blasts have a range increment of 120 feet. On a critical hit with an energy blast, the target takes 10 {@condition persistent damage ||persistent fire damage}.",
+				"Energy blasts are a special ranged unarmed attack. You can only make energy blast {@action Strike||Strikes} while you're in your cannon form. Your energy blasts deal {@damage 3d8} fire damage and {@damage 3d6} force damage, which increases to {@damage 4d8} fire damage and {@damage 3d6} force damage at level 20. You gain the item bonus to attack rolls with your energy blasts from the highest potency rune on any handwraps of mighty blows you are wearing or any weapon you are wielding, but striking and property runes have no effect on your energy blasts. Energy blasts have a range increment of 120 feet. On a critical hit with an energy blast, the target takes 10 {@condition persistent damage ||persistent fire damage}.",
 				"Your energy blast doesn't add critical specialization effects.",
 				"If it matters for an effect dependent on weapon damage dice, an energy blast's number of weapon damage dice is three, or four at level 20."
 			]
@@ -1500,7 +1500,7 @@
 			],
 			"prerequisites": "weapon innovation",
 			"entries": [
-				"You release a volley of projectiles from your weapon, or power it to fly in every direction across the battlefield and {@action Strike} multiple creatures. Make a {@action Strike} with your weapon innovation against each foe within 30 feet of you. Don't increase your multiple attack penalty until after making all the attacks. If your innovation is a melee weapon and any of the attacks are outside your reach, you {@action Release} the weapon before the Strikes, and it returns to your grasp after all of them. If your hands are full when the weapon returns, it falls to the ground in your space. As normal, if your weapon innovation requires one or more actions to reload between Strikes, you can't use it to make multiple attacks with Devastating Weaponry."
+				"You release a volley of projectiles from your weapon, or power it to fly in every direction across the battlefield and {@action Strike} multiple creatures. Make a {@action Strike} with your weapon innovation against each foe within 30 feet of you. Don't increase your multiple attack penalty until after making all the attacks. If your innovation is a melee weapon and any of the attacks are outside your reach, you {@action Release} the weapon before the {@action Strike||Strikes}, and it returns to your grasp after all of them. If your hands are full when the weapon returns, it falls to the ground in your space. As normal, if your weapon innovation requires one or more actions to reload between {@action Strike||Strikes}, you can't use it to make multiple attacks with Devastating Weaponry."
 			]
 		},
 		{
@@ -2489,7 +2489,7 @@
 			"prerequisites": "{@feat Sterling Dynamo Dedication|G&G}",
 			"access": "You are an automaton or are otherwise from the ancient Jistka Imperium.",
 			"entries": [
-				"You've learned the secrets of Jistkan golem prostheses, allowing you to incorporate golem components into your dynamo and gain a portion of their magic. You gain a +1 status bonus to saving throws against magic, and your dynamo Strikes become magical."
+				"You've learned the secrets of Jistkan golem prostheses, allowing you to incorporate golem components into your dynamo and gain a portion of their magic. You gain a +1 status bonus to saving throws against magic, and your dynamo {@action Strike||Strikes} become magical."
 			]
 		},
 		{
@@ -2606,7 +2606,7 @@
 				"No one can react faster than you can pull your trigger. When using your initial deed, instead of Interacting to draw a weapon, you can {@action Strike} with a firearm or crossbow you're already wielding. If this {@action Strike} hits, the target is also {@condition flat-footed} until the end of your first turn of the encounter."
 			],
 			"special": [
-				"If your initial deed allows you to {@action Interact} to draw a weapon more than once, this feat allows you to replace one of these {@action Interact} actions and use the other one to draw a weapon. You can't replace both {@action Interact} actions with Strikes, but you can draw a loaded firearm or crossbow with one of the actions and immediately shoot it with the other."
+				"If your initial deed allows you to {@action Interact} to draw a weapon more than once, this feat allows you to replace one of these {@action Interact} actions and use the other one to draw a weapon. You can't replace both {@action Interact} actions with {@action Strike||Strikes}, but you can draw a loaded firearm or crossbow with one of the actions and immediately shoot it with the other."
 			]
 		},
 		{
@@ -2670,7 +2670,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Success": "For 1 minute, the chosen ally's Strikes with the chosen weapon gain the same {@classFeature offensive boost|inventor|G&G|9|offensive boosts} your innovation has.",
+						"Success": "For 1 minute, the chosen ally's {@action Strike||Strikes} with the chosen weapon gain the same {@classFeature offensive boost|inventor|G&G|9|offensive boosts} your innovation has.",
 						"Critical Failure": "Your ally takes damage of the type and amount that your {@classFeature offensive boost|inventor|G&G|9|offensive boosts} normally deals on a successful {@action Strike}."
 					}
 				}
@@ -3102,7 +3102,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Armor} You {@action Strike} with a melee unarmed attack or a melee weapon. To use a melee weapon for this, you must have prepared it in advance with special contraptions when you make your daily preparations.",
-						"{@bold Construct} Your minion innovation Strikes.",
+						"{@bold Construct} Your minion innovation {@action Strike||Strikes}.",
 						"{@bold Weapon} You {@action Strike} with your weapon innovation"
 					]
 				},
@@ -3317,7 +3317,7 @@
 			"prerequisites": "{@action Overdrive|G&G}",
 			"requirements": "You are currently in overdrive.",
 			"entries": [
-				"You quickly fling some of your powered-up mechanisms to an ally, sharing your benefits with them briefly. Choose an ally within 30 feet. Until the end of their next turn, that ally's Strikes deal additional damage equal to half your Intelligence modifier, or your full Intelligence modifier if you were in critical overdrive. The ally doesn't gain the increased damage from expert, master, or legendary overdrive."
+				"You quickly fling some of your powered-up mechanisms to an ally, sharing your benefits with them briefly. Choose an ally within 30 feet. Until the end of their next turn, that ally's {@action Strike||Strikes} deal additional damage equal to half your Intelligence modifier, or your full Intelligence modifier if you were in critical overdrive. The ally doesn't gain the increased damage from expert, master, or legendary overdrive."
 			]
 		},
 		{
@@ -3368,9 +3368,9 @@
 			],
 			"requirements": "You're wielding two weapons, each of which can be either a loaded one-handed firearm or loaded one-handed crossbow.",
 			"entries": [
-				"Your shots hit simultaneously. Make two Strikes, one with each of your two ranged weapons, each using your current multiple attack penalty. Both Strikes must have the same target.",
+				"Your shots hit simultaneously. Make two {@action Strike||Strikes}, one with each of your two ranged weapons, each using your current multiple attack penalty. Both {@action Strike||Strikes} must have the same target.",
 				"If both attacks hit, combine their damage and then add any applicable effects from both weapons. You add any precision damage, only once, to the attack of your choice.",
-				"Combine the damage from both Strikes and apply resistances and weaknesses only once. This counts as two attacks when calculating your multiple attack penalty."
+				"Combine the damage from both {@action Strike||Strikes} and apply resistances and weaknesses only once. This counts as two attacks when calculating your multiple attack penalty."
 			]
 		},
 		{
@@ -3599,7 +3599,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Success": "Both you and the opponent gain a +2 status bonus to damage rolls with Strikes made against each other. If you're a master in the skill you used for the check, the status bonus to damage rolls increases to +3, and if you're legendary, it increases to +4. You can have only one challenge in effect at a time; challenging a new opponent ends this effect on any current target. Otherwise, the effect lasts until one of you is defeated, flees, or the encounter ends.",
+						"Success": "Both you and the opponent gain a +2 status bonus to damage rolls with {@action Strike||Strikes} made against each other. If you're a master in the skill you used for the check, the status bonus to damage rolls increases to +3, and if you're legendary, it increases to +4. You can have only one challenge in effect at a time; challenging a new opponent ends this effect on any current target. Otherwise, the effect lasts until one of you is defeated, flees, or the encounter ends.",
 						"Critical Failure": "You become {@condition frightened|CRB|frightened 1} and can't use this ability again for 1 minute."
 					}
 				}
@@ -3864,10 +3864,10 @@
 			"requirements": "You're wielding a loaded firearm or loaded crossbow in one hand and a bludgeoning or slashing melee weapon in the other.",
 			"entries": [
 				"You hurl your melee weapon at an opponent, then fire a bullet into the weapon's hilt, making it deal additional damage and bounce back to your grasp. Make a thrown ranged {@action Strike} with the melee weapon, then a ranged {@action Strike} with your firearm.",
-				"Both Strikes use the same multiple attack penalty. If the melee weapon doesn't already have the {@trait thrown} trait, it gains the thrown 10 feet trait during a Rebounding Assault.",
-				"If both attacks are successful, the bolt or bullet hits the thrown melee weapon instead of your target, adding its force into one attack. Combine the damage from both Strikes, using the thrown weapon's damage type, and add an additional {@damage 1d6} precision damage.",
+				"Both {@action Strike||Strikes} use the same multiple attack penalty. If the melee weapon doesn't already have the {@trait thrown} trait, it gains the thrown 10 feet trait during a Rebounding Assault.",
+				"If both attacks are successful, the bolt or bullet hits the thrown melee weapon instead of your target, adding its force into one attack. Combine the damage from both {@action Strike||Strikes}, using the thrown weapon's damage type, and add an additional {@damage 1d6} precision damage.",
 				"The impact sends the melee weapon rebounding off the target and back to your hand.",
-				"In any circumstance other than both attacks hitting, carry out the individual Strikes normally. The thrown weapon doesn't rebound and remains in the target's space as normal for thrown weapons."
+				"In any circumstance other than both attacks hitting, carry out the individual {@action Strike||Strikes} normally. The thrown weapon doesn't rebound and remains in the target's space as normal for thrown weapons."
 			]
 		},
 		{
@@ -4323,8 +4323,8 @@
 			],
 			"prerequisites": "trained in at least one type of weapon in the bow or firearm groups, trained in {@skill Stealth}",
 			"entries": [
-				"When you take this dedication, choose one willing, non-minion ally to act as your spotter. As part of your training in this archetype, you train your spotter in the necessary habits and techniques to use your abilities automatically; your spotter doesn't need to spend any feats of their own to grant the effects. You only gain the benefits of your Sniping Duo archetype feats if both you and your spotter are alive and conscious. You and your spotter don't grant your foes lesser cover against one another's Strikes.",
-				"Whenever you or your spotter successfully Strikes a target, the other member of your duo gains a +1 circumstance bonus per weapon damage die on the damage roll of their next {@action Strike} made against that target before the end of their next turn.",
+				"When you take this dedication, choose one willing, non-minion ally to act as your spotter. As part of your training in this archetype, you train your spotter in the necessary habits and techniques to use your abilities automatically; your spotter doesn't need to spend any feats of their own to grant the effects. You only gain the benefits of your Sniping Duo archetype feats if both you and your spotter are alive and conscious. You and your spotter don't grant your foes lesser cover against one another's {@action Strike||Strikes}.",
+				"Whenever you or your spotter successfully {@action Strike||Strikes} a target, the other member of your duo gains a +1 circumstance bonus per weapon damage die on the damage roll of their next {@action Strike} made against that target before the end of their next turn.",
 				"You can change your designated spotter by spending 3 days of downtime training with another ally."
 			],
 			"special": [
@@ -4632,7 +4632,7 @@
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"trigger": "You or your spotter misses with a {@action Strike} against a creature, and the creature is within the other's melee reach or first range increment.",
 			"entries": [
-				"Your skilled teamwork with your spotter enables you both to assist one another when you falter, using either other's failures as opportunities to strike. If you used Tag Team after your spotter missed the triggering {@action Strike}, make a ranged {@action Strike} against the same target with a \u20132 penalty. If you used this reaction after you missed the triggering {@action Strike}, your spotter can use their reaction to make a melee or ranged {@action Strike} against the same target. Strikes granted by this feat don't count toward your or your spotter's multiple attack penalty and your or your spotter's multiple attack penalty doesn't apply to the granted {@action Strike}."
+				"Your skilled teamwork with your spotter enables you both to assist one another when you falter, using either other's failures as opportunities to strike. If you used Tag Team after your spotter missed the triggering {@action Strike}, make a ranged {@action Strike} against the same target with a \u20132 penalty. If you used this reaction after you missed the triggering {@action Strike}, your spotter can use their reaction to make a melee or ranged {@action Strike} against the same target. {@action Strike||Strikes} granted by this feat don't count toward your or your spotter's multiple attack penalty and your or your spotter's multiple attack penalty doesn't apply to the granted {@action Strike}."
 			]
 		},
 		{
@@ -4881,7 +4881,7 @@
 			],
 			"requirements": "You're wielding a loaded crossbow or loaded firearm in each hand.",
 			"entries": [
-				"You fire at an enemy while targeting a part of its anatomy that will disrupt its balance. Make two Strikes against the same target, one with each of the required weapons. If both Strikes are successful, the target is also knocked {@condition prone}."
+				"You fire at an enemy while targeting a part of its anatomy that will disrupt its balance. Make two {@action Strike||Strikes} against the same target, one with each of the required weapons. If both {@action Strike||Strikes} are successful, the target is also knocked {@condition prone}."
 			]
 		},
 		{

@@ -119,12 +119,8 @@
 			},
 			"targets": "1 corpse",
 			"duration": {
-				"type": "timed",
-				"entry": "10 minutes",
-				"duration": {
-					"number": 10,
-					"unit": "minute"
-				}
+				"number": 10,
+				"unit": "minute"
 			},
 			"entries": [
 				"You project a fragment of your senses into the corpse.",
@@ -166,12 +162,8 @@
 				]
 			],
 			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You attune yourself to an underlying cosmic order to the world. While you remain in tune with this power, you gain a +1 status bonus to {@skill Perception} checks, saving throws, and skill checks. If you critically fail any check while under the effects of this spell, the bonus ends and you instead have a \u20131 status penalty to all checks for the remaining duration."
@@ -223,13 +215,9 @@
 				]
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
 				"You lock minds with the target, trying to mentally subdue them. The target must attempt a Will save. Each time you Sustain this Spell, the target attempts another Will save.",
@@ -277,13 +265,9 @@
 				]
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
 				"With a twist of a finger, you send a creature careening on a haphazard trajectory. The target must attempt a Reflex save.",
@@ -327,12 +311,8 @@
 			},
 			"targets": "1 creature or object",
 			"duration": {
-				"type": "timed",
-				"entry": "10 minutes",
-				"duration": {
-					"number": 10,
-					"unit": "minute"
-				}
+				"number": 10,
+				"unit": "minute"
 			},
 			"entries": [
 				"Upon casting, the target emits a musk that's captivating to certain animals. Tiny animals and animal swarms of any size within range must attempt a Will save. On a failure, non-{@condition hostile} animals or animal swarms try to touch the target. If {@condition hostile}, such creatures choose to attack the target instead of other foes, if able to do so without spending additional actions or exposing themselves to additional danger.",

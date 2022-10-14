@@ -80,13 +80,9 @@
 				"entry": "30-foot emanation centered on you"
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
 				"Your eyes glow with an entrancing radiance that captivates those who meet your gaze. Any creature that ends its turn within the emanation must attempt a Will save.",
@@ -131,12 +127,8 @@
 			},
 			"targets": "one object or one 10-footsquare area",
 			"duration": {
-				"type": "timed",
-				"entry": "24 hours",
-				"duration": {
-					"number": 24,
-					"unit": "hour"
-				}
+				"number": 24,
+				"unit": "hour"
 			},
 			"entries": [
 				"You imbue the touched object or space with slow-acting necrotic radiation. If you cast the spell on an object, any creature ending its turn holding or carrying the object takes {@damage 2d6} negative damage. If you cast the spell on an area, any creature ending its turn in the area takes {@damage 2d6} negative damage. You can attempt to use this spell on an attended object by touching the object. If you do, the creature attempts a Reflex save to reduce the effect.",

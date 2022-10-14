@@ -34,13 +34,8 @@
 				"entry": "10-foot burst"
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "sustained",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "unlimited"
-				}
+				"unit": "unlimited",
+				"sustained": true
 			},
 			"entries": [
 				"You fill the area with an oppressive, arid swelter that overwhelms creatures with heat exhaustion. Objects are unaffected. Each creature in the area when the spell is cast or that ends its turn in the area afterward must attempt a Fortitude save. Water creatures and plant creatures use the outcome one degree of success worse than the result of their saving throw. Creatures whose bodies contain no significant moisture (such as fire elementals) are immune to breath of drought.",
@@ -99,12 +94,8 @@
 				]
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You conjure a 5-foot-wide rain cloud that follows the target wherever it goes. It stays roughly an arm's length overhead, unless it must drift lower to fit under a ceiling.",
@@ -160,16 +151,12 @@
 				"basic": true
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You call down a chill wind. When you Cast this Spell, you deal {@damage 2d4} cold damage to each creature in the area (basic Reflex save). If a creature in the area critically fails its Reflex save and was standing, it also falls {@condition prone}.",
-				"You also create a layer of ice on all surfaces in the area, which become difficult terrain. Unattended objects in the area become slick with ice, and picking them up requires a successful Reflex save or {@skill Acrobatics} check against your spell DC. The ice melts on any object that takes fire damage as well as in any square included in the area of a higher-level spell or effect with the {@trait fire} trait."
+				"You also create a layer of ice on all surfaces in the area, which become {@quickref difficult terrain||3|terrain}. Unattended objects in the area become slick with ice, and picking them up requires a successful Reflex save or {@skill Acrobatics} check against your spell DC. The ice melts on any object that takes fire damage as well as in any square included in the area of a higher-level spell or effect with the {@trait fire} trait."
 			],
 			"heightened": {
 				"X": {
@@ -217,16 +204,12 @@
 				"entry": "10-foot burst"
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
-				"You blast the area with grit that scours away soil and gets into creatures' eyes. For the duration of the spell, any plant-based difficult terrain smaller than a tree becomes loose, allowing each 5-foot square of it to be cleared with a single {@action Interact} action. In addition, scouring sand attempts to counteract entangle and other effects that create or manipulate plant-based terrain in its area.",
+				"You blast the area with grit that scours away soil and gets into creatures' eyes. For the duration of the spell, any plant-based {@quickref difficult terrain||3|terrain} smaller than a tree becomes loose, allowing each 5-foot square of it to be cleared with a single {@action Interact} action. In addition, scouring sand attempts to counteract entangle and other effects that create or manipulate plant-based terrain in its area.",
 				"Successfully counteracting an effect removes only the portion of its area that overlaps with scouring sand's area.",
 				"After one such attempt, the effect is temporarily immune to scouring sand's counteract for 24 hours. Each creature in the area when you {@action Cast a Spell||Cast this Spell} or that ends its turn in the area must attempt a Reflex save.",
 				{
@@ -274,12 +257,9 @@
 				]
 			],
 			"duration": {
-				"type": "timed",
 				"entry": "until the start of your next turn",
-				"duration": {
-					"number": 1,
-					"unit": "round"
-				}
+				"number": 1,
+				"unit": "round"
 			},
 			"entries": [
 				"You slap or stomp on a nearby solid or liquid surface, sending a surge of water rushing away from you. The water forms a flat, 5-foot-thick, 10-foot-high wall of water between 5 and 15 feet wide (you decide). It moves 60 feet in a direction of your choice along the struck surface, extinguishing all non-magical fires, carrying along unattended objects of 1 Bulk or less, and pushing larger objects. The wave moves another 60 feet in the same direction at the start of your next turn, then vanishes. Large or smaller creatures in the area or that enter the area the wave moves through must attempt a Fortitude save.",
@@ -374,12 +354,9 @@
 				"entry": "20-foot burst"
 			},
 			"duration": {
-				"type": "timed",
 				"entry": "until the start of your next turn",
-				"duration": {
-					"number": 1,
-					"unit": "round"
-				}
+				"number": 1,
+				"unit": "round"
 			},
 			"entries": [
 				"You issue a blast of sudden wind that ripples outward from the center of the burst. The wind extinguishes small non-magical fires, disperses fog and mist, scatters objects of light Bulk or less, and pushes unsecured objects of 1 Bulk or less 5 feet away from the spell's origin point. Each Medium or smaller creature in the area when you {@action Cast a Spell||Cast the Spell} or that moves into spell's area must attempt a Fortitude saving throw.",
@@ -422,7 +399,7 @@
 				"unit": "feet"
 			},
 			"entries": [
-				"You imbue a single ordinary, inexpensive plant seed with primal energy and throw it onto a surface, where it gradually sprouts into a Medium plant. After 10 minutes, the plant is sturdy enough to provide standard cover, and its space is difficult terrain. The plant is laden with nutritious nuts or fruit sufficient to feed one Medium creature for a day. The plant has AC 10, Hardness 5, and 20 Hit Points."
+				"You imbue a single ordinary, inexpensive plant seed with primal energy and throw it onto a surface, where it gradually sprouts into a Medium plant. After 10 minutes, the plant is sturdy enough to provide standard cover, and its space is {@quickref difficult terrain||3|terrain}. The plant is laden with nutritious nuts or fruit sufficient to feed one Medium creature for a day. The plant has AC 10, Hardness 5, and 20 Hit Points."
 			],
 			"heightened": {
 				"plusX": {

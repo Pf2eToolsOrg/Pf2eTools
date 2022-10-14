@@ -21,6 +21,9 @@
 					"page": {
 						"type": "integer"
 					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
 					"prerequisites": {
 						"type": "string"
 					},
@@ -39,6 +42,9 @@
 					"level": {
 						"type": "integer",
 						"exclusiveMinimum": 0
+					},
+					"amp": {
+						"$ref": "utils.json#/definitions/amp"
 					},
 					"featType": {
 						"type": "object",

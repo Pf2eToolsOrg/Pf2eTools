@@ -202,7 +202,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The avarek withdraws beneath its spines, presenting a defensive, spiky exterior. It gains a +2 circumstance bonus to spine Strikes and AC. Any adjacent creature that attempts a melee attack against the avarek takes {@damage 1d6} piercing damage per attack, regardless of whether the attack hits. Prickly Defense lasts until the avarek uses a move action or makes a {@action Strike} with any weapon other than its spines."
+							"The avarek withdraws beneath its spines, presenting a defensive, spiky exterior. It gains a +2 circumstance bonus to spine {@action Strike||Strikes} and AC. Any adjacent creature that attempts a melee attack against the avarek takes {@damage 1d6} piercing damage per attack, regardless of whether the attack hits. Prickly Defense lasts until the avarek uses a move action or makes a {@action Strike} with any weapon other than its spines."
 						],
 						"name": "Prickly Defense"
 					},
@@ -212,13 +212,13 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The avarek curls into a ball and rolls rapidly, impaling enemies with its spines. The avarek {@action Stride||Strides} twice and makes up to two spine Strikes at any point during its movement, each against a different target within reach. These attacks count toward the avarek's multiple attack penalty, but the penalty doesn't increase until after the avarek makes all the attacks."
+							"The avarek curls into a ball and rolls rapidly, impaling enemies with its spines. The avarek {@action Stride||Strides} twice and makes up to two spine {@action Strike||Strikes} at any point during its movement, each against a different target within reach. These attacks count toward the avarek's multiple attack penalty, but the penalty doesn't increase until after the avarek makes all the attacks."
 						],
 						"name": "Rolling Assault"
 					},
 					{
 						"entries": [
-							"The avarek's Strikes deal an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+							"The avarek's {@action Strike||Strikes} deal an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -1086,7 +1086,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Diobel Sweeper tough Interacts to draw a bomb, then Strikes with it."
+							"The Diobel Sweeper tough Interacts to draw a bomb, then {@action Strike||Strikes} with it."
 						],
 						"name": "Quick Bomber"
 					}
@@ -1412,7 +1412,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Franca quickly slashes at nearby foes, aiming to maim rather than disable. She makes up to three melee Strikes, each against a different creature within reach. These Strikes count toward Franca's multiple attack penalty, but the penalty doesn't increase until after all three Strikes are made. On a hit, the {@action Strike} deals 3 {@condition persistent damage ||persistent bleed damage} instead of its normal damage. On a critical hit, the creature is {@condition flat-footed} until the beginning of Franca's next turn or until they spend an action to remove the condition, whichever comes first."
+							"Franca quickly slashes at nearby foes, aiming to maim rather than disable. She makes up to three melee {@action Strike||Strikes}, each against a different creature within reach. These {@action Strike||Strikes} count toward Franca's multiple attack penalty, but the penalty doesn't increase until after all three {@action Strike||Strikes} are made. On a hit, the {@action Strike} deals 3 {@condition persistent damage ||persistent bleed damage} instead of its normal damage. On a critical hit, the creature is {@condition flat-footed} until the beginning of Franca's next turn or until they spend an action to remove the condition, whichever comes first."
 						],
 						"name": "Bloody Rebel"
 					},
@@ -1429,7 +1429,7 @@
 					},
 					{
 						"entries": [
-							"Strikes deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+							"{@action Strike||Strikes} deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack Franca's"
 					},
@@ -1727,8 +1727,8 @@
 							"flourish"
 						],
 						"entries": [
-							"As the monk's {@action Flurry of Blows} class feature. The Iroran skeleton makes two claw Strikes.",
-							"If both hit the same creature, the damage is combined for the purpose of resistances and weaknesses. The multiple attack penalty applies to the Strikes as normal."
+							"As the monk's {@action Flurry of Blows} class feature. The Iroran skeleton makes two claw {@action Strike||Strikes}.",
+							"If both hit the same creature, the damage is combined for the purpose of resistances and weaknesses. The multiple attack penalty applies to the {@action Strike||Strikes} as normal."
 						],
 						"name": "Flurry of Claws",
 						"entries_as_xyz": "Ability not found: 'Flurry of Claws As the monk's {@action Flurry of Blows} class feature.' in Iroran Skeleton, p.52"
@@ -1902,7 +1902,7 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature misses two consecutive melee Strikes against Maurrisa",
+						"trigger": "A creature misses two consecutive melee {@action Strike||Strikes} against Maurrisa",
 						"entries": [
 							"Maurrisa takes advantage of a flailing foe's opening. She can either {@action Step} 5 feet or make a melee {@action Strike} against the triggering creature."
 						],
@@ -2556,7 +2556,7 @@
 					},
 					{
 						"entries": [
-							"Non-lizardfolk creatures in difficult terrain and non-lizardfolk creatures that are in water and lack a {@action Swim} speed are {@condition flat-footed} to a Shikwashim mercenary."
+							"Non-lizardfolk creatures in {@quickref difficult terrain||3|terrain} and non-lizardfolk creatures that are in water and lack a {@action Swim} speed are {@condition flat-footed} to a Shikwashim mercenary."
 						],
 						"name": "Terrain Advantage"
 					}

@@ -113,7 +113,7 @@ class PageFilterSpells extends PageFilter {
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = (spell.traditions || [])
 			.concat(spell.spellLists || [])
-			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []).map(t => t.toTitleCase());
+			.concat(spell.traditions ? spell.traditions.map(x => x.toLowerCase()).includes("primal" || "arcane") ? "Halcyon" : [] : []).map(t => t.toTitleCase());
 		spell._fSpellType = spell.traits.includes("cantrip") && spell.focus ? ["Focus", "Cantrip"] : spell.traits.includes("cantrip") ? ["Cantrip"] : spell.focus ? ["Focus"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");

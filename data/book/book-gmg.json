@@ -3524,7 +3524,7 @@
 										"{@b Magical Striker} high attack and high damage; moderate to high spell DCs; either a scattering of innate spells or prepared or spontaneous spells up to half the creature's level (rounded up) minus 1",
 										"{@b Skill Paragon} high or extreme ability modifier matching its best skills; typically high Reflex or Will and low Fortitude; many skills at moderate or high and potentially one or two extreme skills; at least one special ability to use the creature's skills in combat",
 										"{@b Skirmisher} high Dex modifier; low Fortitude, high Reflex; higher Speed than typical",
-										"{@b Sniper} high {@skill Perception}; high Dex modifier; low Fortitude, high Reflex; moderate to low HP; ranged Strikes have high attack bonus and damage or moderate attack bonus and extreme damage (melee Strikes are weaker)",
+										"{@b Sniper} high {@skill Perception}; high Dex modifier; low Fortitude, high Reflex; moderate to low HP; ranged {@action Strike||Strikes} have high attack bonus and damage or moderate attack bonus and extreme damage (melee {@action Strike||Strikes} are weaker)",
 										"{@b Soldier} high Str modifier; high to extreme AC; high Fortitude; high attack bonus and high damage; {@action Attack of Opportunity} or other tactical abilities",
 										"{@b Spellcaster} high or extreme modifier for the corresponding mental ability; low Fortitude, high Will; low HP; low attack bonus and moderate or low damage; high or extreme spell DCs; prepared or spontaneous spells up to half the creature's level (rounded up)"
 									]
@@ -5218,10 +5218,10 @@
 							"type": "pf2-h2",
 							"source": "GMG",
 							"page": 64,
-							"name": "Strikes",
+							"name": "{@action Strike||Strikes}",
 							"entries": [
-								"When building your creature's selection of Strikes, use the following sections to set the {@action Strike}'s attack bonus and damage. Give the attack all the normal traits if it's a weapon; for unarmed attacks or weapons you invent, give whatever traits you feel are appropriate. Note that these traits might influence the damage you give the {@action Strike}.",
-								"You might want to make sure a creature has an unarmed attack if you think it's likely to get disarmed. At 7th level and higher, PCs might have the ability to fly, which makes it more important for creatures to have decent ranged Strikes to make sure they aren't totally hopeless against flying PCs (though they could instead have fast fly Speeds or something similar)",
+								"When building your creature's selection of {@action Strike||Strikes}, use the following sections to set the {@action Strike}'s attack bonus and damage. Give the attack all the normal traits if it's a weapon; for unarmed attacks or weapons you invent, give whatever traits you feel are appropriate. Note that these traits might influence the damage you give the {@action Strike}.",
+								"You might want to make sure a creature has an unarmed attack if you think it's likely to get disarmed. At 7th level and higher, PCs might have the ability to fly, which makes it more important for creatures to have decent ranged {@action Strike||Strikes} to make sure they aren't totally hopeless against flying PCs (though they could instead have fast fly Speeds or something similar)",
 								{
 									"type": "pf2-h3",
 									"source": "GMG",
@@ -5443,9 +5443,9 @@
 									"name": "Strike Damage",
 									"entries": [
 										"Table 2\u201310 on the next page gives the damage a creature should deal with a single {@action Strike}. You might use a lower category if the creature has better accuracy, or a higher category if its accuracy is lower.",
-										"A creature that's meant to be primarily a combat threat uses high damage for its melee Strikes, or moderate for melee Strikes that have the {@trait agile} trait. Ranged attacks more typically use the moderate value, or even low. A creature that's meant to be highly damaging uses the extreme damage values, but might then have a moderate attack bonus. As with most statistics, extreme damage is more likely at higher levels. You can also use the extreme value for special attacks that the creature can use only a limited number of times or under circumstances that aren't likely to happen every round.",
-										"More versatile creatures, such as ones that can cast some spells and aren't meant to primarily get their damage through Strikes, go one category lower: moderate for their main melee Strikes, low for agile and ranged Strikes.",
-										"Spellcasters and other creatures that aren't meant to be competent in a direct fight might use the low damage value, or even less if they completely don't care about their Strikes.",
+										"A creature that's meant to be primarily a combat threat uses high damage for its melee {@action Strike||Strikes}, or moderate for melee {@action Strike||Strikes} that have the {@trait agile} trait. Ranged attacks more typically use the moderate value, or even low. A creature that's meant to be highly damaging uses the extreme damage values, but might then have a moderate attack bonus. As with most statistics, extreme damage is more likely at higher levels. You can also use the extreme value for special attacks that the creature can use only a limited number of times or under circumstances that aren't likely to happen every round.",
+										"More versatile creatures, such as ones that can cast some spells and aren't meant to primarily get their damage through {@action Strike||Strikes}, go one category lower: moderate for their main melee {@action Strike||Strikes}, low for agile and ranged {@action Strike||Strikes}.",
+										"Spellcasters and other creatures that aren't meant to be competent in a direct fight might use the low damage value, or even less if they completely don't care about their {@action Strike||Strikes}.",
 										"On Table 2\u201310, you'll find a damage expression (a die roll or rolls plus a flat modifier) you can use as is, or you can take the damage in parentheses and build your own damage expression to hit that number. If you do the latter, remember that a d4 counts as 2.5 damage, a d6 as 3.5, a d8 as 4.5, a d10 as 5.5, and a d12 as 6.5. Usually a damage expression works best when roughly half the damage is from dice and half is from the flat modifier. If your creature deals special damage, like {@damage 1d6} fire from {@i flaming} attacks, that counts toward its total damage per {@action Strike}. Keep in mind that a creature using a weapon should have a damage value that feels right for that weapon. Extreme damage works well for two-handed weapons that uses d10s or d12s for damage. On the other hand, a dagger uses only d4s, so a dagger wielder would need something like sneak attack to deal extreme damage, or you might compensate for the dagger's lower damage per {@action Strike} by giving the creature the ability to attack more efficiently or use other tricks."
 									]
 								},
@@ -5673,7 +5673,7 @@
 							"name": "Spells",
 							"entries": [
 								"Your creature might have magical abilities that are best represented by spells. If you're making a highly spellcasting-themed creature, give it prepared or spontaneous spells. For a creature that has spells due to its magical nature, especially if that magic isn't its core focus, consider giving it some innate spells instead.",
-								"How many spells you should give a creature depends on how you expect it to spend its actions in combat. If it's primarily going to be making Strikes, it might not have any spells, or it might just have a few to help it move around better or protect against certain types of magic.",
+								"How many spells you should give a creature depends on how you expect it to spend its actions in combat. If it's primarily going to be making {@action Strike||Strikes}, it might not have any spells, or it might just have a few to help it move around better or protect against certain types of magic.",
 								"When choosing spells, lean hard into the creature's theme. While many PCs choose spells to cover a wide variety of situations, creatures are more evocative the more focused they are. Consider selecting about three-quarters of the spells based on relevance to the theme and the remainder for other things. However, make sure the spells aren't one note\u2014selecting {@i fireball} for most of a creature's spell slots doesn't make for a compelling fire creature in the way a diverse selection of fire spells would.",
 								"When choosing spells, some spells won't be very useful if cast at an extremely low level compared to the creature's levels. Most notably, damaging spells drop off in usefulness for a creature that's expected to last only a single fight. A damaging spell 2 levels below the highest level a creature of that level can cast is still potentially useful, but beyond that, don't bother. Spells that have the {@trait incapacitation} trait should be in the highest level slot if you want the creature to potentially get their full effect against PCs.",
 								{
@@ -5684,7 +5684,7 @@
 									"entries": [
 										"Set the creature's spell DC and spell attack roll using Table 2\u201311 on page 66. Most creatures use the same DC for all their spells, even if they have multiple types, such as a creature with both prepared spells and innate spells.",
 										"Use the high numbers for primary casters, and the moderate numbers for creatures that have some supplemental spells but are focused more on combat.",
-										"At 15th level and higher, the extreme numbers become standard for spellcasters. A few creatures might use the extreme numbers at lower levels, but they tend to be highly specialized, with very weak defenses and Strikes.",
+										"At 15th level and higher, the extreme numbers become standard for spellcasters. A few creatures might use the extreme numbers at lower levels, but they tend to be highly specialized, with very weak defenses and {@action Strike||Strikes}.",
 										"Secondary spellcasters can go up to high numbers if they're above 15th level and have offensive spells. There is no low value\u2014the creature shouldn't have any spells in the first place if it would be that bad at using them!"
 									]
 								},
@@ -6056,7 +6056,7 @@
 									"entries": [
 										"Abilities a creature uses on its turn have the most flexibility and scope. You can use Table 2\u201311 to determine active ability DCs as well as spell DCs. You can have an ability use 1 to 3 actions as needed (or be a free action in rare cases) and use just about any type of tactic. Feats, spells, and existing creature abilities provide a wide variety of examples, so look for something similar to your idea to use as a basis.",
 										"Consider how you want your creature to spend its turns.",
-										"Two-action activities pretty much define the creature's turn, and single actions work best for supplemental benefits or normal Strikes. And as you build out your idea of a creature's turn, don't forget about movement! A creature often needs to spend actions getting into position, especially early in a fight. This is especially challenging with meleeonly creatures. You can give such creatures abilities similar to Sudden Charge or the deadly mantis's Leaping Grab.",
+										"Two-action activities pretty much define the creature's turn, and single actions work best for supplemental benefits or normal {@action Strike||Strikes}. And as you build out your idea of a creature's turn, don't forget about movement! A creature often needs to spend actions getting into position, especially early in a fight. This is especially challenging with meleeonly creatures. You can give such creatures abilities similar to Sudden Charge or the deadly mantis's Leaping Grab.",
 										"Use 3-action abilities sparingly, as a creature can't use them if it is {@condition slowed} or {@condition stunned}\u2014making a creature's coolest or most defining ability use up 3 actions might mean the creature never gets to use it. These activities should be reserved for abilities that include some movement (like Trample) or that the creature is likely to use before engaging in combat. Don't make an ability use 3 actions as a way to balance it\u2014saying \"This can be more powerful than other abilities because it is less likely to work,\" is a recipe for frustration if you've made a cool ability that's too hard or even impossible for the creature to use.",
 										"Be especially careful with activities when designing boss creatures. They're likely to get targeted with the PCs' most powerful detrimental effects, get {@condition grabbed}, become {@condition slowed}, or otherwise have their actions restricted. Bosses need to have solid options they can use with 1 or 2 actions.",
 										"This lets them use their remaining actions to get away, use a simple ability, or otherwise keep the fight dynamic.",
@@ -6066,7 +6066,7 @@
 											"page": 68,
 											"name": "Free Actions",
 											"entries": [
-												"Use free actions that don't have triggers sparingly, and when you do, they should almost always be used for support or utility actions, not Strikes or movement. If you come up with a free action, consider whether it should be its own action or part of a combo, such as drawing a weapon and attacking. In cases like the latter, you might be better off making a single action that allows the creature to draw a weapon and then {@action Strike}."
+												"Use free actions that don't have triggers sparingly, and when you do, they should almost always be used for support or utility actions, not {@action Strike||Strikes} or movement. If you come up with a free action, consider whether it should be its own action or part of a combo, such as drawing a weapon and attacking. In cases like the latter, you might be better off making a single action that allows the creature to draw a weapon and then {@action Strike}."
 											]
 										},
 										{
@@ -6249,7 +6249,7 @@
 										"Reactions and free actions with triggers can give a creature an impact outside its turn. This can make the fight more interesting, but may also be risky. It's tempting to give every creature a reaction, but that's not necessarily a good idea.",
 										"To decide whether your creature should have a reaction, first consider if the creature has the reflexes or insight to react well in the first place\u2014for instance, an ogre doesn't have {@action Attack of Opportunity} because it's a big oaf. Oozes, constructs, and unintelligent creatures are less likely to have reactions than others for this reason.",
 										"Second, look at the complexity of the encounter your creature is likely to appear in. If you'll have a large number of creatures, skipping reactions can make the fight flow faster. A creature that's more likely to fight solo, on the other hand, might have a reaction to give it a way to continue to be dangerous amid an onslaught of attacks by the party.",
-										"When creating reactions, be careful with \"gotcha\" abilities\u2014ones that punish players for making perfectly reasonable choices, for rolling poorly, and so on. If you include abilities like this, they need to reinforce the creature's core theme and the play style you want it to use in combat. For example, a creature that Strikes as a reaction when someone fails an attack roll will encourage PCs to use their actions on other tactics, rather than attacking multiple times each turn. Is that what you want? Is this dynamic essential for making the creature feel like it's supposed to? This isn't the type of ability you'd give to any old creature\u2014 only an incredible duelist or something similar.",
+										"When creating reactions, be careful with \"gotcha\" abilities\u2014ones that punish players for making perfectly reasonable choices, for rolling poorly, and so on. If you include abilities like this, they need to reinforce the creature's core theme and the play style you want it to use in combat. For example, a creature that {@action Strike||Strikes} as a reaction when someone fails an attack roll will encourage PCs to use their actions on other tactics, rather than attacking multiple times each turn. Is that what you want? Is this dynamic essential for making the creature feel like it's supposed to? This isn't the type of ability you'd give to any old creature\u2014 only an incredible duelist or something similar.",
 										"Reactions should require something out of the ordinary to happen, or should be relatively weak if triggered by something ordinary. A reaction that triggers anytime someone tries to {@action Strike} a creature is likely to be perceived by the players as uninteresting because it's so predictable.",
 										"The best reactions should be telegraphed so when they happen, it makes sense to the players. Think of one of the core reactions of the game: {@feat Shield Block}. The creature raises its shield\u2014an obvious action the PCs can see\u2014so when it blocks damage from an attack, that makes perfect sense.",
 										"Similarly, if you made a crystalline creature, you might have it build up sonic energy in a low thrum, so when it uses a reaction to release a burst of sonic energy when hit, the players can say, \"Oh, I should have seen that coming.\"",
@@ -16344,7 +16344,7 @@
 											"name": "Devastating Attacks",
 											"level": 4,
 											"entries": [
-												"At 4th level, your weapon and unarmed Strikes deal two damage dice instead of one. This increases to three at 12th level and to four at 19th level."
+												"At 4th level, your weapon and unarmed {@action Strike||Strikes} deal two damage dice instead of one. This increases to three at 12th level and to four at 19th level."
 											]
 										},
 										{

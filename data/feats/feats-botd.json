@@ -248,7 +248,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": [
-							"You move through the object, treating the square within it as difficult terrain. If you end your turn inside an object, you can move out of it only if you Pass Through again or use some other means of moving through a solid object. As normal for being incorporeal, starting your turn inside an object makes you {@condition slowed||slowed 1} for that turn."
+							"You move through the object, treating the square within it as {@quickref difficult terrain||3|terrain}. If you end your turn inside an object, you can move out of it only if you Pass Through again or use some other means of moving through a solid object. As normal for being incorporeal, starting your turn inside an object makes you {@condition slowed||slowed 1} for that turn."
 						],
 						"Failure": [
 							"Your movement ends, and you trigger reactions as if you moved out of the square you started in."
@@ -379,7 +379,7 @@
 			],
 			"prerequisites": "Lich Dedication, legendary in {@skill Crafting}",
 			"entries": [
-				"Inspired by the degenerate demiliches your kind sometimes devolves into, you've embedded a gem into your brow, fusing it to your necrotic flesh. This gem has been specially calibrated to hold one of the following spells: {@spell repulsion}, {@spell scrying}, or {@spell true seeing}. You must decide which spell your gem contains when you take this feat; changing the spell requires retraining the feat. Once per day, you can drain the gem's magical energy to Cast the Spell without spending a spell slot.",
+				"Inspired by the degenerate demiliches your kind sometimes devolves into, you've embedded a gem into your brow, fusing it to your necrotic flesh. This gem has been specially calibrated to hold one of the following spells: {@spell repulsion}, {@spell scrying}, or {@spell true seeing}. You must decide which spell your gem contains when you take this feat; changing the spell requires retraining the feat. Once per day, you can drain the gem's magical energy to {@action Cast a Spell||Cast the Spell} without spending a spell slot.",
 				"At 18th level, you can heighten whichever spell you chose to 7th level. At 20th level, you can heighten whichever spell you chose to 8th level; regardless of which spell you chose, you can instead drain the gem's magical energy to cast an 8th-level {@spell spell turning} without spending a spell slot."
 			]
 		},
@@ -433,7 +433,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"entries": [
-				"Your connection to your bound terrain strengthens, making you unhindered by local weather. When in your bound terrain, you ignore the effects of non-magical difficult terrain. In addition, your experience from your bound terrain lets you ignore circumstance penalties to visual {@skill Perception} checks and ignore concealment caused by certain {@trait environmental} effects.",
+				"Your connection to your bound terrain strengthens, making you unhindered by local weather. When in your bound terrain, you ignore the effects of non-magical {@quickref difficult terrain||3|terrain}. In addition, your experience from your bound terrain lets you ignore circumstance penalties to visual {@skill Perception} checks and ignore concealment caused by certain {@trait environmental} effects.",
 				"The types you ignore depend on your bound terrain.",
 				"Arctic Ice or snow Desert Dust or sand Mountain Clouds or mist Swamp Rain or murky water"
 			]
@@ -580,7 +580,7 @@
 			],
 			"prerequisites": "Accursed Touch",
 			"entries": [
-				"You've learned to channel your curse through weapons you wield instead of solely through your flesh. The benefits of Accursed Touch apply to any melee weapon you wield instead of only your fist Strikes."
+				"You've learned to channel your curse through weapons you wield instead of solely through your flesh. The benefits of Accursed Touch apply to any melee weapon you wield instead of only your fist {@action Strike||Strikes}."
 			]
 		},
 		{
@@ -1006,7 +1006,7 @@
 			],
 			"prerequisites": "{@feat Zombie Dedication|BotD}",
 			"entries": [
-				"Even when your limbs are severed, they remain a part of you. When an arm is severed from your body, it gains the {@trait minion} trait. While severed, your limb has the statistics of a familiar (Core Rulebook 217\u2013218) without any familiar or master abilities, except its Speed is 5 feet, it can't move further than 100 feet from you, it can {@action Interact} with things, and it can still make any unarmed Strikes it could have made while attached to you (usually a fist {@action Strike}). Any Strikes it makes share your multiple attack penalty and use your attack bonus and damage. If your arm is reduced to 0 HP or is ever more than 100 feet from you, it becomes inert until reattached.",
+				"Even when your limbs are severed, they remain a part of you. When an arm is severed from your body, it gains the {@trait minion} trait. While severed, your limb has the statistics of a familiar (Core Rulebook 217\u2013218) without any familiar or master abilities, except its Speed is 5 feet, it can't move further than 100 feet from you, it can {@action Interact} with things, and it can still make any unarmed {@action Strike||Strikes} it could have made while attached to you (usually a fist {@action Strike}). Any {@action Strike||Strikes} it makes share your multiple attack penalty and use your attack bonus and damage. If your arm is reduced to 0 HP or is ever more than 100 feet from you, it becomes inert until reattached.",
 				"The GM might allow you to detach other limbs that have unarmed attacks using the below action (for example, if you're a tiefling with Form of the Fiend, giving you a tail unarmed attack). You gain the Lay Down Arms action.",
 				"Lay Down Arms {@as 1} You pull your arm off, harmlessly severing it from your body and dropping it in an adjacent square.",
 				"You can also use this action to reattach your severed arm if it's adjacent to you; it immediately functions normally. If the detached limb was at 0 Hit Points, it takes 10 minutes to reattach it instead of a single action."
@@ -1031,7 +1031,7 @@
 			],
 			"prerequisites": "{@feat Zombie Dedication|BotD}",
 			"entries": [
-				"You may be slower than you were in life, but your pace is unfaltering. {@action Stride} twice, or three times if you spent 3 actions to Shamble. During this movement, you ignore difficult terrain and greater difficult terrain.",
+				"You may be slower than you were in life, but your pace is unfaltering. {@action Stride} twice, or three times if you spent 3 actions to Shamble. During this movement, you ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}.",
 				"You can choose to ignore all circumstance and status penalties to your Speed when you Shamble. If you do, you must succeed at a DC {@flatDC 6} flat check when you finish Shambling or your body deteriorates."
 			]
 		},
@@ -1200,7 +1200,7 @@
 			"prerequisites": "{@feat Vampire Dedication|BotD}",
 			"entries": [
 				"Your nails grow into sharp claws, perfect for seizing and tearing your prey. You gain a claw unarmed attack that deals {@damage 1d4} slashing damage. Your claws are in the brawling group and have the agile, {@trait finesse}, and {@trait unarmed} traits.",
-				"If you hit the same enemy with two consecutive claw Strikes in the same round, you can attempt to {@action Grapple} that same target as a free action, provided you take that action immediately after the second {@action Strike}."
+				"If you hit the same enemy with two consecutive claw {@action Strike||Strikes} in the same round, you can attempt to {@action Grapple} that same target as a free action, provided you take that action immediately after the second {@action Strike}."
 			]
 		},
 		{
@@ -1346,7 +1346,7 @@
 			],
 			"prerequisites": "Manipulative Charm",
 			"entries": [
-				"You stare into your target's eyes and enthrall them, shattering their free will. Once per day, you can cast 7th-level {@spell dominate} as a divine innate spell, using your class DC or spell DC, whichever is higher. It gains the {@trait visual} trait. At 18th level, the dominate is heightened to 8th level; at 20th level, it's heightened to 9th level. A creature that succeeds at its save is temporarily immune to your domination for 24 hours, though in most cases, you can't Cast the Spell again within 24 hours. If you are destroyed, all your {@spell dominate} spells from Dominating Gaze immediately end."
+				"You stare into your target's eyes and enthrall them, shattering their free will. Once per day, you can cast 7th-level {@spell dominate} as a divine innate spell, using your class DC or spell DC, whichever is higher. It gains the {@trait visual} trait. At 18th level, the dominate is heightened to 8th level; at 20th level, it's heightened to 9th level. A creature that succeeds at its save is temporarily immune to your domination for 24 hours, though in most cases, you can't {@action Cast a Spell||Cast the Spell} again within 24 hours. If you are destroyed, all your {@spell dominate} spells from Dominating Gaze immediately end."
 			]
 		},
 		{
@@ -1377,7 +1377,7 @@
 						"You have weakness 5 to area and splash damage.",
 						"You can occupy the same space as other creatures and must do so to use your damaging ability.",
 						"As a 2-action activity, you can deal {@damage 10d6} bludgeoning damage to all creatures sharing your space (basic Reflex save with a DC equal to your class DC or spell DC, whichever is higher).",
-						"You can't speak, Cast Spells, use manipulate actions requiring your hands, Activate magic items, or make any Strikes with your normal body.",
+						"You can't speak, Cast Spells, use manipulate actions requiring your hands, Activate magic items, or make any {@action Strike||Strikes} with your normal body.",
 						"You don't gain the swarm mind ability, so you are still affected normally by {@trait mental} effects. You also retain the benefits of skeleton feats that don't require communication or the use of hands."
 					]
 				}
@@ -1758,7 +1758,7 @@
 				"Items You can transmute physical items to make them part of your incorporeal form. This requires spending 10 minutes with the items within reach, during which you transform the items into part of your form; you can return items you already have incorporated to a corporeal state at the same time. The items retain all their runes and other abilities, need to be invested normally if they have the {@trait invested} trait, and need to be worn, held, or stowed appropriately. Once you've incorporated the items, you and other incorporeal creatures can use them normally\u2014you can {@action Interact} with them, {@action Release} them, and so on. Your incorporated weapons gain the benefits of the ghost touch property rune, allowing you to use them normally against both corporeal and incorporeal creatures.",
 				"Incorporated items become corporeal again only if you transmute them back or are destroyed, in which case, they drop to the ground under you.",
 				"Attacks Your unarmed attacks become magical and deal negative damage instead of their normal type.",
-				"Strength Unlike most incorporeal creatures, your Strength modifier is not \u20135; you keep the same Strength score you had before you became a ghost, though you can only attempt Strength-based skill checks\u2014typically {@skill Athletics} checks\u2014against other incorporeal creatures, as normal for an incorporeal creature. Against incorporeal creatures, use your Strength normally to determine the results of {@skill Athletics} checks, Strikes with melee weapons, and any other checks or damage rolls dependent on Strength.",
+				"Strength Unlike most incorporeal creatures, your Strength modifier is not \u20135; you keep the same Strength score you had before you became a ghost, though you can only attempt Strength-based skill checks\u2014typically {@skill Athletics} checks\u2014against other incorporeal creatures, as normal for an incorporeal creature. Against incorporeal creatures, use your Strength normally to determine the results of {@skill Athletics} checks, {@action Strike||Strikes} with melee weapons, and any other checks or damage rolls dependent on Strength.",
 				"Ties that Bind When you become a ghost, work with your GM to choose a bound site and unfinished business, both of which matter for your character's story, as well as some ghost archetype feats.",
 				"Your bound site tethers you to the physical world and is typically either a location important to you in life or the place where you died. Unfinished business keeps you from passing to the afterlife. If someone resolves your unfinished business, you decide whether to accept the change and pass on, or to fight it. If you pass on, you get a few minutes to say your goodbyes, and then move into the River of Souls and the afterlife.",
 				"Your character ceases to be. If you fight the change, you remain, though you and the GM might determine a new unfinished business. If you are physically destroyed, you cease your existence as a ghost but still might not be able to pass on to the afterlife if your unfinished business is incomplete. In this liminal state, you might come across strange energies and become another sort of creature, or anchor to a summoner and become an eidolon."
@@ -2250,7 +2250,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You trace a spiral in the air while intoning prayers to {@deity Pharasma}, gaining her blessing for a time. For 3 rounds, your Strikes and spells deal additional damage against undead, creatures in possession of an imprisoned soul, or creatures you have witnessed create or command undead. You gain a status bonus to damage with your Strikes against these creatures equal to the number of weapon damage dice. Spells you cast from spell slots gain a status bonus to damage against these creatures equal to the level of the spell; this bonus applies only to spells that deal damage and don't have a duration.",
+				"You trace a spiral in the air while intoning prayers to {@deity Pharasma}, gaining her blessing for a time. For 3 rounds, your {@action Strike||Strikes} and spells deal additional damage against undead, creatures in possession of an imprisoned soul, or creatures you have witnessed create or command undead. You gain a status bonus to damage with your {@action Strike||Strikes} against these creatures equal to the number of weapon damage dice. Spells you cast from spell slots gain a status bonus to damage against these creatures equal to the level of the spell; this bonus applies only to spells that deal damage and don't have a duration.",
 				"If your spiral is glowing, you can target a willing creature in its light. If you do, that creature gains the bonuses instead of you."
 			],
 			"leadsTo": [
@@ -2401,7 +2401,7 @@
 			"entries": [
 				"You've dedicated yourself to studying ancient techniques and memorized minor prayers against undead to swiftly dispatch them. Make a {@action Strike} against a creature you know is undead. This counts as two attacks when calculating your multiple attack penalty.",
 				"If this {@action Strike} hits, you deal one extra die of positive damage, with the same die size as the weapon or unarmed attack you used.",
-				"Any further Strikes you make against the same creature before the start of your next turn using the same weapon or unarmed attack deal extra positive damage equal to the number of weapon dice. As normal, the positive damage harms only undead and creatures with negative healing.",
+				"Any further {@action Strike||Strikes} you make against the same creature before the start of your next turn using the same weapon or unarmed attack deal extra positive damage equal to the number of weapon dice. As normal, the positive damage harms only undead and creatures with negative healing.",
 				"If you're at least 10th level, increase this to two extra dice, and if you're at least 18th level, increase it to three extra dice."
 			],
 			"leadsTo": [
@@ -2677,7 +2677,7 @@
 			},
 			"requirements": "You have cast {@spell animate dead|APG} this turn.",
 			"entries": [
-				"You sway with the motions of your spells that animate the dead, channeling your power to sustain two at the same time. You Sustain your previous casting of animate dead, binding the necromantic energy of the two spells together with metaphysical twine. On subsequent rounds, you can Sustain both {@spell animate dead|APG} spells with a single action to Sustain the Spell. This benefit lasts until either of the spells ends."
+				"You sway with the motions of your spells that animate the dead, channeling your power to sustain two at the same time. You Sustain your previous casting of animate dead, binding the necromantic energy of the two spells together with metaphysical twine. On subsequent rounds, you can Sustain both {@spell animate dead|APG} spells with a single action to {@action Sustain a Spell||Sustain the Spell}. This benefit lasts until either of the spells ends."
 			]
 		},
 		{

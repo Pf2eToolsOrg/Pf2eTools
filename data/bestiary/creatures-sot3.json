@@ -111,7 +111,7 @@
 					{
 						"name": "Brute Strength",
 						"entries": [
-							"Abendego brutes deal an extra {@dice 2d8} damage with tridents, and a trident gains the {@trait shove} trait while the brute is using it in melee (both the extra damage dice and the {@trait shove} trait are included in the fighter's fork Strikes above)."
+							"Abendego brutes deal an extra {@dice 2d8} damage with tridents, and a trident gains the {@trait shove} trait while the brute is using it in melee (both the extra damage dice and the {@trait shove} trait are included in the fighter's fork {@action Strike||Strikes} above)."
 						]
 					}
 				]
@@ -948,7 +948,7 @@
 					{
 						"name": "Brute Strength",
 						"entries": [
-							"Bharlen deals an extra {@dice 1d8} damage with tridents, and a trident gains the {@trait shove} trait while she is using it in melee (both the extra damage die and the {@trait shove} trait have been included in Bharlen's trident Strikes above)."
+							"Bharlen deals an extra {@dice 1d8} damage with tridents, and a trident gains the {@trait shove} trait while she is using it in melee (both the extra damage die and the {@trait shove} trait have been included in Bharlen's trident {@action Strike||Strikes} above)."
 						]
 					},
 					{
@@ -1173,8 +1173,51 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The amalgamation makes two fist Strikes against two different targets within its reach. Its multiple attack penalty doesn't increase until after both attacks."
+							"The amalgamation makes two fist {@action Strike||Strikes} against two different targets within its reach. Its multiple attack penalty doesn't increase until after both attacks."
 						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 20
+					}
+				},
+				"hp": [
+					{
+						"hp": 160,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "cold",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "fire",
+						"amount": 10
 					}
 				]
 			},
@@ -1338,7 +1381,7 @@
 					{
 						"name": "Swamp Stride",
 						"entries": [
-							"A boggard hunter ignores difficult terrain caused by swamp terrain features."
+							"A boggard hunter ignores {@quickref difficult terrain||3|terrain} caused by swamp terrain features."
 						]
 					},
 					{
@@ -1987,7 +2030,7 @@
 					{
 						"name": "Swamp Stride",
 						"entries": [
-							"Grouloop ignores difficult terrain caused by swamp terrain features."
+							"Grouloop ignores {@quickref difficult terrain||3|terrain} caused by swamp terrain features."
 						]
 					},
 					{
@@ -2312,7 +2355,7 @@
 						],
 						"trigger": "Halbrux's turn begins",
 						"entries": [
-							"Halbrux identifies the immediate movements of a creature she can see and attempts a {@skill Lore||Fortune-Telling Lore} check against that creature's Reflex DC. On a success, Halbrux's melee Strikes deal an additional {@damage 4d6} precision damage ({@damage 6d6} precision damage on a critical success) to the creature until the end of Halbrux's turn."
+							"Halbrux identifies the immediate movements of a creature she can see and attempts a {@skill Lore||Fortune-Telling Lore} check against that creature's Reflex DC. On a success, Halbrux's melee {@action Strike||Strikes} deal an additional {@damage 4d6} precision damage ({@damage 6d6} precision damage on a critical success) to the creature until the end of Halbrux's turn."
 						]
 					},
 					{
@@ -2596,7 +2639,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Ixamè makes two claw Strikes and one horn {@action Strike} in any order."
+							"Ixamè makes two claw {@action Strike||Strikes} and one horn {@action Strike} in any order."
 						]
 					},
 					{
@@ -2768,7 +2811,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"A karumzek can take the shape of a Tiny spider. This doesn't change its Speed or Strikes.",
+							"A karumzek can take the shape of a Tiny spider. This doesn't change its Speed or {@action Strike||Strikes}.",
 							{
 								"type": "affliction",
 								"name": "Karumzek Venom",
@@ -3148,7 +3191,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Norgorberite spy Interacts to draw a weapon, then Strikes with that weapon."
+							"The Norgorberite spy Interacts to draw a weapon, then {@action Strike||Strikes} with that weapon."
 						],
 						"generic": {
 							"tag": "feat",
@@ -3715,7 +3758,7 @@
 					{
 						"name": "Puddle Stride",
 						"entries": [
-							"A ssumzili ignores difficult terrain caused by rain, such as puddles or wet rocks."
+							"A ssumzili ignores {@quickref difficult terrain||3|terrain} caused by rain, such as puddles or wet rocks."
 						]
 					},
 					{
@@ -4527,7 +4570,7 @@
 					{
 						"name": "Slippery Halfling",
 						"entries": [
-							"Thiarvo ignores difficult terrain from trees, foliage, rubble, and undergrowth."
+							"Thiarvo ignores {@quickref difficult terrain||3|terrain} from trees, foliage, rubble, and undergrowth."
 						]
 					}
 				]
