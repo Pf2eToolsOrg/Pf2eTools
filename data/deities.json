@@ -729,6 +729,31 @@
 				"weapons": [
 					"sawtooth saber"
 				]
+			},
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 3,
+				"flavor": [
+					"He Who Walks in Blood detests oathbreakers and bears a particular prejudice against mortals seeking to ascend into divinity, but the Mantis God believes in compensation for selfless duties and rewards the rare individual for their murderous deeds. Violation of his tenets and, occasionally, slights against {@deity Grandmother Spider|LOGM} may provoke Achaekek’s wrath."
+				],
+				"Minor Boon": [
+					"You hide among the shadows of death. Once, when you would fail a {@skill Stealth} check, you critically succeed instead. Achaekek typically grants this boon for an extremely consequential {@skill Stealth} check that could lead to an assassination, such as one that could get you into position to kill an important target, but rarely on a {@skill Stealth} check to help you escape."
+				],
+				"Moderate Boon": [
+					"You gain the god’s approval to take a life. You can cast {@spell death knell} once per day as an innate divine spell."
+				],
+				"Major Boon": [
+					"Death lives in your very blade. You gain the {@classFeature sneak attack|rogue||1} rogue class feature, dealing {@damage 3d6} precision damage. If you already have that class feature, you increase your sneak attack damage by {@damage 3d6}."
+				],
+				"Minor Curse": [
+					"Achaekek’s minions seek vengeance. Nonsapient insects (especially mantises) become {@condition hostile} against you."
+				],
+				"Moderate Curse": [
+					"Hubris brings death. Your name and location are mentally projected into the mind of a Red Mantis assassin, who is tasked with eliminating you."
+				],
+				"Major Curse": [
+					"The Mantis God doesn’t waste his time toying with or tormenting those who truly anger him, or those who dare to consider themselves divine. He rips open a portal to your location, kills you, drags your soul to judgment in a way that prevents resurrection magic, and then leaves."
+				]
 			}
 		},
 		{
@@ -912,6 +937,31 @@
 		},
 		{
 			"name": "Alseta",
+			"intercession": {
+				"page": 3,
+				"source": "LOGMWS",
+				"flavor": [
+					"The Welcomer is a patient goddess that rewards her followers. Incurring her wrath through discourtesy, lack of respect or intentionally making doors unpassable for any reason other than preventing harm can lead to reprimands that range from annoying to frustrating."
+				],
+				"Minor Boon": [
+					"Alseta’s guiding hand aids your journeys. Once, when employing {@trait teleportation} magic, you appear exactly on target, even if you used a notoriously imprecise spell like {@spell plane shift}. Alseta typically grants this boon for extremely consequential magical travel, especially when time is of the essence."
+				],
+				"Moderate Boon": [
+					"New doors open themselves for you. You can cast {@spell knock} once per day as a divine innate spell."
+				],
+				"Major Boon": [
+					"You transition unimpeded through the world. You can open any door or portal simply by placing your palm upon it with a single Interact action, even if it’s locked or magically sealed, and you can enter any open door or threshold, even if it’s magically warded to prevent entry. This doesn’t overcome the locks and magic of {@trait artifact|GMG|artifacts}, deities, and similarly powerful effects."
+				],
+				"Minor Curse": [
+					"Doors jam and locks stick when you try to open them. It takes 3 Interact actions for you to open even an unlocked door, and each attempt to {@action Pick a Lock} takes you 2 rounds instead of 2 actions."
+				],
+				"Moderate Curse": [
+					"Crossing thresholds becomes daunting. Whenever you move through a portal, gateway, or door, you gain the {@condition sickened} 2 condition. Magical travel is even more exhausting; after traveling via {@trait teleportation}, {@spell plane shift}, or the like, you also gain the {@condition fatigued} condition until you get a full night’s rest."
+				],
+				"Major Curse": [
+					"Transportation magic no longer works for you. You cannot be transported by any magical means, nor can you transport, conjure, or summon others. Even extradimensional spaces like {@item bag of holding (generic)||bags of holding} are inaccessible and unusable to you, as using them requires magical transportation to the extradimensional space."
+				]
+			},
 			"alias": [
 				"The Welcomer"
 			],
@@ -1451,6 +1501,31 @@
 		},
 		{
 			"name": "Arazni",
+			"intercession": {
+				"page": 4,
+				"source": "LOGMWS",
+				"flavor": [
+					"While the Unyielding has little regard for her followers, if suitably irritated or impressed, she might bestow the following banes or boons."
+				],
+				"Minor Boon": [
+					"Once, when you fail a saving throw against an effect that would compel you to take some action against your will, you critically succeed instead. Arazni typically grants this boon for consequential actions or particularly egregious violations of free will."
+				],
+				"Moderate Boon": [
+					"Blood from your wounds forms into armor or a piece of equipment you need. If what you need most is information, the blood forms letters spelling out that information."
+				],
+				"Major Boon": [
+					"Upon death, you return to life with the effects of a critical success on a {@ritual resurrect} ritual to enact vengeance against your killers. When you successfully achieve vengeance, abandon your vengeance for other pursuits, or fail outright, you crumble to scarlet dust."
+				],
+				"Minor Curse": [
+					"Someone you’ve wronged gains information they desire about you, with the effects of a critical success at the {@ritual commune} ritual."
+				],
+				"Moderate Curse": [
+					"Creatures weaker than you gain a status bonus on all attack rolls against you equal to your difference in levels, to a maximum of +4. Whenever you are damaged by a such a creature, you take {@condition persistent damage||persistent bleed damage} equal to twice the difference between your levels (no maximum)."
+				],
+				"Major Curse": [
+					"When you would regain Hit Points due to either a {@trait positive} or {@trait negative} effect, you lose that many Hit Points instead."
+				]
+			},
 			"alias": [
 				"The Unyielding"
 			],
@@ -2813,6 +2888,31 @@
 		},
 		{
 			"name": "Besmara",
+			"intercession": {
+				"page": 4,
+				"source": "LOGMWS",
+				"flavor": [
+					"Due to her fiery temperament, the Pirate Queen is quick to punish or reward her followers, and is equally fast at rescinding her favor or forgiving transgressions."
+				],
+				"Minor Boon": [
+					"Besmara wants you to amuse her, placing both plunder and peril in your path. This intercession often takes the form of an unexpected treasure map, a message in a bottle, or some other sign leading you to a great reward, assuming you can handle the challenges along the way."
+				],
+				"Moderate Boon": [
+					"You are at home on the seas and always ready to plunder an enemy vessel or defend your own. When aboard a boat, you gain a +2 status bonus to all initiative rolls, {@skill Acrobatics} checks to {@action Balance}, and {@skill Athletics} checks to {@action Climb}. In addition, you never get seasick."
+				],
+				"Major Boon": [
+					"You seem to be unaffected by storms. You ignore all effects and penalties caused by precipitation and winds, and you can see normally through fog, rain, and other weather conditions."
+				],
+				"Minor Curse": [
+					"You feel some of the effects of scurvy, making your wounds flow more easily. The DC of the flat check for you to remove {@condition persistent damage||persistent bleed damage} is 20 instead of 15 (or 15 instead of 10 if using extremely efficient methods to assist your recovery), and you don’t recover from {@condition persistent damage||persistent bleed damage} automatically when you reach full Hit Points."
+				],
+				"Moderate Curse": [
+					"You get seasick, becoming {@condition sickened} 2 whenever you can see the sea or are on a boat at sea. You can’t reduce this condition until you can no longer see the sea or are off the boat, though you can manage to stomach enough food and water to survive on a voyage, with extreme discomfort."
+				],
+				"Major Curse": [
+					"You meet extreme financial ruin for daring to gravely offend the Pirate Queen. Besmara’s agents steal all your booty and bring the spoils to Besmara’s ship, Seawraith. If you want a chance to recover your lost wealth, you must parlay with the goddess and accept whatever dangerous terms she offers, usually requiring a heist she will find sufficiently amusing to watch whether you succeed or fail, and requiring you to trade your spoils from that quest for your previous belongings."
+				]
+			},
 			"alias": [
 				"The Pirate Queen"
 			],
@@ -3052,6 +3152,31 @@
 		},
 		{
 			"name": "Brigh",
+			"intercession": {
+				"page": 4,
+				"source": "LOGMWS",
+				"flavor": [
+					"The Whisper in Bronze doesn’t dole out punishments or rewards to her followers lightly."
+				],
+				"Minor Boon": [
+					"Knowledge floods your mind. Once, you can reroll a failed skill check to {@action Recall Knowledge}; you must use the second result, even if it’s worse."
+				],
+				"Moderate Boon": [
+					"You become a wellspring of invention. You gain the {@feat Inventor} feat, even if you don’t meet its prerequisites, and when you roll a {@skill Crafting} check for the {@feat Inventor} feat, you use the result one degree of success better than the result you rolled."
+				],
+				"Major Boon": [
+					"You gain the companionship of a loyal {@filter construct ally|bestiary||creature type=construct} of Brigh’s choice at least 1 level lower than you. If the construct is destroyed, it rebuilds itself over the course of a week, and as you gain levels, the construct upgrades and improves itself, becoming more powerful."
+				],
+				"Minor Curse": [
+					"Your hands shake when attempting delicate work. All your failures to {@action Craft} or {@action Repair} items are instead critical failures."
+				],
+				"Moderate Curse": [
+					"Whenever you try to perform engineering or science tasks, everything just seems to explode. Whenever you attempt to create or use an {@trait alchemical} item or a {@trait construct}, {@action Disable a Device}, and so on, you must attempt a DC 15 flat check. On a failure, something explodes and you take {@damage 1d6} fire damage (or a different type of damage, if appropriate) per level of the item, construct, or device (DC 40 basic Reflex save)."
+				],
+				"Major Curse": [
+					"{@trait construct||Constructs}—even mindless {@trait construct||constructs} you thought you could control—seek your demise. All constructs are hostile to you and attack you when they notice your presence. Occasionally, inanimate statues and other objects animate as constructs to pursue Brigh’s vengeance."
+				]
+			},
 			"alias": [
 				"The Whisper In Bronze"
 			],
@@ -3297,6 +3422,31 @@
 			"alias": [
 				"The Iron Goddess"
 			],
+			"intercession": {
+				"page": 4,
+				"source": "LOGMWS",
+				"flavor": [
+					"Seeing her android devotees and other followers of a constructed nature as her children, the Iron Goddess is most likely to bestow her boons and curses on these individuals."
+				],
+				"Minor Boon": [
+					"Casandalee frees your thinking from dangerous control. Once, when you fail a Will save against an effect that would control your actions, you critically succeed instead. Casandalee typically grants this boon for particularly consequential violations of autonomy and agency."
+				],
+				"Moderate Boon": [
+					"Your organs are partially transformed into mechanical counterparts. You gain resistance 10 to negative damage, and the DC of your flat check to remove {@condition persistent damage||persistent bleed damage} is only 5."
+				],
+				"Major Boon": [
+					"Casandalee backs up your memory and soul within her divine data flow. After you die, she casts your consciousness into a new artificial body. While Casandalee constructed your new body artificially, it is otherwise similar to the old, with the same effects as a critical success on a {@ritual resurrection} ritual. Casandalee is instead willing to provide different bodies to those who request them."
+				],
+				"Minor Curse": [
+					"Your joints stiffen, and your mind becomes clouded. You take a –2 status penalty to all rolls for initiative."
+				],
+				"Moderate Curse": [
+					"Casandalee attempts to bring you unwanted intellectual advancement to help you become something better. Each day, at some point during the day, Casandalee bestows a strange insight upon you that you find uncomfortable. If you embrace it, you aren’t otherwise affected, but if you don’t, you become {@condition confused} for 10 minutes."
+				],
+				"Major Curse": [
+					"The code of your soul is constantly being rewritten, and not for the better. You are never temporarily immune against a harmful effect."
+				]
+			},
 			"areasOfConcern": [
 				"artificial life",
 				"free thinking",
@@ -3603,6 +3753,31 @@
 			"alias": [
 				"The Calamitous Turn"
 			],
+			"intercession": {
+				"page": 5,
+				"source": "LOGMWS",
+				"flavor": [
+					"The Calamitous Turn’s pleasure most often manifests as improbably good luck, while her displeasure creates startling misfortune."
+				],
+				"Minor Boon": [
+					"Once, you can choose the result of the next ordinary coin you flip or ordinary die you roll. If this ability is used for personal gain at the expense of someone innocent or less fortunate, Chaldira levies her moderate curse on you as punishment."
+				],
+				"Moderate Boon": [
+					"You gain a lucky impetuousness, allowing you to roll for initiative twice and use the higher result once per day. This is a {@trait fortune} effect."
+				],
+				"Major Boon": [
+					"Chaldira’s major boon grants truly improbable luck in combat. Your movement doesn’t trigger reactions. You always succeed at flat checks you make to hit opponents with {@trait attack} actions; this is a {@trait fortune} effect."
+				],
+				"Minor Curse": [
+					"Any time you refuse a request made in good faith, you vomit up a frog, mouse, or other small animal. This deals no damage and causes no conditions, but is obvious to all bystanders."
+				],
+				"Moderate Curse": [
+					"You are plagued with ill luck just when fortune is most needed. You must always roll flat checks twice and use the worse result. This is a {@trait misfortune} effect."
+				],
+				"Major Curse": [
+					"Ill luck causes even once-certain aid to fail with frustrating regularity. You cannot benefit from circumstance or status bonuses, or from {@trait fortune} effects."
+				]
+			},
 			"areasOfConcern": [
 				"battle",
 				"fortune",
@@ -6365,6 +6540,31 @@
 			"alias": [
 				"The Gossamer King"
 			],
+			"intercession": {
+				"page": 5,
+				"source": "LOGMWS",
+				"flavor": [
+					"The Gossamer King’s gifts seem bizarre and cruel to those outside of his following, but his faithful crave his gifts zealously and fear his punishments."
+				],
+				"Minor Boon": [
+					"Your commitment to filth draws a small cloud of disease-laden insects. Once, you can summon a cloud of midges, mosquitos, and flies to surround you for 1 minute. Creatures adjacent to you at any point during that time become {@condition drained} 1, {@condition sickened} 1, and exposed to a blood-borne illness. Ghlaunder typically grants this boon when you can infect a significant number of creatures."
+				],
+				"Moderate Boon": [
+					"Ghlaunder teaches you to bide your time, corrupting and infecting until the time is right. When you expose a creature to a {@trait disease} and it succeeds at its Fortitude save, it is still infected unless it critically succeeds. However, such a creature experiences no effects and the disease does not progress for the first 24 hours, even if the disease is normally fast-acting or someone uses another ability to progress the disease. It’s very difficult to detect the infection in the first day; the DC for {@skill Medicine} checks to do so is 5 higher."
+				],
+				"Major Boon": [
+					"Ghlaunder rewards his followers with the ability to safely spread illness—or on occasion, offers respite to desperate petitioners who please him. You do not take negative effects from any disease you are infected with unless or until Ghlaunder rescinds this benefit."
+				],
+				"Minor Curse": [
+					"Ghlaunder drains away your life force for himself. You become {@condition drained} 1 and can’t reduce your {@condition drained} condition below 1."
+				],
+				"Moderate Curse": [
+					"Ghlaunder leeches your energy from you as easily as blood. Any time you fail a Fortitude save, you become {@condition fatigued} in addition to all other effects."
+				],
+				"Major Curse": [
+					"You are struck with a contagious {@filter disease|afflictions||type=disease} of the GM’s choice. You and anyone else you infect can’t be cured of the disease or improve its condition to an earlier stage in any way until you infect two other sapient beings with the disease."
+				]
+			},
 			"areasOfConcern": [
 				"infection",
 				"insects",
@@ -6816,6 +7016,31 @@
 				"The Weaver",
 				"Nana Anadi"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 5,
+				"flavor": [
+					"Though the Weaver often condones bad decisions so long as a lesson is learned, and is even willing to accept being fairly tricked herself, cruelty and predation upon the weak draw her outrage."
+				],
+				"Minor Boon": [
+					"Grandmother Spider rescues your prank from the jaws of failure. Once, when you would fail a {@skill Deception} check, you critically succeed instead. Grandmother Spider typically grants this boon for deceptions that are necessary for an interesting or consequential prank."
+				],
+				"Moderate Boon": [
+					"You can feel tugs on the strands of fate. You gain a +2 status bonus to initiative rolls."
+				],
+				"Major Boon": [
+					"Grandmother Spider rejoices in freedom and tricks those who would limit it. Any time you would become {@condition grabbed}, {@condition immobilized}, or {@condition restrained}, attempt a DC 10 flat check. On a success, you ignore the effect, and the originator of the effect becomes {@condition grabbed}, {@condition immobilized}, or {@condition restrained} instead. If this simply causes a creature to grab itself, it can usually {@action Escape} as a free action, but it might be stuck if it tried to immobilize you in other ways."
+				],
+				"Minor Curse": [
+					"When your pranks start going wrong, they dissolve into a string of catastrophic failures. When you roll a failure on a {@skill Deception} or {@skill Stealth} check, you get a critical failure instead."
+				],
+				"Moderate Curse": [
+					"Grandmother Spider weaves a web to ensnare you, and you trail webs behind you wherever you go. You become permanently {@condition slowed} 1 and take a –10-foot circumstance penalty to your Speeds."
+				],
+				"Major Curse": [
+					"Grandmother Spider throws all of her might behind the underdog. Any time a creature with a level lower than yours rolls a success on a check against you, it critically succeeds instead; any time you roll a failure on a check against a creature with a level lower than yours, you critically fail instead."
+				]
+			},
 			"source": "LOGM",
 			"areasOfConcern": [
 				"family",
@@ -6990,6 +7215,31 @@
 			"alias": [
 				"God of the End Times"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 6,
+				"flavor": [
+					"The God of the End Times almost never directly intervenes in the world, but he sometimes offers flashes of insight or inflicts terrible psychic distress."
+				],
+				"Minor Boon": [
+					"You wield power over disorder. Once, when you are {@condition confused}, you act normally enough to control your own actions in combat without penalty for the duration, though you still babble incoherently and otherwise behave strangely."
+				],
+				"Moderate Boon": [
+					"Groetus grants you knowledge to further the end times. Each week, he sends you a cryptic, incoherent message about something important to the end times that will happen in the coming week."
+				],
+				"Major Boon": [
+					"Your touch unravels things that have survived past their appointed time, according to Groetus’s reckoning. Such a creature or object takes {@damage 10d6} negative damage each round you continue touching it; the damage ignores all Hardness and is capable of destroying nonliving objects, creatures immune to negative effects, and even undead or other creatures with {@ability negative healing|B2}. This boon might even be able to destroy some {@trait artifact|GMG|artifacts} that have survived past their time."
+				],
+				"Minor Curse": [
+					"Whenever you are illuminated by a light source other than natural sunlight, your head appears to be a bare skull. The DC for your recovery checks is 12 + your {@condition dying} value, rather than 10 + your {@condition dying} value, and you don’t benefit from effects that reduce the DC, such as from the {@feat Toughness} feat."
+				],
+				"Moderate Curse": [
+					"The horrors at the end of reality become overwhelming and constantly race through your mind. You are permanently {@condition stupefied} 2."
+				],
+				"Major Curse": [
+					"You bring about the end to everything around you. Every item you carry or wear gains the {@condition broken} condition after 10 minutes of exposure to you, and is destroyed after a further hour. This effect can’t destroy {@trait artifact|GMG|artifacts} or items of similar power."
+				]
+			},
 			"source": "LOGM",
 			"areasOfConcern": [
 				"apocalypse",
@@ -7096,6 +7346,31 @@
 			"alias": [
 				"The Keeper"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 6,
+				"flavor": [
+					"The Keeper encourages the search for knowledge and rewards those that travel their personal path of enlightenment, but he punishes those who interrupt these journeys or destroy knowledge."
+				],
+				"Minor Boon": [
+					"Books fall open to insightful passages, and memories spring to mind when they are most needed. Once, when you fail a check to {@action Recall Knowledge}, you critically succeed instead. Gruhastha typically grants this boon for an extremely consequential attempt to {@action Recall Knowledge}, particularly when misinformation would have dire consequences."
+				],
+				"Moderate Boon": [
+					"The Keeper speeds your path toward learning new talents. You become permanently trained in two additional skills of your choice. Additionally, you can select a skill you are already trained in and permanently increase your proficiency rank in that skill, following the usual rules for skill increases."
+				],
+				"Major Boon": [
+					"You are a divine inspiration to others around you. When attempting any checks to {@action Recall Knowledge}, you can roll twice and use the better result; this is a {@trait fortune} effect. Additionally, allies within 60 feet gain a +2 status bonus to Will saves."
+				],
+				"Minor Curse": [
+					"As you stray from the truth, dissonant notes seem to interrupt you whenever you speak. You take a –2 status penalty to all {@skill Deception} checks."
+				],
+				"Moderate Curse": [
+					"Enlightenment begins to elude you, leaving you at a loss for knowledge. Whenever you attempt a check to {@action Recall Knowledge}, you use a result one degree of success worse than the result you rolled."
+				],
+				"Major Curse": [
+					"The written word turns against you, blurring into illegibility. You are incapable of reading anything or making out symbols of any sort, including the words on scrolls, spellbooks, or magic items."
+				]
+			},
 			"source": "LOGM",
 			"page": 62,
 			"areasOfConcern": [
@@ -7600,6 +7875,31 @@
 			"alias": [
 				"Duke of Thunder"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 7,
+				"flavor": [
+					"The Duke of Thunder’s intercessions are seen more commonly than other deities’ because of the god’s closeness to mortals, but also because of his tendency to dispense both boons and curses while in the depths of his drink."
+				],
+				"Minor Boon": [
+					"The Heavenly Court’s most boastful deity ensures your boasts hit home. Once, when you fail an {@skill Intimidation} check, you critically succeed instead. Hei Feng grants this boon capriciously based on his mood, sometimes even for trivial or inconsequential boasts, and he sometimes grants it for other skill checks related to boasts."
+				],
+				"Moderate Boon": [
+					"Fair winds and currents speed your passage. Any vessel you use to travel over the sea gains a +10-foot status bonus to its Speeds."
+				],
+				"Major Boon": [
+					"The instruments of the storm spare you from their fury. You ignore all effects and penalties caused by precipitation and winds, and you can see normally through fog, rain, and other weather conditions."
+				],
+				"Minor Curse": [
+					"Hei Feng’s belligerence hangs over you like a thunderhead. You take a –1 status penalty to checks with Charisma-based skills. If you consume even a drop of alcohol, this penalty becomes –3 until the next sunrise."
+				],
+				"Moderate Curse": [
+					"Your heart is as quick to change as Hei Feng’s. If you roll a failure on a saving throw against an {@trait emotion} effect, you get a critical failure instead."
+				],
+				"Major Curse": [
+					"The Duke of Thunder’s ire follows you wherever you go. The weather in a 500-foot radius around you is always stormy. Roughly twice each minute you are outside, you are struck by a bolt of lightning that deals {@damage 10d6} electricity damage (DC 40 basic Reflex save)."
+				]
+			},
 			"source": "LOGM",
 			"areasOfConcern": [
 				"sea",
@@ -8703,6 +9003,31 @@
 			"alias": [
 				"Mother Jaguar"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 7,
+				"flavor": [
+					"Mother Jaguar rewards those who uphold a sense of community and bestows punishments upon those who use her name and convictions to admonish or exclude perceived outsiders."
+				],
+				"Minor Boon": [
+					"With Kazutal’s blessing, food tastes richer. Any meal that you eat tastes delicious and has improved nutritional value. This doesn’t protect you from anything dangerous in your food, but it also doesn’t prevent you from tasting those dangerous elements of the food."
+				],
+				"Moderate Boon": [
+					"You always seem to find safe shelter when you most need it. Once per day, you can cast {@spell rope trick} as a {@trait divine} innate spell."
+				],
+				"Major Boon": [
+					"Kazutal smiles upon those who seek to offer aid, no matter how meek or helpless they may be. Any time creatures attempt a check to {@action Aid} you, they can choose to automatically succeed. If a creature chooses to roll for the attempt and rolls a success, it gets a critical success instead, granting a +4 circumstance bonus even if it doesn’t have legendary proficiency in that skill. You gain the same benefits when you attempt to {@action Aid} others."
+				],
+				"Minor Curse": [
+					"Community opinion turns against you. Humanoids in your community who would normally start as {@condition indifferent} toward you start as {@condition unfriendly} instead."
+				],
+				"Moderate Curse": [
+					"Your strength betrays you, preventing you from taking more than your fair share. You are {@condition enfeebled} 2 and can’t carry anything beyond the gear you are actively wearing or using."
+				],
+				"Major Curse": [
+					"You are cursed to depend upon others for your survival. You can’t eat anything, drink anything, or use any gear or magic items unless they were willingly given to you by someone who rightfully owns them. Work-arounds like having an ally strip the gear from someone’s corpse and then give it to you willingly automatically fail."
+				]
+			},
 			"areasOfConcern": [
 				"safety",
 				"liberty",
@@ -9380,6 +9705,31 @@
 			"alias": [
 				"The Strong Man"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 7,
+				"flavor": [
+					"The Strong Man’s gifts reflect his mastery of might."
+				],
+				"Minor Boon": [
+					"The Strong Man blesses you with a measure of his strength. Increase your maximum and encumbered Bulk limits by 2."
+				],
+				"Moderate Boon": [
+					"You fear no exertion. You can employ exploration tactics normally while {@condition fatigued}."
+				],
+				"Major Boon": [
+					"You possess a true champion’s might. When you roll a critical failure on an {@skill Athletics} check, you get a failure instead, and when you roll a success, you instead get a critical success."
+				],
+				"Minor Curse": [
+					"Difficulty lifting burdens is a sign of divine disapproval. Your maximum and encumbered Bulk limits decrease by 2."
+				],
+				"Moderate Bane": [
+					"Kurgess’s displeasure breaks your competitive edge, causing you to fail at the cusp of success. If your check result exactly equals the DC, you fail instead of succeeding."
+				],
+				"Major Bane": [
+					"The wrath of Kurgess withers you almost to nothing. You are permanently {@condition drained} 2 and {@condition enfeebled} 4."
+				]
+			},
 			"areasOfConcern": [
 				"healthy competition",
 				"sport",
@@ -10969,6 +11319,31 @@
 		},
 		{
 			"name": "Milani",
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 7,
+				"flavor": [
+					"The Everbloom rewards those who put the needs of others first, especially when combating oppressive forces, and she doesn’t hesitate to impede any who enslave others or persecute the defenseless."
+				],
+				"Minor Boon": [
+					"Once, when you roll a failure on a {@skill Deception} or {@skill Stealth} check to protect an uprising from discovery, you critically succeed instead. Milani typically grants this boon for extremely significant checks on which the uprising’s survival hinges."
+				],
+				"Moderate Boon": [
+					"When you use it to protect others, your shield blooms with roses brimming with razor-sharp thorns. You gain the {@feat Shield Warden} feat, even if you don’t meet its prerequisites. If you already had that feat, if your shield takes damage from a melee {@action Strike} in defense of your ally, the attacker takes piercing damage equal to half the shield’s Hardness."
+				],
+				"Major Boon": [
+					"You gain +4 status bonus to checks to {@action Request} during attempts to satisfy one of Milani’s edicts. Once per day, you can sound a battle cry that grants creatures within a 30-foot emanation the effects of {@spell freedom of movement} and affects all doors, locks, containers, and other bindings used to restrain or imprison others with the effects of the {@spell knock} spell."
+				],
+				"Minor Curse": [
+					"A magical wreath of thorny, blood-red roses endlessly grows from your scalp, no matter how much you try to remove it. You gain weakness 5 to piercing damage."
+				],
+				"Moderate Curse": [
+					"Ropes, chains, manacles, and other equipment used to bind or constrain become blazing hot in your hands, bursting into flame or melting as if engulfed in a forge. When you attempt to hold such an item, you take {@damage 2d6} fire damage and the item is destroyed."
+				],
+				"Major Curse": [
+					"Small wounds bleed more than seems physically possible. Whenever you take slashing or piercing damage, you also take {@condition persistent damage||persistent bleed damage }equal to the level of the creature or effect that inflicted the damage."
+				]
+			},
 			"alias": [
 				"The Everbloom"
 			],
@@ -11759,6 +12134,31 @@
 			"alias": [
 				"The Grey Polychrome"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 8,
+				"flavor": [
+					"The Grey Polychrome is a carefree and self-indulgent deity who detests using violence where wits will serve. She rewards cunning in her followers and punishes crudeness."
+				],
+				"Minor Boon": [
+					"Those who have earned Nivi’s trust are blessed with wild turns of luck in the worst of circumstances. Once, instead of attempting the check you would normally roll, you attempt a DC 11 flat check with the same results. Nivi always grants this boon when the odds are stacked against you (though this same effect is an alternate to her minor curse if she uses it for a check when you would have been very likely to succeed)."
+				],
+				"Moderate Boon": [
+					"Nivi bestows a fraction of her skill at pushing consequences down the road. Once per day, after attempting a check, you can roll a second time. You must use the result of the second roll, even if it is worse. This is a {@trait fortune} effect. At any point after you use this boon, the GM can replace one of your check results with the first result of the check you attempted when using this boon; this delayed result can’t be further delayed, prevented, or affected in any way, even by other divine intercessions."
+				],
+				"Major Boon": [
+					"Those who have done much to please Nivi find themselves slipping from sight when needed. Any time you attempt a {@skill Stealth} check to {@action Hide} or {@action Sneak}, you also gain the effects of 2nd-level {@spell invisibility} and {@spell fleet step} spells to help you elude your enemies. These effects last until the end of your next turn or until you stop {@action hide||Hiding} or {@action sneak||Sneaking}, whichever comes first (you can continue to {@action Hide} or {@action Sneak}, turn after turn, to extend these effects)."
+				],
+				"Minor Curse": [
+					"Those who betray Nivi’s trust find defeat where there was sure to be victory. Once, when you roll a natural 20 on a die, the result becomes a natural 1 instead. Nivi typically uses this curse for maximum poetic justice."
+				],
+				"Moderate Curse": [
+					"Those who arouse Nivi’s wrath find themselves bound to the earth with no place to hide. You are wreathed in constant {@spell faerie fire} and constantly affected by {@spell earthbind}, and any effect that grants invisibility doesn’t work on you."
+				],
+				"Major Curse": [
+					"Nivi curses unworthy adherents with recklessness. Any time you are presented with a wager, you are compelled to accept, no matter the odds. If you succeed at a DC 40 Will save, you can at least attempt to alter the stakes of that wager in your favor, but you must still accept."
+				]
+			},
 			"areasOfConcern": [
 				"gambling",
 				"gems",
@@ -11861,6 +12261,31 @@
 			"alias": [
 				"The Redeemer Queen"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 8,
+				"flavor": [
+					"The Redeemer Queen smiles upon those who seek to better themselves through introspection, but she is quick to reward betrayal with a stinging rebuke."
+				],
+				"Minor Boon": [
+					"The night sky inspires you in a specific way. Once, when you roll a failure on a {@skill Crafting} or {@skill Performance} check under the night sky, you critically succeed instead. Nocticula typically grants this boon for a consequential piece of artwork or performance."
+				],
+				"Moderate Boon": [
+					"You draw on the power of midnight to guide you on your journeys. You gain {@ability darkvision}. If you already had {@avility darkvision}, you can cast {@spell darkness} once per day as a {@trait divine} innate spell."
+				],
+				"Major Boon": [
+					"You become an idealized version of yourself, as if created by a divine artist. You permanently gain a set of 4 ability boosts that follow the same rules as the ability boosts you gain at every 5th level."
+				],
+				"Minor Curse": [
+					"Midnight looms and obscures your fate. You are only able to see up to 60 feet away from you, regardless of the lighting or what senses you have."
+				],
+				"Moderate Curse": [
+					"You are plagued with doubt in your own skills. You are always untrained with {@skill Crafting}, {@skill Performance}, and one other skill (determined by the GM, but themed to the event that brought on your curse), regardless of any effect that would improve your proficiency. You can’t retrain those skills."
+				],
+				"Major Curse": [
+					"You are exiled from companionship. You can’t communicate with any other creature, nor can you feel other creatures’ touch."
+				]
+			},
 			"areasOfConcern": [
 				"artists",
 				"exiles",
@@ -14011,6 +14436,31 @@
 			"alias": [
 				"The Empress of Heaven"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 9,
+				"flavor": [
+					"The Empress of Heaven wastes little time acting coy about her favor. Her boons are often accompanied by beams of sunlight or calligraphic symbols, while her wrath is often signaled by the cracking of precious items and armor."
+				],
+				"Minor Boon": [
+					"Your attacks help eradicate darkness. When you successfully {@action Strike} a foe, your weapon glows with bright light out to 60 feet for 1 minute. This is a {@trait light} effect with a counteract level equal to half your level rounded up."
+				],
+				"Moderate Boon": [
+					"Shizuru’s light flows through your blade. Your weapons and unarmed attacks deal an additional {@damage 1d6} fire damage or {@damage 1d6} good damage; you choose each time you make an attack."
+				],
+				"Major Boon": [
+					"Shizuru bestows upon you a golden suit of armor made from sunlight, or transforms your favorite armor to gain that aspect. Once per hour while you are wearing the armor, if an attack would reduce your Hit Points to 0, the attack is instead completely negated."
+				],
+				"Minor Curse": [
+					"Your equipment turns on you for a disgraceful act. The next time you make an attack, your weapon or armor gains the {@condition broken} condition."
+				],
+				"Moderate Curse": [
+					"Shizuru decrees that her light is no longer your ally. You gain {@ability light blindness}."
+				],
+				"Major Curse": [
+					"Those who incite Shizuru’s personal wrath earn the hatred of all of her subjects. All imperial dragons and animals you encounter are automatically {@condition hostile} to you, and you gain weakness 15 to draconic breath weapons."
+				]
+			},
 			"source": "LOGM",
 			"page": 70,
 			"areasOfConcern": [
@@ -14195,6 +14645,31 @@
 			"alias": [
 				"The Seventh Veil"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 9,
+				"flavor": [
+					"The Seventh Veil abhors the use of illusion to cause harm and detests anyone who discourages or corrupts the process of truth-seeking. The goddess works actively against the faith of Zon-Kuthon and his clerics’ use of shadow."
+				],
+				"Minor Boon": [
+					"Sivanah prevents your enemies from pulling off your veil. Once, when a foe rolls a success on a {@skill Perception} check to disbelieve your illusion, it gets a critical failure instead. Sivanah typically grants this benefit to protect an elaborate or consequential illusory deception, and she never uses it to improve the effect of a harmful illusion."
+				],
+				"Moderate Boon": [
+					"You wear a veil of illusion wherever you go. You can cast {@spell illusory disguise} at will as an innate {@trait divine} spell."
+				],
+				"Major Boon": [
+					"You spread your illusions over a larger area. You can designate an area to permanently gain the effects of {@spell hallucinatory terrain}. All creatures within this area gain the effects of {@spell illusory disguise}, changing their forms as you wish. You can designate a new area as a 1-minute activity, but doing so dismisses any previously designated areas."
+				],
+				"Minor Curse": [
+					"Your hair becomes a wild variety of colors, which cannot be altered with mundane or magical means, and it somehow grows out from under any cap, scarf, or other headwear intended to disguise it. You gain a –2 status penalty to {@skill Deception} skill checks to {@action Impersonate} anyone else."
+				],
+				"Moderate Curse": [
+					"Those who betray the secrets of others find their own secrets laid bare. Each person from whom you are keeping a secret immediately learns one of your secrets involving that person. This curse doesn’t give away other people’s secrets you are keeping, only your own."
+				],
+				"Major Curse": [
+					"Mirrors break whenever you cross their paths. You cannot be concealed by {@trait illusion} magic of any kind (the spell automatically fails), and all creatures that see you know your true identity."
+				]
+			},
 			"areasOfConcern": [
 				"illusions",
 				"mysteries",
@@ -15617,6 +16092,31 @@
 			"alias": [
 				"Prince of the Moon"
 			],
+			"intercession": {
+				"source": "LOGMWS",
+				"page": 9,
+				"flavor": [
+					"Ever mercurial, the Prince of the Moon gives his blessings rarely and somewhat spontaneously. An understanding soul, he is as slow to curse as he is to bless."
+				],
+				"Minor Boon": [
+					"Tsukiyo’s simplest show of gratitude is a gift of clarity. Once, when you roll a failure on a saving throw against a {@trait mental} effect, you get a critical success instead. Tsukiyo typically grants this boon against a particularly consequential {@trait mental} effect."
+				],
+				"Moderate Boon": [
+					"Tsukiyo watches over you and guards your sleep. You are guaranteed a peaceful night’s rest no matter what conditions you are sleeping in. Even {@spell nightmare} and similar abilities can’t disrupt your sleep unless they come from a deity, {@trait artifact}, or similarly powerful source."
+				],
+				"Major Boon": [
+					"Tsukiyo shares some of his own nature and can lead a favored soul back along the same path he has walked. The next time you would die, you are instead instantly restored to full health and lose any negative conditions you have."
+				],
+				"Minor Curse": [
+					"Those who offend Tsukiyo find that light actively shuns them. You lose any {@ability low-light vision} or {@ability darkvision} you have, and you treat all light levels as one step lower."
+				],
+				"Moderate Curse": [
+					"If Tsukiyo is particularly offended by someone, they may find themselves lost in delusions of moonlight. When attempting to navigate or find something at night, if you roll a success or critical success on your {@skill Perception} check, {@skill Survival} check, or other check to do so, you get a failure instead."
+				],
+				"Major Curse": [
+					"When Tsukiyo truly loses patience with someone, he forces them to experience the hardships of others firsthand. Whenever you touch another creature or another creature touches you, you immediately gain any negative curses, diseases, and conditions they are suffering. These effects spread to you even when you {@action Strike} another creature or a creature {@action Strike||Strikes} you."
+				]
+			},
 			"source": "LOGM",
 			"page": 71,
 			"areasOfConcern": [
