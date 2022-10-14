@@ -7,79 +7,7 @@
 	"version": "0.0.1",
 	"definitions": {
 		"sourceList": {
-			"enum": [
-				"AAWS",
-				"APG",
-				"AV0",
-				"AV1",
-				"AV2",
-				"AV3",
-				"AoA0",
-				"AoA1",
-				"AoA2",
-				"AoA3",
-				"AoA4",
-				"AoA5",
-				"AoA6",
-				"AoE0",
-				"AoE1",
-				"AoE2",
-				"AoE3",
-				"AoE4",
-				"AoE5",
-				"AoE6",
-				"B1",
-				"B2",
-				"B3",
-				"CRB",
-				"EC0",
-				"EC1",
-				"EC2",
-				"EC3",
-				"EC4",
-				"EC5",
-				"EC6",
-				"FRP0",
-				"FRP1",
-				"FRP2",
-				"FRP3",
-				"FoP",
-				"G&G",
-				"GMG",
-				"LOACLO",
-				"LOAG",
-				"LOCG",
-				"LOGM",
-				"LOGMWS",
-				"LOL",
-				"LOME",
-				"LOPSG",
-				"LOTGB",
-				"LOWG",
-				"LTiBA",
-				"NGD",
-				"Sli",
-				"SoM",
-				"SoT0",
-				"SoT1",
-				"SoT2",
-				"SoT3",
-				"SoT4",
-				"SoT5",
-				"SoT6",
-				"OoA0",
-				"OoA1",
-				"OoA2",
-				"OoA3",
-				"QFF0",
-				"QFF1",
-				"QFF2",
-				"QFF3",
-				"TiO",
-				"BotD",
-				"DA",
-				"LOKL"
-			]
+			"$ref": "_generated/sources.json#/definitions/sourceList"
 		},
 		"alignmentTraits": {
 			"type": "string",
@@ -858,7 +786,7 @@
 			]
 		},
 		"anyTrait": {
-			"$ref": "./_generated/traits.json#/definitions/anyTrait"
+			"$ref": "_generated/traits.json#/definitions/anyTrait"
 		},
 		"loreSubjects": {
 			"type": "string",
@@ -969,7 +897,7 @@
 			]
 		},
 		"languages": {
-			"$ref": "./_generated/languages.json#/definitions/language"
+			"$ref": "_generated/languages.json#/definitions/language"
 		},
 		"languagesOld": {
 			"type": "string",
@@ -1390,19 +1318,133 @@
 				"water",
 				"wealth",
 				"wyrmkin",
-				"zeal"
+				"zeal",
+				"air (apocryphal)",
+				"ambition (apocryphal)",
+				"change (apocryphal)",
+				"cities (apocryphal)",
+				"cold (apocryphal)",
+				"confidence (apocryphal)",
+				"creation (apocryphal)",
+				"darkness (apocryphal)",
+				"death (apocryphal)",
+				"decay (apocryphal)",
+				"delirium (apocryphal)",
+				"destruction (apocryphal)",
+				"dreams (apocryphal)",
+				"dust (apocryphal)",
+				"duty (apocryphal)",
+				"earth (apocryphal)",
+				"family (apocryphal)",
+				"fate (apocryphal)",
+				"fire (apocryphal)",
+				"freedom (apocryphal)",
+				"glyph (apocryphal)",
+				"healing (apocryphal)",
+				"indulgence (apocryphal)",
+				"knowledge (apocryphal)",
+				"lightning (apocryphal)",
+				"luck (apocryphal)",
+				"magic (apocryphal)",
+				"might (apocryphal)",
+				"moon (apocryphal)",
+				"naga (apocryphal)",
+				"nature (apocryphal)",
+				"nightmares (apocryphal)",
+				"pain (apocryphal)",
+				"passion (apocryphal)",
+				"perfection (apocryphal)",
+				"plague (apocryphal)",
+				"protection (apocryphal)",
+				"repose (apocryphal)",
+				"secrecy (apocryphal)",
+				"sorrow (apocryphal)",
+				"souls (apocryphal)",
+				"stars (apocryphal)",
+				"sun (apocryphal)",
+				"swarm (apocryphal)",
+				"time (apocryphal)",
+				"toil (apocryphal)",
+				"travel (apocryphal)",
+				"trickery (apocryphal)",
+				"truth (apocryphal)",
+				"tyranny (apocryphal)",
+				"undeath (apocryphal)",
+				"vigil (apocryphal)",
+				"void (apocryphal)",
+				"water (apocryphal)",
+				"wealth (apocryphal)",
+				"wyrmkin (apocryphal)",
+				"zeal (apocryphal)"
 			]
+		},
+		"amp": {
+			"type": "object",
+			"properties": {
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"heightened": {
+					"$ref": "utils.json#/definitions/heightened"
+				}
+			},
+			"minProperties": 1,
+			"additionalProperties": false
+		},
+		"heightened": {
+			"type": "object",
+			"properties": {
+				"X": {
+					"description": "An array of levels to which the spell can be heightened.",
+					"type": "object",
+					"patternProperties": {
+						"^([1-9]|10)$": {
+							"description": "An array of effects of heightening the spell to the given level.",
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							},
+							"minItems": 1
+						}
+					},
+					"minProperties": 1,
+					"additionalProperties": false
+				},
+				"plusX": {
+					"type": "object",
+					"patternProperties": {
+						"^([1-9]|10)$": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							},
+							"minItems": 1
+						}
+					},
+					"minProperties": 1,
+					"additionalProperties": false
+				}
+			},
+			"minProperties": 1,
+			"additionalProperties": false
 		},
 		"components": {
 			"type": "array",
 			"items": {
 				"type": "string",
-				"enum": [
-					"{@action Strike}",
-					"{@action Interact}",
-					"{@action Cast a Spell}",
-					"envision",
-					"command"
+				"oneOf": [
+					{
+						"enum": [
+							"envision",
+							"command"
+						]
+					},
+					{
+						"pattern": "\\{@action .+?\\}"
+					}
 				]
 			},
 			"minItems": 1

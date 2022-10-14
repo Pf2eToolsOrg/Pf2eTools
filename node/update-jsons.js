@@ -3,6 +3,7 @@
 const fs = require("fs");
 const ut = require("./util");
 require("../js/utils");
+require("../js/parser");
 
 function updateFolder (folder) {
 	console.log(`Updating directory ${folder}...`);
@@ -46,28 +47,63 @@ function updateFolder (folder) {
 				})
 			}
 			if (json.spell) {
-				json.spell = json.spell.map(x => {
-					if (x.heightened && x.heightened.X && Array.isArray(x.heightened.X)) {
-						console.log(`\tUpdating ${x.name} spell heightening in ${file}...`)
-						let heightenedOld = x.heightened.X
-						x.heightened.X = {}
+				json.spell = json.spell.map(sp => {
+					if (sp.heightened && sp.heightened.X && Array.isArray(sp.heightened.X)) {
+						console.log(`\tUpdating ${sp.name} spell heightening in ${file}...`)
+						let heightenedOld = sp.heightened.X
+						sp.heightened.X = {}
 						heightenedOld.forEach(v => {
-							x.heightened.X = { ...x.heightened.X, [v.level]: v.entries }
+							sp.heightened.X = { ...sp.heightened.X, [v.level]: v.entries }
 						})
 					}
-					if (x && x.range && x.range.type) {
-						console.log(`\tUpdating ${x.name} spell range in ${file}...`)
-						x.range.unit = x.range.type
-						delete x.range.type
+					if (sp && sp.range && sp.range.type) {
+						console.log(`\tUpdating ${sp.name} spell range in ${file}...`)
+						sp.range.unit = sp.range.type
+						delete sp.range.type
 					}
-					if (x && x.subclass && x.subclass["Cleric|Domain"]) {
-						x.domains = x.subclass["Cleric|Domain"]
-						delete x.subclass["Cleric|Domain"]
-						if (Object.keys(x.subclass.length).length === 0) {
-							delete x.subclass
+					if (sp && sp.type) {
+						console.log(`\tUpdating ${sp.name} type in ${file}...`)
+						if (sp.type.toLowerCase() === "focus") sp.focus = true
+						delete sp.type
+					}
+					if (sp && typeof sp.components === "object" && !Array.isArray(sp.components)) {
+						console.log(`\tUpdating ${sp.name} spell components in ${file}...`)
+						sp.components = [Object.keys(sp.components)]
+					}
+					if (sp && sp.traditions && sp.traditions.some(rx => rx.match(/[A-Z]/g))) {
+						console.log(`\tUpdating ${sp.name} traditions in ${file}...`)
+						sp.traditions = sp.traditions.map(t => t.toLowerCase())
+					}
+					if (sp && sp.subclass && sp.subclass["Cleric|Domain"]) {
+						sp.domains = sp.subclass["Cleric|Domain"]
+						delete sp.subclass["Cleric|Domain"]
+						if (Object.keys(sp.subclass.length).length === 0) {
+							delete sp.subclass
 						}
 					}
-					return x
+					if (sp && sp.duration) {
+						let duration = sp.duration;
+						if (duration.duration) {
+							duration = {...duration, ...duration.duration};
+						}
+						delete duration.type;
+						if (duration.sustain) {
+							delete duration.sustain
+							duration.sustained = true
+						}
+						if (duration.unit === "unlimited" || duration.unit === "special") {
+							delete duration.number;
+						}
+						if (duration.entry) {
+							const cpy = MiscUtil.copy(duration);
+							delete cpy.entry;
+							const renderedDuration = Parser.durationToFull(cpy);
+							if (renderedDuration === duration.entry) delete duration.entry;
+						}
+						delete duration.duration;
+						sp.duration = duration;
+					}
+					return sp
 				})
 			}
 			if (json.ancestry) {
@@ -184,9 +220,37 @@ function updateFolder (folder) {
 					return h;
 				});
 			}
+			if (json.ritual) {
+				json.ritual = json.ritual.map(r => {
+					if (r && r.duration) {
+						let duration = r.duration;
+						if (duration.duration) {
+							duration = {...duration, ...duration.duration};
+						}
+						delete duration.type;
+						if (duration.sustain) {
+							delete duration.sustain
+							duration.sustained = true
+						}
+						if (duration.unit === "unlimited" || duration.unit === "special") {
+							delete duration.number;
+						}
+						if (duration.entry) {
+							const cpy = MiscUtil.copy(duration);
+							delete cpy.entry;
+							const renderedDuration = Parser.durationToFull(cpy);
+							if (renderedDuration === duration.entry) delete duration.entry;
+						}
+						delete duration.duration;
+						r.duration = duration;
+					}
+					return r;
+				});
+			}
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
 }
 
 updateFolder(`./data`);
+// updateFolder(`./homebrew/pf2e-homebrew`);
 console.log("Updating complete.");

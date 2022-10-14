@@ -21,6 +21,10 @@
 						"type": "string",
 						"format": "date"
 					},
+					"errata": {
+						"type": "string",
+						"format": "date"
+					},
 					"store": {
 						"type": "string",
 						"format": "url"
@@ -39,15 +43,44 @@
 							true
 						]
 					},
+					"unreleased": {
+						"description": "Whether a source is unreleased, with no information on it whatsoever yet.\nDisables required schema. Removes it from generated into the source list schema.",
+						"type": "boolean",
+						"enum": [
+							true
+						]
+					},
 					"defaultSource": {
 						"description": "This array determines what source is considered the default for certain page or type of tag.\nDO NOT MODIFY UNLESS YOU KNOW WHAT YOU ARE DOING",
 						"type": "array"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
 					}
 				},
-				"required": [
-					"name",
-					"source",
-					"store"
+				"dependencies": {
+					"errata": [
+						"date"
+					]
+				},
+				"oneOf": [
+					{
+						"required": [
+							"name",
+							"source",
+							"date",
+							"store",
+							"entries"
+						]
+					},
+					{
+						"required": [
+							"unreleased"
+						]
+					}
 				],
 				"additionalProperties": false
 			},
