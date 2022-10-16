@@ -1104,6 +1104,763 @@
 			]
 		},
 		{
+			"name": "Lonely Machine Spirit",
+			"source": "OoA1",
+			"page": 24,
+			"level": 3,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 13,
+				"minProf": "trained"
+			},
+			"description": [
+				"Ghostly smoke rising from an alchemical engine belches forth; the screeching sound of grinding gears echoes from the engine as it shutters to life."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Religion} (trained) or DC 20 {@skill Lore||Engineering Lore} (trained) to eject the animating spirit from its mechanical shell. Creatures gain a +2 circumstance bonus on their check if they use the airship's name, Harpy's Kiss, as part of their skill check, or a +4 circumstance bonus if they utter the name \"Phera Wyndslow. \" The haunt remains active until its spirit is ejected, the haunt is destroyed, or there are no living creatures within 30 feet."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hardness": {
+					"std": 11
+				},
+				"hp": {
+					"std": 44
+				},
+				"bt": {
+					"std": 22
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "electricity",
+						"amount": 5
+					},
+					{
+						"name": "orichalcum",
+						"amount": 5
+					},
+					{
+						"name": "positive",
+						"amount": 5
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Painful Whistle",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"sonic"
+					],
+					"trigger": "A living creature approaches within 10 feet of the engine (marked with a \"T\" on the map)",
+					"entries": [
+						"A loud whistle blows and all creatures within 30 feet take {@damage 2d6} sonic damage and become {@condition stunned||stunned 1} (DC 20 basic Fortitude save; creatures aren't {@condition stunned} on a success). The lonely machine spirit then rolls initiative."
+					]
+				},
+				{
+					"name": "Belch",
+					"entries": [
+						"Smoke{@as 2} (air, fire) The airship's engine issues forth a cloud of alchemical smoke in a 30-foot cone. Creatures within the cone must attempt a DC 20 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes {@damage 1d6} poison damage and is {@condition sickened||sickened 1}."
+								],
+								"Failure": [
+									"The creature takes {@damage 2d6} poison damage and is {@condition sickened||sickened 2}."
+								],
+								"Critical Failure": [
+									"The creature takes {@damage 3d6} poison damage and is {@condition sickened||sickened 2}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(2 actions) The lonely machine spirit Belches Smoke or makes two red hot gear Strikes against two creatures within 30 feet."
+			],
+			"reset": [
+				"The haunt deactivates and resets after 1 hour."
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"fire",
+						"range 10 feet"
+					],
+					"name": "red hot gear",
+					"attack": 12,
+					"damage": "{@damage 1d6} bludgeoning and {@damage 1d6} fire"
+				}
+			]
+		},
+		{
+			"name": "Precarious Thunderstone Trap",
+			"source": "OoA1",
+			"page": 33,
+			"level": 1,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 15,
+				"minProf": "trained"
+			},
+			"description": [
+				"A tripwire fastened to the gate snaps when the gate is opened, releasing a moderate thunderstone to the ground."
+			],
+			"disable": {
+				"entries": [
+					"DC 15 {@skill Thievery} (trained) to remove the thunderstone or DC 18 Reflex save to catch the falling thunderstone"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 12
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 3
+					}
+				},
+				"hardness": {
+					"Wire ": 3
+				},
+				"hp": {
+					"Wire ": 10
+				},
+				"bt": {
+					"Wire ": 5
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Thunderstone",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"sonic"
+					],
+					"trigger": "The front gate is opened",
+					"entries": [
+						"A moderate thunderstone falls on the flagstones and activates, dealing 2 sonic splash damage to each creature within 10 feet of the gate. Creatures in the area must succeed at a DC 17 Fortitude saving throw or be {@condition deafened} for 1 round. Adjacent creatures can attempt to catch the falling thunderstone (see Disable, above)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Stink-Sap Trap",
+			"source": "OoA1",
+			"page": 33,
+			"level": 3,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 18,
+				"minProf": "trained"
+			},
+			"description": [
+				"A nozzle attached to a pressure sensor under the flagstone path sprays thick wads of smelly sap."
+			],
+			"disable": {
+				"entries": [
+					"DC 15 {@skill Thievery} (trained) to clog the nozzle or DC 14"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"Nozzle ": 10
+				},
+				"hp": {
+					"Nozzle ": 30
+				},
+				"bt": {
+					"Nozzle ": 15
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Athletics",
+					"traits": [
+						"trained"
+					],
+					"entries": [
+						"to redirect the stream away from the path; the {@skill Athletics} check can be made at a distance with a thrown object, but a critical failure triggers the trap's"
+					]
+				},
+				{
+					"name": "Sudden Spray.",
+					"entries": []
+				},
+				{
+					"name": "Sudden Spray",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature or object weighing at least 50 pounds is placed on one of the flagstones north of the gate (marked \"T\" on the map on page 32)",
+					"entries": [
+						"Pressurized sap sprays from the nozzle, coating everything in a 15-foot cone. Creatures in the area that fail a DC 20 Reflex save become affected by stink sap."
+					]
+				},
+				{
+					"name": "Stink Sap",
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"5 feet. Creatures and their equipment coated in the sap smell horrible. Creatures in the aura must attempt a DC 16 Fortitude save. On a failure, the creature is {@condition sickened||sickened 1}, and on a critical failure, the creature is also {@condition stunned||stunned 1}. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is immune to stink sap for 1 minute.",
+						"Creatures don't save against this effect in exploration mode and don't become temporarily immune, but creatures with stink sap on them must roll against their own aura when they roll initiative in encounter mode.",
+						"The sap dissipates after 10 hours; spending 10 minutes scrubbing the sap off with soap and water reduces the duration by 1 hour."
+					]
+				}
+			],
+			"reset": [
+				"1 minute. The trap resets automatically twice before the supply of stink sap is exhausted."
+			]
+		},
+		{
+			"name": "Purple Dye Trap",
+			"source": "OoA1",
+			"page": 34,
+			"level": 3,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "trained"
+			},
+			"description": [
+				"A spring-loaded glass jar containing purple dye and a thunderstone pops from the ground and explodes when a pressure sensor is triggered."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Thievery} (trained) to remove the jar and thunderstone carefully or DC 20 {@skill Athletics} to reinforce the flagstone pressure sensor with an improvised wedge"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 4
+					}
+				},
+				"hardness": {
+					"Flagstone ": 7
+				},
+				"hp": {
+					"Flagstone ": 44
+				},
+				"bt": {
+					"Flagstone ": 22
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Exploding Jar",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature or object weighing at least 50 pounds is placed on one of the flagstones running north to south on the west side of the yard (marked \"T\" on the map on page 32)",
+					"entries": [
+						"A glass jar containing purple dye and a thunderstone pop from the ground between the flagstones. The sudden movement causes the thunderstone to clink against the jar and explode. All creatures in a 10-foot radius take 2 sonic damage and must succeed at a DC 17 Fortitude save or be {@condition deafened} for 1 round. In addition, each creature in that area is splattered with purple dye and showered with glass, taking {@damage 1d4+2} piercing damage (DC 20 basic Reflex save). Creatures splattered with purple dye take a \u20131 circumstance penalty to Charisma-based skill checks. Fully {@condition dying} the affected hair or clothing removes this penalty. Dyed skin fades after a week but can be covered up with a successful DC 12 Disguise check and the appropriate cosmetics."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wooden Bullets Trap",
+			"source": "OoA1",
+			"page": 34,
+			"level": 3,
+			"traits": [
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 10,
+				"minProf": "trained"
+			},
+			"description": [
+				"A hopper full of wooden sling bullets is attached to several launching devices, which spew the bullets at high velocity through various holes in the boards covering the window. A distinctive \"click\" and whirring sound indicate the trap has been sprung."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Thievery} (trained) to reinforce the porch pressure sensor or DC 15 {@skill Crafting} (trained) to cover the holes launching the bullets"
+				]
+			},
+			"defenses": {
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"Wall ": 10
+				},
+				"hp": {
+					"Wall ": 50
+				},
+				"bt": {
+					"Wall ": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Wall AC",
+					"entries": [
+						"10"
+					]
+				},
+				{
+					"name": "Auto-Sling",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature or object weighing at least 50 pounds is placed on the porch (marked \"T\" on the map on page 32)",
+					"entries": [
+						"A stream of wooden sling bullets flies from a launcher. The trap Strikes the two nearest creatures and then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(2 actions) The wooden bullets trap Strikes the two nearest creatures. It ignores {@condition prone} creatures as the bullets fly overhead."
+			],
+			"reset": [
+				"The trap stops after 10 rounds or when the weight on the porch is removed, whichever comes first. The trap can operate for a total of 10 rounds before its ammunition is exhausted."
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"nonlethal",
+						"range 10 feet"
+					],
+					"name": "wooden bullet",
+					"attack": 12,
+					"damage": "{@damage 1d6+6} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Volatile Reagents",
+			"source": "OoA1",
+			"page": 37,
+			"level": 2,
+			"traits": [
+				"alchemical",
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 5,
+				"minProf": "trained"
+			},
+			"description": [
+				"Potion bottles, alembics, and potent ingredients violently explode when jostled and accidentally combined."
+			],
+			"disable": {
+				"entries": [
+					"three DC 20 {@skill Acrobatics} or {@skill Crafting} checks to sort and separate the bottles of volatile ingredients into groups"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hp": {
+					"std": 10
+				},
+				"bt": {
+					"std": 5
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Explosive Catalyst",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Slick drinks Gattlebee's growth serum (page 36)",
+					"entries": [
+						"The giant lizard bumps into lab tables and workbenches, causing dangerous ingredients to intermix and detonate. The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) A random 10-foot square in Gattlebee's laboratory explodes, dealing {@dice 2d6} damage to creatures and objects in the area (DC 18 basic Reflex save). The damage type is randomly determined each round: acid, cold, electricity, fire, slashing, or sonic."
+			],
+			"reset": [
+				"The lab contains enough ingredients for this hazard to last 1 minute before all materials are expended.",
+				"Alternatively, the hazard resets once Slick shrinks to regular size (see below)."
+			]
+		},
+		{
+			"name": "Repeater Crossbow Trap",
+			"source": "OoA1",
+			"page": 60,
+			"level": 5,
+			"traits": [
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 13,
+				"minProf": "trained"
+			},
+			"description": [
+				"A pressure plate in the hallway floor releases a latch, causing a ceiling panel to drop down. A +1 striking heavy crossbow contained in a steel box sprays bolts at any creatures in the hallway."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Thievery} (Expert) or {@skill Crafting} (Trained) to disengage the reloading mechanism; the trap can also be disabled by the switch in area F2"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Auto-Bolter",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "An object or creature weighing at least 25 pounds steps on the pressure plate at the south end of the hallway",
+					"entries": [
+						"A +1 striking heavy crossbow encased in a steel box drops from the ceiling and fires.",
+						"The repeater crossbow trap Strikes a random creature in the hallway. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The repeater crossbow trap reloads (2 actions) then Strikes a random creature in the hallway."
+			],
+			"reset": [
+				"The trap runs out of ammo after it fires 5 bolts; it must be manually reloaded."
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"range 120 feet",
+						"reload 2"
+					],
+					"name": "heavy crossbow",
+					"attack": 16,
+					"damage": "{@damage 2d10+4} piercing"
+				}
+			]
+		},
+		{
+			"name": "Subduing Gas Chamber",
+			"source": "OoA1",
+			"page": 62,
+			"level": 5,
+			"traits": [
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 10,
+				"minProf": "expert"
+			},
+			"description": [
+				"A mechanical sensor in the desk drawer releases a counterweight in the wall, which slams the door shut and opens the sleeping gas tank under the bed, allowing gas to fill the air-tight room with a hissing sound."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Thievery} (Trained) to disconnect the wire to the counterweight, preventing it from falling, or DC 20"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 10
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 40
+				},
+				"bt": {
+					"std": 20
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Crafting",
+					"traits": [
+						"Alchemical Crafting"
+					],
+					"entries": [
+						"to create a counteragent to the sleeping gas"
+					]
+				},
+				{
+					"name": "Slam Door",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature opens the desk drawer without holding the release button under the desk",
+					"entries": [
+						"The wooden door to the room slams shut and locks, and the trap rolls initiative."
+					]
+				},
+				{
+					"name": "Sleeping Gas",
+					"traits": [
+						"inhaled",
+						"poison"
+					],
+					"DC": 22,
+					"savingThrow": "Fortitude",
+					"maxDuration": "4 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition slowed||slowed 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up",
+							"duration": "1 hour"
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action) Each round on its initiative count, the trap pumps more sleeping gas into the room. Any breathing creature in the room is exposed to the toxin.",
+				"If a creature acts before the trap on the first round, it has the option of holding its breath to postpone breathing in the poison\u2014holding one's breath after the trap's first action has no effect, since the air in the creature's lungs is already tainted. The trap functions for 1 minute before all the gas is expended, after which it rapidly decays over the next minute. Opening the door to an adjacent room cuts the remaining time it takes for the gas to decay in half but exposes creatures in that room as well."
+			],
+			"reset": [
+				"The gas must be manually reloaded."
+			]
+		},
+		{
+			"name": "Lyzerium Bottles",
+			"source": "OoA1",
+			"page": 64,
+			"level": 1,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 16
+			},
+			"description": [
+				"Five tiny glass bottles, each full of volatile green liquid, are discretely positioned around the room.",
+				"Each bottle explodes when its glass is {@condition broken}."
+			],
+			"disable": {
+				"entries": [
+					"{@action Interact} action to pick up one of the five bottles (see Lyzerium sidebar on page 63)"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 13
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 6
+					}
+				},
+				"hardness": {
+					"Bottle ": 1
+				},
+				"hp": {
+					"Bottle ": 4
+				},
+				"bt": {
+					"Bottle ": 2
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Explode",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on the bottle or the bottle becomes {@condition broken}",
+					"entries": [
+						"The bottle explodes, dealing {@damage 2d8} fire damage plus 2 {@condition persistent damage ||persistent fire damage} and 2 fire splash damage to each creature sharing its square (DC 18 basic Reflex save)."
+					]
+				}
+			]
+		},
+		{
 			"name": "Thalassophobic Pool",
 			"source": "DA",
 			"page": 212,

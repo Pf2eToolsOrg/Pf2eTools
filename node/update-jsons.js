@@ -20,8 +20,8 @@ function updateFolder (folder) {
 							if (v.variantType) return v
 							console.log(`\tUpdating ${x.name} item variants in ${file}...`)
 							if (!v.type && v.name) {
-								console.log(`\tCannot find type! Assuming name is type.\nPlease check the file.`)
 								v.variantType = v.name
+								delete v.name
 								return v
 							} else {
 								v.variantType = v.type
