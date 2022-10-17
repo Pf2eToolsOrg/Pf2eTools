@@ -501,19 +501,328 @@
 											"page": 218,
 											"name": "Familiar Abilities",
 											"entries": [
-												"{@b Amphibious:} It gains a swim Speed of 25 feet (or Speed of 25 feet if it already has a swim Speed).",
-												"{@b Burrower:} It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes.",
-												"{@b Climber:} It gains a climb Speed of 25 feet.",
-												"{@b Damage Avoidance:} Choose one type of save. It takes no damage when it succeeds at that type of save; this doesn't prevent effects other than damage.",
-												"{@b Darkvision:} It gains {@ability darkvision}.",
-												"{@b Fast Movement:} Increase one of the familiar's Speeds from 25 feet to 40 feet.",
-												"{@b Flier:} It gains a fly Speed of 25 feet.",
-												"{@b Kinspeech:} It can understand and speak with animals of the same species. To select this, your familiar must be an animal, it must have the speech ability, and you must be at least 6th level.",
-												"{@b Lab Assistant:} It can use your Quick Alchemy action.",
-												"You must have Quick Alchemy, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this.",
-												"{@b Manual Dexterity:} It can use up to two of its limbs as if they were hands to use manipulate actions.",
-												"{@b Scent:} It gains {@ability scent} (imprecise, 30 feet).",
-												"{@b Speech:} It understands and speaks a language you know."
+												{
+													"type": "inline", "name": "Mask Freeze",
+													"source": "LOCG",
+													"page": 100,
+													"entries": [
+														"When in mask form, your familiar can hide its obvious supernatural qualities to pass as a simple, unassuming mask. It doesn't need to {@action Impersonate} to fool a passing glance, and it gains a +4 circumstance bonus to its {@skill Deception} DC against an active observer {@action Seek||Seeking} or otherwise studying it.",
+														"{@note This ability is available only to {@feat mask familiar|LOCG|mask familiars}.}"
+													]
+												},
+												{
+													"type": "inline", "name": "Ambassador",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar knows how to act cute or focused on cue, helping you make a good impression. Despite being a minion, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid} you on a {@skill Diplomacy} check to {@action Make an Impression} (it still has to prepare to help you as normal for the Aid reaction, which requires it to participate throughout the activity). It automatically succeeds at its check to {@action Aid} you with those skills or automatically critically succeeds if you're a master of the skill in question."
+													]
+												},
+												{
+													"type": "inline", "name": "Major Resistance",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar increases the resistance it gains from its resistance familiar ability to a value equal to your level. To select this, your familiar must have the {@familiarAbility greater resistance|LOTGB} ability and you must be at least 8th level."
+													]
+												},
+												{
+													"type": "inline", "name": "Wavesense",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar can sense vibrations in the water. It gains imprecise {@ability wavesense} with a range of 30 feet."
+													]
+												},
+												{
+													"type": "inline", "name": "Tremorsense",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar is keenly aware of any vibrations traveling through a surface. It gains imprecise {@ability tremorsense} with a range of 30 feet."
+													]
+												},
+												{
+													"type": "inline", "name": "Threat Display",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar helps you convey wordless threats through body language. Whenever you attempt an {@skill Intimidation} check to {@action Demoralize} a creature, if your familiar is within 30 feet of your target and can act, it accompanies you with snarls, hisses, or raising its hackles. If it can do so, you don't take the normal \u20134 penalty on the {@skill Intimidation} check if your target doesn't understand the language you're speaking."
+													]
+												},
+												{
+													"type": "inline", "name": "Snoop",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar keeps its eyes and ears open, ready to relay every snippet of gossip it catches, helping you gather information. Despite being a {@trait minion}, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid} you on a {@skill Diplomacy} check to {@action Gather Information} (it still has to prepare to help you as normal for the {@action Aid} reaction, which requires it to participate throughout the activity). It automatically succeeds at its check to {@action Aid} you with those skills or automatically critically succeeds if you're a master of the skill in question."
+													]
+												},
+												{
+													"type": "inline", "name": "Second Opinion",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar is your academic confidant. Despite being a {@trait minion}, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid} you on a {@action Recall Knowledge} skill check for a skill in which it has the skilled familiar ability (it still has to prepare to help you as normal for the {@action Aid} reaction). It automatically succeeds at its check to {@action Aid} you with those skills or automatically critically succeeds if you're a master of the skill in question. Your familiar must have the skilled ability to select this."
+													]
+												},
+												{
+													"type": "inline", "name": "Greater Resistance",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar increases the resistance it gains from its resistance familiar ability to 3 + half your level. Your familiar must have the {@familiarAbility resistance|APG} ability to select this."
+													]
+												},
+												{
+													"type": "inline", "name": "Gills",
+													"source": "LOTGB",
+													"page": 34,
+													"entries": [
+														"Your familiar grows a set of gills, allowing it to breathe water in addition to air."
+													]
+												},
+												{
+													"type": "inline", "name": "Valet",
+													"source": "APG",
+													"page": 147,
+													"entries": [
+														"You can command your familiar to deliver you items more efficiently. Your familiar doesn't use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar {@action Interact} to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can't use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way."
+													]
+												},
+												{
+													"type": "inline", "name": "Tough",
+													"source": "APG",
+													"page": 147,
+													"entries": [
+														"Your familiar's maximum Hit Points increase by 2 per level."
+													]
+												},
+												{
+													"type": "inline", "name": "Touch Telepathy",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Your familiar can telepathically communicate with you via touch. If it also has the speech ability, it can telepathically communicate via touch with any creature if they share a language."
+													]
+												},
+												{
+													"type": "inline", "name": "Toolbearer",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Your familiar can carry a set of tools of up to light Bulk. So long as your familiar is adjacent to you, you can draw and replace the tools as part of the action that uses them as if you were wearing them. Your familiar must have the manual dexterity ability to select this."
+													]
+												},
+												{
+													"type": "inline", "name": "Spellcasting",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Choose a spell in your repertoire or that you prepared today that is at least 5 levels lower than your highest-level spell slot. Your familiar can {@action Cast a Spell||Cast that Spell} once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-level spells using spell slots to select this ability."
+													]
+												},
+												{
+													"type": "inline", "name": "Skilled",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Choose a skill other than {@skill Acrobatics} or {@skill Stealth}. Your familiar's modifier for that skill is equal to your level plus your key spellcasting ability modifier, rather than just your level. You can select this ability repeatedly, choosing a different skill each time."
+													]
+												},
+												{
+													"type": "inline", "name": "Resistance",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Choose two of the following: acid, cold, electricity, fire, poison, or sonic. Your familiar gains resistance equal to half your level against the chosen damage types."
+													]
+												},
+												{
+													"type": "inline", "name": "Poison Reservoir",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Your homunculus familiar has a reservoir for poison, allowing it to apply an injury poison to an adjacent ally's exposed weapon with a single {@action Interact} action. You must supply the poison and instill it into this reservoir using two consecutive {@action Interact} actions. You must have a homunculus familiar to select this ability."
+													]
+												},
+												{
+													"type": "inline", "name": "Plant Form",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Your plant familiar can change shape as a single action, transforming into a Tiny plant of a type roughly similar to the familiar's nature. This otherwise uses the effects of tree shape. You must have a familiar with the {@trait plant} trait, such as a leshy, to select this ability."
+													]
+												},
+												{
+													"type": "inline", "name": "Partner in Crime",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Your familiar is your criminal associate. Despite being a minion, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid} you on a {@skill Deception} or {@skill Thievery} skill check (it still has to prepare to help you as normal for the {@action Aid} reaction). It automatically succeeds at its check to {@action Aid} you with those skills or automatically critically succeeds if you're a master of the skill in question."
+													]
+												},
+												{
+													"type": "inline", "name": "Master's Form",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Your familiar can change shape as a single action, transforming into a humanoid of your ancestry with the same age, gender, and build of its true form, though it always maintains a clearly unnatural remnant of its nature, such as a cat's eyes or a serpent's tongue. This form is always the same each time it uses this ability. This otherwise uses the effects of {@spell humanoid form}, except the change is purely cosmetic. It only appears humanoid and gains no new capabilities. Your familiar must have the {@familiarAbility manual dexterity} and {@familiarAbility speech} abilities to select this."
+													]
+												},
+												{
+													"type": "inline", "name": "Independent",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"In an encounter, if you don't {@action Command an Animal||Command} your familiar, it still gains 1 action each round. Typically, you still decide how it spends that action, but, the GM might determine that your familiar chooses its own tactics rather than performing your preferred action. This doesn't work with valet or similar abilities that require a command, if you're capable of riding your familiar, or similar situations."
+													]
+												},
+												{
+													"type": "inline", "name": "Focused Rejuvenation",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"When you {@action Refocus}, you generate magical energy that heals your familiar. Your familiar regains 1 Hit Point per level whenever you {@action Refocus}."
+													]
+												},
+												{
+													"type": "inline", "name": "Accompanist",
+													"source": "APG",
+													"page": 146,
+													"entries": [
+														"Your familiar helps you perform. Whenever you attempt a {@skill Performance} check, if your familiar is nearby and can act, it accompanies you with chirps, claps, or its own miniature instrument. This grants you a +1 circumstance bonus, or +2 if you're a master in {@skill Performance}."
+													]
+												},
+												{
+													"type": "inline", "name": "Darkeater",
+													"source": "SoM",
+													"page": 229,
+													"entries": [
+														"Your familiar naturally recovers in the shadows. After spending 10 consecutive minutes in an area of dim light or darkness, your familiar recovers a number of Hit Points equal to half your level."
+													]
+												},
+												{
+													"type": "inline", "name": "Shadow Step",
+													"source": "SoM",
+													"page": 229,
+													"entries": [
+														"Your familiar gains the Shadow Step action. You must be at least 7th level to select this familiar ability for your familiar.",
+														{
+															"type": "ability",
+															"name": "Shadow Step",
+															"activity": {
+																"number": 1,
+																"unit": "action"
+															},
+															"requirements": "The familiar is in dim light or darkness.",
+															"traits": [
+																"conjuration",
+																"shadow",
+																"teleportation"
+															],
+															"entries": [
+																"The familiar teleports itself up to 30 feet. The destination must be in dim light or darkness and must be within your familiar's line of sight and line of effect. This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
+															]
+														}
+													]
+												},
+												{
+													"type": "inline", "name": "Amphibious",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It gains a swim Speed of 25 feet (or Speed of 25 feet if it already has a swim Speed)."
+													]
+												},
+												{
+													"type": "inline", "name": "Burrower",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes."
+													]
+												},
+												{
+													"type": "inline", "name": "Climber",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It gains a climb Speed of 25 feet."
+													]
+												},
+												{
+													"type": "inline", "name": "Damage Avoidance",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"Choose one type of save. It takes no damage when it succeeds at that type of save; this doesn't prevent effects other than damage."
+													]
+												},
+												{
+													"type": "inline", "name": "Darkvision",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It gains {@ability darkvision}."
+													]
+												},
+												{
+													"type": "inline", "name": "Fast Movement",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"Increase one of the familiar's Speeds from 25 feet to 40 feet."
+													]
+												},
+												{
+													"type": "inline", "name": "Flier",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It gains a fly Speed of 25 feet."
+													]
+												},
+												{
+													"type": "inline", "name": "Kinspeech",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It can understand and speak with animals of the same species. To select this, your familiar must be an animal, it must have the speech ability, and you must be at least 6th level."
+													]
+												},
+												{
+													"type": "inline", "name": "Lab Assistant",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It can use your {@action Quick Alchemy} action. You must have {@action Quick Alchemy}, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this."
+													]
+												},
+												{
+													"type": "inline", "name": "Manual Dexterity",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It can use up to two of its limbs as if they were hands to use manipulate actions."
+													]
+												},
+												{
+													"type": "inline", "name": "Scent",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It gains {@ability scent} (imprecise, 30 feet)."
+													]
+												},
+												{
+													"type": "inline", "name": "Speech",
+													"source": "CRB",
+													"page": 218,
+													"entries": [
+														"It understands and speaks a language you know."
+													]
+												}
 											]
 										},
 										{
@@ -521,12 +830,105 @@
 											"page": 218,
 											"name": "Master Abilities",
 											"entries": [
-												"{@b Cantrip Connection:} You can prepare an additional cantrip, or if you have a repertoire, instead designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can't otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this.",
-												"{@b Extra Reagents:} Your familiar grows extra infused reagents on or in its body. You gain an additional batch of infused reagents. You must have the infused reagents ability to select this ability.",
-												"{@b Familiar Focus:} Once per day, your familiar can use 2 actions with the {@trait concentrate} to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this.",
-												"{@b Lifelink:} If your familiar would be reduced to 0 HP by damage, as a reaction with the {@trait concentrate}, you can take the damage. If you do, you take all the damage and your familiar takes none. However, if special effects when a hit damages your familiar (such as snake venom) still apply to your familiar.",
-												"{@b Spell Battery:} You gain one additional spell slot at least 3 levels lower than your highest-level spell slot; you must be able to cast 4th-level spells using spell slots to select this master ability.",
-												"{@b Spell Delivery:} If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect."
+												{
+													"type": "inline", "name": "Tattoo Transformation",
+													"source": "LOTGB",
+													"page": 34,
+
+													"entries": [
+														"Your familiar can transform into a tattoo you carry on your flesh. When transformed into a tattoo, the familiar looks like a colorful and stylized version of itself and can't act except to turn back into a familiar. It isn't affected by area effects and must be targeted separately to affect it, which requires knowledge that it's a creature. This means you and your allies can heal or assist the familiar while most enemies stay unaware of its true nature. Creatures must attempt a DC 20 {@skill Perception} check to {@action Seek} to realize a tattoo is actually a familiar (which few foes will try). Your familiar can still communicate its feelings empathically. Transforming into a tattoo or back to familiar form is a 1-minute activity that has the {@trait concentrate} trait."
+													]
+												},
+												{
+													"type": "inline", "name": "Restorative Familiar",
+													"source": "LOTGB",
+													"page": 34,
+
+													"entries": [
+														"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to give up some of its animating energy and heal you. It must be in your space to do so. You restore a number of Hit Points equal to {@dice 1d8} times half your level (minimum {@dice 1d8})."
+													]
+												},
+												{
+													"type": "inline", "name": "Recall Familiar",
+													"source": "LOTGB",
+													"page": 34,
+
+													"entries": [
+														"You can summon your familiar to your side. Once per day, you can use a 3-action activity, which has the {@trait concentrate} trait, to teleport your familiar to your space. Your familiar must be within 1 mile or the attempt to summon it fails. This is a {@trait conjuration} and {@trait teleport} effect."
+													]
+												},
+												{
+													"type": "inline", "name": "Share Senses",
+													"source": "APG",
+													"page": 147,
+
+													"entries": [
+														"Once every 10 minutes, you can use a single action with the {@trait concentrate} trait to project your senses into your familiar. When you do, you lose all sensory information from your own body, but can sense through your familiar's body for up to 1 minute. You can {@action Dismiss} this effect."
+													]
+												},
+												{
+													"type": "inline", "name": "Innate Surge",
+													"source": "APG",
+													"page": 147,
+
+													"entries": [
+														"Once per day, you can draw upon your familiar's innate magic to replenish your own. You can cast one innate spell gained from an ancestry feat that you have already cast today. You must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
+													]
+												},
+												{
+													"type": "inline", "name": "Cantrip Connection",
+													"source": "CRB",
+													"page": 218,
+
+													"entries": [
+														"You can prepare an additional cantrip, or if you have a repertoire, instead designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can't otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this."
+													]
+												},
+												{
+													"type": "inline", "name": "Extra Reagents",
+													"source": "CRB",
+													"page": 218,
+
+													"entries": [
+														"Your familiar grows extra infused reagents on or in its body. You gain an additional batch of infused reagents. You must have the infused reagents ability to select this ability."
+													]
+												},
+												{
+													"type": "inline", "name": "Familiar Focus",
+													"source": "CRB",
+													"page": 218,
+
+													"entries": [
+														"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this."
+													]
+												},
+												{
+													"type": "inline", "name": "Lifelink",
+													"source": "CRB",
+													"page": 218,
+
+													"entries": [
+														"If your familiar would be reduced to 0 HP by damage, as a reaction with the {@trait concentrate} trait, you can take the damage. If you do, you take all the damage and your familiar takes none. However, if special effects when a hit damages your familiar (such as snake venom) still apply to your familiar."
+													]
+												},
+												{
+													"type": "inline", "name": "Spell Battery",
+													"source": "CRB",
+													"page": 218,
+
+													"entries": [
+														"You gain one additional spell slot at least 3 levels lower than your highest-level spell slot; you must be able to cast 4th-level spells using spell slots to select this master ability."
+													]
+												},
+												{
+													"type": "inline", "name": "Spell Delivery",
+													"source": "CRB",
+													"page": 218,
+
+													"entries": [
+														"If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect."
+													]
+												}
 											]
 										}
 									]

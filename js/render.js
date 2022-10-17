@@ -1365,10 +1365,24 @@ function Renderer () {
 
 	this._renderInline = function (entry, textStack, meta, options) {
 		this._getReference(entry);
+		textStack[0] += `<div><div>`;
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<b>${entry.name}</b> `;
+			if (entry.source != null) {
+				textStack[0] += Renderer.get().render(` {@note (<a href="${Parser.sourceJsonToStore(entry.source)}">${entry.source}</a>)} `);
+			}
+		}
 		if (entry.entries) {
 			const len = entry?.entries?.length;
-			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta);
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: " ",
+					suffix: " ",
+				})
+			}
 		}
+		textStack[0] += `</div></div>`;
 	};
 
 	this._renderInlineBlock = function (entry, textStack, meta, options) {
