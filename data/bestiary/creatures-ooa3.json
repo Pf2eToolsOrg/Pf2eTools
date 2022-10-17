@@ -1,7 +1,7 @@
 {
 	"creature": [
 		{
-			"name": "Corrupt Shieldmarshals",
+			"name": "Corrupt Shieldmarshal",
 			"source": "OoA3",
 			"page": 7,
 			"level": 7,
@@ -13,7 +13,7 @@
 			],
 			"perception": {
 				"std": 18,
-				"to Sense Motive or vs": 20
+				"to {@action Sense Motive} or vs {@action Conceal An Object}": 20
 			},
 			"languages": {
 				"languages": [
@@ -45,9 +45,9 @@
 				"cha": 2
 			},
 			"items": [
-				"breastplate",
-				"+1 clan pistol (Pathfinder Guns & Gears 152) or +1 jezail (Guns & Gears 153)",
-				"longsword"
+				"{@item breastplate}",
+				"{@runeItem clan pistol|G&G|+1 weapon potency|} or {@runeItem clan pistol|G&G|+1 weapon potency|}",
+				"{@item longsword}"
 			],
 			"defenses": {
 				"ac": {
@@ -76,10 +76,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"versatile P"
 					],
@@ -2347,6 +2343,7 @@
 								},
 								{
 									"name": "pummeling rubble",
+									"source": "APG",
 									"amount": 2
 								}
 							]
@@ -2355,7 +2352,7 @@
 							"spells": [
 								{
 									"name": "heat metal",
-									"source": "advanced players guide"
+									"source": "APG"
 								},
 								{
 									"name": "hydraulic push",
@@ -2395,6 +2392,7 @@
 								},
 								{
 									"name": "impaling spike",
+									"source": "APG",
 									"amount": 2
 								}
 							]
@@ -2421,7 +2419,7 @@
 					{
 						"name": "Vitrumancy",
 						"entries": [
-							"He123 has modified certain spells to incorporate glass into their manifestation. Whenever Ibrium casts fireball, hydraulic push, or pummeling rubble, the spell deals slashing damage instead of its normal damage type as the damaging component is replaced with shards of razor-sharp glass."
+							"Ibrium has modified certain spells to incorporate glass into their manifestation. Whenever Ibrium casts fireball, hydraulic push, or pummeling rubble, the spell deals slashing damage instead of its normal damage type as the damaging component is replaced with shards of razor-sharp glass."
 						]
 					}
 				]

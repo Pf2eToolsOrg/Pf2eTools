@@ -548,9 +548,9 @@
 			"abilities": {
 				"bot": [
 					{
-						"name": "Scoundrel's Feint When",
+						"name": "Scoundrel's Feint",
 						"entries": [
-							"Lanks successfully Feints, his target is {@condition flat‑footed} against his attacks until the end of his next turn. On a critical success, the target is {@condition flat‑footed} against all attacks until the end of Lanks's next turn."
+							"When Lanks successfully {@action Feint||Feints}, his target is {@condition flat‑footed} against his attacks until the end of his next turn. On a critical success, the target is {@condition flat‑footed} against all attacks until the end of Lanks's next turn."
 						]
 					},
 					{
@@ -2225,46 +2225,6 @@
 				]
 			},
 			"description": "Locks experts"
-		},
-		{
-			"name": "Steaming Kingdom Bartender",
-			"source": "OoA2",
-			"page": 57,
-			"level": 2,
-			"traits": [
-				"unique",
-				"le",
-				"medium",
-				"dwarf",
-				"humanoid"
-			],
-			"items": [
-				"dwarven scattergun (Guns & Gears 153; 5 rounds)",
-				"flask of whiskey",
-				"padded armor",
-				"pewter mug",
-				"sap"
-			],
-			"attacks": [
-				{
-					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concussive",
-						"kickback",
-						"scatter 10 feet",
-						"range increment 50 feet",
-						"reload 1"
-					],
-					"name": "dwarven scattergun",
-					"attack": 7,
-					"damage": "{@damage 1d8} piercing"
-				}
-			],
-			"description": "Male dwarf elite barkeep (Pathfinder Bestiary 6, Pathfinder Gamemastery Guide 238) Initiative {@skill Perception} +8"
 		},
 		{
 			"name": "Clockwork Gunner",

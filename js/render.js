@@ -4074,7 +4074,7 @@ Renderer.eidolon = {
 		${eidolon.extraStats ? eidolon.extraStats.map(es => `<p class="pf2-stat pf2-stat__section"><strong>${es.name}&nbsp;</strong>${renderer.render(es.entries)}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
 		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityScores).map(([k, v]) => `<i>${k.toTitleCase()}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`).join("")}
-		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s}}`).join(", "))}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
 		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
 		${Renderer.creature.getSpeed(eidolon)}
@@ -4194,7 +4194,7 @@ Renderer.creature = {
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
 			Object.keys(cr.skills).forEach(skill => {
-				let renderedSkill = `${skill} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], dice: { name: skill } })}`;
+				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], dice: { name: skill } })}`;
 				skills.push(renderedSkill)
 			});
 
