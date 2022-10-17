@@ -20,8 +20,8 @@ function updateFolder (folder) {
 							if (v.variantType) return v
 							console.log(`\tUpdating ${x.name} item variants in ${file}...`)
 							if (!v.type && v.name) {
-								console.log(`\tCannot find type! Assuming name is type.\nPlease check the file.`)
 								v.variantType = v.name
+								delete v.name
 								return v
 							} else {
 								v.variantType = v.type
@@ -172,6 +172,13 @@ function updateFolder (folder) {
 					if (cr.languages && cr.languages.languages && cr.languages.languages.length && cr.languages.languages.find(k => k.match(/[A-Z]/g))) {
 						console.log(`\tUpdating ${cr.name} languages to lowercase in ${file}...`)
 						cr.languages.languages = cr.languages.languages.map(k => k.toLowerCase())
+					}
+					if (cr.attacks && cr.attacks.length && cr.attacks.find(k => k.activity && k.activity.unit && k.activity.unit === "action" && k.activity.number && k.activity.number === 1)) {
+						console.log(`\tUpdating ${cr.name} attacks to remove vestigial activity data in ${file}...`)
+						cr.attacks = cr.attacks.map(k => {
+							delete k.activity
+							return k
+						})
 					}
 					return cr;
 				});

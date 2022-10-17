@@ -1365,10 +1365,24 @@ function Renderer () {
 
 	this._renderInline = function (entry, textStack, meta, options) {
 		this._getReference(entry);
+		textStack[0] += `<div><div>`;
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<b>${entry.name}</b> `;
+			if (entry.source != null) {
+				textStack[0] += Renderer.get().render(` {@note (<a href="${Parser.sourceJsonToStore(entry.source)}">${entry.source}</a>)} `);
+			}
+		}
 		if (entry.entries) {
 			const len = entry?.entries?.length;
-			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta);
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: " ",
+					suffix: " ",
+				})
+			}
 		}
+		textStack[0] += `</div></div>`;
 	};
 
 	this._renderInlineBlock = function (entry, textStack, meta, options) {
@@ -1523,7 +1537,7 @@ function Renderer () {
 		if (entry.reference) {
 			let source = `<a href="${Parser.sourceJsonToStore(entry.source)}">${Parser.sourceJsonToFull(entry.source)}</a>`
 			if (entry.reference.index || entry.reference.auto !== true) {
-				entry.entries.splice(entry.reference.index, 0, entry.reference.note ?? `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
+				entry.entries.splice(entry.reference.index, 0, entry.reference.note ?? `{@note Read ${entry.reference.entry ?? ""} from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
 			} else if (!entry?.entries?.length) {
 				entry.entries = []
 				entry.entries.push(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
@@ -4074,7 +4088,7 @@ Renderer.eidolon = {
 		${eidolon.extraStats ? eidolon.extraStats.map(es => `<p class="pf2-stat pf2-stat__section"><strong>${es.name}&nbsp;</strong>${renderer.render(es.entries)}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
 		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityScores).map(([k, v]) => `<i>${k.toTitleCase()}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`).join("")}
-		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s}}`).join(", "))}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
 		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
 		${Renderer.creature.getSpeed(eidolon)}
@@ -4167,7 +4181,7 @@ Renderer.creature = {
 
 	getLanguages (cr) {
 		const renderer = Renderer.get()
-		if (cr.languages != null && (cr.languages.languages.length !== 0 || (cr.languages.abilities && cr.languages.abilities.length !== 0))) {
+		if (cr.languages != null && cr.languages.languages != null && (cr.languages.languages.length !== 0 || (cr.languages.abilities && cr.languages.abilities.length !== 0))) {
 			let renderStack = [];
 
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
@@ -4194,7 +4208,7 @@ Renderer.creature = {
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
 			Object.keys(cr.skills).forEach(skill => {
-				let renderedSkill = `${skill} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], dice: { name: skill } })}`;
+				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], dice: { name: skill } })}`;
 				skills.push(renderedSkill)
 			});
 

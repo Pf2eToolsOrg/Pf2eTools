@@ -1,6 +1,1356 @@
 {
 	"table": [
 		{
+			"name": "Experimental Metal Compositions",
+			"source": "OoA3",
+			"page": 17,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				9
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice d6}",
+					"Effect"
+				],
+				[
+					"1",
+					"Transforms into a sandy material, making the area difficult terrain."
+				],
+				[
+					"2",
+					"Crystallizes into razor shards, dealing 5d6 slashing damage to creatures that use the Stride action in the area (DC 26 basic Reflex save)."
+				],
+				[
+					"3",
+					"Transforms into a surface more slippery than glass, making the area difficult terrain. Creatures that Stride in the area must succeed at a DC 26 Acrobatics check or fall prone."
+				],
+				[
+					"4",
+					"Liquefies into a pool of molten metal, dealing 5d6 fire damage to creatures that begin their turn in the area (DC 26 basic Reflex save)."
+				],
+				[
+					"5",
+					"Transforms into a glue-like substance. To Stride in the area, creatures must first succeed at a DC 26 Athletics check to pull their legs free."
+				],
+				[
+					"6",
+					"The metal becomes inert and has no effect. It begins in this state."
+				]
+			]
+		},
+		{
+			"name": "Mana Storm Effects",
+			"source": "OoA2",
+			"page": 70,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				9
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice d20}",
+					"Mana Storm Effect"
+				],
+				[
+					"1",
+					"{@b Bleaching} ({@trait primal}, {@trait transmutation}) Fortitude. Creatures and objects within a radius of 10 feet per level are drained of color for 1 hour. A gnome affected by this effect must succeed at a Will save or become {@condition frightened 1} and unable to reduce this {@condition frightened} condition below 1 while bleached of color; this is a {@trait mental} and {@trait fear} effect."
+				],
+				[
+					"2",
+					"{@b Crawling Vermin} ({@trait conjuration}, {@trait primal}) A monstrous, strangely colored insect hostile to all creatures appears within 60 feet. The creature that appears should be insectile in appearance and of a level approximately equal to the level of an animal summoned by {@spell summon animal} of the storm's level. The GM determines the specific creature. After 1 minute, the creature can choose to either return where it came from or to remain. It's neither {@trait summoned} nor a {@trait minion}."
+				],
+				[
+					"3",
+					"{@b Anchored} ({@trait abjuration}, {@trait arcane}) Will. Creatures within a radius of 10 feet per level are affected by {@spell dimensional anchor}. Creatures that fail their saving throws also have their Speeds reduced by 10 feet (to a minimum of 5 feet) during the effect's duration."
+				],
+				[
+					"4",
+					"{@b Unluck} ({@trait arcane}, {@trait divination}, {@trait misfortune}) Will. A zone of unluck and strange violet illumination fill a radius of 10 feet per level for 1 hour. Creatures in this area roll attack rolls, {@skill Perception} checks, saving throws, and skill checks twice and take the lower result."
+				],
+				[
+					"5",
+					"{@b Strange Reversal} ({@trait curse}, {@trait transmutation}) Fortitude. One creature's body and all its possessions reverse into a mirror image of themselves. This effect is permanent."
+				],
+				[
+					"6",
+					"{@b Gravity Surge} ({@trait arcane}, {@trait transmutation}) Reflex. Creatures within a radius of 10 feet per level, in random order, are pushed 10 feet per level away from the nearest creature. A pushed creature that hits an object or another creature stops but takes falling damage equal to the distance moved (a creature hit takes the same amount of falling damage)."
+				],
+				[
+					"7",
+					"{@b Psychic Assault} ({@trait illusion}, {@trait mental}, {@trait nonlethal}, {@trait occult}) Will. Creatures within a radius of 10 feet per level are affected by {@spell phantom pain}."
+				],
+				[
+					"8",
+					"{@b Dazzling Mein} ({@trait illusion}, {@trait occult}, {@trait visual}) One creature is affected by cloak of colors; that creature is immune to the effects, but all others around it are affected normally."
+				],
+				[
+					"9",
+					"{@b Geyser} ({@trait evocation}, {@trait primal}, {@trait water}) Fortitude. Water erupts from the ground, but rather than spraying directly up into the air, the water bends impossibly to surge along a horizontal path just above the ground, like a floating, torrential flood. This torrent of water manifests as a hydraulic torrent at first, eerily doing so in the most efficient line to catch as many potential targets in its path as it can. The water then splashes down into the sand, remaining as a long, thin swath of water that can provide a drinking source until it's soaked up or evaporates."
+				],
+				[
+					"10",
+					"{@b Sudden Pit} ({@trait conjuration}, {@trait earth}, {@trait primal}) Reflex. A pit opens beneath a random creature. The pit is as wide as the creature's space, so the creature can {@action Grab an Edge} to avoid a fall. The pit is 20 feet deep per level of the mana storm and remains open even in terrain normally unable to support such a structure. After 1 hour, the pit vanishes and anything that fell in is restored to the surface."
+				],
+				[
+					"11",
+					"{@b Befuddlement} ({@trait arcane}, {@trait emotion}, {@trait enchantment}, {@trait mental}) Will. A number of creatures up to the level of the mana storm within a radius of 10 feet per level become {@condition confused} for 1 round per level."
+				],
+				[
+					"12",
+					"{@b Death Field} ({@trait necromancy}, {@trait primal}) Fortitude. Normal vegetation within a radius of 10 feet per level immediately dies and turns to ash. Plant creatures take {@damage 2d6} damage per level of the mana storm (basic Fortitude save)."
+				],
+				[
+					"13",
+					"{@b Strangers to All} ({@trait arcane}, {@trait curse}, {@trait enchantment}, {@trait mental}, {@trait misfortune}) Will. A number of creatures up to the level of the mana storm within a radius of 10 feet per level are affected by outcast's curse."
+				],
+				[
+					"14-15",
+					"{@b Weird Rain} ({@trait conjuration}, {@trait primal}) A rain of small objects (anything from flowers to rotten fruit) pelts an area with a radius of 10 feet per level of the mana storm for a number of rounds equal to the level. This rain doesn't harm creatures in the area. Creatures in the area have concealment. The objects remain even after the rain is over."
+				],
+				[
+					"16-17",
+					"{@b Wellspring} ({@trait primal}, varies) The mana storm draws magical potential from deep within a random creature. That creature rolls {@dice 1d20} and uses the {@table Wellspring Surges|SoM} table to determine a wellspring effect."
+				],
+				[
+					"18-19",
+					"{@b Wondrous Effect} ({@trait arcane}, {@trait evocation}) Randomly choose one creature to be a \"wielder\" and a different random creature to be a \"target.\" Roll {@dice d100|d%} on the {@item rod of wonder} table to determine what sort of strange effect occurs between the creatures."
+				],
+				[
+					"20",
+					"{@b Double Strength} (varies) Reroll two results and apply both in the order rolled; further results of 20 on these rerolls have no effect."
+				]
+			]
+		},
+		{
+			"name": "Alkenstar Services",
+			"source": "OoA1",
+			"page": 81,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				3,
+				1
+			],
+			"rows": [
+				[
+					"Service",
+					"Price"
+				],
+				[
+					"Black powder tattoo (per 4 hours)",
+					"5 gp"
+				],
+				[
+					"Bulletworks use (per day)",
+					"1 gp"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Clockwork rentals (per day)",
+							""
+						],
+						[
+							"Clockwork lookout",
+							"1 sp"
+						],
+						[
+							"Clockwork pack mule",
+							"2 sp"
+						],
+						[
+							"Clockwork servant",
+							"1 gp"
+						],
+						[
+							"Clockwork mount",
+							"2 gp"
+						],
+						[
+							"Clockwork carriage",
+							"8 gp"
+						]
+					]
+				},
+				[
+					"Firearm repair (per day)",
+					"2 gp"
+				],
+				[
+					"Spellcasting services",
+					"×2*"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Workshop rental (per day)",
+							"1 gp"
+						],
+						[
+							"{@indentFirst Including expert assistance}",
+							"3 gp"
+						]
+					]
+				}
+			],
+			"footnotes": [
+				"* Spellcasting services in Alkenstar usually cost twice the amount listed on {@table Spellcasting Services||Table 6\u201315: Spellcasting Services}."
+			]
+		},
+		{
+			"name": "Mixed Drink Effects",
+			"source": "OoA1",
+			"page": 70,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				9
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice d20}",
+					"Effect"
+				],
+				[
+					"1\u20139",
+					"No effect"
+				],
+				[
+					"10",
+					"Excessive burping; increase the DC to recover from the sickened condition by 1 for 8 hours"
+				],
+				[
+					"11",
+					"Extreme stomach cramps; you can't willingly ingest anything, even other drinks, for 8 hours"
+				],
+				[
+					"12",
+					"Immediate and intense headache, causing weakness 5 to mental damage for 8 hours"
+				],
+				[
+					"13",
+					"Improved reflexes, giving a +1 item bonus to Reflex saves for 8 hours"
+				],
+				[
+					"14",
+					"Heightened awareness, granting a +1 item bonus to Perception checks to Seek for 8 hours"
+				],
+				[
+					"15",
+					"Keen insight, granting a +1 item bonus to Perception checks to Sense Motive for 8 hours"
+				],
+				[
+					"16",
+					"You can cast dancing lights as a primal cantrip once within the next day."
+				],
+				[
+					"17",
+					"You can cast guidance as a primal cantrip once within the next day."
+				],
+				[
+					"18",
+					"You can cast prestidigitation as a primal cantrip once within the next day."
+				],
+				[
+					"19",
+					"You regain 1d6 Hit Points (and gain any excess over your maximum as temporary Hit Points that last for 8 hours)."
+				],
+				[
+					"20",
+					"You gain a bit of luck: once during the next 8 hours when you attempt a saving throw or a skill check, you can roll twice and take the higher result. This is a fortune effect."
+				]
+			]
+		},
+		{
+			"name": "Flaming Whiskey Effects",
+			"source": "OoA1",
+			"page": 70,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				9
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice d6}",
+					"Effect"
+				],
+				[
+					"1",
+					"No effect\u2014the flames are harmless."
+				],
+				[
+					"2",
+					"Singes to the face, dealing {@damage 1d4} fire damage."
+				],
+				[
+					"3",
+					"Sets clothing or hat on fire, dealing {@damage 1d6} {@condition persistent damage||persistent fire damage}."
+				],
+				[
+					"4",
+					"Burns tongue, giving a \u20131 item penalty to linguistic based checks and DCs for 1 minute. The drinker is unable to yell or sing for 1 hour."
+				],
+				[
+					"5",
+					"Burns mouth and throat, giving a \u20131 item penalty to linguistic-based checks and DCs for 1 hour. The drinker is unable to yell or sing for 8 hours."
+				],
+				[
+					"6",
+					"The drinker regains {@dice 1d6} Hit Points (gaining any excess over the maximum as temporary Hit Points that last for 8 hours)."
+				]
+			]
+		},
+		{
+			"name": "Services and Fare",
+			"source": "OoA1",
+			"page": 69,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				3,
+				1
+			],
+			"rows": [
+				[
+					"Service",
+					"Price"
+				],
+				[
+					"Bulletworks use (per hour)",
+					"1 sp"
+				],
+				[
+					"Bulletworks use (per day)",
+					"1 gp"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Firearm services",
+							""
+						],
+						[
+							"Cleaning (per gun)",
+							"1 sp"
+						],
+						[
+							"Repair (per day)",
+							"1 gp"
+						]
+					]
+				},
+				[
+					"Firing range (per day)",
+					"2 sp"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Sleeping accommodations (per night)",
+							""
+						],
+						[
+							"Taproom floor space",
+							"5 cp"
+						],
+						[
+							"Bed (for 1)",
+							"3 sp"
+						],
+						[
+							"Private room (for 2)",
+							"1 gp"
+						]
+					]
+				},
+				[
+					"Food",
+					"Price"
+				],
+				[
+					"Bread of the day",
+					"1 cp"
+				],
+				[
+					"Brown bullet curry",
+					"2 cp"
+				],
+				[
+					"Full-course meal",
+					"4 sp"
+				],
+				[
+					"Spice cake",
+					"5 cp"
+				],
+				[
+					"Stew (broth only)",
+					"5 cp"
+				],
+				[
+					"Stew (with meat)",
+					"1 sp"
+				],
+				[
+					"Ustradi oysters",
+					"2 sp"
+				],
+				[
+					"Drink",
+					"Price"
+				],
+				[
+					"Dunsmith's dram",
+					"5 cp"
+				],
+				[
+					"Flaming whiskey",
+					"7 cp"
+				],
+				[
+					"Gear greaser",
+					"6 cp"
+				],
+				[
+					"Ghostly wainright",
+					"2 sp"
+				],
+				[
+					"Grenadier's revenge",
+					"1 sp"
+				],
+				[
+					"Smokeside sour",
+					"2 cp"
+				]
+			]
+		},
+		{
+			"type": "table",
+			"source": "OoA0",
+			"page": 9,
+			"name": "Suggested Character Options",
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				2,
+				4,
+				2,
+				2,
+				2,
+				3
+			],
+			"rows": [
+				[
+					"",
+					"Alignments",
+					"Ancestries (and Ethnicities)",
+					"Classes",
+					"Languages",
+					"Skills",
+					"Feats"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@b Strongly Recommended}",
+							"{@trait CG}",
+							"{@ancestry Dwarf} (Dongun)",
+							"{@class Alchemist}",
+							"{@language Common}",
+							"{@skill Crafting}",
+							"{@feat Alchemical Crafting}"
+						],
+						[
+							"",
+							"{@trait CN}",
+							"{@ancestry Human} (Garundi, Keleshite, Mwangi, Vudrani)",
+							"{@class Gunslinger|G&G}",
+							"{@language Dwarven}",
+							"{@skill Lore||Lore (Alkenstar, Brigh, Engineering)}",
+							"{@feat Crafter's Appraisal|APG}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@class Inventor|G&G}",
+							"",
+							"{@skill Thievery}",
+							"{@feat Feather Step}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Quick Squeeze}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Steady Balance}"
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@b Strongly Recommended}",
+							"{@trait N}",
+							"{@ancestry Halfling} (Jaric)",
+							"{@class Bard}",
+							"{@language Gnoll}",
+							"{@skill Acrobatics}",
+							"{@feat Deceptive Worship|APG}"
+						],
+						[
+							"",
+							"{@trait NG}",
+							"{@ancestry Human||Half-Elf|Half-Elf} (Vourinoi)",
+							"{@class Cleric}",
+							"{@language Goblin}",
+							"{@skill Athletics}",
+							"{@feat Experienced Smuggler}"
+						],
+						[
+							"",
+							"",
+							"Geniekin",
+							"{@class Fighter}",
+							"{@language Kelish}",
+							"{@skill Deception}",
+							"{@feat Lengthy Diversion}"
+						],
+						[
+							"",
+							"",
+							"{@ancestry Gnoll|LOME}",
+							"{@class Investigator|APG}",
+							"",
+							"{@skill Society}",
+							"{@feat Pickpocket}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@class Oracle|APG}",
+							"",
+							"",
+							"{@feat Quick Coercion}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@class Rogue}",
+							"",
+							"",
+							"{@feat Quick Repair}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@class Sorcerer}",
+							"",
+							"",
+							"{@feat Streetwise}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@class Swashbuckler|APG}",
+							"",
+							"",
+							"{@feat Subtle Theft}"
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@b Appropriate}",
+							"{@trait LN}",
+							"{@versatileHeritage Dhampir}",
+							"Other common classes",
+							"{@language Aklo}",
+							"{@skill Diplomacy}",
+							"{@feat Bon Mot|APG}"
+						],
+						[
+							"",
+							"{@trait NG}",
+							"{@ancestry Fleshwarp|LOAG}",
+							"",
+							"{@language Halfling}",
+							"{@skill Intimidation}",
+							"{@feat Charming Liar}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"{@language Jotun}",
+							"{@skill Performance}",
+							"{@feat Courtly Graces}"
+						],
+						[
+							"",
+							"",
+							"{@ancestry Gnoll|LOME}",
+							"",
+							"{@language Mwangi}",
+							"{@skill Religion}",
+							"{@feat Group Impression}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"{@language Osiriani}",
+							"{@skill Stealth}",
+							"{@feat Hobnobber}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"{@language Vudrani}",
+							"{@skill Survival}",
+							"{@feat Intimidating Glare}"
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@b Not Recommended}",
+							"{@trait LG}",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"{@skill Medicine}",
+							"{@feat Express Rider}"
+						],
+						[
+							"",
+							"{@trait LE}",
+							"",
+							"",
+							"",
+							"{@skill Nature}",
+							"{@feat Forager}"
+						],
+						[
+							"",
+							"{@trait NE}",
+							"",
+							"",
+							"",
+							"{@skill Occultism}",
+							"{@feat Multilingual}"
+						],
+						[
+							"",
+							"{@trait CE}",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Natural Medicine}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Ride}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Survey Wildlife}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Terrain Expertise}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Train Animal}"
+						],
+						[
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"{@feat Underwater Marauder}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"type": "table",
+			"source": "DA",
+			"page": 103,
+			"name": "Ability Quirks",
+			"id": "5",
+			"labelRowIdx": [
+				0
+			],
+			"colStyles": [
+				"text-left",
+				"text-left"
+			],
+			"colSizes": [
+				1,
+				20
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice d10}",
+					"Quirk"
+				],
+				[
+					"1",
+					"{@b Temporal Effectiveness} The deviation's power feels slightly stronger (or slightly weaker) at a specific time of day."
+				],
+				[
+					"2",
+					"{@b Musical Notation} Your deviation produces strange ethereal tones or chimes when activated, or you activate it through singing, whistling, or performance."
+				],
+				[
+					"3",
+					"{@b Strange Biology} When you gained your deviation, you grew extra eyes, a set of chitinous antennae, or some other strange biological feature unusual for your ancestry. While you might be able to hide it underneath clothing, your deviant abilities all center around this organ, so it must be uncovered and unobstructed for you to use your deviation."
+				],
+				[
+					"4",
+					"{@b Chromatic Absorption} Whenever you use your deviation, you absorb or mute a specific color from an object near you, and any manifestation of your deviant ability has that color. The absorbed colors return to your surroundings within an hour."
+				],
+				[
+					"5",
+					"{@b Selective Application} The deviation works slightly better (or slightly worse) on a certain type of creature (such as gnomes or caterpillars) or material (such as glass or silver)."
+				],
+				[
+					"6",
+					"{@b Atmospheric Disturbance} When you use your deviation, tiny clouds, light wind, or other small atmospheric disturbances occur within 5 feet of your body."
+				],
+				[
+					"7",
+					"{@b Fractal Sign} Your deviation causes sand, droplets, small insects, or other lightweight objects to organize themselves into strange, geometric patterns whenever activated."
+				],
+				[
+					"8",
+					"{@b Harmless Wound} When you use your deviation, trace amounts of blood drip from your eyes or nose."
+				],
+				[
+					"9",
+					"{@b Strange Fuel} Each day, you must consume a small amount of a specific material, such as quartz or holy water (which you can do harmlessly), or your deviation is painful to use."
+				],
+				[
+					"10",
+					"{@b Forgotten Prayers} When you gain your deviation, piecemeal knowledge of a forgotten language fills your mind\u2014not enough to communicate, but enough that you control your deviation by commanding or beseeching some higher power in the language."
+				]
+			]
+		},
+		{
+			"type": "table",
+			"source": "LOTG",
+			"page": 103,
+			"name": "Animal Caretaking Gear Prices",
+			"id": "4",
+			"labelRowIdx": [
+				0
+			],
+			"colStyles": [
+				"text-left",
+				"text-center"
+			],
+			"rows": [
+				[
+					"Name",
+					"Price"
+				],
+				[
+					"{@item Animal bed|LOTG}",
+					"1 sp"
+				],
+				[
+					"{@item Cage|LOTG}",
+					"5 sp"
+				],
+				[
+					"{@item Collar|LOTG}",
+					"1 sp"
+				],
+				[
+					"{@item Standard Feed|LOTG|Feed, standard (1 week's feed)}",
+					"1 cp"
+				],
+				[
+					"{@item Unique Feed|LOTG|Feed, unique (1 week's feed)}",
+					"1 sp"
+				],
+				[
+					"{@item Handling gloves|LOTG}",
+					"5 sp"
+				],
+				[
+					"{@item Harness|LOTG}",
+					"8 sp"
+				],
+				[
+					"{@item Leash|LOTG}",
+					"1 sp"
+				],
+				[
+					"{@item Stationary Tank|LOTG|Tank, stationary}",
+					"1 gp"
+				],
+				[
+					"{@item Traveling Tank|LOTG|Tank, traveling}",
+					"10 gp"
+				],
+				[
+					"{@item Standard Treats|LOTG|Treats, standard}",
+					"1 cp"
+				],
+				[
+					"{@item Unique Treats|LOTG|Treats, unique}",
+					"1 sp"
+				]
+			]
+		},
+		{
+			"type": "table",
+			"source": "LOTG",
+			"page": 103,
+			"name": "Animal Prices",
+			"id": "3",
+			"colStyles": [
+				"text-left",
+				"text-center"
+			],
+			"labelRowIdx": [
+				0
+			],
+			"rows": [
+				[
+					"Name",
+					"Price"
+				],
+				[
+					"{@item Alpaca|LOTG}",
+					"75+ gp"
+				],
+				[
+					"{@item Axolotl|LOTG}",
+					"40 gp"
+				],
+				[
+					"{@item Badger|LOTG}",
+					"15 sp"
+				],
+				[
+					"{@item Bat|LOTG}",
+					"3+ gp"
+				],
+				[
+					"{@item Beehive|LOTG}",
+					"1 gp"
+				],
+				[
+					"{@item Bird|LOTG}",
+					"1+ sp"
+				],
+				[
+					"{@item House Eagle|LOTG|Bird, house eagle}",
+					"10 gp"
+				],
+				[
+					"{@item Butterfly|LOTG} or {@item moth|LOTG}",
+					"1 sp"
+				],
+				[
+					"{@item Cat|LOTG}",
+					"3+ cp"
+				],
+				[
+					"{@item Galtan orange cat|LOTG|Cat, Galtan orange}",
+					"10 gp"
+				],
+				[
+					"{@item Cow|LOTG}",
+					"8 gp"
+				],
+				[
+					"{@item Cradle minder|LOTG}",
+					"50 gp"
+				],
+				[
+					"{@item Dinosaur|LOTG}",
+					"10+ gp"
+				],
+				[
+					"{@item Dog|LOTG}",
+					"2+ sp"
+				],
+				[
+					"{@item Duck|LOTG}",
+					"5 sp"
+				],
+				[
+					"{@item Ferret|LOTG}",
+					"1 sp"
+				],
+				[
+					"{@item Fish|LOTG}",
+					"1+ cp"
+				],
+				[
+					"{@item Fox|LOTG}",
+					"8 sp"
+				],
+				[
+					"{@item Frog|LOTG}",
+					"2+ sp"
+				],
+				[
+					"{@item Gerbil|LOTG} or {@item hamster|LOTG}",
+					"1 sp"
+				],
+				[
+					"{@item Horse|LOTG}",
+					"2+ gp"
+				],
+				[
+					"{@item Kayalini|LOTG}",
+					"5 gp"
+				],
+				[
+					"{@item Lizard|LOTG}",
+					"1+ sp"
+				],
+				[
+					"{@item X's Lizard|LOTG|Lizard, X's}",
+					"1 gp"
+				],
+				[
+					"{@item Monkey|LOTG}",
+					"3 gp"
+				],
+				[
+					"{@item Mouse|LOTG}",
+					"1 cp"
+				],
+				[
+					"{@item Opossum, domestic|LOTG}",
+					"2 gp"
+				],
+				[
+					"{@item Pig|LOTG}",
+					"5+ sp"
+				],
+				[
+					"{@item Praying mantis|LOTG}",
+					"1 sp"
+				],
+				[
+					"{@item Rabbit|LOTG}",
+					"1+ gp"
+				],
+				[
+					"{@item Raccoon|LOTG}",
+					"5 gp"
+				],
+				[
+					"{@item Rat|LOTG}",
+					"1+ sp"
+				],
+				[
+					"{@item Snake|LOTG}",
+					"1+ gp"
+				],
+				[
+					"{@item Spider|LOTG}",
+					"2+ sp"
+				],
+				[
+					"{@item Squirrel|LOTG}",
+					"7 sp"
+				],
+				[
+					"{@item Turtle|LOTG}",
+					"3 sp"
+				]
+			]
+		},
+		{
+			"type": "table",
+			"source": "LOTG",
+			"page": 65,
+			"name": "Common Crimes and Punishments",
+			"id": "2",
+			"labelRowIdx": [
+				0
+			],
+			"footnotes": [
+				"{@sup 1}Punishments can vary from region to region. Countries in the Inner Sea that use fines typically link them to the character's ability to pay"
+			],
+			"rows": [
+				[
+					"Crime",
+					"Typical Punishment{@sup 1}"
+				],
+				[
+					"Murder",
+					"Execution"
+				],
+				[
+					"Arson",
+					"Execution"
+				],
+				[
+					"Summoning prohibited planar beings (varies by region)",
+					"Execution"
+				],
+				[
+					"Treason",
+					"Execution"
+				],
+				[
+					"Espionage",
+					"10 to 30 years labor often shortened as spies are exchanged or traded back to their home country"
+				],
+				[
+					"Torture Fifty",
+					"lashes and 5 to 20 years hard labor, often followed by exile"
+				],
+				[
+					"Other atrocities",
+					"Forty lashes and 3 to 10 years hard labor, often followed by exile"
+				],
+				[
+					"Manslaughter",
+					"Twenty to fifty lashes, 3 to 15 years of labor, and/or a fine equal to 50% of the character's wealth"
+				],
+				[
+					"Creating undead",
+					"Fifty lashes, 3 to 10 years of hard labor, and/or a fine equal to 40% of the character's wealth"
+				],
+				[
+					"Kidnapping",
+					"Twenty to forty lashes and/or 2 to 8 years hard labor, often followed by exile"
+				],
+				[
+					"Enchantment",
+					"major (dominate), Thirty lashes and/or a fine equal to 25% of the character's wealth, often followed by exile"
+				],
+				[
+					"Enchantment",
+					"minor (charm), Ten lashes and/or a fine equal to 10% of the character's wealth"
+				],
+				[
+					"Assault & battery (permanent injury)",
+					"Thirty lashes, 1 year hard labor, and/or a fine equal to 10% of the character's wealth"
+				],
+				[
+					"Assault & battery (no permanent injury)",
+					"Ten lashes and/or a fine equal to 2% of the character's wealth"
+				],
+				[
+					"Cruelty to animals",
+					"Five to twenty lashes and/or a fine equal to 5% of the character's wealth"
+				],
+				[
+					"Robbery",
+					"Twenty lashes and/or 1 to 5 years hard labor"
+				],
+				[
+					"Burglary",
+					"1 to 3 years hard labor and/or fine equal to 20% of the stolen goods' value"
+				],
+				[
+					"Larceny",
+					"6 to 18 months hard labor and/or fine equal to 15% of the stolen goods' value"
+				],
+				[
+					"Embezzlement",
+					"Return of all funds and a fine of 20% of what was stolen"
+				],
+				[
+					"Extortion",
+					"Return of all funds and a fine of 20% of what was stolen"
+				],
+				[
+					"Possession of stolen goods",
+					"Return of all goods and a fine equal to 10% of the goods' cost"
+				],
+				[
+					"Perjury",
+					"A fine equal to 15% of the character's wealth"
+				],
+				[
+					"Forgery (official papers)",
+					"A fine equal to 15% of the character's wealth"
+				],
+				[
+					"Forgery (other)",
+					"A fine equal to 10% of the character's wealth"
+				],
+				[
+					"Blackmail",
+					"A fine equal to 10% of the character's wealth"
+				],
+				[
+					"Fraud",
+					"A fine equal to 10% of the character's wealth"
+				],
+				[
+					"Worship of banned gods",
+					"2 to 8 years hard labor and/or a fine equal to 20% of the character's wealth"
+				],
+				[
+					"Smuggling",
+					"1 to 5 years hard labor and/or a fine equal to 15% of the character's wealth"
+				],
+				[
+					"Vandalism",
+					"Ten lashes and/or a fine equal to 2% of the character's wealth"
+				],
+				[
+					"Pickpocketing",
+					"Five lashes and/or a fine equal to 1% of the character's wealth"
+				],
+				[
+					"Trespassing",
+					"Two lashes and/or a fine equal to 1% of the character's wealth"
+				],
+				[
+					"Multiple offenses",
+					"at once As most serious offense plus 50% of other sentences"
+				],
+				[
+					"Repeated offenses",
+					"Increase the sentence by a quarter for each prior offense\u2014excessive offenses result in execution"
+				]
+			]
+		},
+		{
+			"type": "table",
+			"source": "LOTG",
+			"page": 17,
+			"name": "Housing Costs",
+			"id": "1",
+			"labelRowIdx": [
+				0,
+				6
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center"
+			],
+			"spans": [
+				[
+					[
+						1,
+						3
+					],
+					[
+						3,
+						3
+					]
+				],
+				[
+					[
+						1,
+						3
+					],
+					[
+						3,
+						4
+					],
+					[
+						4,
+						5
+					]
+				],
+				[
+					[
+						1,
+						3
+					],
+					[
+						3,
+						4
+					],
+					[
+						4,
+						5
+					]
+				],
+				[
+					[
+						1,
+						3
+					],
+					[
+						3,
+						4
+					],
+					[
+						4,
+						5
+					]
+				],
+				[
+					[
+						1,
+						3
+					],
+					[
+						3,
+						4
+					],
+					[
+						4,
+						5
+					]
+				],
+				[
+					[
+						1,
+						3
+					],
+					[
+						3,
+						4
+					],
+					[
+						4,
+						5
+					]
+				]
+			],
+			"rows": [
+				[
+					"House payment (10 year period)",
+					"Price",
+					"Monthly"
+				],
+				[
+					"Thatch hut (poor home)",
+					"100 gp",
+					"2 gp"
+				],
+				[
+					"Wood cottage (comfortable home)",
+					"300 gp",
+					"6 gp"
+				],
+				[
+					"Stone house (quality home)",
+					"2,000 gp",
+					"40 gp"
+				],
+				[
+					"Wood, stone, and metal manse (fine home)",
+					"6,000 gp",
+					"120 gp"
+				],
+				[
+					"Villa (luxury home)",
+					"15,000 gp",
+					"300 gp"
+				],
+				[
+					"House",
+					"Monthly rent"
+				],
+				[
+					"Thatch hut (poor home)",
+					"8 gp"
+				],
+				[
+					"Wood cottage (comfortable home)",
+					"20 gp"
+				],
+				[
+					"Stone house (quality home)",
+					"80 gp"
+				],
+				[
+					"Wood, stone, and metal manse (fine home)",
+					"240 gp"
+				],
+				[
+					"Villa (luxury home)",
+					"600 gp"
+				]
+			]
+		},
+		{
 			"type": "table",
 			"source": "DA",
 			"page": 103,

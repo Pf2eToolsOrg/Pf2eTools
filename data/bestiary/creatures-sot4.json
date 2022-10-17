@@ -65,10 +65,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"reach 20 feet",
@@ -80,10 +76,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse",
@@ -96,10 +88,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"fire",
 						"magical",
@@ -440,10 +428,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"deadly d12"
 					],
@@ -453,10 +437,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"acid",
 						"range increment 60 feet"
@@ -623,10 +603,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"shove"
@@ -637,20 +613,12 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"name": "jaws",
 					"attack": 22,
 					"damage": "{@damage 2d8+12} piercing"
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"thrown 20 feet"
 					],
@@ -826,10 +794,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"reach 20 feet"
@@ -840,10 +804,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"mental",
@@ -1192,10 +1152,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile"
 					],
@@ -1205,10 +1161,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"name": "jaws",
 					"attack": 26,
 					"damage": "{@damage 3d10+13} piercing"
@@ -1382,10 +1334,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"forceful",
 						"magical",
@@ -1397,20 +1345,12 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"name": "jaws",
 					"attack": 22,
 					"damage": "{@damage 2d8+13} piercing plus Grab"
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"thrown 20 feet"
 					],
@@ -1575,10 +1515,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"reach 10 feet"
@@ -1938,6 +1874,86 @@
 			"perception": {
 				"std": 21
 			},
+			"defenses": {
+				"ac": {
+					"std": 29
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 22
+					}
+				},
+				"hp": [
+					{
+						"hp": 240,
+						"abilities": [
+							"(16 squares); Thresholds 160 (12 squares)",
+							"80 (8 squares)"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"fire",
+					"healing",
+					"magic (see below)",
+					"mental",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 15
+					},
+					{
+						"name": "bludgeoning",
+						"amount": 10
+					},
+					{
+						"name": "splash damage",
+						"amount": 8
+					}
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except adamantine and bludgeoning"
+					}
+				]
+			}
+		},
+		{
+			"name": "Grave Karina",
+			"source": "SoT4",
+			"page": 31,
+			"level": 11,
+			"traits": [
+				"rare",
+				"ne",
+				"large",
+				"beast",
+				"fiend"
+			],
+			"perception": {
+				"std": 21
+			},
 			"senses": [
 				{
 					"name": "darkvision"
@@ -1984,10 +2000,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"reach 10 feet"
@@ -1998,10 +2010,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"magical"
@@ -2012,10 +2020,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical"
 					],
@@ -2204,10 +2208,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"electricity",
 						"magical",
@@ -2219,10 +2219,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"electricity"
@@ -2372,10 +2368,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"fatal d12",
 						"fire",
@@ -2387,10 +2379,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"fire"
@@ -2401,10 +2389,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"deadly d10",
 						"fire",
@@ -2608,10 +2592,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical"
 					],
@@ -2621,10 +2601,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse",
@@ -2637,10 +2613,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"thrown 20 feet"
@@ -2808,10 +2780,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"deadly d12",
 						"reach 15 feet",
@@ -2824,10 +2792,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"reach 20 feet",
 						"sweep",
@@ -2839,10 +2803,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"deadly d12",
 						"range increment 60 feet"
@@ -3020,10 +2980,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"reach 15 feet"
@@ -3034,10 +2990,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"reach 20 feet"
@@ -3048,10 +3000,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"fire",
 						"evocation",
@@ -3247,10 +3195,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse",
@@ -3263,10 +3207,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"range increment 60 feet",
@@ -3530,10 +3470,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse",
@@ -3546,10 +3482,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse",
@@ -3562,10 +3494,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"magical",
@@ -3786,10 +3714,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse",
@@ -3802,10 +3726,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"two-hand d8"
@@ -3816,10 +3736,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"fire",
 						"magical",
@@ -4134,10 +4050,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical"
 					],
@@ -4147,10 +4059,6 @@
 				},
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse",
@@ -4163,10 +4071,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"magical",
 						"thrown 20 feet"
@@ -4495,6 +4399,58 @@
 						"name": "or positive; double resistance vs. non-magical)"
 					}
 				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 234,
+						"abilities": [
+							"(16 squares); Thresholds 156 (12 squares)",
+							"78 (8 squares)"
+						]
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 15
+					},
+					{
+						"name": "good",
+						"amount": 15
+					},
+					{
+						"name": "splash damage",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 5,
+						"note": "except force"
+					},
+					{
+						"name": "ghost touch"
+					},
+					{
+						"name": "or positive; double resistance vs. non-magical)"
+					}
+				]
 			}
 		},
 		{
@@ -4745,10 +4701,6 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"agile",
 						"finesse"
@@ -4759,10 +4711,6 @@
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"range increment 40 feet"
 					],
@@ -4946,20 +4894,12 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"name": "golden blade",
 					"attack": 32,
 					"damage": "{@damage 3d6+16} piercing plus {@damage 2d6} fire"
 				},
 				{
 					"range": "Ranged",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"traits": [
 						"thrown 20 feet"
 					],
