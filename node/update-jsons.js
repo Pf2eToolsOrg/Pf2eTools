@@ -173,6 +173,13 @@ function updateFolder (folder) {
 						console.log(`\tUpdating ${cr.name} languages to lowercase in ${file}...`)
 						cr.languages.languages = cr.languages.languages.map(k => k.toLowerCase())
 					}
+					if (cr.attacks && cr.attacks.length && cr.attacks.find(k => k.activity && k.activity.unit && k.activity.unit === "action" && k.activity.number && k.activity.number === 1)) {
+						console.log(`\tUpdating ${cr.name} attacks to remove vestigial activity data in ${file}...`)
+						cr.attacks = cr.attacks.map(k => {
+							delete k.activity
+							return k
+						})
+					}
 					return cr;
 				});
 			}

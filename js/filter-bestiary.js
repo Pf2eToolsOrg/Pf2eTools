@@ -65,12 +65,12 @@ class PageFilterBestiary extends PageFilter {
 			itemSortFn: SortUtil.ascSort,
 		});
 
-		this._strengthFilter = new RangeFilter({header: "Strength"});
-		this._dexterityFilter = new RangeFilter({header: "Dexterity"});
-		this._constitutionFilter = new RangeFilter({header: "Constitution"});
-		this._intelligenceFilter = new RangeFilter({header: "Intelligence"});
-		this._wisdomFilter = new RangeFilter({header: "Wisdom"});
-		this._charismaFilter = new RangeFilter({header: "Charisma"});
+		this._strengthFilter = new RangeFilter({ header: "Strength" });
+		this._dexterityFilter = new RangeFilter({ header: "Dexterity" });
+		this._constitutionFilter = new RangeFilter({ header: "Constitution" });
+		this._intelligenceFilter = new RangeFilter({ header: "Intelligence" });
+		this._wisdomFilter = new RangeFilter({ header: "Wisdom" });
+		this._charismaFilter = new RangeFilter({ header: "Charisma" });
 		this._abilityFilter = new MultiFilter({
 			header: "Ability Modifiers",
 			filters: [this._strengthFilter, this._dexterityFilter, this._constitutionFilter, this._intelligenceFilter, this._wisdomFilter, this._charismaFilter],
@@ -160,7 +160,7 @@ class PageFilterBestiary extends PageFilter {
 		if (cr.isNpc) cr._fMisc.push("NPC");
 		cr._fSources = SourceFilter.getCompleteFilterSources(cr);
 		cr._fTraits = [...(cr.traits || [])];
-		cr._fSenses = {precise: [], imprecise: [], vague: [], other: []};
+		cr._fSenses = { precise: [], imprecise: [], vague: [], other: [] };
 		if (cr.senses && cr.senses.length) {
 			cr.senses.forEach(s => {
 				// .replace(/within.+/, "")
@@ -170,10 +170,12 @@ class PageFilterBestiary extends PageFilter {
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
 		cr._flanguages = cr._flanguages.map(l => l.replace(/\s\(.+/, "")).filter(l => !l.includes(" ")).map(l => l.toTitleCase());
 		cr._fskills = new Set();
-		Object.keys(cr.skills).forEach((k) => {
-			if (k.match(/lore/i)) cr._fskills.add("Lore");
-			else cr._fskills.add(k);
-		});
+		if (cr.skills) {
+			Object.keys(cr.skills).forEach((k) => {
+				if (k.match(/lore/i)) cr._fskills.add("Lore");
+				else cr._fskills.add(k);
+			})
+		}
 		cr._fskills = Array.from(cr._fskills);
 
 		cr._fHP = 0;
@@ -214,7 +216,7 @@ class PageFilterBestiary extends PageFilter {
 		}
 		cr._fCreatureType = []
 
-		this.handleTraitImplies(cr, {traitProp: "_fTraits", entityTypes: ["creature"]});
+		this.handleTraitImplies(cr, { traitProp: "_fTraits", entityTypes: ["creature"] });
 		cr._fTraits = cr._fTraits.map(t => Parser.getTraitName(t));
 		if (!cr._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) cr._fTraits.push("Common");
 		cr._fCreatureType = cr._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Creature Type") ? t : null).filter(Boolean);
