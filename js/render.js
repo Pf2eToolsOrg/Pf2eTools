@@ -4181,7 +4181,7 @@ Renderer.creature = {
 
 	getLanguages (cr) {
 		const renderer = Renderer.get()
-		if (cr.languages != null && (cr.languages.languages.length !== 0 || (cr.languages.abilities && cr.languages.abilities.length !== 0))) {
+		if (cr.languages != null && cr.languages.languages != null && (cr.languages.languages.length !== 0 || (cr.languages.abilities && cr.languages.abilities.length !== 0))) {
 			let renderStack = [];
 
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
