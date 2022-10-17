@@ -179,7 +179,6 @@ class PageFilterBestiary extends PageFilter {
 		cr._fskills = Array.from(cr._fskills);
 
 		cr._fHP = 0;
-		console.log(cr.name)
 		cr.defenses.hp.forEach((d) => {
 			cr._fHP += d.hp;
 		})
