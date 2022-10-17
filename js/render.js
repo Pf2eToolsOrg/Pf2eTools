@@ -4734,24 +4734,24 @@ Renderer.deity = {
 
 	getIntercession (deity) {
 		const renderStack = [];
-		const renderObj = JSON.parse('{"type":"pf2-h2","name":"Divine Intercession","entries":[{"type": "pf2-options","skipSort":true,"items":[]}]}');
+		const renderObj = JSON.parse("{\"type\":\"pf2-h2\",\"name\":\"Divine Intercession\",\"entries\":[{\"type\": \"pf2-options\",\"skipSort\":true,\"items\":[]}]}");
 		const renderer = Renderer.get().setFirstSection(true)
-		
+
 		Object.keys(deity.intercession).forEach(key => {
 			if (key.match(/^(Minor|Moderate|Major) (Boon|Curse)$/)) {
 				renderObj.entries[0].items.push({
 					type: "item",
 					name: key,
-					entries: deity.intercession[key]
+					entries: deity.intercession[key],
 				});
 			}
 		});
-		
+
 		if (deity.intercession.flavor) renderObj.entries.unshift(...deity.intercession.flavor);
 
 		renderer.recursiveRender([renderObj], renderStack);
 		renderStack.push(Renderer.utils.getPageP(deity.intercession));
-		
+
 		return renderStack.join("");
 	},
 
