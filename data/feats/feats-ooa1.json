@@ -5,6 +5,11 @@
 			"source": "OoA1",
 			"page": 78,
 			"level": 2,
+			"featType": {
+				"archetype": [
+					"Alkenstar Agent"
+				]
+			},
 			"traits": [
 				"uncommon",
 				"archetype",
@@ -23,6 +28,11 @@
 			"name": "Loose Cannon",
 			"source": "OoA1",
 			"page": 78,
+			"featType": {
+				"archetype": [
+					"Alkenstar Agent"
+				]
+			},
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -31,7 +41,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Alkenstar Agent Dedication",
+			"prerequisites": "{@archetype Alkenstar Agent Dedication|OoA1}",
 			"entries": [
 				"Your unpredictable gunfire often catches enemies off guard or hits unprotected areas. Make a ranged {@action Strike} with a firearm against a creature that you haven't already attacked on this turn. You gain a circumstance bonus to damage on this {@action Strike} equal to the number of weapon damage dice. The {@action Strike} gains the following failure effect.",
 				{
@@ -53,11 +63,16 @@
 			"source": "OoA1",
 			"page": 78,
 			"level": 7,
+			"featType": {
+				"archetype": [
+					"Alkenstar Agent"
+				]
+			},
 			"traits": [
 				"archetype",
 				"skill"
 			],
-			"prerequisites": "Alkenstar Agent Dedication, master in {@skill Society}",
+			"prerequisites": "{@archetype Alkenstar Agent Dedication|OoA1}, master in {@skill Society}",
 			"entries": [
 				"You're practiced at creating forgeries that establish your outlaw credentials or augment your legal authority. You can Create a Forgery as an exploration activity. It takes you about 1 hour per page of the document that you're forging. This time is reduced to 10 minutes per page if you're legendary in {@skill Society}."
 			]
@@ -66,6 +81,11 @@
 			"name": "Flash Your Badge",
 			"source": "OoA1",
 			"page": 78,
+			"featType": {
+				"archetype": [
+					"Alkenstar Agent"
+				]
+			},
 			"activity": {
 				"number": 2,
 				"unit": "action"
@@ -74,9 +94,9 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Alkenstar Agent Dedication, master in",
+			"prerequisites": "{@archetype Alkenstar Agent Dedication|OoA1}, master in {@skill Intimidation}",
 			"entries": [
-				"{@skill Intimidation} You make a fearsome show of your authority. Roll {@skill Intimidation} checks to {@action Demoralize} each creature in a 30-foot cone. When you do so, {@action Demoralize} gains the {@trait visual} trait, and creatures are affected if they can see you. If a target creature hasn't {@condition broken} a law in the past week (as determined by the GM), the result of your check against that creature is one degree of success worse than the result you rolled."
+				"You make a fearsome show of your authority. Roll {@skill Intimidation} checks to {@action Demoralize} each creature in a 30-foot cone. When you do so, {@action Demoralize} gains the {@trait visual} trait, and creatures are affected if they can see you. If a target creature hasn't {@condition broken} a law in the past week (as determined by the GM), the result of your check against that creature is one degree of success worse than the result you rolled."
 			]
 		},
 		{
@@ -87,15 +107,20 @@
 				"number": 2,
 				"unit": "action"
 			},
+			"featType": {
+				"archetype": [
+					"Martial Artist"
+				]
+			},
 			"level": 10,
 			"traits": [
 				"archetype",
 				"visual"
 			],
-			"prerequisites": "Powder Punch Stance",
-			"requirements": "You're in Powder Punch",
+			"prerequisites": "{@feat Powder Punch Stance|OoA1}",
+			"requirements": "You're in {@feat Powder Punch Stance|OoA1}.",
 			"entries": [
-				"Stance (below). You ignite a pinch of black powder in a foe's face. Choose an adjacent creature. It must attempt a Fortitude save against your class DC.",
+				"You ignite a pinch of black powder in a foe's face. Choose an adjacent creature. It must attempt a Fortitude save against your class DC.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -127,9 +152,8 @@
 				"fighter"
 			],
 			"prerequisites": "expert in Fortitude saves",
-			"access": "You're from",
+			"access": "You're from Alkenstar or the Mana Wastes.",
 			"entries": [
-				"Alkenstar or the Mana Wastes.",
 				"You've developed control over how your body processes alchemical poisons and drugs. Each of your successful saving throws against an alchemical poison, a drug, or an addiction reduces the stage by 2, or by 1 for a virulent alchemical poison, drug, or addiction. Each critical success reduces the stage by 3, or by 2 for a virulent alchemical poison, drug, or addiction."
 			]
 		},
@@ -144,9 +168,8 @@
 				"fighter"
 			],
 			"prerequisites": "expert in Fortitude saves",
-			"access": "You're from",
+			"access": "You're from Alkenstar or the Mana Wastes.",
 			"entries": [
-				"Alkenstar or the Mana Wastes.",
 				"You gain resistance to mental damage equal to half your level and a +1 circumstance bonus to saving throws against effects that would make you {@condition clumsy}, {@condition drained}, or {@condition enfeebled}."
 			]
 		},
@@ -160,11 +183,19 @@
 				"archetype",
 				"stance"
 			],
-			"prerequisites": "Martial Artist Dedication (Pathfinder Advanced Player's Guide 182)",
-			"access": "You're from Alkenstar or the",
+			"featType": {
+				"archetype": [
+					"Martial Artist"
+				]
+			},
+			"prerequisites": "{@feat Martial Artist Dedication|APG}",
+			"access": "You're from Alkenstar or the Mana Wastes.",
 			"entries": [
-				"Mana Wastes.",
 				"You infuse your handwraps with black powder. On your first melee {@action Strike} each round with an unarmed attack, knuckle duster (Guns & Gears 150), or black powder knuckle dusters (Guns and Gears 158), you deal an additional 1 fire damage. If you critically succeed at an attempt to {@action Shove} while in this stance, the target is pushed back an additional 5 feet."
+			],
+			"leadsTo": [
+				"Black Powder Flash|OoA1",
+				"Thunder Clap|OoA1"
 			]
 		},
 		{
@@ -175,13 +206,18 @@
 				"number": 2,
 				"unit": "action"
 			},
+			"featType": {
+				"archetype": [
+					"Martial Artist"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"archetype",
 				"sonic"
 			],
-			"prerequisites": "Powder Punch Stance (above)",
-			"requirements": "You're in Powder Punch Stance.",
+			"prerequisites": "{@feat Powder Punch Stance|OoA1}",
+			"requirements": "You're in {@feat Powder Punch Stance|OoA1}.",
 			"entries": [
 				"You slam your hands together to unleash a deafening blast. Creatures in a 15-foot cone cone take {@damage 3d6} sonic damage, with a basic Fortitude save against your class DC.",
 				"Creatures that critically fail their save are also {@condition deafened} for 1 minute. You can't use this ability again for {@dice 1d4} rounds as your hands recover from the thunderous vibrations. At 8th level, and every 2 levels thereafter, the damage from Thunder Clap increases by {@dice 1d6}."
