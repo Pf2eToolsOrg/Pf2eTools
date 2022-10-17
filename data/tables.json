@@ -1,6 +1,136 @@
 {
 	"table": [
 		{
+			"name": "Experimental Metal Compositions",
+			"source": "OoA3",
+			"page": 17,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				9
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice d6}",
+					"Effect"
+				],
+				[
+					"1",
+					"Transforms into a sandy material, making the area difficult terrain."
+				],
+				[
+					"2",
+					"Crystallizes into razor shards, dealing 5d6 slashing damage to creatures that use the Stride action in the area (DC 26 basic Reflex save)."
+				],
+				[
+					"3",
+					"Transforms into a surface more slippery than glass, making the area difficult terrain. Creatures that Stride in the area must succeed at a DC 26 Acrobatics check or fall prone."
+				],
+				[
+					"4",
+					"Liquefies into a pool of molten metal, dealing 5d6 fire damage to creatures that begin their turn in the area (DC 26 basic Reflex save)."
+				],
+				[
+					"5",
+					"Transforms into a glue-like substance. To Stride in the area, creatures must first succeed at a DC 26 Athletics check to pull their legs free."
+				],
+				[
+					"6",
+					"The metal becomes inert and has no effect. It begins in this state."
+				]
+			]
+		},
+		{
+			"name": "Mana Storm Effects",
+			"source": "OoA2",
+			"page": 70,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				9
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice d20}",
+					"Mana Storm Effect"
+				],
+				[
+					"1",
+					"{@b Bleaching} ({@trait primal}, {@trait transmutation}) Fortitude. Creatures and objects within a radius of 10 feet per level are drained of color for 1 hour. A gnome affected by this effect must succeed at a Will save or become {@condition frightened 1} and unable to reduce this {@condition frightened} condition below 1 while bleached of color; this is a {@trait mental} and {@trait fear} effect."
+				],
+				[
+					"2",
+					"{@b Crawling Vermin} ({@trait conjuration}, {@trait primal}) A monstrous, strangely colored insect hostile to all creatures appears within 60 feet. The creature that appears should be insectile in appearance and of a level approximately equal to the level of an animal summoned by {@spell summon animal} of the storm's level. The GM determines the specific creature. After 1 minute, the creature can choose to either return where it came from or to remain. It's neither {@trait summoned} nor a {@trait minion}."
+				],
+				[
+					"3",
+					"{@b Anchored} ({@trait abjuration}, {@trait arcane}) Will. Creatures within a radius of 10 feet per level are affected by {@spell dimensional anchor}. Creatures that fail their saving throws also have their Speeds reduced by 10 feet (to a minimum of 5 feet) during the effect's duration."
+				],
+				[
+					"4",
+					"{@b Unluck} ({@trait arcane}, {@trait divination}, {@trait misfortune}) Will. A zone of unluck and strange violet illumination fill a radius of 10 feet per level for 1 hour. Creatures in this area roll attack rolls, {@skill Perception} checks, saving throws, and skill checks twice and take the lower result."
+				],
+				[
+					"5",
+					"{@b Strange Reversal} ({@trait curse}, {@trait transmutation}) Fortitude. One creature's body and all its possessions reverse into a mirror image of themselves. This effect is permanent."
+				],
+				[
+					"6",
+					"{@b Gravity Surge} ({@trait arcane}, {@trait transmutation}) Reflex. Creatures within a radius of 10 feet per level, in random order, are pushed 10 feet per level away from the nearest creature. A pushed creature that hits an object or another creature stops but takes falling damage equal to the distance moved (a creature hit takes the same amount of falling damage)."
+				],
+				[
+					"7",
+					"{@b Psychic Assault} ({@trait illusion}, {@trait mental}, {@trait nonlethal}, {@trait occult}) Will. Creatures within a radius of 10 feet per level are affected by {@spell phantom pain}."
+				],
+				[
+					"8",
+					"{@b Dazzling Mein} ({@trait illusion}, {@trait occult}, {@trait visual}) One creature is affected by cloak of colors; that creature is immune to the effects, but all others around it are affected normally."
+				],
+				[
+					"9",
+					"{@b Geyser} ({@trait evocation}, {@trait primal}, {@trait water}) Fortitude. Water erupts from the ground, but rather than spraying directly up into the air, the water bends impossibly to surge along a horizontal path just above the ground, like a floating, torrential flood. This torrent of water manifests as a hydraulic torrent at first, eerily doing so in the most efficient line to catch as many potential targets in its path as it can. The water then splashes down into the sand, remaining as a long, thin swath of water that can provide a drinking source until it's soaked up or evaporates."
+				],
+				[
+					"10",
+					"{@b Sudden Pit} ({@trait conjuration}, {@trait earth}, {@trait primal}) Reflex. A pit opens beneath a random creature. The pit is as wide as the creature's space, so the creature can {@action Grab an Edge} to avoid a fall. The pit is 20 feet deep per level of the mana storm and remains open even in terrain normally unable to support such a structure. After 1 hour, the pit vanishes and anything that fell in is restored to the surface."
+				],
+				[
+					"11",
+					"{@b Befuddlement} ({@trait arcane}, {@trait emotion}, {@trait enchantment}, {@trait mental}) Will. A number of creatures up to the level of the mana storm within a radius of 10 feet per level become {@condition confused} for 1 round per level."
+				],
+				[
+					"12",
+					"{@b Death Field} ({@trait necromancy}, {@trait primal}) Fortitude. Normal vegetation within a radius of 10 feet per level immediately dies and turns to ash. Plant creatures take {@damage 2d6} damage per level of the mana storm (basic Fortitude save)."
+				],
+				[
+					"13",
+					"{@b Strangers to All} ({@trait arcane}, {@trait curse}, {@trait enchantment}, {@trait mental}, {@trait misfortune}) Will. A number of creatures up to the level of the mana storm within a radius of 10 feet per level are affected by outcast's curse."
+				],
+				[
+					"14-15",
+					"{@b Weird Rain} ({@trait conjuration}, {@trait primal}) A rain of small objects (anything from flowers to rotten fruit) pelts an area with a radius of 10 feet per level of the mana storm for a number of rounds equal to the level. This rain doesn't harm creatures in the area. Creatures in the area have concealment. The objects remain even after the rain is over."
+				],
+				[
+					"16-17",
+					"{@b Wellspring} ({@trait primal}, varies) The mana storm draws magical potential from deep within a random creature. That creature rolls {@dice 1d20} and uses the {@table Wellspring Surges|SoM} table to determine a wellspring effect."
+				],
+				[
+					"18-19",
+					"{@b Wondrous Effect} ({@trait arcane}, {@trait evocation}) Randomly choose one creature to be a \"wielder\" and a different random creature to be a \"target.\" Roll {@dice d100|d%} on the {@item rod of wonder} table to determine what sort of strange effect occurs between the creatures."
+				],
+				[
+					"20",
+					"{@b Double Strength} (varies) Reroll two results and apply both in the order rolled; further results of 20 on these rerolls have no effect."
+				]
+			]
+		},
+		{
 			"name": "Alkenstar Services",
 			"source": "OoA1",
 			"page": 81,

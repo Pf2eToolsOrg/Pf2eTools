@@ -1861,6 +1861,523 @@
 			]
 		},
 		{
+			"name": "Iron Dart Launcher",
+			"source": "OoA2",
+			"page": 12,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert"
+			},
+			"description": [
+				"A half‑dozen iron darts fire from spring‑loaded launchers {@condition concealed} in the desk opposite the front door."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Thievery} (trained) to disable the trigger, or DC 18 {@skill Acrobatics} to squeeze through the partially opened door (this doesn't disable the trap but prevents it from triggering)"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Dart",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The front door is fully opened, Forced Open, or {@condition broken}",
+					"entries": [
+						"A hail of iron darts launches along a 20‑foot line from the desk through the doorway, dealing {@damage 4d8+10} piercing damage to each creature in the area of effect (DC 24 basic Reflex save)."
+					]
+				}
+			],
+			"reset": [
+				"The trap resets as soon as the door is closed. It has enough darts to trigger three times, after which, it must be reloaded with 20 darts before it can reset again."
+			]
+		},
+		{
+			"name": "Second Kiss Engine",
+			"source": "OoA2",
+			"page": 28,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"mechanical",
+				"trap"
+			],
+			"description": [
+				"Exposed clockwork gears spin at high speeds."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (expert) to disable the engine, or"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 18
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "DC 26 Engineering",
+					"entries": [
+						"{@skill Lore} to disengage the drive shaft.",
+						"Either method disables the trap but also shuts down the engine, disabling the Second Kiss's propulsion."
+					]
+				},
+				{
+					"name": "Spinning Gears",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature Strides in the engine nacelle",
+					"entries": [
+						"The creature's clothing or limbs get caught in the spinning gears and axles of the engine.",
+						"The creature must attempt a DC 24 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes {@damage 2d8+9} bludgeoning damage."
+								],
+								"Failure": [
+									"The creature takes {@damage 4d8+18} bludgeoning damage."
+								],
+								"Critical Failure": [
+									"The creature's clothing is pulled into the clockworks. The creature takes {@damage 4d8+18} bludgeoning damage and is {@condition restrained}. Until the creature Escapes (DC 24), it takes {@damage 2d8+9} bludgeoning damage each round as it's pulled into the spinning rotors. A creature wearing clothing can automatically {@action Escape} by doffing its caught clothing; this destroys the doffed clothing"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Explosive Steam Trap",
+			"source": "OoA2",
+			"page": 55,
+			"level": 7,
+			"traits": [
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "trained",
+				"notes": "to find the desk switch; DC 28 (expert) to find the trapdoor and charge"
+			},
+			"description": [
+				"A black‑powder charge fastened to a trapdoor (marked with a \"T\" on the map) blows a hole in a steam tunnel, filling the room with superheated steam."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} (trained) to disarm the desk switch;"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 15
+					}
+				},
+				"hardness": {
+					"Trapdoor ": 8
+				},
+				"hp": {
+					"Trapdoor ": 50
+				},
+				"bt": {
+					"Trapdoor ": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "DC",
+					"entries": [
+						"28 (expert) to disarm the trapdoor charge"
+					]
+				},
+				{
+					"name": "Explosive Charge",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The desk switch is pressed or the trapdoor is opened",
+					"entries": [
+						"The charge on the door explodes. All creatures within 10 feet take {@damage 2d10+6} fire damage, {@damage 1d10+3} piercing damage, and {@damage 1d6} {@condition persistent damage ||persistent bleed damage} (DC 22 basic Reflex save). The room is filled with steam, making all creatures within the room {@condition concealed}. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The trapdoor emits a jet of superheated steam. Each creature in the room must attempt a DC 28 Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes {@damage 1d10+3} fire damage."
+						],
+						"Failure": [
+							"The creature takes {@damage 2d10+6} fire damage and is {@condition blinded} for 1 round."
+						],
+						"Critical Failure": [
+							"The creature takes {@damage 2d10+6} fire damage, is {@condition fatigued}, and is {@condition blinded} for 1 round."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "False Door Trap",
+			"source": "OoA2",
+			"page": 59,
+			"level": 6,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 28,
+				"minProf": "expert",
+				"notes": "to see the brick wall behind the edges of the door"
+			},
+			"description": [
+				"A black‑powder charge detonates as soon as the doorknob is turned, shattering the door into splinters."
+			],
+			"disable": {
+				"entries": [
+					"DC 27 {@skill Thievery} (expert) to disable the doorknob trigger"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					}
+				},
+				"hardness": {
+					"std": 8
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Explosive Charge",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The doorknob is turned",
+					"entries": [
+						"The charge behind the door explodes, dealing {@damage 2d8+9} fire damage and {@damage 2d8+9} piercing damage to all creatures in a 10‑foot cone blasting outward from the door (DC 27 basic Reflex save). The sound of the explosion can be heard up to 50 feet away"
+					]
+				}
+			]
+		},
+		{
+			"name": "Color Spray Trap",
+			"source": "OoA2",
+			"page": 60,
+			"level": 4,
+			"traits": [
+				"auditory",
+				"illusion",
+				"incapacitation",
+				"magical",
+				"trap",
+				"visual"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "trained",
+				"notes": "to notice the glyph on the doorjamb"
+			},
+			"description": [
+				"A loud pop sounds when this door is opened, followed immediately by a blast of colorful lights that washes over whoever opened the door."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Thievery} (trained) to disable the glyph, or dispel magic (1st level; counteract DC 22) to counteract the glyph"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 10
+					}
+				},
+				"hardness": {
+					"Door ": 8
+				},
+				"hp": {
+					"Door ": 50
+				},
+				"bt": {
+					"Door ": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Color Spray",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The door is opened",
+					"entries": [
+						"The trap casts color spray on the triggering creature (DC 21)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gremlin Horde",
+			"source": "OoA3",
+			"page": 19,
+			"level": 6,
+			"traits": [
+				"complex",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 18,
+				"minProf": "expert"
+			},
+			"description": [
+				"Three gangs of gremlins hide within the spiral centurion, cackling with glee and hurling blasts of hex magic. The hazard occupies the same space as the spiral centurion, moving with it."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Arcana}, {@skill Occultism}, or {@skill Religion} (trained) to devise counter-hex symbols that frighten and scatter a gremlin gang, or DC 28 {@skill Acrobatics} or {@skill Stealth} (expert) to capture and scatter a gremlin gang"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 17
+					}
+				},
+				"hardness": {
+					"notes": {
+						"std": "(while inside the centurion)"
+					},
+					"std": 15
+				},
+				"hp": {
+					"std": 22,
+					"notes": {
+						"std": "per gremlin gang"
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Hexed Calamity",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature comes within 30 feet of the gremlin horde",
+					"entries": [
+						"Every firearm within 30 feet misfires (Guns & Gears 152). If a creature is holding the firearm, they can attempt a DC 27 Will save, negating this effect on a success. The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions; misfortune) The gremlin horde hurls one tinkering curse with each action, targeting an item within 60 feet wielded or worn by a creature. The creature must attempt a DC 27 Will save. The gremlin horde loses 1 action for each gremlin gang that's scattered.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The hex bounces back to affect the gremlin horde. For 1 round, all creatures gain a +1 status bonus to checks to disable this hazard."
+						],
+						"Success": [
+							"The item is unaffected."
+						],
+						"Failure": [
+							"The item becomes unreliable for 1 round. If a creature attempts to Activate the item or {@action Interact} with it, it must succeed at a DC {@flatDC 5} flat check or the action is wasted. If the item doesn't have an active use (such a mundane cloak), the creature wearing the item must instead immediately succeed at a DC {@flatDC 5} flat check or become tangled with the item and fall {@condition prone}."
+						],
+						"Critical Failure": [
+							"As failure, but the creature wielding or wearing the item also becomes {@condition clumsy||clumsy 2}."
+						]
+					}
+				}
+			],
+			"reset": [
+				"If not captured or killed, the scattered gremlin gangs regroup after {@dice 1d4} hours."
+			]
+		},
+		{
+			"name": "Falling Portcullis Trap",
+			"source": "OoA2",
+			"page": 62,
+			"level": 7,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "expert",
+				"notes": "to spot the sockets in the floor where the portcullis drops; DC 28 (expert) to spot the floor trigger"
+			},
+			"description": [
+				"An iron portcullis drops from the ceiling when a pressure plate is triggered."
+			],
+			"disable": {
+				"entries": [
+					"DC 27 {@skill Thievery} (expert) to disable the floor trigger, or DC 27 {@skill Athletics} or {@skill Lore||Engineering Lore} to jam the portcullis in the ceiling"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 18
+					}
+				},
+				"hardness": {
+					"std": 18
+				},
+				"hp": {
+					"std": 72
+				},
+				"bt": {
+					"std": 36
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Slam Shut",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The pressure plate is depressed",
+					"entries": [
+						"The portcullis falls, closing off the hallway.",
+						"Any creature under the portcullis when it drops takes {@damage 4d10+18} piercing damage and is {@condition immobilized}. A creature that succeeds at a DC 26 Reflex save takes no damage and rolls away in a random direction; on a critical success, they can choose the direction. (For the rules on freeing an {@condition immobilized} creature, see the sidebar on page 515 of the Core Rulebook.) If the trap was triggered by a creature moving north with a Speed of at least 10 feet, they're considered to be under the portcullis when it triggers. Creatures moving south when triggering the portcullis aren't considered to be under the portcullis when it triggers."
+					]
+				}
+			]
+		},
+		{
 			"name": "Thalassophobic Pool",
 			"source": "DA",
 			"page": 212,

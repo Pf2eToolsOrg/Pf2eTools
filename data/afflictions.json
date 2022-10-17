@@ -1416,6 +1416,31 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Yellow Silt Curse",
+			"source": "OoA2",
+			"page": 71,
+			"type": "Curse",
+			"level": 6,
+			"traits": [
+				"curse",
+				"enchantment",
+				"fear",
+				"magical",
+				"mental"
+			],
+			"entries": [
+				"You never forget the eerie song and frightening movements of the yellow silt. You need to make this save after each full day you spend in the Baffled Lowlands, increasing the save DC by 1 for each consecutive day.",
+				{
+					"type": "affliction",
+					"DC": 22,
+					"savingThrow": "Will",
+					"entries": [
+						"Whenever you gain the{@condition frightened} condition while in the Baffled Lowlands, increase the value of that condition by 1 (maximum{@condition frightened 4}). If you can see anything yellow when you become {@condition frightened}, you are also {@condition confused} for 1 round."
+					]
+				}
+			]
 		}
 	]
 }

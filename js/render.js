@@ -1523,7 +1523,7 @@ function Renderer () {
 		if (entry.reference) {
 			let source = `<a href="${Parser.sourceJsonToStore(entry.source)}">${Parser.sourceJsonToFull(entry.source)}</a>`
 			if (entry.reference.index || entry.reference.auto !== true) {
-				entry.entries.splice(entry.reference.index, 0, entry.reference.note ?? `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
+				entry.entries.splice(entry.reference.index, 0, entry.reference.note ?? `{@note Read ${entry.reference.entry ?? ""} from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
 			} else if (!entry?.entries?.length) {
 				entry.entries = []
 				entry.entries.push(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
