@@ -517,10 +517,10 @@ class ScaleCreature {
 		opts.flatAddDamageLimited = 4;
 		creature = this._scaleEliteWeak(creature, opts);
 
-		if (creature.level < 2) creature.hp[0].hp += 10;
-		else if (creature.level < 5) creature.hp[0].hp += 15;
-		else if (creature.level < 20) creature.hp[0].hp += 20;
-		else creature.hp[0].hp += 30;
+		if (creature.level < 2) creature.defenses.hp[0].hp += 10;
+		else if (creature.level < 5) creature.defenses.hp[0].hp += 15;
+		else if (creature.level < 20) creature.defenses.hp[0].hp += 20;
+		else creature.defenses.hp[0].hp += 30;
 
 		creature._displayName = `Elite ${creature.name}`;
 		creature._originalLvl = creature._originalLvl || creature.level;
@@ -554,10 +554,10 @@ class ScaleCreature {
 		opts.flatAddDamageLimited = -4;
 		creature = this._scaleEliteWeak(creature, opts);
 
-		if (creature.level < 2) creature.hp[0].hp -= 10;
-		else if (creature.level < 5) creature.hp[0].hp -= 15;
-		else if (creature.level < 20) creature.hp[0].hp -= 20;
-		else creature.hp[0].hp -= 30;
+		if (creature.level < 2) creature.defenses.hp[0].hp -= 10;
+		else if (creature.level < 5) creature.defenses.hp[0].hp -= 15;
+		else if (creature.level < 20) creature.defenses.hp[0].hp -= 20;
+		else creature.defenses.hp[0].hp -= 30;
 
 		creature._displayName = `Weak ${creature.name}`;
 		creature._originalLvl = creature._originalLvl || creature.level;
