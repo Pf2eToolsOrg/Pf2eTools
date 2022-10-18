@@ -5,7 +5,7 @@ FilterUtil.SUB_HASH_PREFIX_LENGTH = 4;
 
 class PageFilter {
 	static defaultSourceSelFn (val) {
-		return !SourceUtil.isNonstandardSource(val) && !SourceUtil.isAdventure(val);
+		return !SourceUtil.isNonstandardSource(val) && !SourceUtil.isAdventure(val) && !SourceUtil.isAccessory(val);
 	}
 
 	constructor (opts) {

@@ -357,6 +357,11 @@ SourceUtil = {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_ADVENTURES.has(source);
 	},
+	
+	isAccessory (source) {
+		if (source instanceof FilterItem) source = source.item;
+		return Parser.SOURCES_ACCESSORIES.has(source);
+	},
 
 	isCoreOrSupplement (source) {
 		if (source instanceof FilterItem) source = source.item;
