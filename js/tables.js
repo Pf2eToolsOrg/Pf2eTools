@@ -81,15 +81,40 @@ class TablesPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		Renderer.get().setFirstSection(true);
 		const it = this._dataList[id];
 		it.type = it.type || "table";
-		const rendered = $$`
-		${Renderer.utils.getExcludedDiv(it, "table")}
-		${Renderer.get().setFirstSection(true).render(it)}
-		${Renderer.utils.getPageP(it)}`;
-
-		$("#pagecontent").empty().append(rendered);
+		const $pgContent = $("#pagecontent").empty();
+		const buildStatsTab = () => {
+			$pgContent.append(Renderer.table.getRenderedString(it));
+			$pgContent.append(Renderer.utils.getPageP(it));
+		};
+		const buildInfoTab = async () => {
+			let quickRulesType;
+			if (it.source === "CHD") {
+				quickRulesType = "criticalHitDeck";
+			} else if (it.source === "CFD") {
+				quickRulesType = "criticalFumbleDeck";
+			} else {
+				return;
+			}
+			const quickRules = await Renderer.utils.pGetQuickRules(quickRulesType);
+			$pgContent.append(quickRules);
+		}
+		const statsTab = Renderer.utils.tabButton(
+			"Table",
+			() => {},
+			buildStatsTab,
+		);
+		const tabs = [statsTab];
+		if (it.source === "CFD" || it.source === "CHD") {
+			const infoTab = Renderer.utils.tabButton(
+				"Quick Rules",
+				() => {},
+				buildInfoTab,
+			);
+			tabs.push(infoTab);
+		}
+		Renderer.utils.bindTabButtons(...tabs);
 
 		ListUtil.updateSelected();
 	}
