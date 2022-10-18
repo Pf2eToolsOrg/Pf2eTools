@@ -3294,7 +3294,7 @@ Renderer.utils = {
 		opts = opts || {};
 		return `<p class="pf2-stat pf2-stat__source">
 					${opts.prefix ? opts.prefix : ""}
-					${it.source != null ? `<a href="${Parser.sourceJsonToStore(it.source)}"><strong>${Parser.sourceJsonToFull(it.source)}</strong></a>${it.page != null ? `, page ${it.page}.` : ""}` : ""}
+					${it.source != null ? `<a href="${Parser.sourceJsonToStore(it.source)}"><strong>${Parser.sourceJsonToFull(it.source)}</strong></a>${it.page ? `, page ${it.page}` : ""}.` : ""}
 					${opts.noReprints || !it.otherSources ? "" : Renderer.utils.getOtherSourceHtml(it.otherSources)}
 				</p>`;
 	},
