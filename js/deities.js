@@ -127,7 +127,17 @@ function renderStatblock (deity) {
 		$content.append(Renderer.getRenderedLore({lore: await pGetFluff()}))
 	}
 	const buildInfoTab = async () => {
-		const quickRules = await Renderer.utils.pGetQuickRules("deity");
+		let quickRulesType;
+		if (deity.intercession) {
+			quickRulesType = "deityWithIntercession"
+		} else if (deity.category === "Pantheon") {
+			quickRulesType = "deityPantheon"
+		} else if (deity.category === "Philosophy") {
+			quickRulesType = "deityPhilosophy"
+		} else {
+			quickRulesType = "deity"
+		}
+		const quickRules = await Renderer.utils.pGetQuickRules(quickRulesType);
 		$content.append(quickRules);
 	}
 	const buildImageTab = async () => {

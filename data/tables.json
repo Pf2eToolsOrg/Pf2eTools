@@ -1,1919 +1,6 @@
 {
 	"table": [
 		{
-			"name": "Critical Hit Deck: Bomb or Spell",
-			"source": "CHD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b Allergic Reaction} The target takes {@damage 1d8} poison damage."
-				],
-				[
-					"2",
-					"{@b Mind Cloud} The target is {@condition stupefied} 2 until healed."
-				],
-				[
-					"3",
-					"{@b Olfactory Overload} The target loses its sense of smell and any scent ability or other olfactory sense until healed."
-				],
-				[
-					"4",
-					"{@b Stunned} Normal damage. The target is {@condition stunned} 2."
-				],
-				[
-					"5",
-					"{@b Cut Off From Magic} Normal damage. The target can't cast spells or activate magic items for {@dice 1d4} rounds."
-				],
-				[
-					"6",
-					"{@b Now You See Me...} You become {@condition invisible} until the end of your next turn or until you use a hostile action."
-				],
-				[
-					"7",
-					"{@b Petrified} The target is {@condition petrified} for 10 minutes."
-				],
-				[
-					"8",
-					"{@b Protective Charm} You gain a +2 status bonus to AC and all saving throws until the end of your next turn."
-				],
-				[
-					"9",
-					"{@b Pretty Colors} The target is {@condition dazzled} until the end of your next turn."
-				],
-				[
-					"10",
-					"{@b Conduit} The target takes a -2 status penalty to AC and saves against your bombs or spells until the end of your next turn."
-				],
-				[
-					"11",
-					"{@b Nerve Damage} Normal damage. The target is {@condition slowed} 1 until healed."
-				],
-				[
-					"12",
-					"{@b Strange Goo} Normal damage and the target is {@condition restrained}, using your class DC as the DC to {@action Escape}."
-				],
-				[
-					"13",
-					"{@b Life Leech} If this is a spell, the target becomes {@condition doomed} 1 and you regain {@damage 1d8} Hit Points."
-				],
-				[
-					"14",
-					"{@b Vampiric Feedback} Normal damage. You regain Hit Points equal half the damage you dealt."
-				],
-				[
-					"15",
-					"{@b Knockback} Push the target up to 10 feet."
-				],
-				[
-					"16",
-					"{@b Electrocuted} If this is a {@trait electricity} spell or bomb, the target takes double damage, and at the start of its next turn, it takes normal damage. Any other bomb or spell deals double damage."
-				],
-				[
-					"17",
-					"{@b Frozen} If this is a {@trait cold} bomb or spell, the target takes triple damage and is {@condition slowed} 2 for 1 round. Any other bomb or spell deals double damage."
-				],
-				[
-					"18",
-					"{@b Power Surge} Triple damage."
-				],
-				[
-					"19",
-					"{@b Devastating Strike} Triple damage. The target is {@condition stunned} 1."
-				],
-				[
-					"20",
-					"{@b Eyeburn} The target is {@condition blinded} until the end of its next turn."
-				],
-				[
-					"21",
-					"{@b Transposition} If this is a spell attack, you and the target switch places. This is a {@trait teleportation} effect."
-				],
-				[
-					"22",
-					"{@b Hypnotic Link} If this is a spell, the target takes normal damage and is {@condition controlled} by you until the end of its next turn."
-				],
-				[
-					"23",
-					"{@b Distraction} The target is {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"24",
-					"{@b Funny Bone} The target laughs uncontrollably until the end of its next turn. While laughing, it is {@condition slowed} 1 and can't use reactions."
-				],
-				[
-					"25",
-					"{@b Shrink Aftereffect} Normal damage. The target is reduced in size as if subject to a {@spell shrink} spell until the end of its next turn."
-				],
-				[
-					"26",
-					"{@b Psychic Overflow} The target takes {@damage 1d8} mental damage."
-				],
-				[
-					"27",
-					"{@b Vulnerability} The target gains weakness 5 to any damage types dealt by the bomb or spell for 1 minute."
-				],
-				[
-					"28",
-					"{@b Lingering Damage} The target takes {@damage 1d6} {@condition persistent damage||persistent damage} of the same type as the bomb or spell's damage."
-				],
-				[
-					"29",
-					"{@b Unnatural Selection} Triple damage to {@trait aberration||aberrations}, {@trait celestial||celestials}, {@trait fiend||fiends}, and {@trait monitor||monitors}. Double damage to all other creatures."
-				],
-				[
-					"30",
-					"{@b Hoarder's Wrath} Triple damage to {@trait dragon||dragons}. Double damage to all other creatures."
-				],
-				[
-					"31",
-					"{@b Slowed Down} The target is {@condition slowed} 2 for 1 round."
-				],
-				[
-					"32",
-					"{@b Doomed!} The target is {@condition slowed} 1 for 1 round, and is also {@condition doomed} 1."
-				],
-				[
-					"33",
-					"{@b Forceful Blast} The bomb or spell deals and additional {@damage 1d8} force damage."
-				],
-				[
-					"34",
-					"{@b Terrifying Display} The target is {@condition frightened} 3."
-				],
-				[
-					"35",
-					"{@b Returning Spell} If a spell attack, the spell or spell slot is not expended."
-				],
-				[
-					"36",
-					"{@b Call of the Wild} Triple damage to {@trait animal||animals}, {@trait beast||beasts}, and {@trait fey||fey}. Double damage to all other creatures."
-				],
-				[
-					"37",
-					"{@b Corrosive} If this is an {@trait acid} bomb or spell, the target takes triple damage and {@damage 1d6} {@condition persistent damage||persistent acid damage}. Any other bomb or spell deals double damage."
-				],
-				[
-					"38",
-					"{@b Magical Glow} The target glows for 1 minute with the effect of a {@spell faerie fire} spell."
-				],
-				[
-					"39",
-					"{@b Draining Strike} The target loses one random prepared spell or spell slot, as determined by the GM."
-				],
-				[
-					"40",
-					"{@b Combustion} If this is a {@trait fire} bomb or spell, the target takes triple damage and {@damage 1d6} {@condition persistent damage||persistent fire damage}. Any other bomb or spell deals double damage."
-				],
-				[
-					"41",
-					"{@b Maximum Effect} Don't roll for damage. You deal the maximum possible critical hit damage with this attack."
-				],
-				[
-					"42",
-					"{@b Intense Strike} The attack ignores all resistances."
-				],
-				[
-					"43",
-					"{@b Excruciating} The target is {@condition sickened} 3."
-				],
-				[
-					"44",
-					"{@b Intense Splash} The target takes normal damage, and all creatures adjacent to the target take half damage of the same type."
-				],
-				[
-					"45",
-					"{@b Planar Rift} If this is a spell, the target takes normal damage and must succeed at a Will save or be sent to a random plane (determined by the GM)."
-				],
-				[
-					"46",
-					"{@b Light Blast} The target is {@condition blinded} until the end of its next turn."
-				],
-				[
-					"47",
-					"{@b Mystical Thwart} The target can't activate magic items, cast spells, or use {@action Quick Alchemy} until the end of its next turn."
-				],
-				[
-					"48",
-					"{@b Light Blast} The target is {@condition blinded} until the end of its next turn."
-				],
-				[
-					"49",
-					"{@b Phased} The target becomes {@trait incorporeal} until the end of your next turn."
-				],
-				[
-					"50",
-					"{@b Time Vortex} If this is a spell, normal damage and the target vanished and reappears {@dice 1d4} rounds later. The target can use no actions, and any effects it has with durations do not pass while it's gone."
-				],
-				[
-					"51",
-					"{@b Energy Might} If the bomb or spell deals acid, cold, electricity, fire or sonic damage, it deals triple damage. Any other bomb or spells deals double damage."
-				],
-				[
-					"52",
-					"{@b Roaring Blast} The target is {@condition deafened} until healed."
-				],
-				[
-					"53",
-					"{@b Concussive Blast} The target is pushed up to 10 feet and knocked {@condition prone}."
-				],
-				[
-					"54",
-					"{@b Planar Rift} If this is a spell, the target takes normal damage and must succeed at a Will save or be sent to a random plane (determined by the GM)."
-				]
-			]
-		},
-		{
-			"name": "Critical Hit Deck: Slashing",
-			"source": "CHD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b Surprise Opening} {@i Crit Effect:} You gain 1 action that you can use before the end of your turn to use an attack action against the target."
-				],
-				[
-					"2",
-					"{@b Missing Ear} Normal damage. The target takes a -2 circumstance penalty to {@skill Perception} check and Charisma-based check except {@skill Intimidation} until healed."
-				],
-				[
-					"3",
-					"{@b Brow to Chin} {@i Crit Effect:} The target takes a -2 status penalty to {@skill Perception} and ranged attack rolls until healer."
-				],
-				[
-					"4",
-					"{@b Gory} The target is {@condition sickened} 1."
-				],
-				[
-					"5",
-					"{@b Hamstring} Normal damage. {@i Crit Effect:} The target is knocked {@condition prone}. The target is also {@condition clumsy} 2 until healed."
-				],
-				[
-					"6",
-					"{@b Ugly Wound} The target takes a -2 circumstance penalty to checks with all Charisma-based skills except {@skill Intimidation}."
-				],
-				[
-					"7",
-					"{@b Momentum} You gain a +2 circumstance bonus to all attack rolls until the end of your next turn."
-				],
-				[
-					"8",
-					"{@b Shattered Jaw} {@i Crit Effect:} Until healed, the target is {@condition wounded} 1 and can't speak, eat, drink, or make attacks with its jaws."
-				],
-				[
-					"9",
-					"{@b Tangled} {@i Crit Effect:} You can attempt to {@action Grapple} the target as a free action. This uses the same multiple attack penalty as your attack and doesn't count towards your multiple attack penalty."
-				],
-				[
-					"10",
-					"{@b Disembowel} Triple damage."
-				],
-				[
-					"11",
-					"{@b Weapon Strike} {@i Crit Effect:} Deal normal damage to one of the target's weapons (applying Hardness normally)."
-				],
-				[
-					"12",
-					"{@b Missing Digits} Normal damage. {@i Crit Effect:} The target loses {@dice 1d4} fingers on one hand and becomes {@condition clumsy} 1 until subject to {@spell regeneration} spell or similar effect."
-				],
-				[
-					"13",
-					"{@b Overhand Chop} {@i Crit Effect:} {@damage 1d8} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"14",
-					"{@b Throat Slash} Normal damage. {@i Crit Effect:} The target takes {@damage 1d8} {@condition persistent damage||persistent bleed damage}. The target can't talk, cast spells with a verbal component, or breathe while subject to this {@condition persistent damage||bleed damage}."
-				],
-				[
-					"15",
-					"{@b Stand Aside} Push the target 5 feet."
-
-				],
-				[
-					"16",
-					"{@b Cut Straps} {@i Crit Effect:} The target's armor check penalty doubles until the armor is {@action repair||Repaired} (DC 15)."
-				],
-				[
-					"17",
-					"{@b Knockback} Push the target up to 10 feet."
-				],
-				[
-					"18",
-					"{@b Severed Tendon} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 1 and takes a -5-foot status penalty to its land Speed."
-				],
-				[
-					"19",
-					"{@b That'll Leave a Mark!} Normal damage. {@i Crit Effect:} The target takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"20",
-					"{@b Fingertipped} Normal damage. Until healed, the target is {@condition clumsy} 1 and can't use one of its hands (chosen randomly by the GM)."
-				],
-				[
-					"21",
-					"{@b Rupture Abdominal Cavity} Triple damage. {@i Crit Effect:} The target is {@condition fatigued}."
-				],
-				[
-					"22",
-					"{@b Pain and Simple} Triple damage."
-				],
-				[
-					"23",
-					"{@b Care Your Initials} Normal damage. The target is so humiliated it can do nothing but attack you. At the end of each of its turns, it can attempt a Will save to end this effect."
-				],
-				[
-					"24",
-					"{@b Lean into the Blow} Triple damage. You drop your weapon."
-				],
-				[
-					"25",
-					"{@b Hack and Slash} Triple damage. The target is {@condition flat-flooted} until the end of its next turn."
-				],
-				[
-					"26",
-					"{@b Severed Spine} The target must succeed at a Fortitude save or be {@condition paralyzed} until healed."
-				],
-				[
-					"27",
-					"{@b Long Gash} Normal damage. {@i Crit Effect:} The target takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}. The DC of the flat check to remove this bleed damage is 5 higher than normal."
-				],
-				[
-					"28",
-					"{@b Broad Swipe} The target takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"29",
-					"{@b Paper Cut} The target takes a -2 status penalty to attack rolls until the end of its next turn."
-				],
-				[
-					"30",
-					"{@b Wide Open} The target is {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"31",
-					"{@b Across the Eyes} Normal damage. {@i Crit Effect:} The target is {@condition blinded} until healed."
-				],
-				[
-					"32",
-					"{@b From Chops to Groin} Triple damage. {@i Crit Effect:} The target must succeed at a Fortitude save or die."
-				],
-				[
-					"33",
-					"{@b Nerve Slice} {@i Crit Effect:} The target is {@condition slowed} 2 for 1 round."
-				],
-				[
-					"34",
-					"{@b Leg Swipe} The target is knocked {@condition prone}."
-				],
-				[
-					"35",
-					"{@b Decapitation} Triple damage. {@i Crit Effect:} The target must succeed at a Fortitude save or die."
-				],
-				[
-					"36",
-					"{@b Lip Cut} The target must succeed at a DC 5 flat check to cast spells with a verbal component until healed."
-				],
-				[
-					"37",
-					"{@b Flay} Normal damage. The target is {@condition enfeebled} 3 until healed."
-				],
-				[
-					"38",
-					"{@b Flat-Blade Thwack} Triple damage. You can deal bludgeoning damage instead of slashing damage."
-				],
-				[
-					"39",
-					"{@b Armor Damage} The target's armor also takes the damage (applying the armor's Hardness normally)."
-				],
-				[
-					"40",
-					"{@b Sliced Hand} Normal damage. Until healed, the target is {@condition enfeebled} 1, {@condition clumsy} 1, and can't used one of its hands (determined randomly by the GM)."
-				],
-				[
-					"41",
-					"{@b Swing Through} {@i Crit Effect:} Make an additional attack against a foe adjacent to the original target, using the same attack modifier as the original attack."
-				],
-				[
-					"42",
-					"{@b Muscle Wound} {@i Crit Effect:} The target is {@condition enfeebled} 2 until healed."
-				],
-				[
-					"43",
-					"{@b Terrible Cut} Triple damage."
-				],
-				[
-					"44",
-					"{@b Gut Slash} The target takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} and any creature it {@ability swallow whole|b1|Swallows Whole} is immediately released."
-				],
-				[
-					"45",
-					"{@b Bad Parry} {@i Crit Effect:} The target must succeed at a Reflex save or drop one weapon it is holding (determined randomly by the GM)."
-				],
-				[
-					"46",
-					"{@b Sapping Slash} {@i Crit Effect:} The target is {@condition fatigued}."
-				],
-				[
-					"47",
-					"{@b Brow Cut} Normal damage. {@i Crit Effect:} The target takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}. Until the bleed ends, all creatures are {@condition concealed} to the target."
-				],
-				[
-					"48",
-					"{@b Sapping Slash} {@i Crit Effect:} The target is {@condition fatigued}."
-				],
-				[
-					"49",
-					"{@b Parrying Strike} {@i Crit Effect:} Gain a +2 circumstance bonus to AC until the end of your next turn."
-				],
-				[
-					"50",
-					"{@b Spun Around} The target is {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"51",
-					"{@b Wing Tear} The target loses any fly Speed until healed."
-				],
-				[
-					"52",
-					"{@b Bewildering Display} {@i Crit Effect:} The target is {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"53",
-					"{@b Delayed Wound} Normal damage. {@i Crit Effect:} The target takes the same amount of damage at the end of its next two turns."
-				],
-				[
-					"54",
-					"{@b Bad Parry} {@i Crit Effect:} The target must succeed at a Reflex save or drop one weapon it is holding (determined randomly by the GM)."
-				]
-			]
-		},
-		{
-			"name": "Critical Hit Deck: Piercing",
-			"source": "CHD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b Forearm Piercing} {@i Crit Effect:} The target drops one weapon it's holding (chosen randomly by the GM)."
-				],
-				[
-					"2",
-					"{@b Surprise Opening} {@i Crit Effect:} You gain 1 action that you can use before the end of your turn to use an attack action against the target."
-				],
-				[
-					"3",
-					"{@b Tongue Piercing} The target must succeed at a DC 5 flat check to cast spells with the verbal component until healed."
-				],
-				[
-					"4",
-					"{@b Momentum} You gain a +2 circumstance bonus to all attack rolls until the end of your next turn."
-				],
-				[
-					"5",
-					"{@b Shoulder Wound} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 1 and {@condition enfeebled} 2."
-				],
-				[
-					"6",
-					"{@b Calf Jab} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 1 and takes a -10-foot status penalty to land Speed."
-				],
-				[
-					"7",
-					"{@b Skewered} Triple damage. {@i Crit Effect:} The target is {@condition slowed} 1 for 1 round."
-				],
-				[
-					"8",
-					"{@b Send 'em Reeling} {@i Crit Effect:} The target is {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"9",
-					"{@b Blowback} The target is knocked {@condition prone}."
-				],
-				[
-					"10",
-					"{@b Pinhole} {@i Crit Effect:} The target takes 1 {@condition persistent damage||persistent bleed damage} that can't be removed until the target is healed."
-				],
-				[
-					"11",
-					"{@b Two in a Row} {@i Crit Effect:} Deal normal damage to an additional target adjacent to the original target."
-				],
-				[
-					"12",
-					"{@b Stinger} Normal damage. The target is {@condition sickened} 3."
-				],
-				[
-					"13",
-					"{@b Pierced} The target is {@condition slowed} 1 until the end of its next turn."
-				],
-				[
-					"14",
-					"{@b Right in the Ear} Normal damage. The target is {@condition deafened} until healed."
-				],
-				[
-					"15",
-					"{@b Sucking Chest Wound} The target is {@condition fatigued}."
-				],
-				[
-					"16",
-					"{@b Pinned Arm} As the {@group bow||bow critical specialization effect}, and the target can't use one of its arms until freed. If using a melee weapon, you must drop it to gain this effect."
-				],
-				[
-					"17",
-					"{@b Ventilated} Triple damage."
-				],
-				[
-					"18",
-					"{@b Guarded Strike} {@i Crit Effect:} Gain +2 circumstance bonus to AC until the end of your next turn."
-				],
-				[
-					"19",
-					"{@b Painful Poke} The target is {@condition stunned} 1."
-				],
-				[
-					"20",
-					"{@b Kidney Piercing} The target is {@condition sickened} 2."
-				],
-				[
-					"21",
-					"{@b Nerve Cluster} Normal damage. {@i Crit Effect:} The target is {@condition stunned} 2."
-				],
-				[
-					"22",
-					"{@b Punctured Lung} {@i Crit Effect:} The target is {@quickref suffocating|CRB|3|Drowning and Suffocating} until subject to magical healing."
-				],
-				[
-					"23",
-					"{@b Nicked an Artery} Normal damage. {@i Crit Effect:} The target takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"24",
-					"{@b Muscle Severed} Normal damage. {@i Crit Effect:} Until healed, the target is {@condition clumsy} 3 and {@condition enfeebled} 3."
-				],
-				[
-					"25",
-					"{@b Chipped Bone} The target is {@condition clumsy} 1 until healed."
-				],
-				[
-					"26",
-					"{@b Lodged in the Bone} {@i Crit Effect:} The target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"27",
-					"{@b Pierced Elbow} The target drops one item it is holding (determined randomly by the GM)."
-				],
-				[
-					"28",
-					"{@b Hand Wound} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 2 and can't use one of its hands (determined randomly by the GM)."
-				],
-				[
-					"29",
-					"{@b Overreaction} Normal damage. The target triggers reactions as if it just used a {@trait move} action. It is also {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"30",
-					"{@b Clean Through} Triple damage."
-				],
-				[
-					"31",
-					"{@b Cheek Pierced} The target must succeed at a DC 5 flat check to cast spells with a verbal component until healed."
-				],
-				[
-					"32",
-					"{@b Head Shot} Triple damage. {@i Crit Effect:} The target must succeed at a Fortitude save or die."
-				],
-				[
-					"33",
-					"{@b Spinal Tap} Normal damage. {@i Crit Effect:} The target is {@condition sickened} 3."
-				],
-				[
-					"34",
-					"{@b Heart Shot} Triple damage. {@i Crit Effect:} The target takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"35",
-					"{@b Nailed in Place} As the {@group bow||bow critical specialization} effect. If this is a melee weapon, you must drop the weapon to gain this effect. If this attack already has that effect, the {@skill Athletics} check to pull free is DC 20 instead of DC 10."
-				],
-				[
-					"36",
-					"{@b Javelin Catcher} Triple damage if the attack was ranged or {@trait thrown} attack. Double damage for all other attacks."
-				],
-				[
-					"37",
-					"{@b Infection} The target must succeed at a Fortitude save or contract {@disease filth fever|B1}."
-				],
-				[
-					"38",
-					"{@b Eye Patch for You} Triple damage. {@i Crit Effect:} The target is {@condition dazzled} until healed."
-				],
-				[
-					"39",
-					"{@b Knockback} The target is pushed 10 feet."
-				],
-				[
-					"40",
-					"{@b Spun Around} The target is {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"41",
-					"{@b Grazing Hit} Normal damage. {@i Crit Effect:} The target is {@condition stunned} 3."
-				],
-				[
-					"42",
-					"{@b Penetrating Wound} The attack ignores all resistances."
-				],
-				[
-					"43",
-					"{@b Gusher} The target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"44",
-					"{@b Deep Hurting} {@i Crit Effect:} The target is {@condition fatigued}."
-				],
-				[
-					"45",
-					"{@b Hobbled} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 2 and takes a -10-foot status penalty to all Speeds."
-				],
-				[
-					"46",
-					"{@b Perfect strike} Triple damage."
-				],
-				[
-					"47",
-					"{@b Deep Wound} {@i Crit Effect:} The target is {@condition sickened} 3."
-				],
-				[
-					"48",
-					"{@b Perfect strike} Triple damage."
-				],
-				[
-					"49",
-					"{@b Tenacious Wound} Normal damage. {@i Crit Effect:} The target can't heal this damage until it has rested at least 8 hours."
-				],
-				[
-					"50",
-					"{@b Leg Wound} {@i Crit Effect:} The target takes a -5-foot status penalty to its land Speed until healed."
-				],
-				[
-					"51",
-					"{@b Organ Scramble} Triple damage. {@i Crit Effect:} The target is {@condition fatigued}."
-				],
-				[
-					"52",
-					"{@b Bicep Wound} The target is {@condition enfeebled} 1 until healed."
-				],
-				[
-					"53",
-					"{@b Ragged Wound} The target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"54",
-					"{@b Hobbled} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 2 and takes a -10-foot status penalty to all Speeds."
-				]
-			]
-		},
-		{
-			"name": "Critical Hit Deck: Bludgeoning",
-			"source": "CHD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b Crunch} {@i Crit Effect:} The target is {@condition sickened} 3."
-				],
-				[
-					"2",
-					"{@b Where Am I?} Normal damage. {@i Crit Effect:} The target is {@condition stunned} 2."
-				],
-				[
-					"3",
-					"{@b Surprise Opening} {@i Crit Effect:} You gain 1 action that you can use before the end of your turn to use an {@trait attack} action against the target."
-				],
-				[
-					"4",
-					"{@b Cracked Rib} The target is {@condition fatigued}."
-				],
-				[
-					"5",
-					"{@b Feeble Parry} {@i Crit Effect:} The target drops one weapon it's wielding determined by the GM."
-				],
-				[
-					"6",
-					"{@b Cracked Knee} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 2 and takes a -5-foot status penalty to land Speed."
-				],
-				[
-					"7",
-					"{@b Bell Ringer} {@i Crit Effect:} The target is {@condition sickened} 2, and it is {@condition stupefied} 2 until it is no longer {@condition sickened}."
-				],
-				[
-					"8",
-					"{@b Split Open} {@i Crit Effect:} The target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"9",
-					"{@b Momentum} You gain a +2 circumstance bonus to all attack rolls until the end of your next turn."
-				],
-				[
-					"10",
-					"{@b I See Stars} Normal damage. {@i Crit Effect:} The target is {@condition dazzled} until healed."
-				],
-				[
-					"11",
-					"{@b Broken Nose} The target takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"12",
-					"{@b Crushed Toe} Normal damage. The target is {@condition clumsy} 2 and takes a -10-foot status penalty to land Speed. Both effects last until healed."
-				],
-				[
-					"13",
-					"{@b Crumpling Blow} The target is knocked {@condition prone}."
-				],
-				[
-					"14",
-					"{@b Shattered Hand} Normal damage. Until healed, the target is {@condition clumsy} 2 and {@condition enfeebled} 2, and it can't use one of its hands (chosen randomly by the GM)."
-				],
-				[
-					"15",
-					"{@b Numbing Blow} Normal damage. {@i Crit Effect:} The target is {@condition clumsy} 1 for 1 minute and must succeed at a Reflex save or drop one item it holds at random."
-				],
-				[
-					"16",
-					"{@b Two for One} {@i Crit Effect:} Deal normal damage to one target adjacent to the original target."
-				],
-				[
-					"17",
-					"{@b And Stay Down} Normal damage. {@i Crit Effect:} The target is knocked {@condition prone} and {@condition stunned} 2."
-				],
-				[
-					"18",
-					"{@b Rattled} Normal damage. {@i Crit Effect:} The target is {@condition confused} for 1 round."
-				],
-				[
-					"19",
-					"{@b Nighty Night} Normal damage. {@i Crit Effect:} The target falls {@condition unconscious} and can't wake up until the of its next turn."
-				],
-				[
-					"20",
-					"{@b Brained} The target is {@condition stunned} 1."
-				],
-				[
-					"21",
-					"{@b Collapsed Lung} Normal damage. {@i Crit Effect:} Until healed, t he target is {@condition enfeebled} 2 and {@condition fatigued}."
-				],
-				[
-					"22",
-					"{@b Bony Masher} Normal damage. {@i Crit Effect:} Either the target is {@condition clumsy} 2 and takes a -10-foot status penalty to land Speed or is {@condition clumsy} 2 and can't use one of its arms (your choice). Either effect last until healed."
-				],
-				[
-					"23",
-					"{@b Overwhelming Smash} Triple damage."
-				],
-				[
-					"24",
-					"{@b Ruptured Spleen} Normal damage. {@i Crit Effect:} The target takes 1 {@condition persistent damage||persistent bleed damage} that can't be removed until the target has been subject to {@trait magical} healing."
-				],
-				[
-					"25",
-					"{@b Off Balance} Normal damage. The target triggers reactions as if it just used a {@trait move} action. It is also {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"26",
-					"{@b Crushed Intestines} Normal damage. {@i Crit Effect:} The target is {@condition wounded} 2 and {@condition enfeebled} 2 until it is no longer wounded."
-				],
-				[
-					"27",
-					"{@b Crushed Trachea} {@i Crit Effect:} The target is {@quickref suffocating|CRB|3|Drowning and Suffocating} until subject to magical healing. It can't speak while it is {@quickref suffocating|CRB|3|Drowning and Suffocating}."
-				],
-				[
-					"28",
-					"{@b Skull Crush} {@i Crit Effect:} The target is {@condition stupefied} 3 until healed."
-				],
-				[
-					"29",
-					"{@b Caved Skull} Triple damage. {@i Crit Effect:} The target must succeed at a Fortitude save or die."
-				],
-				[
-					"30",
-					"{@b To Your Thinky Bits} {@i Crit Effect:} The target is {@condition stupefied} 2 until healed."
-				],
-				[
-					"31",
-					"{@b Dazing Thud} The target is {@condition stunned} 1."
-				],
-				[
-					"32",
-					"{@b Clocked!} Triple damage. The target is knocked {@condition prone}."
-				],
-				[
-					"33",
-					"{@b Broken Ribs} Normal damage. {@i Crit Effect:} The target is {@condition slowed} 1 until healed."
-				],
-				[
-					"34",
-					"{@b Staggering Blow} {@i Crit Effect:} The target is {@condition stunned} 2."
-				],
-				[
-					"35",
-					"{@b Thunder Strike} {@i Crit Effect:} The target is {@condition deafened} until healed."
-				],
-				[
-					"36",
-					"{@b Box the Ears} The target is {@condition deafened} until healed."
-				],
-				[
-					"37",
-					"{@b Concussion} Normal damage. The target is {@condition confused} for 1 minute and {@condition stupefied} 2 until healed."
-				],
-				[
-					"38",
-					"{@b Armor Dent} Normal damage. {@i Crit Effect:} Deal the same amount of damage to the target's armor, ignoring that armor's Hardness."
-				],
-				[
-					"39",
-					"{@b Soul-Crushing Blow} {@i Crit Effect:} The target is {@condition doomed} 1 and is {@condition stupefied} 1 for as long as it is {@condition doomed}."
-				],
-				[
-					"40",
-					"{@b Breathless} The target is {@condition fatigued}."
-				],
-				[
-					"41",
-					"{@b Broken Leg} {@i Crit Effect:} The target takes a -15-foot status penalty to its land Speed until healed."
-				],
-				[
-					"42",
-					"{@b Shield Smack} {@i Crit Effect:} The target must succeed at a Reflex save or drop a shield it's holding."
-				],
-				[
-					"43",
-					"{@b My Teef!} The target must succeed at a DC 5 flat check to cast spells with the verbal component until healed."
-				],
-				[
-					"44",
-					"{@b Knockback} {@i Crit Effect:} The target is pushed {@dice 1d4x5} feet away."
-				],
-				[
-					"45",
-					"{@b Low Blow} {@i Crit Effect:} The target is {@condition sickened} 2 and {@condition slowed} 1 as long as it remains {@condition sickened}."
-				],
-				[
-					"46",
-					"{@b Busted Shin} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 1 and takes a -10-foot status penalty to its land Speed."
-				],
-				[
-					"47",
-					"{@b Back Breaker} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 2 and {@condition enfeebled} 2."
-				],
-				[
-					"48",
-					"{@b Busted Shin} {@i Crit Effect:} Until healed, the target is {@condition clumsy} 1 and takes a -10-foot status penalty to its land Speed."
-				],
-				[
-					"49",
-					"{@b Solid Blow} Triple damage."
-				],
-				[
-					"50",
-					"{@b Tiring Blow} The target is {@condition fatigued}."
-				],
-				[
-					"51",
-					"{@b Foot Smash} The target is {@condition flat-footed} until the end of its next turn."
-				],
-				[
-					"52",
-					"{@b Lights Out} {@i Crit Effect:} The target is {@condition blinded} until the end of its next turn."
-				],
-				[
-					"53",
-					"{@b Roundhouse} {@i Crit Effect:} Make one additional attack against a foe adjacent to the original target, using the same attack modifier as the original attack."
-				],
-				[
-					"54",
-					"{@b Low Blow} {@i Crit Effect:} The target is {@condition sickened} 2 and {@condition slowed} 1 as long as it remains {@condition sickened}."
-				]
-			]
-		},
-		{
-			"name": "Critical Fumble Deck: Spell",
-			"source": "CFD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b How Did That Happen?} You call forth a mist with the effects of {@spell stinking cloud} centered on a corner of your space (determined by the GM)."
-				],
-				[
-					"2",
-					"{@b Power Down} Until healed, you are {@condition stupefied} 2."
-				],
-				[
-					"3",
-					"{@b Exploding Skull} You must attempt a Fortitude save. If you succeed, you take {@damage 3d6} mental damage. If you fail, your head explodes and you die."
-				],
-				[
-					"4",
-					"{@b Mental Slip} You are {@condition controlled} by the target until the end of your next turn."
-				],
-				[
-					"5",
-					"{@b Blastoff} You must succeed at a Will saving throw or be thrown {@dice 1d6x5} feet into the air (or in a random direction determined by the GM if you are flying)."
-				],
-				[
-					"6",
-					"{@b Strange Transference} Lost one prepared spell or spell slot, determined randomly by the GM. Your target can {@action cast a spell||Cast this Spell} on its next turn even if they can't cast spells, using your level, spell attack modifier, and spell DC."
-				],
-				[
-					"7",
-					"{@b Mental Backlash} Until healed, you are {@condition stupefied} 3."
-				],
-				[
-					"8",
-					"{@b Fragmented Magic} Your target gains the effect of a {@spell mirror image} spell."
-				],
-				[
-					"9",
-					"{@b Power Transfer} The highest-level spell effect currently affecting you is transferred to your target."
-				],
-				[
-					"10",
-					"{@b Power Drain} You lose one prepared spell or spell slot (determined randomly by the GM)."
-				],
-				[
-					"11",
-					"{@b Nosebleed} You take 1 {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"12",
-					"{@b Magic Vacuum} The effects of all beneficial spells affecting you end immediately."
-				],
-				[
-					"13",
-					"{@b Magic Fatigue} You can't cast any spells until the end of your next turn."
-				],
-				[
-					"14",
-					"{@b Electrical Feedback} You take {@damage 2d6} electricity damage."
-				],
-				[
-					"15",
-					"{@b Beastly Rift} Your spell becomes a {@spell summon animal} spell of the same level. The animal attacks you."
-				],
-				[
-					"16",
-					"{@b Reflection} The spell hits you instead of the target."
-				],
-				[
-					"17",
-					"{@b Spontaneous Combustion} You take {@damage 2d6} fire damage."
-				],
-				[
-					"18",
-					"{@b Critical Backlash} You critically hit yourself instead of the target."
-				],
-				[
-					"19",
-					"{@b Acidic Backlash} You take {@damage 2d6} acid damage."
-				],
-				[
-					"20",
-					"{@b Bleeding Eyes} You take {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"21",
-					"{@b Tangled in Your Gear} You are {@condition encumbered} until you spend 2 {@action Interact} actions to free your self."
-				],
-				[
-					"22",
-					"{@b Distance Rift} You are teleported to the nearest space adjacent to your spell's target."
-				],
-				[
-					"23",
-					"{@b Mind Drain} Until healed, you are {@condition stupefied} 1."
-				],
-				[
-					"24",
-					"{@b Vertigo} You are {@condition sickened} 2."
-				],
-				[
-					"25",
-					"{@b Apprentice Move} Reroll the attack roll, targeting the creature closest to the target (excluding yourself)."
-				],
-				[
-					"26",
-					"{@b Not Me, You Fool!} You hit the ally nearest to the target."
-				],
-				[
-					"27",
-					"{@b Tiring Spell} You are {@condition fatigued}."
-				],
-				[
-					"28",
-					"{@b Unexpected Blast} Your spell affects all targets within 30 feet of you. You are immune to this effect."
-				],
-				[
-					"29",
-					"{@b You made 'em Stronger} The target gains a +2 status bonus to attack rolls until the end of its next turn."
-				],
-				[
-					"30",
-					"{@b Drawing a Blank} Until healed, you are {@condition stupefied} 1."
-				],
-				[
-					"31",
-					"{@b Spell Shield} The target gains a +2 status bonus to saving throws against spells for 1 minute."
-				],
-				[
-					"32",
-					"{@b Left Reeling} You are {@condition stunned} 1."
-				],
-				[
-					"33",
-					"{@b Caster's Block} You can't cast this spell again at any level until you rest and make your daily preparations."
-				],
-				[
-					"34",
-					"{@b You Made 'em Bigger} The target increases in size, with the effects of a 2nd level {@spell enlarge} spell."
-				],
-				[
-					"35",
-					"{@b Side Effect} You are {@condition sickened} 1. You are also {@condition stupefied} 2 until healed."
-				],
-				[
-					"36",
-					"{@b Weakened} You take -2 circumstance penalty to spell attack rolls and spell DC's until the end of your next turn."
-				],
-				[
-					"37",
-					"{@b Spell Rush} You are {@condition stupefied} 1 until healed."
-				],
-				[
-					"38",
-					"{@b The Magic is Gone} You take a -1 circumstance penalty to attack rolls until you score a critical hit."
-				],
-				[
-					"39",
-					"{@b Can You Hear Me Now?} Until healed, you are {@condition deafened}."
-				],
-				[
-					"40",
-					"{@b Error!} You deal the spell's normal damage to yourself instead of the target."
-				],
-				[
-					"41",
-					"{@b Why Me?} You provoke reactions as if you used a {@trait move} action."
-				],
-				[
-					"42",
-					"{@b Poor Trade} You hit, but you lose a prepared spell or spell slot of the highest level available (you choose the spell)."
-				],
-				[
-					"43",
-					"{@b You Made 'em Tougher} The target gains resistance 5 to all damage until the start of its next turn."
-				],
-				[
-					"44",
-					"{@b You Made 'em Faster} The target is {@condition quickened} for 2 rounds."
-				],
-				[
-					"45",
-					"{@b Jumbled Components} You are {@condition slowed} 2 until the end of your next turn."
-				],
-				[
-					"46",
-					"{@b Clatto Verata Necktie} You critically hit your nearest ally."
-				],
-				[
-					"47",
-					"{@b Cursed} You are {@condition doomed} 1."
-				],
-				[
-					"48",
-					"{@b Magical Smackdown} You automatically fail (but do not critically fail) your next saving throw."
-				],
-				[
-					"49",
-					"{@b Wild Magic} Roll twice on the {@item rod of wonder} table. You are the target of those effects."
-				],
-				[
-					"50",
-					"{@b Draining Magic} You are {@condition drained} 1."
-				],
-				[
-					"51",
-					"{@b Everything to Fear} You are {@condition frightened} 3."
-				],
-				[
-					"52",
-					"{@b Now I See You...} Your target becomes {@condition invisible} until the end of its next turn or uses a hostile action."
-				],
-				[
-					"53",
-					"{@b It's So Sparkly!} You are {@condition blinded} until the end of your next turn."
-				],
-				[
-					"54",
-					"{@b Wild Magic} Roll twice on the {@item rod of wonder} table. You are the target of those effects."
-				]
-			]
-		},
-		{
-			"name": "Critical Fumble Deck: Unarmed",
-			"source": "CFD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b Not the Weak Point} You take {@damage 1d6} {@condition persistent damage||persistent bleed damage} and can't use this attack until the end of your next turn."
-				],
-				[
-					"2",
-					"{@b Overthink It} Your target gains a +2 circumstance bonus to AC against attacks you make against it until the end of your next turn."
-				],
-				[
-					"3",
-					"{@b Bad Jam} You are {@condition clumsy} 1 and {@condition enfeebled} 2."
-				],
-				[
-					"4",
-					"{@b Pinched Nerve} Until healed, you take a -10-foot circumstance penalty to land Speed and are {@condition clumsy} 1."
-				],
-				[
-					"5",
-					"{@b Eye Strain} You are {@condition dazzled} until the end of your next turn."
-				],
-				[
-					"6",
-					"{@b That Tastes Awful!} If this was a jaws attack (or similar), you are {@condition sickened} 3."
-				],
-				[
-					"7",
-					"{@b Punctured Foot} You take {@damage 1d4} {@condition persistent damage||persistent bleed damage}. Until this effect ends, you take a -10-foot circumstance penalty to your land Speed."
-				],
-				[
-					"8",
-					"{@b Broken Tooth} Until healed, you take a -2 circumstance penalty to attack rolls."
-				],
-				[
-					"9",
-					"{@b Brutal Collision} Attempt a Fortitude saving throw. If you succeed, you're {@condition stunned} 1. If you fail, you're {@condition stunned} 2."
-				],
-				[
-					"10",
-					"{@b Something's Broken} You take {@damage 1d4} bludgeoning damage, and you can't use this attack until healed."
-				],
-				[
-					"11",
-					"{@b Bruised Ego} You can't attack another creature until the target is knocked out or the end of your next turn."
-				],
-				[
-					"12",
-					"{@b Hangnail} If you attacked with a claw or fist, you can't use that attack until the end of your next turn."
-				],
-				[
-					"13",
-					"{@b Torn Muscle} Until healed, you are {@condition enfeebled} 1."
-				],
-				[
-					"14",
-					"{@b Hit the Wall} You are {@condition fatigued}."
-				],
-				[
-					"15",
-					"{@b Frustration} You take a -2 circumstance penalty to attack rolls until the end of your next turn."
-				],
-				[
-					"16",
-					"{@b Overextended} You trigger reactions as if you had used a {@trait move} action."
-				],
-				[
-					"17",
-					"{@b Bit Your Tongue!} You take 1 {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"18",
-					"{@b Upset Stomach} You are {@condition sickened} 2."
-				],
-				[
-					"19",
-					"{@b Tiring Attack} You are {@condition fatigued}."
-				],
-				[
-					"20",
-					"{@b Awkward Attack} You are {@condition flat-footed} until the end of your next turn."
-				],
-				[
-					"21",
-					"{@b Tripped} You fall {@condition prone}."
-				],
-				[
-					"22",
-					"{@b Fist Meet Face} You critically hit yourself with the attack."
-				],
-				[
-					"23",
-					"{@b Out of Position} You can't use this attack until the end of your next turn."
-				],
-				[
-					"24",
-					"{@b Bleeding Fist} You take {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"25",
-					"{@b Twisted Up} You are {@condition encumbered} until you spend 2 {@action Interact} actions to free yourself."
-				],
-				[
-					"26",
-					"{@b Stop Hitting Yourself} You hit yourself instead of the target."
-				],
-				[
-					"27",
-					"{@b Just a Taste} You hit an ally adjacent to you or the target."
-				],
-				[
-					"28",
-					"{@b Battered} Until healed, you take a -2 circumstance penalty to checks and saving throws."
-				],
-				[
-					"29",
-					"{@b Got Too Close} This attack grants and triggers a {@action Grapple} or {@action Grab} as a reaction by your enemy."
-				],
-				[
-					"30",
-					"{@b Can't Find an Opening} You can't use this attack until the end of your next turn."
-				],
-				[
-					"31",
-					"{@b Off Balance} You are {@condition slowed} 2 until the end of your next turn."
-				],
-				[
-					"32",
-					"{@b Caught Your Attack} This attack grants and triggers a {@action Trip} or {@action Shove} as a reaction by your enemy."
-				],
-				[
-					"33",
-					"{@b Bad Headbutt} You are {@condition stunned} 1."
-				],
-				[
-					"34",
-					"{@b Bone Bruise} You become {@condition wounded} 1 or your {@condition wounded} value increases by 1."
-				],
-				[
-					"35",
-					"{@b Overexertion} You are {@condition fatigued}."
-				],
-				[
-					"36",
-					"{@b Sprain} Until healed, you are {@condition clumsy} 2."
-				],
-				[
-					"37",
-					"{@b Sneeze} You are {@condition slowed} 1 until the end of your next turn."
-				],
-				[
-					"38",
-					"{@b Ferocious Fumble} You critically hit an ally within your reach (determined randomly by the GM)."
-				],
-				[
-					"39",
-					"{@b Head, Meet Wall} You are {@condition stunned} 1."
-				],
-				[
-					"40",
-					"{@b Great Roar} Until healed, you are {@condition deafened}."
-				],
-				[
-					"41",
-					"{@b Pins and Needles} You are {@condition sickened} 3."
-				],
-				[
-					"42",
-					"{@b It Bit Your Fist} The target deals jaws damage to you."
-				],
-				[
-					"43",
-					"{@b Hard-Edged Adversary} You take {@damage 2d6} piercing or slashing damage (determined by the GM)."
-				],
-				[
-					"44",
-					"{@b Smash the Floor} You kick up a cloud of dust, becoming {@condition blinded} until the end of your next turn."
-				],
-				[
-					"45",
-					"{@b Whirlwind of Shame} You hit every creature adjacent to you except for the target."
-				],
-				[
-					"46",
-					"{@b Ingrown Nail} You take a -1 circumstance penalty to attack rolls until your score a critical hit."
-				],
-				[
-					"47",
-					"{@b Stinging Failure} Until healed, you take a -2 circumstance penalty to attack rolls made with this attack."
-				],
-				[
-					"48",
-					"{@b Don't Pick at It} You become {@condition wounded 1} or your {@condition wounded} value increases by 1."
-				],
-				[
-					"49",
-					"{@b Head First!} You fall {@condition unconscious} until you wake up or the end of your next turn."
-				],
-				[
-					"50",
-					"{@b Whiff} You hit yourself instead of the target."
-				],
-				[
-					"51",
-					"{@b Jam a Finger} You the the target for the minimum amount of damage you can deal with the attack. You take the attack's normal damage."
-				],
-				[
-					"52",
-					"{@b Winds of Change} You can't attack the same target again until the end of your next turn."
-				],
-				[
-					"53",
-					"{@b Unintentional Move} You are moved 10 feet in a random direction (determined by the GM). This movement triggers reactions."
-				],
-				[
-					"54",
-					"{@b Head First!} You fall {@condition unconscious} until you wake up or the end of your next turn."
-				]
-			]
-		},
-		{
-			"name": "Critical Fumble Deck: Ranged",
-			"source": "CFD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b Misjudged the Distance} Until the end of your next turn, all your range increment penalties are doubled."
-				],
-				[
-					"2",
-					"{@b Phantom Wind} You take a -2 circumstance penalty to ranged attacks until the end of your next turn."
-				],
-				[
-					"3",
-					"{@b Spraining Shot} Until healed, you take a -10-foot circumstance penalty to your land Speed and are {@condition clumsy} 1."
-				],
-				[
-					"4",
-					"{@b Don't Hit Me!} Until the end of your next turn, each time you miss with a ranged attack targeting enemy adjacent to any of your allies, you hit one of those adjacent allies instead (determined randomly by the GM)."
-				],
-				[
-					"5",
-					"{@b Huh?} You are {@condition confused}."
-				],
-				[
-					"6",
-					"{@b Overcompensate} Cover provides a +4 circumstance bonus to AC against your ranged attacks for 1 minute."
-				],
-				[
-					"7",
-					"{@b Recoil} You are pushed 5 feet backwards and fall {@condition prone}."
-				],
-				[
-					"8",
-					"{@b Seeing Double} You are {@condition dazzled} until the end of your next turn."
-				],
-				[
-					"9",
-					"{@b Aim Carefully Next Time} Until the end of your next turn, your attacks require and extra action to use."
-				],
-				[
-					"10",
-					"{@b Friendly Fire} You the ally nearest to the target."
-				],
-				[
-					"11",
-					"{@b Backfire} You hit yourself instead of the target."
-				],
-				[
-					"12",
-					"{@b Mix it Up} You can't make ranged attacks until the end of your next turn."
-				],
-				[
-					"13",
-					"{@b Snapped String} If the attack used a weapon in the {@group bow} group, the string snaps, requiring 3 {@action Interact} actions to fix."
-				],
-				[
-					"14",
-					"{@b Notched Fingers} You take {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"15",
-					"{@b My Spleeny Bits!} You become {@condition wounded} 1 or your {@condition wounded} value increases by 1."
-				],
-				[
-					"16",
-					"{@b Head Rush} You are {@condition sickened} 2."
-				],
-				[
-					"17",
-					"{@b Awkward Attack} You are {@condition flat-footed} until the end of your next turn."
-				],
-				[
-					"18",
-					"{@b Aching Back} You are {@condition fatigued}."
-				],
-				[
-					"19",
-					"{@b Shot Your Eye Out} You critically hit yourself instead of the target."
-				],
-				[
-					"20",
-					"{@b Errant Aim} Reroll the attack roll, targeting the creature closest to the target (excluding yourself)."
-				],
-				[
-					"21",
-					"{@b Wide Open} You are {@condition flat-footed} until the end of your next turn."
-				],
-				[
-					"22",
-					"{@b Cracked} The ranged weapon (not the ammunition) you are using takes {@damage 1d6} damage, ignoring Hardness."
-				],
-				[
-					"23",
-					"{@b Whoops!} You fall {@condition prone}."
-				],
-				[
-					"24",
-					"{@b Sprain} Until healed, you are {@condition clumsy} 2."
-				],
-				[
-					"25",
-					"{@b Nicked} You take 1 {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"26",
-					"{@b Klutz} You drop the weapon you used."
-				],
-				[
-					"27",
-					"{@b Spilled Ammo} The ammunition from the weapon you're using falls from its container onto the ground. You can spend 1 {@action Interact} action to pick up one piece of ammunition spilled this way."
-				],
-				[
-					"28",
-					"{@b Lost Grip} You are {@condition slowed} 2 until the end of your next turn."
-				],
-				[
-					"29",
-					"{@b Wrong Weapon} If you made a {@trait thrown} attack, you instead throw an object from your gear (determined randomly by the GM)."
-				],
-				[
-					"30",
-					"{@b Kickback Like a Mule} You fall {@condition prone}."
-				],
-				[
-					"31",
-					"{@b Archer's Elbow} Until healed, you take a -2 circumstance penalty to ranged attacks."
-				],
-				[
-					"32",
-					"{@b Double Miss} If this attack uses ammunition, you use twice the amount of ammunition on this attack."
-				],
-				[
-					"33",
-					"{@b Not My Pony!} You hit the nearest animal companion, mount, or familiar."
-				],
-				[
-					"34",
-					"{@b Amazing Miss} You are {@condition stunned} 1."
-				],
-				[
-					"35",
-					"{@b Shot Your Foot} Until healed, you are {@condition clumsy} 2 and take a -5-foot circumstance penalty to your land speed."
-				],
-				[
-					"36",
-					"{@b Lost the Target} You take a -2 circumstance penalty to attack rolls until the end of your next turn."
-				],
-				[
-					"37",
-					"{@b Weapon Problem} If the attack used a projectile weapon, something on the weapon malfunctions, requiring you to spend 2 {@action Interact} actions to fix."
-				],
-				[
-					"38",
-					"{@b Lowered Guard} You provoke reactions as if you used a {@trait move} action."
-				],
-				[
-					"39",
-					"{@b In the Line of Fire} You critically hit your nearest ally."
-				],
-				[
-					"40",
-					"{@b Insecure} You take a -1 circumstance penalty to attacks rolls until you score a critical hit."
-				],
-				[
-					"41",
-					"{@b Close to the Ear} You are {@condition deafened} until the end of your next turn."
-				],
-				[
-					"42",
-					"{@b Bad Alignment} You take a -2 circumstance penalty to attacks using this weapon until the end of your next turn."
-				],
-				[
-					"43",
-					"{@b Everything You Got} You are {@condition fatigued}."
-				],
-				[
-					"44",
-					"{@b Broken} Your weapon's current Hit Points are reduced to its Broken Threshold. If already {@condition broken}, the weapon takes {@damage 3d6} damage, ignoring Hardness."
-				],
-				[
-					"45",
-					"{@b What Are the Odds?} If this is a {@trait thrown} weapon attack and the target can hold the weapon, the target snatches the weapon out of the air and wields it."
-				],
-				[
-					"46",
-					"{@b Oopsie!} You hit yourself instead of the target."
-				],
-				[
-					"47",
-					"{@b Torn Tendon} Until healed, you are {@condition clumsy} 2."
-				],
-				[
-					"48",
-					"{@b Overthrow} If the attack used a {@trait thrown} weapon, the weapon travels three times its range increment in a random direction (determined by the GM)."
-				],
-				[
-					"49",
-					"{@b Tunnel Vision} For 3 rounds, you gain a +1 circumstance bonus to attack rolls, but you are {@condition flat-footed}."
-				],
-				[
-					"50",
-					"{@b All Thumbs} Until healed, you are {@condition clumsy} 1."
-				],
-				[
-					"51",
-					"{@b Bull's Eye} Your attack ricochets and hits you near the eye. You are {@condition blinded} until the end of your next turn."
-				],
-				[
-					"52",
-					"{@b Pinch a Finger} You take {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"53",
-					"{@b So Much Blood} You are {@condition sickened} 3."
-				],
-				[
-					"54",
-					"{@b Tunnel Vision} For 3 rounds, you gain a +1 circumstance bonus to attack rolls, but you are {@condition flat-footed}."
-				]
-			]
-		},
-		{
-			"name": "Critical Fumble Deck: Melee",
-			"source": "CFD",
-			"page": 0,
-			"rollable": true,
-			"labelRowIdx": [
-				0
-			],
-			"colSizes": [
-				1,
-				9
-			],
-			"colStyles": [
-				"text-center",
-				"text-left"
-			],
-			"rows": [
-				[
-					"{@dice d54}",
-					"Effect"
-				],
-				[
-					"1",
-					"{@b Meant To Do That} You are moved 10 feet in a random direction (determined by the GM). This movement triggers reactions."
-				],
-				[
-					"2",
-					"{@b Wrong End} If you are using a slashing weapon, you take {@damage 1d6} slashing damage and 1 {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"3",
-					"{@b Bad Fall} You fall {@condition prone} and are {@condition slowed} 1 until the end of your next turn."
-				],
-				[
-					"4",
-					"{@b Wait, What?} You are {@condition confused}."
-				],
-				[
-					"5",
-					"{@b Bad Grip} You take a -2 circumstance penalty to attack rolls with this weapon until the end of your next turn."
-				],
-				[
-					"6",
-					"{@b Eat Dirt} You fall {@condition prone} and are {@condition blinded} until the end of your next turn."
-				],
-				[
-					"7",
-					"{@b Vibration} If you're using a bludgeoning weapon, you drop that weapon and become {@condition enfeebled} 2 until healed."
-				],
-				[
-					"8",
-					"{@b Who Was That?} You are {@condition slowed} 1 until the end of your next turn."
-				],
-				[
-					"9",
-					"{@b Attack the Darkness} Your enemies are {@condition concealed} from you until the end of your next turn."
-				],
-				[
-					"10",
-					"{@b Off Balance} You take a -2 circumstance penalty to attack rolls until the end of your next turn."
-				],
-				[
-					"11",
-					"{@b Slipped} You fall {@condition prone}."
-				],
-				[
-					"12",
-					"{@b Second Thoughts} You are {@condition sickened} 3."
-				],
-				[
-					"13",
-					"{@b Butterfingers} You drop the weapon you made the attack with."
-				],
-				[
-					"14",
-					"{@b Notched} Your weapon takes {@damage 1d6} damage, ignoring Hardness."
-				],
-				[
-					"15",
-					"{@b Broken Weapon} Your weapon's current Hit Point are reduced to its Broken Threshold. If already {@condition broken}, the weapon takes {@damage 3d6} damage, ignoring Hardness."
-				],
-				[
-					"16",
-					"{@b Fling} You drop the weapon you used for the attack. It lands {@dice 1d6x5} feet away from your in a random direction."
-				],
-				[
-					"17",
-					"{@b Pulled Muscle} Until healed, you are {@condition enfeebled} 2."
-				],
-				[
-					"18",
-					"{@b Overextended} You trigger reactions as if you had used a {@trait move} action."
-				],
-				[
-					"19",
-					"{@b Awkward Attack} You are {@condition flat-footed} until the end of your next turn."
-				],
-				[
-					"20",
-					"{@b This Sword Is Heavy} You are {@condition fatigued}."
-				],
-				[
-					"21",
-					"{@b Backswing} You deal the attack's normal damage to yourself instead of the target."
-				],
-				[
-					"22",
-					"{@b Wide Open} You are {@condition flat-footed} until the end of your next turn."
-				],
-				[
-					"23",
-					"{@b Strained} Until healed, you are {@condition clumsy} 2."
-				],
-				[
-					"24",
-					"{@b Too Much Stuff!} You get tangled in your gear and are {@condition encumbered} until you spend 2 {@action Interact} actions to free yourself."
-				],
-				[
-					"25",
-					"{@b Spinning Swing} You are {@condition sickened} 2."
-				],
-				[
-					"26",
-					"{@b I Told You It's Sharp!} You take {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"27",
-					"{@b Pin Prick} You take 1 {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"28",
-					"{@b Armor Smash} You deal the attack's normal damage to your armor, applying Hardness."
-				],
-				[
-					"29",
-					"{@b Catch Your Breath} You are {@condition slowed} 2 until the end of your next turn."
-				],
-				[
-					"30",
-					"{@b Grave Miscalculation} You critically hit yourself with the attack."
-				],
-				[
-					"31",
-					"{@b Stuck} Your weapon is lodged into a nearby surface or item. To free it, you must succeed at a DC 20 {@skill Athletics} check made as an {@action Interact} action."
-				],
-				[
-					"32",
-					"{@b Bent} Your weapon's current Hit Point are reduced to its Broken Threshold. if already {@condition broken}, the weapon takes {@damage 3d6} damage, ignoring Hardness."
-				],
-				[
-					"33",
-					"{@b Funny Bone} You drop one item you are holding (determined randomly by the GM)."
-				],
-				[
-					"34",
-					"{@b Weapon Tangle} You can't use this weapon to attack until the end of your next turn."
-				],
-				[
-					"35",
-					"{@b Bonk!} You are {@condition stunned} 2."
-				],
-				[
-					"36",
-					"{@b Sorry!} You hit and ally adjacent to your or an ally adjacent to the target."
-				],
-				[
-					"37",
-					"{@b Better to Give} You hit yourself instead of the target."
-				],
-				[
-					"38",
-					"{@b Rang Your Own Bell} Until healed, you are {@condition deafened}."
-				],
-				[
-					"39",
-					"{@b On the Receiving End} You deal damage to yourself instead of the target."
-				],
-				[
-					"40",
-					"{@b Creeping Hesitation} You are {@condition flat-footed} until the end of your next turn."
-				],
-				[
-					"41",
-					"{@b All or Nothing} You take a -1 circumstance penalty to attack rolls until you score a critical hit."
-				],
-				[
-					"42",
-					"{@b Winded} You are {@condition fatigued}."
-				],
-				[
-					"43",
-					"{@b Shield Crash} You deal the attack's normal damage to your shield, applying Hardness."
-				],
-				[
-					"44",
-					"{@b Hand It Over} Unless you succeed at a Reflex saving throw, your target gains possessions of your weapon."
-				],
-				[
-					"45",
-					"{@b This Is Bad} You take {@damage 1d10} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"46",
-					"{@b Clipped Your Hand} You take {@damage 1d8} {@condition persistent damage||persistent bleed damage}."
-				],
-				[
-					"47",
-					"{@b Decision Paralysis} You are {@condition slowed} 1 until the end of your next turn."
-				],
-				[
-					"48",
-					"{@b Catastrophic Failure} You fall {@condition unconscious} until you awake up or the end of your next turn."
-				],
-				[
-					"49",
-					"{@b Pointy End Goes There} You become {@condition wounded} 1 or your {@condition wounded} value increases by 1."
-				],
-				[
-					"50",
-					"{@b Broken Haft} Your weapon's current Hit Points are reduced to its Broken Threshold. If already {@condition broken}, the weapon takes {@damage 3d6} damage, ignoring Hardness. If your weapon is a {@trait reach} weapon, it loses {@trait reach}."
-				],
-				[
-					"51",
-					"{@b Fog of War} You are {@condition dazzled} until the end of your next turn."
-				],
-				[
-					"52",
-					"{@b Go for the Eyes} You are {@condition dazzled} until the end of your next turn."
-				],
-				[
-					"53",
-					"{@b Punt} Your weapon files {@dice 1d4x5} feet in a random direction (determined by the GM)."
-				],
-				[
-					"54",
-					"{@b Pointy End Goes There} You become {@condition wounded} 1 or your {@condition wounded} value increases by 1."
-				]
-			]
-		},
-		{
 			"name": "Experimental Metal Compositions",
 			"source": "OoA3",
 			"page": 17,
@@ -2040,6 +127,368 @@
 				[
 					"20",
 					"{@b Double Strength} (varies) Reroll two results and apply both in the order rolled; further results of 20 on these rerolls have no effect."
+				]
+			]
+		},
+		{
+			"name": "Uncommon Martial Ranged Weapons",
+			"id": "4",
+			"source": "LOGM",
+			"page": 120,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				3
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-left"
+			],
+			"rows": [
+				[
+					"Weapon",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Bola|APG}",
+					"5 sp",
+					"{@damage 1d6} B",
+					"L",
+					"1",
+					"{@group Sling}",
+					"{@trait Nonlethal}, {@trait ranged trip}, {@trait thrown 20 feet}"
+				]
+			]
+		},
+		{
+			"name": "Uncommon Martial Melee Weapons",
+			"id": "3",
+			"source": "LOGM",
+			"page": 120,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				3
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-left"
+			],
+			"rows": [
+				[
+					"Weapon",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Bladed scarf|LOGM}",
+					"3 gp",
+					"{@damage 1d8} S",
+					"1",
+					"2",
+					"{@group Flail}",
+					"{@trait Disarm}, {@trait reach}, {@trait sweep}, {@trait trip}"
+				],
+				[
+					"{@item Fighting fan|LOGM}",
+					"11 sp",
+					"{@damage 1d4} S",
+					"L",
+					"1",
+					"{@group Knife}",
+					"{@trait Agile}, {@trait backstabber}, {@trait deadly d6}, {@trait finesse}, {@trait monk}"
+				],
+				[
+					"{@item Khopesh|LOGM}",
+					"2 gp",
+					"{@damage 1d8} S",
+					"1",
+					"1",
+					"{@group Sword}",
+					"{@trait Trip}"
+				],
+				[
+					"{@item Mambele|LOGM}",
+					"6 sp",
+					"{@damage 1d6} S",
+					"1",
+					"1",
+					"{@group Axe}",
+					"{@trait Disarm}, {@trait deadly d8}, {@trait thrown 20 feet}"
+				],
+				[
+					"{@item Naginata|LOGM}",
+					"3 gp",
+					"{@damage 1d8} S",
+					"2",
+					"2",
+					"{@group Polearm}",
+					"{@trait Deadly d8}, {@trait reach}, {@trait versatile P}"
+				],
+				[
+					"{@item Nine-ring sword|LOGM}",
+					"9 sp",
+					"{@damage 1d8} S",
+					"1",
+					"1",
+					"{@group Sword}",
+					"{@trait Disarm}"
+				],
+				[
+					"{@item Polytool|LOGM|Polytool (level 1)}",
+					"10 gp",
+					"{@damage 1d6} {@trait modular}",
+					"1",
+					"1",
+					"{@group Sword}",
+					"{@trait Agile}, {@trait modular B, P, or S}"
+				],
+				[
+					"{@item Tekko-kagi|LOGM}",
+					"2 sp",
+					"{@damage 1d4} S",
+					"L",
+					"1",
+					"{@group Brawling}",
+					"{@trait Agile}, {@trait disarm}, {@trait finesse}, {@trait parry}, {@trait trip}"
+				],
+				[
+					"{@item Urumi|LOGM}",
+					"2 gp",
+					"{@damage 1d6} S",
+					"2",
+					"1",
+					"{@group Flail}",
+					"{@trait Deadly d10}, {@trait sweep}"
+				]
+			]
+		},
+		{
+			"name": "Martial Melee Weapons",
+			"id": "2",
+			"source": "LOGM",
+			"page": 120,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				3
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-left"
+			],
+			"rows": [
+				[
+					"Weapon",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Machete|LOGM}",
+					"7 sp",
+					"{@damage 1d6} S",
+					"L",
+					"1",
+					"{@group Sword}",
+					"{@trait Deadly d8}, {@trait sweep}"
+				],
+				[
+					"{@item Meteor hammer|LOGM}",
+					"3 gp",
+					"{@damage 1d8} B",
+					"2",
+					"2",
+					"{@group Flail}",
+					"{@trait Backswing}, {@trait disarm}, {@trait reach}, {@trait trip}"
+				],
+				[
+					"{@item War razor|LOGM}",
+					"3 sp",
+					"{@damage 1d4} S",
+					"L",
+					"1",
+					"{@group Knife]",
+					"{@trait Agile}, {@trait backstabber}, {@trait deadly d8}, {@trait finesse}"
+				]
+			]
+		},
+		{
+			"name": "Domains",
+			"source": "LOGM",
+			"page": 112,
+			"id": "1",
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				2,
+				10,
+				4,
+				4
+			],
+			"rows": [
+				[
+					"Domain",
+					"Description",
+					"Domain Spell",
+					"Advanced Domain Spell"
+				],
+				[
+					"Change",
+					"You can restructure the physical and metaphysical.",
+					"{@spell Adapt self|LOGM}",
+					"{@spell Adaptive ablation|LOGM}"
+				],
+				[
+					"Cold",
+					"You control ice, snow, and freezing temperatures.",
+					"{@spell Winter bolt|LOGM}",
+					"{@spell Diamond dust|LOGM}"
+				],
+				[
+					"Decay",
+					"You have the power to spoil and deteriorate matter.",
+					"{@spell Withering grasp|LOGM}",
+					"{@spell Fallow field|LOGM}"
+				],
+				[
+					"Delirium",
+					"You can bring about hallucinations and restlessness.",
+					"{@spell Hyperfocus|LOGM}",
+					"{@spell Ephemeral hazards|LOGM}"
+				],
+				[
+					"Dust",
+					"You have the power to dry and crumble what opposes you.",
+					"{@spell Parch|LOGM}",
+					"{@spell Dust storm|LOGM}"
+				],
+				[
+					"Duty",
+					"You defend oaths and carry out your divine missions with great dedication.",
+					"{@spell Oathkeeper's insignia|LOGM}",
+					"{@spell Dutiful challenge|LOGM}"
+				],
+				[
+					"Glyph",
+					"You wield power over written word and symbols",
+					"{@spell Redact|LOGM}",
+					"{@spell Ghostly transcription|LOGM}"
+				],
+				[
+					"Lightning",
+					"You control electricity, thunder, and storms.",
+					"{@spell Charged javelin|LOGM}",
+					"{@spell Bottle the storm|LOGM}"
+				],
+				[
+					"Plague",
+					"You wield disease and pestilence like a weapon.",
+					"{@spell Divine plagues|LOGM}",
+					"{@spell Foul miasma|LOGM}"
+				],
+				[
+					"Repose",
+					"You ease mental burdens.",
+					"{@spell Share burden|LOGM}",
+					"{@spell Font of serenity|LOGM}"
+				],
+				[
+					"Sorrow",
+					"You have a painful connection to melancholy and sadness.",
+					"{@spell Lament|LOGM}",
+					"{@spell Overflowing sorrow|LOGM}"
+				],
+				[
+					"Soul",
+					"You wield power over the spiritual.",
+					"{@spell Eject soul|LOGM}",
+					"{@spell Ectoplasmic interstice|LOGM}"
+				],
+				[
+					"Star",
+					"You command the power of the stars.",
+					"{@spell Zenith star|LOGM}",
+					"{@spell Asterism|LOGM}"
+				],
+				[
+					"Swarm",
+					"You exert control over masses of creatures.",
+					"{@spell Swarmsense|LOGM}",
+					"{@spell Swarm form|LOGM}"
+				],
+				[
+					"Time",
+					"You reign over the flow of time",
+					"{@spell Delay consequence|LOGM}",
+					"{@spell Stasis|LOGM}"
+				],
+				[
+					"Vigil",
+					"You watch over those long passed and guard their secrets.",
+					"{@spell Object memory|LOGM}",
+					"{@spell Remember the lost|LOGM}"
+				],
+				[
+					"Void",
+					"You draw power from emptiness.",
+					"{@spell Empty inside|LOGM}",
+					"{@spell Door to beyond|LOGM}"
+				],
+				[
+					"Wyrmkin",
+					"You draw on the power of dragons, linnorms, and other powerful reptilian creatures.",
+					"{@spell Draconic barrage|LOGM}",
+					"{@spell Roar of the wyrm|LOGM}"
 				]
 			]
 		},
@@ -2361,6 +810,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "OoA0",
 			"page": 9,
 			"name": "Suggested Character Options",
@@ -2661,6 +1111,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "DA",
 			"page": 103,
 			"name": "Ability Quirks",
@@ -2725,6 +1176,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "LOTG",
 			"page": 103,
 			"name": "Animal Caretaking Gear Prices",
@@ -2792,6 +1244,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "LOTG",
 			"page": 103,
 			"name": "Animal Prices",
@@ -2955,6 +1408,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "LOTG",
 			"page": 65,
 			"name": "Common Crimes and Punishments",
@@ -3105,6 +1559,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "LOTG",
 			"page": 17,
 			"name": "Housing Costs",
@@ -3258,575 +1713,7 @@
 			]
 		},
 		{
-			"source": "DA",
-			"page": 103,
-			"name": "Ability Quirks",
-			"id": "5",
-			"labelRowIdx": [
-				0
-			],
-			"colStyles": [
-				"text-left",
-				"text-left"
-			],
-			"colSizes": [
-				1,
-				20
-			],
-			"rollable": true,
-			"rows": [
-				[
-					"{@dice d10}",
-					"Quirk"
-				],
-				[
-					"1", "{@b Temporal Effectiveness} The deviation’s power feels slightly stronger (or slightly weaker) at a specific time of day."],[
-					"2", "{@b Musical Notation} Your deviation produces strange ethereal tones or chimes when activated, or you activate it through singing, whistling, or performance."],[
-					"3", "{@b Strange Biology} When you gained your deviation, you grew extra eyes, a set of chitinous antennae, or some other strange biological feature unusual for your ancestry. While you might be able to hide it underneath clothing, your deviant abilities all center around this organ, so it must be uncovered and unobstructed for you to use your deviation."],[
-					"4", "{@b Chromatic Absorption} Whenever you use your deviation, you absorb or mute a specific color from an object near you, and any manifestation of your deviant ability has that color. The absorbed colors return to your surroundings within an hour."],[
-					"5", "{@b Selective Application} The deviation works slightly better (or slightly worse) on a certain type of creature (such as gnomes or caterpillars) or material (such as glass or silver)."],[
-					"6", "{@b Atmospheric Disturbance} When you use your deviation, tiny clouds, light wind, or other small atmospheric disturbances occur within 5 feet of your body."],[
-					"7", "{@b Fractal Sign} Your deviation causes sand, droplets, small insects, or other lightweight objects to organize themselves into strange, geometric patterns whenever activated."],[
-					"8", "{@b Harmless Wound} When you use your deviation, trace amounts of blood drip from your eyes or nose."],[
-					"9", "{@b Strange Fuel} Each day, you must consume a small amount of a specific material, such as quartz or holy water (which you can do harmlessly), or your deviation is painful to use."],[
-					"10", "{@b Forgotten Prayers} When you gain your deviation, piecemeal knowledge of a forgotten language fills your mind—not enough to communicate, but enough that you control your deviation by commanding or beseeching some higher power in the language."
-				]
-			]
-		},
-		{
-			"source": "LOTG",
-			"page": 103,
-			"name": "Animal Caretaking Gear Prices",
-			"id": "4",
-			"labelRowIdx": [
-				0
-			],
-			"colStyles": [
-				"text-left",
-				"text-center"
-			],
-			"rows": [
-				[
-					"Name",
-					"Price"
-				],
-				[
-					"{@item Animal bed|LOTG}",
-					"1 sp"
-				],
-				[
-					"{@item Cage|LOTG}",
-					"5 sp"
-				],
-				[
-					"{@item Collar|LOTG}",
-					"1 sp"
-				],
-				[
-					"{@item Standard Feed|LOTG|Feed, standard (1 week's feed)}",
-					"1 cp"
-				],
-				[
-					"{@item Unique Feed|LOTG|Feed, unique (1 week's feed)}",
-					"1 sp"
-				],
-				[
-					"{@item Handling gloves|LOTG}",
-					"5 sp"
-				],
-				[
-					"{@item Harness|LOTG}",
-					"8 sp"
-				],
-				[
-					"{@item Leash|LOTG}",
-					"1 sp"
-				],
-				[
-					"{@item Stationary Tank|LOTG|Tank, stationary}",
-					"1 gp"
-				],
-				[
-					"{@item Traveling Tank|LOTG|Tank, traveling}",
-					"10 gp"
-				],
-				[
-					"{@item Standard Treats|LOTG|Treats, standard}",
-					"1 cp"
-				],
-				[
-					"{@item Unique Treats|LOTG|Treats, unique}",
-					"1 sp"
-				]
-			]
-		},
-		{
-			"source": "LOTG",
-			"page": 103,
-			"name": "Animal Prices",
-			"id": "3",
-			"colStyles": [
-				"text-left",
-				"text-center"
-			],
-			"labelRowIdx": [
-				0
-			],
-			"rows": [
-				[
-					"Name",
-					"Price"
-				],
-				[
-					"{@item Alpaca|LOTG}",
-					"75+ gp"
-				],
-				[
-					"{@item Axolotl|LOTG}",
-					"40 gp"
-				],
-				[
-					"{@item Badger|LOTG}",
-					"15 sp"
-				],
-				[
-					"{@item Bat|LOTG}",
-					"3+ gp"
-				],
-				[
-					"{@item Beehive|LOTG}",
-					"1 gp"
-				],
-				[
-					"{@item Bird|LOTG}",
-					"1+ sp"
-				],
-				[
-					"{@item House Eagle|LOTG|Bird, house eagle}",
-					"10 gp"
-				],
-				[
-					"{@item Butterfly|LOTG} or {@item moth|LOTG}",
-					"1 sp"
-				],
-				[
-					"{@item Cat|LOTG}",
-					"3+ cp"
-				],
-				[
-					"{@item Galtan orange cat|LOTG|Cat, Galtan orange}",
-					"10 gp"
-				],
-				[
-					"{@item Cow|LOTG}",
-					"8 gp"
-				],
-				[
-					"{@item Cradle minder|LOTG}",
-					"50 gp"
-				],
-				[
-					"{@item Dinosaur|LOTG}",
-					"10+ gp"
-				],
-				[
-					"{@item Dog|LOTG}",
-					"2+ sp"
-				],
-				[
-					"{@item Duck|LOTG}",
-					"5 sp"
-				],
-				[
-					"{@item Ferret|LOTG}",
-					"1 sp"
-				],
-				[
-					"{@item Fish|LOTG}",
-					"1+ cp"
-				],
-				[
-					"{@item Fox|LOTG}",
-					"8 sp"
-				],
-				[
-					"{@item Frog|LOTG}",
-					"2+ sp"
-				],
-				[
-					"{@item Gerbil|LOTG} or {@item hamster|LOTG}",
-					"1 sp"
-				],
-				[
-					"{@item Horse|LOTG}",
-					"2+ gp"
-				],
-				[
-					"{@item Kayalini|LOTG}",
-					"5 gp"
-				],
-				[
-					"{@item Lizard|LOTG}",
-					"1+ sp"
-				],
-				[
-					"{@item X's Lizard|LOTG|Lizard, X's}",
-					"1 gp"
-				],
-				[
-					"{@item Monkey|LOTG}",
-					"3 gp"
-				],
-				[
-					"{@item Mouse|LOTG}",
-					"1 cp"
-				],
-				[
-					"{@item Opossum, domestic|LOTG}",
-					"2 gp"
-				],
-				[
-					"{@item Pig|LOTG}",
-					"5+ sp"
-				],
-				[
-					"{@item Praying mantis|LOTG}",
-					"1 sp"
-				],
-				[
-					"{@item Rabbit|LOTG}",
-					"1+ gp"
-				],
-				[
-					"{@item Raccoon|LOTG}",
-					"5 gp"
-				],
-				[
-					"{@item Rat|LOTG}",
-					"1+ sp"
-				],
-				[
-					"{@item Snake|LOTG}",
-					"1+ gp"
-				],
-				[
-					"{@item Spider|LOTG}",
-					"2+ sp"
-				],
-				[
-					"{@item Squirrel|LOTG}",
-					"7 sp"
-				],
-				[
-					"{@item Turtle|LOTG}",
-					"3 sp"
-				]
-			]
-		},
-		{
-			"source": "LOTG",
-			"page": 65,
-			"name": "Common Crimes and Punishments",
-			"id": "2",
-			"labelRowIdx": [
-				0
-			],
-			"footnotes": [
-				"{@sup 1}Punishments can vary from region to region. Countries in the Inner Sea that use fines typically link them to the character's ability to pay"
-			],
-			"rows": [
-				[
-					"Crime",
-					"Typical Punishment{@sup 1}"
-				],
-				[
-					"Murder",
-					"Execution"
-				],
-				[
-					"Arson",
-					"Execution"
-				],
-				[
-					"Summoning prohibited planar beings (varies by region)",
-					"Execution"
-				],
-				[
-					"Treason",
-					"Execution"
-				],
-				[
-					"Espionage",
-					"10 to 30 years labor often shortened as spies are exchanged or traded back to their home country"
-				],
-				[
-					"Torture Fifty",
-					"lashes and 5 to 20 years hard labor, often followed by exile"
-				],
-				[
-					"Other atrocities",
-					"Forty lashes and 3 to 10 years hard labor, often followed by exile"
-				],
-				[
-					"Manslaughter",
-					"Twenty to fifty lashes, 3 to 15 years of labor, and/or a fine equal to 50% of the character's wealth"
-				],
-				[
-					"Creating undead",
-					"Fifty lashes, 3 to 10 years of hard labor, and/or a fine equal to 40% of the character's wealth"
-				],
-				[
-					"Kidnapping",
-					"Twenty to forty lashes and/or 2 to 8 years hard labor, often followed by exile"
-				],
-				[
-					"Enchantment",
-					"major (dominate), Thirty lashes and/or a fine equal to 25% of the character's wealth, often followed by exile"
-				],
-				[
-					"Enchantment",
-					"minor (charm), Ten lashes and/or a fine equal to 10% of the character's wealth"
-				],
-				[
-					"Assault & battery (permanent injury)",
-					"Thirty lashes, 1 year hard labor, and/or a fine equal to 10% of the character's wealth"
-				],
-				[
-					"Assault & battery (no permanent injury)",
-					"Ten lashes and/or a fine equal to 2% of the character's wealth"
-				],
-				[
-					"Cruelty to animals",
-					"Five to twenty lashes and/or a fine equal to 5% of the character's wealth"
-				],
-				[
-					"Robbery",
-					"Twenty lashes and/or 1 to 5 years hard labor"
-				],
-				[
-					"Burglary",
-					"1 to 3 years hard labor and/or fine equal to 20% of the stolen goods' value"
-				],
-				[
-					"Larceny",
-					"6 to 18 months hard labor and/or fine equal to 15% of the stolen goods' value"
-				],
-				[
-					"Embezzlement",
-					"Return of all funds and a fine of 20% of what was stolen"
-				],
-				[
-					"Extortion",
-					"Return of all funds and a fine of 20% of what was stolen"
-				],
-				[
-					"Possession of stolen goods",
-					"Return of all goods and a fine equal to 10% of the goods' cost"
-				],
-				[
-					"Perjury",
-					"A fine equal to 15% of the character's wealth"
-				],
-				[
-					"Forgery (official papers)",
-					"A fine equal to 15% of the character's wealth"
-				],
-				[
-					"Forgery (other)",
-					"A fine equal to 10% of the character's wealth"
-				],
-				[
-					"Blackmail",
-					"A fine equal to 10% of the character's wealth"
-				],
-				[
-					"Fraud",
-					"A fine equal to 10% of the character's wealth"
-				],
-				[
-					"Worship of banned gods",
-					"2 to 8 years hard labor and/or a fine equal to 20% of the character's wealth"
-				],
-				[
-					"Smuggling",
-					"1 to 5 years hard labor and/or a fine equal to 15% of the character's wealth"
-				],
-				[
-					"Vandalism",
-					"Ten lashes and/or a fine equal to 2% of the character's wealth"
-				],
-				[
-					"Pickpocketing",
-					"Five lashes and/or a fine equal to 1% of the character's wealth"
-				],
-				[
-					"Trespassing",
-					"Two lashes and/or a fine equal to 1% of the character's wealth"
-				],
-				[
-					"Multiple offenses",
-					"at once As most serious offense plus 50% of other sentences"
-				],
-				[
-					"Repeated offenses",
-					"Increase the sentence by a quarter for each prior offense\u2014excessive offenses result in execution"
-				]
-			]
-		},
-		{
-			"source": "LOTG",
-			"page": 17,
-			"name": "Housing Costs",
-			"id": "1",
-			"labelRowIdx": [
-				0,
-				6
-			],
-			"colStyles": [
-				"text-left",
-				"text-center",
-				"text-center"
-			],
-			"spans": [
-				[
-					[
-						1,
-						3
-					],
-					[
-						3,
-						3
-					]
-				],
-				[
-					[
-						1,
-						3
-					],
-					[
-						3,
-						4
-					],
-					[
-						4,
-						5
-					]
-				],
-				[
-					[
-						1,
-						3
-					],
-					[
-						3,
-						4
-					],
-					[
-						4,
-						5
-					]
-				],
-				[
-					[
-						1,
-						3
-					],
-					[
-						3,
-						4
-					],
-					[
-						4,
-						5
-					]
-				],
-				[
-					[
-						1,
-						3
-					],
-					[
-						3,
-						4
-					],
-					[
-						4,
-						5
-					]
-				],
-				[
-					[
-						1,
-						3
-					],
-					[
-						3,
-						4
-					],
-					[
-						4,
-						5
-					]
-				]
-			],
-			"rows": [
-				[
-					"House payment (10 year period)",
-					"Price",
-					"Monthly"
-				],
-				[
-					"Thatch hut (poor home)",
-					"100 gp",
-					"2 gp"
-				],
-				[
-					"Wood cottage (comfortable home)",
-					"300 gp",
-					"6 gp"
-				],
-				[
-					"Stone house (quality home)",
-					"2,000 gp",
-					"40 gp"
-				],
-				[
-					"Wood, stone, and metal manse (fine home)",
-					"6,000 gp",
-					"120 gp"
-				],
-				[
-					"Villa (luxury home)",
-					"15,000 gp",
-					"300 gp"
-				],
-				[
-					"House",
-					"Monthly rent"
-				],
-				[
-					"Thatch hut (poor home)",
-					"8 gp"
-				],
-				[
-					"Wood cottage (comfortable home)",
-					"20 gp"
-				],
-				[
-					"Stone house (quality home)",
-					"80 gp"
-				],
-				[
-					"Wood, stone, and metal manse (fine home)",
-					"240 gp"
-				],
-				[
-					"Villa (luxury home)",
-					"600 gp"
-				]
-			]
-		},
-		{
+			"type": "table",
 			"source": "SoM",
 			"page": 166,
 			"name": "Personal Staves",
@@ -3992,6 +1879,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "GMG",
 			"page": 25,
 			"name": "EARN INCOME TASKS",
@@ -4224,6 +2112,7 @@
 			]
 		},
 		{
+			"type": "table",
 			"source": "GMG",
 			"page": 25,
 			"name": "DOWNTIME EVENTS",
