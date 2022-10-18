@@ -168,11 +168,11 @@ function renderStatblock (deity) {
 		() => {},
 		buildImageTab,
 	);
-	const tabs = [statTab]
+	const tabs = [statTab];
 	if (deity.intercession) tabs.push(intercessionTab);
 	if (deity.hasLore) tabs.push(loreTab);
 	if (deity.images) tabs.push(imageTab);
-	tabs.push(infoTab)
+	tabs.push(infoTab);
 	Renderer.utils.bindTabButtons(...tabs);
 }
 
