@@ -39,19 +39,20 @@ class PageFilterHazards extends PageFilter {
 
 	mutateForFilters (it) {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
-		it._fstealth = it.stealth.dc == null ? (it.stealth.bonus || 0) + 10 : it.stealth.dc;
+		it._fStealth = it.stealth ? (it.stealth.dc ? it.stealth.dc : (it.stealth.bonus || 0) + 10) : 0;
 		if (it.defenses != null) {
-			if (it.defenses.ac) it._fac = Math.max(...Object.values(it.defenses.ac).filter(v => typeof v === "number"));
-			if (it.defenses.hardness) it._fhardness = Math.max(...Object.values(it.defenses.hardness).filter(v => typeof v === "number"));
-			if (it.defenses.hp) it._fhp = Math.max(...Object.values(it.defenses.hp).filter(v => typeof v === "number"));
-			if (it.defenses.savingThrows) it._ffort = it.defenses.savingThrows.fort ? it.defenses.savingThrows.fort.std : null;
-			if (it.defenses.savingThrows) it._fref = it.defenses.savingThrows.ref ? it.defenses.savingThrows.ref.std : null;
-			if (it.defenses.savingThrows) it._fwill = it.defenses.savingThrows.will ? it.defenses.savingThrows.will.std : null;
-			if (it.defenses.immunities) it._fimmunities = it.defenses.immunities;
+			if (it.defenses.ac) it._fAC = Math.max(...Object.values(it.defenses.ac).filter(v => typeof v === "number"));
+			if (it.defenses.hardness) it._fHardness = Math.max(...Object.values(it.defenses.hardness).filter(v => typeof v === "number"));
+			if (it.defenses.hp) it._fHP = Math.max(...Object.values(it.defenses.hp).filter(v => typeof v === "number"));
+			if (it.defenses.savingThrows) it._fFort = it.defenses.savingThrows.fort ? it.defenses.savingThrows.fort.std : null;
+			if (it.defenses.savingThrows) it._fRef = it.defenses.savingThrows.ref ? it.defenses.savingThrows.ref.std : null;
+			if (it.defenses.savingThrows) it._fWill = it.defenses.savingThrows.will ? it.defenses.savingThrows.will.std : null;
+			if (it.defenses.immunities) it._fImmunities = it.defenses.immunities;
 		}
-		it._ftraits = it.traits.map(t => Parser.getTraitName(t));
-		it._fmisc = [];
-		if (it.reset) it._fmisc.push("Resettable")
+		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
+		it._fMisc = [];
+		if (it.reset) it._fMisc.push("Is Resettable");
+		if (it.routine) it._fMisc.push("Has Routine");
 	}
 
 	addToFilters (it, isExcluded) {
@@ -59,16 +60,19 @@ class PageFilterHazards extends PageFilter {
 
 		this._sourceFilter.addItem(it._fSources);
 		this._levelFilter.addItem(it.level);
-		this._stealthDcFilter.addItem(it._fstealth);
-		if (it.stealth.minProf) this._stealthMinProfFilter.addItem(it.stealth.minProf);
-		if (it._fac != null) this._acFilter.addItem(it._fac);
-		if (it._fhardness != null) this._hardnessFilter.addItem(it._fhardness);
-		if (it._fhp != null) this._hpFilter.addItem(it._fhp);
-		if (it._ffort != null) this._fortFilter.addItem(it._ffort);
-		if (it._fref != null) this._refFilter.addItem(it._fref);
-		if (it._fwill != null) this._willFilter.addItem(it._fwill);
-		if (it._fimmunities != null) this._immunitiesFilter.addItem(it._fimmunities);
-		this._traitsFilter.addItem(it._ftraits);
+		if (it.stealth) {
+			this._stealthDcFilter.addItem(it._fStealth);
+			if (it.stealth.minProf) this._stealthMinProfFilter.addItem(it.stealth.minProf);
+		}
+		if (it._fAC != null) this._acFilter.addItem(it._fAC);
+		if (it._fHardness != null) this._hardnessFilter.addItem(it._fHardness);
+		if (it._fHP != null) this._hpFilter.addItem(it._fHP);
+		if (it._fFort != null) this._fortFilter.addItem(it._fFort);
+		if (it._fRef != null) this._refFilter.addItem(it._fRef);
+		if (it._fWill != null) this._willFilter.addItem(it._fWill);
+		if (it._fImmunities != null) this._immunitiesFilter.addItem(it._fImmunities);
+		this._traitsFilter.addItem(it._fTraits);
+		this._miscFilter.addItem(it._fMisc);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -80,6 +84,7 @@ class PageFilterHazards extends PageFilter {
 			this._defenseFilter,
 			this._immunitiesFilter,
 			this._savingThrowFilter,
+			this._miscFilter,
 		];
 	}
 
@@ -88,21 +93,22 @@ class PageFilterHazards extends PageFilter {
 			values,
 			it._fSources,
 			it.level,
-			it._ftraits,
+			it._fTraits,
 			[
-				it._fstealth,
-				it.stealth.minProf,
+				it._fStealth,
+				it.stealth?.minProf,
 			],
 			[
-				it._fac,
-				it._fhardness,
-				it._fhp,
+				it._fAC,
+				it._fHardness,
+				it._fHP,
 			],
-			it._fimmunities,
+			it._fImmunities,
 			[
-				it._ffort,
-				it._fref,
+				it._fFort,
+				it._fRef,
 			],
+			it._fMisc,
 		)
 	}
 }
