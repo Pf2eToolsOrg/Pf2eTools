@@ -24,7 +24,7 @@ class HazardsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const type = it.traits.includes("Complex") ? "Complex" : "Simple";
+		const type = it.traits.includes("complex") ? "Complex" : "Simple";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold pl-0 col-4-2">${it.name}</span>
