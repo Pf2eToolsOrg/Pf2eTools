@@ -29,10 +29,16 @@
 					"$ref": "#/definitions/timeTrait"
 				},
 				{
+					"$ref": "#/definitions/hazardTrait"
+				},
+				{
 					"$ref": "#/definitions/rarityTrait"
 				},
 				{
 					"$ref": "#/definitions/settlementTrait"
+				},
+				{
+					"$ref": "#/definitions/armorTrait"
 				},
 				{
 					"$ref": "#/definitions/effectTrait"
@@ -50,10 +56,13 @@
 					"$ref": "#/definitions/planarTrait"
 				},
 				{
-					"$ref": "#/definitions/armorWeaponTrait"
+					"$ref": "#/definitions/weaponTrait"
 				},
 				{
-					"$ref": "#/definitions/energyElementsTrait"
+					"$ref": "#/definitions/unknownTrait"
+				},
+				{
+					"$ref": "#/definitions/energyElementTrait"
 				},
 				{
 					"$ref": "#/definitions/generalTrait"
@@ -71,7 +80,7 @@
 					"$ref": "#/definitions/ancestryHeritageTrait"
 				},
 				{
-					"$ref": "#/definitions/schoolsTraditionsTrait"
+					"$ref": "#/definitions/schoolTraditionTrait"
 				},
 				{
 					"$ref": "#/definitions/combatTrait"
@@ -80,32 +89,50 @@
 					"$ref": "#/definitions/classTrait"
 				},
 				{
-					"$ref": "#/definitions/unknownTrait"
+					"$ref": "#/definitions/actionAbilityTrait"
+				},
+				{
+					"$ref": "#/definitions/spellTrait"
+				},
+				{
+					"$ref": "#/definitions/featTrait"
 				}
 			],
 			"uniqueItems": true
 		},
-		"unknownTrait": {
+		"featTrait": {
 			"type": "string",
-			"description": "A list of all Unknown traits.",
+			"description": "A list of all Feat traits.",
 			"enum": [
 				"additive",
-				"adjustment",
 				"aftermath",
 				"amp",
-				"charm",
-				"clockwork",
-				"cursebound",
+				"archetype",
+				"dedication",
+				"esoterica",
+				"modification"
+			]
+		},
+		"spellTrait": {
+			"type": "string",
+			"description": "A list of all Spell traits.",
+			"enum": [
+				"amp",
+				"composition",
+				"consecration",
+				"contingency",
+				"cursebound"
+			]
+		},
+		"actionAbilityTrait": {
+			"type": "string",
+			"description": "A list of all Action & Ability traits.",
+			"enum": [
+				"concentrate",
 				"deviant",
 				"esoterica",
-				"gadget",
-				"hellknight",
-				"kaiju",
-				"lineage",
-				"saggorak",
-				"steam",
-				"tattoo",
-				"unstable"
+				"mindshift",
+				"psyche"
 			]
 		},
 		"classTrait": {
@@ -157,9 +184,9 @@
 				"stance"
 			]
 		},
-		"schoolsTraditionsTrait": {
+		"schoolTraditionTrait": {
 			"type": "string",
-			"description": "A list of all Schools & Traditions traits.",
+			"description": "A list of all School & Tradition traits.",
 			"enum": [
 				"[magical tradition]",
 				"abjuration",
@@ -385,26 +412,16 @@
 				"archetype",
 				"cantrip",
 				"city",
-				"complex",
-				"composition",
-				"consecration",
-				"contingency",
-				"curse",
-				"darkness",
-				"dedication",
 				"downtime",
-				"environmental",
 				"evolution",
 				"exploration",
 				"extradimensional",
 				"fulu",
 				"general",
-				"haunt",
 				"incarnate",
 				"instinct",
 				"litany",
 				"manipulate",
-				"mechanical",
 				"metamagic",
 				"metropolis",
 				"militaristic",
@@ -420,7 +437,6 @@
 				"structure",
 				"tandem",
 				"town",
-				"trap",
 				"true name",
 				"unbounded",
 				"vigilante",
@@ -428,9 +444,9 @@
 				"wayfaring"
 			]
 		},
-		"energyElementsTrait": {
+		"energyElementTrait": {
 			"type": "string",
-			"description": "A list of all Energy & Elements traits.",
+			"description": "A list of all Energy & Element traits.",
 			"enum": [
 				"acid",
 				"air",
@@ -446,9 +462,26 @@
 				"water"
 			]
 		},
-		"armorWeaponTrait": {
+		"unknownTrait": {
 			"type": "string",
-			"description": "A list of all Armor & Weapon traits.",
+			"description": "A list of all Unknown traits.",
+			"enum": [
+				"adjustment",
+				"charm",
+				"clockwork",
+				"gadget",
+				"hellknight",
+				"kaiju",
+				"lineage",
+				"saggorak",
+				"steam",
+				"tattoo",
+				"unstable"
+			]
+		},
+		"weaponTrait": {
+			"type": "string",
+			"description": "A list of all Weapon traits.",
 			"enum": [
 				"agile",
 				"attached",
@@ -456,12 +489,10 @@
 				"backswing",
 				"bomb",
 				"brutal",
-				"bulwark",
 				"capacity",
 				"climbing",
 				"cobbled",
 				"combination",
-				"comfort",
 				"concealable",
 				"concussive",
 				"critical fusion",
@@ -471,7 +502,6 @@
 				"fatal",
 				"fatal aim",
 				"finesse",
-				"flexible",
 				"forceful",
 				"free-hand",
 				"grapple",
@@ -479,10 +509,8 @@
 				"injection",
 				"jousting",
 				"kickback",
-				"modification",
 				"modular",
 				"mounted",
-				"noisy",
 				"nonlethal",
 				"parry",
 				"portable",
@@ -610,6 +638,9 @@
 			"description": "A list of all Effect traits.",
 			"enum": [
 				"auditory",
+				"consecration",
+				"curse",
+				"darkness",
 				"death",
 				"detection",
 				"disease",
@@ -635,6 +666,16 @@
 				"visual"
 			]
 		},
+		"armorTrait": {
+			"type": "string",
+			"description": "A list of all Armor traits.",
+			"enum": [
+				"bulwark",
+				"comfort",
+				"flexible",
+				"noisy"
+			]
+		},
 		"settlementTrait": {
 			"type": "string",
 			"description": "A list of all _settlement traits.",
@@ -653,6 +694,17 @@
 				"rare",
 				"uncommon",
 				"unique"
+			]
+		},
+		"hazardTrait": {
+			"type": "string",
+			"description": "A list of all Hazard traits.",
+			"enum": [
+				"complex",
+				"environmental",
+				"haunt",
+				"mechanical",
+				"trap"
 			]
 		},
 		"timeTrait": {
