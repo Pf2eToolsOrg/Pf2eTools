@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.2"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.3"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -358,6 +358,11 @@ SourceUtil = {
 		return Parser.SOURCES_ADVENTURES.has(source);
 	},
 	
+	isAccessory (source) {
+		if (source instanceof FilterItem) source = source.item;
+		return Parser.SOURCES_ACCESSORIES.has(source);
+	},
+
 	isAccessory (source) {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_ACCESSORIES.has(source);
