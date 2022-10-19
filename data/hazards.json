@@ -510,7 +510,7 @@
 			"name": "Mirror Door",
 			"source": "DA",
 			"page": 122,
-			"level": null,
+			"level": -1,
 			"traits": [
 				"magical",
 				"trap",
@@ -552,7 +552,7 @@
 			"name": "Shuffling Hall",
 			"source": "DA",
 			"page": 122,
-			"level": null,
+			"level": -1,
 			"traits": [
 				"mechanical",
 				"trap"
@@ -1941,7 +1941,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 28 {@skill Thievery} (expert) to disable the engine, or"
+					"DC 28 {@skill Thievery} (expert) to disable the engine, or DC 26 {@skill Lore||Engineering Lore} to disengage the drive shaft. Either method disables the trap but also shuts down the engine, disabling the Second Kiss's propulsion."
 				]
 			},
 			"defenses": {
@@ -1973,22 +1973,14 @@
 			},
 			"actions": [
 				{
-					"name": "DC 26 Engineering",
-					"entries": [
-						"{@skill Lore} to disengage the drive shaft.",
-						"Either method disables the trap but also shuts down the engine, disabling the Second Kiss's propulsion."
-					]
-				},
-				{
 					"name": "Spinning Gears",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "A creature Strides in the engine nacelle",
+					"trigger": "A creature {@action stride||Strides} in the engine nacelle",
 					"entries": [
-						"The creature's clothing or limbs get caught in the spinning gears and axles of the engine.",
-						"The creature must attempt a DC 24 Reflex save.",
+						"The creature's clothing or limbs get caught in the spinning gears and axles of the engine. The creature must attempt a DC 24 Reflex save.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -2002,7 +1994,7 @@
 									"The creature takes {@damage 4d8+18} bludgeoning damage."
 								],
 								"Critical Failure": [
-									"The creature's clothing is pulled into the clockworks. The creature takes {@damage 4d8+18} bludgeoning damage and is {@condition restrained}. Until the creature Escapes (DC 24), it takes {@damage 2d8+9} bludgeoning damage each round as it's pulled into the spinning rotors. A creature wearing clothing can automatically {@action Escape} by doffing its caught clothing; this destroys the doffed clothing"
+									"The creature's clothing is pulled into the clockworks. The creature takes {@damage 4d8+18} bludgeoning damage and is {@condition restrained}. Until the creature Escapes (DC 24), it takes {@damage 2d8+9} bludgeoning damage each round as it's pulled into the spinning rotors. A creature wearing clothing can automatically {@action Escape} by doffing its caught clothing; this destroys the doffed clothing."
 								]
 							}
 						}
@@ -14572,13 +14564,13 @@
 				"fort": 11,
 				"ref": 5,
 				"hardness": {
-					"std": 9
-				},
-				"hp": {
-					"std": 30,
+					"std": 9,
 					"notes": {
 						"std": "(wall)"
 					}
+				},
+				"hp": {
+					"std": 30
 				},
 				"bt": {
 					"std": 15
