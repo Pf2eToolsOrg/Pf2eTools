@@ -421,31 +421,14 @@
 								},
 								"minItems": 1
 							},
-							"boon": {
-								"type": "object",
-								"patternProperties": {
-									"^(Minor|Moderate|Major) (Boon|Blessing)$": {
-										"type": "array",
-										"items": {
-											"$ref": "entry.json"
-										},
-										"minItems": 1
-									}
-								},
-								"additionalProperties": false
-							},
-							"curse": {
-								"type": "object",
-								"patternProperties": {
-									"^(Minor|Moderate|Major) Curse$": {
-										"type": "array",
-										"items": {
-											"$ref": "entry.json"
-										},
-										"minItems": 1
-									}
-								},
-								"additionalProperties": false
+							"patternProperties": {
+								"^(Minor|Moderate|Major) (Boon|Curse)$": {
+									"type": "array",
+									"items": {
+										"$ref": "entry.json"
+									},
+									"minItems": 1
+								}
 							}
 						},
 						"additionalProperties": false

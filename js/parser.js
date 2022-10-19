@@ -1325,6 +1325,8 @@ SRC_SoT5 = "SoT5"
 SRC_SoT6 = "SoT6"
 SRC_TiO = "TiO"
 SRC_ToK = "ToK"
+SRC_CHD = "CHD"
+SRC_CFD = "CFD"
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement"
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide"
 Parser.SOURCE_JSON_TO_FULL[SRC_AV0] = "Abomination Vaults Player's Guide"
@@ -1379,8 +1381,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_GW2] = "Gatewalkers #2: They Watched the Stars"
 Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens"
 Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide"
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide"
-Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods n Magic"
-Parser.SOURCE_JSON_TO_FULL[SRC_LOGMWS] = "Lost Omens: Gods n Magic Web Supplement"
+Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic"
+Parser.SOURCE_JSON_TO_FULL[SRC_LOGMWS] = "Lost Omens: Gods & Magic Web Supplement"
 Parser.SOURCE_JSON_TO_FULL[SRC_LOIL] = "Lost Omens: Impossible Lands"
 Parser.SOURCE_JSON_TO_FULL[SRC_LOKL] = "Lost Omens: Knights of Lastwall"
 Parser.SOURCE_JSON_TO_FULL[SRC_LOL] = "Lost Omens: Legends"
@@ -1415,6 +1417,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SoT5] = "Strength of Thousands #5: Doorway to the
 Parser.SOURCE_JSON_TO_FULL[SRC_SoT6] = "Strength of Thousands #6: Shadows of the Ancients"
 Parser.SOURCE_JSON_TO_FULL[SRC_TiO] = "Troubles in Otari"
 Parser.SOURCE_JSON_TO_FULL[SRC_ToK] = "Threshold of Knowledge"
+Parser.SOURCE_JSON_TO_FULL[SRC_CHD] = "Critical Hit Deck"
+Parser.SOURCE_JSON_TO_FULL[SRC_CFD] = "Critical Fumble Deck"
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS"
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG"
 Parser.SOURCE_JSON_TO_ABV[SRC_AV0] = "AV0"
@@ -1505,6 +1509,8 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SoT5] = "SoT5"
 Parser.SOURCE_JSON_TO_ABV[SRC_SoT6] = "SoT6"
 Parser.SOURCE_JSON_TO_ABV[SRC_TiO] = "TiO"
 Parser.SOURCE_JSON_TO_ABV[SRC_ToK] = "ToK"
+Parser.SOURCE_JSON_TO_ABV[SRC_CHD] = "CHD"
+Parser.SOURCE_JSON_TO_ABV[SRC_CFD] = "CFD"
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24"
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-07-30"
 Parser.SOURCE_JSON_TO_DATE[SRC_AV0] = "2021-01-15"
@@ -1595,6 +1601,8 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SoT5] = "2021-11-10"
 Parser.SOURCE_JSON_TO_DATE[SRC_SoT6] = "2021-07-26"
 Parser.SOURCE_JSON_TO_DATE[SRC_TiO] = "2020-12-09"
 Parser.SOURCE_JSON_TO_DATE[SRC_ToK] = "2021-11-19"
+Parser.SOURCE_JSON_TO_DATE[SRC_CHD] = "2019-10-16"
+Parser.SOURCE_JSON_TO_DATE[SRC_CFD] = "2019-10-16"
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf"
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih"
 Parser.SOURCE_JSON_TO_STORE[SRC_AV0] = "https://paizo.com/community/blog/v5748dyo6shjm"
@@ -1685,14 +1693,17 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SoT5] = "https://paizo.com/products/btq027s2"
 Parser.SOURCE_JSON_TO_STORE[SRC_SoT6] = "https://paizo.com/products/btq027u1"
 Parser.SOURCE_JSON_TO_STORE[SRC_TiO] = "https://paizo.com/products/btq026k1"
 Parser.SOURCE_JSON_TO_STORE[SRC_ToK] = "https://paizo.com/products/btq027qf"
-Parser.SOURCES_ADVENTURES = new Set([SRC_AV0, SRC_AV1, SRC_AV2, SRC_AV3, SRC_AVH, SRC_AoA0, SRC_AoA1, SRC_AoA2, SRC_AoA3, SRC_AoA4, SRC_AoA5, SRC_AoA6, SRC_AoE0, SRC_AoE1, SRC_AoE2, SRC_AoE3, SRC_AoE4, SRC_AoE5, SRC_AoE6, SRC_BL0, SRC_BL1, SRC_BL2, SRC_BL3, SRC_BL4, SRC_BL5, SRC_BL6, SRC_EC0, SRC_EC1, SRC_EC2, SRC_EC3, SRC_EC4, SRC_EC5, SRC_EC6, SRC_FRP0, SRC_FRP1, SRC_FRP2, SRC_FRP3, SRC_FoP, SRC_GW0, SRC_GW1, SRC_GW2, SRC_LTiBA, SRC_Mal, SRC_NGD, SRC_OoA0, SRC_OoA1, SRC_OoA2, SRC_OoA3, SRC_QFF0, SRC_QFF1, SRC_QFF2, SRC_QFF3, SRC_SaS, SRC_AFoF, SRC_Sli, SRC_SoT0, SRC_SoT1, SRC_SoT2, SRC_SoT3, SRC_SoT4, SRC_SoT5, SRC_SoT6, SRC_TiO, SRC_ToK ])
-Parser.SOURCES_VANILLA = new Set([SRC_APG, SRC_B1, SRC_B2, SRC_B3, SRC_BotD, SRC_CRB, SRC_DA, SRC_GnG, SRC_GMG, SRC_SoM ])
+Parser.SOURCE_JSON_TO_STORE[SRC_CHD] = "https://paizo.com/products/btq01zpt"
+Parser.SOURCE_JSON_TO_STORE[SRC_CFD] = "https://paizo.com/products/btq01zpu"
+Parser.SOURCES_ADVENTURES = new Set([SRC_AV0, SRC_AV1, SRC_AV2, SRC_AV3, SRC_AVH, SRC_AoA0, SRC_AoA1, SRC_AoA2, SRC_AoA3, SRC_AoA4, SRC_AoA5, SRC_AoA6, SRC_AoE0, SRC_AoE1, SRC_AoE2, SRC_AoE3, SRC_AoE4, SRC_AoE5, SRC_AoE6, SRC_BL0, SRC_BL1, SRC_BL2, SRC_BL3, SRC_BL4, SRC_BL5, SRC_BL6, SRC_EC0, SRC_EC1, SRC_EC2, SRC_EC3, SRC_EC4, SRC_EC5, SRC_EC6, SRC_FRP0, SRC_FRP1, SRC_FRP2, SRC_FRP3, SRC_FoP, SRC_GW0, SRC_GW1, SRC_GW2, SRC_LTiBA, SRC_Mal, SRC_NGD, SRC_OoA0, SRC_OoA1, SRC_OoA2, SRC_OoA3, SRC_QFF0, SRC_QFF1, SRC_QFF2, SRC_QFF3, SRC_SaS, SRC_AFoF, SRC_Sli, SRC_SoT0, SRC_SoT1, SRC_SoT2, SRC_SoT3, SRC_SoT4, SRC_SoT5, SRC_SoT6, SRC_TiO, SRC_ToK ]);
+Parser.SOURCES_VANILLA = new Set([SRC_APG, SRC_B1, SRC_B2, SRC_B3, SRC_BotD, SRC_CRB, SRC_DA, SRC_GnG, SRC_GMG, SRC_SoM ]);
+Parser.SOURCES_ACCESSORIES = new Set([SRC_CHD, SRC_CFD]);
 Parser.TAG_TO_DEFAULT_SOURCE = {"versatileHeritage": SRC_APG, "familiar": SRC_APG, "optfeature": SRC_APG, "creatureTemplate": SRC_B1, "ability": SRC_B1, "creature": SRC_B1, "spell": SRC_CRB, "item": SRC_CRB, "class": SRC_CRB, "condition": SRC_CRB, "background": SRC_CRB, "ancestry": SRC_CRB, "archetype": SRC_CRB, "feat": SRC_CRB, "trap": SRC_CRB, "hazard": SRC_CRB, "deity": SRC_CRB, "action": SRC_CRB, "classFeature": SRC_CRB, "subclassFeature": SRC_CRB, "table": SRC_CRB, "language": SRC_CRB, "ritual": SRC_CRB, "trait": SRC_CRB, "group": SRC_CRB, "domain": SRC_CRB, "skill": SRC_CRB, "familiarAbility": SRC_CRB, "companion": SRC_CRB, "companionAbility": SRC_CRB, "disease": SRC_GMG, "curse": SRC_GMG, "variantrule": SRC_GMG, "vehicle": SRC_GMG, "place": SRC_GMG, "plane": SRC_GMG, "settlement": SRC_GMG, "nation": SRC_GMG, "organization": SRC_LOCG, "eidolon": SRC_SoM };
 [SRC_AAWS, SRC_APG, SRC_B1, SRC_B2, SRC_B3, SRC_BotD, SRC_CRB, SRC_DA, SRC_GnG, SRC_GMG, SRC_LOACLO, SRC_LOAG, SRC_LOCG, SRC_LOGM, SRC_LOGMWS, SRC_LOIL, SRC_LOKL, SRC_LOL, SRC_LOME, SRC_LOMM, SRC_LOPSG, SRC_LOTG, SRC_LOTGB, SRC_LOWG, SRC_PFUM, SRC_SoM ].forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src; Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src; });
 [SRC_AV0, SRC_AV1, SRC_AV2, SRC_AV3, SRC_AVH, SRC_AoA0, SRC_AoA1, SRC_AoA2, SRC_AoA3, SRC_AoA4, SRC_AoA5, SRC_AoA6, SRC_AoE0, SRC_AoE1, SRC_AoE2, SRC_AoE3, SRC_AoE4, SRC_AoE5, SRC_AoE6, SRC_BL0, SRC_BL1, SRC_BL2, SRC_BL3, SRC_BL4, SRC_BL5, SRC_BL6, SRC_EC0, SRC_EC1, SRC_EC2, SRC_EC3, SRC_EC4, SRC_EC5, SRC_EC6, SRC_FRP0, SRC_FRP1, SRC_FRP2, SRC_FRP3, SRC_FoP, SRC_GW0, SRC_GW1, SRC_GW2, SRC_LTiBA, SRC_Mal, SRC_NGD, SRC_OoA0, SRC_OoA1, SRC_OoA2, SRC_OoA3, SRC_QFF0, SRC_QFF1, SRC_QFF2, SRC_QFF3, SRC_SaS, SRC_AFoF, SRC_Sli, SRC_SoT0, SRC_SoT1, SRC_SoT2, SRC_SoT3, SRC_SoT4, SRC_SoT5, SRC_SoT6, SRC_TiO, SRC_ToK ].forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src; Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src; });
 /* PF2ETOOLS_SOURCE__CLOSE */
 
-Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
+Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it) && !Parser.SOURCES_ACCESSORIES.has(it)));
 
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

@@ -1,229 +1,6 @@
 {
 	"disease": [
 		{
-			"name": "Enforced Hospitality",
-			"source": "DA",
-			"page": 163,
-			"level": 13,
-			"type": "Curse",
-			"traits": [
-				"rare",
-				"curse",
-				"enchantment",
-				"magical",
-				"mental"
-			],
-			"entries": [
-				"Cast upon the rude or inconsiderate, this curse compels you to offer a genuine and warm greeting to each new creature you meet.",
-				{
-					"type": "affliction",
-					"savingThrow": "Will",
-					"DC": 31,
-					"entries": [
-						"This curse compels you to great those you meet as though they were old friends. Whenever you come across a creature (or group of creatures) for the first time, you must spend 1 action greeting them or become {@condition slowed 1} for 1 minute, even if the creature is obviously {@condition hostile}. No matter your intention, your greeting comes across as warm and genuine, and it grants you a +1 circumstance bonus to {@skill Diplomacy} checks to {@action Make an Impression}."
-					]
-				}
-			],
-			"temptedCurse": [
-				"Your compulsion to greet newcomers intensifies. You must greet every individual creature you meet for the first time by spending 1 action greeting them or become {@condition slowed 1} for 1 minute. If you meet more creatures than you have actions, you can continue spending actions greeting creatures across multiple turns. For example, if you encountered six bandits, you could greet three bandits on the first round and three bandits on the second round, and you wouldn't become {@condition slowed} unless you took another action before you finished greeting them. For 1 minute or until you take a hostile action, you gain the effects of a 7th-level {@spell sanctuary} against creatures you've greeted in this way (DC 31)."
-			]
-		},
-		{
-			"name": "Forbidding Knowledge",
-			"source": "DA",
-			"page": 163,
-			"level": 10,
-			"type": "Curse",
-			"traits": [
-				"rare",
-				"abjuration",
-				"curse",
-				"magical"
-			],
-			"entries": [
-				"Information you never should have known lingers everpresent in your mind.",
-				{
-					"type": "affliction",
-					"savingThrow": "Will",
-					"DC": 28,
-					"entries": [
-						"This curse is acquired when encountering forbidden knowledge. This curse is always associated with a specific piece or topic of knowledge, such as a demon lord's plan to overtake a government or the true name of a powerful wizard. Your tongue trips when you try to tell another this knowledge, and your hand stalls when you attempt to write it. Any attempt at communicating it fails, even as you can't stop thinking about it."
-					]
-				}
-			],
-			"temptedCurse": [
-				"When you activate the tempted curse, you must spend 2 actions to attempt to speak the triggering knowledge. This allows you to redirect the curse's energy and cast {@spell silence} heightened to 4th level, centered on yourself. You are still unable to speak the knowledge clearly, but you can convey a single word to an adjacent creature. You gain the {@condition stupefied 2} condition for the remainder of the day. This condition can't be reduced until the next time you perform your daily preparations, at which point it ends."
-			]
-		},
-		{
-			"name": "Rage of The Excommunicant",
-			"source": "DA",
-			"page": 163,
-			"level": 10,
-			"type": "Curse",
-			"traits": [
-				"rare",
-				"curse",
-				"enchantment",
-				"magical",
-				"mental"
-			],
-			"entries": [
-				"Placed upon heretics or those who broke faith, this curse causes symbols of your former faith to burn you upon sight.",
-				{
-					"type": "affliction",
-					"savingThrow": "Will",
-					"DC": 27,
-					"entries": [
-						"This curse is always associated with a specific deity, and is typically experienced only by one of their former clerics or champions. The sight of that deity's religious symbol burns you, dealing {@damage 1d6} damage every round you look upon it. You can avert your eyes to avoid losing Hit Points once you know where the symbol is located. In addition, the curse hardens you against that god. You gain a +1 status bonus to saving throws and AC versus divine spells cast by that deity's clergy."
-					]
-				}
-			],
-			"temptedCurse": [
-				"The sight of the deity's religious symbol burns you with the god's rage. You can activate the tempted curse upon viewing the deity's symbol. You are {@condition quickened 1} for 1 minute and can use the extra action each round only to {@action Strike} and {@action Stride}. For the rest of the day, whenever you see the deity's religious symbol, you lose {@damage 2d6} Hit Points."
-			]
-		},
-		{
-			"name": "Swarming Words",
-			"source": "DA",
-			"page": 162,
-			"level": 9,
-			"type": "Curse",
-			"traits": [
-				"rare",
-				"curse",
-				"magical",
-				"conjuration"
-			],
-			"entries": [
-				"Placed upon those who use magic to cause harm, this curse causes a shower of bugs to fall from your lips whenever you speak, foiling your spellcasting.",
-				{
-					"type": "affliction",
-					"savingThrow": "Will",
-					"DC": 26,
-					"entries": [
-						"The crawling within your mouth never stops as cockroaches, ants, and other insects nest in your body. Whenever you attempt to {@action Cast a Spell} with a verbal component or otherwise use an activity that has the {@trait auditory} trait, you must attempt a DC {@flatDC 5} flat check. On a failure, the insects counteract your activity as they crowd your mouth and muffle the sound."
-					]
-				}
-			],
-			"temptedCurse": [
-				"The insects multiply into a cascade. When you activate the tempted curse, you must spend 2 actions to cast a 5th-level {@spell vomit swarm} to free the vermin inside you. For 1 minute after unleashing the swarm, you are not affected by the curse, but afterward, the swarming worsens. For the rest of the day, whenever you attempt to {@action Cast a Spell} with a verbal component or otherwise use an activity that has the {@trait auditory} trait, you must attempt a DC {@flatDC 10} flat check. On a failure, the insects counteract your activity."
-			]
-		},
-		{
-			"name": "Sinful Tongue",
-			"source": "DA",
-			"page": 162,
-			"level": 7,
-			"type": "Curse",
-			"traits": [
-				"rare",
-				"curse",
-				"magical",
-				"enchantment",
-				"mental"
-			],
-			"entries": [
-				"This curse is typically used as punishment by good clergy. The curse causes you to envision your wrongdoings whenever you attempt to lie or deceive, a burden that can be cured only by confessing your past transgressions.",
-				{
-					"type": "affliction",
-					"savingThrow": "Will",
-					"DC": 23,
-					"traits": [
-						"misfortune"
-					],
-					"entries": [
-						"The weight of guilt distracts you, making it hard for you to deceive people. Whenever you attempt a {@skill Deception} check, roll the check twice and take the worse result."
-					]
-				}
-			],
-			"temptedCurse": [
-				"You begin to confess your sins, beginning from youthful indiscretions and ending with the present day. While you confess, all creatures within 30 feet must succeed at a DC 23 Will save or gain the {@condition fascinated} condition as they listen. You must spend at least 2 actions per round, which have the {@trait concentrate} trait, listing your wrongdoings. This is an {@trait auditory}, {@trait enchantment}, {@trait emotion}, and {@trait mental} effect. Once you stop confessing your sins, or after 10 minutes if you haven't finished confessing your sins, the effect ends, and you can't confess again until your next daily preparations. Your conscience is clearer having confessed, and you take only a \u20132 status penalty to {@skill Deception} checks."
-			]
-		},
-		{
-			"name": "Boastful Prince's Scourge",
-			"source": "DA",
-			"page": 162,
-			"level": 7,
-			"type": "Curse",
-			"traits": [
-				"rare",
-				"curse",
-				"magical",
-				"polymorph",
-				"transmutation"
-			],
-			"entries": [
-				"Used as a punishment against the vain or the arrogant, this curse slowly transforms you into a frog in note just body, but mind as well.",
-				{
-					"type": "affliction",
-					"savingThrow": "Will",
-					"DC": 23,
-					"entries": [
-						"Your features slowly morph into that of a frog's as you grow a prominent vocal sac. You gain the {@trait amphibious} trait and can breathe both air and water. You are {@condition stupefied 1} as long as you are under the effect of this curse, and you can't reduce your {@condition stupefied} value below 1."
-					]
-				}
-			],
-			"temptedCurse": [
-				"You transform fully, as {@spell animal form}, giving you the specific abilities of a frog. The duration of this casting is until you make your daily preparations, and you can't {@action Dismiss} the spell. While you are under the effect of {@spell animal form} due to this curse, you have all the usual limitations of {@spell animal form}, including the fact that you can't speak (though you can still understand any languages you know)."
-			]
-		},
-		{
-			"name": "Unraveling Skin",
-			"source": "DA",
-			"page": 162,
-			"type": "Curse",
-			"level": 5,
-			"traits": [
-				"rare",
-				"curse",
-				"magical",
-				"necromancy"
-			],
-			"entries": [
-				"Often used to protect ancient tomes, this curse causes your skin to shed like weathered paper, cracking and bleeding at the slightest touch.",
-				{
-					"type": "affliction",
-					"savingThrow": "Fortitude",
-					"DC": 20,
-					"entries": [
-						"Seeping wounds cover your body as this curse makes your skin brittle. Any time you would gain the {@condition wounded} condition, increase the value by 1. Any time you take bleed damage, increase the amount of damage by 1."
-					]
-				}
-			],
-			"temptedCurse": [
-				"Your skin falls from your body and exposes your raw flesh beneath, but the curse holds your flesh together as its magic increases. You gain resistance to persistent bleed damage equal to half your level and are {@condition doomed 1}."
-			]
-		},
-		{
-			"name": "Thief's Burden",
-			"source": "DA",
-			"page": 162,
-			"level": 1,
-			"type": "Curse",
-			"traits": [
-				"rare",
-				"curse",
-				"magical",
-				"transmutation"
-			],
-			"entries": [
-				"This ward placed on valuables aims to bog down thieves and prevent them from fleeing.",
-				{
-					"type": "affliction",
-					"savingThrow": "Fortitude",
-					"DC": 15,
-					"entries": [
-						"This curse causes stolen items to weigh you down. While the curse is in effect, you treat any stolen items you carry as 1 Bulk heavier. This increase in Bulk remains in effect until the curse is lifted or the item is returned to its owner."
-					]
-				}
-			],
-			"temptedCurse": [
-				"Your pockets weigh you down as you dream of filling them with riches. You are encumbered, but you double your total maximum carrying capacity."
-			]
-		},
-		{
 			"name": "Waterborne Zombie Rot",
 			"source": "BotD",
 			"page": 197,
@@ -977,6 +754,37 @@
 		}
 	],
 	"curse": [
+		{
+			"name": "Slithering",
+			"source": "Sli",
+			"page": 7,
+			"type": "Curse",
+			"level": 15,
+			"traits": [
+				"unique",
+				"curse",
+				"virulent"
+			],
+			"entries": [
+				{
+					"type": "affliction",
+					"DC": 37,
+					"savingThrow": "Fortitude",
+					"onset": "{@dice 1d6×10} minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no symptoms, but anyone who touches or is touched by the carrier (skin-to-skin contact) must save against the curse",
+							"duration": "{@dice 1d4} days"
+						},
+						{
+							"stage": 2,
+							"entry": "The target dies and transforms into an ooze with a level no greater than the target's level plus 1 for each day since the target contracted the curse"
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "Enforced Hospitality",
 			"source": "DA",

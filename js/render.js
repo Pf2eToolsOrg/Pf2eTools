@@ -904,7 +904,7 @@ function Renderer () {
 			if (entry.DC != null) textStack[0] += `DC ${renderer.render(entry.DC)} `
 			textStack[0] += `${renderer.render(entry.savingThrow)}.`
 		}
-		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
+		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${renderer.render(entry.onset)}`;
 		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
 		if (entry.stages) {
 			for (let stage of entry.stages) {
@@ -3294,7 +3294,7 @@ Renderer.utils = {
 		opts = opts || {};
 		return `<p class="pf2-stat pf2-stat__source">
 					${opts.prefix ? opts.prefix : ""}
-					${it.source != null ? `<a href="${Parser.sourceJsonToStore(it.source)}"><strong>${Parser.sourceJsonToFull(it.source)}</strong></a>${it.page != null ? `, page ${it.page}.` : ""}` : ""}
+					${it.source != null ? `<a href="${Parser.sourceJsonToStore(it.source)}"><strong>${Parser.sourceJsonToFull(it.source)}</strong></a>${it.page ? `, page ${it.page}` : ""}.` : ""}
 					${opts.noReprints || !it.otherSources ? "" : Renderer.utils.getOtherSourceHtml(it.otherSources)}
 				</p>`;
 	},
@@ -3776,7 +3776,7 @@ Renderer.action = {
 					it.actionType.ancestry.forEach(a => {
 						ancestryName = a ? a.split(`|`)[0] : null
 						ancestrySource = a ? a.split(`|`)[1] || "" : ""
-						renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|`)}`);
+						renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}}`)}`);
 						if (it.actionType.heritage || it.actionType.versatileHeritage) renderStack.push(`; `)
 					})
 				}
@@ -4747,38 +4747,36 @@ Renderer.deity = {
 	},
 
 	getIntercession (deity) {
-		const textStack = [""];
+		const renderStack = [];
+		const renderObj = JSON.parse("{\"type\":\"pf2-h2\",\"name\":\"Divine Intercession\",\"entries\":[{\"type\": \"pf2-options\",\"skipSort\":true,\"items\":[]}]}");
 		const renderer = Renderer.get().setFirstSection(true)
-		if (deity.intercession) {
-			const entry = {
-				type: "pf2-h2",
-				name: "Divine Intercession",
-				entries: deity.intercession.flavor ? deity.intercession.flavor : [],
-			};
-			renderer.recursiveRender(entry, textStack);
-			if (deity.intercession.boon) {
-				Object.keys(deity.intercession.boon)
-					.map(key => `<p class="pf2-book__option"><strong>${key}&nbsp;</strong>${renderer.render(deity.intercession.boon[key])}</p>`)
-					.forEach(it => textStack.push(it))
+
+		Object.keys(deity.intercession).forEach(key => {
+			if (key.match(/^(Minor|Moderate|Major) (Boon|Curse)$/)) {
+				renderObj.entries[0].items.push({
+					type: "item",
+					name: key,
+					entries: deity.intercession[key],
+				});
 			}
-			if (deity.intercession.curse) {
-				Object.keys(deity.intercession.curse)
-					.map(key => `<p class="pf2-book__option"><strong>${key}&nbsp;</strong>${renderer.render(deity.intercession.curse[key])}</p>`)
-					.forEach(it => textStack.push(it))
-			}
-			// textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
-		}
-		return textStack.join("");
+		});
+
+		if (deity.intercession.flavor) renderObj.entries.unshift(...deity.intercession.flavor);
+
+		renderer.recursiveRender([renderObj], renderStack);
+		renderStack.push(Renderer.utils.getPageP(deity.intercession));
+
+		return renderStack.join("");
 	},
 
 	getImage (deity) {
-		const textStack = [""];
+		const renderStack = [""];
 		if (deity.images) {
 			const img = deity.images[0];
-			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
-			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
+			if (img.includes("2e.aonprd.com")) renderStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			else renderStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
 		}
-		return textStack.join("");
+		return renderStack.join("");
 	},
 
 	async pGetFluff (deity) {
@@ -5041,7 +5039,7 @@ Renderer.item = {
 			renderStack.push(`</p>`);
 		}
 		if (item.onset) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${item.onset}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${renderer.render(item.onset)}</p>`);
 		}
 
 		renderStack.push(Renderer.item.getShieldStats(item));
