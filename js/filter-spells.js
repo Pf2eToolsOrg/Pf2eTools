@@ -120,7 +120,7 @@ class PageFilterSpells extends PageFilter {
 		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
 		spell._fSubClasses = Object.entries(spell.subclass || {}).map(([k, v]) => {
 			return v.map(sc => {
-				const [cls, subCls] = k.split("|")
+				const [subCls, cls] = k.split("|")
 				return new FilterItem({
 					item: sc,
 					nest: `${subCls} (${cls})`,
