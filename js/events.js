@@ -22,8 +22,8 @@ class EventsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-6 pl-0">${it.name}</span>
-			<span class="col-3 text-center">${it.type}</span>
+			<span class="bold col-8 pl-0">${it.name}</span>
+			<span class="col-2 text-center">${it.level}</span>
 			<span class="col-3 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -34,7 +34,7 @@ class EventsPage extends ListPage {
 			{
 				hash,
 				source,
-				type: it.type,
+				level: it.level,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : ivI,
@@ -59,8 +59,8 @@ class EventsPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-6 pl-0">${it.name}</span>
-				<span class="col-6 text-center">${it.type}</span>
+				<span class="bold col-11 pl-0">${it.name}</span>
+				<span class="col-2 text-center">${it.level}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -71,7 +71,7 @@ class EventsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				type: it.type,
+				level: it.level,
 			},
 		);
 		return listItem;
@@ -79,22 +79,13 @@ class EventsPage extends ListPage {
 
 	doLoadHash (id) {
 		const it = this._dataList[id];
-		const $pgContent = $("#pagecontent").empty();
-		const buildStatsTab = () => {
-			$pgContent.append(Renderer.event.getRenderedString(it));
-
-			const $wrpTab = $(`#stat-tabs`);
-			$wrpTab.find(`.opt-feature-type`).remove();
-			const $wrpOptFeatType = $(`<div class="opt-feature-type"/>`).prependTo($wrpTab);
-			$(`<span class="roller">${it.type}</span>`)
-				.click(() => {
-					this._filterBox.setFromValues({"Feature Type": {[it.type]: 1}});
-					this.handleFilterChange();
-				}).appendTo($wrpOptFeatType);
-		};
+		const $content = $("#pagecontent").empty();
+		function buildStatsTab () {
+			$content.append(Renderer.event.getRenderedString(it));
+		}
 		const statsTab = Renderer.utils.tabButton(
-			"Opt. Feature",
-			() => {},
+			"Event",
+			() => { },
 			buildStatsTab,
 		);
 		Renderer.utils.bindTabButtons(statsTab);

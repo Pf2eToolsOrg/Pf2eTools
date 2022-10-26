@@ -2432,6 +2432,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@event":
+						fauxEntry.href.path = UrlUtil.PG_EVENTS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_EVENTS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 					case "@place":
 					case "@plane":
 					case "@nation":
@@ -5350,7 +5358,7 @@ Renderer.language = {
 
 Renderer.nation = {
 	getRenderedString (it, opts) {
-		opts = opts | {}
+		opts = opts || {}
 		const renderer = Renderer.get()
 		const renderStack = []
 		renderStack.push(Renderer.utils.getExcludedDiv(it, "nation", UrlUtil.PLACES))
@@ -5585,9 +5593,31 @@ Renderer.place = {
 	},
 };
 
+Renderer.event = {
+	getRenderedString (it, opts) {
+		opts = opts || {};
+		return $$`
+			${Renderer.utils.getExcludedDiv(it, "place", UrlUtil.PG_PLACE)}
+			${Renderer.utils.getNameDiv(it, { type: "EVENT" })}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(it.traits || [])}
+			${Renderer.event.getBody(it)}
+			${Renderer.generic.getRenderedEntries(it)}
+			${Renderer.utils.getPageP(it)}
+		`
+	},
+	getBody (it) {
+		let renderer = Renderer.get()
+		let textStack = []
+		if (it.applicableSkills) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Applicable Skills&nbsp;</strong>${renderer.render(Parser.parseSkills(it.applicableSkills, {toTags: true, toTitleCase: true}).join(", "))}`)
+		if (textStack.length) textStack.push(Renderer.utils.getDividerDiv())
+		return textStack.join("")
+	},
+};
+
 Renderer.plane = {
 	getRenderedString (it, opts) {
-		opts = opts | {}
+		opts = opts || {}
 		const renderer = Renderer.get()
 		const renderStack = []
 		renderStack.push(Renderer.utils.getExcludedDiv(it, it.category.toLowerCase() ?? "plane", UrlUtil.PLACES))
@@ -7131,6 +7161,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, "TRT", hash, { sourceOverride: "TRT", ...opts }, "traits.json", "trait");
 			case UrlUtil.PG_PLACES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "places.json", "place");
+			case UrlUtil.PG_EVENTS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "events.json", "event");
 
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
@@ -7785,6 +7817,8 @@ Renderer.hover = {
 				return Renderer.language.getRenderedString;
 			case UrlUtil.PG_TRAITS:
 				return Renderer.trait.getRenderedString;
+			case UrlUtil.PG_EVENTS:
+				return Renderer.event.getRenderedString;
 			case UrlUtil.PG_PLACES:
 				return Renderer.place.getRenderedString;
 			// region props
