@@ -2663,8 +2663,7 @@
 				"Elemental"
 			],
 			"cast": {
-				"number": 2,
-				"unit": "round",
+				"unit": "varies",
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
@@ -2695,7 +2694,7 @@
 				"{@b {@as 2} (somatic, verbal)} The spell is a 30-foot cone.",
 				"{@b {@as 3} (material, somatic, verbal)} The spell is a 30-foot cone.",
 				"On a failed saving throw, creatures are pushed 5 feet away from you, and on a critical failure they are pushed 10 feet away and are knocked {@condition prone}.",
-				"Two Rounds If you spend 3 actions {@action Cast a Spell||Casting the Spell}, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, the spell is as 3 actions, but the area is a 60-foot cone, and for 1 round, the elements linger in the cone, racing off into the distance and making approaching you difficult, with the effects of gust of wind."
+				"{@b Two Rounds} If you spend 3 actions {@action Cast a Spell||Casting the Spell}, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, the spell is as 3 actions, but the area is a 60-foot cone, and for 1 round, the elements linger in the cone, racing off into the distance and making approaching you difficult, with the effects of {@spell gust of wind}."
 			],
 			"heightened": {
 				"plusX": {
@@ -4031,8 +4030,7 @@
 				"primal"
 			],
 			"cast": {
-				"number": 2,
-				"unit": "round",
+				"unit": "varies",
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
@@ -4385,8 +4383,7 @@
 				"occult"
 			],
 			"cast": {
-				"number": 2,
-				"unit": "round",
+				"unit": "varies",
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
@@ -6927,7 +6924,10 @@
 			},
 			"targets": "1 willing or {@condition unconscious} creature of 8th level or lower",
 			"duration": {
-				"entry": "sustained"
+				"number": 10,
+				"unit": "minute",
+				"entry": "sustained",
+				"sustained": true
 			},
 			"entries": [
 				"You create an illusory magical double that physically looks and behaves very similarly to the target. This double is limited to moving, {@action Interact||Interacting}, speaking short sentences, and other similar basic tasks. It is unable to cast spells, attack, or use any complex skills.",
