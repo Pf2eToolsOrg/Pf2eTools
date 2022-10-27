@@ -1850,3 +1850,48 @@ Parser.getKeyByValue = function (object, value) {
 		return object[key] === value;
 	});
 }
+
+// Data: {Plant} Lore
+// Naked: Plant Lore
+// None: Lore
+// Tag: {@skill Lore||Plant Lore}
+Parser.parseSkills = function (array, opts) {
+	opts = opts || {}
+	if (opts.toTags && (opts.toNaked || opts.toNone)) throw new Error("Cannot convert to multiple types of strings!")
+
+	let newArray = opts.toTitleCase ? array.map(t => t.toTitleCase()) : array
+
+	return newArray.map((it) => {
+		if (opts.toTags) {
+			return `{@skill ${it.replace(/{.+}/g, "").trim()}||${it.replace(/{|}/g, "").trim()}}`
+		}
+		if (opts.toNaked) {
+			return it.replace(/{|}/g, "").trim()
+		}
+		if (opts.toNone) {
+			return it.replace(/{.+}/g, "").trim()
+		}
+	});
+}
+
+// Data: Scatter {10 ft.}
+// Naked: Scatter 10 ft.
+// Tag: {@trait Scatter||Scatter 10 ft.}
+Parser.parseTraits = function (array, opts) {
+	opts = opts || {}
+	if (opts.toTags && (opts.toNaked || opts.toNone)) throw new Error("Cannot convert to multiple types of strings!")
+
+	let newArray = opts.toTitleCase ? array.map(t => t.toTitleCase()) : array
+
+	return newArray.map((it) => {
+		if (opts.toTags) {
+			return `{@trait ${it.replace(/{.+}/g, "").trim()}||${it.replace(/{|}/g, "").trim()}}`
+		}
+		if (opts.toNaked) {
+			return it.replace(/{|}/g, "").trim()
+		}
+		if (opts.toNone) {
+			return it.replace(/{.+}/g, "").trim()
+		}
+	});
+}
