@@ -80,7 +80,7 @@
 					"$ref": "#/definitions/ancestryHeritageTrait"
 				},
 				{
-					"$ref": "#/definitions/schoolTraditionTrait"
+					"$ref": "#/definitions/traditionTrait"
 				},
 				{
 					"$ref": "#/definitions/combatTrait"
@@ -110,7 +110,8 @@
 				"archetype",
 				"dedication",
 				"esoterica",
-				"modification"
+				"modification",
+				"vigilante"
 			]
 		},
 		"spellTrait": {
@@ -184,23 +185,15 @@
 				"stance"
 			]
 		},
-		"schoolTraditionTrait": {
+		"traditionTrait": {
 			"type": "string",
-			"description": "A list of all School & Tradition traits.",
+			"description": "A list of all Tradition traits.",
 			"enum": [
 				"[magical tradition]",
-				"abjuration",
 				"arcane",
-				"conjuration",
-				"divination",
 				"divine",
-				"enchantment",
-				"evocation",
-				"illusion",
-				"necromancy",
 				"occult",
-				"primal",
-				"transmutation"
+				"primal"
 			]
 		},
 		"ancestryHeritageTrait": {
@@ -392,7 +385,7 @@
 		},
 		"schoolTrait": {
 			"type": "string",
-			"description": "A list of all _school traits.",
+			"description": "A list of all School traits.",
 			"enum": [
 				"abjuration",
 				"conjuration",
@@ -411,7 +404,6 @@
 				"academic",
 				"archetype",
 				"cantrip",
-				"city",
 				"downtime",
 				"evolution",
 				"exploration",
@@ -423,7 +415,6 @@
 				"litany",
 				"manipulate",
 				"metamagic",
-				"metropolis",
 				"militaristic",
 				"multiclass",
 				"oath",
@@ -436,11 +427,8 @@
 				"static",
 				"structure",
 				"tandem",
-				"town",
 				"true name",
 				"unbounded",
-				"vigilante",
-				"village",
 				"wayfaring"
 			]
 		},
@@ -678,7 +666,7 @@
 		},
 		"settlementTrait": {
 			"type": "string",
-			"description": "A list of all _settlement traits.",
+			"description": "A list of all Settlement traits.",
 			"enum": [
 				"city",
 				"metropolis",

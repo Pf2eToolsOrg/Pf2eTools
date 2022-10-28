@@ -90,7 +90,7 @@ class PageFilterSpells extends PageFilter {
 		this._traitFilter = new TraitsFilter({header: "Traits",
 			discardCategories: {
 				Class: true,
-				"Schools & Traditions": true,
+				"School": true,
 			},
 		});
 		this._schoolFilter = new Filter({
@@ -123,7 +123,7 @@ class PageFilterSpells extends PageFilter {
 				const [subCls, cls] = k.split("|")
 				return new FilterItem({
 					item: sc,
-					nest: `${subCls} (${cls})`,
+					nest: `${subCls} (${cls.replace(/\|.+/g, "")})`,
 				});
 			});
 		}).flat();

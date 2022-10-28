@@ -3229,7 +3229,7 @@ Renderer.utils = {
 				styles.push("pf2-trait--size");
 			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "_alignAbv")) {
 				styles.push("pf2-trait--alignment");
-			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "_settlement")) {
+			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "Settlement")) {
 				styles.push("pf2-trait--settlement");
 			}
 			if (options.doNotTagTraits) {
