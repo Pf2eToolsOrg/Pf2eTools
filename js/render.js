@@ -1994,7 +1994,8 @@ function Renderer () {
 
 			case "@trait": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
-				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(name)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(name);
+				const parsedName = Parser.parseTraits([name], {toNone: true})[0];
+				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(parsedName)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(parsedName);
 				const fauxEntry = {
 					type: "link",
 					href: {
@@ -2006,7 +2007,7 @@ function Renderer () {
 							source,
 						},
 					},
-					text: (displayText || name),
+					text: (displayText || Parser.parseTraits([name], {toNaked: true})[0]),
 				};
 
 				this._recursiveRender(fauxEntry, textStack, meta);
@@ -3251,7 +3252,7 @@ Renderer.utils = {
 				const procHash = hash.replace(/'/g, "\\'");
 				const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
 
-				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
+				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${Parser.parseTraits([trait], {toNaked: true})[0]}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
 			}
 		}
 		return traitsHtml.join("")
