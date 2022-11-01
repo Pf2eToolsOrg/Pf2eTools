@@ -212,6 +212,9 @@ function Renderer () {
 	 */
 	this.recursiveRender = function (entry, textStack, options) {
 		if (entry instanceof Array) {
+			if (!entry.length) {
+				entry = ["{@note No entries found.}"];
+			}
 			entry.forEach(nxt => this.recursiveRender(nxt, textStack, options));
 			return;
 		}
