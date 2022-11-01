@@ -8828,7 +8828,19 @@
 			},
 			"entries": [
 				"You gain a sixth sense that warns you of danger that might befall the target of the spell. If you choose a creature other than yourself as the target, you create a psychic link through which you can inform the target of danger. This link is a {@trait mental} effect. Due to the amount of information this spell requires you to process, you can't have more than one {@spell foresight} spell in effect at a time. Casting foresight again ends the previous foresight. While foresight is in effect, the target gains a +2 status bonus to initiative rolls and isn't {@condition flat-footed} against {@condition undetected} creatures or when flanked. In addition, you gain the following reaction.",
-				"Foresight {@as R} Trigger The target of foresight defends against a {@condition hostile} creature or other danger. Effect If the {@condition hostile} creature or danger forces the target to roll dice (a saving throw, for example), the target rolls twice and uses the higher result, and this spell gains the {@trait fortune} trait. But if the {@condition hostile} creature or danger is rolling against the target (an attack roll or skill check, for example), that {@condition hostile} creature or danger rolls twice and uses the lower result, and this spell gains the {@trait misfortune} trait."
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Foresight",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The target of foresight defends against a {@condition hostile} creature or other danger."
+					,"entries": [
+						"If the {@condition hostile} creature or danger forces the target to roll dice (a saving throw, for example), the target rolls twice and uses the higher result, and this spell gains the {@trait fortune} trait. But if the {@condition hostile} creature or danger is rolling against the target (an attack roll or skill check, for example), that {@condition hostile} creature or danger rolls twice and uses the lower result, and this spell gains the {@trait misfortune} trait."
+					]
+				}
 			]
 		},
 		{
