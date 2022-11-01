@@ -1635,11 +1635,10 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -2050,7 +2049,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact"
+				"components": [
+					"{@action Interact}"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -7719,7 +7720,9 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "command, Interact"
+				"components": [
+					"command", "{@action Interact}"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -8357,12 +8360,14 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Intimidating Strike"
+				"components": [
+					"{@feat Intimidating Strike}"
+				]
 			},
 			"category": "Talisman",
 			"entries": [
-				"Dark smoke seems to writhe within this obsidian gem. When you activate the gem, you make an Intimidating {@action Strike}, as the fighter feat (page 146)",
-				"If you have the Intimidating {@action Strike} feat, increase the {@condition frightened} condition value from this Intimidating {@action Strike} to {@condition frightened 2}, or {@condition frightened 3} on a critical hit."
+				"Dark smoke seems to writhe within this obsidian gem. When you activate the gem, you make an {@feat Intimidating Strike}, as the fighter feat.",
+				"If you have the {@feat Intimidating Strike} feat, increase the {@condition frightened} condition value from this Intimidating {@action Strike} to {@condition frightened 2}, or {@condition frightened 3} on a critical hit."
 			]
 		},
 		{
@@ -11388,7 +11393,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Brutal Finish"
+				"components": [
+					"Brutal Finish"
+				]
 			},
 			"category": "Talisman",
 			"entries": [
@@ -11419,13 +11426,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Certain Strike",
+				"components": [
+					"{@feat Certain Strike}"
+				],
 				"requirements": "You are a master with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
-				"This small iron band has a shifting weight that helps equalize the affixed weapon's balance. When you activate it, you use Certain {@action Strike}, as the fighter feat (page 150). You must meet the normal requirements, including those of the {@trait press} trait.",
-				"If you have the Certain {@action Strike} feat, the failure effect increases to deal the weapon's normal damage."
+				"This small iron band has a shifting weight that helps equalize the affixed weapon's balance. When you activate it, you use {@feat Certain Strike}, as the fighter feat. You must meet the normal requirements, including those of the {@trait press} trait.",
+				"If you have the {@feat Certain Strike} feat, the failure effect increases to deal the weapon's normal damage."
 			]
 		},
 		{
@@ -11552,7 +11561,9 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "command, Interact"
+				"components": [
+					"command","{@action Interact}"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -14779,17 +14790,19 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact or 1 or more days"
+				"components": [
+					"{@action Interact} or 1 or more days"
+				]
 			},
 			"category": "Tool",
 			"entries": [
 				"An alchemist with the {@action Craft} Philosopher's Stone feat can create a philosopher's stone once per month by spending 1 batch of infused reagents during their daily preparations using the advanced alchemy class feature. This is the only way to create a philosopher's stone.",
-				"At a glance, a philosopher's stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a {@action Force Open} action (DC 35) reveals a cavity at the stone's heart. The cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an elixir of rejuvenation (page 548)",
+				"At a glance, a philosopher's stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a {@action Force Open} action (DC 35) reveals a cavity at the stone's heart. The cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an {@item elixir of rejuvenation}.",
 				"To use the quicksilver, you must be legendary in {@skill Crafting} and have the {@feat Alchemical Crafting} feat. You can then use the stone's quicksilver for one of two effects:",
 				{
 					"type": "list",
 					"items": [
-						"You can apply the stone's quicksilver to an infused true elixir of life using an {@action Interact} action. This turns the elixir into an infused elixir of rejuvenation instantaneously. This doesn't require any crafting time or additional materials.",
+						"You can apply the stone's quicksilver to an {@trait infused} {@item true elixir of life} using an {@action Interact} action. This turns the elixir into an {@trait infused} {@item elixir of rejuvenation} instantaneously. This doesn't require any crafting time or additional materials.",
 						"You can spend up to a month of downtime applying the quicksilver either to iron to create silver or to lead to create gold. Treat this as a 20th-level task to {@action Earn Income} using {@skill Crafting}, except that you create 500 gp worth of your chosen metal per day on a success or 750 gp worth per day on a critical success."
 					]
 				}
@@ -19097,7 +19110,9 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "{@action Cast a Spell}"
+				"components": [
+					"{@action Cast a Spell}"
+				]
 			},
 			"ammunition": [
 				"any"
