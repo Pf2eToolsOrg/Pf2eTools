@@ -985,7 +985,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -1167,7 +1167,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -1335,7 +1335,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -1364,7 +1364,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -1597,12 +1597,12 @@
 			"name": "Arrow",
 			"source": "CRB",
 			"page": 282,
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 1,
 				"note": "(price for 10)"
 			},
+			"bulk": "L",
 			"category": "Ammunition",
 			"entries": [
 				"These projectiles are the ammunition for bows. The shaft of an arrow is made of wood. It is stabilized in flight by fletching at one end and bears a metal head on the other."
@@ -1634,11 +1634,10 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -1676,7 +1675,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -1684,7 +1683,6 @@
 				"This toxin is a compound of arsenic and other substances. You can't reduce your {@condition sickened} condition while affected.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 18,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -1953,7 +1951,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -1999,7 +1997,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -2049,14 +2047,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact"
+				"components": [
+					"{@action Interact}"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"Sometimes called \"deadly nightshade,\" belladonna is a widely available toxin produced from a plant similar to a tomato.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 19,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -2320,7 +2319,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -2462,7 +2461,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -2470,7 +2469,6 @@
 				"Adder venom is a simple but effective way to enhance a weapon.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 18,
 					"savingThrow": "Fortitude",
 					"maxDuration": "3 rounds",
@@ -2519,7 +2517,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -2527,7 +2525,6 @@
 				"Black lotus extract causes severe internal bleeding.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 42,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -2597,7 +2594,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -2605,7 +2602,6 @@
 				"This tacky, hardened sap is harvested from trees infected by fungal blights and exposed to open flames.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 31,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -2688,7 +2684,6 @@
 			"name": "Blowgun Dart",
 			"source": "CRB",
 			"page": 281,
-			"traits": [],
 			"price": {
 				"coin": "cp",
 				"amount": 5,
@@ -2704,12 +2699,12 @@
 			"name": "Bolt",
 			"source": "CRB",
 			"page": 281,
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 1,
 				"note": "(price for 10)"
 			},
+			"bulk": "L",
 			"category": "Ammunition",
 			"entries": [
 				"Shorter than traditional arrows but similar in construction, bolts are the ammunition used by crossbows."
@@ -2768,7 +2763,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -3310,7 +3305,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -3463,7 +3458,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -3471,7 +3466,6 @@
 				"Fumes from the forges of Hell drain health and strength alike.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 36,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
@@ -3674,7 +3668,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -3795,7 +3789,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -3965,7 +3959,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -4504,7 +4498,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -5116,7 +5110,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -5565,7 +5559,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -5573,7 +5567,6 @@
 				"This thick substance is distilled from the mind-robbing cytillesh fungus, though it lacks memory-altering capabilities.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 19,
 					"savingThrow": "Fortitude",
 					"maxDuration": "4 rounds",
@@ -5816,7 +5809,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -6328,7 +6321,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -6336,7 +6329,6 @@
 				"The toxic deathcap mushroom can be dried, ground, and treated to form a flavorless powder with accelerated effects.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 33,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -6450,7 +6442,7 @@
 			"category": "Armor",
 			"entries": [
 				"Crafted from black iron, this crude suit of +2 resilient full plate is designed to make you look like a horned demon, with your face peering out of the screaming maw of the beast.",
-				"While wearing the armor, you can attack with the helmet's horns. They are a martial melee weapon with the effects of a +2 weapon potency rune. They deal {@damage 2d8} piercing damage and have the deadly d12 trait. On a critical hit with the horns, the target must attempt a DC 30 Fortitude save against the Abyssal plague disease (page 316). The horns can't be etched with any runes.",
+				"While wearing the armor, you can attack with the helmet's horns. They are a martial melee weapon with the effects of a +2 weapon potency rune. They deal {@damage 2d8} piercing damage and have the deadly <d12> trait. On a critical hit with the horns, the target must attempt a DC 30 Fortitude save against the Abyssal plague disease (page 316). The horns can't be etched with any runes.",
 				"If you aren't evil, you're {@condition drained 2} and can't recover from this condition while wearing demon armor.",
 				{
 					"type": "ability",
@@ -6677,7 +6669,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -6845,7 +6837,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -6853,7 +6845,6 @@
 				"A mix of digestive juices and green dragon poison glands nauseates the victim as its flesh is digested from within.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 37,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -6930,7 +6921,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -7458,7 +7449,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -7488,7 +7479,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -7515,7 +7506,7 @@
 			"bulk": 1,
 			"category": "Weapon",
 			"entries": [
-				"This +2 striking warhammer is inlaid with precious metals and decorated with geometric patterns in a dwarven style. If you're a dwarf, a dwarven thrower functions for you as a +2 greater striking returning warhammer with the thrown 30 feet trait, and your attacks with the hammer deal {@damage 1d8} additional damage against giants."
+				"This +2 striking warhammer is inlaid with precious metals and decorated with geometric patterns in a dwarven style. If you're a dwarf, a dwarven thrower functions for you as a +2 greater striking returning warhammer with the thrown <30 feet> trait, and your attacks with the hammer deal {@damage 1d8} additional damage against giants."
 			]
 		},
 		{
@@ -7537,7 +7528,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -7643,7 +7634,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				],
 				"requirements": "You're an expert in {@skill Acrobatics}."
 			},
@@ -7717,7 +7708,10 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "command, Interact"
+				"components": [
+					"command",
+					"{@action Interact}"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -7745,7 +7739,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -8141,7 +8135,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -8355,12 +8349,14 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Intimidating Strike"
+				"components": [
+					"{@feat Intimidating Strike}"
+				]
 			},
 			"category": "Talisman",
 			"entries": [
-				"Dark smoke seems to writhe within this obsidian gem. When you activate the gem, you make an Intimidating {@action Strike}, as the fighter feat (page 146)",
-				"If you have the Intimidating {@action Strike} feat, increase the {@condition frightened} condition value from this Intimidating {@action Strike} to {@condition frightened 2}, or {@condition frightened 3} on a critical hit."
+				"Dark smoke seems to writhe within this obsidian gem. When you activate the gem, you make an {@feat Intimidating Strike}, as the fighter feat.",
+				"If you have the {@feat Intimidating Strike} feat, increase the {@condition frightened} condition value from this Intimidating {@action Strike} to {@condition frightened 2}, or {@condition frightened 3} on a critical hit."
 			]
 		},
 		{
@@ -9208,7 +9204,7 @@
 					"unit": "free"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				],
 				"requirements": "You're a master in {@skill Intimidation}.",
 				"trigger": "You attack an adjacent creature and haven't rolled your attack roll"
@@ -9346,7 +9342,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -9354,7 +9350,6 @@
 				"Giant centipede venom causes severe muscle stiffness.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 17,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -9402,7 +9397,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -9410,7 +9405,6 @@
 				"Scorpion venom is excruciating and its effects are somewhat debilitating.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 22,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -9458,7 +9452,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -9466,7 +9460,6 @@
 				"Giant wasp venom interferes with a victim's movement.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 25,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -9791,7 +9784,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -9799,7 +9792,6 @@
 				"The opaque white sap from the graveroot shrub clouds the mind.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 19,
 					"savingThrow": "Fortitude",
 					"maxDuration": "4 rounds",
@@ -10346,7 +10338,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -10469,7 +10461,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -10477,7 +10469,6 @@
 				"Concentrated hemlock is a particularly deadly toxin that halts muscle action\u2014including that of the victim's heart.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 40,
 					"savingThrow": "Fortitude",
 					"onset": "30 minutes",
@@ -10974,7 +10965,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -10982,7 +10973,6 @@
 				"This venom erodes its target's defenses, aiding the spider in securing prey.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 21,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -11161,7 +11151,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -11323,7 +11313,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -11386,7 +11376,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Brutal Finish"
+				"components": [
+					"Brutal Finish"
+				]
 			},
 			"category": "Talisman",
 			"entries": [
@@ -11417,13 +11409,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Certain Strike",
+				"components": [
+					"{@feat Certain Strike}"
+				],
 				"requirements": "You are a master with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
-				"This small iron band has a shifting weight that helps equalize the affixed weapon's balance. When you activate it, you use Certain {@action Strike}, as the fighter feat (page 150). You must meet the normal requirements, including those of the {@trait press} trait.",
-				"If you have the Certain {@action Strike} feat, the failure effect increases to deal the weapon's normal damage."
+				"This small iron band has a shifting weight that helps equalize the affixed weapon's balance. When you activate it, you use {@feat Certain Strike}, as the fighter feat. You must meet the normal requirements, including those of the {@trait press} trait.",
+				"If you have the {@feat Certain Strike} feat, the failure effect increases to deal the weapon's normal damage."
 			]
 		},
 		{
@@ -11550,7 +11544,10 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "command, Interact"
+				"components": [
+					"command",
+					"{@action Interact}"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -11581,7 +11578,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -11714,7 +11711,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -11865,7 +11862,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -11923,7 +11920,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -11931,7 +11928,6 @@
 				"Lethargy poison is commonly used in hit-and-run tactics by drow and others who want their victims alive; the ambusher retreats until the poison sets in and the victim falls {@condition unconscious}. Further exposure to lethargy poison does not require the target to attempt additional saving throws; only failing an saving throw against an ongoing exposure can progress its stage.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 18,
 					"savingThrow": "Fortitude",
 					"maxDuration": "4 hours",
@@ -11984,7 +11980,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -11992,7 +11988,6 @@
 				"Dust salvaged from the remains of a destroyed lich has paralytic properties that make it a valuable poison.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 28,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -12493,7 +12488,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -12501,7 +12496,6 @@
 				"Malyass root paste sees use to impede opponents in athletic competitions, in addition to espionage and tracking.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 26,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -12976,7 +12970,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -12984,7 +12978,6 @@
 				"Mindfog mist can be used to undermine spellcasters, as its effect on a victim's mental faculties are swift and powerful.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 35,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
@@ -13044,7 +13037,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -13835,7 +13828,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -13867,7 +13860,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -13875,7 +13868,6 @@
 				"Concentrated sap of stinging weeds makes an effective toxin.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 27,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -13924,7 +13916,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -13932,7 +13924,6 @@
 				"Purportedly sourced from any number of outlandish locales, nightmare vapor is most often created by boiling the sweat collected from humanoids caught in the throes of terrible nightmares.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 36,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
@@ -14017,7 +14008,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -14067,7 +14058,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -14100,7 +14091,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -14155,7 +14146,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -14187,7 +14178,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -14223,7 +14214,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -14615,7 +14606,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -14686,7 +14677,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -14777,17 +14768,19 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact or 1 or more days"
+				"components": [
+					"{@action Interact} or 1 or more days"
+				]
 			},
 			"category": "Tool",
 			"entries": [
-				"An alchemist with the {@action Craft} Philosopher's Stone feat can create a philosopher's stone once per month by spending 1 batch of infused reagents during their daily preparations using the advanced alchemy class feature. This is the only way to create a philosopher's stone.",
-				"At a glance, a philosopher's stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a {@action Force Open} action (DC 35) reveals a cavity at the stone's heart. The cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an elixir of rejuvenation (page 548)",
+				"An {@class alchemist} with the {@feat Craft Philosopher's Stone} feat can create a philosopher's stone once per month by spending 1 batch of infused reagents during their daily preparations using the advanced alchemy class feature. This is the only way to create a philosopher's stone.",
+				"At a glance, a philosopher's stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a {@action Force Open} action (DC 35) reveals a cavity at the stone's heart. The cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an {@item elixir of rejuvenation}.",
 				"To use the quicksilver, you must be legendary in {@skill Crafting} and have the {@feat Alchemical Crafting} feat. You can then use the stone's quicksilver for one of two effects:",
 				{
 					"type": "list",
 					"items": [
-						"You can apply the stone's quicksilver to an infused true elixir of life using an {@action Interact} action. This turns the elixir into an infused elixir of rejuvenation instantaneously. This doesn't require any crafting time or additional materials.",
+						"You can apply the stone's quicksilver to an {@trait infused} {@item true elixir of life} using an {@action Interact} action. This turns the elixir into an {@trait infused} {@item elixir of rejuvenation} instantaneously. This doesn't require any crafting time or additional materials.",
 						"You can spend up to a month of downtime applying the quicksilver either to iron to create silver or to lead to create gold. Treat this as a 20th-level task to {@action Earn Income} using {@skill Crafting}, except that you create 500 gp worth of your chosen metal per day on a success or 750 gp worth per day on a critical success."
 					]
 				}
@@ -15027,7 +15020,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15090,7 +15083,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15122,7 +15115,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15150,7 +15143,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15236,7 +15229,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15300,7 +15293,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15332,7 +15325,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15364,7 +15357,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -15472,7 +15465,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -15480,7 +15473,6 @@
 				"Venom from enormous purple worms leaves a victim weakened.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 32,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -15525,7 +15517,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -16844,7 +16836,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -16907,7 +16899,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -16970,7 +16962,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -17256,7 +17248,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -17344,7 +17336,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -17507,7 +17499,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -17610,7 +17602,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -17618,7 +17610,6 @@
 				"Distilled from the Plane of Shadow, this oily substance imposes tenebrous effects. The {@condition enfeebled} condition from shadow essence lasts for 24 hours.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 29,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -17799,7 +17790,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"onset": "1 minute",
@@ -18300,7 +18291,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Tool",
@@ -18329,7 +18320,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -18570,7 +18561,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -18657,7 +18648,6 @@
 			"name": "Sling Bullets",
 			"source": "CRB",
 			"page": 282,
-			"traits": [],
 			"price": {
 				"coin": "cp",
 				"amount": 1,
@@ -18734,7 +18724,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -18743,7 +18733,6 @@
 				"Characters {@condition unconscious} from slumber wine can't wake up by any means while the poison lasts, don't need to eat or drink while {@condition unconscious} in this way, and appear to be recently dead unless an examiner succeeds at a DC 40 {@skill Medicine} check.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 32,
 					"savingThrow": "Fortitude",
 					"onset": "1 hour",
@@ -18786,7 +18775,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Tool",
@@ -18859,7 +18848,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Tool",
@@ -18930,7 +18919,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				],
 				"requirements": "You are an expert in {@skill Thievery}."
 			},
@@ -19095,7 +19084,9 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "{@action Cast a Spell}"
+				"components": [
+					"{@action Cast a Spell}"
+				]
 			},
 			"ammunition": [
 				"any"
@@ -19377,7 +19368,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -19385,7 +19376,6 @@
 				"A paste made by mashing the fine, threadlike roots of a certain creeper vine, spider root renders a victim {@condition clumsy} and maladroit.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 28,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -20600,7 +20590,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -20638,7 +20628,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -20669,7 +20659,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -21017,7 +21007,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Tool",
@@ -21302,7 +21292,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -21310,7 +21300,6 @@
 				"Tears of death are among the most powerful of alchemical poisons, distilled from extracts of five other deadly poisons in just the right ratios.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 46,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -21844,7 +21833,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Tool",
@@ -22071,7 +22060,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -22105,7 +22094,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -23394,7 +23383,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -23493,7 +23482,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -23502,7 +23491,6 @@
 				"If you are afflicted with lycanthropy and survive stage 3 of wolfsbane, you're immediately cured of the lycanthropy.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 30,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -23687,7 +23675,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -23695,7 +23683,6 @@
 				"Properly harvested and preserved, the poison from a wyvern's sting is effective and direct.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 26,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",

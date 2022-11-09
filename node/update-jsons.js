@@ -43,6 +43,12 @@ function updateFolder (folder) {
 						}
 						return x
 					}
+					console.log(x.name, x.source)
+					if (x.activate && !Array.isArray(x.activate.components)) {
+						console.log(`\tUpdating ${x.name} components to array in ${file}...`)
+						x.activate.components = [x.activate.components]
+						return x
+					}
 					return x
 				})
 			}
