@@ -13,7 +13,7 @@ class PageFilterTables extends PageFilter {
 		this._sourceFilter = new SourceFilter({
 			selFn: PageFilterTables._sourceSelFn,
 		});
-		
+
 		this._miscFilter = new Filter({header: "Miscellaneous"});
 	}
 
@@ -26,7 +26,6 @@ class PageFilterTables extends PageFilter {
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
-
 		this._sourceFilter.addItem(it._fSources);
 		this._miscFilter.addItem(it._fMisc);
 	}
