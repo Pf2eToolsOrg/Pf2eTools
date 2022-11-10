@@ -1756,7 +1756,7 @@
 			},
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"entries": [
-				"You dive into the fray before rewinding yourself to safety. {@action Stride} up to your Speed. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You then teleport back to the square from which you began your Snapback Charge. You can use Reversing Charge while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type."
+				"You dive into the fray before rewinding yourself to safety. {@action Stride} up to your Speed. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You then teleport back to the square from which you began your Reversing Charge. You can use Reversing Charge while {@action Burrow||Burrowing}, {@action Climb||Climbing}, {@action Fly||Flying}, or {@action Swim||Swimming} instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -1835,7 +1835,7 @@
 				]
 			},
 			"entries": [
-				"You reach into another creature's timeline and attempt to alter their flow of time. Select a creature within 30 feet. That creature attempts a Fortitude saving throw against your chronoskimmer DC. The creature takes the effects of slow based on the result of its saving throw."
+				"You reach into another creature's timeline and attempt to alter their flow of time. Select a creature within 30 feet. That creature attempts a Fortitude saving throw against your chronoskimmer DC. The creature takes the effects of {@spell slow} based on the result of its saving throw."
 			]
 		},
 		{
@@ -1908,7 +1908,7 @@
 			},
 			"trigger": "Your turn begins.",
 			"entries": [
-				"You travel just a few moments into the future to immediately arrive at your destination. Your Strides are augmented until the end of your turn, allowing you to instantly teleport to any point you could reach with your {@action Stride} instead of traversing normally to the location. Your augmented Strides have the teleport trait and don't trigger reactions that can be triggered by move actions or upon leaving or entering a square. You also augment your {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} actions in this way if you have the corresponding movement type."
+				"You travel just a few moments into the future to immediately arrive at your destination. Your {@action Stride||Strides} are augmented until the end of your turn, allowing you to instantly teleport to any point you could reach with your {@action Stride} instead of traversing normally to the location. Your augmented {@action Stride||Strides} have the {@trait teleport} trait and don't trigger reactions that can be triggered by move actions or upon leaving or entering a square. You also augment your {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} actions in this way if you have the corresponding movement type."
 			]
 		},
 		{
@@ -4768,7 +4768,7 @@
 				"psyche",
 				"psychic"
 			],
-			"requirements": "wandering reverie subconscious mind",
+			"requirements": "{@class psychic|da|wandering reverie subconscious mind|wandering}",
 			"entries": [
 				"You {@action Stride} into a willing ally's space, at which point both of your appearances shift into a shared third appearance, usually one that looks like a mix of the two of you. Then, either you or your ally Steps. You each maintain the merged appearance.",
 				"Creatures who are observing this know what happened, but still must {@action Seek} or otherwise engage with the illusion to attempt to disbelieve it and determine which of you is which. Otherwise, they can't tell the difference and have an equal chance to target each of you (DC {@flatDC 11} flat check). This illusion ends as soon as either you or the ally you're merged with acts."
@@ -4789,7 +4789,7 @@
 				"psyche",
 				"psychic"
 			],
-			"requirements": "emotional acceptance subconscious mind",
+			"requirements": "{@class psychic|da|emotional acceptance subconscious mind|emotion}",
 			"entries": [
 				"Your heart soars, increasing your power for a moment. You gain a +2 status bonus to attack rolls and skill checks until the start of your next turn."
 			]
@@ -4808,7 +4808,7 @@
 				"psyche",
 				"psychic"
 			],
-			"requirements": "precise discipline subconscious mind",
+			"requirements": "{@class psychic|da|precise discipline subconscious mind|discipline}",
 			"entries": [
 				"You bring discipline to your mind and magic, ensuring that you don't under-perform. Until the end of your turn, instead of rolling dice for damage, count each damage die as average damage rounded up (3 for d4, 4 for d6, 5 for d8, 6 for d10, and 7 for d12)."
 			]
@@ -4826,7 +4826,7 @@
 				"psyche",
 				"psychic"
 			],
-			"requirements": "gathered lore subconscious mind",
+			"requirements": "{@class psychic|da|gathered lore subconscious mind|gathered lore}",
 			"entries": [
 				"Seeing an enemy's attack, you quickly consult multiple scraps of lore in your mind, synthesizing them into the perfect plan.",
 				"Make a check to {@action Recall Knowledge} (using an appropriate skill) about one creature within 60 feet. On a success, in addition to the normal benefits, you gain a +1 circumstance bonus to your next attack roll against that creature and to your AC against the creature's next attack. On a critical success, the bonuses are +2."
