@@ -3015,7 +3015,7 @@
 						"inhaled",
 						"poison"
 					],
-					"note": " The {@condition enfeebled} condition\nfrom ash web remains even after the poison's duration\nends. The condition's value reduces by 1 per hour. Gugs\nare immune to this poison; instead, they have vivid\nand strange dreams when they sleep after ingesting\nash web.",
+					"note": " The {@condition enfeebled} condition from ash web remains even after the poison's duration ends. The condition's value reduces by 1 per hour. Gugs are immune to this poison; instead, they have vivid and strange dreams when they sleep after ingesting ash web.",
 					"DC": 29,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -3415,11 +3415,11 @@
 						"poison",
 						"virulent"
 					],
-					"note": " Each round,\nat the beginning of their turn, a creature affected by\nblackfinger blight must succeed at a DC {@flatDC 5} flat check or\ndrop one random item they're holding",
+					"note": " Each round, at the beginning of their turn, a creature affected by blackfinger blight must succeed at a DC {@flatDC 5} flat check or drop one random item they're holding",
 					"DC": 40,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
-					"maxDuration": "6\nrounds",
+					"maxDuration": "6 rounds",
 					"stages": [
 						{
 							"stage": 1,
@@ -4287,7 +4287,7 @@
 						"acid",
 						"poison"
 					],
-					"note": " Oozes are immune\nto this poison",
+					"note": " Oozes are immune to this poison",
 					"DC": 38,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
@@ -7166,7 +7166,7 @@
 						"inhaled",
 						"poison"
 					],
-					"note": "\nCreatures with the {@trait ethereal} trait\nare immune",
+					"note": " Creatures with the {@trait ethereal} trait are immune",
 					"DC": 26,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -11737,7 +11737,16 @@
 					],
 					"trigger": "A creature enters a square either fully or partially filled with rubble in the middle of the room",
 					"entries": [
-						"Six ghostly kobolds surge out of the rubble with eerie yowls. Each creature in area A7 must attempt a DC 18 Will save with the following results. The haunt then rolls initiative. Critical Success The creature is unaffected, is temporarily immune to Confusing Confrontation for 24 hours, and realizes that a display of intimidating dominance might quell the ghostly kobolds' assault. Success The creature is {@condition frightened|CRB|frightened 1}. Failure The creature is {@condition confused} for 1 round and is {@condition frightened|CRB|frightened 2}. Critical Failure The creature is {@condition confused} for 2 rounds and is {@condition frightened|CRB|frightened 3}."
+						"Six ghostly kobolds surge out of the rubble with eerie yowls. Each creature in area A7 must attempt a DC 18 Will save with the following results. The haunt then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected, is temporarily immune to Confusing Confrontation for 24 hours, and realizes that a display of intimidating dominance might quell the ghostly kobolds' assault.",
+								"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
+								"Failure": "The creature is {@condition confused} for 1 round and is {@condition frightened|CRB|frightened 2}.",
+								"Critical Failure": "The creature is {@condition confused} for 2 rounds and is {@condition frightened|CRB|frightened 3}"
+							}
+						}
 					],
 					"name": "Confusing Confrontation"
 				}
