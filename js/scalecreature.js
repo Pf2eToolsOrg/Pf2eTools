@@ -420,6 +420,7 @@ class ScaleCreature {
 	}
 
 	_initRng (cr, toLvl) {
+		if (typeof toLvl !== "number") throw Error(`toLvl must be an integer!`);
 		let h = CryptUtil.hashCode(toLvl);
 		h = 31 * h + CryptUtil.hashCode(cr.source);
 		h = 31 * h + CryptUtil.hashCode(cr.name);

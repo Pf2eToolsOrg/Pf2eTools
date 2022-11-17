@@ -77,7 +77,7 @@
 				{
 					"name": "Arcane Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 23,
 					"attack": 15,
 					"entry": {
@@ -445,7 +445,7 @@
 						],
 						"DC": 18,
 						"savingThrow": "Fortitude",
-						"maxDuration": "4\nrounds",
+						"maxDuration": "4 rounds",
 						"stages": [
 							{
 								"stage": 1,
@@ -603,8 +603,8 @@
 					"attack": 8,
 					"traits": [
 						"propulsive",
-						"range increment 50 feet",
-						"reload 1"
+						"range increment <50 feet>",
+						"reload <1>"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6} bludgeoning",
@@ -822,7 +822,7 @@
 					"attack": 12,
 					"traits": [
 						"nonlethal",
-						"reach 10 feet",
+						"reach <10 feet>",
 						"shove"
 					],
 					"effects": [],
@@ -939,7 +939,7 @@
 					"name": "stinger",
 					"attack": 11,
 					"traits": [
-						"deadly d8"
+						"deadly <d8>"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+4} piercing",
@@ -1288,7 +1288,7 @@
 					"name": "stinger",
 					"attack": 8,
 					"traits": [
-						"deadly d6",
+						"deadly <d6>",
 						"finesse"
 					],
 					"effects": [],
@@ -1429,7 +1429,7 @@
 					"attack": 10,
 					"traits": [
 						"agile",
-						"thrown 20 feet"
+						"thrown <20 feet>"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+4} bludgeoning",
@@ -1656,10 +1656,10 @@
 					"name": "shortbow",
 					"attack": 12,
 					"traits": [
-						"deadly d10",
+						"deadly <d10>",
 						"magical",
-						"range increment 60 feet",
-						"reload 0"
+						"range increment <60 feet>",
+						"reload <0>"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6} piercing",
@@ -1746,7 +1746,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d6+4} piercing Ranged shortbow +12 (deadly d10, magical, range increment 60 feet, reload 0), Damage {@damage 1d6} piercing Primal Innate Spells DC 20; 2nd speak with animals (at will); 1st gust of wind, spider sting; Cantrips (2nd) prestidigitation."
+							"{@damage 1d6+4} piercing Ranged shortbow +12 (deadly <d10>, magical, range increment <60 feet>, reload <0>), Damage {@damage 1d6} piercing Primal Innate Spells DC 20; 2nd speak with animals (at will); 1st gust of wind, spider sting; Cantrips (2nd) prestidigitation."
 						],
 						"name": "S), Damage"
 					},
@@ -1880,7 +1880,7 @@
 						"traits": [
 							"poison"
 						],
-						"note": " A scrit's fingers are perpetually\ncovered in smeared ink from the writing it's\ndestroyed. This ink mixes with its skin oils to\ncreate a disgusting, sticky poison.",
+						"note": " A scrit's fingers are perpetually covered in smeared ink from the writing it's destroyed. This ink mixes with its skin oils to create a disgusting, sticky poison.",
 						"DC": 14,
 						"savingThrow": "Fortitude",
 						"maxDuration": "4 rounds",
@@ -2494,8 +2494,8 @@
 					"attack": 11,
 					"traits": [
 						"propulsive",
-						"range increment 50 feet",
-						"reload 1"
+						"range increment <50 feet>",
+						"reload <1>"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+5} bludgeoning",
@@ -2602,7 +2602,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d6+7} bludgeoning Ranged sling +11 (propulsive, range increment 50 feet, reload 1), Damage {@damage 1d6+5} bludgeoning Primal Prepared Spells DC 22, attack +14; 3rd earthbind, summon elemental (earth only); 2nd darkvision, glitterdust, shatter; 1st command (animals only), grease, pass without trace; Cantrips (3rd) acid splash, dancing lights, know direction, shield, tanglefoot."
+							"{@damage 1d6+7} bludgeoning Ranged sling +11 (propulsive, range increment <50 feet>, reload <1>), Damage {@damage 1d6+5} bludgeoning Primal Prepared Spells DC 22, attack +14; 3rd earthbind, summon elemental (earth only); 2nd darkvision, glitterdust, shatter; 1st command (animals only), grease, pass without trace; Cantrips (3rd) acid splash, dancing lights, know direction, shield, tanglefoot."
 						],
 						"name": "P), Damage"
 					},
@@ -2726,7 +2726,7 @@
 					"name": "staff",
 					"attack": 9,
 					"traits": [
-						"two-hand d8"
+						"two-hand <d8>"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+1} bludgeoning",
@@ -3067,7 +3067,7 @@
 					"name": "pick",
 					"attack": 14,
 					"traits": [
-						"fatal d10",
+						"fatal <d10>",
 						"shove"
 					],
 					"effects": [],

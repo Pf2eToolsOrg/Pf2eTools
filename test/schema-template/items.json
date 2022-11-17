@@ -276,39 +276,62 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": [
-					"source",
-					"name",
-					"page"
-				],
-				"anyOf": [
+				"allOf": [
 					{
-						"not": {
-							"required": [
-								"generic",
-								"add_hash"
-							]
-						}
+						"anyOf": [
+							{
+								"required": [
+									"source",
+									"name",
+									"page",
+									"variantType"
+								]
+							},
+							{
+								"required": [
+									"source",
+									"name",
+									"page"
+								]
+							},
+							{
+								"required": [
+									"variantType"
+								]
+							}
+						]
 					},
 					{
-						"required": [
-							"add_hash"
-						],
-						"not": {
-							"required": [
-								"generic"
-							]
-						}
-					},
-					{
-						"required": [
-							"generic"
-						],
-						"not": {
-							"required": [
-								"add_hash"
-							]
-						}
+						"anyOf": [
+							{
+								"not": {
+									"required": [
+										"generic",
+										"add_hash"
+									]
+								}
+							},
+							{
+								"required": [
+									"add_hash"
+								],
+								"not": {
+									"required": [
+										"generic"
+									]
+								}
+							},
+							{
+								"required": [
+									"generic"
+								],
+								"not": {
+									"required": [
+										"add_hash"
+									]
+								}
+							}
+						]
 					}
 				]
 			},

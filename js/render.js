@@ -212,6 +212,9 @@ function Renderer () {
 	 */
 	this.recursiveRender = function (entry, textStack, options) {
 		if (entry instanceof Array) {
+			if (!entry.length) {
+				entry = ["{@note No entries found.}"];
+			}
 			entry.forEach(nxt => this.recursiveRender(nxt, textStack, options));
 			return;
 		}
@@ -860,8 +863,8 @@ function Renderer () {
 		if (entry.cost != null) textStack[0] += `<strong>Cost&nbsp;</strong>${entry.cost}; `;
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${this.render_addTerm(Parser.freqToFullEntry(entry.frequency))} `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)}; `;
-		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${this.render_addTerm(entry.trigger)} `;
-		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${this.render_addTerm(entry.requirements)} `;
+		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${this.render_addTerm(entry.trigger)}; `;
+		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${this.render_addTerm(entry.requirements)}; `;
 		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) {
 			textStack[0] += `${this.render(entry.entries[0], { isAbility: true })}</span>`;
@@ -1994,7 +1997,8 @@ function Renderer () {
 
 			case "@trait": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
-				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(name)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(name);
+				const parsedName = Parser.parseTraits([name], {toNone: true})[0];
+				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(parsedName)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(parsedName);
 				const fauxEntry = {
 					type: "link",
 					href: {
@@ -2006,7 +2010,7 @@ function Renderer () {
 							source,
 						},
 					},
-					text: (displayText || name),
+					text: (displayText || Parser.parseTraits([name], {toNaked: true})[0]),
 				};
 
 				this._recursiveRender(fauxEntry, textStack, meta);
@@ -2428,6 +2432,14 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_LANGUAGES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_LANGUAGES,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@event":
+						fauxEntry.href.path = UrlUtil.PG_EVENTS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_EVENTS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -3221,7 +3233,7 @@ Renderer.utils = {
 				styles.push("pf2-trait--size");
 			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "_alignAbv")) {
 				styles.push("pf2-trait--alignment");
-			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "_settlement")) {
+			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "Settlement")) {
 				styles.push("pf2-trait--settlement");
 			}
 			if (options.doNotTagTraits) {
@@ -3243,7 +3255,7 @@ Renderer.utils = {
 				const procHash = hash.replace(/'/g, "\\'");
 				const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
 
-				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
+				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${Parser.parseTraits([trait], {toNaked: true})[0]}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
 			}
 		}
 		return traitsHtml.join("")
@@ -4151,6 +4163,7 @@ Renderer.creature = {
 			${Renderer.utils.getNameDiv(cr, { page: UrlUtil.PG_BESTIARY, type: cr.type || "CREATURE", ...opts })}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(cr.traits)}
+			${cr.description ? `<p class="pf2-stat pf2-stat__section">${cr.description}</p>` : ""}
 			${Renderer.creature.getPerception(cr)}
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
@@ -5048,7 +5061,8 @@ Renderer.item = {
 		if (item.hands) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands&nbsp;</strong>${item.hands}</p>`)
 
 		// General Item Line
-		const group = item.weaponData && !item.comboWeaponData ? item.weaponData.group : item.armorData ? item.armorData.group : item.group;
+		// If weaponData and !comboWeaponData, use weaponData group. If not, use armorData group. If not, check if it's a Shield, then make it a Shield. If not, use the item.group.
+		const group = item.weaponData && !item.comboWeaponData ? item.weaponData.group : item.armorData ? item.armorData.group : item.category === "Shield" ? "Shield" : item.group;
 		if (item.category || group) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.category) {
@@ -5350,7 +5364,7 @@ Renderer.language = {
 
 Renderer.nation = {
 	getRenderedString (it, opts) {
-		opts = opts | {}
+		opts = opts || {}
 		const renderer = Renderer.get()
 		const renderStack = []
 		renderStack.push(Renderer.utils.getExcludedDiv(it, "nation", UrlUtil.PLACES))
@@ -5585,9 +5599,31 @@ Renderer.place = {
 	},
 };
 
+Renderer.event = {
+	getRenderedString (it, opts) {
+		opts = opts || {};
+		return $$`
+			${Renderer.utils.getExcludedDiv(it, "place", UrlUtil.PG_PLACE)}
+			${Renderer.utils.getNameDiv(it, { type: "EVENT" })}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(it.traits || [])}
+			${Renderer.event.getBody(it)}
+			${Renderer.generic.getRenderedEntries(it)}
+			${Renderer.utils.getPageP(it)}
+		`
+	},
+	getBody (it) {
+		let renderer = Renderer.get()
+		let textStack = []
+		if (it.applicableSkills) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Applicable Skills&nbsp;</strong>${renderer.render(Parser.parseSkills(it.applicableSkills, {toTags: true, toTitleCase: true}).join(", "))}`)
+		if (textStack.length) textStack.push(Renderer.utils.getDividerDiv())
+		return textStack.join("")
+	},
+};
+
 Renderer.plane = {
 	getRenderedString (it, opts) {
-		opts = opts | {}
+		opts = opts || {}
 		const renderer = Renderer.get()
 		const renderStack = []
 		renderStack.push(Renderer.utils.getExcludedDiv(it, it.category.toLowerCase() ?? "plane", UrlUtil.PLACES))
@@ -5798,7 +5834,7 @@ Renderer.spell = {
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${renderer.render(sp.traditions.map(it => `{@trait ${it}}`).join(", ").toLowerCase())}</p>` : ""}
 		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it.toLowerCase()}|deities||domain=${it.replace("(Apocryphal)", "")}}`).join(", "))}` : ""}
-		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]}</strong> ${renderer.render(k.split("|")[1].toLowerCase() === "mystery" ? sp.subclass[k].map(it => `{@class Oracle|APG|${it}|${it}}`).join(", ") : sp.subclass[k].join(", ").toLowerCase())}</p>`) : ""}
+		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[0]}</strong> ${renderer.render(sp.subclass[k].map(it => `{@class ${k.split("|")[1]}|${k.split("|")[2] ?? "CRB"}|${it.split("|")[0].toLowerCase()}|${it}}`).join(", "))}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castPart}</p>
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
 		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
@@ -7131,6 +7167,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, "TRT", hash, { sourceOverride: "TRT", ...opts }, "traits.json", "trait");
 			case UrlUtil.PG_PLACES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "places.json", "place");
+			case UrlUtil.PG_EVENTS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "events.json", "event");
 
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
@@ -7785,6 +7823,8 @@ Renderer.hover = {
 				return Renderer.language.getRenderedString;
 			case UrlUtil.PG_TRAITS:
 				return Renderer.trait.getRenderedString;
+			case UrlUtil.PG_EVENTS:
+				return Renderer.event.getRenderedString;
 			case UrlUtil.PG_PLACES:
 				return Renderer.place.getRenderedString;
 			// region props

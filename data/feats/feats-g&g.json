@@ -79,7 +79,7 @@
 			],
 			"prerequisites": "{@feat Basic Shooting|G&G}",
 			"entries": [
-				"You gain one gunslinger feat. For the purpose of meeting its prerequisites, your gunslinger level is equal to half your level."
+				"You gain one {@filter gunslinger|feats||Class=gunslinger|level=[1;10]} feat. For the purpose of meeting its prerequisites, your gunslinger level is equal to half your level."
 			],
 			"special": [
 				"You can select this feat more than once. Each time you select it, you gain another gunslinger feat."
@@ -409,7 +409,7 @@
 			],
 			"prerequisites": "{@feat Gunslinger Dedication|G&G}",
 			"entries": [
-				"You gain a 1st- or 2nd-level gunslinger feat of your choice."
+				"You gain a {@filter 1st- or 2nd-level gunslinger|feats||Class=gunslinger|level=[1;2]} feat of your choice."
 			],
 			"leadsTo": [
 				"Advanced Shooting|G&G"
@@ -2069,7 +2069,7 @@
 			],
 			"entries": [
 				"You're especially talented at striking your enemies in their most vulnerable areas.",
-				"When you critically hit with a fatal firearm, you deal an additional die of the appropriate size and damage type for the {@trait fatal} trait after doubling the weapon's damage. For example, after getting a critical hit with a fatal d12 weapon, you add an additional {@dice 1d12} damage to the attack after doubling its damage."
+				"When you critically hit with a fatal firearm, you deal an additional die of the appropriate size and damage type for the {@trait fatal} trait after doubling the weapon's damage. For example, after getting a critical hit with a fatal <d12> weapon, you add an additional {@dice 1d12} damage to the attack after doubling its damage."
 			]
 		},
 		{
@@ -2160,12 +2160,7 @@
 			],
 			"prerequisites": "{@feat Gunslinger Dedication|G&G}, expert in any kind of weapon or unarmed attack",
 			"entries": [
-				"You've become an expert with your chosen weapons. Your proficiency ranks for simple and martial crossbows and simple and martial firearms increase to expert.",
-				"Artillerist \"Load Pathfinders, load! That fey-blighted moth will be coming around for another pass quick as a blink and if we don't meet it with a rain of cannon fire, you'll be wishing you had a diving suit like mine. Steady the aim there! Steady... fire!\" \u2014Khoumrock Blackthorne, captain of the Unsinkable and self-proclaimed slayer of \"giant evil moth gods.\" The artillerist's maxim holds that while fights might be won with swords, battles are won with cannons.",
-				"Or in a pinch, with trebuchets, siege towers, catapults, hwachas, and all other lethal miscellanea of a combat engineers' corp. As a true artillerist, you leave the penny-ante pistols and knives to those who only need to operate on a small scale. You're a consummate professional in the art of big guns, a maestro at merging mathematics and manpower to transform whatever castle wall, infantry battalion, or rampaging dragon offends you into a smoking crater in the ground.",
-				"You're not just some daredevil demolitionist, though.",
-				"You're part of a team, accustomed to coordinating with your unit to maximize your time and effectiveness.",
-				"Whether jumping in to help your crew load the next round, quickly calculating the trajectory of the engine's next shot, or taking the shot yourself, your presence on the team ensures their chances of success are maximized, creating a whole that is greater than the sum of its parts."
+				"You've become an expert with your chosen weapons. Your proficiency ranks for simple and martial crossbows and simple and martial firearms increase to expert."
 			]
 		},
 		{
@@ -3864,7 +3859,7 @@
 			"requirements": "You're wielding a loaded firearm or loaded crossbow in one hand and a bludgeoning or slashing melee weapon in the other.",
 			"entries": [
 				"You hurl your melee weapon at an opponent, then fire a bullet into the weapon's hilt, making it deal additional damage and bounce back to your grasp. Make a thrown ranged {@action Strike} with the melee weapon, then a ranged {@action Strike} with your firearm.",
-				"Both {@action Strike||Strikes} use the same multiple attack penalty. If the melee weapon doesn't already have the {@trait thrown} trait, it gains the thrown 10 feet trait during a Rebounding Assault.",
+				"Both {@action Strike||Strikes} use the same multiple attack penalty. If the melee weapon doesn't already have the {@trait thrown} trait, it gains the thrown <10 feet> trait during a Rebounding Assault.",
 				"If both attacks are successful, the bolt or bullet hits the thrown melee weapon instead of your target, adding its force into one attack. Combine the damage from both {@action Strike||Strikes}, using the thrown weapon's damage type, and add an additional {@damage 1d6} precision damage.",
 				"The impact sends the melee weapon rebounding off the target and back to your hand.",
 				"In any circumstance other than both attacks hitting, carry out the individual {@action Strike||Strikes} normally. The thrown weapon doesn't rebound and remains in the target's space as normal for thrown weapons."

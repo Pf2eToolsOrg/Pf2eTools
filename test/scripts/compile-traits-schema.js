@@ -48,6 +48,22 @@ function generateTraitSchema (file) {
 			schema.definitions[categoryName].enum.push(trait.name.toLowerCase());
 			schema.definitions[categoryName].enum.sort(SortUtil.ascSort);
 		});
+
+		// If the trait has a variable value, create a regex entry for it.
+		if (trait.variable) {
+			// If the category doesn't exist, create it.
+			if (!schema.definitions["variableTraits"]) {
+				schema.definitions["variableTraits"] = {
+					type: "string",
+					description: `A list of all traits with variable values, enclosed in <these 'brackets'>.`,
+					anyOf: [],
+				};
+			}
+			schema.definitions["variableTraits"].anyOf.push({
+				type: "string",
+				pattern: `^${trait.name.toLowerCase()} <.*>$`,
+			});
+		}
 	});
 	let allCategories = Object.keys(schema.definitions).filter(e => e !== "anyTrait");
 	console.log("Created the following categories:", allCategories);

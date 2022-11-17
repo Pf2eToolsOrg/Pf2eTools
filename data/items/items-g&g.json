@@ -396,7 +396,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 100 feet"
+						"range increment <100 feet>"
 					],
 					"entries": [
 						"{@dice 10d6} damage and 3 splash damage, three different targets within a 15-foot burst, DC 30 Reflex. The damage type depends on the alchemical ammunition used: acid, cold, electricity, or fire. Creatures take the splash damage only once from the launch, even if they're in the area of more than one of the three splashes."
@@ -506,7 +506,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 50 feet"
+						"range increment <50 feet>"
 					],
 					"entries": [
 						"{@dice 10d12} bludgeoning, 50-foot burst, DC 33 Reflex"
@@ -772,7 +772,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -801,7 +801,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -863,7 +863,6 @@
 			"source": "G&G",
 			"page": 63,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 1,
@@ -882,7 +881,6 @@
 			"source": "G&G",
 			"page": 63,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 1,
@@ -953,7 +951,7 @@
 					"traits": [
 						"attack",
 						"manipulate",
-						"range increment 100 feet"
+						"range increment <100 feet>"
 					],
 					"entries": [
 						"{@damage 4d12} piercing, single target, DC 19 Reflex"
@@ -1155,7 +1153,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "{@action Interact}"
+				"components": [
+					"{@action Interact}"
+				]
 			},
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|rounds"
@@ -1245,7 +1245,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -1379,7 +1379,7 @@
 					"traits": [
 						"attack",
 						"manipulate",
-						"range increment 100 feet"
+						"range increment <100 feet>"
 					],
 					"requirements": "The other members of the crew have Readied to {@action Stride} on your order",
 					"entries": [
@@ -1571,7 +1571,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 150 feet"
+						"range increment <150 feet>"
 					],
 					"entries": [
 						"{@damage 4d10} bludgeoning, 10-foot burst, DC 19 Reflex"
@@ -1652,7 +1652,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"evocation",
@@ -1834,7 +1834,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 200 feet"
+						"range increment <200 feet>"
 					],
 					"entries": [
 						"{@damage 6d12} bludgeoning, single target, DC 23 Reflex"
@@ -1946,7 +1946,7 @@
 					"traits": [
 						"attack",
 						"manipulate",
-						"range increment 150 feet"
+						"range increment <150 feet>"
 					],
 					"entries": [
 						"{@damage 5d10} bludgeoning, 10-foot burst, DC 22 Reflex."
@@ -2025,7 +2025,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -2053,7 +2053,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -2198,7 +2198,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The diving suit shoots out a water jet that causes you to {@action Swim} 25 feet in a straight line. The distance of this movement is unaffected by your swim Speed, if you have one, or the armor's Speed penalty.",
@@ -2227,7 +2227,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -2323,7 +2323,6 @@
 			"page": 178,
 			"type": "Equipment",
 			"level": 3,
-			"traits": [],
 			"price": {
 				"coin": "gp",
 				"amount": 25
@@ -2356,7 +2355,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -2553,7 +2552,7 @@
 						"number": 1
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You gain {@ability darkvision} until the beginning of your next turn, as long as you continue to look through the scope."
@@ -2786,7 +2785,7 @@
 			"category": "Weapon",
 			"subCategory": "Beast Gun",
 			"entries": [
-				"A drake rifle is a firearm made from the saliva glands of a drake. The firearm launches small bursts of empowered spittle instead of typical rounds of ammunition. A drake rifle is a {@item +1 weapon potency||+1} weapon. It's a distinct type of martial firearm that deals {@damage 1d10} damage with a range increment of 150 feet and reload 1. It deals acid, cold, electricity, fire, or poison damage, depending on the drake from which it was made. On a critical hit, the spittle clings to the target and they take persistent damage of the same type as the weapon equal to {@damage 1d4} + the number of weapon damage dice. A drake rifle does not add critical specialization effects.",
+				"A drake rifle is a firearm made from the saliva glands of a drake. The firearm launches small bursts of empowered spittle instead of typical rounds of ammunition. A drake rifle is a {@item +1 weapon potency||+1} weapon. It's a distinct type of martial firearm that deals {@damage 1d10} damage with a range increment of 150 feet and reload <1>. It deals acid, cold, electricity, fire, or poison damage, depending on the drake from which it was made. On a critical hit, the spittle clings to the target and they take persistent damage of the same type as the weapon equal to {@damage 1d4} + the number of weapon damage dice. A drake rifle does not add critical specialization effects.",
 				{
 					"type": "ability",
 					"activity": {
@@ -2794,7 +2793,7 @@
 						"number": 3
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"evocation",
@@ -3007,7 +3006,6 @@
 			"source": "G&G",
 			"page": 178,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 1
@@ -3064,7 +3062,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -3137,7 +3135,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -3167,7 +3165,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -3269,7 +3267,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -3369,7 +3367,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -3481,7 +3479,10 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "command, envision"
+				"components": [
+					"command",
+					"envision"
+				]
 			},
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
@@ -3547,7 +3548,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 300 feet"
+						"range increment <300 feet>"
 					],
 					"entries": [
 						"{@damage 8d12} bludgeoning, single target, DC 27 Reflex."
@@ -3627,7 +3628,6 @@
 			"source": "G&G",
 			"page": 178,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 1
@@ -3796,7 +3796,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -3906,7 +3906,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -3924,7 +3924,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -3983,7 +3983,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact (move)"
+				"components": [
+					"Interact (move)"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -4019,7 +4021,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -4037,7 +4039,7 @@
 						"entry": "(10 minutes)"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -4072,7 +4074,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -4100,7 +4102,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -4187,7 +4189,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -4299,7 +4301,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"magical",
@@ -4465,7 +4467,7 @@
 					"traits": [
 						"attack",
 						"manipulate",
-						"range increment 120 feet"
+						"range increment <120 feet>"
 					],
 					"entries": [
 						"{@damage 4d12} piercing, single target, DC 19 Reflex"
@@ -4575,7 +4577,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 250 feet"
+						"range increment <250 feet>"
 					],
 					"entries": [
 						"{@damage 7d10} bludgeoning, 20-foot burst, DC 25 Reflex."
@@ -4662,7 +4664,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "The holy steam ball is filled with evaporated holy water and incense smoke",
 					"entries": [
@@ -4726,7 +4728,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 300 feet"
+						"range increment <300 feet>"
 					],
 					"entries": [
 						"{@damage 4d8} piercing, 20-foot burst, DC 18 Reflex. If you loaded at least 70 hwacha arrows, the area increases to a 25-foot burst. If you loaded 100 hwacha arrows, the area increases to a 30-foot burst and the damage to {@damage 5d8} piercing."
@@ -4825,7 +4827,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -4950,7 +4952,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You deploy the tripod and press a button to lock it into place via the immovable rod, allowing you to deploy the tripod in midair, underwater, or anywhere else where you don't have a solid horizontal surface available. If you {@action Activate an Item||Activate} the tripod by pushing the button again, you release and retrieve the tripod. While anchored, the tripod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the tripod with a DC of 40 (though most intelligent creatures can just push the button to release the tripod)."
@@ -5154,7 +5156,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -5264,7 +5266,7 @@
 			"bulk": "L",
 			"category": "Held",
 			"entries": [
-				"This dubious weapon gets its name from the fact that it's typically crafted with multiple false barrels so that it's more difficult for enemies to predict the weapon's angle of fire from the four working barrels. Most of the time, this gun functions as a +1 striking pepperbox with capacity 4 instead of capacity 3, albeit one with a complicated loading mechanism involving rotating the barrels. In a pinch though, all four of the real barrels can be fired simultaneously.",
+				"This dubious weapon gets its name from the fact that it's typically crafted with multiple false barrels so that it's more difficult for enemies to predict the weapon's angle of fire from the four working barrels. Most of the time, this gun functions as a {@runeItem pepperbox|G&G|+1 potency|striking|} with {@trait capacity <4>} instead of {@trait capacity <3>}, albeit one with a complicated loading mechanism involving rotating the barrels. In a pinch though, all four of the real barrels can be fired simultaneously.",
 				{
 					"type": "ability",
 					"activity": {
@@ -5272,7 +5274,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"Make up to four {@action Strike||Strikes} with the liar's gun. Each of the four {@action Strike||Strikes} must be against a different target within a 20-foot cone. You apply and increasing your multiple attack penalty for the four {@action Strike||Strikes} only after resolving all attacks. If the weapon misfires on any of these attacks, wait to apply the misfire until you resolve all of the attacks."
@@ -5329,7 +5331,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -5385,7 +5387,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -5484,7 +5486,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The next {@action Strike} you make this round with the gun to which the scope is attached has its scatter radius increased by 5 feet."
@@ -5547,7 +5549,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"While gazing through the scope, you zoom in on your targets to make it easier to hit them at a distance. You increase the range increment of the weapon to which the scope is attached by 5 feet until the beginning of your next turn or until you're no longer wielding the weapon, whichever comes first."
@@ -5617,7 +5619,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -5741,7 +5743,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -5873,7 +5875,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 100 feet"
+						"range increment <100 feet>"
 					],
 					"entries": [
 						"{@damage 5d10} slashing, 20-foot burst, DC 21. Because a mortar launches its round at a high angle, the mortar round descends on the center of the burst from above, not in a straight line from the mortar. This affects whether creatures have cover from the mortar launch."
@@ -5951,7 +5953,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "the mountebank's passage isn't loaded",
 					"entries": [
@@ -5965,7 +5967,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "the mountebank's passage isn't loaded",
 					"entries": [
@@ -6129,7 +6131,9 @@
 					"unit": "action"
 				},
 				"requirements": "Your last action was an {@action Interact} action to stow the affixed firearm or crossbow.",
-				"components": "envision, manipulate"
+				"components": [
+					"envision, manipulate"
+				]
 			},
 			"category": "Talisman",
 			"entries": [
@@ -6198,7 +6202,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"magical",
@@ -6331,7 +6335,6 @@
 			"source": "G&G",
 			"page": 178,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 2,
@@ -6453,7 +6456,6 @@
 			"source": "G&G",
 			"page": 63,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 9,
@@ -6546,7 +6548,7 @@
 			"category": "Held",
 			"entries": [
 				"In a dense forest within Arcadia, djezet fell from the sky millennia ago, even before Earthfall. While this metal was poisonous to most of the plant life growing nearby, one stubborn rowan tree refused to die, its roots slowly absorbing djezet in small particles from the ground until the entire plant was suffused with it. Fey bowyers discovered the remarkable plant and coaxed it into growing into a very particular shape, its branching trunks woven together into a tightly twisted and naturally rifled barrel.",
-				"One of the legendary star guns, Arcadia's greatest treasures, the Rowan Rifle is a +2 greater fearsome speed greater striking (Advanced Player's Guide 260) advanced firearm with a range of increment of 300 feet. It deals {@damage 1d8} fire damage and has the backstabber, concussive, and fatal d12 traits.",
+				"One of the legendary star guns, Arcadia's greatest treasures, the Rowan Rifle is a +2 greater fearsome speed greater striking (Advanced Player's Guide 260) advanced firearm with a range of increment of 300 feet. It deals {@damage 1d8} fire damage and has the backstabber, concussive, and fatal <d12> traits.",
 				"As a star gun, the Rowan Rifle runs on magic, and doesn't use ammunition or {@item black powder}. As a weapon forged to protect the fey peoples of Arcadia, the Rowan Rifle's enchantments prevent it from ever causing harm to a creature with the {@trait fey} trait; any attempt to shoot a fey with it results in an automatic misfire. This legendary star gun is as much a badge of office as a weapon, as it denotes dominion over all Briarbough. If the Rowan Rifle's wielder is fey, or if they were specifically given the Rowan Rifle by a fey creature who recognized them as a worthy champion, they can use the following activations.",
 				{
 					"type": "ability",
@@ -6677,7 +6679,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -6802,7 +6804,7 @@
 					"unit": "free"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				],
 				"trigger": "You Shield Block a foe's melee unarmed attack or melee attack with the affixed shield."
 			},
@@ -6882,7 +6884,6 @@
 			"source": "G&G",
 			"page": 178,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 1
@@ -6983,7 +6984,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",
@@ -7114,7 +7115,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -7131,7 +7132,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -7159,7 +7160,7 @@
 			"category": "Weapon",
 			"subCategory": "Beast Gun",
 			"entries": [
-				"A spider gun is a +1 striking weapon. It's a distinct type of martial firearm made from the fangs and spinneret of a Large spider. It deals {@damage 1d10} poison damage with a range Petrification Cannon increment of 30 feet and reload 1. On a critical hit, the venom clings to the target and they take {@condition persistent damage ||persistent poison damage} equal to {@dice 1d4} + the number of weapon damage dice.",
+				"A spider gun is a +1 striking weapon. It's a distinct type of martial firearm made from the fangs and spinneret of a Large spider. It deals {@damage 1d10} poison damage with a range Petrification Cannon increment of 30 feet and reload <1>. On a critical hit, the venom clings to the target and they take {@condition persistent damage ||persistent poison damage} equal to {@dice 1d4} + the number of weapon damage dice.",
 				"A spider gun does not add critical specialization effects.",
 				"The gun can be activated to fire webbing that hampers other creatures.",
 				{
@@ -7169,7 +7170,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"conjuration",
@@ -7238,7 +7239,7 @@
 			"category": "Weapon",
 			"subCategory": "Beast Gun",
 			"entries": [
-				"Built from the spiked tail of a manticore, a spike launcher is designed to launch large, spear-like projectiles. A spike launcher is a +1 striking weapon. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the backstabber, fatal aim d12, and kickback traits with a range increment of 120 feet and reload 2. It uses the critical specialization of the bow weapon group, rather than the firearm critical specialization.",
+				"Built from the spiked tail of a manticore, a spike launcher is designed to launch large, spear-like projectiles. A spike launcher is a +1 striking weapon. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the backstabber, fatal aim d12, and kickback traits with a range increment of 120 feet and reload <2>. It uses the critical specialization of the bow weapon group, rather than the firearm critical specialization.",
 				{
 					"type": "ability",
 					"activity": {
@@ -7246,7 +7247,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"evocation",
@@ -7437,7 +7438,7 @@
 					"traits": [
 						"attack",
 						"manipulate",
-						"range increment 100 feet"
+						"range increment <100 feet>"
 					],
 					"entries": [
 						"{@damage 5d8} piercing, three different targets within a 15-foot burst, DC 22 Reflex."
@@ -7543,7 +7544,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You turn the steamflight pack on or off."
@@ -7619,7 +7620,7 @@
 					},
 					"traits": [
 						"manipulate",
-						"range increment 500 feet"
+						"range increment <500 feet>"
 					],
 					"entries": [
 						"{@damage 8d12} bludgeoning, 20-foot burst, DC 30 Reflex"
@@ -7691,7 +7692,10 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "envision, Interact"
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
 			},
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
@@ -7896,7 +7900,7 @@
 			"category": "Weapon",
 			"subCategory": "Beast Gun",
 			"entries": [
-				"A tentacle cannon is a +1 striking weapon, built using components from squids, krakens, and sometimes even stranger tentacled creatures like alghollthu. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the capacity 5, concussive, and fatal d12 traits, a range increment of 30 feet, and reload 2. The weapon itself resembles a five-barreled handheld cannon with each barrel made from a hollowed out tentacle.",
+				"A tentacle cannon is a +1 striking weapon, built using components from squids, krakens, and sometimes even stranger tentacled creatures like alghollthu. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the {@trait capacity <5>}, {@trait concussive}, and {@trait fatal <d12>} traits, a range increment of 30 feet, and {@trait reload <2>}. The weapon itself resembles a five-barreled handheld cannon with each barrel made from a hollowed out tentacle.",
 				{
 					"type": "ability",
 					"activity": {
@@ -7904,7 +7908,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"magical",
@@ -7921,7 +7925,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "The tentacle cannon has a creature {@condition grabbed}",
 					"entries": [
@@ -7936,7 +7940,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -8183,7 +8187,7 @@
 					"traits": [
 						"attack",
 						"manipulate",
-						"range increment 400 feet"
+						"range increment <400 feet>"
 					],
 					"entries": [
 						"{@damage 8d10} bludgeoning, 20-foot burst, DC 26 Reflex"
@@ -8239,7 +8243,6 @@
 			"source": "G&G",
 			"page": 178,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 2
@@ -8337,7 +8340,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -8355,7 +8358,6 @@
 			"source": "G&G",
 			"page": 178,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"coin": "sp",
 				"amount": 2
@@ -8392,7 +8394,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Consumable",

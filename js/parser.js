@@ -1715,9 +1715,7 @@ Parser.getTagSource = function (tag, source) {
 };
 
 Parser.getTraitName = function (trait) {
-	// TODO: This implementation is not perfect, but for now it will do
-	const regex = new RegExp(`\\s(?:\\d|[A-Za-z]$|\\(|d\\d|[A-Z],|[a-z], [a-z], or [a-z]|${Object.values(Parser.DMGTYPE_JSON_TO_FULL).join("|")}|to \\w+)(.+|$)`);
-	const name = trait ? trait.replace(/\|.+/, "").replace(regex, "") : "";
+	const name = trait ? Parser.parseTraits([trait.replace(/\|.+/, "")], {toNone: true})[0] : "";
 	if (name === name.toUpperCase()) return name;
 	else if (name.length <= 2) return name.toUpperCase(); // Alignment traits: CG, LE, ...
 	else return name.toTitleCase();
@@ -1848,5 +1846,57 @@ Parser.typeToSkill = function (type) {
 Parser.getKeyByValue = function (object, value) {
 	return Object.keys(object).filter(function (key) {
 		return object[key] === value;
+	});
+}
+
+// Data: {Plant} Lore
+// Naked: Plant Lore
+// None: Lore
+// Tag: {@skill Lore||Plant Lore}
+Parser.parseSkills = function (array, opts) {
+	opts = opts || {}
+	if (opts.toTags && (opts.toNaked || opts.toNone)) throw new Error("Cannot convert to multiple types of strings!")
+
+	let newArray = opts.toTitleCase ? array.map(t => t.toTitleCase()) : array
+
+	return newArray.map((it) => {
+		if (opts.toTags) {
+			return `{@skill ${it.replace(/<.+>/g, "").trim()}||${it.replace(/<|>/g, "").trim()}}`
+		}
+		if (opts.toNaked) {
+			return it.replace(/<|>/g, "").trim()
+		}
+		if (opts.toNone) {
+			return it.replace(/<.+>/g, "").trim()
+		}
+	});
+}
+
+// Data: Scatter {10 ft.}
+// Naked: Scatter 10 ft.
+// Tag: {@trait Scatter||Scatter 10 ft.}
+/**
+ 	@param {Object[]} array Array of traits
+	@param {Object} opts Options object.
+	@param {string} opts.toTags Convert to tags.
+	@param {string} opts.toNaked Remove brackets {}.
+	@param {string} opts.toNone Remove both the brackets and everything inside them.
+**/
+Parser.parseTraits = function (array, opts) {
+	opts = opts || {}
+	if (opts.toTags && (opts.toNaked || opts.toNone)) throw new Error("Cannot convert to multiple types of strings!")
+	if (!(opts.toTags || opts.toNaked || opts.toNone)) throw new Error("Need arguments!")
+	let newArray = opts.toTitleCase ? array.map(t => t.toTitleCase()) : array
+
+	return newArray.map((it) => {
+		if (opts.toTags) {
+			return `{@trait ${it.replace(/<.+>/g, "").trim()}||${it.replace(/<|>/g, "").trim()}}`
+		}
+		if (opts.toNaked) {
+			return it.replace(/<|>/g, "").trim()
+		}
+		if (opts.toNone) {
+			return it.replace(/<.+>/g, "").trim()
+		}
 	});
 }

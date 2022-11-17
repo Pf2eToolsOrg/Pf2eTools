@@ -21,7 +21,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -134,7 +134,7 @@
 			"category": "Artifact",
 			"entries": [
 				"The blade of this {@runeItem Dwarven War Axe||+4 weapon potency|GMG|major striking||keen||returning||speed|} is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.",
-				"The axe has the {@trait thrown 30 feet} weapon trait, in addition to the normal weapon traits for a dwarven waraxe. {@action Strike||Strikes} with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@action Craft||Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain {@ability darkvision||greater darkvision} while holding the axe. If you are not a dwarf, you are {@condition stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained 4} and {@condition enfeebled 4} while holding it.",
+				"The axe has the {@trait thrown <30 feet>} weapon trait, in addition to the normal weapon traits for a dwarven waraxe. {@action Strike||Strikes} with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@action Craft||Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain {@ability darkvision||greater darkvision} while holding the axe. If you are not a dwarf, you are {@condition stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained 4} and {@condition enfeebled 4} while holding it.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -244,7 +244,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -252,7 +252,6 @@
 				"This potent drug is distilled from a certain tropical vine into a deep-red syrup that, over time, stains the user's lips and teeth a vivid shade of red.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 16,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -318,7 +317,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -326,7 +325,6 @@
 				"A strong blend including several spices common in the Padishah Empire of Kelesh, bloodeye coffee is a favorite morning drink across the Inner Sea region. The maximum addiction stage of bloodeye coffee never progresses beyond stage 1.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 14,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -419,7 +417,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -427,7 +425,6 @@
 				"Deros use cytillesh in a variety of ways, and some surface-dwellers seek out the fungus for their own use. Memories lost to cytillesh can be restored through modify memory. The save for addiction to cytillesh is DC 20, and the addiction has the {@trait virulent} trait.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 15,
 					"savingThrow": "Fortitude",
 					"maxDuration": "8 hours",
@@ -587,7 +584,6 @@
 				"This lemony tea blended from rare Vudrani herbs and flowers is widely circulated by occult circles looking to transcend the boundaries of reality. The saving throw for addiction to dreamtime tea is DC 19.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 21,
 					"savingThrow": "Fortitude",
 					"maxDuration": "30 minutes",
@@ -722,7 +718,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -730,7 +726,6 @@
 				"Specialists in Kyonin prepare this emerald-green beverage.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 20,
 					"savingThrow": "Fortitude",
 					"onset": "1 hour",
@@ -868,7 +863,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -876,7 +871,6 @@
 				"The flayleaf plant is relatively common, though the mildly euphoric effects of smoking its dried leaves increase when it's sourced from plants specifically grown to produce such effects.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 12,
 					"savingThrow": "Fortitude",
 					"onset": "10 minutes",
@@ -935,11 +929,10 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -958,7 +951,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -1573,7 +1566,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -1581,7 +1574,6 @@
 				"When eaten or smoked, pesh gives users a sense of well-being, sometimes with hallucinations, aggression, and exhaustion.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 12,
 					"savingThrow": "Fortitude",
 					"onset": "1 minute",
@@ -1653,7 +1645,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -1661,7 +1653,6 @@
 				"This gritty powder improves responsiveness but suppresses thoughts and leaves you weakened. The saving throw for addiction to scour is DC 30, and the addiction is virulent.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 25,
 					"savingThrow": "Fortitude",
 					"onset": "1 hour",
@@ -1784,7 +1775,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -1793,10 +1784,9 @@
 				"The addiction to shiver has the {@trait virulent} trait.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 19,
 					"savingThrow": "Fortitude",
-					"maxDuration": "4\nhours",
+					"maxDuration": "4 hours",
 					"stages": [
 						{
 							"stage": 1,
@@ -1860,7 +1850,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "The shot is loaded in your ranged weapon, or at hand if your ranged weapon has a reload of 0",
 					"entries": [
@@ -1971,8 +1961,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -2135,7 +2124,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -2143,7 +2132,6 @@
 				"This bitter paste is used among some gladiatorial rings for its short-term benefits in a fight.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 20,
 					"savingThrow": "Fortitude",
 					"maxDuration": "1 hour",
