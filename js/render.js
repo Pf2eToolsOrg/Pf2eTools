@@ -863,8 +863,8 @@ function Renderer () {
 		if (entry.cost != null) textStack[0] += `<strong>Cost&nbsp;</strong>${entry.cost}; `;
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${this.render_addTerm(Parser.freqToFullEntry(entry.frequency))} `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)}; `;
-		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${this.render_addTerm(entry.trigger)} `;
-		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${this.render_addTerm(entry.requirements)} `;
+		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${this.render_addTerm(entry.trigger)}; `;
+		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${this.render_addTerm(entry.requirements)}; `;
 		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) {
 			textStack[0] += `${this.render(entry.entries[0], { isAbility: true })}</span>`;
