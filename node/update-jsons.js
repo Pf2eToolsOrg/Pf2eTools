@@ -43,6 +43,21 @@ function updateFolder (folder) {
 						}
 						return x
 					}
+					if (x.activate && x.activate.components && !Array.isArray(x.activate.components)) {
+						console.log(`\tUpdating ${x.name} components to array in ${file}...`)
+						x.activate.components = [x.activate.components]
+						return x
+					}
+					if (x.activate && x.activate.components && x.activate.components.length) {
+						x.activate.components.map(component => {
+							if (component.toLowerCase() === "strike" || component.toLowerCase() === "interact" || component.toLowerCase() === "cast a spell") {
+								console.log(`\tTagging ${x.name} components in ${file}...`)
+								component = `{@action ${component}}`
+							}
+							return component
+						})
+						return x
+					}
 					return x
 				})
 			}

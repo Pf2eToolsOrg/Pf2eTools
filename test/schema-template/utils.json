@@ -919,24 +919,31 @@
 		"skillName": {
 			"type": "string",
 			"description": "A Skill Trait",
-			"enum": [
-				"acrobatics",
-				"arcana",
-				"athletics",
-				"crafting",
-				"deception",
-				"diplomacy",
-				"intimidation",
-				"lore",
-				"medicine",
-				"nature",
-				"occultism",
-				"performance",
-				"religion",
-				"society",
-				"stealth",
-				"survival",
-				"thievery"
+			"oneOf": [
+				{
+					"enum": [
+						"acrobatics",
+						"arcana",
+						"athletics",
+						"crafting",
+						"deception",
+						"diplomacy",
+						"intimidation",
+						"lore",
+						"medicine",
+						"nature",
+						"occultism",
+						"performance",
+						"religion",
+						"society",
+						"stealth",
+						"survival",
+						"thievery"
+					]
+				},
+				{
+					"pattern": "^{[\\w '\\-]+} lore$"
+				}
 			]
 		},
 		"skillNameUpper": {
@@ -1445,6 +1452,9 @@
 					},
 					{
 						"pattern": "\\{@action .+?\\}"
+					},
+					{
+						"pattern": "\\{@feat .+?\\}"
 					}
 				]
 			},
