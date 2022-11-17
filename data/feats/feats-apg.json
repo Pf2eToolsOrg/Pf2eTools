@@ -275,7 +275,7 @@
 			],
 			"prerequisites": "{@feat Basic Deduction|APG}",
 			"entries": [
-				"You gain one {@filter investigator|feats||Class=investigator} feat. For the purpose of meeting its prerequisites, your investigator level is equal to half your character level."
+				"You gain one {@filter investigator|feats||Class=investigator|level=[1;10]} feat. For the purpose of meeting its prerequisites, your investigator level is equal to half your character level."
 			],
 			"special": [
 				"You can select this feat more than once. Each time you select it, you gain another investigator feat."
@@ -317,7 +317,7 @@
 			],
 			"prerequisites": "{@feat Basic Flair|APG}",
 			"entries": [
-				"You gain one {@filter swashbuckler|feats||Class=swashbuckler} feat. For the purpose of meeting its prerequisites, your swashbuckler level is equal to half your character level."
+				"You gain one {@filter swashbuckler|feats||Class=swashbuckler|level=[1;10]} feat. For the purpose of meeting its prerequisites, your swashbuckler level is equal to half your character level."
 			],
 			"special": [
 				"You can select this feat more than once. Each time you select it, you gain another swashbuckler feat."
@@ -353,7 +353,7 @@
 			],
 			"prerequisites": "{@feat Basic Mysteries|APG}",
 			"entries": [
-				"You gain one {@filter oracle|feats||Class=oracle} feat. For meeting its prerequisites, your oracle level is equal to half your level."
+				"You gain one {@filter oracle|feats||Class=oracle|level=[1;10]} feat. For meeting its prerequisites, your oracle level is equal to half your level."
 			],
 			"special": [
 				"You can select this feat more than once. Each time, you gain another oracle feat."
@@ -390,7 +390,7 @@
 			],
 			"prerequisites": "{@feat Basic Witchcraft|APG}",
 			"entries": [
-				"You gain one {@filter witch|feats||Class=witch} feat. For the purpose of meeting its prerequisites, your witch level is equal to half your character level."
+				"You gain one {@filter witch|feats||Class=witch|level=[1;10]} feat. For the purpose of meeting its prerequisites, your witch level is equal to half your character level."
 			],
 			"special": [
 				"You can select this feat more than once. Each time you select it, you gain another witch feat."
@@ -1030,8 +1030,8 @@
 					},
 					"requirements": "You can see and hear the creature you intend to mark",
 					"entries": [
-						"You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
-						"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
+						"You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly <d6> weapon traits when you're attacking your mark.",
+						"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly <d6>."
 					]
 				}
 			],
@@ -3010,7 +3010,7 @@
 			],
 			"entries": [
 				"You enter a tight stance, coiled up like a lashing cobra with your hands poised as venomous fangs. While in this stance, the only {@action Strike|CRB|Strikes} you can make are cobra fang unarmed attacks.",
-				"These deal {@damage 1d4} poison damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait deadly d10}, {@trait finesse}, {@trait nonlethal}, {@trait poison}, and {@trait unarmed} traits.",
+				"These deal {@damage 1d4} poison damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait deadly <d10>}, {@trait finesse}, {@trait nonlethal}, {@trait poison}, and {@trait unarmed} traits.",
 				"While in Cobra Stance, you gain a +1 circumstance bonus to Fortitude saves and your Fortitude DC, and you gain poison resistance equal to half your level."
 			],
 			"leadsTo": [
@@ -3677,7 +3677,7 @@
 				"swashbuckler"
 			],
 			"entries": [
-				"Your graceful attacks are especially powerful. When you score a critical hit with an {@trait agile} or {@trait finesse} melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an {@trait agile} or {@trait finesse} melee weapon that doesn't have the {@trait deadly} trait, it gains the deadly d8 trait instead."
+				"Your graceful attacks are especially powerful. When you score a critical hit with an {@trait agile} or {@trait finesse} melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an {@trait agile} or {@trait finesse} melee weapon that doesn't have the {@trait deadly} trait, it gains the deadly <d8> trait instead."
 			]
 		},
 		{
@@ -3689,7 +3689,7 @@
 				"monk"
 			],
 			"entries": [
-				"You have honed your body to attack with lethal focus. Your unarmed attacks gain the {@trait deadly d10} trait, or you increase their {@trait deadly} trait to {@damage d10} if the unarmed attack is already deadly with a smaller die size."
+				"You have honed your body to attack with lethal focus. Your unarmed attacks gain the {@trait deadly <d10>} trait, or you increase their {@trait deadly} trait to {@damage d10} if the unarmed attack is already deadly with a smaller die size."
 			]
 		},
 		{
@@ -7423,7 +7423,7 @@
 			},
 			"level": 4,
 			"traits": [
-				"additive 2",
+				"additive <2>",
 				"alchemist"
 			],
 			"frequency": {
@@ -10424,7 +10424,7 @@
 				"fighter"
 			],
 			"entries": [
-				"You throw your weight into a powerful attack that leaves you vulnerable. Make a melee {@action Strike}. This counts as three attacks when calculating your multiple attack penalty. If this {@action Strike} hits, you get a critical hit. If you roll a critical hit, your attack also gains the deadly d12 trait. Whether or not you hit, you become {@condition stunned 1} and are {@condition flat-footed} until the start of your next turn."
+				"You throw your weight into a powerful attack that leaves you vulnerable. Make a melee {@action Strike}. This counts as three attacks when calculating your multiple attack penalty. If this {@action Strike} hits, you get a critical hit. If you roll a critical hit, your attack also gains the deadly <d12> trait. Whether or not you hit, you become {@condition stunned 1} and are {@condition flat-footed} until the start of your next turn."
 			]
 		},
 		{
@@ -10522,7 +10522,7 @@
 			"traits": [
 				"fighter"
 			],
-			"requirements": "You are wielding a loaded ranged weapon or a ranged weapon with reload 0.",
+			"requirements": "You are wielding a loaded ranged weapon or a ranged weapon with reload <0>.",
 			"entries": [
 				"You jump back and fire a quick shot that catches your opponent off guard. You {@action Step} and then make a ranged {@action Strike} with the required weapon. Your target is {@condition flat-footed} against the attack."
 			]
@@ -11533,7 +11533,7 @@
 			],
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"You draw your bow and attack with the same action. You {@action Interact} to draw a weapon from the {@group bow} weapon group that is loaded or has reload 0, then {@action Strike} with that weapon."
+				"You draw your bow and attack with the same action. You {@action Interact} to draw a weapon from the {@group bow} weapon group that is loaded or has reload <0>, then {@action Strike} with that weapon."
 			]
 		},
 		{
@@ -16568,7 +16568,7 @@
 			],
 			"prerequisites": "{@feat Monastic Weaponry}",
 			"entries": [
-				"You enter a mindful stance that creates a deep connection between you and your monk weapons, allowing you to manipulate them with your ki even at a distance. All melee monk weapons you wield with the {@trait finesse} trait gain the thrown 10 feet trait (unless they already have the {@trait thrown} trait with a greater range)",
+				"You enter a mindful stance that creates a deep connection between you and your monk weapons, allowing you to manipulate them with your ki even at a distance. All melee monk weapons you wield with the {@trait finesse} trait gain the thrown <10 feet> trait (unless they already have the {@trait thrown} trait with a greater range)",
 				"Once you've made a thrown {@action Strike} with such a weapon, you can use the precision of your throw to make additional strikes with it, even from a distance. Start from the space of the previous {@action Strike}'s target to determine the range increment and whether the new target has cover. At the end of your turn, the thrown weapon flies directly back to you in a straight line.",
 				"If a solid barrier blocks its path, it falls to the ground after hitting the barrier."
 			]

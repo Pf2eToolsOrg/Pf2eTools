@@ -172,7 +172,7 @@
 						"Interact"
 					],
 					"entries": [
-						"By touching a weapon you wield to the symbol and uttering a plea for {@deity Erastil}'s steadying hand, you grant that weapon the deadly d12 trait. Against undead, the weapon instead gains the fatal d12 trait. This blessing lasts for 1 minute, until you score a critical hit with the weapon, or until you aren't wielding the weapon."
+						"By touching a weapon you wield to the symbol and uttering a plea for {@deity Erastil}'s steadying hand, you grant that weapon the deadly <d12> trait. Against undead, the weapon instead gains the fatal <d12> trait. This blessing lasts for 1 minute, until you score a critical hit with the weapon, or until you aren't wielding the weapon."
 					]
 				}
 			]
@@ -203,7 +203,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -326,7 +326,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Poison",
@@ -334,7 +334,6 @@
 				"This complex toxin makes the muscles beneath a creature's skin loose and malleable, which fleshwarpers find useful in their work. Rough or jerky movements the victim performs concentrate the toxin in subdermal muscles and eventually cause skin and muscle to slough away.",
 				{
 					"type": "affliction",
-					"traits": [],
 					"DC": 25,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",

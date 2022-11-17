@@ -132,7 +132,19 @@
 						"uniqueItems": true
 					},
 					"subclass": {
-						"type": "object"
+						"description": "The subclass for which the spell is for.\nThe property name schema is \"Subclass|Class|Source\". Source is assumed CRB if missing.",
+						"type": "object",
+						"patternProperties": {
+							"": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"propertyNames": {
+							"pattern": "\\w+\\|\\w+(\\|\\w+|)"
+						}
 					},
 					"cost": {
 						"type": "string"

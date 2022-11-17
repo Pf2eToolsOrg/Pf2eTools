@@ -42,7 +42,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "The anointed waterskin is full",
 					"entries": [
@@ -365,7 +365,7 @@
 						"unit": "free"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "round",
@@ -540,7 +540,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "Your previous action was a successful {@action Strike} with the burrs",
 					"entries": [
@@ -756,7 +756,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You light the parchment on fire, burning the words off while leaving the parchment unharmed and ready to bear more text."
@@ -1124,7 +1124,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -1158,13 +1158,13 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				],
 				"requirements": "You're an expert with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
-				"This arrowhead, carved from dragon bone, hangs off the shaft of your weapon. When you activate this talisman, until the end of the current turn, the affixed weapon gains the thrown 20 feet weapon trait, and when you make a thrown {@action Strike} with it, it flies back to your hand after the {@action Strike} completes. If your hands are full when the weapon returns, it falls to the ground in your space."
+				"This arrowhead, carved from dragon bone, hangs off the shaft of your weapon. When you activate this talisman, until the end of the current turn, the affixed weapon gains the thrown <20 feet> weapon trait, and when you make a thrown {@action Strike} with it, it flies back to your hand after the {@action Strike} completes. If your hands are full when the weapon returns, it falls to the ground in your space."
 			]
 		},
 		{
@@ -1195,7 +1195,7 @@
 						"number": 2
 					},
 					"components": [
-						"interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"healing",
@@ -1323,10 +1323,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
-						"You extend your weapon for an instant, giving you an impossible reach. You {@action Strike} with the weapon, and you have reach 60 feet for the {@action Strike}."
+						"You extend your weapon for an instant, giving you an impossible reach. You {@action Strike} with the weapon, and you have reach <60 feet> for the {@action Strike}."
 					]
 				}
 			],
@@ -1348,7 +1348,7 @@
 						"amount": 3000
 					},
 					"entries": [
-						"The activation grants you reach 120 feet for the {@action Strike}."
+						"The activation grants you reach <120 feet> for the {@action Strike}."
 					],
 					"variantType": "greater extending"
 				}
@@ -1991,7 +1991,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"This potion functions as a bottle of holy water. Like holy water, you throw it as a {@action Strike}. It's a simple thrown weapon with a range increment of 20 feet. Unlike an alchemical bomb, it doesn't add the {@trait manipulate} trait to the attack made with it."
@@ -2004,7 +2004,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You drink the fu water to counteract ailments within yourself. Attempt a counteract check with a +9 counteract modifier and a counteract level of 3 against one effect that imposes the {@condition confused}, {@condition fascinated}, {@condition frightened}, or {@condition stupefied} condition. You are then {@condition sickened 1}."
@@ -2038,7 +2038,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2244,7 +2244,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",
@@ -2352,7 +2352,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -3027,7 +3027,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				],
 				"requirements": "You're {@condition undetected} by a creature and are a master in {@skill Stealth}."
 			},
@@ -3173,7 +3173,7 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -3378,7 +3378,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You extend the flail's chain, then wrap it across itself and strike two links together.",
@@ -3644,7 +3644,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -3679,7 +3679,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -3689,8 +3689,7 @@
 					"type": "ability",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"name": "Divert Lightning",
 					"components": [
@@ -3735,7 +3734,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -3768,7 +3767,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -3797,7 +3796,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Potion",
@@ -3911,7 +3910,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "Your armor has absorbed at least 30 damage",
 					"entries": [
@@ -3942,7 +3941,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"ammunition": [
@@ -4769,7 +4768,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You change the staff-storing shield from its shield form into the stored staff, which has an image of the shield on it, or change it from the stored staff back into a shield."
@@ -4973,7 +4972,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				],
 				"requirements": "You're an expert in {@skill Acrobatics}."
 			},
@@ -5087,7 +5086,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -5271,7 +5270,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Oil",

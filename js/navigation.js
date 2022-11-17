@@ -69,6 +69,7 @@ class NavBar {
 		this._addElement_dropdown(NavBar._CAT_GAME_MASTER, NavBar._CAT_ADVENTURES, {isSide: true, page: "adventures.html"});
 		this._addElement_li(NavBar._CAT_ADVENTURES, "adventures.html", "View All/Homebrew");
 		this._addElement_li(NavBar._CAT_GAME_MASTER, "hazards.html", "Hazards");
+		this._addElement_li(NavBar._CAT_GAME_MASTER, "events.html", "Events");
 
 		this._addElement_dropdown(null, NavBar._CAT_REFERENCES);
 		this._addElement_li(NavBar._CAT_REFERENCES, "actions.html", "Actions");

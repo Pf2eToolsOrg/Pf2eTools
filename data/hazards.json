@@ -1219,7 +1219,7 @@
 					},
 					"traits": [
 						"fire",
-						"range 10 feet"
+						"range <10 feet>"
 					],
 					"name": "red hot gear",
 					"attack": 12,
@@ -1530,7 +1530,7 @@
 					},
 					"traits": [
 						"nonlethal",
-						"range 10 feet"
+						"range <10 feet>"
 					],
 					"name": "wooden bullet",
 					"attack": 12,
@@ -1683,8 +1683,8 @@
 					},
 					"traits": [
 						"magical",
-						"range 120 feet",
-						"reload 2"
+						"range <120 feet>",
+						"reload <2>"
 					],
 					"name": "heavy crossbow",
 					"attack": 16,
@@ -2778,7 +2778,7 @@
 					"name": "talon",
 					"attack": 22,
 					"traits": [
-						"deadly d10"
+						"deadly <d10>"
 					],
 					"damage": "{@damage 1d10+2} piercing; no multiple attack penalty.",
 					"types": [
@@ -3015,7 +3015,7 @@
 						"inhaled",
 						"poison"
 					],
-					"note": " The {@condition enfeebled} condition\nfrom ash web remains even after the poison's duration\nends. The condition's value reduces by 1 per hour. Gugs\nare immune to this poison; instead, they have vivid\nand strange dreams when they sleep after ingesting\nash web.",
+					"note": " The {@condition enfeebled} condition from ash web remains even after the poison's duration ends. The condition's value reduces by 1 per hour. Gugs are immune to this poison; instead, they have vivid and strange dreams when they sleep after ingesting ash web.",
 					"DC": 29,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -3415,11 +3415,11 @@
 						"poison",
 						"virulent"
 					],
-					"note": " Each round,\nat the beginning of their turn, a creature affected by\nblackfinger blight must succeed at a DC {@flatDC 5} flat check or\ndrop one random item they're holding",
+					"note": " Each round, at the beginning of their turn, a creature affected by blackfinger blight must succeed at a DC {@flatDC 5} flat check or drop one random item they're holding",
 					"DC": 40,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
-					"maxDuration": "6\nrounds",
+					"maxDuration": "6 rounds",
 					"stages": [
 						{
 							"stage": 1,
@@ -3946,7 +3946,7 @@
 					"name": "flame dart",
 					"attack": 32,
 					"traits": [
-						"range 40 feet"
+						"range <40 feet>"
 					],
 					"damage": "{@damage 4d8+20} fire and {@damage 4d6} {@condition persistent damage ||persistent fire}",
 					"types": [
@@ -4287,7 +4287,7 @@
 						"acid",
 						"poison"
 					],
-					"note": " Oozes are immune\nto this poison",
+					"note": " Oozes are immune to this poison",
 					"DC": 38,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
@@ -4456,7 +4456,7 @@
 					"name": "claw",
 					"attack": 28,
 					"traits": [
-						"reach 20 feet"
+						"reach <20 feet>"
 					],
 					"effects": [
 						"Grab"
@@ -4867,7 +4867,7 @@
 					"name": "eye beam",
 					"attack": 20,
 					"traits": [
-						"range 120 feet"
+						"range <120 feet>"
 					],
 					"effects": [
 						"The target suffers an effect corresponding to the eye beam's color",
@@ -4961,7 +4961,7 @@
 						"divine",
 						"evocation",
 						"fire",
-						"range 150 feet"
+						"range <150 feet>"
 					],
 					"damage": "{@damage 8d6} fire",
 					"types": [
@@ -5028,7 +5028,7 @@
 				{
 					"type": "attack",
 					"range": "Ranged",
-					"name": "(agile, thrown 10 feet, versatile S) dagger",
+					"name": "(agile, thrown <10 feet>, versatile S) dagger",
 					"attack": 40,
 					"damage": "{@damage 4d4+10} piercing plus 20 negative",
 					"types": [
@@ -5437,7 +5437,7 @@
 					"traits": [
 						"divine",
 						"evocation",
-						"range 120 feet"
+						"range <120 feet>"
 					],
 					"effects": [
 						"The target is subjected to an effect determined by the pillar's color and summarized below. On a critical hit, the target's save result is one degree worse.",
@@ -5688,7 +5688,7 @@
 					"name": "pollen spray",
 					"attack": 12,
 					"traits": [
-						"range 20 feet"
+						"range <20 feet>"
 					],
 					"effects": [
 						"hallucinogenic pollen"
@@ -5816,7 +5816,7 @@
 					"attack": 35,
 					"traits": [
 						"magical",
-						"reach 10 feet"
+						"reach <10 feet>"
 					],
 					"effects": [
 						"and the creature must attempt a new DC 37 Will save against confusion if it's not already {@condition confused}."
@@ -6403,7 +6403,7 @@
 						"emotion",
 						"enchantment",
 						"mental",
-						"range 100 feet"
+						"range <100 feet>"
 					],
 					"effects": [
 						"target is subjected to a {@spell crushing despair} spell (DC 33)"
@@ -6421,7 +6421,7 @@
 						"enchantment",
 						"incapacitation",
 						"mental",
-						"range 100 feet"
+						"range <100 feet>"
 					],
 					"effects": [
 						"target is subjected to a {@spell feeblemind} spell (DC 36)"
@@ -6437,7 +6437,7 @@
 					"traits": [
 						"force",
 						"necromancy",
-						"range 100 feet"
+						"range <100 feet>"
 					],
 					"effects": [
 						"target is subjected to a {@spell spirit blast} spell (DC 36)"
@@ -7166,7 +7166,7 @@
 						"inhaled",
 						"poison"
 					],
-					"note": "\nCreatures with the {@trait ethereal} trait\nare immune",
+					"note": " Creatures with the {@trait ethereal} trait are immune",
 					"DC": 26,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -8217,7 +8217,7 @@
 					"name": "tentacle",
 					"attack": 37,
 					"traits": [
-						"reach 15 feet"
+						"reach <15 feet>"
 					],
 					"effects": [
 						"Grab"
@@ -10664,7 +10664,7 @@
 					"name": "electricity bolt",
 					"attack": 21,
 					"traits": [
-						"range 40 feet"
+						"range <40 feet>"
 					],
 					"damage": "{@damage 1d6+2} electricity damage and {@damage 1d6} {@condition persistent damage ||persistent electricity damage}",
 					"types": [
@@ -10751,7 +10751,7 @@
 					"name": "scythe",
 					"attack": 17,
 					"traits": [
-						"deadly 1d12"
+						"deadly <1d12>"
 					],
 					"damage": "{@damage 2d12+4} slashing",
 					"types": [
@@ -10988,7 +10988,7 @@
 					"name": "scythe",
 					"attack": 20,
 					"traits": [
-						"deadly 1d12"
+						"deadly <1d12>"
 					],
 					"damage": "{@damage 1d12+8} slashing",
 					"types": [
@@ -11257,7 +11257,7 @@
 					"name": "spike",
 					"attack": 11,
 					"traits": [
-						"range 20 feet"
+						"range <20 feet>"
 					],
 					"damage": "{@damage 2d6+3} piercing",
 					"types": [
@@ -11343,7 +11343,7 @@
 					"name": "spike",
 					"attack": 31,
 					"traits": [
-						"reach 10 feet"
+						"reach <10 feet>"
 					],
 					"damage": "{@damage 6d12+24} slashing",
 					"types": [
@@ -11737,7 +11737,16 @@
 					],
 					"trigger": "A creature enters a square either fully or partially filled with rubble in the middle of the room",
 					"entries": [
-						"Six ghostly kobolds surge out of the rubble with eerie yowls. Each creature in area A7 must attempt a DC 18 Will save with the following results. The haunt then rolls initiative. Critical Success The creature is unaffected, is temporarily immune to Confusing Confrontation for 24 hours, and realizes that a display of intimidating dominance might quell the ghostly kobolds' assault. Success The creature is {@condition frightened|CRB|frightened 1}. Failure The creature is {@condition confused} for 1 round and is {@condition frightened|CRB|frightened 2}. Critical Failure The creature is {@condition confused} for 2 rounds and is {@condition frightened|CRB|frightened 3}."
+						"Six ghostly kobolds surge out of the rubble with eerie yowls. Each creature in area A7 must attempt a DC 18 Will save with the following results. The haunt then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected, is temporarily immune to Confusing Confrontation for 24 hours, and realizes that a display of intimidating dominance might quell the ghostly kobolds' assault.",
+								"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
+								"Failure": "The creature is {@condition confused} for 1 round and is {@condition frightened|CRB|frightened 2}.",
+								"Critical Failure": "The creature is {@condition confused} for 2 rounds and is {@condition frightened|CRB|frightened 3}"
+							}
+						}
 					],
 					"name": "Confusing Confrontation"
 				}
@@ -12611,7 +12620,7 @@
 					"name": "branch",
 					"attack": 26,
 					"traits": [
-						"reach 20 feet"
+						"reach <20 feet>"
 					],
 					"effects": [
 						"the target is {@condition grabbed} by the tree"
@@ -12747,7 +12756,7 @@
 					"traits": [
 						"fire",
 						"mental",
-						"range 10 feet"
+						"range <10 feet>"
 					],
 					"effects": [
 						"burn knowledge"
@@ -12832,7 +12841,7 @@
 					"name": "shattering urn",
 					"attack": 12,
 					"traits": [
-						"deadly 1d10"
+						"deadly <1d10>"
 					],
 					"damage": "{@damage 2d6+5} slashing",
 					"types": [
@@ -13010,7 +13019,7 @@
 					"name": "saw blade",
 					"attack": 40,
 					"traits": [
-						"deadly d12"
+						"deadly <d12>"
 					],
 					"effects": [
 						"decapitation"
@@ -13330,7 +13339,7 @@
 					"name": "noose",
 					"attack": 13,
 					"effects": [
-						"deadly d10"
+						"deadly <d10>"
 					],
 					"damage": "{@damage 3d6} bludgeoning and the target is {@condition grabbed} and pulled off the ground ({@action Escape} DC 22). The target takes {@damage 1d6} bludgeoning damage at the end of each of its turns as long as it's caught in the noose.",
 					"types": [

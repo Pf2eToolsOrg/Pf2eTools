@@ -14,6 +14,9 @@
 					"$ref": "#/definitions/equipmentTrait"
 				},
 				{
+					"$ref": "#/definitions/variableTraits"
+				},
+				{
 					"$ref": "#/definitions/morphicTrait"
 				},
 				{
@@ -80,7 +83,7 @@
 					"$ref": "#/definitions/ancestryHeritageTrait"
 				},
 				{
-					"$ref": "#/definitions/schoolTraditionTrait"
+					"$ref": "#/definitions/traditionTrait"
 				},
 				{
 					"$ref": "#/definitions/combatTrait"
@@ -109,8 +112,15 @@
 				"amp",
 				"archetype",
 				"dedication",
+				"deviant",
 				"esoterica",
-				"modification"
+				"evolution",
+				"general",
+				"modification",
+				"multiclass",
+				"oath",
+				"skill",
+				"vigilante"
 			]
 		},
 		"spellTrait": {
@@ -118,10 +128,13 @@
 			"description": "A list of all Spell traits.",
 			"enum": [
 				"amp",
+				"cantrip",
 				"composition",
 				"consecration",
 				"contingency",
-				"cursebound"
+				"cursebound",
+				"incarnate",
+				"litany"
 			]
 		},
 		"actionAbilityTrait": {
@@ -130,9 +143,14 @@
 			"enum": [
 				"concentrate",
 				"deviant",
+				"downtime",
 				"esoterica",
+				"exploration",
+				"instinct",
 				"mindshift",
-				"psyche"
+				"psyche",
+				"reckless",
+				"tandem"
 			]
 		},
 		"classTrait": {
@@ -184,23 +202,15 @@
 				"stance"
 			]
 		},
-		"schoolTraditionTrait": {
+		"traditionTrait": {
 			"type": "string",
-			"description": "A list of all School & Tradition traits.",
+			"description": "A list of all Tradition traits.",
 			"enum": [
 				"[magical tradition]",
-				"abjuration",
 				"arcane",
-				"conjuration",
-				"divination",
 				"divine",
-				"enchantment",
-				"evocation",
-				"illusion",
-				"necromancy",
 				"occult",
-				"primal",
-				"transmutation"
+				"primal"
 			]
 		},
 		"ancestryHeritageTrait": {
@@ -392,7 +402,7 @@
 		},
 		"schoolTrait": {
 			"type": "string",
-			"description": "A list of all _school traits.",
+			"description": "A list of all School traits.",
 			"enum": [
 				"abjuration",
 				"conjuration",
@@ -409,38 +419,15 @@
 			"description": "A list of all General traits.",
 			"enum": [
 				"academic",
-				"archetype",
-				"cantrip",
-				"city",
-				"downtime",
-				"evolution",
-				"exploration",
-				"extradimensional",
-				"fulu",
-				"general",
-				"incarnate",
-				"instinct",
-				"litany",
 				"manipulate",
 				"metamagic",
-				"metropolis",
 				"militaristic",
-				"multiclass",
-				"oath",
 				"pervasive magic",
-				"reckless",
 				"revolutionary",
 				"secret",
 				"shadow",
-				"skill",
-				"static",
 				"structure",
-				"tandem",
-				"town",
 				"true name",
-				"unbounded",
-				"vigilante",
-				"village",
 				"wayfaring"
 			]
 		},
@@ -552,9 +539,11 @@
 				"low gravity",
 				"microgravity",
 				"sentient",
+				"static",
 				"strange gravity",
 				"subjective gravity",
 				"timeless",
+				"unbounded",
 				"water"
 			]
 		},
@@ -574,7 +563,9 @@
 				"cursed",
 				"drug",
 				"elixir",
+				"extradimensional",
 				"focused",
+				"fulu",
 				"grimoire",
 				"infused",
 				"ingested",
@@ -645,6 +636,7 @@
 				"detection",
 				"disease",
 				"emotion",
+				"extradimensional",
 				"fear",
 				"fortune",
 				"healing",
@@ -678,7 +670,7 @@
 		},
 		"settlementTrait": {
 			"type": "string",
-			"description": "A list of all _settlement traits.",
+			"description": "A list of all Settlement traits.",
 			"enum": [
 				"city",
 				"metropolis",
@@ -754,6 +746,16 @@
 			"enum": [
 				"metamorphic",
 				"sentient"
+			]
+		},
+		"variableTraits": {
+			"type": "string",
+			"description": "A list of all traits with variable values, enclosed in <these 'brackets'>.",
+			"anyOf": [
+				{
+					"type": "string",
+					"pattern": "^scatter <.*>$"
+				}
 			]
 		},
 		"equipmentTrait": {

@@ -40,6 +40,7 @@
 										"Energy & Element",
 										"Equipment",
 										"Feat",
+										"Settlement",
 										"General",
 										"Gravity",
 										"Hazard",
@@ -47,7 +48,8 @@
 										"Morphic",
 										"Planar",
 										"Rarity",
-										"School & Tradition",
+										"School",
+										"Tradition",
 										"Scope",
 										"Size",
 										"Spell",
@@ -57,13 +59,15 @@
 								},
 								{
 									"enum": [
-										"_alignAbv",
-										"_settlement",
-										"_school"
+										"_alignAbv"
 									]
 								}
 							]
 						}
+					},
+					"variable": {
+						"type": "boolean",
+						"description": "Whether the trait has a variable value, which is enclosed in <these 'brackets'>.\nMainly for schema generation."
 					},
 					"otherSources": {
 						"$ref": "utils.json#/definitions/otherSources"

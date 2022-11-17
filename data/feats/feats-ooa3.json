@@ -10,22 +10,20 @@
 				"abjuration",
 				"aftermath"
 			],
-			"prerequisites": "You were present at the death of the medusa",
+			"prerequisites": "You were present at the death of the medusa Alethsia, whose vitrumantic powers were passed on to you in the wake of her destruction.",
 			"entries": [
-				"Alethsia, whose vitrumantic powers were passed on to you in the wake of her destruction.",
 				"Even if vitrumancy is a mystery to you, your blood and flesh know the secrets of the art of arcane glass. Patches of your skin to flicker into glass without warning. By focusing the effect, you can concentrate the glass into a powerful protective layer of magical obsidian. Once per day, you can cast {@spell stoneskin} on yourself as an innate primal spell, though the spell covers you in a layer of glass instead of stone.",
-				"During this innate stoneskin, you gain the Shatter Glass reaction. At 18th level, the stoneskin is heightened to 6th level instead of 4th.",
+				"During this innate stoneskin, you gain the Shatter Glass reaction. At 18th level, the {@spell stoneskin} is heightened to 6th level instead of 4th.",
 				{
 					"name": "Shatter Glass",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "An adjacent creature Strikes you with a melee weapon or unarmed attack and deals damage",
+					"trigger": "An adjacent creature {@action Strike||Strikes} you with a melee weapon or unarmed attack and deals damage",
 					"requirements": "Your innate stoneskin from Glass Skin is active",
 					"entries": [
-						"You shatter some of the glass on your skin to damage your attacker.",
-						"The attacker takes {@dice 3d10} damage and the duration of the stoneskin decreases by 1 minute. At 14th level, the damage increases to {@dice 4d10}, and at 18th level, the damage increases to {@dice 5d10}."
+						"You shatter some of the glass on your skin to damage your attacker. The attacker takes {@dice 3d10} damage and the duration of the {@spell stoneskin} decreases by 1 minute. At 14th level, the damage increases to {@dice 4d10}, and at 18th level, the damage increases to {@dice 5d10}."
 					],
 					"type": "ability"
 				}
@@ -43,10 +41,21 @@
 			],
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
-				"You can animate corpses through cunning engineering. You gain a prototype construct companion to serve as a minion (Guns & Gears 32). Unlike normal construct companions, yours is a corpse animated by clockwork gears and technological prowess."
+				"You can animate corpses through cunning engineering. You gain a prototype construct companion to serve as a {@trait minion}. Unlike normal construct companions, yours is a corpse animated by clockwork gears and technological prowess."
 			],
 			"special": [
 				"You can't select another dedication feat until you've gained two other feats from the clockwork reanimator archetype. If you retrain out of this feat, you lose the rituals learned from it."
+			],
+			"leadsTo": [
+				"Advanced Reanimated Companion|OoA3",
+				"Incredible Reanimated Companion|OoA3",
+				"Paragon Reanimated Companion|OoA3",
+				"Hijack Undead|OoA3",
+				"Improved Hijack Undead|OoA3",
+				"It's Alive!|OoA3",
+				"Self-Destruct|OoA3",
+				"Unwind Death|OoA3",
+				"Zombie Horde|OoA3"
 			]
 		},
 		{
@@ -57,9 +66,13 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Clockwork Reanimator Dedication",
+			"prerequisites": "{@feat Clockwork Reanimator Dedication|OoA3}",
 			"entries": [
-				"Your corpselike construct companion becomes much more powerful and can act with limited autonomy to follow your greater directives. It becomes an advanced construct companion. During an encounter, even if you don't use the Command a Minion action, your construct companion can still use 1 action on your turn that round to {@action Stride} or {@action Strike}."
+				"Your corpselike construct companion becomes much more powerful and can act with limited autonomy to follow your greater directives. It becomes an advanced construct companion. During an encounter, even if you don't use the Command an Animal action, your construct companion can still use 1 action on your turn that round to {@action Stride} or {@action Strike}."
+			],
+			"leadsTo": [
+				"Incredible Reanimated Companion|OoA3",
+				"Paragon Reanimated Companion|OoA3"
 			]
 		},
 		{
@@ -74,7 +87,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Clockwork Reanimator Dedication",
+			"prerequisites": "{@feat Clockwork Reanimator Dedication|OoA3}",
 			"frequency": {
 				"freq": 1,
 				"unit": "hour"
@@ -91,13 +104,16 @@
 							"The target is unaffected."
 						],
 						"Failure": [
-							"The undead creature becomes a minion under your control for 1 minute. The control ends if you or an ally attacks the minion undead."
+							"The undead creature becomes a {@trait minion} under your control for 1 minute. The control ends if you or an ally attacks the {@trait minion} undead."
 						],
 						"Critical Failure": [
 							"As failure, but the duration is 1 hour."
 						]
 					}
 				}
+			],
+			"leadsTo": [
+				"Improved Hijack Undead|OoA3"
 			]
 		},
 		{
@@ -108,7 +124,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Clockwork Reanimator Dedication",
+			"prerequisites": "{@feat Clockwork Reanimator Dedication|OoA3}",
 			"entries": [
 				"You've mastered the use of electrical energy to power your clockwork creations. Whenever your construct companion takes electricity damage, it gains temporary Hit Points equal to either half the electricity damage it took or your level, whichever is lower. These temporary Hit Points last for up to 1 minute."
 			]
@@ -121,9 +137,12 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Advanced Reanimated Companion",
+			"prerequisites": "{@feat Advanced Reanimated Companion|OoA3}",
 			"entries": [
 				"You imbue the necrotized flesh of your reanimated construct companion with strange chemicals and fine-tune the clockwork within, enhancing all its capabilities. It becomes an incredible construct companion."
+			],
+			"leadsTo": [
+				"Paragon Reanimated Companion|OoA3"
 			]
 		},
 		{
@@ -138,7 +157,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Clockwork Reanimator Dedication",
+			"prerequisites": "{@feat Clockwork Reanimator Dedication|OoA3}",
 			"trigger": "Your reanimated clockwork companion is reduced to 0 Hit Points.",
 			"requirements": "You're within 60 feet of your reanimated clockwork companion.",
 			"entries": [
@@ -153,9 +172,9 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Clockwork Reanimator Dedication, Hijack",
+			"prerequisites": "{@feat Clockwork Reanimator Dedication|OoA3}, {@feat Hijack Undead|OoA3}",
 			"entries": [
-				"Undead Undead creatures find it all but impossible to resist your commands. When you use Hijack Undead, if the undead fails its save, it becomes your minion for 10 minutes. If it critically fails, it becomes your minion for 24 hours."
+				"Undead creatures find it all but impossible to resist your commands. When you use {@feat Hijack Undead|OoA3}, if the undead fails its save, it becomes your {@trait minion} for 10 minutes. If it critically fails, it becomes your {@trait minion} for 24 hours."
 			]
 		},
 		{
@@ -166,7 +185,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Incredible Reanimated Companion",
+			"prerequisites": "{@feat Incredible Reanimated Companion|OoA3}",
 			"entries": [
 				"You have reached the pinnacle of necromantic science, creating a mechanical zombie unlike any the world has seen before. Your reanimated construct companion becomes a paragon construct companion."
 			]
@@ -183,7 +202,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Clockwork Reanimator Dedication",
+			"prerequisites": "{@feat Clockwork Reanimator Dedication|OoA3}",
 			"requirements": "The target's body must be mostly intact.",
 			"entries": [
 				"Combining necromancy with the mysterious temporal powers of clockwork, you wind a creature backward from the moment of its death. Attempt a DC 40 {@skill Crafting} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of raise dead, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded||wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is then temporarily immune to Unwind Death for 1 day."
@@ -201,7 +220,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Clockwork Reanimator Dedication",
+			"prerequisites": "{@feat Clockwork Reanimator Dedication|OoA3}",
 			"entries": [
 				"You built your reanimated construct companion of modular components from various corpses. Its unique makeup enables your companion to split into dozens or even hundreds of much smaller corpse constructs. Acting as one, this shambling swarm can overwhelm your enemies.",
 				"You Command your reanimated construct companion.",
