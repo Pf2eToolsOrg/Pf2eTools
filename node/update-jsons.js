@@ -265,5 +265,5 @@ function updateFolder (folder) {
 }
 
 updateFolder(`./data`);
-// updateFolder(`./homebrew/pf2e-homebrew`);
+updateFolder(`./homebrew/pf2e-homebrew`);
 console.log("Updating complete.");
