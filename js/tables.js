@@ -90,12 +90,18 @@ class TablesPage extends ListPage {
 		};
 		const buildInfoTab = async () => {
 			let quickRulesType;
-			if (it.source === "CHD") {
-				quickRulesType = "criticalHitDeck";
-			} else if (it.source === "CFD") {
-				quickRulesType = "criticalFumbleDeck";
-			} else {
-				return;
+			switch (it.source) {
+				case "CHD":
+					quickRulesType = "criticalHitDeck";
+					break;
+				case "CFD":
+					quickRulesType = "criticalFumbleDeck";
+					break;
+				case "HPD":
+					quickRulesType = "heroPointDeck";
+					break;
+				default:
+					return;
 			}
 			const quickRules = await Renderer.utils.pGetQuickRules(quickRulesType);
 			$pgContent.append(quickRules);
@@ -106,7 +112,7 @@ class TablesPage extends ListPage {
 			buildStatsTab,
 		);
 		const tabs = [statsTab];
-		if (it.source === "CFD" || it.source === "CHD") {
+		if (it.source === "CFD" || it.source === "CHD" || it.source === "HPD") {
 			const infoTab = Renderer.utils.tabButton(
 				"Quick Rules",
 				() => {},
