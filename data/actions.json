@@ -36,31 +36,36 @@
 					"type": "pf2-options",
 					"items": [
 						{
+							"type": "item",
 							"name": "Armor of Insight ({@skill Perception})",
 							"entries": [
 								"Sensing the incoming attack, you make your mind resist psychic harm. You gain resistance equal to half your level (minimum 1) to mental damage against the triggering effect. This resistance is doubled if you're a master in Perception and tripled if you're legendary. "
 							]
 						},
 						{
+							"type": "item",
 							"name": "Empathic Orbit ({@skill Diplomacy})",
 							"entries": [
 								"Displaying empathy, you sow doubt in your attacker to diminish their resolve for psychic combat. The opponent is stupefied 1 until the end of their next turn or stupefied 2 if you're legendary in Diplomacy. "
 							]
 						},
 						{
-							"name": "Ire's Spear ({@skill Intimidation})",
+
+							"type": "item","name": "Ire's Spear ({@skill Intimidation})",
 							"entries": [
 								"Blazing anger surges in your mind, causing backlash to anyone who harms you. If the manifestation damages you, the opponent takes damage equal to the counteract level of the manifestation it used against you. This damage is doubled if you're a master of Intimidation or tripled if you're legendary. "
 							]
 						},
 						{
-							"name": "Rational Labyrinth ({@skill Occultism})",
+
+							"type": "item","name": "Rational Labyrinth ({@skill Occultism})",
 							"entries": [
 								"Analytically breaking down the attack, you realign your mind's defenses into a puzzle designed to confound it. You gain a +2 status bonus to your Will save or Will DC, or a +4 status bonus if the effect has the emotion trait. "
 							]
 						},
 						{
-							"name": "Sensory Phantasm ({@skill Deception})",
+
+							"type": "item","name": "Sensory Phantasm ({@skill Deception})",
 							"entries": [
 								"Using your guile, you send psychic illusions through your mental link to your foe, making yourself harder to pinpoint. You're concealed against the opponent until the end of its next turn."
 							]
@@ -661,6 +666,31 @@
 						"Critical Failure": "Your ally takes a \u20131 circumstance penalty to the triggering check."
 					}
 				}
+			]
+		},
+		{
+			"name": "Wicked Thorns",
+			"source": "LOIL",
+			"page": 37,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"actionType": {
+				"ancestry": [
+					"Ghoran|LOIL"
+				],
+				"heritage": [
+					"Thorned|LOIL"
+				]
+			},
+			"trigger": "You're hit with an unarmed {@action Strike} or a {@action Strike} with a non-reach melee weapon.",
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"Several of your thorns break off and hook into your attacker’s body. You deal {@damage 1d8} piercing damage to the triggering creature. It attempts a basic Reflex save against the higher of your class DC or spell DC. On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} as your thorns embed in its flesh. At 3rd level, and every 2 levels thereafter, this damage increases by {@scaledice 2d8|2-9|1d8}, and the persistent piercing damage increases by {@scaledice 2|2-9|1}."
 			]
 		},
 		{
