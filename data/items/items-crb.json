@@ -317,7 +317,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Adamantine shields are particularly sturdy, and when used for a shield bash, they are adamantine weapons."
 			],
@@ -838,7 +837,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Bomb",
@@ -1136,7 +1135,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -1290,8 +1289,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -1606,8 +1604,7 @@
 			"category": "Ammunition",
 			"entries": [
 				"These projectiles are the ammunition for bows. The shaft of an arrow is made of wood. It is stabilized in flight by fletching at one end and bears a metal head on the other."
-			],
-			"variants": null
+			]
 		},
 		{
 			"name": "Arrow-catching Shield",
@@ -1626,7 +1623,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"This remarkable wooden shield (Hardness 10, HP 60, BT 30) is carved with images of overlapping fletched arrows.",
 				{
@@ -1915,7 +1911,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2106,11 +2102,10 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"trigger": "You are targeted by a thrown rock attack, or a rock would fall on you",
 					"entries": [
@@ -2156,7 +2151,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2198,7 +2193,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2692,8 +2687,7 @@
 			"category": "Ammunition",
 			"entries": [
 				"These thin, light darts are typically made of hardwood and stabilized with fletching of down or fur. They are often hollow so they can be used to deliver poison."
-			],
-			"variants": null
+			]
 		},
 		{
 			"name": "Bolt",
@@ -2708,8 +2702,7 @@
 			"category": "Ammunition",
 			"entries": [
 				"Shorter than traditional arrows but similar in construction, bolts are the ammunition used by crossbows."
-			],
-			"variants": null
+			]
 		},
 		{
 			"name": "Bomb Snare",
@@ -2942,7 +2935,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2982,7 +2975,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You draw a breath of air from the bottle. This allows you to breathe even in an airless or toxic environment. Air doesn't escape the mouth of the bottle, so leaving the open bottle in an airless environment doesn't change the environment."
@@ -3011,7 +3004,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Bomb",
@@ -3236,8 +3229,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"{@action Interact}"
@@ -3708,7 +3700,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -3824,7 +3816,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (sonic)"
+						"{@action Interact}"
+					],
+					"traits": [
+						"sonic"
 					],
 					"frequency": {
 						"unit": "day",
@@ -4071,7 +4066,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You aim the chime at a container, door, or lock you want to open and strike the chime. The chime sends out magical vibrations that attempt a {@skill Thievery} check against the lock's DC, with a {@skill Thievery} bonus of +13. This targets only one lock or binding at a time, so you might need to activate the chime multiple times to open a target with several forms of protection."
@@ -4314,7 +4309,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -4826,7 +4821,6 @@
 			"level": "2+",
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Cold iron shields don't typically have an additional effect, though when used for a shield bash, they are cold iron weapons."
 			],
@@ -5619,7 +5613,7 @@
 						"entry": "{@as F}"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -5715,7 +5709,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "On your most recent action, you succeeded at a {@skill Performance} check to dance",
 					"entries": [
@@ -6084,7 +6078,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Darkwood shields are 1 Bulk lighter than normal (or light Bulk if their normal Bulk is 1, with no effect on a shield that normally has light Bulk)."
 			],
@@ -6491,7 +6484,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -7207,7 +7200,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Dragonhide shields are each immune to one damage type based on the type of dragon (see Dragonhide on page 579)."
 			],
@@ -7298,7 +7290,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -7328,7 +7320,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"A dragonslayer's shield is a steel shield covered with dragonhide from a certain type of dragon, which distinguishes each shield from the others. While raised, this steel shield (Hardness 8, HP 32, BT 16) grants its circumstance bonus to Reflex saves against area effects (as well as to AC, as normal)",
 				"While you hold the shield, it also grants you a +2 circumstance bonus to Will saves against a dragon's frightful presence ability. The shield has resistance 10 against the damage type corresponding to the type of dragon whose hide was used in its creation (see dragonhide on page 579); this applies after reducing the damage for Hardness, so when you use {@feat Shield Block}, the dragonslayer's shield takes 18 less damage from attacks of that damage type. You can use {@feat Shield Block} against attacks that deal damage of that type."
@@ -8103,7 +8094,7 @@
 						"entry": "(10 minutes)"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -8788,7 +8779,6 @@
 			"usage": "strapped to 1 hand",
 			"bulk": "L",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"A floating shield is usually carved with wing motifs. This buckler (Hardness 6, HP 24, BT 12) can protect you on its own.",
 				{
@@ -8799,7 +8789,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -8874,7 +8864,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"The edges of this elaborately engraved steel shield (Hardness 8, HP 32, BT 16) bear tiny glass tiles set in mosaic patterns.",
 				{
@@ -8915,7 +8904,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"The religious symbol of Torag, the forge god\u2014an ornate hammer of dwarven construction\u2014adorns the face of this reinforced steel shield (Hardness 10, HP 24, BT 12). The shield is a religious symbol of Torag.",
 				"You and any adjacent allies have fire resistance 5 while you have the shield raised. When used for a {@feat Shield Block}, the forge warden rings out like the hammer strike of a blacksmith, and the symbol glows as if lit by the fires of a furnace.",
@@ -9098,7 +9086,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Bomb",
@@ -9573,7 +9561,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "No item is stored in the gloves",
 					"entries": [
@@ -9589,7 +9577,7 @@
 						"entry": "{@as F}"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "An item is stored in the gloves, and you have a free hand",
 					"entries": [
@@ -9621,7 +9609,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -10205,8 +10193,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"envision (fortune)"
@@ -10246,7 +10233,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -10566,8 +10553,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -10737,7 +10723,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Consumable",
@@ -10773,7 +10759,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "round",
@@ -10791,7 +10777,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -10839,7 +10825,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -11023,7 +11009,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You push the button to anchor the rod in place. It doesn't move, defying gravity if need be. If the button is pushed again, the rod deactivates, ending the anchoring magic. While anchored, the rod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the rod with a DC of 40 (though most intelligent creatures can just push the button to release the rod)."
@@ -11076,7 +11062,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"An indestructible shield is a high-grade adamantine shield (Hardness 13, HP 90) that can withstand just about any damage. It can be damaged only by a {@spell disintegrate} spell (roll damage as if against a creature that failed its save) or by an artifact tied to destruction, such as a sphere of annihilation."
 			],
@@ -12040,7 +12025,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You lift an object of up to 8 Bulk as though it were weightless. This requires two hands, and if the object is locked or otherwise held in place, you can attempt to {@action Force Open||Force it Open} using {@skill Athletics} as part of this activation. The object still has its full weight and Bulk for all other purposes\u2014you just ignore that weight. The effect lasts until the end of your next turn."
@@ -12065,7 +12050,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"This steel shield (Hardness 6, HP 36, BT 18) is forged into the shape of a roaring lion's head.",
 				"The lion's head functions as +1 striking shield boss that can't be removed from the shield.",
@@ -12236,7 +12220,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -12704,7 +12688,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -12796,8 +12780,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} daze",
-								"{@bold 1st} mindlink, phantom pain"
+								"{@bold Cantrip} {@spell daze}",
+								"{@bold 1st} {@spell mindlink}, {@spell phantom pain}"
 							]
 						}
 					]
@@ -12813,8 +12797,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 2nd} paranoia",
-								"{@bold 3rd} hypercognition, phantom pain"
+								"{@bold 2nd} {@spell paranoia}",
+								"{@bold 3rd} {@spell hypercognition}, {@spell phantom pain}"
 							]
 						}
 					]
@@ -12830,8 +12814,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 4th} modify memory, telepathy",
-								"{@bold 5th} phantom pain, synaptic pulse, synesthesia"
+								"{@bold 4th} {@spell modify memory}, {@spell telepathy}",
+								"{@bold 5th} {@spell phantom pain}, {@spell synaptic pulse}, {@spell synesthesia}"
 							]
 						}
 					]
@@ -13311,7 +13295,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Mithral shields are 1 Bulk lighter than normal (or light Bulk if their normal Bulk is 1, with no effect on a shield that normally has light Bulk). When used for a shield bash, they are treated as silver weapons."
 			],
@@ -13490,7 +13473,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -13667,7 +13650,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You detach a sphere from the necklace, causing it to glow with orange light. After you activate a sphere, if you or anyone else hurls it (an {@action Interact} action with the ranged trait), it detonates as a fireball where it lands. Your toss can place the center of the {@spell fireball} anywhere within 70 feet, though at the GM's discretion you might need to make an attack roll if the throw is unusually challenging. If no one hurls the sphere by the start of your next turn, it turns into a non-magical red bead."
@@ -14482,7 +14465,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Orichalcum shields' time-bending properties are particularly useful for keeping them intact. The first time each day an orichalcum shield would be destroyed, it is instead left with 1 Hit Point and the {@condition broken} condition."
 			],
@@ -15387,7 +15369,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -15406,7 +15388,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -15636,7 +15618,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"This high-grade silver buckler (Hardness 6, HP 24, BT 12) is polished to a mirrorlike sheen. The shield functions as a spellguard shield (see below) that can also reflect spells.",
 				{
@@ -15644,8 +15625,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -16007,8 +15987,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"envision"
@@ -16118,7 +16097,7 @@
 						"unit": "day"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"Snapping your fingers on the hand that wears the ring causes the ring to cast {@spell glibness} on you with no visual manifestations of a spell being cast."
@@ -16210,8 +16189,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"envision"
@@ -16468,7 +16446,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You pluck an eye from the robe and toss it into the air, where it turns {@condition invisible} and floats to a destination you choose, with the same effect as a 5th-level {@spell prying eye} spell.",
@@ -16500,8 +16478,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -16567,7 +16544,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"This rod emits a thin, gray beam that negates a spell or magic item, casting a 6th-level {@spell dispel magic} spell with a counteract modifier of +23. Once activated, the rod can't be activated again for {@dice 2d6} hours."
@@ -17695,7 +17672,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The weapon takes the shape of another melee weapon that requires the same number of hands to wield. The weapon's runes and any precious material it's made of apply to the weapon's new shape. Any property runes that can't apply to the new form are suppressed until the item takes a shape to which they can apply."
@@ -18128,7 +18105,6 @@
 			"level": "2+",
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Silver shields don't typically have an additional effect, though when used for a shield bash, they are silver weapons."
 			],
@@ -18461,7 +18437,7 @@
 						"entry": "{@as F}"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -18522,8 +18498,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -18656,8 +18631,7 @@
 			"category": "Ammunition",
 			"entries": [
 				"These are small metal balls, typically either iron or lead, designed to be used as ammunition in {@item sling||slings}."
-			],
-			"variants": null
+			]
 		},
 		{
 			"name": "Slippers of Spider Climbing",
@@ -19063,7 +19037,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"This shield bears eldritch glyphs to guard against magic. While you have this steel shield (Hardness 6, HP 24, BT 12) raised, you gain its circumstance bonus to saving throws against spells that target you (as well as to AC)."
 			]
@@ -19438,7 +19411,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Five jagged spines project from the surface of this steel shield (Hardness 6, HP 24, BT 12). The spines are +1 striking shield spikes. When you use the {@feat Shield Block} reaction with this shield, the spines take the damage before the shield itself does. When the shield would take damage (after applying Hardness), one spine snaps off per 6 damage, reducing the damage by 6. The shield takes any remaining damage. When there are no spines left, the shield takes damage as normal.",
 				"When all the spines are gone, you lose the ability to attack with them until the spines regenerate the next day.",
@@ -19450,7 +19422,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You shoot one of the shield's spines at a target. A fired spine uses the spikes' statistics, but it is a martial ranged weapon with a range increment of 120 feet."
@@ -20147,7 +20119,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The gem at the top of the staff glows as a torch, shedding bright light in a 20-foot radius (and dim light to the next 20 feet) for 10 minutes."
@@ -20720,8 +20692,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -20879,7 +20850,6 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"With a superior design and excellent craftsmanship, this steel shield has higher Hardness than its non-magical counterparts, making it harder to break and destroy."
 			],
@@ -21123,7 +21093,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Bomb",
@@ -21575,7 +21545,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Bomb",
@@ -21735,7 +21705,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You light the incense inside the censer, and it burns for 1 hour. During that time, as long you are holding the thurible, you gain a +1 item bonus to {@skill Religion} checks, and any critical failure you roll when you {@action Decipher Writing} of a religious nature is a failure instead."
@@ -22138,7 +22108,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You cause the twigs to rapidly grow or contract, reshaping into a +1 striking staff, a +1 striking bo staff, or its disc form. In its disc form, it has negligible Bulk and must be held in one hand to be activated. In the other forms, it has the same Bulk as a normal weapon of its type. You can switch your grip as part of the activation.",
@@ -22175,8 +22145,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"command"
@@ -22220,7 +22189,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Consumable",
@@ -22291,7 +22260,7 @@
 						"freq": 1
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"Twisting the ring around your finger allows you to magically throw your voice, with the effects of a {@spell ventriloquism} spell (DC 19)."
@@ -22394,9 +22363,9 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrips tanglefoot",
-								"{@bold 1st} shillelagh (can target the verdant staff)",
-								"{@bold 2nd} barkskin, entangle, shape wood, tree shape"
+								"{@b Cantrips} {tanglefoot}",
+								"{@bold 1st} {@b shillelagh} (can target the verdant staff)",
+								"{@bold 2nd} {@b barkskin}, {@b entangle}, {@b shape wood}, {@b tree shape}"
 							]
 						}
 					],
@@ -22413,9 +22382,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} wall of thorns",
-								"{@bold 4th} barkskin, speak with plants",
-								"{@bold 5th} plant form, wall of thorns"
+								"{@bold 3rd} {@b wall of thorns}",
+								"{@bold 4th} {@b barkskin}, {@b speak with plants}",
+								"{@bold 5th} {@b plant form}, {@b wall of thorns}"
 							]
 						}
 					]
@@ -22552,8 +22521,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"envision (death",

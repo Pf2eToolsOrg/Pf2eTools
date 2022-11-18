@@ -15,7 +15,7 @@ version_number="${version#v}"
 # This parses the JSON blob for this specific version from changelog.json.
 changelog="$(
     jq --arg version "$version_number" --compact-output \
-    '.[] | select(.ver == $version)'                    \
+    '.changelog [] | select(.ver == $version)'                    \
     data/changelog.json
 )"
 
