@@ -496,7 +496,7 @@
 						"{@i Casting this spell is an activity that requires two actions to complete, and it has two components. The complex gestures needed to invoke the spell are the somatic component, and Kyra's prayers to her deity are the verbal component.}",
 						"{@b Erik:} Okay! The ghast leaps from the casket straight toward Merisiel. The stench of its rotting body is absolutely horrific up close. Attempt a Fortitude save!",
 						"{@i James rolls an 8, for a total of 14.}",
-						"{@b Erik:} Not quite enough\u2014you gain the {@condition sickened} 1 condition, which is going to give you a \u20131 penalty to most of your d20 rolls. Next, it lunges at you, trying to bite you!",
+						"{@b Erik:} Not quite enough\u2014you gain the {@condition sickened 1} condition, which is going to give you a \u20131 penalty to most of your d20 rolls. Next, it lunges at you, trying to bite you!",
 						"{@b James:} Oh no! I use my reaction to nimbly dodge out of the way.",
 						"{@i Erik rolls an attack roll for the ghast, getting an 9 on the die. Looking at the monster's statistics, he adds 11 for a total of 20. Merisiel's AC is normally 19, but the Nimble Dodge feat lets her use her reaction to increase her AC by 2 against a single attack. In this case, it turns the ghast's attack into a miss.}",
 						"{@b Erik:} Does a 20 hit you?",
@@ -3774,7 +3774,7 @@
 											"page": 272,
 											"name": "Encumbered",
 											"entries": [
-												"You are carrying more weight than you can manage. While you're {@condition encumbered}, you're {@condition clumsy} 1 and take a \u201310-foot penalty to all your Speeds. As with all penalties to your Speed, this can't reduce your Speed below 5 feet."
+												"You are carrying more weight than you can manage. While you're {@condition encumbered}, you're {@condition clumsy 1} and take a \u201310-foot penalty to all your Speeds. As with all penalties to your Speed, this can't reduce your Speed below 5 feet."
 											]
 										}
 									]
@@ -7301,7 +7301,7 @@
 									"type": "list",
 									"items": [
 										"You immediately move your initiative position to directly before the turn in which you were reduced to 0 HP.",
-										"You gain the {@condition dying} 1 condition. If the effect that knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying} 2 condition instead. If you have the {@condition wounded} condition (page 460), increase your {@condition dying} value by an amount equal to your {@condition wounded} value. If the damage was dealt by a nonlethal attack or nonlethal effect, you don't gain the dying condition; you are instead unconscious with 0 Hit Points."
+										"You gain the {@condition dying 1} condition. If the effect that knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying 2} condition instead. If you have the {@condition wounded} condition (page 460), increase your {@condition dying} value by an amount equal to your {@condition wounded} value. If the damage was dealt by a nonlethal attack or nonlethal effect, you don't gain the dying condition; you are instead unconscious with 0 Hit Points."
 									]
 								},
 								{
@@ -12545,7 +12545,7 @@
 						},
 						"The {@condition doomed}, {@condition dying}, {@condition unconscious}, and {@condition wounded} conditions all relate to the process of coming closer to death. The full rules are on pages 459\u2013461. The most significant information not contained in the conditions themselves is this: When you're reduced to 0 Hit Points, you're knocked out with the following effects:",
 						"directly before the creature or effect that reduced you to 0 Hit Points.",
-						"knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying} 2 condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points.",
+						"knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying 2} condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points.",
 						{
 							"type": "pf2-title",
 							"name": "PERSISTENT DAMAGE RULES"
@@ -12588,13 +12588,13 @@
 							"name": "REDUNDANT CONDITIONS"
 						},
 						"You can have a given condition only once at a time. If an effect would impose a condition you already have, you now have that condition for the longer of the two durations. The shorter-duration condition effectively ends, though other conditions caused by the original, shorter-duration effect might continue.",
-						"For example, let's say you have been hit by a monster that drains your vitality; your wound causes you to be {@condition enfeebled} 2 and {@condition flat-footed} until the end of the monster's next turn. Before the end of that creature's next turn, a trap poisons you, making you {@condition enfeebled} 2 for 1 minute. In this case, the {@condition enfeebled} 2 that lasts for 1 minute replaces the {@condition enfeebled} 2 from the monster, so you would be {@condition enfeebled} 2 for the longer duration. You would remain {@condition flat-footed}, since nothing replaced that condition, and it still lasts only until the end of the monster's next turn.",
+						"For example, let's say you have been hit by a monster that drains your vitality; your wound causes you to be {@condition enfeebled 2} and {@condition flat-footed} until the end of the monster's next turn. Before the end of that creature's next turn, a trap poisons you, making you {@condition enfeebled 2} for 1 minute. In this case, the {@condition enfeebled 2} that lasts for 1 minute replaces the {@condition enfeebled 2} from the monster, so you would be {@condition enfeebled 2} for the longer duration. You would remain {@condition flat-footed}, since nothing replaced that condition, and it still lasts only until the end of the monster's next turn.",
 						"Any ability that removes a condition removes it entirely, no matter what its condition value is or how many times you've been affected by it. In the example above, a spell that removes the {@condition enfeebled} condition from you would remove it entirely\u2014the spell wouldn't need to remove it twice.",
 						{
 							"type": "pf2-title",
 							"name": "Redundant Conditions with Values"
 						},
-						"Conditions with different values are considered different conditions. If you're affected by a condition with a value multiple times, you apply only the highest value, although you might have to track both durations if one has a lower value but lasts longer. For example, if you had a {@condition slowed} 2 condition that lasts 1 round and a {@condition slowed} 1 condition that lasts for 6 rounds, you'd be {@condition slowed} 2 for the first round, and then you'd change to {@condition slowed} 1 for the remaining 5 rounds of the second effect's duration. If something reduces the condition value, it reduces it for all conditions of that name affecting you. For instance, in this example above, if something reduced your {@condition slowed} value by 1, it would reduce the first condition from the example to {@condition slowed} 1 and reduce the second to {@condition slowed} 0, removing it."
+						"Conditions with different values are considered different conditions. If you're affected by a condition with a value multiple times, you apply only the highest value, although you might have to track both durations if one has a lower value but lasts longer. For example, if you had a {@condition slowed 2} condition that lasts 1 round and a {@condition slowed 1} condition that lasts for 6 rounds, you'd be {@condition slowed 2} for the first round, and then you'd change to {@condition slowed 1} for the remaining 5 rounds of the second effect's duration. If something reduces the condition value, it reduces it for all conditions of that name affecting you. For instance, in this example above, if something reduced your {@condition slowed} value by 1, it would reduce the first condition from the example to {@condition slowed 1} and reduce the second to {@condition slowed 0}, removing it."
 					]
 				}
 			]
