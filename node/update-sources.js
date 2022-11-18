@@ -37,7 +37,9 @@ async function main () {
 		`${JSON.stringify(sources.filter(it => it.adventure).map(it => `SRC_${it.source}`))}.forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src; Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src; });`.replace(/"(SRC.+?)"(,|)/g, "$1$2 "),
 	]
 
-	const combined = [...SRC, ...SOURCE_JSON_TO_FULL, ...SOURCE_JSON_TO_ABV, ...SOURCE_JSON_TO_DATE, ...SOURCE_JSON_TO_STORE, ...SOURCES_ADVENTURES, ...SOURCES_VANILLA, ...TAG_TO_DEFAULT_SOURCE, ...SOURCES_AVAILABLE_DOCS_BOOK, ...SOURCES_AVAILABLE_DOCS_ADVENTURE].map(x => x.replace("&", "n").replace("\"undefined\"", "undefined")).join("\n")
+	const SOURCES_ACCESSORIES = [`Parser.SOURCES_ACCESSORIES = new Set(${sources.filter(it => it.accessory).map(it => `SRC_${it.source}`).join(", ")})`]
+
+	const combined = [...SRC, ...SOURCE_JSON_TO_FULL, ...SOURCE_JSON_TO_ABV, ...SOURCE_JSON_TO_DATE, ...SOURCE_JSON_TO_STORE, ...SOURCES_ADVENTURES, ...SOURCES_VANILLA, ...TAG_TO_DEFAULT_SOURCE, ...SOURCES_AVAILABLE_DOCS_BOOK, ...SOURCES_AVAILABLE_DOCS_ADVENTURE, ...SOURCES_ACCESSORIES].map(x => x.replace("G&G", "GnG").replace("\"undefined\"", "undefined")).join("\n")
 
 	const combinedWithMarkers = `${VERSION_MARKER_START}\n${combined}\n${VERSION_MARKER_END}`
 
