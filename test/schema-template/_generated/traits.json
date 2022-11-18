@@ -80,9 +80,6 @@
 					"$ref": "#/definitions/creatureTrait"
 				},
 				{
-					"$ref": "#/definitions/ancestryHeritageTrait"
-				},
-				{
 					"$ref": "#/definitions/traditionTrait"
 				},
 				{
@@ -99,9 +96,67 @@
 				},
 				{
 					"$ref": "#/definitions/featTrait"
+				},
+				{
+					"$ref": "#/definitions/ancestryHeritageTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"ancestryHeritageTrait": {
+			"type": "string",
+			"description": "A list of all Ancestry & Heritage traits.",
+			"enum": [
+				"aasimar",
+				"anadi",
+				"android",
+				"aphorite",
+				"automaton",
+				"azarketi",
+				"beastkin",
+				"catfolk",
+				"changeling",
+				"conrasu",
+				"dhampir",
+				"duskwalker",
+				"dwarf",
+				"elf",
+				"fetchling",
+				"fleshwarp",
+				"ganzi",
+				"geniekin",
+				"ghoran",
+				"gnoll",
+				"gnome",
+				"goblin",
+				"goloma",
+				"grippli",
+				"half-elf",
+				"half-orc",
+				"halfling",
+				"hobgoblin",
+				"human",
+				"ifrit",
+				"kitsune",
+				"kobold",
+				"leshy",
+				"lizardfolk",
+				"orc",
+				"oread",
+				"poppet",
+				"ratfolk",
+				"reflection",
+				"shisk",
+				"shoony",
+				"skeleton",
+				"sprite",
+				"strix",
+				"suli",
+				"sylph",
+				"tengu",
+				"tiefling",
+				"undine"
+			]
 		},
 		"featTrait": {
 			"type": "string",
@@ -211,60 +266,6 @@
 				"divine",
 				"occult",
 				"primal"
-			]
-		},
-		"ancestryHeritageTrait": {
-			"type": "string",
-			"description": "A list of all Ancestry & Heritage traits.",
-			"enum": [
-				"aasimar",
-				"anadi",
-				"android",
-				"aphorite",
-				"automaton",
-				"azarketi",
-				"beastkin",
-				"catfolk",
-				"changeling",
-				"conrasu",
-				"dhampir",
-				"duskwalker",
-				"dwarf",
-				"elf",
-				"fetchling",
-				"fleshwarp",
-				"ganzi",
-				"geniekin",
-				"gnoll",
-				"gnome",
-				"goblin",
-				"goloma",
-				"grippli",
-				"half-elf",
-				"half-orc",
-				"halfling",
-				"hobgoblin",
-				"human",
-				"ifrit",
-				"kitsune",
-				"kobold",
-				"leshy",
-				"lizardfolk",
-				"orc",
-				"oread",
-				"poppet",
-				"ratfolk",
-				"reflection",
-				"shisk",
-				"shoony",
-				"skeleton",
-				"sprite",
-				"strix",
-				"suli",
-				"sylph",
-				"tengu",
-				"tiefling",
-				"undine"
 			]
 		},
 		"creatureTrait": {
