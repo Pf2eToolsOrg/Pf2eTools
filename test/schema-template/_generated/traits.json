@@ -86,9 +86,6 @@
 					"$ref": "#/definitions/combatTrait"
 				},
 				{
-					"$ref": "#/definitions/classTrait"
-				},
-				{
 					"$ref": "#/definitions/actionAbilityTrait"
 				},
 				{
@@ -99,9 +96,43 @@
 				},
 				{
 					"$ref": "#/definitions/ancestryHeritageTrait"
+				},
+				{
+					"$ref": "#/definitions/classTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"classTrait": {
+			"type": "string",
+			"description": "A list of all Class traits.",
+			"enum": [
+				"[class]",
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"class",
+				"cleric",
+				"druid",
+				"fighter",
+				"gunslinger",
+				"inventor",
+				"investigator",
+				"magus",
+				"monk",
+				"oracle",
+				"psychic",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"spellshot",
+				"summoner",
+				"swashbuckler",
+				"thaumaturge",
+				"witch",
+				"wizard"
+			]
 		},
 		"ancestryHeritageTrait": {
 			"type": "string",
@@ -137,10 +168,12 @@
 				"hobgoblin",
 				"human",
 				"ifrit",
+				"kashrishi",
 				"kitsune",
 				"kobold",
 				"leshy",
 				"lizardfolk",
+				"nagaji",
 				"orc",
 				"oread",
 				"poppet",
@@ -155,7 +188,9 @@
 				"sylph",
 				"tengu",
 				"tiefling",
-				"undine"
+				"undine",
+				"vanara",
+				"vishkanya"
 			]
 		},
 		"featTrait": {
@@ -206,36 +241,6 @@
 				"psyche",
 				"reckless",
 				"tandem"
-			]
-		},
-		"classTrait": {
-			"type": "string",
-			"description": "A list of all Class traits.",
-			"enum": [
-				"[class]",
-				"alchemist",
-				"barbarian",
-				"bard",
-				"champion",
-				"class",
-				"cleric",
-				"druid",
-				"fighter",
-				"gunslinger",
-				"inventor",
-				"investigator",
-				"magus",
-				"monk",
-				"oracle",
-				"psychic",
-				"ranger",
-				"rogue",
-				"sorcerer",
-				"summoner",
-				"swashbuckler",
-				"thaumaturge",
-				"witch",
-				"wizard"
 			]
 		},
 		"combatTrait": {
