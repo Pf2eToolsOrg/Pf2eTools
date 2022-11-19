@@ -113,7 +113,7 @@ class Omnidexer {
 				if (it.id) await pHandleItem(it, i, `${it.id}: ${name}`);
 				else await pHandleItem(it, i, name);
 
-				if (it.alias) it.alias.forEach(a => pHandleItem(it, i, a));
+				if (it.alias) it.alias.forEach(a => pHandleItem(it, i, `${a} (${it.name})`));
 			}
 		}
 
