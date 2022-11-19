@@ -175,12 +175,14 @@
 					"type": "pf2-options",
 					"items": [
 						{
+							"type": "item",
 							"name": "Distracting Cacophony",
 							"entries": [
 								"The trigger is a spell. You create a musical crash of sonic energy that assails the target and breaks its concentration. The target must succeed at a Fortitude save against your class DC or become stupefied 1 until the end of your next turn (stupefied 2 on a critical failure). The target doesn't have to attempt a flat check to avoid losing the triggering spell, but the discordant ring does lower the spell attack roll or spell DC of the triggering spell from stupefied."
 							]
 						},
 						{
+							"type": "item",
 							"name": "Disrupting Harmony",
 							"entries": [
 								"The trigger is a Strike. You create a strangely discordant harmony that sinks into your foe's mind and throws its movements off. The target must succeed at a Will save against your class DC or become your choice of enfeebled 1 or clumsy 1 until the end of your next turn (enfeebled 2 or clumsy 2 on a critical failure)."
@@ -213,14 +215,17 @@
 				"You drink from the liquid that slowly collects in your chalice or administer it to an adjacent ally. The drinker chooses whether to take a small sip or to drain the contents.",
 				{
 					"type": "pf2-options",
+					"noColon": true,
 					"items": [
 						{
+							"type": "item",
 							"name": "Sip",
 							"entries": [
 								"A sip grants the drinker an amount of temporary Hit Points equal to 2 + half your level that last until the end of your next turn."
 							]
 						},
 						{
+							"type": "item",
 							"name": "Drain",
 							"traits": [
 								"healing",
@@ -390,7 +395,7 @@
 			],
 			"actionType": {
 				"class": [
-					"Psychic|DA"
+					"psychic|DA"
 				]
 			},
 			"requirements": "You're in an encounter, you {@spell Cast a Spell} on your previous turn, and you aren't {@condition stupefied}.",
@@ -666,6 +671,92 @@
 						"Critical Failure": "Your ally takes a \u20131 circumstance penalty to the triggering check."
 					}
 				}
+			]
+		},
+		{
+			"name": "Envenom",
+			"source": "LOIL",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": [
+					"Vishkanya|LOIL"
+				]
+			},
+			"traits": [
+				"manipulate"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"Through use of either saliva or blood, you use your innate toxins to apply vishkanyan venom to your weapon or a piece of ammunition. To use your blood, you must be injured, or you can deal 1 slashing damage to yourself as part of the action. The vishkanyan venom remains potent until the end of your next turn, or until you expend it as normal for an injury poison by either hitting a target or critically failing an attack roll.",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"name": "Minor Vishkanyan Venom",
+					"traits": ["injury", "poison"],
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d4} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d4} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 1d4} poison damage",
+							"duration": "1 round"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Venom Draw",
+			"source": "LOIL",
+			"page": 60,
+			"actionType": {
+				"ancestry": [
+					"Vishkanya|LOIL"
+				],
+				"heritage": [
+					"Keen-Venom|LOIL"
+				]
+			},
+			"requirements": "Your {@action Envenom|LOIL} action hasn’t been expended.",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": ["You quickly envenom poisonous saliva on your weapon as you draw it. {@action Interact} to draw a weapon, and then {@action Envenom|LOIL} it. This uses up your daily use of {@action Envenom|LOIL}."]
+		},
+		{
+			"name": "Raise Neck",
+			"source": "LOIL",
+			"page": 48,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": [
+					"Nagaji|LOIL"
+				],
+				"heritage": [
+					"Whipfang|LOIL"
+				]
+			},
+			"entries": [
+				"You raise your head into a striking position. The fangs {@action Strike} granted by your nagaji ancestry gains a reach of 10 feet until the end of your turn."
 			]
 		},
 		{

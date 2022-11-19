@@ -11,6 +11,12 @@
 			"items": {
 				"type": "object",
 				"properties": {
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
 					"source": {
 						"type": "string",
 						"$ref": "utils.json#/definitions/sourceList"
