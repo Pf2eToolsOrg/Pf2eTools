@@ -2238,7 +2238,7 @@
 					"name": "Skill Actions",
 					"entries": [
 						"The actions you can perform with a given skill are sorted into those you can use untrained and those that require you to be trained in the skill, as shown on {@table Skills, Key Abilities, and Actions||Table 4\u20131: Skills, Key Abilities, and Actions}. The untrained and trained actions of each skill appear in separate sections within the skill's description.",
-						"Anyone can use a skill's untrained actions, but you can use trained actions only if you have a proficiency rank of trained or better in that skill. A circumstance, condition, or effect might bar you from a skill action regardless of your proficiency rank, and sometimes using a skill in a specific situation might require you to have a higher proficiency rank than what is listed on the table. For instance, even though a barbarian untrained in {@skill Arcana} could identify a construct with a lucky roll using {@skill Arcana} to Recall Knowledge, the GM might decide that Recalling Knowledge to determine the spells used to create such a construct is beyond the scope of the barbarian's anecdotal knowledge. The GM decides whether a task requires a particular proficiency rank."
+						"Anyone can use a skill's untrained actions, but you can use trained actions only if you have a proficiency rank of trained or better in that skill. A circumstance, condition, or effect might bar you from a skill action regardless of your proficiency rank, and sometimes using a skill in a specific situation might require you to have a higher proficiency rank than what is listed on the table. For instance, even though a barbarian untrained in {@skill Arcana} could identify a construct with a lucky roll using {@skill Arcana} to {@action Recall Knowledge}, the GM might decide that Recalling Knowledge to determine the spells used to create such a construct is beyond the scope of the barbarian's anecdotal knowledge. The GM decides whether a task requires a particular proficiency rank."
 					]
 				},
 				{
@@ -2573,14 +2573,14 @@
 							"page": 238,
 							"name": "Recall Knowledge (Untrained)",
 							"entries": [
-								"To remember useful information on a topic, you can attempt to Recall Knowledge. You might know basic information about something without needing to attempt a check, but {@action Recall Knowledge} requires you to stop and think for a moment so you can recollect more specific facts and apply them. You might even need to spend time investigating first. For instance, to use {@skill Medicine} to learn the cause of death, you might need to conduct a forensic examination before attempting to Recall Knowledge.",
+								"To remember useful information on a topic, you can attempt to {@action Recall Knowledge}. You might know basic information about something without needing to attempt a check, but {@action Recall Knowledge} requires you to stop and think for a moment so you can recollect more specific facts and apply them. You might even need to spend time investigating first. For instance, to use {@skill Medicine} to learn the cause of death, you might need to conduct a forensic examination before attempting to {@action Recall Knowledge}.",
 								{
 									"type": "data",
 									"name": "Recall Knowledge",
 									"tag": "action",
 									"source": "CRB"
 								},
-								"The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM's permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
+								"The following skills can be used to {@action Recall Knowledge}, getting information about the listed topics. In some cases, you can get the GM's permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
 								{
 									"type": "list",
 									"items": [
@@ -4535,8 +4535,8 @@
 								"{@b Snare Kit:} This kit contains tools and materials for creating snares. A snare kit allows you to Craft snares using the {@skill Crafting} skill. A specialist snare kit gives you a +1 item bonus to the check.",
 								"{@b Spellbook:} A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for wizards (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook.",
 								"{@b Spyglass:} A typical spyglass lets you see eight times farther than normal. A fine spyglass adds a +1 item bonus to {@skill Perception} checks to notice details at a distance.",
-								"{@b Survey Map:} Maps are uncommon.",
-								"Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to Recall Knowledge, provided the checks are related to the location detailed on the map.",
+								"{@b Survey Map:} Maps are {@trait uncommon}.",
+								"Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to {@action Recall Knowledge}, provided the checks are related to the location detailed on the map.",
 								"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. The GM determines what maps are available in any location.",
 								"{@b Tack:} Tack includes all the gear required to outfit a riding animal, including a saddle, bit and bridle, and stirrups if necessary. Especially large or oddly shaped animals might require specialty saddles. These can be more expensive or hard to find, as determined by the GM. The Bulk value given is for tack worn by a creature.",
 								"If carried, the Bulk increases to 2.",
@@ -5497,7 +5497,7 @@
 					"name": "Identifying Spells",
 					"entries": [
 						"Sometimes you need to identify a spell, especially if its effects are not obvious right away. If you notice a spell being cast, and you have prepared that spell or have it in your repertoire, you automatically know what the spell is, including the level to which it is heightened.",
-						"If you want to identify a spell but don't have it prepared or in your repertoire, you must spend an action on your turn to attempt to identify it using Recall Knowledge. You typically notice a spell being cast by seeing its visual manifestations or hearing its verbal casting components. Identifying long-lasting spells that are already in place requires using Identify Magic instead of {@action Recall Knowledge} because you don't have the advantage of watching the spell being cast."
+						"If you want to identify a spell but don't have it prepared or in your repertoire, you must spend an action on your turn to attempt to identify it using {@action Recall Knowledge}. You typically notice a spell being cast by seeing its visual manifestations or hearing its verbal casting components. Identifying long-lasting spells that are already in place requires using Identify Magic instead of {@action Recall Knowledge} because you don't have the advantage of watching the spell being cast."
 					],
 					"data": {
 						"quickref": 3
@@ -6358,7 +6358,7 @@
 								"Determine the degree of success and the effect."
 							]
 						},
-						"Checks and difficulty classes (DC) both come in many forms. When you swing your sword at that foul beast, you'll make an attack roll against its Armor Class, which is the DC to hit another creature. If you are leaping across that chasm, you'll attempt an {@skill Athletics} skill check with a DC based on the distance you are trying to jump. When calling to mind the name of the earl's second cousin, you attempt a check to Recall Knowledge. You might use either the Society skill or a Lore skill you have that's relevant to the task, and the DC depends on how common the knowledge of the cousin's name might be, or how many drinks your character had when they were introduced to the cousin the night before.",
+						"Checks and difficulty classes (DC) both come in many forms. When you swing your sword at that foul beast, you'll make an attack roll against its Armor Class, which is the DC to hit another creature. If you are leaping across that chasm, you'll attempt an {@skill Athletics} skill check with a DC based on the distance you are trying to jump. When calling to mind the name of the earl's second cousin, you attempt a check to {@action Recall Knowledge}. You might use either the Society skill or a Lore skill you have that's relevant to the task, and the DC depends on how common the knowledge of the cousin's name might be, or how many drinks your character had when they were introduced to the cousin the night before.",
 						"No matter the details, for any check you must roll the d20 and achieve a result equal to or greater than the DC to succeed. Each of these steps is explained below.",
 						{
 							"type": "pf2-brown-box",
@@ -8981,7 +8981,7 @@
 										"If an effect raises or lowers chances of success, grant a +1 circumstance bonus or a \u20131 circumstance penalty.",
 										"If you're not sure how difficult a significant challenge should be, use the DC for the party's level.",
 										"If you're making up an effect, creatures should be incapacitated or killed on only a critical success (or for a saving throw, on a critical failure).",
-										"If you don't know what check to use, pick the most appropriate skill. If no other skill applies to a check to Recall Knowledge, use an appropriate Lore skill (usually at an untrained proficiency rank).",
+										"If you don't know what check to use, pick the most appropriate skill. If no other skill applies to a check to {@action Recall Knowledge}, use an appropriate {@skill Lore} skill (usually at an untrained proficiency rank).",
 										"Use the characters' daily preparations as the time to reset anything that lasts roughly a day.",
 										"When a character accomplishes something noteworthy that doesn't have rules for XP, award them XP for an accomplishment (10 to 30 XP, as described {@quickref here||4|rewards|1}).",
 										"When the PCs fail at a task, look for a way they might fail forward, meaning the story moves forward with a negative consequence rather than the failure halting progress entirely."
@@ -9575,7 +9575,7 @@
 							"name": "Simple DCs",
 							"entries": [
 								"Sometimes you need to quickly set a Difficulty Class. The easiest method is to select a simple DC from Table 10\u20134 by estimating which proficiency rank best matches the task (that rank is usually not required to succeed at the task).",
-								"If it's something pretty much anyone would have a decent chance at, use the untrained DC. If it would require a degree of training, use the DC listed for trained, expert, master, or legendary proficiency, as appropriate to the complexity of the task. For example, say a PC was trying to uncover the true history behind a fable. You determine this requires a check to Recall Knowledge, and that only someone with master proficiency in Folktale Lore would know the information, so you'd set the DC at 30\u2014the simple master DC.",
+								"If it's something pretty much anyone would have a decent chance at, use the untrained DC. If it would require a degree of training, use the DC listed for trained, expert, master, or legendary proficiency, as appropriate to the complexity of the task. For example, say a PC was trying to uncover the true history behind a fable. You determine this requires a check to {@action Recall Knowledge}, and that only someone with master proficiency in Folktale Lore would know the information, so you'd set the DC at 30\u2014the simple master DC.",
 								"Simple DCs work well when you need a DC on the fly and there's no level associated with the task. They're most useful for skill checks. Because there isn't much gradation between the simple DCs, they don't work as well for hazards or combatants, where the PCs' lives are on the line; you're better off using level-based DCs for such challenges.",
 								{
 									"type": "data",
