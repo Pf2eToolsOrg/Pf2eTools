@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "index.json",
+    "title": "Indexes",
+    "description": "Schema for the auto-generated index for PF2eTools. Mostly for reference's sake.",
+    "type": "object",
+    "version": "0.0.1",
+    "properties": {
+        "x": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "n": {
+                        "type": "string",
+                        "description": "Display Name"
+                    },
+                    "b": {
+                        "type": "string",
+                        "description": "Optional; name is used if not specified"
+                    },
+                    "s": {
+                        "type": "integer",
+                        "description": "Source ID, see `m.s`"
+                    },
+                    "u": {
+                        "type": "string",
+                        "description": "hash"
+                    },
+                    "uh": {
+                        "type": "string",
+                        "description": "Optional; hash for href if the link should be different from the hover lookup hash."
+                    },
+                    "p": {
+                        "type": "integer",
+                        "description": "page"
+                    },
+                    "h": {
+                        "type": "integer",
+                        "description": "if isHover enabled, otherwise undefined"
+                    },
+                    "c": {
+                        "type": "integer",
+                        "description": "category ID"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "index ID"
+                    }
+                }
+            }
+        },
+        "m": {
+            "type": "object",
+            "properties": {
+                "s": {
+                    "type": "object",
+                    "patternProperties": {
+                        ".*": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "x",
+        "m"
+    ]
+}

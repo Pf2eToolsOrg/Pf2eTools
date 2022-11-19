@@ -13,7 +13,7 @@ class Omnidexer {
 		 * {
 		 *   n: "Display Name",
 		 *   b: "Base Name" // Optional; name is used if not specified
-		 *   s: "PHB", // source
+		 *   s: 5, // source ID
 		 *   u: "spell name_phb, // hash
 		 *   uh: "spell name_phb, // Optional; hash for href if the link should be different from the hover lookup hash.
 		 *   p: 110, // page
@@ -36,7 +36,7 @@ class Omnidexer {
 	}
 
 	static decompressIndex (indexGroup) {
-		const {x, m} = indexGroup;
+		const { x, m } = indexGroup;
 
 		const props = new Set();
 		// de-invert the metadata
@@ -70,6 +70,7 @@ class Omnidexer {
 
 		const getToAdd = (it, toMerge, i) => {
 			const src = Omnidexer.getProperty(it, arbiter.source || "source");
+
 			const hash = arbiter.hashBuilder
 				? arbiter.hashBuilder(it, i)
 				: UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it);
@@ -91,12 +92,11 @@ class Omnidexer {
 
 		const pHandleItem = async (it, i, name) => {
 			if (it.noDisplay) return;
-
-			const toAdd = getToAdd(it, {n: name}, i);
+			const toAdd = getToAdd(it, { n: name }, i);
 
 			if ((options.isNoFilter || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.isOnlyDeep) index.push(toAdd);
 
-			const primary = {it: it, ix: i, parentName: name};
+			const primary = { it: it, ix: i, parentName: name };
 			const deepItems = await arbiter.pGetDeepIndex(this, primary, it, json);
 			deepItems.forEach(item => {
 				const toAdd = getToAdd(it, item);
@@ -134,6 +134,8 @@ class Omnidexer {
 	}
 
 	getMetaId (k, v) {
+		// FIXME: Enable this and figure out what's going on with the "undefined" sources. Thankfully, nothing is currently linking to them. But they keep being generated at quickref.
+		// if (v === undefined) throw new Error("An undefined source has been generated.");
 		this._metaMap[k] = this._metaMap[k] || {};
 		// store the index in "inverted" format to prevent extra quote characters around numbers
 		if (this._metaMap[k][v] != null) return this._metaMap[k][v];
@@ -195,7 +197,7 @@ class TraitIndexer extends Omnidexer {
 	}
 
 	static decompressIndex (indexGroup) {
-		const {x, m} = indexGroup;
+		const { x, m } = indexGroup;
 
 		const props = new Set();
 		// de-invert the metadata
@@ -283,7 +285,7 @@ class IndexableDirectoryHeritages extends IndexableDirectory {
 			b: h.name,
 			n: `${h.name} (${primary.parentName})`,
 			s: indexer.getMetaId("s", h.source),
-			u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](it)}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: h})}`,
+			u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](it)}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({ heritage: h })}`,
 			p: h.page,
 		}));
 	}
@@ -299,7 +301,7 @@ class IndexableDirectoryVeHeritages extends IndexableDirectory {
 			listProp: "versatileHeritage",
 			baseUrl: "ancestries.html",
 			isHover: false,
-			hashBuilder: (it) => `${HASH_BLANK}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: it})}`,
+			hashBuilder: (it) => `${HASH_BLANK}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({ heritage: it })}`,
 		});
 	}
 }
@@ -425,7 +427,7 @@ class IndexableDirectorySubclass extends IndexableDirectory {
 			b: sc.name,
 			n: `${sc.name} (${primary.parentName})`,
 			s: indexer.getMetaId("s", sc.source),
-			u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`,
+			u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({ subclass: sc })}`,
 			p: sc.page,
 		}));
 	}
@@ -460,7 +462,7 @@ class IndexableDirectorySubclass extends IndexableDirectory {
 				}
 			});
 		});
-		return {[this.listProp]: out};
+		return { [this.listProp]: out };
 	}
 }
 
@@ -490,11 +492,11 @@ class IndexableDirectoryClassFeature extends IndexableDirectory {
 		}
 		ixFeature = ixFeature === -1 ? 0 : ixFeature;
 
-		const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: it.className, source: it.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: it.level - 1, ixFeature}})}`;
+		const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({ name: it.className, source: it.classSource })}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({ feature: { ixLevel: it.level - 1, ixFeature } })}`;
 		return [
 			{
 				n: `${it.className} ${it.level}; ${it.name}`,
-				s: it.source,
+				s: indexer.getMetaId("s", it.source),
 				u: UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it),
 				uh: classPageHash,
 				p: it.page,
@@ -530,14 +532,14 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 		ixFeature = ixFeature === -1 ? 0 : ixFeature;
 
 		const pageStateOpts = {
-			subclass: {shortName: it.subclassShortName, source: it.source},
-			feature: {ixLevel: it.level - 1, ixFeature},
+			subclass: { shortName: it.subclassShortName, source: it.source },
+			feature: { ixLevel: it.level - 1, ixFeature },
 		};
-		const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: it.className, source: it.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart(pageStateOpts)}`;
+		const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({ name: it.className, source: it.classSource })}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart(pageStateOpts)}`;
 		return [
 			{
 				n: `${it.subclassShortName} ${it.className} ${it.level}; ${it.name}`,
-				s: it.source,
+				s: indexer.getMetaId("s", it.source),
 				u: UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it),
 				uh: classPageHash,
 				p: it.page,
@@ -734,7 +736,7 @@ class IndexableFileQuickReference extends IndexableFile {
 	static getChapterNameMetas (it) {
 		const nameMetas = [];
 		const nameCounts = {};
-		const walker = MiscUtil.getWalker({isDepthFirst: true});
+		const walker = MiscUtil.getWalker({ isDepthFirst: true });
 		walker.walk(it, {
 			object: (obj) => {
 				if (!obj.data || (obj.data.quickref == null && !obj.data.quickrefIndex)) return obj;
@@ -777,7 +779,6 @@ class IndexableFileQuickReference extends IndexableFile {
 		];
 		if (nameMeta.ixBook) hashParts.push(nameMeta.ixBook);
 		else hashParts.push(0);
-
 		return {
 			n: alias || nameMeta.name,
 			u: hashParts.join(HASH_PART_SEP),
