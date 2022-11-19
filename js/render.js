@@ -5367,8 +5367,8 @@ Renderer.nation = {
 		opts = opts || {}
 		const renderer = Renderer.get()
 		const renderStack = []
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "nation", UrlUtil.PLACES))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: "NATION", ...opts }))
+		renderStack.push(Renderer.utils.getExcludedDiv(it, "nation", UrlUtil.PG_PLACES))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_PLACES, type: "NATION", ...opts }))
 		renderStack.push(Renderer.utils.getDividerDiv())
 		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
 		renderStack.push(Renderer.nation.getSubHeadTop(it))
@@ -5626,8 +5626,8 @@ Renderer.plane = {
 		opts = opts || {}
 		const renderer = Renderer.get()
 		const renderStack = []
-		renderStack.push(Renderer.utils.getExcludedDiv(it, it.category.toLowerCase() ?? "plane", UrlUtil.PLACES))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: it.category.toUpperCase() ?? "PLANE", ...opts }))
+		renderStack.push(Renderer.utils.getExcludedDiv(it, it.category.toLowerCase() ?? "plane", UrlUtil.PG_PLACES))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_PLACES, type: it.category.toUpperCase() ?? "PLANE", ...opts }))
 		renderStack.push(Renderer.utils.getDividerDiv())
 		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
 		renderStack.push(Renderer.plane.getSubHead(it))
