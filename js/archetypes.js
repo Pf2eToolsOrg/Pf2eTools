@@ -144,12 +144,17 @@ class ArchetypesPage extends BaseComponent {
 			return (evt) => {
 				const toRender = toList[archetypesPage._featId._];
 				if (evt.shiftKey) {
-					const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+					let $content = ""
+					if (evt.ctrlKey) {
+						$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
+					} else {
+						$content = Renderer.hover.$getHoverContent_statsCode(toRender)
+					}
 					Renderer.hover.getShowWindow(
 						$content,
 						Renderer.hover.getWindowPositionFromEvent(evt),
 						{
-							title: `${toRender.name} \u2014 Source Data`,
+							title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
 							isPermanent: true,
 							isBookContent: true,
 						},
@@ -161,12 +166,17 @@ class ArchetypesPage extends BaseComponent {
 			return (evt) => {
 				const toRender = toList[archetypesPage._archetypeId._];
 				if (evt.shiftKey) {
-					const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+					let $content = ""
+					if (evt.ctrlKey) {
+						$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
+					} else {
+						$content = Renderer.hover.$getHoverContent_statsCode(toRender)
+					}
 					Renderer.hover.getShowWindow(
 						$content,
 						Renderer.hover.getWindowPositionFromEvent(evt),
 						{
-							title: `${toRender.name} \u2014 Source Data`,
+							title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
 							isPermanent: true,
 							isBookContent: true,
 						},

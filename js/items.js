@@ -446,7 +446,7 @@ class ItemsPage extends ListPage {
 							$content,
 							Renderer.hover.getWindowPositionFromEvent(evt),
 							{
-								title: `${toRender.name} \u2014 Source Data`,
+								title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
 								isPermanent: true,
 								isBookContent: true,
 							},

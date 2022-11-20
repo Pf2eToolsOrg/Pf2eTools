@@ -7885,12 +7885,17 @@ Renderer.hover = {
 						const toRender = toList[Hist.lastLoadedId];
 
 						if (evt.shiftKey) {
-							const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+							let $content = ""
+							if (evt.ctrlKey) {
+								$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
+							} else {
+								$content = Renderer.hover.$getHoverContent_statsCode(toRender)
+							}
 							Renderer.hover.getShowWindow(
 								$content,
 								Renderer.hover.getWindowPositionFromEvent(evt),
 								{
-									title: `${toRender.name} \u2014 Source Data`,
+									title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
 									isPermanent: true,
 									isBookContent: true,
 								},
@@ -7930,7 +7935,7 @@ Renderer.hover = {
 	$getHoverContent_statsCode (toRender, dirty) {
 		const cleanCopy = dirty ? MiscUtil.copy(toRender) : DataUtil.cleanJson(MiscUtil.copy(toRender));
 		return Renderer.hover.$getHoverContent_miscCode(
-			`${cleanCopy.name} \u2014 Source Data${dirty ? " (Dev Mode)" : ""}`,
+			`${cleanCopy.name} \u2014 Source Data${dirty ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
 			JSON.stringify(cleanCopy, null, "\t"),
 		);
 	},

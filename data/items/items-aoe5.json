@@ -241,7 +241,7 @@
 			"bulk": 1,
 			"category": "Armor",
 			"entries": [
-				"This +2 greater resilient studded leather is made of hardened fungus. Every day the armor grows dozens of unusual mushrooms that can be used for cooking, infused reagents, or common spell material components.",
+				"This {@runeItem studded leather||+2 armor potency||greater resilient|} is made of hardened fungus. Every day the armor grows dozens of unusual mushrooms that can be used for cooking, infused reagents, or common spell material components.",
 				{
 					"type": "ability",
 					"activity": {
@@ -321,7 +321,7 @@
 			"bulk": 2,
 			"category": "Held",
 			"entries": [
-				"Shaped like a blade made from spinning gears, this +2 greater striking weapon can catch enemy weapons and grind up foes. In order to function, the gearblade must be wound for 10 minutes once every 24 hours. During this process, you can reconfigure the weapon to transform into a bastard sword, greatsword, longsword, or shortsword. It then gains all the features of the chosen weapon except that its Bulk is always 2 and it gains the disarm weapon trait and the versatile B weapon trait (which replaces any other {@trait versatile} trait the weapon might have). If you don't wind the gearblade, it becomes inert and has the statistics of a greatclub.",
+				"Shaped like a blade made from spinning gears, this {@item +2 weapon potency||+2} {@item greater striking} weapon can catch enemy weapons and grind up foes. In order to function, the gearblade must be wound for 10 minutes once every 24 hours. During this process, you can reconfigure the weapon to transform into a {@item bastard sword}, {@item greatsword}, {@item longsword}, or {@item shortsword}. It then gains all the features of the chosen weapon except that its Bulk is always 2 and it gains the {@trait disarm} weapon trait and the {@trait versatile B} weapon trait (which replaces any other {@trait versatile} trait the weapon might have). If you don't wind the gearblade, it becomes inert and has the statistics of a {@item greatclub}.",
 				{
 					"type": "ability",
 					"activity": {
@@ -434,16 +434,16 @@
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"Crafted from polished wood, this seemingly mundane +1 striking club comes with a red leather strap near the handle. The mere sight of the cudgel in a guard's hand fills prisoners with dread.",
+				"Crafted from polished wood, this seemingly mundane {@runeItem club||+1 weapon potency||striking|} comes with a red leather strap near the handle. The mere sight of the cudgel in a guard's hand fills prisoners with dread.",
 				{
 					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
 					},
+					"traits": ["mental", "emotion"],
 					"components": [
-						"(emotion",
-						"mental) Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You initiate an intimidating walk, thumping the cudgel menacingly against your palm. As part of activating this item, you can {@action Stride} twice. For the next minute, whenever you successfully {@action Strike} a creature with the nightmare cudgel, you can use a free action to attempt an {@skill Intimidation} check to {@action Demoralize} the struck creature."

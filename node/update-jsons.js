@@ -58,6 +58,19 @@ function updateFolder (folder) {
 						})
 						return x
 					}
+					if (x.type === "Equipment" && !(x.equipment === true)) {
+						console.log(`\tUpdating ${x.name} types from Equipment to Item in ${file}...`)
+						x.type = "Item"
+					}
+					return x
+				})
+			}
+			if (json.baseitem) {
+				json.baseitem = json.baseitem.map(x => {
+					if (x.type === "Equipment" && !(x.equipment === true)) {
+						console.log(`\tUpdating ${x.name} types from Equipment to Item in ${file}...`)
+						x.type = "Item"
+					}
 					return x
 				})
 			}
@@ -99,7 +112,7 @@ function updateFolder (folder) {
 					if (sp && sp.duration) {
 						let duration = sp.duration;
 						if (duration.duration) {
-							duration = {...duration, ...duration.duration};
+							duration = { ...duration, ...duration.duration };
 						}
 						delete duration.type;
 						if (duration.sustain) {
@@ -218,7 +231,7 @@ function updateFolder (folder) {
 						if (h.defenses.savingThrows) {
 							for (let k of ["fort", "ref", "will"]) {
 								if (typeof h.defenses.savingThrows[k] === "number") {
-									h.defenses.savingThrows[k] = {std: h.defenses.savingThrows[k]}
+									h.defenses.savingThrows[k] = { std: h.defenses.savingThrows[k] }
 								} else if (h.defenses.savingThrows[k] && h.defenses.savingThrows[k].default) {
 									h.defenses.savingThrows[k].std = h.defenses.savingThrows[k].default;
 									delete h.defenses.savingThrows[k].default;
@@ -247,7 +260,7 @@ function updateFolder (folder) {
 					if (r && r.duration) {
 						let duration = r.duration;
 						if (duration.duration) {
-							duration = {...duration, ...duration.duration};
+							duration = { ...duration, ...duration.duration };
 						}
 						delete duration.type;
 						if (duration.sustain) {
