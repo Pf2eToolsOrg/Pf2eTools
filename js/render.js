@@ -1499,6 +1499,8 @@ function Renderer () {
 
 	this._renderCode = function (entry, textStack, meta, options) {
 		const isWrapped = !!StorageUtil.syncGet("rendererCodeWrap");
+		// Consider this a FIXME: (?) - Lazy solution
+		entry.preformatted = entry.preformatted.replaceAll("<", "&lt;").replace(">", "&gt;")
 		textStack[0] += `
 			<div class="flex-col h-100">
 				<div class="flex no-shrink pt-1">
