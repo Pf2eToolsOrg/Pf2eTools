@@ -28,7 +28,7 @@ class LanguagesPage extends ListPage {
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
 			<span class="col-3 text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
-			<span class="col-3 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-3 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(

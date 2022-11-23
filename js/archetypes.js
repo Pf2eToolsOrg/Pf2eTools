@@ -531,7 +531,7 @@ class ArchetypesPage extends BaseComponent {
 			<span class="bold col-6 pl-0">${arc.name}</span>
 			<span class="col-2 text-center">${arc.dedicationLevel}</span>
 			<span class="col-2 text-center">${rarity}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(arc.source)} pr-0" title="${Parser.sourceJsonToFull(arc.source)}" ${BrewUtil.sourceJsonToStyle(arc.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(arc.source)}" title="${Parser.sourceJsonToFull(arc.source)}" ${BrewUtil.sourceJsonToStyle(arc.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
@@ -563,7 +563,7 @@ class ArchetypesPage extends BaseComponent {
 			<span class="bold col-5 pl-0">${feat.name}${feat.add_hash ? `<span class="ve-muted"> (${feat.add_hash})</span>` : ""}</span>
 			<span class="col-1-5 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 			<span class="col-4 text-center">${feat._slPrereq}</span>
-			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;

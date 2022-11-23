@@ -24,7 +24,7 @@ class VehiclesPage extends ListPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-8-5">${it.name}</span>
-			<span class="col-3-5 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-3-5 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(

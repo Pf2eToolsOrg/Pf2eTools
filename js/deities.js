@@ -32,7 +32,7 @@ class DeitiesPage extends ListPage {
 			<span class="col-2 text-center">${g.category}</span>
 			<span class="col-2 text-center">${alignment}</span>
 			<span class="col-3 ${!g._fDomains || g._fDomains[0] === VeCt.STR_NONE ? `list-entry-none` : ""}">${domains}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)}" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(

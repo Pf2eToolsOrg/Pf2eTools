@@ -24,10 +24,10 @@ class RelicGiftsPage extends ListPage {
 		const aspects = it.aspects.map(aspect => typeof aspect === "string" ? aspect : aspect.name).join(", ");
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-5-4">${it.name}${it.add_hash ? `<span class="ve-muted"> (${it.add_hash})</span>` : ""}</span>
+			<span class="bold col-5-4 pl-0">${it.name}${it.add_hash ? `<span class="ve-muted"> (${it.add_hash})</span>` : ""}</span>
 			<span class="col-3 text-center capitalise">${aspects}</span>
 			<span class="col-1-6 text-center capitalise">${it.tier}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(

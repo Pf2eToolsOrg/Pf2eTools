@@ -45,7 +45,7 @@ class ItemsPage extends ListPage {
 			<span class="col-1-5 text-center">${level}</span>
 			<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
 			<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
-			<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+			<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)}" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 		</a>`;
 
 		eleLi.firstElementChild.addEventListener("click", evt => this._handleItemsLinkClick(evt));

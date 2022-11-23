@@ -26,7 +26,7 @@ class RitualsPage extends ListPage {
 			<span class="col-6 bold pl-0">${it.name}</span>
 			<span class="col-1-5 text-center">${Parser.getOrdinalForm(it.level)}</span>
 			<span class="col-3 text-center">${time}</span>
-			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
