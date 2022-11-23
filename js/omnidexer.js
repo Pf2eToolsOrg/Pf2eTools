@@ -812,6 +812,30 @@ class IndexableFileOrganizations extends IndexableFile {
 	}
 }
 
+class IndexableFileEvents extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_EVENT,
+			file: "events.json",
+			listProp: "event",
+			baseUrl: "events.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableFileRelicGifts extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_RELICGIFT,
+			file: "relicgifts.json",
+			listProp: "relicGift",
+			baseUrl: "relicgifts.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFilePlaces extends IndexableFile {
 	constructor () {
 		super({
@@ -1001,6 +1025,8 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileBooks(),
 	new IndexableFileDeities(),
 	new IndexableFileOrganizations(),
+	new IndexableFileEvents(),
+	new IndexableFileRelicGifts(),
 	new IndexableFilePlaces(),
 	new IndexableFileHazards(),
 	new IndexableFileTables(),
