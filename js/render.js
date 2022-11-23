@@ -4424,7 +4424,7 @@ Renderer.creature = {
 			</div>`;
 		}
 		const isRenderButton = (generic || opts.isRenderingGeneric) && !opts.noButton && !opts.asHTML;
-		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}|${ability.source ? ability.source : generic.source ? generic.source : ""}${ability.title ? `|${ability.title}` : ""}}`) : ability.name;
+		const abilityName = generic ? renderer.render(`{@${generic.tag} ${generic.name || ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}|${ability.source ? ability.source : generic.source ? generic.source : ""}${`|${ability.title || ability.name}`}}`) : ability.name;
 
 		// Button doesn't work with asHTML
 		const $ele = $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
