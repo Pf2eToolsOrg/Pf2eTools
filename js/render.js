@@ -2174,7 +2174,9 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@gift":
 					case "@relicGift":
+					case "@relic":
 						fauxEntry.href.path = UrlUtil.PG_RELICGIFTS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_RELICGIFTS,
@@ -3307,6 +3309,7 @@ Renderer.utils = {
 
 	getExcludedDiv (it, dataProp, page) {
 		if (!ExcludeUtil.isInitialised) return "";
+		// if (page === undefined) console.warn("No page provided to getExcludedDiv! Check if your UrlUtil.PG_* constant is correct.");
 		const hash = page ? UrlUtil.URL_TO_HASH_BUILDER[page](it) : UrlUtil.autoEncodeHash(it);
 		const isExcluded = ExcludeUtil.isExcluded(hash, dataProp, it.source);
 		return isExcluded ? `<div class="pt-3 text-center text-danger"><b><i>Warning: This content has been <a href="blacklist.html">blacklisted</a>.</i></b></div>` : "";
@@ -5613,7 +5616,7 @@ Renderer.event = {
 	getRenderedString (it, opts) {
 		opts = opts || {};
 		return $$`
-			${Renderer.utils.getExcludedDiv(it, "place", UrlUtil.PG_PLACE)}
+			${Renderer.utils.getExcludedDiv(it, "event", UrlUtil.PG_EVENTS)}
 			${Renderer.utils.getNameDiv(it, { type: "EVENT" })}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(it.traits || [])}
@@ -5664,7 +5667,7 @@ Renderer.relicGift = {
 		const renderStack = [];
 		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
 		return renderer.render(`
-			${Renderer.utils.getExcludedDiv(it, "relicGift", UrlUtil.PG_RELICGIFT)}
+			${Renderer.utils.getExcludedDiv(it, "relicGift", UrlUtil.PG_RELICGIFTS)}
 			${Renderer.utils.getNameDiv(it, { type: `${it.tier.toUpperCase()} GIFT` })}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(it.traits || [])}
@@ -5772,8 +5775,8 @@ Renderer.settlement = {
 		const renderStack = [];
 		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
 
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_SETTLEMENTS))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_SETTLEMENTS, type: "SETTLEMENT", ...opts }))
+		renderStack.push(Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_PLACES))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_PLACES, type: "SETTLEMENT", ...opts }))
 		renderStack.push(Renderer.utils.getDividerDiv())
 		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
 		renderStack.push(Renderer.settlement.getSubHeadTop(it))
@@ -8192,6 +8195,8 @@ Renderer._stripTagLayer = function (str) {
 					case "@feat":
 					case "@hazard":
 					case "@vehicle":
+					case "@gift":
+					case "@relic":
 					case "@relicGift":
 					case "@item":
 					case "@language":
@@ -8207,6 +8212,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@place":
 					case "@plane":
 					case "@mindscape":
+					case "@event":
 					case "@nation":
 					case "@ritual":
 					case "@settlement":

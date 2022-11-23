@@ -4641,7 +4641,7 @@ BrewUtil = {
 			case UrlUtil.PG_VEHICLES:
 				return ["vehicle"];
 			case UrlUtil.PG_RELICGIFTS:
-				return ["relicgift"];
+				return ["relicGift", "relic", "gift"];
 			case UrlUtil.PG_TRAITS:
 				return ["trait"];
 			case UrlUtil.PG_MAKE_BREW:
