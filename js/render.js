@@ -2174,9 +2174,7 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@gift":
 					case "@relicGift":
-					case "@relic":
 						fauxEntry.href.path = UrlUtil.PG_RELICGIFTS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_RELICGIFTS,
@@ -8195,8 +8193,6 @@ Renderer._stripTagLayer = function (str) {
 					case "@feat":
 					case "@hazard":
 					case "@vehicle":
-					case "@gift":
-					case "@relic":
 					case "@relicGift":
 					case "@item":
 					case "@language":
