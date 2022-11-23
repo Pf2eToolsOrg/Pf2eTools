@@ -5663,7 +5663,6 @@ Renderer.relicGift = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
-		
 		return renderer.render(`
 			${Renderer.utils.getExcludedDiv(it, "relicGift", UrlUtil.PG_RELICGIFT)}
 			${Renderer.utils.getNameDiv(it, { type: `${it.tier.toUpperCase()} GIFT` })}
@@ -5672,10 +5671,10 @@ Renderer.relicGift = {
 			${Renderer.relicGift.getBody(it)}
 			${Renderer.utils.getDividerDiv()}
 			${renderStack.join("")}
-			${opts.noPage ?  "" : Renderer.utils.getPageP(it)}
+			${opts.noPage ? "" : Renderer.utils.getPageP(it)}
 		`);
 	},
-	
+
 	getBody (it) {
 		const renderStack = ["<p class=\"pf2-stat pf2-stat__section\"><strong>Aspect"];
 		if (it.aspects.length > 1) renderStack.push("s");

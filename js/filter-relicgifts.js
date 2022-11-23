@@ -18,7 +18,7 @@ class PageFilterRelicGifts extends PageFilter {
 				"Grants Passive Attribute",
 				"Has Prerequisites",
 				"Is Rune",
-			]
+			],
 		});
 	}
 
