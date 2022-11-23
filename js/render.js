@@ -4437,7 +4437,7 @@ Renderer.creature = {
 					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
 					${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
 					</p>
-					${renderedGenericAbility || ""}`;
+					${/* renderedGenericAbility || null */ ""}`;
 		if (!opts.asHTML) return $ele;
 		else return $ele[0].outerHTML;
 	},
