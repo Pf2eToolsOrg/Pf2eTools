@@ -299,7 +299,7 @@
 									"page": 10,
 									"name": "Rewinding",
 									"entries": [
-										"Though \"rewinding\" can happen in any mode of play, it's usually most troublesome in encounters. Rewinding happens when a player forgot to add in a certain bonus or take a certain action, or wishes they had used their actions in a different order, and wants to rewind to account for what they missed. The best policy is usually to let them rewind as needed within their own turn but stop them before they intrude into someone else's. This keeps interruptions within reasonable bounds. You might find some adjustments are easy enough to make outside of a turn and can be allowed. For instance, if someone forgot to add the fire damage from a {@i flaming} rune to one of their hits, it's pretty easy to reduce the monster's HP on another turn, but if they realized their attack missed only because they forgot the bonus from {@i bless}, that could be too much of an interruption. Your ruling should stand on such matters. Try to be consistent about what kinds of things you will rewind for and when."
+										"Though \"rewinding\" can happen in any mode of play, it's usually most troublesome in encounters. Rewinding happens when a player forgot to add in a certain bonus or take a certain action, or wishes they had used their actions in a different order, and wants to rewind to account for what they missed. The best policy is usually to let them rewind as needed within their own turn but stop them before they intrude into someone else's. This keeps interruptions within reasonable bounds. You might find some adjustments are easy enough to make outside of a turn and can be allowed. For instance, if someone forgot to add the fire damage from a {@item flaming (generic)||flaming} rune to one of their hits, it's pretty easy to reduce the monster's HP on another turn, but if they realized their attack missed only because they forgot the bonus from {@i bless}, that could be too much of an interruption. Your ruling should stand on such matters. Try to be consistent about what kinds of things you will rewind for and when."
 									]
 								},
 								{
@@ -5446,7 +5446,7 @@
 										"A creature that's meant to be primarily a combat threat uses high damage for its melee {@action Strike||Strikes}, or moderate for melee {@action Strike||Strikes} that have the {@trait agile} trait. Ranged attacks more typically use the moderate value, or even low. A creature that's meant to be highly damaging uses the extreme damage values, but might then have a moderate attack bonus. As with most statistics, extreme damage is more likely at higher levels. You can also use the extreme value for special attacks that the creature can use only a limited number of times or under circumstances that aren't likely to happen every round.",
 										"More versatile creatures, such as ones that can cast some spells and aren't meant to primarily get their damage through {@action Strike||Strikes}, go one category lower: moderate for their main melee {@action Strike||Strikes}, low for agile and ranged {@action Strike||Strikes}.",
 										"Spellcasters and other creatures that aren't meant to be competent in a direct fight might use the low damage value, or even less if they completely don't care about their {@action Strike||Strikes}.",
-										"On Table 2\u201310, you'll find a damage expression (a die roll or rolls plus a flat modifier) you can use as is, or you can take the damage in parentheses and build your own damage expression to hit that number. If you do the latter, remember that a d4 counts as 2.5 damage, a d6 as 3.5, a d8 as 4.5, a d10 as 5.5, and a d12 as 6.5. Usually a damage expression works best when roughly half the damage is from dice and half is from the flat modifier. If your creature deals special damage, like {@damage 1d6} fire from {@i flaming} attacks, that counts toward its total damage per {@action Strike}. Keep in mind that a creature using a weapon should have a damage value that feels right for that weapon. Extreme damage works well for two-handed weapons that uses d10s or d12s for damage. On the other hand, a dagger uses only d4s, so a dagger wielder would need something like sneak attack to deal extreme damage, or you might compensate for the dagger's lower damage per {@action Strike} by giving the creature the ability to attack more efficiently or use other tricks."
+										"On Table 2\u201310, you'll find a damage expression (a die roll or rolls plus a flat modifier) you can use as is, or you can take the damage in parentheses and build your own damage expression to hit that number. If you do the latter, remember that a d4 counts as 2.5 damage, a d6 as 3.5, a d8 as 4.5, a d10 as 5.5, and a d12 as 6.5. Usually a damage expression works best when roughly half the damage is from dice and half is from the flat modifier. If your creature deals special damage, like {@damage 1d6} fire from {@item flaming (generic)||flaming} attacks, that counts toward its total damage per {@action Strike}. Keep in mind that a creature using a weapon should have a damage value that feels right for that weapon. Extreme damage works well for two-handed weapons that uses d10s or d12s for damage. On the other hand, a dagger uses only d4s, so a dagger wielder would need something like sneak attack to deal extreme damage, or you might compensate for the dagger's lower damage per {@action Strike} by giving the creature the ability to attack more efficiently or use other tricks."
 									]
 								},
 								{
@@ -9796,7 +9796,8 @@
 							"page": 90,
 							"name": "Specific Cursed Items",
 							"entries": [
-								"The following are a few examples of cursed items."
+								"The following are a few examples of cursed items.",
+								"{@note Please visit the {@filter items page|items||source=gmg|item=cursed} to view all cursed items.}"
 							]
 						},
 						{
@@ -9806,7 +9807,8 @@
 							"name": "Item Curses",
 							"entries": [
 								"Most curses alter a base item. Item curses alter their base item, much like a property rune, though they can't be detected or identified unless a creature critically succeeds at a check to Identify the Item. A curse can be applied to the specific types of magic items listed in its Usage entry.",
-								"Curses typically can't be removed or transferred from the item, though at your discretion, either might be possible after the curse is {@condition broken}. If the PCs manage to break the curse, the newly uncursed item could be quite valuable."
+								"Curses typically can't be removed or transferred from the item, though at your discretion, either might be possible after the curse is {@condition broken}. If the PCs manage to break the curse, the newly uncursed item could be quite valuable.",
+								"{@note Please visit the {@filter items page|items||source=gmg|category=curse} to view all item curses.}"
 							]
 						}
 					]
@@ -9859,7 +9861,7 @@
 							"page": 95,
 							"name": "Relic Aspects",
 							"entries": [
-								"Each relic is associated with aspects\u2014typically two\u2014that speak to its overall concept and purpose. The individual gifts each have an associated aspect. You should almost always select gifts that have an aspect matching one of those found on the relic. For example, a brass dagger recovered from the City of Brass might have the fire and mind aspects, which means that it could have the flare bolt gift (which has the fire aspect), but not the rolling geode gift (which has the earth aspect)",
+								"Each relic is associated with aspects\u2014typically two\u2014that speak to its overall concept and purpose. The individual gifts each have an associated aspect. You should almost always select gifts that have an aspect matching one of those found on the relic. For example, a brass dagger recovered from the City of Brass might have the fire and mind aspects, which means that it could have the {@relicGift flare bolt} gift (which has the fire aspect), but not the {@relicGift rolling geode} gift (which has the earth aspect)",
 								"Usually you can determine at least one aspect of a relic easily by looking at the history of the item or personality of the character. For example, if a player decides that their background relic is a rusty mace wielded by the character's great grandmother in battle against rising undead hordes, the mace might have the life aspect, as it was used to slay countless undead creatures. There's no harm in letting the player choose an aspect for a background relic; through play, the item will reveal another aspect associated with it. In the previous example, the mace might reveal itself to have powers against demons as well, in which case its aspects might be celestial and life."
 							]
 						},
@@ -9871,58 +9873,13 @@
 							"entries": [
 								"As a relic's bearer performs mighty deeds and advances their story, the relic gets stronger. The most basic advancement for a relic is its level, which always matches that of its owner. Weapons and armor can gain fundamental runes normally. You decide what, if any, property runes can be added to a given relic; by default, they can't have property runes, like any other specific item.",
 								"The more complex advancement comes from gifts.",
-								"Table 2\u201322: Relic Gifts shows the typical number of gifts a relic should have at a given level, but relics don't follow this strictly. Rather, gifts arise according to the pace of the story, the needs of the campaign, and the relationship between the character and the relic. Generally speaking, this results in a relic gaining one gift for every 4 levels its bearer has, but this might fluctuate as the campaign progresses. For example, a relic might gain its first gift at 4th level after the bearer defeats a powerful foe. It might then gain its second at 7th, after they perform a special ritual. That same relic might not gain another gift until 13th level and then again at 16th as the player reaches other major milestones.",
+								"{@table Relic Gifts|GMG|Table 2\u201322: Relic Gifts} shows the typical number of gifts a relic should have at a given level, but relics don't follow this strictly. Rather, gifts arise according to the pace of the story, the needs of the campaign, and the relationship between the character and the relic. Generally speaking, this results in a relic gaining one gift for every 4 levels its bearer has, but this might fluctuate as the campaign progresses. For example, a relic might gain its first gift at 4th level after the bearer defeats a powerful foe. It might then gain its second at 7th, after they perform a special ritual. That same relic might not gain another gift until 13th level and then again at 16th as the player reaches other major milestones.",
 								"The gift types\u2014minor, major, and grand\u2014indicate their general power level. Again, the table indicates what's generally appropriate at certain levels, but you can alter them as you see fit. You should usually avoid giving a minor gift at 10th level or higher, because it just won't be that impressive, though some of them scale well enough to be interesting at higher levels. The Gold Piece Equivalent entry for each gift helps you determine how much you should reduce treasure when using relics (see Adjusting Treasure below)",
 								{
-									"type": "table",
-									"source": "GMG",
-									"page": 95,
-									"name": "RELIC GIFTS",
-									"id": "2-22",
-									"colStyles": [
-										"text-center",
-										"text-center",
-										"text-center",
-										"text-center"
-									],
-									"rows": [
-										[
-											"Number of Gifts",
-											"Minimum Level",
-											"Gift Type",
-											"Gold Piece Equivalent"
-										],
-										[
-											"1",
-											"1st",
-											"Minor",
-											"20 gp"
-										],
-										[
-											"2",
-											"5th",
-											"Minor",
-											"160 gp"
-										],
-										[
-											"3",
-											"9th",
-											"Major",
-											"700 gp"
-										],
-										[
-											"4",
-											"13th",
-											"Major",
-											"3,000 gp"
-										],
-										[
-											"5",
-											"17th",
-											"Grand",
-											"15,000 gp"
-										]
-									]
+									"type": "data",
+									"tag": "table",
+									"name": "Relic Gifts",
+									"source": "GMG"
 								},
 								"You decide what gifts a relic gains, generally by either selecting a single gift or offering two paths for the relic to grow and allowing the player to choose, but this should be informed by the story and the nature of the character bearing the relic. A relic should complement the bearer, bolstering the bearer's strengths and helping to overcome their weaknesses. Within that framework, you should try to maintain a cohesive theme for the relic."
 							]
@@ -9933,7 +9890,7 @@
 							"page": 95,
 							"name": "Adjusting Treasure",
 							"entries": [
-								"When you incorporate relics into your game, you can adjust the treasure gained by the party down to account for the relics increasing in power. Essentially, some of the treasure from Table 10\u20139: Party Treasure by Level on page 509 of the {@i Core Rulebook} should be replaced with relic seeds and gifts instead. You can use the relic's minimum level, replacing a permanent item of that level, or you can use the gp equivalent. Keep in mind that relic gifts are often a little more powerful than other items with the same Price even when they start out, and they often scale without any additional costs, so PCs with relics will usually be a bit more powerful.",
+								"When you incorporate relics into your game, you can adjust the treasure gained by the party down to account for the relics increasing in power. Essentially, some of the treasure from {@table Party Treasure by Level||Table 10\u20139: Party Treasure by Level} on page 509 of the {@i Core Rulebook} should be replaced with relic seeds and gifts instead. You can use the relic's minimum level, replacing a permanent item of that level, or you can use the gp equivalent. Keep in mind that relic gifts are often a little more powerful than other items with the same Price even when they start out, and they often scale without any additional costs, so PCs with relics will usually be a bit more powerful.",
 								"If you prefer, you can grant relics in addition to other rewards. This means PCs will be much more powerful, but you're rewarding their investment in the story."
 							]
 						},
@@ -9945,6 +9902,15 @@
 							"entries": [
 								"A relic seed can be quite simple: imagine a standard item with two aspects and an appearance that matches the theme. You can also use an existing magic item for a campaign relic; pick two aspects for it, and tweak its appearance or characteristics to make it clearly different from other items of its type. You can choose a tradition for the seed and apply that trait to the seed and all the gifts of the seed. This tradition might be derived from the background of the item, or it might appear or change through story moments involving the relic.",
 								"If you want a relic to have an additional special benefit, you can design it to grant a bonus to a skill, typically a +1 item bonus for a 3rd-level relic."
+							]
+						},
+						{
+							"type": "pf2-brown-box",
+							"name": "Player-Driven Relics",
+							"page": 96,
+							"entries": [
+								"Though these rules assume you as the GM are providing relic gifts as a form of treasure with input from the players, you can instead have the players make all the decisions for their relics. Encourage the players to choose different styles of items and aspects to match their characters’ themes, rather than simply choosing the most powerful combination of options. Have players describe how their relic gets more powerful in the story. What acts from previous sessions lent the relic power? What special meditations or practices did they perform to unlock new gifts? How does it feel to have the relic grow?",
+								"As the item and the character level up, the player chooses which gifts the item gets from the list as a part of character advancement. You still adjust treasure as normal for incorporating relics into your game. In fact, if the player tries to optimize the combinations, they will likely be more powerful than under the standard method."
 							]
 						},
 						{
@@ -9962,6 +9928,14 @@
 									"name": "Gift Saves and Spell Attack Rolls",
 									"entries": [
 										"Many gifts allow for a saving throw or have other abilities that change as the relic goes up in level. The DC for any saving throw called for by a gift is its owner's class DC or spell DC. The spell attack modifier of a gift is 10 lower than that DC. A relic's counteract modifier is equal to its owner's counteract modifier."
+									]
+								},
+								"{@note Please visit the {@filter relic gifts page|relicgifts||source=gmg} to view all relic gifts.}",
+								{
+									"type": "pf2-brown-box",
+									"name": "Runes as Gifts",
+									"entries": [
+										"You can substitute runes for gifts. If you choose to allow property runes on the relic, you’ll want them to take up rune slots. Otherwise, you can give as many or few as you prefer, just like any other gifts. Runes are sorted into minor, major, and grand categories, but you should use their normal level and Price when you adjust treasure, instead of the number and levels on the {@table Relic Gifts|GMG|Table 2–22}. If you’re using the player-driven relics variant, it’s recommended you do not include this option."
 									]
 								}
 							]
@@ -10016,7 +9990,8 @@
 							"page": 106,
 							"name": "Artifacts",
 							"entries": [
-								"Countless artifacts have been created over the ages, only a few of which are described here."
+								"Countless artifacts have been created over the ages, only a few of which are described here.",
+								"{@note Please visit the {@filter items page|items||source=gmg|item=artifact} to view all artifacts.}"
 							]
 						}
 					]
@@ -16387,7 +16362,7 @@
 									"entries": [
 										"With this variant, you can ignore as much of {@table Party Treasure by Level|CRB|Table 10\u20139: Party Treasure by Level} on page 509 of the Core Rulebook as you want, though you'll usually want to provide consistent currency. The main area your choice will impact is in spellcasting items, such as scrolls and wands.",
 										"Remove all potency runes, striking runes, and resilient runes. Items that normally grant an item bonus to statistics or damage dice no longer do, other than the base item bonus to AC from armor. Apex items do not increase ability scores. If your world still includes magic items, a safe bet is to continue to give out consumable items at roughly the rate on {@table Party Treasure by Level|CRB|Table 10\u20139} of the Core Rulebook.",
-										"If you choose to eliminate runes entirely, this can reduce the PCs' damage since they won't have runes like flaming or holy. If you've removed nearly all treasure, challenges might become more difficult, even with automatic bonuses."
+										"If you choose to eliminate runes entirely, this can reduce the PCs' damage since they won't have runes like {@item flaming (generic)||flaming} or {@item holy}. If you've removed nearly all treasure, challenges might become more difficult, even with automatic bonuses."
 									]
 								}
 							]

@@ -1,0 +1,124 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "relicGifts.json",
+	"title": "Relic Gifts",
+	"description": "The relic gift data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"relicGift": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"add_hash": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"tier": {
+						"type": "string",
+						"examples": [
+							"minor",
+							"major",
+							"grand"
+						]
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"aspects": {
+						"type": "array",
+						"items": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"description": "This format is rendered as \"aspect (note)\" on the stat block but treated as just \"aspect\" for the purpose of filters",
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"note": {
+											"type": "string"
+										}
+									}
+								}
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"prerequisites": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"itemTypes": {
+						"description": "The type of item the relic must be to have this gift. Filters are displayed exactly as entered. Leave undefined if there are no restrictions.",
+						"type": "array",
+						"items": {
+							"type": "string",
+							"examples": [
+								"Armor",
+								"Worn Item",
+								"Weapon"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"miscTags": {
+						"description": "altersRelic = The gift permanently changes the relic's nature in some way\n isRune = The gift mimics the effect of a rune\n grantsAbility = The gift grants the character a new, activatable ability (including spells)\n grantsPassive = The gift grants the character a new Speed, a damage resistance, an automatic bonus, or another always-active quality\n soulSeed = The gift is \"particularly appropriate\" for soul seeds (SoM p230)",
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"altersRelic",
+								"grantsAbility",
+								"grantsPassive",
+								"isRune",
+								"soulSeed"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"tier",
+					"aspects",
+					"entries"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"required": [
+		"relicGift"
+	],
+	"additionalProperties": false
+}

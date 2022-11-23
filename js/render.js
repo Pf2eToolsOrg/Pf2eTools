@@ -2174,6 +2174,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@relicGift":
+						fauxEntry.href.path = UrlUtil.PG_RELICGIFTS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_RELICGIFTS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 					case "@item":
 						fauxEntry.href.path = UrlUtil.PG_ITEMS;
 						fauxEntry.href.hover = {
@@ -5001,8 +5009,8 @@ Renderer.item = {
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
 			${item.craftReq || item.special || item.destruction ? Renderer.utils.getDividerDiv() : ""}
-			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements"})}
-			${Renderer.generic.getSpecial(item, { type: "Destruction"})}
+			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements" })}
+			${Renderer.generic.getSpecial(item, { title: "Destruction" })}
 			${Renderer.generic.getSpecial(item)}
 			${Renderer.item.getGenericItem(item)}
 			${Renderer.utils.getPageP(item)}`;
@@ -5648,6 +5656,34 @@ Renderer.plane = {
 		return renderStack.join("")
 	},
 };
+
+Renderer.relicGift = {
+	getRenderedString (it, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get();
+		const renderStack = [];
+		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
+		return renderer.render(`
+			${Renderer.utils.getExcludedDiv(it, "relicGift", UrlUtil.PG_RELICGIFT)}
+			${Renderer.utils.getNameDiv(it, { type: `${it.tier.toUpperCase()} GIFT` })}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(it.traits || [])}
+			${Renderer.relicGift.getBody(it)}
+			${Renderer.utils.getDividerDiv()}
+			${renderStack.join("")}
+			${opts.noPage ? "" : Renderer.utils.getPageP(it)}
+		`);
+	},
+
+	getBody (it) {
+		const renderStack = ["<p class=\"pf2-stat pf2-stat__section\"><strong>Aspect"];
+		if (it.aspects.length > 1) renderStack.push("s");
+		renderStack.push(`</strong> ${it.aspects.map(aspect => typeof aspect === "string" ? aspect : `${aspect.name} (${aspect.note})`).join(", ")}`);
+		if (it.prerequisites) renderStack.push(`; <strong>Prerequisites</strong> ${it.prerequisites}`);
+		renderStack.push("</p>");
+		return renderStack.join("");
+	},
+}
 
 Renderer.ritual = {
 	getRenderedString (ritual, opts) {
@@ -7171,6 +7207,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "places.json", "place");
 			case UrlUtil.PG_EVENTS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "events.json", "event");
+			case UrlUtil.PG_RELICGIFTS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "relicgifts.json", "relicGift");
 
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
@@ -7788,6 +7826,8 @@ Renderer.hover = {
 				});
 			case UrlUtil.PG_VEHICLES:
 				return Renderer.vehicle.getRenderedString;
+			case UrlUtil.PG_RELICGIFTS:
+				return Renderer.relicGift.getRenderedString;
 			case UrlUtil.PG_ARCHETYPES:
 				return Renderer.archetype.getRenderedString;
 			case UrlUtil.PG_CONDITIONS:
@@ -8152,6 +8192,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@feat":
 					case "@hazard":
 					case "@vehicle":
+					case "@relicGift":
 					case "@item":
 					case "@language":
 					case "@object":
