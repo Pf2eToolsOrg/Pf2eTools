@@ -862,6 +862,7 @@ function Renderer () {
 		entry.components != null || entry.traits != null ? textStack[0] += "; " : textStack[0] += "&nbsp;";
 		if (entry.cost != null) textStack[0] += `<strong>Cost&nbsp;</strong>${entry.cost}; `;
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${this.render_addTerm(Parser.freqToFullEntry(entry.frequency))} `;
+		if (entry.range != null) textStack[0] += `<strong>Range&nbsp;</strong>${entry.range.number} ${entry.range.unit} `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)}; `;
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${this.render_addTerm(entry.trigger)}; `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${this.render_addTerm(entry.requirements)}; `;
@@ -4080,7 +4081,7 @@ Renderer.familiar = {
 		${familiar.access ? `<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(familiar.access)}</p>` : ""}
 		${familiar.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${familiar.alignment}</p>` : ""}
 		${familiar.requires ? `<p class="pf2-stat pf2-stat__section"><strong>Required Number of Abilities&nbsp;</strong>${familiar.requires}</p>` : ""}
-		${familiar.granted && !familiar.granted.length === 0 ? `<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${renderer.render(familiar.granted.join(", "))}</p>` : ""}
+		${familiar.granted && !(familiar.granted.length === 0) ? `<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${renderer.render(familiar.granted.join(", "))}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		${familiar.abilities.map(a => Renderer.creature.getRenderedAbility(a))}
 		${opts.noPage ? "" : Renderer.utils.getPageP(familiar)}`;
