@@ -755,6 +755,132 @@
 	],
 	"curse": [
 		{
+			"name": "Curse of Biting Swarms",
+			"source": "LOIL",
+			"page": 176,
+			"type": "Curse",
+			"level": 5,
+			"traits": [
+				"curse","transmutation","magical"
+			],
+			"entries": [
+				"You emit a deathlike stench that attracts swarms of carrion-eating insects.",
+				{
+					"type": "affliction",
+					"DC": 20,
+					"savingThrow": "Fortitude",
+					"entries": [
+						"You smell like a charnel house, making it easy for creatures with scent to notice you; they gain a +2 circumstance bonus to their {@skill Perception} against you. Additionally, the first time you’re exposed to sunlight each day, biting insects attack you, scattering once they’ve taken damage. You then become {@condition sickened 1} and {@condition drained 1} until the next time you take a full night’s rest. These conditions can’t be reduced below 1 by other means."
+					]
+				}
+			]
+		},
+		{
+			"name": "Boatman’s Toll Curse",
+			"source": "LOIL",
+			"page": 176,
+			"type": "Curse",
+			"level": 20,
+			"traits": [
+				"curse","death","magical", "necromancy"
+			],
+			"entries": [
+				"Your soul is treated as collateral for the crimes you’ve committed. This punishment is reserved for those who have committed truly heinous acts, such as using holy magic against an important undead citizen or conspiring with enemies of the state.",
+				{
+					"type": "affliction",
+					"DC": 43,
+					"savingThrow": "Will",
+					"entries": [
+						"A tattoo of a skull with coins on its eyes etches itself into your skin, dealing {@damage 6d10} cold damage and {@damage 6d10} negative damage and causing you to become {@condition drained 4}. If the tattoo is ever removed or destroyed by any means, it reappears after 24 hours and deals its damage again unless this curse is removed first. If you’re reduced to 0 Hit Points while the tattoo is on your body, you die immediately, and your soul is banished to {@plane Abaddon}. You can’t be revived, reincarnated, raised as an undead, or otherwise come back to life unless the boatman Charon relinquishes your soul."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lord’s Arrogance",
+			"source": "LOIL",
+			"page": 176,
+			"type": "Curse",
+			"level": 7,
+			"traits": [
+				"curse","enchantment","magical","mental"
+			],
+			"entries": [
+				"You’re filled with the unearned confidence of a young noble and carry yourself as if you can do no wrong.",
+				{
+					"type": "affliction",
+					"DC": 23,
+					"savingThrow": "Will",
+					"entries": [
+						"Whenever you make a {@action Recall Knowledge} check or a {@skill Perception} check that would give you information (such as to {@action Sense Motive}), you always receive at least one piece of false information that you believe with absolute confidence, even on a success or better. If you attempt to act on this false information, you receive a –1 circumstance penalty on any skill checks you attempt."
+					]
+				}
+			]
+		},
+		{
+			"name": "Consummate Liar",
+			"source": "LOIL",
+			"page": 176,
+			"type": "Curse",
+			"level": 14,
+			"traits": [
+				"curse","enchantment","magical","mental"
+			],
+			"entries": [
+				"It becomes your first instinct to answer every question with an obvious and blatant lie, no matter how trivial.",
+				{
+					"type": "affliction",
+					"DC": 31,
+					"savingThrow": "Will",
+					"entries": [
+						"Whenever you’re asked a question directly, you must attempt a DC 32 Will save. On a failure, you spout an obvious lie with an automatic failure at your {@skill Deception} check. If you succeed, you can choose your words carefully and answer however you wish, but if you choose to answer truthfully, the agony of telling the truth causes you to take {@damage 3d8} mental damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of The Rotting Heart",
+			"source": "LOIL",
+			"page": 176,
+			"type": "Curse",
+			"level": 9,
+			"traits": [
+				"curse","transmutation","magical"
+			],
+			"entries": [
+				"A shriveled, spectral heart appears inside your body, beating alongside your own.",
+				{
+					"type": "affliction",
+					"DC": 25,
+					"savingThrow": "Will",
+					"entries": [
+						"You’re harmed by positive energy as if you were undead, harmed by negative energy as if you were living, and can’t be healed by either one. All other forms of magical healing, such as the {@spell soothe} spell, restore only half the normal amount of Hit Points. Alchemical healing, healing with the {@skill Medicine} skill, and other non-magical methods continue to heal you normally."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Petulant Whispers",
+			"source": "LOIL",
+			"page": 176,
+			"type": "Curse",
+			"level": 2,
+			"traits": [
+				"auditory","curse","illusion","magical"
+			],
+			"entries": [
+				"A cruel, ghostly voice follows you, whispering your transgressions to anyone you encounter.",
+				{
+					"type": "affliction",
+					"DC": 16,
+					"savingThrow": "Will",
+					"entries": [
+						"Whenever you try to speak to another creature who doesn’t know you well, they hear whispers in a language they understand that reveal hints and phrases related to the things about which you feel most guilty. You have a –2 circumstance bonus to {@skill Diplomacy} checks to {@action Make an Impression} against those creatures, and if you roll a failure on your check, you get a critical failure instead."
+					]
+				}
+			]
+		},
+		{
 			"name": "Slithering",
 			"source": "Sli",
 			"page": 7,

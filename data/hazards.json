@@ -1,6 +1,151 @@
 {
 	"hazard": [
 		{
+			"name": "Cracked Earth",
+			"source": "LOIL",
+			"page": 231,
+			"level": 3,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "trained"
+			},
+			"description": [
+				"This 20-foot-by-20-foot patch of ground is cobwebbed with cracks and fissures that crumble when a creature steps on it."
+			],
+			"disable": {
+				"entries": [
+					"DC 16 {@skill Survival} (untrained) to collapse safely; DC 20 {@skill Crafting} (trained) to shore it up enough to pass over without collapsing it"
+				]
+			},
+			"actions": [
+				{
+					"name": "Long Fall",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps onto the cracked earth",
+					"entries": [
+						"The creature fractures the thin crust of earth and falls through. That creature can use the {@action Grab an Edge} reaction to avoid falling, as long as it is adjacent to an edge. Otherwise it takes falling damage (typically 25 bludgeoning damage for a 50-foot drop). Some of these rifts eventually lead to the Darklands."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mana Whorl",
+			"source": "LOIL",
+			"page": 231,
+			"level": 7,
+			"traits": [
+				"complex",
+				"environmental",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 14,
+				"minProf": "trained",
+				"notes": "to identify as dangerous quicksand; +20 (expert) to recognize its magical properties"
+			},
+			"description": [
+				"This 15-foot-wide patch of destabilized sand attempts to submerge creatures who wield magic. A desert tree with dense bright green foliage, pale pink blooms, and at least one carnivorous red-chested magpie is always nearby."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Arcana} (expert) to feed magic into the whorl and temporarily stabilize it for a few minutes; feed the whorl a number of spellcasters and magic items with a combined 10 levels (for instance, a 4th-level cleric with two 3rd-level magic items) to stabilize it for 1 week; or feed the whorl a number of spellcasters and magic items with a combined 20 levels to stabilize it permanently.",
+					"Spellcasters and magic items fed to the whorl are devoured whole."
+				]
+			},
+			"actions": [
+				{
+					"name": "Submerge",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature who can cast spells, or who is wielding a magic item, walks into the mana whorl",
+					"entries": [
+						"The triggering creature sinks into the whorl to its waist. The whorl rolls initiative if it hasn't already"
+					]
+				}
+			],
+			"routine": [
+				"(1 action) On its initiative, the whorl pulls down any creature within it that can cast spells or that is wielding a magic item. A creature submerged to the waist becomes submerged to the neck, and a creature submerged to the neck is pulled under and must hold its breath to avoid suffocation (Core Rulebook 478). If a creature has no spells or magic items, the mana whorl is merely difficult terrain.",
+				"A creature caught in a mana whorl can attempt a DC 23 {@skill Athletics} check to {@action Swim} to either raise itself by one step if submerged to the neck or worse, or to move 5 feet if submerged only to the waist. On a critical failure, the creature is pulled down by one step. A creature that Swims out of the whorl escapes the hazard and is {@condition prone} in a space adjacent to the whorl. Other creatures can {@action Aid} the creature, typically by using a rope or similar aid, or attempt to pull the creature out with their own DC 23 {@skill Athletics} check, with the same results as if the creature attempted the check. If a creature has only magic items and no ability to cast spells, dropping all the items releases that creature, and it can move through the mana whorl as normal difficult terrain."
+			],
+			"reset": [
+				"The hazard continues to suck in anyone with magic until it is satiated (see Disable above). Magpies leave any satiated whorls."
+			]
+		},
+		{
+			"name": "Spell Pitchers",
+			"source": "LOIL",
+			"page": 232,
+			"level": 1,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "trained",
+				"notes": "to recognize the plant among others"
+			},
+			"description": [
+				"A large pitcher plant occupying a 5-foot space sits seemingly dormant with its dull petals open."
+			],
+			"disable": {
+				"entries": [
+					"DC 15 {@skill Arcana} (trained) to safely trigger the plant's reflexes, causing it to close and become dormant for one day, or DC 17 {@skill Nature} (trained) to carefully coax the pitcher into quiescence"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hp": {
+					"std": 40
+				},
+				"bt": {
+					"std": 20
+				},
+				"immunities": [
+					"mental"
+				],
+				"weaknesses": [
+					{
+						"name": "slashing",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Devour Magic",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A spell's direct line of effect passes within a 5-foot-radius of the plant",
+					"entries": [
+						"The pitcher attempts to counteract the spell (counteract level 1, counteract modifier +10). On a success, the pitcher immediately consumes the spell as it passes over the plant."
+					]
+				}
+			],
+			"reset": [
+				"Once the pitcher has eaten a spell, its petals turn dark pink and green before it closes. It goes dormant for one day per spell level of the spell consumed. Once the pitcher finishes digesting, it opens again and slowly wilts. A second pitcher branches into an adjacent square when the first pitcher opens again."
+			]
+		},
+		{
 			"name": "Spirit Window",
 			"source": "DA",
 			"page": 124,

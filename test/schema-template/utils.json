@@ -6,6 +6,34 @@
 	"type": "object",
 	"version": "0.0.1",
 	"definitions": {
+		"range": {
+			"type": "object",
+			"properties": {
+				"entry": {
+					"type": "string"
+				},
+				"unit": {
+					"type": "string",
+					"enum": [
+						"touch",
+						"feet",
+						"mile",
+						"planetary",
+						"interplanar",
+						"unlimited",
+						"unknown"
+					]
+				},
+				"number": {
+					"type": "integer",
+					"inclusiveMinimum": 0
+				}
+			},
+			"required": [
+				"unit"
+			],
+			"additionalProperties": false
+		},
 		"sourceList": {
 			"$ref": "_generated/sources.json#/definitions/sourceList"
 		},
@@ -1510,6 +1538,9 @@
 				"page": {
 					"type": "integer",
 					"minimum": 0
+				},
+				"range": {
+					"$ref": "#/definitions/range"
 				},
 				"components": {
 					"$ref": "#/definitions/components"

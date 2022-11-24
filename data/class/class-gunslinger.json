@@ -187,6 +187,18 @@
 						"Advanced Deed|Gunslinger|G&G|Vanguard|G&G|9",
 						"Greater Deed|Gunslinger|G&G|Vanguard|G&G|15"
 					]
+				},
+				{
+					"name": "Triggerbrand",
+					"type": "Gunslinger Way",
+					"shortName": "Triggerbrand",
+					"source": "LOIL",
+					"page": 107,
+					"subclassFeatures": [
+						"Gunslinger's Way|Gunslinger|G&G|Triggerbrand|G&G|1",
+						"Advanced Deed|Gunslinger|G&G|Triggerbrand|G&G|9",
+						"Greater Deed|Gunslinger|G&G|Triggerbrand|G&G|15"
+					]
 				}
 			],
 			"classFeaturesIntro": [
@@ -1072,6 +1084,109 @@
 					"tag": "action",
 					"name": "Siegebreaker",
 					"source": "G&G"
+				}
+			]
+		},
+		{
+			"name": "Gunslinger's Way",
+			"source": "LOIL",
+			"page": 108,
+			"className": "Gunslinger",
+			"classSource": "G&G",
+			"subclassShortName": "Triggerbrand",
+			"subclassSource": "LOIL",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Way of the Triggerbrand",
+					"entries": [
+						"You prefer firearms that work well as weapons in both melee and ranged combat, particularly those that allow you to exercise a bit of style and flair. You might be a survivor who cobbled your weapon together from the City of Smog’s street scrap or a noble wielder of a master smith’s bespoke commission for duels among Alkenstar’s elite. In addition to {@filter combination weapons|items||weapon=combination}, you gain access to the triggerbrand combination weapon presented below.",
+						{
+							"type": "pf2-options",
+							"style": "",
+							"items": [
+								{
+									"type": "item",
+									"entries": [
+										"{@b Slinger's Reload} {@action Touch and Go|LOIL}"
+									]
+								},
+								{
+									"type": "item",
+									"entries": [
+										"{@b Deeds} {@i Initial} {@action Spring the Trap|LOIL}; {@i Advanced} {@action Wind Them Up|LOIL}; {@i Greater} {@action Drive Them Down|LOIL}"
+									]
+								},
+								{
+									"type": "item",
+									"entries": [
+										"{@b Way Skill} {@skill Thievery}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"name": "Slinger's Reload",
+							"entries": [
+								{
+									"type": "data",
+									"tag": "action",
+									"name": "Touch and Go",
+									"source": "LOIL"
+								}
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"name": "Initial Deed",
+							"entries": [
+								{
+									"type": "data",
+									"tag": "action",
+									"name": "Spring the Trap",
+									"source": "LOIL"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Advanced Deed",
+			"source": "LOIL",
+			"page": 108,
+			"className": "Gunslinger",
+			"classSource": "G&G",
+			"subclassShortName": "Triggerbrand",
+			"subclassSource": "LOIL",
+			"level": 9,
+			"entries": [
+				{
+					"type": "data",
+					"tag": "action",
+					"name": "Wind Them Up",
+					"source": "LOIL"
+				}
+			]
+		},
+		{
+			"name": "Greater Deed",
+			"source": "LOIL",
+			"page": 108,
+			"className": "Gunslinger",
+			"classSource": "G&G",
+			"subclassShortName": "Triggerbrand",
+			"subclassSource": "LOIL",
+			"level": 15,
+			"entries": [
+				{
+					"type": "data",
+					"tag": "action",
+					"name": "Break Them Down",
+					"source": "LOIL"
 				}
 			]
 		}

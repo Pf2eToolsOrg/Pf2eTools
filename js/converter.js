@@ -3,7 +3,7 @@
 if (typeof module !== "undefined") {
 	require("../js/utils.js");
 	require("../js/parser.js");
-	Object.assign(global, require("./Tokenizer"));
+	Object.assign(global, require("./tokenizer.js"));
 	Object.assign(global, require("../js/converterutils.js"));
 	global.PropOrder = require("../js/utils-proporder.js");
 }

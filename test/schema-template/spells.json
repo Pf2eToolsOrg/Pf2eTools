@@ -183,32 +183,7 @@
 						"type": "string"
 					},
 					"range": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"type": "string"
-							},
-							"unit": {
-								"type": "string",
-								"enum": [
-									"touch",
-									"feet",
-									"mile",
-									"planetary",
-									"interplanar",
-									"unlimited",
-									"unknown"
-								]
-							},
-							"number": {
-								"type": "integer",
-								"inclusiveMinimum": 0
-							}
-						},
-						"required": [
-							"unit"
-						],
-						"additionalProperties": false
+						"$ref": "utils.json#/definitions/range"
 					},
 					"targets": {
 						"type": "string"

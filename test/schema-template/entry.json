@@ -311,12 +311,23 @@
 						{
 							"required": [
 								"reference",
-								"source"
+								"source",
+								"entries"
 							]
 						},
 						{
-							"required": [
-								"entries"
+							"oneOf": [
+								{
+									"required": [
+										"reference",
+										"source"
+									]
+								},
+								{
+									"required": [
+										"entries"
+									]
+								}
 							]
 						}
 					],
@@ -396,6 +407,9 @@
 								"$ref": "#"
 							},
 							"minItems": 1
+						},
+						"reference": {
+							"$ref": "#/definitions/reference"
 						},
 						"source": {
 							"type": "string",
@@ -2491,9 +2505,6 @@
 			"$ref": "#/definitions/entryQuote"
 		},
 		{
-			"$ref": "#/definitions/entryPF2-hx"
-		},
-		{
 			"$ref": "#/definitions/entryPF2-title"
 		},
 		{
@@ -2645,6 +2656,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryWrapped"
+		},
+		{
+			"$ref": "#/definitions/entryPF2-hx"
 		},
 		{
 			"type": "string"
