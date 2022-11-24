@@ -8,6 +8,7 @@ const VERSION_REPLACE_REGEXP = new RegExp(`${VERSION_MARKER_START.escapeRegexp()
 
 async function main () {
 	const sources = JSON.parse(fs.readFileSync("data/sources.json", "utf-8")).source;
+	if (sources.map(it => it.source).filter((e, i, a) => a.indexOf(e) !== i).length) throw new Error(`Duplicate source: ${sources.map(it => it.source).filter((e, i, a) => a.indexOf(e) !== i)}!`);
 	const SRC = sources.map(it => `SRC_${it.source} = "${it.source}"`);
 	const SOURCE_JSON_TO_FULL = sources.map(it => `Parser.SOURCE_JSON_TO_FULL[SRC_${it.source}] = "${it.name}"`);
 	const SOURCE_JSON_TO_ABV = sources.map(it => `Parser.SOURCE_JSON_TO_ABV[SRC_${it.source}] = "${it.source}"`);
