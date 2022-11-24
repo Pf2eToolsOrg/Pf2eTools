@@ -17,6 +17,7 @@
 		"test:styles": "stylelint scss/*.scss scss/includes/*.scss",
 		"test:data": "node test/test-all.js",
 		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw:prod && npm run build:schema",
+		"build-no-sw": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:schema && del-cli sw.js",
 		"build:css": "npm run build:css:main && npm run build:css:classes && npm run build:css:misc && npm run build:css:search",
 		"build:css:main": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
 		"build:css:classes": "node-sass --source-map=true --output-style=compressed scss/classes.scss css/classes.css && postcss ./css/classes.css --use autoprefixer -r",
@@ -43,6 +44,7 @@
 	},
 	"devDependencies": {
 		"ajv": "^8.6.0",
+		"del-cli": "^5.0.0",
 		"esbuild": "^0.14.38",
 		"eslint": "^8.20.0",
 		"http-server": "^14.1.0",
