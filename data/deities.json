@@ -1,6 +1,99 @@
 {
 	"deity": [
 		{
+			"name": "Aakriti",
+			"alias": [
+				"The Evershifting"
+			],
+			"source": "LOIL",
+					"page": 310,
+
+			"areasOfConcern": [ "discovery", "life", "ooze", "potential"],
+			"alignment": {
+				"alignment": [
+					"n"
+				],
+				"followerAlignment": [
+					"ln", "cn", "ng", "cg"
+				]
+			},
+			"category": "Eldest",
+			"edicts": [
+				"create without reservation", "help others unlock their true potential", "observe the mysteries of life"
+			],
+			"anathema": [
+				"fail to study a new creature if safely able", "force a creature to live in the wrong body", "reject creatures or information due to bigoted or rigid beliefs"
+			],
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"charisma"
+				],
+				"entry": "Constitution or Charisma"
+			},
+			"alternateDomains": [
+				"freedom",
+				"knowledge"
+			],
+			"domains": [
+				"change",
+				"creation",
+				"fate",
+				"time"
+			],
+			"spells": {
+				"1": [
+					"ant haul"
+				],
+				"3": [
+					"insect form"
+				],
+				"9": [
+					"shapechange"
+				]
+			},
+			"divineSkill": {
+				"skills": [
+					"acrobatics"
+				]
+			},
+			"favoredWeapon": {
+				"weapons": [
+					"whip"
+				]
+			},
+			"avatar": {
+				"speed": {
+					"walk": 70
+				},
+				"ignoreTerrain": true,
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "tendril whip",
+						"traits": ["disarm", "finesse", "nonlethal", "reach <20 feet>", "trip"],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "thorns",
+						"range": 100,
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
 			"name": "Ng",
 			"alias": [
 				"The Hooded"
@@ -159,7 +252,7 @@
 			},
 			"domains": [
 				"decay",
-				"delerium",
+				"delirium",
 				"fate",
 				"time"
 			],
@@ -290,8 +383,8 @@
 					{
 						"name": "calculated countermeasures",
 						"traits": [
-							"versatile bludgeoning",
-							"versatile slashing"
+							"versatile <bludgeoning>",
+							"versatile <slashing>"
 						],
 						"range": 60,
 						"damage": "6d4+3",
@@ -1536,7 +1629,8 @@
 			],
 			"otherSources": {
 				"Expanded": [
-					"LOKL|52"
+					"LOKL|52",
+					"LOIL|311"
 				]
 			},
 			"source": "LOGM",
@@ -1770,8 +1864,22 @@
 		},
 		{
 			"name": "Arundhat",
+			"hasLore": true,
 			"alias": [
 				"The Sacred Perfume"
+			],
+			"otherSources": {
+				"Expanded": [
+					"LOIL|312"
+				]
+			},
+			"alternateDomains": [
+				"passion"
+			],
+			"areasOfConcern": [
+				"blossoms",
+				"diplomacy",
+				"scent"
 			],
 			"source": "LOGM",
 			"page": 132,
@@ -1784,6 +1892,39 @@
 					"ng",
 					"n",
 					"cg"
+				]
+			},
+			"avatar": {
+				"airWalk": true,
+				"immune": [
+					"immobilized"
+				],
+				"speed": {
+					"walk": 70
+				},
+				"melee": [
+					{
+						"name": "thorned blossom",
+						"damage": "6d6+5",
+						"damageType": "piercing",
+						"traits": [
+							"agile",
+							"finesse",
+							"nonlethal",
+							"reach <15 feet>"
+						]
+					}
+				],
+				"ranged": [
+					{
+						"name": "ten thousand petals",
+						"damage": "6d6+3",
+						"damageType": "mental",
+						"traits": [
+							"nonlethal"
+						],
+						"range": 120
+					}
 				]
 			},
 			"category": "Vudrani Gods",
@@ -3887,8 +4028,17 @@
 			"alias": [
 				"The Roar of the Storm"
 			],
+			"hasLore": true,
+			"otherSources": {
+				"Expanded": [
+					"LOIL|313"
+				]
+			},
 			"source": "LOGM",
 			"page": 132,
+			"areasOfConcern": [
+				"children", "fertility", "wild beasts"
+			],
 			"alignment": {
 				"alignment": [
 					"n"
@@ -5144,6 +5294,43 @@
 			"alias": [
 				"The Serpent of Eighty Blades"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOIL|314"
+				]
+			},
+			"areasOfConcern": [
+				"austerity",
+				"retribution",
+				"war"
+			],
+			"avatar": {
+				"speed": {
+					"walk": 70,
+					"swim": 40,
+					"burrow": 40
+				},
+				"melee": [
+					{
+						"name": "eighty-blade war dance",
+						"traits": [
+							"forceful",
+							"versatile <P>",
+							"reach <15 feet>"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "principle of retribution",
+						"range": 120,
+						"traitNote": "damages only creatures who have previously attacked you",
+						"damage": "6d6+3"
+					}
+				]
+			},
 			"source": "LOGM",
 			"page": 132,
 			"alignment": {
@@ -6072,7 +6259,7 @@
 						"name": "longsword",
 						"traits": [
 							"reach <15 feet>",
-							"versatile piercing"
+							"versatile <piercing>"
 						],
 						"damage": "6d8+6",
 						"damageType": "slashing"
@@ -6306,7 +6493,7 @@
 					"LOKL|55"
 				]
 			},
-			"areasofConcern": [
+			"areasOfConcern": [
 				"Fangwood Forest"
 			],
 			"page": 130,
@@ -6385,8 +6572,8 @@
 						"name": "nature's wrath unbound",
 						"traits": [
 							"ranged trip",
-							"versatile piercing",
-							"versatile slashing"
+							"versatile <piercing>",
+							"versatile <slashing>"
 						],
 						"range": 60,
 						"damage": "6d6+3",
@@ -6991,7 +7178,7 @@
 					{
 						"name": "wind",
 						"traits": [
-							"versatile electricity"
+							"versatile <electricity>"
 						],
 						"range": 120,
 						"damage": "6d6+3",
@@ -8578,7 +8765,7 @@
 						"damageType": "bludgeoning",
 						"traits": [
 							"agile",
-							"versatile p or s",
+							"versatile <p or s>",
 							"finesse",
 							"reach <15 feet>"
 						]
@@ -10496,7 +10683,7 @@
 					{
 						"name": "flaming lightning",
 						"traits": [
-							"versatile fire"
+							"versatile <fire>"
 						],
 						"range": 120,
 						"damage": "6d6+3",
@@ -12048,7 +12235,7 @@
 						"name": "raw magic",
 						"range": 120,
 						"traits": [
-							"versatile cold, electricity, or fire"
+							"versatile <cold, electricity, or fire>"
 						],
 						"damage": "6d6",
 						"damageType": "force"
@@ -13330,8 +13517,10 @@
 						"name": "bastard sword",
 						"traits": [
 							"reach <15 feet>",
-							"silver",
-							"two-handed d12"
+							"two-handed <d12>"
+						],
+						"preciousMetal": [
+							"silver"
 						],
 						"damage": "5d8+6",
 						"damageType": "slashing",
@@ -16607,7 +16796,7 @@
 							"finesse",
 							"reach <15 feet>",
 							"thrown <40 feet>",
-							"versatile slashing"
+							"versatile <slashing>"
 						],
 						"damage": "5d4+6",
 						"damageType": "piercing",
@@ -16779,7 +16968,7 @@
 						"name": "holy spear",
 						"traits": [
 							"reach <20 feet>",
-							"versatile fire"
+							"versatile <fire>"
 						]
 					}
 				],

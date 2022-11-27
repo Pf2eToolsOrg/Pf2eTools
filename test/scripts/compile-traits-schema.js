@@ -46,6 +46,7 @@ function generateTraitSchema (file) {
 				};
 			}
 			schema.definitions[categoryName].enum.push(trait.name.toLowerCase());
+			(trait.alias || []).forEach(x => schema.definitions[categoryName].enum.push(x.toLowerCase()));
 			schema.definitions[categoryName].enum.sort(SortUtil.ascSort);
 		});
 
@@ -62,6 +63,12 @@ function generateTraitSchema (file) {
 			schema.definitions["variableTraits"].anyOf.push({
 				type: "string",
 				pattern: `^${trait.name.toLowerCase()} <.*>$`,
+			});
+			(trait.alias || []).forEach(x => {
+				schema.definitions["variableTraits"].anyOf.push({
+					type: "string",
+					pattern: `^${x.toLowerCase()} <.*>$`,
+				});
 			});
 		}
 	});

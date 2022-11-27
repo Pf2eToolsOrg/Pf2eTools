@@ -420,15 +420,15 @@
 									"$ref": "entry.json"
 								},
 								"minItems": 1
-							},
-							"patternProperties": {
-								"^(Minor|Moderate|Major) (Boon|Curse)$": {
-									"type": "array",
-									"items": {
-										"$ref": "entry.json"
-									},
-									"minItems": 1
-								}
+							}
+						},
+						"patternProperties": {
+							"^(Minor|Moderate|Major) (Boon|Curse)$": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								},
+								"minItems": 1
 							}
 						},
 						"additionalProperties": false
