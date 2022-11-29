@@ -4678,7 +4678,7 @@ Renderer.deity = {
 			if (notes.length > 0) renderStack.push(`, ${renderer.render(notes.join(", "))}`);
 			if (deity.avatar.shield) renderStack.push(`; shield (${deity.avatar.shield} Hardness, can't be damaged)`);
 
-			if (deity.avatar.melee || deity.avatar.ranged) {
+			if (deity.avatar.melee || deity.avatar.ranged || deity.avatar.ability) {
 				renderStack.push(`; `);
 				if (deity.avatar.melee) {
 					deity.avatar.melee.forEach((element, index, array) => {
@@ -4693,7 +4693,15 @@ Renderer.deity = {
 						renderStack.push(array.length - 1 === index ? "" : "; ");
 					});
 				}
-				renderStack.push(`.`);
+				if (deity.avatar.ability) {
+					if ((deity.avatar.ranged && Object.keys(deity.avatar.ranged).length) || (deity.avatar.melee && Object.keys(deity.avatar.melee).length)) renderStack.push(`; `);
+					deity.avatar.ability.forEach((element, index, array) => {
+						// FIXME: KILLME
+						renderStack.push(`<strong>${element.name}</strong> ${element.entries.map(a => renderer.render(a))}`);
+						renderStack.push(array.length - 1 === index ? "" : "; ");
+					});
+				}
+				if (renderStack.at(-1)?.at(-1) !== ".") renderStack.push(`.`);
 			}
 			renderStack.push(`</p>`);
 		}
@@ -4760,7 +4768,7 @@ Renderer.deity = {
 		out.push(renderer.render(attack.name))
 		if (meleeTraits.length) { out.push(renderer.render(` (${meleeTraits.join(", ")}), `)) } else out.push(" ")
 		out.push(renderer.render(`<strong>Damage</strong> {@damage ${attack.damage}} ${attack.damageType}${attack.damageType2 && attack.damage ? ` and {@damage ${attack.damage2}} ${attack.damageType2}` : ``}`))
-		if (attack.note) out.push(renderer.render(` ${attack.note}.`))
+		if (attack.note) out.push(renderer.render(` ${attack.note}`))
 		return out.join("")
 	},
 

@@ -10488,6 +10488,39 @@
 			"alias": [
 				"The Teller"
 			],
+			"avatar": {
+				"speed": {
+					"walk": 70
+				},
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "trunk",
+						"traits": [
+							"disarm", "reach <20 feet>"
+						],
+						"note": "plus grasping trunk",
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ability": [
+					{
+						"name": "Grasping Trunk",
+						"entries": [
+							"A Large or smaller creature hit by the avatar’s trunk is {@condition grabbed}. If the avatar moves, it can bring the {@condition grabbed} creature along with it."
+						]
+					}
+				]
+			},
+			"hasLore": true,
+			"otherSources": {
+				"Expanded": [
+					"LOIL|315"
+				]
+			},
 			"source": "LOGM",
 			"page": 132,
 			"alignment": {

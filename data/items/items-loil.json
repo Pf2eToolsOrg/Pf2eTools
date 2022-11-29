@@ -419,8 +419,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"interact Frequency once per hour"
+						"{@action Interact}"
 					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
 					"entries": [
 						"Smoke bellows from the censer with the effects of an obscuring mist centered on you."
 					]
@@ -721,7 +725,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"{@deity Abraxas|LOGM} reaches through your hands and creates threads to yank thoughts from the mind of another. The thoughtwhip claw casts mind probe on a creature within range, with a DC of 28."
+						"{@deity Abraxas|LOGM} reaches through your hands and creates threads to yank thoughts from the mind of another. The thoughtwhip claw casts {@spell mind probe} on a creature within range, with a DC of 28."
 					]
 				}
 			]

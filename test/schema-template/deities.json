@@ -235,6 +235,9 @@
 								"items": {
 									"$ref": "utils.json#/definitions/conditions"
 								},
+								"examples": [
+									["immobilized"]
+								],
 								"minItems": 1
 							},
 							"shield": {
@@ -254,6 +257,12 @@
 								"enum": [
 									true
 								]
+							},
+							"ability": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								}
 							},
 							"melee": {
 								"type": "array",
