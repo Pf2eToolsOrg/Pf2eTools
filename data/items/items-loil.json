@@ -203,7 +203,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "greater",
 					"level": 17,
 					"price": {
 						"amount": 2500,
@@ -211,7 +210,8 @@
 					},
 					"entries": [
 						"A creature who critically fails against this save is killed instantly. This effect has the {@trait incapacitation} trait."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -277,16 +277,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 5,
 					"price": {
 						"amount": 30,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 8,
 					"price": {
 						"amount": 85,
@@ -294,10 +293,10 @@
 					},
 					"entries": [
 						"You can add the catalyst to a {@spell vampiric touch} spell up to 5th level. In addition to the effects of lesser unsullied blood, if the amount of Hit Points that would be restored by the spell exceeds your Hit Point maximum, you gain the excess as temporary Hit Points."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 10,
 					"price": {
 						"amount": 200,
@@ -305,10 +304,10 @@
 					},
 					"entries": [
 						"As moderate, except you can add the catalyst to a {@spell vampiric touch} or {@spell vampiric maiden|APG} spell of up to 6th level."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 14,
 					"price": {
 						"amount": 900,
@@ -316,7 +315,8 @@
 					},
 					"entries": [
 						"As moderate, except you can add the catalyst to a vampiric touch, {@spell vampiric maiden|APG} or {@spell vampiric exsanguination} spell of any level."
-					]
+					],
+					"variantType": "major"
 				}
 			]
 		},
@@ -511,7 +511,9 @@
 				"If the effect normally doesn't have a DC, creatures affected by the surge or within the surge's area must attempt a DC 23 Reflex save instead. On a critical failure on any saving throw against condensed mana, the creature is {@condition stunned||stunned 1} by the wild energies of the surge.",
 				"Sometimes a wellspring surge's effects make it difficult to determine exactly who is affected. The GM makes the determination, basing it on creatures directly affected; for example, while many creatures can hear the music from the surge \"strike up the band,\" only the creature emanating the music is directly affected by it."
 			],
-			"craftReq": "You must be in or adjacent to an area of Mana Wastes miasma."
+			"craftReq": [
+				"You must be in or adjacent to an area of Mana Wastes miasma."
+			]
 		},
 		{
 			"name": "Cube of Force",
@@ -547,7 +549,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"You hold the cube aloft and depress one of its six faces for several seconds. The cube creates six walls around you, creating a cube 10 feet on each side centered on you (typically centered on the top of your space if you’re a Medium creature). If a creature or object overlaps any of these walls, that face of the cube doesn’t appear; this also means if you’re Huge or larger, the activation has no effect, as your space is larger than the cube would be. The duration and effect of the six walls depends on which face of the cube you press when you Activate the cube, as seen on Table 5: Cube Effects (below). Pressing the sixth cube face with a simple {@action Interact} action Dismisses the effect; doing so isn't an activation and thus doesn't count against the cube's frequency. The walls have the AC, Hit Points, and Hardness of a wall of force."
+						"You hold the cube aloft and depress one of its six faces for several seconds. The cube creates six walls around you, creating a cube 10 feet on each side centered on you (typically centered on the top of your space if you're a Medium creature). If a creature or object overlaps any of these walls, that face of the cube doesn't appear; this also means if you're Huge or larger, the activation has no effect, as your space is larger than the cube would be. The duration and effect of the six walls depends on which face of the cube you press when you Activate the cube, as seen on Table 5: Cube Effects (below). Pressing the sixth cube face with a simple {@action Interact} action Dismisses the effect; doing so isn't an activation and thus doesn't count against the cube's frequency. The walls have the AC, Hit Points, and Hardness of a wall of force."
 					]
 				},
 				{
@@ -568,12 +570,36 @@
 							"Duration",
 							"Effect"
 						],
-						[1, "30 minutes", "The walls keep out gas and wind, attempting to counteract such effects that cross the threshold with a +20 counteract modifier but allowing all other things through." ],
-						[2, "10 minutes", "The walls block nonliving matter from crossing; a nonliving creature must succeed at a DC 30 Will save to cross the threshold, wasting their move action on a failure, and unattended objects can’t cross. Non-magical ranged attacks can’t cross either and instead attack the wall. A living creature can bring attended objects across the walls without needing to attempt a saving throw." ],
-						[3, "10 minutes", "The walls block living matter from crossing; a living creature must succeed at a DC 30 Will save to cross the threshold, wasting their move action on a failure." ],
-						[4, "5 minutes", "The walls keep out magical effects that cross the threshold, attempting to counteract magical effects with a +20 counteract modifier, though they don’t prevent a creature with magical items or effects from entering." ],
-						[5, "1 minute", "The walls block everything, with the effects of wall of force." ],
-						[6, "—", "The cube is Dismissed (this takes only an Interact action and isn’t an activation)."]
+						[
+							1,
+							"30 minutes",
+							"The walls keep out gas and wind, attempting to counteract such effects that cross the threshold with a +20 counteract modifier but allowing all other things through."
+						],
+						[
+							2,
+							"10 minutes",
+							"The walls block nonliving matter from crossing; a nonliving creature must succeed at a DC 30 Will save to cross the threshold, wasting their move action on a failure, and unattended objects can't cross. Non-magical ranged attacks can't cross either and instead attack the wall. A living creature can bring attended objects across the walls without needing to attempt a saving throw."
+						],
+						[
+							3,
+							"10 minutes",
+							"The walls block living matter from crossing; a living creature must succeed at a DC 30 Will save to cross the threshold, wasting their move action on a failure."
+						],
+						[
+							4,
+							"5 minutes",
+							"The walls keep out magical effects that cross the threshold, attempting to counteract magical effects with a +20 counteract modifier, though they don't prevent a creature with magical items or effects from entering."
+						],
+						[
+							5,
+							"1 minute",
+							"The walls block everything, with the effects of wall of force."
+						],
+						[
+							6,
+							"\u2014",
+							"The cube is Dismissed (this takes only an Interact action and isn't an activation)."
+						]
 					]
 				}
 			]
@@ -808,7 +834,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 1,
 					"price": {
 						"amount": 3,
@@ -816,10 +841,10 @@
 					},
 					"entries": [
 						"The target takes {@damage 1d4} acid damage, 1 {@condition persistent damage ||persistent acid damage}, and 1 acid splash damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 15."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 3,
 					"price": {
 						"amount": 10,
@@ -827,10 +852,10 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The target takes {@damage 2d4} acid damage, 2 {@condition persistent damage ||persistent acid damage}, and 2 acid splash damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 17."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 11,
 					"price": {
 						"amount": 250,
@@ -838,10 +863,10 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The target takes {@damage 3d4} acid damage, 3 {@condition persistent damage ||persistent acid damage}, and 3 acid splash damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 26."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 17,
 					"price": {
 						"amount": 2500,
@@ -849,7 +874,8 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The target takes {@damage 4d4} acid damage, 4 {@condition persistent damage ||persistent acid damage}, and 4 acid splash damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 35."
-					]
+					],
+					"variantType": "major"
 				}
 			]
 		},
@@ -886,16 +912,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "oozepick",
 					"level": 4,
 					"price": {
 						"amount": 20,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "oozepick"
 				},
 				{
-					"name": "greater",
 					"level": 10,
 					"price": {
 						"amount": 200,
@@ -903,7 +928,8 @@
 					},
 					"entries": [
 						"The item bonus is +3, and the tools last for 8 hours."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
