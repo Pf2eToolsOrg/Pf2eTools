@@ -5603,6 +5603,16 @@ Array.prototype.unique = Array.prototype.unique || function (fnGetProp) {
 	});
 };
 
+/**
+ * Returns duplicates in an array, if none are found return false
+ * @param {Array} - array to check for duplicates
+ * @returns {(Array|boolean)} - array of duplicates or false if none are found
+ */
+Array.prototype.findDuplicates = Array.prototype.findDuplicates || function (fnGetProp) {
+	const array = this.map(it => it.source).filter((e, i, a) => a.indexOf(e) !== i)
+	return array.length ? array : false;
+};
+
 Array.prototype.zip = Array.prototype.zip || function (otherArray) {
 	const out = [];
 	const len = Math.max(this.length, otherArray.length);
