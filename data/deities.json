@@ -11199,6 +11199,11 @@
 			"alias": [
 				"Dowager of Illusions"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOIL|316"
+				]
+			},
 			"source": "LOGM",
 			"page": 75,
 			"alignment": {
@@ -11211,6 +11216,7 @@
 					"ne"
 				]
 			},
+			"areasOfConcern": ["death", "fate", "vanity"],
 			"category": "Queens of the Night",
 			"edicts": [
 				"become an arbiter of reality",
@@ -11251,6 +11257,22 @@
 			"divineSkill": {
 				"skills": [
 					"deception"
+				]
+			},
+			"avatar": {
+				"speed": {
+					"walk": 30,
+					"fly": 70
+				},
+				"ranged": [
+					{
+						"name": "hideous vision",
+						"range": 120,
+						"traits": ["visual"],
+						"damage": "6d6+3",
+						"damageType": "mental",
+						"note": "Automatically succeeds at all flat checks to attack a {@condition hidden} or {@condition concealed} creature"
+					}
 				]
 			},
 			"favoredWeapon": {
