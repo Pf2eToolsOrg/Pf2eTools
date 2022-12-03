@@ -148,6 +148,11 @@ class PageFilterBestiary extends PageFilter {
 			filters: [this._spelltypeFilter, this._spellDCFilter, this._highestSpellFilter, this._ritualTraditionFilter],
 		});
 
+		this._foundInFilter = new Filter({
+			header: "Found In",
+			itemSortFn: SortUtil.ascSort,
+		});
+
 		this._miscellaneousFilter = new Filter({
 			header: "Miscellaneous",
 			itemSortFn: SortUtil.ascSort,
@@ -220,6 +225,8 @@ class PageFilterBestiary extends PageFilter {
 		cr._fTraits = cr._fTraits.map(t => Parser.getTraitName(t));
 		if (!cr._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) cr._fTraits.push("Common");
 		cr._fCreatureType = cr._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Creature Type") ? t : null).filter(Boolean);
+
+		cr._fFoundIn = cr.foundIn || [];
 	}
 
 	addToFilters (cr, isExcluded) {
@@ -261,6 +268,7 @@ class PageFilterBestiary extends PageFilter {
 		if (cr._fHighestSpell > 0) this._highestSpellFilter.addItem(cr._fHighestSpell);
 		this._ritualTraditionFilter.addItem(cr._fRitualTraditions);
 
+		this._foundInFilter.addItem(cr._fFoundIn);
 		this._miscellaneousFilter.addItem(cr._fMisc);
 	}
 
@@ -276,6 +284,7 @@ class PageFilterBestiary extends PageFilter {
 			this._defenseFilter,
 			this._speedMultiFilter,
 			this._spellcastingFilter,
+			this._foundInFilter,
 			this._miscellaneousFilter,
 		];
 	}
@@ -323,6 +332,7 @@ class PageFilterBestiary extends PageFilter {
 				c._fHighestSpell,
 				c._fRitualTraditions,
 			],
+			c._fFoundIn,
 			c._fMisc,
 		);
 	}

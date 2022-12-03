@@ -7677,36 +7677,48 @@
 					"page": 464,
 					"name": "Perception",
 					"entries": [
-						"Your Perception measures your ability to notice things, search for what's hidden, and tell whether something about a situation is suspicious. This statistic is frequently used for rolling initiative to determine who goes first in an encounter, and it's also used for the {@action Seek} action .",
+						"Your Perception measures your ability to notice things, search for what's hidden, and tell whether something about a situation is suspicious. This statistic is frequently used for rolling initiative to determine who goes first in an encounter, and it's also used for the {@action Seek} action.",
 						"The rules for rolling a Perception check are found on page 448. The rules below describe the effects of light and visibility on your specific senses to perceive the world, as well as the rules for sensing and locating creatures with Perception.",
 						{
 							"type": "pf2-h3",
 							"page": 464,
 							"name": "Light",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
 								"The amount of light in an area can affect how well you see things. There are three levels of light: bright light, dim light, and darkness. The rules in this book assume that all creatures are in bright light unless otherwise noted. A source of light lists the radius in which it sheds bright light, and it sheds dim light to double that radius.",
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Bright Light",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"In bright light, such as sunlight, creatures and objects can be observed clearly by anyone with average vision or better. Some types of creatures are dazzled or blinded by bright light."
+										"In bright light, such as sunlight, creatures and objects can be observed clearly by anyone with average vision or better. Some types of creatures are {@condition dazzled} or {@condition blinded} by bright light."
 									]
 								},
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Dim Light",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"Areas in shadow or lit by weak light sources are in dim light. Creatures and objects in dim light have the {@condition concealed} condition, unless the seeker has {@ability darkvision} or {@ability low-light vision} (see Special Senses on page 465), or a precise sense other than vision."
+										"Areas in shadow or lit by weak light sources are in dim light. Creatures and objects in dim light have the {@condition concealed} condition, unless the seeker has {@ability darkvision} or {@ability low-light vision}, or a {@quickref precise sense|CRB|3|precise sense|0} other than vision."
 									]
 								},
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Darkness",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"A creature or object within darkness is hidden or undetected unless the seeker has {@ability darkvision} or a precise sense other than vision (Special Senses are on page 465). A creature without {@ability darkvision} or another means of perceiving in darkness has the blinded condition while in darkness, though it might be able to see illuminated areas beyond the darkness. If a creature can see into an illuminated area, it can observe creatures within that illuminated area normally. After being in darkness, sudden exposure to bright light might make you dazzled for a short time, as determined by the GM."
+										"A creature or object within darkness is hidden or undetected unless the seeker has {@ability darkvision} or a {@quickref precise sense|CRB|3|precise sense|0} other than vision. A creature without {@ability darkvision} or another means of perceiving in darkness has the {@condition blinded} condition while in darkness, though it might be able to see illuminated areas beyond the darkness. If a creature can see into an illuminated area, it can observe creatures within that illuminated area normally. After being in darkness, sudden exposure to bright light might make you {@condition dazzled} for a short time, as determined by the GM."
 									]
 								}
 							]
@@ -7715,12 +7727,18 @@
 							"type": "pf2-h3",
 							"page": 464,
 							"name": "Senses",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
 								"The ways a creature can use {@skill Perception} depend on what senses it has. The primary concepts you need to know for understanding senses are precise senses, imprecise senses, and the three states of detection a target can be in: observed, hidden, or undetected. Vision, hearing, and scent are three prominent senses, but they don't have the same degree of acuity.",
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Precise Senses",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
 										"Average vision is a precise sense\u2014a sense that can be used to perceive the world in nuanced detail. The only way to target a creature without having drawbacks is to use a precise sense. You can usually detect a creature automatically with a precise sense unless that creature is hiding or obscured by the environment, in which case you can use the Seek basic action to better detect the creature."
 									]
@@ -7729,18 +7747,24 @@
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Imprecise Senses",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"Hearing is an imprecise sense\u2014it cannot detect the full range of detail that a precise sense can. You can usually sense a creature automatically with an imprecise sense, but it has the hidden condition instead of the observed condition. It might be undetected by you if it's using {@skill Stealth} or is in an environment that distorts the sense, such as a noisy room in the case of hearing. In those cases, you have to use the Seek basic action to detect the creature. At best, an imprecise sense can be used to make an undetected creature (or one you didn't even know was there) merely hidden\u2014it can't make the creature observed."
+										"Hearing is an imprecise sense\u2014it cannot detect the full range of detail that a {@quickref precise sense|CRB|3|precise sense|0} can. You can usually sense a creature automatically with an imprecise sense, but it has the {@condition hidden} condition instead of the {@condition observed} condition. It might be {@condition undetected} by you if it's using {@skill Stealth} or is in an environment that distorts the sense, such as a noisy room in the case of hearing. In those cases, you have to use the {@action Seek} basic action to detect the creature. At best, an imprecise sense can be used to make an {@condition undetected} creature (or one you didn't even know was there) merely {@condition hidden}\u2014it can't make the creature {@condition observed}."
 									]
 								},
 								{
 									"type": "pf2-h4",
 									"page": 465,
 									"name": "Vague Senses",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"A character also has many vague senses\u2014ones that can alert you that something is there but aren't useful for zeroing in on it to determine exactly what it is. The most useful of these for a typical character is the sense of smell. At best, a vague sense can be used to detect the presence of an unnoticed creature, making it undetected. Even then, the vague sense isn't sufficient to make the creature hidden or observed.",
-										"When one creature might detect another, the GM almost always uses the most precise sense available.",
-										"Pathfinder's rules assume that a given creature has vision as its only precise sense and hearing as its only imprecise sense. Some characters and creatures, however, have precise or imprecise senses that don't match this assumption. For instance, a character with poor vision might treat that sense as imprecise, an animal with the {@ability scent} ability can use its sense of smell as an imprecise sense, and a creature with echolocation or a similar ability can use hearing as a precise sense. Such senses are often given special names and appear as \"echolocation (precise),\" \"scent (imprecise) 30 feet,\" or the like."
+										"A character also has many vague senses\u2014ones that can alert you that something is there but aren't useful for zeroing in on it to determine exactly what it is. The most useful of these for a typical character is the sense of smell. At best, a vague sense can be used to detect the presence of an {@condition unnoticed} creature, making it {@condition undetected}. Even then, the vague sense isn't sufficient to make the creature {@condition hidden} or {@condition observed}.",
+										"When one creature might detect another, the GM almost always uses the most {@quickref precise sense|CRB|3|precise sense|0} available.",
+										"Pathfinder's rules assume that a given creature has vision as its only {@quickref precise sense|CRB|3|precise sense|0} and hearing as its only {@quickref imprecise sense|CRB|3|imprecise sense|0}. Some characters and creatures, however, have {@quickref precise|CRB|3|precise sense|0} or {@quickref imprecise senses|CRB|3|imprecise sense|0} that don't match this assumption. For instance, a character with poor vision might treat that sense as {@quickref imprecise|CRB|3|imprecise sense|0}, an animal with the {@ability scent} ability can use its sense of smell as an {@quickref imprecise sense|CRB|3|imprecise sense|0}, and a creature with echolocation or a similar ability can use hearing as a {@quickref precise|CRB|3|precise sense|0} sense. Such senses are often given special names and appear as \"echolocation (precise),\" \"scent (imprecise) 30 feet,\" or the like."
 									]
 								}
 							]
@@ -7749,9 +7773,12 @@
 							"type": "pf2-h3",
 							"page": 465,
 							"name": "Special Senses",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
 								"While a human might have a difficult time making creatures out in dim light, an elf can see those creatures just fine. And though elves have no problem seeing on a moonlit night, their vision cannot penetrate complete darkness, whereas a dwarf's can.",
-								"Special senses grant greater awareness that allows a creature with these senses to either ignore or reduce the effects of the undetected, hidden, or concealed conditions (described in Detecting Creatures below) when it comes to situations that foil average vision. The following are a few examples of common special senses.",
+								"Special senses grant greater awareness that allows a creature with these senses to either ignore or reduce the effects of the undetected, hidden, or concealed conditions (described in {@quickref Detecting Creatures|CRB|3|Detecting Creatures|0} below) when it comes to situations that foil average vision. The following are a few examples of common special senses.",
 								{
 									"type": "pf2-h4",
 									"page": 465,
@@ -7805,17 +7832,20 @@
 							"type": "pf2-h3",
 							"page": 465,
 							"name": "Detecting Creatures",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
-								"There are three conditions that measure the degree to which you can sense a creature: observed, hidden, and undetected. However, the concealed and invisible conditions can partially mask a creature, and the unnoticed condition indicates you have no idea a creature is around. In addition to the descriptions here, you can find these conditions in the Conditions Appendix on pages 618\u2013623.",
+								"There are three conditions that measure the degree to which you can sense a creature: observed, hidden, and undetected. However, the concealed and invisible conditions can partially mask a creature, and the unnoticed condition indicates you have no idea a creature is around. In addition to the descriptions here, you can find these conditions in the {@pf2etools Conditions|conditions.html} page.",
 								"With the exception of {@condition invisible}, these conditions are relative to the viewer\u2014it's possible for a creature to be observed to you but hidden from your ally. When you're trying to target a creature that's hard to see or otherwise sense, various drawbacks apply. Most of these rules apply to objects you're trying to detect as well as creatures.",
 								"Typically, the GM tracks how well creatures detect each other, since neither party has perfect information. For example, you might think a creature is in the last place you sensed it, but it was able to Sneak away. Or you might think a creature can't see you in the dark, but it has {@ability darkvision}.",
-								"You can attempt to avoid detection by using the {@skill Stealth} skill (page 251) to Avoid Notice, Hide, or Sneak, or by using {@skill Deception} to Create a Diversion (page 245).",
+								"You can attempt to avoid detection by using the {@skill Stealth} skill to {@action Avoid Notice}, {@action Hide}, or {@action Sneak}, or by using {@skill Deception} to {@action Create a Diversion}.",
 								{
 									"type": "pf2-h4",
 									"page": 466,
 									"name": "Observed",
 									"entries": [
-										"In most circumstances, you can sense creatures without difficulty and target them normally. Creatures in this state are observed. Observing requires a precise sense, which for most creatures means sight, but see the Detecting with Other Senses sidebar (page 465) for advice regarding creatures that don't use sight as their primary sense. If you can't observe the creature, it's either hidden, undetected, or unnoticed, and you'll need to factor in the targeting restrictions. Even if a creature is observed, it might still be concealed."
+										"In most circumstances, you can sense creatures without difficulty and target them normally. Creatures in this state are observed. Observing requires a precise sense, which for most creatures means sight, but see the Detecting with Other Senses sidebar for advice regarding creatures that don't use sight as their primary sense. If you can't observe the creature, it's either {@condition hidden}, {@condition undetected}, or {@condition unnoticed}, and you'll need to factor in the targeting restrictions. Even if a creature is {@condition observed}, it might still be {@condition concealed}."
 									]
 								},
 								{

@@ -1925,22 +1925,47 @@
 					"minProperties": 1
 				},
 				"hp": {
-					"description": "Hit Points",
-					"type": "object",
-					"properties": {
-						"std": {
-							"type": "integer",
-							"exclusiveMinimum": 0
+					"oneOf": [
+						{
+							"description": "Hit Points",
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								}
+							},
+							"patternProperties": {
+								"^.+$": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								}
+							},
+							"additionalProperties": false,
+							"minProperties": 1
+						},
+						{
+							"type": "array",
+							"items": {
+								"description": "Hit Points",
+								"type": "object",
+								"properties": {
+									"std": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"patternProperties": {
+									"^.+$": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false,
+								"minProperties": 1
+							}
 						}
-					},
-					"patternProperties": {
-						"^.+$": {
-							"type": "integer",
-							"exclusiveMinimum": 0
-						}
-					},
-					"additionalProperties": false,
-					"minProperties": 1
+					]
 				},
 				"bt": {
 					"description": "Broken Threshold",
