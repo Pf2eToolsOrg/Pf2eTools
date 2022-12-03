@@ -24,6 +24,7 @@ function generatesourceschema (file) {
 	const sources = sourcesFile.source;
 
 	const sourceList = sources.filter(s => !s.unreleased).map(s => s.source);
+	if (sourceList.findDuplicates()) throw new Error(`Duplicate source: ${sourceList.findDuplicates()}!`);
 	schema.definitions.sourceList.enum = sourceList.sort();
 
 	// Write it all.

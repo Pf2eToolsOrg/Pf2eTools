@@ -7,8 +7,9 @@ const VERSION_MARKER_END = "/* PF2ETOOLS_SOURCE__CLOSE */";
 const VERSION_REPLACE_REGEXP = new RegExp(`${VERSION_MARKER_START.escapeRegexp()}((.|\n|\r)*)${VERSION_MARKER_END.escapeRegexp()}`, "g");
 
 async function main () {
-	const sources = JSON.parse(fs.readFileSync("data/sources.json", "utf-8")).source;
-	if (sources.findDuplicates()) throw new Error(`Duplicate source: ${sources.findDuplicates()}!`);
+	const sourceFile = JSON.parse(fs.readFileSync("data/sources.json", "utf-8"));
+	const sources = sourceFile.source
+	if (sources.map(x => x.source).findDuplicates()) throw new Error(`Duplicate source: ${sources.map(x => x.source).findDuplicates()}!`);
 	const SRC = sources.map(it => `SRC_${it.source} = "${it.source}"`);
 	const SOURCE_JSON_TO_FULL = sources.map(it => `Parser.SOURCE_JSON_TO_FULL[SRC_${it.source}] = "${it.name}"`);
 	const SOURCE_JSON_TO_ABV = sources.map(it => `Parser.SOURCE_JSON_TO_ABV[SRC_${it.source}] = "${it.source}"`);

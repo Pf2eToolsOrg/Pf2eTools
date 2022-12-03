@@ -24,7 +24,7 @@ const schemaTemplate = {
 function generateTraitSchema (file) {
 	const traitsFile = ut.readJson("./data/traits.json");
 	const traits = traitsFile.trait;
-	if (traits.findDuplicates()) throw new Error(`Duplicate trait: ${traits.findDuplicates()}!`);
+	if (traits.map(it => it.name).findDuplicates()) throw new Error(`Duplicate trait: ${traits.map(it => it.name).findDuplicates()}!`);
 	let schema = schemaTemplate;
 
 	// For each trait, add it to the schema.
