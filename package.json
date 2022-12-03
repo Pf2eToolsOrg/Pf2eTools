@@ -30,7 +30,7 @@
 		"build:seo": "node node/generate-seo.js",
 		"build:sw": "node node/build-sw.mjs",
 		"build:sw:prod": "node node/build-sw.mjs prod",
-		"build:sources": "node node/update-sources.js",
+		"build:sources": "npm run build:schema:sources && node node/update-sources.js",
 		"build:schema": "npm run build:schema:traits && npm run build:schema:languages && npm run build:schema:sources",
 		"build:schema:traits": "node test/scripts/compile-traits-schema.js",
 		"build:schema:languages": "node test/scripts/compile-languages-schema.js",
