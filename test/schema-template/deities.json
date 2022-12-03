@@ -309,42 +309,18 @@
 									"additionalProperties": false,
 									"minProperties": 1
 								},
-								"properties": {
-									"name": {
-										"type": "string"
-									},
-									"traits": {
-										"type": "array",
-										"items": {
-											"$ref": "utils.json#/definitions/anyTrait"
-										},
-										"minItems": 1
-									},
-									"damage": {
-										"type": "string"
-									},
-									"damageType": {
-										"type": "string",
-										"$ref": "utils.json#/definitions/damageType"
-									},
-									"damage2": {
-										"type": "string"
-									},
-									"preciousMetal": {
-										"type": "array",
-										"minItems": 1
-									},
-									"traitNote": {
-										"type": "string"
-									},
-									"note": {
-										"type": "string"
-									},
-									"damageType2": {
-										"type": "string",
-										"$ref": "utils.json#/definitions/damageType"
-									}
-								},
+								"examples": [
+									[
+										{
+											"name": "",
+											"traits": [
+												""
+											],
+											"damage": "",
+											"damageType": ""
+										}
+									]
+								],
 								"additionalProperties": false,
 								"minProperties": 1
 							},
@@ -408,6 +384,19 @@
 										}
 									}
 								},
+								"examples": [
+									[
+										{
+											"name": "",
+											"range": 120,
+											"traits": [
+												""
+											],
+											"damage": "",
+											"damageType": ""
+										}
+									]
+								],
 								"additionalProperties": false,
 								"minProperties": 1
 							}

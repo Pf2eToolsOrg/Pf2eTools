@@ -1,6 +1,200 @@
 {
 	"deity": [
 		{
+			"name": "Vineshvakhi",
+			"category": "Other Gods",
+			"alias": [
+				"The Pain of Purity"
+			],
+			"source": "LOIL",
+			"page": 319,
+			"areasOfConcern": [
+				"guardians", "locks", "sacrifice", "vaults"
+			],
+			"alignment": {
+				"alignment": [
+					"ln"
+				],
+				"followerAlignment": [
+					"lg",
+					"ln"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"wisdom"
+				]
+			},
+			"divineSkill": {
+				"skills": [
+					"intimidation"
+				]
+			},
+			"domains": [
+				"duty",
+				"lightning",
+				"pain",
+				"protection"
+			],
+			"alternateDomains": [
+				"change",
+				"knowledge", "secrecy"
+			],
+			"spells": {
+				"1": [
+					"mage armor"
+				],
+				"2": [
+					"enlarge"
+				],
+				"6": [
+					"chain lightning"
+				]
+			},
+			"edicts": [
+				"protect holy people, places, and treasures","sacrifice common comforts and mortal joys for the sake of your charge"
+			],
+			"anathema": [
+				"abandon your post", "fail to protect your charge", "willingly suffer corruption over death or grievous harm"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"longsword"
+				]
+			},
+			"avatar": {
+				"speed": {
+					"walk": 70
+				},
+				"airWalk": true,
+				"shield": 15,
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "longsword",
+						"traits": [
+							"reach <15 feet>",
+							"versatile <P>"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Ravithra",
+			"category": "Other Gods",
+			"alias": [
+				"The Mother of Nagas",
+				"The Chalice-Bearer"
+			],
+			"otherSources": {
+				"Expanded": [
+					"LOIL|318"
+				]
+			},
+			"source": "AoE5",
+			"page": 71,
+			"areasOfConcern": [
+				"judgment", "karma", "law", "vengeance"
+			],
+			"alignment": {
+				"alignment": [
+					"ln"
+				],
+				"followerAlignment": [
+					"lg",
+					"ln",
+					"le",
+					"n"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineAbility": {
+				"abilities": [
+					"intelligence",
+					"wisdom"
+				]
+			},
+			"edicts": [
+				"enforce karma’s pitiless judgment", "shame fools", "kill traitors", "pursue the Chalice of Amrit"
+			],
+			"anathema": [
+				"make decisions erratically or randomly", "provide aid to Vasaghati or her followers", "engage in treachery"
+			],
+			"alternateDomains": [
+				"ambition", "souls"
+			],
+			"domains": [
+				"fate", "naga",
+				"sorrow",
+				"truth"
+			],
+			"spells": {
+				"1": [
+					"charm"
+				],
+				"2": [
+					"animal form (snake only)"
+				],
+				"4": [
+					"clairvoyance"
+				]
+			},
+			"divineSkill": {
+				"skills": [
+					"occultism"
+				]
+			},
+			"favoredWeapon": {
+				"weapons": [
+					"jaws",
+					"light mace"
+				],
+				"entry": "jaws or {@item light mace}"
+			},
+			"avatar": {
+				"speed": {
+					"walk": 50
+				},
+				"ignoreTerrain": true,
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "jaws",
+						"traits": [
+							"reach <15 feet>"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					},
+					{
+						"name": "tail swipe",
+						"traits": [
+							"disarm",
+							"trip",
+							"reach <15 feet>"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
 			"name": "Aakriti",
 			"alias": [
 				"The Evershifting"
@@ -13637,6 +13831,12 @@
 			"alias": [
 				"The Sage on the Mountain"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOIL|317"
+				]
+			},
+			"areasOfConcern": ["humor", "lessons", "monkeys"],
 			"source": "LOGM",
 			"page": 132,
 			"alignment": {
@@ -13648,6 +13848,35 @@
 					"ng",
 					"n",
 					"cn"
+				]
+			},
+			"alternateDomains": ["family"],
+			"hasLore": true,
+			"avatar": {
+				"speed": {
+					"walk": 70,
+					"climb": 50
+				},
+				"immune": [
+					"immobilized"
+				],
+				"melee": [{
+					"name": "gada",
+					"traits": [
+						"reach <15 feet>"
+					],
+					"damage": "6d10+6",
+					"damageType": "bludgeoning"
+				}],
+				"ranged": [
+					{
+						"name": "mountain gust",
+						"range": 120,
+						"traits": ["air"],
+						"damage": "6d4+3",
+						"damageType": "bludgeoning"
+						,"note": "plus pushed 5 feet in any direction"
+					}
 				]
 			},
 			"category": "Vudrani Gods",
