@@ -93,6 +93,11 @@
 						"description": "Causes the item to not be generated in generic variants under the assumption it already exists (like in \"baseitems\").",
 						"type": "boolean"
 					},
+					"genericItem": {
+						"title": "Generic Item",
+						"description": "Often generated, soemtimes manually added. Refers to the \"original\" item that this item is a variant of.",
+						"type": "string"
+					},
 					"type": {
 						"type": "string",
 						"title": "Item Type",
@@ -174,6 +179,7 @@
 							"Contract",
 							"Customization",
 							"Curse",
+							"Grimoire",
 							"Elixir",
 							"Adventuring Gear",
 							"Grimore",
@@ -363,6 +369,12 @@
 				"damageType": {
 					"$ref": "utils.json#/definitions/damageTypeTags"
 				},
+				"damage2": {
+					"type": "string"
+				},
+				"damageType2": {
+					"$ref": "utils.json#/definitions/damageTypeTags"
+				},
 				"reload": {
 					"anyOf": [
 						{
@@ -411,9 +423,7 @@
 				"group",
 				"ac",
 				"dexCap",
-				"str",
-				"checkPen",
-				"speedPen"
+				"checkPen"
 			],
 			"properties": {
 				"group": {

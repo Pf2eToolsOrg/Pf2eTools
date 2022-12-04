@@ -1,7 +1,7 @@
 {
 	"name": "pf2etools",
 	"author": "Pf2eTools",
-	"version": "0.7.4",
+	"version": "0.7.5",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -16,7 +16,8 @@
 		"test": "npm run test:js && npm run test:styles && npm run test:data",
 		"test:styles": "stylelint scss/*.scss scss/includes/*.scss",
 		"test:data": "node test/test-all.js",
-		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw:prod && npm run build:schema",
+		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:schema && npm run build:sw:prod",
+		"build-no-sw": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:schema && del-cli sw.js",
 		"build:css": "npm run build:css:main && npm run build:css:classes && npm run build:css:misc && npm run build:css:search",
 		"build:css:main": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
 		"build:css:classes": "node-sass --source-map=true --output-style=compressed scss/classes.scss css/classes.css && postcss ./css/classes.css --use autoprefixer -r",
@@ -29,7 +30,7 @@
 		"build:seo": "node node/generate-seo.js",
 		"build:sw": "node node/build-sw.mjs",
 		"build:sw:prod": "node node/build-sw.mjs prod",
-		"build:sources": "node node/update-sources.js",
+		"build:sources": "npm run build:schema:sources && node node/update-sources.js",
 		"build:schema": "npm run build:schema:traits && npm run build:schema:languages && npm run build:schema:sources",
 		"build:schema:traits": "node test/scripts/compile-traits-schema.js",
 		"build:schema:languages": "node test/scripts/compile-languages-schema.js",
@@ -43,6 +44,7 @@
 	},
 	"devDependencies": {
 		"ajv": "^8.6.0",
+		"del-cli": "^5.0.0",
 		"esbuild": "^0.14.38",
 		"eslint": "^8.20.0",
 		"http-server": "^14.1.0",

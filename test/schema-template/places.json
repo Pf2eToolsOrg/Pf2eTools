@@ -385,38 +385,42 @@
 					}
 				},
 				"additionalProperties": false,
-				"if": {
-					"properties": {
-						"category": {
-							"const": "Plane"
-						}
+				"oneOf": [
+					{
+						"properties": {
+							"category": {
+								"const": "Mindscape"
+							}
+						},
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"entries"
+						]
 					},
-					"required": [
-						"category"
-					]
-				},
-				"then": {
-					"required": [
-						"source",
-						"name",
-						"category",
-						"page",
-						"planeData",
-						"entries"
-					]
-				},
-				"else": {
-					"if": {
+					{
+						"properties": {
+							"category": {
+								"const": "Plane"
+							}
+						},
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"planeData",
+							"entries"
+						]
+					},
+					{
 						"properties": {
 							"category": {
 								"const": "Settlement"
 							}
 						},
-						"required": [
-							"category"
-						]
-					},
-					"then": {
 						"required": [
 							"source",
 							"name",
@@ -426,7 +430,12 @@
 							"residents"
 						]
 					},
-					"else": {
+					{
+						"properties": {
+							"category": {
+								"const": "Nation"
+							}
+						},
 						"required": [
 							"source",
 							"name",
@@ -436,7 +445,10 @@
 							"residents"
 						]
 					}
-				}
+				],
+				"required": [
+					"category"
+				]
 			},
 			"uniqueItems": true
 		}

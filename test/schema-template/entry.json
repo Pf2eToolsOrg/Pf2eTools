@@ -5,6 +5,46 @@
 	"description": "A recursively renderable object.",
 	"version": "1.5.3",
 	"definitions": {
+		"reference": {
+			"$comment": "Add the source requirement to the schema if reference is true.",
+			"description": "Adds a reference string to the entry. Requires a source.",
+			"type": "object",
+			"examples": [
+				{
+					"auto": true
+				}
+			],
+			"properties": {
+				"auto": {
+					"description": "The hopefully working automatic setting.",
+					"type": "boolean",
+					"const": true
+				},
+				"note": {
+					"description": "Custom note to insert.",
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"index": {
+					"description": "Index at which it should insert the reference, starts from 0.",
+					"type": "integer"
+				}
+			},
+			"oneOf": [
+				{
+					"required": [
+						"auto"
+					]
+				},
+				{
+					"required": [
+						"index"
+					]
+				}
+			]
+		},
 		"_arrayOfSpell": {
 			"type": "array",
 			"uniqueItems": true,
@@ -120,29 +160,6 @@
 							},
 							"minItems": 1
 						},
-						"reference": {
-							"$comment": "Add the source requirement to the schema if reference is true.",
-							"description": "Adds a reference string to the entry. Requires a source.",
-							"type": "object",
-							"properties": {
-								"auto": {
-									"description": "The hopefully working automatic setting.",
-									"type": "boolean",
-									"const": true
-								},
-								"note": {
-									"description": "Custom note to insert.",
-									"type": "array",
-									"items": {
-										"$ref": "#"
-									}
-								},
-								"index": {
-									"description": "Index at which it should insert the reference, starts from 0.",
-									"type": "integer"
-								}
-							}
-						},
 						"data": {
 							"type": "object"
 						},
@@ -150,7 +167,8 @@
 							"type": "integer"
 						},
 						"source": {
-							"type": "string"
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
 						},
 						"id": {
 							"type": "string"
@@ -197,7 +215,8 @@
 							"type": "integer"
 						},
 						"source": {
-							"type": "string"
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
 						},
 						"id": {
 							"type": "string"
@@ -265,6 +284,9 @@
 							},
 							"minItems": 1
 						},
+						"reference": {
+							"$ref": "#/definitions/reference"
+						},
 						"level": {
 							"type": "integer"
 						},
@@ -275,7 +297,8 @@
 							"type": "integer"
 						},
 						"source": {
-							"type": "string"
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
 						},
 						"id": {
 							"type": "string"
@@ -284,8 +307,29 @@
 							"type": "boolean"
 						}
 					},
-					"required": [
-						"entries"
+					"oneOf": [
+						{
+							"required": [
+								"reference",
+								"source",
+								"entries"
+							]
+						},
+						{
+							"oneOf": [
+								{
+									"required": [
+										"reference",
+										"source"
+									]
+								},
+								{
+									"required": [
+										"entries"
+									]
+								}
+							]
+						}
 					],
 					"additionalProperties": false
 				}
@@ -328,7 +372,8 @@
 							"type": "integer"
 						},
 						"source": {
-							"type": "string"
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
 						},
 						"id": {
 							"type": "string"
@@ -363,8 +408,12 @@
 							},
 							"minItems": 1
 						},
+						"reference": {
+							"$ref": "#/definitions/reference"
+						},
 						"source": {
-							"type": "string"
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
 						},
 						"page": {
 							"type": "integer"
@@ -1020,6 +1069,15 @@
 									"name": {
 										"type": "string"
 									},
+									"traits": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/anyTrait"
+										},
+										"minItems": 1,
+										"uniqueItems": true
+									},
 									"entries": {
 										"type": "array",
 										"items": {
@@ -1482,7 +1540,8 @@
 							"type": "integer"
 						},
 						"source": {
-							"type": "string"
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
 						},
 						"id": {
 							"type": "string"
@@ -2446,9 +2505,6 @@
 			"$ref": "#/definitions/entryQuote"
 		},
 		{
-			"$ref": "#/definitions/entryPF2-hx"
-		},
-		{
 			"$ref": "#/definitions/entryPF2-title"
 		},
 		{
@@ -2600,6 +2656,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryWrapped"
+		},
+		{
+			"$ref": "#/definitions/entryPF2-hx"
 		},
 		{
 			"type": "string"

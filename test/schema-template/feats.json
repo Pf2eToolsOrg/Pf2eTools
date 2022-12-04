@@ -70,11 +70,21 @@
 								"const": true
 							},
 							"ancestry": {
-								"type": [
-									"string",
-									"array"
-								],
-								"$ref": "utils.json#/definitions/ancestryName"
+								"type": "array",
+								"oneOf": [
+									{
+										"items": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/ancestryName"
+										}
+									},
+									{
+										"items": {
+											"type": "string",
+											"const": "any"
+										}
+									}
+								]
 							},
 							"skill": {
 								"not": {

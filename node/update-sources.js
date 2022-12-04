@@ -7,7 +7,9 @@ const VERSION_MARKER_END = "/* PF2ETOOLS_SOURCE__CLOSE */";
 const VERSION_REPLACE_REGEXP = new RegExp(`${VERSION_MARKER_START.escapeRegexp()}((.|\n|\r)*)${VERSION_MARKER_END.escapeRegexp()}`, "g");
 
 async function main () {
-	const sources = JSON.parse(fs.readFileSync("data/sources.json", "utf-8")).source;
+	const sourceFile = JSON.parse(fs.readFileSync("data/sources.json", "utf-8"));
+	const sources = sourceFile.source
+	if (sources.map(x => x.source).findDuplicates()) throw new Error(`Duplicate source: ${sources.map(x => x.source).findDuplicates()}!`);
 	const SRC = sources.map(it => `SRC_${it.source} = "${it.source}"`);
 	const SOURCE_JSON_TO_FULL = sources.map(it => `Parser.SOURCE_JSON_TO_FULL[SRC_${it.source}] = "${it.name}"`);
 	const SOURCE_JSON_TO_ABV = sources.map(it => `Parser.SOURCE_JSON_TO_ABV[SRC_${it.source}] = "${it.source}"`);
@@ -37,7 +39,9 @@ async function main () {
 		`${JSON.stringify(sources.filter(it => it.adventure).map(it => `SRC_${it.source}`))}.forEach(src => { Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src; Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src; });`.replace(/"(SRC.+?)"(,|)/g, "$1$2 "),
 	]
 
-	const combined = [...SRC, ...SOURCE_JSON_TO_FULL, ...SOURCE_JSON_TO_ABV, ...SOURCE_JSON_TO_DATE, ...SOURCE_JSON_TO_STORE, ...SOURCES_ADVENTURES, ...SOURCES_VANILLA, ...TAG_TO_DEFAULT_SOURCE, ...SOURCES_AVAILABLE_DOCS_BOOK, ...SOURCES_AVAILABLE_DOCS_ADVENTURE].map(x => x.replace("&", "n").replace("\"undefined\"", "undefined")).join("\n")
+	const SOURCES_ACCESSORIES = [`Parser.SOURCES_ACCESSORIES = new Set(${sources.filter(it => it.accessory).map(it => `SRC_${it.source}`).join(", ")})`]
+
+	const combined = [...SRC, ...SOURCE_JSON_TO_FULL, ...SOURCE_JSON_TO_ABV, ...SOURCE_JSON_TO_DATE, ...SOURCE_JSON_TO_STORE, ...SOURCES_ADVENTURES, ...SOURCES_VANILLA, ...TAG_TO_DEFAULT_SOURCE, ...SOURCES_AVAILABLE_DOCS_BOOK, ...SOURCES_AVAILABLE_DOCS_ADVENTURE, ...SOURCES_ACCESSORIES].map(x => x.replace("G&G", "GnG").replace("\"undefined\"", "undefined")).join("\n")
 
 	const combinedWithMarkers = `${VERSION_MARKER_START}\n${combined}\n${VERSION_MARKER_END}`
 
