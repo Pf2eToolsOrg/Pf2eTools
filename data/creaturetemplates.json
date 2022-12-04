@@ -1,6 +1,182 @@
 {
 	"creatureTemplate": [
 		{
+			"name": "Mana Wastes Mutant",
+			"type": "Template",
+			"hasLore": true,
+			"source": "LOIL",
+			"page": 332,
+			"entries": [
+				"All Mana Wastes mutants gain {@ability darkvision} (replacing {@ability low-light vision} if the creature had it), and the DC to {@action Recall Knowledge} about a mutant increases by 2. The creature gains the {@trait mutant} trait. They usually have one or two of the following abilities, or potentially three if the mutant is 9th level or higher. If you apply these abilities to an existing creature, either raise the level and adjust the statistics, or remove some of the creature's abilities to make room for the new abilities. More Mana Wastes mutant abilities and creatures are on pages 84\u201385 of Pathfinder Adventure Path #179: Cradle of Quartz."
+			],
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Mana Wastes Mutant Abilities",
+						"entries": [
+							"Select two of the following abilities, or potentially three if the Mana Wastes mutant is 9th level or higher. These abilities should relate to the manner that the base creature used magic in life or to the nature of the wild magic that caused their mutation. You can also create new abilities or adapt others from monsters or classes to fit the theme."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Caustic Pustules",
+						"entries": [
+							"Whenever the mutant takes piercing or slashing damage, creatures adjacent to the mutant take {@damage 1d6} acid damage (basic Reflex save). The damage increases to {@dice 2d6} if the mutant is at least 8th level and {@dice 3d6} if the mutant is at least 15th level."
+						]
+					},
+					{
+						"name": "Chameleon Skin",
+						"entries": [
+							"The mutant can change their coloration to match their surroundings.",
+							"They don't need cover or concealment to attempt to {@action Hide} with a {@skill Stealth} check."
+						]
+					},
+					{
+						"name": "Eldritch Attraction",
+						"traits": [
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"A creature who casts a spell within 30 feet of the mutant must succeed at a Will save or spend its next action to {@action Stride} toward the mutant. It can't {@action Delay} or take any reactions until it has obeyed the compulsion."
+						]
+					},
+					{
+						"name": "Energy Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"primal"
+						],
+						"entries": [
+							"Choose an energy type; this ability gains that energy type as {@trait a} trait. The mutant gains some sort of physical alteration to their shape that suggests how they trigger their energy blast, be it numerous pustules on their body, an extra limb, or an additional opening in their throat to exhale the blast as a breath weapon. Choose whether the mutant creates a 60-foot line of energy or a 30-foot cone of energy when they activate this ability. The energy deals {@dice 1d6} damage per level with a basic Reflex save. The mutant can't use Energy Blast again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Energy Resistance",
+						"entries": [
+							"The mutant has strangely colored skin or fur and gains resistance to a single type of energy damage. The amount of energy resistance gained depends on the mutant's level.",
+							{
+								"type": "table",
+								"caption": "Energy Resistance",
+								"colLabels": [
+									"Mutant's Level",
+									"Energy Resistance"
+								],
+								"colStyles": [
+									"col-2 text-center",
+									"col-10 text-center"
+								],
+								"rows": [
+									[
+										"2 or lower",
+										"2"
+									],
+									[
+										"3\u20137",
+										"5"
+									],
+									[
+										"8\u201314",
+										"10"
+									],
+									[
+										"15+",
+										"15"
+									]
+								]
+							}
+						]
+					},
+					{
+						"name": "Grasping Tentacle",
+						"entries": [
+							"The mutant grows a writhing, serpentine appendage, granting them a tentacle {@action Strike} (an agile unarmed attack that deals bludgeoning damage), and the Grab ability with that {@action Strike}. If they had any agile attacks, the damage dealt by their tentacle should be roughly the same as the damage dealt by those attacks. If they had only non-agile attacks, their tentacle should deal three-quarters that damage."
+						]
+					},
+					{
+						"name": "Hulking Form",
+						"entries": [
+							"Increase the mutant's size by one category. Decrease their AC by 1, increase their HP by 1/10 their normal maximum HP, and increase the reach of all their melee Strikes by 5 feet."
+						]
+					},
+					{
+						"name": "Hungry Maw",
+						"entries": [
+							"A mouth full of razor-sharp teeth opens somewhere on the mutant's body. They gain a maw {@action Strike} (an unarmed attack that does piercing damage roughly the same as the damage dealt by their most damaging melee attack), and they gain the Vengeful Bite reaction."
+						]
+					},
+					{
+						"name": "Vengeful Bite",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature critically hits the mutant with a melee unarmed {@action Strike} or a non-reach melee {@action Strike}",
+						"entries": [
+							"The mutant makes a maw {@action Strike} against the triggering creature."
+						]
+					},
+					{
+						"name": "Increased Speed",
+						"entries": [
+							"The mutant's limbs change, or they grow new limbs to accommodate their mutation. Either one of their existing Speeds increases by 20 feet or they gain a new Speed (such as fly or swim) of 15 feet."
+						]
+					},
+					{
+						"name": "Magic Hunger",
+						"entries": [
+							"The mutant gains the ability to detect the source of any magic within 30 feet as an imprecise sense."
+						]
+					},
+					{
+						"name": "Mirror Thing",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The mutant takes on the specific appearance of any Small or Medium humanoid they can currently see. This doesn't alter their statistics, but it might change the damage type of their Strikes."
+						]
+					},
+					{
+						"name": "Revolting Appearance",
+						"traits": [
+							"arcane",
+							"aura",
+							"visual"
+						],
+						"entries": [
+							"Details of the mutant's appearance are disturbing and unnatural in the extreme. A non-mutant living creature who begins their turn within 60 feet of the mutant must succeed at a Fortitude save or become {@condition sickened||sickened 2}. A creature who succeeds at its save is then temporarily immune to the aura for 24 hours."
+						]
+					},
+					{
+						"name": "Sprouted Limb",
+						"entries": [
+							"The mutant grows an extra leg, increasing their Speed by 10 feet."
+						]
+					},
+					{
+						"name": "Too Many Eyes",
+						"entries": [
+							"Countless eyes sprout on the mutant's skin. They gain all-around vision."
+						]
+					}
+				]
+			}
+		},
+		{
 			"name": "Secret Society Member",
 			"type": "Adjustment",
 			"hasLore": true,
@@ -2751,9 +2927,9 @@
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The creature is unaffected by the presence.",
-									"Success": "The creature is {@condition frightened} 1.",
-									"Failure": "The creature is {@condition frightened} 2.",
-									"Critical Failure": "The creature is {@condition frightened} 4."
+									"Success": "The creature is {@condition frightened 1}.",
+									"Failure": "The creature is {@condition frightened 2}.",
+									"Critical Failure": "The creature is {@condition frightened 4}."
 								}
 							}
 						]

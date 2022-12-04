@@ -1,14 +1,350 @@
 {
 	"baseitem": [
 		{
+			"name": "Chakri",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"agile",
+				"deadly <d8>",
+				"thrown",
+				"uncommon"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "cp"
+			},
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"A chakri is a small, circular throwing weapon with a sharp outer edge."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Dart",
+				"range": 30,
+				"reload": 0
+			}
+		},
+		{
+			"name": "Zulfikar",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"deadly <d8>",
+				"disarm",
+				"sweep",
+				"uncommon",
+				"versatile <P>"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"This curved blade has a bifurcated tip, creating what looks like a second blade. It's a customary practice among zulfikar users to have religious or personal inscriptions upon the blade."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Visap",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"agile",
+				"finesse",
+				"injection",
+				"uncommon",
+				"versatile <P>",
+				"vishkanya"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"Two small, curved blades extend from a single hilt. There's a hollow area inside that vishkanyas can use to store an unused dose of their blood, or other poison, for the future."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			}
+		},
+		{
+			"name": "Kalis",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"deadly <d8>",
+				"uncommon",
+				"versatile <P>"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"A larger version of the asymmetrical, wavy-bladed kris, this double-edged sword is effective at creating grievous injuries."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Gada",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"backswing",
+				"two-hand <d12>",
+				"vanara"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"A large spherical head with a spike on top sits mounted to a long shaft."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Club"
+			}
+		},
+		{
+			"name": "Donchak",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"hampering",
+				"reach",
+				"tethered",
+				"thrown <20 ft.>",
+				"uncommon"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"This long metal pole has a large {@item chakram|lotgb} attached at the end. A mechanism within the handle allows the wielder to launch and retract the {@item chakram|lotgb}, which is connected with wire to the inside of the weapon. The donchak is seldom seen used outside training scenarios."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Polearm"
+			}
+		},
+		{
+			"name": "Broadspear",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"reach",
+				"sweep",
+				"versatile <S>"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"The spearhead of this weapon is in the shape of a long leaf."
+			],
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"group": "Spear"
+			}
+		},
+		{
+			"name": "Thorn whip",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"disarm",
+				"finesse",
+				"ghoran",
+				"reach",
+				"trip",
+				"uncommon"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "sp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Carefully woven from plant fibers, the thorn whip sports small spikes that protrude from various locations."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Brawling"
+			}
+		},
+		{
+			"name": "Panabas",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"forceful",
+				"sweep",
+				"two-hand <d10>"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This blade features multiple curves in a serpentine pattern set on a wide, asymmetrical base, its hilt and sheath often intricately decorated."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Talwar",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"forceful",
+				"two-hand <d10>",
+				"versatile <P>"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Longer, and with less curve than a scimitar, this blade is ubiquitous in guard and mercenary groups throughout Casmaron."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Kris",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"agile",
+				"deadly <d8>",
+				"finesse"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This blade features multiple curves in a serpentine pattern set on a wide, asymmetrical base, its hilt and sheath often intricately decorated."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			}
+		},
+		{
+			"name": "Dandpatta",
+			"source": "LOIL",
+			"page": 221,
+			"type": "Item",
+			"traits": [
+				"agile",
+				"twin",
+				"uncommon"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This long, narrow blade is attached to a gauntlet that also acts as a handguard."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
 			"name": "War Lance",
 			"source": "LOKL",
 			"page": 86,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"deadly <d8>",
-				"jousting d6",
+				"jousting <d6>",
 				"parry",
 				"shove"
 			],
@@ -33,13 +369,13 @@
 			"name": "Bladed Gauntlet",
 			"source": "LOKL",
 			"page": 86,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
 				"finesse",
 				"free-hand",
-				"modular B, P, or S"
+				"modular <B, P, or S>"
 			],
 			"price": {
 				"amount": 5,
@@ -62,7 +398,7 @@
 			"name": "Ogre Hook",
 			"source": "B1",
 			"page": 253,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d10>",
 				"trip",
@@ -89,7 +425,7 @@
 			"name": "Adze",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"forceful",
 				"grippli",
@@ -116,7 +452,7 @@
 			"name": "Air Repeater",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -147,13 +483,13 @@
 			"name": "Aklys",
 			"source": "B1",
 			"page": 85,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"ranged trip",
 				"tethered",
 				"trip",
-				"thrown 20 ft."
+				"thrown <20 ft.>"
 			],
 			"price": {
 				"amount": 5,
@@ -207,12 +543,12 @@
 			"name": "Aldori Dueling Sword",
 			"source": "LOWG",
 			"page": 28,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
 				"finesse",
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"coin": "gp",
@@ -235,7 +571,7 @@
 			"name": "Arquebus",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -267,11 +603,11 @@
 			"name": "Asp Coil",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"reach",
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 10,
@@ -291,13 +627,60 @@
 			}
 		},
 		{
+			"name": "Triggerbrand",
+			"source": "LOIL",
+			"page": 107,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"combination"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This unusual combination weapon integrates features of a {@item flintlock pistol|G&G} and a {@item shortsword}. Like other combination weapons, a wielder can transform it between ranged and melee modes as an {@action Interact} action."
+			],
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"concussive",
+					"fatal <d8>"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Sword",
+				"damage": "1d6",
+				"damageType": "P",
+				"traits": [
+					"critical fusion",
+					"finesse",
+					"versatile <S>"
+				]
+			}
+		},
+		{
 			"name": "Axe Musket",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -372,7 +755,7 @@
 			"level": 1,
 			"traits": [
 				"uncommon",
-				"volley 50 ft."
+				"volley <50 ft.>"
 			],
 			"price": {
 				"amount": 20,
@@ -399,7 +782,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"two-hand <d12>"
 			],
@@ -425,7 +808,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"sweep"
 			],
@@ -450,7 +833,7 @@
 			"name": "Battle Lute",
 			"source": "AV2",
 			"page": 73,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"shove",
@@ -477,10 +860,10 @@
 			"name": "Bayonet",
 			"source": "G&G",
 			"page": 150,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
-				"attached to crossbow or firearm",
+				"attached <to crossbow or firearm>",
 				"finesse"
 			],
 			"price": {
@@ -511,7 +894,7 @@
 				"uncommon",
 				"cobbled",
 				"goblin",
-				"modular b, p, or s",
+				"modular <b, p, or s>",
 				"fatal <d12>"
 			],
 			"price": {
@@ -544,9 +927,10 @@
 			"name": "Black Powder Knuckle Dusters",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -588,7 +972,7 @@
 			"name": "Bladed Diabolo",
 			"source": "EC1",
 			"page": 77,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"backswing",
@@ -618,7 +1002,7 @@
 			"name": "Bladed Hoop",
 			"source": "EC1",
 			"page": 77,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"finesse",
@@ -646,7 +1030,7 @@
 			"name": "Bladed Scarf",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
@@ -677,7 +1061,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"nonlethal"
@@ -706,7 +1090,7 @@
 			"name": "Blunderbuss",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -738,7 +1122,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"monk",
 				"parry",
@@ -766,13 +1150,13 @@
 			"name": "Boarding Axe",
 			"source": "AAWS",
 			"page": 1,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"azarketi",
 				"climbing",
 				"uncommon",
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 1,
@@ -795,7 +1179,7 @@
 			"name": "Boarding Pike",
 			"source": "LOPSG",
 			"page": 81,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -828,7 +1212,7 @@
 					"LOGM|120"
 				]
 			},
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"nonlethal",
@@ -858,7 +1242,7 @@
 			"source": "LOKL",
 			"page": 86,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 20,
 				"coin": "gp"
@@ -887,7 +1271,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 8,
 				"coin": "gp"
@@ -912,7 +1296,7 @@
 			"source": "CRB",
 			"page": 277,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 1,
 				"coin": "gp"
@@ -934,7 +1318,7 @@
 			"name": "Butchering Axe",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"orc",
@@ -962,7 +1346,7 @@
 			"name": "Butterfly Sword",
 			"source": "FRP2",
 			"page": 76,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -994,7 +1378,7 @@
 			"name": "Buugeng",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -1023,9 +1407,10 @@
 			"name": "Cane Pistol",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -1059,7 +1444,7 @@
 				"damageType": "B",
 				"traits": [
 					"critical fusion",
-					"thrown 10 ft."
+					"thrown <10 ft.>"
 				]
 			}
 		},
@@ -1068,7 +1453,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"flexible",
 				"noisy"
@@ -1097,7 +1482,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"flexible",
 				"noisy"
@@ -1125,7 +1510,7 @@
 			"name": "Chakram",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"thrown"
 			],
@@ -1152,12 +1537,12 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"dwarf",
 				"parry",
-				"versatile b",
+				"versatile <b>",
 				"uncommon"
 			],
 			"price": {
@@ -1181,7 +1566,7 @@
 			"name": "Clan Pistol",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -1213,7 +1598,7 @@
 			"name": "Claw Blade",
 			"source": "APG",
 			"page": 248,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -1221,7 +1606,7 @@
 				"deadly <d8>",
 				"disarm",
 				"finesse",
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 2,
@@ -1290,13 +1675,13 @@
 			"name": "Clockwork Macuahuitl",
 			"source": "LOTGB",
 			"page": 22,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"backswing",
 				"clockwork",
 				"forceful",
 				"rare",
-				"versatile b"
+				"versatile <b>"
 			],
 			"price": {
 				"amount": 550,
@@ -1321,9 +1706,9 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"thrown 10 ft."
+				"thrown <10 ft.>"
 			],
 			"price": {
 				"amount": 0,
@@ -1346,7 +1731,7 @@
 			"name": "Coat Pistol",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concealable",
@@ -1377,7 +1762,7 @@
 			"name": "Combat Grapnel",
 			"source": "LOPSG",
 			"page": 81,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -1408,11 +1793,11 @@
 			"source": "CRB",
 			"page": 282,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d10>",
 				"propulsive",
-				"volley 30 ft."
+				"volley <30 ft.>"
 			],
 			"price": {
 				"amount": 20,
@@ -1439,7 +1824,7 @@
 			"source": "CRB",
 			"page": 282,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d10>",
 				"propulsive"
@@ -1469,7 +1854,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 3,
 				"coin": "gp"
@@ -1495,12 +1880,12 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"finesse",
-				"thrown 10 ft.",
-				"versatile s"
+				"thrown <10 ft.>",
+				"versatile <s>"
 			],
 			"price": {
 				"amount": 2,
@@ -1523,7 +1908,7 @@
 			"name": "Dagger Pistol",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon"
 			],
@@ -1561,8 +1946,8 @@
 					"agile",
 					"critical fusion",
 					"finesse",
-					" thrown 10 ft.",
-					"versatile p"
+					"thrown <10 ft.>",
+					"versatile <p>"
 				]
 			}
 		},
@@ -1571,7 +1956,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"thrown"
@@ -1630,7 +2015,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"backstabber",
@@ -1659,7 +2044,7 @@
 			"name": "Double-barreled Musket",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -1692,7 +2077,7 @@
 			"name": "Double-barreled Pistol",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -1724,7 +2109,7 @@
 			"name": "Dragon Mouth Pistol",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -1755,7 +2140,7 @@
 			"name": "Dueling Pistol",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -1788,12 +2173,12 @@
 			"name": "Dueling Spear",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
 				"finesse",
-				"versatile s"
+				"versatile <s>"
 			],
 			"price": {
 				"amount": 2,
@@ -1816,7 +2201,7 @@
 			"name": "Dwarven Scattergun",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -1851,7 +2236,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"dwarf",
 				"sweep",
@@ -1879,7 +2264,7 @@
 			"name": "Elven Branched Spear",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"elf",
@@ -1909,7 +2294,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"elf",
 				"finesse",
@@ -1938,7 +2323,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"comfort"
 			],
@@ -1965,10 +2350,11 @@
 			"name": "Explosive Dogslicer",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -2014,7 +2400,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"forceful",
 				"sweep"
@@ -2040,7 +2426,7 @@
 			"name": "Fangwire",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -2071,7 +2457,7 @@
 			"name": "Fauchard",
 			"source": "LOCG",
 			"page": 92,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 0,
 			"traits": [
 				"deadly <d8>",
@@ -2100,7 +2486,7 @@
 			"name": "Fighting Fan",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -2131,14 +2517,14 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"backstabber",
 				"deadly <d6>",
 				"finesse",
 				"halfling",
-				"thrown 20 ft.",
+				"thrown <20 ft.>",
 				"uncommon"
 			],
 			"price": {
@@ -2162,7 +2548,7 @@
 			"name": "Fire Lance",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"fatal <d10>"
@@ -2192,7 +2578,7 @@
 			"name": "Fire Poi",
 			"source": "EC1",
 			"page": 77,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -2224,7 +2610,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"disarm",
 				"sweep",
@@ -2251,7 +2637,7 @@
 			"name": "Flingflenser",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"backstabber",
@@ -2284,7 +2670,7 @@
 			"name": "Flintlock Musket",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -2315,7 +2701,7 @@
 			"name": "Flintlock Pistol",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -2346,7 +2732,7 @@
 			"name": "Forked Bipod",
 			"source": "G&G",
 			"page": 150,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"deadly <d6>",
@@ -2374,7 +2760,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 2,
 			"traits": [
 				"bulwark"
@@ -2402,7 +2788,7 @@
 			"name": "Gaff",
 			"source": "B1",
 			"page": 253,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"trip",
 				"deadly <d10>",
@@ -2434,7 +2820,7 @@
 					"LOME|259"
 				]
 			},
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"trip",
 				"versatile"
@@ -2448,7 +2834,7 @@
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"entries": [
-				"These hooked staffs are popular among Senghor fishers and warriors alike. A gaff sized for a Medium creature is a common martial weapon in the {@group club} group. It deals {@damage 1d6} bludgeoning damage and has 1 Bulk. It requires one hand to use and has the {@trait trip} and {@trait versatile P} weapon traits. Gaffs are readily available in Senghor and nearby settlements for 1 gp."
+				"These hooked staffs are popular among Senghor fishers and warriors alike. A gaff sized for a Medium creature is a common martial weapon in the {@group club} group. It deals {@damage 1d6} bludgeoning damage and has 1 Bulk. It requires one hand to use and has the {@trait trip} and {@trait versatile <P>} weapon traits. Gaffs are readily available in Senghor and nearby settlements for 1 gp."
 			],
 			"weaponData": {
 				"damage": "1d6",
@@ -2461,7 +2847,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"free-hand"
@@ -2487,7 +2873,7 @@
 			"name": "Gill Hook",
 			"source": "AAWS",
 			"page": 1,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"azarketi",
 				"grapple",
@@ -2516,7 +2902,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d8>",
 				"forceful",
@@ -2543,10 +2929,11 @@
 			"name": "Gnome Amalgam Musket",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -2570,7 +2957,7 @@
 				"ammunition": "round (10)|G&G|round",
 				"traits": [
 					"concussive",
-					"fatal 1d10",
+					"fatal <1d10>",
 					"gnome"
 				]
 			},
@@ -2583,7 +2970,7 @@
 					"critical fusion",
 					"gnome",
 					"trip",
-					"versatile p"
+					"versatile <p>"
 				]
 			}
 		},
@@ -2592,7 +2979,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"gnome",
 				"reach",
@@ -2620,12 +3007,12 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"gnome",
 				"trip",
 				"two-hand <d10>",
-				"versatile p",
+				"versatile <p>",
 				"uncommon"
 			],
 			"price": {
@@ -2650,7 +3037,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"sweep"
 			],
@@ -2676,7 +3063,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"backswing",
 				"shove"
@@ -2703,7 +3090,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"fatal <d12>"
 			],
@@ -2729,9 +3116,9 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 2,
@@ -2782,7 +3169,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"reach",
 				"trip"
@@ -2808,10 +3195,11 @@
 			"name": "Gun Sword",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -2845,7 +3233,7 @@
 				"damageType": "S",
 				"traits": [
 					"critical fusion",
-					"versatile p"
+					"versatile <p>"
 				]
 			}
 		},
@@ -2854,10 +3242,10 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"reach",
-				"versatile s"
+				"versatile <s>"
 			],
 			"price": {
 				"amount": 2,
@@ -2881,7 +3269,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"price": {
 				"amount": 18,
@@ -2907,7 +3295,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"halfling",
 				"propulsive",
@@ -2937,10 +3325,11 @@
 			"name": "Hammer Gun",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -2982,13 +3371,13 @@
 			"name": "Hand Adze",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"forceful",
 				"grippli",
 				"sweep",
-				"thrown 10 ft."
+				"thrown <10 ft.>"
 			],
 			"price": {
 				"amount": 5,
@@ -3011,10 +3400,10 @@
 			"name": "Hand Cannon",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
-				"modular b, p, or s"
+				"modular <b, p, or s>"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -3042,7 +3431,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 3,
 				"coin": "gp"
@@ -3067,7 +3456,7 @@
 			"name": "Harmona Gun",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"kickback"
@@ -3098,11 +3487,11 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"sweep",
-				"thrown 10 ft."
+				"thrown <10 ft.>"
 			],
 			"price": {
 				"amount": 4,
@@ -3126,7 +3515,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 4,
 				"coin": "gp"
@@ -3151,7 +3540,7 @@
 			"name": "Heavy Power Suit",
 			"source": "G&G",
 			"page": 16,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"bulwark"
@@ -3176,7 +3565,7 @@
 			"name": "Hellknight Plate",
 			"source": "LOCG",
 			"page": 80,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 2,
 			"traits": [
 				"uncommon",
@@ -3208,7 +3597,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 2,
 				"coin": "gp"
@@ -3232,7 +3621,7 @@
 			"name": "Hongali Hornbow",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"deadly <d6>",
@@ -3261,7 +3650,7 @@
 			"name": "Hook Sword",
 			"source": "FRP2",
 			"page": 76,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
@@ -3293,12 +3682,12 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"goblin",
 				"reach",
 				"trip",
-				"versatile p",
+				"versatile <p>",
 				"uncommon"
 			],
 			"price": {
@@ -3351,7 +3740,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"thrown"
 			],
@@ -3377,12 +3766,12 @@
 			"name": "Jezail",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
 				"concussive",
-				"fatal aim d12"
+				"fatal aim <d12>"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -3409,7 +3798,7 @@
 			"name": "Juggling Club",
 			"source": "EC1",
 			"page": 77,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -3438,7 +3827,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"monk",
@@ -3466,13 +3855,13 @@
 			"name": "Karambit",
 			"source": "FRP2",
 			"page": 76,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
 				"fatal <d8>",
 				"finesse",
-				"versatile s"
+				"versatile <s>"
 			],
 			"access": "If the player character come from a region in Tian Xia, this weapon is common",
 			"price": {
@@ -3497,11 +3886,11 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d8>",
 				"two-hand <d10>",
-				"versatile p",
+				"versatile <p>",
 				"uncommon"
 			],
 			"price": {
@@ -3526,7 +3915,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"deadly <d6>",
@@ -3554,12 +3943,12 @@
 			"name": "Khakkara",
 			"source": "APG",
 			"page": 248,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"shove",
-				"two-hand 1d10",
-				"versatile p"
+				"two-hand <1d10>",
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 2,
@@ -3582,7 +3971,7 @@
 			"name": "Khopesh",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"trip"
@@ -3608,7 +3997,7 @@
 			"name": "Knuckle Duster",
 			"source": "G&G",
 			"page": 150,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"free-hand",
@@ -3636,7 +4025,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"finesse",
@@ -3664,14 +4053,14 @@
 			"name": "Kusarigama",
 			"source": "FRP2",
 			"page": 76,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
 				"monk",
 				"reach",
 				"trip",
-				"versatile b"
+				"versatile <b>"
 			],
 			"access": "If the player character come from a region in Tian Xia, this weapon is common",
 			"price": {
@@ -3696,10 +4085,10 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d8>",
-				"jousting d6",
+				"jousting <d6>",
 				"reach"
 			],
 			"price": {
@@ -3724,7 +4113,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 2,
 				"coin": "gp"
@@ -3748,11 +4137,11 @@
 			"name": "Leiomano",
 			"source": "FRP2",
 			"page": 76,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"deadly <d10>",
-				"versatile s"
+				"versatile <s>"
 			],
 			"access": "If the player character come from a region in Tian Xia, this weapon is common",
 			"price": {
@@ -3777,10 +4166,10 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
-				"thrown 20 ft."
+				"thrown <20 ft.>"
 			],
 			"price": {
 				"amount": 3,
@@ -3804,7 +4193,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"finesse",
@@ -3832,7 +4221,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"fatal <d8>"
@@ -3887,7 +4276,7 @@
 			"name": "Long Air Repeater",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"repeating"
@@ -3918,7 +4307,7 @@
 			"source": "APG",
 			"page": 248,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"propulsive",
 				"uncommon"
@@ -3948,10 +4337,10 @@
 			"source": "CRB",
 			"page": 282,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d10>",
-				"volley 30 ft."
+				"volley <30 ft.>"
 			],
 			"price": {
 				"amount": 6,
@@ -3978,7 +4367,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"reach"
 			],
@@ -4004,9 +4393,9 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 1,
@@ -4065,7 +4454,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"shove"
 			],
@@ -4090,9 +4479,10 @@
 			"name": "Mace Multipistol",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -4135,7 +4525,7 @@
 			"name": "Machete",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d8>",
 				"sweep"
@@ -4162,13 +4552,13 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"disarm",
 				"finesse",
 				"parry",
-				"versatile s"
+				"versatile <s>"
 			],
 			"price": {
 				"amount": 5,
@@ -4191,7 +4581,7 @@
 			"name": "Mambele",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
@@ -4220,7 +4610,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"shove"
 			],
@@ -4245,7 +4635,7 @@
 			"name": "Meteor Hammer",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"backswing",
 				"disarm",
@@ -4273,7 +4663,7 @@
 			"name": "Mithral Tree",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"concussive",
@@ -4306,7 +4696,7 @@
 			"name": "Monkey's Fist",
 			"source": "AoE1",
 			"page": 78,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 0,
 			"traits": [
 				"finesse",
@@ -4334,9 +4724,9 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 1,
@@ -4359,12 +4749,12 @@
 			"name": "Naginata",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"deadly <d8>",
 				"reach",
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 3,
@@ -4387,7 +4777,7 @@
 			"name": "Nightstick",
 			"source": "AoE1",
 			"page": 78,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 0,
 			"traits": [
 				"agile",
@@ -4418,7 +4808,7 @@
 			"name": "Nine-Ring Sword",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm"
@@ -4445,7 +4835,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"backswing",
 				"disarm",
@@ -4475,7 +4865,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"disarm",
@@ -4504,7 +4894,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"forceful",
 				"orc",
@@ -4533,7 +4923,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"comfort"
 			],
@@ -4590,7 +4980,7 @@
 			"name": "Pepperbox",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"capacity <3>",
@@ -4623,7 +5013,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"fatal <d10>"
 			],
@@ -4648,9 +5038,10 @@
 			"name": "Piercing Wind",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -4674,7 +5065,7 @@
 				"ammunition": "round (10)|G&G|round",
 				"traits": [
 					"concussive",
-					"fatal aim d10"
+					"fatal aim <d10>"
 				]
 			},
 			"comboWeaponData": {
@@ -4694,7 +5085,7 @@
 			"name": "Piranha Kiss",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -4722,7 +5113,7 @@
 			"name": "Poi",
 			"source": "EC1",
 			"page": 77,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -4751,12 +5142,12 @@
 			"name": "Polytool",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
 				"agile",
-				"modular b, p, or s"
+				"modular <b, p, or s>"
 			],
 			"price": {
 				"amount": 10,
@@ -4779,7 +5170,7 @@
 			"name": "Power Suit",
 			"source": "G&G",
 			"page": 16,
-			"type": "Equipment",
+			"type": "Item",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"bulk": 2,
 			"category": "Armor",
@@ -4830,7 +5221,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"disarm",
 				"reach"
@@ -4857,7 +5248,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d8>",
 				"disarm",
@@ -4884,9 +5275,10 @@
 			"name": "Rapier Pistol",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -4930,9 +5322,9 @@
 			"name": "Reinforced Stock",
 			"source": "G&G",
 			"page": 150,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"attached to crossbow or firearm",
+				"attached <to crossbow or firearm>",
 				"finesse",
 				"two-hand <d6>"
 			],
@@ -4959,7 +5351,7 @@
 			"name": "Repeating Crossbow",
 			"source": "G&G",
 			"page": 63,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"repeating"
@@ -4995,7 +5387,7 @@
 					"AV3|73"
 				]
 			},
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"repeating"
@@ -5025,7 +5417,7 @@
 			"source": "G&G",
 			"page": 63,
 			"level": 1,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"repeating"
@@ -5054,7 +5446,7 @@
 			"name": "Rhoka Sword",
 			"source": "AV3",
 			"page": 73,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d8>",
 				"two-hand <d10>"
@@ -5080,11 +5472,11 @@
 			"name": "Rungu",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"grippli",
 				"shove",
-				"thrown 30 ft."
+				"thrown <30 ft.>"
 			],
 			"price": {
 				"amount": 4,
@@ -5108,13 +5500,13 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"disarm",
 				"finesse",
 				"monk",
-				"versatile b",
+				"versatile <b>",
 				"uncommon"
 			],
 			"price": {
@@ -5139,7 +5531,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"nonlethal"
@@ -5166,7 +5558,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"finesse",
@@ -5195,7 +5587,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 4,
 				"coin": "gp"
@@ -5220,7 +5612,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"forceful",
 				"sweep"
@@ -5246,7 +5638,7 @@
 			"name": "Scorpion Whip",
 			"source": "EC1",
 			"page": 77,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
@@ -5275,7 +5667,7 @@
 			"name": "Scourge",
 			"source": "LOCG",
 			"page": 80,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 0,
 			"traits": [
 				"agile",
@@ -5306,7 +5698,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d10>",
 				"trip"
@@ -5332,12 +5724,12 @@
 			"name": "Shauth Blade",
 			"source": "AV3",
 			"page": 73,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"deadly <d8>",
 				"finesse",
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 2,
@@ -5360,7 +5752,7 @@
 			"name": "Shauth Lash",
 			"source": "AV3",
 			"page": 73,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d10>",
 				"finesse",
@@ -5387,10 +5779,10 @@
 			"name": "Shears",
 			"source": "B2",
 			"page": 184,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
-				"versatile p",
+				"versatile <p>",
 				"deadly <d8>",
 				"finesse"
 			],
@@ -5414,9 +5806,9 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"attached to shield"
+				"attached <to shield>"
 			],
 			"price": {
 				"amount": 5,
@@ -5439,9 +5831,9 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"attached to shield"
+				"attached <to shield>"
 			],
 			"price": {
 				"amount": 5,
@@ -5464,7 +5856,7 @@
 			"source": "CRB",
 			"page": 282,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"deadly <d10>"
 			],
@@ -5493,11 +5885,11 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"finesse",
-				"versatile s"
+				"versatile <s>"
 			],
 			"price": {
 				"amount": 9,
@@ -5521,7 +5913,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"monk",
@@ -5551,7 +5943,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"finesse",
@@ -5578,7 +5970,7 @@
 			"name": "Sickle-Saber",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"backswing",
@@ -5605,7 +5997,7 @@
 			"name": "Slide Pistol",
 			"source": "G&G",
 			"page": 151,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -5639,7 +6031,7 @@
 			"source": "CRB",
 			"page": 282,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"propulsive"
 			],
@@ -5668,9 +6060,9 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"thrown 20 ft."
+				"thrown <20 ft.>"
 			],
 			"price": {
 				"amount": 1,
@@ -5694,7 +6086,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"disarm",
 				"finesse",
@@ -5723,7 +6115,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"free-hand"
@@ -5749,7 +6141,7 @@
 			"name": "Spiral Rapier",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
@@ -5778,7 +6170,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"price": {
 				"amount": 13,
@@ -5837,7 +6229,7 @@
 			"source": "CRB",
 			"page": 280,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"two-hand <d8>"
 			],
@@ -5863,13 +6255,13 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"deadly <d6>",
 				"finesse",
-				"thrown 20 ft.",
-				"versatile s"
+				"thrown <20 ft.>",
+				"versatile <s>"
 			],
 			"price": {
 				"amount": 2,
@@ -5893,7 +6285,7 @@
 			"source": "CRB",
 			"page": 277,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 2,
 				"coin": "gp"
@@ -5915,7 +6307,7 @@
 			"name": "Stiletto Pen",
 			"source": "LOPSG",
 			"page": 81,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -5946,7 +6338,7 @@
 			"source": "CRB",
 			"page": 275,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 3,
 				"coin": "gp"
@@ -5970,7 +6362,7 @@
 			"name": "Subterfuge Suit",
 			"source": "G&G",
 			"page": 16,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon"
 			],
@@ -5992,13 +6384,13 @@
 			"name": "Switchscythe",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
 				"uncommon",
 				"gnome",
 				"fatal <d10>",
-				"modular (p and grapple, or s and sweep)"
+				"modular <(p and grapple, or s and sweep)>"
 			],
 			"price": {
 				"amount": 12,
@@ -6021,7 +6413,7 @@
 			"name": "Sword Cane",
 			"source": "APG",
 			"page": 248,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"finesse",
@@ -6048,7 +6440,7 @@
 			"name": "Tamchal Chakram",
 			"source": "AV2",
 			"page": 73,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6077,12 +6469,12 @@
 			"name": "Taw Launcher",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"conrasu",
 				"deadly <1d10>",
-				"modular b, p, or s"
+				"modular <b, p, or s>"
 			],
 			"price": {
 				"amount": 10,
@@ -6108,7 +6500,7 @@
 			"name": "Tekko-Kagi",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6139,7 +6531,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"monk",
 				"trip",
@@ -6166,7 +6558,7 @@
 			"name": "Tengu Gale Blade",
 			"source": "APG",
 			"page": 248,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6195,10 +6587,11 @@
 			"name": "Three Peaked Tree",
 			"source": "G&G",
 			"page": 158,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 1,
 			"traits": [
-				"uncommon"
+				"uncommon",
+				"combination"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -6236,7 +6629,7 @@
 					"critical fusion",
 					"elf",
 					"tethered",
-					"thrown 20 ft."
+					"thrown <20 ft.>"
 				]
 			}
 		},
@@ -6249,7 +6642,7 @@
 					"LOTGB|107"
 				]
 			},
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6277,7 +6670,7 @@
 			"name": "Thunder Sling",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6307,7 +6700,7 @@
 			"name": "Thundermace",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"backswing"
@@ -6333,7 +6726,7 @@
 			"name": "Tonfa",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6364,7 +6757,7 @@
 			"source": "CRB",
 			"page": 277,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 10,
 				"coin": "gp"
@@ -6388,7 +6781,7 @@
 			"name": "Tri-bladed Katar",
 			"source": "LOTGB",
 			"page": 107,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
@@ -6416,13 +6809,13 @@
 			"name": "Tricky Pick",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"backstabber",
 				"fatal <d10>",
 				"kobold",
-				"modular b, p, or s"
+				"modular <b, p, or s>"
 			],
 			"price": {
 				"amount": 10,
@@ -6446,9 +6839,9 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
-				"thrown 20 ft."
+				"thrown <20 ft.>"
 			],
 			"price": {
 				"amount": 1,
@@ -6502,7 +6895,7 @@
 			"name": "Urumi",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"deadly <d10>",
@@ -6529,13 +6922,13 @@
 			"name": "Wakizashi",
 			"source": "APG",
 			"page": 248,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
 				"deadly <d8>",
 				"finesse",
-				"versatile p"
+				"versatile <p>"
 			],
 			"price": {
 				"amount": 1,
@@ -6559,7 +6952,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"disarm",
 				"sweep",
@@ -6586,7 +6979,7 @@
 			"name": "War Razor",
 			"source": "LOGM",
 			"page": 120,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"agile",
 				"backstabber",
@@ -6615,7 +7008,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"shove"
 			],
@@ -6641,7 +7034,7 @@
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"disarm",
 				"finesse",
@@ -6670,7 +7063,7 @@
 			"name": "Whip Claw",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"catfolk",
@@ -6699,7 +7092,7 @@
 			"name": "Wind and Fire Wheel",
 			"source": "FRP2",
 			"page": 76,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6708,7 +7101,7 @@
 				"monk",
 				"parry",
 				"twin",
-				"versatile p"
+				"versatile <p>"
 			],
 			"access": "If the player character come from a region in Tian Xia, this weapon is common",
 			"price": {
@@ -6732,7 +7125,7 @@
 			"name": "Wish Blade",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"disarm",
@@ -6761,7 +7154,7 @@
 			"name": "Wish Knife",
 			"source": "LOAG",
 			"page": 139,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"uncommon",
 				"agile",
@@ -6769,7 +7162,7 @@
 				"finesse",
 				"geniekin",
 				"resonant",
-				"versatile s"
+				"versatile <s>"
 			],
 			"price": {
 				"amount": 2,
@@ -6793,7 +7186,7 @@
 			"source": "CRB",
 			"page": 277,
 			"equipment": true,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"amount": 1,
 				"coin": "gp"

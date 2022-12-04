@@ -496,7 +496,7 @@
 						"{@i Casting this spell is an activity that requires two actions to complete, and it has two components. The complex gestures needed to invoke the spell are the somatic component, and Kyra's prayers to her deity are the verbal component.}",
 						"{@b Erik:} Okay! The ghast leaps from the casket straight toward Merisiel. The stench of its rotting body is absolutely horrific up close. Attempt a Fortitude save!",
 						"{@i James rolls an 8, for a total of 14.}",
-						"{@b Erik:} Not quite enough\u2014you gain the {@condition sickened} 1 condition, which is going to give you a \u20131 penalty to most of your d20 rolls. Next, it lunges at you, trying to bite you!",
+						"{@b Erik:} Not quite enough\u2014you gain the {@condition sickened 1} condition, which is going to give you a \u20131 penalty to most of your d20 rolls. Next, it lunges at you, trying to bite you!",
 						"{@b James:} Oh no! I use my reaction to nimbly dodge out of the way.",
 						"{@i Erik rolls an attack roll for the ghast, getting an 9 on the die. Looking at the monster's statistics, he adds 11 for a total of 20. Merisiel's AC is normally 19, but the Nimble Dodge feat lets her use her reaction to increase her AC by 2 against a single attack. In this case, it turns the ghast's attack into a miss.}",
 						"{@b Erik:} Does a 20 hit you?",
@@ -2178,6 +2178,9 @@
 							"type": "pf2-h4",
 							"page": 219,
 							"name": "Spellcasting Archetypes",
+							"alias": [
+								"Spellcasting Benefits"
+							],
 							"entries": [
 								"Some archetypes grant you a substantial degree of spellcasting, albeit delayed compared to a character from a spellcasting class. In this book, the spellcasting archetypes are bard, cleric, druid, sorcerer, and wizard, the multiclass archetypes for the five main spellcasting classes, but future books might introduce spellcasting archetypes that aren't multiclass archetypes.",
 								"A spellcasting archetype allows you to use scrolls, staves, and wands in the same way that a member of a spellcasting class can.",
@@ -2238,7 +2241,7 @@
 					"name": "Skill Actions",
 					"entries": [
 						"The actions you can perform with a given skill are sorted into those you can use untrained and those that require you to be trained in the skill, as shown on {@table Skills, Key Abilities, and Actions||Table 4\u20131: Skills, Key Abilities, and Actions}. The untrained and trained actions of each skill appear in separate sections within the skill's description.",
-						"Anyone can use a skill's untrained actions, but you can use trained actions only if you have a proficiency rank of trained or better in that skill. A circumstance, condition, or effect might bar you from a skill action regardless of your proficiency rank, and sometimes using a skill in a specific situation might require you to have a higher proficiency rank than what is listed on the table. For instance, even though a barbarian untrained in {@skill Arcana} could identify a construct with a lucky roll using {@skill Arcana} to Recall Knowledge, the GM might decide that Recalling Knowledge to determine the spells used to create such a construct is beyond the scope of the barbarian's anecdotal knowledge. The GM decides whether a task requires a particular proficiency rank."
+						"Anyone can use a skill's untrained actions, but you can use trained actions only if you have a proficiency rank of trained or better in that skill. A circumstance, condition, or effect might bar you from a skill action regardless of your proficiency rank, and sometimes using a skill in a specific situation might require you to have a higher proficiency rank than what is listed on the table. For instance, even though a barbarian untrained in {@skill Arcana} could identify a construct with a lucky roll using {@skill Arcana} to {@action Recall Knowledge}, the GM might decide that Recalling Knowledge to determine the spells used to create such a construct is beyond the scope of the barbarian's anecdotal knowledge. The GM decides whether a task requires a particular proficiency rank."
 					]
 				},
 				{
@@ -2573,14 +2576,14 @@
 							"page": 238,
 							"name": "Recall Knowledge (Untrained)",
 							"entries": [
-								"To remember useful information on a topic, you can attempt to Recall Knowledge. You might know basic information about something without needing to attempt a check, but {@action Recall Knowledge} requires you to stop and think for a moment so you can recollect more specific facts and apply them. You might even need to spend time investigating first. For instance, to use {@skill Medicine} to learn the cause of death, you might need to conduct a forensic examination before attempting to Recall Knowledge.",
+								"To remember useful information on a topic, you can attempt to {@action Recall Knowledge}. You might know basic information about something without needing to attempt a check, but {@action Recall Knowledge} requires you to stop and think for a moment so you can recollect more specific facts and apply them. You might even need to spend time investigating first. For instance, to use {@skill Medicine} to learn the cause of death, you might need to conduct a forensic examination before attempting to {@action Recall Knowledge}.",
 								{
 									"type": "data",
 									"name": "Recall Knowledge",
 									"tag": "action",
 									"source": "CRB"
 								},
-								"The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM's permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
+								"The following skills can be used to {@action Recall Knowledge}, getting information about the listed topics. In some cases, you can get the GM's permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
 								{
 									"type": "list",
 									"items": [
@@ -3774,7 +3777,7 @@
 											"page": 272,
 											"name": "Encumbered",
 											"entries": [
-												"You are carrying more weight than you can manage. While you're {@condition encumbered}, you're {@condition clumsy} 1 and take a \u201310-foot penalty to all your Speeds. As with all penalties to your Speed, this can't reduce your Speed below 5 feet."
+												"You are carrying more weight than you can manage. While you're {@condition encumbered}, you're {@condition clumsy 1} and take a \u201310-foot penalty to all your Speeds. As with all penalties to your Speed, this can't reduce your Speed below 5 feet."
 											]
 										}
 									]
@@ -4535,8 +4538,8 @@
 								"{@b Snare Kit:} This kit contains tools and materials for creating snares. A snare kit allows you to Craft snares using the {@skill Crafting} skill. A specialist snare kit gives you a +1 item bonus to the check.",
 								"{@b Spellbook:} A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for wizards (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook.",
 								"{@b Spyglass:} A typical spyglass lets you see eight times farther than normal. A fine spyglass adds a +1 item bonus to {@skill Perception} checks to notice details at a distance.",
-								"{@b Survey Map:} Maps are uncommon.",
-								"Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to Recall Knowledge, provided the checks are related to the location detailed on the map.",
+								"{@b Survey Map:} Maps are {@trait uncommon}.",
+								"Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to {@action Recall Knowledge}, provided the checks are related to the location detailed on the map.",
 								"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. The GM determines what maps are available in any location.",
 								"{@b Tack:} Tack includes all the gear required to outfit a riding animal, including a saddle, bit and bridle, and stirrups if necessary. Especially large or oddly shaped animals might require specialty saddles. These can be more expensive or hard to find, as determined by the GM. The Bulk value given is for tack worn by a creature.",
 								"If carried, the Bulk increases to 2.",
@@ -5497,7 +5500,7 @@
 					"name": "Identifying Spells",
 					"entries": [
 						"Sometimes you need to identify a spell, especially if its effects are not obvious right away. If you notice a spell being cast, and you have prepared that spell or have it in your repertoire, you automatically know what the spell is, including the level to which it is heightened.",
-						"If you want to identify a spell but don't have it prepared or in your repertoire, you must spend an action on your turn to attempt to identify it using Recall Knowledge. You typically notice a spell being cast by seeing its visual manifestations or hearing its verbal casting components. Identifying long-lasting spells that are already in place requires using Identify Magic instead of {@action Recall Knowledge} because you don't have the advantage of watching the spell being cast."
+						"If you want to identify a spell but don't have it prepared or in your repertoire, you must spend an action on your turn to attempt to identify it using {@action Recall Knowledge}. You typically notice a spell being cast by seeing its visual manifestations or hearing its verbal casting components. Identifying long-lasting spells that are already in place requires using Identify Magic instead of {@action Recall Knowledge} because you don't have the advantage of watching the spell being cast."
 					],
 					"data": {
 						"quickref": 3
@@ -6358,7 +6361,7 @@
 								"Determine the degree of success and the effect."
 							]
 						},
-						"Checks and difficulty classes (DC) both come in many forms. When you swing your sword at that foul beast, you'll make an attack roll against its Armor Class, which is the DC to hit another creature. If you are leaping across that chasm, you'll attempt an {@skill Athletics} skill check with a DC based on the distance you are trying to jump. When calling to mind the name of the earl's second cousin, you attempt a check to Recall Knowledge. You might use either the Society skill or a Lore skill you have that's relevant to the task, and the DC depends on how common the knowledge of the cousin's name might be, or how many drinks your character had when they were introduced to the cousin the night before.",
+						"Checks and difficulty classes (DC) both come in many forms. When you swing your sword at that foul beast, you'll make an attack roll against its Armor Class, which is the DC to hit another creature. If you are leaping across that chasm, you'll attempt an {@skill Athletics} skill check with a DC based on the distance you are trying to jump. When calling to mind the name of the earl's second cousin, you attempt a check to {@action Recall Knowledge}. You might use either the Society skill or a Lore skill you have that's relevant to the task, and the DC depends on how common the knowledge of the cousin's name might be, or how many drinks your character had when they were introduced to the cousin the night before.",
 						"No matter the details, for any check you must roll the d20 and achieve a result equal to or greater than the DC to succeed. Each of these steps is explained below.",
 						{
 							"type": "pf2-brown-box",
@@ -7301,7 +7304,7 @@
 									"type": "list",
 									"items": [
 										"You immediately move your initiative position to directly before the turn in which you were reduced to 0 HP.",
-										"You gain the {@condition dying} 1 condition. If the effect that knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying} 2 condition instead. If you have the {@condition wounded} condition (page 460), increase your {@condition dying} value by an amount equal to your {@condition wounded} value. If the damage was dealt by a nonlethal attack or nonlethal effect, you don't gain the dying condition; you are instead unconscious with 0 Hit Points."
+										"You gain the {@condition dying 1} condition. If the effect that knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying 2} condition instead. If you have the {@condition wounded} condition (page 460), increase your {@condition dying} value by an amount equal to your {@condition wounded} value. If the damage was dealt by a nonlethal attack or nonlethal effect, you don't gain the dying condition; you are instead unconscious with 0 Hit Points."
 									]
 								},
 								{
@@ -7674,36 +7677,48 @@
 					"page": 464,
 					"name": "Perception",
 					"entries": [
-						"Your Perception measures your ability to notice things, search for what's hidden, and tell whether something about a situation is suspicious. This statistic is frequently used for rolling initiative to determine who goes first in an encounter, and it's also used for the {@action Seek} action .",
+						"Your Perception measures your ability to notice things, search for what's hidden, and tell whether something about a situation is suspicious. This statistic is frequently used for rolling initiative to determine who goes first in an encounter, and it's also used for the {@action Seek} action.",
 						"The rules for rolling a Perception check are found on page 448. The rules below describe the effects of light and visibility on your specific senses to perceive the world, as well as the rules for sensing and locating creatures with Perception.",
 						{
 							"type": "pf2-h3",
 							"page": 464,
 							"name": "Light",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
 								"The amount of light in an area can affect how well you see things. There are three levels of light: bright light, dim light, and darkness. The rules in this book assume that all creatures are in bright light unless otherwise noted. A source of light lists the radius in which it sheds bright light, and it sheds dim light to double that radius.",
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Bright Light",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"In bright light, such as sunlight, creatures and objects can be observed clearly by anyone with average vision or better. Some types of creatures are dazzled or blinded by bright light."
+										"In bright light, such as sunlight, creatures and objects can be observed clearly by anyone with average vision or better. Some types of creatures are {@condition dazzled} or {@condition blinded} by bright light."
 									]
 								},
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Dim Light",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"Areas in shadow or lit by weak light sources are in dim light. Creatures and objects in dim light have the {@condition concealed} condition, unless the seeker has {@ability darkvision} or {@ability low-light vision} (see Special Senses on page 465), or a precise sense other than vision."
+										"Areas in shadow or lit by weak light sources are in dim light. Creatures and objects in dim light have the {@condition concealed} condition, unless the seeker has {@ability darkvision} or {@ability low-light vision}, or a {@quickref precise sense|CRB|3|precise sense|0} other than vision."
 									]
 								},
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Darkness",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"A creature or object within darkness is hidden or undetected unless the seeker has {@ability darkvision} or a precise sense other than vision (Special Senses are on page 465). A creature without {@ability darkvision} or another means of perceiving in darkness has the blinded condition while in darkness, though it might be able to see illuminated areas beyond the darkness. If a creature can see into an illuminated area, it can observe creatures within that illuminated area normally. After being in darkness, sudden exposure to bright light might make you dazzled for a short time, as determined by the GM."
+										"A creature or object within darkness is hidden or undetected unless the seeker has {@ability darkvision} or a {@quickref precise sense|CRB|3|precise sense|0} other than vision. A creature without {@ability darkvision} or another means of perceiving in darkness has the {@condition blinded} condition while in darkness, though it might be able to see illuminated areas beyond the darkness. If a creature can see into an illuminated area, it can observe creatures within that illuminated area normally. After being in darkness, sudden exposure to bright light might make you {@condition dazzled} for a short time, as determined by the GM."
 									]
 								}
 							]
@@ -7712,12 +7727,18 @@
 							"type": "pf2-h3",
 							"page": 464,
 							"name": "Senses",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
 								"The ways a creature can use {@skill Perception} depend on what senses it has. The primary concepts you need to know for understanding senses are precise senses, imprecise senses, and the three states of detection a target can be in: observed, hidden, or undetected. Vision, hearing, and scent are three prominent senses, but they don't have the same degree of acuity.",
 								{
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Precise Senses",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
 										"Average vision is a precise sense\u2014a sense that can be used to perceive the world in nuanced detail. The only way to target a creature without having drawbacks is to use a precise sense. You can usually detect a creature automatically with a precise sense unless that creature is hiding or obscured by the environment, in which case you can use the Seek basic action to better detect the creature."
 									]
@@ -7726,18 +7747,24 @@
 									"type": "pf2-h4",
 									"page": 464,
 									"name": "Imprecise Senses",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"Hearing is an imprecise sense\u2014it cannot detect the full range of detail that a precise sense can. You can usually sense a creature automatically with an imprecise sense, but it has the hidden condition instead of the observed condition. It might be undetected by you if it's using {@skill Stealth} or is in an environment that distorts the sense, such as a noisy room in the case of hearing. In those cases, you have to use the Seek basic action to detect the creature. At best, an imprecise sense can be used to make an undetected creature (or one you didn't even know was there) merely hidden\u2014it can't make the creature observed."
+										"Hearing is an imprecise sense\u2014it cannot detect the full range of detail that a {@quickref precise sense|CRB|3|precise sense|0} can. You can usually sense a creature automatically with an imprecise sense, but it has the {@condition hidden} condition instead of the {@condition observed} condition. It might be {@condition undetected} by you if it's using {@skill Stealth} or is in an environment that distorts the sense, such as a noisy room in the case of hearing. In those cases, you have to use the {@action Seek} basic action to detect the creature. At best, an imprecise sense can be used to make an {@condition undetected} creature (or one you didn't even know was there) merely {@condition hidden}\u2014it can't make the creature {@condition observed}."
 									]
 								},
 								{
 									"type": "pf2-h4",
 									"page": 465,
 									"name": "Vague Senses",
+									"data": {
+										"quickrefIndex": true
+									},
 									"entries": [
-										"A character also has many vague senses\u2014ones that can alert you that something is there but aren't useful for zeroing in on it to determine exactly what it is. The most useful of these for a typical character is the sense of smell. At best, a vague sense can be used to detect the presence of an unnoticed creature, making it undetected. Even then, the vague sense isn't sufficient to make the creature hidden or observed.",
-										"When one creature might detect another, the GM almost always uses the most precise sense available.",
-										"Pathfinder's rules assume that a given creature has vision as its only precise sense and hearing as its only imprecise sense. Some characters and creatures, however, have precise or imprecise senses that don't match this assumption. For instance, a character with poor vision might treat that sense as imprecise, an animal with the {@ability scent} ability can use its sense of smell as an imprecise sense, and a creature with echolocation or a similar ability can use hearing as a precise sense. Such senses are often given special names and appear as \"echolocation (precise),\" \"scent (imprecise) 30 feet,\" or the like."
+										"A character also has many vague senses\u2014ones that can alert you that something is there but aren't useful for zeroing in on it to determine exactly what it is. The most useful of these for a typical character is the sense of smell. At best, a vague sense can be used to detect the presence of an {@condition unnoticed} creature, making it {@condition undetected}. Even then, the vague sense isn't sufficient to make the creature {@condition hidden} or {@condition observed}.",
+										"When one creature might detect another, the GM almost always uses the most {@quickref precise sense|CRB|3|precise sense|0} available.",
+										"Pathfinder's rules assume that a given creature has vision as its only {@quickref precise sense|CRB|3|precise sense|0} and hearing as its only {@quickref imprecise sense|CRB|3|imprecise sense|0}. Some characters and creatures, however, have {@quickref precise|CRB|3|precise sense|0} or {@quickref imprecise senses|CRB|3|imprecise sense|0} that don't match this assumption. For instance, a character with poor vision might treat that sense as {@quickref imprecise|CRB|3|imprecise sense|0}, an animal with the {@ability scent} ability can use its sense of smell as an {@quickref imprecise sense|CRB|3|imprecise sense|0}, and a creature with echolocation or a similar ability can use hearing as a {@quickref precise|CRB|3|precise sense|0} sense. Such senses are often given special names and appear as \"echolocation (precise),\" \"scent (imprecise) 30 feet,\" or the like."
 									]
 								}
 							]
@@ -7746,9 +7773,12 @@
 							"type": "pf2-h3",
 							"page": 465,
 							"name": "Special Senses",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
 								"While a human might have a difficult time making creatures out in dim light, an elf can see those creatures just fine. And though elves have no problem seeing on a moonlit night, their vision cannot penetrate complete darkness, whereas a dwarf's can.",
-								"Special senses grant greater awareness that allows a creature with these senses to either ignore or reduce the effects of the undetected, hidden, or concealed conditions (described in Detecting Creatures below) when it comes to situations that foil average vision. The following are a few examples of common special senses.",
+								"Special senses grant greater awareness that allows a creature with these senses to either ignore or reduce the effects of the undetected, hidden, or concealed conditions (described in {@quickref Detecting Creatures|CRB|3|Detecting Creatures|0} below) when it comes to situations that foil average vision. The following are a few examples of common special senses.",
 								{
 									"type": "pf2-h4",
 									"page": 465,
@@ -7802,17 +7832,20 @@
 							"type": "pf2-h3",
 							"page": 465,
 							"name": "Detecting Creatures",
+							"data": {
+								"quickrefIndex": true
+							},
 							"entries": [
-								"There are three conditions that measure the degree to which you can sense a creature: observed, hidden, and undetected. However, the concealed and invisible conditions can partially mask a creature, and the unnoticed condition indicates you have no idea a creature is around. In addition to the descriptions here, you can find these conditions in the Conditions Appendix on pages 618\u2013623.",
+								"There are three conditions that measure the degree to which you can sense a creature: observed, hidden, and undetected. However, the concealed and invisible conditions can partially mask a creature, and the unnoticed condition indicates you have no idea a creature is around. In addition to the descriptions here, you can find these conditions in the {@pf2etools Conditions|conditions.html} page.",
 								"With the exception of {@condition invisible}, these conditions are relative to the viewer\u2014it's possible for a creature to be observed to you but hidden from your ally. When you're trying to target a creature that's hard to see or otherwise sense, various drawbacks apply. Most of these rules apply to objects you're trying to detect as well as creatures.",
 								"Typically, the GM tracks how well creatures detect each other, since neither party has perfect information. For example, you might think a creature is in the last place you sensed it, but it was able to Sneak away. Or you might think a creature can't see you in the dark, but it has {@ability darkvision}.",
-								"You can attempt to avoid detection by using the {@skill Stealth} skill (page 251) to Avoid Notice, Hide, or Sneak, or by using {@skill Deception} to Create a Diversion (page 245).",
+								"You can attempt to avoid detection by using the {@skill Stealth} skill to {@action Avoid Notice}, {@action Hide}, or {@action Sneak}, or by using {@skill Deception} to {@action Create a Diversion}.",
 								{
 									"type": "pf2-h4",
 									"page": 466,
 									"name": "Observed",
 									"entries": [
-										"In most circumstances, you can sense creatures without difficulty and target them normally. Creatures in this state are observed. Observing requires a precise sense, which for most creatures means sight, but see the Detecting with Other Senses sidebar (page 465) for advice regarding creatures that don't use sight as their primary sense. If you can't observe the creature, it's either hidden, undetected, or unnoticed, and you'll need to factor in the targeting restrictions. Even if a creature is observed, it might still be concealed."
+										"In most circumstances, you can sense creatures without difficulty and target them normally. Creatures in this state are observed. Observing requires a precise sense, which for most creatures means sight, but see the Detecting with Other Senses sidebar for advice regarding creatures that don't use sight as their primary sense. If you can't observe the creature, it's either {@condition hidden}, {@condition undetected}, or {@condition unnoticed}, and you'll need to factor in the targeting restrictions. Even if a creature is {@condition observed}, it might still be {@condition concealed}."
 									]
 								},
 								{
@@ -8052,9 +8085,7 @@
 									"name": "SPEAKING",
 									"entries": [
 										"As long as you can act, you can also speak. You don't need to spend any type of action to speak, but because a round represents 6 seconds of time, you can usually speak at most a single sentence or so per round. Special uses of speech, such as attempting a {@skill Deception} skill check to Lie, require spending actions and follow their own rules.",
-										"All speech has the auditory trait. If you communicate in some way other than speech, other rules might apply. For instance, using sign language is visual instead of auditory.",
-										"not trigger reactions that can be triggered by actions with the manipulate trait (such as Attack of Opportunity).",
-										"If you want to prepare to Release something outside of your turn, use the Ready activity."
+										"All speech has the {@trait auditory} trait. If you communicate in some way other than speech, other rules might apply. For instance, using sign language is {@trait visual} instead of {@trait auditory}."
 									]
 								},
 								{
@@ -8981,7 +9012,7 @@
 										"If an effect raises or lowers chances of success, grant a +1 circumstance bonus or a \u20131 circumstance penalty.",
 										"If you're not sure how difficult a significant challenge should be, use the DC for the party's level.",
 										"If you're making up an effect, creatures should be incapacitated or killed on only a critical success (or for a saving throw, on a critical failure).",
-										"If you don't know what check to use, pick the most appropriate skill. If no other skill applies to a check to Recall Knowledge, use an appropriate Lore skill (usually at an untrained proficiency rank).",
+										"If you don't know what check to use, pick the most appropriate skill. If no other skill applies to a check to {@action Recall Knowledge}, use an appropriate {@skill Lore} skill (usually at an untrained proficiency rank).",
 										"Use the characters' daily preparations as the time to reset anything that lasts roughly a day.",
 										"When a character accomplishes something noteworthy that doesn't have rules for XP, award them XP for an accomplishment (10 to 30 XP, as described {@quickref here||4|rewards|1}).",
 										"When the PCs fail at a task, look for a way they might fail forward, meaning the story moves forward with a negative consequence rather than the failure halting progress entirely."
@@ -9575,7 +9606,7 @@
 							"name": "Simple DCs",
 							"entries": [
 								"Sometimes you need to quickly set a Difficulty Class. The easiest method is to select a simple DC from Table 10\u20134 by estimating which proficiency rank best matches the task (that rank is usually not required to succeed at the task).",
-								"If it's something pretty much anyone would have a decent chance at, use the untrained DC. If it would require a degree of training, use the DC listed for trained, expert, master, or legendary proficiency, as appropriate to the complexity of the task. For example, say a PC was trying to uncover the true history behind a fable. You determine this requires a check to Recall Knowledge, and that only someone with master proficiency in Folktale Lore would know the information, so you'd set the DC at 30\u2014the simple master DC.",
+								"If it's something pretty much anyone would have a decent chance at, use the untrained DC. If it would require a degree of training, use the DC listed for trained, expert, master, or legendary proficiency, as appropriate to the complexity of the task. For example, say a PC was trying to uncover the true history behind a fable. You determine this requires a check to {@action Recall Knowledge}, and that only someone with master proficiency in Folktale Lore would know the information, so you'd set the DC at 30\u2014the simple master DC.",
 								"Simple DCs work well when you need a DC on the fly and there's no level associated with the task. They're most useful for skill checks. Because there isn't much gradation between the simple DCs, they don't work as well for hazards or combatants, where the PCs' lives are on the line; you're better off using level-based DCs for such challenges.",
 								{
 									"type": "data",
@@ -12544,8 +12575,13 @@
 							"name": "DEATH AND DYING RULES"
 						},
 						"The {@condition doomed}, {@condition dying}, {@condition unconscious}, and {@condition wounded} conditions all relate to the process of coming closer to death. The full rules are on pages 459\u2013461. The most significant information not contained in the conditions themselves is this: When you're reduced to 0 Hit Points, you're knocked out with the following effects:",
-						"directly before the creature or effect that reduced you to 0 Hit Points.",
-						"knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying} 2 condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points.",
+						{
+							"type": "list",
+							"items": [
+								"You immediately move your initiative position to directly before the creature or effect that reduced you to 0 Hit Points.",
+								"You gain the {@condition dying 1} condition. If the effect that knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying 2} condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points."
+							]
+						},
 						{
 							"type": "pf2-title",
 							"name": "PERSISTENT DAMAGE RULES"
@@ -12588,13 +12624,13 @@
 							"name": "REDUNDANT CONDITIONS"
 						},
 						"You can have a given condition only once at a time. If an effect would impose a condition you already have, you now have that condition for the longer of the two durations. The shorter-duration condition effectively ends, though other conditions caused by the original, shorter-duration effect might continue.",
-						"For example, let's say you have been hit by a monster that drains your vitality; your wound causes you to be {@condition enfeebled} 2 and {@condition flat-footed} until the end of the monster's next turn. Before the end of that creature's next turn, a trap poisons you, making you {@condition enfeebled} 2 for 1 minute. In this case, the {@condition enfeebled} 2 that lasts for 1 minute replaces the {@condition enfeebled} 2 from the monster, so you would be {@condition enfeebled} 2 for the longer duration. You would remain {@condition flat-footed}, since nothing replaced that condition, and it still lasts only until the end of the monster's next turn.",
+						"For example, let's say you have been hit by a monster that drains your vitality; your wound causes you to be {@condition enfeebled 2} and {@condition flat-footed} until the end of the monster's next turn. Before the end of that creature's next turn, a trap poisons you, making you {@condition enfeebled 2} for 1 minute. In this case, the {@condition enfeebled 2} that lasts for 1 minute replaces the {@condition enfeebled 2} from the monster, so you would be {@condition enfeebled 2} for the longer duration. You would remain {@condition flat-footed}, since nothing replaced that condition, and it still lasts only until the end of the monster's next turn.",
 						"Any ability that removes a condition removes it entirely, no matter what its condition value is or how many times you've been affected by it. In the example above, a spell that removes the {@condition enfeebled} condition from you would remove it entirely\u2014the spell wouldn't need to remove it twice.",
 						{
 							"type": "pf2-title",
 							"name": "Redundant Conditions with Values"
 						},
-						"Conditions with different values are considered different conditions. If you're affected by a condition with a value multiple times, you apply only the highest value, although you might have to track both durations if one has a lower value but lasts longer. For example, if you had a {@condition slowed} 2 condition that lasts 1 round and a {@condition slowed} 1 condition that lasts for 6 rounds, you'd be {@condition slowed} 2 for the first round, and then you'd change to {@condition slowed} 1 for the remaining 5 rounds of the second effect's duration. If something reduces the condition value, it reduces it for all conditions of that name affecting you. For instance, in this example above, if something reduced your {@condition slowed} value by 1, it would reduce the first condition from the example to {@condition slowed} 1 and reduce the second to {@condition slowed} 0, removing it."
+						"Conditions with different values are considered different conditions. If you're affected by a condition with a value multiple times, you apply only the highest value, although you might have to track both durations if one has a lower value but lasts longer. For example, if you had a {@condition slowed 2} condition that lasts 1 round and a {@condition slowed 1} condition that lasts for 6 rounds, you'd be {@condition slowed 2} for the first round, and then you'd change to {@condition slowed 1} for the remaining 5 rounds of the second effect's duration. If something reduces the condition value, it reduces it for all conditions of that name affecting you. For instance, in this example above, if something reduced your {@condition slowed} value by 1, it would reduce the first condition from the example to {@condition slowed 1} and reduce the second to {@condition slowed 0}, removing it."
 					]
 				}
 			]

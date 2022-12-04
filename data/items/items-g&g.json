@@ -11,7 +11,7 @@
 				"consumable",
 				"gadget"
 			],
-			"usage": "attached to armor or traveler's clothing",
+			"usage": "attached <to armor or traveler's clothing>",
 			"bulk": 1,
 			"category": "Consumable",
 			"entries": [
@@ -120,7 +120,7 @@
 				"consumable",
 				"gadget"
 			],
-			"usage": "attached to a shield",
+			"usage": "attached <to a shield>",
 			"bulk": 1,
 			"category": "Consumable",
 			"entries": [
@@ -330,7 +330,7 @@
 				"coin": "gp",
 				"amount": 75
 			},
-			"usage": "attached to firearm (firing mechanism)",
+			"usage": "attached <to firearm (firing mechanism)>",
 			"category": "Customization",
 			"subCategory": "Firing Mechanism",
 			"appliesTo": [
@@ -740,7 +740,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -862,7 +862,7 @@
 			"name": "Backpack Ballista Bolts",
 			"source": "G&G",
 			"page": 63,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 1,
@@ -880,7 +880,7 @@
 			"name": "Backpack Catapult Stones",
 			"source": "G&G",
 			"page": 63,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 1,
@@ -1720,7 +1720,7 @@
 				"coin": "gp",
 				"amount": 10
 			},
-			"usage": "attached to firearm (firing mechanism)",
+			"usage": "attached <to firearm (firing mechanism)>",
 			"category": "Consumable",
 			"entries": [
 				"These spring-loaded inserts can be fitted into the breech of a double-barreled firearm over the course of 10 minutes or during the firearm's daily maintenance. After the weapon is fired, the ejectors hasten the reloading process by ejecting the spent detritus from the fired rounds.",
@@ -1731,7 +1731,7 @@
 			"name": "Camouflage Suit",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 3,
 			"traits": [
 				"uncommon"
@@ -2321,7 +2321,7 @@
 			"name": "Concealed Holster",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"level": 3,
 			"price": {
 				"coin": "gp",
@@ -2536,7 +2536,7 @@
 				"divination",
 				"magical"
 			],
-			"usage": "attached to firearm or crossbow (scope)",
+			"usage": "attached <to firearm or crossbow (scope)>",
 			"bulk": "L",
 			"category": "Customization",
 			"subCategory": "Scope",
@@ -3005,7 +3005,7 @@
 			"name": "Earplugs",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 1
@@ -3627,7 +3627,7 @@
 			"name": "Firearm Cleaning Kit",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 1
@@ -5238,7 +5238,7 @@
 				"coin": "gp",
 				"amount": 120
 			},
-			"usage": "attached to firearm",
+			"usage": "attached <to firearm>",
 			"bulk": 1,
 			"category": "Customization",
 			"entries": [
@@ -5266,7 +5266,7 @@
 			"bulk": "L",
 			"category": "Held",
 			"entries": [
-				"This dubious weapon gets its name from the fact that it's typically crafted with multiple false barrels so that it's more difficult for enemies to predict the weapon's angle of fire from the four working barrels. Most of the time, this gun functions as a {@runeItem pepperbox|G&G|+1 potency|striking|} with {@trait capacity <4>} instead of {@trait capacity <3>}, albeit one with a complicated loading mechanism involving rotating the barrels. In a pinch though, all four of the real barrels can be fired simultaneously.",
+				"This dubious weapon gets its name from the fact that it's typically crafted with multiple false barrels so that it's more difficult for enemies to predict the weapon's angle of fire from the four working barrels. Most of the time, this gun functions as a {@runeItem pepperbox|G&G|+1 weapon potency||striking|} with {@trait capacity <4>} instead of {@trait capacity <3>}, albeit one with a complicated loading mechanism involving rotating the barrels. In a pinch though, all four of the real barrels can be fired simultaneously.",
 				{
 					"type": "ability",
 					"activity": {
@@ -5470,7 +5470,7 @@
 				"magical",
 				"transmutation"
 			],
-			"usage": "attached to firearm (scope)",
+			"usage": "attached <to firearm (scope)>",
 			"bulk": "L",
 			"category": "Customization",
 			"subCategory": "Scope",
@@ -5533,7 +5533,7 @@
 				"divination",
 				"magical"
 			],
-			"usage": "attached to firearm or crossbow (scope)",
+			"usage": "attached <to firearm or crossbow (scope)>",
 			"bulk": "L",
 			"category": "Customization",
 			"subCategory": "Scope",
@@ -6246,7 +6246,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"Choose a creature within 60 feet and roll a percentile die on the table below to determine the pistol's effect. If an entry lists a spell, the pistol Casts that Spell at the indicated level (or at its lowest level, if no level is listed). You make any decisions for a spell cast by the pistol unless otherwise indicated, except that it must only target the creature you chose, or the creature you chose must be the center of the spell's area, if it has an area but no targets. The only exception to the limitation on targeting is if the effect specifically states it targets you. If the spell's range is less than 60 feet, increase the range to 60 feet.",
@@ -6334,7 +6334,7 @@
 			"name": "Practice Targets",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 2,
@@ -6455,7 +6455,7 @@
 			"name": "Repeating Magazine",
 			"source": "G&G",
 			"page": 63,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 9,
@@ -6495,7 +6495,7 @@
 			"name": "Round",
 			"source": "G&G",
 			"page": 150,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"alchemical"
 			],
@@ -6515,7 +6515,7 @@
 			"name": "Round",
 			"source": "G&G",
 			"page": 150,
-			"type": "Equipment",
+			"type": "Item",
 			"traits": [
 				"alchemical"
 			],
@@ -6571,7 +6571,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The Rowan Rifle fires a 60-foot line of liquid djezet that wraps around all creatures in the affected area before hardening, which impedes them with metallic vines unless the affected creature succeeds at a DC 35 Reflex save. A creature who fails the save takes a \u201315-foot circumstance penalty to their Speeds, and a creature who critically fails is {@condition immobilized}. A creature who succeeds at a DC 35 {@action Escape} check ends this effect. Otherwise, the djezet vines last for 10 minutes before crumbling away."
@@ -6623,7 +6623,7 @@
 				"coin": "gp",
 				"amount": 900
 			},
-			"usage": "attached to firearm (scope)",
+			"usage": "attached <to firearm (scope)>",
 			"bulk": "L",
 			"category": "Customization",
 			"subCategory": "Scope",
@@ -6663,7 +6663,7 @@
 				"coin": "gp",
 				"amount": 3000
 			},
-			"usage": "attached to firearm or crossbow (scope)",
+			"usage": "attached <to firearm or crossbow (scope)>",
 			"bulk": "L",
 			"category": "Customization",
 			"subCategory": "Scope",
@@ -6883,7 +6883,7 @@
 			"name": "Silencer",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 1
@@ -7034,7 +7034,7 @@
 				"talisman",
 				"transmutation"
 			],
-			"usage": "affixed to a two-handed firearm or",
+			"usage": "affixed to a two-handed firearm or crossbow",
 			"bulk": "\u2013",
 			"activate": {
 				"activity": {
@@ -8242,7 +8242,7 @@
 			"name": "Tripod",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 2
@@ -8302,7 +8302,7 @@
 				"coin": "gp",
 				"amount": 600
 			},
-			"usage": "attached to firearm (firing mechanism)",
+			"usage": "attached <to firearm (firing mechanism)>",
 			"category": "Customization",
 			"subCategory": "Firing Mechanism",
 			"appliesTo": [
@@ -8357,7 +8357,7 @@
 			"name": "Waterproof Firearm Carrying Case",
 			"source": "G&G",
 			"page": 178,
-			"type": "Equipment",
+			"type": "Item",
 			"price": {
 				"coin": "sp",
 				"amount": 2
@@ -8412,7 +8412,7 @@
 				"rare",
 				"clockwork"
 			],
-			"usage": "attached to a thrown weapon",
+			"usage": "attached <to a thrown weapon>",
 			"category": "Customization",
 			"subCategory": "Weapon",
 			"entries": [

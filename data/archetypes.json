@@ -1,6 +1,17 @@
 {
 	"archetype": [
 		{
+			"name": "Shieldmarshal",
+			"source": "LOIL",
+			"page": 108,
+			"rarity": "uncommon",
+			"entries": [
+				"Gunplay isn't enough to uphold Alkenstar's laws; when firearms are readily available to criminals and the corrupt, relying solely on firepower isn't always the best approach to law enforcement. To stay ahead in their never-ending war against crime and espionage, Alkenstar's elite shieldmarshals instead refine their skills of marksmanship and situational awareness into a potent blend of operational acumen and special tactics. Shieldmarshals study forensics, engineering, law, and etiquette to navigate the city's volatile conditions and politics; advanced lessons include specialized training to deal with criminals using technology as well as tactical analysis for maneuvering in congested urban environments.",
+				"You've undergone specialized training to help you keep the peace in Alkenstar's sprawling streets. Urban operations are dreadfully complex endeavors; closed doors and high walls conceal suspects and belligerents, while every alley and corridor could be a fatal funnel. As a shieldmarshal, you overcome these complexities by reducing and adapting to uncertain elements. You methodically observe your surroundings, make swift decisions, and actualize best practices to pacify hostiles, rescue hostages, and otherwise meet overall mission objectives."
+			],
+			"dedicationLevel": 4
+		},
+		{
 			"name": "Sleepwalker",
 			"source": "DA",
 			"page": 206,
@@ -626,7 +637,7 @@
 									"style": "pf2-stat pf2-stat__section--wide",
 									"entries": [
 										"{@b Catharsis Trigger} An enemy makes you {@condition frightened}.",
-										"{@b Catharsis Activation} Increase your {@condition frightened} value by 1, to a maximum of {@condition frightened} 4.",
+										"{@b Catharsis Activation} Increase your {@condition frightened} value by 1, to a maximum of {@condition frightened 4}.",
 										"{@b Emotional Fervor} You don't take the status penalty from the {@condition frightened} condition to your spell DCs or spell attack bonus. Instead, you gain a status bonus to spell attack rolls equal to the penalty you would've taken, and your foes take the same status penalty to their saving throws against your spells. Any other statistic takes the status penalty as normal. Spell: {@spell fear}",
 										"{@b Emotional Fallout} You are {@condition fleeing} for 2 rounds, running from the source of the {@condition frightened} condition that triggered your Catharsis. If that source is no longer present, you instead flee from the position where you were at the start of your emotional fallout.",
 										"{@b Focus Spell} {@spell waking nightmare}"
@@ -647,7 +658,7 @@
 										"{@b Catharsis Trigger} You start your first turn in an encounter against your emotional focus or one of their followers. If the encounter includes multiple eligible followers and doesn't include your actual emotional focus, choose one of the followers to act as your emotional focus for this encounter (or until your actual emotional focus shows up).",
 										"{@b Catharsis Activation} You can {@action Step} or {@action Stride}. You must end this movement closer to your emotional focus.",
 										"{@b Emotional Fervor} Your emotional focus is {@condition flat-footed} to you and takes a \u20132 status penalty to saves against your spells. You're {@condition flat-footed} to your emotional focus and take a \u20132 status penalty to saves against it. Spell: {@spell blood vendetta|APG}",
-										"{@b Emotional Fallout} You become {@condition stunned} 2.",
+										"{@b Emotional Fallout} You become {@condition stunned 2}.",
 										"{@b Focus Spell} {@spell cry of destruction}"
 									]
 								}
@@ -742,7 +753,7 @@
 										"{@b Catharsis Trigger} An ally within 30 feet drops to 0 Hit Points.",
 										"{@b Catharsis Activation} You {@action Step} or {@action Stride}. You must end this movement closer to the triggering ally",
 										"{@b Emotional Fervor} Any spell you cast that restores Hit Points to the triggering ally gets a status bonus to the Hit Points healed equal to the spell's level, or double the spell's level if the ally is at 0 Hit Points. Spell: {@spell warrior's regret|SoM}",
-										"{@b Emotional Fallout} Your emotional weight crushes you, leaving you {@condition stupefied} 2 until you Settle your Emotions.",
+										"{@b Emotional Fallout} Your emotional weight crushes you, leaving you {@condition stupefied 2} until you Settle your Emotions.",
 										"{@b Focus Spell} {@spell healer's blessing}"
 									]
 								}
@@ -2828,7 +2839,7 @@
 								],
 								[
 									"8",
-									"{@b Oppressive Voice} ({@trait divination}, {@trait mental}, {@trait nonlethal}) The voice of your muse, your deity, an ancestor, or another appropriate entity suddenly overwhelms your mind. You must attempt a Will saving throw. You take {@scaledice 1d4|1-10|1d4} mental damage per spell level with a basic Will save. On a failure, you're also {@condition stunned} 1 ({@condition stunned} 2 on a critical failure)."
+									"{@b Oppressive Voice} ({@trait divination}, {@trait mental}, {@trait nonlethal}) The voice of your muse, your deity, an ancestor, or another appropriate entity suddenly overwhelms your mind. You must attempt a Will saving throw. You take {@scaledice 1d4|1-10|1d4} mental damage per spell level with a basic Will save. On a failure, you're also {@condition stunned 1} ({@condition stunned 2} on a critical failure)."
 								],
 								[
 									"9",
@@ -2848,7 +2859,7 @@
 								],
 								[
 									"13",
-									"{@b Tinge of Terror} ({@trait emotion}, {@trait enchantment}, {@trait fear}, {@trait mental}) All creatures within 20 feet are affected by powerful fright. They attempt a Will save, becoming {@condition frightened} 1 on a failure or {@condition frightened} 2 on a critical failure."
+									"{@b Tinge of Terror} ({@trait emotion}, {@trait enchantment}, {@trait fear}, {@trait mental}) All creatures within 20 feet are affected by powerful fright. They attempt a Will save, becoming {@condition frightened 1} on a failure or {@condition frightened 2} on a critical failure."
 								],
 								[
 									"14",
@@ -2856,7 +2867,7 @@
 								],
 								[
 									"15",
-									"{@b Life Sap} ({@trait necromancy}) The surge drains your life force and strength. You become {@condition drained} 1 and {@condition doomed} 1, and you are {@condition enfeebled} 2 for 1 minute."
+									"{@b Life Sap} ({@trait necromancy}) The surge drains your life force and strength. You become {@condition drained 1} and {@condition doomed 1}, and you are {@condition enfeebled 2} for 1 minute."
 								],
 								[
 									"16",

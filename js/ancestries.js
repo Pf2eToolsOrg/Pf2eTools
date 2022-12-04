@@ -552,7 +552,7 @@ class AncestriesPage extends BaseComponent {
 
 		const $lnk = $(`<a href="#${hash}" class="lst--border">
 			<span class="bold col-8 pl-0">${anc.name}</span>
-			<span class="col-4 text-center ${Parser.sourceJsonToColor(anc.source)} pr-0" title="${Parser.sourceJsonToFull(anc.source)}" ${BrewUtil.sourceJsonToStyle(anc.source)}>${source}</span>
+			<span class="col-4 text-center ${Parser.sourceJsonToColor(anc.source)}" title="${Parser.sourceJsonToFull(anc.source)}" ${BrewUtil.sourceJsonToStyle(anc.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
@@ -582,7 +582,7 @@ class AncestriesPage extends BaseComponent {
 			<span class="bold col-5 pl-0">${feat.name}</span>
 			<span class="col-1-5 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 			<span class="col-4 text-center">${feat._slPrereq}</span>
-			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;

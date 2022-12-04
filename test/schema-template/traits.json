@@ -21,6 +21,12 @@
 					"page": {
 						"type": "integer"
 					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
 					"categories": {
 						"type": "array",
 						"items": {
@@ -67,6 +73,7 @@
 					},
 					"variable": {
 						"type": "boolean",
+						"const": true,
 						"description": "Whether the trait has a variable value, which is enclosed in <these 'brackets'>.\nMainly for schema generation."
 					},
 					"otherSources": {

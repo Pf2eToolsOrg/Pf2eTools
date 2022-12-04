@@ -61,6 +61,7 @@ class PageFilterFeats extends PageFilter {
 
 		feat._fType = [];
 		if (Renderer.trait.filterTraitsByCats(feat._fTraits, ["Ancestry & Heritage"]).length) feat._fType.push("Ancestry");
+		if (feat.featType?.ancestry?.length) feat._fType.push("Ancestry");
 		if (feat._fTraits.includes("Archetype")) feat._fType.push("Archetype");
 		if (Renderer.trait.filterTraitsByCats(feat._fTraits, ["Class"]).length) feat._fType.push("Class");
 		if (feat._fTraits.includes("General")) feat._fType.push("General");

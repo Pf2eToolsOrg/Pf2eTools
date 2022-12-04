@@ -44,7 +44,7 @@ class BestiaryPage extends ListPage {
 			<span class="ecgen__name bold col-4-2 pl-0">${cr.name}</span>
 			<span class="type col-4-1">${type}</span>
 			<span class="col-1-7 text-center">${level}</span>
-			<span title="${Parser.sourceJsonToFull(cr.source)}" class="col-2 text-center ${Parser.sourceJsonToColor(cr.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cr.source)}>${source}</span>
+			<span title="${Parser.sourceJsonToFull(cr.source)}" class="col-2 text-center ${Parser.sourceJsonToColor(cr.source)}" ${BrewUtil.sourceJsonToStyle(cr.source)}>${source}</span>
 		</a>`;
 		eleLi.firstElementChild.addEventListener("click", evt => this._handleBestiaryLinkClick(evt));
 
@@ -259,7 +259,7 @@ class BestiaryPage extends ListPage {
 			const toRender = this._lastRendered.creature != null && this._lastRendered.isScaled ? this._lastRendered.creature : cr;
 
 			if (evt.shiftKey) {
-				let $content = "";
+				let $content = ""
 				if (evt.ctrlKey) {
 					$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
 				} else {
@@ -269,7 +269,7 @@ class BestiaryPage extends ListPage {
 					$content,
 					Renderer.hover.getWindowPositionFromEvent(evt),
 					{
-						title: `${toRender._displayName || toRender.name} \u2014 Source Data`,
+						title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
 						isPermanent: true,
 						isBookContent: true,
 					},

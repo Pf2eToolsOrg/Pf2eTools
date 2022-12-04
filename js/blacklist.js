@@ -50,6 +50,7 @@ class Blacklist {
 			"deities.json",
 			"languages.json",
 			"places.json",
+			"relicgifts.json",
 			"vehicles.json",
 			"traits.json",
 		];

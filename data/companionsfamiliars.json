@@ -1,6 +1,62 @@
 {
 	"companion": [
 		{
+			"name": "Water Wraith",
+			"source": "LOIL",
+			"page": 107,
+			"type": "Companion",
+			"fluff": [
+				"Though they originate in the Mwangi Expanse, reptiles known as water wraiths migrated to the Impossible Lands in ages past. Driven to local extinction in the Nex-Geb war, they recently returned to lurk in the mighty Ustradi river. Alkenstar reconnaissance teams venturing into the inhospitable Mana Wastes value water wraiths both for their sharp instincts in finding water sources as well as their color-changing abilities that can transmit visual signals clearly over long distances\u2014a valuable tactical asset for Alkenstar's military intelligence efforts."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "survival",
+			"special": "The water wraith can hold its breath for about 2 hours.",
+			"speed": {
+				"walk": 20,
+				"swim": 25
+			},
+			"support": "Your water wraith hisses and changes colors swiftly in an iridescent clash, overwhelming your foes in an avalanche of shades and hues. Until the start of your next turn, each time you hit a creature within your water wraith's reach, the creature is {@condition dazzled} for 1 round.",
+			"maneuver": {
+				"name": "Gulp Blood",
+				"source": "LOIL",
+				"page": 107,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"requirements": "The water wraith's last action was a successful jaws attack against a foe.",
+				"entries": [
+					"The water wraith gains {@dice 2d8} temporary Hit Points that last for 1 round, and the foe takes {@dice 2d8} {@condition persistent damage||persistent bleed damage}. If the water wraith has a specialization, the water wraith instead gains {@dice 3d8} temporary Hit Points, and the target takes 3d6 {@condition persistent damage||persistent bleed damage}. If the targeted creature has absolutely no vital fluids, this ability might not function, at the GM's discretion."
+				]
+			}
+		},
+		{
 			"name": "Ape",
 			"source": "APG",
 			"page": 144,
@@ -37,7 +93,7 @@
 				"walk": 25,
 				"climb": 25
 			},
-			"support": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes {@condition frightened} 1.",
+			"support": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes {@condition frightened 1}.",
 			"maneuver": {
 				"name": "Frightning Display",
 				"source": "APG",
@@ -1026,7 +1082,7 @@
 			"speed": {
 				"walk": 40
 			},
-			"support": "The hyena mockingly yowls at your enemies and bites at them when you create an opening. Until the start of your next turn, each time you hit a creature in the hyena's reach with a {@action Strike}, the creature becomes {@condition frightened} 1.",
+			"support": "The hyena mockingly yowls at your enemies and bites at them when you create an opening. Until the start of your next turn, each time you hit a creature in the hyena's reach with a {@action Strike}, the creature becomes {@condition frightened 1}.",
 			"maneuver": {
 				"name": "Gnaw",
 				"source": "AoA5",
@@ -1615,7 +1671,7 @@
 				"walk": 10,
 				"fly": 45
 			},
-			"support": "The vulture retches and vomits onto a foe within 10 feet. Until the start of your next turn, if you hit and deal damage to the target, the target must succeed at a Fortitude save or become {@condition sickened} 1 ({@condition sickened} 2 on a critical failure). The DC of the Fortitude save is 12 (or 14, if the vulture is a {@quickref specialized animal companion||0|Specialized Animal Companions}) + your level + the vulture's Constitution modifier.",
+			"support": "The vulture retches and vomits onto a foe within 10 feet. Until the start of your next turn, if you hit and deal damage to the target, the target must succeed at a Fortitude save or become {@condition sickened 1} ({@condition sickened 2} on a critical failure). The DC of the Fortitude save is 12 (or 14, if the vulture is a {@quickref specialized animal companion||0|Specialized Animal Companions}) + your level + the vulture's Constitution modifier.",
 			"maneuver": {
 				"name": "Feast on the Fallen",
 				"source": "AoA5",
@@ -1845,6 +1901,69 @@
 		}
 	],
 	"familiar": [
+		{
+			"name": "Ceru",
+			"source": "LOIL",
+			"page": 220,
+			"type": "Familiar",
+			"traits": [
+				"n",
+				"tiny",
+				"beast"
+			],
+			"requires": 4,
+			"granted": [
+				"{@familiarAbility cantrip connection} ({@spell guidance}, {@spell mage hand})",
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility touch telepathy|APG}"
+			],
+			"abilities": [
+				{
+					"name": "Created Magic",
+					"entries": [
+						"Your ceru familiar grants you the {@spell mage hand} and {@spell guidance} cantrips via the {@familiarAbility cantrip connection} granted ability. If one or more of these cantrips isn't on your spell list, you can replace the cantrip or cantrips not on your spell list with a cantrip or cantrips from your spell list instead."
+					]
+				},
+				{
+					"name": "Turn of Fate",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divination"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"range": {
+						"unit": "feet",
+						"number": 30
+					},
+					"entries": [
+						"Your ceru shifts the scales of fortune for one target's next attempt at an attack roll, saving throw, or skill check. If targeted with bad fortune, the target attempts a Will save against your class DC or spell DC, whichever is higher, with effects depending on the result of their save; this is a {@trait misfortune} effect. If targeted with good fortune, the target rolls twice and uses the better result; this is a {@trait fortune} effect. Regardless of outcome, targets are immune to Turn of Fate for one day.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": [
+									"The target is unaffected."
+								],
+								"Failure": [
+									"The target rolls twice and uses the worse result."
+								],
+								"Critical Failure": [
+									"As failure, except the target is affected for the next three attempts."
+								]
+							}
+						}
+					]
+				}
+			],
+			"fluff": [
+				"Cerus are mortal-made creatures in the shape of tiny, blue elephants with spikes on their feet, tail, and ears. They're highly sought-after amongst circles of the affluent."
+			]
+		},
 		{
 			"name": "Polong",
 			"source": "BotD",
@@ -2500,7 +2619,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
+						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled 1} and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
 						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
 					]
 				}
@@ -2979,7 +3098,7 @@
 			"page": 218,
 			"type": "Master",
 			"entries": [
-				"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this."
+				"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to regain 1 Focus Point, up to your usual maximum. You must have a focus pool to select this."
 			]
 		},
 		{
@@ -3027,8 +3146,8 @@
 			"alignment": "must be good, usually neutral good",
 			"home": "Ethereal Plane or Negative Energy Plane",
 			"size": [
-				"Medium",
-				"Small"
+				"medium",
+				"small"
 			],
 			"suggestedAttacks": [
 				"claw (slashing), fist (bludgeoning), jaws (piercing)"
@@ -3699,7 +3818,7 @@
 									"entries": {
 										"Critical Success": "The target is unaffected.",
 										"Success": "The target can't use reactions.",
-										"Failure": "The target is {@condition slowed} 1 and can't use reactions.",
+										"Failure": "The target is {@condition slowed 1} and can't use reactions.",
 										"Critical Failure": "As failure, and the target is also {@condition confused} for 1 round. The confusion can't be extended, but the other effects can."
 									}
 								}

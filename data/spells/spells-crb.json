@@ -13880,8 +13880,8 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +36, unless your own modifier is higher. You also gain specific abilities based on the type of incarnation you choose:",
-						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; {@b Melee} {@as 1} vines (reach <30 feet>, versatile P), {@b Damage} {@damage 6d8+12} bludgeoning; {@b Ranged} {@as 1} thorns (range <100 feet>), {@b Damage} {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
-						"{@bold Kaiju} Speed 50 feet; resistance 5 to physical damage; {@b Melee} {@as 1} jaws (reach <30 feet>), {@b Damage} {@damage 6d10+10} piercing; {@b Melee} {@as 1} claws (agile, reach <30 feet>), {@b Damage} {@damage 6d8+8} slashing; {@b Melee} {@as 1} foot (agile, reach <15 feet>), {@b Damage} {@damage 6d6+10} bludgeoning; Unstoppable You are immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Trample {@as 3} You move up to double your Speed and move through the spaces of Huge or smaller creatures, trampling each creature whose space you enter. A trampled creature takes foot damage with a basic Reflex save against your spell DC."
+						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; {@b Melee} {@as 1} vines ({@trait reach <30 feet>}, {@trait versatile <P>}), {@b Damage} {@damage 6d8+12} bludgeoning; {@b Ranged} {@as 1} thorns (range <100 feet>), {@b Damage} {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
+						"{@bold Kaiju} Speed 50 feet; resistance 5 to physical damage; {@b Melee} {@as 1} jaws ({@trait reach <30 feet>}), {@b Damage} {@damage 6d10+10} piercing; {@b Melee} {@as 1} claws (agile, reach <30 feet>), {@b Damage} {@damage 6d8+8} slashing; {@b Melee} {@as 1} foot (agile, reach <15 feet>), {@b Damage} {@damage 6d6+10} bludgeoning; Unstoppable You are immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Trample {@as 3} You move up to double your Speed and move through the spaces of Huge or smaller creatures, trampling each creature whose space you enter. A trampled creature takes foot damage with a basic Reflex save against your spell DC."
 					]
 				}
 			],
@@ -15033,8 +15033,8 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target takes double damage and is {@condition drained} 2.",
-						"Success": "The target takes full damage and is {@condition drained} 2."
+						"Critical Success": "The target takes double damage and is {@condition drained 2}.",
+						"Success": "The target takes full damage and is {@condition drained 2}."
 					}
 				}
 			],
@@ -16701,7 +16701,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"An infusion of positive energy grants a creature continuous healing. The target temporarily gains {@ability regeneration} 15, which restores 15 Hit Points to it at the start of each of its turns. While it has {@ability regeneration}, the target can't die from damage and its {@condition dying} condition can't increase to a value that would kill it (this stops most creatures from going beyond {@condition dying} 3), though if its {@condition wounded} value becomes 4 or higher, it stays {@condition unconscious} until its wounds are treated. If the target takes acid or fire damage, its regeneration deactivates until after the end of its next turn.",
+				"An infusion of positive energy grants a creature continuous healing. The target temporarily gains {@ability regeneration} 15, which restores 15 Hit Points to it at the start of each of its turns. While it has {@ability regeneration}, the target can't die from damage and its {@condition dying} condition can't increase to a value that would kill it (this stops most creatures from going beyond {@condition dying 3}), though if its {@condition wounded} value becomes 4 or higher, it stays {@condition unconscious} until its wounds are treated. If the target takes acid or fire damage, its regeneration deactivates until after the end of its next turn.",
 				"Each time the creature regains Hit Points from regeneration, it also regrows one damaged or ruined organ (if any). During the spell's duration, the creature can also reattach severed body parts by spending an {@action Interact} action to hold the body part to the area it was severed from."
 			],
 			"heightened": {
@@ -18969,7 +18969,7 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
 						"Failure": "The creature takes full damage and is {@condition deafened} for 1 round.",
-						"Critical Failure": "The creature takes double damage, is {@condition deafened} for 1 minute, and is {@condition stunned} 1."
+						"Critical Failure": "The creature takes double damage, is {@condition deafened} for 1 minute, and is {@condition stunned 1}."
 					}
 				}
 			],
@@ -19665,8 +19665,8 @@
 						[
 							"4",
 							"Blue",
-							"{@condition Clumsy} 1 for 1 round",
-							"{@condition Clumsy} 2 for 1 round"
+							"{@condition Clumsy 1} for 1 round",
+							"{@condition Clumsy 2} for 1 round"
 						]
 					]
 				}

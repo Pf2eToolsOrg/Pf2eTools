@@ -28,7 +28,7 @@ class CompanionsFamiliarsPage extends ListPage {
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-6 pl-0">${it.name}</span>
 			<span class="col-3 text-center">${it.type}</span>
-			<span class="col-3 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-3 ${Parser.sourceJsonToColor(it.source)} text-center" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(

@@ -32,7 +32,7 @@ class DeitiesPage extends ListPage {
 			<span class="col-2 text-center">${g.category}</span>
 			<span class="col-2 text-center">${alignment}</span>
 			<span class="col-3 ${!g._fDomains || g._fDomains[0] === VeCt.STR_NONE ? `list-entry-none` : ""}">${domains}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)}" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -127,18 +127,21 @@ function renderStatblock (deity) {
 		$content.append(Renderer.getRenderedLore({lore: await pGetFluff()}))
 	}
 	const buildInfoTab = async () => {
-		let quickRulesType;
-		if (deity.intercession) {
-			quickRulesType = "deityWithIntercession"
-		} else if (deity.category === "Pantheon") {
-			quickRulesType = "deityPantheon"
-		} else if (deity.category === "Philosophy") {
-			quickRulesType = "deityPhilosophy"
+		if (deity.category === "Philosophy") {
+			const quickRules = await Renderer.utils.pGetQuickRules("deityPhilosophy");
+			$content.append(quickRules);
 		} else {
-			quickRulesType = "deity"
+			const quickRules = await Renderer.utils.pGetQuickRules("deity");
+			$content.append(quickRules);
+			if (deity.category === "Pantheon") {
+				const quickRulesExtra = await Renderer.utils.pGetQuickRules("deityPantheon");
+				$content.append(quickRulesExtra);
+			}
+			if (deity.intercession) {
+				const quickRulesExtra = await Renderer.utils.pGetQuickRules("deityIntercession");
+				$content.append(quickRulesExtra);
+			}
 		}
-		const quickRules = await Renderer.utils.pGetQuickRules(quickRulesType);
-		$content.append(quickRules);
 	}
 	const buildImageTab = async () => {
 		$content.append(Renderer.getImage(deity))

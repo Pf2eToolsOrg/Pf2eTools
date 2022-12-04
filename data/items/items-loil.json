@@ -1,0 +1,1061 @@
+{
+	"item": [
+		{
+			"name": "Pocket Watch",
+			"source": "LOIL",
+			"page": 106,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"uncommon"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Adventuring Gear",
+			"entries": [
+				"This timepiece is a marvel of clockwork and miniaturization; its gears, arbor, and mainspring are immaculately crafted and tuned to maximize precision and reduce time loss. This pocket watch has the properties of a {@item clockwork dial|LOPS}, except it has a maximum duration of 24 hours and is available to characters from Alkenstar."
+			]
+		},
+		{
+			"name": "Alkenstar Ice Wine",
+			"source": "LOIL",
+			"page": 106,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison",
+				"positive"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Poison",
+			"entries": [
+				"This bottle of delicately sweet ice wine has the properties of alcohol (Pathfinder Gamemastery Guide 120). Made exclusively from grapes frozen in the Mana Wastes' erratic surge storms, Alkenstar ice wine finds a ready market among Geb, though undead are still immune to the drug's listed effects.",
+				"The listed price is for a mediocre vintage, but finer vintages are higher level and commensurately more expensive."
+			]
+		},
+		{
+			"name": "Palanquin of Night",
+			"source": "LOIL",
+			"page": 178,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"conjuration",
+				"magical",
+				"structure"
+			],
+			"price": {
+				"amount": 825,
+				"coin": "gp"
+			},
+			"bulk": "L (when not activated)",
+			"category": "Other",
+			"entries": [
+				"This small square of dark blue fabric appears to be painted with a depiction of the night sky, shifting each day to match the sky above Geb the previous night.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"entries": [
+						"The fabric unfolds into a dark palanquin large enough to comfortably hold two Medium creatures. Four spectral bearers appear at the corners of the palanquin, capable of carrying it effortlessly over most types of terrain as long as the terrain is relatively flat and devoid of hazards. Spectral bearers have the statistics of an unseen servant, except they're strong enough to carry the palanquin and its occupants. They move generally along a basic set of directions you indicate upon activation, which can include turns onto various streets, but they don't take other creatures' feelings into account and can be inconsiderate to passersby in an inhabited area as they relentlessly move you forward. The bearers move slowly but steadily along their simple directions. While the palanquin is perfectly suitable for overland travel, the bearers' imprecise movements and the requirement to reactivate the palanquin to change destinations make it unsuited for a combat encounter or other situation where seconds and precise movements count.",
+						"The palanquin's interior ceiling is painted with the same night sky pattern as the cloth, and dark curtains hang over the windows. The palanquin protects its occupants from sunlight and severe heat and cold (though not extreme or incredible heat or cold) as well as blocks most non-damaging forms of weather. The palanquin is only as sturdy as a standard wooden carriage\u2014if it would be destroyed, it instantly reverts to a square of fabric and can't be Activated again for 1 month.",
+						"You can return the palanquin to its original shape by using an {@action Interact} action to command the spectral bearers to collapse it. They disappear the moment it returns to its fabric form."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cube of Nex",
+			"source": "LOIL",
+			"page": 304,
+			"type": "Item",
+			"level": 25,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"category": "Artifact",
+			"entries": [
+				"The Cube of Nex acts as a {@item Lesser Cube of Nex|LOIL} except it suppresses all magic within 5 feet of it with the effects of a 10th-level antimagic field spell, instead of just one school. However, spells you cast and magic items you wield ignore the {@spell antimagic field} from the Cube of Nex.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"A {@item cube of force|LOIL} or {@item Lesser Cube of Nex|LOIL} within 60 feet of you becomes inert. It can't be Activated, any current activation ends, and any constant abilities it has cease to function."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lesser Cube of Nex",
+			"source": "LOIL",
+			"page": 304,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"category": "Artifact",
+			"entries": [
+				"A Lesser Cube of Nex acts as a cube of force, but the effect lasts until you press the sixth face to {@action Dismiss} it, and the activation can be used once per hour. You must first {@action Dismiss} any previous activation before you use it again. Additionally, each Lesser Cube of Nex is attuned to a single school of magic. Within 5 feet of the Lesser Cube, all magic from that school is suppressed or impossible to cast, with the effects of a 10th-level {@spell antimagic field} spell. While there are eight Lesser Cubes of Nex, each of the artifacts is unique, as there's only one Lesser Cube of Nex for each school of magic."
+			]
+		},
+		{
+			"name": "Bottled Screams",
+			"source": "LOIL",
+			"page": 177,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 200,
+				"coin": "gp"
+			},
+			"usage": "held in one hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"The vengeful wails of a revenant, barely contained in this rattling jar, infuse your magic with all of their spite and malice. If a target fails its saving throw against your seal fate (Advanced Player's Guide 224) spell after you've added this catalyst, it takes {@damage 1d6} {@condition persistent damage} of the type chosen for the spell ({@dice 2d6} if it critically fails)."
+			]
+		},
+		{
+			"name": "Defiled Costa",
+			"source": "LOIL",
+			"page": 177,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"rare",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 900,
+				"coin": "gp"
+			},
+			"usage": "held in one hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This still-bloody rib was taken from a priest of {@deity Urgathoa} at the moment they passed into undeath and has a constant stench of decay. The first time any creature critically fails its saving throw against a {@spell mask of terror} spell cast using this catalyst, it also takes {@damage 6d10} mental damage, with a basic Fortitude save against the spell's DC, as it lives through the memory of having its rib torn from its body. Once any creature takes this damage, the defiled costa's effect ends, and no other creatures take the damage, even if they critically fail."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"level": 17,
+					"price": {
+						"amount": 2500,
+						"coin": "gp"
+					},
+					"entries": [
+						"A creature who critically fails against this save is killed instantly. This effect has the {@trait incapacitation} trait."
+					],
+					"variantType": "greater"
+				}
+			]
+		},
+		{
+			"name": "Grave Token",
+			"source": "LOIL",
+			"page": 177,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 18,
+				"coin": "gp"
+			},
+			"usage": "held in one hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This simple charm is made from compacted grave dirt infused with bone dust. A {@spell harm} spell that's empowered by this catalyst can reach faraway targets. If the {@spell harm} spell is cast with 1 action, its range is 30 feet; if it's cast with 2 actions, its range is 60 feet. This has no effect on the three-action area version of harm, though in most cases, you don't have enough actions to Activate the token and cast a three-action harm anyway."
+			]
+		},
+		{
+			"name": "Unsullied Blood",
+			"source": "LOIL",
+			"page": 177,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"uncommon",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"usage": "held in one hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Blood offered from a willing donor was taken directly from the vein and stored in an ornate vial that keeps it as pure and red as the day it was extracted. When this catalyst is added to a {@spell vampiric touch} spell of up to 4th level, instead of gaining temporary Hit Points based on the damage dealt, you recover half of the damage dealt as Hit Points."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"level": 5,
+					"price": {
+						"amount": 30,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "lesser"
+				},
+				{
+					"level": 8,
+					"price": {
+						"amount": 85,
+						"coin": "gp"
+					},
+					"entries": [
+						"You can add the catalyst to a {@spell vampiric touch} spell up to 5th level. In addition to the effects of lesser unsullied blood, if the amount of Hit Points that would be restored by the spell exceeds your Hit Point maximum, you gain the excess as temporary Hit Points."
+					],
+					"variantType": "moderate"
+				},
+				{
+					"level": 10,
+					"price": {
+						"amount": 200,
+						"coin": "gp"
+					},
+					"entries": [
+						"As moderate, except you can add the catalyst to a {@spell vampiric touch} or {@spell vampiric maiden|APG} spell of up to 6th level."
+					],
+					"variantType": "greater"
+				},
+				{
+					"level": 14,
+					"price": {
+						"amount": 900,
+						"coin": "gp"
+					},
+					"entries": [
+						"As moderate, except you can add the catalyst to a vampiric touch, {@spell vampiric maiden|APG} or {@spell vampiric exsanguination} spell of any level."
+					],
+					"variantType": "major"
+				}
+			]
+		},
+		{
+			"name": "Vulture's Wing",
+			"source": "LOIL",
+			"page": 178,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 200,
+				"coin": "gp"
+			},
+			"usage": "held in one hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This fan of vulture feathers scatters on an unnatural gust of wind. If this catalyst is used to cast a {@spell ray of enfeeblement} spell that has been heightened to at least 5th level, instead of targeting a single creature, you cast the spell in a 30-foot-area cone. You don't make a spell attack roll, instead affecting all creatures within the area with the effect the spell would normally have on a hit. This means creatures within the area must attempt a Fortitude save to determine whether they're {@condition enfeebled}."
+			]
+		},
+		{
+			"name": "Doctrine of Blissful Eternity",
+			"source": "LOIL",
+			"page": 178,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"grimoire",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 340,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"The bones of small animals decorate the cover of this tome, creating a pattern that resembles a gross perversion of {@deity Pharasma}'s holy symbol.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "An undead minion you summoned or created using a spell prepared from this grimoire takes damage that would bring it to 0 Hit Points",
+					"entries": [
+						"You call out and demand the undead to remain, reaching out with tendrils of negative energy that preserves your minion so it might continue to serve you. Expend a spell slot in which you've prepared a {@spell harm} spell to restore {@dice 1d8} Hit Points to your undead minion per level of the expended spell slot, before applying the damage. If this prevents the minion from being reduced to 0 Hit Points, it isn't destroyed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sunflower Censer",
+			"source": "LOIL",
+			"page": 179,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"rare",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 480,
+				"coin": "gp"
+			},
+			"usage": "worn or held in one hand",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This gold-and-ivory incense burner always emits a pleasant, floral-scented smoke without any need to be refilled. It has a chain that can be easily affixed to a belt or bag, allowing it to be worn without a free hand. As long as the censer is burning, the bearer benefits from the {@spell undetectable alignment} spell. They also don't appear undead to divination spells or abilities, or to senses such as lifesense, unless those abilities successfully counteract the censer. The censer can be lit or extinguished with an {@action Interact} action.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"Smoke bellows from the censer with the effects of an obscuring mist centered on you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tyrant's Writs",
+			"source": "LOIL",
+			"page": 179,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"grimoire",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"A spirited debate persists among scholars on whether the eponymous tyrant of this grimoire actually refers to Tar-Baphon, the necromancer Geb, or even the goddess {@deity Urgathoa} herself. This grimoire appears at first to be a series of writs that makes arrogant demands of the reader, those around them, and the universe. Anyone who gives these writings more than a cursory look realizes the writs hold spells much like any other grimoire, with the {@spell animate dead|APG} spell being particularly prominent. Tyrant's writs grants you the ability to demand more from the undead you animate.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"metamagic"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to {@action Cast a Spell} to cast an {@spell animate dead|APG} spell prepared with tyrant's writs, you can choose one of the following additional benefits to grant the summoned undead.",
+						{
+							"type": "list",
+							"items": [
+								"Bloody The undead gains fast healing equal to its level.",
+								"Explosive When it reaches 0 Hit Points, the undead explodes, dealing {@damage 4d6} fire damage to adjacent creatures, with a basic Reflex save using the {@spell animate dead|APG} spell's DC. As normal, since the {@spell final sacrifice|APG} spell doesn't reduce the target to 0 Hit Points, it doesn't cause this explosion.",
+								"Necrotic Speed The undead gains a +10-foot status bonus to all its Speeds.",
+								"Rotten Any living creature who starts its turn adjacent to the undead who isn't at full Hit Points takes {@damage 1d6} poison damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Condensed Mana",
+			"source": "LOIL",
+			"page": 234,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"rare",
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"amount": 69,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Condensed mana is a crystal vial filled with concentrated miasma from the Mana Wastes. The colors shift abruptly and unpredictably within and the opening of the bottle is sealed tighter than any other potion or alchemical item, emphasizing its dangers.",
+				"On a successful {@action Strike}, the creature takes 1 force damage. Then, roll on the Wellspring Surge table (Secrets of Magic 250). The result affects all creatures within the emanation indiscriminately. For the purpose of determining the effects of the surge, use a spell level of 4 and a DC of 23. The person Striking with this vial is considered to be the caster for the purposes of determining effects on the Mana Surge table. The emanation is centered on the target's space, and both the caster and the target of the wellspring surge are the target of the condensed mana. On a failed {@action Strike}, the surge only has an effect if it would normally affect an area; if you roll an effect that depends on a caster or a target, nothing happens.",
+				"If the effect normally doesn't have a DC, creatures affected by the surge or within the surge's area must attempt a DC 23 Reflex save instead. On a critical failure on any saving throw against condensed mana, the creature is {@condition stunned||stunned 1} by the wild energies of the surge.",
+				"Sometimes a wellspring surge's effects make it difficult to determine exactly who is affected. The GM makes the determination, basing it on creatures directly affected; for example, while many creatures can hear the music from the surge \"strike up the band,\" only the creature emanating the music is directly affected by it."
+			],
+			"craftReq": [
+				"You must be in or adjacent to an area of Mana Wastes miasma."
+			]
+		},
+		{
+			"name": "Cube of Force",
+			"source": "LOIL",
+			"page": 304,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 3000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"category": "Held",
+			"entries": [
+				"A cube of force is an enchanted cube that measures an inch across. While made from any hard material, the sides of a cube of force are decorated so that they can be distinguished by touch.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You hold the cube aloft and depress one of its six faces for several seconds. The cube creates six walls around you, creating a cube 10 feet on each side centered on you (typically centered on the top of your space if you're a Medium creature). If a creature or object overlaps any of these walls, that face of the cube doesn't appear; this also means if you're Huge or larger, the activation has no effect, as your space is larger than the cube would be. The duration and effect of the six walls depends on which face of the cube you press when you Activate the cube, as seen on Table 5: Cube Effects (below). Pressing the sixth cube face with a simple {@action Interact} action Dismisses the effect; doing so isn't an activation and thus doesn't count against the cube's frequency. The walls have the AC, Hit Points, and Hardness of a wall of force."
+					]
+				},
+				{
+					"type": "table",
+					"id": "5",
+					"name": "Cube Effects",
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						2,
+						8
+					],
+					"rows": [
+						[
+							"Cube Face",
+							"Duration",
+							"Effect"
+						],
+						[
+							1,
+							"30 minutes",
+							"The walls keep out gas and wind, attempting to counteract such effects that cross the threshold with a +20 counteract modifier but allowing all other things through."
+						],
+						[
+							2,
+							"10 minutes",
+							"The walls block nonliving matter from crossing; a nonliving creature must succeed at a DC 30 Will save to cross the threshold, wasting their move action on a failure, and unattended objects can't cross. Non-magical ranged attacks can't cross either and instead attack the wall. A living creature can bring attended objects across the walls without needing to attempt a saving throw."
+						],
+						[
+							3,
+							"10 minutes",
+							"The walls block living matter from crossing; a living creature must succeed at a DC 30 Will save to cross the threshold, wasting their move action on a failure."
+						],
+						[
+							4,
+							"5 minutes",
+							"The walls keep out magical effects that cross the threshold, attempting to counteract magical effects with a +20 counteract modifier, though they don't prevent a creature with magical items or effects from entering."
+						],
+						[
+							5,
+							"1 minute",
+							"The walls block everything, with the effects of wall of force."
+						],
+						[
+							6,
+							"\u2014",
+							"The cube is Dismissed (this takes only an Interact action and isn't an activation)."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Open Mind",
+			"source": "LOIL",
+			"page": 305,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"tattoo"
+			],
+			"price": {
+				"amount": 900,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Tattoo",
+			"entries": [
+				"{@deity Abraxas|LOGM} teaches knowledge is the only power that matters. This tattoo of a stylized eye provides a +1 item bonus to {@skill Lore} checks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"{@deity Abraxas|LOGM} opens your inner eye; you gain the effects of hypercognition."
+					]
+				}
+			]
+		},
+		{
+			"name": "Silent Heart",
+			"source": "LOIL",
+			"page": 305,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"tattoo"
+			],
+			"price": {
+				"amount": 130,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Tattoo",
+			"entries": [
+				"{@deity Abraxas|LOGM} teaches that the true heart is impenetrable, dedicated only to knowledge. This tattoo of a venom-soaked heart provides a +1 item bonus to {@skill Occultism} checks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You're about to attempt a saving throw against an {@trait emotion} effect or an effect that would make you {@condition controlled}",
+					"entries": [
+						"{@deity Abraxas|LOGM} envelops your heart in the shadow of his secret, granting you a +2 status bonus on your saving throw against the triggering effect."
+					]
+				}
+			]
+		},
+		{
+			"name": "Thoughtwhip Claw",
+			"source": "LOIL",
+			"page": 305,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"rare",
+				"invested",
+				"magical",
+				"tattoo"
+			],
+			"price": {
+				"amount": 1350,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Tattoo",
+			"entries": [
+				"{@deity Abraxas|LOGM} teaches that minds can be robbed as surely as pockets. This tattoo of a clenched fist provides a +2 item bonus to {@skill Thievery} checks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"{@deity Abraxas|LOGM} reaches through your hands and creates threads to yank thoughts from the mind of another. The thoughtwhip claw casts {@spell mind probe} on a creature within range, with a DC of 28."
+					]
+				}
+			]
+		},
+		{
+			"name": "Vengeful Arm",
+			"source": "LOIL",
+			"page": 305,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"tattoo"
+			],
+			"price": {
+				"amount": 100,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Tattoo",
+			"entries": [
+				"{@deity Abraxas|LOGM} teaches that an eye for an eye is the basis of law. This tattoo of a coiled viper provides a +1 item bonus to {@skill Society} checks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"{@deity Abraxas|LOGM} transforms the tattoo into a weapon of your vengeance. The vengeful arm crawls into your hand and becomes a retribution axe. You can use this activation again while holding the axe to revert the vengeful arm to a tattoo. Like other retribution axes, you can etch fundamental runes into the vengeful arm's retribution axe to increase its potency or to add striking."
+					]
+				}
+			]
+		},
+		{
+			"name": "Venomed Tongue",
+			"source": "LOIL",
+			"page": 305,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"tattoo"
+			],
+			"price": {
+				"amount": 333,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Tattoo",
+			"entries": [
+				"Secrets must be unraveled, no matter how painful.",
+				"This tattoo of braided tongues provides a +1 item bonus to {@skill Deception} checks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"{@deity Abraxas|LOGM} fills your tongue with venom, causing your deceptions to poison your foes. You use {@skill Deception} to {@action Create a Diversion}, {@action Feint}, or {@action Lie}. Choose one target against whom your {@skill Deception} check succeeded; that target takes {@damage 2d6} {@condition persistent damage ||persistent poison damage}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Goo Grenade",
+			"source": "LOIL",
+			"page": 306,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"A goo grenade is a flask filled with a fast-growing, short-lived alchemical ooze. When you hit a creature with a goo grenade, that creature takes {@condition persistent damage ||persistent acid damage} and a circumstance penalty to its Speeds from the clinging goo. The target can end any penalties, conditions, and {@condition persistent damage} caused by the bomb by Escaping or spending a total of 3 {@action Interact} actions to pry themselves free of the ooze. These {@action Interact} actions don't have to be consecutive, and other creatures can provide the actions as well."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"level": 1,
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"entries": [
+						"The target takes {@damage 1d4} acid damage, 1 {@condition persistent damage ||persistent acid damage}, and 1 acid splash damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 15."
+					],
+					"variantType": "lesser"
+				},
+				{
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The target takes {@damage 2d4} acid damage, 2 {@condition persistent damage ||persistent acid damage}, and 2 acid splash damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 17."
+					],
+					"variantType": "moderate"
+				},
+				{
+					"level": 11,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The target takes {@damage 3d4} acid damage, 3 {@condition persistent damage ||persistent acid damage}, and 3 acid splash damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 26."
+					],
+					"variantType": "greater"
+				},
+				{
+					"level": 17,
+					"price": {
+						"amount": 2500,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The target takes {@damage 4d4} acid damage, 4 {@condition persistent damage ||persistent acid damage}, and 4 acid splash damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 35."
+					],
+					"variantType": "major"
+				}
+			]
+		},
+		{
+			"name": "Oozepick",
+			"source": "LOIL",
+			"page": 306,
+			"type": "Item",
+			"level": "4+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"You can pour this silver ooze into a lock or similar mechanism to create a set of malleable lockpicks and tools that conform to internal mechanisms. The ooze is treated as a set of thieves' tools that last for 1 hour and provide a +2 item bonus to {@skill Thievery} checks to Pick Lock or Disable Device against the mechanism into which they were first poured."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"level": 4,
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "oozepick"
+				},
+				{
+					"level": 10,
+					"price": {
+						"amount": 200,
+						"coin": "gp"
+					},
+					"entries": [
+						"The item bonus is +3, and the tools last for 8 hours."
+					],
+					"variantType": "greater"
+				}
+			]
+		},
+		{
+			"name": "Oxygen Ooze",
+			"source": "LOIL",
+			"page": 306,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"You can chew on this translucent green ooze to cause it to expand into a bubble of slime that envelops your mouth and nose. For the next hour, the ooze provides breathable oxygen, allowing you to breathe in environments where you couldn't normally breathe. It then harmlessly dries up and falls away."
+			]
+		},
+		{
+			"name": "Carrion Cask",
+			"source": "LOIL",
+			"page": 178,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Other",
+			"entries": [
+				"This stylized, palm-sized box contains a black, ooze-like substance that can easily devour a corpse in moments, breaking the body down into a necromantic sludge.",
+				{
+					"type": "ability",
+					"components": [
+						"{@action Interact} Frequency once per day"
+					],
+					"entries": [
+						"You feed a corpse of a Small-sized or larger creature to the cask, little by little. The activation requires a three-action activity for a Small or Medium creature, a 1-minute activity for a Larger creature, and a 10-minute activity for a Huge creature. A Gargantuan creature is too large for the cask to devour."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "The carrion cask has consumed a corpse since the last time it was activated",
+					"entries": [
+						"You release the sludge from the carrion cask's last meal in a pulse of necromantic energy. Creatures in a 30-foot cone take {@damage 6d6} negative damage, with a DC 24 basic Fortitude save."
+					]
+				}
+			]
+		},
+		{
+			"name": "Plated Duster",
+			"source": "LOIL",
+			"page": 106,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"uncommon"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"These loose-fitting long coats of canvas or leather are lined with metal plates, offering wearers respite from Alkenstar's dust storms and smog stains as well as modest protection against bullets and knives. While these dusters can't turn away gunfire entirely, their utility, affordability, and comfort ensure their popularity, especially among the city's shieldmarshals, who have adopted them as a sort of unofficial uniform. A plated duster can be donned with 2 {@action Interact} actions or as part of donning light armor.",
+				"When worn with light armor from the {@group cloth}, {@group leather}, or {@group chain} groups, a plated duster increases the armor's item bonus to AC by 1, worsens the armor's check penalty by 1, reduces the armor's Dex cap by 1, increases the Strength score required to ignore the armor check penalty and Speed penalty by 2, adds the {@trait noisy} trait, and changes the armor's group to {@group composite}. This also makes the armor one step heavier (from light to medium), and you use the proficiency bonus appropriate to this adjusted armor type. You can't use a plated duster alongside an {@item armored skirt|LOCG} or any other item that adjusts an armor's statistics."
+			]
+		},
+		{
+			"name": "Wrenchgear",
+			"source": "LOIL",
+			"page": 106,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"The ubiquity of clockwork constructs in Alkenstar spurred the development of the wrenchgear (a shortened \"wrench in the gears\") by innovative criminals (\"wrenchers\") to create security exploits and larcenous opportunities. You gain a +2 item bonus to {@action Disable a Device} checks made against clockwork creatures (typically to wind them down)."
+			]
+		}
+	]
+}

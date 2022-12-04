@@ -30,7 +30,7 @@ class FeatsPage extends ListPage {
 			<span class="col-1-5 text-center">${feat._slType}</span>
 			<span class="col-1-3 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 			<span class="col-4-1">${feat._slPrereq}</span>
-			<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+			<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -72,7 +72,7 @@ class FeatsPage extends ListPage {
 				<span class="col-1-5 text-center">${feat._slType}</span>
 				<span class="col-1-3 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 				<span class="col-4-1">${feat._slPrereq}</span>
-				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));

@@ -6,6 +6,34 @@
 	"type": "object",
 	"version": "0.0.1",
 	"definitions": {
+		"range": {
+			"type": "object",
+			"properties": {
+				"entry": {
+					"type": "string"
+				},
+				"unit": {
+					"type": "string",
+					"enum": [
+						"touch",
+						"feet",
+						"mile",
+						"planetary",
+						"interplanar",
+						"unlimited",
+						"unknown"
+					]
+				},
+				"number": {
+					"type": "integer",
+					"inclusiveMinimum": 0
+				}
+			},
+			"required": [
+				"unit"
+			],
+			"additionalProperties": false
+		},
 		"sourceList": {
 			"$ref": "_generated/sources.json#/definitions/sourceList"
 		},
@@ -226,6 +254,11 @@
 						"type": "string",
 						"pattern": "^[\\w\\d&]+\\|\\d+$"
 					},
+					"examples": [
+						[
+							""
+						]
+					],
 					"uniqueItems": true
 				}
 			},
@@ -1125,6 +1158,7 @@
 			}
 		},
 		"damageType": {
+			"$comment": "FIXME: This should be replaced by something accounting for splash and persistent damage, as well as trait-induced damage like versatile and modular",
 			"type": "string",
 			"enum": [
 				"electricity",
@@ -1149,8 +1183,8 @@
 				"persistent",
 				"persistent fire",
 				"persistent bleed damage",
-				"versatile p",
-				"versatile s",
+				"versatile <p>",
+				"versatile <s>",
 				"versatile fire",
 				"versatile p or s",
 				"persistent bleed",
@@ -1511,6 +1545,9 @@
 					"type": "integer",
 					"minimum": 0
 				},
+				"range": {
+					"$ref": "#/definitions/range"
+				},
 				"components": {
 					"$ref": "#/definitions/components"
 				},
@@ -1559,7 +1596,8 @@
 							"$ref": "#/definitions/tags"
 						},
 						"source": {
-							"type": "string"
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
 						},
 						"name": {
 							"type": "string"
@@ -1887,22 +1925,47 @@
 					"minProperties": 1
 				},
 				"hp": {
-					"description": "Hit Points",
-					"type": "object",
-					"properties": {
-						"std": {
-							"type": "integer",
-							"exclusiveMinimum": 0
+					"oneOf": [
+						{
+							"description": "Hit Points",
+							"type": "object",
+							"properties": {
+								"std": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								}
+							},
+							"patternProperties": {
+								"^.+$": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								}
+							},
+							"additionalProperties": false,
+							"minProperties": 1
+						},
+						{
+							"type": "array",
+							"items": {
+								"description": "Hit Points",
+								"type": "object",
+								"properties": {
+									"std": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"patternProperties": {
+									"^.+$": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false,
+								"minProperties": 1
+							}
 						}
-					},
-					"patternProperties": {
-						"^.+$": {
-							"type": "integer",
-							"exclusiveMinimum": 0
-						}
-					},
-					"additionalProperties": false,
-					"minProperties": 1
+					]
 				},
 				"bt": {
 					"description": "Broken Threshold",

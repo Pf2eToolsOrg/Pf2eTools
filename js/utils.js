@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.4"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.5"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -2012,6 +2012,7 @@ UrlUtil.PG_GM_SCREEN = "gmscreen.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
 UrlUtil.PG_PLACES = "places.html";
 UrlUtil.PG_EVENTS = "events.html";
+UrlUtil.PG_RELICGIFTS = "relicgifts.html";
 UrlUtil.PG_OPTIONAL_FEATURES = "optionalfeatures.html";
 UrlUtil.PG_SEARCH = "search.html";
 UrlUtil.PG_GENERIC_DATA = "genericData";
@@ -2044,7 +2045,8 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash(B
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PLACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_EVENTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPTIONAL_FEATURES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RELICGIFTS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPTIONAL_FEATURES] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 // region Fake pages (props)
 UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 	const hashParts = [
@@ -2141,6 +2143,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_NATION] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SETTLEMENT] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RELICGIFT] = UrlUtil.PG_RELICGIFTS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
 
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
@@ -4637,6 +4640,8 @@ BrewUtil = {
 				return ["optionalfeature"];
 			case UrlUtil.PG_VEHICLES:
 				return ["vehicle"];
+			case UrlUtil.PG_RELICGIFTS:
+				return ["relicGift", "relic", "gift"];
 			case UrlUtil.PG_TRAITS:
 				return ["trait"];
 			case UrlUtil.PG_MAKE_BREW:
@@ -4747,6 +4752,7 @@ BrewUtil = {
 			case "place":
 			case "ritual":
 			case "vehicle":
+			case "relicgift":
 			case "trait":
 			case "group":
 			case "domain":
@@ -4846,7 +4852,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature", "organization", "creatureTemplate"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "relicGift", "trait", "group", "domain", "skill", "optionalfeature", "organization", "creatureTemplate"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4993,6 +4999,7 @@ BrewUtil = {
 			case UrlUtil.PG_CREATURETEMPLATE:
 			case UrlUtil.PG_RITUALS:
 			case UrlUtil.PG_VEHICLES:
+			case UrlUtil.PG_RELICGIFTS:
 			case UrlUtil.PG_OPTIONAL_FEATURES:
 			case UrlUtil.PG_TRAITS:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
@@ -5594,6 +5601,16 @@ Array.prototype.unique = Array.prototype.unique || function (fnGetProp) {
 		seen.add(val);
 		return true;
 	});
+};
+
+/**
+ * Returns duplicates in an array, if none are found return false
+ * @param {Array} - array to check for duplicates
+ * @returns {(Array|boolean)} - array of duplicates or false if none are found
+ */
+Array.prototype.findDuplicates = Array.prototype.findDuplicates || function () {
+	const array = this.filter((e, i, a) => a.indexOf(e) !== i)
+	return array.length ? array : false;
 };
 
 Array.prototype.zip = Array.prototype.zip || function (otherArray) {

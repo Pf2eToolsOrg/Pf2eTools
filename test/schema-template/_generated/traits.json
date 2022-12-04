@@ -38,13 +38,13 @@
 					"$ref": "#/definitions/rarityTrait"
 				},
 				{
-					"$ref": "#/definitions/settlementTrait"
-				},
-				{
 					"$ref": "#/definitions/armorTrait"
 				},
 				{
 					"$ref": "#/definitions/effectTrait"
+				},
+				{
+					"$ref": "#/definitions/variableTraits"
 				},
 				{
 					"$ref": "#/definitions/alignabvTrait"
@@ -80,16 +80,10 @@
 					"$ref": "#/definitions/creatureTrait"
 				},
 				{
-					"$ref": "#/definitions/ancestryHeritageTrait"
-				},
-				{
 					"$ref": "#/definitions/traditionTrait"
 				},
 				{
 					"$ref": "#/definitions/combatTrait"
-				},
-				{
-					"$ref": "#/definitions/classTrait"
 				},
 				{
 					"$ref": "#/definitions/actionAbilityTrait"
@@ -99,9 +93,121 @@
 				},
 				{
 					"$ref": "#/definitions/featTrait"
+				},
+				{
+					"$ref": "#/definitions/ancestryHeritageTrait"
+				},
+				{
+					"$ref": "#/definitions/settlementTrait"
+				},
+				{
+					"$ref": "#/definitions/classTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"classTrait": {
+			"type": "string",
+			"description": "A list of all Class traits.",
+			"enum": [
+				"[class]",
+				"aftermath",
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"class",
+				"cleric",
+				"deviant",
+				"druid",
+				"fighter",
+				"gunslinger",
+				"inventor",
+				"investigator",
+				"magus",
+				"monk",
+				"oracle",
+				"psychic",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"spellshot",
+				"summoner",
+				"swashbuckler",
+				"thaumaturge",
+				"witch",
+				"wizard"
+			]
+		},
+		"settlementTrait": {
+			"type": "string",
+			"description": "A list of all Settlement traits.",
+			"enum": [
+				"city",
+				"city-state",
+				"metropolis",
+				"town",
+				"village"
+			]
+		},
+		"ancestryHeritageTrait": {
+			"type": "string",
+			"description": "A list of all Ancestry & Heritage traits.",
+			"enum": [
+				"aasimar",
+				"anadi",
+				"android",
+				"aphorite",
+				"automaton",
+				"azarketi",
+				"beastkin",
+				"catfolk",
+				"changeling",
+				"conrasu",
+				"dhampir",
+				"duskwalker",
+				"dwarf",
+				"elf",
+				"fetchling",
+				"fleshwarp",
+				"ganzi",
+				"geniekin",
+				"ghoran",
+				"gnoll",
+				"gnome",
+				"goblin",
+				"goloma",
+				"grippli",
+				"half-elf",
+				"half-orc",
+				"halfling",
+				"hobgoblin",
+				"human",
+				"ifrit",
+				"kashrishi",
+				"kitsune",
+				"kobold",
+				"leshy",
+				"lizardfolk",
+				"nagaji",
+				"orc",
+				"oread",
+				"poppet",
+				"ratfolk",
+				"reflection",
+				"shisk",
+				"shoony",
+				"skeleton",
+				"sprite",
+				"strix",
+				"suli",
+				"sylph",
+				"tengu",
+				"tiefling",
+				"undine",
+				"vanara",
+				"vishkanya"
+			]
 		},
 		"featTrait": {
 			"type": "string",
@@ -153,36 +259,6 @@
 				"tandem"
 			]
 		},
-		"classTrait": {
-			"type": "string",
-			"description": "A list of all Class traits.",
-			"enum": [
-				"[class]",
-				"alchemist",
-				"barbarian",
-				"bard",
-				"champion",
-				"class",
-				"cleric",
-				"druid",
-				"fighter",
-				"gunslinger",
-				"inventor",
-				"investigator",
-				"magus",
-				"monk",
-				"oracle",
-				"psychic",
-				"ranger",
-				"rogue",
-				"sorcerer",
-				"summoner",
-				"swashbuckler",
-				"thaumaturge",
-				"witch",
-				"wizard"
-			]
-		},
 		"combatTrait": {
 			"type": "string",
 			"description": "A list of all Combat traits.",
@@ -211,60 +287,6 @@
 				"divine",
 				"occult",
 				"primal"
-			]
-		},
-		"ancestryHeritageTrait": {
-			"type": "string",
-			"description": "A list of all Ancestry & Heritage traits.",
-			"enum": [
-				"aasimar",
-				"anadi",
-				"android",
-				"aphorite",
-				"automaton",
-				"azarketi",
-				"beastkin",
-				"catfolk",
-				"changeling",
-				"conrasu",
-				"dhampir",
-				"duskwalker",
-				"dwarf",
-				"elf",
-				"fetchling",
-				"fleshwarp",
-				"ganzi",
-				"geniekin",
-				"gnoll",
-				"gnome",
-				"goblin",
-				"goloma",
-				"grippli",
-				"half-elf",
-				"half-orc",
-				"halfling",
-				"hobgoblin",
-				"human",
-				"ifrit",
-				"kitsune",
-				"kobold",
-				"leshy",
-				"lizardfolk",
-				"orc",
-				"oread",
-				"poppet",
-				"ratfolk",
-				"reflection",
-				"shisk",
-				"shoony",
-				"skeleton",
-				"sprite",
-				"strix",
-				"suli",
-				"sylph",
-				"tengu",
-				"tiefling",
-				"undine"
 			]
 		},
 		"creatureTrait": {
@@ -462,7 +484,6 @@
 				"lineage",
 				"saggorak",
 				"steam",
-				"tattoo",
 				"unstable"
 			]
 		},
@@ -515,6 +536,7 @@
 				"trip",
 				"twin",
 				"two-hand",
+				"two-handed",
 				"unarmed",
 				"versatile",
 				"volley"
@@ -624,6 +646,68 @@
 				"ng"
 			]
 		},
+		"variableTraits": {
+			"type": "string",
+			"description": "A list of all traits with variable values, enclosed in <these 'brackets'>.",
+			"anyOf": [
+				{
+					"type": "string",
+					"pattern": "^attached <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^capacity <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^deadly <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^fatal <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^fatal aim <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^jousting <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^modular <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^reach <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^scatter <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^thrown <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^two-hand <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^two-handed <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^versatile <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^volley <.*>$"
+				}
+			]
+		},
 		"effectTrait": {
 			"type": "string",
 			"description": "A list of all Effect traits.",
@@ -666,16 +750,6 @@
 				"comfort",
 				"flexible",
 				"noisy"
-			]
-		},
-		"settlementTrait": {
-			"type": "string",
-			"description": "A list of all Settlement traits.",
-			"enum": [
-				"city",
-				"metropolis",
-				"town",
-				"village"
 			]
 		},
 		"rarityTrait": {

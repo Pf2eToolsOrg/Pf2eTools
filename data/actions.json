@@ -36,30 +36,35 @@
 					"type": "pf2-options",
 					"items": [
 						{
+							"type": "item",
 							"name": "Armor of Insight ({@skill Perception})",
 							"entries": [
 								"Sensing the incoming attack, you make your mind resist psychic harm. You gain resistance equal to half your level (minimum 1) to mental damage against the triggering effect. This resistance is doubled if you're a master in Perception and tripled if you're legendary. "
 							]
 						},
 						{
+							"type": "item",
 							"name": "Empathic Orbit ({@skill Diplomacy})",
 							"entries": [
 								"Displaying empathy, you sow doubt in your attacker to diminish their resolve for psychic combat. The opponent is stupefied 1 until the end of their next turn or stupefied 2 if you're legendary in Diplomacy. "
 							]
 						},
 						{
+							"type": "item",
 							"name": "Ire's Spear ({@skill Intimidation})",
 							"entries": [
 								"Blazing anger surges in your mind, causing backlash to anyone who harms you. If the manifestation damages you, the opponent takes damage equal to the counteract level of the manifestation it used against you. This damage is doubled if you're a master of Intimidation or tripled if you're legendary. "
 							]
 						},
 						{
+							"type": "item",
 							"name": "Rational Labyrinth ({@skill Occultism})",
 							"entries": [
 								"Analytically breaking down the attack, you realign your mind's defenses into a puzzle designed to confound it. You gain a +2 status bonus to your Will save or Will DC, or a +4 status bonus if the effect has the emotion trait. "
 							]
 						},
 						{
+							"type": "item",
 							"name": "Sensory Phantasm ({@skill Deception})",
 							"entries": [
 								"Using your guile, you send psychic illusions through your mental link to your foe, making yourself harder to pinpoint. You're concealed against the opponent until the end of its next turn."
@@ -170,12 +175,14 @@
 					"type": "pf2-options",
 					"items": [
 						{
+							"type": "item",
 							"name": "Distracting Cacophony",
 							"entries": [
 								"The trigger is a spell. You create a musical crash of sonic energy that assails the target and breaks its concentration. The target must succeed at a Fortitude save against your class DC or become stupefied 1 until the end of your next turn (stupefied 2 on a critical failure). The target doesn't have to attempt a flat check to avoid losing the triggering spell, but the discordant ring does lower the spell attack roll or spell DC of the triggering spell from stupefied."
 							]
 						},
 						{
+							"type": "item",
 							"name": "Disrupting Harmony",
 							"entries": [
 								"The trigger is a Strike. You create a strangely discordant harmony that sinks into your foe's mind and throws its movements off. The target must succeed at a Will save against your class DC or become your choice of enfeebled 1 or clumsy 1 until the end of your next turn (enfeebled 2 or clumsy 2 on a critical failure)."
@@ -208,14 +215,17 @@
 				"You drink from the liquid that slowly collects in your chalice or administer it to an adjacent ally. The drinker chooses whether to take a small sip or to drain the contents.",
 				{
 					"type": "pf2-options",
+					"noColon": true,
 					"items": [
 						{
+							"type": "item",
 							"name": "Sip",
 							"entries": [
 								"A sip grants the drinker an amount of temporary Hit Points equal to 2 + half your level that last until the end of your next turn."
 							]
 						},
 						{
+							"type": "item",
 							"name": "Drain",
 							"traits": [
 								"healing",
@@ -385,7 +395,7 @@
 			],
 			"actionType": {
 				"class": [
-					"Psychic|DA"
+					"psychic|DA"
 				]
 			},
 			"requirements": "You're in an encounter, you {@spell Cast a Spell} on your previous turn, and you aren't {@condition stupefied}.",
@@ -639,6 +649,9 @@
 		},
 		{
 			"name": "Aid",
+			"alias": [
+				"Help"
+			],
 			"source": "CRB",
 			"page": 470,
 			"activity": {
@@ -661,6 +674,122 @@
 						"Critical Failure": "Your ally takes a \u20131 circumstance penalty to the triggering check."
 					}
 				}
+			]
+		},
+		{
+			"name": "Envenom",
+			"source": "LOIL",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": [
+					"Vishkanya|LOIL"
+				]
+			},
+			"traits": [
+				"manipulate"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"Through use of either saliva or blood, you use your innate toxins to apply vishkanyan venom to your weapon or a piece of ammunition. To use your blood, you must be injured, or you can deal 1 slashing damage to yourself as part of the action. The vishkanyan venom remains potent until the end of your next turn, or until you expend it as normal for an injury poison by either hitting a target or critically failing an attack roll.",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"name": "Minor Vishkanyan Venom",
+					"traits": [
+						"injury",
+						"poison"
+					],
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d4} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d4} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 1d4} poison damage",
+							"duration": "1 round"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Venom Draw",
+			"source": "LOIL",
+			"page": 60,
+			"actionType": {
+				"ancestry": [
+					"Vishkanya|LOIL"
+				],
+				"heritage": [
+					"Keen-Venom|LOIL"
+				]
+			},
+			"requirements": "Your {@action Envenom|LOIL} action hasn't been expended.",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"You quickly envenom poisonous saliva on your weapon as you draw it. {@action Interact} to draw a weapon, and then {@action Envenom|LOIL} it. This uses up your daily use of {@action Envenom|LOIL}."
+			]
+		},
+		{
+			"name": "Raise Neck",
+			"source": "LOIL",
+			"page": 48,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": [
+					"Nagaji|LOIL"
+				],
+				"heritage": [
+					"Whipfang|LOIL"
+				]
+			},
+			"entries": [
+				"You raise your head into a striking position. The fangs {@action Strike} granted by your nagaji ancestry gains a reach of 10 feet until the end of your turn."
+			]
+		},
+		{
+			"name": "Wicked Thorns",
+			"source": "LOIL",
+			"page": 37,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"actionType": {
+				"ancestry": [
+					"Ghoran|LOIL"
+				],
+				"heritage": [
+					"Thorned|LOIL"
+				]
+			},
+			"trigger": "You're hit with an unarmed {@action Strike} or a {@action Strike} with a non-reach melee weapon.",
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"Several of your thorns break off and hook into your attacker's body. You deal {@damage 1d8} piercing damage to the triggering creature. It attempts a basic Reflex save against the higher of your class DC or spell DC. On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} as your thorns embed in its flesh. At 3rd level, and every 2 levels thereafter, this damage increases by {@scaledice 2d8|2-9|1d8}, and the persistent piercing damage increases by {@scaledice 2|2-9|1}."
 			]
 		},
 		{
@@ -1000,7 +1129,7 @@
 			"trigger": "You attempt a melee {@action Strike} against your opponent, but haven't rolled yet.",
 			"requirements": "You're in a duel, you're trained in {@skill Intimidation}, and you rolled an {@skill Intimidation} check for initiative this round.",
 			"entries": [
-				"If you hit, your opponent becomes {@condition frightened} 1. If your opponent is using {@skill Perception} for initiative when this ability is used, they become {@condition frightened} 2 instead."
+				"If you hit, your opponent becomes {@condition frightened 1}. If your opponent is using {@skill Perception} for initiative when this ability is used, they become {@condition frightened 2} instead."
 			]
 		},
 		{
@@ -1097,7 +1226,7 @@
 						"Focus ({@trait manipulate})"
 					]
 				},
-				"{@b Disrupted and Lost Spells} Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you've already expended the spell slot, spent the spell's costs and actions, and used the {@action Cast a Spell} activity. If a spell is disrupted during a Sustain a Spell action, the spell immediately ends. The full rules for disrupting actions appear here."
+				"{@b Disrupted and Lost Spells} Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you've already expended the spell slot, spent the spell's costs and actions, and used the {@action Cast a Spell} activity. If a spell is disrupted during a {@action Sustain a Spell} action, the spell immediately ends. The full rules for disrupting actions appear here."
 			]
 		},
 		{
@@ -1760,7 +1889,7 @@
 					"type": "list",
 					"items": [
 						"{@b Debilitation} the target takes a \u201310-foot status penalty to its Speeds.",
-						"{@b Debilitation} The target becomes {@condition enfeebled} 1."
+						"{@b Debilitation} The target becomes {@condition enfeebled 1}."
 					]
 				}
 			]
@@ -2843,6 +2972,9 @@
 		},
 		{
 			"name": "Grapple",
+			"alias": [
+				"Grab"
+			],
 			"source": "CRB",
 			"page": 242,
 			"activity": {
@@ -2984,6 +3116,9 @@
 		},
 		{
 			"name": "Hunt Prey",
+			"alias": [
+				"Mark Prey"
+			],
 			"source": "CRB",
 			"page": 168,
 			"activity": {
@@ -3176,6 +3311,9 @@
 		},
 		{
 			"name": "Interact",
+			"alias": [
+				"Use an Object"
+			],
 			"source": "CRB",
 			"page": 470,
 			"activity": {
@@ -3749,7 +3887,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition enfeebled} 2 until the end of your next turn.",
+						"Success": "The target is {@condition enfeebled 2} until the end of your next turn.",
 						"Failure": "The target is {@condition paralyzed} for 4 rounds.",
 						"Critical Failure": "The target is {@condition paralyzed} for 4 rounds, knocked {@condition unconscious} for 2 hours, or killed (your choice)."
 					}
@@ -4352,6 +4490,9 @@
 		},
 		{
 			"name": "Recall Knowledge",
+			"alias": [
+				"Identify"
+			],
 			"source": "CRB",
 			"page": 239,
 			"activity": {
@@ -5402,6 +5543,9 @@
 		},
 		{
 			"name": "Step",
+			"alias": [
+				"Disengage"
+			],
 			"source": "CRB",
 			"page": 471,
 			"activity": {
@@ -5461,6 +5605,9 @@
 		},
 		{
 			"name": "Strike",
+			"alias": [
+				"Attack"
+			],
 			"source": "CRB",
 			"page": 471,
 			"activity": {
@@ -5854,7 +6001,7 @@
 				]
 			},
 			"entries": [
-				"You {@action Stride} to be adjacent to a foe and {@action Demoralize} that foe. If you succeed, the foe is {@condition frightened} 2 instead of {@condition frightened} 1."
+				"You {@action Stride} to be adjacent to a foe and {@action Demoralize} that foe. If you succeed, the foe is {@condition frightened 2} instead of {@condition frightened 1}."
 			]
 		},
 		{
@@ -6169,6 +6316,100 @@
 			},
 			"entries": [
 				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
+			]
+		},
+		{
+			"name": "Touch and Go",
+			"source": "LOIL",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"gunslinger|G&G"
+				],
+				"subclass": [
+					"Triggerbrand|LOIL"
+				]
+			},
+			"requirements": "You're wielding a combination weapon.",
+			"entries": [
+				"Your body's shadows mask your hands' steel. You can {@action Step} toward an enemy, you can {@action Interact} to change your weapon between melee or ranged modes, and you then {@action Interact} to reload."
+			]
+		},
+		{
+			"name": "Spring the Trap",
+			"source": "LOIL",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"gunslinger|G&G"
+				],
+				"subclass": [
+					"Triggerbrand|LOIL"
+				]
+			},
+			"trigger": "You roll initiative.",
+			"entries": [
+				"You can {@action Interact} to draw a combination weapon and set it to melee or ranged mode. On your first turn, your movement and ranged attacks don't trigger reactions that are normally triggered by movement or a ranged attack (such as {@action Attack of Opportunity})."
+			]
+		},
+		{
+			"name": "Wind Them Up",
+			"source": "LOIL",
+			"page": 108,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"gunslinger|G&G"
+				],
+				"subclass": [
+					"Triggerbrand|LOIL"
+				]
+			},
+			"entries": [
+				"Should foes parry your blade or dodge your bullets? Neither\u2014they should be watching their purse. Make a melee {@action Strike} with your combination weapon, and then attempt a {@skill Thievery} check with a \u20135 penalty to {@action Steal} from your target; you can't {@action Steal} closely guarded objects or objects that would take a long time to pilfer. You don't need a free hand to attempt to {@action Steal} something in this manner. If your {@skill Thievery} check succeeds, the target is {@condition flat-footed} against your ranged attacks until the start of your next turn, and you don't trigger reactions that are normally triggered by movement or a ranged attack. These effects occur even if your target has no objects to {@action Steal}."
+			]
+		},
+		{
+			"name": "Break Them Down",
+			"source": "LOIL",
+			"page": 108,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"gunslinger|G&G"
+				],
+				"subclass": [
+					"Triggerbrand|LOIL"
+				]
+			},
+			"entries": [
+				"Your foes are but dross from which you carve and shoot your legend. Make a melee {@action Strike} and then a ranged {@action Strike} with a combination weapon, both against the same enemy; you don't need to change modes to do so. If the melee {@action Strike} hits, you gain a +1 circumstance bonus to the attack roll with the ranged {@action Strike}. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you've made both attacks. If both {@action Strike||Strikes} hit, you deal an additional {@damage 2d6} {@condition persistent damage||persistent bleed damage} to the enemy, and they're {@condition dazzled} until this {@condition persistent damage||persistent bleed damage} ends."
 			]
 		}
 	]

@@ -2868,8 +2868,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"envision"
@@ -3567,7 +3566,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You name a destination on the same plane, and the broom speeds toward it at a fly Speed of 40 feet. You must either clutch the broom with two hands in order to ride it, or you need to release the broom to send it off with no rider. If you don't have a good idea of the location, layout, and general direction of the destination, or if your named destination is on another plane, the broom wanders aimlessly, circling back to its starting location after 30 minutes.",
@@ -3739,8 +3738,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"envision"
@@ -4186,7 +4184,7 @@
 					},
 					"components": [
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -4369,7 +4367,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -5609,8 +5607,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"{@action Interact}"
@@ -5673,7 +5670,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You {@action Release} the weapon and it dances through the air, fighting on its own against the last enemy you attacked, or the nearest enemy to it if your target has been defeated. At the end of your turn each round, the weapon can {@action Fly} up to its fly Speed of 40 feet, and then can either {@action Fly} again or {@action Strike} one creature within its reach.",
@@ -6376,7 +6373,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"Speaking \"stream,\" you cause water to pour out at a rate of 1 gallon per round."
@@ -6391,7 +6388,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"Speaking \"fountain,\" you cause water to pour out in a 5-foot-long stream at a rate of 5 gallons per round."
@@ -6406,7 +6403,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"Speaking \"geyser,\" you cause a powerful deluge of water to erupt at a rate of 15 gallons per round. You can direct the stream at a creature, subjecting it to the effects of hydraulic push (spell attack roll +15). You can repeat this once per round as long as the geyser continues, spending an {@action Interact} action to direct the geyser each time."
@@ -7356,8 +7353,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"command"
@@ -7399,8 +7395,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"envision"
@@ -7663,7 +7658,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -8249,8 +8244,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"envision (fortune)"
@@ -8675,7 +8669,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You cast the {@spell produce flame} cantrip from the sword as a 7th-level arcane spell, using your melee attack modifier with flametongue as your spell attack modifier."
@@ -8912,8 +8906,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"command (fire)"
@@ -9057,7 +9050,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You swing the frost brand into the area of an ongoing magical fire, and the blade attempts to counteract the fire with a counteract modifier of +27. If it fails, it can't attempt to counteract the same fire again."
@@ -9573,8 +9566,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"{@action Interact}"
@@ -10558,6 +10550,7 @@
 					"components": [
 						"command"
 					],
+					"trigger": "You critically succeed at an attack roll against an {@trait evil} creature with the weapon",
 					"frequency": {
 						"unit": "day",
 						"freq": 1
@@ -10603,7 +10596,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You command the sword and point it at a creature you can see. The sword casts detect alignment to detect evil, but this targets only the selected creature instead of detecting in an area.",
@@ -11100,7 +11093,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -11196,7 +11189,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You toss the cube on the ground, and it immediately unfolds into an adamantine fortress.",
@@ -11329,14 +11322,14 @@
 					"unit": "action"
 				},
 				"components": [
-					"Knockdown"
+					"{@feat Knockdown}"
 				],
 				"requirements": "You are an expert with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
-				"This cube of blackened iron is affixed to a weapon with an iron chain. When you activate the cube, you use Knockdown, as the fighter feat (page 146)",
-				"If you have the Knockdown feat, ignore its normal size restrictions."
+				"This cube of blackened iron is affixed to a weapon with an iron chain. When you activate the cube, you use {@feat Knockdown}, as the fighter feat.",
+				"If you have the {@feat Knockdown} feat, ignore its normal size restrictions."
 			]
 		},
 		{
@@ -11934,7 +11927,7 @@
 						},
 						{
 							"stage": 4,
-							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up .",
+							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up.",
 							"duration": "{@dice 1d4} hours"
 						}
 					]
@@ -12430,8 +12423,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"envision"
@@ -16704,7 +16696,7 @@
 						],
 						[
 							"85\u201387",
-							"Target is coated in nectar, making it {@condition clumsy} 1 for 1 round"
+							"Target is coated in nectar, making it {@condition clumsy 1} for 1 round"
 						],
 						[
 							"88\u201392",
@@ -18433,8 +18425,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"components": [
 						"{@action Interact}"
@@ -18724,7 +18715,7 @@
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition unconscious} .",
+							"entry": "{@condition unconscious}.",
 							"duration": "3 days"
 						}
 					]
@@ -23320,7 +23311,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -23507,7 +23498,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You activate the statue by placing it on solid ground and then speaking its name, causing the statuette to transform into a living creature or creatures. In creature form, the figurine has the minion trait. It can understand your language and it obeys you to the best of its ability when you use an action to command it. The specifics of each creature, as well as the activation's frequency (if any), appear in its entry below.",

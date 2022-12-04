@@ -24,6 +24,7 @@ const schemaTemplate = {
 function generateTraitSchema (file) {
 	const traitsFile = ut.readJson("./data/traits.json");
 	const traits = traitsFile.trait;
+	if (traits.map(it => it.name).findDuplicates()) throw new Error(`Duplicate trait: ${traits.map(it => it.name).findDuplicates()}!`);
 	let schema = schemaTemplate;
 
 	// For each trait, add it to the schema.
@@ -46,6 +47,7 @@ function generateTraitSchema (file) {
 				};
 			}
 			schema.definitions[categoryName].enum.push(trait.name.toLowerCase());
+			(trait.alias || []).forEach(x => schema.definitions[categoryName].enum.push(x.toLowerCase()));
 			schema.definitions[categoryName].enum.sort(SortUtil.ascSort);
 		});
 
@@ -62,6 +64,12 @@ function generateTraitSchema (file) {
 			schema.definitions["variableTraits"].anyOf.push({
 				type: "string",
 				pattern: `^${trait.name.toLowerCase()} <.*>$`,
+			});
+			(trait.alias || []).forEach(x => {
+				schema.definitions["variableTraits"].anyOf.push({
+					type: "string",
+					pattern: `^${x.toLowerCase()} <.*>$`,
+				});
 			});
 		}
 	});

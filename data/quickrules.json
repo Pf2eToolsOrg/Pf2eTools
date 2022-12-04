@@ -1336,7 +1336,7 @@
 											"entries": [
 												"The {@condition doomed}, {@condition dying}, {@condition unconscious}, and {@condition wounded} conditions all relate to the process of coming closer to death. The full rules are on pages 459\u2013461. The most significant information not contained in the conditions themselves is this: When you're reduced to 0 Hit Points, you're knocked out with the following effects:",
 												"directly before the creature or effect that reduced you to 0 Hit Points.",
-												"knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying} 2 condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points."
+												"knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying 2} condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points."
 											]
 										}
 									]
@@ -1393,13 +1393,13 @@
 									"name": "REDUNDANT CONDITIONS",
 									"entries": [
 										"You can have a given condition only once at a time. If an effect would impose a condition you already have, you now have that condition for the longer of the two durations. The shorter-duration condition effectively ends, though other conditions caused by the original, shorter-duration effect might continue.",
-										"For example, let's say you have been hit by a monster that drains your vitality; your wound causes you to be {@condition enfeebled} 2 and {@condition flat-footed} until the end of the monster's next turn. Before the end of that creature's next turn, a trap poisons you, making you {@condition enfeebled} 2 for 1 minute. In this case, the {@condition enfeebled} 2 that lasts for 1 minute replaces the {@condition enfeebled} 2 from the monster, so you would be {@condition enfeebled} 2 for the longer duration. You would remain {@condition flat-footed}, since nothing replaced that condition, and it still lasts only until the end of the monster's next turn.",
+										"For example, let's say you have been hit by a monster that drains your vitality; your wound causes you to be {@condition enfeebled 2} and {@condition flat-footed} until the end of the monster's next turn. Before the end of that creature's next turn, a trap poisons you, making you {@condition enfeebled 2} for 1 minute. In this case, the {@condition enfeebled 2} that lasts for 1 minute replaces the {@condition enfeebled 2} from the monster, so you would be {@condition enfeebled 2} for the longer duration. You would remain {@condition flat-footed}, since nothing replaced that condition, and it still lasts only until the end of the monster's next turn.",
 										"Any ability that removes a condition removes it entirely, no matter what its condition value is or how many times you've been affected by it. In the example above, a spell that removes the {@condition enfeebled} condition from you would remove it entirely\u2014the spell wouldn't need to remove it twice.",
 										{
 											"type": "pf2-title",
 											"name": "Redundant Conditions with Values",
 											"entries": [
-												"Conditions with different values are considered different conditions. If you're affected by a condition with a value multiple times, you apply only the highest value, although you might have to track both durations if one has a lower value but lasts longer. For example, if you had a {@condition slowed} 2 condition that lasts 1 round and a {@condition slowed} 1 condition that lasts for 6 rounds, you'd be {@condition slowed} 2 for the first round, and then you'd change to {@condition slowed} 1 for the remaining 5 rounds of the second effect's duration. If something reduces the condition value, it reduces it for all conditions of that name affecting you. For instance, in this example above, if something reduced your {@condition slowed} value by 1, it would reduce the first condition from the example to {@condition slowed} 1 and reduce the second to {@condition slowed} 0, removing it."
+												"Conditions with different values are considered different conditions. If you're affected by a condition with a value multiple times, you apply only the highest value, although you might have to track both durations if one has a lower value but lasts longer. For example, if you had a {@condition slowed 2} condition that lasts 1 round and a {@condition slowed 1} condition that lasts for 6 rounds, you'd be {@condition slowed 2} for the first round, and then you'd change to {@condition slowed 1} for the remaining 5 rounds of the second effect's duration. If something reduces the condition value, it reduces it for all conditions of that name affecting you. For instance, in this example above, if something reduced your {@condition slowed} value by 1, it would reduce the first condition from the example to {@condition slowed 1} and reduce the second to {@condition slowed 0}, removing it."
 											]
 										}
 									]
@@ -1516,7 +1516,7 @@
 		},
 		"deity": {
 			"source": "LOGM",
-			"page": 7,
+			"page": 10,
 			"entries": [
 				{
 					"type": "pf2-h2",
@@ -1541,31 +1541,10 @@
 				}
 			]
 		},
-		"deityWithIntercession": {
+		"deityIntercession": {
 			"source": "LOGM",
-			"page": 7,
+			"page": 9,
 			"entries": [
-				{
-					"type": "pf2-h2",
-					"name": "Using the Entries",
-					"source": "LOGM",
-					"page": 10,
-					"entries": [
-						"The entries for deities use the stat block format described below to present the vital information required for worship.",
-						"{@b Name:} The deity's name plus a common title or epithet.",
-						"{@b Areas of Concern:} The topics that the deity cares most deeply about.",
-						"{@b Alignment:} The deity's alignment. In parentheses, the entry lists other character alignments that this deity accepts from worshippers. For instance, {@deity Kazutal|LOGM}, the goddess of protection and community, accepts any good-aligned clerics. {@deity Arazni|LOGM}, who is embittered and prone to cruelty, nonetheless has some sympathy for victims of abuse and accepts evil, neutral, and good worshippers, since she is less concerned about her worshippers' morality.",
-						"{@b Divine Font:} This entry presents whether the deity grants worshippers {@spell heal} or {@spell harm}, or can grant both. {@spell Heal} heals the living and harms undead, while {@spell harm} harms the living and heals undead. Usually, good deities channel {@spell heal}, evil deities channel {@spell harm}, and neutral deities can channel {@spell harm} or {@spell heal}, but there are exceptions.",
-						"{@b Divine Ability:} This section lists the two ability boosts the deity grants as options for characters with the {@background raised by belief|LOGM} background.",
-						"{@b Divine Skill:} This section lists a skill that is especially associated with this deity, which their followers would naturally be good at due to their worship or association with this deity.",
-						"{@b Domains:} The domains that best represent this deity.",
-						"{@b Alternate Domains:} If the deity offers {@book additional domains|LOGM|1|Alternate Domains}, they are listed here. If the deity doesn't offer alternate domains, this section is omitted.",
-						"{@b Cleric Spells:} Each deity provides at least three additional spells to the spell list of {@class cleric||clerics} who worship them. Typically these are a 1st-level spell and two other thematically appropriate spells.",
-						"{@b Edicts:} These are things that the deity urges their followers to do. Followers must adhere to these as closely as possible if they wish to gain favor with this deity.",
-						"{@b Anathema:} These are things that are absolutely abhorrent to the deity; committing these acts will likely earn a follower disfavor or punishment.",
-						"{@b Favored Weapon:} The deity's {@book favored weapon|LOGM|1|Favored Weapon}."
-					]
-				},
 				{
 					"type": "pf2-h3",
 					"name": "Divine Intercession",
@@ -1580,29 +1559,8 @@
 		},
 		"deityPantheon": {
 			"source": "LOGM",
-			"page": 7,
+			"page": 92,
 			"entries": [
-				{
-					"type": "pf2-h2",
-					"name": "Using the Entries",
-					"source": "LOGM",
-					"page": 10,
-					"entries": [
-						"The entries for deities use the stat block format described below to present the vital information required for worship.",
-						"{@b Name:} The deity's name plus a common title or epithet.",
-						"{@b Areas of Concern:} The topics that the deity cares most deeply about.",
-						"{@b Alignment:} The deity's alignment. In parentheses, the entry lists other character alignments that this deity accepts from worshippers. For instance, {@deity Kazutal|LOGM}, the goddess of protection and community, accepts any good-aligned clerics. {@deity Arazni|LOGM}, who is embittered and prone to cruelty, nonetheless has some sympathy for victims of abuse and accepts evil, neutral, and good worshippers, since she is less concerned about her worshippers' morality.",
-						"{@b Divine Font:} This entry presents whether the deity grants worshippers {@spell heal} or {@spell harm}, or can grant both. {@spell Heal} heals the living and harms undead, while {@spell harm} harms the living and heals undead. Usually, good deities channel {@spell heal}, evil deities channel {@spell harm}, and neutral deities can channel {@spell harm} or {@spell heal}, but there are exceptions.",
-						"{@b Divine Ability:} This section lists the two ability boosts the deity grants as options for characters with the {@background raised by belief|LOGM} background.",
-						"{@b Divine Skill:} This section lists a skill that is especially associated with this deity, which their followers would naturally be good at due to their worship or association with this deity.",
-						"{@b Domains:} The domains that best represent this deity.",
-						"{@b Alternate Domains:} If the deity offers {@book additional domains|LOGM|1|Alternate Domains}, they are listed here. If the deity doesn't offer alternate domains, this section is omitted.",
-						"{@b Cleric Spells:} Each deity provides at least three additional spells to the spell list of {@class cleric||clerics} who worship them. Typically these are a 1st-level spell and two other thematically appropriate spells.",
-						"{@b Edicts:} These are things that the deity urges their followers to do. Followers must adhere to these as closely as possible if they wish to gain favor with this deity.",
-						"{@b Anathema:} These are things that are absolutely abhorrent to the deity; committing these acts will likely earn a follower disfavor or punishment.",
-						"{@b Favored Weapon:} The deity's {@book favored weapon|LOGM|1|Favored Weapon}."
-					]
-				},
 				{
 					"type": "pf2-h2",
 					"name": "Pantheons",
@@ -1616,7 +1574,7 @@
 		},
 		"deityPhilosophy": {
 			"source": "LOGM",
-			"page": 7,
+			"page": 10,
 			"entries": [
 				{
 					"type": "pf2-h2",
@@ -1878,6 +1836,113 @@
 							"name": "Critical Hit Deck Variant",
 							"entries": [
 								"If you are using the {@i Pathfinder Critical Hit Deck}, anytime a PC scores a critical hit, the player can draw a card and, instead of playing it, deal normal damage and keep the card. That player can later exchange the critical hit card to negate a critical failure rolled by their PC or any other PC in the group."
+							]
+						}
+					]
+				}
+			]
+		},
+		"heroPointDeck": {
+			"source": "HPD",
+			"page": 0,
+			"entries": [
+				{
+					"type": "pf2-h1",
+					"name": "Rules",
+					"entries": [
+						"At the start of each session, shuffle this deck of cards and place it where everyone can reach it. Whenever the GM would give you a Hero Point, including the one granted at the start of each session, draw a card from the deck instead. Don't reveal the card to the other players until you play it.",
+						"Each card tells you when you can use it and what effect it has on the game, but you can also spend the card for any one of the standard @quickref Hero Point effects|CRB|3|Hero Points|0}! Remember that if you're forced to spend all of your Hero Points, usually to avoid death, you must spend all of your cards as well. These cards don't use any of your character's actions or reaction (although some might allow you to spend future actions in a special way).",
+						"If the deck runs out of cards, shuffle the discard pile to create a new deck. At the end of each session, all Hero Point cards are returned to the deck. You get new cards at the start of each game!",
+						{
+							"type": "pf2-h2",
+							"name": "Optional Rules",
+							"entries": [
+								"Your group can use the Hero Point cards in your game in a number of ways. Discuss the following optional rules as a group before implementing them at the table.",
+								{
+									"type": "list",
+									"items": [
+										"The cards are revealed to the table as soon as they are drawn, and players can trade them.",
+										"Instead of dealing out cards to each player, turn three cards face up at the start of the session and place them at the center of the table. All players can use these cards by spending their Hero Points. Discard the cards as they are used and draw a replacement to ensure that three cards are always available.",
+										"Players can keep one Hero Point card at the end of each session, but it counts as one of their cards at the start of the next game.",
+										"Turn the top card of the deck over, so that the players can see what they might earn by performing heroic deeds."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"relicGift": {
+			"source": "GMG",
+			"page": 94,
+			"entries": [
+				{
+					"type": "pf2-h1",
+					"blue": true,
+					"source": "GMG",
+					"page": 94,
+					"name": "Relics",
+					"entries": [
+						"{@book Relics|gmg|3|Relics} begin as a simple item, called a relic seed, which is little more than a functional item with a minor {@trait magical} effect associated with it. As the owner of the relic grows in power, so does the relic. It develops gifts, which are new magical abilities and activations. These abilities might be themed to the relic, the character, or the nature of the campaign. If a relic is passed to another character, this process begins anew, sometimes granting the same abilities again over time, but possibly unlocking entirely new powers. If someone else takes the relic from its owner, it usually works for a while, though it might lose its power incrementally over time if not returned to its owner. How the relic changes in such a circumstance is up to you, and should fit the story.",
+						{
+							"type": "pf2-h2",
+							"source": "GMG",
+							"page": 95,
+							"name": "Relic Aspects",
+							"entries": [
+								"Each relic is associated with aspects\u2014typically two\u2014that speak to its overall concept and purpose. The individual gifts each have an associated aspect. You should almost always select gifts that have an aspect matching one of those found on the relic. For example, a brass dagger recovered from the City of Brass might have the fire and mind aspects, which means that it could have the {@relicGift flare bolt} gift (which has the fire aspect), but not the {@relicGift rolling geode} gift (which has the earth aspect)"
+							]
+						},
+						{
+							"type": "pf2-h2",
+							"source": "GMG",
+							"page": 96,
+							"name": "Relic Gifts",
+							"entries": [
+								"Gifts are divided up into three tiers. Minor gifts grant useful, often scaling abilities and are available early in a character's career. Major gifts define a relic, determining its true purpose and granting powerful abilities. Grand gifts are the pinnacle of power, and most relics never have more than one.",
+								"The more gifts there are of one aspect, the more the relic reflects that aspect, and the more influence the aspect has on the character who wields it. An item with multiple shadow gifts might begin to lose its color. With four or five, the character that wields it might take on an ashen tone and the relic might become entirely made of shadow.",
+								{
+									"type": "pf2-h3",
+									"source": "GMG",
+									"page": 96,
+									"name": "Gift Saves and Spell Attack Rolls",
+									"entries": [
+										"Many gifts allow for a saving throw or have other abilities that change as the relic goes up in level. The DC for any saving throw called for by a gift is its owner's class DC or spell DC. The spell attack modifier of a gift is 10 lower than that DC. A relic's counteract modifier is equal to its owner's counteract modifier."
+									]
+								},
+								{
+									"type": "pf2-brown-box",
+									"name": "Runes as Gifts",
+									"entries": [
+										"You can substitute runes for gifts. If you choose to allow property runes on the relic, you'll want them to take up rune slots. Otherwise, you can give as many or few as you prefer, just like any other gifts. Runes are sorted into minor, major, and grand categories, but you should use their normal level and Price when you adjust treasure, instead of the number and levels on the {@table Relic Gifts|GMG|Table 2\u201322}. If you're using the player-driven relics variant, it's recommended you do not include this option."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"soulSeed": {
+			"source": "SoM",
+			"page": 230,
+			"entries": [
+				{
+					"type": "pf2-h1",
+					"name": "Soul Seeds",
+					"source": "SoM",
+					"page": 230,
+					"entries": [
+						"{@b Rarity:} {@trait Rare}",
+						"{@variantrule Soul seeds|SoM} are a special type of intangible {@book relic|gmg|3|Relics}, though because they bind to the soul of the creature that carries them, they can't be removed from the creature they're bonded with except on that creature's death (at which point the soul seed might manifest nearby or might be lost along with the bearer). Since soul seeds aren't physical objects, they never have {@action Interact} activations.",
+						{
+							"type": "pf2-h2",
+							"name": "Soul Seed Gifts",
+							"source": "SoM",
+							"page": 230,
+							"entries": [
+								"The GM should follow the same {@book guidelines and rules|gmg|3|Relics} for granting soul seeds as for relics. They can have any aspect or gift that a normal relic has, and their DCs, spell attack rolls, and counteract modifiers are determined identically. The following gifts are particularly appropriate for soul seeds, though they might apply to relics in the right circumstances. Dragon gifts are often connected to the souls of ancient dragons, and soul gifts are prevalent across all sorts of soul seeds."
 							]
 						}
 					]

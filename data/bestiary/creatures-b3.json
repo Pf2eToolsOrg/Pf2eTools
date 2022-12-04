@@ -87,7 +87,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 24,
 					"entry": {
 						"4": {
@@ -148,8 +148,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -270,7 +269,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+4} slashing",
 					"types": [
 						"slashing"
@@ -295,7 +293,6 @@
 					"traits": [
 						"range increment <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -306,7 +303,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 20,
 					"entry": {
 						"2": {
@@ -458,9 +455,8 @@
 					"traits": [
 						"agile",
 						"magical",
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+14} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -474,7 +470,6 @@
 						"magical",
 						"range increment <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+14} piercing",
 					"types": [
 						"piercing"
@@ -485,7 +480,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 33,
 					"entry": {
 						"0": {
@@ -558,8 +553,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The adachros takes 25 or more bludgeoning, piercing, or slashing damage",
 						"entries": [
@@ -618,6 +612,14 @@
 			"source": "B3",
 			"page": 23,
 			"level": 7,
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"traits": [
 				"le",
 				"medium",
@@ -678,7 +680,6 @@
 						"agile",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+9} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed} and {@damage 1d4} evil",
 					"types": [
 						"evil",
@@ -693,7 +694,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+9} slashing and {@damage 1d4} evil",
 					"types": [
 						"evil",
@@ -706,8 +706,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -718,8 +717,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The adhukait fails a saving throw against a {@trait mental} effect",
 						"entries": [
@@ -849,7 +847,6 @@
 					"traits": [
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+9} piercing plus {@damage 1d6} cold",
 					"types": [
 						"cold",
@@ -860,7 +857,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 19,
-					"effects": [],
 					"damage": "{@damage 2d8+9} slashing plus {@damage 1d6} cold",
 					"types": [
 						"cold",
@@ -875,7 +871,6 @@
 						"magical",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+9} piercing plus {@damage 1d6} cold",
 					"types": [
 						"cold",
@@ -900,8 +895,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within reach of an adlet's jaws {@action Strike} attacks one of the adlet's allies",
 						"entries": [
@@ -1058,7 +1052,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+13} piercing plus {@damage 2d6} poison",
 					"types": [
 						"piercing",
@@ -1074,7 +1067,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+13} slashing plus",
 					"types": [
 						"slashing"
@@ -1101,7 +1093,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 34,
 					"entry": {
 						"0": {
@@ -1157,8 +1149,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"healing",
@@ -1436,7 +1427,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 32,
 					"entry": {
 						"2": {
@@ -1508,8 +1499,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -1691,7 +1681,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+13} piercing plus {@damage 1d12} electricity",
 					"types": [
 						"electricity",
@@ -1736,7 +1725,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 33,
 					"entry": {
 						"1": {
@@ -1970,7 +1959,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+14} piercing plus {@damage 2d6} mental",
 					"types": [
 						"mental",
@@ -2015,7 +2003,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 36,
 					"attack": 30,
 					"entry": {
@@ -2074,8 +2062,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The sovereign dragon makes a claw or tail {@action Strike} against the creature, after applying all the effects of the critical hit to the dragon."
@@ -2290,7 +2277,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} piercing plus {@damage 2d6} fire",
 					"types": [
 						"fire",
@@ -2334,7 +2320,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 30,
 					"attack": 24,
 					"entry": {
@@ -2561,7 +2547,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+5} slashing plus {@damage 1d6} evil",
 					"types": [
 						"evil",
@@ -2573,7 +2558,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 21,
 					"entry": {
 						"0": {
@@ -2770,7 +2755,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -2792,8 +2776,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"air"
@@ -2902,7 +2885,6 @@
 					"range": "Melee",
 					"name": "limb",
 					"attack": 24,
-					"effects": [],
 					"damage": "{@damage 3d10+11} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -2917,7 +2899,6 @@
 						"magical",
 						"range <100 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+8} force",
 					"types": [
 						"force"
@@ -2928,7 +2909,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 33,
 					"entry": {
 						"4": {
@@ -2967,8 +2948,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The amalgamite is hit by a {@action Strike}",
 						"entries": [
@@ -3333,7 +3313,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 41,
 					"attack": 35,
 					"entry": {
@@ -3404,8 +3384,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"healing",
@@ -3679,7 +3658,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 38,
 					"entry": {
 						"3": {
@@ -3745,8 +3724,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -3960,7 +3938,6 @@
 						"magical",
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+16} piercing plus {@damage 1d12} electricity",
 					"types": [
 						"electricity",
@@ -4005,7 +3982,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 42,
 					"entry": {
 						"1": {
@@ -4261,7 +4238,6 @@
 						"magical",
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d8+18} piercing plus {@damage 3d6} mental",
 					"types": [
 						"mental",
@@ -4306,7 +4282,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 43,
 					"entry": {
 						"2": {
@@ -4364,8 +4340,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -4380,8 +4355,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The sovereign dragon makes a claw or tail {@action Strike} against the creature, after applying all the effects of the critical hit to the dragon."
@@ -4598,7 +4572,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+16} piercing plus {@damage 3d6} fire",
 					"types": [
 						"fire",
@@ -4644,7 +4617,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 37,
 					"entry": {
 						"0": {
@@ -4876,9 +4849,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -4893,7 +4865,6 @@
 						"finesse",
 						"nonlethal"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -4907,7 +4878,6 @@
 						"range increment <60 feet>",
 						"reload <1>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} piercing",
 					"types": [
 						"piercing"
@@ -4925,8 +4895,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The android infiltrator attempts a skill check but hasn't rolled yet",
 						"entries": [
@@ -5031,7 +5000,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -5041,7 +5009,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 20,
-					"effects": [],
 					"damage": "{@damage 2d12+9} piercing",
 					"types": [
 						"piercing"
@@ -5052,7 +5019,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 24,
 					"entry": {
 						"3": {
@@ -5078,8 +5045,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature makes a melee weapon {@action Strike} against the angazhani and misses",
 						"requirements": "The angazhani is benefiting from their Defensive Slam",
@@ -5255,7 +5221,6 @@
 						"finesse",
 						"forceful"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+5} slashing",
 					"types": [
 						"slashing"
@@ -5270,7 +5235,6 @@
 						"propulsive",
 						"range increment <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+3} piercing",
 					"types": [
 						"piercing"
@@ -5372,6 +5336,14 @@
 			"name": "Animated Colossus",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 19,
 			"level": 15,
 			"traits": [
@@ -5430,7 +5402,6 @@
 						"magical",
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+17} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -5535,6 +5506,14 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 18,
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 9,
 			"traits": [
 				"n",
@@ -5673,6 +5652,14 @@
 			"name": "Animated Silverware Swarm",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 18,
 			"level": 1,
 			"traits": [
@@ -5799,6 +5786,14 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 19,
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 13,
 			"traits": [
 				"n",
@@ -5856,7 +5851,6 @@
 						"magical",
 						"range increment <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+11} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -5948,6 +5942,14 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 204,
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"ln",
@@ -6015,9 +6017,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+8} piercing",
 					"types": [
 						"piercing"
@@ -6031,7 +6032,6 @@
 						"range increment 60",
 						"reload <1>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+8} piercing",
 					"types": [
 						"piercing"
@@ -6042,7 +6042,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 18,
 					"entry": {
 						"1": {
@@ -6203,7 +6203,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 32,
 					"attack": 24,
 					"entry": {
@@ -6388,7 +6388,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+8} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -6401,7 +6400,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+8} bludgeoning plus",
 					"types": [
 						"bludgeoning"
@@ -6411,7 +6409,6 @@
 					"range": "Ranged",
 					"name": "thorns",
 					"attack": 16,
-					"effects": [],
 					"damage": "{@damage 2d8+5} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
@@ -6423,7 +6420,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 22,
 					"entry": {
 						"3": {
@@ -6572,7 +6569,6 @@
 						"evocation",
 						"range increment <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d12} electricity",
 					"types": [
 						"electricity"
@@ -6583,7 +6579,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 35,
 					"attack": 27,
 					"entry": {
@@ -6778,7 +6774,6 @@
 					"range": "Melee",
 					"name": "trident",
 					"attack": 10,
-					"effects": [],
 					"damage": "{@damage 1d8+6} piercing",
 					"types": [
 						"piercing"
@@ -6790,9 +6785,8 @@
 					"attack": 10,
 					"traits": [
 						"agile",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+6} piercing",
 					"types": [
 						"piercing"
@@ -6805,7 +6799,6 @@
 					"traits": [
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+6} piercing",
 					"types": [
 						"piercing"
@@ -6817,8 +6810,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -6946,7 +6938,6 @@
 					"traits": [
 						"shove"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+3} bludgeoning plus {@damage 1d6} fire",
 					"types": [
 						"bludgeoning",
@@ -6960,7 +6951,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+3} bludgeoning plus {@damage 1d6} fire",
 					"types": [
 						"bludgeoning",
@@ -6975,7 +6965,6 @@
 						"agile",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+3} bludgeoning plus {@damage 1d6} fire",
 					"types": [
 						"bludgeoning",
@@ -7145,7 +7134,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -7277,7 +7265,6 @@
 						"magical",
 						"shove"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+9} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -7488,7 +7475,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+10} negative",
 					"types": [
 						"negative"
@@ -7543,8 +7529,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"conjuration",
@@ -7660,7 +7645,6 @@
 					"range": "Melee",
 					"name": "hoof",
 					"attack": 12,
-					"effects": [],
 					"damage": "{@damage 2d6+6} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -7822,7 +7806,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 18,
-					"effects": [],
 					"damage": "{@damage 2d12+7} piercing",
 					"types": [
 						"piercing"
@@ -7836,7 +7819,6 @@
 						"agile",
 						"fire"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+8} fire",
 					"types": [
 						"fire"
@@ -7847,7 +7829,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 26,
 					"entry": {
 						"4": {
@@ -7961,6 +7943,14 @@
 			"name": "Blood Painter",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 33,
 			"level": 9,
 			"traits": [
@@ -8022,7 +8012,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+8} slashing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
@@ -8112,6 +8101,14 @@
 			"name": "Bone Ship",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 34,
 			"level": 18,
 			"traits": [
@@ -8164,7 +8161,6 @@
 					"traits": [
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+17} bludgeoning plus {@damage 2d10} negative",
 					"types": [
 						"bludgeoning",
@@ -8178,7 +8174,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+17} slashing plus {@damage 2d10} negative",
 					"types": [
 						"negative",
@@ -8195,7 +8190,6 @@
 						"negative",
 						"range increment <100 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+12} bludgeoning damage plus {@damage 2d10} negative",
 					"types": [
 						"bludgeoning",
@@ -8351,6 +8345,15 @@
 			"name": "Bore Worm Swarm",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 36,
 			"level": 5,
 			"traits": [
@@ -8546,7 +8549,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 30,
 					"entry": {
 						"0": {
@@ -8729,7 +8732,6 @@
 					"traits": [
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+4} slashing plus {@damage 1d6} evil and {@damage 1d6} fire",
 					"types": [
 						"evil",
@@ -8744,7 +8746,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+4} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} fire",
 					"types": [
 						"bludgeoning",
@@ -8757,7 +8758,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 21,
 					"entry": {
 						"0": {
@@ -8959,7 +8960,6 @@
 						"agile",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+6} slashing",
 					"types": [
 						"slashing"
@@ -8972,7 +8972,6 @@
 					"traits": [
 						"thrown <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+6} piercing",
 					"types": [
 						"piercing"
@@ -9032,6 +9031,15 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 160,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 2,
 			"traits": [
 				"n",
@@ -9084,7 +9092,6 @@
 					"range": "Melee",
 					"name": "spine",
 					"attack": 11,
-					"effects": [],
 					"damage": "{@damage 1d8+3} piercing",
 					"types": [
 						"piercing"
@@ -9097,7 +9104,6 @@
 					"traits": [
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+3} piercing",
 					"types": [
 						"piercing"
@@ -9108,7 +9114,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 18,
 					"entry": {
 						"4": {
@@ -9267,9 +9273,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+4} piercing plus {@damage 1d6} negative",
 					"types": [
 						"negative",
@@ -9281,7 +9286,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 24,
 					"attack": 16,
 					"entry": {
@@ -9456,9 +9461,8 @@
 					"name": "greatsword",
 					"attack": 16,
 					"traits": [
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d12+8} slashing",
 					"types": [
 						"slashing"
@@ -9473,7 +9477,6 @@
 						"range increment <100 feet>",
 						"volley"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+5} piercing",
 					"types": [
 						"piercing"
@@ -9493,8 +9496,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -9584,6 +9586,16 @@
 			"source": "B3",
 			"page": 42,
 			"level": 12,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"traits": [
 				"uncommon",
 				"ln",
@@ -9637,9 +9649,8 @@
 					"traits": [
 						"magical",
 						"reach <10 feet>",
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+15} slashing",
 					"types": [
 						"slashing"
@@ -9654,7 +9665,6 @@
 						"nonlethal",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+13} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -9665,7 +9675,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 28,
 					"entry": {
 						"1": {
@@ -9825,7 +9835,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 7,
-					"effects": [],
 					"damage": "{@damage 1d6+4} piercing",
 					"types": [
 						"piercing"
@@ -9979,7 +9988,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+5} slashing",
 					"types": [
 						"slashing"
@@ -9993,7 +10001,6 @@
 						"finesse",
 						"mental"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12} mental",
 					"types": [
 						"mental"
@@ -10004,7 +10011,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 25,
 					"attack": 17,
 					"entry": {
@@ -10206,7 +10213,6 @@
 						"reach <10 feet>",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 1d12+9} slashing",
 					"types": [
 						"slashing"
@@ -10220,7 +10226,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+9} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -10234,7 +10239,6 @@
 						"brutal",
 						"range increment <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+10} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -10246,8 +10250,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Catch Rock",
@@ -10382,7 +10385,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+7} piercing",
 					"types": [
 						"piercing"
@@ -10396,7 +10398,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+7} bludgeoning plus",
 					"types": [
 						"bludgeoning"
@@ -10523,7 +10524,6 @@
 						"finesse",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8} negative plus {@damage 2d6} fire plus",
 					"types": [
 						"fire",
@@ -10537,7 +10537,6 @@
 					"traits": [
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4} negative plus {@damage 2d6} fire",
 					"types": [
 						"fire",
@@ -10563,8 +10562,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature attempts to leave the chouchinobake's",
 						"entries": [],
@@ -10730,7 +10728,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} slashing",
 					"types": [
 						"slashing"
@@ -10741,7 +10738,7 @@
 				{
 					"name": "Divine Prepared",
 					"type": "Prepared",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 29,
 					"attack": 21,
 					"entry": {
@@ -11236,6 +11233,16 @@
 			"name": "Clockwork Dragon",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 51,
 			"level": 16,
 			"traits": [
@@ -11282,7 +11289,6 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+17} piercing",
 					"types": [
 						"piercing"
@@ -11296,7 +11302,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+17} slashing",
 					"types": [
 						"slashing"
@@ -11309,7 +11314,6 @@
 					"traits": [
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+15} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -11323,7 +11327,6 @@
 						"agile",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+15} piercing",
 					"types": [
 						"piercing"
@@ -11335,8 +11338,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The clockwork dragon is reduced to 0 Hit Points",
 						"entries": [
@@ -11444,6 +11446,16 @@
 		{
 			"name": "Clockwork Mage",
 			"isNpc": false,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"source": "B3",
 			"page": 50,
 			"level": 9,
@@ -11491,7 +11503,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+6} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -11502,7 +11513,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 28,
 					"attack": 20,
 					"entry": {
@@ -11679,6 +11690,16 @@
 			"source": "B3",
 			"page": 49,
 			"level": 6,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"traits": [
 				"uncommon",
 				"n",
@@ -11722,9 +11743,8 @@
 					"traits": [
 						"magical",
 						"reach <10 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+9} piercing",
 					"types": [
 						"piercing"
@@ -11752,8 +11772,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -11829,6 +11848,16 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 48,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": -1,
 			"traits": [
 				"uncommon",
@@ -11871,7 +11900,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@dice 1d6-1} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -11899,8 +11927,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The clockwork spy is reduced to 0 Hit Points",
 						"entries": [
@@ -12156,8 +12183,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"Stinger only (page 304)."
@@ -12284,7 +12310,6 @@
 						"range <120 feet>",
 						"sonic"
 					],
-					"effects": [],
 					"damage": "{@damage 6d6} piercing plus {@damage 2d6} sonic",
 					"types": [
 						"piercing",
@@ -12501,6 +12526,14 @@
 		{
 			"name": "Corrupted Relic",
 			"isNpc": false,
+			"foundIn": [
+				"Impossible Lands"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"source": "B3",
 			"page": 55,
 			"level": 4,
@@ -12566,7 +12599,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+3} negative",
 					"types": [
 						"negative"
@@ -12583,7 +12615,6 @@
 						"evocation",
 						"range <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d12} electricity",
 					"types": [
 						"electricity"
@@ -12608,8 +12639,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The relic detects a creature using its lifesense",
 						"entries": [
@@ -12773,9 +12803,8 @@
 					"name": "greatsword",
 					"attack": 18,
 					"traits": [
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d12+11} slashing plus {@damage 1d6} mental",
 					"types": [
 						"mental",
@@ -12787,7 +12816,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 25,
 					"entry": {
 						"4": {
@@ -12934,7 +12963,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+1} force",
 					"types": [
 						"force"
@@ -12949,7 +12977,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+1} force",
 					"types": [
 						"force"
@@ -12960,7 +12987,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -13161,7 +13188,6 @@
 						"reach <40 feet>",
 						"shove"
 					],
-					"effects": [],
 					"damage": "{@damage 4d10+20} bludgeoning plus {@damage 2d12} cold",
 					"types": [
 						"bludgeoning",
@@ -13176,7 +13202,6 @@
 						"agile",
 						"reach <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d8+20} bludgeoning plus {@damage 2d12} cold",
 					"types": [
 						"bludgeoning",
@@ -13193,7 +13218,6 @@
 						"range <200 feet>",
 						"water"
 					],
-					"effects": [],
 					"damage": "{@damage 4d6+20} bludgeoning plus {@damage 2d12} cold",
 					"types": [
 						"bludgeoning",
@@ -13205,7 +13229,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 46,
 					"attack": 38,
 					"entry": {
@@ -13294,8 +13318,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within 200 feet targets the titan with or includes the titan in the area of an attack, spell, or other effect",
 						"entries": [
@@ -13435,7 +13458,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+15} slashing plus {@damage 1d6} evil",
 					"types": [
 						"evil",
@@ -13447,7 +13469,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 42,
 					"attack": 34,
 					"entry": {
@@ -13517,8 +13539,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within 60 feet is targeted by a spell that would restore Hit Points or provide a status bonus (the deimavigga automatically recognizes such effects)",
 						"entries": [
@@ -13632,6 +13653,15 @@
 			"name": "Desert Giant",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 109,
 			"level": 9,
 			"traits": [
@@ -13685,7 +13715,6 @@
 						"reach <10 feet>",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+12} slashing",
 					"types": [
 						"slashing"
@@ -13699,7 +13728,6 @@
 						"brutal",
 						"range increment <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+12} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -13711,8 +13739,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -13865,7 +13892,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 19,
 					"entry": {
 						"0": {
@@ -14002,7 +14029,6 @@
 					"range": "Melee",
 					"name": "broom",
 					"attack": 7,
-					"effects": [],
 					"damage": "{@damage 1d4+3} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -14031,7 +14057,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 18,
 					"entry": {
 						"0": {
@@ -14202,7 +14228,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -14275,7 +14301,7 @@
 							},
 							{
 								"stage": 3,
-								"entry": "{@damage 1d6} poison and {@condition stupefied 2} .",
+								"entry": "{@damage 1d6} poison and {@condition stupefied 2}.",
 								"duration": "1 round"
 							}
 						],
@@ -14407,7 +14433,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+18} piercing plus {@damage 1d6} good plus {@damage 4d6} fire",
 					"types": [
 						"fire",
@@ -14425,7 +14450,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+18} slashing plus {@damage 1d6} good plus {@damage 4d6} fire",
 					"types": [
 						"fire",
@@ -14438,7 +14462,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 46,
 					"attack": 38,
 					"entry": {
@@ -14501,8 +14525,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within the draconal's reach would take damage",
 						"entries": [
@@ -14642,7 +14665,6 @@
 						"finesse",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+9} piercing plus {@damage 2d6} mental",
 					"types": [
 						"mental",
@@ -14657,7 +14679,6 @@
 						"agile",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+9} piercing plus {@damage 2d6} mental",
 					"types": [
 						"mental",
@@ -14669,7 +14690,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 36,
 					"entry": {
 						"4": {
@@ -14887,7 +14908,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+3} bludgeoning damage",
 					"types": [
 						"bludgeoning"
@@ -14902,7 +14922,6 @@
 						"magical",
 						"range <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+3} mental",
 					"types": [
 						"mental"
@@ -14913,7 +14932,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 20,
 					"entry": {
 						"0": {
@@ -15062,7 +15081,6 @@
 						"evil",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+3} piercing plus {@damage 1d4} evil",
 					"types": [
 						"evil",
@@ -15078,7 +15096,6 @@
 						"evil",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+3} slashing plus {@damage 1d4} evil",
 					"types": [
 						"evil",
@@ -15090,7 +15107,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 16,
 					"entry": {
 						"1": {
@@ -15246,7 +15263,6 @@
 						"backstabber",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+3} slashing",
 					"types": [
 						"slashing"
@@ -15257,7 +15273,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 18,
 					"attack": 10,
 					"entry": {
@@ -15426,7 +15442,6 @@
 					"range": "Melee",
 					"name": "pitchfork",
 					"attack": 12,
-					"effects": [],
 					"damage": "{@damage 1d8+6} piercing",
 					"types": [
 						"piercing"
@@ -15437,7 +15452,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 18,
 					"entry": {
 						"0": {
@@ -15603,7 +15618,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+14} negative plus {@damage 2d6} evil",
 					"types": [
 						"evil",
@@ -15615,7 +15629,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 36,
 					"attack": 30,
 					"entry": {
@@ -15828,7 +15842,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -15850,8 +15863,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"air"
@@ -15962,9 +15974,8 @@
 					"name": "longsword",
 					"attack": 24,
 					"traits": [
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} slashing",
 					"types": [
 						"slashing"
@@ -15977,7 +15988,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+13} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -15989,9 +15999,8 @@
 					"attack": 24,
 					"traits": [
 						"agile",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+13} piercing",
 					"types": [
 						"piercing"
@@ -16004,9 +16013,8 @@
 					"traits": [
 						"agile",
 						"thrown <10 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+13} piercing",
 					"types": [
 						"piercing"
@@ -16018,8 +16026,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -16030,8 +16037,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"page 306"
@@ -16197,7 +16203,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+16} slashing",
 					"types": [
 						"slashing"
@@ -16208,7 +16213,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 37,
 					"entry": {
 						"0": {
@@ -16480,7 +16485,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 46,
 					"entry": {
 						"10": {
@@ -16495,7 +16500,7 @@
 			],
 			"rituals": [
 				{
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 46,
 					"rituals": [
 						{
@@ -16535,8 +16540,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The wyrmwraith transfers all positive damage from the effect to a single undead creature of their choice within 120 feet that they control or that's {@condition friendly} or {@condition helpful} to them."
@@ -16768,7 +16772,6 @@
 						"magical",
 						"reach <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d10+20} piercing",
 					"types": [
 						"piercing"
@@ -16782,7 +16785,6 @@
 						"agile",
 						"reach <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d8+20} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -16796,7 +16798,6 @@
 						"brutal",
 						"range increment <200 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+20} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -16807,7 +16808,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 44,
 					"entry": {
 						"5": {
@@ -16873,7 +16874,7 @@
 			],
 			"rituals": [
 				{
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 44,
 					"rituals": [
 						{
@@ -16966,6 +16967,15 @@
 			"name": "Empress Bore Worm",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 37,
 			"level": 7,
 			"traits": [
@@ -17148,7 +17158,7 @@
 					"attack": 9,
 					"traits": [
 						"finesse",
-						"versatile p"
+						"versatile <p>"
 					],
 					"effects": [
 						"{@ability Grab}"
@@ -17167,7 +17177,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} slashing plus {@damage 1d4} evil",
 					"types": [
 						"evil",
@@ -17179,7 +17188,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 15,
 					"entry": {
 						"0": {
@@ -17362,7 +17371,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+6} negative",
 					"types": [
 						"negative"
@@ -17373,7 +17381,7 @@
 				{
 					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 29,
 					"attack": 21,
 					"entry": {
@@ -17506,8 +17514,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -17571,6 +17578,14 @@
 			"source": "B3",
 			"page": 96,
 			"level": 5,
+			"foundIn": [
+				"Impossible Lands"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"traits": [
 				"uncommon",
 				"ln",
@@ -17628,7 +17643,6 @@
 						"agile",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+6} bludgeoning or positive",
 					"types": [
 						"bludgeoning"
@@ -17654,7 +17668,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 20,
 					"entry": {
 						"0": {
@@ -17694,8 +17708,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -17706,8 +17719,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A Medium or smaller creature attempts a melee {@action Strike} against the eunemvro and the attack roll is a critical failure",
 						"entries": [
@@ -17834,7 +17846,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+1} piercing",
 					"types": [
 						"piercing"
@@ -17854,8 +17865,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within 30 feet that the fading fox is aware of either moves toward the fox or targets it with an ability",
 						"requirements": "The fading fox is in natural surroundings",
@@ -17993,7 +18003,6 @@
 					"traits": [
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+9} force",
 					"types": [
 						"force"
@@ -18020,7 +18029,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 27,
 					"entry": {
 						"3": {
@@ -18062,8 +18071,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within 10 feet damages the feathered bear's ally with a melee attack",
 						"entries": [
@@ -18357,7 +18365,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 9,
-					"effects": [],
 					"damage": "{@damage 1d6+4} piercing",
 					"types": [
 						"piercing"
@@ -18370,7 +18377,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+4} slashing",
 					"types": [
 						"slashing"
@@ -18510,7 +18516,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4} fire plus 1 {@condition persistent damage ||persistent fire}",
 					"types": [
 						"fire",
@@ -18541,8 +18546,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"air"
@@ -18656,7 +18660,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+3} bludgeoning plus {@damage 1d6} fire",
 					"types": [
 						"bludgeoning",
@@ -18671,7 +18674,6 @@
 						"agile",
 						"fire"
 					],
-					"effects": [],
 					"damage": "{@damage 1d12+2} fire",
 					"types": [
 						"fire"
@@ -18798,7 +18800,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4} piercing plus {@damage 1d4} {@condition persistent damage ||persistent acid}",
 					"types": [
 						"persistent",
@@ -18916,9 +18917,8 @@
 					"traits": [
 						"finesse",
 						"magical",
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+8} slashing plus {@damage 1d8} negative",
 					"types": [
 						"negative",
@@ -18935,7 +18935,6 @@
 						"magical",
 						"shove"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+8} bludgeoning plus {@damage 1d8} negative",
 					"types": [
 						"bludgeoning",
@@ -18952,7 +18951,6 @@
 						"range increment <100 feet>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+4} piercing plus {@damage 1d8} negative",
 					"types": [
 						"negative",
@@ -18988,8 +18986,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"divination",
@@ -19063,6 +19060,14 @@
 			"source": "B3",
 			"page": 116,
 			"level": 12,
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"traits": [
 				"rare",
 				"n",
@@ -19118,9 +19123,9 @@
 				"mid": [
 					{
 						"entries": [
-							"Antimagic harmed by cold and water ({@dice 5d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by acid (area {@dice 2d8} HP); {@condition slowed} by earth."
+							"harmed by cold and water ({@dice 5d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by acid (area {@dice 2d8} HP); {@condition slowed} by earth."
 						],
-						"name": "Golem"
+						"name": "Golem Antimagic"
 					},
 					{
 						"entries": [
@@ -19263,7 +19268,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+1} slashing",
 					"types": [
 						"slashing"
@@ -19277,7 +19281,6 @@
 						"agile",
 						"range increment <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+1} piercing",
 					"types": [
 						"piercing"
@@ -19288,7 +19291,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -19407,6 +19410,14 @@
 			"name": "Galvo",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Impossible Lands"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 103,
 			"level": 9,
 			"traits": [
@@ -19460,7 +19471,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+7} piercing plus {@damage 1d12} electricity",
 					"types": [
 						"electricity",
@@ -19475,7 +19485,6 @@
 						"agile",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+7} piercing plus {@damage 1d12} electricity",
 					"types": [
 						"electricity",
@@ -19580,6 +19589,14 @@
 			"name": "Ganzi Martial Artist",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 205,
 			"level": 3,
 			"traits": [
@@ -19645,7 +19662,6 @@
 						"finesse",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+5} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -19659,7 +19675,6 @@
 						"agile",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+5} piercing",
 					"types": [
 						"piercing"
@@ -19670,7 +19685,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 19,
 					"attack": 11,
 					"entry": {
@@ -19747,6 +19762,14 @@
 			"name": "Garuda",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 104,
 			"level": 9,
 			"traits": [
@@ -19812,7 +19835,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+7} piercing plus {@damage 1d6} good",
 					"types": [
 						"good",
@@ -19827,7 +19849,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+7} slashing plus {@damage 1d6} good",
 					"types": [
 						"good",
@@ -19845,7 +19866,6 @@
 						"reload <0>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+5} piercing plus {@damage 1d6} electricity and {@damage 1d6} good",
 					"types": [
 						"electricity",
@@ -19858,7 +19878,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 27,
 					"entry": {
 						"1": {
@@ -20033,9 +20053,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} piercing",
 					"types": [
 						"piercing"
@@ -20107,6 +20126,14 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 106,
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"rare",
@@ -20167,7 +20194,6 @@
 					"range": "Melee",
 					"name": "spear",
 					"attack": 7,
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -20180,7 +20206,6 @@
 					"traits": [
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -20195,7 +20220,6 @@
 						"range increment <60 feet>",
 						"reload <0>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -20206,7 +20230,7 @@
 				{
 					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 20,
 					"entry": {
 						"0": {
@@ -20262,7 +20286,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 20,
 					"entry": {
 						"1": {
@@ -20316,8 +20340,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"emotion",
@@ -20416,7 +20439,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 11,
-					"effects": [],
 					"damage": "{@damage 1d8+4} piercing",
 					"types": [
 						"piercing"
@@ -20430,7 +20452,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} slashing",
 					"types": [
 						"slashing"
@@ -20544,7 +20565,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+8} piercing",
 					"types": [
 						"piercing"
@@ -20556,8 +20576,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature adjacent to the hermit crab attempts to {@action Strike} the hermit crab while it is Retracted",
 						"entries": [
@@ -20678,7 +20697,6 @@
 					"traits": [
 						"deadly <d10>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+4} piercing",
 					"types": [
 						"piercing"
@@ -20691,7 +20709,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} slashing",
 					"types": [
 						"slashing"
@@ -20718,8 +20735,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The opossum is reduced below 15 HP",
 						"entries": [
@@ -20730,8 +20746,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The opossum is attacked or disturbed by a creature within reach while Feigning Death",
 						"entries": [
@@ -20832,7 +20847,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+7} piercing damage",
 					"types": [
 						"piercing"
@@ -20978,7 +20992,6 @@
 					"range": "Melee",
 					"name": "tail",
 					"attack": 11,
-					"effects": [],
 					"damage": "{@damage 1d6+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -21081,7 +21094,6 @@
 					"range": "Melee",
 					"name": "snout",
 					"attack": 11,
-					"effects": [],
 					"damage": "{@damage 1d12+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -21199,7 +21211,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 8,
-					"effects": [],
 					"damage": "{@damage 1d6+3} piercing",
 					"types": [
 						"piercing"
@@ -21212,7 +21223,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+3} slashing",
 					"types": [
 						"slashing"
@@ -21328,7 +21338,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+5} slashing",
 					"types": [
 						"slashing"
@@ -21493,7 +21502,7 @@
 				{
 					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 33,
 					"entry": {
 						"0": {
@@ -21608,8 +21617,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -21763,7 +21771,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} piercing",
 					"types": [
 						"piercing"
@@ -21946,7 +21953,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+7} positive",
 					"types": [
 						"positive"
@@ -21961,7 +21967,6 @@
 						"magical",
 						"positive"
 					],
-					"effects": [],
 					"damage": "{@damage 4d8} positive",
 					"types": [
 						"positive"
@@ -21972,7 +21977,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 28,
 					"attack": 20,
 					"entry": {
@@ -22320,7 +22325,7 @@
 					"attack": 46,
 					"traits": [
 						"deadly <3d12>",
-						"versatile p"
+						"versatile <p>"
 					],
 					"effects": [
 						"absorb magic",
@@ -22353,7 +22358,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 48,
 					"entry": {
 						"0": {
@@ -22479,8 +22484,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within the green man's reach uses a move action or leaves a square during a move action it's using",
 						"entries": [
@@ -22651,7 +22655,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+1} piercing",
 					"types": [
 						"piercing"
@@ -22665,7 +22668,6 @@
 						"agile",
 						"range increment <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+1} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -22676,7 +22678,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 16,
 					"entry": {
 						"0": {
@@ -22826,7 +22828,6 @@
 						"finesse",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} slashing",
 					"types": [
 						"slashing"
@@ -22853,7 +22854,7 @@
 				{
 					"name": "Divine Prepared",
 					"type": "Prepared",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 20,
 					"attack": 12,
 					"entry": {
@@ -22911,7 +22912,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 19,
 					"attack": 11,
 					"entry": {
@@ -23147,7 +23148,6 @@
 						"finesse",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} slashing",
 					"types": [
 						"slashing"
@@ -23174,7 +23174,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 16,
 					"attack": 8,
 					"entry": {
@@ -23392,7 +23392,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 26,
 					"entry": {
 						"4": {
@@ -23585,7 +23585,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+8} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -23600,7 +23599,6 @@
 						"propulsive",
 						"range increment <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+5} piercing",
 					"types": [
 						"piercing"
@@ -23742,7 +23740,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@dice 2d8+9} physical (see Rapid Evolution)",
 					"types": [
 						"physical"
@@ -23757,7 +23754,6 @@
 						"occult",
 						"range <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@dice 5d6} energy (see Rapid Evolution)",
 					"types": [
 						"energy"
@@ -23769,8 +23765,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"morph",
@@ -23921,7 +23916,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+1} piercing",
 					"types": [
 						"piercing"
@@ -23932,7 +23926,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 13,
 					"entry": {
 						"0": {
@@ -24063,7 +24057,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+6} piercing plus {@damage 2d6} sonic",
 					"types": [
 						"piercing",
@@ -24075,7 +24068,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 30,
 					"entry": {
 						"0": {
@@ -24094,8 +24087,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature enters the harmona's space or an adjacent square",
 						"entries": [
@@ -24209,6 +24201,16 @@
 			"name": "Harpy Skeleton",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 236,
 			"level": 5,
 			"traits": [
@@ -24254,7 +24256,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+7} slashing",
 					"types": [
 						"slashing"
@@ -24264,7 +24265,6 @@
 					"range": "Melee",
 					"name": "club",
 					"attack": 15,
-					"effects": [],
 					"damage": "{@damage 1d6+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -24277,7 +24277,6 @@
 					"traits": [
 						"thrown <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -24443,7 +24442,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 40,
 					"entry": {
 						"4": {
@@ -24511,8 +24510,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature attempts to {@action Escape} from the hatred siktempora",
 						"entries": [
@@ -24662,10 +24660,9 @@
 					"traits": [
 						"magical",
 						"reach <50 feet>",
-						"versatile p",
-						"versatile s"
+						"versatile <p>",
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d12+18} bludgeoning plus {@damage 2d12} force",
 					"types": [
 						"bludgeoning",
@@ -24679,10 +24676,9 @@
 					"traits": [
 						"magical",
 						"thrown <200 feet>",
-						"versatile p",
-						"versatile s"
+						"versatile <p>",
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d12+18} bludgeoning plus {@damage 2d12} force",
 					"types": [
 						"bludgeoning",
@@ -24694,7 +24690,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 48,
 					"entry": {
 						"9": {
@@ -24748,8 +24744,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The hekatonkheires gains 99 extra reactions on their turn that they can only use to make Attacks of Opportunity."
@@ -24931,7 +24926,6 @@
 						"finesse",
 						"shove"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+3} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -24942,7 +24936,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 21,
 					"entry": {
 						"1": {
@@ -24960,8 +24954,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The Hellbound attorney rolls a success or critical failure on a saving throw against a {@trait linguistic} effect",
 						"entries": [
@@ -25444,7 +25437,7 @@
 					"attack": 10,
 					"traits": [
 						"agile",
-						"versatile s"
+						"versatile <s>"
 					],
 					"effects": [
 						"heretic's smite"
@@ -25459,7 +25452,7 @@
 				{
 					"name": "Divine Prepared",
 					"type": "Prepared",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 18,
 					"entry": {
 						"1": {
@@ -25706,7 +25699,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+6} slashing plus {@damage 1d6} fire and {@damage 1d6} positive",
 					"types": [
 						"fire",
@@ -25722,7 +25714,6 @@
 						"magical",
 						"range increment <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+6} fire plus {@damage 1d6} positive",
 					"types": [
 						"fire",
@@ -25734,7 +25725,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 28,
 					"attack": 20,
 					"entry": {
@@ -25917,7 +25908,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 4d10+13} slashing plus {@damage 1d6} fire and {@damage 1d6} positive",
 					"types": [
 						"fire",
@@ -25933,7 +25923,6 @@
 						"magical",
 						"range increment <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d12+13} fire plus {@damage 1d6} positive",
 					"types": [
 						"fire",
@@ -25945,7 +25934,7 @@
 				{
 					"name": "Primal Prepared",
 					"type": "Prepared",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 44,
 					"entry": {
 						"0": {
@@ -26097,7 +26086,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 44,
 					"attack": 36,
 					"entry": {
@@ -26303,7 +26292,6 @@
 					"range": "Melee",
 					"name": "beak",
 					"attack": 15,
-					"effects": [],
 					"damage": "{@damage 2d10+4} slashing",
 					"types": [
 						"slashing"
@@ -26316,7 +26304,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+4} slashing",
 					"types": [
 						"slashing"
@@ -26328,8 +26315,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"DC 23"
@@ -26489,7 +26475,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 17,
 					"entry": {
 						"1": {
@@ -26520,8 +26506,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -26651,7 +26636,6 @@
 					"range": "Melee",
 					"name": "fist",
 					"attack": 14,
-					"effects": [],
 					"damage": "{@damage 2d6+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -26796,7 +26780,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 40,
 					"attack": 32,
 					"entry": {
@@ -27158,7 +27142,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 14,
 					"entry": {
 						"0": {
@@ -27401,6 +27385,14 @@
 			"source": "B3",
 			"page": 23,
 			"level": 12,
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"traits": [
 				"le",
 				"medium",
@@ -27468,7 +27460,6 @@
 						"agile",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+8} slashing plus {@damage 4d6} mental and {@damage 1d6} evil",
 					"types": [
 						"evil",
@@ -27499,7 +27490,7 @@
 				{
 					"name": "Innate Divine",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 32,
 					"entry": {
 						"6": {
@@ -27566,8 +27557,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The japalisura is targeted by a ranged attack from a bow",
 						"requirements": "The japalisura has at least one hand free and is wielding a bow",
@@ -27735,7 +27725,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+14} slashing",
 					"types": [
 						"slashing"
@@ -27747,8 +27736,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"requirements": "The jorogumo has their spider legs extended or has Changed Shape",
 						"entries": [
@@ -27838,7 +27826,6 @@
 					"range": "Melee",
 					"name": "claw",
 					"attack": 7,
-					"effects": [],
 					"damage": "{@damage 1d4+3} slashing",
 					"types": [
 						"slashing"
@@ -27870,8 +27857,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The kangaroo takes damage from an adjacent creature",
 						"entries": [
@@ -27966,7 +27952,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+3} slashing",
 					"types": [
 						"slashing"
@@ -28079,7 +28064,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+5} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -28091,8 +28075,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature damages the kasa-obake, and the kasa-obake is in dim light or darkness",
 						"entries": [
@@ -28208,7 +28191,6 @@
 					"traits": [
 						"deadly <d12>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+9} piercing",
 					"types": [
 						"piercing"
@@ -28221,7 +28203,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+9} slashing",
 					"types": [
 						"slashing"
@@ -28248,8 +28229,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The khravgodon collapses. It is {@condition flat-footed} and can use actions that require only its mind, but any other action ends the ruse. A successful DC 18 {@skill Perception} check to {@action Seek} or {@skill Medicine} check to {@action Recall Knowledge} is required to determine that the animal is not, in fact, dead."
@@ -28260,8 +28240,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The opossum {@action Strike||Strikes} the triggering creature."
@@ -28401,7 +28380,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d12+18} piercing plus {@damage 3d6} evil",
 					"types": [
 						"evil",
@@ -28431,7 +28409,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 42,
 					"entry": {
 						"0": {
@@ -28508,8 +28486,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"If the triggering creature is subject to an effect with the {@trait fear} trait, the kimenhul can make two claw {@action Strike||Strikes} against the creature instead of one {@action Strike}."
@@ -28712,7 +28689,6 @@
 					"traits": [
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+8} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -28726,7 +28702,6 @@
 						"agile",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+8} piercing",
 					"types": [
 						"piercing"
@@ -28737,7 +28712,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 25,
 					"entry": {
 						"0": {
@@ -28808,8 +28783,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The kirin is targeted with a ranged {@action Strike}",
 						"entries": [
@@ -28946,7 +28920,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} slashing",
 					"types": [
 						"slashing"
@@ -28957,7 +28930,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 27,
 					"entry": {
 						"1": {
@@ -29106,7 +29079,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} slashing",
 					"types": [
 						"slashing"
@@ -29119,9 +29091,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} piercing",
 					"types": [
 						"piercing"
@@ -29134,9 +29105,8 @@
 					"traits": [
 						"agile",
 						"thrown <10 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} piercing",
 					"types": [
 						"piercing"
@@ -29149,7 +29119,6 @@
 					"traits": [
 						"range <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} fire",
 					"types": [
 						"fire"
@@ -29160,7 +29129,7 @@
 				{
 					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 18,
 					"attack": 10,
 					"entry": {
@@ -29323,7 +29292,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -29334,7 +29302,7 @@
 				{
 					"name": "Innate Divine",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 23,
 					"entry": {
 						"0": {
@@ -29526,7 +29494,6 @@
 					"traits": [
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+10} piercing",
 					"types": [
 						"piercing"
@@ -29539,7 +29506,6 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+10} slashing",
 					"types": [
 						"slashing"
@@ -29559,8 +29525,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -29734,7 +29699,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} slashing",
 					"types": [
 						"slashing"
@@ -29748,7 +29712,6 @@
 						"agile",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+11} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -29762,7 +29725,6 @@
 						"agile",
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+11} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -29774,8 +29736,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"Tail only."
@@ -29906,7 +29867,6 @@
 					"traits": [
 						"shove"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+6} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -29921,7 +29881,6 @@
 						"range increment <50 feet>",
 						"reload <1>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -29932,7 +29891,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 21,
 					"entry": {
 						"2": {
@@ -30148,7 +30107,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d6+25} slashing plus",
 					"types": [
 						"slashing"
@@ -30161,7 +30119,6 @@
 					"traits": [
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 4d10+25} piercing",
 					"types": [
 						"piercing"
@@ -30172,7 +30129,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 42,
 					"attack": 34,
 					"entry": {
@@ -30419,7 +30376,6 @@
 						"fatal <d12>",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+12} slashing",
 					"types": [
 						"slashing"
@@ -30775,7 +30731,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+5} slashing",
 					"types": [
 						"slashing"
@@ -30786,7 +30741,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 21,
 					"attack": 13,
 					"entry": {
@@ -30852,8 +30807,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature fails a check to {@action Strike} or {@action Demoralize} the kushtaka",
 						"requirements": "The kushtaka has a {@spell charm} spell available",
@@ -30991,7 +30945,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+2} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -31005,7 +30958,6 @@
 						"magical",
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+2} mental plus {@damage 1d6} fire and {@damage 1d6} positive",
 					"types": [
 						"fire",
@@ -31018,7 +30970,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 22,
 					"entry": {
 						"0": {
@@ -31211,7 +31163,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+9} bludgeoning plus {@damage 1d6} mental",
 					"types": [
 						"bludgeoning",
@@ -31226,7 +31177,6 @@
 						"magical",
 						"range increment <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} mental plus {@damage 2d6} fire and {@damage 2d6} positive",
 					"types": [
 						"fire",
@@ -31239,7 +31189,7 @@
 				{
 					"name": "Primal Prepared",
 					"type": "Prepared",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 38,
 					"entry": {
 						"0": {
@@ -31366,7 +31316,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 38,
 					"entry": {
 						"0": {
@@ -31620,7 +31570,6 @@
 					"range": "Melee",
 					"name": "wave",
 					"attack": 10,
-					"effects": [],
 					"damage": "{@damage 1d6+4} bludgeoning plus Push 5 feet",
 					"types": [
 						"bludgeoning"
@@ -31634,7 +31583,6 @@
 						"deadly <d6>",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} piercing plus {@damage 1d4} cold",
 					"types": [
 						"cold",
@@ -31645,7 +31593,6 @@
 					"range": "Melee",
 					"name": "ice shell",
 					"attack": 10,
-					"effects": [],
 					"damage": "{@dice 1d6+4} physical plus {@damage 1d4} cold",
 					"types": [
 						"cold",
@@ -31670,8 +31617,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The ledalusca takes physical damage from an attack",
 						"requirements": "The ledalusca's shell is frozen (see Freeze Shell)",
@@ -31821,7 +31767,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+8} piercing plus",
 					"types": [
 						"piercing"
@@ -32043,7 +31988,6 @@
 						"magical",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} piercing plus {@damage 1d6} evil",
 					"types": [
 						"evil",
@@ -32235,7 +32179,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+6} slashing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
@@ -32252,7 +32195,6 @@
 						"propulsive",
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+3} piercing",
 					"types": [
 						"piercing"
@@ -32270,8 +32212,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"As Ferocity (page 305), but the lifeleecher is also surrounded by visibly flickering fragments of the souls they've consumed, becoming {@condition concealed} until the end of their next turn."
@@ -32281,8 +32222,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"divine",
@@ -32350,6 +32290,14 @@
 			"name": "Locathah Hunter",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 164,
 			"level": 3,
 			"traits": [
@@ -32418,7 +32366,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+4} piercing",
 					"types": [
 						"piercing"
@@ -32592,7 +32539,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 37,
 					"entry": {
 						"4": {
@@ -32667,8 +32614,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"emotion",
@@ -32833,7 +32779,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+6} bludgeoning plus",
 					"types": [
 						"bludgeoning"
@@ -32844,7 +32789,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 21,
 					"entry": {
 						"0": {
@@ -32911,8 +32856,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature ends its movement in a space adjacent to the lovelorn",
 						"entries": [
@@ -32996,6 +32940,15 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 166,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"n",
@@ -33055,7 +33008,6 @@
 						"magical",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+8} slashing",
 					"types": [
 						"slashing"
@@ -33066,7 +33018,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 23,
 					"entry": {
 						"0": {
@@ -33104,8 +33056,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"arcane",
@@ -33147,15 +33098,9 @@
 						},
 						"requirements": "The maftet is flying at least 10 feet above the target",
 						"entries": [
-							"The maftet Flies up to twice their fly Speed and makes a."
+							"The maftet {@action Fly||Flies} up to twice their fly Speed and makes a Paired Strike at the end of the movement. If both {@action Strike||Strikes} hit, the target is also knocked {@condition prone}."
 						],
 						"name": "Raptor Dive"
-					},
-					{
-						"entries": [
-							"{@action Strike} at the end of the movement. If both {@action Strike||Strikes} hit, the target is also knocked {@condition prone}."
-						],
-						"name": "Paired"
 					}
 				]
 			},
@@ -33187,6 +33132,14 @@
 			"name": "Maharaja",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 211,
 			"level": 20,
 			"traits": [
@@ -33265,7 +33218,6 @@
 						"forceful",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+16} slashing plus {@damage 3d6} mental",
 					"types": [
 						"mental",
@@ -33279,7 +33231,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 4d6+14} piercing",
 					"types": [
 						"piercing"
@@ -33290,7 +33241,7 @@
 				{
 					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 47,
 					"entry": {
 						"0": {
@@ -33497,7 +33448,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 47,
 					"entry": {
 						"9": {
@@ -33625,6 +33576,14 @@
 		{
 			"name": "Manticore Paaridar",
 			"isNpc": false,
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"source": "B3",
 			"page": 198,
 			"level": 7,
@@ -33694,7 +33653,6 @@
 					"traits": [
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+8} piercing",
 					"types": [
 						"piercing"
@@ -33708,7 +33666,6 @@
 						"agile",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+8} slashing",
 					"types": [
 						"slashing"
@@ -33722,7 +33679,6 @@
 						"propulsive",
 						"range increment <40 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+5} piercing",
 					"types": [
 						"piercing"
@@ -33734,8 +33690,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "An adjacent creature targets the paaridar with a melee attack",
 						"entries": [
@@ -33863,7 +33818,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+5} slashing",
 					"types": [
 						"slashing"
@@ -33988,7 +33942,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+8} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -34116,7 +34069,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@dice 1d6-1} bludgeoning damage",
 					"types": [
 						"bludgeoning"
@@ -34131,7 +34083,6 @@
 						"magical",
 						"range <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} poison",
 					"types": [
 						"poison"
@@ -34142,7 +34093,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -34269,10 +34220,9 @@
 					"attack": 30,
 					"traits": [
 						"magical",
-						"versatile p",
-						"versatile s"
+						"versatile <p>",
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+14} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -34305,8 +34255,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The mezlan succeeds at a saving throw against a single-target spell",
 						"entries": [
@@ -34635,9 +34584,8 @@
 						"agile",
 						"finesse",
 						"magic",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+14} piercing plus {@damage 1d6} mental",
 					"types": [
 						"mental",
@@ -34653,7 +34601,6 @@
 						"magic",
 						"thrown <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+10} piercing plus {@damage 1d6} mental",
 					"types": [
 						"mental",
@@ -34666,8 +34613,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The millindemalion can use Hat Toss against the triggering creature instead of making a {@action Strike}, making a melee attack roll with a +27 modifier to do so."
@@ -34820,7 +34766,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+13} slashing",
 					"types": [
 						"slashing"
@@ -34831,7 +34776,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 29,
 					"entry": {
 						"2": {
@@ -34980,6 +34925,14 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 117,
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 16,
 			"traits": [
 				"rare",
@@ -35027,7 +34980,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+12} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -35042,7 +34994,6 @@
 						"magical",
 						"reach <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+12} piercing",
 					"types": [
 						"piercing"
@@ -35059,9 +35010,9 @@
 					},
 					{
 						"entries": [
-							"Antimagic harmed by cold and water ({@dice 8d10}, {@dice 2d10} from areas and {@condition persistent damage}); healed by transmutation (area {@dice 2d10} HP); {@condition slowed} by electricity."
+							"harmed by cold and water ({@dice 8d10}, {@dice 2d10} from areas and {@condition persistent damage}); healed by transmutation (area {@dice 2d10} HP); {@condition slowed} by electricity."
 						],
-						"name": "Golem"
+						"name": "Golem Antimagic"
 					},
 					{
 						"entries": [
@@ -35236,7 +35187,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 26,
 					"attack": 18,
 					"entry": {
@@ -35417,6 +35368,14 @@
 			"name": "Mobogo",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 170,
 			"level": 10,
 			"traits": [
@@ -35509,7 +35468,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 27,
 					"entry": {
 						"4": {
@@ -35711,7 +35670,6 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+10} piercing",
 					"types": [
 						"piercing"
@@ -35725,7 +35683,6 @@
 						"agile",
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+10} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -35738,7 +35695,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+10} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -35851,7 +35807,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} piercing",
 					"types": [
 						"piercing"
@@ -36081,7 +36036,6 @@
 						"agile",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+10} slashing",
 					"types": [
 						"slashing"
@@ -36092,7 +36046,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 29,
 					"entry": {
 						"5": {
@@ -36135,8 +36089,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Ferocity",
@@ -36262,7 +36215,6 @@
 					"range": "Melee",
 					"name": "antler",
 					"attack": 12,
-					"effects": [],
 					"damage": "{@damage 1d10+7} piercing",
 					"types": [
 						"piercing"
@@ -36272,7 +36224,6 @@
 					"range": "Melee",
 					"name": "hoof",
 					"attack": 12,
-					"effects": [],
 					"damage": "{@damage 1d8+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -36417,7 +36368,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+4} slashing",
 					"types": [
 						"slashing"
@@ -36428,7 +36378,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 25,
 					"attack": 17,
 					"entry": {
@@ -36646,7 +36596,6 @@
 						"magical",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+13} slashing plus {@damage 1d6} evil and {@damage 1d6} fire",
 					"types": [
 						"evil",
@@ -36663,7 +36612,6 @@
 						"evil",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} piercing plus {@damage 1d6} evil",
 					"types": [
 						"evil",
@@ -36683,7 +36631,6 @@
 						"reload <0>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+6} piercing plus {@damage 1d6} evil and {@damage 1d6} fire",
 					"types": [
 						"evil",
@@ -36696,7 +36643,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 27,
 					"entry": {
 						"4": {
@@ -36722,8 +36669,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A foe within reach moves away from the munagola",
 						"entries": [
@@ -36874,7 +36820,6 @@
 					"traits": [
 						"two-hand <d12>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+4} slashing",
 					"types": [
 						"slashing"
@@ -37116,6 +37061,14 @@
 			"name": "Nagaji Soldier",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 182,
 			"level": 2,
 			"traits": [
@@ -37174,7 +37127,6 @@
 						"disarm",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+4} piercing",
 					"types": [
 						"piercing"
@@ -37189,7 +37141,6 @@
 						"range increment <100 feet>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8} piercing",
 					"types": [
 						"piercing"
@@ -37201,8 +37152,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -37313,7 +37263,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 15,
-					"effects": [],
 					"damage": "{@damage 2d8+6} piercing",
 					"types": [
 						"piercing"
@@ -37341,7 +37290,6 @@
 					"traits": [
 						"range <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+6} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -37375,8 +37323,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"conjuration",
@@ -37483,7 +37430,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+5} piercing",
 					"types": [
 						"piercing"
@@ -37493,7 +37439,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 12,
-					"effects": [],
 					"damage": "{@damage 1d8+5} piercing",
 					"types": [
 						"piercing"
@@ -37653,7 +37598,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 36,
 					"attack": 28,
 					"entry": {
@@ -37896,8 +37841,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"Tail only."
@@ -38024,7 +37968,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 31,
 					"entry": {
 						"constant": {
@@ -38179,6 +38123,14 @@
 			"name": "Nikaramsa",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 25,
 			"level": 14,
 			"traits": [
@@ -38243,7 +38195,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+14} piercing plus {@damage 2d6} evil",
 					"types": [
 						"evil",
@@ -38258,7 +38209,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+14} slashing plus {@damage 2d6} evil",
 					"types": [
 						"evil",
@@ -38286,7 +38236,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 34,
 					"attack": 26,
 					"entry": {
@@ -38384,8 +38334,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"curse",
@@ -38559,7 +38508,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 29,
 					"entry": {
 						"5": {
@@ -38890,7 +38839,6 @@
 						"magical",
 						"shove"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+10} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -38904,7 +38852,6 @@
 						"agile",
 						"nonlethal"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+10} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -38920,8 +38867,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Mortal Shield"
@@ -38929,8 +38875,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Rally"
@@ -39069,7 +39014,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 20,
 					"entry": {
 						"0": {
@@ -39264,7 +39209,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@dice 1d6-3} bludgeoning damage",
 					"types": [
 						"bludgeoning"
@@ -39279,7 +39223,6 @@
 						"magical",
 						"range <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4} sonic",
 					"types": [
 						"sonic"
@@ -39290,7 +39233,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -39407,7 +39350,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -39586,7 +39528,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 32,
 					"entry": {
 						"4": {
@@ -39630,8 +39572,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"concentrate"
@@ -39732,6 +39673,14 @@
 			"name": "Ostovite",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Impossible Lands"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 193,
 			"level": 1,
 			"traits": [
@@ -39781,7 +39730,6 @@
 						"finesse",
 						"magic"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4} piercing plus {@damage 1d4} acid",
 					"types": [
 						"acid",
@@ -39795,7 +39743,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d12} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
@@ -39817,8 +39764,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The ostovite's bone chariot is destroyed",
 						"entries": [
@@ -39941,7 +39887,6 @@
 						"magical",
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d10+18} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -39956,7 +39901,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+16} piercing plus {@damage 2d8} poison",
 					"types": [
 						"piercing",
@@ -39971,7 +39915,6 @@
 						"magical",
 						"reach <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d12+18} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -40058,8 +40001,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The ouroboros Grabs a creature with their maw",
 						"entries": [
@@ -40228,7 +40170,6 @@
 						"finesse",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+2} slashing",
 					"types": [
 						"slashing"
@@ -40239,7 +40180,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 21,
 					"entry": {
 						"0": {
@@ -40413,7 +40354,6 @@
 						"agile",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+7} slashing plus {@damage 1d8} cold",
 					"types": [
 						"cold",
@@ -40428,7 +40368,6 @@
 						"magical",
 						"range <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8} cold plus {@damage 1d8} {@condition persistent damage ||persistent cold}",
 					"types": [
 						"cold",
@@ -40440,7 +40379,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 23,
 					"attack": 15,
 					"entry": {
@@ -40630,7 +40569,6 @@
 						"agile",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+11} slashing plus {@damage 2d8} cold",
 					"types": [
 						"cold",
@@ -40659,7 +40597,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 33,
 					"attack": 25,
 					"entry": {
@@ -40915,7 +40853,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 25,
 					"entry": {
 						"0": {
@@ -41137,7 +41075,7 @@
 					"traits": [
 						"finesse",
 						"reach",
-						"versatile p"
+						"versatile <p>"
 					],
 					"effects": [
 						"betrayal toxin"
@@ -41157,7 +41095,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+6} slashing plus {@damage 1d6} evil",
 					"types": [
 						"evil",
@@ -41187,7 +41124,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 30,
 					"entry": {
 						"0": {
@@ -41257,8 +41194,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature moves adjacent to the pakalchi",
 						"entries": [
@@ -41453,7 +41389,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 26,
 					"entry": {
 						"0": {
@@ -41515,8 +41451,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"auditory",
@@ -41885,7 +41820,6 @@
 						"magical",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6+13} slashing plus {@damage 2d6} fire",
 					"types": [
 						"fire",
@@ -41904,7 +41838,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d10+13} fire",
 					"types": [
 						"fire"
@@ -41920,7 +41853,6 @@
 						"magical",
 						"range <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 8d6} fire",
 					"types": [
 						"fire"
@@ -41931,7 +41863,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 34,
 					"attack": 26,
 					"entry": {
@@ -42081,6 +42013,15 @@
 			"name": "Phantom Beast",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 203,
 			"level": 8,
 			"traits": [
@@ -42142,7 +42083,6 @@
 						"force",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+8} force",
 					"types": [
 						"force"
@@ -42153,7 +42093,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 28,
 					"attack": 20,
 					"entry": {
@@ -42253,6 +42193,15 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 202,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"uncommon",
@@ -42302,7 +42251,6 @@
 						"force",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+7} force",
 					"types": [
 						"force"
@@ -42319,7 +42267,6 @@
 						"range increment <120 feet>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+5} force",
 					"types": [
 						"force"
@@ -42592,7 +42539,6 @@
 						"brutal",
 						"range increment <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+14} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -42603,7 +42549,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 34,
 					"entry": {
 						"6": {
@@ -42631,8 +42577,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -42643,8 +42588,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within 10 feet makes a melee {@action Strike} against the plague giant",
 						"entries": [
@@ -42958,7 +42902,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 36,
 					"attack": 28,
 					"entry": {
@@ -43237,7 +43181,7 @@
 						"finesse",
 						"good",
 						"magical",
-						"versatile s"
+						"versatile <s>"
 					],
 					"effects": [
 						"{@dice 2d6+10}"
@@ -43252,7 +43196,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 26,
 					"attack": 18,
 					"entry": {
@@ -43627,7 +43571,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 25,
 					"attack": 17,
 					"entry": {
@@ -43838,7 +43782,7 @@
 				{
 					"name": "Arcane Prepared",
 					"type": "Prepared",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 29,
 					"attack": 21,
 					"entry": {
@@ -43932,8 +43876,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The quintessivore reduces a creature within 15 feet of it to 0 Hit Points",
 						"entries": [
@@ -44006,6 +43949,14 @@
 			"name": "Raktavarna",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 210,
 			"level": 1,
 			"traits": [
@@ -44079,7 +44030,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 16,
 					"entry": {
 						"0": {
@@ -44247,7 +44198,7 @@
 				{
 					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 27,
 					"attack": 19,
 					"entry": {
@@ -44441,8 +44392,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The rat snake swarm takes damage from a melee {@action Strike}",
 						"entries": [
@@ -44576,7 +44526,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@dice 1d6} \u20132 piercing",
 					"types": [
 						"piercing"
@@ -44699,7 +44648,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 23,
 					"entry": {
 						"3": {
@@ -44873,7 +44822,6 @@
 					"range": "Melee",
 					"name": "hoof",
 					"attack": 7,
-					"effects": [],
 					"damage": "{@damage 1d6+3} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -44886,7 +44834,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
 					"types": [
 						"piercing"
@@ -44981,7 +44928,6 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+10} force",
 					"types": [
 						"force"
@@ -44997,7 +44943,6 @@
 						"magic",
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+10} force",
 					"types": [
 						"force"
@@ -45008,7 +44953,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 30,
 					"attack": 20,
 					"entry": {
@@ -45169,7 +45114,6 @@
 						"finesse",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+3} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
@@ -45184,7 +45128,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+3} slashing",
 					"types": [
 						"slashing"
@@ -45204,8 +45147,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"Jaws only"
@@ -45218,8 +45160,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The rokurokubi is the target of an alchemical bomb {@action Strike}",
 						"requirements": "The rokurokubi is aware of the attack, not {@condition flat-footed} against it, and doesn't have a creature {@condition grabbed} with their jaws",
@@ -45335,7 +45276,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+5} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -45349,7 +45289,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+5} piercing",
 					"types": [
 						"piercing"
@@ -45478,7 +45417,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+4} piercing plus 1 {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
@@ -45505,7 +45443,6 @@
 					"range": "Melee",
 					"name": "spear",
 					"attack": 15,
-					"effects": [],
 					"damage": "{@damage 1d6+7} piercing",
 					"types": [
 						"piercing"
@@ -45518,7 +45455,6 @@
 					"traits": [
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+7} piercing",
 					"types": [
 						"piercing"
@@ -45658,7 +45594,6 @@
 					"range": "Melee",
 					"name": "spear",
 					"attack": 5,
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -45672,7 +45607,6 @@
 						"range increment <50 feet>",
 						"reload <1>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -45683,7 +45617,7 @@
 				{
 					"name": "Divine Prepared",
 					"type": "Prepared",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -45726,8 +45660,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"divination",
@@ -45749,8 +45682,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"fortune",
@@ -45854,7 +45786,6 @@
 					"range": "Melee",
 					"name": "fist",
 					"attack": 11,
-					"effects": [],
 					"damage": "{@damage 1d10+5} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -45868,7 +45799,6 @@
 						"brutal",
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+5} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -45880,8 +45810,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -46048,7 +45977,6 @@
 						"magical",
 						"range <40 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d6} force",
 					"types": [
 						"force"
@@ -46059,7 +45987,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 20,
 					"entry": {
 						"0": {
@@ -46116,8 +46044,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "Another creature targets the scalescribe with a spell requiring verbal components",
 						"entries": [
@@ -46239,7 +46166,6 @@
 						"finesse",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -46265,7 +46191,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 20,
 					"entry": {
 						"4": {
@@ -46409,7 +46335,6 @@
 						"evocation",
 						"occult"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+7} slashing",
 					"types": [
 						"slashing"
@@ -46420,7 +46345,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 32,
 					"entry": {
 						"2": {
@@ -46646,7 +46571,6 @@
 						"magical",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+16} slashing plus {@damage 1d6} evil and {@damage 1d6} mental",
 					"types": [
 						"evil",
@@ -46663,7 +46587,6 @@
 						"evil",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+16} slashing plus {@damage 1d6} evil and {@damage 1d6} mental",
 					"types": [
 						"evil",
@@ -46676,7 +46599,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 34,
 					"entry": {
 						"0": {
@@ -46748,8 +46671,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"A sepid gains an extra reaction each round that they can use only to make an {@action Attack of Opportunity}."
@@ -46762,8 +46684,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature hits the sepid with a ranged {@action Strike} or a ranged spell attack roll",
 						"entries": [
@@ -46876,7 +46797,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+1} piercing",
 					"types": [
 						"piercing"
@@ -46937,6 +46857,14 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 229,
+			"foundIn": [
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"rare",
@@ -46997,7 +46925,6 @@
 					"range": "Melee",
 					"name": "disrupting staff (two-hand <d8>)",
 					"attack": 14,
-					"effects": [],
 					"damage": "{@damage 1d4+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -47007,7 +46934,6 @@
 					"range": "Melee",
 					"name": "dagger (agile, finesse, versatile S)",
 					"attack": 14,
-					"effects": [],
 					"damage": "{@damage 1d4+7} piercing",
 					"types": [
 						"piercing"
@@ -47017,7 +46943,6 @@
 					"range": "Ranged",
 					"name": "dagger (agile, thrown <10 feet>, versatile S)",
 					"attack": 11,
-					"effects": [],
 					"damage": "{@damage 1d4+7} piercing",
 					"types": [
 						"piercing"
@@ -47028,7 +46953,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 19,
 					"entry": {
 						"1": {
@@ -47075,8 +47000,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "An enemy damages the shabti's ally, and both the enemy and ally are within 15 feet of the shabti",
 						"entries": [
@@ -47198,9 +47122,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+5} piercing and {@damage 1d6} cold",
 					"types": [
 						"cold",
@@ -47214,9 +47137,8 @@
 					"traits": [
 						"agile",
 						"thrown <10 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+5} piercing and {@damage 1d6} cold",
 					"types": [
 						"cold",
@@ -47228,7 +47150,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 21,
 					"entry": {
 						"0": {
@@ -47276,8 +47198,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The shae is targeted by an attack from an adjacent creature that misses due to the shae being {@condition concealed}",
 						"requirements": "The shae is aware of the attack",
@@ -47289,8 +47210,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature moves adjacent to the shae",
 						"entries": [
@@ -47366,6 +47286,16 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 302,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"ne",
@@ -47536,7 +47466,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 20,
-					"effects": [],
 					"damage": "{@damage 2d12+9} piercing",
 					"types": [
 						"piercing"
@@ -47549,7 +47478,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} slashing",
 					"types": [
 						"slashing"
@@ -47639,6 +47567,14 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 22,
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"le",
@@ -47716,7 +47652,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8} piercing plus 1 evil",
 					"types": [
 						"evil",
@@ -47728,7 +47663,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -47907,7 +47842,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+2} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -47919,9 +47853,8 @@
 					"attack": 7,
 					"traits": [
 						"agile",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -47934,9 +47867,8 @@
 					"traits": [
 						"agile",
 						"thrown <10 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -47947,7 +47879,7 @@
 				{
 					"name": "Innate Divine",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -48127,7 +48059,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 22,
 					"entry": {
 						"3": {
@@ -48155,8 +48087,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -48290,9 +48221,8 @@
 					"attack": 9,
 					"traits": [
 						"reach <10 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+4} piercing",
 					"types": [
 						"piercing"
@@ -48308,7 +48238,6 @@
 						"range increment <100 feet>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+3} piercing",
 					"types": [
 						"piercing"
@@ -48319,7 +48248,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 18,
 					"attack": 10,
 					"entry": {
@@ -48361,8 +48290,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"page 306"
@@ -48516,7 +48444,6 @@
 						"good",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@dice 1d6} \u20132 piercing plus {@damage 1d4} good",
 					"types": [
 						"good",
@@ -48533,7 +48460,6 @@
 						"good",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@dice 1d4} \u20132 slashing plus {@damage 1d4} good",
 					"types": [
 						"good",
@@ -48545,7 +48471,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 16,
 					"entry": {
 						"0": {
@@ -48647,6 +48573,16 @@
 			"name": "Skeleton Infantry",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 237,
 			"level": 11,
 			"traits": [
@@ -48852,7 +48788,6 @@
 						"agile",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+8} slashing",
 					"types": [
 						"slashing"
@@ -48866,7 +48801,6 @@
 						"forceful",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+8} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -49007,7 +48941,6 @@
 						"fatal <d12>",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+8} slashing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
@@ -49018,7 +48951,6 @@
 					"range": "Melee",
 					"name": "claw",
 					"attack": 17,
-					"effects": [],
 					"damage": "{@damage 2d10+8} slashing",
 					"types": [
 						"slashing"
@@ -49030,8 +48962,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The skull peeler is using Perfect Camouflage and a creature moves into a space within 15 feet of it",
 						"entries": [
@@ -49142,7 +49073,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8} piercing",
 					"types": [
 						"piercing"
@@ -49410,7 +49340,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 36,
 					"attack": 26,
 					"entry": {
@@ -49462,8 +49392,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The swarm is targeted with a spell",
 						"entries": [
@@ -49633,7 +49562,6 @@
 						"magical",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+12} slashing plus",
 					"types": [
 						"slashing"
@@ -49644,7 +49572,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 29,
 					"entry": {
 						"2": {
@@ -49860,8 +49788,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"Stinger only (page 304)."
@@ -50002,7 +49929,6 @@
 						"magical",
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6} fire",
 					"types": [
 						"fire"
@@ -50271,7 +50197,6 @@
 						"disarm",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} piercing",
 					"types": [
 						"piercing"
@@ -50285,7 +50210,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4} piercing",
 					"types": [
 						"piercing"
@@ -50300,7 +50224,6 @@
 						"range increment <60 feet>",
 						"reload <0>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} piercing",
 					"types": [
 						"piercing"
@@ -50311,7 +50234,7 @@
 				{
 					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 17,
 					"entry": {
 						"0": {
@@ -50451,7 +50374,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 14,
-					"effects": [],
 					"damage": "{@damage 2d6+7} bludgeoning plus {@ability Grab} • Ranged {@as 1} stone ball +13 (range increment <30 feet>), Damage {@damage 2d4+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -50462,7 +50384,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 21,
 					"entry": {
 						"1": {
@@ -50665,7 +50587,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 17,
 					"entry": {
 						"1": {
@@ -50844,7 +50766,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+7} slashing plus {@damage 1d6} electricity",
 					"types": [
 						"electricity",
@@ -50855,7 +50776,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 15,
-					"effects": [],
 					"damage": "{@damage 1d8+7} piercing plus {@damage 1d6} electricity",
 					"types": [
 						"electricity",
@@ -50870,7 +50790,6 @@
 						"air",
 						"range <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d10+5} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -50881,7 +50800,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 22,
 					"entry": {
 						"3": {
@@ -51068,7 +50987,6 @@
 					"traits": [
 						"two-handed d8"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -51081,7 +50999,6 @@
 					"traits": [
 						"range increment <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+6} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -51093,8 +51010,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -51248,9 +51164,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} piercing",
 					"types": [
 						"piercing"
@@ -51264,7 +51179,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} slashing",
 					"types": [
 						"slashing"
@@ -51278,7 +51192,6 @@
 						"deadly <d10>",
 						"range increment <60 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -51396,7 +51309,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 41,
 					"entry": {
 						"8": {
@@ -51521,6 +51434,16 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 303,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"ne",
@@ -51712,7 +51635,7 @@
 						"death",
 						"finesse",
 						"magical",
-						"versatile s"
+						"versatile <s>"
 					],
 					"effects": [
 						"huntblade brutality"
@@ -51752,7 +51675,7 @@
 						"death",
 						"magical",
 						"thrown <30 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
 					"effects": [
 						"huntblade brutality"
@@ -51767,7 +51690,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 36,
 					"entry": {
 						"4": {
@@ -51788,8 +51711,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -51800,8 +51722,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"auditory",
@@ -51888,6 +51809,14 @@
 			"source": "B3",
 			"page": 261,
 			"level": 10,
+			"foundIn": [
+				"Nex"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"traits": [
 				"uncommon",
 				"ln",
@@ -51933,9 +51862,8 @@
 					"traits": [
 						"magical",
 						"reach <10 feet>",
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} slashing plus {@damage 1d8} force",
 					"types": [
 						"force",
@@ -51950,7 +51878,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -51965,7 +51892,6 @@
 						"magical",
 						"thrown <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} slashing plus {@damage 1d8} force",
 					"types": [
 						"force",
@@ -51986,8 +51912,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -52126,7 +52051,6 @@
 					"range": "Melee",
 					"name": "ink blade",
 					"attack": 10,
-					"effects": [],
 					"damage": "{@damage 1d12+5} slashing",
 					"types": [
 						"slashing"
@@ -52138,8 +52062,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within the tattoo guardian's reach attacks the guardian's ward",
 						"entries": [
@@ -52268,8 +52191,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -52280,8 +52202,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"page 306"
@@ -52422,9 +52343,8 @@
 					"name": "longsword",
 					"attack": 17,
 					"traits": [
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+8} slashing",
 					"types": [
 						"slashing"
@@ -52440,7 +52360,6 @@
 						"range increment <100 feet>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+6} piercing",
 					"types": [
 						"piercing"
@@ -52452,8 +52371,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -52464,8 +52382,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"page 306"
@@ -52869,9 +52786,8 @@
 					"traits": [
 						"magical",
 						"reach <40 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d10+25} piercing",
 					"types": [
 						"piercing"
@@ -52885,7 +52801,6 @@
 						"agile",
 						"reach <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d8+20} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -52899,7 +52814,6 @@
 						"brutal",
 						"range increment <200 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+20} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -52910,7 +52824,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 45,
 					"entry": {
 						"5": {
@@ -52978,7 +52892,7 @@
 			],
 			"rituals": [
 				{
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 45,
 					"rituals": [
 						{
@@ -53007,8 +52921,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [
 							"The titan can use their {@action Attack of Opportunity} when a creature within their reach uses a concentrate action, in additional to its normal trigger. They disrupt actions on any hit, not just a critical hit\u2014 including triggering concentrate actions."
@@ -53178,7 +53091,6 @@
 					"range": "Melee",
 					"name": "claw",
 					"attack": 6,
-					"effects": [],
 					"damage": "{@damage 1d6+2} slashing",
 					"types": [
 						"slashing"
@@ -53299,7 +53211,6 @@
 					"traits": [
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+9} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -53420,7 +53331,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d12+11} piercing",
 					"types": [
 						"piercing"
@@ -53436,7 +53346,6 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+11} slashing",
 					"types": [
 						"slashing"
@@ -53462,7 +53371,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 32,
 					"entry": {
 						"0": {
@@ -53640,7 +53549,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+8} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -53653,7 +53561,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+8} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -53664,7 +53571,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 29,
 					"entry": {
 						"4": {
@@ -53817,7 +53724,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+16} slashing plus {@damage 2d6} {@condition persistent damage ||persistent poison}",
 					"types": [
 						"persistent",
@@ -53829,7 +53735,7 @@
 				{
 					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 37,
 					"entry": {
 						"8": {
@@ -53854,7 +53760,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 37,
 					"entry": {
 						"2": {
@@ -54062,7 +53968,6 @@
 						"reach <10 feet>",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+13} slashing",
 					"types": [
 						"slashing"
@@ -54092,7 +53997,6 @@
 						"brutal",
 						"range increment <120 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 3d8+13} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -54103,7 +54007,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 32,
 					"entry": {
 						"5": {
@@ -54126,8 +54030,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Catch Rock",
@@ -54279,7 +54182,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 13,
 					"entry": {
 						"0": {
@@ -54567,7 +54470,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 36,
 					"entry": {
 						"4": {
@@ -54647,8 +54550,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -54922,7 +54824,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+1} slashing",
 					"types": [
 						"slashing"
@@ -54934,8 +54835,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "The trilobite takes damage",
 						"entries": [
@@ -55152,7 +55052,6 @@
 					"range": "Melee",
 					"name": "glorious fist",
 					"attack": 30,
-					"effects": [],
 					"damage": "{@damage 3d12+16} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -55163,7 +55062,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 32,
 					"entry": {
 						"4": {
@@ -55217,8 +55116,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within the triumph siktempora's reach uses an action that would restore Hit Points",
 						"entries": [
@@ -55359,7 +55257,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 24,
 					"entry": {
 						"3": {
@@ -55492,7 +55390,6 @@
 					"range": "Melee",
 					"name": "tail",
 					"attack": 19,
-					"effects": [],
 					"damage": "{@damage 2d6+10} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -55577,6 +55474,16 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 236,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 9,
 			"traits": [
 				"ne",
@@ -55633,7 +55540,6 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+9} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -55821,7 +55727,6 @@
 					"traits": [
 						"range <100 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 4d12} electricity plus {@damage 10d6} force",
 					"types": [
 						"electricity",
@@ -55833,7 +55738,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 38,
 					"entry": {
 						"0": {
@@ -55909,8 +55814,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"divine",
@@ -56065,7 +55969,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+8} slashing",
 					"types": [
 						"slashing"
@@ -56075,7 +55978,6 @@
 					"range": "Melee",
 					"name": "shield spikes",
 					"attack": 17,
-					"effects": [],
 					"damage": "{@damage 1d6+8} piercing",
 					"types": [
 						"piercing"
@@ -56110,8 +56012,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"page 306"
@@ -56264,7 +56165,6 @@
 					"traits": [
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+15} piercing plus {@damage 1d12} electricity",
 					"types": [
 						"electricity",
@@ -56279,7 +56179,6 @@
 						"magical",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+15} piercing plus {@damage 1d12} electricity",
 					"types": [
 						"electricity",
@@ -56291,7 +56190,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 29,
 					"entry": {
 						"3": {
@@ -56364,8 +56263,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"
@@ -56376,8 +56274,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"divine",
@@ -56490,6 +56387,14 @@
 				"wis": 3,
 				"cha": 0
 			},
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"items": [
 				"bo staff",
 				"javelins (3)"
@@ -56509,7 +56414,6 @@
 						"nonlethal",
 						"unarmed"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+1} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -56524,7 +56428,6 @@
 						"reach <10 feet>",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+1} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -56537,7 +56440,6 @@
 					"traits": [
 						"thrown <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+1} piercing",
 					"types": [
 						"piercing"
@@ -56548,7 +56450,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 13,
 					"entry": {
 						"1": {
@@ -56595,7 +56497,7 @@
 						},
 						"requirements": "The vanara disciple is {@condition prone}",
 						"entries": [
-							"The vanara Stands, then can immediately {@action Step} twice. The {@action Stand} action doesn't trigger reactions."
+							"The vanara {@action Stand||Stands}, then can immediately {@action Step} twice. The {@action Stand} action doesn't trigger reactions."
 						],
 						"name": "Spring Up"
 					}
@@ -56701,7 +56603,7 @@
 					"attack": 34,
 					"traits": [
 						"magical",
-						"versatile p"
+						"versatile <p>"
 					],
 					"effects": [
 						"bloodbird"
@@ -56747,7 +56649,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 37,
 					"entry": {
 						"5": {
@@ -56811,8 +56713,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -56970,7 +56871,6 @@
 					"range": "Melee",
 					"name": "spear",
 					"attack": 6,
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -56983,7 +56883,6 @@
 					"traits": [
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
 						"piercing"
@@ -56994,7 +56893,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 15,
 					"entry": {
 						"4": {
@@ -57212,6 +57111,14 @@
 			"name": "Vishkanya Infiltrator",
 			"isNpc": false,
 			"source": "B3",
+			"foundIn": [
+				"Jalmeray"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"page": 288,
 			"level": 3,
 			"traits": [
@@ -57286,7 +57193,6 @@
 						"finesse",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} slashing",
 					"types": [
 						"slashing"
@@ -57300,7 +57206,6 @@
 						"agile",
 						"thrown <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+4} piercing",
 					"types": [
 						"piercing"
@@ -57484,7 +57389,6 @@
 						"good",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+4} piercing plus {@damage 1d6} good",
 					"types": [
 						"good",
@@ -57501,7 +57405,6 @@
 						"good",
 						"magical"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+4} slashing plus {@damage 1d6} good",
 					"types": [
 						"good",
@@ -57513,7 +57416,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 24,
 					"entry": {
 						"2": {
@@ -57668,7 +57571,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -57698,8 +57600,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"air"
@@ -57846,7 +57747,6 @@
 						"finesse",
 						"trip"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} slashing",
 					"types": [
 						"slashing"
@@ -58118,7 +58018,6 @@
 						"agile",
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -58131,9 +58030,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+4} piercing",
 					"types": [
 						"piercing"
@@ -58146,9 +58044,8 @@
 					"traits": [
 						"agile",
 						"thrown <10 feet>",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+4} piercing",
 					"types": [
 						"piercing"
@@ -58178,8 +58075,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "An adjacent enemy damages the werebat",
 						"entries": [
@@ -58339,7 +58235,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -58353,7 +58248,6 @@
 						"agile",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} slashing",
 					"types": [
 						"slashing"
@@ -58368,7 +58262,6 @@
 						"sweep",
 						"thrown <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6+4} slashing",
 					"types": [
 						"slashing"
@@ -58549,7 +58442,6 @@
 					"traits": [
 						"finesse"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+7} slashing plus {@damage 1d4} evil",
 					"types": [
 						"evil",
@@ -58561,7 +58453,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 23,
 					"entry": {
 						"0": {
@@ -58769,7 +58661,6 @@
 						"magical",
 						"two-hand <d8>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d4+7} bludgeoning plus {@damage 1d6} cold",
 					"types": [
 						"bludgeoning",
@@ -58783,7 +58674,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+7} slashing plus {@damage 1d6} cold",
 					"types": [
 						"cold",
@@ -58795,7 +58685,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 25,
 					"attack": 17,
 					"entry": {
@@ -59104,7 +58994,6 @@
 					"range": "Melee",
 					"name": "tusk",
 					"attack": 10,
-					"effects": [],
 					"damage": "{@damage 1d10+5} piercing",
 					"types": [
 						"piercing"
@@ -59114,7 +59003,6 @@
 					"range": "Melee",
 					"name": "hoof",
 					"attack": 10,
-					"effects": [],
 					"damage": "{@damage 1d8+5} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -59127,7 +59015,6 @@
 					"traits": [
 						"range increment <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d8+2} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -59292,7 +59179,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 35,
 					"entry": {
 						"3": {
@@ -59347,7 +59234,7 @@
 			],
 			"rituals": [
 				{
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 35,
 					"rituals": [
 						{
@@ -59383,8 +59270,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"conjuration",
@@ -59586,9 +59472,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile s"
+						"versatile <s>"
 					],
-					"effects": [],
 					"damage": "{@damage 1d6} piercing",
 					"types": [
 						"piercing"
@@ -59757,7 +59642,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 38,
 					"entry": {
 						"0": {
@@ -60030,7 +59915,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 32,
 					"attack": 24,
 					"entry": {
@@ -60328,7 +60213,6 @@
 						"agile",
 						"deadly <d10>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d12+7} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -60339,7 +60223,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 28,
 					"attack": 20,
 					"entry": {
@@ -60512,7 +60396,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+12} piercing plus {@damage 1d6} poison",
 					"types": [
 						"piercing",
@@ -60554,7 +60437,7 @@
 				{
 					"name": "Primal Innate",
 					"type": "Innate",
-					"tradition": "Primal",
+					"tradition": "primal",
 					"DC": 29,
 					"entry": {
 						"0": {
@@ -60604,8 +60487,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"aura",
@@ -60624,8 +60506,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"healing",
@@ -60860,7 +60741,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 26,
 					"entry": {
 						"1": {
@@ -60929,8 +60810,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"traits": [
 							"abjuration",
@@ -61108,7 +60988,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+12} piercing plus {@damage 1d12} electricity",
 					"types": [
 						"electricity",
@@ -61150,7 +61029,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 28,
 					"entry": {
 						"1": {
@@ -61175,7 +61054,7 @@
 				{
 					"name": "Divine Prepared",
 					"type": "Prepared",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 28,
 					"attack": 21,
 					"entry": {
@@ -61452,7 +61331,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+13} piercing plus {@damage 2d6} mental",
 					"types": [
 						"mental",
@@ -61494,7 +61372,7 @@
 				{
 					"name": "Occult Innate",
 					"type": "Innate",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"DC": 30,
 					"entry": {
 						"2": {
@@ -61542,8 +61420,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"trigger": "A creature within the sovereign dragon's reach critically hits the dragon",
 						"entries": [
@@ -61738,7 +61615,6 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+8} piercing plus {@damage 1d6} fire",
 					"types": [
 						"fire",
@@ -61781,7 +61657,7 @@
 				{
 					"name": "Arcane Innate",
 					"type": "Innate",
-					"tradition": "Arcane",
+					"tradition": "arcane",
 					"DC": 25,
 					"entry": {
 						"0": {
@@ -61961,7 +61837,6 @@
 					"range": "Melee",
 					"name": "horn",
 					"attack": 7,
-					"effects": [],
 					"damage": "{@damage 1d6+4} piercing",
 					"types": [
 						"piercing"
@@ -61974,7 +61849,6 @@
 					"traits": [
 						"agile"
 					],
-					"effects": [],
 					"damage": "{@damage 1d4+4} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -62087,7 +61961,6 @@
 						"reach <15 feet>",
 						"sweep"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+11} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -62150,6 +62023,16 @@
 			"isNpc": false,
 			"source": "B3",
 			"page": 303,
+			"foundIn": [
+				"Alkenstar",
+				"Mana Wastes",
+				"Geb"
+			],
+			"_otherSources": {
+				"Expanded": [
+					"LOIL|323"
+				]
+			},
 			"level": 9,
 			"traits": [
 				"ne",
@@ -62195,7 +62078,6 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d10+12} piercing",
 					"types": [
 						"piercing"
@@ -62209,7 +62091,6 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+12} slashing",
 					"types": [
 						"slashing"
@@ -62222,7 +62103,6 @@
 					"traits": [
 						"reach <20 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+10} bludgeoning",
 					"types": [
 						"bludgeoning"
@@ -62358,9 +62238,8 @@
 						"deadly <d8>",
 						"magical",
 						"two-hand <d10>",
-						"versatile p"
+						"versatile <p>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d6+9} slashing plus {@damage 1d6} good",
 					"types": [
 						"good",
@@ -62378,7 +62257,6 @@
 						"reload <0>",
 						"volley <30 feet>"
 					],
-					"effects": [],
 					"damage": "{@damage 2d8+9} piercing plus {@damage 1d6} good",
 					"types": [
 						"good",
@@ -62390,7 +62268,7 @@
 				{
 					"name": "Divine Innate",
 					"type": "Innate",
-					"tradition": "Divine",
+					"tradition": "divine",
 					"DC": 29,
 					"entry": {
 						"2": {
@@ -62463,8 +62341,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "reaction",
-							"entry": "{@as R}"
+							"unit": "reaction"
 						},
 						"generic": {
 							"tag": "ability"

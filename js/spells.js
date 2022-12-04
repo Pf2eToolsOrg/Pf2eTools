@@ -39,7 +39,7 @@ class SpellsPage extends ListPage {
 			<span class="col-1-3 text-center">${Parser.spLevelToFull(spell.level)}</span>
 			<span class="col-2-2 text-center">${time}</span>
 			<span class="col-2-5 text-center" ${Parser.spSchoolToStyle(school)}>${school}</span>
-			<span class="col-1-3 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
+			<span class="col-1-3 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -172,7 +172,7 @@ class SpellsPage extends ListPage {
 						$content,
 						Renderer.hover.getWindowPositionFromEvent(evt),
 						{
-							title: `${toRender.name} \u2014 Source Data`,
+							title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
 							isPermanent: true,
 							isBookContent: true,
 						},

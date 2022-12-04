@@ -58,6 +58,19 @@ function updateFolder (folder) {
 						})
 						return x
 					}
+					if (x.type === "Equipment" && !(x.equipment === true)) {
+						console.log(`\tUpdating ${x.name} types from Equipment to Item in ${file}...`)
+						x.type = "Item"
+					}
+					return x
+				})
+			}
+			if (json.baseitem) {
+				json.baseitem = json.baseitem.map(x => {
+					if (x.type === "Equipment" && !(x.equipment === true)) {
+						console.log(`\tUpdating ${x.name} types from Equipment to Item in ${file}...`)
+						x.type = "Item"
+					}
 					return x
 				})
 			}
@@ -99,7 +112,7 @@ function updateFolder (folder) {
 					if (sp && sp.duration) {
 						let duration = sp.duration;
 						if (duration.duration) {
-							duration = {...duration, ...duration.duration};
+							duration = { ...duration, ...duration.duration };
 						}
 						delete duration.type;
 						if (duration.sustain) {
@@ -188,10 +201,18 @@ function updateFolder (folder) {
 						console.log(`\tUpdating ${cr.name} languages to lowercase in ${file}...`)
 						cr.languages.languages = cr.languages.languages.map(k => k.toLowerCase())
 					}
-					if (cr.attacks && cr.attacks.length && cr.attacks.find(k => k.activity && k.activity.unit && k.activity.unit === "action" && k.activity.number && k.activity.number === 1)) {
-						console.log(`\tUpdating ${cr.name} attacks to remove vestigial activity data in ${file}...`)
+					if (cr.attacks && cr.attacks.length) {
+						if (cr.attacks.find(k => k.activity && k.activity.unit && k.activity.unit === "action" && k.activity.number && k.activity.number === 1)) {
+							console.log(`\tUpdating ${cr.name} attacks to remove vestigial data in ${file}...`)
+							cr.attacks = cr.attacks.map(k => {
+								delete k.activity
+								return k
+							})
+						}
 						cr.attacks = cr.attacks.map(k => {
-							delete k.activity
+							if (k.effects && k.effects.length === 0) {
+								delete k.effects
+							}
 							return k
 						})
 					}
@@ -218,7 +239,7 @@ function updateFolder (folder) {
 						if (h.defenses.savingThrows) {
 							for (let k of ["fort", "ref", "will"]) {
 								if (typeof h.defenses.savingThrows[k] === "number") {
-									h.defenses.savingThrows[k] = {std: h.defenses.savingThrows[k]}
+									h.defenses.savingThrows[k] = { std: h.defenses.savingThrows[k] }
 								} else if (h.defenses.savingThrows[k] && h.defenses.savingThrows[k].default) {
 									h.defenses.savingThrows[k].std = h.defenses.savingThrows[k].default;
 									delete h.defenses.savingThrows[k].default;
@@ -247,7 +268,7 @@ function updateFolder (folder) {
 					if (r && r.duration) {
 						let duration = r.duration;
 						if (duration.duration) {
-							duration = {...duration, ...duration.duration};
+							duration = { ...duration, ...duration.duration };
 						}
 						delete duration.type;
 						if (duration.sustain) {

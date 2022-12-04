@@ -33,7 +33,7 @@ class TablesPage extends ListPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-10 pl-0">${it.name}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -90,12 +90,18 @@ class TablesPage extends ListPage {
 		};
 		const buildInfoTab = async () => {
 			let quickRulesType;
-			if (it.source === "CHD") {
-				quickRulesType = "criticalHitDeck";
-			} else if (it.source === "CFD") {
-				quickRulesType = "criticalFumbleDeck";
-			} else {
-				return;
+			switch (it.source) {
+				case "CHD":
+					quickRulesType = "criticalHitDeck";
+					break;
+				case "CFD":
+					quickRulesType = "criticalFumbleDeck";
+					break;
+				case "HPD":
+					quickRulesType = "heroPointDeck";
+					break;
+				default:
+					return;
 			}
 			const quickRules = await Renderer.utils.pGetQuickRules(quickRulesType);
 			$pgContent.append(quickRules);
@@ -106,7 +112,7 @@ class TablesPage extends ListPage {
 			buildStatsTab,
 		);
 		const tabs = [statsTab];
-		if (it.source === "CFD" || it.source === "CHD") {
+		if (it.source === "CFD" || it.source === "CHD" || it.source === "HPD") {
 			const infoTab = Renderer.utils.tabButton(
 				"Quick Rules",
 				() => {},

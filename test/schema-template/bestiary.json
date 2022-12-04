@@ -15,6 +15,15 @@
 						"type": "string",
 						"$ref": "utils.json#/definitions/sourceList"
 					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"foundIn": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
 					"name": {
 						"type": "string"
 					},
@@ -238,8 +247,12 @@
 									"type": "string",
 									"enum": [
 										"Innate",
-										"Prepared"
+										"Prepared",
+										"Focus"
 									]
+								},
+								"fp": {
+									"type": "integer"
 								},
 								"tradition": {
 									"$ref": "utils.json#/definitions/tradition"
