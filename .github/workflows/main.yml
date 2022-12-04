@@ -5,11 +5,11 @@ on:
       tags:
          - 'v**'
    # Allow running manually from the actions tab
-   workflow_dispatch:
-      inputs:
-         message:
-            description: Input Version (ex. v0.7.4)
-            required: true
+   # workflow_dispatch:
+   #    inputs:
+   #       message:
+   #           description: Input Version (ex. v0.7.4)
+   #           required: true
 
 env:
    # See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
