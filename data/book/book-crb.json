@@ -12575,8 +12575,13 @@
 							"name": "DEATH AND DYING RULES"
 						},
 						"The {@condition doomed}, {@condition dying}, {@condition unconscious}, and {@condition wounded} conditions all relate to the process of coming closer to death. The full rules are on pages 459\u2013461. The most significant information not contained in the conditions themselves is this: When you're reduced to 0 Hit Points, you're knocked out with the following effects:",
-						"directly before the creature or effect that reduced you to 0 Hit Points.",
-						"knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying 2} condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points.",
+						{
+							"type": "list",
+							"items": [
+								"You immediately move your initiative position to directly before the creature or effect that reduced you to 0 Hit Points.",
+								"You gain the {@condition dying 1} condition. If the effect that knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying 2} condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don't gain the {@condition dying} condition\u2014you are instead {@condition unconscious} with 0 Hit Points."
+							]
+						},
 						{
 							"type": "pf2-title",
 							"name": "PERSISTENT DAMAGE RULES"

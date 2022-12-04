@@ -29,7 +29,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You throw the anointed waterskin up to 60 feet. The water explodes out of it, with the effects of holy cascade."
@@ -57,8 +57,8 @@
 						"entry": "1 minute"
 					},
 					"components": [
-						"(command",
-						"Interact)"
+						"command",
+						"{@action Interact}"
 					],
 					"requirements": "The anointed waterskin is full",
 					"entries": [
@@ -118,7 +118,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -446,7 +446,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (metamagic)"
+						"envision"
+					],
+					"traits": [
+						"metamagic"
 					],
 					"frequency": {
 						"unit": "day",
@@ -483,7 +486,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"command (light)"
+						"command"
+					],
+					"traits": [
+						"light"
 					],
 					"entries": [
 						"You plunge your weapon into darkness to return the light. Attempt a counteract check with a counteract level of 5 and a +19 counteract modifier to end a magical {@trait darkness} effect whose area is within reach of the weapon."
@@ -572,7 +578,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -641,8 +647,8 @@
 						"entry": "{@as 1} or more"
 					},
 					"components": [
-						"(envision",
-						"Interact)"
+						"envision",
+						"{@action Interact}"
 					],
 					"entries": [
 						"You envision your desired cantrip, causing its card to rise to the top of the deck, and draw the card. The deck casts that cantrip as a 1st-level spell, with a DC of 15 and a spell attack modifier of +5. The card crumbles into dust as the cantrip takes effect. The activation takes the same number of actions as the cantrip you chose takes to cast."
@@ -936,8 +942,7 @@
 					"type": "ability",
 					"activity": {
 						"number": 2,
-						"unit": "action",
-						"entry": "{@as 2}"
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -1024,7 +1029,7 @@
 					},
 					"components": [
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You draw a card, chosen randomly from the remaining cards in the deck, and throw it to the ground to create an illusion of the creature depicted. The image is an illusory creature, except it has a range of only 30 feet from where the card was thrown and the illusion lasts until destroyed or until anyone moves or damages the card. The creature takes its actions once on your turn if you're within 60 feet of the card and Sustain the Activation. The illusion ends if you don't Sustain it, or if you activate a new card from the deck."
@@ -1931,7 +1936,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Make an Impression"
+						"{@action Make an Impression}"
 					],
 					"entries": [
 						"If you share drinks from a flask of fellowship as part of your {@action Make an Impression} action, the drink that pours from the flask happens to be exactly what the target of your efforts would most like to have a dram or two of\u2014wine, spirits, hot ginger tea, or ice cold water with lemon, for example. You gain a +1 item bonus on your {@skill Diplomacy} check.",
@@ -2316,8 +2321,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (shadow",
-						"teleportation)"
+						"{@action Interact}"
+					],
+					"traits": [
+						"teleportation",
+						"shadow"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -2637,7 +2645,7 @@
 					},
 					"components": [
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2753,9 +2761,12 @@
 						"unit": "free"
 					},
 					"components": [
-						"command (divine",
+						"command"
+					],
+					"traits": [
+						"divine",
 						"necromancy",
-						"negative)"
+						"negative"
 					],
 					"frequency": {
 						"unit": "round",
@@ -2836,7 +2847,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (metamagic)"
+						"envision"
+					],
+					"traits": [
+						"metamagic"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2911,7 +2925,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You cause sand to pour out of the jar at a rate of 1 gallon per round. This doesn't end until the cap is placed back on the jar."
@@ -2925,7 +2939,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You quickly pour sand over an adjacent square, making it {@quickref difficult terrain||3|terrain}. You can't use either of the jar's activations for 1 minute."
@@ -4147,7 +4161,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You touch one of the jewels affixed to the sage's lash and speak a command word. Depending on the jewel, a different effect is produced that affects you and all living creatures in a 30-foot emanation. After the effect occurs, all four jewels disappear from the lash, reappearing at the next dawn.",
@@ -4266,8 +4280,7 @@
 					"type": "ability",
 					"activity": {
 						"number": 2,
-						"unit": "action",
-						"entry": "{@as 2}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -4340,7 +4353,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -4494,6 +4507,14 @@
 			],
 			"usage": "affixed to one undead creature",
 			"category": "Consumable",
+			"duration": {
+				"type": "timed",
+				"entry": "1 round (or 4 rounds)",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				}
+			},
 			"entries": [
 				"This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
 			],
@@ -4545,15 +4566,7 @@
 					},
 					"variantType": "greater spirit-sealing fulu"
 				}
-			],
-			"duration": {
-				"type": "timed",
-				"entry": "1 round (or 4 rounds)",
-				"duration": {
-					"number": 1,
-					"unit": "round"
-				}
-			}
+			]
 		},
 		{
 			"name": "Staff Of Nature's Cunning",
@@ -4874,7 +4887,6 @@
 						"freq": 1
 					},
 					"entries": [
-						"Parchment scrap recovered from the embers of Salford's School of Conjury... furthermore any student caught practicing conjuration magic outside of class time will be subject to discipline. Professor Rouwan has since caught and released all of the weasels from within their office, but the accursed bag itself has yet to be located..",
 						"Your eidolon Concentrates on the medallion and their connection to you, allowing them to momentarily manifest into a stampede of dozens of copies of themself. The stampede rampages out in every direction, swerving around your allies while trampling any foe on the ground in an emanation around your eidolon with a radius equal to your eidolon's Speed.",
 						"Each of these foes takes {@damage 8d6} bludgeoning damage, with a DC 29 basic Reflex save. On a critical failure, the foe is also knocked {@condition prone}. After dealing damage, the stampede of eidolons vanishes as quickly as it appeared."
 					]
@@ -5049,7 +5061,10 @@
 						"unit": "free"
 					},
 					"components": [
-						"envision (metamagic)"
+						"envision"
+					],
+					"traits": [
+						"metamagic"
 					],
 					"entries": [
 						"If your next action is to cast a conjuration spell prepared from this spellbook that summons one or more creatures, you infuse one of the summoned creatures with the spell's energies, causing it to arrive with 10 temporary Hit Points that last for up to 1 minute."
@@ -5224,7 +5239,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (sonic)"
+						"{@action Interact}"
+					],
+					"traits": [
+						"sonic"
 					],
 					"frequency": {
 						"unit": "day",
@@ -5659,7 +5677,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (metamagic)"
+						"envision"
+					],
+					"traits": [
+						"metamagic"
 					],
 					"frequency": {
 						"unit": "day",

@@ -2046,7 +2046,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PLACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_EVENTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RELICGIFTS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPTIONAL_FEATURES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPTIONAL_FEATURES] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 // region Fake pages (props)
 UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 	const hashParts = [
