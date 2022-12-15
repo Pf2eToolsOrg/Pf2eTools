@@ -14,9 +14,6 @@
 					"$ref": "#/definitions/equipmentTrait"
 				},
 				{
-					"$ref": "#/definitions/variableTraits"
-				},
-				{
 					"$ref": "#/definitions/morphicTrait"
 				},
 				{
@@ -44,9 +41,6 @@
 					"$ref": "#/definitions/effectTrait"
 				},
 				{
-					"$ref": "#/definitions/variableTraits"
-				},
-				{
 					"$ref": "#/definitions/alignabvTrait"
 				},
 				{
@@ -63,6 +57,9 @@
 				},
 				{
 					"$ref": "#/definitions/unknownTrait"
+				},
+				{
+					"$ref": "#/definitions/variableTraits"
 				},
 				{
 					"$ref": "#/definitions/energyElementTrait"
@@ -471,6 +468,72 @@
 				"water"
 			]
 		},
+		"variableTraits": {
+			"type": "string",
+			"description": "A list of all traits with variable values, enclosed in <these 'brackets'>.",
+			"anyOf": [
+				{
+					"type": "string",
+					"pattern": "^additive <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^attached <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^capacity <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^deadly <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^fatal <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^fatal aim <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^jousting <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^modular <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^reach <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^scatter <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^thrown <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^two-hand <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^two-handed <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^versatile <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^volley <.*>$"
+				}
+			]
+		},
 		"unknownTrait": {
 			"type": "string",
 			"description": "A list of all Unknown traits.",
@@ -646,68 +709,6 @@
 				"ng"
 			]
 		},
-		"variableTraits": {
-			"type": "string",
-			"description": "A list of all traits with variable values, enclosed in <these 'brackets'>.",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^attached <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^capacity <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^deadly <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^fatal <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^fatal aim <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^jousting <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^modular <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^reach <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^scatter <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^thrown <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^two-hand <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^two-handed <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^versatile <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^volley <.*>$"
-				}
-			]
-		},
 		"effectTrait": {
 			"type": "string",
 			"description": "A list of all Effect traits.",
@@ -820,16 +821,6 @@
 			"enum": [
 				"metamorphic",
 				"sentient"
-			]
-		},
-		"variableTraits": {
-			"type": "string",
-			"description": "A list of all traits with variable values, enclosed in <these 'brackets'>.",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^scatter <.*>$"
-				}
 			]
 		},
 		"equipmentTrait": {
