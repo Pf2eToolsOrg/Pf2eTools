@@ -869,9 +869,7 @@ function Renderer () {
 			if (entry.components) {
 				if (entry.traits) {
 					textStack[0] += this.render(` (${entry.components.join(", ")}; ${entry.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")}); `);
-				} else {
-					textStack[0] += this.render(` (${entry.components.join(", ")}); `);
-				}
+				} else textStack[0] += this.render(` (${entry.components.join(", ")}); `);
 			} else {
 				if (entry.traits) {
 					textStack[0] += ` (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); `;
@@ -881,16 +879,12 @@ function Renderer () {
 			if (entry.components) {
 				if (entry.traits) {
 					textStack[0] += ` ${entry.components.join(", ")} (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); `;
-				} else {
-					textStack[0] += ` ${entry.components.join(", ")}; `;
-				}
+				} else textStack[0] += ` ${entry.components.join(", ")}; `;
 			} else {
 				// Lack of trailing semicolons below intended
 				if (entry.traits) {
 					textStack[0] += ` (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}) `;
-				} else {
-					textStack[0] += " ";
-				}
+				} else textStack[0] += " ";
 			}
 		}
 
