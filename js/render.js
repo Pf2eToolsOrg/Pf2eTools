@@ -5785,7 +5785,7 @@ Renderer.runeItem = {
 		if (rune.shortName) return rune.shortName;
 		let name = typeof rune === "string" ? rune : rune.name;
 		if (name.startsWith("+")) return name.split(" ")[0];
-		return name.toTitleCase();
+		return name;
 	},
 
 	getTag (baseItem, runes) {
