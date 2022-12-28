@@ -899,7 +899,7 @@ function Renderer () {
 		if (entry.entries) {
 			if (preamble.length) {
 				textStack[0] += `${this.render(preamble.join("; "))}; <strong>Effect&nbsp;</strong>`;
-			} else if (entry.components || wordyActivation)) {
+			} else if (entry.components || wordyActivation) {
 				textStack[0] += `<strong>Effect&nbsp;</strong>`;
 			}
 			textStack[0] += `${this.render(entry.entries[0], { isAbility: true })}</span>`;
@@ -4371,7 +4371,7 @@ Renderer.creature = {
 		if (!arr || arr.length === 0) return null;
 		const renderer = Renderer.get();
 		const vals = arr.map(it => `${it.name}${it.amount ? ` ${it.amount}` : ""}${it.note ? ` ${renderer.render(it.note)}` : ""}`);
-		return `<strong>${prop}&nbsp;</strong>${vals.join("; ")}`;
+		return `<strong>${prop}&nbsp;</strong>${renderer.render(vals.join("; "))}`;
 	},
 
 	getSpeed (cr) {

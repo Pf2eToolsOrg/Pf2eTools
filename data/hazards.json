@@ -459,7 +459,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 36 {@skill Nature} (expert) to calm each hound, or DC 38"
+					"DC 36 {@skill Nature} (expert) to calm each hound, or DC 38 (master) to banish each hound"
 				]
 			},
 			"defenses": {
@@ -485,17 +485,6 @@
 				}
 			},
 			"actions": [
-				{
-					"name": "Occultism",
-					"activity": {
-						"unit": "varies",
-						"entry": "master"
-					},
-					"components": [
-						"to banish each hound"
-					],
-					"entries": []
-				},
 				{
 					"name": "Bay",
 					"activity": {
@@ -2808,14 +2797,19 @@
 			"defenses": {
 				"ac": {
 					"std": 35,
-					"vs. reactions and ranged weapon attacks": 40
+					"note": " (40 vs. reactions and ranged weapon attacks)"
 				},
 				"hp": {
 					"std": 220
 				},
 				"weaknesses": [
 					"earth vulnerability"
-				]
+				],
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					}
+				}
 			},
 			"actions": [
 				{
@@ -2877,12 +2871,9 @@
 				},
 				"savingThrows": {
 					"fort": {
-						"std": 18
-					},
-					"ref": {
-						"std": 10
+						"std": 30
 					}
-				},
+				}
 				"hardness": {
 					"std": 15
 				},
