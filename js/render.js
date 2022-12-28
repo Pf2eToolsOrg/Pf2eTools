@@ -890,20 +890,27 @@ function Renderer () {
 
 		const preamble = [];
 		if (entry.cost) preamble.push(`<strong>Cost&nbsp;</strong>${entry.cost}`);
-		if (entry.frequency) preamble.push(`<strong>Frequency&nbsp;</strong>${this.render(Parser.freqToFullEntry(entry.frequency))}`);
-		if (entry.note) preamble.push(`${this.render(entry.note)}`);
+		if (entry.frequency) preamble.push(`<strong>Frequency&nbsp;</strong>${Parser.freqToFullEntry(entry.frequency)}`);
+		if (entry.note) preamble.push(entry.note);
 		if (entry.range) preamble.push(`<strong>Range&nbsp;</strong>${entry.range.number} ${entry.range.unit}`);
-		if (entry.trigger) preamble.push(`<strong>Trigger&nbsp;</strong>${this.render(entry.trigger)}`);
-		if (entry.requirements) preamble.push(`<strong>Requirements&nbsp;</strong>${this.render(entry.requirements)}`);
-		if (preamble.length) textStack[0] += `${preamble.join("; ")}; `;
+		if (entry.trigger) preamble.push(`<strong>Trigger&nbsp;</strong>${entry.trigger}`);
+		if (entry.requirements) preamble.push(`<strong>Requirements&nbsp;</strong>${entry.requirements}`);
 
 		if (entry.entries) {
-			if (!(!entry.components && !preamble.length && !wordyActivation)) textStack[0] += `<strong>Effect&nbsp;</strong>`;
+			if (preamble.length) {
+				textStack[0] += `${this.render(preamble.join("; "))}; <strong>Effect&nbsp;</strong>`;
+			} else if (entry.components || wordyActivation)) {
+				textStack[0] += `<strong>Effect&nbsp;</strong>`;
+			}
 			textStack[0] += `${this.render(entry.entries[0], { isAbility: true })}</span>`;
 			for (let i = 1; i < entry?.entries?.length; i++) {
 				textStack[0] += this.render(entry.entries[i], { isAbility: true, pf2StatFix: true });
 			}
-		} else textStack[0] += "</span>";
+		} else if (preamble.length) {
+			textStack[0] += `${this.render(preamble.join("; "))}</span>`;
+		} else {
+			textStack[0] += "</span>";
+		}
 
 		if (entry.special != null) textStack[0] += `<p class="pf2-stat__text"><strong>Special&nbsp;</strong>${this.render(entry.special)}</p>`;
 		textStack[0] += `</div>`;
