@@ -3545,7 +3545,7 @@
 					{
 						"hp": 85,
 						"abilities": [
-							"fast healing 7"
+							"{@ability fast healing} 7"
 						]
 					}
 				],
@@ -3556,13 +3556,18 @@
 				],
 				"weaknesses": [
 					{
-						"name": "area"
+						"amount": 7,
+						"name": "area damage"
+					},
+					{
+						"amount": 7,
+						"name": "{@trait splash} damage"
 					}
 				],
 				"resistances": [
 					{
 						"amount": 7,
-						"name": "physical"
+						"name": "physical damage"
 					}
 				]
 			}

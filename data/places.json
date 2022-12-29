@@ -1596,7 +1596,7 @@
 					{
 						"name": "Trade Hub",
 						"entries": [
-							"Items of up to 11th level can be found in Kibwe with diligent enough searching. Items higher than 6th level, when found, are for sale at 90% + {@dice 2d10}% of their normal price."
+							"Items of up to 11th level can be found in Kibwe with diligent enough searching. Items higher than 6th level, when found, are for sale at {@dice 90+2d10|90% + 2d10%} of their normal price."
 						]
 					}
 				]
@@ -2536,6 +2536,73 @@
 					"position": "wizard",
 					"level": 16,
 					"bond": "Leader of the Chosen"
+				}
+			]
+		},
+		{
+			"name": "Kibwe",
+			"source": "Sli",
+			"page": 55,
+			"category": "Settlement",
+			"level": 6,
+			"traits": [
+				"n",
+				"city"
+			],
+			"description": "Mercantile city-state where diverse interests rub shoulders",
+			"settlementData": {
+				"government": "representative council",
+				"population": {
+					"total": 3885,
+					"ancestries": {
+						"humans": 71,
+						"elves": 8,
+						"orcs": 5,
+						"lizardfolk": 5,
+						"other": 11
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Mwangi}"
+				],
+				"features": [
+					{
+						"name": "Trade Hub",
+						"entries": [
+							"Items of up to 11th level can be found in Kibwe with diligent enough searching. Items higher than 6th level, when found, are for sale at {@dice 90+2d10|90% + 2d10%} of their normal price."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Abayone Munme",
+					"alignment": "lg",
+					"gender": "f",
+					"ancestry": "human",
+					"bond": "Council Representative for the Zenj Trading Alliance"
+				},
+				{
+					"name": "Clatriani Orridik",
+					"alignment": "le",
+					"gender": "m",
+					"ancestry": "human",
+					"bond": "Bloodman of Bekyar Block and former slave-trader"
+				},
+				{
+					"name": "Darvian Estabar",
+					"alignment": "ln",
+					"gender": "m",
+					"ancestry": "human",
+					"bond": "Lord Magistrate of the East Mwangi Mining Company"
+				},
+				{
+					"name": "Kosa Et",
+					"alignment": "n",
+					"gender": "a",
+					"ancestry": "elf",
+					"bond": "Council Representative for Whitemarks"
 				}
 			]
 		}

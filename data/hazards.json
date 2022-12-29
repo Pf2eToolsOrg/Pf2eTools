@@ -459,7 +459,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 36 {@skill Nature} (expert) to calm each hound, or DC 38"
+					"DC 36 {@skill Nature} (expert) to calm each hound, or DC 38 (master) to banish each hound"
 				]
 			},
 			"defenses": {
@@ -485,17 +485,6 @@
 				}
 			},
 			"actions": [
-				{
-					"name": "Occultism",
-					"activity": {
-						"unit": "varies",
-						"entry": "master"
-					},
-					"components": [
-						"to banish each hound"
-					],
-					"entries": []
-				},
 				{
 					"name": "Bay",
 					"activity": {
@@ -2808,14 +2797,19 @@
 			"defenses": {
 				"ac": {
 					"std": 35,
-					"vs. reactions and ranged weapon attacks": 40
+					"note": " (40 vs. reactions and ranged weapon attacks)"
 				},
 				"hp": {
 					"std": 220
 				},
 				"weaknesses": [
 					"earth vulnerability"
-				]
+				],
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					}
+				}
 			},
 			"actions": [
 				{
@@ -2912,25 +2906,24 @@
 						"Six talons swing out from the walls, each striking a different random creature in the room. No creature can be struck by more than one talon until every creature in the room has been attacked by at least one talon."
 					],
 					"name": "Raking Strike"
-				}
-			],
-			"reset": [
-				"The trap resets after 1 minute."
-			],
-			"attacks": [
+				},
 				{
+					"type": "attack",
 					"range": "Melee",
 					"name": "talon",
 					"attack": 22,
 					"traits": [
 						"deadly <d10>"
 					],
-					"damage": "{@damage 1d10+2} piercing; no multiple attack penalty.",
+					"damage": "{@damage 1d10+2}",
 					"types": [
 						"piercing"
 					],
 					"noMAP": true
 				}
+			],
+			"reset": [
+				"The trap resets after 1 minute."
 			]
 		},
 		{
@@ -6825,11 +6818,11 @@
 				"minProf": "expert"
 			},
 			"description": [
-				"A blast of energy damages all creatures within 20 feet, with particularly severe damage to fiends."
+				"A blast of energy damages all creatures within 20 feet, with particularly severe damage to {@trait fiend||fiends}."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Thievery} DC 27 (expert) to identify the proper sequence of buttons in the divots, or dispel magic (4th level; counteract DC 25) to suppress the {@trait magical} effect for 1 hour."
+					"{@skill Thievery} DC 27 (expert) to identify the proper sequence of buttons in the divots, or {@spell dispel magic} (4th level; counteract DC 25) to suppress the {@trait magical} effect for 1 hour."
 				]
 			},
 			"actions": [
@@ -6844,7 +6837,16 @@
 					],
 					"trigger": "The door is touched without first pressing the correct sequence of buttons",
 					"entries": [
-						"A blast of energy ripples outward from the door, dealing {@damage 4d10} force damage to all creatures within 20 feet and forcing them to make a DC 25 Fortitude save. Fiends treat the result of their saving throw as one degree worse. Critical Success The creature is unaffected. Success The creature takes half damage. Failure The creature takes full damage and is {@condition sickened|CRB|sickened 1}. Critical Failure The creature takes double damage and is {@condition sickened|CRB|sickened 2}; while it is {@condition sickened}, it's also {@condition slowed|CRB|slowed 1}."
+						"A blast of energy ripples outward from the door, dealing {@damage 4d10} force damage to all creatures within 20 feet and forcing them to make a DC 25 Fortitude save. {@trait fiend||Fiends} treat the result of their saving throw as one degree worse.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes half damage.",
+								"Failure": "The creature takes full damage and is {@condition sickened|CRB|sickened 1}.",
+								"Critical Failure": "The creature takes double damage and is {@condition sickened|CRB|sickened 2}; while it is {@condition sickened}, it's also {@condition slowed|CRB|slowed 1}."
+							}
+						}
 					],
 					"name": "Forceful Blast"
 				}
@@ -9784,7 +9786,7 @@
 				"notes": "or DC 31 (master) to notice the control panel."
 			},
 			"description": [
-				"Countless holes to launch poison darts from line a long hallway with a {@condition hidden} control panel on the far end."
+				"Countless holes to launch poison darts from line a long hallway with a hidden control panel on the far end."
 			],
 			"disable": {
 				"entries": [
@@ -10741,14 +10743,14 @@
 			"stealth": {
 				"bonus": 17,
 				"minProf": "expert",
-				"notes": "or DC 29 (expert) to spot the {@condition hidden} control panel."
+				"notes": "or DC 29 (expert) to spot the hidden control panel"
 			},
 			"description": [
 				"Five scroll symbols shoot electricity bolts around the room."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Thievery} DC 25 (expert) or dispel magic (3rd level; counteract DC 24); {@skill Thievery} DC 29 (master) to disable the entire trap from the {@condition hidden} control panel beneath the central slab."
+					"{@skill Thievery} DC 25 (expert) or {@spell dispel magic} (3rd level; counteract DC 24); {@skill Thievery} DC 29 (master) to disable the entire trap from the {@condition hidden} control panel beneath the central slab."
 				]
 			},
 			"defenses": {
@@ -10781,11 +10783,15 @@
 					"precision damage"
 				],
 				"resistances": [
-					"electricity 15"
+					{
+						"name": "electricity",
+						"amount": 15
+					}
 				]
 			},
 			"actions": [
 				{
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -10815,8 +10821,7 @@
 					"types": [
 						"electricity",
 						"persistent"
-					],
-					"noMAP": true
+					]
 				}
 			],
 			"reset": [
@@ -11774,9 +11779,9 @@
 						"conjuration",
 						"summon"
 					],
-					"trigger": "A creature that isn't openly bearing an Aspis",
+					"trigger": "A creature that isn't openly bearing an Aspis Consortium badge crosses the center of the yard.",
 					"entries": [
-						"Consortium badge crosses the center of the yard; The trap summons an {@creature invisible stalker}. The invisible stalker rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the {@condition invisible} stalker disappears. The {@condition invisible} stalker also disappears if someone disables the trap before the duration expires. The {@condition invisible} stalker can use 3 actions each round and can use reactions, unlike most summoned creatures."
+						"The trap summons an {@creature invisible stalker}. The invisible stalker rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the {@condition invisible} stalker disappears. The {@condition invisible} stalker also disappears if someone disables the trap before the duration expires. The {@condition invisible} stalker can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
 					"name": "Summon Monster"
 				}

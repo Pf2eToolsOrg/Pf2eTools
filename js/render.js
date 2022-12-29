@@ -855,26 +855,65 @@ function Renderer () {
 	}
 
 	this._renderAbility_compact = function (entry, textStack, meta, options) {
-		textStack[0] += `<div class="pf2-stat pf2-stat__section"><span class="pf2-stat__text"><strong>${entry.name != null ? entry.name : "Activate"}</strong>`
-		if (entry.activity != null) textStack[0] += ` ${this.render(Parser.timeToFullEntry(entry.activity))}`;
-		if (entry.components != null) textStack[0] += ` ${this.render(entry.components.join(", "))}`;
-		if (entry.traits && entry.traits.length) textStack[0] += ` (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")})`;
-		entry.components != null || entry.traits != null ? textStack[0] += "; " : textStack[0] += "&nbsp;";
-		if (entry.cost != null) textStack[0] += `<strong>Cost&nbsp;</strong>${entry.cost}; `;
-		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${this.render_addTerm(Parser.freqToFullEntry(entry.frequency))} `;
-		if (entry.range != null) textStack[0] += `<strong>Range&nbsp;</strong>${entry.range.number} ${entry.range.unit} `;
-		if (entry.note != null) textStack[0] += `${this.render(entry.note)}; `;
-		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${this.render_addTerm(entry.trigger)}; `;
-		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${this.render_addTerm(entry.requirements)}; `;
-		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : ""}`;
+		textStack[0] += `<div class="pf2-stat pf2-stat__section"><span class="pf2-stat__text"><strong>${entry.name ? entry.name : "Activate"}</strong> `
+
+		let wordyActivation;
+		if (entry.activity) {
+			textStack[0] += this.render(Parser.timeToFullEntry(entry.activity));
+
+			wordyActivation = entry.activity.unit === "round" || entry.activity.unit === "minute" || entry.activity.unit === "hour" || (entry.activity.entry && !entry.activity.entry.match(/\{@a(ction)?s[^}]+\}$/));
+			// Matches the standard "1 round" and "2 hours", as well as "until it stops raining", but not "{@as 1} to {@as 3}"
+		}
+
+		if (wordyActivation) {
+			if (entry.components) {
+				if (entry.traits) {
+					textStack[0] += this.render(` (${entry.components.join(", ")}; ${entry.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")}); `);
+				} else textStack[0] += this.render(` (${entry.components.join(", ")}); `);
+			} else {
+				if (entry.traits) {
+					textStack[0] += this.render(` (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); `);
+				} else textStack[0] += "; ";
+			}
+		} else {
+			if (entry.components) {
+				if (entry.traits) {
+					textStack[0] += this.render(` ${entry.components.join(", ")} (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); `);
+				} else textStack[0] += this.render(` ${entry.components.join(", ")}; `);
+			} else {
+				// Lack of trailing semicolons below intended
+				if (entry.traits) {
+					textStack[0] += this.render(` (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}) `);
+				} else textStack[0] += " ";
+			}
+		}
+
+		const preamble = [];
+		if (entry.cost) preamble.push(`<strong>Cost&nbsp;</strong>${entry.cost}`);
+		if (entry.frequency) preamble.push(`<strong>Frequency&nbsp;</strong>${Parser.freqToFullEntry(entry.frequency)}`);
+		if (entry.note) preamble.push(entry.note);
+		if (entry.range) preamble.push(`<strong>Range&nbsp;</strong>${entry.range.number} ${entry.range.unit}`);
+		if (entry.trigger) preamble.push(`<strong>Trigger&nbsp;</strong>${entry.trigger}`);
+		if (entry.requirements) preamble.push(`<strong>Requirements&nbsp;</strong>${entry.requirements}`);
+
 		if (entry.entries) {
+			if (preamble.length) {
+				textStack[0] += `${this.render(preamble.join("; "))}; <strong>Effect&nbsp;</strong>`;
+			} else if (entry.components || wordyActivation) {
+				textStack[0] += `<strong>Effect&nbsp;</strong>`;
+			}
 			textStack[0] += `${this.render(entry.entries[0], { isAbility: true })}</span>`;
 			for (let i = 1; i < entry?.entries?.length; i++) {
 				textStack[0] += this.render(entry.entries[i], { isAbility: true, pf2StatFix: true });
 			}
-		} else textStack[0] += "</span>";
+		} else if (preamble.length) {
+			textStack[0] += `${this.render(preamble.join("; "))}</span>`;
+		} else {
+			textStack[0] += "</span>";
+		}
+
 		if (entry.special != null) textStack[0] += `<p class="pf2-stat__text"><strong>Special&nbsp;</strong>${this.render(entry.special)}</p>`;
-		textStack[0] += `</div>`
+		textStack[0] += `</div>`;
 	}
 
 	this._renderSuccessDegree = function (entry, textStack, meta, options) {
@@ -4332,7 +4371,7 @@ Renderer.creature = {
 		if (!arr || arr.length === 0) return null;
 		const renderer = Renderer.get();
 		const vals = arr.map(it => `${it.name}${it.amount ? ` ${it.amount}` : ""}${it.note ? ` ${renderer.render(it.note)}` : ""}`);
-		return `<strong>${prop}&nbsp;</strong>${vals.join("; ")}`;
+		return `<strong>${prop}&nbsp;</strong>${renderer.render(vals.join("; "))}`;
 	},
 
 	getSpeed (cr) {
@@ -4371,10 +4410,10 @@ Renderer.creature = {
 						let spells = []
 						for (let spell of sc.entry[lvl].spells) {
 							let amount = spell.amount != null ? typeof (spell.amount) === "number" ? [`×${spell.amount}`] : [spell.amount] : []
-							let notes = spell.notes != null ? spell.notes : []
+							let note = spell.note != null ? spell.note : []
 							let bracket = ""
-							if (amount.length || notes.length) {
-								bracket = ` (${amount.concat(notes).join(", ")})`
+							if (amount.length || note.length) {
+								bracket = ` (${amount.concat(note).join(", ")})`
 							}
 							spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 						}
@@ -4385,10 +4424,10 @@ Renderer.creature = {
 							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)})&nbsp;</strong></span>`)
 							let spells = []
 							for (let spell of sc.entry["constant"][clvl].spells) {
-								let notes = spell.notes != null ? spell.notes : []
+								let note = spell.note != null ? spell.note : []
 								let bracket = ""
-								if (notes.length) {
-									bracket = ` (${notes.join(", ")})`
+								if (note.length) {
+									bracket = ` (${note.join(", ")})`
 								}
 								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 							}
@@ -4408,7 +4447,7 @@ Renderer.creature = {
 		const renderRitual = (r) => {
 			return `{@ritual ${r.name}|${r.source || ""}}${r.notes == null && r.level == null ? "" : ` (${[Parser.getOrdinalForm(r.level)].concat(...(r.notes || [])).filter(Boolean).join(", ")})`}`;
 		};
-		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition} ` : ""}Rituals</strong> DC ${rf.DC};${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
+		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""}Rituals</strong> DC ${rf.DC}; ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
 	},
 
 	getRenderedAbility (ability, opts) {
@@ -5746,7 +5785,7 @@ Renderer.runeItem = {
 		if (rune.shortName) return rune.shortName;
 		let name = typeof rune === "string" ? rune : rune.name;
 		if (name.startsWith("+")) return name.split(" ")[0];
-		return name.toTitleCase();
+		return name;
 	},
 
 	getTag (baseItem, runes) {
