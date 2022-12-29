@@ -1,4 +1,14 @@
 {
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"B1"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		]
+	},
 	"creature": [
 		{
 			"name": "Ahvothian",
@@ -202,8 +212,7 @@
 				},
 				"hp": [
 					{
-						"hp": 160,
-						"abilities": null
+						"hp": 160
 					}
 				],
 				"weaknesses": [
@@ -356,10 +365,65 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
+			}
+		},
+		{
+			"name": "Alchemical Golem",
+			"source": "Sli",
+			"page": 48,
+			"_copy": {
+				"name": "Alchemical Golem",
+				"source": "B1",
+				"_mod": {
+					"abilities.mid": [
+						{
+							"mode": "insertArr",
+							"items": {
+								"entries": [
+									"When the alchemical golem is reduced to 0 Hit Points, it explodes and deals damage from its alchemical rupture ability in a 10-foot emanation. If a critical hit reduced the golem to 0 Hit Points, creatures in the area treat their saving throws against the rupture effects as one degree worse."
+								],
+								"name": "Explode"
+							}
+						}
+					],
+					"traits": {
+						"mode": "insertArr",
+						"items": [
+							"unique"
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Ngira",
+			"source": "Sli",
+			"page": 37,
+			"_copy": {
+				"name": "Angazhani Cultist",
+				"source": "Sli",
+				"_mod": {
+					"abilities.mid": [
+						{
+							"mode": "insertArr",
+							"items": {
+								"entries": [
+									"Ngira has a +1 profane bonus on attack rolls, skill checks, and saving throws from Sanura's profane gift. Sanura can communicate with Ngira telepathically at any distance, and Ngira treats saves against Sanura's {@spell suggestion} spells as one degree of success worse."
+								],
+								"name": "Profane Gift"
+							}
+						}
+					],
+					"traits": {
+						"mode": "insertArr",
+						"items": [
+							"unique"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -411,6 +475,12 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"{@runeItem battle axe||+1 weapon potency||striking|}",
+				"{@item crossbow} (20 bolts)",
+				"{@item dagger}",
+				"{@item tower shield} (Hardness 5, HP 20, BT 10)"
+			],
 			"speed": {
 				"abilities": [
 					"unburdened iron"
@@ -482,7 +552,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -490,8 +559,7 @@
 					},
 					{
 						"entries": [
-							"When the guard rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead.",
-							"In addition, anytime they gain the {@condition frightened} condition, reduce its value by 1."
+							"When the guard rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead. In addition, anytime they gain the {@condition frightened} condition, reduce its value by 1."
 						],
 						"name": "Bravery"
 					},
@@ -500,7 +568,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -539,8 +606,7 @@
 				},
 				"hp": [
 					{
-						"hp": 80,
-						"abilities": null
+						"hp": 80
 					}
 				]
 			}
@@ -601,6 +667,15 @@
 			"speed": {
 				"walk": 25
 			},
+			"items": [
+				"expanded {@item alchemist's tools}",
+				"{@item lesser bomber's eye elixir}",
+				"bronze Aspis Consortium badge",
+				"{@item moderate cheetah's elixir}",
+				"{@item hunting spider venom} (2)",
+				"{@runeItem rapier||+1 weapon potency||striking|}",
+				"{@item studded leather} armor"
+			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -652,10 +727,9 @@
 				"top": [
 					{
 						"entries": [
-							"Aspis technician carries the following infused items: 2 lesser antidotes, 2 moderate acid flasks, 2 moderate alchemist's fires, and 2 lesser elixirs of life.",
-							"These items last for 24 hours or until the next time the technician makes their daily preparations."
+							"An Aspis technician carries the following infused items: 2 lesser antidotes, 2 moderate acid flasks, 2 moderate alchemist's fires, and 2 lesser elixirs of life. These items last for 24 hours or until the next time the technician makes their daily preparations."
 						],
-						"name": "Infused Items An"
+						"name": "Infused Items"
 					}
 				],
 				"bot": [
@@ -706,15 +780,18 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Aspis technician Interacts to draw a bomb, then {@action Strike||Strikes} with it."
+							"The Aspis technician {@action interact||Interacts} to draw a bomb, then {@action Strike||Strikes} with it."
 						],
 						"name": "Quick Bomber"
 					},
 					{
 						"entries": [
-							"Aspis technician deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+							"The Aspis technician deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak Attack The"
+						"name": "Sneak Attack",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			},
@@ -735,8 +812,7 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				]
 			}
@@ -786,9 +862,9 @@
 				"cha": 2
 			},
 			"items": [
-				"breastplate",
-				"+1 striking greatclub",
-				"javelins (3)"
+				"{@item breastplate}",
+				"{@runeItem greatclub||+1 weapon potency||striking|}",
+				"{@item javelin||javelins} (3)"
 			],
 			"speed": {
 				"abilities": [
@@ -916,8 +992,7 @@
 				},
 				"hp": [
 					{
-						"hp": 85,
-						"abilities": null
+						"hp": 85
 					}
 				]
 			}
@@ -991,7 +1066,7 @@
 					},
 					{
 						"entries": [
-							"A {@spell stone to flesh} spell negates Cursebreaker's golem antimagic and its resistance to physical damage for 1 round. A {@spell flesh to stone} spell reverses this effect immediately."
+							"A {@spell stone to flesh} spell negates Cursebreaker's {@ability golem antimagic} and its resistance to physical damage for 1 round. A {@spell flesh to stone} spell reverses this effect immediately."
 						],
 						"name": "Vulnerable to Stone to Flesh"
 					}
@@ -1062,20 +1137,32 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
 					}
 				],
 				"immunities": [
 					"acid",
 					"bleed",
 					"death effects",
-					"disease"
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"magic (see below)",
+					"mental",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "physical"
+						"name": "physical",
+						"note": " (except {@item adamantine (generic)||adamantine})"
 					}
 				]
 			}
@@ -1226,8 +1313,7 @@
 				},
 				"hp": [
 					{
-						"hp": 160,
-						"abilities": null
+						"hp": 160
 					}
 				],
 				"immunities": [
@@ -1297,9 +1383,10 @@
 				"cha": 3
 			},
 			"items": [
-				"gluttonous spear (page 60)",
+				"{@item gluttonous spear|Sli}",
 				"hide armor",
-				"key to"
+				"key to {@creature cursebreaker|sli|Cursebreaker's} lock",
+				"{@item religious symbol (generic)||religious symbol} of {@deity Angazhan|LOGM}"
 			],
 			"speed": {
 				"walk": 25
@@ -1339,9 +1426,99 @@
 					"DC": 24,
 					"rituals": [
 						{
-							"name": "Abyssal pact"
+							"name": "Abyssal pact",
+							"source": "B1"
 						}
 					]
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"DC": 24,
+					"attack": 16,
+					"type": "Prepared",
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "stabilize"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "bane"
+								},
+								{
+									"name": "bless"
+								},
+								{
+									"name": "command"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "death knell"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "see invisibility"
+								},
+								{
+									"name": "spiritual weapon"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "chilling darkness"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "harm"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Cleric Domain Spells",
+					"tradition": "divine",
+					"DC": 24,
+					"fp": 2,
+					"type": "Focus",
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "touch of obedience",
+									"note": "with a range of 30 feet"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
@@ -1396,8 +1573,7 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				]
 			}
@@ -1456,6 +1632,9 @@
 				"society": {
 					"std": 18
 				},
+				"stealth": {
+					"std": 21
+				},
 				"thievery": {
 					"std": 19
 				}
@@ -1469,9 +1648,9 @@
 				"cha": 5
 			},
 			"items": [
-				"daggers (3)",
-				"slime whip",
-				"+1 studded leather"
+				"{@item dagger||daggers} (3)",
+				"{@item slime whip|Sli}",
+				"{@runeItem studded leather||+1 armor potency|}"
 			],
 			"speed": {
 				"walk": 25
@@ -1649,21 +1828,9 @@
 				"top": [
 					{
 						"entries": [
-							"+20, {@skill Occultism} +16, {@skill Society} +18, {@skill Stealth} +21, {@skill Thievery} +19 Str +0, Dex +4, Con +1, Int +1, Wis +3, Cha +5 Items daggers (3), slime whip, +1 studded leather."
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
-							"Paga gains a +2 circumstance bonus when using."
+							"Paga gains a +2 circumstance bonus when using the {@action Seek} action to find {@condition hidden} or {@condition undetected} creatures within 30 feet of her. When she targets an opponent that is {@condition concealed} from her or {@condition hidden}, she reduces the DC of the flat check to 3 for a {@condition concealed} target or 9 for a {@condition hidden} one."
 						],
 						"name": "Keen Eyes"
-					},
-					{
-						"entries": [
-							"{@action Seek} action to find {@condition hidden} or {@condition undetected} creatures within 30 feet of her. When she targets an opponent that is {@condition concealed} from her or {@condition hidden}, she reduces the DC of the flat check to 3 for a {@condition concealed} target or 9 for a {@condition hidden} one."
-						],
-						"name": "the"
 					}
 				],
 				"mid": [
@@ -1734,8 +1901,7 @@
 				},
 				"hp": [
 					{
-						"hp": 155,
-						"abilities": null
+						"hp": 155
 					}
 				]
 			}
