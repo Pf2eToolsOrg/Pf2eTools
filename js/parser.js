@@ -567,6 +567,8 @@ Parser.getClassSideBarEntries = function (cls) {
 				if (typeof element === "object") {
 					if (element.entry) {
 						return entry.push(`{@indentSubsequent ${prof} in ${element.entry}}`);
+					} else if (element.type === "and") {
+						return entry.push(`{@indentSubsequent ${prof} in ${element.skill.map(s => `{@skill ${s}}`).joinConjunct(", ", " and ")}}`);
 					} else {
 						return entry.push(`{@indentSubsequent ${prof} in ${element.skill.length === 1 ? "" : `your choice of`} ${element.skill.map(s => `{@skill ${s}}`).joinConjunct(", ", " or ")}}`);
 					}
