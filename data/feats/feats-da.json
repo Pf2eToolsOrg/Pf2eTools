@@ -605,7 +605,7 @@
 			],
 			"prerequisites": "trained in {@skill Survival}",
 			"entries": [
-				"You can find what you're looking for using a dowsing rod or pendulum. If you {@action Search} while wielding a dowsing rod or pendulum, in addition to the normal checks for Searching, the GM rolls a secret {@skill Survival} check for you to detect the largest source of water, oil, or another natural non-bodily fluid in the area. Even if the liquid is {@condition concealed} from you\u2014for example, if it stems from an underground spring or is piped through a wall\u2014this technique points you in the right direction. The GM determines the DC, which is usually the trained simple DC with a hard or very hard adjustment if the source of water is small.",
+				"You can find what you're looking for using a dowsing rod or pendulum. If you {@action Search} while wielding a dowsing rod or pendulum, in addition to the normal checks for {@action Search||Searching}, the GM rolls a secret {@skill Survival} check for you to detect the largest source of water, oil, or another natural non-bodily fluid in the area. Even if the liquid is {@condition concealed} from you\u2014for example, if it stems from an underground spring or is piped through a wall\u2014this technique points you in the right direction. The GM determines the DC, which is usually the trained simple DC with a hard or very hard adjustment if the source of water is small.",
 				"If you're an expert in {@skill Survival}, the GM also makes a {@skill Survival} check for you to detect sizable deposits of metal, minerals, and nearby graves. The DC is usually the expert simple DC, with DC adjustments for smaller deposits."
 			]
 		},
@@ -3526,7 +3526,7 @@
 					},
 					"requirements": "You are holding your implement",
 					"entries": [
-						"You glimpse a {@condition hidden} vulnerability and then strengthen it to aid you. Select a creature you can see. Until you Glimpse Vulnerability again, that target gains weakness 2 against your unarmed and weapon {@action Strike||Strikes}."
+						"You glimpse a hidden vulnerability and then strengthen it to aid you. Select a creature you can see. Until you Glimpse Vulnerability again, that target gains weakness 2 against your unarmed and weapon {@action Strike||Strikes}."
 					],
 					"type": "ability"
 				}
@@ -3697,6 +3697,7 @@
 			"name": "Familiar",
 			"source": "DA",
 			"page": 42,
+			"add_hash": "Thaumaturge",
 			"level": 1,
 			"traits": [
 				"thaumaturge"
@@ -3716,7 +3717,7 @@
 				"thaumaturge"
 			],
 			"entries": [
-				"Your cunning knowledge grants you the ability to notice the emotional echo of a soul that passed on, leaving a haunt in its wake. Even when you aren't Searching while in exploration mode, the GM rolls a secret check for you to notice haunts that usually require you to be Searching.",
+				"Your cunning knowledge grants you the ability to notice the emotional echo of a soul that passed on, leaving a haunt in its wake. Even when you aren't {@action Search||Searching} while in exploration mode, the GM rolls a secret check for you to notice haunts that usually require you to be {@action Search||Searching}.",
 				"You can disable haunts that require master proficiency in a skill as long as you're at least trained in the skill. If you have master proficiency in the skill, you can disable haunts that require a proficiency rank of legendary instead."
 			]
 		},
@@ -3752,6 +3753,9 @@
 			],
 			"entries": [
 				"Your multidisciplinary study of magic means you know how to activate the magic in scrolls with ease. You can activate scrolls of any magical tradition, using your thaumaturge class DC for the scroll's DC, rather than a particular spell DC. If a spell is on the spell list for multiple traditions, you choose which tradition to use at the time you activate the scroll. You can draw and activate scrolls with the same hand holding an implement, much like you can for esoterica."
+			],
+			"leadsTo": [
+				"Scroll Esoterica|DA"
 			]
 		},
 		{
@@ -3778,6 +3782,7 @@
 		{
 			"name": "Enhanced Familiar",
 			"source": "DA",
+			"add_hash": "Thaumaturge",
 			"page": 43,
 			"level": 2,
 			"traits": [
@@ -3797,9 +3802,9 @@
 			"traits": [
 				"thaumaturge"
 			],
-			"prerequisites": "Exploit Vulnerability",
+			"prerequisites": "{@action Exploit Vulnerability|DA}",
 			"entries": [
-				"When you apply antithetical material against a creature successfully, you also ward yourself against its next attacks. When you succeed at your check to Exploit a Vulnerability, you gain a +1 status bonus to your AC against the creature's next attack and a +1 status bonus to your next saving throw against the creature; if you critically succeed, these bonuses are +2 instead. You can gain these bonuses only once per day against a particular creature, and the benefit ends if you Exploit Vulnerability again."
+				"When you apply antithetical material against a creature successfully, you also ward yourself against its next attacks. When you succeed at your check to Exploit a Vulnerability, you gain a +1 status bonus to your AC against the creature's next attack and a +1 status bonus to your next saving throw against the creature; if you critically succeed, these bonuses are +2 instead. You can gain these bonuses only once per day against a particular creature, and the benefit ends if you {@action Exploit Vulnerability|DA} again."
 			]
 		},
 		{
@@ -3813,7 +3818,7 @@
 			],
 			"entries": [
 				"You know how to assemble the supernatural objects in your esoterica into a number of temporary talismans. Each day during your daily preparations, you can make two talismans with an item level no higher than half your level. You must know each talisman's formula. A talisman created this way is a temporary item and loses its magic the next time you make your daily preparations.",
-				"You know the formulas for all common talismans in the Core Rulebook of your level or lower. You remember your talisman formulas through oral tradition or mnemonics, so you don't need a formula book for them."
+				"You know the formulas for {@filter all common talismans in the Core Rulebook of your level or lower|items||source=crb|type=|category=talisman|rarity=common}. You remember your talisman formulas through oral tradition or mnemonics, so you don't need a formula book for them."
 			]
 		},
 		{
@@ -3835,7 +3840,7 @@
 			],
 			"trigger": "You would attempt a roll affected by a {@trait misfortune} effect.",
 			"entries": [
-				"You perform a superstition, such as casting salt over your shoulder to ward off bad luck. Turn Away Misfortune's {@trait fortune} trait cancels out the {@trait misfortune} effect, causing you to roll normally. As normal, you can apply only one fortune ability to a roll, so if you Turned Away Misfortune on an attack roll, you couldn't also use an ability like Halfling Luck to alter the roll further."
+				"You perform a superstition, such as casting salt over your shoulder to ward off bad luck. Turn Away Misfortune's {@trait fortune} trait cancels out the {@trait misfortune} effect, causing you to roll normally. As normal, you can apply only one fortune ability to a roll, so if you Turned Away Misfortune on an attack roll, you couldn't also use an ability like {@feat Halfling Luck} to alter the roll further."
 			]
 		},
 		{
@@ -3846,9 +3851,9 @@
 			"traits": [
 				"thaumaturge"
 			],
-			"prerequisites": "Exploit Vulnerability",
+			"prerequisites": "{@action Exploit Vulnerability|DA}",
 			"entries": [
-				"You can find the one weak point in a creature's scales, wards, or armor to get past its resistances. When you succeed at Exploit Vulnerability, you learn about the highest of the creature's resistances that can be bypassed (for example, if the creature has resistance to physical damage except silver), if the creature has one. If you prefer, you can choose the following benefit instead of one of the usual two benefits from Exploit Vulnerability Breached Defenses You can choose this benefit only if you succeeded at Exploit Vulnerability and learned the creature has at least one resistance that can be bypassed. Choose one such resistance. Your unarmed and weapon {@action Strike||Strikes} bypass the chosen resistance."
+				"You can find the one weak point in a creature's scales, wards, or armor to get past its resistances. When you succeed at {@action Exploit Vulnerability|DA}, you learn about the highest of the creature's resistances that can be bypassed (for example, if the creature has resistance to physical damage except silver), if the creature has one. If you prefer, you can choose the following benefit instead of one of the usual two benefits from {@action Exploit Vulnerability|DA} Breached Defenses You can choose this benefit only if you succeeded at {@action Exploit Vulnerability|DA} and learned the creature has at least one resistance that can be bypassed. Choose one such resistance. Your unarmed and weapon {@action Strike||Strikes} bypass the chosen resistance."
 			]
 		},
 		{
@@ -3894,7 +3899,7 @@
 				"thaumaturge"
 			],
 			"entries": [
-				"Your studies into the supernatural have resulted in an especially strong knowledge of rituals. You gain a +2 circumstance bonus to all primary checks to perform a ritual. You learn two uncommon rituals with a level no higher than half your level; you must meet all prerequisites for casting the ritual to choose it. You can cast these as the primary caster, but you can't teach them to anyone else or allow someone else to serve as primary caster unless they know the ritual as well.",
+				"Your studies into the supernatural have resulted in an especially strong knowledge of rituals. You gain a +2 circumstance bonus to all primary checks to perform a ritual. You learn two {@filter uncommon rituals with a level no higher than half your level|rituals||rarity=uncommon}; you must meet all prerequisites for casting the ritual to choose it. You can cast these as the primary caster, but you can't teach them to anyone else or allow someone else to serve as primary caster unless they know the ritual as well.",
 				"At 8th level and every 4 levels thereafter, you learn another uncommon ritual with a level no higher than half your level and for which you meet the prerequisites."
 			]
 		},
@@ -3920,10 +3925,10 @@
 				"esoterica",
 				"thaumaturge"
 			],
-			"prerequisites": "Scroll Thaumaturgy",
+			"prerequisites": "{@feat Scroll Thaumaturgy|DA}",
 			"entries": [
-				"Your esoterica includes scraps of scriptures, magic tomes, druidic markings, and the like, which you can use to create temporary scrolls. Each day during your daily preparations, you can create a single temporary scroll containing a 1st-level spell of any tradition. The spell must be common, or you must otherwise have access to it. This scroll is an unstable, temporary item and loses its magic the next time you make your daily preparations if you haven't used it by then. It can't be used to Learn the Spell.",
-				"At 8th level, add a second temporary scroll containing a 2nd-level spell."
+				"Your esoterica includes scraps of scriptures, magic tomes, druidic markings, and the like, which you can use to create temporary scrolls. Each day during your daily preparations, you can create a single temporary {@item scroll} containing a {@filter 1st-level spell of any tradition|spells||spell type=!focus;spell|level=1|rarity=common}. The spell must be {@trait common}, or you must otherwise have access to it. This scroll is an unstable, temporary item and loses its magic the next time you make your daily preparations if you haven't used it by then. It can't be used to {@action Learn a Spell||Learn the Spell}.",
+				"At 8th level, add a second temporary scroll containing a {@filter 2nd-level spell|spells||spell type=!focus;spell|level=2|rarity=common}."
 			]
 		},
 		{
@@ -3934,7 +3939,7 @@
 			"traits": [
 				"thaumaturge"
 			],
-			"prerequisites": "Exploit Vulnerability, mortal weakness or personal antithesis",
+			"prerequisites": "{@action Exploit Vulnerability|DA}, mortal weakness or personal antithesis",
 			"entries": [
 				"When you apply your will to invoke a vulnerability, the result is more powerful, and the vulnerability ripples out in a web from your main target to affect a broader range of creatures.",
 				"This has one of two effects, based on the type of vulnerability you invoked.",
@@ -3956,8 +3961,8 @@
 				"esoterica",
 				"thaumaturge"
 			],
-			"prerequisites": "Exploit Vulnerability",
-			"requirements": "Your last action was a successful {@action Strike} against the target of your Exploit Vulnerability, and the {@action Strike} dealt physical damage.",
+			"prerequisites": "{@action Exploit Vulnerability|DA}",
+			"requirements": "Your last action was a successful {@action Strike} against the target of your {@action Exploit Vulnerability|DA}, and the {@action Strike} dealt physical damage.",
 			"entries": [
 				"After your attack, you grab a bit of blood, cut hair, or other piece of the creature's body. You incorporate the material into a premade doll, paper figure, or other effigy to create a sympathetic link that makes it harder to resist your abilities. As long as you are Exploiting Vulnerability against that creature, it takes a \u20132 status penalty to its saving throws against thaumaturge abilities or items that use your thaumaturge class DC."
 			]
@@ -3983,10 +3988,11 @@
 			"source": "DA",
 			"page": 45,
 			"level": 8,
+			"add_hash": "Thaumaturge",
 			"traits": [
 				"thaumaturge"
 			],
-			"prerequisites": "Enhanced Familiar",
+			"prerequisites": "{@feat Enhanced Familiar|DA}",
 			"entries": [
 				"By taking the best parts of each magical tradition, you've found a way to grant your familiar even more abilities than other familiars. You can select a base of six familiar or master abilities each day, instead of four."
 			]
@@ -4017,10 +4023,10 @@
 				"manipulate",
 				"thaumaturge"
 			],
-			"prerequisites": "Exploit Vulnerability, mortal weakness",
+			"prerequisites": "{@action Exploit Vulnerability|DA}, mortal weakness",
 			"requirements": "You are Exploiting a creature's Vulnerability using mortal weakness.",
 			"entries": [
-				"You select an object from your esoterica that has great personal value to you, such as a locket or treasured ring, and you grant it to an ally, establishing a personal link that allows your ally to affect an enemy as if they were you. The ally's {@action Strike||Strikes} apply the weakness from your mortal weakness the same way your {@action Strike||Strikes} do. This benefit ends when your Exploit Vulnerability ends or you Share Weakness again."
+				"You select an object from your esoterica that has great personal value to you, such as a locket or treasured ring, and you grant it to an ally, establishing a personal link that allows your ally to affect an enemy as if they were you. The ally's {@action Strike||Strikes} apply the weakness from your mortal weakness the same way your {@action Strike||Strikes} do. This benefit ends when your {@action Exploit Vulnerability|DA} ends or you Share Weakness again."
 			]
 		},
 		{
@@ -4051,9 +4057,9 @@
 				"thaumaturge"
 			],
 			"prerequisites": "mortal weakness or personal antithesis",
-			"requirements": "You're holding an implement and a weapon, you are using Exploit Vulnerability with mortal weakness or personal antithesis, and the target creature is within reach of both your implement and weapon.",
+			"requirements": "You're holding an implement and a weapon, you are using {@action Exploit Vulnerability|DA} with mortal weakness or personal antithesis, and the target creature is within reach of both your implement and weapon.",
 			"entries": [
-				"As you make an attack augmented by your esoterica, you also press your implement against the creature, applying its weakness as your implement's energies sear the creature's flesh. Make a melee {@action Strike} against the target of your Exploit Vulnerability. On any attack roll result but a critical failure, you also press your implement against the creature, automatically dealing the additional damage from Exploit Vulnerability. This is in addition to any damage from your {@action Strike}, including the weakness the {@action Strike} applies from Exploit Vulnerability. This counts as two attacks when calculating your multiple attack penalty."
+				"As you make an attack augmented by your esoterica, you also press your implement against the creature, applying its weakness as your implement's energies sear the creature's flesh. Make a melee {@action Strike} against the target of your {@action Exploit Vulnerability|DA}. On any attack roll result but a critical failure, you also press your implement against the creature, automatically dealing the additional damage from {@action Exploit Vulnerability|DA}. This is in addition to any damage from your {@action Strike}, including the weakness the {@action Strike} applies from {@action Exploit Vulnerability|DA}. This counts as two attacks when calculating your multiple attack penalty."
 			]
 		},
 		{
@@ -4160,9 +4166,9 @@
 				"teleportation",
 				"thaumaturge"
 			],
-			"prerequisites": "Exploit Vulnerability",
-			"trigger": "The target of your Exploit Vulnerability is within 120 feet and uses a {@trait teleportation} effect.",
-			"requirements": "You are benefiting from Exploit Vulnerability.",
+			"prerequisites": "{@action Exploit Vulnerability|DA}",
+			"trigger": "The target of your {@action Exploit Vulnerability|DA} is within 120 feet and uses a {@trait teleportation} effect.",
+			"requirements": "You are benefiting from {@action Exploit Vulnerability|DA}.",
 			"entries": [
 				"You can hunt your foe to the ends of creation. You teleport along with the enemy, appearing the same direction and distance from it as you were before it teleported (or the nearest unoccupied space if your destination is occupied). Any allies affected by Share Weakness or Ubiquitous Weakness, if you have those abilities, can spend their reaction to teleport along with the enemy if they're within 120 of the enemy and choose to do so."
 			]
@@ -4269,7 +4275,7 @@
 			],
 			"prerequisites": "Share Weakness",
 			"entries": [
-				"You've nurtured your bonds with your comrades, allowing you to share the benefits of your esoterica. When you use Exploit Vulnerability and choose mortal weakness, select any number of allies within 30 feet of you. Their {@action Strike||Strikes} apply the weakness from mortal weakness the same way your {@action Strike||Strikes} do. This benefit ends when you stop benefiting from Exploit Vulnerability. Since this effect depends on magically strengthening your bond to your allies, only allies with whom you've developed a rapport over the course of one or more days gain the benefit."
+				"You've nurtured your bonds with your comrades, allowing you to share the benefits of your esoterica. When you use {@action Exploit Vulnerability|DA} and choose mortal weakness, select any number of allies within 30 feet of you. Their {@action Strike||Strikes} apply the weakness from mortal weakness the same way your {@action Strike||Strikes} do. This benefit ends when you stop benefiting from {@action Exploit Vulnerability|DA}. Since this effect depends on magically strengthening your bond to your allies, only allies with whom you've developed a rapport over the course of one or more days gain the benefit."
 			]
 		},
 		{
@@ -4564,8 +4570,8 @@
 				"psychic"
 			],
 			"entries": [
-				"Your psychic abilities also allow you to detect the lingering thoughts of spirits and similar entities. While you're exploring but not Searching, the GM rolls a secret check for you to find haunts that usually require Searching, as well as spirits, creatures on the Ethereal Plane, and beings made entirely of spiritual essence, such as celestials, fiends, and monitors.",
-				"You can also potentially notice ethereal creatures and spirits inside solid objects, provided they are within 30 feet of you. This applies while Searching, Seeking, and on the automatic secret check from Sixth Sense. You can still notice spirits only on a successful check, and you can't see them if they're more than 5 feet inside an object.",
+				"Your psychic abilities also allow you to detect the lingering thoughts of spirits and similar entities. While you're exploring but not {@action Search||Searching}, the GM rolls a secret check for you to find haunts that usually require {@action Search||Searching}, as well as spirits, creatures on the Ethereal Plane, and beings made entirely of spiritual essence, such as celestials, fiends, and monitors.",
+				"You can also potentially notice ethereal creatures and spirits inside solid objects, provided they are within 30 feet of you. This applies while {@action Search||Searching}, Seeking, and on the automatic secret check from Sixth Sense. You can still notice spirits only on a successful check, and you can't see them if they're more than 5 feet inside an object.",
 				"When you notice a creature with your Sixth Sense, you also learn its location, making it {@condition hidden} to you if it had been {@condition undetected}."
 			]
 		},
