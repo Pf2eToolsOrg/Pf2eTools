@@ -92,6 +92,10 @@ class AfflictionsPage extends ListPage {
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules(it.__prop);
 			$content.append(quickRules);
+			if (it.temptedCurse) {
+				const quickRulesExtra = await Renderer.utils.pGetQuickRules("temptedCurse");
+				$content.append(quickRulesExtra);
+			}
 		}
 		const statTab = Renderer.utils.tabButton(
 			"Affliction",

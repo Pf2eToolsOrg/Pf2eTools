@@ -185,7 +185,7 @@ class PageFilterBestiary extends PageFilter {
 
 		cr._fHP = 0;
 		cr.defenses.hp.forEach((d) => {
-			cr._fHP += d.hp;
+			cr._fHP = d.hp;
 		})
 
 		cr._fResistances = cr.defenses.resistances ? cr.defenses.resistances.map(r => r.name === "all" ? "all damage" : r.name) : [];

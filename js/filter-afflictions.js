@@ -10,6 +10,7 @@ class PageFilterAfflictions extends PageFilter {
 		this._typeFilter = new Filter({header: "Type"});
 		this._levelFilter = new RangeFilter({header: "Level", isLabelled: true, labels: [...[...Array(21).keys()].slice(1), "Varies"]});
 		this._traitFilter = new TraitsFilter({header: "Traits"});
+		this._miscFilter = new Filter({header: "Miscellaneous"});
 	}
 
 	mutateForFilters (it) {
@@ -18,6 +19,9 @@ class PageFilterAfflictions extends PageFilter {
 		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
 		if (!it._fTraits.some(t => Renderer.trait.isTraitInCategory(t, "Rarity"))) it._fTraits.push("Common");
 		it._fLvl = PageFilterAfflictions.getFilterLevel(it.level);
+
+		it._fMiscFilter = [];
+		if (it.temptedCurse) it._fMiscFilter.push("Tempted Curse");
 	}
 
 	addToFilters (it, isExcluded) {
@@ -27,6 +31,7 @@ class PageFilterAfflictions extends PageFilter {
 		this._typeFilter.addItem(it._fType);
 		this._levelFilter.addItem(it._fLvl);
 		this._traitFilter.addItem(it._fTraits);
+		this._miscFilter.addItem(it._fMiscFilter);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -35,6 +40,7 @@ class PageFilterAfflictions extends PageFilter {
 			this._typeFilter,
 			this._levelFilter,
 			this._traitFilter,
+			this._miscFilter,
 		];
 	}
 
@@ -45,6 +51,7 @@ class PageFilterAfflictions extends PageFilter {
 			it._fType,
 			it._fLvl,
 			it._fTraits,
+			it._fMiscFilter,
 		)
 	}
 }
