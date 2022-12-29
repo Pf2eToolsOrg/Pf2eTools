@@ -97,6 +97,12 @@ class AncestriesPage extends BaseComponent {
 			$btnReset: $(`#reset`),
 			namespace: "ancestries.ancestries",
 		});
+		this._list.on("updated", () => {
+			$(`.lst__wrp-search-visible.ancestries`).html(`${this._list.visibleItems.length}/${this._list.items.length}`);
+		});
+		this._listFeat.on("updated", () => {
+			$(`.lst__wrp-search-visible.feats`).html(`${this._listFeat.visibleItems.length}/${this._listFeat.items.length}`);
+		});
 		await this._featFilter.pInitFilterBox({
 			$iptSearch: $(`#feat-lst__search`),
 			$wrpFormTop: $(`#feat-filter-search-group`),
