@@ -326,6 +326,42 @@
 						"minItems": 1,
 						"uniqueItems": true
 					},
+					"rituals": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"tradition": {
+									"$ref": "utils.json#/definitions/tradition"
+								},
+								"DC": {
+									"type": "integer",
+									"minimum": 10
+								},
+								"rituals": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"minProperties": 1
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"tradition",
+								"DC",
+								"rituals"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
 					"entries": {
 						"type": "array",
 						"items": {

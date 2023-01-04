@@ -17022,6 +17022,12 @@
 							"fast healing 2 (in dust or sand)"
 						]
 					}
+				],
+				"immunities": [
+					"bleed",
+					"poison",
+					"paralyzed",
+					"sleep"
 				]
 			}
 		},
@@ -27674,7 +27680,7 @@
 					{
 						"hp": 18,
 						"abilities": [
-							"fast healing 2 (while touching ice or"
+							"fast healing 2 (while touching ice or snow)"
 						]
 					}
 				],
@@ -27684,6 +27690,12 @@
 					"poison",
 					"paralyzed",
 					"sleep"
+				],
+				"weaknesses": [
+					{
+						"amount": 3,
+						"name": "fire"
+					}
 				]
 			}
 		},
@@ -39144,6 +39156,12 @@
 							"fast healing 2 (while touching mud or slime)"
 						]
 					}
+				],
+				"immunities": [
+					"bleed",
+					"poison",
+					"paralyzed",
+					"sleep"
 				]
 			}
 		},
@@ -50247,8 +50265,21 @@
 					{
 						"hp": 19,
 						"abilities": [
-							"fast healing 2 (in boiling"
+							"fast healing 2 (in boiling water or steam)"
 						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"fire",
+					"poison",
+					"paralyzed",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"amount": 3,
+						"name": "cold"
 					}
 				]
 			}
