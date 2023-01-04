@@ -4781,11 +4781,15 @@
 				"types": [
 					"Misc."
 				],
-				"entry": "all squares that contain plants in a"
+				"entry": "all squares that contain plants in a 5-foot burst"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
-				"5-foot burst Duration 1 minute You cause plants in the area to entangle your foes, with the effects of entangle. A creature that critically fails the save takes {@damage 2d4} {@condition persistent damage ||persistent bleed damage} in addition to being {@condition immobilized}.",
-				"Escaping your bramble doesn't end the bleed damage."
+				"You cause plants in the area to entangle your foes, with the effects of {@spell entangle}. A creature that critically fails the save takes {@damage 2d4} {@condition persistent damage ||persistent bleed damage} in addition to being {@condition immobilized}.",
+				"{@action Escape||Escaping} your bramble doesn't end the {@condition persistent damage||bleed damage}."
 			],
 			"heightened": {
 				"plusX": {
