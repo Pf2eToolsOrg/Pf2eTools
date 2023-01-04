@@ -647,9 +647,9 @@
 					"type": "list",
 					"items": [
 						"Duplicate any spell from the occult list of 9th level or lower to which you have access.",
-						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower. It must be {@trait common} or you must have access.",
 						"Produce any effect whose power is equivalent to any occult spell 9th level or lower, or non-occult spell 7th level or lower.",
-						"Reverse certain effects that refer to the {@spell wish} spell"
+						"Reverse certain effects that refer to the {@spell wish} spell."
 					]
 				},
 				"At the GM's discretion, you can try to produce greater effects, but this is dangerous and the spell may have only a partial effect."
@@ -4883,12 +4883,12 @@
 						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +16, and your damage bonus is +9. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +18, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
-						"{@bold Ankylosaurus} Speed 25 feet; {@b Melee} {@as 1} tail (backswing, reach <10 feet>), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
-						"{@bold Brontosaurus} Speed 25 feet; {@b Melee} {@as 1} tail (reach <15 feet>), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning.",
+						"{@bold Ankylosaurus} Speed 25 feet; {@b Melee} {@as 1} tail ({@trait backswing}, {@trait reach <10 feet>}), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
+						"{@bold Brontosaurus} Speed 25 feet; {@b Melee} {@as 1} tail ({@trait reach <15 feet>}), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning.",
 						"{@bold Deinonychus} Speed 40 feet; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 2d4} piercing plus 1 {@condition persistent damage ||persistent bleed}; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 1d10} piercing.",
-						"{@bold Stegosaurus} Speed 30 feet; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 2d8} piercing.",
+						"{@bold Stegosaurus} Speed 30 feet; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 2d8} piercing.",
 						"{@bold Triceratops} Speed 30 feet; {@b Melee} {@as 1} horn, {@b Damage} {@damage 2d8} piercing, plus {@damage 1d6} {@condition persistent damage ||persistent bleed} on a critical hit; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
-						"{@bold Tyrannosaurus} Speed 30 feet; {@b Melee} {@as 1} jaws (deadly, reach <10 feet>), {@b Damage} {@damage 1d12} piercing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 1d10} bludgeoning."
+						"{@bold Tyrannosaurus} Speed 30 feet; {@b Melee} {@as 1} jaws ({@trait deadly <d12>}, {@trait reach <10 feet>}), {@b Damage} {@damage 1d12} piercing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 1d10} bludgeoning."
 					]
 				}
 			],
@@ -7220,14 +7220,14 @@
 				"types": [
 					"Burst"
 				],
-				"entry": "all squares in a 20-foot-radius burst that contain plants"
+				"entry": "all squares in a 20-foot burst that contain plants or fungi"
 			},
 			"duration": {
 				"number": 1,
 				"unit": "minute"
 			},
 			"entries": [
-				"Plants in the area entangle creatures. The area counts as {@quickref difficult terrain||3|terrain}. Each round that a creature starts its turn in the area, it must attempt a Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure, it is also {@condition immobilized} for 1 round. Creatures can attempt to {@action Escape} at entangle's DC to remove these effects."
+				"Plants or fungi in the area entangle creatures. The area counts as {@quickref difficult terrain||3|terrain}. Each round that a creature starts its turn in the area, it must attempt a Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure, it is also {@condition immobilized} for 1 round. Creatures can attempt to {@action Escape} at entangle's DC to remove these effects."
 			]
 		},
 		{
@@ -13448,9 +13448,9 @@
 					"type": "list",
 					"items": [
 						"Duplicate any spell from the divine list of 9th level or lower to which you have access.",
-						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower. It must be {@trait common} or you must have access.",
 						"Produce any effect whose power level is in line with the above effects.",
-						"Reverse certain effects that refer to the {@spell wish} spell"
+						"Reverse certain effects that refer to the {@spell wish} spell."
 					]
 				},
 				"The GM might allow you to try using miracle to produce greater effects than these, but doing so may be dangerous, or the spell may have only a partial effect."
@@ -13964,13 +13964,13 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"Animals and plants in the area turn against the targets. Each target suffers from the following effects as long as it remains in the area.",
+				"Animals and plants and fungi in the area turn against the targets. Each target suffers from the following effects as long as it remains in the area.",
 				{
 					"type": "list",
 					"items": [
 						"Vegetation springs up from every surface, giving each target a \u201310-foot circumstance penalty to its Speed any time it's adjacent to the plants.",
 						"Aggressive animals attack unpredictably. At the start of its turn, each target rolls a DC {@flatDC 8} flat check. On a failure, it's attacked by swarming creatures that deal {@damage 2d10} slashing damage. The target attempts a basic Reflex save, and it is {@condition flat-footed} for 1 round on any outcome other than a critical success.",
-						"The target loses any connection to nature or natural creatures. The target has to succeed at a DC {@flatDC 5} flat check when casting any primal spell or the spell fails"
+						"The target loses any connection to nature or natural creatures. The target has to succeed at a DC {@flatDC 5} flat check when casting any primal spell or the spell fails."
 					]
 				},
 				"Furthermore, animal or plant creatures become {@condition hostile} to it, even one with a strong bond to the target, such as an animal companion.",
@@ -15509,9 +15509,9 @@
 					"type": "list",
 					"items": [
 						"Duplicate any spell from the primal list of 9th level or lower to which you have access.",
-						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower. It must be {@trait common} or you must have access.",
 						"Produce any effect whose power level is in line with the above effects.",
-						"Reverse certain effects that refer to the {@spell wish} spell"
+						"Reverse certain effects that refer to the {@spell wish} spell."
 					]
 				},
 				"At the GM's discretion, you can try to use primal phenomenon to produce greater effects than these, but doing so may be dangerous, or the spell may have only a partial effect."
@@ -18610,7 +18610,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"The target makes no sound, preventing creatures from noticing it using hearing or other senses alone. The target can't use sonic attacks, nor can it use actions with the {@trait auditory} trait. This prevents it from casting spells that include verbal components."
+				"The target makes no sound, preventing creatures from noticing it using hearing alone. The target can't use sonic attacks, nor can it use actions with the {@trait auditory} trait. This prevents it from casting spells that include verbal components."
 			],
 			"heightened": {
 				"X": {
@@ -18811,7 +18811,7 @@
 				"number": 30,
 				"unit": "feet"
 			},
-			"targets": "1 willing living creature",
+			"targets": "1 willing creature",
 			"duration": {
 				"number": 1,
 				"unit": "minute"
@@ -19037,7 +19037,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You can ask questions of and receive answers from plants, but the spell doesn't make them more {@condition friendly} or intelligent than normal. Most normal plants have a distinctive view of the world around them, so they don't recognize details about creatures or know anything about the world beyond their immediate vicinity.",
+				"You can ask questions of and receive answers from plants and fungi, but the spell doesn't make them more {@condition friendly} or intelligent than normal. Most normal plants have a distinctive view of the world around them, so they don't recognize details about creatures or know anything about the world beyond their immediate vicinity.",
 				"Cunning plant monsters are likely to be terse and evasive, while less intelligent ones often make inane comments."
 			]
 		},
@@ -23678,7 +23678,7 @@
 			},
 			"entries": [
 				"You shape a wall of solid stone. You create a 1-inch-thick wall of stone up to 120 feet long, and 20 feet high. You can shape the wall's path, placing each 5 feet of the wall on the border between squares. The wall doesn't need to stand vertically, so you can use it to form a bridge or set of stairs, for example. You must conjure the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost.",
-				"Each 5-foot-by-5-foot section of the wall has AC 10, Hardness 14, and 50 Hit Points, and it's immune to critical hits and precision damage. A destroyed section of the wall can be moved through, but the rubble created from it is {@quickref difficult terrain||3|terrain}."
+				"Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 14, and 50 Hit Points, and it's immune to critical hits and precision damage. A destroyed section of the wall can be moved through, but the rubble created from it is {@quickref difficult terrain||3|terrain}."
 			],
 			"heightened": {
 				"plusX": {
@@ -23721,7 +23721,7 @@
 			},
 			"entries": [
 				"Over the course of a minute, you cause a thick wall of thorny brambles to grow from the ground. You create a 5-footthick wall of brambles and thorns in a straight line up to 60 feet long and 10 feet high. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. The wall stands vertically. If you wish, the wall can be of a shorter length or height. Everything on each side of the wall has cover from creatures on the opposite side, and the wall's spaces are {@quickref difficult terrain||3|terrain}. For every move action a creature uses to enter at least one of the wall's spaces, that creature takes {@damage 3d4} piercing damage.",
-				"Each 5-foot-by-5-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points. It's immune to critical hits and precision damage. A destroyed section can be moved through freely."
+				"Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points. It's immune to critical hits and precision damage. A destroyed section can be moved through freely."
 			],
 			"heightened": {
 				"plusX": {
@@ -24518,9 +24518,9 @@
 					"type": "list",
 					"items": [
 						"Duplicate any spell from the arcane list of 9th level or lower to which you have access.",
-						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower. It must be {@trait common} or you must have access.",
 						"Produce any effect whose power level is in line with the above effects.",
-						"Reverse certain effects that refer to the {@spell wish} spell"
+						"Reverse certain effects that refer to the {@spell wish} spell."
 					]
 				},
 				"The GM might allow you to try using wish to produce greater effects than these, but doing so might be dangerous or the spell might have only a partial effect."
@@ -24561,7 +24561,7 @@
 			},
 			"entries": [
 				"You utter a liberating word of power that frees a creature.",
-				"You suppress one of the following conditions of your choice: {@condition confused}, {@condition frightened}, {@condition grabbed}, or {@condition paralyzed}. The target isn't affected by the chosen condition, and if you suppress the {@condition grabbed} condition, the target automatically breaks free from any grab affecting it when you {@action Cast a Spell||Cast the Spell}.",
+				"You suppress one of the following conditions of your choice: {@condition confused}, {@condition frightened}, {@condition grabbed}, {@condition restrained}, or {@condition paralyzed}. The target isn't affected by the chosen condition, and if you suppress the {@condition grabbed} or {@condition restrained} condition, the target automatically breaks free from any grab or restraint affecting it when you {@action Cast a Spell||Cast the Spell}.",
 				"If you don't remove the effect that provided the condition, the condition returns after the spell ends. For example, if a spell was making the target {@condition confused} for 1 minute, word of freedom would let the target act normally for a round, but the {@condition confused} condition would return afterward."
 			]
 		},

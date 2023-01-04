@@ -954,10 +954,12 @@
 				"amount": 3
 			},
 			"bulk": 1,
-			"hands": 2,
+			"hands": "1 or 2*",
+
 			"category": "Adventuring Gear",
 			"entries": [
 				"This mobile collection of vials and chemicals can be used for simple alchemical tasks. If you wear your alchemist's tools, you can draw and replace them as part of the action that uses them."
+			,	"{@note *You can use the set of tools with one hand if you are wearing it.}"
 			]
 		},
 		{
@@ -1714,10 +1716,12 @@
 				"amount": 4
 			},
 			"bulk": 2,
-			"hands": 2,
+			"hands": "1 or 2*",
+
 			"category": "Adventuring Gear",
 			"entries": [
 				"You need these tools to create items from raw materials with the {@action Craft} skill. Different sets are needed for different work, as determined by the GM; for example, blacksmith's tools differ from woodworker's tools. If you wear your artisan's tools, you can draw and replace them as part of the action that uses them."
+			,	"{@note *You can use the set of tools with one hand if you are wearing it.}"
 			],
 			"generic": "G",
 			"variants": [
@@ -1969,7 +1973,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This book contains the {@quickref formulas|CRB|1|formulas|0} for {@action Craft||Crafting} the {@filter common items in Chapter 6: Equipment of the Core Rulebook|items||Source=CRB|Rarity=Common|Type=Equipment;!Specific Variant}."
+				"This book contains the {@quickref formulas|CRB|1|formulas|0} for {@action Craft||Crafting} {@filter all 0-level common items in Chapter 6: Equipment of the Core Rulebook|items||Source=CRB|Rarity=Common|Type=Equipment;!Specific Variant|Level=[0]}."
 			]
 		},
 		{
@@ -7450,6 +7454,7 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
+				"uncommon",
 				"consumable",
 				"illusion",
 				"magical"
@@ -7882,10 +7887,10 @@
 				"uncommon"
 			],
 			"usage": "worn armor",
-			"bulk": 1,
+			"bulk": "L",
 			"category": "Armor",
 			"entries": [
-				"Elven chain is a chain shirt made of {@item mithral} that glitters in even the faintest light. It grants a +2 item bonus to AC and has no check penalty.",
+				"Elven chain is a chain shirt made of {@item mithral} that glitters in even the faintest light. It has no check penalty.",
 				"Created by elven artisans employing ancient crafting techniques, elven chain is exceptionally quiet. Unlike other chain shirts\u2014even other mithral chain shirts\u2014elven chain does not have the {@trait noisy} trait. This suit of armor can be etched with runes like any other mithral chain shirt."
 			],
 			"generic": "G",
@@ -10271,10 +10276,12 @@
 				"amount": 5
 			},
 			"bulk": 1,
-			"hands": 2,
+			"hands": "1 or 2*",
+
 			"category": "Adventuring Gear",
 			"entries": [
 				"This kit of bandages, herbs, and suturing tools is necessary for {@skill Medicine} checks to {@action Administer First Aid}, {@action Treat Disease}, {@action Treat Poison}, or {@action Treat Wounds}. If you wear your healer's tools, you can draw and replace them as part of the action that uses them."
+			,	"{@note *You can use the set of tools with one hand if you are wearing it.}"
 			],
 			"generic": "G",
 			"variants": [
@@ -10699,6 +10706,7 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
+				"necromancy",
 				"consumable",
 				"divine",
 				"good",
@@ -19029,7 +19037,7 @@
 			"bulk": 1,
 			"category": "Shield",
 			"entries": [
-				"This shield bears eldritch glyphs to guard against magic. While you have this steel shield (Hardness 6, HP 24, BT 12) raised, you gain its circumstance bonus to saving throws against spells that target you (as well as to AC)."
+				"This shield bears eldritch glyphs to guard against magic. While you have this steel shield (Hardness 6, HP 24, BT 12) raised, you gain its circumstance bonus to saving throws against spells that target you (as well as to AC) and you can {@action Shield Block} spells that target you if you have that action."
 			]
 		},
 		{
@@ -21354,28 +21362,18 @@
 				"amount": 3
 			},
 			"bulk": "L",
-			"hands": 2,
+			"hands": "1 or 2*",
 			"category": "Adventuring Gear",
 			"entries": [
-				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks (generic)||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
+				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks (generic)||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them.",
+				"{@note *You can use the set of tools with one hand if you are wearing it.}"
 			],
 			"generic": "G",
 			"variants": [
 				{
 					"name": "Thieves' Tools",
 					"variantType": "Base",
-					"entries": [],
-					"_mod": {
-						"entries": [
-							{
-								"mode": "prependArr",
-								"items": [
-									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
-								]
-							}
-						],
-						"entriesMode": "variant"
-					}
+					"entries": []
 				},
 				{
 					"level": 3,
@@ -21387,17 +21385,6 @@
 					"entries": [
 						"Infiltrator thieves' tools add a +1 item bonus to checks to {@action Pick a Lock||Pick Locks} and {@action Disable a Device||Disable Devices}."
 					],
-					"_mod": {
-						"entries": [
-							{
-								"mode": "prependArr",
-								"items": [
-									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item infiltrator replacement picks||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
-								]
-							}
-						],
-						"entriesMode": "variant"
-					},
 					"variantType": "Infiltrator"
 				},
 				{
@@ -21415,17 +21402,6 @@
 					"entries": [
 						"Smaller and made of stronger materials than most sets of thieves' tools, the items in this kit are much easier to conceal. You gain a +1 item bonus to {@skill Stealth} checks to {@action Conceal an Object||Conceal} these tools. They otherwise function as {@item infiltrator thieves' tools}."
 					],
-					"_mod": {
-						"entries": [
-							{
-								"mode": "prependArr",
-								"items": [
-									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item concealable replacement picks|lopsg|replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
-								]
-							}
-						],
-						"entriesMode": "variant"
-					},
 					"variantType": "Concealable"
 				}
 			]
@@ -22163,6 +22139,7 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
+				"necromancy",
 				"consumable",
 				"divine",
 				"evil",
@@ -22327,7 +22304,7 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"This oak branch grows leaves in spring that change color in autumn and shed in winter. While wielding it, you gain a +2 circumstance bonus to {@skill Nature} checks to identify plants.",
+				"This oak branch grows leaves in spring that change color in autumn and shed in winter. While wielding it, you gain a +2 circumstance bonus to checks to identify plants and fungus.",
 				{
 					"type": "ability",
 					"style": "compact",

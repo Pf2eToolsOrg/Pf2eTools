@@ -630,7 +630,7 @@
 			"classSource": "CRB",
 			"level": 7,
 			"entries": [
-				"You have learned how to create perpetual alchemical infusions that can provide a near-infinite supply of certain simple items. You gain the ability to create two 1st-level alchemical items using {@action Quick Alchemy} without spending a batch of infused reagents. The items you can select depend on your research field and must be in your formula book."
+				"You have learned how to create perpetual alchemical infusions that can provide a near-infinite supply of certain simple items. You gain the ability to create two 1st-level alchemical items using {@action Quick Alchemy} without spending a batch of infused reagents. The items you can select depend on your research field and must be in your formula book. Each time you gain a level, you can swap any number of your perpetual infusions with other eligible infusions."
 			]
 		},
 		{
@@ -843,7 +843,7 @@
 							"type": "item",
 							"name": "Bomber",
 							"entries": [
-								"Choose two of the following formulas: {@item lesser acid flask}, {@item lesser alchemist's fire}, {@item lesser bottled lightning}, {@item lesser frost vial}, {@item lesser tanglefoot bag}, {@item lesser thunderstone}."
+								"Choose two {@filter 1st-level bombs|items||Level=[1]|type=|category=bomb}."
 							]
 						}
 					]
@@ -869,7 +869,7 @@
 							"type": "item",
 							"name": "Bomber",
 							"entries": [
-								"The moderate versions of the bombs you chose for perpetual infusions."
+								"Choose two {@filter 3rd-level or lower bombs|items||Level=[1;3]|type=|category=bomb}."
 							]
 						}
 					]
@@ -921,7 +921,7 @@
 							"type": "item",
 							"name": "Bomber",
 							"entries": [
-								"The greater versions of the bombs you chose for perpetual infusions."
+								"Choose two {@filter 11th-level or lower bombs|items||Level=[1;11]|type=|category=bomb}."
 							]
 						}
 					]
@@ -942,8 +942,8 @@
 					"type": "pf2-h4",
 					"name": "Chirurgeon",
 					"entries": [
-						"You concentrate on healing others with alchemy. You start with the formulas for two of the following in your formula book, in addition to your other formulas: {@item lesser antidote}, {@item lesser antiplague}, or {@item minor elixir of life}.",
-						"As long as your proficiency rank in {@skill Medicine} is trained or better, you can attempt a {@skill Crafting} check instead of a {@skill Medicine} check for any of {@skill Medicine}'s untrained and trained uses."
+						"You concentrate on healing others with alchemy. You start with the formulas for two {@filter 1st-level elixirs with the healing trait|items||category=elixir|level=[1;1]|effect=healing} in your formula book, in addition to your other formulas.",
+						"You can use your proficiency rank in {@skill Crafting} for anything that requires a proficiency rank in {@skill Medicine} (such as prerequisites), and use your {@skill Crafting} modifier in place of your {@skill Medicine} modifier for all {@skill Medicine} checks."
 					]
 				}
 			]
@@ -967,7 +967,7 @@
 							"type": "item",
 							"name": "Chirurgeon",
 							"entries": [
-								"When using advanced alchemy to make elixirs of life during your daily preparations, you can create three elixirs with each batch of reagents instead of two."
+								"When using advanced alchemy to make {@filter any elixir with the healing trait|items||category=elixir|effect=healing} during your daily preparations, you can create three elixirs with each batch of reagents instead of two."
 							]
 						}
 					]
@@ -993,7 +993,7 @@
 							"type": "item",
 							"name": "Chirurgeon",
 							"entries": [
-								"{@item Lesser antidote} and {@item lesser antiplague}."
+								"Choose two {@filter 1st-level elixirs with the healing trait|items||Level=[1]|type=|category=elixir|effect=healing}. If a creature heals Hit Points from a perpetual infusion, that creature is temporarily immune to healing Hit Points from subsequent perpetual infusions for 10 minutes (but not immune to any other effects of those infusions)."
 							]
 						}
 					]
@@ -1019,7 +1019,7 @@
 							"type": "item",
 							"name": "Chirurgeon",
 							"entries": [
-								"{@item Moderate antidote} and {@item moderate antiplague|CRB|antiplague}."
+								"Choose two {@filter 6th level or lower elixirs with the healing trait|items||Level=[1;6]|type=|category=elixir|effect=healing}."
 							]
 						}
 					]
@@ -1071,7 +1071,7 @@
 							"type": "item",
 							"name": "Chirurgeon",
 							"entries": [
-								"{@item Greater antidote} and {@item greater antiplague|CRB|antiplague}."
+								"Choose two {@filter 11yj level or lower elixirs with the healing trait|items||Level=[1;11]|type=|category=elixir|effect=healing}."
 							]
 						}
 					]
@@ -1150,7 +1150,7 @@
 							"type": "item",
 							"name": "Mutagenist",
 							"entries": [
-								"Choose two of the following formulas: {@item lesser bestial mutagen}, {@item lesser cognitive mutagen}, {@item lesser juggernaut mutagen}, {@item lesser quicksilver mutagen}, {@item lesser serene mutagen}, {@item lesser silvertongue mutagen}."
+								"Choose two {@filter 1st-level mutagens|items||Level=[1]|type=|item=mutagen}."
 							]
 						}
 					]
@@ -1176,7 +1176,7 @@
 							"type": "item",
 							"name": "Mutagenist",
 							"entries": [
-								"The moderate versions of the mutagens you chose for perpetual infusions."
+								"Choose two {@filter 3rd level or lower mutagens|items||Level=[1;3]|type=|item=mutagen}."
 							]
 						}
 					]
@@ -1228,7 +1228,7 @@
 							"type": "item",
 							"name": "Mutagenist",
 							"entries": [
-								"The greater versions of the mutagens you chose for perpetual infusions."
+								"Choose two {@filter 11th level or lower mutagens|items||Level=[1;11]|type=|item=mutagen}."
 							]
 						}
 					]

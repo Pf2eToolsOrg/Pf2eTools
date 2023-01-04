@@ -2959,7 +2959,7 @@
 			"trigger": "A creature casts a spell that you have in your repertoire.",
 			"requirements": "You have an unexpended spell slot you could use to cast the triggering spell.",
 			"entries": [
-				"When a foe {@action Cast a Spell|CRB|Casts a Spell} you know and you can see its manifestations, you can use your own magic to disrupt it.",
+				"When a foe {@action Cast a Spell|CRB|Casts a Spell} you know and you can see its manifestations, you can use your own magic to counter it.",
 				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire. You lose your spell slot as if you had cast the triggering spell. You then attempt to {@quickref counteract|CRB|3|counteracting} the triggering spell."
 			],
 			"special": [
@@ -2986,7 +2986,7 @@
 			],
 			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared.",
 			"entries": [
-				"When a foe {@action Cast a Spell|CRB|Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it.",
+				"When a foe {@action Cast a Spell|CRB|Casts a Spell} and you can see its manifestations, you can use your own magic to counter it.",
 				"You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to {@quickref counteract|CRB|3|counteracting} the triggering spell."
 			],
 			"leadsTo": [
@@ -6208,7 +6208,7 @@
 			],
 			"prerequisites": "leaf order",
 			"entries": [
-				"You can communicate with plants on a basic level and use {@skill Diplomacy} to {@action Make an Impression} on them and to make very simple Requests of them. Non-creature plants typically can't fulfill most requests you might ask of them unless you have access to other magic such as speak with plants. Because of your affiliation with the leaf order, plants have a sense that you support them, so you gain a +2 circumstance bonus on your check to Make a {@action Request} of a plant using Green Empathy."
+				"You can communicate with plants and fungus on a basic level and use {@skill Diplomacy} to {@action Make an Impression} on them and to make very simple {@action Request||Requests} of them. Non-creature plants or fungus typically can't fulfill most requests you might ask of them unless you have access to other magic such as {@spell speak with plants}. Because of your affiliation with the {@class druid||leaf order|leaf}, plants have a sense that you support them, so you gain a +2 circumstance bonus on your check to {@action Request||Make a Request} of a plant using Green Empathy."
 			],
 			"leadsTo": [
 				"Green Tongue"
@@ -7915,7 +7915,7 @@
 			],
 			"prerequisites": "leaf order",
 			"entries": [
-				"You gain a leshy familiar, a Tiny plant that embodies one of the many spirits of nature. Other than taking the form of a plant instead of an animal, this familiar uses all the same rules as other familiars, which are detailed on page 217."
+				"You gain a leshy familiar, a Tiny plant or fungus that embodies one of the many spirits of nature. Other than taking the form of a plant or fungus instead of an animal, this familiar uses all the same rules as other familiars, which are detailed on page 217."
 			]
 		},
 		{
@@ -8641,7 +8641,7 @@
 				"rogue"
 			],
 			"entries": [
-				"You've dabbled in a variety of tricks, gaining minor magical abilities from a particular tradition. Choose {@filter arcane|spells|tradition & spell list=Arcane|spell type=cantrip|Rarity=Common}, {@filter divine|spells|tradition & spell list=divine|spell type=cantrip|Rarity=Common}, {@filter occult|spells|tradition & spell list=occult|spell type=cantrip|Rarity=Common}, or {@filter primal|spells|tradition & spell list=primal|spell type=cantrip|Rarity=Common} magic, and gain two cantrips from the common cantrips available to that tradition. Your key spellcasting ability is Charisma, and you're trained in spell attack rolls and DCs for the tradition of your chosen cantrips."
+				"You've dabbled in a variety of tricks, gaining minor magical abilities from a particular tradition. Choose {@filter arcane|spells|tradition & spell list=Arcane|spell type=cantrip|Rarity=Common}, {@filter divine|spells|tradition & spell list=divine|spell type=cantrip|Rarity=Common}, {@filter occult|spells|tradition & spell list=occult|spell type=cantrip|Rarity=Common}, or {@filter primal|spells|tradition & spell list=primal|spell type=cantrip|Rarity=Common} magic, and gain two cantrips from the common cantrips available to that tradition. You gain the {@action Cast a Spell} activity. Your key spellcasting ability is Charisma, and you're trained in spell attack rolls and DCs for the tradition of your chosen cantrips."
 			]
 		},
 		{
@@ -9059,8 +9059,8 @@
 				"human"
 			],
 			"entries": [
-				"You've learned to split your focus between multiple classes with ease. You gain a 2nd-level multiclass dedication feat (for more about multiclass archetypes, see page 219), even if you normally couldn't take another dedication feat until you take more feats from your current archetype.",
-				"If you're a half-elf, you don't need to meet the feat's ability score prerequisites."
+				"You've learned to split your focus between multiple classes with ease. You gain a {@filter 2nd-level multiclass dedication feat|feats||type=archetype|Level=[2]|feat=multiclass}, even if you normally couldn't take another dedication feat until you take more feats from your current archetype.",
+				"If you're a {@ancestry human||half-elf|half-elf}, you don't need to meet the feat's ability score prerequisites."
 			]
 		},
 		{
@@ -9072,7 +9072,7 @@
 				"human"
 			],
 			"entries": [
-				"You were raised to be ambitious and always reach for the stars, leading you to progress quickly in your chosen field. You gain a 1st-level class feat for your class. You must meet the prerequisites, but you can select the feat later in the character creation process in order to determine which prerequisites you meet."
+				"You were raised to be ambitious and always reach for the stars, leading you to progress quickly in your chosen field. You gain a {@filter 1st-level class feat|feats||type=class|Level=[1]} for your class. You must meet the prerequisites, but you can select the feat later in the character creation process in order to determine which prerequisites you meet."
 			]
 		},
 		{
@@ -10298,6 +10298,7 @@
 			"page": 113,
 			"add_hash": "Champion",
 			"level": 8,
+			"prerequisites": "{@feat Shield Block}",
 			"traits": [
 				"champion"
 			],
@@ -10314,7 +10315,7 @@
 			"traits": [
 				"fighter"
 			],
-			"prerequisites": "{@feat Shield Block}, {@feat Reactive Shield}",
+			"prerequisites": "{@feat Shield Block}",
 			"entries": [
 				"You can bring your shield into place with hardly a thought. At the start of each of your turns, you gain an additional reaction that you can use only to {@feat Shield Block}."
 			]
@@ -14655,7 +14656,7 @@
 			],
 			"prerequisites": "leaf order",
 			"entries": [
-				"You can always find a path, almost as if foliage parted before you. You ignore any {@quickref difficult terrain||3|terrain} caused by plants, such as bushes, vines, and undergrowth. Even plants manipulated by magic don't impede your progress."
+				"You can always find a path, almost as if foliage parted before you. You ignore any {@quickref difficult terrain||3|terrain} caused by plants or fungus, such as bushes, vines, and undergrowth. Even plants manipulated by magic don't impede your progress."
 			]
 		},
 		{
