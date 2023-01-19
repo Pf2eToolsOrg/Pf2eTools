@@ -672,7 +672,7 @@
 			"traits": [
 				"champion"
 			],
-			"requirements": "Fiendsbane Oath.",
+			"prerequisites": "{@feat Fiendsbane Oath}",
 			"entries": [
 				"Your aura hampers fiends' teleportation. Your aura attempts to {@quickref counteract|CRB|3|counteracting} {@trait teleportation} spells cast by fiends within 15 feet, using the spell level and DC of your devotion spells."
 			]
@@ -1006,7 +1006,7 @@
 			"traits": [
 				"champion"
 			],
-			"requirements": "Shining Oath.",
+			"prerequisites": "{@feat Shining Oath}",
 			"entries": [
 				"Your aura protects against necromantic effects. You and all allies within 15 feet gain resistance 5 to negative energy and a +1 status bonus to saves against {@trait necromancy} effects."
 			]
@@ -1032,7 +1032,7 @@
 			"traits": [
 				"champion"
 			],
-			"requirements": "exalt, Vengeful Oath.",
+			"prerequisites": "exalt, {@feat Vengeful Oath}",
 			"entries": [
 				"When you call upon others to take retribution, you also guide their aim. When you use {@action Retributive Strike}, your allies who make {@action Strike||Strikes} take only a \u20132 penalty, instead of a \u20135 penalty."
 			]
@@ -2449,7 +2449,7 @@
 			],
 			"prerequisites": "tenets of good",
 			"entries": [
-				"You can suffer so that others might live. You can cast the champion's sacrifice devotion spell. Increase the number of Focus Points in your focus pool by 1."
+				"You can suffer so that others might live. You can cast the {@spellchampion's sacrifice} devotion spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -10501,7 +10501,7 @@
 			],
 			"prerequisites": "divine ally (blade)",
 			"entries": [
-				"Your divine ally radiates power, enhancing your chosen weapon. When you choose the weapon for your blade ally during your daily preparations, add the following property runes to the list of effects you can choose from: flaming and any aligned properties (anarchic, axiomatic, holy, or unholy) that match your cause's alignment."
+				"Your divine ally radiates power, enhancing your chosen weapon. When you choose the weapon for your blade ally during your daily preparations, add the following property runes to the list of effects you can choose from: {@item flaming} and any aligned properties ({@item anarchic}, {@item axiomatic}, {@item holy}, or {@item unholy}) that match your cause's alignment."
 			],
 			"leadsTo": [
 				"Radiant Blade Master"
@@ -11527,7 +11527,7 @@
 			"traits": [
 				"champion"
 			],
-			"prerequisites": "{@feat Shield Warden}",
+			"prerequisites": "{@feat Shield Warden (Champion)||Shield Warden}",
 			"entries": [
 				"You protect an ally with both your shield and your body.",
 				"Whenever you use the {@feat Shield Block} reaction to prevent damage to an ally, you can evenly split the remaining damage after the {@feat Shield Block} between the ally and yourself."
@@ -11546,7 +11546,7 @@
 				"champion",
 				"flourish"
 			],
-			"prerequisites": "champion's reaction, divine ally (shield), tenets of good, {@feat Shield Warden}",
+			"prerequisites": "champion's reaction, divine ally (shield), tenets of good, {@feat Shield Warden (Champion)||Shield Warden}",
 			"trigger": "A foe's attack against an ally matches the trigger for both your {@feat Shield Block} reaction and your champion's reaction.",
 			"entries": [
 				"When you shield your ally against an attack, you call upon your power to protect your ally further. You use the {@feat Shield Block} reaction to prevent damage to an ally and also use your champion's reaction against the foe that attacked your ally."
@@ -14683,7 +14683,7 @@
 			"traits": [
 				"champion"
 			],
-			"requirements": "Dragonslayer Oath.",
+			"prerequisites": "{@feat Dragonslayer Oath}",
 			"entries": [
 				"Your aura protects against destructive energies and dragons' breath. You and all allies within 15 feet gain resistance equal to your Charisma modifier to acid, cold, electricity, fire, and poison.",
 				"If the source of one of these types of damage is a dragon's breath, increase the resistance to half your level."
