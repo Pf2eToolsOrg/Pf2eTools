@@ -21,7 +21,7 @@
 				"force",
 				"sonic"
 			],
-			"prerequisites": "Sky and Heaven Stance",
+			"prerequisites": "{@feat Sky and Heaven Stance|AoE2}",
 			"requirements": "You are in Sky and Heaven Stance.",
 			"entries": [
 				"You {@action Stride} up to your Speed and your ki enshrouds your limbs in a terrifying stormy energy, increasing the reach of your Sky and Heaven Stance unarmed attacks by 5 feet.",
@@ -53,7 +53,7 @@
 			"entries": [
 				"With a loud shout, you unleash your ki in a crackling shroud of thunder and lightning that engulfs your body.",
 				"Until the end of your next turn, your unarmed attacks and weapons you wield that have the {@trait monk} trait deal additional electricity damage equal to one-half your level and additional sonic damage equal to one-half your level.",
-				"If you also know the ki blast ki spell, you can choose to deal either electricity or sonic damage with the spell instead of force while this effect is active (ki blast loses the {@trait force} trait and gains the {@trait electricity} or {@trait sonic} trait instead). Any creature who successfully Grapples you or is successfully Grappled by you also takes this damage immediately after the {@action Grapple} check is resolved."
+				"If you also know the {@spell ki blast} ki spell, you can choose to deal either electricity or sonic damage with the spell instead of force while this effect is active (ki blast loses the {@trait force} trait and gains the {@trait electricity} or {@trait sonic} trait instead). Any creature who successfully Grapples you or is successfully Grappled by you also takes this damage immediately after the {@action Grapple} check is resolved."
 			]
 		},
 		{
@@ -81,7 +81,11 @@
 			],
 			"leadsTo": [
 				"Heaven's Thunder|AoE2",
-				"Steal The Sky|AoE2"
+				"Sky and Heaven Stance|AoE2",
+				"Skyseeker|AoE2",
+				"Steal The Sky|AoE2",
+				"Speaking Sky|AoE2",
+				"Cross the Final Horizon|AoE2"
 			]
 		},
 		{
@@ -102,7 +106,7 @@
 				"archetype",
 				"stance"
 			],
-			"prerequisites": "Jalmeri Heavenseeker",
+			"prerequisites": "{@feat Jalmeri Heavenseeker Dedication|AoE2}",
 			"requirements": "You are unarmored.",
 			"entries": [
 				"You enter a stance perfected by past champions of the Challenge of Sky and Heaven, allowing you to make jagged strikes like flashes of lightning through the sky. The only {@action Strike||Strikes} you can make are skyward slash unarmed attacks. These unarmed attacks deal {@damage 1d10} slashing damage; are in the {@group brawling}; and have the {@trait nonlethal}, {@trait unarmed}, and {@trait versatile <P>} traits.",
@@ -127,10 +131,10 @@
 				"archetype",
 				"open"
 			],
-			"prerequisites": "Sky and Heaven Stance",
+			"prerequisites": "{@feat Sky and Heaven Stance|AoE2}",
 			"requirements": "You are in Sky and Heaven Stance.",
 			"entries": [
-				"You {@action Leap} toward an opponent. At any point in the {@action Leap}, you can make a single {@action Strike} against a creature within your reach. At 12th level, if you hit with this {@action Strike}, instead of finishing your {@action Leap}, you can immediately attempt a second {@action Leap} from the space where you struck the target of your {@action Strike}. You can make a single {@action Strike} against a target within your reach during this second {@action Leap} as well. At 16th level, you can attempt a third {@action Leap} if your second {@action Strike} hits, and you can attack a target at any point during this third {@action Leap}.",
+				"You {@action Leap} toward an opponent. At any point in the Leap, you can make a single {@action Strike} against a creature within your reach. At 12th level, if you hit with this Strike, instead of finishing your Leap, you can immediately attempt a second Leap from the space where you struck the target of your Strike. You can make a single Strike against a target within your reach during this second Leap as well. At 16th level, you can attempt a third Leap if your second Strike hits, and you can attack a target at any point during this third Leap.",
 				"All Leaps made during this activity gain a +10-foot status bonus to the total height or distance of your leap, and no two {@action Strike||Strikes} can target the same creature."
 			]
 		},
@@ -147,10 +151,9 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Jalmeri",
+			"prerequisites": "{@feat Jalmeri Heavenseeker Dedication|AoE2}",
 			"entries": [
-				"Heavenseeker Dedication You can hear air movement like soft whispers.",
-				"You gain the speaking sky ki spell. Increase the number of Focus Points in your focus pool by 1."
+				"You can hear air movement like soft whispers. You gain the {@spell speaking sky|AoE2} ki spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -168,7 +171,7 @@
 			],
 			"prerequisites": "{@feat Jalmeri Heavenseeker Dedication|AoE2}",
 			"entries": [
-				"You can take away the air that keeps a flying foe aloft. You gain the steal the sky ki spell. Increase the number of Focus Points in your focus pool by 1."
+				"You can take away the air that keeps a flying foe aloft. You gain the {@spell steal the sky|AoE2} ki spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		}
 	]
