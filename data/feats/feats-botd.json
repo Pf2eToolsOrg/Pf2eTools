@@ -103,7 +103,7 @@
 			},
 			"trigger": "You would take damage from a {@action Strike} while one of your undead companions is adjacent to you.",
 			"entries": [
-				"You magically divert some of the harm from an incoming attack away from yourself, forcing your undead companion to take it in your stead. Reduce the damage you take from the triggering {@action Strike} by 2 + your level. Your adjacent undead companion loses a number of Hit Points equal to the amount of damage reduced. If you have more than one adjacent undead companion, you choose which one loses Hit Points. You can't divert the damage to a temporary fragment from Their Master's Call."
+				"You magically divert some of the harm from an incoming attack away from yourself, forcing your undead companion to take it in your stead. Reduce the damage you take from the triggering {@action Strike} by 2 + your level. Your adjacent undead companion loses a number of Hit Points equal to the amount of damage reduced. If you have more than one adjacent undead companion, you choose which one loses Hit Points. You can't divert the damage to a temporary fragment from {@feat Their Master's Call|BotD}."
 			]
 		},
 		{
@@ -168,7 +168,7 @@
 			},
 			"prerequisites": "{@feat Ghost Dedication|BotD}",
 			"entries": [
-				"Your ghostly form becomes innately weaker but also gains resistance to many forms of damage. Your maximum HP is reduced by your level. You gain resistance 1 to all damage except for force, positive, and any damage done by a weapon with the ghost touch rune (or any other source that acts like a ghost touch rune). This resistance increases to 2 if the source is non-magical.",
+				"Your ghostly form becomes innately weaker but also gains resistance to many forms of damage. Your maximum HP is reduced by your level. You gain resistance 1 to all damage except for force, positive, and any damage done by a weapon with the {@item ghost touch} rune (or any other source that acts like a ghost touch rune). This resistance increases to 2 if the source is non-magical.",
 				"At 10th level, the resistance increases to 2, or 4 if the source is non-magical. At 16th level, the resistance increases to 3, or 5 if the source is non-magical."
 			]
 		},
@@ -236,19 +236,19 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "{@feat master in {@skill Acrobatics}, Ghost Dedication|BotD}",
+			"prerequisites": "master in {@skill Acrobatics}, {@feat Ghost Dedication|BotD}",
 			"frequency": {
 				"freq": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
 			"entries": [
-				"Filtering your form through the substance of an object, you can pass through walls, doors, and more. You {@action Fly} up to your Speed. During this movement, you can try to move through one object. Attempt an {@skill Acrobatics} check as you try to enter its space. The DC is typically 30 to move through a wall of up to 5 feet, 15 for an ordinary door, and 10 for thinner structures like windows; the GM might set the DC higher for especially dense materials like adamantine or lead, or for barriers that are magically reinforced. You can't Pass Through an obstacle made of magical force, such as a wall of force.",
+				"Filtering your form through the substance of an object, you can pass through walls, doors, and more. You {@action Fly} up to your Speed. During this movement, you can try to move through one object. Attempt an {@skill Acrobatics} check as you try to enter its space. The DC is typically 30 to move through a wall of up to 5 feet, 15 for an ordinary door, and 10 for thinner structures like windows; the GM might set the DC higher for especially dense materials like adamantine or lead, or for barriers that are magically reinforced. You can't Pass Through an obstacle made of magical force, such as a {@spell wall of force}.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Success": [
-							"You move through the object, treating the square within it as {@quickref difficult terrain||3|terrain}. If you end your turn inside an object, you can move out of it only if you Pass Through again or use some other means of moving through a solid object. As normal for being incorporeal, starting your turn inside an object makes you {@condition slowed||slowed 1} for that turn."
+							"You move through the object, treating the square within it as {@quickref difficult terrain||3|terrain}. If you end your turn inside an object, you can move out of it only if you Pass Through again or use some other means of moving through a solid object. As normal for being {@trait incorporeal}, starting your turn inside an object makes you {@condition slowed||slowed 1} for that turn."
 						],
 						"Failure": [
 							"Your movement ends, and you trigger reactions as if you moved out of the square you started in."
@@ -272,17 +272,20 @@
 				"archetype",
 				"dedication"
 			],
-			"prerequisites": "living creature, ability to cast 6th-level or higher spells from spell slots, expert in {@skill Crafting}, completed ritual to become a lich and crafted a soul cage",
+			"prerequisites": "living creature, ability to cast 6th-level or higher spells from spell slots, expert in {@skill Crafting}, completed ritual to become a lich and crafted a {@item soul cage|BotD}",
 			"entries": [
 				"After years of study and careful planning, you finally completed a soul cage to house your soul and successfully performed a ritual to transform yourself into a lich. Now, neither death nor time can prevent you from pursuing your studies and achieving your grand ambitions. You gain the {@trait undead} trait and the basic undead benefits (page 44). Your undead craving is for knowledge.",
-				"You gain a unique soul cage\u2014a magic item that houses your soul (page 51). Whenever you would die, your soul flees to the soul cage to allow you to be rebuilt. As long as your soul cage exists, you can't truly be destroyed."
+				"You gain a unique {@item soul cage|BotD}\u2014a magic item that houses your soul. Whenever you would die, your soul flees to the soul cage to allow you to be rebuilt. As long as your soul cage exists, you can't truly be destroyed."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the lich archetype."
 			],
 			"leadsTo": [
+				"Drain Soul Cage|BotD",
 				"Enshroud Soul Cage|BotD",
 				"Hand of the Lich|BotD",
+				"Bolster Soul Cage|BotD",
+				"Spell Gem|BotD",
 				"Frightful Aura|BotD"
 			]
 		},
@@ -299,7 +302,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Lich Dedication, {@action Drain Bonded Item}, spellbook",
+			"prerequisites": "{@feat Lich Dedication|BotD}, {@action Drain Bonded Item}, spellbook",
 			"entries": [
 				"You make your soul cage into your bonded item, allowing you to harness its abundant magical energy. Once per day, when you use {@action Drain Bonded Item}, you can choose any spell in your spellbook that you can cast, even if you haven't prepared or cast it that day. Your soul cage doesn't need to be on your person for you to use {@action Drain Bonded Item}. If your soul cage is {@condition broken} or destroyed, you can't use Drain Soul Cage.",
 				"Even if you can {@action Drain Bonded Item} more than once per day, for instance if you are a universalist wizard, you can still only choose a spell you haven't prepared and cast once per day."
@@ -320,8 +323,7 @@
 			],
 			"prerequisites": "{@feat Lich Dedication|BotD}",
 			"entries": [
-				"You wreathe your soul cage in an ever-growing collection of obfuscating illusions and protective abjurations to hide it from your enemies.",
-				"You disguise the soul cage as any non-magical object of the same Bulk, and it gains the effects of the {@spell magic aura} and {@spell nondetection} spells. The effects have unlimited durations, are heightened to half your level rounded up, and use your spell DC against any attempt to counteract them. The magic aura makes your soul cage appear non-magical. You can ignore the effects of any of these spells when dealing with your own soul cage. You are mentally alerted whenever your soul cage is damaged. 51"
+				"You wreathe your {@item soul cage|BotD} in an ever-growing collection of obfuscating illusions and protective abjurations to hide it from your enemies. You disguise the soul cage as any non-magical object of the same Bulk, and it gains the effects of the {@spell magic aura} and {@spell nondetection} spells. The effects have unlimited durations, are heightened to half your level rounded up, and use your spell DC against any attempt to counteract them. The magic aura makes your soul cage appear non-magical. You can ignore the effects of any of these spells when dealing with your own soul cage. You are mentally alerted whenever your soul cage is damaged."
 			]
 		},
 		{
@@ -357,7 +359,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Lich Dedication, legendary in {@skill Crafting}",
+			"prerequisites": "{@feat Lich Dedication|BotD}, legendary in {@skill Crafting}",
 			"entries": [
 				"Your constant efforts to augment and perfect your soul cage have bolstered its efficiency. Your soul cage has Hardness equal to your level and HP equal to four times your level. The time it takes your soul cage to rebuild your body is reduced to {@dice 1d6} days rather than {@dice 1d10} days.",
 				"At 20th level, the time it takes your soul cage to rebuild your body is reduced to {@dice 2d12+12} hours."
@@ -433,9 +435,16 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"entries": [
-				"Your connection to your bound terrain strengthens, making you unhindered by local weather. When in your bound terrain, you ignore the effects of non-magical {@quickref difficult terrain||3|terrain}. In addition, your experience from your bound terrain lets you ignore circumstance penalties to visual {@skill Perception} checks and ignore concealment caused by certain {@trait environmental} effects.",
-				"The types you ignore depend on your bound terrain.",
-				"Arctic Ice or snow Desert Dust or sand Mountain Clouds or mist Swamp Rain or murky water"
+				"Your connection to your bound terrain strengthens, making you unhindered by local weather. When in your bound terrain, you ignore the effects of non-magical {@quickref difficult terrain||3|terrain}. In addition, your experience from your bound terrain lets you ignore circumstance penalties to visual {@skill Perception} checks and ignore {@condition concealed||concealment} caused by certain environmental effects. The types you ignore depend on your bound terrain.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Arctic} Ice or snow",
+						"{@b Desert} Dust or sand",
+						"{@b Mountain} Clouds or mist",
+						"{@b Swamp} Rain or murky water"
+					]
+				}
 			]
 		},
 		{
@@ -459,10 +468,9 @@
 				"visual"
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
-			"trigger": "You deal damage to a living creature with your fist",
+			"trigger": "You deal damage to a living creature with your fist {@action Strike} or with {@feat Desiccating Inhalation|BotD}.",
 			"entries": [
-				"{@action Strike} or with Desiccating Inhalation.",
-				"You draw the moisture you've {@condition drained} from others into your own flesh, temporarily taking on the appearance of life. This has the effects of illusory disguise, except you can appear only as yourself while you were a living humanoid."
+				"You draw the moisture you've drained from others into your own flesh, temporarily taking on the appearance of life. This has the effects of {@spell illusory disguise}, except you can appear only as yourself while you were a living humanoid."
 			]
 		},
 		{
@@ -480,8 +488,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"entries": [
-				"Exposure to the elements, magic, alchemy, and other phenomena intensified the changes from your mummification.",
-				"You gain the advanced undead benefits (page 44). In addition, you gain resistance equal to half your level against any damage you'd take from your bound terrain, including its dangerous temperatures, weather, hazardous terrain, and environmental hazards."
+				"Exposure to the elements, magic, alchemy, and other phenomena intensified the changes from your mummification. You gain the advanced undead benefits (page 44). In addition, you gain resistance equal to half your level against any damage you'd take from your bound terrain, including its dangerous temperatures, weather, hazardous terrain, and environmental hazards."
 			]
 		},
 		{
@@ -531,8 +538,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"entries": [
-				"You've learned to harness the supernatural curse that animates you, imbuing your most powerful attacks with a terrible curse.",
-				"When you critically hit with a fist {@action Strike}, negative energy binds to it; this is a curse and a disease. The creature takes {@damage 2d6} {@condition persistent damage ||persistent negative damage}. While the creature has this {@condition persistent damage}, it's also {@condition stupefied||stupefied 1}. The {@condition persistent damage} increases to {@dice 3d6} at 14th level and {@dice 4d6} at 20th level. This is a critical specialization effect."
+				"You've learned to harness the supernatural curse that animates you, imbuing your most powerful attacks with a terrible curse. When you critically hit with a fist {@action Strike}, negative energy binds to it; this is a {@trait curse} and a {@trait disease}. The creature takes {@damage 2d6} {@condition persistent damage ||persistent negative damage}. While the creature has this {@condition persistent damage}, it's also {@condition stupefied||stupefied 1}. The {@condition persistent damage} increases to {@dice 3d6} at 14th level and {@dice 4d6} at 20th level. This is a critical specialization effect."
 			]
 		},
 		{
@@ -561,8 +567,7 @@
 				"unit": "hour"
 			},
 			"entries": [
-				"You become surrounded by a swirling storm of rain, sand, snow, or clouds, whichever of those suits your bound terrain. This activity has traits appropriate to the storm you create\u2014 typically earth for sand and water for rain, snow, or clouds.",
-				"You become {@condition concealed} for 1 minute. You can't use this concealment to {@action Hide} or {@action Sneak}, as normal for concealment that makes your position obvious."
+				"You become surrounded by a swirling storm of rain, sand, snow, or clouds, whichever of those suits your bound terrain. This activity has traits appropriate to the storm you create\u2014 typically {@trait earth} for sand and {@trait water} for rain, snow, or clouds. You become {@condition concealed} for 1 minute. You can't use this concealment to {@action Hide} or {@action Sneak}, as normal for concealment that makes your position obvious."
 			]
 		},
 		{
@@ -578,7 +583,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Accursed Touch",
+			"prerequisites": "{@feat Accursed Touch|BotD}",
 			"entries": [
 				"You've learned to channel your curse through weapons you wield instead of solely through your flesh. The benefits of Accursed Touch apply to any melee weapon you wield instead of only your fist {@action Strike||Strikes}."
 			]
@@ -632,7 +637,16 @@
 				"unit": "day"
 			},
 			"entries": [
-				"You crumble to pieces, becoming composed of the very terrain to which you're bound, with the effects of the {@spell gaseous form} spell, or you reconstitute into your normal form. The substance you're formed of depends upon your bound terrain, and the action gains the corresponding trait or traits. Arctic Snow (water) Desert Sand (earth) Mountain Cloud (water) Swamp Mud (earth, water)"
+				"You crumble to pieces, becoming composed of the very terrain to which you're bound, with the effects of the {@spell gaseous form} spell, or you reconstitute into your normal form. The substance you're formed of depends upon your bound terrain, and the action gains the corresponding trait or traits.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Arctic} Snow ({@trait water})",
+						"{@b Desert} Sand ({@trait earth})",
+						"{@b Mountain} Cloud ({@trait water})",
+						"{@b Swamp} Mud ({@trait earth}, {@trait water})"
+					]
+				}
 			]
 		},
 		{
@@ -644,7 +658,7 @@
 				"skeleton"
 			],
 			"entries": [
-				"Specific memories of your old life are hard to hold onto, but you know things without remembering why. You gain the Adopted Ancestry feat. You can choose any ancestry, but it is likely to be one that matches both your skeleton heritage and who you were in life. As long as your body is completely covered by armor or clothing, you do not have to attempt {@skill Deception} checks against a creature's {@skill Perception} DC to successfully {@action Impersonate} yourself as a member of that ancestry. This is a non-magical disguise that doesn't protect against divination.",
+				"Specific memories of your old life are hard to hold onto, but you know things without remembering why. You gain the {@feat Adopted Ancestry} feat. You can choose any ancestry, but it is likely to be one that matches both your skeleton heritage and who you were in life. As long as your body is completely covered by armor or clothing, you do not have to attempt {@skill Deception} checks against a creature's {@skill Perception} DC to successfully {@action Impersonate} yourself as a member of that ancestry. This is a non-magical disguise that doesn't protect against divination.",
 				"This disguise doesn't provide any benefit against a creature actively attempting a {@skill Perception} check against you."
 			]
 		},
@@ -707,7 +721,7 @@
 				"skeleton"
 			],
 			"entries": [
-				"Flashes of your life become clearer and more frequent, allowing you to apply skills you developed while alive. You become trained in a skill of your choice and gain the {@skill Lore||Additional Lore} feat (Core Rulebook 258) for a {@skill Lore} subcategory tied to your life"
+				"Flashes of your life become clearer and more frequent, allowing you to apply skills you developed while alive. You become trained in a skill of your choice and gain the {@feat Additional Lore} feat for a {@skill Lore} subcategory tied to your life."
 			]
 		},
 		{
@@ -808,8 +822,7 @@
 			],
 			"prerequisites": "You were a killed by a vampire drinking your blood.",
 			"entries": [
-				"You're a newly risen vampire. You gain the {@trait undead} and {@trait vampire} traits and the basic undead benefits (page 44), and your undead hunger is for the blood of the living. Your incisors elongate; you gain a fangs unarmed attack that deals {@damage 1d6} piercing damage.",
-				"They're in the brawling group and have the {@trait grapple} and {@trait unarmed} traits. You gain revulsion and sunlight vulnerabilities detailed on page 59 and the Drink Blood ability.",
+				"You're a newly risen vampire. You gain the {@trait undead} and {@trait vampire} traits and the basic undead benefits (page 44), and your undead hunger is for the blood of the living. Your incisors elongate; you gain a fangs unarmed attack that deals {@damage 1d6} piercing damage. They're in the {@group brawling} group and have the {@trait grapple} and {@trait unarmed} traits. You gain revulsion and sunlight vulnerabilities detailed on page 59 and the Drink Blood ability.",
 				{
 					"type": "ability",
 					"activity": {
@@ -826,8 +839,7 @@
 						"You can't select another dedication feat until you have gained two other feats from the vampire archetype."
 					],
 					"entries": [
-						"You sink your fangs into that creature and drink its blood. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed}, and automatically succeeds for any of the other conditions.",
-						"If you succeed, the creature becomes {@condition drained||drained 1}, and you gain temporary HP equal to the target's level that last for 10 minutes. Further uses against the target don't increase the {@condition drained} condition or grant you more temporary HP."
+						"You sink your fangs into that creature and drink its blood. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed}, and automatically succeeds for any of the other conditions. If you succeed, the creature becomes {@condition drained||drained 1}, and you gain temporary HP equal to the target's level that last for 10 minutes. Further uses against the target don't increase the {@condition drained} condition or grant you more temporary HP."
 					]
 				}
 			],
@@ -857,12 +869,10 @@
 			],
 			"prerequisites": "You died and were animated as a husk zombie.",
 			"entries": [
-				"Despite your death and subsequent reanimation as a rotting corpse, you retain most of your mind and identity. Yet, it's always there: the hunger for the flesh and organs of the living. You gain the {@trait undead} and {@trait zombie} traits, and the basic undead benefits (page 44). Unlike a typical zombie, you're not mindless. Reduce all your Speeds by 5 feet. Your fist loses the {@trait nonlethal} trait.",
+				"Despite your death and subsequent reanimation as a rotting corpse, you retain most of your mind and identity. Yet, it's always there: the hunger for the flesh and organs of the living. You gain the {@trait undead} and {@trait zombie} traits, and the basic undead benefits (page 44). Unlike a typical zombie, you're not {@trait mindless}. Reduce all your Speeds by 5 feet. Your fist loses the {@trait nonlethal} trait.",
 				"Because of its progressing state of decay, your body requires continual maintenance to remain at its best. Each day after your rest period, your body is deteriorated due to natural decay. Additionally, some zombie abilities allow you to push for a greater effect in exchange for a chance of deteriorating your body.",
-				"While your body is deteriorated, you're {@condition slowed||slowed 1}. You can spend 10 minutes checking and repairing your joints and other weak parts of your body to recover from deterioration. You can perform these repairs as part of your daily preparations.",
-				"Because it's a natural result of your body's functions, you can't remove the {@condition slowed} condition from deterioration through any other means.",
-				"You crave the flesh of the living. You gain a jaws unarmed attack that deals {@damage 1d8} piercing damage.",
-				"Your jaws are in the brawling group and have the {@trait unarmed} trait. You can use your jaws {@action Strike} only against a creature that's {@condition grabbed} or {@condition restrained} by you."
+				"While your body is deteriorated, you're {@condition slowed||slowed 1}. You can spend 10 minutes checking and repairing your joints and other weak parts of your body to recover from deterioration. You can perform these repairs as part of your daily preparations. Because it's a natural result of your body's functions, you can't remove the {@condition slowed} condition from deterioration through any other means.",
+				"You crave the flesh of the living. You gain a jaws unarmed attack that deals {@damage 1d8} piercing damage. Your jaws are in the {@group brawling} group and have the {@trait unarmed} trait. You can use your jaws {@action Strike} only against a creature that's {@condition grabbed} or {@condition restrained} by you."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the zombie archetype."
@@ -895,8 +905,7 @@
 			],
 			"prerequisites": "{@feat Zombie Dedication|BotD}",
 			"entries": [
-				"You fight just as well on the ground as you do standing up. While you are {@condition prone}, you are always {@action Take Cover||Taking Cover} against ranged attacks, you ignore the status penalty on your attack rolls from being {@condition prone}, and you gain a +1 circumstance bonus to {@skill Athletics} checks to {@action Trip}.",
-				"You can choose to move up to half your Speed when you {@action Crawl}. You can instead move up to your full Speed when you {@action Crawl}, but if you do, you must succeed at a DC {@flatDC 6} flat check or your body deteriorates."
+				"You fight just as well on the ground as you do standing up. While you are {@condition prone}, you are always {@action Take Cover||Taking Cover} against ranged attacks, you ignore the status penalty on your attack rolls from being {@condition prone}, and you gain a +1 circumstance bonus to {@skill Athletics} checks to {@action Trip}. You can choose to move up to half your Speed when you {@action Crawl}. You can instead move up to your full Speed when you {@action Crawl}, but if you do, you must succeed at a DC {@flatDC 6} flat check or your body deteriorates."
 			]
 		},
 		{
@@ -968,7 +977,7 @@
 				"archetype"
 			],
 			"prerequisites": "{@feat Feast|BotD}",
-			"trigger": "You Feast upon a humanoid's brain. The humanoid can't be mindless (or, if you're Feasting on a corpse, can't have been mindless while alive).",
+			"trigger": "You Feast upon a humanoid's brain. The humanoid can't be {@trait mindless} (or, if you're Feasting on a corpse, can't have been mindless while alive).",
 			"entries": [
 				"You consume the brains of your foe, causing synapses long rotten to fire and enabling you to shake off your mental torpor. You gain a +1 status bonus on skill checks to {@action Recall Knowledge} for 1 hour. If the humanoid had a higher modifier to the skill check you're using to {@action Recall Knowledge} than you do, the status bonus increases to +2."
 			]
@@ -988,7 +997,7 @@
 			],
 			"prerequisites": "{@feat Zombie Dedication|BotD}",
 			"entries": [
-				"As your body continues to rot and putrefy, your senses deaden and your undead powers grow. You gain the advanced undead benefits (page 44), as well as a +1 circumstance bonus on saving throws against emotion and pain effects. While your body is deteriorated, your numbness amplifies in two ways: the circumstance bonus from this feat increases to +2, and if you roll a success on a saving throw against an emotion or pain effect, you get a critical success instead."
+				"As your body continues to rot and putrefy, your senses deaden and your undead powers grow. You gain the advanced undead benefits (page 44), as well as a +1 circumstance bonus on saving throws against {@trait emotion} and {@trait pain} effects. While your body is deteriorated, your numbness amplifies in two ways: the circumstance bonus from this feat increases to +2, and if you roll a success on a saving throw against an {@trait emotion} or {@trait pain} effect, you get a critical success instead."
 			]
 		},
 		{
@@ -1006,10 +1015,18 @@
 			],
 			"prerequisites": "{@feat Zombie Dedication|BotD}",
 			"entries": [
-				"Even when your limbs are severed, they remain a part of you. When an arm is severed from your body, it gains the {@trait minion} trait. While severed, your limb has the statistics of a familiar (Core Rulebook 217\u2013218) without any familiar or master abilities, except its Speed is 5 feet, it can't move further than 100 feet from you, it can {@action Interact} with things, and it can still make any unarmed {@action Strike||Strikes} it could have made while attached to you (usually a fist {@action Strike}). Any {@action Strike||Strikes} it makes share your multiple attack penalty and use your attack bonus and damage. If your arm is reduced to 0 HP or is ever more than 100 feet from you, it becomes inert until reattached.",
-				"The GM might allow you to detach other limbs that have unarmed attacks using the below action (for example, if you're a tiefling with Form of the Fiend, giving you a tail unarmed attack). You gain the Lay Down Arms action.",
-				"Lay Down Arms {@as 1} You pull your arm off, harmlessly severing it from your body and dropping it in an adjacent square.",
-				"You can also use this action to reattach your severed arm if it's adjacent to you; it immediately functions normally. If the detached limb was at 0 Hit Points, it takes 10 minutes to reattach it instead of a single action."
+				"Even when your limbs are severed, they remain a part of you. When an arm is severed from your body, it gains the {@trait minion} trait. While severed, your limb has the statistics of a familiar (Core Rulebook 217\u2013218) without any familiar or master abilities, except its Speed is 5 feet, it can't move further than 100 feet from you, it can {@action Interact} with things, and it can still make any unarmed {@action Strike||Strikes} it could have made while attached to you (usually a fist {@action Strike}). Any {@action Strike||Strikes} it makes share your multiple attack penalty and use your attack bonus and damage. If your arm is reduced to 0 HP or is ever more than 100 feet from you, it becomes inert until reattached. The GM might allow you to detach other limbs that have unarmed attacks using the below action (for example, if you're a tiefling with {@feat Form of the Fiend|APG}, giving you a tail unarmed attack). You gain the Lay Down Arms action.",
+				{
+					"type": "ability",
+					"name": "Lay Down Arms",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"You pull your arm off, harmlessly severing it from your body and dropping it in an adjacent square. You can also use this action to reattach your severed arm if it's adjacent to you; it immediately functions normally. If the detached limb was at 0 Hit Points, it takes 10 minutes to reattach it instead of a single action."
+					]
+				}
 			]
 		},
 		{
@@ -1022,8 +1039,9 @@
 				]
 			},
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 2} OR {@as 3}"
 			},
 			"level": 8,
 			"traits": [
@@ -1080,8 +1098,7 @@
 			],
 			"prerequisites": "{@feat Zombie Dedication|BotD}",
 			"entries": [
-				"Wounds you inflict with your unarmed attacks fester and rot, becoming infected and difficult to heal. The DC to Treat these Wounds using {@skill Medicine} increases by 5, and magically or alchemically healing these wounds requires a counteract check against your class DC or spell DC, whichever is higher.",
-				"Succeeding at any of these removes the disease. The effect also ends if the creature is healed to full Hit Points by any means."
+				"Wounds you inflict with your unarmed attacks fester and rot, becoming infected and difficult to heal. The DC to {@action treat wounds||Treat these Wounds} using {@skill Medicine} increases by 5, and magically or alchemically healing these wounds requires a counteract check against your class DC or spell DC, whichever is higher. Succeeding at any of these removes the disease. The effect also ends if the creature is healed to full Hit Points by any means."
 			]
 		},
 		{
@@ -1121,7 +1138,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Vampire Dedication, trained in {@skill Athletics}",
+			"prerequisites": "{@feat Vampire Dedication|BotD}, trained in {@skill Athletics}",
 			"entries": [
 				"You climb like a spider. You gain a climb Speed of 15 feet."
 			]
@@ -1139,9 +1156,9 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Vampire Dedication, trained in {@skill Deception} or",
+			"prerequisites": "Vampire Dedication, trained in {@skill Deception} or {@skill Diplomacy}",
 			"entries": [
-				"{@skill Diplomacy} Against humanoids, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Lie}, and to {@skill Diplomacy} checks to {@action Gather Information} and {@action Make an Impression}.",
+				"Against humanoids, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Lie}, and to {@skill Diplomacy} checks to {@action Gather Information} and {@action Make an Impression}.",
 				"Once per day, you can cast {@spell charm} as a divine innate spell using your class DC or spell DC, whichever is higher. Casting it requires staring into the target's eyes, giving the spell the {@trait visual} trait. At 5th level and every 2 levels thereafter, the spell is heightened by an additional level, to a maximum of a 9th-level {@spell charm} when you are 19th level."
 			]
 		},
@@ -1199,7 +1216,7 @@
 			],
 			"prerequisites": "{@feat Vampire Dedication|BotD}",
 			"entries": [
-				"Your nails grow into sharp claws, perfect for seizing and tearing your prey. You gain a claw unarmed attack that deals {@damage 1d4} slashing damage. Your claws are in the brawling group and have the agile, {@trait finesse}, and {@trait unarmed} traits.",
+				"Your nails grow into sharp claws, perfect for seizing and tearing your prey. You gain a claw unarmed attack that deals {@damage 1d4} slashing damage. Your claws are in the {@group brawling} group and have the {@trait agile}, {@trait finesse}, and {@trait unarmed} traits.",
 				"If you hit the same enemy with two consecutive claw {@action Strike||Strikes} in the same round, you can attempt to {@action Grapple} that same target as a free action, provided you take that action immediately after the second {@action Strike}."
 			]
 		},
@@ -1278,7 +1295,7 @@
 				"unit": "day"
 			},
 			"entries": [
-				"You turn into vapor, gaining the effects of gaseous form."
+				"You turn into vapor, gaining the effects of {@spell gaseous form}."
 			]
 		},
 		{
@@ -1300,7 +1317,7 @@
 			],
 			"prerequisites": "{@feat Vampire Dedication|BotD}",
 			"entries": [
-				"You bind your spirit to a coffin filled with soil of your homeland, making it a place of recovery. If you rest inside your coffin for 10 minutes, you regain Hit Points equal to your Constitution modifier × half your level. You can still be healed in other ways during that time, though you're {@condition unconscious} and therefore unable to heal yourself. The GM might allow you to {@action Refocus} while resting, depending on whether it's a type of Refocusing you can achieve while you slumber.",
+				"You bind your spirit to a coffin filled with soil of your homeland, making it a place of recovery. If you rest inside your coffin for 10 minutes, you regain Hit Points equal to your Constitution modifier \u00d7 half your level. You can still be healed in other ways during that time, though you're {@condition unconscious} and therefore unable to heal yourself. The GM might allow you to {@action Refocus} while resting, depending on whether it's a type of Refocusing you can achieve while you slumber.",
 				"If you would be destroyed, you instead remain near death. This doesn't change your {@condition dying} or {@condition wounded} value, and you remain {@condition unconscious}. After 1 hour, you're destroyed. If returned to your coffin before that hour is up, you avoid destruction; if you spend 1 hour resting in your coffin, you regain 1 HP and lose the {@condition dying} and {@condition wounded} conditions. You can't be healed in any other way when near death.",
 				"Your coffin can't heal you if you're staked through the chest. You can be staked only if {@condition unconscious}, and it takes three actions. You lose all benefits of this feat if your coffin is destroyed or the soil is lost. You must procure a new coffin and fill it with soil of your homeland to restore the feat's function."
 			]
@@ -1322,12 +1339,10 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Coffin Bound, Turn to Mist",
+			"prerequisites": "{@feat Coffin Bound|BotD}, {@feat Turn to Mist|BotD}",
 			"trigger": "You are reduced to 0 HP.",
 			"entries": [
-				"As you fall, your body reacts to defend itself. You Turn to Mist.",
-				"This doesn't expend a use of Turn to Mist, and you can use Mist {@action Escape} even if you've already Turned to Mist in the same day.",
-				"You take move actions to move directly toward your coffin even though you are at 0 HP, though you aren't conscious and don't have control over how you do so. While at 0 HP in this form, you are unaffected by further damage. You automatically return to your corporeal form, {@condition unconscious}, if you reach your coffin or after 1 hour when you are destroyed, whichever one comes first."
+				"As you fall, your body reacts to defend itself. You {@feat Turn to Mist|BotD}. This doesn't expend a use of Turn to Mist, and you can use Mist {@action Escape} even if you've already Turned to Mist in the same day. You take move actions to move directly toward your coffin even though you are at 0 HP, though you aren't conscious and don't have control over how you do so. While at 0 HP in this form, you are unaffected by further damage. You automatically return to your corporeal form, {@condition unconscious}, if you reach your coffin or after 1 hour when you are destroyed, whichever one comes first."
 			]
 		},
 		{
@@ -1344,7 +1359,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Manipulative Charm",
+			"prerequisites": "{@feat Manipulative Charm|BotD}",
 			"entries": [
 				"You stare into your target's eyes and enthrall them, shattering their free will. Once per day, you can cast 7th-level {@spell dominate} as a divine innate spell, using your class DC or spell DC, whichever is higher. It gains the {@trait visual} trait. At 18th level, the dominate is heightened to 8th level; at 20th level, it's heightened to 9th level. A creature that succeeds at its save is temporarily immune to your domination for 24 hours, though in most cases, you can't {@action Cast a Spell||Cast the Spell} again within 24 hours. If you are destroyed, all your {@spell dominate} spells from Dominating Gaze immediately end."
 			]
@@ -1636,7 +1651,7 @@
 			],
 			"prerequisites": "{@feat Feverish Enzymes|BotD}",
 			"entries": [
-				"Your enzymes can paralyze your foes rather than merely making it harder for them to heal their wounds. {@action Strike} with your claw or jaws. If you hit a living non-elf creature, it becomes {@condition paralyzed} unless it succeeds at a Fortitude save against your class DC or spell DC, whichever is higher. Regardless of the result of the save, the creature is temporarily immune to Paralyzing Slash for 24 hours. A creature that becomes {@condition paralyzed} can attempt a new save to end the paralysis at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+				"Your enzymes can paralyze your foes rather than merely making it harder for them to heal their wounds. {@action Strike} with your claw or jaws. If you hit a living non-{@trait elf} creature, it becomes {@condition paralyzed} unless it succeeds at a Fortitude save against your class DC or spell DC, whichever is higher. Regardless of the result of the save, the creature is temporarily immune to Paralyzing Slash for 24 hours. A creature that becomes {@condition paralyzed} can attempt a new save to end the paralysis at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
 			]
 		},
 		{
@@ -1654,9 +1669,7 @@
 			],
 			"prerequisites": "{@feat Ghoul Dedication|BotD}",
 			"entries": [
-				"Your saliva causes severe nausea and mild fever in the living, weakening them so that you can more easily finish them off.",
-				"When you critically hit a creature with your jaws, the creature is {@condition sickened||sickened 1}. This is a {@trait disease} effect.",
-				"If you are satiated, you can end your satiation to make the target {@condition sickened||sickened 1} on a regular hit instead."
+				"Your saliva causes severe nausea and mild fever in the living, weakening them so that you can more easily finish them off. When you critically hit a creature with your jaws, the creature is {@condition sickened||sickened 1}. This is a {@trait disease} effect. If you are satiated, you can end your satiation to make the target {@condition sickened||sickened 1} on a regular hit instead."
 			]
 		},
 		{
@@ -1674,8 +1687,7 @@
 			],
 			"prerequisites": "{@feat Ghoul Dedication|BotD}",
 			"entries": [
-				"You have developed a capacity to store more flesh within your gaunt body to leave yourself satiated longer. If you Consume Flesh while satiated, you become fully satiated. You stay fully satiated for 3 hours, after which you become satiated for 1 hour. If you're fully satiated when an ability would end your satiation, you cease being fully satiated but remain satiated.",
-				"If you have Grave Strength, you gain a +10-foot status bonus to your Speed when fully satiated instead of a +5-foot status bonus for being satiated."
+				"You have developed a capacity to store more flesh within your gaunt body to leave yourself satiated longer. If you Consume Flesh while satiated, you become fully satiated. You stay fully satiated for 3 hours, after which you become satiated for 1 hour. If you're fully satiated when an ability would end your satiation, you cease being fully satiated but remain satiated. If you have {@feat Grave Strength|BotD}, you gain a +10-foot status bonus to your Speed when fully satiated instead of a +5-foot status bonus for being satiated."
 			]
 		},
 		{
@@ -1732,8 +1744,7 @@
 			],
 			"prerequisites": "{@feat Ghost Flight|BotD}",
 			"entries": [
-				"You put your connection to the material world farther behind you. Your fly Speed no longer restricts the height you can fly.",
-				"When you use Ghost Flight, instead of its normal effect, you gain a +10-foot status bonus to your fly Speed for 10 minutes."
+				"You put your connection to the material world farther behind you. Your fly Speed no longer restricts the height you can fly. When you use Ghost Flight, instead of its normal effect, you gain a +10-foot status bonus to your fly Speed for 10 minutes."
 			]
 		},
 		{
@@ -1753,15 +1764,17 @@
 			],
 			"prerequisites": "You died and returned as a ghost.",
 			"entries": [
-				"You have risen as a shell of your former self, a spirit of mist and anguish. You gain the ghost, {@trait spirit}, and {@trait undead} traits, and the basic undead benefits (page 44). Your undead craving is to settle your unfinished business. You also gain the {@trait incorporeal} trait, as described on page 218, except you can't pass through solid objects unless you select the Pass Through feat. Being a ghost has the following major effects.",
-				"Floating You can float but are still tethered to the ground. Replace your land Speed with an equal fly Speed. You can't rise more than a few inches above the ground when you {@action Fly}. This means you can move above many types of difficult or hazardous terrain without moving slowly or being damaged, even though you can't fly without limit. You can {@action Leap}, {@action High Jump}, {@action Long Jump}, and take similar actions, and use your fly Speed for any calculations that would normally require your land Speed.",
-				"Items You can transmute physical items to make them part of your incorporeal form. This requires spending 10 minutes with the items within reach, during which you transform the items into part of your form; you can return items you already have incorporated to a corporeal state at the same time. The items retain all their runes and other abilities, need to be invested normally if they have the {@trait invested} trait, and need to be worn, held, or stowed appropriately. Once you've incorporated the items, you and other incorporeal creatures can use them normally\u2014you can {@action Interact} with them, {@action Release} them, and so on. Your incorporated weapons gain the benefits of the ghost touch property rune, allowing you to use them normally against both corporeal and incorporeal creatures.",
-				"Incorporated items become corporeal again only if you transmute them back or are destroyed, in which case, they drop to the ground under you.",
-				"Attacks Your unarmed attacks become magical and deal negative damage instead of their normal type.",
-				"Strength Unlike most incorporeal creatures, your Strength modifier is not \u20135; you keep the same Strength score you had before you became a ghost, though you can only attempt Strength-based skill checks\u2014typically {@skill Athletics} checks\u2014against other incorporeal creatures, as normal for an incorporeal creature. Against incorporeal creatures, use your Strength normally to determine the results of {@skill Athletics} checks, {@action Strike||Strikes} with melee weapons, and any other checks or damage rolls dependent on Strength.",
-				"Ties that Bind When you become a ghost, work with your GM to choose a bound site and unfinished business, both of which matter for your character's story, as well as some ghost archetype feats.",
-				"Your bound site tethers you to the physical world and is typically either a location important to you in life or the place where you died. Unfinished business keeps you from passing to the afterlife. If someone resolves your unfinished business, you decide whether to accept the change and pass on, or to fight it. If you pass on, you get a few minutes to say your goodbyes, and then move into the River of Souls and the afterlife.",
-				"Your character ceases to be. If you fight the change, you remain, though you and the GM might determine a new unfinished business. If you are physically destroyed, you cease your existence as a ghost but still might not be able to pass on to the afterlife if your unfinished business is incomplete. In this liminal state, you might come across strange energies and become another sort of creature, or anchor to a summoner and become an eidolon."
+				"You have risen as a shell of your former self, a spirit of mist and anguish. You gain the ghost, {@trait spirit}, and {@trait undead} traits, and the basic undead benefits (page 44). Your undead craving is to settle your unfinished business. You also gain the {@trait incorporeal} trait, as described on page 218, except you can't pass through solid objects unless you select the {@feat Pass Through|BotD} feat. Being a ghost has the following major effects.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Floating} You can float but are still tethered to the ground. Replace your land Speed with an equal fly Speed. You can't rise more than a few inches above the ground when you {@action Fly}. This means you can move above many types of difficult or hazardous terrain without moving slowly or being damaged, even though you can't fly without limit. You can {@action Leap}, {@action High Jump}, {@action Long Jump}, and take similar actions, and use your fly Speed for any calculations that would normally require your land Speed.",
+						"{@b Items} You can transmute physical items to make them part of your incorporeal form. This requires spending 10 minutes with the items within reach, during which you transform the items into part of your form; you can return items you already have incorporated to a corporeal state at the same time. The items retain all their runes and other abilities, need to be invested normally if they have the {@trait invested} trait, and need to be worn, held, or stowed appropriately. Once you've incorporated the items, you and other incorporeal creatures can use them normally\u2014you can {@action Interact} with them, {@action Release} them, and so on. Your incorporated weapons gain the benefits of the ghost touch property rune, allowing you to use them normally against both corporeal and incorporeal creatures. Incorporated items become corporeal again only if you transmute them back or are destroyed, in which case, they drop to the ground under you.",
+						"{@b Attacks} Your unarmed attacks become magical and deal negative damage instead of their normal type.",
+						"{@b Strength} Unlike most incorporeal creatures, your Strength modifier is not \u20135; you keep the same Strength score you had before you became a ghost, though you can only attempt Strength-based skill checks\u2014typically {@skill Athletics} checks\u2014against other incorporeal creatures, as normal for an incorporeal creature. Against incorporeal creatures, use your Strength normally to determine the results of {@skill Athletics} checks, {@action Strike||Strikes} with melee weapons, and any other checks or damage rolls dependent on Strength.",
+						"{@b Ties that Bind} When you become a ghost, work with your GM to choose a bound site and unfinished business, both of which matter for your character's story, as well as some ghost archetype feats. Your bound site tethers you to the physical world and is typically either a location important to you in life or the place where you died. Unfinished business keeps you from passing to the afterlife. If someone resolves your unfinished business, you decide whether to accept the change and pass on, or to fight it. If you pass on, you get a few minutes to say your goodbyes, and then move into the River of Souls and the afterlife. Your character ceases to be. If you fight the change, you remain, though you and the GM might determine a new unfinished business. If you are physically destroyed, you cease your existence as a ghost but still might not be able to pass on to the afterlife if your unfinished business is incomplete. In this liminal state, you might come across strange energies and become another sort of creature, or anchor to a summoner and become an eidolon."
+					]
+				}
 			],
 			"leadsTo": [
 				"Frightful Moan|BotD",
@@ -1968,9 +1981,8 @@
 			],
 			"prerequisites": "good alignment, able to cast spells using spell slots, able to cast at least one necromancy spell, expert in {@skill Religion}",
 			"entries": [
-				"You've studied techniques allowing you to blend so-called hallowed necromancy into your own spellcasting to bolster the living and destroy the undead. You gain the hallowed ground focus spell (page 25). It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity (Core Rulebook 300). You can {@action Refocus} by meditating or praying to connect yourself to conduits of positive energy. Focus spells from the hallowed necromancer archetype have the same tradition as your spell slots.",
-				"Casting spells that create, heal, or otherwise aid or promote undead is anathema to you, as is cooperation with undead. Using negative energy isn't anathema, as it serves a natural purpose, but twisting that negative energy for creation is blasphemous to you. If you perform acts that are anathema to your principles, you lose access to all feats from this archetype.",
-				"These abilities can be regained only with an {@ritual atone} ritual."
+				"You've studied techniques allowing you to blend so-called hallowed necromancy into your own spellcasting to bolster the living and destroy the undead. You gain the {@spell hallowed ground|BotD} focus spell. It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity. You can {@action Refocus} by meditating or praying to connect yourself to conduits of positive energy. Focus spells from the hallowed necromancer archetype have the same tradition as your spell slots.",
+				"Casting spells that create, heal, or otherwise aid or promote undead is anathema to you, as is cooperation with undead. Using negative energy isn't anathema, as it serves a natural purpose, but twisting that negative energy for creation is blasphemous to you. If you perform acts that are anathema to your principles, you lose access to all feats from this archetype. These abilities can be regained only with an {@ritual atone} ritual."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the hallowed necromancer archetype."
@@ -1999,7 +2011,7 @@
 			],
 			"prerequisites": "{@feat Hallowed Necromancer Dedication|BotD}",
 			"entries": [
-				"You've expanded your focus spellcasting to techniques used by clerics and wizards. You gain an additional focus spell, either the necromancer school spell call of the grave (Core Rulebook 406) or the initial domain spell of the death domain, death's call (Core Rulebook 391). Increase the number of Focus Points in your focus pool by 1."
+				"You've expanded your focus spellcasting to techniques used by clerics and wizards. You gain an additional focus spell, either the necromancer school spell {@spell call of the grave} or the initial domain spell of the death domain, {@spell death's call}. Increase the number of Focus Points in your focus pool by 1."
 			],
 			"special": [
 				"You can select this feat a second time, choosing the other initial focus spell."
@@ -2020,7 +2032,7 @@
 			],
 			"prerequisites": "{@feat Hallowed Necromancer Dedication|BotD}",
 			"entries": [
-				"Add chill touch, death ward, disrupt undead, disrupting weapons, holy cascade, magic stone (Advanced Player's Guide 222), and sunburst to your spell list. These are all necromancy spells for you, even if they normally have a different spell school. You can either prepare these spells or add them to your repertoire just like the spells normally on your tradition's spell list. When you gain this feat, you can retrain existing spells to replace them with ones on this list.",
+				"Add {@spell chill touch}, {@spell death ward}, {@spell disrupt undead}, {@spell disrupting weapons}, {@spell holy cascade}, {@spell magic stone|APG}, and {@spell sunburst} to your spell list. These are all {@trait necromancy} spells for you, even if they normally have a different spell school. You can either prepare these spells or add them to your repertoire just like the spells normally on your tradition's spell list. When you gain this feat, you can retrain existing spells to replace them with ones on this list.",
 				"In addition, your knowledge of the conduits to the Positive Energy Plane allows you more flexibility with these spells. Choose one of these two benefits.",
 				{
 					"type": "list",
@@ -2065,7 +2077,7 @@
 			],
 			"prerequisites": "{@feat Hallowed Necromancer Dedication|BotD}, necromancer initial school spell or death initial domain spell",
 			"entries": [
-				"You dig deeper into the magical tools found in wizard schools and divine domains. You gain an advanced focus spell, either the necromancer advanced school spell life siphon (Core Rulebook 407) or the advanced domain spell of the death domain, eradicate undeath (Core Rulebook 392). Increase the number of Focus Points in your focus pool by 1. If you choose life siphon, it triggers when you expend spell slots from your class even if they aren't wizard spell slots."
+				"You dig deeper into the magical tools found in wizard schools and divine domains. You gain an advanced focus spell, either the necromancer advanced school spell {@spell life siphon} or the advanced domain spell of the death domain, {@spell eradicate undeath}. Increase the number of Focus Points in your focus pool by 1. If you choose life siphon, it triggers when you expend spell slots from your class even if they aren't wizard spell slots."
 			],
 			"special": [
 				"You can select this feat a second time, choosing the other advanced focus spell."
@@ -2086,7 +2098,7 @@
 			],
 			"prerequisites": "{@feat Hallowed Necromancer Dedication|BotD}",
 			"entries": [
-				"You learn how to create a luminous reservoir of positive energy that you can use to punish undead who dare attack you. You gain the domain spell positive luminance (Core Rulebook 394). It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity."
+				"You learn how to create a luminous reservoir of positive energy that you can use to punish undead who dare attack you. You gain the domain spell {@spell positive luminance}. It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity."
 			]
 		},
 		{
@@ -2127,11 +2139,12 @@
 				"archetype",
 				"dedication"
 			],
-			"prerequisites": "trained in {@skill Occultism} or {@skill Religion}, worships",
+			"prerequisites": "trained in {@skill Occultism} or {@skill Religion}, worships {@deity Pharasma} or a psychopomp usher",
 			"entries": [
-				"{@deity Pharasma} or a psychopomp usher You can take 10 minutes to emblazon {@deity Pharasma}'s holy sigil\u2014a spiraling comet that represents the winding path a soul takes through its existence\u2014upon a shield, tabard, banner, or other prominent object that your wear or wield. The symbol doesn't fade until 1 year has passed, but if you emblazon the symbol again, any symbol you previously emblazoned and any symbol already emblazoned on that item instantly disappears. The item becomes a religious symbol of {@deity Pharasma} and can be used as a divine focus while emblazoned.",
+				"You can take 10 minutes to emblazon {@deity Pharasma}'s holy sigil\u2014a spiraling comet that represents the winding path a soul takes through its existence\u2014upon a shield, tabard, banner, or other prominent object that your wear or wield. The symbol doesn't fade until 1 year has passed, but if you emblazon the symbol again, any symbol you previously emblazoned and any symbol already emblazoned on that item instantly disappears. The item becomes a religious symbol of {@deity Pharasma} and can be used as a divine focus while emblazoned.",
 				"Whenever an undead creature or captive soul is within 100 feet of this object, the spiral glows, shedding dim blue light in a 10-foot radius. If the creature is hiding or the soul is {@condition hidden}, it must succeed at a {@skill Stealth} check against your {@skill Perception} DC to fool the sigil and prevent the spiral from glowing.",
-				"In addition, you can cast {@spell disrupt undead} as a divine innate cantrip at will. As normal, a cantrip is automatically heightened to half your level rounded up. You gain access to the {@action Cast a Spell} activity if you didn't have it already. You're trained in divine spell attack rolls and spell DCs. Your key spellcasting ability for these spells is Wisdom. When you have at least two other feats from this archetype, the spiral glows with bright light in a 10-foot radius (and dim light for the next 10 feet). Feats that require a creature or object to be in the light of your spiral function whether it's in the bright or dim light."
+				"In addition, you can cast {@spell disrupt undead} as a divine innate cantrip at will. As normal, a cantrip is automatically heightened to half your level rounded up. You gain access to the {@action Cast a Spell} activity if you didn't have it already. You're trained in divine spell attack rolls and spell DCs. Your key spellcasting ability for these spells is Wisdom.",
+				"When you have at least two other feats from this archetype, the spiral glows with bright light in a 10-foot radius (and dim light for the next 10 feet). Feats that require a creature or object to be in the light of your spiral function whether it's in the bright or dim light."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the soul warden archetype."
@@ -2184,8 +2197,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Soul Sight Your familiar gains lifesense with a range of 30 feet.",
-						"Spirit Touch Your familiar can touch incorporeal creatures. If you have the spell delivery master ability from your familiar, any spell the familiar delivers with it gains the benefits of the ghost touch property rune."
+						"{@b Soul Sight} Your familiar gains {@ability lifesense} with a range of 30 feet.",
+						"{@b Spirit Touch} Your familiar can touch {@trait incorporeal} creatures. If you have the spell delivery master ability from your familiar, any spell the familiar delivers with it gains the benefits of the {@item ghost touch} property rune."
 					]
 				}
 			],
@@ -2220,7 +2233,7 @@
 			},
 			"requirements": "Your spiral is glowing.",
 			"entries": [
-				"The light flows from your sigil of {@deity Pharasma} to shatter the bonds imprisoning a soul. You attempt to counteract a {@trait possession} effect, or an effect, object, or spell that is imprisoning a soul (such as bind soul, a soul gem, or a devourer's devoured souls). You must be within 60 feet of the possessed creature or object, or of the receptacle imprisoning the soul. Your counteract level is half your level rounded up, and your counteract modifier is your divine spell DC \u2013 10. If the attempt fails, you can't use Liberate Soul against that particular effect again unless circumstances have changed drastically, as determined by the GM."
+				"The light flows from your sigil of {@deity Pharasma} to shatter the bonds imprisoning a soul. You attempt to counteract a {@trait possession} effect, or an effect, object, or spell that is imprisoning a soul (such as {@spell bind soul}, a soul gem, or a devourer's devoured souls). You must be within 60 feet of the possessed creature or object, or of the receptacle imprisoning the soul. Your counteract level is half your level rounded up, and your counteract modifier is your divine spell DC \u2013 10. If the attempt fails, you can't use Liberate Soul against that particular effect again unless circumstances have changed drastically, as determined by the GM."
 			]
 		},
 		{
@@ -2276,7 +2289,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Augury Your familiar can glimpse the strands of fate to give you a cryptic clue regarding your future. Your familiar can cast {@spell augury} once per day using your magical tradition and spell DC. You must be at least 8th level to select this ability."
+						"{@b Augury} Your familiar can glimpse the strands of fate to give you a cryptic clue regarding your future. Your familiar can cast {@spell augury} once per day using your magical tradition and spell DC. You must be at least 8th level to select this ability."
 					]
 				}
 			]
@@ -2355,7 +2368,7 @@
 			],
 			"prerequisites": "{@feat Undead Slayer Dedication|BotD}",
 			"entries": [
-				"You establish a safe house where you can prepare for your hunt. The sanctum is roughly the size of a 20-foot cube. This sanctum is in a location you have access to and can be part of a larger structure, such as the basement of a temple or {@condition hidden} room of a library. Setting up or moving your sanctum takes a week of downtime. Your sanctum protects objects and people inside it from magical detection and the prying eyes of undead. This has the effects of nondetection, using your {@skill Religion} modifier for the counteract DC and half your level rounded up for the counteract level. Additionally, undead attempting to locate the entrance to your sanctum via mundane {@skill Perception} must succeed against either your {@skill Religion} DC or the normal DC to find the sanctum, whichever is higher."
+				"You establish a safe house where you can prepare for your hunt. The sanctum is roughly the size of a 20-foot cube. This sanctum is in a location you have access to and can be part of a larger structure, such as the basement of a temple or hidden room of a library. Setting up or moving your sanctum takes a week of downtime. Your sanctum protects objects and people inside it from magical detection and the prying eyes of undead. This has the effects of nondetection, using your {@skill Religion} modifier for the counteract DC and half your level rounded up for the counteract level. Additionally, undead attempting to locate the entrance to your sanctum via mundane {@skill Perception} must succeed against either your {@skill Religion} DC or the normal DC to find the sanctum, whichever is higher."
 			]
 		},
 		{
@@ -2399,9 +2412,7 @@
 			],
 			"prerequisites": "{@feat Undead Slayer Dedication|BotD}",
 			"entries": [
-				"You've dedicated yourself to studying ancient techniques and memorized minor prayers against undead to swiftly dispatch them. Make a {@action Strike} against a creature you know is undead. This counts as two attacks when calculating your multiple attack penalty.",
-				"If this {@action Strike} hits, you deal one extra die of positive damage, with the same die size as the weapon or unarmed attack you used.",
-				"Any further {@action Strike||Strikes} you make against the same creature before the start of your next turn using the same weapon or unarmed attack deal extra positive damage equal to the number of weapon dice. As normal, the positive damage harms only undead and creatures with negative healing.",
+				"You've dedicated yourself to studying ancient techniques and memorized minor prayers against undead to swiftly dispatch them. Make a {@action Strike} against a creature you know is undead. This counts as two attacks when calculating your multiple attack penalty. If this {@action Strike} hits, you deal one extra die of positive damage, with the same die size as the weapon or unarmed attack you used. Any further {@action Strike||Strikes} you make against the same creature before the start of your next turn using the same weapon or unarmed attack deal extra positive damage equal to the number of weapon dice. As normal, the positive damage harms only undead and creatures with negative healing.",
 				"If you're at least 10th level, increase this to two extra dice, and if you're at least 18th level, increase it to three extra dice."
 			],
 			"leadsTo": [
@@ -2427,8 +2438,7 @@
 			],
 			"prerequisites": "{@feat Undead Slayer Dedication|BotD}, trained in {@skill Intimidation}",
 			"entries": [
-				"Your very presence chills creatures of the night down to their core and you can use the spiritual power and faithful life force of religious verses to frighten even mindless undead.",
-				"Attempt to {@action Demoralize} an undead target using your {@skill Religion} modifier instead of your {@skill Intimidation} modifier if it's higher. If you use your {@skill Religion} modifier, the {@action Demoralize} action loses the {@trait emotion} and {@trait mental} traits, as your faith connects to the undead on an instinctual level."
+				"Your very presence chills creatures of the night down to their core and you can use the spiritual power and faithful life force of religious verses to frighten even mindless undead. Attempt to {@action Demoralize} an undead target using your {@skill Religion} modifier instead of your {@skill Intimidation} modifier if it's higher. If you use your {@skill Religion} modifier, the {@action Demoralize} action loses the {@trait emotion} and {@trait mental} traits, as your faith connects to the undead on an instinctual level."
 			],
 			"leadsTo": [
 				"Slayer's Presence|BotD"
@@ -2449,7 +2459,7 @@
 			],
 			"prerequisites": "{@feat Undead Slayer Dedication|BotD}",
 			"entries": [
-				"Whether it's wooden stakes, holy water, or more unusual tools, you always have just the right thing to handle an undead's unusual weaknesses and vulnerabilities. You gain the Prescient Planner and Prescient Consumable feats (Advanced Player's Guide 208). When using Prescient Planner specifically to pull out an item you need to deal with an undead's weakness or vulnerability, you can pull out the item as a 2-action activity to remove your backpack (or similar container) and draw the item, rather than taking 1 minute. If you have the Hunter's Sanctum feat, you keep your sanctum well stocked with the basics and can spend 1 hour in your sanctum refreshing your supplies in order to meet the requirements for Prescient Planner, even if you haven't been able to purchase goods."
+				"Whether it's wooden stakes, {@item holy water}, or more unusual tools, you always have just the right thing to handle an undead's unusual weaknesses and vulnerabilities. You gain the {@feat Prescient Planner|APG} and {@feat Prescient Consumable|APG} feats. When using Prescient Planner specifically to pull out an item you need to deal with an undead's weakness or vulnerability, you can pull out the item as a 2-action activity to remove your backpack (or similar container) and draw the item, rather than taking 1 minute. If you have the {@feat Hunter's Sanctum|BotD} feat, you keep your sanctum well stocked with the basics and can spend 1 hour in your sanctum refreshing your supplies in order to meet the requirements for Prescient Planner, even if you haven't been able to purchase goods."
 			]
 		},
 		{
@@ -2468,8 +2478,8 @@
 			],
 			"prerequisites": "{@feat Slayer's Strike|BotD}",
 			"entries": [
-				"You carry scraps of materials dangerous to undead and can apply them to your weapon. When you use Slayer's {@action Strike}, before making the {@action Strike}, you can choose either the ghost touch property rune or a precious material: cold iron, darkwood, or silver. Any {@action Strike} that gets extra positive damage from this use of Slayer's {@action Strike} also gets the benefits of the rune or counts as that material.",
-				"At 14th level, add adamantine and mithral to the list of materials you can choose from."
+				"You carry scraps of materials dangerous to undead and can apply them to your weapon. When you use Slayer's Strike, before making the {@action Strike}, you can choose either the {@item ghost touch} property rune or a precious material: {@item cold iron weapon (generic)||cold iron}, {@item darkwood weapon (generic)||darkwood}, or {@item silver weapon (generic)||silver}. Any Strike that gets extra positive damage from this use of Slayer's Strike also gets the benefits of the rune or counts as that material.",
+				"At 14th level, add {@item adamantine weapon (generic)||adamantine} and {@item mithral weapon (generic)||mithral} to the list of materials you can choose from."
 			]
 		},
 		{
@@ -2505,7 +2515,7 @@
 			],
 			"prerequisites": "able to create or control undead; {@class cleric} with a negative font, {@class oracle|apg} of {@class oracle|apg|bones|bones}, or {@class wizard||necromancer|necromancy} {@class wizard}",
 			"entries": [
-				"Your presence has a bolstering effect on your undead minions. Undead creatures under your control and within a 30‑foot emanation around you gain a +2 status bonus to saving throws to resist positive damage and to Will saving throws to resist effects that would make them {@condition controlled}."
+				"Your presence has a bolstering effect on your undead minions. Undead creatures under your control and within a 30\u2011foot emanation around you gain a +2 status bonus to saving throws to resist positive damage and to Will saving throws to resist effects that would make them {@condition controlled}."
 			],
 			"special": [
 				"This feat has the trait matching your spellcasting tradition."
@@ -2525,8 +2535,8 @@
 			],
 			"prerequisites": "able to create or control undead; {@class cleric} with a negative font, {@class oracle|apg} of {@class oracle|apg|bones|bones}, or {@class wizard||necromancer|necromancy} {@class wizard}",
 			"entries": [
-				"Necromantic energy demonstrates your power over undead, creating a demeanor that commands their fear and respect. Undead creatures can immediately sense your Necromancer's Visage and tend to act accordingly. If you take a {@condition hostile} action against an undead creature, it becomes permanently immune to your Necromancer's Visage, and your Necromancer's Visage ends. You can spend 10 minutes to restore your Necromancer's Visage, though any creatures that became permanently immune remain so.",
-				"Each time an undead creature 2 or more levels lower than you attacks you, it must attempt a Will save against your spell DC. If you're also affected by sanctuary or a similar effect, only one affects the attacker (you choose which).",
+				"Necromantic energy demonstrates your power over undead, creating a demeanor that commands their fear and respect. Undead creatures can immediately sense your Necromancer's Visage and tend to act accordingly. If you take a {@quickref hostile action||2|hostile actions} against an undead creature, it becomes permanently immune to your Necromancer's Visage, and your Necromancer's Visage ends. You can spend 10 minutes to restore your Necromancer's Visage, though any creatures that became permanently immune remain so.",
+				"Each time an undead creature 2 or more levels lower than you attacks you, it must attempt a Will save against your spell DC. If you're also affected by {@spell sanctuary} or a similar effect, only one affects the attacker (you choose which).",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2620,7 +2630,7 @@
 			],
 			"prerequisites": "{@feat Reanimator Dedication|BotD}",
 			"entries": [
-				"No means of creating or ruling the undead is beyond your grasp, even those of magical traditions not your own. You learn either the eyes of the dead or subjugate undead focus spell (page 35). If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by meditating over the earthly remains of a dead sentient creature. The rules for focus spells appear on page 300 of the Core Rulebook. Focus spells granted by the reanimator archetype are from the same tradition as those used to meet the archetype's prerequisite."
+				"No means of creating or ruling the undead is beyond your grasp, even those of magical traditions not your own. You learn either the {@spell eyes of the dead|BotD} or {@spell subjugate undead|BotD} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by meditating over the earthly remains of a dead sentient creature. Focus spells granted by the reanimator archetype are from the same tradition as those used to meet the archetype's prerequisite."
 			],
 			"special": [
 				"You can select this feat more than once. Each time, you learn a different spell and your focus pool increases by 1 Focus Point."
@@ -2695,7 +2705,7 @@
 			],
 			"prerequisites": "{@feat Deathly Secrets|BotD}",
 			"entries": [
-				"Your undead secrets grow stronger still. You learn either the malignant sustenance (Core Rulebook 394) or grasping grave (Core Rulebook 404) focus spell. Your focus pool increases by 1 point."
+				"Your undead secrets grow stronger still. You learn either the {@spell malignant sustenance} or {@spell grasping grave} focus spell. Your focus pool increases by 1 point."
 			],
 			"special": [
 				"You can select this feat more than once. Each time, you learn a different spell and your focus pool increases by 1 Focus Point."
@@ -2717,7 +2727,7 @@
 			],
 			"prerequisites": "{@feat Deathly Secrets|BotD}",
 			"entries": [
-				"You have reached the pinnacle of the reanimator's craft: the ability to raise nearly any corpse or skeleton as a gruesome mockery of the creature it once was. You learn the shambling horror focus spell (see below). Your focus pool increases by 1 Focus Point."
+				"You have reached the pinnacle of the reanimator's craft: the ability to raise nearly any corpse or skeleton as a gruesome mockery of the creature it once was. You learn the {@spell shambling horror|BotD} focus spell. Your focus pool increases by 1 Focus Point."
 			]
 		}
 	]
