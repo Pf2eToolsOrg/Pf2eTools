@@ -54,8 +54,7 @@
 			],
 			"prerequisites": "{@feat Horizon Walker Dedication|APG}",
 			"entries": [
-				"Your time spent in the {@condition hostile} parts of the world has inured you to extreme climates. In your favored terrain, you gain resistance equal to half your level to all environmental damage and are affected by temperature effects as though they were one step less severe (incredible heat or cold becomes extreme, extreme heat or cold becomes severe, and so on)",
-				"When other creatures {@action Follow the Expert} with you as a guide in your favored terrain, they too treat temperature effects as one step less severe."
+				"Your time spent in the hostile parts of the world has inured you to extreme climates. In your favored terrain, you gain resistance equal to half your level to all environmental damage and are affected by temperature effects as though they were one step less severe (incredible heat or cold becomes extreme, extreme heat or cold becomes severe, and so on). When other creatures {@action Follow the Expert} with you as a guide in your favored terrain, they too treat temperature effects as one step less severe."
 			]
 		},
 		{
@@ -74,9 +73,7 @@
 			],
 			"trigger": "An ally within 30 feet {@action Cast a Spell|CRB|Casts a Spell}.",
 			"entries": [
-				"You use your performances to supplement an ally's spellcasting, providing magical energy for their spells.",
-				"Attempt a {@skill Performance} check, {@table DCs by Level|CRB|using a very high DC for the ally's level}, and either spend a Focus Point (if the triggering spell is a focus spell) or expend a spell slot at least 1 level higher than the triggering spell.",
-				"If you succeed at the {@skill Performance} check, your ally's spell doesn't cost the Focus Point or spell slot."
+				"You use your performances to supplement an ally's spellcasting, providing magical energy for their spells. Attempt a {@skill Performance} check, {@table DCs by Level|CRB|using a very high DC for the ally's level}, and either spend a Focus Point (if the triggering spell is a focus spell) or expend a spell slot at least 1 level higher than the triggering spell. If you succeed at the {@skill Performance} check, your ally's spell doesn't cost the Focus Point or spell slot."
 			]
 		},
 		{
@@ -636,7 +633,7 @@
 				"elf"
 			],
 			"entries": [
-				"Long-lived elves have seen civilizations rise and fall, often at the hands of outside forces. As a result, they have developed a wariness of others who might seek to influence or control them. You've been trained to resist such manipulation, gaining a +2 circumstance bonus to saving throws against effects that would make you {@condition controlled}, such as dominate, and to {@skill Perception} checks to {@action Sense Motive} when trying to determine if a creature is under the influence of such an effect. When you roll a success on a saving throw against such an effect, you get a critical success instead."
+				"Long-lived elves have seen civilizations rise and fall, often at the hands of outside forces. As a result, they have developed a wariness of others who might seek to influence or control them. You've been trained to resist such manipulation, gaining a +2 circumstance bonus to saving throws against effects that would make you {@condition controlled}, such as {@spell dominate}, and to {@skill Perception} checks to {@action Sense Motive} when trying to determine if a creature is under the influence of such an effect. When you roll a success on a saving throw against such an effect, you get a critical success instead."
 			]
 		},
 		{
@@ -667,7 +664,7 @@
 			],
 			"prerequisites": "{@feat Assassin Dedication|APG}",
 			"entries": [
-				"All your {@action Strike|CRB|Strikes} against a creature you have Marked for Death have the {@trait death} trait, causing the mark to be instantly killed when reduced to 0 Hit Points. When killed in this way, attempts to communicate with it, return it to life, turn it into an undead, or otherwise disturb its afterlife fail unless the effect's counteract level is higher than half your level when you killed the creature (rounded up), or originates from an artifact or a deity."
+				"All your {@action Strike|CRB|Strikes} against a creature you have {@feat Assassin Dedication|APG|Marked For Death} have the {@trait death} trait, causing the mark to be instantly killed when reduced to 0 Hit Points. When killed in this way, attempts to communicate with it, return it to life, turn it into an undead, or otherwise disturb its afterlife fail unless the effect's counteract level is higher than half your level when you killed the creature (rounded up), or originates from an artifact or a deity."
 			]
 		},
 		{
@@ -824,7 +821,7 @@
 				"unit": "hour",
 				"freq": 1
 			},
-			"trigger": "You fail a check against a trap, such as a {@skill Thievery} check to Disable the trap or a Reflex save to avoid its effects.",
+			"trigger": "You fail a check against a trap, such as a {@skill Thievery} check to {@action Disable a Device||Disable} the trap or a Reflex save to avoid its effects.",
 			"entries": [
 				"You are more than just skillful; your drive to find the secrets of the past manifests as a strange kind of luck. Reroll the failed check and use the new result."
 			]
@@ -1090,7 +1087,7 @@
 			],
 			"prerequisites": "expert in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
 			"entries": [
-				"You rarely misidentify an item. When using {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} checks to {@action Identify Magic}, if you roll a critical failure, you get a failure instead. If you would misidentify a cursed item because you roll a success but not a critical success (Gamemastery Guide 90), you simply can't identify it instead."
+				"You rarely misidentify an item. When using {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} checks to {@action Identify Magic}, if you roll a critical failure, you get a failure instead. If you would misidentify a cursed item because you roll a success but not a critical success, you simply can't identify it instead."
 			]
 		},
 		{
@@ -1103,7 +1100,7 @@
 			],
 			"prerequisites": "enigma muse",
 			"entries": [
-				"You can procure information with confidence. Whenever you {@action Recall Knowledge} using any skill (including {@skill Lore||Bardic Lore}), you can forgo rolling your check to instead receive a result of 10 + your proficiency bonus (don't apply any other bonuses, penalties, or modifiers). As long as you are an expert in a skill, you meet the prerequisites for the {@feat Automatic Knowledge} skill feat in that skill, even if you don't have Assurance in that skill."
+				"You can procure information with confidence. Whenever you {@action Recall Knowledge} using any skill (including {@skill Lore||Bardic Lore}), you can forgo rolling your check to instead receive a result of 10 + your proficiency bonus (don't apply any other bonuses, penalties, or modifiers). As long as you are an expert in a skill, you meet the prerequisites for the {@feat Automatic Knowledge} skill feat in that skill, even if you don't have {@feat Assurance} in that skill."
 			],
 			"leadsTo": [
 				"Enigma's Knowledge|APG"
@@ -1166,7 +1163,7 @@
 			"traits": [
 				"swashbuckler"
 			],
-			"trigger": "A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
+			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"entries": [
 				"You swat a foe that leaves an opening. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action.",
 				"This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
@@ -1183,7 +1180,7 @@
 			],
 			"prerequisites": "tenets of evil",
 			"entries": [
-				"Your presence as an avatar of evil makes your foes more susceptible to terror and makes it almost impossible for them to shake off fear when you are near. Enemies within 15 feet of you take a \u20131 circumstance penalty to saving throws against fear. In addition, an enemy that ends its turn within 15 feet of you can't reduce the value of its {@condition frightened} condition below 1."
+				"Your presence as an avatar of evil makes your foes more susceptible to terror and makes it almost impossible for them to shake off fear when you are near. Enemies within 15 feet of you take a \u20131 circumstance penalty to saving throws against {@trait fear}. In addition, an enemy that ends its turn within 15 feet of you can't reduce the value of its {@condition frightened} condition below 1."
 			]
 		},
 		{
@@ -1297,7 +1294,7 @@
 			"prerequisites": "trained in {@skill Athletics}",
 			"entries": [
 				"You rush forward, moving enemies aside to reach your foe.",
-				"You {@action Stride}, attempting to move through your enemies' spaces and make a melee {@action Strike}. Roll an {@skill Athletics} check and compare the result to the Fortitude DC of each creature whose space you attempt to move through during your {@action Stride}, moving through its space on a success but ending your movement before entering its space on a failure. You can use Barreling Charge to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride}, as long as you have the corresponding movement type."
+				"You {@action Stride}, attempting to move through your enemies' spaces, and make a melee {@action Strike}. Roll an {@skill Athletics} check and compare the result to the Fortitude DC of each creature whose space you attempt to move through during your {@action Stride}, moving through its space on a success but ending your movement before entering its space on a failure. You can use Barreling Charge to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride}, as long as you have the corresponding movement type."
 			]
 		},
 		{
@@ -1695,8 +1692,7 @@
 			"prerequisites": "{@feat Beastmaster Dedication|APG}",
 			"entries": [
 				"You can enter a trance that allows you to briefly inhabit the body of one of your animal companions and share its senses.",
-				"You gain the focus spell {@spell beastmaster trance|APG}.",
-				"Increase the number of Focus Points in your focus pool by 1."
+				"You gain the focus spell {@spell beastmaster trance|APG}. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -1818,7 +1814,7 @@
 				"oracle"
 			],
 			"entries": [
-				"Your mind and body can, for a short time, withstand the devastation of overdrawing your curse. When you would become overwhelmed by your curse, you can forestall the effects for up to 1 minute. On each of your turns during that time, you can cast one revelation spell granted by your mystery (but not domain spells, spells from Diverse Mystery, or other revelation spells you gained from other abilities) without spending Focus Points or taking any further {@trait negative} effects.",
+				"Your mind and body can, for a short time, withstand the devastation of overdrawing your curse. When you would become overwhelmed by your curse, you can forestall the effects for up to 1 minute. On each of your turns during that time, you can cast one revelation spell granted by your mystery (but not domain spells, spells from {@feat Diverse Mystery|APG}, or other revelation spells you gained from other abilities) without spending Focus Points or taking any further {@trait negative} effects.",
 				"At the end of the minute, the durations of any revelation spells you cast during that time end, you take the normal effects from being overwhelmed by your curse, and you must attempt a DC 40 Fortitude save.",
 				{
 					"type": "successDegree",
@@ -1857,7 +1853,7 @@
 				"aasimar"
 			],
 			"entries": [
-				"Your freshly spilled blood is sanctified, and ingesting it causes effects similar to those of holy water (Core Rulebook 571)",
+				"Your freshly spilled blood is sanctified, and ingesting it causes effects similar to those of {@item holy water}",
 				"Whenever a fiend, undead, or creature with a weakness to good damage drinks your blood or deals piercing or slashing damage to you with jaws, fangs, or a similar attack, that creature takes {@damage 1d6} good damage. You gain a +4 circumstance bonus to {@skill Crafting} checks to {@action Craft} holy water using your own blood as one of the ingredients."
 			]
 		},
@@ -2096,7 +2092,7 @@
 				"duskwalker"
 			],
 			"entries": [
-				"You have a powerful connection to the Boneyard and its courts, granting you the ability to travel to and from the Boneyard. You gain plane shift as a divine innate spell. You can cast it twice per week. This can be used only to travel to the Boneyard or from the Boneyard to the Material Plane. Due to your unique connection to the Boneyard, your body serves as the focus, and you don't require a tuning fork."
+				"You have a powerful connection to the Boneyard and its courts, granting you the ability to travel to and from the Boneyard. You gain {@spell plane shift} as a divine innate spell. You can cast it twice per week. This can be used only to travel to the Boneyard or from the Boneyard to the Material Plane. Due to your unique connection to the Boneyard, your body serves as the focus, and you don't require a tuning fork."
 			]
 		},
 		{
@@ -2326,7 +2322,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Choose a creature within 30 feet that can see you to become {@condition frightened 1}. This effect has the emotion, fear, {@trait mental}, and {@trait visual} traits."
+						"Choose a creature within 30 feet that can see you to become {@condition frightened 1}. This effect has the {@trait emotion}, {@trait fear}, {@trait mental}, and {@trait visual} traits."
 					]
 				}
 			]
@@ -2531,9 +2527,8 @@
 			],
 			"prerequisites": "at least one arcane or occult innate spell gained from a gnome heritage or gnome ancestry feat",
 			"entries": [
-				"You've learned a few magical techniques for getting yourself both into and out of trouble {@condition unnoticed}.",
-				"You gain misdirection and silence as 2nd-level arcane or occult innate spells. The tradition of these spells must match the tradition you use for your gnome ancestry options.",
-				"You can cast each spell once per day and can target only yourself."
+				"You've learned a few magical techniques for getting yourself both into and out of trouble unnoticed.",
+				"You gain {@spell misdirection} and {@spell silence} as 2nd-level arcane or occult innate spells. The tradition of these spells must match the tradition you use for your gnome ancestry options. You can cast each spell once per day and can target only yourself."
 			]
 		},
 		{
@@ -3199,8 +3194,7 @@
 			},
 			"entries": [
 				"You have learned rites or meditations that enable you to perceive minor, {@condition invisible} spirits within a place. Choose {@skill Nature}, {@skill Occultism}, or {@skill Religion} when you select this feat.",
-				"{@skill Nature} allows you to contact the spirits of nature that form leshies, who are born of pure life essence rather than spiritual energy and can answer questions about natural features like the location of nearby water or plant life.",
-				"{@skill Religion} reveals the presence of angelic, demonic, or other spirits in service to divine beings, who provide information about sources of powerful positive or negative energy, sacred or profane influences, or the presence of undead. {@skill Occultism} allows you to contact lingering spirits, psychic echoes of the departed dead, and spirits from beyond reality, who tell you about things like strange auras, effects, or the presence of unnatural occult beings.",
+				"{@skill Nature} allows you to contact the spirits of nature that form leshies, who are born of pure life essence rather than spiritual energy and can answer questions about natural features like the location of nearby water or plant life. {@skill Religion} reveals the presence of angelic, demonic, or other spirits in service to divine beings, who provide information about sources of powerful positive or negative energy, sacred or profane influences, or the presence of undead. {@skill Occultism} allows you to contact lingering spirits, psychic echoes of the departed dead, and spirits from beyond reality, who tell you about things like strange auras, effects, or the presence of unnatural occult beings.",
 				"Spend 10 minutes and attempt a check to {@action Recall Knowledge} with the chosen skill; the DC is determined by the GM (usually a very high DC for the level of the highest-level creature you might encounter in the area). If you're legendary in the chosen skill, you can use this feat once per hour, instead of only once per day, but you can't use it again on any area that overlaps a previous area.",
 				{
 					"type": "successDegree",
@@ -3601,9 +3595,9 @@
 			"traits": [
 				"halfling"
 			],
-			"prerequisites": "{@action Step} Lively",
+			"prerequisites": "{@feat Step Lively|APG}",
 			"entries": [
-				"You dart under the legs of your enemies in combat. You can end a successful {@action Tumble Through} action in a Large or larger enemy's space. Also, when using the {@action Step} Lively feat, you can {@action Step} into the triggering enemy's space. The enemy must have limbs or otherwise leave you enough room for this maneuver, as determined by the GM. For instance, you could share space with a giant or dragon, but not an ooze."
+				"You dart under the legs of your enemies in combat. You can end a successful {@action Tumble Through} action in a Large or larger enemy's space. Also, when using the {@feat Step Lively|APG} feat, you can {@action Step} into the triggering enemy's space. The enemy must have limbs or otherwise leave you enough room for this maneuver, as determined by the GM. For instance, you could share space with a giant or dragon, but not an ooze."
 			],
 			"leadsTo": [
 				"Toppling Dance|APG"
@@ -3674,7 +3668,7 @@
 				"swashbuckler"
 			],
 			"entries": [
-				"Your graceful attacks are especially powerful. When you score a critical hit with an {@trait agile} or {@trait finesse} melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an {@trait agile} or {@trait finesse} melee weapon that doesn't have the {@trait deadly} trait, it gains the deadly <d8> trait instead."
+				"Your graceful attacks are especially powerful. When you score a critical hit with an {@trait agile} or {@trait finesse} melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an {@trait agile} or {@trait finesse} melee weapon that doesn't have the {@trait deadly} trait, it gains the {@trait deadly||deadly d8} trait instead."
 			]
 		},
 		{
@@ -3686,7 +3680,7 @@
 				"monk"
 			],
 			"entries": [
-				"You have honed your body to attack with lethal focus. Your unarmed attacks gain the {@trait deadly <d10>} trait, or you increase their {@trait deadly} trait to {@damage d10} if the unarmed attack is already deadly with a smaller die size."
+				"You have honed your body to attack with lethal focus. Your unarmed attacks gain the {@trait deadly d10} trait, or you increase their {@trait deadly} trait to {@damage d10} if the unarmed attack is already deadly with a smaller die size."
 			]
 		},
 		{
@@ -4072,7 +4066,7 @@
 				"evocation",
 				"sonic"
 			],
-			"prerequisites": "inspire courage",
+			"prerequisites": "{@spell inspire courage}",
 			"entries": [
 				"Your inspire courage lets loose a discordant shriek that imbues your allies' attacks with powerful sonic reverberations. While your allies are affected by your inspire courage, their weapon {@action Strike|CRB|Strikes} and unarmed attacks deal an additional {@damage 1d6} sonic damage."
 			]
@@ -4303,7 +4297,7 @@
 				"wizard"
 			],
 			"entries": [
-				"You sense magical dangers. When using the Detect Magic exploration activity, you can roll initiative twice and use the better result so long as at least one opponent has a {@trait magical} effect or magic item and is in range of your detect magic."
+				"You sense magical dangers. When using the {@action Detect Magic} exploration activity, you can roll initiative twice and use the better result so long as at least one opponent has a {@trait magical} effect or magic item and is in range of your {@spell detect magic}."
 			]
 		},
 		{
@@ -4428,7 +4422,7 @@
 				"kobold"
 			],
 			"entries": [
-				"Your inborn arcane power manifests as your exemplar's most time-honored spells. Choose one 1st-level spell and one 2nd-level spell from those listed for a dragon spellcaster of your draconic exemplar's type, as presented on pages 104\u2013126 of the Bestiary (such as alarm, blur, invisibility, and true strike for a black dragon exemplar). You can cast each of these spells once per day as arcane innate spells. You gain the trained proficiency rank in arcane spell attack rolls and spell DCs, and your key spellcasting ability is Charisma."
+				"Your inborn arcane power manifests as your exemplar's most time-honored spells. Choose one 1st-level spell and one 2nd-level spell from those listed for a dragon spellcaster of your draconic exemplar's type, as presented on pages 104\u2013126 of the Bestiary (such as {@spell alarm}, {@spell blur}, {@spell invisibility}, and {@spell true strike} for a black dragon exemplar). You can cast each of these spells once per day as arcane innate spells. You gain the trained proficiency rank in arcane spell attack rolls and spell DCs, and your key spellcasting ability is Charisma."
 			],
 			"leadsTo": [
 				"Elite Dracomancer|APG",
@@ -4659,7 +4653,7 @@
 			],
 			"requirements": "You wield two melee weapons, one in each hand.",
 			"entries": [
-				"You split your attacks. Make two melee {@action Strike|CRB|Strikes}, one with each required weapon, each against a different foe. If the second {@action Strike} is made with a non-agile weapon, it takes a \u20132 penalty.",
+				"You split your attacks. Make two melee {@action Strike|CRB|Strikes}, one with each required weapon, each against a different foe. If the second {@action Strike} is made with a non-{@trait agile} weapon, it takes a \u20132 penalty.",
 				"Increase your multiple attack penalty only after attempting both {@action Strike|CRB|Strikes}."
 			]
 		},
@@ -4678,7 +4672,7 @@
 			],
 			"prerequisites": "{@feat Dual-Weapon Dedication|APG}",
 			"entries": [
-				"When you lash out with both weapons, you leave no room for the target to escape your attack. When you use Double Slice, if you miss with both {@action Strike|CRB|Strikes}, choose one of the two weapons and apply the effects of a hit with that weapon. You can't choose a weapon if your attack roll with that weapon was a critical failure, meaning you still miss entirely if both attack rolls were critical failures."
+				"When you lash out with both weapons, you leave no room for the target to escape your attack. When you use {@feat Double Slice}, if you miss with both {@action Strike|CRB|Strikes}, choose one of the two weapons and apply the effects of a hit with that weapon. You can't choose a weapon if your attack roll with that weapon was a critical failure, meaning you still miss entirely if both attack rolls were critical failures."
 			]
 		},
 		{
@@ -4889,7 +4883,7 @@
 				"duskwalker"
 			],
 			"entries": [
-				"Your connection to psychopomps gives you the power to glimpse the near future and protect corpses from the ravages of undeath. You can cast {@spell augury} and gentle repose each once per day as 2nd-level divine innate spells."
+				"Your connection to psychopomps gives you the power to glimpse the near future and protect corpses from the ravages of undeath. You can cast {@spell augury} and {@spell gentle repose} each once per day as 2nd-level divine innate spells."
 			]
 		},
 		{
@@ -4942,7 +4936,7 @@
 			],
 			"entries": [
 				"By endlessly repeating a motif, you implant an earworm, a memorable song that repeats over and over again in your allies' heads, preparing them to respond to it later. Choose a composition cantrip and spend 10 minutes repeating a melody, chant, speech, series of motions, or a similar performance that embodies that cantrip. This activity gains the traits appropriate to the type of performance. You implant the earworm within all allies who can see or hear you (as appropriate for the type of performance) for the entire activity.",
-				"Once you've created the earworm, you can attempt a {@skill Performance} check as a free action to activate it. This check uses a very hard DC of a level equal to that of the highestlevel target of the earworm present at the time of activation (Core Rulebook 503\u2013504). On a success, you cast the cantrip on all allies who learned the earworm and can perceive your performance; on a failure, the earworm is corrupted and lost. Because it is based on the earlier repetitions, you can't use further free actions like lingering performance or inspire heroics to modify the activated earworm. Allies forget the earworm after it is activated, if you spend 10 minutes to implant another earworm, or during your next daily preparations, whichever comes first."
+				"Once you've created the earworm, you can attempt a {@skill Performance} check as a free action to activate it. This check uses a very hard DC of a level equal to that of the highest\u2013level target of the earworm present at the time of activation (Core Rulebook 503\u2013504). On a success, you cast the cantrip on all allies who learned the earworm and can perceive your performance; on a failure, the earworm is corrupted and lost. Because it is based on the earlier repetitions, you can't use further free actions like {@spell lingering composition} or {@spell inspire heroics} to modify the activated earworm. Allies forget the earworm after it is activated, if you spend 10 minutes to implant another earworm, or during your next daily preparations, whichever comes first."
 			]
 		},
 		{
@@ -5060,7 +5054,7 @@
 				"concentrate"
 			],
 			"prerequisites": "{@feat Well-Versed|APG}",
-			"trigger": "An ally benefiting from one of your composition spells is subject to an effect with the auditory, illusion, linguistic, {@trait sonic}, or {@trait visual} trait.",
+			"trigger": "An ally benefiting from one of your composition spells is subject to an effect with the {@trait auditory}, {@trait illusion}, {@trait linguistic}, {@trait sonic}, or {@trait visual} trait.",
 			"entries": [
 				"You tweak the properties of your composition spell to convey a bit of your defensive knowledge. All allies affected by your composition spell gain your +1 circumstance bonus from Well-Versed until the start of your next turn. Teaching your allies also bolsters your own skills; your personal circumstance bonus from Well-Versed also increases to +2 until the start of your next turn."
 			]
@@ -5226,7 +5220,7 @@
 			],
 			"prerequisites": "{@feat Dracomancer|APG}",
 			"entries": [
-				"Your magic rivals that of lesser dragons. Choose one 3rd-level spell and one 4th-level spell from those listed for a dragon spellcaster of your draconic exemplar's type, as on pages 104\u2013126 of the Bestiary (such as paralyze and stinking cloud for a black dragon exemplar). You can cast each of these spells once per day as arcane innate spells."
+				"Your magic rivals that of lesser dragons. Choose one 3rd-level spell and one 4th-level spell from those listed for a dragon spellcaster of your draconic exemplar's type, as on pages 104\u2013126 of the Bestiary (such as {@spell paralyze} and {@spell stinking cloud} for a black dragon exemplar). You can cast each of these spells once per day as arcane innate spells."
 			]
 		},
 		{
@@ -5613,9 +5607,7 @@
 				"investigator"
 			],
 			"entries": [
-				"You are so suspicious of everyone you meet that you keep mental notes on how to defeat them all\u2014even your own allies.",
-				"After interacting with a creature for at least 1 minute, you automatically {@action Pursue a Lead|APG} with that creature as the subject.",
-				"You can have any number of such leads at any given time, and when you {@action Pursue a Lead|APG} again, you don't give up any of these automatic subjects."
+				"You are so suspicious of everyone you meet that you keep mental notes on how to defeat them all\u2014even your own allies. After interacting with a creature for at least 1 minute, you automatically {@action Pursue a Lead|APG} with that creature as the subject. You can have any number of such leads at any given time, and when you {@action Pursue a Lead|APG} again, you don't give up any of these automatic subjects."
 			]
 		},
 		{
@@ -5683,7 +5675,7 @@
 			],
 			"prerequisites": "{@feat Assassin Dedication|APG}",
 			"entries": [
-				"When you {@action Strike} a {@condition flat-footed} foe with a weapon that has the backstabber weapon trait, you deal 2 extra precision damage instead of 1. If the weapon is a +3 weapon, you deal 4 extra precision damage instead of 2."
+				"When you {@action Strike} a {@condition flat-footed} foe with a weapon that has the {@trait backstabber} weapon trait, you deal 2 extra precision damage instead of 1. If the weapon is a +3 weapon, you deal 4 extra precision damage instead of 2."
 			]
 		},
 		{
@@ -5957,7 +5949,7 @@
 			"prerequisites": "{@feat Familiar Master Dedication|APG}, able to cast spells",
 			"requirements": "You have line of effect to your familiar.",
 			"entries": [
-				"Under your tutelage, your familiar has grown attuned to the {@condition hidden} currents of the world and can serve as a conduit for your magic. If the next action you use is to {@action Cast a Spell} that has a range, the spell uses the familiar as its origin point."
+				"Under your tutelage, your familiar has grown attuned to the hidden currents of the world and can serve as a conduit for your magic. If the next action you use is to {@action Cast a Spell} that has a range, the spell uses the familiar as its origin point."
 			]
 		},
 		{
@@ -6105,8 +6097,7 @@
 				"swashbuckler"
 			],
 			"entries": [
-				"You take advantage of your foe's openings with uncanny odds.",
-				"When you make an Opportune Riposte, roll twice on the attack roll and take the better result."
+				"You take advantage of your foe's openings with uncanny odds. When you make an {@action Opportune Riposte|APG}, roll twice on the attack roll and take the better result."
 			]
 		},
 		{
@@ -6283,8 +6274,8 @@
 			],
 			"prerequisites": "{@feat Swashbuckler Dedication|APG}",
 			"entries": [
-				"You've learned how to land daring blows when you have panache. You gain the {@classFeature precise strike|swashbuckler|apg|1} class feature but you deal 1 addition damage on a hit and {@dice 1d6} damage on a finisher. This damage doesn't increase as you gain levels. In addition, you gain the Basic Finisher action.",
-				"Basic Finisher {@as 1} (finisher, swashbuckler) You make a graceful, deadly attack. Make a {@action Strike}; if you hit and your weapon qualifies for precise strike, you deal the full {@dice 1d6} damage from precise strike."
+				"You've learned how to land daring blows when you have panache. You gain the {@classFeature precise strike|swashbuckler|apg|1} class feature but you deal 1 additional damage on a hit and {@dice 1d6} damage on a finisher. This damage doesn't increase as you gain levels. In addition, you gain the Basic Finisher action.",
+				"Basic Finisher {@as 1} ({@trait finisher|APG}, {@trait swashbuckler|APG}) You make a graceful, deadly attack. Make a {@action Strike}; if you hit and your weapon qualifies for precise strike, you deal the full {@dice 1d6} damage from precise strike."
 			]
 		},
 		{
@@ -6456,7 +6447,7 @@
 			],
 			"prerequisites": "precise strike",
 			"entries": [
-				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged {@action Strike|CRB|Strikes} you make with a thrown weapon within that weapon's first range increment. The thrown weapon must be an {@trait agile} or {@trait finesse} weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
+				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged {@action Strike|CRB|Strikes} you make with a {@trait thrown} weapon within that weapon's first range increment. The thrown weapon must be an {@trait agile} or {@trait finesse} weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
 			]
 		},
 		{
@@ -6500,8 +6491,7 @@
 				"halfling"
 			],
 			"entries": [
-				"You are adept at disguising coded messages as folksy idioms.",
-				"Using slang, jokes, halfling loanwords, and the like, you convey a simple message consisting of three basic words (such as \"Danger assassin flee\" or \"Meet me moonrise\"). Your intended listener can attempt a {@skill Perception} check to discern the message (DC 20 if an ally, DC 15 if a halfling ally, DC 10 if a halfling ally with Folksy Patter). Eavesdroppers can also attempt a {@skill Perception} check against your {@skill Deception} DC to discern your meaning. Any bonuses or penalties to {@skill Perception} checks to {@action Sense Motive} apply."
+				"You are adept at disguising coded messages as folksy idioms. Using slang, jokes, halfling loanwords, and the like, you convey a simple message consisting of three basic words (such as \"Danger assassin flee\" or \"Meet me moonrise\"). Your intended listener can attempt a {@skill Perception} check to discern the message (DC 20 if an ally, DC 15 if a halfling ally, DC 10 if a halfling ally with Folksy Patter). Eavesdroppers can also attempt a {@skill Perception} check against your {@skill Deception} DC to discern your meaning. Any bonuses or penalties to {@skill Perception} checks to {@action Sense Motive} apply."
 			]
 		},
 		{
@@ -6519,7 +6509,7 @@
 			],
 			"requirements": "You used your previous action to make a melee {@action Strike} that missed.",
 			"entries": [
-				"Even in the face of failure you press the attack, determined to succeed. Make a {@action Strike} with the same weapon, adding the effects of the backswing and forceful weapon traits."
+				"Even in the face of failure you press the attack, determined to succeed. Make a {@action Strike} with the same weapon, adding the effects of the {@trait backswing} and {@trait forceful} weapon traits."
 			]
 		},
 		{
@@ -6622,8 +6612,7 @@
 				"freq": 1
 			},
 			"entries": [
-				"You've learned to forestall the effects of your curse somewhat.",
-				"If the next action you use is to cast a revelation spell, the severity of your curse doesn't increase."
+				"You've learned to forestall the effects of your curse somewhat. If the next action you use is to cast a {@trait revelation} spell, the severity of your curse doesn't increase."
 			]
 		},
 		{
@@ -6678,7 +6667,10 @@
 			],
 			"entries": [
 				"Part of your body has an obvious, fiendish appearance. Your hands end in razor-sharp claws, you have hooves instead of feet, sharp teeth fill your mouth, or a whipping tail extends from your spine. You gain your choice of one of the following unarmed attacks. The attack is in the {@group brawling} group and has the listed damage die and traits.",
-				"Claw {@damage 1d4} slashing (agile, finesse, unarmed, versatile piercing) Hoof {@damage 1d6} bludgeoning (finesse, unarmed) Jaws {@damage 1d6} piercing (finesse, unarmed) Tail {@damage 1d4} bludgeoning (agile, finesse, unarmed)"
+				"Claw {@damage 1d4} slashing (agile, finesse, unarmed, versatile piercing)",
+				"Hoof {@damage 1d6} bludgeoning (finesse, unarmed)",
+				"Jaws {@damage 1d6} piercing (finesse, unarmed)",
+				"Tail {@damage 1d4} bludgeoning (agile, finesse, unarmed)"
 			],
 			"special": [
 				"You can select this feat only at 1st level, and you can't retrain into or out of this feat, nor can you change the type of attack you gained."
@@ -6784,8 +6776,7 @@
 				"duskwalker"
 			],
 			"entries": [
-				"Your connection to the Boneyard ensures that your blows strike true against spectral beings. Your weapon and unarmed attack {@action Strike|CRB|Strikes} against incorporeal creatures become magical.",
-				"If they are already magical, they instead gain the effects of a ghost touch property rune."
+				"Your connection to the Boneyard ensures that your blows strike true against spectral beings. Your weapon and unarmed attack {@action Strike|CRB|Strikes} against incorporeal creatures become magical. If they are already magical, they instead gain the effects of a {@item ghost touch} property rune."
 			]
 		},
 		{
@@ -7107,7 +7098,7 @@
 			],
 			"prerequisites": "{@feat Archaeologist Dedication|APG}, {@feat Magical Scholastics|APG}",
 			"entries": [
-				"You broaden your magical studies, allowing you to find the right path, detect objects, and conceal those objects from unscrupulous rivals. You can cast {@spell augury}, locate, and nondetection as occult innate spells, each once per day. You can cast this {@spell nondetection} spell only on an object, and it is automatically heightened to the same spell level as your cantrips from Magical Scholastics."
+				"You broaden your magical studies, allowing you to find the right path, detect objects, and conceal those objects from unscrupulous rivals. You can cast {@spell augury}, {@spell locate}, and {@spell nondetection} as occult innate spells, each once per day. You can cast this {@spell nondetection} spell only on an object, and it is automatically heightened to the same spell level as your cantrips from Magical Scholastics."
 			]
 		},
 		{
@@ -7150,7 +7141,7 @@
 			],
 			"prerequisites": "{@feat Divine Evolution} or {@feat Occult Evolution}",
 			"entries": [
-				"Your magical blood is rich with spiritual essence, and this infusion within you allows your spells to be fully effective against incorporeal creatures, spirits, and creatures on the Ethereal Plane. Your spells have the effects of a ghost touch property rune. They can target or affect a creature projecting its consciousness (such as via project image) or possessing another creature, even if its body is elsewhere, though you must know about the possession or projection and choose to do so. Your spells can affect creatures on the Ethereal Plane, though this doesn't grant you any particular ability to locate them."
+				"Your magical blood is rich with spiritual essence, and this infusion within you allows your spells to be fully effective against incorporeal creatures, spirits, and creatures on the Ethereal Plane. Your spells have the effects of a {@item ghost touch} property rune. They can target or affect a creature projecting its consciousness (such as via project image) or possessing another creature, even if its body is elsewhere, though you must know about the possession or projection and choose to do so. Your spells can affect creatures on the {@plane Ethereal Plane}, though this doesn't grant you any particular ability to locate them."
 			]
 		},
 		{
@@ -7294,7 +7285,7 @@
 			"entries": [
 				"Through your heritage, you can replicate some of a hag's magic.",
 				"Choose one common spell of 4th level or lower from those available to a coven, including the spells contributed to a coven by a hag of your mother's type. You can cast this spell once per day as a 4th-level occult innate spell.",
-				"Spells available to all covens are augury, charm, clairaudience, clairvoyance, dream message, and illusory disguise. The eligible spells granted by the most prominent types of hag are: Sea Hag {@spell acid arrow}, {@spell water walk}; Green Hag {@spell entangle}, outcast's curse, {@spell wall of thorns}; Annis Hag {@spell earthbind}; Night Hag {@spell nightmare}."
+				"Spells available to all covens are {@spell augury}, {@spell charm}, {@spell clairaudience}, {@spell clairvoyance}, {@spell dream message}, and {@spell illusory disguise}. The eligible spells granted by the most prominent types of hag are: Sea Hag {@spell acid arrow}, {@spell water walk}; Green Hag {@spell entangle}, {@spell outcast's curse}, {@spell wall of thorns}; Annis Hag {@spell earthbind}; Night Hag {@spell nightmare}."
 			]
 		},
 		{
@@ -7344,7 +7335,7 @@
 				"open"
 			],
 			"prerequisites": "{@feat Mauler Dedication|APG}",
-			"requirements": "You're wielding a non-finesse melee weapon in two hands.",
+			"requirements": "You're wielding a non-{@trait finesse} melee weapon in two hands.",
 			"entries": [
 				"You smash the ground with your weapon, knocking nearby creatures to the ground. Choose a square within your reach, including your own space. If there's a foe in the chosen square, {@action Strike} that foe with the required weapon.",
 				"Then attempt to {@action Trip} every foe in the chosen square plus each square adjacent to that square, ignoring {@action Trip}'s requirement that you have a hand free. This counts as three attacks toward your multiple attack penalty, but the penalty doesn't increase until after you've made the {@action Strike}, if any, and all the {@action Trip} attempts."
@@ -7393,8 +7384,7 @@
 			],
 			"prerequisites": "{@feat Beastmaster Dedication|APG}",
 			"entries": [
-				"You can heal your animal companion's wounds. You can cast {@spell heal animal} as a beastmaster focus spell.",
-				"Increase the number of Focus Points in your focus pool by 1."
+				"You can heal your animal companion's wounds. You can cast {@spell heal animal} as a beastmaster focus spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -7427,7 +7417,7 @@
 				"unit": "round",
 				"freq": 1
 			},
-			"trigger": "You craft an elixir of life using {@action Quick Alchemy}, and that elixir is at least 2 levels lower than your advanced alchemy level.",
+			"trigger": "You craft an {@item elixir of life (generic)||elixir of life} using {@action Quick Alchemy}, and that elixir is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"By adding a special catalyst, you transform a healing elixir into a topical projectile. You grant the elixir the {@trait bomb} trait.",
 				"If you throw an elixir of life bomb at a willing target, you hit even on a failure, though not on a critical failure. If your {@action Strike} with this elixir bomb hits a living target, the target regains Hit Points as if it had consumed the elixir. On a critical success, the target also gains the elixir's item bonus to saving throws against diseases and poisons for 1 minute."
@@ -7466,7 +7456,7 @@
 			],
 			"prerequisites": "trained in {@skill Nature}, {@feat Natural Medicine}",
 			"entries": [
-				"You can create remedies and other herbal products. You gain the basic alchemy benefits (page 150), though they apply only for herbal items: alchemical items with the {@trait healing} trait, plus {@item antidote (generic)||antidote} and {@item antiplague (generic)||antiplauge}. You gain batches of infused reagents per day equal to your level or half your level if you didn't make your daily preparations in the wilderness. Your advanced alchemy level for creating these is 1 and doesn't increase on its own.",
+				"You can create remedies and other herbal products. You gain the basic alchemy benefits (page 150), though they apply only for herbal items: alchemical items with the {@trait healing} trait, plus {@item antidote (generic)||antidote} and {@item antiplague (generic)||antiplague}. You gain batches of infused reagents per day equal to your level or half your level if you didn't make your daily preparations in the wilderness. Your advanced alchemy level for creating these is 1 and doesn't increase on its own.",
 				"You become an expert in {@skill Nature} and can use {@skill Nature} instead of {@skill Crafting} to {@action Craft} herbal items. You don't need to be trained in {@skill Crafting} or have the {@feat Alchemical Crafting} feat to do so, and you can use {@item healer's tools} instead of alchemist's tools."
 			],
 			"special": [
@@ -7565,7 +7555,7 @@
 			"prerequisites": "expert in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; {@feat Vigilante Dedication|apg}",
 			"entries": [
 				"You've learned to hide the magical auras of your gear. During your daily preparations, you carefully tweak any or all of your magic items to appear non-magical. Objects adjusted in this way remain so until your next preparations.",
-				"A spellcaster using detect magic or read aura must succeed at a {@skill Perception} check against your {@skill Deception} DC to see through your obfuscations."
+				"A spellcaster using {@spell detect magic} or {@spell read aura} must succeed at a {@skill Perception} check against your {@skill Deception} DC to see through your obfuscations."
 			]
 		},
 		{
@@ -7699,8 +7689,7 @@
 			],
 			"prerequisites": "warden spells",
 			"entries": [
-				"Your recollection of monsters is magically enhanced by luck.",
-				"You gain the monster {@spell hunter's luck|apg} warden spell. Increase the number of Focus Points in your focus pool by 1."
+				"Your recollection of monsters is magically enhanced by luck. You gain the {@spell hunter's luck|apg} warden spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -7713,7 +7702,7 @@
 			],
 			"prerequisites": "warden spells",
 			"entries": [
-				"You are so focused on your hunted prey that you can see it clearly even beyond the limits of your senses. You gain the."
+				"You are so focused on your hunted prey that you can see it clearly even beyond the limits of your senses. You gain the {spell hunter's vision|APG} warden spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -7810,8 +7799,7 @@
 			],
 			"prerequisites": "{@feat Predictive Purchase|APG}",
 			"entries": [
-				"Even when impossible, you always have exactly what you need.",
-				"You can use {@feat Prescient Planner|APG} even if you have already used it after purchasing goods, and you can {@action Interact} to draw the item as a single action instead of a 2-action activity. In addition, five times per day, you can use {@feat Prescient Planner|APG} to pull out a common consumable item up to 6 levels lower than your level."
+				"Even when impossible, you always have exactly what you need. You can use {@feat Prescient Planner|APG} even if you have already used it after purchasing goods, and you can {@action Interact} to draw the item as a single action instead of a 2-action activity. In addition, five times per day, you can use {@feat Prescient Planner|APG} to pull out a common consumable item up to 6 levels lower than your level."
 			]
 		},
 		{
@@ -7822,7 +7810,7 @@
 			"traits": [
 				"swashbuckler"
 			],
-			"prerequisites": "Opportune Riposte",
+			"prerequisites": "{@action Opportune Riposte|APG}",
 			"entries": [
 				"Your ripostes can deflect attacks back at their source. You can use Opportune Riposte with a trigger of \"A foe outside of your reach critically fails an attack roll against you\" in addition to its usual trigger. When you use Opportune Riposte with this new trigger against a ranged attack, your {@action Strike} deflects some of the triggering effect back toward its source. Compare the result of your attack roll to the AC of the triggering foe. On a hit, you deal the normal amount of damage for your {@action Strike}, but the damage type changes to that of the triggering attack.",
 				"For instance, if you used Opportune Riposte to deflect a ray of frost, your {@action Strike} would deal cold damage instead of its normal damage type."
@@ -8009,7 +7997,7 @@
 			"prerequisites": "{@feat Mature Beastmaster Companion|APG}",
 			"entries": [
 				"Your mature animal companions continue to grow and develop.",
-				"They each become nimble or savage animal companions (your choice, choose for each companion, including those that become mature after you take this feat), gaining additional capabilities determined by the type of companion (Core Rulebook 214)."
+				"They each become {@companionAbility nimble} or {@companionAbility savage} animal companions (your choice, choose for each companion, including those that become mature after you take this feat), gaining additional capabilities determined by the type of companion."
 			],
 			"leadsTo": [
 				"Specialized Beastmaster Companion|APG"
@@ -8108,7 +8096,7 @@
 				"swashbuckler"
 			],
 			"entries": [
-				"You can react whenever a foe leaves a gap in their defenses. At the start of each enemy's turn, you gain an extra reaction you can use only during that turn to perform an Opportune Riposte, or an {@action Attack of Opportunity (Swashbuckler)|APG|Attack of Opportunity} if you have that reaction."
+				"You can react whenever a foe leaves a gap in their defenses. At the start of each enemy's turn, you gain an extra reaction you can use only during that turn to perform an {@action Opportune Riposte|APG}, or an {@action Attack of Opportunity (Swashbuckler)|APG|Attack of Opportunity} if you have that reaction."
 			]
 		},
 		{
@@ -8166,8 +8154,7 @@
 			],
 			"prerequisites": "trained in {@skill Medicine}",
 			"entries": [
-				"You have practice combating plague, and your patients are less likely to succumb to the same disease again for a time.",
-				"When you successfully Treat a Disease on someone and they fully recover from the disease, they gain a +2 circumstance bonus to saving throws against that same disease for 1 week."
+				"You have practice combating plague, and your patients are less likely to succumb to the same disease again for a time. When you successfully {@action Treat Disease||Treat a Disease} on someone and they fully recover from the disease, they gain a +2 circumstance bonus to saving throws against that same disease for 1 week."
 			]
 		},
 		{
@@ -8244,7 +8231,7 @@
 			},
 			"trigger": "You are attacked by a foe.",
 			"entries": [
-				"The magic within you manifests as a natural reaction to threats. You gain the effects of mirror image but with two images instead of three. The tradition of this action matches the tradition of your gnome ancestry options."
+				"The magic within you manifests as a natural reaction to threats. You gain the effects of {@spell mirror image} but with two images instead of three. The tradition of this action matches the tradition of your gnome ancestry options."
 			]
 		},
 		{
@@ -8261,7 +8248,7 @@
 				"manipulate",
 				"rage"
 			],
-			"prerequisites": "{@feat Acute Scent} or precise or imprecise scent",
+			"prerequisites": "{@feat Acute Scent} or precise or imprecise {@ability scent}",
 			"entries": [
 				"You trust your instincts and your sense of smell, using all of your senses to pinpoint your opponent's location. Make a melee {@action Strike} against an opponent that isn't hiding its scent with an effect like negate aroma. This attack ignores any flat check required due to the target being {@condition concealed} or {@condition hidden}."
 			]
@@ -8326,7 +8313,7 @@
 			],
 			"prerequisites": "{@feat Investigator Dedication|APG}",
 			"entries": [
-				"You play out battles in your head, allowing you to strike when the time is right. You gain the {@action Devise a Stratagem|APG} action; however, when you substitute its result for your attack roll, you can't use your Intelligence modifier in place of your Strength or Dexterity modifier. You also can't use your Intelligence modifier on other rolls from abilities that expand {@action Devise a Stratagem|APG}, such as the Athletic Strategist feat."
+				"You play out battles in your head, allowing you to strike when the time is right. You gain the {@action Devise a Stratagem|APG} action; however, when you substitute its result for your attack roll, you can't use your Intelligence modifier in place of your Strength or Dexterity modifier. You also can't use your Intelligence modifier on other rolls from abilities that expand {@action Devise a Stratagem|APG}, such as the {@feat Athletic Strategist|APG} feat."
 			]
 		},
 		{
@@ -8624,7 +8611,7 @@
 			],
 			"prerequisites": "{@feat Clue Them All In|APG}",
 			"entries": [
-				"You spend 1 minute briefing up to four allies about one lead you're pursuing. Those allies gain the same circumstance bonus you do from {@action Pursue a Lead|APG} to checks to investigate that lead. This bonus lasts until you cease pursing that lead or for 1 day, whichever comes first. This doesn't confer any other benefits of pursuing a lead, such as adding the circumstance bonus to your saves with Detective's Readiness."
+				"You spend 1 minute briefing up to four allies about one lead you're pursuing. Those allies gain the same circumstance bonus you do from {@action Pursue a Lead|APG} to checks to investigate that lead. This bonus lasts until you cease pursing that lead or for 1 day, whichever comes first. This doesn't confer any other benefits of pursuing a lead, such as adding the circumstance bonus to your saves with {@action Detective's Readiness|APG}."
 			]
 		},
 		{
@@ -8643,9 +8630,7 @@
 			],
 			"prerequisites": "{@feat Mature Beastmaster Companion|APG}, you have multiple animal companions",
 			"entries": [
-				"You can have up to two animal companions active at once.",
-				"However, when you do, it's slightly more difficult to Command them. If you don't Command either of your companions, one of the two (your choice) can still use 1 action on your turn to {@action Stride} or {@action Strike}, as per Mature Beastmaster Companion, but not both. When you {@action Command an Animal}, either choose one of the companions to take 2 actions, as normal, or else both companions can take 1 action to {@action Stride} or {@action Strike}.",
-				"Either way, you can't {@action Command an Animal} to make either companion act again until your next turn."
+				"You can have up to two animal companions active at once. However, when you do, it's slightly more difficult to Command them. If you don't Command either of your companions, one of the two (your choice) can still use 1 action on your turn to {@action Stride} or {@action Strike}, as per Mature Beastmaster Companion, but not both. When you {@action Command an Animal}, either choose one of the companions to take 2 actions, as normal, or else both companions can take 1 action to {@action Stride} or {@action Strike}. Either way, you can't {@action Command an Animal} to make either companion act again until your next turn."
 			]
 		},
 		{
@@ -8664,7 +8649,7 @@
 			"prerequisites": "trained in {@skill Performance}",
 			"requirements": "You are adjacent to an enemy.",
 			"entries": [
-				"You sweep your foe into your dance. Attempt a {@skill Performance} check against an adjacent enemy's Will DC. If your swashbuckler's style is battledancer and you succeed, you gain panache.",
+				"You sweep your foe into your dance. Attempt a {@skill Performance} check against an adjacent enemy's Will DC. If your swashbuckler's style is {@class swashbuckler|APG|battledancer|battledancer|APG} and you succeed, you gain panache.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -8692,8 +8677,7 @@
 			],
 			"prerequisites": "legendary in {@skill Survival}",
 			"entries": [
-				"You know the wilderness so well that you can help your party travel through it with ease. When you are setting the path for your party through wilderness terrain, your party gains a +10-foot circumstance bonus to its Speed for the purpose of calculating the party's travel speed, your party's travel speed doesn't decrease in {@quickref difficult terrain||3|terrain}, and {@quickref greater difficult terrain||3|terrain} halves your party's travel speed instead of reducing it to a third.",
-				"This doesn't increase your party's Speed during an encounter or allow your party to ignore {@quickref difficult terrain||3|terrain} during an encounter."
+				"You know the wilderness so well that you can help your party travel through it with ease. When you are setting the path for your party through wilderness terrain, your party gains a +10-foot circumstance bonus to its Speed for the purpose of calculating the party's travel speed, your party's travel speed doesn't decrease in {@quickref difficult terrain||3|terrain}, and {@quickref greater difficult terrain||3|terrain} halves your party's travel speed instead of reducing it to a third. This doesn't increase your party's Speed during an encounter or allow your party to ignore {@quickref difficult terrain||3|terrain} during an encounter."
 			]
 		},
 		{
@@ -8809,7 +8793,7 @@
 				"duskwalker"
 			],
 			"entries": [
-				"You have a limited ability to sense life force, like your psychopomp forebears. You gain lifesense as an imprecise sense with a range of 10 feet. This allows you to sense the life force within living creatures and its counterforce that animates the undead, though you can't distinguish between the two."
+				"You have a limited ability to sense life force, like your psychopomp forebears. You gain {@ability lifesense} as an imprecise sense with a range of 10 feet. This allows you to sense the life force within living creatures and its counterforce that animates the undead, though you can't distinguish between the two."
 			]
 		},
 		{
@@ -8821,8 +8805,7 @@
 				"tiefling"
 			],
 			"entries": [
-				"You've battled the fiendish power within your nature and come out on top; whatever you decide to do with your life, for good or evil, will be your choice and your choice alone.",
-				"This struggle has granted you powerful resistance against the divine. You gain a +1 circumstance bonus to all saving throws against {@trait divine} effects."
+				"You've battled the fiendish power within your nature and come out on top; whatever you decide to do with your life, for good or evil, will be your choice and your choice alone. This struggle has granted you powerful resistance against the divine. You gain a +1 circumstance bonus to all saving throws against {@trait divine} effects."
 			]
 		},
 		{
@@ -8838,8 +8821,7 @@
 				"catfolk"
 			],
 			"entries": [
-				"You can balance on your toes to step carefully over obstructions.",
-				"You {@action Stride} and then {@action Step}, or {@action Step} and then {@action Stride}, ignoring {@quickref difficult terrain||3|terrain} during this movement."
+				"You can balance on your toes to step carefully over obstructions. You {@action Stride} and then {@action Step}, or {@action Step} and then {@action Stride}, ignoring {@quickref difficult terrain||3|terrain} during this movement."
 			]
 		},
 		{
@@ -8924,7 +8906,7 @@
 				"witch"
 			],
 			"entries": [
-				"You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals {@damage 1d4} bludgeoning damage; is in the {@group brawling} group; and has the agile, disarm, finesse, {@trait trip}, and {@trait unarmed} traits."
+				"You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals {@damage 1d4} bludgeoning damage; is in the {@group brawling} group; and has the {@trait agile}, {@trait disarm}, {@trait finesse}, {@trait trip}, and {@trait unarmed} traits."
 			],
 			"leadsTo": [
 				"Syu Tak-nwa's Deadly Hair|FRP1",
@@ -8988,7 +8970,7 @@
 			],
 			"prerequisites": "trained in at least one skill to {@action Decipher Writing}",
 			"entries": [
-				"You've compiled a vast repository of information that touches on nearly every subject. You are trained in {@skill Lore||Loremaster Lore}, a special {@skill Lore} skill that can be used only to {@action Recall Knowledge}, but on any topic. If you have legendary proficiency in a skill used to {@action Decipher Writing}, you gain expert proficiency in {@skill Lore||Loremaster Lore}, but you can't increase your proficiency rank in {@skill Lore||Loremaster Lore} by any other means. You can take feats in the loremaster's additional feats entry even if you don't meet the enigma muse prerequisite.",
+				"You've compiled a vast repository of information that touches on nearly every subject. You are trained in {@skill Lore||Loremaster Lore}, a special {@skill Lore} skill that can be used only to {@action Recall Knowledge}, but on any topic. If you have legendary proficiency in a skill used to {@action Decipher Writing}, you gain expert proficiency in {@skill Lore||Loremaster Lore}, but you can't increase your proficiency rank in {@skill Lore||Loremaster Lore} by any other means. You can take feats in the loremaster's additional feats entry even if you don't meet the {@class bard||enigma muse|enigma|CRB} prerequisite.",
 				"If you have the {@feat Bardic Lore} class feat, you gain a +1 circumstance bonus to skill checks with {@skill Lore||Bardic Lore}."
 			],
 			"special": [
@@ -9030,9 +9012,7 @@
 			"prerequisites": "superstition instinct",
 			"trigger": "A creature within your reach Casts a Spell.",
 			"entries": [
-				"You use your hatred of magic to lash out at the sight of spellcasting, allowing you to interrupt an enemy's spell.",
-				"Make a melee {@action Strike} against the triggering creature. If the attack is a critical hit, you disrupt the spell.",
-				"Classes 2."
+				"You use your hatred of magic to lash out at the sight of spellcasting, allowing you to interrupt an enemy's spell. Make a melee {@action Strike} against the triggering creature. If the attack is a critical hit, you disrupt the spell."
 			]
 		},
 		{
@@ -9102,7 +9082,7 @@
 				"elf"
 			],
 			"entries": [
-				"Your people used powerful magic to travel between distant worlds, and the remnants of that magic make such transportation easier for you. When you are the target of a teleportation spell that transports more than one person, it can affect an additional person beyond the normal limit, chosen by the caster. Additionally, when you're the target of a {@spell teleport} spell, you and the other targets arrive no farther than 1 mile off target, regardless of distance traveled."
+				"Your people used powerful magic to travel between distant worlds, and the remnants of that magic make such transportation easier for you. When you are the target of a {@trait teleportation} spell that transports more than one person, it can affect an additional person beyond the normal limit, chosen by the caster. Additionally, when you're the target of a {@spell teleport} spell, you and the other targets arrive no farther than 1 mile off target, regardless of distance traveled."
 			]
 		},
 		{
@@ -9135,7 +9115,7 @@
 			],
 			"prerequisites": "{@feat Horizon Walker Dedication|APG}",
 			"entries": [
-				"When an obstacle bars your path, you pull a trick from your sleeve to overcome it. You can cast {@spell darkvision}, spider climb, and 4th-level {@spell water breathing} as innate primal spells, each once per day."
+				"When an obstacle bars your path, you pull a trick from your sleeve to overcome it. You can cast {@spell darkvision}, {@spell spider climb}, and 4th-level {@spell water breathing} as innate primal spells, each once per day."
 			]
 		},
 		{
@@ -9174,7 +9154,7 @@
 			],
 			"prerequisites": "{@feat Archaeologist Dedication|APG}",
 			"entries": [
-				"While study is key to your success, a bit of magic is a {@condition helpful} tool in discovering the secrets of the past. You gain detect magic, guidance, and read aura as occult innate cantrips."
+				"While study is key to your success, a bit of magic is a helpful tool in discovering the secrets of the past. You gain {@spell detect magic}, {@spell guidance}, and {@spell read aura} as occult innate cantrips."
 			],
 			"leadsTo": [
 				"Greater Magical Scholastics|APG"
@@ -9189,8 +9169,7 @@
 				"witch"
 			],
 			"entries": [
-				"Your patron grants you even greater secrets. Choose a {@filter major, greater, or basic lesson|optionalfeatures||Feature Type=Basic Lesson;Greater Lesson;Major Lesson}. You gain its associated hex, and your familiar learns the associated spell.",
-				"Increase the number of Focus Points in your focus pool by 1."
+				"Your patron grants you even greater secrets. Choose a {@filter major, greater, or basic lesson|optionalfeatures||Feature Type=Basic Lesson;Greater Lesson;Major Lesson}. You gain its associated hex, and your familiar learns the associated spell. Increase the number of Focus Points in your focus pool by 1."
 			],
 			"special": [
 				"You can select this feat a second time if you're 14th level or higher, and a third time if you're 18th level or higher. Choose a different lesson each time."
@@ -9266,7 +9245,7 @@
 			"prerequisites": "trained in martial weapons and either {@skill Diplomacy} or {@skill Intimidation}",
 			"entries": [
 				"You've combined your social skills and combat training to become a talented combat leader. Choose {@skill Diplomacy} or {@skill Intimidation}. You become trained in that skill or become an expert if you were already trained in it.",
-				"In addition, you're surrounded by a marshal's aura in a 10-foot emanation. Your aura has the emotion, {@trait mental}, and {@trait visual} traits and grants you and allies within the aura a +1 status bonus to saving throws against fear."
+				"In addition, you're surrounded by a marshal's aura in a 10-foot emanation. Your aura has the {@trait emotion}, {@trait mental}, and {@trait visual} traits and grants you and allies within the aura a +1 status bonus to saving throws against {@trait fear}."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the marshal archetype."
@@ -9302,7 +9281,7 @@
 				"dedication"
 			],
 			"entries": [
-				"You have trained to use your fists as deadly weapons. The damage die for your fist unarmed attacks becomes {@dice 1d6} instead of {@dice 1d4}. You don't take the \u20132 circumstance penalty for making a lethal attack with your nonlethal unarmed attacks.",
+				"You have trained to use your fists as deadly weapons. The damage die for your fist unarmed attacks becomes {@dice 1d6} instead of {@dice 1d4}. You don't take the \u20132 circumstance penalty for making a lethal attack with your {@trait nonlethal} unarmed attacks.",
 				"Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in all unarmed attacks."
 			],
 			"special": [
@@ -9338,7 +9317,7 @@
 			"traits": [
 				"bard"
 			],
-			"prerequisites": "warrior muse",
+			"prerequisites": "{@class bard||warrior muse|warrior|CRB}",
 			"entries": [
 				"Your muse has taught you how to handle a wider variety of weapons than most bards, empowering you to effortlessly blend your performance into combat even with the most inelegant tools. You become trained with all martial weapons.",
 				"If you gain the bard weapon expertise class feature, your proficiency rank with martial weapons increases to expert."
@@ -9359,7 +9338,7 @@
 			],
 			"prerequisites": "divine font",
 			"entries": [
-				"You go to extreme lengths to support your allies, even when it means bringing harm to yourself. If your next action is to cast {@spell harm} or heal from your healing or harmful font to restore Hit Points to a single ally, you can channel your own vitality along with the spell. You lose {@dice 1d8} Hit Points per level of the spell, which can't be reduced or mitigated in any way, and your ally regains an equal number of Hit Points."
+				"You go to extreme lengths to support your allies, even when it means bringing harm to yourself. If your next action is to cast {@spell harm} or {@spell heal} from your healing or harmful font to restore Hit Points to a single ally, you can channel your own vitality along with the spell. You lose {@dice 1d8} Hit Points per level of the spell, which can't be reduced or mitigated in any way, and your ally regains an equal number of Hit Points."
 			]
 		},
 		{
@@ -9491,8 +9470,7 @@
 			],
 			"prerequisites": "Strength 14",
 			"entries": [
-				"You specialize in weapons that require two hands. You become trained in all simple and martial melee weapons that require two hands to wield or have the {@trait two-hand} trait. Whenever you gain a class feature that grants you expert or greater proficiency in weapons, you also gain that proficiency rank in these weapons.",
-				"If you are at least an expert in such a weapon, you gain access to the critical specialization effect with that weapon."
+				"You specialize in weapons that require two hands. You become trained in all simple and martial melee weapons that require two hands to wield or have the {@trait two-hand} trait. Whenever you gain a class feature that grants you expert or greater proficiency in weapons, you also gain that proficiency rank in these weapons. If you are at least an expert in such a weapon, you gain access to the critical specialization effect with that weapon."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the mauler archetype."
@@ -9569,8 +9547,7 @@
 			],
 			"prerequisites": "{@feat Celebrity Dedication|APG}",
 			"entries": [
-				"When you meet someone's gaze, they are unable to look away.",
-				"Choose one target creature. That creature must succeed at a Will save or be {@condition fascinated} until the end of your next turn; the DC for this save is equal to your class DC or spell DC, whichever is higher. If the creature succeeds at its save or its fascination ends due to a {@condition hostile} action, it becomes temporarily immune to your Mesmerizing Gaze for 1 day.",
+				"When you meet someone's gaze, they are unable to look away. Choose one target creature. That creature must succeed at a Will save or be {@condition fascinated} until the end of your next turn; the DC for this save is equal to your class DC or spell DC, whichever is higher. If the creature succeeds at its save or its fascination ends due to a {@condition hostile} action, it becomes temporarily immune to your Mesmerizing Gaze for 1 day.",
 				"When you select this feat, it gains either the {@trait arcane} or {@trait occult} trait; once you make this choice, you can't change it."
 			]
 		},
@@ -9688,7 +9665,7 @@
 				"swashbuckler"
 			],
 			"entries": [
-				"You attack in motion. {@action Stride} and then {@action Strike}. You can use Mobile Finisher while Burrowing, Climbing, Flying, or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
+				"You attack in motion. {@action Stride} and then {@action Strike}. You can use Mobile Finisher while {@action burrow||Burrowing}, {@action climb||Climbing}, {@action fly||Flying}, or {@action swim||Swimming} instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -9748,8 +9725,7 @@
 				"rogue"
 			],
 			"entries": [
-				"You make a quick attack and rob your foe in the process.",
-				"Make a melee {@action Strike} against an adjacent foe. If you hit and deal sneak attack damage, you can also attempt to {@action Steal} from the target, even if the target is in combat."
+				"You make a quick attack and rob your foe in the process. Make a melee {@action Strike} against an adjacent foe. If you hit and deal sneak attack damage, you can also attempt to {@action Steal} from the target, even if the target is in combat."
 			]
 		},
 		{
@@ -9872,8 +9848,7 @@
 				"dhampir"
 			],
 			"entries": [
-				"Your unusual physiology has developed in a way that makes it difficult for parasites and other infestations to prey upon you.",
-				"You gain a +2 circumstance bonus to saves against diseases."
+				"Your unusual physiology has developed in a way that makes it difficult for parasites and other infestations to prey upon you. You gain a +2 circumstance bonus to saves against diseases."
 			]
 		},
 		{
@@ -9897,8 +9872,7 @@
 			"trigger": "You would gain the {@condition fatigued} condition.",
 			"requirements": "You are {@condition observed} by at least three creatures who aren't foes.",
 			"entries": [
-				"As long as you have an audience, you can continue to perform.",
-				"Indeed, you must\u2014you have an obligation to your fans! You delay the effects of the {@condition fatigued} condition for 1 minute or until you are no longer {@condition observed} by the required creatures, whichever comes first. If the {@condition fatigued} condition has a duration, the duration begins to elapse only after the delay. You can't further delay or prevent the {@condition fatigued} condition after this ability ends."
+				"As long as you have an audience, you can continue to perform. Indeed, you must\u2014you have an obligation to your fans! You delay the effects of the {@condition fatigued} condition for 1 minute or until you are no longer {@condition observed} by the required creatures, whichever comes first. If the {@condition fatigued} condition has a duration, the duration begins to elapse only after the delay. You can't further delay or prevent the {@condition fatigued} condition after this ability ends."
 			]
 		},
 		{
@@ -9910,7 +9884,7 @@
 				"dhampir"
 			],
 			"entries": [
-				"You can tap into the magic that runs through your blood. You gain animal form (wolf only, using the statistics for a canine) and obscuring mist as 2nd-level divine innate spells. You can cast each of these spells once per day."
+				"You can tap into the magic that runs through your blood. You gain {@spell animal form} (wolf only, using the statistics for a canine) and {@spell obscuring mist} as 2nd-level divine innate spells. You can cast each of these spells once per day."
 			]
 		},
 		{
@@ -9932,7 +9906,7 @@
 				"You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack."
 			],
 			"leadsTo": [
-				"Nimble Roll (Swashbuckler)|APG"
+				"Nimble Roll (Swashbuckler)|APG
 			]
 		},
 		{
@@ -9955,6 +9929,7 @@
 			"source": "APG",
 			"add_hash": "Swashbuckler",
 			"page": 91,
+			"add_hash": "Swashbuckler",
 			"level": 8,
 			"traits": [
 				"swashbuckler"
@@ -10107,7 +10082,7 @@
 			],
 			"prerequisites": "expert strikes",
 			"entries": [
-				"You put all your force into a single mighty, carefully {@condition controlled} blow. Make an unarmed {@action Strike}. If you spend two actions and this {@action Strike} hits, you deal an extra die of weapon damage. You can instead spend 3 actions to perform an even more powerful attack, dealing a second additional die of weapon damage on a hit.",
+				"You put all your force into a single mighty, carefully controlled blow. Make an unarmed {@action Strike}. If you spend two actions and this {@action Strike} hits, you deal an extra die of weapon damage. You can instead spend 3 actions to perform an even more powerful attack, dealing a second additional die of weapon damage on a hit.",
 				"If you're at least 10th level, the number of additional dice you add from this feat doubles, for a total of 2 additional dice if you spend 2 actions or 4 additional dice if you spend 3 actions. If you're at least 18th level, the number of additional dice you add from this feat triples, for a total of 3 additional dice if you spend 2 actions or 6 additional dice if you spend 3 actions."
 			],
 			"leadsTo": [
@@ -10324,9 +10299,7 @@
 			],
 			"prerequisites": "at least one innate spell gained from an elf ancestry feat",
 			"entries": [
-				"The arcane magic you possess grows in power and complexity. Choose one common 2nd-level spell from the same tradition as an innate spell you previously gained from another elf ancestry feat (from the arcane list if you have Otherworldly Magic, for example)",
-				"You can cast that spell as an innate spell once per day, using the same tradition as the list you chose the spell from.",
-				"Your magic is adaptable. By spending 1 day of downtime, you can change the spell you chose to a different common 2nd-level spell from the same tradition."
+				"The arcane magic you possess grows in power and complexity. Choose one common 2nd-level spell from the same tradition as an innate spell you previously gained from another elf ancestry feat (from the arcane list if you have {@feat Otherworldly Magic}, for example). You can cast that spell as an innate spell once per day, using the same tradition as the list you chose the spell from."
 			]
 		},
 		{
@@ -10442,7 +10415,7 @@
 			],
 			"prerequisites": "ki spells",
 			"entries": [
-				"You control your breathing and align it with your ki, exhaling with {@condition controlled} force in order to overcome your opponent's resistance. If you use your next action to {@action Cast a Spell} that has the {@trait monk} trait and no duration, the spell and any {@action Strike|CRB|Strikes} you make as a result of casting it ignore an amount of the target's resistance to physical damage equal to your level."
+				"You control your breathing and align it with your ki, exhaling with controlled force in order to overcome your opponent's resistance. If you use your next action to {@action Cast a Spell} that has the {@trait monk} trait and no duration, the spell and any {@action Strike|CRB|Strikes} you make as a result of casting it ignore an amount of the target's resistance to physical damage equal to your level."
 			]
 		},
 		{
@@ -10521,7 +10494,7 @@
 			"traits": [
 				"fighter"
 			],
-			"requirements": "You are wielding a loaded ranged weapon or a ranged weapon with reload <0>.",
+			"requirements": "You are wielding a loaded ranged weapon or a ranged weapon with {@trait reload||reload 0}.",
 			"entries": [
 				"You jump back and fire a quick shot that catches your opponent off guard. You {@action Step} and then make a ranged {@action Strike} with the required weapon. Your target is {@condition flat-footed} against the attack."
 			]
@@ -10645,8 +10618,7 @@
 			"prerequisites": "{@feat Peafowl Stance|APG}",
 			"requirements": "You are in Peafowl Stance.",
 			"entries": [
-				"You slowly move across the battlefield with dangerous grace.",
-				"{@action Step} twice and then {@action Strike}. The {@action Strike} must be made with the sword required by Peafowl Stance."
+				"You slowly move across the battlefield with dangerous grace. {@action Step} twice and then {@action Strike}. The {@action Strike} must be made with the sword required by Peafowl Stance."
 			]
 		},
 		{
@@ -10714,8 +10686,7 @@
 			],
 			"prerequisites": "perpetual infusions",
 			"entries": [
-				"You have expanded your supply of near-infinite items.",
-				"Choose a research field. Add one item from the list of options available to that field from perpetual infusions, or two items if you choose your own field. If you have perpetual potency or perpetual perfection, you gain an additional item (or items if you chose your own field) appropriate to the field you chose, for instance a higher-level version of the bomb you chose or a new poison."
+				"You have expanded your supply of near-infinite items. Choose a research field. Add one item from the list of options available to that field from perpetual infusions, or two items if you choose your own field. If you have perpetual potency or perpetual perfection, you gain an additional item (or items if you chose your own field) appropriate to the field you chose, for instance a higher-level version of the bomb you chose or a new poison."
 			]
 		},
 		{
@@ -10934,7 +10905,7 @@
 			],
 			"prerequisites": "{@feat Pirate Dedication|APG}",
 			"entries": [
-				"You're particularly skilled at wielding traditional pirate weapons. You become trained with the following weapons: hatchet, rapier, scimitar, and whip. Whenever you gain a class feature that grants you expert or greater proficiency with a given weapon or weapons, you also gain that proficiency rank for these weapons."
+				"You're particularly skilled at wielding traditional pirate weapons. You become trained with the following weapons: {@item hatchet}, {@item rapier}, {@item scimitar}, and {@item whip}. Whenever you gain a class feature that grants you expert or greater proficiency with a given weapon or weapons, you also gain that proficiency rank for these weapons."
 			]
 		},
 		{
@@ -11080,8 +11051,7 @@
 			],
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
-				"You make a point of always having a few toxins near at hand\u2014you never know when some arsenic or the like might prove useful. You gain the basic alchemy benefits (page 150), though they can be used only for alchemical poisons. You gain batches of infused reagents per day equal to your level.",
-				"Your advanced alchemy level for creating these is 1 and doesn't increase on its own."
+				"You make a point of always having a few toxins near at hand\u2014you never know when some arsenic or the like might prove useful. You gain the basic alchemy benefits (page 150), though they can be used only for alchemical poisons. You gain batches of infused reagents per day equal to your level. Your advanced alchemy level for creating these is 1 and doesn't increase on its own."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained at least two other feats from the poisoner archetype."
@@ -11152,8 +11122,7 @@
 			],
 			"requirements": "You have designated prey with {@action Hunt Prey}.",
 			"entries": [
-				"By spending 1 minute giving guidance to help hunt down your prey, you instruct up to five willing creatures to assist you.",
-				"They gain a +1 circumstance bonus to {@action Seek} your prey, to {@action Track} your prey, and to {@action Gather Information} about your prey. You and the creatures assisting you gain a +1 circumstance bonus to initiative rolls when entering combat with your prey.",
+				"By spending 1 minute giving guidance to help hunt down your prey, you instruct up to five willing creatures to assist you. They gain a +1 circumstance bonus to {@action Seek} your prey, to {@action Track} your prey, and to {@action Gather Information} about your prey. You and the creatures assisting you gain a +1 circumstance bonus to initiative rolls when entering combat with your prey.",
 				"This benefit lasts until you designate a new prey or your prey dies, whichever comes first. An individual creature assisting you loses this benefit if they're out of your presence for too long to benefit from your instructions. This is usually 1 hour, but is determined by the GM."
 			]
 		},
@@ -11173,7 +11142,7 @@
 			"prerequisites": "{@feat Herbalist Dedication|APG}",
 			"entries": [
 				"When you create an herbal elixir, you can prepare it as a poultice instead. A poultice gains the {@trait oil} trait (but remains alchemical, not magical) and loses the {@trait elixir} and {@trait ingested} traits. You can apply a poultice by Interacting with one hand.",
-				"When you apply a poultice, in addition to the item's normal effects, the recipient can attempt an immediate flat check to recover from a single source of {@condition persistent damage ||persistent acid}, bleed, or fire damage, with the DC reduction from appropriate assistance."
+				"When you apply a poultice, in addition to the item's normal effects, the recipient can attempt an immediate flat check to recover from a single source of {@condition persistent damage||persistent acid, bleed, or fire damage}, with the DC reduction from appropriate assistance."
 			]
 		},
 		{
@@ -11209,7 +11178,7 @@
 			],
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"entries": [
-				"You enchant a piece of ammunition with the magical essence of a precious material, allowing you to leverage certain creatures' weaknesses. Choose cold iron or silver; if you shoot the arrow before the end of your turn, it counts as that material. At 14th level, add adamantine to the list of materials you can choose from."
+				"You enchant a piece of ammunition with the magical essence of a precious material, allowing you to leverage certain creatures' weaknesses. Choose {@item cold iron (generic)||cold iron} or {@item silver (generic)||silver}; if you shoot the arrow before the end of your turn, it counts as that material. At 14th level, add {@item adamantine (generic)||adamantine} to the list of materials you can choose from."
 			]
 		},
 		{
@@ -11348,8 +11317,7 @@
 			],
 			"prerequisites": "{@feat Prescient Planner|APG}",
 			"entries": [
-				"You can predict which consumables you might need in advance.",
-				"When using {@feat Prescient Planner|apg}, you can procure a consumable item from your backpack, instead of a piece of adventuring gear. The consumable item must still be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you {@condition encumbered}."
+				"You can predict which consumables you might need in advance. When using {@feat Prescient Planner|apg}, you can procure a consumable item from your backpack, instead of a piece of adventuring gear. The consumable item must still be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you {@condition encumbered}."
 			]
 		},
 		{
@@ -11409,7 +11377,7 @@
 			],
 			"prerequisites": "{@feat Verdant Weapon|APG}",
 			"entries": [
-				"Your verdant weapon can cut through the resistances of magical creatures. The weapon is treated as cold iron and silver. If you critically hit a creature that has a weakness to cold iron or silver, the target takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage} as the primal energies within your weapon slow its natural healing."
+				"Your verdant weapon can cut through the resistances of magical creatures. The weapon is treated as {@item cold iron (generic)||cold iron} and {@item silver (generic)||silver}. If you critically hit a creature that has a weakness to cold iron or silver, the target takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage} as the primal energies within your weapon slow its natural healing."
 			]
 		},
 		{
@@ -11429,7 +11397,7 @@
 				"visual"
 			],
 			"entries": [
-				"Where others etch their armor to serve as a conduit for their imaginations, your vivid mind and bold personality allow you to project a more fitting persona over your lackluster armor. You change the shape and appearance of your armor to appear as ordinary or fine clothes of your imagining. The armor's statistics don't change. This effect lasts as long as you remain conscious and are wearing the armor. A creature can {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} by Seeking or touching your armor. The DC equals your Will DC."
+				"Where others etch their armor to serve as a conduit for their imaginations, your vivid mind and bold personality allow you to project a more fitting persona over your lackluster armor. You change the shape and appearance of your armor to appear as ordinary or fine clothes of your imagining. The armor's statistics don't change. This effect lasts as long as you remain conscious and are wearing the armor. A creature can {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} by {@action seek||Seeking} or touching your armor. The DC equals your Will DC."
 			]
 		},
 		{
@@ -11532,7 +11500,7 @@
 			],
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"You draw your bow and attack with the same action. You {@action Interact} to draw a weapon from the {@group bow} weapon group that is loaded or has reload <0>, then {@action Strike} with that weapon."
+				"You draw your bow and attack with the same action. You {@action Interact} to draw a weapon from the {@group bow} weapon group that is loaded or has {@trait reload||reload 0}, then {@action Strike} with that weapon."
 			]
 		},
 		{
@@ -11691,8 +11659,7 @@
 			],
 			"prerequisites": "warden spells",
 			"entries": [
-				"You can cause plants to grow and trap your foes with thorns.",
-				"You gain the {@spell ranger's bramble|apg} warden spell. Increase the number of Focus Points in your focus pool by 1."
+				"You can cause plants to grow and trap your foes with thorns. You gain the {@spell ranger's bramble|apg} warden spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -11728,8 +11695,7 @@
 			],
 			"trigger": "An ally is reduced to 0 Hit Points.",
 			"entries": [
-				"You work quickly and efficiently in times of danger to deliver needed assistance. You {@action Stride} towards the triggering ally.",
-				"You gain a +10-foot circumstance bonus to your Speed during this movement."
+				"You work quickly and efficiently in times of danger to deliver needed assistance. You {@action Stride} towards the triggering ally. You gain a +10-foot circumstance bonus to your Speed during this movement."
 			]
 		},
 		{
@@ -11741,8 +11707,7 @@
 				"ratfolk"
 			],
 			"entries": [
-				"You have a pet rat that has become magically bonded to you.",
-				"You gain a {@filter familiar|companionsfamiliars||Type=Familiar}, and this familiar must be a rat. It still gets the benefits of familiar abilities, but its base form remains a rat."
+				"You have a pet rat that has become magically bonded to you. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}, and this familiar must be a rat. It still gets the benefits of familiar abilities, but its base form remains a rat."
 			]
 		},
 		{
@@ -11819,8 +11784,7 @@
 			},
 			"trigger": "You blind or dazzle a creature.",
 			"entries": [
-				"You've spent considerable time practicing the manipulation of light, weaponizing your blade's reflection or bolstering the luminosity of magical displays to unconventional heights.",
-				"Extend the duration of the {@condition blinded} or {@condition dazzled} condition you give the target by 1 round."
+				"You've spent considerable time practicing the manipulation of light, weaponizing your blade's reflection or bolstering the luminosity of magical displays to unconventional heights. Extend the duration of the {@condition blinded} or {@condition dazzled} condition you give the target by 1 round."
 			]
 		},
 		{
@@ -12022,8 +11986,7 @@
 				"investigator"
 			],
 			"entries": [
-				"You have a keen sense for avoiding spurious lines of inquiry.",
-				"When you {@action Pursue a Lead|APG}, the GM tells you if the lead you chose is inconsequential. For example, if you found a splatter of gray mud on the wall, thought it was suspicious, and {@action Pursue a Lead|APG|Pursued it as a Lead}, the GM would tell you if there was no greater mystery related to it. When the GM tells you a lead is inconsequential, you can decline to {@action Pursue a Lead|APG|Pursue the Lead}, keeping any leads you were already pursuing. You still can't use {@action Pursue a Lead|APG} again for 10 minutes, as normal."
+				"You have a keen sense for avoiding spurious lines of inquiry. When you {@action Pursue a Lead|APG}, the GM tells you if the lead you chose is inconsequential. For example, if you found a splatter of gray mud on the wall, thought it was suspicious, and {@action Pursue a Lead|APG|Pursued it as a Lead}, the GM would tell you if there was no greater mystery related to it. When the GM tells you a lead is inconsequential, you can decline to {@action Pursue a Lead|APG|Pursue the Lead}, keeping any leads you were already pursuing. You still can't use {@action Pursue a Lead|APG} again for 10 minutes, as normal."
 			]
 		},
 		{
@@ -12048,7 +12011,7 @@
 			"traits": [
 				"swashbuckler"
 			],
-			"prerequisites": "Opportune Riposte",
+			"prerequisites": "{@action Opportune Riposte||APG}",
 			"entries": [
 				"You can riposte almost without a thought. At the start of each of your turns when you regain your actions, you gain an additional reaction that can be used only to perform an Opportune Riposte."
 			]
@@ -12061,7 +12024,7 @@
 			"traits": [
 				"champion"
 			],
-			"prerequisites": "devotion spell (lay on hands)",
+			"prerequisites": "devotion spell ({@spell lay on hands})",
 			"entries": [
 				"Your healing energies linger after you cast, providing continual benefits. An ally that recovers Hit Points from your lay on hands gains 10 temporary Hit Points at the start of their turn during each of the next 10 rounds. This effect ends if the ally is knocked {@condition unconscious}."
 			]
@@ -12112,7 +12075,7 @@
 				"freq": 1
 			},
 			"entries": [
-				"If your next action is to use your divine font to cast a 3-action {@spell heal} or {@spell harm} spell to damage creatures, you can harness the residual energy to counterbalance opposing forces. You use your {@spell heal} or {@spell harm} spell to attempt to counteract one effect in the spell's area with the chaotic, evil, {@trait good}, or {@trait lawful} trait. The chosen trait must oppose one component of your deity's alignment; if your deity is neutral, you can choose any one trait."
+				"If your next action is to use your divine font to cast a 3-action {@spell heal} or {@spell harm} spell to damage creatures, you can harness the residual energy to counterbalance opposing forces. You use your {@spell heal} or {@spell harm} spell to attempt to counteract one effect in the spell's area with the {@trait chaotic}, {@trait evil}, {@trait good}, or {@trait lawful} trait. The chosen trait must oppose one component of your deity's alignment; if your deity is neutral, you can choose any one trait."
 			]
 		},
 		{
@@ -12141,7 +12104,7 @@
 			"traits": [
 				"champion"
 			],
-			"prerequisites": "devotion spell (lay on hands)",
+			"prerequisites": "devotion spell ({@spell lay on hands})",
 			"entries": [
 				"Your healing energies create an aura of protection that defends your allies against more than just blades and arrows.",
 				"An ally that recovers Hit Points from your lay on hands gains a +1 status bonus to their saving throws until the end of their next turn."
@@ -12339,7 +12302,7 @@
 			"traits": [
 				"rogue"
 			],
-			"prerequisites": "{@feat Ricochet Stance|APG}",
+			"prerequisites": "{@feat Ricochet Stance (Rogue)|APG|Ricochet Stance}",
 			"entries": [
 				"While in Ricochet Stance, you can bounce a thrown weapon off a foe to distract them. You can attempt a {@action Feint} against a creature within the first range increment of a thrown weapon you are wielding, rather than only creatures within your melee reach."
 			]
@@ -12408,7 +12371,7 @@
 				"witch"
 			],
 			"entries": [
-				"Your patron grants you the power to summon other creatures to aid you. Choose one summon spell (such as {@spell summon animal}, summon construct, and so forth) that appears on the spell list of your spellcasting tradition. You can spend 10 minutes in communion with your familiar to replace one spell you've prepared in one of your witch spell slots with the spell you chose, heightened to the same level. The spell you replaced must be of at least the summon spell's minimum spell level."
+				"Your patron grants you the power to summon other creatures to aid you. Choose one summon spell (such as {@spell summon animal}, {@spell summon construct}, and so forth) that appears on the spell list of your spellcasting tradition. You can spend 10 minutes in communion with your familiar to replace one spell you've prepared in one of your witch spell slots with the spell you chose, heightened to the same level. The spell you replaced must be of at least the summon spell's minimum spell level."
 			]
 		},
 		{
@@ -12553,7 +12516,7 @@
 			],
 			"prerequisites": "{@feat Vigilante Dedication|APG}",
 			"entries": [
-				"You establish a safe house\u2014a secure space in which to hide your secrets from the outside world. This safe house is roughly the size of a 10-foot cube. It's in a location you have access to, and it can be part of a larger building or structure, like a {@condition hidden} room or an underground cave. The safe house protects objects and people inside it from magical detection. This has the effects of nondetection, using your {@skill Deception} modifier for the counteract DC and half your level rounded up for the counteract level. Setting up or moving your safe house takes a week of downtime. The size of the safe house expands to four 10-foot cubes if you're an expert in {@skill Deception}, eight cubes if you're a master, and 16 cubes if you're legendary."
+				"You establish a safe house\u2014a secure space in which to hide your secrets from the outside world. This safe house is roughly the size of a 10-foot cube. It's in a location you have access to, and it can be part of a larger building or structure, like a hidden room or an underground cave. The safe house protects objects and people inside it from magical detection. This has the effects of nondetection, using your {@skill Deception} modifier for the counteract DC and half your level rounded up for the counteract level. Setting up or moving your safe house takes a week of downtime. The size of the safe house expands to four 10-foot cubes if you're an expert in {@skill Deception}, eight cubes if you're a master, and 16 cubes if you're legendary."
 			]
 		},
 		{
@@ -12656,8 +12619,7 @@
 			],
 			"prerequisites": "{@feat Archaeologist Dedication|APG}, master in {@skill Society}",
 			"entries": [
-				"You have the knowledge needed to understand ancient texts and cultural artifacts. You can use {@skill Society} when {@action Decipher Writing||Deciphering Writing}, no matter the type of writing you are examining.",
-				"You can also use {@skill Society} to {@action Identify Magic} when examining a magic item or location with cultural significance."
+				"You have the knowledge needed to understand ancient texts and cultural artifacts. You can use {@skill Society} when {@action Decipher Writing||Deciphering Writing}, no matter the type of writing you are examining. You can also use {@skill Society} to {@action Identify Magic} when examining a magic item or location with cultural significance."
 			]
 		},
 		{
@@ -12808,8 +12770,7 @@
 			],
 			"prerequisites": "{@feat Scout Dedication|APG}",
 			"entries": [
-				"You move faster, especially when traveling, allowing you to scout ahead and report back without slowing your allies.",
-				"You gain a +10-foot status bonus to your Speed. When calculating your travel speed, this increases to a +20-foot status bonus."
+				"You move faster, especially when traveling, allowing you to scout ahead and report back without slowing your allies. You gain a +10-foot status bonus to your Speed. When calculating your travel speed, this increases to a +20-foot status bonus."
 			]
 		},
 		{
@@ -12993,7 +12954,7 @@
 			],
 			"prerequisites": "tenets of evil",
 			"entries": [
-				"The presence of goodness sickens you with its saccharine self-righteousness. When in the presence of an aura of good that is powerful or overwhelming (Core Rulebook 328), you detect the aura, though you might not do so instantly, and you can't pinpoint the location. This acts as a vague sense, similar to humans' sense of smell. A good creature using a disguise or otherwise trying to hide its presence attempts a {@skill Deception} check against your {@skill Perception} DC to hide its aura from you. If the creature succeeds at its {@skill Deception} check, it is then temporarily immune to your Sense Good for 1 day."
+				"The presence of goodness sickens you with its saccharine self-righteousness. When in the presence of an {@table alignment aura||aura of good that is powerful or overwhelming}, you detect the aura, though you might not do so instantly, and you can't pinpoint the location. This acts as a vague sense, similar to humans' sense of smell. A good creature using a disguise or otherwise trying to hide its presence attempts a {@skill Deception} check against your {@skill Perception} DC to hide its aura from you. If the creature succeeds at its {@skill Deception} check, it is then temporarily immune to your Sense Good for 1 day."
 			]
 		},
 		{
@@ -13079,8 +13040,7 @@
 			],
 			"prerequisites": "{@feat Shadow Magic|APG}",
 			"entries": [
-				"With an artful eye, you shape shadows into illusory forms.",
-				"You gain the {@spell shadow illusion|APG} focus spell. Increase the number of Focus Points in your pool by 1. You become an expert in occult spell attack rolls and DCs."
+				"With an artful eye, you shape shadows into illusory forms. You gain the {@spell shadow illusion|APG} focus spell. Increase the number of Focus Points in your pool by 1. You become an expert in occult spell attack rolls and DCs."
 			]
 		},
 		{
@@ -13141,7 +13101,7 @@
 			],
 			"prerequisites": "{@feat Shadowdancer Dedication|APG}",
 			"entries": [
-				"The shadows protect you better than any armor can, and they give you power to plunge others into darkness. Whenever you are in an area of dim light or darkness, you gain resistance 5 to all damage except force and damage from {@action Strike|CRB|Strikes} with the."
+				"The shadows protect you better than any armor can, and they give you power to plunge others into darkness. Whenever you are in an area of dim light or darkness, you gain resistance 5 to all damage except force and damage from {@action Strike|CRB|Strikes} with the {@item ghost touch} property rune. When you attempt a Reflex saving throw in an area of dim light or darkness, you can roll twice and take the higher result; this is a {@trait fortune} effect."
 			]
 		},
 		{
@@ -13289,8 +13249,7 @@
 			],
 			"prerequisites": "{@feat Premonition of Avoidance|APG}",
 			"entries": [
-				"You can project your premonitions of danger to your allies.",
-				"When you use {@feat Premonition of Avoidance|APG}, allies within 15 feet of you who are rolling the same saving throw against the same hazard also gain a +2 circumstance bonus to their saving throws."
+				"You can project your premonitions of danger to your allies. When you use {@feat Premonition of Avoidance|APG}, allies within 15 feet of you who are rolling the same saving throw against the same hazard also gain a +2 circumstance bonus to their saving throws."
 			]
 		},
 		{
@@ -13303,8 +13262,7 @@
 			],
 			"prerequisites": "{@feat Premonition of Clarity|APG}",
 			"entries": [
-				"You can project your premonitions of clarity to your allies.",
-				"When you use {@feat Premonition of Clarity|APG}, allies within 15 feet of you who failed the same saving throw against the same {@trait mental} effect can also spend their reactions to reroll the failed saving throw with a +2 circumstance bonus."
+				"You can project your premonitions of clarity to your allies. When you use {@feat Premonition of Clarity|APG}, allies within 15 feet of you who failed the same saving throw against the same {@trait mental} effect can also spend their reactions to reroll the failed saving throw with a +2 circumstance bonus."
 			]
 		},
 		{
@@ -13329,8 +13287,7 @@
 				"investigator"
 			],
 			"entries": [
-				"The plans you make include your allies as well as yourself.",
-				"When you hit a creature with an attack on which you substituted your attack roll due to {@action Devise a Stratagem|APG|Devising a Stratagem}, designate one ally. The creature you hit is {@condition flat-footed} to that ally on the next attack the designated ally makes against that creature before the start of your next turn."
+				"The plans you make include your allies as well as yourself. When you hit a creature with an attack on which you substituted your attack roll due to Devising a Stratagem, designate one ally. The creature you hit is flat-footed to that ally on the next attack the designated ally makes against that creature before the start of your next turn."
 			],
 			"leadsTo": [
 				"Didactic Strike|APG"
@@ -13394,8 +13351,7 @@
 			],
 			"prerequisites": "{@feat Domain Initiate}",
 			"entries": [
-				"Residual energy from your domain spells bolsters your defenses.",
-				"When you spend a Focus Point to cast a domain spell, you gain a +1 status bonus to your AC until the start of your next turn."
+				"Residual energy from your domain spells bolsters your defenses. When you spend a Focus Point to cast a domain spell, you gain a +1 status bonus to your AC until the start of your next turn."
 			]
 		},
 		{
@@ -13473,8 +13429,7 @@
 			"trigger": "A creature within your reach leaves a square during a move action it's using.",
 			"requirements": "You are wielding a melee weapon in two hands.",
 			"entries": [
-				"You swing your weapon at your foe, rebuffing them back.",
-				"You attempt to {@action Shove} the triggering creature, ignoring the requirement that you have a hand free. The creature continues its movement after the {@action Shove}."
+				"You swing your weapon at your foe, rebuffing them back. You attempt to {@action Shove} the triggering creature, ignoring the requirement that you have a hand free. The creature continues its movement after the {@action Shove}."
 			]
 		},
 		{
@@ -13504,8 +13459,7 @@
 				"rage"
 			],
 			"entries": [
-				"A quick strike to the face or mouth silences your opponent.",
-				"Make a melee {@action Strike} against a foe. The foe must succeed at a Fortitude save against your class DC.",
+				"A quick strike to the face or mouth silences your opponent. Make a melee {@action Strike} against a foe. The foe must succeed at a Fortitude save against your class DC.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -13593,7 +13547,7 @@
 			],
 			"prerequisites": "{@feat Scroll Trickster Dedication|APG}",
 			"entries": [
-				"You can activate the magic of a scroll with a cursory read as you draw it from your belt. You {@action Interact} to draw forth a scroll, then use Trick Magic Item on the scroll."
+				"You can activate the magic of a scroll with a cursory read as you draw it from your belt. You {@action Interact} to draw forth a scroll, then use {@action Trick Magic Item} on the scroll."
 			]
 		},
 		{
@@ -13619,7 +13573,7 @@
 				"lineage"
 			],
 			"entries": [
-				"Your mother was an annis hag, known for physical prowess, and you have one violet or steel-gray eye. You have thick, sturdy claws made of cold iron that grow naturally from your body. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage. Your claws are in the {@group brawling} group, have the {@trait unarmed} and {@trait grapple} traits, and are cold iron."
+				"Your mother was an annis hag, known for physical prowess, and you have one violet or steel-gray eye. You have thick, sturdy claws made of cold iron that grow naturally from your body. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage. Your claws are in the {@group brawling} group, have the {@trait unarmed} and {@trait grapple} traits, and are {@item cold iron (generic)||cold iron}."
 			]
 		},
 		{
@@ -13630,7 +13584,7 @@
 			"traits": [
 				"fighter"
 			],
-			"prerequisites": "Cut From the Air",
+			"prerequisites": "{@feat Cut From the Air||APG}",
 			"entries": [
 				"Your expertise enables you to knock away spells. You can use Cut from the Air against ranged spell attack rolls."
 			]
@@ -13650,10 +13604,8 @@
 			],
 			"prerequisites": "divine ally (blade), tenets of evil",
 			"entries": [
-				"Your blade ally shares your lust for the blood of good creatures. Select one enemy you can see.",
-				"Until the start of your next turn, your {@action Strike|CRB|Strikes} against that foe using the weapon your blade ally inhabits deal an extra 4 evil damage, increasing to 6 if you have master proficiency with this weapon.",
-				"If the chosen enemy attacks you before the start of your next turn, the duration extends to the end of that enemy's next turn.",
-				"If the enemy continues to attack you each turn, the duration continues to extend."
+				"Your blade ally shares your lust for the blood of good creatures. Select one enemy you can see. Until the start of your next turn, your {@action Strike|CRB|Strikes} against that foe using the weapon your blade ally inhabits deal an extra 4 evil damage, increasing to 6 if you have master proficiency with this weapon.",
+				"If the chosen enemy attacks you before the start of your next turn, the duration extends to the end of that enemy's next turn. If the enemy continues to attack you each turn, the duration continues to extend."
 			]
 		},
 		{
@@ -13718,9 +13670,7 @@
 			],
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
-				"You are adept at the time-honored kobold art of trap making.",
-				"You gain the trained proficiency in {@skill Crafting}. If you were already trained in {@skill Crafting}, you instead become trained in a skill of your choice. You gain access to all uncommon kobold snares.",
-				"You gain the {@feat Snare Crafting} feat, though when choosing your formulas for that feat, you can also choose from uncommon kobold snares, as well as common snares."
+				"You are adept at the time-honored kobold art of trap making. You gain the trained proficiency in {@skill Crafting}. If you were already trained in {@skill Crafting}, you instead become trained in a skill of your choice. You gain access to all uncommon kobold snares. You gain the {@feat Snare Crafting} feat, though when choosing your formulas for that feat, you can also choose from uncommon kobold snares, as well as common snares."
 			]
 		},
 		{
@@ -13799,9 +13749,7 @@
 			],
 			"prerequisites": "{@feat Vigilante Dedication|APG}",
 			"entries": [
-				"You have built a reputation for yourself in your social identity.",
-				"Choose one archetype that you meet the prerequisites for.",
-				"You gain that archetype's dedication feat and can select feats from that archetype, even if you haven't yet gained enough feats in the vigilante archetype to take another dedication feat. These feats become part of your social identity and gain the social trait\u2014for instance, a fighter vigilante could take the wizard dedication feat and have a wizard social identity. Using these feats in your social identity doesn't risk exposing your vigilante identity, but using them in your vigilante identity could put you at risk for exposure."
+				"You have built a reputation for yourself in your social identity. Choose one archetype that you meet the prerequisites for. You gain that archetype's dedication feat and can select feats from that archetype, even if you haven't yet gained enough feats in the vigilante archetype to take another dedication feat. These feats become part of your social identity and gain the social trait\u2014for instance, a fighter vigilante could take the wizard dedication feat and have a wizard social identity. Using these feats in your social identity doesn't risk exposing your vigilante identity, but using them in your vigilante identity could put you at risk for exposure."
 			]
 		},
 		{
@@ -13813,8 +13761,7 @@
 				"investigator"
 			],
 			"entries": [
-				"Sometimes your case splinters into smaller mysteries, but you never lose sight of the big picture. Once per day when you give up on the subject of a lead due to using {@action Pursue a Lead|APG} again, you can designate the lead you stopped pursuing as your solid lead for the day. Even though you stopped following the solid lead, you can change back to your solid lead any number of times by using a single action, which has the {@trait concentrate} trait.",
-				"Doing so ends one of your current leads as normal.",
+				"Sometimes your case splinters into smaller mysteries, but you never lose sight of the big picture. Once per day when you give up on the subject of a lead due to using {@action Pursue a Lead|APG} again, you can designate the lead you stopped pursuing as your solid lead for the day. Even though you stopped following the solid lead, you can change back to your solid lead any number of times by using a single action, which has the {@trait concentrate} trait. Doing so ends one of your current leads as normal.",
 				"During your next daily preparations, you can maintain your solid lead or you can remove it; removing it allows you to designate a new solid lead later that day."
 			]
 		},
@@ -13853,8 +13800,7 @@
 			],
 			"prerequisites": "warden spells",
 			"entries": [
-				"You have a connection to the healing properties of nature and can produce a magical mist to heal damage and stop burning or bleeding. You gain the {@spell soothing mist|APG} warden spell.",
-				"Increase the number of Focus Points in your focus pool by 1."
+				"You have a connection to the healing properties of nature and can produce a magical mist to heal damage and stop burning or bleeding. You gain the {@spell soothing mist|APG} warden spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -14099,7 +14045,7 @@
 			],
 			"entries": [
 				"You have a vague connection to the Ethereal Plane that enables you to notice spirits. While you're exploring but not {@action Search||Searching}, the GM rolls a secret check for you to find haunts that usually require {@action Search||Searching}, as well as spirits, creatures on the Ethereal Plane, and beings made entirely of spiritual essence such as celestials, fiends, and monitors.",
-				"You can also potentially notice ethereal creatures and spirits inside solid objects, provided they are within 30 feet of you. This applies while {@action Search||Searching}, while Seeking, and on the automatic secret check you gain while exploring even if you aren't {@action Search||Searching}. You can still notice spirits only on a successful check, and you can't see them if they're more than 5 feet inside an object.",
+				"You can also potentially notice ethereal creatures and spirits inside solid objects, provided they are within 30 feet of you. This applies while {@action Search||Searching}, while {@action seek||Seeking}, and on the automatic secret check you gain while exploring even if you aren't {@action Search||Searching}. You can still notice spirits only on a successful check, and you can't see them if they're more than 5 feet inside an object.",
 				"When you notice a creature with your Spiritual Sense, you also learn its location, making it {@condition hidden} to you if it had been {@condition undetected}."
 			]
 		},
@@ -14186,7 +14132,7 @@
 			],
 			"prerequisites": "expert in {@skill Athletics}",
 			"entries": [
-				"Your powerful legs allow you to make sudden and dramatic leaps. You can {@action Leap} as a 2-action activity to double the distance you can {@action Leap} vertically, or {@action Leap} as a 3-action activity to triple the distance you can {@action Leap} vertically. You don't automatically fail Long Jumps for jumping in a different direction than your {@action Stride}."
+				"Your powerful legs allow you to make sudden and dramatic leaps. You can {@action Leap} as a 2-action activity to double the distance you can {@action Leap} vertically, or {@action Leap} as a 3-action activity to triple the distance you can {@action Leap} vertically. You don't automatically fail {@action long jump||Long Jumps} for jumping in a different direction than your {@action Stride}."
 			]
 		},
 		{
@@ -14384,8 +14330,7 @@
 				"alchemist"
 			],
 			"entries": [
-				"A combination of additional viscosity and careful application keeps your weapons poisoned even when suffering significant wear and tear. If your {@action Strike} with a poisoned weapon would expend its poison without your target attempting an initial save (due to resistance or your {@action Strike} being a critical failure, for example), attempt a DC {@flatDC 5} flat check. On a success, your weapon remains poisoned.",
-				"If your {@action Strike} with a poisoned weapon succeeds, attempt a DC {@flatDC 17} flat check. On a success, your weapon remains poisoned until the end of your next turn."
+				"A combination of additional viscosity and careful application keeps your weapons poisoned even when suffering significant wear and tear. If your {@action Strike} with a poisoned weapon would expend its poison without your target attempting an initial save (due to resistance or your {@action Strike} being a critical failure, for example), attempt a DC {@flatDC 5} flat check. On a success, your weapon remains poisoned. If your {@action Strike} with a poisoned weapon succeeds, attempt a DC {@flatDC 17} flat check. On a success, your weapon remains poisoned until the end of your next turn."
 			]
 		},
 		{
@@ -14428,8 +14373,7 @@
 				"tengu"
 			],
 			"entries": [
-				"Wind and lightning have always been close friends to you.",
-				"You can cast the {@spell electric arc} cantrip as a primal innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up."
+				"Wind and lightning have always been close friends to you. You can cast the {@spell electric arc} cantrip as a primal innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up."
 			],
 			"leadsTo": [
 				"Hurricane Swing|LOAG"
@@ -14494,7 +14438,7 @@
 				"rogue"
 			],
 			"entries": [
-				"When you {@action Strike} with a thrown weapon, the weapon's range increment increases 10 feet."
+				"When you {@action Strike} with a {@trait thrown} weapon, the weapon's range increment increases 10 feet."
 			]
 		},
 		{
@@ -15110,8 +15054,7 @@
 			],
 			"prerequisites": "{@feat Talisman Dabbler Dedication|APG}",
 			"entries": [
-				"You have forgotten more about talismans than lesser warriors have ever known. Normally, affixing more than one talisman to an item causes the talismans to be suppressed, but when you {@action Affix a Talisman}, you can specially treat one item you're working on, allowing it to have two active talismans at once.",
-				"This special treatment ends if you use {@action Affix a Talisman} to treat a new item for this ability."
+				"You have forgotten more about talismans than lesser warriors have ever known. Normally, affixing more than one talisman to an item causes the talismans to be suppressed, but when you {@action Affix a Talisman}, you can specially treat one item you're working on, allowing it to have two active talismans at once. This special treatment ends if you use {@action Affix a Talisman} to treat a new item for this ability."
 			]
 		},
 		{
@@ -15217,8 +15160,7 @@
 				"alchemist"
 			],
 			"entries": [
-				"Your victims tend to expire long before your poisons, since the latter have been specifically formulated to last longer.",
-				"The maximum duration of any poison you create increases by an amount equal to the poison's stage 1 interval, to a maximum of twice the poison's maximum duration."
+				"Your victims tend to expire long before your poisons, since the latter have been specifically formulated to last longer. The maximum duration of any poison you create increases by an amount equal to the poison's stage 1 interval, to a maximum of twice the poison's maximum duration."
 			]
 		},
 		{
@@ -15357,8 +15299,7 @@
 				"investigator"
 			],
 			"entries": [
-				"When you enter a new location, such as a room or corridor, you immediately notice one thing out of the ordinary. The GM determines what it is, or whether there's nothing reasonable to pick up, skipping obvious clues that can be easily noticed without a check or specifically looking for them. You learn only that an area or object is suspicious, but not why it's suspicious.",
-				"For example, if you entered a study with a large bloodstain on the ground, the bloodstain is so obviously suspicious it's evident to you already, so the GM might note that there's something suspicious about the desk drawer instead. You would then need to investigate the drawer further to find out what specifically is out of the ordinary. That's Odd doesn't reveal whether creatures are suspicious.",
+				"When you enter a new location, such as a room or corridor, you immediately notice one thing out of the ordinary. The GM determines what it is, or whether there's nothing reasonable to pick up, skipping obvious clues that can be easily noticed without a check or specifically looking for them. You learn only that an area or object is suspicious, but not why it's suspicious. For example, if you entered a study with a large bloodstain on the ground, the bloodstain is so obviously suspicious it's evident to you already, so the GM might note that there's something suspicious about the desk drawer instead. You would then need to investigate the drawer further to find out what specifically is out of the ordinary. That's Odd doesn't reveal whether creatures are suspicious.",
 				"You don't typically get any benefit when you leave and come back to a place, though if a major change has happened there and time has passed, the GM might determine that you do."
 			]
 		},
@@ -15399,9 +15340,7 @@
 			],
 			"prerequisites": "expert in {@skill Perception}",
 			"entries": [
-				"You take your time searching to ensure you find everything.",
-				"When {@action Search||Searching}, you can take twice as long to search.",
-				"Normally this means you {@action Search} at up to one quarter of your Speed, to a maximum of 150 feet per minute to check everything, or 75 feet per minute to check everything before you walk into it. If you do, you gain a +2 circumstance bonus to your {@skill Perception} checks to {@action Seek}."
+				"You take your time searching to ensure you find everything. When {@action Search||Searching}, you can take twice as long to search. Normally this means you {@action Search} at up to one quarter of your Speed, to a maximum of 150 feet per minute to check everything, or 75 feet per minute to check everything before you walk into it. If you do, you gain a +2 circumstance bonus to your {@skill Perception} checks to {@action Seek}."
 			]
 		},
 		{
@@ -15431,8 +15370,7 @@
 				"ratfolk"
 			],
 			"entries": [
-				"You're good with your hands and can quickly improvise a fix for {@condition broken} or damaged equipment. You're trained in {@skill Crafting}.",
-				"If you would automatically become trained in {@skill Crafting} (from your background or class, for example), you instead become trained in a skill of your choice. You can {@action Repair} an item without using a repair kit without taking the \u20132 circumstance penalty, improvising tools from whatever you have at hand."
+				"You're good with your hands and can quickly improvise a fix for {@condition broken} or damaged equipment. You're trained in {@skill Crafting}. If you would automatically become trained in {@skill Crafting} (from your background or class, for example), you instead become trained in a skill of your choice. You can {@action Repair} an item without using a repair kit without taking the \u20132 circumstance penalty, improvising tools from whatever you have at hand."
 			]
 		},
 		{
@@ -15457,8 +15395,7 @@
 			],
 			"prerequisites": "{@feat Marshal Dedication|APG}",
 			"entries": [
-				"With a resounding cry, you rally your ally to the offensive.",
-				"Choose one ally within your marshal's aura who has a reaction available. If you spend 1 action, that ally can use their reaction to immediately {@action Stride}. If you spend 2 actions, that ally can use their reaction to immediately {@action Strike}."
+				"With a resounding cry, you rally your ally to the offensive. Choose one ally within your marshal's aura who has a reaction available. If you spend 1 action, that ally can use their reaction to immediately {@action Stride}. If you spend 2 actions, that ally can use their reaction to immediately {@action Strike}."
 			]
 		},
 		{
@@ -15498,7 +15435,7 @@
 			],
 			"prerequisites": "{@feat Marshal Dedication|APG}, trained in {@skill Athletics}",
 			"entries": [
-				"You take advantage of the opening created by your ally to tip your foe off their feet. Attempt an {@skill Athletics} check to Trip the target of the triggering attack."
+				"You take advantage of the opening created by your ally to tip your foe off their feet. Attempt an {@skill Athletics} check to {@action Trip} the target of the triggering attack."
 			]
 		},
 		{
@@ -15575,7 +15512,7 @@
 			"prerequisites": "{@feat Medic Dedication|APG}",
 			"requirements": "You are holding healer's tools, or you are wearing them and have a hand free.",
 			"entries": [
-				"You treat an adjacent creature in an attempt to reduce the {@condition clumsy}, {@condition enfeebled}, or {@condition sickened} condition. If a creature has multiple conditions from this list, choose one. Attempt a {@quickref counteract|CRB|3|counteracting} check against the condition, using your {@skill Medicine} modifier as your counteract modifier and the condition's source to determine the DC. You can't treat a condition that came from an artifact or effect above 20th level unless you have Legendary Medic; even if you do, the counteract DC increases by 10. Treating a Condition that is continually applied under certain circumstances (for instance, the {@condition enfeebled} condition a good character gains from carrying an unholy weapon) has no effect as long as the circumstances continue.",
+				"You treat an adjacent creature in an attempt to reduce the {@condition clumsy}, {@condition enfeebled}, or {@condition sickened} condition. If a creature has multiple conditions from this list, choose one. Attempt a {@quickref counteract|CRB|3|counteracting} check against the condition, using your {@skill Medicine} modifier as your counteract modifier and the condition's source to determine the DC. You can't treat a condition that came from an artifact or effect above 20th level unless you have {@feat Legendary Medic}; even if you do, the counteract DC increases by 10. Treating a Condition that is continually applied under certain circumstances (for instance, the {@condition enfeebled} condition a good character gains from carrying an {@item unholy||unholy weapon}) has no effect as long as the circumstances continue.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -15619,8 +15556,7 @@
 			"prerequisites": "{@feat Monastic Archer Stance|APG}, {@feat Stunning Fist}",
 			"requirements": "You are in Monastic Archer Stance and wielding a bow usable with that stance.",
 			"entries": [
-				"You string three arrows to your bow and fire them all at once.",
-				"Make three ranged {@action Strike|CRB|Strikes} against a single target with the required weapon, each using your current multiple attack penalty, and you take an additional \u20132 penalty. This counts as two attacks when calculating your multiple attack penalty, and you combine the attacks' damage for the purpose of resistances and weaknesses. Your Stunning Fist benefit applies to Triangle Shot, even though it isn't a {@action Flurry of Blows}. If all three {@action Strike|CRB|Strikes} hit, the target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}."
+				"You string three arrows to your bow and fire them all at once. Make three ranged {@action Strike|CRB|Strikes} against a single target with the required weapon, each using your current multiple attack penalty, and you take an additional \u20132 penalty. This counts as two attacks when calculating your multiple attack penalty, and you combine the attacks' damage for the purpose of resistances and weaknesses. Your Stunning Fist benefit applies to Triangle Shot, even though it isn't a {@action Flurry of Blows}. If all three {@action Strike|CRB|Strikes} hit, the target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}."
 			]
 		},
 		{
@@ -15640,8 +15576,7 @@
 			"trigger": "You specify the trigger when you make your daily preparations (see Requirements below).",
 			"requirements": "When you make your daily preparations, you must specify a trigger for this reaction using the same restrictions as the triggers for the {@action Ready} action. You also choose a {@filter single spell|spells||level=1;2;3;4|Tradition & Spell List=arcane;divine;occult;primal|components=!cost|Miscellaneous=Has Targets|Cast Time=Varies;Action;Two-Action;Three-Action;Free Action;Minutes;Rounds} from the arcane, divine, occult, or primal list of 4th level or lower. The spell can't have a cost, nor can its casting time be more than 10 minutes. The spell must be able to target a single creature, and you must be a valid target for it.",
 			"entries": [
-				"Whether from jury-rigged magic items, deduction from the study of magical interactions, or other means, you have a contingency in your back pocket for desperate situations.",
-				"When the trigger occurs, you cause the spell to come into effect. The spell targets only you, no matter how many creatures it would affect normally. If you define particularly complicated conditions, as determined by the GM, the trigger might fail. Once the contingency is triggered, the spell is expended until your next daily preparations."
+				"Whether from jury-rigged magic items, deduction from the study of magical interactions, or other means, you have a contingency in your back pocket for desperate situations. When the trigger occurs, you cause the spell to come into effect. The spell targets only you, no matter how many creatures it would affect normally. If you define particularly complicated conditions, as determined by the GM, the trigger might fail. Once the contingency is triggered, the spell is expended until your next daily preparations."
 			]
 		},
 		{
@@ -15699,8 +15634,7 @@
 				"rogue"
 			],
 			"entries": [
-				"You tumble under and behind your foe to catch them off guard.",
-				"When you successfully {@action Tumble Through}, the foe whose space you passed through is {@condition flat-footed} against the next attack you make before the end of your turn."
+				"You tumble under and behind your foe to catch them off guard. When you successfully {@action Tumble Through}, the foe whose space you passed through is {@condition flat-footed} against the next attack you make before the end of your turn."
 			]
 		},
 		{
@@ -15854,8 +15788,7 @@
 			],
 			"prerequisites": "improved flexibility",
 			"entries": [
-				"Your experience keeps you on your toes, making you adaptable to even the most dangerous challenges. When you gain a fighter feat using combat flexibility, you gain three fighter feats instead of two. While the first feat must still be 8th level or lower, the second feat can be up to 14th level, and the third feat can be up to 18th level. You can use the first feat to meet the prerequisites of the second or third feats and the second feat to meet the prerequisites of the third feat.",
-				"You must meet all feats' prerequisites. In addition, you can adapt to the battlefield's challenges by spending 1 hour to train. If you do, you can reselect the feats chosen with combat flexibility as if you had made your daily preparations. You can't trade out limited-use abilities that you've already used, such as Determination."
+				"Your experience keeps you on your toes, making you adaptable to even the most dangerous challenges. When you gain a fighter feat using combat flexibility, you gain three fighter feats instead of two. While the first feat must still be 8th level or lower, the second feat can be up to 14th level, and the third feat can be up to 18th level. You can use the first feat to meet the prerequisites of the second or third feats and the second feat to meet the prerequisites of the third feat. You must meet all feats' prerequisites. In addition, you can adapt to the battlefield's challenges by spending 1 hour to train. If you do, you can reselect the feats chosen with combat flexibility as if you had made your daily preparations. You can't trade out limited-use abilities that you've already used, such as {@feat Determination}."
 			]
 		},
 		{
@@ -15936,9 +15869,7 @@
 			],
 			"prerequisites": "expert in {@skill Society}, {@feat Streetwise}",
 			"entries": [
-				"You're connected to groups that know what's going on in the streets, and you can get information out of them quickly.",
-				"When you use {@skill Society} to {@action Gather Information} in an area where you have a network (typically a settlement where you've spent at least a week or spent a day of downtime to build a network faster), you can contact a member of these groups to get information directly from them. This usually takes about an hour, and it doesn't draw as much attention as {@action Gather Information||Gathering Information} in public might. The check and information gained otherwise follow the normal rules for {@action Gather Information}.",
-				"In addition, if you have successfully consulted the underground network, you get a +1 circumstance bonus to the next check to {@action Recall Knowledge} you attempt about the subject you were {@action Gather Information||Gathering Information} on, or a +2 circumstance bonus if you're using {@skill Lore||Underworld Lore} for the check. The GM might change the {@skill Lore} skill related to the network depending on your location or the specifics of the network you're tapping into."
+				"You're connected to groups that know what's going on in the streets, and you can get information out of them quickly. When you use {@skill Society} to {@action Gather Information} in an area where you have a network (typically a settlement where you've spent at least a week or spent a day of downtime to build a network faster), you can contact a member of these groups to get information directly from them. This usually takes about an hour, and it doesn't draw as much attention as {@action Gather Information||Gathering Information} in public might. The check and information gained otherwise follow the normal rules for {@action Gather Information}."
 			]
 		},
 		{
@@ -16015,9 +15946,7 @@
 			"prerequisites": "{@feat Cavalier Dedication|APG}",
 			"requirements": "You are riding your mount and wielding a jousting weapon.",
 			"entries": [
-				"You attempt to knock an opponent off their mount.",
-				"Make a melee {@action Strike} against a mounted opponent.",
-				"If your attack hits, attempt an {@skill Athletics} check against the opponent's Fortitude DC. If you succeed, the foe is knocked off its mount into a space of its choice adjacent to its mount. If you critically succeed, it lands {@condition prone}."
+				"You attempt to knock an opponent off their mount. Make a melee {@action Strike} against a mounted opponent. If your attack hits, attempt an {@skill Athletics} check against the opponent's Fortitude DC. If you succeed, the foe is knocked off its mount into a space of its choice adjacent to its mount. If you critically succeed, it lands {@condition prone}."
 			]
 		},
 		{
@@ -16066,8 +15995,7 @@
 				"goblin"
 			],
 			"entries": [
-				"You have a knack for breaking and dismantling things. Putting them back together is the boring part, so you largely don't bother with that. You become trained in {@skill Thievery}. If you would automatically become trained in {@skill Thievery} (from your background or class, for example), you instead become trained in a skill of your choice.",
-				"In addition, whenever you hit with a {@action Strike} against a trap or an unattended object, you ignore the first 5 points of the object's Hardness."
+				"You have a knack for breaking and dismantling things. Putting them back together is the boring part, so you largely don't bother with that. You become trained in {@skill Thievery}. If you would automatically become trained in {@skill Thievery} (from your background or class, for example), you instead become trained in a skill of your choice. In addition, whenever you hit with a {@action Strike} against a trap or an unattended object, you ignore the first 5 points of the object's Hardness."
 			]
 		},
 		{
@@ -16224,8 +16152,7 @@
 			],
 			"prerequisites": "trained in {@skill Athletics}",
 			"entries": [
-				"Vikings spend long periods of time at sea, only to leap from their boats at a moment's notice, charge through the surf, and take their enemies by storm. You're trained in {@skill Lore||Sailing Lore}.",
-				"When moving through water using your land Speed, you ignore {@quickref difficult terrain||3|terrain} resulting from shallow water, such as in bogs or on beaches. In addition, if you roll a success for your {@skill Athletics} check to {@action Swim}, you get a critical success instead."
+				"Vikings spend long periods of time at sea, only to leap from their boats at a moment's notice, charge through the surf, and take their enemies by storm. You're trained in {@skill Lore||Sailing Lore}. When moving through water using your land Speed, you ignore {@quickref difficult terrain||3|terrain} resulting from shallow water, such as in bogs or on beaches. In addition, if you roll a success for your {@skill Athletics} check to {@action Swim}, you get a critical success instead."
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the viking archetype."
@@ -16253,8 +16180,7 @@
 			],
 			"prerequisites": "{@feat Viking Dedication|APG}",
 			"entries": [
-				"From childhood, you have been exposed to traditional viking weapons, and you soon learned to handle them in battle. Now, you can raid proudly alongside your fellows.",
-				"You are trained with the {@item battle axe}, {@item hatchet}, {@item longsword}, and {@item shortsword}. In addition, you gain the {@feat Shield Block} reaction."
+				"From childhood, you have been exposed to traditional viking weapons, and you soon learned to handle them in battle. Now, you can raid proudly alongside your fellows. You are trained with the {@item battle axe}, {@item hatchet}, {@item longsword}, and {@item shortsword}. In addition, you gain the {@feat Shield Block} reaction."
 			],
 			"leadsTo": [
 				"Viking Weapon Specialist|APG"
@@ -16275,8 +16201,7 @@
 			],
 			"prerequisites": "{@feat Viking Weapon Familiarity|APG}",
 			"entries": [
-				"You are even more skilled in the weapons of your people. You gain the critical specialization effects of the {@item battle axe}, {@item hatchet}, {@item longsword}, and {@item shortsword}.",
-				"Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in the above four weapons."
+				"You are even more skilled in the weapons of your people. You gain the critical specialization effects of the {@item battle axe}, {@item hatchet}, {@item longsword}, and {@item shortsword}. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in the above four weapons."
 			]
 		},
 		{
@@ -16499,8 +16424,6 @@
 			],
 			"prerequisites": "trained in all martial weapons",
 			"entries": [
-				"As far as you're concerned, the best weapon to wield is the one that your opponents never see coming. By knowing how to fight effectively with whatever's at hand, you ensure that you're never caught unarmed, and you often get the drop on opponents who mistakenly think they've caught you off guard.",
-				"Whether you're smashing someone over the head with a bar stool, tossing a mug of ale in their face to blind them, or stabbing your foes with a {@condition broken} bottle, you can find weapons anywhere and employ them creatively whenever a fight breaks out. Because you fight with disposable weapons, you don't need to be as careful with your weapons as other warriors do, and you can break them when needed to win a fight without feeling any regrets later.",
 				"You don't take the normal \u20132 penalty to attack rolls with improvised weapons. Additionally, whenever you gain a class feature that grants you expert or greater proficiency with any weapon, you also gain that proficiency with improvised weapons."
 			],
 			"special": [
@@ -16535,8 +16458,7 @@
 				"catfolk"
 			],
 			"entries": [
-				"You have seen people from so many walks of life in your travels that you naturally adopt a pleasant and affable demeanor when meeting others. You are trained in {@skill Diplomacy}.",
-				"If you would automatically become trained in {@skill Diplomacy} (from your background or class, for example), you instead become trained in a skill of your choice.",
+				"You have seen people from so many walks of life in your travels that you naturally adopt a pleasant and affable demeanor when meeting others. You are trained in {@skill Diplomacy}. If you would automatically become trained in {@skill Diplomacy} (from your background or class, for example), you instead become trained in a skill of your choice.",
 				"In addition, you gain the {@feat Hobnobber} skill feat."
 			]
 		},
@@ -16549,7 +16471,7 @@
 				"bard"
 			],
 			"entries": [
-				"You're resilient to performative influences that aren't your own. You gain a +1 circumstance bonus to saving throws against effects with the auditory, illusion, linguistic, {@trait sonic}, or {@trait visual} traits."
+				"You're resilient to performative influences that aren't your own. You gain a +1 circumstance bonus to saving throws against effects with the {@trait auditory}, {@trait illusion}, {@trait linguistic}, {@trait sonic}, or {@trait visual} traits."
 			],
 			"leadsTo": [
 				"Educate Allies|APG"
@@ -16570,9 +16492,8 @@
 			],
 			"prerequisites": "{@feat Monastic Weaponry}",
 			"entries": [
-				"You enter a mindful stance that creates a deep connection between you and your monk weapons, allowing you to manipulate them with your ki even at a distance. All melee monk weapons you wield with the {@trait finesse} trait gain the thrown <10 feet> trait (unless they already have the {@trait thrown} trait with a greater range)",
-				"Once you've made a thrown {@action Strike} with such a weapon, you can use the precision of your throw to make additional strikes with it, even from a distance. Start from the space of the previous {@action Strike}'s target to determine the range increment and whether the new target has cover. At the end of your turn, the thrown weapon flies directly back to you in a straight line.",
-				"If a solid barrier blocks its path, it falls to the ground after hitting the barrier."
+				"You enter a mindful stance that creates a deep connection between you and your monk weapons, allowing you to manipulate them with your ki even at a distance. All melee monk weapons you wield with the {@trait finesse} trait gain the {@trait thrown||thrown 10 feet} trait (unless they already have the {@trait thrown} trait with a greater range)",
+				"Once you've made a thrown {@action Strike} with such a weapon, you can use the precision of your throw to make additional strikes with it, even from a distance. Start from the space of the previous {@action Strike}'s target to determine the range increment and whether the new target has cover. At the end of your turn, the thrown weapon flies directly back to you in a straight line. If a solid barrier blocks its path, it falls to the ground after hitting the barrier."
 			]
 		},
 		{
@@ -16594,7 +16515,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Was the clue left by a [creature trait]? (Choose a creature trait such as humanoid, undead, or dwarf; this trait must be accurate as of the time the clue was left.)",
+						"Was the clue left by a [creature trait]? (Choose a creature trait such as {@trait humanoid}, {@trait undead}, or {@trait dwarf}; this trait must be accurate as of the time the clue was left.)",
 						"Was this clue left within the last hour?",
 						"Was this clue left within the last day?",
 						"Was the creature that left the clue in a heightened emotional state when it left the clue?",
@@ -16656,7 +16577,7 @@
 			],
 			"prerequisites": "{@feat Horizon Walker Dedication|APG}",
 			"entries": [
-				"Natural obstacles pose no obstacle to you. You gain the ranger's wild st{@feat ride} class feature. This allows you to ignore the effects of all non-magical {@quickref difficult terrain||3|terrain}, treat {@quickref greater difficult terrain||3|terrain} as merely {@quickref difficult terrain||3|terrain}, and gives you an additional benefit from Favored Terrain based on the terrain."
+				"Natural obstacles pose no obstacle to you. You gain the ranger's wild stride class feature. This allows you to ignore the effects of all non-magical {@quickref difficult terrain||3|terrain}, treat {@quickref greater difficult terrain||3|terrain} as merely {@quickref difficult terrain||3|terrain}, and gives you an additional benefit from {@feat Favored Terrain} based on the terrain."
 			]
 		},
 		{
