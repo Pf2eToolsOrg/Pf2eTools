@@ -1,6 +1,255 @@
 {
 	"hazard": [
 		{
+			"name": "Collapsing Structure",
+			"source": "LOMM",
+			"page": 40,
+			"level": 15,
+			"traits": [
+				"rare",
+				"complex",
+				"environmental",
+				"kaiju"
+			],
+			"stealth": {
+				"bonus": 20,
+				"minProf": "master",
+				"notes": "to notice cracks forming in the walls of the structure as Ebeshra approaches"
+			},
+			"description": [
+				"Ebeshra brushes against a structure, possibly causing it to collapse."
+			],
+			"disable": {
+				"entries": [
+					"DC 43 {@skill Athletics} (master), {@skill Crafting} (master), or {@skill lore||Engineering Lore} (master) to brace the structure to reduce the risk of collapse until the end of the creature's next turn. The DC of the flat check for this round (see Routine) is increased by 4 on a success, or by 8 on a critical success. Increasing the flat check DC to 21 or higher stabilizes the structure, ending this hazard."
+				]
+			},
+			"actions": [
+				{
+					"name": "Shake Apart",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Ebeshra applies any amount of force to the structure",
+					"entries": [
+						"The building trembles. The floors of the building and the streets within 30 feet of the building become {@quickref difficult terrain||3|terrain}; creatures on this difficult terrain take a \u20132 circumstance penalty to attack rolls, AC, and skill checks. The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The GM rolls a DC 9 flat check to determine if the building partially collapses, increasing the DC as listed above. On a successful check, dust and debris fall within the building and 30 feet around it, providing {@condition concealed||concealment} and dealing {@damage 6d6} bludgeoning damage to {@dice 1d4} randomly chosen targets (DC 35 basic Reflex save; on a critical failure, the creature is knocked {@condition prone}). On a critical success, the effect is the same, but the debris deals {@damage 12d6} bludgeoning damageto {@dice 2d4} randomly chosen targets instead (DC 35 basic Reflex save; on a critical failure, the creature is {@condition restrained} by rubble until freed [{@action Force Open} DC 38, {@action Escape} DC 35])."
+			],
+			"reset": [
+				"The building becomes susceptible to Shake Apart again {@dice 1d6} rounds after it's stabilized."
+			]
+		},
+		{
+			"name": "Crystal Pin",
+			"source": "LOMM",
+			"page": 40,
+			"level": 20,
+			"traits": [
+				"rare",
+				"abjuration",
+				"divine",
+				"environmental",
+				"kaiju"
+			],
+			"stealth": {
+				"dc": 10
+			},
+			"description": [
+				"Ebeshra fires a crystal at a creature to pin them onto the Material Plane."
+			],
+			"disable": {
+				"entries": [
+					"DC 48 {@skill Occultism} (legendary) or {@skill Religion} (legendary) to earn Ebeshra's favor and allow safe travel or DC 51 {@skill Deception} (master) to momentarily divert Ebeshra's attention"
+				]
+			},
+			"actions": [
+				{
+					"name": "Fire Pin",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature Ebeshra can see begins to use a {@trait teleportation} effect or an effect that would move any number of targets to a different plane;",
+					"entries": [
+						"Ebeshra hurls a crystal at the triggering creature. The triggering creature and all creatures within 50 feet of the creature take {@damage 16d8} piercing damage (DC 45 basic Reflex save) and additional effects based on the result of their save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The effect is counteracted, and the creature can't use {@trait teleportation} effects or planar travel effects for 1 minute."
+								],
+								"Failure": [
+									"As success, but for 1 day instead of 1 minute."
+								],
+								"Critical Failure": [
+									"As success, but for 1 week instead of 1 minute. Additionally, the creature becomes pinned under the crystal and must succeed at 3 total DC 45 checks to {@action Escape} from under the crystal."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"Ebeshra waits {@dice 1d4} rounds to break off another crystal."
+			]
+		},
+		{
+			"name": "Planar Tear",
+			"source": "LOMM",
+			"page": 40,
+			"level": 22,
+			"traits": [
+				"rare",
+				"complex",
+				"conjuration",
+				"divine",
+				"environmental",
+				"kaiju",
+				"teleportation"
+			],
+			"stealth": {
+				"bonus": 32,
+				"minProf": "master",
+				"notes": "to notice Ebeshra twisting its shape in preparation of creating a planar rift"
+			},
+			"description": [
+				"Ebeshra opens a massive rift in the Material Plane that pulls nearby creatures into another plane entirely. The rift is typically to a random plane in the multiverse, though Ebeshra can have the rift pull creatures into a plane of Ebeshra's choosing. Additionally, Ebeshra can choose any number of creatures to be immune to the effects of the planar rift, usually due to the kaiju recognizing the innocence of the creatures."
+			],
+			"disable": {
+				"entries": [
+					"DC 47 {@skill Lore} (master) related to the specific plane beyond the rift to disrupt the planar frequency and close the rift, DC 52 {@skill Arcana} (legendary) or {@skill Occultism} (legendary) to undo the magical manifestation of the rift, DC 55 {@skill Performance} (legendary) to play a tone that counteracts the rift's harmonic frequency, or DC 55 {@skill Diplomacy} (legendary) or {@skill Religion} (legendary) to plead with Ebeshra to close the rift"
+				]
+			},
+			"actions": [
+				{
+					"name": "Tear Reality",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Ebeshra recognizes a nearby threat as needing an indisputable resolution, or a deity tasks Ebeshra with creating a planar rift",
+					"entries": [
+						"Ebeshra twists its body, aligning its segmented sections into a fine blade, and cuts the fabric of the Material Plane. It creates an enormous rift in a point in the sky within 1 mile. The rift is 100 feet long and 50 feet wide. The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The rift pulls creatures within 500 feet toward it. The rift can pull any creature, regardless of its size. Creatures in the area must attempt a DC 45 Fortitude or Reflex save (the creature's choice) to resist the effects of this pull or attempt to grab something to avoid getting pulled.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature resists the pull and doesn't move towards the rift."
+						],
+						"Success": [
+							"The creature is moved 25 feet toward the rift."
+						],
+						"Failure": [
+							"The creature is moved 50 feet toward the rift."
+						],
+						"Critical Failure": [
+							"The creature is moved 100 feet toward the rift. The harsh pull causes the creature to take {@damage 10d6} bludgeoning damage."
+						]
+					}
+				},
+				"If a creature is directly beneath the rift when the rift pulls it, the creature instead attempts a DC 50 Fortitude or Reflex save (the creature's choice) to avoid being pulled into the rift. On a failure, the creature is pulled up into the rift and thrown to a random point on the plane on the other side."
+			],
+			"reset": [
+				"Ebeshra vanishes 1 minute after opening the rift, which closes the rift. Ebeshra must wait 1 week before it can open another planar rift."
+			]
+		},
+		{
+			"name": "Quaking Slither",
+			"source": "LOMM",
+			"page": 41,
+			"level": 14,
+			"traits": [
+				"rare",
+				"complex",
+				"environmental",
+				"kaiju"
+			],
+			"stealth": {
+				"dc": 10
+			},
+			"description": [
+				"Ebeshra slithers across the ground, causing the earth to tremble as though from a powerful earthquake."
+			],
+			"disable": {
+				"entries": [
+					"three DC 38 {@skill Athletics} (trained), {@skill Crafting} (trained), or {@skill lore||Engineering Lore} (trained) checks to brace a small structure or surface to cancel the effects of the quake in that area, or a single DC 41 {@skill Diplomacy} (master) check to entreat Ebeshra to stand down"
+				]
+			},
+			"actions": [
+				{
+					"name": "Quake",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Ebeshra moves at least 60 feet on land",
+					"entries": [
+						"The ground shakes in a 120-foot emanation from Ebeshra's space. This creates a variety of effects depending on the surrounding environment.",
+						"In an area without significant underground space, the ground becomes {@quickref greater difficult terrain||3|terrain}, and creatures on it are {@condition flat-footed} and {@condition clumsy||clumsy 2} for 1 round.",
+						"In areas with existing underground spaces (like sewers, sinkholes, or catacombs), fissures open up in the ground. Creatures in the area tumble into the resulting 80-foot-deep hole unless they succeed at a DC 40 Reflex save.",
+						"In bays, on beaches, and in other relatively substantial but shallow bodies of water, the tremors create dangerous waves. Creatures in the water or within 60 feet of the waterline are struck by waves that deal {@damage 10d8} bludgeoning damage (DC 35 basic Reflex save). On a critical failure, a creature is instantly swept 60 feet out to sea and 60 feet under the water's surface."
+					]
+				}
+			],
+			"reset": [
+				"Ebeshra doesn't rush again this way for {@dice 1d4} rounds."
+			]
+		},
+		{
+			"name": "Storm Discharge",
+			"source": "LOMM",
+			"page": 41,
+			"level": 18,
+			"traits": [
+				"rare",
+				"divine",
+				"electricity",
+				"environmental",
+				"evocation",
+				"kaiju"
+			],
+			"stealth": {
+				"dc": 10
+			},
+			"description": [
+				"Ebeshra aligns its crystalline form to produce a blast of lightning that charges the surrounding area with electrical energy."
+			],
+			"disable": {
+				"entries": [
+					"DC 45 {@skill Nature} (master) to balance the electrical charges in the area or DC 48 {@skill Deception} (expert) to momentarily divert Ebeshra's attention"
+				]
+			},
+			"actions": [
+				{
+					"name": "Lightning Blast",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature takes a {@quickref hostile action||2|hostile actions} against Ebeshra, produces a visible area effect, or flies within 120 feet of Ebeshra;",
+					"entries": [
+						"Ebeshra unleashes a 240-foot line of electricity toward the triggering creature. Creatures in the line take {@damage 16d8} electricity damage (DC 42 basic Reflex save). The electricity creates a static field in all squares that the line passed through and all adjacent squares. For 1 round, any creatures that enter a space in the static field take {@damage 4d8} electricity damage (DC 38 basic Reflex save)."
+					]
+				}
+			],
+			"reset": [
+				"Ebeshra waits 1d4 rounds before another blast."
+			]
+		},
+		{
 			"name": "Cracked Earth",
 			"source": "LOIL",
 			"page": 231,
