@@ -1488,17 +1488,22 @@
 								"type": "list",
 								"items": [
 									"{@bold Negative} (necromancy, negative, primal) The dragon breathes a blast of darkness in a 40-foot cone that deals {@damage 16d6} negative damage (DC 36 basic Reflex save). Undead creatures take {@damage 19d6} force damage instead of the negative damage.",
-									"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 40-foot cone. Each creature within the cone must attempt a DC 36 Fortitude save."
+									{
+										"type": "item",
+										"entries": [
+											"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 40-foot cone. Each creature within the cone must attempt a DC 36 Fortitude save.",
+											{
+												"type": "successDegree",
+												"entries": {
+													"Critical Success": "The creature is unaffected.",
+													"Success": "The creature is {@condition enfeebled 2} for 1 round.",
+													"Failure": "The creature is {@condition enfeebled 2} for 1 minute.",
+													"Critical Failure": "The creature is {@condition enfeebled 2} for 1 minute and {@condition blinded} for 1 round."
+												}
+											}
+										]
+									}
 								]
-							},
-							{
-								"type": "successDegree",
-								"entries": {
-									"Critical Success": "The creature is unaffected.",
-									"Success": "The creature is {@condition enfeebled 2} for 1 round.",
-									"Failure": "The creature is {@condition enfeebled 2} for 1 minute.",
-									"Critical Failure": "The creature is {@condition enfeebled 2} for 1 minute and {@condition blinded} for 1 round."
-								}
 							}
 						],
 						"name": "Breath Weapon"
