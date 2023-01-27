@@ -43159,7 +43159,7 @@
 					},
 					{
 						"entries": [
-							"200 HP."
+							"200 HP. An intangible field of necromantic energy protects a ravener from total destruction. A soul ward has 150 maximum Hit Points, or 200 if the ravener is level 21 or higher. Whenever a ravener would be reduced below 1 Hit Point, all damage in excess of what would reduce them to 1 Hit Point is instead dealt to their soul ward. If this damage reduces the soul ward to fewer than 0 Hit Points, the ravener is destroyed. A soul ward's Hit Points can be restored only via specific ravener abilities such as Consume Soul, ravenous breath, or vicious criticals. A ravener who goes more than a week without successfully using Consume Soul to feed on a dying creature starves, and their soul ward loses {@damage 1d4} Hit Points each day until they feed. If the ravener's soul ward loses all its Hit Points while the ravener still has more than 1 HP, they become a ravener husk."
 						],
 						"name": "Soul Ward"
 					},
@@ -43177,12 +43177,17 @@
 						}
 					},
 					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"trigger": "The ravener takes excess damage to their soul ward but still has at least 51 Hit Points in their soul ward;",
 						"activity": {
 							"number": 1,
 							"unit": "free",
 							"entry": "{@as F}"
 						},
-						"entries": [],
+						"entries": ["The ravener draws deeply into their soul ward, discorporating their body into soul energy in order to escape. They take 50 damage to their soul ward and their physical body vanishes, reappearing {@dice 1d4} hours later in a random location within 1 mile from the location where they used Discorporate."],
 						"name": "Discorporate"
 					},
 					{
@@ -43208,8 +43213,25 @@
 							"unit": "free",
 							"entry": "{@as F}"
 						},
+						"traits": [
+							"death",
+							"divine",
+							"necromancy"
+						],
+						"trigger": [
+							"A living creature within 30 feet of the ravener dies;"
+						],
 						"entries": [
-							"DC 44."
+							"The ravener tears the creature's soul from its body with their maw and gulps it down. The dying creature must attempt a DC 44 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The ravener tears off a small chunk of the creature's soul. If the victim is restored to life, they are {@condition drained 1} in addition to any other side effects of returning to life. The ravener adds a number of Hit Points to their soul ward equal to half the creature's level.",
+									"Failure": "As success, but the creature's soul is ravaged. The creature is {@condition drained 3} and the ravener adds a number of Hit Points to their soul ward equal to the creature's level.",
+									"Critical Failure": "As failure, but the ravener devours the entire soul. The victim can't be restored to life as long as the ravener exists except via a 10th-level effect such as {@spell miracle} or {@spell wish}, and the ravener adds a number of Hit Points to their soul ward equal to twice the creature's level."
+								}
+							}
 						],
 						"name": "Consume Soul"
 					},
@@ -43244,7 +43266,7 @@
 						"name": "Ravenous Breath Weapon"
 					},
 					{
-						"entries": [],
+						"entries": ["The ravener treats an attack roll as a critical hit on a roll of 19 or 20, as long as the attack roll was a success. Additionally, whenever the ravener makes a critical hit with one of their {@action Strike|Strikes}, the target must succeed on a Fortitude save or gain the {@condition drained 1} condition. If the target already has a {@condition drained} value of greater than 0, their {@condition drained} value instead increases by 1, to a maximum of {@condition drained 4}. Whenever the ravener applies drain to a creature in this way, their soul ward gains 5 Hit Points."],
 						"name": "Vicious Criticals"
 					}
 				]
