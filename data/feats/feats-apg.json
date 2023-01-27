@@ -9917,6 +9917,7 @@
 			"name": "Nimble Dodge",
 			"source": "APG",
 			"page": 88,
+			"add_hash": "Swashbuckler",
 			"activity": {
 				"number": 1,
 				"unit": "reaction"
@@ -9931,8 +9932,7 @@
 				"You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack."
 			],
 			"leadsTo": [
-				"Nimble Roll",
-				"Nimble Roll|APG"
+				"Nimble Roll (Swashbuckler)|APG"
 			]
 		},
 		{
@@ -9953,12 +9953,13 @@
 		{
 			"name": "Nimble Roll",
 			"source": "APG",
+			"add_hash": "Swashbuckler",
 			"page": 91,
 			"level": 8,
 			"traits": [
 				"swashbuckler"
 			],
-			"prerequisites": "{@feat Nimble Dodge|APG}",
+			"prerequisites": "{@feat Nimble Dodge (Swashbuckler)|APG}",
 			"entries": [
 				"You can use Nimble Dodge before attempting a Reflex save, in addition to its original trigger. If you do, the circumstance bonus applies to your Reflex save against the triggering effect.",
 				"When you use Nimble Dodge and the triggering attack fails or critically fails, or when you succeed or critically succeed at the saving throw, you can also {@action Stride} up to 10 feet as part of the reaction. If you do, the reaction gains the {@trait move} trait. You can use Nimble Roll while Flying or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
@@ -12999,6 +13000,7 @@
 			"name": "Sense The Unseen",
 			"source": "APG",
 			"page": 64,
+			"add_hash": "Investigator",
 			"activity": {
 				"number": 1,
 				"unit": "reaction"
@@ -15540,6 +15542,7 @@
 			"name": "Trap Finder",
 			"source": "APG",
 			"page": 60,
+			"add_hash": "Investigator",
 			"level": 1,
 			"traits": [
 				"investigator"
@@ -15623,6 +15626,7 @@
 		{
 			"name": "Trickster's Ace",
 			"source": "APG",
+			"add_hash": "Investigator",
 			"page": 65,
 			"activity": {
 				"number": 1,
