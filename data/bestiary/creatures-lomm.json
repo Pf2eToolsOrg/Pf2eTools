@@ -607,7 +607,7 @@
 					{
 						"hp": 330,
 						"abilities": [
-							"{@ability regeneration} 30 (deactivated by cold)"
+							"{@ability regeneration||regeneration 30} (deactivated by cold)"
 						]
 					}
 				],
@@ -893,7 +893,8 @@
 					{
 						"hp": 175,
 						"abilities": [
-							"{@ability regeneration} 20 (deactivated by cold)"
+							"{@ability regeneration||regeneration 20} (deactivated by cold)"
+
 						]
 					}
 				],
@@ -1160,7 +1161,7 @@
 					{
 						"hp": 500,
 						"abilities": [
-							"{@ability regeneration} 20 (deactivated by cold iron)"
+							"{@ability regeneration||regeneration 20} (deactivated by cold iron)"
 						]
 					}
 				],
@@ -1475,7 +1476,9 @@
 					{
 						"hp": 115,
 						"abilities": [
-							"{@ability regeneration} 5 (deactivated by cold iron)"
+
+							"{@ability regeneration||regeneration 5} (deactivated by cold iron)"
+
 						]
 					}
 				],
@@ -2334,6 +2337,993 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Kothogaz, Dance of Disharmony",
+			"isNpc": false,
+			"source": "LOMM",
+			"page": 52,
+			"level": 21,
+			"traits": [
+				"unique",
+				"ce",
+				"gargantuan",
+				"beast"
+			],
+			"perception": {
+				"std": 41
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 120
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo (can't speak any language)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 43
+				},
+				"athletics": {
+					"std": 41
+				},
+				"stealth": {
+					"std": 35
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 10,
+				"con": 10,
+				"int": -3,
+				"wis": 8,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": 49,
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 39
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": [
+					{
+						"hp": 400,
+						"abilities": [
+							"{@ability regeneration||regeneration 30}"
+						]
+					}
+				],
+				"immunities": [
+					"acid",
+					"clumsy",
+					"disease",
+					"drained",
+					"enfeebled",
+					"mental",
+					"paralyzed",
+					"petrified",
+					"poison",
+					"polymorph",
+					"stupefied"
+				],
+				"resistances": [
+					{
+						"name": "sonic",
+						"amount": 20
+					}
+				]
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"generic": {
+							"tag": "ability"
+						},
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"300 feet, DC 41"
+						]
+					},
+					{
+						"name": "Horrific Speed",
+						"entries": [
+							"Kothogaz is permanently {@condition quickened}. It can use this extra action to {@action Stride} or {@action Strike}."
+						]
+					},
+					{
+						"name": "Noxious Aura",
+						"traits": [
+							"aura",
+							"poison"
+						],
+						"entries": [
+							"120 feet. A creature that enters or begins its turn in the emanation must succeed at a DC 41 Fortitude save or be {@condition sickened||sickened 2} (sickened 3 on a critical failure)."
+						]
+					},
+					{
+						"name": "Reactive",
+						"entries": [
+							"Kothogaz gains 3 reactions each round."
+						]
+					},
+					{
+						"name": "Tympanic Heartbeat",
+						"traits": [
+							"aura",
+							"auditory"
+						],
+						"entries": [
+							"120 feet. Kothogaz's heartbeat booms like a deity's drum. A creature that enters or begins its turn in the emanation must attempt a DC 41 Will save. On a failure, its next two actions must be {@trait move} actions to move at least half its Speed away from Kothogaz. A creature that critically succeeds is temporarily immune to tympanic heartbeat for 1 minute."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"generic": {
+							"tag": "ability"
+						},
+						"activity": {
+							"unit": "reaction",
+							"number": 1
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Disharmonic Door",
+						"traits": [
+							"auditory",
+							"teleportation"
+						],
+						"entries": [
+							"Kothogaz disappears, then bursts as a cacophonous sound from the throat of a creature within 240 feet. Kothogaz appears within reach of the creature and makes a melee {@action Strike} against it. The Strike deals an additional {@damage 2d12} sonic damage."
+						]
+					},
+					{
+						"name": "Many-Eyed Blight",
+						"type": "affliction",
+						"DC": 44,
+						"savingThrow": "Fortitude",
+						"traits": [
+							"disease",
+							"virulent"
+						],
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition stupefied||stupefied 2}"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition stupefied||stupefied 2} and {@condition dazzled}"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition stupefied||stupefied 3}, {@condition confused}  and {@condition blinded}"
+							},
+							{
+								"stage": 4,
+								"entry": "if you die, at the next new moon, your body splits, and your viscera become an undead under Kothogaz's control."
+							}
+						]
+					},
+					{
+						"name": "Pox the Land",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"traits": [
+							"poison",
+							"transmutation"
+						],
+						"entries": [
+							"Kothogaz raises a pustule from the ground within 120 feet, which erupts in a 10-foot radius, 200-foot-high cylinder of cloying filth. Creatures in the area must succeed at a DC 44 basic Reflex save or take {@damage 6d10} poison damage. On a failure, they can't fly for 1 round (1 minute on a critical failure); flying creatures fall safely to the ground."
+						]
+					},
+					{
+						"name": "Suppurating Passage",
+						"activity": {
+							"unit": "action",
+							"number": 1
+						},
+						"entries": [
+							"The earth festers in Kothogaz's wake. Kothogaz {@action stride||Strides} up to its Speed. Squares through which Kothogaz passes are {@quickref greater difficult terrain||3|terrain} until the start of its next turn, and any creature that enters or begins its turn in those squares must succeed at a DC 44 Reflex save or take {@damage 4d10} poison damage and {@damage 4d10} acid damage (on a critical failure, double damage and exposed to many-eyed blight)."
+						]
+					},
+					{
+						"name": "Swallow Whole",
+						"generic": {
+							"tag": "ability"
+						},
+						"activity": {
+							"unit": "action",
+							"number": 1
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Huge, {@damage 4d10+18} bludgeoning plus {@damage 2d12} sonic and {@condition clumsy||clumsy 1} while swallowed, Rupture 40"
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 80,
+				"fly": 60,
+				"swim": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 39,
+					"traits": [
+						"reach <20 feet>",
+						"versatile <B>"
+					],
+					"effects": [
+						"Many-Eyed Blight"
+					],
+					"damage": "{@damage 4d8+18} piercing plus {@damage 2d12} sonic and many-eyed blight",
+					"types": [
+						"piercing",
+						"sonic"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 39,
+					"traits": [
+						"agile",
+						"reach <20 feet>",
+						"versatile <B>"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 4d6+18} slashing plus {@damage 2d6} acid and {@ability Improved Grab}",
+					"types": [
+						"slashing",
+						"acid"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "Bezoar",
+					"attack": 39,
+					"traits": [
+						"range increment <100 feet>"
+					],
+					"effects": [
+						"Many-Eyed Blight"
+					],
+					"damage": "{@damage 4d8+8} bludgeoning plus {@damage 2d6} acid and many-eyed blight",
+					"types": [
+						"bludgeoning",
+						"acid"
+					]
+				}
+			]
+		},
+		{
+			"name": "Spawn of Kothogaz",
+			"isNpc": false,
+			"source": "LOMM",
+			"page": 53,
+			"level": 6,
+			"traits": [
+				"rare",
+				"ne",
+				"large",
+				"beast"
+			],
+			"perception": {
+				"std": 14
+			},
+			"skills": {
+				"acrobatic": {
+					"std": 15
+				},
+				"athletics": {
+					"std": 14
+				},
+				"stealth": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 3,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": 24,
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 17
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 70,
+						"abilities": [
+							"{@ability regeneration||regeneration 10} (deactivated by good)"
+						]
+					}
+				],
+				"immunities": [
+					"acid"
+				]
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Disharmonious Decay",
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"When a spawn dies, its foulness seeps into the land in a 100-foot radius. Non-magical plant life in the area decays within 1 hour, and new non-magical growth can't sprout for 1 month. A creature can act on the spawn's corpse within 1 minute of its death to limit this decay to a 10-foot square by succeeding at a DC 22 {@skill Medicine}, {@skill Nature}, or {@skill Occultism} check."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Fusing Spit",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"traits": [
+							"acid"
+						],
+						"entries": [
+							"The spawn retches up thick, caustic sludge and spits it at a creature within 60 feet, causing equipment and flesh to melt and partially fuse together. The creature must succeed at a DC 23 Reflex save or be {@condition clumsy||clumsy 2} for 1 minute."
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"burrow": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "mandibles",
+					"attack": 17,
+					"traits": [
+						"finesse",
+						"versatile <S>"
+					],
+					"damage": "{@damage 2d10+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "wing shard",
+					"attack": 17,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d6+7} piercing plus {@damage 1d6} sonic",
+					"types": [
+						"piercing",
+						"sonic"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "putrid spit",
+					"attack": 17,
+					"traits": [
+						"range increment <60 feet>"
+					],
+					"damage": "{@damage 2d8+4} acid",
+					"types": [
+						"acid"
+					]
+				}
+			]
+		},
+		{
+			"name": "Krampus Celebrant",
+			"isNpc": false,
+			"source": "LOMM",
+			"page": 58,
+			"level": 8,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"humanoid"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 17
+				},
+				"intimidation": {
+					"std": 18
+				},
+				"stealth": {
+					"std": 15
+				},
+				"survival": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 4,
+				"int": 1,
+				"wis": 3,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": 27,
+				"savingThrows": {
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 13
+					},
+					"abilities": "+1 status bonus to all saves against {@trait evil} and {@trait necromancy} spells and effects"
+				},
+				"hp": [
+					{
+						"hp": 125
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 10
+					},
+					{
+						"name": "physical",
+						"amount": 5
+					}
+				]
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"generic": {
+							"tag": "ability"
+						},
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"30 feet, DC 23"
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Frightful Parade",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The Krampus celebrant {@action stride||Strides} up to its Speed and attempts a birch bundle {@action Strike} against one creature within its reach at any point during that movement."
+						]
+					},
+					{
+						"name": "Relentless Torment",
+						"activity": {
+							"unit": "reaction",
+							"number": 1
+						},
+						"trigger": "The Krampus celebrant hits a {@condition frightened} creature with its birch bundle {@action Strike}",
+						"entries": [
+							"The target must attempt a DC 26 Will save to resist the effects of the fearful assault.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected and becomes temporarily immune for 1 hour.",
+									"Success": "The target is unaffected.",
+									"Failure": "The creature takes {@damage 1d8} mental damage. At the end of the creature's next turn, its {@condition frightened} condition doesn't decrease by 1.",
+									"Critical Failure": "The creature takes {@damage 2d8} mental damage, and its {@condition frightened} condition increases by 1 (maximum 4). At the end of its next turn, its {@condition frightened} condition doesn't decrease by 1."
+								}
+							}
+						]
+					},
+					{
+						"name": "Snowstride",
+						"entries": [
+							"The Krampus celebrant ignores {@quickref difficult terrain||3|terrain} caused by snow and ice, and it treats {@quickref greater difficult terrain||3|terrain} caused by snow and ice as difficult terrain."
+						]
+					},
+					{
+						"name": "Vandal",
+						"entries": [
+							"Whenever the Krampus celebrant deals damage to an object, it ignores the first 10 points of the object's Hardness."
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"abilities": [
+					"snowstride"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 20,
+					"traits": [
+						"agile"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+9} slashing plus {@ability Grab}",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "birch bundle",
+					"attack": 20,
+					"traits": [
+						"backswing",
+						"forceful"
+					],
+					"damage": "{@damage 2d10+9} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 20,
+					"damage": "{@damage 2d12+9} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 26,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "obscuring mist"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Krampus (The Horned Miser)",
+			"isNpc": false,
+			"source": "LOMM",
+			"page": 59,
+			"level": 21,
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"humanoid"
+			],
+			"perception": {
+				"std": 38
+			},
+			"senses": [
+				{
+					"name": "blizzard sight"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				},
+				{
+					"name": "{@spell see invisibility}"
+				},
+				{
+					"name": "thief scent"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"abilities": [
+					"{@spell tongues}"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 36
+				},
+				"athletics": {
+					"std": 39
+				},
+				"intimidation": {
+					"std": 42
+				},
+				"society": {
+					"std": 35
+				},
+				"stealth": {
+					"std": 39
+				},
+				"survival": {
+					"std": 38
+				},
+				"festival lore": {
+					"std": 35
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 7,
+				"con": 10,
+				"int": 6,
+				"wis": 6,
+				"cha": 10
+			},
+			"items": [
+				"{@runeItem spiked chain||+3 weapon potency||greater striking||+3 greater striking cold iron spiked chain}"
+			],
+			"speed": {
+				"abilities": [
+					"{@spell air walk}",
+					"snowstep"
+				],
+				"walk": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spiked chain",
+					"attack": 42,
+					"traits": [
+						"disarm",
+						"evil",
+						"finesse",
+						"magical",
+						"reach <60 feet>",
+						"trip"
+					],
+					"effects": [
+						"{@ability Improved Grab}"
+					],
+					"damage": "{@damage 3d8+18} slashing plus {@ability Improved Grab}",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 41,
+					"traits": [
+						"agile",
+						"magical",
+						"reach <10 feet>"
+					],
+					"effects": [
+						"{@ability Improved Grab}"
+					],
+					"damage": "{@damage 4d6+25} slashing plus {@ability Improved Grab}",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 41,
+					"traits": [
+						"magical"
+					],
+					"damage": "{@damage 4d10+25} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 42,
+					"attack": 34,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "sigil"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "baleful polymorph",
+									"amount": 2
+								},
+								{
+									"name": "cone of cold",
+									"amount": 2
+								},
+								{
+									"name": "wall of ice"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "air walk"
+									},
+									{
+										"name": "see invisibility"
+									},
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Krampus ignores circumstance penalties to visual {@skill Perception} checks due to ice or snow, as well as concealment due to ice or snow."
+						],
+						"name": "Blizzard Sight"
+					},
+					{
+						"name": "Thief Scent",
+						"entries": [
+							"Krampus can perceive anyone who has ever stolen or moved one of his possessions, using {@ability scent} as an imprecise sense with a range of 1 mile."
+						]
+					}
+				],
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"120 feet, DC 42"
+						],
+						"name": "Frightful Presence",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"entries": [
+							"Though Krampus still needs to eat, drink, and sleep, he doesn't age and can't die of old age. If Krampus is killed, a new Krampus forms elsewhere in the world after a year's time. The new Krampus retains the memories of the previous iteration and likely holds a grudge against whoever killed him the year before. If a method to disrupt this cycle exists, it has yet to be discovered by mortals."
+						],
+						"name": "Limited Immortality"
+					}
+				],
+				"bot": [
+					{
+						"name": "Bountiful Bag",
+						"entries": [
+							"Krampus carries a large bag brimming with barely contained gifts and trinkets, including one of every {@filter common item with the {@trait consumable} trait of levels 1 to 20|items||source=|Level=[0;20]|rarity=common|item=consumable|weapon==sand}, at least 20 {@item golden rod memento|LOMM|golden rod mementos}, and an assortment of food and valuables. Once every 24 hours, the bag's contents magically regenerate, replacing any of these items that have been removed. Krampus can Interact with the bag to stow or withdraw items, always finding the desired stored item at the top of the bag. The bag is an extradimensional space, so the weight of its contents doesn't count against Krampus's Bulk limit. The bag functions as a normal sack if used by anyone other than Krampus, and if the bag is stolen or Krampus is slain, the bag retains only {@dice 2d4} random {@filter common consumable items of 16th level or higher|items||source=|Level=[16;28]|rarity=common|item=consumable|weapon==sand}",
+							"A creature can use {@action Disarm} or {@action Steal} to extract a consumable item from Krampus's bag. As part of the action, the creature can envision a specific item it wants to extract. On a success, the creature Disarms or Steals the object and rolls a DC 13 flat check.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": "The creature Disarms or Steals the envisioned object. If the creature didn't envision an object, it Disarms or Steals a random common consumable item of a level at least half the creature's level.",
+									"Failure": "The creature Disarms or Steals a random common consumable item of a level at least half the creature's level.",
+									"Critical Failure": "The creature Disarms or Steals a {@item golden rod memento|LOMM} instead of a consumable item."
+								}
+							}
+						]
+					},
+					{
+						"name": "Crushing Avarice",
+						"entries": [
+							"Krampus's greed is so great that expending any of his wealth causes him to become physically ill and potentially nauseous. Whenever Krampus uses a {@trait consumable} item from his bountiful bag, or when he witnesses one of his possessions stolen, he must attempt a DC 44 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": "Krampus is unaffected.",
+									"Failure": "Krampus becomes {@condition sickened||sickened 1}.",
+									"Critical Failure": "Krampus becomes {@condition sickened||sickened 2}."
+								}
+							}
+						]
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"requirements": "Krampus has a Medium or smaller creature {@condition grabbed}",
+						"entries": [
+							"Krampus attempts to stuff the {@condition grabbed} creature into his basket, attempting an {@skill Athletics} check against the target's Reflex DC. If he succeeds, the creature is shoved into Krampus's basket and Krampus's spiked chain or claw is freed for future {@action Strike||Strikes}.",
+							"The captured creature is {@condition grabbed} and {@condition slowed 1}. If the victim {@action Escape||Escapes} (DC 48), it climbs out of the basket. A captured creature can attack the interior of the basket, but only with unarmed attacks or weapons of light Bulk or less, against an AC of 40. If the captured creature deals 40 slashing or piercing damage, the basket is {@condition broken} and all the creatures inside spill out. A creature that gets free by either Escaping or by someone breaking the basket is deposited in a square of their choosing adjacent to Krampus.",
+							"The basket is an extradimensional space, so the weight of the creatures within doesn't count against Krampus's Bulk limit. Up to four Small creatures or two Medium creatures can fit in the basket at one time. Krampus can {@action Repair} the basket as a 2-action activity that doesn't require tools. If the basket is lost or destroyed, Krampus can create a new one with 1 hour of work. The basket functions as a normal sack if used by anyone other than Krampus."
+						],
+						"name": "Capture"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"requirements": "Krampus can sense the target with his thief scent.",
+						"entries": [
+							"Krampus designates a single target he can see as \"naughty.\" He gains a +2 circumstance bonus to {@skill Perception} checks when he Seeks the naughty target and a +2 circumstance bonus to {@skill Survival} checks to {@action Track} the naughty target. On melee attacks against the naughty target, Krampus's spiked chain gains the {@trait agile} trait. In addition, when Krampus Grabs the naughty target, he can attempt to Capture them as a free action. Krampus can have only one naughty target at a time."
+						],
+						"name": "Punish the Naughty"
+					},
+					{
+						"traits": [
+							"curse",
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"A creature that starts their turn Captured in Krampus's basket must attempt a DC 44 Fortitude save or be regressed back to their childhood. The target shrinks one size. In addition, all of the target's proficiencies of expert and better are reduced to trained, which might restrict the use of certain feats.",
+							"The effect persists for 24 hours, after which the target regains their normal size and their proficiencies return to normal. A creature currently under the effects of regression can't be further affected by this ability.",
+							"Snowstep Krampus ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} caused by snow and ice, and he leaves no tracks when moving through areas of snow or ice."
+						],
+						"name": "Regression"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 46
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 39
+					},
+					"ref": {
+						"std": 34
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": [
+					{
+						"hp": 380,
+						"abilities": null
+					}
+				],
+				"immunities": [
+					"cold",
+					"death effects"
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 20,
+						"name": "physical"
+					}
+				]
+			}
 		}
 	]
 }
