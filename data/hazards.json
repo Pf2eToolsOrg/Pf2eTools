@@ -3155,9 +3155,13 @@
 						"Six talons swing out from the walls, each striking a different random creature in the room. No creature can be struck by more than one talon until every creature in the room has been attacked by at least one talon."
 					],
 					"name": "Raking Strike"
-				},
+				}
+			],
+			"reset": [
+				"The trap resets after 1 minute."
+			],
+			"attacks": [
 				{
-					"type": "attack",
 					"range": "Melee",
 					"name": "talon",
 					"attack": 22,
@@ -3170,9 +3174,6 @@
 					],
 					"noMAP": true
 				}
-			],
-			"reset": [
-				"The trap resets after 1 minute."
 			]
 		},
 		{
@@ -11040,7 +11041,6 @@
 			},
 			"actions": [
 				{
-					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
