@@ -569,8 +569,7 @@
 							"mental"
 						],
 						"entries": [
-							"An adachros's melee and ranged {@action Strike||Strikes} gain the fatal <d12> trait against any creature affected by the adachros's enchantment or illusion spells, including creatures in the area of a hallucinatory terrain that haven't disbelieved the effect.",
-							"Like jyotis (Bestiary 2 153), Eunemvro."
+							"An adachros's melee and ranged {@action Strike||Strikes} gain the fatal <d12> trait against any creature affected by the adachros's enchantment or illusion spells, including creatures in the area of a hallucinatory terrain that haven't disbelieved the effect."
 						],
 						"name": "Fatal Fantasia"
 					}
@@ -1067,7 +1066,7 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 3d8+13} slashing plus",
+					"damage": "{@damage 3d8+13} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -1168,17 +1167,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [],
-						"name": "Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -2294,7 +2282,7 @@
 					"effects": [
 						"adamantine claws and"
 					],
-					"damage": "{@damage 2d8+13} slashing plus adamantine claws and",
+					"damage": "{@damage 2d8+13} slashing plus adamantine claws and {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -2384,17 +2372,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [],
-						"name": "Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"entries": [
 							"The dragon's claws are infused with adamantine. Their claw {@action Strike||Strikes} ignore half the Hardness of any object hit."
@@ -4591,7 +4568,7 @@
 						"adamantine claws",
 						"Grab"
 					],
-					"damage": "{@damage 3d10+16} slashing plus adamantine claws and Grab",
+					"damage": "{@damage 3d10+16} slashing plus adamantine claws and {@ability Grab}",
 					"types": [
 						"slashing"
 					]
