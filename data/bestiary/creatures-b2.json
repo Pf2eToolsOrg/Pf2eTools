@@ -1779,9 +1779,9 @@
 				"top": [
 					{
 						"entries": [
-							"3 or more days without eating, an akata can secrete resin that encases it in a noqual cocoon. The cocoon has Hardness 9, 40 HP, and a Broken Threshold of 18. It has resistance 5 to damage from magical sources. As long as the cocoon remains intact, the akata can't be harmed, and it doesn't need to eat or drink. While inside the cocoon, the akata gains lifesense 30 feet. The akata remains in a state of hibernation until it is exposed to extreme heat or senses a living creature, at which point it can burst free of its cocoon in {@dice 1d4} minutes."
+							"After 3 or more days without eating, an akata can secrete resin that encases it in a noqual cocoon. The cocoon has Hardness 9, 40 HP, and a Broken Threshold of 18. It has resistance 5 to damage from magical sources. As long as the cocoon remains intact, the akata can't be harmed, and it doesn't need to eat or drink. While inside the cocoon, the akata gains lifesense 30 feet. The akata remains in a state of hibernation until it is exposed to extreme heat or senses a living creature, at which point it can burst free of its cocoon in {@dice 1d4} minutes."
 						],
-						"name": "Hibernation After"
+						"name": "Hibernation"
 					},
 					{
 						"entries": [
@@ -6973,15 +6973,11 @@
 							"unit": "free",
 							"entry": "{@as F}"
 						},
-						"trigger": "The bastion archon hits a creature with two fist {@action Strike||Strikes} this turn and can use its Holy",
-						"entries": [],
-						"name": "Blinding Beams"
-					},
-					{
+						"trigger": "The bastion archon hits a creature with two fist {@action Strike||Strikes} this turn and can use its Holy Beam;",
 						"entries": [
 							"The bastion archon fires its Holy Beam at only the creature it hit twice. The creature's save result is one degree of success worse than the result it rolled."
 						],
-						"name": "Beam; Effect"
+						"name": "Blinding Beams"
 					},
 					{
 						"activity": {
@@ -13563,9 +13559,9 @@
 					},
 					{
 						"entries": [
-							"Coil spy can maintain an ongoing illusory disguise as long as they are conscious without having to re-cast the spell; they need only {@action Cast a Spell||Cast the Spell} again to reassume their illusory disguise if they wish to change their appearance or if the active spell is dispelled. Coil spies typically seek privacy when they need to sleep, as an ongoing illusory disguise ends an hour after they fall {@condition unconscious}."
+							"A Coil spy can maintain an ongoing illusory disguise as long as they are conscious without having to re-cast the spell; they need only {@action Cast a Spell||Cast the Spell} again to reassume their illusory disguise if they wish to change their appearance or if the active spell is dispelled. Coil spies typically seek privacy when they need to sleep, as an ongoing illusory disguise ends an hour after they fall {@condition unconscious}."
 						],
-						"name": "Maintain Disguise A"
+						"name": "Maintain Disguise"
 					},
 					{
 						"type": "affliction",
@@ -15773,7 +15769,7 @@
 					"effects": [
 						"{@dice 3d8+16}"
 					],
-					"damage": "{@dice 3d8+16} plus {@damage 2d6} fire and",
+					"damage": "{@dice 3d8+16} plus {@damage 2d6} fire and {@ability Improved Grab}",
 					"types": [
 						"fire"
 					]
@@ -15830,13 +15826,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -16190,7 +16179,7 @@
 					"traits": [
 						"reach <20 feet>"
 					],
-					"damage": "{@damage 2d8+10} bludgeoning plus",
+					"damage": "{@damage 2d8+10} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -16206,13 +16195,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"entries": [
 							"The drainberry bush must drain blood from living creatures for sustenance. This causes clusters of bright red berries to grow among its branches. Each cluster of berries lasts for 1 day, and a drainberry bush typically has {@dice 1d6+3} clusters when encountered. When consumed, a cluster restores {@dice 2d8+10} Hit Points. This effect has the healing, {@trait necromancy}, and {@trait primal} traits.",
@@ -23072,15 +23054,10 @@
 						},
 						"entries": [
 							"The giant squid makes up to four arm {@action Strike||Strikes}, each with a different arm and against a different target.",
-							"The giant squid then makes a beak {@action Strike} against one creature that it {@condition grabbed} during."
-						],
-						"name": "Ravenous Embrace"
-					},
-					{
-						"entries": [
+							"The giant squid then makes a beak {@action Strike} against one creature that it {@condition grabbed} during Ravenous Embrace.",
 							"Each arm {@action Strike} counts separately for the squid's multiple attack penalty, but the penalty doesn't increase until the squid has made all of its arm {@action Strike||Strikes}; the beak {@action Strike} uses the multiple attack penalty as normal."
 						],
-						"name": "Ravenous Embrace."
+						"name": "Ravenous Embrace"
 					}
 				]
 			},
@@ -23480,7 +23457,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The giant whiptail centipede {@action Stride||Strides} **or {@action Step||Steps}. During this movement, it can pass through spaces as narrow as 5 feet without {@action Squeeze||Squeezing}."
+							"The giant whiptail centipede {@action Stride||Strides} or {@action Step||Steps}. During this movement, it can pass through spaces as narrow as 5 feet without {@action Squeeze||Squeezing}."
 						],
 						"name": "Undulate"
 					},
@@ -23649,15 +23626,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As wolverine, except AC 20, jaws {@dice 2d6+11}, and claws {@dice 2d4+11}.",
-							{
-								"type": "list",
-								"items": [
-									"Cockroaches: A worm that walks",
-									"Leeches: A worm that walks made of",
-									"Spiders: A worm that walks made"
-								]
-							}
+							"The giant wolverine enters a state of pure rage that lasts either for 1 minute, until there are no enemies it can perceive, or until it falls {@condition unconscious}, whichever comes first. While raging, the giant wolverine has AC 20, its jaws Strike deals {@damage 2d6+11} damage, and its claw Strike deals {@damage 2d4+11} damage. While raging, the giant wolverine can't use actions that have the {@trait concentrate} trait, except for {@action Seek}. After it's stopped raging, a giant wolverine can't use Wolverine Rage again for 1 minute."
 						],
 						"name": "Wolverine Rage"
 					}
@@ -24698,18 +24667,9 @@
 						},
 						"requirements": "Grendel is grabbing a creature",
 						"entries": [
-							"Grendel makes a bludgeoning jaws {@action Strike} against the creature he's grabbing. On a hit, the creature also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and becomes {@condition wounded 1}, or increases its {@condition wounded} value by 1 if already {@condition wounded}. On a critical hit, the creature instead becomes {@condition wounded 2}, or increases its {@condition wounded} value by 2 if already {@condition wounded}. If a creature dies from."
+							"Grendel makes a bludgeoning jaws {@action Strike} against the creature he's grabbing. On a hit, the creature also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and becomes {@condition wounded 1}, or increases its {@condition wounded} value by 1 if already {@condition wounded}. On a critical hit, the creature instead becomes {@condition wounded 2}, or increases its {@condition wounded} value by 2 if already {@condition wounded}. If a creature dies from Tooth Grind, Grendel regains 40 HP; this is a {@trait healing} effect."
 						],
 						"name": "Tooth Grind"
-					},
-					{
-						"traits": [
-							"regains"
-						],
-						"entries": [
-							"40 HP; this is a {@trait healing} effect."
-						],
-						"name": "Tooth Grind, Grendel"
 					},
 					{
 						"activity": {
@@ -25217,15 +25177,6 @@
 							"Gripplis ignore {@quickref difficult terrain||3|terrain} in forests and jungles."
 						],
 						"name": "Jungle Stride"
-					},
-					{
-						"traits": [
-							"the"
-						],
-						"entries": [
-							"\"fountain\" effect of a decanter of endless water (Core Rulebook 573)."
-						],
-						"name": ""
 					}
 				]
 			},
@@ -26786,15 +26737,9 @@
 							"attack"
 						],
 						"entries": [
-							"The hippopotamus tries to capsize an adjacent aquatic vessel of its size or smaller. The hippopotamus must succeed at an {@skill Athletics} check with a DC of 25 (reduced by 5 for each size smaller the vessel is than the hippo) or the pilot's Sailing."
+							"The hippopotamus tries to capsize an adjacent aquatic vessel of its size or smaller. The hippopotamus must succeed at an {@skill Athletics} check with a DC of 25 (reduced by 5 for each size smaller the vessel is than the hippo) or the pilot's {@skill Lore|Sailing Lore} DC, whichever is higher."
 						],
 						"name": "Capsize"
-					},
-					{
-						"entries": [
-							"DC, whichever is higher."
-						],
-						"name": "Lore"
 					},
 					{
 						"activity": {
@@ -28097,7 +28042,7 @@
 					},
 					{
 						"entries": [
-							"The blizzardborn can {@action Burrow} through ice or snow with a."
+							"The icewyrm can {@action Burrow} through ice or snow with a Speed of 20 feet. It moves at its full burrow Speed, leaving no tunnels or signs of its passing."
 						],
 						"name": "Ice Burrow"
 					}
@@ -30189,9 +30134,9 @@
 						"reach <15 feet>"
 					],
 					"effects": [
-						"Improved"
+						"Improved Grab"
 					],
-					"damage": "{@damage 4d8+19} slashing plus Improved",
+					"damage": "{@damage 4d8+19} slashing plus {@ability Improved Grab}",
 					"types": [
 						"slashing"
 					]
@@ -30205,11 +30150,39 @@
 						"reach <15 feet>"
 					],
 					"effects": [
-						"Improved"
+						"Improved Knockdown"
 					],
-					"damage": "{@damage 4d10+19} bludgeoning plus Improved",
+					"damage": "{@damage 4d10+19} bludgeoning plus {@ability Improved Knockdown}",
 					"types": [
 						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "wing",
+					"attack": 40,
+					"traits": [
+						"magical",
+						"agile",
+						"reach <15 feet>"
+					],
+					"damage": "{@damage 4d8+19} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "eyes of flame",
+					"attack": 42,
+					"traits": [
+						"fire",
+						"magical",
+						"range increment <60 feet>"
+					],
+					"damage": "{@damage 10d6} fire plus {@damage 4d6} {@condition persistent damage ||persistent fire}",
+					"types": [
+						"persistent"
 					]
 				}
 			],
@@ -30259,13 +30232,46 @@
 				"bot": [
 					{
 						"activity": {
-							"number": 1,
+							"number": 2,
 							"unit": "action"
 						},
 						"entries": [
-							"Melee tail +42 (magical, reach <15 feet>), Damage {@damage 4d10+19} bludgeoning plus Improved."
+							"The jabberwock creates a blast of strange noises and shouted nonsense in the various languages it knows (and invariably some languages it doesn't know), creating one of two effects. The jabberwock can't Burble again for 1d4 rounds.",
+							{
+								"type": "list",
+								"items": [
+									"{@bold Confusion} (aura, emotion, enchantment, mental, primal) 60 feet. Each creature in the emanation must succeed at a DC 46 Will save or become confused for {@dice 1d4} rounds.",
+									"{@bold Sonic Beam} (evocation, primal, sonic) The jabberwock focuses its Burbling into a 60 foot line of sonic energy that deals {@damage 24d6} sonic damage to creatures in the area (DC 46 basic Reflex save)."
+								]
+							}
 						],
-						"name": "Grab",
+						"name": "Burble",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"entries": [
+							"If the jabberwock makes a jaws attack and rolls a natural 19 on the d20 roll, the attack is a critical hit. This has no effect if the 19 would be a failure."
+						],
+						"name": "Jaws That Bite",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The jabberwock Flies or makes a wing {@action Strike};",
+						"entries": [
+							"The jabberwock's wings whiffle, creating severe winds within a 30-foot emanation. These winds move outward from the jabberwock, and they persist until the start of the jabberwock's next turn. During this time, flight of any kind in the emanation requires a successful DC 43 {@skill Acrobatics} check to {@action Maneuver in Flight}, and creatures flying toward the jabberwock are moving through greater difficult terrain. Creatures on the ground in the emanation must succeed at a DC 43 {@skill Athletics} check to approach the jabberwock."
+						],
+						"traits": [
+							"aura"
+						],
+						"name": "Whiffling",
 						"generic": {
 							"tag": "ability"
 						}
@@ -30476,13 +30482,9 @@
 						},
 						"trigger": "The jotund troll Grabs a creature with their jaws",
 						"entries": [
-							"The troll uses."
+							"The troll uses {@ability Swallow Whole}."
 						],
 						"name": "Fast Swallow"
-					},
-					{
-						"entries": [],
-						"name": "Swallow Whole."
 					},
 					{
 						"activity": {
@@ -33333,7 +33335,7 @@
 							},
 							{
 								"stage": 2,
-								"entry": "@damage 1d6} poison damage, {@condition confused}, and {@condition stupefied 1}",
+								"entry": "{@damage 1d6} poison damage, {@condition confused}, and {@condition stupefied 1}",
 								"duration": "1 round"
 							},
 							{
@@ -36884,7 +36886,7 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d12+13} piercing plus",
+					"damage": "{@damage 3d12+13} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -37025,17 +37027,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "free"
-						},
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -38101,15 +38092,9 @@
 						},
 						"trigger": "A Medium creature within the nuglub's reach leaves a square during its move action",
 						"entries": [
-							"The nuglub lashes out at the triggering creature's knees and tries to knock them {@condition prone}. The nuglub makes an {@skill Acrobatics} check against the creature's Reflex."
+							"The nuglub lashes out at the triggering creature's knees and tries to knock them {@condition prone}. The nuglub makes an {@skill Acrobatics} check against the creature's Reflex DC. On a success, the target falls and lands {@condition prone}."
 						],
 						"name": "Kneecapper"
-					},
-					{
-						"entries": [
-							"On a success, the target falls and lands {@condition prone}."
-						],
-						"name": "DC."
 					}
 				],
 				"bot": [
@@ -38514,18 +38499,6 @@
 							"A creature hit by the ogre spider's web attack is {@condition immobilized} and stuck to the nearest surface until it {@action Escape||Escapes} (DC 22)."
 						],
 						"name": "Web Trap"
-					},
-					{
-						"entries": [
-							"Its blade {@action Strike} deals."
-						],
-						"name": "Dulled Blades:"
-					},
-					{
-						"entries": [
-							"It loses Rev Up, Stuck in a Rut: It uses the same."
-						],
-						"name": "Misaligned Gears:"
 					}
 				]
 			},
@@ -38733,14 +38706,16 @@
 				"bot": [
 					{
 						"activity": {
-							"number": 2,
-							"unit": "action"
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 2} to {@as 3}"
 						},
 						"traits": [
-							"or"
+							"divine",
+							"negative"
 						],
 						"entries": [
-							"{@as 3} (divine, negative) The daemon expels a shrieking black cloud of smoke from its mouth in a 120-foot line or a 60-foot cone.",
+							"The daemon expels a shrieking black cloud of smoke from its mouth in a 120-foot line or a 60-foot cone",
 							"(or both a line and a cone in the same direction if it spends 3 actions). Living creatures in the area take {@damage 24d6} negative damage (DC 45 basic Reflex save)",
 							"The olethrodaemon can't use Apocalypse Breath again for {@dice 1d4} rounds."
 						],
@@ -40252,15 +40227,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The peluda bristles their quills and shakes, sending dozens of spear-like barbs in every direction. All creatures within 30 feet take {@damage 11d6} piercing damage (DC 29 basic Reflex save) and are exposed to peluda venom if they take any damage. The peluda can't use."
+							"The peluda bristles their quills and shakes, sending dozens of spear-like barbs in every direction. All creatures within 30 feet take {@damage 11d6} piercing damage (DC 29 basic Reflex save) and are exposed to peluda venom if they take any damage. The peluda can't use Quill Barrage again for 1 minute."
 						],
 						"name": "Quill Barrage"
-					},
-					{
-						"entries": [
-							"Barrage again for 1 minute."
-						],
-						"name": "Quill"
 					}
 				]
 			},
@@ -44025,7 +43994,7 @@
 						"finesse",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d8+10} bludgeoning plus",
+					"damage": "{@damage 3d8+10} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -44084,17 +44053,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "free"
-						},
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -53581,15 +53539,9 @@
 							"transmutation"
 						],
 						"entries": [
-							"The totenmaske takes the appearance of a Medium or smaller humanoid creature. This is either its form from before it became undead, or the form of the last creature it successfully hit with Drink."
+							"The totenmaske takes the appearance of a Medium or smaller humanoid creature. This is either its form from before it became undead, or the form of the last creature it successfully hit with Drink Flesh. This doesn't change the totenmaske's Speed or the attack and damage bonuses for its {@action Strike|Strikes}, but might change the damage type its {@action Strike|Strikes} deal (typically to bludgeoning)."
 						],
 						"name": "Living Form"
-					},
-					{
-						"entries": [
-							"This doesn't change the totenmaske's."
-						],
-						"name": "Flesh."
 					}
 				]
 			},
@@ -56541,7 +56493,7 @@
 							},
 							{
 								"stage": 3,
-								"entry": "@damage 2d6} poison plus {@condition enfeebled 1} and {@condition drained 1}",
+								"entry": "{@damage 2d6} poison plus {@condition enfeebled 1} and {@condition drained 1}",
 								"duration": "1 round"
 							}
 						],
@@ -59657,15 +59609,9 @@
 					},
 					{
 						"entries": [
-							"A wood golem targeted by shape wood takes {@dice 2d8} damage per spell level, with a basic Fortitude save against the caster's spell."
+							"A wood golem targeted by shape wood takes {@dice 2d8} damage per spell level, with a basic Fortitude save against the caster's spell DC. On a critical failure, the golem is also {@condition immobilized} for {@dice 1d4} rounds."
 						],
 						"name": "Vulnerable to Shape Wood"
-					},
-					{
-						"entries": [
-							"On a critical failure, the golem is also {@condition immobilized} for {@dice 1d4} rounds."
-						],
-						"name": "DC."
 					},
 					{
 						"activity": {
