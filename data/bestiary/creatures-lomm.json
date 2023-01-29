@@ -132,7 +132,7 @@
 							"freq": 1
 						},
 						"entries": [
-							"Ainamuuren activates the  runes covering his body to create an icy prison around a Huge or smaller creature he can see within 60 feet. The prison is a sphere made of unmelting ice, just large enough to fit his target. The target, and any creatures sharing its space, must attempt a DC 34 Reflex save. A creature that fails becomes trapped inside the prison. If it succeeds, the creature is pushed outside the prison into a space of its choice. If the target shares its space with a gargantuan creature, the effect fails.",
+							"Ainamuuren activates the runes covering his body to create an icy prison around a Huge or smaller creature he can see within 60 feet. The prison is a sphere made of unmelting ice, just large enough to fit his target. The target, and any creatures sharing its space, must attempt a DC 34 Reflex save. A creature that fails becomes trapped inside the prison. If it succeeds, the creature is pushed outside the prison into a space of its choice. If the target shares its space with a gargantuan creature, the effect fails.",
 							"The dome has AC 10, Hardness 20, and 40 Hit Points; and is immune to cold, critical hits, and precision damage. The prison lasts until destroyed, until Ainamuuren uses this ability to create a new prison, or until he dies."
 						]
 					}
@@ -2519,7 +2519,7 @@
 							},
 							{
 								"stage": 3,
-								"entry": "{@condition stupefied||stupefied 3}, {@condition confused}  and {@condition blinded}"
+								"entry": "{@condition stupefied||stupefied 3}, {@condition confused} and {@condition blinded}"
 							},
 							{
 								"stage": 4,
@@ -3310,7 +3310,7 @@
 				]
 			}
 		},
-        {
+		{
 			"name": "Kuworsys",
 			"isNpc": false,
 			"source": "LOMM",
@@ -3324,7 +3324,7 @@
 			],
 			"perception": {
 				"std": 22,
-                "vs traps": 26
+				"vs traps": 26
 			},
 			"senses": [
 				{
@@ -3333,7 +3333,6 @@
 					"range": 60
 				}
 			],
-            
 			"items": [
 				"{@runeItem sling||+1 weapon potency||striking|} (10 {@item sling bullets}, 3 {@item standard explosive ammunition||explosive ammunition}, 3 {@item freezing ammunition}"
 			],
@@ -3388,12 +3387,12 @@
 						"name": "acid",
 						"amount": 10
 					},
-                    {
+					{
 						"name": "fire",
 						"amount": 10
 					}
 				],
-                "resistances": [
+				"resistances": [
 					{
 						"name": "poison",
 						"amount": 15
@@ -3428,11 +3427,11 @@
 							"unit": "reaction",
 							"number": 1
 						},
-                        "trigger":"A creature within 10 feet of Kuworsys uses an action to {@action Fly}",
-                        "requirements": "Kuworsys is Reared Back",
-                        "entries": [
-                            "Kuworsys lashes out at the triggering creature, attempting to swat it to the ground. Kuworsys attempts a melee {@action Strike} against the creature. If the Strike hits, the creature's movement is interrupted. The creature is knocked to the ground; on a critical hit, they also can't Fly again for 1 minute."
-                        ]
+						"trigger":"A creature within 10 feet of Kuworsys uses an action to {@action Fly}",
+						"requirements": "Kuworsys is Reared Back",
+						"entries": [
+							"Kuworsys lashes out at the triggering creature, attempting to swat it to the ground. Kuworsys attempts a melee {@action Strike} against the creature. If the Strike hits, the creature's movement is interrupted. The creature is knocked to the ground; on a critical hit, they also can't Fly again for 1 minute."
+						]
 					}
 				],
 				"bot": [
@@ -3441,11 +3440,11 @@
 						"traits": [
 							"disease"
 						],
-                        "generic": {
-                            "tag": "ability",
-                            "name": "Addictive Exhaustion",
-                            "source": "LOMM"
-                        },
+						"generic": {
+							"tag": "ability",
+							"name": "Addictive Exhaustion",
+							"source": "LOMM"
+						},
 						"entries": [
 							"DC 32"
 						]
@@ -3456,9 +3455,9 @@
 							"unit": "action",
 							"number": 2
 						},
-                        "entries": [
-                            "Kuworsys releases a choking field of spores within a 30-foot radius, continuing to release them  until the end of its next turn. Creatures who begin their turns within the area of the spores, or who enter the area, must attempt a DC 32 Fortitude save. On a failure, the creature becomes afflicted with {@disease addictive exhaustion|LOMM}. Kuworsys then can't use its Infectious Spores again for {@dice 1d4} rounds."
-                        ]
+						"entries": [
+							"Kuworsys releases a choking field of spores within a 30-foot radius, continuing to release them until the end of its next turn. Creatures who begin their turns within the area of the spores, or who enter the area, must attempt a DC 32 Fortitude save. On a failure, the creature becomes afflicted with {@disease addictive exhaustion|LOMM}. Kuworsys then can't use its Infectious Spores again for {@dice 1d4} rounds."
+						]
 					},
 					{
 						"name": "Gauge Potential",
@@ -3466,9 +3465,9 @@
 							"unit": "action",
 							"number": 1
 						},
-                        "entries": [
-                            "Kuworsys studies a creature it can see, attempting to predict its actions. The creature attempts a DC 32 Will save. On a failed save, Kuworsys predicts the creature's moves, gaining a +2 circumstance bonus to attack rolls and AC against the target creature for 1 minute."
-                        ]
+						"entries": [
+							"Kuworsys studies a creature it can see, attempting to predict its actions. The creature attempts a DC 32 Will save. On a failed save, Kuworsys predicts the creature's moves, gaining a +2 circumstance bonus to attack rolls and AC against the target creature for 1 minute."
+						]
 					},
 					{
 						"name": "Rear Back",
@@ -3476,9 +3475,9 @@
 							"unit": "action",
 							"number": 1
 						},
-                        "entries": [
-                            "Kuworsys stands on its two hind limbs, bringing its other four limbs to bear on its foes. Kuworsys stays Reared Back until it uses a single action to return to its normal stance. While Kuworsys is Reared Back, it is {@condition clmusy||clumsy 1} but can use its Pinion and Yank abilities."
-                        ]
+						"entries": [
+							"Kuworsys stands on its two hind limbs, bringing its other four limbs to bear on its foes. Kuworsys stays Reared Back until it uses a single action to return to its normal stance. While Kuworsys is Reared Back, it is {@condition clmusy||clumsy 1} but can use its Pinion and Yank abilities."
+						]
 					},
 					{
 						"name": "Yank",
@@ -3486,10 +3485,10 @@
 							"unit": "action",
 							"number": 2
 						},
-                        "requirements": "Kuworsys is Reared Back",
-                        "entries": [
-                            "Kuworsys makes a melee limb {@action Strike} against a creature and, on a success, attempts to steal the creature's weapon from its hands. Kuworsys attempts a {@skill Thievery} check against the target's Reflex DC.",
-                            {
+						"requirements": "Kuworsys is Reared Back",
+						"entries": [
+							"Kuworsys makes a melee limb {@action Strike} against a creature and, on a success, attempts to steal the creature's weapon from its hands. Kuworsys attempts a {@skill Thievery} check against the target's Reflex DC.",
+							{
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The creature's weapon falls to the floor in the creature's space.",
@@ -3498,7 +3497,7 @@
 									"Critical Failure": "The creature can use a reaction to attempt a melee {@action Strike} against Kuworsys with the weapon Kuworsys attempted to grab."
 								}
 							}
-                        ]
+						]
 					}
 				]
 			},
@@ -3514,7 +3513,7 @@
 					"traits": [
 						"finesse",
 						"reach <15 feet>",
-                        "shove"
+						"shove"
 					],
 					"damage": "{@damage 3d12+7} bludgeoning",
 					"types": [
@@ -3537,7 +3536,7 @@
 				}
 			]
 		},
-        {
+		{
 			"name": "Melfesh Monster",
 			"isNpc": false,
 			"source": "LOMM",
@@ -3563,9 +3562,9 @@
 					"aklo",
 					"sylvan"
 				],
-                "abilities": [
-                    "telepathy 100 feet"
-                ]
+				"abilities": [
+					"telepathy 100 feet"
+				]
 			},
 			"skills": {
 				"acrobatics": {
@@ -3612,7 +3611,7 @@
 						"name": "fire",
 						"amount": 5
 					},
-                    {
+					{
 						"name": "poison",
 						"amount": 5
 					}
@@ -3630,17 +3629,17 @@
 				"mid": [
 					{
 						"name": "Terrorspores",
-                        "traits": [
+						"traits": [
 							"aura",
 							"emotion",
 							"fear",
-                            "inhaled",
-                            "mental",
-                            "poison"
+							"inhaled",
+							"mental",
+							"poison"
 						],
 						"entries": [
 							"60 feet. A creature that enters the emanation must attempt a DC 21 Will save. Regardless of outcome, the creature is temporarily immune to terrorspores for 1 minute.",
-                            {
+							{
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The creature is unaffected.",
@@ -3651,13 +3650,13 @@
 							}
 						]
 					},
-                    {
+					{
 						"name": "Reactive Spores",
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-                        "trigger": "The Melfesh Monster takes physical damage",
+						"trigger": "The Melfesh Monster takes physical damage",
 						"entries": [
 							"The Melfesh Monster shifts plant matter to blunt the attack. It gains resistance 5 against the triggering physical damage."
 						]
@@ -3674,44 +3673,44 @@
 							"The Melfesh Monster attempts to {@action Grapple} a creature within reach. On a success, the creature is pulled into the Monster's body. The Melfesh Monster is {@condition slowed||slowed 1} while it envelops a creature, and this otherwise has the effects of {@ability Swallow Whole} (the Melfesh Monster's size or smaller, {@damage 1d10} bludgeoning and {@damage 1d12} poison, Rupture 15)."
 						]
 					},
-                    {
+					{
 						"name": "Fulminate",
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
-                        "traits": [
+						"traits": [
 							"fire"
 						],
-                        "requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
+						"requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
 						"entries": [
 							"The Melfesh Monster targets the cloud with one of its abilities with the {@trait fire} trait. The spore cloud explodes, dealing {@damage 4d10} fire damage and {@damage 4} persistent fire damage in a 40-foot burst originating from a single square within the cloud (DC 24 basic Reflex)."
 						]
 					},
-                    {
+					{
 						"name": "Spore Cloud",
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
-                        "traits": [
+						"traits": [
 							"inhaled",
-                            "poison"
+							"poison"
 						],
-                        "frequency": {
+						"frequency": {
 							"unit": "minute",
 							"freq": 1
 						},
-                        "requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
+						"requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
 						"entries": [
-							"The Melfesh Monster conjures a cloud of spores within 60 feet in a 20-foot burst. The cloud lasts 1 minute. Creatures that enter or begin their turn within the cloud must succeed at a DC 21 Fortitude save or take {@damage 3d8} poison damage, be {@condition sickened||sickened 2}, and inhale spores that remain in their bodies for 1 minute (on a critical failure,  sickened 3 and an additional {@damage 4} persistent poison damage)."
+							"The Melfesh Monster conjures a cloud of spores within 60 feet in a 20-foot burst. The cloud lasts 1 minute. Creatures that enter or begin their turn within the cloud must succeed at a DC 21 Fortitude save or take {@damage 3d8} poison damage, be {@condition sickened||sickened 2}, and inhale spores that remain in their bodies for 1 minute (on a critical failure, sickened 3 and an additional {@damage 4} persistent poison damage)."
 						]
 					}
 				]
 			},
 			"speed": {
 				"walk": 25,
-                "fly": 30
+				"fly": 30
 			},
 			"attacks": [
 				{
@@ -3738,14 +3737,14 @@
 						"bludgeoning"
 					]
 				},
-                {
+				{
 					"range": "Ranged",
 					"name": "firelance",
 					"attack": 15,
 					"traits": [
 						"range <30 feet>",
-                        "magical",
-                        "fire"
+						"magical",
+						"fire"
 					],
 					"damage": "{@damage 2d8+2} fire",
 					"types": [
@@ -3754,7 +3753,7 @@
 				}
 			]
 		},
-        {
+		{
 			"name": "Mosquito Witch",
 			"isNpc": false,
 			"source": "LOMM",
@@ -3770,12 +3769,12 @@
 				"std": 22
 			},
 			"senses": [
-                {
-                    "name": "darkvision"
-                },
+				{
+					"name": "darkvision"
+				},
 				{
 					"type": "imprecise",
-                    "name": "swarmsense",
+					"name": "swarmsense",
 					"range": 30
 				}
 			],
@@ -3783,12 +3782,12 @@
 				"languages": [
 					"aklo",
 					"auran",
-                    "common",
-                    "sylvan"
+					"common",
+					"sylvan"
 				],
-                "abilities": [
-                    "{@spell speak with animals}"
-                ]
+				"abilities": [
+					"{@spell speak with animals}"
+				]
 			},
 			"skills": {
 				"acrobatics": {
@@ -3803,7 +3802,7 @@
 				"medicine": {
 					"std": 19
 				},
-                "nature": {
+				"nature": {
 					"std": 21
 				},
 				"occultism": {
@@ -3812,7 +3811,7 @@
 				"stealth": {
 					"std": 22
 				},
-                "survival": {
+				"survival": {
 					"std": 21
 				}
 			},
@@ -3843,7 +3842,7 @@
 					}
 				],
 				"immunities": [
-                    "disease"
+					"disease"
 				]
 			},
 			"abilities": {
@@ -3854,7 +3853,7 @@
 							"The Mosquito Witch receives constant updates from nearby insects and can use her touch as an imprecise sense at the listed range as long as there are insects around to guide her."
 						]
 					},
-                    {
+					{
 						"name": "Wild Empathy",
 						"entries": [
 							"The Mosquito Witch can use {@skill Diplomacy} to {@action Make an Impression} on and make {@action request||Requests} of arthropods (insects, spiders, and similar invertebrates like {@creature bloodseekers|B1}). Most arthropods have a starting attitude of indifferent to the Mosquito Witch."
@@ -3864,13 +3863,13 @@
 				"mid": [
 					{
 						"name": "Haunting Gaze",
-                        "traits": [
+						"traits": [
 							"aura",
 							"emotion",
 							"enchantment",
-                            "fear",
-                            "mental",
-                            "visual"
+							"fear",
+							"mental",
+							"visual"
 						],
 						"entries": [
 							"30 feet. When a creature ends its turn in the emanation, it must attempt a DC 29 Will save. If the creature fails, it becomes {@condition frightened||frightened 1}. If it's already frightened, its frightened value instead increases by 1 (maximum frightened 3) and doesn't decrease by 1 at the end of the creature's next turn. If a creature's frightened value is 3 or higher before failing its save, the creature is also {@condition fleeing} for 1 round."
@@ -3905,7 +3904,7 @@
 							}
 						]
 					},
-                    {
+					{
 						"name": "Terror from Within",
 						"entries": [
 							"The Mosquito Witch's powers feed on fear. When taking bleed or piercing damage dealt by the Mosquito Witch's bleed and dipteric dread, a creature takes additional damage equal to twice the creature's {@condition frightened} value."
@@ -3915,8 +3914,8 @@
 			},
 			"speed": {
 				"walk": 30,
-                "climb": 30,
-                "fly": 25
+				"climb": 30,
+				"fly": 25
 			},
 			"attacks": [
 				{
@@ -3925,12 +3924,12 @@
 					"attack": 23,
 					"traits": [
 						"agile",
-                        "finesse"
+						"finesse"
 					],
 					"damage": "{@damage 2d12+8} piercing plus {@damage 1d8} {@condition persistent damage||persistent bleed damage}",
 					"types": [
 						"piercing",
-                        "persistent"
+						"persistent"
 					]
 				},
 				{
@@ -3940,9 +3939,9 @@
 					"traits": [
 						"range increment <30 feet>"
 					],
-                    "effects": [
-                        "dipteric dread"
-                    ],
+					"effects": [
+						"dipteric dread"
+					],
 					"damage": "{@damage 2d10+6} piercing plus dipteric dread",
 					"types": [
 						"piercing"
@@ -3956,7 +3955,7 @@
 					"tradition": "primal",
 					"DC": 29,
 					"entry": {
-                        "0": {
+						"0": {
 							"level": 5,
 							"spells": [
 								{
@@ -3978,7 +3977,7 @@
 								}
 							]
 						},
-                        "4": {
+						"4": {
 							"spells": [
 								{
 									"name": "pest form",
@@ -3991,14 +3990,14 @@
 								{
 									"name": "tree stride"
 								},
-                                {
+								{
 									"name": "vomit swarm",
-                                    "source": "APG",
+									"source": "APG",
 									"amount": "2"
 								}
 							]
 						},
-                        "constant": {
+						"constant": {
 							"2": {
 								"spells": [
 									{
