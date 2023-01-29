@@ -1630,7 +1630,7 @@
 				]
 			},
 			"skills": {
-				"acrobatic": {
+				"acrobatics": {
 					"std": 28
 				},
 				"athletics": {
@@ -1854,7 +1854,7 @@
 				]
 			},
 			"skills": {
-				"acrobatic": {
+				"acrobatics": {
 					"std": 22
 				},
 				"athletics": {
@@ -2644,7 +2644,7 @@
 				"std": 14
 			},
 			"skills": {
-				"acrobatic": {
+				"acrobatics": {
 					"std": 15
 				},
 				"athletics": {
@@ -3269,20 +3269,6 @@
 							"Krampus designates a single target he can see as \"naughty.\" He gains a +2 circumstance bonus to {@skill Perception} checks when he Seeks the naughty target and a +2 circumstance bonus to {@skill Survival} checks to {@action Track} the naughty target. On melee attacks against the naughty target, Krampus's spiked chain gains the {@trait agile} trait. In addition, when Krampus Grabs the naughty target, he can attempt to Capture them as a free action. Krampus can have only one naughty target at a time."
 						],
 						"name": "Punish the Naughty"
-					},
-					{
-						"traits": [
-							"curse",
-							"polymorph",
-							"primal",
-							"transmutation"
-						],
-						"entries": [
-							"A creature that starts their turn Captured in Krampus's basket must attempt a DC 44 Fortitude save or be regressed back to their childhood. The target shrinks one size. In addition, all of the target's proficiencies of expert and better are reduced to trained, which might restrict the use of certain feats.",
-							"The effect persists for 24 hours, after which the target regains their normal size and their proficiencies return to normal. A creature currently under the effects of regression can't be further affected by this ability.",
-							"Snowstep Krampus ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} caused by snow and ice, and he leaves no tracks when moving through areas of snow or ice."
-						],
-						"name": "Regression"
 					}
 				]
 			},
@@ -3303,8 +3289,7 @@
 				},
 				"hp": [
 					{
-						"hp": 380,
-						"abilities": null
+						"hp": 380
 					}
 				],
 				"immunities": [
@@ -3324,6 +3309,707 @@
 					}
 				]
 			}
+		},
+        {
+			"name": "Kuworsys",
+			"isNpc": false,
+			"source": "LOMM",
+			"page": 64,
+			"level": 12,
+			"traits": [
+				"unique",
+				"le",
+				"large",
+				"aberration"
+			],
+			"perception": {
+				"std": 22,
+                "vs traps": 26
+			},
+			"senses": [
+				{
+					"type": "imprecise",
+					"name": "infect scent",
+					"range": 60
+				}
+			],
+            
+			"items": [
+				"{@runeItem sling||+1 weapon potency||striking|} (10 {@item sling bullets}, 3 {@item standard explosive ammunition||explosive ammunition}, 3 {@item freezing ammunition}"
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 25
+				},
+				"athletics": {
+					"std": 22
+				},
+				"crafting": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 28
+				},
+				"thievery": {
+					"std": 28
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 8,
+				"con": 5,
+				"int": 7,
+				"wis": 5,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": 34,
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 213
+					}
+				],
+				"immunities": [
+					"bleed"
+				],
+				"weaknesses": [
+					{
+						"name": "acid",
+						"amount": 10
+					},
+                    {
+						"name": "fire",
+						"amount": 10
+					}
+				],
+                "resistances": [
+					{
+						"name": "poison",
+						"amount": 15
+					}
+				]
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Infect Scent",
+						"entries": [
+							"Kuworsys can smell creatures infected with {@disease addictive exhaustion|LOMM}, as the {@ability scent} ability."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Searing Skin",
+						"traits": [
+							"aura",
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"5 feet. Cuetzmonquali's flesh burns as hot as flame. Creatures that end their turn in the emanation take {@damage 4d6} fire damage (DC 35 basic Fortitude save)."
+						]
+					},
+					{
+						"name": "Pinion",
+						"activity": {
+							"unit": "reaction",
+							"number": 1
+						},
+                        "trigger":"A creature within 10 feet of Kuworsys uses an action to {@action Fly}",
+                        "requirements": "Kuworsys is Reared Back",
+                        "entries": [
+                            "Kuworsys lashes out at the triggering creature, attempting to swat it to the ground. Kuworsys attempts a melee {@action Strike} against the creature. If the Strike hits, the creature's movement is interrupted. The creature is knocked to the ground; on a critical hit, they also can't Fly again for 1 minute."
+                        ]
+					}
+				],
+				"bot": [
+					{
+						"name": "Addictive Exhaustion",
+						"traits": [
+							"disease"
+						],
+                        "generic": {
+                            "tag": "ability",
+                            "name": "Addictive Exhaustion",
+                            "source": "LOMM"
+                        },
+						"entries": [
+							"DC 32"
+						]
+					},
+					{
+						"name": "Infectious Spores",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+                        "entries": [
+                            "Kuworsys releases a choking field of spores within a 30-foot radius, continuing to release them  until the end of its next turn. Creatures who begin their turns within the area of the spores, or who enter the area, must attempt a DC 32 Fortitude save. On a failure, the creature becomes afflicted with {@disease addictive exhaustion|LOMM}. Kuworsys then can't use its Infectious Spores again for {@dice 1d4} rounds."
+                        ]
+					},
+					{
+						"name": "Gauge Potential",
+						"activity": {
+							"unit": "action",
+							"number": 1
+						},
+                        "entries": [
+                            "Kuworsys studies a creature it can see, attempting to predict its actions. The creature attempts a DC 32 Will save. On a failed save, Kuworsys predicts the creature's moves, gaining a +2 circumstance bonus to attack rolls and AC against the target creature for 1 minute."
+                        ]
+					},
+					{
+						"name": "Rear Back",
+						"activity": {
+							"unit": "action",
+							"number": 1
+						},
+                        "entries": [
+                            "Kuworsys stands on its two hind limbs, bringing its other four limbs to bear on its foes. Kuworsys stays Reared Back until it uses a single action to return to its normal stance. While Kuworsys is Reared Back, it is {@condition clmusy||clumsy 1} but can use its Pinion and Yank abilities."
+                        ]
+					},
+					{
+						"name": "Yank",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+                        "requirements": "Kuworsys is Reared Back",
+                        "entries": [
+                            "Kuworsys makes a melee limb {@action Strike} against a creature and, on a success, attempts to steal the creature's weapon from its hands. Kuworsys attempts a {@skill Thievery} check against the target's Reflex DC.",
+                            {
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature's weapon falls to the floor in the creature's space.",
+									"Success": "Until the start of that creature's turn, attempts to {@action Disarm} the creature of its weapon gain a +2 circumstance bonus, and the target takes a \u20132 circumstance penalty to attacks with the weapon or other checks requiring a firm grasp on the weapon.",
+									"Failure": "The creature is unaffected.",
+									"Critical Failure": "The creature can use a reaction to attempt a melee {@action Strike} against Kuworsys with the weapon Kuworsys attempted to grab."
+								}
+							}
+                        ]
+					}
+				]
+			},
+			"speed": {
+				"walk": 35,
+				"climb": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "limb",
+					"attack": 27,
+					"traits": [
+						"finesse",
+						"reach <15 feet>",
+                        "shove"
+					],
+					"damage": "{@damage 3d12+7} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "sling",
+					"attack": 28,
+					"traits": [
+						"propulsive",
+						"range increment <50 feet>",
+						"reload <1>"
+					],
+					"damage": "{@damage 2d6+13} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			]
+		},
+        {
+			"name": "Melfesh Monster",
+			"isNpc": false,
+			"source": "LOMM",
+			"page": 70,
+			"level": 6,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"fungus"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "sporesight",
+					"range": 100
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"sylvan"
+				],
+                "abilities": [
+                    "telepathy 100 feet"
+                ]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 11
+				},
+				"athletics": {
+					"std": 13
+				},
+				"nature": {
+					"std": 13
+				},
+				"survival": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 4,
+				"int": 1,
+				"wis": 2,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": 23,
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 78
+					}
+				],
+				"resistances": [
+					{
+						"name": "fire",
+						"amount": 5
+					},
+                    {
+						"name": "poison",
+						"amount": 5
+					}
+				]
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Sporesight",
+						"entries": [
+							"If a creature has inhaled any of the Melfesh Monster's spores, the Melfesh Monster can sense the creature at the listed range."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Terrorspores",
+                        "traits": [
+							"aura",
+							"emotion",
+							"fear",
+                            "inhaled",
+                            "mental",
+                            "poison"
+						],
+						"entries": [
+							"60 feet. A creature that enters the emanation must attempt a DC 21 Will save. Regardless of outcome, the creature is temporarily immune to terrorspores for 1 minute.",
+                            {
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition frightened||frightened 1} and inhales spores that remain in its body for 1 minute.",
+									"Failure": "As success, but {@condition frightened||frightened 2} and the spores remain for 1 hour.",
+									"Critical Failure": "As success, but {@condition frightened||frightened 3}, the spores remain for 1 hour, and the creature's frightened condition can't be reduced below 1 as long as spores remain in its body."
+								}
+							}
+						]
+					},
+                    {
+						"name": "Reactive Spores",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+                        "trigger": "The Melfesh Monster takes physical damage",
+						"entries": [
+							"The Melfesh Monster shifts plant matter to blunt the attack. It gains resistance 5 against the triggering physical damage."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Envelop",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The Melfesh Monster attempts to {@action Grapple} a creature within reach. On a success, the creature is pulled into the Monster's body. The Melfesh Monster is {@condition slowed||slowed 1} while it envelops a creature, and this otherwise has the effects of {@ability Swallow Whole} (the Melfesh Monster's size or smaller, {@damage 1d10} bludgeoning and {@damage 1d12} poison, Rupture 15)."
+						]
+					},
+                    {
+						"name": "Fulminate",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+                        "traits": [
+							"fire"
+						],
+                        "requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
+						"entries": [
+							"The Melfesh Monster targets the cloud with one of its abilities with the {@trait fire} trait. The spore cloud explodes, dealing {@damage 4d10} fire damage and {@damage 4} persistent fire damage in a 40-foot burst originating from a single square within the cloud (DC 24 basic Reflex)."
+						]
+					},
+                    {
+						"name": "Spore Cloud",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+                        "traits": [
+							"inhaled",
+                            "poison"
+						],
+                        "frequency": {
+							"unit": "minute",
+							"freq": 1
+						},
+                        "requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
+						"entries": [
+							"The Melfesh Monster conjures a cloud of spores within 60 feet in a 20-foot burst. The cloud lasts 1 minute. Creatures that enter or begin their turn within the cloud must succeed at a DC 21 Fortitude save or take {@damage 3d8} poison damage, be {@condition sickened||sickened 2}, and inhale spores that remain in their bodies for 1 minute (on a critical failure,  sickened 3 and an additional {@damage 4} persistent poison damage)."
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+                "fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "limb",
+					"attack": 16,
+					"traits": [
+						"versatile <P or S>"
+					],
+					"damage": "{@damage 2d12+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fungal limb",
+					"attack": 16,
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 2d8+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+                {
+					"range": "Ranged",
+					"name": "firelance",
+					"attack": 15,
+					"traits": [
+						"range <30 feet>",
+                        "magical",
+                        "fire"
+					],
+					"damage": "{@damage 2d8+2} fire",
+					"types": [
+						"fire"
+					]
+				}
+			]
+		},
+        {
+			"name": "Mosquito Witch",
+			"isNpc": false,
+			"source": "LOMM",
+			"page": 76,
+			"level": 10,
+			"traits": [
+				"unique",
+				"cn",
+				"medium",
+				"fey"
+			],
+			"perception": {
+				"std": 22
+			},
+			"senses": [
+                {
+                    "name": "darkvision"
+                },
+				{
+					"type": "imprecise",
+                    "name": "swarmsense",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"auran",
+                    "common",
+                    "sylvan"
+				],
+                "abilities": [
+                    "{@spell speak with animals}"
+                ]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 18
+				},
+				"diplomacy": {
+					"std": 18
+				},
+				"intimidation": {
+					"std": 20
+				},
+				"medicine": {
+					"std": 19
+				},
+                "nature": {
+					"std": 21
+				},
+				"occultism": {
+					"std": 15
+				},
+				"stealth": {
+					"std": 22
+				},
+                "survival": {
+					"std": 21
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 6,
+				"con": 3,
+				"int": 3,
+				"wis": 7,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": 30,
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 20
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 180
+					}
+				],
+				"immunities": [
+                    "disease"
+				]
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Swarmsense",
+						"entries": [
+							"The Mosquito Witch receives constant updates from nearby insects and can use her touch as an imprecise sense at the listed range as long as there are insects around to guide her."
+						]
+					},
+                    {
+						"name": "Wild Empathy",
+						"entries": [
+							"The Mosquito Witch can use {@skill Diplomacy} to {@action Make an Impression} on and make {@action request||Requests} of arthropods (insects, spiders, and similar invertebrates like {@creature bloodseekers|B1}). Most arthropods have a starting attitude of indifferent to the Mosquito Witch."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Haunting Gaze",
+                        "traits": [
+							"aura",
+							"emotion",
+							"enchantment",
+                            "fear",
+                            "mental",
+                            "visual"
+						],
+						"entries": [
+							"30 feet. When a creature ends its turn in the emanation, it must attempt a DC 29 Will save. If the creature fails, it becomes {@condition frightened||frightened 1}. If it's already frightened, its frightened value instead increases by 1 (maximum frightened 3) and doesn't decrease by 1 at the end of the creature's next turn. If a creature's frightened value is 3 or higher before failing its save, the creature is also {@condition fleeing} for 1 round."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Dipteric Dread",
+						"type": "affliction",
+						"DC": 29,
+						"savingThrow": "Fortitude",
+						"traits": [
+							"poison"
+						],
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} piercing and {@damage 2d6} poison",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d6} piercing and {@damage 3d6} poison",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 2d6} piercing and {@damage 5d6} poison",
+								"duration": "1 round"
+							}
+						]
+					},
+                    {
+						"name": "Terror from Within",
+						"entries": [
+							"The Mosquito Witch's powers feed on fear. When taking bleed or piercing damage dealt by the Mosquito Witch's bleed and dipteric dread, a creature takes additional damage equal to twice the creature's {@condition frightened} value."
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+                "climb": 30,
+                "fly": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "bite",
+					"attack": 23,
+					"traits": [
+						"agile",
+                        "finesse"
+					],
+					"damage": "{@damage 2d12+8} piercing plus {@damage 1d8} {@condition persistent damage||persistent bleed damage}",
+					"types": [
+						"piercing",
+                        "persistent"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "swarm strike",
+					"attack": 23,
+					"traits": [
+						"range increment <30 feet>"
+					],
+                    "effects": [
+                        "dipteric dread"
+                    ],
+					"damage": "{@damage 2d10+6} piercing plus dipteric dread",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 29,
+					"entry": {
+                        "0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "dancing lights"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "animal messenger"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "animal vision"
+								}
+							]
+						},
+                        "4": {
+							"spells": [
+								{
+									"name": "pest form",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "tree stride"
+								},
+                                {
+									"name": "vomit swarm",
+                                    "source": "APG",
+									"amount": "2"
+								}
+							]
+						},
+                        "constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									}
+								]
+							}
+						}
+					}
+				}
+			]
 		}
 	]
 }
