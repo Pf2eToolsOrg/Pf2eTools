@@ -4584,7 +4584,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 3d10+16} bludgeoning plus Grab",
+					"damage": "{@damage 3d10+16} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -5365,7 +5365,7 @@
 					"effects": [
 						"Improved {@ability Grab}"
 					],
-					"damage": "{@damage 3d12+17} bludgeoning plus Improved {@ability Grab}",
+					"damage": "{@damage 3d12+17} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -5533,7 +5533,7 @@
 					"effects": [
 						"Improved"
 					],
-					"damage": "{@damage 2d12+9} bludgeoning plus {@damage 1d8} fire and Improved",
+					"damage": "{@damage 2d12+9} bludgeoning plus {@damage 1d8} fire and {@ability Improved Grab}",
 					"types": [
 						"bludgeoning",
 						"fire"
@@ -5550,13 +5550,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [],
-						"name": "Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -5691,7 +5684,20 @@
 							"magical"
 						],
 						"entries": [
-							"Each enemy in the animated silverware swarm's space takes {@damage 1d6} piercing or slashing damage (DC 17 basic Reflex save) Stick a Fork in It {@as 1} The animated silverware swarm attempts to pin a single creature. The target must attempt a DC 17 Reflex save.",
+							"Each enemy in the animated silverware swarm's space takes {@damage 1d6} piercing or slashing damage (DC 17 basic Reflex save)."
+						],
+						"name": "Slice and Dice"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"magical"
+						],
+						"entries": [
+							"The animated silverware swarm attempts to pin a single creature. The target must attempt a DC 17 Reflex save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -5702,7 +5708,7 @@
 								}
 							}
 						],
-						"name": "Slice and Dice"
+						"name": "Stick a Fork in It"
 					}
 				]
 			},
@@ -6377,7 +6383,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@damage 2d6+8} bludgeoning plus",
+					"damage": "{@damage 2d6+8} bludgeoning plus {@ability Knockdown}",
 					"types": [
 						"bludgeoning"
 					]
@@ -6429,17 +6435,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [],
-						"name": "Knockdown",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -8185,20 +8180,19 @@
 						"entries": [
 							"The bone ship is compelled not by a single mind, but by the collective consciousness of dead sailors' souls. The ship is immune to {@trait mental} effects that target only a specific number of creatures. It's still subject to {@trait mental} effects that affect all creatures in an area. Any creature that tries to communicate with the ship via telepathy or read its thoughts hears the {@condition dying} screams and gasps of the crew, and is targeted with a 9th-level {@spell warp mind} spell (DC 41)",
 							"The ship animates skeletal crew members out of its own bones, arming them with rusty old cutlasses or other armaments so they can attack anyone who comes next to the ship. These entities have appearances matching those the bound souls had in life but aren't truly individuals; anything that targets them in fact targets the bone ship they're a part of.",
-							{
-								"type": "list",
-								"items": [
-									"{@bold Captain Aster's} Eulogy",
-									"{@bold Crimson} Mirage",
-									"{@bold Starved} Whale",
-									"{@bold Horseman's} Herald",
-									"Wail upon the Winds Hundreds of black soul gems decorate the ship's exterior, each holding one soul"
-								]
-							},
-							"These gems can hold souls of creatures whose level was 16th or lower, and they have no value. If the ship is destroyed, all these gems shatter, freeing the souls within.",
+							"Hundreds of black soul gems decorate the ship's exterior, each holding one soul. These gems can hold souls of creatures whose level was 16th or lower, and they have no value. If the ship is destroyed, all these gems shatter, freeing the souls within.",
 							"Trawl for Bones (downtime) The bone ship spends 1 day scavenging bones from the sea and restores itself to full Hit Points."
 						],
 						"name": "Skeleton Crew"
+					},
+					{
+						"traits": [
+							"downtime"
+						],
+						"entries": [
+							"The bone ship spends 1 day scavenging bones from the sea and restores itself to full Hit Points."
+						],
+						"name": "Trawl for Bones"
 					}
 				],
 				"mid": [
@@ -8260,6 +8254,19 @@
 							"As Trample (Huge or smaller, hull, DC 43, page 306), but the bone ship Swims up to double its swim."
 						],
 						"name": "Keelhaul"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"The bone ship casts {@spell bind soul}. The target must have died due to the bone ship's assault or from drowning. The creature's soul becomes part of the ghostly crew. A new soul gem grows on the ship, and the bone ship is {@condition quickened} for 1 minute. It can use the extra action only to {@action Strike} or {@action Swim}."
+						],
+						"name": "Pressgang Soul"
 					}
 				]
 			},
@@ -10375,7 +10382,7 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d4+7} bludgeoning plus",
+					"damage": "{@damage 2d4+7} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -10383,13 +10390,6 @@
 			],
 			"abilities": {
 				"bot": [
-					{
-						"entries": [],
-						"name": "Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -10501,7 +10501,7 @@
 						"finesse",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 2d8} negative plus {@damage 2d6} fire plus",
+					"damage": "{@damage 2d8} negative plus {@damage 2d6} fire plus {@ability Grab}",
 					"types": [
 						"fire",
 						"negative"
@@ -10553,17 +10553,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"generic": {
-							"tag": "ability"
-						},
-						"entries": [],
-						"name": "Grab"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -13881,6 +13870,24 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Divine Domain",
+					"type": "Focus",
+					"fp": 1,
+					"DC": 19,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "cry of destruction"
+								},
+								{
+									"name": "protector's sacrifice"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
@@ -13896,7 +13903,7 @@
 						"name": "Divine Destruction"
 					},
 					{
-						"entries": [],
+						"entries": ["A divine warden can't attack a creature that openly wears or displays the religious symbol of the divine warden's patron deity unless that creature uses a hostile action against the divine warden first. If the divine warden is intelligent, it can also attack a creature it believes isn't faithful to its deity or who wears the religious symbol as a ruse (typically after succeeding at a Perception check to Sense Motive)"],
 						"name": "Faith Bound"
 					}
 				],
@@ -13908,7 +13915,7 @@
 						"name": "Faithful Weapon"
 					},
 					{
-						"entries": [],
+						"entries": ["The divine warden is a beacon for its deity's faith. A cleric of the divine warden's patron deity can channel a {@spell heal} spell through a divine warden they can see within 60 feet. The cleric determines any targets or area for the spell as if they were standing in the divine warden's space."],
 						"name": "Instrument of Faith"
 					}
 				]
@@ -15108,7 +15115,7 @@
 				"top": [
 					{
 						"entries": [
-							"At the start of each of the dretch's turns, roll {@dice 1d4}. The result is the number of actions the dretch regains that turn (maximum 3). s like the {@condition slowed} condition can further reduce their number of actions."
+							"At the start of each of the dretch's turns, roll {@dice 1d4}. The result is the number of actions the dretch regains that turn (maximum 3). Effects like the {@condition slowed} condition can further reduce their number of actions."
 						],
 						"name": "Sloth"
 					}
@@ -15998,6 +16005,30 @@
 					]
 				}
 			],
+			"spellcasting": [
+				{
+					"name": "Champion Devotion",
+					"type": "Focus",
+					"fp": 2,
+					"DC": 29,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "weapon surge"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "word of freedom"
+								}
+							]
+						}
+					}
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -16053,26 +16084,6 @@
 							"The einherji Repairs their shield. They can't use this ability if the shield is completely destroyed."
 						],
 						"name": "Instant Repair"
-					},
-					{
-						"entries": [
-							"Wisps are tiny elemental beings that emerged during the creation of the Elemental."
-						],
-						"name": "Elemental, Wisp"
-					},
-					{
-						"entries": [
-							"The first wisps roamed the Inner Sphere in shifting symphonies that traded members with their every meeting. These symphonies of free wisps created music out of their combined resonances, but when the evil Elemental Lords realized the value of the wisps' resonance, they captured whole symphonies for use as servants.",
-							"Wisps attune to each other and to those they surround themselves with. This attunement makes them naturally supportive allies. Free wisps still roam the."
-						],
-						"name": "Planes."
-					},
-					{
-						"entries": [
-							"Plane, but they're usually shy and hide themselves from strangers. However, they happily offer their service to those who show them kindness. They especially find themselves drawn to spellcasters who practice elemental magic; these wisps usually watch from afar but sometimes approach those who seem safe to become familiars or comrades.",
-							"Free wisps who find one another become close almost immediately. They get especially excited when they find wisps of elements other than their own, showing none of the animosity some elementals exhibit toward other types. Instead, they join in an excited dance, emitting resonances that faintly echo the symphonies of ancient days."
-						],
-						"name": "Inner Sphere and the Material"
 					}
 				]
 			},
