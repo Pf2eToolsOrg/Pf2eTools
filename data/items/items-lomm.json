@@ -259,6 +259,10 @@
 				"invested",
 				"primal"
 			],
+			"price": {
+				"coin": "gp",
+				"amount": 22000
+			},
 			"usage": "worn cloak",
 			"bulk": "L",
 			"category": "Worn",
@@ -426,6 +430,88 @@
 								"The pin transforms into {@creature Krampus (The Horned Miser)|LOMM|Krampus}, who appears in an adjacent space and knows of your misdeeds while wearing the pin."
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gamepiece Chariot",
+			"source": "LOMM",
+			"page": 65,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"rare",
+				"conjuration",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1200
+			},
+			"usage": "held in one hand",
+			"bulk": "-",
+			"category": "Held",
+			"entries": [
+				"This stone figurine of a chariot pulled by two horses was used by Tekritanin adults during strategy game competitions. Sometimes, though, mischievous adolescents snatched pieces like this one for joyriding.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1,
+						"number": "once"
+					},
+					"entries": [
+						"You place the figurine on the ground and roll it forward. As the chariot begins to move, it rapidly expands to the size of a Large {@vehicle heavy chariot} pulled by two animated stone {@creature war horse||war horses}. You can board the chariot and drive it up to 80 feet in a straight line. You can move through spaces occupied by creatures of size Medium or smaller, dealing {@damage 4d8+10} bludgeoning damage to those creatures. Affected creatures must attempt a DC 28 basic Reflex save; on a failure, a creature is knocked {@condition prone}. The chariot returns to its figurine form once it stops moving."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sandstorm Top",
+			"source": "LOMM",
+			"page": 65,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 3000
+			},
+			"usage": "held in one hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"On Tekritanin holidays, children reenacted legendary battles of deities by playing with magical tops. Though the paint on this wooden top has long since faded, its magical runes once gleamed yellow-gold and fiery orange, evoking the color of the sky during a sandstorm. To set the top in motion, wind a string around its bottom and upward along its body, and then throw it while gripping the string.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1,
+						"number": "once"
+					},
+					"entries": [
+						"You throw the sandstorm top 10 feet away from you. For 1 minute, as it spins, the top generates a magical sandstorm in a 5-foot radius. Any creature that starts its turn in the area or moves into the area takes {@damage 4d6} slashing damage (DC 30 basic Reflex save). Additionally, a creature within the sandstorm must hold its breath or begin {@quickref suffocating||3|drowning and suffocating}."
 					]
 				}
 			]

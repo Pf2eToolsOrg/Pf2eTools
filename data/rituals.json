@@ -1,10 +1,98 @@
 {
 	"ritual": [
 		{
+			"name": "Mosquito Blight",
+			"source": "LOMM",
+			"page": 77,
+			"level": 5,
+			"traits": [
+				"rare",
+				"conjuration",
+				"disease",
+				"necromancy"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "amber and rare incense worth 750 gp",
+			"primaryCheck": {
+				"skills": [
+					"Nature"
+				],
+				"prof": "expert",
+				"entry": "{@skill Nature} (expert; you must be the {@creature Mosquito Witch|LOMM})"
+			},
+			"area": {
+				"types": [
+					"Misc."
+				],
+				"entry": "1-mile-radius circle centered on you"
+			},
+			"entries": [
+				"You infest the area with tenacious, biting insects that disease and drain life from creatures in the area. Arthropods (insects, spiders, and similar invertebrates) are unaffected and instead gain a +1 status bonus to attack rolls, skill checks, saving throws, and {@skill Perception} checks while within the area. All other creatures are harassed by insects and exposed to the disease witch's hunger when they enter the area and once per day thereafter that they remain in the area. As part of casting this ritual, you create a Tiny ritual insect hive (Hardness 5, 10 HP) that must remain in the ritual's area. If the hive is removed or destroyed, the ritual's effect ends 1 hour later.",
+				{
+					"type": "data",
+					"tag": "affliction",
+					"data": {
+						"name": "Witch's Hunger",
+						"type": "Disease",
+						"source": "LOMM",
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							{
+								"type": "affliction",
+								"savingThrow": "Fortitude",
+								"onset": "{@dice 1d6} hours",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@condition enfeebled||enfeebled 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@condition enfeebled||enfeebled 2}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "{@condition enfeebled||enfeebled 2} and {@condition slowed||slowed 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "{@condition unconscious}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 5,
+										"entry": "death"
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, and the disease is especially deadly, with Stage 3 instead causing unconsciousness and Stage 4 instead causing death.",
+						"Success": "You create the ritual hive and cast the ritual.",
+						"Failure": "You fail to cast the ritual.",
+						"Critical Failure": "You fail to cast the ritual and instead cause ravenous insects to torment you, immediately exposing you to the witch's hunger disease."
+					}
+				}
+			]
+		},
+		{
 			"name": "Raga of Remembrance",
 			"source": "LOMM",
 			"page": 53,
-			"level": 2,
+			"level": 10,
 			"traits": [
 				"unique",
 				"necromancy"
@@ -123,7 +211,7 @@
 				],
 				"prof": "expert"
 			},
-			"cost": "incense and focusing diagrams worth a total value of the target's level (minimum 1) × 1 gp, for each target",
+			"cost": "incense and focusing diagrams worth a total value of the target's level (minimum 1) \u00d7 1 gp, for each target",
 			"secondaryCasters": {
 				"number": 3
 			},
@@ -179,7 +267,7 @@
 				],
 				"prof": "master"
 			},
-			"cost": "precious clay, wood, or other modeling materials worth spell level × 20 gp",
+			"cost": "precious clay, wood, or other modeling materials worth spell level \u00d7 20 gp",
 			"secondaryCasters": {
 				"number": 4
 			},
@@ -416,7 +504,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "rare silks worth a total value of 20 gp × the spell level",
+			"cost": "rare silks worth a total value of 20 gp \u00d7 the spell level",
 			"secondaryCasters": {
 				"number": 1
 			},
@@ -514,7 +602,7 @@
 				"unit": "hour",
 				"entry": "1 hour"
 			},
-			"cost": "one jacinth worth a total value of the target's level (minimum 1) × 5 gp, for each target",
+			"cost": "one jacinth worth a total value of the target's level (minimum 1) \u00d7 5 gp, for each target",
 			"secondaryCasters": {
 				"number": 2
 			},
@@ -571,7 +659,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "rare incense and offerings worth a total value of 20 gp × the target's level",
+			"cost": "rare incense and offerings worth a total value of 20 gp \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 1,
 				"note": "must be the ritual's target"
@@ -803,7 +891,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "alchemical herbs and components worth a total of 1,000 gp × the target's level",
+			"cost": "alchemical herbs and components worth a total of 1,000 gp \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 2
 			},
@@ -966,7 +1054,7 @@
 				"unit": "day",
 				"entry": "7 days"
 			},
-			"cost": "rare laboratory supplies and reagents worth the target's level (minimum 1) × 100 gp",
+			"cost": "rare laboratory supplies and reagents worth the target's level (minimum 1) \u00d7 100 gp",
 			"secondaryCasters": {
 				"number": 3
 			},
@@ -1225,7 +1313,7 @@
 				"unit": "day",
 				"entry": "3 days"
 			},
-			"cost": "rare incense and offerings worth a total value of 20 gp × the spell level",
+			"cost": "rare incense and offerings worth a total value of 20 gp \u00d7 the spell level",
 			"secondaryCasters": {
 				"number": 2,
 				"note": "must be worshippers of your religion"
@@ -1275,7 +1363,7 @@
 			"heightened": {
 				"X": {
 					"7": [
-						"The consecrated area also gains the effects of the {@spell dimensional lock} spell, but the effect doesn't attempt to counteract teleportation by worshippers of your deity. The cost increases to 200 gp × the spell level."
+						"The consecrated area also gains the effects of the {@spell dimensional lock} spell, but the effect doesn't attempt to counteract teleportation by worshippers of your deity. The cost increases to 200 gp \u00d7 the spell level."
 					]
 				}
 			}
@@ -1736,7 +1824,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "magical foci worth a total value of 50 gp × the spell level × the target's level",
+			"cost": "magical foci worth a total value of 50 gp \u00d7 the spell level \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 6
 			},
@@ -1795,7 +1883,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "magical foci worth 100 gp × the spell level × the node's level",
+			"cost": "magical foci worth 100 gp \u00d7 the spell level \u00d7 the node's level",
 			"secondaryCasters": {
 				"number": 2
 			},
@@ -1940,7 +2028,7 @@
 				]
 			},
 			"area": {
-				"entry": "An enclosed area up to 60 feet × 60 feet, up to 20 feet high",
+				"entry": "An enclosed area up to 60 feet \u00d7 60 feet, up to 20 feet high",
 				"types": [
 					"Misc."
 				]
@@ -1976,7 +2064,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "valuable oils and objects associated with the target worth a total value of 100 gp × the spell level × the target's level",
+			"cost": "valuable oils and objects associated with the target worth a total value of 100 gp \u00d7 the spell level \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 2
 			},
@@ -2159,7 +2247,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "rare oils worth 10 gp × the primary caster's level",
+			"cost": "rare oils worth 10 gp \u00d7 the primary caster's level",
 			"secondaryCasters": {
 				"number": 1
 			},
@@ -2326,7 +2414,7 @@
 				"unit": "day",
 				"entry": "6 days"
 			},
-			"cost": "crafting materials worth at least 50 gp × the target's level; a lock of hair from the target, nail clippings from the target, or a vial of blood from the target",
+			"cost": "crafting materials worth at least 50 gp \u00d7 the target's level; a lock of hair from the target, nail clippings from the target, or a vial of blood from the target",
 			"secondaryCasters": {
 				"number": 1
 			},
@@ -2386,7 +2474,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "reagents to construct the magical prison worth a total value of 800 gp × the target's level",
+			"cost": "reagents to construct the magical prison worth a total value of 800 gp \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 6
 			},
@@ -2418,7 +2506,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Chains} You bind the creature with chains, rendering it unable to use any actions other than to speak. Other creatures that attempt to approach, harm the chains, or free the trapped creature in any way must succeed at a Will save or be unable to do so forever. The chains have Hardness equal to 5 × the imprisonment ritual's spell level, and double that many Hit Points. Destroying the chains frees the target.",
+						"{@bold Chains} You bind the creature with chains, rendering it unable to use any actions other than to speak. Other creatures that attempt to approach, harm the chains, or free the trapped creature in any way must succeed at a Will save or be unable to do so forever. The chains have Hardness equal to 5 \u00d7 the imprisonment ritual's spell level, and double that many Hit Points. Destroying the chains frees the target.",
 						"{@bold Prison} You render the creature completely unable to leave a particular confined area or structure of your choice, such as a jail cell or sealed cave. The magic also prevents the creature from damaging its prison, either directly or indirectly, to break free. If the creature's prison is entirely destroyed by some external force, the creature is freed, though for some larger or natural prisons, this might be unfeasible.",
 						"{@bold Slumber} (sleep effect) You put the creature into an eternal sleep. It ceases aging and doesn't require food or drink. A single sincere physical display of affection from a creature who genuinely loves the target\u2014whether romantically, filially, or otherwise\u2014frees it from the slumber. This form of imprisonment is also enchantment magic.",
 						"{@bold Temporal Stasis} You send the creature into a state of suspended animation outside the flow of time. The creature doesn't grow older and can't be affected by any effect from within the normal timestream. While casting this ritual, you can optionally name any amount of time for the stasis; after this duration elapses, the stasis ends. Unlike other forms of imprisonment, temporal stasis can be counteracted by a {@spell dispel magic} or {@spell haste} spell. This form of imprisonment is also transmutation magic.",
@@ -2498,7 +2586,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "rare oils worth a total value of 10 gp × the target's level",
+			"cost": "rare oils worth a total value of 10 gp \u00d7 the target's level",
 			"primaryCheck": {
 				"entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or {@skill Religion} (expert)",
 				"skills": [
@@ -2604,7 +2692,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "a pair of jeweled mirrors worth a total value of 50 gp × the level of the highest-level target",
+			"cost": "a pair of jeweled mirrors worth a total value of 50 gp \u00d7 the level of the highest-level target",
 			"secondaryCasters": {
 				"number": 1
 			},
@@ -2764,7 +2852,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "rare incense and offerings worth a total value of 2 gp × the spell level × the target's level",
+			"cost": "rare incense and offerings worth a total value of 2 gp \u00d7 the spell level \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 2,
 				"note": "must share your religion"
@@ -2814,7 +2902,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "warding diagram ingredients worth a total value of 2 gp × the spell level × the target's level",
+			"cost": "warding diagram ingredients worth a total value of 2 gp \u00d7 the spell level \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 4
 			},
@@ -2935,7 +3023,7 @@
 				"unit": "day",
 				"entry": "7 days"
 			},
-			"cost": "splendid art supplies worth at least 100 gp × the target's level, at least one pint of blood from the target",
+			"cost": "splendid art supplies worth at least 100 gp \u00d7 the target's level, at least one pint of blood from the target",
 			"secondaryCasters": {
 				"number": 3
 			},
@@ -2989,7 +3077,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "faerie circle ingredients worth a total value of 1 gp × the spell level × the target's level",
+			"cost": "faerie circle ingredients worth a total value of 1 gp \u00d7 the spell level \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 4
 			},
@@ -3038,7 +3126,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "rare incense and offering worth a total value of 10 gp × your level",
+			"cost": "rare incense and offering worth a total value of 10 gp \u00d7 your level",
 			"primaryCheck": {
 				"entry": "{@skill Religion} (trained)",
 				"skills": [
@@ -3100,7 +3188,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "You immediately transform into a {@creature ravener|b2} upon finishing the ritual; your soul ward starts at full Hit Points (equal to 5 × your level).",
+						"Critical Success": "You immediately transform into a {@creature ravener|b2} upon finishing the ritual; your soul ward starts at full Hit Points (equal to 5 \u00d7 your level).",
 						"Success": "You rise as a {@creature ravener|b2} 24 hours after completing the ritual, as long as your body remains relatively intact. When you rise as a ravener, your soul ward starts at 1 Hit Point.",
 						"Failure": "You rise as a {@creature ravener husk|b2} 24 hours after completing the ritual.",
 						"Critical Failure": "You die."
@@ -3122,7 +3210,7 @@
 				"unit": "hour",
 				"entry": "4 hours"
 			},
-			"cost": "rare herbs worth a total value of the target's level (minimum 1) × 25 gp",
+			"cost": "rare herbs worth a total value of the target's level (minimum 1) \u00d7 25 gp",
 			"secondaryCasters": {
 				"number": 2
 			},
@@ -3164,22 +3252,22 @@
 			"heightened": {
 				"X": {
 					"4": [
-						"The maximum level of the target increases to 10. The cost is the target's level (minimum 1) × 40 gp."
+						"The maximum level of the target increases to 10. The cost is the target's level (minimum 1) \u00d7 40 gp."
 					],
 					"5": [
-						"The maximum level of the target increases to 12. The cost is the target's level (minimum 1) × 75 gp."
+						"The maximum level of the target increases to 12. The cost is the target's level (minimum 1) \u00d7 75 gp."
 					],
 					"6": [
-						"The maximum level of the target increases to 14. The cost is the target's level (minimum 1) × 125 gp. The target must have died within the past month."
+						"The maximum level of the target increases to 14. The cost is the target's level (minimum 1) \u00d7 125 gp. The target must have died within the past month."
 					],
 					"7": [
-						"The maximum level of the target increases to 16. The cost is the target's level (minimum 1) × 200 gp. The target must have died within the past month."
+						"The maximum level of the target increases to 16. The cost is the target's level (minimum 1) \u00d7 200 gp. The target must have died within the past month."
 					],
 					"8": [
-						"The maximum level of the target increases to 18. The cost is the target's level (minimum 1) × 300 gp. The target must have died within the past year."
+						"The maximum level of the target increases to 18. The cost is the target's level (minimum 1) \u00d7 300 gp. The target must have died within the past year."
 					],
 					"9": [
-						"The maximum level of the target increases to 20. The cost is the target's level (minimum 1) × 600 gp. The target must have died within the past decade."
+						"The maximum level of the target increases to 20. The cost is the target's level (minimum 1) \u00d7 600 gp. The target must have died within the past decade."
 					]
 				}
 			}
@@ -3198,7 +3286,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "rare oils to anoint the body worth a total value of the target's level (minimum 1) × 25 gp",
+			"cost": "rare oils to anoint the body worth a total value of the target's level (minimum 1) \u00d7 25 gp",
 			"secondaryCasters": {
 				"number": 2
 			},
@@ -3252,7 +3340,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "diamonds worth a total value of 75 gp × the target's level",
+			"cost": "diamonds worth a total value of 75 gp \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 2
 			},
@@ -3561,7 +3649,7 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
-			"cost": "a bodily sample from the target, and valuables belonging to the target worth a total value of 100 gp × the spell level × the target's level",
+			"cost": "a bodily sample from the target, and valuables belonging to the target worth a total value of 100 gp \u00d7 the spell level \u00d7 the target's level",
 			"secondaryCasters": {
 				"number": 3
 			},
@@ -3713,7 +3801,7 @@
 				"unit": "hour",
 				"entry": "1 hour"
 			},
-			"cost": "rare inks and needles worth a total value of 100 gp × the spell level × the target's level (see text)",
+			"cost": "rare inks and needles worth a total value of 100 gp \u00d7 the spell level \u00d7 the target's level (see text)",
 			"secondaryCasters": {
 				"number": 0,
 				"note": "to 10"
@@ -3794,7 +3882,7 @@
 				"types": [
 					"Misc."
 				],
-				"entry": "100 feet × 100 feet, up to 20 feet high"
+				"entry": "100 feet \u00d7 100 feet, up to 20 feet high"
 			},
 			"duration": {
 				"number": 1,
@@ -3856,7 +3944,7 @@
 				]
 			},
 			"area": {
-				"entry": "100 feet × 100 feet, up to 50 feet high",
+				"entry": "100 feet \u00d7 100 feet, up to 50 feet high",
 				"types": [
 					"Misc."
 				]
@@ -3882,7 +3970,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The ward covers an additional area 100 feet × 100 feet, up to 50 feet high, which must be contiguous with the original area."
+						"The ward covers an additional area 100 feet \u00d7 100 feet, up to 50 feet high, which must be contiguous with the original area."
 					]
 				}
 			}
