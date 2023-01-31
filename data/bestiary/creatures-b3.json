@@ -17252,15 +17252,9 @@
 							"teleportation"
 						],
 						"entries": [
-							"The sahkil moves from the Material."
+							"The sahkil moves from the Material Plane to the Ethereal Plane or vice-versa, with the effects of {@spell ethereal jaunt} except that the effect has an unlimited duration and can be Dismissed. A summoned sahkil can't use Skip Between."
 						],
 						"name": "Skip Between"
-					},
-					{
-						"entries": [
-							"Plane or vice-versa, with the effects of ethereal jaunt except that the effect has an unlimited duration and can be Dismissed. A summoned sahkil can't use Skip Between."
-						],
-						"name": "Plane to the Ethereal"
 					}
 				]
 			},
@@ -17604,6 +17598,9 @@
 				"intimidation": {
 					"std": 10
 				},
+				"positive energy plane lore": {
+					"std": 12
+				},
 				"stealth": {
 					"std": 12
 				},
@@ -17646,7 +17643,7 @@
 					"effects": [
 						"{@ability Knockdown}"
 					],
-					"damage": "{@damage 2d8+6} bludgeoning or positive plus Knockdown (page 305)",
+					"damage": "{@damage 2d8+6} bludgeoning or positive plus {@ability Knockdown} (page 305)",
 					"types": [
 						"bludgeoning"
 					]
@@ -17684,14 +17681,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12, {@skill Stealth} +12, {@skill Lore||Undead Lore} +14 Str +4, Dex +5, Con +4, Int +3, Wis +2, Cha +3."
-						],
-						"name": "Energy Plane Lore"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -17805,7 +17794,8 @@
 					"to Escape": 10
 				},
 				"athletics": {
-					"std": 5
+					"std": 5,
+					"to {@action High Jump} or {@action Long Jump}": 7
 				},
 				"stealth": {
 					"std": 10
@@ -17841,14 +17831,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+10, {@skill Survival} +9 Str \u20131, Dex +4, Con +1, Int \u20134, Wis +3, Cha +0."
-						],
-						"name": "Long Jump), Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -19331,32 +19313,6 @@
 							"The fuath surrounds the head of one air-breathing creature within 30 feet in a magical film of viscous water for 1 minute. The target must succeed at a DC 17 Reflex save or begin to choke and must hold their breath to avoid drowning (Core Rulebook 478). The film can be temporarily wiped away with a total of 3 {@action Interact} actions by the choking creature or creatures adjacent to it, allowing a new Reflex save with a +2 circumstance bonus to end the effect. (These actions don't need to be consecutive or made by the same creature.)"
 						],
 						"name": "Viscous Choke"
-					},
-					{
-						"entries": [
-							"Create darkness, encourage Anathema none."
-						],
-						"name": "Edicts"
-					},
-					{
-						"entries": [],
-						"name": "Follower Alignments NE, CE"
-					},
-					{
-						"entries": [
-							"Font harm."
-						],
-						"name": "Divine"
-					},
-					{
-						"entries": [],
-						"name": "Divine Skill Occultism"
-					},
-					{
-						"entries": [
-							"Weapon kukri Domains darkness, knowledge, Cleric Spells 1st: {@spell grim tendrils}, 4th: {@spell nightmare}, 5th: {@spell summon entity}."
-						],
-						"name": "Favored"
 					}
 				]
 			},
@@ -22045,17 +22001,12 @@
 							"primal"
 						],
 						"entries": [
-							"When a gliminal grants positive healing that would heal a living creature above their maximum Hit Points, including the fast healing HP from their Bond in Light ability, the excess is granted as temporary."
-						],
-						"name": "Overpowering Healing"
-					},
-					{
-						"entries": [
+							"When a gliminal grants positive healing that would heal a living creature above their maximum Hit Points, including the fast healing HP from their Bond in Light ability, the excess is granted as temporary Hit Points.",
 							"Unlike normal, these temporary HP combine with each other, and they last for 1 hour. If a creature's temporary HP from a gliminal ever exceeds its maximum HP, it becomes overloaded and explodes in a burst of positive energy.",
 							"A creature with temporary HP from overpowering healing becomes {@condition sickened 1}, or {@condition sickened 2} if the temporary HP equal half their maximum HP or more. The creature can't reduce this {@condition sickened} condition unless it has 0 temporary HP.",
 							"Overpowering healing doesn't apply to creatures with the {@trait positive} trait."
 						],
-						"name": "Hit Points."
+						"name": "Overpowering Healing"
 					}
 				]
 			},
@@ -24464,7 +24415,7 @@
 				"top": [
 					{
 						"entries": [
-							"A siktempora can always roll Dimension."
+							"A siktempora can always roll Dimension  of Time Lore for initiative. When it does, it gains a +2 circumstance bonus to the roll."
 						],
 						"name": "Temporal Sense"
 					}
@@ -24787,15 +24738,9 @@
 						},
 						"requirements": "The titan has a creature {@condition grabbed}",
 						"entries": [
-							"The titan thrusts the creature into a nightmare realm full of lightless hands and eyes. This has the effects of maze (DC 48), but the creature can use {@skill Occultism} to escape in addition to {@skill Perception} or."
+							"The titan thrusts the creature into a nightmare realm full of lightless hands and eyes. This has the effects of maze (DC 48), but the creature can use {@skill Occultism} to escape in addition to {@skill Perception} or Survival. The titan can't use Send Beyond for {@dice 1d4} rounds."
 						],
 						"name": "Send Beyond"
-					},
-					{
-						"entries": [
-							"The titan can't use Send Beyond for {@dice 1d4} rounds."
-						],
-						"name": "Survival."
 					},
 					{
 						"activity": {
@@ -28545,7 +28490,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The sahkil moves from the Material."
+							"The sahkil moves from the Material Plane to the Ethereal Plane or vice-versa, with the effects of {@spell ethereal jaunt} except that the effect has an unlimited duration and can be Dismissed. A summoned sahkil can't use Skip Between."
 						],
 						"name": "Skip Between",
 						"traits": [
@@ -30175,9 +30120,9 @@
 				"top": [
 					{
 						"entries": [
-							"Sight Krampus ignores circumstance penalties to visual {@skill Perception} checks due to ice or snow, as well as concealment due to ice or snow."
+							"Krampus ignores circumstance penalties to visual {@skill Perception} checks due to ice or snow, as well as concealment due to ice or snow."
 						],
-						"name": "Blizzard"
+						"name": "Blizzard Sight"
 					}
 				],
 				"mid": [
@@ -30786,9 +30731,9 @@
 					},
 					{
 						"entries": [
-							"Spirit Kushtaka exist completely separated from their mortal souls, making them immune to the effects of haunts and most effects from incorporeal spirits and undead, but also unaware of their presence; incorporeal undead are both {@condition invisible} and inaudible to them. Incorporeal spirits and undead can affect a kushtaka only with effects that manifest in the physical world. For instance, a ghost mage casting a fireball or a poltergeist throwing objects could harm the kushtaka, but a ghost commoner's Frightful Moan and ghostly hand {@action Strike} would not."
+							"Kushtaka exist completely separated from their mortal souls, making them immune to the effects of haunts and most effects from incorporeal spirits and undead, but also unaware of their presence; incorporeal undead are both {@condition invisible} and inaudible to them. Incorporeal spirits and undead can affect a kushtaka only with effects that manifest in the physical world. For instance, a ghost mage casting a fireball or a poltergeist throwing objects could harm the kushtaka, but a ghost commoner's Frightful Moan and ghostly hand {@action Strike} would not."
 						],
-						"name": "Null"
+						"name": "Null Spirit"
 					}
 				],
 				"mid": [
@@ -31797,15 +31742,10 @@
 						],
 						"requirements": "The Leng ghoul is adjacent to the corpse of a creature that retains flesh on its bones",
 						"entries": [
-							"The Leng ghoul devours a chunk of the corpse and regains {@dice 6d6} Hit Points. At the same time, they also absorb some of the memories stored in the flesh from when the corpse was alive, gaining a +1 status bonus to all skill checks for 10 minutes."
+							"The Leng ghoul devours a chunk of the corpse and regains {@dice 6d6} Hit Points. At the same time, they also absorb some of the memories stored in the flesh from when the corpse was alive, gaining a +1 status bonus to all skill checks for 10 minutes.",
+							"The Leng ghoul can immediately attempt an {@skill Occultism} check to learn one non-secret memory the corpse had when it was alive (use the standard DC for the creature's level). The exact memory learned is determined by the GM but is typically something of use to the Leng ghoul. The memory can't be one the creature was trying to keep secret unless the check was a critical success. A Leng ghoul can Absorb Memories from any given corpse only once."
 						],
 						"name": "Absorb Memories"
-					},
-					{
-						"entries": [
-							"Leng ghoul can immediately attempt an {@skill Occultism} check to learn one non-secret memory the corpse had when it was alive (use the standard DC for the creature's level). The exact memory learned is determined by the GM but is typically something of use to the Leng ghoul. The memory can't be one the creature was trying to keep secret unless the check was a critical success. A Leng ghoul can Absorb Memories from any given corpse only once."
-						],
-						"name": "The"
 					},
 					{
 						"type": "affliction",
@@ -31857,9 +31797,9 @@
 					},
 					{
 						"entries": [
-							"Leng ghoul deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+							"A Leng ghoul deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak Attack A"
+						"name": "Sneak Attack"
 					}
 				]
 			},
@@ -32767,7 +32707,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@damage 1d4+6} bludgeoning plus",
+					"damage": "{@damage 1d4+6} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -32854,17 +32794,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [],
-						"name": "Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"traits": [
 							"curse",
@@ -33918,7 +33847,7 @@
 					"effects": [
 						"{@ability Knockdown}"
 					],
-					"damage": "{@damage 2d8+8} slashing plus Knockdown (page 305)",
+					"damage": "{@damage 2d8+8} slashing plus {@ability Knockdown} (page 305)",
 					"types": [
 						"slashing"
 					]
@@ -35561,16 +35490,11 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The mobogo attempts to move a creature {@condition grabbed} by its tongue. The mobogo rolls an {@skill Athletics} check against the creature's Fortitude."
-						],
-						"name": "Tongue Reposition"
-					},
-					{
-						"entries": [
+							"The mobogo attempts to move a creature {@condition grabbed} by its tongue. The mobogo rolls an {@skill Athletics} check against the creature's Fortitude DC.",
 							"On a success, the mobogo moves the creature into any space within the tongue's reach.",
 							"If it wishes, the mobogo can transfer the {@condition grabbed} creature to its jaws."
 						],
-						"name": "DC."
+						"name": "Tongue Reposition"
 					}
 				]
 			},
@@ -37266,7 +37190,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 2d6+6} piercing plus Grab",
+					"damage": "{@damage 2d6+6} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -37668,15 +37592,10 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The nemhaith directs its bound spirits as a group to move up to 1 mile away (they have a fly Speed of 60 feet). The nemhaith can see and hear through the thrown spirits, but it loses its aura and can't use its spirit dart ranged {@action Strike} or."
-						],
-						"name": "Throw Spirits"
-					},
-					{
-						"entries": [
+							"The nemhaith directs its bound spirits as a group to move up to 1 mile away (they have a fly Speed of 60 feet). The nemhaith can see and hear through the thrown spirits, but it loses its aura and can't use its spirit dart ranged {@action Strike} or Rage of Spirits.",
 							"The nemhaith regains these abilities when the spirits return to the nemhaith's space."
 						],
-						"name": "Rage of Spirits."
+						"name": "Throw Spirits"
 					}
 				]
 			},
@@ -38724,6 +38643,88 @@
 						"entries": [],
 						"name": "Nosferatu Vulnerabilities"
 					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"DC 36."
+						],
+						"name": "Change Shape"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"auditory",
+							"divine",
+							"mental"
+						],
+						"name": "Command Thrall"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"enchantment",
+							"incapacitation",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"DC 36."
+						],
+						"name": "Dominate"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When Drinking Blood, the nosferatu regains 21 HP."
+						],
+						"name": "Drink Blood"
+					},
+					{
+						"traits": [
+							"divine",
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"DC 33."
+						],
+						"name": "Paralytic Fear"
+					},
+					{
+						"traits": [
+							"disease",
+							"virulent"
+						],
+						"entries": [
+							"DC 36."
+						],
+						"name": "Plague of Ancients"
+					}
 				]
 			},
 			"hasImages": true,
@@ -38748,7 +38749,7 @@
 						"abilities": [
 							"fast healing 15 (page 305)",
 							"{@ability negative healing}",
-							"plagued"
+							"plagued coffin restoration"
 						]
 					}
 				],
@@ -39085,7 +39086,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The sahkil moves from the Material."
+							"The sahkil moves from the Material Plane to the Ethereal Plane or vice-versa, with the effects of {@spell ethereal jaunt} except that the effect has an unlimited duration and can be Dismissed. A summoned sahkil can't use Skip Between."
 						],
 						"name": "Skip Between",
 						"traits": [
@@ -39862,7 +39863,7 @@
 					"effects": [
 						"Improved"
 					],
-					"damage": "{@damage 4d12+18} piercing plus Improved",
+					"damage": "{@damage 4d12+18} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -39962,17 +39963,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [],
-						"name": "Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -41224,7 +41214,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The sahkil moves from the Material."
+							"The sahkil moves from the Material Plane to the Ethereal Plane or vice-versa, with the effects of {@spell ethereal jaunt} except that the effect has an unlimited duration and can be Dismissed. A summoned sahkil can't use Skip Between."
 						],
 						"name": "Skip Between",
 						"traits": [
@@ -41948,15 +41938,9 @@
 							"fire"
 						],
 						"entries": [
-							"The peri spreads their wings and spins, forming a whirlwind of flame that deals {@damage 15d6} fire damage in a 20-foot emanation (DC 34 basic Reflex save). They can't use."
+							"The peri spreads their wings and spins, forming a whirlwind of flame that deals {@damage 15d6} fire damage in a 20-foot emanation (DC 34 basic Reflex save). They can't use Wildfire Storm again for {@dice 1d4} rounds."
 						],
 						"name": "Wildfire Storm"
-					},
-					{
-						"entries": [
-							"Storm again for {@dice 1d4} rounds."
-						],
-						"name": "Wildfire"
 					}
 				]
 			},
@@ -42120,7 +42104,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The phantom walks the thin line between the Ethereal and."
+							"The phantom walks the thin line between the Ethereal Plane and Material Planes in order to exist on both planes simultaneously. They can shift back to solely the Ethereal Plane by using this ability again."
 						],
 						"name": "Walk the Ethereal Line"
 					}
@@ -42725,7 +42709,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d12+5} piercing plus Grab",
+					"damage": "{@damage 1d12+5} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -42991,7 +42975,7 @@
 							"freq": 1
 						},
 						"entries": [
-							"The popobawa draws strength from the suffering of others. It regains 10 Hit Points for each enemy within 30 feet that has one of the following conditions, to a maximum of 40."
+							"The popobawa draws strength from the suffering of others. It regains 10 Hit Points for each enemy within 30 feet that has one of the following conditions, to a maximum of 40 Hit Points: {@condition confused}, {@condition doomed}, {@condition dying}, {@condition enfeebled}, {@condition fatigued}, {@condition frightened}, {@condition sickened}, {@condition slowed}, {@condition stunned}, {@condition stupefied}, or {@condition wounded}."
 						],
 						"name": "Feed on Sorrow"
 					},
@@ -43113,6 +43097,9 @@
 				},
 				"nature": {
 					"std": 16
+				},
+				"nirvana lore": {
+					"std": 15
 				},
 				"society": {
 					"std": 17,
@@ -43242,14 +43229,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+15, {@skill Religion} + 16, {@skill Society} +17 (+19 to {@action Create Forgery}), {@skill Stealth} +16, {@skill Survival} +16, {@skill Thievery} +14 Str +4, Dex +4, Con +6, Int +5, Wis +6, Cha +4 Items +1 striking shortsword."
-						],
-						"name": "Lore"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -44272,15 +44251,10 @@
 					},
 					{
 						"entries": [
-							"When the rancorous priesthood Casts a Spell, their constituent members combine their efforts into casting a more powerful version of the spell than any one member could achieve alone."
+							"When the rancorous priesthood Casts a Spell, their constituent members combine their efforts into casting a more powerful version of the spell than any one member could achieve alone.",
+							"When {@action Cast a Spell||Casting a Spell} that has an area of a burst, cone, or line and doesn't have a duration, increase the area of that spell. Add 5 feet to the radius of a burst that normally has a radius of at least 10 feet (a burst with a smaller radius is not affected). Add 5 feet to the length of a cone or line that is normally 15 feet long or smaller, and add 10 feet to the length of a larger cone or line."
 						],
 						"name": "Troop Spellcasting"
-					},
-					{
-						"entries": [
-							"{@action Cast a Spell||Casting a Spell} that has an area of a burst, cone, or line and doesn't have a duration, increase the area of that spell. Add 5 feet to the radius of a burst that normally has a radius of at least 10 feet (a burst with a smaller radius is not affected). Add 5 feet to the length of a cone or line that is normally 15 feet long or smaller, and add 10 feet to the length of a larger cone or line."
-						],
-						"name": "When"
 					},
 					{
 						"activity": {
@@ -45298,9 +45272,9 @@
 					},
 					{
 						"entries": [
-							"Rosethorn ram ignores {@quickref difficult terrain||3|terrain} caused by narrow ledges and icy terrain, and reduces the effects it suffers from cold environments by one step."
+							"The Rosethorn ram ignores {@quickref difficult terrain||3|terrain} caused by narrow ledges and icy terrain, and reduces the effects it suffers from cold environments by one step."
 						],
-						"name": "Mountain Stride The"
+						"name": "Mountain Stride"
 					},
 					{
 						"activity": {
@@ -45659,13 +45633,9 @@
 							"freq": 1
 						},
 						"entries": [
-							"Trigger The samsaran anchorite is about to roll initiative; The anchorite experiences a flash of recognition from a previous existence, gaining a +4 circumstance bonus to the triggering roll. If this causes the anchorite to be the first creature to act, they also become {@condition quickened} for 1 round, but they can use the extra action only to Recall."
+							"Trigger The samsaran anchorite is about to roll initiative; The anchorite experiences a flash of recognition from a previous existence, gaining a +4 circumstance bonus to the triggering roll. If this causes the anchorite to be the first creature to act, they also become {@condition quickened} for 1 round, but they can use the extra action only to Recall Knowledge or Step."
 						],
 						"name": "All This Has Happened Before"
-					},
-					{
-						"entries": [],
-						"name": "Knowledge or Step."
 					},
 					{
 						"activity": {
@@ -48406,6 +48376,9 @@
 				"medicine": {
 					"std": 6
 				},
+				"nirvana lore": {
+					"std": 3
+				},
 				"stealth": {
 					"std": 7
 				}
@@ -48504,12 +48477,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+3, {@skill Stealth} +7 Str \u20132, Dex +4, Con +2, Int +0, Wis +3, Cha +2."
-						],
-						"name": "Lore"
-					},
 					{
 						"entries": [
 							"A silvanshee's core value is curiosity.",
@@ -49174,7 +49141,7 @@
 					"effects": [
 						"Improved"
 					],
-					"damage": "{@damage 2d8+9} bludgeoning plus Improved",
+					"damage": "{@damage 2d8+9} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -49198,13 +49165,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [],
-						"name": "Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -49535,7 +49495,7 @@
 					"effects": [
 						"{@ability Knockdown}"
 					],
-					"damage": "{@damage 2d12+12} piercing plus Knockdown (page 305)",
+					"damage": "{@damage 2d12+12} piercing plus {@ability Knockdown} (page 305)",
 					"types": [
 						"piercing"
 					]
@@ -49550,7 +49510,7 @@
 						"magical",
 						"trip"
 					],
-					"damage": "{@damage 2d8+12} slashing plus",
+					"damage": "{@damage 2d8+12} slashing plus {@ability Knockdown}",
 					"types": [
 						"slashing"
 					]
@@ -49614,13 +49574,6 @@
 			],
 			"abilities": {
 				"bot": [
-					{
-						"entries": [],
-						"name": "Knockdown",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -53607,7 +53560,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The tikbalang takes on the appearance of any Medium or Large humanoid (page 304). This doesn't change the tikbalang's."
+							"The tikbalang takes on the appearance of any Medium or Large humanoid (page 304). This doesn't change the tikbalang's Speed or their attack and damage modifiers with their {@action Strike|Strikes}."
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -57458,16 +57411,25 @@
 							}
 						}
 					}
+				},
+				{
+					"name": "Champion Focus",
+					"type": "Focus",
+					"DC": 24,
+					"fp": 1,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "lay on hands"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
 				"bot": [
-					{
-						"entries": [
-							"DC 24, 1 Focus Point; 3rd lay on hands (Core Rulebook 387)"
-						],
-						"name": "Champion Focus Spell"
-					},
 					{
 						"entries": [
 							"A vulpinal's core value is cunning. They can apply their knowledge and stories from their extensive travels to just about any situation in an instant. Before spending any other action on their turn, the vulpinal can {@action Recall Knowledge} as a free action."
@@ -57755,15 +57717,9 @@
 						],
 						"requirements": "The wayang's last action was a melee {@action Strike} that damaged their opponent",
 						"entries": [
-							"The wayang attempts to."
+							"The wayang attempts to {@action Tumble Through} the opponent's space, with a +2 circumstance bonus to the {@skill Acrobatics} check. If they succeed, the wayang leaves a shadowy afterimage in their original space, and the opponent is {@condition flat-footed} against the next melee attack the wayang attempts against it before the end of their current turn."
 						],
 						"name": "Shadowplay"
-					},
-					{
-						"entries": [
-							"Through the opponent's space, with a +2 circumstance bonus to the {@skill Acrobatics} check. If they succeed, the wayang leaves a shadowy afterimage in their original space, and the opponent is {@condition flat-footed} against the next melee attack the wayang attempts against it before the end of their current turn."
-						],
-						"name": "Tumble"
 					},
 					{
 						"entries": [
@@ -58531,7 +58487,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The sahkil moves from the Material."
+							"The sahkil moves from the Material Plane to the Ethereal Plane or vice-versa, with the effects of {@spell ethereal jaunt} except that the effect has an unlimited duration and can be Dismissed. A summoned sahkil can't use Skip Between."
 						],
 						"name": "Skip Between",
 						"traits": [
@@ -59759,7 +59715,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The sahkil moves from the Material."
+							"The sahkil moves from the Material Plane to the Ethereal Plane or vice-versa, with the effects of {@spell ethereal jaunt} except that the effect has an unlimited duration and can be Dismissed. A summoned sahkil can't use Skip Between."
 						],
 						"name": "Skip Between",
 						"traits": [
