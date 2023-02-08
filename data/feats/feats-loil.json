@@ -178,7 +178,7 @@
 			]
 		},
 		{
-			"name": "Faultspawn",
+			"name": "{@feat Faultspawn|LOIL}",
 			"source": "LOIL",
 			"page": 32,
 			"level": 1,
@@ -220,7 +220,7 @@
 				"illusion",
 				"tiefling"
 			],
-			"prerequisites": "Beastbrood (Ancestry Guide 61)",
+			"prerequisites": "{@feat Beastbrood|LOAG}",
 			"frequency": {
 				"freq": 1,
 				"unit": "day"
@@ -249,7 +249,7 @@
 				"tiefling",
 				"transmutation"
 			],
-			"prerequisites": "Faultspawn",
+			"prerequisites": "{@feat Faultspawn|LOIL}",
 			"frequency": {
 				"freq": 1,
 				"unit": "hour"
@@ -267,7 +267,7 @@
 			"traits": [
 				"tiefling"
 			],
-			"prerequisites": "Faultspawn",
+			"prerequisites": "{@feat Faultspawn|LOIL}",
 			"entries": [
 				"You can cast {@spell blood vendetta|APG} and death knell once per day each as 2nd-level divine innate spells."
 			]
@@ -280,8 +280,10 @@
 			"traits": [
 				"tiefling"
 			],
-			"prerequisites": "Beastbrood (Ancestry Guide 61) You can cast {@spell dispel magic} and reaper's lantern (Advanced Player's Guide 223) once per day each as 2nd-level divine innate spells. Reaper's lantern manifests as a lantern shaped like the head of your rakshasa incarnation.",
-			"entries": []
+			"prerequisites": "{@feat Beastbrood|LOAG}",
+			"entries": [
+				"You can cast {@spell dispel magic} and {@spell reaper's lantern|apg} once per day each as 2nd-level divine innate spells. {@spell Reaper's lantern|apg} manifests as a lantern shaped like the head of your rakshasa incarnation."
+			]
 		},
 		{
 			"name": "Idol Threat",
@@ -295,7 +297,7 @@
 			"traits": [
 				"tiefling"
 			],
-			"prerequisites": "Beastbrood (Ancestry Guide 61)",
+			"prerequisites": "{@feat Beastbrood|LOAG}",
 			"requirements": "You're holding something sacred or precious to a creature, such as a relic or personal depiction of their deity or a precious personal memento.",
 			"entries": [
 				"You brandish the precious object you're holding menacingly, at once mocking it and threatening its safety. Attempt to {@action Demoralize} the creature whose precious item you threaten. You gain a +2 circumstance bonus to the {@skill Intimidation} check to {@action Demoralize}, and on a success, the creature is {@condition flat-footed} for 1 round out of distraction for the object's safety and is {@condition stupefied||stupefied 1} for 1 minute (or {@condition stupefied||stupefied 2} on a critical success). These conditions are both in addition to the normal effects of {@action Demoralize}. The creature is then temporarily immune to any Idol Threat using that specific object for 1 day."
@@ -317,7 +319,7 @@
 				"force",
 				"tiefling"
 			],
-			"prerequisites": "Faultspawn",
+			"prerequisites": "{@feat Faultspawn|LOIL}",
 			"frequency": {
 				"freq": 1,
 				"unit": "day"
@@ -953,7 +955,7 @@
 				"nagaji"
 			],
 			"entries": [
-				"Either through study, exposure, or familial devotion, you have the magic of nagas bubbling in your blood. During your daily preparations, choose daze, detect magic, or mage hand. Until your next daily preparations, you can cast the chosen spell as an occult innate cantrip. A cantrip is heightened to a spell level equal to half your level rounded up."
+				"Either through study, exposure, or familial devotion, you have the magic of nagas bubbling in your blood. During your daily preparations, choose {@spell daze}, {@spell detect magic}, or {@spell mage hand}. Until your next daily preparations, you can cast the chosen spell as an occult innate cantrip. A cantrip is heightened to a spell level equal to half your level rounded up."
 			]
 		},
 		{
@@ -965,8 +967,7 @@
 				"nagaji"
 			],
 			"entries": [
-				"You subconsciously flick your tongue through the air to taste the world around you.",
-				"You gain imprecise scent with a range of 30 feet."
+				"You subconsciously flick your tongue through the air to taste the world around you. You gain imprecise scent with a range of 30 feet."
 			]
 		},
 		{
@@ -1030,7 +1031,7 @@
 			],
 			"prerequisites": "at least one innate spell from a nagaji heritage or ancestry feat",
 			"entries": [
-				"You've learned more naga magic. During your daily preparations, choose charm, fleet step, or heal. You can cast the chosen spell as a 1st-level occult innate spell once that day."
+				"You've learned more naga magic. During your daily preparations, choose {@spell charm}, {@spell fleet step}, or {@spell heal}. You can cast the chosen spell as a 1st-level occult innate spell once that day."
 			]
 		},
 		{

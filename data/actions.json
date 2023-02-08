@@ -1,6 +1,56 @@
 {
 	"action": [
 		{
+			"name": "Harvest Heartsliver",
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"source": "LOMM",
+			"page": 53,
+			"traits": [
+				"rare",
+				"manipulate"
+			],
+			"requirements": "You're inside {@creature Kothogaz, Dance of Disharmony|LOMM|Kothogaz}'s body.",
+			"entries": [
+				"You attempt to steal a section of Kothogaz's heart. Attempt an attack roll or a DC 40 {@skill Acrobatics}, {@skill Athletics}, {@skill Medicine}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You steal a small disharmonic heartsliver, stow it on your person, and can exit {@creature Kothogaz, Dance of Disharmony|LOMM|Kothogaz}'s body.",
+						"Success": "As critical success, but you can't exit.",
+						"Failure": "You take Kothogaz's {@ability Swallow Whole} damage.",
+						"Critical Failure": "You take double Kothogaz's Swallow Whole damage and are {@condition deafened} by its heartbeat for 1 minute."
+					}
+				}
+			]
+		},
+		{
+			"name": "Craft Disharmonic Instrument",
+			"source": "LOMM",
+			"page": 53,
+			"traits": [
+				"rare",
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "Legendary in {@skill Crafting}",
+			"entries": [
+				"You use legendary Vudran techniques to craft a disharmonic instrument that incorporates pieces of {@creature Kothogaz, Dance of Disharmony|LOMM|Kothogaz}'s heart. This is likely a tanpura, but legends mention other instruments and even voice enhancers. A disharmonic instrument is a {@item musical instrument (generic)||virtuoso musical instrument}.",
+				"This activity requires seven {@action harvest heartsliver|LOMM|disharmonic heartslivers}, the formula for a disharmonic instrument, 55,000 gp worth of rare materials, and 7 days of work. At the end of the 7 days, attempt a DC 40 Crafting check to {@action Craft}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You masterfully complete the disharmonic instrument. Holding the instrument grants immunity to {@creature Kothogaz, Dance of Disharmony|LOMM|Kothogaz}'s tympanic heartbeat and many-eyed blight.",
+						"Success": "You complete the disharmonic instrument.",
+						"Failure": "You don't complete the disharmonic instrument, and you contract many-eyed blight from the heartslivers.",
+						"Critical Failure": "As failure, and whenever you're on the same plane as Kothogaz, it can immediately teleport to you with its Disharmonic Door ability."
+					}
+				}
+			]
+		},
+		{
 			"name": "Recenter",
 			"activity": {
 				"number": 1,

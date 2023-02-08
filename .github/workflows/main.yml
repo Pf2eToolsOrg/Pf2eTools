@@ -64,6 +64,7 @@ jobs:
                VET_SEO_IS_SKIP_UA_ETC: true
             run: |
                npm run build:deploy:prod -- ${{ env.RELEASE_VERSION }}
+               sed -i 's/sitemap.xml//g' .gitignore
                sed -i 's/sw.js//g' .gitignore
                sed -i 's/sw-injector.js//g' .gitignore
          # See: https://github.com/JamesIves/github-pages-deploy-action

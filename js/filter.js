@@ -18,7 +18,11 @@ class PageFilter {
 	get sourceFilter () { return this._sourceFilter; }
 
 	mutateAndAddToFilters (entity, isExcluded, opts) {
-		this.mutateForFilters(entity, opts);
+		try {
+			this.mutateForFilters(entity, opts);
+		} catch {
+			throw new Error(`The following entry has broken the page's filters: ${entity.name}|${entity.source}`)
+		}
 		this.addToFilters(entity, isExcluded, opts);
 	}
 

@@ -1488,17 +1488,22 @@
 								"type": "list",
 								"items": [
 									"{@bold Negative} (necromancy, negative, primal) The dragon breathes a blast of darkness in a 40-foot cone that deals {@damage 16d6} negative damage (DC 36 basic Reflex save). Undead creatures take {@damage 19d6} force damage instead of the negative damage.",
-									"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 40-foot cone. Each creature within the cone must attempt a DC 36 Fortitude save."
+									{
+										"type": "item",
+										"entries": [
+											"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 40-foot cone. Each creature within the cone must attempt a DC 36 Fortitude save.",
+											{
+												"type": "successDegree",
+												"entries": {
+													"Critical Success": "The creature is unaffected.",
+													"Success": "The creature is {@condition enfeebled 2} for 1 round.",
+													"Failure": "The creature is {@condition enfeebled 2} for 1 minute.",
+													"Critical Failure": "The creature is {@condition enfeebled 2} for 1 minute and {@condition blinded} for 1 round."
+												}
+											}
+										]
+									}
 								]
-							},
-							{
-								"type": "successDegree",
-								"entries": {
-									"Critical Success": "The creature is unaffected.",
-									"Success": "The creature is {@condition enfeebled 2} for 1 round.",
-									"Failure": "The creature is {@condition enfeebled 2} for 1 minute.",
-									"Critical Failure": "The creature is {@condition enfeebled 2} for 1 minute and {@condition blinded} for 1 round."
-								}
 							}
 						],
 						"name": "Breath Weapon"
@@ -1774,9 +1779,9 @@
 				"top": [
 					{
 						"entries": [
-							"3 or more days without eating, an akata can secrete resin that encases it in a noqual cocoon. The cocoon has Hardness 9, 40 HP, and a Broken Threshold of 18. It has resistance 5 to damage from magical sources. As long as the cocoon remains intact, the akata can't be harmed, and it doesn't need to eat or drink. While inside the cocoon, the akata gains lifesense 30 feet. The akata remains in a state of hibernation until it is exposed to extreme heat or senses a living creature, at which point it can burst free of its cocoon in {@dice 1d4} minutes."
+							"After 3 or more days without eating, an akata can secrete resin that encases it in a noqual cocoon. The cocoon has Hardness 9, 40 HP, and a Broken Threshold of 18. It has resistance 5 to damage from magical sources. As long as the cocoon remains intact, the akata can't be harmed, and it doesn't need to eat or drink. While inside the cocoon, the akata gains lifesense 30 feet. The akata remains in a state of hibernation until it is exposed to extreme heat or senses a living creature, at which point it can burst free of its cocoon in {@dice 1d4} minutes."
 						],
-						"name": "Hibernation After"
+						"name": "Hibernation"
 					},
 					{
 						"entries": [
@@ -6968,15 +6973,11 @@
 							"unit": "free",
 							"entry": "{@as F}"
 						},
-						"trigger": "The bastion archon hits a creature with two fist {@action Strike||Strikes} this turn and can use its Holy",
-						"entries": [],
-						"name": "Blinding Beams"
-					},
-					{
+						"trigger": "The bastion archon hits a creature with two fist {@action Strike||Strikes} this turn and can use its Holy Beam;",
 						"entries": [
 							"The bastion archon fires its Holy Beam at only the creature it hit twice. The creature's save result is one degree of success worse than the result it rolled."
 						],
-						"name": "Beam; Effect"
+						"name": "Blinding Beams"
 					},
 					{
 						"activity": {
@@ -8234,6 +8235,32 @@
 					"types": [
 						"piercing"
 					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "occult",
+					"DC": 18,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "blink"
+									}
+								]
+							}
+						}
+					}
 				}
 			],
 			"abilities": {
@@ -13532,9 +13559,9 @@
 					},
 					{
 						"entries": [
-							"Coil spy can maintain an ongoing illusory disguise as long as they are conscious without having to re-cast the spell; they need only {@action Cast a Spell||Cast the Spell} again to reassume their illusory disguise if they wish to change their appearance or if the active spell is dispelled. Coil spies typically seek privacy when they need to sleep, as an ongoing illusory disguise ends an hour after they fall {@condition unconscious}."
+							"A Coil spy can maintain an ongoing illusory disguise as long as they are conscious without having to re-cast the spell; they need only {@action Cast a Spell||Cast the Spell} again to reassume their illusory disguise if they wish to change their appearance or if the active spell is dispelled. Coil spies typically seek privacy when they need to sleep, as an ongoing illusory disguise ends an hour after they fall {@condition unconscious}."
 						],
-						"name": "Maintain Disguise A"
+						"name": "Maintain Disguise"
 					},
 					{
 						"type": "affliction",
@@ -13749,6 +13776,9 @@
 				},
 				"stealth": {
 					"std": 26
+				},
+				"warfare lore": {
+					"std": 30
 				}
 			},
 			"abilityMods": {
@@ -13862,14 +13892,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+30 Str +8, Dex +6, Con +7, Int +4, Wis +6, Cha +6 Items +2 greater striking unholy spiked chain."
-						],
-						"name": "Lore"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -15221,7 +15243,7 @@
 			"languages": {
 				"languages": [
 					"destrachan",
-					"undercommon (can speak only"
+					"undercommon (can speak only destrachan)"
 				]
 			},
 			"skills": {
@@ -15272,12 +15294,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"Skills {@skill Athletics} +18, {@skill Stealth} +15, {@skill Survival} +18 Str +6, Dex +3, Con +4, Int +3, Wis +6, Cha +3."
-						],
-						"name": "Destrachan)"
-					},
 					{
 						"entries": [
 							"A destrachan can use its hearing as a precise sense at the listed range."
@@ -15753,7 +15769,7 @@
 					"effects": [
 						"{@dice 3d8+16}"
 					],
-					"damage": "{@dice 3d8+16} plus {@damage 2d6} fire and",
+					"damage": "{@dice 3d8+16} plus {@damage 2d6} fire and {@ability Improved Grab}",
 					"types": [
 						"fire"
 					]
@@ -15810,13 +15826,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -16170,7 +16179,7 @@
 					"traits": [
 						"reach <20 feet>"
 					],
-					"damage": "{@damage 2d8+10} bludgeoning plus",
+					"damage": "{@damage 2d8+10} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -16186,13 +16195,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"entries": [
 							"The drainberry bush must drain blood from living creatures for sustenance. This causes clusters of bright red berries to grow among its branches. Each cluster of berries lasts for 1 day, and a drainberry bush typically has {@dice 1d6+3} clusters when encountered. When consumed, a cluster restores {@dice 2d8+10} Hit Points. This effect has the healing, {@trait necromancy}, and {@trait primal} traits.",
@@ -18450,12 +18452,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+12 Str +4, Dex +3, Con +2, Int +0, Wis +1, Cha +1."
-						],
-						"name": "Lore"
-					},
 					{
 						"traits": [
 							"divination",
@@ -21872,7 +21868,8 @@
 					"std": 5
 				},
 				"athletics": {
-					"std": 6
+					"std": 6,
+					"to High Jump or Long Jump": 10
 				},
 				"stealth": {
 					"std": 7
@@ -21918,14 +21915,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+7 Str +3, Dex +2, Con +3, Int \u20134, Wis +2, Cha \u20131."
-						],
-						"name": "Jump), Stealth"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -23065,15 +23054,10 @@
 						},
 						"entries": [
 							"The giant squid makes up to four arm {@action Strike||Strikes}, each with a different arm and against a different target.",
-							"The giant squid then makes a beak {@action Strike} against one creature that it {@condition grabbed} during."
-						],
-						"name": "Ravenous Embrace"
-					},
-					{
-						"entries": [
+							"The giant squid then makes a beak {@action Strike} against one creature that it {@condition grabbed} during Ravenous Embrace.",
 							"Each arm {@action Strike} counts separately for the squid's multiple attack penalty, but the penalty doesn't increase until the squid has made all of its arm {@action Strike||Strikes}; the beak {@action Strike} uses the multiple attack penalty as normal."
 						],
-						"name": "Ravenous Embrace."
+						"name": "Ravenous Embrace"
 					}
 				]
 			},
@@ -23473,7 +23457,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The giant whiptail centipede {@action Stride||Strides} **or {@action Step||Steps}. During this movement, it can pass through spaces as narrow as 5 feet without {@action Squeeze||Squeezing}."
+							"The giant whiptail centipede {@action Stride||Strides} or {@action Step||Steps}. During this movement, it can pass through spaces as narrow as 5 feet without {@action Squeeze||Squeezing}."
 						],
 						"name": "Undulate"
 					},
@@ -23642,15 +23626,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As wolverine, except AC 20, jaws {@dice 2d6+11}, and claws {@dice 2d4+11}.",
-							{
-								"type": "list",
-								"items": [
-									"Cockroaches: A worm that walks",
-									"Leeches: A worm that walks made of",
-									"Spiders: A worm that walks made"
-								]
-							}
+							"The giant wolverine enters a state of pure rage that lasts either for 1 minute, until there are no enemies it can perceive, or until it falls {@condition unconscious}, whichever comes first. While raging, the giant wolverine has AC 20, its jaws Strike deals {@damage 2d6+11} damage, and its claw Strike deals {@damage 2d4+11} damage. While raging, the giant wolverine can't use actions that have the {@trait concentrate} trait, except for {@action Seek}. After it's stopped raging, a giant wolverine can't use Wolverine Rage again for 1 minute."
 						],
 						"name": "Wolverine Rage"
 					}
@@ -24691,18 +24667,9 @@
 						},
 						"requirements": "Grendel is grabbing a creature",
 						"entries": [
-							"Grendel makes a bludgeoning jaws {@action Strike} against the creature he's grabbing. On a hit, the creature also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and becomes {@condition wounded 1}, or increases its {@condition wounded} value by 1 if already {@condition wounded}. On a critical hit, the creature instead becomes {@condition wounded 2}, or increases its {@condition wounded} value by 2 if already {@condition wounded}. If a creature dies from."
+							"Grendel makes a bludgeoning jaws {@action Strike} against the creature he's grabbing. On a hit, the creature also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and becomes {@condition wounded 1}, or increases its {@condition wounded} value by 1 if already {@condition wounded}. On a critical hit, the creature instead becomes {@condition wounded 2}, or increases its {@condition wounded} value by 2 if already {@condition wounded}. If a creature dies from Tooth Grind, Grendel regains 40 HP; this is a {@trait healing} effect."
 						],
 						"name": "Tooth Grind"
-					},
-					{
-						"traits": [
-							"regains"
-						],
-						"entries": [
-							"40 HP; this is a {@trait healing} effect."
-						],
-						"name": "Tooth Grind, Grendel"
 					},
 					{
 						"activity": {
@@ -25210,15 +25177,6 @@
 							"Gripplis ignore {@quickref difficult terrain||3|terrain} in forests and jungles."
 						],
 						"name": "Jungle Stride"
-					},
-					{
-						"traits": [
-							"the"
-						],
-						"entries": [
-							"\"fountain\" effect of a decanter of endless water (Core Rulebook 573)."
-						],
-						"name": ""
 					}
 				]
 			},
@@ -26779,15 +26737,9 @@
 							"attack"
 						],
 						"entries": [
-							"The hippopotamus tries to capsize an adjacent aquatic vessel of its size or smaller. The hippopotamus must succeed at an {@skill Athletics} check with a DC of 25 (reduced by 5 for each size smaller the vessel is than the hippo) or the pilot's Sailing."
+							"The hippopotamus tries to capsize an adjacent aquatic vessel of its size or smaller. The hippopotamus must succeed at an {@skill Athletics} check with a DC of 25 (reduced by 5 for each size smaller the vessel is than the hippo) or the pilot's {@skill Lore|Sailing Lore} DC, whichever is higher."
 						],
 						"name": "Capsize"
-					},
-					{
-						"entries": [
-							"DC, whichever is higher."
-						],
-						"name": "Lore"
 					},
 					{
 						"activity": {
@@ -28090,7 +28042,7 @@
 					},
 					{
 						"entries": [
-							"The blizzardborn can {@action Burrow} through ice or snow with a."
+							"The icewyrm can {@action Burrow} through ice or snow with a Speed of 20 feet. It moves at its full burrow Speed, leaving no tunnels or signs of its passing."
 						],
 						"name": "Ice Burrow"
 					}
@@ -30182,9 +30134,9 @@
 						"reach <15 feet>"
 					],
 					"effects": [
-						"Improved"
+						"Improved Grab"
 					],
-					"damage": "{@damage 4d8+19} slashing plus Improved",
+					"damage": "{@damage 4d8+19} slashing plus {@ability Improved Grab}",
 					"types": [
 						"slashing"
 					]
@@ -30198,11 +30150,39 @@
 						"reach <15 feet>"
 					],
 					"effects": [
-						"Improved"
+						"Improved Knockdown"
 					],
-					"damage": "{@damage 4d10+19} bludgeoning plus Improved",
+					"damage": "{@damage 4d10+19} bludgeoning plus {@ability Improved Knockdown}",
 					"types": [
 						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "wing",
+					"attack": 40,
+					"traits": [
+						"magical",
+						"agile",
+						"reach <15 feet>"
+					],
+					"damage": "{@damage 4d8+19} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "eyes of flame",
+					"attack": 42,
+					"traits": [
+						"fire",
+						"magical",
+						"range increment <60 feet>"
+					],
+					"damage": "{@damage 10d6} fire plus {@damage 4d6} {@condition persistent damage ||persistent fire}",
+					"types": [
+						"persistent"
 					]
 				}
 			],
@@ -30252,13 +30232,46 @@
 				"bot": [
 					{
 						"activity": {
-							"number": 1,
+							"number": 2,
 							"unit": "action"
 						},
 						"entries": [
-							"Melee tail +42 (magical, reach <15 feet>), Damage {@damage 4d10+19} bludgeoning plus Improved."
+							"The jabberwock creates a blast of strange noises and shouted nonsense in the various languages it knows (and invariably some languages it doesn't know), creating one of two effects. The jabberwock can't Burble again for 1d4 rounds.",
+							{
+								"type": "list",
+								"items": [
+									"{@bold Confusion} (aura, emotion, enchantment, mental, primal) 60 feet. Each creature in the emanation must succeed at a DC 46 Will save or become confused for {@dice 1d4} rounds.",
+									"{@bold Sonic Beam} (evocation, primal, sonic) The jabberwock focuses its Burbling into a 60 foot line of sonic energy that deals {@damage 24d6} sonic damage to creatures in the area (DC 46 basic Reflex save)."
+								]
+							}
 						],
-						"name": "Grab",
+						"name": "Burble",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"entries": [
+							"If the jabberwock makes a jaws attack and rolls a natural 19 on the d20 roll, the attack is a critical hit. This has no effect if the 19 would be a failure."
+						],
+						"name": "Jaws That Bite",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The jabberwock Flies or makes a wing {@action Strike};",
+						"entries": [
+							"The jabberwock's wings whiffle, creating severe winds within a 30-foot emanation. These winds move outward from the jabberwock, and they persist until the start of the jabberwock's next turn. During this time, flight of any kind in the emanation requires a successful DC 43 {@skill Acrobatics} check to {@action Maneuver in Flight}, and creatures flying toward the jabberwock are moving through greater difficult terrain. Creatures on the ground in the emanation must succeed at a DC 43 {@skill Athletics} check to approach the jabberwock."
+						],
+						"traits": [
+							"aura"
+						],
+						"name": "Whiffling",
 						"generic": {
 							"tag": "ability"
 						}
@@ -30469,13 +30482,9 @@
 						},
 						"trigger": "The jotund troll Grabs a creature with their jaws",
 						"entries": [
-							"The troll uses."
+							"The troll uses {@ability Swallow Whole}."
 						],
 						"name": "Fast Swallow"
-					},
-					{
-						"entries": [],
-						"name": "Swallow Whole."
 					},
 					{
 						"activity": {
@@ -31394,10 +31403,22 @@
 							"manipulate"
 						],
 						"entries": [
-							"The Leng spider creates a weapon by applying a cord of webbing to heavy objects, such as rocks or chunks of metal, either attaching two heavy objects together to create a web bola or fastening one to its leg to create a web war flail.",
-							"Descend on a Web {@as 1} (move) The Leng spider moves straight down up to 120 feet, suspended by a web line. It can hang from the web or drop off. The distance it Descends on a Web doesn't count when calculating falling damage. The web can be severed by a {@action Strike} that deals slashing damage (AC 30, Hardness 15, 25 HP), causing the Leng spider to fall."
+							"The Leng spider creates a weapon by applying a cord of webbing to heavy objects, such as rocks or chunks of metal, either attaching two heavy objects together to create a web bola or fastening one to its leg to create a web war flail."
 						],
 						"name": "Create Web Weaponry"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The Leng spider moves straight down up to 120 feet, suspended by a web line. It can hang from the web or drop off. The distance it Descends on a Web doesn't count when calculating falling damage. The web can be severed by a {@action Strike} that deals slashing damage (AC 30, Hardness 15, 25 HP), causing the Leng spider to fall."
+						],
+						"name": "Descend on a Web"
 					},
 					{
 						"activity": {
@@ -33326,7 +33347,7 @@
 							},
 							{
 								"stage": 2,
-								"entry": "@damage 1d6} poison damage, {@condition confused}, and {@condition stupefied 1}",
+								"entry": "{@damage 1d6} poison damage, {@condition confused}, and {@condition stupefied 1}",
 								"duration": "1 round"
 							},
 							{
@@ -36877,7 +36898,7 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d12+13} piercing plus",
+					"damage": "{@damage 3d12+13} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -37018,17 +37039,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "free"
-						},
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -38094,15 +38104,9 @@
 						},
 						"trigger": "A Medium creature within the nuglub's reach leaves a square during its move action",
 						"entries": [
-							"The nuglub lashes out at the triggering creature's knees and tries to knock them {@condition prone}. The nuglub makes an {@skill Acrobatics} check against the creature's Reflex."
+							"The nuglub lashes out at the triggering creature's knees and tries to knock them {@condition prone}. The nuglub makes an {@skill Acrobatics} check against the creature's Reflex DC. On a success, the target falls and lands {@condition prone}."
 						],
 						"name": "Kneecapper"
-					},
-					{
-						"entries": [
-							"On a success, the target falls and lands {@condition prone}."
-						],
-						"name": "DC."
 					}
 				],
 				"bot": [
@@ -38507,18 +38511,6 @@
 							"A creature hit by the ogre spider's web attack is {@condition immobilized} and stuck to the nearest surface until it {@action Escape||Escapes} (DC 22)."
 						],
 						"name": "Web Trap"
-					},
-					{
-						"entries": [
-							"Its blade {@action Strike} deals."
-						],
-						"name": "Dulled Blades:"
-					},
-					{
-						"entries": [
-							"It loses Rev Up, Stuck in a Rut: It uses the same."
-						],
-						"name": "Misaligned Gears:"
 					}
 				]
 			},
@@ -38726,14 +38718,16 @@
 				"bot": [
 					{
 						"activity": {
-							"number": 2,
-							"unit": "action"
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 2} to {@as 3}"
 						},
 						"traits": [
-							"or"
+							"divine",
+							"negative"
 						],
 						"entries": [
-							"{@as 3} (divine, negative) The daemon expels a shrieking black cloud of smoke from its mouth in a 120-foot line or a 60-foot cone.",
+							"The daemon expels a shrieking black cloud of smoke from its mouth in a 120-foot line or a 60-foot cone",
 							"(or both a line and a cone in the same direction if it spends 3 actions). Living creatures in the area take {@damage 24d6} negative damage (DC 45 basic Reflex save)",
 							"The olethrodaemon can't use Apocalypse Breath again for {@dice 1d4} rounds."
 						],
@@ -40245,15 +40239,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The peluda bristles their quills and shakes, sending dozens of spear-like barbs in every direction. All creatures within 30 feet take {@damage 11d6} piercing damage (DC 29 basic Reflex save) and are exposed to peluda venom if they take any damage. The peluda can't use."
+							"The peluda bristles their quills and shakes, sending dozens of spear-like barbs in every direction. All creatures within 30 feet take {@damage 11d6} piercing damage (DC 29 basic Reflex save) and are exposed to peluda venom if they take any damage. The peluda can't use Quill Barrage again for 1 minute."
 						],
 						"name": "Quill Barrage"
-					},
-					{
-						"entries": [
-							"Barrage again for 1 minute."
-						],
-						"name": "Quill"
 					}
 				]
 			},
@@ -43133,7 +43121,7 @@
 					},
 					{
 						"entries": [
-							"200 HP."
+							"200 HP. An intangible field of necromantic energy protects a ravener from total destruction. A soul ward has 150 maximum Hit Points, or 200 if the ravener is level 21 or higher. Whenever a ravener would be reduced below 1 Hit Point, all damage in excess of what would reduce them to 1 Hit Point is instead dealt to their soul ward. If this damage reduces the soul ward to fewer than 0 Hit Points, the ravener is destroyed. A soul ward's Hit Points can be restored only via specific ravener abilities such as Consume Soul, ravenous breath, or vicious criticals. A ravener who goes more than a week without successfully using Consume Soul to feed on a dying creature starves, and their soul ward loses {@damage 1d4} Hit Points each day until they feed. If the ravener's soul ward loses all its Hit Points while the ravener still has more than 1 HP, they become a ravener husk."
 						],
 						"name": "Soul Ward"
 					},
@@ -43151,12 +43139,19 @@
 						}
 					},
 					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"trigger": "The ravener takes excess damage to their soul ward but still has at least 51 Hit Points in their soul ward;",
 						"activity": {
 							"number": 1,
 							"unit": "free",
 							"entry": "{@as F}"
 						},
-						"entries": [],
+						"entries": [
+							"The ravener draws deeply into their soul ward, discorporating their body into soul energy in order to escape. They take 50 damage to their soul ward and their physical body vanishes, reappearing {@dice 1d4} hours later in a random location within 1 mile from the location where they used Discorporate."
+						],
 						"name": "Discorporate"
 					},
 					{
@@ -43182,8 +43177,25 @@
 							"unit": "free",
 							"entry": "{@as F}"
 						},
+						"traits": [
+							"death",
+							"divine",
+							"necromancy"
+						],
+						"trigger": [
+							"A living creature within 30 feet of the ravener dies;"
+						],
 						"entries": [
-							"DC 44."
+							"The ravener tears the creature's soul from its body with their maw and gulps it down. The dying creature must attempt a DC 44 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The ravener tears off a small chunk of the creature's soul. If the victim is restored to life, they are {@condition drained 1} in addition to any other side effects of returning to life. The ravener adds a number of Hit Points to their soul ward equal to half the creature's level.",
+									"Failure": "As success, but the creature's soul is ravaged. The creature is {@condition drained 3} and the ravener adds a number of Hit Points to their soul ward equal to the creature's level.",
+									"Critical Failure": "As failure, but the ravener devours the entire soul. The victim can't be restored to life as long as the ravener exists except via a 10th-level effect such as {@spell miracle} or {@spell wish}, and the ravener adds a number of Hit Points to their soul ward equal to twice the creature's level."
+								}
+							}
 						],
 						"name": "Consume Soul"
 					},
@@ -43218,7 +43230,9 @@
 						"name": "Ravenous Breath Weapon"
 					},
 					{
-						"entries": [],
+						"entries": [
+							"The ravener treats an attack roll as a critical hit on a roll of 19 or 20, as long as the attack roll was a success. Additionally, whenever the ravener makes a critical hit with one of their {@action Strike|Strikes}, the target must succeed on a Fortitude save or gain the {@condition drained 1} condition. If the target already has a {@condition drained} value of greater than 0, their {@condition drained} value instead increases by 1, to a maximum of {@condition drained 4}. Whenever the ravener applies drain to a creature in this way, their soul ward gains 5 Hit Points."
+						],
 						"name": "Vicious Criticals"
 					}
 				]
@@ -43996,7 +44010,7 @@
 						"finesse",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d8+10} bludgeoning plus",
+					"damage": "{@damage 3d8+10} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -44055,17 +44069,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "free"
-						},
-						"entries": [],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -53552,15 +53555,9 @@
 							"transmutation"
 						],
 						"entries": [
-							"The totenmaske takes the appearance of a Medium or smaller humanoid creature. This is either its form from before it became undead, or the form of the last creature it successfully hit with Drink."
+							"The totenmaske takes the appearance of a Medium or smaller humanoid creature. This is either its form from before it became undead, or the form of the last creature it successfully hit with Drink Flesh. This doesn't change the totenmaske's Speed or the attack and damage bonuses for its {@action Strike|Strikes}, but might change the damage type its {@action Strike|Strikes} deal (typically to bludgeoning)."
 						],
 						"name": "Living Form"
-					},
-					{
-						"entries": [
-							"This doesn't change the totenmaske's."
-						],
-						"name": "Flesh."
 					}
 				]
 			},
@@ -54370,8 +54367,7 @@
 					{
 						"entries": [
 							"Each of a two-headed troll's heads rolls their own initiative and has their own turn. Neither head can {@action Delay}. At the start of a head's turn, that head gets 2 actions and 1 reaction. Each brain controls one of the troll's arms, but both can move the legs. Any ability that would sever a two-headed troll's head (such as the vorpal weapon property) doesn't cause the two-headed troll to die if they still have their other head, but does cause them to lose the turns, actions, and reactions of the severed head.",
-							"Mental effects that target a single creature affect only one of the troll's heads.",
-							"Items club."
+							"Mental effects that target a single creature affect only one of the troll's heads."
 						],
 						"name": "Independent Brains"
 					}
@@ -54717,7 +54713,68 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"spellcasting": [
+				{
+					"name": "Primal Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "primal",
+					"DC": 17,
+					"attack": 9,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "know direction"
+								},
+								{
+									"name": "stabilize"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "create water"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "hydraulic push"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Sorcerer Bloodline",
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 17,
+					"attack": 9,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "elemental toss",
+									"amount": "(1 Focus Point)"
+								}
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Urdefhan Tormentor",
@@ -56452,7 +56509,7 @@
 							},
 							{
 								"stage": 3,
-								"entry": "@damage 2d6} poison plus {@condition enfeebled 1} and {@condition drained 1}",
+								"entry": "{@damage 2d6} poison plus {@condition enfeebled 1} and {@condition drained 1}",
 								"duration": "1 round"
 							}
 						],
@@ -59568,15 +59625,9 @@
 					},
 					{
 						"entries": [
-							"A wood golem targeted by shape wood takes {@dice 2d8} damage per spell level, with a basic Fortitude save against the caster's spell."
+							"A wood golem targeted by shape wood takes {@dice 2d8} damage per spell level, with a basic Fortitude save against the caster's spell DC. On a critical failure, the golem is also {@condition immobilized} for {@dice 1d4} rounds."
 						],
 						"name": "Vulnerable to Shape Wood"
-					},
-					{
-						"entries": [
-							"On a critical failure, the golem is also {@condition immobilized} for {@dice 1d4} rounds."
-						],
-						"name": "DC."
 					},
 					{
 						"activity": {
@@ -60127,6 +60178,9 @@
 				},
 				"stealth": {
 					"std": 15
+				},
+				"warfare lore": {
+					"std": 12
 				}
 			},
 			"abilityMods": {
@@ -60211,14 +60265,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12 Str +4, Dex +5, Con +3, Int +0, Wis +3, Cha +0 Items breastplate, +1 longbow (40 arrows), scimitar (2), steel shield (Hardness 5, HP 20, BT 10)"
-						],
-						"name": "Lore"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
