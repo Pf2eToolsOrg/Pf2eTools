@@ -1,4 +1,4 @@
-v0.7.8
+v0.7.9
 
-- Added Errata Changes
+- Started Lost Omens: Monsters of Myth conversion
 - (Typos/Tags)
