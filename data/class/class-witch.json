@@ -133,6 +133,16 @@
 			],
 			"subclasses": [
 				{
+					"name": "Mosquito Witch",
+					"type": "Patron Theme",
+					"shortName": "Mosquito Witch",
+					"source": "LOMM",
+					"page": 75,
+					"subclassFeatures": [
+						"Patron|Witch|APG|Mosquito Witch|LOMM|1"
+					]
+				},
+				{
 					"name": "Pacts",
 					"type": "Patron Theme",
 					"shortName": "Pacts",
@@ -1382,6 +1392,53 @@
 									"type": "item",
 									"name": "Granted Spell",
 									"entry": "{@spell command}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Patron",
+			"source": "LOMM",
+			"page": 75,
+			"className": "Witch",
+			"classSource": "APG",
+			"subclassShortName": "Mosquito Witch",
+			"subclassSource": "LOMM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Mosquito Witch ({@trait Rare})",
+					"source": "LOMM",
+					"page": 75,
+					"entries": [
+						"Few in Shimmerford or elsewhere would be foolish enough to attempt to draw the {@creature Mosquito Witch|LOMM}'s attention, but whether you're one of those foolish few or simply someone who attracted the Mosquito Witch's attention unwittingly or unwillingly, she grants you powers over insects and other arthropods.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entry": "{@filter primal|spells||tradition & spell list=primal}"
+								},
+								{
+									"type": "item",
+									"name": "Patron Skill",
+									"entry": "{@skill Nature}"
+								},
+								{
+									"type": "item",
+									"name": "Hex Cantrip",
+									"entry": "{@spell buzzing bites|LOMM}"
+								},
+								{
+									"type": "item",
+									"name": "Granted Spell",
+									"entry": "{@spell pest form}"
 								}
 							]
 						}

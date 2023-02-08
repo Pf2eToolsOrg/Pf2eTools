@@ -1505,6 +1505,23 @@
 									}
 								]
 							}
+									{
+										"type": "item",
+										"entries": [
+											"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 40-foot cone. Each creature within the cone must attempt a DC 36 Fortitude save.",
+											{
+												"type": "successDegree",
+												"entries": {
+													"Critical Success": "The creature is unaffected.",
+													"Success": "The creature is {@condition enfeebled 2} for 1 round.",
+													"Failure": "The creature is {@condition enfeebled 2} for 1 minute.",
+													"Critical Failure": "The creature is {@condition enfeebled 2} for 1 minute and {@condition blinded} for 1 round."
+												}
+											}
+										]
+									}
+								]
+							}
 						],
 						"name": "Breath Weapon"
 					},
@@ -31403,10 +31420,22 @@
 							"manipulate"
 						],
 						"entries": [
-							"The Leng spider creates a weapon by applying a cord of webbing to heavy objects, such as rocks or chunks of metal, either attaching two heavy objects together to create a web bola or fastening one to its leg to create a web war flail.",
-							"Descend on a Web {@as 1} (move) The Leng spider moves straight down up to 120 feet, suspended by a web line. It can hang from the web or drop off. The distance it Descends on a Web doesn't count when calculating falling damage. The web can be severed by a {@action Strike} that deals slashing damage (AC 30, Hardness 15, 25 HP), causing the Leng spider to fall."
+							"The Leng spider creates a weapon by applying a cord of webbing to heavy objects, such as rocks or chunks of metal, either attaching two heavy objects together to create a web bola or fastening one to its leg to create a web war flail."
 						],
 						"name": "Create Web Weaponry"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The Leng spider moves straight down up to 120 feet, suspended by a web line. It can hang from the web or drop off. The distance it Descends on a Web doesn't count when calculating falling damage. The web can be severed by a {@action Strike} that deals slashing damage (AC 30, Hardness 15, 25 HP), causing the Leng spider to fall."
+						],
+						"name": "Descend on a Web"
 					},
 					{
 						"activity": {
@@ -43137,7 +43166,9 @@
 							"unit": "free",
 							"entry": "{@as F}"
 						},
-						"entries": ["The ravener draws deeply into their soul ward, discorporating their body into soul energy in order to escape. They take 50 damage to their soul ward and their physical body vanishes, reappearing {@dice 1d4} hours later in a random location within 1 mile from the location where they used Discorporate."],
+						"entries": [
+							"The ravener draws deeply into their soul ward, discorporating their body into soul energy in order to escape. They take 50 damage to their soul ward and their physical body vanishes, reappearing {@dice 1d4} hours later in a random location within 1 mile from the location where they used Discorporate."
+						],
 						"name": "Discorporate"
 					},
 					{
@@ -43216,7 +43247,9 @@
 						"name": "Ravenous Breath Weapon"
 					},
 					{
-						"entries": ["The ravener treats an attack roll as a critical hit on a roll of 19 or 20, as long as the attack roll was a success. Additionally, whenever the ravener makes a critical hit with one of their {@action Strike|Strikes}, the target must succeed on a Fortitude save or gain the {@condition drained 1} condition. If the target already has a {@condition drained} value of greater than 0, their {@condition drained} value instead increases by 1, to a maximum of {@condition drained 4}. Whenever the ravener applies drain to a creature in this way, their soul ward gains 5 Hit Points."],
+						"entries": [
+							"The ravener treats an attack roll as a critical hit on a roll of 19 or 20, as long as the attack roll was a success. Additionally, whenever the ravener makes a critical hit with one of their {@action Strike|Strikes}, the target must succeed on a Fortitude save or gain the {@condition drained 1} condition. If the target already has a {@condition drained} value of greater than 0, their {@condition drained} value instead increases by 1, to a maximum of {@condition drained 4}. Whenever the ravener applies drain to a creature in this way, their soul ward gains 5 Hit Points."
+						],
 						"name": "Vicious Criticals"
 					}
 				]
