@@ -436,25 +436,14 @@
 							{
 								"type": "successDegree",
 								"entries": {
-									"Critical Success": "The target is unaffected and is temporarily immune to"
-								}
-							}
-						],
-						"name": "Agonizing Wail"
-					},
-					{
-						"entries": [
-							"Wail for 1 minute.",
-							{
-								"type": "successDegree",
-								"entries": {
+									"Critical Success": "The target is unaffected and is temporarily immune to Agonizing Wail for 1 minute.",
 									"Success": "The target can't use reactions for 1 round.",
 									"Failure": "The target is {@condition slowed|CRB|slowed 1} and can't use reactions for 1 minute as it sobs uncontrollably. It can attempt a new Will save to end the effect at the end of each of its turns.",
 									"Critical Failure": "As failure, but the target can't make saves to end the effect."
 								}
 							}
 						],
-						"name": "Agonizing"
+						"name": "Agonizing Wail"
 					},
 					{
 						"activity": {
@@ -497,7 +486,9 @@
 				],
 				"resistances": [
 					{
-						"name": "all"
+						"name": "all damage",
+						"amount": 2,
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			}

@@ -651,8 +651,7 @@
 					},
 					{
 						"name": "splash damage",
-						"amount": 5,
-						"note": "Troop"
+						"amount": 5
 					}
 				]
 			},
@@ -673,8 +672,10 @@
 				],
 				"mid": [
 					{
-						"name": "Defenses Pathfinder Bestiary 3 306",
-						"entries": []
+						"name": "Troop Defenses",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -684,9 +685,9 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [
-							"Pathfinder Bestiary 3 305"
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"name": "Grave Tide",
@@ -698,11 +699,13 @@
 						"name": "Shambling Onslaught",
 						"activity": {
 							"number": 1,
-							"unit": "action"
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 2}"
 						},
-						"components": [
-							"to {@as 2}Frequency once per round"
-						],
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
 						"entries": [
 							"The shamblers lash out at any enemies in their squares or within 5 feet (DC 25 basic Reflex save). The damage depends on the number of actions.",
 							"{@as 1} {@damage 3d6+9} bludgeoning damage {@as 2} {@damage 3d8+13} bludgeoning damage"

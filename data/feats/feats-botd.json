@@ -285,7 +285,6 @@
 				"Enshroud Soul Cage|BotD",
 				"Hand of the Lich|BotD",
 				"Bolster Soul Cage|BotD",
-				"Spell Gem|BotD",
 				"Frightful Aura|BotD"
 			]
 		},
@@ -415,6 +414,7 @@
 				"Grave Mummification|BotD",
 				"Mummy's Despair|BotD",
 				"Accursed Touch|BotD",
+				"Channel Rot|BotD",
 				"Storm Shroud|BotD",
 				"Terrain Form|BotD",
 				"Desiccating Inhalation|BotD"
@@ -539,6 +539,9 @@
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"entries": [
 				"You've learned to harness the supernatural curse that animates you, imbuing your most powerful attacks with a terrible curse. When you critically hit with a fist {@action Strike}, negative energy binds to it; this is a {@trait curse} and a {@trait disease}. The creature takes {@damage 2d6} {@condition persistent damage ||persistent negative damage}. While the creature has this {@condition persistent damage}, it's also {@condition stupefied||stupefied 1}. The {@condition persistent damage} increases to {@dice 3d6} at 14th level and {@dice 4d6} at 20th level. This is a critical specialization effect."
+			],
+			"leadsTo": [
+				"Channel Rot|BotD"
 			]
 		},
 		{
@@ -844,11 +847,13 @@
 				}
 			],
 			"leadsTo": [
+				"Clinging Climber|BotD",
 				"Daywalker|BotD",
 				"Predatory Claws|BotD",
 				"Vicious Fangs|BotD",
 				"Bat Form|BotD",
 				"Turn to Mist|BotD",
+				"Mist Escape|BotD",
 				"Coffin Bound|BotD"
 			]
 		},
@@ -1160,6 +1165,9 @@
 			"entries": [
 				"Against humanoids, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Lie}, and to {@skill Diplomacy} checks to {@action Gather Information} and {@action Make an Impression}.",
 				"Once per day, you can cast {@spell charm} as a divine innate spell using your class DC or spell DC, whichever is higher. Casting it requires staring into the target's eyes, giving the spell the {@trait visual} trait. At 5th level and every 2 levels thereafter, the spell is heightened by an additional level, to a maximum of a 9th-level {@spell charm} when you are 19th level."
+			],
+			"leadsTo": [
+				"Dominating Gaze|BotD"
 			]
 		},
 		{
@@ -1296,6 +1304,9 @@
 			},
 			"entries": [
 				"You turn into vapor, gaining the effects of {@spell gaseous form}."
+			],
+			"leadsTo": [
+				"Mist Escape|BotD"
 			]
 		},
 		{
@@ -1320,6 +1331,9 @@
 				"You bind your spirit to a coffin filled with soil of your homeland, making it a place of recovery. If you rest inside your coffin for 10 minutes, you regain Hit Points equal to your Constitution modifier × half your level. You can still be healed in other ways during that time, though you're {@condition unconscious} and therefore unable to heal yourself. The GM might allow you to {@action Refocus} while resting, depending on whether it's a type of Refocusing you can achieve while you slumber.",
 				"If you would be destroyed, you instead remain near death. This doesn't change your {@condition dying} or {@condition wounded} value, and you remain {@condition unconscious}. After 1 hour, you're destroyed. If returned to your coffin before that hour is up, you avoid destruction; if you spend 1 hour resting in your coffin, you regain 1 HP and lose the {@condition dying} and {@condition wounded} conditions. You can't be healed in any other way when near death.",
 				"Your coffin can't heal you if you're staked through the chest. You can be staked only if {@condition unconscious}, and it takes three actions. You lose all benefits of this feat if your coffin is destroyed or the soil is lost. You must procure a new coffin and fill it with soil of your homeland to restore the feat's function."
+			],
+			"leadsTo": [
+				"Mist Escape|BotD"
 			]
 		},
 		{
@@ -1782,6 +1796,7 @@
 				"Ghostly Grasp|BotD",
 				"Ghost Flight|BotD",
 				"Unlimited Ghost Flight|BotD",
+				"Pass Through|BotD",
 				"Rejuvenation|BotD"
 			]
 		},

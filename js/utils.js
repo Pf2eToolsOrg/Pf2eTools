@@ -2482,7 +2482,7 @@ DataUtil = {
 					additionalData.forEach(dataAndSource => {
 						const findWith = dataAndSource.findWith;
 						const ad = dataAndSource.sourceData;
-						const toAppend = ad[prop].filter(it => it.otherSources && it.otherSources.find(os => os.source === findWith));
+						const toAppend = ad[prop].filter(it => it.otherSources && Object.keys(it.otherSources).map(x => it.otherSources[x]).find(os => os.source === findWith));
 						if (toAppend.length) data[prop] = (data[prop] || []).concat(toAppend);
 					});
 				}));
@@ -4752,7 +4752,7 @@ BrewUtil = {
 			case "place":
 			case "ritual":
 			case "vehicle":
-			case "relicgift":
+			case "relicGift":
 			case "trait":
 			case "group":
 			case "domain":
@@ -5079,6 +5079,7 @@ BrewUtil = {
 		return BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources ? BrewUtil.homebrewMeta.sources : [];
 	},
 
+	// FIXME:
 	hasSourceJson (source) {
 		if (!source) return false;
 		source = source.toLowerCase();
