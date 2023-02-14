@@ -6503,7 +6503,7 @@
 				"mid": [
 					{
 						"entries": [
-							"Like normal objects, an animated armor has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated broom is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 13."
+							"Like normal objects, an animated armor has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated armor is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 13."
 						],
 						"name": "Construct Armor"
 					}
@@ -10466,7 +10466,7 @@
 						],
 						"trigger": "A creature within 30 feet that the basilisk can see starts its turn.",
 						"entries": [
-							"The target must attempt a DC 20 Fortitude save. If it fails, it's slow 1 for 1 minute as its body slowly stiffens."
+							"The target must attempt a DC 20 Fortitude save. If it fails, it's {@condition slowed 1||slow} for 1 minute as its body slowly stiffens."
 						],
 						"name": "Petrifying Glance"
 					}
@@ -11826,6 +11826,12 @@
 					"poison",
 					"paralyzed",
 					"sleep"
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "fire"
+					}
 				]
 			}
 		},
@@ -20370,6 +20376,9 @@
 				"diplomacy": {
 					"std": 16
 				},
+				"intimidation": {
+					"std": 18
+				},
 				"stealth": {
 					"std": 13
 				},
@@ -21552,7 +21561,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The drow fighter draws a weapon using the {@action Interact} action, then {@action Strike||Strikes} with that weapon."
+							"The drow rogue draws a weapon using the {@action Interact} action, then {@action Strike||Strikes} with that weapon."
 						],
 						"name": "Quick Draw"
 					},
@@ -24029,7 +24038,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"10 feet. Spikes of rock rise up from all stone surfaces in the emanation, creating {@quickref difficult terrain||3|terrain}. A creature moving in the terrain takes {@damage 2d8} piercing damage for each square of spikes it moves into (a Large or larger creature takes damage only once for each square it moves, even if its space covers multiple squares of spikes). Creatures with the {@trait earth} trait ignore all effects within the area. The stone mauler can disable or activate spike stones as a single action, which has the {@trait concentrate} trait."
+							"10 feet. Spikes of rock rise up from all stone surfaces in the emanation, creating {@quickref difficult terrain||3|terrain}. A creature moving in the terrain takes {@damage 2d8} piercing damage for each square of spikes it moves into (a Large or larger creature takes damage only once for each square it moves, even if its space covers multiple squares of spikes). Creatures with the {@trait earth} trait ignore all effects within the area. The elemental avalanche can disable or activate spike stones as a single action, which has the {@trait concentrate} trait."
 						],
 						"name": "Spike Stones"
 					},
@@ -24039,16 +24048,16 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"The living landslide crumbles into the ground, Burrowing down 10 feet. This Burrowing does not trigger reactions. The living landslide can't Crumble again for {@dice 1d4} rounds."
+							"The elemental avalanche crumbles into the ground, Burrowing down 10 feet. This Burrowing does not trigger reactions. The elemental avalanche can't Crumble again for {@dice 1d4} rounds."
 						],
 						"name": "Crumble",
-						"trigger": "The living landslide takes damage from a {@condition hostile} source while atop rock or earth."
+						"trigger": "The elemental avalanche takes damage from a {@condition hostile} source while atop rock or earth."
 					}
 				],
 				"bot": [
 					{
 						"entries": [
-							"The sod hound can {@action Burrow} through any earthen matter, including rock. When it does so, the sod hound moves at its full burrow Speed, leaving no tunnels or signs of its passing."
+							"The elemental avalanche can {@action Burrow} through any earthen matter, including rock. When it does so, the elemental avalanche moves at its full burrow Speed, leaving no tunnels or signs of its passing."
 						],
 						"name": "Earth Glide"
 					},
@@ -24064,12 +24073,6 @@
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"entries": [
-							"Fire elementals are destructive manifestations of the scorching Plane of Fire."
-						],
-						"name": "Elemental, Fire"
 					}
 				]
 			},
@@ -28586,7 +28589,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Setting right the injustice that led to the commonerʼs death allows it to move on to the afterlife."
+							"Setting right the injustice that led to the commoner's death allows it to move on to the afterlife."
 						],
 						"name": "Rejuvenation"
 					}
@@ -31329,7 +31332,7 @@
 						"entries": [
 							"As {@action Attack of Opportunity}, but the snake can use this reaction only if it's Coiled."
 						],
-						"name": "Attack of Opportunity",
+						"name": "Coiled Opportunity",
 						"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using."
 					}
 				],
@@ -32768,10 +32771,10 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"The goblin warrior {@action Step||Steps}."
+							"The goblin commando {@action Step||Steps}."
 						],
 						"name": "Goblin Scuttle",
-						"trigger": "A goblin ally ends a move action adjacent to the warrior."
+						"trigger": "A goblin ally ends a move action adjacent to the commando."
 					}
 				]
 			},
@@ -33077,10 +33080,10 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"The goblin warrior {@action Step||Steps}."
+							"The goblin pyro {@action Step||Steps}."
 						],
 						"name": "Goblin Scuttle",
-						"trigger": "A goblin ally ends a move action adjacent to the warrior."
+						"trigger": "A goblin ally ends a move action adjacent to the pyro."
 					}
 				]
 			},
@@ -33255,10 +33258,10 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"The goblin warrior {@action Step||Steps}."
+							"The goblin war chanter {@action Step||Steps}."
 						],
 						"name": "Goblin Scuttle",
-						"trigger": "A goblin ally ends a move action adjacent to the warrior."
+						"trigger": "A goblin ally ends a move action adjacent to the war chanter."
 					}
 				],
 				"bot": [
@@ -33691,14 +33694,23 @@
 							"attack"
 						],
 						"entries": [
-							"The hunting spider automatically notices the creature and {@action Stride||Strides}, Climbs, or Descends on a Web before it rolls initiative."
+							"The goliath spider automatically notices the creature and {@action Stride||Strides}, Climbs, or Descends on a Web before it rolls initiative."
 						],
 						"name": "Spring Upon Prey",
-						"trigger": "A creature touches the hunting spider's web while the spider is on it.",
+						"trigger": "A creature touches the goliath spider's web while the spider is on it.",
 						"requirements": "Initiative has not yet been rolled."
 					}
 				],
 				"bot": [
+					{
+						"name": "Descend on a Web",
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The goliath spider moves straight down up to 120 feet, suspended by a web line. It can hang from the web or drop off. The distance it Descends on a Web doesn't count for falling damage. A creature that successfully {@action Strike||Strikes} the web (AC 20, Hardness 5, 20 HP) severs it, causing the spider to fall."
+						]
+					},
 					{
 						"type": "affliction",
 						"name": "Goliath Spider Venom",
@@ -37164,6 +37176,12 @@
 				],
 				"immunities": [
 					"fire"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "cold"
+					}
 				]
 			}
 		},
@@ -37572,7 +37590,7 @@
 				"mid": [
 					{
 						"entries": [
-							"When it's adjacent to at least two other allies, the hobgoblin soldier gains a +1 circumstance bonus to AC and saving throws. This bonus increases to +2 to Reflex saves against area effects."
+							"When it's adjacent to at least two other allies, the hobgoblin archer gains a +1 circumstance bonus to AC and saving throws. This bonus increases to +2 to Reflex saves against area effects."
 						],
 						"name": "Formation"
 					}
@@ -37725,7 +37743,7 @@
 				"mid": [
 					{
 						"entries": [
-							"When it's adjacent to at least two other allies, the hobgoblin soldier gains a +1 circumstance bonus to AC and saving throws. This bonus increases to +2 to Reflex saves against area effects."
+							"When it's adjacent to at least two other allies, the hobgoblin general gains a +1 circumstance bonus to AC and saving throws. This bonus increases to +2 to Reflex saves against area effects."
 						],
 						"name": "Formation"
 					}
@@ -38358,6 +38376,15 @@
 					}
 				],
 				"bot": [
+					{
+						"name": "Descend on a Web",
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The hunting spider moves straight down up to 40 feet, suspended by a web line. It can hang from the web or drop off. The distance it Descends on a Web doesn't count for falling damage. A creature that successfully {@action Strike||Strikes} the web (AC 20, Hardness 3, 5 HP) severs it, causing the spider to fall."
+						]
+					},
 					{
 						"type": "affliction",
 						"name": "Hunting Spider Venom",
@@ -40882,10 +40909,10 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The kobold warrior {@action Stride||Strides} up to its Speed plus 5 feet and gains a +2 circumstance bonus to AC against reactions triggered by this movement. It must end this movement in a space that's not adjacent to any enemy."
+							"The kobold scout {@action Stride||Strides} up to its Speed plus 5 feet and gains a +2 circumstance bonus to AC against reactions triggered by this movement. It must end this movement in a space that's not adjacent to any enemy."
 						],
 						"name": "Hurried Retreat",
-						"requirements": "The kobold warrior is adjacent to at least one enemy."
+						"requirements": "The kobold scout is adjacent to at least one enemy."
 					},
 					{
 						"entries": [
@@ -44397,7 +44424,7 @@
 				"bot": [
 					{
 						"entries": [
-							"The sod hound can {@action Burrow} through any earthen matter, including rock. When it does so, the sod hound moves at its full burrow Speed, leaving no tunnels or signs of its passing."
+							"The living landslide can {@action Burrow} through any earthen matter, including rock. When it does so, the living landslide moves at its full burrow Speed, leaving no tunnels or signs of its passing."
 						],
 						"name": "Earth Glide"
 					}
@@ -48399,7 +48426,7 @@
 						},
 						"trigger": "A creature scores a critical hit on the mukradi.",
 						"entries": [
-							"The mukradi's Breath Weapon recharges. It can use its Breath Weapon immediately as part of this reaction. It canʼt use this reaction again until it recharges its Breath Weapon naturally."
+							"The mukradi's Breath Weapon recharges. It can use its Breath Weapon immediately as part of this reaction. It can't use this reaction again until it recharges its Breath Weapon naturally."
 						],
 						"name": "Spitting Rage"
 					}
@@ -48433,7 +48460,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The mukradi makes two {@action Strike||Strikes} with different maws against the same target. If both hit, the target takes an extra {@damage 2d12+13} slashing damage, with a DC 36 basic Fortitude save. On a critical failure, the creature is torn to pieces and dies. The mukradiʼs multiple attack penalty increases only after all the attacks are made."
+							"The mukradi makes two {@action Strike||Strikes} with different maws against the same target. If both hit, the target takes an extra {@damage 2d12+13} slashing damage, with a DC 36 basic Fortitude save. On a critical failure, the creature is torn to pieces and dies. The mukradi's multiple attack penalty increases only after all the attacks are made."
 						],
 						"name": "Pull Apart"
 					},
@@ -51086,6 +51113,9 @@
 				"athletics": {
 					"std": 16
 				},
+				"intimidation": {
+					"std": 16
+				},
 				"stealth": {
 					"std": 11
 				}
@@ -51238,6 +51268,9 @@
 				"athletics": {
 					"std": 12
 				},
+				"intimidation": {
+					"std": 10
+				},
 				"survival": {
 					"std": 6
 				}
@@ -51373,6 +51406,9 @@
 			"skills": {
 				"athletics": {
 					"std": 12
+				},
+				"intimidation": {
+					"std": 9
 				}
 			},
 			"abilityMods": {
@@ -53223,7 +53259,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The pit fiend reshapes a large number of lemures within a 600-foot radius into more powerful devils to swell Hell's legions. The pit fiend must have available the number of lemures listed on the table in the sidebar on page 92. The pit fiend can shape 100 lemures per day, to a maximum of 1,100 lemures in 11 days. Devils created in this way are in thrall to the pit fiend and follow its orders, with the exception of created pit fiends or other devils of similar power, which are always independent. As a result, few pit fiends choose to create peers. At the end of the Devil Shaping activity, the pit fiend attempts an incredibly hard {@skill Religion} check of the desired devilʼs level, with results as follows.",
+							"The pit fiend reshapes a large number of lemures within a 600-foot radius into more powerful devils to swell Hell's legions. The pit fiend must have available the number of lemures listed on the table in the sidebar on page 92. The pit fiend can shape 100 lemures per day, to a maximum of 1,100 lemures in 11 days. Devils created in this way are in thrall to the pit fiend and follow its orders, with the exception of created pit fiends or other devils of similar power, which are always independent. As a result, few pit fiends choose to create peers. At the end of the Devil Shaping activity, the pit fiend attempts an incredibly hard {@skill Religion} check of the desired devil's level, with results as follows.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -53260,7 +53296,7 @@
 							"freq": 1
 						},
 						"entries": [
-							"If the pit fiendʼs next action is to cast an 8th-level or lower innate spell, reduce the number of actions to cast it by 1 (minimum 1 action)."
+							"If the pit fiend's next action is to cast an 8th-level or lower innate spell, reduce the number of actions to cast it by 1 (minimum 1 action)."
 						],
 						"name": "Masterful Quickened Casting"
 					},
@@ -59516,6 +59552,14 @@
 						"hp": 40,
 						"abilities": null
 					}
+				],
+				"immunities": [
+					"acid",
+					"critical hits",
+					"mental",
+					"precision",
+					"unconscious",
+					"visual"
 				]
 			}
 		},
@@ -62196,7 +62240,7 @@
 							"divine"
 						],
 						"entries": [
-							"A skulltaker taps into the memories of the creatures whose bones make up its body. This gives it the {@skill Lore||Skeletal Lore} skill, which it can use to {@action Recall Knowledge} of any kind. In addition, it can speak and understand all the languages known by the creatures whose bones make up its body (typically including Common and the regional language of the skulltakerʼs home region). The skulltaker can use {@skill Lore||Skeletal Lore} as the primary skill check for the legend lore ritual (Core Rulebook 413), and it can cast legend lore without secondary casters."
+							"A skulltaker taps into the memories of the creatures whose bones make up its body. This gives it the {@skill Lore||Skeletal Lore} skill, which it can use to {@action Recall Knowledge} of any kind. In addition, it can speak and understand all the languages known by the creatures whose bones make up its body (typically including Common and the regional language of the skulltaker's home region). The skulltaker can use {@skill Lore||Skeletal Lore} as the primary skill check for the legend lore ritual (Core Rulebook 413), and it can cast legend lore without secondary casters."
 						],
 						"name": "Skeletal Lore"
 					}
@@ -62944,6 +62988,12 @@
 						"hp": 44,
 						"abilities": null
 					}
+				],
+				"immunities": [
+					"bleed",
+					"paralyzed",
+					"poison",
+					"sleep"
 				]
 			}
 		},
@@ -64163,7 +64213,7 @@
 				"bot": [
 					{
 						"entries": [
-							"The sod hound can {@action Burrow} through any earthen matter, including rock. When it does so, the sod hound moves at its full burrow Speed, leaving no tunnels or signs of its passing."
+							"The stone mauler can {@action Burrow} through any earthen matter, including rock. When it does so, the stone mauler moves at its full burrow Speed, leaving no tunnels or signs of its passing."
 						],
 						"name": "Earth Glide"
 					}
@@ -64606,6 +64656,9 @@
 				},
 				"diplomacy": {
 					"std": 20
+				},
+				"intimidation": {
+					"std": 16
 				},
 				"religion": {
 					"std": 13
@@ -70654,12 +70707,6 @@
 							"A creature hit by the web lurker's web attack is {@condition immobilized} and stuck to the nearest surface until it succeeds at DC 20 {@skill Acrobatics} check to {@action Escape}."
 						],
 						"name": "Web Trap"
-					},
-					{
-						"entries": [
-							"The following traps are some used by web lurkers."
-						],
-						"name": "Web Lurker Traps"
 					}
 				]
 			},
@@ -72849,7 +72896,7 @@
 					},
 					{
 						"entries": [
-							"The sod hound can {@action Burrow} through any earthen matter, including rock. When it does so, the sod hound moves at its full burrow Speed, leaving no tunnels or signs of its passing."
+							"The xorn can {@action Burrow} through any earthen matter, including rock. When it does so, the xorn moves at its full burrow Speed, leaving no tunnels or signs of its passing."
 						],
 						"name": "Earth Glide"
 					}
@@ -76277,6 +76324,12 @@
 						"hp": 36,
 						"abilities": null
 					}
+				],
+				"immunities": [
+					"bleed",
+					"paralyzed",
+					"poison",
+					"sleep"
 				]
 			}
 		},
