@@ -22,7 +22,10 @@
 						"type": "string"
 					},
 					"destruction": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
 					},
 					"page": {
 						"type": "integer"

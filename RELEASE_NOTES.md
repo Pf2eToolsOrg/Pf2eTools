@@ -1,4 +1,7 @@
-v0.7.9
+v0.7.10
 
-- Started Lost Omens: Monsters of Myth conversion
+
+- Fixed relicGift homebrew
+- Fixed "Select by Date" filter option
+- Fixed "otherSources" in Bestiary page 
 - (Typos/Tags)
