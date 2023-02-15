@@ -2386,7 +2386,7 @@ class SourceFilter extends Filter {
 				const allowedDateSet = new Set(dates.slice(min, max + 1).map(it => it.str));
 				const nxtState = {};
 				Object.keys(this._state)
-					.filter(k => SourceUtil.isNonstandardSource(k))
+					// FIXME: .filter(k => SourceUtil.isNonstandardSource(k))
 					.forEach(k => {
 						const sourceDate = Parser.sourceJsonToDate(k);
 						nxtState[k] = allowedDateSet.has(sourceDate) ? 1 : 0;
@@ -2405,7 +2405,7 @@ class SourceFilter extends Filter {
 				grpBtnsActive.showVe();
 
 				dates = Object.keys(this._state)
-					.filter(it => SourceUtil.isNonstandardSource(it))
+					// FIXME: .filter(it => SourceUtil.isNonstandardSource(it)) this shit broke
 					.map(it => Parser.sourceJsonToDate(it))
 					.filter(Boolean)
 					.unique()

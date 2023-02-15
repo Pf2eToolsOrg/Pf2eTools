@@ -1,6 +1,6 @@
 {
-    "spell": [
-        {
+	"spell": [
+		{
 			"name": "Buzzing Bites",
 			"source": "LOMM",
 			"page": 75,
@@ -8,14 +8,14 @@
 			"level": 1,
 			"traits": [
 				"rare",
-                "cantrip",
+				"cantrip",
 				"evocation",
 				"hex",
 				"witch"
 			],
 			"subclass": {
 				"Patron|Witch|APG": [
-					"Mosquito Witch"
+					"Mosquito Witch|LOMM"
 				]
 			},
 			"cast": {
@@ -37,14 +37,14 @@
 				"unit": "minute",
 				"sustained": true
 			},
-            "savingThrow": {
+			"savingThrow": {
 				"type": [
 					"F"
 				]
 			},
 			"entries": [
 				"You evoke buzzing and crawling insects to climb onto a foe's body and bite, dealing {@damage 1d4} piercing damage and potentially sickening the foe, depending on its Fortitude save. You deal the piercing damage initially and then again the first time each round you {@action sustain a spell||Sustain the Spell}, starting on the round after you cast it and rolling the damage based on the target's saving throw result each time. However, the creature only attempts the Fortitude save once, when you first {@action cast a spell||Cast the Spell}. Once this spell ends, the target becomes temporarily immune for 1 minute.",
-                {
+				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
@@ -62,5 +62,5 @@
 				}
 			}
 		}
-    ]
+	]
 }

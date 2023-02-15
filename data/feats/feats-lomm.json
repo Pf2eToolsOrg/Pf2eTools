@@ -26,8 +26,7 @@
 					},
 					"frequency": {
 						"unit": "day",
-						"freq": 1,
-						"number": "once"
+						"freq": 1
 					},
 					"trigger": "You take 40 or more physical damage from a single attack",
 					"entries": [
@@ -65,8 +64,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1,
-				"number": "once"
+				"freq": 1
 			},
 			"level": 14,
 			"featType": {
@@ -103,6 +101,10 @@
 			"prerequisites": "{@feat Pactbound Dedication|LOMM}",
 			"entries": [
 				"Thick tattoos, each one a rune fragment from the saumen kar's long-lost language spelling out their pact with their equally lost deity, cover your body and stretch across your limbs, torso, and face. You gain a +1 status bonus to saving throws against {@trait evil} and {@trait necromancy} spells and effects. You can sense the presence of evil undead as a pervasive taste of oily corruption in the air; this is a vague sense that allows you to know when such  a creature is within 60 feet of you, though you can't precisely pinpoint their location with this sense. As normal for a vague sense, it can be fooled, but undead might not realize they need to take precautions against it. This sense also extends to living creatures who have the {@ability negative healing|B2} ability, like dhampir."
+			],
+			"leadsTo": [
+				"Bound in Ice|LOMM",
+				"Curse of the Saumen Kar|LOMM"
 			]
 		},
 		{
@@ -120,7 +122,7 @@
 			],
 			"prerequisites": "{@feat Pactbound Dedication|LOMM}",
 			"entries": [
-				"The ancient ice-crafting techniques of the saumen kar awaken within you. You become trained in {@skill Crafting}, or become an expert if you were already trained. You gain the {@feat Magical Crafting} skill feat. You can craft permanent items out of ice instead of metal or wood; these items are a translucent crystal-blue in color, resemble icicles and glacier ice, and have the same statistics and properties as {@item cold iron weapon (generic)||cold iron}, including the price and the ability to deal additional damage to certain kinds of creatures. Any creature who wields or wears a piece of ice-crafted equipment takes 1 cold damage each round from contact with the primal cold of the crafted ice."
+				"The ancient ice-crafting techniques of the saumen kar awaken within you. You become trained in {@skill Crafting}, or become an expert if you were already trained. You gain the {@feat Magical Crafting} skill feat. You can craft permanent items out of ice instead of metal or wood; these items are a translucent crystal-blue in color, resemble icicles and glacier ice, and have the same statistics and properties as {@item cold iron (generic)||cold iron}, including the price and the ability to deal additional damage to certain kinds of creatures. Any creature who wields or wears a piece of ice-crafted equipment takes 1 cold damage each round from contact with the primal cold of the crafted ice."
 			]
 		},
 		{
@@ -146,11 +148,11 @@
 				"You can't select another dedication feat until you have gained two other feats from the pactbound archetype."
 			],
 			"leadsTo": [
-				"Ice Crafter|LOMM",
 				"Crown of the Saumen Kar|LOMM",
 				"Frostbite Runes|LOMM",
+				"Bound in Ice|LOMM",
 				"Curse of the Saumen Kar|LOMM",
-				"Bound in Ice|LOMM"
+				"Ice Crafter|LOMM"
 			]
 		}
 	]

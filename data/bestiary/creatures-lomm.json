@@ -59,7 +59,9 @@
 				"{@runeItem greataxe||+2 weapon potency||greater striking|}"
 			],
 			"defenses": {
-				"ac": 33,
+				"ac": {
+					"std": 33
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 25
@@ -185,7 +187,7 @@
 							"spells": [
 								{
 									"name": "wall of ice",
-									"amount": "3"
+									"amount": 3
 								}
 							]
 						},
@@ -266,7 +268,9 @@
 				"cha": 3
 			},
 			"defenses": {
-				"ac": 40,
+				"ac": {
+					"std": 40
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 32
@@ -511,7 +515,7 @@
 							"spells": [
 								{
 									"name": "wall of ice",
-									"amount": "3"
+									"amount": 3
 								}
 							]
 						},
@@ -591,7 +595,9 @@
 				"cha": 5
 			},
 			"defenses": {
-				"ac": 43,
+				"ac": {
+					"std": 43
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 38
@@ -626,7 +632,7 @@
 				"resistances": [
 					{
 						"name": "fire",
-						"amount": "20"
+						"amount": 20
 					}
 				]
 			},
@@ -675,8 +681,7 @@
 						},
 						"frequency": {
 							"unit": "minute",
-							"freq": 1,
-							"number": "once"
+							"freq": 1
 						},
 						"trigger": "Desert's Howl is damaged by another creature",
 						"entries": [
@@ -877,7 +882,9 @@
 				"cha": 3
 			},
 			"defenses": {
-				"ac": 31,
+				"ac": {
+					"std": 31
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 24
@@ -894,7 +901,6 @@
 						"hp": 175,
 						"abilities": [
 							"{@ability regeneration||regeneration 20} (deactivated by cold)"
-
 						]
 					}
 				],
@@ -948,8 +954,7 @@
 						},
 						"frequency": {
 							"unit": "hour",
-							"freq": 1,
-							"number": "once"
+							"freq": 1
 						},
 						"trigger": "The howling spawn is damaged by another creature",
 						"entries": [
@@ -1144,7 +1149,9 @@
 				"cha": 9
 			},
 			"defenses": {
-				"ac": 51,
+				"ac": {
+					"std": 51
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 42
@@ -1459,7 +1466,9 @@
 				"cha": 5
 			},
 			"defenses": {
-				"ac": 25,
+				"ac": {
+					"std": 25
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 18
@@ -1476,9 +1485,7 @@
 					{
 						"hp": 115,
 						"abilities": [
-
 							"{@ability regeneration||regeneration 5} (deactivated by cold iron)"
-
 						]
 					}
 				],
@@ -1655,7 +1662,9 @@
 				"cha": 5
 			},
 			"defenses": {
-				"ac": 38,
+				"ac": {
+					"std": 38
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 30
@@ -1879,7 +1888,9 @@
 				"cha": -2
 			},
 			"defenses": {
-				"ac": 32,
+				"ac": {
+					"std": 32
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 25
@@ -2053,7 +2064,9 @@
 				"skinned cloak"
 			],
 			"defenses": {
-				"ac": 27,
+				"ac": {
+					"std": 27
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 16
@@ -2388,7 +2401,9 @@
 				"cha": 6
 			},
 			"defenses": {
-				"ac": 49,
+				"ac": {
+					"std": 49
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 32
@@ -2663,7 +2678,9 @@
 				"cha": 0
 			},
 			"defenses": {
-				"ac": 24,
+				"ac": {
+					"std": 24
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 13
@@ -2814,7 +2831,9 @@
 				"cha": 4
 			},
 			"defenses": {
-				"ac": 27,
+				"ac": {
+					"std": 27
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 19
@@ -2984,7 +3003,10 @@
 			]
 		},
 		{
-			"name": "Krampus (The Horned Miser)",
+			"name": "Krampus",
+			"alias": [
+				"The Horned Miser"
+			],
 			"isNpc": false,
 			"source": "LOMM",
 			"page": 59,
@@ -3362,7 +3384,9 @@
 				"cha": 4
 			},
 			"defenses": {
-				"ac": 34,
+				"ac": {
+					"std": 34
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 22
@@ -3410,24 +3434,12 @@
 				],
 				"mid": [
 					{
-						"name": "Searing Skin",
-						"traits": [
-							"aura",
-							"divine",
-							"evocation",
-							"fire"
-						],
-						"entries": [
-							"5 feet. Cuetzmonquali's flesh burns as hot as flame. Creatures that end their turn in the emanation take {@damage 4d6} fire damage (DC 35 basic Fortitude save)."
-						]
-					},
-					{
 						"name": "Pinion",
 						"activity": {
 							"unit": "reaction",
 							"number": 1
 						},
-						"trigger":"A creature within 10 feet of Kuworsys uses an action to {@action Fly}",
+						"trigger": "A creature within 10 feet of Kuworsys uses an action to {@action Fly}",
 						"requirements": "Kuworsys is Reared Back",
 						"entries": [
 							"Kuworsys lashes out at the triggering creature, attempting to swat it to the ground. Kuworsys attempts a melee {@action Strike} against the creature. If the Strike hits, the creature's movement is interrupted. The creature is knocked to the ground; on a critical hit, they also can't Fly again for 1 minute."
@@ -3589,7 +3601,9 @@
 				"cha": 1
 			},
 			"defenses": {
-				"ac": 23,
+				"ac": {
+					"std": 23
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 16
@@ -3824,7 +3838,9 @@
 				"cha": 4
 			},
 			"defenses": {
-				"ac": 30,
+				"ac": {
+					"std": 30
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 17
@@ -3993,7 +4009,7 @@
 								{
 									"name": "vomit swarm",
 									"source": "APG",
-									"amount": "2"
+									"amount": 2
 								}
 							]
 						},

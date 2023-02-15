@@ -2426,6 +2426,33 @@
 					"name": "darkvision"
 				}
 			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "greataxe",
+					"attack": 12,
+					"traits": [
+						"reach <10 feet>",
+						"sweep"
+					],
+					"damage": "{@damage 1d12+7} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "javelin",
+					"attack": 6,
+					"traits": [
+						"thrown <30 feet>"
+					],
+					"damage": "{@damage 1d6+7} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
 			"skills": {
 				"athletics": {
 					"std": 12
@@ -2450,7 +2477,6 @@
 			"speed": {
 				"walk": 25
 			},
-			"attacks": [],
 			"defenses": {
 				"ac": {
 					"std": 17
