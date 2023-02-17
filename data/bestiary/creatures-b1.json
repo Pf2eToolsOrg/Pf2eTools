@@ -6010,19 +6010,28 @@
 						}
 					},
 					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
 						"traits": [
 							"cold",
 							"aura"
 						],
 						"entries": [
-							"15 feet, {@damage 3d6} cold damage. The silver dragon can turn this aura on or off as a single action, which has the {@trait concentrate} trait, and can choose not to affect allies within the aura.",
-							"Reflect Spell Trigger The silver dragon critically succeeds at a saving throw against a spell, or a caster trying to target the dragon critically fails their attack roll. The spell is reflected back upon the caster, with the effect of spell turning."
+							"15 feet, {@damage 3d6} cold damage. The silver dragon can turn this aura on or off as a single action, which has the {@trait concentrate} trait, and can choose not to affect allies within the aura."
 						],
-						"name": "Cold Aura"
+						"name": "Cold Aura",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The spell is reflected back upon the caster, with the effect of spell turning."
+						],
+						"trigger": "The silver dragon critically succeeds at a saving throw against a spell, or a caster trying to target the dragon critically fails their attack roll.",
+						"name": "Reflect Spell"
 					},
 					{
 						"activity": {
@@ -13082,8 +13091,9 @@
 							"fortune",
 							"manipulate"
 						],
+						"trigger": "An ally within 10 feet of the dancer rolls a saving throw against a {@trait mental} or {@trait illusion} effect.",
 						"entries": [
-							"Trigger An ally within 10 feet of the dancer rolls a saving throw against a {@trait mental} or {@trait illusion} effect. The target ally can roll the save twice and take the better result."
+							"The target ally can roll the save twice and take the better result."
 						],
 						"name": "Distracting Frolic"
 					},

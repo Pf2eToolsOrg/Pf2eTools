@@ -3229,10 +3229,6 @@
 						}
 					},
 					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
 						"traits": [
 							"aura",
 							"evocation",
@@ -3241,10 +3237,23 @@
 							"visual"
 						],
 						"entries": [
-							"30 feet. A swirling vortex of reflected color and light shimmers around the crystal dragon. Creatures in this aura's emanation are {@condition dazzled}. Each creature that ends its turn in the emanation must succeed at a DC 34 Will saving throw or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure). Once a creature succeeds at this save, it is temporarily immune to the stunning effect for 1 minute. The crystal dragon can turn this aura on or off using a single action, which has the {@trait concentrate} trait, and it can choose not to affect allies.",
-							"Reflect Spell Trigger The crystal dragon is targeted by a ranged spell attack roll; The crystal dragon adjusts a wing to try to reflect the spell and gains a +4 circumstance bonus to AC against the triggering attack. If the attack misses, the spell is reflected back at the caster, who must roll a second ranged spell attack roll against their own AC to determine if the spell hits them instead."
+							"30 feet. A swirling vortex of reflected color and light shimmers around the crystal dragon. Creatures in this aura's emanation are {@condition dazzled}. Each creature that ends its turn in the emanation must succeed at a DC 34 Will saving throw or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure). Once a creature succeeds at this save, it is temporarily immune to the stunning effect for 1 minute. The crystal dragon can turn this aura on or off using a single action, which has the {@trait concentrate} trait, and it can choose not to affect allies."
 						],
-						"name": "Scintillating Aura"
+						"name": "Scintillating Aura",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The crystal dragon is targeted by a ranged spell attack roll",
+						"entries": [
+							"The crystal dragon adjusts a wing to try to reflect the spell and gains a +4 circumstance bonus to AC against the triggering attack. If the attack misses, the spell is reflected back at the caster, who must roll a second ranged spell attack roll against their own AC to determine if the spell hits them instead."
+						],
+						"name": "Reflect Spell"
 					},
 					{
 						"activity": {
@@ -4745,8 +4754,9 @@
 							"primal",
 							"transmutation"
 						],
+						"trigger": "The assassin vine detects a creature within 20 feet via {@ability tremorsense}",
 						"entries": [
-							"Trigger The assassin vine detects a creature within 20 feet via {@ability tremorsense}; The assassin vine causes vegetation within a 20-foot emanation to writhe for 1 round, turning this area into {@quickref difficult terrain||3|terrain}. When a creature starts its turn in this area, it must attempt a DC 20 Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure it is also {@condition immobilized} for 1 round. A creature can attempt to {@action Escape} to remove these effects.",
+							"The assassin vine causes vegetation within a 20-foot emanation to writhe for 1 round, turning this area into {@quickref difficult terrain||3|terrain}. When a creature starts its turn in this area, it must attempt a DC 20 Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure it is also {@condition immobilized} for 1 round. A creature can attempt to {@action Escape} to remove these effects.",
 							"Assassin vines are immune to Grasping Foliage."
 						],
 						"name": "Grasping Foliage"
@@ -23766,8 +23776,9 @@
 							"abjuration",
 							"arcane"
 						],
+						"trigger": "The glass golem is targeted by a spell",
 						"entries": [
-							"Trigger The glass golem is targeted by a spell; The glass golem positions its magical, reflective surfaces to turn the spell back on the caster. It tries to counteract the spell by attempting an {@skill Acrobatics} check for its counteract check. If it successfully counteract the spell, the effect is turned back on the caster."
+							"The glass golem positions its magical, reflective surfaces to turn the spell back on the caster. It tries to counteract the spell by attempting an {@skill Acrobatics} check for its counteract check. If it successfully counteract the spell, the effect is turned back on the caster."
 						],
 						"name": "Spell Reflection"
 					}
@@ -37046,8 +37057,9 @@
 							"occult",
 							"teleportation"
 						],
+						"trigger": "A creature the neothelid is aware of uses a {@trait teleportation} effect",
 						"entries": [
-							"Trigger A creature the neothelid is aware of uses a {@trait teleportation} effect; The neothelid creates an extradimensional wormhole at the triggering creature's initial location that persists for up to 1 minute.",
+							"The neothelid creates an extradimensional wormhole at the triggering creature's initial location that persists for up to 1 minute.",
 							"If the neothelid moves into the wormhole's space, the neothelid teleports to the same destination as the triggering creature."
 						],
 						"name": "Dimensional Wormhole"
@@ -59652,8 +59664,9 @@
 							"arcane",
 							"transmutation"
 						],
+						"trigger": "The wood golem takes physical damage",
 						"entries": [
-							"Trigger The wood golem takes physical damage; A jagged, sizable splinter of wood lances out at the golem's attacker. The golem makes a splinter {@action Strike} against an adjacent creature without triggering reactions."
+							"A jagged, sizable splinter of wood lances out at the golem's attacker. The golem makes a splinter {@action Strike} against an adjacent creature without triggering reactions."
 						],
 						"name": "Splinter"
 					}
