@@ -3474,6 +3474,14 @@
 					"name": "true seeing"
 				}
 			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"necril",
+					"undercommon"
+				]
+			},
 			"skills": {
 				"acrobatics": {
 					"std": 22
@@ -3492,6 +3500,9 @@
 				},
 				"occultism": {
 					"std": 21
+				},
+				"religion": {
+					"std": 23
 				},
 				"society": {
 					"std": 21
@@ -3538,10 +3549,24 @@
 					"attack": 22,
 					"entry": {
 						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "see invisibility"
+									}
+								]
+							},
+							"3": {
+								"spells": [
+									{
+										"name": "haste"
+									}
+								]
+							},
 							"6": {
 								"spells": [
 									{
-										"name": "true"
+										"name": "true seeing"
 									}
 								]
 							}
@@ -3666,29 +3691,17 @@
 				"top": [
 					{
 						"entries": [
-							"Skills {@skill Acrobatics} +22, {@skill Athletics} +20, {@skill Deception} +21"
+							"Lady's Whisper can choose whether or not it counts as undead for effects that affect undead differently. Even if it does not count as undead, Lady's Whisper never counts as a living creature."
 						],
-						"name": "Language Aklo, Common, Necril, Undercommon"
-					},
-					{
-						"entries": [
-							"+21, {@skill Intimidation} +21, {@skill Occultism} +21, {@skill Religion} +23, {@skill Society} +21, {@skill Stealth} +22 Str +3, Dex +5, Con +3, Int +4, Wis +8, Cha +4."
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"Whisper can choose whether or not it counts as undead for effects that affect undead differently. Even if it does not count as undead, Lady's Whisper never counts as a living creature."
-						],
-						"name": "Death's Grace Lady's"
+						"name": "Death's Grace"
 					}
 				],
 				"mid": [
 					{
 						"entries": [
-							"Whisper can choose whether or not it takes positive damage."
+							"Lady's Whisper can choose whether or not it takes positive damage."
 						],
-						"name": "Negative Recovery Lady's"
+						"name": "Negative Recovery"
 					},
 					{
 						"traits": [
@@ -3715,18 +3728,9 @@
 							"concentrate"
 						],
 						"entries": [
-							"Lady's Whisper mentally causes any doors or portals within the Gate."
+							"Lady's Whisper mentally causes any doors or portals within the Gate of Nhimbaloth (areas B60 to B64 and areas C1 through C18) to open or shut. If Lady's Whisper wills a door closed, it must be Forced Open or battered down."
 						],
 						"name": "Gatekeeper's Will"
-					},
-					{
-						"traits": [
-							"areas b60 to b64 and areas c1 through c18"
-						],
-						"entries": [
-							"to open or shut. If Lady's Whisper wills a door closed, it must be Forced Open or battered down."
-						],
-						"name": "of Nhimbaloth"
 					},
 					{
 						"traits": [
@@ -3734,14 +3738,10 @@
 							"divine",
 							"teleportation"
 						],
-						"entries": [],
-						"name": "Unwilling Teleportation"
-					},
-					{
 						"entries": [
-							"Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a DC 30 Will saving throw to resist this effect."
+							"When Lady's Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a DC 30 Will saving throw to resist this effect."
 						],
-						"name": "When Lady's"
+						"name": "Unwilling Teleportation"
 					}
 				]
 			},
@@ -3758,7 +3758,10 @@
 					},
 					"will": {
 						"std": 25
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -3769,7 +3772,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
