@@ -3793,8 +3793,9 @@
 						"divine",
 						"necromancy"
 					],
+					"trigger": "A creature opens the door without first whispering the name Blackfingers",
 					"entries": [
-						"Trigger A creature opens the door without first whispering the name Blackfingers; The metal trapdoor emits toxic vapors. Each creature within 30 feet must save against a potent strain of blackfinger blight."
+						"The metal trapdoor emits toxic vapors. Each creature within 30 feet must save against a potent strain of blackfinger blight."
 					],
 					"name": "Blackfingers's Prayer"
 				},
@@ -4327,8 +4328,9 @@
 						"occult",
 						"transmutation"
 					],
+					"trigger": "A creature touches the cage door, the closet door, or any wooden stand",
 					"entries": [
-						"Trigger A creature touches the cage door, the closet door, or any wooden stand; Both double doors leading out of the room shut and lock; while the trap is active, the key doesn't work to open these doors (although their locks can be picked normally). The chandeliers drop several feet on elongated chains, allowing them to swing around the room. The closest chandelier to the triggering creature makes a swinging chandelier {@action Strike} against it. The trap then rolls initiative."
+						"Both double doors leading out of the room shut and lock; while the trap is active, the key doesn't work to open these doors (although their locks can be picked normally). The chandeliers drop several feet on elongated chains, allowing them to swing around the room. The closest chandelier to the triggering creature makes a swinging chandelier {@action Strike} against it. The trap then rolls initiative."
 					],
 					"name": "Extending Chandeliers"
 				}
@@ -6380,8 +6382,9 @@
 						"electricity",
 						"evocation"
 					],
+					"trigger": "A creature passes over the {@condition invisible} underwater rune between the north and south doors",
 					"entries": [
-						"Trigger A creature passes over the {@condition invisible} underwater rune between the north and south doors; The trap deals {@damage 4d10} electricity damage (DC 26 basic Reflex save) to creatures touching the water, and then rolls initiative."
+						"The trap deals {@damage 4d10} electricity damage (DC 26 basic Reflex save) to creatures touching the water, and then rolls initiative."
 					],
 					"name": "Electrocution"
 				}
@@ -8978,8 +8981,9 @@
 						"number": 1,
 						"unit": "reaction"
 					},
+					"trigger": "A creature attempts to activate Vengegate",
 					"entries": [
-						"Trigger A creature attempts to activate Vengegate; The chamber within {@deity Alseta|LOGM}'s Ring fills with a dragonstorm. Creatures within this area take {@dice 10d8} damage, equally split between acid, cold, electricity, fire, and poison."
+						"The chamber within {@deity Alseta|LOGM}'s Ring fills with a dragonstorm. Creatures within this area take {@dice 10d8} damage, equally split between acid, cold, electricity, fire, and poison."
 					],
 					"name": "Manifest Lesser Dragonstorm"
 				}
@@ -10594,8 +10598,9 @@
 						"primal",
 						"transmutation"
 					],
+					"trigger": "A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic.",
 					"entries": [
-						"Trigger A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic. The creature is targeted by baleful polymorph (DC 32 Will save)."
+						"The creature is targeted by baleful polymorph (DC 32 Will save)."
 					],
 					"name": "Baleful Polymorph"
 				}
@@ -12385,8 +12390,14 @@
 						"number": 1,
 						"unit": "reaction"
 					},
+					"traits": [
+						"arcane",
+						"conjuration",
+						"summon"
+					],
+					"trigger": "A creature enters the cloud of magical sensors.",
 					"entries": [
-						"(arcane, conjuration, summon; Trigger A creature enters the cloud of magical sensors. This trap summons a specific level 1 creature, determined when the trap is created. The creature rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the creature disappears. The creature also disappears if someone disables the trap before the duration expires. The summoned creature can use 3 actions each round and can use reactions, unlike most summoned creatures."
+						"This trap summons a specific level 1 creature, determined when the trap is created. The creature rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the creature disappears. The creature also disappears if someone disables the trap before the duration expires. The summoned creature can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
 					"name": "Summon Monster"
 				}

@@ -1823,9 +1823,9 @@
 				"mid": [
 					{
 						"entries": [
-							"Ledorick rolls a success on a Fortitude save, it is a critical success instead."
+							"When Ledorick rolls a success on a Fortitude save, it is a critical success instead."
 						],
-						"name": "Juggernaut When"
+						"name": "Juggernaut"
 					},
 					{
 						"activity": {
@@ -1833,7 +1833,7 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"Ledorick gains an additional reaction at the beginning of each of his turns that he can use only for an Attack of."
+							"Ledorick gains an additional reaction at the beginning of each of his turns that he can use only for an Attack of Opportunity."
 						],
 						"name": "Attack of Opportunity",
 						"generic": {
@@ -1841,23 +1841,16 @@
 						}
 					},
 					{
-						"entries": [],
-						"name": "Opportunity."
-					},
-					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"requirements": "Ledorick is using",
-						"entries": [],
-						"name": "Dueling Riposte"
-					},
-					{
+						"requirements": "Ledorick is using Dueling Parry",
+						"trigger": "A creature within Ledorick's reach critically fails a {@action Strike} against him",
 						"entries": [
-							"A creature within Ledorick's reach critically fails a {@action Strike} against him; Ledorick makes a melee {@action Strike} against the triggering creature or attempts to {@action Disarm} the triggering creature."
+							"Ledorick makes a melee {@action Strike} against the triggering creature or attempts to {@action Disarm} the triggering creature."
 						],
-						"name": "Dueling Parry; Trigger"
+						"name": "Dueling Riposte"
 					}
 				],
 				"bot": [
