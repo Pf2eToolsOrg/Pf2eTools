@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Belcorra Haruvex",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 87,
 			"level": 12,
@@ -61,30 +60,80 @@
 				"wis": 4,
 				"cha": 7
 			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 20
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 175,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 10,
+						"note": "except force"
+					},
+					{
+						"name": "ghost touch"
+					},
+					{
+						"name": "or positive; double resistance vs. non-magical)"
+					}
+				]
+			},
 			"speed": {
 				"fly": 25
 			},
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "ghostly hand",
-					"attack": 24,
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
 					"traits": [
 						"agile",
 						"finesse",
 						"magical"
 					],
-					"damage": "{@damage 3d8+12} negative",
-					"types": [
-						"negative"
-					]
+					"name": "ghostly hand",
+					"attack": 24,
+					"damage": "{@damage 3d8+12} negative"
 				}
 			],
 			"spellcasting": [
 				{
 					"name": "Occult Spontaneous",
+					"tradition": "Occult",
 					"type": "Spontaneous",
-					"tradition": "occult",
 					"DC": 33,
 					"attack": 25,
 					"entry": {
@@ -237,158 +286,105 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 33,
+					"rituals": [
+						{
+							"name": "legend lore"
+						},
+						{
+							"name": "planar binding"
+						},
+						{
+							"name": "teleportation circle",
+							"source": "advanced players guide"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+26, {@skill Religion} +22, {@skill Stealth} +22 Str \u20135, Dex +4, Con +0, Int +5, Wis +4, Cha +7."
-						],
-						"name": "Occultism"
-					},
-					{
+						"name": "Magic Sense",
 						"traits": [
 							"detection",
 							"divination"
 						],
 						"entries": [
 							"Belcorra can sense the presence of magic auras as though she were always using a 1st-level {@spell detect magic} spell. When she Seeks, she gains the benefits of a 3rd-level {@spell detect magic} spell on things she sees."
-						],
-						"name": "Magic Sense"
+						]
 					},
 					{
+						"name": "Site Bound",
 						"traits": [
-							"lowest three levels of the abomination vaults"
+							"lowest three levels of the Abomination Vaults"
 						],
-						"entries": [],
-						"name": "Site Bound"
+						"entries": []
 					}
 				],
 				"mid": [
 					{
+						"name": "Rejuvenation",
 						"traits": [
 							"divine",
 							"necromancy"
 						],
-						"entries": [],
-						"name": "Rejuvenation"
-					},
-					{
 						"entries": [
-							"Belcorra is destroyed, she re-forms in {@dice 2d4} days within the."
-						],
-						"name": "When"
-					},
-					{
-						"entries": [
-							"(though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using."
-						],
-						"name": "Empty Vault"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "varies",
-							"entry": "[page 76]"
-						},
-						"entries": [
-							"). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
-						],
-						"name": "the Ebon Fulcrum Lens"
+							"When Belcorra is destroyed, she re-forms in {@dice 2d4} days within the Empty Vault (though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using the Ebon Fulcrum Lens [page 220]). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
+						]
 					}
 				],
 				"bot": [
 					{
+						"name": "Blood Magic",
 						"entries": [
 							"Each time Belcorra casts a sorcerer bloodline spell or an aberrant bloodline granted spell, she can grant herself or a target of the spell a +2 status bonus to Will saving throws for 1 round."
-						],
-						"name": "Blood Magic"
+						]
 					},
 					{
+						"name": "Corrupting Gaze",
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
 						"entries": [
-							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied|CRB|stupefied 1} for 1 minute."
-						],
-						"name": "Corrupting Gaze"
+							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied||stupefied 1} for 1 minute."
+						]
 					},
 					{
+						"name": "Haunted Lighthouse",
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
 						"frequency": {
-							"unit": "minute",
-							"interval": 10,
+							"freq": 1,
 							"recurs": true,
-							"freq": 1
+							"interval": 10,
+							"unit": "minute"
 						},
 						"entries": [
 							"Belcorra extends her presence throughout the lowest three levels of Gauntlight until the end of her next turn. She can see with the benefits of all-around vision and can make ghostly hand attacks or use special abilities originating from any surface in this area."
-						],
-						"name": "Haunted Lighthouse"
+						]
 					},
 					{
+						"name": "Quickened Casting",
 						"activity": {
 							"number": 1,
 							"unit": "free"
 						},
 						"frequency": {
-							"unit": "day",
-							"freq": 1
+							"freq": 1,
+							"unit": "day"
 						},
-						"entries": [],
-						"name": "Quickened Casting"
-					},
-					{
 						"entries": [
-							"Belcorra's next action is to cast a sorcerer spell of 4th level or lower, she reduces the number of actions to cast it by 1 (minimum 1 action)."
-						],
-						"name": "If"
+							"If Belcorra's next action is to cast a sorcerer spell of 4th level or lower, she reduces the number of actions to cast it by 1 (minimum 1 action)."
+						]
 					}
 				]
 			},
-			"defenses": {
-				"ac": {
-					"std": 30
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 16
-					},
-					"ref": {
-						"std": 22
-					},
-					"will": {
-						"std": 20
-					}
-				},
-				"hp": [
-					{
-						"hp": 175,
-						"abilities": [
-							"negative healing",
-							"rejuvenation"
-						]
-					}
-				],
-				"immunities": [
-					"death"
-				],
-				"resistances": [
-					{
-						"amount": 10,
-						"name": "all damage"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or"
-					}
-				]
-			}
+			"description": "Female ghost sorcerer (Pathfinder Bestiary 166)"
 		},
 		{
 			"name": "Bhazrade And Klathor",

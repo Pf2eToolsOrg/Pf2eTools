@@ -86,9 +86,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [
-							"]"
-						],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -101,10 +98,9 @@
 							"number": 2,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 146"
-						],
-						"entries": [],
+						"generic": {
+							"tag": "feat"
+						},
 						"name": "Intimidating Strike"
 					},
 					{
@@ -112,10 +108,9 @@
 							"number": 2,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 144"
-						],
-						"entries": [],
+						"generic": {
+							"tag": "feat"
+						},
 						"name": "Power Attack"
 					}
 				]
@@ -137,8 +132,7 @@
 				},
 				"hp": [
 					{
-						"hp": 34,
-						"abilities": null
+						"hp": 34
 					}
 				]
 			}
@@ -357,20 +351,18 @@
 							"transmutation"
 						],
 						"entries": [
-							"As anadi hunter."
+							"As {@creature anadi hunter|aoa1}."
 						],
 						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
-						},
-						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Elder, p.85"
+						}
 					},
 					{
 						"entries": [
-							"As anadi hunter."
+							"As {@creature anadi hunter|aoa1}."
 						],
-						"name": "Spin Silk",
-						"entries_as_xyz": "Ability not found: 'Spin Silk As anadi hunter.' in Anadi Elder, p.85"
+						"name": "Spin Silk"
 					}
 				]
 			},
@@ -399,9 +391,6 @@
 		},
 		{
 			"name": "Anadi Hunter",
-			"isNpc": false,
-			"source": "AoA1",
-			"page": 84,
 			"level": 2,
 			"traits": [
 				"uncommon",
@@ -424,7 +413,8 @@
 					"std": 8
 				},
 				"athletics": {
-					"std": 6
+					"std": 6,
+					"to Climb in true or spider form": 8
 				},
 				"crafting": {
 					"std": 6,
@@ -445,37 +435,10 @@
 				"wis": 1,
 				"cha": 0
 			},
-			"speed": {
-				"walk": 25,
-				"climb": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "shortsword",
-					"attack": 10,
-					"traits": [
-						"agile",
-						"finesse",
-						"versatile <s>"
-					],
-					"damage": "{@damage 1d6+2} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "fangs",
-					"attack": 10,
-					"traits": [
-						"finesse"
-					],
-					"damage": "{@damage 1d8+2} piercing plus",
-					"types": [
-						"piercing"
-					]
-				}
+			"items": [
+				"composite shortbow (20 arrows)",
+				"leather armor",
+				"shortsword"
 			],
 			"defenses": {
 				"ac": {
@@ -494,11 +457,118 @@
 				},
 				"hp": [
 					{
-						"hp": 27,
-						"abilities": null
+						"hp": 27
 					}
 				]
-			}
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"name": "shortsword",
+					"attack": 10,
+					"damage": "{@damage 1d6+2} piercing"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"finesse"
+					],
+					"name": "fangs",
+					"attack": 10,
+					"damage": "{@damage 1d8+2} piercing plus anadi venom"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"deadly 1d10",
+						"propulsive",
+						"range increment 60 feet",
+						"reload 0"
+					],
+					"name": "composite shortbow",
+					"attack": 10,
+					"damage": "{@damage 1d6+1} piercing"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"type": "affliction",
+						"name": "Anadi Venom",
+						"traits": [
+							"poison"
+						],
+						"DC": 16,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy||clumsy 1}",
+								"duration": "1 round"
+							}
+						]
+					},
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The anadi changes into their true form, spider form, or human form. The above statistics assume the anadi is in their true form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Spin Silk",
+						"traits": [
+							"concentrate",
+							"exploration",
+							"manipulate"
+						],
+						"entries": [
+							"By spending several minutes, an anadi can produce silk to craft items made of cloth. A single anadi can produce enough silk in a day to craft a single garment."
+						]
+					}
+				]
+			},
+			"source": "AoA1",
+			"page": 84
 		},
 		{
 			"name": "Anadi Sage",
@@ -685,20 +755,18 @@
 							"transmutation"
 						],
 						"entries": [
-							"As anadi hunter."
+							"As {@creature anadi hunter|aoa1}."
 						],
 						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
-						},
-						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Sage, p.85"
+						}
 					},
 					{
 						"entries": [
-							"As anadi hunter."
+							"As {@creature anadi hunter|aoa1}."
 						],
-						"name": "Spin Silk",
-						"entries_as_xyz": "Ability not found: 'Spin Silk As anadi hunter.' in Anadi Sage, p.85"
+						"name": "Spin Silk"
 					}
 				]
 			},
@@ -2423,7 +2491,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"As anadi hunter (page 84)."
+							"As {@creature anadi hunter|aoa1} (page 84)."
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -2432,7 +2500,7 @@
 					},
 					{
 						"entries": [
-							"As anadi hunter (page 84)."
+							"As {@creature anadi hunter|aoa1} (page 84)."
 						],
 						"name": "Spin Silk"
 					}
@@ -3138,7 +3206,6 @@
 					},
 					{
 						"name": "Eschew Materials",
-						"entries": [],
 						"generic": {
 							"tag": "feat"
 						}
@@ -3148,7 +3215,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
 						"name": "Reach Spell",
 						"generic": {
 							"tag": "feat",
