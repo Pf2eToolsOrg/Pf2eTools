@@ -11,9 +11,6 @@
 			"description": "Any Trait in the game.",
 			"anyOf": [
 				{
-					"$ref": "#/definitions/equipmentTrait"
-				},
-				{
 					"$ref": "#/definitions/morphicTrait"
 				},
 				{
@@ -99,9 +96,21 @@
 				},
 				{
 					"$ref": "#/definitions/classTrait"
+				},
+				{
+					"$ref": "#/definitions/equipmentTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"equipmentTrait": {
+			"type": "string",
+			"description": "A list of all Equipment traits.",
+			"enum": [
+				"adjusted",
+				"aquadynamic",
+				"spellheart"
+			]
 		},
 		"classTrait": {
 			"type": "string",
@@ -831,13 +840,6 @@
 			"enum": [
 				"metamorphic",
 				"sentient"
-			]
-		},
-		"equipmentTrait": {
-			"type": "string",
-			"description": "A list of all Equipment traits.",
-			"enum": [
-				"spellheart"
 			]
 		}
 	}
