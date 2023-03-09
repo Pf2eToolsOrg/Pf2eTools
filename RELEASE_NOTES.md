@@ -1,7 +1,4 @@
-v0.7.10
+v0.7.11
 
-
-- Fixed relicGift homebrew
-- Fixed "Select by Date" filter option
-- Fixed "otherSources" in Bestiary page 
+- Added a bunch of missing images to the Bestiary (thanks to Spappz!)
 - (Typos/Tags)
