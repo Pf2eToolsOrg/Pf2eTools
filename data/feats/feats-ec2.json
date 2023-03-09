@@ -84,7 +84,43 @@
 			],
 			"prerequisites": "{@feat Animal Trainer Dedication|EC2}",
 			"entries": [
-				"Your animal companion grows up, becoming a mature animal companion. Increase its proficiency rank in {@skill Performance} to expert instead of one of the three skill increases for mature. It gains the Mesmerizing {@skill Performance} advanced maneuver (see below), rather than the normal advanced maneuver for its type."
+				"Your animal companion grows up, becoming a mature animal companion. Increase its proficiency rank in {@skill Performance} to expert instead of one of the three skill increases for mature. It gains the Mesmerizing Performance advanced maneuver, rather than the normal advanced maneuver for its type.",
+				{
+					"type": "data",
+					"tag": "action",
+					"data": {
+						"name": "Mesmerizing Performance",
+						"source": "EC2",
+						"page": 75,
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"uncommon",
+							"concentrate",
+							"emotion"
+						],
+						"requirements": "The companion's last action was a successful {@skill Performance} check to {@action Perform}.",
+						"entries": [
+							"The companion maintains its performance to captivate a single target within 30 feet that witnessed its successful performance. The target must attempt a Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The target is unaffected and temporarily immune for 1 hour"
+									],
+									"Failure": [
+										"The target is {@condition fascinated} by the companion for its next action and then is temporarily immune for 1 hour."
+									],
+									"Critical Failure": [
+										"The target is {@condition fascinated} by the companion for 1 round. While it remains {@condition fascinated}, it can't use reactions."
+									]
+								}
+							}
+						]
+					}
+				}
 			],
 			"leadsTo": [
 				"Splendid Companion|EC2",
