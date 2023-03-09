@@ -976,7 +976,8 @@
 						"name": "slashing"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Corrupt Guard",
@@ -1340,7 +1341,8 @@
 						"name": "physical"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Deculi",
@@ -1509,7 +1511,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Devourer",
@@ -1674,7 +1677,8 @@
 					"disease",
 					"paralyzed"
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Dragonscarred Dead",
@@ -1859,7 +1863,8 @@
 						"name": "good"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Duergar Slave Lord",
@@ -2500,7 +2505,8 @@
 						"name": "cold"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Gashadokuro",
@@ -2686,7 +2692,8 @@
 						"name": "piercing"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Ilssrah Embermead",
@@ -4131,7 +4138,8 @@
 						"name": "physical"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Talamira",
@@ -4411,7 +4419,6 @@
 		},
 		{
 			"name": "Thea",
-			"isNpc": false,
 			"source": "AoA4",
 			"page": 31,
 			"level": 11,
@@ -4442,6 +4449,9 @@
 				"athletics": {
 					"std": 19
 				},
+				"deception": {
+					"std": 23
+				},
 				"nature": {
 					"std": 19
 				},
@@ -4460,89 +4470,15 @@
 				"wis": 4,
 				"cha": 6
 			},
-			"speed": {
-				"walk": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "rapier+24 (deadly <1d8>, disarm, finesse), Damage 2d6+8 piercing Ranged [one-action] blowgun",
-					"attack": 24,
-					"traits": [
-						"agile",
-						"nonlethal",
-						"range increment <20 feet>",
-						"reload <1>"
-					],
-					"effects": [
-						"poison"
-					],
-					"damage": "7 piercing plus poison",
-					"types": [
-						"piercing"
-					]
-				}
+			"items": [
+				"+1 blowgun (20 darts)",
+				"+1 resilient leather armor",
+				"lethargy poison (4 doses)",
+				"manacles",
+				"purple worm venom (2 doses)",
+				"+1 striking rapier",
+				"ruby and sapphire ring"
 			],
-			"abilities": {
-				"bot": [
-					{
-						"activity": {
-							"number": 3,
-							"unit": "action"
-						},
-						"traits": [
-							"attack",
-							"manipulate"
-						],
-						"entries": [
-							"Requirements Thea has manacles in hand and is adjacent to a creature.",
-							"Thea attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +24 modifier against the target's AC, she applies the manacles."
-						],
-						"name": "Efficient Capture"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "free"
-						},
-						"trigger": "Thea's {@action Strike} hits a flatfooted creature and deals damage.",
-						"entries": [
-							"Thea applies one of the following debilitations to the creature, which lasts until the end of her next turn.",
-							{
-								"type": "list",
-								"items": [
-									"{@bold Brow Gash} The target becomes {@condition flat-footed}.",
-									"{@bold Deep Cut} The target takes an additional {@damage 2d6} precision damage from Thea's attacks.",
-									"{@bold Hamstring} The target takes a \u201310-foot status penalty to its Speeds.",
-									"{@bold Low Blow} The target becomes {@condition enfeebled|CRB|enfeebled 1}."
-								]
-							}
-						],
-						"name": "Precise Debilitations"
-					},
-					{
-						"entries": [
-							"{@dice 3d6}."
-						],
-						"name": "Sneak Attack",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"entries": [
-							"When Thea critically succeeds at an attack roll against a {@condition flat-footed} creature, she applies the critical specialization effect for the weapon she is wielding."
-						],
-						"name": "Weapon Trick"
-					},
-					{
-						"entries": [
-							"DC 33; 3rd illusory disguise; 2nd hideous laughter; 1st fear; Cantrips (3rd) ghost sound."
-						],
-						"name": "Arcane Spells Known"
-					}
-				]
-			},
 			"defenses": {
 				"ac": {
 					"std": 32
@@ -4560,11 +4496,69 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				]
-			}
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly 1d8",
+						"disarm",
+						"finesse"
+					],
+					"name": "rapier",
+					"attack": 24,
+					"damage": "{@damage 2d6+8} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"nonlethal",
+						"range increment 20 feet",
+						"reload 1"
+					],
+					"name": "blowgun",
+					"attack": 24,
+					"damage": "7 piercing plus poison"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Efficient Capture",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"attack",
+							"manipulate"
+						],
+						"requirements": "Thea has manacles in hand and is adjacent to a creature.",
+						"entries": [
+							"Thea attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +24 modifier against the target's AC, she applies the manacles."
+						]
+					},
+					{
+						"name": "Precise Debilitations",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "Thea's {@action Strike} hits a flatfooted creature and deals damage.",
+						"entries": [
+							"Thea applies one of the following debilitations to the creature, which lasts until the end of her next turn."
+						]
+					}
+				]
+			},
+			"description": "Female human Scarlet Triad agent"
 		},
 		{
 			"name": "Veshumirix",

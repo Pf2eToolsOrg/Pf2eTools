@@ -226,8 +226,8 @@ function updateFolder (folder) {
 						h.attacks = h.actions.filter(a => a.type === "attack");
 						h.actions = h.actions.filter(a => a.type !== "attack");
 					}
-					if (h.actions) h.actions.forEach(a => delete a.type);
-					if (h.attacks) h.attacks.forEach(a => delete a.type);
+					if (h.actions) h.actions.forEach(a => { if (a.type !== "affliction") { delete a.type } });
+					if (h.attacks) h.attacks.forEach(a => { if (a.type !== "affliction") { delete a.type } });
 
 					if (h.defenses) {
 						for (let k of ["ac", "hardness", "hp", "bt"]) {

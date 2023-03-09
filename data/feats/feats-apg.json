@@ -2137,6 +2137,12 @@
 			],
 			"special": [
 				"You can't select another dedication feat until you have gained two other feats from the bounty hunter archetype."
+			],
+			"leadsTo": [
+				"Keep Pace|APG",
+				"Opportunistic Grapple|APG",
+				"Posse|APG",
+				"Tools Of The Trade|APG"
 			]
 		},
 		{
@@ -3572,6 +3578,9 @@
 			"requirements": "You're aware of the attack, not {@condition flat-footed} against it, and either have a hand free or are wielding a melee weapon.",
 			"entries": [
 				"You can knock aside ranged attacks. You gain a +4 circumstance bonus to AC against the triggering attack. If the attack misses, you knocked or cut it out of the air."
+			],
+			"leadsTo": [
+				"Smash From The Air|APG"
 			]
 		},
 		{
@@ -3909,7 +3918,7 @@
 			],
 			"prerequisites": "{@feat Bastion Dedication|APG}",
 			"entries": [
-				"You can protect yourself more effectively, at the expense of your shield. When you {@feat Shield Block}, you can reduce the damage to yourself by double the shield's Hardness, but if you do, the shield takes double the normal amount of damage it would have taken (before applying its Hardness). You can't use Destructive Block if your shield can't be {@condition broken} or destroyed, such as if you're using an indestructible shield."
+				"You can protect yourself more effectively, at the expense of your shield. When you {@feat Shield Block}, you can reduce the damage to yourself by double the shield's Hardness, but if you do, the shield takes double the normal amount of damage it would have taken (before applying its Hardness). You can't use Destructive Block if your shield can't be {@condition broken} or destroyed, such as if you're using an {@item indestructible shield}."
 			]
 		},
 		{
@@ -7702,7 +7711,7 @@
 			],
 			"prerequisites": "warden spells",
 			"entries": [
-				"You are so focused on your hunted prey that you can see it clearly even beyond the limits of your senses. You gain the {spell hunter's vision|APG} warden spell. Increase the number of Focus Points in your focus pool by 1."
+				"You are so focused on your hunted prey that you can see it clearly even beyond the limits of your senses. You gain the {@spell hunter's vision|APG} warden spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -8437,6 +8446,7 @@
 			"traits": [
 				"archetype"
 			],
+			"prerequisites": "{@feat Bounty Hunter Dedication|APG}",
 			"trigger": "Your prey is within reach and attempts to move away from you.",
 			"entries": [
 				"Your prey can't escape. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use Keep Pace to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
@@ -8704,8 +8714,7 @@
 			"page": 124,
 			"level": 4,
 			"traits": [
-				"druid",
-				"metamagic"
+				"druid"
 			],
 			"prerequisites": "leaf order",
 			"entries": [
@@ -10182,6 +10191,7 @@
 			"traits": [
 				"archetype"
 			],
+			"prerequisites": "{@feat Bounty Hunter Dedication|APG}",
 			"trigger": "Your prey critically fails on a melee {@action Strike}'s attack roll against you.",
 			"requirements": "Your prey is within your reach, you have at least one free hand, and your target is no more than one size larger than you.",
 			"entries": [
@@ -11119,6 +11129,7 @@
 				"archetype",
 				"exploration"
 			],
+			"prerequisites": "{@feat Bounty Hunter Dedication|APG}",
 			"requirements": "You have designated prey with {@action Hunt Prey}.",
 			"entries": [
 				"By spending 1 minute giving guidance to help hunt down your prey, you instruct up to five willing creatures to assist you. They gain a +1 circumstance bonus to {@action Seek} your prey, to {@action Track} your prey, and to {@action Gather Information} about your prey. You and the creatures assisting you gain a +1 circumstance bonus to initiative rolls when entering combat with your prey.",
@@ -13586,9 +13597,9 @@
 			"traits": [
 				"fighter"
 			],
-			"prerequisites": "{@feat Cut From the Air||APG}",
+			"prerequisites": "{@feat Cut From the Air|APG}",
 			"entries": [
-				"Your expertise enables you to knock away spells. You can use Cut from the Air against ranged spell attack rolls."
+				"Your expertise enables you to knock away spells. You can use {@feat Cut From the Air|APG} against ranged spell attack rolls."
 			]
 		},
 		{
@@ -15417,6 +15428,7 @@
 			"traits": [
 				"archetype"
 			],
+			"prerequisites": "{@feat Bounty Hunter Dedication|APG}",
 			"entries": [
 				"You're well-versed in weapons that allow you to bring bounties in alive. You are trained with the following weapons: {@item bola|apg}, {@item sap}, and {@item whip}. You gain access to {@item bola|apg|bolas}. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the weapons listed.",
 				"In addition, you take no penalty when making a nonlethal attack with a weapon without the {@trait nonlethal} trait."

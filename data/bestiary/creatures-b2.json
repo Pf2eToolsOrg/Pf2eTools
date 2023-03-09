@@ -1826,7 +1826,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " An akata implants its parasitic larval young into any creature it bites, but only Medium or Small humanoids make suitable hosts; all other creatures are immune to this disease",
+						"note": "An akata implants its parasitic larval young into any creature it bites, but only Medium or Small humanoids make suitable hosts; all other creatures are immune to this disease",
 						"DC": 17,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -3229,10 +3229,6 @@
 						}
 					},
 					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
 						"traits": [
 							"aura",
 							"evocation",
@@ -3241,10 +3237,23 @@
 							"visual"
 						],
 						"entries": [
-							"30 feet. A swirling vortex of reflected color and light shimmers around the crystal dragon. Creatures in this aura's emanation are {@condition dazzled}. Each creature that ends its turn in the emanation must succeed at a DC 34 Will saving throw or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure). Once a creature succeeds at this save, it is temporarily immune to the stunning effect for 1 minute. The crystal dragon can turn this aura on or off using a single action, which has the {@trait concentrate} trait, and it can choose not to affect allies.",
-							"Reflect Spell Trigger The crystal dragon is targeted by a ranged spell attack roll; The crystal dragon adjusts a wing to try to reflect the spell and gains a +4 circumstance bonus to AC against the triggering attack. If the attack misses, the spell is reflected back at the caster, who must roll a second ranged spell attack roll against their own AC to determine if the spell hits them instead."
+							"30 feet. A swirling vortex of reflected color and light shimmers around the crystal dragon. Creatures in this aura's emanation are {@condition dazzled}. Each creature that ends its turn in the emanation must succeed at a DC 34 Will saving throw or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure). Once a creature succeeds at this save, it is temporarily immune to the stunning effect for 1 minute. The crystal dragon can turn this aura on or off using a single action, which has the {@trait concentrate} trait, and it can choose not to affect allies."
 						],
-						"name": "Scintillating Aura"
+						"name": "Scintillating Aura",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The crystal dragon is targeted by a ranged spell attack roll",
+						"entries": [
+							"The crystal dragon adjusts a wing to try to reflect the spell and gains a +4 circumstance bonus to AC against the triggering attack. If the attack misses, the spell is reflected back at the caster, who must roll a second ranged spell attack roll against their own AC to determine if the spell hits them instead."
+						],
+						"name": "Reflect Spell"
 					},
 					{
 						"activity": {
@@ -4089,7 +4098,7 @@
 							"mental",
 							"occult"
 						],
-						"note": " An animate dream's touch fills the victim's mind with terrifying visions",
+						"note": "An animate dream's touch fills the victim's mind with terrifying visions",
 						"DC": 26,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -4745,8 +4754,9 @@
 							"primal",
 							"transmutation"
 						],
+						"trigger": "The assassin vine detects a creature within 20 feet via {@ability tremorsense}",
 						"entries": [
-							"Trigger The assassin vine detects a creature within 20 feet via {@ability tremorsense}; The assassin vine causes vegetation within a 20-foot emanation to writhe for 1 round, turning this area into {@quickref difficult terrain||3|terrain}. When a creature starts its turn in this area, it must attempt a DC 20 Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure it is also {@condition immobilized} for 1 round. A creature can attempt to {@action Escape} to remove these effects.",
+							"The assassin vine causes vegetation within a 20-foot emanation to writhe for 1 round, turning this area into {@quickref difficult terrain||3|terrain}. When a creature starts its turn in this area, it must attempt a DC 20 Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure it is also {@condition immobilized} for 1 round. A creature can attempt to {@action Escape} to remove these effects.",
 							"Assassin vines are immune to Grasping Foliage."
 						],
 						"name": "Grasping Foliage"
@@ -7218,7 +7228,7 @@
 							"disease",
 							"necromancy"
 						],
-						"note": " The {@condition drained} condition from Abyssal rot is cumulative, to a maximum of {@condition drained 4}",
+						"note": "The {@condition drained} condition from Abyssal rot is cumulative, to a maximum of {@condition drained 4}",
 						"DC": 29,
 						"savingThrow": "Fortitude",
 						"maxDuration": "6 rounds",
@@ -9129,7 +9139,7 @@
 							"necromancy",
 							"negative"
 						],
-						"note": " This affliction can't be reduced below stage 1, nor can the damage from it be healed, until it's successfully treated with remove curse or a similar effect; the affliction can then be removed as normal for a disease. A creature killed by bog rot melts into a noxious sludge and can't be resurrected except by a 7th-level resurrect ritual or similar magic",
+						"note": "This affliction can't be reduced below stage 1, nor can the damage from it be healed, until it's successfully treated with remove curse or a similar effect; the affliction can then be removed as normal for a disease. A creature killed by bog rot melts into a noxious sludge and can't be resurrected except by a 7th-level resurrect ritual or similar magic",
 						"DC": 21,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -11828,7 +11838,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The {@condition sickened} and {@condition unconscious} conditions from filth fever can't end or be reduced until the disease is cured",
+						"note": "The {@condition sickened} and {@condition unconscious} conditions from filth fever can't end or be reduced until the disease is cured",
 						"DC": 19,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -14507,7 +14517,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " A creature bitten by a cythnigot becomes afflicted by fast-growing spores that swiftly grow into twitching spikes and hideous pallid growths of hairlike fibers. These growths erupt from the bite wound and writhe and wrap around the creature's limbs. Plant creatures take a \u20132 circumstance penalty to save against tangle spores",
+						"note": "A creature bitten by a cythnigot becomes afflicted by fast-growing spores that swiftly grow into twitching spikes and hideous pallid growths of hairlike fibers. These growths erupt from the bite wound and writhe and wrap around the creature's limbs. Plant creatures take a \u20132 circumstance penalty to save against tangle spores",
 						"DC": 17,
 						"savingThrow": "Fortitude",
 						"maxDuration": "6 rounds",
@@ -18620,7 +18630,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The victim can't reduce its {@condition sickened} condition while it's affected by pyrexic malaria",
+						"note": "The victim can't reduce its {@condition sickened} condition while it's affected by pyrexic malaria",
 						"DC": 20,
 						"savingThrow": "Fortitude",
 						"onset": "4 days",
@@ -20590,7 +20600,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " A ghonhatine's vomit carries an awful disease that, over time, can cause a suffering creature's flesh to develop painful boils that eventually slough away, leaving gaping wounds",
+						"note": "A ghonhatine's vomit carries an awful disease that, over time, can cause a suffering creature's flesh to develop painful boils that eventually slough away, leaving gaping wounds",
 						"DC": 28,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -21801,7 +21811,7 @@
 							"disease",
 							"virulent"
 						],
-						"note": " A giant fly could carry any disease, but most transmit a virulent but not fatal infection called {@action Fly} Pox with their bite",
+						"note": "A giant fly could carry any disease, but most transmit a virulent but not fatal infection called {@action Fly} Pox with their bite",
 						"DC": 16,
 						"savingThrow": "Fortitude",
 						"onset": "1 day",
@@ -22496,7 +22506,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The victim can't reduce its {@condition sickened} condition while it's affected by septic malaria",
+						"note": "The victim can't reduce its {@condition sickened} condition while it's affected by septic malaria",
 						"DC": 24,
 						"savingThrow": "Fortitude",
 						"onset": "1 day",
@@ -23766,8 +23776,9 @@
 							"abjuration",
 							"arcane"
 						],
+						"trigger": "The glass golem is targeted by a spell",
 						"entries": [
-							"Trigger The glass golem is targeted by a spell; The glass golem positions its magical, reflective surfaces to turn the spell back on the caster. It tries to counteract the spell by attempting an {@skill Acrobatics} check for its counteract check. If it successfully counteract the spell, the effect is turned back on the caster."
+							"The glass golem positions its magical, reflective surfaces to turn the spell back on the caster. It tries to counteract the spell by attempting an {@skill Acrobatics} check for its counteract check. If it successfully counteract the spell, the effect is turned back on the caster."
 						],
 						"name": "Spell Reflection"
 					}
@@ -27930,7 +27941,8 @@
 						"name": "fire"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Icewyrm",
@@ -28354,7 +28366,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Iguanodon",
@@ -29977,7 +29990,7 @@
 							"transmutation",
 							"virulent"
 						],
-						"note": " Isqulugia's {@condition sickened}, {@condition slowed}, and {@condition paralyzed} conditions can't be removed until this affliction is removed",
+						"note": "Isqulugia's {@condition sickened}, {@condition slowed}, and {@condition paralyzed} conditions can't be removed until this affliction is removed",
 						"DC": 30,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -37046,8 +37059,9 @@
 							"occult",
 							"teleportation"
 						],
+						"trigger": "A creature the neothelid is aware of uses a {@trait teleportation} effect",
 						"entries": [
-							"Trigger A creature the neothelid is aware of uses a {@trait teleportation} effect; The neothelid creates an extradimensional wormhole at the triggering creature's initial location that persists for up to 1 minute.",
+							"The neothelid creates an extradimensional wormhole at the triggering creature's initial location that persists for up to 1 minute.",
 							"If the neothelid moves into the wormhole's space, the neothelid teleports to the same destination as the triggering creature."
 						],
 						"name": "Dimensional Wormhole"
@@ -37958,7 +37972,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The target can't recover from the {@condition fatigued} condition caused by mortasheen until the disease is cured. Mortasheen gains the {@trait virulent} trait against animals and plants",
+						"note": "The target can't recover from the {@condition fatigued} condition caused by mortasheen until the disease is cured. Mortasheen gains the {@trait virulent} trait against animals and plants",
 						"DC": 28,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -39450,7 +39464,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Ostiarius",
@@ -42069,7 +42084,7 @@
 						"traits": [
 							"poison"
 						],
-						"note": " A quetz couatl's venom deals good damage rather than poison damage to fiends",
+						"note": "A quetz couatl's venom deals good damage rather than poison damage to fiends",
 						"DC": 29,
 						"savingThrow": "Fortitude",
 						"maxDuration": "6 rounds",
@@ -46078,7 +46093,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": "three",
+							"freq": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -46402,7 +46417,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": "three",
+							"freq": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -51293,7 +51308,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Taiga Giant",
@@ -54788,7 +54804,8 @@
 						}
 					}
 				}
-			]
+			],
+			"hasImages": true
 		},
 		{
 			"name": "Urdefhan Tormentor",
@@ -59652,8 +59669,9 @@
 							"arcane",
 							"transmutation"
 						],
+						"trigger": "The wood golem takes physical damage",
 						"entries": [
-							"Trigger The wood golem takes physical damage; A jagged, sizable splinter of wood lances out at the golem's attacker. The golem makes a splinter {@action Strike} against an adjacent creature without triggering reactions."
+							"A jagged, sizable splinter of wood lances out at the golem's attacker. The golem makes a splinter {@action Strike} against an adjacent creature without triggering reactions."
 						],
 						"name": "Splinter"
 					}
@@ -59839,7 +59857,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Worm That Walks Cultist",
@@ -60149,7 +60168,8 @@
 						"name": "physical"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Xill",
@@ -60336,7 +60356,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The {@condition sickened} condition from xill eggs doesn't improve on its own until the disease is cured or runs its course. It can be cured with a 10-minute operation that requires a successful DC 26 {@skill Medicine} check and deals {@damage 4d6} slashing damage to the host",
+						"note": "The {@condition sickened} condition from xill eggs doesn't improve on its own until the disease is cured or runs its course. It can be cured with a 10-minute operation that requires a successful DC 26 {@skill Medicine} check and deals {@damage 4d6} slashing damage to the host",
 						"DC": 24,
 						"savingThrow": "Fortitude",
 						"maxDuration": "24 hours",
@@ -60690,7 +60710,7 @@
 						"traits": [
 							"poison"
 						],
-						"note": " While a creature is {@condition clumsy} from this poison, it is {@condition doomed} with the same value",
+						"note": "While a creature is {@condition clumsy} from this poison, it is {@condition doomed} with the same value",
 						"DC": 42,
 						"savingThrow": "Fortitude",
 						"maxDuration": "10 rounds",

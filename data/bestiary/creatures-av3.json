@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Belcorra Haruvex",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 87,
 			"level": 12,
@@ -61,30 +60,76 @@
 				"wis": 4,
 				"cha": 7
 			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 20
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 175,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 10,
+						"note": "except force"
+					},
+					{
+						"name": "ghost touch"
+					},
+					{
+						"name": "or positive; double resistance vs. non-magical)"
+					}
+				]
+			},
 			"speed": {
 				"fly": 25
 			},
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "ghostly hand",
-					"attack": 24,
 					"traits": [
 						"agile",
 						"finesse",
 						"magical"
 					],
-					"damage": "{@damage 3d8+12} negative",
-					"types": [
-						"negative"
-					]
+					"name": "ghostly hand",
+					"attack": 24,
+					"damage": "{@damage 3d8+12} negative"
 				}
 			],
 			"spellcasting": [
 				{
 					"name": "Occult Spontaneous",
+					"tradition": "Occult",
 					"type": "Spontaneous",
-					"tradition": "occult",
 					"DC": 33,
 					"attack": 25,
 					"entry": {
@@ -237,158 +282,105 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 33,
+					"rituals": [
+						{
+							"name": "legend lore"
+						},
+						{
+							"name": "planar binding"
+						},
+						{
+							"name": "teleportation circle",
+							"source": "advanced players guide"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+26, {@skill Religion} +22, {@skill Stealth} +22 Str \u20135, Dex +4, Con +0, Int +5, Wis +4, Cha +7."
-						],
-						"name": "Occultism"
-					},
-					{
+						"name": "Magic Sense",
 						"traits": [
 							"detection",
 							"divination"
 						],
 						"entries": [
 							"Belcorra can sense the presence of magic auras as though she were always using a 1st-level {@spell detect magic} spell. When she Seeks, she gains the benefits of a 3rd-level {@spell detect magic} spell on things she sees."
-						],
-						"name": "Magic Sense"
+						]
 					},
 					{
+						"name": "Site Bound",
 						"traits": [
-							"lowest three levels of the abomination vaults"
+							"lowest three levels of the Abomination Vaults"
 						],
-						"entries": [],
-						"name": "Site Bound"
+						"entries": []
 					}
 				],
 				"mid": [
 					{
+						"name": "Rejuvenation",
 						"traits": [
 							"divine",
 							"necromancy"
 						],
-						"entries": [],
-						"name": "Rejuvenation"
-					},
-					{
 						"entries": [
-							"Belcorra is destroyed, she re-forms in {@dice 2d4} days within the."
-						],
-						"name": "When"
-					},
-					{
-						"entries": [
-							"(though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using."
-						],
-						"name": "Empty Vault"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "varies",
-							"entry": "[page 76]"
-						},
-						"entries": [
-							"). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
-						],
-						"name": "the Ebon Fulcrum Lens"
+							"When Belcorra is destroyed, she re-forms in {@dice 2d4} days within the Empty Vault (though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using the Ebon Fulcrum Lens [page 220]). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
+						]
 					}
 				],
 				"bot": [
 					{
+						"name": "Blood Magic",
 						"entries": [
 							"Each time Belcorra casts a sorcerer bloodline spell or an aberrant bloodline granted spell, she can grant herself or a target of the spell a +2 status bonus to Will saving throws for 1 round."
-						],
-						"name": "Blood Magic"
+						]
 					},
 					{
+						"name": "Corrupting Gaze",
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
 						"entries": [
-							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied|CRB|stupefied 1} for 1 minute."
-						],
-						"name": "Corrupting Gaze"
+							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied||stupefied 1} for 1 minute."
+						]
 					},
 					{
+						"name": "Haunted Lighthouse",
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
 						"frequency": {
-							"unit": "minute",
-							"interval": 10,
+							"freq": 1,
 							"recurs": true,
-							"freq": 1
+							"interval": 10,
+							"unit": "minute"
 						},
 						"entries": [
 							"Belcorra extends her presence throughout the lowest three levels of Gauntlight until the end of her next turn. She can see with the benefits of all-around vision and can make ghostly hand attacks or use special abilities originating from any surface in this area."
-						],
-						"name": "Haunted Lighthouse"
+						]
 					},
 					{
+						"name": "Quickened Casting",
 						"activity": {
 							"number": 1,
 							"unit": "free"
 						},
 						"frequency": {
-							"unit": "day",
-							"freq": 1
+							"freq": 1,
+							"unit": "day"
 						},
-						"entries": [],
-						"name": "Quickened Casting"
-					},
-					{
 						"entries": [
-							"Belcorra's next action is to cast a sorcerer spell of 4th level or lower, she reduces the number of actions to cast it by 1 (minimum 1 action)."
-						],
-						"name": "If"
+							"If Belcorra's next action is to cast a sorcerer spell of 4th level or lower, she reduces the number of actions to cast it by 1 (minimum 1 action)."
+						]
 					}
 				]
 			},
-			"defenses": {
-				"ac": {
-					"std": 30
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 16
-					},
-					"ref": {
-						"std": 22
-					},
-					"will": {
-						"std": 20
-					}
-				},
-				"hp": [
-					{
-						"hp": 175,
-						"abilities": [
-							"negative healing",
-							"rejuvenation"
-						]
-					}
-				],
-				"immunities": [
-					"death"
-				],
-				"resistances": [
-					{
-						"amount": 10,
-						"name": "all damage"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or"
-					}
-				]
-			}
+			"description": "Female ghost sorcerer (Pathfinder Bestiary 166)"
 		},
 		{
 			"name": "Bhazrade And Klathor",
@@ -895,7 +887,8 @@
 						]
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Caligni Defender",
@@ -1266,7 +1259,8 @@
 				"immunities": [
 					"acid"
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Dragon's Blood Puffball",
@@ -1613,7 +1607,8 @@
 				"immunities": [
 					"acid"
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Dread Wisp",
@@ -1794,7 +1789,8 @@
 						"name": "positive"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Drow Hunter",
@@ -2832,7 +2828,7 @@
 							"necromancy",
 							"negative"
 						],
-						"note": " This affliction can't be reduced below stage 1, nor can the damage from it be healed, until it's successfully treated with remove curse or a similar effect; the affliction can then be removed as normal for a disease. A creature killed by bog rot melts into a noxious sludge and can't be resurrected except by a 7th-level resurrect ritual or similar magic",
+						"note": "This affliction can't be reduced below stage 1, nor can the damage from it be healed, until it's successfully treated with remove curse or a similar effect; the affliction can then be removed as normal for a disease. A creature killed by bog rot melts into a noxious sludge and can't be resurrected except by a 7th-level resurrect ritual or similar magic",
 						"DC": 21,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -3474,6 +3470,14 @@
 					"name": "true seeing"
 				}
 			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"necril",
+					"undercommon"
+				]
+			},
 			"skills": {
 				"acrobatics": {
 					"std": 22
@@ -3492,6 +3496,9 @@
 				},
 				"occultism": {
 					"std": 21
+				},
+				"religion": {
+					"std": 23
 				},
 				"society": {
 					"std": 21
@@ -3538,10 +3545,24 @@
 					"attack": 22,
 					"entry": {
 						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "see invisibility"
+									}
+								]
+							},
+							"3": {
+								"spells": [
+									{
+										"name": "haste"
+									}
+								]
+							},
 							"6": {
 								"spells": [
 									{
-										"name": "true"
+										"name": "true seeing"
 									}
 								]
 							}
@@ -3666,29 +3687,17 @@
 				"top": [
 					{
 						"entries": [
-							"Skills {@skill Acrobatics} +22, {@skill Athletics} +20, {@skill Deception} +21"
+							"Lady's Whisper can choose whether or not it counts as undead for effects that affect undead differently. Even if it does not count as undead, Lady's Whisper never counts as a living creature."
 						],
-						"name": "Language Aklo, Common, Necril, Undercommon"
-					},
-					{
-						"entries": [
-							"+21, {@skill Intimidation} +21, {@skill Occultism} +21, {@skill Religion} +23, {@skill Society} +21, {@skill Stealth} +22 Str +3, Dex +5, Con +3, Int +4, Wis +8, Cha +4."
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"Whisper can choose whether or not it counts as undead for effects that affect undead differently. Even if it does not count as undead, Lady's Whisper never counts as a living creature."
-						],
-						"name": "Death's Grace Lady's"
+						"name": "Death's Grace"
 					}
 				],
 				"mid": [
 					{
 						"entries": [
-							"Whisper can choose whether or not it takes positive damage."
+							"Lady's Whisper can choose whether or not it takes positive damage."
 						],
-						"name": "Negative Recovery Lady's"
+						"name": "Negative Recovery"
 					},
 					{
 						"traits": [
@@ -3715,18 +3724,9 @@
 							"concentrate"
 						],
 						"entries": [
-							"Lady's Whisper mentally causes any doors or portals within the Gate."
+							"Lady's Whisper mentally causes any doors or portals within the Gate of Nhimbaloth (areas B60 to B64 and areas C1 through C18) to open or shut. If Lady's Whisper wills a door closed, it must be Forced Open or battered down."
 						],
 						"name": "Gatekeeper's Will"
-					},
-					{
-						"traits": [
-							"areas b60 to b64 and areas c1 through c18"
-						],
-						"entries": [
-							"to open or shut. If Lady's Whisper wills a door closed, it must be Forced Open or battered down."
-						],
-						"name": "of Nhimbaloth"
 					},
 					{
 						"traits": [
@@ -3734,14 +3734,10 @@
 							"divine",
 							"teleportation"
 						],
-						"entries": [],
-						"name": "Unwilling Teleportation"
-					},
-					{
 						"entries": [
-							"Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a DC 30 Will saving throw to resist this effect."
+							"When Lady's Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a DC 30 Will saving throw to resist this effect."
 						],
-						"name": "When Lady's"
+						"name": "Unwilling Teleportation"
 					}
 				]
 			},
@@ -3758,7 +3754,10 @@
 					},
 					"will": {
 						"std": 25
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -3769,7 +3768,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
@@ -4430,7 +4433,8 @@
 						"name": "piercing"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Salaisa Malthulas",
@@ -4921,7 +4925,8 @@
 					"disease",
 					"fear"
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Urdefhan Death Scout",
@@ -5345,7 +5350,8 @@
 					"death effects",
 					"disease"
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Voidbracken Chuul",

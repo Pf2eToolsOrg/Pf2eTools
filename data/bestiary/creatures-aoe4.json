@@ -193,6 +193,9 @@
 				},
 				"thievery": {
 					"std": 16
+				},
+				"norgorber lore": {
+					"std": 10
 				}
 			},
 			"abilityMods": {
@@ -203,6 +206,12 @@
 				"wis": 4,
 				"cha": 2
 			},
+			"items": [
+				"+1 striking dagger",
+				"hand crossbow (10 bolts, 4 with giant scorpion venom)",
+				"leather armor",
+				"religious symbol of Norgorber"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -314,18 +323,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+10, {@skill Religion} +16, {@skill Stealth} +16, {@skill Thievery} +16 Str +1, Dex +4, Con +1, Int +0, Wis +4, Cha +2 Items +1 striking dagger, hand crossbow (10 bolts, 4 with giant scorpion venom), leather armor, religious symbol."
-						],
-						"name": "Norgorber Lore"
-					},
-					{
-						"entries": [],
-						"name": "of Norgorber"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -575,7 +572,8 @@
 						"name": "physical"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Gloaming Will-o'-wisp",
@@ -756,7 +754,8 @@
 					"aklo",
 					"common",
 					"daemonic",
-					"dwarf"
+					"dwarf",
+					"undercommon"
 				]
 			},
 			"skills": {
@@ -764,6 +763,9 @@
 					"std": 22
 				},
 				"arcana": {
+					"std": 26
+				},
+				"crafting": {
 					"std": 26
 				},
 				"nature": {
@@ -781,6 +783,10 @@
 				"wis": 4,
 				"cha": 0
 			},
+			"items": [
+				"+2 striking dagger",
+				"major poisoner's staff (arcane focus)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -811,6 +817,22 @@
 					"damage": "{@damage 1d4+9} bludgeoning",
 					"types": [
 						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 22,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"thrown <10 feet>",
+						"versatile <s>"
+					],
+					"damage": "{@damage 2d4+9} piercing",
+					"types": [
+						"piercing"
 					]
 				}
 			],
@@ -904,10 +926,7 @@
 									"amount": 2
 								},
 								{
-									"name": "wyvern sting",
-									"notes": [
-										"page 81"
-									]
+									"name": "wyvern sting"
 								}
 							]
 						},
@@ -927,10 +946,7 @@
 						"7": {
 							"spells": [
 								{
-									"name": "Leng sting",
-									"notes": [
-										"page 80"
-									]
+									"name": "Leng sting"
 								},
 								{
 									"name": "prismatic spray"
@@ -941,14 +957,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +22, {@skill Arcana} +26, {@skill Crafting} +26, {@skill Nature} +23, {@skill Lore||Poison Lore} +28 Str +1, Dex +3, Con +4, Int +5, Wis +4, Cha +0 Items +2 striking dagger, major poisoner's staff (arcane focus; page 80)"
-						],
-						"name": "Undercommon"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -1035,7 +1043,8 @@
 					"std": 20
 				},
 				"crafting": {
-					"std": 23
+					"std": 23,
+					"to Craft alchemical items": 25
 				},
 				"deception": {
 					"std": 16
@@ -1064,6 +1073,13 @@
 				"wis": 2,
 				"cha": 0
 			},
+			"items": [
+				"alchemist goggles",
+				"alchemist's tools",
+				"formula book",
+				"+1 striking rapier (with wyvern poison)",
+				"+1 studded leather armor"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1103,18 +1119,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+16, {@skill Nature} +18, {@skill Lore||Poison Lore} +21"
-						],
-						"name": "Medicine"
-					},
-					{
-						"entries": [
-							"+20, {@skill Survival} +18 Str +2, Dex +4, Con +2, Int +5, Wis +2, Cha +0 Items alchemist goggles, alchemist's tools, formula book, +1 striking rapier (with wyvern poison), +1 studded leather armor."
-						],
-						"name": "Stealth"
-					},
 					{
 						"entries": [
 							"Japu carries the following infused items, which last 24 hours or until the next time he makes his daily preparations: infused moderate acid flasks (2), infused moderate alchemist's fires (2), moderate elixirs of life (2), infused reagents (6), infused moderate tanglefoot bags (2)."
@@ -1203,7 +1207,9 @@
 				"languages": [
 					"common",
 					"daemonic",
-					"infernal"
+					"infernal",
+					"osiriani",
+					"undercommon"
 				]
 			},
 			"skills": {
@@ -1211,7 +1217,8 @@
 					"std": 25
 				},
 				"crafting": {
-					"std": 26
+					"std": 26,
+					"when crafting poison": 30
 				},
 				"deception": {
 					"std": 26
@@ -1246,6 +1253,11 @@
 				"wis": 6,
 				"cha": 3
 			},
+			"items": [
+				"+1 spell storing dagger (contains crisis of faith)",
+				"high priest robes",
+				"religious symbol of {@deity Norgorber}"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1424,26 +1436,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +25, {@skill Crafting} +26 (+30 when crafting poison), {@skill Deception} +26, {@skill Diplomacy} +26"
-						],
-						"name": "Osiriani, Undercommon"
-					},
-					{
-						"entries": [
-							"+26, {@skill Lore||Norgorber Lore} +28, {@skill Religion} +29"
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
-							"+24, {@skill Stealth} +25, {@skill Thievery} +25 Str +0, Dex +4, Con +2, Int +3, Wis +6, Cha +3 Items +1 spell storing dagger (contains crisis of faith), high priest robes, religious symbol of {@deity Norgorber}."
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -1701,15 +1693,12 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"requirements": "The jorogumo has their spider legs extended or has Changed",
-						"entries": [],
-						"name": "Darting Legs"
-					},
-					{
+						"requirements": "The jorogumo has their spider legs extended or has Changed Shape",
+						"trigger": "The jorogumo is targeted with an attack",
 						"entries": [
-							"The jorogumo is targeted with an attack; The jorogumo raises a leg, gaining a +2 circumstance bonus to AC against the triggering attack."
+							"The jorogumo raises a leg, gaining a +2 circumstance bonus to AC against the triggering attack."
 						],
-						"name": "Shape; Trigger"
+						"name": "Darting Legs"
 					}
 				],
 				"bot": [
@@ -1818,7 +1807,8 @@
 						"name": "cold iron"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Kalyn Pounch",
@@ -1848,6 +1838,9 @@
 				"athletics": {
 					"std": 21
 				},
+				"deception": {
+					"std": 20
+				},
 				"religion": {
 					"std": 22
 				},
@@ -1866,6 +1859,12 @@
 				"wis": 5,
 				"cha": 2
 			},
+			"items": [
+				"+1 striking composite shortbow (10 arrows, 3 with shadow essence)",
+				"+1 striking dagger",
+				"+1 leather armor",
+				"religious symbol of {@deity Norgorber}"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2018,20 +2017,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+21, {@skill Deception} +20, {@skill Lore||Norgorber Lore} +20"
-						],
-						"name": "Athletics"
-					},
-					{
-						"entries": [
-							"+22, {@skill Stealth} +26 Str +3, Dex +4, Con +2, Int +0, Wis +5, Cha +2 Items +1 striking composite shortbow (10 arrows, 3 with shadow essence), +1 striking dagger, +1 leather armor, religious symbol of {@deity Norgorber}."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -2394,6 +2379,9 @@
 				},
 				"thievery": {
 					"std": 24
+				},
+				"poison lore": {
+					"std": 18
 				}
 			},
 			"abilityMods": {
@@ -2404,6 +2392,14 @@
 				"wis": 3,
 				"cha": 0
 			},
+			"items": [
+				"bloodseeker beak (affixed to shortsword)",
+				"daggers (3)",
+				"infiltrator's thieves' tools",
+				"infused reagents (6 batches)",
+				"leather armor",
+				"+1 striking shortsword"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2454,20 +2450,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Religion} +18, {@skill Society} +18, {@skill Stealth} +22"
-						],
-						"name": "Poison Lore"
-					},
-					{
-						"entries": [
-							"+24 Str +4, Dex +5, Con +1, Int +3, Wis +3, Cha +0 Items bloodseeker beak (affixed to shortsword), daggers (3), infiltrator's thieves' tools, infused reagents (6 batches), leather armor, +1 striking shortsword."
-						],
-						"name": "Thievery"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -2902,7 +2884,8 @@
 						"name": "bludgeoning"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Sleepless Sun Veteran",
@@ -2957,6 +2940,14 @@
 				"wis": 2,
 				"cha": 1
 			},
+			"items": [
+				"badge",
+				"chainmail",
+				"composite shortbow (with 10 arrows)",
+				"sap",
+				"steel shield",
+				"+1 striking temple sword"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3003,14 +2994,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+13, {@skill Lore||Law Lore} +10, {@skill Society} +12 Str +4, Dex +2, Con +4, Int +0, Wis +2, Cha +1 Items badge, chainmail, composite shortbow (with 10 arrows), sap, steel shield, +1 striking temple sword."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3110,6 +3093,12 @@
 				"crafting": {
 					"std": 26
 				},
+				"deception": {
+					"std": 29
+				},
+				"intimidation": {
+					"std": 29
+				},
 				"occultism": {
 					"std": 28
 				},
@@ -3131,6 +3120,11 @@
 				"wis": 5,
 				"cha": 4
 			},
+			"items": [
+				"blade of the Rabbit Prince",
+				"hardened harrow deck",
+				"tin crown"
+			],
 			"speed": {
 				"abilities": [
 					"freedom of movement",
@@ -3234,23 +3228,17 @@
 				"top": [
 					{
 						"entries": [
-							"+32 Str +1, Dex +7, Con +2, Int +1, Wis +5, Cha +4 Items blade of the Rabbit Prince (page 79), hardened harrow deck (page 79), tin crown."
+							"The Rabbit Prince automatically critically succeeds at {@action Seek} actions to find {@condition hidden} or {@condition undetected} creatures within 30 feet and at flat checks to target creatures within 30 feet that are {@condition concealed} or {@condition hidden} from him."
 						],
-						"name": "Thievery"
-					},
-					{
-						"entries": [
-							"Prince automatically critically succeeds at {@action Seek} actions to find {@condition hidden} or {@condition undetected} creatures within 30 feet and at flat checks to target creatures within 30 feet that are {@condition concealed} or {@condition hidden} from him."
-						],
-						"name": "Superior Senses The Rabbit"
+						"name": "Superior Senses"
 					}
 				],
 				"mid": [
 					{
 						"entries": [
-							"Prince rolls a success on a Will save, he gets a critical success instead, and if he rolls a critical failure, he gets a failure instead."
+							"If the Rabbit Prince rolls a success on a Will save, he gets a critical success instead, and if he rolls a critical failure, he gets a failure instead."
 						],
-						"name": "Perfect Will If the Rabbit"
+						"name": "Perfect Will"
 					},
 					{
 						"activity": {
@@ -3264,24 +3252,19 @@
 							"unit": "day",
 							"freq": 1
 						},
+						"trigger": "The Rabbit Prince fails a skill check or a saving throw",
 						"entries": [
-							"Trigger."
+							"The Rabbit Prince rerolls the triggering check, but he must use the new result, even if it's worse."
 						],
 						"name": "Halfling Luck"
-					},
-					{
-						"entries": [
-							"Prince fails a skill check or a saving throw; The Rabbit Prince rerolls the triggering check, but he must use the new result, even if it's worse."
-						],
-						"name": "The Rabbit"
 					}
 				],
 				"bot": [
 					{
 						"entries": [
-							"Prince deals piercing damage, he also deals {@damage 2d10} {@condition persistent damage ||persistent bleed damage}."
+							"Whenever the Rabbit Prince deals piercing damage, he also deals {@damage 2d10} {@condition persistent damage ||persistent bleed damage}."
 						],
-						"name": "Bloody Jab Whenever the Rabbit"
+						"name": "Bloody Jab"
 					},
 					{
 						"activity": {
@@ -3295,9 +3278,9 @@
 					},
 					{
 						"entries": [
-							"Prince doesn't trigger reactions with his movement or with any use of the {@skill Thievery} skill."
+							"The Rabbit Prince doesn't trigger reactions with his movement or with any use of the {@skill Thievery} skill."
 						],
-						"name": "Quick Movements The Rabbit"
+						"name": "Quick Movements"
 					}
 				]
 			},
@@ -3624,7 +3607,8 @@
 						"name": "acid"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Velberi Jallist",
@@ -3891,7 +3875,9 @@
 					"dwarven",
 					"elven",
 					"halfling",
-					"kelesh"
+					"kelesh",
+					"mwangi",
+					"osiriani"
 				]
 			},
 			"skills": {
@@ -3912,6 +3898,9 @@
 				},
 				"absalom lore": {
 					"std": 29
+				},
+				"warfare lore": {
+					"std": 29
 				}
 			},
 			"abilityMods": {
@@ -3922,6 +3911,12 @@
 				"wis": 3,
 				"cha": 6
 			},
+			"items": [
+				"+2 resilient full plate",
+				"+2 greater striking longsword",
+				"ring of sustenance",
+				"whisper briolette"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3944,26 +3939,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"{@skill Lore||Skills Absalom Lore} +29, {@skill Athletics} +30, {@skill Diplomacy} +33"
-						],
-						"name": "Mwangi, Osiriani"
-					},
-					{
-						"entries": [
-							"+33, {@skill Society} +29, {@skill Stealth} +26, Warfare."
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
-							"+29 Str +5, Dex +1, Con +3, Int +2, Wis +3, Cha +6 Items +2 resilient full plate, +2 greater striking longsword, ring of sustenance, whisper briolette (page 80)"
-						],
-						"name": "Lore"
-					}
-				],
 				"mid": [
 					{
 						"traits": [

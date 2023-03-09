@@ -3156,7 +3156,8 @@
 						]
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Alchemical Golem",
@@ -6010,19 +6011,28 @@
 						}
 					},
 					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
 						"traits": [
 							"cold",
 							"aura"
 						],
 						"entries": [
-							"15 feet, {@damage 3d6} cold damage. The silver dragon can turn this aura on or off as a single action, which has the {@trait concentrate} trait, and can choose not to affect allies within the aura.",
-							"Reflect Spell Trigger The silver dragon critically succeeds at a saving throw against a spell, or a caster trying to target the dragon critically fails their attack roll. The spell is reflected back upon the caster, with the effect of spell turning."
+							"15 feet, {@damage 3d6} cold damage. The silver dragon can turn this aura on or off as a single action, which has the {@trait concentrate} trait, and can choose not to affect allies within the aura."
 						],
-						"name": "Cold Aura"
+						"name": "Cold Aura",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The spell is reflected back upon the caster, with the effect of spell turning."
+						],
+						"trigger": "The silver dragon critically succeeds at a saving throw against a spell, or a caster trying to target the dragon critically fails their attack roll.",
+						"name": "Reflect Spell"
 					},
 					{
 						"activity": {
@@ -12683,7 +12693,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The cacodaemon can telepathically communicate with the afflicted creature at any distance on the same plane",
+						"note": "The cacodaemon can telepathically communicate with the afflicted creature at any distance on the same plane",
 						"DC": 17,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -13082,8 +13092,9 @@
 							"fortune",
 							"manipulate"
 						],
+						"trigger": "An ally within 10 feet of the dancer rolls a saving throw against a {@trait mental} or {@trait illusion} effect.",
 						"entries": [
-							"Trigger An ally within 10 feet of the dancer rolls a saving throw against a {@trait mental} or {@trait illusion} effect. The target ally can roll the save twice and take the better result."
+							"The target ally can roll the save twice and take the better result."
 						],
 						"name": "Distracting Frolic"
 					},
@@ -19375,7 +19386,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": "three",
+							"freq": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -19798,7 +19809,8 @@
 						]
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Dire Wolf",
@@ -23182,7 +23194,8 @@
 				"immunities": [
 					"effects that would transform their body or soul to an undead"
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Eagle",
@@ -24990,7 +25003,8 @@
 						"name": "good"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Ether Spider",
@@ -26303,7 +26317,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": "three",
+							"freq": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -26759,7 +26773,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": "three",
+							"freq": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -31954,6 +31968,419 @@
 			}
 		},
 		{
+			"name": "Simurgh",
+			"source": "B1",
+			"page": 295,
+			"level": 18,
+			"traits": [
+				"rare",
+				"ng",
+				"gargantuan",
+				"beast"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"celestial",
+					"common",
+					"draconic"
+				],
+				"abilities": [
+					"{@spell Tongues}"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 27
+				},
+				"arcana": {
+					"std": 28
+				},
+				"athletics": {
+					"std": 32
+				},
+				"diplomacy": {
+					"std": 34
+				},
+				"medicine": {
+					"std": 35
+				},
+				"performance": {
+					"std": 28
+				},
+				"religion": {
+					"std": 35
+				},
+				"survival": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 3,
+				"con": 6,
+				"int": 3,
+				"wis": 6,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 41
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 32
+					},
+					"abilities": [
+						"+1 status bonus to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 350
+					}
+				],
+				"immunities": [
+					"disease",
+					"fire",
+					"negative energy",
+					"sleep"
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 90
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach 20 feet"
+					],
+					"name": "jaws",
+					"attack": 34,
+					"damage": "{@damage 4d12+12} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach 15 feet"
+					],
+					"name": "claw",
+					"attack": 34,
+					"damage": "{@damage 4d8+12} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach 20 feet"
+					],
+					"name": "tail",
+					"attack": 34,
+					"damage": "{@damage 4d8+10} slashing plus banishing swipe"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical",
+						"range 100 feet"
+					],
+					"name": "glaring ray",
+					"attack": 34,
+					"damage": "{@damage 10d6} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 42,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "light"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "dazzling flash"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "detect alignment",
+									"amount": "at will"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "zone of truth",
+									"amount": "at will"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "flame strike"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"constant": {}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Aura of Peace",
+						"traits": [
+							"divine",
+							"emotion",
+							"enchantment",
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"50 feet. A creature that starts its turn in the aura must attempt a DC 37 Will save or be affected by {@spell calm emotions}. Creatures that successfully save are unaffected, but must attempt another save each turn they start in the aura."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			},
+			"hasImages": true
+		},
+		{
+			"name": "Graveknight",
+			"source": "B1",
+			"page": 191,
+			"level": 10,
+			"hasImages": true,
+			"traits": [
+				"le",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 23
+				},
+				"intimidation": {
+					"std": 22
+				},
+				"religion": {
+					"std": 19
+				},
+				"warfare lore": {
+					"std": 20
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 4,
+				"con": 4,
+				"int": 2,
+				"wis": 3,
+				"cha": 5
+			},
+			"items": [
+				"composite longbow (20 arrows)",
+				"+1 resilient full plate",
+				"greatsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 31
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 175,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"immunities": [
+					"cold",
+					"death",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"cold",
+						"magical",
+						"versatile P"
+					],
+					"name": "frost greatsword",
+					"attack": 24,
+					"damage": "{@damage 2d12+10} slashing plus {@damage 1d6} cold"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"cold"
+					],
+					"name": "fist",
+					"attack": 23,
+					"damage": "{@damage 2d6+10} bludgeoning plus {@damage 1d6} cold"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"cold",
+						"deadly 1d10",
+						"magical",
+						"range increment 100 feet",
+						"reload 0",
+						"volley 30 feet"
+					],
+					"name": "frost composite longbow",
+					"attack": 21,
+					"damage": "{@damage 2d8+6} piercing plus {@damage 1d6} cold"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Sacrilegious Aura",
+						"entries": [
+							"30 feet. +17"
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Devastating Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"cold",
+							"evocation"
+						],
+						"entries": [
+							"{@damage 6d12} cold, DC 29"
+						]
+					},
+					{
+						"name": "Graveknight's Curse DC",
+						"entries": [
+							"33"
+						]
+					},
+					{
+						"name": "Phantom Mount",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"conjuration"
+						],
+						"entries": [
+							"HP 58; AC 27,"
+						]
+					},
+					{
+						"name": "Weapon Master",
+						"entries": []
+					}
+				]
+			}
+		},
+		{
 			"name": "Glabrezu",
 			"isNpc": false,
 			"source": "B1",
@@ -32899,7 +33326,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " Goblins and goblin dogs are immune to goblin pox.",
+						"note": "Goblins and goblin dogs are immune to goblin pox.",
 						"DC": 17,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -37215,6 +37642,12 @@
 					"name": "low-light vision"
 				}
 			],
+			"languages": {
+				"languages": [
+					"common",
+					"jotun"
+				]
+			},
 			"skills": {
 				"athletics": {
 					"std": 19
@@ -37282,14 +37715,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Athletics} +19, {@skill Intimidation} +11 Str +6, Dex +0, Con +4, Int \u20132, Wis +2, Cha +0 Items greatclub, hide armor, sack with 5 rocks."
-						],
-						"name": "Language Common, Jotun"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -38011,7 +38436,7 @@
 						"traits": [
 							"poison"
 						],
-						"note": " A homunculus has one dose of poison in a reservoir in its head. It can refill this poison from its reserves with an {@action Interact} action.",
+						"note": "A homunculus has one dose of poison in a reservoir in its head. It can refill this poison from its reserves with an {@action Interact} action.",
 						"DC": 15,
 						"savingThrow": "Fortitude",
 						"maxDuration": "6 rounds",
@@ -39573,7 +39998,7 @@
 						"traits": [
 							"poison"
 						],
-						"note": " Any {@condition drained} value from this poison is reduced by 1 every hour.",
+						"note": "Any {@condition drained} value from this poison is reduced by 1 every hour.",
 						"DC": 33,
 						"savingThrow": "Fortitude",
 						"maxDuration": "4 rounds",
@@ -40156,7 +40581,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": "three",
+							"freq": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -41489,7 +41914,7 @@
 						"traits": [
 							"poison"
 						],
-						"note": " Krakens are immune to this poison.",
+						"note": "Krakens are immune to this poison.",
 						"DC": 39,
 						"savingThrow": "Fortitude",
 						"maxDuration": "10 rounds",
@@ -43528,7 +43953,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The leukodaemon can telepathically communicate with the afflicted creature at any distance on the same plane",
+						"note": "The leukodaemon can telepathically communicate with the afflicted creature at any distance on the same plane",
 						"DC": 28,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -48626,7 +49051,7 @@
 							"necromancy",
 							"negative"
 						],
-						"note": " This disease and any damage from it can't be healed until this curse is removed. A creature killed by mummy rot turns to dust and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
+						"note": "This disease and any damage from it can't be healed until this curse is removed. A creature killed by mummy rot turns to dust and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
 						"DC": 22,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -48856,7 +49281,7 @@
 							"divine",
 							"necromancy"
 						],
-						"note": " This disease and any damage from it can't be healed until this curse is removed. A creature killed by insidious mummy rot turns to sand and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
+						"note": "This disease and any damage from it can't be healed until this curse is removed. A creature killed by insidious mummy rot turns to sand and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
 						"DC": 26,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -50115,7 +50540,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " A creature can't recover from {@condition drained} until abyssal plague is cured.",
+						"note": "A creature can't recover from {@condition drained} until abyssal plague is cured.",
 						"DC": 28,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -52047,7 +52472,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured.",
+						"note": "The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured.",
 						"DC": 20,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -53668,7 +54093,7 @@
 							"disease",
 							"necromancy"
 						],
-						"note": " An infected creature can't heal damage it takes from zombie rot until it has been cured of the disease.",
+						"note": "An infected creature can't heal damage it takes from zombie rot until it has been cured of the disease.",
 						"DC": 18,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -57208,7 +57633,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": "three",
+							"freq": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -65340,7 +65765,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Terotricus",
@@ -65487,7 +65913,7 @@
 						"traits": [
 							"disease"
 						],
-						"note": " Plants and fungi are immune.",
+						"note": "Plants and fungi are immune.",
 						"DC": 40,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -65949,7 +66375,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Tiger",
@@ -71112,7 +71539,7 @@
 							"mental",
 							"primal"
 						],
-						"note": " A creature affected by wendigo torment can't recover beyond stage 1 until it has been restored to full HP.",
+						"note": "A creature affected by wendigo torment can't recover beyond stage 1 until it has been restored to full HP.",
 						"DC": 38,
 						"savingThrow": "Will",
 						"stages": [

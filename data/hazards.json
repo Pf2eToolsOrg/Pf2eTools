@@ -2146,6 +2146,7 @@
 					]
 				},
 				{
+					"type": "affliction",
 					"name": "Sleeping Gas",
 					"traits": [
 						"inhaled",
@@ -3046,7 +3047,7 @@
 			"defenses": {
 				"ac": {
 					"std": 35,
-					"note": " (40 vs. reactions and ranged weapon attacks)"
+					"note": "(40 vs. reactions and ranged weapon attacks)"
 				},
 				"hp": {
 					"std": 220
@@ -3398,12 +3399,13 @@
 					"name": "Spore Explosion"
 				},
 				{
+					"type": "affliction",
 					"name": "Ash Web Spores",
 					"traits": [
 						"inhaled",
 						"poison"
 					],
-					"note": " The {@condition enfeebled} condition from ash web remains even after the poison's duration ends. The condition's value reduces by 1 per hour. Gugs are immune to this poison; instead, they have vivid and strange dreams when they sleep after ingesting ash web.",
+					"note": "The {@condition enfeebled} condition from ash web remains even after the poison's duration ends. The condition's value reduces by 1 per hour. Gugs are immune to this poison; instead, they have vivid and strange dreams when they sleep after ingesting ash web.",
 					"DC": 29,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -3791,19 +3793,21 @@
 						"divine",
 						"necromancy"
 					],
+					"trigger": "A creature opens the door without first whispering the name Blackfingers",
 					"entries": [
-						"Trigger A creature opens the door without first whispering the name Blackfingers; The metal trapdoor emits toxic vapors. Each creature within 30 feet must save against a potent strain of blackfinger blight."
+						"The metal trapdoor emits toxic vapors. Each creature within 30 feet must save against a potent strain of blackfinger blight."
 					],
 					"name": "Blackfingers's Prayer"
 				},
 				{
+					"type": "affliction",
 					"name": "Blackfinger Blight",
 					"traits": [
 						"inhaled",
 						"poison",
 						"virulent"
 					],
-					"note": " Each round, at the beginning of their turn, a creature affected by blackfinger blight must succeed at a DC {@flatDC 5} flat check or drop one random item they're holding",
+					"note": "Each round, at the beginning of their turn, a creature affected by blackfinger blight must succeed at a DC {@flatDC 5} flat check or drop one random item they're holding",
 					"DC": 40,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
@@ -3939,10 +3943,23 @@
 			],
 			"routine": [
 				"(1 action) The bloody image opens its mouth and appears to inhale, drawing blood from the body of one creature in its line of sight within 90 feet from the center of area A11. The creature targeted must attempt a DC 20 Fortitude save.",
-				"Critical Success The creature is unaffected.",
-				"Success The creature takes {@damage 1d10} bleed damage.",
-				"Failure The creature takes {@damage 1d10+6} bleed damage.",
-				"Critical Failure The creature takes {@damage 2d10+6} bleed damage and is {@condition enfeebled|CRB|enfeebled 2} as long as it's bleeding."
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes {@damage 1d10} bleed damage."
+						],
+						"Failure": [
+							"The creature takes {@damage 1d10+6} bleed damage."
+						],
+						"Critical Failure": [
+							"Failure The creature takes {@damage 2d10+6} bleed damage and is {@condition enfeebled|CRB|enfeebled 2} as long as it's bleeding."
+						]
+					}
+				}
 			],
 			"reset": [
 				"If the haunt is disabled or destroyed through damage, the bloody phantom of Belcorra sprays upward in a spiral, dousing the trap door leading to area A25 before draining upward through the keyhole, which reduces the {@skill Thievery} DC to Pick the Lock to 20. At the next sunrise, the blood drains back down to this room and the haunt resets. The haunt is destroyed permanently once Lasda Venkervale is rescued from area D9."
@@ -3965,16 +3982,10 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Religion} DC 29 (master) to exorcise the spirit or."
+					"{@skill Religion} DC 29 (master) to exorcise the spirit or {@skill Diplomacy} DC 31 (expert) to talk it down."
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"31 (expert) to talk it down."
-					],
-					"name": "Diplomacy DC"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -3990,7 +4001,16 @@
 					],
 					"trigger": "A creature moves within 10 feet of the haunted object.",
 					"entries": [
-						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save. Critical Success The target is unaffected. Success The target makes a {@action Strike} against itself and automatically hits; the target also becomes {@condition frightened 1}. Failure The target makes a {@action Strike} against itself and automatically scores a critical hit; the target also becomes {@condition frightened 2}. Critical Failure The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
+						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target makes a {@action Strike} against itself and automatically hits; the target also becomes {@condition frightened 1}.",
+								"Failure": "The target makes a {@action Strike} against itself and automatically scores a critical hit; the target also becomes {@condition frightened 2}.",
+								"Critical Failure": "The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
+							}
+						}
 					],
 					"name": "Quietus"
 				}
@@ -4308,8 +4328,9 @@
 						"occult",
 						"transmutation"
 					],
+					"trigger": "A creature touches the cage door, the closet door, or any wooden stand",
 					"entries": [
-						"Trigger A creature touches the cage door, the closet door, or any wooden stand; Both double doors leading out of the room shut and lock; while the trap is active, the key doesn't work to open these doors (although their locks can be picked normally). The chandeliers drop several feet on elongated chains, allowing them to swing around the room. The closest chandelier to the triggering creature makes a swinging chandelier {@action Strike} against it. The trap then rolls initiative."
+						"Both double doors leading out of the room shut and lock; while the trap is active, the key doesn't work to open these doors (although their locks can be picked normally). The chandeliers drop several feet on elongated chains, allowing them to swing around the room. The closest chandelier to the triggering creature makes a swinging chandelier {@action Strike} against it. The trap then rolls initiative."
 					],
 					"name": "Extending Chandeliers"
 				}
@@ -4670,12 +4691,13 @@
 					"name": "Breath Snatcher"
 				},
 				{
+					"type": "affliction",
 					"name": "Caustic Nightmare Vapor",
 					"traits": [
 						"acid",
 						"poison"
 					],
-					"note": " Oozes are immune to this poison",
+					"note": "Oozes are immune to this poison",
 					"DC": 38,
 					"savingThrow": "Fortitude",
 					"onset": "1 round",
@@ -5144,15 +5166,9 @@
 					],
 					"trigger": "The stone rod is moved or either door is touched",
 					"entries": [
-						"The two falling doors deal {@damage 6d12+35} bludgeoning damage (DC 37 basic Reflex save) to all creatures within 15 feet of the gate. On a failure, a creature is also pinned beneath the door and {@condition immobilized} until the door is moved (DC 34 {@skill Athletics}) or destroyed; each door has the same AC, Fortitude save,"
+						"The two falling doors deal {@damage 6d12+35} bludgeoning damage (DC 37 basic Reflex save) to all creatures within 15 feet of the gate. On a failure, a creature is also pinned beneath the door and {@condition immobilized} until the door is moved (DC 34 {@skill Athletics}) or destroyed; each door has the same AC, Fortitude save, Hardness, and Hit Points as the trap itself. On a critical failure, the creature is trapped in such a way that it can't attempt to free itself. Moving or destroying one door doesn't help free anyone trapped by the other door."
 					],
 					"name": "Gate Collapse"
-				},
-				{
-					"entries": [
-						"Points as the trap itself. On a critical failure, the creature is trapped in such a way that it can't attempt to free itself. Moving or destroying one door doesn't help free anyone trapped by the other door."
-					],
-					"name": "Hardness, and Hit"
 				}
 			]
 		},
@@ -5416,7 +5432,12 @@
 				{
 					"type": "attack",
 					"range": "Ranged",
-					"name": "(agile, thrown <10 feet>, versatile S) dagger",
+					"traits": [
+						"agile",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
 					"attack": 40,
 					"damage": "{@damage 4d4+10} piercing plus 20 negative",
 					"types": [
@@ -6366,8 +6387,9 @@
 						"electricity",
 						"evocation"
 					],
+					"trigger": "A creature passes over the {@condition invisible} underwater rune between the north and south doors",
 					"entries": [
-						"Trigger A creature passes over the {@condition invisible} underwater rune between the north and south doors; The trap deals {@damage 4d10} electricity damage (DC 26 basic Reflex save) to creatures touching the water, and then rolls initiative."
+						"The trap deals {@damage 4d10} electricity damage (DC 26 basic Reflex save) to creatures touching the water, and then rolls initiative."
 					],
 					"name": "Electrocution"
 				}
@@ -7558,12 +7580,13 @@
 					"name": "Ectoplasmic Explosion"
 				},
 				{
+					"type": "affliction",
 					"name": "Ghost Crystal Cloud",
 					"traits": [
 						"inhaled",
 						"poison"
 					],
-					"note": " Creatures with the {@trait ethereal} trait are immune",
+					"note": "Creatures with the {@trait ethereal} trait are immune",
 					"DC": 26,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",
@@ -8133,7 +8156,12 @@
 				},
 				"bt": {
 					"Trapdoor": 6
-				}
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
 			},
 			"actions": [
 				{
@@ -8958,8 +8986,9 @@
 						"number": 1,
 						"unit": "reaction"
 					},
+					"trigger": "A creature attempts to activate Vengegate",
 					"entries": [
-						"Trigger A creature attempts to activate Vengegate; The chamber within {@deity Alseta|LOGM}'s Ring fills with a dragonstorm. Creatures within this area take {@dice 10d8} damage, equally split between acid, cold, electricity, fire, and poison."
+						"The chamber within {@deity Alseta|LOGM}'s Ring fills with a dragonstorm. Creatures within this area take {@dice 10d8} damage, equally split between acid, cold, electricity, fire, and poison."
 					],
 					"name": "Manifest Lesser Dragonstorm"
 				}
@@ -10324,6 +10353,7 @@
 					"name": "Spring"
 				},
 				{
+					"type": "affliction",
 					"name": "Cladis Poison",
 					"traits": [
 						"poison"
@@ -10421,6 +10451,7 @@
 					"name": "Spring Dart"
 				},
 				{
+					"type": "affliction",
 					"name": "Cladis Poison",
 					"traits": [
 						"poison"
@@ -10572,8 +10603,9 @@
 						"primal",
 						"transmutation"
 					],
+					"trigger": "A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic.",
 					"entries": [
-						"Trigger A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic. The creature is targeted by baleful polymorph (DC 32 Will save)."
+						"The creature is targeted by baleful polymorph (DC 32 Will save)."
 					],
 					"name": "Baleful Polymorph"
 				}
@@ -12363,8 +12395,14 @@
 						"number": 1,
 						"unit": "reaction"
 					},
+					"traits": [
+						"arcane",
+						"conjuration",
+						"summon"
+					],
+					"trigger": "A creature enters the cloud of magical sensors.",
 					"entries": [
-						"(arcane, conjuration, summon; Trigger A creature enters the cloud of magical sensors. This trap summons a specific level 1 creature, determined when the trap is created. The creature rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the creature disappears. The creature also disappears if someone disables the trap before the duration expires. The summoned creature can use 3 actions each round and can use reactions, unlike most summoned creatures."
+						"This trap summons a specific level 1 creature, determined when the trap is created. The creature rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the creature disappears. The creature also disappears if someone disables the trap before the duration expires. The summoned creature can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
 					"name": "Summon Monster"
 				}
@@ -14052,12 +14090,13 @@
 					"name": "Spore Explosion"
 				},
 				{
+					"type": "affliction",
 					"name": "Yellow Mold Spores",
 					"traits": [
 						"inhaled",
 						"poison"
 					],
-					"note": " Any {@condition drained} condition from the spores persists after the poison's duration ends",
+					"note": "Any {@condition drained} condition from the spores persists after the poison's duration ends",
 					"DC": 26,
 					"savingThrow": "Fortitude",
 					"maxDuration": "6 rounds",

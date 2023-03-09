@@ -368,7 +368,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Anugobu Wondercrafter",
@@ -599,7 +600,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Archery Specialist",
@@ -938,7 +940,8 @@
 						"name": "fear of crabs"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Blue Viper",
@@ -1461,7 +1464,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Dread Roc",
@@ -1782,7 +1786,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Elder Cauthooj",
@@ -2786,7 +2791,8 @@
 						"name": "all damage"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Hantu Denai",
@@ -2964,7 +2970,8 @@
 						"name": "all damage"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Jaiban",
@@ -4448,7 +4455,8 @@
 						"hp": 180
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Muckish Creep",
@@ -4618,7 +4626,8 @@
 						"name": "bludgeoning"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Nai Yan Fei",
@@ -4748,13 +4757,9 @@
 							"number": 1,
 							"unit": "free"
 						},
-						"trigger": "Nai",
-						"entries": [],
-						"name": "Debilitating Strike"
-					},
-					{
+						"trigger": "Nai Yan Fei hits a {@condition flat-footed} creature and deals damage",
 						"entries": [
-							"Fei hits a {@condition flat-footed} creature and deals damage; Nai Yan Fei applies one of the following debilitations, which lasts until the end of her next turn.",
+							"Nai Yan Fei applies one of the following debilitations, which lasts until the end of her next turn.",
 							{
 								"type": "list",
 								"items": [
@@ -4765,7 +4770,7 @@
 								]
 							}
 						],
-						"name": "Yan"
+						"name": "Debilitating Strike"
 					},
 					{
 						"activity": {
@@ -4775,42 +4780,20 @@
 						"traits": [
 							"incapacitation"
 						],
+						"trigger": "Nai Yan Fei hits a {@condition flat-footed} creature and deals damage",
 						"entries": [
-							"Trigger."
-						],
-						"name": "Master Strike"
-					},
-					{
-						"entries": [
-							"Fei hits a {@condition flat-footed} creature and deals damage; The target attempts a DC 39 Fortitude save. It then becomes immune to Nai Yan Fei's."
-						],
-						"name": "Nai Yan"
-					},
-					{
-						"entries": [
-							"{@action Strike} for 1 day.",
+							"The target attempts a DC 39 Fortitude save. It then becomes immune to Nai Yan Fei's Master {@action Strike} for 1 day.",
 							{
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The target is unaffected.",
-									"Success": "The target is {@condition enfeebled|CRB|enfeebled 2} until the end of"
-								}
-							}
-						],
-						"name": "Master"
-					},
-					{
-						"entries": [
-							"Fei's next turn.",
-							{
-								"type": "successDegree",
-								"entries": {
+									"Success": "The target is {@condition enfeebled|CRB|enfeebled 2} until the end of Nai Yan Fei's next turn.",
 									"Failure": "The target is {@condition paralyzed} for 4 rounds.",
 									"Critical Failure": "The target is {@condition paralyzed} for 4 rounds, knocked {@condition unconscious} for 2 hours, or killed (Nai Yan Fei's choice)."
 								}
 							}
 						],
-						"name": "Nai Yan"
+						"name": "Master Strike"
 					},
 					{
 						"activity": {
@@ -4825,9 +4808,9 @@
 					},
 					{
 						"entries": [
-							"{@action Strike||Strikes} deal an additional {@damage 4d6} precision damage to {@condition flat-footed} creatures."
+							"Nai Yan Fei's {@action Strike||Strikes} deal an additional {@damage 4d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak Attack Nai Yan Fei's"
+						"name": "Sneak Attack"
 					}
 				]
 			},
@@ -4852,7 +4835,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Old Man Statue",
@@ -5884,7 +5868,8 @@
 						"abilities": null
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Syu Tak-nwa",
