@@ -458,6 +458,203 @@
 			}
 		},
 		{
+			"name": "Deghuun (Child of Mhar)",
+			"source": "EC6",
+			"hasImages": true,
+			"page": 78,
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"ne",
+				"huge",
+				"aberration"
+			],
+			"perception": {
+				"std": 30
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "smoke vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 37
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 6,
+				"con": 8,
+				"int": -1,
+				"wis": 0,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 34
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 26
+					}
+				},
+				"hp": [
+					{
+						"hp": 420
+					}
+				],
+				"immunities": [
+					"fire",
+					"poison"
+				],
+				"weaknesses": [
+					{
+						"name": "cold",
+						"amount": 10
+					},
+					{
+						"name": "good",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 10,
+						"note": "except adamantine"
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach 20 feet"
+					],
+					"name": "tentacle",
+					"attack": 35,
+					"damage": "{@damage 3d10+17} bludgeoning plus Grab"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"brutal",
+						"range increment 60 feet"
+					],
+					"name": "lava ball",
+					"attack": 34,
+					"damage": "{@damage 4d6+17} bludgeoning plus {@damage 3d6} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 38,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "earthbind",
+									"amount": 3
+								},
+								{
+									"name": "hallucination"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "earthquake"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Smoke Vision",
+						"entries": [
+							"The deghuun ignores the {@condition concealed} condition from smoke or smog, including from Sulfurous Plume."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Unfathomable Aspect",
+						"entries": [
+							"Anytime a deghuun attempts a Will save against an enchantment spell, the spell's caster must attempt a DC 38 Will save or become {@condition confused} for up to the spell's duration."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Beak Crunch",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The deghuun has a creature {@condition grabbed} with its tentacles",
+						"entries": [
+							"The creature takes {@damage 4d8+17} piercing damage."
+						]
+					},
+					{
+						"name": "Sulfurous Plume",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"fire",
+							"poison"
+						],
+						"entries": [
+							"The deghuun vents caustic smog for {@dice 1d4} rounds. Any creature that ends its turn within 30 feet of the deghuun during this time takes {@damage 6d6} fire damage and is {@condition sickened||sickened 1} (DC 38 Fortitude save; the creature avoids the {@condition sickened} condition on a critical success, or is {@condition sickened||sickened 2} on a critical failure). While {@condition sickened} in this way, a creature takes a \u20132 status penalty to its saving throw against the deghuun's hallucination. Any creature that's in the smog is {@condition concealed} and treats other creatures as {@condition concealed}. Strong winds dissipate the smog."
+						]
+					},
+					{
+						"name": "Tentacle Assault",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The deghuun makes three tentacle Strikes, each against a different creature within reach.",
+							"These attacks count toward its multiple attack penalty as normal."
+						]
+					}
+				]
+			}
+		},
+		{
 			"name": "Convergent Soldier",
 			"isNpc": false,
 			"source": "EC6",

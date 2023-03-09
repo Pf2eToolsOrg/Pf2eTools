@@ -31968,6 +31968,419 @@
 			}
 		},
 		{
+			"name": "Simurgh",
+			"source": "B1",
+			"page": 295,
+			"level": 18,
+			"traits": [
+				"rare",
+				"ng",
+				"gargantuan",
+				"beast"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"celestial",
+					"common",
+					"draconic"
+				],
+				"abilities": [
+					"{@spell Tongues}"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 27
+				},
+				"arcana": {
+					"std": 28
+				},
+				"athletics": {
+					"std": 32
+				},
+				"diplomacy": {
+					"std": 34
+				},
+				"medicine": {
+					"std": 35
+				},
+				"performance": {
+					"std": 28
+				},
+				"religion": {
+					"std": 35
+				},
+				"survival": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 3,
+				"con": 6,
+				"int": 3,
+				"wis": 6,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 41
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 32
+					},
+					"abilities": [
+						"+1 status bonus to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 350
+					}
+				],
+				"immunities": [
+					"disease",
+					"fire",
+					"negative energy",
+					"sleep"
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 90
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach 20 feet"
+					],
+					"name": "jaws",
+					"attack": 34,
+					"damage": "{@damage 4d12+12} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach 15 feet"
+					],
+					"name": "claw",
+					"attack": 34,
+					"damage": "{@damage 4d8+12} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach 20 feet"
+					],
+					"name": "tail",
+					"attack": 34,
+					"damage": "{@damage 4d8+10} slashing plus banishing swipe"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical",
+						"range 100 feet"
+					],
+					"name": "glaring ray",
+					"attack": 34,
+					"damage": "{@damage 10d6} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 42,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "light"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "dazzling flash"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "detect alignment",
+									"amount": "at will"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "zone of truth",
+									"amount": "at will"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "flame strike"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"constant": {}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Aura of Peace",
+						"traits": [
+							"divine",
+							"emotion",
+							"enchantment",
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"50 feet. A creature that starts its turn in the aura must attempt a DC 37 Will save or be affected by {@spell calm emotions}. Creatures that successfully save are unaffected, but must attempt another save each turn they start in the aura."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			},
+			"hasImages": true
+		},
+		{
+			"name": "Graveknight",
+			"source": "B1",
+			"page": 191,
+			"level": 10,
+			"hasImages": true,
+			"traits": [
+				"le",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 23
+				},
+				"intimidation": {
+					"std": 22
+				},
+				"religion": {
+					"std": 19
+				},
+				"warfare lore": {
+					"std": 20
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 4,
+				"con": 4,
+				"int": 2,
+				"wis": 3,
+				"cha": 5
+			},
+			"items": [
+				"composite longbow (20 arrows)",
+				"+1 resilient full plate",
+				"greatsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 31
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 175,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"immunities": [
+					"cold",
+					"death",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"cold",
+						"magical",
+						"versatile P"
+					],
+					"name": "frost greatsword",
+					"attack": 24,
+					"damage": "{@damage 2d12+10} slashing plus {@damage 1d6} cold"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"cold"
+					],
+					"name": "fist",
+					"attack": 23,
+					"damage": "{@damage 2d6+10} bludgeoning plus {@damage 1d6} cold"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"cold",
+						"deadly 1d10",
+						"magical",
+						"range increment 100 feet",
+						"reload 0",
+						"volley 30 feet"
+					],
+					"name": "frost composite longbow",
+					"attack": 21,
+					"damage": "{@damage 2d8+6} piercing plus {@damage 1d6} cold"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Sacrilegious Aura",
+						"entries": [
+							"30 feet. +17"
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Devastating Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"cold",
+							"evocation"
+						],
+						"entries": [
+							"{@damage 6d12} cold, DC 29"
+						]
+					},
+					{
+						"name": "Graveknight's Curse DC",
+						"entries": [
+							"33"
+						]
+					},
+					{
+						"name": "Phantom Mount",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"conjuration"
+						],
+						"entries": [
+							"HP 58; AC 27,"
+						]
+					},
+					{
+						"name": "Weapon Master",
+						"entries": []
+					}
+				]
+			}
+		},
+		{
 			"name": "Glabrezu",
 			"isNpc": false,
 			"source": "B1",
