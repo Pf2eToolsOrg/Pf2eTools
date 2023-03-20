@@ -1862,7 +1862,7 @@ Parser.getKeyByValue = function (object, value) {
 	});
 }
 
-// Data: {Plant} Lore
+// Data: <Plant> Lore
 // Naked: Plant Lore
 // None: Lore
 // Tag: {@skill Lore||Plant Lore}

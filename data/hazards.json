@@ -3962,7 +3962,7 @@
 				}
 			],
 			"reset": [
-				"If the haunt is disabled or destroyed through damage, the bloody phantom of Belcorra sprays upward in a spiral, dousing the trap door leading to area A25 before draining upward through the keyhole, which reduces the {@skill Thievery} DC to Pick the Lock to 20. At the next sunrise, the blood drains back down to this room and the haunt resets. The haunt is destroyed permanently once Lasda Venkervale is rescued from area D9."
+				"If the haunt is disabled or destroyed through damage, the bloody phantom of Belcorra sprays upward in a spiral, dousing the trap door leading to area A25 before draining upward through the keyhole, which reduces the {@skill Thievery} DC to {@action Pick a Lock||Pick the Lock} to 20. At the next sunrise, the blood drains back down to this room and the haunt resets. The haunt is destroyed permanently once Lasda Venkervale is rescued from area D9."
 			]
 		},
 		{
@@ -4993,7 +4993,51 @@
 				"entries": [
 					"DC 15 {@skill Crafting} (trained) to replace or cover the weak sections of flooring, or DC 15 {@skill Survival} (trained) to crumble the rotten floorboards from a safe distance."
 				]
-			}
+			},
+			"defenses": {
+				"ac": {
+					"std": 10
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 1
+					},
+					"ref": {
+						"std": 1
+					}
+				},
+				"hardness": {
+					"Floorboard": 3
+				},
+				"hp": {
+					"Floorboard": 12
+				},
+				"bt": {
+					"Floorboard": 6
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"name": "Collapse",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"If a creature walks on the area marked on the map, it falls through the weakened floorboards onto uneven rocks and sharp shards of wood, taking {@damage 1d4} piercing damage and {@damage 1d6} bludgeoning damage. The creature can use the {@action Grab an Edge} reaction to avoid the fall and the damage."
+					],
+					"generic": {
+						"tag": "ability"
+					}
+				}
+			],
+			"reset": [
+				"Once this section of the porch has collapsed, creatures can still fall through the hole until the porch is {@action Repair||Repaired}."
+			]
 		},
 		{
 			"name": "Collapsing Structure",
@@ -9240,7 +9284,71 @@
 				"entries": [
 					"DC 21 {@skill Thievery} (expert) or dispel magic on any four of the six pillars disables the entire trap (the trap is a 2nd-level spell and the DC to dispel it is 21). Destroying any four of the six pillars also disables the trap."
 				]
-			}
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					}
+				},
+				"hardness": {
+					"Pillar": 12
+				},
+				"hp": {
+					"Pillar": 14
+				},
+				"bt": {
+					"Pillar": 7
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"name": "Starknife Attack",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"evocation"
+					],
+					"entries": [
+						"If a creature passes the middle pair of pillars, both doors leading out of the room slam shut and lock; while the trap is active, the doors must be battered open with a successful DC 23 {@skill Athletics} check or sufficient damage (Hardness 12; HP 48 [BT 24]). One of the starknife carvings glows with light, detaches from the pillar, and then flies outward, making a magical starknife Ranged {@action Strike} against a random creature within range. The trap then rolls initiative with its {@skill Stealth} modifier of +12."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) For each of its actions on its turn, a carving on a different pillar glows and makes a magical starknife Ranged Strike against a random creature within range. Creatures might have cover from this Strike, such as from one of the pillars in the room.",
+				{
+					"type": "attack",
+					"range": "Ranged",
+					"name": "magical starknife",
+					"attack": 15,
+					"traits": [
+						"agile",
+						"deadly <1d6>",
+						"magical",
+						"range <40 feet>"
+					],
+					"damage": "{@damage 1d4+3} force",
+					"types": [
+						"force"
+					]
+				}
+			],
+			"reset": [
+				"The trap deactivates 1 round after it has no target creatures and resets each day at sundown."
+			]
 		},
 		{
 			"name": "Malevolant Mannequins",
@@ -9732,7 +9840,7 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} DC 22 (by a hero with expert proficiency in that skill) three times to temporarily disrupt the magic, or dispel magic (3rd-level spell, DC 25)"
+					"{@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} DC 22 (by a hero with expert proficiency in that skill) three times to temporarily disrupt the magic, or {@spell dispel magic} (3rd-level spell, DC 25)"
 				]
 			},
 			"actions": [
@@ -9754,10 +9862,15 @@
 			],
 			"routine": [
 				"(1 action) Terrible visions assail the minds of all creatures who can see within the affected area. Each creature must attempt a DC 24 Will saving throw.",
-				"Critical Success The creature is unaffected.",
-				"Success The creature is {@condition frightened|CRB|frightened 2}.",
-				"Failure The creature takes {@damage 2d8+9} mental damage and is {@condition frightened|CRB|frightened 3}.",
-				"Critical Failure The creature takes {@damage 4d8+18} mental damage and is {@condition frightened|CRB|frightened 4}."
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is {@condition frightened|CRB|frightened 2}.",
+						"Failure": "The creature takes {@damage 2d8+9} mental damage and is {@condition frightened|CRB|frightened 3}.",
+						"Critical Failure": "The creature takes {@damage 4d8+18} mental damage and is {@condition frightened|CRB|frightened 4}."
+					}
+				}
 			],
 			"reset": [
 				"The terrible visions cease after all creatures have left the affected area, but the hazard is immediately ready to inflict its visions on the next creature to enter."
@@ -10444,7 +10557,7 @@
 					"traits": [
 						"attack"
 					],
-					"trigger": "A creature attempts to unlock or pick the lock.",
+					"trigger": "A creature attempts to unlock or {@action Pick a Lock||pick the lock}.",
 					"entries": [
 						"A spine springs out and attacks the triggering creature."
 					],
@@ -12863,7 +12976,58 @@
 				"entries": [
 					"DC 22 {@skill Thievery} to disable a single nozzle, DC 21 {@skill Thievery} twice to unlock a door, or DC 25 {@skill Thievery} to deactivate the trap from the control panel. A hero who isn't trained in {@skill Thievery} automatically fails these checks."
 				]
-			}
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hardness": {
+					"Nozzle": 12,
+					"Door": 6
+				},
+				"hp": {
+					"Nozzle": 50,
+					"Door": 22,
+					"notes": {
+						"Nozzle": "to destroy a single nozzle",
+						"Door": "to break open a door and escape the hallway"
+					}
+				},
+				"bt": {
+					"Nozzle": 25,
+					"Door": 11
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"If a creature enters the corridor intersection, the four doors exiting this intersection close and lock, and the trap rolls Stealth (+13) for its initiative."
+					],
+					"name": "Seal the Doors"
+				}
+			],
+			"routine": [
+				"(4 actions) The trap loses 1 action each turn for each disabled nozzle. On each action, a different nozzle fires a jet of flame down a different corridor, dealing {@damage 3d6} fire damage to each creature in the first 10 feet of the corridor past the intersection (DC 22 basic Reflex save). A creature standing in the corridor intersection can be hit by only one flame jet per round even if they're in the area of multiple flame jets. The creature attempts only one saving throw per round, but it takes a \u20132 circumstance penalty to its saving throw."
+			],
+			"reset": [
+				"The trap deactivates and resets after 10 minutes. After the trap is activated for the fourth time, it runs out of fuel and must be reset manually."
+			]
 		},
 		{
 			"name": "Town Hall Fire",
@@ -13232,6 +13396,9 @@
 				]
 			},
 			"defenses": {
+				"ac": {
+					"std": 15
+				},
 				"savingThrows": {
 					"fort": {
 						"std": 8
@@ -13244,10 +13411,7 @@
 					"std": 6
 				},
 				"hp": {
-					"std": 4,
-					"notes": {
-						"std": "Immunities critical hits, sneak attack"
-					}
+					"std": 4
 				},
 				"bt": {
 					"std": 2
@@ -13267,7 +13431,7 @@
 						"attack"
 					],
 					"entries": [
-						"When someone pulls the trip wire, the urn smashes against a creature in the doorway, making a shattering urn {@action Strike} against that creature, then releases a viper (page 32) into the square that contained the trap. The viper attacks any non-plant creature it detects."
+						"When someone pulls the trip wire, the urn smashes against a creature in the doorway, making a shattering urn {@action Strike} against that creature, then releases a {@creature Snake, Viper|bb|viper} into the square that contained the trap. The viper attacks any non-plant creature it detects."
 					],
 					"name": "Topple"
 				}
@@ -13283,8 +13447,7 @@
 					"damage": "{@damage 2d6+5} slashing",
 					"types": [
 						"slashing"
-					],
-					"noMAP": true
+					]
 				}
 			]
 		},
@@ -13725,7 +13888,7 @@
 			"name": "Web Lurker Noose",
 			"source": "B1",
 			"page": 325,
-			"level": 3,
+			"level": 2,
 			"traits": [
 				"mechanical",
 				"trap"
@@ -13796,16 +13959,74 @@
 			],
 			"stealth": {
 				"dc": 22,
-				"notes": "{@skill Perception} check."
+				"notes": "{@skill Perception} check"
 			},
 			"description": [
 				"Discreet webbing at throat level snags a creature that walks into it."
 			],
 			"disable": {
 				"entries": [
-					"DC 18 {@skill Survival} (trained) or {@skill Thievery} (expert) to rearrange the webbing."
+					"DC 18 {@skill Survival} (trained) or {@skill Thievery} (expert) to rearrange the webbing"
 				]
-			}
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"Noose": 4
+				},
+				"hp": {
+					"Noose": 16,
+					"notes": {
+						"Noose": "to cut the web noose"
+					}
+				},
+				"bt": {
+					"Noose": 8
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"If a creature steps into the square with the web trip wire, the web lurker noose makes a noose Strike against the creature."
+					],
+					"name": "Web Noose"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "noose",
+					"attack": 13,
+					"effects": [
+						"deadly <d10>"
+					],
+					"damage": "{@damage 3d6} bludgeoning and the target gains the {@condition grabbed} condition is and pulled off the ground ({@action Escape} DC 22).",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			]
 		},
 		{
 			"name": "Wheel Of Misery",

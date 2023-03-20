@@ -2039,7 +2039,7 @@ function Renderer () {
 
 			case "@trait": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
-				const parsedName = Parser.parseTraits([name], {toNone: true})[0];
+				const parsedName = Parser.parseTraits([name], { toNone: true })[0];
 				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(parsedName)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(parsedName);
 				const fauxEntry = {
 					type: "link",
@@ -2052,7 +2052,7 @@ function Renderer () {
 							source,
 						},
 					},
-					text: (displayText || Parser.parseTraits([name], {toNaked: true})[0]),
+					text: (displayText || Parser.parseTraits([name], { toNaked: true })[0]),
 				};
 
 				this._recursiveRender(fauxEntry, textStack, meta);
@@ -3307,7 +3307,7 @@ Renderer.utils = {
 				const procHash = hash.replace(/'/g, "\\'");
 				const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
 
-				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${Parser.parseTraits([trait], {toNaked: true})[0]}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
+				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${Parser.parseTraits([trait], { toNaked: true })[0]}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
 			}
 		}
 		return traitsHtml.join("")
@@ -4341,7 +4341,7 @@ Renderer.creature = {
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
 				const std = renderer.render(`<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${creature.defenses.savingThrows[k].std}||${saveName}}`);
-				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: {name: saveName}});
+				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: { name: saveName } });
 				return `${std}${note}`;
 			});
 		if (creature.defenses.savingThrows.abilities) savingThrowParts.push(renderer.render(creature.defenses.savingThrows.abilities));
@@ -4983,10 +4983,12 @@ Renderer.hazard = {
 			renderStack.push(disableStack.join(""));
 		}
 		renderStack.push(Renderer.hazard.getDefenses(hazard));
-		if (hazard.actions) {
-			hazard.actions.forEach(a => {
+		if (hazard.actions || hazard.attacks) {
+			// FIXME: WHY ARE ATTACKS SEPARATE, WHY DID WE CHANGE IT
+			const allActions = (hazard.actions || []).concat((hazard.attacks || []).map(x => { x.type = "attack"; return x }));
+			allActions.forEach(a => {
 				if (a.type === "attack") {
-					let textStack = []
+					let textStack = [""]
 					renderer._renderAttack(a, textStack)
 					renderStack.push(textStack)
 				} else renderStack.push(Renderer.creature.getRenderedAbility(a, { noButton: true, asHTML: true }))
@@ -5676,7 +5678,7 @@ Renderer.event = {
 	getBody (it) {
 		let renderer = Renderer.get()
 		let textStack = []
-		if (it.applicableSkills) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Applicable Skills&nbsp;</strong>${renderer.render(Parser.parseSkills(it.applicableSkills, {toTags: true, toTitleCase: true}).join(", "))}`)
+		if (it.applicableSkills) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Applicable Skills&nbsp;</strong>${renderer.render(Parser.parseSkills(it.applicableSkills, { toTags: true, toTitleCase: true }).join(", "))}`)
 		if (textStack.length) textStack.push(Renderer.utils.getDividerDiv())
 		return textStack.join("")
 	},
@@ -7931,7 +7933,7 @@ Renderer.hover = {
 			case "group": return Renderer.group.getRenderedString;
 			case "skill": return Renderer.skill.getRenderedString;
 			case "genericData": return Renderer.generic.dataGetRenderedString;
-			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, {isRenderingGeneric: true});
+			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, { isRenderingGeneric: true });
 			// endregion
 			default: throw new Error(`Unknown page: ${page} in _pageToRenderFn`);
 		}
