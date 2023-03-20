@@ -1,4 +1,4 @@
-v0.7.11
+v0.7.12
 
-- Added a bunch of missing images to the Bestiary (thanks to Spappz!)
+- Fixed Hazards not showing Strikes.
 - (Typos/Tags)
