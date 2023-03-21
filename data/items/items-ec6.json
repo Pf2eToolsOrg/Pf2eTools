@@ -59,7 +59,7 @@
 						"entry": "3 days"
 					},
 					"components": [
-						"({@action Interact})"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"freq": 4,
@@ -143,19 +143,29 @@
 			"bulk": 1,
 			"category": "Artifact",
 			"entries": [
-				"Hunter's Dawn is a +3 greater striking speed ghost touch club. However, the notched head of the weapon marks it as an atlatl, an ancient tool used for throwing darts and javelins. You can use Hunter's Dawn with a mundane dart or javelin like you would use a bow with an arrow; when you do so, the range of the dart or javelin is doubled, and the dart or javelin uses Hunter's Dawn to determine its attack modifier and damage dice.",
-				"Activate {@as 1}, {@as 2}, or {@as 3} ({@action Interact}) You swing Hunter's Dawn and launch a magically conjured javelin at a target within 60 feet, making a ranged {@action Strike}. The javelin has the statistics of a javelin but gains the magical properties of Hunter's Dawn and disappears immediately after hitting or missing its target. On a successful hit, you deal damage ({@damage 3d6} piercing, due to the atlatl's greater striking rune, plus your Strength modifier); in addition, a gazelle leaps from the hit target to one or more targets within 20 feet of the first, dealing {@damage 2d6} piercing damage plus your Strength modifier.",
-				"The number of additional targets hit in this way is equal to the number of actions you spend to activate this ability (one additional target if you used one action, two additional targets for two actions, and so forth).",
+				"Hunter's Dawn is a {@runeItem club||+3 weapon potency||greater striking||speed||ghost touch||}. However, the notched head of the weapon marks it as an atlatl, an ancient tool used for throwing {@item dart||darts} and {@item javelin||javelins}. You can use Hunter's Dawn with a mundane dart or javelin like you would use a bow with an arrow; when you do so, the range of the dart or javelin is doubled, and the dart or javelin uses Hunter's Dawn to determine its attack modifier and damage dice.",
 				{
 					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
-						"entry": "{@as R} Trigger You hit a creature with a ranged"
+						"entry": "{@as 1}, {@as 2}, or {@as 3}"
 					},
 					"components": [
-						"Strike with Hunter's Dawn"
+						"{@action Interact}"
 					],
+					"entries": [
+						"You swing Hunter's Dawn and launch a magically conjured javelin at a target within 60 feet, making a ranged {@action Strike}. The javelin has the statistics of a javelin but gains the magical properties of Hunter's Dawn and disappears immediately after hitting or missing its target. On a successful hit, you deal damage ({@damage 3d6} piercing, due to the atlatl's greater striking rune, plus your Strength modifier); in addition, a gazelle leaps from the hit target to one or more targets within 20 feet of the first, dealing {@damage 2d6} piercing damage plus your Strength modifier.",
+						"The number of additional targets hit in this way is equal to the number of actions you spend to activate this ability (one additional target if you used one action, two additional targets for two actions, and so forth)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "You hit a creature with a ranged Strike with Hunter's Dawn",
 					"entries": [
 						"The target is marked. Once per day, you can cast a 5th-level {@spell locate} spell on the marked target, regardless of its distance from you or your ability to cast spells. This effect persists until it is dispelled (counterspell DC 46), the creature dies, or a new target is marked."
 					]
@@ -167,8 +177,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"(Interact) Frequency three times per day"
+						"{@action Interact}"
 					],
+					"frequency": {
+						"unit": "day",
+						"freq": 3
+					},
 					"entries": [
 						"You shave a curl of wood from Hunter's Dawn and create a roaring fire within 15 feet. You can choose one of the following shapes for the fire to take: a 10-foot square, a 20-foot line, or a 15-foot cone. Each creature in the affected squares take {@damage 6d6} fire damage (DC 46 basic Reflex save)"
 					]
@@ -479,9 +493,9 @@
 						"entry": "1 minute"
 					},
 					"components": [
-						"(command",
+						"command",
 						"envision",
-						"Interact)"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The ribbon spins and swirls, creating a circular loop in the air through which you can spy on a creature on another plane. This has the effects of a {@spell scrying} spell (DC 40) against the creature but functions more as a mundane \u2014albeit interplanar\u2014window; a similar loop appears before the target, and for the duration, both sides can clearly see and hear each other through the created portal, but nothing can pass through. You can Sustain the Activation to gain the effects of Sustaining the Spell.",
