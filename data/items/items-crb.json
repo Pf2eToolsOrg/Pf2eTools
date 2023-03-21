@@ -5298,7 +5298,7 @@
 								"unit": "minute"
 							},
 							"components": [
-								"Interact"
+								"{@action Interact}"
 							],
 							"frequency": {
 								"freq": 1,
@@ -5327,7 +5327,7 @@
 											"unit": "minute"
 										},
 										"components": [
-											"Interact"
+											"{@action Interact}"
 										],
 										"frequency": {
 											"freq": 1,
@@ -5441,9 +5441,9 @@
 						"unit": "minute"
 					},
 					"components": [
-						"(command",
+						"command",
 						"envision",
-						"Interact)"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The crystal ball casts clairvoyance to your specifications."
@@ -5457,9 +5457,9 @@
 						"unit": "minute"
 					},
 					"components": [
-						"(command",
+						"command",
 						"envision",
-						"Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -10065,7 +10065,7 @@
 						"unit": "minute"
 					},
 					"components": [
-						"(Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -12887,7 +12887,7 @@
 						"unit": "minute"
 					},
 					"components": [
-						"(envision)"
+						"envision"
 					],
 					"frequency": {
 						"unit": "day",
@@ -14893,7 +14893,7 @@
 					"components": [
 						"command",
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You place the miniature theater on the ground, filling it with any set dressing and up to six figures you choose. Then, you tap a rhythm on the miniature, causing it to grow into a modest stage 20 feet wide and 15 feet deep. It's dressed with the decorations you selected, and simple mannequins wear the costumes you chose. A wooden proscenium arch frames the stage, and simple curtains along the sides conceal the wings.",
@@ -14930,8 +14930,8 @@
 						"unit": "minute"
 					},
 					"components": [
-						"(envision",
-						"Interact)"
+						"envision",
+						"{@action Interact}"
 					],
 					"entries": [
 						"As you flip through the book, you think about a broad topic you want to know more about. Choose one skill: {@skill Arcana}, {@skill Crafting}, {@skill Medicine}, {@skill Nature}, {@skill Occultism}, {@skill Religion}, {@skill Society}, or a single subcategory of {@skill Lore}. The book's pages fill with information about that skill, though only you can see the information. While the pages are full, you can spend an {@action Interact} action perusing the book just before attempting a check to {@action Recall Knowledge} with the chosen skill. This grants you a +3 item bonus to the check, and if you roll a critical failure, you get a failure instead.",
@@ -16120,7 +16120,7 @@
 						"unit": "minute"
 					},
 					"components": [
-						"(Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -16256,17 +16256,18 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "action",
+						"entry": "{@as 1} or more"
 					},
 					"components": [
-						"or more (Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
 						"freq": 1
 					},
 					"entries": [
-						"A ram-shaped blast of force slams into one foe that you can see within 60 feet. The number of actions you spend to {@b Activate} this Item (from 1 to 3) determines the intensity of the force. The blow deals {@damage 2d6} force damage per action spent and pushes the target 5 feet per action spent. The target must attempt a DC 22 Fortitude save.",
+						"A ram-shaped blast of force slams into one foe that you can see within 60 feet. The number of actions you spend to {@action Activate an Item||Activate this Item} (from 1 to 3) determines the intensity of the force. The blow deals {@damage 2d6} force damage per action spent and pushes the target 5 feet per action spent. The target must attempt a DC 22 Fortitude save.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -21887,7 +21888,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact",
+						"{@action Interact}",
 						"envision"
 					],
 					"entries": [
@@ -22265,7 +22266,7 @@
 										"unit": "action"
 									},
 									"components": [
-										"Interact"
+										"{@action Interact}"
 									],
 									"entries": [
 										"Twisting the ring around your finger allows you to magically throw your voice, with the effects of a 2nd-level {@spell ventriloquism} (DC 27)."
@@ -22523,9 +22524,9 @@
 						"unit": "minute"
 					},
 					"components": [
-						"(command",
+						"command",
 						"envision",
-						"Interact)"
+						"{@action Interact}"
 					],
 					"entries": [
 						"As you activate the pack, you can harness up to four willing creatures to the ropes on the pack. At the end of the activation time, the pack casts a 7th-level {@spell plane shift} or {@spell teleport} spell, transporting you and everyone attached to the pack. Attempt a DC 45 {@skill Survival} check. On a success, you arrive 25 miles off target using plane shift or halve the distance you're off-target with teleport. On a critical success, you arrive exactly on target."
@@ -23236,7 +23237,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact",
+						"{@action Interact}",
 						"envision",
 						"command"
 					],
