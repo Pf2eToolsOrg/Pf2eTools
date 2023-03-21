@@ -2798,7 +2798,6 @@ DataUtil = {
 
 			function doMod_prependArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				if (!getPropertyFromPath(copyTo, path)) throw new Error(`Could not find "${path}" array`);
 				const current = getPropertyFromPath(copyTo, path);
 				const replacement = current ? modInfo.items.concat(current) : modInfo.items;
 				setPropertyFromPath(copyTo, replacement, path);
@@ -2806,7 +2805,6 @@ DataUtil = {
 
 			function doMod_appendArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				if (!getPropertyFromPath(copyTo, path)) throw new Error(`Could not find "${path}" array`);
 				const current = getPropertyFromPath(copyTo, path);
 				const replacement = current ? current.concat(modInfo.items) : modInfo.items;
 				setPropertyFromPath(copyTo, replacement, path);
