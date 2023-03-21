@@ -3316,10 +3316,15 @@ Renderer.utils = {
 	getNotes: (obj, opts) => {
 		opts = opts || {};
 		opts.exclude = opts.exclude || [];
+		opts.raw = opts.raw || [];
 		const renderer = Renderer.get();
 		const renderedNotes = Object.keys(obj).filter(it => !opts.exclude.includes(it)).map(key => {
-			if (opts.dice) return renderer.render(`{@d20 ${Parser.numToBonus(obj[key])}||${opts.dice.name || key}} ${key}`);
-			else return `${obj[key]} ${key}`;
+			if (opts.raw.includes(key)) {
+				return obj[key];
+			} else {
+				if (opts.dice) return renderer.render(`{@d20 ${Parser.numToBonus(obj[key])}||${opts.dice.name || key}} ${key}`);
+				else return `${obj[key]} ${key}`;
+			}
 		}).join(", ");
 		return `${renderedNotes ? ` (${renderedNotes})` : ""}`
 	},
@@ -4274,7 +4279,7 @@ Renderer.creature = {
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
 			Object.keys(cr.skills).forEach(skill => {
-				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], dice: { name: skill } })}`;
+				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
 				skills.push(renderedSkill)
 			});
 
