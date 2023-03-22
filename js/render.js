@@ -826,8 +826,16 @@ function Renderer () {
 		let MAP = -5;
 		if (entry.noMAP) MAP = 0;
 		if (entry.traits && entry.traits.map(t => t.toLowerCase()).includes("agile")) MAP = -4;
+
+		let onHit;
+		if (entry.effects && !entry.damage) {
+			onHit = `, <strong>Effect&nbsp;</strong>${entry.effects.map(e => this.render(e)).join(", ")}`;
+		} else {
+			onHit = `, <strong>Damage&nbsp;</strong>${this.render(entry.damage)}`;
+		}
+
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}, <strong>Damage&nbsp;</strong>${this.render(entry.damage)}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
+			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
@@ -2039,7 +2047,7 @@ function Renderer () {
 
 			case "@trait": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
-				const parsedName = Parser.parseTraits([name], {toNone: true})[0];
+				const parsedName = Parser.parseTraits([name], { toNone: true })[0];
 				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(parsedName)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(parsedName);
 				const fauxEntry = {
 					type: "link",
@@ -2052,7 +2060,7 @@ function Renderer () {
 							source,
 						},
 					},
-					text: (displayText || Parser.parseTraits([name], {toNaked: true})[0]),
+					text: (displayText || Parser.parseTraits([name], { toNaked: true })[0]),
 				};
 
 				this._recursiveRender(fauxEntry, textStack, meta);
@@ -3307,7 +3315,7 @@ Renderer.utils = {
 				const procHash = hash.replace(/'/g, "\\'");
 				const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
 
-				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${Parser.parseTraits([trait], {toNaked: true})[0]}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
+				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${Parser.parseTraits([trait], { toNaked: true })[0]}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
 			}
 		}
 		return traitsHtml.join("")
@@ -3316,10 +3324,15 @@ Renderer.utils = {
 	getNotes: (obj, opts) => {
 		opts = opts || {};
 		opts.exclude = opts.exclude || [];
+		opts.raw = opts.raw || [];
 		const renderer = Renderer.get();
 		const renderedNotes = Object.keys(obj).filter(it => !opts.exclude.includes(it)).map(key => {
-			if (opts.dice) return renderer.render(`{@d20 ${Parser.numToBonus(obj[key])}||${opts.dice.name || key}} ${key}`);
-			else return `${obj[key]} ${key}`;
+			if (opts.raw.includes(key)) {
+				return obj[key];
+			} else {
+				if (opts.dice) return renderer.render(`{@d20 ${Parser.numToBonus(obj[key])}||${opts.dice.name || key}} ${key}`);
+				else return `${obj[key]} ${key}`;
+			}
 		}).join(", ");
 		return `${renderedNotes ? ` (${renderedNotes})` : ""}`
 	},
@@ -4274,7 +4287,7 @@ Renderer.creature = {
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
 			Object.keys(cr.skills).forEach(skill => {
-				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], dice: { name: skill } })}`;
+				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
 				skills.push(renderedSkill)
 			});
 
@@ -4327,12 +4340,14 @@ Renderer.creature = {
 	getDefenses_getACPart (creature) {
 		if (!creature.defenses.ac) return null;
 		const renderer = Renderer.get();
-		const mainPart = Object.keys(creature.defenses.ac).filter(k => k !== "note" && k !== "abilities")
-			.map(k => `<strong>${k === "std" ? "" : `${k} `}AC&nbsp;</strong>${creature.defenses.ac[k]}`).join(", ");
+		const mainPart = `<strong>AC&nbsp;</strong> ${creature.defenses.ac.std}`;
+		const extraACList = Object.keys(creature.defenses.ac).filter(k => k !== "std" && k !== "note" && k !== "abilities")
+			.map(k => `${creature.defenses.ac[k]} ${k}`).join(", ");
+		const extraACs = extraACList ? ` (${extraACList})` : "";
 		// TODO: deprecate ac.note
 		const notePart = creature.defenses.ac.note ? renderer.render(creature.defenses.ac.note) : "";
 		const abilitiesPart = creature.defenses.ac.abilities ? `; ${renderer.render(creature.defenses.ac.abilities)}` : "";
-		return `${mainPart}${notePart}${abilitiesPart}`;
+		return `${mainPart}${extraACs}${notePart}${abilitiesPart}`;
 	},
 	getDefenses_getSavingThrowPart (creature) {
 		if (!creature.defenses.savingThrows) return null;
@@ -4341,7 +4356,7 @@ Renderer.creature = {
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
 				const std = renderer.render(`<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${creature.defenses.savingThrows[k].std}||${saveName}}`);
-				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: {name: saveName}});
+				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: { name: saveName } });
 				return `${std}${note}`;
 			});
 		if (creature.defenses.savingThrows.abilities) savingThrowParts.push(renderer.render(creature.defenses.savingThrows.abilities));
@@ -4983,10 +4998,12 @@ Renderer.hazard = {
 			renderStack.push(disableStack.join(""));
 		}
 		renderStack.push(Renderer.hazard.getDefenses(hazard));
-		if (hazard.actions) {
-			hazard.actions.forEach(a => {
+		if (hazard.actions || hazard.attacks) {
+			// FIXME: WHY ARE ATTACKS SEPARATE, WHY DID WE CHANGE IT
+			const allActions = (hazard.actions || []).concat((hazard.attacks || []).map(x => { x.type = "attack"; return x }));
+			allActions.forEach(a => {
 				if (a.type === "attack") {
-					let textStack = []
+					let textStack = [""]
 					renderer._renderAttack(a, textStack)
 					renderStack.push(textStack)
 				} else renderStack.push(Renderer.creature.getRenderedAbility(a, { noButton: true, asHTML: true }))
@@ -5676,7 +5693,7 @@ Renderer.event = {
 	getBody (it) {
 		let renderer = Renderer.get()
 		let textStack = []
-		if (it.applicableSkills) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Applicable Skills&nbsp;</strong>${renderer.render(Parser.parseSkills(it.applicableSkills, {toTags: true, toTitleCase: true}).join(", "))}`)
+		if (it.applicableSkills) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Applicable Skills&nbsp;</strong>${renderer.render(Parser.parseSkills(it.applicableSkills, { toTags: true, toTitleCase: true }).join(", "))}`)
 		if (textStack.length) textStack.push(Renderer.utils.getDividerDiv())
 		return textStack.join("")
 	},
@@ -7931,7 +7948,7 @@ Renderer.hover = {
 			case "group": return Renderer.group.getRenderedString;
 			case "skill": return Renderer.skill.getRenderedString;
 			case "genericData": return Renderer.generic.dataGetRenderedString;
-			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, {isRenderingGeneric: true});
+			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, { isRenderingGeneric: true });
 			// endregion
 			default: throw new Error(`Unknown page: ${page} in _pageToRenderFn`);
 		}

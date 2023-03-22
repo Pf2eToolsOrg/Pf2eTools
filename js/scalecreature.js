@@ -483,6 +483,8 @@ class ScaleCreature {
 	}
 
 	applyVarRules (creature) {
+		if (!this.isProfNoLvl()) return creature;
+
 		const level = creature.level;
 		this._initRng(creature, level);
 		creature = JSON.parse(JSON.stringify(creature));
@@ -574,7 +576,13 @@ class ScaleCreature {
 		});
 		["fort", "ref", "will"].forEach(st => Object.keys(creature.defenses.savingThrows[st]).forEach(key => creature.defenses.savingThrows[st][key] += opts.flatAddProf));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += opts.flatAddProf);
-		if (Object.keys(creature.skills).length) Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += opts.flatAddProf));
+		if (Object.keys(creature.skills).length) {
+			Object.keys(creature.skills).forEach(skill => {
+				Object.keys(creature.skills[skill]).forEach(key => {
+					if (key !== "note") creature.skills[skill][key] += opts.flatAddProf;
+				})
+			});
+		}
 		if (creature.spellcasting != null) {
 			creature.spellcasting.forEach(sc => {
 				if (sc.DC) sc.DC += opts.flatAddProf;
@@ -696,7 +704,7 @@ class ScaleCreature {
 				const defaultSkill = creature.skills[skill].std;
 				creature.skills[skill].std = this._scaleValue(lvlIn, toLvl, defaultSkill, this._LvlSkills) + opts.flatAddProf;
 				Object.keys(creature.skills[skill]).forEach(key => {
-					if (key !== "std") creature.skills[skill][key] += creature.skills[skill].std - defaultSkill;
+					if (key !== "std" && key !== "note") creature.skills[skill][key] += creature.skills[skill].std - defaultSkill;
 				});
 			})
 		}
@@ -759,13 +767,15 @@ class ScaleCreature {
 		if (creature.attacks == null) return;
 		creature.attacks.forEach(a => {
 			a.attack = this._scaleValue(lvlIn, toLvl, a.attack, this._LvlAttackBonus) + opts.flatAddProf;
-			const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
-			const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage, 2);
-			a.damage = a.damage.replaceAll(/\d+d\d+([+-]?\d*)/g, (formula, mod) => {
-				const scaleTo = this._getDiceEV(formula) * scaledDpr / dpr;
-				const opts = mod ? {} : {noMod: true};
-				return this._scaleDice(formula, scaleTo, opts);
-			});
+			if (a.damage) {
+				const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
+				const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage, 2);
+				a.damage = a.damage.replaceAll(/\d+d\d+([+-]?\d*)/g, (formula, mod) => {
+					const scaleTo = this._getDiceEV(formula) * scaledDpr / dpr;
+					const opts = mod ? {} : {noMod: true};
+					return this._scaleDice(formula, scaleTo, opts);
+				});
+			}
 		});
 	}
 

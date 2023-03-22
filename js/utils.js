@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.11"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.12"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -2796,44 +2796,51 @@ DataUtil = {
 				});
 			}
 
-			function doMod_prependArr (modInfo, prop) {
+			function doMod_prependArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				copyTo[prop] = copyTo[prop] ? modInfo.items.concat(copyTo[prop]) : modInfo.items
+				const current = getPropertyFromPath(copyTo, path);
+				const replacement = current ? modInfo.items.concat(current) : modInfo.items;
+				setPropertyFromPath(copyTo, replacement, path);
 			}
 
-			function doMod_appendArr (modInfo, prop) {
+			function doMod_appendArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				copyTo[prop] = copyTo[prop] ? copyTo[prop].concat(modInfo.items) : modInfo.items
+				const current = getPropertyFromPath(copyTo, path);
+				const replacement = current ? current.concat(modInfo.items) : modInfo.items;
+				setPropertyFromPath(copyTo, replacement, path);
 			}
 
-			function doMod_appendIfNotExistsArr (modInfo, prop) {
+			function doMod_appendIfNotExistsArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				if (!copyTo[prop]) return copyTo[prop] = modInfo.items;
-				copyTo[prop] = copyTo[prop].concat(modInfo.items.filter(it => !copyTo[prop].some(x => CollectionUtil.deepEquals(it, x))));
+				const current = getPropertyFromPath(copyTo, path);
+				if (!current) return setPropertyFromPath(copyTo, modInfo.items, path);
+				const replacement = arr.concat(modInfo.items.filter(it => !current.some(x => CollectionUtil.deepEquals(it, x))));
+				setPropertyFromPath(copyTo, replacement, path);
 			}
 
-			function doMod_replaceArr (modInfo, prop, isThrow = true) {
+			function doMod_replaceArr (modInfo, path, isThrow = true) {
 				doEnsureArray(modInfo, "items");
+				const current = getPropertyFromPath(copyTo, path);
 
-				if (!copyTo[prop]) {
-					if (isThrow) throw new Error(`Could not find "${prop}" array`);
+				if (!current) {
+					if (isThrow) throw new Error(`Could not find "${path}" array`);
 					return false;
 				}
 
 				let ixOld;
 				if (modInfo.replace.regex) {
 					const re = new RegExp(modInfo.replace.regex, modInfo.replace.flags || "");
-					ixOld = copyTo[prop].findIndex(it => it.idName || it.name ? re.test(it.idName || it.name) : typeof it === "string" ? re.test(it) : false);
+					ixOld = current.findIndex(it => it.idName || it.name ? re.test(it.idName || it.name) : typeof it === "string" ? re.test(it) : false);
 				} else if (modInfo.replace.index != null) {
 					ixOld = modInfo.replace.index;
 				} else {
-					ixOld = copyTo[prop].findIndex(it => it.idName || it.name ? it.idName || it.name === modInfo.replace : it === modInfo.replace);
+					ixOld = current.findIndex(it => it.idName || it.name ? it.idName || it.name === modInfo.replace : it === modInfo.replace);
 				}
 
 				if (~ixOld) {
-					copyTo[prop].splice(ixOld, 1, ...modInfo.items);
+					current.splice(ixOld, 1, ...modInfo.items);
 					return true;
-				} else if (isThrow) throw new Error(`Could not find "${prop}" item with name or title "${modInfo.replace}" to replace`);
+				} else if (isThrow) throw new Error(`Could not find "${path}" item with name or title "${modInfo.replace}" to replace`);
 				return false;
 			}
 

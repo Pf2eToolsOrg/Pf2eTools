@@ -2331,28 +2331,6 @@
 					"type": "object",
 					"properties": {
 						"mode": {
-							"const": "replaceName"
-						},
-						"replace": {
-							"type": "string"
-						},
-						"with": {
-							"type": "string"
-						},
-						"flags": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"replace",
-						"with"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
 							"const": "appendStr"
 						},
 						"str": {
@@ -2621,43 +2599,6 @@
 					"type": "object",
 					"properties": {
 						"mode": {
-							"const": "calculateProp"
-						},
-						"prop": {
-							"type": "string"
-						},
-						"formula": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"prop",
-						"formula"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "replaceSpells"
-						},
-						"spells": {
-							"type": "object"
-						},
-						"daily": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
 							"const": "addSpells"
 						},
 						"spells": {
@@ -2678,93 +2619,6 @@
 					},
 					"required": [
 						"mode"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addSkills"
-						},
-						"skills": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode",
-						"skills"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addSaves"
-						},
-						"saves": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode",
-						"saves"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addAllSkills"
-						},
-						"skills": {
-							"type": "integer"
-						}
-					},
-					"required": [
-						"mode",
-						"skills"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addAllSaves"
-						},
-						"saves": {
-							"type": "integer"
-						}
-					},
-					"required": [
-						"mode",
-						"saves"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addSenses"
-						},
-						"senses": {
-							"anyOf": [
-								{
-									"type": "object"
-								},
-								{
-									"type": "array"
-								}
-							]
-						}
-					},
-					"required": [
-						"mode",
-						"senses"
 					],
 					"additionalProperties": false
 				},
@@ -2808,73 +2662,6 @@
 						"mode",
 						"scalar",
 						"prop"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "scalarAddHit"
-						},
-						"scalar": {
-							"type": "number"
-						}
-					},
-					"required": [
-						"mode",
-						"scalar"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "scalarAddDc"
-						},
-						"scalar": {
-							"type": "number"
-						}
-					},
-					"required": [
-						"mode",
-						"scalar"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "maxSize"
-						},
-						"max": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"mode",
-						"max"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "scalarMultXp"
-						},
-						"scalar": {
-							"type": "number"
-						},
-						"floor": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"mode",
-						"scalar"
 					],
 					"additionalProperties": false
 				}

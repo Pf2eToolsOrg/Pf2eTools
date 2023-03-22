@@ -21,7 +21,7 @@
 			"category": "Potion",
 			"entries": [
 				"This cloudy, white liquid helps protect against poisons.",
-				"When you drink an antivenom potion, you can immediately attempt a DC {@flatDC 10} flat check to end any {@condition persistent damage ||persistent poison damage} you're taking. In addition, for 1 minute after drinking the potion, you gain a +1 bonus to Fortitude saving throws to avoid taking {@condition persistent damage ||persistent poison damage}."
+				"When you drink an {@italic antivenom potion}, you can immediately attempt a DC {@flatDC 10} flat check to end any {@condition persistent damage ||persistent poison damage} you're taking. In addition, for 1 minute after drinking the potion, you gain a +1 bonus to Fortitude saving throws to avoid taking {@condition persistent damage ||persistent poison damage}."
 			]
 		},
 		{
@@ -77,7 +77,7 @@
 			},
 			"category": "Weapon",
 			"entries": [
-				"Faint, delicate etchings of lightning trace across the blade of this cold iron {@runeItem shortsword||+1 weapon potency|}. Cold iron is made from particularly pure sources of iron and shaped with little to no heat, resulting in weapons deadly to demons and fey alike. Once per day, you can spend 1 action to point the sparkblade at a foe within 30 feet of you and shoot an arc of lightning from the blade. This lightning can leap from your chosen foe to another creature you choose within 30 feet, dealing {@damage 2d4+4} electricity damage to each creature (DC 19 basic Reflex save)."
+				"Faint, delicate etchings of lightning trace across the blade of this cold iron {@runeItem shortsword||+1 weapon potency|}. Cold iron is made from particularly pure sources of iron and shaped with little to no heat, resulting in weapons deadly to demons and fey alike. Once per day, you can spend 1 action to point the {@italic sparkblade} at a foe within 30 feet of you and shoot an arc of lightning from the blade. This lightning can leap from your chosen foe to another creature you choose within 30 feet, dealing {@damage 2d4+4} electricity damage to each creature (DC 19 basic Reflex save)."
 			]
 		},
 		{
@@ -100,12 +100,25 @@
 			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
-				"Created by the priests of a Qadiran sect of Sarenites, the sun wheels were designed to protect the Dawnflower's followers in their quest to hunt down a dangerous cult trying to raise a spawn of the evil god {@deity Rovagug}. Once they completed their crusade, these priests disbanded and went on to minister other congregations. They each took their sun wheels with them, handing them down to the next generations.",
+				"Created by the priests of a Qadiran sect of {@deity Sarenrae||Sarenites}, the {@italic sun wheels} were designed to protect the {@deity Sarenrae||Dawnflower}'s followers in their quest to hunt down a dangerous cult trying to raise a spawn of the evil god {@deity Rovagug}. Once they completed their crusade, these priests disbanded and went on to minister other congregations. They each took their {@italic sun wheels} with them, handing them down to the next generations.",
 				"This copper medallion is etched with a stylized sun, its rays shaped like the spokes of a wagon wheel. It tends to glint brightly when exposed to sunlight. While wearing this pendant, you gain a +1 item bonus to {@skill Religion} checks.",
-				"You must be good-aligned to use the sun wheel's true power: the following activation, which provides you a shield of burning force.",
-				"Activate {@as 1} (concentrate) Effect The sun wheel casts a {@spell shield} spell benefiting you (Hero's Handbook 22). When you use the spell to prevent damage, you prevent 10 damage instead of 5. If the attacker is adjacent to you, you can choose to deal {@damage 2d6} fire damage to it, which it gets a DC 21 basic Reflex save to resist.",
-				"If you choose to deal the fire damage, you can't Activate the sun wheel again until the next morning.",
-				"If you prevent damage but don't deal the fire damage, you can use it again in 10 minutes, as normal for shield."
+				"You must be good-aligned to use the {@italic sun wheel}'s true power: the following activation, which provides you a shield of burning force.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [],
+					"traits": [
+						"concentrate"
+					],
+					"entries": [
+						"The sun wheel casts a {@spell shield} spell benefiting you. When you use the spell to prevent damage, you prevent 10 damage instead of 5. If the attacker is adjacent to you, you can choose to deal {@damage 2d6} fire damage to it, which it gets a DC 21 basic Reflex save to resist.",
+						"If you choose to deal the fire damage, you can't {@action Activate an Item||Activate} the sun wheel again until the next morning.",
+						"If you prevent damage but don't deal the fire damage, you can use it again in 10 minutes, as normal for {@spell shield}."
+					]
+				}
 			]
 		}
 	]
