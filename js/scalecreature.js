@@ -574,7 +574,13 @@ class ScaleCreature {
 		});
 		["fort", "ref", "will"].forEach(st => Object.keys(creature.defenses.savingThrows[st]).forEach(key => creature.defenses.savingThrows[st][key] += opts.flatAddProf));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += opts.flatAddProf);
-		if (Object.keys(creature.skills).length) Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += opts.flatAddProf));
+		if (Object.keys(creature.skills).length) {
+			Object.keys(creature.skills).forEach(skill => {
+				Object.keys(creature.skills[skill]).forEach(key => {
+					if (key !== "note") creature.skills[skill][key] += opts.flatAddProf;
+				})
+			});
+		}
 		if (creature.spellcasting != null) {
 			creature.spellcasting.forEach(sc => {
 				if (sc.DC) sc.DC += opts.flatAddProf;
@@ -696,7 +702,7 @@ class ScaleCreature {
 				const defaultSkill = creature.skills[skill].std;
 				creature.skills[skill].std = this._scaleValue(lvlIn, toLvl, defaultSkill, this._LvlSkills) + opts.flatAddProf;
 				Object.keys(creature.skills[skill]).forEach(key => {
-					if (key !== "std") creature.skills[skill][key] += creature.skills[skill].std - defaultSkill;
+					if (key !== "std" && key !== "note") creature.skills[skill][key] += creature.skills[skill].std - defaultSkill;
 				});
 			})
 		}
