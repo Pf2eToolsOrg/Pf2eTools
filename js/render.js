@@ -4332,12 +4332,14 @@ Renderer.creature = {
 	getDefenses_getACPart (creature) {
 		if (!creature.defenses.ac) return null;
 		const renderer = Renderer.get();
-		const mainPart = Object.keys(creature.defenses.ac).filter(k => k !== "note" && k !== "abilities")
-			.map(k => `<strong>${k === "std" ? "" : `${k} `}AC&nbsp;</strong>${creature.defenses.ac[k]}`).join(", ");
+		const mainPart = `<strong>AC&nbsp;</strong> ${creature.defenses.ac.std}`;
+		const extraACList = Object.keys(creature.defenses.ac).filter(k => k !== "std" && k !== "note" && k !== "abilities")
+			.map(k => `${creature.defenses.ac[k]} ${k}`).join(", ");
+		const extraACs = extraACList ? ` (${extraACList})` : "";
 		// TODO: deprecate ac.note
 		const notePart = creature.defenses.ac.note ? renderer.render(creature.defenses.ac.note) : "";
 		const abilitiesPart = creature.defenses.ac.abilities ? `; ${renderer.render(creature.defenses.ac.abilities)}` : "";
-		return `${mainPart}${notePart}${abilitiesPart}`;
+		return `${mainPart}${extraACs}${notePart}${abilitiesPart}`;
 	},
 	getDefenses_getSavingThrowPart (creature) {
 		if (!creature.defenses.savingThrows) return null;
