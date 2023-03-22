@@ -826,8 +826,16 @@ function Renderer () {
 		let MAP = -5;
 		if (entry.noMAP) MAP = 0;
 		if (entry.traits && entry.traits.map(t => t.toLowerCase()).includes("agile")) MAP = -4;
+
+		let onHit;
+		if (entry.effects && !entry.damage) {
+			onHit = `, <strong>Effect&nbsp;</strong>${entry.effects.map(e => this.render(e)).join(", ")}`;
+		} else {
+			onHit = `, <strong>Damage&nbsp;</strong>${this.render(entry.damage)}`;
+		}
+
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}, <strong>Damage&nbsp;</strong>${this.render(entry.damage)}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
+			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
