@@ -765,13 +765,15 @@ class ScaleCreature {
 		if (creature.attacks == null) return;
 		creature.attacks.forEach(a => {
 			a.attack = this._scaleValue(lvlIn, toLvl, a.attack, this._LvlAttackBonus) + opts.flatAddProf;
-			const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
-			const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage, 2);
-			a.damage = a.damage.replaceAll(/\d+d\d+([+-]?\d*)/g, (formula, mod) => {
-				const scaleTo = this._getDiceEV(formula) * scaledDpr / dpr;
-				const opts = mod ? {} : {noMod: true};
-				return this._scaleDice(formula, scaleTo, opts);
-			});
+			if (a.damage) {
+				const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
+				const scaledDpr = this._scaleValue(lvlIn, toLvl, dpr, this._LvlExpectedDamage, 2);
+				a.damage = a.damage.replaceAll(/\d+d\d+([+-]?\d*)/g, (formula, mod) => {
+					const scaleTo = this._getDiceEV(formula) * scaledDpr / dpr;
+					const opts = mod ? {} : {noMod: true};
+					return this._scaleDice(formula, scaleTo, opts);
+				});
+			}
 		});
 	}
 
