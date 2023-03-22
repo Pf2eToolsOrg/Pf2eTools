@@ -2635,6 +2635,22 @@
 						"prop"
 					],
 					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "setProps"
+						},
+						"props": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode",
+						"props"
+					],
+					"additionalProperties": false
 				}
 			]
 		}
