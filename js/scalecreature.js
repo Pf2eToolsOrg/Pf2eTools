@@ -483,6 +483,8 @@ class ScaleCreature {
 	}
 
 	applyVarRules (creature) {
+		if (!this.isProfNoLvl()) return creature;
+
 		const level = creature.level;
 		this._initRng(creature, level);
 		creature = JSON.parse(JSON.stringify(creature));
