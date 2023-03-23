@@ -4991,7 +4991,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 15 {@skill Crafting} (trained) to replace or cover the weak sections of flooring, or DC 15 {@skill Survival} (trained) to crumble the rotten floorboards from a safe distance."
+					"DC 15 {@skill Crafting} (trained) to replace or cover the weak sections of flooring, or DC 15 {@skill Survival} (trained) to crumble the rotten floorboards from a safe distance"
 				]
 			},
 			"defenses": {
@@ -9275,14 +9275,14 @@
 			],
 			"stealth": {
 				"dc": 22,
-				"notes": "{@skill Perception} check to spot the magical energies reverberating in the pillars."
+				"notes": "{@skill Perception} check to spot the magical energies reverberating in the pillars"
 			},
 			"description": [
 				"Starknife symbols on the six pillars glow and shoot across the room."
 			],
 			"disable": {
 				"entries": [
-					"DC 21 {@skill Thievery} (expert) or dispel magic on any four of the six pillars disables the entire trap (the trap is a 2nd-level spell and the DC to dispel it is 21). Destroying any four of the six pillars also disables the trap."
+					"DC 21 {@skill Thievery} (expert) or {@spell dispel magic} on any four of the six pillars disables the entire trap (the trap is a 2nd-level spell and the DC to dispel it is 21). Destroying any four of the six pillars also disables the trap."
 				]
 			},
 			"defenses": {
@@ -9833,7 +9833,7 @@
 			],
 			"stealth": {
 				"dc": 22,
-				"notes": "{@skill Perception} to detect the subtle magical aura of the land."
+				"notes": "{@skill Perception} to detect the subtle magical aura of the land"
 			},
 			"description": [
 				"What seems like an innocent stretch of land assaults trespassers with terrible illusions."
@@ -13017,7 +13017,7 @@
 						"unit": "reaction"
 					},
 					"entries": [
-						"If a creature enters the corridor intersection, the four doors exiting this intersection close and lock, and the trap rolls Stealth (+13) for its initiative."
+						"If a creature enters the corridor intersection, the four doors exiting this intersection close and lock, and the trap rolls {@skill Stealth} (+13) for its initiative."
 					],
 					"name": "Seal the Doors"
 				}
@@ -13385,14 +13385,15 @@
 				"trap"
 			],
 			"stealth": {
-				"dc": 15
+				"dc": 15,
+				"notes": "{@skill Perception} check"
 			},
 			"description": [
 				"A ceramic urn containing a coiled viper tips and shatters when a tripwire is pulled."
 			],
 			"disable": {
 				"entries": [
-					"DC 15 {@skill Thievery} (trained) to stabilize the urn, or DC 15 {@skill Athletics} to carefully lower the heavy urn."
+					"DC 15 {@skill Thievery} (trained) to stabilize the urn, or DC 15 {@skill Athletics} to carefully lower the heavy urn"
 				]
 			},
 			"defenses": {
@@ -15604,6 +15605,451 @@
 			],
 			"reset": [
 				"After 1 minute, the spirit is satiated, and the haunt deactivates as it returns to a resting state. Over the course of 1 hour, the spirit's siphoned life energy disperses and the haunt resets."
+			]
+		},
+		{
+			"name": "Falling Ceiling",
+			"source": "BB",
+			"page": 12,
+			"level": 1,
+			"traits": [],
+			"stealth": {
+				"dc": 20,
+				"notes": "{@skill Perception} check"
+			},
+			"disable": {
+				"entries": [
+					"A hero must succeed at a DC 18 {@skill Thievery} check on the triggering square or the ceiling to prevent the stone blocks from falling."
+				]
+			},
+			"actions": [
+				{
+					"name": "Falling Stones",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"When a creature steps on the square closest to the north door, the trap drops blocks of stone all along the hallway. It makes one ranged {@action Strike} against each creature between the two doors."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "falling block",
+					"attack": 8,
+					"damage": "{@damage 1d8} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			]
+		},
+		{
+			"name": "Central Spears",
+			"source": "BB",
+			"page": 14,
+			"level": 1,
+			"traits": [],
+			"stealth": {
+				"dc": 20,
+				"notes": "{@skill Perception} check"
+			},
+			"disable": {
+				"entries": [
+					"A hero must succeed at a DC 18 {@skill Thievery} check on the triggering floor tiles or the wall sockets in the western wall."
+				]
+			},
+			"actions": [
+				{
+					"name": "Spear Barrage",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"When a creature moves into any of the squares in the outlined area, the trap shoots three spears from the western wall. It makes one ranged {@action Strike} against the westernmost creature in each row."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 10,
+					"damage": "{@damage 1d8+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"reset": [
+				"The central spears reset after 1 minute."
+			]
+		},
+		{
+			"name": "Mermaid Fountain",
+			"source": "BB",
+			"page": 21,
+			"level": 3,
+			"traits": [],
+			"stealth": {
+				"bonus": 10,
+				"notes": "; DC 20 {@skill Perception} check to notice."
+			},
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Thievery} on each corner mechanism (must disable all three working corners to disable the trap)"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"Corner Mechanism": 8
+				},
+				"hp": {
+					"Corner Mechanism": 15
+				}
+			},
+			"routine": [
+				"Each turn, the fountain uses 1 action. Roll a {@dice 1d10} and look up the result on the following list to determine which action it uses that round.",
+				{
+					"name": "1\u20134 Single Target",
+					"type": "ability",
+					"entries": [
+						"The statue spins about and sprays water at a single random target in the room. Roll a {@dice 1d4} and count to the number you rolled, starting with the player on your left, to determine which hero gets attacked. The spray is a ranged {@action Strike} with +10 to hit. On a hit, it deals {@damage 2d6} bludgeoning damage (doubled on a critical hit as normal)."
+					]
+				},
+				{
+					"name": "5\u20137 Corner Spray",
+					"type": "ability",
+					"entries": [
+						"The statue spins about, firing a spray of water at each corner of the room that still has a functioning corner mechanism. This hits any creature adjacent to the corner mechanism, dealing {@damage 2d6} bludgeoning damage. Each hero must attempt a DC 15 basic Reflex save, taking no damage on a critical success, half damage on a success, full damage on a failure, and double damage on a critical failure."
+					]
+				},
+				{
+					"name": "8\u20139 Half Room",
+					"type": "ability",
+					"entries": [
+						"The statue spins about, spraying half of the room with water. Roll any die. If the result is even, it sprays the west half; otherwise, it sprays the east half. This deals {@damage 2d6} bludgeoning damage to each creature in that half of the room, and each hero must attempt a DC 15 basic Reflex save."
+					]
+				},
+				{
+					"name": "10 Full Room",
+					"type": "ability",
+					"entries": [
+						"This works just like the half-room attack, but it targets everyone in the room."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hidden Pit",
+			"source": "BB",
+			"page": 49,
+			"level": 0,
+			"traits": [],
+			"description": [
+				"A wooden trapdoor covers a 10-foot square pit that's 20 feet deep."
+			],
+			"stealth": {
+				"dc": 18,
+				"notes": "{@skill Perception} check (or DC 0 if the trapdoor is disabled or {@condition broken})."
+			},
+			"disable": {
+				"entries": [
+					"DC 12 {@skill Thievery} to remove the trapdoor"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 10
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 1
+					},
+					"ref": {
+						"std": 1
+					}
+				},
+				"hardness": {
+					"Trapdoor": 3
+				},
+				"hp": {
+					"Trapdoor": 12
+				},
+				"bt": {
+					"Trapdoor": 6
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"name": "Pitfall",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"If a creature walks onto the trapdoor, that creature falls in unless it succeeds at a DC 16 Reflex save to {@action Grab an Edge||grab hold of the edge}. The pit is 20 feet deep, dealing 10 bludgeoning damage to anyone who falls to the bottom."
+					]
+				}
+			]
+		},
+		{
+			"name": "Envenomed Lock",
+			"source": "BB",
+			"page": 49,
+			"level": 1,
+			"traits": [],
+			"description": [
+				"A spring-loaded, poisoned spine is hidden near the keyhole of a lock. Disabling or breaking the trap doesn't disable or break the lock."
+			],
+			"stealth": {
+				"dc": 17,
+				"notes": "{@skill Perception} check"
+			},
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Thievery} on the spring mechanism"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 4
+					}
+				},
+				"hardness": {
+					"std": 6
+				},
+				"hp": {
+					"std": 24
+				},
+				"bt": {
+					"std": 12
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"name": "Spring",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"When a creature tries to unlock or {@action Pick a Lock||Pick the Lock}, a spine extends to attack that creature. The trap makes a melee attack with +13 to its attack roll. On a hit, it deals 1 piercing damage and {@damage 1d6} {@condition persistent damage||persistent poison damage} (on a critical hit, 2 piercing damage and {@damage 2d6} {@condition persistent damage||persistent poison damage})."
+					]
+				}
+			]
+		},
+		{
+			"name": "Slamming Door",
+			"source": "BB",
+			"page": 49,
+			"level": 1,
+			"traits": [],
+			"description": [
+				"Pressure-sensitive panels in the floor connect to a stone slab hidden in a hallway's ceiling."
+			],
+			"stealth": {
+				"dc": 17,
+				"notes": "{@skill Perception} check"
+			},
+			"disable": {
+				"entries": [
+					"DC 15 {@skill Thievery} on the floor panels before the slab falls"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 2
+					}
+				},
+				"hardness": {
+					"std": 5
+				},
+				"hp": {
+					"std": 20
+				},
+				"bt": {
+					"std": 10
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"name": "Slam Shut",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"When pressure is placed on any floor tile, the door falls, closing off the hallway. The stone slab deals {@damage 3d8} bludgeoning damage to anyone beneath or adjacent to the slab when it drops and pushes them out of its space in a random direction. A creature that succeeds at a DC 17 Reflex save takes no damage and rolls out of the way in a random direction. On a critical success, they roll out of the way and can choose which direction.",
+						"Lifting the fallen slab requires a successful DC 25 {@skill Athletics} check. Hitting the floor panels triggers the trap. The slab uses the same AC and saves as the trap, but it has Hardness 12, HP 48 (BT 24)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spear Launcher",
+			"source": "BB",
+			"page": 49,
+			"level": 2,
+			"traits": [],
+			"stealth": {
+				"dc": 20,
+				"notes": "{@skill Perception} check"
+			},
+			"description": [
+				"A wall socket loaded with a spear connects to a floor tile in one 5-foot square."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} on the floor tile or wall socket"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 3
+					}
+				},
+				"hardness": {
+					"std": 8
+				},
+				"hp": {
+					"std": 32
+				},
+				"bt": {
+					"std": 16
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"name": "Spear",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"When pressure is applied to the floor tile, the trap shoots a spear, making an attack against the creature or object on the floor tile. The trap makes a ranged attack, rolling a {@dice 1d20} and adding 14. On a hit, it deals {@damage 2d6 + 6} piercing damage (doubled on a critical hit as normal)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Scythe Blades",
+			"source": "BB",
+			"page": 49,
+			"level": 4,
+			"traits": [],
+			"stealth": {
+				"dc": 23,
+				"notes": "{@skill Perception} check"
+			},
+			"description": [
+				"Two blades, each hidden in a 15-foot-long ceiling groove, are both connected to a trip wire."
+			],
+			"disable": {
+				"entries": [
+					"DC 21 {@skill Thievery} to disable each blade"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hardness": {
+					"std": 11
+				},
+				"hp": {
+					"std": 44
+				},
+				"bt": {
+					"std": 22
+				},
+				"immunities": [
+					"critical hits",
+					"sneak attack"
+				]
+			},
+			"actions": [
+				{
+					"name": "Falling Scythes",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"When the trip wire is pulled or severed, both blades swing down, each one attacking all creatures under the ceiling grooves. The trap makes a melee attack with each blade with +17 to each attack roll. There's no multiple attack penalty on these attacks. On a hit, a blade deals {@damage 2d12 + 4} slashing damage. On a critical hit, the damage is doubled plus 6 extra damage."
+					]
+				}
 			]
 		}
 	]
