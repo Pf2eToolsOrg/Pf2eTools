@@ -307,10 +307,12 @@
 					},
 					{
 						"name": "Site Bound",
-						"traits": [
-							"lowest three levels of the Abomination Vaults"
+						"entries": [
+							"(lowest three levels of the Abomination Vaults)"
 						],
-						"entries": []
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -322,7 +324,11 @@
 						],
 						"entries": [
 							"When Belcorra is destroyed, she re-forms in {@dice 2d4} days within the Empty Vault (though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using the {@item Ebon Fulcrum Lens|av3}). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
-						]
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -340,7 +346,10 @@
 						},
 						"entries": [
 							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied||stupefied 1} for 1 minute."
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"name": "Haunted Lighthouse",
