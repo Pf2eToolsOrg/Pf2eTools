@@ -2486,6 +2486,8 @@ function Renderer () {
 							page: UrlUtil.PG_ABILITIES,
 							source,
 						};
+						// FIXME: everything that has to do with add_hash is horrible and its making me do stuff like this
+						fauxEntry.text = displayText || name.replace(/ \(.+\)/, "");
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@language":
