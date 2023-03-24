@@ -1,0 +1,3243 @@
+{
+	"item": [
+		{
+			"name": "Armor Latches",
+			"source": "TV",
+			"page": 11,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"adjustment"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"usage": "applied to armor",
+			"bulk": "\u2014",
+			"category": "Adjustment",
+			"entries": [
+				"This armor is easily doffed. A set of armor with armor latches gains the {@trait noisy} trait; you can't add latches to armor that already possesses the {@trait noisy} trait. You can remove a set of armor with armor latches with a 3-action activity, which has the {@trait manipulate} trait. This doesn't affect the time it takes to don the armor."
+			]
+		},
+		{
+			"name": "Storage",
+			"source": "TV",
+			"page": 11,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"adjustment"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"usage": "applied to armor or unarmored defense clothing",
+			"bulk": "L",
+			"category": "Adjustment",
+			"entries": [
+				"The storage adjustment fits the armor or clothing with belts, buckles, pouches, and loops for holding and storing tools. Countless fasteners make the armor as jangly as chain mail.",
+				"While wearing armor with this adjustment, you can wear up to 3 Bulk of tools instead of the usual 2. However, the armor acquires the {@trait noisy} trait. If it already has the {@trait noisy} trait, increase its penalty to {@skill Stealth} checks by 1."
+			]
+		},
+		{
+			"name": "Weapon Harness",
+			"source": "TV",
+			"page": 11,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"adjustment"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"usage": "applied to armor",
+			"bulk": "L",
+			"category": "Adjustment",
+			"entries": [
+				"A suit of armor with this adjustment incorporates short, flexible harnesses meant to connect weapons to each of its vambraces.",
+				"These harnesses can each be connected to a melee weapon of light Bulk or less. Attaching or removing a weapon takes an {@action Interact} action. Someone else can attach or remove a weapon if you're willing to let them or you're unable to act. You must remove a weapon from its mount before you can completely {@action Release} or otherwise stow it.",
+				"You gain a +1 circumstance bonus to your Reflex DC against attempts to {@action Disarm} you of a weapon connected to the armor. If the weapon would be knocked from your grasp or you would drop it, the weapon dangles from the bracer by its harness rather than falling to the ground. You can regain control of the weapon in the normal time it takes you to draw it. Attaching a weapon to a weapon harness prevents you from throwing it or using other abilities that would require it to leave your person."
+			]
+		},
+		{
+			"name": "Advancing",
+			"source": "TV",
+			"page": 12,
+			"type": "Rune",
+			"level": "9+",
+			"traits": [
+				"magical",
+				"necromancy"
+			],
+			"usage": "etched onto heavy armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"This rune charges up as you defeat your foes, driving you forward across the battlefield with every victory.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"command"
+					],
+					"requirements": "Your last action or activity reduced an enemy to 0 Hit Points",
+					"variants": [
+						{
+							"name": "advancing",
+							"level": 9,
+							"price": {
+								"amount": 625,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater advancing",
+							"level": 16,
+							"price": {
+								"amount": 8000,
+								"coin": "gp"
+							},
+							"entries": [
+								"You can {@action Stride} up to your Speed instead of 15 feet."
+							]
+						}
+					],
+					"entries": [
+						"You {@action Stride} up to 15 feet. This movement doesn't trigger reactions. You can {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of Striding if you have the corresponding movement type."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aim-Aiding",
+			"source": "TV",
+			"page": 12,
+			"type": "Rune",
+			"level": 6,
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 225,
+				"coin": "gp"
+			},
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"Armor etched with this rune aids in routing ranged attacks aimed at an enemy around you. You don't provide enemies cover against your allies' ranged attacks."
+			]
+		},
+		{
+			"name": "Assisting",
+			"source": "TV",
+			"page": 12,
+			"type": "Rune",
+			"level": 5,
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 125,
+				"coin": "gp"
+			},
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"Your armor provides support for your joints or advanced prostheses for missing limbs, holding your body in place and easing physical symptoms. This replicates the benefits of any number of splints, supports, and prostheses (Pathfinder Lost Omens Grand Bazaar 68\u201369). When you invest the armor, you determine how many such supports you want, and where on your body they assist you.",
+				"In addition, the extra support and structure provided by the armor allows you to transport more than you would otherwise normally be able to. You can carry Bulk equal to 6 + your Strength modifier before becoming {@condition encumbered}, and you can hold and carry a total Bulk of up to 11 + your Strength modifier."
+			]
+		},
+		{
+			"name": "Energy Adaptive",
+			"source": "TV",
+			"page": 12,
+			"type": "Rune",
+			"level": 13,
+			"traits": [
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 2600,
+				"coin": "gp"
+			},
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"A complex pattern of protective symbols gives protection against various forms of energy, but only part of the runic structure can be active at a given time.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You take acid, cold, electricity, or fire damage",
+					"entries": [
+						"You gain resistance 5 to the triggering damage type. This doesn't apply to the triggering damage. This resistance lasts until you Activate this rune again or the armor is no longer invested by you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gliding",
+			"source": "TV",
+			"page": 12,
+			"type": "Rune",
+			"level": 8,
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 450,
+				"coin": "gp"
+			},
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"The armor allows you to make a {@condition controlled} descent.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"entries": [
+						"You glide slowly toward the ground, 5 feet down and up to 25 feet forward through the air. Provided you spend at least 1 action gliding on your turn and haven't yet reached the ground, you remain in the air at the end of your turn. Otherwise, you fall."
+					]
+				}
+			]
+		},
+		{
+			"name": "Immovable",
+			"source": "TV",
+			"page": 12,
+			"type": "Rune",
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 1800,
+				"coin": "gp"
+			},
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"This rune utilizes magical principles used in an immovable rod (Core Rulebook 574).",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Your armor anchors you in place, even defying gravity, rendering you {@condition immobilized} until you {@action Dismiss} the Activation. While you're {@condition immobilized} in this way, you can be moved only if a creature succeeds at a DC 40 {@skill Athletics} check to {@action Force Open} your armor. You can also be moved if 8,000 pounds of pressure are placed upon you, though this is likely fatal."
+					]
+				}
+			]
+		},
+		{
+			"name": "Magnetizing",
+			"source": "TV",
+			"page": 13,
+			"type": "Rune",
+			"level": 10,
+			"traits": [
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 900,
+				"coin": "gp"
+			},
+			"usage": "etched onto metal armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"This rune alters the magnetic polarity of your armor, making other metal items drawn to it ever so slightly. You can amplify the magnetic power of the armor to keep another creature from getting away from you.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"requirements": "A creature adjacent to you is made of metal or wearing metal armor",
+					"entries": [
+						"You magnetize your armor. If you or the target attempt to move away from one another, treat each square as difficult terrain. This doesn't affect movement that keeps you the same distance from one another, so you could still {@action Step} if you remained adjacent to the target. This effect ends once either of you is no longer adjacent to the other at the end of an action.",
+						"This Activation might work on some creatures partially made of metal, such as those with metal scales, as determined by the GM. Likewise, the GM might determine some metal creatures are non-magnetic, depending on the metal they're made of."
+					]
+				}
+			]
+		},
+		{
+			"name": "Misleading",
+			"source": "TV",
+			"page": 13,
+			"type": "Rune",
+			"level": 16,
+			"traits": [
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 8000,
+				"coin": "gp"
+			},
+			"usage": "etched onto light armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"This rune attempts to obfuscate your location through illusory trickery. When you're {@condition concealed}, the DC of the flat check to target you with an effect is 6 instead of 5.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The armor casts mislead, affecting you. It lasts until the end of your next turn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Portable",
+			"source": "TV",
+			"page": 13,
+			"type": "Rune",
+			"level": 9,
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 660,
+				"coin": "gp"
+			},
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"This rune allows your armor to collapse into a disguised, portable form.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"entries": [
+						"You doff your armor, which folds into another wearable object, such as a bangle or amulet with light Bulk. This wearable object has features that hint at the armor it hides. You aren't wearing the armor while it's in this form, but at the GM's discretion, you can still activate properties that might feasibly come from the wearable item the armor has become. If the armor is in its portable form, you can use this activation to revert it to armor, which you can don in 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Quenching",
+			"source": "TV",
+			"page": 13,
+			"type": "Rune",
+			"level": "6+",
+			"traits": [
+				"abjuration",
+				"magical"
+			],
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"This rune counters burning and corrosive agents. Armor with this rune reduces the DC of the flat check to end {@condition persistent damage ||persistent acid} or fire damage affecting you from 15 to 12 (7 with particularly effective assistance)."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "quenching",
+					"level": 6,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater quenching",
+					"level": 10,
+					"price": {
+						"amount": 1000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC of the flat check is reduced from 15 to 10 (5 with particularly effective assistance)."
+					]
+				},
+				{
+					"name": "major quenching",
+					"level": 14,
+					"price": {
+						"amount": 4500,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC of the flat check is reduced from 15 to 8 (3 with particularly effective assistance)."
+					]
+				},
+				{
+					"name": "true quenching",
+					"level": 18,
+					"price": {
+						"amount": 24000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC of the flat check is reduced from 15 to 5 (particularly effective assistance automatically removes the {@condition persistent damage ||persistent acid} or fire damage)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spellbreaking",
+			"source": "TV",
+			"page": 13,
+			"type": "Rune",
+			"level": 13,
+			"traits": [
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 3000,
+				"coin": "gp"
+			},
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"Counter-runes specific to a particular school of magic provide protections against that school. You gain a +1 status bonus to saving throws and AC against one school of magic: abjuration, conjuration, divination, enchantment, evocation, illusion, necromancy, or transmutation. The crafter chooses the school when creating the rune."
+			]
+		},
+		{
+			"name": "Swallow-Spike",
+			"source": "TV",
+			"page": 13,
+			"type": "Rune",
+			"level": "6+",
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"usage": "etched onto armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"Your armor responds to your desire to break free of a creature grabbing you by growing spikes.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"attack"
+					],
+					"trigger": "You become {@condition grabbed}, {@condition restrained}, or otherwise held {@condition immobilized} in a creature's grasp, such as by being engulfed or swallowed",
+					"entries": [
+						"Your armor suddenly grows spikes, attacking the triggering creature. The armor makes a melee attack with an attack modifier of +14 that deals {@damage 2d6} piercing damage. If the creature is swallowing or engulfing you, the attack deals an additional {@dice 1d6} damage, and damage from this attack can cut you free if it equals or exceeds the Rupture value of the immobilizing ability. This attack gets an item bonus to the attack roll equal to the armor's item bonus to your AC and an item bonus to damage equal to double that amount."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"attack"
+					],
+					"requirements": "You're being held {@condition immobilized} as described in the rune's other activation",
+					"variants": [
+						{
+							"name": "swallow-spike",
+							"level": 6,
+							"price": {
+								"amount": 200,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater swallow-spike",
+							"level": 12,
+							"price": {
+								"amount": 1750,
+								"coin": "gp"
+							},
+							"entries": [
+								"The attack modifier increases to +22, the damage increases to {@dice 3d6}, and the extra damage to an engulfing or swallowing creature increases to {@dice 2d6}."
+							]
+						},
+						{
+							"name": "major swallow-spike",
+							"level": 16,
+							"price": {
+								"amount": 19250,
+								"coin": "gp"
+							},
+							"entries": [
+								"The attack modifier increases to +28, the damage increases to {@dice 5d6}, and the extra damage to an engulfing or swallowing creature increases to {@dice 3d6}."
+							]
+						}
+					],
+					"entries": [
+						"Your armor attacks the creature immobilizing you.",
+						"The armor makes a melee attack against the creature, as described in the rune's other activation."
+					]
+				}
+			]
+		},
+		{
+			"name": "Arachnid Harness",
+			"source": "TV",
+			"page": 14,
+			"type": "Item",
+			"level": "7+",
+			"traits": [
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"This +1 leather armor has four knobbed ribs that wrap around the torso. The armor grants you resistance 2 to poison damage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"variants": [
+						{
+							"name": "arachnid harness",
+							"level": 7,
+							"price": {
+								"amount": 360,
+								"coin": "gp"
+							},
+							"craftReq": "The initial raw materials must include four intact legs from an ogre spider (Bestiary 2 249).",
+							"entries": []
+						},
+						{
+							"name": "greater arachnid harness",
+							"level": 9,
+							"price": {
+								"amount": 700,
+								"coin": "gp"
+							},
+							"craftReq": "The initial raw materials must include four intact legs from a goliath spider (Bestiary 306). The armor is +1 resilient leather armor, the resistance is 5, and the harness can be activated once every 10 minutes.",
+							"entries": []
+						}
+					],
+					"entries": [
+						"The ribs from the armor spread into functional spider limbs. For 1 minute, you gain a climb Speed equal to half your land Speed and have your limbs free as you climb. If you use all your free limbs to help you {@action Climb}, your climb Speed equals your land Speed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Autumn's Embrace",
+			"source": "TV",
+			"page": 14,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 2000,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"Woven by fey seamstresses as rewards for servants of nature, countless leaves continually changing colors in autumnal hues comprise autumn's embrace, a suit of +2 invisibility resilient leaf weave. Leaves shed from the armor as they might fall in autumn. When activating the armor's invisibility property rune, you disappear in a swirl of colorful leaves.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"traits": [
+						"aura"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You call forth a storm of leaves from autumn's embrace. These leaves swirl in a 20-foot emanation for 1 minute. Creatures within the area are {@condition concealed}, and creatures outside the area are {@condition concealed} to creatures within the leaves. However, you can see through this concealment. You can {@action Dismiss} the activation."
+					]
+				}
+			]
+		},
+		{
+			"name": "Bastion of the Inheritor",
+			"source": "TV",
+			"page": 14,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 1750,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 5,
+			"category": "Armor",
+			"entries": [
+				"Worn by {@deity Iomedae}'s prestigious knights, this +2 resilient bastion plate is emblazoned with the Inheritor's religious symbol and sports a white cloak. While the cloak is white, this armor grants you a +2 item bonus to {@skill Diplomacy} checks to {@action Make an Impression}, provided your target has no enmity toward {@deity Iomedae}.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"entries": [
+						"The armor's cloak becomes red for 1 minute. As long as the cloak is red, you gain the benefits of the armor's deflect melee trait without needing to spend an additional action to activate it during each turn."
+					]
+				}
+			],
+			"craftReq": "You worship {@deity Iomedae}."
+		},
+		{
+			"name": "Black Hole Armor",
+			"source": "TV",
+			"page": 14,
+			"type": "Item",
+			"level": 16,
+			"traits": [
+				"abjuration",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 8500,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 5,
+			"category": "Armor",
+			"entries": [
+				"The joints of this black +2 greater resilient fortification fortress plate look like swirling vortices of silver. Non-magical ammunition and thrown weapons aimed at you are destroyed after they hit you and deal damage or miss you. You also have resistance 10 to physical damage from ranged attacks.",
+				"When an enemy's ranged attack misses you or hits you and deals no damage, the armor absorbs the projectile.",
+				"When it has absorbed six projectiles, the armor glows at the joints.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"trigger": "A ranged weapon {@action Strike} targets a creature within 20 feet of you and the attacker hasn't yet rolled its attack",
+					"entries": [
+						"The triggering {@action Strike} targets you instead of its intended target."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"requirements": "The black hole armor has absorbed six or more projectiles",
+					"entries": [
+						"All the projectiles absorbed by the armor appear out of thin air, as though transported there, falling in a 10-foot burst within 120 feet of you. Each creature in the burst takes {@damage 10d8} piercing damage with a DC 35 Reflex save. The absorbed projectiles are all expended, and the armor's joints stop glowing."
+					]
+				}
+			]
+		},
+		{
+			"name": "Blade Byrnie",
+			"source": "TV",
+			"page": 15,
+			"type": "Item",
+			"level": "7+",
+			"traits": [
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"Instead of chain links, this +1 chain shirt is assembled from metal \"leaves\" that each resemble a small blade.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"variants": [
+						{
+							"name": "blade byrnie",
+							"level": 7,
+							"price": {
+								"amount": 360,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater blade byrnie",
+							"level": 13,
+							"price": {
+								"amount": 3000,
+								"coin": "gp"
+							},
+							"entries": [
+								"The armor is a +2 resilient chain shirt. The daggers are +2 greater striking daggers."
+							]
+						},
+						{
+							"name": "major blade byrnie",
+							"level": 19,
+							"price": {
+								"amount": 35000,
+								"coin": "gp"
+							},
+							"entries": [
+								"The armor is a +3 greater resilient chain shirt. The daggers are +3 greater striking daggers."
+							]
+						}
+					],
+					"entries": [
+						"You pull a link from the armor, which transforms into a +1 striking dagger. The dagger disappears and reappears as a link in the armor after you {@action Strike} with it, or at the end of this turn if you don't make a {@action Strike}. You can Activate the blade byrnie in place of an {@action Interact} action to draw a weapon for abilities such as the Quick Draw feat.",
+						"Upgrading the runes on the blade byrnie makes the daggers pulled from it more powerful. The daggers have a +2 weapon potency rune if the armor has a +2 armor potency rune, or a +3 weapon potency rune if the armor has a +3 armor potency rune."
+					]
+				}
+			]
+		},
+		{
+			"name": "Devil's Bargain",
+			"source": "TV",
+			"page": 15,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"divination",
+				"evil",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 250,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": "L",
+			"category": "Armor",
+			"entries": [
+				"Those favored by {@deity Asmodeus} can be found wearing this +1 studded leather, which is lacquered in red and black.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"fortune"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You critically fail an attack roll, check, or saving throw",
+					"entries": [
+						"You offer a prayer to {@deity Asmodeus}, who accepts under a reciprocal condition. Reroll the triggering roll with a +2 circumstance bonus and use the higher result.",
+						"If this reroll improves your degree of success, the GM can later reroll one {@action Strike} against you, one saving throw against your abilities, or one secret check or saving throw you make. This is a {@trait fortune} effect if used on a {@action Strike} or save against you, or a {@trait misfortune} effect if used on your secret check or saving throw. The GM must use this reroll before the end of the last day you activated the armor."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dragon Turtle Plate",
+			"source": "TV",
+			"page": 15,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"abjuration",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 700,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 3,
+			"category": "Armor",
+			"entries": [
+				"This harness of +1 resilient half plate is made from the shell plates of a dragon turtle and has the {@trait aquadynamic} trait (page 8). Fashioned from organic material, the suit is one of the few heavy armors not anathema to druids.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"trigger": "A creature adjacent to you targets you with a melee attack",
+					"entries": [
+						"You roll the hefty plates of the dragon turtle armor toward the attacker to gain a +1 circumstance bonus to AC against the triggering attack."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include the shell of a dragon turtle (Bestiary 128)."
+		},
+		{
+			"name": "Energizing Lattice",
+			"source": "TV",
+			"page": 15,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"evocation",
+				"invested",
+				"light",
+				"magical"
+			],
+			"price": {
+				"amount": 3000,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 2,
+			"category": "Armor",
+			"entries": [
+				"This suit of +2 resilient fortification lattice armor has latticework of fine golden wire. After negating a critical hit with its fortification rune, the latticework glows for 1 minute, shedding bright light in a 20-foot radius (and dim light for the next 20 feet). You can {@action Dismiss} this light.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"force"
+					],
+					"requirements": "The energizing lattice is glowing because it negated an enemy's critical hit",
+					"entries": [
+						"You release the lattice's energy and make a weapon or unarmed attack {@action Strike} that deals {@dice 6d6} additional force damage. If your {@action Strike} fails, but doesn't critically fail, the target still takes half the force damage.",
+						"The latticework ceases glowing after the {@action Strike}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Immortal Bastion",
+			"source": "TV",
+			"page": 15,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"abjuration",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 70000,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 5,
+			"category": "Armor",
+			"entries": [
+				"This impressive +3 greater resilient greater fortification bastion plate is built like an impregnable castle, with multiple layers of defense and no weak points. When you activate the armor's deflect melee trait, you gain a +2 circumstance bonus to AC against melee attacks instead of +1, and you gain 10 temporary Hit Points that last until the start of your next turn.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You are reduced to 0 Hit Points or would die from a {@trait death} effect",
+					"entries": [
+						"You drop to 1 Hit Point instead of being reduced to 0 HP or {@condition dying}, and you gain 100 temporary"
+					]
+				},
+				{
+					"name": "Hit Points that last until the start of your next turn.",
+					"type": "ability"
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You would gain or increase the {@condition doomed} or {@condition wounded} condition",
+					"entries": [
+						"You avoid gaining or increasing the condition. If the triggering effect imposes both {@condition doomed} and {@condition wounded}, choose only one to prevent. This doesn't remove either of the conditions if you already have them, nor does it prevent the same triggering effect from giving or increasing the prevented condition later."
+					]
+				}
+			]
+		},
+		{
+			"name": "Library Robes",
+			"source": "TV",
+			"page": 15,
+			"type": "Item",
+			"level": "9+",
+			"traits": [
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "worn armor",
+			"bulk": "L",
+			"category": "Armor",
+			"entries": [
+				"These +1 resilient scroll robes magically store a spell for you.",
+				"During your daily preparations, choose one spell you know of 5th level or lower. You inscribe that spell on the robes, as though you had done so using the robes' {@trait inscribed} trait, but without needing to go through the normal scribing process.",
+				"You must provide the minimum amount of materials to {@action Craft} one scroll of that spell (typically half the Price of a scroll of that level plus any extra cost required for the spell). You don't need to be trained in {@skill Crafting}, nor do you need the Magical {@skill Crafting} feat. Using this ability erases any scroll already inscribed on the robe."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "library robes",
+					"level": 9,
+					"price": {
+						"amount": 700,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater library robes",
+					"level": 12,
+					"price": {
+						"amount": 2000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is +2 resilient scroll robes, and the spell can be 6th level or lower."
+					]
+				},
+				{
+					"name": "major library robes",
+					"level": 15,
+					"price": {
+						"amount": 6000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is +2 greater resilient scroll robes, and the spell can be 8th level or lower."
+					]
+				},
+				{
+					"name": "true library robes",
+					"level": 19,
+					"price": {
+						"amount": 36000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is +3 greater resilient scroll robes, and the spell can be 9th level or lower."
+					]
+				}
+			]
+		},
+		{
+			"name": "Linnorm's Sankeit",
+			"source": "TV",
+			"page": 18,
+			"type": "Item",
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 22750,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 2,
+			"category": "Armor",
+			"entries": [
+				"The first suit of +3 greater resilient antimagic sankeit made in this fashion was crafted for the Varki linnorm king Nankou, after he claimed his title by slaying a taiga linnorm. By Varki tradition, the armor was crafted using some of the slain linnorm's body to decorate the breastplate and helm, which imbued the armor with several of the linnorm's natural abilities. Though the helm is shaped like the beast's head, a linnorm's actual head would be too large for a proper helmet.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You breathe a 60-foot cone of electrified vapor, dealing {@damage 17d6} electricity damage to creatures in the area (DC 38 basic Reflex save). The electrified mist persists in the area for 2 rounds, dealing {@damage 5d6} electricity damage (DC 38 basic Reflex save) to each creature that ends its turn in the mist. If you slew the linnorm this armor is made from, you can use the higher of your class DC or spell DC instead of the listed DCs for this effect."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"trigger": "A creature adjacent to you targets you with a melee attack",
+					"entries": [
+						"The creature takes {@damage 4d6} piercing damage as previously {@condition invisible} magical spines leap outwards from the armor to punish them for the attack."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include the hide and skull of a taiga linnorm (Bestiary 2 164)."
+		},
+		{
+			"name": "Ouroboros Buckles",
+			"source": "TV",
+			"page": 18,
+			"type": "Item",
+			"level": 19,
+			"traits": [
+				"rare",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 40000,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"This ominous-looking +3 greater resilient greater acid-resistant buckle armor is deep red in color, favored by assassins who worship {@deity Norgorber} or {@deity Asmodeus}, and if unfastened, the many belts and buckles writhe like living snakes. Ouroboros buckles have the {@trait comfort} trait. However, while wearing ouroboros buckles, the unfathomable concept of infinity pulls at your mind, and each time you awaken, you'd swear the armor hissed into your ear while you were asleep. The hissing suggested secret wisdom to you in Aklo, though you only ever remember it vaguely, like a fading dream.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You call forth the cursed regenerative blood of an ouroboros to recover from your wounds. You gain regeneration 15 (Pathfinder Bestiary 343) for 1 minute; fire damage deactivates this regeneration. Each time you regain Hit Points from this regeneration, if you're in your normal form, you collapse into a Large swarm of Tiny snakes. This is a {@trait polymorph} effect that changes you into a battle form.",
+						"When you're a swarm of snakes, you gain low-light vision, imprecise scent (30 feet), a Speed of 20 feet, a climb Speed of 20 feet, and a swim Speed of 20 feet. You have an AC of 16 + your level and ignore your armor's check penalty and Speed reduction. Also, you gain resistance 5 to physical damage and weakness 5 to area damage and splash damage. You can use none of your normal Strikes. Instead, you can use Swarming Bites, a single action that deals {@damage 4d4} piercing damage plus {@damage 2d6} poison damage to creatures in your space with a DC 41 basic Reflex save.",
+						"If you're in this battle form and are already at full HP when your regeneration occurs, the snakes instantaneously slither together, and you transform into your original form."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"trigger": "A foe within 15 feet hits you with a {@action Strike} that deals slashing or piercing damage",
+					"entries": [
+						"Your ouroboros buckles spray acidic blood in a 15-foot cone toward the foe, dealing {@damage 5d6} acid damage with a DC 41 basic Reflex save."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include blood from an ouroboros (Bestiary 3 194) to tan the leather."
+		},
+		{
+			"name": "Reef Heart",
+			"source": "TV",
+			"page": 18,
+			"type": "Item",
+			"level": "12+",
+			"traits": [
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"usage": "worn armor",
+			"bulk": 2,
+			"category": "Armor",
+			"entries": [
+				"This +2 resilient coral armor, often favored by allies of merfolk and aquatic elves, is made of living coral carefully harvested from the ocean depths. Legends speak of a variety of similar coral armors with distinct powers, but surface-dwellers know of reef heart as a magic armor that makes it easier for them to travel under the sea. Reef heart enables you to breathe underwater and gives you a swim Speed equal to half your land Speed.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"variants": [
+						{
+							"name": "reef heart",
+							"level": 12,
+							"price": {
+								"amount": 2000,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater reef heart",
+							"level": 15,
+							"price": {
+								"amount": 6500,
+								"coin": "gp"
+							},
+							"entries": [
+								"The reef heart is +2 greater resilient coral armor, the swim Speed is equal to your full land Speed, and the coral eruption is 7th level."
+							]
+						}
+					],
+					"entries": [
+						"You cast {@spell coral eruption|SoM} (Pathfinder Secrets of Magic 96). If you conjure the coral underwater, it ceases dealing damage after 1 minute, but its duration is unlimited. If the magical coral remains in place for 1 year, it becomes non-magical coral from which a reef might grow."
+					]
+				}
+			]
+		},
+		{
+			"name": "Remorhaz Armor",
+			"source": "TV",
+			"page": 19,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"fire",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 975,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 2,
+			"category": "Armor",
+			"entries": [
+				"This +1 resilient fire-resistant niyaháat is often created to mark the passage of an Erutaki warrior into adulthood, formed from the chitinous plates of a remorhaz, with larger pieces protecting the chest, shoulders, and head. As you fight, the armor glows red hot.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The armor is sheathed in a fire shield."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You're dealt 30 or more fire damage, before any reduction from your fire resistance",
+					"requirements": "You've used the fire shield activation already today",
+					"entries": [
+						"The fire shield activation recharges."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include the carapace of a remorhaz (Bestiary 280)."
+		},
+		{
+			"name": "Rusting Carapace",
+			"source": "TV",
+			"page": 19,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 476,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"This +1 leather lamellar armor incorporates the plates of a rust monster's hide, woven together with the creature's own antennae and sinew into a functional set of armor. While wearing the rusting carapace, you gain a +2 item bonus to your Reflex save to prevent an object you're holding from being affected by rust; this also increases your Reflex DC to avoid being Disarmed by a rust monster's",
+				{
+					"name": "Antenna Disarm ability.",
+					"type": "ability"
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Feathery antennae extend from between the segments of the rusting hide and brush against a nearby metal creature, non-magical metal hazard, or non-magical metal item of up to 1 Bulk, with the effects of rusting grasp. The DC is 24."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include the hide of a rust monster (Bestiary 283)."
+		},
+		{
+			"name": "Trollhound Vest",
+			"source": "TV",
+			"page": 19,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 230,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 2,
+			"category": "Armor",
+			"entries": [
+				"This suit of +1 hide armor is sickly green and covered in thick warts and nodules, fashioned from the hide of a trollhound and imbued with some of the beast's vitality.",
+				"Wearing this armor gives you a \u20131 circumstance penalty to all checks made using {@skill Diplomacy} to interact with trolls and a +1 circumstance bonus to {@skill Diplomacy} checks used to {@action Make an Impression} in communities traditionally plagued by troll attacks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"trigger": "You take damage from a melee attack while you have half or fewer of your normal maximum Hit Points",
+					"entries": [
+						"Your body knits itself back together, healing you for {@dice 3d8} Hit Points."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include the hides of at least two trollhounds (Bestiary 2 268)."
+		},
+		{
+			"name": "Wasp Guard",
+			"source": "TV",
+			"page": 19,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 487,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"Druids and {@deity Calistria}'s faithful alike value this vindictive armor for its ability to turn away pests and exact revenge on foes in a manner that can easily turn coordinated enemies into a chaotic mass. Wasp guard is +1 studded leather studded with the carapaces of wasps, subtly diverting swarms away and granting a +1 item bonus to Reflex saving throws against Swarming Bites, Swarming Stings, and similar abilities from swarms.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "An enemy within 30 feet Strikes you with an attack",
+					"entries": [
+						"You animate the exoskeletons of the wasp guard armor into a spectral swarm of wasps that seeks revenge for the slight. The swarm flies to the triggering enemy's space and swarms about them, dealing {@damage 1d8} {@condition persistent damage ||persistent poison damage}. If the affected enemy has any allies within 30 feet, the enemy can spend a single action, which has the {@trait manipulate} trait, to shoo the swarm away. This ends the {@condition persistent damage} on that enemy automatically, but the swarm instead moves to affect the enemy's ally."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include 1 Bulk of wasp exoskeletons."
+		},
+		{
+			"name": "Wolfjaw Armor",
+			"source": "TV",
+			"page": 19,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"evocation",
+				"invested",
+				"primal"
+			],
+			"price": {
+				"amount": 355,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 2,
+			"category": "Armor",
+			"entries": [
+				"Barbarians, druids and other outlanders are often forced to spend the harsh winter months protecting their communities from one of the deadliest predators to stalk the forests and taiga of the northern reaches, the fearsome winter wolf. This +1 hide armor is assembled from the hide and fur of a trio of winter wolves, and it conveys on the wearer both an attack akin to the winter wolves' deadly jaws and the ability to channel the frigid cold of the winter wolf's Breath Weapon.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"traits": [
+						"cold"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You breathe a cloud of frost in a 15-foot cone that deals {@damage 5d8} cold damage (DC 23 basic Reflex save)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You gain a jaws unarmed attack that you make using your hands. This attack deals {@damage 1d8} piercing damage plus 1 cold damage, is in the brawling group, and has the {@trait trip} and {@trait unarmed} traits."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include the hides of at least three winter wolves (Bestiary 322)."
+		},
+		{
+			"name": "Clockwork Shield",
+			"source": "TV",
+			"page": 22,
+			"type": "Item",
+			"level": "11+",
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This brass-coated, steel shield (Hardness 12, HP 90, BT 45) has +2 striking shield spikes made of bronze gears.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"variants": [
+						{
+							"name": "clockwork shield",
+							"level": 11,
+							"price": {
+								"amount": 1300,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater clockwork shield",
+							"level": 18,
+							"price": {
+								"amount": 22000,
+								"coin": "gp"
+							},
+							"entries": [
+								"A greater clockwork shield's (Hardness 17, HP 130, and BT 65) gears are +3 greater striking shield spikes."
+							]
+						}
+					],
+					"entries": [
+						"The shield's gears begin to spin, subtly adjusting the shield's position as you fight. You gain an extra reaction this turn and at the start of each of your turns for the next minute that you can use only to Shield Block."
+					]
+				}
+			]
+		},
+		{
+			"name": "Helmsman's Recourse",
+			"source": "TV",
+			"page": 22,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This standard-grade darkwood meteor shield (Hardness 7, HP 28, BT 14) is a wheel from a ship. While wielding the shield, you gain a +1 item bonus to {@skill Lore||Sailing Lore} and to {@skill Athletics} checks to {@action Swim}.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "You're in a body of water",
+					"variants": [
+						{
+							"name": "helmsman's recourse",
+							"level": 5,
+							"price": {
+								"amount": 150,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater helmsman's recourse",
+							"level": 7,
+							"price": {
+								"amount": 625,
+								"coin": "gp"
+							},
+							"shieldData": {
+								"hardness": 8,
+								"hp": 60,
+								"bt": 30
+							},
+							"entries": [
+								"and when you",
+								{
+									"type": "ability",
+									"components": [
+										"the shield",
+										"it casts water walk on you."
+									]
+								}
+							]
+						},
+						{
+							"name": "major helmsman's recourse",
+							"level": 11,
+							"price": {
+								"amount": 2650,
+								"coin": "gp"
+							},
+							"shieldData": {
+								"hardness": 11,
+								"hp": 80,
+								"bt": 40
+							},
+							"entries": [
+								"the item bonus is +2; and when you Activate the shield, you can breathe underwater for 10 minutes."
+							]
+						}
+					],
+					"entries": [
+						"For 10 minutes, you don't sink if you haven't succeeded at a {@action Swim} action on a turn, and if you're submerged, you automatically ascend 10 feet at the end of your turn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sanguine Klar",
+			"source": "TV",
+			"page": 22,
+			"type": "Item",
+			"level": "9+",
+			"traits": [
+				"magical",
+				"necromancy"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This +1 striking wounding klar (Hardness 8, HP 64, BT 32) is built with spikes made of beasts' fangs.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"trigger": "You or a creature within 5 feet of you suffers bleed damage",
+					"variants": [
+						{
+							"name": "sanguine klar",
+							"level": 9,
+							"price": {
+								"amount": 650,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater sanguine klar",
+							"level": 14,
+							"price": {
+								"amount": 3700,
+								"coin": "gp"
+							},
+							"entries": [
+								"A greater sanguine klar (Hardness 13, HP 100, and BT 50) is a +2 greater striking wounding klar, and its activation can be triggered by bleed damage at a range of 30 feet."
+							]
+						}
+					],
+					"entries": [
+						"The sanguine klar regains a number of Hit Points equal to the bleed damage, up to an amount equal to its Hardness."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sapling Shield",
+			"source": "TV",
+			"page": 22,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"This surprisingly weighty, though well-balanced, wooden buckler is emblazoned with the image of a sapling. The sapling withers as the shield takes damage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"variants": [
+						{
+							"name": "minor",
+							"level": 3,
+							"price": {
+								"amount": 57,
+								"coin": "gp"
+							},
+							"entries": [
+								"The buckler has Hardness 3, HP 24, and BT 12."
+							]
+						},
+						{
+							"name": "lesser",
+							"level": 6,
+							"price": {
+								"amount": 240,
+								"coin": "gp"
+							},
+							"entries": [
+								"The buckler has Hardness 6, HP 48, and BT 24."
+							]
+						},
+						{
+							"name": "moderate",
+							"level": 9,
+							"price": {
+								"amount": 680,
+								"coin": "gp"
+							},
+							"entries": [
+								"The buckler has Hardness 8, HP 64, and BT 32."
+							]
+						},
+						{
+							"name": "greater",
+							"level": 12,
+							"price": {
+								"amount": 1820,
+								"coin": "gp"
+							},
+							"entries": [
+								"The buckler has Hardness 11, HP 88, and BT 44."
+							]
+						},
+						{
+							"name": "major",
+							"level": 15,
+							"price": {
+								"amount": 5860,
+								"coin": "gp"
+							},
+							"entries": [
+								"The buckler has Hardness 13, HP 104, and BT 52."
+							]
+						},
+						{
+							"name": "true",
+							"level": 18,
+							"price": {
+								"amount": 20220,
+								"coin": "gp"
+							},
+							"entries": [
+								"The buckler has Hardness 15, HP 120, and BT 60."
+							]
+						}
+					],
+					"entries": [
+						"The buckler expands, with the sapling image growing into a mighty oak tree. The buckler becomes a tower shield, gaining the corresponding AC bonus, Speed penalty, and ability to {@action Take Cover}. It keeps the same Hit Points and {@condition Broken} Threshold, but its Hardness and Bulk increase by 2 in this form. The shield remains in this form until you Activate it again to revert it to a buckler."
+					]
+				}
+			]
+		},
+		{
+			"name": "Starfall Shield",
+			"source": "TV",
+			"page": 22,
+			"type": "Item",
+			"level": 19,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 23000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This high-grade adamantine heavy rondache (Hardness 17, HP 100, BT 50) bears a +3 greater striking shield boss and has dents that resemble craters on its surface. While wielding the shield, you have fire resistance 15.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You {@action Stride} up to three times. This movement doesn't trigger reactions and ignores difficult terrain. At the end of your movement, you deal {@damage 6d10} bludgeoning damage in a 10-foot emanation and {@damage 14d6} fire damage in a 40-foot emanation (DC 40 basic Reflex save, with the results applying to both the bludgeoning and fire damage). The space where you end your movement and all adjacent spaces become difficult terrain for 1 minute, and the shield glows red-hot for 10 minutes, during which it gains the effect of the greater flaming property rune."
+					]
+				}
+			]
+		},
+		{
+			"name": "Turnabout Shield",
+			"source": "TV",
+			"page": 23,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 600,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"The face of this standard-grade silver salvo shield (Hardness 7, HP 28, BT 14) is polished to a mirror finish.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"interval": 10,
+						"unit": "minute"
+					},
+					"trigger": "A ranged {@action Strike} using ammunition such as arrows, bolts, or bullets (but not siege rounds or larger projectiles) misses you",
+					"requirements": "You have the turnabout shield raised",
+					"entries": [
+						"The ammunition enters the shield and is redirected with the same force with which it was originally fired. Make a ranged {@action Strike} using the ammunition with an attack modifier of +19, targeting a creature within 60 feet."
+					]
+				}
+			]
+		},
+		{
+			"name": "Warding Escutcheon",
+			"source": "TV",
+			"page": 23,
+			"type": "Item",
+			"level": "9+",
+			"traits": [
+				"conjuration",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 4,
+			"category": "Held",
+			"entries": [
+				"An image of a keyhole adorns the coat of arms of this stone tower shield (Hardness 10, HP 40, BT 20).",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The shield becomes a locked door in an empty, adjacent space no wider than 5 feet, becoming flush with the surrounding structure so it blocks all passage. The door has the same Hardness, HP, and {@condition Broken} Threshold as the shield, with {@skill Athletics} and {@skill Thievery} DCs of 25 to open. The door remains in place for 1 hour, until it's opened or {@condition broken}, or until you spend an action to end this effect, at which point the shield returns to your hand (or falls to the ground in your space if your hands are full)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"variants": [
+						{
+							"name": "warding escutcheon",
+							"level": 9,
+							"price": {
+								"amount": 625,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater warding escutcheon",
+							"level": 20,
+							"price": {
+								"amount": 55000,
+								"coin": "gp"
+							},
+							"shieldData": {
+								"hardness": 20,
+								"hp": 80,
+								"bt": 40
+							},
+							"entries": [
+								"The DCs are 43, and using the second activation casts resplendent mansion, forming a tall stone keep."
+							]
+						}
+					],
+					"entries": [
+						"The shield floats lazily in the air as bricks quickly fly from it to form a squat stone tower around it. You cast {@spell cozy cabin|APG}, with the shield becoming the door."
+					]
+				}
+			]
+		},
+		{
+			"name": "Authorized",
+			"source": "TV",
+			"page": 32,
+			"type": "Rune",
+			"level": 3,
+			"traits": [
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"Sharp needles impale anyone who attempts to wield this weapon other than its rightful owner. Each authorized rune is etched with the blood of a specific creature. If any other creature wields the weapon, needles immediately erupt from the weapon's hilt or shaft, dealing {@damage 1d8} piercing damage plus {@damage 1d4} {@condition persistent damage ||persistent bleed damage} to the wielder. If the weapon has a striking rune, this damage increases to {@damage 1d8} per damage die and {@damage 1d4} {@condition persistent damage} per damage die; this counts only the weapon's base die and dice from the striking rune.",
+				"The {@condition persistent damage ||persistent bleed damage} can't end while the creature still holds the weapon. The spikes retract once the creature lets go.",
+				"When the rune is crafted, the crafter can choose to broaden the criteria for who can safely wield the item, expanding the users to creatures with a particular alignment, bloodline, or patron deity, as the crafter chooses. This criterion must be shared by the creature who contributed the blood for the rune."
+			]
+		},
+		{
+			"name": "Coating",
+			"source": "TV",
+			"page": 32,
+			"type": "Rune",
+			"level": 9,
+			"traits": [
+				"conjuration",
+				"extradimensional",
+				"magical"
+			],
+			"price": {
+				"amount": 700,
+				"coin": "gp"
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"When etched, this rune creates an extradimensional space that links to the weapon that wields it. The space can hold up to 1 Bulk but can contain only poisons and magic oils that could be applied to the weapon. Stowing or retrieving an item in the space requires an {@action Interact} action, except when using the rune's activation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"requirements": "At least one magic oil or poison is stored inside the rune's extradimensional space",
+					"entries": [
+						"For 1 minute, you can apply stored oils and poisons to the weapon without needing any hands free. Applying them takes the same number of actions as normal. An oil or poison applied this way pours directly from the extradimensional space onto the weapon, and when it's fully applied, its empty vial is ejected."
+					]
+				}
+			]
+		},
+		{
+			"name": "Earthbinding",
+			"source": "TV",
+			"page": 33,
+			"type": "Rune",
+			"level": 5,
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 125,
+				"coin": "gp"
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"A weapon with this rune hums when touched to the ground.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"requirements": "You critically hit a flying creature with the etched weapon",
+					"entries": [
+						"The rune casts a DC 20 {@spell earthbind} spell on the flying creature."
+					]
+				}
+			]
+		},
+		{
+			"name": "Flurrying",
+			"source": "TV",
+			"page": 33,
+			"type": "Rune",
+			"level": 7,
+			"traits": [
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 360,
+				"coin": "gp"
+			},
+			"usage": "etched onto a melee weapon with the {@trait monk} trait",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"When you make a {@action Flurry of Blows} using the etched weapon and your first {@action Strike} reduces a creature to 0 Hit Points, you can make your second {@action Strike} with an echo of the weapon, increasing the reach to 30 feet.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"traits": [
+						"evocation",
+						"force"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The weapon casts a {@spell spiritual weapon} spell.",
+						"The ghostly weapon looks like the etched weapon. Use your normal attack bonus and damage for the weapon instead of the damage listed in the spell, but use your Wisdom modifier instead of Strength when determining damage. You can choose to make a {@action Flurry of Blows} instead of a {@action Strike} when the spiritual weapon attacks; this still counts as your flourish for the turn.",
+						"You can Sustain this activation in the same manner as the spell."
+					]
+				}
+			]
+		},
+		{
+			"name": "Impossible",
+			"source": "TV",
+			"page": 33,
+			"type": "Rune",
+			"level": 20,
+			"traits": [
+				"conjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 70000,
+				"coin": "gp"
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"This rune makes a weapon capable of impossible offense and defense. The etched weapon is immune to dispel magic and similar effects that could counteract its magic. If it's a ranged weapon or thrown weapon, its range increment is doubled.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"traits": [
+						"teleportation"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You and the weapon flash to a perfect attacking position, then return to where you started. Make a {@action Strike} with the etched weapon against one creature you can see, even if the target is beyond the weapon's reach or range. On this {@action Strike}, ignore any circumstance penalty, status penalty, and range increment penalty."
+					]
+				}
+			]
+		},
+		{
+			"name": "Merciful",
+			"source": "TV",
+			"page": 33,
+			"type": "Rune",
+			"level": 4,
+			"traits": [
+				"abjuration",
+				"magical",
+				"mental"
+			],
+			"price": {
+				"amount": 70,
+				"coin": "gp"
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"Merciful weapons are sheathed in an unmistakable wispy green aura recognized by both gladiators and guards around the world. A merciful weapon has the {@trait nonlethal} trait and can't be used to make a lethal attack. Any {@condition persistent damage} the weapon would deal is negated.",
+				"On a critical hit, a merciful weapon causes the target to become {@condition fascinated} with the weapon's wielder for 1 minute, as the target is bombarded with feelings of guilt and remorse. This is a {@trait mental} effect. If you have access to the weapon's critical specialization effect, you choose whether to use it or the merciful effect."
+			]
+		},
+		{
+			"name": "Pacifying",
+			"source": "TV",
+			"page": 33,
+			"type": "Rune",
+			"level": 5,
+			"traits": [
+				"enchantment",
+				"magical"
+			],
+			"price": {
+				"amount": 150,
+				"coin": "gp"
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"This rune turns weapons into instruments of peacemaking.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"traits": [
+						"mental"
+					],
+					"trigger": "You damage a creature with the etched weapon",
+					"entries": [
+						"The damaged creature must succeed at a DC 20 Will save or be pacified. A pacified creature takes a \u20132 penalty to attack rolls on any attacks that aren't nonlethal for 1 minute, and the creature also experiences a clear psychic warning that they should stop making attacks that could kill."
+					]
+				}
+			]
+		},
+		{
+			"name": "Swarming",
+			"source": "TV",
+			"page": 33,
+			"type": "Rune",
+			"level": 9,
+			"traits": [
+				"conjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 700,
+				"coin": "gp"
+			},
+			"usage": "etched onto a thrown weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"Able to copy itself many times over when thrown until the air is filled with deadly blades, a swarming weapon turns a single weapon into a shower of devastation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You fling your weapon and it multiplies as it flies through the air, filling a 30-foot cone. All creatures within the area take damage equal to double the weapon's number of damage dice, with a DC 27 basic Reflex save."
+					]
+				}
+			]
+		},
+		{
+			"name": "Piston Gauntlets",
+			"source": "TV",
+			"page": 34,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"clockwork",
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 2800,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"The striking surface of this +2 greater striking flaming pantograph gauntletG&G releases a puff of fire each time it reaches the end of its linkage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You supercharge the gauntlet's attack. Make a melee {@action Strike}. This counts as two attacks when calculating your multiple attack penalty. If this {@action Strike} hits, you deal an extra two dice of weapon damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Windlass Bolas",
+			"source": "TV",
+			"page": 34,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"clockwork",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 200,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Clockwork mechanisms tick away inside the weights of these +1 striking returning bolas (page 30), spooling out more cord in midair.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The cord of the bola snakes out as you throw it, allowing the weapon to wrap around a group of enemies. You use the bolas to attempt a ranged {@action Trip} against all creatures in a 5-foot radius burst within the weapon's first range increment. Roll a separate {@skill Athletics} check for each target. Each attempt counts toward your multiple attack penalty, but don't increase your penalty until you have made all the attempts."
+					]
+				}
+			]
+		},
+		{
+			"name": "Grounding Spike",
+			"source": "TV",
+			"page": 34,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 450,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"Metal caps the bottom of this +1 striking thundering dancer's spear (page 25) and its point gives off the faint smell of ozone. If you hit a target that has been struck by a polarizing mace within the last round, you deal additional electricity damage to the target equal to the number of grounding spike's damage dice. If you critically hit such a target, the creature is {@condition flat-footed} until the start of your next turn.",
+				"Special The grounding spike pairs with the polarizing mace."
+			]
+		},
+		{
+			"name": "Polarizing Mace",
+			"source": "TV",
+			"page": 34,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 450,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Even grasping the amber handle of this +1 striking shock light mace makes your hair stand on end.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "The wielder of a grounding spike is within 30 feet",
+					"entries": [
+						"A great surge of electricity connects your paired weapons. All creatures in a line between you and the wielder of the grounding spike take {@damage 4d12} electricity damage (DC 24 basic Reflex save). Special The polarizing mace pairs with the grounding spike."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rime Foil",
+			"source": "TV",
+			"page": 34,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 1400,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"The steely blue blade of this +2 striking frost rapier emerges from a hilt wrapped in thick leather and trimmed in fur to protect the wielder's hand.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "You hit a creature using the rime foil as your last action",
+					"entries": [
+						"You cast 5th-level {@spell phantom prison|SoM}SoM on the target (DC 22 Will to disbelieve). If the target has been damaged by a shattered plan in the last round, the DC is instead 24. Special The rime foil pairs with the shattered plan."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shattered Plan",
+			"source": "TV",
+			"page": 35,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 1400,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"Though the body of this +2 striking impactfulSoM boomerang (page 30) is riddled with glowing hairline cracks, the weapon feels reassuringly solid in the hand. If you damage a target that has been struck by a rime foil within the last round, you bruise its chilled body, and the target takes a \u20135-foot penalty to all its Speeds, or a \u201310-foot penalty on a critical hit.",
+				"Special The shattered plan pairs with the rime foil."
+			]
+		},
+		{
+			"name": "Blessed Reformer",
+			"source": "TV",
+			"page": 35,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"divine",
+				"evocation",
+				"good"
+			],
+			"price": {
+				"amount": 4500,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"The Celestial word for \"repent\" is etched in golden lettering on the shaft of this +2 greater striking merciful (page 33) mithral warhammer. An evil-aligned creature is {@condition enfeebled||enfeebled 2} when carrying or wielding this weapon.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You hold your weapon aloft, calling on righteousness to steel your resolve. You cast {@spell protection} on yourself and you must select evil as the chosen alignment.",
+						"Redeemer Wielder If you're a champion of the redeemer cause, you also gain the following two benefits.",
+						{
+							"type": "list",
+							"items": [
+								"When you critically hit an evil creature with the blessed reformer, until the end of your next turn, the target takes a \u201310-foot penalty to its Speeds and can't {@action Step}.",
+								"You can Activate the weapon in the following way."
+							]
+						}
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "You hit a creature using the blessed reformer as your last action",
+					"entries": [
+						"You cast {@spell calm emotions} at the same level as your champion focus spells. It must target the creature you hit, and the creature takes a status penalty on its save against the spell equal to the blessed reformer's number of weapon damage dice."
+					]
+				}
+			],
+			"craftReq": "You're a champion with the redeemer cause. The initial materials must include 140 gp of mithral."
+		},
+		{
+			"name": "Reaper's Crescent",
+			"source": "TV",
+			"page": 35,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"light",
+				"magical"
+			],
+			"price": {
+				"amount": 575,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"The blade of this alabaster +1 striking sickle grows thick and pitted as the moon waxes, and it thins to a sharp sliver as the moon wanes. Moonlight also causes a second rune on the blade to change shape with the moon's phases: during the new and crescent moon, the weapon has the ghost touch rune; during the quarter moon, the fearsome rune; and during the gibbous and full moon, the wounding rune.",
+				"When wielded under moonlight of any strength, the reaper's crescent deals additional cold damage equal to the number of damage dice."
+			]
+		},
+		{
+			"name": "Stargazer",
+			"source": "TV",
+			"page": 35,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"divination",
+				"invested",
+				"magical",
+				"scrying"
+			],
+			"price": {
+				"amount": 6500,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"When you invest this clear quartz crystal ball, it orbits your head like an aeon stone. As long as you have the stargazer invested, you can use an {@action Interact} action to direct it to orbit one of your hands where you can telekinetically smash the orb into foes, wielding it as a +2 greater striking returning club.",
+				"While you're directing the stargazer, your hand is full, and you can send it back to your head with another {@action Interact} action.",
+				"On a critical hit, the stargazer pulses with hypnotic starlight, dazzling the struck creature for 1 round. A stargazer doesn't add critical specialization effects."
+			]
+		},
+		{
+			"name": "Alghollthu Lash",
+			"source": "TV",
+			"page": 35,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 350,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This fleshy +1 striking whip is obviously crafted from the tentacle of some fearsome beast, likely an alghollthu, and constantly drips slime.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The next creature you successfully {@action Strike} with this weapon is exposed to alghollthu slime.",
+						{
+							"type": "affliction",
+							"name": "Alghollthu Slime",
+							"traits": [
+								"curse",
+								"occult"
+							],
+							"DC": 25,
+							"savingThrow": "Fortitude",
+							"notes": [
+								"A {@spell remove disease} spell can counteract this curse, but immunity to disease offers no protection against it."
+							],
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "no ill effect",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "the victim's skin softens, making the creature {@condition drained||drained 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "the victim's skin transforms into a clear, slimy membrane, making it {@condition drained||drained 2} until the curse ends; every hour this membrane remains dry, the creature's {@condition drained} condition increases by 1",
+									"duration": "permanent"
+								}
+							]
+						}
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include a tentacle from an alghollthu (Bestiary 14)."
+		},
+		{
+			"name": "Alicorn Lance",
+			"source": "TV",
+			"page": 36,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 150,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"This white +1 striking lance is made from the horn of a unicorn, willingly granted at the end of its lifetime. In addition to its normal damage, it deals 1 good damage on successful attacks.",
+				"You can make the lance glow like a torch or suppress its light by using an action, which has the {@trait concentrate} trait.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"traits": [
+						"magical",
+						"necromancy"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You evoke the spirit of the unicorn that donated the alicorn lance's horn, which you ride in a shining charge.",
+						"Move up to twice your Speed and make a {@action Strike} with the alicorn lance; you gain the effects of the lance's {@trait jousting} trait on this {@action Strike}. If you were already mounted when you Activate the horn, the unicorn spirit takes shape around your steed, granting it a +10\u2013foot status bonus to its Speed for the charge."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include a horn willingly gifted by a unicorn. In rare instances, an alicorn lance can be made with a forcibly taken horn. However this heinous act pollutes the horn's magic, causing it to glow with a sickly red light, deal evil damage instead of good damage, and make the unicorn spirit evoked in the charge to whinny visibly in pain."
+		},
+		{
+			"name": "Dezullon Fountain",
+			"source": "TV",
+			"page": 36,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"acid",
+				"conjuration",
+				"magical",
+				"plant"
+			],
+			"price": {
+				"amount": 1300,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"A dezullon fountain is a distinct type of +2 striking air repeaterG&G made from the still-living pitcher of a dezullon, dealing acid damage instead of the gun's normal piercing damage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The next creature you successfully {@action Strike} with this weapon is exposed to amnesia venom.",
+						{
+							"type": "affliction",
+							"name": "Amnesia Venom",
+							"traits": [
+								"mental",
+								"poison"
+							],
+							"DC": 29,
+							"savingThrow": "Fortitude",
+							"maxDuration": "6 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@condition flat-footed}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@condition flat-footed} and {@condition clumsy||clumsy 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@condition confused}, {@condition flat-footed}, and {@condition clumsy||clumsy 2}",
+									"duration": "1 round"
+								}
+							]
+						}
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include a pitcher from a dezullon (Bestiary 94) or similar creature."
+		},
+		{
+			"name": "Dragonscale Staff",
+			"source": "TV",
+			"page": 36,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 240,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"This +1 striking bo staff is covered in scales shed by or harvested from a dragon. When benefiting from the circumstance bonus to AC granted by the bo staff's {@trait parry} trait, you also gain resistance 5 to acid, cold, electricity, fire, or poison, according to the type of damage dealt by the breath weapon of the dragon that provided the scales; for instance, a staff made with scales taken from a white dragon would provide cold resistance. When this resistance prevents you from taking damage, the dragonscale staff deals an additional 1 damage of the type matching its resistance for 1 round."
+			],
+			"craftReq": "The initial raw materials must include scales from a dragon with a breath weapon that deals acid, cold, electricity, fire, or poison damage."
+		},
+		{
+			"name": "Dragontooth Club",
+			"source": "TV",
+			"page": 36,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 1800,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"Dragon teeth line the edges of this +2 greater striking leiomano (page 25). The leiomano also has a flaming, frost, shock, or corrosive rune, as appropriate for the dragon from which the teeth were taken, which also grants the weapon the associated {@trait energy} trait (for instance, fire for a club made with teeth taken from a red dragon).",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"traits": [
+						"evocation",
+						"magical"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"You swing the leiomano, sending several of the dragon teeth shooting through the air on jets of energy. The dragon teeth deal {@damage 3d6} piercing damage and {@dice 3d6} damage of the energy type corresponding to the weapon in a 15-foot cone (DC 29 basic Reflex save). The teeth hunt down their targets, correcting their flight in midair, which reduces any circumstance bonus from cover by 2."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include teeth from a dragon with a breath weapon that deals acid, cold, electricity, fire, or poison damage."
+		},
+		{
+			"name": "Ghast Stiletto",
+			"source": "TV",
+			"page": 36,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 60,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"A ghast stiletto is a +1 dagger wrapped in the still-undead skin of a ghast. While you wield the dagger, you gain a +1 status bonus to all saves against paralysis.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"traits": [
+						"divine",
+						"necromancy",
+						"olfactory"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"The ghast stiletto afflicts the next living target struck by the dagger with a terrible wound that emits the foul stench of the grave. For the next minute, the target creature, as well as any creatures within a 10-foot emanation, must succeed at a DC 16 Fortitude save or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} as long as it's {@condition sickened} on a critical failure). While within the emanation, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition.",
+						"A creature that succeeds at its save is temporarily immune for 1 minute."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include skin from a ghast."
+		},
+		{
+			"name": "Scizore of the Crab",
+			"source": "TV",
+			"page": 36,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 150,
+				"coin": "gp"
+			},
+			"usage": "worn on 1 hand",
+			"bulk": 1,
+			"category": "Worn",
+			"entries": [
+				"A scizore of the crab is a +1 scizore (page 25) that has the {@trait grapple} trait in addition to its normal weapon traits.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"requirements": "Your last action was a successful {@action Strike} with this weapon, or you have a creature {@condition grabbed} with this weapon",
+					"entries": [
+						"The target is {@condition grabbed} until the end of your next turn. A {@condition grabbed} creature can use the {@action Escape} action to get out of the Grab, and the Grab ends for a {@condition grabbed} creature if you move away from it. This functions as the Grab creature ability."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"requirements": "You have a creature {@condition grabbed} with this weapon",
+					"entries": [
+						"The crab claw animates and pinches open and shut, dealing slashing damage equal to the scizore of the crab's number of damage dice."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include a claw from a giant crab (Bestiary 2 55) or similar creature."
+		},
+		{
+			"name": "Vampire-Fang Morningstar",
+			"source": "TV",
+			"page": 38,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This +1 striking wounding morningstar is studded with teeth pulled from a vampire, which usually requires an animate donor, given vampires' tendency to turn to dust when destroyed.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"requirements": "Your last action was a successful {@action Strike} with this weapon and you're not in direct sunlight",
+					"entries": [
+						"The vampire-fang morningstar absorbs blood from the target, healing the wielder for 10 Hit Points."
+					]
+				}
+			],
+			"craftReq": "The initial raw materials must include teeth from a vampire (Bestiary 318)."
+		},
+		{
+			"name": "Vine Whip",
+			"source": "TV",
+			"page": 38,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This +1 striking whip is crafted from the vine of a dangerous plant creature. It deals bludgeoning or slashing damage, according to the vine attack of the creature it was harvested from. For example, collecting a vine from an assassin vine would result in a vine whip that deals bludgeoning damage, while one from a mandragora or viper vine would deal piercing damage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"requirements": "You have soil or sand within your reach",
+					"entries": [
+						"You {@action Release} the weapon and plant it in the ground, where it takes root and fights on its own against the last enemy you attacked or the nearest enemy to it if your target has been defeated.",
+						"The weapon has a space of 5 feet, but it doesn't block or impede enemies attempting to move though that space, nor does it benefit from or provide flanking. The weapon can't use reactions, and it acts on your turn.",
+						"While Activated, a vine whip makes Strikes with an attack modifier of +22 plus its item bonus to attack rolls (normally +24 total). It uses the weapon's normal damage but has a +0 Strength modifier. The whip's abilities that automatically trigger on a hit or critical hit still function, but the weapon can't be Activated or benefit from any of your abilities while rooted.",
+						"Each round, when the vine whip is finished using its actions, attempt a DC {@flatDC 6} flat check. On a failure, the"
+					]
+				},
+				{
+					"type": "ability",
+					"components": [
+						"ends and the vine whip becomes inanimate."
+					]
+				},
+				"You can't Activate the item again for 10 minutes. Removing the vine whip from the ground takes an {@action Interact} action. While rooted, the vine whip gains fast healing 1."
+			],
+			"craftReq": "The initial raw materials must include the vine from a plant creature with a vine attack."
+		},
+		{
+			"name": "Kaldemash's Lament",
+			"source": "TV",
+			"page": 38,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"arcane",
+				"evocation"
+			],
+			"usage": "held in one hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Resembling little more than a simple iron pipe with a handle, Kaldemash's Lament is one of the most well-known star guns in all of Arcadia. Legends state the Crowned Regent Kaldemash helped forge one of the first star guns millennia ago. While the star gun served Kaldemash as a powerful weapon, its most notable achievement was the accidental killing of one of Kaldemash's greatest friends. This death is what caused the regent to recognize the true destructive power of the star guns and led to him developing the Star Code, a set of rules of engagement and proper use of firearms still in use in Arcadia today. Although Kaldemash never named the weapon himself, all legends that mention the weapon refer to it as Kaldemash's Lament.",
+				"The legendary weapon is a +3 major striking speed advanced firearm with a range increment of 90 feet. It deals {@damage 4d6} force damage (with the major striking rune included) and has the concealable, concussive, and fatal d10 traits. You don't take a penalty when dealing nonlethal damage with the weapon. Like most star guns, Kaldemash's Lament uses magic to function and doesn't require ammunition or black powder. If you use Kaldemash's Lament as part of a duel in which all parties are in agreement on the terms, the gun's supernatural instincts help you make the quickest draw. You roll twice and take the higher result on your initiative roll for the duel; this is a {@trait fortune} effect. In addition, you can draw Kaldemash's Lament as a free action at the start of your turn during the duel. If you attempt to fire the star gun in bad faith at a dueling opponent once they have surrendered, been defeated, or the duel is over, Kaldemash's Lament flies out of your hand and you can't pick it up, hold it, or wield it for 10 minutes.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "You target a creature with an attack",
+					"entries": [
+						"You adjust the damage that Kaldemash's Lament deals before firing. Kaldemash's Lament's damage type changes to either electricity, fire, or force until you change the type again."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"You leave Kaldemash's Lament to fire on its own. You release the star gun and it begins to move independently, flying through the air and firing. You still gain the benefits of the gun's speed rune while it's moving independently. It has a space of 5 feet but doesn't block or impede enemies attempting to move through that space. It always remains within 30 feet of you and intentionally resists being taken or otherwise moved; all attempts to Grab it fail. Kaldemash's Lament moves this way for 3 rounds, after which it returns to your hand. If you don't have a free hand to hold it, the gun instead holsters itself on your person.",
+						"While Kaldemash's Lament is moving independently, you can command it to make a {@action Strike} against a creature as an action, which has the {@trait concentrate} trait. It makes a ranged {@action Strike} using your attack modifier while wielding it or a +31 bonus, whichever is higher. This attack increases your multiple attack penalty as normal, and the gun uses your multiple attack penalty when determining its attack bonus. Since the star gun is constantly moving and attempting to line up the appropriate shot, creatures it targets are {@condition flat-footed} to the gun's attacks."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"entries": [
+						"You unleash a barrage of attacks in an instant. You deal {@action Strike} damage to all creatures in a 30-foot cone (DC 45 basic Reflex save). This barrage counts as three attacks for your multiple attack penalty."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mindlance",
+			"source": "TV",
+			"page": 39,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"arcane",
+				"enchantment",
+				"mental"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"usage": "held in two hands",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"This +1 striking arquebusG&G is used by caravan guards to nonlethally\u2014though powerfully\u2014deter large game and bandits. When fired, the spark gun deals mental damage and adds the {@trait nonlethal} trait to the attack. Each mindlance also includes a reinforced stock that benefits from any fundamental runes on the firearm. When you critically succeed at an attack roll with a mindlance, the target becomes {@condition frightened||frightened 2} unless it succeeds at a DC 24 Will save."
+			]
+		},
+		{
+			"name": "Solar Shellflower",
+			"source": "TV",
+			"page": 39,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"arcane",
+				"evocation",
+				"fire"
+			],
+			"price": {
+				"amount": 160,
+				"coin": "gp"
+			},
+			"usage": "held in two hands",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This +1 striking flintlock musketG&G features multiple triangular panels that can be folded out of the stock, like the petals of a tigridia flower, that collect sunlight and feed it into the spark gun's core. All damage dealt by a solar shellflower is fire damage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"One of the panels from the solar shellflower detaches and unfurls into a tigridia-shaped construct of flame. For the next 1 minute, whenever you {@action Strike} an enemy with the solar shellflower, the construct fires a smaller jet of fire that automatically hits the target, dealing {@dice 3d4} additional {@condition persistent damage ||persistent fire damage} or twice that on a critical hit. The solar shellflower usually requires a full day to replenish enough solar energy to recharge this Activation, but if used in an environment with especially strong sunlight, such as in a desert, cliff above the clouds, or near the summer solstice, it can recharge in 1 hour instead."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spark Dancer",
+			"source": "TV",
+			"page": 39,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"arcane",
+				"evocation",
+				"fire"
+			],
+			"price": {
+				"amount": 2900,
+				"coin": "gp"
+			},
+			"usage": "held in one hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This +2 greater striking pepperboxG&G cycles through several magical cores, swapping in new ones while the previous ones cool. The gun deals fire or electricity damage, alternating with each attack as it rotates cores. Arcadian gunslingers liken the rotating cores to a group of dancers, each taking their turn in the spotlight.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The spark dancer casts either fireball or lightning bolt, depending on whether the current core would deal fire or electricity damage, as a 7th-level arcane spell (DC 30)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Thundercrasher",
+			"source": "TV",
+			"page": 39,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"arcane",
+				"evocation"
+			],
+			"price": {
+				"amount": 155,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"While looking straight down the barrel of this +1 striking blunderbussG&G, the spark gun's magical core is visible amid several reflectors. All damage dealt by a thundercrasher is sonic damage. On a critical hit, the target must succeed at a Fortitude save against your class DC or be {@condition deafened} for 1 minute.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You overload the thundercrasher to emit chaotic sonic frequencies that soften earth and stone. When you next fire the thundercrasher it also partially liquefies any natural earth or stone surfaces within range of its {@trait scatter} trait, making the area difficult terrain."
+					]
+				}
+			]
+		}
+	]
+}
