@@ -347,10 +347,10 @@ CleanUtil.JSON_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.JSON_REPLAC
 // SOURCES =============================================================================================================
 SourceUtil = {
 	ADV_BOOK_GROUPS: [
-		{group: "core", displayName: "Core"},
-		{group: "lost-omens", displayName: "Lost Omens"},
-		{group: "homebrew", displayName: "Homebrew"},
-		{group: "other", displayName: "Miscellaneous"},
+		{ group: "core", displayName: "Core" },
+		{ group: "lost-omens", displayName: "Lost Omens" },
+		{ group: "homebrew", displayName: "Homebrew" },
+		{ group: "other", displayName: "Miscellaneous" },
 	],
 
 	isAdventure (source) {
@@ -2039,7 +2039,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ORGANIZATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CREATURETEMPLATE] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash(BrewUtil.hasSourceJson(it.source) ? [it.name, it.source] : [it.name]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2508,12 +2508,12 @@ DataUtil = {
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
-	userDownload (filename, data, {fileType = null, isSkipAdditionalMetadata = false, propVersion = "siteVersion", valVersion = VERSION_NUMBER} = {}) {
+	userDownload (filename, data, { fileType = null, isSkipAdditionalMetadata = false, propVersion = "siteVersion", valVersion = VERSION_NUMBER } = {}) {
 		filename = `${filename}.json`;
 		if (isSkipAdditionalMetadata || data instanceof Array) return DataUtil._userDownload(filename, JSON.stringify(data, null, "\t"), "text/json");
 
-		data = {[propVersion]: valVersion, ...data};
-		if (fileType != null) data = {fileType, ...data};
+		data = { [propVersion]: valVersion, ...data };
+		if (fileType != null) data = { fileType, ...data };
 		return DataUtil._userDownload(filename, JSON.stringify(data, null, "\t"), "text/json");
 	},
 
@@ -2523,15 +2523,15 @@ DataUtil = {
 
 	_userDownload (filename, data, mimeType) {
 		const a = document.createElement("a");
-		const t = new Blob([data], {type: mimeType});
+		const t = new Blob([data], { type: mimeType });
 		a.href = window.URL.createObjectURL(t);
 		a.download = filename;
-		a.dispatchEvent(new MouseEvent("click", {bubbles: true, cancelable: true, view: window}));
+		a.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
 		setTimeout(() => window.URL.revokeObjectURL(a.href), 100);
 	},
 
 	/** Always returns an array of files, even in "single" mode. */
-	pUserUpload ({isMultiple = false, expectedFileType = null, propVersion = "siteVersion"} = {}) {
+	pUserUpload ({ isMultiple = false, expectedFileType = null, propVersion = "siteVersion" } = {}) {
 		return new Promise(resolve => {
 			const $iptAdd = $(`<input type="file" ${isMultiple ? "multiple" : ""} accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
 				const input = evt.target;
@@ -2561,11 +2561,11 @@ DataUtil = {
 							out.push(json);
 						}
 					} catch (e) {
-						errs.push({filename: name, message: e.message});
+						errs.push({ filename: name, message: e.message });
 					}
 
 					if (input.files[readIndex]) reader.readAsText(input.files[readIndex++]);
-					else resolve({jsons: out, errors: errs});
+					else resolve({ jsons: out, errors: errs });
 				};
 
 				reader.readAsText(input.files[readIndex++]);

@@ -2486,6 +2486,8 @@ function Renderer () {
 							page: UrlUtil.PG_ABILITIES,
 							source,
 						};
+						// FIXME: everything that has to do with add_hash is horrible and its making me do stuff like this
+						fauxEntry.text = displayText || name.replace(/ \(.+\)/, "");
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@language":
@@ -4352,15 +4354,17 @@ Renderer.creature = {
 	getDefenses_getSavingThrowPart (creature) {
 		if (!creature.defenses.savingThrows) return null;
 		const renderer = Renderer.get();
+		const abilities = creature.defenses.savingThrows.abilities || [];
 		const savingThrowParts = Object.keys(creature.defenses.savingThrows).filter(k => k !== "abilities")
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
 				const std = renderer.render(`<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${creature.defenses.savingThrows[k].std}||${saveName}}`);
 				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: { name: saveName } });
 				return `${std}${note}`;
-			});
-		if (creature.defenses.savingThrows.abilities) savingThrowParts.push(renderer.render(creature.defenses.savingThrows.abilities));
-		return savingThrowParts.join(", ");
+			})
+			.join(", ");
+		const abilitiesParts = abilities ? `; ${abilities.map(a => renderer.render(a)).join(", ")}` : "";
+		return `${savingThrowParts}${abilitiesParts}`;
 	},
 	getDefenses_getHPHardnessPart (creature) {
 		if (!creature.defenses.hp) return null;

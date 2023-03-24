@@ -1017,7 +1017,11 @@
 						],
 						"entries": [
 							"When destroyed, hungry ghosts reform after {@dice 2d4} days fully healed at whatever location they were at when last destroyed. They're only permanently destroyed when they have been given a proper burial, have had their grave cleaned and maintained for at least a year, or have been judged to be redeemed by {@deity Pharasma}."
-						]
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -2860,10 +2864,7 @@
 			"languages": {
 				"languages": [
 					"common",
-					"necril"
-				],
-				"abilities": [
-					"can't speak any language"
+					"necril (can't speak any language)"
 				]
 			},
 			"skills": {
@@ -6231,7 +6232,10 @@
 						"name": "Ship Bound",
 						"entries": [
 							"The ghost is typically bound to a vessel, even one damaged beyond repair. They can't venture more than 120 feet away from the ship or site of its wreckage."
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -6253,8 +6257,12 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the ghost pirate captain is destroyed, they re-form after {@dice 2d4} days within the ship or location they're bound to, fully healed. They can be permanently destroyed if their desires are fulfilled, which could involve being defeated in a great battle or ensuring their treasure has been {@condition hidden}."
-						]
+							"When the ghost pirate captain is destroyed, they re-form after {@dice 2d4} days within the ship or location they're bound to, fully healed. They can be permanently destroyed if their desires are fulfilled, which could involve being defeated in a great battle or ensuring their treasure has been hidden."
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -8375,7 +8383,11 @@
 						],
 						"entries": [
 							"When a last guard is destroyed, they re-form after {@dice 2d4} days within the location they're bound to, fully healed. A last guard can be permanently destroyed and move on to the afterlife only if they successfully defend the location they're bound to from large-scale attack, or fulfill a call to war."
-						]
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					},
 					{
 						"name": "Troop Defenses",

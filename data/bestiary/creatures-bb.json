@@ -2144,7 +2144,10 @@
 						"name": "Site Bound",
 						"entries": [
 							"A ghost can stray no more than 120 feet from where it was killed or the place it haunts. Some are bound to items or creatures that were special to them rather than a location."
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -2162,7 +2165,11 @@
 						],
 						"entries": [
 							"Setting right the injustice that led to the ghost's death allows it to move on to the afterlife. Otherwise, when destroyed, the ghost re-forms after {@dice 2d4} days within the location it's bound to, fully healed."
-						]
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -2180,7 +2187,10 @@
 						"entries": [
 							"Each living creature within 30 feet who hears the ghost must attempt a DC 21 Will save. On a failure, a creature gains the {@condition frightened 2} condition (or {@condition frightened 3} on a critical failure). On a success, a creature can't be affected by this ghost's Frightful Moan for 1 minute."
 						],
-						"name": "Frightful Moan"
+						"name": "Frightful Moan",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			},
