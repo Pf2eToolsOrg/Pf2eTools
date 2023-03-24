@@ -2083,11 +2083,14 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Lyrt possesses a Large or smaller object within 20 feet, making it an animated object (Bestiary 20)",
+							"Lyrt possesses a {@trait Large} or smaller object within 20 feet, making it an animated object (Bestiary 20)",
 							"This animated object's level can be no higher than Lyrt's level \u2013 2. If the target object is being held by a creature, the bearer can attempt a Will save to prevent the possession.",
 							"This possession ends when the object is destroyed or Lyrt leaves it. At this point, Lyrt reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds."
 						],
-						"name": "Inhabit Object"
+						"name": "Inhabit Object",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2097,7 +2100,10 @@
 						"entries": [
 							"Lyrt attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell with an unlimited duration, except since Lyrt doesn't have a physical body, he is unaffected by that restriction. When Lyrt departs, the target has only {@condition confused} and incoherent memories of the period during which they were possessed. If a creature dies while possessed by Lyrt and its corpse remains intact, Lyrt can immediately inhabit the corpse (see Inhabit Object) as a reaction, in which case the corpse acts like an animated object."
 						],
-						"name": "Malevolent Possession"
+						"name": "Malevolent Possession",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			},

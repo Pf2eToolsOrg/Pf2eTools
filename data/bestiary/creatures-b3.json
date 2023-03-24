@@ -15645,9 +15645,12 @@
 							"possession"
 						],
 						"entries": [
-							"The dybbuk possesses a Large or smaller unattended object within 20 feet, making it an animated object (Bestiary 20, Bestiary 3 18). This animated object's level can be no higher than the dybbuk's level \u2013 2. This possession ends when the object is destroyed or the dybbuk leaves it by using this ability again. At this point, the dybbuk reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds. If the object is destroyed, the dybbuk takes {@damage 5d6} force damage."
+							"The dybbuk possesses a {@trait Large} or smaller unattended object within 20 feet, making it an animated object (Bestiary 20, Bestiary 3 18). This animated object's level can be no higher than the dybbuk's level \u2013 2. This possession ends when the object is destroyed or the dybbuk leaves it by using this ability again. At this point, the dybbuk reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds. If the object is destroyed, the dybbuk takes {@damage 5d6} force damage."
 						],
-						"name": "Inhabit Object"
+						"name": "Inhabit Object",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -15665,7 +15668,10 @@
 							"The dybbuk attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell (DC 34) with an unlimited duration, except since the dybbuk doesn't have a physical body, they aren't {@condition unconscious}, and aren't {@condition paralyzed} when the effect ends, though they take {@damage 5d6} force damage if the body is knocked {@condition unconscious} or killed. If the dybbuk took control of the target with Malevolent Possession, when the dybbuk departs, the target has only incoherent memories of the interval it was possessed.",
 							"If a creature dies while possessed by the dybbuk and its corpse remains intact, the dybbuk can immediately inhabit the corpse (see Inhabit Object) as a reaction, in which case the corpse becomes an animated object."
 						],
-						"name": "Malevolent Possession"
+						"name": "Malevolent Possession",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			},
@@ -18873,7 +18879,11 @@
 						"entries": [
 							"Offering the fortune eater a chance to be instrumental in completing a heroic deed releases their component spirits to move on to the afterlife."
 						],
-						"name": "Rejuvenation"
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					},
 					{
 						"traits": [
@@ -37395,7 +37405,10 @@
 						"entries": [
 							"The nemhaith is bound to a place or large stationary object and can't venture more than 500 feet from this focus."
 						],
-						"name": "Site Bound"
+						"name": "Site Bound",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -37419,7 +37432,11 @@
 						"entries": [
 							"Destroying the ritual object or place used in the nemhaith's creation destroys the nemhaith, freeing its bound spirits to move on to the afterlife."
 						],
-						"name": "Rejuvenation"
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
