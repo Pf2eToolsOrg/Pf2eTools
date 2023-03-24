@@ -2599,33 +2599,6 @@
 					"type": "object",
 					"properties": {
 						"mode": {
-							"const": "addSpells"
-						},
-						"spells": {
-							"type": "object"
-						},
-						"will": {
-							"type": "array"
-						},
-						"daily": {
-							"type": "object"
-						},
-						"weekly": {
-							"type": "object"
-						},
-						"yearly": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
 							"const": "scalarAddProp"
 						},
 						"prop": {
@@ -2662,6 +2635,22 @@
 						"mode",
 						"scalar",
 						"prop"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "setProps"
+						},
+						"props": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode",
+						"props"
 					],
 					"additionalProperties": false
 				}

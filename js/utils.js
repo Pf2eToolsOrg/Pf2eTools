@@ -2900,6 +2900,13 @@ DataUtil = {
 				else applyTo(modInfo.prop);
 			}
 
+			function doMod_setProps (modInfo, path) {
+				doEnsureArray(modInfo, "items");
+				const current = getPropertyFromPath(copyTo, path);
+				const replacement = current ? Object.assign(current, modInfo.props) : modInfo.props;
+				setPropertyFromPath(copyTo, replacement, path);
+			}
+
 			function doMod (modInfos, ...properties) {
 				function handleProp (prop) {
 					modInfos.forEach(modInfo => {
@@ -2934,6 +2941,8 @@ DataUtil = {
 									return doMod_scalarAddProp(modInfo, prop);
 								case "scalarMultProp":
 									return doMod_scalarMultProp(modInfo, prop);
+								case "setProps":
+									return doMod_setProps(modInfo, prop);
 								default:
 									throw new Error(`Unhandled mode: ${modInfo.mode}`);
 							}
