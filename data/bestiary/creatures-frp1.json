@@ -2108,18 +2108,18 @@
 					}
 				],
 				"immunities": [
-					"death"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "all damage"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or"
+						"name": "all damage",
+						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}
@@ -3177,6 +3177,9 @@
 				},
 				"irori lore": {
 					"std": 24
+				},
+				"temple lore": {
+					"std": 24
 				}
 			},
 			"abilityMods": {
@@ -3208,12 +3211,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+24 Str \u20135, Dex +5, Con +0, Int +3, Wis +6, Cha +7."
-						],
-						"name": "Temple Lore"
-					},
 					{
 						"entries": [
 							"As ghost."
@@ -3298,18 +3295,18 @@
 					}
 				],
 				"immunities": [
-					"death"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "all damage"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or"
+						"name": "all damage",
+						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}
@@ -7463,18 +7460,19 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
+				"weaknesses": [],
 				"resistances": [
 					{
 						"amount": 15,
-						"name": "all"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive;"
+						"name": "all",
+						"note": "(except force, ghost touch, or positive; double resistance against non-magical)"
 					}
 				]
 			}

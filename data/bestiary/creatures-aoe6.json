@@ -6083,7 +6083,9 @@
 					"abyssal",
 					"common",
 					"daemonic",
-					"gnomish"
+					"gnomish",
+					"infernal",
+					"osirian"
 				]
 			},
 			"skills": {
@@ -6101,6 +6103,9 @@
 				},
 				"intimidation": {
 					"std": 40
+				},
+				"religion": {
+					"std": 39
 				},
 				"society": {
 					"std": 41
@@ -6120,6 +6125,14 @@
 				"wis": 8,
 				"cha": 9
 			},
+			"items": [
+				"Cane of the Maelstrom",
+				"+3 glamered major resilient chain shirt",
+				"+3 speed wounding major striking dagger",
+				"elixir of rejuvenation",
+				"tears of death",
+				"whisper of the first lie"
+			],
 			"speed": {
 				"abilities": [
 					"freedom of movement",
@@ -6239,10 +6252,24 @@
 							]
 						},
 						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									}
+								]
+							},
+							"5": {
+								"spells": [
+									{
+										"name": "spider climb"
+									}
+								]
+							},
 							"6": {
 								"spells": [
 									{
-										"name": "true"
+										"name": "true seeing"
 									}
 								]
 							}
@@ -6251,20 +6278,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +45, {@skill Athletics} +38, {@skill Deception} +46"
-						],
-						"name": "Infernal, Osirian"
-					},
-					{
-						"entries": [
-							"+42, {@skill Intimidation} +40, {@skill Religion} +39, {@skill Society} +41, {@skill Stealth} +45, {@skill Thievery} +45 Str +7, Dex +10, Con +8, Int +8, Wis +8, Cha +9 Items Cane of the Maelstrom, +3 glamered major resilient chain shirt, +3 speed wounding major striking dagger, elixir of rejuvenation, tears of death, whisper of the first lie."
-						],
-						"name": "Diplomacy"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -6297,9 +6310,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature within",
+						"trigger": "A creature within Olansa's melee reach is hit by a melee attack from one of her allies",
 						"entries": [
-							"Olansa's melee reach is hit by a melee attack from one of her allies; Olansa {@action Strike||Strikes} the triggering creature."
+							"Olansa {@action Strike||Strikes} the triggering creature."
 						],
 						"name": "Opportune Backstab"
 					}
@@ -6352,8 +6365,7 @@
 				},
 				"hp": [
 					{
-						"hp": 500,
-						"abilities": null
+						"hp": 500
 					}
 				],
 				"immunities": [
