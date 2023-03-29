@@ -886,7 +886,7 @@
 			],
 			"reset": [
 				"The call of the void persists as long as the Echo exists, though it doesn't activate until the Echo has rolled initiative.",
-				"The hazard resets each day"
+				"The hazard resets each day."
 			]
 		},
 		{
@@ -3554,15 +3554,20 @@
 					"name": "Begin the Hunt"
 				}
 			],
+			"speed": {
+				"walk": 60
+			},
 			"routine": [
 				"(2 actions) The haunt uses its first action to {@action Stride}, then its second action for a jaws {@action Strike} against its designated target if it is in reach. If the target is not in reach, the haunt resets.",
-				"Speed 60 feet."
-			],
-			"reset": [
-				"If their designated target dies or the hounds can't reach it in a turn, the hounds vanish into noxious smoke, but they manifest again elsewhere in the city after the next sunset."
-			],
-			"attacks": [
 				{
+					"type": "ability",
+					"name": "Speed",
+					"entries": [
+						"60 feet"
+					]
+				},
+				{
+					"type": "attack",
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 20,
@@ -3573,9 +3578,11 @@
 					"types": [
 						"fire",
 						"piercing"
-					],
-					"noMAP": true
+					]
 				}
+			],
+			"reset": [
+				"If their designated target dies or the hounds can't reach it in a turn, the hounds vanish into noxious smoke, but they manifest again elsewhere in the city after the next sunset."
 			]
 		},
 		{
@@ -7228,14 +7235,14 @@
 			"stealth": {
 				"bonus": 23,
 				"minProf": "expert",
-				"notes": "or DC 38 (master) to notice the pattern of the orb's trajectory."
+				"notes": "or DC 38 (master) to notice the pattern of the orb's trajectory"
 			},
 			"description": [
 				"A floating skull of fire swoops around the arena, rotating as it weaves through the ring and releasing huge gouts of flame in random directions."
 			],
 			"disable": {
 				"entries": [
-					"three DC 40 {@skill Thievery} (legendary) checks or castings of dispel magic (7th level; counteract DC 40), one each to pull out or disable the elemental cores {@condition hidden} in the floating skull's right eye, left eye, and mouth."
+					"three DC 40 {@skill Thievery} (legendary) checks or castings of {@spell dispel magic} (7th level; counteract DC 40), one each to pull out or disable the elemental cores {@condition hidden} in the floating skull's right eye, left eye, and mouth"
 				]
 			},
 			"defenses": {
@@ -7261,6 +7268,12 @@
 				},
 				"immunities": [
 					"fire"
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "cold"
+					}
 				]
 			},
 			"actions": [
@@ -7282,7 +7295,13 @@
 			],
 			"routine": [
 				"(3 actions) The trap loses 1 action per turn per successful check to disable. The floating flamethrower uses its first action to release a gout of flame in a 15-foot cone that deals {@damage 4d6+4} fire damage (DC 40 basic Reflex save), its second action to fly in a U-shape in a random direction, and its third action to release another gout of flame.",
-				"Speed fly 50 feet."
+				{
+					"type": "ability",
+					"name": "Speed",
+					"entries": [
+						"fly 50 feet"
+					]
+				}
 			]
 		},
 		{
@@ -7298,14 +7317,14 @@
 			"stealth": {
 				"bonus": 10,
 				"minProf": "trained",
-				"notes": "or DC 23 (expert) to spot the glyph."
+				"notes": "or DC 23 (expert) to spot the glyph"
 			},
 			"description": [
 				"An {@condition invisible} magical glyph on the guillotine's blade detects living creatures in the room, which causes the guillotine to fly off its hinges and attack."
 			],
 			"disable": {
 				"entries": [
-					"DC 20 {@skill Thievery} (trained) to erase the glyph (which requires a successful unarmed attack roll if the blade is already active) or dispel magic (3rd level; counteract DC 20) to counteract it. The trap has a secret bypass known only to Ralso and Pratchett: as long as the guillotine can see a creature in the room touching thumb and pinky together with an empty hand, it remains dormant."
+					"DC 20 {@skill Thievery} (trained) to erase the glyph (which requires a successful unarmed attack roll if the blade is already active) or {@spell dispel magic} (3rd level; counteract DC 20) to counteract it. The trap has a secret bypass known only to Ralso and Pratchett: as long as the guillotine can see a creature in the room touching thumb and pinky together with an empty hand, it remains dormant."
 				]
 			},
 			"defenses": {
@@ -7328,7 +7347,12 @@
 				},
 				"bt": {
 					"Blade": 26
-				}
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
 			},
 			"actions": [
 				{
@@ -7350,7 +7374,13 @@
 			],
 			"routine": [
 				"(1 action) The blade Flies up to 20 feet and {@action Strike||Strikes} any creatures whose squares it passes through. It cannot target the same creature more than once per round. The blade cannot be grappled and doesn't take a multiple attack penalty.",
-				"Speed fly 20 feet.",
+				{
+					"type": "ability",
+					"name": "Speed",
+					"entries": [
+						"fly 20 feet"
+					]
+				},
 				{
 					"type": "attack",
 					"range": "Melee",
@@ -7359,8 +7389,7 @@
 					"damage": "{@damage 2d8+7} slashing",
 					"types": [
 						"slashing"
-					],
-					"noMAP": true
+					]
 				}
 			],
 			"reset": [
