@@ -4231,7 +4231,7 @@ Renderer.creature = {
 			${Renderer.utils.getNameDiv(cr, { page: UrlUtil.PG_BESTIARY, type: cr.type || "CREATURE", ...opts })}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(cr.traits)}
-			${cr.description ? `<p class="pf2-stat pf2-stat__section">${cr.description}</p>` : ""}
+			${Renderer.creature.getDescription(cr.description)}
 			${Renderer.creature.getPerception(cr)}
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
@@ -4248,6 +4248,14 @@ Renderer.creature = {
 			${Renderer.creature.getRituals(cr)}
 			${cr.abilities && cr.abilities.bot ? cr.abilities.bot.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(cr)}</div>`;
+	},
+
+	getDescription (description) {
+		const renderer = Renderer.get();
+
+		if (description) {
+			return `<p class="pf2-stat pf2-stat__section">${renderer.render(description)}</p>`;
+		} else return ""
 	},
 
 	getPerception (cr) {
