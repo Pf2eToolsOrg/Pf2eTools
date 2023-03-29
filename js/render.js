@@ -4354,7 +4354,7 @@ Renderer.creature = {
 	getDefenses_getSavingThrowPart (creature) {
 		if (!creature.defenses.savingThrows) return null;
 		const renderer = Renderer.get();
-		const abilities = creature.defenses.savingThrows.abilities || [];
+		const abilities = [].concat(creature.defenses.savingThrows.abilities || []);
 		const savingThrowParts = Object.keys(creature.defenses.savingThrows).filter(k => k !== "abilities")
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
@@ -4363,7 +4363,7 @@ Renderer.creature = {
 				return `${std}${note}`;
 			})
 			.join(", ");
-		const abilitiesParts = abilities ? `; ${abilities.map(a => renderer.render(a)).join(", ")}` : "";
+		const abilitiesParts = abilities.length ? `; ${abilities.map(a => renderer.render(a)).join(", ")}` : "";
 		return `${savingThrowParts}${abilitiesParts}`;
 	},
 	getDefenses_getHPHardnessPart (creature) {
