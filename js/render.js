@@ -4458,7 +4458,7 @@ Renderer.creature = {
 								}
 								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 							}
-							renderStack.push(renderer.render(`${spells.join(", ")}; `))
+							renderStack.push(renderer.render(`${spells.join(", ")}`))
 						});
 					}
 				});
