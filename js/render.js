@@ -3330,7 +3330,8 @@ Renderer.utils = {
 		const renderer = Renderer.get();
 		const renderedNotes = Object.keys(obj).filter(it => !opts.exclude.includes(it)).map(key => {
 			if (opts.raw.includes(key)) {
-				return obj[key];
+				const items = obj[key];
+				return Array.isArray(items) ? obj[key].join(", ") : obj[key];
 			} else {
 				if (opts.dice) return renderer.render(`{@d20 ${Parser.numToBonus(obj[key])}||${opts.dice.name || key}} ${key}`);
 				else return `${obj[key]} ${key}`;
@@ -4367,7 +4368,7 @@ Renderer.creature = {
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
 				const std = renderer.render(`<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${creature.defenses.savingThrows[k].std}||${saveName}}`);
-				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: { name: saveName } });
+				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std"], raw: ["abilities"], dice: { name: saveName } });
 				return `${std}${note}`;
 			})
 			.join(", ");
