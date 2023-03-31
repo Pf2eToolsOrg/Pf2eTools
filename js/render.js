@@ -4474,7 +4474,7 @@ Renderer.creature = {
 		const renderRitual = (r) => {
 			return `{@ritual ${r.name}|${r.source || ""}}${r.notes == null && r.level == null ? "" : ` (${[Parser.getOrdinalForm(r.level)].concat(...(r.notes || [])).filter(Boolean).join(", ")})`}`;
 		};
-		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""}Rituals</strong> DC ${rf.DC}; ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
+		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""}Rituals</strong>${rf.DC ? ` DC ${rf.DC};` : ""} ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
 	},
 
 	getRenderedAbility (ability, opts) {
