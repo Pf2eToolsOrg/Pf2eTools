@@ -288,12 +288,9 @@
 				"additionalProperties": false,
 				"allOf": [
 					{
-						"anyOf": [
+						"oneOf": [
 							{
 								"required": [
-									"source",
-									"name",
-									"page",
 									"variantType"
 								]
 							},
@@ -306,6 +303,9 @@
 							},
 							{
 								"required": [
+									"source",
+									"name",
+									"page",
 									"variantType"
 								]
 							}

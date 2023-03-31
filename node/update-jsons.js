@@ -16,6 +16,9 @@ function updateFolder (folder) {
 			if (json.item) {
 				json.item = json.item.map(x => {
 					if (x.variants) {
+						if (!x.generic) {
+							x.generic = "G"
+						}
 						x.variants.map(v => {
 							if (v.variantType) return v
 							console.log(`\tUpdating ${x.name} item variants in ${file}...`)

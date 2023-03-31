@@ -91,7 +91,6 @@
 						"command"
 					],
 					"requirements": "Your last action or activity reduced an enemy to 0 Hit Points",
-
 					"entries": [
 						"You {@action Stride} up to 15 feet. This movement doesn't trigger reactions. You can {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of Striding if you have the corresponding movement type."
 					]
@@ -99,16 +98,15 @@
 			],
 			"variants": [
 				{
-					"name": "advancing",
 					"level": 9,
 					"price": {
 						"amount": 625,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "advancing"
 				},
 				{
-					"name": "greater advancing",
 					"level": 16,
 					"price": {
 						"amount": 8000,
@@ -116,7 +114,8 @@
 					},
 					"entries": [
 						"You can {@action Stride} up to your Speed instead of 15 feet."
-					]
+					],
+					"variantType": "greater advancing"
 				}
 			]
 		},
@@ -427,16 +426,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "quenching",
 					"level": 6,
 					"price": {
 						"amount": 250,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "quenching"
 				},
 				{
-					"name": "greater quenching",
 					"level": 10,
 					"price": {
 						"amount": 1000,
@@ -444,10 +442,10 @@
 					},
 					"entries": [
 						"The DC of the flat check is reduced from 15 to 10 (5 with particularly effective assistance)."
-					]
+					],
+					"variantType": "greater quenching"
 				},
 				{
-					"name": "major quenching",
 					"level": 14,
 					"price": {
 						"amount": 4500,
@@ -455,10 +453,10 @@
 					},
 					"entries": [
 						"The DC of the flat check is reduced from 15 to 8 (3 with particularly effective assistance)."
-					]
+					],
+					"variantType": "major quenching"
 				},
 				{
-					"name": "true quenching",
 					"level": 18,
 					"price": {
 						"amount": 24000,
@@ -466,7 +464,8 @@
 					},
 					"entries": [
 						"The DC of the flat check is reduced from 15 to 5 (particularly effective assistance automatically removes the {@condition persistent damage ||persistent acid} or fire damage)."
-					]
+					],
+					"variantType": "true quenching"
 				}
 			]
 		},
@@ -540,42 +539,45 @@
 						"attack"
 					],
 					"requirements": "You're being held {@condition immobilized} as described in the rune's other activation",
-					"variants": [
-						{
-							"name": "swallow-spike",
-							"level": 6,
-							"price": {
-								"amount": 200,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "greater swallow-spike",
-							"level": 12,
-							"price": {
-								"amount": 1750,
-								"coin": "gp"
-							},
-							"entries": [
-								"The attack modifier increases to +22, the damage increases to {@dice 3d6}, and the extra damage to an engulfing or swallowing creature increases to {@dice 2d6}."
-							]
-						},
-						{
-							"name": "major swallow-spike",
-							"level": 16,
-							"price": {
-								"amount": 19250,
-								"coin": "gp"
-							},
-							"entries": [
-								"The attack modifier increases to +28, the damage increases to {@dice 5d6}, and the extra damage to an engulfing or swallowing creature increases to {@dice 3d6}."
-							]
-						}
-					],
 					"entries": [
 						"Your armor attacks the creature immobilizing you.",
 						"The armor makes a melee attack against the creature, as described in the rune's other activation."
+					]
+				}
+			],
+			"variants": [
+				{
+					"variantType": "swallow-spike",
+					"name": "swallow-spike",
+					"level": 6,
+					"price": {
+						"amount": 200,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"variantType": "greater",
+					"name": "greater swallow-spike",
+					"level": 12,
+					"price": {
+						"amount": 1750,
+						"coin": "gp"
+					},
+					"entries": [
+						"The attack modifier increases to +22, the damage increases to {@dice 3d6}, and the extra damage to an engulfing or swallowing creature increases to {@dice 2d6}."
+					]
+				},
+				{
+					"variantType": "major",
+					"name": "major swallow-spike",
+					"level": 16,
+					"price": {
+						"amount": 19250,
+						"coin": "gp"
+					},
+					"entries": [
+						"The attack modifier increases to +28, the damage increases to {@dice 5d6}, and the extra damage to an engulfing or swallowing creature increases to {@dice 3d6}."
 					]
 				}
 			]
@@ -609,31 +611,33 @@
 						"freq": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "arachnid harness",
-							"level": 7,
-							"price": {
-								"amount": 360,
-								"coin": "gp"
-							},
-							"craftReq": "The initial raw materials must include four intact legs from an ogre spider (Bestiary 2 249).",
-							"entries": []
-						},
-						{
-							"name": "greater arachnid harness",
-							"level": 9,
-							"price": {
-								"amount": 700,
-								"coin": "gp"
-							},
-							"craftReq": "The initial raw materials must include four intact legs from a goliath spider (Bestiary 306). The armor is +1 resilient leather armor, the resistance is 5, and the harness can be activated once every 10 minutes.",
-							"entries": []
-						}
-					],
 					"entries": [
 						"The ribs from the armor spread into functional spider limbs. For 1 minute, you gain a climb Speed equal to half your land Speed and have your limbs free as you climb. If you use all your free limbs to help you {@action Climb}, your climb Speed equals your land Speed."
 					]
+				}
+			],
+			"variants": [
+				{
+					"variantType": "arachnid harness",
+					"name": "arachnid harness",
+					"level": 7,
+					"price": {
+						"amount": 360,
+						"coin": "gp"
+					},
+					"craftReq": "The initial raw materials must include four intact legs from an ogre spider (Bestiary 2 249).",
+					"entries": []
+				},
+				{
+					"variantType": "greater",
+					"name": "greater arachnid harness",
+					"level": 9,
+					"price": {
+						"amount": 700,
+						"coin": "gp"
+					},
+					"craftReq": "The initial raw materials must include four intact legs from a goliath spider (Bestiary 306). The armor is +1 resilient leather armor, the resistance is 5, and the harness can be activated once every 10 minutes.",
+					"entries": []
 				}
 			]
 		},
@@ -715,7 +719,9 @@
 					]
 				}
 			],
-			"craftReq": "You worship {@deity Iomedae}."
+			"craftReq": [
+				"You worship {@deity Iomedae}."
+			]
 		},
 		{
 			"name": "Black Hole Armor",
@@ -809,6 +815,7 @@
 							"entries": []
 						},
 						{
+							"variantType": "greater",
 							"name": "greater blade byrnie",
 							"level": 13,
 							"price": {
@@ -919,7 +926,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include the shell of a dragon turtle (Bestiary 128)."
+			"craftReq": [
+				"The initial raw materials must include the shell of a dragon turtle (Bestiary 128)."
+			]
 		},
 		{
 			"name": "Energizing Lattice",
@@ -1046,16 +1055,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "library robes",
 					"level": 9,
 					"price": {
 						"amount": 700,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "library robes"
 				},
 				{
-					"name": "greater library robes",
 					"level": 12,
 					"price": {
 						"amount": 2000,
@@ -1063,10 +1071,10 @@
 					},
 					"entries": [
 						"The armor is +2 resilient scroll robes, and the spell can be 6th level or lower."
-					]
+					],
+					"variantType": "greater library robes"
 				},
 				{
-					"name": "major library robes",
 					"level": 15,
 					"price": {
 						"amount": 6000,
@@ -1074,10 +1082,10 @@
 					},
 					"entries": [
 						"The armor is +2 greater resilient scroll robes, and the spell can be 8th level or lower."
-					]
+					],
+					"variantType": "major library robes"
 				},
 				{
-					"name": "true library robes",
 					"level": 19,
 					"price": {
 						"amount": 36000,
@@ -1085,7 +1093,8 @@
 					},
 					"entries": [
 						"The armor is +3 greater resilient scroll robes, and the spell can be 9th level or lower."
-					]
+					],
+					"variantType": "true library robes"
 				}
 			]
 		},
@@ -1142,7 +1151,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include the hide and skull of a taiga linnorm (Bestiary 2 164)."
+			"craftReq": [
+				"The initial raw materials must include the hide and skull of a taiga linnorm (Bestiary 2 164)."
+			]
 		},
 		{
 			"name": "Ouroboros Buckles",
@@ -1204,7 +1215,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include blood from an ouroboros (Bestiary 3 194) to tan the leather."
+			"craftReq": [
+				"The initial raw materials must include blood from an ouroboros (Bestiary 3 194) to tan the leather."
+			]
 		},
 		{
 			"name": "Reef Heart",
@@ -1248,6 +1261,7 @@
 							"entries": []
 						},
 						{
+							"variantType": "greater",
 							"name": "greater reef heart",
 							"level": 15,
 							"price": {
@@ -1325,7 +1339,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include the carapace of a remorhaz (Bestiary 280)."
+			"craftReq": [
+				"The initial raw materials must include the carapace of a remorhaz (Bestiary 280)."
+			]
 		},
 		{
 			"name": "Rusting Carapace",
@@ -1370,7 +1386,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include the hide of a rust monster (Bestiary 283)."
+			"craftReq": [
+				"The initial raw materials must include the hide of a rust monster (Bestiary 283)."
+			]
 		},
 		{
 			"name": "Trollhound Vest",
@@ -1409,7 +1427,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include the hides of at least two trollhounds (Bestiary 2 268)."
+			"craftReq": [
+				"The initial raw materials must include the hides of at least two trollhounds (Bestiary 2 268)."
+			]
 		},
 		{
 			"name": "Wasp Guard",
@@ -1450,7 +1470,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include 1 Bulk of wasp exoskeletons."
+			"craftReq": [
+				"The initial raw materials must include 1 Bulk of wasp exoskeletons."
+			]
 		},
 		{
 			"name": "Wolfjaw Armor",
@@ -1510,7 +1532,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include the hides of at least three winter wolves (Bestiary 322)."
+			"craftReq": [
+				"The initial raw materials must include the hides of at least three winter wolves (Bestiary 322)."
+			]
 		},
 		{
 			"name": "Clockwork Shield",
@@ -1551,6 +1575,7 @@
 							"entries": []
 						},
 						{
+							"variantType": "greater",
 							"name": "greater clockwork shield",
 							"level": 18,
 							"price": {
@@ -1608,6 +1633,7 @@
 							"entries": []
 						},
 						{
+							"variantType": "greater",
 							"name": "greater helmsman's recourse",
 							"level": 7,
 							"price": {
@@ -1693,6 +1719,7 @@
 							"entries": []
 						},
 						{
+							"variantType": "greater",
 							"name": "greater sanguine klar",
 							"level": 14,
 							"price": {
@@ -1769,6 +1796,7 @@
 							]
 						},
 						{
+							"variantType": "greater",
 							"name": "greater",
 							"level": 12,
 							"price": {
@@ -1944,6 +1972,7 @@
 							"entries": []
 						},
 						{
+							"variantType": "greater",
 							"name": "greater warding escutcheon",
 							"level": 20,
 							"price": {
@@ -2542,7 +2571,9 @@
 					]
 				}
 			],
-			"craftReq": "You're a champion with the redeemer cause. The initial materials must include 140 gp of mithral."
+			"craftReq": [
+				"You're a champion with the redeemer cause. The initial materials must include 140 gp of mithral."
+			]
 		},
 		{
 			"name": "Reaper's Crescent",
@@ -2662,7 +2693,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include a tentacle from an alghollthu (Bestiary 14)."
+			"craftReq": [
+				"The initial raw materials must include a tentacle from an alghollthu (Bestiary 14)."
+			]
 		},
 		{
 			"name": "Alicorn Lance",
@@ -2709,7 +2742,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include a horn willingly gifted by a unicorn. In rare instances, an alicorn lance can be made with a forcibly taken horn. However this heinous act pollutes the horn's magic, causing it to glow with a sickly red light, deal evil damage instead of good damage, and make the unicorn spirit evoked in the charge to whinny visibly in pain."
+			"craftReq": [
+				"The initial raw materials must include a horn willingly gifted by a unicorn. In rare instances, an alicorn lance can be made with a forcibly taken horn. However this heinous act pollutes the horn's magic, causing it to glow with a sickly red light, deal evil damage instead of good damage, and make the unicorn spirit evoked in the charge to whinny visibly in pain."
+			]
 		},
 		{
 			"name": "Dezullon Fountain",
@@ -2778,7 +2813,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include a pitcher from a dezullon (Bestiary 94) or similar creature."
+			"craftReq": [
+				"The initial raw materials must include a pitcher from a dezullon (Bestiary 94) or similar creature."
+			]
 		},
 		{
 			"name": "Dragonscale Staff",
@@ -2800,7 +2837,9 @@
 			"entries": [
 				"This +1 striking bo staff is covered in scales shed by or harvested from a dragon. When benefiting from the circumstance bonus to AC granted by the bo staff's {@trait parry} trait, you also gain resistance 5 to acid, cold, electricity, fire, or poison, according to the type of damage dealt by the breath weapon of the dragon that provided the scales; for instance, a staff made with scales taken from a white dragon would provide cold resistance. When this resistance prevents you from taking damage, the dragonscale staff deals an additional 1 damage of the type matching its resistance for 1 round."
 			],
-			"craftReq": "The initial raw materials must include scales from a dragon with a breath weapon that deals acid, cold, electricity, fire, or poison damage."
+			"craftReq": [
+				"The initial raw materials must include scales from a dragon with a breath weapon that deals acid, cold, electricity, fire, or poison damage."
+			]
 		},
 		{
 			"name": "Dragontooth Club",
@@ -2843,7 +2882,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include teeth from a dragon with a breath weapon that deals acid, cold, electricity, fire, or poison damage."
+			"craftReq": [
+				"The initial raw materials must include teeth from a dragon with a breath weapon that deals acid, cold, electricity, fire, or poison damage."
+			]
 		},
 		{
 			"name": "Ghast Stiletto",
@@ -2889,7 +2930,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include skin from a ghast."
+			"craftReq": [
+				"The initial raw materials must include skin from a ghast."
+			]
 		},
 		{
 			"name": "Scizore of the Crab",
@@ -2943,7 +2986,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include a claw from a giant crab (Bestiary 2 55) or similar creature."
+			"craftReq": [
+				"The initial raw materials must include a claw from a giant crab (Bestiary 2 55) or similar creature."
+			]
 		},
 		{
 			"name": "Vampire-Fang Morningstar",
@@ -2983,7 +3028,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include teeth from a vampire (Bestiary 318)."
+			"craftReq": [
+				"The initial raw materials must include teeth from a vampire (Bestiary 318)."
+			]
 		},
 		{
 			"name": "Vine Whip",
@@ -3030,7 +3077,9 @@
 				},
 				"You can't Activate the item again for 10 minutes. Removing the vine whip from the ground takes an {@action Interact} action. While rooted, the vine whip gains fast healing 1."
 			],
-			"craftReq": "The initial raw materials must include the vine from a plant creature with a vine attack."
+			"craftReq": [
+				"The initial raw materials must include the vine from a plant creature with a vine attack."
+			]
 		},
 		{
 			"name": "Kaldemash's Lament",
