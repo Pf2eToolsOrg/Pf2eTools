@@ -4297,12 +4297,14 @@ Renderer.creature = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
-			Object.keys(cr.skills).forEach(skill => {
+			Object.keys(cr.skills).filter(k => k !== "notes").forEach(skill => {
 				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
 				skills.push(renderedSkill)
 			});
+			let notes = cr.skills["notes"] || [];
 
 			renderStack.push(skills.sort().join("<span>, </span>"))
+			renderStack.push(notes.length !== 0 ? `<span>, </span>${notes.join("<span>, </span>")}` : "")
 			renderStack.push(`</p>`)
 
 			return renderStack.join("")
