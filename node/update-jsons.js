@@ -17,20 +17,25 @@ function updateFolder (folder) {
 				json.item = json.item.map(x => {
 					if (x.variants) {
 						if (!x.generic) {
+							console.log(`\tUpdating ${x.name} not having generic attribute in ${file}...`)
 							x.generic = "G"
 						}
 						x.variants.map(v => {
-							if (v.variantType) return v
-							console.log(`\tUpdating ${x.name} item variants in ${file}...`)
-							if (!v.type && v.name) {
-								v.variantType = v.name
-								delete v.name
-								return v
-							} else {
-								v.variantType = v.type
-								delete v.type
-								return v
+							if (!v.variantType) {
+								console.log(`\tUpdating ${x.name} item variants in ${file}...`)
+								if (!v.type && v.name) {
+									v.variantType = v.name.length > x.name.length ? v.name.replace(x.name, "") : v.name
+									delete v.name
+								} else {
+									v.variantType = v.type
+									delete v.type
+								}
 							}
+							if (v.craftReq && !Array.isArray(v.craftReq)) {
+								console.log(`\tUpdating ${x.name} item variant craftReq to array in ${file}...`)
+								v.craftReq = [v.craftReq]
+							}
+							return v
 						})
 					}
 					if (typeof (x.destruction || x.special || x.craftReq) === "string") {

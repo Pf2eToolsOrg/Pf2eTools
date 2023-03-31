@@ -117,7 +117,8 @@
 					],
 					"variantType": "greater advancing"
 				}
-			]
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Aim-Aiding",
@@ -580,7 +581,8 @@
 						"The attack modifier increases to +28, the damage increases to {@dice 5d6}, and the extra damage to an engulfing or swallowing creature increases to {@dice 3d6}."
 					]
 				}
-			]
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Arachnid Harness",
@@ -625,7 +627,9 @@
 						"amount": 360,
 						"coin": "gp"
 					},
-					"craftReq": "The initial raw materials must include four intact legs from an ogre spider (Bestiary 2 249).",
+					"craftReq": [
+						"The initial raw materials must include four intact legs from an {@creature ogre spider|b2}."
+					],
 					"entries": []
 				},
 				{
@@ -636,10 +640,13 @@
 						"amount": 700,
 						"coin": "gp"
 					},
-					"craftReq": "The initial raw materials must include four intact legs from a goliath spider (Bestiary 306). The armor is +1 resilient leather armor, the resistance is 5, and the harness can be activated once every 10 minutes.",
+					"craftReq": [
+						"The initial raw materials must include four intact legs from a {@creature goliath spider}. The armor is {@runeItem leather armor||+1 armor potency||resilient|}, the resistance is 5, and the harness can be activated once every 10 minutes."
+					],
 					"entries": []
 				}
-			]
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Autumn's Embrace",
@@ -804,44 +811,46 @@
 					"components": [
 						"{@action Interact}"
 					],
-					"variants": [
-						{
-							"name": "blade byrnie",
-							"level": 7,
-							"price": {
-								"amount": 360,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"variantType": "greater",
-							"name": "greater blade byrnie",
-							"level": 13,
-							"price": {
-								"amount": 3000,
-								"coin": "gp"
-							},
-							"entries": [
-								"The armor is a +2 resilient chain shirt. The daggers are +2 greater striking daggers."
-							]
-						},
-						{
-							"name": "major blade byrnie",
-							"level": 19,
-							"price": {
-								"amount": 35000,
-								"coin": "gp"
-							},
-							"entries": [
-								"The armor is a +3 greater resilient chain shirt. The daggers are +3 greater striking daggers."
-							]
-						}
-					],
 					"entries": [
 						"You pull a link from the armor, which transforms into a +1 striking dagger. The dagger disappears and reappears as a link in the armor after you {@action Strike} with it, or at the end of this turn if you don't make a {@action Strike}. You can Activate the blade byrnie in place of an {@action Interact} action to draw a weapon for abilities such as the Quick Draw feat.",
 						"Upgrading the runes on the blade byrnie makes the daggers pulled from it more powerful. The daggers have a +2 weapon potency rune if the armor has a +2 armor potency rune, or a +3 weapon potency rune if the armor has a +3 armor potency rune."
 					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"level": 7,
+					"price": {
+						"amount": 360,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "blade byrnie"
+				},
+				{
+					"variantType": "greater",
+					"name": "greater blade byrnie",
+					"level": 13,
+					"price": {
+						"amount": 3000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is a +2 resilient chain shirt. The daggers are +2 greater striking daggers."
+					]
+				},
+				{
+					"level": 19,
+					"price": {
+						"amount": 35000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is a +3 greater resilient chain shirt. The daggers are +3 greater striking daggers."
+					],
+					"variantType": "major",
+					"name": "major blade byrnie"
 				}
 			]
 		},
