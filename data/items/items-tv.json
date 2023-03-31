@@ -37,7 +37,7 @@
 			"bulk": "L",
 			"category": "Adjustment",
 			"entries": [
-				"The storage adjustment fits the armor or clothing with belts, buckles, pouches, and loops for holding and storing tools. Countless fasteners make the armor as jangly as chain mail.",
+				"The storage adjustment fits the armor or clothing with belts, buckles, pouches, and loops for holding and storing tools. Countless fasteners make the armor as jangly as {@item chain mail}.",
 				"While wearing armor with this adjustment, you can wear up to 3 Bulk of tools instead of the usual 2. However, the armor acquires the {@trait noisy} trait. If it already has the {@trait noisy} trait, increase its penalty to {@skill Stealth} checks by 1."
 			]
 		},
@@ -91,30 +91,31 @@
 						"command"
 					],
 					"requirements": "Your last action or activity reduced an enemy to 0 Hit Points",
-					"variants": [
-						{
-							"name": "advancing",
-							"level": 9,
-							"price": {
-								"amount": 625,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "greater advancing",
-							"level": 16,
-							"price": {
-								"amount": 8000,
-								"coin": "gp"
-							},
-							"entries": [
-								"You can {@action Stride} up to your Speed instead of 15 feet."
-							]
-						}
-					],
+
 					"entries": [
 						"You {@action Stride} up to 15 feet. This movement doesn't trigger reactions. You can {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of Striding if you have the corresponding movement type."
+					]
+				}
+			],
+			"variants": [
+				{
+					"name": "advancing",
+					"level": 9,
+					"price": {
+						"amount": 625,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater advancing",
+					"level": 16,
+					"price": {
+						"amount": 8000,
+						"coin": "gp"
+					},
+					"entries": [
+						"You can {@action Stride} up to your Speed instead of 15 feet."
 					]
 				}
 			]
