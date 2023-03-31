@@ -135,8 +135,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; good only"
+									"amount": "at will",
+									"note": [
+										"good only"
 									]
 								}
 							]
@@ -403,8 +404,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; good only"
+									"amount": "at will",
+									"note": [
+										"good only"
 									]
 								}
 							]
@@ -817,7 +819,7 @@
 								{
 									"name": "invisibility",
 									"amount": "at will",
-									"notes": [
+									"note": [
 										"self only"
 									]
 								}
@@ -865,7 +867,7 @@
 								},
 								{
 									"name": "prismatic shield",
-									"notes": [
+									"note": [
 										"page 75"
 									]
 								},
@@ -1218,6 +1220,7 @@
 				"gnome",
 				"humanoid"
 			],
+			"description": "Male gnome architect, ex-thief, and illusionist",
 			"perception": {
 				"std": 36
 			},
@@ -1231,7 +1234,12 @@
 					"arcadian",
 					"common",
 					"draconic",
-					"elven"
+					"elven",
+					"gnomish",
+					"goblin",
+					"halfling",
+					"protean",
+					"sylvan"
 				]
 			},
 			"skills": {
@@ -1240,6 +1248,9 @@
 				},
 				"arcana": {
 					"std": 37
+				},
+				"architecture lore": {
+					"std": 35
 				},
 				"deception": {
 					"std": 31
@@ -1265,6 +1276,13 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"+3 major striking dancing rapier",
+				"greater ring of maniacal devices (fireball)",
+				"scroll of monstrosity form",
+				"wand of widening (7th-level prismatic spray)",
+				"3,500 gp"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1439,20 +1457,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +36, {@skill Arcana} +37, {@skill Lore||Architecture Lore} +35, {@skill Deception} +31, {@skill Occultism} +33, {@skill Society} +33"
-						],
-						"name": "Gnomish, Goblin, Halfling, Protean, Sylvan"
-					},
-					{
-						"entries": [
-							"+36, {@skill Thievery} +36 Str +1, Dex +6, Con +3, Int +7, Wis +2, Cha +3 Items +3 major striking dancing rapier, greater ring of maniacal devices (fireball), scroll of monstrosity form, wand of widening (7thlevel {@spell prismatic spray}), 3,500 gp."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -1464,17 +1468,15 @@
 							"illusion",
 							"visual"
 						],
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
 						"entries": [
-							"Frequency once per day; Blune calls into existence {@dice 1d4+2} illusory copies of himself, which dance around him and copy his every movement, making it almost impossible to pinpoint the true Blune. Any attack that would hit Blune has a random chance of hitting an illusory copy instead. This effect lasts for up to 1 minute or until all the copies are destroyed or Blune is incapacitated.",
-							"Once a copy is hit, it's destroyed. If an attack roll fails to hit Blune's AC but doesn't critically fail, it destroys a copy but has no additional effect (even if the attack would normally have an effect on a failure). If an attack roll is a critical success and would hit a copy, the copy is destroyed and the attack roll becomes a success against."
+							"Blune calls into existence {@dice 1d4+2} illusory copies of himself, which dance around him and copy his every movement, making it almost impossible to pinpoint the true Blune. Any attack that would hit Blune has a random chance of hitting an illusory copy instead. This effect lasts for up to 1 minute or until all the copies are destroyed or Blune is incapacitated.",
+							"Once a copy is hit, it's destroyed. If an attack roll fails to hit Blune's AC but doesn't critically fail, it destroys a copy but has no additional effect (even if the attack would normally have an effect on a failure). If an attack roll is a critical success and would hit a copy, the copy is destroyed and the attack roll becomes a success against Blune. Once all the copies are destroyed, this ability ends."
 						],
 						"name": "Illusory Copies"
-					},
-					{
-						"entries": [
-							"Once all the copies are destroyed, this ability ends."
-						],
-						"name": "Blune."
 					},
 					{
 						"entries": [
@@ -1829,8 +1831,9 @@
 							"spells": [
 								{
 									"name": "project image",
-									"notes": [
-										"at will; see project false image"
+									"amount": "at will",
+									"note": [
+										"see project false image"
 									]
 								}
 							]
@@ -2824,6 +2827,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Bloody reincarnation of Wrent Dicaspiron",
 			"perception": {
 				"std": 36
 			},
@@ -2869,6 +2873,9 @@
 			"speed": {
 				"walk": 30
 			},
+			"items": [
+				"Large +3 wounding greater striking cleaver (functions as orc neck-splitter without the {@trait orc} trait)"
+			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -2956,14 +2963,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+34, {@skill Stealth} +34, {@skill Thievery} +32 Str +10, Dex +6, Con +9, Int +3, Wis +6, Cha +6 Items Large +3 wounding greater striking cleaver (functions as orc neck-splitter without the {@trait orc} trait)"
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2972,7 +2971,7 @@
 						],
 						"entries": [
 							"20 feet. Chains of blood bind a bleeding creature to the Daemonic Skinner.",
-							"Creatures in range that are taking {@condition persistent damage ||persistent bleed damage} can't move out of the aura."
+							"Creatures in range that are taking {@condition persistent damage||persistent bleed damage} can't move out of the aura."
 						],
 						"name": "Bloody Chain Aura"
 					},
@@ -2983,22 +2982,11 @@
 							"healing"
 						],
 						"entries": [
-							"30 feet. Any time a creature in the aura takes {@condition persistent damage ||persistent bleed damage}"
-						],
-						"name": "Transfusion Aura"
-					},
-					{
-						"entries": [
-							"Skinner regains the same number of Hit Points as the damage dealt."
-						],
-						"name": "the Daemonic"
-					},
-					{
-						"entries": [
-							"Skinner can have only one aura active at a time.",
+							"30 feet. Any time a creature in the aura takes {@condition persistent damage||persistent bleed damage} the Daemonic Skinner regains the same number of Hit Points as the damage dealt.",
+							"The Skinner can have only one aura active at a time.",
 							"She can switch her active aura as an {@action Interact} action."
 						],
-						"name": "The"
+						"name": "Transfusion Aura"
 					},
 					{
 						"activity": {
@@ -3016,7 +3004,7 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature taking {@condition persistent damage ||persistent bleed damage} within 30 feet of the Daemonic Skinner Casts a Spell with a verbal component or speaks",
+						"trigger": "A creature taking {@condition persistent damage||persistent bleed damage} within 30 feet of the Daemonic Skinner {@action Cast a Spell||Casts a Spell} with a verbal component or speaks",
 						"entries": [
 							"The Skinner wills the triggering creature's blood to gush from their mouth and constrict their throat. The target's spell is disrupted. The target must succeed at a DC 47 Fortitude save or become {@condition sickened|CRB|sickened 2}."
 						],
@@ -3026,7 +3014,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Any creature taking {@condition persistent damage ||persistent bleed damage} is {@condition flat-footed} against the Daemonic Skinner's attacks. When attacking a {@condition flat-footed} creature, the Skinner deals an additional {@damage 2d6} precision damage."
+							"Any creature taking {@condition persistent damage||persistent bleed damage} is {@condition flat-footed} against the Daemonic Skinner's attacks. When attacking a {@condition flat-footed} creature, the Skinner deals an additional {@damage 2d6} precision damage."
 						],
 						"name": "Bloody Sneak Attack"
 					},
@@ -3064,9 +3052,9 @@
 					}
 				],
 				"immunities": [
-					"negative",
 					"bleeding",
 					"disease",
+					"negative",
 					"poison"
 				],
 				"weaknesses": [
@@ -3274,6 +3262,7 @@
 				"azata",
 				"celestial"
 			],
+			"description": "Magically enslaved {@creature ghaele azata||ghaele azatas}",
 			"perception": {
 				"std": 32
 			},
@@ -3360,7 +3349,7 @@
 						"light",
 						"range <300 feet>"
 					],
-					"damage": "{@damage 2d12} chaotic plus {@damage 1d12} good plus {@dice 2d6+6} other (see Choose",
+					"damage": "{@damage 2d12} chaotic plus {@damage 1d12} good plus {@dice 2d6+6} other (see Choose Weakness)",
 					"types": [
 						"chaotic",
 						"good",
@@ -3396,8 +3385,9 @@
 								},
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; evil only"
+									"amount": "at will",
+									"note": [
+										"evil only"
 									]
 								},
 								{
@@ -3433,8 +3423,9 @@
 								},
 								{
 									"name": "invisibility",
-									"notes": [
-										"at will; self only"
+									"amount": "at will",
+									"note": [
+										"self only"
 									]
 								},
 								{
@@ -3480,10 +3471,17 @@
 							]
 						},
 						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							},
 							"7": {
 								"spells": [
 									{
-										"name": "see"
+										"name": "see invisibility"
 									}
 								]
 							}
@@ -3503,14 +3501,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Religion} +28, {@skill Stealth} +24, {@skill Lore||Warfare Lore} +25 Str +8, Dex +5, Con +6, Int +4, Wis +5, Cha +7 Items +3 greatsword."
-						],
-						"name": "Nature"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3532,12 +3522,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"Divine Innate Spells DC 38; 8th prismatic wall; 7th chromatic wall, dispel magic, heal, prismatic spray; 6th illusory scene; 5th banishment; 4th heal (×4), invisibility (at will; self only), restoration; 3rd mind reading; 2nd continual flame (at will), dispel magic (at will); 1st charm, detect alignment (at will; evil only), illusory disguise (at will); Cantrips (7th) dancing lights, detect magic, light; Constant (7th) see invisibility; (5th) tongues Divine Rituals DC 38; resurrect."
-						],
-						"name": "Weakness)"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -3567,15 +3551,9 @@
 							"visual"
 						],
 						"entries": [
-							"When a ghaele fixes their gaze upon a non-good creature, the creature is subjected to the effects of divine decree (DC 38 Will save). If it survives, the creature is temporarily immune to."
+							"When a ghaele fixes their gaze upon a non-good creature, the creature is subjected to the effects of {@spell divine decree} (DC 38 Will save). If it survives, the creature is temporarily immune to Ghaele's Gaze for 1 minute."
 						],
 						"name": "Ghaele's Gaze"
-					},
-					{
-						"entries": [
-							"Gaze for 1 minute."
-						],
-						"name": "Ghaele's"
 					},
 					{
 						"traits": [
@@ -3617,6 +3595,13 @@
 					{
 						"amount": 15,
 						"name": "evil"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "energy",
+						"note": "(see Choose Weakness)"
 					}
 				]
 			}
@@ -3942,8 +3927,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; lawful only"
+									"amount": "at will",
+									"note": [
+										"lawful only"
 									]
 								}
 							]
@@ -3974,8 +3960,9 @@
 								},
 								{
 									"name": "teleport",
-									"notes": [
-										"at will; self only"
+									"amount": "at will",
+									"note": [
+										"self only"
 									]
 								}
 							]
@@ -3998,7 +3985,7 @@
 								},
 								{
 									"name": "divine aura",
-									"notes": [
+									"note": [
 										"chaotic only"
 									]
 								}
@@ -4263,8 +4250,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; lawful only"
+									"amount": "at will",
+									"note": [
+										"lawful only"
 									]
 								}
 							]
@@ -4300,8 +4288,9 @@
 							"spells": [
 								{
 									"name": "teleport",
-									"notes": [
-										"at will; self only"
+									"amount": "at will",
+									"note": [
+										"self only"
 									]
 								}
 							]
@@ -4339,13 +4328,13 @@
 							"spells": [
 								{
 									"name": "divine wrath",
-									"notes": [
+									"note": [
 										"chaotic only"
 									]
 								},
 								{
 									"name": "prismatic shield",
-									"notes": [
+									"note": [
 										"page 75"
 									]
 								},
@@ -4624,8 +4613,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; lawful only"
+									"amount": "at will",
+									"note": [
+										"lawful only"
 									]
 								}
 							]
@@ -4650,7 +4640,7 @@
 							"spells": [
 								{
 									"name": "divine wrath",
-									"notes": [
+									"note": [
 										"chaotic"
 									]
 								},
@@ -5361,8 +5351,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; lawful only"
+									"amount": "at will",
+									"note": [
+										"lawful only"
 									]
 								}
 							]
@@ -5386,8 +5377,9 @@
 								},
 								{
 									"name": "hallucinatory terrain",
-									"notes": [
-										"at will; see Reshape Reality"
+									"amount": "at will",
+									"note": [
+										"see Reshape Reality"
 									]
 								}
 							]
@@ -5396,8 +5388,9 @@
 							"spells": [
 								{
 									"name": "teleport",
-									"notes": [
-										"at will; self only"
+									"amount": "at will",
+									"note": [
+										"self only"
 									]
 								}
 							]
@@ -5435,7 +5428,7 @@
 							"spells": [
 								{
 									"name": "divine wrath",
-									"notes": [
+									"note": [
 										"chaotic only"
 									]
 								},
@@ -6196,7 +6189,7 @@
 								{
 									"name": "teleport",
 									"amount": "at will",
-									"notes": [
+									"note": [
 										"self only and only within Terimor's Tower"
 									]
 								}
@@ -6504,8 +6497,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; lawful only"
+									"amount": "at will",
+									"note": [
+										"lawful only"
 									]
 								}
 							]
@@ -6562,7 +6556,7 @@
 								},
 								{
 									"name": "divine wrath",
-									"notes": [
+									"note": [
 										"chaotic"
 									]
 								},
@@ -7010,6 +7004,10 @@
 				"wis": 8,
 				"cha": 11
 			},
+			"items": [
+				"black sapphires (4, worth 2,000 gp each)",
+				"+3 greater striking spiked chain."
+			],
 			"speed": {
 				"walk": 40,
 				"fly": 80
@@ -7077,7 +7075,7 @@
 								{
 									"name": "plane shift",
 									"amount": "at will",
-									"notes": [
+									"note": [
 										"self only"
 									]
 								}
@@ -7113,7 +7111,7 @@
 								"spells": [
 									{
 										"name": "detect alignment",
-										"notes": [
+										"note": [
 											"good only"
 										]
 									},
@@ -7129,21 +7127,23 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 45,
+					"rituals": [
+						{
+							"name": "call spirit"
+						},
+						{
+							"name": "imprisonment"
+						},
+						{
+							"name": "planar binding"
+						}
+					]
+				}
+			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+43, Intimidate +37, {@skill Religion} +38"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+36, {@skill Survival} +40 Str +10, Dex +8, Con +6, Int +6, Wis +8, Cha +11 Items black sapphires (4, worth 2,000 gp each), +3 greater striking spiked chain."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -7222,7 +7222,8 @@
 					},
 					"will": {
 						"std": 36
-					}
+					},
+					"abilities": "+1 status to saves vs. magic"
 				},
 				"hp": [
 					{
@@ -7493,8 +7494,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
-									"notes": [
-										"at will; good only"
+									"amount": "at will",
+									"note": [
+										"good only"
 									]
 								}
 							]
@@ -7655,6 +7657,7 @@
 				"angel",
 				"celestial"
 			],
+			"description": "Cursed astral deva bound to Kharnas's service",
 			"perception": {
 				"std": 35
 			},
@@ -7748,12 +7751,20 @@
 					"DC": 39,
 					"attack": 33,
 					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "light"
+								}
+							]
+						},
 						"2": {
 							"spells": [
 								{
 									"name": "invisibility",
 									"amount": "at will",
-									"notes": [
+									"note": [
 										"self only"
 									]
 								}
@@ -7807,23 +7818,26 @@
 								},
 								{
 									"name": "shattering gem",
-									"notes": [
+									"note": [
 										"Pathfinder Lost Omens Gods & Magic 109"
 									]
 								}
 							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+33 Str +10, Dex +6, Con +7, Int +6, Wis +6, Cha +8 Items +3 greater striking warhammer, +1 vorpal dagger."
-						],
-						"name": "Religion"
-					},
 					{
 						"entries": [
 							"Ulressia automatically detects crystals or crystalline items within 30 feet."
@@ -7866,15 +7880,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"7th"
-						],
-						"entries": [
-							"light; Constant (5th) tongues."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -7924,7 +7929,8 @@
 					},
 					"will": {
 						"std": 31
-					}
+					},
+					"abilities": "+1 status to all saves vs. magic"
 				},
 				"hp": [
 					{

@@ -16080,6 +16080,150 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Grazing Deer",
+			"source": "AFoF",
+			"page": 5,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 20,
+				"minProf": "expert"
+			},
+			"description": [
+				"A herd of deer exits the woods to investigate the delicious-looking leshys."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Diplomacy} (with wild empathy) to befriend the deer and convince them that leshys aren't for nibbling, or DC 20 {@skill Intimidation} to scare the dear away"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": {
+					"std": 44,
+					"notes": {
+						"std": "(if the grazing deer take this much damage, they aren't killed, but they do flee into the woods and don't return)"
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Approach and Taste",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The PCs emerge from the forest's edge",
+					"entries": [
+						"A deer approaches the party and attempts a nibble {@action Strike} against a randomly determined PC.",
+						"The grazing deer rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(2 actions) The grazing deer takes one action to move about, and then one action to eagerly nibble at a randomly chosen PC. A character who spends three actions on their turn to {@action Stride} can avoid being nibbled by the grazing deer during the hazard's next turn. If all of the PCs do so, attempt a DC {@flatDC 5} flat check\u2014on a success, the party escapes the deer and can proceed onward to Petalbrook, but they become delayed as a result of having to flee the pack of ravenous deer."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "nibble",
+					"attack": 12,
+					"damage": "{@damage 2d4+5} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Bad Vibrations",
+			"source": "AFoF",
+			"page": 7,
+			"level": 3,
+			"traits": [
+				"rare",
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "expert"
+			},
+			"description": [
+				"The three larger crystals on the table begin to vibrate and emit a swiftly growing peal of sound."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Thievery} (trained) or {@skill Occultism} (trained) to disrupt the magic enchanting one of the crystals, or DC 20 {@skill Performance} (trained) by a character who can cast {@spell counter performance} to use sound to redirect the noise back into the crystal, or {@spell dispel magic} (2nd level, DC 18) to counteract a crystal."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 6
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 16,
+					"notes": {
+						"std": "each (BT 8)"
+					}
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "sonic",
+						"amount": 5
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Shrill Chime",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature other than {@creature Darius|afof} or one of his homunculi approaches within 5 feet of the table or attempts to {@action Interact} with the crystals in any way other than to attempt to disable the hazard.",
+					"entries": [
+						"The three large crystals on the table begin vibrating and humming.",
+						"The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The hazard loses 1 action for each crystal that's disabled or destroyed. On each of the trap's actions, one of the crystals fires a blast of sound at a single Small or larger creature in the room. The target is randomly determined and takes {@damage 1d8} sonic damage (DC 20 basic Fortitude save); a target who critically fails this save is {@condition deafened} for 1 minute. At the end of the hazard's routine, attempt a DC {@flatDC 10} flat check. On a success, one of the crystals shatters and is destroyed."
+			]
 		}
 	]
 }

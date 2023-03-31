@@ -1571,6 +1571,7 @@
 				"fey",
 				"gremlin"
 			],
+			"description": "Female pugwampi jinxer",
 			"perception": {
 				"std": 10,
 				"to hear things": 2
@@ -1692,14 +1693,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+11, {@skill Thievery} +9 (+11 to {@action Steal}) Str \u20132, Dex +4, Con +1, Int +1, Wis \u20131, Cha +3 Items shortbow (60 arrows), shortsword."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1728,20 +1721,10 @@
 				],
 				"bot": [
 					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
 						"entries": [
-							"{@damage 1d6+4} piercing Ranged shortbow +12 (deadly <d10>, magical, range increment <60 feet>, reload <0>), Damage {@damage 1d6} piercing Primal Innate Spells DC 20; 2nd speak with animals (at will); 1st gust of wind, spider sting; Cantrips (2nd) prestidigitation."
+							"Kurshkin deals an additional {@dice 1d6} damage with her melee {@action Strike||Strikes} against creatures affected by her unluck aura."
 						],
-						"name": "S), Damage"
-					},
-					{
-						"entries": [
-							"Stabs Kurshkin deals an additional {@dice 1d6} damage with her melee {@action Strike||Strikes} against creatures affected by her unluck aura."
-						],
-						"name": "Lucky"
+						"name": "Lucky Stabs"
 					},
 					{
 						"entries": [
@@ -2411,6 +2394,7 @@
 				"humanoid",
 				"oread"
 			],
+			"description": "Male human oread stone spirit",
 			"perception": {
 				"std": 13
 			},
@@ -2429,6 +2413,9 @@
 					"std": 12
 				},
 				"intimidation": {
+					"std": 12
+				},
+				"magaambya lore": {
 					"std": 12
 				},
 				"nature": {
@@ -2515,7 +2502,7 @@
 							"spells": [
 								{
 									"name": "command",
-									"notes": [
+									"note": [
 										"animals only"
 									]
 								},
@@ -2547,7 +2534,7 @@
 								},
 								{
 									"name": "summon elemental",
-									"notes": [
+									"note": [
 										"earth only"
 									]
 								}
@@ -2557,34 +2544,16 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12, {@skill Nature} +13, {@skill Stealth} +11 Str +3, Dex +0, Con +4, Int +3, Wis +4, Cha +1 Items leather armor, +1 morningstar, sling (10 bullets)"
-						],
-						"name": "Magaambya Lore"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"Ghost can pass through objects made of stone or soil, including walls.",
+							"Stone Ghost can pass through objects made of stone or soil, including walls.",
 							"When inside an object, Stone Ghost can't perceive, attack, or interact with anything outside the object, and if he starts his turn inside an object, he is {@condition slowed|CRB|slowed 1}."
 						],
-						"name": "Stone Spirit Stone"
+						"name": "Stone Spirit"
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 1d6+7} bludgeoning Ranged sling +11 (propulsive, range increment <50 feet>, reload <1>), Damage {@damage 1d6+5} bludgeoning Primal Prepared Spells DC 22, attack +14; 3rd earthbind, summon elemental (earth only); 2nd darkvision, glitterdust, shatter; 1st command (animals only), grease, pass without trace; Cantrips (3rd) acid splash, dancing lights, know direction, shield, tanglefoot."
-						],
-						"name": "P), Damage"
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -2596,15 +2565,9 @@
 						],
 						"requirements": "A foe within Stone Ghost's reach is standing on stone or soil",
 						"entries": [
-							"Stone Ghost briefly extends his intangibility to a foe and drags or pounds them into the earth. He makes an {@skill Athletics} check against the target's Fortitude."
+							"Stone Ghost briefly extends his intangibility to a foe and drags or pounds them into the earth. He makes an {@skill Athletics} check against the target's Fortitude DC. On a success, the foe is planted waist-deep in the ground and is {@condition immobilized} and {@condition flat-footed} until it Escapes (DC 22). On a critical success, the foe is completely buried and must hold its breath until it is free or else start suffocating. A successful {@action Escape} returns the foe to its original square on the surface, or the closest unoccupied square."
 						],
 						"name": "Entombing Grasp"
-					},
-					{
-						"entries": [
-							"On a success, the foe is planted waist-deep in the ground and is {@condition immobilized} and {@condition flat-footed} until it Escapes (DC 22). On a critical success, the foe is completely buried and must hold its breath until it is free or else start suffocating. A successful {@action Escape} returns the foe to its original square on the surface, or the closest unoccupied square."
-						],
-						"name": "DC."
 					}
 				]
 			},
@@ -2631,7 +2594,8 @@
 				"resistances": [
 					{
 						"amount": 5,
-						"name": "all damage"
+						"name": "all damage",
+						"note": "(except force or ghost touch; double resistance vs. non-magical, stone, or effects with the earth trait)"
 					}
 				]
 			},
