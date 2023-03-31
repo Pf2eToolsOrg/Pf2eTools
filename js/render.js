@@ -4398,7 +4398,7 @@ Renderer.creature = {
 		if (!arr || arr.length === 0) return null;
 		const renderer = Renderer.get();
 		const vals = arr.map(it => `${it.name}${it.amount ? ` ${it.amount}` : ""}${it.note ? ` ${renderer.render(it.note)}` : ""}`);
-		return `<strong>${prop}&nbsp;</strong>${renderer.render(vals.join("; "))}`;
+		return `<strong>${prop}&nbsp;</strong>${renderer.render(vals.join(", "))}`;
 	},
 
 	getSpeed (cr) {
