@@ -4234,7 +4234,7 @@ Renderer.creature = {
 			${Renderer.utils.getTraitsDiv(cr.traits)}
 			${Renderer.creature.getDescription(cr.description)}
 			${Renderer.creature.getPerception(cr)}
-			${Renderer.creature.getLanguages(cr)}
+			${Renderer.creature.getLanguages(cr.languages)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
 			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
@@ -4269,18 +4269,28 @@ Renderer.creature = {
 		return `<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${rdPerception}${rdOtherPerception}${rdSenses.length ? "; " : ""}${rdSenses}</p>`;
 	},
 
-	getLanguages (cr) {
+	getLanguages (crLanguages) {
+		if (crLanguages == null) return ""
+
 		const renderer = Renderer.get()
-		if (cr.languages != null && cr.languages.languages != null && (cr.languages.languages.length !== 0 || (cr.languages.abilities && cr.languages.abilities.length !== 0))) {
+
+		const languages = crLanguages.languages || []
+		const notes = crLanguages.notes || []
+		const abilities = crLanguages.abilities || []
+
+		if (languages.length !== 0 || notes.length !== 0 || abilities.length !== 0) {
+			const langs = languages.map(t => t.toTitleCase()).concat(notes)
+
 			let renderStack = [];
 
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
 			renderStack.push(`<span>`)
-			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.map(t => t.toTitleCase()).join(", ") : "— ")
-			if (cr.languages.abilities && cr.languages.abilities.length !== 0) {
-				if (cr.languages.languages.length !== 0) renderStack.push("; ")
-				renderStack.push(renderer.render(cr.languages.abilities.join(", ")))
+
+			renderStack.push(langs.length !== 0 ? langs.join(", ") : "— ")
+			if (abilities.length !== 0) {
+				if (langs !== 0) renderStack.push("; ")
+				renderStack.push(renderer.render(abilities.join(", ")))
 			}
 			renderStack.push(`</span>`)
 			renderStack.push(`</p>`)
