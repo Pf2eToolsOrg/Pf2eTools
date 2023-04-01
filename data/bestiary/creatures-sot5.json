@@ -70,7 +70,7 @@
 					],
 					"name": "jaws",
 					"attack": 29,
-					"damage": "{@damage 3d8+14} piercing and {@damage 2d8} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 3d8+14} piercing and {@damage 2d8} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -1472,7 +1472,7 @@
 					],
 					"name": "claw",
 					"attack": 32,
-					"damage": "{@damage 3d10+13} slashing plus {@damage 3d6} {@condition persistent damage ||persistent mental damage} and stupefying touch"
+					"damage": "{@damage 3d10+13} slashing plus {@damage 3d6} {@condition persistent damage||persistent mental damage} and stupefying touch"
 				},
 				{
 					"range": "Ranged",
@@ -1481,7 +1481,7 @@
 					],
 					"name": "acid spit",
 					"attack": 32,
-					"damage": "{@damage 3d6+8} acid plus {@damage 3d6} {@condition persistent damage ||persistent acid damage}"
+					"damage": "{@damage 3d6+8} acid plus {@damage 3d6} {@condition persistent damage||persistent acid damage}"
 				}
 			],
 			"abilities": {
@@ -1793,13 +1793,13 @@
 										"The creature is unaffected and is temporarily immune to Telepathic Feedback for 24 hours."
 									],
 									"Success": [
-										"The creature takes {@damage 3d6} mental damage, {@damage 1d6} {@condition persistent damage ||persistent mental damage}, and is {@condition sickened||sickened 1}."
+										"The creature takes {@damage 3d6} mental damage, {@damage 1d6} {@condition persistent damage||persistent mental damage}, and is {@condition sickened||sickened 1}."
 									],
 									"Failure": [
-										"The creature takes {@damage 6d6} mental damage, {@damage 1d6} {@condition persistent damage ||persistent mental damage}, and is {@condition sickened||sickened 2}."
+										"The creature takes {@damage 6d6} mental damage, {@damage 1d6} {@condition persistent damage||persistent mental damage}, and is {@condition sickened||sickened 2}."
 									],
 									"Critical Failure": [
-										"The creature takes {@damage 12d6} mental damage, {@damage 1d6} {@condition persistent damage ||persistent mental damage}, and is {@condition stunned||stunned 3}. Upon recovering from the {@condition stunned} condition, the creature becomes {@condition sickened||sickened 2}."
+										"The creature takes {@damage 12d6} mental damage, {@damage 1d6} {@condition persistent damage||persistent mental damage}, and is {@condition stunned||stunned 3}. Upon recovering from the {@condition stunned} condition, the creature becomes {@condition sickened||sickened 2}."
 									]
 								}
 							}
@@ -2040,7 +2040,7 @@
 							"primal"
 						],
 						"entries": [
-							"A gluttonworm in contact with a significant body of sand, such as a desert or beach, gains fast healing 10. If the gluttonworm is subject to {@condition persistent damage ||persistent bleed}, the flowing blood quickly congeals with the sand covering its body, instantly ending the bleed duration and giving the gluttonworm a +2 circumstance bonus to AC until the end of its next turn."
+							"A gluttonworm in contact with a significant body of sand, such as a desert or beach, gains fast healing 10. If the gluttonworm is subject to {@condition persistent damage||persistent bleed}, the flowing blood quickly congeals with the sand covering its body, instantly ending the bleed duration and giving the gluttonworm a +2 circumstance bonus to AC until the end of its next turn."
 						]
 					},
 					{
@@ -2673,7 +2673,7 @@
 					],
 					"name": "tendril",
 					"attack": 34,
-					"damage": "{@damage 4d10+15} {@condition persistent damage ||persistent piercing damage} plus swarming bites"
+					"damage": "{@damage 4d10+15} {@condition persistent damage||persistent piercing damage} plus swarming bites"
 				}
 			],
 			"spellcasting": [
@@ -2908,7 +2908,7 @@
 					{
 						"name": "Biting Ants",
 						"entries": [
-							"Strides to a creature, ends h i s movement sharing a space with it, and deals {@damage 3d8} piercing damage and {@damage 3d8} poison damage to it (DC 39 basic Reflex save). A creature that fails this save also takes {@damage 2d8} {@condition persistent damage ||persistent piercing damage}."
+							"Strides to a creature, ends h i s movement sharing a space with it, and deals {@damage 3d8} piercing damage and {@damage 3d8} poison damage to it (DC 39 basic Reflex save). A creature that fails this save also takes {@damage 2d8} {@condition persistent damage||persistent piercing damage}."
 						]
 					},
 					{
@@ -2934,7 +2934,7 @@
 					{
 						"name": "Swarming Bites",
 						"entries": [
-							"While a creature is taking {@condition persistent damage ||persistent piercing damage} from the King of Biting Ants's tendril"
+							"While a creature is taking {@condition persistent damage||persistent piercing damage} from the King of Biting Ants's tendril"
 						]
 					},
 					{

@@ -465,7 +465,7 @@
 			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"entries": [
-				"You enhance your spell with elemental fire, causing it to set the target on fire. If the next action you use is to {@action Cast a Spell||Cast a non-cantrip Spell} that deals damage at a single target, the spell deals additional {@condition persistent damage ||persistent fire damage} equal to the spell level, in addition to its other effects. This has no effect if the spell already deals {@condition persistent damage ||persistent fire damage}. The spell gains the {@trait fire} trait."
+				"You enhance your spell with elemental fire, causing it to set the target on fire. If the next action you use is to {@action Cast a Spell||Cast a non-cantrip Spell} that deals damage at a single target, the spell deals additional {@condition persistent damage||persistent fire damage} equal to the spell level, in addition to its other effects. This has no effect if the spell already deals {@condition persistent damage||persistent fire damage}. The spell gains the {@trait fire} trait."
 			]
 		},
 		{
@@ -847,7 +847,7 @@
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"entries": [
 				"You enhance your spell with elemental water, soaking the target. If the next action you use is to {@action Cast a Spell} targeting a single creature, you soak the target of the spell with water.",
-				"If the target has {@condition persistent damage ||persistent acid} or fire damage, the DC to end those conditions is reduced to 10, and the creature can attempt a flat check to end those types of {@condition persistent damage} immediately. The spell gains the {@trait water} trait (causing it to deal extra damage to creatures with weakness to water)."
+				"If the target has {@condition persistent damage||persistent acid} or fire damage, the DC to end those conditions is reduced to 10, and the creature can attempt a flat check to end those types of {@condition persistent damage} immediately. The spell gains the {@trait water} trait (causing it to deal extra damage to creatures with weakness to water)."
 			]
 		},
 		{
@@ -1320,7 +1320,7 @@
 			],
 			"prerequisites": "flame order",
 			"entries": [
-				"A lifetime of proximity to flames has inured your lungs and eyes to smoke. You can breathe normally in areas of ash and smoke without risk of suffocation, and you ignore the {@condition concealed} condition from smoke. You need only a successful DC {@flatDC 10} flat check to recover from {@condition persistent damage ||persistent fire damage}, rather than DC 15 (and the DC when receiving particularly effective assistance is 5 instead of 10)."
+				"A lifetime of proximity to flames has inured your lungs and eyes to smoke. You can breathe normally in areas of ash and smoke without risk of suffocation, and you ignore the {@condition concealed} condition from smoke. You need only a successful DC {@flatDC 10} flat check to recover from {@condition persistent damage||persistent fire damage}, rather than DC 15 (and the DC when receiving particularly effective assistance is 5 instead of 10)."
 			]
 		},
 		{
@@ -1448,7 +1448,7 @@
 						"{@bold Mountain} ({@trait earth}) The rugged endurance of the mountain protects you from harm. You gain resistance to physical damage (except adamantine) equal to the spell level for 1 round.",
 						"{@bold Plains} ({@trait plant}) The growing fields and pulsing vitality of the plains provide you vigor. You gain temporary Hit Points equal to the spell level for 1 round.",
 						"{@bold Sky} ({@trait air}) A gust of wind carries you aloft. You can {@action Fly} up to 10 feet. If you're in the air at the end of the turn and don't have a fly Speed, you fall.",
-						"{@bold Swamp} ({@trait plant}) Your magic draws in noxious swamp gas to fumigate your foes. Affected foes take {@condition persistent damage ||persistent poison damage} equal to half the spell's level (minimum 1 damage) with a basic Fortitude save.",
+						"{@bold Swamp} ({@trait plant}) Your magic draws in noxious swamp gas to fumigate your foes. Affected foes take {@condition persistent damage||persistent poison damage} equal to half the spell's level (minimum 1 damage) with a basic Fortitude save.",
 						"{@bold Underground} ({@trait earth}) The endless darkness of the cavern depths opens up its secrets to your senses. For 1 round, you gain {@ability darkvision} as well as imprecise {@ability tremorsense} out to 15 feet."
 					]
 				}
@@ -3329,8 +3329,8 @@
 			"trigger": "You {@action Cast a Spell} using a spell slot.",
 			"requirements": "You're in {@action Arcane Cascade|SoM} stance.",
 			"entries": [
-				"You pull magic into your weapon, using its substance to transform the magic into restorative energy. You regain Hit Points equal to double the spell's level and roll to end any {@condition persistent damage ||persistent negative damage} you have.",
-				"If the spell was of the necromancy school, any {@condition persistent damage ||persistent negative damage} you have ends automatically, and you can change the damage type from {@action Arcane Cascade|SoM} to positive if you wish. (Positive damage typically damages only undead or other creatures with {@ability negative healing|b2}.)."
+				"You pull magic into your weapon, using its substance to transform the magic into restorative energy. You regain Hit Points equal to double the spell's level and roll to end any {@condition persistent damage||persistent negative damage} you have.",
+				"If the spell was of the necromancy school, any {@condition persistent damage||persistent negative damage} you have ends automatically, and you can change the damage type from {@action Arcane Cascade|SoM} to positive if you wish. (Positive damage typically damages only undead or other creatures with {@ability negative healing|b2}.)."
 			]
 		},
 		{

@@ -691,7 +691,7 @@
 					],
 					"name": "rosebriar lash",
 					"attack": 28,
-					"damage": "{@damage 4d8+8} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 4d8+8} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
 				}
 			],
 			"spellcasting": [
@@ -1184,7 +1184,7 @@
 					],
 					"name": "jaws",
 					"attack": 15,
-					"damage": "{@damage 2d8+4} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d8+4} piercing plus {@damage 1d4} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -2040,7 +2040,7 @@
 					],
 					"name": "fangs",
 					"attack": 24,
-					"damage": "{@damage 2d12+13} piercing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d12+13} piercing plus {@damage 1d8} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -2891,7 +2891,7 @@
 					"range": "Melee",
 					"name": "fire fist",
 					"attack": 12,
-					"damage": "{@damage 1d6+4} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent fire}"
+					"damage": "{@damage 1d6+4} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent fire}"
 				},
 				{
 					"range": "Ranged",
@@ -2900,7 +2900,7 @@
 					],
 					"name": "fire mote",
 					"attack": 11,
-					"damage": "{@damage 1d4+4} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}"
+					"damage": "{@damage 1d4+4} fire plus {@damage 1d6} {@condition persistent damage||persistent fire}"
 				}
 			],
 			"abilities": {
@@ -3505,7 +3505,7 @@
 					],
 					"name": "horn",
 					"attack": 31,
-					"damage": "{@damage 3d8+12} bludgeoning plus {@damage 1d10} cold and {@damage 2d8} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 3d8+12} bludgeoning plus {@damage 1d10} cold and {@damage 2d8} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -4179,7 +4179,7 @@
 						},
 						"requirements": "A creature is {@condition grabbed} or {@condition restrained} in the nasurgeth's jaws",
 						"entries": [
-							"The nasurgeth breaks a tooth off in the target, who takes {@damage 3d10} {@condition persistent damage ||persistent bleed damage} and is no longer {@condition grabbed} or {@condition restrained}. If the target is adjacent to a surface, the tooth also pins it in place, making it {@condition immobilized} ({@action Escape} DC 45)."
+							"The nasurgeth breaks a tooth off in the target, who takes {@damage 3d10} {@condition persistent damage||persistent bleed damage} and is no longer {@condition grabbed} or {@condition restrained}. If the target is adjacent to a surface, the tooth also pins it in place, making it {@condition immobilized} ({@action Escape} DC 45)."
 						]
 					},
 					{
@@ -4862,7 +4862,7 @@
 						],
 						"trigger": "A creature within 60 feet who the deathless hierophant can see and who doesn't worship {@deity Urgathoa} casts a divine spell",
 						"entries": [
-							"The deathless hierophant attempts to counteract the triggering spell using their spell attack modifier and a counteract level of 4. If the spell is counteracted, the caster takes {@damage 1d10} {@condition persistent damage ||persistent negative damage}. If the deathless hierophant fails to counteract the spell, the caster is temporarily immune to further uses of this ability for 24 hours."
+							"The deathless hierophant attempts to counteract the triggering spell using their spell attack modifier and a counteract level of 4. If the spell is counteracted, the caster takes {@damage 1d10} {@condition persistent damage||persistent negative damage}. If the deathless hierophant fails to counteract the spell, the caster is temporarily immune to further uses of this ability for 24 hours."
 						]
 					}
 				]
@@ -4980,10 +4980,10 @@
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": [
-										"The ecorche fully pulls the target's skin off its body. The creature takes {@damage 4d8} {@condition persistent damage ||persistent bleed damage}, and it's {@condition frightened||frightened 4} and {@condition stunned||stunned 4}. The bleed damage can't end naturally, only ending if the creature regains at least 75 HP or regains at least 10 HP from regeneration."
+										"The ecorche fully pulls the target's skin off its body. The creature takes {@damage 4d8} {@condition persistent damage||persistent bleed damage}, and it's {@condition frightened||frightened 4} and {@condition stunned||stunned 4}. The bleed damage can't end naturally, only ending if the creature regains at least 75 HP or regains at least 10 HP from regeneration."
 									],
 									"Success": [
-										"The target takes {@damage 2d8} {@condition persistent damage ||persistent bleed damage} and is {@condition stunned||stunned 1}."
+										"The target takes {@damage 2d8} {@condition persistent damage||persistent bleed damage} and is {@condition stunned||stunned 1}."
 									]
 								}
 							}
@@ -9768,7 +9768,7 @@
 					{
 						"name": "Smoldering Fist",
 						"entries": [
-							"On a critical hit, the shadern immolator's fist {@action Strike} also deals {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
+							"On a critical hit, the shadern immolator's fist {@action Strike} also deals {@damage 1d4} {@condition persistent damage||persistent fire damage}."
 						]
 					}
 				]
@@ -9878,7 +9878,7 @@
 					],
 					"name": "bone spike",
 					"attack": 14,
-					"damage": "{@damage 2d8+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d8+2} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Ranged",
@@ -14212,7 +14212,7 @@
 					],
 					"name": "painful touch",
 					"attack": 28,
-					"damage": "{@damage 4d6+14} mental plus {@damage 2d6} {@condition persistent damage ||persistent mental damage}"
+					"damage": "{@damage 4d6+14} mental plus {@damage 2d6} {@condition persistent damage||persistent mental damage}"
 				}
 			],
 			"abilities": {
@@ -14265,7 +14265,7 @@
 							"piercing"
 						],
 						"entries": [
-							"The tormented was pierced with spears or blades and left to slowly die. The target takes {@damage 8d4} {@condition persistent damage ||persistent bleed damage}. (The creature doesn't take the {@condition persistent damage} this turn, nor does it get its flat check to end the damage.)"
+							"The tormented was pierced with spears or blades and left to slowly die. The target takes {@damage 8d4} {@condition persistent damage||persistent bleed damage}. (The creature doesn't take the {@condition persistent damage} this turn, nor does it get its flat check to end the damage.)"
 						]
 					},
 					{
@@ -14916,7 +14916,7 @@
 								"type": "list",
 								"items": [
 									"Cloudless Void The jiang-shi gains a +1 circumstance bonus to AC and their claw {@action Strike||Strikes} gain the {@trait reach} trait.",
-									"Sundered Veins Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage ||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled||enfeebled 1}."
+									"Sundered Veins Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled||enfeebled 1}."
 								]
 							}
 						]
@@ -15774,7 +15774,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the seetangeist's space takes {@damage 3d6} slashing and {@damage 3d6} poison damage (DC 32 basic Reflex save). A creature that fails this save also takes {@damage 1d12} {@condition persistent damage ||persistent poison damage}."
+							"Each enemy in the seetangeist's space takes {@damage 3d6} slashing and {@damage 3d6} poison damage (DC 32 basic Reflex save). A creature that fails this save also takes {@damage 1d12} {@condition persistent damage||persistent poison damage}."
 						]
 					}
 				]
