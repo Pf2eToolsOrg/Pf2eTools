@@ -803,25 +803,40 @@ class Converter {
 		const skills = {};
 		const regexBonus = /\+(\d+)/;
 		const regexOtherBonus = /\+(\d+)\s([\w\s]+)/g;
-		while (this._tokenIsType(this._tokenizerUtils.skills)) {
+		// skill entries should be followed by the skill bonus
+		while (this._tokenIsType(this._tokenizerUtils.skills) && this._tokenIsType("SKILL_BONUS", this._peek(1))) {
 			const token = this._consumeToken(this._tokenizerUtils.skills);
 			const skill = token.value.trim().toLowerCase().replace(/\s/g, " ");
 			skills[skill] = {};
-			for (let i = 0; i < 2; i++) {
-				if (this._tokenIsType("PARENTHESIS")) {
-					const parenthesisText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
-					const matches = Array.from(parenthesisText.matchAll(regexOtherBonus));
-					if (matches.length) matches.forEach(m => skills[skill][m[2]] = Number(m[1]));
-					else skills[skill].note = parenthesisText;
-				} else if (this._tokenIsType("SKILL_BONUS")) {
-					const bonusToken = this._consumeToken("SKILL_BONUS");
-					skills[skill].std = Number(regexBonus.exec(bonusToken.value.replace(/\s/g, ""))[1]);
-				} else break;
+
+			const bonusToken = this._consumeToken("SKILL_BONUS");
+			skills[skill].std = Number(regexBonus.exec(bonusToken.value.replace(/\s/g, ""))[1]);
+
+			// optionally followed by other bonuses for the same skill
+			if (this._tokenIsType("PARENTHESIS")) {
+				const parenthesisText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
+				const matches = Array.from(parenthesisText.matchAll(regexOtherBonus));
+				if (matches.length) matches.forEach(m => skills[skill][m[2]] = Number(m[1]));
+				else skills[skill].note = parenthesisText;
 			}
 		}
-		// FIXME: Skill abilities! Could also be regular ability? Probably not.
-		const entries = this._getEntries();
-		if (entries.length) throw new Error(`Skill abilities are not implemented yet! ${entries}`);
+
+		// if we found a skill entry without a bonus, assume it's part of a skill note
+		// e.g. "one or more Lore skills related to a specific plane" is incorrectly detected as a lore skill at first
+		let extraEntries = [];
+		if (this._tokenIsType(this._tokenizerUtils.skills)) {
+			const noteStart = this._consumeToken(this._tokenizerUtils.skills);
+			noteStart.type = "SENTENCE";
+			extraEntries.push(noteStart)
+		}
+
+		// assume that any text entries following the skills are skill notes
+		const entries = [...extraEntries, ...this._getEntries()];
+		if (entries.length) {
+			const rendered = this._renderEntries(entries, {asString: true});
+			skills.notes = rendered.split(", ");
+		}
+
 		creature.skills = skills;
 	}
 	_parseAbilityScores (creature) {
