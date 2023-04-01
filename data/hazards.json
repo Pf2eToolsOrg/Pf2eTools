@@ -2239,7 +2239,7 @@
 					},
 					"trigger": "A creature steps on the bottle or the bottle becomes {@condition broken}",
 					"entries": [
-						"The bottle explodes, dealing {@damage 2d8} fire damage plus 2 {@condition persistent damage ||persistent fire damage} and 2 fire splash damage to each creature sharing its square (DC 18 basic Reflex save)."
+						"The bottle explodes, dealing {@damage 2d8} fire damage plus 2 {@condition persistent damage||persistent fire damage} and 2 fire splash damage to each creature sharing its square (DC 18 basic Reflex save)."
 					]
 				}
 			]
@@ -2451,7 +2451,7 @@
 					},
 					"trigger": "The desk switch is pressed or the trapdoor is opened",
 					"entries": [
-						"The charge on the door explodes. All creatures within 10 feet take {@damage 2d10+6} fire damage, {@damage 1d10+3} piercing damage, and {@damage 1d6} {@condition persistent damage ||persistent bleed damage} (DC 22 basic Reflex save). The room is filled with steam, making all creatures within the room {@condition concealed}. The trap then rolls initiative."
+						"The charge on the door explodes. All creatures within 10 feet take {@damage 2d10+6} fire damage, {@damage 1d10+3} piercing damage, and {@damage 1d6} {@condition persistent damage||persistent bleed damage} (DC 22 basic Reflex save). The room is filled with steam, making all creatures within the room {@condition concealed}. The trap then rolls initiative."
 					]
 				}
 			],
@@ -4117,7 +4117,7 @@
 					},
 					"trigger": "The trip wire is pulled or severed",
 					"entries": [
-						"An acid flask detonates, spraying acid at nearby creatures and causing the tub of boiling water to burst in the same direction. All creatures in a 5-foot cone east of the triggered boiling tub trap take {@damage 3d6} {@condition persistent damage ||persistent acid damage}, 3 acid splash damage, and {@damage 8d6+20} fire damage (DC 31 basic Reflex save)."
+						"An acid flask detonates, spraying acid at nearby creatures and causing the tub of boiling water to burst in the same direction. All creatures in a 5-foot cone east of the triggered boiling tub trap take {@damage 3d6} {@condition persistent damage||persistent acid damage}, 3 acid splash damage, and {@damage 8d6+20} fire damage (DC 31 basic Reflex save)."
 					],
 					"name": "Overflowing Boiling Water"
 				}
@@ -4289,7 +4289,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 36 {@skill Thievery} (master) to disable a chandelier or dispel magic (8th level; counteract DC 33) to permanently drain the magic from a chandelier. Any amount of cold damage that overcomes a chandelier's cold resistance extinguishes its flames and removes its {@condition persistent damage ||persistent fire damage} and flame dart attack. DC 41 {@skill Thievery} (legendary) to disable the entire trap from the {@condition hidden} control panel in the southeast corner of the room."
+					"DC 36 {@skill Thievery} (master) to disable a chandelier or dispel magic (8th level; counteract DC 33) to permanently drain the magic from a chandelier. Any amount of cold damage that overcomes a chandelier's cold resistance extinguishes its flames and removes its {@condition persistent damage||persistent fire damage} and flame dart attack. DC 41 {@skill Thievery} (legendary) to disable the entire trap from the {@condition hidden} control panel in the southeast corner of the room."
 				]
 			},
 			"defenses": {
@@ -4349,7 +4349,7 @@
 					"range": "Melee",
 					"name": "swinging chandelier",
 					"attack": 35,
-					"damage": "{@damage 3d12+25} bludgeoning and {@damage 4d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 3d12+25} bludgeoning and {@damage 4d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -4364,7 +4364,7 @@
 					"traits": [
 						"range <40 feet>"
 					],
-					"damage": "{@damage 4d8+20} fire and {@damage 4d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 4d8+20} fire and {@damage 4d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -6064,14 +6064,14 @@
 				},
 				{
 					"entries": [
-						"1\u20132: Acid Rain (acid) A torrent of acid drenches creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} acid damage (DC 42 basic Reflex save). Creatures that critically fail also take 5 {@condition persistent damage ||persistent acid damage}.",
+						"1\u20132: Acid Rain (acid) A torrent of acid drenches creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} acid damage (DC 42 basic Reflex save). Creatures that critically fail also take 5 {@condition persistent damage||persistent acid damage}.",
 						"3\u20134: Freezing Wind (cold) A barrage of freezing wind and hail assaults all creatures in a 20-foot burst.",
 						"Creatures in the area take {@damage 3d10} cold damage and {@damage 3d10} bludgeoning damage (DC 42 basic Reflex save)",
 						"Creatures that critically fail are {@condition slowed|CRB|slowed 1} for 1 round.",
 						"5\u20136: Bolts of Lightning (electricity) Several bolts of lightning strike all creatures in a 20-foot burst.",
 						"Creatures in the area take {@damage 6d10} electricity damage (DC 42 basic Reflex save). Creatures that critically fail their saves become {@condition blinded} and {@condition deafened} for 1 round.",
 						"7\u20138: Flaming Vortex (fire) Gouts of flame fall on all creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} fire damage (DC 42 basic Reflex save)",
-						"Creatures that critically fail their saves also take 5 {@condition persistent damage ||persistent fire damage}.",
+						"Creatures that critically fail their saves also take 5 {@condition persistent damage||persistent fire damage}.",
 						"9\u201310: Poison Miasma (poison) Poisonous mist rolls forth, covering a 20-foot burst for 1 round. Creatures within the mist become {@condition concealed}, and creatures outside it become {@condition concealed} to creatures within it. Creatures within the mist take {@damage 6d10} poison damage (DC 42 basic Fortitude save). Creatures that critically fail their saves become {@condition enfeebled|CRB|enfeebled 2}."
 					],
 					"name": "the PCs."
@@ -8852,7 +8852,7 @@
 					},
 					"trigger": "A creature steps onto the trap's pressure plate (indicated on the map)",
 					"entries": [
-						"The front of the iron maiden slams shut with incredible force and locks itself. The triggering creature takes {@damage 4d10+10} piercing damage and {@damage 2d6} {@condition persistent damage ||persistent bleed damage} (DC 26 basic Reflex save; if the creature critically succeeds, they avoid the trap completely). The triggering creature is also {@condition immobilized}. The victim can end their immobilization only once a creature outside the iron maiden unlocks the device (requiring two successful DC 28 {@skill Thievery} checks."
+						"The front of the iron maiden slams shut with incredible force and locks itself. The triggering creature takes {@damage 4d10+10} piercing damage and {@damage 2d6} {@condition persistent damage||persistent bleed damage} (DC 26 basic Reflex save; if the creature critically succeeds, they avoid the trap completely). The triggering creature is also {@condition immobilized}. The victim can end their immobilization only once a creature outside the iron maiden unlocks the device (requiring two successful DC 28 {@skill Thievery} checks."
 					],
 					"name": "Slam Shut"
 				},
@@ -9704,7 +9704,7 @@
 					},
 					"trigger": "A creature takes a {@condition hostile} action against Mogaru, produces a visible area effect, or flies within 120 feet of Mogaru",
 					"entries": [
-						"Mogaru breathes a 120-foot cone of fire toward the object of his ire. Flammable objects in the area immediately combust, and stone or metal surfaces warp into {@quickref difficult terrain||3|terrain}. Creatures in the area take {@damage 20d6} fire damage (DC 44 basic Reflex save). On a failed or critically failed save, a creature also takes {@damage 3d6} {@condition persistent damage ||persistent fire damage}."
+						"Mogaru breathes a 120-foot cone of fire toward the object of his ire. Flammable objects in the area immediately combust, and stone or metal surfaces warp into {@quickref difficult terrain||3|terrain}. Creatures in the area take {@damage 20d6} fire damage (DC 44 basic Reflex save). On a failed or critically failed save, a creature also takes {@damage 3d6} {@condition persistent damage||persistent fire damage}."
 					],
 					"name": "Volcanic Breath"
 				}
@@ -9826,7 +9826,7 @@
 					"range": "Melee",
 					"name": "poisoned needle",
 					"attack": 24,
-					"damage": "{@damage 2d6+8} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed} and {@damage 4d6} {@condition persistent damage ||persistent poison}",
+					"damage": "{@damage 2d6+8} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed} and {@damage 4d6} {@condition persistent damage||persistent poison}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -10769,7 +10769,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 15 {@skill Thievery} to carefully excavate a path through the wall without upsetting its balance, or DC 17 {@skill Athletics} to hold up any unstable portions."
+					"DC 15 {@skill Thievery} to carefully excavate a path through the wall without upsetting its balance, or DC 17 {@skill Athletics} to hold up any unstable portions"
 				]
 			},
 			"defenses": {
@@ -11240,7 +11240,7 @@
 					"traits": [
 						"range <40 feet>"
 					],
-					"damage": "{@damage 1d6+2} electricity damage and {@damage 1d6} {@condition persistent damage ||persistent electricity damage}",
+					"damage": "{@damage 1d6+2} electricity damage and {@damage 1d6} {@condition persistent damage||persistent electricity damage}",
 					"types": [
 						"electricity",
 						"persistent"
@@ -13168,7 +13168,7 @@
 					"range": "Ranged",
 					"name": "sharpened fragment",
 					"attack": 26,
-					"damage": "{@damage 2d8+12} slashing plus {@damage 1d8} {@condition persistent damage ||persistent bleed damage} on a critical hit",
+					"damage": "{@damage 2d8+12} slashing plus {@damage 1d8} {@condition persistent damage||persistent bleed damage} on a critical hit",
 					"types": [
 						"persistent",
 						"slashing"
@@ -14162,7 +14162,7 @@
 					],
 					"trigger": "A creature opens a secret compartment",
 					"entries": [
-						"The creature must succeed at a DC 38 Will save or be subjected to the witch-priests' curse. Whenever a cursed creature takes at least 10 piercing or slashing damage from a single attack, it also takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}. In addition, the cursed creature regains only half as many Hit Points as normal from all healing. The effect is permanent unless removed by magic."
+						"The creature must succeed at a DC 38 Will save or be subjected to the witch-priests' curse. Whenever a cursed creature takes at least 10 piercing or slashing damage from a single attack, it also takes {@damage 3d6} {@condition persistent damage||persistent bleed damage}. In addition, the cursed creature regains only half as many Hit Points as normal from all healing. The effect is permanent unless removed by magic."
 					],
 					"name": "Hex of the Bloody Thief"
 				}
@@ -14275,7 +14275,7 @@
 								"Critical Success": "The creature is unaffected.",
 								"Success": "The creature takes half damage.",
 								"Failure": "The creature takes full damage and becomes {@condition deafened} for 1 round.",
-								"Critical Failure": "The creature takes full damage, {@damage 2d8} {@condition persistent damage ||persistent electricity damage}, and becomes {@condition deafened} for 1 minute."
+								"Critical Failure": "The creature takes full damage, {@damage 2d8} {@condition persistent damage||persistent electricity damage}, and becomes {@condition deafened} for 1 minute."
 							}
 						}
 					],
@@ -14826,7 +14826,7 @@
 					],
 					"trigger": "A creature reads the letter",
 					"entries": [
-						"The haunt deals {@damage 2d8+11} slashing damage to the triggering creature as the words are carved into its flesh (DC 21 basic Will save). On a failure, the creature takes {@damage 2d8} {@condition persistent damage ||persistent bleed damage}."
+						"The haunt deals {@damage 2d8+11} slashing damage to the triggering creature as the words are carved into its flesh (DC 21 basic Will save). On a failure, the creature takes {@damage 2d8} {@condition persistent damage||persistent bleed damage}."
 					]
 				}
 			]
@@ -15010,7 +15010,7 @@
 					],
 					"trigger": "A creature approaches within 15 feet",
 					"entries": [
-						"Blood seeps from the eyes of all creatures within 30 feet, dealing {@condition persistent damage ||persistent bleed damage}. Each creature in the area must attempt a DC 33 Fortitude save.",
+						"Blood seeps from the eyes of all creatures within 30 feet, dealing {@condition persistent damage||persistent bleed damage}. Each creature in the area must attempt a DC 33 Fortitude save.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -15018,13 +15018,13 @@
 									"The creature is unaffected."
 								],
 								"Success": [
-									"The creature takes {@damage 2d8+3} {@condition persistent damage ||persistent bleed damage} and is {@condition dazzled} for 1 round."
+									"The creature takes {@damage 2d8+3} {@condition persistent damage||persistent bleed damage} and is {@condition dazzled} for 1 round."
 								],
 								"Failure": [
-									"The creature takes {@damage 4d8+6} {@condition persistent damage ||persistent bleed damage} and is {@condition dazzled} for as long as the {@condition persistent damage} lasts."
+									"The creature takes {@damage 4d8+6} {@condition persistent damage||persistent bleed damage} and is {@condition dazzled} for as long as the {@condition persistent damage} lasts."
 								],
 								"Critical Failure": [
-									"The creature takes {@damage 8d8+12} {@condition persistent damage ||persistent bleed damage} and is {@condition blinded} for as long as the {@condition persistent damage} lasts."
+									"The creature takes {@damage 8d8+12} {@condition persistent damage||persistent bleed damage} and is {@condition blinded} for as long as the {@condition persistent damage} lasts."
 								]
 							}
 						}
@@ -15135,10 +15135,10 @@
 									"The creature takes half damage."
 								],
 								"Failure": [
-									"The creature takes full damage, {@damage 2d8} {@condition persistent damage ||persistent bleed damage}, and is {@condition drained||drained 1}."
+									"The creature takes full damage, {@damage 2d8} {@condition persistent damage||persistent bleed damage}, and is {@condition drained||drained 1}."
 								],
 								"Critical Failure": [
-									"The creature takes double damage, {@damage 4d8} {@condition persistent damage ||persistent bleed damage}, and is {@condition drained||drained 2}."
+									"The creature takes double damage, {@damage 4d8} {@condition persistent damage||persistent bleed damage}, and is {@condition drained||drained 2}."
 								]
 							}
 						}

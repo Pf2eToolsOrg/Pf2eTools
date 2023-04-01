@@ -416,7 +416,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The dragon makes a jaws {@action Strike}. On a hit, the target takes {@damage 4d6} {@condition persistent damage ||persistent acid damage}, and is {@condition sickened 2} from the pain of salt and brine in its wounds."
+							"The dragon makes a jaws {@action Strike}. On a hit, the target takes {@damage 4d6} {@condition persistent damage||persistent acid damage}, and is {@condition sickened 2} from the pain of salt and brine in its wounds."
 						],
 						"name": "Desiccating Bite"
 					}
@@ -1234,7 +1234,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 4d6} {@condition persistent damage ||persistent fire damage}, and as long as it has this {@condition persistent damage ||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
+							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 4d6} {@condition persistent damage||persistent fire damage}, and as long as it has this {@condition persistent damage||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
 						],
 						"name": "Volcanic Purge"
 					}
@@ -2663,7 +2663,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The dragon makes a jaws {@action Strike}. On a hit, the target takes {@damage 6d6} {@condition persistent damage ||persistent acid damage}, and is {@condition sickened 3} from the pain of salt and brine in its wounds."
+							"The dragon makes a jaws {@action Strike}. On a hit, the target takes {@damage 6d6} {@condition persistent damage||persistent acid damage}, and is {@condition sickened 3} from the pain of salt and brine in its wounds."
 						],
 						"name": "Desiccating Bite"
 					},
@@ -3609,7 +3609,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 5d6} {@condition persistent damage ||persistent fire damage}, and as long as it has this {@condition persistent damage ||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
+							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 5d6} {@condition persistent damage||persistent fire damage}, and as long as it has this {@condition persistent damage||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
 						],
 						"name": "Volcanic Purge"
 					}
@@ -4222,7 +4222,7 @@
 						"cold iron",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d6+15} piercing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+15} piercing plus {@damage 2d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -4593,7 +4593,7 @@
 						},
 						"trigger": "A creature leaves the swarm's space",
 						"entries": [
-							"The swarm takes {@dice 1d6} damage as ants cling to the creature and continue biting, dealing {@damage 3d6} {@condition persistent damage ||persistent piercing damage}. High winds or immersion in water reduces the DC of the flat check to end this {@condition persistent damage} to 5. Any area damage dealt to the creature destroys these clinging ants."
+							"The swarm takes {@dice 1d6} damage as ants cling to the creature and continue biting, dealing {@damage 3d6} {@condition persistent damage||persistent piercing damage}. High winds or immersion in water reduces the DC of the flat check to end this {@condition persistent damage} to 5. Any area damage dealt to the creature destroys these clinging ants."
 						],
 						"name": "Cling"
 					}
@@ -5246,7 +5246,7 @@
 					"effects": [
 						"rotting curse"
 					],
-					"damage": "{@damage 3d12+14} piercing plus {@damage 4d6} {@condition persistent damage ||persistent bleed}, {@damage 1d6} chaotic, and rotting curse",
+					"damage": "{@damage 3d12+14} piercing plus {@damage 4d6} {@condition persistent damage||persistent bleed}, {@damage 1d6} chaotic, and rotting curse",
 					"types": [
 						"chaotic",
 						"persistent",
@@ -5264,7 +5264,7 @@
 						"finesse",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d8+14} slashing plus {@damage 4d6} {@condition persistent damage ||persistent bleed} and {@damage 1d6} chaotic",
+					"damage": "{@damage 3d8+14} slashing plus {@damage 4d6} {@condition persistent damage||persistent bleed} and {@damage 1d6} chaotic",
 					"types": [
 						"chaotic",
 						"persistent",
@@ -5488,7 +5488,7 @@
 						"magical",
 						"versatile <p>"
 					],
-					"damage": "{@dice 1d4-1} slashing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@dice 1d4-1} slashing plus {@damage 1d4} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -5735,7 +5735,7 @@
 				"bot": [
 					{
 						"entries": [
-							"When an aurumvorax scores a critical hit, the target takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"When an aurumvorax scores a critical hit, the target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Bleeding Critical"
 					},
@@ -5745,7 +5745,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The aurumvorax makes a jaws {@action Strike} against a creature it has {@condition grabbed}. If the attack hits, the target is knocked {@condition prone} if it is Medium or smaller. In addition, if the target is wearing armor with Hardness 10 or lower, the armor becomes {@condition broken}. If this {@action Strike} breaks a creature's armor or damages a creature that is unarmored or wearing {@condition broken} armor, the target also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}. This {@action Strike} doesn't further damage armor that's already {@condition broken}."
+							"The aurumvorax makes a jaws {@action Strike} against a creature it has {@condition grabbed}. If the attack hits, the target is knocked {@condition prone} if it is Medium or smaller. In addition, if the target is wearing armor with Hardness 10 or lower, the armor becomes {@condition broken}. If this {@action Strike} breaks a creature's armor or damages a creature that is unarmored or wearing {@condition broken} armor, the target also takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}. This {@action Strike} doesn't further damage armor that's already {@condition broken}."
 						],
 						"name": "Gnaw Metal"
 					},
@@ -6509,7 +6509,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@damage 2d6+6} slashing and {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+6} slashing and {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -8352,7 +8352,7 @@
 					"traits": [
 						"versatile bludgeoning"
 					],
-					"damage": "{@damage 2d6+8} slashing plus {@damage 1d6} {@condition persistent damage ||persistent cold}",
+					"damage": "{@damage 2d6+8} slashing plus {@damage 1d6} {@condition persistent damage||persistent cold}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -11055,7 +11055,7 @@
 							"primal"
 						],
 						"entries": [
-							"The calathgar expels thorny, frozen seeds in a 15-foot cone, dealing {@damage 1d6} piercing and {@damage 4d6} cold damage (DC 20 basic Reflex save). In mild cold or colder environments (Core Rulebook 518), these seeds cling to living creatures they strike, dealing {@damage 1d4} {@condition persistent damage ||persistent cold damage}. The calathgar can't use Seed Spray again for {@dice 1d4} rounds."
+							"The calathgar expels thorny, frozen seeds in a 15-foot cone, dealing {@damage 1d6} piercing and {@damage 4d6} cold damage (DC 20 basic Reflex save). In mild cold or colder environments (Core Rulebook 518), these seeds cling to living creatures they strike, dealing {@damage 1d4} {@condition persistent damage||persistent cold damage}. The calathgar can't use Seed Spray again for {@dice 1d4} rounds."
 						],
 						"name": "Seed Spray"
 					}
@@ -13923,7 +13923,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"A cornugon's tail {@action Strike} deals {@damage 4d6} {@condition persistent damage ||persistent bleed damage}.",
+							"A cornugon's tail {@action Strike} deals {@damage 4d6} {@condition persistent damage||persistent bleed damage}.",
 							"The DC of the flat check to stop the bleeding starts at 20 and is reduced to 15 only if someone successfully assists. The DC to {@action Administer First Aid} to a creature with an infernal wound increases by 10. A spellcaster or item using healing magic on an infernally {@condition wounded} creature must succeed at a DC 34 counteract check or the magic fails to heal the creature."
 						],
 						"name": "Infernal Wound"
@@ -14222,7 +14222,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A creature struck by the culdewen's fish hook is skewered, taking {@damage 1d4} {@condition persistent damage ||persistent bleed damage} as long as the hook remains stuck in it. The fish hook can be removed only if a creature spends an {@action Interact} action and succeeds at a DC 25 {@skill Athletics} check to pull it free."
+							"A creature struck by the culdewen's fish hook is skewered, taking {@damage 1d4} {@condition persistent damage||persistent bleed damage} as long as the hook remains stuck in it. The fish hook can be removed only if a creature spends an {@action Interact} action and succeeds at a DC 25 {@skill Athletics} check to pull it free."
 						],
 						"name": "Hooked"
 					},
@@ -14763,7 +14763,7 @@
 						"magical",
 						"trip"
 					],
-					"damage": "{@damage 2d6+6} slashing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+6} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -15133,8 +15133,8 @@
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The swarm disperses as soon as it deals its swarm spit {@action Strike} damage.",
-									"Success": "The swarm clings to the target and infests it, dealing {@damage 1d6} {@condition persistent damage ||persistent piercing damage}.",
-									"Failure": "The swarm clings to the target and infests it, dealing {@damage 2d6} {@condition persistent damage ||persistent piercing damage}.",
+									"Success": "The swarm clings to the target and infests it, dealing {@damage 1d6} {@condition persistent damage||persistent piercing damage}.",
+									"Failure": "The swarm clings to the target and infests it, dealing {@damage 2d6} {@condition persistent damage||persistent piercing damage}.",
 									"Critical Failure": "As failure, but the hissing sounds caused by the infestation also cause the target to become {@condition confused} for 1 round; this additional effect has the auditory, {@trait emotion}, and {@trait mental} traits."
 								}
 							}
@@ -15569,7 +15569,7 @@
 						"fatal <d10>",
 						"finesse"
 					],
-					"damage": "{@damage 2d6+4} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+4} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -17597,7 +17597,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@damage 1d4+3} piercing plus {@damage 1d4} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 1d4+3} piercing plus {@damage 1d4} {@condition persistent damage||persistent fire}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -17886,7 +17886,7 @@
 					"effects": [
 						"exquisite pain"
 					],
-					"damage": "{@damage 4d8+19} piercing plus {@damage 2d6} {@condition persistent damage ||persistent bleed} and exquisite pain",
+					"damage": "{@damage 4d8+19} piercing plus {@damage 2d6} {@condition persistent damage||persistent bleed} and exquisite pain",
 					"types": [
 						"persistent",
 						"piercing"
@@ -17905,7 +17905,7 @@
 						"exquisite pain",
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d6+19} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}, exquisite pain, and {@ability Improved Grab}",
+					"damage": "{@damage 3d6+19} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}, exquisite pain, and {@ability Improved Grab}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -18027,7 +18027,7 @@
 						],
 						"requirements": "The eremite has a creature {@condition grabbed}",
 						"entries": [
-							"The eremite excises flesh or bone from a creature it has {@condition grabbed}. The target takes {@damage 6d10} {@condition persistent damage ||persistent bleed damage}."
+							"The eremite excises flesh or bone from a creature it has {@condition grabbed}. The target takes {@damage 6d10} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Evisceration"
 					},
@@ -18381,7 +18381,7 @@
 					"effects": [
 						"impaling chain"
 					],
-					"damage": "{@damage 2d8+7} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed} and impaling chain",
+					"damage": "{@damage 2d8+7} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed} and impaling chain",
 					"types": [
 						"persistent",
 						"piercing"
@@ -18459,7 +18459,7 @@
 					},
 					{
 						"entries": [
-							"When the evangelist critically hits with a chain {@action Strike}, the target is impaled and anchored in place, becoming {@condition grabbed} by the chain. The creature is unable to recover from {@condition persistent damage ||persistent bleed damage} until it gets free (DC 25 {@action Escape})."
+							"When the evangelist critically hits with a chain {@action Strike}, the target is impaled and anchored in place, becoming {@condition grabbed} by the chain. The creature is unable to recover from {@condition persistent damage||persistent bleed damage} until it gets free (DC 25 {@action Escape})."
 						],
 						"name": "Impaling Chain"
 					}
@@ -18576,7 +18576,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 1d6} piercing damage (DC 20 basic Reflex save) and is exposed to pyrexic malaria. Creatures that fail the saving throw also take {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+							"Each enemy in the swarm's space takes {@damage 1d6} piercing damage (DC 20 basic Reflex save) and is exposed to pyrexic malaria. Creatures that fail the saving throw also take {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Swarming Bites"
 					}
@@ -18855,7 +18855,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@damage 2d6+3} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d6+3} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -18869,7 +18869,7 @@
 						"fire",
 						"range increment <20 feet>"
 					],
-					"damage": "{@damage 1d6+3} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 1d6+3} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -19156,7 +19156,7 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d6+16} bludgeoning plus {@damage 2d6} fire and {@damage 2d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d6+16} bludgeoning plus {@damage 2d6} fire and {@damage 2d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"fire",
@@ -19173,7 +19173,7 @@
 						"magical",
 						"range increment <60 feet>"
 					],
-					"damage": "{@damage 2d10+16} fire plus {@damage 2d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d10+16} fire plus {@damage 2d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -19283,8 +19283,8 @@
 							{
 								"type": "successDegree",
 								"entries": {
-									"Critical Success": "The fire yai {@action Stride||Strides} or Flies up to half its Speed in any direction. The struck creature takes {@damage 4d6} {@condition persistent damage ||persistent bleed damage} and is pushed along with the yai an equal distance. The creature is {@condition grabbed} until the yai's next turn or until the yai makes a katana {@action Strike}.",
-									"Success": "As critical success, but the creature takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage}.",
+									"Critical Success": "The fire yai {@action Stride||Strides} or Flies up to half its Speed in any direction. The struck creature takes {@damage 4d6} {@condition persistent damage||persistent bleed damage} and is pushed along with the yai an equal distance. The creature is {@condition grabbed} until the yai's next turn or until the yai makes a katana {@action Strike}.",
+									"Success": "As critical success, but the creature takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}.",
 									"Failure": "The struck creature is pushed back 5 feet.",
 									"Critical Failure": "The struck creature is unaffected."
 								}
@@ -20245,7 +20245,7 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 25,
-					"damage": "{@damage 3d8+10} piercing plus {@damage 2d6} {@condition persistent damage ||persistent cold}",
+					"damage": "{@damage 3d8+10} piercing plus {@damage 2d6} {@condition persistent damage||persistent cold}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -20436,7 +20436,7 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d12+10} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid}",
+					"damage": "{@damage 2d12+10} piercing plus {@damage 1d6} {@condition persistent damage||persistent acid}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -20937,15 +20937,9 @@
 						"entries": [
 							"The giant badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls {@condition unconscious}, whichever comes first.",
 							"While raging, the giant badger has AC 17, its jaws {@action Strike} deals {@dice 1d8+8} damage, and its claw {@action Strike} deals {@dice 1d6+6} damage. While raging, the giant badger also can't use actions that have the {@trait concentrate} trait except for {@action Seek}.",
-							"After it has stopped raging, a giant badger can't use."
+							"After it has stopped raging, a giant badger can't use Badger Rage again for 1 minute."
 						],
 						"name": "Badger Rage"
-					},
-					{
-						"entries": [
-							"{@action Rage} again for 1 minute."
-						],
-						"name": "Badger"
 					}
 				]
 			},
@@ -22549,7 +22543,7 @@
 					{
 						"entries": [
 							"Any creature hit by the giant slug or that moves into its mucus trail is coated in sticky, caustic mucus.",
-							"It takes {@damage 1d4} {@condition persistent damage ||persistent acid damage} and takes a \u20135-foot status penalty to its Speeds while the damage persists."
+							"It takes {@damage 1d4} {@condition persistent damage||persistent acid damage} and takes a \u20135-foot status penalty to its Speeds while the damage persists."
 						],
 						"name": "Mucus"
 					},
@@ -23056,7 +23050,7 @@
 				"bot": [
 					{
 						"entries": [
-							"When the giant tick {@action Strike||Strikes} a creature larger than itself, its barbed hypostome attaches it to that creature. This is similar to Grabbing the creature, but the giant tick moves with that creature rather than holding it in place. The giant tick is {@condition flat-footed} while attached. If the giant tick is killed or pushed away while attached to a creature on which it has used Blood Drain, that creature takes 1 {@condition persistent damage ||persistent bleed damage}. Escaping the attachment or removing the giant tick in other ways doesn't cause bleed damage."
+							"When the giant tick {@action Strike||Strikes} a creature larger than itself, its barbed hypostome attaches it to that creature. This is similar to Grabbing the creature, but the giant tick moves with that creature rather than holding it in place. The giant tick is {@condition flat-footed} while attached. If the giant tick is killed or pushed away while attached to a creature on which it has used Blood Drain, that creature takes 1 {@condition persistent damage||persistent bleed damage}. Escaping the attachment or removing the giant tick in other ways doesn't cause bleed damage."
 						],
 						"name": "Attach"
 					},
@@ -23498,7 +23492,7 @@
 						},
 						"requirements": "The wolverine has a creature {@condition grabbed} from its jaws {@action Strike}",
 						"entries": [
-							"The wolverine chews violently on the creature, dealing {@damage 2d6} piercing damage (DC 21 basic Fortitude save). A creature that fails its save also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage}."
+							"The wolverine chews violently on the creature, dealing {@damage 2d6} piercing damage (DC 21 basic Fortitude save). A creature that fails its save also takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Gnaw"
 					},
@@ -24568,7 +24562,7 @@
 						},
 						"requirements": "Grendel is grabbing a creature",
 						"entries": [
-							"Grendel makes a bludgeoning jaws {@action Strike} against the creature he's grabbing. On a hit, the creature also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and becomes {@condition wounded 1}, or increases its {@condition wounded} value by 1 if already {@condition wounded}. On a critical hit, the creature instead becomes {@condition wounded 2}, or increases its {@condition wounded} value by 2 if already {@condition wounded}. If a creature dies from Tooth Grind, Grendel regains 40 HP; this is a {@trait healing} effect."
+							"Grendel makes a bludgeoning jaws {@action Strike} against the creature he's grabbing. On a hit, the creature also takes {@damage 2d6} {@condition persistent damage||persistent bleed damage} and becomes {@condition wounded 1}, or increases its {@condition wounded} value by 1 if already {@condition wounded}. On a critical hit, the creature instead becomes {@condition wounded 2}, or increases its {@condition wounded} value by 2 if already {@condition wounded}. If a creature dies from Tooth Grind, Grendel regains 40 HP; this is a {@trait healing} effect."
 						],
 						"name": "Tooth Grind"
 					},
@@ -25797,7 +25791,7 @@
 				"bot": [
 					{
 						"entries": [
-							"On a critical hit, the hamatula's barbs deal {@damage 3d6} {@condition persistent damage ||persistent bleed damage}."
+							"On a critical hit, the hamatula's barbs deal {@damage 3d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Bloodletting"
 					},
@@ -27358,7 +27352,7 @@
 							"evocation"
 						],
 						"entries": [
-							"When the ice golem gets a critical hit with a fist {@action Strike}, the target also takes {@damage 2d6} {@condition persistent damage ||persistent cold damage} and is {@condition slowed 1} for 1 round."
+							"When the ice golem gets a critical hit with a fist {@action Strike}, the target also takes {@damage 2d6} {@condition persistent damage||persistent cold damage} and is {@condition slowed 1} for 1 round."
 						],
 						"name": "Creeping Cold"
 					}
@@ -27877,7 +27871,7 @@
 						"agile",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 2d6+13} slashing plus {@damage 1d6} {@condition persistent damage ||persistent cold}",
+					"damage": "{@damage 2d6+13} slashing plus {@damage 1d6} {@condition persistent damage||persistent cold}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -27890,7 +27884,7 @@
 					"traits": [
 						"range increment <60 feet>"
 					],
-					"damage": "{@damage 1d6+13} piercing plus {@damage 1d6} {@condition persistent damage ||persistent cold}",
+					"damage": "{@damage 1d6+13} piercing plus {@damage 1d6} {@condition persistent damage||persistent cold}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -28027,7 +28021,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@damage 1d6+1} piercing plus {@damage 1d6} {@condition persistent damage ||persistent cold}",
+					"damage": "{@damage 1d6+1} piercing plus {@damage 1d6} {@condition persistent damage||persistent cold}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -28172,7 +28166,7 @@
 					"traits": [
 						"range increment <30 feet>"
 					],
-					"damage": "{@damage 1d8} fire plus 1 {@condition persistent damage ||persistent fire damage} and 1 fire splash damage",
+					"damage": "{@damage 1d8} fire plus 1 {@condition persistent damage||persistent fire damage} and 1 fire splash damage",
 					"types": [
 						"fire",
 						"persistent"
@@ -28970,7 +28964,7 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 3d10+13} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d10+13} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -30060,7 +30054,7 @@
 						"magical",
 						"range increment <60 feet>"
 					],
-					"damage": "{@damage 10d6} fire plus {@damage 4d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 10d6} fire plus {@damage 4d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"persistent"
 					]
@@ -31613,7 +31607,7 @@
 						"reach <25 feet>",
 						"shove"
 					],
-					"damage": "{@damage 4d12+18} bludgeoning plus {@damage 2d6} {@condition persistent damage ||persistent fire damage}",
+					"damage": "{@damage 4d12+18} bludgeoning plus {@damage 2d6} {@condition persistent damage||persistent fire damage}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -31627,7 +31621,7 @@
 						"agile",
 						"reach <25 feet>"
 					],
-					"damage": "{@damage 4d10+18} piercing plus {@damage 2d6} {@condition persistent damage ||persistent fire damage}",
+					"damage": "{@damage 4d10+18} piercing plus {@damage 2d6} {@condition persistent damage||persistent fire damage}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -31641,7 +31635,7 @@
 						"brutal",
 						"range increment <120 feet>"
 					],
-					"damage": "{@damage 4d6+18} bludgeoning plus {@damage 2d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 4d6+18} bludgeoning plus {@damage 2d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -31708,7 +31702,7 @@
 							"primal"
 						],
 						"entries": [
-							"100 feet. Creatures in the emanation cannot recover from {@condition persistent damage ||persistent fire damage}."
+							"100 feet. Creatures in the emanation cannot recover from {@condition persistent damage||persistent fire damage}."
 						],
 						"name": "Tenacious Flames"
 					},
@@ -31758,7 +31752,7 @@
 									"Critical Success": "The creature is unaffected.",
 									"Success": "The creature takes half damage and is {@condition encumbered} for 1 round.",
 									"Failure": "The creature takes full damage and is {@condition immobilized} ({@action Escape} DC 46).",
-									"Critical Failure": "The creature takes double damage and is encased in a rocky crust with lava on the inside. The creature is {@condition restrained} ({@action Escape} DC 46), can't breathe, takes {@damage 3d12} {@condition persistent damage ||persistent fire damage}, and can't recover from this {@condition persistent damage ||persistent fire damage} until freed."
+									"Critical Failure": "The creature takes double damage and is encased in a rocky crust with lava on the inside. The creature is {@condition restrained} ({@action Escape} DC 46), can't breathe, takes {@damage 3d12} {@condition persistent damage||persistent fire damage}, and can't recover from this {@condition persistent damage||persistent fire damage} until freed."
 								}
 							}
 						],
@@ -32028,7 +32022,7 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 3d10+16} piercing plus {@damage 1d10} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d10+16} piercing plus {@damage 1d10} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -32965,7 +32959,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 2d6+9} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent fire} and Grab",
+					"damage": "{@damage 2d6+9} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent fire} and Grab",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -32981,7 +32975,7 @@
 					"effects": [
 						"magma scorpion venom"
 					],
-					"damage": "{@damage 1d10+9} piercing plus {@damage 1d6} {@condition persistent damage ||persistent fire} and magma scorpion venom",
+					"damage": "{@damage 1d10+9} piercing plus {@damage 1d6} {@condition persistent damage||persistent fire} and magma scorpion venom",
 					"types": [
 						"persistent",
 						"piercing"
@@ -32995,7 +32989,7 @@
 						"fire",
 						"range increment <40 feet>"
 					],
-					"damage": "{@damage 1d6+9} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 1d6+9} fire plus {@damage 1d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -33460,7 +33454,7 @@
 					"range": "Melee",
 					"name": "claw",
 					"attack": 29,
-					"damage": "{@damage 3d6+14} slashing plus {@damage 3d6} fire and {@damage 1d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 3d6+14} slashing plus {@damage 3d6} fire and {@damage 1d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent",
@@ -33475,7 +33469,7 @@
 						"fire",
 						"range increment <40 feet>"
 					],
-					"damage": "{@damage 6d6} fire plus {@damage 2d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 6d6} fire plus {@damage 2d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -33812,7 +33806,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The marsh giant makes a melee {@action Strike} with its gaff. If it hits, it twists and yanks the gaff to create an awful wound, dealing {@damage 3d6} {@condition persistent damage ||persistent bleed damage} to the creature."
+							"The marsh giant makes a melee {@action Strike} with its gaff. If it hits, it twists and yanks the gaff to create an awful wound, dealing {@damage 3d6} {@condition persistent damage||persistent bleed damage} to the creature."
 						],
 						"name": "Twist the Hook"
 					}
@@ -36010,7 +36004,7 @@
 						"trigger": "The mudwretch deals Constrict damage to a living creature that has blood",
 						"requirements": "The mudwretch is dehydrated",
 						"entries": [
-							"The mudwretch squeezes harder, dealing {@damage 1d6} {@condition persistent damage ||persistent bleed damage} to the target. The mudwretch absorbs this blood, removing any penalties it had as a result of being dehydrated."
+							"The mudwretch squeezes harder, dealing {@damage 1d6} {@condition persistent damage||persistent bleed damage} to the target. The mudwretch absorbs this blood, removing any penalties it had as a result of being dehydrated."
 						],
 						"name": "Gory Hydration"
 					},
@@ -37778,7 +37772,7 @@
 						],
 						"entries": [
 							"The nuckelavee breathes a 30-foot cone of foulness, dealing {@damage 8d6} negative damage (DC 28 basic Fortitude save) to living creatures in the area.",
-							"A creature that fails also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage}.",
+							"A creature that fails also takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}.",
 							"The nuckelavee can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
@@ -39353,7 +39347,7 @@
 						"finesse",
 						"magical"
 					],
-					"damage": "{@damage 2d6+2} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+2} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -39463,7 +39457,7 @@
 						"entries": [
 							"The ostiarius inspires their willing allies and themself by whispering words of courage from their wounds.",
 							"The ostiarius and their allies in a 50-foot emanation gain a +1 status bonus to attack rolls, damage rolls, and saves against {@trait fear} effects.",
-							"The ostiarius can Sustain Compel Courage. Non-velstracs who accept this compelled courage find bleeding wounds opening on their own bodies to whisper in thanks. They take 1 {@condition persistent damage ||persistent bleed damage} and can't attempt a flat check to end this damage as long as they're compelled."
+							"The ostiarius can Sustain Compel Courage. Non-velstracs who accept this compelled courage find bleeding wounds opening on their own bodies to whisper in thanks. They take 1 {@condition persistent damage||persistent bleed damage} and can't attempt a flat check to end this damage as long as they're compelled."
 						],
 						"name": "Compel Courage"
 					},
@@ -40011,7 +40005,7 @@
 				"mid": [
 					{
 						"entries": [
-							"If the peluda takes 30 or more slashing damage from a critical hit, the attacker severs the peluda's tail. The peluda takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and can't make tail attacks until their tail grows back (in about 1 week)."
+							"If the peluda takes 30 or more slashing damage from a critical hit, the attacker severs the peluda's tail. The peluda takes {@damage 2d6} {@condition persistent damage||persistent bleed damage} and can't make tail attacks until their tail grows back (in about 1 week)."
 						],
 						"name": "Vulnerable Tail"
 					},
@@ -40975,7 +40969,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The piscodaemon makes two claw {@action Strike||Strikes} against the same creature. If both hit, the creature takes {@damage 2d10} {@condition persistent damage ||persistent bleed damage} and is exposed to piscovenom."
+							"The piscodaemon makes two claw {@action Strike||Strikes} against the same creature. If both hit, the creature takes {@damage 2d10} {@condition persistent damage||persistent bleed damage} and is exposed to piscovenom."
 						],
 						"name": "Gory Rend"
 					},
@@ -41267,7 +41261,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The planetar makes a greatsword {@action Strike} against a target it detects as evil. If the target is evil, the {@action Strike} deals three extra weapon damage dice and deals {@damage 1d6} {@condition persistent damage ||persistent good damage} to the target.",
+							"The planetar makes a greatsword {@action Strike} against a target it detects as evil. If the target is evil, the {@action Strike} deals three extra weapon damage dice and deals {@damage 1d6} {@condition persistent damage||persistent good damage} to the target.",
 							"The planetar can convert all the physical damage from the attack into good damage."
 						],
 						"name": "Blade of Justice"
@@ -41530,7 +41524,7 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d8+17} slashing plus {@damage 2d6} evil and {@damage 4d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d8+17} slashing plus {@damage 2d6} evil and {@damage 4d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"evil",
 						"persistent",
@@ -41548,7 +41542,7 @@
 						"propulsive",
 						"range <120 feet>"
 					],
-					"damage": "{@damage 2d10+12} piercing plus {@damage 1d6} evil and {@damage 4d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d10+12} piercing plus {@damage 1d6} evil and {@damage 4d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"evil",
 						"persistent",
@@ -42247,7 +42241,7 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d6+13} slashing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+13} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -43051,7 +43045,7 @@
 							"fire"
 						],
 						"entries": [
-							"The ravener breathes a blast of flame that deals {@damage 20d6} fire damage plus {@damage 4d6} {@condition persistent damage ||persistent negative damage} (DC 44 basic Reflex save). A creature that fails its save is also {@condition drained 1} (or {@condition drained 2} on a critical failure). If a creature is {@condition drained} by the ravener's Ravenous Breath Weapon, the ravener's soul ward gains 5 HP. The ravener can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The ravener breathes a blast of flame that deals {@damage 20d6} fire damage plus {@damage 4d6} {@condition persistent damage||persistent negative damage} (DC 44 basic Reflex save). A creature that fails its save is also {@condition drained 1} (or {@condition drained 2} on a critical failure). If a creature is {@condition drained} by the ravener's Ravenous Breath Weapon, the ravener's soul ward gains 5 HP. The ravener can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Ravenous Breath Weapon"
 					},
@@ -44080,7 +44074,7 @@
 						"trip",
 						"versatile <s>"
 					],
-					"damage": "{@damage 2d8+9} piercing plus {@damage 1d6} evil and {@damage 2d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d8+9} piercing plus {@damage 1d6} evil and {@damage 2d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"evil",
 						"persistent",
@@ -44680,7 +44674,7 @@
 						"fatal <d12>",
 						"reach <20 feet>"
 					],
-					"damage": "{@damage 4d6+18} bludgeoning plus {@damage 3d6} {@condition persistent damage ||persistent electricity}",
+					"damage": "{@damage 4d6+18} bludgeoning plus {@damage 3d6} {@condition persistent damage||persistent electricity}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -48618,7 +48612,7 @@
 						},
 						"requirements": "The spinosaurus has a creature {@condition grabbed} in its jaws",
 						"entries": [
-							"The spinosaurus reaches up and slashes with its claws at the creature it has {@condition grabbed}, dealing {@damage 4d8} slashing damage (DC 30 basic Reflex save) and {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"The spinosaurus reaches up and slashes with its claws at the creature it has {@condition grabbed}, dealing {@damage 4d8} slashing damage (DC 30 basic Reflex save) and {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Rip and Tear"
 					},
@@ -50268,7 +50262,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@damage 2d8+5} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d8+5} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -53008,7 +53002,7 @@
 						},
 						"trigger": "A creature leaves the swarm's space",
 						"entries": [
-							"The swarm takes {@dice 1d6} damage as ticks cling to the creature and continue biting, dealing {@damage 3d6} {@condition persistent damage ||persistent piercing damage}. Immersion in water reduces the DC of the flat check to end this {@condition persistent damage} to 5, and any area damage dealt to the creature destroys these clinging ticks."
+							"The swarm takes {@dice 1d6} damage as ticks cling to the creature and continue biting, dealing {@damage 3d6} {@condition persistent damage||persistent piercing damage}. Immersion in water reduces the DC of the flat check to end this {@condition persistent damage} to 5, and any area damage dealt to the creature destroys these clinging ticks."
 						],
 						"name": "Cling"
 					}
@@ -53153,7 +53147,7 @@
 				"bot": [
 					{
 						"entries": [
-							"When a titan centipede scores a critical hit with its mandibles, the target is painfully pierced with barbed spines and bristles, taking {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and becoming {@condition flat-footed} as long as the bleed damage continues."
+							"When a titan centipede scores a critical hit with its mandibles, the target is painfully pierced with barbed spines and bristles, taking {@damage 1d6} {@condition persistent damage||persistent bleed damage} and becoming {@condition flat-footed} as long as the bleed damage continues."
 						],
 						"name": "Impaling Critical"
 					},
@@ -55057,7 +55051,7 @@
 					"effects": [
 						"blood siphon"
 					],
-					"damage": "{@damage 2d6} slashing damage plus {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and blood siphon",
+					"damage": "{@damage 2d6} slashing damage plus {@damage 1d6} {@condition persistent damage||persistent bleed damage} and blood siphon",
 					"types": [
 						"persistent",
 						"slashing"
@@ -57135,7 +57129,7 @@
 						},
 						"requirements": "The vrykolakas ancient's last action was to Drink Blood",
 						"entries": [
-							"The vrykolakas ancient makes two claw {@action Strike||Strikes}. Both count toward its multiple attack penalty, but the penalty increases only after it makes both attacks. If it hits with both claws, the target takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"The vrykolakas ancient makes two claw {@action Strike||Strikes}. Both count toward its multiple attack penalty, but the penalty increases only after it makes both attacks. If it hits with both claws, the target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Sanguine Mauling"
 					},
@@ -58872,21 +58866,15 @@
 							"evocation",
 							"force"
 						],
-						"trigger": "A magic missile is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
+						"trigger": "A {@i magic missile} is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
 						"frequency": {
 							"unit": "round",
 							"freq": 1
 						},
 						"entries": [
-							"The witchwyrd \"catches\" the missile, absorbing it and causing that hand to glow while it holds this energy. A hand that's holding energy can't be used for any other purpose except to use."
+							"The witchwyrd \"catches\" the missile, absorbing it and causing that hand to glow while it holds this energy. A hand that's holding energy can't be used for any other purpose except to use Force Bolt. The energy lasts for 6 rounds or until it is released."
 						],
 						"name": "Absorb Force"
-					},
-					{
-						"entries": [
-							"The energy lasts for 6 rounds or until it is released."
-						],
-						"name": "Force Bolt."
 					}
 				],
 				"bot": [
@@ -59668,7 +59656,7 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 4d8+14} {@condition persistent damage ||persistent piercing damage}",
+					"damage": "{@damage 4d8+14} {@condition persistent damage||persistent piercing damage}",
 					"types": [
 						"persistent"
 					]
@@ -60415,7 +60403,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The yamaraj breathes a blast of beetles in a 50-foot cone that deals {@damage 14d8} slashing damage and {@damage 4d8} {@condition persistent damage ||persistent slashing damage} to creatures in the area (DC 42 Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds.",
+							"The yamaraj breathes a blast of beetles in a 50-foot cone that deals {@damage 14d8} slashing damage and {@damage 4d8} {@condition persistent damage||persistent slashing damage} to creatures in the area (DC 42 Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
 								"entries": {

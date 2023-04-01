@@ -2540,6 +2540,15 @@
 									"name": "hydraulic torrent"
 								}
 							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
 						}
 					}
 				}
@@ -2554,15 +2563,6 @@
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"traits": [
-							"5th"
-						],
-						"entries": [
-							"tongues."
-						],
-						"name": "Constant"
 					},
 					{
 						"activity": {
@@ -4633,7 +4633,7 @@
 						"deadly <2d8>",
 						"finesse"
 					],
-					"damage": "{@damage 3d4+11} slashing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d4+11} slashing plus {@damage 2d10} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -4677,7 +4677,7 @@
 					},
 					{
 						"entries": [
-							"Jack deals slashing damage, the target takes an additional {@damage 2d10} {@condition persistent damage ||persistent bleed damage}."
+							"Jack deals slashing damage, the target takes an additional {@damage 2d10} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Close Cutter Whenever Twisted"
 					},
@@ -4687,7 +4687,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Twisted Jack makes three ranged dagger {@action Strike||Strikes}, each against a separate target; he ignores the multiple attack penalty until after making all three {@action Strike||Strikes}. On a critical hit, the target takes {@damage 2d10} {@condition persistent damage ||persistent bleed damage} and is {@condition blinded} for 1 round."
+							"Twisted Jack makes three ranged dagger {@action Strike||Strikes}, each against a separate target; he ignores the multiple attack penalty until after making all three {@action Strike||Strikes}. On a critical hit, the target takes {@damage 2d10} {@condition persistent damage||persistent bleed damage} and is {@condition blinded} for 1 round."
 						],
 						"name": "Fan of Daggers"
 					},

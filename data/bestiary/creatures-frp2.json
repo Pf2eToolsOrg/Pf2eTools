@@ -256,7 +256,7 @@
 						"splash 3 fire",
 						"thrown <20 feet>"
 					],
-					"damage": "{@damage 3d8+3} fire plus 3 {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 3d8+3} fire plus 3 {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -740,8 +740,8 @@
 								"entries": {
 									"Critical Success": "The creature is unaffected.",
 									"Success": "The creature takes half damage.",
-									"Failure": "The creature takes full damage and {@damage 1d6} {@condition persistent damage ||persistent fire damage} and loses 1 Focus Point. If it has no Focus Points, the creature instead loses a random prepared spell or spell slot from the highest level it has left (maximum 6th level).",
-									"Critical Failure": "As failure, but the creature takes double damage and {@damage 2d6} {@condition persistent damage ||persistent fire damage}."
+									"Failure": "The creature takes full damage and {@damage 1d6} {@condition persistent damage||persistent fire damage} and loses 1 Focus Point. If it has no Focus Points, the creature instead loses a random prepared spell or spell slot from the highest level it has left (maximum 6th level).",
+									"Critical Failure": "As failure, but the creature takes double damage and {@damage 2d6} {@condition persistent damage||persistent fire damage}."
 								}
 							}
 						],
@@ -3651,7 +3651,7 @@
 						"splash 3 fire",
 						"thrown <20 feet>"
 					],
-					"damage": "{@damage 3d8+3} fire plus 3 {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 3d8+3} fire plus 3 {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -4580,7 +4580,7 @@
 								"items": [
 									"{@bold Bone Corpse} When the minister successfully Drains Qi while in this stance, for 1 round each time the {@condition drained} creature {@action Stride||Strides} it must succeed at a DC {@flatDC 5} flat check or waste the action and fall {@condition prone}.",
 									"{@bold Cloudless Void} The jiang-shi gains a +1 circumstance bonus to AC and their claw {@action Strike||Strikes} gain the {@trait reach} trait.",
-									"{@bold Sundered Veins} Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage ||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled|CRB|enfeebled 1}."
+									"{@bold Sundered Veins} Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled|CRB|enfeebled 1}."
 								]
 							}
 						],
@@ -7800,7 +7800,7 @@
 						"entries": [
 							"Takatorra unleashes a flurry of attacks.",
 							"Takatorra makes five melee {@action Strike||Strikes}. Their multiple attack penalty applies as normal. They gain a cumulative +2 circumstance bonus to damage for each successful {@action Strike}.",
-							"If one target is hit with at least two of these {@action Strike||Strikes}, they also take {@damage 2d6} {@condition persistent damage ||persistent bleed damage}. They then become {@condition stunned|CRB|stunned 1} and {@condition flat-footed} until the start of their next turn."
+							"If one target is hit with at least two of these {@action Strike||Strikes}, they also take {@damage 2d6} {@condition persistent damage||persistent bleed damage}. They then become {@condition stunned|CRB|stunned 1} and {@condition flat-footed} until the start of their next turn."
 						],
 						"name": "Blade Barrage"
 					},
@@ -7997,7 +7997,7 @@
 					},
 					{
 						"entries": [
-							"Tino hits with his {@action Retributive Strike}, the target takes 3 {@condition persistent damage ||persistent good damage}."
+							"Tino hits with his {@action Retributive Strike}, the target takes 3 {@condition persistent damage||persistent good damage}."
 						],
 						"name": "Divine Smite If"
 					},
@@ -8170,7 +8170,7 @@
 						],
 						"requirements": "Troff is within reach of a creature that has taken cold damage since the end of Troff's last turn",
 						"entries": [
-							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy. Critical Success The creature is unaffected. Success The creature takes {@damage 2d4} {@condition persistent damage ||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage ||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage ||persistent cold damage} (allowing a new flat check to end it at DC 10). Failure As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
+							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy. Critical Success The creature is unaffected. Success The creature takes {@damage 2d4} {@condition persistent damage||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage||persistent cold damage} (allowing a new flat check to end it at DC 10). Failure As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
 						],
 						"name": "Chattering Blow",
 						"entries_as_xyz": "Ability not found: 'Chattering Blow As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty.' in Troff Frostknuckles, p.43"

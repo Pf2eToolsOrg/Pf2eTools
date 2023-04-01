@@ -701,14 +701,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Diplomacy} +10, {@skill Nature} +12, {@skill Survival} +10 Str +0, Dex +2, Con +0, Int +1, Wis +4, Cha +2 Items hide armor, shortsword."
-						],
-						"name": "Deception"
-					}
-				],
 				"bot": [
 					{
 						"type": "affliction",
@@ -939,6 +931,7 @@
 				"halfling",
 				"humanoid"
 			],
+			"description": "Male halfling rogue 3",
 			"perception": {
 				"std": 6
 			},
@@ -991,6 +984,13 @@
 				"wis": -1,
 				"cha": 2
 			},
+			"items": [
+				"dagger",
+				"leather armor",
+				"lesser healing potion (2)",
+				"+1 shortbow (20 arrows)",
+				"thieves' tools"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1039,36 +1039,21 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+7, {@skill Intimidation} +7, {@skill Lore||Mercantile Lore} +4"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+7, {@skill Stealth} +11, {@skill Thievery} +11 Str +2, Dex +4, Con +1, Int \u20131, Wis \u20131, Cha +2 Items dagger, leather armor, lesser healing potion (2), +1 shortbow (20 arrows), thieves' tools."
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"Advantage Calmont isn't {@condition flat-footed} to {@condition hidden}, {@condition undetected}, or flanking creatures of level 3 or lower."
+							"Calmont isn't {@condition flat-footed} to {@condition hidden}, {@condition undetected}, or flanking creatures of level 3 or lower."
 						],
-						"name": "Deny"
+						"name": "Deny Advantage"
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"pathfinder core rulebook 183"
+						"entries": [
+							"(pathfinder core rulebook 183)"
 						],
-						"entries": [],
 						"name": "Nimble Dodge"
 					}
 				],
@@ -1078,17 +1063,16 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 184"
+						"entries": [
+							"(pathfinder core rulebook 184)"
 						],
-						"entries": [],
 						"name": "Quick Draw"
 					},
 					{
 						"entries": [
-							"Attack Calmont deals {@damage 1d6} extra damage to flatfooted creatures."
+							"Calmont deals {@damage 1d6} extra damage to flat-footed creatures."
 						],
-						"name": "Sneak"
+						"name": "Sneak Attack"
 					},
 					{
 						"entries": [
@@ -2025,7 +2009,7 @@
 				"bot": [
 					{
 						"entries": [
-							"If the hellcrown hits with a nail {@action Strike}, the target must attempt a DC 16 Fortitude save. On a failure, the nail is embedded in the creature, making it {@condition enfeebled|CRB|enfeebled 1} for 1 minute and giving it 1 {@condition persistent damage ||persistent bleed damage} ({@condition enfeebled|CRB|enfeebled 2} and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} on a critical failure). Each additional embedded nail increases the {@condition enfeebled} value by 1 (to a maximum of {@condition enfeebled|CRB|enfeebled 4}) and the bleed damage by 1. A creature can remove a nail with an {@action Interact} action to reduce the enfeeblement and amount of bleed damage. Pulling out the last nail removes both conditions."
+							"If the hellcrown hits with a nail {@action Strike}, the target must attempt a DC 16 Fortitude save. On a failure, the nail is embedded in the creature, making it {@condition enfeebled|CRB|enfeebled 1} for 1 minute and giving it 1 {@condition persistent damage||persistent bleed damage} ({@condition enfeebled|CRB|enfeebled 2} and {@damage 1d4} {@condition persistent damage||persistent bleed damage} on a critical failure). Each additional embedded nail increases the {@condition enfeebled} value by 1 (to a maximum of {@condition enfeebled|CRB|enfeebled 4}) and the bleed damage by 1. A creature can remove a nail with an {@action Interact} action to reduce the enfeeblement and amount of bleed damage. Pulling out the last nail removes both conditions."
 						],
 						"name": "Bleeding Nail"
 					},
@@ -2091,6 +2075,7 @@
 				"charau-ka",
 				"humanoid"
 			],
+			"description": "Male charau-ka cleric 5",
 			"perception": {
 				"std": 13
 			},
@@ -2136,6 +2121,13 @@
 				"wis": 4,
 				"cha": 2
 			},
+			"items": [
+				"+1 chain shirt",
+				"Cinderclaw gauntlet (page 77)",
+				"gold religious symbol of {@deity Dahak|LOGM} (worth 20 gp)",
+				"hatchet",
+				"hunter's arrowhead (page 77)"
+			],
 			"speed": {
 				"walk": 25,
 				"climb": 25
@@ -2205,6 +2197,22 @@
 					"DC": 23,
 					"attack": 13,
 					"entry": {
+						"0": {
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -2241,7 +2249,10 @@
 								},
 								{
 									"name": "harm",
-									"amount": 3
+									"amount": 3,
+									"note": [
+										"deals d10s for damage instead of d8s"
+									]
 								}
 							]
 						}
@@ -2249,24 +2260,15 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+13, {@skill Stealth} +8 Str +3, Dex +2, Con +2, Int +0, Wis +4, Cha +2 Items +1 chain shirt, Cinderclaw gauntlet (page 77), gold religious symbol of {@deity Dahak|LOGM} (worth 20 gp), hatchet, hunter's arrowhead (page 77)"
-						],
-						"name": "Religion"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 122"
+						"entries": [
+							"(pathfinder core rulebook 122)"
 						],
-						"entries": [],
 						"name": "Channel Smite"
 					},
 					{
@@ -2333,7 +2335,8 @@
 			},
 			"skills": {
 				"athletics": {
-					"std": 6
+					"std": 6,
+					"to Climb in true or spider form": 8
 				},
 				"crafting": {
 					"std": 10,
@@ -2435,35 +2438,28 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+7, {@skill Medicine} +12, {@skill Nature} +10"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+10, {@skill Survival} +10 Str +0, Dex +2, Con +0, Int +2, Wis +4, Cha +1."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
+						"type": "affliction",
+						"name": "Anadi Venom",
 						"traits": [
 							"poison"
 						],
-						"entries": [
-							"Saving Throw DC 20 Fortitude"
-						],
-						"name": "Anadi Venom"
-					},
-					{
-						"entries": [
-							"4 rounds; Stage 1 {@damage 1d6} poison damage and {@condition flat-footed} (1 round); Stage 2 {@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1} (1 round)"
-						],
-						"name": "Maximum Duration"
+						"DC": 20,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -3283,6 +3279,11 @@
 				"wis": 0,
 				"cha": 3
 			},
+			"items": [
+				"book titled {@i History of the Bumblebrashers in Isger}",
+				"religious symbol of Desna",
+				"scholar's robes"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3326,12 +3327,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+7, {@skill Survival} +3 Str \u20131, Dex +2, Con +2, Int +2, Wis +0, Cha +3 Items book titled History of the Bumblebrashers in Isger, religious symbol of {@deity Desna}, scholar's robes."
-						],
-						"name": "Society"
-					},
 					{
 						"activity": {
 							"number": 1,

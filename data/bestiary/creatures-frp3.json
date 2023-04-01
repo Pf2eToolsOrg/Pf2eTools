@@ -626,7 +626,7 @@
 						],
 						"trigger": "The bul-gae takes damage",
 						"entries": [
-							"The bul-gae releases a solar flare in a 30-foot emanation. Each creature in the area takes {@damage 6d8} fire damage (DC 34 basic Reflex save). On a critical failure, a creature also takes {@damage 2d10} {@condition persistent damage ||persistent fire damage}. After using this ability, the bul-gae's flames cool and they can't use Solar Flare again until after they have used Lunar Burst."
+							"The bul-gae releases a solar flare in a 30-foot emanation. Each creature in the area takes {@damage 6d8} fire damage (DC 34 basic Reflex save). On a critical failure, a creature also takes {@damage 2d10} {@condition persistent damage||persistent fire damage}. After using this ability, the bul-gae's flames cool and they can't use Solar Flare again until after they have used Lunar Burst."
 						],
 						"name": "Solar Flare"
 					}
@@ -5018,13 +5018,13 @@
 				"bot": [
 					{
 						"entries": [
-							"A creature that takes cold damage from a sthira's {@action Strike||Strikes} or aura must attempt a DC 42 Fortitude save. A creature that already has {@condition persistent damage ||persistent cold damage} from frostbite ignores this effect.",
+							"A creature that takes cold damage from a sthira's {@action Strike||Strikes} or aura must attempt a DC 42 Fortitude save. A creature that already has {@condition persistent damage||persistent cold damage} from frostbite ignores this effect.",
 							{
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The creature is unaffected, and is temporarily immune to this ability for 1 hour.",
 									"Success": "The creature is unaffected.",
-									"Failure": "The creature takes {@damage 3d6} {@condition persistent damage ||persistent cold damage}.",
+									"Failure": "The creature takes {@damage 3d6} {@condition persistent damage||persistent cold damage}.",
 									"Critical Failure": "As failure, but the creature is also {@condition drained|CRB|drained 1}."
 								}
 							}
@@ -5033,7 +5033,7 @@
 					},
 					{
 						"entries": [
-							"Sthira (primal, necromancy) When a creature dies while it has {@condition persistent damage ||persistent cold damage} from the sthira's frostbite, the creature rises as a sthira in 24 hours. If the creature is grappled by the sthira when it dies, the {@condition dying} creature becomes permanently fused with the sthira instead. In this case, the sthira immediately recovers a number of Hit Points equal to the half the dead creature's maximum Hit Points."
+							"Sthira (primal, necromancy) When a creature dies while it has {@condition persistent damage||persistent cold damage} from the sthira's frostbite, the creature rises as a sthira in 24 hours. If the creature is grappled by the sthira when it dies, the {@condition dying} creature becomes permanently fused with the sthira instead. In this case, the sthira immediately recovers a number of Hit Points equal to the half the dead creature's maximum Hit Points."
 						],
 						"name": "Create"
 					}
@@ -5336,7 +5336,7 @@
 								"items": [
 									"The target becomes {@condition clumsy|CRB|clumsy 1} for 1 minute.",
 									"The target becomes {@condition enfeebled|CRB|enfeebled 1} for 1 minute.",
-									"The target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}.",
+									"The target takes {@damage 3d6} {@condition persistent damage||persistent bleed damage}.",
 									"The target can't {@action Step} for 1 minute."
 								]
 							}
@@ -5832,7 +5832,7 @@
 							"freq": 1
 						},
 						"entries": [
-							"While the Solar Jian II is not a combat vessel, it does have a magically renewing supply of fireworks for victory parades and the like. Yoh fires them at a 20-foot burst within 60 feet. Creatures in the area take {@damage 3d6} fire damage and {@damage 3d6} sonic damage with a Fortitude save. Critical Success The target is unaffected. Success The target takes half damage and is {@condition dazzled} for 1 round. Failure The target takes full damage and is {@condition dazzled} for 3 rounds. Critical Failure The target takes double damage, takes {@damage 3d4} {@condition persistent damage ||persistent fire damage}, and is {@condition dazzled} for 1 minute."
+							"While the Solar Jian II is not a combat vessel, it does have a magically renewing supply of fireworks for victory parades and the like. Yoh fires them at a 20-foot burst within 60 feet. Creatures in the area take {@damage 3d6} fire damage and {@damage 3d6} sonic damage with a Fortitude save. Critical Success The target is unaffected. Success The target takes half damage and is {@condition dazzled} for 1 round. Failure The target takes full damage and is {@condition dazzled} for 3 rounds. Critical Failure The target takes double damage, takes {@damage 3d4} {@condition persistent damage||persistent fire damage}, and is {@condition dazzled} for 1 minute."
 						],
 						"name": "Deploy Countermeasures"
 					},

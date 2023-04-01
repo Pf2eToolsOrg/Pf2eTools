@@ -433,7 +433,7 @@
 					],
 					"name": "jaws",
 					"attack": 27,
-					"damage": "{@damage 3d8+14} piercing plus {@damage 1d10} {@condition persistent damage ||persistent acid}"
+					"damage": "{@damage 3d8+14} piercing plus {@damage 1d10} {@condition persistent damage||persistent acid}"
 				},
 				{
 					"range": "Ranged",
@@ -1590,10 +1590,10 @@
 										"The creature takes half damage."
 									],
 									"Failure": [
-										"The creature takes full damage and catches fire, taking {@damage 1d6} {@condition persistent damage ||persistent fire damage}."
+										"The creature takes full damage and catches fire, taking {@damage 1d6} {@condition persistent damage||persistent fire damage}."
 									],
 									"Critical Failure": [
-										"As failure, but the {@condition persistent damage ||persistent fire damage} is {@dice 5d6}."
+										"As failure, but the {@condition persistent damage||persistent fire damage} is {@dice 5d6}."
 									]
 								}
 							}
@@ -2580,7 +2580,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The Jackal Guard lunges forward with their spear and delivers a piercing blow. The Jackal Guard Steps and then makes a melee spear {@action Strike}. On a hit, the target also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"The Jackal Guard lunges forward with their spear and delivers a piercing blow. The Jackal Guard Steps and then makes a melee spear {@action Strike}. On a hit, the target also takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						]
 					},
 					{

@@ -95,7 +95,7 @@
 			"prerequisites": "{@feat Rain of Embers Stance|LOPSG}",
 			"requirements": "You are in Rain of Embers Stance.",
 			"entries": [
-				"You rush forward and latch onto your enemy with talons of hungering fire. {@action Stride} once. If you end your movement within reach of at least one enemy, you can make a fire talon {@action Strike} against that enemy that deals an additional {@damage 1d4} {@condition persistent damage ||persistent fire damage}. If it hits and deals damage, you can attempt an {@skill Athletics} check to {@action Grapple} the creature you hit."
+				"You rush forward and latch onto your enemy with talons of hungering fire. {@action Stride} once. If you end your movement within reach of at least one enemy, you can make a fire talon {@action Strike} against that enemy that deals an additional {@damage 1d4} {@condition persistent damage||persistent fire damage}. If it hits and deals damage, you can attempt an {@skill Athletics} check to {@action Grapple} the creature you hit."
 			],
 			"leadsTo": [
 				"Explosive Death Drop|LOPSG"
@@ -233,7 +233,7 @@
 			"requirements": "You have successfully identified the target with {@action Recall Knowledge} during this combat.",
 			"entries": [
 				"Identifying a creature is the first step in finding its weaknesses.",
-				"Attempt a {@action Strike} against the target; if successful, you deal an additional {@damage 1d6} precision damage. If you have succeeded on a {@action Recall Knowledge} check against the target during this combat and their creature type was previously recorded using {@feat Thorough Reports|LOWG}, you also deal 1 point of {@condition persistent damage ||persistent bleed damage}. The creature is then temporarily immune to Discerning Strike for 1 day."
+				"Attempt a {@action Strike} against the target; if successful, you deal an additional {@damage 1d6} precision damage. If you have succeeded on a {@action Recall Knowledge} check against the target during this combat and their creature type was previously recorded using {@feat Thorough Reports|LOWG}, you also deal 1 point of {@condition persistent damage||persistent bleed damage}. The creature is then temporarily immune to Discerning Strike for 1 day."
 			]
 		},
 		{
@@ -353,8 +353,8 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target takes {@damage 12d6} fire damage and falls {@condition prone} in an unoccupied adjacent square of your choice. The target is no longer {@condition grabbed}. The target and any creature adjacent to it also each take {@damage 1d6} {@condition persistent damage ||persistent fire damage}.",
-						"Success": "As critical success, but the target takes {@damage 6d6} fire damage instead of {@dice 12d6}, and creatures don't take {@condition persistent damage ||persistent fire damage}.",
+						"Critical Success": "The target takes {@damage 12d6} fire damage and falls {@condition prone} in an unoccupied adjacent square of your choice. The target is no longer {@condition grabbed}. The target and any creature adjacent to it also each take {@damage 1d6} {@condition persistent damage||persistent fire damage}.",
+						"Success": "As critical success, but the target takes {@damage 6d6} fire damage instead of {@dice 12d6}, and creatures don't take {@condition persistent damage||persistent fire damage}.",
 						"Failure": "The target is no longer {@condition grabbed}.",
 						"Critical Failure": "As failure, but you fall {@condition prone}."
 					}

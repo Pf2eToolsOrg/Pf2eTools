@@ -357,14 +357,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+22, {@skill Survival} +21 Str +8, Dex +2, Con +5, Int +2, Wis +4, Cha +4."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -437,15 +429,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the."
+							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 3d6} {@condition persistent damage||persistent fire damage}, and as long as it has this {@condition persistent damage||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
 						],
 						"name": "Volcanic Purge"
-					},
-					{
-						"entries": [
-							"Weapon takes {@damage 3d6} {@condition persistent damage ||persistent fire damage}, and as long as it has this {@condition persistent damage ||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
-						],
-						"name": "Breath"
 					}
 				]
 			},
@@ -462,7 +448,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -660,14 +649,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Survival} +29 Str +8, Dex +4, Con +6, Int +4, Wis +5, Cha +6."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -740,15 +721,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Once per day, the dragon can spit a molten boulder at a target within 120 feet. This deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage, with a DC 42 basic Reflex save. If the creature fails its save, it's encased in magma that instantly cools and has Hardness 10, HP 40"
+							"Once per day, the dragon can spit a molten boulder at a target within 120 feet. This deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage, with a DC 42 basic Reflex save. If the creature fails its save, it's encased in magma that instantly cools and has Hardness 10, HP 40 and BT 20. The encased creature can't breathe and is {@condition restrained}."
 						],
 						"name": "Magma Tomb"
-					},
-					{
-						"entries": [
-							"20. The encased creature can't breathe and is {@condition restrained}."
-						],
-						"name": "and BT"
 					},
 					{
 						"activity": {
@@ -778,7 +753,10 @@
 					},
 					"will": {
 						"std": 30
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -789,6 +767,12 @@
 					"fire",
 					"paralyzed",
 					"sleep"
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "cold"
+					}
 				]
 			}
 		},
@@ -1028,6 +1012,12 @@
 				"wis": 4,
 				"cha": 1
 			},
+			"items": [
+				"+1 resilient breastplate",
+				"+1 composite shortbow (50 arrows)",
+				"key to Chiselrock's Prison",
+				"+1 striking maul"
+			],
 			"speed": {
 				"walk": 20
 			},
@@ -1060,14 +1050,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+20, {@skill Stealth} +25 Str +7, Dex +3, Con +5, Int +0, Wis +4, Cha +1 Items +1 resilient breastplate, +1 composite shortbow (50 arrows), key to Chiselrock's Prison, +1 striking maul."
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1088,7 +1070,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"A corrupt guard can dash their foe to the ground with a single blow. They attempt a single melee {@action Strike}. If this {@action Strike} hits, they also apply the critical success effect of a {@action Trip}. If they used a twohanded melee weapon (such as a maul) for the {@action Strike}, they can use the weapon's damage die size instead of the regular die size for the damage from a critical {@action Trip}, and they ignore {@action Trip}'s requirement to have a hand free."
+							"A corrupt guard can dash their foe to the ground with a single blow. They attempt a single melee {@action Strike}. If this {@action Strike} hits, they also apply the critical success effect of a {@action Trip}. If they used a two-handed melee weapon (such as a maul) for the {@action Strike}, they can use the weapon's damage die size instead of the regular die size for the damage from a critical {@action Trip}, and they ignore {@action Trip}'s requirement to have a hand free."
 						],
 						"name": "Improved Knockdown",
 						"generic": {
@@ -1241,7 +1223,7 @@
 						],
 						"entries": [
 							"Whenever the dalos takes damage from a melee {@action Strike}, magma splashes from its open wound and sticks to nearby creatures.",
-							"Each creature in a 10-foot emanation must attempt a DC 31 Reflex save. On a failure, the creature takes {@damage 3d6} {@condition persistent damage ||persistent fire damage} as the superheated rock sticks to them and cools. The DC to end this {@condition persistent damage} decreases by 5 each turn after the first as the magma cools."
+							"Each creature in a 10-foot emanation must attempt a DC 31 Reflex save. On a failure, the creature takes {@damage 3d6} {@condition persistent damage||persistent fire damage} as the superheated rock sticks to them and cools. The DC to end this {@condition persistent damage} decreases by 5 each turn after the first as the magma cools."
 						],
 						"name": "Magma Splash"
 					}
@@ -1917,6 +1899,12 @@
 				"wis": 5,
 				"cha": 3
 			},
+			"items": [
+				"+2 striking composite longbow (100 arrows)",
+				"+1 striking hatchet (2)",
+				"key to the Temple of All Gods",
+				"+1 resilient studded leather"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1981,14 +1969,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+21, {@skill Stealth} +27, {@skill Survival} +26 Str +4, Dex +8, Con +3, Int +2, Wis +5, Cha +3 Items +2 striking composite longbow (100 arrows), +1 striking hatchet (2), key to the Temple of All Gods, +1 resilient studded leather."
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -2015,16 +1995,10 @@
 							"concentrate"
 						],
 						"entries": [
-							"The slave lord designates as its prey a single creature that they can see or hear or that they are {@action Track||Tracking}. They gain a +2 circumstance bonus."
-						],
-						"name": "Hunt Prey"
-					},
-					{
-						"entries": [
-							"{@skill Perception} checks when they {@action Seek} their prey and a +2 circumstance bonus to {@skill Survival} checks when they track their prey. They also ignore the penalty for making ranged attacks within their second range increment against their prey.",
+							"The slave lord designates as its prey a single creature that they can see or hear or that they are {@action Track||Tracking}. They gain a +2 circumstance bonus to {@skill Perception} checks when they {@action Seek} their prey and a +2 circumstance bonus to {@skill Survival} checks when they track their prey. They also ignore the penalty for making ranged attacks within their second range increment against their prey.",
 							"The first time a slave lord hits their hunted prey in a round, they deal {@dice 2d8} additional precision damage. A slave lord can have only one prey designated at a time."
 						],
-						"name": "to"
+						"name": "Hunt Prey"
 					},
 					{
 						"activity": {
@@ -2055,7 +2029,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+2 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -2166,24 +2143,22 @@
 				"top": [
 					{
 						"entries": [
-							"+27, {@skill Lore||Saggorak Lore} +24, {@skill Society} +24"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+29 Str +4, Dex +8, Con +5, Int +3, Wis +2, Cha +6."
-						],
-						"name": "Stealth"
-					},
-					{
-						"entries": [
 							"Falrok's flesh is infused with lazurite, and he gains the benefits undead creatures gain from this mineral at all times. When in an area infused with lazurite, such as the Sanctum of the Starved, these benefits increase to a +3 circumstance bonus to saving throws against {@trait positive} effects. This infusion also grants Falrok his resistance to positive damage."
 						],
 						"name": "Lazurite-Infused Flesh"
 					}
 				],
 				"mid": [
+					{
+						"name": "Stench",
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"10 feet. A creature entering the aura or starting its turn there must succeed at a DC 34 Fortitude save or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} as long as it's {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+						]
+					},
 					{
 						"activity": {
 							"number": 1,
@@ -2238,8 +2213,7 @@
 							},
 							{
 								"stage": 4,
-								"entry": "dead, and rises as a ghast the next midnight.",
-								"duration": null
+								"entry": "dead, and rises as a ghast the next midnight."
 							}
 						]
 					},
@@ -2298,7 +2272,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+3 status to all saves vs. positive"
+					]
 				},
 				"hp": [
 					{
@@ -2309,7 +2286,17 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "positive"
+					}
 				]
 			}
 		},
@@ -2742,6 +2729,13 @@
 				"wis": 8,
 				"cha": 5
 			},
+			"items": [
+				"+2 resilient adamantine breastplate",
+				"Fleshroaster (+2 striking flaming spiked chain)",
+				"+1 striking returning light hammer",
+				"good manacles (4)",
+				"religious symbol of Droskar"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2922,17 +2916,33 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Cleric Domain",
+					"type": "Focus",
+					"DC": 36,
+					"fp": 3,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "commanding lash",
+									"note": [
+										"Core Rulebook 390"
+									]
+								},
+								{
+									"name": "touch of obedience",
+									"note": [
+										"Core Rulebook 398"
+									]
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Religion} +31 Str +6, Dex +4, Con +5, Int +4, Wis +8, Cha +5 Items +2 resilient adamantine breastplate, Fleshroaster (+2 striking flaming spiked chain), +1 striking returning light hammer, good manacles (4), religious symbol of {@deity Droskar|LOGM}."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -2956,8 +2966,9 @@
 							"attack",
 							"manipulate"
 						],
+						"requirements": "Ilssrah has manacles in hand and is adjacent to a creature.",
 						"entries": [
-							"Requirements Ilssrah has manacles in hand and is adjacent to a creature. Ilssrah attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +30 modifier against the target's AC, she applies the manacles."
+							"Ilssrah attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +30 modifier against the target's AC, she applies the manacles."
 						],
 						"name": "Efficient Capture"
 					},
@@ -2967,13 +2978,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Ilssrah attempts a melee {@action Strike} with Fleshroaster. If she hits, she also draws her light hammer, makes a melee {@action Strike} with it against the same target, and immediately returns it to her belt. She then resumes her grip."
-						],
-						"name": "Hammer the Chained"
-					},
-					{
-						"entries": [
-							"{@action Strike||Strikes} count toward Ilssrah's multiple attack penalty, but the penalty doesn't increase until both {@action Strike||Strikes} have been made.",
+							"Ilssrah attempts a melee {@action Strike} with Fleshroaster. If she hits, she also draws her light hammer, makes a melee {@action Strike} with it against the same target, and immediately returns it to her belt. She then resumes her grip on Fleshroaster. Both {@action Strike||Strikes} count toward Ilssrah's multiple attack penalty, but the penalty doesn't increase until both {@action Strike||Strikes} have been made.",
 							"If the hammer {@action Strike} hits, it deals damage as normal and the target must attempt a DC 35 Fortitude save.",
 							{
 								"type": "successDegree",
@@ -2985,7 +2990,7 @@
 								}
 							}
 						],
-						"name": "on Fleshroaster. Both"
+						"name": "Hammer the Chained"
 					}
 				]
 			},
@@ -3155,7 +3160,9 @@
 					"aklo",
 					"celestial",
 					"draconic",
-					"dwarven"
+					"dwarven",
+					"necril",
+					"undercommon"
 				]
 			},
 			"skills": {
@@ -3186,6 +3193,11 @@
 				"wis": 5,
 				"cha": 7
 			},
+			"items": [
+				"+1 resilient full plate",
+				"+2 thundering striking maul",
+				"wand of smoldering fireballs (7th-level fireball)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3287,6 +3299,9 @@
 								},
 								{
 									"name": "fly"
+								},
+								{
+									"name": "freedom of movement"
 								}
 							]
 						},
@@ -3335,20 +3350,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Arcana} +29, {@skill Crafting} +25, {@skill Diplomacy} +27"
-						],
-						"name": "Necril, Undercommon"
-					},
-					{
-						"entries": [
-							"+27, {@skill Religion} +25, {@skill Society} +23 Str +6, Dex +5, Con +0, Int +7, Wis +5, Cha +7 Items +1 resilient full plate, +2 thundering striking maul, wand of smoldering fireballs (7th-level {@spell fireball})"
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -3371,15 +3372,9 @@
 							"necromancy"
 						],
 						"entries": [
-							"24 hours after King Harral is destroyed, his body rebuilds itself on his throne (or, if the throne is destroyed, on the site where the throne once sat), similarly to how a lich's body is restored via its phylactery. If all of Saggorak's buildings are destroyed, or if heroes perform a great service in saving Saggorak (see Concluding the Adventure)"
+							"24 hours after King Harral is destroyed, his body rebuilds itself on his throne (or, if the throne is destroyed, on the site where the throne once sat), similarly to how a lich's body is restored via its phylactery. If all of Saggorak's buildings are destroyed, or if heroes perform a great service in saving Saggorak (see Concluding the Adventure) King Harral loses this ability."
 						],
 						"name": "Rejuvenation"
-					},
-					{
-						"entries": [
-							"Harral loses this ability."
-						],
-						"name": "King"
 					},
 					{
 						"activity": {
@@ -3415,7 +3410,10 @@
 					},
 					"will": {
 						"std": 28
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. positive"
+					]
 				},
 				"hp": [
 					{
@@ -3426,6 +3424,13 @@
 						]
 					}
 				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralysis",
+					"poison",
+					"unconscious"
+				],
 				"resistances": [
 					{
 						"amount": 10,
@@ -3433,7 +3438,8 @@
 					},
 					{
 						"amount": 10,
-						"name": "physical"
+						"name": "physical",
+						"note": "(except magic bludgeoning)"
 					}
 				]
 			}
@@ -4610,7 +4616,10 @@
 				"languages": [
 					"abyssal",
 					"common",
-					"draconic"
+					"draconic",
+					"ignan",
+					"terran",
+					"undercommon"
 				]
 			},
 			"skills": {
@@ -4736,37 +4745,20 @@
 									"amount": "at will"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "fire shield"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +30, {@skill Athletics} +30"
-						],
-						"name": "Ignan, Terran, Undercommon"
-					},
-					{
-						"entries": [
-							"+26, {@skill Intimidation} +32"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+24, {@skill Stealth} +27, {@skill Survival} +24 Str +7, Dex +4, Con +5, Int +4"
-						],
-						"name": "Nature"
-					},
-					{
-						"entries": [
-							"+4, Cha +6."
-						],
-						"name": "Wis"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -4795,15 +4787,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"4th"
-						],
-						"entries": [
-							"fire shield."
-						],
-						"name": "Constant"
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -4866,7 +4849,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -4898,6 +4884,7 @@
 				"large",
 				"aberration"
 			],
+			"description": "Male gug savant (Pathfinder Bestiary 198)",
 			"perception": {
 				"std": 26
 			},
@@ -5022,25 +5009,28 @@
 									"name": "flesh to stone"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									},
+									{
+										"name": "see invisibility"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+26, {@skill Stealth} +23, {@skill Survival} +24 Str +8, Dex +4, Con +5, Int +2, Wis +7, Cha +4."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
-							"unit": "varies",
-							"entry": "[{@as R}"
+							"unit": "reaction"
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
@@ -5050,15 +5040,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"4th"
-						],
-						"entries": [
-							"freedom of movement, see invisibility."
-						],
-						"name": "Constant"
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -5080,10 +5061,9 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"claw"
 						],
-						"entries": [],
 						"name": "Rend",
 						"generic": {
 							"tag": "ability"
@@ -5265,14 +5245,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16, {@skill Survival} +16 Str +6, Dex +1, Con +4, Int +0, Wis +3, Cha +3."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [

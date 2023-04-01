@@ -168,10 +168,10 @@
 										"The creature takes {@damage 2d6} fire damage."
 									],
 									"Failure": [
-										"The creature takes {@damage 3d6} fire damage plus {@damage 1d6} {@condition persistent damage ||persistent fire damage}."
+										"The creature takes {@damage 3d6} fire damage plus {@damage 1d6} {@condition persistent damage||persistent fire damage}."
 									],
 									"Critical Failure": [
-										"The creature takes {@damage 5d6} fire damage plus {@damage 2d6} {@condition persistent damage ||persistent fire damage}."
+										"The creature takes {@damage 5d6} fire damage plus {@damage 2d6} {@condition persistent damage||persistent fire damage}."
 									]
 								}
 							}
@@ -273,7 +273,7 @@
 					],
 					"name": "jaws",
 					"attack": 7,
-					"damage": "{@damage 1d4} piercing plus {@damage 1d4} {@condition persistent damage ||persistent fire}"
+					"damage": "{@damage 1d4} piercing plus {@damage 1d4} {@condition persistent damage||persistent fire}"
 				},
 				{
 					"range": "Ranged",
@@ -283,7 +283,7 @@
 					],
 					"name": "wax glob",
 					"attack": 8,
-					"damage": "{@damage 1d4} {@condition persistent damage ||persistent fire}"
+					"damage": "{@damage 1d4} {@condition persistent damage||persistent fire}"
 				}
 			],
 			"abilities": {
