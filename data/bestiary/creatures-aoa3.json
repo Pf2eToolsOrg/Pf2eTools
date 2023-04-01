@@ -248,7 +248,9 @@
 					"celestial",
 					"common",
 					"draconic",
-					"gnoll"
+					"gnoll",
+					"infernal",
+					"shadowtongue"
 				]
 			},
 			"skills": {
@@ -260,6 +262,9 @@
 				},
 				"deception": {
 					"std": 21
+				},
+				"intimidation": {
+					"std": 19
 				},
 				"religion": {
 					"std": 15
@@ -282,7 +287,10 @@
 			"items": [
 				"dagger",
 				"+1 explorer's clothing",
-				"The Extraplanar"
+				"The Extraplanar Registry (his arcane focus; see page 45 for more on this book)",
+				"keys to each dormitory door and slave manacles",
+				"good manacles (marked with the symbol of the Scarlet Triad)",
+				"+1 striking morningstar"
 			],
 			"speed": {
 				"walk": 25
@@ -452,32 +460,38 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Wizard School",
+					"type": "Focus",
+					"DC": 22,
+					"fp": 2,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "augment summoning",
+									"note": "Pathfinder Core Rulebook 406"
+								},
+								{
+									"name": "dimensional steps",
+									"note": "Pathfinder Core Rulebook 406"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"rituals": [
+						{
+							"name": "planar binding"
+						}
+					]
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Arcana} +22, {@skill Athletics} +15, {@skill Deception} +21, {@skill Intimidation} +19, {@skill Lore||Shadow Plane Lore} +26, {@skill Religion} +15, {@skill Thievery} +19 Str +2, Dex +4, Con +2, Int +5, Wis +2, Cha +4 Items dagger, +1 explorer's clothing, The Extraplanar."
-						],
-						"name": "Infernal, Shadowtongue"
-					},
-					{
-						"traits": [
-							"his arcane focus; see page 45 for more on this book"
-						],
-						"entries": [
-							", keys to each dormitory door and slave manacles, good manacles (marked with the symbol of the Scarlet."
-						],
-						"name": "Registry"
-					},
-					{
-						"entries": [
-							"+1 striking morningstar."
-						],
-						"name": "Triad)"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -506,8 +520,9 @@
 							"attack",
 							"manipulate"
 						],
+						"requirements": "Barushak has manacles in hand and is adjacent to a creature.",
 						"entries": [
-							"Requirements Barushak has manacles in hand and is adjacent to a creature. Barushak attempts to bind the creature's wrists or ankles with the manacles. He must succeed at an attack roll with a +21 modifier against the target's AC."
+							"Barushak attempts to bind the creature's wrists or ankles with the manacles. He must succeed at an attack roll with a +21 modifier against the target's AC."
 						],
 						"name": "Efficient Capture"
 					},
@@ -780,12 +795,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+11, {@skill Lore||Torture Lore} +12 Str +4, Dex +3, Con +2, Int +0, Wis +1, Cha +1."
-						],
-						"name": "Religion"
-					},
-					{
 						"traits": [
 							"divination",
 							"divine"
@@ -872,7 +881,10 @@
 					},
 					"will": {
 						"std": 11
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -881,6 +893,9 @@
 							"{@ability regeneration} 10 (deactivated by good or silver)"
 						]
 					}
+				],
+				"immunities": [
+					"cold"
 				],
 				"weaknesses": [
 					{
@@ -1145,6 +1160,16 @@
 				"wis": 1,
 				"cha": 4
 			},
+			"items": [
+				"dagger (3)",
+				"keys to manacles",
+				"leather armor",
+				"+1 striking",
+				"mace",
+				"average manacles (marked with the symbol of the Scarlet Triad)",
+				"spellbook",
+				"infiltrator's thieves tools"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1280,26 +1305,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+19, {@skill Lore||Mercantile Lore} +16, {@skill Society} +16"
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
-							"+16 Str +3, Dex +2, Con +3, Int +1, Wis +1, Cha +4 Items dagger (3), keys to manacles, leather armor, +1 striking mace, average manacles (marked with the symbol of the."
-						],
-						"name": "Thievery"
-					},
-					{
-						"entries": [
-							"Triad), spellbook, infiltrator's thieves tools."
-						],
-						"name": "Scarlet"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1315,14 +1320,23 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							"Heuberk's next turn."
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"linguistic"
 						],
-						"name": "of"
+						"requirements": "A creature is {@condition flat-footed} against Heuberk's next melee attack.",
+						"entries": [
+							"Heuberk points out a lapse in the creature's defenses. The creature is {@condition flat-footed} against all melee attacks attempted by any of Heuberk's allies who hear and understand this instruction until the start of Heuberk's next turn."
+						],
+						"name": "Identify an Opening"
 					},
 					{
 						"entries": [
-							"{@dice 2d6}."
+							"{@dice 2d6}"
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -1442,6 +1456,14 @@
 					"tradition": "divine",
 					"DC": 33,
 					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "stabilize"
+								}
+							]
+						},
 						"4": {
 							"spells": [
 								{
@@ -1477,12 +1499,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+26, {@skill Religion} +22, {@skill Stealth} +19, {@skill Lore||Torture Lore} +20 Str +7, Dex +3, Con +5, Int +2, Wis +6, Cha +5."
-						],
-						"name": "Medicine"
-					},
 					{
 						"traits": [
 							"divination",
@@ -1521,15 +1537,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"6th"
-						],
-						"entries": [
-							"stabilize."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -1572,18 +1579,31 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
 						"hp": 215,
 						"abilities": [
-							"regeneration"
+							"regeneration 20 (deactivated by good or silver)"
 						]
 					}
 				],
 				"immunities": [
 					"cold"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 15
+					},
+					{
+						"name": "silver",
+						"amount": 15
+					}
 				]
 			},
 			"hasImages": true
@@ -1880,6 +1900,9 @@
 				},
 				"thievery": {
 					"std": 22
+				},
+				"slaver lore": {
+					"std": 20
 				}
 			},
 			"abilityMods": {
@@ -1890,6 +1913,14 @@
 				"wis": 3,
 				"cha": 4
 			},
+			"items": [
+				"+1 flaming striking composite longbow (40 arrows)",
+				"key ring (opens locks in Summershade Quarry)",
+				"+1 resilient leather armor",
+				"average manacles (3)",
+				"ring of fire resistance",
+				"+1 striking scimitar"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1938,26 +1969,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+20, {@skill Society} +20, {@skill Stealth} +22, {@skill Survival} +22"
-						],
-						"name": "Lore"
-					},
-					{
-						"entries": [
-							"+22 Str +4, Dex +5, Con +3, Int +1, Wis +3, Cha +4 Items +1 flaming striking composite longbow (40 arrows), key ring (opens locks in Summershade."
-						],
-						"name": "Thievery"
-					},
-					{
-						"entries": [
-							"+1 resilient leather armor, average manacles (3), ring of fire resistance, +1 striking scimitar."
-						],
-						"name": "Quarry)"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1965,26 +1976,20 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"Laslunn can use."
+							"Laslunn can use Attack of Opportunity with ranged weapons if the triggering creature is within 5 feet."
 						],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"entries": [
-							"Opportunity with ranged weapons if the triggering creature is within 5 feet."
-						],
-						"name": "Attack of"
 					}
 				],
 				"bot": [
 					{
 						"entries": [
-							"Expertise Laslunn doesn't take the penalty from the {@trait volley} trait, and her ranged {@action Strike||Strikes} don't trigger reactions."
+							"Laslunn doesn't take the penalty from the {@trait volley} trait, and her ranged {@action Strike||Strikes} don't trigger reactions."
 						],
-						"name": "Archery"
+						"name": "Archery Expertise"
 					},
 					{
 						"activity": {
@@ -2017,15 +2022,15 @@
 					},
 					{
 						"entries": [
-							"Attack Laslunn deals an extra {@dice 2d8} damage to any creature that's within reach of at least one of her allies."
+							"Laslunn deals an extra {@dice 2d8} damage to any creature that's within reach of at least one of her allies."
 						],
-						"name": "Superior Pack"
+						"name": "Superior Pack Attack"
 					},
 					{
 						"entries": [
-							"{@action Travel|GMG} Laslunn ignores the first square of {@quickref difficult terrain||3|terrain} she moves into each time she {@action Step||Steps} or {@action Stride||Strides}."
+							"Laslunn ignores the first square of {@quickref difficult terrain||3|terrain} she moves into each time she {@action Step||Steps} or {@action Stride||Strides}."
 						],
-						"name": "Rugged"
+						"name": "Rugged Travel"
 					},
 					{
 						"activity": {
@@ -2230,7 +2235,8 @@
 					"draconic",
 					"elven",
 					"halfling",
-					"infernal"
+					"infernal",
+					"shadowtongue"
 				]
 			},
 			"skills": {
@@ -2260,6 +2266,9 @@
 				},
 				"thievery": {
 					"std": 22
+				},
+				"kintargo lore": {
+					"std": 16
 				}
 			},
 			"abilityMods": {
@@ -2270,6 +2279,12 @@
 				"wis": 3,
 				"cha": 4
 			},
+			"items": [
+				"+1 hand crossbow (20 bolts)",
+				"+1 leather armor",
+				"+1 striking rapier",
+				"infiltrator thieves' tools"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -2373,32 +2388,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Arcana} +18, {@skill Acrobatics} +17, {@skill Deception} +22"
-						],
-						"name": "Shadowtongue"
-					},
-					{
-						"entries": [
-							"+21, {@skill Intimidation} +18, Kintargo."
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+16, {@skill Occultism} +16, {@skill Society} +20, {@skill Stealth} +19"
-						],
-						"name": "Lore"
-					},
-					{
-						"entries": [
-							"+22 Str +0, Dex +5, Con +1, Int +4, Wis +3, Cha +4 Items +1 hand crossbow (20 bolts), +1 leather armor, +1 striking rapier, infiltrator thieves' tools."
-						],
-						"name": "Thievery"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -2419,6 +2408,12 @@
 					}
 				],
 				"bot": [
+					{
+						"entries": [
+							"Mialari can use telekinesis to perform manipulate actions that use the {@skill Thievery} skill at a range of 30 feet, but she takes a \u22122 circumstance penalty to her check when doing so."
+						],
+						"name": "Ranged Legerdemain"
+					},
 					{
 						"traits": [
 							"precision"
@@ -2445,9 +2440,9 @@
 					},
 					{
 						"entries": [
-							"Mialari hits with a critical hit are {@condition flat-footed} against her attacks until the end of her next turn."
+							"Creatures Mialari hits with a critical hit are {@condition flat-footed} against her attacks until the end of her next turn."
 						],
-						"name": "Unbalancing Blow Creatures"
+						"name": "Unbalancing Blow"
 					}
 				]
 			},
@@ -2528,6 +2523,12 @@
 				"wis": 4,
 				"cha": 3
 			},
+			"items": [
+				"dagger (2)",
+				"+1 leather armor",
+				"Nolly's hoe (+1 anarchic striking halfling sling staff; 10 bullets)",
+				"infiltrator thieves' tools"
+			],
 			"speed": {
 				"abilities": [
 					"quick movements"
@@ -2581,20 +2582,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Society} +22, {@skill Stealth} +22"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+20 Str +2, Dex +5, Con +1, Int +1, Wis +4, Cha +3 Items dagger (2), +1 leather armor, Nolly's hoe (+1 anarchic striking halfling sling staff; 10 bullets), infiltrator thieves' tools."
-						],
-						"name": "Thievery"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2703,6 +2690,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Scarlet Triad bruiser",
 			"perception": {
 				"std": 19
 			},
@@ -2723,6 +2711,9 @@
 				},
 				"stealth": {
 					"std": 19
+				},
+				"sailing lore": {
+					"std": 18
 				}
 			},
 			"abilityMods": {
@@ -2733,6 +2724,13 @@
 				"wis": 5,
 				"cha": 2
 			},
+			"items": [
+				"chain shirt",
+				"+1 striking greatclub",
+				"keys to manacles",
+				"average manacles (3, marked with the symbol of the Scarlet Triad)",
+				"+1 shortbow (10 arrows)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2781,20 +2779,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Stealth} +19 Str +5, Dex +3, Con +5, Int +0, Wis +5, Cha +2 Items chain shirt, +1 striking greatclub, keys to manacles, average manacles (3, marked with the symbol of the."
-						],
-						"name": "Sailing Lore"
-					},
-					{
-						"entries": [
-							"+1 shortbow (10 arrows)"
-						],
-						"name": "Scarlet Triad)"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3697,14 +3681,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+23 (+25 to sing), {@skill Stealth} +25 Str +4, Dex +5, Con +3, Int +1, Wis +3, Cha +7."
-						],
-						"name": "Performance"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -3747,7 +3723,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d8+10} bludgeoning, DC 32."
+							"{@damage 2d8+10} bludgeoning, DC 32"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -3932,21 +3908,9 @@
 				"top": [
 					{
 						"entries": [
-							"+19, {@skill Diplomacy} +21, {@skill Intimidation} +17"
+							"Rusty Mae adds earthbind, passwall, and spellwrack to her coven's spells."
 						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+22, {@skill Stealth} +19 Str +7, Dex +5, Con +5, Int +4, Wis +6, Cha +5."
-						],
-						"name": "Religion"
-					},
-					{
-						"entries": [
-							"Mae adds earthbind, passwall, and spellwrack to her coven's spells."
-						],
-						"name": "Coven Rusty"
+						"name": "Coven"
 					}
 				],
 				"bot": [
@@ -4020,11 +3984,23 @@
 					},
 					"will": {
 						"std": 19
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
 						"hp": 155
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "physical",
+						"note": [
+							"(except bludgeoning)"
+						]
 					}
 				]
 			}
@@ -4079,6 +4055,16 @@
 				"wis": 2,
 				"cha": 1
 			},
+			"items": [
+				"addlebrain (2 doses, page 71)",
+				"expanded alchemist's tools",
+				"greater antidote",
+				"+1 striking crossbow (10 bolts poisoned with giant scorpion venom)",
+				"keys to manacles",
+				"leather armor",
+				"good manacles (marked with the symbol of the Scarlet Triad)",
+				"+1 shortsword"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -4115,26 +4101,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Deception} +15"
-						],
-						"name": "Crafting"
-					},
-					{
-						"entries": [
-							"+16, {@skill Stealth} +16 Str +0, Dex +4, Con +3, Int +4, Wis +2, Cha +1 Items addlebrain (2 doses, page 71), expanded alchemist's tools, greater antidote, +1 striking crossbow (10 bolts poisoned with giant scorpion venom), keys to manacles, leather armor, good manacles (marked with the symbol of the Scarlet."
-						],
-						"name": "Medicine"
-					},
-					{
-						"entries": [
-							"+1 shortsword."
-						],
-						"name": "Triad)"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -4165,11 +4131,20 @@
 					},
 					"will": {
 						"std": 14
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. poison"
+					]
 				},
 				"hp": [
 					{
 						"hp": 135
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "poison"
 					}
 				]
 			}
@@ -4223,6 +4198,15 @@
 				"wis": 0,
 				"cha": 2
 			},
+			"items": [
+				"bloodseeker beak (affixed to rapier)",
+				"dagger (3)",
+				"keys to manacles",
+				"leather armor",
+				"average manacles (marked with the symbol of the Scarlet Triad)",
+				"+1 rapier",
+				"thieves' tools"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -4271,14 +4255,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+10, {@skill Stealth} +16, {@skill Thievery} +14 Str +2, Dex +4, Con +2, Int +0, Wis +0, Cha +2 Items bloodseeker beak (affixed to rapier), dagger (3), keys to manacles, leather armor, average manacles (marked with the symbol of the Scarlet Triad), +1 rapier, thieves' tools."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -4315,14 +4291,15 @@
 							"attack",
 							"manipulate"
 						],
+						"requirements": "The sneak has manacles in hand and is adjacent to a creature.",
 						"entries": [
-							"Requirements The sneak has manacles in hand and is adjacent to a creature. The sneak attempts to bind the creature's wrists or ankles with the manacles. If the sneak succeeds at an attack roll with a +16 modifier against the target's AC, they apply the manacles."
+							"The sneak attempts to bind the creature's wrists or ankles with the manacles. If the sneak succeeds at an attack roll with a +16 modifier against the target's AC, they apply the manacles."
 						],
 						"name": "Efficient Capture"
 					},
 					{
 						"entries": [
-							"{@dice 2d6}."
+							"{@dice 2d6}"
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -4473,7 +4450,7 @@
 					},
 					{
 						"entries": [
-							"{@dice 2d6}."
+							"{@dice 2d6}"
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -4562,6 +4539,13 @@
 				"wis": 2,
 				"cha": 2
 			},
+			"items": [
+				"chain mail",
+				"+1 flail",
+				"keys to manacles",
+				"javelin (3)",
+				"average manacles (marked with the symbol of the Scarlet Triad)"
+			],
 			"speed": {
 				"walk": 20
 			},
@@ -4594,18 +4578,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+13, {@skill Thievery} +13 Str +4, Dex +2, Con +3, Int +0, Wis +2, Cha +2 Items chain mail, +1 flail, keys to manacles, javelin (3), average manacles (marked with the symbol of the."
-						],
-						"name": "Survival"
-					},
-					{
-						"entries": [],
-						"name": "Scarlet Triad)"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -4635,8 +4607,8 @@
 							"attack",
 							"manipulate"
 						],
+						"requirements": "The thug has manacles in hand and is next to a creature.",
 						"entries": [
-							"Requirements The thug has manacles in hand and is next to a creature.",
 							"The thug attempts to bind the creature's wrists or ankles with the manacles. The thug must succeed at an attack roll with a +18 modifier against the target's AC."
 						],
 						"name": "Efficient Capture"
@@ -4662,7 +4634,10 @@
 					},
 					"will": {
 						"std": 15
-					}
+					},
+					"abilities": [
+						"+2 circumstance on saves vs. {@action Shove}, {@action Trip}, or being knocked prone"
+					]
 				},
 				"hp": [
 					{

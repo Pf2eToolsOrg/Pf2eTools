@@ -369,6 +369,9 @@
 					"common",
 					"draconic",
 					"infernal"
+				],
+				"abilities": [
+					"telepathy 100 feet"
 				]
 			},
 			"skills": {
@@ -511,14 +514,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Stealth} +26, {@skill Lore||Warfare Lore} +30 Str +8, Dex +6, Con +7, Int +2, Wis +6, Cha +6 Items +2 greater striking unholy spiked chain."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -528,7 +523,7 @@
 							"evil"
 						],
 						"entries": [
-							"10 feet. A constant circle of protection against good is centered on the horned devil. The horned devil can disable or activate this aura as a single action, which has the {@trait concentrate} trait."
+							"10 feet. A constant {@spell circle of protection} against good is centered on the horned devil. The horned devil can disable or activate this aura as a single action, which has the {@trait concentrate} trait."
 						],
 						"name": "Circle of Protection"
 					},
@@ -539,7 +534,7 @@
 							"enchantment"
 						],
 						"entries": [
-							"100 feet. Lowerlevel, allied evil creatures in the aura gain a +1 circumstance bonus to attack rolls, damage rolls, AC, saves, and skill checks."
+							"100 feet. Lower-level, allied evil creatures in the aura gain a +1 circumstance bonus to attack rolls, damage rolls, AC, saves, and skill checks."
 						],
 						"name": "Commander's Aura"
 					},
@@ -580,15 +575,9 @@
 						},
 						"requirements": "The cornugon hit a creature with its spiked chain on its most recent action this turn",
 						"entries": [
-							"The devil pulls the creature 5 feet closer and grabs it with the spiked chain ({@action Escape} attempts use the cornugon's."
+							"The devil pulls the creature 5 feet closer and grabs it with the spiked chain ({@action Escape} attempts use the cornugon's Athletics DC). The creature is automatically freed if the devil makes another spiked chain attack or moves away."
 						],
 						"name": "Chain of Malebolge"
-					},
-					{
-						"entries": [
-							"The creature is automatically freed if the devil makes another spiked chain attack or moves away."
-						],
-						"name": "Athletics DC)."
 					},
 					{
 						"traits": [
@@ -621,7 +610,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -635,6 +627,19 @@
 					{
 						"amount": 15,
 						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "physical",
+						"note": [
+							"(except silver)"
+						]
+					},
+					{
+						"amount": 15,
+						"name": "poison"
 					}
 				]
 			},
@@ -1763,14 +1768,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Religion} +25 Str +8, Dex +2, Con +8, Int +5, Wis +5, Cha +4."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -1802,7 +1799,7 @@
 							"extradimensional"
 						],
 						"entries": [
-							"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into its hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a bag of holding), it vomits up all the items."
+							"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into its hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a {@item bag of holding}), it vomits up all the items."
 						],
 						"name": "ClaimWealth"
 					},
@@ -1822,15 +1819,9 @@
 							"freq": 1
 						},
 						"entries": [
-							"Beams of unholy light shoot out from the nalfeshnee toward four items within 60 feet. If someone is holding or wearing a targeted item, they can keep it from being affected with a DC 34 Reflex save. For 1 minute, all affected items glow in nauseating colors. Any non-demon is {@condition sickened|CRB|sickened 2} and {@condition slowed|CRB|slowed 1} as long as it holds, wears, or touches a glowing item. Recovering from this sickness requires a DC 29 Will save instead of a Fortitude save. Ending the sickness in this way ends the {@condition slowed} condition and makes the creature temporarily immune."
+							"Beams of unholy light shoot out from the nalfeshnee toward four items within 60 feet. If someone is holding or wearing a targeted item, they can keep it from being affected with a DC 34 Reflex save. For 1 minute, all affected items glow in nauseating colors. Any non-demon is {@condition sickened|CRB|sickened 2} and {@condition slowed|CRB|slowed 1} as long as it holds, wears, or touches a glowing item. Recovering from this sickness requires a DC 29 Will save instead of a Fortitude save. Ending the sickness in this way ends the {@condition slowed} condition and makes the creature temporarily immune to the Light of Avarice for 24 hours. If the creature removes or drops the item, both the conditions end immediately, but the creature doesn't become immune."
 						],
 						"name": "Light of Avarice"
-					},
-					{
-						"entries": [
-							"Avarice for 24 hours. If the creature removes or drops the item, both the conditions end immediately, but the creature doesn't become immune."
-						],
-						"name": "to the Light of"
 					}
 				]
 			},
@@ -1847,7 +1838,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -1921,6 +1915,13 @@
 				"wis": 5,
 				"cha": 4
 			},
+			"items": [
+				"+2 greater striking composite shortbow (40 arrows)",
+				"+2 striking shortsword",
+				"+2 resilient studded leather armor",
+				"infiltrator thieves' tools",
+				"arrow with weeping midnight poison (page 79)"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1955,14 +1956,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+31, {@skill Society} +28, {@skill Stealth} +30, {@skill Thievery} +33 Str +6, Dex +9, Con +5, Int +7, Wis +5, Cha +4 Items +2 greater striking composite shortbow (40 arrows), +2 striking shortsword, +2 resilient studded leather armor, infiltrator thieves' tools, arrow with weeping midnight poison (page 79)"
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1989,7 +1982,7 @@
 					},
 					{
 						"entries": [
-							"{@dice 4d6}."
+							"{@dice 4d6}"
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -2208,7 +2201,9 @@
 					"abyssal",
 					"common",
 					"daemonic",
-					"draconic"
+					"draconic",
+					"infernal",
+					"osiriani"
 				]
 			},
 			"skills": {
@@ -2233,6 +2228,11 @@
 				"wis": 4,
 				"cha": 7
 			},
+			"items": [
+				"+2 striking dagger",
+				"greater healing potion",
+				"wand of crushing despair"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2347,22 +2347,15 @@
 					}
 				}
 			],
-			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Arcana} +30, {@skill Crafting} +27, {@skill Intimidation} +25"
-						],
-						"name": "Infernal, Osiriani"
-					},
-					{
-						"entries": [
-							"+27 Str +3, Dex +6, Con +4, Int +5, Wis +4, Cha +7 Items +2 striking dagger, greater healing potion, wand of crushing despair."
-						],
-						"name": "Occultism"
-					}
-				]
-			},
+			"rituals": [
+				{
+					"rituals": [
+						{
+							"name": "planar binding"
+						}
+					]
+				}
+			],
 			"defenses": {
 				"ac": {
 					"std": 37
@@ -2376,17 +2369,30 @@
 					},
 					"will": {
 						"std": 29
-					}
+					},
+					"abilities": [
+						"+2 status to all saves vs. arcane magic"
+					]
 				},
 				"hp": [
 					{
 						"hp": 270
 					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "electricity"
+					},
+					{
+						"amount": 10,
+						"name": "fire"
+					}
 				]
 			}
 		},
 		{
-			"name": "Shak",
+			"name": "Bshez \"Sand Claws\" Shak",
 			"isNpc": false,
 			"source": "AoA5",
 			"page": 34,
@@ -2429,6 +2435,13 @@
 				"wis": 3,
 				"cha": 5
 			},
+			"items": [
+				"+2 greater striking javelin",
+				"+2 greater striking thundering kukri (2)",
+				"potion of flying",
+				"potion of quickness",
+				"+2 resilient scale mail"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -2465,12 +2478,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+33, {@skill Performance} +33, {@skill Society} +28 Str +6, Dex +8, Con +5, Int +3, Wis +3, Cha +5 Items +2 greater striking javelin, +2 greater striking thundering kukri (2), potion of flying, potion of quickness, +2 resilient scale mail."
-						],
-						"name": "Intimidation"
-					},
 					{
 						"entries": [
 							"Bshez gains a +2 circumstance bonus to initiative rolls."
@@ -2510,26 +2517,17 @@
 						},
 						"requirements": "Bshez is standing in an area with loose sand or soil",
 						"entries": [
-							"Bshez flings sand into an adjacent creature's eyes. If the target fails a DC 38 Reflex save, they are {@condition dazzled} until the beginning."
+							"Bshez flings sand into an adjacent creature's eyes. If the target fails a DC 38 Reflex save, they are {@condition dazzled} until the beginning of Bshez's next turn. If they critically fail, they are {@condition blinded} until the beginning of Bshez's next turn. If they succeed, they are unaffected. Regardless of their save, they're temporarily immune until the battle ends."
 						],
 						"name": "Fling Sand in the Eyes"
-					},
-					{
-						"entries": [
-							"Bshez's next turn. If they critically fail, they are {@condition blinded} until the beginning of Bshez's next turn. If they succeed, they are unaffected. Regardless of their save, they're temporarily immune until the battle ends."
-						],
-						"name": "of"
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"thundering"
-						],
 						"entries": [
-							"kukri."
+							"{@i thundering kukri}"
 						],
 						"name": "Rend",
 						"generic": {
@@ -2538,7 +2536,7 @@
 					},
 					{
 						"entries": [
-							"When the target of Bshez's javelin {@action Strike} uses Shield Block, the {@action Strike} deals an additional {@dice 4d6} damage to the shield."
+							"When the target of Bshez's javelin {@action Strike} uses {@feat Shield Block}, the {@action Strike} deals an additional {@dice 4d6} damage to the shield."
 						],
 						"name": "Shield Breaker"
 					},
@@ -2767,6 +2765,7 @@
 				"tiny",
 				"undead"
 			],
+			"description": "Female {@creature demilich}",
 			"perception": {
 				"std": 25
 			},
@@ -2783,7 +2782,10 @@
 					"abyssal",
 					"ancient osiriani",
 					"daemonic",
-					"draconic"
+					"draconic",
+					"elven",
+					"infernal",
+					"necril"
 				]
 			},
 			"skills": {
@@ -2886,24 +2888,21 @@
 									"name": "wail of the banshee"
 								}
 							]
+						},
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +31, {@skill Arcana} +38, {@skill Deception} +33"
-						],
-						"name": "Elven, Infernal, Necril"
-					},
-					{
-						"entries": [
-							"+35, {@skill Religion} +31, {@skill Stealth} +33 Str \u20133, Dex +6, Con +0, Int +8, Wis \u20132, Cha +6 Items demilich eye gem (2)"
-						],
-						"name": "Occultism"
-					},
 					{
 						"entries": [
 							"As demilich."
@@ -2949,15 +2948,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"6th"
-						],
-						"entries": [
-							"true seeing."
-						],
-						"name": "Constant"
-					},
 					{
 						"traits": [
 							"arcane"
@@ -3024,7 +3014,10 @@
 					},
 					"will": {
 						"std": 35
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. positive"
+					]
 				},
 				"hp": [
 					{
@@ -3036,12 +3029,30 @@
 				],
 				"immunities": [
 					"disease",
-					"paralyzed"
+					"paralyzed",
+					"poison",
+					"polymorph",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 10,
 						"name": "cold"
+					},
+					{
+						"amount": 10,
+						"name": "electricity"
+					},
+					{
+						"amount": 10,
+						"name": "fire"
+					},
+					{
+						"amount": 10,
+						"name": "physical",
+						"note": [
+							"(except bludgeoning)"
+						]
 					}
 				]
 			}
@@ -3068,15 +3079,22 @@
 					"draconic",
 					"dwarven",
 					"gnoll",
-					"kelesh"
+					"kelesh",
+					"osiriani"
 				]
 			},
 			"skills": {
 				"acrobatics": {
 					"std": 37
 				},
+				"arcana": {
+					"std": 33
+				},
 				"athletics": {
 					"std": 37
+				},
+				"deception": {
+					"std": 40
 				},
 				"diplomacy": {
 					"std": 37
@@ -3105,6 +3123,17 @@
 				"wis": 8,
 				"cha": 9
 			},
+			"items": [
+				"+2 greater resilient chain mail",
+				"+2 striking returning dagger",
+				"superior manacles",
+				"oblivion essence (page 79)",
+				"+3 major striking speed scimitar",
+				"steel shield with +2 greater striking shield spikes (Hardness 5, HP 20, BT 10)",
+				"wasp trapped in amber (portal key)",
+				"weeping midnight (page 79)",
+				"winged boots"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -3151,26 +3180,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +37, {@skill Arcana} + 33, {@skill Athletics} +37, {@skill Deception} +40, {@skill Diplomacy} +37, {@skill Intimidation} +40, {@skill Society} +27"
-						],
-						"name": "Osiriani"
-					},
-					{
-						"entries": [
-							"+31, {@skill Thievery} +33, {@skill Lore||Underworld Lore} +31 Str +9, Dex +7, Con +5, Int +7, Wis +8, Cha +9 Items +2 greater resilient chain mail, +2 striking returning dagger, superior manacles, oblivion essence (page 79), +3 major striking speed scimitar, steel shield with +2 greater striking shield spikes (Hardness 5, HP 20, BT 10), wasp trapped in amber (portal key), weeping midnight (page 79), winged boots."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"Uri rolls a success on a Will saving throw, he gets a critical success instead; if he rolls a critical failure on a Will save, he gets a failure instead."
+							"If Uri rolls a success on a Will saving throw, he gets a critical success instead; if he rolls a critical failure on a Will save, he gets a failure instead."
 						],
-						"name": "Perfect Will If"
+						"name": "Perfect Will"
 					},
 					{
 						"activity": {
@@ -3188,9 +3203,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature within",
+						"trigger": "A creature within Uri's reach fails an attack roll, saving throw, or skill check",
 						"entries": [
-							"Uri's reach fails an attack roll, saving throw, or skill check; Uri makes an unarmed {@action Strike} against the triggering creature. If the attack hits, the target must succeed at a DC 41 Fortitude save or become {@condition enfeebled|CRB|enfeebled 3} until the end of its next turn ({@condition enfeebled|CRB|enfeebled 4} on a critical failure)."
+							"Uri makes an unarmed {@action Strike} against the triggering creature. If the attack hits, the target must succeed at a DC 41 Fortitude save or become {@condition enfeebled|CRB|enfeebled 3} until the end of its next turn ({@condition enfeebled|CRB|enfeebled 4} on a critical failure)."
 						],
 						"name": "Punish Imperfection"
 					},
@@ -3262,7 +3277,10 @@
 						"std": 29
 					},
 					"will": {
-						"std": 35
+						"std": 35,
+						"abilities": [
+							"perfect will"
+						]
 					}
 				},
 				"hp": [
@@ -3449,20 +3467,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+14, {@skill Diplomacy} +15"
-						],
-						"name": "Desert Lore"
-					},
-					{
-						"entries": [
-							"+15, one or more {@skill Lore} skills related to a specific plane Str +3, Dex +3, Con +1, Int +4, Wis +3, Cha +5 Items +1 ranseur."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3479,15 +3483,9 @@
 							"freq": 1
 						},
 						"entries": [
-							"The witchwyrd uses a free hand to \"catch\" a single magic missile fired at it, as long as it is aware of the incoming magic missile. This absorbs the missile and causes that hand to glow while it holds this energy. A hand that's holding energy can't be used for any other purpose except to use."
+							"The witchwyrd uses a free hand to \"catch\" a single {@i magic missile} fired at it, as long as it is aware of the incoming {@i magic missile}. This absorbs the missile and causes that hand to glow while it holds this energy. A hand that's holding energy can't be used for any other purpose except to use Force Bolt. The energy lasts for 6 rounds or until it is released."
 						],
 						"name": "Absorb Force"
-					},
-					{
-						"entries": [
-							"The energy lasts for 6 rounds or until it is released."
-						],
-						"name": "Force Bolt."
 					}
 				],
 				"bot": [
@@ -3503,7 +3501,7 @@
 							"force"
 						],
 						"entries": [
-							"The witchwyrd fires one magic missile per action spent (dealing {@dice 1d4+1} damage each). It can't spend more actions on this ability than it has free hands. If it uses a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
+							"The witchwyrd fires one {@i magic missile} per action spent (dealing {@dice 1d4+1} damage each). It can't spend more actions on this ability than it has free hands. If it uses a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
 						],
 						"name": "Force Bolt"
 					}
@@ -3750,6 +3748,9 @@
 				},
 				"society": {
 					"std": 22
+				},
+				"katapesh lore": {
+					"std": 24
 				}
 			},
 			"abilityMods": {
@@ -3760,6 +3761,12 @@
 				"wis": 4,
 				"cha": 4
 			},
+			"items": [
+				"+1 resilient breastplate",
+				"greater healing potion",
+				"+1 striking heavy crossbow (10 bolts)",
+				"+2 striking scimitar"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3800,14 +3807,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Society} +22 Str +8, Dex +5, Con +5, Int +2, Wis +4, Cha +4 Items +1 resilient breastplate, greater healing potion, +1 striking heavy crossbow (10 bolts), +2 striking scimitar."
-						],
-						"name": "Lore"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3845,9 +3844,9 @@
 					},
 					{
 						"entries": [
-							"Guard takes no penalty for making nonlethal attacks with a weapon that doesn't have the {@trait nonlethal} trait. The guard's nonlethal {@action Strike||Strikes} against a creature that is not wielding a weapon deal an additional {@dice 2d6} damage."
+							"A Zephyr Guard takes no penalty for making nonlethal attacks with a weapon that doesn't have the {@trait nonlethal} trait. The guard's nonlethal {@action Strike||Strikes} against a creature that is not wielding a weapon deal an additional {@dice 2d6} damage."
 						],
-						"name": "Subduing Strikes A Zephyr"
+						"name": "Subduing Strikes"
 					}
 				]
 			},
