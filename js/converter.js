@@ -859,8 +859,16 @@ class Converter {
 			savingThrows[prop] = {std: bonus};
 			if (this._tokenIsType("PARENTHESIS")) {
 				const parenthesisText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
-				const regexOtherST = /\+(\d+)\s(.+)/g;
-				Array.from(parenthesisText.matchAll(regexOtherST)).forEach(m => savingThrows[prop][m[2]] = Number(m[1]));
+				const regexOtherST = /^\+(\d+)\s+(.+)$/;
+				parenthesisText.split(",").map(t => t.trim()).forEach(t => {
+					const match = regexOtherST.exec(t);
+					if (match) {
+						savingThrows[prop][match[2]] = Number(match[1]);
+					} else {
+						savingThrows[prop].abilities = savingThrows[prop].abilities || [];
+						savingThrows[prop].abilities.push(t)
+					}
+				});
 			}
 		}
 		if (this._tokenIsType(this._tokenizerUtils.fort)) {
