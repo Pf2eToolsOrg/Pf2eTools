@@ -3330,7 +3330,8 @@ Renderer.utils = {
 		const renderer = Renderer.get();
 		const renderedNotes = Object.keys(obj).filter(it => !opts.exclude.includes(it)).map(key => {
 			if (opts.raw.includes(key)) {
-				return obj[key];
+				const items = obj[key];
+				return Array.isArray(items) ? obj[key].join(", ") : obj[key];
 			} else {
 				if (opts.dice) return renderer.render(`{@d20 ${Parser.numToBonus(obj[key])}||${opts.dice.name || key}} ${key}`);
 				else return `${obj[key]} ${key}`;
@@ -4233,7 +4234,7 @@ Renderer.creature = {
 			${Renderer.utils.getTraitsDiv(cr.traits)}
 			${Renderer.creature.getDescription(cr.description)}
 			${Renderer.creature.getPerception(cr)}
-			${Renderer.creature.getLanguages(cr)}
+			${Renderer.creature.getLanguages(cr.languages)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
 			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
@@ -4268,18 +4269,28 @@ Renderer.creature = {
 		return `<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${rdPerception}${rdOtherPerception}${rdSenses.length ? "; " : ""}${rdSenses}</p>`;
 	},
 
-	getLanguages (cr) {
+	getLanguages (crLanguages) {
+		if (crLanguages == null) return ""
+
 		const renderer = Renderer.get()
-		if (cr.languages != null && cr.languages.languages != null && (cr.languages.languages.length !== 0 || (cr.languages.abilities && cr.languages.abilities.length !== 0))) {
+
+		const languages = crLanguages.languages || []
+		const notes = crLanguages.notes || []
+		const abilities = crLanguages.abilities || []
+
+		if (languages.length !== 0 || notes.length !== 0 || abilities.length !== 0) {
+			const langs = languages.map(t => t.toTitleCase()).concat(notes)
+
 			let renderStack = [];
 
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
 			renderStack.push(`<span>`)
-			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.map(t => t.toTitleCase()).join(", ") : "— ")
-			if (cr.languages.abilities && cr.languages.abilities.length !== 0) {
-				if (cr.languages.languages.length !== 0) renderStack.push("; ")
-				renderStack.push(renderer.render(cr.languages.abilities.join(", ")))
+
+			renderStack.push(langs.length !== 0 ? langs.join(", ") : "— ")
+			if (abilities.length !== 0) {
+				if (langs !== 0) renderStack.push("; ")
+				renderStack.push(renderer.render(abilities.join(", ")))
 			}
 			renderStack.push(`</span>`)
 			renderStack.push(`</p>`)
@@ -4296,12 +4307,14 @@ Renderer.creature = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
-			Object.keys(cr.skills).forEach(skill => {
+			Object.keys(cr.skills).filter(k => k !== "notes").forEach(skill => {
 				let renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
 				skills.push(renderedSkill)
 			});
+			let notes = cr.skills["notes"] || [];
 
 			renderStack.push(skills.sort().join("<span>, </span>"))
+			renderStack.push(notes.length !== 0 ? `<span>, </span>${notes.join("<span>, </span>")}` : "")
 			renderStack.push(`</p>`)
 
 			return renderStack.join("")
@@ -4367,7 +4380,7 @@ Renderer.creature = {
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
 				const std = renderer.render(`<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${creature.defenses.savingThrows[k].std}||${saveName}}`);
-				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std", "abilities"], dice: { name: saveName } });
+				const note = Renderer.utils.getNotes(creature.defenses.savingThrows[k], { exclude: ["std"], raw: ["abilities"], dice: { name: saveName } });
 				return `${std}${note}`;
 			})
 			.join(", ");
@@ -4398,7 +4411,7 @@ Renderer.creature = {
 		if (!arr || arr.length === 0) return null;
 		const renderer = Renderer.get();
 		const vals = arr.map(it => `${it.name}${it.amount ? ` ${it.amount}` : ""}${it.note ? ` ${renderer.render(it.note)}` : ""}`);
-		return `<strong>${prop}&nbsp;</strong>${renderer.render(vals.join("; "))}`;
+		return `<strong>${prop}&nbsp;</strong>${renderer.render(vals.join(", "))}`;
 	},
 
 	getSpeed (cr) {
@@ -4458,7 +4471,7 @@ Renderer.creature = {
 								}
 								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 							}
-							renderStack.push(renderer.render(`${spells.join(", ")}; `))
+							renderStack.push(renderer.render(`${spells.join(", ")}`))
 						});
 					}
 				});
@@ -4474,7 +4487,7 @@ Renderer.creature = {
 		const renderRitual = (r) => {
 			return `{@ritual ${r.name}|${r.source || ""}}${r.notes == null && r.level == null ? "" : ` (${[Parser.getOrdinalForm(r.level)].concat(...(r.notes || [])).filter(Boolean).join(", ")})`}`;
 		};
-		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""}Rituals</strong> DC ${rf.DC}; ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
+		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""}Rituals</strong>${rf.DC ? ` DC ${rf.DC};` : ""} ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
 	},
 
 	getRenderedAbility (ability, opts) {
@@ -4508,11 +4521,12 @@ Renderer.creature = {
 		const $ele = $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
-					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
+					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}) ` : ""}
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
+					${ability.cost ? `<strong>Cost&nbsp;</strong>${renderer.render_addTerm(ability.cost)}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
+					${ability.frequency || ability.requirements || ability.trigger || ability.cost ? "<strong>Effect</strong>" : ""}
 					${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
 					</p>
 					${/* renderedGenericAbility || null */ ""}`;
