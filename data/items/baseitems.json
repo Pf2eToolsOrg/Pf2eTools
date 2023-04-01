@@ -1266,16 +1266,16 @@
 		},
 		{
 			"name": "Bola",
-			"source": "APG",
-			"page": 248,
+			"source": "TV",
+			"page": 30,
 			"otherSources": {
 				"Reprinted": [
+					"APG|248",
 					"LOGM|120"
 				]
 			},
 			"type": "Item",
 			"traits": [
-				"uncommon",
 				"nonlethal",
 				"ranged trip",
 				"thrown"
@@ -1289,7 +1289,7 @@
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"entries": [
-				"This throwing weapon consists of weights tied to the end of long cords, which can be used to bludgeon foes or entangle their legs."
+				"This throwing weapon consists of weights tied to the end of long cords, which can be used to entangle foes."
 			],
 			"weaponData": {
 				"damage": "1d6",
@@ -1373,6 +1373,312 @@
 			"entries": [
 				"This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can {@action Raise a Shield} with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand."
 			]
+		},
+		{
+			"name": "Gauntlet Bow",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"capacity <4>", "free-hand", "parry"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The gauntlet bow is a heavy metal glove with a built-in crossbow and rotating chamber mechanism for easy reloading. A gauntlet bow can be used to make melee attacks like a standard gauntlet. You can’t reload a gauntlet bow with the hand wielding it."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"range": 60,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (10)"
+			}
+		},
+		{
+			"name": "Gakgung",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"deadly <d8>", "monk", "propulsive"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": "1+",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A gakgung is a type of composite reflex bow that combines speed and power in equal amounts for effective precision shooting."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"range": 100,
+				"group": "Bow",
+				"reload": 0,
+				"ammunition": "Arrow (10)"
+			}
+		},
+		{
+			"name": "Rotary Bow",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"capacity <4>"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This one-handed crossbow has four arms instead of two, and four rotating chambers that can be pre-loaded with bolts for more efficient firing. The chamber can be swapped and the arms redrawn with a simple crank device built into the crossbow."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"range": 80,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (10)"
+			}
+		},
+		{
+			"name": "Shield Bow",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"deadly <d8>", "parry"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": "1+",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"As the name implies, a shield bow is a bow with an integrated shielding surface. While versatile and effective, a shield bow’s architecture limits its flexibility somewhat, decreasing its total draw strength and penetrating power."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"range": 50,
+				"group": "Bow",
+				"reload": 0,
+				"ammunition": "Arrow (10)"
+			}
+		},{
+			"name": "Spraysling",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"halfling", "propulsive", "scatter <5 ft.>"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A spraysling is similar to a standard sling but with a wider cup fitted with a thin blade affixed to the cup’s edges. When used to make an attack with a specially prepared packet of spray pellets, the razor slices open the packet and the weapon launches a cluster of stinging pellets."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"range": 20,
+				"group": "Sling",
+				"reload": 0,
+				"ammunition": "Spray Pellets (10)"
+			}
+		},
+		{
+			"name": "Boomerang",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"recovery", "thrown"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The boomerang is a carved piece of wood designed to curve as it flies through the air, returning to the wielder after a successful throw."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"range": 60,
+				"group": "Club"
+			}
+		},
+		{
+			"name": "Thunder Sling",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"agile", "propulsive", "tengu"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				""
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"range": 50,
+				"reload": 1,
+				"group": "Sling"
+			}
+		},
+		{
+			"name": "Chakri",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"recovery", "thrown"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Similar to a chakram, chakri are too light to be wielded in melee but allow the user significantly more control over their throws. A chakri is small and light enough that up to two can be worn on each wrist; a chakri worn on the wrist is reload 0 instead of reload —."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"range": 40,
+				"group": "Dart"
+			}
+		},
+		{
+			"name": "Phalanx Piercer",
+			"level": 1,
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"concussive", "hobgoblin", "propulsive",	"razing", "volley <30 ft.>"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": "1+",
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"This massive bow is made from bone or wood reinforced with flexible metal strips and strung with reinforced cord. Designed by hobgoblin engineers to take down shielded opponents, the phalanx piercer fires heavy, iron-shod bolts."
+			],
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"range": 80,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (5)"
+			}
+		},
+		{
+			"name": "Sukgung",
+			"level": 1,
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"fatal aim <d12>"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The sukgung is an extremely efficient crossbow most common in the nation of Hwanggot. Capable of lethal shots at remarkable distances, the sukgung is well-balanced enough to be fired with one hand."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"range": 200,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (10)"
+			}
+		},
+		{
+			"name": "Harpoon",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"tethered", "thrown"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Often used for hunting exceptionally large aquatic creatures, the harpoon is similar to a javelin but features a barbed head and rope tether so it (or the corpse it’s attached to) can be easily retrieved."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"range": 30,
+				"group": "Dart"
+			}
 		},
 		{
 			"name": "Butchering Axe",
@@ -2297,6 +2603,33 @@
 			}
 		},
 		{
+			"name": "Atlatl",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"propulsive"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"entries": [
+				"Atlatls are long, narrow pieces of shaped wood or antler used as levers to hurl darts faster and farther than would otherwise be possible. An atlatl uses darts as ammunition."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Dart",
+				"range": 60,
+				"reload": 1
+			}
+		},
+		{
 			"name": "Dwarven War Axe",
 			"source": "CRB",
 			"page": 281,
@@ -3168,7 +3501,7 @@
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"entries": [
-				""
+				"A war razor is an exaggerated version of the barbers’ tool. It’s a brittle but extremely sharp weapon that is very easy to slip into a pocket or sleeve."
 			],
 			"weaponData": {
 				"damage": "1d4",
@@ -6798,7 +7131,7 @@
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"entries": [
-				""
+				"The whipstaff is a 5-foot-long staff carved from alchemically treated wood. Exceptionally light and well-balanced, whipstaffs are favored by travelers and martial artists who prioritize speed over power."
 			],
 			"weaponData": {
 				"damage": "1d6",
@@ -7641,9 +7974,42 @@
 			}
 		},
 		{
+			"name": "Barricade Buster",
+			"source": "TV",
+			"page": 30,
+			"level": 1,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"kickback", "orc", "razing", "repeating", "volley <20 ft.>"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"bulk": 3,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"Developed by a half-orc inventor from Alkenstar who brought the technology north to battle the Whispering Tyrant alongside the orc hordes of Belkzen, the barricade buster features eight barrels fixed around a central pivot attached to a handle and firing mechanism. A barricade buster fires spheres of metal with extreme velocity and very little accuracy."
+			],
+			"weaponData": {
+				"ammunition": "8-Round Magazine|TV",
+				"damage": "1d10",
+				"damageType": "B",
+				"reload": 0,
+				"range": 40,
+				"group": "Firearm"
+			}
+		},
+		{
 			"name": "Taw Launcher",
-			"source": "LOAG",
-			"page": 139,
+			"otherSources": {
+				"Originally": ["LOAG|139"]
+			},
+			"source": "TV",
+			"page": 30,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -7660,10 +8026,10 @@
 			"category": "Weapon",
 			"subCategory": "Advanced",
 			"entries": [
-				"Designed by conrasu warriors, this complex device is a crossbow and fires small wooden bullets known as taws. A system of blades within the launcher can rapidly reshape a taw as it's loaded, allowing the launcher to fire taws of different shapes, such as fléchettes."
+				"This complex device is a crossbow and fires small wooden bullets known as taws. A system of blades within the launcher can rapidly reshape a taw as it’s loaded, allowing the launcher to fire taws of different shapes, such as fléchettes."
 			],
 			"weaponData": {
-				"ammunition": "Wooden Taws|LOAG",
+				"ammunition": "Wooden Taws|TV",
 				"damage": "1d6",
 				"damageType": "modular",
 				"reload": 1,
@@ -7784,7 +8150,7 @@
 			"category": "Weapon",
 			"subCategory": "Advanced",
 			"entries": [
-				""
+				"A fusion of a naginata and sansetsukon, this three-section weapon has a sweeping, curved blade along each of the outer sections. Though difficult for anyone but an expert weapon master to use effectively, the three-section naginata can be wielded at devastating speed to slice or smash apart a foe."
 			],
 			"weaponData": {
 				"damage": "1d8",
@@ -8124,7 +8490,7 @@
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"entries": [
-				"A bouquet of whiplike blades extends from the hilt of this sword."
+				"A bouquet of whiplike blades extends from the hilt of this sword, enabling deadly, sweeping attacks."
 			],
 			"weaponData": {
 				"damage": "1d6",

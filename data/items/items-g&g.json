@@ -6499,37 +6499,35 @@
 			"traits": [
 				"alchemical"
 			],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 5)"
-			},
 			"bulk": "L",
 			"category": "Ammunition",
 			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like {@item arrow||arrows} or {@item bolt||bolts}. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like {@item arrow||arrows} or {@item bolt||bolts}. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items.",
+				"{@note Different weapons have different prices for ammunition. The prices listed are thus, only for reference in the weapon statblocks themselves.}"
 			],
-			"add_hash": "5"
-		},
-		{
-			"name": "Round",
-			"source": "G&G",
-			"page": 150,
-			"type": "Item",
-			"traits": [
-				"alchemical"
-			],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
-			"bulk": "L",
-			"category": "Ammunition",
-			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like {@item arrow||arrows} or {@item bolt||bolts}. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
-			],
-			"add_hash": "10"
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "5-pack",
+					"name": "Round",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": "(price for 5)"
+					},
+					"add_hash": "5"
+				},
+				{
+					"variantType": "10-pack",
+					"name": "Round",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": "(price for 10)"
+					},
+					"add_hash": "10"
+				}
+			]
 		},
 		{
 			"name": "Rowan Rifle",
