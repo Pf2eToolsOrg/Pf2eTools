@@ -836,13 +836,16 @@ class Converter {
 		const stdACToken = this._consumeToken(this._tokenizerUtils.sentences);
 		ac.std = Number(stdACToken.value.trim().replace(/[,;]/g, ""));
 		if (this._tokenIsType("PARENTHESIS")) {
-			const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS")).replace(/^\(|\)$/g, "");
-			const regexOtherAC = /.*(\d+)\s(.+)/g;
-			Array.from(parenthesisText.matchAll(regexOtherAC)).forEach(m => {
-				const num = Number(m[1]);
-				// small ACs are likely abilities like "+2 vs. magic"
-				if (num > 4) ac[m[2]] = Number(m[1]);
-				else (ac.abilities = ac.abilities || []).push(m[0]);
+			const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS")).replace(/^\(|\);?$/g, "");
+			const regexOtherAC = /^(\d+)\s+(.+)$/;
+			parenthesisText.split(",").map(t => t.trim()).forEach(t => {
+				const match = regexOtherAC.exec(t);
+				if (match) {
+					ac[match[2]] = Number(match[1]);
+				} else {
+					ac.abilities = ac.abilities || [];
+					ac.abilities.push(t)
+				}
 			});
 		}
 		this._getStatAbilities(ac);
