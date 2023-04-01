@@ -20937,15 +20937,9 @@
 						"entries": [
 							"The giant badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls {@condition unconscious}, whichever comes first.",
 							"While raging, the giant badger has AC 17, its jaws {@action Strike} deals {@dice 1d8+8} damage, and its claw {@action Strike} deals {@dice 1d6+6} damage. While raging, the giant badger also can't use actions that have the {@trait concentrate} trait except for {@action Seek}.",
-							"After it has stopped raging, a giant badger can't use."
+							"After it has stopped raging, a giant badger can't use Badger Rage again for 1 minute."
 						],
 						"name": "Badger Rage"
-					},
-					{
-						"entries": [
-							"{@action Rage} again for 1 minute."
-						],
-						"name": "Badger"
 					}
 				]
 			},
@@ -58872,21 +58866,15 @@
 							"evocation",
 							"force"
 						],
-						"trigger": "A magic missile is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
+						"trigger": "A {@i magic missile} is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
 						"frequency": {
 							"unit": "round",
 							"freq": 1
 						},
 						"entries": [
-							"The witchwyrd \"catches\" the missile, absorbing it and causing that hand to glow while it holds this energy. A hand that's holding energy can't be used for any other purpose except to use."
+							"The witchwyrd \"catches\" the missile, absorbing it and causing that hand to glow while it holds this energy. A hand that's holding energy can't be used for any other purpose except to use Force Bolt. The energy lasts for 6 rounds or until it is released."
 						],
 						"name": "Absorb Force"
-					},
-					{
-						"entries": [
-							"The energy lasts for 6 rounds or until it is released."
-						],
-						"name": "Force Bolt."
 					}
 				],
 				"bot": [
