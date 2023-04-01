@@ -94,7 +94,7 @@
 					"range": "Melee",
 					"name": "spine",
 					"attack": 16,
-					"damage": "{@damage 2d6+4} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+4} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -1234,7 +1234,7 @@
 					},
 					{
 						"entries": [
-							"A creature hit by the eberark's spit becomes coated in a slippery, flammable oil. The creature must succeed at a DC 27 Reflex save or become {@condition clumsy|CRB|clumsy 2} for as long as they are coated in incendiary spit. Creatures affected by incendiary spit that take fire damage catch fire, taking {@damage 3d6} {@condition persistent damage ||persistent fire damage}. Once this {@condition persistent damage ||persistent fire damage} ends, the spit has burned away.",
+							"A creature hit by the eberark's spit becomes coated in a slippery, flammable oil. The creature must succeed at a DC 27 Reflex save or become {@condition clumsy|CRB|clumsy 2} for as long as they are coated in incendiary spit. Creatures affected by incendiary spit that take fire damage catch fire, taking {@damage 3d6} {@condition persistent damage||persistent fire damage}. Once this {@condition persistent damage||persistent fire damage} ends, the spit has burned away.",
 							"The spit also wears off naturally after one hour or can be washed off with soap, water, and one minute of work."
 						],
 						"name": "Incendiary Spit"
@@ -1394,7 +1394,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Franca quickly slashes at nearby foes, aiming to maim rather than disable. She makes up to three melee {@action Strike||Strikes}, each against a different creature within reach. These {@action Strike||Strikes} count toward Franca's multiple attack penalty, but the penalty doesn't increase until after all three {@action Strike||Strikes} are made. On a hit, the {@action Strike} deals 3 {@condition persistent damage ||persistent bleed damage} instead of its normal damage. On a critical hit, the creature is {@condition flat-footed} until the beginning of Franca's next turn or until they spend an action to remove the condition, whichever comes first."
+							"Franca quickly slashes at nearby foes, aiming to maim rather than disable. She makes up to three melee {@action Strike||Strikes}, each against a different creature within reach. These {@action Strike||Strikes} count toward Franca's multiple attack penalty, but the penalty doesn't increase until after all three {@action Strike||Strikes} are made. On a hit, the {@action Strike} deals 3 {@condition persistent damage||persistent bleed damage} instead of its normal damage. On a critical hit, the creature is {@condition flat-footed} until the beginning of Franca's next turn or until they spend an action to remove the condition, whichever comes first."
 						],
 						"name": "Bloody Rebel"
 					},
@@ -1405,7 +1405,7 @@
 						},
 						"requirements": "Franca's last action was a melee {@action Strike} that dealt sneak attack damage to a {@condition flat-footed} target",
 						"entries": [
-							"Franca deals 6 {@condition persistent damage ||persistent bleed damage} to the target creature, and the target is {@condition slowed|CRB|slowed 1}."
+							"Franca deals 6 {@condition persistent damage||persistent bleed damage} to the target creature, and the target is {@condition slowed|CRB|slowed 1}."
 						],
 						"name": "Hamstring"
 					},
@@ -1421,7 +1421,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Franca uncorks and flings a dose of poison at a bleeding foe. She retrieves a poison from her inventory, then splashes it at a creature within 10 feet that is currently taking {@condition persistent damage ||persistent bleed damage}. The creature must succeed at a DC 32 Reflex save or be exposed to the poison."
+							"Franca uncorks and flings a dose of poison at a bleeding foe. She retrieves a poison from her inventory, then splashes it at a creature within 10 feet that is currently taking {@condition persistent damage||persistent bleed damage}. The creature must succeed at a DC 32 Reflex save or be exposed to the poison."
 						],
 						"name": "Splash Poison"
 					}
@@ -2832,7 +2832,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d6} {@condition persistent damage ||persistent acid} plus 2 acid splash",
+					"damage": "{@damage 2d6} {@condition persistent damage||persistent acid} plus 2 acid splash",
 					"types": [
 						"acid",
 						"persistent"
@@ -2850,7 +2850,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d8} fire plus 2 {@condition persistent damage ||persistent fire} and 2 fire splash",
+					"damage": "{@damage 2d8} fire plus 2 {@condition persistent damage||persistent fire} and 2 fire splash",
 					"types": [
 						"fire",
 						"persistent"

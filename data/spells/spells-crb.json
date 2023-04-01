@@ -292,7 +292,7 @@
 			"targets": "1 creature",
 			"entries": [
 				"You conjure an arrow of acid that continues corroding the target after it hits. Make a spell attack against the target.",
-				"On a hit, you deal {@damage 3d8} acid damage plus {@damage 1d6} {@condition persistent damage ||persistent acid damage}. On a critical hit, double the initial damage, but not the {@condition persistent damage}."
+				"On a hit, you deal {@damage 3d8} acid damage plus {@damage 1d6} {@condition persistent damage||persistent acid damage}. On a critical hit, double the initial damage, but not the {@condition persistent damage}."
 			],
 			"heightened": {
 				"plusX": {
@@ -333,7 +333,7 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"You splash a glob of acid that splatters your target and nearby creatures. Make a spell attack. If you hit, you deal {@damage 1d6} acid damage plus 1 splash acid damage. On a critical success, the target also takes 1 {@condition persistent damage ||persistent acid damage}."
+				"You splash a glob of acid that splatters your target and nearby creatures. Make a spell attack. If you hit, you deal {@damage 1d6} acid damage plus 1 splash acid damage. On a critical success, the target also takes 1 {@condition persistent damage||persistent acid damage}."
 			],
 			"heightened": {
 				"X": {
@@ -400,7 +400,7 @@
 						"{@bold Bat} Speed 20 feet, fly Speed 30 feet; precise echolocation 40 feet; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 2d8} piercing; {@b Melee} {@as 1} wing ({@trait agile}), {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Bird} Speed 10 feet, fly Speed 50 feet; {@b Melee} {@as 1} beak, {@b Damage} {@damage 2d8} piercing; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 1d10} slashing.",
 						"{@bold Pterosaur} Speed 10 feet, fly Speed 40 feet; imprecise {@ability scent} 30 feet; {@b Melee} {@as 1} beak, {@b Damage} {@damage 3d6} piercing.",
-						"{@bold Wasp} Speed 20 feet, fly Speed 40 feet; {@b Melee} {@as 1} stinger, {@b Damage} {@damage 1d8} piercing plus {@damage 1d6} {@condition persistent damage ||persistent poison}."
+						"{@bold Wasp} Speed 20 feet, fly Speed 40 feet; {@b Melee} {@as 1} stinger, {@b Damage} {@damage 1d8} piercing plus {@damage 1d6} {@condition persistent damage||persistent poison}."
 					]
 				}
 			],
@@ -4876,9 +4876,9 @@
 						"{@skill Athletics} modifier of +18, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ankylosaurus} Speed 25 feet; {@b Melee} {@as 1} tail ({@trait backswing}, {@trait reach <10 feet>}), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Brontosaurus} Speed 25 feet; {@b Melee} {@as 1} tail ({@trait reach <15 feet>}), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning.",
-						"{@bold Deinonychus} Speed 40 feet; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 2d4} piercing plus 1 {@condition persistent damage ||persistent bleed}; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 1d10} piercing.",
+						"{@bold Deinonychus} Speed 40 feet; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 2d4} piercing plus 1 {@condition persistent damage||persistent bleed}; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 1d10} piercing.",
 						"{@bold Stegosaurus} Speed 30 feet; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 2d8} piercing.",
-						"{@bold Triceratops} Speed 30 feet; {@b Melee} {@as 1} horn, {@b Damage} {@damage 2d8} piercing, plus {@damage 1d6} {@condition persistent damage ||persistent bleed} on a critical hit; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
+						"{@bold Triceratops} Speed 30 feet; {@b Melee} {@as 1} horn, {@b Damage} {@damage 2d8} piercing, plus {@damage 1d6} {@condition persistent damage||persistent bleed} on a critical hit; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Tyrannosaurus} Speed 30 feet; {@b Melee} {@as 1} jaws ({@trait deadly <d12>}, {@trait reach <10 feet>}), {@b Damage} {@damage 1d12} piercing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 1d10} bludgeoning."
 					]
 				}
@@ -6705,7 +6705,7 @@
 						"{@bold Acrobatics} ({@trait air} or {@trait fire}) or {@skill Athletics} (earth or water) modifier of +20; ignore this change if your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
 						"{@bold Air} fly Speed 80 feet, movement doesn't trigger reactions; {@b Melee} {@as 1} gust, {@b Damage} {@damage 1d4} bludgeoning.",
 						"{@bold Earth} Speed 20 feet, burrow Speed 20 feet; {@b Melee} {@as 1} fist, {@b Damage} {@damage 2d10} bludgeoning.",
-						"{@bold Fire} Speed 50 feet; fire resistance 10, weakness 5 to cold and 5 to water; {@b Melee} {@as 1} tendril, {@b Damage} {@damage 1d8} fire plus {@damage 1d4} {@condition persistent damage ||persistent fire}.",
+						"{@bold Fire} Speed 50 feet; fire resistance 10, weakness 5 to cold and 5 to water; {@b Melee} {@as 1} tendril, {@b Damage} {@damage 1d8} fire plus {@damage 1d4} {@condition persistent damage||persistent fire}.",
 						"{@bold Water} Speed 20 feet, swim Speed 60 feet; fire resistance 5; {@b Melee} {@as 1} wave, {@b Damage} {@damage 1d12} bludgeoning, and you can spend an action immediately after a hit to push the target 5 feet with the effects of a successful {@action Shove}."
 					]
 				}
@@ -8173,7 +8173,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The ray deals double damage and {@damage 1d4} {@condition persistent damage ||persistent fire damage}.",
+						"Critical Success": "The ray deals double damage and {@damage 1d4} {@condition persistent damage||persistent fire damage}.",
 						"Success": "The ray deals full damage."
 					}
 				}
@@ -8181,7 +8181,7 @@
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The ray's initial damage increases by {@damage 2d6}, and the {@condition persistent damage ||persistent fire damage} on a critical success increases by {@dice 1d4}."
+						"The ray's initial damage increases by {@damage 2d6}, and the {@condition persistent damage||persistent fire damage} on a critical success increases by {@dice 1d4}."
 					]
 				}
 			}
@@ -9673,21 +9673,21 @@
 				]
 			},
 			"entries": [
-				"Tendrils of darkness curl out from your fingertips and race through the air. You deal {@damage 2d4} negative damage and 1 {@condition persistent damage ||persistent bleed damage} to living creatures in the line. Each living creature in the line must attempt a Fortitude save.",
+				"Tendrils of darkness curl out from your fingertips and race through the air. You deal {@damage 2d4} negative damage and 1 {@condition persistent damage||persistent bleed damage} to living creatures in the line. Each living creature in the line must attempt a Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes half the negative damage and no {@condition persistent damage ||persistent bleed damage}.",
+						"Success": "The creature takes half the negative damage and no {@condition persistent damage||persistent bleed damage}.",
 						"Failure": "The creature takes full damage.",
-						"Critical Failure": "The creature takes double negative damage and double {@condition persistent damage ||persistent bleed damage}."
+						"Critical Failure": "The creature takes double negative damage and double {@condition persistent damage||persistent bleed damage}."
 					}
 				}
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The negative damage increases by {@damage 2d4}, and the {@condition persistent damage ||persistent bleed damage} increases by 1."
+						"The negative damage increases by {@damage 2d4}, and the {@condition persistent damage||persistent bleed damage} increases by 1."
 					]
 				}
 			}
@@ -11140,10 +11140,10 @@
 						"{@skill Athletics} modifier of +13, unless your own is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ant} Speed 30 feet, climb Speed 30 feet; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Beetle} Speed 25 feet; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 2d10} bludgeoning.",
-						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; {@ability darkvision}; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
+						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; {@ability darkvision}; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage||persistent poison}.",
 						"{@bold Mantis} Speed 40 feet; imprecise {@ability scent} 30 feet; {@b Melee} {@as 1} foreleg, {@b Damage} {@damage 2d8} bludgeoning.",
-						"{@bold Scorpion} Speed 40 feet; {@ability darkvision}, imprecise {@ability tremorsense} 60 feet; {@b Melee} {@as 1} stinger, {@b Damage} {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; {@b Melee} {@as 1} pincer ({@trait agile}), {@b Damage} {@damage 1d6} bludgeoning.",
-						"{@bold Spider} {@ability darkvision}; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; {@b Melee} {@as 1} Speed 25 feet, climb Speed 25 feet; {@b Ranged} {@as 1} web (range increment <20 feet>), Damage entangles the target for 1 round."
+						"{@bold Scorpion} Speed 40 feet; {@ability darkvision}, imprecise {@ability tremorsense} 60 feet; {@b Melee} {@as 1} stinger, {@b Damage} {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage||persistent poison}; {@b Melee} {@as 1} pincer ({@trait agile}), {@b Damage} {@damage 1d6} bludgeoning.",
+						"{@bold Spider} {@ability darkvision}; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage||persistent poison}; {@b Melee} {@as 1} Speed 25 feet, climb Speed 25 feet; {@b Ranged} {@as 1} web (range increment <20 feet>), Damage entangles the target for 1 round."
 					]
 				}
 			],
@@ -13662,8 +13662,8 @@
 						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +28, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +30, unless your own modifier is higher. You also gain specific abilities based on the type of monster you choose:",
-						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; {@b Melee} {@as 1} beak (reach <15 feet>), {@b Damage} {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage ||persistent fire}; {@b Melee} {@as 1} talon (agile, reach <15 feet>), {@b Damage} {@damage 2d8+12} slashing; Shroud of Flame (aura, evocation, fire, primal) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
-						"{@bold Purple Worm} Speed 40 feet, burrow Speed 30 feet, swim Speed 20 feet; {@b Melee} {@as 1} jaws (reach <10 feet>), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} stinger (agile, reach <10 feet>), {@b Damage} {@damage 2d8+15} piercing plus {@damage 2d6} {@condition persistent damage ||persistent poison}; {@b Melee} {@as 1} body (reach <10 feet>) {@b Damage} {@damage 2d8+20} bludgeoning; Inexorable You automatically recover from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of each of your turns. You're also immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}.",
+						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; {@b Melee} {@as 1} beak (reach <15 feet>), {@b Damage} {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage||persistent fire}; {@b Melee} {@as 1} talon (agile, reach <15 feet>), {@b Damage} {@damage 2d8+12} slashing; Shroud of Flame (aura, evocation, fire, primal) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
+						"{@bold Purple Worm} Speed 40 feet, burrow Speed 30 feet, swim Speed 20 feet; {@b Melee} {@as 1} jaws (reach <10 feet>), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} stinger (agile, reach <10 feet>), {@b Damage} {@damage 2d8+15} piercing plus {@damage 2d6} {@condition persistent damage||persistent poison}; {@b Melee} {@as 1} body (reach <10 feet>) {@b Damage} {@damage 2d8+20} bludgeoning; Inexorable You automatically recover from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of each of your turns. You're also immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}.",
 						"{@bold Sea Serpent} Speed 20 feet, swim Speed 90 feet; {@b Melee} {@as 1} jaws (reach <15 feet>), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} tail (reach <25 feet>), {@b Damage} {@damage 2d8+20} bludgeoning; Spine Rake {@as 2} ({@trait move}) You extend your spines and {@action Swim} or {@action Stride}. Each creature you're adjacent to at any point during your movement takes {@damage 4d8+10} slashing damage (basic Reflex against your spell DC)."
 					]
 				}
@@ -13711,7 +13711,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"A feral aspect overcomes the targets, making them tough and savage. Targets gain 5 temporary Hit Points, a +10-foot status bonus to their Speeds, and weakness 5 to silver. They also grow vicious fangs and claws, which are unarmed attacks. The fangs deal {@damage 2d8} piercing damage; the claws deal {@damage 2d6} slashing damage and have the {@trait agile} and {@trait finesse} traits. The targets use their highest weapon or unarmed attack proficiency with these attacks, and if they have weapon specialization or greater weapon specialization, they add this damage as well. On a critical hit with one of these unarmed attacks, the creature struck takes {@damage 1d4} {@condition persistent damage ||persistent bleed damage}.",
+				"A feral aspect overcomes the targets, making them tough and savage. Targets gain 5 temporary Hit Points, a +10-foot status bonus to their Speeds, and weakness 5 to silver. They also grow vicious fangs and claws, which are unarmed attacks. The fangs deal {@damage 2d8} piercing damage; the claws deal {@damage 2d6} slashing damage and have the {@trait agile} and {@trait finesse} traits. The targets use their highest weapon or unarmed attack proficiency with these attacks, and if they have weapon specialization or greater weapon specialization, they add this damage as well. On a critical hit with one of these unarmed attacks, the creature struck takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}.",
 				"The targets can't use concentrate actions unless those actions also have the {@trait rage} trait, with the exception of {@action Seek}. A creature can attempt to end the spell's effect on itself by using a single action, which has the {@trait rage} trait, to attempt a Will save against your spell DC; on a success, it ends the spell's effect on itself.",
 				"If a target is in the light of a full moon, it also grows by one size if it were Medium or smaller. This increases the reach of a Medium or Tiny creature by 5 feet."
 			],
@@ -14769,7 +14769,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"Illusory pain wracks the target, dealing {@damage 2d4} mental damage and {@damage 1d4} {@condition persistent damage ||persistent mental damage}. The target must attempt a Will save.",
+				"Illusory pain wracks the target, dealing {@damage 2d4} mental damage and {@damage 1d4} {@condition persistent damage||persistent mental damage}. The target must attempt a Will save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -15772,7 +15772,7 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"A small ball of flame appears in the palm of your hand, and you lash out with it either in melee or at range. Make a spell attack roll against your target's AC. This is normally a ranged attack, but you can also make a melee attack against a creature in your unarmed reach. On a success, you deal {@damage 1d4} fire damage plus your spellcasting ability modifier. On a critical success, the target takes double damage and {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
+				"A small ball of flame appears in the palm of your hand, and you lash out with it either in melee or at range. Make a spell attack roll against your target's AC. This is normally a ranged attack, but you can also make a melee attack against a creature in your unarmed reach. On a success, you deal {@damage 1d4} fire damage plus your spellcasting ability modifier. On a critical success, the target takes double damage and {@damage 1d4} {@condition persistent damage||persistent fire damage}."
 			],
 			"heightened": {
 				"plusX": {
@@ -17550,7 +17550,7 @@
 				]
 			},
 			"entries": [
-				"You inflict pain upon the target and revel in their anguish. This deals {@damage 1d4} mental damage and {@damage 1d4} {@condition persistent damage ||persistent mental damage}; the target must attempt a Will save. As long as the target is taking {@condition persistent damage} from this spell, you gain a +1 status bonus to attack rolls and skill checks against the target.",
+				"You inflict pain upon the target and revel in their anguish. This deals {@damage 1d4} mental damage and {@damage 1d4} {@condition persistent damage||persistent mental damage}; the target must attempt a Will save. As long as the target is taking {@condition persistent damage} from this spell, you gain a +1 status bonus to attack rolls and skill checks against the target.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -18386,12 +18386,12 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"You shroud your hands in a crackling field of lightning. Make a melee spell attack roll. On a hit, the target takes {@damage 2d12} electricity damage. If the target is wearing metal armor or is made of metal, you gain a +1 circumstance bonus to your attack roll with shocking grasp, and the target also takes {@damage 1d4} {@condition persistent damage ||persistent electricity damage} on a hit. On a critical hit, double the initial damage, but not the {@condition persistent damage}."
+				"You shroud your hands in a crackling field of lightning. Make a melee spell attack roll. On a hit, the target takes {@damage 2d12} electricity damage. If the target is wearing metal armor or is made of metal, you gain a +1 circumstance bonus to your attack roll with shocking grasp, and the target also takes {@damage 1d4} {@condition persistent damage||persistent electricity damage} on a hit. On a critical hit, double the initial damage, but not the {@condition persistent damage}."
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@damage 1d12}, and the {@condition persistent damage ||persistent electricity damage} increases by 1."
+						"The damage increases by {@damage 1d12}, and the {@condition persistent damage||persistent electricity damage} increases by 1."
 					]
 				}
 			}
@@ -19139,9 +19139,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "Whenever the target becomes affected by a spell with a duration, the target takes {@damage 2d12} {@condition persistent damage ||persistent force damage}. Each time it takes {@condition persistent damage ||persistent force damage} from spellwrack, it reduces the remaining duration of spells affecting it by 1 round. Only a successful {@skill Arcana} check against your spell DC can help the target recover from the {@condition persistent damage}; the curse and the {@condition persistent damage} end after 1 minute.",
+						"Success": "Whenever the target becomes affected by a spell with a duration, the target takes {@damage 2d12} {@condition persistent damage||persistent force damage}. Each time it takes {@condition persistent damage||persistent force damage} from spellwrack, it reduces the remaining duration of spells affecting it by 1 round. Only a successful {@skill Arcana} check against your spell DC can help the target recover from the {@condition persistent damage}; the curse and the {@condition persistent damage} end after 1 minute.",
 						"Failure": "As success, but the curse and {@condition persistent damage} do not end on their own.",
-						"Critical Failure": "As failure, but the {@condition persistent damage ||persistent force damage} is {@dice 4d12}."
+						"Critical Failure": "As failure, but the {@condition persistent damage||persistent force damage} is {@dice 4d12}."
 					}
 				}
 			]
@@ -21137,21 +21137,21 @@
 			"targets": "1 creature",
 			"entries": [
 				"When someone has overindulged, you can hasten them past the worst of their affliction or intensify their misery.",
-				"This spell attempts to progress a disease affliction, a poison affliction, or {@condition persistent damage ||persistent poison damage} affecting the target.",
+				"This spell attempts to progress a disease affliction, a poison affliction, or {@condition persistent damage||persistent poison damage} affecting the target.",
 				"If the target is affected by more than one of these, you can choose from among those you are aware of; otherwise the GM chooses randomly. An unwilling target can attempt a Will save to negate take its course.",
-				"The effect of this spell depends on whether you're attempting to end an affliction or {@condition persistent damage ||persistent poison damage}, and whether you are attempting to help or hinder the target's recovery.",
+				"The effect of this spell depends on whether you're attempting to end an affliction or {@condition persistent damage||persistent poison damage}, and whether you are attempting to help or hinder the target's recovery.",
 				{
 					"type": "list",
 					"items": [
 						"{@bold Affliction} The target immediately attempts its next saving throw against the affliction. You can grant the creature your choice of a +2 status bonus or a \u20132 status penalty to its saving throw against the affliction.",
-						"{@bold Persistent Poison} You can cause the target take the {@condition persistent damage ||persistent poison damage} immediately when you {@action Cast a Spell||Cast this Spell} (in addition to taking it at the end of its next turn). Whether or not you do so, the target attempts an additional flat check against the {@condition persistent damage ||persistent poison damage}. You can set the DC of that flat check to 5 or 20 instead of the normal DC."
+						"{@bold Persistent Poison} You can cause the target take the {@condition persistent damage||persistent poison damage} immediately when you {@action Cast a Spell||Cast this Spell} (in addition to taking it at the end of its next turn). Whether or not you do so, the target attempts an additional flat check against the {@condition persistent damage||persistent poison damage}. You can set the DC of that flat check to 5 or 20 instead of the normal DC."
 					]
 				}
 			],
 			"heightened": {
 				"X": {
 					"7": [
-						"You can attempt to progress any number of the target's eligible afflictions and {@condition persistent damage ||persistent poison damage}."
+						"You can attempt to progress any number of the target's eligible afflictions and {@condition persistent damage||persistent poison damage}."
 					]
 				}
 			}
@@ -21626,12 +21626,12 @@
 				]
 			},
 			"entries": [
-				"You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage. The target must attempt a basic Reflex save. On a failure, the target also is {@condition clumsy 2} for 1 round and takes 1 {@condition persistent damage ||persistent electricity damage}."
+				"You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage. The target must attempt a basic Reflex save. On a failure, the target also is {@condition clumsy 2} for 1 round and takes 1 {@condition persistent damage||persistent electricity damage}."
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The initial damage increases by {@damage 1d12}, and the {@condition persistent damage ||persistent electricity damage} on a failure increases by 1."
+						"The initial damage increases by {@damage 1d12}, and the {@condition persistent damage||persistent electricity damage} on a failure increases by 1."
 					]
 				}
 			}
@@ -24280,10 +24280,10 @@
 			"heightened": {
 				"X": {
 					"6": [
-						"You can choose up to two of the effects from the list. Wild claws leave terrible, ragged wounds that also deal {@damage 2d6} {@condition persistent damage ||persistent bleed damage} on a hit, and wild jaws are envenomed, also dealing {@damage 2d6} {@condition persistent damage ||persistent poison damage} on a hit."
+						"You can choose up to two of the effects from the list. Wild claws leave terrible, ragged wounds that also deal {@damage 2d6} {@condition persistent damage||persistent bleed damage} on a hit, and wild jaws are envenomed, also dealing {@damage 2d6} {@condition persistent damage||persistent poison damage} on a hit."
 					],
 					"10": [
-						"You can choose up to three of the effects from the list. Wild claws deal {@damage 4d6} {@condition persistent damage ||persistent bleed damage} on a hit, and wild jaws deal {@damage 4d6} {@condition persistent damage ||persistent poison damage} on a hit."
+						"You can choose up to three of the effects from the list. Wild claws deal {@damage 4d6} {@condition persistent damage||persistent bleed damage} on a hit, and wild jaws deal {@damage 4d6} {@condition persistent damage||persistent poison damage} on a hit."
 					]
 				}
 			}

@@ -225,7 +225,7 @@ class ConditionTag {
 			if (m[2]) return `{@condition ${m[1]}||${m[1]}${m[2]}}`;
 			else return `{@condition ${m[1]}}`;
 		}).replace(/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision)(?: damage)?)/gi, (...m) => {
-			return `{@condition persistent damage${m[2] ? "" : ` ||persistent ${m[1]}`}}`
+			return `{@condition persistent damage${m[2] ? "" : `||persistent ${m[1]}`}}`
 		});
 	}
 }
