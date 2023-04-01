@@ -741,41 +741,62 @@ class Converter {
 	_parseLanguages (creature) {
 		this._consumeToken(this._tokenizerUtils.languages);
 		const entries = this._getEntries();
-		const languages = {};
+		let languages = [];
+		let abilities = [];
 
 		const numSemis = entries.filter(e => this._tokenIsType(this._tokenizerUtils.sentencesSemiColon, e)).length;
 		if (numSemis === 0) {
 			// assume no abilities
-			languages.languages = [];
 			entries.forEach(entry => {
 				if (this._tokenIsType(this._tokenizerUtils.sentences, entry)) {
 					const rendered = this._renderEntries([entry], {asString: true});
-					languages.languages.push(...rendered.split(", "));
+					languages.push(...rendered.split(", "));
 				} else if (this._tokenIsType(this._tokenizerUtils.parenthesis, entry)) {
-					languages.languages[languages.languages.length - 1] += ` ${this._renderToken(entry)}`;
+					languages[languages.length - 1] += ` ${this._renderToken(entry)}`;
 				} else {
 					throw new Error(`Unexpected token while paring languages: "${entry.type}"`);
 				}
 			});
 		} else if (numSemis === 1) {
 			const ixSemi = entries.findIndex(e => this._tokenIsType(this._tokenizerUtils.sentencesSemiColon, e));
-			languages.languages = this._renderEntries(entries.slice(0, ixSemi + 1), {asString: true}).split(", ");
-			languages.abilities = this._renderEntries(entries.slice(ixSemi + 1), {asString: true}).split(", ");
+			languages = this._renderEntries(entries.slice(0, ixSemi + 1), {asString: true}).split(", ");
+			abilities = this._renderEntries(entries.slice(ixSemi + 1), {asString: true}).split(", ");
 		} else {
 			// assume no abilities, languages seperated by semicolon
-			languages.languages = [];
 			entries.forEach(entry => {
 				if (this._tokenIsType(this._tokenizerUtils.sentences, entry)) {
 					const rendered = this._renderEntries([entry], {asString: true});
-					languages.languages.push(...rendered);
+					languages.push(...rendered);
 				} else if (this._tokenIsType(this._tokenizerUtils.parenthesis, entry)) {
-					languages.languages[languages.languages.length - 1] += ` ${this._renderToken(entry)}`;
+					languages[languages.length - 1] += ` ${this._renderToken(entry)}`;
 				} else {
 					throw new Error(`Unexpected token while paring languages: "${entry.type}"`);
 				}
 			});
 		}
-		creature.languages = languages;
+
+		const regexRemove = /['’-]/g;
+		const regexSplitWords = /\W+/;
+		const regexStartsUppercase = /^\p{Lu}/u;
+		const [filteredLanguages, notes] = languages.partition(lang => {
+			// heuristically detect language notes by looking for non-capitalized words
+			// remove some punctuation to avoid treating e.g. D'ziriak as multiple words
+			return lang.replace(regexRemove, "")
+				.split(regexSplitWords)
+				.every(w => regexStartsUppercase.test(w));
+		});
+
+		creature.languages = {};
+		if (filteredLanguages.length) {
+			// store languages as lowercased
+			creature.languages.languages = filteredLanguages.map(l => l.toLowerCase());
+		}
+		if (notes.length) {
+			creature.languages.notes = notes;
+		}
+		if (abilities.length) {
+			creature.languages.abilities = abilities;
+		}
 	}
 	_parseSkills (creature) {
 		this._consumeToken(this._tokenizerUtils.skillsProp);
