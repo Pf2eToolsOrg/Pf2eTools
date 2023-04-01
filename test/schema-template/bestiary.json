@@ -76,6 +76,14 @@
 								"minItems": 1,
 								"uniqueItems": true
 							},
+							"notes": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							},
 							"abilities": {
 								"type": "array",
 								"items": {
@@ -101,8 +109,21 @@
 								{
 									"type": "string",
 									"pattern": "([a-z]+ |)lore( \\(.+?\\)|)$"
+								},
+								{
+									"const": "notes"
 								}
 							]
+						},
+						"properties": {
+							"notes": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
 						},
 						"additionalProperties": {
 							"type": "object",
@@ -357,8 +378,6 @@
 							},
 							"additionalProperties": false,
 							"required": [
-								"tradition",
-								"DC",
 								"rituals"
 							]
 						},
