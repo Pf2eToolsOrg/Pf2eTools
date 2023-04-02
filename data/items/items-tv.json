@@ -1015,12 +1015,8 @@
 					},
 					"trigger": "You are reduced to 0 Hit Points or would die from a {@trait death} effect",
 					"entries": [
-						"You drop to 1 Hit Point instead of being reduced to 0 HP or {@condition dying}, and you gain 100 temporary"
+						"You drop to 1 Hit Point instead of being reduced to 0 HP or {@condition dying}, and you gain 100 temporary Hit Points that last until the start of your next turn."
 					]
-				},
-				{
-					"name": "Hit Points that last until the start of your next turn.",
-					"type": "ability"
 				},
 				{
 					"type": "ability",
@@ -1302,31 +1298,32 @@
 						"freq": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "reef heart",
-							"level": 12,
-							"price": {
-								"amount": 2000,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"variantType": "greater",
-							"name": "greater reef heart",
-							"level": 15,
-							"price": {
-								"amount": 6500,
-								"coin": "gp"
-							},
-							"entries": [
-								"The reef heart is +2 greater resilient coral armor, the swim Speed is equal to your full land Speed, and the coral eruption is 7th level."
-							]
-						}
-					],
 					"entries": [
 						"You cast {@spell coral eruption|SoM} (Pathfinder Secrets of Magic 96). If you conjure the coral underwater, it ceases dealing damage after 1 minute, but its duration is unlimited. If the magical coral remains in place for 1 year, it becomes non-magical coral from which a reef might grow."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "reef heart",
+					"level": 12,
+					"price": {
+						"amount": 2000,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"variantType": "greater",
+					"name": "greater reef heart",
+					"level": 15,
+					"price": {
+						"amount": 6500,
+						"coin": "gp"
+					},
+					"entries": [
+						"The reef heart is +2 greater resilient coral armor, the swim Speed is equal to your full land Speed, and the coral eruption is 7th level."
 					]
 				}
 			]
@@ -2268,6 +2265,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Pacifying",
 			"source": "TV",
 			"page": 33,
@@ -2349,6 +2347,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Piston Gauntlets",
 			"source": "TV",
 			"page": 34,
@@ -2390,6 +2389,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Windlass Bolas",
 			"source": "TV",
 			"page": 34,
@@ -2429,6 +2429,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Grounding Spike",
 			"source": "TV",
 			"page": 34,
@@ -2452,6 +2453,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Polarizing Mace",
 			"source": "TV",
 			"page": 34,
@@ -2493,6 +2495,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Rime Foil",
 			"source": "TV",
 			"page": 34,
@@ -2534,6 +2537,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Shattered Plan",
 			"source": "TV",
 			"page": 35,
@@ -2557,6 +2561,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Blessed Reformer",
 			"source": "TV",
 			"page": 35,
@@ -2628,6 +2633,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Reaper's Crescent",
 			"source": "TV",
 			"page": 35,
@@ -2652,6 +2658,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Stargazer",
 			"source": "TV",
 			"page": 35,
@@ -2678,6 +2685,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Alghollthu Lash",
 			"source": "TV",
 			"page": 35,
@@ -2750,6 +2758,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Alicorn Lance",
 			"source": "TV",
 			"page": 36,
@@ -2799,6 +2808,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Dezullon Fountain",
 			"source": "TV",
 			"page": 36,
@@ -2870,6 +2880,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Dragonscale Staff",
 			"source": "TV",
 			"page": 36,
@@ -2894,6 +2905,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Dragontooth Club",
 			"source": "TV",
 			"page": 36,
@@ -2939,6 +2951,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Ghast Stiletto",
 			"source": "TV",
 			"page": 36,
@@ -2987,6 +3000,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Scizore of the Crab",
 			"source": "TV",
 			"page": 36,
@@ -3043,6 +3057,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Vampire-Fang Morningstar",
 			"source": "TV",
 			"page": 38,
@@ -3085,6 +3100,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Vine Whip",
 			"source": "TV",
 			"page": 38,
@@ -3134,6 +3150,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Kaldemash's Lament",
 			"source": "TV",
 			"page": 38,
@@ -3200,6 +3217,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Mindlance",
 			"source": "TV",
 			"page": 39,
@@ -3223,6 +3241,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Solar Shellflower",
 			"source": "TV",
 			"page": 39,
@@ -3263,6 +3282,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Spark Dancer",
 			"source": "TV",
 			"page": 39,
@@ -3303,6 +3323,7 @@
 			]
 		},
 		{
+			"hasFluff": true,
 			"name": "Thundercrasher",
 			"source": "TV",
 			"page": 39,
