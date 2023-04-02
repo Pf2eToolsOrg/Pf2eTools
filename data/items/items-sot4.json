@@ -340,55 +340,56 @@
 						"freq": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "lesser",
-							"level": 6,
-							"price": {
-								"amount": 235,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "moderate",
-							"level": 10,
-							"price": {
-								"amount": 850,
-								"coin": "gp"
-							},
-							"entries": [
-								"The counteract modifier is +17, and the maximum radius is equal to triple the light's standard radius."
-							]
-						},
-						{
-							"name": "greater",
-							"level": 14,
-							"price": {
-								"amount": 3700,
-								"coin": "gp"
-							},
-							"entries": [
-								"As moderate twilight lantern, but the counteract modifier is +21."
-							]
-						},
-						{
-							"name": "major",
-							"level": 18,
-							"price": {
-								"amount": 18750,
-								"coin": "gp"
-							},
-							"entries": [
-								"The counteract modifier is +28, and the maximum radius is equal to quadruple the light's standard radius."
-							]
-						}
-					],
 					"entries": [
 						"You raise the lantern and unleash a beam of powerful moonlight, targeting a {@trait darkness} effect within 60 feet. The lantern attempts to counteract the effect with a counteract modifier of +10."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 6,
+					"price": {
+						"amount": 235,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "lesser"
+				},
+				{
+					"level": 10,
+					"price": {
+						"amount": 850,
+						"coin": "gp"
+					},
+					"entries": [
+						"The counteract modifier is +17, and the maximum radius is equal to triple the light's standard radius."
+					],
+					"variantType": "moderate"
+				},
+				{
+					"level": 14,
+					"price": {
+						"amount": 3700,
+						"coin": "gp"
+					},
+					"entries": [
+						"As moderate twilight lantern, but the counteract modifier is +21."
+					],
+					"variantType": "greater"
+				},
+				{
+					"level": 18,
+					"price": {
+						"amount": 18750,
+						"coin": "gp"
+					},
+					"entries": [
+						"The counteract modifier is +28, and the maximum radius is equal to quadruple the light's standard radius."
+					],
+					"variantType": "major"
+				}
+			],
+			"generic": "G"
 		}
 	]
 }

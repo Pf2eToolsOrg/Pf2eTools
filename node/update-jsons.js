@@ -15,13 +15,13 @@ function updateFolder (folder) {
 			// For targeted schema changes, like changing a name of an object key
 			if (json.item) {
 				json.item = json.item.map(x => {
-					if (x.entries) {
+					if (x.entries && Array.isArray(x.entries) && x.entries.length) {
 						x.entries = x.entries.map(e => {
 							if (typeof e === "object") {
 								if (e.variants) {
 									console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
+									x.variants = e.variants
 									delete e.variants
-									x.variants = e
 									if (!x.generic) x.generic = "G"
 								}
 							}

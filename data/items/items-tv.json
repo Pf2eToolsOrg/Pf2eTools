@@ -1048,13 +1048,14 @@
 				"coin": "sp",
 				"amount": 2
 			},
-			"entries": [
-				]
+			"entries": []
 		},
 		{
 			"name": "Wooden Taws",
 			"otherSources": {
-				"Originally": ["LOAG|139"]
+				"Originally": [
+					"LOAG|139"
+				]
 			},
 			"source": "TV",
 			"page": 30,
@@ -1078,8 +1079,7 @@
 				"amount": 1,
 				"note": "(price for 10)"
 			},
-			"entries": [
-				]
+			"entries": []
 		},
 		{
 			"name": "Library Robes",
@@ -1306,13 +1306,13 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "reef heart",
 					"level": 12,
 					"price": {
 						"amount": 2000,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "reef heart"
 				},
 				{
 					"variantType": "greater",
@@ -1613,34 +1613,35 @@
 						"freq": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "clockwork shield",
-							"level": 11,
-							"price": {
-								"amount": 1300,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"variantType": "greater",
-							"name": "greater clockwork shield",
-							"level": 18,
-							"price": {
-								"amount": 22000,
-								"coin": "gp"
-							},
-							"entries": [
-								"A greater clockwork shield's (Hardness 17, HP 130, and BT 65) gears are +3 greater striking shield spikes."
-							]
-						}
-					],
 					"entries": [
 						"The shield's gears begin to spin, subtly adjusting the shield's position as you fight. You gain an extra reaction this turn and at the start of each of your turns for the next minute that you can use only to Shield Block."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 11,
+					"price": {
+						"amount": 1300,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "clockwork shield"
+				},
+				{
+					"variantType": "greater",
+					"name": "greater clockwork shield",
+					"level": 18,
+					"price": {
+						"amount": 22000,
+						"coin": "gp"
+					},
+					"entries": [
+						"A greater clockwork shield's (Hardness 17, HP 130, and BT 65) gears are +3 greater striking shield spikes."
+					]
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Helmsman's Recourse",
@@ -1671,62 +1672,63 @@
 						"unit": "day"
 					},
 					"requirements": "You're in a body of water",
-					"variants": [
-						{
-							"name": "helmsman's recourse",
-							"level": 5,
-							"price": {
-								"amount": 150,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"variantType": "greater",
-							"name": "greater helmsman's recourse",
-							"level": 7,
-							"price": {
-								"amount": 625,
-								"coin": "gp"
-							},
-							"shieldData": {
-								"hardness": 8,
-								"hp": 60,
-								"bt": 30
-							},
-							"entries": [
-								"and when you",
-								{
-									"type": "ability",
-									"components": [
-										"the shield",
-										"it casts water walk on you."
-									]
-								}
-							]
-						},
-						{
-							"name": "major helmsman's recourse",
-							"level": 11,
-							"price": {
-								"amount": 2650,
-								"coin": "gp"
-							},
-							"shieldData": {
-								"hardness": 11,
-								"hp": 80,
-								"bt": 40
-							},
-							"entries": [
-								"the item bonus is +2; and when you Activate the shield, you can breathe underwater for 10 minutes."
-							]
-						}
-					],
 					"entries": [
 						"For 10 minutes, you don't sink if you haven't succeeded at a {@action Swim} action on a turn, and if you're submerged, you automatically ascend 10 feet at the end of your turn."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 5,
+					"price": {
+						"amount": 150,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "helmsman's recourse"
+				},
+				{
+					"variantType": "greater",
+					"name": "greater helmsman's recourse",
+					"level": 7,
+					"price": {
+						"amount": 625,
+						"coin": "gp"
+					},
+					"shieldData": {
+						"hardness": 8,
+						"hp": 60,
+						"bt": 30
+					},
+					"entries": [
+						"and when you",
+						{
+							"type": "ability",
+							"components": [
+								"the shield",
+								"it casts water walk on you."
+							]
+						}
+					]
+				},
+				{
+					"level": 11,
+					"price": {
+						"amount": 2650,
+						"coin": "gp"
+					},
+					"shieldData": {
+						"hardness": 11,
+						"hp": 80,
+						"bt": 40
+					},
+					"entries": [
+						"the item bonus is +2; and when you Activate the shield, you can breathe underwater for 10 minutes."
+					],
+					"variantType": "major helmsman's recourse"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Sanguine Klar",
@@ -1757,34 +1759,35 @@
 						"unit": "round"
 					},
 					"trigger": "You or a creature within 5 feet of you suffers bleed damage",
-					"variants": [
-						{
-							"name": "sanguine klar",
-							"level": 9,
-							"price": {
-								"amount": 650,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"variantType": "greater",
-							"name": "greater sanguine klar",
-							"level": 14,
-							"price": {
-								"amount": 3700,
-								"coin": "gp"
-							},
-							"entries": [
-								"A greater sanguine klar (Hardness 13, HP 100, and BT 50) is a +2 greater striking wounding klar, and its activation can be triggered by bleed damage at a range of 30 feet."
-							]
-						}
-					],
 					"entries": [
 						"The sanguine klar regains a number of Hit Points equal to the bleed damage, up to an amount equal to its Hardness."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 9,
+					"price": {
+						"amount": 650,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "sanguine klar"
+				},
+				{
+					"variantType": "greater",
+					"name": "greater sanguine klar",
+					"level": 14,
+					"price": {
+						"amount": 3700,
+						"coin": "gp"
+					},
+					"entries": [
+						"A greater sanguine klar (Hardness 13, HP 100, and BT 50) is a +2 greater striking wounding klar, and its activation can be triggered by bleed damage at a range of 30 feet."
+					]
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Sapling Shield",
@@ -1810,80 +1813,81 @@
 					"components": [
 						"envision"
 					],
-					"variants": [
-						{
-							"name": "minor",
-							"level": 3,
-							"price": {
-								"amount": 57,
-								"coin": "gp"
-							},
-							"entries": [
-								"The buckler has Hardness 3, HP 24, and BT 12."
-							]
-						},
-						{
-							"name": "lesser",
-							"level": 6,
-							"price": {
-								"amount": 240,
-								"coin": "gp"
-							},
-							"entries": [
-								"The buckler has Hardness 6, HP 48, and BT 24."
-							]
-						},
-						{
-							"name": "moderate",
-							"level": 9,
-							"price": {
-								"amount": 680,
-								"coin": "gp"
-							},
-							"entries": [
-								"The buckler has Hardness 8, HP 64, and BT 32."
-							]
-						},
-						{
-							"variantType": "greater",
-							"name": "greater",
-							"level": 12,
-							"price": {
-								"amount": 1820,
-								"coin": "gp"
-							},
-							"entries": [
-								"The buckler has Hardness 11, HP 88, and BT 44."
-							]
-						},
-						{
-							"name": "major",
-							"level": 15,
-							"price": {
-								"amount": 5860,
-								"coin": "gp"
-							},
-							"entries": [
-								"The buckler has Hardness 13, HP 104, and BT 52."
-							]
-						},
-						{
-							"name": "true",
-							"level": 18,
-							"price": {
-								"amount": 20220,
-								"coin": "gp"
-							},
-							"entries": [
-								"The buckler has Hardness 15, HP 120, and BT 60."
-							]
-						}
-					],
 					"entries": [
 						"The buckler expands, with the sapling image growing into a mighty oak tree. The buckler becomes a tower shield, gaining the corresponding AC bonus, Speed penalty, and ability to {@action Take Cover}. It keeps the same Hit Points and {@condition Broken} Threshold, but its Hardness and Bulk increase by 2 in this form. The shield remains in this form until you Activate it again to revert it to a buckler."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 3,
+					"price": {
+						"amount": 57,
+						"coin": "gp"
+					},
+					"entries": [
+						"The buckler has Hardness 3, HP 24, and BT 12."
+					],
+					"variantType": "minor"
+				},
+				{
+					"level": 6,
+					"price": {
+						"amount": 240,
+						"coin": "gp"
+					},
+					"entries": [
+						"The buckler has Hardness 6, HP 48, and BT 24."
+					],
+					"variantType": "lesser"
+				},
+				{
+					"level": 9,
+					"price": {
+						"amount": 680,
+						"coin": "gp"
+					},
+					"entries": [
+						"The buckler has Hardness 8, HP 64, and BT 32."
+					],
+					"variantType": "moderate"
+				},
+				{
+					"variantType": "greater",
+					"name": "greater",
+					"level": 12,
+					"price": {
+						"amount": 1820,
+						"coin": "gp"
+					},
+					"entries": [
+						"The buckler has Hardness 11, HP 88, and BT 44."
+					]
+				},
+				{
+					"level": 15,
+					"price": {
+						"amount": 5860,
+						"coin": "gp"
+					},
+					"entries": [
+						"The buckler has Hardness 13, HP 104, and BT 52."
+					],
+					"variantType": "major"
+				},
+				{
+					"level": 18,
+					"price": {
+						"amount": 20220,
+						"coin": "gp"
+					},
+					"entries": [
+						"The buckler has Hardness 15, HP 120, and BT 60."
+					],
+					"variantType": "true"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Starfall Shield",
@@ -2010,39 +2014,40 @@
 						"freq": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "warding escutcheon",
-							"level": 9,
-							"price": {
-								"amount": 625,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"variantType": "greater",
-							"name": "greater warding escutcheon",
-							"level": 20,
-							"price": {
-								"amount": 55000,
-								"coin": "gp"
-							},
-							"shieldData": {
-								"hardness": 20,
-								"hp": 80,
-								"bt": 40
-							},
-							"entries": [
-								"The DCs are 43, and using the second activation casts resplendent mansion, forming a tall stone keep."
-							]
-						}
-					],
 					"entries": [
 						"The shield floats lazily in the air as bricks quickly fly from it to form a squat stone tower around it. You cast {@spell cozy cabin|APG}, with the shield becoming the door."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 9,
+					"price": {
+						"amount": 625,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "warding escutcheon"
+				},
+				{
+					"variantType": "greater",
+					"name": "greater warding escutcheon",
+					"level": 20,
+					"price": {
+						"amount": 55000,
+						"coin": "gp"
+					},
+					"shieldData": {
+						"hardness": 20,
+						"hp": 80,
+						"bt": 40
+					},
+					"entries": [
+						"The DCs are 43, and using the second activation casts resplendent mansion, forming a tall stone keep."
+					]
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Authorized",

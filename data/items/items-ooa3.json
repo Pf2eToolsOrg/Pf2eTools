@@ -162,28 +162,6 @@
 					],
 					"trigger": "You strike a foe with the blast lance",
 					"requirements": "The blast lance is loaded with a round",
-					"variants": [
-						{
-							"name": "blast lance",
-							"level": 4,
-							"price": {
-								"amount": 100,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "greater blast lance",
-							"level": 8,
-							"price": {
-								"amount": 500,
-								"coin": "gp"
-							},
-							"entries": [
-								"A greater blast lance is a +1 striking lance whose blast deals {@damage 3d8} fire damage instead of {@damage 2d8} fire damage. The Fortitude save DC is 24."
-							]
-						}
-					],
 					"entries": [
 						"You fire a blast of gunpowder through the weapon that deals {@damage 2d8} fire damage. The foe must attempt a DC 18 Fortitude save.",
 						{
@@ -205,7 +183,30 @@
 						}
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 4,
+					"price": {
+						"amount": 100,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "blast lance"
+				},
+				{
+					"level": 8,
+					"price": {
+						"amount": 500,
+						"coin": "gp"
+					},
+					"entries": [
+						"A greater blast lance is a +1 striking lance whose blast deals {@damage 3d8} fire damage instead of {@damage 2d8} fire damage. The Fortitude save DC is 24."
+					],
+					"variantType": "greater blast lance"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Blast Suit",
