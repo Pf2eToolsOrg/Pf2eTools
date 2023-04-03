@@ -827,6 +827,13 @@ function Renderer () {
 		if (entry.noMAP) MAP = 0;
 		if (entry.traits && entry.traits.map(t => t.toLowerCase()).includes("agile")) MAP = -4;
 
+		let actions;
+		if (entry.activity) {
+			actions = Parser.timeToFullEntry(entry.activity);
+		} else {
+			actions = "{@as 1}";
+		}
+
 		let onHit;
 		if (entry.effects && !entry.damage) {
 			onHit = `, <strong>Effect&nbsp;</strong>${entry.effects.map(e => this.render(e)).join(", ")}`;
@@ -835,7 +842,7 @@ function Renderer () {
 		}
 
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
+			<strong>${entry.range}&nbsp;</strong>${this.render(actions)} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
