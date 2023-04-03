@@ -4460,7 +4460,8 @@ Renderer.creature = {
 						renderStack.push(renderer.render(spells.join(", ")))
 					} else {
 						renderStack.push(`<span>; <strong>Constant&nbsp;</strong></span>`)
-						Object.keys(sc.entry["constant"]).sort().reverse().forEach((clvl) => {
+						Object.keys(sc.entry["constant"]).sort().reverse().forEach((clvl, idx) => {
+							if (idx !== 0) renderStack.push("; ");
 							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)})&nbsp;</strong></span>`)
 							let spells = []
 							for (let spell of sc.entry["constant"][clvl].spells) {
