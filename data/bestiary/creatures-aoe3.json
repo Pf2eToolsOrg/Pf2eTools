@@ -179,19 +179,19 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									}
+								]
+							}
+						}
 					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16, {@skill Lore||Sailing Lore} +15, {@skill Stealth} +19, {@skill Survival} +16, {@skill Thievery} +19 Str +2, Dex +5, Con +4, Int +3, Wis +4, Cha +3 Items +1 striking dagger."
-						],
-						"name": "Nature"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -242,6 +242,12 @@
 				"hp": [
 					{
 						"hp": 150
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 8,
+						"name": "cold iron"
 					}
 				]
 			},
@@ -335,17 +341,23 @@
 					],
 					"damage": "{@dice 2d6+10} plus Grab and paralysis",
 					"types": []
+				},
+				{
+					"range": "Ranged",
+					"name": "water jet",
+					"attack": 21,
+					"traits": [
+						"range increment <10 feet>"
+					],
+					"effects": [
+						"{@dice 2d6+10}",
+						"fill lungs"
+					],
+					"damage": "{@dice 2d6+10} plus fill lungs",
+					"types": []
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+19, {@skill Survival} +17 Str +6, Dex +6, Con +3, Int +1, Wis +4, Cha +4."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -401,16 +413,9 @@
 							},
 							{
 								"stage": 4,
-								"entry": "drowning and cannot reduce below stage 4 until the water is purged",
-								"duration": null
+								"entry": "drowning and cannot reduce below stage 4 until the water is purged {@action Administer First Aid} (which stops the creature from drowning and returns the creature to stage 3; stage 2 on a critical success) or a {@trait magical} effect that removes curses or the {@condition sickened} condition (which stops the creature from drowning and ends the curse). If the creature dies from drowning, it rises as a barnacle ghoul the next midnight."
 							}
 						]
-					},
-					{
-						"entries": [
-							"{@action Administer First Aid} (which stops the creature from drowning and returns the creature to stage 3; stage 2 on a critical success) or a {@trait magical} effect that removes curses or the {@condition sickened} condition (which stops the creature from drowning and ends the curse). If the creature dies from drowning, it rises as a barnacle ghoul the next midnight."
-						],
-						"name": ""
 					},
 					{
 						"activity": {
@@ -462,7 +467,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			},
 			"hasImages": true
@@ -481,6 +490,7 @@
 				"humanoid",
 				"orc"
 			],
+			"description": "Male half-orc gang leader",
 			"perception": {
 				"std": 24
 			},
@@ -510,6 +520,9 @@
 				},
 				"stealth": {
 					"std": 17
+				},
+				"gang lore": {
+					"std": 18
 				}
 			},
 			"abilityMods": {
@@ -520,6 +533,16 @@
 				"wis": 1,
 				"cha": 3
 			},
+			"items": [
+				"+1 chain mail",
+				"moderate elixir of life",
+				"heavy crossbow (with 4 spellstrike arrows [type III, blindness; DC 24])",
+				"greater juggernaut mutagen",
+				"ring of lies",
+				"+1 striking shovel (same stats as a scythe, but with the versatile B trait)",
+				"greater smokestick",
+				"moderate tanglefoot bag"
+			],
 			"speed": {
 				"walk": 20
 			},
@@ -554,30 +577,7 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "varies",
-							"entry": "[type III, blindness; DC 24]"
-						},
-						"entries": [
-							"+18, {@skill Intimidation} +22, {@skill Stealth} +17 Str +5, Dex +2, Con +4, Int +1, Wis +1, Cha +3 Items +1 chain mail, moderate elixir of life, heavy crossbow (with 4 spellstrike arrows ), greater juggernaut mutagen, ring of lies, +1 striking shovel (same stats as a scythe, but with the versatile B trait), greater smokestick, moderate tanglefoot bag."
-						],
-						"name": "Lore"
-					}
-				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 2d10+11} slashing Ranged heavy crossbow +19 (range increment <120 feet>, reload <2>), Damage {@damage 1d10} piercing."
-						],
-						"name": "B), Damage"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -585,7 +585,16 @@
 						},
 						"requirements": "Berleth has just used his shovel to {@action Trip} a creature",
 						"entries": [
-							"Berleth brutally brings his shovel down on the {@condition prone} foe, making a shovel {@action Strike}. On a hit, the {@action Strike} deals damage as normal, plus the target must make a DC 30 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition stunned|CRB|stunned 1}. Failure The creature is {@condition stunned|CRB|stunned 2}. Critical Failure The creature is {@condition stunned|CRB|stunned 2} and {@condition clumsy|CRB|clumsy 1} for 1 minute."
+							"Berleth brutally brings his shovel down on the {@condition prone} foe, making a shovel {@action Strike}. On a hit, the {@action Strike} deals damage as normal, plus the target must make a DC 30 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
+									"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
+									"Critical Failure": "The creature is {@condition stunned|CRB|stunned 2} and {@condition clumsy|CRB|clumsy 1} for 1 minute."
+								}
+							}
 						],
 						"name": "Concussive Beatdown"
 					},
@@ -595,8 +604,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Berleth plunges his shovel through a creature's neck as though it were peat moss. He makes a shovel {@action Strike} against an adjacent {@condition unconscious} or {@condition immobilized} creature.",
-							"On a hit, the creature is {@condition wounded|CRB|wounded 2} (possibly {@condition dying})."
+							"Berleth plunges his shovel through a creature's neck as though it were peat moss. He makes a shovel {@action Strike} against an adjacent {@condition unconscious} or {@condition immobilized} creature. On a hit, the creature is {@condition wounded|CRB|wounded 2} (possibly {@condition dying})."
 						],
 						"name": "Decapitate"
 					},
@@ -891,14 +899,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16 Str +4, Dex +2, Con +5, Int +0, Wis +2, Cha +1 Items chain shirt, +1 striking sap."
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -914,10 +914,15 @@
 				],
 				"bot": [
 					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The casino bouncer has {@ability Grab||Grabbed} a {@trait Medium} or smaller target and is wielding a nonlethal weapon in the other hand",
 						"entries": [
-							"{@action Strike} hits, it deals damage as usual and the casino bouncer moves the target 5 feet (this is forced movement) and {@action Step||Steps} into the space the target had just occupied."
+							"The casino bouncer makes a {@action Strike} against the {@condition grabbed} target with the nonlethal weapon. If the Strike hits, it deals damage as usual and the casino bouncer moves the target 5 feet (this is forced movement) and Steps into the space the target had just occupied."
 						],
-						"name": "the"
+						"name": "Escort from the Premises"
 					},
 					{
 						"activity": {
@@ -1331,6 +1336,19 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"blackfinger blight (2 doses; page 78)",
+				"+1 striking crossbow (with 3 shining bolts and 2 explosive bolts)",
+				"crowbar",
+				"greater darkvision elixir",
+				"moderate elixir of life",
+				"grappling hook",
+				"infiltrator thieves' tools",
+				"+1 leather armor",
+				"+1 striking shortsword",
+				"sunrods (3)",
+				"88 gp"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1366,14 +1384,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Thievery} +28 Str +3, Dex +5, Con +3, Int +1, Wis +2, Cha +3 Items blackfinger blight (2 doses; page 78), +1 striking crossbow (with 3 shining bolts and 2 explosive bolts), crowbar, greater darkvision elixir, moderate elixir of life, grappling hook, infiltrator thieves' tools, +1 leather armor, +1 striking shortsword, sunrods (3), 88 gp."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1411,9 +1421,9 @@
 					},
 					{
 						"entries": [
-							"{@action Strike||Strikes} deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+							"Franca's {@action Strike||Strikes} deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak Attack Franca's"
+						"name": "Sneak Attack"
 					},
 					{
 						"activity": {
@@ -1440,7 +1450,10 @@
 					},
 					"will": {
 						"std": 19
-					}
+					},
+					"abilities": [
+						"+2 circumstance bonus to saves vs. poison"
+					]
 				},
 				"hp": [
 					{
@@ -1470,7 +1483,8 @@
 					"common",
 					"dwarven",
 					"elven",
-					"gnomish"
+					"gnomish",
+					"halfling"
 				]
 			},
 			"skills": {
@@ -1507,6 +1521,13 @@
 				"wis": 5,
 				"cha": 5
 			},
+			"items": [
+				"apartment key",
+				"+2 greater striking dagger",
+				"+2 greater striking hand crossbow with 10 bolts",
+				"+2 leather armor",
+				"vault key"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1543,60 +1564,18 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Arcana} +19, {@skill Deception} +24, {@skill Diplomacy} +22"
-						],
-						"name": "Halfling"
-					},
-					{
-						"entries": [
-							"+23, {@skill Intimidation} +20, {@skill Occultism} +19"
-						],
-						"name": "Games Lore"
-					},
-					{
-						"entries": [
-							"+22, {@skill Society} +23, {@skill Thievery} +21 Str +0, Dex +2, Con +1, Int +4, Wis +5, Cha +5 Items apartment key, +2 greater striking dagger, +2 greater striking hand crossbow with 10 bolts, +2 leather armor, vault key."
-						],
-						"name": "Performance"
-					}
-				],
 				"bot": [
 					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
 						"entries": [
-							"{@damage 3d4+3} piercing Ranged hand crossbow +22 (magical, range <60 feet>, reload <1>), Damage {@damage 3d6} piercing."
+							"When Gage gets a critical success using the {@action Lie} action, the target's attitude toward him improves by one step, as though he'd succeeded at using {@skill Diplomacy} to {@action Make an Impression}. This works only once per conversation, and if he critically succeeds against multiple targets using the same result, he chooses one creature's attitude to improve. To use this ability, Gage must be lying to impart seemingly important information, inflate his status, or ingratiate himself, which trivial or irrelevant lies can't achieve."
 						],
-						"name": "S), Damage"
+						"name": "Charming Liar"
 					},
 					{
 						"entries": [
-							"Gage gets a critical success using the {@action Lie} action, the target's attitude toward him improves by one step, as though he'd succeeded at using {@skill Diplomacy}."
+							"When Gage meets a group of up to five people, he can immediately attempt a {@skill Diplomacy} check to {@action Make an Impression}, comparing the result to the Will DC of each target. He takes a \u20133 penalty on this check, and it is possible to get different degrees of success for each target. If he fails or critically fails, he can engage in 1 minute of conversation and attempt a new check at the end of that time rather than accepting the failure or critical failure result."
 						],
-						"name": "Charming Liar When"
-					},
-					{
-						"entries": [
-							"{@action Make an Impression}. This works only once per conversation, and if he critically succeeds against multiple targets using the same result, he chooses one creature's attitude to improve. To use this ability, Gage must be lying to impart seemingly important information, inflate his status, or ingratiate himself, which trivial or irrelevant lies can't achieve."
-						],
-						"name": "to"
-					},
-					{
-						"entries": [
-							"Gage meets a group of up to five people, he can immediately attempt a {@skill Diplomacy} check."
-						],
-						"name": "Smooth Operator When"
-					},
-					{
-						"entries": [
-							"{@action Make an Impression}, comparing the result to the Will DC of each target. He takes a \u20133 penalty on this check, and it is possible to get different degrees of success for each target. If he fails or critically fails, he can engage in 1 minute of conversation and attempt a new check at the end of that time rather than accepting the failure or critical failure result."
-						],
-						"name": "to"
+						"name": "Smooth Operator"
 					}
 				]
 			},
@@ -1783,6 +1762,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female human ex-brawler/gang leader",
 			"perception": {
 				"std": 20
 			},
@@ -1809,6 +1789,9 @@
 				},
 				"gang lore": {
 					"std": 16
+				},
+				"sports lore": {
+					"std": 16
 				}
 			},
 			"abilityMods": {
@@ -1819,6 +1802,10 @@
 				"wis": 2,
 				"cha": 2
 			},
+			"items": [
+				"+1 striking handwraps of mighty blows",
+				"+1 studded leather"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1842,27 +1829,7 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Lore||Gang Lore} +16, {@skill Intimidation} +18, Sports."
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+16 Str +4, Dex +3, Con +4, Int +0, Wis +2, Cha +2 Items +1 striking handwraps of mighty blows, +1 studded leather."
-						],
-						"name": "Lore"
-					}
-				],
 				"mid": [
-					{
-						"entries": [
-							"HP 230."
-						],
-						"name": "Shove and Trip"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -1914,7 +1881,11 @@
 					},
 					"will": {
 						"std": 18
-					}
+					},
+					"abilities": [
+						"+1 status bonus to saves vs. {@trait incapacitation} effects",
+						"+2 status bonus to saves vs. {@action Shove} and {@action Trip}"
+					]
 				},
 				"hp": [
 					{
@@ -2112,6 +2083,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Pangender half-elf occultist",
 			"perception": {
 				"std": 23
 			},
@@ -2151,6 +2123,12 @@
 				"wis": 4,
 				"cha": 2
 			},
+			"items": [
+				"+1 striking dagger",
+				"+1 leather armor",
+				"spellbook",
+				"wand of manifold missiles (3rd level)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2193,6 +2171,23 @@
 					"DC": 33,
 					"attack": 25,
 					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -2286,24 +2281,7 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25, {@skill Society} +23, {@skill Stealth} +22 Str +1, Dex +4, Con +0, Int +5, Wis +4, Cha +2 Items +1 striking dagger, +1 leather armor, spellbook, wand of manifold missiles (3rd level)"
-						],
-						"name": "Occultism"
-					}
-				],
 				"bot": [
-					{
-						"traits": [
-							"6th"
-						],
-						"entries": [
-							"daze, ghost sound, ray of frost, shield."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -2313,8 +2291,9 @@
 							"unit": "day",
 							"freq": 1
 						},
+						"requirements": "Scathka hasn't acted yet on their turn",
 						"entries": [
-							"Requirements Scathka hasn't acted yet on their turn; On their turn, Scathka casts one spell they've prepared and already cast this day without spending a spell slot. Scathka must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
+							"On their turn, Scathka casts one spell they've prepared and already cast this day without spending a spell slot. Scathka must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
 						],
 						"name": "Drain Wand"
 					},
@@ -2591,6 +2570,9 @@
 				"deception": {
 					"std": 18
 				},
+				"intimidation": {
+					"std": 18
+				},
 				"occultism": {
 					"std": 16
 				},
@@ -2609,6 +2591,12 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"crossbow with 20 bolts",
+				"+1 striking elven curve blade",
+				"graveroot (2)",
+				"leather armor"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2694,14 +2682,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Occultism} +16, {@skill Stealth} +18, {@skill Thievery} +14 Str +1, Dex +6, Con +2, Int +4, Wis +2, Cha +3 Items crossbow with 20 bolts, +1 striking elven curve blade, graveroot (2), leather armor."
-						],
-						"name": "Intimidate"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2728,7 +2708,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The svartalfar killer chooses acid splash, produce flame, ray of enfeeblement, or shocking grasp and makes a melee {@action Strike}. If the svartalfar killer hits, they cast the chosen spell through the weapon at the same target. The spell's attack roll is the same result as the {@action Strike}."
+							"The svartalfar killer chooses {@spell acid splash}, {@spell produce flame}, {@spell ray of enfeeblement}, or {@spell shocking grasp} and makes a melee {@action Strike}. If the svartalfar killer hits, they cast the chosen spell through the weapon at the same target. The spell's attack roll is the same result as the {@action Strike}."
 						],
 						"name": "Spell-Imbued Blade"
 					}
@@ -2753,6 +2733,12 @@
 					{
 						"hp": 135
 					}
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "cold iron"
+					}
 				]
 			},
 			"hasImages": true
@@ -2770,6 +2756,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female Diobel Sweeper chemists",
 			"perception": {
 				"std": 21
 			},
@@ -2802,6 +2789,14 @@
 				"wis": 0,
 				"cha": 1
 			},
+			"items": [
+				"moderate acid flasks (3)",
+				"moderate alchemist's fires (3)",
+				"alchemist's tools",
+				"formula book",
+				"+1 striking sickle",
+				"+1 studded leather"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2858,14 +2853,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+19 Str +2, Dex +4, Con +3, Int +4, Wis +0, Cha +1 Items moderate acid flasks (3), moderate alchemist's fires (3), alchemist's tools, formula book, +1 striking sickle, +1 studded leather."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
