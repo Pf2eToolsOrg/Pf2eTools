@@ -9342,6 +9342,116 @@
 			]
 		},
 		{
+			"name": "Cinnamon Seers",
+			"source": "TV",
+			"page": 47,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"alchemical",
+				"consumable",
+				"lozenge"
+			],
+			"price": {
+				"amount": 14,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"Zippy, alchemically treated cinnamon suffuses cinnamon seers, a rock candy with a lively taste that provides a mental boost. A cinnamon seer remains in your mouth for 1 hour, its stimulating flavor granting you a +1 item bonus to checks to Recall Knowledge.",
+				{
+					"name": "Secondary Effect",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"traits": [
+						"fortune"
+					],
+					"trigger": "You gain no information from a {@action Recall Knowledge} check",
+					"entries": [
+						"Reroll the triggering check. If this was a secret check, the GM rerolls rather than you; the candy doesn't give you any insight into what the GM rolled, so in that case, you're rerolling based only on guesswork. The seer becomes inert. You become temporarily immune to cinnamon seers until the next time you make your daily preparations."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Alchemical Gauntlet",
+			"source": "TV",
+			"page": 62,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"alchemical"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"category": "Unknown",
+			"entries": [
+				"An alchemical gauntlet emits small alchemical detonations when it makes contact with a foe. As an {@action Interact} action, you can place a bomb into a metal bracket near the wrist of the gauntlet. The bomb must be one that deals energy damage, such as an acid flask, alchemist's fire, bottled lightning, frost vial, or thunderstone. The next three attacks made with the gauntlet deal {@damage 1d4} damage of the bomb's damage type in addition to the gauntlet's normal damage. If the second and third attacks aren't all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and aren't modified by any abilities that add to or modify a bomb's effect."
+			]
+		},
+		{
+			"name": "Trueshape Bomb",
+			"source": "TV",
+			"page": 45,
+			"type": "Item",
+			"level": "12+",
+			"traits": [
+				"alchemical",
+				"bomb",
+				"consumable",
+				"poison",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"Concentrated wolfsbane and other anti-shapechanger reagents fill trueshape bombs. These bombs grant an item bonus to attack rolls and deal poison damage, {@condition persistent damage||persistent poison damage}, and poison splash damage, according to their type. If the primary target is under the effects of a {@trait morph} or {@trait polymorph} effect, it must succeed at a Fortitude saving throw at the bomb's listed DC, or else the effects end and the creature returns to its normal form. Targets taking {@condition persistent damage||persistent poison damage} from this bomb must succeed at another Fortitude saving throw at the same DC to change shape using a {@trait morph} or {@trait polymorph} effect.",
+				"The {@condition persistent damage} can last up to 1 minute."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"level": 12,
+					"price": {
+						"amount": 375,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison splash damage. The Fortitude DC is 30."
+					],
+					"variantType": "trueshape bomb"
+				},
+				{
+					"level": 18,
+					"price": {
+						"amount": 3750,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison splash damage. The Fortitude DC is 40."
+					],
+					"variantType": "greater trueshape bomb"
+				}
+			]
+		},
+		{
 			"hasFluff": true,
 			"name": "Alicorn Lance",
 			"source": "TV",
