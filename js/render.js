@@ -947,28 +947,32 @@ function Renderer () {
 		if (entry.traits) entry.traits.forEach((t) => traits.push(`{@trait ${t.toLowerCase()}}`));
 		if (!options.isAbility) textStack[0] += `<p class="pf2-stat pf2-stat__section">`
 		if (entry.name) textStack[0] += `<strong>${entry.name}&nbsp;</strong>`;
-		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}); `;
+		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}) `;
 		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}; `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)} `;
 		if (entry.DC != null || entry.savingThrow != null) {
 			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
-			if (entry.DC != null) textStack[0] += `DC ${renderer.render(entry.DC)} `
-			textStack[0] += `${renderer.render(entry.savingThrow)}.`
+			if (entry.DC != null) textStack[0] += `DC ${renderer.render(entry.DC)}`
+			if (entry.DC != null && entry.savingThrow != null) textStack[0] += " "
+			if (entry.savingThrow != null) textStack[0] += `${renderer.render(entry.savingThrow)}`
+			textStack[0] += "; "
 		}
-		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${renderer.render(entry.onset)}`;
-		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
+		if (entry.onset != null) textStack[0] += `<strong>Onset</strong> ${renderer.render(entry.onset)}; `;
+		if (entry.maxDuration != null) textStack[0] += `<strong>Maximum Duration</strong> ${entry.maxDuration}; `;
 		if (entry.stages) {
 			for (let stage of entry.stages) {
-				textStack[0] += ` <strong class="no-wrap">Stage ${stage.stage}&nbsp;</strong>`;
+				textStack[0] += `<strong class="no-wrap">Stage ${stage.stage}&nbsp;</strong>`;
 				this._recursiveRender(stage.entry, textStack, meta);
-				if (stage.duration != null) textStack[0] += ` (${renderer.render(stage.duration)});`;
+				if (stage.duration != null) textStack[0] += ` (${renderer.render(stage.duration)})`;
+				textStack[0] += "; ";
 			}
 		}
 		if (entry.entries) {
-			textStack[0] += ` <strong>Effect&nbsp;</strong>`;
+			textStack[0] += `<strong>Effect&nbsp;</strong>`;
 			entry.entries.forEach(it => this._recursiveRender(it, textStack, meta));
+		} else {
+			textStack[0] = textStack[0].replace(/; $/, "");
 		}
-		textStack[0] = textStack[0].replace(/;$/, ".");
 		if (!options.isAbility) textStack[0] += `</p>`;
 	};
 
