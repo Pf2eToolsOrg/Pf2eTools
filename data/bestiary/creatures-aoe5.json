@@ -155,6 +155,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human rogue",
 			"perception": {
 				"std": 25
 			},
@@ -239,14 +240,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+23, {@skill Thievery} +23 Str +5, Dex +5, Con +5, Int \u20132, Wis +2, Cha +1 Items +1 striking club, daggers (8), +1 leather armor."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -286,9 +279,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"'n' Slice The Bloody Barber goon makes one dagger {@action Strike} and one club {@action Strike}, ignoring the multiple attack penalty until after the second {@action Strike}. Each {@action Strike} deals an additional {@damage 1d8} slashing or piercing damage (for the dagger) or bludgeoning damage (for the club)."
+							"The Bloody Barber goon makes one dagger {@action Strike} and one club {@action Strike}, ignoring the multiple attack penalty until after the second {@action Strike}. Each {@action Strike} deals an additional {@damage 1d8} slashing or piercing damage (for the dagger) or bludgeoning damage (for the club)."
 						],
-						"name": "Thunk"
+						"name": "Thunk 'n' Slice"
 					}
 				]
 			},
@@ -1074,6 +1067,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female human assassin",
 			"perception": {
 				"std": 30
 			},
@@ -1107,6 +1101,12 @@
 				"wis": 4,
 				"cha": 0
 			},
+			"items": [
+				"+2 striking crossbow with 20 bolts",
+				"+2 striking dagger",
+				"garrote bolts (4; page 77)",
+				"+2 resilient studded leather armor"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1158,14 +1158,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+32, {@skill Thievery} +30 Str +5, Dex +6, Con +3, Int +1, Wis +4, Cha +0 Items +2 striking crossbow with 20 bolts, +2 striking dagger, garrote bolts (4; page 77), +2 resilient studded leather armor."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1199,7 +1191,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The master assassin {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then Interacts to reload her crossbow."
+							"The master assassin {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then {@action Interact||Interacts} to reload her crossbow."
 						],
 						"name": "Running Reload"
 					},
@@ -1231,8 +1223,9 @@
 							"death",
 							"incapacitation"
 						],
+						"requirements": "The master assassin used Study Target during the previous round and must have a garrote bolt",
 						"entries": [
-							"Requirements The master assassin used Study Target during the previous round and must have a garrote bolt; The master assassin makes a crossbow {@action Strike} against the target she previously studied. If she rolls a success on her attack roll, she gets a critical success instead. The target must attempt a DC 36 Fortitude save.",
+							"The master assassin makes a crossbow {@action Strike} against the target she previously studied. If she rolls a success on her attack roll, she gets a critical success instead. The target must attempt a DC 36 Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1282,6 +1275,7 @@
 				"hag",
 				"humanoid"
 			],
+			"description": "Variant {@creature sea hag||sea hags}",
 			"perception": {
 				"std": 29
 			},
@@ -1345,13 +1339,9 @@
 				"top": [
 					{
 						"entries": [
-							"+29, {@skill Stealth} +29 Str +9, Dex +6, Con +9, Int +5, Wis +6, Cha +5."
+							"As Myrna Rath."
 						],
-						"name": "Occultism"
-					},
-					{
-						"entries": [],
-						"name": "Planar Coven As Myrna Rath."
+						"name": "Planar Coven"
 					},
 					{
 						"entries": [
@@ -1383,9 +1373,9 @@
 							"extradimensional",
 							"teleportation"
 						],
-						"requirements": "A creature within 60 feet of Graem or",
+						"requirements": "A creature within 60 feet of Graem or Grinlowe is in contact with the waters of Stormholt",
 						"entries": [
-							"Grinlowe is in contact with the waters of Stormholt; The hag casts maze (DC 37) on the creature, magically pulling the creature beneath the water (regardless of its actual depth) into an extradimensional underwater maze of shipwrecks. Between the two of them, Graem and Grinlowe can have only one creature trapped in the maze, but either hag can use the {@action Sustain a Spell} action to sustain the effect."
+							"The hag casts {@spell maze} (DC 37) on the creature, magically pulling the creature beneath the water (regardless of its actual depth) into an extradimensional underwater maze of shipwrecks. Between the two of them, Graem and Grinlowe can have only one creature trapped in the maze, but either hag can use the {@action Sustain a Spell} action to sustain the effect."
 						],
 						"name": "Pull Under"
 					}
@@ -1404,11 +1394,20 @@
 					},
 					"will": {
 						"std": 28
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
 						"hp": 300
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "cold iron"
 					}
 				]
 			}
@@ -1426,6 +1425,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human Starwatch secret agent",
 			"perception": {
 				"std": 27
 			},
@@ -1447,6 +1447,9 @@
 				},
 				"stealth": {
 					"std": 24
+				},
+				"legal lore": {
+					"std": 24
 				}
 			},
 			"abilityMods": {
@@ -1457,6 +1460,13 @@
 				"wis": 4,
 				"cha": 0
 			},
+			"items": [
+				"+1 resilient chain shirt",
+				"crossbow (with 20 bolts)",
+				"elite disguise kit",
+				"+2 greater striking longsword",
+				"tinted goggles"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1489,14 +1499,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Society} +24, {@skill Stealth} +24 Str +6, Dex +2, Con +2, Int +4, Wis +4, Cha +0 Items +1 resilient chain shirt, crossbow (with 20 bolts), elite disguise kit, +2 greater striking longsword, tinted goggles."
-						],
-						"name": "Legal Lore"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2038,6 +2040,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human prison warden",
 			"perception": {
 				"std": 37
 			},
@@ -2095,14 +2098,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+31, {@skill Lore||Legal Lore} +30 Str +6, Dex +5, Con +5, Int +2, Wis +2, Cha +1 Items +3 greater striking speed handwraps of mighty blows."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -2146,15 +2141,9 @@
 					},
 					{
 						"entries": [
-							"Guirden makes a fist {@action Strike} and hits, he can choose to apply either the Grab"
+							"Whenever Lord Guirden makes a fist {@action Strike} and hits, he can choose to apply either the {@ability Grab}, {@ability Knockdown}, or {@ability Push} ability to his attack."
 						],
-						"name": "Master Brawler Whenever Lord"
-					},
-					{
-						"entries": [
-							"Push ability to his attack."
-						],
-						"name": "Knockdown, or"
+						"name": "Master Brawler"
 					}
 				]
 			},
@@ -2513,7 +2502,7 @@
 						"magical",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 3d10+16} piercing plus",
+					"damage": "{@damage 3d10+16} piercing plus Improved Grab",
 					"types": [
 						"piercing"
 					]
@@ -2556,20 +2545,11 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							"Primal Innate Spells DC 40; 9th hydraulic torrent; 5th control water (×3)"
-						],
-						"name": "Improved Grab",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "The minchgorm Grabs a creature in its jaws",
+						"trigger": "The minchgorm {@ability Grab||Grabs} a creature in its jaws",
 						"entries": [
 							"The minchgorm uses Swallow Whole."
 						],
@@ -2586,15 +2566,9 @@
 							"water"
 						],
 						"entries": [
-							"Tentacles of water rise up and attempt."
+							"Tentacles of water rise up and attempt to {@action Grapple} all enemies within 15 feet of the minchgorm. The minchgorm attempts an {@skill Athletics} check against the Fortitude DC of each creature in the area. On a success, the creature is {@condition grabbed} ({@action Escape} DC 40). On a critical success, or a success against a creature that is already {@condition grabbed}, the target begins to {@quickref drown||3|drowning and suffocating}."
 						],
 						"name": "Riptide"
-					},
-					{
-						"entries": [
-							"{@action Grapple} all enemies within 15 feet of the minchgorm. The minchgorm attempts an {@skill Athletics} check against the Fortitude DC of each creature in the area. On a success, the creature is {@condition grabbed} ({@action Escape} DC 40). On a critical success, or a success against a creature that is already {@condition grabbed}, the target begins to drown (Pathfinder Core Rulebook 478)."
-						],
-						"name": "to"
 					},
 					{
 						"activity": {
@@ -2653,6 +2627,12 @@
 						"amount": 15,
 						"name": "cold iron"
 					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "fire"
+					}
 				]
 			},
 			"hasImages": true
@@ -2669,6 +2649,7 @@
 				"medium",
 				"undead"
 			],
+			"description": "Male zealborn criminal mastermind (page 87)",
 			"perception": {
 				"std": 31
 			},
@@ -2705,6 +2686,9 @@
 				},
 				"stealth": {
 					"std": 31
+				},
+				"underworld lore": {
+					"std": 28
 				}
 			},
 			"abilityMods": {
@@ -2715,6 +2699,12 @@
 				"wis": 5,
 				"cha": 8
 			},
+			"items": [
+				"darts (20)",
+				"+2 greater striking katana",
+				"Miogimo's mask (page 77)",
+				"+2 resilient studded leather"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -2830,20 +2820,23 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"tradition": "occult",
+					"DC": 39,
+					"rituals": [
+						{
+							"name": "geas"
+						},
+						{
+							"name": "unfettered mark",
+							"source": "AoE5"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+35, {@skill Occultism} +28, {@skill Society} +28, {@skill Stealth} +31"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+28 Str +5, Dex +4, Con +0, Int +3, Wis +5, Cha +8 Items darts (20), +2 greater striking katana, Miogimo's mask (page 77), +2 resilient studded leather."
-						],
-						"name": "Underworld Lore"
-					},
 					{
 						"entries": [
 							"Each time a creature willingly performs a service, quest, or task for the zealborn, the creature takes a cumulative \u20131 status penalty to saving throws against the zealborn's mental spells and abilities (maximum \u20134)."
@@ -2874,7 +2867,7 @@
 						},
 						"trigger": "An effect would cause Miogimo to become {@condition immobilized}, {@condition grabbed}, or {@condition restrained} or would slow his movement",
 						"entries": [
-							"Miogimo casts freedom of movement on himself."
+							"Miogimo casts {@spell freedom of movement} on himself."
 						],
 						"name": "Trickster's Ace"
 					},
@@ -2884,14 +2877,6 @@
 							"(See page 9 for an example of zeal-damned ghoul statistics.)"
 						],
 						"name": "Zealous Restoration"
-					}
-				],
-				"bot": [
-					{
-						"entries": [
-							"DC 39; geas, unfettered mark."
-						],
-						"name": "Occult Ritual"
 					}
 				]
 			},
@@ -2908,7 +2893,10 @@
 					},
 					"will": {
 						"std": 31
-					}
+					},
+					"abilities": [
+						"+1 status bonus to Will saves vs. mental effects"
+					]
 				},
 				"hp": [
 					{
@@ -2919,7 +2907,12 @@
 					}
 				],
 				"immunities": [
-					"death"
+					"death effects",
+					"disease",
+					"negative",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				],
 				"resistances": [
 					{
@@ -2941,6 +2934,7 @@
 				"large",
 				"aberration"
 			],
+			"description": "Female naga crime lord",
 			"perception": {
 				"std": 33
 			},
@@ -3184,20 +3178,37 @@
 			"abilities": {
 				"bot": [
 					{
+						"type": "affliction",
+						"name": "Mother Venom Poison",
 						"traits": [
 							"poison"
 						],
-						"entries": [
-							"DC 38; Maximum Duration 6 rounds; Stage 1 {@damage 2d6} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 3 {@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 3} (1 round)."
-						],
-						"name": "Mother Venom Poison"
+						"DC": 38,
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 3}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"entries": [
-							"Venom can command her minions and the oozes that cover her dungeon to attack foes.",
+							"Mother Venom can command her minions and the oozes that cover her dungeon to attack foes.",
 							"As long as she's conscious, she can make melee ooze tendril {@action Strike||Strikes} that originate from any slime-covered terrain in her dungeon, including the dungeon's walls and doors, or from a space occupied by one of her children of venom."
 						],
-						"name": "Ooze Tendril Mother"
+						"name": "Ooze Tendril"
 					},
 					{
 						"entries": [
@@ -3243,6 +3254,7 @@
 				"hag",
 				"humanoid"
 			],
+			"description": "Variant {@creature night hag}",
 			"perception": {
 				"std": 30
 			},
@@ -3413,7 +3425,13 @@
 							"6": {
 								"spells": [
 									{
-										"name": "detect alignment"
+										"name": "detect alignment",
+										"note": [
+											"all alignments simultaneously"
+										]
+									},
+									{
+										"name": "detect magic"
 									}
 								]
 							}
@@ -3425,12 +3443,6 @@
 				"top": [
 					{
 						"entries": [
-							"+27, {@skill Occultism} +32 Str +8, Dex +7, Con +9, Int +6, Wis +8, Cha +5 Items greater cloak of the bat, heartstone."
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
 							"As night hag."
 						],
 						"name": "Nightmare Rider",
@@ -3438,7 +3450,7 @@
 					},
 					{
 						"entries": [
-							"As long as at least one other member of Myrna's coven is on the demiplane of Stormholt, the coven members add chain lightning, lightning bolt, plane shift, and punishing winds to their spells, each of which can be cast at up to 8th level."
+							"As long as at least one other member of Myrna's coven is on the demiplane of Stormholt, the coven members add {@spell chain lightning}, {@spell lightning bolt}, {@spell plane shift}, and {@spell punishing winds} to their spells, each of which can be cast at up to 8th level."
 						],
 						"name": "Planar Coven"
 					}
@@ -3513,7 +3525,11 @@
 					},
 					"will": {
 						"std": 30
-					}
+					},
+					"abilities": [
+						"+2 status to all saves vs. magic",
+						"\u22122 to all saves if she doesn't have her heartstone"
+					]
 				},
 				"hp": [
 					{
@@ -3527,6 +3543,12 @@
 					{
 						"amount": 15,
 						"name": "cold iron"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "mental"
 					}
 				]
 			}
@@ -3850,14 +3872,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Stealth} +26 Str +6, Dex +4, Con +3, Int +0, Wis +4, Cha +7."
-						],
-						"name": "Nature"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -3886,12 +3900,18 @@
 							"transmutation"
 						],
 						"entries": [
-							"The obrousian can take on the appearance of any Small or Medium humanoid. This increases their."
+							"The obrousian can take on the appearance of any Small or Medium humanoid. This increases their Speed to 25 feet. It doesn't change their attack and damage modifiers with their {@action Strike||Strikes}, but it might change the damage type their {@action Strike||Strikes} deal (typically to bludgeoning)."
 						],
 						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
 						}
+					},
+					{
+						"name": "Drowning Grasp",
+						"entries": [
+							"When a creature is {@condition grabbed} by the obrousian, its lungs magically fill with water. A creature that can't breathe water is suffocating while it is {@condition grabbed}."
+						]
 					}
 				]
 			},
@@ -3920,7 +3940,10 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			},
 			"hasImages": true
@@ -3938,6 +3961,7 @@
 				"aberration",
 				"humanoid"
 			],
+			"description": "Male augmented human press mogul",
 			"perception": {
 				"std": 33
 			},
@@ -3945,11 +3969,19 @@
 				"languages": [
 					"abyssal",
 					"aquan",
-					"common"
+					"common",
+					"daemonic",
+					"infernal"
 				]
 			},
 			"skills": {
+				"acrobatics": {
+					"std": 32
+				},
 				"deception": {
+					"std": 34
+				},
+				"diplomacy": {
 					"std": 34
 				},
 				"occultism": {
@@ -4009,26 +4041,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"{@skill Lore||Skills Absalom Lore} +31, {@skill Acrobatics} +32, {@skill Deception} +34, {@skill Diplomacy} +34, {@skill Lore||Engineering Lore} +31"
-						],
-						"name": "Daemonic, Infernal"
-					},
-					{
-						"entries": [
-							"+31, {@skill Religion} +28"
-						],
-						"name": "Occultism"
-					},
-					{
-						"entries": [
-							"+29 Str +6, Dex +3, Con +0, Int +5, Wis +2, Cha +8."
-						],
-						"name": "Thievery"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -4042,15 +4054,9 @@
 							"occult"
 						],
 						"entries": [
-							"If a creature with less than 5 Secret Knowledge points reduces Reginald to 0 HP (or dealt the last damage to him before he dies from using {@action Overdrive|G&G} Engine), Reginald's body dissipates into a puddle of ink and releases a black wave of psychic energy. Each creature within 30 feet is bathed in a torrent of forbidden secrets and gains 1 Secret Knowledge point. Reginald's body reforms {@dice 1d6} rounds later in his sanctum at full health at a location of his choosing (typically the Pool of Secrets, area."
+							"If a creature with less than 5 Secret Knowledge points reduces Reginald to 0 HP (or dealt the last damage to him before he dies from using {@action Overdrive|G&G} Engine), Reginald's body dissipates into a puddle of ink and releases a black wave of psychic energy. Each creature within 30 feet is bathed in a torrent of forbidden secrets and gains 1 Secret Knowledge point. Reginald's body reforms {@dice 1d6} rounds later in his sanctum at full health at a location of his choosing (typically the Pool of Secrets, area {@b L11}). This ability activates automatically with no action necessary on Vancaskerkin's behalf."
 						],
 						"name": "Secret of Rebirth"
-					},
-					{
-						"entries": [
-							"This ability activates automatically with no action necessary on Vancaskerkin's behalf."
-						],
-						"name": "L11)."
 					},
 					{
 						"activity": {
@@ -4061,9 +4067,10 @@
 							"clockwork",
 							"poison"
 						],
-						"trigger": "An adjacent creature {@action Strike||Strikes}",
+						"note": "Reginald's body is filled with toxic ink",
+						"trigger": "An adjacent creature {@action Strike||Strikes} Reginald with a melee weapon or unarmed attack and deals damage",
 						"entries": [
-							"Reginald's body is filled with toxic ink; Reginald with a melee weapon or unarmed attack and deals damage; The creature is exposed to Reginald's poison ink."
+							"The creature is exposed to Reginald's poison ink."
 						],
 						"name": "Ink Blood"
 					}
@@ -4093,24 +4100,14 @@
 						"traits": [
 							"clockwork"
 						],
+						"note": "Reginald is equipped with clockwork organs to power his body",
+						"requirements": "Reginald has 175 Hit Points or fewer",
 						"entries": [
-							"Reginald is equipped with clockwork organs to power his body; Requirements Reginald has 175 Hit Points or fewer; Reginald gains 200 temporary."
+							"Reginald gains 200 temporary Hit Points, a +15-foot status bonus to Speed, and a +2 status bonus to melee attack rolls. His body begins to overheat, spewing steam that deals {@damage 9d6} fire damage at the beginning of his turn to all creatures within 30 feet (DC 40 basic Reflex save)",
+							"After 2 rounds, Reginald explodes, dealing {@damage 19d6} fire damage to all creatures within 60 feet (DC 40 basic Reflex save)",
+							"Reginald dies. For the purposes of his Secret of Rebirth ability, the last creature to damage Reginald counts as killing him."
 						],
 						"name": "Overdrive Engine"
-					},
-					{
-						"entries": [
-							"Points, a +15-foot status bonus to Speed, and a +2 status bonus to melee attack rolls. His body begins to overheat, spewing steam that deals {@damage 9d6} fire damage at the beginning of his turn to all creatures within 30 feet (DC 40 basic Reflex save)",
-							"After 2 rounds, Reginald explodes, dealing {@damage 19d6} fire damage to all creatures within 60 feet (DC 40 basic Reflex save)",
-							"Reginald dies. For the purposes of his."
-						],
-						"name": "Hit"
-					},
-					{
-						"entries": [
-							"Rebirth ability, the last creature to damage Reginald counts as killing him."
-						],
-						"name": "Secret of"
 					},
 					{
 						"type": "affliction",
@@ -4150,6 +4147,20 @@
 						"name": "Quill Cannon"
 					},
 					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"clockwork",
+							"occult"
+						],
+						"entries": [
+							"Reginald engages his defensive plating, which casts {@spell spell turning} on him (counteract modifier +32)."
+						],
+						"name": "Reflective Plating"
+					},
+					{
 						"entries": [
 							"With his body composed of ink and gears, Reginald can move through tight spaces as if he were a Tiny creature, treating them as {@quickref difficult terrain||3|terrain}."
 						],
@@ -4177,6 +4188,16 @@
 						"hp": 350
 					}
 				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "electricity"
+					},
+					{
+						"amount": 15,
+						"name": "orichalcum"
+					}
+				],
 				"resistances": [
 					{
 						"amount": 10,
@@ -4198,6 +4219,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Human veteran guard officers",
 			"perception": {
 				"std": 24
 			},
@@ -4221,6 +4243,9 @@
 				},
 				"stealth": {
 					"std": 20
+				},
+				"legal lore": {
+					"std": 20
 				}
 			},
 			"abilityMods": {
@@ -4231,10 +4256,29 @@
 				"wis": 2,
 				"cha": 1
 			},
+			"items": [
+				"+1 chain shirt",
+				"+1 striking crossbow (with 20 bolts)",
+				"infused greater thunderstone (3)",
+				"+1 striking longsword",
+				"tinted goggles"
+			],
 			"speed": {
 				"walk": 25
 			},
 			"attacks": [
+				{
+					"range": "Melee",
+					"name": "longsword",
+					"attack": 24,
+					"traits": [
+						"versatile <p>"
+					],
+					"damage": "{@damage 2d8+10} slashing",
+					"types": [
+						"slashing"
+					]
+				},
 				{
 					"range": "Ranged",
 					"name": "crossbow",
@@ -4268,14 +4312,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+20, {@skill Society} +18, {@skill Stealth} +20 Str +4, Dex +3, Con +5, Int +1, Wis +2, Cha +1 Items +1 chain shirt, +1 striking crossbow (with 20 bolts), infused greater thunderstone (3), +1 striking longsword, tinted goggles."
-						],
-						"name": "Legal Lore"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -4289,15 +4325,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The commando designates a single creature as their culprit. The commando gains a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} their culprit and a +2 circumstance bonus to {@skill Survival} checks."
+							"The commando designates a single creature as their culprit. The commando gains a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} their culprit and a +2 circumstance bonus to {@skill Survival} checks to {@action Track} their culprit. The commando's attacks deal an additional {@damage 2d8} precision damage to the culprit. This designation lasts for 24 hours or until the commando targets another creature with this ability."
 						],
 						"name": "Target Culprit"
-					},
-					{
-						"entries": [
-							"{@action Track} their culprit. The commando's attacks deal an additional {@damage 2d8} precision damage to the culprit. This designation lasts for 24 hours or until the commando targets another creature with this ability."
-						],
-						"name": "to"
 					}
 				]
 			},
@@ -4337,6 +4367,7 @@
 				"azarketi",
 				"humanoid"
 			],
+			"description": "Azarketi wizards-for-hire",
 			"perception": {
 				"std": 27
 			},
@@ -4526,14 +4557,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+23, {@skill Lore||Warfare Lore} +26 Str +0, Dex +5, Con +3, Int +5, Wis +4, Cha +0 Items +2 striking spear."
-						],
-						"name": "Medicine"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -4557,11 +4580,18 @@
 					},
 					"will": {
 						"std": 25
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. enchantments",
+						"\u22122 to all saves vs. aboleth effects"
+					]
 				},
 				"hp": [
 					{
-						"hp": 190
+						"hp": 190,
+						"abilities": [
+							"water shield"
+						]
 					}
 				]
 			}
@@ -4580,6 +4610,7 @@
 				"humanoid",
 				"tiefling"
 			],
+			"description": "Male human tiefling gangster (Pathfinder Advanced Player's Guide 39)",
 			"perception": {
 				"std": 32
 			},
@@ -4619,6 +4650,11 @@
 				"wis": 4,
 				"cha": 5
 			},
+			"items": [
+				"daggers (16)",
+				"+2 resilient studded leather",
+				"+2 greater striking war razor (Pathfinder Lost Omens Gods & Magic 120)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -4656,14 +4692,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+31, {@skill Thievery} +31 Str +3, Dex +6, Con +5, Int +1, Wis +4, Cha +5 Items daggers (16), +2 resilient studded leather, +2 greater striking war razor (Pathfinder Lost Omens Gods & Magic 120)"
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -4677,9 +4705,9 @@
 					},
 					{
 						"entries": [
-							"Jack deals slashing damage, the target takes an additional {@damage 2d10} {@condition persistent damage||persistent bleed damage}."
+							"Whenever Twisted Jack deals slashing damage, the target takes an additional {@damage 2d10} {@condition persistent damage||persistent bleed damage}."
 						],
-						"name": "Close Cutter Whenever Twisted"
+						"name": "Close Cutter"
 					},
 					{
 						"activity": {
@@ -4693,15 +4721,15 @@
 					},
 					{
 						"entries": [
-							"Jack's ranged dagger {@action Strike||Strikes} have a range increment of 20 feet instead of 10 feet."
+							"Twisted Jack's ranged dagger {@action Strike||Strikes} have a range increment of 20 feet instead of 10 feet."
 						],
-						"name": "Knife Thrower Twisted"
+						"name": "Knife Thrower"
 					},
 					{
 						"entries": [
-							"Jack deals an additional {@damage 3d6} precision damage to {@condition flat-footed} targets."
+							"Twisted Jack deals an additional {@damage 3d6} precision damage to {@condition flat-footed} targets."
 						],
-						"name": "Sneak Attack Twisted"
+						"name": "Sneak Attack"
 					}
 				]
 			},
@@ -4986,6 +5014,7 @@
 				"ghoul",
 				"undead"
 			],
+			"description": "Variant ghouls (Pathfinder Bestiary 169, page 87)",
 			"perception": {
 				"std": 21
 			},
@@ -5065,14 +5094,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+22 Str +4, Dex +6, Con +3, Int +0, Wis +3, Cha +2."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -5150,7 +5171,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
