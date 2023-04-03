@@ -583,6 +583,7 @@
 				"aberration",
 				"air"
 			],
+			"description": "Variant {@creature will-o'-wisp}",
 			"perception": {
 				"std": 25
 			},
@@ -638,14 +639,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+27 Str \u20135, Dex +8, Con +2, Int +2, Wis +6, Cha +4."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -660,7 +653,7 @@
 					},
 					{
 						"entries": [
-							"A will-o'-wisp is immune to all spells except faerie fire, glitterdust, magic missile, and maze."
+							"A will-o'-wisp is immune to all spells except {@spell faerie fire}, {@spell glitterdust}, {@spell magic missile}, and {@spell maze}."
 						],
 						"name": "Magic Immunity"
 					}
@@ -674,7 +667,7 @@
 						"traits": [
 							"concentrate"
 						],
-						"requirements": "An enemy is under a {@trait fear} effect or {@condition dying} within 15 feet of the willo'- wisp",
+						"requirements": "An enemy is under a {@trait fear} effect or {@condition dying} within 15 feet of the will-o'-wisp",
 						"entries": [
 							"The will-o'-wisp feeds on the creature's terror. They regains {@dice 4d8} Hit Points, and if they've Gone Dark, their glow reignites. A will-o'-wisp can take this action only once per round."
 						],
@@ -1666,14 +1659,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Stealth} +23, {@skill Survival} +24 Str +6, Dex +4, Con +5, Int +3, Wis +5, Cha +7."
-						],
-						"name": "Performance"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1689,12 +1674,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"Occult Innate Spells DC 34; 7th summon animal (spiders only); 4th outcast's curse (×3), suggestion (×3); 3rd mind reading (at will); 1st charm (at will); Constant (5th) tongues; (2nd) speak with animals (spiders only)"
-						],
-						"name": "Trap"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -1731,8 +1710,12 @@
 							},
 							{
 								"stage": 2,
-								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2} ",
+								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2}",
 								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition paralyzed} for 2d4 hours"
 							}
 						]
 					},
@@ -1755,15 +1738,9 @@
 					},
 					{
 						"entries": [
-							"A creature hit by the jorogumo's web attack is {@condition immobilized} and stuck to the nearest surface, preventing the creature from moving. The DC to {@action Escape} or."
+							"A creature hit by the jorogumo's web attack is {@condition immobilized} and stuck to the nearest surface, preventing the creature from moving. The DC to {@action Escape} or {@action Force Open} the web trap is 32."
 						],
 						"name": "Web Trap"
-					},
-					{
-						"entries": [
-							"Open the web trap is 32."
-						],
-						"name": "Force"
 					}
 				]
 			},
@@ -1791,6 +1768,12 @@
 					{
 						"amount": 10,
 						"name": "cold iron"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "poison"
 					}
 				]
 			},
