@@ -649,14 +649,14 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "For 1 minute, the first time each round that the target takes at least 10 piercing or slashing damage from a single {@action Strike}, it takes {@damage 2d6} additional damage of the same type.",
-						"Failure": "As success, but when it takes the additional damage, it also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage}."
+						"Failure": "As success, but when it takes the additional damage, it also takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
 					}
 				}
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The additional damage increases by {@damage 1d6} and the {@condition persistent damage ||persistent bleed damage} increases by {@dice 1d6}."
+						"The additional damage increases by {@damage 1d6} and the {@condition persistent damage||persistent bleed damage} increases by {@dice 1d6}."
 					]
 				}
 			}
@@ -1540,7 +1540,7 @@
 				]
 			},
 			"entries": [
-				"You ignite a creature in lasting flames. The fire deals {@damage 4d8} fire damage and {@damage 2d6} {@condition persistent damage ||persistent fire damage} to the creature, which must attempt a Fortitude save.",
+				"You ignite a creature in lasting flames. The fire deals {@damage 4d8} fire damage and {@damage 2d6} {@condition persistent damage||persistent fire damage} to the creature, which must attempt a Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1717,7 +1717,7 @@
 			},
 			"entries": [
 				"Razor sharp coral growths erupt from the ground, transforming the landscape into a dangerous coral reef.",
-				"You can create a third nonoverlapping burst if the centers of all three bursts are underwater. Creatures in the area when the spell is cast take {@damage 6d6} piercing damage and must attempt a basic Reflex save. A creature that critically fails its saving throw also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
+				"You can create a third nonoverlapping burst if the centers of all three bursts are underwater. Creatures in the area when the spell is cast take {@damage 6d6} piercing damage and must attempt a basic Reflex save. A creature that critically fails its saving throw also takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}.",
 				"The area becomes {@quickref difficult terrain||3|terrain} and hazardous terrain.",
 				"A creature that moves through the area takes 3 piercing damage for every square of that area it moves into."
 			],
@@ -1810,7 +1810,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Moon} Speed 30 feet, fly 50 feet; {@b Melee} {@as 1} fist (agile, reach <10 feet>), {@b Damage} {@damage 2d4+10} bludgeoning plus {@damage 1d6} fire; {@b Ranged} {@as 1} moonbeam (range <90 feet>), {@b Damage} {@damage 2d4+10} fire; this form's fire damage is silver for resistances, weaknesses, and the like; on a critical hit with either {@action Strike}, the target is {@condition stupefied 2} for 1 round.",
-						"{@bold Sun} Speed 30 feet, fly 50 feet; {@b Melee} {@as 1} fist (agile, reach <10 feet>), {@b Damage} {@damage 2d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; {@b Ranged} {@as 1} sunbeam (range <90 feet>), {@b Damage} {@damage 1d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; on a critical hit with either {@action Strike}, the target is {@condition dazzled} for 1 round."
+						"{@bold Sun} Speed 30 feet, fly 50 feet; {@b Melee} {@as 1} fist (agile, reach <10 feet>), {@b Damage} {@damage 2d6+10} fire plus {@damage 1d6} {@condition persistent damage||persistent fire}; {@b Ranged} {@as 1} sunbeam (range <90 feet>), {@b Damage} {@damage 1d6+10} fire plus {@damage 1d6} {@condition persistent damage||persistent fire}; on a critical hit with either {@action Strike}, the target is {@condition dazzled} for 1 round."
 					]
 				}
 			],
@@ -1927,7 +1927,7 @@
 						"{@bold Ceustodaemon} Speed 25 feet; {@b Melee} {@as 1} jaws (reach <10 feet>), {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach <10 feet>), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; any successful jaws or claw {@action Strike} deals an additional {@dice 1d6} damage, and you take the same amount of damage.",
 						"{@bold Leukodaemon} Speed 25 feet, fly 40 feet; +2 status bonus to saves against diseases; {@b Melee} {@as 1} jaws (reach <10 feet>), {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach <10 feet>), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; {@b Ranged} {@as 1} composite longbow (deadly <d10>, range increment <100 feet>, volley), {@b Damage} {@damage 2d8} piercing plus {@damage 1d6} evil.",
 						"{@bold Meladaemon} Speed 25 feet, fly 40 feet; {@b Melee} {@as 1} jaws (reach <10 feet>), {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach <10 feet>), {@b Damage} {@damage 1d8} slashing plus {@damage 1d6} evil and {@damage 1d6} negative, and you can spend an action after a hit to Grab the target.",
-						"{@bold Piscodaemon} Speed 25 feet, swim 40 feet; {@b Melee} {@as 1} claw, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}, and you can spend an action after a hit to Grab the target; {@b Melee} {@as 1} tentacle ({@trait agile}), {@b Damage} {@damage 2d6} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} poison."
+						"{@bold Piscodaemon} Speed 25 feet, swim 40 feet; {@b Melee} {@as 1} claw, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage||persistent bleed}, and you can spend an action after a hit to Grab the target; {@b Melee} {@as 1} tentacle ({@trait agile}), {@b Damage} {@damage 2d6} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} poison."
 					]
 				}
 			],
@@ -2192,7 +2192,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Barbazu} Speed 35 feet; {@b Melee} {@as 1} glaive (deadly <d8>, forceful, reach <10 feet>), {@b Damage} {@damage 2d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}; {@b Melee} {@as 1} beard, {@b Damage} {@damage 3d8} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d6} slashing plus {@damage 1d6} evil.",
+						"{@bold Barbazu} Speed 35 feet; {@b Melee} {@as 1} glaive (deadly <d8>, forceful, reach <10 feet>), {@b Damage} {@damage 2d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage||persistent bleed}; {@b Melee} {@as 1} beard, {@b Damage} {@damage 3d8} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d6} slashing plus {@damage 1d6} evil.",
 						"{@bold Erinys} Speed 25 feet, fly 40 feet; {@b Melee} {@as 1} longsword ({@trait versatile <P>}), {@b Damage} {@damage 1d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} fire; {@b Ranged} {@as 1} composite longbow (deadly <d10>, range increment <100 feet>, volley), {@b Damage} {@damage 1d8} piercing plus {@damage 1d6} evil and {@damage 1d6} fire.",
 						"{@bold Osyluth} Speed 35 feet, fly 30 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach <10 feet>), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; {@b Melee} {@as 1} stinger (reach <15 feet>), {@b Damage} {@damage 1d10} piercing plus {@damage 1d6} evil and {@damage 1d6} poison; {@b Ranged} {@as 1} bone shard (range increment <30 feet>), {@b Damage} {@damage 2d6} piercing plus {@damage 1d6} evil.",
 						"{@bold Sarglagon} Speed 25 feet, fly 25 feet, swim 30 feet; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} tentacle arm ({@trait agile}), {@b Damage} {@damage 1d8} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} poison."
@@ -2633,7 +2633,7 @@
 					"items": [
 						"{@bold Air Elemental} fly Speed 80 feet; {@b High Winds} (air, aura) 30 feet. Air within the emanation is {@quickref difficult terrain||3|terrain} for flying creatures that don't have the {@trait air} trait; {@b Swiftness} Your movement doesn't trigger reactions; {@b Melee} {@as 1} gust (reach <25 feet>), {@b Damage} {@damage 3d12+11} bludgeoning plus Push 10 feet; {@b Ranged} {@as 1} lightning lash (range increment <80 feet>), {@b Damage} {@damage 3d12+4} electricity.",
 						"{@bold Earth Elemental} 30 feet, burrow 20 feet; resistance 5 to physical; {@b Spike Stones} (aura, earth) 30 feet. The area is {@quickref difficult terrain||3|terrain} and hazardous terrain. A creature without the {@trait earth} trait that moves on the ground in the area takes 5 piercing damage for every square of that area it moves into; {@b Rocky Toughness} You gain 40 temporary Hit Points when you choose this form instead of 30; {@b Melee} {@as 1} fist (reach <25 feet>), {@b Damage} {@damage 3d12+15} bludgeoning; {@b Ranged} {@as 1} rock (range increment <40 feet>), {@b Damage} {@damage 4d8+6} bludgeoning.",
-						"{@bold Fire Elemental} 50 feet; immunity to fire; weakness to cold 10; {@b Intense Heat} (aura, fire) 30 feet. A creature that enters the aura or starts its turn in the aura takes {@damage 5d6} fire damage with a basic Reflex save against your spell DC. A creature can take damage from the aura only once per round; {@b Melee} {@as 1} tendril (reach <25 feet>), {@b Damage} {@damage 3d10+12} fire plus {@damage 2d6} {@condition persistent damage ||persistent fire}; {@b Ranged} {@as 1} fire mote (range increment <60 feet>), {@b Damage} {@damage 4d8+6} bludgeoning.",
+						"{@bold Fire Elemental} 50 feet; immunity to fire; weakness to cold 10; {@b Intense Heat} (aura, fire) 30 feet. A creature that enters the aura or starts its turn in the aura takes {@damage 5d6} fire damage with a basic Reflex save against your spell DC. A creature can take damage from the aura only once per round; {@b Melee} {@as 1} tendril (reach <25 feet>), {@b Damage} {@damage 3d10+12} fire plus {@damage 2d6} {@condition persistent damage||persistent fire}; {@b Ranged} {@as 1} fire mote (range increment <60 feet>), {@b Damage} {@damage 4d8+6} bludgeoning.",
 						"{@bold Water Elemental} 40 feet, swim 80 feet; resistance 10 to fire; {@b Vortex} (aura, water) 30 feet. Water within the aura that is part of the same body of water you occupy is {@quickref difficult terrain||3|terrain} for Swimming creatures that don't have the {@trait water} trait; {@b Melee} {@as 1} wave (reach <25 feet>), {@b Damage} {@damage 3d12+18} bludgeoning plus Push or Pull 10 feet; {@b Ranged} {@as 1} water spout (range increment <60 feet>), {@b Damage} {@damage 4d8+6} bludgeoning."
 					]
 				}
@@ -2796,7 +2796,7 @@
 					"items": [
 						"{@bold Air} ({@trait air}, {@trait electricity}) The elemental looses a bolt of electricity from the confluence, dealing {@damage 4d4} electricity damage to creatures within 20 feet of the confluence, with a basic Reflex save. This doesn't affect creatures that are completely inside of the confluence.",
 						"{@bold Earth} ({@trait earth}) The confluence gains a +2 circumstance bonus to AC and resistance 10 to all physical damage (except adamantine) for 1 round.",
-						"{@bold Fire} ({@trait fire}) Flames roar through the confluence, dealing {@damage 1d6} {@condition persistent damage ||persistent fire damage} to those partially or entirely inside the confluence.",
+						"{@bold Fire} ({@trait fire}) Flames roar through the confluence, dealing {@damage 1d6} {@condition persistent damage||persistent fire damage} to those partially or entirely inside the confluence.",
 						"{@bold Water} ({@trait attack}, {@trait water}) The elemental expels a powerful jet of water. Attempt a ranged spell attack against a target within 60 feet of the confluence, using your spell attack roll modifier. This attack ignores concealment granted by the confluence, and the elemental gets a +2 circumstance bonus on the spell attack roll against a target inside the confluence.",
 						"The water deals {@damage 4d6} bludgeoning damage on a hit (doubled on a critical hit). This attack doesn't count toward your multiple attack penalty."
 					]
@@ -2844,7 +2844,7 @@
 					"items": [
 						"{@bold Air} The target gains a +30-foot status bonus to its land Speed and gains a fly Speed equal to its land Speed without the status bonus.",
 						"{@bold Earth} While on the ground, the target gets a +2 status bonus to Fortitude and Reflex saves against effects that would {@action Shove} or {@action Trip} it, and to saves against effects that would attempt to knock it {@condition prone}. In addition, the ground adjacent to the target is {@quickref difficult terrain||3|terrain}, and the {@quickref difficult terrain||3|terrain} moves with the target, though the target ignores this {@quickref difficult terrain||3|terrain} with its own movement.",
-						"{@bold Fire} The target's melee unarmed {@action Strike||Strikes} and melee weapon {@action Strike||Strikes} deal {@damage 1d6} {@condition persistent damage ||persistent fire damage} on a hit.",
+						"{@bold Fire} The target's melee unarmed {@action Strike||Strikes} and melee weapon {@action Strike||Strikes} deal {@damage 1d6} {@condition persistent damage||persistent fire damage} on a hit.",
 						"{@bold Water} The target takes on a watery sheen, gaining resistance 5 to fire and a swim Speed equal to its land Speed."
 					]
 				}
@@ -3160,7 +3160,7 @@
 				"basic": true
 			},
 			"entries": [
-				"A wave of gray mist formed of negative energy spills out from your outstretched hand, briefly taking the shape of a pack of predatory animals that set viciously on your foes. You deal {@damage 2d4} slashing damage and {@damage 2d4} negative damage to creatures in the area. The shades set upon the vulnerable with greater ferocity: {@condition prone} creatures or those taking {@condition persistent damage ||persistent bleed damage} take a \u20132 status penalty to the save."
+				"A wave of gray mist formed of negative energy spills out from your outstretched hand, briefly taking the shape of a pack of predatory animals that set viciously on your foes. You deal {@damage 2d4} slashing damage and {@damage 2d4} negative damage to creatures in the area. The shades set upon the vulnerable with greater ferocity: {@condition prone} creatures or those taking {@condition persistent damage||persistent bleed damage} take a \u20132 status penalty to the save."
 			],
 			"heightened": {
 				"plusX": {
@@ -3800,12 +3800,12 @@
 				"You temporarily morph your limb into a clawed appendage.",
 				"Make a melee spell attack roll against your target's AC.",
 				"If you hit, you deal your choice of slashing or piercing damage equal to {@dice 1d6} plus your spellcasting ability modifier.",
-				"On a critical success, you deal double damage plus {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+				"On a critical success, you deal double damage plus {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The damage increases by {@damage 1d6} and the {@condition persistent damage ||persistent bleed damage} on a critical increases by {@dice 1d4}."
+						"The damage increases by {@damage 1d6} and the {@condition persistent damage||persistent bleed damage} on a critical increases by {@dice 1d4}."
 					]
 				}
 			}
@@ -4159,14 +4159,14 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage and is {@condition dazzled} for 1 round.",
 						"Failure": "The creature takes full damage and is {@condition dazzled} for 3 rounds.",
-						"Critical Failure": "The creature takes double damage, takes {@damage 1d4} {@condition persistent damage ||persistent fire damage}, and is {@condition dazzled} for 1 minute."
+						"Critical Failure": "The creature takes double damage, takes {@damage 1d4} {@condition persistent damage||persistent fire damage}, and is {@condition dazzled} for 1 minute."
 					}
 				}
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The initial fire damage increases by {@damage 1d8}, the sonic damage increases by {@damage 1d8}, and the {@condition persistent damage ||persistent fire damage} a creature takes on a critical failure increases by {@dice 1d4}."
+						"The initial fire damage increases by {@damage 1d8}, the sonic damage increases by {@damage 1d8}, and the {@condition persistent damage||persistent fire damage} a creature takes on a critical failure increases by {@dice 1d4}."
 					]
 				}
 			}
@@ -5142,7 +5142,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Enlarging Eruption} You erupt in lava, which clings to you and hardens, causing your body to swell and burst until you grow to size Large. You're {@condition clumsy 1}. Your reach increases by 5 feet (or by 10 feet if you started out Tiny), and you gain a +2 status bonus to melee damage. You can't choose this option if you're already Large or larger.",
-						"{@bold Fiery Grasp} Your hands swell and grow with lava. You gain a lava fist unarmed attack in the brawling weapon group. Your lava fists deal {@damage 1d8} bludgeoning damage as their base damage, plus an additional {@damage 2d6} fire damage and {@damage 1d6} {@condition persistent damage ||persistent fire damage}.",
+						"{@bold Fiery Grasp} Your hands swell and grow with lava. You gain a lava fist unarmed attack in the brawling weapon group. Your lava fists deal {@damage 1d8} bludgeoning damage as their base damage, plus an additional {@damage 2d6} fire damage and {@damage 1d6} {@condition persistent damage||persistent fire damage}.",
 						"{@bold Heart of Fire} Your body's temperature becomes so hot that any creature that touches you, or that hits you with a melee unarmed attack or non-reach melee weapon attack, takes {@damage 2d6} fire damage.",
 						"{@bold Warming Flames} Flames flicker around you, warming away the cold while protecting you from the heat. You gain resistance 5 to cold and fire."
 					]
@@ -6612,7 +6612,7 @@
 				]
 			},
 			"entries": [
-				"You exhale a shimmering cloud of toxic breath at an enemy's face. The target takes poison damage equal to your spellcasting modifier and 2 {@condition persistent damage ||persistent poison damage}, depending on its Fortitude save.",
+				"You exhale a shimmering cloud of toxic breath at an enemy's face. The target takes poison damage equal to your spellcasting modifier and 2 {@condition persistent damage||persistent poison damage}, depending on its Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -6626,7 +6626,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The initial poison damage increases by {@damage 1d8} and the {@condition persistent damage ||persistent poison damage} increases by 1."
+						"The initial poison damage increases by {@damage 1d8} and the {@condition persistent damage||persistent poison damage} increases by 1."
 					]
 				}
 			}
@@ -8121,12 +8121,12 @@
 			},
 			"entries": [
 				"You conjure a jagged lance of stone and then launch it at a foe. Make a spell attack roll against the target.",
-				"On a hit, you deal {@damage 6d6} piercing damage and the lance impales the creature, giving it a \u201310-foot circumstance penalty to its Speeds unless it {@action Escape||Escapes}. On a critical hit, if the creature is on the ground, the lance also embeds into the ground and immobilizes the creature until it {@action Escape||Escapes}. A creature that {@action Escape||Escapes} after being impaled takes 3 {@condition persistent damage ||persistent bleed damage}. When the spell ends, the lance crumbles into dirt, freeing the target if it hasn't Escaped."
+				"On a hit, you deal {@damage 6d6} piercing damage and the lance impales the creature, giving it a \u201310-foot circumstance penalty to its Speeds unless it {@action Escape||Escapes}. On a critical hit, if the creature is on the ground, the lance also embeds into the ground and immobilizes the creature until it {@action Escape||Escapes}. A creature that {@action Escape||Escapes} after being impaled takes 3 {@condition persistent damage||persistent bleed damage}. When the spell ends, the lance crumbles into dirt, freeing the target if it hasn't Escaped."
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"Increase the damage by {@dice 2d6} and the {@condition persistent damage ||persistent bleed damage} for {@action Escape||Escapes} by 1."
+						"Increase the damage by {@dice 2d6} and the {@condition persistent damage||persistent bleed damage} for {@action Escape||Escapes} by 1."
 					]
 				}
 			}
@@ -9732,7 +9732,7 @@
 				"sustained": true
 			},
 			"entries": [
-				"A thin layer of ash and flame covers the ground in the area. The area becomes hazardous terrain. A creature that moves on the ground through the area takes 1 fire damage for every square of that area it moves into. A creature that ends its turn in the area must succeed at a Reflex save or take 1 {@condition persistent damage ||persistent fire damage}.",
+				"A thin layer of ash and flame covers the ground in the area. The area becomes hazardous terrain. A creature that moves on the ground through the area takes 1 fire damage for every square of that area it moves into. A creature that ends its turn in the area must succeed at a Reflex save or take 1 {@condition persistent damage||persistent fire damage}.",
 				"Each time you sustain this spell, the radius of the burst increases by 5 feet."
 			],
 			"heightened": {

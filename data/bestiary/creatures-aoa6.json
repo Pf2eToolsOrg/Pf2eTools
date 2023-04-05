@@ -661,7 +661,7 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 6d10+8} piercing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 6d10+8} piercing plus {@damage 2d10} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -2374,7 +2374,7 @@
 									"Critical Success": "The creature is unaffected.",
 									"Success": "The creature is {@condition sickened|CRB|sickened 2}.",
 									"Failure": "The creature takes {@damage 7d8} poison damage.",
-									"Critical Failure": "The creature takes {@damage 14d8} poison damage and {@damage 2d8} {@condition persistent damage ||persistent poison damage}. HP 330, fast healing 20; Immunities poison"
+									"Critical Failure": "The creature takes {@damage 14d8} poison damage and {@damage 2d8} {@condition persistent damage||persistent poison damage}. HP 330, fast healing 20; Immunities poison"
 								}
 							}
 						],
@@ -5768,7 +5768,7 @@
 					"traits": [
 						"reach <20 feet>"
 					],
-					"damage": "{@damage 5d10+8} piercing plus {@damage 2d10} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 5d10+8} piercing plus {@damage 2d10} {@condition persistent damage||persistent fire}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -5782,7 +5782,7 @@
 						"agile",
 						"reach <20 feet>"
 					],
-					"damage": "{@damage 5d8+8} slashing plus {@damage 2d8} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 5d8+8} slashing plus {@damage 2d8} {@condition persistent damage||persistent fire}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -5795,7 +5795,7 @@
 					"traits": [
 						"range increment <80 feet>"
 					],
-					"damage": "{@damage 2d10+8} bludgeoning plus {@damage 2d10} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d10+8} bludgeoning plus {@damage 2d10} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -5850,7 +5850,7 @@
 						],
 						"trigger": "Xotani is damaged",
 						"entries": [
-							"Xotani's wound erupts with magma in a 30-foot cone, dealing {@damage 6d8} fire damage and {@damage 6d8} {@condition persistent damage ||persistent fire damage} (DC 42 basic Reflex save)."
+							"Xotani's wound erupts with magma in a 30-foot cone, dealing {@damage 6d8} fire damage and {@damage 6d8} {@condition persistent damage||persistent fire damage} (DC 42 basic Reflex save)."
 						],
 						"name": "Firebleed"
 					}
@@ -5877,7 +5877,7 @@
 							"fire"
 						],
 						"entries": [
-							"Xotani breathes a blast of flame that deals {@damage 18d6} fire damage plus {@damage 4d6} {@condition persistent damage ||persistent fire damage} to all creatures in a 70-foot cone (DC 42 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+							"Xotani breathes a blast of flame that deals {@damage 18d6} fire damage plus {@damage 4d6} {@condition persistent damage||persistent fire damage} to all creatures in a 70-foot cone (DC 42 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},

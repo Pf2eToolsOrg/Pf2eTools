@@ -583,6 +583,7 @@
 				"aberration",
 				"air"
 			],
+			"description": "Variant {@creature will-o'-wisp}",
 			"perception": {
 				"std": 25
 			},
@@ -638,14 +639,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+27 Str \u20135, Dex +8, Con +2, Int +2, Wis +6, Cha +4."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -660,7 +653,7 @@
 					},
 					{
 						"entries": [
-							"A will-o'-wisp is immune to all spells except faerie fire, glitterdust, magic missile, and maze."
+							"A will-o'-wisp is immune to all spells except {@spell faerie fire}, {@spell glitterdust}, {@spell magic missile}, and {@spell maze}."
 						],
 						"name": "Magic Immunity"
 					}
@@ -674,7 +667,7 @@
 						"traits": [
 							"concentrate"
 						],
-						"requirements": "An enemy is under a {@trait fear} effect or {@condition dying} within 15 feet of the willo'- wisp",
+						"requirements": "An enemy is under a {@trait fear} effect or {@condition dying} within 15 feet of the will-o'-wisp",
 						"entries": [
 							"The will-o'-wisp feeds on the creature's terror. They regains {@dice 4d8} Hit Points, and if they've Gone Dark, their glow reignites. A will-o'-wisp can take this action only once per round."
 						],
@@ -1265,7 +1258,7 @@
 					"effects": [
 						"crisis of faith"
 					],
-					"damage": "{@damage 2d4+10} piercing plus {@damage 2d8} {@condition persistent damage ||persistent poison} and crisis of faith",
+					"damage": "{@damage 2d4+10} piercing plus {@damage 2d8} {@condition persistent damage||persistent poison} and crisis of faith",
 					"types": [
 						"persistent",
 						"piercing"
@@ -1436,7 +1429,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"30 feet. Flakfatter exudes an aura that makes poisons more potent. His melee {@action Strike||Strikes} deal an additional {@damage 2d8} {@condition persistent damage ||persistent poison damage}. Creatures in the aura attempting a flat check to remove {@condition persistent damage ||persistent poison damage} must roll twice and take the lower result. Flakfatter can suppress or resume this aura as a free action."
+							"30 feet. Flakfatter exudes an aura that makes poisons more potent. His melee {@action Strike||Strikes} deal an additional {@damage 2d8} {@condition persistent damage||persistent poison damage}. Creatures in the aura attempting a flat check to remove {@condition persistent damage||persistent poison damage} must roll twice and take the lower result. Flakfatter can suppress or resume this aura as a free action."
 						],
 						"name": "Call Toxins"
 					}
@@ -1666,14 +1659,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Stealth} +23, {@skill Survival} +24 Str +6, Dex +4, Con +5, Int +3, Wis +5, Cha +7."
-						],
-						"name": "Performance"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1689,12 +1674,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"Occult Innate Spells DC 34; 7th summon animal (spiders only); 4th outcast's curse (×3), suggestion (×3); 3rd mind reading (at will); 1st charm (at will); Constant (5th) tongues; (2nd) speak with animals (spiders only)"
-						],
-						"name": "Trap"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -1731,8 +1710,12 @@
 							},
 							{
 								"stage": 2,
-								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2} ",
+								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2}",
 								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition paralyzed} for 2d4 hours"
 							}
 						]
 					},
@@ -1755,15 +1738,9 @@
 					},
 					{
 						"entries": [
-							"A creature hit by the jorogumo's web attack is {@condition immobilized} and stuck to the nearest surface, preventing the creature from moving. The DC to {@action Escape} or."
+							"A creature hit by the jorogumo's web attack is {@condition immobilized} and stuck to the nearest surface, preventing the creature from moving. The DC to {@action Escape} or {@action Force Open} the web trap is 32."
 						],
 						"name": "Web Trap"
-					},
-					{
-						"entries": [
-							"Open the web trap is 32."
-						],
-						"name": "Force"
 					}
 				]
 			},
@@ -1791,6 +1768,12 @@
 					{
 						"amount": 10,
 						"name": "cold iron"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "poison"
 					}
 				]
 			},
@@ -2736,7 +2719,7 @@
 						"finesse",
 						"magical"
 					],
-					"damage": "{@damage 3d6+11} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d6+11} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -2798,7 +2781,7 @@
 				"bot": [
 					{
 						"entries": [
-							"If the shatterling attempts an {@skill Intimidation} check to {@action Demoralize} a target within 30 feet of a creature with {@condition persistent damage ||persistent bleed damage}, the shatterling has +4 circumstance bonus to the {@skill Intimidation} check. In addition, the shatterling takes no penalty to the check for not speaking a language the target can hear, and the target isn't temporarily immune to the shatterling's attempts to {@action Demoralize} it unless the shatterling critically fails its {@skill Intimidation} check."
+							"If the shatterling attempts an {@skill Intimidation} check to {@action Demoralize} a target within 30 feet of a creature with {@condition persistent damage||persistent bleed damage}, the shatterling has +4 circumstance bonus to the {@skill Intimidation} check. In addition, the shatterling takes no penalty to the check for not speaking a language the target can hear, and the target isn't temporarily immune to the shatterling's attempts to {@action Demoralize} it unless the shatterling critically fails its {@skill Intimidation} check."
 						],
 						"name": "Blood-Fueled Titter"
 					},
@@ -3123,7 +3106,7 @@
 						"magical",
 						"versatile <s>"
 					],
-					"damage": "{@damage 3d6+13} piercing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d6+13} piercing plus {@damage 2d10} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -3139,7 +3122,7 @@
 						"magical",
 						"thrown <20 feet>"
 					],
-					"damage": "{@damage 3d4+13} piercing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d4+13} piercing plus {@damage 2d10} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -3242,7 +3225,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Whenever the Rabbit Prince deals piercing damage, he also deals {@damage 2d10} {@condition persistent damage ||persistent bleed damage}."
+							"Whenever the Rabbit Prince deals piercing damage, he also deals {@damage 2d10} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Bloody Jab"
 					},
@@ -3376,7 +3359,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d8+10} slashing plus {@damage 2d8} {@condition persistent damage ||persistent bleed} and {@ability Improved Grab}",
+					"damage": "{@damage 2d8+10} slashing plus {@damage 2d8} {@condition persistent damage||persistent bleed} and {@ability Improved Grab}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -3410,7 +3393,7 @@
 						"magical",
 						"versatile <s>"
 					],
-					"damage": "{@damage 3d6+10} piercing plus {@damage 2d8} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d6+10} piercing plus {@damage 2d8} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"

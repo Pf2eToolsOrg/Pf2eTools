@@ -701,7 +701,7 @@
 						"deadly <1d12>",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d10+10} piercing plus {@damage 1d4} {@condition persistent damage ||persistent acid}",
+					"damage": "{@damage 2d10+10} piercing plus {@damage 1d4} {@condition persistent damage||persistent acid}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -715,7 +715,7 @@
 						"range increment <30 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d6} acid plus {@damage 1d6} {@condition persistent damage ||persistent acid} and {@damage 1d6} acid splash",
+					"damage": "{@damage 2d6} acid plus {@damage 1d6} {@condition persistent damage||persistent acid} and {@damage 1d6} acid splash",
 					"types": [
 						"acid",
 						"persistent"
@@ -865,7 +865,7 @@
 					"traits": [
 						"deadly <1d12>"
 					],
-					"damage": "{@damage 1d8+7} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid}",
+					"damage": "{@damage 1d8+7} piercing plus {@damage 1d6} {@condition persistent damage||persistent acid}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -879,7 +879,7 @@
 						"range increment <30 feet>",
 						"splash"
 					],
-					"damage": "{@damage 1d6} acid plus {@damage 1d6} {@condition persistent damage ||persistent acid} and {@damage 1d6} acid splash damage",
+					"damage": "{@damage 1d6} acid plus {@damage 1d6} {@condition persistent damage||persistent acid} and {@damage 1d6} acid splash damage",
 					"types": [
 						"acid",
 						"persistent"
@@ -1014,7 +1014,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 2d8} piercing damage and {@damage 1d6} acid damage (DC 22 basic Reflex save). A creature that fails its save against Swarming Bites also takes {@damage 1d4} {@condition persistent damage ||persistent acid damage}."
+							"Each enemy in the swarm's space takes {@damage 2d8} piercing damage and {@damage 1d6} acid damage (DC 22 basic Reflex save). A creature that fails its save against Swarming Bites also takes {@damage 1d4} {@condition persistent damage||persistent acid damage}."
 						],
 						"name": "Swarming Bites"
 					}
@@ -1369,7 +1369,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "5 acid plus {@damage 2d6+2} {@condition persistent damage ||persistent acid} and 6 acid splash",
+					"damage": "5 acid plus {@damage 2d6+2} {@condition persistent damage||persistent acid} and 6 acid splash",
 					"types": [
 						"acid",
 						"persistent"
@@ -3454,17 +3454,17 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As shanrigol heap, but {@damage 1d10+11} bludgeoning and {@damage 1d6} {@condition persistent damage ||persistent bleed}, DC 25."
+							"As shanrigol heap, but {@damage 1d10+11} bludgeoning and {@damage 1d6} {@condition persistent damage||persistent bleed}, DC 25."
 						],
 						"name": "Sapping Squeeze",
 						"requirements": "The shanrigol has a creature {@condition grabbed}",
 						"entries_as_xyz": [
-							"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
+							"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
 						]
 					},
 					{
 						"entries": [
-							"A shanrigol behemoth's attacks brutally rend its foes. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
+							"A shanrigol behemoth's attacks brutally rend its foes. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 2d6} {@condition persistent damage||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
 						],
 						"name": "Shred Flesh"
 					},
@@ -3616,13 +3616,13 @@
 						},
 						"requirements": "The shanrigol has a creature {@condition grabbed}",
 						"entries": [
-							"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
+							"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
 						],
 						"name": "Sapping Squeeze"
 					},
 					{
 						"entries": [
-							"A shanrigol rips flesh away from targets in great chunks. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
+							"A shanrigol rips flesh away from targets in great chunks. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
 						],
 						"name": "Shred Flesh"
 					},
@@ -3924,7 +3924,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Urevian's {@action Strike||Strikes} also deal {@damage 2d6} {@condition persistent damage ||persistent bleed damage} that resists attempts to heal them. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery."
+							"Urevian's {@action Strike||Strikes} also deal {@damage 2d6} {@condition persistent damage||persistent bleed damage} that resists attempts to heal them. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery."
 						],
 						"name": "Infernal Wound"
 					},

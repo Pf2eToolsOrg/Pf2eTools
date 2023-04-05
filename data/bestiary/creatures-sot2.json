@@ -216,7 +216,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage ||persistent fire} plus 6 fire splash",
+					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage||persistent fire} plus 6 fire splash",
 					"types": [
 						"fire",
 						"persistent"
@@ -2497,7 +2497,7 @@
 						"finesse",
 						"versatile <s>"
 					],
-					"damage": "{@damage 2d8+5} bludgeoning plus {@damage 1d4} acid and {@damage 1d4} {@condition persistent damage ||persistent acid}",
+					"damage": "{@damage 2d8+5} bludgeoning plus {@damage 1d4} acid and {@damage 1d4} {@condition persistent damage||persistent acid}",
 					"types": [
 						"acid",
 						"bludgeoning",
@@ -2522,7 +2522,7 @@
 						],
 						"entries": [
 							"30 feet. A creature that enters the area must attempt a DC 23 Fortitude save.",
-							"On a failure, the creature is {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). A creature taking {@condition persistent damage ||persistent acid damage} from the ooze's pseudopod can't recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+							"On a failure, the creature is {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). A creature taking {@condition persistent damage||persistent acid damage} from the ooze's pseudopod can't recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 						],
 						"name": "Noxious Scent"
 					}
@@ -3675,7 +3675,7 @@
 							"freq": 1
 						},
 						"entries": [
-							"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage (DC 25 basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage ||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
+							"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage (DC 25 basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
 						],
 						"name": "Venom Pool"
 					}

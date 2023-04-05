@@ -47,13 +47,13 @@
 									"The creature is unaffected."
 								],
 								"Success": [
-									"The creature is {@condition frightened||frightened 1}. It also takes {@damage 1d6} {@condition persistent damage ||persistent mental damage}."
+									"The creature is {@condition frightened||frightened 1}. It also takes {@damage 1d6} {@condition persistent damage||persistent mental damage}."
 								],
 								"Failure": [
-									"The creature is {@condition frightened||frightened 2}. It also takes {@damage 2d6} {@condition persistent damage ||persistent mental damage}."
+									"The creature is {@condition frightened||frightened 2}. It also takes {@damage 2d6} {@condition persistent damage||persistent mental damage}."
 								],
 								"Critical Failure": [
-									"The creature is {@condition frightened||frightened 2} and {@condition slowed||slowed 1} for 1 minute. It also takes {@damage 4d6} {@condition persistent damage ||persistent mental damage} and is cursed with a hex of impending doom. If the target falls {@condition unconscious} from damage dealt by this {@action Strike} or the {@condition persistent damage ||persistent mental damage}, it remains {@condition unconscious} for 1 day or until this curse is removed. After 1 day, if the creature is still {@condition unconscious}, it must succeed at a DC 28 Fortitude save or die; this effect has the {@trait death} and {@trait incapacitation} traits."
+									"The creature is {@condition frightened||frightened 2} and {@condition slowed||slowed 1} for 1 minute. It also takes {@damage 4d6} {@condition persistent damage||persistent mental damage} and is cursed with a hex of impending doom. If the target falls {@condition unconscious} from damage dealt by this {@action Strike} or the {@condition persistent damage||persistent mental damage}, it remains {@condition unconscious} for 1 day or until this curse is removed. After 1 day, if the creature is still {@condition unconscious}, it must succeed at a DC 28 Fortitude save or die; this effect has the {@trait death} and {@trait incapacitation} traits."
 								]
 							}
 						}
@@ -127,7 +127,7 @@
 							"type": "list",
 							"items": [
 								"You're unharmed by the triggering damage.",
-								"You gain resistance to all damage against the triggering damage equal to 2 + your level. After the damaging effect is applied, the enemy becomes {@condition enfeebled||enfeebled 2} until the end of its next turn and takes 4 {@condition persistent damage ||persistent good damage}."
+								"You gain resistance to all damage against the triggering damage equal to 2 + your level. After the damaging effect is applied, the enemy becomes {@condition enfeebled||enfeebled 2} until the end of its next turn and takes 4 {@condition persistent damage||persistent good damage}."
 							]
 						}
 					]

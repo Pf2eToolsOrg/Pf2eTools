@@ -3619,7 +3619,7 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d10+14} piercing plus {@damage 2d6} acid and {@damage 2d6} {@condition persistent damage ||persistent acid}",
+					"damage": "{@damage 3d10+14} piercing plus {@damage 2d6} acid and {@damage 2d6} {@condition persistent damage||persistent acid}",
 					"types": [
 						"acid",
 						"persistent",
@@ -4206,7 +4206,7 @@
 						"magical",
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 3d10+15} piercing plus {@damage 3d6} fire and {@damage 2d6} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 3d10+15} piercing plus {@damage 3d6} fire and {@damage 2d6} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent",
@@ -6892,7 +6892,7 @@
 							"freq": 1
 						},
 						"entries": [
-							"The ankhrav spews acid in a 30-foot cone, dealing {@damage 3d6} acid damage and {@damage 1d6} {@condition persistent damage ||persistent acid damage} (DC 20 basic Reflex save)."
+							"The ankhrav spews acid in a 30-foot cone, dealing {@damage 3d6} acid damage and {@damage 1d6} {@condition persistent damage||persistent acid damage} (DC 20 basic Reflex save)."
 						],
 						"name": "Spray Acid"
 					}
@@ -10102,7 +10102,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"A bearded devil's glaive {@action Strike} also deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage} that resists attempts to heal it. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery.",
+							"A bearded devil's glaive {@action Strike} also deals {@damage 1d6} {@condition persistent damage||persistent bleed damage} that resists attempts to heal it. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery.",
 							"The DC to {@action Administer First Aid} to a creature with an infernal wound is increased by 5. A spellcaster or item attempting to use healing magic on a creature suffering from an infernal wound must succeed at a DC 21 counteract check or the magic fails to heal the creature."
 						],
 						"name": "Infernal Wound"
@@ -10729,7 +10729,7 @@
 				"bot": [
 					{
 						"entries": [
-							"When a bloodseeker hits a target larger than itself, its barbed legs attach it to that creature. This is similar to grabbing the creature, but the bloodseeker moves with that creature rather than holding it in place. The bloodseeker is flatfooted while attached. If the bloodseeker is killed or pushed away while attached to a creature it has {@condition drained} blood from, that creature takes 1 {@condition persistent damage ||persistent bleed damage}. Escaping the attach or removing the bloodseeker in other ways doesn't cause bleed damage."
+							"When a bloodseeker hits a target larger than itself, its barbed legs attach it to that creature. This is similar to grabbing the creature, but the bloodseeker moves with that creature rather than holding it in place. The bloodseeker is flatfooted while attached. If the bloodseeker is killed or pushed away while attached to a creature it has {@condition drained} blood from, that creature takes 1 {@condition persistent damage||persistent bleed damage}. Escaping the attach or removing the bloodseeker in other ways doesn't cause bleed damage."
 						],
 						"name": "Attach"
 					},
@@ -12407,7 +12407,7 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 11,
-					"damage": "{@damage 1d10+4} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 1d10+4} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -12494,7 +12494,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"A bunyip can alter its form slightly to gain an advantage and make it harder to recognize. When it does, its teeth shrink and its jaws {@action Strike} doesn't deal the {@damage 1d6} {@condition persistent damage ||persistent bleed damage}. It can choose to gain either a long snake tail, granting its tail {@action Strike} reach <10 feet> and Grab, or squat crocodile legs, increasing its land Speed to 20 feet. If it uses Shift Form again, the bunyip can return to normal or switch between a long tail or crocodile legs."
+							"A bunyip can alter its form slightly to gain an advantage and make it harder to recognize. When it does, its teeth shrink and its jaws {@action Strike} doesn't deal the {@damage 1d6} {@condition persistent damage||persistent bleed damage}. It can choose to gain either a long snake tail, granting its tail {@action Strike} reach <10 feet> and Grab, or squat crocodile legs, increasing its land Speed to 20 feet. If it uses Shift Form again, the bunyip can return to normal or switch between a long tail or crocodile legs."
 						],
 						"name": "Shift Form"
 					}
@@ -14412,7 +14412,7 @@
 							"fire"
 						],
 						"entries": [
-							"The ceustodaemon breathes flames in a 30-foot cone. Creatures in the cone take {@damage 7d6} fire damage (DC 24 basic Reflex save). The ceustodaemon and each creature that fails the save catch fire, taking {@damage 2d6} {@condition persistent damage ||persistent fire damage}. The breath weapon can't be used again for {@dice 1d4} rounds."
+							"The ceustodaemon breathes flames in a 30-foot cone. Creatures in the cone take {@damage 7d6} fire damage (DC 24 basic Reflex save). The ceustodaemon and each creature that fails the save catch fire, taking {@damage 2d6} {@condition persistent damage||persistent fire damage}. The breath weapon can't be used again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -15314,7 +15314,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@damage 1d8+4} fire plus {@damage 1d4} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 1d8+4} fire plus {@damage 1d4} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -16195,7 +16195,7 @@
 							"primal"
 						],
 						"entries": [
-							"The crag linnorm breathes out a stream of magma in a 120-foot line that deals {@damage 12d6} fire damage to creatures within the area (DC 34 basic Reflex save). Any creature that fails its save also takes {@damage 4d6} {@condition persistent damage ||persistent fire damage}. The crag linnorm can't use Breath Weapon again for {@dice 1d4} rounds. The magma remains until the start of the linnorm's next turn. If the linnorm was on the ground, the magma remains as a burning line on the ground directly under the line of the Breath Weapon, and if the linnorm was airborne, the magma rains downward in a sheet 60 feet high. Any creature that moves across or through the magma takes {@damage 6d6} fire damage (DC 34 basic Reflex save). At the start of the linnorm's next turn, the magma cools to a thin layer of brittle stone on the ground, or the magma rain finishes falling and turns to harmless pebbles. The cooled magma quickly degrades to powder and sand over the course of several hours."
+							"The crag linnorm breathes out a stream of magma in a 120-foot line that deals {@damage 12d6} fire damage to creatures within the area (DC 34 basic Reflex save). Any creature that fails its save also takes {@damage 4d6} {@condition persistent damage||persistent fire damage}. The crag linnorm can't use Breath Weapon again for {@dice 1d4} rounds. The magma remains until the start of the linnorm's next turn. If the linnorm was on the ground, the magma remains as a burning line on the ground directly under the line of the Breath Weapon, and if the linnorm was airborne, the magma rains downward in a sheet 60 feet high. Any creature that moves across or through the magma takes {@damage 6d6} fire damage (DC 34 basic Reflex save). At the start of the linnorm's next turn, the magma cools to a thin layer of brittle stone on the ground, or the magma rain finishes falling and turns to harmless pebbles. The cooled magma quickly degrades to powder and sand over the course of several hours."
 						],
 						"name": "Breath Weapon"
 					},
@@ -16992,7 +16992,7 @@
 						"finesse",
 						"magical"
 					],
-					"damage": "{@damage 2d6+4} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d6+4} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -20529,7 +20529,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The tendrils that cover the drakauthix's body reach out and infest adjacent creatures, dealing {@damage 4d6} poison damage and {@damage 1d6} {@condition persistent damage ||persistent poison damage}. A creature can attempt a basic DC 27 Reflex save to reduce this damage, but one {@condition grabbed} by the drakauthix takes a \u20134 circumstance penalty to this save."
+							"The tendrils that cover the drakauthix's body reach out and infest adjacent creatures, dealing {@damage 4d6} poison damage and {@damage 1d6} {@condition persistent damage||persistent poison damage}. A creature can attempt a basic DC 27 Reflex save to reduce this damage, but one {@condition grabbed} by the drakauthix takes a \u20134 circumstance penalty to this save."
 						],
 						"name": "Spore Tendrils"
 					},
@@ -21044,7 +21044,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The drow fighter {@action Strike||Strikes} with its rapier, and gains a +1 circumstance bonus to the attack roll. A creature damaged by the attack takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"The drow fighter {@action Strike||Strikes} with its rapier, and gains a +1 circumstance bonus to the attack roll. A creature damaged by the attack takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Skewer"
 					}
@@ -24273,7 +24273,7 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 2d10+12} fire plus {@damage 3d8} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d10+12} fire plus {@damage 3d8} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -25881,7 +25881,7 @@
 							"fire"
 						],
 						"entries": [
-							"The fire mephit breathes flames in a 15-foot cone that deals {@damage 2d4} fire and {@damage 1d4} {@condition persistent damage ||persistent fire damage} to each creature within the area (DC 17 basic Reflex save). The fire mephit can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The fire mephit breathes flames in a 15-foot cone that deals {@damage 2d4} fire and {@damage 1d4} {@condition persistent damage||persistent fire damage} to each creature within the area (DC 17 basic Reflex save). The fire mephit can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					}
@@ -25980,7 +25980,7 @@
 					"traits": [
 						"reach <15 feet>"
 					],
-					"damage": "{@damage 2d8+11} fire plus {@damage 2d8} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d8+11} fire plus {@damage 2d8} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -26041,7 +26041,7 @@
 							"primal"
 						],
 						"entries": [
-							"The firewyrm breathes a 30-foot cone of fire dealing {@damage 7d6} fire and {@damage 2d8} {@condition persistent damage ||persistent fire damage} to every creature within the cone (DC 28 basic Reflex save). The firewyrm can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The firewyrm breathes a 30-foot cone of fire dealing {@damage 7d6} fire and {@damage 2d8} {@condition persistent damage||persistent fire damage} to every creature within the cone (DC 28 basic Reflex save). The firewyrm can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					}
@@ -27055,7 +27055,7 @@
 							"poison"
 						],
 						"entries": [
-							"A fungus leshy can unleash a cloud of spores that irritates the eyes and throats of non-fungi creatures in a 15-foot emanation. Each creature must succeed at a DC 16 Fortitude save or take 1 {@condition persistent damage ||persistent poison damage}. A creature has its vision reduced as long as the {@condition persistent damage} continues and can see only within 20 feet (or 10 feet, on a critical failure)."
+							"A fungus leshy can unleash a cloud of spores that irritates the eyes and throats of non-fungi creatures in a 15-foot emanation. Each creature must succeed at a DC 16 Fortitude save or take 1 {@condition persistent damage||persistent poison damage}. A creature has its vision reduced as long as the {@condition persistent damage} continues and can see only within 20 feet (or 10 feet, on a critical failure)."
 						],
 						"name": "Spore Cloud"
 					},
@@ -29319,7 +29319,7 @@
 							"fire"
 						],
 						"entries": [
-							"The statue grinds a creature it has {@condition grabbed} into the red-hot coals of its brazier. The target takes {@damage 3d8} fire damage and {@damage 1d8} {@condition persistent damage ||persistent fire damage}."
+							"The statue grinds a creature it has {@condition grabbed} into the red-hot coals of its brazier. The target takes {@damage 3d8} fire damage and {@damage 1d8} {@condition persistent damage||persistent fire damage}."
 						],
 						"name": "Burn Alive"
 					}
@@ -31517,7 +31517,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 2d8+5} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed damage} and Grab",
+					"damage": "{@damage 2d8+5} piercing plus {@damage 1d4} {@condition persistent damage||persistent bleed damage} and Grab",
 					"types": [
 						"persistent",
 						"piercing"
@@ -34894,7 +34894,7 @@
 							{
 								"type": "list",
 								"items": [
-									"{@bold Fangs} (poison) The barghest grows elongated fangs that seep poison. Its jaws deal {@dice 1d6} additional poison damage and {@damage 1d6} {@condition persistent damage ||persistent poison damage}.",
+									"{@bold Fangs} (poison) The barghest grows elongated fangs that seep poison. Its jaws deal {@dice 1d6} additional poison damage and {@damage 1d6} {@condition persistent damage||persistent poison damage}.",
 									"{@bold Toxic Breath} (divine, evocation, poison) The barghest breathes a cloud of toxic gas that deals {@damage 8d6} poison damage to all creatures in a 30-foot cone (DC 25 basic Fortitude save). It can't use Toxic Breath again for {@dice 1d4} rounds.",
 									"{@bold Vestigial Arm Strike} {@as F} Frequency once per round; The barghest makes a claw {@action Strike} with a shriveled third arm hanging from its torso. This attack doesn't count for the barghest's multiple attack penalty, nor does that penalty apply on the attack.",
 									"{@bold Wings} The barghest has malformed wings extending from its back. It gains a fly Speed of 25 feet."
@@ -35953,7 +35953,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Striking a creature with its jaws, the grikkitog can extend its barbed teeth, immobilizing the target unless it succeeds at a DC 34 Reflex save. While {@condition immobilized}, the victim takes {@damage 3d8} {@condition persistent damage ||persistent bleed damage} and the grikkitog feeds upon its flesh. The creature is {@condition immobilized} until the grikkitog ends the effect as a free action or the target succeeds at a DC 38 check to {@action Escape}. The grikkitog can immobilize any number of creatures with these maws."
+							"Striking a creature with its jaws, the grikkitog can extend its barbed teeth, immobilizing the target unless it succeeds at a DC 34 Reflex save. While {@condition immobilized}, the victim takes {@damage 3d8} {@condition persistent damage||persistent bleed damage} and the grikkitog feeds upon its flesh. The creature is {@condition immobilized} until the grikkitog ends the effect as a free action or the target succeeds at a DC 38 check to {@action Escape}. The grikkitog can immobilize any number of creatures with these maws."
 						],
 						"name": "Barbed Maw Upon"
 					},
@@ -37768,7 +37768,7 @@
 							"acid"
 						],
 						"entries": [
-							"The hive mother spews acid in a 60-foot cone, dealing {@damage 8d6} acid damage and {@damage 1d6} {@condition persistent damage ||persistent acid damage} (DC 26 basic Reflex save). It can't spew acid again for {@dice 1d4} rounds."
+							"The hive mother spews acid in a 60-foot cone, dealing {@damage 8d6} acid damage and {@damage 1d6} {@condition persistent damage||persistent acid damage} (DC 26 basic Reflex save). It can't spew acid again for {@dice 1d4} rounds."
 						],
 						"name": "Spray Acid"
 					}
@@ -41963,7 +41963,7 @@
 						],
 						"requirements": "The krooth damaged a creature with its jaws on its most recent action this turn.",
 						"entries": [
-							"The krooth snaps off one of its teeth in the creature it hit. The creature takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and is {@condition drained 1}. Neither can be healed while the tooth remains. Removing the tooth safely requires a successful DC 26 check to {@action Administer First Aid}. Instead of ending bleeding or stabilizing, this removes the {@condition drained} condition, but it doesn't automatically end the bleed damage."
+							"The krooth snaps off one of its teeth in the creature it hit. The creature takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and is {@condition drained 1}. Neither can be healed while the tooth remains. Removing the tooth safely requires a successful DC 26 check to {@action Administer First Aid}. Instead of ending bleeding or stabilizing, this removes the {@condition drained} condition, but it doesn't automatically end the bleed damage."
 						],
 						"name": "Poison Tooth"
 					}
@@ -45063,7 +45063,7 @@
 						"finesse",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d6+6} fire plus {@damage 2d4} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 2d6+6} fire plus {@damage 2d4} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -46382,7 +46382,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The marid makes a trident {@action Strike}, dealing an extra {@damage 2d6} {@condition persistent damage ||persistent bleed damage} on a hit ({@dice 4d6} on a critical hit)."
+							"The marid makes a trident {@action Strike}, dealing an extra {@damage 2d6} {@condition persistent damage||persistent bleed damage} on a hit ({@dice 4d6} on a critical hit)."
 						],
 						"name": "Skewer"
 					}
@@ -51293,12 +51293,12 @@
 							},
 							{
 								"stage": 2,
-								"entry": "{@damage 2d8} {@condition persistent damage ||persistent bleed damage} every hour and {@condition enfeebled 1}",
+								"entry": "{@damage 2d8} {@condition persistent damage||persistent bleed damage} every hour and {@condition enfeebled 1}",
 								"duration": "1 day"
 							},
 							{
 								"stage": 3,
-								"entry": "{@damage 2d8} {@condition persistent damage ||persistent bleed damage} every hour and {@condition enfeebled 2}",
+								"entry": "{@damage 2d8} {@condition persistent damage||persistent bleed damage} every hour and {@condition enfeebled 2}",
 								"duration": "1 day"
 							}
 						]
@@ -52892,7 +52892,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"A contract devil's glaive {@action Strike} also deals {@damage 3d6} {@condition persistent damage ||persistent bleed damage} that resists attempts to heal it. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery.",
+							"A contract devil's glaive {@action Strike} also deals {@damage 3d6} {@condition persistent damage||persistent bleed damage} that resists attempts to heal it. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery.",
 							"The DC to {@action Administer First Aid} to a creature with an infernal wound is increased by 5. A spellcaster or item attempting to use healing magic on a creature suffering from an infernal wound must succeed at a DC 29 counteract check or the magic fails to heal the creature."
 						],
 						"name": "Infernal Wound"
@@ -53019,7 +53019,7 @@
 						"magical",
 						"reach <20 feet>"
 					],
-					"damage": "{@damage 1d12+9} piercing plus {@damage 3d8} fire and {@damage 2d10} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 1d12+9} piercing plus {@damage 3d8} fire and {@damage 2d10} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent",
@@ -53037,7 +53037,7 @@
 						"magical",
 						"reach <20 feet>"
 					],
-					"damage": "{@damage 1d6+6} piercing plus {@damage 3d8} fire and {@damage 2d10} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 1d6+6} piercing plus {@damage 3d8} fire and {@damage 2d10} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent",
@@ -53052,7 +53052,7 @@
 						"fire",
 						"range increment <40 feet>"
 					],
-					"damage": "{@damage 6d6} fire plus {@damage 2d10} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 6d6} fire plus {@damage 2d10} {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -55834,7 +55834,7 @@
 						"deadly <1d10>",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d10+10} piercing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d10+10} piercing plus {@damage 1d8} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -56656,7 +56656,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The redcap {@action Stride||Strides} up to half its Speed and makes a boot {@action Strike} at any point during that movement. If the boot {@action Strike} hits a {@condition prone} creature, it deals an extra {@damage 2d6} {@condition persistent damage ||persistent bleed damage}."
+							"The redcap {@action Stride||Strides} up to half its Speed and makes a boot {@action Strike} at any point during that movement. If the boot {@action Strike} hits a {@condition prone} creature, it deals an extra {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Stomp"
 					}
@@ -57429,7 +57429,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The river drake spits a ball of caustic mucus up to a range of 50 feet that explodes in a 10-foot burst. Creatures within the burst take {@damage 4d6} acid damage (DC 19 basic Reflex save). Those that fail this save also take {@damage 1d6} {@condition persistent damage ||persistent acid damage} and take a \u20135-foot status penalty to their Speed. This Speed reduction ends with the {@condition persistent damage ||persistent acid damage}. The river drake can't use Caustic Mucus again for {@dice 1d6} rounds."
+							"The river drake spits a ball of caustic mucus up to a range of 50 feet that explodes in a 10-foot burst. Creatures within the burst take {@damage 4d6} acid damage (DC 19 basic Reflex save). Those that fail this save also take {@damage 1d6} {@condition persistent damage||persistent acid damage} and take a \u20135-foot status penalty to their Speed. This Speed reduction ends with the {@condition persistent damage||persistent acid damage}. The river drake can't use Caustic Mucus again for {@dice 1d6} rounds."
 						],
 						"name": "Caustic Mucus"
 					},
@@ -58412,7 +58412,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The salamander stokes its internal flames. Until the start of its next turn, it gains a +2 circumstance bonus to AC, and when an adjacent creature touches it or hits it with a physical attack, that creature takes {@damage 2d6} {@condition persistent damage ||persistent fire damage} unless it succeeds at a DC 25 Reflex save."
+							"The salamander stokes its internal flames. Until the start of its next turn, it gains a +2 circumstance bonus to AC, and when an adjacent creature touches it or hits it with a physical attack, that creature takes {@damage 2d6} {@condition persistent damage||persistent fire damage} unless it succeeds at a DC 25 Reflex save."
 						],
 						"name": "Armor of Flames"
 					},
@@ -58933,7 +58933,7 @@
 					},
 					{
 						"entries": [
-							"When the sea devil deals piercing or slashing damage, it also deals {@damage 1d4} {@condition persistent damage ||persistent bleed damage} if the target was {@condition flat-footed} or if the attack was a critical hit."
+							"When the sea devil deals piercing or slashing damage, it also deals {@damage 1d4} {@condition persistent damage||persistent bleed damage} if the target was {@condition flat-footed} or if the attack was a critical hit."
 						],
 						"name": "Bloodletting"
 					},
@@ -59111,7 +59111,7 @@
 					},
 					{
 						"entries": [
-							"When the sea devil deals piercing or slashing damage, it also deals {@damage 1d4} {@condition persistent damage ||persistent bleed damage} if the target was {@condition flat-footed} or if the attack was a critical hit."
+							"When the sea devil deals piercing or slashing damage, it also deals {@damage 1d4} {@condition persistent damage||persistent bleed damage} if the target was {@condition flat-footed} or if the attack was a critical hit."
 						],
 						"name": "Bloodletting"
 					},
@@ -59274,7 +59274,7 @@
 					},
 					{
 						"entries": [
-							"When the sea devil deals piercing or slashing damage, it also deals {@damage 1d4} {@condition persistent damage ||persistent bleed damage} if the target was {@condition flat-footed} or if the attack was a critical hit."
+							"When the sea devil deals piercing or slashing damage, it also deals {@damage 1d4} {@condition persistent damage||persistent bleed damage} if the target was {@condition flat-footed} or if the attack was a critical hit."
 						],
 						"name": "Bloodletting"
 					}
@@ -60883,7 +60883,7 @@
 						"finesse",
 						"magical"
 					],
-					"damage": "{@damage 3d4+5} bludgeoning plus {@damage 4d6} fire and {@damage 2d4} {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 3d4+5} bludgeoning plus {@damage 4d6} fire and {@damage 2d4} {@condition persistent damage||persistent fire}",
 					"types": [
 						"bludgeoning",
 						"fire",
@@ -62881,7 +62881,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The smilodon makes a fangs {@action Strike} against a creature it is grabbing. If the attack hits, the creature is knocked {@condition prone}; if the creature is wearing armor with hardness 10 or lower, the armor is {@condition broken}. If this {@action Strike} breaks a creature's armor or damages a creature who is unarmored or wearing {@condition broken} armor, the creature also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage}. This {@action Strike} doesn't further damage armor that's already {@condition broken}."
+							"The smilodon makes a fangs {@action Strike} against a creature it is grabbing. If the attack hits, the creature is knocked {@condition prone}; if the creature is wearing armor with hardness 10 or lower, the armor is {@condition broken}. If this {@action Strike} breaks a creature's armor or damages a creature who is unarmored or wearing {@condition broken} armor, the creature also takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}. This {@action Strike} doesn't further damage armor that's already {@condition broken}."
 						],
 						"name": "Pierce Armor"
 					},
@@ -67044,7 +67044,7 @@
 					},
 					{
 						"entries": [
-							"A triceratops deals {@dice 2d6} extra {@condition persistent damage ||persistent bleed damage} to {@condition prone} targets it hits with its horns."
+							"A triceratops deals {@dice 2d6} extra {@condition persistent damage||persistent bleed damage} to {@condition prone} targets it hits with its horns."
 						],
 						"name": "Vicious Gore"
 					}
@@ -67299,7 +67299,7 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "The troll king takes {@condition persistent damage ||persistent acid} or fire damage.",
+						"trigger": "The troll king takes {@condition persistent damage||persistent acid} or fire damage.",
 						"entries": [
 							"The troll king shakes itself to remove persistent {@trait acid} or {@trait fire} effects. The troll king immediately attempts a DC {@flatDC 15} flat check to end the {@condition persistent damage} that triggered this reaction. If the troll king succeeds at this check, it can immediately use Primordial Roar as part of this reaction."
 						],
@@ -68013,7 +68013,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the bat swarm's space takes {@damage 1d4} piercing damage (DC 16 basic Reflex save). Creatures that fail this save also take 1 {@condition persistent damage ||persistent bleed damage}."
+							"Each enemy in the bat swarm's space takes {@damage 1d4} piercing damage (DC 16 basic Reflex save). Creatures that fail this save also take 1 {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Blood Feast"
 					}
@@ -69887,7 +69887,7 @@
 							"poison"
 						],
 						"entries": [
-							"The vrock emits a cloud of spores from their body, dealing {@damage 2d8} poison damage to all adjacent creatures. Each creature damaged this way must succeed at a DC 28 Fortitude save or take {@damage 2d8} {@condition persistent damage ||persistent piercing damage} as the spores penetrate its skin and grow into thick, green vines. The vines cease growing after 10 rounds, and they wither away in {@dice 1d4} days if not shaved off before then. The vines can be destroyed if the creature is affected by a good spell or if holy water is applied to the vines (with an {@action Interact} action). Once the vrock uses Spore Cloud, the ability can't be used for {@dice 1d6} rounds."
+							"The vrock emits a cloud of spores from their body, dealing {@damage 2d8} poison damage to all adjacent creatures. Each creature damaged this way must succeed at a DC 28 Fortitude save or take {@damage 2d8} {@condition persistent damage||persistent piercing damage} as the spores penetrate its skin and grow into thick, green vines. The vines cease growing after 10 rounds, and they wither away in {@dice 1d4} days if not shaved off before then. The vines can be destroyed if the creature is affected by a good spell or if holy water is applied to the vines (with an {@action Interact} action). Once the vrock uses Spore Cloud, the ability can't be used for {@dice 1d6} rounds."
 						],
 						"name": "Spore Cloud"
 					},

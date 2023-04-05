@@ -277,32 +277,19 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+13 Str +2, Dex +4, Con +1, Int +4, Wis +1, Cha +0 Items +1 dagger, moderate healing potion, spellbook."
-						],
-						"name": "Thievery"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
-							"{@damage 1d4+5} piercing Arcane Prepared Spells DC 23, attack +15; 3rd haste, hypnotic pattern, vampiric touch; 2nd dispel magic, invisibility, mirror image, telekinetic maneuver; 1st color spray, illusory disguise, illusory object, spider sting; Cantrips (3rd) daze, detect magic, electric arc, ghost sound, shield."
+							"The Copper Hand illusionist deals {@dice 2d6} additional precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "S), Damage"
-					},
-					{
-						"entries": [
-							"Hand illusionist deals {@dice 2d6} additional precision damage to {@condition flat-footed} creatures."
-						],
-						"name": "Sneak Attack The Copper"
+						"name": "Sneak Attack"
 					}
 				]
 			},
 			"defenses": {
 				"ac": {
-					"std": 22
+					"std": 22,
+					"note": " (with mage armor)"
 				},
 				"savingThrows": {
 					"fort": {
@@ -425,9 +412,9 @@
 					},
 					{
 						"entries": [
-							"Hand rogue deals {@dice 1d6} additional precision damage to {@condition flat-footed} creatures."
+							"The Copper Hand rogue deals {@dice 1d6} additional precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak Attack The Copper"
+						"name": "Sneak Attack"
 					}
 				]
 			},
@@ -577,14 +564,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18 Str +4, Dex +6, Con +3, Int +4, Wis +3, Cha +6."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -597,9 +576,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature plays an instrument while",
+						"trigger": "A creature plays an instrument while {@action Cast a Spell||Casting a Spell} or casts a composition spell within 20 feet of the dreadsong dancer",
 						"entries": [
-							"{@action Cast a Spell||Casting a Spell} or casts a composition spell within 20 feet of the dreadsong dancer; The dreadsong dancer {@action Stride||Strides} up to 20 feet and makes a songblade {@action Strike} against the triggering creature. If the {@action Strike} hits, the spell is disrupted."
+							"The dreadsong dancer {@action Stride||Strides} up to 20 feet and makes a songblade {@action Strike} against the triggering creature. If the {@action Strike} hits, the spell is disrupted."
 						],
 						"name": "Jealous Musician"
 					}
@@ -637,10 +616,9 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"songblade"
 						],
-						"entries": [],
 						"name": "Rend",
 						"generic": {
 							"tag": "ability"
@@ -661,7 +639,10 @@
 					},
 					"will": {
 						"std": 16
-					}
+					},
+					"abilities": [
+						"+2 status to all saves vs. composition spells"
+					]
 				},
 				"hp": [
 					{
@@ -669,8 +650,8 @@
 					}
 				],
 				"immunities": [
-					"poison",
-					"disease"
+					"disease",
+					"poison"
 				],
 				"weaknesses": [
 					{
@@ -862,6 +843,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female human guildmaster",
 			"perception": {
 				"std": 19
 			},
@@ -896,6 +878,14 @@
 				"wis": 2,
 				"cha": 4
 			},
+			"items": [
+				"+1 daggers (3)",
+				"moderate darkvision elixir",
+				"jade bauble talisman (affixed to main-gauche)",
+				"leather armor",
+				"+1 striking main-gauche",
+				"+1 striking rapier"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -963,14 +953,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Thievery} +18 Str +1, Dex +6, Con +1, Int +0, Wis +2, Cha +4 Items +1 daggers (3), moderate darkvision elixir, jade bauble talisman (affixed to main-gauche), leather armor, +1 striking main-gauche, +1 striking rapier."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1009,9 +991,9 @@
 					},
 					{
 						"entries": [
-							"Fayati critically succeeds at a {@action Strike} against a creature, until the start of her next turn, the first time that another member of the Copper Hand deals damage to that creature during their turn, they deal an additional {@damage 1d6} precision damage to it."
+							"Whenever Fayati critically succeeds at a {@action Strike} against a creature, until the start of her next turn, the first time that another member of the Copper Hand deals damage to that creature during their turn, they deal an additional {@damage 1d6} precision damage to it."
 						],
-						"name": "Guildmaster's Lead Whenever"
+						"name": "Guildmaster's Lead"
 					},
 					{
 						"entries": [
@@ -1446,6 +1428,11 @@
 				"wis": 0,
 				"cha": 4
 			},
+			"items": [
+				"daggers (5)",
+				"standard skeleton key",
+				"studded leather armor"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1480,14 +1467,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+7 Str +0, Dex +3, Con +1, Int +1, Wis +0, Cha +4 Items daggers (5), standard skeleton key, studded leather armor."
-						],
-						"name": "Thievery"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1620,14 +1599,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12 Str \u20131, Dex +4, Con +2, Int \u20131, Wis +3, Cha +2."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1643,10 +1614,24 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							"The creature is extremely thirsty and can't quench its thirst while poisoned; Saving Throw DC 21 Fortitude; Maximum Duration 4 hours; Stage 1 {@damage 1d4} poison damage, {@condition fatigued}, and {@dice 1d4} damage that can't be recovered until the creature quenches its thirst (1 round); Stage 2 as stage 1 (1 hour)"
-						],
-						"name": "Najra Lizard Venom"
+						"type": "affliction",
+						"name": "Najra Lizard Venom",
+						"note": "The creature is extremely thirsty and can't quench its thirst while poisoned",
+						"DC": 21,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 hours",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage, {@condition fatigued}, and {@dice 1d4} damage that can't be recovered until the creature quenches its thirst",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "as stage 1",
+								"duration": "1 hour"
+							}
+						]
 					},
 					{
 						"entries": [
@@ -1848,6 +1833,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human guard captain",
 			"perception": {
 				"std": 18
 			},
@@ -1883,7 +1869,8 @@
 			},
 			"items": [
 				"Foreign Guard uniform",
-				"handcuffs (2"
+				"handcuffs (2; Pathfinder Adventure Path #157 77)",
+				"victor's medallion from the Challenge of Sky and Heaven"
 			],
 			"speed": {
 				"walk": 35
@@ -1920,20 +1907,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16 Str +4, Dex +3, Con +2, Int +0, Wis +3, Cha +1 Items Foreign Guard uniform, handcuffs (2"
-						],
-						"name": "Stealth"
-					},
-					{
-						"entries": [
-							"#157 77), victor's medallion from the Challenge of Sky and Heaven."
-						],
-						"name": "Pathfinder Adventure Path"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1957,15 +1930,9 @@
 							"flourish"
 						],
 						"entries": [
-							"Shristi makes two unarmed {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purposes of resistances and weaknesses. He applies his multiple attack penalty to."
+							"Shristi makes two unarmed {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purposes of resistances and weaknesses. He applies his multiple attack penalty to the {@action Strike||Strikes} normally. As it has the {@trait flourish} trait, Shristi can use {@action Flurry of Blows} only once per turn."
 						],
 						"name": "Flurry of Blows"
-					},
-					{
-						"entries": [
-							"{@action Strike||Strikes} normally. As it has the {@trait flourish} trait, Shristi can use {@action Flurry of Blows} only once per turn."
-						],
-						"name": "the"
 					},
 					{
 						"activity": {
@@ -1996,22 +1963,10 @@
 							"stance"
 						],
 						"entries": [
-							"Shristi enters a combat stance perfected by past champions of the Challenge of."
+							"Shristi enters a combat stance perfected by past champions of the Challenge of Sky and Heaven. While in this stance, the only {@action Strike||Strikes} Shristi can make are skyward slash unarmed attacks. These deal {@damage 1d10} slashing damage; are in the {@group brawling}; and have the {@trait nonlethal}, {@trait unarmed}, and {@trait versatile <P>} traits.",
+							"While in Sky and Heaven Stance Shristi gains resistance 2 to electricity and sonic damage."
 						],
 						"name": "Sky and Heaven Stance"
-					},
-					{
-						"entries": [
-							"While in this stance, the only {@action Strike||Strikes} Shristi can make are skyward slash unarmed attacks.",
-							"These deal {@damage 1d10} slashing damage; are in the {@group brawling}; and have the {@trait nonlethal}, {@trait unarmed}, and {@trait versatile <P>} traits."
-						],
-						"name": "Sky and Heaven."
-					},
-					{
-						"entries": [
-							"Shristi gains resistance 2 to electricity and sonic damage."
-						],
-						"name": "While in Sky and Heaven Stance"
 					}
 				]
 			},
@@ -2318,7 +2273,7 @@
 						},
 						"requirements": "The Skinsaw seamer dealt damage with a melee weapon other than its war razor with their last action",
 						"entries": [
-							"The seamer makes a war razor {@action Strike} against the same creature that they just damaged. On a hit, the seamer slices a strip of flesh from the target and deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage} in addition to the war razor's usual damage."
+							"The seamer makes a war razor {@action Strike} against the same creature that they just damaged. On a hit, the seamer slices a strip of flesh from the target and deals {@damage 1d6} {@condition persistent damage||persistent bleed damage} in addition to the war razor's usual damage."
 						],
 						"name": "Flay"
 					},
@@ -2438,7 +2393,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The skinstitch makes a blade {@action Strike} against an animal or humanoid. On a success, the skinstitch slices a long strip of flesh from the target; if the skinstitch dealt damage, it deals an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"The skinstitch makes a blade {@action Strike} against an animal or humanoid. On a success, the skinstitch slices a long strip of flesh from the target; if the skinstitch dealt damage, it deals an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Flay"
 					},
@@ -2778,7 +2733,7 @@
 						},
 						"requirements": "The teraphant has a creature {@condition grabbed}",
 						"entries": [
-							"The teraphant slams the creature onto one of its horns. The target must attempt a DC 27 Reflex save or suffer {@damage 3d6+9} piercing damage and {@damage 1d6} {@condition persistent damage ||persistent bleed damage} ({@damage 6d6+18} piercing damage on a critical failure)."
+							"The teraphant slams the creature onto one of its horns. The target must attempt a DC 27 Reflex save or suffer {@damage 3d6+9} piercing damage and {@damage 1d6} {@condition persistent damage||persistent bleed damage} ({@damage 6d6+18} piercing damage on a critical failure)."
 						],
 						"name": "Impale"
 					},
@@ -3091,7 +3046,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Any creature taking {@condition persistent damage ||persistent bleed damage} is {@condition flat-footed} against the Skinner's attacks. When attacking a {@condition flat-footed} creature, the Skinner deals an additional {@damage 2d6} precision damage."
+							"Any creature taking {@condition persistent damage||persistent bleed damage} is {@condition flat-footed} against the Skinner's attacks. When attacking a {@condition flat-footed} creature, the Skinner deals an additional {@damage 2d6} precision damage."
 						],
 						"name": "Bloody Sneak Attack"
 					},
@@ -3120,7 +3075,7 @@
 					},
 					{
 						"entries": [
-							"Skinner makes a successful cleaver {@action Strike} against a {@condition grabbed} creature, she also deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage} (or {@dice 2d6} on a critical hit)."
+							"Skinner makes a successful cleaver {@action Strike} against a {@condition grabbed} creature, she also deals {@damage 1d6} {@condition persistent damage||persistent bleed damage} (or {@dice 2d6} on a critical hit)."
 						],
 						"name": "Flay Whenever the"
 					},

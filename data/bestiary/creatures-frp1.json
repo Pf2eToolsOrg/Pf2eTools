@@ -1350,7 +1350,7 @@
 					"range": "Melee",
 					"name": "talon",
 					"attack": 27,
-					"damage": "{@damage 2d8+13} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d8+13} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -1384,7 +1384,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Grab, and caustic monitor venom Melee talon +27, Damage {@damage 2d8+13} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}."
+							"Grab, and caustic monitor venom Melee talon +27, Damage {@damage 2d8+13} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}."
 						],
 						"name": "Improved"
 					},
@@ -1688,7 +1688,7 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d12+10} piercing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d12+10} piercing plus {@damage 1d8} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -1701,7 +1701,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@damage 2d8+10} slashing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d8+10} slashing plus {@damage 1d4} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -2373,7 +2373,7 @@
 						},
 						"requirements": "The grave spinosaurus has a creature {@condition grabbed} in its jaws",
 						"entries": [
-							"The grave spinosaurus reaches up, slashes the creature it has {@condition grabbed} with its claws, dealing {@damage 6d10} slashing damage (DC 36 basic Reflex save) and {@damage 2d6} {@condition persistent damage ||persistent bleed damage}."
+							"The grave spinosaurus reaches up, slashes the creature it has {@condition grabbed} with its claws, dealing {@damage 6d10} slashing damage (DC 36 basic Reflex save) and {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Rip and Tear"
 					},
@@ -6293,7 +6293,7 @@
 					},
 					{
 						"entries": [
-							"{@action Strike||Strikes} gain the {@trait forceful} trait. If one target is hit with at least two of these {@action Strike||Strikes}, they also take {@damage 1d6} {@condition persistent damage ||persistent bleed damage}. The target is then {@condition flat-footed} until they heal the {@condition persistent damage ||persistent bleed damage}."
+							"{@action Strike||Strikes} gain the {@trait forceful} trait. If one target is hit with at least two of these {@action Strike||Strikes}, they also take {@damage 1d6} {@condition persistent damage||persistent bleed damage}. The target is then {@condition flat-footed} until they heal the {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "These"
 					},
@@ -6664,7 +6664,7 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"If Tino hits with his {@action Retributive Strike}, the target takes 3 {@condition persistent damage ||persistent good damage}."
+							"If Tino hits with his {@action Retributive Strike}, the target takes 3 {@condition persistent damage||persistent good damage}."
 						],
 						"name": "Retributive Strike",
 						"generic": {
@@ -7598,7 +7598,7 @@
 						],
 						"requirements": "The weapon master is not wielding a weapon",
 						"entries": [
-							"The weapon master Interacts to draw a melee weapon without triggering reactions and makes a {@action Strike} with that weapon. The target is {@condition flat-footed} against this {@action Strike}. The weapon master deals an extra {@damage 2d8} {@condition persistent damage ||persistent bleed damage} with the {@action Strike}."
+							"The weapon master Interacts to draw a melee weapon without triggering reactions and makes a {@action Strike} with that weapon. The target is {@condition flat-footed} against this {@action Strike}. The weapon master deals an extra {@damage 2d8} {@condition persistent damage||persistent bleed damage} with the {@action Strike}."
 						],
 						"name": "Swift Blow"
 					}
