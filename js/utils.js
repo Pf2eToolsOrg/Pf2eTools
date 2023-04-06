@@ -2712,6 +2712,11 @@ DataUtil = {
 
 			if (copyMeta._mod) normaliseMods(copyMeta);
 
+			// apply weak/elite adjustment to copied creature
+			if (copyMeta.creatureAdjustment) {
+				scaleCreature.applyAdjustment(copyFrom, copyMeta.creatureAdjustment.toLowerCase());
+			}
+
 			// copy over required values
 			Object.keys(copyFrom).forEach(k => {
 				if (copyTo[k] === null) return delete copyTo[k];
