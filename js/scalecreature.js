@@ -443,6 +443,11 @@ class ScaleCreature {
 
 	// FIXME: We assume at least trained in everything
 	/**
+	 * Scales a copy of the given creature to the provided level and returns it.
+	 *
+	 * When the target level is one higher or lower than the current level, the Weak or Elite adjustments from B1 are used.
+	 * For larger level changes, the creature is adjusted using the creature building rules from the GMG.
+	 *
 	 * @async
 	 * @param creature Creature data.
 	 * @param toLvl target level, as a number.
@@ -452,19 +457,23 @@ class ScaleCreature {
 		if (toLvl == null || toLvl === "Unknown") throw new Error("Attempting to scale unknown level!");
 
 		this._initRng(creature, toLvl);
-		creature = JSON.parse(JSON.stringify(creature));
+		creature = MiscUtil.copy(creature);
 
 		const lvlIn = creature.level;
 		if (lvlIn > 25) throw new Error("Attempting to scale a creature beyond level 25!");
 		if (lvlIn < -1) throw new Error("Attempting to scale a creature below level -1!");
 
-		const opts = {};
-		opts.flatAddProf = 0;
-
 		if (lvlIn === toLvl && !this.isProfNoLvl()) return creature;
-		else if (lvlIn === toLvl + 1) creature = this._scaleWeak(creature, opts);
-		else if (lvlIn === toLvl - 1) creature = this._scaleElite(creature, opts);
-		else {
+		else if (lvlIn === toLvl + 1) {
+			creature = this._scaleWeak(creature);
+			creature._displayName = `Weak ${creature.name}`;
+		} else if (lvlIn === toLvl - 1) {
+			creature = this._scaleElite(creature);
+			creature._displayName = `Elite ${creature.name}`;
+		} else {
+			const opts = {};
+			opts.flatAddProf = 0;
+
 			// only needed here
 			await this._pInitSpellCache();
 			// Use creature building rules: Gamemastery Guide, pages 56 ff.
@@ -473,13 +482,32 @@ class ScaleCreature {
 			creature.level = toLvl;
 			if (lvlIn !== toLvl) {
 				creature._displayName = `${creature.name} (Lvl ${toLvl})`;
-				creature._isScaledLvl = true;
-				creature._scaledLvl = toLvl;
-				creature._originalLvl = creature._originalLvl || lvlIn;
 			}
 		}
 
+		creature._isScaledLvl = true;
+		creature._scaledLvl = toLvl;
+		creature._originalLvl = creature._originalLvl || lvlIn;
+
 		return creature;
+	}
+
+	/**
+	 * Applies Weak or Elite adjustments (B1) to a creature.
+	 * The creature data is modified in-place.
+	 *
+	 * @param creature Creature data.
+	 * @param adjustement "weak"|"elite"
+	 * @return {creature} the scaled creature
+	 */
+	applyAdjustment (creature, adjustment) {
+		if (adjustment === "elite") {
+			this._scaleElite(creature);
+		} else if (adjustment === "weak") {
+			this._scaleWeak(creature);
+		} else {
+			throw new Error("Unknown adjustment.");
+		}
 	}
 
 	applyVarRules (creature) {
@@ -496,7 +524,7 @@ class ScaleCreature {
 		return creature;
 	}
 
-	_scaleElite (creature, opts) {
+	_scaleElite (creature) {
 		/*
 		Elite Adjustments
 		Sometimes you’ll want a creature that’s just a bit more powerful than normal so that you can present a challenge
@@ -515,7 +543,8 @@ class ScaleCreature {
 		20+            | 30
 		 */
 
-		opts.flatAddProf += 2;
+		const opts = {};
+		opts.flatAddProf = 2;
 		opts.flatAddDamage = 2;
 		opts.flatAddDamageLimited = 4;
 		creature = this._scaleEliteWeak(creature, opts);
@@ -525,15 +554,11 @@ class ScaleCreature {
 		else if (creature.level < 20) creature.defenses.hp[0].hp += 20;
 		else creature.defenses.hp[0].hp += 30;
 
-		creature._displayName = `Elite ${creature.name}`;
-		creature._originalLvl = creature._originalLvl || creature.level;
 		creature.level += 1;
-		creature._isScaledLvl = true;
-		creature._scaledLvl = creature.level;
 		return creature;
 	}
 
-	_scaleWeak (creature, opts) {
+	_scaleWeak (creature) {
 		/*
 	Weak Adjustments
 	Sometimes you’ll want a creature that’s weaker than normal so you can use a creature that would otherwise be too
@@ -552,7 +577,8 @@ class ScaleCreature {
 	21+            | –30
 	 */
 
-		opts.flatAddProf -= 2;
+		const opts = {};
+		opts.flatAddProf = -2;
 		opts.flatAddDamage = -2;
 		opts.flatAddDamageLimited = -4;
 		creature = this._scaleEliteWeak(creature, opts);
@@ -562,11 +588,7 @@ class ScaleCreature {
 		else if (creature.level < 20) creature.defenses.hp[0].hp -= 20;
 		else creature.defenses.hp[0].hp -= 30;
 
-		creature._displayName = `Weak ${creature.name}`;
-		creature._originalLvl = creature._originalLvl || creature.level;
 		creature.level -= 1;
-		creature._isScaledLvl = true;
-		creature._scaledLvl = creature.level;
 		return creature;
 	}
 
