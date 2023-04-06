@@ -3050,6 +3050,7 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {
 			page: true,
 			otherSources: true,
+			hasImages: true,
 		},
 		_mergeCache: {},
 		async pMergeCopy (crList, cr, options) {
