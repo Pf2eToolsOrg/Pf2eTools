@@ -4248,8 +4248,8 @@ Renderer.creature = {
 			${Renderer.creature.getLanguages(cr.languages)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${Renderer.creature.getItems(cr)}
+			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}
 			${cr.abilities && cr.abilities.mid ? cr.abilities.mid.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
