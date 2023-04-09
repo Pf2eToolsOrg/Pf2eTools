@@ -159,7 +159,9 @@ class Converter {
 		const [match, name, type, level] = this._tokenizerUtils.dataHeaders.find(it => it.type === "SPELL").regex.exec(headerToken.value);
 		const spell = {};
 		spell.name = name.toTitleCase();
-		spell.type = type.toTitleCase();
+		if (type.toTitleCase() !== "Spell") {
+			spell.type = type.toTitleCase();
+		}
 		spell.level = Number(level);
 		spell.source = this._source;
 		spell.page = this._page;
@@ -173,6 +175,11 @@ class Converter {
 			this._tokenStack = [];
 		}
 		this._parsing = null;
+
+		if (spell.traditions) {
+			spell.traditions = spell.traditions.map(t => t.toLowerCase());
+		}
+
 		return PropOrder.getOrdered(spell, "spell");
 	}
 	_parseFeat () {
@@ -1002,7 +1009,12 @@ class Converter {
 		const reNameBonus = /(.*?) \+\s?(\d+)/;
 		const textEntries = [];
 		entries.forEach(entryToken => {
-			if (this._tokenIsType(this._tokenizerUtils.actions, entryToken)) attack.activity = this._renderToken(entryToken, {asObject: true});
+			if (this._tokenIsType(this._tokenizerUtils.actions, entryToken)) {
+				const activity = this._renderToken(entryToken, {asObject: true});
+				if (!(activity.unit === "action" && activity.number === 1)) {
+					attack.activity = activity;
+				}
+			}
 			if (this._tokenIsType(this._tokenizerUtils.sentences, entryToken)) textEntries.push(entryToken);
 			if (this._tokenIsType("PARENTHESIS", entryToken)) attack.traits = this._splitSemiOrComma(this._getParenthesisInnerText(entryToken), {isText: true});
 		});
