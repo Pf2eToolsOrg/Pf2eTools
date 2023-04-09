@@ -4535,10 +4535,11 @@ Renderer.creature = {
 					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
 					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}) ` : ""}
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
+					${ability.prerequisites ? `<strong>Prerequisites&nbsp;</strong>${renderer.render_addTerm(ability.prerequisites)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
 					${ability.cost ? `<strong>Cost&nbsp;</strong>${renderer.render_addTerm(ability.cost)}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger || ability.cost ? "<strong>Effect</strong>" : ""}
+					${ability.frequency || ability.prerequisites || ability.requirements || ability.trigger || ability.cost ? "<strong>Effect</strong>" : ""}
 					${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
 					</p>
 					${/* renderedGenericAbility || null */ ""}`;
