@@ -944,6 +944,11 @@
 				"wis": 2,
 				"cha": 2
 			},
+			"items": [
+				"black smear poison (2 doses; Pathfinder Bestiary 51)",
+				"chainmail",
+				"shortbow (20 arrows)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1016,12 +1021,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+17, {@skill Survival} +16 Str +4, Dex +5, Con +1, Int \u20131, Wis +2, Cha +2 Items black smear poison (2 doses; Pathfinder Bestiary 51), chainmail, shortbow (20 arrows)"
-						],
-						"name": "Stealth"
-					},
-					{
 						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
@@ -1083,7 +1082,10 @@
 				},
 				"hp": [
 					{
-						"hp": 125
+						"hp": 125,
+						"abilities": [
+							"death flame"
+						]
 					}
 				]
 			}
@@ -1841,6 +1843,11 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"chain shirt",
+				"+1 composite longbow (20 arrows)",
+				"longsword"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1907,12 +1914,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+16 (+18 to {@action Subsist}) Str +3, Dex +4, Con +2, Int +0, Wis +3, Cha +1 Items chain shirt, +1 composite longbow (20 arrows), longsword."
-						],
-						"name": "Survival"
-					},
-					{
 						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
@@ -1970,7 +1971,11 @@
 					},
 					"will": {
 						"std": 14
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic",
+						"+2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -2038,6 +2043,13 @@
 				"wis": 4,
 				"cha": 2
 			},
+			"items": [
+				"+1 repeating hand crossbow (4 magazines; page 73)",
+				"rapier",
+				"shootist bandolier (page 73)",
+				"stupor poison (4; page 74)",
+				"studded leather armor"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -2106,12 +2118,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+17 Str +2, Dex +5, Con +1, Int +0, Wis +4, Cha +2 Items +1 repeating hand crossbow (4 magazines; page 73), rapier, shootist bandolier (page 73), stupor poison (4; page 74), studded leather armor."
-						],
-						"name": "Thievery"
-					},
 					{
 						"entries": [],
 						"name": "Light Blindness",
@@ -2201,7 +2207,11 @@
 					},
 					"will": {
 						"std": 16
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic",
+						"+2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -2412,6 +2422,7 @@
 				"caligni",
 				"humanoid"
 			],
+			"description": "Female caligni cult leader (Pathfinder Bestiary 50)",
 			"perception": {
 				"std": 18
 			},
@@ -2549,12 +2560,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+16, {@skill Religion} +18, {@skill Stealth} +18 Str +4, Dex +3, Con +0, Int +1, Wis +3, Cha +5 Items chain shirt, +1 striking war flail."
-						],
-						"name": "Occultism"
-					},
-					{
 						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
@@ -2589,9 +2594,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "An ally within",
+						"trigger": "An ally within Dulac's reach is targeted with a ranged or melee attack by an attacker she can see",
 						"entries": [
-							"Dulac's reach is targeted with a ranged or melee attack by an attacker she can see; The ally gains a +2 circumstance bonus to AC against the triggering attack, and the ally can {@action Step} after the attack."
+							"The ally gains a +2 circumstance bonus to AC against the triggering attack, and the ally can {@action Step} after the attack."
 						],
 						"name": "Warding Shove"
 					}
@@ -2622,7 +2627,10 @@
 				},
 				"hp": [
 					{
-						"hp": 155
+						"hp": 155,
+						"abilities": [
+							"death shadows"
+						]
 					}
 				]
 			}
@@ -2887,6 +2895,7 @@
 				"caligni",
 				"humanoid"
 			],
+			"description": "Female caligni leader (Pathfinder Bestiary 50)",
 			"perception": {
 				"std": 18
 			},
@@ -3008,6 +3017,26 @@
 					"DC": 30,
 					"attack": 22,
 					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -3096,12 +3125,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+20, {@skill Stealth} +20 Str +2, Dex +5, Con +0, Int +1, Wis +3, Cha +5 Items dagger, wand of continuation (stoneskin)"
-						],
-						"name": "Diplomacy"
-					},
-					{
 						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
@@ -3134,34 +3157,19 @@
 				],
 				"bot": [
 					{
-						"traits": [
-							"6th"
-						],
 						"entries": [
-							"acid splash, daze, message, ray of frost, shield."
+							"Galudu deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Cantrips"
-					},
-					{
-						"entries": [
-							"Attack Galudu deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
-						],
-						"name": "Sneak"
+						"name": "Sneak Attack"
 					},
 					{
 						"traits": [
 							"healing"
 						],
 						"entries": [
-							"A creature that eats food conjured by Galudu's {@spell create food} spell regains {@dice 4d4} Hit."
+							"A creature that eats food conjured by Galudu's {@spell create food} spell regains {@dice 4d4} Hit Points. A creature can only benefit from this healing once per week."
 						],
 						"name": "Survivor's Nourishment"
-					},
-					{
-						"entries": [
-							"A creature can only benefit from this healing once per week."
-						],
-						"name": "Points."
 					}
 				]
 			},
@@ -3783,6 +3791,7 @@
 				"caligni",
 				"humanoid"
 			],
+			"description": "Male caligni subcommander (Pathfinder Bestiary 50)",
 			"perception": {
 				"std": 16
 			},
@@ -3825,6 +3834,12 @@
 				"wis": 1,
 				"cha": 5
 			},
+			"items": [
+				"dagger (3)",
+				"key to area {@b A7}",
+				"leather armor",
+				"wand of magic missile (3rd level)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3916,12 +3931,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+18, {@skill Occultism} +14, {@skill Stealth} +18 Str +2, Dex +5, Con +1, Int \u20131, Wis +1, Cha +5 Items dagger (3), key to area A7, leather armor, wand of magic missile (3rd level)"
-						],
-						"name": "Intimidation"
-					},
-					{
 						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
@@ -3978,7 +3987,10 @@
 				},
 				"hp": [
 					{
-						"hp": 160
+						"hp": 160,
+						"abilities": [
+							"death flame"
+						]
 					}
 				]
 			}
@@ -4441,6 +4453,7 @@
 				"elf",
 				"humanoid"
 			],
+			"description": "Female drow head warden (Pathfinder Bestiary 136)",
 			"perception": {
 				"std": 22
 			},
@@ -4480,6 +4493,12 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"breastplate",
+				"hand crossbow (10 bolts)",
+				"+1 striking corrosive longsword",
+				"stupor poison (3; page 74)"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -4543,12 +4562,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+21, {@skill Survival} +20 Str +5, Dex +4, Con +3, Int +0, Wis +3, Cha +1 Items breastplate, hand crossbow (10 bolts), +1 striking corrosive longsword, stupor poison (3; page 74)"
-						],
-						"name": "Stealth"
-					},
-					{
 						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
@@ -4605,7 +4618,11 @@
 					},
 					"will": {
 						"std": 22
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic",
+						"+2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -5278,16 +5295,6 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Melee jaws +17, Damage {@dice 2d6+7} plus Wicked Bite Divine Innate Spells DC 22, attack +14; 3rd paralyze; 2nd death knell; 1st feather fall (at will, self only), ray of enfeeblement."
-						],
-						"name": "and Wicked Bite"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
 							"{@damage 1d8+7} slashing, DC 25"
 						],
 						"name": "Constrict",
@@ -5338,7 +5345,14 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"fear"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "positive"
+					}
 				]
 			},
 			"hasImages": true
