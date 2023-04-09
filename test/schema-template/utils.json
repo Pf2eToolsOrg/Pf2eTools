@@ -1561,6 +1561,9 @@
 				"trigger": {
 					"type": "string"
 				},
+				"prerequisites": {
+					"type": "string"
+				},
 				"requirements": {
 					"type": "string"
 				},
@@ -1988,6 +1991,29 @@
 								},
 								"additionalProperties": false,
 								"minProperties": 1
+							}
+						},
+						{
+							"type": "array",
+							"items": {
+								"description": "Hit Points",
+								"type": "object",
+								"properties": {
+									"hp": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"name": {
+										"type": "string"
+									},
+									"notes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"minItems": 1
+									}
+								}
 							}
 						}
 					]

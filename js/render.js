@@ -4248,8 +4248,8 @@ Renderer.creature = {
 			${Renderer.creature.getLanguages(cr.languages)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${Renderer.creature.getItems(cr)}
+			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}
 			${cr.abilities && cr.abilities.mid ? cr.abilities.mid.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
@@ -4359,12 +4359,15 @@ Renderer.creature = {
 		if (!creature.defenses) return "";
 		const acPart = Renderer.creature.getDefenses_getACPart(creature);
 		const savingThrowPart = Renderer.creature.getDefenses_getSavingThrowPart(creature);
-		const hpHardnessPart = Renderer.creature.getDefenses_getHPHardnessPart(creature);
+		const hpParts = Renderer.creature.getDefenses_getHPParts(creature);
+		const hardnessPart = Renderer.creature.getDefenses_getHardnessPart(creature);
 		const immunitiesPart = Renderer.creature.getDefenses_getImmunitiesPart(creature);
 		const weakPart = Renderer.creature.getDefenses_getResWeakPart(creature.defenses.weaknesses, "Weaknesses");
 		const resistPart = Renderer.creature.getDefenses_getResWeakPart(creature.defenses.resistances, "Resistances");
+
+		const hpPart = hpParts.join("</p><p class='pf2-stat pf2-stat__section'>");
 		const sect1 = [acPart, savingThrowPart].filter(Boolean);
-		const sect2 = [hpHardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
+		const sect2 = [hpPart, hardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
 		return `<p class="pf2-stat pf2-stat__section">
 					${sect1.join("; ")}
 					${sect1.length && sect2.length ? "</p><p class='pf2-stat pf2-stat__section'>" : ""}
@@ -4398,20 +4401,27 @@ Renderer.creature = {
 		const abilitiesParts = abilities.length ? `; ${abilities.map(a => renderer.render(a)).join(", ")}` : "";
 		return `${savingThrowParts}${abilitiesParts}`;
 	},
-	getDefenses_getHPHardnessPart(creature) {
+	getDefenses_getHPParts (creature) {
 		if (!creature.defenses.hp) return null;
 		const renderer = Renderer.get();
 		const hp = creature.defenses.hp || [];
-		const hard = creature.defenses.hardness || {};
-		const out = [];
-		hp.forEach(hpObj => {
-			const hpPart = `<strong>HP&nbsp;</strong>${hpObj.note ? `${hpObj.note} ` : ``}${hpObj.hp}`;
-			const abilities = hpObj.abilities ? ["", ...hpObj.abilities].map(a => renderer.render(a)).join(", ") : "";
-			out.push(`${hpPart}${abilities}`);
-		});
-		if (creature.defenses.hardness) out.push(`<strong>Hardness&nbsp;</strong>${creature.defenses.hardness}`);
 
-		return out.join("; ");
+		const hpEntries = [];
+		hp.forEach(hpObj => {
+			const hpPart = `<strong>HP&nbsp;</strong>${hpObj.name ? `(${hpObj.name}) ` : ``}${hpObj.hp}`;
+			const notes = hpObj.notes ? ` (${hpObj.notes.map(a => renderer.render(a)).join(", ")})` : "";
+			const abilities = hpObj.abilities ? ["", ...hpObj.abilities].map(a => renderer.render(a)).join(", ") : "";
+			hpEntries.push(`${hpPart}${notes}${abilities}`);
+		});
+
+		return hpEntries;
+	},
+	getDefenses_getHardnessPart (creature) {
+		if (creature.defenses.hardness) {
+			return `<strong>Hardness&nbsp;</strong>${creature.defenses.hardness}`;
+		} else {
+			return "";
+		}
 	},
 	getDefenses_getImmunitiesPart(creature) {
 		if (!creature.defenses.immunities) return null;
@@ -4535,10 +4545,11 @@ Renderer.creature = {
 					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
 					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}) ` : ""}
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
+					${ability.prerequisites ? `<strong>Prerequisites&nbsp;</strong>${renderer.render_addTerm(ability.prerequisites)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
 					${ability.cost ? `<strong>Cost&nbsp;</strong>${renderer.render_addTerm(ability.cost)}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger || ability.cost ? "<strong>Effect</strong>" : ""}
+					${ability.frequency || ability.prerequisites || ability.requirements || ability.trigger || ability.cost ? "<strong>Effect</strong>" : ""}
 					${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
 					</p>
 					${/* renderedGenericAbility || null */ ""}`;
