@@ -152,7 +152,7 @@
 					{
 						"amount": 15,
 						"name": "all damage",
-						"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
+						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
 					}
 				]
 			},
@@ -5638,16 +5638,9 @@
 							"necromancy"
 						],
 						"entries": [
-							"A wyrmwraith can push through the ectoplasmic veil to temporarily assume a physical form made of ectoplasm.",
-							"The wyrmwraith loses the {@trait incorporeal} trait for {@dice 1d4} rounds, though it can return to its incorporeal form as a free action before then. Once this ability ends, the wyrmwraith can't use this ability again for {@dice 1d4} rounds. While in ectoplasmic form, the wyrmwraith's AC increases to 43 and it gains 100 temporary Hit."
+							"A wyrmwraith can push through the ectoplasmic veil to temporarily assume a physical form made of ectoplasm. The wyrmwraith loses the {@trait incorporeal} trait for {@dice 1d4} rounds, though it can return to its incorporeal form as a free action before then. Once this ability ends, the wyrmwraith can't use this ability again for {@dice 1d4} rounds. While in ectoplasmic form, the wyrmwraith's AC increases to 43 and it gains 100 temporary Hit Points. It loses its immunity to non-magical attacks and precision damage, as well as its resistance to all damage. Its claw and jaws {@action Strike||Strikes} deal slashing and piercing damage, respectively, instead of negative damage."
 						],
 						"name": "Ectoplasmic Form"
-					},
-					{
-						"entries": [
-							"It loses its immunity to non-magical attacks and precision damage, as well as its resistance to all damage. Its claw and jaws {@action Strike||Strikes} deal slashing and piercing damage, respectively, instead of negative damage."
-						],
-						"name": "Points."
 					},
 					{
 						"activity": {
@@ -5691,21 +5684,18 @@
 					}
 				],
 				"immunities": [
-					"poison",
 					"death effects",
 					"disease",
-					"paralyzed"
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 20,
-						"name": "all"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or"
+						"name": "all",
+						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
 					}
 				]
 			},
