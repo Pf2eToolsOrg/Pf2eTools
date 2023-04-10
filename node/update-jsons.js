@@ -227,6 +227,14 @@ function updateFolder (folder) {
 							return k
 						})
 					}
+					if (cr.rituals && cr.rituals.length) {
+						cr.rituals = cr.rituals.map(k => {
+							if (k.tradition) {
+								k.tradition = k.tradition.toLowerCase();
+							}
+							return k
+						})
+					}
 					return cr;
 				});
 			}

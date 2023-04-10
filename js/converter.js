@@ -1194,7 +1194,7 @@ class Converter {
 		const reRitualCast = this._tokenizerUtils.ritualCasting.find(it => it.regex.test(castingToken.value)).regex;
 		const name = reRitualCast.exec(castingToken.value)[1].trim();
 		const tradition = this._tokenizerUtils.spellTraditions.find(it => it.regex.test(name));
-		if (tradition) ritualCasting.tradition = tradition.unit;
+		if (tradition) ritualCasting.tradition = tradition.unit.toLowerCase();
 		this._parseSpells_parseProperties(ritualCasting);
 		ritualCasting.rituals = [...this._parseSpells_parseSpells()];
 		creature.rituals.push(ritualCasting);
