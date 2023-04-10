@@ -11171,14 +11171,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Religion} +9 Str +3, Dex +0, Con +2, Int +0, Wis +4, Cha +3 Items staff."
-						],
-						"name": "Performance"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -11189,15 +11181,9 @@
 							"sonic"
 						],
 						"entries": [
-							"The swampseer utters a powerful croak that deals {@damage 4d6} sonic damage to any non-boggard within a 15-foot emanation (DC 19 basic Fortitude save); any creature with the {@condition frightened} condition takes additional sonic damage equal to twice the value of their {@condition frightened} condition. The boggard can't use."
+							"The swampseer utters a powerful croak that deals {@damage 4d6} sonic damage to any non-boggard within a 15-foot emanation (DC 19 basic Fortitude save); any creature with the {@condition frightened} condition takes additional sonic damage equal to twice the value of their {@condition frightened} condition. The boggard can't use Destructive Croak again for {@dice 1d4} rounds."
 						],
 						"name": "Destructive Croak"
-					},
-					{
-						"entries": [
-							"Croak again for {@dice 1d4} rounds."
-						],
-						"name": "Destructive"
 					},
 					{
 						"activity": {
@@ -11241,13 +11227,6 @@
 							"As boggard scout, except AC 15 and 4 HP."
 						],
 						"name": "Tongue Grab"
-					},
-					{
-						"entries": [
-							"Boggards brew a potent toxin made from blue dragonflies.",
-							"Swampseers consume this mixture to awaken their divine powers, but the poison inspires crippling hallucinations in most other creatures."
-						],
-						"name": "Blue Dragonfly Poison"
 					}
 				]
 			},
@@ -13041,14 +13020,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+7 Str +0, Dex +4, Con +2, Int \u20131, Wis +1, Cha +3 Items baton (light mace), dagger."
-						],
-						"name": "Thievery"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -17082,14 +17053,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+13 Str +1, Dex +4, Con +3, Int +1, Wis +1, Cha +3."
-						],
-						"name": "Thievery"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -17152,7 +17115,8 @@
 				"resistances": [
 					{
 						"amount": 5,
-						"name": "physical"
+						"name": "physical",
+						"note": "(except piercing)"
 					}
 				]
 			}
@@ -56377,7 +56341,7 @@
 			},
 			"items": [
 				"alchemist's tools",
-				"{@item hand crossbow} (20 {@item bolt||bolts}",
+				"{@item hand crossbow} (20 {@item bolt||bolts})",
 				"studded leather armor"
 			],
 			"speed": {
@@ -56425,12 +56389,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+9 Str +0, Dex +4, Con +2, Int +4, Wis +2, Cha +1 Items alchemist's tools, {@item hand crossbow} (20 {@item bolt||bolts}, studded leather armor."
-						],
-						"name": "Thievery"
-					},
 					{
 						"entries": [
 							"A ratfolk grenadier carries 2 infused moderate acid flasks, 2 infused moderate alchemist's fires, and 2 infused moderate frost vials. These items last for 24 hours, or until the next time they make their daily preparations."
@@ -58800,10 +58758,9 @@
 				"le",
 				"medium",
 				"amphibious",
-				"devil",
 				"humanoid",
 				"mutant",
-				"sea"
+				"sea devil"
 			],
 			"perception": {
 				"std": 13
@@ -58986,9 +58943,8 @@
 				"le",
 				"medium",
 				"amphibious",
-				"devil",
 				"humanoid",
-				"sea"
+				"sea devil"
 			],
 			"perception": {
 				"std": 7
@@ -59155,9 +59111,8 @@
 				"le",
 				"medium",
 				"amphibious",
-				"devil",
 				"humanoid",
-				"sea"
+				"sea devil"
 			],
 			"perception": {
 				"std": 9

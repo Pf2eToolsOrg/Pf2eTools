@@ -12,6 +12,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Human ruffians (3)",
 			"perception": {
 				"std": 4
 			},
@@ -94,14 +95,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+3, {@skill Thievery} +3 Str +3, Dex +1, Con +2, Int \u20131, Wis +2, Cha +1 Items bottles (2), dagger."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -485,6 +478,9 @@
 				},
 				"thievery": {
 					"std": 14
+				},
+				"gambling lore": {
+					"std": 12
 				}
 			},
 			"abilityMods": {
@@ -553,14 +549,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12, {@skill Stealth} +14, {@skill Thievery} +14 Str +2, Dex +5, Con +2, Int +1, Wis +2, Cha +5."
-						],
-						"name": "Lore"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -623,7 +611,10 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				],
 				"resistances": [
 					{
@@ -631,7 +622,12 @@
 						"name": "cold"
 					},
 					{
+						"amount": 5,
 						"name": "piercing"
+					},
+					{
+						"amount": 5,
+						"name": "slashing"
 					}
 				]
 			},
@@ -1348,6 +1344,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female human lion-tamer",
 			"perception": {
 				"std": 7
 			},
@@ -1416,14 +1413,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+7, {@skill Nature} +6, {@skill Performance} +7 Str +0, Dex +3, Con +1, Int +1, Wis +1, Cha +3 Items lion tamer's outfit, short stool, whip."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -1451,7 +1440,10 @@
 					},
 					"will": {
 						"std": 7
-					}
+					},
+					"abilities": [
+						"+2 circumstance vs. Disarm"
+					]
 				},
 				"hp": [
 					{
@@ -2822,6 +2814,7 @@
 				"dwarf",
 				"humanoid"
 			],
+			"description": "Female dwarf brawler",
 			"perception": {
 				"std": 7
 			},
@@ -2883,14 +2876,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Thievery} +7 Str +4, Dex +0, Con +2, Int +0, Wis +2, Cha +1 Items chain mail."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2929,7 +2914,10 @@
 					},
 					"will": {
 						"std": 7
-					}
+					},
+					"abilities": [
+						"+2 circumstance to Fortitude and Reflex vs. Shove or Trip"
+					]
 				},
 				"hp": [
 					{
