@@ -729,7 +729,7 @@
 				"hp": {
 					"std": 60,
 					"notes": {
-						"std": "per hound; Resistance all damage 10 (except force, ghost touch, or positive; double resistance to non-magical)"
+						"std": "per hound; Resistance all damage 10 (except force, {@item ghost touch}, or positive; double resistance to non-magical)"
 					}
 				}
 			},
@@ -795,7 +795,7 @@
 				"hp": {
 					"Spirit": 230,
 					"notes": {
-						"Spirit": "Resistance all damage 20 (except force, ghost touch, or positive; double resistance to non-magical)"
+						"Spirit": "Resistance all damage 20 (except force, {@item ghost touch}, or positive; double resistance to non-magical)"
 					}
 				}
 			},
@@ -2259,7 +2259,7 @@
 				"minProf": "expert"
 			},
 			"description": [
-				"A half‑dozen iron darts fire from spring‑loaded launchers {@condition concealed} in the desk opposite the front door."
+				"A half-dozen iron darts fire from spring-loaded launchers {@condition concealed} in the desk opposite the front door."
 			],
 			"disable": {
 				"entries": [
@@ -2302,7 +2302,7 @@
 					},
 					"trigger": "The front door is fully opened, Forced Open, or {@condition broken}",
 					"entries": [
-						"A hail of iron darts launches along a 20‑foot line from the desk through the doorway, dealing {@damage 4d8+10} piercing damage to each creature in the area of effect (DC 24 basic Reflex save)."
+						"A hail of iron darts launches along a 20-foot line from the desk through the doorway, dealing {@damage 4d8+10} piercing damage to each creature in the area of effect (DC 24 basic Reflex save)."
 					]
 				}
 			],
@@ -2402,7 +2402,7 @@
 				"notes": "to find the desk switch; DC 28 (expert) to find the trapdoor and charge"
 			},
 			"description": [
-				"A black‑powder charge fastened to a trapdoor (marked with a \"T\" on the map) blows a hole in a steam tunnel, filling the room with superheated steam."
+				"A black-powder charge fastened to a trapdoor (marked with a \"T\" on the map) blows a hole in a steam tunnel, filling the room with superheated steam."
 			],
 			"disable": {
 				"entries": [
@@ -2491,7 +2491,7 @@
 				"notes": "to see the brick wall behind the edges of the door"
 			},
 			"description": [
-				"A black‑powder charge detonates as soon as the doorknob is turned, shattering the door into splinters."
+				"A black-powder charge detonates as soon as the doorknob is turned, shattering the door into splinters."
 			],
 			"disable": {
 				"entries": [
@@ -2534,7 +2534,7 @@
 					},
 					"trigger": "The doorknob is turned",
 					"entries": [
-						"The charge behind the door explodes, dealing {@damage 2d8+9} fire damage and {@damage 2d8+9} piercing damage to all creatures in a 10‑foot cone blasting outward from the door (DC 27 basic Reflex save). The sound of the explosion can be heard up to 50 feet away"
+						"The charge behind the door explodes, dealing {@damage 2d8+9} fire damage and {@damage 2d8+9} piercing damage to all creatures in a 10-foot cone blasting outward from the door (DC 27 basic Reflex save). The sound of the explosion can be heard up to 50 feet away"
 					]
 				}
 			]
@@ -3928,7 +3928,7 @@
 					"positive 5"
 				],
 				"resistances": [
-					"physical 5 (except ghost touch)"
+					"physical 5 (except {@item ghost touch})"
 				]
 			},
 			"actions": [
@@ -12381,10 +12381,7 @@
 					"unconscious"
 				],
 				"resistances": [
-					"all damage 20 (except fire",
-					"force",
-					"ghost touch",
-					"or positive)"
+					"all damage 20 (except fire, force, {@item ghost touch}, or positive)"
 				]
 			},
 			"actions": [

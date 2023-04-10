@@ -1925,6 +1925,7 @@
 				"spirit",
 				"undead"
 			],
+			"description": "Male dybbuk cult leader",
 			"perception": {
 				"std": 27
 			},
@@ -2049,14 +2050,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+29, {@skill Stealth} +28 Str \u20135, Dex +7, Con +0, Int +1, Wis +6, Cha +8."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2131,18 +2124,18 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 15,
-						"name": "all damage"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or"
+						"name": "all damage",
+						"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}
