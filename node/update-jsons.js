@@ -216,6 +216,14 @@ function updateFolder (folder) {
 							return k
 						})
 					}
+					if (cr.spellcasting && cr.spellcasting.length) {
+						cr.spellcasting = cr.spellcasting.map(k => {
+							if (k.tradition) {
+								k.tradition = k.tradition.toLowerCase();
+							}
+							return k
+						})
+					}
 					return cr;
 				});
 			}
