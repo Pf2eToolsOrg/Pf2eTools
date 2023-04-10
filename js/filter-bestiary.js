@@ -178,7 +178,7 @@ class PageFilterBestiary extends PageFilter {
 		if (cr.skills) {
 			Object.keys(cr.skills).forEach((k) => {
 				if (k.match(/lore/i)) cr._fskills.add("Lore");
-				else cr._fskills.add(k);
+				else if (k !== "notes") cr._fskills.add(k.toTitleCase());
 			})
 		}
 		cr._fskills = Array.from(cr._fskills);
