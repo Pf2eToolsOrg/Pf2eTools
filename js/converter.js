@@ -1045,7 +1045,7 @@ class Converter {
 		const tradition = this._tokenizerUtils.spellTraditions.find(it => it.regex.test(name));
 		const type = this._tokenizerUtils.spellTypes.find(it => it.regex.test(name));
 		if (tradition) casting.tradition = tradition.unit.toLowerCase();
-		if (type) casting.type = type.unit;
+		if (type) casting.type = type.unit.toTitleCase();
 		else casting.type = "Focus";
 		this._parseSpells_parseProperties(casting);
 		casting.entry = this._parseSpellEntry();
