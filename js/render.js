@@ -4462,7 +4462,9 @@ Renderer.creature = {
 				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
 				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
 				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${spellcastingName}${/Spell/.test(spellcastingName) ? "" : " Spells"}&nbsp;</strong>${renderer.render(meta.join(", "))}`)
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${spellcastingName}${/Spell/.test(spellcastingName) ? "" : " Spells"}&nbsp;</strong>`)
+				if (sc.note != null) renderStack.push(`${renderer.render(sc.note)} `)
+				renderStack.push(renderer.render(meta.join(", ")))
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
 					if (lvl !== "constant") {
 						renderStack.push(`<span>; <strong>${lvl === "0" ? "Cantrips" : Parser.getOrdinalForm(lvl)}&nbsp;</strong>`)

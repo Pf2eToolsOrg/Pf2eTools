@@ -33447,7 +33447,10 @@
 			],
 			"speed": {
 				"walk": 40,
-				"fly": 20
+				"fly": 20,
+				"abilities": [
+					"limited flight"
+				]
 			},
 			"attacks": [
 				{
@@ -33489,6 +33492,30 @@
 					]
 				}
 			],
+			"spellcasting": [
+				{
+					"name": "Monk Ki",
+					"type": "Focus",
+					"fp": 3,
+					"DC": 24,
+					"note": "The Paaridar's ki flow is unnaturally disrupted, causing them to take {@damage 1d6} negative damage each time they cast a ki spell.",
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "wholeness of body"
+								}
+							]
+						}
+					}
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -33520,8 +33547,7 @@
 					},
 					{
 						"entries": [
-							"The manticore paaridar's wings are small and weak, insufficient to keep them in the air. If the paaridar Flies using their wings, they fall at the end of their turn if they haven't landed.",
-							"Monk Ki Spells The Paaridar's ki flow is unnaturally disrupted, causing them to take {@damage 1d6} negative damage each time they cast a ki spell. 3 Focus Points, DC 24; 4th ki rush (Core Rulebook 401), ki strike (Core Rulebook 401), wholeness of body (Core Rulebook 402)"
+							"The manticore paaridar's wings are small and weak, insufficient to keep them in the air. If the paaridar Flies using their wings, they fall at the end of their turn if they haven't landed."
 						],
 						"name": "Limited Flight"
 					}
