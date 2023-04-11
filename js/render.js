@@ -1999,9 +1999,11 @@ function Renderer () {
 					type: "link",
 					href: {
 						type: "internal",
-						path: page,
-						hash,
-						hashPreEncoded: true,
+						// Kill Fluff for Paizo
+						// path: page,
+						// hash,
+						// hashPreEncoded: true,
+						path: UrlUtil.getCurrentPage(),
 					},
 					text: displayText,
 				};

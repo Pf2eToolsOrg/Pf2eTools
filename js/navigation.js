@@ -49,9 +49,10 @@ class NavBar {
 		this._addElement_li(NavBar._CAT_RULES, "quickreference.html", "Quick Reference");
 		this._addElement_li(NavBar._CAT_RULES, "variantrules.html", "Variant Rules & Subsystems");
 		this._addElement_li(NavBar._CAT_RULES, "tables.html", "Tables");
-		this._addElement_divider(NavBar._CAT_RULES);
-		this._addElement_dropdown(NavBar._CAT_RULES, NavBar._CAT_BOOKS, {isSide: true, page: "books.html"});
-		this._addElement_li(NavBar._CAT_BOOKS, "books.html", "View All/Homebrew");
+		// Kill Fluff for Paizo
+		// this._addElement_divider(NavBar._CAT_RULES);
+		// this._addElement_dropdown(NavBar._CAT_RULES, NavBar._CAT_BOOKS, {isSide: true, page: "books.html"});
+		// this._addElement_li(NavBar._CAT_BOOKS, "books.html", "View All/Homebrew");
 
 		this._addElement_dropdown(null, NavBar._CAT_PLAYER);
 		this._addElement_li(NavBar._CAT_PLAYER, "ancestries.html", "Ancestries");
@@ -199,12 +200,13 @@ class NavBar {
 		const brew = await BrewUtil.pAddBrewData();
 
 		[
-			{
-				prop: "book",
-				parentCategory: NavBar._CAT_BOOKS,
-				page: "book.html",
-				fnSort: SortUtil.ascSortBook.bind(SortUtil),
-			},
+			// Kill Fluff for Paizo
+			// {
+			// 	prop: "book",
+			// 	parentCategory: NavBar._CAT_BOOKS,
+			// 	page: "book.html",
+			// 	fnSort: SortUtil.ascSortBook.bind(SortUtil),
+			// },
 			{
 				prop: "adventure",
 				page: "adventure.html",
