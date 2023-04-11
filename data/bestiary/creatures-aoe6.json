@@ -1530,6 +1530,7 @@
 				"incorporeal",
 				"protean"
 			],
+			"description": "Illusory minions of chaotic quintessence",
 			"perception": {
 				"std": 27
 			},
@@ -1591,6 +1592,14 @@
 					"DC": 36,
 					"attack": 28,
 					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "guidance"
+								}
+							]
+						},
 						"5": {
 							"spells": [
 								{
@@ -1631,30 +1640,19 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "varies",
-							"entry": "[Bestiary 255]"
+							"unit": "varies"
 						},
 						"traits": [
 							"arcane",
 							"conjuration"
 						],
 						"entries": [
-							"When an illusory toady is destroyed, it dissolves into a puddle of cerulean quintessence before reforming to quasi-life once more. One round after it is destroyed, the toady starts re-forming.",
-							"One round after that, the toady is completely healed and begins to fight once more. If damaged while it is re-forming but before the process is complete, the toady is destroyed but splits into two cerulean puddles that begin re-forming into two identical toadies 1 round later, each with half the maximum HP of the original toady (this is similar to an ochre jelly's Split ability ); the toadies begin re-forming 1 round later. The toadies are permanently destroyed only by disjunction or if Blune falls {@condition unconscious}."
+							"When an illusory toady is destroyed, it dissolves into a puddle of cerulean quintessence before reforming to quasi-life once more. One round after it is destroyed, the toady starts re-forming. One round after that, the toady is completely healed and begins to fight once more. If damaged while it is re-forming but before the process is complete, the toady is destroyed but splits into two cerulean puddles that begin re-forming into two identical toadies 1 round later, each with half the maximum HP of the original toady (this is similar to an ochre jelly's Split ability [Bestiary 255]); the toadies begin re-forming 1 round later. The toadies are permanently destroyed only by disjunction or if Blune falls {@condition unconscious}."
 						],
 						"name": "Ferocious Devotion"
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"5th"
-						],
-						"entries": [
-							"guidance."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"activity": {
 							"number": 3,
@@ -1665,16 +1663,9 @@
 							"transmutation"
 						],
 						"entries": [
-							"The toady wills itself to become a conduit for Blune's next spell, empowering the spell. The toady becomes {@condition immobilized} until the beginning of its next turn. If."
+							"The toady wills itself to become a conduit for Blune's next spell, empowering the spell. The toady becomes {@condition immobilized} until the beginning of its next turn. If Blune Bandersworth is within 30 feet and Casts a Spell before the toady's next turn, the spell travels through the toady before redirecting toward its intended target. The spell is heightened by 1 level, to a maximum of 10th level. The toady is then destroyed."
 						],
 						"name": "Amplify Spell"
-					},
-					{
-						"entries": [
-							"Bandersworth is within 30 feet and Casts a Spell before the toady's next turn, the spell travels through the toady before redirecting toward its intended target.",
-							"The spell is heightened by 1 level, to a maximum of 10th level. The toady is then destroyed."
-						],
-						"name": "Blune"
 					}
 				]
 			},
@@ -1701,7 +1692,10 @@
 				"immunities": [
 					"death effects",
 					"disease",
-					"paralyzed"
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
 				"weaknesses": [
 					{
@@ -1712,13 +1706,8 @@
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "all"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or lawful;"
+						"name": "all",
+						"note": "(except force, {@item ghost touch}, or lawful; double resistance against non-magical)"
 					}
 				]
 			}

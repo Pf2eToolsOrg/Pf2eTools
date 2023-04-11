@@ -1009,6 +1009,14 @@
 				"wis": 2,
 				"cha": 0
 			},
+			"items": [
+				"heavy crossbow (10 bolts)",
+				"+1 kukri",
+				"leather armor",
+				"lesser healing potion",
+				"lesser juggernaut mutagen (2)",
+				"strongbox key"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1055,14 +1063,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Survival} +7 Str +4, Dex +3, Con +1, Int +0, Wis +2, Cha +0 Items heavy crossbow (10 bolts), +1 kukri, leather armor, lesser healing potion, lesser juggernaut mutagen (2), strongbox key."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2171,6 +2171,19 @@
 				"wis": 1,
 				"cha": 0
 			},
+			"items": [
+				"alchemical crossbow",
+				"belt pouch (2 pp, 38 gp, 4 sp)",
+				"bracers of missile deflection",
+				"daggers (2)",
+				"key",
+				"leather armor",
+				"lesser potion of fire resistance",
+				"lesser juggernaut mutagen",
+				"lesser stone body mutagen",
+				"+1 striking dagger",
+				"moderate acid energy mutagen"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2228,18 +2241,43 @@
 					"traits": [
 						"thrown <30 feet>"
 					],
-					"effects": [
+					"damage": [
 						"as per bomb"
 					]
 				}
 			],
 			"abilities": {
-				"top": [
+				"bot": [
 					{
+						"name": "Alchemical Crossbow",
 						"entries": [
-							"+7, {@skill Intimidation} +7, {@skill Stealth} +11 Str +1, Dex +4, Con +2, Int +4, Wis +1, Cha +0 Items alchemical crossbow, belt pouch (2 pp, 38 gp, 4 sp), bracers of missile deflection, daggers (2), key, leather armor, lesser potion of fire resistance, lesser juggernaut mutagen, lesser stone body mutagen, +1 striking dagger, moderate acid energy mutagen."
+							"Vilree's crossbow can deliver bolts that are alchemically infused. As an action, she can slot an alchemical bomb into the crossbow, and the next 3 attacks she makes with it deal {@damage 1d6} damage of the type dealt by the bomb. These attacks never deal splash damage."
+						]
+					},
+					{
+						"name": "Alchemy",
+						"entries": [
+							"Vilree has used her alchemy ability to create 4 moderate acid flasks, 6 moderate alchemist's fire, 2 moderate bottled lightnings, 3 lesser elixirs of life, and 2 lesser tanglefoot bags. These are infusions. She can spend an action to create an additional vial of any one of these items, or any of the items listed as formulas in her book."
+						]
+					},
+					{
+						"name": "Far Lob",
+						"entries": [
+							"Vilree's bombs have a range increment of 30 feet."
+						]
+					},
+					{
+						"name": "Quick Bomber",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Vilree can interact to draw a bomb and then make a {@action Strike} with it."
 						],
-						"name": "Diplomacy"
+						"generic": {
+							"tag": "feat"
+						}
 					}
 				]
 			},

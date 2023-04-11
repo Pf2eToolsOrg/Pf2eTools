@@ -487,7 +487,8 @@ class BestiaryPage extends ListPage {
 			() => {},
 			buildImageTab,
 		);
-		const tabs = [statTab, fluffTab];
+		// Kill Fluff for Paizo
+		const tabs = [statTab /* , fluffTab */];
 		if (cr.hasImages) tabs.push(imageTab);
 		Renderer.utils.bindTabButtons(...tabs);
 	}

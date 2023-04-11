@@ -237,6 +237,25 @@ function updateFolder (folder) {
 							return k
 						})
 					}
+					if (cr.spellcasting && cr.spellcasting.length) {
+						cr.spellcasting = cr.spellcasting.map(k => {
+							if (k.type) {
+								k.type = k.type.toTitleCase();
+							}
+							if (k.tradition) {
+								k.tradition = k.tradition.toLowerCase();
+							}
+							return k
+						})
+					}
+					if (cr.rituals && cr.rituals.length) {
+						cr.rituals = cr.rituals.map(k => {
+							if (k.tradition) {
+								k.tradition = k.tradition.toLowerCase();
+							}
+							return k
+						})
+					}
 					return cr;
 				});
 			}

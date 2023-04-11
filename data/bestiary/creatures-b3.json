@@ -7544,7 +7544,7 @@
 					{
 						"amount": 10,
 						"name": "all damage",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}
@@ -12636,7 +12636,7 @@
 					{
 						"amount": 5,
 						"name": "all",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}
@@ -17469,7 +17469,7 @@
 				"bot": [
 					{
 						"entries": [
-							"As angheuvore flesh-gnawer, except up to 8 rounds, and the etioling gains the {@trait incorporeal} trait, a fly Speed of 25 feet, resistance 10 to all damage (except force, ghost touch, or positive; double this resistance vs. non-magical) while they hold their breath. They can't cast spells during this time."
+							"As angheuvore flesh-gnawer, except up to 8 rounds, and the etioling gains the {@trait incorporeal} trait, a fly Speed of 25 feet, resistance 10 to all damage (except force, {@item ghost touch}, or positive; double this resistance vs. non-magical) while they hold their breath. They can't cast spells during this time."
 						],
 						"name": "Death Gasp"
 					}
@@ -21983,7 +21983,7 @@
 					{
 						"amount": 5,
 						"name": "all",
-						"note": "(except force, ghost touch, or negative; double resistance against non-magical)"
+						"note": "(except force, {@item ghost touch}, or negative; double resistance against non-magical)"
 					}
 				]
 			}
@@ -32064,7 +32064,7 @@
 					},
 					{
 						"entries": [
-							"The lifeleecher's tusks have the effects of the ghost touch property rune on attacks against incorporeal undead."
+							"The lifeleecher's tusks have the effects of the {@item ghost touch} property rune on attacks against incorporeal undead."
 						],
 						"name": "Ghost Hunter"
 					},
@@ -32789,6 +32789,12 @@
 				},
 				"stealth": {
 					"std": 13
+				},
+				"ruins lore": {
+					"std": 15,
+					"note": [
+						"applies only to their home ruins"
+					]
 				}
 			},
 			"abilityMods": {
@@ -32852,14 +32858,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+15 (applies only to their home ruins), {@skill Stealth} +13 Str +5, Dex +3, Con +4, Int +3, Wis +2, Cha +0 Items scimitar (2)"
-						],
-						"name": "Lore"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -33449,7 +33447,10 @@
 			],
 			"speed": {
 				"walk": 40,
-				"fly": 20
+				"fly": 20,
+				"abilities": [
+					"limited flight"
+				]
 			},
 			"attacks": [
 				{
@@ -33491,6 +33492,30 @@
 					]
 				}
 			],
+			"spellcasting": [
+				{
+					"name": "Monk Ki",
+					"type": "Focus",
+					"fp": 3,
+					"DC": 24,
+					"note": "The Paaridar's ki flow is unnaturally disrupted, causing them to take {@damage 1d6} negative damage each time they cast a ki spell.",
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "wholeness of body"
+								}
+							]
+						}
+					}
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -33522,8 +33547,7 @@
 					},
 					{
 						"entries": [
-							"The manticore paaridar's wings are small and weak, insufficient to keep them in the air. If the paaridar Flies using their wings, they fall at the end of their turn if they haven't landed.",
-							"Monk Ki Spells The Paaridar's ki flow is unnaturally disrupted, causing them to take {@damage 1d6} negative damage each time they cast a ki spell. 3 Focus Points, DC 24; 4th ki rush (Core Rulebook 401), ki strike (Core Rulebook 401), wholeness of body (Core Rulebook 402)"
+							"The manticore paaridar's wings are small and weak, insufficient to keep them in the air. If the paaridar Flies using their wings, they fall at the end of their turn if they haven't landed."
 						],
 						"name": "Limited Flight"
 					}
@@ -37892,7 +37916,7 @@
 					{
 						"amount": 5,
 						"name": "all damage",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}
@@ -44894,7 +44918,8 @@
 					"std": 8
 				},
 				"intimidation": {
-					"std": 8
+					"std": 8,
+					"to {@action Demoralize} with Threatening Lunge": 10
 				},
 				"society": {
 					"std": 6
@@ -44944,14 +44969,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6, {@skill Stealth} +8 Str +3, Dex +4, Con +3, Int +2, Wis +3, Cha +4."
-						],
-						"name": "Threatening Lunge), Society"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -46288,7 +46305,7 @@
 					{
 						"amount": 10,
 						"name": "all damage",
-						"note": "(except emotion, force, ghost touch, mental, or positive; double resistance vs. non-magical)"
+						"note": "(except emotion, force, {@item ghost touch}, mental, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}
@@ -50244,7 +50261,7 @@
 					},
 					{
 						"entries": [
-							"When not Inhabiting its Vessel, the lion is incorporeal and gains resistance 5 to all damage (except force damage and damage from {@action Strike||Strikes} with the ghost touch property rune; double resistance against non-magical)."
+							"When not Inhabiting its Vessel, the lion is incorporeal and gains resistance 5 to all damage (except force damage and damage from {@action Strike||Strikes} with the {@item ghost touch} property rune; double resistance against non-magical)."
 						],
 						"name": "Spirit Body"
 					}
@@ -50421,7 +50438,7 @@
 					},
 					{
 						"entries": [
-							"When not Inhabiting its Vessel, the cub is incorporeal and gains resistance 3 to all damage (except force damage and damage from {@action Strike||Strikes} with the ghost touch property rune; double resistance against non-magical)."
+							"When not Inhabiting its Vessel, the cub is incorporeal and gains resistance 3 to all damage (except force damage and damage from {@action Strike||Strikes} with the {@item ghost touch} property rune; double resistance against non-magical)."
 						],
 						"name": "Spirit Body"
 					}
@@ -55292,14 +55309,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Fire that laid waste to Skills {@skill Athletics} +22 Str +7, Dex +0, Con +5, Int \u20135, Wis +2, Cha +0."
-						],
-						"name": "Radiant"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -59130,7 +59139,7 @@
 					{
 						"amount": 20,
 						"name": "all",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
 					}
 				]
 			}

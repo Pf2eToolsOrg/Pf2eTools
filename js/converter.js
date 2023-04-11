@@ -1044,8 +1044,8 @@ class Converter {
 		casting.name = name;
 		const tradition = this._tokenizerUtils.spellTraditions.find(it => it.regex.test(name));
 		const type = this._tokenizerUtils.spellTypes.find(it => it.regex.test(name));
-		if (tradition) casting.tradition = tradition.unit;
-		if (type) casting.type = type.unit;
+		if (tradition) casting.tradition = tradition.unit.toLowerCase();
+		if (type) casting.type = type.unit.toTitleCase();
 		else casting.type = "Focus";
 		this._parseSpells_parseProperties(casting);
 		casting.entry = this._parseSpellEntry();
@@ -1194,7 +1194,7 @@ class Converter {
 		const reRitualCast = this._tokenizerUtils.ritualCasting.find(it => it.regex.test(castingToken.value)).regex;
 		const name = reRitualCast.exec(castingToken.value)[1].trim();
 		const tradition = this._tokenizerUtils.spellTraditions.find(it => it.regex.test(name));
-		if (tradition) ritualCasting.tradition = tradition.unit;
+		if (tradition) ritualCasting.tradition = tradition.unit.toLowerCase();
 		this._parseSpells_parseProperties(ritualCasting);
 		ritualCasting.rituals = [...this._parseSpells_parseSpells()];
 		creature.rituals.push(ritualCasting);
