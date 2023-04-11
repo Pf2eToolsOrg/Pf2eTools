@@ -1340,6 +1340,7 @@
 				"large",
 				"aberration"
 			],
+			"description": "Female gug necromancer (Pathfinder Bestiary 198)",
 			"perception": {
 				"std": 26
 			},
@@ -1517,9 +1518,7 @@
 							"spells": [
 								{
 									"name": "blood feast",
-									"note": [
-										"page 74"
-									]
+									"source": "EC4"
 								},
 								{
 									"name": "cloudkill"
@@ -1552,9 +1551,7 @@
 							"spells": [
 								{
 									"name": "entrancing eyes",
-									"note": [
-										"page 74"
-									]
+									"source": "EC4"
 								},
 								{
 									"name": "vampiric exsanguination"
@@ -1577,6 +1574,24 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Wizard School",
+					"type": "Focus",
+					"DC": 36,
+					"fp": 1,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "call of the grave"
+								},
+								{
+									"name": "life siphon"
+								}
+							]
+						}
+					}
 				}
 			],
 			"rituals": [
@@ -1592,28 +1607,12 @@
 						},
 						{
 							"name": "statuette",
-							"notes": [
-								"page 75"
-							]
+							"source": "EC4"
 						}
 					]
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Deception} +21, {@skill Occultism} +27, {@skill Stealth} +24"
-						],
-						"name": "Athletics"
-					},
-					{
-						"entries": [
-							"+22 Str +7, Dex +3, Con +4, Int +6, Wis +3, Cha +0 Items religious symbol of Bokrug, spellbook."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1630,7 +1629,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Despite her size, Helg's multiple joints allow her to fit through tight spaces as if she were a Medium creature. While Squeezing, she can move at her full Speed."
+							"Despite her size, Helg's multiple joints allow her to fit through tight spaces as if she were a Medium creature. While {@action Squeeze||Squeezing}, she can move at her full Speed."
 						],
 						"name": "Eerie Flexibility"
 					},
@@ -1648,7 +1647,16 @@
 							"freq": 1
 						},
 						"entries": [
-							"Helg drains away the life force from a creature targeted by the spell, with a result depending on its Fortitude save (DC 36). This effect is magical and can be counteracted with dispel magic (Level 15, DC 36). This ability cannot affect a creature that critically succeeded at the spell's saving throw, if any. Critical Success No effect. Success {@condition Enfeebled|CRB|Enfeebled 1} for 1 round. Failure {@condition Fatigued}. Critical Failure {@condition Fatigued}, and rest does not remove the creature's {@condition fatigued} condition for 1 week."
+							"Helg drains away the life force from a creature targeted by the spell, with a result depending on its Fortitude save (DC 36). This effect is magical and can be counteracted with {@spell dispel magic} (Level 15, DC 36). This ability cannot affect a creature that critically succeeded at the spell's saving throw, if any.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "No effect.",
+									"Success": "{@condition Enfeebled|CRB|Enfeebled 1} for 1 round.",
+									"Failure": "{@condition Fatigued}.",
+									"Critical Failure": "{@condition Fatigued}, and rest does not remove the creature's {@condition fatigued} condition for 1 week."
+								}
+							}
 						],
 						"name": "Enervating Tug"
 					},
@@ -1667,10 +1675,9 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"claw"
 						],
-						"entries": [],
 						"name": "Rend",
 						"generic": {
 							"tag": "ability"
@@ -1713,8 +1720,10 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human folk hero",
 			"perception": {
-				"std": 24
+				"std": 24,
+				"when using Perception for initiative": 26
 			},
 			"languages": {
 				"languages": [
@@ -1722,6 +1731,9 @@
 				]
 			},
 			"skills": {
+				"acrobatics": {
+					"std": 24
+				},
 				"athletics": {
 					"std": 25,
 					"to Disarm": 27
@@ -1750,6 +1762,13 @@
 				"wis": 2,
 				"cha": 5
 			},
+			"items": [
+				"+1 resilient chain shirt",
+				"+1 striking composite longbow (40 arrows)",
+				"moderate healing potion",
+				"+2 greater striking longsword",
+				"ring of sustenance"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1801,20 +1820,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+23, {@skill Diplomacy} +25, {@skill Intimidation} +25"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+20, {@skill Lore||Willowside Lore} +18 Str +5, Dex +4, Con +2, Int +0, Wis +2, Cha +5 Items +1 resilient chain shirt, +1 striking composite longbow (40 arrows), moderate healing potion, +2 greater striking longsword, ring of sustenance."
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -1873,9 +1878,9 @@
 					},
 					{
 						"entries": [
-							"Ledorick can see and be seen by at least two allies, his attacks deal {@dice 3d6} extra precision damage."
+							"When Ledorick can see and be seen by at least two allies, his attacks deal {@dice 3d6} extra precision damage."
 						],
-						"name": "Show-Off When"
+						"name": "Show-Off"
 					},
 					{
 						"activity": {
@@ -2691,6 +2696,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human town protector",
 			"perception": {
 				"std": 21
 			},
@@ -2732,7 +2738,7 @@
 			"items": [
 				"major mentalist's staff",
 				"scroll of false life",
-				"Sheriff"
+				"Sheriff Banyan's map of the sea caves"
 			],
 			"speed": {
 				"walk": 25
@@ -2892,17 +2898,30 @@
 							}
 						}
 					}
+				},
+				{
+					"name": "Sorcerer Bloodline",
+					"type": "Focus",
+					"DC": 32,
+					"fp": 3,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "ancestral memories"
+								},
+								{
+									"name": "arcane countermeasure"
+								},
+								{
+									"name": "extend spell"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+23, {@skill Society} +20 Str +0, Dex +4, Con +3, Int +2, Wis +3, Cha +5 Items major mentalist's staff, scroll of false life, Sheriff Banyan's map of the sea caves."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -2923,15 +2942,15 @@
 				"bot": [
 					{
 						"entries": [
-							"Stirvyn casts a bloodline spell, a surge of ancestral memories grants either him or a target of the spell a +1 status bonus to skill checks for 1 round."
+							"When Stirvyn casts a bloodline spell, a surge of ancestral memories grants either him or a target of the spell a +1 status bonus to skill checks for 1 round."
 						],
-						"name": "Bloodline Magic When"
+						"name": "Bloodline Magic"
 					},
 					{
 						"entries": [
-							"Casts a Spell from a spell slot, if the spell deals damage and doesn't have a duration, he gains a status bonus to that spell's damage equal to the spell's level."
+							"When Stirvyn {@action Casts a Spell} from a spell slot, if the spell deals damage and doesn't have a duration, he gains a status bonus to that spell's damage equal to the spell's level."
 						],
-						"name": "Dangerous Sorcery When Stirvyn"
+						"name": "Dangerous Sorcery"
 					},
 					{
 						"entries": [
@@ -3123,6 +3142,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human town protector",
 			"perception": {
 				"std": 20
 			},
@@ -3168,6 +3188,14 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"chalk",
+				"+1 striking composite shortbow (20 arrows)",
+				"lesser darkvision elixir",
+				"invisibility potion",
+				"+1 resilient leather armor",
+				"+1 rapier"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3208,19 +3236,7 @@
 				"top": [
 					{
 						"entries": [
-							"+17, {@skill Intimidation} +19, {@skill Society} +16, {@skill Stealth} +23"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+16, {@skill Thievery} +21 Str +3, Dex +5, Con +0, Int +2, Wis +2, Cha +3 Items chalk, +1 striking composite shortbow (20 arrows), lesser darkvision elixir, invisibility potion, +1 resilient leather armor, +1 rapier."
-						],
-						"name": "Survival"
-					},
-					{
-						"entries": [
-							"Tashlock can move his full Speed when Sneaking."
+							"Tashlock can move his full Speed when {@action Sneak||Sneaking}."
 						],
 						"name": "Swift Sneak"
 					}
@@ -3247,9 +3263,9 @@
 				"bot": [
 					{
 						"entries": [
-							"Tashlock deals damage to a target on a critical hit, the target is {@condition slowed|CRB|slowed 2} until the end of Tashlock's next turn."
+							"When Tashlock deals damage to a target on a critical hit, the target is {@condition slowed|CRB|slowed 2} until the end of Tashlock's next turn."
 						],
-						"name": "Pierced Tendon When"
+						"name": "Pierced Tendon"
 					},
 					{
 						"activity": {
@@ -3257,7 +3273,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Tashlock Interacts to draw a weapon, then {@action Strike||Strikes} with that weapon."
+							"Tashlock {@action Interact||Interacts} to draw a weapon, then {@action Strike||Strikes} with that weapon."
 						],
 						"name": "Quick Draw"
 					},
@@ -3272,9 +3288,9 @@
 					},
 					{
 						"entries": [
-							"Tashlock rolls a failure on a {@action Sneak} action, he gets a success instead."
+							"When Tashlock rolls a failure on a {@action Sneak} action, he gets a success instead."
 						],
-						"name": "Sneak Savant When"
+						"name": "Sneak Savant"
 					},
 					{
 						"entries": [
@@ -3318,6 +3334,7 @@
 				"medium",
 				"humanoid"
 			],
+			"description": "Variant faceless butcher (page 80)",
 			"perception": {
 				"std": 28
 			},
@@ -3430,7 +3447,15 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "pass without trace"
+									}
+								]
+							}
+						}
 					}
 				}
 			],
@@ -3438,15 +3463,9 @@
 				"top": [
 					{
 						"entries": [
-							"+29, {@skill Stealth} +31 Str +9, Dex +5, Con +6, Int +1, Wis +4, Cha +7 Items bag of faces, cleaver."
+							"The Vanish Man doesn't have an alignment aura and cannot be detected by spells such as {@spell detect alignment}."
 						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
-							"Man doesn't have an alignment aura and cannot be detected by spells such as detect alignment."
-						],
-						"name": "Vanished Alignment The Vanish"
+						"name": "Vanished Alignment"
 					}
 				],
 				"mid": [
@@ -3458,16 +3477,12 @@
 							"mental"
 						],
 						"entries": [
-							"10 feet, DC 33. This aura is suppressed while the Vanish Man is using."
+							"10 feet, DC 33. This aura is suppressed while the Vanish Man is using Change Shape."
 						],
 						"name": "Frightful Presence",
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"entries": [],
-						"name": "Change Shape."
 					},
 					{
 						"activity": {
@@ -3706,6 +3721,7 @@
 				"medium",
 				"undead"
 			],
+			"description": "Variant wight (Pathfinder Bestiary 332)",
 			"perception": {
 				"std": 22
 			},
@@ -3743,7 +3759,7 @@
 			},
 			"items": [
 				"+1 striking ranseur",
-				"platinum religious symbol of"
+				"platinum religious symbol of Bokrug worth 150 gp"
 			],
 			"speed": {
 				"walk": 25
@@ -3811,10 +3827,7 @@
 									"name": "confusion"
 								},
 								{
-									"name": "downpour",
-									"note": [
-										"Core Rulebook 391"
-									]
+									"name": "downpour"
 								}
 							]
 						},
@@ -3829,14 +3842,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+22 Str +7, Dex +4, Con +6, Int \u20131, Wis +6, Cha +4 Items +1 striking ranseur, platinum religious symbol of Bokrug worth 150 gp."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3895,6 +3900,13 @@
 							"negative healing"
 						]
 					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
@@ -4328,8 +4340,14 @@
 				"xulgath"
 			],
 			"perception": {
-				"std": 21
+				"std": 21,
+				"when using Perception for initiative": 23
 			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"draconic",
@@ -4367,6 +4385,14 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"+1 resilient breastplate",
+				"moderate elixir of life",
+				"javelins (3)",
+				"necklace of bone and gems worth 100 gp",
+				"lesser sturdy shield (Hardness 10, HP 80, BT 40)",
+				"+1 striking warhammer"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -4420,14 +4446,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+21, {@skill Nature} +19, {@skill Stealth} +19, {@skill Survival} +21 Str +5, Dex +3, Con +4, Int +0, Wis +3, Cha +1 Items +1 resilient breastplate, moderate elixir of life, javelins (3), necklace of bone and gems worth 100 gp, lesser sturdy shield (Hardness 10, HP 80, BT 40), +1 striking warhammer."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -4447,7 +4465,7 @@
 					},
 					{
 						"entries": [
-							"If the hardscale has their shield raised, they can Shield Block when an attack is made against an adjacent ally. If they do, the shield prevents that ally from taking damage instead of the hardscale."
+							"If the hardscale has their shield raised, they can {@ability Shield Block} when an attack is made against an adjacent ally. If they do, the shield prevents that ally from taking damage instead of the hardscale."
 						],
 						"name": "Shield Warden"
 					},
@@ -4456,9 +4474,9 @@
 							"number": 1,
 							"unit": "free"
 						},
-						"trigger": "The hardscale uses the Shield",
+						"trigger": "The hardscale uses the {@ability Shield Block} reaction, and the opponent that triggered {@ability Shield Block} is adjacent to the hardscale and is not more than one size larger than it",
 						"entries": [
-							"Block reaction, and the opponent that triggered Shield Block is adjacent to the hardscale and is not more than one size larger than it; The hardscale makes an {@skill Athletics} check to {@action Shove} the opponent. This {@action Shove} doesn't increase the hardscale's multiple attack penalty. If they roll a critical failure, they get a failure instead. If they roll a success, they get a critical success instead."
+							"The hardscale makes an {@skill Athletics} check to {@action Shove} the opponent. This {@action Shove} doesn't increase the hardscale's multiple attack penalty. If they roll a critical failure, they get a failure instead. If they roll a success, they get a critical success instead."
 						],
 						"name": "Aggressive Block"
 					},
@@ -4479,7 +4497,7 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"At the beginning of each of their turns, the hardscale receives an additional reaction that they can use only for Shield Block."
+							"At the beginning of each of their turns, the hardscale receives an additional reaction that they can use only for {@ability Shield Block}."
 						],
 						"name": "Shield Block",
 						"generic": {
@@ -4576,6 +4594,12 @@
 				"wis": 3,
 				"cha": 2
 			},
+			"items": [
+				"moderate alchemist's fire (4)",
+				"+1 striking composite shortbow (20 arrows)",
+				"hide armor",
+				"whip"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -4652,14 +4676,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16, {@skill Nature} +17, {@skill Stealth} +16, {@skill Survival} +17 Str +4, Dex +4, Con +2, Int \u20131, Wis +3, Cha +2 Items moderate alchemist's fire (4), +1 striking composite shortbow (20 arrows), hide armor, whip."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -4763,7 +4779,8 @@
 					"std": 18
 				},
 				"nature": {
-					"std": 21
+					"std": 21,
+					"to Command an Animal": 23
 				},
 				"survival": {
 					"std": 19
@@ -4838,20 +4855,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+18, {@skill Nature} +21 (+23 to Command an."
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
-							"+19 Str +5, Dex +4, Con +3, Int \u20131, Wis +4, Cha +1 Items +1 striking halberd, hide armor, javelins (6)"
-						],
-						"name": "Animal), Survival"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -4934,6 +4937,7 @@
 				"humanoid",
 				"xulgath"
 			],
+			"description": "Male xulgath zealous hardscale",
 			"perception": {
 				"std": 27
 			},
@@ -4983,6 +4987,11 @@
 				"wis": 4,
 				"cha": 2
 			},
+			"items": [
+				"ankylostar (page 75)",
+				"religious symbol of Zevgavizeb",
+				"stoneraiser javelin (page 76)"
+			],
 			"speed": {
 				"walk": 35
 			},
@@ -5040,12 +5049,6 @@
 				"top": [
 					{
 						"entries": [
-							"+25, {@skill Stealth} +22, {@skill Survival} +25 Str +6, Dex +1, Con +5, Int +0, Wis +4, Cha +2 Items ankylostar (page 75), religious symbol of {@deity Zevgavizeb|EC3}, stoneraiser javelin (page 76)"
-						],
-						"name": "to Demoralize), Religion"
-					},
-					{
-						"entries": [
 							"Zashathal's disgust for cowardice is so powerful that he can detect the presence of {@condition frightened} creatures, even if he can't see them."
 						],
 						"name": "Coward Sense"
@@ -5053,13 +5056,10 @@
 				],
 				"mid": [
 					{
-						"traits": [
-							"rolls"
-						],
 						"entries": [
-							"a success on a Fortitude save, it is a critical success instead. Zashathal halves damage he takes from failing a Fortitude save."
+							"When Zashathal rolls a success on a Fortitude save, it is a critical success instead. Zashathal halves damage he takes from failing a Fortitude save."
 						],
-						"name": "Fanatical Juggernaut When Zashathal"
+						"name": "Fanatical Juggernaut "
 					},
 					{
 						"traits": [
@@ -5163,7 +5163,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"fanatical juggernaut"
+					]
 				},
 				"hp": [
 					{
