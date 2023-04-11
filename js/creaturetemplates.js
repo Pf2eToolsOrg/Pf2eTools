@@ -138,7 +138,8 @@ function renderStatblock (creatureTemplate) {
 		buildImageTab,
 	);
 	const tabs = [statTab]
-	if (creatureTemplate.hasLore) tabs.push(loreTab);
+	// Kill Fluff for Paizo
+	// if (creatureTemplate.hasLore) tabs.push(loreTab);
 	if (creatureTemplate.images) tabs.push(imageTab);
 	tabs.push(infoTab)
 	Renderer.utils.bindTabButtons(...tabs);

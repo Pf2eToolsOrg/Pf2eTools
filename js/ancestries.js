@@ -466,6 +466,11 @@ class AncestriesPage extends BaseComponent {
 			if (!seenKeys.has(k) && target[k]) target[k] = false;
 		});
 
+		// Kill Fluff for Paizo
+		const ctrlClick = jQuery.Event("click");
+		ctrlClick.ctrlKey = true;
+		$("button[title='Select All']").trigger(ctrlClick)
+
 		// Run the sync in the other direction, a loop that *should* break once the hash/state match perfectly
 		if (!isInitialLoad) this._setHashFromState();
 	}
@@ -971,7 +976,8 @@ class AncestriesPage extends BaseComponent {
 			isInverted: true,
 		}).title("Toggle Ancestry Features");
 
-		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).title("Toggle Ancestry Info");
+		// Kill Fluff for Paizo
+		const $btnToggleFluff = "" // ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).title("Toggle Ancestry Info");
 
 		const $btnToggleFeats = ComponentUiUtil.$getBtnBool(this, "isShowFeats", {
 			text: "Show Feats",
@@ -1338,7 +1344,7 @@ class AncestriesPage extends BaseComponent {
 
 AncestriesPage._DEFAULT_STATE = {
 	isHideFeatures: false,
-	isShowFluff: true,
+	isShowFluff: false,
 	isShowVeHeritages: false,
 	isShowHSources: false,
 	isShowFeats: false,
@@ -1349,4 +1355,10 @@ window.addEventListener("load", async () => {
 	await Renderer.trait.preloadTraits();
 	ancestriesPage = new AncestriesPage();
 	ancestriesPage.pOnLoad()
+	// Kill Fluff for Paizo (at least fill the page with heritages if no fluff is shown)
+		.then(() => {
+			const ctrlClick = jQuery.Event("click");
+			ctrlClick.ctrlKey = true;
+			$("button[title='Select All']").trigger(ctrlClick)
+		})
 });
