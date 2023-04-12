@@ -3704,6 +3704,7 @@
 				"humanoid",
 				"xulgath"
 			],
+			"description": "Female xulgath mage",
 			"perception": {
 				"std": 12
 			},
@@ -3729,6 +3730,9 @@
 				"athletics": {
 					"std": 13
 				},
+				"deception": {
+					"std": 15
+				},
 				"intimidation": {
 					"std": 17
 				},
@@ -3753,7 +3757,145 @@
 			"speed": {
 				"walk": 25
 			},
-			"attacks": [],
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"shove"
+					],
+					"name": "light mace",
+					"attack": 15,
+					"damage": "{@damage 1d4+4} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"damage": "{@damage 1d8+2} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 14,
+					"damage": "{@damage 2d6+2} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Spontaneous",
+					"tradition": "arcane",
+					"type": "Spontaneous",
+					"DC": 26,
+					"attack": 18,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "burning hands"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "create food"
+								},
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "flaming sphere"
+								},
+								{
+									"name": "see invisibility"
+								}
+							]
+						},
+						"3": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "haste"
+								},
+								{
+									"name": "magic missile"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "acid arrow"
+								},
+								{
+									"name": "dimension door"
+								},
+								{
+									"name": "lightning bolt"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Bloodline",
+					"type": "Focus",
+					"fp": 3,
+					"DC": 26,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "ancestral memories"
+								},
+								{
+									"name": "extend spell"
+								}
+							]
+						}
+					}
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -3776,14 +3918,6 @@
 							"The xulgath mage expends one of her spell slots to counter the triggering creature's casting of the spell in her repertoire. The xulgath mage loses the spell slot as if she had cast the triggering spell and attempts to counteract the triggering spell."
 						],
 						"name": "Counterspell"
-					}
-				],
-				"bot": [
-					{
-						"entries": [
-							"3 Focus Points, DC 26; 4th ancestral memories (Core Rulebook 402), extend spell (Core Rulebook 404)"
-						],
-						"name": "Bloodline Spells"
 					}
 				]
 			},
