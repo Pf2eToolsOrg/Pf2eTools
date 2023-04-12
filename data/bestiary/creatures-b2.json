@@ -47102,7 +47102,27 @@
 				"walk": 15,
 				"fly": 30
 			},
-			"attacks": [],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 15,
+					"effects": [
+						"ghoul fever",
+						"paralysis"
+					],
+					"damage": "{@damage 2d8+8} plus ghoul fever and paralysis"
+				},
+				{
+					"range": "Melee",
+					"name": "wing",
+					"attack": 15,
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 2d4+8} plus skrik nettle venom"
+				}
+			],
 			"abilities": {
 				"top": [
 					{

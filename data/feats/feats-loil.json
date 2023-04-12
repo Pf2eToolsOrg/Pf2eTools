@@ -2261,6 +2261,11 @@
 			"name": "Shieldmarshal Dedication",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"level": 2,
 			"traits": [
 				"archetype",
@@ -2269,12 +2274,22 @@
 			"entries": [
 				"Your elite shieldmarshal training makes you equally at home in the squalor of Smokeside and the splendor of Skyside. You're intimately familiar with the city's labyrinthine streets and statutes. You become trained in {@skill Society}; if you were already trained, you become an expert in {@skill Society} instead.",
 				"In urban environments, you can attempt {@skill Society} checks to {@action Sense Direction}. You also gain the Courtly Graces and {@feat Streetwise} skill feats."
+			],
+			"leadsTo": [
+				"Consolidated Overlay Panopticon|LOIL",
+				"Equitable Defense|LOIL",
+				"Counterclockwork Focus|LOIL"
 			]
 		},
 		{
 			"name": "Consolidated Overlay Panopticon",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -2283,7 +2298,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Shieldmarshal Dedication",
+			"prerequisites": "{@feat Shieldmarshal Dedication|LOIL}",
 			"frequency": {
 				"freq": 1,
 				"unit": "hour"
@@ -2296,6 +2311,11 @@
 			"name": "Equitable Defense",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"activity": {
 				"number": 1,
 				"unit": "reaction"
@@ -2304,7 +2324,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Shieldmarshal Dedication",
+			"prerequisites": "{@feat Shieldmarshal Dedication|LOIL}",
 			"frequency": {
 				"freq": 1,
 				"interval": 10,
@@ -2319,6 +2339,11 @@
 			"name": "Counterclockwork Focus",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -2327,7 +2352,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Shieldmarshal Dedication",
+			"prerequisites": "{@feat Shieldmarshal Dedication|LOIL}",
 			"frequency": {
 				"freq": 1,
 				"unit": "round"
