@@ -444,14 +444,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+33, {@skill Survival} +33 Str +9, Dex +6, Con +7, Int +3, Wis +7, Cha +6 Items +2 greater striking maul."
-						],
-						"name": "Nature"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -461,9 +453,7 @@
 							"disease"
 						],
 						"entries": [
-							"60 feet. Blightburn crystals infused into an ararda's body attempt to counteract any teleportation spell moving into or out of the aura's emanation (counteract check +31; 7th level)",
-							"In addition, any creature that starts its turn within the emanation is exposed to blightburn sickness (page 73). The aura is blocked by lead sheeting, 1 foot of stone, or large {@trait force} effects (such as a wall of force, but not a {@spell shield} spell)",
-							"An ararda can suppress their aura with an action that has the {@trait concentrate} trait."
+							"60 feet. Blightburn crystals infused into an ararda's body attempt to counteract any teleportation spell moving into or out of the aura's emanation (counteract check +31; 7th level). In addition, any creature that starts its turn within the emanation is exposed to blightburn sickness (page 73). The aura is blocked by lead sheeting, 1 foot of stone, or large {@trait force} effects (such as a wall of force, but not a {@spell shield} spell). An ararda can suppress their aura with an action that has the {@trait concentrate} trait."
 						],
 						"name": "Blightburn Radiation"
 					},
@@ -558,6 +548,7 @@
 				"large",
 				"undead"
 			],
+			"description": "Variant driders (Pathfinder Bestiary 159)",
 			"perception": {
 				"std": 24
 			},
@@ -625,29 +616,17 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+30 Str +6, Dex +8, Con +4, Int \u20131, Wis +5, Cha +4."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "The death drider is reduced to 0",
-						"entries": [],
-						"name": "Sack of Spiders"
-					},
-					{
+						"trigger": "The death drider is reduced to 0 Hit Points",
 						"entries": [
 							"The death drider explodes in a shower of spiders. Each adjacent creature must succeed at a DC 31 Reflex save or take {@damage 3d6} piercing damage and be exposed to death drider venom."
 						],
-						"name": "Hit Points; Effect"
+						"name": "Sack of Spiders"
 					}
 				],
 				"bot": [
@@ -678,6 +657,12 @@
 								"duration": "1 round"
 							}
 						]
+					},
+					{
+						"entries": [
+							"A creature hit by a death drider's web attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} DC 31). Each round thereafter until it breaks free, the creature takes {@damage 3d6} piercing damage (DC 31 basic Reflex save) and, on a failed save, is exposed to death drider venom."
+						],
+						"name": "Hungering Web"
 					}
 				]
 			},
@@ -705,7 +690,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyze",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
@@ -722,6 +711,7 @@
 				"mummy",
 				"undead"
 			],
+			"description": "Male drow mummy mage (Bestiary 136, 240)",
 			"perception": {
 				"std": 32
 			},
@@ -779,6 +769,14 @@
 				"wis": 3,
 				"cha": 9
 			},
+			"items": [
+				"circlet of persuasion",
+				"+2 greater striking hand crossbow (10 bolts)",
+				"scroll of heroism (9th)",
+				"scroll of maze",
+				"scroll of unrelenting observation",
+				"wand of manifold missiles (7th)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -997,9 +995,10 @@
 							]
 						},
 						"10": {
+							"slots": 1,
 							"spells": [
 								{
-									"name": "1 slot) time stop"
+									"name": "time stop"
 								}
 							]
 						}
@@ -1054,28 +1053,12 @@
 						},
 						{
 							"name": "terminate bloodline",
-							"notes": [
-								"page 74"
-							]
+							"source": "EC5"
 						}
 					]
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+34, {@skill Intimidation} +36, {@skill Occultism} +35,"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+28, {@skill Lore||Shraen Lore} +31, {@skill Society} +33, {@skill Stealth} +31 Str +2, Dex +6, Con +4, Int +6, Wis +3, Cha +9 Items circlet of persuasion, +2 greater striking hand crossbow (10 bolts), scroll of heroism (9th), scroll of maze, scroll of unrelenting observation, wand of manifold missiles (7th)"
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -1084,7 +1067,7 @@
 						],
 						"entries": [
 							"When Dyzallin is destroyed, necromantic energies rebuild his body inside the mirror in his laboratory over the next {@dice 1d10} days.",
-							"His re-forming body is visible in the mirror, but the mirror can't be destroyed while he is re-forming unless a consecrate ritual is first cast upon it. Once Dyzallin's rejuvenation is complete, he steps out of the mirror."
+							"His re-forming body is visible in the mirror, but the mirror can't be destroyed while he is re-forming unless a {@ritual consecrate} ritual is first cast upon it. Once Dyzallin's rejuvenation is complete, he steps out of the mirror."
 						],
 						"name": "Mirror Rejuvenation"
 					},
@@ -1144,7 +1127,7 @@
 							"divine",
 							"necromancy"
 						],
-						"note": "This disease and damage from it can't be healed until the curse is removed. A creature killed by this curse turns to sand and can't be resurrected except by a 9th-level resurrect ritual or similar magic",
+						"note": "This disease and damage from it can't be healed until the curse is removed. A creature killed by this curse turns to sand and can't be resurrected except by a 9th-level {@ritual resurrect} ritual or similar magic",
 						"DC": 39,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -1175,7 +1158,11 @@
 					},
 					"will": {
 						"std": 33
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magical effects and positive effects",
+						"+2 status to all saves vs. mental effects"
+					]
 				},
 				"hp": [
 					{
@@ -1186,7 +1173,12 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"sleep",
+					"unconscious"
 				],
 				"weaknesses": [
 					{
@@ -1214,6 +1206,7 @@
 				"large",
 				"aberration"
 			],
+			"description": "Variant quelaunt (Pathfinder Bestiary 273)",
 			"perception": {
 				"std": 33
 			},
@@ -1227,6 +1220,9 @@
 			"languages": {
 				"languages": [
 					"aklo (can't speak any language);"
+				],
+				"abilities": [
+					"telepathy 100 feet"
 				]
 			},
 			"skills": {
@@ -1241,6 +1237,9 @@
 				},
 				"medicine": {
 					"std": 33
+				},
+				"occultism": {
+					"std": 31
 				},
 				"stealth": {
 					"std": 31
@@ -1324,25 +1323,25 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
 					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+35, {@skill Medicine} +33, {@skill Occultism} +31, {@skill Stealth} +31 Str +6, Dex +5, Con +4, Int +5, Wis +7, Cha +9."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
-							"Hush can cast the following cleric domain spells as 9th-level occult innate spells at will without spending Focus Points: {@spell blind ambition} (Core Rulebook 389), {@spell captivating adoration} (Core Rulebook 389), and {@spell delusional pride} (Core Rulebook 391)."
+							"Hollow Hush can cast the following cleric domain spells as 9th-level occult innate spells at will without spending Focus Points: {@spell blind ambition}, {@spell captivating adoration}, and {@spell delusional pride}."
 						],
-						"name": "Emotional Focus Hollow"
+						"name": "Emotional Focus"
 					},
 					{
 						"activity": {
@@ -1421,6 +1420,12 @@
 				"hp": [
 					{
 						"hp": 355
+					}
+				],
+				"resistances": [
+					{
+						"amount": 20,
+						"name": "mental"
 					}
 				]
 			}
@@ -1680,6 +1685,7 @@
 				"humanoid",
 				"urdefhan"
 			],
+			"description": "Male urdefhan war champion (Bestiary 2 272)",
 			"perception": {
 				"std": 29
 			},
@@ -1709,6 +1715,9 @@
 				"crafting": {
 					"std": 25
 				},
+				"intimidate": {
+					"std": 28
+				},
 				"religion": {
 					"std": 27
 				},
@@ -1730,6 +1739,11 @@
 				"wis": 3,
 				"cha": 4
 			},
+			"items": [
+				"+1 striking composite longbow (40 arrows)",
+				"+2 greater striking rhoka sword (page 83)",
+				"studded leather armor"
+			],
 			"speed": {
 				"walk": 30,
 				"climb": 30
@@ -1807,25 +1821,20 @@
 									"name": "death knell"
 								}
 							]
+						},
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25, Intimidate +28, {@skill Religion} +27, {@skill Stealth} +28,"
-						],
-						"name": "Crafting"
-					},
-					{
-						"entries": [
-							"+29 Str +6, Dex +6, Con +4, Int +1, Wis +3, Cha +4 Items +1 striking composite longbow (40 arrows), +2 greater striking rhoka sword (page 83), studded leather armor."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -1851,15 +1860,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"8th"
-						],
-						"entries": [
-							"true seeing."
-						],
-						"name": "Constant"
-					},
 					{
 						"entries": [
 							"Kharostan's melee {@action Strike||Strikes} ignore 10 points of a creature's resistance to physical damage."
@@ -1957,7 +1957,9 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"fear"
 				],
 				"weaknesses": [
 					{
@@ -2142,14 +2144,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+31 Str +7, Dex +9, Con +5, Int +5, Wis +3, Cha +6 Items +2 greater striking scimitar."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2224,6 +2218,10 @@
 					{
 						"amount": 15,
 						"name": "fire"
+					},
+					{
+						"amount": 15,
+						"name": "poison"
 					}
 				]
 			},
@@ -2411,6 +2409,7 @@
 				"dwarf",
 				"humanoid"
 			],
+			"description": "Female duergar seneschal (Bestiary 138)",
 			"perception": {
 				"std": 29
 			},
@@ -2443,6 +2442,9 @@
 				"society": {
 					"std": 30
 				},
+				"stealth": {
+					"std": 27
+				},
 				"survival": {
 					"std": 27
 				},
@@ -2458,6 +2460,14 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"expanded alchemist's tools",
+				"+2 greater resilient standard-grade mithral breastplate",
+				"greater comprehension elixir",
+				"infused reagents (12)",
+				"greater messenger's ring",
+				"+2 greater striking shortsword"
+			],
 			"speed": {
 				"walk": 20
 			},
@@ -2540,23 +2550,17 @@
 				"top": [
 					{
 						"entries": [
-							"+28, {@skill Lore||Shraen Lore} +28, {@skill Society} +30, {@skill Stealth} +27, {@skill Survival} +27 Str +2, Dex +5, Con +3, Int +6, Wis +3, Cha +1 Items expanded alchemist's tools, +2 greater resilient standard-grade mithral breastplate, greater comprehension elixir, infused reagents (12), greater messenger's ring, +2 greater striking shortsword."
+							"Qormintur carries the following infused items: 6 {@item greater acid flask||greater acid flasks}, 6 {@item greater alchemist's fire||greater alchemist's fires}, 2 {@item major antidote||major antidotes}, and 2 {@item greater elixir of life||greater elixirs of life}. These items last for 24 hours, or until the next time Qormintur makes her daily preparations."
 						],
-						"name": "Occultism"
-					},
-					{
-						"entries": [
-							"Items Qormintur carries the following infused items: 6 greater acid flasks, 6 greater alchemist's fires, 2 major antidotes, and 2 greater elixirs of life. These items last for 24 hours, or until the next time Qormintur makes her daily preparations."
-						],
-						"name": "Infused"
+						"name": "Infused Items"
 					}
 				],
 				"mid": [
 					{
 						"entries": [
-							"Mind Qormintur automatically {@quickref disbelieves all illusions|CRB|2|disbelieving illusions|0} of 8th level or lower."
+							"Qormintur automatically {@quickref disbelieves all illusions|CRB|2|disbelieving illusions|0} of 8th level or lower."
 						],
-						"name": "Iron"
+						"name": "Iron Mind"
 					},
 					{
 						"entries": [
@@ -2573,16 +2577,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 3d6+11} piercing Ranged acid flask +32 (range increment <60 feet>, splash 10 feet), Damage 7 acid damage plus {@damage 3d6} {@condition persistent damage||persistent acid damage} and 9 acid splash damage Ranged {@as 1} alchemist's fire +32 (range increment <60 feet>, splash 10 feet), Damage {@damage 3d8+6} fire plus 3 {@condition persistent damage||persistent fire} and 9 fire splash Occult Innate Spells DC 35; 4th invisibility (self only); 2nd enlarge (self only)"
-						],
-						"name": "S), Damage"
-					},
 					{
 						"entries": [
 							"When throwing an alchemical bomb with the {@trait splash} trait, Qormintur can choose to deal splash damage to her primary target only, rather than dealing the usual splash damage."
@@ -2652,7 +2646,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+2 status on all saves vs. magical effects"
+					]
 				},
 				"hp": [
 					{
@@ -2679,6 +2676,7 @@
 				"medium",
 				"undead"
 			],
+			"description": "Variant wight (Pathfinder Bestiary 332)",
 			"perception": {
 				"std": 22
 			},
@@ -2719,6 +2717,11 @@
 				"wis": 3,
 				"cha": 4
 			},
+			"items": [
+				"+1 resilient bone armor (as hide armor)",
+				"greater demon mask in the form of a dinosaur-skull helm",
+				"+1 striking spear"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2787,14 +2790,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Survival} +22 Str +8, Dex +5, Con +3, Int +0, Wis +3, Cha +4 Items +1 resilient bone armor (as hide armor), greater demon mask in the form of a dinosaur-skull helm, +1 striking spear."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2837,15 +2832,9 @@
 							"necromancy"
 						],
 						"entries": [
-							"The."
+							"The Raptor Guard wight's ranged spear {@action Strike||Strikes} apply drain life, but the wight doesn't gain any temporary Hit Points if the attack hits."
 						],
 						"name": "Hungry Spear"
-					},
-					{
-						"entries": [
-							"Guard wight's ranged spear {@action Strike||Strikes} apply drain life, but the wight doesn't gain any temporary Hit Points if the attack hits."
-						],
-						"name": "Raptor"
 					},
 					{
 						"entries": [
@@ -2889,7 +2878,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
@@ -2904,6 +2897,7 @@
 				"medium",
 				"undead"
 			],
+			"description": "Drow graveknight (Pathfinder Bestiary 190)",
 			"perception": {
 				"std": 26
 			},
@@ -2941,6 +2935,13 @@
 				"wis": 3,
 				"cha": 6
 			},
+			"items": [
+				"+2 greater resilient standard-grade elven chain",
+				"hand crossbow (10 bolts)",
+				"main-gauche",
+				"purple worm venom (2)",
+				"rapier"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -3050,14 +3051,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+27 Str +4, Dex +8, Con +4, Int +2, Wis +3, Cha +6 Items +2 greater resilient standard-grade elven chain, hand crossbow (10 bolts), main-gauche, purple worm venom (2), rapier."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -3151,7 +3144,11 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status bonus to all saves vs. magic effects",
+						"+2 status bonus to all saves vs. mental effects"
+					]
 				},
 				"hp": [
 					{
@@ -3163,7 +3160,13 @@
 					}
 				],
 				"immunities": [
-					"cold"
+					"cold",
+					"death",
+					"disease",
+					"paralyzed",
+					"poison",
+					"sleep",
+					"unconscious"
 				],
 				"resistances": [
 					{
@@ -3383,14 +3386,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25, {@skill Survival} +27 Str +4, Dex +5, Con +3, Int +4, Wis +7, Cha +6 Items +2 striking rhoka sword."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -3406,7 +3401,7 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"requirements": "The urdefhan dominator has a creature dominated with its dominate innate spell",
+						"requirements": "The urdefhan dominator has a creature dominated with its {@spell dominate} innate spell",
 						"entries": [
 							"The urdefhan taps into the dominated creature's sight, hearing, and any other senses it has. The urdefhan can change back and forth from its own senses to the target's senses as a single action, which has the {@trait concentrate} trait."
 						],
@@ -3445,7 +3440,9 @@
 					}
 				],
 				"immunities": [
-					"death effects (except necrotic decay)"
+					"death effects (except necrotic decay)",
+					"disease",
+					"fear"
 				],
 				"weaknesses": [
 					{
@@ -3638,14 +3635,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+22 Str +5, Dex +2, Con +3, Int +1, Wis +6, Cha +3 Items +1 striking warhammer."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -3710,7 +3699,9 @@
 					}
 				],
 				"immunities": [
-					"death effects (except necrotic decay)"
+					"death effects (except necrotic decay)",
+					"disease",
+					"fear"
 				],
 				"weaknesses": [
 					{
@@ -4438,6 +4429,7 @@
 				"undead",
 				"vampire"
 			],
+			"description": "Female vampire drider priest (Pathfinder Bestiary 159, 318)",
 			"perception": {
 				"std": 28
 			},
@@ -4484,6 +4476,11 @@
 				"wis": 7,
 				"cha": 6
 			},
+			"items": [
+				"bracers of armor II",
+				"+2 greater striking composite shortbow (20 arrows)",
+				"religious symbol of Urgathoa"
+			],
 			"speed": {
 				"walk": 30,
 				"climb": 30
@@ -4504,7 +4501,22 @@
 				},
 				{
 					"range": "Ranged",
-					"name": "composite shortbow (deadly <d10>, magical, propulsive, range increment <60 feet>, reload <0>), Damage 3d6+13 piercing Ranged [one-action] web",
+					"name": "composite shortbow",
+					"traits": [
+						"deadly <d10>",
+						"magical",
+						"propulsive",
+						"range increment <60 feet>",
+						"reload <0>"
+					],
+					"damage": "{@damage 3d6+13} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "web",
 					"attack": 32,
 					"traits": [
 						"range increment <30 feet>"
@@ -4670,12 +4682,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+28, {@skill Religion} +33, {@skill Society} +26, {@skill Stealth} +28 Str +5, Dex +7, Con +4, Int +2, Wis +7, Cha +6 Items bracers of armor II, +2 greater striking composite shortbow (20 arrows), religious symbol of {@deity Urgathoa}."
-						],
-						"name": "Intimidation"
-					},
-					{
 						"traits": [
 							"divine",
 							"enchantment",
@@ -4744,16 +4750,10 @@
 							"necromancy"
 						],
 						"entries": [
-							"As vampire. When."
+							"As vampire. When Drinking Blood, Zinogyvaz regains 24 Hit Points and may inject the victim with vampire drider venom."
 						],
 						"name": "Drink Blood",
 						"entries_as_xyz": "Ability not found: 'Drink Blood As vampire.' in Zinogyvaz, p.35"
-					},
-					{
-						"entries": [
-							"Blood, Zinogyvaz regains 24 Hit Points and may inject the victim with vampire drider venom."
-						],
-						"name": "Drinking"
 					},
 					{
 						"activity": {
@@ -4821,13 +4821,17 @@
 						"hp": 240,
 						"abilities": [
 							"coffin restoration (as vampire)",
-							"fast healing 20"
+							"fast healing 20",
+							"negative healing"
 						]
 					}
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"paralyze",
+					"poison",
+					"sleep"
 				],
 				"weaknesses": [
 					{
