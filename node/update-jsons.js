@@ -309,6 +309,16 @@ function updateFolder (folder) {
 					return r;
 				});
 			}
+			if (json.background) {
+				json.background = json.background.map(b => {
+					if (b.feat) {
+						if (Array.isArray(b.feat)) b.feats = b.feat
+						else b.feats = [b.feat]
+						delete b.feat
+					}
+					return b
+				})
+			}
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
 }
