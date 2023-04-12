@@ -309,6 +309,15 @@ function updateFolder (folder) {
 					return r;
 				});
 			}
+			if (json.archetype) {
+				json.archetype = json.archetype.map(a => {
+					if (a.traits && Array.isArray(a.traits) && a.traits.length) {
+						a.rarity = a.traits[0]
+						delete a.traits;
+					}
+					return a
+				})
+			}
 			if (json.background) {
 				json.background = json.background.map(b => {
 					if (b.feat) {
