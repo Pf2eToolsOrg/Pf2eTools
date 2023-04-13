@@ -33,6 +33,41 @@
 					"isNpc": {
 						"type": "boolean"
 					},
+					"_copy": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							},
+							"creatureAdjustment": {
+								"description": "Apply weak/elite adjustement to creature data as part of copy",
+								"type": "string",
+								"enum": [
+									"Weak",
+									"Elite"
+								]
+							},
+							"_mod": {
+								"$ref": "utils.json#/definitions/_modObject"
+							},
+							"_preserve": {
+								"type": "object",
+								"patternProperties": {
+									".*": {
+										"type": "boolean"
+									}
+								}
+							}
+						},
+						"required": [
+							"name",
+							"source"
+						],
+						"additionalProperties": false
+					},
 					"level": {
 						"type": "integer",
 						"minimum": -1
