@@ -19102,13 +19102,20 @@
 					"doomed",
 					"drained",
 					"fatigued",
-					"healing",
-					"magic (see below)"
+					"healing magic (see below)",
+					"mental",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "physical"
+						"name": "physical",
+						"note": "(except adamantine or bludgeoning)"
 					}
 				]
 			}
@@ -34729,9 +34736,7 @@
 					{
 						"hp": 160,
 						"abilities": [
-							"{@ability regeneration} 40 (deactivated by positive",
-							"mental",
-							"or orichalcum"
+							"{@ability regeneration} 40 (deactivated by positive, mental, or orichalcum)"
 						]
 					}
 				],
@@ -34912,7 +34917,8 @@
 				"resistances": [
 					{
 						"amount": 15,
-						"name": "physical"
+						"name": "physical",
+						"note": "(except adamantine)"
 					}
 				]
 			}
