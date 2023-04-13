@@ -178,6 +178,12 @@ function updateFolder (folder) {
 						delete cr.creatureType
 						cr.traits = [...new Set(cr.traits.flat())]
 					}
+					if (cr.isNpc === false) {
+						delete cr.isNpc
+					}
+					if (cr.hasImages === false) {
+						delete cr.hasImages
+					}
 					if (cr.skills && Object.keys(cr.skills).find(k => k.match(/[A-Z]/g))) {
 						// Stolen from https://bobbyhadz.com/blog/javascript-lowercase-object-keys
 						console.log(`\tUpdating ${cr.name} skill to lowercase in ${file}...`)
