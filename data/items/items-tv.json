@@ -6486,6 +6486,2563 @@
 			]
 		},
 		{
+			"name": "Bralani Breath",
+			"source": "TV",
+			"page": 74,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"unit": "varies",
+					"entry": "Cast a Spell"
+				},
+				"traits": [
+					"add 1 action"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Bralani breath is a species of mint with small, green flowers, said to grow on battlefields where the opposing sides were equally matched. Sprigs of the flowers blow gently in a breeze of their own creation. If you cast {@spell mage armor} using bralani breath, you release a small blast of concussive air in an emanation of a size that depends on the catalyst's type.",
+				"Some unattended objects are pushed away from you. Large or smaller creatures must succeed at a Fortitude save equal to your spell save DC or be pushed the same distance away from you."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "bralani breath",
+					"level": 3,
+					"price": {
+						"amount": 11,
+						"coin": "gp"
+					},
+					"entries": [
+						"Objects of 1 Bulk or less and creatures that fail the save are pushed 5 feet."
+					]
+				},
+				{
+					"name": "greater bralani breath",
+					"level": 9,
+					"price": {
+						"amount": 110,
+						"coin": "gp"
+					},
+					"entries": [
+						"Objects of 1 Bulk or less and creatures that fail the save are pushed 10 feet. Objects of up to 2 Bulk are pushed 5 feet, and Huge creatures must succeed at the save or be pushed 5 feet."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dragon Throat Scale",
+			"source": "TV",
+			"page": 74,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 55,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Dragon scales of all sorts can be powerful magical reagents, infusing magic with the might of their breath. When used to cast {@spell magic missile}, a scale from a dragon's throat causes the spell to lose the {@trait force} trait and damage type. Instead, the spell has the damage type of the breath weapon belonging to the dragon the scale came from, along with that trait.",
+				"Damage types are associated with the following dragons, with uncommon dragons noted with an asterisk.",
+				"Acid: Black, brine*, copper Cold: Silver, white Electricity: Blue, bronze, cloud*, sky* Fire: Brass, gold, magma*, red, underworld* Mental: Sovereign* Negative: Umbral* Poison: Green"
+			]
+		},
+		{
+			"name": "Euphoric Loop",
+			"source": "TV",
+			"page": 74,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This catalyst is made from twisted sapling bark harvested under a full moon. When used to cast a {@spell charm} spell, the enchantment creates a blissful experience for one target of your choice.",
+				"When the spell ends, even if you {@action Dismiss} it, the sudden mental dissonance between the charmed state and reality forces the target to attempt a Will save against your spell DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition stunned||stunned 1} or, if the spell ended because of a {@condition hostile} action, {@condition confused} for 1 round."
+						],
+						"Failure": [
+							"The target is {@condition stunned||stunned 2} or, if the spell ended because of a {@condition hostile} action, {@condition confused} for 1 round."
+						],
+						"Critical Failure": [
+							"The target is {@condition stunned||stunned 3} or, if the spell ended because of a {@condition hostile} action, {@condition confused} for 2 rounds."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "euphoric loop",
+					"level": 5,
+					"price": {
+						"amount": 30,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater euphoric loop",
+					"level": 13,
+					"price": {
+						"amount": 450,
+						"coin": "gp"
+					},
+					"entries": [
+						"The catalyst affects all targets of the {@spell charm} spell, up to 10."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fearcracker",
+			"source": "TV",
+			"page": 74,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A fearcracker contains fragments of {@condition broken} mirrors and reagents that pop and smoke when consumed. When thrown down in your space as part of a {@spell mirror image} spell, your and your images' appearance twists nightmarishly. When an image is destroyed, it \"dies\" in a disturbing fashion, rendering the attacker {@condition frightened||frightened 1}. This aspect of the spell has the emotion, {@trait fear}, and {@trait mental} traits."
+			]
+		},
+		{
+			"name": "Gravemist Taper",
+			"source": "TV",
+			"page": 74,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A gravemist taper is a conical candle with symbols of terror and death carved into the wax. The taper can be used as a catalyst when casting an {@spell obscuring mist} spell, burning the taper away, coloring the mist gray, and filling the mist with ghastly, shadowy shapes. The flat check to overcome the {@condition concealed} state from the mist rises to 7, and a creature who fails such a check becomes {@condition frightened||frightened 1}. This aspect of the spell has the emotion, {@trait fear}, and {@trait mental} traits."
+			]
+		},
+		{
+			"name": "Nevercold",
+			"source": "TV",
+			"page": 75,
+			"type": "Item",
+			"level": "10+",
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"unit": "varies",
+					"entry": "Cast a Spell"
+				},
+				"traits": [
+					"add 1 action"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Nevercold, sometimes mistakenly referred to as nevercoal, is the charcoal left after wildfires in the First World. True to its name, nevercold remains warm to the touch. If you use nevercold to cast {@spell fire shield}, the spell's duration increases by 1 minute, the cold resistance you gain from it lasts 1 hour, and you're protected from the effects of severe cold for 8 hours."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "nevercold",
+					"level": 10,
+					"price": {
+						"amount": 180,
+						"coin": "gp"
+					},
+					"entries": [
+						"The catalyst affects 4th‑level {@spell fire shield}."
+					]
+				},
+				{
+					"name": "compressed nevercold",
+					"level": 14,
+					"price": {
+						"amount": 720,
+						"coin": "gp"
+					},
+					"entries": [
+						"The catalyst affects 6th‑level or lower fire shield, and the protection from severe cold lasts 24 hours."
+					]
+				},
+				{
+					"name": "refined nevercold",
+					"level": 18,
+					"price": {
+						"amount": 3600,
+						"coin": "gp"
+					},
+					"entries": [
+						"The catalyst affects 8th‑level or lower fire shield, and the protection from severe cold lasts 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Nightpitch",
+			"source": "TV",
+			"page": 75,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 60,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A pellet of tar mixed with the fur of a nocturnal creature, such as a bat, nightpitch used to cast a {@spell darkness} spell makes the area of the darkness difficult terrain."
+			]
+		},
+		{
+			"name": "Seventh Prism",
+			"source": "TV",
+			"page": 75,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Beloved by the church of the Seventh Veil, a seventh prism is a crystal that disperses its internal light, casting an aurora of color. If you use a seventh prism to cast {@spell color spray}, targets are {@condition dazzled} for twice as long as their saving throw indicates.",
+				"On a critical failure, the target is {@condition dazzled} for 1 minute after its {@condition blinded} condition ends. Motes of shifting rainbow hues cloud the eyes, making it difficult to see details."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "triangular seventh prism",
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "pentagonal seventh prism",
+					"level": 7,
+					"price": {
+						"amount": 52,
+						"coin": "gp"
+					},
+					"entries": [
+						"The area increases to a 20‑foot cone, and the DC for the flat check against the target being {@condition concealed} increases to 7."
+					]
+				}
+			]
+		},
+		{
+			"name": "Anathema Fulu",
+			"source": "TV",
+			"page": 76,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
+			],
+			"price": {
+				"amount": 250,
+				"coin": "gp"
+			},
+			"usage": "affixed to the ground in four spaces along a circle with a 20‑foot radius",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"First used by aasimars of Tianjing to weaken qlippoth, an anathema fulu comes in four pieces, one placed in each cardinal direction. Choose one of the following traits when activating the fulus: celestial, elemental, fey, fiend, monitor, or undead. If a creature with that trait starts its turn in the area, it must succeed at a DC 30 Fortitude saving throw or become {@condition sickened||sickened 2} until the start of its next turn. On a critical success, the creature becomes temporarily immune to any anathema fulus for 1 hour. Regardless of the save result, if you subsequently cast {@spell banishment} on such a creature in the area, the creature takes the \u20132 penalty described in that spell for using a material component that's anathema to that creature.",
+				"The fulu acts as that component; you don't need to add it. If a creature affected by this penalty rolls a saving throw against banishment, the caster can use a free action to force the result one step lower. Doing so burns the whole fulu out, ending the effect. If any of the fulu's pieces are moved or destroyed after activation, the effect ends."
+			],
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			}
+		},
+		{
+			"name": "Demolition Fulu",
+			"source": "TV",
+			"page": 76,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"fulu",
+				"magical"
+			],
+			"usage": "affixed to an object or structure",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"A demolition fulu allows a saboteur or excavator to be far away from the scene when demolition happens. The fulu crumbles to ash over 5 minutes to 8 hours, as you determine when you place the fulu. Once the duration ends, the fulu lowers the Hardness of the object it's affixed to by an amount equal to the fulu's level and then deals the listed damage to the object. A demolition fulu serves as a hazard with a {@skill Stealth} DC to detect it and {@skill Thievery} DC to disable it according to its type."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 3,
+					"price": {
+						"amount": 12,
+						"coin": "gp"
+					},
+					"entries": [
+						"Sometimes called the moth fulu, good for destroying softer objects; {@damage 3d6} bludgeoning damage, DC 17."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 11,
+					"price": {
+						"amount": 275,
+						"coin": "gp"
+					},
+					"entries": [
+						"Sometimes called the termite fulu, good for destroying wood objects; {@damage 6d6} bludgeoning damage, DC 28."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 17,
+					"price": {
+						"amount": 2750,
+						"coin": "gp"
+					},
+					"entries": [
+						"Sometimes called the rust fulu, good for destroying metal objects; {@damage 10d6} bludgeoning damage, DC 37."
+					]
+				}
+			]
+		},
+		{
+			"name": "Discord Fulu",
+			"source": "TV",
+			"page": 77,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"consumable",
+				"enchantment",
+				"fulu",
+				"magical",
+				"misfortune"
+			],
+			"price": {
+				"amount": 22,
+				"coin": "gp"
+			},
+			"usage": "affixed to a creature",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"Incorporating green in its writing, a discord fulu is a popular but unethical tool often deployed on romantic rivals to foil their advances. While the fulu is affixed to it, a creature treats its attitude toward other creatures as one step worse than it is. The creature also takes a \u20131 status penalty to {@skill Diplomacy} checks. The first failure the creature rolls on a {@skill Diplomacy} check becomes a critical failure instead, and the fulu turns to ash, ending its effect."
+			],
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			}
+		},
+		{
+			"name": "Dragonfly Fulu",
+			"source": "TV",
+			"page": 77,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"amount": 60,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"Tradition says the dragonfly fulu should be affixed to the upper back, like the wings of an insect. When you Activate this fulu, you gain a +2 status bonus to {@skill Athletics} checks to {@action High Jump} or {@action Long Jump} for 1 minute. During this time, you can attempt an {@skill Athletics} check to {@action High Jump} or {@action Long Jump} as a single action without the {@action Stride} requirement. You can also {@action High Jump} or {@action Long Jump} from a nonsolid substance, such as air or water, but if you use this power of the fulu, its effects ends after you jump."
+			],
+			"trigger": "You take the {@action Leap} action."
+		},
+		{
+			"name": "Escape Fulu",
+			"source": "TV",
+			"page": 77,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"amount": 70,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"The escape fulu is a charm common among wealthy people, who wear the talisman in case of kidnapping. When you",
+				{
+					"type": "ability",
+					"components": [
+						"this fulu",
+						"for 1 minute",
+						"you gain a +2 status bonus to"
+					]
+				},
+				"your attempts to {@action Escape} as well as to {@skill Stealth} checks to {@action Hide} and {@action Sneak}."
+			],
+			"trigger": "You attempt to {@action Escape}."
+		},
+		{
+			"name": "Ghost Courier Fulu",
+			"source": "TV",
+			"page": 77,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"conjuration",
+				"consumable",
+				"fulu",
+				"magical"
+			],
+			"price": {
+				"amount": 100,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"command",
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"The inscription on a ghost courier fulu leaves space for a message, and a prominent red stamp indicates which ghost delivery fulu this fulu homes in on (see below). When you",
+				{
+					"type": "ability",
+					"components": [
+						"this fulu",
+						"you dictate a message up to 25 words long"
+					]
+				},
+				"that then magically appears on the paper in the language you spoke. The fulu then disappears into the Ethereal Plane, arriving at the assigned ghost delivery fulu in {@dice 2d10} hours, provided that fulu is within 500 miles. There, the fulu's magic dissipates, but the message remains. If the fulu takes any damage in transit, it has a 50% chance to drop back into the Material Plane, intact but bereft of magic."
+			]
+		},
+		{
+			"name": "Ghost Delivery Fulu",
+			"source": "TV",
+			"page": 77,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"consumable",
+				"divination",
+				"fulu",
+				"magical"
+			],
+			"price": {
+				"amount": 100,
+				"coin": "gp"
+			},
+			"usage": "affixed to structure, object, or creature",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"A ghost delivery fulu's inscription resembles a dovecote with spirits around it, and it has a prominent stamp in red wax.",
+				"This fulu activates once affixed, becoming the homing location of ghost courier fulus with a matching stamp. Delivered ghost courier fulu messages (see above) stick to the ghost delivery fulu but can be easily removed."
+			],
+			"duration": {
+				"number": 1,
+				"unit": "week"
+			}
+		},
+		{
+			"name": "Golden Breath Fulu",
+			"source": "TV",
+			"page": 77,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"fulu",
+				"healing",
+				"magical",
+				"necromancy",
+				"positive",
+				"talisman"
+			],
+			"price": {
+				"amount": 8100,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"An enterprising chirurgeon reversed the forces evoked by a void thousand-pains fulu (page 79) to create the golden breath fulu, which fortifies ki and the body as elements move out of balance. When you Activate this fulu, you regain 75 Hit Points and attempt a flat check to end any {@condition persistent damage} affecting you. The fulu is particularly appropriate help for ending any {@condition persistent damage}. Also, if you would regain more Hit Points from the fulu than your maximum, you can gain the excess as temporary Hit Points or distribute the excess among creatures of your choice within 30 feet. The temporary Hit Points last for 1 minute."
+			],
+			"trigger": "You take damage."
+		},
+		{
+			"name": "Inventor's Fulu",
+			"source": "TV",
+			"page": 78,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "affixed to an innovation",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"Some inventors in Tian Xia put fried snacks near their innovations, a charm to make devices behave as intended. The practice rubbed off on other inventors, who replaced the food with a drawing on an inventor's fulu. When you Activate the fulu, your critical failure becomes a failure, and you can spend just 1 minute to return your innovation to full functionality.",
+				"The fulu then burns up, and its effects end."
+			],
+			"trigger": "You critically fail an action with the {@trait unstable} trait."
+		},
+		{
+			"name": "Kaiju Fulu",
+			"source": "TV",
+			"page": 78,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"usage": "affixed to a load‑bearing wall or pillar",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"Despite the name, a kaiju fulu protects a building against damage of all sorts. When an affixed structure no larger than 100 feet × 100 feet and up to 50 feet tall takes damage, the structure is as hard as standard‑grade adamantine against that damage and any damage that occurs within 1 hour thereafter.",
+				"The fulu then crumbles to dust, and its effects end."
+			],
+			"duration": {
+				"number": 1,
+				"unit": "week"
+			}
+		},
+		{
+			"name": "Mourner's Dawnlight Fulu",
+			"source": "TV",
+			"page": 78,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"divination",
+				"fulu",
+				"magical"
+			],
+			"price": {
+				"amount": 120,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 3,
+					"unit": "action"
+				},
+				"components": [
+					"command",
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A mourner's dawnlight fulu is a stack of pages that resembles joss paper, used to locate the remains of the lost. When you",
+				{
+					"type": "ability",
+					"components": [
+						"the fulu",
+						"you envision a specific object or deceased"
+					]
+				},
+				"creature you're familiar with and want to find. You then rip the fulu into pieces and let them drift in the wind. If the item or creature you seek is within 500 feet, the pieces flutter through the air and land on the target, or on the surface closest to a buried or otherwise obscured target. If the torn fulu lands or fails to locate the desired target, its magic ends."
+			]
+		},
+		{
+			"name": "Poracha Fulu",
+			"source": "TV",
+			"page": 78,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 30,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"category": "Talisman",
+			"entries": [
+				"Folklore from near the Forest of Spirits tells of the origin of the poracha fulu. Once, a traveler saved an eight‑legged feline who turned out to be a poracha prince. In return, the prince gave the traveler a fulu that later prevented a fast‑acting poison from slaying them. Traditionally, one wears a string of up to nine poracha fulus, which counts as one talisman. Each time you take {@condition persistent damage}, one poracha fulu affixed to you negates the damage and crumbles to dust. This response is automatic, but you can use a free action (envision) to prevent your fulus from responding. If you do, any poracha fulus affixed to you never respond to that {@condition persistent damage}."
+			]
+		},
+		{
+			"name": "Reflected Moonlight Fulu",
+			"source": "TV",
+			"page": 78,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"abjuration",
+				"consumable",
+				"fortune",
+				"fulu",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 750,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"An acolyte accidentally left fulu paper outdoors overnight during a divine ceremony to {@deity Tsukiyo|LOGM} conducted only during a supermoon, creating the first reflected moonlight fulu. When you Activate this fulu, you reroll your saving throw against the triggering effect and take the better result. If this new roll is a critical success, the effect is reflected on its creator, who's treated as the effect's target, with any negative damage converted to positive. A reflected effect or spell affects only the original creator, even if it was an area spell or one that affects more than one creature."
+			],
+			"trigger": "You fail to save against a {@trait negative} or {@trait death} effect."
+		},
+		{
+			"name": "Sentry Fulu",
+			"source": "TV",
+			"page": 78,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"usage": "affixed to the ground",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 3,
+					"unit": "action"
+				},
+				"components": [
+					"command",
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A sentry fulu depicts an armed guard. When you activate the fulu, it takes the shape of a Tiny humanoid guard made of paper and keeps watch over an area in a 20‑foot burst. The guard has a {@skill Perception} DC of 20, along with precise visual senses and imprecise hearing and vibrational sense to detect creatures moving in its area, including through the air. You dictate whether the guard remains still in its area or patrols it; if the latter, you also determine the path the guard takes, at a Speed of 25 feet. You also determine a password others must give the guard to bypass it. If a creature enters the area without giving the password, the sentry creates either an audible or mental alarm. An audible alarm has the sound and volume of a human shouting, as well as the {@trait auditory} trait, allowing each creature that can hear it to attempt a DC 15 {@skill Perception} check to wake up if they're asleep. The mental alert reaches you if you're within 60 feet of the active guard (see below). The guard remains active for 8 hours, and then the fulu is consumed. If you have more than one sentry fulu, you can set up several that function as a unit, provided their areas touch or overlap.",
+				"When one sounds its alarm, the alarm passes through all of them, so you must be within range of only one to hear it or receive the mental alert. Creatures that give the correct password to one sentry fulu in a unit need not give that password again to the others. The destruction of one fulu‑created guard in a unit sets off the alarm in others in connected areas."
+			]
+		},
+		{
+			"name": "Stumbling Fulu",
+			"source": "TV",
+			"page": 79,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"consumable",
+				"fulu",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"The kitsune who first created a stumbling fulu advised the user to tuck the fulu under the target's belt for maximum effect.",
+				"When the creature to which the fulu is affixed completes a {@action Stride} action, the creature must attempt a DC 17 Reflex save. On a failure, some element of the armor the fulu is affixed to comes undone, making the wearer {@condition clumsy||clumsy 1}. On a critical failure, the target falls {@condition prone} and is {@condition clumsy||clumsy 2}. The {@condition clumsy} condition remains until the target takes a total of 1 {@action Interact} action, plus 1 additional {@action Interact} action per value of the {@condition clumsy} condition above 1, to properly reclothe itself. Once the fulu activates, it burns up, its magic lasting only as long as the conditions it has imposed."
+			],
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			}
+		},
+		{
+			"name": "Thousand-Pains Fulu",
+			"source": "TV",
+			"page": 79,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"uncommon",
+				"consumable",
+				"fulu",
+				"magical",
+				"necromancy"
+			],
+			"usage": "affixed to a creature",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"Created by a chirurgeon who threw away morality in search of endless life, a thousand-pains fulu blocks the natural flow of elements in the body. A creature to which the fulu is affixed must attempt a basic Fortitude save against damage determined by the fulu's type.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Failure": [
+							"or critical failure primes the target for {@condition persistent damage} triggered by a specific condition that must be met within the fulu's duration."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "burl thousand-pains fulu",
+					"level": 17,
+					"price": {
+						"amount": 2700,
+						"coin": "gp"
+					},
+					"entries": [
+						"Though this green fulu looks inviting, it has a foreboding aura.",
+						"The DC is 35, and the fulu deals {@damage 10d8} poison damage, causing the target's body to respond adversely to their ki. On a failure or critical failure, if the target takes fire damage, it takes {@damage 2d8} {@condition persistent damage||persistent poison damage} as well. These effects have the {@trait poison} trait."
+					]
+				},
+				{
+					"name": "blade thousand-pains fulu",
+					"level": 8,
+					"price": {
+						"amount": 90,
+						"coin": "gp"
+					},
+					"entries": [
+						"This red fulu feels rigid, its edges sharp, and looking at it makes you feel feverish. The DC is 23, and the fulu deals {@damage 5d6} slashing damage as meridians burst and cut through flesh. On a failure or critical failure, if the target fails to take an action with the {@trait manipulate} or {@trait move} trait on each of its turns, it takes {@damage 1d6} {@condition persistent damage||persistent slashing damage}."
+					]
+				},
+				{
+					"name": "icicle thousand-pains fulu",
+					"level": 14,
+					"price": {
+						"amount": 630,
+						"coin": "gp"
+					},
+					"entries": [
+						"Looking at this black fulu leaves you queasy and cold. The DC is 30, and the fulu deals {@damage 10d6} cold damage as the target's ki warps and drains. On a failure or critical failure, if the target takes damage from a {@trait poison} or {@trait disease} effect or becomes {@condition sickened}, it takes {@damage 2d6} {@condition persistent damage||persistent cold damage}. These effects have the {@trait cold} trait."
+					]
+				},
+				{
+					"name": "needle thousand-pains fulu",
+					"level": 11,
+					"price": {
+						"amount": 270,
+						"coin": "gp"
+					},
+					"entries": [
+						"Picking up this white fulu feels like you've stabbed your hand with a pin. The DC is 27, and the fulu deals {@damage 7d6} piercing damage as hair, nails, and connective tissues stab inward. On a failure or critical failure, if the target then takes an action with the {@trait move} trait, it takes {@damage 2d6} {@condition persistent damage||persistent piercing damage}."
+					]
+				},
+				{
+					"name": "stone thousand-pains fulu",
+					"level": 5,
+					"price": {
+						"amount": 30,
+						"coin": "gp"
+					},
+					"entries": [
+						"This fulu's yellow parchment feels dusty and stiff. The DC is 19, and the fulu deals {@damage 3d6} bludgeoning damage as muscles swell to crush joints and bones. On a failure or critical failure, if the target takes electricity damage, it takes {@damage 1d6} {@condition persistent damage||persistent bludgeoning damage} as well."
+					]
+				},
+				{
+					"name": "void thousand-pains fulu",
+					"level": 20,
+					"price": {
+						"amount": 8100,
+						"coin": "gp"
+					},
+					"entries": [
+						"The black dot at the center of this purple fulu draws in energy like a bottomless hole. The DC is 38, and the fulu deals {@damage 12d10} negative damage by dissipating the target's ki. On a failure or critical failure, if the target takes any other damage within 1 minute, it takes {@damage 2d10} {@condition persistent damage||persistent negative damage} as well. These effects have the {@trait death} and {@trait negative} traits. Each time the target takes this {@condition persistent damage}, any creature within 30 feet of it can use a reaction to gain temporary Hit Points equal to the {@condition persistent damage} taken, distributing the available temporary Hit Points among those that take the reaction. If the creature that affixed the fulu is within 30 feet, it instead gains all the available temporary Hit Points, if it wishes. These temporary Hit Points disappear after 1 minute."
+					]
+				}
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			}
+		},
+		{
+			"name": "Black Tendril Shot",
+			"source": "TV",
+			"page": 80,
+			"type": "Item",
+			"level": "7+",
+			"traits": [
+				"conjuration",
+				"consumable",
+				"magical"
+			],
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"A glistening, tar‑like substance that's displeasing to the touch coats a black tendril shot. When the activated ammunition hits a target, it exudes tendrils that encase the target, which must attempt a Fortitude saving throw. The ammunition's effects last until the target Escapes. DCs for the saving throw and {@action Escape} vary by type.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is {@condition slowed||slowed 1} but gains a +2 circumstance bonus to {@action Escape} the ammunition's effect."
+						],
+						"Success": [
+							"The target is {@condition slowed||slowed 1}."
+						],
+						"Failure": [
+							"The target is {@condition slowed||slowed 2} and {@condition deafened}."
+						],
+						"Critical Failure": [
+							"The target is {@condition slowed||slowed 2}, {@condition blinded}, and {@condition deafened}."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 7,
+					"price": {
+						"amount": 60,
+						"coin": "gp"
+					},
+					"entries": [
+						"Both DCs are 25."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 12,
+					"price": {
+						"amount": 360,
+						"coin": "gp"
+					},
+					"entries": [
+						"Both DCs are 31."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 17,
+					"price": {
+						"amount": 2160,
+						"coin": "gp"
+					},
+					"entries": [
+						"Both DCs are 39."
+					]
+				}
+			]
+		},
+		{
+			"name": "Bola Shot",
+			"source": "TV",
+			"page": 80,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"consumable",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"This ammunition bears a rune with three lines radiating out, each ending in a circle. When an activated bola shot hits a target, it deals nonlethal bludgeoning damage. Compare the attack roll to the target's Reflex DC to determine the shot's other effects.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target falls {@condition prone} and is {@condition stunned||stunned 1}."
+						],
+						"Success": [
+							"The target falls {@condition prone}."
+						],
+						"Failure": [
+							"No additional effect."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Conduit Shot",
+			"source": "TV",
+			"page": 80,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"consumable",
+				"magical",
+				"transmutation"
+			],
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Fine lines of djezet sparkle in conduit shot. When you Activate it, you name up to four creatures, in addition to you, that the ammunition's magic works for. When a conduit shot hits a target, which can be a square, it remains intact. It moves with a creature it struck, unless the GM determines otherwise, until that creature regains any Hit Points. If it doesn't stick to the target, the active ammunition instead falls into the target's space, remaining active. If you or one of the four selected creatures include the ammunition in the area of a spell that is 3rd level or lower; has an area of a burst, cone, or line; and does not have a duration, the djezet in the ammunition flares in striations of red light, increasing the area of that spell. Add 5 feet to the radius of a burst that has a radius of at least 10 feet or to the length of a cone or line normally 15 feet long or smaller. For a larger cone or line, add 10 feet to the length. These increases are based on the spell's original area, ignoring any increases due to other effects, such as the Widen Spell feat. Increasing a spell's area destroys the ammunition, which otherwise remains active for 1 minute."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 6,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "moderate",
+					"level": 10,
+					"price": {
+						"amount": 200,
+						"coin": "gp"
+					},
+					"entries": [
+						"The spell can be 5th level or lower."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 14,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": [
+						"The spell can be 7th level or lower."
+					]
+				}
+			]
+		},
+		{
+			"name": "Depth Charge",
+			"source": "TV",
+			"page": 81,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical"
+			],
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Carved with stylized images of water or aquatic life, depth charges that are fired underwater or at a submerged target function with their normal range increments and can hit no matter their normal damage type. This ammunition explodes if it hits a target underwater, dealing bludgeoning damage in a 20‑foot burst (basic Fortitude save) according to its type. This burst doesn't extend out of the water."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "depth charge I",
+					"level": 5,
+					"price": {
+						"amount": 25,
+						"coin": "gp"
+					},
+					"entries": [
+						"This ammunition deals {@damage 3d6} bludgeoning damage with a DC of 20."
+					]
+				},
+				{
+					"name": "depth charge II",
+					"level": 7,
+					"price": {
+						"amount": 55,
+						"coin": "gp"
+					},
+					"entries": [
+						"This ammunition deals {@damage 5d6} bludgeoning damage with a DC of 24."
+					]
+				},
+				{
+					"name": "depth charge III",
+					"level": 10,
+					"price": {
+						"amount": 165,
+						"coin": "gp"
+					},
+					"entries": [
+						"This ammunition deals {@damage 7d6} bludgeoning damage with a DC of 28."
+					]
+				},
+				{
+					"name": "depth charge IV",
+					"level": 12,
+					"price": {
+						"amount": 330,
+						"coin": "gp"
+					},
+					"entries": [
+						"This ammunition deals {@damage 9d6} bludgeoning damage with a DC of 30."
+					]
+				},
+				{
+					"name": "depth charge V",
+					"level": 14,
+					"price": {
+						"amount": 660,
+						"coin": "gp"
+					},
+					"entries": [
+						"This ammunition deals {@damage 11d6} bludgeoning damage with a DC of 32."
+					]
+				},
+				{
+					"name": "depth charge VI",
+					"level": 16,
+					"price": {
+						"amount": 1500,
+						"coin": "gp"
+					},
+					"entries": [
+						"This ammunition deals {@damage 13d6} bludgeoning damage with a DC of 36."
+					]
+				},
+				{
+					"name": "depth charge VII",
+					"level": 18,
+					"price": {
+						"amount": 3200,
+						"coin": "gp"
+					},
+					"entries": [
+						"This ammunition deals {@damage 15d6} bludgeoning damage with a DC of 39."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dimension Shot",
+			"source": "TV",
+			"page": 81,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"conjuration",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 360,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"command",
+					"envision"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Dimension shot is deep blue black, but motes of light play upon it like stars in the night sky. The activated ammunition allows you to teleport to a location near where the ammunition hits.",
+				"If you hit a creature, you can teleport to an unoccupied space adjacent to that creature. If you fire at a square, you can teleport to a space that contains that square or an unoccupied space adjacent to it. The teleportation fails if no unoccupied space is available to you."
+			]
+		},
+		{
+			"name": "Fate Shot",
+			"source": "TV",
+			"page": 81,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"consumable",
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Fate shot is made of a nickel‑steel alloy carved with the smiling face of a comedic player on one side, while the other side holds the frown of a tragic dramatist. When you hit a target with this ammunition, roll a DC {@flatDC 11} flat check. On a success, treat all the damage dice for your attack as though they rolled the average damage +1, rounded up (for example, a fate shot arrow fired from a shortbow would normally deal {@dice 1d6}, which has an average of 3.5, so you deal 5 damage). This doesn't affect additional damage dice that only happen on a critical hit, such as those added by the {@trait deadly} trait. On a failure, roll the damage, but your target takes half damage, and you take the remaining amount as mental damage."
+			]
+		},
+		{
+			"name": "Garrote Shot",
+			"source": "TV",
+			"page": 81,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"consumable",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 1200,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Wiry designs mark the silvery coating on a garrote shot. When the activated ammunition hits a target, it transforms into a silvery garrote that wraps around one of the target's appendages, dealing {@damage 2d12} {@condition persistent damage||persistent slashing damage}. On a critical hit, it wraps around the target's throat if it has one, and the target can't breathe until the {@condition persistent damage} ends. If the {@condition persistent damage} kills the target, the garrote severs the appendage it's wrapped around."
+			]
+		},
+		{
+			"name": "Imp Shot",
+			"source": "TV",
+			"page": 82,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"conjuration",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 24,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"This black‑and‑red ammunition contains an egg‑shaped capsule. When an activated imp shot hits, the capsule cracks open and releases a manifestation that resembles a Tiny imp that can't act in any way or provide benefits outside those described here.",
+				"If the {@action Strike} misses the target, the imp appears, makes a rude gesture at you, and vanishes in a puff of sulfuric smoke. On a hit, though, the imp harries the target for up to 1 minute, remaining in the target's space, slapping, nipping, hurling insults, and moving with the target as it moves. A creature harried by the imp is {@condition flat‑footed} and takes a \u20132 circumstance penalty to attack rolls and skill checks. At the start of your turn on each round while the imp is active, you must attempt a DC {@flatDC 11} flat check. On a failure, the imp makes a final vulgar gesture at the target and vanishes in a cloud of brimstone."
+			]
+		},
+		{
+			"name": "Lightning Rod Shot",
+			"source": "TV",
+			"page": 82,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 60,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Made from a shaft of silver with a gleaming copper tip, the lightning rod shot crackles with electricity as it flies through the air. When a lightning rod shot strikes a target, it remains intact. It moves with a creature it struck, unless the GM determines otherwise, until that creature regains any Hit Points. If it doesn't stick to the target, it falls to the ground and becomes inactive. If the target of this shot is within 10 feet of any creature or target that takes electricity damage, the target of this shot takes 1 electricity damage for each die of damage taken by the nearby creature or target. If the target of this shot takes electricity damage from a spell or attack, it also takes 1 additional electricity damage for each die of damage dealt. If the spell or attack allows a saving throw to reduce the damage, the target of this shot takes a \u20131 circumstance penalty to the save. This shot remains active for 1 minute, after which it falls to the ground and crumbles to dust."
+			]
+		},
+		{
+			"name": "Magnetic Shot",
+			"source": "TV",
+			"page": 82,
+			"type": "Item",
+			"level": "7+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical"
+			],
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Shiny gray metal that slightly thrums when touched makes up the metal parts of a magnetic shot. When activated, the shot is more effective against a target wearing metal armor or made of metal. The activated ammunition grants a circumstance bonus to attack rolls against such targets, according to its type. Due to magnetic acceleration, the ammunition deals more damage and has deadlier critical hits, also according to its type."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 7,
+					"price": {
+						"amount": 60,
+						"coin": "gp"
+					},
+					"entries": [
+						"The ammunition grants a +1 circumstance bonus to the attack roll, deals two additional weapon damage dice, and is deadly d8."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 12,
+					"price": {
+						"amount": 360,
+						"coin": "gp"
+					},
+					"entries": [
+						"The ammo grants a +1 circumstance bonus to the attack roll, deals three additional weapon damage dice, and is deadly d10."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 17,
+					"price": {
+						"amount": 2200,
+						"coin": "gp"
+					},
+					"entries": [
+						"The ammunition grants a +2 circumstance bonus to the attack roll, deals four additional weapon damage dice, and is deadly d12."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mindlock Shot",
+			"source": "TV",
+			"page": 82,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"consumable",
+				"enchantment",
+				"magical"
+			],
+			"price": {
+				"amount": 250,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"command",
+					"envision"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Mindlock shot is made of luminous ectoplasm in a crystalline form. When you command this ammunition, you pick a {@action Stride} or {@action Strike}. If you hit a creature with the ammunition, it falls under a {@trait mental} effect that makes it use its first action on its next turn to take the action you picked. It chooses exactly how to use that action, and if you choose {@action Stride}, the target can {@action Step} if doing so is beneficial for it. On a critical hit, the target must use its next 2 actions to do as you chose, within the same parameters."
+			]
+		},
+		{
+			"name": "Ranging Shot",
+			"source": "TV",
+			"page": 82,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"consumable",
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Strange striations and pits mark the head of a ranging shot. When the activated ammunition is fired, it sends out whistling pings along its path until it hits something or reaches its maximum range. As long as you can perceive the sounds the ammunition makes, you can tell exactly how far it has flown.",
+				"The sounds are audible to creatures who didn't Activate the ammunition, but they receive no special information from the ranging shot's whistling."
+			]
+		},
+		{
+			"name": "Sighting Shot",
+			"source": "TV",
+			"page": 82,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"consumable",
+				"divination",
+				"light",
+				"magical"
+			],
+			"price": {
+				"amount": 72,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"command",
+					"envision"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Eyes are carved onto a sighting shot. When you Activate the ammunition, it glows, shedding bright light for 20 feet and dim light for 20 feet beyond that. If you shot the activated ammunition, your mind swirls with images of what the sighting shot passed and hit as if you sprinted along the ammunition's course. You see this path as if with your normal visual senses. Once a sighting shot hits anything or reaches its maximum range, it stops transmitting images to you. A sighting shot's light is visible to creatures who didn't Activate the ammunition, but they receive no special information from it."
+			]
+		},
+		{
+			"name": "Spell Echo Shot",
+			"source": "TV",
+			"page": 83,
+			"type": "Item",
+			"level": 19,
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 5500,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Generous amounts of djezet and orichalcum mix in a spell echo shot. When you Activate it, you name up to four creatures, in addition to you, that the ammunition's magic works for.",
+				"When spell echo shot strikes a target, which can be a square, it remains intact. It moves with a creature it struck, unless the GM determines otherwise, until that creature regains any Hit Points. If it doesn't stick to the target, the active ammunition instead falls into the target's space, remaining active. If you or one of the four selected creatures include the ammunition in the area of a spell that is 5th level or lower; has an area of a burst, cone, or line; and does not have a duration, the materials in the ammunition immediately duplicate that spell with the same parameters. A duplicated spell can't be duplicated again by another effect. Duplicating a spell destroys the ammunition, which otherwise remains active for 1 minute."
+			]
+		},
+		{
+			"name": "Weapon Shot",
+			"source": "TV",
+			"page": 83,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"conjuration",
+				"consumable",
+				"magical"
+			],
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"The body of a weapon shot is translucent and filled with quicksilver. It imparts its magic to the weapon used to fire it or it summons a translucent weapon, made of force, to fire it.",
+				"It's a favorite of killers and sharpshooters who need just one shot in a situation where carrying ammunition is easier than carrying a weapon.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"For the {@action Strike} with which you consume the ammunition, use the ammunition's fundamental runes, according to its type, instead of those of the weapon firing it."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"variants": [
+						{
+							"name": "lesser",
+							"level": 5,
+							"price": {
+								"amount": 20,
+								"coin": "gp"
+							},
+							"entries": [
+								"The attack functions appropriately for a +1 striking weapon."
+							]
+						},
+						{
+							"name": "moderate",
+							"level": 10,
+							"price": {
+								"amount": 200,
+								"coin": "gp"
+							},
+							"entries": [
+								"The attack functions appropriately for a +2 striking weapon."
+							]
+						},
+						{
+							"name": "greater",
+							"level": 12,
+							"price": {
+								"amount": 400,
+								"coin": "gp"
+							},
+							"entries": [
+								"The attack functions appropriately for a +2 greater striking weapon."
+							]
+						},
+						{
+							"name": "major",
+							"level": 16,
+							"price": {
+								"amount": 2000,
+								"coin": "gp"
+							},
+							"entries": [
+								"The attack functions appropriately for a +3 greater striking weapon."
+							]
+						}
+					],
+					"entries": [
+						"A ghostly weapon made of force appears, wielded by you and loaded with the weapon shot you activated. The conjured weapon sublimates into motes of briefly luminous dust if the weapon shot deactivates without you using it or just after you use the activated shot. For the {@action Strike} with which it functions, the weapon uses the ammunition's fundamental runes, according to its type."
+					]
+				}
+			]
+		},
+		{
+			"name": "Captivating Score",
+			"source": "TV",
+			"page": 84,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"auditory",
+				"consumable",
+				"emotion",
+				"enchantment",
+				"incapacitation",
+				"magical",
+				"mental",
+				"missive"
+			],
+			"price": {
+				"amount": 250,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Missive",
+			"entries": [
+				"A captivating score is a piece of parchment prepared for musical notation, long enough for a short song. You must be trained in {@skill Performance} to properly compose this missive (or trained in an appropriate {@skill Lore} skill your GM allows). You choose one of the emotions described below and write a musical composition to convey that emotion about a subject of your choice, typically a person or group. When activated, the missive plays a note‑perfect rendition of the inscribed score.",
+				"Each creature that can hear the score must succeed at a DC 28 Will save or be influenced to feel the emotion you chose toward the subject of your composition. This lasts for 1 hour, typically returning the creature to its initial attitude unless new events have altered their attitude long‑term.",
+				{
+					"type": "list",
+					"items": [
+						"Positive Your song engenders sympathy, adoration, joy, or a similar emotion. An affected creature's attitude toward the subject improves by one step, such as from {@condition indifferent} to {@condition friendly}.",
+						"Negative Your song spurs anger, sadness, jealousy, or a similar emotion. An affected creature's attitude toward the subject worsens by one step, such as from {@condition indifferent} to {@condition unfriendly}. When composing this missive, you can add a small notation or illustration of a type of instrument. If you do, the music sounds like that instrument, and if you didn't specify, it sounds vaguely like a recorder. The choice of a louder instrument doesn't make the music carry farther."
+					]
+				}
+			]
+		},
+		{
+			"name": "Explosive Missive",
+			"source": "TV",
+			"page": 84,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"missive"
+			],
+			"price": {
+				"amount": 13,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Missive",
+			"entries": [
+				"An explosive missive is slightly warm to the touch, regardless of the surrounding environment. When composed and then activated, the missive explodes. The tenor of what you write or the theme of your illustration determines the damage type and adds the corresponding trait to the missive: acid for a caustic inscription, cold for an aloof one, electricity for an energetic one, fire for an angry one, or sonic for an overly emphatic one. The missive deals {@dice 4d6} damage to each creature in a 5‑foot burst from a corner of the missive's space (DC 18 basic Reflex save). A creature who rolls a critical failure also takes {@damage 1d4} {@condition persistent damage} of the same type. The missive burns to ash while releasing its magic."
+			]
+		},
+		{
+			"name": "Glimmering Missive",
+			"source": "TV",
+			"page": 85,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"consumable",
+				"evocation",
+				"light",
+				"magical",
+				"missive"
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Missive",
+			"entries": [
+				"A glimmering missive sparkles as you compose it. When activated, it explodes, disintegrating into a shower of multicolored motes in a 10‑foot burst from a corner of the missive's space. Creatures in the area are covered in sparkling dust that remains luminous for 1 hour. Visible creatures can't be {@condition concealed} while covered by the luminous dust; any {@condition invisible} creatures are {@condition concealed} while covered in the luminous dust, rather than being {@condition undetected}."
+			]
+		},
+		{
+			"name": "Heartening Missive",
+			"source": "TV",
+			"page": 85,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"abjuration",
+				"consumable",
+				"magical",
+				"missive"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Missive",
+			"entries": [
+				"You compose a heartening missive by creating a short message or image intended to grant the recipient moral support. You must dedicate the missive to an individual creature you know and address it to their location (typically the settlement where you think they are). Once you finish composing the missive, it folds itself into the shape of an animal and Flies at a speed of 45 feet (about 15 miles per hour) toward the location for up to 24 hours.",
+				"It alights near the recipient or in their hand. After Activating the missive, the recipient gets its benefit and becomes temporarily immune to all heartening missives for 24 hours.",
+				"If the missive fails to reach its recipient in 24 hours, it returns to its sender at the same pace, becoming non‑magical when it arrives. After imparting or losing its magic, the missive remains as a normal document."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "bull heartening missive",
+					"level": 6,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": [
+						"Folded into a bull, this missive grants the recipient a sense of solidity. The recipient gains a +1 item bonus to Fortitude saves for the next 24 hours."
+					]
+				},
+				{
+					"name": "butterfly heartening missive",
+					"level": 5,
+					"price": {
+						"amount": 25,
+						"coin": "gp"
+					},
+					"entries": [
+						"Folded into a delicate butterfly, this missive grants the recipient a sense of grace and poise. Once during the next 24 hours, when the recipient fails a {@skill Diplomacy} or {@skill Performance} check, they can improve the result from a failure to a success or from a critical failure to a failure. This is a {@trait fortune} effect."
+					]
+				},
+				{
+					"name": "rabbit heartening missive",
+					"level": 6,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": [
+						"Folded into a rabbit sitting on its haunches, this missive grants the recipient a sense of mischief and agility. The recipient gains a +1 item bonus to Reflex saves for the next 24 hours."
+					]
+				},
+				{
+					"name": "turtle heartening missive",
+					"level": 6,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": [
+						"Folded into a square‑shelled turtle, this missive grants the recipient a firm sense of self and serenity. The recipient gains a +1 item bonus to Will saves for the next 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Messenger Missive",
+			"source": "TV",
+			"page": 85,
+			"type": "Item",
+			"level": "4+",
+			"traits": [
+				"consumable",
+				"divination",
+				"magical",
+				"missive"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Missive",
+			"entries": [
+				"A messenger missive sends itself. When composing the missive, you write a location upon it. You can also include an individual creature you expect to be in that location as a recipient; if you don't, the first creature in the location to touch the missive is treated as the recipient. Once you finish composing the missive, it folds itself into the shape of a bird and Flies at a Speed of 45 feet (15 miles per hour) toward the location for up to 24 hours. It alights near its recipient or in their hand. When activated, the missive becomes non‑magical but retains its contents. If it fails to reach its recipient in 24 hours, the missive burns to ash."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "messenger missive",
+					"level": 4,
+					"price": {
+						"amount": 18,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "multiple messenger missive",
+					"level": 7,
+					"price": {
+						"amount": 60,
+						"coin": "gp"
+					},
+					"entries": [
+						"You can write up to four locations on the missive, one on each edge of the paper; you can include a recipient for each location, as well. When you finish composing the missive, it folds into four identical missive birds, each one flying to one of the locations carrying the same message."
+					]
+				}
+			]
+		},
+		{
+			"name": "Red-Handed Missive",
+			"source": "TV",
+			"page": 85,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"curse",
+				"magical",
+				"missive",
+				"transmutation"
+			],
+			"price": {
+				"amount": 60,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Curse",
+			"entries": [
+				"Composed to look like an important document, a red-handed missive is a trap used by those who suspect someone has been going through their correspondence. If activated, the missive dissolves into red dye that coats anything touching the missive. Magic in the dye prevents it from washing off for 1 week."
+			]
+		},
+		{
+			"name": "Stage Fright Missive",
+			"source": "TV",
+			"page": 85,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"consumable",
+				"curse",
+				"enchantment",
+				"magical",
+				"mental",
+				"missive"
+			],
+			"price": {
+				"amount": 22,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Curse",
+			"entries": [
+				"Composing a stage fright missive usually involves creating a scathing review, insulting letter, or embarrassing image that ridicules the recipient. The activating creature must succeed at a DC 20 Will save or be overcome with embarrassment for 1 hour, taking a \u20131 status penalty to {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, and {@skill Performance} checks. During this time, if the creature attempts to speak or perform in front of an audience, they become {@condition sickened||sickened 1}. When they recover from this {@condition sickened} condition, the missive's effects end. You choose when composing the missive whether it remains as a non‑magical document or burns to ash after imparting its magic."
+			]
+		},
+		{
+			"name": "Anticorrosion Oil",
+			"source": "TV",
+			"page": 86,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"You can coat objects of 6 Bulk or less with anticorrosion oil. For 24 hours, the object takes half damage from acid and from all effects that specifically cause it to rust or corrode, such as contact with a rust monster's antennae."
+			]
+		},
+		{
+			"name": "Bane Oil",
+			"source": "TV",
+			"page": 86,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"divination",
+				"magical",
+				"oil"
+			],
+			"price": {
+				"amount": 12,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"Bane oil comes in as many forms as the bane weapon property rune. Coating a weapon with the oil gives the weapon the benefit of one type of bane rune for 1 minute. A weapon can be coated in only one type of bane oil at a time. Any new application of this oil supersedes any previous one. If a weapon has the bane rune, this oil has no effect if it's of the same type as the rune."
+			]
+		},
+		{
+			"name": "Disrupting Oil",
+			"source": "TV",
+			"page": 86,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"necromancy",
+				"oil"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"A pearlescent fluid, disrupting oil applied to a weapon grants the benefits of a disrupting rune for 1 minute."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "disrupting oil",
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater disrupting oil",
+					"level": 11,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil acts as a greater disrupting rune with a save DC of 30."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fundamental Oil",
+			"source": "TV",
+			"page": 86,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"evocation",
+				"magical",
+				"oil"
+			],
+			"price": {
+				"amount": 220,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"Made of elemental salts and essences from the Inner Sphere or where such planes leak onto the Material Plane, fundamental oil is anathema to elementals and other creatures with a weakness to elemental damage. A weapon anointed with this oil acts as bane oil to elementals, but the damage type is the same as the target's greatest weakness if the target has weakness to acid, cold, electricity, fire, or sonic damage. If it has none of these, the additional damage is the same type as the weapon's damage type. These effects last 1 minute."
+			]
+		},
+		{
+			"name": "Life-Boosting Oil",
+			"source": "TV",
+			"page": 86,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"uncommon",
+				"consumable",
+				"healing",
+				"magical",
+				"necromancy",
+				"oil"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"When you apply sticky, stinging life-boosting oil, you gain fast healing according to the oil's type that starts the first time you take damage while the oil lasts. Once the fast healing starts, the oil remains effective for 4 rounds. However, the oil lasts only 8 hours, whether it provides fast healing or not."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 3,
+					"price": {
+						"amount": 12,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil grants fast healing 3."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 7,
+					"price": {
+						"amount": 70,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil grants fast healing 6."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 11,
+					"price": {
+						"amount": 300,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil grants fast healing 10."
+					]
+				},
+				{
+					"name": "major",
+					"level": 15,
+					"price": {
+						"amount": 1300,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil grants fast healing 15."
+					]
+				}
+			]
+		},
+		{
+			"name": "Merciful Balm",
+			"source": "TV",
+			"page": 86,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"abjuration",
+				"consumable",
+				"magical",
+				"oil"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"Smelling strongly of herbs and pine resin, merciful balm is a thick, sticky paste that can be used to anoint a weapon, granting the weapon the {@trait nonlethal} trait for 1 hour."
+			]
+		},
+		{
+			"name": "Oil of Ownership",
+			"source": "TV",
+			"page": 86,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"You can coat objects of 6 Bulk or less with oil of ownership, or \"red‑handed oil\" as some call it. Once applied, this clear oil remains active for 24 hours. Anyone who touches an object coated with this oil comes away with a red stain that won't wash off for a length of time that depends on the oil's type."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 3,
+					"price": {
+						"amount": 8,
+						"coin": "gp"
+					},
+					"entries": [
+						"The stain lasts 24 hours."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 7,
+					"price": {
+						"amount": 55,
+						"coin": "gp"
+					},
+					"entries": [
+						"The stain lasts 1 week."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 11,
+					"price": {
+						"amount": 210,
+						"coin": "gp"
+					},
+					"entries": [
+						"The stain lasts 1 month."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oil of Skating",
+			"source": "TV",
+			"page": 87,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"This thin, slippery oil shimmers with a golden hue. Coating your shoes or feet with oil of skating enables you to skate quickly along flat surfaces for 1 hour. You gain a +10‑foot status bonus to your Speed, which doubles if you move on a downhill surface. You lose this bonus if moving on difficult terrain, greater difficult terrain, or uneven ground. Also, you treat any uphill movement as moving on difficult terrain while your feet are oiled and treat the results of any {@skill Acrobatics} checks made to {@action Balance} as one degree worse."
+			]
+		},
+		{
+			"name": "Oil of Swiftness",
+			"source": "TV",
+			"page": 87,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"Anoint a weapon with oil of swiftness, which hisses upon application, to give it the benefits of the speed rune for 1 minute."
+			]
+		},
+		{
+			"name": "Serpent Oil",
+			"source": "TV",
+			"page": 87,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on a Tiny object that is snakelike in shape, from a stick to a scarf, the object transforms into a viper, keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the {@trait minion} trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 3,
+					"price": {
+						"amount": 8,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "moderate",
+					"level": 5,
+					"price": {
+						"amount": 24,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil can be applied to a Small object, producing a sea snake (Pathfinder Bestiary 2 245), or a Medium object, producing a ball python."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 7,
+					"price": {
+						"amount": 56,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil can be applied to a Medium object, producing a giant viper."
+					]
+				},
+				{
+					"name": "major",
+					"level": 11,
+					"price": {
+						"amount": 225,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil can be applied to a Large object, producing an emperor cobra (Pathfinder Bestiary 2 245)."
+					]
+				},
+				{
+					"name": "true",
+					"level": 15,
+					"price": {
+						"amount": 1100,
+						"coin": "gp"
+					},
+					"entries": [
+						"The oil can be applied to a Huge object, producing a giant anaconda."
+					]
+				}
+			]
+		},
+		{
+			"name": "Weapon-Weird Oil",
+			"source": "TV",
+			"page": 87,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
+			],
+			"price": {
+				"amount": 55,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"Each dose of weapon-weird oil is keyed to a particular melee weapon group, selected from among axe, brawling, club, flail, hammer, knife, pick, polearm, shield, spear, and sword. The oil creates a synergy between skill and weapon, enabling you to wield the weapon in unexpected ways. You must have proficiency with the original weapon to benefit from the oil; however, you use your proficiency rank with the oil's keyed group instead of the weapon's original group. Also, you apply the critical specialization effect from the oil's keyed group instead of the weapon's normal critical specialization effect.",
+				"While the oil remains effective, the grievous rune and similar magic react as if the weapon belongs to the oil's group. A weapon can be coated in only one type of weapon-weird oil at a time. Any new application of this oil supersedes any previous one. These effects last for 1 hour."
+			]
+		},
+		{
+			"name": "Wounding Oil",
+			"source": "TV",
+			"page": 87,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"necromancy",
+				"oil"
+			],
+			"price": {
+				"amount": 45,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"Smearing wounding oil, a crimson fluid, on a weapon causes it to smell strongly of blood and gives it the benefits of the wounding rune for 1 minute."
+			]
+		},
+		{
 			"name": "Astringent Venom",
 			"source": "TV",
 			"page": 67,
