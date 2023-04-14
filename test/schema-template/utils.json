@@ -1864,8 +1864,21 @@
 							"type": "integer",
 							"exclusiveMinimum": 0
 						},
+						"patternProperties": {
+							"^.+$": {
+								"type": "integer",
+								"exclusiveMinimum": 0
+							}
+						},
 						"note": {
 							"type": "string"
+						},
+						"abilities": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"minItems": 1
 						}
 					},
 					"additionalProperties": {
