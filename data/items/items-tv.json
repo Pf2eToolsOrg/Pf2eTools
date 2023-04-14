@@ -8194,6 +8194,4858 @@
 			]
 		},
 		{
+			"name": "Cayden's Brew",
+			"source": "TV",
+			"page": 88,
+			"type": "Item",
+			"level": "8+",
+			"traits": [
+				"conjuration",
+				"consumable",
+				"magical",
+				"poison",
+				"potion"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Poison",
+			"entries": [
+				"Cayden's brew is like rich beer or ale, with a golden-brown color and foamy head. For 1 hour after you drink it, you have a +1 item bonus to saving throws against {@trait fear} effects. Also, you can use a single action to breathe out a 15-foot cone of intoxicating vapor with a burp that can be heard for 100 feet. Any creature in the vapor must attempt a DC 25 Fortitude saving throw. After you use this breath weapon, you can't do so again for {@dice 1d4} rounds.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} for 1 round."
+						],
+						"Failure": [
+							"The creature is {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} for {@dice 1d4} rounds."
+						],
+						"Critical Failure": [
+							"The creature becomes {@condition clumsy||clumsy 2}, {@condition stupefied||stupefied 2}, and {@condition sickened||sickened 1}. The {@condition clumsy} and {@condition stupefied} conditions last until {@dice 1d4} rounds after the {@condition sickened} condition ends."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "Cayden's brew",
+					"level": 8,
+					"price": {
+						"amount": 80,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "double Cayden's brew",
+					"level": 13,
+					"price": {
+						"amount": 480,
+						"coin": "gp"
+					},
+					"entries": [
+						"The save DC is 31."
+					]
+				},
+				{
+					"name": "triple Cayden's brew",
+					"level": 18,
+					"price": {
+						"amount": 3200,
+						"coin": "gp"
+					},
+					"entries": [
+						"The save DC is 40."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cloning Potion",
+			"source": "TV",
+			"page": 88,
+			"type": "Item",
+			"level": 18,
+			"traits": [
+				"rare",
+				"conjuration",
+				"consumable",
+				"magical",
+				"potion"
+			],
+			"price": {
+				"amount": 5000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"When you drink a cloning potion, you split in two, one version of you remaining in your space and the other moving into an adjacent space. Your clone, which has the {@trait minion} trait, looks like you and remains for 1 minute. Provided you are both on the same plane, you can command your clone telepathically with a single action with the {@trait concentrate} trait. You can also issue verbal commands, as normal for a minion. As an action that has the {@trait concentrate} trait, you can sense through your clone. When you do, you lose all sensory information from your own body. You can {@action Dismiss} this sense-sharing effect.",
+				"You and your clone share Hit Points, and the clone uses your statistics. Spells and effects target you and your clone as if you are separate creatures. The clone can Activate your abilities and Cast your Spells, limited by its number of actions, but you share elements such as use limits, frequency, and spell slots. In other words, your clone using one of your resources works as if you did so in or from your clone's space. Your clone has gear identical to your own, excepting artifacts and consumables. Any item taken from the clone melts into silvery dust within seconds, with ammunition or thrown objects lasting just long enough to travel to and possibly hit their target.",
+				"When the duration lapses, your clone melts into silvery dust. You become temporarily immune to cloning potion for {@dice 1d4} days."
+			]
+		},
+		{
+			"name": "Eidetic Potion",
+			"source": "TV",
+			"page": 89,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"consumable",
+				"divination",
+				"magical",
+				"potion"
+			],
+			"price": {
+				"amount": 40,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"Bright pink, pale lavender, and vibrant orange colors swirl through this purplish liquid, making the eidetic potion resemble an unforgettable sunset. When you drink this potion, for 1 round, anything you observe becomes locked into your memory. You can recall the memory perfectly and gain a +2 status bonus to create representations of that memory, whether using {@skill Crafting} to create an artistic rendition or {@skill Society} to create a Forgery. The memory remains locked for 1 week or until you benefit from the bonus it imparts for the first time, whichever comes first; afterward, it becomes a normal, fallible memory. You can only have a single memory locked in your mind at a time. Using this potion while you have a locked memory from a previous use makes the previously locked memory fallible but allows you to lock a new memory."
+			]
+		},
+		{
+			"name": "Elysian Dew",
+			"source": "TV",
+			"page": 89,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"enchantment",
+				"magical",
+				"potion"
+			],
+			"price": {
+				"amount": 375,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"When you drink sweet, sky-blue Elysian dew, for 1 minute, you gain a 10-foot aura that evokes the vitality of Elysium, causing nearby objects to seem more colorful and plants to stand taller.",
+				"You and any ally that starts its turn in the emanation gain 5 temporary Hit Points, a +1 item bonus to saving throws, and a +1 item bonus to {@skill Acrobatics} and {@skill Athletics} checks until the start of your or the ally's next turn. If you're evil and drink this potion, it fails to work, and you must succeed at a DC 30 Fortitude save or the potion renders you {@condition drained||drained 2}."
+			]
+		},
+		{
+			"name": "Empath's Cordial",
+			"source": "TV",
+			"page": 89,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"divination",
+				"magical",
+				"mental",
+				"potion"
+			],
+			"price": {
+				"amount": 65,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"The pale liquid of empath's cordial changes color to reflect the mood of the creature nearest to it\u2014turning blue for calm, red for anger, and green for envious, among other hues. For 1 hour after you drink this potion, you can sense the presence of general emotions, such as hostility toward you or the presence of an {@trait emotion} effect impacting a creature's emotions, within 30 feet.",
+				"A creature that failed a saving throw against calm emotions can't be detected. This potion doesn't allow you to automatically tell what emotions a specific creature is experiencing, but you can attempt a {@skill Perception} check with a +2 item bonus (DC set by the GM) to discern that information. The potion also grants you a +1 item bonus to {@skill Perception} checks to {@action Sense Motive} against creatures whose emotions you can sense."
+			]
+		},
+		{
+			"name": "Enigma-Sight Potion",
+			"source": "TV",
+			"page": 89,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"consumable",
+				"divination",
+				"magical",
+				"potion",
+				"revelation"
+			],
+			"price": {
+				"amount": 250,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"A vial of this enigma-sight potion seems to contain fragments of kaleidoscopic crystal that reflect mind-bending scenes. However, these \"crystals\" act like liquid when poured or consumed. Drinking the potion grants you the effects of a {@spell true seeing} spell, except that you use your {@skill Perception} modifier and your level for the secret counteract check instead of the normal counteract modifier and spell level. However, if you critically fail the secret counteract check the effect grants, your mind fills in false, nightmarish information. You become {@condition stupefied||stupefied 1} for {@dice 1d4} rounds and {@condition stunned||stunned 1} as your brain struggles to process what you see."
+			]
+		},
+		{
+			"name": "Faerie Dragon Liqueur",
+			"source": "TV",
+			"page": 89,
+			"type": "Item",
+			"level": "7+",
+			"traits": [
+				"uncommon",
+				"consumable",
+				"enchantment",
+				"magical",
+				"mental",
+				"potion"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"Each draft of faerie dragon liqueur has a different flavor. For 1 hour after you drink it, you can use a single action to breathe out a 15-foot cone of euphoric gas. Each creature in the cone must attempt a DC 23 Will save. After you use this breath weapon, you can't do so again for {@dice 1d4} rounds.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition stupefied||stupefied 1} for 1 round."
+						],
+						"Failure": [
+							"The creature is {@condition stupefied||stupefied 1} for 1 minute and {@condition slowed||slowed 1} for {@dice 1d4} rounds."
+						],
+						"Critical Failure": [
+							"The creature is {@condition stupefied||stupefied 2} and {@condition slowed||slowed 1} for 1 minute."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "young faerie dragon liqueur",
+					"level": 7,
+					"price": {
+						"amount": 70,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "adult faerie dragon liqueur",
+					"level": 12,
+					"price": {
+						"amount": 400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The save DC is 29."
+					]
+				},
+				{
+					"name": "wyrm faerie dragon liqueur",
+					"level": 17,
+					"price": {
+						"amount": 3000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The save DC is 37."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hovering Potion",
+			"source": "TV",
+			"page": 90,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"potion"
+			],
+			"price": {
+				"amount": 55,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"A foamy, cloudy liquid, hovering potion enables you to defy gravity for 5 minutes. By default, the potion causes you to float several inches off the ground. If you take a {@action Stride} action, you can move 10 feet up or down in the air. You can instead {@action Climb} at your full Speed or {@action Stride} to move along a horizontal surface at half your Speed. The GM determines which surfaces can be climbed or moved across this way. If you fall while this potion is in effect, you can use the {@action Arrest a Fall} reaction as if you had a fly Speed. If you have a fly Speed, you remain airborne at the end of your turn, even if you didn't use a {@action Fly} action this round."
+			]
+		},
+		{
+			"name": "Immovable Potion",
+			"source": "TV",
+			"page": 90,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"consumable",
+				"magical",
+				"potion",
+				"transmutation"
+			],
+			"price": {
+				"amount": 160,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"When you drink the thick, slate-colored immovable potion, you become anchored in place, even defying gravity, rendering you {@condition immobilized} for 1 minute or until you {@action Dismiss} the activation.",
+				"While you are {@condition immobilized} this way, the DC to move you from your place, including knocking you {@condition prone}, is 40."
+			]
+		},
+		{
+			"name": "Mind-Swap Potion",
+			"source": "TV",
+			"page": 90,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical",
+				"mental",
+				"necromancy",
+				"possession",
+				"potion"
+			],
+			"price": {
+				"amount": 1000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"Small bolts of brightly colored electricity flicker through the cloudy mind-swap potion. The potion often comes in a double-chambered flask, because when you drink it, you consume half the contents. If another creature of the same ancestry consumes the remainder of the contents within 1 minute, your minds swap per the effect of a critical success on a mind swap ritual (Secrets of Magic 151). The effects last for 24 hours or until one of you Dismisses the activation."
+			]
+		},
+		{
+			"name": "Quenching Potion",
+			"source": "TV",
+			"page": 90,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"consumable",
+				"magical",
+				"necromancy",
+				"potion"
+			],
+			"price": {
+				"amount": 85,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"Quenching potion is a clear liquid that tastes like fresh, cool spring water. Drinking this potion or pouring it over yourself completely hydrates you and cleanses your system. Immediately attempt a flat check to end any {@condition persistent damage||persistent acid}, fire, negative, or poison damage affecting you, and attempt a new saving throw against any poison affecting you. Poison can't progress to a worse stage due to this saving throw.",
+				"The potion counts as a particularly appropriate type of help against {@condition persistent damage||persistent acid}, fire, negative, and poison damage."
+			]
+		},
+		{
+			"name": "Rebirth Potion",
+			"source": "TV",
+			"page": 90,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical",
+				"potion",
+				"transmutation"
+			],
+			"price": {
+				"amount": 150,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"A small bit from a humanoid\u2014such as a hair, scale, or feather\u2014 steeps in the clear liquid of a rebirth potion. When the potion is created, this bit determines the ancestry and heritage the potion changes the imbiber to. After you drink the potion, you transform into that ancestry over 8 hours during your next period of rest, finishing the transformation after the 8 hours are up. Throughout this time, you are {@condition clumsy||clumsy 2}, {@condition enfeebled||enfeebled 2}, and {@condition stupefied||stupefied 2}. Once the transformation is complete, the potion's magic ends and can't be counteracted. Replace your ancestry Hit Points, size, Speeds, ability boosts, ability flaws, traits, and special abilities with those of your new ancestry. You lose your ancestry feats, selecting replacements valid for your new ancestry. You have mild control over the change, but you end up with a unique appearance fitting for your new ancestry, and some quirks of your body remain, such as relative age, general health, scars, and missing digits, limbs, or organs.",
+				"Drinking a rebirth potion of your current ancestry works normally, allowing you to rearrange some of the cited ancestry elements and change your appearance (provided you abide by the potion's limitations regarding health and age)."
+			]
+		},
+		{
+			"name": "Roaring Potion",
+			"source": "TV",
+			"page": 90,
+			"type": "Item",
+			"level": "8+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"potion",
+				"sonic"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"Ripples move constantly through a roaring potion, a cloudy liquid that growls when you open its container. Drinking it gives you access to two other activations for 1 hour.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"You gain the effects of a {@spell bullhorn|SoM} spell. You can {@action Dismiss} the activation."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"special": "once every {@dice 1d4} rounds"
+					},
+					"variants": [
+						{
+							"name": "lesser",
+							"level": 8,
+							"price": {
+								"amount": 90,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "moderate",
+							"level": 13,
+							"price": {
+								"amount": 550,
+								"coin": "gp"
+							},
+							"entries": [
+								"You gain the effects of a 5th-level {@spell bullhorn|SoM} spell. The damage is {@dice 6d4} and the save DC is 30."
+							]
+						},
+						{
+							"name": "greater",
+							"level": 18,
+							"price": {
+								"amount": 3600,
+								"coin": "gp"
+							},
+							"entries": [
+								"You gain the effects of a 7th-level {@spell bullhorn|SoM} spell. The damage is {@dice 10d4} and the save DC is 38."
+							]
+						}
+					],
+					"entries": [
+						"You emit a scream in a 15-foot cone that deals {@damage 4d4} sonic damage. Each creature in the area can attempt a DC 24 Fortitude saving throw.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes half damage."
+								],
+								"Failure": [
+									"The creature takes full damage and is {@condition frightened||frightened 1}."
+								],
+								"Critical Failure": [
+									"The creature takes double damage and is {@condition frightened||frightened 2}."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rovagug's Mud",
+			"source": "TV",
+			"page": 90,
+			"type": "Item",
+			"level": "13+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"potion"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"{@deity Rovagug}'s mud smells and tastes like wet, sour earth. For 1 hour after you drink it, you have a +2 item bonus to saving throws against {@trait incapacitation} effects. Also, you can use a single action to breathe out a 20-foot cone of bitter vapor that causes an earth-shaking rumble that can be heard for 100 feet.",
+				"Creatures and objects in the area take {@dice 5d6} damage (DC 30 basic Fortitude save), decreasing Hardness by 5. An object's Hardness remains lowered for {@dice 1d4} rounds, and you can't use this breath again for the same amount of time."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "{@deity Rovagug}'s mud",
+					"level": 13,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater {@deity Rovagug}'s mud",
+					"level": 18,
+					"price": {
+						"amount": 4800,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 8d6}, the save DC is 38, and Hardness decreases by 10."
+					]
+				}
+			]
+		},
+		{
+			"name": "Starsong Nectar",
+			"source": "TV",
+			"page": 91,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"rare",
+				"consumable",
+				"divination",
+				"fortune",
+				"magical",
+				"potion"
+			],
+			"price": {
+				"amount": 14000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"A liquid with the appearance of an expressive night sky and a taste that's sheer pleasure, starsong nectar grants you cheerful confidence and incredible luck for 10 minutes after you drink it. However, if you show too much caution at any point during this time (GM's discretion), you must succeed at a DC {@flatDC 6} flat check or the potion's effects end. While the potion lasts, you gain a +3 status bonus to attack rolls, initiative rolls, {@skill Perception} checks, saving throws, and skill checks, and you aren't {@condition flat-footed} against {@condition undetected} creatures or when flanked. You are temporarily immune to this potion for 24 hours once its effects end. While the potion lasts, though, if you take a moment to imagine the future, you choose the best courses of action. This aspect of the potion grants you the following activation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"Until the start of your next turn, roll two d20s for any attack rolls, {@skill Perception} checks, saving throws, and skill checks you make and take the higher result."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sure-Step Potion",
+			"source": "TV",
+			"page": 91,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"consumable",
+				"magical",
+				"potion",
+				"transmutation"
+			],
+			"price": {
+				"amount": 17,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"The light-brown liquid of a sure-step potion helps you find your footing. After drinking it, you gain a +1 item bonus to {@skill Acrobatics} checks to {@action Balance} for 1 hour. In addition, you can {@action Step} into difficult terrain, and you aren't {@condition flat-footed} on uneven ground."
+			]
+		},
+		{
+			"name": "Tentacle Potion",
+			"source": "TV",
+			"page": 91,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"consumable",
+				"magical",
+				"potion",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"Upon consuming this mottled, foul-tasting liquid, the tentacle potion causes you to extrude a long, flexible limb of ectoplasm.",
+				"Your clothing doesn't need to accommodate this limb of ghostly matter, which can extrude through your clothing and armor. The limb lasts 1 hour, and you can {@action Dismiss} the activation. You can't hide or disguise the tentacle. You can use the limb to perform simple {@action Interact} actions, such as opening an unlocked door. Your limb can't perform actions that require significant manual dexterity, including any action that would require a check to accomplish. You can't use it to hold items. At one time, you can have only one extra limb from any version of this potion. Stronger tentacle potions replace the effects of weaker ones.",
+				"If you have the Flexible Tail or Skillful Tail feats, the Tailed Goblin heritage, or a similar feature the GM believes would benefit, this potion can instead fortify your tail. A fortified tail benefits from any tentacle potion as if the potion were the next better type."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 6,
+					"price": {
+						"amount": 33,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "moderate",
+					"level": 10,
+					"price": {
+						"amount": 155,
+						"coin": "gp"
+					},
+					"entries": [
+						"As lesser, but you can use the limb to hold an item of up to light Bulk. You can also use the whole limb to hold onto a suitable anchor point, such as a tree branch, balcony, or rocky outcropping, subject to the GM's discretion. While using your limb this way, you have free use of all your other limbs, so you can perform tasks that require both hands. This potion lasts 8 hours."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 14,
+					"price": {
+						"amount": 660,
+						"coin": "gp"
+					},
+					"entries": [
+						"As moderate, but the tail can hold an item of up to 1 Bulk or be used as a second hand to help hold an item of up to 2 Bulk. You can also use the limb to make an unarmed attack that deals {@damage 1d6} bludgeoning damage and has the {@trait sweep} trait. This potion lasts 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Amnemonic Charm",
+			"source": "TV",
+			"page": 92,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"divination",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 140,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This ornate locket, usually containing a faceless, humanoid portrait, is typically worn on a chain around the neck or attached to your clothing. When activated, the charm casts a DC 26 {@spell modify memory} spell against a single target of the check, removing all memory of your failed attempt and potentially allowing you to make another attempt. The effect can't remove more than 3 minutes of memories from its target."
+			],
+			"trigger": "You fail or critically fail a {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation} check to {@action Coerce}, {@action Lie}, {@action Make an Impression}, or {@action Request}",
+			"requirements": "You're a master in the skill you failed with."
+		},
+		{
+			"name": "Blending Brooch",
+			"source": "TV",
+			"page": 92,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"consumable",
+				"illusion",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 275,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This small, matte-black pin always seems to be on the periphery of your vision, even when you stare directly at it. When you Activate the talisman, choose one creature you can see. You become {@condition invisible} to that creature unless it succeeds at a DC 28 Will save. This effect lasts for 1 minute or until the target hits you with an attack, whichever comes first."
+			],
+			"trigger": "You roll initiative using {@skill Stealth} and can see a creature",
+			"requirements": "You are a master in {@skill Stealth}."
+		},
+		{
+			"name": "Captivating Bauble",
+			"source": "TV",
+			"page": 92,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"auditory",
+				"consumable",
+				"emotion",
+				"enchantment",
+				"linguistic",
+				"magical",
+				"talisman",
+				"visual"
+			],
+			"price": {
+				"amount": 350,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 3,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This talisman appears as an ornate piece of jewelry of the highest quality. When you Activate it, your speech and mannerisms become supernaturally compelling for up to 1 hour. By engaging an intelligent creature in conversation for at least 1 minute, you can cause them to become {@condition fascinated} unless they succeed at a DC 30 Will save. This fascination lasts for as long as you continue conversing or until you move at least 20 feet away. When the effect ends, the target becomes temporarily immune for 24 hours.",
+				"If you or any ally within 120 feet takes an overtly {@condition hostile} action while a creature is {@condition fascinated} by the bauble, the bauble burns out in a shower of sparks and all its effects end."
+			],
+			"requirements": "You are a master in {@skill Deception} or {@skill Diplomacy}."
+		},
+		{
+			"name": "Chain of Stars",
+			"source": "TV",
+			"page": 92,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"consumable",
+				"evocation",
+				"force",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 100,
+				"coin": "gp"
+			},
+			"usage": "affixed to a thrown weapon",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This delicate mithral chain strung with tiny shuriken is wound tightly around the handle of the affixed weapon. When you",
+				{
+					"type": "ability",
+					"components": [
+						"the chain",
+						"three +1 striking shuriken made from"
+					]
+				},
+				"magical force materialize in the target's space and split off to attack other creatures. Attempt up to three shuriken Strikes that must each target a different creature and can't target the creature you hit to trigger this talisman. These Strikes use your attack modifier but originate from the hit creature's space.",
+				"These attacks count toward your multiple attack penalty, but the penalty doesn't increase until after all three attacks have been made. The shuriken deal force damage instead of their normal type, and each shuriken vanishes after its attack."
+			],
+			"trigger": "You hit a creature with the affixed weapon."
+		},
+		{
+			"name": "Copper Penny",
+			"source": "TV",
+			"page": 92,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"consumable",
+				"magical",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"amount": 30,
+				"coin": "gp"
+			},
+			"usage": "affixed to explorer's clothing (or another item in the unarmored defense category)",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This plain copper coin is typically affixed near the feet, on a pant leg or hem. When you Activate it, you {@action Stand} and can't be knocked {@condition prone} again on the current turn."
+			],
+			"trigger": "You are knocked {@condition prone}",
+			"requirements": "You're an expert in {@skill Acrobatics}, and you are unarmored."
+		},
+		{
+			"name": "Dragonclaw Scutcheon",
+			"source": "TV",
+			"page": 92,
+			"type": "Item",
+			"level": 16,
+			"traits": [
+				"abjuration",
+				"consumable",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 1600,
+				"coin": "gp"
+			},
+			"usage": "affixed to a shield",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This decorative shield emblem contains the gilded claw of a dragon mounted in a setting of high-grade adamantine alloy. It protects against a damage type depending on the type of dragon the claw came from (see the sidebar). When you",
+				{
+					"type": "ability",
+					"components": [
+						"the scutcheon",
+						"you and all of your carried",
+						"wielded,"
+					]
+				},
+				"or worn items gain immunity to all damage of that type until the end of your next turn.",
+				"If you have a dragonclaw scutcheon, dragonscale cameo, and dragontooth trophy attached to your items, and they all correspond to the same type of dragon, you gain an extra benefit. When you Activate any of these talismans, you gain the ability to cast an 8th-level, DC 35 {@spell dragon breath} focus spell (Core Rulebook 403) as an innate spell once before the end of your next turn. Use the dragon type that matches the talismans; you can Cast the Spell this way without spending a Focus Point.",
+				"Because each talisman disintegrates when used, you can't get this benefit again until you've attached a replacement."
+			],
+			"craftReq": "Supply one claw from an adult or older dragon.",
+			"trigger": "You would take damage of a type depending on the talisman's dragon type: acid, cold, electricity, fire, or poison damage",
+			"prerequisites": "You have the affixed shield raised."
+		},
+		{
+			"name": "Dragonscale Cameo",
+			"source": "TV",
+			"page": 93,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"consumable",
+				"magical",
+				"morph",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"amount": 400,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This ornamental pin, consisting of a single preserved dragon scale from a chromatic or metallic dragon mounted in a setting of precious metal, is typically affixed between the shoulder blades. When you Activate the pin, a pair of draconic wings matching the color of the scale unfurl from your shoulders, granting you a fly Speed of 50 feet for 5 minutes."
+			],
+			"craftReq": "Supply one scale from an adult or older dragon."
+		},
+		{
+			"name": "Dragontooth Trophy",
+			"source": "TV",
+			"page": 93,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 800,
+				"coin": "gp"
+			},
+			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This imposing fang is engraved with an intricate arrangement of symbols, glyphs, and patterns and dangles from a leather strap bound to the hilt of the affixed weapon. When you",
+				{
+					"type": "ability",
+					"components": [
+						"the trophy",
+						"your weapon is momentarily transformed"
+					]
+				},
+				"into a magical construct of draconic fury. On the triggering {@action Strike} and until the end of your next turn, the damage type of the affixed weapon changes to the type matching the dragon the claw came from (see the sidebar). This change overrides the {@trait versatile} trait and similar abilities."
+			],
+			"craftReq": "Supply one tooth from an adult or older dragon.",
+			"trigger": "You succeed at a {@action Strike} with the affixed weapon."
+		},
+		{
+			"name": "Emergency Eye",
+			"source": "TV",
+			"page": 93,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"divination",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 60,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This eye, harvested from a monster, looks like it's peacefully sleeping but gives you a backup when you can't use your eyes.",
+				"When the eye is activated, the eyelid pops open, and the eye stares frantically about. You see through the eye with normal vision until the end of your next turn, when the eye withers and flakes away."
+			],
+			"trigger": "You become {@condition blinded}, or an effect otherwise impedes your vision",
+			"requirements": "You are an expert in {@skill Perception}."
+		},
+		{
+			"name": "Ensnaring Disk",
+			"source": "TV",
+			"page": 93,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 70,
+				"coin": "gp"
+			},
+			"usage": "affixed to a shield",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This coin-sized metal disk is inscribed with arcane symbols and mounted on the inner surface of a shield. When you Activate the disk, the triggering weapon momentarily sticks to your shield, allowing you to attempt to {@action Disarm} it from its wielder with a +2 item bonus. If you roll a critical failure on this check, you get a failure instead."
+			],
+			"trigger": "You use the affixed shield to Shield Block a melee weapon attack",
+			"requirements": "You are an expert in {@skill Athletics}."
+		},
+		{
+			"name": "False Death Vial",
+			"source": "TV",
+			"page": 93,
+			"type": "Item",
+			"level": "13+",
+			"traits": [
+				"uncommon",
+				"conjuration",
+				"consumable",
+				"magical",
+				"talisman"
+			],
+			"usage": "affixed to explorer's clothing (or another item in the unarmored defense category)",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This tiny crystal vial of oily liquid is typically attached to a pin or worn on a tether attached to the affixed article of clothing.",
+				"When you Activate the vial, you avoid being knocked out and remain at 1 Hit Point, your {@condition wounded} condition increases by 1, and the talisman casts drop dead on you. You and any items you're wearing and holding are instantly transported from your current space to a clear space of your choice within range. You take no damage from the triggering effect. If you are carrying another creature (even one contained inside an extradimensional container), it's left behind in your original space."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "false death vial",
+					"level": 13,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater false death vial",
+					"level": 16,
+					"price": {
+						"amount": 2000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The talisman also teleports you to a clear space of your choice that you can see within 120 feet. This also transports any items you're wearing and holding with you, but if this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the teleportation is canceled.",
+						"This effect has the {@trait teleportation} trait."
+					]
+				}
+			],
+			"trigger": "You would be reduced to 0 Hit Points by damage but not immediately killed",
+			"requirements": "You are unarmored."
+		},
+		{
+			"name": "Grinning Pugwampi",
+			"source": "TV",
+			"page": 94,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"enchantment",
+				"magical",
+				"misfortune",
+				"talisman"
+			],
+			"price": {
+				"amount": 700,
+				"coin": "gp"
+			},
+			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This bone statuette of a sneering gremlin crumbles to dust when activated, imparting a fraction of its subject's infamous misfortune on those you strike. The damaged creature must attempt a DC 33 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature must roll twice and take the worse result on the next check it attempts."
+						],
+						"Failure": [
+							"The creature must roll twice and take the worse result on all checks until the end of its next turn."
+						]
+					}
+				}
+			],
+			"trigger": "You damage a {@condition flat-footed} creature with the affixed weapon."
+		},
+		{
+			"name": "Grudgestone",
+			"source": "TV",
+			"page": 94,
+			"type": "Item",
+			"level": "7+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"talisman"
+			],
+			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This dull black pebble, ominously cold to the touch and curiously heavy for its size, is typically bound to the affixed weapon inside a strip of cloth wrapped around its grip. When you Activate the grudgestone, your Strikes with the affixed weapon against the triggering creature gain a +3 status bonus to damage rolls for 1 minute or until the target dies, whichever comes first."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "grudgestone",
+					"level": 7,
+					"price": {
+						"amount": 70,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater grudgestone",
+					"level": 15,
+					"price": {
+						"amount": 900,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bonus is +5."
+					]
+				}
+			],
+			"trigger": "A creature critically hits you."
+		},
+		{
+			"name": "Hungering Maw",
+			"source": "TV",
+			"page": 94,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"magical",
+				"necromancy",
+				"talisman"
+			],
+			"price": {
+				"amount": 2200,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"A shining onyx gemstone clutched in a pair of black steel jaws, this pendant is a potent defense against {@condition hostile} spirits and other beings who commandeer the bodies of others. When you Activate it, you gain a +4 item bonus to your saving throw against the triggering effect. If your result prevents you from being possessed, the creature that attempted to possess you is subject to a DC 37 {@spell bind soul} spell, which can trap it in the talisman as if it had recently died. The talisman's magic is exhausted after use, but a soul trapped this way remains imprisoned inside, as detailed in the spell description. Starting at the end of its next turn, the trapped creature gets a new save to end the effect at the end of each of its turns."
+			],
+			"trigger": "You attempt a saving throw against a {@trait possession} effect",
+			"requirements": "You are a master in Will saves."
+		},
+		{
+			"name": "Mortalis Coin",
+			"source": "TV",
+			"page": 94,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"consumable",
+				"magical",
+				"necromancy",
+				"talisman"
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This small golden coin is usually stamped with the image of a boar or other resilient creature. If the triggering damage would cause you to become {@condition dying||dying 2} (typically due to a critical hit or your critical failure), you become {@condition dying||dying 1} instead. In addition, for 10 minutes, you die from the {@condition dying} condition at {@condition dying||dying 5}, rather than {@condition dying||dying 4}."
+			],
+			"trigger": "You are reduced to 0 Hit Points by damage but not immediately killed",
+			"requirements": "You are an expert in Fortitude saves."
+		},
+		{
+			"name": "Reflecting Shard",
+			"source": "TV",
+			"page": 94,
+			"type": "Item",
+			"level": "13+",
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"magical",
+				"talisman"
+			],
+			"usage": "affixed to a shield",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"{@skill Athletics}, and you have the affixed shield raised.",
+				"This mirrored metal fragment is bolted or welded to the face of the affixed shield. When you Activate it, you attempt to reflect the triggering spell back at its caster with spell turning, using your {@skill Athletics} modifier for the counteract check. The talisman's counteract level is 7th."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "reflecting shard",
+					"level": 13,
+					"price": {
+						"amount": 500,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater reflecting shard",
+					"level": 17,
+					"price": {
+						"amount": 2500,
+						"coin": "gp"
+					},
+					"entries": [
+						"The talisman can reflect spells of any level, and its counteract level is 9th."
+					]
+				}
+			],
+			"trigger": "You are targeted by a spell of 5th level or lower",
+			"requirements": "You're a master in"
+		},
+		{
+			"name": "Reverberating Stone",
+			"source": "TV",
+			"page": 94,
+			"type": "Item",
+			"level": "11+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"talisman"
+			],
+			"usage": "affixed to a shield",
+			"bulk": "\u2013",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This heavy metal emblem is mounted on the face of the affixed shield and has a dull gray gemstone embedded at its center. When you Activate the talisman, the gem shatters, releasing a powerful shockwave in a 15-foot cone that must include the enemy who struck the triggering blow, if possible. Each creature in the cone takes {@damage 2d6} sonic damage with a DC 28 basic Fortitude save. Any creature that fails its save is pushed 5 feet away from you (or 10 feet on a critical failure)."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "reverberating stone",
+					"level": 11,
+					"price": {
+						"amount": 275,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater reverberating stone",
+					"level": 15,
+					"price": {
+						"amount": 1200,
+						"coin": "gp"
+					},
+					"entries": [
+						"The cone is 30 feet, the damage is {@dice 3d6}, and the DC is 34."
+					]
+				}
+			],
+			"trigger": "You use the affixed shield to Shield Block a melee attack",
+			"requirements": "You're a master in {@skill Athletics}, and you have the affixed shield raised."
+		},
+		{
+			"name": "Ruby Capacitor",
+			"source": "TV",
+			"page": 95,
+			"type": "Item",
+			"level": "10+",
+			"traits": [
+				"consumable",
+				"evocation",
+				"magical",
+				"talisman"
+			],
+			"usage": "affixed to a magical staff",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This cluster of unworked ruby is bound to the top of a staff by silver wire. When activated, it adds one temporary charge to the staff. Any spells cast from the staff before the end of the turn expend these charges first. Any unused temporary charges are lost at the end of your turn."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "ruby capacitor",
+					"level": 10,
+					"price": {
+						"amount": 180,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "greater ruby capacitor",
+					"level": 14,
+					"price": {
+						"amount": 800,
+						"coin": "gp"
+					},
+					"entries": [
+						"The number of temporary charges increases to 3."
+					]
+				},
+				{
+					"name": "major ruby capacitor",
+					"level": 18,
+					"price": {
+						"amount": 4500,
+						"coin": "gp"
+					},
+					"entries": [
+						"The number of temporary charges increases to 5."
+					]
+				}
+			],
+			"requirements": "You prepared the staff."
+		},
+		{
+			"name": "Snarling Badger",
+			"source": "TV",
+			"page": 95,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"consumable",
+				"enchantment",
+				"magical",
+				"mental",
+				"talisman"
+			],
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This tarnished steel pendant is inlaid with the face of an enraged badger. When you Activate the talisman, it casts heroism on you. If you lose the {@condition wounded} condition, the heroism ends immediately."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser snarling badger",
+					"level": 6,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"name": "moderate snarling badger",
+					"level": 12,
+					"price": {
+						"amount": 400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The heroism is 6th level."
+					]
+				},
+				{
+					"name": "greater snarling badger",
+					"level": 18,
+					"price": {
+						"amount": 5000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The heroism is 9th level."
+					]
+				}
+			],
+			"trigger": "You lose the {@condition dying} condition",
+			"requirements": "You have a {@condition wounded} value of 1 or more."
+		},
+		{
+			"name": "Wooden Nickel",
+			"source": "TV",
+			"page": 95,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"consumable",
+				"illusion",
+				"magical",
+				"talisman",
+				"visual"
+			],
+			"price": {
+				"amount": 130,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 3,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"{@skill Deception}.",
+				"This rough wooden coin hangs from a string drilled through a hole at its center. When you Activate the wooden nickel, for 10 minutes, you can cause any object you touch of 2 Bulk or less to look, feel, and smell like valuables of a similar size crafted from a precious metal of your choice. A creature that touches or Interacts with an affected object can attempt a {@skill Perception} check against your {@skill Deception} DC to disbelieve the illusion, and a successful check against your {@skill Deception} DC with {@skill Crafting} or an appropriate {@skill Lore} skill will also reveal the item's true nature.",
+				"After 10 minutes have elapsed since you Activated the wooden nickel, all affected objects revert to their true form."
+			],
+			"prerequisites": "You are a master in"
+		},
+		{
+			"name": "Bargainer's Instrument",
+			"source": "TV",
+			"page": 96,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"rare",
+				"conjuration",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 1000,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "hour"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A bargainer's instrument is a musical implement. The most typical version is a violin made from maple and spruce, its body stained so deep a purple it appears almost black. When activated, the instrument casts a planar binding ritual to conjure a willing extraplanar talent to compete with you in performance.",
+				"The contest could be a musical battle, a dance-off, an oratorical debate\u2014the two of you could even use entirely different types of performance. The loser of the bout is magically bound to perform a task of the winner's choice within 1 week. The contest consists of taking turns to {@action Perform}, starting with your opponent. The {@skill Performance} check's DC is the higher of the opponent's {@skill Perception} DC or Will DC, though the two parties can mutually agree to use an impartial judge instead. The first to reach four successes wins, with each critical successes counting as two successes. If you play the bargainer's instrument as part of your performance, it grants you a +2 item bonus to the {@skill Performance} checks.",
+				"After the contest, the conjured creature can choose to return to where it came from or remain where you conjured it. The loser must endeavor to complete the task by all reasonable means within 1 week. Failing to complete it is shameful but has no further consequences. The instrument loses its magic and remains a non-magical virtuoso instrument."
+			]
+		},
+		{
+			"name": "Bewildering Spellgun",
+			"source": "TV",
+			"page": 96,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"attack",
+				"consumable",
+				"emotion",
+				"enchantment",
+				"magical",
+				"mental",
+				"spellgun"
+			],
+			"price": {
+				"amount": 140,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}",
+					"{@action Strike}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"When stared at, a bewildering spellgun seems to warp the space around it, creating a mind-bending sensation. Whispers of gibberish arise from it, making their way to nearby ears despite any other sounds in the area. You Activate the spellgun by aiming it at one creature and making your choice of a spell attack roll or a firearm attack roll against the target's AC. This spellgun has a range increment of 15 feet. Once fired, the spellgun twists in your hand and melts away.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is {@condition confused} for 1 minute."
+						],
+						"Success": [
+							"The target is {@condition confused} for 1 minute but can attempt a DC 25 Will save at the end of each of its turns to end the effect."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Energizing Treat",
+			"source": "TV",
+			"page": 96,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"consumable",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 70,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"An energizing treat is a treat made from meat or grains. When you feed your animal companion or familiar an energizing treat, it's {@condition quickened} for 1 minute. It can use the extra action each round only for {@action Strike}, {@action Stride}, and Support actions, and it can do so only if it normally has those actions available and you take the proper action to command it."
+			]
+		},
+		{
+			"name": "Familiar Morsel",
+			"source": "TV",
+			"page": 96,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"consumable",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 30,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Familiar morsels are little treats that come in a wide variety of flavors that appeal to numerous creatures. Each morsel is keyed to one familiar ability at its creation. When you feed the morsel to your familiar, it gains that familiar ability for 1 hour. If your familiar doesn't meet the requirements, or if it already has an ability from a familiar morsel, the morsel is nothing more than a pleasing snack, its magic wasted."
+			]
+		},
+		{
+			"name": "Marvelous Pigment",
+			"source": "TV",
+			"page": 97,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"conjuration",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 325,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 10,
+					"unit": "minute"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Marvelous pigment comes in a small container of shifting, multicolored paint that can magically create an object painted with it. The pigment is applied with a stick tipped with bristles, hair, or fur. The paint flows as you Activate the marvelous pigment and changes color at your whim as you paint. The paint can cover a 10-foot-square, two-dimensional surface.",
+				"When you're done painting, attempt a DC 30 {@skill Crafting} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The object you painted emerges from the surface as a real, permanent object no larger than 10 feet in any dimension. It's non-magical and inanimate and has no value except to certain art collectors. If you paint a creature, machine, or form of energy (such as a campfire), these depictions appear only as inanimate sculptures. The created object has a painterly appearance that clearly marks its unusual origin, but is as real as any other."
+						],
+						"Success": [
+							"As critical success, but the object constantly sheds flakes of paint until it falls apart, destroyed, after 24 hours."
+						],
+						"Failure": [
+							"The pigments leave a painting that doesn't quite look right and doesn't become an object."
+						],
+						"Critical Failure": [
+							"Is it a dog? Whatever you made is a pretty lousy painting and doesn't resemble what you set out to make."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Moonlit Spellgun",
+			"source": "TV",
+			"page": 97,
+			"type": "Item",
+			"level": "2+",
+			"traits": [
+				"attack",
+				"consumable",
+				"evocation",
+				"fire",
+				"light",
+				"magical",
+				"spellgun"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}",
+					"{@action Strike}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Elegant silver filigree contains the body of this ephemeral item, which is made of solid light. Its shape resembles a pistol, and it's often carried by hunters of werecreatures, vampires, and devils.",
+				"You Activate the spellgun by aiming it at one creature and making your choice of a spell attack roll or a firearm attack roll against the target's AC. This spellgun has a range increment of 30 feet.",
+				"The spellgun emits a silvery ray of pure moonlight that deals fire damage depending on its type. The spellgun's damage is treated as silver for the purposes of weaknesses, resistances, and the like.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target takes double damage and is {@condition dazzled} until the start of your next turn. If it has a weakness to silver or a resistance that can be bypassed by silver, it's also {@condition enfeebled||enfeebled 1} for 1 minute."
+						],
+						"Success": [
+							"The target takes full damage and is {@condition dazzled} until the start of your next turn."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "minor",
+					"level": 2,
+					"price": {
+						"amount": 7,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 1d8} at night, or {@dice 1d6} at other times."
+					]
+				},
+				{
+					"name": "lesser",
+					"level": 5,
+					"price": {
+						"amount": 30,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 3d8} at night, or {@dice 3d6} at other times."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 9,
+					"price": {
+						"amount": 150,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 7d8} at night, or {@dice 7d6} at other times."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 13,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 12d8} at night, or {@dice 12d6} at other times."
+					]
+				},
+				{
+					"name": "major",
+					"level": 17,
+					"price": {
+						"amount": 3000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 18d8} at night, or {@dice 18d6} at other times."
+					]
+				}
+			]
+		},
+		{
+			"name": "Neophyte's Fipple",
+			"source": "TV",
+			"page": 97,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"consumable",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Perform}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"{@skill Performance}.",
+				"Made of polished wood, a neophyte's fipple is a block flute enchanted to guarantee melodic sound. When you {@action Perform} a song on the fipple to Activate it, your ability modifier, proficiency bonus, and item bonus for the {@skill Performance} check total +7, regardless of what they would normally be. Add other bonuses and penalties to the check normally. Once the magic is used, the fipple remains as a mundane instrument."
+			],
+			"requirements": "You are untrained in"
+		},
+		{
+			"name": "Potion Patch",
+			"source": "TV",
+			"page": 97,
+			"type": "Item",
+			"level": "4+",
+			"traits": [
+				"consumable",
+				"magical",
+				"transmutation"
+			],
+			"usage": "worn",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"command"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A potion patch is a sticky, bandage-like pad that can be filled with one potion and affixed to the skin. Filling the patch and affixing it is a 1-minute activity that takes two hands and has the {@trait manipulate} trait. A patch has a maximum level of potion it can absorb, depending on the patch's type. When you Activate the patch, the potion affects you without you needing to have the potion in your hand. The patch's magic is negated after it's used, the next time you make your daily preparations, or when another potion patch is affixed to you, whichever comes first."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 4,
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [
+						"The potion must be 10th level or lower."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 8,
+					"price": {
+						"amount": 100,
+						"coin": "gp"
+					},
+					"entries": [
+						"The potion must be 15th level or lower."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 13,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": [
+						"The potion can be any level."
+					]
+				}
+			],
+			"requirements": "You must have the potion patch affixed to your skin."
+		},
+		{
+			"name": "Reaper's Spellgun",
+			"source": "TV",
+			"page": 97,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"attack",
+				"consumable",
+				"death",
+				"magical",
+				"necromancy",
+				"negative",
+				"spellgun"
+			],
+			"price": {
+				"amount": 600,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}",
+					"{@action Strike}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A rod of blackened bone with a bulb at one end comprises a reaper's spellgun, which feels heavier than it looks. You",
+				{
+					"type": "ability",
+					"components": [
+						"the spellgun by aiming it at one creature and making"
+					]
+				},
+				"your choice of a spell attack roll or a firearm attack roll against the target's AC. This spellgun has a range increment of 30 feet. The spellgun fires a shadowy ray, then dissolves into gray mist.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target takes {@damage 4d6} negative damage and is {@condition drained||drained 2} and {@condition doomed||doomed 1}. If it had fewer than half its maximum Hit Points after taking the negative damage, it's {@condition drained||drained 3} instead. If the Hit Point loss from being {@condition drained} drops the creature to 0 Hit Points, it dies."
+						],
+						"Success": [
+							"As critical success, but for the {@condition drained} condition, the target is {@condition drained||drained 1}, or {@condition drained||drained 2} if it had fewer than half its maximum HP."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sparking Spellgun",
+			"source": "TV",
+			"page": 98,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"attack",
+				"consumable",
+				"evocation",
+				"fire",
+				"magical",
+				"spellgun"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}",
+					"{@action Strike}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A broad wooden tube with a handle, a sparking spellgun radiates warmth. You Activate the spellgun by aiming it at one creature and making your choice of a spell attack roll or a firearm attack roll against the target's AC. This spellgun has a range increment of 30 feet. The spellgun fires a small ball of sparks and fire, then crumbles to ash. The ball explodes in a flash when it hits, dealing fire damage and {@condition persistent damage||persistent fire damage} according to its type.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target takes double damage, takes double {@condition persistent damage}, is {@condition blinded} for 1 round, and is {@condition dazzled} while the {@condition persistent damage} lasts."
+						],
+						"Success": [
+							"The target takes full damage, full {@condition persistent damage}, and is {@condition dazzled} while the {@condition persistent damage} lasts."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 5,
+					"price": {
+						"amount": 30,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 4d6}, and the {@condition persistent damage} is {@dice 1d4}."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 9,
+					"price": {
+						"amount": 150,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 7d6}, and the {@condition persistent damage} is {@dice 3d4}."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 13,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 10d6}, and the {@condition persistent damage} is {@dice 5d4}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spiritual Warhorn",
+			"source": "TV",
+			"page": 98,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"conjuration",
+				"consumable",
+				"force",
+				"magical"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A spiritual warhorn is a trumpet made of horn, leather, and metal. When you play a single, long note from the warhorn, it calls forth a number of Medium spiritual manifestations of warriors to aid you, according to the horn's type. Each warrior appears in an open square adjacent to an enemy within 60 feet of you, makes a {@action Strike} for {@damage 2d6} force damage (with an attack bonus determined by the warhorn's type), and then disappears. The warriors can flank with one another and with you and your allies.",
+				"Once the magic is used, the warhorn remains as a non-magical musical instrument."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 5,
+					"price": {
+						"amount": 30,
+						"coin": "gp"
+					},
+					"entries": [
+						"Two warriors manifest with a +11 attack modifier."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 9,
+					"price": {
+						"amount": 150,
+						"coin": "gp"
+					},
+					"entries": [
+						"Four warriors manifest with a +17 attack modifier."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 13,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": [
+						"Six warriors manifest with a +22 attack modifier."
+					]
+				},
+				{
+					"name": "major",
+					"level": 17,
+					"price": {
+						"amount": 3000,
+						"coin": "gp"
+					},
+					"entries": [
+						"Eight warriors manifest with a +29 attack modifier."
+					]
+				}
+			]
+		},
+		{
+			"name": "Talespinner's Lyre",
+			"source": "TV",
+			"page": 98,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"consumable",
+				"illusion",
+				"magical",
+				"olfactory",
+				"visual"
+			],
+			"price": {
+				"amount": 235,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Plucking a talespinner's lyre while focusing on an event you witnessed causes the instrument to create an illusion in a 50-foot emanation that plays out your memory of the event in real time, complete with sights, sounds, and smells. You can Sustain the Activation for up to 1 minute to keep it playing. The scene reproduces only what's in its area, including nothing beyond that even if present in the memory. The scene is realistic, but all observers can clearly tell it's an illusion. Observers can't interact with the scene directly nor can they taste or touch elements of it to get a sensation you didn't personally experience, but they can attempt skill checks to discern more about the scene without altering its contents. For example, no one could see something you didn't, such as the true form of a creature polymorphed into a squirrel, but an observer might be able to use {@skill Perception} and {@action Sense Motive} to discern the squirrel was acting unlike a squirrel should.",
+				"Once the magic is used, the lyre remains as a non-magical virtuoso instrument."
+			]
+		},
+		{
+			"name": "Torrent Spellgun",
+			"source": "TV",
+			"page": 98,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"attack",
+				"consumable",
+				"evocation",
+				"magical",
+				"spellgun",
+				"water"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}",
+					"{@action Strike}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Carved of seashell, a torrent spellgun is damp to the touch, and seaweed wraps around its grip. You Activate the spellgun by aiming it at one creature and making your choice of a spell attack roll or a firearm attack roll against the target's AC. This spellgun has a range increment of 30 feet. The spellgun blasts a powerful jet of water that deals bludgeoning damage based on the spellgun's type, then disintegrates into sand.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target takes double damage and is knocked back 10 feet."
+						],
+						"Success": [
+							"The target takes full damage and is knocked back 5 feet."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "lesser",
+					"level": 3,
+					"price": {
+						"amount": 12,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 2d6}."
+					]
+				},
+				{
+					"name": "moderate",
+					"level": 7,
+					"price": {
+						"amount": 70,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 7d6}."
+					]
+				},
+				{
+					"name": "greater",
+					"level": 11,
+					"price": {
+						"amount": 275,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 12d6}."
+					]
+				},
+				{
+					"name": "major",
+					"level": 15,
+					"price": {
+						"amount": 1250,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 16d6}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Watchful Portrait",
+			"source": "TV",
+			"page": 98,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"consumable",
+				"divination",
+				"magical",
+				"scrying"
+			],
+			"price": {
+				"amount": 125,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": 1,
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A watchful portrait appears to be an innocuous depiction of a bored noble, unassuming relative, or unknown local celebrity.",
+				"You Activate the portrait by hanging it. While it's activated, you can use a single action with the {@trait concentrate} trait to see through the eyes of the portrait instead of your own. You can do so while you're within 500 feet of the portrait, even if it's outside your line of sight or line of effect. You visually observe the area around the portrait from its perspective, using your own visual senses. While you're scrying through it, the portrait's eyes follow others more than usual. A creature that succeeds at a DC 30 {@skill Perception} check notices this phenomenon. The scrying ends after 10 minutes or when you decide to stop watching through the portrait.",
+				"The painting loses its magic when the scrying ends, if 4 hours pass after you Activate it without you looking through it, or if you Activate a different watchful portrait. The portrait then remains a normal, non-magical work of art, but due to its rather bland subject matter, it is worth no more than 5 gp."
+			]
+		},
+		{
+			"name": "Whelming Scrimshaw",
+			"source": "TV",
+			"page": 99,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"consumable",
+				"curse",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Curse",
+			"entries": [
+				"An etching of some aquatic beast dragging a figure beneath the waves adorns the ivory of a whelming scrimshaw. When you Activate this item, you break it and choose one creature within 30 feet. The target must attempt a DC 30 Fortitude save; amphibious and aquatic creatures are immune.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The target becomes {@condition sickened||sickened 1} and unable to breathe until this {@condition sickened} condition ends."
+						],
+						"Failure": [
+							"As success, but {@condition sickened||sickened 2}."
+						],
+						"Critical Failure": [
+							"As success, but {@condition sickened||sickened 3}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Wind Ocarina",
+			"source": "TV",
+			"page": 99,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"air",
+				"aura",
+				"consumable",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A blue finish decorates the ceramic body of a wind ocarina. When you play a note on this ocarina, for 1 minute, winds sweep into strong gusts in a 5-foot emanation around you. The winds have the following effects.",
+				{
+					"type": "list",
+					"items": [
+						"Ammunition from physical ranged attacks\u2014such as arrows, bolts, sling bullets, and other objects of comparable size\u2014can't pass through the area. Passing through the area causes attacks with bigger ranged weapons, such as thrown weapons, to take a \u20132 circumstance penalty to their attack rolls if their paths pass through the emanation. Massive ranged weapons and spell effects that don't create physical objects can pass through the emanation with no penalty.",
+						"The area is difficult terrain to creatures attempting to move through it.",
+						"Gases, including creatures in gaseous form, can't pass through the emanation. When the emanation arises, such gases are removed from the area, including your space.",
+						"The area, including your space, has breathable air. Once the magic is used, the ocarina remains a non-magical virtuoso musical instrument."
+					]
+				}
+			]
+		},
+		{
+			"name": "Amulet of the Third Eye",
+			"source": "TV",
+			"page": 102,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"apex",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn amulet",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This large brass medallion hangs low on the torso. It's shaped in the form of an unblinking eye, with a ring of turquoise as the iris and an orb of jet serving as the pupil. The amulet grants you a +2 item bonus to {@skill Perception} checks. When you invest the amulet, you either increase your Wisdom score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You cast {@spell true seeing}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Armbands of the Gorgon",
+			"source": "TV",
+			"page": 102,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn armbands",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"Each of these shining, bluish-gray metal armbands is adorned with the plated visage of a gorgon's head. When targeted by a spell or effect with the {@trait incapacitation} effect, you treat the result of your save as if it were one degree of success better, and the result of any check made to inflict such an effect on you as one degree of success worse (as if you were more than twice the level of the spell or effect targeting you). When you invest the armbands, you either increase your Constitution score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You clap the bracers together and remove a single condition of your choice currently afflicting you. If the condition is permanent, it's instead suppressed for 1 hour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Artificer Spectacles",
+			"source": "TV",
+			"page": 102,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"apex",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn eyeglasses",
+			"bulk": "\u2014",
+			"category": "Apex",
+			"entries": [
+				"These seemingly ordinary rectangular eyeglasses feature clear lenses framed in copper. When invested and worn, they rest perfectly on the bridge of the nose and can only be removed by the wearer. You gain a +3 item bonus to {@skill Crafting} checks and any skill check made to {@action Identify Magic}.",
+				"When you invest the spectacles, you either increase your Intelligence score by 2 or increase it to 18, whichever is higher. You must select the skills and languages the first time you invest the item, and whenever you invest the same artificer spectacles, you get the same skills and languages you chose the first time.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You cast a 3rd-level {@spell mending} spell on an item you touch."
+					]
+				}
+			]
+		},
+		{
+			"name": "Avalanche Boots",
+			"source": "TV",
+			"page": 102,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn boots",
+			"bulk": 1,
+			"category": "Apex",
+			"entries": [
+				"While the insides of these boots are comfortable, fur-lined leather, the outsides are a jumble of slate plates, giving the impression of a rockslide. You gain a +3 item bonus to {@skill Athletics} checks and a +2 circumstance bonus to {@action Force Open} and {@action Shove}.",
+				"When you invest the boots, you either increase your Strength score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You succeed or critically succeed with a {@action Shove}",
+					"entries": [
+						"If the {@action Shove} was a success, you push your opponent up to 10 feet instead of 5 feet. If the {@action Shove} was a critical success, you push your opponent up to 20 feet, and you can then choose to knock them {@condition prone}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Beguiling Crown",
+			"source": "TV",
+			"page": 103,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"uncommon",
+				"apex",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 80000,
+				"coin": "gp"
+			},
+			"usage": "worn crown",
+			"bulk": 2,
+			"category": "Apex",
+			"entries": [
+				"This hugely massive crown is bedazzled with glimmering jewels and enchanted with powerful magics that make the gold seem to ripple and surge like strange glimmering tide pools. While uncomfortable to wear, the crown beguiles those within the wearer's presence. Creatures within 30 feet of you automatically improve their attitude toward you by one step (up to {@condition friendly}). This doesn't prevent {@condition hostile} creatures from attacking you, but it might give you a chance to talk to them before they strike. The dazzling nature of the crown makes it hard for you to read the intentions of others, and you take a \u20134 status penalty to your {@skill Perception} DC when someone uses {@skill Deception} against you. When you invest the crown, you either increase your Charisma score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"You're the subject of the {@spell sanctuary} spell until the end of your next turn."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "A creature succeeds at an attack roll against you",
+					"entries": [
+						"The creature must succeed at a DC 41 Will save or the attack roll becomes a failure and the target is {@condition friendly} to you until the end of its turn. On a critical failure, the target becomes {@condition friendly} to you, drops to their knees, and begs your forgiveness for 1 minute or until another creature takes a {@condition hostile} action against them."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"fortune",
+						"mental"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Choose one living creature within 30 feet of you. That creature must succeed at a DC 41 Will saving throw or become {@condition helpful} to you for the next 24 hours. If they succeed, they become {@condition friendly} to you for 1 hour. If they critically succeed they're immune to this effect for 1 year."
+					]
+				}
+			]
+		},
+		{
+			"name": "Breastplate of the Mountain",
+			"source": "TV",
+			"page": 103,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"abjuration",
+				"apex",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 70000,
+				"coin": "gp"
+			},
+			"usage": "worn armor",
+			"bulk": 2,
+			"category": "Apex",
+			"entries": [
+				"Constructed of dull gray metal, this breastplate is decorated with the symbol of a craggy black mountaintop. This breastplate functions as a +3 greater resilient breastplate. When you're Shoved or otherwise forced to move, you can reduce the amount you move by up to 10 feet. When you invest the breastplate, you either increase your Constitution score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You pound a solid and constant rhythm on your breastplate and cast a 7th-level regeneration spell on yourself."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"With a single tap, you gain immunity to poison for 1 minute."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You fail or critically fail a Fortitude saving throw",
+					"entries": [
+						"If you failed the saving throw, it becomes a success. If you critically failed, it becomes a failure instead."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dragon Handwraps",
+			"source": "TV",
+			"page": 103,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 80000,
+				"coin": "gp"
+			},
+			"usage": "worn gloves",
+			"bulk": "\u2014",
+			"category": "Apex",
+			"entries": [
+				"These silken handwraps feature intricate embroidery of a serpentine red dragon adorned with golden thread. The handwraps function as +3 major striking greater flaming handwraps of mighty blows. You also gain a +4 item bonus to {@skill Athletics} checks made to {@action Grapple} or {@action Shove}. When you invest the handwraps, you either increase your Strength score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You slap the bottom of your palms with hands splayed outward, casting a 7th-level {@spell burning hands} spell (DC 41)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You succeed or critically succeed with a {@action Grapple}",
+					"entries": [
+						"You gain a +2 status bonus to your {@skill Athletics} DC against any checks made to {@action Escape} your grapple until the end of your next turn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Laurel of the Empath",
+			"source": "TV",
+			"page": 103,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"apex",
+				"divination",
+				"fortune",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 70000,
+				"coin": "gp"
+			},
+			"usage": "worn cap",
+			"bulk": "\u2014",
+			"category": "Apex",
+			"entries": [
+				"This silvery, woven ring of leaves sits on top of the head. While wearing it, when you roll {@skill Perception} for initiative, you can roll twice and take the higher result. This is a {@trait fortune} effect. Whenever you spend at least 1 minute talking with a living creature, you automatically become aware of its attitude toward you. When you invest the laurel, you either increase your Wisdom score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"trigger": "You're hit by an attack",
+					"entries": [
+						"You take half damage from the triggering attack."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You fail, but don't critically fail, a saving throw",
+					"entries": [
+						"You anticipate the danger and guard against it, often in unconventional or almost inconceivable ways. Treat the failed saving throw as a success."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute"
+					},
+					"traits": [
+						"fortune",
+						"mental"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You spend 10 minutes talking with one living creature, conversing in inspirational, religious, or philosophical terms. You gain valuable insights into the personality of your target\u2014their alignment, hopes, dreams, and fears. When the ritual is over, you gain a +4 item bonus to all {@skill Perception} checks made concerning the target for one month. Also, the target gains inspirational insight, allowing the target to use one of the two reactions listed above once during the next 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mantle of Amazing Health",
+			"source": "TV",
+			"page": 104,
+			"type": "Item",
+			"level": 19,
+			"traits": [
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 40000,
+				"coin": "gp"
+			},
+			"usage": "worn cape",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This ragged cloak doesn't appear to be anything special at first glance, seemingly made from mangy black bear fur with various rings of blackened iron piercing the edge of the skin. While somewhat off-putting, the mantle grants a +2 status bonus to all Fortitude saving throws against disease and poison. When you invest the mantle, you either increase your Constitution score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"trigger": "You take damage",
+					"entries": [
+						"Drawing the cloak around you, you reduce the damage taken by 10."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"If you're currently afflicted by a poison or a disease, you can hold the cloak tight to your body and immediately attempt a saving throw to end the effect. If that saving throw succeeds, you end the effect of either the poison or disease no matter the stage of the affliction. Furthermore, you gain immunity to that poison or disease for 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Pilferer's Gloves",
+			"source": "TV",
+			"page": 104,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn gloves",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"Made of soft and subtle black leather, these gloves fit tightly but aren't uncomfortable and don't impede your sense of touch. As long as you're trained in {@skill Thievery} while wearing these gloves, you're always considered one skill rank higher than your actual rank. If you possess a Legendary skill rank in {@skill Thievery}, you gain a +2 item bonus to {@skill Thievery} checks instead. When you invest the gloves, you either increase your Dexterity score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You fail or critically fail a {@skill Thievery} skill check",
+					"entries": [
+						"If you failed the {@skill Thievery} skill check, you succeed at that check instead. If you critically failed, you fail instead."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sandals of the Stag",
+			"source": "TV",
+			"page": 104,
+			"type": "Item",
+			"level": 18,
+			"traits": [
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 24000,
+				"coin": "gp"
+			},
+			"usage": "worn sandals",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"These sturdy leather sandals feature straps that wrap up to the knees. Etched in the leather are intricate patterns of stags leaping through the forest. You gain a +5-foot item bonus to your land Speed and a +3 item bonus on {@skill Athletics} checks when attempting to {@action High Jump} or {@action Long Jump}. When you invest the sandals, you either increase your Strength score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"trigger": "You attempt a {@action High Jump} or {@action Long Jump} but you didn't {@action Stride} at least 10 feet",
+					"entries": [
+						"You can attempt the jump normally. It doesn't automatically fail."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shadowmist Cape",
+			"source": "TV",
+			"page": 104,
+			"type": "Item",
+			"level": 19,
+			"traits": [
+				"apex",
+				"invested",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 40000,
+				"coin": "gp"
+			},
+			"usage": "worn cape",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This black cape flows more like a vaporous liquid than fabric. The cape grants you a +3 item bonus to {@skill Stealth} checks. When you invest the cape, you either increase your Dexterity score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "A creature misses you with an attack",
+					"entries": [
+						"Attempt a {@skill Stealth} check against the triggering creature's {@skill Perception} DC. If you roll a success, you're {@condition hidden} from that creature until the end of your next turn or until right after you use a {@condition hostile} action against that creature. If you roll a critical success, you're {@condition hidden} from that creature until the end of your next turn, even if you use {@condition hostile} actions against that creature."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"With a twirl of the cape, you transform yourself into a puff of gray smoke. You cast {@spell gaseous form} on yourself."
+					]
+				}
+			]
+		},
+		{
+			"name": "Troubadour's Cap",
+			"source": "TV",
+			"page": 104,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"apex",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn cap",
+			"bulk": "\u2014",
+			"category": "Apex",
+			"entries": [
+				"This jaunty cap can take the form and color of any type of hat you wish upon investing the item, but it always has a peacock feather jutting out from one side. You gain a +2 item bonus to {@skill Diplomacy} and {@skill Performance} checks while wearing the cap.",
+				"When you invest the cap, you either increase your Charisma score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You cast {@spell hypnotic pattern} (DC 37)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Picking the feather from your cap, you throw it toward a target, casting prismatic spray (DC 35)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Viper Rapier",
+			"source": "TV",
+			"page": 104,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 70000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Apex",
+			"entries": [
+				"Crafted from flawless jade, the guard of this rapier takes the form of a twisting serpent with the blade thrusting from its open mouth. This rapier functions as a +3 greater striking speed rapier. While wielding the rapier, your movement doesn't trigger reactions when you {@action Stride}, {@action Balance}, or {@action Tumble Through}. When you invest the rapier, you either increase your Dexterity score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You fail, but don't critically fail, an attack using the viper rapier",
+					"entries": [
+						"The tip of the rapier briefly takes the form of a viper's head, and the blade twists and contorts, biting the target you missed. The target is affected as if successfully poisoned with purple worm venom (DC 43)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "A creature misses or critically misses you with an attack",
+					"entries": [
+						"With a slight, obviously mocking bow or curtsy, you {@action Step}."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You twirl your rapier in a serpentine pattern, causing your form to become a blur of motion. You're {@condition concealed} for 1 minute or until you take a {@condition hostile} action. While you're {@condition concealed}, you also gain a +2 circumstance bonus to Reflex saving throws."
+					]
+				}
+			]
+		},
+		{
+			"name": "Whispering Staff",
+			"source": "TV",
+			"page": 105,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"apex",
+				"divination",
+				"invested",
+				"magical",
+				"staff"
+			],
+			"price": {
+				"amount": 70000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Apex",
+			"entries": [
+				"This gnarled wooden staff is carved with humanoid faces in various emotional states. When the staff is activated, the faces begin to whisper a variety of languages in sibilant tones, creating what seems to be nonsense to all but the staff's wielder or those they choose to affect. The staff functions as a major staff of divination. While using the staff, you gain a +3 item bonus to {@action Decipher Writing}, {@action Identify Magic}, and {@action Recall Knowledge} checks, regardless of the skill. When you invest the staff, you either increase your Intelligence score by 2 or increase it to 18, whichever is higher. You must select the skills and languages the first time you invest the item, and whenever you invest the same whispering staff, you get the same skills and languages you chose the first time.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"mental"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"Through the staff's strange whispering, you gain a glimpse into the mind and desires of one creature you can see within 30 feet. Until the end of your next turn, that creature is {@condition flat-footed} to you and takes a \u20132 circumstance penalty to saving throws against your spells."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"traits": [
+						"mental",
+						"misfortune"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You point the staff at one creature you can see within 30 feet of you, causing the whispers to howl in that creature's mind. The target must attempt a DC 43 Will save. If it fails, whenever the creature attempts an attack roll, skill check, or saving throw, it must roll twice and take the worse roll. This lasts until the start of your next turn."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"fortune",
+						"mental"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You twirl the staff in three consecutive circles and call for the whispers to speak up. For the next minute, you and all allies within a 30-foot emanation around you can hear your staff's whispers clearly and distinctly, gaining benefit from their advice and mental protection.",
+						"Whenever you and your affected allies attempt to {@action Recall Knowledge} or attempt a saving throw against a {@trait mental} effect, you roll twice and take the better result. This is a {@trait fortune} effect."
+					]
+				}
+			]
+		},
+		{
+			"name": "Basic Companion Chair",
+			"source": "TV",
+			"page": 106,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"companion",
+				"barding"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "sp"
+			},
+			"bulk": 1,
+			"category": "Companion",
+			"entries": [
+				"Light barding around the torso connects via struts to a number of wheels to assist animal companions' movement.",
+				"Companion chairs can be fitted for animal companions of any shape or size and have two- and four-wheel configurations depending on the level of physical support needed. Like the basic chair, a companion chair is ideal for everyday use but not more strenuous activity, making it more common among non-adventurers."
+			]
+		},
+		{
+			"name": "Traveling Companion's Chair",
+			"source": "TV",
+			"page": 106,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"companion",
+				"barding"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Companion",
+			"entries": [
+				"This more robust assembly is well suited for longer travel and all manner of adventuring. As with the traveler's chair, small mechanisms built into the wheels and support struts allow the user to traverse up and down stairs without any additional difficulty (though moving up stairs is still difficult terrain, just like for other adventurers) and move without additional difficulty through ladders, uneven ground, and other common adventuring terrain."
+			]
+		},
+		{
+			"name": "Guide Harness",
+			"source": "TV",
+			"page": 106,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"companion"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": 1,
+			"category": "Companion",
+			"entries": [
+				"The grip of this guide harness fits comfortably in the hand. Guide harnesses are purpose-built for low-sight or blind adventurers who have guide animals. Usually fastened with side straps placed through a martingale, guide harnesses can be easily reconfigured to allow them to be worn by any animal companion."
+			]
+		},
+		{
+			"name": "Olfactory Stimulators",
+			"source": "TV",
+			"page": 106,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"magical"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"This cluster of sensitive wire whiskers fits over the nose or snout to provide sensory information as it reacts to nearby odors and other scents. A creature wearing olfactory stimulators gains a sense of smell, which is as precise as an average member of its species, as well as the scent special ability if members of its species typically have that ability.",
+				"Olfactory stimulators can be fitted to animal companions as well as sapient creatures; stimulators produced for companion use have the {@trait companion} trait."
+			]
+		},
+		{
+			"name": "Bloodhound Olfactory Stimulators",
+			"source": "TV",
+			"page": 106,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"magical"
+			],
+			"price": {
+				"amount": 136,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"These olfactory stimulators can be enhanced to better localize scents.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Your olfactory stimulators twitch as they gather even more information. You gain imprecise scent with a range of 30 feet for 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Empathy Charm",
+			"source": "TV",
+			"page": 106,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"companion",
+				"divination",
+				"enchantment",
+				"magical"
+			],
+			"price": {
+				"amount": 35,
+				"coin": "gp"
+			},
+			"usage": "affixed to harness",
+			"bulk": "\u2014",
+			"category": "Companion",
+			"entries": [
+				"This charm, usually placed on an animal companion's collar, contains a single strand of your hair, as well as one of your animal companion's, creating a link that better transmits emotional cues to a trained psychological assistance animal.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You attempt a saving throw against an {@trait emotion} effect",
+					"requirements": "Your animal companion wearing the empathy charm is within 10 feet",
+					"entries": [
+						"Your animal companion senses the effect and attempts to calm you. You gain a +1 circumstance bonus against the triggering save."
+					]
+				}
+			]
+		},
+		{
+			"name": "Basic Face Mask",
+			"source": "TV",
+			"page": 107,
+			"type": "Item",
+			"level": 0,
+			"price": {
+				"amount": 3,
+				"coin": "sp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"This simple cloth mask, sewn to closely fit your face, is fastened by two sets of strings drawn across your face and secured behind your head. While wearing the mask, you gain a +1 item bonus on any initial saves to avoid contracting airborne diseases, such as choking death or tuberculosis."
+			]
+		},
+		{
+			"name": "Bootstrap Respirator",
+			"source": "TV",
+			"page": 107,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"mechanical"
+			],
+			"price": {
+				"amount": 450,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"The city of Riddleport is notorious for its noxious air and water. While some inhabitants tolerate the haze, most wear bootstrap respirators to filter out as many of the pollutants as possible. Designed by dwarf smiths operating the Gas Forges, the flexible face mask of a bootstrap respirator fits snugly over your mouth and nose, fastened by two adjustable leather straps. A manual pump inserted into your footwear or under the arm circulates air through tubes and over filters fitted into the front of the mask. While wearing a bootstrap respirator, you gain a +1 item bonus to any saves that require you to smell or taste, such as inhaled poisons and airborne diseases."
+			]
+		},
+		{
+			"name": "Wand Cane",
+			"source": "TV",
+			"page": 107,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"magical",
+				"wand"
+			],
+			"price": {
+				"amount": 100,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Wand",
+			"entries": [
+				"Though it appears to be a basic cane, the inner workings of the wand cane are an intricate network of lenses and magical circuits, with a slot at the top to insert a wand. The wand cane then spends 1 minute attuning to the wand, after which the wand can be used through the cane."
+			]
+		},
+		{
+			"name": "Batsbreath Cane",
+			"source": "TV",
+			"page": 107,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"evocation",
+				"magical",
+				"sonic"
+			],
+			"price": {
+				"amount": 950,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"A specialized +1 striking thundering probing cane made from strengthened spruce wood, a batsbreath cane is distinctive for its brass tip. The tip covers a small hollow in the wood that houses quartz crystals infused with latent storm magic.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You strike the cane firmly against the ground, causing a pin within the brass tip to tap the crystals and emit a sonic pulse. The pulse reverberates in a 60-foot radius for the next minute, with the cane acting as an antenna to receive the echoes. For 1 minute, as long as you remain in the area and are holding the cane, you gain hearing as a precise sense."
+					]
+				}
+			]
+		},
+		{
+			"name": "Magical Prosthetic Eye",
+			"source": "TV",
+			"page": 107,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This prosthetic eye converts visible light into a telepathic signal that is relayed to the wearer's mind using divination magic. As the wearer's mind must process the telepathic signal in the same way as it would a nerve impulse, the acuity and other abilities related to the vision provided by the magical prosthetic eye matches that of other members of your ancestry (for instance, a goblin with a magical prosthetic eye would be able to see in darkvision, while a human wearing the same prosthetic would need illumination). You can remove or replace a magical prosthetic eye using an {@action Interact} action."
+			]
+		},
+		{
+			"name": "Falconsight Eye",
+			"source": "TV",
+			"page": 108,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 200,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This prosthetic eye resembles that of a bird of prey. Along with the abilities of the magical prosthetic eye, it allows you to strike foes at greater range and with impressive accuracy.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You become keenly aware of your foes, even those seemingly out of reach. For 1 minute, you can close your eyes as a free action to see through a ranged weapon you're wielding, which reduces the penalty for firing into your weapon's second range increment from \u20132 to 0. This effect doesn't negate the {@condition blinded} condition."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gossip's Eye",
+			"source": "TV",
+			"page": 108,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 30,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"These discrete prosthetics have been the secret behind more than a few salacious rumors getting out among Taldan high society. This functions like a magical prosthetic eye, but with an added benefit.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You whisper \"spy for me\" to the eye, which removes itself from your eye socket and begins to relay its signal to you even at range. Although it can't move on its own, you can place the eye in a discrete location (using your {@skill Stealth} DC) to avoid detection. For 10 minutes, you can see what the eye sees as long as you're within 100 feet of the eye. The eye's signal can penetrate most barriers but is blocked by lead of any thickness, as well as denser materials. The eye's signal is visual only."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spyglass Eye",
+			"source": "TV",
+			"page": 108,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"divination",
+				"magical"
+			],
+			"price": {
+				"amount": 160,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"Polished to a perfect surface and incredibly clear, this special magical prosthetic eye allows you to clearly see small details as well as things a great distance away.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"A magical lens of hardened air comes into being in front of the eye, allowing you to see as though you were looking through a fine spyglass for 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aether Appendage",
+			"source": "TV",
+			"page": 108,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"incorporeal",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 160,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This otherworldly prosthetic arm is the product of psychopomp magic. An aether appendage is incorporeal so long as no item is being held in the hand or worn on the arm. As an envision action, you can cause the arm to become corporeal until the end of your turn, allowing it to make Strikes or grasp objects. It remains corporeal if you're holding an item or it's wearing an item at the end of your turn. Your unarmed attack Strikes made with the aether appendage become magical. If they're already magical, they instead gain the effect of the ghost touch property rune.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "You're holding a non-magical item of light or negligible Bulk",
+					"entries": [
+						"The item becomes incorporeal for 1 minute. Your aether appendage can use the incorporeal item normally."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spring Heel",
+			"source": "TV",
+			"page": 108,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"clockwork",
+				"mechanical"
+			],
+			"price": {
+				"amount": 150,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": 1,
+			"category": "Worn",
+			"entries": [
+				"Fitted into each of these prosthetic legs is a large spring, tightly bound around a collapsible shaft. When released, the spring unspools rapidly and the shaft telescopes out and back, returning to its compressed form and catapulting you forward.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You {@action Stride} up to twice your speed or {@action Leap} up to 20 feet horizontally and 5 feet vertically."
+					]
+				}
+			]
+		},
+		{
+			"name": "Verdant Branch",
+			"source": "TV",
+			"page": 108,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"necromancy",
+				"plant",
+				"primal"
+			],
+			"price": {
+				"amount": 360,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"Woody vines and branches curl and twist around each other, growing small twigs, leaves, and flowers across the surface of this prosthetic arm or leg.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"A branch grows from your prosthesis, quickly flowering and then producing {@dice 1d4} ripe and flavorful fruits. A creature can pick and eat a fruit with an {@action Interact} action to regain {@dice 2d6+5} Hit Points. The fruits wither away after 10 minutes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Extendable Tail",
+			"source": "TV",
+			"page": 108,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"mechanical"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": 1,
+			"category": "Worn",
+			"entries": [
+				"Built with collapsible poles and expanding hoops, this tail can extend to a length of 20 feet. While it's no more prehensile than a tail of a typical member of your ancestry, it ends with an anchor that you can secure around a sturdy object with an {@action Interact} action. While the tail is anchored, you can't move more than 20 feet from that spot, but you can use the tail to lower yourself up to 20 feet, as if it were a length of rope. You can use another {@action Interact} action to disengage the anchor and retract your tail."
+			]
+		},
+		{
+			"name": "Apparition Gloves",
+			"source": "TV",
+			"page": 109,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"usage": "worn gloves",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This set of gloves translates whatever the wearer says into the signed version of that language by projecting a ghostly, translucent version of the wearer's hands in front of them. The apparition is a purely visual illusion used for communication, so it can't move on its own, nor can it hold or manipulate objects, or attack."
+			]
+		},
+		{
+			"name": "Tremorsensors",
+			"source": "TV",
+			"page": 109,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"adjustment",
+				"mechanical"
+			],
+			"price": {
+				"amount": 100,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "L",
+			"category": "Adjustment",
+			"entries": [
+				"These small, metallic devices resemble squashed spheres. They each contain a tiny gyroscope that's incredibly sensitive to vibrations in the earth. While typically worn on one's footwear, the device can be affixed to any part of your armor.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You stomp a foot, clap your hands, or create some other source of sound, gaining tremorsense as an imprecise sense with a range of 20 feet for the next 10 minutes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Voicebox",
+			"source": "TV",
+			"page": 109,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "sp"
+			},
+			"usage": "worn necklace",
+			"bulk": "\u2013",
+			"category": "Worn",
+			"entries": [
+				"This box contains small, magical amplifiers that allow a non- verbal character to translate thought into speech, which emits from the necklace. The speech produced matches any language you understand."
+			]
+		},
+		{
+			"name": "Thrasher Tail",
+			"source": "TV",
+			"page": 109,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"rare",
+				"clockwork",
+				"kobold",
+				"mechanical"
+			],
+			"price": {
+				"amount": 620,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": 1,
+			"category": "Worn",
+			"entries": [
+				"Kobolds admire well-designed objects, especially if it gives them an opportunity to pack it with traps and surprises. This prosthetic tail hides numerous blades and spikes, tensioned and wound around a spring-loaded trigger at the base of the prosthesis.",
+				"Resetting and reattaching a sprung thrasher tail takes 10 minutes.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "You're {@condition grabbed}",
+					"entries": [
+						"Your tail comes off in your opponent's hand, and the mechanism unwinds, causing the blades and spikes to protrude and the tail to spin and thrash. The tail deals {@damage 8d6} slashing damage to the opponent who has you {@condition grabbed} with a DC 25 basic Reflex save. Regardless of the result of their save, you're no longer {@condition grabbed}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Amazing Pop-Up Book",
+			"source": "TV",
+			"page": 110,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"grimoire",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 1250,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"Goblin wizards invented the amazing pop-up book to store their spells without written words, though the tradition has been spreading to illusionists from other cultures. These grimoires have colorful covers and open to reveal three-dimensional scenes illustrating various spells. Goblins delight in constructing the books just right so a terrifying creature, like a horse or dog, pops up toward the reader each time a page is turned.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"metamagic"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast an illusion spell prepared from this grimoire that creates illusory terrain or creatures, such as hallucinatory terrain, you draw forth the pop-up scene. If a creature succeeds, but doesn't critically succeed, at a saving throw to disbelieve the illusion, then just as their mind recognizes the illusion, a startling\u2014though obviously false\u2014illusion pops up somewhere unexpected in their field of vision, visible to only them, dealing mental damage equal to the spell's level."
+					]
+				}
+			]
+		},
+		{
+			"name": "Architect's Pattern Book",
+			"source": "TV",
+			"page": 110,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"conjuration",
+				"grimoire",
+				"magical"
+			],
+			"price": {
+				"amount": 240,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"Typically created by wizards who are hobbyists or professional architects, an architect's pattern book allows the caster to customize certain spells that create magical structures or domiciles, adding recreational areas such as an indoor bathhouse, gaming room, swimming pool, or similar luxury.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"metamagic"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "week"
+					},
+					"entries": [
+						"If your next action is to cast a cozy cabin APG, {@spell magnificent mansion} or {@spell resplendent mansion} spell, you add a room to the structure that is up to 10 feet per side per level of the spell. This room is outfitted with all the accoutrements for a particular type of recreation, determined by you when you cast the spell. Any character who spends at least 1 hour using this recreational facility and then sleeps a full 8 hours inside the location created by the spell is exceptionally well-rested. They regain double the amount of Hit Points they would normally receive for an 8-hour rest, and when they make the next day's preparations, they gain a +1 circumstance bonus to {@skill Athletics} checks and Will saves for the next 12 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Book of Warding Prayers",
+			"source": "TV",
+			"page": 111,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"divine",
+				"grimoire",
+				"transmutation"
+			],
+			"price": {
+				"amount": 425,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"Script in a language of the Outer Planes adorns this book's spine, and a deity's symbol is etched on its cover. Books of warding prayers are each devoted to a particular deity and are also a religious symbol of that deity.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "Your last action was to cast a prepared divine spell granted by your deity",
+					"entries": [
+						"Choose chaotic, evil, good, or lawful; you can't choose a type that's part of your deity's alignment. You and all allies within 30 feet are suffused with your deity's protection, gaining resistance 10 to damage of that type for 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Codex of Destruction and Renewal",
+			"source": "TV",
+			"page": 111,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"rare",
+				"grimoire",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 70000,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"An unsmiling mask, half obsidian and half ivory, is embossed on the cover of this weighty tome, the opposite color forming the background of each half. Each codex of destruction and renewal is said to contain a fragment of the knowledge {@deity Nethys} gained in his apotheosis and they're sacred to his church.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"metamagic"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast a damage-dealing evocation spell prepared from this grimoire, the spell wreaks even greater destruction. The spell ignores 10 resistance and you reroll any damage dice that roll a 1. If the spell reduces a creature to 0 Hit Points, they're torn apart at an infinitesimal level, not even leaving a fine ash; this is a {@trait death} effect."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"metamagic"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast a necromancy spell prepared from this grimoire that restores Hit Points, the spell renews the target constantly and perfectly. The spell grants the target regeneration 20, restoring 20 Hit Points at the start of its turn and preventing the target both from {@condition dying} due to damage and from its {@condition dying} condition increasing to a value that would result in its death. Each time the creature regains Hit Points from regeneration, it regrows all damaged or ruined organs; it can also regrow any severed body parts as a free action immediately after the body part is severed, with the original crumbling to ash.",
+						"The effect lasts for 4 rounds."
+					]
+				}
+			]
+		},
+		{
+			"name": "Communion Mat",
+			"source": "TV",
+			"page": 111,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"divination",
+				"grimoire",
+				"magical"
+			],
+			"price": {
+				"amount": 3750,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"This pageless grimoire is made up of two durable covers that open to display a small ritual circle. When you first invest the grimoire, you and your familiar each press a limb to a corner of the mat. The ritual circle then morphs to one matching the tradition of your patron, the spells contained in your familiar appearing in the margins. During your daily preparations, your familiar performs a small jaunt around the open ritual circle to strengthen its connection to your patron.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"metamagic"
+					],
+					"frequency": {
+						"freq": 1,
+						"interval": 10,
+						"unit": "minute"
+					},
+					"entries": [
+						"If your next action is to cast one of the granted spells from your patron's theme or one of the spells your familiar learned from a lesson, your patron takes notice that you're putting their power to good use and strengthens your familiar with a surge of magic. Your familiar Sustains one of your Spells."
+					]
+				}
+			]
+		},
+		{
+			"name": "Corrosive Engravings",
+			"source": "TV",
+			"page": 111,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"acid",
+				"conjuration",
+				"grimoire",
+				"magical"
+			],
+			"price": {
+				"amount": 140,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"These tin sheets are bound in brass and show significant signs of erosion. The grimoire's title is acid-etched, and flipping between the sheets leaves your fingers covered in flecks of rust and powdery metal.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast an acid or poison spell that deals {@condition persistent damage}, any creature who takes {@condition persistent damage} from the spell is also {@condition sickened||sickened 2} until the {@condition persistent damage} ends. Using an action to retch can reduce the {@condition sickened} value as normal, but it can't reduce the {@condition sickened} value below 1 until the {@condition persistent damage} ends."
+					]
+				}
+			]
+		},
+		{
+			"name": "Courtier's Pillow Book",
+			"source": "TV",
+			"page": 112,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"enchantment",
+				"grimoire",
+				"magical"
+			],
+			"price": {
+				"amount": 250,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"This elegant journal has a detailed social dossier on the owner's acquaintances. When you make your daily preparations, you can inscribe a secret or embarrassing foible about a specific individual that you know to be true or have on good authority.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast an enchantment spell on a target about whom you've written an entry in the book, you can state that secret or foible before Casting the Spell to give the target a \u20131 circumstance penalty to their saving throw against the spell.",
+						"The inscription then disappears from the grimoire."
+					]
+				}
+			]
+		},
+		{
+			"name": "Draxie's Recipe Book",
+			"source": "TV",
+			"page": 112,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"grimoire",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 90,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"This tiny recipe book was created by a famous draxie chef, but it instantly resizes to fit the hand and eyes of the reader. While most of the pages are blank and ready to receive spells, the first four pages are taken up by a complex seasoning recipe that requires a casting of glitterdust.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast a {@spell glitterdust} spell, all creatures within the spell's area who don't critically succeed at their save are covered with a spicy red powder. Any attempt to grab or grapple a creature affected in this way, or to swallow such a creature whole, gains a +1 circumstance bonus to the attempt, or a +2 circumstance bonus if the attempt is made using a jaws or similar mouth-based attack, due to the target's extra deliciousness and savory smell. An affected creature can remove the powder by thoroughly cleaning themselves (a process that typically takes about 10 minutes) or by completely immersing themselves in water.",
+						"This ability can also be used to properly season up to 100 pounds of prepared food within the area of the {@spell glitterdust} spell instantaneously."
+					]
+				}
+			]
+		},
+		{
+			"name": "Harrow Spellcards",
+			"source": "TV",
+			"page": 112,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"divination",
+				"grimoire",
+				"magical"
+			],
+			"price": {
+				"amount": 475,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"Crafted of sturdy paper, each card of this harrow deck showcases a beautiful watercolor illustration with space to inscribe a spell below. When shuffled, its cards seem to fly between one another of their own accord.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"fortune"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "Your last action was to cast a divination spell prepared from this grimoire",
+					"entries": [
+						"You draw forth a card to gain insight into future challenges you'll face. Draw a card from a harrow deck or roll {@dice 1d6}: 1 = hammers ({@skill Athletics}), 2 = keys ({@skill Acrobatics}), 3 = shields ({@skill Survival}), 4 = books (any {@action Recall Knowledge}), 5 = stars ({@skill Religion}), 6 = crowns ({@skill Diplomacy}). The next time you attempt a check of the same type as your result, roll twice and take the better result, as the spirits of the harrow guide your actions. If not used by your next daily preparations, this benefit disappears."
+					]
+				}
+			]
+		},
+		{
+			"name": "Illuminated Folio",
+			"source": "TV",
+			"page": 112,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"conjuration",
+				"grimoire",
+				"magical"
+			],
+			"price": {
+				"amount": 4200,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"The pages of this part-spellbook, part-bestiary are illustrated with all manner of creatures, magical and mundane. The illustrations shift and move around the page when examined.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"metamagic"
+					],
+					"entries": [
+						"If your next action is to cast a conjuration spell prepared from this grimoire that summons one or more creatures, you summon creatures from the illuminated folio rather than their usual source. These summoned creatures appear as living illustrations, granting them resistance to physical damage equal to half their level and weakness 5 to fire and to any ability with the {@trait water} trait.",
+						"They can also fold themselves up to pass through spaces only an inch or so wide as part of their movement."
+					]
+				}
+			]
+		},
+		{
+			"name": "Linguist's Dictionary",
+			"source": "TV",
+			"page": 112,
+			"type": "Item",
+			"level": "9+",
+			"traits": [
+				"divination",
+				"grimoire",
+				"magical"
+			],
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"Bound in sturdy leather, this thick book has several colorful bookmarks and page dividers. Its title and text shift between numerous languages.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "Your last action was to cast a spell prepared from this grimoire that allows understanding of another language, such as comprehend languages or tongues",
+					"variants": [
+						{
+							"name": "linguist's dictionary",
+							"level": 9,
+							"price": {
+								"amount": 650,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "greater linguist's dictionary",
+							"level": 12,
+							"price": {
+								"amount": 1750,
+								"coin": "gp"
+							},
+							"entries": [
+								"The dictionary can hold three languages at a time."
+							]
+						}
+					],
+					"entries": [
+						"The grimoire absorbs knowledge of one language translated this way (caster's choice if more than one), allowing its bearer to communicate on a rudimentary level in that language even after the spell's duration has elapsed. The linguist's dictionary can hold one language at a time."
+					]
+				}
+			]
+		},
+		{
+			"name": "Maw of Hungry Shadows",
+			"source": "TV",
+			"page": 112,
+			"type": "Item",
+			"level": 18,
+			"traits": [
+				"conjuration",
+				"grimoire",
+				"incapacitation",
+				"magical",
+				"shadow",
+				"teleportation"
+			],
+			"price": {
+				"amount": 21000,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"Shadows swirl around this soot-black tome, swallowing up any light that touches them. A faint whispering emanates from the grimoire's pages when opened.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "Your last action was to cast a spell prepared from this grimoire that has the {@trait shadow} trait",
+					"entries": [
+						"Your shadow, and that of the tome, elongates and reaches hungrily for one foe within 30 feet, who must attempt a Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is {@condition blinded} for 1 round and {@condition drained||drained 1} as the shadows scrape across it."
+								],
+								"Failure": [
+									"The creature is {@condition blinded} for 1 minute and {@condition drained||drained 2} as the shadows seize it."
+								],
+								"Critical Failure": [
+									"As failure, but the shadows also pull the creature into the tome, teleporting it to the Shadow Plane."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Spell Duelist's Siphon",
+			"source": "TV",
+			"page": 113,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"abjuration",
+				"grimoire",
+				"magical"
+			],
+			"price": {
+				"amount": 1750,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"Metal clasps line the spine of this book, and diagrams displaying proper somatic casting forms are etched into its cover.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You're targeted with an arcane spell attack and you have this grimoire raised",
+					"requirements": "You have the Raise a Tome feat",
+					"entries": [
+						"The grimoire attempts to absorb knowledge of the spell targeting you. You attempt to counteract the triggering spell. If you succeed, the spell is absorbed into the grimoire, and the diagrams on the cover change to indicate the somatic gestures and sigils for the counteracted spell. While the grimoire contains a spell, you can spend a spell slot of the same or higher level as the spell in the grimoire to cast that spell instead, heightened to the appropriate level (if you spent a higher-level spell slot). After you cast the spell, it's expended from the grimoire."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tome of Restorative Cleansing",
+			"source": "TV",
+			"page": 113,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"grimoire",
+				"magical",
+				"necromancy"
+			],
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"This book is dark blue on the night of the new moon, gradually shifting to bright red as the moon waxes.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"healing",
+						"necromancy",
+						"positive"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"requirements": "Your last action was to cast a spell prepared from this grimoire, and the spell removed a harmful condition or affliction from yourself or an ally",
+					"variants": [
+						{
+							"name": "lesser tome of restorative cleansing",
+							"level": 5,
+							"price": {
+								"amount": 130,
+								"coin": "gp"
+							},
+							"entries": [
+								"The creature gains {@dice 1d8} temporary Hit Points."
+							]
+						},
+						{
+							"name": "moderate tome of restorative cleansing",
+							"level": 9,
+							"price": {
+								"amount": 600,
+								"coin": "gp"
+							},
+							"entries": [
+								"The creature gains {@dice 2d8} temporary Hit Points."
+							]
+						},
+						{
+							"name": "greater tome of restorative cleansing",
+							"level": 14,
+							"price": {
+								"amount": 3750,
+								"coin": "gp"
+							},
+							"entries": [
+								"The creature gains {@dice 3d8} temporary Hit Points."
+							]
+						}
+					],
+					"entries": [
+						"Choose one creature whose condition was removed by the required spell. Depending on the version, that creature gains a number of temporary Hit Points that last for 1 hour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tome of Scintillating Sleet",
+			"source": "TV",
+			"page": 113,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"cold",
+				"evocation",
+				"grimoire",
+				"primal"
+			],
+			"price": {
+				"amount": 430,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"The first 12 pages of this tome tell the same story in two languages: 6 pages in Skald and 6 pages in the ancient Jotun dialect used by saumen kar, a species of ice-dwelling humanoids.",
+				"The story is a tale of a saumen kar stricken with snow blindness after spending too long under the sun building snow giants.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast a cold spell that deals damage, all creatures damaged by the spell are also {@condition dazzled} for 3 rounds by light refracting and reflecting within and around the spell's chilling effects. If an affected creature critically failed its save against the required spell, or if you critically succeeded on your spell attack roll against the creature, it's instead {@condition blinded} for 1 round and then {@condition dazzled} for 3 rounds."
+					]
+				}
+			]
+		},
+		{
+			"name": "Undertaker's Manifest",
+			"source": "TV",
+			"page": 113,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"darkness",
+				"evocation",
+				"grimoire",
+				"magical",
+				"shadow"
+			],
+			"price": {
+				"amount": 220,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"This grim collection of spreadsheets is used both by undertakers who occasionally need to avoid the notice of their more restless clients, and by industrious necromancers looking to avoid catching the notice of cemetery guards and vigilant undertakers.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If your next action is to cast a necromancy spell, the spell's casting is accompanied by a roiling cloud of shadow that spills out around you, creating dim light in a 30-foot emanation centered on you for the next 3 rounds. This has no effect on areas where the lighting level is already darker than dim light."
+					]
+				}
+			]
+		}
+	,
+		{
+			"name": "Confabulator",
+			"source": "TV",
+			"page": 109,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 55,
+				"coin": "gp"
+			},
+			"usage": "Affixed to instrument",
+			"bulk": "L",
+			"category": "Assistive Item",
+			"entries": [
+				"Category Assistive Item This device attaches to any non-percussive musical instrument, allowing a non-verbal character to shape the sounds of the instrument into speech. The speech can be any language the character understands, and the sound of the speech resembles the instrument the device is attached to. You also gain a +1 item bonus to {@skill Performance} checks made with the instrument."
+			]
+		},
+		{
+			"name": "Chair of Inventions",
+			"source": "TV",
+			"page": 109,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"conjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 875,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Assistive Item",
+			"entries": [
+				"Category Assistive Item This wheelchair is outfitted with a variety of tools and devices to assist with the creation and production of a number of mechanical implements. While seated in a chair of inventions, you have a worn superb repair kit (Core Rulebook 291) that doesn't count against your Bulk limit or maximum worn items.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"The chair deploys a complete expanded alchemist's lab (Core Rulebook 287). The chair is immobile while this lab is deployed, but levers and gears in the chair allow you to easily retrieve and access everything you need from both the attached superb repair kit and the deployed lab to {@action Craft}. This setup is highly efficient and gives you a +2 circumstance bonus to {@action Earn Income} using {@skill Crafting}."
+					]
+				}
+			]
+		},
+		{
 			"name": "Captivating Score",
 			"source": "TV",
 			"page": 84,
