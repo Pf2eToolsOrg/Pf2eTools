@@ -62,12 +62,10 @@ function updateFolder (folder) {
 						if (typeof x.craftReq === "string") {
 							x.craftReq = [x.craftReq]
 						}
-						return x
 					}
 					if (x.activate && x.activate.components && !Array.isArray(x.activate.components)) {
 						console.log(`\tUpdating ${x.name} components to array in ${file}...`)
 						x.activate.components = [x.activate.components]
-						return x
 					}
 					if (x.activate && x.activate.components && x.activate.components.length) {
 						x.activate.components.map(component => {
@@ -77,7 +75,18 @@ function updateFolder (folder) {
 							}
 							return component
 						})
-						return x
+					}
+					if (x.activate != null && x.trigger != null) {
+						x.activate.trigger = x.trigger
+						delete x.trigger
+					}
+					if (x.activate != null && x.requirements != null) {
+						x.activate.requirements = x.requirements
+						delete x.requirements
+					}
+					if (x.activate != null && x.prerequisites != null) {
+						x.activate.prerequisites = x.prerequisites
+						delete x.prerequisites
 					}
 					if (x.type === "Equipment" && !(x.equipment === true)) {
 						console.log(`\tUpdating ${x.name} types from Equipment to Item in ${file}...`)

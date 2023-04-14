@@ -6500,12 +6500,11 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"unit": "varies",
-					"entry": "Cast a Spell"
+					"number": 3,
+					"unit": "action",
+					"entry": "{@action Cast a Spell}"
 				},
-				"traits": [
-					"add 1 action"
-				]
+				"note": "(add 1 action)"
 			},
 			"category": "Consumable",
 			"entries": [
@@ -6515,7 +6514,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "bralani breath",
 					"level": 3,
 					"price": {
 						"amount": 11,
@@ -6523,10 +6521,10 @@
 					},
 					"entries": [
 						"Objects of 1 Bulk or less and creatures that fail the save are pushed 5 feet."
-					]
+					],
+					"variantType": "bralani breath"
 				},
 				{
-					"name": "greater bralani breath",
 					"level": 9,
 					"price": {
 						"amount": 110,
@@ -6534,7 +6532,8 @@
 					},
 					"entries": [
 						"Objects of 1 Bulk or less and creatures that fail the save are pushed 10 feet. Objects of up to 2 Bulk are pushed 5 feet, and Huge creatures must succeed at the save or be pushed 5 feet."
-					]
+					],
+					"variantType": "greater bralani breath"
 				}
 			]
 		},
@@ -6614,16 +6613,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "euphoric loop",
 					"level": 5,
 					"price": {
 						"amount": 30,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "euphoric loop"
 				},
 				{
-					"name": "greater euphoric loop",
 					"level": 13,
 					"price": {
 						"amount": 450,
@@ -6631,7 +6629,8 @@
 					},
 					"entries": [
 						"The catalyst affects all targets of the {@spell charm} spell, up to 10."
-					]
+					],
+					"variantType": "greater euphoric loop"
 				}
 			]
 		},
@@ -6704,12 +6703,11 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"unit": "varies",
-					"entry": "Cast a Spell"
+					"number": 3,
+					"unit": "action",
+					"entry": "{@action Cast a Spell}"
 				},
-				"traits": [
-					"add 1 action"
-				]
+				"note": "(add 1 action)"
 			},
 			"category": "Consumable",
 			"entries": [
@@ -6718,7 +6716,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "nevercold",
 					"level": 10,
 					"price": {
 						"amount": 180,
@@ -6726,10 +6723,10 @@
 					},
 					"entries": [
 						"The catalyst affects 4th‑level {@spell fire shield}."
-					]
+					],
+					"variantType": "nevercold"
 				},
 				{
-					"name": "compressed nevercold",
 					"level": 14,
 					"price": {
 						"amount": 720,
@@ -6737,10 +6734,10 @@
 					},
 					"entries": [
 						"The catalyst affects 6th‑level or lower fire shield, and the protection from severe cold lasts 24 hours."
-					]
+					],
+					"variantType": "compressed nevercold"
 				},
 				{
-					"name": "refined nevercold",
 					"level": 18,
 					"price": {
 						"amount": 3600,
@@ -6748,7 +6745,8 @@
 					},
 					"entries": [
 						"The catalyst affects 8th‑level or lower fire shield, and the protection from severe cold lasts 24 hours."
-					]
+					],
+					"variantType": "refined nevercold"
 				}
 			]
 		},
@@ -6805,16 +6803,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "triangular seventh prism",
 					"level": 3,
 					"price": {
 						"amount": 10,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "triangular seventh prism"
 				},
 				{
-					"name": "pentagonal seventh prism",
 					"level": 7,
 					"price": {
 						"amount": 52,
@@ -6822,7 +6819,8 @@
 					},
 					"entries": [
 						"The area increases to a 20‑foot cone, and the DC for the flat check against the target being {@condition concealed} increases to 7."
-					]
+					],
+					"variantType": "pentagonal seventh prism"
 				}
 			]
 		},
@@ -6875,7 +6873,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 3,
 					"price": {
 						"amount": 12,
@@ -6883,10 +6880,10 @@
 					},
 					"entries": [
 						"Sometimes called the moth fulu, good for destroying softer objects; {@damage 3d6} bludgeoning damage, DC 17."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 11,
 					"price": {
 						"amount": 275,
@@ -6894,10 +6891,10 @@
 					},
 					"entries": [
 						"Sometimes called the termite fulu, good for destroying wood objects; {@damage 6d6} bludgeoning damage, DC 28."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 17,
 					"price": {
 						"amount": 2750,
@@ -6905,7 +6902,8 @@
 					},
 					"entries": [
 						"Sometimes called the rust fulu, good for destroying metal objects; {@damage 10d6} bludgeoning damage, DC 37."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -6957,6 +6955,7 @@
 			"usage": "affixed to armor",
 			"bulk": "\u2014",
 			"activate": {
+				"trigger": "You take the {@action Leap} action.",
 				"activity": {
 					"number": 1,
 					"unit": "free"
@@ -6968,8 +6967,7 @@
 			"category": "Talisman",
 			"entries": [
 				"Tradition says the dragonfly fulu should be affixed to the upper back, like the wings of an insect. When you Activate this fulu, you gain a +2 status bonus to {@skill Athletics} checks to {@action High Jump} or {@action Long Jump} for 1 minute. During this time, you can attempt an {@skill Athletics} check to {@action High Jump} or {@action Long Jump} as a single action without the {@action Stride} requirement. You can also {@action High Jump} or {@action Long Jump} from a nonsolid substance, such as air or water, but if you use this power of the fulu, its effects ends after you jump."
-			],
-			"trigger": "You take the {@action Leap} action."
+			]
 		},
 		{
 			"name": "Escape Fulu",
@@ -6991,6 +6989,7 @@
 			"usage": "affixed to armor",
 			"bulk": "\u2014",
 			"activate": {
+				"trigger": "You attempt to {@action Escape}.",
 				"activity": {
 					"number": 1,
 					"unit": "free"
@@ -7001,18 +7000,8 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"The escape fulu is a charm common among wealthy people, who wear the talisman in case of kidnapping. When you",
-				{
-					"type": "ability",
-					"components": [
-						"this fulu",
-						"for 1 minute",
-						"you gain a +2 status bonus to"
-					]
-				},
-				"your attempts to {@action Escape} as well as to {@skill Stealth} checks to {@action Hide} and {@action Sneak}."
-			],
-			"trigger": "You attempt to {@action Escape}."
+				"The escape fulu is a charm common among wealthy people, who wear the talisman in case of kidnapping. When you Activate this fulu for 1 minute you gain a +2 status bonus to your attempts to {@action Escape} as well as to {@skill Stealth} checks to {@action Hide} and {@action Sneak}."
+			]
 		},
 		{
 			"name": "Ghost Courier Fulu",
@@ -7044,15 +7033,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"The inscription on a ghost courier fulu leaves space for a message, and a prominent red stamp indicates which ghost delivery fulu this fulu homes in on (see below). When you",
-				{
-					"type": "ability",
-					"components": [
-						"this fulu",
-						"you dictate a message up to 25 words long"
-					]
-				},
-				"that then magically appears on the paper in the language you spoke. The fulu then disappears into the Ethereal Plane, arriving at the assigned ghost delivery fulu in {@dice 2d10} hours, provided that fulu is within 500 miles. There, the fulu's magic dissipates, but the message remains. If the fulu takes any damage in transit, it has a 50% chance to drop back into the Material Plane, intact but bereft of magic."
+				"The inscription on a ghost courier fulu leaves space for a message, and a prominent red stamp indicates which ghost delivery fulu this fulu homes in on (see below). When you Activate this fulu you dictate a message up to 25 words long that then magically appears on the paper in the language you spoke. The fulu then disappears into the Ethereal Plane, arriving at the assigned ghost delivery fulu in {@dice 2d10} hours, provided that fulu is within 500 miles. There, the fulu's magic dissipates, but the message remains. If the fulu takes any damage in transit, it has a 50% chance to drop back into the Material Plane, intact but bereft of magic."
 			]
 		},
 		{
@@ -7112,13 +7093,13 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You take damage."
 			},
 			"category": "Talisman",
 			"entries": [
 				"An enterprising chirurgeon reversed the forces evoked by a void thousand-pains fulu (page 79) to create the golden breath fulu, which fortifies ki and the body as elements move out of balance. When you Activate this fulu, you regain 75 Hit Points and attempt a flat check to end any {@condition persistent damage} affecting you. The fulu is particularly appropriate help for ending any {@condition persistent damage}. Also, if you would regain more Hit Points from the fulu than your maximum, you can gain the excess as temporary Hit Points or distribute the excess among creatures of your choice within 30 feet. The temporary Hit Points last for 1 minute."
-			],
-			"trigger": "You take damage."
+			]
 		},
 		{
 			"name": "Inventor's Fulu",
@@ -7146,14 +7127,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You critically fail an action with the {@trait unstable} trait."
 			},
 			"category": "Talisman",
 			"entries": [
 				"Some inventors in Tian Xia put fried snacks near their innovations, a charm to make devices behave as intended. The practice rubbed off on other inventors, who replaced the food with a drawing on an inventor's fulu. When you Activate the fulu, your critical failure becomes a failure, and you can spend just 1 minute to return your innovation to full functionality.",
 				"The fulu then burns up, and its effects end."
-			],
-			"trigger": "You critically fail an action with the {@trait unstable} trait."
+			]
 		},
 		{
 			"name": "Kaiju Fulu",
@@ -7216,15 +7197,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"A mourner's dawnlight fulu is a stack of pages that resembles joss paper, used to locate the remains of the lost. When you",
-				{
-					"type": "ability",
-					"components": [
-						"the fulu",
-						"you envision a specific object or deceased"
-					]
-				},
-				"creature you're familiar with and want to find. You then rip the fulu into pieces and let them drift in the wind. If the item or creature you seek is within 500 feet, the pieces flutter through the air and land on the target, or on the surface closest to a buried or otherwise obscured target. If the torn fulu lands or fails to locate the desired target, its magic ends."
+				"A mourner's dawnlight fulu is a stack of pages that resembles joss paper, used to locate the remains of the lost. When you Activate the fulu you envision a specific object or deceased creature you're familiar with and want to find. You then rip the fulu into pieces and let them drift in the wind. If the item or creature you seek is within 500 feet, the pieces flutter through the air and land on the target, or on the surface closest to a buried or otherwise obscured target. If the torn fulu lands or fails to locate the desired target, its magic ends."
 			]
 		},
 		{
@@ -7279,13 +7252,13 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You fail to save against a {@trait negative} or {@trait death} effect."
 			},
 			"category": "Talisman",
 			"entries": [
 				"An acolyte accidentally left fulu paper outdoors overnight during a divine ceremony to {@deity Tsukiyo|LOGM} conducted only during a supermoon, creating the first reflected moonlight fulu. When you Activate this fulu, you reroll your saving throw against the triggering effect and take the better result. If this new roll is a critical success, the effect is reflected on its creator, who's treated as the effect's target, with any negative damage converted to positive. A reflected effect or spell affects only the original creator, even if it was an area spell or one that affects more than one creature."
-			],
-			"trigger": "You fail to save against a {@trait negative} or {@trait death} effect."
+			]
 		},
 		{
 			"name": "Sentry Fulu",
@@ -7380,7 +7353,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "burl thousand-pains fulu",
 					"level": 17,
 					"price": {
 						"amount": 2700,
@@ -7389,10 +7361,10 @@
 					"entries": [
 						"Though this green fulu looks inviting, it has a foreboding aura.",
 						"The DC is 35, and the fulu deals {@damage 10d8} poison damage, causing the target's body to respond adversely to their ki. On a failure or critical failure, if the target takes fire damage, it takes {@damage 2d8} {@condition persistent damage||persistent poison damage} as well. These effects have the {@trait poison} trait."
-					]
+					],
+					"variantType": "burl thousand-pains fulu"
 				},
 				{
-					"name": "blade thousand-pains fulu",
 					"level": 8,
 					"price": {
 						"amount": 90,
@@ -7400,10 +7372,10 @@
 					},
 					"entries": [
 						"This red fulu feels rigid, its edges sharp, and looking at it makes you feel feverish. The DC is 23, and the fulu deals {@damage 5d6} slashing damage as meridians burst and cut through flesh. On a failure or critical failure, if the target fails to take an action with the {@trait manipulate} or {@trait move} trait on each of its turns, it takes {@damage 1d6} {@condition persistent damage||persistent slashing damage}."
-					]
+					],
+					"variantType": "blade thousand-pains fulu"
 				},
 				{
-					"name": "icicle thousand-pains fulu",
 					"level": 14,
 					"price": {
 						"amount": 630,
@@ -7411,10 +7383,10 @@
 					},
 					"entries": [
 						"Looking at this black fulu leaves you queasy and cold. The DC is 30, and the fulu deals {@damage 10d6} cold damage as the target's ki warps and drains. On a failure or critical failure, if the target takes damage from a {@trait poison} or {@trait disease} effect or becomes {@condition sickened}, it takes {@damage 2d6} {@condition persistent damage||persistent cold damage}. These effects have the {@trait cold} trait."
-					]
+					],
+					"variantType": "icicle thousand-pains fulu"
 				},
 				{
-					"name": "needle thousand-pains fulu",
 					"level": 11,
 					"price": {
 						"amount": 270,
@@ -7422,10 +7394,10 @@
 					},
 					"entries": [
 						"Picking up this white fulu feels like you've stabbed your hand with a pin. The DC is 27, and the fulu deals {@damage 7d6} piercing damage as hair, nails, and connective tissues stab inward. On a failure or critical failure, if the target then takes an action with the {@trait move} trait, it takes {@damage 2d6} {@condition persistent damage||persistent piercing damage}."
-					]
+					],
+					"variantType": "needle thousand-pains fulu"
 				},
 				{
-					"name": "stone thousand-pains fulu",
 					"level": 5,
 					"price": {
 						"amount": 30,
@@ -7433,10 +7405,10 @@
 					},
 					"entries": [
 						"This fulu's yellow parchment feels dusty and stiff. The DC is 19, and the fulu deals {@damage 3d6} bludgeoning damage as muscles swell to crush joints and bones. On a failure or critical failure, if the target takes electricity damage, it takes {@damage 1d6} {@condition persistent damage||persistent bludgeoning damage} as well."
-					]
+					],
+					"variantType": "stone thousand-pains fulu"
 				},
 				{
-					"name": "void thousand-pains fulu",
 					"level": 20,
 					"price": {
 						"amount": 8100,
@@ -7444,7 +7416,8 @@
 					},
 					"entries": [
 						"The black dot at the center of this purple fulu draws in energy like a bottomless hole. The DC is 38, and the fulu deals {@damage 12d10} negative damage by dissipating the target's ki. On a failure or critical failure, if the target takes any other damage within 1 minute, it takes {@damage 2d10} {@condition persistent damage||persistent negative damage} as well. These effects have the {@trait death} and {@trait negative} traits. Each time the target takes this {@condition persistent damage}, any creature within 30 feet of it can use a reaction to gain temporary Hit Points equal to the {@condition persistent damage} taken, distributing the available temporary Hit Points among those that take the reaction. If the creature that affixed the fulu is within 30 feet, it instead gains all the available temporary Hit Points, if it wishes. These temporary Hit Points disappear after 1 minute."
-					]
+					],
+					"variantType": "void thousand-pains fulu"
 				}
 			],
 			"duration": {
@@ -7499,7 +7472,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 7,
 					"price": {
 						"amount": 60,
@@ -7507,10 +7479,10 @@
 					},
 					"entries": [
 						"Both DCs are 25."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 12,
 					"price": {
 						"amount": 360,
@@ -7518,10 +7490,10 @@
 					},
 					"entries": [
 						"Both DCs are 31."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 17,
 					"price": {
 						"amount": 2160,
@@ -7529,7 +7501,8 @@
 					},
 					"entries": [
 						"Both DCs are 39."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -7609,16 +7582,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 6,
 					"price": {
 						"amount": 50,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 10,
 					"price": {
 						"amount": 200,
@@ -7626,10 +7598,10 @@
 					},
 					"entries": [
 						"The spell can be 5th level or lower."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 14,
 					"price": {
 						"amount": 600,
@@ -7637,7 +7609,8 @@
 					},
 					"entries": [
 						"The spell can be 7th level or lower."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -7662,7 +7635,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "depth charge I",
 					"level": 5,
 					"price": {
 						"amount": 25,
@@ -7670,10 +7642,10 @@
 					},
 					"entries": [
 						"This ammunition deals {@damage 3d6} bludgeoning damage with a DC of 20."
-					]
+					],
+					"variantType": "depth charge I"
 				},
 				{
-					"name": "depth charge II",
 					"level": 7,
 					"price": {
 						"amount": 55,
@@ -7681,10 +7653,10 @@
 					},
 					"entries": [
 						"This ammunition deals {@damage 5d6} bludgeoning damage with a DC of 24."
-					]
+					],
+					"variantType": "depth charge II"
 				},
 				{
-					"name": "depth charge III",
 					"level": 10,
 					"price": {
 						"amount": 165,
@@ -7692,10 +7664,10 @@
 					},
 					"entries": [
 						"This ammunition deals {@damage 7d6} bludgeoning damage with a DC of 28."
-					]
+					],
+					"variantType": "depth charge III"
 				},
 				{
-					"name": "depth charge IV",
 					"level": 12,
 					"price": {
 						"amount": 330,
@@ -7703,10 +7675,10 @@
 					},
 					"entries": [
 						"This ammunition deals {@damage 9d6} bludgeoning damage with a DC of 30."
-					]
+					],
+					"variantType": "depth charge IV"
 				},
 				{
-					"name": "depth charge V",
 					"level": 14,
 					"price": {
 						"amount": 660,
@@ -7714,10 +7686,10 @@
 					},
 					"entries": [
 						"This ammunition deals {@damage 11d6} bludgeoning damage with a DC of 32."
-					]
+					],
+					"variantType": "depth charge V"
 				},
 				{
-					"name": "depth charge VI",
 					"level": 16,
 					"price": {
 						"amount": 1500,
@@ -7725,10 +7697,10 @@
 					},
 					"entries": [
 						"This ammunition deals {@damage 13d6} bludgeoning damage with a DC of 36."
-					]
+					],
+					"variantType": "depth charge VI"
 				},
 				{
-					"name": "depth charge VII",
 					"level": 18,
 					"price": {
 						"amount": 3200,
@@ -7736,7 +7708,8 @@
 					},
 					"entries": [
 						"This ammunition deals {@damage 15d6} bludgeoning damage with a DC of 39."
-					]
+					],
+					"variantType": "depth charge VII"
 				}
 			]
 		},
@@ -7933,7 +7906,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 7,
 					"price": {
 						"amount": 60,
@@ -7941,10 +7913,10 @@
 					},
 					"entries": [
 						"The ammunition grants a +1 circumstance bonus to the attack roll, deals two additional weapon damage dice, and is deadly d8."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 12,
 					"price": {
 						"amount": 360,
@@ -7952,10 +7924,10 @@
 					},
 					"entries": [
 						"The ammo grants a +1 circumstance bonus to the attack roll, deals three additional weapon damage dice, and is deadly d10."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 17,
 					"price": {
 						"amount": 2200,
@@ -7963,7 +7935,8 @@
 					},
 					"entries": [
 						"The ammunition grants a +2 circumstance bonus to the attack roll, deals four additional weapon damage dice, and is deadly d12."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -8141,57 +8114,58 @@
 						"envision",
 						"{@action Interact}"
 					],
-					"variants": [
-						{
-							"name": "lesser",
-							"level": 5,
-							"price": {
-								"amount": 20,
-								"coin": "gp"
-							},
-							"entries": [
-								"The attack functions appropriately for a +1 striking weapon."
-							]
-						},
-						{
-							"name": "moderate",
-							"level": 10,
-							"price": {
-								"amount": 200,
-								"coin": "gp"
-							},
-							"entries": [
-								"The attack functions appropriately for a +2 striking weapon."
-							]
-						},
-						{
-							"name": "greater",
-							"level": 12,
-							"price": {
-								"amount": 400,
-								"coin": "gp"
-							},
-							"entries": [
-								"The attack functions appropriately for a +2 greater striking weapon."
-							]
-						},
-						{
-							"name": "major",
-							"level": 16,
-							"price": {
-								"amount": 2000,
-								"coin": "gp"
-							},
-							"entries": [
-								"The attack functions appropriately for a +3 greater striking weapon."
-							]
-						}
-					],
 					"entries": [
 						"A ghostly weapon made of force appears, wielded by you and loaded with the weapon shot you activated. The conjured weapon sublimates into motes of briefly luminous dust if the weapon shot deactivates without you using it or just after you use the activated shot. For the {@action Strike} with which it functions, the weapon uses the ammunition's fundamental runes, according to its type."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 5,
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [
+						"The attack functions appropriately for a +1 striking weapon."
+					],
+					"variantType": "lesser"
+				},
+				{
+					"level": 10,
+					"price": {
+						"amount": 200,
+						"coin": "gp"
+					},
+					"entries": [
+						"The attack functions appropriately for a +2 striking weapon."
+					],
+					"variantType": "moderate"
+				},
+				{
+					"level": 12,
+					"price": {
+						"amount": 400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The attack functions appropriately for a +2 greater striking weapon."
+					],
+					"variantType": "greater"
+				},
+				{
+					"level": 16,
+					"price": {
+						"amount": 2000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The attack functions appropriately for a +3 greater striking weapon."
+					],
+					"variantType": "major"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Cayden's Brew",
@@ -8241,16 +8215,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "Cayden's brew",
 					"level": 8,
 					"price": {
 						"amount": 80,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "Cayden's brew"
 				},
 				{
-					"name": "double Cayden's brew",
 					"level": 13,
 					"price": {
 						"amount": 480,
@@ -8258,10 +8231,10 @@
 					},
 					"entries": [
 						"The save DC is 31."
-					]
+					],
+					"variantType": "double Cayden's brew"
 				},
 				{
-					"name": "triple Cayden's brew",
 					"level": 18,
 					"price": {
 						"amount": 3200,
@@ -8269,7 +8242,8 @@
 					},
 					"entries": [
 						"The save DC is 40."
-					]
+					],
+					"variantType": "triple Cayden's brew"
 				}
 			]
 		},
@@ -8490,16 +8464,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "young faerie dragon liqueur",
 					"level": 7,
 					"price": {
 						"amount": 70,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "young faerie dragon liqueur"
 				},
 				{
-					"name": "adult faerie dragon liqueur",
 					"level": 12,
 					"price": {
 						"amount": 400,
@@ -8507,10 +8480,10 @@
 					},
 					"entries": [
 						"The save DC is 29."
-					]
+					],
+					"variantType": "adult faerie dragon liqueur"
 				},
 				{
-					"name": "wyrm faerie dragon liqueur",
 					"level": 17,
 					"price": {
 						"amount": 3000,
@@ -8518,7 +8491,8 @@
 					},
 					"entries": [
 						"The save DC is 37."
-					]
+					],
+					"variantType": "wyrm faerie dragon liqueur"
 				}
 			]
 		},
@@ -8741,39 +8715,6 @@
 					"frequency": {
 						"special": "once every {@dice 1d4} rounds"
 					},
-					"variants": [
-						{
-							"name": "lesser",
-							"level": 8,
-							"price": {
-								"amount": 90,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "moderate",
-							"level": 13,
-							"price": {
-								"amount": 550,
-								"coin": "gp"
-							},
-							"entries": [
-								"You gain the effects of a 5th-level {@spell bullhorn|SoM} spell. The damage is {@dice 6d4} and the save DC is 30."
-							]
-						},
-						{
-							"name": "greater",
-							"level": 18,
-							"price": {
-								"amount": 3600,
-								"coin": "gp"
-							},
-							"entries": [
-								"You gain the effects of a 7th-level {@spell bullhorn|SoM} spell. The damage is {@dice 10d4} and the save DC is 38."
-							]
-						}
-					],
 					"entries": [
 						"You emit a scream in a 15-foot cone that deals {@damage 4d4} sonic damage. Each creature in the area can attempt a DC 24 Fortitude saving throw.",
 						{
@@ -8795,7 +8736,41 @@
 						}
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 8,
+					"price": {
+						"amount": 90,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "lesser"
+				},
+				{
+					"level": 13,
+					"price": {
+						"amount": 550,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain the effects of a 5th-level {@spell bullhorn|SoM} spell. The damage is {@dice 6d4} and the save DC is 30."
+					],
+					"variantType": "moderate"
+				},
+				{
+					"level": 18,
+					"price": {
+						"amount": 3600,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain the effects of a 7th-level {@spell bullhorn|SoM} spell. The damage is {@dice 10d4} and the save DC is 38."
+					],
+					"variantType": "greater"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Rovagug's Mud",
@@ -8828,16 +8803,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "{@deity Rovagug}'s mud",
 					"level": 13,
 					"price": {
 						"amount": 600,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "{@deity Rovagug}'s mud"
 				},
 				{
-					"name": "greater {@deity Rovagug}'s mud",
 					"level": 18,
 					"price": {
 						"amount": 4800,
@@ -8845,7 +8819,8 @@
 					},
 					"entries": [
 						"The damage is {@dice 8d6}, the save DC is 38, and Hardness decreases by 10."
-					]
+					],
+					"variantType": "greater {@deity Rovagug}'s mud"
 				}
 			]
 		},
@@ -8964,16 +8939,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 6,
 					"price": {
 						"amount": 33,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 10,
 					"price": {
 						"amount": 155,
@@ -8981,10 +8955,10 @@
 					},
 					"entries": [
 						"As lesser, but you can use the limb to hold an item of up to light Bulk. You can also use the whole limb to hold onto a suitable anchor point, such as a tree branch, balcony, or rocky outcropping, subject to the GM's discretion. While using your limb this way, you have free use of all your other limbs, so you can perform tasks that require both hands. This potion lasts 8 hours."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 14,
 					"price": {
 						"amount": 660,
@@ -8992,7 +8966,8 @@
 					},
 					"entries": [
 						"As moderate, but the tail can hold an item of up to 1 Bulk or be used as a second hand to help hold an item of up to 2 Bulk. You can also use the limb to make an unarmed attack that deals {@damage 1d6} bludgeoning damage and has the {@trait sweep} trait. This potion lasts 24 hours."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -9022,14 +8997,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You fail or critically fail a {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation} check to {@action Coerce}, {@action Lie}, {@action Make an Impression}, or {@action Request}",
+				"requirements": "You're a master in the skill you failed with."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This ornate locket, usually containing a faceless, humanoid portrait, is typically worn on a chain around the neck or attached to your clothing. When activated, the charm casts a DC 26 {@spell modify memory} spell against a single target of the check, removing all memory of your failed attempt and potentially allowing you to make another attempt. The effect can't remove more than 3 minutes of memories from its target."
-			],
-			"trigger": "You fail or critically fail a {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation} check to {@action Coerce}, {@action Lie}, {@action Make an Impression}, or {@action Request}",
-			"requirements": "You're a master in the skill you failed with."
+			]
 		},
 		{
 			"name": "Blending Brooch",
@@ -9056,14 +9031,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You roll initiative using {@skill Stealth} and can see a creature",
+				"requirements": "You are a master in {@skill Stealth}."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This small, matte-black pin always seems to be on the periphery of your vision, even when you stare directly at it. When you Activate the talisman, choose one creature you can see. You become {@condition invisible} to that creature unless it succeeds at a DC 28 Will save. This effect lasts for 1 minute or until the target hits you with an attack, whichever comes first."
-			],
-			"trigger": "You roll initiative using {@skill Stealth} and can see a creature",
-			"requirements": "You are a master in {@skill Stealth}."
+			]
 		},
 		{
 			"name": "Captivating Bauble",
@@ -9095,14 +9070,14 @@
 				"components": [
 					"envision",
 					"{@action Interact}"
-				]
+				],
+				"requirements": "You are a master in {@skill Deception} or {@skill Diplomacy}."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This talisman appears as an ornate piece of jewelry of the highest quality. When you Activate it, your speech and mannerisms become supernaturally compelling for up to 1 hour. By engaging an intelligent creature in conversation for at least 1 minute, you can cause them to become {@condition fascinated} unless they succeed at a DC 30 Will save. This fascination lasts for as long as you continue conversing or until you move at least 20 feet away. When the effect ends, the target becomes temporarily immune for 24 hours.",
 				"If you or any ally within 120 feet takes an overtly {@condition hostile} action while a creature is {@condition fascinated} by the bauble, the bauble burns out in a shower of sparks and all its effects end."
-			],
-			"requirements": "You are a master in {@skill Deception} or {@skill Diplomacy}."
+			]
 		},
 		{
 			"name": "Chain of Stars",
@@ -9130,22 +9105,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You hit a creature with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
-				"This delicate mithral chain strung with tiny shuriken is wound tightly around the handle of the affixed weapon. When you",
-				{
-					"type": "ability",
-					"components": [
-						"the chain",
-						"three +1 striking shuriken made from"
-					]
-				},
-				"magical force materialize in the target's space and split off to attack other creatures. Attempt up to three shuriken Strikes that must each target a different creature and can't target the creature you hit to trigger this talisman. These Strikes use your attack modifier but originate from the hit creature's space.",
+				"This delicate mithral chain strung with tiny shuriken is wound tightly around the handle of the affixed weapon. When you Activate the chain three +1 striking shuriken made from magical force materialize in the target's space and split off to attack other creatures. Attempt up to three shuriken Strikes that must each target a different creature and can't target the creature you hit to trigger this talisman. These Strikes use your attack modifier but originate from the hit creature's space.",
 				"These attacks count toward your multiple attack penalty, but the penalty doesn't increase until after all three attacks have been made. The shuriken deal force damage instead of their normal type, and each shuriken vanishes after its attack."
-			],
-			"trigger": "You hit a creature with the affixed weapon."
+			]
 		},
 		{
 			"name": "Copper Penny",
@@ -9172,14 +9139,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You are knocked {@condition prone}",
+				"requirements": "You're an expert in {@skill Acrobatics}, and you are unarmored."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This plain copper coin is typically affixed near the feet, on a pant leg or hem. When you Activate it, you {@action Stand} and can't be knocked {@condition prone} again on the current turn."
-			],
-			"trigger": "You are knocked {@condition prone}",
-			"requirements": "You're an expert in {@skill Acrobatics}, and you are unarmored."
+			]
 		},
 		{
 			"name": "Dragonclaw Scutcheon",
@@ -9206,26 +9173,19 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You would take damage of a type depending on the talisman's dragon type: acid, cold, electricity, fire, or poison damage",
+				"prerequisites": "You have the affixed shield raised."
 			},
 			"category": "Talisman",
 			"entries": [
-				"This decorative shield emblem contains the gilded claw of a dragon mounted in a setting of high-grade adamantine alloy. It protects against a damage type depending on the type of dragon the claw came from (see the sidebar). When you",
-				{
-					"type": "ability",
-					"components": [
-						"the scutcheon",
-						"you and all of your carried",
-						"wielded,"
-					]
-				},
-				"or worn items gain immunity to all damage of that type until the end of your next turn.",
+				"This decorative shield emblem contains the gilded claw of a dragon mounted in a setting of high-grade adamantine alloy. It protects against a damage type depending on the type of dragon the claw came from (see the sidebar). When you Activate the scutcheon you and all of your carried wielded, or worn items gain immunity to all damage of that type until the end of your next turn.",
 				"If you have a dragonclaw scutcheon, dragonscale cameo, and dragontooth trophy attached to your items, and they all correspond to the same type of dragon, you gain an extra benefit. When you Activate any of these talismans, you gain the ability to cast an 8th-level, DC 35 {@spell dragon breath} focus spell (Core Rulebook 403) as an innate spell once before the end of your next turn. Use the dragon type that matches the talismans; you can Cast the Spell this way without spending a Focus Point.",
 				"Because each talisman disintegrates when used, you can't get this benefit again until you've attached a replacement."
 			],
-			"craftReq": "Supply one claw from an adult or older dragon.",
-			"trigger": "You would take damage of a type depending on the talisman's dragon type: acid, cold, electricity, fire, or poison damage",
-			"prerequisites": "You have the affixed shield raised."
+			"craftReq": [
+				"Supply one claw from an adult or older dragon."
+			]
 		},
 		{
 			"name": "Dragonscale Cameo",
@@ -9259,7 +9219,9 @@
 			"entries": [
 				"This ornamental pin, consisting of a single preserved dragon scale from a chromatic or metallic dragon mounted in a setting of precious metal, is typically affixed between the shoulder blades. When you Activate the pin, a pair of draconic wings matching the color of the scale unfurl from your shoulders, granting you a fly Speed of 50 feet for 5 minutes."
 			],
-			"craftReq": "Supply one scale from an adult or older dragon."
+			"craftReq": [
+				"Supply one scale from an adult or older dragon."
+			]
 		},
 		{
 			"name": "Dragontooth Trophy",
@@ -9286,22 +9248,16 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You succeed at a {@action Strike} with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
-				"This imposing fang is engraved with an intricate arrangement of symbols, glyphs, and patterns and dangles from a leather strap bound to the hilt of the affixed weapon. When you",
-				{
-					"type": "ability",
-					"components": [
-						"the trophy",
-						"your weapon is momentarily transformed"
-					]
-				},
-				"into a magical construct of draconic fury. On the triggering {@action Strike} and until the end of your next turn, the damage type of the affixed weapon changes to the type matching the dragon the claw came from (see the sidebar). This change overrides the {@trait versatile} trait and similar abilities."
+				"This imposing fang is engraved with an intricate arrangement of symbols, glyphs, and patterns and dangles from a leather strap bound to the hilt of the affixed weapon. When you Activate the trophy your weapon is momentarily transformed into a magical construct of draconic fury. On the triggering {@action Strike} and until the end of your next turn, the damage type of the affixed weapon changes to the type matching the dragon the claw came from (see the sidebar). This change overrides the {@trait versatile} trait and similar abilities."
 			],
-			"craftReq": "Supply one tooth from an adult or older dragon.",
-			"trigger": "You succeed at a {@action Strike} with the affixed weapon."
+			"craftReq": [
+				"Supply one tooth from an adult or older dragon."
+			]
 		},
 		{
 			"name": "Emergency Eye",
@@ -9328,15 +9284,15 @@
 				},
 				"components": [
 					"command"
-				]
+				],
+				"trigger": "You become {@condition blinded}, or an effect otherwise impedes your vision",
+				"requirements": "You are an expert in {@skill Perception}."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This eye, harvested from a monster, looks like it's peacefully sleeping but gives you a backup when you can't use your eyes.",
 				"When the eye is activated, the eyelid pops open, and the eye stares frantically about. You see through the eye with normal vision until the end of your next turn, when the eye withers and flakes away."
-			],
-			"trigger": "You become {@condition blinded}, or an effect otherwise impedes your vision",
-			"requirements": "You are an expert in {@skill Perception}."
+			]
 		},
 		{
 			"name": "Ensnaring Disk",
@@ -9363,14 +9319,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You use the affixed shield to Shield Block a melee weapon attack",
+				"requirements": "You are an expert in {@skill Athletics}."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This coin-sized metal disk is inscribed with arcane symbols and mounted on the inner surface of a shield. When you Activate the disk, the triggering weapon momentarily sticks to your shield, allowing you to attempt to {@action Disarm} it from its wielder with a +2 item bonus. If you roll a critical failure on this check, you get a failure instead."
-			],
-			"trigger": "You use the affixed shield to Shield Block a melee weapon attack",
-			"requirements": "You are an expert in {@skill Athletics}."
+			]
 		},
 		{
 			"name": "False Death Vial",
@@ -9394,7 +9350,9 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You would be reduced to 0 Hit Points by damage but not immediately killed",
+				"requirements": "You are unarmored."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -9404,16 +9362,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "false death vial",
 					"level": 13,
 					"price": {
 						"amount": 600,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "false death vial"
 				},
 				{
-					"name": "greater false death vial",
 					"level": 16,
 					"price": {
 						"amount": 2000,
@@ -9422,11 +9379,10 @@
 					"entries": [
 						"The talisman also teleports you to a clear space of your choice that you can see within 120 feet. This also transports any items you're wearing and holding with you, but if this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the teleportation is canceled.",
 						"This effect has the {@trait teleportation} trait."
-					]
+					],
+					"variantType": "greater false death vial"
 				}
-			],
-			"trigger": "You would be reduced to 0 Hit Points by damage but not immediately killed",
-			"requirements": "You are unarmored."
+			]
 		},
 		{
 			"name": "Grinning Pugwampi",
@@ -9455,7 +9411,8 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You damage a {@condition flat-footed} creature with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -9474,8 +9431,7 @@
 						]
 					}
 				}
-			],
-			"trigger": "You damage a {@condition flat-footed} creature with the affixed weapon."
+			]
 		},
 		{
 			"name": "Grudgestone",
@@ -9498,7 +9454,8 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "A creature critically hits you."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -9507,16 +9464,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "grudgestone",
 					"level": 7,
 					"price": {
 						"amount": 70,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "grudgestone"
 				},
 				{
-					"name": "greater grudgestone",
 					"level": 15,
 					"price": {
 						"amount": 900,
@@ -9524,10 +9480,10 @@
 					},
 					"entries": [
 						"The bonus is +5."
-					]
+					],
+					"variantType": "greater grudgestone"
 				}
-			],
-			"trigger": "A creature critically hits you."
+			]
 		},
 		{
 			"name": "Hungering Maw",
@@ -9556,14 +9512,14 @@
 				},
 				"components": [
 					"command"
-				]
+				],
+				"trigger": "You attempt a saving throw against a {@trait possession} effect",
+				"requirements": "You are a master in Will saves."
 			},
 			"category": "Talisman",
 			"entries": [
 				"A shining onyx gemstone clutched in a pair of black steel jaws, this pendant is a potent defense against {@condition hostile} spirits and other beings who commandeer the bodies of others. When you Activate it, you gain a +4 item bonus to your saving throw against the triggering effect. If your result prevents you from being possessed, the creature that attempted to possess you is subject to a DC 37 {@spell bind soul} spell, which can trap it in the talisman as if it had recently died. The talisman's magic is exhausted after use, but a soul trapped this way remains imprisoned inside, as detailed in the spell description. Starting at the end of its next turn, the trapped creature gets a new save to end the effect at the end of each of its turns."
-			],
-			"trigger": "You attempt a saving throw against a {@trait possession} effect",
-			"requirements": "You are a master in Will saves."
+			]
 		},
 		{
 			"name": "Mortalis Coin",
@@ -9590,14 +9546,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You are reduced to 0 Hit Points by damage but not immediately killed",
+				"requirements": "You are an expert in Fortitude saves."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This small golden coin is usually stamped with the image of a boar or other resilient creature. If the triggering damage would cause you to become {@condition dying||dying 2} (typically due to a critical hit or your critical failure), you become {@condition dying||dying 1} instead. In addition, for 10 minutes, you die from the {@condition dying} condition at {@condition dying||dying 5}, rather than {@condition dying||dying 4}."
-			],
-			"trigger": "You are reduced to 0 Hit Points by damage but not immediately killed",
-			"requirements": "You are an expert in Fortitude saves."
+			]
 		},
 		{
 			"name": "Reflecting Shard",
@@ -9621,7 +9577,9 @@
 				},
 				"components": [
 					"command"
-				]
+				],
+				"trigger": "You are targeted by a spell of 5th level or lower",
+				"requirements": "You're a master in"
 			},
 			"category": "Talisman",
 			"entries": [
@@ -9631,16 +9589,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "reflecting shard",
 					"level": 13,
 					"price": {
 						"amount": 500,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "reflecting shard"
 				},
 				{
-					"name": "greater reflecting shard",
 					"level": 17,
 					"price": {
 						"amount": 2500,
@@ -9648,11 +9605,10 @@
 					},
 					"entries": [
 						"The talisman can reflect spells of any level, and its counteract level is 9th."
-					]
+					],
+					"variantType": "greater reflecting shard"
 				}
-			],
-			"trigger": "You are targeted by a spell of 5th level or lower",
-			"requirements": "You're a master in"
+			]
 		},
 		{
 			"name": "Reverberating Stone",
@@ -9675,7 +9631,9 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You use the affixed shield to Shield Block a melee attack",
+				"requirements": "You're a master in {@skill Athletics}, and you have the affixed shield raised."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -9684,16 +9642,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "reverberating stone",
 					"level": 11,
 					"price": {
 						"amount": 275,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "reverberating stone"
 				},
 				{
-					"name": "greater reverberating stone",
 					"level": 15,
 					"price": {
 						"amount": 1200,
@@ -9701,11 +9658,10 @@
 					},
 					"entries": [
 						"The cone is 30 feet, the damage is {@dice 3d6}, and the DC is 34."
-					]
+					],
+					"variantType": "greater reverberating stone"
 				}
-			],
-			"trigger": "You use the affixed shield to Shield Block a melee attack",
-			"requirements": "You're a master in {@skill Athletics}, and you have the affixed shield raised."
+			]
 		},
 		{
 			"name": "Ruby Capacitor",
@@ -9728,7 +9684,8 @@
 				},
 				"components": [
 					"{@action Interact}"
-				]
+				],
+				"requirements": "You prepared the staff."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -9737,16 +9694,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "ruby capacitor",
 					"level": 10,
 					"price": {
 						"amount": 180,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "ruby capacitor"
 				},
 				{
-					"name": "greater ruby capacitor",
 					"level": 14,
 					"price": {
 						"amount": 800,
@@ -9754,10 +9710,10 @@
 					},
 					"entries": [
 						"The number of temporary charges increases to 3."
-					]
+					],
+					"variantType": "greater ruby capacitor"
 				},
 				{
-					"name": "major ruby capacitor",
 					"level": 18,
 					"price": {
 						"amount": 4500,
@@ -9765,10 +9721,10 @@
 					},
 					"entries": [
 						"The number of temporary charges increases to 5."
-					]
+					],
+					"variantType": "major ruby capacitor"
 				}
-			],
-			"requirements": "You prepared the staff."
+			]
 		},
 		{
 			"name": "Snarling Badger",
@@ -9792,7 +9748,9 @@
 				},
 				"components": [
 					"command"
-				]
+				],
+				"trigger": "You lose the {@condition dying} condition",
+				"requirements": "You have a {@condition wounded} value of 1 or more."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -9801,16 +9759,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser snarling badger",
 					"level": 6,
 					"price": {
 						"amount": 50,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "lesser snarling badger"
 				},
 				{
-					"name": "moderate snarling badger",
 					"level": 12,
 					"price": {
 						"amount": 400,
@@ -9818,10 +9775,10 @@
 					},
 					"entries": [
 						"The heroism is 6th level."
-					]
+					],
+					"variantType": "moderate snarling badger"
 				},
 				{
-					"name": "greater snarling badger",
 					"level": 18,
 					"price": {
 						"amount": 5000,
@@ -9829,11 +9786,10 @@
 					},
 					"entries": [
 						"The heroism is 9th level."
-					]
+					],
+					"variantType": "greater snarling badger"
 				}
-			],
-			"trigger": "You lose the {@condition dying} condition",
-			"requirements": "You have a {@condition wounded} value of 1 or more."
+			]
 		},
 		{
 			"name": "Wooden Nickel",
@@ -9861,15 +9817,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"prerequisites": "You are a master in {@skill Deception}."
 			},
 			"category": "Talisman",
 			"entries": [
-				"{@skill Deception}.",
 				"This rough wooden coin hangs from a string drilled through a hole at its center. When you Activate the wooden nickel, for 10 minutes, you can cause any object you touch of 2 Bulk or less to look, feel, and smell like valuables of a similar size crafted from a precious metal of your choice. A creature that touches or Interacts with an affected object can attempt a {@skill Perception} check against your {@skill Deception} DC to disbelieve the illusion, and a successful check against your {@skill Deception} DC with {@skill Crafting} or an appropriate {@skill Lore} skill will also reveal the item's true nature.",
 				"After 10 minutes have elapsed since you Activated the wooden nickel, all affected objects revert to their true form."
-			],
-			"prerequisites": "You are a master in"
+			]
 		},
 		{
 			"name": "Bargainer's Instrument",
@@ -10111,7 +10066,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "minor",
 					"level": 2,
 					"price": {
 						"amount": 7,
@@ -10119,10 +10073,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 1d8} at night, or {@dice 1d6} at other times."
-					]
+					],
+					"variantType": "minor"
 				},
 				{
-					"name": "lesser",
 					"level": 5,
 					"price": {
 						"amount": 30,
@@ -10130,10 +10084,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 3d8} at night, or {@dice 3d6} at other times."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 9,
 					"price": {
 						"amount": 150,
@@ -10141,10 +10095,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 7d8} at night, or {@dice 7d6} at other times."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 13,
 					"price": {
 						"amount": 600,
@@ -10152,10 +10106,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 12d8} at night, or {@dice 12d6} at other times."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 17,
 					"price": {
 						"amount": 3000,
@@ -10163,7 +10117,8 @@
 					},
 					"entries": [
 						"The damage is {@dice 18d8} at night, or {@dice 18d6} at other times."
-					]
+					],
+					"variantType": "major"
 				}
 			]
 		},
@@ -10191,14 +10146,14 @@
 				},
 				"components": [
 					"{@action Perform}"
-				]
+				],
+				"requirements": "You are untrained in"
 			},
 			"category": "Consumable",
 			"entries": [
 				"{@skill Performance}.",
 				"Made of polished wood, a neophyte's fipple is a block flute enchanted to guarantee melodic sound. When you {@action Perform} a song on the fipple to Activate it, your ability modifier, proficiency bonus, and item bonus for the {@skill Performance} check total +7, regardless of what they would normally be. Add other bonuses and penalties to the check normally. Once the magic is used, the fipple remains as a mundane instrument."
-			],
-			"requirements": "You are untrained in"
+			]
 		},
 		{
 			"name": "Potion Patch",
@@ -10220,7 +10175,8 @@
 				},
 				"components": [
 					"command"
-				]
+				],
+				"requirements": "You must have the potion patch affixed to your skin."
 			},
 			"category": "Consumable",
 			"entries": [
@@ -10229,7 +10185,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 4,
 					"price": {
 						"amount": 20,
@@ -10237,10 +10192,10 @@
 					},
 					"entries": [
 						"The potion must be 10th level or lower."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 8,
 					"price": {
 						"amount": 100,
@@ -10248,10 +10203,10 @@
 					},
 					"entries": [
 						"The potion must be 15th level or lower."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 13,
 					"price": {
 						"amount": 600,
@@ -10259,10 +10214,10 @@
 					},
 					"entries": [
 						"The potion can be any level."
-					]
+					],
+					"variantType": "greater"
 				}
-			],
-			"requirements": "You must have the potion patch affixed to your skin."
+			]
 		},
 		{
 			"name": "Reaper's Spellgun",
@@ -10297,14 +10252,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"A rod of blackened bone with a bulb at one end comprises a reaper's spellgun, which feels heavier than it looks. You",
-				{
-					"type": "ability",
-					"components": [
-						"the spellgun by aiming it at one creature and making"
-					]
-				},
-				"your choice of a spell attack roll or a firearm attack roll against the target's AC. This spellgun has a range increment of 30 feet. The spellgun fires a shadowy ray, then dissolves into gray mist.",
+				"A rod of blackened bone with a bulb at one end comprises a reaper's spellgun, which feels heavier than it looks. You Activate the spellgun by aiming it at one creature and making your choice of a spell attack roll or a firearm attack roll against the target's AC. This spellgun has a range increment of 30 feet. The spellgun fires a shadowy ray, then dissolves into gray mist.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -10362,7 +10310,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 5,
 					"price": {
 						"amount": 30,
@@ -10370,10 +10317,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 4d6}, and the {@condition persistent damage} is {@dice 1d4}."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 9,
 					"price": {
 						"amount": 150,
@@ -10381,10 +10328,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 7d6}, and the {@condition persistent damage} is {@dice 3d4}."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 13,
 					"price": {
 						"amount": 600,
@@ -10392,7 +10339,8 @@
 					},
 					"entries": [
 						"The damage is {@dice 10d6}, and the {@condition persistent damage} is {@dice 5d4}."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -10427,7 +10375,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 5,
 					"price": {
 						"amount": 30,
@@ -10435,10 +10382,10 @@
 					},
 					"entries": [
 						"Two warriors manifest with a +11 attack modifier."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 9,
 					"price": {
 						"amount": 150,
@@ -10446,10 +10393,10 @@
 					},
 					"entries": [
 						"Four warriors manifest with a +17 attack modifier."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 13,
 					"price": {
 						"amount": 600,
@@ -10457,10 +10404,10 @@
 					},
 					"entries": [
 						"Six warriors manifest with a +22 attack modifier."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 17,
 					"price": {
 						"amount": 3000,
@@ -10468,7 +10415,8 @@
 					},
 					"entries": [
 						"Eight warriors manifest with a +29 attack modifier."
-					]
+					],
+					"variantType": "major"
 				}
 			]
 		},
@@ -10553,7 +10501,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 3,
 					"price": {
 						"amount": 12,
@@ -10561,10 +10508,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 2d6}."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 7,
 					"price": {
 						"amount": 70,
@@ -10572,10 +10519,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 7d6}."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 11,
 					"price": {
 						"amount": 275,
@@ -10583,10 +10530,10 @@
 					},
 					"entries": [
 						"The damage is {@dice 12d6}."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 15,
 					"price": {
 						"amount": 1250,
@@ -10594,7 +10541,8 @@
 					},
 					"entries": [
 						"The damage is {@dice 16d6}."
-					]
+					],
+					"variantType": "major"
 				}
 			]
 		},
@@ -12702,33 +12650,34 @@
 						"unit": "day"
 					},
 					"requirements": "Your last action was to cast a spell prepared from this grimoire that allows understanding of another language, such as comprehend languages or tongues",
-					"variants": [
-						{
-							"name": "linguist's dictionary",
-							"level": 9,
-							"price": {
-								"amount": 650,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "greater linguist's dictionary",
-							"level": 12,
-							"price": {
-								"amount": 1750,
-								"coin": "gp"
-							},
-							"entries": [
-								"The dictionary can hold three languages at a time."
-							]
-						}
-					],
 					"entries": [
 						"The grimoire absorbs knowledge of one language translated this way (caster's choice if more than one), allowing its bearer to communicate on a rudimentary level in that language even after the spell's duration has elapsed. The linguist's dictionary can hold one language at a time."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 9,
+					"price": {
+						"amount": 650,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "linguist's dictionary"
+				},
+				{
+					"level": 12,
+					"price": {
+						"amount": 1750,
+						"coin": "gp"
+					},
+					"entries": [
+						"The dictionary can hold three languages at a time."
+					],
+					"variantType": "greater linguist's dictionary"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Maw of Hungry Shadows",
@@ -12863,46 +12812,47 @@
 						"unit": "day"
 					},
 					"requirements": "Your last action was to cast a spell prepared from this grimoire, and the spell removed a harmful condition or affliction from yourself or an ally",
-					"variants": [
-						{
-							"name": "lesser tome of restorative cleansing",
-							"level": 5,
-							"price": {
-								"amount": 130,
-								"coin": "gp"
-							},
-							"entries": [
-								"The creature gains {@dice 1d8} temporary Hit Points."
-							]
-						},
-						{
-							"name": "moderate tome of restorative cleansing",
-							"level": 9,
-							"price": {
-								"amount": 600,
-								"coin": "gp"
-							},
-							"entries": [
-								"The creature gains {@dice 2d8} temporary Hit Points."
-							]
-						},
-						{
-							"name": "greater tome of restorative cleansing",
-							"level": 14,
-							"price": {
-								"amount": 3750,
-								"coin": "gp"
-							},
-							"entries": [
-								"The creature gains {@dice 3d8} temporary Hit Points."
-							]
-						}
-					],
 					"entries": [
 						"Choose one creature whose condition was removed by the required spell. Depending on the version, that creature gains a number of temporary Hit Points that last for 1 hour."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 5,
+					"price": {
+						"amount": 130,
+						"coin": "gp"
+					},
+					"entries": [
+						"The creature gains {@dice 1d8} temporary Hit Points."
+					],
+					"variantType": "lesser tome of restorative cleansing"
+				},
+				{
+					"level": 9,
+					"price": {
+						"amount": 600,
+						"coin": "gp"
+					},
+					"entries": [
+						"The creature gains {@dice 2d8} temporary Hit Points."
+					],
+					"variantType": "moderate tome of restorative cleansing"
+				},
+				{
+					"level": 14,
+					"price": {
+						"amount": 3750,
+						"coin": "gp"
+					},
+					"entries": [
+						"The creature gains {@dice 3d8} temporary Hit Points."
+					],
+					"variantType": "greater tome of restorative cleansing"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Tome of Scintillating Sleet",
@@ -12983,8 +12933,7 @@
 					]
 				}
 			]
-		}
-	,
+		},
 		{
 			"name": "Confabulator",
 			"source": "TV",
@@ -13190,7 +13139,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "bull heartening missive",
 					"level": 6,
 					"price": {
 						"amount": 50,
@@ -13198,10 +13146,10 @@
 					},
 					"entries": [
 						"Folded into a bull, this missive grants the recipient a sense of solidity. The recipient gains a +1 item bonus to Fortitude saves for the next 24 hours."
-					]
+					],
+					"variantType": "bull heartening missive"
 				},
 				{
-					"name": "butterfly heartening missive",
 					"level": 5,
 					"price": {
 						"amount": 25,
@@ -13209,10 +13157,10 @@
 					},
 					"entries": [
 						"Folded into a delicate butterfly, this missive grants the recipient a sense of grace and poise. Once during the next 24 hours, when the recipient fails a {@skill Diplomacy} or {@skill Performance} check, they can improve the result from a failure to a success or from a critical failure to a failure. This is a {@trait fortune} effect."
-					]
+					],
+					"variantType": "butterfly heartening missive"
 				},
 				{
-					"name": "rabbit heartening missive",
 					"level": 6,
 					"price": {
 						"amount": 50,
@@ -13220,10 +13168,10 @@
 					},
 					"entries": [
 						"Folded into a rabbit sitting on its haunches, this missive grants the recipient a sense of mischief and agility. The recipient gains a +1 item bonus to Reflex saves for the next 24 hours."
-					]
+					],
+					"variantType": "rabbit heartening missive"
 				},
 				{
-					"name": "turtle heartening missive",
 					"level": 6,
 					"price": {
 						"amount": 50,
@@ -13231,7 +13179,8 @@
 					},
 					"entries": [
 						"Folded into a square‑shelled turtle, this missive grants the recipient a firm sense of self and serenity. The recipient gains a +1 item bonus to Will saves for the next 24 hours."
-					]
+					],
+					"variantType": "turtle heartening missive"
 				}
 			]
 		},
@@ -13266,16 +13215,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "messenger missive",
 					"level": 4,
 					"price": {
 						"amount": 18,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "messenger missive"
 				},
 				{
-					"name": "multiple messenger missive",
 					"level": 7,
 					"price": {
 						"amount": 60,
@@ -13283,7 +13231,8 @@
 					},
 					"entries": [
 						"You can write up to four locations on the missive, one on each edge of the paper; you can include a recipient for each location, as well. When you finish composing the missive, it folds into four identical missive birds, each one flying to one of the locations carrying the same message."
-					]
+					],
+					"variantType": "multiple messenger missive"
 				}
 			]
 		},
@@ -13452,16 +13401,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "disrupting oil",
 					"level": 3,
 					"price": {
 						"amount": 10,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "disrupting oil"
 				},
 				{
-					"name": "greater disrupting oil",
 					"level": 11,
 					"price": {
 						"amount": 250,
@@ -13469,7 +13417,8 @@
 					},
 					"entries": [
 						"The oil acts as a greater disrupting rune with a save DC of 30."
-					]
+					],
+					"variantType": "greater disrupting oil"
 				}
 			]
 		},
@@ -13538,7 +13487,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 3,
 					"price": {
 						"amount": 12,
@@ -13546,10 +13494,10 @@
 					},
 					"entries": [
 						"The oil grants fast healing 3."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 7,
 					"price": {
 						"amount": 70,
@@ -13557,10 +13505,10 @@
 					},
 					"entries": [
 						"The oil grants fast healing 6."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 11,
 					"price": {
 						"amount": 300,
@@ -13568,10 +13516,10 @@
 					},
 					"entries": [
 						"The oil grants fast healing 10."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 15,
 					"price": {
 						"amount": 1300,
@@ -13579,7 +13527,8 @@
 					},
 					"entries": [
 						"The oil grants fast healing 15."
-					]
+					],
+					"variantType": "major"
 				}
 			]
 		},
@@ -13645,7 +13594,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 3,
 					"price": {
 						"amount": 8,
@@ -13653,10 +13601,10 @@
 					},
 					"entries": [
 						"The stain lasts 24 hours."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 7,
 					"price": {
 						"amount": 55,
@@ -13664,10 +13612,10 @@
 					},
 					"entries": [
 						"The stain lasts 1 week."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 11,
 					"price": {
 						"amount": 210,
@@ -13675,7 +13623,8 @@
 					},
 					"entries": [
 						"The stain lasts 1 month."
-					]
+					],
+					"variantType": "greater"
 				}
 			]
 		},
@@ -13774,16 +13723,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
 					"level": 3,
 					"price": {
 						"amount": 8,
 						"coin": "gp"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "lesser"
 				},
 				{
-					"name": "moderate",
 					"level": 5,
 					"price": {
 						"amount": 24,
@@ -13791,10 +13739,10 @@
 					},
 					"entries": [
 						"The oil can be applied to a Small object, producing a sea snake (Pathfinder Bestiary 2 245), or a Medium object, producing a ball python."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
-					"name": "greater",
 					"level": 7,
 					"price": {
 						"amount": 56,
@@ -13802,10 +13750,10 @@
 					},
 					"entries": [
 						"The oil can be applied to a Medium object, producing a giant viper."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
-					"name": "major",
 					"level": 11,
 					"price": {
 						"amount": 225,
@@ -13813,10 +13761,10 @@
 					},
 					"entries": [
 						"The oil can be applied to a Large object, producing an emperor cobra (Pathfinder Bestiary 2 245)."
-					]
+					],
+					"variantType": "major"
 				},
 				{
-					"name": "true",
 					"level": 15,
 					"price": {
 						"amount": 1100,
@@ -13824,7 +13772,8 @@
 					},
 					"entries": [
 						"The oil can be applied to a Huge object, producing a giant anaconda."
-					]
+					],
+					"variantType": "true"
 				}
 			]
 		},
@@ -16800,7 +16749,7 @@
 				"amount": 10,
 				"coin": "gp"
 			},
-			"category": "Unknown",
+			"category": "Adventuring Gear",
 			"entries": [
 				"An alchemical gauntlet emits small alchemical detonations when it makes contact with a foe. As an {@action Interact} action, you can place a bomb into a metal bracket near the wrist of the gauntlet. The bomb must be one that deals energy damage, such as an acid flask, alchemist's fire, bottled lightning, frost vial, or thunderstone. The next three attacks made with the gauntlet deal {@damage 1d4} damage of the bomb's damage type in addition to the gauntlet's normal damage. If the second and third attacks aren't all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and aren't modified by any abilities that add to or modify a bomb's effect."
 			]

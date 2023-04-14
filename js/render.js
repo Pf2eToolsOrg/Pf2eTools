@@ -5161,11 +5161,14 @@ Renderer.item = {
 			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
 			renderStack.push(`</p>`);
 		}
-		if (item.duration) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Duration&nbsp;</strong>${renderer.render(item.duration.entry)}</p>`);
+		if (item.duration) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Duration&nbsp;</strong>${renderer.render(Parser.durationToFull(item.duration))}</p>`);
 		if (item.activate) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>`);
 			if (item.activate.activity != null) {
 				renderStack.push(`${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
+			}
+			if (item.activate.note != null) {
+				renderStack.push(renderer.render(item.activate.note));
 			}
 			const activateTextIndex = renderStack.length; // This index is referenced to see if anything is appended after the action symbol
 			if (item.activate.components != null) {
