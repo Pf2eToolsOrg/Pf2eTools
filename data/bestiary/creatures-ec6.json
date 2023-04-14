@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Barking Stag",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 40,
 			"level": 13,
@@ -141,7 +140,6 @@
 		},
 		{
 			"name": "Convergent Giant Eagle",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 12,
 			"level": 15,
@@ -255,7 +253,6 @@
 		},
 		{
 			"name": "Convergent Kendley Nathrael",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 87,
 			"level": 19,
@@ -267,6 +264,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female half-elf afflicted guard captain",
 			"perception": {
 				"std": 35
 			},
@@ -303,6 +301,12 @@
 				"wis": 3,
 				"cha": 6
 			},
+			"items": [
+				"+2 greater striking bastard sword",
+				"+2 greater resilient chain mail",
+				"+2 greater striking composite longbow (20 arrows)",
+				"key to strongbox in area {@b A10}"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -392,12 +396,6 @@
 				"top": [
 					{
 						"entries": [
-							"+30 Str +5, Dex +0, Con +4, Int +3, Wis +3, Cha +6 Items +2 greater striking bastard sword, +2 greater resilient chain mail, +2 greater striking composite longbow (20 arrows), key to strongbox in area A10."
-						],
-						"name": "Survival"
-					},
-					{
-						"entries": [
 							"Creatures with this ability can communicate with each other by manifesting an aura of wispy Utopian runes. This has the effects of telepathy with a range of 300 feet, but requires line of sight."
 						],
 						"name": "Convergent Link"
@@ -406,21 +404,21 @@
 				"mid": [
 					{
 						"entries": [
-							"Kendley is {@condition confused}, {@condition fascinated}, or {@condition frightened}, she loses her innate spells and her convergent link and convergent tactics abilities."
+							"While Kendley is {@condition confused}, {@condition fascinated}, or {@condition frightened}, she loses her innate spells and her convergent link and convergent tactics abilities."
 						],
-						"name": "Disrupted Link While"
+						"name": "Disrupted Link"
 					}
 				],
 				"bot": [
 					{
 						"entries": [
-							"Kendley casts calm emotions, creatures {@condition controlled} by the convergence lattice automatically fail their saving throws against the effect, but they can still use {@condition hostile} actions against creatures who aren't {@condition controlled} by the convergence lattice. Each time she Sustains the Spell, creatures affected by the spell are exposed to the convergence lattice as though they had been in conversation with her."
+							"When Kendley casts {@spell calm emotions}, creatures {@condition controlled} by the convergence lattice automatically fail their saving throws against the effect, but they can still use hostile actions against creatures who aren't {@condition controlled} by the convergence lattice. Each time she {@action Sustain a Spell||Sustains the Spell}, creatures affected by the spell are exposed to the convergence lattice as though they had been in conversation with her."
 						],
-						"name": "Convergent Calm When"
+						"name": "Convergent Calm"
 					},
 					{
 						"entries": [
-							"Kendley's attacks (including telekinetic projectile) deal an extra {@dice 4d8} damage to creatures within reach of one of her allies who has convergent tactics."
+							"Kendley's attacks (including {@spell telekinetic projectile}) deal an extra {@dice 4d8} damage to creatures within reach of one of her allies who has convergent tactics."
 						],
 						"name": "Convergent Tactics"
 					}
@@ -653,7 +651,6 @@
 		},
 		{
 			"name": "Convergent Soldier",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 14,
 			"level": 16,
@@ -825,7 +822,6 @@
 		},
 		{
 			"name": "Elysian Sheep",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 32,
 			"level": 7,
@@ -954,7 +950,6 @@
 		},
 		{
 			"name": "Elysian Titan",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 82,
 			"level": 21,
@@ -1220,7 +1215,6 @@
 		},
 		{
 			"name": "Kimilekki",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 17,
 			"level": 17,
@@ -1231,6 +1225,7 @@
 				"demon",
 				"fiend"
 			],
+			"description": "Female variant glabrezu demon (Pathfinder Bestiary 79)",
 			"perception": {
 				"std": 30
 			},
@@ -1250,7 +1245,8 @@
 					"draconic"
 				],
 				"abilities": [
-					"telepathy"
+					"telepathy 100 feet",
+					"tongues"
 				]
 			},
 			"skills": {
@@ -1433,24 +1429,17 @@
 					"DC": 38,
 					"rituals": [
 						{
-							"name": "Abyssal pact"
+							"name": "Abyssal pact",
+							"source": "B1"
 						}
 					]
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Society} +28, {@skill Stealth} +27 Str +8, Dex +2, Con +9, Int +4, Wis +3, Cha +8."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"A glabrezu's lies sustain them, and the truth can destroy them. Whenever a {@trait revelation} effect counteracts or reveals the glabrezu's illusions or the glabrezu fails a save against an effect that would prevent them from lying (such as zone of truth), the demon takes {@damage 5d6} mental damage. They take this damage only once per effect, even if the effect reveals multiple illusions or prevents multiple lies."
+							"A glabrezu's lies sustain them, and the truth can destroy them. Whenever a {@trait revelation} effect counteracts or reveals the glabrezu's illusions or the glabrezu fails a save against an effect that would prevent them from lying (such as {@spell zone of truth}), the demon takes {@damage 5d6} mental damage. They take this damage only once per effect, even if the effect reveals multiple illusions or prevents multiple lies."
 						],
 						"name": "Truth Vulnerability"
 					}
@@ -1510,7 +1499,10 @@
 					},
 					"will": {
 						"std": 30
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -1531,7 +1523,6 @@
 		},
 		{
 			"name": "Kirosthrek",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 89,
 			"level": 20,
@@ -1944,7 +1935,6 @@
 		},
 		{
 			"name": "Sarvel Ever-hunger",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 90,
 			"level": 22,
@@ -2254,7 +2244,6 @@
 		},
 		{
 			"name": "Saurian Warmonger",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 80,
 			"level": 16,
@@ -2492,7 +2481,6 @@
 		},
 		{
 			"name": "Saurian Worldwatcher",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 81,
 			"level": 18,
@@ -2700,14 +2688,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+35, {@skill Survival} +34 Str +7, Dex +9, Con +6, Int +5, Wis +8, Cha +6 Items javelins (2), +2 greater striking naginata."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -2785,7 +2765,6 @@
 		},
 		{
 			"name": "Thanatotic Titan",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 83,
 			"level": 22,
@@ -2845,6 +2824,10 @@
 				"wis": 6,
 				"cha": 8
 			},
+			"items": [
+				"+2 greater resilient full plate",
+				"+3 greater striking halberd"
+			],
 			"speed": {
 				"abilities": [
 					"air walk"
@@ -2978,14 +2961,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+38, {@skill Religion} +38, {@skill Stealth} +36 Str +10, Dex +4, Con +9, Int +8, Wis +6, Cha +8 Items +2 greater resilient full plate, +3 greater striking halberd."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -3020,16 +2995,6 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 4d10+25} piercing Melee foot +39 (agile, reach <30 feet>), Damage {@damage 4d8+20} bludgeoning Ranged {@as 1} rock +39 (brutal, range increment <200 feet>), Damage {@damage 3d12+20} bludgeoning Divine Innate Spells DC 45; 10th massacre, meteor swarm; 8th dispel magic (at will), spiritual epidemic (at will), suggestion (at will); 7th spell turning; 6th scrying (×3); 5th sending; Constant (10th) air walk, true seeing Divine Rituals DC 45; planar ally, resurrect."
-						],
-						"name": "S), Damage"
-					},
-					{
-						"activity": {
-							"number": 1,
 							"unit": "free"
 						},
 						"traits": [
@@ -3037,10 +3002,18 @@
 						],
 						"trigger": "The titan damages a creature capable of using divine spells or abilities",
 						"entries": [
-							"The creature must attempt a DC 45 Will save. Critical Success The creature is unaffected. Success The creature can't use divine spells or abilities for 1 round and is {@condition frightened|CRB|frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect. Failure As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited."
+							"The creature must attempt a DC 45 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature can't use divine spells or abilities for 1 round and is {@condition frightened|CRB|frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect.",
+									"Failure": "As success, but the duration is 1 minute.",
+									"Critical Failure": "As success, but the duration is unlimited."
+								}
+							}
 						],
-						"name": "Godslayer",
-						"entries_as_xyz": "Ability not found: 'Godslayer As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited.' in Thanatotic Titan, p.83"
+						"name": "Godslayer"
 					},
 					{
 						"activity": {
@@ -3123,7 +3096,6 @@
 		},
 		{
 			"name": "Vavakia",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 79,
 			"level": 18,
@@ -3448,7 +3420,6 @@
 		},
 		{
 			"name": "Viskithrel",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 84,
 			"level": 15,
@@ -3634,7 +3605,6 @@
 		},
 		{
 			"name": "Xulgath Thoughtmaw",
-			"isNpc": false,
 			"source": "EC6",
 			"page": 85,
 			"level": 15,
@@ -3942,17 +3912,11 @@
 									"Critical Success": "The creature is unaffected.",
 									"Success": "The creature is {@condition slowed|CRB|slowed 1} for 1 round.",
 									"Failure": "The creature is {@condition slowed|CRB|slowed 1} and can take no actions other than basic actions for 1 minute.",
-									"Critical Failure": "As failure, and the thoughtmaw is {@condition quickened|CRB|quickened 1} for 1 minute. It can use this extra action"
+									"Critical Failure": "As failure, and the thoughtmaw is {@condition quickened|CRB|quickened 1} for 1 minute. It can use this extra action to Stride, Strike, or {@action Cast a Spell} if the target had prepared spells or a spell repertoire."
 								}
 							}
 						],
 						"name": "Using Consume"
-					},
-					{
-						"entries": [
-							"{@action Cast a Spell} if the target had prepared spells or a spell repertoire."
-						],
-						"name": "to Stride, Strike, or"
 					}
 				]
 			},

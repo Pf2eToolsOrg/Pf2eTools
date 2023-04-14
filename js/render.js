@@ -4060,7 +4060,7 @@ Renderer.archetype = {
 
 		return `${Renderer.utils.getNameDiv(arc, { page: UrlUtil.PG_ARCHETYPES, type: "ARCHETYPE" })}
 		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getTraitsDiv(arc.traits || [])}
+		${Renderer.utils.getTraitsDiv(arc.rarity ? [arc.rarity] : [])}
 		${renderer.render({ type: "pf2-h4", entries: arc.entries })}
 		${Renderer.utils.getPageP(arc)}
 		`;

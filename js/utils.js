@@ -3056,6 +3056,7 @@ DataUtil = {
 			page: true,
 			otherSources: true,
 			hasImages: true,
+			description: true,
 		},
 		_mergeCache: {},
 		async pMergeCopy (crList, cr, options) {
