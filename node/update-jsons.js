@@ -208,6 +208,12 @@ function updateFolder (folder) {
 						delete cr.creatureType
 						cr.traits = [...new Set(cr.traits.flat())]
 					}
+					if (cr.isNpc === false) {
+						delete cr.isNpc
+					}
+					if (cr.hasImages === false) {
+						delete cr.hasImages
+					}
 					if (cr.skills && Object.keys(cr.skills).find(k => k.match(/[A-Z]/g))) {
 						// Stolen from https://bobbyhadz.com/blog/javascript-lowercase-object-keys
 						console.log(`\tUpdating ${cr.name} skill to lowercase in ${file}...`)
@@ -338,6 +344,25 @@ function updateFolder (folder) {
 					}
 					return r;
 				});
+			}
+			if (json.archetype) {
+				json.archetype = json.archetype.map(a => {
+					if (a.traits && Array.isArray(a.traits) && a.traits.length) {
+						a.rarity = a.traits[0]
+						delete a.traits;
+					}
+					return a
+				})
+			}
+			if (json.background) {
+				json.background = json.background.map(b => {
+					if (b.feat) {
+						if (Array.isArray(b.feat)) b.feats = b.feat
+						else b.feats = [b.feat]
+						delete b.feat
+					}
+					return b
+				})
 			}
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
