@@ -615,7 +615,7 @@ class Converter {
 			} else {
 				this._cbWarn(`Item category "${item.category}" is not recognised.`);
 			}
-		};
+		}
 		if (cats.map(c => c.cat.toLowerCase()).includes(item.type.toLowerCase())) {
 			item.category = item.type;
 			return;
