@@ -100,7 +100,9 @@ PropOrder._ArrayKey = class {
 };
 
 PropOrder._TABLE = [
+	"type",
 	"name",
+	"alias",
 	"id",
 	"source",
 	"page",
@@ -161,6 +163,7 @@ PropOrder._VE_HERITAGE = [
 	"versatile",
 
 	"rarity",
+	"traits",
 
 	"entries",
 	"info",
@@ -178,7 +181,11 @@ PropOrder._BACKGROUND = [
 	"boosts",
 	"skills",
 	"lore",
-	"feat",
+	"feats",
+	"spells",
+	"miscTags",
+];
+PropOrder._BACKGROUND_FLUFF = [
 ];
 PropOrder._CLASS = [
 	"name",
@@ -199,12 +206,41 @@ PropOrder._CLASS = [
 	"flavor",
 	"fluff",
 	"summary",
+	"rarity",
+	"sampleBuilds",
+];
+PropOrder._CLASS_FEATURE = [
+	"name",
+	"source",
+	"page",
+	"className",
+	"classSource",
+
+	"subclasses",
+	"level",
+	"type",
+	"entries",
+];
+PropOrder._SUBCLASS_FEATURE = [
+	"name",
+	"source",
+	"page",
+	"className",
+	"classSource",
+
+	"subclassShortName",
+	"subclassSource",
+	"level",
+	"entries",
 ];
 PropOrder._ARCHETYPE = [
 	"name",
 	"source",
 	"page",
 	"otherSources",
+
+	"dedicationLevel",
+	"rarity",
 
 	"entries",
 	"extraFeats",
@@ -215,8 +251,8 @@ PropOrder._FEAT = [
 	"name",
 	"source",
 	"page",
-	"otherSources",
 	"add_hash",
+	"otherSources",
 
 	"activity",
 	"level",
@@ -229,6 +265,7 @@ PropOrder._FEAT = [
 	"requirements",
 	"access",
 
+	"amp",
 	"entries",
 	"special",
 
@@ -247,12 +284,12 @@ PropOrder._COMPANION = [
 	"attacks",
 	new PropOrder._ObjectKey("abilityMods", {
 		order: [
-			"Str",
-			"Dex",
-			"Con",
-			"Int",
-			"Wis",
-			"Cha",
+			"str",
+			"dex",
+			"con",
+			"int",
+			"wis",
+			"cha",
 		],
 	}),
 	"hp",
@@ -261,6 +298,16 @@ PropOrder._COMPANION = [
 	"speed",
 	"support",
 	"maneuver",
+	"traits",
+	"special",
+];
+PropOrder._COMPANION_ABILITY = [
+	"name",
+	"source",
+	"page",
+	"tier",
+	"traits",
+	"entries",
 ];
 PropOrder._FAMILIAR = [
 	"name",
@@ -275,6 +322,33 @@ PropOrder._FAMILIAR = [
 	"granted",
 	"abilities",
 	"fluff",
+	"alignment",
+];
+PropOrder._FAMILIAR_ABILITY = [
+	"name",
+	"source",
+	"page",
+	"type",
+	"entries",
+];
+PropOrder._EIDOLON = [
+	"name",
+	"type",
+	"source",
+	"page",
+	"fluff",
+	"tradition",
+	"traits",
+	"alignment",
+	"home",
+	"size",
+	"suggestedAttacks",
+	"stats",
+	"skills",
+	"senses",
+	"languages",
+	"speed",
+	"abilities",
 ];
 PropOrder._HAZARD = [
 	"name",
@@ -285,17 +359,23 @@ PropOrder._HAZARD = [
 	"level",
 	"traits",
 	"stealth",
+	"perception",
+	"abilities",
 	"description",
 	"disable",
 	"defenses",
 	"actions",
 	"routine",
+	"speed",
+	"attacks",
 	"reset",
 ];
 PropOrder._ACTION = [
 	"name",
+	"alias",
 	"source",
 	"page",
+	"add_hash",
 	"otherSources",
 
 	"activity",
@@ -316,16 +396,19 @@ PropOrder._CREATURE = [
 	"name",
 	"alias",
 	"isNpc",
+	"hasImages",
 
 	"source",
 	"page",
+	"description",
+	"foundIn",
 	"otherSources",
 
 	new PropOrder._ObjectKey("_copy", {
 		order: [
 			"name",
 			"source",
-			"_trait",
+			"creatureAdjustment",
 			new PropOrder._ObjectKey("_mod", {
 				fnGetOrder: () => PropOrder._CREATURE__COPY_MOD,
 			}),
@@ -335,13 +418,13 @@ PropOrder._CREATURE = [
 
 	"level",
 	"traits",
-	// "creatureType", // Does removing this break anything?
 
 	"perception",
 	"senses",
 	new PropOrder._ObjectKey("languages", {
 		order: [
 			"languages",
+			"notes",
 			"abilities",
 		],
 	}),
@@ -387,6 +470,32 @@ PropOrder._CREATURE__COPY_MOD = [
 	"_",
 	...PropOrder._CREATURE,
 ];
+PropOrder._CREATURE_FLUFF = [
+	"name",
+	"altName",
+
+	"source",
+	"page",
+
+	new PropOrder._ObjectKey("_copy", {
+		order: [
+			"name",
+			"source",
+			new PropOrder._ObjectKey("_mod", {
+				fnGetOrder: () => PropOrder._CREATURE_FLUFF__COPY_MOD,
+			}),
+			"_preserve",
+		],
+	}),
+
+	"entries",
+	"images",
+];
+PropOrder._CREATURE_FLUFF__COPY_MOD = [
+	"*",
+	"_",
+	...PropOrder._CREATURE_FLUFF,
+];
 PropOrder._CONDITION = [
 	"name",
 	"source",
@@ -394,11 +503,13 @@ PropOrder._CONDITION = [
 	"otherSources",
 
 	"entries",
+	"group",
 ];
 PropOrder._ITEM = [
 	"name",
 	"source",
 	"page",
+	"add_hash",
 	"otherSources",
 
 	"equipment",
@@ -443,10 +554,35 @@ PropOrder._ITEM = [
 
 	"generic",
 	"variants",
+	"genericItem",
 	"_vmod",
+
+	"weaponData",
+	"comboWeaponData",
+	"armorData",
+	"siegeWeaponData",
+	"destruction",
+	"contract",
+	"hasFluff",
+	"special",
+	"cost",
+	"trigger",
+	"requirements",
+	"duration",
+];
+PropOrder._ITEM_FLUFF = [
+	"name",
+	"source",
+	"page",
+
+	"_copy",
+
+	"entries",
+	"images",
 ];
 PropOrder._SPELL = [
 	"name",
+	"alias",
 
 	"source",
 	"page",
@@ -478,6 +614,7 @@ PropOrder._SPELL = [
 	"entries",
 
 	"heightened",
+	"amp",
 
 	"miscTags",
 ];
@@ -492,17 +629,21 @@ PropOrder._AFFLICTION = [
 	"traits",
 	"usage",
 	"entries",
+	"temptedCurse",
 ];
 PropOrder._ABILITY = [
 	"name",
 	"source",
 	"page",
+	"add_hash",
 	"otherSources",
+	"creature",
 
 	"activity",
 	"traits",
 	"requirements",
 	"trigger",
+	"frequency",
 
 	"entries",
 ];
@@ -511,15 +652,27 @@ PropOrder._DEITY = [
 	"alias",
 	"source",
 	"page",
+	"hasLore",
+	"category",
 	"otherSources",
 	"core",
 
+	"pantheonMembers",
+	"areasOfConcern",
 	"alignment",
-	"category",
-	"info",
-
 	"edicts",
 	"anathema",
+	"font",
+	"divineAbility",
+	"domains",
+	"alternateDomains",
+	"spells",
+	"divineSkill",
+
+	"info",
+
+	"favoredWeapon",
+	"avatar",
 	"followerAlignment",
 
 	new PropOrder._ObjectKey("devoteeBenefits", {
@@ -538,8 +691,18 @@ PropOrder._DEITY = [
 	}),
 
 	"intercession",
-	"hasLore",
+	"entries",
 	"images",
+];
+PropOrder._DEITY_FLUFF = [
+	"name",
+	"source",
+	"page",
+
+	"_copy",
+
+	"entries",
+	"lore",
 ];
 PropOrder._LANGUAGE = [
 	"name",
@@ -564,6 +727,12 @@ PropOrder._PLACE = [
 	"level",
 	"traits",
 	"sections",
+	"planeData",
+	"entries",
+	"settlementData",
+	"residents",
+	"description",
+	"nationData",
 ];
 PropOrder._RITUAL = [
 	"name",
@@ -605,9 +774,13 @@ PropOrder._VEHICLE = [
 	"speed",
 	"collision",
 	"abilities",
+	"entries",
+	"passengersNote",
+	"destruction",
 ];
 PropOrder._TRAIT = [
 	"name",
+	"alias",
 	"source",
 	"page",
 	"otherSources",
@@ -615,34 +788,205 @@ PropOrder._TRAIT = [
 	"categories",
 	"implies",
 	"entries",
+	"variable",
 	"_data",
+];
+PropOrder._ADVENTURE = [
+	"name",
+	"id",
+	"source",
+	"coverUrl",
+	"published",
+	"storyline",
+	"group",
+	"level",
+	"contents",
+];
+PropOrder._BOOK = [
+	"name",
+	"id",
+	"source",
+	"group",
+	"coverUrl",
+	"published",
+	"author",
+	"contents",
+];
+PropOrder._ORGANIZATION = [
+	"name",
+	"source",
+	"page",
+
+	"traits",
+	"title",
+	"scope",
+	"goals",
+	"headquarters",
+	"keyMembers",
+	"allies",
+	"enemies",
+	"assets",
+	"requirements",
+	"followerAlignment",
+	"values",
+	"anathema",
+	"hasLore",
+];
+PropOrder._ORGANIZATION_FLUFF = [
+	"name",
+	"source",
+	"page",
+
+	"entries",
+];
+PropOrder._CREATURE_TEMPLATE = [
+	"name",
+	"type",
+	"hasLore",
+	"source",
+	"page",
+
+	"entries",
+	"abilities",
+	"optAbilities",
+];
+PropOrder._CREATURE_TEMPLATE_FLUFF = [
+	"name",
+	"source",
+	"page",
+
+	"_copy",
+
+	"entries",
+];
+PropOrder._DOMAIN = [
+	"name",
+	"source",
+	"page",
+
+	"entries",
+];
+PropOrder._EVENT = [
+	"name",
+	"source",
+	"page",
+
+	"level",
+	"traits",
+	"applicableSkills",
+	"entries",
+];
+PropOrder._GROUP = [
+	"name",
+	"type",
+	"source",
+	"page",
+
+	"specialization",
+];
+PropOrder._OPTIONAL_FEATURE = [
+	"name",
+	"add_hash",
+	"source",
+	"page",
+
+	"type",
+	"traits",
+	"prerequisite",
+	"entries",
+];
+PropOrder._RELIC_GIFT = [
+	"name",
+	"add_hash",
+	"source",
+	"page",
+
+	"tier",
+	"traits",
+	"aspects",
+	"prerequisites",
+	"entries",
+	"itemTypes",
+	"miscTags",
+];
+PropOrder._SKILL = [
+	"name",
+	"source",
+	"page",
+
+	"entries",
+];
+PropOrder._SOURCE = [
+	"unreleased",
+	"source",
+	"date",
+	"errata",
+	"accessory",
+	"store",
+	"name",
+	"adventure",
+	"entries",
+	"vanilla",
+	"defaultSource",
+];
+PropOrder._VARIANTRULE = [
+	"name",
+	"source",
+	"page",
+
+	"category",
+	"subCategory",
+	"rarity",
+	"entries",
 ];
 PropOrder._PROP_TO_LIST = {
 	"table": PropOrder._TABLE,
 	"ancestry": PropOrder._ANCESTRY,
 	"versatileHeritage": PropOrder._VE_HERITAGE,
 	"background": PropOrder._BACKGROUND,
+	"backgroundFluff": PropOrder._BACKGROUND_FLUFF,
 	"class": PropOrder._CLASS,
+	"classFeature": PropOrder._CLASS_FEATURE,
+	"subclassFeature": PropOrder._SUBCLASS_FEATURE,
 	"archetype": PropOrder._ARCHETYPE,
 	"feat": PropOrder._FEAT,
 	"companion": PropOrder._COMPANION,
+	"companionAbility": PropOrder._COMPANION_ABILITY,
 	"familiar": PropOrder._FAMILIAR,
+	"familiarAbility": PropOrder._FAMILIAR_ABILITY,
 	"hazard": PropOrder._HAZARD,
 	"action": PropOrder._ACTION,
 	"creature": PropOrder._CREATURE,
+	"creatureFluff": PropOrder._CREATURE_FLUFF,
 	"condition": PropOrder._CONDITION,
 	"item": PropOrder._ITEM,
+	"itemFluff": PropOrder._ITEM_FLUFF,
 	"baseitem": PropOrder._ITEM,
 	"spell": PropOrder._SPELL,
 	"curse": PropOrder._AFFLICTION,
 	"disease": PropOrder._AFFLICTION,
 	"ability": PropOrder._ABILITY,
 	"deity": PropOrder._DEITY,
+	"deityFluff": PropOrder._DEITY_FLUFF,
 	"language": PropOrder._LANGUAGE,
 	"place": PropOrder._PLACE,
 	"ritual": PropOrder._RITUAL,
 	"vehicle": PropOrder._VEHICLE,
 	"trait": PropOrder._TRAIT,
+	"adventure": PropOrder._ADVENTURE,
+	"book": PropOrder._BOOK,
+	"organization": PropOrder._ORGANIZATION,
+	"organizationFluff": PropOrder._ORGANIZATION_FLUFF,
+	"creatureTemplate": PropOrder._CREATURE_TEMPLATE,
+	"creatureTemplateFluff": PropOrder._CREATURE_TEMPLATE_FLUFF,
+	"domain": PropOrder._DOMAIN,
+	"event": PropOrder._EVENT,
+	"group": PropOrder._GROUP,
+	"optionalfeature": PropOrder._OPTIONAL_FEATURE,
+	"relicGift": PropOrder._RELIC_GIFT,
+	"skill": PropOrder._SKILL,
+	"source": PropOrder._SOURCE,
+	"variantrule": PropOrder._VARIANTRULE,
 };
 
 if (typeof module !== "undefined") {
