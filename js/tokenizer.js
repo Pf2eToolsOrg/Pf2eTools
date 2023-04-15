@@ -161,6 +161,11 @@ class TokenizerUtils {
 			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
+	static get category () {
+		return [
+			{regex: /^Category\s/, type: "CATEGORY", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
 	static get usage () {
 		return [
 			{regex: /^Usage\s/, type: "USAGE", lookbehind: /(\n|[;.)]\s)$/},
@@ -404,6 +409,7 @@ class TokenizerUtils {
 			...this.traditions,
 			...this.traditionsSubclasses,
 			...this.trigger,
+			...this.category,
 			...this.usage,
 		]
 	}
@@ -471,6 +477,7 @@ class TokenizerUtils {
 			...this.targets,
 			...this.trigger,
 			...this.usage,
+			...this.category,
 		]
 	}
 	static get propertiesBackgrounds () {

@@ -355,11 +355,15 @@ class Converter {
 		else if (this._tokenIsType(this._tokenizerUtils.traditionsSubclasses)) this._parseTraditionsSubclasses(obj, opts);
 		else if (this._tokenIsType(this._tokenizerUtils.trigger)) this._parseTrigger(obj, opts);
 		else if (this._tokenIsType(this._tokenizerUtils.usage)) this._parseUsage(obj, opts);
+		else if (this._tokenIsType(this._tokenizerUtils.category)) this._parseCategory(obj, opts);
 		else throw new Error(`Unimplemented property creation of type "${this._peek().type}"`);
 	}
 
 	_parseAccess (obj, opts) {
 		this._parseGenericProperty(obj, this._tokenizerUtils.access, "access", opts);
+	}
+	_parseCategory (obj, opts) {
+		this._parseGenericProperty(obj, this._tokenizerUtils.category, "category", opts);
 	}
 	_parseActivateProperty (obj, opts) {
 		opts = opts || {};
@@ -605,6 +609,13 @@ class Converter {
 
 	_parseItemCategory (item) {
 		const cats = this._tokenizerUtils.itemCategories;
+		if (item.category) {
+			if (cats.map(c => c.cat.toLowerCase()).includes(item.category.toLowerCase())) {
+				return;
+			} else {
+				this._cbWarn(`Item category "${item.category}" is not recognised.`);
+			}
+		}
 		if (cats.map(c => c.cat.toLowerCase()).includes(item.type.toLowerCase())) {
 			item.category = item.type;
 			return;
