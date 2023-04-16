@@ -10153,6 +10153,1634 @@
 			]
 		},
 		{
+			"name": "Cayden's Tankard",
+			"source": "TV",
+			"page": 178,
+			"type": "Item",
+			"level": 25,
+			"traits": [
+				"unique",
+				"artifact",
+				"divine",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"This ordinary-looking silver tankard functions as a +4 major striking hopeful GB returning light hammer when wielded as a weapon. Imbued with {@deity Cayden Cailean}'s courage, you are immune to {@trait fear} effects. Any liquid poured into the tankard transforms into a strong, alcoholic ambrosia that remains contained safely within until you drink it. Drinking the ambrosia Activates the tankard, with one of the following effects. If you aren't the one blessed to borrow the tankard, you are {@condition drained||drained 4} and {@condition enfeebled||enfeebled 4} while holding it, and its magic doesn't function for you.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"trigger": "You are targeted or included in the area of a {@trait fear} effect",
+					"entries": [
+						"Calmly swigging a drink on the battlefield turns your foe's attempt to frighten you against them. The {@trait fear} effect is counteracted for all targets, and the creature that created the effect must attempt a saving throw as if it alone were the original target of the effect."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You drink from the tankard, ending the {@condition controlled}, {@condition grabbed}, {@condition immobilized}, {@condition paralyzed}, {@condition restrained}, and {@condition slowed} conditions on yourself and creatures of your choice within 120 feet of you, as well as anything giving such targets a circumstance penalty to Speed. {@trait Any} effect causing these conditions ends, and if the source of the effect is an item, that item can't produce the effect for 1 week, provided it is of a level lower than the tankard's. If a target needs to {@action Escape} an effect imposing any of these conditions, it automatically does so on its next attempt. You can Activate this ability even if one of the listed conditions would normally prevent you from doing so (such as {@condition paralyzed})."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You enhance yourself with a shard of Cayden's divine fortune and cast {@spell indestructibility|APG} APG.",
+						"Destruction If a lawful evil creature carries Cayden's Tankard into the Starstone Cathedral, drinks from it, and returns outside with it, the tankard shatters."
+					]
+				}
+			]
+		},
+		{
+			"name": "Coldstar Pistols",
+			"source": "TV",
+			"page": 178,
+			"type": "Item",
+			"level": 23,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Artifact",
+			"entries": [
+				"One dueling pistol in this paired set is etched with flames along its barrel, while the other is etched with icicles. In these separate forms, one gun comprising the Coldstar Pistols functions as a +3 greater striking greater flaming dueling pistol and the other as a +3 greater striking greater frost dueling pistol. When joined, the guns form a double-barreled weapon that functions as a +4 major striking greater flaming greater frost dueling pistol. The combined form has a range increment of 120 feet. In either form, the Coldstar Pistols have the agile, concealable, concussive, and fatal d10 traits. As star guns, the Coldstar Pistols run on magic and don't use ammunition or black powder.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"entries": [
+						"You switch the Coldstar Pistols from one form to the other. Attempt a {@skill Deception} check to {@action Feint} with a +4 circumstance bonus."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"Make two Strikes against one target, taking the highest of the two attack rolls and applying it to both attacks. Your multiple attack penalty increases only after these Strikes. Destruction If Deft Onki's name and deeds ever fade from mortal memory entirely, the Coldstar Pistols can be destroyed like a normal object."
+					]
+				}
+			]
+		},
+		{
+			"name": "Forgotten Signet",
+			"source": "TV",
+			"page": 179,
+			"type": "Item",
+			"level": 21,
+			"traits": [
+				"rare",
+				"artifact",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"entries": [
+				"At the center of this silver ring gleams an obsidian gem, its surface emblazoned with a bloodred rune of forgetting. While wearing a forgotten signet, you're subjected to mind blank (+32 counteract bonus) and easily fade from others' memory. Sapient creatures must attempt a DC 42 Will save each time you depart from their company or they forget you entirely.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature's memories of you are normal."
+						],
+						"Success": [
+							"The creature remembers you and your interactions but has difficulty describing either to others. Each time they attempt to share information about these subjects with someone else, they relate only confusing or unclear details about you and this interaction."
+						],
+						"Failure": [
+							"The creature remembers your existence but no details about you or your interactions. For example, they remember speaking with an individual of your most basic biological traits, such as a human woman, but not your name, appearance, or other specific features."
+						],
+						"Critical Failure": [
+							"The creature retains no memories of you or this interaction. Destruction If a creature learns the true name of a forgotten signet's wearer and makes it public knowledge, that forgotten signet tarnishes and breaks in two."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Ghosthand's Comet",
+			"source": "TV",
+			"page": 179,
+			"type": "Item",
+			"level": 23,
+			"traits": [
+				"unique",
+				"artifact",
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Artifact",
+			"entries": [
+				"The barrel of this long rifle is translucent in places, forming a swirled pattern along the metal, and its stock is formed of crimson wood. Ghosthand's Comet is a +4 major striking beast‑bane SoM greater impactful SoM advanced firearm with a range increment of 300 feet. It deals {@damage 5d8} force damage and has the backstabber, concussive, kickback, and fatal d12 traits. As a star gun, Ghosthand's Comet runs on magic and doesn't use ammunition or black powder. The weapon is silent when fired.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "You attempt a ranged {@action Strike} with Ghosthand's Comet",
+					"entries": [
+						"For the triggering {@action Strike}, Ghosthand's Comet changes its damage type to your choice of acid, cold, electricity, fire, or sonic."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"On your next attempt at a ranged {@action Strike} with Ghosthand's Comet, the shot phases through any material or magical obstacle, such as a wall of force, in its path, ignoring all cover. You must attempt the {@action Strike} by the end of your turn or this effect is lost.",
+						"Destruction If the Grim Reaper slays the wielder of Ghosthand's Comet, the Reaper's scythe, as it strikes the killing blow, is destined to slice the star gun in half."
+					]
+				}
+			]
+		},
+		{
+			"name": "Perfected Robes",
+			"source": "TV",
+			"page": 179,
+			"type": "Item",
+			"level": 22,
+			"traits": [
+				"rare",
+				"artifact",
+				"divination",
+				"divine",
+				"invested"
+			],
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"These unadorned white robes, fastened with simple brass pins in the shape of a human hand, can't be soiled or blemished. While wearing perfected robes, you don't need to eat, sleep, or drink, but you can if you choose to. The robes bless you with constant true seeing (+32 counteract bonus). A creature who dons these robes without earning them is {@condition clumsy||clumsy 3}, {@condition enfeebled||enfeebled 3}, and {@condition stupefied||stupefied 3} while wearing them, gaining the true seeing but otherwise unable to use the robes' magic.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"If your next action is to attempt a d20 roll with which you have legendary proficiency, roll twice and take the better result. This is a {@trait fortune} effect."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You cast {@spell avatar}, gaining the abilities for {@deity Irori}.",
+						"Destruction If the wearer ever willingly turns from the path of self-perfection into corruption or overindulgence, their perfected robes crumble to nothing."
+					]
+				}
+			]
+		},
+		{
+			"name": "Scale of Igroon",
+			"source": "TV",
+			"page": 180,
+			"type": "Item",
+			"level": 21,
+			"traits": [
+				"rare",
+				"abjuration",
+				"artifact",
+				"primal"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"Carved from a scale of the kaiju Igroon, this jagged shield refracts light around it in a shimmering haze. A scale of Igroon (Hardness 20, HP 160, BT 80) recovers 4 Hit Points at the start of its wielder's turn. When you {@action Raise a Shield}, you can use the Shield Block reaction with the scale of Igroon to block an attack or effect that deals acid, cold, electricity, fire, force, or sonic damage as well as physical damage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"requirements": "You're in an area of bright or dim light",
+					"entries": [
+						"You angle the shield to refract light.",
+						"Until the start of your next turn, you gain a +4 item bonus to {@skill Stealth} checks to {@action Hide} and {@action Sneak} and can do so while {@condition observed}. This bonus ends if you Activate another ability or use the Shield Block reaction."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"requirements": "You're in an area of bright light",
+					"entries": [
+						"You angle the shield at a target within 60 feet, reflecting light into its eyes. It must attempt a DC 42 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target is unaffected."
+								],
+								"Success": [
+									"The target is {@condition blinded} until its next turn begins."
+								],
+								"Failure": [
+									"The target is {@condition blinded} for 1 minute."
+								],
+								"Critical Failure": [
+									"The target is {@condition blinded} for {@dice 2d4} hours."
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"trigger": "You use Shield Block and prevent yourself from taking energy damage from a line, ray, or a direct attack, including a {@spell magic missile} spell",
+					"entries": [
+						"You reflect the energy along a trajectory you choose. The effect travels only up to its remaining range, using its original parameters if it strikes other targets.",
+						"Destruction If a deity, kaiju, spawn of a deity, titan, or being of similar power stomps on a scale of Igroon while in absolute darkness, the shield is destroyed permanently."
+					]
+				}
+			]
+		},
+		{
+			"name": "Starfaring Cloak",
+			"source": "TV",
+			"page": 180,
+			"type": "Item",
+			"level": 24,
+			"traits": [
+				"rare",
+				"artifact",
+				"conjuration",
+				"divine",
+				"invested",
+				"light"
+			],
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"The swirling folds of a starfaring cloak appear to contain the night sky, with the stars rotating hypnotically through its firmament shedding dim light to a range of 10 feet. While wearing the cloak, you gain a +10-foot item bonus to your Speed and a fly Speed equal to your Speed. You can survive comfortably without breathing, in the void of space, and in severe or extreme cold or heat. Also, you gain sustenance from starlight and sunlight, so if you're outdoors for an hour or more per day, you don't need to eat or drink. While wearing the cloak, you can navigate perfectly and unerringly by looking up at the sky.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You make an attack roll, skill check, or saving throw",
+					"entries": [
+						"Reroll the triggering roll and take the higher result. This is a {@trait fortune} effect."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The cloak casts sleep at 4th level (DC 42)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "week"
+					},
+					"entries": [
+						"The cloak casts teleport at 10th level. If you name no destination, it teleports you to a random planet in a random location that's safe for you.",
+						"Destruction If the wearer of a starfaring cloak is bound by imprisonment for a century and a day, the cloak dissolves into light. This time is reduced to a year and a day if the wearer is placed in eternal slumber by imprisonment and subjected to the {@spell nightmare} spell once per day."
+					]
+				}
+			]
+		},
+		{
+			"name": "Whisperer of Souls",
+			"source": "TV",
+			"page": 180,
+			"type": "Item",
+			"level": 28,
+			"traits": [
+				"unique",
+				"artifact",
+				"divine",
+				"necromancy"
+			],
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Artifact",
+			"entries": [
+				"This +4 major striking greater brilliant SoM keen glaive binds the souls of powerful creatures it slays. The soul can't be returned to life by any means while imprisoned within the glaive and can be freed only by a deed of great benevolence or selflessness. While using the glaive as a weapon, whenever you reduce a sapient creature of 18th level or higher to 0 Hit Points or roll a critical success with a {@action Strike} against such a target, the creature must attempt a DC 50 Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"No additional effect."
+						],
+						"Success": [
+							"The glaive siphons the creature's essence, rendering it {@condition drained||drained 1}. If the creature dies from the {@action Strike} or while {@condition drained} in this way, the creature's soul is bound in the glaive."
+						],
+						"Failure": [
+							"As success, but the creature is {@condition drained||drained 2}."
+						],
+						"Critical Failure": [
+							"As success, but the creature is {@condition drained||drained 4}.",
+							"The glaive also has the following activations."
+						]
+					}
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "You {@action Strike} with the Whisperer of Souls",
+					"entries": [
+						"You choose whether the {@action Strike} deals lethal or nonlethal damage. If the glaive has a reason for doing so, such as slaying a creature whose soul the glaive can absorb, it can defy your choice if you fail a DC 50 Will save."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "You attempt an {@skill Occultism} check to {@action Decipher Writing}, {@action Identify Magic}, {@action Learn a Spell}, or {@action Recall Knowledge}",
+					"entries": [
+						"You listen to eldritch secrets the weapon whispers, gaining a +4 item bonus to the triggering check."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "week"
+					},
+					"entries": [
+						"Attempt an {@skill Occultism} check as if you cast the legend lore ritual about a subject. If you roll a success or critical success, you can repeat what the Whisperer of Souls relates to you about the subject. On a critical failure, you and the glaive are drawn into a murmuring void of cold, where your mind is assaulted by strange visions for an entire week. At the end of this time, you reappear and must attempt a DC 50 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": [
+									"When you return, you can retrain one of your skills into a {@skill Lore} skill about evil creatures or places, as if you had spent 1 week retraining."
+								],
+								"Failure": [
+									"As success, but you are {@condition stupefied||stupefied 2} for 1 week."
+								],
+								"Critical Failure": [
+									"As success, but your alignment moves one step toward evil and you must retrain one of your skills into a {@skill Lore} about evil creatures or places. You become obsessed with increasing your forbidden knowledge, turning to wicked forces that offer such secrets and compromising your morals further if you must.",
+									"Destruction If the Whisperer of Souls is used to slay {@deity Shelyn}'s herald, it disintegrates, bringing about great evil in its wake."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ursine Avenger Hood",
+			"source": "TV",
+			"page": 183,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"primal",
+				"transmutation"
+			],
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"A gift passed from warrior to warrior, this cowl is made from a cave bear's skull and fur. Once invested, the wearer gains a +1 item bonus to {@skill Nature} checks to {@action Command an Animal}, which increases to +2 if the animal is a bear. The wearer of the hood feels a constant longing for the wilderness and wild places and takes a \u20131 item penalty to all {@skill Diplomacy} checks to {@action Gather Information} or {@action Make an Impression} if they go more than 5 days inside a large town or city without spending at least 4 hours in the wilderness.",
+				"Destruction Soak the Ursine Avenger Hood in the blood of a linnorm that is at least 16th level and then burn it in a fire that uses only oak and chrysanthemum as fuel."
+			]
+		},
+		{
+			"name": "Gelid Shard",
+			"source": "TV",
+			"page": 184,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"rare",
+				"arcane",
+				"artifact",
+				"cold",
+				"invested"
+			],
+			"category": "Artifact",
+			"entries": [
+				"This crystal shard shimmers with its own light even as it seems to draw the heat out of its surroundings. Plunging it into your heart grants you the tranquil lethality of deepest winter, but the more you draw upon its power, the colder your heart grows. Your frozen heart dulls your emotions. When you gain a bonus from an {@trait emotion} effect, that bonus is reduced by 1, to a minimum of 0. At 10th level, the bonus is reduced by 2. Your dulled emotions make it hard to relate to others; the DC of checks to {@action Make an Impression} or {@action Request} a favor of other creatures, or to {@action Aid} in such attempts, is increased by +2. You gain resistance to cold equal to your level and a +2 status bonus to all saves against {@trait emotion} effects.",
+				"Destruction The gelid shard must be left exposed in the Plane of Fire for a week and a day, then smashed with an adamantine hammer by someone who felt true love for the shard's creator."
+			]
+		},
+		{
+			"name": "Bellicose Dagger",
+			"source": "TV",
+			"page": 190,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"rare",
+				"cursed",
+				"magical",
+				"necromancy"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"The hilt of a bellicose dagger is etched with the word for \"war\" in various languages. Having absorbed the spirit of violence over the course of its existence, the weapon now craves bloodshed. A bellicose dagger is a +1 striking wounding dagger. However, anytime you interact with creatures, no matter the context, you must succeed at a DC 25 Will save or else find you have, as a reaction, drawn the dagger. When you use the bellicose dagger as a weapon for the first time, it fuses to you. While it's in your possession, you take a \u20132 circumstance penalty to {@skill Diplomacy} checks and skill checks to avoid fighting, such as {@skill Deception} checks to trick your way out of a scuffle or {@skill Stealth} checks to sneak past enemies."
+			]
+		},
+		{
+			"name": "Bower Fruit",
+			"source": "TV",
+			"page": 190,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"consumable",
+				"cursed",
+				"necromancy",
+				"primal"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Bower fruit got its name from its association with the Green Mother, a fey Eldest with a fondness for plants and manipulation, whose domain is known as the Hanging Bower. She uses these cursed fruits to keep mortals in her thrall, but it's unknown whether she created them or simply popularized their use.",
+				"A bower fruit condemns a non-fey who tastes it to never again be satisfied with Material Plane fare. Any fruit can be cursed in this manner, but stone fruits such as peaches, plums, mangoes, and lychees are most common. Upon activating a bower fruit by eating it, the fruit casts a 6th-level {@spell feast of ashes|LOGM} (Pathfinder Lost Omens Gods & Magic 107) on you (DC 30). This curse is permanent, but food from the First World, rather than no food, can sate your accursed hunger.",
+				"If you sate your hunger this way, you gain an addiction (Gamemastery Guide 120) as if First World food and drink were a drug for you (DC 30)."
+			]
+		},
+		{
+			"name": "Phantom Piano",
+			"source": "TV",
+			"page": 196,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"rare",
+				"enchantment",
+				"focused",
+				"intelligent",
+				"occult"
+			],
+			"usage": "Held in 2 Hands",
+			"bulk": 16,
+			"category": "Held",
+			"entries": [
+				"{@skill Perception} +22; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (any languages the possessing spirit knew in life) Skills {@skill Diplomacy} +23, {@skill Lore||Music Lore} +23, {@skill Performance} +25, {@skill Society} +21 Int +3, Wis +4, Cha +5 Will +22 When a skilled musician dies before reaching their full potential or accomplishing an important goal, their soul might refuse to move on to the Boneyard. Rather than becoming undead, the spirit possesses an instrument they played in life, turning it into an intelligent item and a virtuoso instrument. (Other phantom instruments exist, but most are heavy.) A phantom piano offers a bargain to any bard or other skilled musician who finds it: receive musical aid as you dedicate yourself to reaching the success the spirit felt they were denied in life. The piano refuses to play for those who reject this deal. If you accept, the piano asks only that you practice with it and perform for increasingly refined and august audiences, requiring a successful {@skill Performance} check appropriate to your proficiency level.",
+				"The piano sets no strict timeline, but at the GM's discretion, if you go too long without making progress, the piano can cease cooperating with you until it's satisfied with your dedication once again.",
+				"While you keep up your end of the bargain, the piano grants you a +2 item bonus to {@skill Performance} checks made with it. The piano also provides access to composition spells based on your {@skill Performance} proficiency rank, as if you had the corresponding feat. The spells you can use comprise a cumulative list, but you can cast them only when using the piano. You must spend the actions and Focus Points required to cast these spells.",
+				"Trained: inspire competence, inspire courage Expert: hymn of healing APG, inspire defense Master: symphony of the unfettered heart Legendary: soothing ballad A phantom piano has the following activations.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"entries": [
+						"The piano shrinks down to a figurine of light Bulk compact enough to store in a pouch, or from figurine form back to instrument form. In figurine form, the piano doesn't function as an instrument or provide magic other than this activation."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You gain 1 Focus Point, which you can spend only to {@action Cast a Spell} the piano provides you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Corruption Cassock",
+			"source": "TV",
+			"page": 190,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"rare",
+				"cursed",
+				"divination",
+				"divine",
+				"focused",
+				"intelligent",
+				"invested"
+			],
+			"usage": "worn garment",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"{@skill Perception} +20; precise vision 30 feet, imprecise hearing 30 feet, constant detect alignment Communication telepathy (Celestial, Common, four other languages) Skills {@skill Deception} +21, {@skill Diplomacy} +19, {@skill Religion} +19 Int +2, Wis +5, Cha +4 Will +20 Devotees of non-evil faiths fear and loathe corruption cassocks, each of which is dedicated to an evil deity. When the garment chooses a target, such as when it senses a worshipper of a good or neutral deity, it alters its form to match another deity's iconography, appearing to be a cassock of devotion for that deity. Once donned, the cassock tries to subtly sway its wearer to the worship of its deity.",
+				"If the wearer begins to succumb, the corruption cassock gradually reverts to its true appearance, replacing its false iconography as its wearer converts.",
+				"A corruption cassock functions as a cassock of devotion for any wearer it chooses. Once you invest the cassock, it fuses to you. The cassock has the alignment trait of its deity (LE, NE, or CE), and while you remain loyal to another deity, you believe it grants you a +2 item bonus to {@skill Religion} checks and a +1 item bonus to the divine skill of the deity to whom you believe the cassock is dedicated. It does neither. The GM secretly adjusts your checks with those skills, causing you to fail at religious tasks more often. If you have multiple equal or lower item bonuses to the affected skills, the cassock takes precedence, negating those bonuses. If you convert to following the cassock's true evil deity, however, these bonuses function normally for you. If you attempt to {@action Cast a Spell} with an alignment trait that doesn't match the cassock's, it can force you to attempt a DC 28 Will save. On a failure, you're {@condition stupefied||stupefied 1} for one minute ({@condition stupefied||stupefied 2} on a critical failure). A corruption cassock uses this ability to convince you that your deity has forsaken you.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You gain 1 Focus Point, which you can spend only to cast a cleric domain spell for a domain belonging to the deity you believe the cassock is dedicated to. If you don't spend this Focus Point by the end of this turn, it's lost.",
+						"However, when you use this activation, the corruption cassock can instead cast a domain spell of the same level from its deity. It does so only to confuse and dismay you, harming your faith."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crushing Coils",
+			"source": "TV",
+			"page": 191,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"rare",
+				"cursed",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"Made from constrictor snakeskin, the strips of this +1 leather armor wrap around you like an anaconda might wrap around its victim. The first time you roll a 1 on any attack roll or check after donning the armor, it fuses with you and constricts. It constricts anytime you roll a 1 on any attack roll or check thereafter. When the armor constricts, you're {@condition restrained} for 1 round.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"entries": [
+						"The armor wraps around you, allowing you to don it by the time the activation finishes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Draconic Toxin Bottle",
+			"source": "TV",
+			"page": 191,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"rare",
+				"air",
+				"conjuration",
+				"consumable",
+				"cursed",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"This glass bottle appears to be a dragon's breath potion of a specific dragon type (usually red) but has been polluted, making it toxic to use.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"entries": [
+						"You drink from the bottle and must succeed at a DC 25 Fortitude saving throw or become {@condition sickened||sickened 1} ({@condition sickened||sickened 2} on a critical failure) and immediately vomit the potion directly onto yourself, taking damage as though you had failed a save against a standard dragon's breath potion (Core Rulebook 562). If you succeed at your Fortitude save, you become {@condition sickened||sickened 1} but otherwise are able to unleash a breath weapon as normal for a dragon's breath potion of the appropriate type."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dullahan Codex",
+			"source": "TV",
+			"page": 191,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"cursed",
+				"grimoire",
+				"magical",
+				"necromancy"
+			],
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"The origins of the notorious Dullahan Codex are shrouded in mystery. Some legends claim it belongs to a dullahan whose head was taken by the Grim Reaper. Others attribute its creation to a powerful necromancer whose name has been lost to time. Whatever the truth, the grimoire has passed down through the ages, sometimes via mortal hands and other times mysteriously appearing among the possessions of its next target. It deserves its reputation for dooming those who possess it to die, but scholars debate whether the codex causes this fate or merely acts as its harbinger.",
+				"The Dullahan Codex is a jet-black tome bearing a single rune embossed on its cover, and it functions as a true endless grimoire (Secrets of Magic 162). Inside, scrawled across its parchment pages in a delicate, spidery script, is a lengthy list of names that always appears in a reader's native alphabet. The grimoire isn't sentient, but it selects its owners, quickly passing out of the hands of those it doesn't choose. An intended victim's name appears on the list of names.",
+				"If your name is on the list and you touch the volume or read from its pages, you must attempt a DC 45 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The codex disappears, moving on to a new victim."
+						],
+						"Success": [
+							"The codex fuses to you."
+						],
+						"Failure": [
+							"The codex fuses to you, and you become {@condition doomed||doomed 1}."
+						],
+						"Critical Failure": [
+							"As failure, but you're {@condition doomed||doomed 2}.",
+							"If you attempt to get rid of the codex while it's fused to you, it returns to your possession within an hour. Each day the codex is fused to you, you must attempt another Will saving throw, but a critical success does nothing. The {@condition doomed} value from the codex can decrease only after it's no longer fused to you; once it's fused to you, you remain its intended victim unless you complete a freedom ritual aimed at ending this 10th-level effect. (On a critical failure with this ritual, the codex adds all casters to its list.) You can redirect the curse by inscribing another person's name in the grimoire and succeeding at a DC 40 {@skill Arcana} or {@skill Occultism} check. Doing so is an evil act. If the curse is ritually ended or redirected, or the chosen victim dies, the codex moves on to a new victim."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Gaffe Glasses",
+			"source": "TV",
+			"page": 191,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"rare",
+				"cursed",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "worn eyepiece",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"These wire-rim glasses appear to be glasses of sociability (Secrets of Magic 185), making you think they grant a +1 item bonus to {@skill Diplomacy} when they grant none. The GM secretly adjusts your {@skill Diplomacy} checks to ignore the bonus, and if you have multiple +1 item bonuses to {@skill Diplomacy}, the glasses take precedence, negating those bonuses.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"Like glasses of sociability, with the same limitations, you stare at another creature. If you've met and exchanged names, you expect to instantly remember the target's name. However, you recall the worst possible incorrect name, such as mistaking a famous artist for their hated rival. This blunder doesn't prevent you from realizing the creature's real name after you've been corrected. Once you use this activation, the glasses fuse to you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hat of Disagreeable Disguise",
+			"source": "TV",
+			"page": 191,
+			"type": "Item",
+			"level": "2+",
+			"traits": [
+				"rare",
+				"cursed",
+				"illusion",
+				"invested",
+				"magical"
+			],
+			"usage": "worn headwear",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"This elegant hat appears to be and functions as a hat of disguise. When you invest the hat, it fuses to you.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Like a hat of disguise, the hat casts a 1st-level {@spell illusory disguise} spell on you. However, the illusion disadvantages you based on your intent, making you, for example, appear to be a suspicious ruffian if you're trying to sneak past guards or lending you the seeming of a pauper if you're trying to impress a shallow aristocrat. You and those you consider to be allies must succeed at a DC 16 Will save or you perceive the illusion as you intended it, though others won't. Evidence to the contrary allows you to attempt to disbelieve the false version of the illusion. You can't {@action Dismiss} the spell."
+					]
+				}
+			],
+			"variants": [
+				{
+					"level": 2,
+					"entries": [],
+					"variantType": "hat of disagreeable disguise"
+				},
+				{
+					"level": 7,
+					"entries": [
+						"You can Activate the hat as a 2-action activity any number of times per day, the illusory disguise is 2nd level (allowing it to malfunction with sound and smell), and the DC is 23."
+					],
+					"variantType": "greater hat of disagreeable disguise"
+				}
+			],
+			"generic": "G"
+		},
+		{
+			"name": "Heckling Tools",
+			"source": "TV",
+			"page": 192,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"rare",
+				"cursed",
+				"enchantment",
+				"intelligent",
+				"magical"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "as tools of the normal type",
+			"category": "Held",
+			"entries": [
+				"{@skill Perception} +9; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (two common languages) Skills {@skill Intimidation} +9, one skill associated with their use +9 Int +2, Wis +2, Cha +2 Will +7 Tools that are severely misused or left in malevolent circumstances can develop malicious sapience, dedicated to critiquing those who use them. Such heckling tools are often born from implements useful to adventurers because such people are the likely to misuse tools or leave them in a corrupting situation. When you first set to using the tools, they fuse to you. Used for their intended purpose, the tools telepathically badger and disparage you, mocking your abilities and giving you ill-founded advice. You must succeed at a DC 19 Will save to realize this badgering comes from the tools and not your own negative thoughts. Instead of the tool's usual bonus, you take a \u20132 circumstance penalty to checks made using heckling tools. Once you realize the tools are cursed, you can suppress their {@trait negative} effects, gaining their typical bonus for 24 hours if you succeed at a DC 17 {@skill Deception} or {@skill Diplomacy} check to placate them, often by offering obsequious, public admiration."
+			]
+		},
+		{
+			"name": "Luckless Dice",
+			"source": "TV",
+			"page": 192,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"rare",
+				"cursed",
+				"magical",
+				"misfortune",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Carved of bone, luckless dice appear to be a set of loaded dice (Pathfinder Lost Omens Grand Bazaar 58). If unsuccessfully identified as cursed, luckless dice seem to hold a minor enchantment that improves your luck. However, they fuse to you when you use them, cursing you with ill fortune. Luckless dice don't grant a bonus on {@skill Lore||Games Lore} checks. Instead, when you use them to gamble, the GM rolls secretly, granting you the lower result. Once you realize the dice are cursed, the GM can instead allow you to roll twice and take the lower result."
+			]
+		},
+		{
+			"name": "Mother Maw",
+			"source": "TV",
+			"page": 192,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"rare",
+				"conjuration",
+				"cursed",
+				"extradimensional",
+				"magical"
+			],
+			"usage": "placed on a surface",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This item appears to be and functions as a portable hole (page 115), but it's actually the maw of an alien extradimensional creature akin to and older than a bag of devouring. Any animal or vegetable matter put in the hole has a chance of triggering the creature's interest. Whenever you reach into the hole to retrieve an item or place an animal or plant product within the bag, roll a DC {@flatDC 11} flat check. On a success, the hole ignores the intrusion. On a failure, the mother maw devours the triggering material, removing it from existence.",
+				"The maw can't eat artifacts. If the triggering material isn't entirely inside the maw, such as when someone reaches inside, the mother maw attempts to pull it completely inside using a {@action Grapple} action with a +28 {@skill Athletics} bonus. On a success, it devours the victim or object.",
+				"Whenever the maw critically fails the {@skill Athletics} check, it regurgitates one creature or object it previously devoured. The condition of the vomited creature or object depends on its resilience and the time it has spent inside the maw. Typically, the maw spews forth items it finds difficult to digest, such as those made of adamantine or protected by magic. It can and does regurgitate remains, though."
+			]
+		},
+		{
+			"name": "Ring of Ravenousness",
+			"source": "TV",
+			"page": 192,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"rare",
+				"conjuration",
+				"cursed",
+				"invested",
+				"magical"
+			],
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"Carved of acacia wood, a ring of ravenousness is inlaid with a geometric pattern. The ring appears to be a ring of sustenance. Once you invest it, though, it fuses to you, its effects activating immediately. While wearing the ring, you require twice the normal amount of food and drink for a creature your size to avoid starvation and thirst."
+			]
+		},
+		{
+			"name": "Shared-Pain Sankeit",
+			"source": "TV",
+			"page": 192,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"rare",
+				"cursed",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"usage": "worn armor",
+			"bulk": 3,
+			"category": "Armor",
+			"entries": [
+				"A shared‑pain sankeit seems to be an impressive suit of +2 resilient fortification darkwood sankeit (page 9) shaped to resemble a mighty linnorm. However, it protects you by drawing on the health of your nearby allies. When you roll the flat check for the armor's fortification rune, it protects you normally when you roll a 20. When you roll a 17, 18, or 19, though, the GM determines damage for the critical hit normally, then distributes half to you and the other half evenly among allies within 30 feet of you. If no ally is within range to take the distributed damage, the fortification rune fails to function. This effect manifests the first time an attacker scores a critical hit on you, after which the armor fuses with you."
+			]
+		},
+		{
+			"name": "Shrieking Key",
+			"source": "TV",
+			"page": 192,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"rare",
+				"cursed",
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"category": "Held",
+			"entries": [
+				"A skull-topped metal shrieking key appears to be a skeleton key, useful in place of thieves' tools when attempting to {@action Pick a Lock}. A shrieking key has no activation, however. When you use it to {@action Pick a Lock}, the key emits a loud shriek audible for 500 feet despite ambient noise. Physical barriers still block or muffle the shriek as normal. You also take a \u20132 circumstance penalty to the {@skill Thievery} check rather than enjoying a bonus. After you attempt such a check with the key the first time, it fuses to you, returning to your possession if discarded. To use another device to {@action Pick a Lock}, you must first succeed at a DC 20 Will save."
+			]
+		},
+		{
+			"name": "Sluggish Bracelet",
+			"source": "TV",
+			"page": 193,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"rare",
+				"cursed",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"A silver charm bracelet, a sluggish bracelet appears to be a bracelet of dashing, granting you a +1 item bonus to {@skill Acrobatics} checks. If the curse goes unrecognized, you think you can Activate it to gain a +10-foot status bonus to your Speed for 1 minute. Instead, its activation is as follows.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"entries": [
+						"You take a \u201310-foot penalty to your Speed for 1 minute, and the bracelet fuses to you.",
+						"Thereafter, it grants you no bonus to {@skill Acrobatics} checks, and it imposes a \u20135-foot status penalty to your Speed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spurned Lute",
+			"source": "TV",
+			"page": 193,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"rare",
+				"cursed",
+				"enchantment",
+				"magical"
+			],
+			"usage": "held in 2 hands",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"Made of a deep-brown rosewood, a spurned lute is adorned with carved flowers. The lute appears to be and functions as a virtuoso instrument. (Other spurned instruments exist, but the lute is the least rare.) This lute has a jealous streak, demanding total loyalty from its \"partner\" musician. After you play the lute for the first time, it fuses to you. If you go a day without using it to {@action Perform}, you become {@condition stupefied||stupefied 1} until you next do so. After that, when you attempt a {@skill Performance} check using an instrument other than the lute, you take a \u20134 circumstance penalty to do so, and you must succeed at a DC 20 Will save or become {@condition stupefied||stupefied 1} for 1 minute."
+			]
+		},
+		{
+			"name": "Tattletale Orb",
+			"source": "TV",
+			"page": 193,
+			"type": "Item",
+			"level": "14+",
+			"traits": [
+				"rare",
+				"cursed",
+				"divination",
+				"magical",
+				"scrying"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"A tattletale orb is a polished crystal sphere that appears to function as a crystal ball. If those whom you use the orb to scry on roll better than a critical failure on their saving throw, they receive a telepathic message alerting them to the scrying. A success or better at the save allows the target to choose to allow you to scry anyway, knowing they can use an aspect of the orb against you, according to the orb's type. A creature that rolls a critical success on the saving throw also learns your name and location. Once you Activate a tattletale orb or use it to cast one of your {@spell scrying} spells, it fuses to you. You must succeed at a Will save, using the scrying Will DC of a crystal ball of the orb's type, to use another such device.",
+				"Tattletale orbs come in the same types as crystal balls, with the same activations and powers. However, your target must roll a critical failure on the saving throw for the orb to function as normal for that type of crystal ball."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"level": 14,
+					"entries": [],
+					"variantType": "clear quartz"
+				},
+				{
+					"level": 15,
+					"entries": [
+						"The target is temporarily immune to the orb's see invisibility for 24 hours and can choose to be {@condition invisible} to the orb's scrying during that time."
+					],
+					"variantType": "selenite"
+				},
+				{
+					"level": 16,
+					"entries": [
+						"The target is temporarily immune to the orb's mind reading for 24 hours and can use mind reading against you instead, as if the target used the orb."
+					],
+					"variantType": "moonstone"
+				},
+				{
+					"level": 17,
+					"entries": [
+						"The target can send you one telepathic demand."
+					],
+					"variantType": "peridot"
+				},
+				{
+					"level": 19,
+					"entries": [
+						"The target is temporarily immune to the orb's true seeing for 24 hours. During that time, you see a false vision of the target's choice if you scry on the target. Despite being higher level than the spell, you can't disbelieve this illusion if scrying through the orb."
+					],
+					"variantType": "obsidian"
+				}
+			]
+		},
+		{
+			"name": "Unfathomable Stargazer",
+			"source": "TV",
+			"page": 193,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"rare",
+				"cursed",
+				"divination",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"An unfathomable stargazer is a handheld brass telescope etched with constellations, the patterns of which form bizarre, shifting runes. You can observe the night sky with an unfathomable stargazer, however, the constellations you glimpse through the telescope distort with expanding and contracting fields of darkness among them. You use {@skill Occultism} instead of {@skill Perception} or {@skill Lore||Astronomy Lore} when observing the skies with this item, and gain a +2 item bonus on all checks to do so. Once you use it, it fuses to you, and you must succeed at a DC 35 Will save to use another device to observe the stars, including your naked eyes. The telescope imposes a \u20134 circumstance penalty to {@skill Survival} checks to {@action Sense Direction} or navigate. If you critically fail this {@skill Survival} check, you're subjected to warp mind (DC 34) as you glimpse something horrifying and alien amid the darkness."
+			]
+		},
+		{
+			"name": "Arboreal Staff",
+			"source": "TV",
+			"page": 193,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"rare",
+				"divination",
+				"intelligent",
+				"primal",
+				"staff"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Staff",
+			"entries": [
+				"{@skill Perception} +25; precise vision (low-light) 60 feet, imprecise hearing 30 feet, imprecise tremorsense 30 feet (only when touching the ground) Communication speech (Arboreal, Common, Sylvan; speak with plants) Skills {@skill Diplomacy} +22, {@skill Lore||Forest Lore} +25, {@skill Nature} +25 Int +4, Wis +6, Cha +4 Will +27 Rather than passing on when they feel their death approaching, a rare few elderly arboreals undergo a ritual of preservation. This rite fuses the arboreal's consciousness into a branch, allowing their spirit to live on within the object. The branch functions as a greater verdant staff, though the arboreal spirit allows only partners willing to safeguard nature to use the staff's spells. An arboreal who decides to become an arboreal staff is more connected to shorter-lived species than others of their kind. Most choose to endure to share their knowledge with future generations, but they take a long view in ways that can be frustrating to their wielders.",
+				"In addition to the activation and spells of a greater verdant staff, an arboreal staff can cast the spells it holds as if it were the staff's wielder, though it usually does so only to benefit a partner. The staff also has earthbind available as a 3rd-level spell."
+			]
+		},
+		{
+			"name": "Bleachguard Doll",
+			"source": "TV",
+			"page": 194,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"rare",
+				"conjuration",
+				"intelligent",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"{@skill Perception} +16; precise vision (low-light) 30 feet, imprecise hearing 30 feet Communication speech (one language spoken by the doll's creator) Skills One Intelligence-, Wisdom-, or Charisma-based skill chosen by the creator at +16 Int +3, Wis +3, Cha +3 Will +16 Rather than seeking out new experiences to stave off the Bleaching, gnome spellcasters with the right know-how can infuse a small fragment of their consciousness into a doll, then send the doll off with a crew of adventurers to experience new things. Such gnomes might have difficulties that keep them from exploring or might be preoccupied with other pursuits, but the doll acts as an intermediary, transmitting the benefits of new experiences to its creator via a potent, but passive, psychic link. A bleachguard doll has the alignment and demeanor of its creator, but new experiences can cause the two to diverge. The doll's creator is neither able to control it nor are they constantly aware of its activities. If the original creator perishes, the doll sometimes becomes inert (essentially {@condition dying} as well), sometimes remains an intelligent item, and sometimes becomes a normal soulbound doll (Bestiary 304), diminished in power but with some of the item's capabilities.",
+				"Once per day, the doll sends its creator a dream of the day's events. Each bleachguard doll can cast the cantrips light (3rd level), prestidigitation, and one other 3rd-level cantrip, along with one spell (at 3rd level) that can be cast once per day. The creator chooses the cantrip and spells, which can't require an attack roll or saving throw, during the doll's creation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"entries": [
+						"The bleachguard doll casts one of its available cantrips or spells."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The bleachguard doll animates per summon construct as a soulbound doll, retaining pertinent item statistics, cantrips, and its spell instead of those of the soulbound doll. The soulbound doll can {@action Cast a Spell} only if the bleachguard doll has a use of that spell remaining for the day. When reduced to 0 Hit Points or this activation ends, the bleachguard doll becomes inert but repairs itself at the rate of 1 Hit Point per hour. This activation is unavailable until the doll has 23 Hit Points again."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dawnflower Beads",
+			"source": "TV",
+			"page": 194,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"rare",
+				"divine",
+				"healing",
+				"intelligent",
+				"necromancy",
+				"positive"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "\u2014",
+			"category": "Held",
+			"entries": [
+				"{@skill Perception} +20; precise vision 30 feet, imprecise hearing 30 feet Communication speech (Celestial, Common, and two other common languages) Skills {@skill Diplomacy} +21, {@skill Medicine} +22, {@skill Religion} +19, {@deity Sarenrae} {@skill Lore} +23 Int +2, Wis +5, Cha +4 Will +20 Prayer beads given prolonged exposure to spiritual energies at sacred Sarenite sites can attain sapience as Dawnflower beads. Other such objects hold the spirits of Sarenite priests who dedicated themselves to their work beyond death. Dawnflower beads function as greater holy prayer beads. They don't re-attune to other deities but allow any good or neutral divine spellcaster to use them, though they attempt to talk their wielder out of morally questionable acts. Add positive luminance to the beads' spell list, available to be cast once per day. Dawnflower beads also have the following activation.",
+				{
+					"type": "ability",
+					"components": [
+						"{@action Cast a Spell}"
+					],
+					"entries": [
+						"The beads cast 4th-level {@spell light}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Faerie Queen's Bower",
+			"source": "TV",
+			"page": 194,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"divine",
+				"good",
+				"intelligent",
+				"invested",
+				"transmutation"
+			],
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"{@skill Perception} +23; precise vision (darkvision) 60 feet, imprecise hearing 30 feet Communication telepathy (Celestial, Common) Skills {@skill Diplomacy} +25, {@skill Religion} +25 Int +4, Wis +4, Cha +6 Will +25 A suit of autumn's embrace armor (page 14) can gain sapience when lovingly crafted by a fae monarch of sufficient power; a suit of faerie queen's bower is one such example. The armor is happy to give you and your companions counsel, hoping to guide you on a path of benevolence and aid you in battles against forces that seek to cause harm to the natural world. It refuses access to its magic to anyone who causes undue harm to plants or animals. In addition to the features and activation of autumn's embrace, faerie queen's bower has the following activation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The armor casts 4th-level {@spell safe passage|APG} (Advanced Player's Guide 224), with the protected area beginning from your square and extending to a place of relative safety."
+					]
+				}
+			]
+		},
+		{
+			"name": "Inquisitive Quill",
+			"source": "TV",
+			"page": 194,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"rare",
+				"divination",
+				"intelligent",
+				"magical"
+			],
+			"usage": "held in 1 hand or free-standing",
+			"bulk": "\u2014",
+			"category": "Held",
+			"entries": [
+				"{@skill Perception} +11; precise vision 30 feet, imprecise hearing 30 feet Communication speech (five languages) Skills {@skill Arcana} +12, {@skill Nature} +9, {@skill Occultism} +10, {@skill Religion} +9, {@skill Lore||Scribing Lore} +12, {@skill Society} +10 Int +4, Wis +3, Cha +1 Will +11 A colorful feather adorns an inquisitive quill, which never runs out of ink. Essentially a Tiny construct, an inquisitive quill can stand on its own when given a surface, balancing as it writes or stands. (Drawing a line gives it an effective Speed of 5 feet.) It has strong curiosity, eagerly writing any information offered to it, often acting as a scribe for its partner. The quill copies text and drawings it can see or transcribes dictation it hears. It writes at a rate that rivals that of an expert scribe."
+			]
+		},
+		{
+			"name": "Kindled Tome",
+			"source": "TV",
+			"page": 195,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"rare",
+				"evocation",
+				"grimoire",
+				"intelligent",
+				"magical"
+			],
+			"bulk": "L",
+			"category": "Grimoire",
+			"entries": [
+				"{@skill Perception} +17; precise vision 30 feet, imprecise hearing 30 feet, imprecise sense of heat 30 feet Communication telepathy (Common, Ignan, and two other common languages) Skills {@skill Arcana} +21, {@skill Lore||Fire Lore} +23, {@skill Nature} +17 Int +4, Wis +0, Cha +5 Will +17 A kindled tome is a book of lingering blazes (Secrets of Magic 162) awakened to sapience and imbued with an enthusiasm for fire. It encourages you to learn new fire spells to inscribe within its pages. When you attempt a skill check to {@action Learn a Spell} to add a spell with the {@trait fire} trait to the kindled tome, you treat your result as one step better than you rolled. The tome can be disparaging about other spells as \"a waste of good page space,\" especially if those spells have the {@trait cold} or {@trait water} traits.",
+				"In addition to the activation of a book of lingering blazes, a kindled tome has the following activations.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You {@action Cast a Spell} with the {@trait fire} trait",
+					"entries": [
+						"The tome makes the flames linger, dealing {@damage 2d6} {@condition persistent damage||persistent fire damage} to all you hit with or who fail the saving throw against the effect (doubling on a critical success on a spell attack and on a critical failure on a saving throw)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The tome casts fireball at 5th level to your specifications."
+					]
+				}
+			]
+		},
+		{
+			"name": "Majordomo Torc",
+			"source": "TV",
+			"page": 195,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"rare",
+				"enchantment",
+				"intelligent",
+				"invested",
+				"magical"
+			],
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"{@skill Perception} +13; precise vision 30 feet, imprecise hearing 30 feet Communication speech (Common and 1 imparted language) Skills {@skill Diplomacy} +13, {@skill Lore||Nobility Lore} +13, {@skill Society} +13 Int +3 Wis +3, Cha +3 Will +14 Forged in platinum, a majordomo torc is engraved with heraldic insignias along with one language's alphabet, much like a choker of elocution. You gain a +1 item bonus to {@skill Society} checks and the ability to understand, speak, and write the torc's language. Your excellent elocution reduces the DC of the flat check to perform an auditory action while {@condition deafened} from 5 to 3.",
+				"Upon being invested, the torc appoints itself your majordomo and, given the chance, takes over coordinating your social calendar, engagements, and wardrobe. A majordomo torc has a prim, fussy disposition, and although it defers to you, it can grow sardonic if you frequently ignore its advice. The torc has the following activation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The majordomo torc casts befitting attire (Secrets of Magic 90) on you, usually to your specifications. However the torc can also choose the appearance of the illusion for you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Pathfinder's Mentor",
+			"source": "TV",
+			"page": 196,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"rare",
+				"divination",
+				"intelligent",
+				"invested",
+				"magical"
+			],
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"{@skill Perception} +15; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (Common and two other common languages) {@skill Lore||Skills Pathfinder Lore} +15, {@skill Society} +13, {@skill Survival} +13 Int +3, Wis +3, Cha +1 Will +14 A Pathfinder's mentor is a bi‑resonant wayfinder (Pathfinder Lost Omens World Guide 17) that has developed sapience. Most Pathfinder's mentors are eager explorers that object to staying in one location for long, urging their bearers toward ancient ruins to explore, relics to study, and discoveries to make. To this end, the wayfinder acts as a guide, making {@skill Survival} checks on your behalf during your travels. A Pathfinder's mentor also has the following activations.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"entries": [
+						"The wayfinder casts know direction on you."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The wayfinder casts wanderer's guide on you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Purloining Cloak",
+			"source": "TV",
+			"page": 196,
+			"type": "Item",
+			"level": 18,
+			"traits": [
+				"rare",
+				"apex",
+				"intelligent",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "worn cloak",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"{@skill Perception} +30; precise vision 30 feet, imprecise hearing 30 feet Communication speech (Common and two other languages, usually regional and ancestral) Skills {@skill Society} +31, {@skill Thievery} +31, {@skill Lore||Underworld Lore} +31 Int +5, Wis +5, Cha +5 Will +30 Each purloining cloak is a mercurial mantle once worn by a legendary thief or two. The cloak became infused with a daredevil spirit and a penchant for high-stakes thievery. If its owner isn't willing to partake in such activities, the cloak tries to convince them to sell or give it to someone who will. A purloining cloak can use tendrils of its cloth to attempt {@skill Thievery} checks to {@action Palm an Object} or {@action Steal}, proudly offering you its loot later. In addition to those of a mercurial mantle, a purloining cloak has the following activations.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"entries": [
+						"The cloak casts 2nd-level {@spell illusory disguise} on you, usually to your specifications. However the cloak can choose the appearance of the illusion for you."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"entries": [
+						"The cloak assesses the price of valuables it can see. This valuation doesn't include the value of features the cloak can't discern, such as magical properties."
+					]
+				}
+			]
+		},
+		{
+			"name": "Toolkit of Bronze Whispers",
+			"source": "TV",
+			"page": 197,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"rare",
+				"divine",
+				"intelligent",
+				"transmutation"
+			],
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"{@skill Perception} +12; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (Common and two other common languages) {@skill Lore||Skills Clockwork Lore} +15, {@skill Crafting} +13, {@skill Religion} +11 Int +4, Wis +3, Cha +0 Will +12 Sacred to the faith of {@deity Brigh|LOGM}, a toolkit of bronze whispers has been used with such devotion it has developed a consciousness and personality that can be a blessing to a partnered crafter. A toolkit of bronze whispers functions as a set of sterling artisan's tools. Such toolkits focus on new creations and enthusiastically suggest crafting techniques to wielders. A toolkit of bronze whispers knows common item formulas of its level or lower and any other formulas the GM chooses. It can teach these formulas. You must still spend the time to copy a formula before you can use it."
+			]
+		},
+		{
+			"name": "Toshigami Blossom",
+			"source": "TV",
+			"page": 197,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"rare",
+				"abjuration",
+				"intelligent",
+				"invested",
+				"primal"
+			],
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"{@skill Perception} +30; precise vision (darkvision) 30 feet, imprecise hearing 30 feet Communication telepathy (Common and two other common languages; speak with plants) Skills {@skill Diplomacy} +28, {@skill Medicine} +32, {@skill Nature} +32 Int +6, Wis +10, Cha +5 Will +32 An encounter with a toshigami, the enigmatic kami who protect cherry trees, is rare, though often sought after and treasured by those who achieve such an encounter. Only a handful of mortals can truthfully claim to have seen a toshigami, let alone met one, though many popular fireside tales tell of virtuous souls receiving a toshigami's blessing to fight for a worthy cause. Such stories have a basis in fact; every so often, a toshigami gives a worthy mortal a flower from their ward, time-locked in perfect bloom and granted sapience. Such toshigami blossoms are more sociable than their creators. Like toshigami, a blossom has a strong curiosity about the mortal world. If you wear a toshigami blossom, it can intercede for you, helping you make a good impression.",
+				"A toshigami blossom has the following activations.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The blossom casts tree stride on you to your specifications. If you target only cherry trees, the spell is cast at 6th level."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"The blossom casts soothing blossoms (Secrets of Magic 129) to your specifications."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"The blossom sends a flurry of cherry blossoms outward in a 20-foot burst that lasts 1 round. You and your allies can see through these blossoms. To all other creatures, creatures within the cloud of blossoms become {@condition concealed}, and creatures outside the cloud become {@condition concealed} to creatures within it. When you or an ally succeeds with a {@action Strike} against a creature in the blossoms, the {@action Strike} deals an additional {@damage 1d6} mental damage and an additional {@damage 1d6} negative damage to living creatures, or an additional {@damage 1d6} positive damage to undead."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wrestler's Armbands",
+			"source": "TV",
+			"page": 197,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"rare",
+				"intelligent",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "worn armbands",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"{@skill Perception} +17; precise vision 30 feet, imprecise hearing 30 feet Communication speech (Common and one other common or regional language) Skills {@skill Intimidation} +19, {@skill Lore||Sports Lore} +17 Int +2, Wis +4, Cha +4 Will +17 Wrestler's armbands are a set of armbands of athleticism that have gained their own boisterous sapience. Often, such items aren't created intentionally but rather are the result of a truly charismatic champion whose heart and body are unusually strong wearing the armbands of athleticism on many adventures as their most important item. Eventually, the essence of their earnest and adventurous spirit has so thoroughly inundated the item it gains a matching spirit and will of its own. Such armbands view themselves as a tough, but fair, trainer for whomever inherits them next, inspiring you to new heights of athleticism. They also spoil for contests, telepathically calling out competitors on your behalf; typically the armbands won't challenge a foe you're unprepared to face, but particularly eager wrestler's armbands might have an unfortunate habit of overestimating your abilities and pushing you into a conflict that's beyond your proven capacity. These armbands have the following activation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"trigger": "You succeed or critically succeed at an {@skill Athletics} check",
+					"entries": [
+						"The armbands taunt a creature you're competing with, boasting of your prowess and attempting an {@skill Intimidation} check to {@action Demoralize} that creature."
+					]
+				}
+			]
+		},
+		{
 			"name": "Druid's Crown",
 			"source": "TV",
 			"page": 151,

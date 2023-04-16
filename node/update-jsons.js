@@ -24,7 +24,7 @@ function updateFolder (folder) {
 							if (typeof e === "object") {
 								if (e.variants) {
 									console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
-									if (x.variants === null) {
+									if (!Array.isArray(x.variants)) {
 										x.variants = e.variants
 									} else {
 										x.variants.push(...e.variants)
