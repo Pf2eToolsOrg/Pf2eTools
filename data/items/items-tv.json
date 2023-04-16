@@ -10171,7 +10171,7 @@
 			"bulk": "L",
 			"category": "Worn",
 			"entries": [
-				"Made of materials scavenged from wild places, a druid's crown can be rebuilt for a variety of benefits. The crown grants you a +1 item bonus to a skill, and can be activated to cast a spell, both depending on the material used to build the crown, as listed on the table below. If you invest and wear druid's vestments along with the crown, the crown's item bonus increases by 1 and its spell's DC rises to 27. You can invest this item only if you're a druid. When you do, as a 10-minute activity that has the {@trait manipulate} trait, you can disassemble and rebuild the crown with different materials, changing its item bonus and spell accordingly.",
+				"Made of materials scavenged from wild places, a druid's crown can be rebuilt for a variety of benefits. The crown grants you a +1 item bonus to a skill, and can be activated to cast a spell, both depending on the material used to build the crown, as listed on the table below. If you invest and wear {@item druid's vestments} along with the crown, the crown's item bonus increases by 1 and its spell's DC rises to 27. You can invest this item only if you're a {@class druid}. When you do, as a 10-minute activity that has the {@trait manipulate} trait, you can disassemble and rebuild the crown with different materials, changing its item bonus and spell accordingly.",
 				{
 					"type": "ability",
 					"activity": {
@@ -10188,10 +10188,40 @@
 					"entries": [
 						"The crown casts its spell at 2nd level (DC 20)."
 					]
+				},
+				{
+					"type": "table",
+					"source": "TV",
+					"page": 152,
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Material",
+							"Item Bonus",
+							"Spell"
+						],
+						[
+							"Antlers",
+							"{@skill Intimidation}",
+							"{@spell Enlarge}"
+						],
+						[
+							"Flowers",
+							"{@skill Diplomacy}",
+							"{@spell Animal allies|SoM}"
+						],
+						[
+							"Leaves",
+							"{@skill Stealth}",
+							"{@spell Tree shape}"
+						]
+					]
 				}
 			],
 			"craftReq": [
-				"You are a druid. Insert table here page 152."
+				"You are a {@class druid}."
 			]
 		},
 		{
