@@ -13282,6 +13282,1194 @@
 			]
 		},
 		{
+			"name": "Shrieker",
+			"source": "GMG",
+			"page": 77,
+			"level": null,
+			"traits": [
+				"environmental",
+				"fungus"
+			],
+			"stealth": {
+				"dc": 12
+			},
+			"description": [
+				"This human-sized purple mushroom emits a piercing shriek when disturbed."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Survival} to carefully approach and cut the mushroom's air sac without triggering the shrieker"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 12
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 2
+					}
+				},
+				"hp": {
+					"std": 9
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shriek",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature or light source approaches within 10 feet of the shrieker or the shrieker takes damage",
+					"entries": [
+						"The shrieker emits a deafening screech that deals {@damage 1d6} sonic damage to creatures within 30 feet (DC 16 basic Fortitude save; creatures that critically fail this saving throw are {@condition deafened} for 1 minute)."
+					]
+				}
+			],
+			"reset": [
+				"1 minute"
+			]
+		},
+		{
+			"name": "Snowfall",
+			"source": "GMG",
+			"page": 77,
+			"level": 0,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 16,
+				"minProf": "trained"
+			},
+			"description": [
+				"Loose snow and ice have built up on a high surface, such as a tree branch or a rooftop. Its grip on the surface is tenuous, and it is likely to fall if the surface moves."
+			],
+			"disable": {
+				"entries": [
+					"DC 19 {@skill Survival} (trained) to safely dislodge the snow, or deal any amount of fire damage to destroy the hazard without triggering it"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hp": {
+					"std": 8
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Snowdrop",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves beneath where the snowfall is resting",
+					"entries": [
+						"Ice and snow fall on the triggering creature, dealing {@damage 2d6+3} bludgeoning damage (DC 18 basic Reflex save) and soaking their clothing. Until they change into fresh clothing or spend at least an hour in an area of normal or higher temperature, they treat cold environments as one step colder (for example, mild cold as severe cold)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hampering Web",
+			"source": "GMG",
+			"page": 77,
+			"level": 1,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 18,
+				"minProf": "expert"
+			},
+			"description": [
+				"Semitransparent sheets of webbing span the entryway, ready to capture small insects or hamper larger creatures that pass through."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Survival} (trained) to dislodge it"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 11
+					}
+				},
+				"hp": {
+					"std": 26
+				},
+				"bt": {
+					"std": 13
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Ensnare",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature that isn't a spider walks into the web",
+					"entries": [
+						"The web wraps around the triggering creature's body, clinging to their limbs. The triggering creature must succeed at a DC 20 Reflex save or take a \u201310-foot circumstance penalty to all their Speeds until they {@action Escape} the web (DC 20). On a critical failure, the webbing also clings to the creature's face, making them {@condition sickened||sickened 1}, and they can't attempt to reduce this condition until they {@action Escape} the web."
+					]
+				}
+			]
+		},
+		{
+			"name": "Brown Mold",
+			"source": "GMG",
+			"page": 77,
+			"level": 2,
+			"traits": [
+				"environmental",
+				"fungus"
+			],
+			"stealth": {
+				"dc": 21,
+				"minProf": "trained"
+			},
+			"description": [
+				"This unassuming fungus leeches heat out of the air."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Survival} (trained) to safely remove the mold"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"abilities": [
+						"Ref +5"
+					]
+				},
+				"hp": {
+					"std": 30
+				},
+				"bt": {
+					"std": 15
+				},
+				"immunities": [
+					"critical hits",
+					"fire",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "cold",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Emit Cold",
+					"traits": [
+						"aura",
+						"cold"
+					],
+					"entries": [
+						"5 feet. Brown mold deals {@damage 2d6} cold damage to nearby creatures."
+					]
+				},
+				{
+					"name": "Leech Warmth",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Fire comes within 5 feet of the brown mold",
+					"entries": [
+						"The brown mold expands into every square adjacent to its space. As it grows, it pulls more heat from its surroundings, dealing {@damage 2d6+6} cold damage (DC 18 basic Fortitude save) to creatures within 10 feet after it expands."
+					]
+				}
+			],
+			"reset": [
+				"After expanding, the brown mold can't grow again for 1 day."
+			]
+		},
+		{
+			"name": "Treacherous Scree",
+			"source": "GMG",
+			"page": 77,
+			"level": 3,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "trained"
+			},
+			"description": [
+				"The footing on this sloped ground appears to be stable at first glance, but the tiny rocks that cover it are loosely packed and {@condition prone} to slipping."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Survival} (trained) to navigate a safe path"
+				]
+			},
+			"actions": [
+				{
+					"name": "Rockslide",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on the unstable ground",
+					"entries": [
+						"Rocks tumble and slip beneath its feet. The triggering creature must attempt a DC 21 Reflex save as they tumble against the rocks, which deal {@damage 2d10+13} bludgeoning damage.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature takes no damage."
+								],
+								"Success": [
+									"The creature takes half damage and falls {@condition prone} in its space."
+								],
+								"Failure": [
+									"The creature takes full damage, falls {@condition prone} in its space, and tumbles down to the bottom of the slope."
+								],
+								"Critical Failure": [
+									"As failure, but double damage."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Titanic Flytrap",
+			"source": "GMG",
+			"page": 78,
+			"level": 4,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "trained"
+			},
+			"description": [
+				"On the surface, a titanic flytrap appears to be a patch of the more common flytrap plant, but beneath murky waters it hides a far larger set of jaws, reaching 10 feet across and reinforced with woody branches and lined with paralytic hairs."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Survival} (trained) to mislead the flytrap's sense of weight and pressure"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hp": {
+					"std": 56
+				},
+				"bt": {
+					"std": 28
+				},
+				"immunities": [
+					"mental"
+				],
+				"resistances": [
+					{
+						"name": "acid",
+						"amount": 20
+					},
+					{
+						"name": "fire",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Snap Shut",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A Small or Medium creature moves into a square that is within reach of the flytrap's {@condition hidden} jaws",
+					"entries": [
+						"The flytrap's jaws snap shut, making a jaws {@action Strike} against the triggering creature."
+					]
+				},
+				{
+					"name": "Devour",
+					"entries": [
+						"The target is trapped by the flytrap's jaws, gaining the {@condition grabbed} condition until it Escapes (DC 21). Additionally, it is exposed to the titanic flytrap toxin from the hundreds of tiny hairs that line the inside of its leaves. If the flytrap's jaws {@action Strike} was a critical success, the target takes a \u20132 circumstance penalty to its saving throws against this poison. At the end of each of target's turns that it remains {@condition grabbed}, the target takes {@damage 3d6} acid damage.",
+						{
+							"type": "affliction",
+							"name": "Titanic Flytrap Toxin",
+							"traits": [
+								"contact",
+								"poison"
+							],
+							"DC": 21,
+							"savingThrow": "Fortitude",
+							"maxDuration": "4 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 2d6} poison damage and {@condition stunned||stunned 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 3d6} poison damage and {@condition stunned||stunned 2}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@damage 4d6} poison damage and {@condition paralyzed}",
+									"duration": "1 round"
+								}
+							]
+						}
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 17,
+					"damage": "devour"
+				}
+			],
+			"reset": [
+				"1 hour (or longer, after a large meal)"
+			]
+		},
+		{
+			"name": "Spectral Reflection",
+			"source": "GMG",
+			"page": 78,
+			"level": 5,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 26,
+				"minProf": "expert"
+			},
+			"description": [
+				"The reflection in the mirror subtly twists and distorts, its expression taking on an unnerving sneer of malice."
+			],
+			"disable": {
+				"entries": [
+					"DC 23 {@skill Religion} (trained) to exorcise the spirit, or DC 23"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 10
+					}
+				},
+				"hardness": {
+					"std": 13
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Thievery",
+					"activity": {
+						"unit": "varies",
+						"entry": "trained"
+					},
+					"components": [
+						"to quickly cover the mirror"
+					],
+					"entries": []
+				},
+				{
+					"name": "Spectral Impale",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature approaches within 15 feet of the mirror, and the mirror is lit with dim or brighter light",
+					"entries": [
+						"Shadowy barbs impale the body of the reflected creature as the haunt makes a shadow barbs {@action Strike}."
+					]
+				},
+				{
+					"name": "Sap Vitality",
+					"entries": [
+						"A creature hit by the reflection's shadow barbs must attempt a DC 22 Fortitude save as the haunt tries to draw a portion of its vital essence into the mirror. The target is {@condition drained||drained 1} on a failed saving throw, or {@condition drained||drained 2} on a critical failure."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shadow barbs",
+					"attack": 19,
+					"damage": "{@damage 4d8+9} negative plus sap vitality"
+				}
+			],
+			"reset": [
+				"The haunt re-forms after 1 minute, manifesting in any mirror within its infused area (see Special below). Special Spectral reflections often infuse entire buildings, manifesting in any sufficiently large mirror. The example Hit Points and Hardness given represent a typical mirror reinforced by the haunt; at your discretion, the haunt might appear in reflective surfaces that are harder to destroy.",
+				"Defeating a manifestation through damage destroys the surface, preventing the haunt from using it again. If this haunt appears in an area with many mirrors, consider giving PCs double or even triple the XP for a typical simple hazard."
+			]
+		},
+		{
+			"name": "Ghostly Choir",
+			"source": "GMG",
+			"page": 78,
+			"level": 6,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "expert"
+			},
+			"description": [
+				"A choir of lost souls rises out of the floor, singing an eerie chant that terrifies its listeners and buffets their bodies with walls of sound."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Performance} (trained) to disrupt the song's resonance with another tune or DC 28 {@skill Religion} (trained) to ritually silence the spirits"
+				]
+			},
+			"actions": [
+				{
+					"name": "Profane Chant",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental",
+						"occult"
+					],
+					"trigger": "A creature moves within 10 feet of the section of floor from which the choir can arise",
+					"entries": [
+						"The choir rises, and its song deals {@damage 4d8+18} mental damage to non-evil creatures within 30 feet of the souls' spectral forms.",
+						"Affected creatures must each attempt a DC 24 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes half damage and becomes {@condition frightened||frightened 1}."
+								],
+								"Failure": [
+									"The creature takes full damage and becomes {@condition frightened||frightened 2}."
+								],
+								"Critical Failure": [
+									"The creature takes double damage. It also becomes {@condition frightened||frightened 3} and {@condition fleeing} for 1 round."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Green Slime",
+			"source": "GMG",
+			"page": 78,
+			"level": 9,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 30,
+				"minProf": "expert"
+			},
+			"description": [
+				"A caustic green film clings to the ceiling above, watching for prey to pass beneath it."
+			],
+			"disable": {
+				"entries": [
+					"DC 33 {@skill Survival} (expert) to carefully peel the slime off the ceiling without touching it"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"abilities": [
+						"Ref +15"
+					]
+				},
+				"hp": {
+					"std": 200
+				},
+				"bt": {
+					"std": 100
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "cold",
+						"amount": 20
+					},
+					{
+						"name": "fire",
+						"amount": 20
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Dissolving Ambush",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature walks beneath the slime",
+					"entries": [
+						"The green slime drops on top of the creature, attempting to dissolve it into a nutritious slurry. The target must attempt a DC 28 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target leaps out of the way, and it is unaffected."
+								],
+								"Success": [
+									"A small amount of the slime splashes onto the target. The target is {@condition drained||drained 1}."
+								],
+								"Failure": [
+									"The slime lands on its target. The target is {@condition drained||drained 1}, and this condition value increases by 1 at the end of its turn each round until the slime is removed. If the target reaches {@condition drained||drained 4}, the next time its {@condition drained} value would increase, it dies and collapses into a slurry of nutrients. A slime covering a target can no longer be removed through {@skill Survival} checks, and damage dealt to the slime is also dealt to the target (applying the target's immunities, weaknesses, and resistances rather than those of the green slime)."
+								],
+								"Critical Failure": [
+									"The slime completely coats its target. This has the same effect as a failure, except the target is immediately {@condition drained||drained 2}, becomes {@condition drained||drained 4} after 1 round, and dies after 2 rounds."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"1 hour, as the slime feasts and then slowly creeps back up to the ceiling"
+			]
+		},
+		{
+			"name": "Jealous Abjurer",
+			"source": "GMG",
+			"page": 79,
+			"level": 11,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 33,
+				"minProf": "master"
+			},
+			"description": [
+				"A robe-clad spirit rises out of the floor, pointing an accusing finger."
+			],
+			"disable": {
+				"entries": [
+					"DC 36 {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} (master) to convince the spirit that the target's magical knowledge is too great to be trifled with"
+				]
+			},
+			"actions": [
+				{
+					"name": "Rend Magic",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"abjuration",
+						"arcane"
+					],
+					"trigger": "A creature that is currently affected by a beneficial spell approaches within 30 feet of the abjurer",
+					"entries": [
+						"Envying the fame and magical prowess of others, the jealous abjurer attempts to engineer a catastrophic failure in the highest-level beneficial spell currently affecting its target. It attempts a counteract check with a +26 modifier. If the counteract check succeeds, the spell is dispelled, and the creature it had been affecting takes {@damage 4d12+30} force damage as the spell violently implodes (DC 32 basic Reflex save)."
+					]
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Plummeting Doom",
+			"source": "GMG",
+			"page": 79,
+			"level": 15,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 40,
+				"minProf": "master",
+				"notes": "to hear the echoes of a faraway object crashing into the ground"
+			},
+			"description": [
+				"Four vengeful spirits grab interlopers and toss them off the edge of a nearby 120-foot-tall cliff."
+			],
+			"disable": {
+				"entries": [
+					"DC 40 {@skill Athletics} (trained) to push back so forcefully that the spirits fear being thrown off the cliff, or DC 40 {@skill Religion} (expert) to temporarily seal the spirits away"
+				]
+			},
+			"actions": [
+				{
+					"name": "Call of the Ground",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"abjuration"
+					],
+					"trigger": "A creature approaches within 15 feet of the edge of the cliff",
+					"entries": [
+						"Each spirit attempts to throw a creature within 60 feet of the cliff's edge off the cliff by attempting a check with a +26 modifier against the target's Fortitude DC. If the haunt succeeds, the target is thrown over the edge of the cliff, where it then falls 120 feet to the ground.",
+						"Until the haunt is defeated, each creature within 60 feet of the cliff's edge must attempt a DC 40 Will save each time they would spend an action or reaction to {@action Arrest a Fall}, {@action Fly}, {@action Grab an Edge}, or otherwise avoid falling; if they fail the save, the action is disrupted. The haunt automatically attempts to counteract spells that would slow a fall or mitigate the effects of falling, such as feather fall, with a counteract modifier of +32."
+					]
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Grasp of the Damned",
+			"source": "GMG",
+			"page": 79,
+			"level": 17,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 43,
+				"minProf": "master"
+			},
+			"description": [
+				"These desperate spirits are the echoes of people who committed great atrocities in the name of an evil god.",
+				"Now, they are left with only the knowledge that their souls have been damned, and the unwavering belief that they can better their fate by providing powerful sacrifices for their fiendish masters."
+			],
+			"disable": {
+				"entries": [
+					"DC 46 {@skill Religion} (master) to inspire a deity to intervene and counteract the ritual"
+				]
+			},
+			"actions": [
+				{
+					"name": "Mark for Damnation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"death",
+						"divine",
+						"necromancy"
+					],
+					"trigger": "Three or more sentient living creatures of 13th level or higher enter the haunt's area",
+					"entries": [
+						"The haunt deals {@damage 6d12+35} negative damage to each creature in the haunt's area, and each creature must attempt a DC 40 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature takes no damage and is {@condition doomed||doomed 1}."
+								],
+								"Success": [
+									"The creature takes half damage and is {@condition doomed||doomed 1}."
+								],
+								"Failure": [
+									"The creature takes full damage, becomes {@condition doomed||doomed 2}, and is marked for damnation."
+								],
+								"Critical Failure": [
+									"The creature takes double damage, becomes {@condition doomed||doomed 3}, and is marked for damnation.",
+									"If a creature that is marked for damnation dies within the next 24 hours, including from the haunt's damage, its soul is immediately dragged away to the plane of the evil deity that the damned spirits served, where the creature's soul is held captive by one of that deity's powerful servitors. Only wish and similarly potent effects are able to recover the lost soul directly; however, it is also possible to recover the soul by journeying to the evil plane and defeating the soul's captor."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"1 day"
+			]
+		},
+		{
+			"name": "Eternal Flame",
+			"source": "GMG",
+			"page": 80,
+			"level": 7,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 18,
+				"minProf": "expert"
+			},
+			"description": [
+				"A raging spectral inferno arises out of thin air, strengthening all undead creatures within its area. This haunt most often arises from the charred remains of a group of three people who burned to death, whether in a terrible accident or a deliberate execution, and their unavenged souls burn with rage."
+			],
+			"disable": {
+				"entries": [
+					"DC 27 {@skill Diplomacy} (expert) to temporarily calm the rage of one of the three spirits, or DC 30 {@skill Religion} (trained) to exorcise one of the spirits; three total successes are required to disable the haunt"
+				]
+			},
+			"actions": [
+				{
+					"name": "Searing Agony",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divination",
+						"mental"
+					],
+					"trigger": "A living creature approaches within 10 feet of the remains of a victim of the original fire",
+					"entries": [
+						"Memories of the pain suffered by the fire's past victims assault the triggering creature's mind. The creature must attempt a DC 25 Will save, and the haunt then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is {@condition sickened||sickened 1}."
+								],
+								"Failure": [
+									"The creature is {@condition sickened||sickened 2}."
+								],
+								"Critical Failure": [
+									"The creature is {@condition sickened||sickened 3}, and it is {@condition flat-footed} for as long as it remains within the haunt's area and for 3 rounds thereafter."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action) Phantom flames rage across the haunted area, dealing {@damage 4d6} fire damage to each living creature within the area (DC 23 basic Will save). Undead creatures in the area are infused with flames for the following round.",
+				"They gain the {@trait fire} trait and immunity to fire, and all their attacks deal an additional {@damage 1d6} fire damage. Objects in the area are unaffected."
+			],
+			"reset": [
+				"The flames cease 1 minute after all living creatures leave the area, but after 1 hour, the anger and pain simmer up and the haunt is ready to trigger again."
+			]
+		},
+		{
+			"name": "Confounding Betrayal",
+			"source": "GMG",
+			"page": 80,
+			"level": 8,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 21,
+				"minProf": "expert"
+			},
+			"description": [
+				"Allies appear to shed their disguises and reveal themselves to be malevolent monsters."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Deception} (expert) twice to confound the haunt with your own deceptions, or DC 28 {@skill Occultism} (trained) twice to create a ward against the haunt's mental influence"
+				]
+			},
+			"actions": [
+				{
+					"name": "Unmask",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"illusion",
+						"occult"
+					],
+					"trigger": "Two or more creatures enter the haunt's area",
+					"entries": [
+						"Each creature sees the forms of nearby creatures shift and change, appearing to transform into fiendish or aberrant beings with a thirst for blood. Each creature in the area must attempt a DC 30 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature sees through the illusions entirely and is temporarily immune to the haunt's routine for 1 minute."
+								],
+								"Success": [
+									"The creature is unaffected by the strange images."
+								],
+								"Failure": [
+									"The creature believes the illusions to be true; if they become {@condition confused} by the haunt's routine, they can't attempt flat checks to end the {@condition confused} condition when they take damage."
+								],
+								"Critical Failure": [
+									"As failure, but the creature is left with a lingering suspicion of others and can't benefit from {@action Aid} reactions for 24 hours."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action; illusion, incapacitation, occult) The haunt continues to confound victims' senses and inspire them to commit violence against each other. Each creature in the haunt's area must attempt a DC 26 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected and temporarily immune for 1 minute."
+						],
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is {@condition confused} for 1 round."
+						],
+						"Critical Failure": [
+							"The creature is {@condition confused} for 1 minute."
+						]
+					}
+				}
+			],
+			"reset": [
+				"The haunt deactivates 1 minute after all creatures leave the area but resets immediately thereafter."
+			]
+		},
+		{
+			"name": "Perilous Flash Flood",
+			"source": "GMG",
+			"page": 80,
+			"level": 10,
+			"traits": [
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 22,
+				"minProf": "expert"
+			},
+			"description": [
+				"Whether made up of water rushing through the streets that sweeps up dangerous debris along the way or a less natural substance bursting free of its container, this relentless flood batters everything in its path."
+			],
+			"disable": {
+				"entries": [
+					"three DC 35 {@skill Athletics}, {@skill Crafting}, or {@skill Survival} checks to move or construct barricades strong enough to create a shelter from the flood. While this creates a safe place to stand, creatures outside of the barricaded area may still be in danger depending on the nature and the source of the flood."
+				]
+			},
+			"actions": [
+				{
+					"name": "Burst Free",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature or effect breaks the flood's containment",
+					"entries": [
+						"The hazard rolls initiative as the flood surges forth."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The flood advances forward 60 feet, crashing into all creatures within its area. Each creature must attempt a DC 30 Fortitude save as the floodwaters pummel them and pull them downstream. The amount and type of damage dealt are based on the nature of the flood, and certain types of floods impose additional effects. The turbulent waters mean creatures within the area of the flood must attempt a DC 20 {@skill Athletics} check to {@action Swim} in order to move, and those who do not succeed at a check to {@action Swim} each round may drown.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature takes no damage."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage and is moved 10 feet along with the water."
+						],
+						"Critical Failure": [
+							"The creature takes double damage and is moved 20 feet along with the water."
+						]
+					}
+				},
+				{
+					"type": "list",
+					"items": [
+						"Acidic Runoff This caustic flood dissolves flesh as it moves, dealing {@damage 1d12} bludgeoning damage and {@damage 1d12+8} acid damage. Additionally, it deals {@damage 2d6} {@condition persistent damage||persistent acid damage} to creatures who critically fail their Fortitude saves.",
+						"Battering Waves This flood of rushing water deals {@damage 2d12+10} bludgeoning damage.",
+						"Repulsive Refuse This flood has picked up tainted or disease-ridden objects like sewer runoff or rotting food."
+					]
+				},
+				"It deals {@damage 2d12+8} bludgeoning damage. Each creature exposed to the flood must attempt a DC 29 Fortitude save, becoming {@condition sickened||sickened 1} on a failure or {@condition sickened||sickened 2} on a critical failure. Additionally, creatures who come into contact with the flood waters are exposed to filth fever (DC 20 Fortitude, Bestiary 258).",
+				{
+					"type": "list",
+					"items": [
+						"Sharp Debris The waters have picked up various objects, some of which are particularly sharp. The flood deals {@damage 1d12} bludgeoning damage and {@damage 1d12+12} piercing damage.",
+						"Sticky Goo The substance is particularly sticky. It deals {@damage 2d12+6} bludgeoning damage. Additionally, each creature in the flood must attempt a DC 29 Reflex save at the beginning of their turn each round. On a failed saving throw, they take a \u201310-foot circumstance penalty to all their Speeds for 1 round. On a critical failure, they are instead {@condition immobilized} for 1 round."
+					]
+				}
+			]
+		},
+		{
+			"name": "Flensing Blades",
+			"source": "GMG",
+			"page": 81,
+			"level": 12,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 25,
+				"minProf": "expert"
+			},
+			"description": [
+				"A whirling tornado of spectrally propelled glass and steel slices whatever it touches to ribbons."
+			],
+			"disable": {
+				"entries": [
+					"DC 35 {@skill Thievery} (master) to precisely adjust the blades so that they destroy each other, or DC 38 {@skill Religion} (expert) to weaken the haunt; four successes are required to disable it"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 33
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 22
+					}
+				},
+				"hardness": {
+					"std": 20
+				},
+				"hp": {
+					"std": 100
+				},
+				"bt": {
+					"std": 50
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "positive",
+						"amount": 15
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Whirling Blades",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Three or more creatures enter the area of the haunt; Effect sharp fragments lift up from the ground and begin to spin in rapid circles taking up one 5-foot square. The haunt rolls initiative.",
+					"entries": []
+				}
+			],
+			"routine": [
+				"(3 actions) The tornado of blades uses 3 actions to move, traveling up to 30 feet with each action and dealing {@damage 2d10+10} slashing damage. Each creature in its path must attempt a DC 33 Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage plus {@damage 1d10} {@condition persistent damage||persistent bleed damage}."
+						],
+						"Critical Failure": [
+							"The creature takes double damage and {@damage 1d10} {@condition persistent damage||persistent bleed damage}. It also becomes {@condition wounded||wounded 1} (or increases its {@condition wounded} value by 1, if it is already {@condition wounded}). Each successful check to disable this hazard reduces the haunt's movement by 30 feet, and the fourth success disables it completely."
+						]
+					}
+				}
+			],
+			"reset": [
+				"The haunt draws jagged shards back into its area over the course of an hour, after which it can trigger again."
+			]
+		},
+		{
+			"name": "Dance of Death",
+			"source": "GMG",
+			"page": 81,
+			"level": 16,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 32,
+				"minProf": "master"
+			},
+			"description": [
+				"An eerie orchestra compels all who hear it to dance until they collapse from exhaustion."
+			],
+			"disable": {
+				"entries": [
+					"DC 42 {@skill Intimidation} (expert) three times to frighten dancers and spectral musicians alike away from participating in the deadly performance, DC 40 {@skill Performance} (master) twice to produce a tune discordant enough to disrupt the compulsion, or DC 42 {@skill Religion} (master) three times to banish the spirits with prayers"
+				]
+			},
+			"actions": [
+				{
+					"name": "Prelude",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"enchantment",
+						"incapacitation",
+						"occult"
+					],
+					"trigger": "A creature approaches within 30 feet of the orchestra",
+					"entries": [
+						"The orchestra compels all creatures that can hear it to begin dancing. Each creature must attempt a"
+					]
+				},
+				{
+					"name": "DC 41",
+					"entries": [
+						"Will save, with the following effects.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is {@condition flat-footed} and cannot use reactions. Additionally, it must spend 1 of its actions each round dancing. Dancing is a move action that allows the creature to {@action Stride} up to half its Speed."
+								],
+								"Failure": [
+									"As success, except the creature must spend 2 of its actions each round dancing."
+								],
+								"Critical Failure": [
+									"As failure, except the creature must spend 3 of its actions each round dancing."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action; auditory, enchantment, incapacitation, occult) The orchestra performs a raucous tune, compelling all creatures that can hear it to spend actions dancing.",
+				"Each round, creature must attempt a DC 37 Will save; the results of this save modify the number of actions that the creature must spend dancing each round. If this would cause the creature to spend more actions dancing than it can use on its turn, the creature takes {@dice 10d6} damage (or double that on a critical failure) from moving faster than its body can manage.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature decreases the number of actions it must spend dancing by 1."
+						],
+						"Success": [
+							"No effect."
+						],
+						"Failure": [
+							"The creature increases the actions it must spend dancing by 1."
+						],
+						"Critical Failure": [
+							"The creature increases the actions it must spend dancing by 2."
+						]
+					}
+				}
+			],
+			"reset": [
+				"The eerie orchestra spends an hour retuning its phantasmal instruments, after which it is ready to begin its routine again."
+			]
+		},
+		{
 			"name": "Vengeful Furnace",
 			"source": "AV1",
 			"page": 46,
