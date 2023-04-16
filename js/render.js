@@ -5195,6 +5195,7 @@ Renderer.item = {
 		renderStack.push(Renderer.item.getArmorStats(item));
 		renderStack.push(Renderer.item.getWeaponStats(item));
 		if (item.hands) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands&nbsp;</strong>${item.hands}</p>`)
+		if (item.prerequisites) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>${renderer.render(item.prerequisites)}</p>`)
 
 		// General Item Line
 		// If weaponData and !comboWeaponData, use weaponData group. If not, use armorData group. If not, check if it's a Shield, then make it a Shield. If not, use the item.group.

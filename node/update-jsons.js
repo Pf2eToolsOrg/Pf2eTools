@@ -15,12 +15,20 @@ function updateFolder (folder) {
 			// For targeted schema changes, like changing a name of an object key
 			if (json.item) {
 				json.item = json.item.map(x => {
+					if (x.category !== "Coda" && x.traits && Array.isArray(x.traits) && x.traits.filter(t => t.includes("coda")).length > 0) {
+						console.log(`\tUpdating ${x.name} coda category in ${file}...`)
+						x.category = "Coda"
+					}
 					if (x.entries && Array.isArray(x.entries) && x.entries.length) {
 						x.entries = x.entries.map(e => {
 							if (typeof e === "object") {
 								if (e.variants) {
 									console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
-									x.variants = e.variants
+									if (x.variants === null) {
+										x.variants = e.variants
+									} else {
+										x.variants.push(...e.variants)
+									}
 									delete e.variants
 									if (!x.generic) x.generic = "G"
 								}
@@ -34,6 +42,19 @@ function updateFolder (folder) {
 							x.generic = "G"
 						}
 						x.variants.map(v => {
+							if (v.entries && Array.isArray(v.entries) && v.entries.length) {
+								v.entries = v.entries.map(e => {
+									if (typeof e === "object") {
+										if (e.variants) {
+											console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
+											x.variants.push(...e.variants)
+											delete e.variants
+											if (!x.generic) x.generic = "G"
+										}
+									}
+									return e
+								})
+							}
 							if (!v.variantType) {
 								console.log(`\tUpdating ${x.name} item variants in ${file}...`)
 								if (!v.type && v.name) {
