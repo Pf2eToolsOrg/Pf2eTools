@@ -222,9 +222,9 @@ class Converter {
 		this._parsing = item.name;
 		this._parseTraits(item);
 		this._parseProperties(item);
-		this._parseItemCategory(item);
 		this._parseItemRuneAppliesTo(item);
 		this._parseEntries(item);
+		this._parseItemCategory(item);
 		// Staffs and Wands usually dont have craft requirements for each variant item.
 		if (this._tokenIsType(this._tokenizerUtils.craftRequirements)) {
 			this._parseCraftRequirements(item);
@@ -633,6 +633,18 @@ class Converter {
 					return;
 				}
 			}
+		}
+		if (item.entries.filter(e => {
+			const regex = new RegExp(`${item.name} rune`, "i")
+			// TODO: this is now just shallow search, likely not going to improve on it further
+			if (typeof e === "string" && regex.test(e)) {
+				return true
+			} else if (typeof e === "object" && e.entries != null) {
+				return e.entries.some(ee => typeof ee === "string" && regex.test(ee));
+			}
+		}).length > 0) {
+			item.category = "Rune";
+			return;
 		}
 		item.category = "Unknown";
 		this._cbWarn(`Couldn't determine item category of "${item.name}".`);
