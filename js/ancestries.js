@@ -575,6 +575,7 @@ class AncestriesPage extends BaseComponent {
 			{
 				hash,
 				source,
+				aliases: anc.alias ? anc.alias.join(" - ") : "",
 			},
 			{
 				$lnk,

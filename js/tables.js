@@ -44,6 +44,7 @@ class TablesPage extends ListPage {
 				hash,
 				sortName,
 				source,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : tbI,

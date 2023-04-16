@@ -40,6 +40,7 @@ class CreatureTemplatePage extends ListPage {
 				hash,
 				source,
 				title: g.title || "",
+				aliases: g.alias ? g.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: g.uniqueId ? g.uniqueId : dtI,

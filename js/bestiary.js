@@ -57,6 +57,7 @@ class BestiaryPage extends ListPage {
 				source,
 				level: cr.level,
 				type: cr._fCreatureType,
+				aliases: cr.alias ? cr.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: cr.uniqueId ? cr.uniqueId : mI,
