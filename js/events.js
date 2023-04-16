@@ -35,6 +35,7 @@ class EventsPage extends ListPage {
 				hash,
 				source,
 				level: it.level,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : ivI,

@@ -39,6 +39,7 @@ class RelicGiftsPage extends ListPage {
 				source,
 				aspects,
 				tier: it.tier,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 		);
 

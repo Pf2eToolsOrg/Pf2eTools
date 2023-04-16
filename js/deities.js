@@ -46,6 +46,7 @@ class DeitiesPage extends ListPage {
 				category: g.category,
 				alignment,
 				domains,
+				aliases: g.alias ? g.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: g.uniqueId ? g.uniqueId : dtI,

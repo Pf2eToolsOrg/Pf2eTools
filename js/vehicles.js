@@ -35,6 +35,7 @@ class VehiclesPage extends ListPage {
 				hash,
 				source,
 				type: it.__prop,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : cdI,
