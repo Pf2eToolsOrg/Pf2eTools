@@ -249,6 +249,24 @@ function updateFolder (folder) {
 							return k
 						})
 					}
+					if (cr.abilities) {
+						const mapAbility = (a) => {
+							if (a.entries && a.entries.length === 0) {
+								delete a.entries;
+							}
+							return a;
+						}
+
+						if (cr.abilities.top) {
+							cr.abilities.top = cr.abilities.top.map(mapAbility)
+						}
+						if (cr.abilities.mid) {
+							cr.abilities.mid = cr.abilities.mid.map(mapAbility)
+						}
+						if (cr.abilities.bot) {
+							cr.abilities.bot = cr.abilities.bot.map(mapAbility)
+						}
+					}
 					return cr;
 				});
 			}

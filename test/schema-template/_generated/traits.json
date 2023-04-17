@@ -263,6 +263,7 @@
 			"enum": [
 				"attack",
 				"aura",
+				"certain kill",
 				"concentrate",
 				"finisher",
 				"flourish",
@@ -487,6 +488,10 @@
 				},
 				{
 					"type": "string",
+					"pattern": "^range <.*>$"
+				},
+				{
+					"type": "string",
 					"pattern": "^reload <.*>$"
 				},
 				{
@@ -595,6 +600,7 @@
 				"parry",
 				"portable",
 				"propulsive",
+				"range",
 				"range increment",
 				"ranged trip",
 				"reach",
