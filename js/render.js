@@ -5222,9 +5222,10 @@ Renderer.item = {
 				senses = (item.perception.senses.precise || []).map(s => `precise ${s}`)
 					.concat((item.perception.senses.imprecise || []).map(s => `imprecise ${s}`))
 					.concat((item.perception.senses.vague || []).map(s => `vague ${s}`))
+					.concat((item.perception.senses.constant || []).map(s => `constant ${s}`))
 					.join(", ");
 			}
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${renderer.render(`{@skill Perception}`)}&nbsp;</strong>${renderer.render(`{@d20 ${item.perception.default}||Perception}`)}${senses ? `; ${senses}` : ""}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${renderer.render(`{@skill Perception}`)}&nbsp;</strong>${renderer.render(`{@d20 ${item.perception.default}||Perception}`)}${senses ? `; ${renderer.render(senses)}` : ""}</p>`);
 		}
 		if (item.communication) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Communication&nbsp;</strong>${item.communication.map(c => `${c.name}${c.notes ? ` (${renderer.render(c.notes)})` : ""}`).join("; ")}</p>`)

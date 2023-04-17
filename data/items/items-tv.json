@@ -10771,8 +10771,49 @@
 			"usage": "Held in 2 Hands",
 			"bulk": 16,
 			"category": "Held",
+			"perception": {
+				"default": 22,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "any languages the possessing spirit knew in life"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 23
+				},
+				"Music Lore": {
+					"default": 23
+				},
+				"Performance": {
+					"default": 25
+				},
+				"Society": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Int": 3,
+				"Wis": 4,
+				"Cha": 5
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 22
+				}
+			},
 			"entries": [
-				"{@skill Perception} +22; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (any languages the possessing spirit knew in life) Skills {@skill Diplomacy} +23, {@skill Lore||Music Lore} +23, {@skill Performance} +25, {@skill Society} +21 Int +3, Wis +4, Cha +5 Will +22 When a skilled musician dies before reaching their full potential or accomplishing an important goal, their soul might refuse to move on to the Boneyard. Rather than becoming undead, the spirit possesses an instrument they played in life, turning it into an intelligent item and a virtuoso instrument. (Other phantom instruments exist, but most are heavy.) A phantom piano offers a bargain to any bard or other skilled musician who finds it: receive musical aid as you dedicate yourself to reaching the success the spirit felt they were denied in life. The piano refuses to play for those who reject this deal. If you accept, the piano asks only that you practice with it and perform for increasingly refined and august audiences, requiring a successful {@skill Performance} check appropriate to your proficiency level.",
+				"When a skilled musician dies before reaching their full potential or accomplishing an important goal, their soul might refuse to move on to the Boneyard. Rather than becoming undead, the spirit possesses an instrument they played in life, turning it into an intelligent item and a virtuoso instrument. (Other phantom instruments exist, but most are heavy.) A phantom piano offers a bargain to any bard or other skilled musician who finds it: receive musical aid as you dedicate yourself to reaching the success the spirit felt they were denied in life. The piano refuses to play for those who reject this deal. If you accept, the piano asks only that you practice with it and perform for increasingly refined and august audiences, requiring a successful {@skill Performance} check appropriate to your proficiency level.",
 				"The piano sets no strict timeline, but at the GM's discretion, if you go too long without making progress, the piano can cease cooperating with you until it's satisfied with your dedication once again.",
 				"While you keep up your end of the bargain, the piano grants you a +2 item bonus to {@skill Performance} checks made with it. The piano also provides access to composition spells based on your {@skill Performance} proficiency rank, as if you had the corresponding feat. The spells you can use comprise a cumulative list, but you can cast them only when using the piano. You must spend the actions and Focus Points required to cast these spells.",
 				"Trained: inspire competence, inspire courage Expert: hymn of healing APG, inspire defense Master: symphony of the unfettered heart Legendary: soothing ballad A phantom piano has the following activations.",
@@ -10826,8 +10867,52 @@
 			"usage": "worn garment",
 			"bulk": "L",
 			"category": "Worn",
+			"perception": {
+				"default": 20,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					],
+					"constant": [
+						"{@spell detect alignment}"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "{@language Celestial}, {@language Common}, four other languages"
+				}
+			],
+			"skills": {
+				"Deception": {
+					"default": 21
+				},
+				"Diplomacy": {
+					"default": 19
+				},
+				"Religion": {
+					"default": 19
+				},
+				"Society": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Int": 2,
+				"Wis": 5,
+				"Cha": 4
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 20
+				}
+			},
 			"entries": [
-				"{@skill Perception} +20; precise vision 30 feet, imprecise hearing 30 feet, constant detect alignment Communication telepathy (Celestial, Common, four other languages) Skills {@skill Deception} +21, {@skill Diplomacy} +19, {@skill Religion} +19 Int +2, Wis +5, Cha +4 Will +20 Devotees of non-evil faiths fear and loathe corruption cassocks, each of which is dedicated to an evil deity. When the garment chooses a target, such as when it senses a worshipper of a good or neutral deity, it alters its form to match another deity's iconography, appearing to be a cassock of devotion for that deity. Once donned, the cassock tries to subtly sway its wearer to the worship of its deity.",
+				"Devotees of non-evil faiths fear and loathe corruption cassocks, each of which is dedicated to an evil deity. When the garment chooses a target, such as when it senses a worshipper of a good or neutral deity, it alters its form to match another deity's iconography, appearing to be a cassock of devotion for that deity. Once donned, the cassock tries to subtly sway its wearer to the worship of its deity.",
 				"If the wearer begins to succumb, the corruption cassock gradually reverts to its true appearance, replacing its false iconography as its wearer converts.",
 				"A corruption cassock functions as a cassock of devotion for any wearer it chooses. Once you invest the cassock, it fuses to you. The cassock has the alignment trait of its deity (LE, NE, or CE), and while you remain loyal to another deity, you believe it grants you a +2 item bonus to {@skill Religion} checks and a +1 item bonus to the divine skill of the deity to whom you believe the cassock is dedicated. It does neither. The GM secretly adjusts your checks with those skills, causing you to fail at religious tasks more often. If you have multiple equal or lower item bonuses to the affected skills, the cassock takes precedence, negating those bonuses. If you convert to following the cassock's true evil deity, however, these bonuses function normally for you. If you attempt to {@action Cast a Spell} with an alignment trait that doesn't match the cassock's, it can force you to attempt a DC 28 Will save. On a failure, you're {@condition stupefied||stupefied 1} for one minute ({@condition stupefied||stupefied 2} on a critical failure). A corruption cassock uses this ability to convince you that your deity has forsaken you.",
 				{
