@@ -4362,6 +4362,7 @@ Renderer.creature = {
 		const acPart = Renderer.creature.getDefenses_getACPart(creature);
 		const savingThrowPart = Renderer.creature.getDefenses_getSavingThrowPart(creature);
 		const hpParts = Renderer.creature.getDefenses_getHPParts(creature);
+		const thresholds = Renderer.creature.getDefenses_getThresholdsParts(creature);
 		const hardnessPart = Renderer.creature.getDefenses_getHardnessPart(creature);
 		const immunitiesPart = Renderer.creature.getDefenses_getImmunitiesPart(creature);
 		const weakPart = Renderer.creature.getDefenses_getResWeakPart(creature.defenses.weaknesses, "Weaknesses");
@@ -4369,7 +4370,7 @@ Renderer.creature = {
 
 		const hpPart = hpParts.join("</p><p class='pf2-stat pf2-stat__section'>");
 		const sect1 = [acPart, savingThrowPart].filter(Boolean);
-		const sect2 = [hpPart, hardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
+		const sect2 = [hpPart, thresholds, hardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
 		return `<p class="pf2-stat pf2-stat__section">
 					${sect1.join("; ")}
 					${sect1.length && sect2.length ? "</p><p class='pf2-stat pf2-stat__section'>" : ""}
@@ -4417,6 +4418,14 @@ Renderer.creature = {
 		});
 
 		return hpEntries;
+	},
+	getDefenses_getThresholdsParts (creature) {
+		if (creature.defenses.thresholds && creature.defenses.thresholds.length) {
+			const thresholds = creature.defenses.thresholds.map(t => `${t.value} (${t.squares} squares)`).join(", ")
+			return `<strong>Thresholds&nbsp;</strong>${thresholds}`;
+		} else {
+			return "";
+		}
 	},
 	getDefenses_getHardnessPart (creature) {
 		if (creature.defenses.hardness) {
