@@ -232,6 +232,12 @@ function updateFolder (folder) {
 							if (k.tradition) {
 								k.tradition = k.tradition.toLowerCase();
 							}
+							if (k.name && k.type && k.tradition
+								&& (k.name.localeCompare(`${k.type} ${k.tradition}`, { sensitivity: "base" })
+									|| k.name.localeCompare(`${k.tradition} ${k.type}`, { sensitivity: "base" }))
+							) {
+								delete k.name;
+							}
 							return k
 						})
 					}
