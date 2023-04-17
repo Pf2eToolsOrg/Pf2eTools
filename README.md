@@ -47,6 +47,8 @@ Targeting ES6 was the original intent, but more modern features have long since 
 
 ### JSON Cleaning
 
+Parts of the JSON cleaning & style guidelines are also automated and can be applied using `npm run clean-jsons`. Additionally, this cleanup script is also run automatically as part of `npm run build`.
+
 #### Trailing commas
 
 To remove trailing commas in JSON:
@@ -94,6 +96,27 @@ Avoid binding ALT-modified events, as these are not available under MacOS or var
 ### Dev Server
 
 Do `npm run serve:dev` to launch a local dev server that serves the project files on [`http://localhost:8080/index.html`](http://localhost:8080/index.html).
+
+### JSON Schema
+
+The repository contains a JSON Schema for the data files in `test/schema-template/schema.json`. The schema is currently a work in progress.
+
+Details for how to make use of the schema vary based on what setup you are using to work with the repo.
+
+#### Visual Studio Code
+
+To use the JSON Schema with Visual Studio Code, head to Settings and locate the `JSON: Schemas` setting. It is recommended you add this configuration only for the local workspace.
+
+```json
+"json.schemas": [
+	{
+		"fileMatch": [
+			"data/**/*.json"
+		],
+		"url": "./test/schema-template/schema.json"
+	}
+]
+```
 
 ### Version bump
 
