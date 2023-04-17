@@ -6,6 +6,61 @@
 	"type": "object",
 	"version": "0.0.1",
 	"definitions": {
+		"spellsByLevelBlock": {
+			"type": "object",
+			"properties": {
+				"level": {
+					"type": "integer",
+					"minimum": 1
+				},
+				"slots": {
+					"type": "integer",
+					"minimum": 1
+				},
+				"spells": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string",
+								"$ref": "utils.json#/definitions/sourceList"
+							},
+							"amount": {
+								"oneOf": [
+									{
+										"type": "integer",
+										"minimum": 2
+									},
+									{
+										"const": "at will"
+									}
+								]
+							},
+							"note": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name"
+						]
+					},
+					"minItems": 1,
+					"uniqueItems": true
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"spells"
+			]
+		},
 		"range": {
 			"type": "object",
 			"properties": {
@@ -102,6 +157,13 @@
 			"properties": {
 				"speedNote": {
 					"type": "string"
+				},
+				"abilities": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
 				}
 			},
 			"additionalProperties": {
