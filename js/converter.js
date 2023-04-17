@@ -1052,12 +1052,20 @@ class Converter {
 		const reSpellCast = this._tokenizerUtils.spellCasting.find(it => it.regex.test(castingToken.value)).regex;
 		const spellMatch = reSpellCast.exec(castingToken.value);
 		const name = spellMatch[1].trim();
-		casting.name = name;
+
 		const tradition = this._tokenizerUtils.spellTraditions.find(it => it.regex.test(name));
 		const type = this._tokenizerUtils.spellTypes.find(it => it.regex.test(name));
 		if (tradition) casting.tradition = tradition.unit.toLowerCase();
 		if (type) casting.type = type.unit.toTitleCase();
 		else casting.type = "Focus";
+
+		if (!casting.type || !casting.tradition
+			|| (!name.localeCompare(`${casting.type} ${casting.tradition}`, { sensitivity: "base" })
+				&& !name.localeCompare(`${casting.tradition} ${casting.type}`, { sensitivity: "base" }))
+		) {
+			casting.name = name;
+		}
+
 		this._parseSpells_parseProperties(casting);
 		casting.entry = this._parseSpellEntry();
 		if (this._tokenIsType(this._tokenizerUtils.cantrips)) casting.entry["0"] = this._parseCantrips();
