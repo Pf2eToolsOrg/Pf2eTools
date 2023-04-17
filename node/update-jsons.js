@@ -221,6 +221,8 @@ function updateFolder (folder) {
 							}
 							return k
 						})
+					} else if (cr.attacks && cr.attacks.length === 0) {
+						delete cr.attacks
 					}
 					if (cr.spellcasting && cr.spellcasting.length) {
 						cr.spellcasting = cr.spellcasting.map(k => {
