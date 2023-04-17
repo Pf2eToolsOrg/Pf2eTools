@@ -2052,6 +2052,29 @@
 					"additionalProperties": false,
 					"minProperties": 1
 				},
+				"thresholds": {
+					"description": "The HP thresholds at which a troop creature (B3 p306) changes size. Rendered as \"<value1> (<squares1> squares), <value2> (<squares2> squares)\".",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"type": "integer",
+								"minimum": 1
+							},
+							"squares": {
+								"type": "integer",
+								"minimum": 1
+							}
+						},
+						"required": [
+							"value",
+							"squares"
+						],
+						"additionalProperties": false
+					},
+					"minItems": 2
+				},
 				"notes": {
 					"type": "object",
 					"properties": {

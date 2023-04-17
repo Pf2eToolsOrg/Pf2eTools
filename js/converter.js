@@ -711,6 +711,7 @@ class Converter {
 		else if (this._tokenIsType(this._tokenizerUtils.fort)) this._parseCreatureSavingThrows(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.hp)) this._parseHP(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.hardness)) this._parseHardness(obj);
+		else if (this._tokenIsType(this._tokenizerUtils.thresholds)) this._parseThresholds(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.immunities)) this._parseImmunities(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.weaknesses)) this._parseWeaknesses(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.resistances)) this._parseResistances(obj);
@@ -949,8 +950,27 @@ class Converter {
 			if (this._tokenIsType("PARENTHESIS")) hp.name = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
 			hp.hp = this._getBonusPushAbilities();
 			creature.defenses.hp.push(hp);
+			if (this._tokenIsType("PARENTHESIS")) {
+				const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS")).replace(/^\(|\);?$/g, "");
+				parenthesisText.split(",").map(t => t.trim()).forEach(t => {
+					hp.notes = hp.notes || [];
+					hp.notes.push(t)
+				});
+			}
 			this._getStatAbilities(hp);
 		}
+	}
+	_parseThresholds (creature) {
+		creature.defenses = creature.defenses || {};
+		this._consumeToken(this._tokenizerUtils.thresholds);
+		const entries = this._getEntries();
+		const thresholds = this._splitSemiOrComma(entries);
+		creature.defenses.thresholds = thresholds.map(str => {
+			const regExp = /(\d+)\s+\((\d+)\s+squares\)/;
+			const match = regExp.exec(str);
+			if (match) return {value: Number(match[1]), squares: Number(match[2])};
+			return undefined;
+		});
 	}
 	_parseHardness (creature) {
 		creature.defenses = creature.defenses || {};

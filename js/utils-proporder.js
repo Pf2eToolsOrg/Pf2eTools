@@ -446,6 +446,7 @@ PropOrder._CREATURE = [
 			"ac",
 			"savingThrows",
 			"hp",
+			"thresholds",
 			"hardness",
 			"immunities",
 			"weaknesses",
