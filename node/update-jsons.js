@@ -193,6 +193,15 @@ function updateFolder (folder) {
 							return accumulator;
 						}, {})
 					}
+					if (cr.skills) {
+						for (const skill of Object.keys(cr.skills).filter(s => s.match(/[Ll]ore\s+\(.*\)/g))) {
+							cr.skills["lore"] = cr.skills[skill];
+							const match = /\((.*)\)/.exec(skill);
+							const note = match[1].trim().replace(/\s/g, " ");
+							cr.skills["lore"].note = note;
+							delete cr.skills[skill];
+						}
+					}
 					if (cr.ac || cr.savingThrows || cr.hardness || cr.hp || cr.bt || cr.immunities || cr.weaknesses || cr.resistances) {
 						cr.defenses = cr.defenses || {};
 						console.log(`\tUpdating ${cr.name} defenses in ${file}...`)
