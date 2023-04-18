@@ -5144,7 +5144,8 @@ Renderer.item = {
 			${Renderer.item.getSubHead(item)}
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
-			${item.craftReq || item.special || item.destruction ? Renderer.utils.getDividerDiv() : ""}
+			${item.craftReq || item.special || item.destruction || item.gifts ? Renderer.utils.getDividerDiv() : ""}
+			${Renderer.item.getGifts(item)}
 			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements" })}
 			${Renderer.generic.getSpecial(item, { title: "Destruction" })}
 			${Renderer.generic.getSpecial(item)}
@@ -5157,6 +5158,7 @@ Renderer.item = {
 		const renderer = Renderer.get();
 		if (item.siegeWeaponData && Object.keys(item.siegeWeaponData).length) return Renderer.item.getSiegeStats(item);
 
+		if (item.aspects) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Aspects&nbsp;</strong>${renderer.render(item.aspects.joinConjunct(", ", " and "))}</p>`);
 		if (item.access) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(item.access)}</p>`);
 		if (item.price) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(item.price)}</p>`);
 		// This ammunition is for ammunition items and should not be confused with the ammunition data of ranged weapons
@@ -5330,6 +5332,26 @@ Renderer.item = {
 			renderStack.push(Renderer.utils.getDividerDiv());
 		}
 		return renderer.render(renderStack.join(""));
+	},
+
+	getGifts (item) {
+		if (item.gifts) {
+			const renderer = Renderer.get();
+			const gifts = item.gifts;
+			const renderStack = [];
+
+			Object.keys(gifts).map((type) => {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${type.toTitleCase()} Gift${gifts[type].length > 1 ? "s" : ""}&nbsp;</strong>${
+					gifts[type].map((gift) => {
+						let split = gift.split("|")
+						return `{@relicGift ${split[0].replace(/\(.+?\)/, "").trim()}|${split[1] ?? ""}|${split[0]}}`
+					}).join(", ")
+				}
+				</p>`);
+			})
+
+			return renderer.render(renderStack.join(""));
+		} else return "";
 	},
 
 	getArmorStats (item) {
