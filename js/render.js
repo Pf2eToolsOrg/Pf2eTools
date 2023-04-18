@@ -4292,7 +4292,8 @@ Renderer.creature = {
 		const abilities = crLanguages.abilities || []
 
 		if (languages.length !== 0 || notes.length !== 0 || abilities.length !== 0) {
-			const langs = languages.map(t => t.toTitleCase()).concat(notes)
+			const renderedNotes = notes.map(n => renderer.render(n));
+			const langs = languages.map(t => t.toTitleCase()).concat(renderedNotes);
 
 			let renderStack = [];
 
