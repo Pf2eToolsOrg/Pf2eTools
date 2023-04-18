@@ -246,6 +246,14 @@ function updateFolder (folder) {
 							if (k.tradition) {
 								k.tradition = k.tradition.toLowerCase();
 							}
+							if (k.note) {
+								if (typeof k.note === "string") {
+									k.notes = [k.note];
+								} else {
+									k.notes = k.note;
+								}
+								delete k.note;
+							}
 							return k
 						})
 					}

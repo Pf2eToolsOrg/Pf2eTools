@@ -378,10 +378,18 @@
 											"source": {
 												"type": "string",
 												"$ref": "utils.json#/definitions/sourceList"
+											},
+											"notes": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
 											}
 										},
 										"additionalProperties": false,
-										"minProperties": 1
+										"required": [
+											"name"
+										]
 									},
 									"minItems": 1
 								}
