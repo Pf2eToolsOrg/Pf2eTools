@@ -408,7 +408,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -623,10 +622,19 @@
 				"hp": [
 					{
 						"hp": 240,
-						"abilities": [
-							"(16 squares); Thresholds 160 (12 squares)",
-							"80 (8 squares)"
+						"notes": [
+							"16 squares"
 						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 160,
+						"squares": 12
+					},
+					{
+						"value": 80,
+						"squares": 8
 					}
 				],
 				"immunities": [
@@ -1290,7 +1298,9 @@
 			],
 			"languages": {
 				"languages": [
-					"common",
+					"common"
+				],
+				"notes": [
 					"any languages spoken by its preserved heads"
 				]
 			},
@@ -1391,7 +1401,9 @@
 					"rituals": [
 						{
 							"name": "create undead",
-							"note": "mummies; skeletons; and zombies"
+							"notes": [
+								"mummies, skeletons, and zombies"
+							]
 						}
 					]
 				}
@@ -2196,7 +2208,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 33,
@@ -2274,7 +2285,9 @@
 							"spells": [
 								{
 									"name": "elemental form",
-									"note": "earth only"
+									"notes": [
+										"earth only"
+									]
 								},
 								{
 									"name": "impaling spike",
@@ -2431,7 +2444,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 31,
@@ -2499,11 +2511,11 @@
 								},
 								{
 									"name": "seal fate",
-									"source": "advanced players guide"
+									"source": "APG"
 								},
 								{
 									"name": "vampiric maiden",
-									"source": "advanced players guide"
+									"source": "APG"
 								}
 							]
 						},

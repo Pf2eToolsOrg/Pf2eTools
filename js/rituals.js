@@ -38,6 +38,7 @@ class RitualsPage extends ListPage {
 				source,
 				level: it.level,
 				time: it._normalisedTime,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,

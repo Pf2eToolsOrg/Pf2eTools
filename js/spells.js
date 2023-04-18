@@ -54,6 +54,7 @@ class SpellsPage extends ListPage {
 				school,
 				normalisedTime: spell._normalisedTime,
 				type: spell._normalisedType,
+				aliases: spell.alias ? spell.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: spell.uniqueId ? spell.uniqueId : spI,

@@ -58,6 +58,7 @@ class ActionsPage extends ListPage {
 				source,
 				time,
 				normalisedTime: Parser.getNormalisedTime(it.activity || time),
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,

@@ -4292,7 +4292,8 @@ Renderer.creature = {
 		const abilities = crLanguages.abilities || []
 
 		if (languages.length !== 0 || notes.length !== 0 || abilities.length !== 0) {
-			const langs = languages.map(t => t.toTitleCase()).concat(notes)
+			const renderedNotes = notes.map(n => renderer.render(n));
+			const langs = languages.map(t => t.toTitleCase()).concat(renderedNotes);
 
 			let renderStack = [];
 
@@ -4362,6 +4363,7 @@ Renderer.creature = {
 		const acPart = Renderer.creature.getDefenses_getACPart(creature);
 		const savingThrowPart = Renderer.creature.getDefenses_getSavingThrowPart(creature);
 		const hpParts = Renderer.creature.getDefenses_getHPParts(creature);
+		const thresholds = Renderer.creature.getDefenses_getThresholdsParts(creature);
 		const hardnessPart = Renderer.creature.getDefenses_getHardnessPart(creature);
 		const immunitiesPart = Renderer.creature.getDefenses_getImmunitiesPart(creature);
 		const weakPart = Renderer.creature.getDefenses_getResWeakPart(creature.defenses.weaknesses, "Weaknesses");
@@ -4369,7 +4371,7 @@ Renderer.creature = {
 
 		const hpPart = hpParts.join("</p><p class='pf2-stat pf2-stat__section'>");
 		const sect1 = [acPart, savingThrowPart].filter(Boolean);
-		const sect2 = [hpPart, hardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
+		const sect2 = [hpPart, thresholds, hardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
 		return `<p class="pf2-stat pf2-stat__section">
 					${sect1.join("; ")}
 					${sect1.length && sect2.length ? "</p><p class='pf2-stat pf2-stat__section'>" : ""}
@@ -4417,6 +4419,14 @@ Renderer.creature = {
 		});
 
 		return hpEntries;
+	},
+	getDefenses_getThresholdsParts (creature) {
+		if (creature.defenses.thresholds && creature.defenses.thresholds.length) {
+			const thresholds = creature.defenses.thresholds.map(t => `${t.value} (${t.squares} squares)`).join(", ")
+			return `<strong>Thresholds&nbsp;</strong>${thresholds}`;
+		} else {
+			return "";
+		}
 	},
 	getDefenses_getHardnessPart (creature) {
 		if (creature.defenses.hardness) {
@@ -4475,10 +4485,10 @@ Renderer.creature = {
 						let spells = []
 						for (let spell of sc.entry[lvl].spells) {
 							let amount = spell.amount != null ? typeof (spell.amount) === "number" ? [`×${spell.amount}`] : [spell.amount] : []
-							let note = spell.note != null ? spell.note : []
+							let notes = spell.notes || []
 							let bracket = ""
 							if (amount.length || note.length) {
-								bracket = ` (${amount.concat(note).join(", ")})`
+								bracket = ` (${amount.concat(notes).join(", ")})`
 							}
 							spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 						}
@@ -4490,10 +4500,9 @@ Renderer.creature = {
 							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)})&nbsp;</strong></span>`)
 							let spells = []
 							for (let spell of sc.entry["constant"][clvl].spells) {
-								let note = spell.note != null ? spell.note : []
 								let bracket = ""
-								if (note.length) {
-									bracket = ` (${note.join(", ")})`
+								if (spell.notes.length) {
+									bracket = ` (${spell.notes.join(", ")})`
 								}
 								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 							}

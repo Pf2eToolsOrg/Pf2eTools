@@ -39,6 +39,7 @@ class CompanionsFamiliarsPage extends ListPage {
 				hash,
 				source,
 				type: it.type,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : ivI,

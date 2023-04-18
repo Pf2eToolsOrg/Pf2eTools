@@ -12,6 +12,7 @@
 				"humanoid",
 				"samsaran"
 			],
+			"description": "Female samsaran abbot (Bestiary 3 224)",
 			"perception": {
 				"std": 33
 			},
@@ -35,7 +36,8 @@
 					"std": 33
 				},
 				"deception": {
-					"std": 33
+					"std": 33,
+					"to Impersonate a past self": 37
 				},
 				"diplomacy": {
 					"std": 31
@@ -122,15 +124,34 @@
 					]
 				}
 			],
-			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+34 Str +5, Dex +8, Con +5, Int +5, Wis +6, Cha +5 Items +3 major striking khakkhara."
-						],
-						"name": "Religion"
+			"spellcasting": [
+				{
+					"name": "Monk Ki",
+					"type": "Focus",
+					"DC": 40,
+					"attack": 32,
+					"fp": 3,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "ki blast"
+								},
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "wholeness of body"
+								}
+							]
+						}
 					}
-				],
+				}
+			],
+			"abilities": {
 				"mid": [
 					{
 						"activity": {
@@ -144,19 +165,9 @@
 						"trigger": "Abbot Tsujon is within the emanation of a magical area effect as it's being created",
 						"requirements": "Abbot Tsujon is wielding a khakkhara",
 						"entries": [
-							"Abbot Tsujon uses her khakkhara as a medium to absorb the incoming area effect into its central ring. She attempts to counteract the triggering effect. For 1 round after Absorbing."
+							"Abbot Tsujon uses her khakkhara as a medium to absorb the incoming area effect into its central ring. She attempts to counteract the triggering effect. For 1 round after Absorbing Worldly Influence, a glowing orb floats within the khakkhara's central ring, allowing Tsujon to Release Worldly Passions."
 						],
 						"name": "Absorb Worldly Influence"
-					},
-					{
-						"entries": [
-							"{@action Influence|GMG}, a glowing orb floats within the khakkhara's central ring, allowing Tsujon to."
-						],
-						"name": "Worldly"
-					},
-					{
-						"entries": [],
-						"name": "Release Worldly Passions."
 					},
 					{
 						"activity": {
@@ -196,15 +207,9 @@
 						"trigger": "Abbot Tsujon is the target of a ranged attack",
 						"requirements": "Abbot Tsujon is aware of the attack, is not {@condition flat-footed} against it, and has a hand free",
 						"entries": [
-							"Abbot Tsujon gains a +4 circumstance bonus."
+							"Abbot Tsujon gains a +4 circumstance bonus to AC against the triggering attack. If the attack misses, the projectile loses momentum and drops harmlessly to the ground."
 						],
 						"name": "Negate Projectiles"
-					},
-					{
-						"entries": [
-							"AC against the triggering attack. If the attack misses, the projectile loses momentum and drops harmlessly to the ground."
-						],
-						"name": "to"
 					}
 				],
 				"bot": [
@@ -217,7 +222,7 @@
 							"stance"
 						],
 						"entries": [
-							"Abbot Tsujon cups one hand and poses the other to strike it, like the Rai Sho Monastery's central bell. In this stance, she can make temple bell {@action Strike||Strikes} (see {@action Strike||Strikes}) and gains a +2 status bonus to AC against ranged attacks."
+							"Abbot Tsujon cups one hand and poses the other to strike it, like the Rai Sho Monastery's central bell. In this stance, she can make temple bell {@action Strike||Strikes} and gains a +2 status bonus to AC against ranged attacks."
 						],
 						"name": "Crying Bell Stance"
 					},
@@ -230,7 +235,7 @@
 							"stance"
 						],
 						"entries": [
-							"Abbot Tsujon joins her palms together in the shape of a sal flower, evoking the truth that all things eventually decay. In this stance, she can make sal blossom {@action Strike||Strikes} (see {@action Strike||Strikes}) and is {@condition quickened|CRB|quickened 1}, and can use the extra action only to cast {@spell wholeness of body}."
+							"Abbot Tsujon joins her palms together in the shape of a sal flower, evoking the truth that all things eventually decay. In this stance, she can make sal blossom {@action Strike||Strikes} and is {@condition quickened|CRB|quickened 1}, and can use the extra action only to cast {@spell wholeness of body}."
 						],
 						"name": "Falling Sal Stance"
 					},
@@ -245,15 +250,11 @@
 							"force",
 							"manipulate"
 						],
-						"requirements": "Abbot Tsujon's khakkhara holds a glowing orb from",
-						"entries": [],
-						"name": "Release Worldly Passions"
-					},
-					{
+						"requirements": "Abbot Tsujon's khakkhara holds a glowing orb from Absorb Worldly Influence",
 						"entries": [
-							"Tsujon strikes her prayer staff once upon the ground, releasing the energy she captured in it along with the jingling of its rings. She blasts a wave of force in a 30- foot emanation, dealing {@damage 2d6} force damage per level of the ability she counteracted (DC 40 basic Reflex save). If the ability she counteracted usually deals energy damage, she can choose to deal this type of damage instead (for instance, if she used Absorb Worldly {@action Influence|GMG} to counteract a fireball, she could deal either fire or force damage)."
+							"Abbot Tsujon strikes her prayer staff once upon the ground, releasing the energy she captured in it along with the jingling of its rings. She blasts a wave of force in a 30- foot emanation, dealing {@damage 2d6} force damage per level of the ability she counteracted (DC 40 basic Reflex save). If the ability she counteracted usually deals energy damage, she can choose to deal this type of damage instead (for instance, if she used Absorb Worldly Influence to counteract a fireball, she could deal either fire or force damage)."
 						],
-						"name": "Absorb Worldly Influence; Effect Abbot"
+						"name": "Release Worldly Passions"
 					},
 					{
 						"activity": {
@@ -281,7 +282,10 @@
 					},
 					"will": {
 						"std": 34
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. death effects"
+					]
 				},
 				"hp": [
 					{
@@ -302,6 +306,7 @@
 				"humanoid",
 				"ratfolk"
 			],
+			"description": "Male ysoki poisoner",
 			"perception": {
 				"std": 33
 			},
@@ -346,6 +351,12 @@
 				"wis": 3,
 				"cha": 2
 			},
+			"items": [
+				"dragon bile (applied to body)",
+				"hidden cheek needles (20)",
+				"+3 major striking shortsword",
+				"{@item Greater Healing Potion}"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -372,9 +383,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"effects": [
-						"varies by bomb"
-					]
+					"damage": "varies by bomb"
 				},
 				{
 					"range": "Ranged",
@@ -397,21 +406,9 @@
 				"top": [
 					{
 						"entries": [
-							"+26, {@skill Stealth} +35, {@skill Thievery} +33 Str +3, Dex +7, Con +4, Int +5, Wis +3, Cha +2 Items dragon bile (applied to body), {@condition hidden} cheek needles (20), +3 major striking shortsword."
+							"Blue Viper carries the following infused items: 3 {@item major acid flask||major acid flasks}, 5 {@item black lotus extract||black lotus extracts}, 3 {@item major bottled lightning||major bottled lightnings}, 4 {@item true elixir of life||true elixirs of life}, 3 {@item major frost vial||major frost vials}, 2 {@item mindfog mist||mindfog mists}, 3 {@item oblivion essence|AoA5|oblivion essences}, 3 {@item major tanglefoot bag||major tanglefoot bags}, 5 {@item tears of death}, and 2 {@item major thunderstone||major thunderstones}. These items last for 24 hours, or until the next time Blue Viper makes his daily preparations."
 						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"Viper carries the following infused items: 3 major acid flasks, 5 black lotus extracts, 3 major bottled lightnings, 4 true elixirs of life, 3 major frost vials, 2 mindfog mists, 3 oblivion essences (Adventure."
-						],
-						"name": "Infused Items Blue"
-					},
-					{
-						"entries": [
-							"#149 79), 3 major tanglefoot bags, 5 tears of death, and 2 major thunderstones. These items last for 24 hours, or until the next time Blue Viper makes his daily preparations."
-						],
-						"name": "Path"
+						"name": "Infused Items"
 					}
 				],
 				"mid": [
@@ -447,13 +444,10 @@
 						"name": "Plum Rain Deluge"
 					},
 					{
-						"traits": [
-							"successfully"
-						],
 						"entries": [
-							"{@action Strike||Strikes} a {@condition flat-footed} creature with a poisoned weapon or exposes a flatfooted creature to an inhaled poison, the creature takes a \u20132 circumstance penalty to its initial save against that poison."
+							"When Blue Viper successfully {@action Strike||Strikes} a {@condition flat-footed} creature with a poisoned weapon or exposes a flatfooted creature to an inhaled poison, the creature takes a \u20132 circumstance penalty to its initial save against that poison."
 						],
-						"name": "Pinpoint Poisoner When Blue Viper"
+						"name": "Pinpoint Poisoner"
 					},
 					{
 						"activity": {
@@ -461,21 +455,16 @@
 							"unit": "action"
 						},
 						"requirements": "Blue Viper is holding a contact or injury poison",
-						"entries": [],
+						"entries": [
+							"Blue Viper swigs the poison and sprays it out of his mouth, affecting a 15-foot cone. Blue Viper is not exposed to the poison. All creatures in the cone are immediately exposed to the poison, bypassing any onset time, and each creature must attempt a Fortitude save against the poison."
+						],
 						"name": "Poison Spray"
 					},
 					{
 						"entries": [
-							"Viper swigs the poison and sprays it out of his mouth, affecting a 15-foot cone. Blue Viper is not exposed to the poison.",
-							"All creatures in the cone are immediately exposed to the poison, bypassing any onset time, and each creature must attempt a Fortitude save against the poison."
+							"Blue Viper's infused poisons have a DC of 47."
 						],
-						"name": "Blue"
-					},
-					{
-						"entries": [
-							"Viper's infused poisons have a DC of 47."
-						],
-						"name": "Potent Poisoner Blue"
+						"name": "Potent Poisoner"
 					},
 					{
 						"activity": {
@@ -512,7 +501,10 @@
 					},
 					"will": {
 						"std": 33
-					}
+					},
+					"abilities": [
+						" +3 status to all saves vs. transmutation"
+					]
 				},
 				"hp": [
 					{
@@ -791,7 +783,7 @@
 						"reach <30 feet>"
 					],
 					"effects": [
-						"{@action Trip}"
+						"Trip"
 					],
 					"damage": "{@damage 4d8+18} bludgeoning plus {@action Trip}",
 					"types": [
@@ -817,7 +809,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 38,
@@ -829,26 +820,29 @@
 									"amount": 4
 								}
 							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									},
+									{
+										"name": "speak with plants"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+40, {@skill Stealth} +31 (+39 in forests) Str +10, Dex +4, Con +9, Int +6, Wis +8, Cha +5."
-						],
-						"name": "Nature"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -862,27 +856,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"20 feet Melee root +37 (reach <30 feet>), Damage {@damage 4d8+18} bludgeoning plus {@action Trip} Melee {@as 1} vine +37 (agile, reach <40 feet>), Damage {@damage 4d6+18} bludgeoning plus {@ability Improved Grab} Primal Innate Spells DC 38; 9th nature's enmity (×4)"
-						],
-						"name": "and Improved Push"
-					},
-					{
-						"traits": [
-							"9th"
-						],
-						"entries": [
-							"speak with animals, speak with plants."
-						],
-						"name": "Constant"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"The canopy elder launches a rapidly growing net of fungus from the mushrooms growing on its body at a single creature within 80 feet. The target must attempt a DC 39 Reflex save or become {@condition restrained} by the fungal web ({@action Escape} DC 39)",
-							"While {@condition restrained}, the creature takes {@damage 4d6} poison damage at the end of each of their turns."
+							"The canopy elder launches a rapidly growing net of fungus from the mushrooms growing on its body at a single creature within 80 feet. The target must attempt a DC 39 Reflex save or become {@condition restrained} by the fungal web ({@action Escape} DC 39). While {@condition restrained}, the creature takes {@damage 4d6} poison damage at the end of each of their turns."
 						],
 						"name": "Fungal Web"
 					},
@@ -905,8 +879,7 @@
 							"healing"
 						],
 						"entries": [
-							"The canopy elder grows a mesh of vines around its {@condition broken} branches, repairing the damage and restoring 40 HP to itself.",
-							"The canopy elder can't use Vine Splint again for {@dice 1d4} rounds."
+							"The canopy elder grows a mesh of vines around its {@condition broken} branches, repairing the damage and restoring 40 HP to itself. The canopy elder can't use Vine Splint again for {@dice 1d4} rounds."
 						],
 						"name": "Vine Splint"
 					}
@@ -940,6 +913,16 @@
 					{
 						"amount": 15,
 						"name": "fire"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "bludgeoning"
+					},
+					{
+						"amount": 15,
+						"name": "piercing"
 					}
 				]
 			},
@@ -1039,7 +1022,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 41,
@@ -1079,7 +1061,7 @@
 								},
 								{
 									"name": "spirit link",
-									"note": [
+									"notes": [
 										"with Jin-Hae only"
 									]
 								}
@@ -1214,6 +1196,7 @@
 				"spirit",
 				"troop"
 			],
+			"description": "Troop of corporeal spirits (Pathfinder Bestiary 3 310)",
 			"perception": {
 				"std": 28
 			},
@@ -1261,16 +1244,7 @@
 				],
 				"walk": 25
 			},
-			"attacks": [],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+37, {@skill Performance} +37, {@skill Society} +32 Str +8, Dex +7, Con +5, Int +5, Wis +5, Cha +6."
-						],
-						"name": "Deception"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -1309,9 +1283,9 @@
 					},
 					{
 						"entries": [
-							"3 306."
+							"Bestiary 3 306."
 						],
-						"name": "Troop Defenses Bestiary"
+						"name": "Troop Defenses"
 					}
 				],
 				"bot": [
@@ -1357,7 +1331,10 @@
 							"freq": 1
 						},
 						"entries": [
-							"The night parade dances with wild abandon, unintentionally striking nearby creatures. It deals damage to each adjacent creature (DC 41 basic Reflex save), and any creature that fails its save is pushed 10 feet in any direction as the night parade bounces it overhead. The damage depends on the number of actions. {@as 1} {@damage 1d10+7} bludgeoning damage {@as 2} {@damage 4d10+14} bludgeoning damage {@as 3} {@damage 6d10+14} bludgeoning damage."
+							"The night parade dances with wild abandon, unintentionally striking nearby creatures. It deals damage to each adjacent creature (DC 41 basic Reflex save), and any creature that fails its save is pushed 10 feet in any direction as the night parade bounces it overhead. The damage depends on the number of actions.",
+							"{@as 1} {@damage 1d10+7} bludgeoning damage",
+							"{@as 2} {@damage 4d10+14} bludgeoning damage",
+							"{@as 3} {@damage 6d10+14} bludgeoning damage"
 						],
 						"name": "Wasshoi! Wasshoi!"
 					}
@@ -1380,7 +1357,20 @@
 				},
 				"hp": [
 					{
-						"hp": 450
+						"hp": 450,
+						"notes": [
+							"16 squares"
+						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 300,
+						"squares": 12
+					},
+					{
+						"value": 150,
+						"squares": 8
 					}
 				],
 				"weaknesses": [
@@ -1391,6 +1381,10 @@
 					{
 						"amount": 15,
 						"name": "bludgeoning"
+					},
+					{
+						"name": "splash damage",
+						"amount": 10
 					}
 				]
 			}
@@ -1631,6 +1625,7 @@
 				"humanoid",
 				"kami"
 			],
+			"description": "Kami of lightning and thunder",
 			"perception": {
 				"std": 33
 			},
@@ -1709,18 +1704,6 @@
 				"top": [
 					{
 						"entries": [
-							"+31, {@skill Lore||Flying Mountains Lore} +35, {@skill Nature} +37"
-						],
-						"name": "Athletics"
-					},
-					{
-						"entries": [
-							"+35 Str +9, Dex +6, Con +8, Int +5, Wis +5, Cha +4."
-						],
-						"name": "Religion"
-					},
-					{
-						"entries": [
 							"Wind, precipitation, and clouds don't impair a kaminari's vision; they ignore the {@condition concealed} condition from storms, mist, precipitation, and the like."
 						],
 						"name": "Stormsight"
@@ -1737,13 +1720,7 @@
 						],
 						"entries": [
 							"A kaminari's bag holds the four winds. The kaminari unleashes four 20-foot bursts within 60 feet with the effects of a 9th-level {@spell wall of wind}. In addition, a creature that enters one of the bursts takes {@damage 6d6} slashing damage (DC 40 basic Reflex save). The bursts can't overlap. After using this activity the kaminari can't use Hurricane Bag for {@dice 1d4} rounds.",
-							"If a kaminari creates a column of lighting using."
-						],
-						"name": "Hurricane Bag"
-					},
-					{
-						"entries": [
-							"Drums that intersects one of the areas of the wind, the wind explodes in a peal of thunder, dealing {@damage 6d10} sonic damage to creatures in the area of that wall of wind burst. Affected creatures must attempt a DC 40 Fortitude save. The kaminari can detonate only one burst per use of Thunder Drums.",
+							"If a kaminari creates a column of lighting using Thunder Drums that intersects one of the areas of the wind, the wind explodes in a peal of thunder, dealing {@damage 6d10} sonic damage to creatures in the area of that wall of wind burst. Affected creatures must attempt a DC 40 Fortitude save. The kaminari can detonate only one burst per use of Thunder Drums.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1754,19 +1731,13 @@
 								}
 							}
 						],
-						"name": "Thunder"
+						"name": "Hurricane Bag"
 					},
 					{
 						"entries": [
-							"A kaminari can move in wind with ease. They ignore all {@quickref difficult terrain||3|terrain} from wind and don't need to."
+							"A kaminari can move in wind with ease. They ignore all {@quickref difficult terrain||3|terrain} from wind and don't need to {@action Maneuver in Flight} in high winds."
 						],
 						"name": "Stormflight"
-					},
-					{
-						"entries": [
-							"Flight in high winds."
-						],
-						"name": "Maneuver in"
 					},
 					{
 						"activity": {
@@ -1829,6 +1800,11 @@
 					{
 						"hp": 320
 					}
+				],
+				"immunities": [
+					"air",
+					"electricity",
+					"sonic"
 				]
 			}
 		},
@@ -1922,7 +1898,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 38,
@@ -2160,7 +2135,21 @@
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "talon + 30 (agile, finesse, reach <15 feet>), Damage 3d10+18 bludgeoning Melee [one-action] tail",
+					"name": "talon",
+					"attack": 30,
+					"traits": [
+						"agile",
+						"finesse",
+						"reach <15 feet>"
+					],
+					"damage": "{@damage 3d10+18} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
 					"attack": 30,
 					"traits": [
 						"agile",
@@ -2175,7 +2164,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 34,
@@ -2256,9 +2244,10 @@
 							]
 						},
 						"8": {
+							"slots": 1,
 							"spells": [
 								{
-									"name": "1 slot) discern location"
+									"name": "discern location"
 								},
 								{
 									"name": "unrelenting observation"
@@ -2270,12 +2259,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+32, {@skill Occultism} +27 Str +6, Dex +9, Con +7, Int +7, Wis +9, Cha +5."
-						],
-						"name": "Nature"
-					},
 					{
 						"entries": [
 							"Creatures farther than 60 feet from an inmyeonjo see it only as the generic form of a huge bird. An inmyeonjo has concealment against attacks originating farther than 60 feet away."
@@ -2352,6 +2335,7 @@
 				"phantom",
 				"spirit"
 			],
+			"description": "Female phantom knight (Pathfinder Bestiary 3 202)",
 			"perception": {
 				"std": 33
 			},
@@ -2386,6 +2370,10 @@
 				"wis": 6,
 				"cha": 5
 			},
+			"items": [
+				"wind and fire wheels (2; Pathfinder #166: Despair on Danger Island 76)",
+				"hook swords (2; Pathfinder #166: Despair on Danger Island 76)"
+			],
 			"speed": {
 				"walk": 40
 			},
@@ -2457,7 +2445,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 40,
@@ -2475,33 +2462,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+31, {@skill Lore||Warfare Lore} +38 Str +9, Dex +9, Con +5, Int +5, Wis +6, Cha +5 Items wind and fire wheels (2; Pathfinder #166: Despair."
-						],
-						"name": "Religion"
-					},
-					{
-						"entries": [
-							"76), hook swords (2; Pathfinder #166:"
-						],
-						"name": "on Danger Island"
-					},
-					{
-						"entries": [
-							"76)"
-						],
-						"name": "Despair on Danger Island"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -2522,22 +2488,31 @@
 						"traits": [
 							"move"
 						],
-						"trigger": "Cloudsplitter {@action Stride||Strides} or Tramples within 5 feet of",
+						"trigger": "Cloudsplitter {@action Stride||Strides} or Tramples within 5 feet of Jin-Hae",
 						"frequency": {
 							"unit": "day",
 							"freq": 1
 						},
-						"entries": [],
-						"name": "Combined Charge"
-					},
-					{
 						"entries": [
 							"Jin-Hae leaps onto Cloudsplitter's back as he charges. She can make a single melee attack against any target they pass during Cloudsplitter's movement."
 						],
-						"name": "Jin-Hae; Effect"
+						"name": "Combined Charge"
 					}
 				],
 				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration"
+						],
+						"entries": [
+							"Jin-Hae pulls one of the battle echoes (page 19) to her hand. She is fully aware of every echo and can always pull the one she wants, but she cannot call an echo that has already been unsealed."
+						],
+						"name": "Call a Battle Echo"
+					},
 					{
 						"activity": {
 							"number": 1,
@@ -2573,7 +2548,7 @@
 						],
 						"requirements": "Jin-Hae is wielding two wind and fire wheels",
 						"entries": [
-							"Jin-Hae's wind and fire wheels float by her feet, giving her the benefits of 7thlevel {@spell air walk}. While this lasts, she can wield her wind and fire wheels even while her hands are full by kicking with them, and her wind and fire wheels gain the thrown <20 feet> trait as well as the effects of a returning rune."
+							"Jin-Hae's wind and fire wheels float by her feet, giving her the benefits of 7th level {@spell air walk}. While this lasts, she can wield her wind and fire wheels even while her hands are full by kicking with them, and her wind and fire wheels gain the {@trait thrown <20 feet>} trait as well as the effects of a {@item returning} rune."
 						],
 						"name": "Wind-Fire Chariot"
 					}
@@ -2592,7 +2567,10 @@
 					},
 					"will": {
 						"std": 27
-					}
+					},
+					"abilities": [
+						"\u20131 status penalty to all saves vs. death effects"
+					]
 				},
 				"hp": [
 					{
@@ -2600,10 +2578,10 @@
 					}
 				],
 				"immunities": [
-					"poison",
-					"precision",
 					"disease",
-					"paralyzed"
+					"paralyzed",
+					"poison",
+					"precision"
 				]
 			}
 		},
@@ -2862,7 +2840,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 41,
@@ -3120,7 +3097,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -3227,6 +3203,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Tian-la monks",
 			"perception": {
 				"std": 30
 			},
@@ -3311,15 +3288,31 @@
 					]
 				}
 			],
-			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+26, {@skill Religion} +32 Str +8, Dex +9, Con +6, Int +5, Wis +6, Cha +5."
-						],
-						"name": "Performance"
+			"spellcasting": [
+				{
+					"name": "Monk Ki",
+					"type": "Focus",
+					"DC": 37,
+					"attack": 28,
+					"fp": 3,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "wholeness of body"
+								}
+							]
+						}
 					}
-				],
+				}
+			],
+			"abilities": {
 				"bot": [
 					{
 						"activity": {
@@ -3330,8 +3323,7 @@
 							"stance"
 						],
 						"entries": [
-							"The disciple cups one hand and poses the other to strike it, like the Rai Sho Monastery's central bell. In this stance, they can make temple bell {@action Strike||Strikes} (see {@action Strike||Strikes})",
-							"While in this stance, a disciple gains a +2 status bonus to AC against ranged attacks."
+							"The disciple cups one hand and poses the other to strike it, like the Rai Sho Monastery's central bell. In this stance, they can make temple bell {@action Strike||Strikes}. While in this stance, a disciple gains a +2 status bonus to AC against ranged attacks."
 						],
 						"name": "Crying Bell Stance"
 					},
@@ -3357,35 +3349,16 @@
 							"unit": "round",
 							"freq": 1
 						},
-						"entries": [],
+						"entries": [
+							"The Rai Sho disciple makes two {@action Strike||Strikes}, each of which must be an unarmed {@action Strike} or temple bell {@action Strike}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
+						],
 						"name": "Flurry of Blows"
 					},
 					{
 						"entries": [
-							"Sho disciple makes two {@action Strike||Strikes}, each of which must be an unarmed {@action Strike} or temple bell {@action Strike}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
+							"The Rai Sho disciples have learned a technique to cast their ki spells more effectively by way of specialized hand postures. They replace the normal somatic and verbal components of their spells with nine seals components; these require that the user have a hand free, but do not add {@trait any} traits to the {@action Cast a Spell} action (preventing the disciples from triggering certain reactions when they {@action Cast a Spell}, such as {@action Attack of Opportunity}). Additionally, the first time each day that a disciple critically {@action Strike||Strikes} an enemy, they regain a Focus Point."
 						],
-						"name": "The Rai"
-					},
-					{
-						"traits": [
-							"disciples"
-						],
-						"entries": [
-							"have learned a technique to cast their ki spells more effectively by way of specialized hand postures. They replace the normal somatic and verbal components of their spells with nine seals components; these require that the user have a hand free, but do not add {@trait any} traits to."
-						],
-						"name": "Nine Seals Spellcasting The Rai Sho"
-					},
-					{
-						"entries": [
-							"{@action Cast a Spell} action (preventing the disciples from triggering certain reactions when they {@action Cast a Spell}, such as Attack."
-						],
-						"name": "the"
-					},
-					{
-						"entries": [
-							"Additionally, the first time each day that a disciple critically {@action Strike||Strikes} an enemy, they regain a Focus Point."
-						],
-						"name": "of Opportunity)."
+						"name": "Nine Seals Spellcasting"
 					}
 				]
 			},
@@ -3402,7 +3375,10 @@
 					},
 					"will": {
 						"std": 28
-					}
+					},
+					"abilities": [
+						" +1 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -3497,7 +3473,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 37,
@@ -3506,7 +3481,7 @@
 							"spells": [
 								{
 									"name": "obscuring mist",
-									"note": [
+									"notes": [
 										"manifests snowfall instead of mist"
 									]
 								}
@@ -3629,6 +3604,7 @@
 				"goblin",
 				"humanoid"
 			],
+			"description": "Male frost goblin wrestler",
 			"perception": {
 				"std": 33
 			},
@@ -3670,6 +3646,11 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"+3 major striking gauntlet",
+				"+3 major striking halfling sling staff (20 bullets and 5 greater explosive bullets)",
+				"+3 greater resilient studded leather"
+			],
 			"speed": {
 				"walk": 25,
 				"fly": 60
@@ -3694,14 +3675,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+32, {@skill Lore||Warfare Lore} +32 Str +7, Dex +4, Con +5, Int +2, Wis +3, Cha +1 Items +3 major striking gauntlet, +3 major striking halfling sling staff (20 bullets and 5 greater explosive bullets), +3 greater resilient studded leather."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3709,24 +3682,12 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"When a creature triggers Ran-to's."
+							"When a creature triggers Ran-to's {@ability Attack of Opportunity}, he can attempt an {@skill Athletics} check to {@action Grapple} the triggering creature instead of making a melee {@action Strike}. He can still disrupt a triggering manipulate action if he critically succeeds at his attempt."
 						],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"entries": [
-							"Opportunity, he can attempt an {@skill Athletics} check."
-						],
-						"name": "Attack of"
-					},
-					{
-						"entries": [
-							"{@action Grapple} the triggering creature instead of making a melee {@action Strike}. He can still disrupt a triggering manipulate action if he critically succeeds at his attempt."
-						],
-						"name": "to"
 					}
 				],
 				"bot": [
@@ -3760,21 +3721,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Ran-to leaps from the ground and attempts to grab a foe while he soars. He makes a."
+							"Ran-to leaps from the ground and attempts to grab a foe while he soars. He makes a {@action Leap}, {@action High Jump}, or {@action Long Jump}. His maximum distance is 100 feet. He must succeed at an {@skill Athletics} check to perform the leap as usual, but regardless of the type of leap the DC is equal to half the number of feet he moves in the air. Ran-to can attempt an {@skill Athletics} check to {@action Grapple} at any point during the jump. Immediately after the attempt, he (and the creature, if the {@action Grapple} was successful) falls to the ground. Ran-to takes no falling damage when using this ability, but the {@condition grabbed} creature takes the appropriate amount of falling damage as if it had fallen the distance moved. Ran-to can spend three actions to use this ability instead of two; if he does, he can use Plummeting Fall to add {@damage 12d6} bludgeoning damage to the falling damage dealt to the {@condition grabbed} creature, and the creature is knocked {@condition prone}."
 						],
 						"name": "Major Leaping Catch"
-					},
-					{
-						"entries": [
-							"His maximum distance is 100 feet. He must succeed at an {@skill Athletics} check to perform the leap as usual, but regardless of the type of leap the DC is equal to half the number of feet he moves in the air. Ran-to can attempt an {@skill Athletics} check."
-						],
-						"name": "Leap, High Jump, or Long Jump."
-					},
-					{
-						"entries": [
-							"{@action Grapple} at any point during the jump. Immediately after the attempt, he (and the creature, if the {@action Grapple} was successful) falls to the ground. Ran-to takes no falling damage when using this ability, but the {@condition grabbed} creature takes the appropriate amount of falling damage as if it had fallen the distance moved. Ran-to can spend three actions to use this ability instead of two; if he does, he can use Plummeting Fall to add {@damage 12d6} bludgeoning damage to the falling damage dealt to the {@condition grabbed} creature, and the creature is knocked {@condition prone}."
-						],
-						"name": "to"
 					},
 					{
 						"activity": {
@@ -3796,15 +3745,9 @@
 					},
 					{
 						"entries": [
-							"Wrestler Ran-to can attempt to {@action Disarm}, {@action Grapple}"
+							"Ran-to can attempt to {@action Disarm}, {@action Grapple}, {@action Shove}, or {@action Trip} creatures, regardless of their size."
 						],
-						"name": "Titan"
-					},
-					{
-						"entries": [
-							"{@action Trip} creatures, regardless of their size."
-						],
-						"name": "Shove, or"
+						"name": "Titan Wrestler"
 					},
 					{
 						"activity": {
@@ -3817,7 +3760,16 @@
 							"freq": 1
 						},
 						"entries": [
-							"Ran-to spins the creature he's holding, smashing it against any creatures within his reach, then throws the creature aside. Ran-to attempts an {@skill Athletics} check against the {@condition grabbed} creature's Fortitude DC. Regardless of the result, the creature is no longer {@condition grabbed} after this activity. Critical Success Ran-to tosses his foe mightily. The {@condition grabbed} creature is thrown into a space within 20 feet, takes {@damage 16d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 43 basic Reflex save). Success As critical success, except the {@condition grabbed} creature is thrown into a space within 10 feet, and creatures take {@damage 12d6} bludgeoning damage. Failure Ran-to tosses his foe aside. The {@condition grabbed} creature falls {@condition prone}. Critical Failure Ran-to loses hold of his foe."
+							"Ran-to spins the creature he's holding, smashing it against any creatures within his reach, then throws the creature aside. Ran-to attempts an {@skill Athletics} check against the {@condition grabbed} creature's Fortitude DC. Regardless of the result, the creature is no longer {@condition grabbed} after this activity.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "Ran-to tosses his foe mightily. The {@condition grabbed} creature is thrown into a space within 20 feet, takes {@damage 16d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 43 basic Reflex save).",
+									"Success": "As critical success, except the {@condition grabbed} creature is thrown into a space within 10 feet, and creatures take {@damage 12d6} bludgeoning damage.",
+									"Failure": "Ran-to tosses his foe aside. The {@condition grabbed} creature falls {@condition prone}.",
+									"Critical Failure": "Ran-to loses hold of his foe."
+								}
+							}
 						],
 						"name": "Whirlwind Toss"
 					}
@@ -3836,7 +3788,10 @@
 					},
 					"will": {
 						"std": 30
-					}
+					},
+					"abilities": [
+						"+3 status to all saves vs. evocation"
+					]
 				},
 				"hp": [
 					{
@@ -4073,6 +4028,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female Tian-Min ninja",
 			"perception": {
 				"std": 34
 			},
@@ -4117,6 +4073,11 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"+3 major striking greater shock handwraps of mighty blows",
+				"potion of flying",
+				"potion of haste"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -4166,7 +4127,7 @@
 						"negative",
 						"range <60 feet>",
 						"unarmed",
-						"versatile positive"
+						"versatile <positive>"
 					],
 					"damage": "{@damage 4d8+8} negative",
 					"types": [
@@ -4175,14 +4136,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+35, {@skill Occultism} +35, {@skill Thievery} +33 Str +6, Dex +7, Con +4, Int +2, Wis +3, Cha +1 Items +3 major striking greater shock handwraps of mighty blows, potion of flying, potion of haste."
-						],
-						"name": "Medicine"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -4228,9 +4181,9 @@
 					},
 					{
 						"entries": [
-							"{@action Strike||Strikes} deal an extra {@damage 5d6} precision damage to {@condition flat-footed} creatures."
+							"Hakusa's {@action Strike||Strikes} deal an extra {@damage 5d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak Attack Hakusa's"
+						"name": "Sneak Attack"
 					},
 					{
 						"activity": {
@@ -4247,10 +4200,18 @@
 							"freq": 1
 						},
 						"entries": [
-							"Hakusa strikes a series of pressure points on her target's body that redirects its ki to the heart, before following up with a palm strike to the sternum. She makes a fingers {@action Strike} and a palm {@action Strike}, dealing damage as normal. If both hit, the target takes {@damage 8d10} negative damage as its life energy escapes from its body in a shower of bird-shaped sparks. The target attempts a DC 43 Fortitude save. Critical Success The target is unaffected. Success The target takes half the negative damage. Failure The target takes full damage, its life energy exploding violently from its back in a 30-foot cone originating from the target. All of Hakusa's other enemies in the cone also take the negative damage (DC 43 basic Fortitude save). Critical Failure As failure, but the target takes double negative damage."
+							"Hakusa strikes a series of pressure points on her target's body that redirects its ki to the heart, before following up with a palm strike to the sternum. She makes a fingers {@action Strike} and a palm {@action Strike}, dealing damage as normal. If both hit, the target takes {@damage 8d10} negative damage as its life energy escapes from its body in a shower of bird-shaped sparks. The target attempts a DC 43 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target takes half the negative damage.",
+									"Failure": "The target takes full damage, its life energy exploding violently from its back in a 30-foot cone originating from the target. All of Hakusa's other enemies in the cone also take the negative damage (DC 43 basic Fortitude save).",
+									"Critical Failure": "As failure, but the target takes double negative damage."
+								}
+							}
 						],
-						"name": "Swallows in Flight",
-						"entries_as_xyz": "Ability not found: 'Swallows in Flight As failure, but the target takes double negative damage.' in Shino Hakusa, p.53"
+						"name": "Swallows in Flight"
 					}
 				]
 			},
@@ -4267,7 +4228,10 @@
 					},
 					"will": {
 						"std": 30
-					}
+					},
+					"abilities": [
+						"+3 status to all saves vs. necromancy"
+					]
 				},
 				"hp": [
 					{
@@ -4288,6 +4252,7 @@
 				"aeon",
 				"monitor"
 			],
+			"description": "Syndara the Sculptor's final form",
 			"perception": {
 				"std": 46
 			},
@@ -4370,7 +4335,8 @@
 						"agile",
 						"brutal",
 						"magical",
-						"propulsive range increment <120 feet>",
+						"propulsive",
+						"range increment <120 feet>",
 						"splash 4d6 piercing"
 					],
 					"damage": "{@damage 4d6+12} piercing",
@@ -4383,13 +4349,7 @@
 				"top": [
 					{
 						"entries": [
-							"+45 Str +12, Dex +9, Con +10, Int +8, Wis +8, Cha +7."
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [
-							"Syndara instinctively knows the position of all creatures and objects within the Glass Lighthouse as a precise sense. His senses do not extend into extraplanar spaces (such as a bag of holding), even if the entrance to these spaces is within the Lighthouse."
+							"Syndara instinctively knows the position of all creatures and objects within the {@i Glass Lighthouse} as a precise sense. His senses do not extend into extraplanar spaces (such as a {@item bag of holding (generic)}), even if the entrance to these spaces is within the Lighthouse."
 						],
 						"name": "Spatial Sense"
 					}
@@ -4400,7 +4360,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -4422,12 +4381,16 @@
 						"name": "Center of the World"
 					},
 					{
-						"entries": [],
-						"name": "Extraplanar Immunity As Syndara, the Sculptor."
+						"entries": [
+							"As Syndara, the Sculptor."
+						],
+						"name": "Extraplanar Immunity"
 					},
 					{
-						"entries": [],
-						"name": "Keeper of the Lighthouse As Syndara, the Sculptor."
+						"entries": [
+							"As Syndara, the Sculptor."
+						],
+						"name": "Keeper of the Lighthouse"
 					},
 					{
 						"activity": {
@@ -4453,7 +4416,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Syndara makes six {@action Strike||Strikes}. Any creature struck must succeed at a DC 46 Will save or be teleported to a location of Syndara's choice within 60 feet of him when the flurry is complete. The teleportation has the conjuration, {@trait divine}, and {@trait teleportation} traits."
+							"Syndara makes six {@action Strike||Strikes}. Any creature struck must succeed at a DC 46 Will save or be teleported to a location of Syndara's choice within 60 feet of him when the flurry is complete. The teleportation has the {@trait conjuration}, {@trait divine}, and {@trait teleportation} traits."
 						],
 						"name": "Dimensional Flurry"
 					},
@@ -4477,8 +4440,7 @@
 							"divine"
 						],
 						"entries": [
-							"With great regret, Syndara calls his masterpieces from the firmament to crash down upon his enemies. He flings four worldspheres to any four points within 500 feet.",
-							"Each worldsphere deals {@dice 20d6} damage in a 40-foot burst (DC 48 basic Reflex save). Syndara chooses the type of damage for each worldsphere, which can be any type he chooses, though each worldsphere must deal a different type of damage. On a failed save, the target is pushed to the edge of the burst. No matter how many overlapping explosions it's caught in, a creature can take damage from only one worldsphere per round. Syndara is immune to the damage dealt by his worldspheres.",
+							"With great regret, Syndara calls his masterpieces from the firmament to crash down upon his enemies. He flings four worldspheres to any four points within 500 feet. Each worldsphere deals {@dice 20d6} damage in a 40-foot burst (DC 48 basic Reflex save). Syndara chooses the type of damage for each worldsphere, which can be any type he chooses, though each worldsphere must deal a different type of damage. On a failed save, the target is pushed to the edge of the burst. No matter how many overlapping explosions it's caught in, a creature can take damage from only one worldsphere per round. Syndara is immune to the damage dealt by his worldspheres.",
 							"Syndara can't use Mover of Worlds again for {@dice 1d4} rounds."
 						],
 						"name": "Mover of Worlds"
@@ -4488,11 +4450,8 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"spatial"
-						],
 						"entries": [
-							"pincers."
+							"spatial pincers"
 						],
 						"name": "Rend",
 						"generic": {
@@ -4514,7 +4473,11 @@
 					},
 					"will": {
 						"std": 42
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magical",
+						"+4 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -4524,7 +4487,20 @@
 				"immunities": [
 					"death effects",
 					"disease",
-					"emotion"
+					"emotion",
+					"extradimensional",
+					"fear",
+					"keeper of the lighthouse"
+				],
+				"resistances": [
+					{
+						"amount": 25,
+						"name": "electricity"
+					},
+					{
+						"amount": 25,
+						"name": "mental"
+					}
 				],
 				"weaknesses": [
 					{
@@ -4573,8 +4549,9 @@
 				"survival": {
 					"std": 40
 				},
-				"lore (all subcategories)": {
-					"std": 34
+				"lore": {
+					"std": 34,
+					"note": "all subcategories"
 				}
 			},
 			"abilityMods": {
@@ -4627,7 +4604,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 44,
@@ -4664,7 +4640,7 @@
 							"spells": [
 								{
 									"name": "plane shift",
-									"note": [
+									"notes": [
 										"self only"
 									]
 								},
@@ -4713,14 +4689,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+34, {@skill Survival} +40 Str +8, Dex +6, Con +11, Int +6, Wis +10, Cha +7."
-						],
-						"name": "Occultism"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -4770,15 +4738,9 @@
 						},
 						"entries": [
 							"The spirit turtle makes a foot {@action Strike}. Whether or not the {@action Strike} hits, the stomp creates a shockwave on the ground in a 15-foot burst centered on the target.",
-							"All creatures in the area other than the spirit turtle take {@damage 10d10} bludgeoning and {@damage 4d8} energy damage and are knocked {@condition prone} (DC 41 basic Reflex save). Creatures that critically succeed at their Reflex save are not knocked {@condition prone}. The spirit turtle can't use."
+							"All creatures in the area other than the spirit turtle take {@damage 10d10} bludgeoning and {@damage 4d8} energy damage and are knocked {@condition prone} (DC 41 basic Reflex save). Creatures that critically succeed at their Reflex save are not knocked {@condition prone}. The spirit turtle can't use Unbalancing Stomp again for {@dice 1d4} rounds."
 						],
 						"name": "Unbalancing Stomp"
-					},
-					{
-						"entries": [
-							"Stomp again for {@dice 1d4} rounds."
-						],
-						"name": "Unbalancing"
 					}
 				]
 			},
@@ -4807,6 +4769,7 @@
 				],
 				"weaknesses": [
 					{
+						"amount": 20,
 						"name": "cold iron"
 					}
 				],
@@ -4907,7 +4870,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 39,
@@ -4929,7 +4891,7 @@
 								},
 								{
 									"name": "storm of vengeance",
-									"note": [
+									"notes": [
 										"hail only each round"
 									]
 								},
@@ -4967,7 +4929,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -5056,6 +5017,7 @@
 				"aeon",
 				"monitor"
 			],
+			"description": "Male axiomite grandmaster",
 			"perception": {
 				"std": 39
 			},
@@ -5171,19 +5133,7 @@
 				"top": [
 					{
 						"entries": [
-							"+34, {@skill Lore||Demiplane Lore} +45, {@skill Intimidation} +39"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+37 Str +10, Dex +11, Con +8, Int +8, Wis +11, Cha +7."
-						],
-						"name": "Occultism"
-					},
-					{
-						"entries": [
-							"Syndara instinctively knows the position of all creatures and objects within the Glass Lighthouse as a precise sense. His senses do not extend into extraplanar spaces, even if the entrance to these spaces is within the Lighthouse (such as a creature within a bag of holding)."
+							"Syndara instinctively knows the position of all creatures and objects within the {@i Glass Lighthouse} as a precise sense. His senses do not extend into extraplanar spaces, even if the entrance to these spaces is within the Lighthouse (such as a creature within a {@item bag of holding (generic)})."
 						],
 						"name": "Spatial Sense"
 					}
@@ -5194,7 +5144,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -5208,7 +5157,7 @@
 					},
 					{
 						"entries": [
-							"Syndara can foil any attempts to use planar powers against him. He is immune to all {@trait extradimensional} effects, such as maze, but can choose to be affected by such effects normally."
+							"Syndara can foil any attempts to use planar powers against him. He is immune to all {@trait extradimensional} effects, such as {@spell maze}, but can choose to be affected by such effects normally."
 						],
 						"name": "Extradimensional Immunity"
 					},
@@ -5245,9 +5194,9 @@
 							"conjuration",
 							"teleportation"
 						],
-						"requirements": "Syndara is in the Glass Lighthouse",
+						"requirements": "Syndara is in the {@i Glass Lighthouse}",
 						"entries": [
-							"Syndara folds the fabric of the Glass Lighthouse before opening several gateways from which dangerous elements spew forth. He teleports to his throne, regardless of distance, then makes three elemental gateway {@action Strike||Strikes}. Each {@action Strike} must target a different creature. He can't use Gateway Onslaught again for {@dice 1d4} rounds."
+							"Syndara folds the fabric of the {@i Glass Lighthouse} before opening several gateways from which dangerous elements spew forth. He teleports to his throne, regardless of distance, then makes three elemental gateway {@action Strike||Strikes}. Each {@action Strike} must target a different creature. He can't use Gateway Onslaught again for {@dice 1d4} rounds."
 						],
 						"name": "Gateway Onslaught"
 					},
@@ -5259,27 +5208,21 @@
 						"traits": [
 							"concentrate"
 						],
+						"requirements": "Syndara is in the {@i Glass Lighthouse}",
 						"entries": [
-							"Requirements Syndara is in the Glass Lighthouse; Syndara exerts his will over the Glass Lighthouse to cause one of several effects.",
-							"The effect is magical, but Syndara isn't using magic when he takes this action\u2014just triggering a {@trait magical} effect he already set up. The level for each of these effects is 10, and any save is DC 45. Syndara or Syndara's Reflection can't use."
-						],
-						"name": "Planar Restructuring"
-					},
-					{
-						"entries": [
-							"Restructuring for {@dice 1d4} rounds.",
+							"Syndara exerts his will over the {@i Glass Lighthouse} to cause one of several effects. The effect is magical, but Syndara isn't using magic when he takes this action\u2014just triggering a {@trait magical} effect he already set up. The level for each of these effects is 10, and any save is DC 45. Syndara or Syndara's Reflection can't use Planar Restructuring for {@dice 1d4} rounds.",
 							{
 								"type": "list",
 								"items": [
-									"Accelerate/Decelerate Syndara affects the flow of time around a target within 60 feet, affecting them with either haste or slow.",
-									"{@bold Deny} Syndara rejects the existence of a power other than his own, affecting an object with disjunction.",
-									"{@bold Rewind} Syndara rewinds time to undo harm. He or his reflection are affected by the two-action version of heal or by restoration.",
-									"{@bold Rise} Syndara creates a gravitational nexus of reverse gravity.",
-									"{@bold Sequester} Syndara folds space to affect a creature with resilient sphere."
+									"{@bold Accelerate/Decelerate} Syndara affects the flow of time around a target within 60 feet, affecting them with either {@spell haste} or {@spell slow}.",
+									"{@bold Deny} Syndara rejects the existence of a power other than his own, affecting an object with {@spell disjunction}.",
+									"{@bold Rewind} Syndara rewinds time to undo harm. He or his reflection are affected by the two-action version of {@spell heal} or by {@spell restoration}.",
+									"{@bold Rise} Syndara creates a gravitational nexus of {@spell reverse gravity}.",
+									"{@bold Sequester} Syndara folds space to affect a creature with {@spell resilient sphere}."
 								]
 							}
 						],
-						"name": "Planar"
+						"name": "Planar Restructuring"
 					},
 					{
 						"activity": {
@@ -5315,10 +5258,10 @@
 							"number": 1,
 							"unit": "free"
 						},
-						"requirements": "Syndara is in the Glass Lighthouse",
+						"requirements": "Syndara is in the {@i Glass Lighthouse}",
 						"trigger": "Syndara {@action Strike||Strikes} a creature on his own turn",
 						"entries": [
-							"Syndara rotates the space of the Glass Lighthouse around himself to carry him to a distant location in an instant. He {@action Stride||Strides} twice. This movement doesn't trigger reactions. If his next action is to attack a different target than the triggering creature, he gains a +1 circumstance bonus to that attack; each time he Walks the Spiral in a turn, this bonus increases by 1, to a maximum of +3."
+							"Syndara rotates the space of the {@i Glass Lighthouse} around himself to carry him to a distant location in an instant. He {@action Stride||Strides} twice. This movement doesn't trigger reactions. If his next action is to attack a different target than the triggering creature, he gains a +1 circumstance bonus to that attack; each time he Walks the Spiral in a turn, this bonus increases by 1, to a maximum of +3."
 						],
 						"name": "Walk the Spiral"
 					}
@@ -5337,7 +5280,10 @@
 					},
 					"will": {
 						"std": 36
-					}
+					},
+					"abilities": [
+						"+2 status to all saves vs. chaotic"
+					]
 				},
 				"hp": [
 					{
@@ -5348,7 +5294,8 @@
 					}
 				],
 				"immunities": [
-					"extradimensional"
+					"extradimensional",
+					"keeper of the lighthouse"
 				]
 			},
 			"hasImages": true
@@ -5365,6 +5312,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female Tian-Hwan white-haired witch",
 			"perception": {
 				"std": 33
 			},
@@ -5392,6 +5340,9 @@
 				},
 				"deception": {
 					"std": 34
+				},
+				"medicine": {
+					"std": 32
 				},
 				"nature": {
 					"std": 34
@@ -5460,7 +5411,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Prepared",
 					"type": "Prepared",
 					"tradition": "occult",
 					"DC": 45,
@@ -5578,17 +5528,45 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Witch Hexes",
+					"type": "Focus",
+					"DC": 42,
+					"fp": 3,
+					"entry": {
+						"0": {
+							"spells": [
+								{
+									"name": "evil eye",
+									"source": "APG"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "cackle",
+									"source": "APG"
+								},
+								{
+									"name": "curse of death",
+									"source": "APG"
+								},
+								{
+									"name": "malicious shadow",
+									"source": "APG"
+								},
+								{
+									"name": "needle of vengeance",
+									"source": "APG"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+29 Str +3, Dex +6, Con +2, Int +7, Wis +3, Cha +5."
-						],
-						"name": "Thievery"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -5606,39 +5584,24 @@
 							"number": 1,
 							"unit": "reaction"
 						},
+						"requirements": "Syu Tak-nwa is aware of the attack and not {@condition flat-footed} against it",
 						"trigger": "Syu Tak-nwa is the target of a ranged {@action Strike} or ranged spell attack roll",
 						"entries": [
-							"Requirements."
+							"Hairs erupt from portals around the missile and attempt to wrap around it. Syu Tak-nwa gains a +4 circumstance bonus to AC against the triggering attack. If this would cause the attack to miss, the missile remains tangled and suspended in midair."
 						],
 						"name": "Spiraling Web"
-					},
-					{
-						"entries": [
-							"Tak-nwa is aware of the attack and not {@condition flat-footed} against it; Hairs erupt from portals around the missile and attempt to wrap around it. Syu Tak-nwa gains a +4 circumstance bonus to AC against the triggering attack. If this would cause the attack to miss, the missile remains tangled and suspended in midair."
-						],
-						"name": "Syu"
 					}
 				],
 				"bot": [
 					{
-						"traits": [
-							"pathfinder advanced player's guide 237"
-						],
 						"entries": [
-							"3 Focus Points, DC 42; 10th cackle, curse of death, malicious shadow, needle of vengeance; Hex Cantrip (10th) evil eye."
-						],
-						"name": "Witch Hexes"
-					},
-					{
-						"entries": [
-							"Tak-nwa's mastery over her prehensile hair while in the Glass Lighthouse is so powerful that she can walk on thick strands like giant spider legs.",
-							"This makes her immune to tripping, and she ignores the effects of {@quickref difficult terrain||3|terrain} (but not {@quickref greater difficult terrain||3|terrain}). She can use her living hair to perform precise tasks such as picking up objects and performing simple {@action Interact} actions. She can also deliver hexes through her hair. Whenever Tak-nwa successfully casts a hex focus spell that requires 2 or more actions to cast and that doesn't require a spell attack roll, if her target is within reach, as part of the spellcasting activity she can make a hair {@action Strike} against the foe before applying {@trait any} effects of the hex. If this {@action Strike} misses, the hex has no effect."
+							"Tak-nwa's mastery over her prehensile hair while in the {@i Glass Lighthouse} is so powerful that she can walk on thick strands like giant spider legs. This makes her immune to tripping, and she ignores the effects of {@quickref difficult terrain||3|terrain} (but not {@quickref greater difficult terrain||3|terrain}). She can use her living hair to perform precise tasks such as picking up objects and performing simple {@action Interact} actions. She can also deliver hexes through her hair. Whenever Tak-nwa successfully casts a hex focus spell that requires 2 or more actions to cast and that doesn't require a spell attack roll, if her target is within reach, as part of the spellcasting activity she can make a hair {@action Strike} against the foe before applying {@trait any} effects of the hex. If this {@action Strike} misses, the hex has no effect."
 						],
 						"name": "Empowered Hair"
 					},
 					{
 						"entries": [
-							"Tak-nwa's familiar is an elephant hawk moth named Yon-so. Yon-so has a fly Speed of 40 feet, darkvision, and scent as an imprecise sense to a range of 30 feet. Yon-so can speak Tien, and when Yon-so rolls a success on a Reflex or Fortitude save it takes no damage against the effect."
+							"Tak-nwa's familiar is an elephant hawk moth named Yon-so. Yon-so has a fly Speed of 40 feet, {@ability darkvision}, and {@ability scent} as an imprecise sense to a range of 30 feet. Yon-so can speak {@language Tien}, and when Yon-so rolls a success on a Reflex or Fortitude save it takes no damage against the effect."
 						],
 						"name": "Familiar"
 					},
@@ -5671,7 +5634,10 @@
 					},
 					"will": {
 						"std": 36
-					}
+					},
+					"abilities": [
+						"+3 status to all saves vs. conjuration"
+					]
 				},
 				"hp": [
 					{
@@ -5695,6 +5661,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human pilot",
 			"perception": {
 				"std": 25
 			},
@@ -5715,6 +5682,9 @@
 					"std": 28
 				},
 				"piloting lore": {
+					"std": 38
+				},
+				"ruby phoenix tournament lore": {
 					"std": 38
 				}
 			},
@@ -5751,21 +5721,9 @@
 				"top": [
 					{
 						"entries": [
-							"+38, {@skill Society} +28 Str +3, Dex +7, Con +3, Int +5, Wis +0, Cha +3 Items heavy crossbow."
+							"The {@i Solar Jian II} recognizes Yoh as a descendent of its creator, and the magical ship extends him protections beyond those that would be given to most other pilots. If Yoh is piloting the {@i Solar Jian II}, his AC and saves are increased by 4."
 						],
-						"name": "Ruby Phoenix Tournament Lore"
-					},
-					{
-						"entries": [
-							"II recognizes Yoh as a descendent of its creator, and the magical ship extends him protections beyond those that would be given to most other pilots."
-						],
-						"name": "Ancestral Airship Link The Solar Jian"
-					},
-					{
-						"entries": [
-							"Yoh is piloting the Solar Jian II, his AC and saves are increased by 4."
-						],
-						"name": "If"
+						"name": "Ancestral Airship Link "
 					}
 				],
 				"mid": [
@@ -5774,12 +5732,15 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "One or more creatures aboard",
-						"requirements": "Yoh is piloting an airborne vessel; Yoh's vessel are the target of an attack or attempt a Reflex save and the attacker is not aboard the ship",
-						"entries": [
-							"'Em! (manipulate) ; Yoh attempts evasive maneuvers. All creatures aboard the vessel gain a +2 status bonus to their AC and saves against the triggering effect."
+						"traits": [
+							"manipulate"
 						],
-						"name": "Shake"
+						"trigger": "One or more creatures aboard Yoh's vessel are the target of an attack or attempt a Reflex save and the attacker is not aboard the ship",
+						"requirements": "Yoh is piloting an airborne vessel",
+						"entries": [
+							"Yoh attempts evasive maneuvers. All creatures aboard the vessel gain a +2 status bonus to their AC and saves against the triggering effect."
+						],
+						"name": "Shake 'Em!"
 					}
 				],
 				"bot": [
@@ -5791,13 +5752,22 @@
 						"traits": [
 							"manipulate"
 						],
-						"requirements": "Yoh is piloting the Solar Jian II",
+						"requirements": "Yoh is piloting the {@i Solar Jian II}",
 						"frequency": {
 							"unit": "hour",
 							"freq": 1
 						},
 						"entries": [
-							"While the Solar Jian II is not a combat vessel, it does have a magically renewing supply of fireworks for victory parades and the like. Yoh fires them at a 20-foot burst within 60 feet. Creatures in the area take {@damage 3d6} fire damage and {@damage 3d6} sonic damage with a Fortitude save. Critical Success The target is unaffected. Success The target takes half damage and is {@condition dazzled} for 1 round. Failure The target takes full damage and is {@condition dazzled} for 3 rounds. Critical Failure The target takes double damage, takes {@damage 3d4} {@condition persistent damage||persistent fire damage}, and is {@condition dazzled} for 1 minute."
+							"While the {@i Solar Jian II} is not a combat vessel, it does have a magically renewing supply of fireworks for victory parades and the like. Yoh fires them at a 20-foot burst within 60 feet. Creatures in the area take {@damage 3d6} fire damage and {@damage 3d6} sonic damage with a Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target takes half damage and is {@condition dazzled} for 1 round.",
+									"Failure": "The target takes full damage and is {@condition dazzled} for 3 rounds.",
+									"Critical Failure": "The target takes double damage, takes {@damage 3d4} {@condition persistent damage||persistent fire damage}, and is {@condition dazzled} for 1 minute."
+								}
+							}
 						],
 						"name": "Deploy Countermeasures"
 					},
@@ -5810,16 +5780,9 @@
 							"manipulate"
 						],
 						"entries": [
-							"Requirements Yoh is piloting an airborne vessel; Yoh pumps the brakes, banks quickly, or performs some other aerial maneuver to get the drop on an enemy. He attempts a."
+							"Requirements Yoh is piloting an airborne vessel; Yoh pumps the brakes, banks quickly, or performs some other aerial maneuver to get the drop on an enemy. He attempts a Piloting Lore check against the enemy's {@skill Perception} DC. If he succeeds, that enemy is {@condition flat-footed} to the next attack from a creature onboard as long as it is made before Yoh's next turn. All enemies who witnessed the maneuver are then temporarily immune for 1 day."
 						],
 						"name": "I'll Get You into Position!"
-					},
-					{
-						"entries": [
-							"{@skill Lore} check against the enemy's {@skill Perception} DC.",
-							"If he succeeds, that enemy is {@condition flat-footed} to the next attack from a creature onboard as long as it is made before Yoh's next turn. All enemies who witnessed the maneuver are then temporarily immune for 1 day."
-						],
-						"name": "Piloting"
 					},
 					{
 						"activity": {
@@ -5855,7 +5818,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+4 to all saves while piloting {@i Solar Jian II}"
+					]
 				},
 				"hp": [
 					{

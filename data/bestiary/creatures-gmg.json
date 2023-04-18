@@ -527,7 +527,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 22,
@@ -1165,6 +1164,9 @@
 				"diplomacy": {
 					"std": 10
 				},
+				"intimidation": {
+					"std": 10
+				},
 				"medicine": {
 					"std": 14
 				},
@@ -1179,6 +1181,9 @@
 				},
 				"thievery": {
 					"std": 15
+				},
+				"underworld lore": {
+					"std": 14
 				}
 			},
 			"abilityMods": {
@@ -1189,6 +1194,16 @@
 				"wis": 2,
 				"cha": 0
 			},
+			"items": [
+				"+1 striking composite shortbow (20 arrows)",
+				"lesser darkvision elixir",
+				"giant centipede venom (3)",
+				"invisibility potion",
+				"leather armor",
+				"+1 rapier",
+				"simple injury poison (8 doses, {@damage 2d4} poison damage)",
+				"sleep poison (2)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1227,12 +1242,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+14 Str +3, Dex +5, Con +2, Int +2, Wis +2, Cha +0 Items +1 striking composite shortbow (20 arrows), lesser darkvision elixir, giant centipede venom (3), invisibility potion, leather armor, +1 rapier, simple injury poison (8 doses, {@damage 2d4} poison damage), sleep poison (2)"
-						],
-						"name": "Underworld Lore"
-					},
 					{
 						"entries": [
 							"The assassin can move their full Speed when Sneaking."
@@ -1532,14 +1541,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6, {@skill Thievery} +8 Str +3, Dex +3, Con +1, Int +0, Wis +2, Cha +1 Items hatchet, sling (10 bullets), studded leather armor."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -1686,14 +1687,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+5, {@skill Thievery} +3 Str +3, Dex +0, Con +2, Int +0, Wis +1, Cha +3 Items barkeep's apron (functions as padded armor), flask of whiskey, pewter mug, sap."
-						],
-						"name": "Society"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -1712,9 +1705,12 @@
 							"linguistic",
 							"mental"
 						],
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
 						"entries": [
-							"Frequency once per day; The barkeep gives some pertinent advice to a single creature other than themself. For 24 hours, when that creature fails a skill check or saving throw, they can recall this advice and reroll the check, using the second result instead. Once that creature uses this ability, its effect ends.",
-							"A creature that receives the Barkeep's Advice is temporarily immune to the ability for 1 month."
+							"The barkeep gives some pertinent advice to a single creature other than themself. For 24 hours, when that creature fails a skill check or saving throw, they can recall this advice and reroll the check, using the second result instead. Once that creature uses this ability, its effect ends. A creature that receives the Barkeep's Advice is temporarily immune to the ability for 1 month."
 						],
 						"name": "Barkeep's Advice"
 					}
@@ -1939,7 +1935,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 22,
@@ -1992,19 +1987,28 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Druid Order",
+					"type": "Focus",
+					"DC": 22,
+					"fp": 1,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "heal animal"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
 				"top": [
 					{
 						"entries": [
-							"+8, {@skill Survival} +10 Str +2, Dex +1, Con +2, Int +0, Wis +4, Cha +2 Items holly and mistletoe, leather armor, rope (50 feet), whip."
-						],
-						"name": "Performance"
-					},
-					{
-						"entries": [
-							"The beast tamer can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple Requests of them."
+							"The beast tamer can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple {@action Request||Requests} of them."
 						],
 						"name": "Wild Empathy"
 					}
@@ -2012,8 +2016,8 @@
 				"bot": [
 					{
 						"entries": [
-							"The beast tamer fights alongside a trained animal ally of its level or lower, most likely a tiger (Bestiary 53). The animal has the standard number of actions, uses its normal stat block, and counts toward the encounter's XP budget normally.",
-							"The beast tamer can spend 1 action to gain the support benefit appropriate to its trained animal (Core Rulebook 215). Unlike for an animal companion, this doesn't require the animal to use any of its actions."
+							"The beast tamer fights alongside a trained animal ally of its level or lower, most likely a {@creature tiger}. The animal has the standard number of actions, uses its normal stat block, and counts toward the encounter's XP budget normally.",
+							"The beast tamer can spend 1 action to gain the support benefit appropriate to its {@filter trained animal|companionsfamiliars||type=companion}. Unlike for an animal companion, this doesn't require the animal to use any of its actions."
 						],
 						"name": "Trained Animal"
 					}
@@ -2744,6 +2748,9 @@
 				]
 			},
 			"skills": {
+				"athletics": {
+					"std": 15
+				},
 				"diplomacy": {
 					"std": 11
 				},
@@ -2807,14 +2814,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+10, {@skill Lore||Warfare Lore} +8 Str +5, Dex +0, Con +2, Int +0, Wis +3, Cha +3 Items crossbow (20 bolts), dagger, full plate, +1 longsword, steel shield (Hardness 5, 20 HP, BT 10)"
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2844,7 +2843,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -2855,7 +2853,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -2993,7 +2990,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 20,
@@ -3210,7 +3206,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 20,
@@ -3487,7 +3482,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 26,
@@ -3692,8 +3686,9 @@
 				"stealth": {
 					"std": 6
 				},
-				"cult lore (applies to the cultist's own cult)": {
-					"std": 8
+				"cult lore": {
+					"std": 8,
+					"note": "applies to the cultist's own cult"
 				}
 			},
 			"abilityMods": {
@@ -3741,14 +3736,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+3, {@skill Society} +4, {@skill Stealth} +6 Str +4, Dex +3, Con +2, Int +1, Wis \u20131, Cha +0 Items dagger, cultist garb (functions as leather armor)"
-						],
-						"name": "Occultism"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -3775,7 +3762,8 @@
 						"std": 8
 					},
 					"will": {
-						"std": 4
+						"std": 4,
+						"vs. higher-ranking members of the cult": 2
 					}
 				},
 				"hp": [
@@ -3990,7 +3978,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 26,
@@ -4212,7 +4199,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "divine",
 					"DC": 23,
@@ -4290,12 +4276,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+12, {@skill Lore||Warfare Lore} +10 Str +2, Dex +2, Con +0, Int +4, Wis +2, Cha +4 Items lesser darkvision elixir, minor healing potion (2), spiked gauntlet."
-						],
-						"name": "Society"
-					},
 					{
 						"entries": [
 							"Any creature deceived by the despot's {@skill Deception} skill believes the deception more readily on the next day. Any attempts to later attempt a {@skill Perception} check against the despot's {@skill Deception} DC take a \u20132 circumstance penalty, as do other creatures' attempts to convince the creature otherwise, such as through {@skill Diplomacy} or further {@skill Deception}."
@@ -4748,6 +4728,16 @@
 				"wis": 2,
 				"cha": 4
 			},
+			"items": [
+				"alchemical tools (used as \"blessed items\" to fool marks)",
+				"backpack",
+				"cloak",
+				"hand crossbow (20 bolts)",
+				"collection of fake relics",
+				"wooden religious symbol",
+				"studded leather armor",
+				"rapier"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -4781,14 +4771,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6 Str +0, Dex +4, Con +3, Int +0, Wis +2, Cha +4 Items alchemical tools (used as \"blessed items\" to fool marks), backpack, cloak, hand crossbow (20 bolts), collection of fake relics, wooden religious symbol, studded leather armor, rapier."
-						],
-						"name": "Society"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -5644,7 +5626,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -5853,6 +5834,13 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"artisan's tools",
+				"construction schematics",
+				"guildmaster's uniform (functions as hide armor)",
+				"+1 striking light hammer",
+				"tax ledgers"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -5885,14 +5873,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Intimidation} +22, {@skill Society} +21 Str +3, Dex +1, Con +1, Int +4, Wis +2, Cha +3 Items artisan's tools, construction schematics, guildmaster's uniform (functions as hide armor), +1 striking light hammer, tax ledgers."
-						],
-						"name": "Diplomacy"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -5975,6 +5955,9 @@
 				},
 				"fishing lore": {
 					"std": 8
+				},
+				"sailing lore": {
+					"std": 10
 				}
 			},
 			"abilityMods": {
@@ -6026,12 +6009,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+10 Str +4, Dex +2, Con +2, Int +2, Wis +1, Cha +0 Items fishing tackle, hatchet (2), ledger, manacles, spyglass."
-						],
-						"name": "Lore"
-					},
 					{
 						"entries": [
 							"Whenever the harbormaster rolls a success on a check to {@action Balance}, they get a critical success instead. They're not {@condition flat-footed} while Balancing on narrow surfaces and uneven ground. They can attempt an {@skill Acrobatics} check instead of a Reflex save to {@action Grab an Edge}."
@@ -6214,6 +6191,12 @@
 				"wis": 4,
 				"cha": 0
 			},
+			"items": [
+				"+1 composite longbow",
+				"dagger",
+				"leather armor",
+				"shortsword"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -6268,18 +6251,9 @@
 				"top": [
 					{
 						"entries": [
-							"+17 Str +4, Dex +4, Con +2, Int +1, Wis +4, Cha +0 Items +1 composite longbow, dagger, leather armor, shortsword."
+							"While using {@skill Survival} to {@action Subsist}, if the hunter rolls a failure or a critical failure, they get a success instead. If the hunter rolls a success, they can provide food for 16 additional creatures that eat about as much as a human, or 32 creatures on a critical success."
 						],
-						"name": "Survival"
-					},
-					{
-						"entries": [
-							"As poacher, but the hunter feeds 16 additional creatures, or 32 on a critical success."
-						],
-						"name": "Forager",
-						"entries_as_xyz": [
-							"While using {@skill Survival} to {@action Subsist}, if the hunter rolls a failure or a critical failure, they get a success instead. If the hunter rolls a success, they can provide food for 4 additional creatures that eat about as much as a human, or 8 creatures on a critical success."
-						]
+						"name": "Forager"
 					},
 					{
 						"entries": [
@@ -6548,7 +6522,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -6930,7 +6903,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 20,
@@ -7059,6 +7031,9 @@
 				"intimidation": {
 					"std": 15
 				},
+				"occultism": {
+					"std": 15
+				},
 				"performance": {
 					"std": 17
 				},
@@ -7073,6 +7048,9 @@
 				},
 				"thievery": {
 					"std": 9
+				},
+				"underworld lore": {
+					"std": 17
 				}
 			},
 			"abilityMods": {
@@ -7123,7 +7101,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 22,
@@ -7191,16 +7168,10 @@
 							"level": 2,
 							"spells": [
 								{
-									"name": "inspire competence",
-									"note": [
-										"Core Rulebook 386"
-									]
+									"name": "inspire competence"
 								},
 								{
-									"name": "inspire courage",
-									"note": [
-										"Core Rulebook 386"
-									]
+									"name": "inspire courage"
 								}
 							]
 						}
@@ -7209,12 +7180,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+17 Str +0, Dex +3, Con +0, Int +4, Wis +2, Cha +4 Items chain shirt, disguise kit, hand crossbow (10 bolts), shortsword."
-						],
-						"name": "Lore"
-					},
 					{
 						"entries": [
 							"The mastermind can use {@skill Performance} instead of {@skill Diplomacy} to {@action Make an Impression} and instead of {@skill Intimidation} to {@action Demoralize}. The mastermind can also use an acting {@skill Performance} instead of {@skill Deception} to {@action Impersonate}."
@@ -7573,7 +7538,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -8185,7 +8149,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -8450,7 +8413,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -8578,7 +8540,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 23,
@@ -8915,7 +8876,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 24,
@@ -9260,7 +9220,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "divine",
 					"DC": 18,
@@ -9610,7 +9569,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -9878,14 +9836,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12, {@skill Society} +14 Str +2, Dex +2, Con +1, Int +4, Wis +3, Cha +0 Items religious symbol, +1 staff."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -10256,18 +10206,10 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+10 Str +4, Dex +2, Con +0, Int +1, Wis +2, Cha +3 Items dagger, hand crossbow (10 bolts), leather armor, +1 rapier."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"When the pirate rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead. In addition, anytime they gain the {@condition frightened} condition, reduce its value by 1."
+							"When the ship captain rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead. In addition, anytime they gain the {@condition frightened} condition, reduce its value by 1."
 						],
 						"name": "Bravery"
 					}
@@ -10535,12 +10477,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+14, {@skill Thievery} +12 Str +0, Dex +4, Con +1, Int +2, Wis +4, Cha +4 Items dagger (4), disguise kit, fine clothes, leather armor, +1 rapier, thieves' tools."
-						],
-						"name": "Stealth"
-					},
 					{
 						"entries": [
 							"The spy has positioned themself to seem a trusted ally, gaining a +2 circumstance bonus to {@action Gather Information} or to {@action Make an Impression} among the nobles of that court."
@@ -10969,6 +10905,9 @@
 				"acrobatics": {
 					"std": 13
 				},
+				"athletics": {
+					"std": 13
+				},
 				"deception": {
 					"std": 7
 				},
@@ -11036,12 +10975,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+11, {@skill Thievery} +13 Str +4, Dex +4, Con +1, Int +2, Wis +2, Cha +0 Items climbing kit, hand crossbow (20 bolts), +1 kukri."
-						],
-						"name": "Stealth"
-					},
 					{
 						"entries": [
 							"The tomb raider automatically attempts a secret {@skill Perception} check to notice a hazard when they are within 10 feet of the hazard."
@@ -11437,7 +11370,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 21,
@@ -11878,7 +11810,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -11889,7 +11820,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -12021,7 +11951,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 19,
@@ -12087,7 +12016,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"

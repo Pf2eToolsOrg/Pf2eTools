@@ -38,6 +38,7 @@ class TraitsPage extends ListPage {
 			{
 				hash,
 				source,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : vhI,

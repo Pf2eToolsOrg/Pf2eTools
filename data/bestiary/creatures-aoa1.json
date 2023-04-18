@@ -253,7 +253,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 25,
@@ -654,7 +653,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 22,
@@ -789,6 +787,7 @@
 				"humanoid",
 				"orc"
 			],
+			"description": "Human (half-orc) ranger 1",
 			"perception": {
 				"std": 6
 			},
@@ -861,33 +860,26 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6, {@skill Survival} +4, {@skill Thievery} +6 Str +4, Dex +3, Con +1, Int +0, Wis +1, Cha \u20131 Items longsword, shortbow (20 arrows), studded leather, 15 sp."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
-						"name": "Hunt Prey"
+						"name": "Hunt Prey",
+						"generic": {
+							"tag": "action"
+						}
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 171"
-						],
-						"entries": [],
-						"name": "Hunted Shot"
+						"name": "Hunted Shot",
+						"generic": {
+							"tag": "feat"
+						}
 					},
 					{
 						"entries": [
@@ -1051,10 +1043,11 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [
-							"(pathfinder core rulebook 183)"
-						],
-						"name": "Nimble Dodge"
+						"name": "Nimble Dodge",
+						"generic": {
+							"tag": "feat",
+							"name": "Nimble Dodge (Rogue)"
+						}
 					}
 				],
 				"bot": [
@@ -1063,10 +1056,11 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [
-							"(pathfinder core rulebook 184)"
-						],
-						"name": "Quick Draw"
+						"name": "Quick Draw",
+						"generic": {
+							"tag": "feat",
+							"name": "Quick Draw (Rogue)"
+						}
 					},
 					{
 						"entries": [
@@ -1235,41 +1229,41 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
-						"name": "Hunt Prey"
+						"name": "Hunt Prey",
+						"generic": {
+							"tag": "action"
+						}
 					},
 					{
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 172"
-						],
-						"entries": [],
-						"name": "Hunter's Aim"
+						"name": "Hunter's Aim",
+						"generic": {
+							"tag": "feat"
+						}
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 172"
-						],
-						"entries": [],
-						"name": "Twin Parry"
+						"name": "Twin Parry",
+						"generic": {
+							"tag": "feat",
+							"name": "Twin Parry (Ranger)"
+						}
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"pathfinder core rulebook 171"
-						],
-						"entries": [],
-						"name": "Twin Takedown"
+						"name": "Twin Takedown",
+						"generic": {
+							"tag": "feat"
+						}
 					}
 				]
 			},
@@ -1376,7 +1370,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Innate Arcane",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 19,
@@ -1398,7 +1391,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -2184,7 +2176,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 23,
@@ -2243,7 +2234,7 @@
 								{
 									"name": "harm",
 									"amount": 3,
-									"note": [
+									"notes": [
 										"deals d10s for damage instead of d8s"
 									]
 								}
@@ -2259,10 +2250,10 @@
 							"number": 2,
 							"unit": "action"
 						},
-						"entries": [
-							"(pathfinder core rulebook 122)"
-						],
-						"name": "Channel Smite"
+						"name": "Channel Smite",
+						"generic": {
+							"tag": "feat"
+						}
 					},
 					{
 						"activity": {
@@ -2381,7 +2372,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 22,
@@ -2589,7 +2579,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -3069,7 +3058,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 23,

@@ -100,7 +100,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 36,
@@ -198,7 +197,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -630,7 +628,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 26,
@@ -653,7 +650,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -817,7 +813,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 49,
@@ -978,14 +973,12 @@
 						},
 						"components": [
 							"when they {@action Cast a Spell||Cast the Spell}."
-						],
-						"entries": []
+						]
 					}
 				],
 				"bot": [
 					{
-						"name": "Memories of Ages",
-						"entries": []
+						"name": "Memories of Ages"
 					},
 					{
 						"name": "Forest Growth",
@@ -1363,7 +1356,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 30,
@@ -1386,7 +1378,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -1736,8 +1727,7 @@
 						]
 					},
 					{
-						"name": "Troop Defenses",
-						"entries": []
+						"name": "Troop Defenses"
 					}
 				],
 				"bot": [
@@ -1746,8 +1736,7 @@
 						"activity": {
 							"number": 1,
 							"unit": "action"
-						},
-						"entries": []
+						}
 					},
 					{
 						"name": "Golden Strike",
@@ -1814,10 +1803,19 @@
 				"hp": [
 					{
 						"hp": 240,
-						"abilities": [
-							"(16 squares); Thresholds 160 (12 squares)",
-							"80 (8 squares)"
+						"notes": [
+							"16 squares"
 						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 160,
+						"squares": 12
+					},
+					{
+						"value": 80,
+						"squares": 8
 					}
 				],
 				"immunities": [
@@ -2150,8 +2148,7 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Graveknight's Shield",
-						"entries": []
+						"name": "Graveknight's Shield"
 					},
 					{
 						"name": "Attack of Opportunity",
@@ -2159,7 +2156,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2323,7 +2319,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Innate Divine",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 33,
@@ -2360,7 +2355,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2370,8 +2364,7 @@
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
-						},
-						"entries": []
+						}
 					}
 				],
 				"bot": [
@@ -2386,8 +2379,7 @@
 						"activity": {
 							"number": 2,
 							"unit": "action"
-						},
-						"entries": []
+						}
 					},
 					{
 						"name": "Devastating Blast",
@@ -2551,7 +2543,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2562,7 +2553,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2592,8 +2582,7 @@
 						"frequency": {
 							"freq": 1,
 							"unit": "round"
-						},
-						"entries": []
+						}
 					},
 					{
 						"name": "The Jackal",
@@ -2941,7 +2930,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3141,7 +3129,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"tradition": "occult",
 					"type": "Spontaneous",
 					"DC": 34,
@@ -3429,7 +3416,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 27,
@@ -3440,7 +3426,9 @@
 							"spells": [
 								{
 									"name": "divine lance",
-									"note": "law or evil"
+									"notes": [
+										"law or evil"
+									]
 								},
 								{
 									"name": "message"
@@ -3670,7 +3658,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 30,
@@ -3681,7 +3668,9 @@
 							"spells": [
 								{
 									"name": "divine lance",
-									"note": "law or evil"
+									"notes": [
+										"law or evil"
+									]
 								},
 								{
 									"name": "message"
@@ -3704,7 +3693,6 @@
 					}
 				},
 				{
-					"name": "Primal Spontaneous",
 					"tradition": "primal",
 					"type": "Spontaneous",
 					"DC": 30,
@@ -4004,7 +3992,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 27,
@@ -4015,7 +4002,9 @@
 							"spells": [
 								{
 									"name": "divine lance",
-									"note": "law or evil"
+									"notes": [
+										"law or evil"
+									]
 								},
 								{
 									"name": "message"
@@ -4187,7 +4176,6 @@
 			},
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 30,
@@ -4223,8 +4211,7 @@
 						}
 					},
 					{
-						"name": "Troop Defenses",
-						"entries": []
+						"name": "Troop Defenses"
 					}
 				],
 				"bot": [
@@ -4243,8 +4230,7 @@
 						"activity": {
 							"number": 1,
 							"unit": "action"
-						},
-						"entries": []
+						}
 					},
 					{
 						"name": "Soul Grasp",
@@ -4288,10 +4274,19 @@
 				"hp": [
 					{
 						"hp": 234,
-						"abilities": [
-							"(16 squares); Thresholds 156 (12 squares)",
-							"78 (8 squares)"
+						"notes": [
+							"16 squares"
 						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 156,
+						"squares": 12
+					},
+					{
+						"value": 78,
+						"squares": 8
 					}
 				],
 				"weaknesses": [
@@ -4365,7 +4360,6 @@
 			},
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"tradition": "divine",
 					"type": "Spontaneous",
 					"DC": 29,
@@ -4382,7 +4376,9 @@
 								},
 								{
 									"name": "divine lance",
-									"note": "law or evil"
+									"notes": [
+										"law or evil"
+									]
 								}
 							]
 						},
@@ -4420,8 +4416,7 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Troop Defenses",
-						"entries": []
+						"name": "Troop Defenses"
 					}
 				],
 				"bot": [
@@ -4430,8 +4425,7 @@
 						"activity": {
 							"number": 1,
 							"unit": "action"
-						},
-						"entries": []
+						}
 					},
 					{
 						"name": "Frenetic Assault",
@@ -4498,10 +4492,19 @@
 				"hp": [
 					{
 						"hp": 216,
-						"abilities": [
-							"(16 squares); Thresholds 144 (12 squares)",
-							"72 (8 squares)"
+						"notes": [
+							"16 squares"
 						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 144,
+						"squares": 12
+					},
+					{
+						"value": 72,
+						"squares": 8
 					}
 				],
 				"weaknesses": [
@@ -4775,7 +4778,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"tradition": "divine",
 					"type": "Spontaneous",
 					"DC": 34,
@@ -4792,7 +4794,9 @@
 								},
 								{
 									"name": "divine lance",
-									"note": "law or evil"
+									"notes": [
+										"law or evil"
+									]
 								},
 								{
 									"name": "message"
@@ -4898,7 +4902,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -4909,7 +4912,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}

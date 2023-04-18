@@ -256,6 +256,11 @@ class TokenizerUtils {
 			{regex: /^HP\s/, type: "HP", lookbehind: /\n$/, prev: {depth: 10, types: [...this.creatureSavingThrows.map(it => it.type)]}},
 		]
 	}
+	static get thresholds () {
+		return [
+			{regex: /^Thresholds\s/, type: "THRESHOLDS", lookbehind: /(\n|[;,.)]\s)$/},
+		]
+	}
 	static get resistances () {
 		return [
 			{regex: /^Resistances\s/, type: "RESISTANCES", lookbehind: /(\n|[;,.)]\s)$/},
@@ -505,6 +510,7 @@ class TokenizerUtils {
 			...this.ac,
 			...this.creatureSavingThrows,
 			...this.hp,
+			...this.thresholds,
 			...this.resistances,
 			...this.weaknesses,
 			...this.immunities,

@@ -637,8 +637,42 @@
 			"usage": "held in 2 hands",
 			"bulk": 1,
 			"category": "Held",
+			"perception": {
+				"default": 13,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "empathy"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 14
+				},
+				"Survival": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Int": 1,
+				"Wis": 5,
+				"Cha": 3
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 18
+				}
+			},
 			"entries": [
-				"{@skill Perception} +13; precise vision 30 feet, imprecise hearing 30 feet Communication empathy Skills {@skill Diplomacy} +14, {@skill Survival} +16 Int +1, Wis +5, Cha +3 Will +18 Jax was a caravan guard who died defending her charges from a pack of Lamashtan cultists in the Spellscar Desert.",
+				"Jax was a caravan guard who died defending her charges from a pack of Lamashtan cultists in the Spellscar Desert.",
 				"Her spirit of fury and hopelessness infused her weapon upon her death, imbuing the firearm with a fragment of her soul and intelligence. The rifle, upon awakening, remembered just enough of Jax's former life to think of her former wielder's name as her own.",
 				"Jax is a +1 striking fearsome piercing wind (Guns & Gears 159) whose driving purpose is to protect innocent travelers in the Spellscar Desert from raiders, bandits, and cultists. Jax allows any creature to wield her, but she doesn't reveal her intelligence or powers until she detects an innocent in danger or if her wielder has proven themselves a worthy champion of justice. If she deems a wielder to be unworthy, Jax uses her dominate ability to control the wielder until she can find a new one.",
 				"If ever used to attack an innocent traveler, or if, in Jax's opinion, the attack could be considered banditry, the weapon automatically misfires. If Jax witnesses an innocent harmed or killed, she empathically urges her wielder to avenge the victim. If the wielder doesn't comply, Jax attempts to cast {@spell dominate} (below). Even if the {@spell dominate} spell fails, Jax withholds all magical abilities, including the +1 weapon potency rune and striking rune, until her wielder redeems themself.",
@@ -648,7 +682,7 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"traits": [
+					"components": [
 						"command"
 					],
 					"frequency": {
@@ -665,7 +699,7 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"traits": [
+					"components": [
 						"command"
 					],
 					"frequency": {

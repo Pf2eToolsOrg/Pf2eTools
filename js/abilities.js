@@ -53,6 +53,7 @@ class AbilitiesPage extends ListPage {
 				source,
 				time,
 				normalisedTime: Parser.getNormalisedTime(it.activity),
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,

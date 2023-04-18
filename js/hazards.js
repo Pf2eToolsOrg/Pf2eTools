@@ -42,6 +42,7 @@ class HazardsPage extends ListPage {
 				type,
 				level: it.level,
 				source,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : thI,

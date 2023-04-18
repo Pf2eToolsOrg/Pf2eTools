@@ -272,6 +272,8 @@ function updateFolder (folder) {
 							}
 							return k
 						})
+					} else if (cr.attacks && cr.attacks.length === 0) {
+						delete cr.attacks
 					}
 					if (cr.spellcasting && cr.spellcasting.length) {
 						cr.spellcasting = cr.spellcasting.map(k => {
@@ -281,6 +283,39 @@ function updateFolder (folder) {
 							if (k.tradition) {
 								k.tradition = k.tradition.toLowerCase();
 							}
+							if (k.name && k.type && k.tradition
+								&& (k.name.localeCompare(`${k.type} ${k.tradition}`, { sensitivity: "base" })
+									|| k.name.localeCompare(`${k.tradition} ${k.type}`, { sensitivity: "base" }))
+							) {
+								delete k.name;
+							}
+
+							const mapSpellLevel = (l) => {
+								l.spells = l.spells.map(s => {
+									if (s.note) {
+										if (typeof s.note === "string") {
+											s.notes = [s.note];
+										} else {
+											s.notes = s.note;
+										}
+										delete s.note;
+									}
+									return s;
+								});
+								return l;
+							}
+
+							if (k.entry) {
+								for (let l = 0; l <= 10; l++) {
+									const level = l.toString();
+									if (k.entry[level]) {
+										k.entry[level] = mapSpellLevel(k.entry[level]);
+									}
+									if (k.entry.constant && k.entry.constant[level]) {
+										k.entry.constant[level] = mapSpellLevel(k.entry.constant[level]);
+									}
+								}
+							}
 							return k
 						})
 					}
@@ -289,8 +324,34 @@ function updateFolder (folder) {
 							if (k.tradition) {
 								k.tradition = k.tradition.toLowerCase();
 							}
+							if (k.note) {
+								if (typeof k.note === "string") {
+									k.notes = [k.note];
+								} else {
+									k.notes = k.note;
+								}
+								delete k.note;
+							}
 							return k
 						})
+					}
+					if (cr.abilities) {
+						const mapAbility = (a) => {
+							if (a.entries && a.entries.length === 0) {
+								delete a.entries;
+							}
+							return a;
+						}
+
+						if (cr.abilities.top) {
+							cr.abilities.top = cr.abilities.top.map(mapAbility)
+						}
+						if (cr.abilities.mid) {
+							cr.abilities.mid = cr.abilities.mid.map(mapAbility)
+						}
+						if (cr.abilities.bot) {
+							cr.abilities.bot = cr.abilities.bot.map(mapAbility)
+						}
 					}
 					return cr;
 				});
