@@ -4492,7 +4492,7 @@ Renderer.creature = {
 							let amount = spell.amount != null ? typeof (spell.amount) === "number" ? [`×${spell.amount}`] : [spell.amount] : []
 							let notes = spell.notes || []
 							let bracket = ""
-							if (amount.length || note.length) {
+							if (amount.length || notes.length) {
 								bracket = ` (${amount.concat(notes).join(", ")})`
 							}
 							spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
