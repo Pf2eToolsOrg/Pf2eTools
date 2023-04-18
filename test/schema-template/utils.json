@@ -188,7 +188,7 @@
 				},
 				{
 					"properties": {
-						"freq": {
+						"number": {
 							"$comment": "In code return \"Once\" if =1, \"Twice\" if =2, and \"`n` times\" otherwise.",
 							"description": "How frequent it is; once, twice etc.",
 							"type": "integer",
@@ -241,13 +241,13 @@
 					"oneOf": [
 						{
 							"required": [
-								"freq",
+								"number",
 								"unit"
 							]
 						},
 						{
 							"required": [
-								"freq",
+								"number",
 								"customUnit"
 							]
 						}

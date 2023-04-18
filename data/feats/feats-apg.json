@@ -484,7 +484,7 @@
 			"prerequisites": "ki spells",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You {@action Cast a Spell} that has the {@trait monk} trait.",
 			"entries": [
@@ -525,7 +525,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You attempt a saving throw while adjacent to one or more allies, but you haven't rolled yet.",
 			"entries": [
@@ -819,7 +819,7 @@
 			"prerequisites": "{@feat Archaeologist Dedication|APG}",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You fail a check against a trap, such as a {@skill Thievery} check to {@action Disable a Device||Disable} the trap or a Reflex save to avoid its effects.",
 			"entries": [
@@ -995,7 +995,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You modify an arrow or bolt to bring death to your target in a single potent hit. Make a bow {@action Strike}. On a hit, you deal an additional {@damage 10d10} precision damage. On a critical hit, the target must also succeed at a Fortitude saving throw against your class DC or spell DC, whichever is higher, or be immediately slain; this save has the {@trait death} and {@trait incapacitation} traits."
@@ -1236,7 +1236,7 @@
 				"fortune"
 			],
 			"frequency": {
-				"freq": 1,
+				"number":  1,
 				"unit": "minute",
 				"recurs": true,
 				"interval": 10
@@ -1670,7 +1670,7 @@
 			"prerequisites": "{@feat Beastmaster Dedication|APG}, Call Companion",
 			"frequency": {
 				"unit": "turn",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You quickly call in a primal projection of a non-active companion to provide the companion's support benefit. The projection arrives in an unoccupied square of your choice within 30 feet of you, grants you its support benefit, and then disappears on your next turn. The projection has the same AC and saving throw modifiers as the real companion, and if it would take any damage before your next turn, it disappears and the support benefit ends immediately."
@@ -1709,7 +1709,7 @@
 			],
 			"frequency": {
 				"unit": "turn",
-				"freq": 1
+				"number":  1
 			},
 			"requirements": "Your most recent action was to cast a noncantrip spell.",
 			"entries": [
@@ -1798,7 +1798,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "A creature within 30 feet you can see would succeed at a save.",
 			"entries": [
@@ -1948,7 +1948,7 @@
 			"frequency": {
 				"unit": "minute",
 				"interval": 10,
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"When you focus your magic on an ally, you can remove harmful conditions. If your next action is to {@action Cast a Spell} from a spell slot, and that spell targets only a single ally, you can also attempt to remove a harmful condition from that ally. The condition must be one that could be removed by your {@feat Mercy} feat, including those granted by later feats such as {@feat Greater Mercy}. Attempt a {@quickref counteract|CRB|3|counteracting} check based on the spell's DC and level. This effect is in addition to the normal effects of your spell."
@@ -2109,7 +2109,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You lose the {@condition dying} condition.",
 			"entries": [
@@ -2261,7 +2261,7 @@
 			"prerequisites": "{@feat Marshal Dedication|APG}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You call out a quick cadence, guiding your allies into a more efficient rhythm. Each willing ally within your marshal's aura is {@condition quickened} until the end of their next turn, and they can use the extra action only to {@action Stride}. At the end of each ally's turn, if they used the extra action, they then become {@condition slowed 1} until the end of their following turn."
@@ -2413,7 +2413,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You fail a Reflex saving throw.",
 			"entries": [
@@ -2445,7 +2445,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "An ally within 30 feet would be reduced to 0 HP but not immediately killed.",
 			"entries": [
@@ -2741,7 +2741,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"With effort, you can call forth magical wings from your back, similar in appearance to those of your celestial forebears.",
@@ -2983,7 +2983,7 @@
 			"prerequisites": "{@feat Cobra Stance|APG}, expert in unarmed attacks",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number":  1
 			},
 			"requirements": "You are in Cobra Stance.",
 			"entries": [
@@ -3196,7 +3196,7 @@
 			"prerequisites": "master in {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You have learned rites or meditations that enable you to perceive minor, {@condition invisible} spirits within a place. Choose {@skill Nature}, {@skill Occultism}, or {@skill Religion} when you select this feat.",
@@ -3901,7 +3901,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You begin your turn and have no Focus Points in your pool.",
 			"entries": [
@@ -4970,7 +4970,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "A creature within 60 feet uses a {@trait fortune} or {@trait misfortune} effect.",
 			"entries": [
@@ -5451,7 +5451,7 @@
 			],
 			"frequency": {
 				"unit": "turn",
-				"freq": 1
+				"number":  1
 			},
 			"requirements": "Your most recent action was to cast a non-cantrip spell that dealt energy damage.",
 			"entries": [
@@ -5473,7 +5473,7 @@
 			"prerequisites": "You've sworn to an oath against a specific type of creature.",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You call on your oath to embolden you in combat. When you Enforce your Oath, select one creature you can see that you've sworn to defeat as part of your oath. You gain a +1 status bonus to AC and saves against attacks and effects by the chosen creature. You also gain a +1 status bonus to attack rolls against the chosen creature. However, your dedication to Enforcing your Oath draws your focus away from all other foes. While you are Enforcing your Oath, you take a \u20131 status penalty to AC, attack rolls, and saves against all other creatures until you stop Enforcing your Oath.",
@@ -6240,7 +6240,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You can strain to call forth bat-like or otherwise fiendish wings from your back, similar in appearance to those of your fiendish ancestors. Once manifested, these wings remain for 10 minutes. You gain a fly Speed equal to your land Speed while you've manifested your wings."
@@ -6623,7 +6623,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You've learned to forestall the effects of your curse somewhat. If the next action you use is to cast a {@trait revelation} spell, the severity of your curse doesn't increase."
@@ -6665,7 +6665,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You can transform into a harmless bat. You gain the effects of a 4th-level {@spell pest form}, except you always transform into a bat."
@@ -7429,7 +7429,7 @@
 			],
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You craft an {@item elixir of life (generic)||elixir of life} using {@action Quick Alchemy}, and that elixir is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
@@ -7500,7 +7500,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"The blood of heroes courses through your veins, and you inspire your allies to dig deep and find a new level of resolve. You grant up to 10 willing creatures within 30 feet the effects of a 6th-level {@spell zealous conviction}, though the effect automatically ends on a target if you give that target a command they would normally find repugnant. This action has the {@trait auditory} trait or {@trait visual} trait, depending on how you inspire your allies."
@@ -7657,7 +7657,7 @@
 				"gnome"
 			],
 			"frequency": {
-				"freq": 2,
+				"number":  2,
 				"unit": "week"
 			},
 			"entries": [
@@ -8241,7 +8241,7 @@
 			"prerequisites": "at least one arcane or occult innate spell gained from a gnome heritage or gnome ancestry feat",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You are attacked by a foe.",
 			"entries": [
@@ -8472,7 +8472,7 @@
 			"prerequisites": "ki spells, {@feat Master of Many Styles}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You center yourself with the universe and draw upon its vast power. You cast a single action ki spell with the {@trait stance} trait, without spending a Focus Point."
@@ -9056,7 +9056,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You imbue your ammunition with eldritch power. When you select this feat, choose three types of {@filter common magical ammunition of 4th level or lower from the Core Rulebook or this book|items||source=crb;apg|Level=[0;4]|type=!generic variant|category=ammunition|rarity=common|item=magical}. Your GM might allow you to choose from other types of magical ammunition, such as uncommon ammunition, or ammunition from other books.",
@@ -10562,7 +10562,7 @@
 			"prerequisites": "{@feat Martial Artist Dedication|APG}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"With a burst of effort, you weave a path through your enemies, striking each in turn as you move past them. You {@action Stride}; this movement doesn't trigger reactions. You can {@action Strike} up to three times at any point during your movement, each against a different enemy. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you have made all your attacks."
@@ -10748,7 +10748,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You can concentrate an immense amount of magic to create a piece of ammunition that phases through everything but your target. Make a bow {@action Strike} against a foe who is {@condition observed} or {@condition hidden} to you (but not {@condition undetected}). The ammunition travels to your target in a straight line, passing through any non-magical barriers or walls in its way, though magical barriers stop the arrow. The shot ignores all cover, the {@condition concealed} condition, the {@condition hidden} condition, and circumstance bonuses to AC from shields. It has a +4 status bonus to hit creatures wearing any type of armor. The {@action Strike}'s damage can't be reduced with a {@feat Shield Block} reaction using a non-magical shield."
@@ -11300,7 +11300,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You fail a saving throw against a {@trait mental} effect.",
 			"entries": [
@@ -11538,7 +11538,7 @@
 			"prerequisites": "{@feat Cheek Pouches|APG}",
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You are adept at quickly moving items into your cheek pouches. You {@action Interact} to store one held item in your cheek pouches (provided it fits)."
@@ -11579,7 +11579,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"If your next action is to cast an oracle cantrip or an oracle spell that is at least 2 levels lower than the highest-level oracle spell slot you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
@@ -11602,7 +11602,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"If your next action is to cast a witch cantrip or a witch spell that is at least 2 levels lower than the highest-level witch spell slot you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
@@ -11800,7 +11800,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You blind or dazzle a creature.",
 			"entries": [
@@ -11962,7 +11962,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"Despite a lifetime filled with questionable decisions, you've managed to survive, as though you have uncanny luck that lets you avoid the consequences of your own actions. For the remainder of your turn, if you roll a failure or critical failure on a saving throw against a harmful effect, you get a success instead. Further, enemies and hazards that would damage you this turn roll the minimum possible damage.",
@@ -12092,7 +12092,7 @@
 			"prerequisites": "harmful font or healing font",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"If your next action is to use your divine font to cast a 3-action {@spell heal} or {@spell harm} spell to damage creatures, you can harness the residual energy to counterbalance opposing forces. You use your {@spell heal} or {@spell harm} spell to attempt to counteract one effect in the spell's area with the {@trait chaotic}, {@trait evil}, {@trait good}, or {@trait lawful} trait. The chosen trait must oppose one component of your deity's alignment; if your deity is neutral, you can choose any one trait."
@@ -13161,7 +13161,7 @@
 			"prerequisites": "legendary {@skill Stealth}",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You successfully use {@skill Stealth} to {@action Hide} and become {@condition hidden} from all your current foes, or use {@skill Stealth} to {@action Sneak} and become {@condition undetected} to all your current foes.",
 			"entries": [
@@ -13512,7 +13512,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"requirements": "You haven't acted yet on your turn.",
 			"entries": [
@@ -13753,7 +13753,7 @@
 			"prerequisites": "skyborn tengu heritage",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"To be a tengu is to be unburdened by the concerns of the world below. You grow a pair of magical wings or expand your existing ones. For 5 minutes, you gain a fly Speed equal to your land Speed or 20 feet, whichever is greater."
@@ -14054,7 +14054,7 @@
 			"prerequisites": "spirit instinct",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "You fail, but don't critically fail, a {@skill Perception} check or a skill check.",
 			"entries": [
@@ -14745,7 +14745,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "An ally you can see falls to 0 Hit Points.",
 			"entries": [
@@ -14843,7 +14843,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number":  1
 			},
 			"trigger": "A foe takes a {@condition hostile} action against you in combat.",
 			"entries": [
@@ -15691,7 +15691,7 @@
 			"prerequisites": "{@feat Acrobat Dedication|APG}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number":  1
 			},
 			"requirements": "Your most recent action was to {@action Tumble Through} or Tumbling {@action Strike}, and you successfully moved through an enemy's space.",
 			"entries": [
@@ -16541,7 +16541,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number":  1
 			},
 			"entries": [
 				"You carefully consider your case and narrow down some of the details. When you {@action Pursue a Lead|APG}, you can spend 10 minutes instead of 1 minute to ask two questions of the GM as you complete the activity. The GM must answer truthfully with \"yes\" or \"no,\" though if the answer would be misleading or have no practical application to your investigation the GM can answer \"immaterial.\" You can't use Whodunnit? more than once for the same lead, even across different days.",
