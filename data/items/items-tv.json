@@ -11143,8 +11143,43 @@
 			"usage": "held in 2 hands",
 			"bulk": "as tools of the normal type",
 			"category": "Held",
+			"perception": {
+				"default": 9,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "two common languages"
+				}
+			],
+			"skills": {
+				"Intimidation": {
+					"default": 9
+				},
+				"one skill associated with their use": {
+					"default": 9
+				}
+			},
+			"abilityMods": {
+				"Int": 2,
+				"Wis": 2,
+				"Cha": 2
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 7
+				}
+			},
 			"entries": [
-				"{@skill Perception} +9; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (two common languages) Skills {@skill Intimidation} +9, one skill associated with their use +9 Int +2, Wis +2, Cha +2 Will +7 Tools that are severely misused or left in malevolent circumstances can develop malicious sapience, dedicated to critiquing those who use them. Such heckling tools are often born from implements useful to adventurers because such people are the likely to misuse tools or leave them in a corrupting situation. When you first set to using the tools, they fuse to you. Used for their intended purpose, the tools telepathically badger and disparage you, mocking your abilities and giving you ill-founded advice. You must succeed at a DC 19 Will save to realize this badgering comes from the tools and not your own negative thoughts. Instead of the tool's usual bonus, you take a \u20132 circumstance penalty to checks made using heckling tools. Once you realize the tools are cursed, you can suppress their {@trait negative} effects, gaining their typical bonus for 24 hours if you succeed at a DC 17 {@skill Deception} or {@skill Diplomacy} check to placate them, often by offering obsequious, public admiration."
+				"Tools that are severely misused or left in malevolent circumstances can develop malicious sapience, dedicated to critiquing those who use them. Such heckling tools are often born from implements useful to adventurers because such people are the likely to misuse tools or leave them in a corrupting situation. When you first set to using the tools, they fuse to you. Used for their intended purpose, the tools telepathically badger and disparage you, mocking your abilities and giving you ill-founded advice. You must succeed at a DC 19 Will save to realize this badgering comes from the tools and not your own negative thoughts. Instead of the tool's usual bonus, you take a \u20132 circumstance penalty to checks made using heckling tools. Once you realize the tools are cursed, you can suppress their {@trait negative} effects, gaining their typical bonus for 24 hours if you succeed at a DC 17 {@skill Deception} or {@skill Diplomacy} check to placate them, often by offering obsequious, public admiration."
 			]
 		},
 		{
@@ -11393,8 +11428,47 @@
 			"usage": "held in 1 hand",
 			"bulk": 1,
 			"category": "Staff",
+			"perception": {
+				"default": 25,
+				"senses": {
+					"precise": [
+						"vision (low-light) 60 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet",
+						"tremorsense 30 feet (only when touching the ground)"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "{@language Arboreal}, {@language Common}, {@language Sylvan}; {@spell speak with plants}"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 22
+				},
+				"Forest Lore": {
+					"default": 25
+				},
+				"Nature": {
+					"default": 25
+				}
+			},
+			"abilityMods": {
+				"Int": 4,
+				"Wis": 6,
+				"Cha": 4
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 27
+				}
+			},
 			"entries": [
-				"{@skill Perception} +25; precise vision (low-light) 60 feet, imprecise hearing 30 feet, imprecise tremorsense 30 feet (only when touching the ground) Communication speech (Arboreal, Common, Sylvan; speak with plants) Skills {@skill Diplomacy} +22, {@skill Lore||Forest Lore} +25, {@skill Nature} +25 Int +4, Wis +6, Cha +4 Will +27 Rather than passing on when they feel their death approaching, a rare few elderly arboreals undergo a ritual of preservation. This rite fuses the arboreal's consciousness into a branch, allowing their spirit to live on within the object. The branch functions as a greater verdant staff, though the arboreal spirit allows only partners willing to safeguard nature to use the staff's spells. An arboreal who decides to become an arboreal staff is more connected to shorter-lived species than others of their kind. Most choose to endure to share their knowledge with future generations, but they take a long view in ways that can be frustrating to their wielders.",
+				"Rather than passing on when they feel their death approaching, a rare few elderly arboreals undergo a ritual of preservation. This rite fuses the arboreal's consciousness into a branch, allowing their spirit to live on within the object. The branch functions as a greater verdant staff, though the arboreal spirit allows only partners willing to safeguard nature to use the staff's spells. An arboreal who decides to become an arboreal staff is more connected to shorter-lived species than others of their kind. Most choose to endure to share their knowledge with future generations, but they take a long view in ways that can be frustrating to their wielders.",
 				"In addition to the activation and spells of a greater verdant staff, an arboreal staff can cast the spells it holds as if it were the staff's wielder, though it usually does so only to benefit a partner. The staff also has earthbind available as a 3rd-level spell."
 			]
 		},
@@ -11413,8 +11487,40 @@
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"category": "Held",
+			"perception": {
+				"default": 16,
+				"senses": {
+					"precise": [
+						"vision (low-light) 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "one language spoken by the doll's creator"
+				}
+			],
+			"skills": {
+				"One Intelligence-, Wisdom-, or Charisma-based skill chosen by the creator at": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Int": 3,
+				"Wis": 3,
+				"Cha": 3
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 16
+				}
+			},
 			"entries": [
-				"{@skill Perception} +16; precise vision (low-light) 30 feet, imprecise hearing 30 feet Communication speech (one language spoken by the doll's creator) Skills One Intelligence-, Wisdom-, or Charisma-based skill chosen by the creator at +16 Int +3, Wis +3, Cha +3 Will +16 Rather than seeking out new experiences to stave off the Bleaching, gnome spellcasters with the right know-how can infuse a small fragment of their consciousness into a doll, then send the doll off with a crew of adventurers to experience new things. Such gnomes might have difficulties that keep them from exploring or might be preoccupied with other pursuits, but the doll acts as an intermediary, transmitting the benefits of new experiences to its creator via a potent, but passive, psychic link. A bleachguard doll has the alignment and demeanor of its creator, but new experiences can cause the two to diverge. The doll's creator is neither able to control it nor are they constantly aware of its activities. If the original creator perishes, the doll sometimes becomes inert (essentially {@condition dying} as well), sometimes remains an intelligent item, and sometimes becomes a normal soulbound doll (Bestiary 304), diminished in power but with some of the item's capabilities.",
+				"Rather than seeking out new experiences to stave off the Bleaching, gnome spellcasters with the right know-how can infuse a small fragment of their consciousness into a doll, then send the doll off with a crew of adventurers to experience new things. Such gnomes might have difficulties that keep them from exploring or might be preoccupied with other pursuits, but the doll acts as an intermediary, transmitting the benefits of new experiences to its creator via a potent, but passive, psychic link. A bleachguard doll has the alignment and demeanor of its creator, but new experiences can cause the two to diverge. The doll's creator is neither able to control it nor are they constantly aware of its activities. If the original creator perishes, the doll sometimes becomes inert (essentially {@condition dying} as well), sometimes remains an intelligent item, and sometimes becomes a normal soulbound doll (Bestiary 304), diminished in power but with some of the item's capabilities.",
 				"Once per day, the doll sends its creator a dream of the day's events. Each bleachguard doll can cast the cantrips light (3rd level), prestidigitation, and one other 3rd-level cantrip, along with one spell (at 3rd level) that can be cast once per day. The creator chooses the cantrip and spells, which can't require an attack roll or saving throw, during the doll's creation.",
 				{
 					"type": "ability",
@@ -11467,8 +11573,49 @@
 			"usage": "held in 1 hand",
 			"bulk": "\u2014",
 			"category": "Held",
+			"perception": {
+				"default": 20,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "{@language Celestial}, {@language Common}, and two other common languages"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 21
+				},
+				"Medicine": {
+					"default": 22
+				},
+				"Religion": {
+					"default": 19
+				},
+				"Sarenrae Lore": {
+					"default": 23
+				}
+			},
+			"abilityMods": {
+				"Int": 2,
+				"Wis": 5,
+				"Cha": 4
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 20
+				}
+			},
 			"entries": [
-				"{@skill Perception} +20; precise vision 30 feet, imprecise hearing 30 feet Communication speech (Celestial, Common, and two other common languages) Skills {@skill Diplomacy} +21, {@skill Medicine} +22, {@skill Religion} +19, {@deity Sarenrae} {@skill Lore} +23 Int +2, Wis +5, Cha +4 Will +20 Prayer beads given prolonged exposure to spiritual energies at sacred Sarenite sites can attain sapience as Dawnflower beads. Other such objects hold the spirits of Sarenite priests who dedicated themselves to their work beyond death. Dawnflower beads function as greater holy prayer beads. They don't re-attune to other deities but allow any good or neutral divine spellcaster to use them, though they attempt to talk their wielder out of morally questionable acts. Add positive luminance to the beads' spell list, available to be cast once per day. Dawnflower beads also have the following activation.",
+				"Prayer beads given prolonged exposure to spiritual energies at sacred Sarenite sites can attain sapience as Dawnflower beads. Other such objects hold the spirits of Sarenite priests who dedicated themselves to their work beyond death. Dawnflower beads function as greater holy prayer beads. They don't re-attune to other deities but allow any good or neutral divine spellcaster to use them, though they attempt to talk their wielder out of morally questionable acts. Add positive luminance to the beads' spell list, available to be cast once per day. Dawnflower beads also have the following activation.",
 				{
 					"type": "ability",
 					"components": [
@@ -11497,8 +11644,43 @@
 			"usage": "worn armor",
 			"bulk": 1,
 			"category": "Armor",
+			"perception": {
+				"default": 23,
+				"senses": {
+					"precise": [
+						"vision (darkvision) 60 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "{@language Celestial}, {@language Common}"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 25
+				},
+				"Religion": {
+					"default": 25
+				}
+			},
+			"abilityMods": {
+				"Int": 4,
+				"Wis": 4,
+				"Cha": 6
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 25
+				}
+			},
 			"entries": [
-				"{@skill Perception} +23; precise vision (darkvision) 60 feet, imprecise hearing 30 feet Communication telepathy (Celestial, Common) Skills {@skill Diplomacy} +25, {@skill Religion} +25 Int +4, Wis +4, Cha +6 Will +25 A suit of autumn's embrace armor (page 14) can gain sapience when lovingly crafted by a fae monarch of sufficient power; a suit of faerie queen's bower is one such example. The armor is happy to give you and your companions counsel, hoping to guide you on a path of benevolence and aid you in battles against forces that seek to cause harm to the natural world. It refuses access to its magic to anyone who causes undue harm to plants or animals. In addition to the features and activation of autumn's embrace, faerie queen's bower has the following activation.",
+				"A suit of autumn's embrace armor (page 14) can gain sapience when lovingly crafted by a fae monarch of sufficient power; a suit of faerie queen's bower is one such example. The armor is happy to give you and your companions counsel, hoping to guide you on a path of benevolence and aid you in battles against forces that seek to cause harm to the natural world. It refuses access to its magic to anyone who causes undue harm to plants or animals. In addition to the features and activation of autumn's embrace, faerie queen's bower has the following activation.",
 				{
 					"type": "ability",
 					"activity": {
@@ -11534,8 +11716,55 @@
 			"usage": "held in 1 hand or free-standing",
 			"bulk": "\u2014",
 			"category": "Held",
+			"perception": {
+				"default": 11,
+				"senses": {
+					"precise": [
+						"vision 60 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "five languages"
+				}
+			],
+			"skills": {
+				"Arcana": {
+					"default": 12
+				},
+				"Nature": {
+					"default": 9
+				},
+				"Occultism": {
+					"default": 10
+				},
+				"Religion": {
+					"default": 9
+				},
+				"Scribing Lore": {
+					"default": 12
+				},
+				"Society": {
+					"default": 10
+				}
+			},
+			"abilityMods": {
+				"Int": 4,
+				"Wis": 3,
+				"Cha": 1
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 11
+				}
+			},
 			"entries": [
-				"{@skill Perception} +11; precise vision 30 feet, imprecise hearing 30 feet Communication speech (five languages) Skills {@skill Arcana} +12, {@skill Nature} +9, {@skill Occultism} +10, {@skill Religion} +9, {@skill Lore||Scribing Lore} +12, {@skill Society} +10 Int +4, Wis +3, Cha +1 Will +11 A colorful feather adorns an inquisitive quill, which never runs out of ink. Essentially a Tiny construct, an inquisitive quill can stand on its own when given a surface, balancing as it writes or stands. (Drawing a line gives it an effective Speed of 5 feet.) It has strong curiosity, eagerly writing any information offered to it, often acting as a scribe for its partner. The quill copies text and drawings it can see or transcribes dictation it hears. It writes at a rate that rivals that of an expert scribe."
+				"A colorful feather adorns an inquisitive quill, which never runs out of ink. Essentially a Tiny construct, an inquisitive quill can stand on its own when given a surface, balancing as it writes or stands. (Drawing a line gives it an effective Speed of 5 feet.) It has strong curiosity, eagerly writing any information offered to it, often acting as a scribe for its partner. The quill copies text and drawings it can see or transcribes dictation it hears. It writes at a rate that rivals that of an expert scribe."
 			]
 		},
 		{
@@ -11553,8 +11782,47 @@
 			],
 			"bulk": "L",
 			"category": "Grimoire",
+			"perception": {
+				"default": 17,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet",
+						"sense of heat 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "{@language Common}, {@language Ignan}, and two other common languages"
+				}
+			],
+			"skills": {
+				"Arcana": {
+					"default": 21
+				},
+				"Fire Lore": {
+					"default": 23
+				},
+				"Nature": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Int": 4,
+				"Wis": 0,
+				"Cha": 5
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 17
+				}
+			},
 			"entries": [
-				"{@skill Perception} +17; precise vision 30 feet, imprecise hearing 30 feet, imprecise sense of heat 30 feet Communication telepathy (Common, Ignan, and two other common languages) Skills {@skill Arcana} +21, {@skill Lore||Fire Lore} +23, {@skill Nature} +17 Int +4, Wis +0, Cha +5 Will +17 A kindled tome is a book of lingering blazes (Secrets of Magic 162) awakened to sapience and imbued with an enthusiasm for fire. It encourages you to learn new fire spells to inscribe within its pages. When you attempt a skill check to {@action Learn a Spell} to add a spell with the {@trait fire} trait to the kindled tome, you treat your result as one step better than you rolled. The tome can be disparaging about other spells as \"a waste of good page space,\" especially if those spells have the {@trait cold} or {@trait water} traits.",
+				"A kindled tome is a {@item book of lingering blaze|SoM|book of lingering blazes} awakened to sapience and imbued with an enthusiasm for fire. It encourages you to learn new fire spells to inscribe within its pages. When you attempt a skill check to {@action Learn a Spell} to add a spell with the {@trait fire} trait to the kindled tome, you treat your result as one step better than you rolled. The tome can be disparaging about other spells as \"a waste of good page space,\" especially if those spells have the {@trait cold} or {@trait water} traits.",
 				"In addition to the activation of a book of lingering blazes, a kindled tome has the following activations.",
 				{
 					"type": "ability",
