@@ -203,6 +203,22 @@ function updateFolder (folder) {
 							}
 						}
 					}
+					if (cr.defenses && cr.defenses.resistances) {
+						cr.defenses.resistances = cr.defenses.resistances.map(r => {
+							if (r.note) {
+								r.note = r.note.trimAnyChar("()");
+							}
+							return r;
+						})
+					}
+					if (cr.defenses && cr.defenses.weaknesses) {
+						cr.defenses.weaknesses = cr.defenses.weaknesses.map(r => {
+							if (r.note) {
+								r.note = r.note.trimAnyChar("()");
+							}
+							return r;
+						})
+					}
 					if (cr.languages && cr.languages.languages && cr.languages.languages.length && cr.languages.languages.find(k => k.match(/[A-Z]/g))) {
 						console.log(`\tUpdating ${cr.name} languages to lowercase in ${file}...`)
 						cr.languages.languages = cr.languages.languages.map(k => k.toLowerCase())
