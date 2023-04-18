@@ -11878,8 +11878,46 @@
 			"usage": "worn",
 			"bulk": "L",
 			"category": "Worn",
+			"perception": {
+				"default": 13,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "{@language Common} and 1 imparted language"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 13
+				},
+				"Nobility Lore": {
+					"default": 13
+				},
+				"Society": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Int": 3,
+				"Wis": 3,
+				"Cha": 3
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 14
+				}
+			},
 			"entries": [
-				"{@skill Perception} +13; precise vision 30 feet, imprecise hearing 30 feet Communication speech (Common and 1 imparted language) Skills {@skill Diplomacy} +13, {@skill Lore||Nobility Lore} +13, {@skill Society} +13 Int +3 Wis +3, Cha +3 Will +14 Forged in platinum, a majordomo torc is engraved with heraldic insignias along with one language's alphabet, much like a choker of elocution. You gain a +1 item bonus to {@skill Society} checks and the ability to understand, speak, and write the torc's language. Your excellent elocution reduces the DC of the flat check to perform an auditory action while {@condition deafened} from 5 to 3.",
+				"Forged in platinum, a majordomo torc is engraved with heraldic insignias along with one language's alphabet, much like a choker of elocution. You gain a +1 item bonus to {@skill Society} checks and the ability to understand, speak, and write the torc's language. Your excellent elocution reduces the DC of the flat check to perform an auditory action while {@condition deafened} from 5 to 3.",
 				"Upon being invested, the torc appoints itself your majordomo and, given the chance, takes over coordinating your social calendar, engagements, and wardrobe. A majordomo torc has a prim, fussy disposition, and although it defers to you, it can grow sardonic if you frequently ignore its advice. The torc has the following activation.",
 				{
 					"type": "ability",
@@ -11917,8 +11955,46 @@
 			"usage": "worn",
 			"bulk": "\u2014",
 			"category": "Worn",
+			"perception": {
+				"default": 15,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "{@language Common} and two other common languages"
+				}
+			],
+			"skills": {
+				"Pathfinder Lore": {
+					"default": 15
+				},
+				"Survival": {
+					"default": 13
+				},
+				"Society": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Int": 3,
+				"Wis": 3,
+				"Cha": 1
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 14
+				}
+			},
 			"entries": [
-				"{@skill Perception} +15; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (Common and two other common languages) {@skill Lore||Skills Pathfinder Lore} +15, {@skill Society} +13, {@skill Survival} +13 Int +3, Wis +3, Cha +1 Will +14 A Pathfinder's mentor is a bi‑resonant wayfinder (Pathfinder Lost Omens World Guide 17) that has developed sapience. Most Pathfinder's mentors are eager explorers that object to staying in one location for long, urging their bearers toward ancient ruins to explore, relics to study, and discoveries to make. To this end, the wayfinder acts as a guide, making {@skill Survival} checks on your behalf during your travels. A Pathfinder's mentor also has the following activations.",
+				"A Pathfinder's mentor is a bi‑resonant wayfinder (Pathfinder Lost Omens World Guide 17) that has developed sapience. Most Pathfinder's mentors are eager explorers that object to staying in one location for long, urging their bearers toward ancient ruins to explore, relics to study, and discoveries to make. To this end, the wayfinder acts as a guide, making {@skill Survival} checks on your behalf during your travels. A Pathfinder's mentor also has the following activations.",
 				{
 					"type": "ability",
 					"activity": {
@@ -11971,8 +12047,46 @@
 			"usage": "worn cloak",
 			"bulk": "L",
 			"category": "Apex",
+			"perception": {
+				"default": 30,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "{@language Common} and two other languages, usually regional and ancestral"
+				}
+			],
+			"skills": {
+				"Society": {
+					"default": 31
+				},
+				"Thievery": {
+					"default": 31
+				},
+				"Underworld Lore": {
+					"default": 31
+				}
+			},
+			"abilityMods": {
+				"Int": 5,
+				"Wis": 5,
+				"Cha": 5
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 30
+				}
+			},
 			"entries": [
-				"{@skill Perception} +30; precise vision 30 feet, imprecise hearing 30 feet Communication speech (Common and two other languages, usually regional and ancestral) Skills {@skill Society} +31, {@skill Thievery} +31, {@skill Lore||Underworld Lore} +31 Int +5, Wis +5, Cha +5 Will +30 Each purloining cloak is a mercurial mantle once worn by a legendary thief or two. The cloak became infused with a daredevil spirit and a penchant for high-stakes thievery. If its owner isn't willing to partake in such activities, the cloak tries to convince them to sell or give it to someone who will. A purloining cloak can use tendrils of its cloth to attempt {@skill Thievery} checks to {@action Palm an Object} or {@action Steal}, proudly offering you its loot later. In addition to those of a mercurial mantle, a purloining cloak has the following activations.",
+				"Each purloining cloak is a mercurial mantle once worn by a legendary thief or two. The cloak became infused with a daredevil spirit and a penchant for high-stakes thievery. If its owner isn't willing to partake in such activities, the cloak tries to convince them to sell or give it to someone who will. A purloining cloak can use tendrils of its cloth to attempt {@skill Thievery} checks to {@action Palm an Object} or {@action Steal}, proudly offering you its loot later. In addition to those of a mercurial mantle, a purloining cloak has the following activations.",
 				{
 					"type": "ability",
 					"activity": {
@@ -12017,8 +12131,46 @@
 			"usage": "held in 2 hands",
 			"bulk": 2,
 			"category": "Held",
+			"perception": {
+				"default": 12,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "{@language Common} and two other common languages"
+				}
+			],
+			"skills": {
+				"Clockwork Lore": {
+					"default": 15
+				},
+				"Crafting": {
+					"default": 13
+				},
+				"Religion": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Int": 4,
+				"Wis": 3,
+				"Cha": 0
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 12
+				}
+			},
 			"entries": [
-				"{@skill Perception} +12; precise vision 30 feet, imprecise hearing 30 feet Communication telepathy (Common and two other common languages) {@skill Lore||Skills Clockwork Lore} +15, {@skill Crafting} +13, {@skill Religion} +11 Int +4, Wis +3, Cha +0 Will +12 Sacred to the faith of {@deity Brigh|LOGM}, a toolkit of bronze whispers has been used with such devotion it has developed a consciousness and personality that can be a blessing to a partnered crafter. A toolkit of bronze whispers functions as a set of sterling artisan's tools. Such toolkits focus on new creations and enthusiastically suggest crafting techniques to wielders. A toolkit of bronze whispers knows common item formulas of its level or lower and any other formulas the GM chooses. It can teach these formulas. You must still spend the time to copy a formula before you can use it."
+				"Sacred to the faith of {@deity Brigh|LOGM}, a toolkit of bronze whispers has been used with such devotion it has developed a consciousness and personality that can be a blessing to a partnered crafter. A toolkit of bronze whispers functions as a set of sterling artisan's tools. Such toolkits focus on new creations and enthusiastically suggest crafting techniques to wielders. A toolkit of bronze whispers knows common item formulas of its level or lower and any other formulas the GM chooses. It can teach these formulas. You must still spend the time to copy a formula before you can use it."
 			]
 		},
 		{
@@ -12037,8 +12189,46 @@
 			"usage": "worn",
 			"bulk": "\u2014",
 			"category": "Worn",
+			"perception": {
+				"default": 30,
+				"senses": {
+					"precise": [
+						"vision (darkvision) 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "{@language Common} and two other common languages; {@spell speak with plants}"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 28
+				},
+				"Medicine": {
+					"default": 32
+				},
+				"Nature": {
+					"default": 32
+				}
+			},
+			"abilityMods": {
+				"Int": 6,
+				"Wis": 10,
+				"Cha": 5
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 32
+				}
+			},
 			"entries": [
-				"{@skill Perception} +30; precise vision (darkvision) 30 feet, imprecise hearing 30 feet Communication telepathy (Common and two other common languages; speak with plants) Skills {@skill Diplomacy} +28, {@skill Medicine} +32, {@skill Nature} +32 Int +6, Wis +10, Cha +5 Will +32 An encounter with a toshigami, the enigmatic kami who protect cherry trees, is rare, though often sought after and treasured by those who achieve such an encounter. Only a handful of mortals can truthfully claim to have seen a toshigami, let alone met one, though many popular fireside tales tell of virtuous souls receiving a toshigami's blessing to fight for a worthy cause. Such stories have a basis in fact; every so often, a toshigami gives a worthy mortal a flower from their ward, time-locked in perfect bloom and granted sapience. Such toshigami blossoms are more sociable than their creators. Like toshigami, a blossom has a strong curiosity about the mortal world. If you wear a toshigami blossom, it can intercede for you, helping you make a good impression.",
+				"An encounter with a toshigami, the enigmatic kami who protect cherry trees, is rare, though often sought after and treasured by those who achieve such an encounter. Only a handful of mortals can truthfully claim to have seen a toshigami, let alone met one, though many popular fireside tales tell of virtuous souls receiving a toshigami's blessing to fight for a worthy cause. Such stories have a basis in fact; every so often, a toshigami gives a worthy mortal a flower from their ward, time-locked in perfect bloom and granted sapience. Such toshigami blossoms are more sociable than their creators. Like toshigami, a blossom has a strong curiosity about the mortal world. If you wear a toshigami blossom, it can intercede for you, helping you make a good impression.",
 				"A toshigami blossom has the following activations.",
 				{
 					"type": "ability",
