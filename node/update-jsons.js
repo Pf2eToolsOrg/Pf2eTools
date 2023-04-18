@@ -238,6 +238,33 @@ function updateFolder (folder) {
 							) {
 								delete k.name;
 							}
+
+							const mapSpellLevel = (l) => {
+								l.spells = l.spells.map(s => {
+									if (s.note) {
+										if (typeof s.note === "string") {
+											s.notes = [s.note];
+										} else {
+											s.notes = s.note;
+										}
+										delete s.note;
+									}
+									return s;
+								});
+								return l;
+							}
+
+							if (k.entry) {
+								for (let l = 0; l <= 10; l++) {
+									const level = l.toString();
+									if (k.entry[level]) {
+										k.entry[level] = mapSpellLevel(k.entry[level]);
+									}
+									if (k.entry.constant && k.entry.constant[level]) {
+										k.entry.constant[level] = mapSpellLevel(k.entry.constant[level]);
+									}
+								}
+							}
 							return k
 						})
 					}
