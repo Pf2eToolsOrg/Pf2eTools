@@ -3,6 +3,12 @@ const utS = require("./util-search-index");
 
 async function main () {
 	console.log("Creating primary index...");
+
+	if (!fs.existsSync("search")) {
+		console.log("Creating search folder.");
+		fs.mkdirSync("search");
+	}
+
 	const index = await utS.UtilSearchIndex.pGetIndex();
 	fs.writeFileSync("search/index.json", JSON.stringify(index), "utf8");
 
