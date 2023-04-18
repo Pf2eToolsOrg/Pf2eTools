@@ -1322,7 +1322,11 @@ class Converter {
 		// TODO:
 		opts = opts || {};
 		const rendered = opts.isText ? entries : this._renderEntries(entries, {asString: true, noTags: true});
-		return rendered.split(", ")
+
+		const sep = /\s*(?:;|,|$)\s*/;
+		const parts = rendered.split(sep);
+		if (opts.keepEmpty) return parts
+		else return parts.filter(s => s.length > 0)
 	}
 
 	_parseHazardProperties (obj) {
