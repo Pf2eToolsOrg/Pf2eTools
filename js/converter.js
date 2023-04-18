@@ -475,10 +475,10 @@ class Converter {
 		if (matched) {
 			obj.frequency = {};
 			const freq = matched[1].toLowerCase();
-			if (freq === "once") obj.frequency.freq = 1;
-			else if (freq === "twice") obj.frequency.freq = 2;
-			else if (!Number.isNaN(Number(freq.split(" ")[0]))) obj.frequency.freq = Number(freq.split(" ")[0]);
-			else obj.frequency.freq = freq.split(" ")[0];
+			if (freq === "once") obj.frequency.number = 1;
+			else if (freq === "twice") obj.frequency.number = 2;
+			else if (!Number.isNaN(Number(freq.split(" ")[0]))) obj.frequency.number = Number(freq.split(" ")[0]);
+			else obj.frequency.number = freq.split(" ")[0];
 
 			if (matched[2] === "every") obj.frequency.recurs = true;
 			if (matched[3]) obj.frequency.interval = Number(matched[3]);
