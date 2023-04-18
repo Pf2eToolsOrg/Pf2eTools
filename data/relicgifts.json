@@ -1,10 +1,769 @@
 {
 	"relicGift": [
 		{
-			"name": "Charming",
+			"name": "Intelligent Relic",
+			"source": "TV",
+			"page": 200,
+			"tier": "minor",
+			"traits": [
+				"intelligent"
+			],
+			"aspects": [
+				"any"
+			],
+			"entries": [
+				"Your relic becomes an intelligent item. It has an alignment within one step of yours on each axis if not matching yours. It gains an alignment trait matching its alignment. The relic possesses precise sight at a range of 30 feet and imprecise hearing at a range of 30 feet. It is trained in {@skill Perception}, increasing its proficiency when you increase yours. Choose whether it can speak aloud or communicate with you telepathically. It knows languages fitting its backstory, usually from among those you know. The relic is also trained in three skills, increasing one skill's proficiency each time the relic gains a new gift. Your relic's mental ability scores begin at +3, +2, and +1, arranged as you choose. The relic is also trained in Will saves, and its proficiency increases as yours does. Each time you gain a new gift, increase one of the relic's mental ability scores by 2 or two by 1. The relic otherwise functions as normal for an intelligent item."
+			],
+			"miscTags": [
+				"altersRelic"
+			]
+		},
+		{
+			"name": "Time Reversal",
+			"source": "TV",
+			"page": 200,
+			"tier": "grand",
+			"traits": [
+				"divination"
+			],
+			"aspects": [
+				"time"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The relic casts {@spell time beacon|som} on you."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Time Jump",
+			"source": "TV",
+			"page": 200,
+			"tier": "major",
+			"traits": [
+				"transmutation"
+			],
+			"aspects": [
+				"time"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Your relic casts {@spell time jump|som} on you to your specifications."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Temporal Pulse",
+			"source": "TV",
+			"page": 200,
+			"tier": "major",
+			"traits": [
+				"transmutation"
+			],
+			"aspects": [
+				"time"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You make time shudder around you, stealing it from enemies and granting it to allies. Creatures of your choice within 30 feet must attempt a Will save. For each creature you render {@condition slowed} with this gift, you can render one ally within 30 feet, including you, {@condition quickened} for 1 round.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is {@condition slowed 1}.",
+								"Critical Failure": "The creature is {@condition slowed 2}."
+							}
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Precognition",
+			"source": "TV",
+			"page": 200,
+			"tier": "major",
+			"traits": [
+				"divination",
+				"prediction"
+			],
+			"aspects": [
+				"time"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "Your turn starts",
+					"entries": [
+						"You analyze diverging time streams to determine the best course of action. Resolve two turns as if they occurred, then choose which one happens. The other does not occur."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Sands of the Hourglass",
+			"source": "TV",
+			"page": 200,
+			"tier": "minor",
+			"traits": [
+				"transmutation"
+			],
+			"aspects": [
+				"time"
+			],
+			"prerequisites": "The relic is 5th level or higher.",
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You target one creature within 30 feet, temporarily imposing the decrepitude of time on it. The target must attempt a Fortitude saving throw. The {@condition clumsy} and {@condition enfeebled} conditions last 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target becomes {@condition clumsy 1} and {@condition enfeebled 1}.",
+								"Failure": "The target becomes {@condition clumsy 2}, {@condition enfeebled 2}, and {@condition drained 1}.",
+								"Critical Failure": "The target becomes {@condition clumsy 3}, {@condition enfeebled 3}, and {@condition drained 2}."
+							}
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Borrow Time",
+			"source": "TV",
+			"page": 200,
+			"tier": "minor",
+			"traits": [
+				"transmutation"
+			],
+			"aspects": [
+				"time"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"entries": [
+						"You point the relic at a creature within 30 feet, imbuing it with urgency. The creature gains the {@condition quickened} condition for 1 round. After the condition ends, the creature is {@condition slowed 1} for 1 round and temporarily immune to this gift until you next perform your daily preparations."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Against All Odds",
+			"source": "TV",
+			"page": 200,
+			"tier": "grand",
+			"traits": [
+				"abjuration",
+				"fortune"
+			],
+			"aspects": [
+				"luck"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"interval": 10,
+						"number": 1,
+						"unit": "minute"
+					},
+					"trigger": "You attempt a skill check with a DC that is at least 15 higher than your bonus in the skill",
+					"entries": [
+						"You roll twice and take the better result."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Steal Luck",
+			"source": "TV",
+			"page": 199,
+			"tier": "major",
+			"traits": [
+				"contingency",
+				"divination"
+			],
+			"aspects": [
+				"luck"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "You or a creature within 30 feet of you rolls two d20s for a {@trait fortune} or {@trait misfortune} effect and you like the higher roll",
+					"entries": [
+						"You steal the higher of the two numbers the triggering target rolled; the target must use the other result. Until you make your next daily preparations, you can substitute that number for one d20 roll made for a saving throw or skill check you have to make against an effect created by an enemy, hazard, or the environment. Doing so is a fortune effect. If you fail to do so before your next daily preparations, you lose the stored number."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Clean Luck",
+			"source": "TV",
+			"page": 199,
+			"tier": "major",
+			"traits": [
+				"abjuration",
+				"fortune"
+			],
+			"aspects": [
+				"luck"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"interval": 10,
+						"number": 1,
+						"unit": "minute"
+					},
+					"trigger": "You attempt a d20 roll affected by a {@trait misfortune} effect",
+					"entries": [
+						"Negate the {@trait misfortune} effect. Any other {@trait fortune} effect still applies."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Whammy",
+			"source": "TV",
+			"page": 199,
+			"tier": "minor",
+			"traits": [
+				"misfortune",
+				"transmutation"
+			],
+			"aspects": [
+				"luck"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "An enemy within 30 feet rolls a success on an attack roll, saving throw, or skill check",
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"Your relic sends out a wave of bad luck, forcing the creature to reroll and take the worse result."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Swap Luck",
+			"source": "TV",
+			"page": 199,
+			"tier": "minor",
+			"traits": [
+				"abjuration"
+			],
+			"aspects": [
+				"luck"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"trigger": "You roll a failure or critical failure on a saving throw against an effect with multiple targets",
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"You swap rolls with another target who's willing to swap with you. Each of you determines the new results with your new rolls."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Beginner's Luck",
+			"source": "TV",
+			"page": 199,
+			"tier": "minor",
+			"traits": [
+				"divination",
+				"fortune"
+			],
+			"aspects": [
+				"luck"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "You attempt a d20 roll you're untrained in",
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"You treat your proficiency bonus as equal to half your level, or if the relic is 7th level or higher, as equal to your level. Then, roll twice, taking the better of the two results. This doesn't allow you to use a skill's trained actions."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Quickening Emotion",
+			"source": "TV",
+			"page": 199,
+			"tier": "grand",
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental"
+			],
+			"aspects": [
+				"emotion"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "You are the target of an {@trait emotion} effect from a hostile source",
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"entries": [
+						"The relic attempts a counteract check. If the check succeeds, the relic absorbs the effect completely, negating it. Instead, you're {@condition quickened} for up to 1 minute, but no longer than the triggering effect's duration. You then become temporarily immune to this effect for 1 hour."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Fervent Spell",
+			"source": "TV",
+			"page": 199,
+			"tier": "major",
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental"
+			],
+			"aspects": [
+				"emotion"
+			],
+			"prerequisites": "{@relicGift fervor|TV} gift",
+			"entries": [
+				"While the relic's fervor gift lasts, you have access to the spell provided by the emotional state, which you can cast using your own spell slots. You also have access to the following activation.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"entries": [
+						"The relic {@action Cast a Spell||Casts the Spell} associated with its emotional fervor at the spell's lowest level."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Emotion Conduit",
+			"source": "TV",
+			"page": 199,
+			"tier": "major",
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental"
+			],
+			"aspects": [
+				"emotion"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"entries": [
+						"You channel your relic's emotion at a target within 30 feet, overpowering an {@trait emotion} effect on that creature. The relic attempts a counteract check. If the check succeeds, the target feels a sudden rush of the relic's emotion, and the counteracted effect ends on the target. The target is temporarily immune to your relic's emotion conduit until you make your next daily preparations."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Fervor",
+			"source": "TV",
+			"page": 199,
+			"tier": "minor",
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental"
+			],
+			"aspects": [
+				"emotion"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You gain the emotional fervor benefits for your relic's emotional state (see {@archetype Cathartic Mage|SoM|Cathartic Mage Archetype}) for the next 3 rounds, but ignore the spell associated with the fervor. The feeling wears off quickly, so you experience no emotional fallout."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Emotion Surge",
+			"source": "TV",
+			"page": 199,
+			"tier": "minor",
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental"
+			],
+			"aspects": [
+				"emotion"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"A surge of emotion emanates from your relic, granting a +1 status bonus to skill checks determined by the relic's emotion. This bonus lasts for 1 minute.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								"{@b Anger:} {@skill Athletics} checks",
+								"{@b Awe:} {@skill Performance} checks",
+								"{@b Dedication:} Checks to {@action Recall Knowledge}",
+								"{@b Fear:} {@skill Stealth} checks",
+								"{@b Hatred:} {@skill Intimidation} checks",
+								"{@b Joy:} {@skill Diplomacy} checks",
+								"{@b Love:} {@skill Medicine} checks",
+								"{@b Misery:} {@skill Survival} checks",
+								"{@b Pride:} {@skill Society} checks",
+								"{@b Remorse:} {@skill Deception} checks"
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Dominant Emotion",
 			"source": "TV",
 			"page": 198,
 			"tier": "minor",
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental"
+			],
+			"aspects": [
+				"emotion"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"trigger": "You would be adversely affected by an {@trait emotion} effect",
+					"entries": [
+						"The relic tries to neutralize the triggering effect with its own emotion, attempting a counteract check. If the check succeeds, you feel a sudden rush of the relic's emotion and the counteracted effect doesn't take hold of you."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Artistic Perfection",
+			"source": "TV",
+			"page": 198,
+			"tier": "grand",
+			"traits": [
+				"transmutation"
+			],
+			"aspects": [
+				"artistry"
+			],
+			"entries": [
+				"Your relic enhances your skill with {@skill Crafting} or {@skill Performance}. (Choose one.) If you succeed at a check with the chosen skill, you get a critical success instead."
+			],
+			"miscTags": [
+				"grantsPassive"
+			]
+		},
+		{
+			"name": "Enthralling",
+			"source": "TV",
+			"page": 198,
+			"tier": "major",
+			"traits": [
+				"auditory",
+				"emotion",
+				"enchantment"
+			],
+			"aspects": [
+				"artistry"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You speak at length about or demonstrate your craft, or you enact a performance. The relic casts enthrall at a level equal to half its own. If you have legendary proficiency in {@skill Crafting} or {@skill Performance}, creatures can't critically succeed on their saves against this spell. You can use {@action Sustain an Activation} to sustain the effect as you would the spell."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Charming",
+			"source": "TV",
+			"page": 198,
+			"tier": "major",
 			"traits": [
 				"auditory",
 				"emotion",
@@ -28,7 +787,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -37,7 +796,7 @@
 				}
 			],
 			"miscTags": [
-				"grantsPassive"
+				"grantsAbility"
 			]
 		},
 		{
@@ -105,7 +864,7 @@
 				"artistry"
 			],
 			"entries": [
-				"You gain the {@feat Fascinating Performance} skill feat while wearing or wielding the relic, even if you don’t meet its prerequisites. If you critically succeed against an observer, that target doesn’t become temporarily immune to this effect."
+				"You gain the {@feat Fascinating Performance} skill feat while wearing or wielding the relic, even if you don't meet its prerequisites. If you critically succeed against an observer, that target doesn't become temporarily immune to this effect."
 			],
 			"miscTags": [
 				"grantsPassive"
@@ -1136,7 +1895,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"number":  1
+						"number": 1
 					},
 					"entries": [
 						"The relic casts {@spell fly} targeting you."
@@ -1215,7 +1974,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"number":  1
+						"number": 1
 					},
 					"entries": [
 						"Your relic summons a creature to fight at your side, casting {@spell summon animal} with a level of half the item's level rounded up. You can {@action sustain an activation||Sustain this Activation} as you would the spell."
@@ -1287,7 +2046,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  2,
+						"number": 2,
 						"unit": "day"
 					},
 					"entries": [
@@ -1435,7 +2194,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -1505,7 +2264,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1542,7 +2301,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1631,7 +2390,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1706,7 +2465,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1764,7 +2523,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -1801,7 +2560,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -1838,7 +2597,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -1992,7 +2751,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -2047,7 +2806,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2083,7 +2842,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2135,7 +2894,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2180,7 +2939,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2218,7 +2977,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2254,7 +3013,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -2359,7 +3118,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2396,7 +3155,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -2506,7 +3265,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2613,7 +3372,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2761,7 +3520,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2830,7 +3589,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -2867,7 +3626,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2995,7 +3754,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -3128,7 +3887,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3173,7 +3932,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3277,7 +4036,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3314,7 +4073,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3369,7 +4128,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -3408,7 +4167,7 @@
 					],
 					"trigger": "You're about to roll a saving throw",
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3445,7 +4204,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3483,7 +4242,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3520,7 +4279,7 @@
 					],
 					"trigger": "An ally within 30 feet takes damage",
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3591,7 +4350,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3628,7 +4387,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3666,7 +4425,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3703,7 +4462,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [

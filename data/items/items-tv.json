@@ -1,6 +1,86 @@
 {
 	"item": [
 		{
+			"name": "Fortune's Favor",
+			"source": "TV",
+			"page": 204,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"unique",
+				"enchantment",
+				"fortune",
+				"invested",
+				"magical",
+				"relic"
+			],
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"Blessed by {@deity Nivi Rhombodazzle|LOGM}, this striking silver necklace is adorned with sparkling sapphires that draw the eye of any who see it. Over the years, this necklace has appeared in many paintings and illustrations, usually around the neck of a carefree and daring adventurer or a stylish rake gambling vast sums of coin. Finding this relic is always seen as a sign of great fortune to come, but when that luck runs out, the necklace is lost just as quickly. Wearing the relic, you quickly realize how distracting it can be, granting you a +1 item bonus on {@skill Deception} checks made to {@action Feint} and on {@skill Lore||Games Lore} checks made to gamble or determine the outcome of a game of chance."
+			],
+			"aspects": [
+				"luck",
+				"mind"
+			],
+			"gifts": [
+				"beginner's luck",
+				"whammy",
+				"clean luck",
+				"perception filter",
+				"against all odds"
+			]
+		},
+		{
+			"name": "Fan of the Four Winds",
+			"source": "TV",
+			"page": 204,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"unique",
+				"air",
+				"evocation",
+				"magical",
+				"relic"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"The fan of the four winds once belonged to a sage of {@deity Gozreh} and was passed down as a sacred relic for generations to those found worthy. Since that time, no one has unlocked the fan's full powers, though many devout priests have used it to aid them in their travels. A worthy member of this order might receive the fan as a reward, as could a suitable helper of the clergy. The fan might also have been lost, allowing for a new wielder to find it. The fan of the four winds has the following activation.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You fan in a direction, and the fan casts gust of wind. If this casting is directed toward the sail of a vessel, it instead fills it with swirling air. The vessel gains a +10-foot circumstance bonus to its Speed for 8 hours."
+					]
+				}
+			],
+			"aspects": [
+				"air"
+			],
+			"gifts": [
+				"feather steps",
+				"wind barrier",
+				"lightning storm",
+				"propelling winds",
+				"living storm"
+			]
+		},
+		{
 			"name": "Anchor of Aquatic Exploration",
 			"source": "TV",
 			"page": 114,
@@ -32,7 +112,7 @@
 					],
 					"requirements": "You're underwater",
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -71,7 +151,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"requirements": "You have the Battle {@skill Medicine} action",
@@ -113,7 +193,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -263,7 +343,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "The lantern's shutters are open",
@@ -352,7 +432,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -489,7 +569,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "An ally within 20 feet of you critically hits with a {@action Strike}",
@@ -529,7 +609,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -570,7 +650,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You must be aboard a ship",
@@ -613,7 +693,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -653,7 +733,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -702,7 +782,7 @@
 						"fortune"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You rolled a saving throw of the noted type",
@@ -740,7 +820,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -885,7 +965,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You fail (but don't critically fail) an initial saving throw against a poison, or you gain {@condition persistent damage||persistent poison damage}",
@@ -932,7 +1012,7 @@
 						"conjuration"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1029,7 +1109,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1118,7 +1198,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1282,7 +1362,7 @@
 						"mental"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"requirements": "You can see your nemesis, and they're within 30 feet of you",
@@ -1347,7 +1427,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1385,7 +1465,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1483,7 +1563,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1606,7 +1686,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1669,7 +1749,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You would be hit by an attack against your AC",
@@ -1739,7 +1819,7 @@
 						"entry": "The actions required to Activate the tattoo are the same as those needed to cast its spell"
 					},
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1852,7 +1932,7 @@
 						"unit": "reaction"
 					},
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "A creature would detect you by Seeking",
@@ -1936,7 +2016,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -1974,7 +2054,7 @@
 								"envision"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2037,7 +2117,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2060,7 +2140,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2084,7 +2164,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2137,7 +2217,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2160,7 +2240,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2173,7 +2253,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2197,7 +2277,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2210,7 +2290,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2261,7 +2341,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2284,7 +2364,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2297,7 +2377,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2321,7 +2401,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2334,7 +2414,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2386,7 +2466,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2409,7 +2489,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2433,7 +2513,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2446,7 +2526,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2497,7 +2577,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2520,7 +2600,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2533,7 +2613,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2604,7 +2684,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2628,7 +2708,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2641,7 +2721,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2692,7 +2772,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2715,7 +2795,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2728,7 +2808,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2752,7 +2832,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2765,7 +2845,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2819,7 +2899,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2842,7 +2922,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2855,7 +2935,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2879,7 +2959,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2892,7 +2972,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2944,7 +3024,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -2967,7 +3047,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -2980,7 +3060,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3004,7 +3084,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3017,7 +3097,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3070,7 +3150,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3093,7 +3173,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3117,7 +3197,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3130,7 +3210,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3181,7 +3261,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3204,7 +3284,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3217,7 +3297,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3241,7 +3321,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3254,7 +3334,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3306,7 +3386,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3329,7 +3409,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3342,7 +3422,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3366,7 +3446,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3379,7 +3459,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3450,7 +3530,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3474,7 +3554,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3487,7 +3567,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3539,7 +3619,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3562,7 +3642,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3575,7 +3655,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3599,7 +3679,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3612,7 +3692,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3663,7 +3743,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3686,7 +3766,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3710,7 +3790,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3761,7 +3841,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3784,7 +3864,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3808,7 +3888,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3821,7 +3901,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3873,7 +3953,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3896,7 +3976,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3909,7 +3989,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -3962,7 +4042,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3985,7 +4065,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -4009,7 +4089,7 @@
 								"{@action Cast a Spell}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -4220,7 +4300,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"interval": 10,
 						"unit": "minute"
 					},
@@ -5042,7 +5122,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You use {@action Spellstrike|SoM} with a non-cantrip spell and miss with the {@action Strike}",
@@ -6228,7 +6308,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6289,7 +6369,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6369,7 +6449,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6444,7 +6524,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6483,7 +6563,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6522,7 +6602,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6628,7 +6708,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6730,7 +6810,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6815,7 +6895,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -6924,7 +7004,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7069,7 +7149,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7187,7 +7267,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7307,7 +7387,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7383,7 +7463,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7444,7 +7524,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7503,7 +7583,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7624,7 +7704,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7681,7 +7761,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7812,7 +7892,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7851,7 +7931,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -7887,7 +7967,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -8016,7 +8096,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -8057,7 +8137,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -8098,7 +8178,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -8135,7 +8215,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -8212,7 +8292,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -8253,7 +8333,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -8294,7 +8374,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You Shield Block a melee {@action Strike} made with a held weapon",
@@ -8349,7 +8429,7 @@
 								"{@action Interact}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -8426,7 +8506,7 @@
 								"{@action Interact}"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -8462,7 +8542,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You Shield Block a melee {@action Strike}",
@@ -8562,7 +8642,7 @@
 								"envision"
 							],
 							"frequency": {
-								"number":  1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -8608,7 +8688,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You gain batches of infused reagents during your daily preparations",
@@ -8648,7 +8728,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -8779,7 +8859,7 @@
 					],
 					"requirements": "The baldric has a charge",
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -8889,7 +8969,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You're struck by a melee attack with a held weapon",
@@ -8941,7 +9021,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9049,7 +9129,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9188,7 +9268,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -9232,7 +9312,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -9272,7 +9352,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9290,7 +9370,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9333,7 +9413,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You're benefiting from your blood magic effect",
@@ -9352,7 +9432,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9403,7 +9483,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9514,7 +9594,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9560,7 +9640,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9603,7 +9683,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9621,7 +9701,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You roll a critical success on an attack roll with a witch spell, or your target rolls a critical failure on its saving throw against a witch spell or hex you cast",
@@ -9665,7 +9745,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9682,7 +9762,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"requirements": "You have just Refocused by meditating",
@@ -9726,7 +9806,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9743,7 +9823,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "Your unarmed {@action Strike} hits a creature that breathes",
@@ -9788,7 +9868,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9805,7 +9885,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9850,7 +9930,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9893,7 +9973,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -9915,7 +9995,7 @@
 						"positive"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "Your oracular curse is at its minor stage or higher",
@@ -9959,7 +10039,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -10000,7 +10080,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -10100,7 +10180,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -10143,7 +10223,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -10194,7 +10274,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -10212,7 +10292,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -10262,7 +10342,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"entries": [
@@ -10383,7 +10463,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"entries": [
@@ -10401,7 +10481,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -10520,7 +10600,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You make an attack roll, skill check, or saving throw",
@@ -10539,7 +10619,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -10556,7 +10636,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "week"
 					},
 					"entries": [
@@ -10641,7 +10721,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "week"
 					},
 					"entries": [
@@ -10840,7 +10920,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -10925,7 +11005,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -11103,7 +11183,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -11547,7 +11627,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -11692,7 +11772,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -11834,7 +11914,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You {@action Cast a Spell} with the {@trait fire} trait",
@@ -11853,7 +11933,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -11930,7 +12010,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12021,7 +12101,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12241,7 +12321,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12259,7 +12339,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -12276,7 +12356,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"entries": [
@@ -12313,7 +12393,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"trigger": "You succeed or critically succeed at an {@skill Athletics} check",
@@ -12353,7 +12433,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12427,7 +12507,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12464,7 +12544,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12527,7 +12607,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You roll initiative",
@@ -12547,7 +12627,7 @@
 					],
 					"requirements": "The crown's instinct matches your barbarian instinct",
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12593,7 +12673,7 @@
 					],
 					"requirements": "The helm's jewel is charged",
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -12638,7 +12718,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -12734,7 +12814,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -12799,7 +12879,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You would miss with an attack made with a bow",
@@ -12910,7 +12990,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "a swarm creature is within your reach",
@@ -12946,7 +13026,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -13021,7 +13101,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -13066,7 +13146,7 @@
 						"fortune"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You are about to roll a variable number of Hit Points you restore from an action with the {@trait healing} trait",
@@ -13274,7 +13354,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -13504,7 +13584,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You take acid, cold, electricity, or fire damage",
@@ -13582,7 +13662,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -13622,7 +13702,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"requirements": "A creature adjacent to you is made of metal or wearing metal armor",
@@ -13665,7 +13745,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -13914,7 +13994,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -13986,7 +14066,7 @@
 						"aura"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -14066,7 +14146,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"trigger": "A ranged weapon {@action Strike} targets a creature within 20 feet of you and the attacker hasn't yet rolled its attack",
@@ -14192,7 +14272,7 @@
 						"fortune"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You critically fail an attack roll, check, or saving throw",
@@ -14313,7 +14393,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You are reduced to 0 Hit Points or would die from a {@trait death} effect",
@@ -14331,7 +14411,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You would gain or increase the {@condition doomed} or {@condition wounded} condition",
@@ -14480,7 +14560,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -14538,7 +14618,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -14557,7 +14637,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"trigger": "A foe within 15 feet hits you with a {@action Strike} that deals slashing or piercing damage",
@@ -14598,7 +14678,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -14663,7 +14743,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -14680,7 +14760,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You're dealt 30 or more fire damage, before any reduction from your fire resistance",
@@ -14725,7 +14805,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -14808,7 +14888,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "An enemy within 30 feet Strikes you with an attack",
@@ -14854,7 +14934,7 @@
 						"cold"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -14871,7 +14951,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -14908,7 +14988,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -22172,7 +22252,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"entries": [
@@ -24008,7 +24088,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24048,7 +24128,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24089,7 +24169,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -24130,7 +24210,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You succeed or critically succeed with a {@action Shove}",
@@ -24172,7 +24252,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"entries": [
@@ -24189,7 +24269,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "A creature succeeds at an attack roll against you",
@@ -24211,7 +24291,7 @@
 						"mental"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24251,7 +24331,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24268,7 +24348,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24285,7 +24365,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You fail or critically fail a Fortitude saving throw",
@@ -24326,7 +24406,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24343,7 +24423,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You succeed or critically succeed with a {@action Grapple}",
@@ -24385,7 +24465,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"trigger": "You're hit by an attack",
@@ -24403,7 +24483,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You fail, but don't critically fail, a saving throw",
@@ -24422,7 +24502,7 @@
 						"mental"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24462,7 +24542,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"trigger": "You take damage",
@@ -24481,7 +24561,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -24521,7 +24601,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You fail or critically fail a {@skill Thievery} skill check",
@@ -24562,7 +24642,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"trigger": "You attempt a {@action High Jump} or {@action Long Jump} but you didn't {@action Stride} at least 10 feet",
@@ -24603,7 +24683,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "A creature misses you with an attack",
@@ -24621,7 +24701,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24662,7 +24742,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -24679,7 +24759,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24719,7 +24799,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You fail, but don't critically fail, an attack using the viper rapier",
@@ -24751,7 +24831,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -24795,7 +24875,7 @@
 						"mental"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"entries": [
@@ -24816,7 +24896,7 @@
 						"misfortune"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -24837,7 +24917,7 @@
 						"mental"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24957,7 +25037,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -24998,7 +25078,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You attempt a saving throw against an {@trait emotion} effect",
@@ -25098,7 +25178,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -25158,7 +25238,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -25196,7 +25276,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25234,7 +25314,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -25275,7 +25355,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You're holding a non-magical item of light or negligible Bulk",
@@ -25316,7 +25396,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -25356,7 +25436,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25436,7 +25516,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25534,7 +25614,7 @@
 						"metamagic"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25576,7 +25656,7 @@
 						"metamagic"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "week"
 					},
 					"entries": [
@@ -25614,7 +25694,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "Your last action was to cast a prepared divine spell granted by your deity",
@@ -25657,7 +25737,7 @@
 						"metamagic"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25677,7 +25757,7 @@
 						"metamagic"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25719,7 +25799,7 @@
 						"metamagic"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"interval": 10,
 						"unit": "minute"
 					},
@@ -25759,7 +25839,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25797,7 +25877,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25836,7 +25916,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -25879,7 +25959,7 @@
 						"fortune"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "Your last action was to cast a divination spell prepared from this grimoire",
@@ -25952,7 +26032,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "Your last action was to cast a spell prepared from this grimoire that allows understanding of another language, such as comprehend languages or tongues",
@@ -26017,7 +26097,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "Your last action was to cast a spell prepared from this grimoire that has the {@trait shadow} trait",
@@ -26073,7 +26153,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You're targeted with an arcane spell attack and you have this grimoire raised",
@@ -26114,7 +26194,7 @@
 						"positive"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "Your last action was to cast a spell prepared from this grimoire, and the spell removed a harmful condition or affliction from yourself or an ally",
@@ -26191,7 +26271,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -26231,7 +26311,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -26291,7 +26371,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -28921,7 +29001,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You're in a body of water",
@@ -29000,7 +29080,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"trigger": "You or a creature within 5 feet of you suffers bleed damage",
@@ -29163,7 +29243,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -29201,7 +29281,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"interval": 10,
 						"unit": "minute"
 					},
@@ -29238,7 +29318,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -29255,7 +29335,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -29386,7 +29466,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"requirements": "You critically hit a flying creature with the etched weapon",
@@ -29432,7 +29512,7 @@
 						"force"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -29478,7 +29558,7 @@
 						"teleportation"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -29585,7 +29665,7 @@
 						"envision"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -29627,7 +29707,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -29667,7 +29747,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -29732,7 +29812,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "The wielder of a grounding spike is within 30 feet",
@@ -29774,7 +29854,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You hit a creature using the rime foil as your last action",
@@ -29841,7 +29921,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -29867,7 +29947,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You hit a creature using the blessed reformer as your last action",
@@ -29963,7 +30043,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -30150,7 +30230,7 @@
 						"necromancy"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -30195,7 +30275,7 @@
 						"command"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -30294,7 +30374,7 @@
 						"magical"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"entries": [
@@ -30342,7 +30422,7 @@
 						"olfactory"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -30399,7 +30479,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "round"
 					},
 					"requirements": "You have a creature {@condition grabbed} with this weapon",
@@ -30442,7 +30522,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"requirements": "Your last action was a successful {@action Strike} with this weapon and you're not in direct sunlight",
@@ -30542,7 +30622,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"entries": [
@@ -30622,7 +30702,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -30663,7 +30743,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -30703,7 +30783,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
