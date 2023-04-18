@@ -4484,10 +4484,10 @@ Renderer.creature = {
 						let spells = []
 						for (let spell of sc.entry[lvl].spells) {
 							let amount = spell.amount != null ? typeof (spell.amount) === "number" ? [`×${spell.amount}`] : [spell.amount] : []
-							let note = spell.note != null ? spell.note : []
+							let notes = spell.notes || []
 							let bracket = ""
 							if (amount.length || note.length) {
-								bracket = ` (${amount.concat(note).join(", ")})`
+								bracket = ` (${amount.concat(notes).join(", ")})`
 							}
 							spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 						}
@@ -4499,10 +4499,9 @@ Renderer.creature = {
 							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)})&nbsp;</strong></span>`)
 							let spells = []
 							for (let spell of sc.entry["constant"][clvl].spells) {
-								let note = spell.note != null ? spell.note : []
 								let bracket = ""
-								if (note.length) {
-									bracket = ` (${note.join(", ")})`
+								if (spell.notes.length) {
+									bracket = ` (${spell.notes.join(", ")})`
 								}
 								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 							}

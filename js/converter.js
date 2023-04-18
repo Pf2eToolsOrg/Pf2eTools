@@ -1150,7 +1150,8 @@ class Converter {
 				const src = Parser._parse_bToA(Parser.SOURCE_JSON_TO_FULL, matchSource[0]).toLowerCase();
 				if (src && src !== SRC_CRB.toLowerCase()) spells[spells.length - 1].source = src;
 			} else {
-				spells[spells.length - 1].note = [...(spells[spells.length - 1].note || "").split("; ").filter(Boolean), e].join("; ");
+				spells[spells.length - 1].notes = spells[spells.length - 1].notes || [];
+				spells[spells.length - 1].notes.push(e);
 			}
 		});
 	}
