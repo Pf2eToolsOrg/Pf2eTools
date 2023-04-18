@@ -201,6 +201,7 @@ class TokenizerUtils {
 			{regex: /^([A-Z][a-z]*?)\sLore\s/, type: "LORE"},
 			// We are back with ugly regex
 			{regex: /^((?:\b[\w-]*?\s)+)Lore\s/, type: "LORE"},
+			{regex: /^Lore\s+\(.*?\)\s/, type: "LORE_SOME"},
 			{regex: /^Lore\s/, type: "LORE_ALL"},
 			{regex: /^Medicine\s/, type: "MEDICINE"},
 			{regex: /^Nature\s/, type: "NATURE"},

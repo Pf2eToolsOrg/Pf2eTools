@@ -820,13 +820,25 @@ class Converter {
 	_parseSkills (creature) {
 		this._consumeToken(this._tokenizerUtils.skillsProp);
 		const skills = {};
+		const loreSkillSome = /\((.*)\)/
 		const regexBonus = /\+(\d+)/;
 		const regexOtherBonus = /\+(\d+)\s([\w\s]+)/g;
 		// skill entries should be followed by the skill bonus
 		while (this._tokenIsType(this._tokenizerUtils.skills) && this._tokenIsType("SKILL_BONUS", this._peek(1))) {
 			const token = this._consumeToken(this._tokenizerUtils.skills);
-			const skill = token.value.trim().toLowerCase().replace(/\s/g, " ");
-			skills[skill] = {};
+
+			let skill = "";
+			if (token.type === "LORE_SOME") {
+				// "Lore (any that match these criteria) +10"
+				skill = "lore";
+				const match = loreSkillSome.exec(token.value);
+				const note = match[1].trim().replace(/\s/g, " ");
+				skills[skill] = {};
+				skills[skill].note = note;
+			} else {
+				skill = token.value.trim().toLowerCase().replace(/\s/g, " ");
+				skills[skill] = {};
+			}
 
 			const bonusToken = this._consumeToken("SKILL_BONUS");
 			skills[skill].std = Number(regexBonus.exec(bonusToken.value.replace(/\s/g, ""))[1]);
@@ -1322,7 +1334,11 @@ class Converter {
 		// TODO:
 		opts = opts || {};
 		const rendered = opts.isText ? entries : this._renderEntries(entries, {asString: true, noTags: true});
-		return rendered.split(", ")
+
+		const sep = /\s*(?:;|,|$)\s*/;
+		const parts = rendered.split(sep);
+		if (opts.keepEmpty) return parts
+		else return parts.filter(s => s.length > 0)
 	}
 
 	_parseHazardProperties (obj) {
