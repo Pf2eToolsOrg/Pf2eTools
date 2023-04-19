@@ -925,6 +925,7 @@ class TokenizerUtils {
 			{cat: "Snare"},
 			{cat: "Spellheart"},
 			{cat: "Staff"},
+			{cat: "Missive"},
 			{cat: "Structure"},
 			{cat: "Talisman"},
 			{cat: "Tattoo"},

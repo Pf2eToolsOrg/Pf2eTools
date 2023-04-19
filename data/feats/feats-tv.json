@@ -1,0 +1,331 @@
+{
+	"feat": [
+		{
+			"name": "Ursine Avenger Form",
+			"source": "TV",
+			"page": 183,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"archetype",
+				"artifact",
+				"morph",
+				"primal",
+				"transmutation"
+			],
+			"entries": [
+				"You draw the Ursine Avenger Hood over your head and its fur over your arms, assuming an ursine form that has traits of your original form as well as that of a bear. In your ursine form, you gain a jaws unarmed attack that deals {@damage 1d8} piercing damage and a claws unarmed attack that deals {@damage 1d6} slashing damage and has the {@trait agile} trait. Both unarmed attacks are in the brawling group. You lose the ability to speak complex sentences while transformed and can only communicate through grunts and gestures; this prevents you from using effects that require a shared or spoken language until you revert back to your non-hybrid form. You can use this action while transformed to remove the hood and return to your original form."
+			]
+		},
+		{
+			"name": "Senses of the Bear",
+			"source": "TV",
+			"page": 183,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"While in ursine form, you gain low-light vision and scent (imprecise) 30 feet. If you already had low-light vision, you instead gain darkvision."
+			]
+		},
+		{
+			"name": "Bear Hug",
+			"source": "TV",
+			"page": 183,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"requirements": "Your last action was a successful claw {@action Strike}.",
+			"entries": [
+				"You snatch at your opponent with your claws, pulling them close in a ferocious bear hug. You make another claw {@action Strike} against the same target. If this {@action Strike} hits, the target is also {@condition grabbed}."
+			]
+		},
+		{
+			"name": "Call Ursine Ally",
+			"source": "TV",
+			"page": 184,
+			"level": 8,
+			"traits": [
+				"archetype",
+				"conjuration",
+				"primal"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You can cast a 3rd-level {@spell summon animal} as an innate spell, but only to summon a black bear. At 10th level, the {@spell summon animal} spell is heightened to 4th level, and you can summon a grizzly bear. At 12th level, your {@spell summon animal} innate spell is heightened to 5th level, and you can summon a polar bear. At 14th level, it's heightened to 6th level, and you can summon a cave bear."
+			]
+		},
+		{
+			"name": "Quick Setup",
+			"source": "TV",
+			"page": 159,
+			"level": 7,
+			"traits": [
+				"rare",
+				"general",
+				"skill"
+			],
+			"featType": {
+				"variant": true
+			},
+			"prerequisites": "master in {@skill Crafting}",
+			"entries": [
+				"You have learned to setup simple crafting jobs with ease. Your setup time for consumables that are at least 6 levels lower than you is 1 day, and your setup time for permanent items 6 levels lower than you is 3 days.",
+				"If you rush the setup and reduce the setup time for consumables at least 6 levels lower than you to less than 1 day, you can instead set them up in just 2 hours (allowing you to do so during an adventuring day if you have access to your tools and materials). If you rush the setup of a permanent item at least 6 levels lower than you and reduce the setup time to less than 1 day, you can perform the setup in 4 hours."
+			]
+		},
+		{
+			"name": "Bear Empathy",
+			"source": "TV",
+			"page": 184,
+			"level": 10,
+			"traits": [
+				"archetype",
+				"divination",
+				"primal"
+			],
+			"entries": [
+				"You have a magical affinity for bears and can speak to them through sounds and body language. You can communicate with all bears, as well as other ursine creatures at the GM's discretion."
+			]
+		},
+		{
+			"name": "Great Bear",
+			"source": "TV",
+			"page": 184,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Ursine Avenger Form",
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"When you transform, you can take on a bear's bulk and size. You can spend an additional action when using Ursine Avenger Form to gain the effects of a 1st-level {@spell enlarge} spell, which lasts for the spell's normal duration or until you leave your Ursine Avenger Form, whichever comes first."
+			]
+		},
+		{
+			"name": "Terrible Transformation",
+			"source": "TV",
+			"page": 184,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Ursine Avenger Form",
+			"entries": [
+				"You let out a mighty roar as part of your transformation. When you use Ursine Avenger Form, you can make an {@skill Intimidation} check to {@action Demoralize} against each enemy within 30 feet that can see you, and you don't take a penalty to your {@action Demoralize} check if the creature doesn't understand your language."
+			]
+		},
+		{
+			"name": "Fearsome Fangs",
+			"source": "TV",
+			"page": 184,
+			"level": 16,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Ursine Avenger Form",
+			"entries": [
+				"Your claws and jaws are brutally powerful and efficient, even by ursine standards. The base damage of your jaws unarmed attack from Ursine Avenger Form increases to {@dice 1d12}. The base damage of your claws unarmed attack from Ursine Avenger Form increases to {@dice 1d8}."
+			]
+		},
+		{
+			"name": "Mighty Bear",
+			"source": "TV",
+			"page": 184,
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Great Bear",
+			"entries": [
+				"The power of the bear within you can expand your physical presence even further. The {@spell enlarge} spell you cast with your Great Bear feat is heightened to 4th level."
+			]
+		},
+		{
+			"name": "Immortal Bear",
+			"source": "TV",
+			"page": 184,
+			"level": 20,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Ursine Avenger Form",
+			"entries": [
+				"Your body thrums with the primal vitality of the greatest of the ursine beasts. When in Ursine Avenger Form, you gain fast healing 5."
+			]
+		},
+		{
+			"name": "First Frost",
+			"source": "TV",
+			"page": 185,
+			"level": 2,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"The gelid shard within your heart may sap your ability to feel and experience emotion, but it also lets you create and manipulate cold. You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with the frost's touch (see below) and {@spell ray of frost} cantrips. You're trained in spell attack rolls and spell DCs for arcane spells.",
+				"Your key spellcasting ability is Charisma."
+			]
+		},
+		{
+			"name": "Snowcaster",
+			"source": "TV",
+			"page": 185,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"Your magical power grows as the shard's icy influence spreads ever deeper into your being. You gain the basic spellcasting benefits. Each time you gain a spell slot of a new level from this archetype, add a spell of the appropriate spell level (including heightened versions of lower-level spells) to your repertoire, either a common spell of the arcane tradition that has the {@trait cold} trait or another cold spell you have access to."
+			]
+		},
+		{
+			"name": "Snow Step",
+			"source": "TV",
+			"page": 185,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"Snow and ice are no hindrance to you. You ignore difficult terrain caused by snow and ice, treat greater difficult terrain created by snow and ice as difficult terrain, and leave no tracks when moving through areas of snow or ice."
+			]
+		},
+		{
+			"name": "Frozen Breadth",
+			"source": "TV",
+			"page": 185,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"Your attunement to arcane cold enhances the depths of your growing power. Increase the number of spells in your repertoire and number of spell slots you gain from gelid shard archetype feats by 1 for each spell level other than your two highest gelid shard spell slots."
+			]
+		},
+		{
+			"name": "Winter's Embrace",
+			"source": "TV",
+			"page": 185,
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"Your eyes are accustomed to the harsh glare of the sun on snow and ice. You gain a +1 status bonus to saving throws against effects that inflict the {@condition dazzled} condition.",
+				"Snow doesn't impair your vision; you ignore concealment from snowfall. Your skin becomes cold to the touch, and sometimes frost forms on you. You are protected from severe cold and heat."
+			]
+		},
+		{
+			"name": "Expert Snowcasting",
+			"source": "TV",
+			"page": 185,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"You draw ever more magical cold into your being, learning how to manipulate it to your whims. You gain the expert spellcasting benefits."
+			]
+		},
+		{
+			"name": "Winter's Kiss",
+			"source": "TV",
+			"page": 185,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"Whether in the heart of a volcanic passageway or the glacial tundras of the Crown of the World, the only temperature you ever personally experience is an oddly comfortable chill. You are now protected from extreme cold and extreme heat, and you gain resistance to fire equal to half your level. If you would already have resistance to fire equal to half your level from a heritage, ancestry feat, class feat, or another archetype feat, you instead gain resistance to fire equal to your level."
+			]
+		},
+		{
+			"name": "Greater Snow Step",
+			"source": "TV",
+			"page": 185,
+			"level": 16,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"You can't be impeded by {@trait environmental} effects that rely on cold or its byproducts. You ignore greater difficult terrain caused by snow and ice."
+			]
+		},
+		{
+			"name": "Master Snowcasting",
+			"source": "TV",
+			"page": 185,
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"You have unlocked the deeper magic of your gelid shard, gaining access to new levels of spells. You gain the master spellcasting benefits."
+			]
+		},
+		{
+			"name": "Icy Apotheosis",
+			"source": "TV",
+			"page": 185,
+			"level": 20,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"You are as much a creature of cold as whatever ancestry you were born to. You are immune to cold damage and gain the {@trait cold} trait. You automatically succeed on saving throws against effects that have the {@trait cold} trait."
+			]
+		},
+		{
+			"name": "Tattoo Artist",
+			"source": "TV",
+			"otherSources": {
+				"Originally": [
+					"SoM|164"
+				]
+			},
+			"page": 118,
+			"level": 2,
+			"traits": [
+				"general",
+				"skill"
+			],
+			"prerequisites": "trained in {@skill Crafting}",
+			"entries": [
+				"You can craft tattoos, including magical tattoos. When you select this feat, you gain the formulas for four common magical tattoos of 2nd level or lower. You gain a +1 circumstance bonus to {@skill Crafting} checks to {@action Craft} tattoos. If you're a master in {@skill Crafting}, this bonus increases to +2 and you gain the formulas for four common magical tattoos of 7th level or lower."
+			],
+			"leadsTo": [
+				"Legendary Tattoo Artist|TV"
+			]
+		},
+		{
+			"name": "Legendary Tattoo Artist",
+			"source": "TV",
+			"page": 118,
+			"level": 15,
+			"traits": [
+				"general",
+				"skill"
+			],
+			"prerequisites": "{@feat Tattoo Artist|TV}, master in {@skill Crafting}",
+			"entries": [
+				"Your craftsmanship at decorating flesh is unparalleled. You become legendary in {@skill Crafting}. Whenever you craft a magical tattoo whose level is at least 3 lower than your level, increase all attack roll and DC values of the tattoo's activated abilities by 1, and increase all resistances granted by the tattoo by 1."
+			]
+		}
+	]
+}

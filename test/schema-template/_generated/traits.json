@@ -35,9 +35,6 @@
 					"$ref": "#/definitions/rarityTrait"
 				},
 				{
-					"$ref": "#/definitions/armorTrait"
-				},
-				{
 					"$ref": "#/definitions/effectTrait"
 				},
 				{
@@ -57,9 +54,6 @@
 				},
 				{
 					"$ref": "#/definitions/unknownTrait"
-				},
-				{
-					"$ref": "#/definitions/variableTraits"
 				},
 				{
 					"$ref": "#/definitions/energyElementTrait"
@@ -99,9 +93,138 @@
 				},
 				{
 					"$ref": "#/definitions/classTrait"
+				},
+				{
+					"$ref": "#/definitions/variableTraits"
+				},
+				{
+					"$ref": "#/definitions/armorTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"armorTrait": {
+			"type": "string",
+			"description": "A list of all Armor traits.",
+			"enum": [
+				"adjusted",
+				"aquadynamic",
+				"bulwark",
+				"comfort",
+				"entrench",
+				"flexible",
+				"hindering",
+				"inscribed",
+				"laminar",
+				"noisy",
+				"ponderous"
+			]
+		},
+		"variableTraits": {
+			"type": "string",
+			"description": "A list of all traits with variable values, enclosed in <these 'brackets'>.",
+			"anyOf": [
+				{
+					"type": "string",
+					"pattern": "^entrench <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^adjusted <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^additive <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^attached <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^range increment <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^range <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^reload <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^capacity <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^deadly <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^fatal <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^fatal aim <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^jousting <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^modular <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^reach <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^scatter <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^hefty <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^launching <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^shield throw <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^integrated <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^deflecting <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^thrown <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^two-hand <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^two-handed <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^versatile <.*>$"
+				},
+				{
+					"type": "string",
+					"pattern": "^volley <.*>$"
+				}
+			]
 		},
 		"classTrait": {
 			"type": "string",
@@ -470,84 +593,6 @@
 				"water"
 			]
 		},
-		"variableTraits": {
-			"type": "string",
-			"description": "A list of all traits with variable values, enclosed in <these 'brackets'>.",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^additive <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^attached <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^range increment <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^range <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^reload <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^capacity <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^deadly <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^fatal <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^fatal aim <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^jousting <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^modular <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^reach <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^scatter <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^thrown <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^two-hand <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^two-handed <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^versatile <.*>$"
-				},
-				{
-					"type": "string",
-					"pattern": "^volley <.*>$"
-				}
-			]
-		},
 		"unknownTrait": {
 			"type": "string",
 			"description": "A list of all Unknown traits.",
@@ -573,6 +618,7 @@
 				"backstabber",
 				"backswing",
 				"bomb",
+				"brace",
 				"brutal",
 				"capacity",
 				"climbing",
@@ -603,7 +649,9 @@
 				"range",
 				"range increment",
 				"ranged trip",
+				"razing",
 				"reach",
+				"recovery",
 				"reload",
 				"repeating",
 				"resonant",
@@ -613,11 +661,13 @@
 				"sweep",
 				"tethered",
 				"thrown",
+				"training",
 				"trip",
 				"twin",
 				"two-hand",
 				"two-handed",
 				"unarmed",
+				"vehicular",
 				"versatile",
 				"volley"
 			]
@@ -656,33 +706,48 @@
 				"alchemical",
 				"apex",
 				"artifact",
+				"barding",
 				"bomb",
 				"catalyst",
+				"coda",
 				"companion",
 				"consumable",
 				"contact",
 				"contract",
 				"cursed",
+				"deflecting",
 				"drug",
 				"elixir",
+				"expandable",
 				"extradimensional",
 				"focused",
+				"foldaway",
 				"fulu",
 				"grimoire",
+				"harnessed",
+				"hefty",
 				"infused",
 				"ingested",
 				"inhaled",
 				"injury",
+				"integrated",
 				"intelligent",
 				"invested",
+				"launching",
+				"lozenge",
 				"magical",
+				"missive",
 				"mutagen",
 				"oil",
 				"poison",
 				"potion",
 				"precious",
+				"processed",
+				"relic",
 				"scroll",
+				"shield throw",
 				"snare",
+				"spellgun",
 				"staff",
 				"talisman",
 				"tattoo",
@@ -758,16 +823,6 @@
 				"sleep",
 				"teleportation",
 				"visual"
-			]
-		},
-		"armorTrait": {
-			"type": "string",
-			"description": "A list of all Armor traits.",
-			"enum": [
-				"bulwark",
-				"comfort",
-				"flexible",
-				"noisy"
 			]
 		},
 		"rarityTrait": {

@@ -40,36 +40,37 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"number":  1,
+						"number": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "nosoi charm",
-							"level": 12,
-							"price": {
-								"amount": 1900,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "greater nosoi charm",
-							"level": 18,
-							"price": {
-								"amount": 19000,
-								"coin": "gp"
-							},
-							"entries": [
-								"The item bonus to {@skill Performance} or {@skill Diplomacy} is +3. You gain lifesense as long as you are holding the charm, and you don't need to activate it."
-							]
-						}
-					],
 					"entries": [
 						"You gain lifesense as an imprecise sense with a range of 30 feet for 1 hour as long as you continue to hold the charm. This allows you to sense the life force that animates living creatures and the perverse force that animates the dead, though you can't distinguish between the two."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 12,
+					"price": {
+						"amount": 1900,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "nosoi charm"
+				},
+				{
+					"level": 18,
+					"price": {
+						"amount": 19000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The item bonus to {@skill Performance} or {@skill Diplomacy} is +3. You gain lifesense as long as you are holding the charm, and you don't need to activate it."
+					],
+					"variantType": "greater nosoi charm"
+				}
+			],
+			"generic": "G"
 		}
 	]
 }

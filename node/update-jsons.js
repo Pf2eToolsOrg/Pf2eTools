@@ -15,19 +15,61 @@ function updateFolder (folder) {
 			// For targeted schema changes, like changing a name of an object key
 			if (json.item) {
 				json.item = json.item.map(x => {
-					if (x.variants) {
-						x.variants.map(v => {
-							if (v.variantType) return v
-							console.log(`\tUpdating ${x.name} item variants in ${file}...`)
-							if (!v.type && v.name) {
-								v.variantType = v.name
-								delete v.name
-								return v
-							} else {
-								v.variantType = v.type
-								delete v.type
-								return v
+					if (x.category !== "Coda" && x.traits && Array.isArray(x.traits) && x.traits.filter(t => t.includes("coda")).length > 0) {
+						console.log(`\tUpdating ${x.name} coda category in ${file}...`)
+						x.category = "Coda"
+					}
+					if (x.entries && Array.isArray(x.entries) && x.entries.length) {
+						x.entries = x.entries.map(e => {
+							if (typeof e === "object") {
+								if (e.variants) {
+									console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
+									if (!Array.isArray(x.variants)) {
+										x.variants = e.variants
+									} else {
+										x.variants.push(...e.variants)
+									}
+									delete e.variants
+									if (!x.generic) x.generic = "G"
+								}
 							}
+							return e
+						})
+					}
+					if (x.variants) {
+						if (!x.generic) {
+							console.log(`\tUpdating ${x.name} not having generic attribute in ${file}...`)
+							x.generic = "G"
+						}
+						x.variants.map(v => {
+							if (v.entries && Array.isArray(v.entries) && v.entries.length) {
+								v.entries = v.entries.map(e => {
+									if (typeof e === "object") {
+										if (e.variants) {
+											console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
+											x.variants.push(...e.variants)
+											delete e.variants
+											if (!x.generic) x.generic = "G"
+										}
+									}
+									return e
+								})
+							}
+							if (!v.variantType) {
+								console.log(`\tUpdating ${x.name} item variants in ${file}...`)
+								if (!v.type && v.name) {
+									v.variantType = v.name.length > x.name.length ? v.name.replace(x.name, "") : v.name
+									delete v.name
+								} else {
+									v.variantType = v.type
+									delete v.type
+								}
+							}
+							if (v.craftReq && !Array.isArray(v.craftReq)) {
+								console.log(`\tUpdating ${x.name} item variant craftReq to array in ${file}...`)
+								v.craftReq = [v.craftReq]
+							}
+							return v
 						})
 					}
 					if (typeof (x.destruction || x.special || x.craftReq) === "string") {
@@ -41,12 +83,10 @@ function updateFolder (folder) {
 						if (typeof x.craftReq === "string") {
 							x.craftReq = [x.craftReq]
 						}
-						return x
 					}
 					if (x.activate && x.activate.components && !Array.isArray(x.activate.components)) {
 						console.log(`\tUpdating ${x.name} components to array in ${file}...`)
 						x.activate.components = [x.activate.components]
-						return x
 					}
 					if (x.activate && x.activate.components && x.activate.components.length) {
 						x.activate.components.map(component => {
@@ -56,7 +96,18 @@ function updateFolder (folder) {
 							}
 							return component
 						})
-						return x
+					}
+					if (x.activate != null && x.trigger != null) {
+						x.activate.trigger = x.trigger
+						delete x.trigger
+					}
+					if (x.activate != null && x.requirements != null) {
+						x.activate.requirements = x.requirements
+						delete x.requirements
+					}
+					if (x.activate != null && x.prerequisites != null) {
+						x.activate.prerequisites = x.prerequisites
+						delete x.prerequisites
 					}
 					if (x.type === "Equipment" && !(x.equipment === true)) {
 						console.log(`\tUpdating ${x.name} types from Equipment to Item in ${file}...`)
