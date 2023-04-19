@@ -21,6 +21,9 @@
 					"name": {
 						"type": "string"
 					},
+					"prerequisites": {
+						"type": "string"
+					},
 					"destruction": {
 						"type": "array",
 						"items": {
@@ -168,6 +171,25 @@
 							"$ref": "entry.json"
 						}
 					},
+					"duration": {
+						"type": "object",
+						"required": [],
+						"properties": {
+							"type": {
+								"type": "string"
+							},
+							"entry": {
+								"type": "string"
+							},
+							"number": {
+								"type": "integer"
+							},
+							"unit": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					},
 					"category": {
 						"type": "string",
 						"enum": [
@@ -178,7 +200,10 @@
 							"Assistive Item",
 							"Bomb",
 							"Companion",
+							"Missive",
+							"Coda",
 							"Consumable",
+							"Adjustment",
 							"Contract",
 							"Customization",
 							"Curse",
@@ -259,6 +284,12 @@
 					"add_hash": {
 						"type": "string"
 					},
+					"hasFluff": {
+						"type": "boolean",
+						"enum": [
+							true
+						]
+					},
 					"usage": {
 						"type": "string"
 					},
@@ -287,12 +318,9 @@
 				"additionalProperties": false,
 				"allOf": [
 					{
-						"anyOf": [
+						"oneOf": [
 							{
 								"required": [
-									"source",
-									"name",
-									"page",
 									"variantType"
 								]
 							},
@@ -305,6 +333,9 @@
 							},
 							{
 								"required": [
+									"source",
+									"name",
+									"page",
 									"variantType"
 								]
 							}

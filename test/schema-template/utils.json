@@ -6,6 +6,61 @@
 	"type": "object",
 	"version": "0.0.1",
 	"definitions": {
+		"spellsByLevelBlock": {
+			"type": "object",
+			"properties": {
+				"level": {
+					"type": "integer",
+					"minimum": 1
+				},
+				"slots": {
+					"type": "integer",
+					"minimum": 1
+				},
+				"spells": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string",
+								"$ref": "utils.json#/definitions/sourceList"
+							},
+							"amount": {
+								"oneOf": [
+									{
+										"type": "integer",
+										"minimum": 2
+									},
+									{
+										"const": "at will"
+									}
+								]
+							},
+							"notes": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name"
+						]
+					},
+					"minItems": 1,
+					"uniqueItems": true
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"spells"
+			]
+		},
 		"range": {
 			"type": "object",
 			"properties": {
@@ -102,6 +157,13 @@
 			"properties": {
 				"speedNote": {
 					"type": "string"
+				},
+				"abilities": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
 				}
 			},
 			"additionalProperties": {
@@ -126,7 +188,7 @@
 				},
 				{
 					"properties": {
-						"freq": {
+						"number": {
 							"$comment": "In code return \"Once\" if =1, \"Twice\" if =2, and \"`n` times\" otherwise.",
 							"description": "How frequent it is; once, twice etc.",
 							"type": "integer",
@@ -179,13 +241,13 @@
 					"oneOf": [
 						{
 							"required": [
-								"freq",
+								"number",
 								"unit"
 							]
 						},
 						{
 							"required": [
-								"freq",
+								"number",
 								"customUnit"
 							]
 						}
@@ -1251,7 +1313,9 @@
 				"Leather",
 				"Chain",
 				"Cloth",
-				"Composite"
+				"Composite",
+				"Wood",
+				"Skeletal"
 			]
 		},
 		"conditions": {
@@ -1558,7 +1622,13 @@
 					},
 					"minItems": 1
 				},
+				"note": {
+					"type": "string"
+				},
 				"trigger": {
+					"type": "string"
+				},
+				"prerequisites": {
 					"type": "string"
 				},
 				"requirements": {
@@ -1794,6 +1864,10 @@
 				"name": {
 					"type": "string"
 				},
+				"activity": {
+					"type": "object",
+					"$ref": "#/definitions/activity"
+				},
 				"range": {
 					"type": "string",
 					"enum": [
@@ -1857,8 +1931,21 @@
 							"type": "integer",
 							"exclusiveMinimum": 0
 						},
+						"patternProperties": {
+							"^.+$": {
+								"type": "integer",
+								"exclusiveMinimum": 0
+							}
+						},
 						"note": {
 							"type": "string"
+						},
+						"abilities": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"minItems": 1
 						}
 					},
 					"additionalProperties": {
@@ -1875,6 +1962,13 @@
 								"std": {
 									"type": "integer",
 									"minimum": 0
+								},
+								"abilities": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"minItems": 1
 								}
 							}
 						},
@@ -1884,6 +1978,13 @@
 								"std": {
 									"type": "integer",
 									"minimum": 0
+								},
+								"abilities": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"minItems": 1
 								}
 							}
 						},
@@ -1893,6 +1994,13 @@
 								"std": {
 									"type": "integer",
 									"minimum": 0
+								},
+								"abilities": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"minItems": 1
 								}
 							}
 						},
@@ -1964,6 +2072,29 @@
 								"additionalProperties": false,
 								"minProperties": 1
 							}
+						},
+						{
+							"type": "array",
+							"items": {
+								"description": "Hit Points",
+								"type": "object",
+								"properties": {
+									"hp": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"name": {
+										"type": "string"
+									},
+									"notes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"minItems": 1
+									}
+								}
+							}
 						}
 					]
 				},
@@ -1984,6 +2115,29 @@
 					},
 					"additionalProperties": false,
 					"minProperties": 1
+				},
+				"thresholds": {
+					"description": "The HP thresholds at which a troop creature (B3 p306) changes size. Rendered as \"<value1> (<squares1> squares), <value2> (<squares2> squares)\".",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"type": "integer",
+								"minimum": 1
+							},
+							"squares": {
+								"type": "integer",
+								"minimum": 1
+							}
+						},
+						"required": [
+							"value",
+							"squares"
+						],
+						"additionalProperties": false
+					},
+					"minItems": 2
 				},
 				"notes": {
 					"type": "object",
@@ -2329,28 +2483,6 @@
 					"type": "object",
 					"properties": {
 						"mode": {
-							"const": "replaceName"
-						},
-						"replace": {
-							"type": "string"
-						},
-						"with": {
-							"type": "string"
-						},
-						"flags": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"replace",
-						"with"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
 							"const": "appendStr"
 						},
 						"str": {
@@ -2619,157 +2751,6 @@
 					"type": "object",
 					"properties": {
 						"mode": {
-							"const": "calculateProp"
-						},
-						"prop": {
-							"type": "string"
-						},
-						"formula": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"prop",
-						"formula"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "replaceSpells"
-						},
-						"spells": {
-							"type": "object"
-						},
-						"daily": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addSpells"
-						},
-						"spells": {
-							"type": "object"
-						},
-						"will": {
-							"type": "array"
-						},
-						"daily": {
-							"type": "object"
-						},
-						"weekly": {
-							"type": "object"
-						},
-						"yearly": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addSkills"
-						},
-						"skills": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode",
-						"skills"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addSaves"
-						},
-						"saves": {
-							"type": "object"
-						}
-					},
-					"required": [
-						"mode",
-						"saves"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addAllSkills"
-						},
-						"skills": {
-							"type": "integer"
-						}
-					},
-					"required": [
-						"mode",
-						"skills"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addAllSaves"
-						},
-						"saves": {
-							"type": "integer"
-						}
-					},
-					"required": [
-						"mode",
-						"saves"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "addSenses"
-						},
-						"senses": {
-							"anyOf": [
-								{
-									"type": "object"
-								},
-								{
-									"type": "array"
-								}
-							]
-						}
-					},
-					"required": [
-						"mode",
-						"senses"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
 							"const": "scalarAddProp"
 						},
 						"prop": {
@@ -2813,66 +2794,15 @@
 					"type": "object",
 					"properties": {
 						"mode": {
-							"const": "scalarAddHit"
+							"const": "setProps"
 						},
-						"scalar": {
-							"type": "number"
+						"props": {
+							"type": "object"
 						}
 					},
 					"required": [
 						"mode",
-						"scalar"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "scalarAddDc"
-						},
-						"scalar": {
-							"type": "number"
-						}
-					},
-					"required": [
-						"mode",
-						"scalar"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "maxSize"
-						},
-						"max": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"mode",
-						"max"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {
-							"const": "scalarMultXp"
-						},
-						"scalar": {
-							"type": "number"
-						},
-						"floor": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"mode",
-						"scalar"
+						"props"
 					],
 					"additionalProperties": false
 				}

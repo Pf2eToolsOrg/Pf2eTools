@@ -28,10 +28,49 @@
 						"type": "string"
 					},
 					"page": {
-						"type": "integer"
+						"type": "integer",
+						"exclusiveMinimum": 0
+					},
+					"hasImages": {
+						"const": true
 					},
 					"isNpc": {
-						"type": "boolean"
+						"const": true
+					},
+					"_copy": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							},
+							"creatureAdjustment": {
+								"description": "Apply weak/elite adjustement to creature data as part of copy",
+								"type": "string",
+								"enum": [
+									"Weak",
+									"Elite"
+								]
+							},
+							"_mod": {
+								"$ref": "utils.json#/definitions/_modObject"
+							},
+							"_preserve": {
+								"type": "object",
+								"patternProperties": {
+									".*": {
+										"type": "boolean"
+									}
+								}
+							}
+						},
+						"required": [
+							"name",
+							"source"
+						],
+						"additionalProperties": false
 					},
 					"level": {
 						"type": "integer",
@@ -55,6 +94,9 @@
 						"minItems": 1,
 						"uniqueItems": true
 					},
+					"description": {
+						"type": "string"
+					},
 					"perception": {
 						"type": "object",
 						"properties": {
@@ -72,6 +114,14 @@
 								"type": "array",
 								"items": {
 									"$ref": "utils.json#/definitions/languages"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							},
+							"notes": {
+								"type": "array",
+								"items": {
+									"type": "string"
 								},
 								"minItems": 1,
 								"uniqueItems": true
@@ -101,8 +151,21 @@
 								{
 									"type": "string",
 									"pattern": "([a-z]+ |)lore( \\(.+?\\)|)$"
+								},
+								{
+									"const": "notes"
 								}
 							]
+						},
+						"properties": {
+							"notes": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
 						},
 						"additionalProperties": {
 							"type": "object",
@@ -110,6 +173,9 @@
 								"default": {
 									"type": "integer",
 									"minimum": 1
+								},
+								"note": {
+									"type": "string"
 								}
 							},
 							"additionalProperties": {
@@ -220,21 +286,6 @@
 						"additionalProperties": false,
 						"minProperties": 1
 					},
-					"misc": {
-						"type": "array",
-						"items": {
-							"type": "string",
-							"enum": [
-								"MA",
-								"RA",
-								"UW",
-								"CC",
-								"TA"
-							]
-						},
-						"minItems": 1,
-						"uniqueItems": true
-					},
 					"spellcasting": {
 						"type": "array",
 						"items": {
@@ -248,8 +299,12 @@
 									"enum": [
 										"Innate",
 										"Prepared",
+										"Spontaneous",
 										"Focus"
 									]
+								},
+								"note": {
+									"type": "string"
 								},
 								"fp": {
 									"type": "integer"
@@ -268,49 +323,18 @@
 								"entry": {
 									"type": "object",
 									"patternProperties": {
-										"^[0-9]$": {
+										"^([0-9]|10)$": {
+											"$ref": "utils.json#/definitions/spellsByLevelBlock"
+										},
+										"constant": {
 											"type": "object",
-											"properties": {
-												"level": {
-													"type": "integer",
-													"minimum": 1
-												},
-												"spells": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"name": {
-																"type": "string"
-															},
-															"source": {
-																"type": "string",
-																"$ref": "utils.json#/definitions/sourceList"
-															},
-															"amount": {
-																"type": "integer",
-																"minimum": 2
-															},
-															"note": {
-																"type": "array",
-																"items": {
-																	"type": "string"
-																}
-															}
-														},
-														"additionalProperties": false,
-														"required": [
-															"name"
-														]
-													},
-													"minItems": 1,
-													"uniqueItems": true
+											"patternProperties": {
+												"^([0-9]|10)$": {
+													"$ref": "utils.json#/definitions/spellsByLevelBlock"
 												}
 											},
 											"additionalProperties": false,
-											"required": [
-												"spells"
-											]
+											"minProperties": 1
 										}
 									},
 									"additionalProperties": false,
@@ -321,7 +345,6 @@
 							"required": [
 								"name",
 								"type",
-								"tradition",
 								"DC",
 								"entry"
 							]
@@ -345,20 +368,34 @@
 									"minimum": 10
 								},
 								"rituals": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										}
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string",
+												"$ref": "utils.json#/definitions/sourceList"
+											},
+											"notes": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"name"
+										]
 									},
-									"additionalProperties": false,
-									"minProperties": 1
+									"minItems": 1
 								}
 							},
 							"additionalProperties": false,
 							"required": [
-								"tradition",
-								"DC",
 								"rituals"
 							]
 						},
