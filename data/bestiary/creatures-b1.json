@@ -34510,19 +34510,14 @@
 						}
 					},
 					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"trigger": "The barghest completes a {@action Strike}.",
 						"entries": [
 							"The process of consuming corpses to evolve into a greater barghest results in odd and unpredictable physiological changes. A greater barghest has one mutation, typically chosen from the following options.",
 							{
 								"type": "list",
 								"items": [
-									"{@bold Fangs} (poison) The barghest grows elongated fangs that seep poison. Its jaws deal {@dice 1d6} additional poison damage and {@damage 1d6} {@condition persistent damage||persistent poison damage}.",
-									"{@bold Toxic Breath} (divine, evocation, poison) The barghest breathes a cloud of toxic gas that deals {@damage 8d6} poison damage to all creatures in a 30-foot cone (DC 25 basic Fortitude save). It can't use Toxic Breath again for {@dice 1d4} rounds.",
-									"{@bold Vestigial Arm Strike} {@as F} Frequency once per round; The barghest makes a claw {@action Strike} with a shriveled third arm hanging from its torso. This attack doesn't count for the barghest's multiple attack penalty, nor does that penalty apply on the attack.",
+									"{@bold Fangs} (poison) The barghest grows elongated fangs that seep poison. Its jaws deal {@damage 1d6} additional poison damage and {@damage 1d6} {@condition persistent damage||persistent poison damage}.",
+									"{@bold Toxic Breath} {@as 2} (divine, evocation, poison) The barghest breathes a cloud of toxic gas that deals {@damage 8d6} poison damage to all creatures in a 30-foot cone (DC 25 basic Fortitude save). It can't use Toxic Breath again for {@dice 1d4} rounds.",
+									"{@bold Vestigial Arm Strike} {@as F} {@b Frequency} once per round; {@b Trigger} The barghest completes a {@action Strike}. {@b Effect} The barghest makes a claw {@action Strike} with a shriveled third arm hanging from its torso. This attack doesn't count for the barghest's multiple attack penalty, nor does that penalty apply on the attack.",
 									"{@bold Wings} The barghest has malformed wings extending from its back. It gains a fly Speed of 25 feet."
 								]
 							}
