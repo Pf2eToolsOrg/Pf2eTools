@@ -192,7 +192,7 @@
 															"1: {@relicGift repository of knowledge}",
 															"2: {@relicGift bestow life}",
 															"3: {@relicGift psychic scream}",
-															"4: {@relicGift vitality siphon}",
+															"4: {@relicGift vital siphon}",
 															"5: {@relicGift mental bastion}"
 														]
 													}
@@ -223,7 +223,7 @@
 									"tag": "generic",
 									"style": "book",
 									"data": {
-										"name": "Duelist’s Blazon",
+										"name": "Duelist's Blazon",
 										"traits": [
 											"Relic"
 										],
@@ -238,14 +238,14 @@
 											],
 											[
 												[
-													"A duelist’s blazon set relic was once used by a legendary swordmaster, absorbing their verve, tenacity, and daring. Though each set contains the same items, they all have unique styles, from the elegant, rose-themed decor of the blazon of Taldan swashbuckler Miralla d’Asivran to the spiked sword and attire of Kuthonite maestro duelist Essinte Zaim. Duelists have been known to challenge one another over the set’s components."
+													"A duelist's blazon set relic was once used by a legendary swordmaster, absorbing their verve, tenacity, and daring. Though each set contains the same items, they all have unique styles, from the elegant, rose-themed decor of the blazon of Taldan swashbuckler Miralla d'Asivran to the spiked sword and attire of Kuthonite maestro duelist Essinte Zaim. Duelists have been known to challenge one another over the set's components."
 												]
 											],
 											[
 												[
 													{
 														"name": "Set Items",
-														"entry": "{@runeItem rapier||+1 weapon potency|} (level 2), {@item quick runner’s shirt|LOTGB} (level 5), {@item winged boots} (level 10), {@item invisible chain shirt|SoM} (level 13), {@item mercurial mantle|SoM} (level 18)"
+														"entry": "{@runeItem rapier||+1 weapon potency|} (level 2), {@item quick runner's shirt|LOTGB} (level 5), {@item winged boots} (level 10), {@item invisible chain shirt|SoM} (level 13), {@item mercurial mantle|SoM} (level 18)"
 													}
 												]
 											],
@@ -258,10 +258,10 @@
 													{
 														"type": "list",
 														"items": [
-															"1: {@relicGift dominant emotion}",
+															"1: {@relicGift dominant emotion|TV}",
 															"2: {@relicGift whammy|Tv}",
 															"3: {@relicGift steal luck|tv}",
-															"4: {@relicGift emotion conduit}",
+															"4: {@relicGift emotion conduit|TV}",
 															"5: {@relicGift against all odds|Tv}"
 														]
 													}
@@ -276,10 +276,286 @@
 													{
 														"type": "list",
 														"items": [
-															"{@i Two Items:} You can use {@relicGift dominant emotion} at will. ",
+															"{@i Two Items:} You can use {@relicGift dominant emotion|TV} at will. ",
 															"{@i Three Items:} You can use {@relicGift whammy} one additional time per day, but a creature affected by it is temporarily immune for 24 hours. ",
-															"{@i Four Items:} When you use {@relicGift steal luck} and get a success or critical success, you’re {@condition quickened} until the end of your next turn. ",
-															"{@i Five Items:} If {@relicGift dominant emotion} or {@relicGift emotion conduit} counteract an effect, the target gains a brief surge of luck in the form of a d20 they can add to another single d20 roll, taking the highest result. Until used, this die remains with the target until their next daily preparations, and the target can’t gain another die from this effect until after that time. Using the die is a {@trait fortune} effect."
+															"{@i Four Items:} When you use {@relicGift steal luck} and get a success or critical success, you're {@condition quickened} until the end of your next turn. ",
+															"{@i Five Items:} If {@relicGift dominant emotion|TV} or {@relicGift emotion conduit|TV} counteract an effect, the target gains a brief surge of luck in the form of a d20 they can add to another single d20 roll, taking the highest result. Until used, this die remains with the target until their next daily preparations, and the target can't gain another die from this effect until after that time. Using the die is a {@trait fortune} effect."
+														]
+													}
+												]
+											]
+										]
+									}
+								},
+								{
+									"type": "data",
+									"tag": "generic",
+									"style": "book",
+									"data": {
+										"name": "Infiltration Garb",
+										"traits": [
+											"Relic"
+										],
+										"sections": [
+											[
+												[
+													{
+														"name": "Aspects",
+														"entry": "death and shadow"
+													}
+												]
+											],
+											[
+												[
+													"Several notable assassins, thieves, and others who work from the shadows have used an infiltration garb over the centuries. The nature of these professions means that such sets are often separated from their audacious users. Due to their association with subterfuge and assassins, sets of infiltration garbs have grim reputations. However, not all wielders use their powers maliciously. Notably, the faithful of Kelinahat, empyreal lord of spies, stealth, and intelligence gathering, view these relics as sacred tools in the fight against evil."
+												]
+											],
+											[
+												[
+													{
+														"name": "Set Items",
+														"entry": "{@item Hat of disguise} (level 2), {@item goggles of night} (level 5), {@item greater unmemorable mantle|LOCG} (level 9), {@item greater boots of bounding} (level 14), {@item greater ring of maniacal devices} (level 18)"
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Gifts:",
+														"entry": "The set grants the following gifts."
+													},
+													{
+														"type": "list",
+														"items": [
+															"1: {@relicGift obscure}",
+															"2: {@relicGift death gaze}",
+															"3: {@relicGift dark roads}",
+															"4: {@relicGift tide of death}",
+															"5: {@relicGift grim specter}"
+														]
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Collective Features:",
+														"entry": "The set grants the following features."
+													},
+													{
+														"type": "list",
+														"items": [
+															"{@i Two Items:} The relic set grants you a +1 status bonus to {@skill Stealth} checks you attempt in dim light. ",
+															"{@i Three Items:} You can use {@relicGift death gaze} to deal positive damage to undead. ",
+															"{@i Four Items:} You can use dark roads to teleport up to 60 feet. ",
+															"{@i Five Items:} When you use {@relicGift tide of death}, you can target undead and yourself with positive energy, restoring Hit Points to you (if positive energy heals you) and damaging undead harmed by positive energy."
+														]
+													}
+												]
+											]
+										]
+									}
+								},
+								{
+									"type": "data",
+									"tag": "generic",
+									"style": "book",
+									"data": {
+										"name": "Monk's Attire",
+										"traits": [
+											"Relic"
+										],
+										"sections": [
+											[
+												[
+													{
+														"name": "Aspects",
+														"entry": "emotion (dedication) and life"
+													}
+												]
+											],
+											[
+												[
+													"According to tales, some of the first monks to assemble the austere monk's attire were servants of Irori. This deity is a symbol of devotion and self-discovery through one's understanding of body, mind, and soul. Monk's attire resonates with Irori's dedication, focusing on the highest gain from minimal acquisition, eschewing material objects. Legend holds Irori did so, and that some famous monk's attire sets include a scrap of Irori's original possessions. Other monastic orders have similar traditions of minimal personal effects, with an emphasis on spiritual focus, practicality, and self-defense."
+												]
+											],
+											[
+												[
+													{
+														"name": "Set Items",
+														"entry": "{@item handwraps of mighty blows (generic)||handwraps of mighty blows} (level 2), {@runeItem explorer's clothing||+1 armor potency|} (level 5) or {@item bracers of armor (type I)||bracers of armor I} (level 8), {@item ki-channeling beads|TV} (level 11) or {@item mask of uncanny breath|TV} (level 11)"
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Gifts:",
+														"entry": "The set grants the following gifts."
+													},
+													{
+														"type": "list",
+														"items": [
+															"1: {@relicGift overflowing life}",
+															"2: {@relicGift dominant emotion|tv}",
+															"3: {@relicGift inextinguishable}",
+															"3: (one 13th-level or higher item): {@relicGift emotion conduit|tv}",
+															"3: (one 17th-level or higher item): {@relicGift quickening emotion|tv}"
+														]
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Collective Features:",
+														"entry": "The set grants the following features."
+													},
+													{
+														"type": "list",
+														"items": [
+															"{@i Two Items:} The item bonus from {@relicGift overflowing life} equals the relic's level.",
+															"{@i Three Items:} Any {@trait mental} effect harmful to you triggers {@relicGift dominant emotion|tv}, which can counteract such effects.",
+															"{@i Three Items (one 13th-level or higher item):} Treat the outcome of your recovery checks as one step better.",
+															"{@i Three Items (one 17th-level or higher item):} If {@relicGift dominant emotion|tv} or {@relicGift emotion conduit|tv} counteract an effect, the target regains {@dice 5d10+5} Hit Points and gains a +2 status bonus to saving throws against mental effects for 10 minutes."
+														]
+													}
+												]
+											]
+										]
+									}
+								},
+								{
+									"type": "data",
+									"tag": "generic",
+									"style": "book",
+									"data": {
+										"name": "Pharasma's Command",
+										"traits": [
+											"Relic"
+										],
+										"sections": [
+											[
+												[
+													{
+														"name": "Aspects",
+														"entry": "life and time"
+													}
+												]
+											],
+											[
+												[
+													"Pharasma's devoted followers vow to seek out and destroy undead wherever they can be found, a task made more urgent with the rise of Tar-Baphon. Though the Whispering Tyrant was prevented from taking over Golarion, his forces are still massing. Undead unaffiliated with the lich represent an unacceptable perversion of the cycle of life and death to Pharasmins, and permitting such creatures to exist is anathema to her. To aid her faithful in their sacred duty to send the dead where they belong, Pharasmin priests developed this item set. While using Pharasma's command, you must abide by her edicts and anathema or else the relic ceases to function for you until you atone. This set doesn't function for undead beings."
+												]
+											],
+											[
+												[
+													{
+														"name": "Set Items",
+														"entry": "{@item Necklace of knives|LOGM} (level 2), {@item standard holy prayer beads||holy prayer beads} (level 5), {@item wand of overflowing life (generic)|APG|wand of overflowing life} (level 9), {@item cassock of devotion} (level 11) or {@item greater cloister robe|tv} (level 15), {@item major staff of final rest|LOTGB} (level 16)"
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Gifts:",
+														"entry": "The set grants the following gifts."
+													},
+													{
+														"type": "list",
+														"items": [
+															"1: {@relicGift healing wave}",
+															"2: {@relicGift sands of the hourglass|tv}",
+															"3: {@relicGift inextinguishable}",
+															"4: {@relicGift temporal pulse|tv}",
+															"5: {@relicGift life everlasting}"
+														]
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Collective Features:",
+														"entry": "The set grants the following features."
+													},
+													{
+														"type": "list",
+														"items": [
+															"{@i Two Items:} {@relicGift Healing wave} increases to {@dice 1d6} per relic level.",
+															"{@i Three Items:} You can use {@relicGift sands of the hourglass|tv} as a 30-foot line; each creature in the line must save against the effect.",
+															"{@i Four Items} Treat the outcome of your recovery checks as one step better.",
+															"{@i Five Items:} When you use {@relicGift temporal pulse|tv}, each creature you slow takes {@damage 1d4} damage per relic level, and each creature you {@condition quickened||quicken} regains {@dice 1d4} Hit Points per relic level. For living creatures, the damage is negative, but it's positive for undead."
+														]
+													}
+												]
+											]
+										]
+									}
+								},
+								{
+									"type": "data",
+									"tag": "generic",
+									"style": "book",
+									"data": {
+										"name": "Seer's Array",
+										"traits": [
+											"Relic"
+										],
+										"sections": [
+											[
+												[
+													{
+														"name": "Aspects",
+														"entry": "mind and time"
+													}
+												]
+											],
+											[
+												[
+													"Diviners through the ages have employed a variety of tools to glimpse the future, but one who assembles five pieces of a seer's array gains strong second sight. Seer's arrays can be found across Golarion, from the caravans of Varisian harrowers to the scale diviners at the court of the Dragon King of Xa Hoi. A diviner who wears the array is bound to be sought after for counsel, and those who consult such farsighted individuals do well to heed any advice given."
+												]
+											],
+											[
+												[
+													{
+														"name": "Set Items",
+														"entry": "{@item pendant of the occult} (level 3), {@item staff of divination} (level 6), {@item brooch of inspiration|LOTGB} (level 8), {@item clear quartz crystal ball} (level 14), {@item robe of eyes} (level 17)"
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Gifts:",
+														"entry": "The set grants the following gifts."
+													},
+													{
+														"type": "list",
+														"items": [
+															"1: {@relicGift recalculate}",
+															"2: {@relicGift borrow time|tv}",
+															"3: {@relicGift time jump|Tv}",
+															"4: {@relicGift precognition|tv}",
+															"5: {@relicGift time reversal|Tv}"
+														]
+													}
+												]
+											],
+											[
+												[
+													{
+														"name": "Collective Features:",
+														"entry": "The set grants the following features."
+													},
+													{
+														"type": "list",
+														"items": [
+															"{@i Two Items:} The circumstance bonus from {@relicGift recalculate} increases by 1.",
+															"{@i Three Items:} Creatures become temporarily immune to the relic's {@relicGift borrow time|TV} gift for 1 hour.",
+															"{@i Four Items} You can use the relic's {@relicGift time jump|TV} once per hour. For each use after the first in a given day, you must attempt a flat check with a DC of {@flatDC 9} + the number of times you've used the gift that day. If you fail, you can still complete the {@relicGift time jump|TV}, but after that the gift is no longer available until you next complete your daily preparations. You can roll the flat check before using the gift and decide not to do so after seeing the roll. However, any failure applies to the next use of the gift that day, making your next use your last that day.",
+															"{@i Five Items:} You can use the relic's {@relicGift precognition|TV} once per hour. Each use after the first requires a flat check like for {@relicGift time jump|TV} at four items, but this flat check affects your use of {@relicGift precognition|TV}."
 														]
 													}
 												]
