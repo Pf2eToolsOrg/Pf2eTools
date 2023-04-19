@@ -55,8 +55,7 @@
 								"minimum": 0
 							},
 							"bonus": {
-								"type": "integer",
-								"minimum": 0
+								"type": "integer"
 							},
 							"minProf": {
 								"type": "string",
@@ -145,12 +144,17 @@
 								},
 								{
 									"$ref": "utils.json#/definitions/afflictionBlock"
-								},
-								{
-									"$ref": "utils.json#/definitions/attackBlock"
 								}
 							]
 						},
+						"minItems": 1
+					},
+					"attacks": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/attackBlock"
+						},
+						"uniqueItems": true,
 						"minItems": 1
 					},
 					"speed": {

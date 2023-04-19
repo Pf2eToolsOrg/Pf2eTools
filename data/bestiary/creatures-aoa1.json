@@ -17,6 +17,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human fighter 2",
 			"perception": {
 				"std": 7
 			},
@@ -828,6 +829,12 @@
 				"wis": 1,
 				"cha": -1
 			},
+			"items": [
+				"longsword",
+				"shortbow (20 arrows)",
+				"studded leather",
+				"15 sp"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1066,7 +1073,10 @@
 						"entries": [
 							"Calmont deals {@damage 1d6} extra damage to flat-footed creatures."
 						],
-						"name": "Sneak Attack"
+						"name": "Sneak Attack",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1110,6 +1120,7 @@
 				"goblin",
 				"humanoid"
 			],
+			"description": "Female hobgoblin ranger 4",
 			"perception": {
 				"std": 14
 			},
@@ -1155,6 +1166,13 @@
 				"wis": 1,
 				"cha": -1
 			},
+			"items": [
+				"item composite shortbow (20 arrows)",
+				"item dagger",
+				"key to chest (see Treasure)",
+				"+1 leather armor",
+				"+1 striking rapier"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1332,6 +1350,10 @@
 				"wis": 1,
 				"cha": 2
 			},
+			"items": [
+				"longsword",
+				"steel shield (Hardness 5, HP 20, BT 10) with shield boss"
+			],
 			"speed": {
 				"walk": 20
 			},
@@ -1403,7 +1425,7 @@
 						},
 						"trigger": "An enemy hits the doorwarden with a melee {@action Strike}.",
 						"entries": [
-							"The doorwarden can Raise its Shield and gain its shield's benefit to AC against the triggering attack."
+							"The doorwarden can {@action Raise a Shield||Raise its Shield} and gain its shield's benefit to AC against the triggering attack."
 						],
 						"name": "Reactive Shield"
 					},
@@ -1431,15 +1453,9 @@
 							"concentrate"
 						],
 						"entries": [
-							"Until the next time it acts, the doorwarden appears to be a door. It has an automatic result of 31."
+							"Until the next time it acts, the doorwarden appears to be a door. It has an automatic result of 31 on {@skill Deception} checks and DCs to pass as a door."
 						],
 						"name": "Imitate Door"
-					},
-					{
-						"entries": [
-							"{@skill Deception} checks and DCs to pass as a door."
-						],
-						"name": "on"
 					},
 					{
 						"activity": {
@@ -1481,11 +1497,22 @@
 					"bleed",
 					"death effects",
 					"disease",
-					"doomed"
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
 				],
 				"resistances": [
 					{
-						"name": "physical"
+						"amount": 5,
+						"name": "physical",
+						"note": "except bludgeoning"
 					}
 				]
 			},
@@ -1711,15 +1738,9 @@
 						},
 						"requirements": "More than one enemy is adjacent to the grauladon.",
 						"entries": [
-							"The grauladon swings its tail at each adjacent enemy and attempts."
+							"The grauladon swings its tail at each adjacent enemy and attempts to {@action Trip} each creature adjacent to it. It rolls only a single {@skill Athletics} check and compares the result to the Fortitude DC of each target."
 						],
 						"name": "Body Slam"
-					},
-					{
-						"entries": [
-							"{@action Trip} each creature adjacent to it. It rolls only a single {@skill Athletics} check and compares the result to the Fortitude DC of each target."
-						],
-						"name": "to"
 					},
 					{
 						"entries": [
@@ -1733,18 +1754,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The grauladon hisses and unleashes a nauseating cloud of halitosis in a 15-foot cone. Each creature in the area must succeed at a DC 18 Fortitude saving throw or be {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). The grauladon can't use."
+							"The grauladon hisses and unleashes a nauseating cloud of halitosis in a 15-foot cone. Each creature in the area must succeed at a DC 18 Fortitude saving throw or be {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). The grauladon can't use Noxious Breath or Reactive Breath again for {@dice 1d4} rounds."
 						],
 						"name": "Noxious Breath"
-					},
-					{
-						"traits": [
-							"again"
-						],
-						"entries": [
-							"for {@dice 1d4} rounds."
-						],
-						"name": "Noxious Breath or Reactive Breath"
 					}
 				]
 			},
@@ -1877,7 +1889,7 @@
 						},
 						"trigger": "The graveshell takes damage from a physical attack while withdrawn into its shell (see Shell Game below).",
 						"entries": [
-							"The graveshell reduces the damage from the attack by an amount equal to its shell's Hardness. A graveshell's shell has a Hardness of 6, 10 Hit Points, and a {@condition Broken} Threshold of 5. If its shell is {@condition broken}, the graveshell can't attack with shell spikes, nor can it use Shell Game. If the shell is destroyed, the graveshell's AC is reduced to 16. As long as a graveshell is alive, its shell naturally repairs itself after a week."
+							"The graveshell reduces the damage from the attack by an amount equal to its shell's Hardness. A graveshell's shell has a Hardness of 6, 10 Hit Points, and a Broken Threshold of 5. If its shell is {@condition broken}, the graveshell can't attack with shell spikes, nor can it use Shell Game. If the shell is destroyed, the graveshell's AC is reduced to 16. As long as a graveshell is alive, its shell naturally repairs itself after a week."
 						],
 						"name": "Shell Block"
 					}
@@ -1895,15 +1907,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The graveshell withdraws into its shell, gaining a +2 circumstance bonus."
+							"The graveshell withdraws into its shell, gaining a +2 circumstance bonus to AC and allowing it to use Shell Block. This lasts until the graveshell moves or attacks with any attack other than its shell spikes. The graveshell can't take this action or get any benefit from it if its shell is {@condition broken}."
 						],
 						"name": "Shell Game"
-					},
-					{
-						"entries": [
-							"AC and allowing it to use Shell Block. This lasts until the graveshell moves or attacks with any attack other than its shell spikes. The graveshell can't take this action or get any benefit from it if its shell is {@condition broken}."
-						],
-						"name": "to"
 					}
 				]
 			},
@@ -2010,8 +2016,7 @@
 							"visual"
 						],
 						"entries": [
-							"All creatures that can see the hellcrown and are suffering from its bleeding nail must attempt a DC 16 Will saving throw.",
-							"A creature that fails is {@condition frightened|CRB|frightened 1}, and on a critical failure becomes {@condition fleeing} for as long as it's {@condition frightened}. Any creature that attempts a save is then temporarily immune for 10 minutes."
+							"All creatures that can see the hellcrown and are suffering from its bleeding nail must attempt a DC 16 Will saving throw. A creature that fails is {@condition frightened|CRB|frightened 1}, and on a critical failure becomes {@condition fleeing} for as long as it's {@condition frightened}. Any creature that attempts a save is then temporarily immune for 10 minutes."
 						],
 						"name": "Terrifying Stare"
 					}
@@ -2043,7 +2048,9 @@
 				"immunities": [
 					"death effects",
 					"disease",
-					"paralyzed"
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			},
 			"hasImages": true
@@ -2108,10 +2115,10 @@
 			},
 			"items": [
 				"+1 chain shirt",
-				"Cinderclaw gauntlet (page 77)",
+				"{@item Cinderclaw gauntlet|AoA1}",
 				"gold religious symbol of {@deity Dahak|LOGM} (worth 20 gp)",
 				"hatchet",
-				"hunter's arrowhead (page 77)"
+				"{@item hunter's arrowhead|AoA1}"
 			],
 			"speed": {
 				"walk": 25,
@@ -2638,7 +2645,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
@@ -2704,6 +2715,11 @@
 				"wis": 1,
 				"cha": 0
 			},
+			"items": [
+				"hide armor",
+				"sickle",
+				"whip"
+			],
 			"speed": {
 				"walk": 25,
 				"climb": 25
@@ -2898,12 +2914,6 @@
 				"top": [
 					{
 						"entries": [
-							"+9, {@skill Stealth} +10 Str +3, Dex +3, Con +2, Int +0, Wis +2, Cha \u20131."
-						],
-						"name": "Spider Lore"
-					},
-					{
-						"entries": [
 							"The tixitog can detect the vibrations of creatures touching a web that the tixitog is also touching."
 						],
 						"name": "Web Sense"
@@ -2916,7 +2926,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Small, {@damage 1d12+3} bludgeoning, Rupture 10."
+							"Small, {@damage 1d12+3} bludgeoning, Rupture 10"
 						],
 						"name": "Swallow Whole",
 						"generic": {
@@ -2951,6 +2961,9 @@
 					{
 						"hp": 40
 					}
+				],
+				"immunities": [
+					"poison"
 				]
 			},
 			"hasImages": true
@@ -3064,6 +3077,7 @@
 					"attack": 15,
 					"entry": {
 						"0": {
+							"level": 3,
 							"spells": [
 								{
 									"name": "chill touch"
@@ -3208,7 +3222,10 @@
 				},
 				"hp": [
 					{
-						"hp": 56
+						"hp": 56,
+						"notes": [
+							"plus 10 temporary from false life"
+						]
 					}
 				]
 			}
