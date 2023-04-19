@@ -1,6 +1,345 @@
 {
 	"variantrule": [
 		{
+			"name": "Growing Items",
+			"source": "TV",
+			"page": 164,
+			"category": "Optional",
+			"subCategory": "Nature Crafting",
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Growing Items",
+					"source": "TV",
+					"page": 164,
+					"entries": [
+						"In an ancient forest, an elf plays a haunting melody on a flute among the trees, growing entire buildings seamlessly from still-living wood. Elsewhere, a fungus leshy holds a conversation with the mushrooms of an underground cavern, convincing them to twine together into a latticed armor to defend the cavern against a new threat encroaching from the Darklands. The traditional methods of crafting items tell the story of a crafter retrieving the necessary raw materials and then working those materials via forging, woodworking, tailoring, or other such means; however, this is but one of many ways to create magic items. In a primal setting or adventure, or in a campaign taking place in a natural region like the fey forests of the First World, it might fit your story better to grow an item from a living thing instead. While most such stories take place in a natural environment, they can just as easily occur in a hidden laboratory, where an alchemist might form magical oozes into specific shapes before curing them with magical reagents, producing a sword as durable as any steel.",
+						"Mechanically, the process of growing an item uses the same principles as {@action Craft||Crafting} it normally, though the details and the story differ. Use the {@action Grow|TV} activity, a variant of the {@action Craft} activity. This activity has the {@trait rare} trait; it’s only available if you’ve decided to use this variant in your campaign.",
+						{
+							"type": "data",
+							"tag": "action",
+							"name": "Grow",
+							"source": "TV"
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Example",
+							"source": "TV",
+							"page": 165,
+							"entries": [
+								"If Lini wanted to {@action Grow|TV} a suit of {@item leaf weave armor|TV}, she would spend 2 gp on initial fertilizers and nutrients and allow four days for the armor to grow, attempting a DC 14 {@skill Crafting} check. At the end of the fourth day, if she succeeds, Lini can choose to either use accelerants to complete the growth right away or to instead spend more downtime to cultivate the armor over the course of a few weeks. She has time to spare and finds this kind of task soothing, so even though a level-0 task doesn’t provide profit at an especially fast rate, she decides to spend 5 additional days growing the armor. She’s quite fortunate and rolls a critical success on her Crafting check, allowing her to make 2 sp of progress per additional day, for a total of 10 sp (or 1 gp). This reduces the remaining amount she need to pay to 1 gp, so she spends that amount on a magical additive that promotes plant growth, at which point she is finished growing her new armor. This new armor, which Lini grew herself and is in accordance with her principles as a druid, provides much greater satisfaction than anything she could buy in a shop."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Adjusting Skills",
+							"source": "TV",
+							"page": 165,
+							"entries": [
+								"In a game or setting where the act of creating new items happens primarily or exclusively through careful cultivation of living organisms, GMs can choose to have {@action Grow|TV} use {@skill Nature} instead of {@skill Crafting}. In worlds or settings where this ruling is in play, inventors are likely nonexistent, or at least rare, while druids serve an even more central role in their communities, going beyond spiritual guidance roles to also serve as innovators and economic leaders. Such a change should be made carefully and intentionally, with an eye toward the type of story being told. There’s little point in allowing a hybrid system where you can choose between {@skill Crafting} or {@skill Nature} to craft items, since {@skill Nature} has many other uses and thus can easily make {@skill Crafting} obsolete by comparison. Instead, consider a hybrid version where players use {@skill Nature} to {@action Grow|TV} items and {@skill Arcana} to craft items the normal way, cutting the {@skill Crafting} skill entirely."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Converting Magic Items",
+			"source": "TV",
+			"page": 162,
+			"category": "Optional",
+			"subCategory": "Crafting Alternate Rules",
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Converting Magic Items",
+					"source": "TV",
+					"page": 162,
+					"entries": [
+						"Many magic items found by higher-level characters never see play, destined instead to live at the bottom of a backpack, forgotten and unused. Others are quickly sold to fund the purchase of a more appropriate item. Others still are so irredeemably evil that selling them is an unconscionable act, and the item ends up being destroyed. All of these situations can make it difficult for the GM to properly calculate and balance the party's wealth, which can lead to imbalanced encounters and other problems at the table.",
+						"This variant simplifies the problem by giving the players another option for items that they don't intend to use, allowing them to break an item down and recycle its parts for the creation of another item.",
+						"When breaking down an item, you have a choice on how to proceed. You can immediately use the components to create an item with a similar theme to the one that you deconstructed, or you can save the components for use in any one item created later. If you create a similar item, such as deconstructing a magic weapon in order to create a different but similar type of magic weapon, you can harvest more of the components and residual magic for the new item, giving you more in return than you might otherwise get by simply harvesting the best parts of an item.",
+						"The GM determines whether the new item is similar enough to warrant this benefit, but the new item should be similar either in ability or in general theme. For example, deconstructing a cloak of the bat to create winged boots certainly qualifies, as does deconstructing a {@item ring of climbing} to create {@item slippers of spider climb}. Items of the same general type might qualify, but only if their abilities are thematically similar.",
+						"Generic components can be saved for later, but they can't be combined with other components from another deconstructed item. If excess value remains after making a new item, that value is lost, as the remaining parts are just the leftover bits, with the best parts being used for the new creation. The deconstructed item has the same Bulk as the original. GMs might want to put an expiration date on deconstructed items to prevent too many of them from piling up in character inventories, but unless players are breaking down items all the time, it shouldn't be a problem.",
+						{
+							"type": "data",
+							"tag": "action",
+							"name": "Deconstruct",
+							"source": "TV"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Critical Crafting",
+			"source": "TV",
+			"page": 161,
+			"category": "Optional",
+			"subCategory": "Crafting Alternate Rules",
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Critical Crafting",
+					"source": "TV",
+					"page": 161,
+					"entries": [
+						"The critical success and failure effects of the Craft activity are safe, reasonable effects that are appropriate any time a character wants to Craft: on a critical success, they make more money per day Crafting, and on a critical failure, they ruin 10% of the item's raw materials. However, these monetary rewards and penalties are not the only potential outcomes of crafting criticals. With this variant, you can consider rarely handing out custom critical success rewards and critical failure penalties appropriate for the situation. However, you won't want to do this too often, especially since a high-level crafter who makes a lot of low-level items will critically succeed with some frequency. If crafting is a big part of your game, consider limiting the special effects to natural 20s and 1s, and even then, only when a special item is being created.",
+						"Most often, the special critical success or failure effect will be something distinctive and appropriate to the exact situation in your campaign. For instance, if a PC Crafts a commissioned sword for a prideful ruler obsessed with their heroic ancestor, perhaps on a critical success the item manages to call forth the spirit of the ancestor, who nods gravely while acknowledging the sword. On a critical failure, the PC finishes the sword but accidentally includes a part of the heraldry of the traitorous noble family that murdered the ancestor, enraging the monarch. As you can see from this example, the critical failure effects sometimes tend towards possibilities where the item is still created despite failure, but its completion creates a serious problem that must be resolved. When using this system, consider rolling the checks to Craft the item in secret to prevent a player's knowledge from influencing their decisions.",
+						"While it's usually best to invent your own special critical success or failure effects, here are a few examples of possibilities that can be used in a variety of circumstances.",
+						{
+							"type": "pf2-h3",
+							"name": "Critical Success",
+							"entries": [
+								{
+									"type": "list",
+									"items": [
+										"The crafter's dazzling success and passion imbue a fragment of their self into the item, causing it to become an {@trait intelligent} item.",
+										"If the crafter was creating a max-level item, they can pay more to create an item above their level that they normally couldn't {@action Craft}. For instance, while trying to {@action Craft} a {@item 3rd-Level Spell Magic Wand||wand of fireball} (a 7th-level item), a 7th-level wizard might be able to create a {@item 4rd-Level Spell Magic Wand||wand of 4th-level fireball} (a 9th-level item).",
+										"The item has a minor beneficial special ability beyond other items of its type. This can be whatever you choose, but it's usually another minor activation with a daily frequency. The benefit should be better than a {@variantRule Item Quirks|GMG|quirk} (as quirks are meant to be neutral).",
+										"The item is so well made that it's nearly impossible to damage, doubling its Hardness or greatly increasing its total Hit Points. The item might also be resistant to grime, tarnishing, or other cosmetic changes.",
+										"The item is so beautifully made that it grants a bonus to {@skill Diplomacy} and {@skill Intimidation} checks when displayed or used as part of the check. Alternatively, it could be worth more than usual just as an art object.",
+										"The item is so finely crafted that it distracts the attention of opponents when used in battle, granting a bonus to checks made to {@action Feint} or {@action Create a Diversion} when used as part of the check.",
+										"The crafter is in tune with the object, its powers, and its potentials, turning it into a relic. In addition to its base abilities, the crafter can designate other abilities that the object develops over time."
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Critical Success",
+							"entries": [
+								{
+									"type": "list",
+									"items": [
+										"The crafter {@action Craft||Crafts} the item, but the item is secretly {@trait cursed}. ",
+										"The crafter {@action Craft||Crafts} the item, but the item permanently drains a portion of the crafter's life force and resists attempts at destroying it, permanently reducing the crafter's Hit Points until they complete a quest to destroy the item once and for all. ",
+										"The creation process explodes or otherwise exposes the crafter to significant harm with a long-term effect that demands interesting interplay to remove. There's little point in dealing Hit Point damage during downtime, as it's usually trivial to restore it before adventuring. ",
+										"The {@action Craft||Crafting} process is so flawed that it draws a malevolent intelligence that chooses to complete the item and inhabit it. The intelligence of the item is opposed to the crafter and attempts to secretly thwart them at every turn. ",
+										"The item appears perfectly normal and fully functional, but when someone attempts to use it for its intended purpose, it fails. For example, armor might fall off, weapons might break, or a wand might simply emit an acrid, burning odor instead of the desired spell. ",
+										"The crafter is cursed by their own failure and takes a penalty to all future {@action Craft||Crafting} checks until they get a critical success or a casting of remove curse to end the effect. ",
+										"The {@action Craft||Crafting} goes so poorly that it pollutes the nearby environment. This might mean that the workshop needs extensive cleaning to be usable again, or it could be much worse, polluting the local water supply and making those who live nearby seriously ill."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Crafting Downtime Events",
+			"source": "TV",
+			"page": 158,
+			"category": "Optional",
+			"subCategory": "Crafting Alternate Rules",
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Complex Crafting",
+					"source": "TV",
+					"page": 158,
+					"entries": [
+						"Plenty of things can happen during downtime that might derail your efforts or complicate your plans. When crafting, it might be easy enough to put down the creation and deal with a problem, but sometimes these events can threaten the project itself. The Gamemastery Guide provides three examples of downtime events related to crafting: a delayed shipment of materials, a superlative work drawing attention from collectors, or the discovery of a new and efficient crafting technique. Even adding these to the events around earning income (which are generally applicable), a group that spends a great deal of time crafting might find these to be repetitive. The following downtime events are tied directly to the crafting process and should be used to supplement those found on page 25 of the Gamemastery Guide.",
+						{
+							"type": "data",
+							"tag": "table",
+							"name": "CRAFTING DOWNTIME EVENTS",
+							"source": "TV"
+						},
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"items": [
+								{
+									"type": "item",
+									"name": "Annoying Interloper",
+									"entries": [
+										"Whether it's a nosy relative, gossipy friend, finicky safety inspector, or any other sort of guest, the crafter's workshop has attracted the attention of an annoying interloper. It's someone the crafter can't just kick out unceremoniously, either. The situation might require roleplaying, as well as Diplomacy, Intimidation, or other skills, before the crafter can get back to work."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Banned Ingredient",
+									"entries": [
+										"The crafter realizes that one of the ingredients they need for the items they're crafting is banned or heavily restricted in the local area. If they've already crafted the same item here without a problem before, maybe it's a new ban or they had to refill their stores of a tricky ingredient\u2014or you can just reroll this event and save it for when they build something new. To deal with the banned ingredient, the crafter might have to engage in shady dealings on the black market, lobby for the ingredient's ban to be lifted (especially if the ban is suspicious or prevents the general public from crafting an important item like healing potions), travel abroad where the restriction doesn't exist, or try to devise a substitution."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Delicate Components",
+									"entries": [
+										"Whether it's just the nature of one or more components that make up this item, or the crafter just received a fragile batch, the components the crafter is dealing with are incredibly delicate. The crafter might need to use Thievery (or find someone who can) to handle the sensitive components gently, or else find some way to reinforce the ingredient or the equipment in which it is stored for later use."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Formula Contradiction",
+									"entries": [
+										"The crafter runs into an issue in their formula book. The formula includes two (or more) contradictory instructions, and as a result, they must pause their work while they try to figure out the contradiction. Which one is correct? Is neither right? Are they both functional and the crafter must refine their understanding of the process? This event might involve research or dangerous experimentation."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Infestation:",
+									"entries": [
+										"Some sort of infestation of vermin, spores, or other troublesome contaminants threatens the crafting project and perhaps other portions of the crafter's workshop. On top of protecting their in-process project from being damaged by the infestation, they'll eventually also need to find the infestation's source and put a stop to it. Was it a coincidence, or did someone use mundane or magical means to bring it here on purpose?"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Instability Within",
+									"entries": [
+										"The magic or mechanics inside the item have grown increasingly powerful and unstable, and the crafter isn't sure why. The cause could be a simple mistake, an instability in the crafter's own magic, or even just a coincidence. Whatever the case, the crafter must investigate the source of the instability to fix and, potentially, take advantage of it."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Mutation:",
+									"entries": [
+										"The item has undergone a mutation and is now on its way to becoming a different item\u2014maybe even an item of a higher level than the crafter can normally craft or that is uncommon, rare, intelligent, or otherwise outside of the crafter's normal ability to create. Be very careful when choosing this as an event; ideally, you as the GM want the mutated item to be something you specifically chose to be interesting, rather than an item at random, since presumably the crafter was choosing to create the best item they could think of. That said, the crafter can either find a way to halt the mutation process or lean into it and see what the item becomes!"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Name Dependence",
+									"entries": [
+										"The item's progress is stalled due to the fact that its magic requires it to gain a name\u2014 and not just any random nickname that pops into the crafter's head! The crafter must engage in serious contemplation to select a name that suits the item, as it will be attached to it forevermore. Once chosen, if the item accepts the name, the crafting process can continue. The choice of the name might have other implications as well; for instance, if the item has a command activation, it might require shouting the item's name."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Natural Disaster",
+									"entries": [
+										"A huge natural disaster is about to hit the workshop. Whether it's a tsunami, a tornado, an earthquake, a volcanic eruption, or something else, it represents a huge danger to the crafting process, and potentially the crafter's life. On the other hand, it could also be an opportunity to harness the power of the natural disaster into the item! Consider allowing the crafter to attempt a Recall Knowledge check to remember some formulas that discuss special benefits for harnessing a disaster and offer them a reward (extra progress on the item, an improved item, or something else) to tempt them into staying in the path of danger."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Otherworldly Interference",
+									"entries": [
+										"Be they deities, celestials, fiends, monitors, or other extraplanar entities, Golarion is full of a surprising number of beings from other worlds that attempt to sow mischief, cause mayhem, or offer assistance to its inhabitants. The crafter is one such lucky or unlucky mortal who now has to deal with this otherworldly interference. Even if the otherworldly creature is trying to help, it might not understand mortals well enough to do so effectively. This could possibly create even more trouble than an entity who was trying to sabotage the process, since a crafter can at least root out such a perpetrator and stop them decisively."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Overwhelming Energy",
+									"entries": [
+										"There's just too much magical or mechanical energy building up in the item. That could be a good thing, as it could eventually grant the item more power or provide additional progress, but it's also extremely dangerous, as the energy threatens to overload and cause the item to explode, wasting the crafter's initial investment. They'll have to carefully figure out a way to use the energy (or at least discharge it harmlessly) to protect the item."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Planar Convergence",
+									"entries": [
+										"Many planes of existence overlap with the Material Plane at certain points. Sometimes, those points drift as the planes move and shift, leading to planar convergences where the veil between two planes draws especially thin. Unfortunately (or perhaps fortunately) for the crafter, one such planar convergence passes over their workshop. If they're crafting a related item, they might be able to take advantage of the convergence, but otherwise, they'll need to insulate the item from the convergence or pack up and move far enough away to avoid it. Leaching out the energy from the convergence might even require them to find a location with a convergence to an opposing plane."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Resonant Magic",
+									"entries": [
+										"When multiple sources of magic cluster together, for good or ill, magical resonance builds up between them. The crafting process is interrupted by magical resonances in the workshop between the in-process item and other magic items or spells. The crafter can try to clear out or rearrange the sources of magic that led to the resonance, or they can explore the resonance to try to unlock a new power in the item that only appears when the item is affected by the other items or spells that caused the resonance; in this case, consider using the rules for item sets on page 200 or something similar."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Spirit Magnet",
+									"entries": [
+										"The item has become a magnet for minor disembodied beings, either spirits (beings formed of spiritual essence) or vitae (beings formed of nature's life force, sometimes called \"spirits of nature\"). That's not necessarily a bad thing, but it's certainly distracting, as the spirits interfere with the work and might wind up possessing or otherwise merging with the item. The crafter needs to find a way to communicate with the spirits and warn them off or work with them to make the item an even better conductor for spirits. In the worst case this could ruin the item's creation, but in the best case, the spirits could grant the item special powers or intelligence."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Suspicious Offer",
+									"entries": [
+										"A questionable figure offers the crafter special ingredients or techniques that supposedly will shave time off the item's crafting process while providing a steep discount on the necessary materials. But something about the offer\u2014no, maybe everything about it\u2014seems too good to be true. The crafter might dismiss or accept the offer outright, but they also might try to determine the truth of the figure's claims, either by understanding their motives or performing a test. Either way, if the crafter decides to use the mysterious figure's offer, you can decide what sorts of effects it might have. Who knows? Maybe it was genuine."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Technical Challenge",
+									"entries": [
+										"An unusual interaction during the item's creation provides a significant technical challenge. The crafter will have to pause and determine how to proceed before continuing. There might be several possible approaches to the problem, each with different benefits or drawbacks."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Unexpected Flaw",
+									"entries": [
+										"Something within the item isn't functioning properly, and the crafter needs to first figure out what went wrong and why. Were some of the components faulty? Did someone tamper with the item? Did the crafter make a small error that cascaded? Once they can hunt down the flaw and figure out how to prevent it in the future, they need to determine the most expedient way to fix it and bring the item back on track."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Complex Crafting",
+			"source": "TV",
+			"page": 158,
+			"category": "Optional",
+			"subCategory": "Crafting Alternate Rules",
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Complex Crafting",
+					"source": "TV",
+					"page": 158,
+					"entries": [
+						"The {@action Craft} action as presented in the Core Rulebook works at a simple rate: you can {@action Craft} any item, regardless of the item level, in exactly 4 days, spending additional time for a discount on the item's final cost. While easy to implement at the table, this system focuses on simplicity and leaves some avenues unexplored. For example, items of the highest possible level (your own level) provide you far more value for those 4 days than lower-level items. In addition, the system provides few options for players to attempt to craft an item quickly, even if doing so comes with risk of failure. This complex crafting variant is suitable for groups who view crafting items as a central part of their play experience. For most groups, the simpler crafting system is probably sufficient to complete the occasional item.",
+						"This variant adds a choice to the system of crafting, allowing characters to decide how they want to approach a job, taking a slow and methodical approach or rushing the process and risking loss of material or even the creation of a cursed item! This system also incorporates changes in time based on the item's level and whether it's a consumable item or a permanent item.",
+						"To begin, you must meet all of the requirements listed in the {@action Craft} action of the {@skill Crafting} skill. At the start of the process, you must determine the setup time based on the type of item and its level compared to yours, then decide on your approach to the job, which is limited by your proficiency. The GM determines the base DC as normal based on the item's level, rarity, and other circumstances.",
+						"To determine setup time, check the item's level and whether it's a consumable or permanent item. Compare the item's level to your own and look for the number of days on {@table Days of Setup Time|TV|Table 5\u20131}. This setup time is the base number of days it takes to create the item. If you decide to take the slow and methodical approach, you spend that number of days, and then attempt the Crafting check to determine your success (see Finishing the Item).",
+						"You can instead rush the process, taking days off the time needed to setup the item while introducing a greater risk of failure. If you're at least an Expert in {@skill Crafting}, you can reduce the setup time by 1 day by increasing the DC by 5. If you're at least a Master in {@skill Crafting}, you can reduce the setup time by 2 days by increasing the DC by 10. If you're Legendary in {@skill Crafting}, you can reduce the setup time by 3 days by increasing the DC by 15. If you're crafting a consumable, and this reduction would bring the number of days to 0 or less, the crafting time is instead reduced to 4 hours.",
+						{
+							"type": "data",
+							"tag": "table",
+							"name": "Days of Setup Time",
+							"source": "TV"
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Finishing the Item",
+							"page": 158,
+							"source": "TV",
+							"entries": [
+								"After the setup time is complete, you must attempt a {@skill Crafting} check to determine the overall success of your creation. If your check is a success, you expend the raw materials and can complete the item immediately by paying the remaining portion of the item's Price in materials. Alternatively, you can spend additional downtime days working on the item.",
+								"For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This value reduction is determined using {@table Income Earned||Table 4\u20132: Income Earned}, based on your proficiency rank in {@skill Crafting} and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the time is interrupted, you can return to finish the item later, continuing where you left off.",
+								"You can decide to speed up this process as well. If you are at least an Expert in {@skill Crafting}, you can rush the finishing process, reducing the value of the materials you must expend to complete the item by twice the amount listed in {@table Income Earned||Table 4\u20132: Income Earned} on page 236 of the Core Rulebook. Doing so comes at a risk; at the end of the creation process, once the item is finished, you must attempt a flat check. The DC of this flat check is equal to {@flatDC 10} + the item's level \u2013 your {@skill Crafting} proficiency bonus. If the check is a success or critical success, the item is complete and works perfectly. If the check is a failure, the item is still completed, but it gains a {@variantRule Item Quirks|GMG|quirk}. If the check is a critical failure, the item is ruined or might become a cursed item attached to you (GM's discretion).",
+								{
+									"type": "pf2-h4",
+									"name": "Crafting Items with Adjustments",
+									"page": 159,
+									"source": "TV",
+									"entries": [
+										"Adjustments are item modifications that can provide specific special abilities to a particular type of equipment. Instead of crafting adjustments separately from a suit of armor, you can simply craft the armor with the adjustment already in place by adding the price of the adjustment to the total crafting cost of the base armor and calculating the rest of the crafting process as normal."
+									]
+								},
+								{
+									"type": "pf2-h4",
+									"name": "Skill Feats",
+									"page": 159,
+									"source": "TV",
+									"entries": [
+										"When using this variant, consider allowing the following skill feat to enable characters to {@action Craft} exceptionally low-level items even more quickly. This skill feat is listed as rare and is never available to a character except when using this variant. This rapid form of crafting could cause your players to end up with higher treasure values or more items than an adventure expects them to have, so be careful about allowing this feat in campaigns that already provide significant amounts of downtime.",
+										{
+											"type": "data",
+											"tag": "feat",
+											"name": "Quick Setup",
+											"source": "TV"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Set Relics",
 			"source": "TV",
 			"page": 200,
@@ -1016,6 +1355,29 @@
 								"{@feat Fey Life|DA}",
 								"{@feat Walk on the Wind|DA}"
 							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Item Quirks",
+			"source": "GMG",
+			"page": 86,
+			"category": "Optional",
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Item Quirks",
+					"source": "GMG",
+					"page": 86,
+					"entries": [
+						"You can use the table found here to quickly apply a quirk to any item, such as items found as treasure or new items that a PC creates. Rather than rolling, you can instead choose one yourself or invent a new quirk. Item quirks don't normally have any mechanical effect, since their only purpose is to be colorful and further flesh out the world, though you can add one if you so choose. Such effects should never grant more than a +1 item bonus or \u20131 item penalty, and even then the statistic or check it applies to should be narrow. For a quirk that grants an item the ability to speak, you choose the language based on the history of the item, or your best guess of what that history might be. It's typically a language spoken by the item's creator.",
+						{
+							"type": "data",
+							"tag": "table",
+							"name": "Quirks",
+							"source": "GMG"
 						}
 					]
 				}
