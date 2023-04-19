@@ -1,36 +1,3 @@
-v0.8.0, "Quesadilla Day" Edition
+v0.8.1
 
-- Added Treasure Vault
-- Removed Fluff and Books
-- Added support for direct Item Category parsing in Text Converter
-- (Typos/Tags)
-- (Thanks to @Jnosh for the following!)
-- Added the following sources:
- - Beginner Box
- - A Fistful of Flowers
- - Torment and Legacy
- - Pathfinder One-Shot: Sundered Waves
- - Threshold of Knowledge
-- Fixed creature scaler being run when disabled, leading to erroneous stats.
-- Minor improvements to creature statblock rendering:
- - show notes on individual skills
- - fix display of multiple ACs and AC abilities
- - show ability cost entries
- - support ability entries on individual saving throws
- - add skills notes & languages notes to add non-standard entries to the respective lists
- - Allow activity entries for creature attacks again to enable the rare case of attacks that take multiple actions.
- - show creature ability prerequisites
- - improve support for multiple HP entries on creatures (e.g. Hydra) and add support for HP notes
- - add support for a note property on creature spellcasting entries (e.g. Manticore Paaridar)
- - add support for a note property on creature abilities (e.g. Mafika Ayuwari)
- - add support for troop thresholds on creatures
- _copy improvements:
- - Extend property path support to additional _copy modifier modes
- - add a new _copy mode that sets object properties
- - add ability to apply Weak/Elite adjustment to creatures during _copy
-- add text converter support for:
- - creature skill notes
- - language notes
- - per saving throw abilities
- - troop thresholds
-- (And I mean a **lot** of Typos/Tags)
+- Fixed a rendering bug related to spellcasting notes in creatures
