@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Almiraj",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 16,
 			"level": 1,
@@ -106,15 +105,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Antaro Boldblade",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 8,
 			"level": -1,
@@ -178,7 +175,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 16,
@@ -222,15 +218,13 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			}
 		},
 		{
 			"name": "Battle Leader Rekarek",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 27,
 			"level": 2,
@@ -348,15 +342,13 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				]
 			}
 		},
 		{
 			"name": "Binumir",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 82,
 			"level": 3,
@@ -496,7 +488,6 @@
 		},
 		{
 			"name": "Bolar Of Stonemoor",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 8,
 			"level": -1,
@@ -597,15 +588,13 @@
 				},
 				"hp": [
 					{
-						"hp": 13,
-						"abilities": null
+						"hp": 13
 					}
 				]
 			}
 		},
 		{
 			"name": "Cobbleswarm",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 83,
 			"level": 2,
@@ -646,7 +635,6 @@
 				"walk": 20,
 				"burrow": 10
 			},
-			"attacks": [],
 			"abilities": {
 				"top": [
 					{
@@ -712,8 +700,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -735,7 +722,6 @@
 		},
 		{
 			"name": "Eunice",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 12,
 			"level": 0,
@@ -814,15 +800,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Gref",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 34,
 			"level": 2,
@@ -964,15 +948,13 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				]
 			}
 		},
 		{
 			"name": "Grick",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 35,
 			"level": 3,
@@ -1056,7 +1038,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1095,8 +1076,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				],
 				"resistances": [
@@ -1109,7 +1089,6 @@
 		},
 		{
 			"name": "Grospek Lavarsus",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 87,
 			"level": 7,
@@ -1120,6 +1099,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human city guard commander",
 			"perception": {
 				"std": 17
 			},
@@ -1160,6 +1140,13 @@
 				"wis": 1,
 				"cha": 3
 			},
+			"items": [
+				"breastplate",
+				"hand crossbow with 10 bolts",
+				"good handcuffs (page 77)",
+				"lesser healing potion",
+				"Lawkeeper (+1 striking pacifying club; page 78)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1192,20 +1179,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16, {@skill Intimidation} +18, {@skill Lore||Legal Lore} +15"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+15 Str +4, Dex +1, Con +5, Int +2, Wis +1, Cha +3 Items breastplate, hand crossbow with 10 bolts, good handcuffs (page 77), lesser healing potion, Lawkeeper (+1 striking pacifying club; page 78)"
-						],
-						"name": "Society"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -1238,15 +1211,13 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
 					}
 				]
 			}
 		},
 		{
 			"name": "Hendrid Pratchett",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 89,
 			"level": 6,
@@ -1258,6 +1229,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male half-elf serial killer",
 			"perception": {
 				"std": 17
 			},
@@ -1307,6 +1279,13 @@
 				"wis": 1,
 				"cha": 5
 			},
+			"items": [
+				"armored coat (as leather armor)",
+				"corpseward pendant (page 80)",
+				"lesser healing potions (3)",
+				"hunting spider venom (3 doses, in Reaper's Lancet)",
+				"Reaper's Lancet (page 81; bonded item)"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1344,7 +1323,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 22,
@@ -1388,14 +1366,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+14 Str +3, Dex +4, Con +0, Int +2, Wis +1, Cha +5 Items armored coat (as leather armor), corpseward pendant (page 80), lesser healing potions (3), hunting spider venom (3 doses, in Reaper's Lancet), Reaper's Lancet (page 81; bonded item)"
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -1422,15 +1392,13 @@
 				},
 				"hp": [
 					{
-						"hp": 100,
-						"abilities": null
+						"hp": 100
 					}
 				]
 			}
 		},
 		{
 			"name": "Kekker",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 34,
 			"level": 2,
@@ -1572,15 +1540,13 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				]
 			}
 		},
 		{
 			"name": "Kemeneles",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 53,
 			"level": 2,
@@ -1643,7 +1609,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 18,
@@ -1695,7 +1660,6 @@
 				"bot": [
 					{
 						"name": "Eschew Materials",
-						"entries": [],
 						"generic": {
 							"tag": "feat"
 						}
@@ -1720,15 +1684,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Lyrma Swampwalker",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 54,
 			"level": 2,
@@ -1738,6 +1700,7 @@
 				"gnome",
 				"humanoid"
 			],
+			"description": "Female gnome hunter",
 			"perception": {
 				"std": 11
 			},
@@ -1801,16 +1764,6 @@
 					]
 				}
 			],
-			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Survival} +9 Str +3, Dex +4, Con +1, Int \u20131, Wis +3, Cha +0 Items trident."
-						],
-						"name": "Stealth"
-					}
-				]
-			},
 			"defenses": {
 				"ac": {
 					"std": 14
@@ -1829,14 +1782,15 @@
 				"hp": [
 					{
 						"hp": 38,
-						"abilities": null
+						"notes": [
+							"currently 30"
+						]
 					}
 				]
 			}
 		},
 		{
 			"name": "Miriel Grayleaf",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 7,
 			"level": -1,
@@ -1946,15 +1900,13 @@
 				},
 				"hp": [
 					{
-						"hp": 5,
-						"abilities": null
+						"hp": 5
 					}
 				]
 			}
 		},
 		{
 			"name": "Pickled Punk",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 59,
 			"level": 1,
@@ -1998,7 +1950,6 @@
 			"speed": {
 				"walk": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"top": [
 					{
@@ -2053,8 +2004,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -2072,7 +2022,6 @@
 		},
 		{
 			"name": "Ralso",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 91,
 			"level": 4,
@@ -2084,6 +2033,7 @@
 				"humanoid",
 				"orc"
 			],
+			"description": "Female half-orc thief",
 			"perception": {
 				"std": 14
 			},
@@ -2128,6 +2078,14 @@
 				"wis": 1,
 				"cha": 2
 			},
+			"items": [
+				"caltrops",
+				"daggers (2)",
+				"lesser healing potion",
+				"ring of discretion (page 80)",
+				"shortswords (2)",
+				"studded leather armor"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2163,14 +2121,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12, {@skill Society} +7, {@skill Stealth} +12, {@skill Thievery} +12 Str +3, Dex +4, Con +2, Int \u20131, Wis +1, Cha +2 Items caltrops, daggers (2), lesser healing potion, ring of discretion (page 80), shortswords (2), studded leather armor."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2180,7 +2130,7 @@
 						"requirements": "Ralso is wielding two piercing weapons",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Ralso makes two {@action Strike||Strikes} against a single creature within reach, one {@action Strike} per weapon. These attacks count toward Ralso's multiple attack penalty, but the penalty doesn't increase until after both attacks."
@@ -2212,15 +2162,13 @@
 				},
 				"hp": [
 					{
-						"hp": 55,
-						"abilities": null
+						"hp": 55
 					}
 				]
 			}
 		},
 		{
 			"name": "Shredskin",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 60,
 			"level": 2,
@@ -2301,7 +2249,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d4+4} bludgeoning, DC 16."
+							"{@damage 1d4+4} bludgeoning, DC 16"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -2344,8 +2292,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				],
 				"immunities": [
@@ -2356,7 +2303,6 @@
 		},
 		{
 			"name": "Siege Shard",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 84,
 			"level": 3,
@@ -2406,7 +2352,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 20,
@@ -2474,7 +2419,7 @@
 						],
 						"frequency": {
 							"unit": "minute",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The siege shard emits a disorienting psychic blast. All creatures within a 15 feet take {@damage 4d6} mental damage (DC 20 basic Will save)."
@@ -2512,8 +2457,7 @@
 				"hardness": 5,
 				"hp": [
 					{
-						"hp": 37,
-						"abilities": null
+						"hp": 37
 					}
 				],
 				"immunities": [
@@ -2526,7 +2470,6 @@
 		},
 		{
 			"name": "Skebs",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 8,
 			"level": -1,
@@ -2663,15 +2606,13 @@
 				},
 				"hp": [
 					{
-						"hp": 7,
-						"abilities": null
+						"hp": 7
 					}
 				]
 			}
 		},
 		{
 			"name": "Vargouille",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 35,
 			"level": 2,
@@ -2829,15 +2770,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Zrukbat",
-			"isNpc": false,
 			"source": "AoE1",
 			"page": 85,
 			"level": 2,
@@ -2945,8 +2884,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				],
 				"immunities": [

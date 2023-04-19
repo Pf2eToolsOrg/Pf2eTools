@@ -15,19 +15,61 @@ function updateFolder (folder) {
 			// For targeted schema changes, like changing a name of an object key
 			if (json.item) {
 				json.item = json.item.map(x => {
-					if (x.variants) {
-						x.variants.map(v => {
-							if (v.variantType) return v
-							console.log(`\tUpdating ${x.name} item variants in ${file}...`)
-							if (!v.type && v.name) {
-								v.variantType = v.name
-								delete v.name
-								return v
-							} else {
-								v.variantType = v.type
-								delete v.type
-								return v
+					if (x.category !== "Coda" && x.traits && Array.isArray(x.traits) && x.traits.filter(t => t.includes("coda")).length > 0) {
+						console.log(`\tUpdating ${x.name} coda category in ${file}...`)
+						x.category = "Coda"
+					}
+					if (x.entries && Array.isArray(x.entries) && x.entries.length) {
+						x.entries = x.entries.map(e => {
+							if (typeof e === "object") {
+								if (e.variants) {
+									console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
+									if (!Array.isArray(x.variants)) {
+										x.variants = e.variants
+									} else {
+										x.variants.push(...e.variants)
+									}
+									delete e.variants
+									if (!x.generic) x.generic = "G"
+								}
 							}
+							return e
+						})
+					}
+					if (x.variants) {
+						if (!x.generic) {
+							console.log(`\tUpdating ${x.name} not having generic attribute in ${file}...`)
+							x.generic = "G"
+						}
+						x.variants.map(v => {
+							if (v.entries && Array.isArray(v.entries) && v.entries.length) {
+								v.entries = v.entries.map(e => {
+									if (typeof e === "object") {
+										if (e.variants) {
+											console.log(`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`)
+											x.variants.push(...e.variants)
+											delete e.variants
+											if (!x.generic) x.generic = "G"
+										}
+									}
+									return e
+								})
+							}
+							if (!v.variantType) {
+								console.log(`\tUpdating ${x.name} item variants in ${file}...`)
+								if (!v.type && v.name) {
+									v.variantType = v.name.length > x.name.length ? v.name.replace(x.name, "") : v.name
+									delete v.name
+								} else {
+									v.variantType = v.type
+									delete v.type
+								}
+							}
+							if (v.craftReq && !Array.isArray(v.craftReq)) {
+								console.log(`\tUpdating ${x.name} item variant craftReq to array in ${file}...`)
+								v.craftReq = [v.craftReq]
+							}
+							return v
 						})
 					}
 					if (typeof (x.destruction || x.special || x.craftReq) === "string") {
@@ -41,12 +83,10 @@ function updateFolder (folder) {
 						if (typeof x.craftReq === "string") {
 							x.craftReq = [x.craftReq]
 						}
-						return x
 					}
 					if (x.activate && x.activate.components && !Array.isArray(x.activate.components)) {
 						console.log(`\tUpdating ${x.name} components to array in ${file}...`)
 						x.activate.components = [x.activate.components]
-						return x
 					}
 					if (x.activate && x.activate.components && x.activate.components.length) {
 						x.activate.components.map(component => {
@@ -56,7 +96,18 @@ function updateFolder (folder) {
 							}
 							return component
 						})
-						return x
+					}
+					if (x.activate != null && x.trigger != null) {
+						x.activate.trigger = x.trigger
+						delete x.trigger
+					}
+					if (x.activate != null && x.requirements != null) {
+						x.activate.requirements = x.requirements
+						delete x.requirements
+					}
+					if (x.activate != null && x.prerequisites != null) {
+						x.activate.prerequisites = x.prerequisites
+						delete x.prerequisites
 					}
 					if (x.type === "Equipment" && !(x.equipment === true)) {
 						console.log(`\tUpdating ${x.name} types from Equipment to Item in ${file}...`)
@@ -178,6 +229,12 @@ function updateFolder (folder) {
 						delete cr.creatureType
 						cr.traits = [...new Set(cr.traits.flat())]
 					}
+					if (cr.isNpc === false) {
+						delete cr.isNpc
+					}
+					if (cr.hasImages === false) {
+						delete cr.hasImages
+					}
 					if (cr.skills && Object.keys(cr.skills).find(k => k.match(/[A-Z]/g))) {
 						// Stolen from https://bobbyhadz.com/blog/javascript-lowercase-object-keys
 						console.log(`\tUpdating ${cr.name} skill to lowercase in ${file}...`)
@@ -186,6 +243,15 @@ function updateFolder (folder) {
 							accumulator[key.toLowerCase()] = cr.skills[key];
 							return accumulator;
 						}, {})
+					}
+					if (cr.skills) {
+						for (const skill of Object.keys(cr.skills).filter(s => s.match(/[Ll]ore\s+\(.*\)/g))) {
+							cr.skills["lore"] = cr.skills[skill];
+							const match = /\((.*)\)/.exec(skill);
+							const note = match[1].trim().replace(/\s/g, " ");
+							cr.skills["lore"].note = note;
+							delete cr.skills[skill];
+						}
 					}
 					if (cr.ac || cr.savingThrows || cr.hardness || cr.hp || cr.bt || cr.immunities || cr.weaknesses || cr.resistances) {
 						cr.defenses = cr.defenses || {};
@@ -196,6 +262,22 @@ function updateFolder (folder) {
 								delete cr[k];
 							}
 						}
+					}
+					if (cr.defenses && cr.defenses.resistances) {
+						cr.defenses.resistances = cr.defenses.resistances.map(r => {
+							if (r.note) {
+								r.note = r.note.trimAnyChar("()");
+							}
+							return r;
+						})
+					}
+					if (cr.defenses && cr.defenses.weaknesses) {
+						cr.defenses.weaknesses = cr.defenses.weaknesses.map(r => {
+							if (r.note) {
+								r.note = r.note.trimAnyChar("()");
+							}
+							return r;
+						})
 					}
 					if (cr.languages && cr.languages.languages && cr.languages.languages.length && cr.languages.languages.find(k => k.match(/[A-Z]/g))) {
 						console.log(`\tUpdating ${cr.name} languages to lowercase in ${file}...`)
@@ -215,6 +297,86 @@ function updateFolder (folder) {
 							}
 							return k
 						})
+					} else if (cr.attacks && cr.attacks.length === 0) {
+						delete cr.attacks
+					}
+					if (cr.spellcasting && cr.spellcasting.length) {
+						cr.spellcasting = cr.spellcasting.map(k => {
+							if (k.type) {
+								k.type = k.type.toTitleCase();
+							}
+							if (k.tradition) {
+								k.tradition = k.tradition.toLowerCase();
+							}
+							if (k.name && k.type && k.tradition
+								&& (k.name.localeCompare(`${k.type} ${k.tradition}`, { sensitivity: "base" })
+									|| k.name.localeCompare(`${k.tradition} ${k.type}`, { sensitivity: "base" }))
+							) {
+								delete k.name;
+							}
+
+							const mapSpellLevel = (l) => {
+								l.spells = l.spells.map(s => {
+									if (s.note) {
+										if (typeof s.note === "string") {
+											s.notes = [s.note];
+										} else {
+											s.notes = s.note;
+										}
+										delete s.note;
+									}
+									return s;
+								});
+								return l;
+							}
+
+							if (k.entry) {
+								for (let l = 0; l <= 10; l++) {
+									const level = l.toString();
+									if (k.entry[level]) {
+										k.entry[level] = mapSpellLevel(k.entry[level]);
+									}
+									if (k.entry.constant && k.entry.constant[level]) {
+										k.entry.constant[level] = mapSpellLevel(k.entry.constant[level]);
+									}
+								}
+							}
+							return k
+						})
+					}
+					if (cr.rituals && cr.rituals.length) {
+						cr.rituals = cr.rituals.map(k => {
+							if (k.tradition) {
+								k.tradition = k.tradition.toLowerCase();
+							}
+							if (k.note) {
+								if (typeof k.note === "string") {
+									k.notes = [k.note];
+								} else {
+									k.notes = k.note;
+								}
+								delete k.note;
+							}
+							return k
+						})
+					}
+					if (cr.abilities) {
+						const mapAbility = (a) => {
+							if (a.entries && a.entries.length === 0) {
+								delete a.entries;
+							}
+							return a;
+						}
+
+						if (cr.abilities.top) {
+							cr.abilities.top = cr.abilities.top.map(mapAbility)
+						}
+						if (cr.abilities.mid) {
+							cr.abilities.mid = cr.abilities.mid.map(mapAbility)
+						}
+						if (cr.abilities.bot) {
+							cr.abilities.bot = cr.abilities.bot.map(mapAbility)
+						}
 					}
 					return cr;
 				});
@@ -289,6 +451,25 @@ function updateFolder (folder) {
 					}
 					return r;
 				});
+			}
+			if (json.archetype) {
+				json.archetype = json.archetype.map(a => {
+					if (a.traits && Array.isArray(a.traits) && a.traits.length) {
+						a.rarity = a.traits[0]
+						delete a.traits;
+					}
+					return a
+				})
+			}
+			if (json.background) {
+				json.background = json.background.map(b => {
+					if (b.feat) {
+						if (Array.isArray(b.feat)) b.feats = b.feat
+						else b.feats = [b.feat]
+						delete b.feat
+					}
+					return b
+				})
 			}
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})

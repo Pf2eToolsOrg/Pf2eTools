@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Damibwa",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 80,
 			"level": 4,
@@ -67,12 +66,6 @@
 				"top": [
 					{
 						"entries": [
-							"+10 Str +4, Dex +4, Con +3, Int \u20134, Wis +2, Cha +0."
-						],
-						"name": "Survival"
-					},
-					{
-						"entries": [
 							"A damibwa can hold its breath for 5 minutes."
 						],
 						"name": "Deep Breath"
@@ -94,9 +87,18 @@
 							"attack",
 							"move"
 						],
-						"requirements": "The damibwa has a",
+						"requirements": "The damibwa has a Small or smaller creature {@condition grabbed} in water",
 						"entries": [
-							"Small or smaller creature {@condition grabbed} in water; The damibwa attempts an {@skill Athletics} check against the creature's Fortitude DC. Critical Success The damibwa moves up to its swim Speed, dragging the {@condition grabbed} creature along with it. Success The damibwa moves up to half its swim Speed, dragging the {@condition grabbed} creature along with it. Failure The damibwa doesn't move and the creature isn't dragged. Critical Failure The damibwa no longer has the creature {@condition grabbed}."
+							"The damibwa attempts an {@skill Athletics} check against the creature's Fortitude DC.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The damibwa moves up to its swim Speed, dragging the {@condition grabbed} creature along with it.",
+									"Success": "The damibwa moves up to half its swim Speed, dragging the {@condition grabbed} creature along with it.",
+									"Failure": "The damibwa doesn't move and the creature isn't dragged.",
+									"Critical Failure": "The damibwa no longer has the creature {@condition grabbed}."
+								}
+							}
 						],
 						"name": "Fetch"
 					},
@@ -133,8 +135,7 @@
 				},
 				"hp": [
 					{
-						"hp": 62,
-						"abilities": null
+						"hp": 62
 					}
 				]
 			},
@@ -142,7 +143,6 @@
 		},
 		{
 			"name": "Fire-pot Ubanu",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 89,
 			"level": 8,
@@ -153,6 +153,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human pyrochemist",
 			"perception": {
 				"std": 16
 			},
@@ -217,7 +218,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage ||persistent fire} plus 6 fire splash",
+					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage||persistent fire} plus 6 fire splash",
 					"types": [
 						"fire",
 						"persistent"
@@ -239,12 +240,31 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "primal",
 					"DC": 26,
 					"attack": 18,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "produce flame"
+								}
+							]
+						},
 						"1": {
 							"slots": 3,
 							"spells": [
@@ -305,27 +325,12 @@
 				"top": [
 					{
 						"entries": [
-							"+15, {@skill Lore||Weapons Lore} +16 Str +1, Dex +3, Con +1, Int +4, Wis +1, Cha +4 Items smock (as padded armor), fulminating spear (page 76)"
-						],
-						"name": "Nature"
-					},
-					{
-						"entries": [
-							"Ubanu carries these infused items: 8 moderate alchemist's fires, 2 lesser elixirs of life, and 2 moderate tanglefoot bags. These items last for 24 hours, or until the next time Ubanu makes his daily preparations."
+							"Ubanu carries these infused items: 8 {@item moderate alchemist's fire||moderate alchemist's fires}, 2 {@item lesser elixir of life||lesser elixirs of life}, and 2 {@item moderate tanglefoot bag||moderate tanglefoot bags}. These items last for 24 hours, or until the next time Ubanu makes his daily preparations."
 						],
 						"name": "Infused Items"
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"4th"
-						],
-						"entries": [
-							"acid splash, detect magic, guidance, prestidigitation, produce flame."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"entries": [
 							"Creatures who fail a saving throw against one of Ubanu's spells are {@condition flat-footed} to his attacks until the end of his turn or until the end of his next turn on a critical failure."
@@ -361,15 +366,19 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "fire"
 					}
 				]
 			}
 		},
 		{
 			"name": "Froglegs",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 91,
 			"level": 8,
@@ -380,6 +389,7 @@
 				"grippli",
 				"humanoid"
 			],
+			"description": "Female grippli crime boss (Pathfinder Bestiary 2 139)",
 			"perception": {
 				"std": 16
 			},
@@ -413,7 +423,8 @@
 					"std": 16
 				},
 				"thievery": {
-					"std": 18
+					"std": 18,
+					"to Pick a Lock": 20
 				},
 				"underworld lore": {
 					"std": 15
@@ -427,6 +438,12 @@
 				"wis": 2,
 				"cha": 4
 			},
+			"items": [
+				"+1 daggers (4)",
+				"Habu's Cudgel (page 76)",
+				"leather armor",
+				"infiltrator thieves' tools"
+			],
 			"speed": {
 				"walk": 30,
 				"climb": 20
@@ -484,45 +501,31 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16, {@skill Stealth} +16, {@skill Thievery} +18 (+20 to {@action Pick a Lock}), {@skill Lore||Underworld Lore} +15 Str +3, Dex +4, Con +0, Int +1, Wis +2, Cha +4 Items +1 daggers (4), Habu's Cudgel (page 76), leather armor, infiltrator thieves' tools."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"Advantage Froglegs isn't {@condition flat-footed} to creatures of 8th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
+							"Froglegs isn't {@condition flat-footed} to creatures of 8th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
 						],
-						"name": "Deny"
+						"name": "Deny Advantage"
 					}
 				],
 				"bot": [
 					{
 						"entries": [
-							"Fighter Froglegs deals an additional {@damage 2d6} precision damage with weapons from the {@group knife}, and knives gain the {@trait deadly <d10>} weapon property while she wields them."
+							"Froglegs deals an additional {@damage 2d6} precision damage with weapons from the {@group knife|knife group}, and knives gain the {@trait deadly <d10>} weapon property while she wields them."
 						],
-						"name": "Knife"
+						"name": "Knife Fighter"
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "free"
 						},
-						"trigger": "Froglegs successfully Tumbles",
+						"trigger": "Froglegs successfully {@action Tumble Through||Tumbles Through} an enemy's space",
 						"entries": [
-							"Through an enemy's space; Froglegs attempts."
+							"Froglegs attempts to {@action Disarm} or {@action Trip} the enemy. She can use her tongue for this attempt and does not need to have a free hand."
 						],
 						"name": "Roll and Snatch"
-					},
-					{
-						"entries": [
-							"{@action Trip} the enemy. She can use her tongue for this attempt and does not need to have a free hand."
-						],
-						"name": "to Disarm or"
 					},
 					{
 						"activity": {
@@ -556,15 +559,13 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				]
 			}
 		},
 		{
 			"name": "Gbahali",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 81,
 			"level": 9,
@@ -680,7 +681,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -694,7 +694,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"40 feet."
+							"40 feet"
 						],
 						"name": "Aquatic Ambush",
 						"generic": {
@@ -742,8 +742,7 @@
 				},
 				"hp": [
 					{
-						"hp": 170,
-						"abilities": null
+						"hp": 170
 					}
 				]
 			},
@@ -751,7 +750,6 @@
 		},
 		{
 			"name": "Great Grodair",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 59,
 			"level": 7,
@@ -764,6 +762,7 @@
 				"fey",
 				"water"
 			],
+			"description": "Male variant grodair (Pathfinder Bestiary 2 140)",
 			"perception": {
 				"std": 16
 			},
@@ -848,7 +847,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "primal",
 					"DC": 25,
@@ -864,14 +862,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+17, {@skill Survival} +14 Str +5, Dex +1, Con +4, Int +1, Wis +2, Cha +4."
-						],
-						"name": "Performance"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -936,15 +926,13 @@
 				},
 				"hp": [
 					{
-						"hp": 130,
-						"abilities": null
+						"hp": 130
 					}
 				]
 			}
 		},
 		{
 			"name": "Grippli Jinxer",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 83,
 			"level": 6,
@@ -1042,7 +1030,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 24,
@@ -1091,16 +1078,12 @@
 								{
 									"name": "summon animal",
 									"notes": [
-										"giant cockroach",
-										"giant fly",
-										"or giant tick only"
+										"{@creature giant cockroach|b2}, {@creature giant fly|b2}, or {@creature giant tick|b2} only"
 									]
 								},
 								{
 									"name": "vomit swarm",
-									"notes": [
-										"Advanced Player's Guide 227"
-									]
+									"source": "APG"
 								}
 							]
 						},
@@ -1122,14 +1105,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+14 Str +2, Dex +4, Con +2, Int +0, Wis +4, Cha +0 Items dart (8), staff."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1138,26 +1113,47 @@
 						},
 						"trigger": "A {@condition hostile} creature targets the jinxer with a melee {@action Strike}",
 						"entries": [
-							"Tattoos on the jinxer's body swirl and shift in mesmerizing patterns. The creature must attempt a DC 22 Will save. Critical Success The creature is unaffected and is temporarily immune for 1 hour. Success The creature is unaffected and is temporarily immune for 1 minute. Failure The creature treats the jinxer as {@condition concealed} until the end of its turn. Critical Failure The creature treats the jinxer as {@condition hidden} until the end of its turn."
+							"Tattoos on the jinxer's body swirl and shift in mesmerizing patterns. The creature must attempt a DC 22 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected and is temporarily immune for 1 hour.",
+									"Success": "The creature is unaffected and is temporarily immune for 1 minute.",
+									"Failure": "The creature treats the jinxer as {@condition concealed} until the end of its turn.",
+									"Critical Failure": "The creature treats the jinxer as {@condition hidden} until the end of its turn."
+								}
+							}
 						],
 						"name": "Hypnotic Tattoos"
 					}
 				],
 				"bot": [
 					{
+						"type": "affliction",
+						"name": "Baneback Poison",
 						"traits": [
 							"poison"
 						],
-						"entries": [
-							"Saving Throw Fortitude DC 24"
-						],
-						"name": "Baneback Poison"
-					},
-					{
-						"entries": [
-							"6 rounds; Stage 1 {@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 1} (1 round); Stage 2 {@damage 3d4} poison damage and {@condition stupefied|CRB|stupefied 2} (1 round); Stage 3 {@damage 4d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed} (1 round)"
-						],
-						"name": "Maximum Duration"
+						"DC": 24,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d4} poison damage and {@condition stupefied|CRB|stupefied 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 4d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -1198,8 +1194,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				]
 			},
@@ -1207,7 +1202,6 @@
 		},
 		{
 			"name": "Grippli Skirmisher",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 82,
 			"level": 4,
@@ -1387,8 +1381,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			},
@@ -1396,7 +1389,6 @@
 		},
 		{
 			"name": "I'iko Dragon",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 84,
 			"level": 6,
@@ -1572,8 +1564,7 @@
 				},
 				"hp": [
 					{
-						"hp": 110,
-						"abilities": null
+						"hp": 110
 					}
 				]
 			},
@@ -1581,7 +1572,6 @@
 		},
 		{
 			"name": "Kiru",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 27,
 			"level": 3,
@@ -1592,6 +1582,7 @@
 				"elf",
 				"humanoid"
 			],
+			"description": "Male elf thief",
 			"perception": {
 				"std": 9
 			},
@@ -1676,14 +1667,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+11, {@skill Lore||Underworld Lore} +8 Str +1, Dex +4, Con +0, Int +1, Wis +2, Cha +2 Items dagger (6), studded leather armor, thieves' tools."
-						],
-						"name": "Thievery"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -1693,9 +1676,9 @@
 					},
 					{
 						"entries": [
-							"Attack Kiru deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+							"Kiru deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak"
+						"name": "Sneak Attack"
 					},
 					{
 						"entries": [
@@ -1722,15 +1705,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Kolbo",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 49,
 			"level": 6,
@@ -1741,6 +1722,7 @@
 				"dwarf",
 				"humanoid"
 			],
+			"description": "Male dwarf con artist",
 			"perception": {
 				"std": 12
 			},
@@ -1782,6 +1764,14 @@
 				"wis": 1,
 				"cha": 3
 			},
+			"items": [
+				"heavy crossbow (10 bolts)",
+				"lesser elixir of life",
+				"leather armor",
+				"longsword",
+				"strongbox key",
+				"thieves' tools"
+			],
 			"speed": {
 				"walk": 20
 			},
@@ -1816,12 +1806,6 @@
 				"top": [
 					{
 						"entries": [
-							"+12, {@skill Thievery} +14 Str +4, Dex +2, Con +4, Int +2, Wis +1, Cha +3 Items heavy crossbow (10 bolts), lesser elixir of life, leather armor, longsword, strongbox key, thieves' tools."
-						],
-						"name": "Society"
-					},
-					{
-						"entries": [
 							"If Kolbo is aware of his opponents and isn't prevented from speaking, he rolls {@skill Deception} for initiative."
 						],
 						"name": "A Quick Word"
@@ -1830,9 +1814,9 @@
 				"mid": [
 					{
 						"entries": [
-							"Advantage Kolbo isn't {@condition flat-footed} to creatures of 6th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
+							"Kolbo isn't {@condition flat-footed} to creatures of 6th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
 						],
-						"name": "Deny"
+						"name": "Deny Advantage"
 					}
 				],
 				"bot": [
@@ -1849,9 +1833,9 @@
 					},
 					{
 						"entries": [
-							"Attack Kolbo deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+							"Kolbo deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak"
+						"name": "Sneak Attack"
 					}
 				]
 			},
@@ -1872,15 +1856,13 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				]
 			}
 		},
 		{
 			"name": "Kreekoss",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 53,
 			"level": 6,
@@ -1960,7 +1942,6 @@
 				],
 				"bot": [
 					{
-						"entries": [],
 						"name": "Grab",
 						"generic": {
 							"tag": "ability"
@@ -1996,8 +1977,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				],
 				"weaknesses": [
@@ -2016,7 +1996,6 @@
 		},
 		{
 			"name": "Loakan",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 28,
 			"level": 6,
@@ -2027,6 +2006,7 @@
 				"humanoid",
 				"lizardfolk"
 			],
+			"description": "Female lizardfolk bruiser",
 			"perception": {
 				"std": 13
 			},
@@ -2114,14 +2094,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12 Str +4, Dex +4, Con +1, Int +0, Wis +3, Cha +0 Items +1 greatclub, recipe books."
-						],
-						"name": "Thievery"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2135,9 +2107,9 @@
 					},
 					{
 						"entries": [
-							"Breath Loakan can hold her breath for 200 rounds (20 minutes)."
+							"Loakan can hold her breath for 200 rounds (20 minutes)."
 						],
-						"name": "Deep"
+						"name": "Deep Breath"
 					}
 				]
 			},
@@ -2158,15 +2130,13 @@
 				},
 				"hp": [
 					{
-						"hp": 100,
-						"abilities": null
+						"hp": 100
 					}
 				]
 			}
 		},
 		{
 			"name": "Mashkudu The Bully",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 27,
 			"level": 5,
@@ -2177,6 +2147,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Agender human mugger",
 			"perception": {
 				"std": 13
 			},
@@ -2210,6 +2181,12 @@
 				"wis": 4,
 				"cha": 0
 			},
+			"items": [
+				"hand crossbow (10 bolts)",
+				"leather armor",
+				"longsword",
+				"thieves' tools"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2241,29 +2218,17 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+11, {@skill Thievery} +13 Str +4, Dex +4, Con +2, Int +0, Wis +4, Cha +0 Items hand crossbow (10 bolts), leather armor, longsword, thieves' tools."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "Mashkudu Shoves",
-						"entries": [],
-						"name": "Opportunistic Maneuver"
-					},
-					{
+						"trigger": "Mashkudu {@action Shove||Shoves}, {@action Trip||Trips}, or {@action Disarm||Disarms} a creature",
 						"entries": [
-							"Disarms a creature; Mashkudu attempts a {@skill Thievery} check to {@action Steal} an object the target carries."
+							"Mashkudu attempts a {@skill Thievery} check to {@action Steal} an object the target carries."
 						],
-						"name": "Trips, or"
+						"name": "Opportunistic Maneuver"
 					},
 					{
 						"entries": [
@@ -2299,15 +2264,13 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				]
 			}
 		},
 		{
 			"name": "Mpeshi",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 85,
 			"level": 6,
@@ -2441,8 +2404,7 @@
 				},
 				"hp": [
 					{
-						"hp": 110,
-						"abilities": null
+						"hp": 110
 					}
 				],
 				"immunities": [
@@ -2459,7 +2421,6 @@
 		},
 		{
 			"name": "Mutated Sewer Ooze",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 37,
 			"level": 6,
@@ -2511,7 +2472,7 @@
 						"finesse",
 						"versatile <s>"
 					],
-					"damage": "{@damage 2d8+5} bludgeoning plus {@damage 1d4} acid and {@damage 1d4} {@condition persistent damage ||persistent acid}",
+					"damage": "{@damage 2d8+5} bludgeoning plus {@damage 1d4} acid and {@damage 1d4} {@condition persistent damage||persistent acid}",
 					"types": [
 						"acid",
 						"bludgeoning",
@@ -2536,7 +2497,7 @@
 						],
 						"entries": [
 							"30 feet. A creature that enters the area must attempt a DC 23 Fortitude save.",
-							"On a failure, the creature is {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). A creature taking {@condition persistent damage ||persistent acid damage} from the ooze's pseudopod can't recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+							"On a failure, the creature is {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). A creature taking {@condition persistent damage||persistent acid damage} from the ooze's pseudopod can't recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 						],
 						"name": "Noxious Scent"
 					}
@@ -2549,7 +2510,7 @@
 						},
 						"frequency": {
 							"unit": "minute",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The sewer ooze unleashes a wave of filth, covering all creatures within a 20-foot emanation. Each creature in the area must succeed at a DC 24 Reflex save or take {@damage 1d4} acid damage and a \u201310-foot penalty to its Speeds for 1 minute (on a critical failure, the creature also falls {@condition prone}). A creature can spend an {@action Interact} action to clean someone off, decreasing."
@@ -2581,8 +2542,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				],
 				"immunities": [
@@ -2595,7 +2555,6 @@
 		},
 		{
 			"name": "Old Thrasher",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 40,
 			"level": 8,
@@ -2723,15 +2682,13 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
 					}
 				]
 			}
 		},
 		{
 			"name": "Reth",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 29,
 			"level": 7,
@@ -2742,6 +2699,7 @@
 				"humanoid",
 				"lizardfolk"
 			],
+			"description": "Male lizardfolk gang leader",
 			"perception": {
 				"std": 13
 			},
@@ -2780,6 +2738,12 @@
 				"wis": 2,
 				"cha": 2
 			},
+			"items": [
+				"+1 hand crossbow (10 bolts)",
+				"keyring",
+				"leather armor",
+				"thieves' tools"
+			],
 			"speed": {
 				"walk": 25,
 				"swim": 15
@@ -2796,7 +2760,10 @@
 				},
 				{
 					"range": "Melee",
-					"name": "tail (agile)",
+					"name": "tail",
+					"traits": [
+						"agile"
+					],
 					"attack": 16,
 					"damage": "{@damage 1d4+5} bludgeoning",
 					"types": [
@@ -2820,14 +2787,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+15, {@skill Survival} +13, {@skill Thievery} +15 Str +3, Dex +4, Con +1, Int +1, Wis +2, Cha +2 Items +1 hand crossbow (10 bolts), keyring, leather armor, thieves' tools."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2845,9 +2804,9 @@
 					},
 					{
 						"entries": [
-							"Breath Reth can hold his breath for 200 rounds (20 minutes)."
+							"Reth can hold his breath for 200 rounds (20 minutes)."
 						],
-						"name": "Deep"
+						"name": "Deep Breath"
 					},
 					{
 						"activity": {
@@ -2855,7 +2814,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Reth {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then Interacts to reload."
+							"Reth {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then {@action Interact||Interacts} to reload."
 						],
 						"name": "Running Reload"
 					},
@@ -2891,15 +2850,13 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				]
 			}
 		},
 		{
 			"name": "Salathiss",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 93,
 			"level": 9,
@@ -2911,6 +2868,7 @@
 				"mutant",
 				"serpentfolk"
 			],
+			"description": "Male serpentfolk illusionist (Pathfinder Bestiary 2 236)",
 			"perception": {
 				"std": 19
 			},
@@ -2930,6 +2888,9 @@
 					"common",
 					"draconic",
 					"undercommon"
+				],
+				"abilities": [
+					"telepathy 100 feet"
 				]
 			},
 			"skills": {
@@ -2963,6 +2924,10 @@
 				"wis": 4,
 				"cha": 6
 			},
+			"items": [
+				"bracers of armor type I",
+				"choker of elocution (imparts Xanmba, a regional language spoken by many in Nantambu)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2997,7 +2962,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 28,
@@ -3088,7 +3052,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 28,
@@ -3138,14 +3101,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+19, {@skill Occultism} +18, {@skill Society} +18, {@skill Stealth} +18 Str +4, Dex +3, Con +2, Int +5, Wis +4, Cha +6 Items bracers of armor type I, choker of elocution (imparts Xanmba, a regional language spoken by many in Nantambu)"
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -3175,19 +3130,26 @@
 						"name": "Peerless Duplicate"
 					},
 					{
+						"type": "affliction",
+						"name": "Serpentfolk Venom",
 						"traits": [
 							"poison"
 						],
-						"entries": [
-							"Saving Throw DC 26 Fortitude"
-						],
-						"name": "Serpentfolk Venom"
-					},
-					{
-						"entries": [
-							"6 rounds; Stage 1 {@damage 2d4} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 3d4} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round)"
-						],
-						"name": "Maximum Duration"
+						"DC": 26,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d4} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d4} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -3203,20 +3165,30 @@
 						"std": 17
 					},
 					"will": {
-						"std": 20
-					}
+						"std": 20,
+						"abilities": [
+							"+4 status vs. mental"
+						]
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
-						"hp": 150,
-						"abilities": null
+						"hp": 150
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "poison"
 					}
 				]
 			}
 		},
 		{
 			"name": "Serpentfolk Granitescale",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 86,
 			"level": 6,
@@ -3322,7 +3294,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -3336,7 +3307,7 @@
 						"trigger": "The granitescale takes piercing or slashing damage",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The granitescale twists to take the blow on their hardest scales, which they shed to reduce the incoming force. The granitescale reduces the damage by 10, but their AC is reduced by 2 for 1 day, when the shed scales regrow."
@@ -3397,8 +3368,7 @@
 				},
 				"hp": [
 					{
-						"hp": 120,
-						"abilities": null
+						"hp": 120
 					}
 				],
 				"resistances": [
@@ -3412,7 +3382,6 @@
 		},
 		{
 			"name": "Serpentfolk Venom Caller",
-			"isNpc": false,
 			"source": "SoT2",
 			"page": 87,
 			"level": 7,
@@ -3535,7 +3504,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "arcane",
 					"DC": 25,
@@ -3611,16 +3579,13 @@
 								},
 								{
 									"name": "noxious vapors",
-									"notes": [
-										"Advanced Player's Guide 222"
-									]
+									"source": "APG"
 								}
 							]
 						}
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 25,
@@ -3660,14 +3625,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+15 Str +0, Dex +4, Con +2, Int +6, Wis +4, Cha +2 Items shortbow (20 arrows), sickle."
-						],
-						"name": "Survival"
-					}
-				],
 				"bot": [
 					{
 						"traits": [
@@ -3691,10 +3648,10 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
-							"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage (DC 25 basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage ||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
+							"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage (DC 25 basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
 						],
 						"name": "Venom Pool"
 					}
@@ -3713,13 +3670,23 @@
 					},
 					"will": {
 						"std": 17,
-						"status vs. mental": 4
-					}
+						"abilities": [
+							"+4 status vs. mental"
+						]
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
-						"hp": 105,
-						"abilities": null
+						"hp": 105
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "poison"
 					}
 				]
 			},

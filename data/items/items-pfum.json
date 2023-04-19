@@ -22,7 +22,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "You are attempting to read something in a language you don't understand",
@@ -70,7 +70,7 @@
 										"{@action Interact}"
 									],
 									"frequency": {
-										"freq": 3,
+										"number": 3,
 										"unit": "day"
 									},
 									"requirements": "You are attempting to read something in a language you don't understand",
@@ -473,7 +473,7 @@
 			},
 			"category": "Snare",
 			"entries": [
-				"By combining a {@item lesser alchemist's fire}, a {@item lesser thunderstone}, and other catalysts with a pressure sensitive trigger, you create a snare that creates a fiery and thunderous explosion when triggered. The target and all creatures in adjacent squares take {@damage 2d6} fire damage and {@damage 2d6} sonic damage with a basic DC 19 Reflex save. On a failure, they are {@condition deafened} for {@dice 1d4} rounds and take {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
+				"By combining a {@item lesser alchemist's fire}, a {@item lesser thunderstone}, and other catalysts with a pressure sensitive trigger, you create a snare that creates a fiery and thunderous explosion when triggered. The target and all creatures in adjacent squares take {@damage 2d6} fire damage and {@damage 2d6} sonic damage with a basic DC 19 Reflex save. On a failure, they are {@condition deafened} for {@dice 1d4} rounds and take {@damage 1d4} {@condition persistent damage||persistent fire damage}."
 			],
 			"craftReq": [
 				"Supply a {@item lesser alchemist's fire} and a {@item lesser thunderstone}."
@@ -507,12 +507,12 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
 					"entries": [
-						"You cast {@spell grease}, but the grease is caustic. If you cast this spell on an area, any creature that fails their Reflex save and falls {@condition prone}, or that begins their turn {@condition prone}, takes {@damage 1d6} acid damage. If you cast this spell on an unattended object, the first creature to pick up the object during the duration takes {@damage 1d6} {@condition persistent damage ||persistent acid damage}. If you cast this spell on an attended object and the holder or wielder fails their {@skill Acrobatics} or Reflex save, the holder or wielder takes {@damage 1d6} {@condition persistent damage ||persistent acid damage}. If you cast this spell on a worn object, any creature who Grapples or Grabs the wearer takes {@damage 1d6} acid damage."
+						"You cast {@spell grease}, but the grease is caustic. If you cast this spell on an area, any creature that fails their Reflex save and falls {@condition prone}, or that begins their turn {@condition prone}, takes {@damage 1d6} acid damage. If you cast this spell on an unattended object, the first creature to pick up the object during the duration takes {@damage 1d6} {@condition persistent damage||persistent acid damage}. If you cast this spell on an attended object and the holder or wielder fails their {@skill Acrobatics} or Reflex save, the holder or wielder takes {@damage 1d6} {@condition persistent damage||persistent acid damage}. If you cast this spell on a worn object, any creature who Grapples or Grabs the wearer takes {@damage 1d6} acid damage."
 					]
 				}
 			],
@@ -552,7 +552,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "month"
 					},
 					"entries": [
@@ -566,7 +566,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -602,7 +602,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"It's possible for a desperate alchemist to rig the brain container of a defeated alchemical golem to create a volatile (if unusual) explosive. You throw the grenade up to 60 feet, and it explodes, dealing {@damage 3d6} fire damage and {@damage 3d6} mental damage in a 10-foot burst (DC 27 basic Reflex save). On a critical failure, a creature takes {@damage 2d6} {@condition persistent damage ||persistent fire damage}."
+				"It's possible for a desperate alchemist to rig the brain container of a defeated alchemical golem to create a volatile (if unusual) explosive. You throw the grenade up to 60 feet, and it explodes, dealing {@damage 3d6} fire damage and {@damage 3d6} mental damage in a 10-foot burst (DC 27 basic Reflex save). On a critical failure, a creature takes {@damage 2d6} {@condition persistent damage||persistent fire damage}."
 			],
 			"craftReq": [
 				"Supply a brain case harvested from alchemical golem"
@@ -652,7 +652,7 @@
 				"Weapon"
 			],
 			"entries": [
-				"A demolishing weapon is made to destroy constructs. Damage inflicted on a construct with a demolishing weapon continues to spread throughout the creature\u2014cracks form, linkages fail, surfaces erode\u2014and otherwise dismantle its body. When you damage a construct using a demolishing weapon, you deal an extra {@damage 1d6} {@condition persistent damage ||persistent force damage}. On a critical hit, you deal an extra {@damage 1d12} {@condition persistent damage ||persistent force damage} instead."
+				"A demolishing weapon is made to destroy constructs. Damage inflicted on a construct with a demolishing weapon continues to spread throughout the creature\u2014cracks form, linkages fail, surfaces erode\u2014and otherwise dismantle its body. When you damage a construct using a demolishing weapon, you deal an extra {@damage 1d6} {@condition persistent damage||persistent force damage}. On a critical hit, you deal an extra {@damage 1d12} {@condition persistent damage||persistent force damage} instead."
 			]
 		},
 		{
@@ -683,7 +683,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [

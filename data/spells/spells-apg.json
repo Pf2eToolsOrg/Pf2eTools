@@ -157,7 +157,7 @@
 				"sustained": true
 			},
 			"entries": [
-				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from {@action Strike||Strikes} with the ghost touch property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't {@action Cast a Spell||Cast Spells} (but you can {@action Sustain Spells||Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
+				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from {@action Strike||Strikes} with the {@item ghost touch} property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't {@action Cast a Spell||Cast Spells} (but you can {@action Sustain Spells||Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
 			],
 			"heightened": {
 				"plusX": {
@@ -920,14 +920,14 @@
 				]
 			},
 			"entries": [
-				"A heap of insults and invectives spew from your mouth\u2014 words so devastating your foes burn from the intensity of your diatribe. Your words deal {@damage 2d6} {@condition persistent damage ||persistent fire damage}, and the target must attempt a Will save. If the target doesn't understand the language or you're not speaking a language, it gains a +4 circumstance bonus to its save.",
+				"A heap of insults and invectives spew from your mouth\u2014 words so devastating your foes burn from the intensity of your diatribe. Your words deal {@damage 2d6} {@condition persistent damage||persistent fire damage}, and the target must attempt a Will save. If the target doesn't understand the language or you're not speaking a language, it gains a +4 circumstance bonus to its save.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes half the {@condition persistent damage ||persistent fire damage}.",
-						"Failure": "The target becomes {@condition frightened 1} and takes the full {@condition persistent damage ||persistent fire damage}.",
-						"Critical Failure": "The target becomes {@condition frightened 2} and takes double the {@condition persistent damage ||persistent fire damage}."
+						"Success": "The target takes half the {@condition persistent damage||persistent fire damage}.",
+						"Failure": "The target becomes {@condition frightened 1} and takes the full {@condition persistent damage||persistent fire damage}.",
+						"Critical Failure": "The target becomes {@condition frightened 2} and takes double the {@condition persistent damage||persistent fire damage}."
 					}
 				}
 			],
@@ -962,7 +962,7 @@
 					"V"
 				]
 			],
-			"trigger": "A creature deals piercing, slashing, or {@condition persistent damage ||persistent bleed damage} to you",
+			"trigger": "A creature deals piercing, slashing, or {@condition persistent damage||persistent bleed damage} to you",
 			"requirements": "You can bleed.",
 			"range": {
 				"number": 30,
@@ -979,21 +979,21 @@
 				"unit": "special"
 			},
 			"entries": [
-				"You curse the target, punishing it for having the audacity to spill your blood. The target takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and must attempt a Will save.",
+				"You curse the target, punishing it for having the audacity to spill your blood. The target takes {@damage 2d6} {@condition persistent damage||persistent bleed damage} and must attempt a Will save.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes half the {@condition persistent damage ||persistent bleed damage}.",
-						"Failure": "The target takes the full {@condition persistent damage ||persistent bleed damage}. Until the bleeding stops, the target has weakness 1 to piercing and slashing damage.",
-						"Critical Failure": "As failure, but the target takes double the {@condition persistent damage ||persistent bleed damage}."
+						"Success": "The target takes half the {@condition persistent damage||persistent bleed damage}.",
+						"Failure": "The target takes the full {@condition persistent damage||persistent bleed damage}. Until the bleeding stops, the target has weakness 1 to piercing and slashing damage.",
+						"Critical Failure": "As failure, but the target takes double the {@condition persistent damage||persistent bleed damage}."
 					}
 				}
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The {@condition persistent damage ||persistent bleed damage} increases by {@dice 2d6}."
+						"The {@condition persistent damage||persistent bleed damage} increases by {@dice 2d6}."
 					]
 				}
 			}
@@ -1579,8 +1579,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "minute",
-				"entry": "1 minute"
+				"unit": "minute"
 			},
 			"components": [
 				[
@@ -2339,16 +2338,16 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes {@damage 2d8} {@condition persistent damage ||persistent negative damage}.",
-						"Failure": "The creature takes {@damage 4d8} {@condition persistent damage ||persistent negative damage} and becomes {@condition drained 1}.",
-						"Critical Failure": "The creature takes {@damage 4d8} {@condition persistent damage ||persistent negative damage} and becomes {@condition drained 2} and {@condition doomed 1}."
+						"Success": "The creature takes {@damage 2d8} {@condition persistent damage||persistent negative damage}.",
+						"Failure": "The creature takes {@damage 4d8} {@condition persistent damage||persistent negative damage} and becomes {@condition drained 1}.",
+						"Critical Failure": "The creature takes {@damage 4d8} {@condition persistent damage||persistent negative damage} and becomes {@condition drained 2} and {@condition doomed 1}."
 					}
 				}
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The {@condition persistent damage ||persistent negative damage} increases by {@dice 1d8} on a success, or by {@dice 2d8} on a failure or critical failure."
+						"The {@condition persistent damage||persistent negative damage} increases by {@dice 1d8} on a success, or by {@dice 2d8} on a failure or critical failure."
 					]
 				}
 			}
@@ -2738,14 +2737,14 @@
 				]
 			},
 			"entries": [
-				"Toxic spores swarm over creatures in the area, causing them to erupt in grotesque fungal growths. These noxious growths deal {@damage 2d6} {@condition persistent damage ||persistent poison damage}, and each creature must attempt a Fortitude save.",
+				"Toxic spores swarm over creatures in the area, causing them to erupt in grotesque fungal growths. These noxious growths deal {@damage 2d6} {@condition persistent damage||persistent poison damage}, and each creature must attempt a Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The target takes half the {@condition persistent damage ||persistent poison damage}.",
-						"Failure": "The target takes the full {@condition persistent damage ||persistent poison damage}. While it is taking this {@condition persistent damage ||persistent poison damage}, it has weakness 1 to fire and weakness 1 to slashing.",
-						"Critical Failure": "As failure, but double the {@condition persistent damage ||persistent poison damage}. While it is taking this {@condition persistent damage ||persistent poison damage}, it has weakness 2 to fire and weakness 2 to slashing."
+						"Success": "The target takes half the {@condition persistent damage||persistent poison damage}.",
+						"Failure": "The target takes the full {@condition persistent damage||persistent poison damage}. While it is taking this {@condition persistent damage||persistent poison damage}, it has weakness 1 to fire and weakness 1 to slashing.",
+						"Critical Failure": "As failure, but double the {@condition persistent damage||persistent poison damage}. While it is taking this {@condition persistent damage||persistent poison damage}, it has weakness 2 to fire and weakness 2 to slashing."
 					}
 				}
 			],
@@ -3055,13 +3054,13 @@
 			},
 			"targets": "1 metal item or metal creature",
 			"entries": [
-				"This spell heats the targeted metal to become red-hot for a moment. This is usually harmless to an unattended metal item, which doesn't get a saving throw, though the GM might rule that flammable materials connected to the object catch fire or melt. If you target an item worn or carried by a creature, or you target a creature made primarily of metal, the heat deals {@damage 4d6} fire damage and {@damage 2d4} {@condition persistent damage ||persistent fire damage} to the creature, which must attempt a Reflex saving throw.",
+				"This spell heats the targeted metal to become red-hot for a moment. This is usually harmless to an unattended metal item, which doesn't get a saving throw, though the GM might rule that flammable materials connected to the object catch fire or melt. If you target an item worn or carried by a creature, or you target a creature made primarily of metal, the heat deals {@damage 4d6} fire damage and {@damage 2d4} {@condition persistent damage||persistent fire damage} to the creature, which must attempt a Reflex saving throw.",
 				"If you target an item held by the creature, the creature can {@action Release} the item to improve their degree of success by one step from the result of their saving throw. The {@condition persistent damage} is associated with the object and damages whichever creature is holding or wearing it. It has no effect if no one is holding the item, but you continue to attempt flat checks to end the {@condition persistent damage} as normal, since the item remains hot and can sear someone who picks it up.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes half damage and the object deals no {@condition persistent damage ||persistent fire damage}.",
+						"Success": "The creature takes half damage and the object deals no {@condition persistent damage||persistent fire damage}.",
 						"Failure": "The creature takes full damage and the object deals full {@condition persistent damage}.",
 						"Critical Failure": "As failure, but the creature takes double damage and the object deals double {@condition persistent damage}."
 					}
@@ -3401,7 +3400,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You surround yourself with a combustible aura. Each time a creature within the emanation takes fire damage, it catches on fire, taking {@damage 2d4} {@condition persistent damage ||persistent fire damage}."
+				"You surround yourself with a combustible aura. Each time a creature within the emanation takes fire damage, it catches on fire, taking {@damage 2d4} {@condition persistent damage||persistent fire damage}."
 			],
 			"heightened": {
 				"plusX": {
@@ -4444,15 +4443,15 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes {@damage 1d6} cold damage, and the spell ends.",
-						"Failure": "The target takes {@damage 1d6} cold damage and {@damage 1d6} {@condition persistent damage ||persistent cold damage}. (The {@condition persistent damage} automatically ends when the spell ends.) It is {@condition concealed} to other creatures, and other creatures are {@condition concealed} to it.",
-						"Critical Failure": "As failure, but both the cold damage and the {@condition persistent damage ||persistent cold damage} increase to {@dice 2d6}."
+						"Failure": "The target takes {@damage 1d6} cold damage and {@damage 1d6} {@condition persistent damage||persistent cold damage}. (The {@condition persistent damage} automatically ends when the spell ends.) It is {@condition concealed} to other creatures, and other creatures are {@condition concealed} to it.",
+						"Critical Failure": "As failure, but both the cold damage and the {@condition persistent damage||persistent cold damage} increase to {@dice 2d6}."
 					}
 				}
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The cold damage and {@condition persistent damage ||persistent cold damage} increase by 1 (2 on a critical failure)."
+						"The cold damage and {@condition persistent damage||persistent cold damage} increase by 1 (2 on a critical failure)."
 					]
 				}
 			}
@@ -4788,7 +4787,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You cause plants in the area to entangle your foes, with the effects of {@spell entangle}. A creature that critically fails the save takes {@damage 2d4} {@condition persistent damage ||persistent bleed damage} in addition to being {@condition immobilized}.",
+				"You cause plants in the area to entangle your foes, with the effects of {@spell entangle}. A creature that critically fails the save takes {@damage 2d4} {@condition persistent damage||persistent bleed damage} in addition to being {@condition immobilized}.",
 				"{@action Escape||Escaping} your bramble doesn't end the {@condition persistent damage||bleed damage}."
 			],
 			"heightened": {
@@ -5142,8 +5141,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "minute",
-				"entry": "1 minute"
+				"unit": "minute"
 			},
 			"components": [
 				[
@@ -5608,12 +5606,12 @@
 			},
 			"targets": "1 willing living creature or 1 undead creature",
 			"entries": [
-				"You call forth a magical mist of positive energy that envelops a creature. The mist restores {@dice 2d8} Hit Points to a target living creature and ends one source of {@condition persistent damage ||persistent acid}, bleed, fire, negative, or poison damage affecting it. If the creature is taking {@condition persistent damage} from multiple sources, you select which one is removed. Against an undead target, you deal {@damage 2d8} positive damage (basic Fortitude save); if it fails the save, it also takes 2 {@condition persistent damage ||persistent positive damage}."
+				"You call forth a magical mist of positive energy that envelops a creature. The mist restores {@dice 2d8} Hit Points to a target living creature and ends one source of {@condition persistent damage||persistent acid}, bleed, fire, negative, or poison damage affecting it. If the creature is taking {@condition persistent damage} from multiple sources, you select which one is removed. Against an undead target, you deal {@damage 2d8} positive damage (basic Fortitude save); if it fails the save, it also takes 2 {@condition persistent damage||persistent positive damage}."
 			],
 			"heightened": {
 				"plusX": {
 					"1": [
-						"The amount of healing (or damage to an undead target) increases by {@dice 1d8}, and the {@condition persistent damage ||persistent positive damage} to an undead creature increases by 1."
+						"The amount of healing (or damage to an undead target) increases by {@dice 1d8}, and the {@condition persistent damage||persistent positive damage} to an undead creature increases by 1."
 					]
 				}
 			}
@@ -6373,8 +6371,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "minute",
-				"entry": "1 minute"
+				"unit": "minute"
 			},
 			"components": [
 				[

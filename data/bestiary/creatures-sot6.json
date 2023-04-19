@@ -307,7 +307,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -415,7 +415,7 @@
 						},
 						"trigger": "A creature leaves the swarm's space",
 						"entries": [
-							"The swarm loses {@dice 2d8} HP as ants cling to the creature and continue biting, dealing {@damage 7d8} {@condition persistent damage ||persistent piercing damage}. High winds or immersion in water reduces the DC of the flat check to end this {@condition persistent damage} to 5. Any area damage dealt to the creature destroys these clinging ants."
+							"The swarm loses {@dice 2d8} HP as ants cling to the creature and continue biting, dealing {@damage 7d8} {@condition persistent damage||persistent piercing damage}. High winds or immersion in water reduces the DC of the flat check to end this {@condition persistent damage} to 5. Any area damage dealt to the creature destroys these clinging ants."
 						]
 					}
 				],
@@ -485,7 +485,6 @@
 		},
 		{
 			"name": "Aspect of Hunger",
-			"isNpc": false,
 			"source": "SoT6",
 			"page": 58,
 			"level": 19,
@@ -606,7 +605,7 @@
 						"trigger": "The Aspect of Hunger would be affected by a condition or adverse effect (such as baleful polymorph).",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						}
 					}
 				],
@@ -695,7 +694,6 @@
 					}
 				]
 			},
-			"hasImages": false,
 			"defenses": {
 				"ac": {
 					"std": 40
@@ -713,8 +711,7 @@
 				},
 				"hp": [
 					{
-						"hp": 410,
-						"abilities": null
+						"hp": 410
 					}
 				],
 				"immunities": [
@@ -1122,7 +1119,6 @@
 							"unit": "feet",
 							"number": 120
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -1755,7 +1751,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 41,
@@ -1859,7 +1854,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2004,7 +1998,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -2020,7 +2014,7 @@
 						"requirements": "The ironclad annihilator beetle has a creature {@condition grabbed}",
 						"entries": [
 							"The ironclad annihilator injects its ovipositor under the {@condition grabbed} creature's skin.",
-							"The creature takes {@damage 4d6+20} bludgeoning damage (DC 44 basic Fortitude save). On a failed save, the beetle implants an egg, and the target creature takes {@damage 4d6} {@condition persistent damage ||persistent bleed damage} that is unusually tenacious. The DC to stop the bleeding using {@action Administer First Aid} is 40, and healing the creature to full Hit Points doesn't automatically stop the bleeding. If the target creature dies from this bleed damage, its body is destroyed and unrecoverable except with powerful magic such as miracle or wish, and an immature ironclad annihilator beetle (with statistics as a giant stag beetle; Pathfinder Bestiary 41) bursts forth."
+							"The creature takes {@damage 4d6+20} bludgeoning damage (DC 44 basic Fortitude save). On a failed save, the beetle implants an egg, and the target creature takes {@damage 4d6} {@condition persistent damage||persistent bleed damage} that is unusually tenacious. The DC to stop the bleeding using {@action Administer First Aid} is 40, and healing the creature to full Hit Points doesn't automatically stop the bleeding. If the target creature dies from this bleed damage, its body is destroyed and unrecoverable except with powerful magic such as miracle or wish, and an immature ironclad annihilator beetle (with statistics as a giant stag beetle; Pathfinder Bestiary 41) bursts forth."
 						]
 					},
 					{
@@ -2193,7 +2187,7 @@
 							"fire"
 						],
 						"entries": [
-							"The golem vents a 30-foot cone of fiery splinters from its internal forge. This deals {@damage 13d6} piercing damage to all creatures in the cone (DC 38 basic Reflex save). Creatures who fail the save also take {@damage 2d6} {@condition persistent damage ||persistent fire damage} ({@damage 4d6} {@condition persistent damage ||persistent fire damage} on a critical failure). The golem can't use Vent Splinters again for {@dice 1d4} rounds."
+							"The golem vents a 30-foot cone of fiery splinters from its internal forge. This deals {@damage 13d6} piercing damage to all creatures in the cone (DC 38 basic Reflex save). Creatures who fail the save also take {@damage 2d6} {@condition persistent damage||persistent fire damage} ({@damage 4d6} {@condition persistent damage||persistent fire damage} on a critical failure). The golem can't use Vent Splinters again for {@dice 1d4} rounds."
 						]
 					}
 				]
@@ -2338,7 +2332,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2510,7 +2503,6 @@
 				"bot": [
 					{
 						"name": "Grab",
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2720,7 +2712,7 @@
 							"visual"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -2863,7 +2855,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 40,
@@ -2957,7 +2948,6 @@
 					}
 				},
 				{
-					"name": "Arcane Innate",
 					"tradition": "arcane",
 					"type": "Innate",
 					"DC": 40,
@@ -2993,7 +2983,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3184,7 +3173,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 40,
@@ -3575,7 +3563,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 42,
@@ -3620,7 +3607,9 @@
 							"spells": [
 								{
 									"name": "shadow blast",
-									"note": "acid only"
+									"notes": [
+										"acid only"
+									]
 								},
 								{
 									"name": "shadow siphon"
@@ -3708,7 +3697,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 3,
+							"number": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -3838,7 +3827,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3851,7 +3839,7 @@
 						},
 						"trigger": "A creature within the thorn guardian's reach attacks the guardian's ward",
 						"entries": [
-							"The thorn guardian makes a briar {@action Strike} against the triggering creature. If it hits, it deals an additional {@damage 2d6} {@condition persistent damage ||persistent bleed}."
+							"The thorn guardian makes a briar {@action Strike} against the triggering creature. If it hits, it deals an additional {@damage 2d6} {@condition persistent damage||persistent bleed}."
 						]
 					}
 				],
@@ -4014,7 +4002,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"tradition": "primal",
 					"type": "Prepared",
 					"DC": 40,
@@ -4160,7 +4147,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 40,
@@ -4178,7 +4164,9 @@
 							"spells": [
 								{
 									"name": "animal form",
-									"note": "canine form only"
+									"notes": [
+										"canine form only"
+									]
 								}
 							]
 						},
@@ -4186,8 +4174,10 @@
 							"spells": [
 								{
 									"name": "shadow blast",
-									"note": "acid only, ×2",
-									"amount": 2
+									"amount": 2,
+									"notes": [
+										"acid only"
+									]
 								},
 								{
 									"name": "shadow siphon",
@@ -4204,15 +4194,13 @@
 						"name": "Shadow's Displeasure As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Vesicated Shadow As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					}
 				],
 				"bot": [
@@ -4236,8 +4224,7 @@
 						"name": "Unshadowed Okoro",
 						"traits": [
 							"page 19"
-						],
-						"entries": []
+						]
 					}
 				]
 			},
@@ -4365,7 +4352,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 37,
@@ -4514,7 +4500,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 40,
@@ -4524,8 +4509,10 @@
 							"spells": [
 								{
 									"name": "shadow blast",
-									"note": "acid only, ×2",
-									"amount": 2
+									"amount": 2,
+									"notes": [
+										"acid only"
+									]
 								},
 								{
 									"name": "shadow siphon",
@@ -4542,15 +4529,13 @@
 						"name": "Shadow's Displeasure As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Vesicated Shadow As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					}
 				],
 				"bot": [
@@ -4574,8 +4559,7 @@
 						"name": "Unshadowed Okoro",
 						"traits": [
 							"page 19"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Wind Step",
@@ -4712,7 +4696,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"tradition": "primal",
 					"type": "Prepared",
 					"DC": 41,
@@ -4869,7 +4852,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 41,
@@ -4879,8 +4861,10 @@
 							"spells": [
 								{
 									"name": "shadow blast",
-									"note": "acid only, ×2",
-									"amount": 2
+									"amount": 2,
+									"notes": [
+										"acid only"
+									]
 								},
 								{
 									"name": "shadow siphon",
@@ -4894,8 +4878,7 @@
 			"abilities": {
 				"top": [
 					{
-						"name": "Gnoll, Iruxi, Necril, Orc, Sylvan",
-						"entries": []
+						"name": "Gnoll, Iruxi, Necril, Orc, Sylvan"
 					}
 				],
 				"mid": [
@@ -4903,15 +4886,13 @@
 						"name": "Shadow's Displeasure As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Vesicated Shadow As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					}
 				],
 				"bot": [
@@ -4935,8 +4916,7 @@
 						"name": "Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					}
 				]
 			},
@@ -5039,7 +5019,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Prepared",
 					"tradition": "occult",
 					"type": "Prepared",
 					"DC": 40,
@@ -5185,7 +5164,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 40,
@@ -5195,8 +5173,10 @@
 							"spells": [
 								{
 									"name": "shadow blast",
-									"note": "acid only, ×2",
-									"amount": 2
+									"amount": 2,
+									"notes": [
+										"acid only"
+									]
 								},
 								{
 									"name": "shadow siphon",
@@ -5209,7 +5189,6 @@
 				{
 					"name": "Witch Hexes",
 					"type": "Focus",
-					"note": "Pathfinder Advanced Player's Guide 237",
 					"fp": 3,
 					"DC": 40,
 					"entry": {
@@ -5217,23 +5196,28 @@
 							"level": 9,
 							"spells": [
 								{
-									"name": "nudge fate"
+									"name": "nudge fate",
+									"source": "APG"
 								}
 							]
 						},
 						"9": {
 							"spells": [
 								{
-									"name": "blood ward"
+									"name": "blood ward",
+									"source": "APG"
 								},
 								{
-									"name": "cackle"
+									"name": "cackle",
+									"source": "APG"
 								},
 								{
-									"name": "curse of death"
+									"name": "curse of death",
+									"source": "APG"
 								},
 								{
-									"name": "malicious shadow"
+									"name": "malicious shadow",
+									"source": "APG"
 								}
 							]
 						}
@@ -5246,15 +5230,13 @@
 						"name": "Shadow's Displeasure As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Vesicated Shadow As Unshadowed Okoro",
 						"traits": [
 							"page 18"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Weird Astrology",
@@ -5276,7 +5258,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -5320,8 +5302,7 @@
 						"name": "Unshadowed Okoro",
 						"traits": [
 							"page 19"
-						],
-						"entries": []
+						]
 					}
 				]
 			},
@@ -5444,7 +5425,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"tradition": "occult",
 					"type": "Spontaneous",
 					"DC": 40,
@@ -5599,7 +5579,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 40,
@@ -5609,8 +5588,10 @@
 							"spells": [
 								{
 									"name": "shadow blast",
-									"note": "acid only, ×2",
-									"amount": 2
+									"amount": 2,
+									"notes": [
+										"acid only"
+									]
 								},
 								{
 									"name": "shadow siphon",
@@ -5624,8 +5605,7 @@
 			"abilities": {
 				"top": [
 					{
-						"name": "Terran",
-						"entries": []
+						"name": "Terran"
 					}
 				],
 				"mid": [
@@ -5705,7 +5685,7 @@
 										"The target takes full damage, and the bursting shadow deals 10 acid splash damage."
 									],
 									"Critical Failure": [
-										"The target takes double damage, the bursting shadow deals 20 acid splash damage, and the target also takes {@damage 4d6} {@condition persistent damage ||persistent acid damage}."
+										"The target takes double damage, the bursting shadow deals 20 acid splash damage, and the target also takes {@damage 4d6} {@condition persistent damage||persistent acid damage}."
 									]
 								}
 							}
@@ -5905,7 +5885,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -6044,7 +6024,7 @@
 					"range": "Melee",
 					"name": "mandibles",
 					"attack": 31,
-					"damage": "{@damage 3d10+12} slashing plus {@damage 2d6} {@condition persistent damage ||persistent poison} and curse of the wereant"
+					"damage": "{@damage 3d10+12} slashing plus {@damage 2d6} {@condition persistent damage||persistent poison} and curse of the wereant"
 				},
 				{
 					"range": "Melee",
@@ -6056,7 +6036,7 @@
 					],
 					"name": "kukri",
 					"attack": 33,
-					"damage": "{@damage 3d6+12} slashing plus {@damage 2d6} {@condition persistent damage ||persistent poison}"
+					"damage": "{@damage 3d6+12} slashing plus {@damage 2d6} {@condition persistent damage||persistent poison}"
 				}
 			],
 			"abilities": {
@@ -6128,7 +6108,7 @@
 					{
 						"name": "Envenomed Weapons",
 						"entries": [
-							"Weapons the wereant poisoner holds deal an additional {@damage 2d6} {@condition persistent damage ||persistent poison damage} as poison seeps from the wereant's hands onto the weapon. Weapons cease to deal this {@condition persistent damage ||persistent poison damage} once the wereant lets them go. The kukri {@action Strike||Strikes} above include this {@condition persistent damage ||persistent poison damage}."
+							"Weapons the wereant poisoner holds deal an additional {@damage 2d6} {@condition persistent damage||persistent poison damage} as poison seeps from the wereant's hands onto the weapon. Weapons cease to deal this {@condition persistent damage||persistent poison damage} once the wereant lets them go. The kukri {@action Strike||Strikes} above include this {@condition persistent damage||persistent poison damage}."
 						]
 					},
 					{
@@ -6158,7 +6138,7 @@
 					{
 						"name": "Vitriolic Strikes",
 						"entries": [
-							"If the wereant critically hits a creature with a melee {@action Strike}, that creature can't recover from {@condition persistent damage ||persistent poison damage} for 1 round."
+							"If the wereant critically hits a creature with a melee {@action Strike}, that creature can't recover from {@condition persistent damage||persistent poison damage} for 1 round."
 						]
 					}
 				]
@@ -6361,7 +6341,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [

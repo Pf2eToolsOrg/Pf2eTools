@@ -100,7 +100,7 @@
 			],
 			"prerequisites": "claw unarmed attack",
 			"entries": [
-				"Your claws carry your mother's hag magic. When you critically hit with a claw {@action Strike}, the target takes an additional {@damage 1d4} {@condition persistent damage ||persistent mental damage}."
+				"Your claws carry your mother's hag magic. When you critically hit with a claw {@action Strike}, the target takes an additional {@damage 1d4} {@condition persistent damage||persistent mental damage}."
 			]
 		},
 		{
@@ -440,7 +440,7 @@
 			],
 			"prerequisites": "claw unarmed attack",
 			"entries": [
-				"Your claws carry an irritant that is harmless to you but can be damaging to others. Your claw {@action Strike|CRB|Strikes} deal an additional {@damage 1d4} {@condition persistent damage ||persistent poison damage} on a critical hit."
+				"Your claws carry an irritant that is harmless to you but can be damaging to others. Your claw {@action Strike|CRB|Strikes} deal an additional {@damage 1d4} {@condition persistent damage||persistent poison damage} on a critical hit."
 			]
 		},
 		{
@@ -484,7 +484,7 @@
 			"prerequisites": "ki spells",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You {@action Cast a Spell} that has the {@trait monk} trait.",
 			"entries": [
@@ -525,7 +525,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You attempt a saving throw while adjacent to one or more allies, but you haven't rolled yet.",
 			"entries": [
@@ -819,7 +819,7 @@
 			"prerequisites": "{@feat Archaeologist Dedication|APG}",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You fail a check against a trap, such as a {@skill Thievery} check to {@action Disable a Device||Disable} the trap or a Reflex save to avoid its effects.",
 			"entries": [
@@ -995,7 +995,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You modify an arrow or bolt to bring death to your target in a single potent hit. Make a bow {@action Strike}. On a hit, you deal an additional {@damage 10d10} precision damage. On a critical hit, the target must also succeed at a Fortitude saving throw against your class DC or spell DC, whichever is higher, or be immediately slain; this save has the {@trait death} and {@trait incapacitation} traits."
@@ -1236,7 +1236,7 @@
 				"fortune"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute",
 				"recurs": true,
 				"interval": 10
@@ -1670,7 +1670,7 @@
 			"prerequisites": "{@feat Beastmaster Dedication|APG}, Call Companion",
 			"frequency": {
 				"unit": "turn",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You quickly call in a primal projection of a non-active companion to provide the companion's support benefit. The projection arrives in an unoccupied square of your choice within 30 feet of you, grants you its support benefit, and then disappears on your next turn. The projection has the same AC and saving throw modifiers as the real companion, and if it would take any damage before your next turn, it disappears and the support benefit ends immediately."
@@ -1709,7 +1709,7 @@
 			],
 			"frequency": {
 				"unit": "turn",
-				"freq": 1
+				"number": 1
 			},
 			"requirements": "Your most recent action was to cast a noncantrip spell.",
 			"entries": [
@@ -1798,7 +1798,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "A creature within 30 feet you can see would succeed at a save.",
 			"entries": [
@@ -1841,7 +1841,7 @@
 				"swashbuckler"
 			],
 			"entries": [
-				"Your blow inflicts profuse bleeding. Make a slashing or piercing {@action Strike} with a weapon or unarmed attack that allows you to add your precise strike damage. If you hit, the target also takes {@condition persistent damage ||persistent bleed damage} equal to your precise strike finisher damage."
+				"Your blow inflicts profuse bleeding. Make a slashing or piercing {@action Strike} with a weapon or unarmed attack that allows you to add your precise strike damage. If you hit, the target also takes {@condition persistent damage||persistent bleed damage} equal to your precise strike finisher damage."
 			]
 		},
 		{
@@ -1948,7 +1948,7 @@
 			"frequency": {
 				"unit": "minute",
 				"interval": 10,
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"When you focus your magic on an ally, you can remove harmful conditions. If your next action is to {@action Cast a Spell} from a spell slot, and that spell targets only a single ally, you can also attempt to remove a harmful condition from that ally. The condition must be one that could be removed by your {@feat Mercy} feat, including those granted by later feats such as {@feat Greater Mercy}. Attempt a {@quickref counteract|CRB|3|counteracting} check based on the spell's DC and level. This effect is in addition to the normal effects of your spell."
@@ -1991,7 +1991,7 @@
 			],
 			"prerequisites": "fangs unarmed attack",
 			"entries": [
-				"You emulate your vampiric parent's techniques for drawing blood from a victim. Your fangs {@action Strike|CRB|Strikes} deal an additional {@damage 1d4} {@condition persistent damage ||persistent bleed damage} on a critical hit."
+				"You emulate your vampiric parent's techniques for drawing blood from a victim. Your fangs {@action Strike|CRB|Strikes} deal an additional {@damage 1d4} {@condition persistent damage||persistent bleed damage} on a critical hit."
 			]
 		},
 		{
@@ -2041,7 +2041,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Debilitation} The target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}."
+						"{@bold Debilitation} The target takes {@damage 3d6} {@condition persistent damage||persistent bleed damage}."
 					]
 				}
 			]
@@ -2109,7 +2109,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You lose the {@condition dying} condition.",
 			"entries": [
@@ -2261,7 +2261,7 @@
 			"prerequisites": "{@feat Marshal Dedication|APG}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You call out a quick cadence, guiding your allies into a more efficient rhythm. Each willing ally within your marshal's aura is {@condition quickened} until the end of their next turn, and they can use the extra action only to {@action Stride}. At the end of each ally's turn, if they used the extra action, they then become {@condition slowed 1} until the end of their following turn."
@@ -2413,7 +2413,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You fail a Reflex saving throw.",
 			"entries": [
@@ -2445,7 +2445,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "An ally within 30 feet would be reduced to 0 HP but not immediately killed.",
 			"entries": [
@@ -2741,7 +2741,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"With effort, you can call forth magical wings from your back, similar in appearance to those of your celestial forebears.",
@@ -2983,11 +2983,11 @@
 			"prerequisites": "{@feat Cobra Stance|APG}, expert in unarmed attacks",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number": 1
 			},
 			"requirements": "You are in Cobra Stance.",
 			"entries": [
-				"You lash out with devious intent and the power to envenom your foe. Make a cobra fang {@action Strike}. Your reach with this {@action Strike} is 5 feet greater than normal. If this {@action Strike} hits, the target takes {@damage 1d4} {@condition persistent damage ||persistent poison damage} per weapon damage die."
+				"You lash out with devious intent and the power to envenom your foe. Make a cobra fang {@action Strike}. Your reach with this {@action Strike} is 5 feet greater than normal. If this {@action Strike} hits, the target takes {@damage 1d4} {@condition persistent damage||persistent poison damage} per weapon damage die."
 			],
 			"special": [
 				"If you have this feat, the circumstance bonus to Fortitude saves and Fortitude DC granted by Cobra Stance increases from +1 to +2."
@@ -3196,7 +3196,7 @@
 			"prerequisites": "master in {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You have learned rites or meditations that enable you to perceive minor, {@condition invisible} spirits within a place. Choose {@skill Nature}, {@skill Occultism}, or {@skill Religion} when you select this feat.",
@@ -3466,6 +3466,11 @@
 		},
 		{
 			"name": "Cringe",
+			"otherSources": {
+				"Reprinted": [
+					"LTiBA|10"
+				]
+			},
 			"source": "APG",
 			"page": 14,
 			"activity": {
@@ -3896,7 +3901,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You begin your turn and have no Focus Points in your pool.",
 			"entries": [
@@ -4965,7 +4970,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "A creature within 60 feet uses a {@trait fortune} or {@trait misfortune} effect.",
 			"entries": [
@@ -5370,7 +5375,7 @@
 						"{@bold Forest} Gain a +2 circumstance bonus to saves against {@trait disease} and {@trait poison} effects.",
 						"{@bold Mountain} Gain a +1 circumstance bonus to Reflex saves.",
 						"{@bold Plains} Gain a +1 circumstance bonus to Will saves.",
-						"{@bold Swamp} Remove one source of {@condition persistent damage ||persistent bleed damage}.",
+						"{@bold Swamp} Remove one source of {@condition persistent damage||persistent bleed damage}.",
 						"{@bold Underground} Gain a +1 circumstance bonus to {@skill Perception}."
 					]
 				}
@@ -5446,7 +5451,7 @@
 			],
 			"frequency": {
 				"unit": "turn",
-				"freq": 1
+				"number": 1
 			},
 			"requirements": "Your most recent action was to cast a non-cantrip spell that dealt energy damage.",
 			"entries": [
@@ -5468,7 +5473,7 @@
 			"prerequisites": "You've sworn to an oath against a specific type of creature.",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You call on your oath to embolden you in combat. When you Enforce your Oath, select one creature you can see that you've sworn to defeat as part of your oath. You gain a +1 status bonus to AC and saves against attacks and effects by the chosen creature. You also gain a +1 status bonus to attack rolls against the chosen creature. However, your dedication to Enforcing your Oath draws your focus away from all other foes. While you are Enforcing your Oath, you take a \u20131 status penalty to AC, attack rolls, and saves against all other creatures until you stop Enforcing your Oath.",
@@ -6235,7 +6240,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You can strain to call forth bat-like or otherwise fiendish wings from your back, similar in appearance to those of your fiendish ancestors. Once manifested, these wings remain for 10 minutes. You gain a fly Speed equal to your land Speed while you've manifested your wings."
@@ -6392,7 +6397,7 @@
 			"prerequisites": "{@feat Dual-Weapon Warrior Dedication|APG}",
 			"requirements": "Your last action was a Double Slice, and both attacks hit the target.",
 			"entries": [
-				"When you hit with both attacks with Double Slice, you flense the target, making it bleed and creating a weak spot. The target takes {@damage 1d8} {@condition persistent damage ||persistent bleed damage} per weapon damage die of whichever of the weapons you used that has the most weapon damage dice (maximum {@dice 4d8} for a major striking weapon). The target becomes {@condition flat-footed}, and its resistances to any physical damage types are reduced by 5; these two effects last until the beginning of your next turn."
+				"When you hit with both attacks with Double Slice, you flense the target, making it bleed and creating a weak spot. The target takes {@damage 1d8} {@condition persistent damage||persistent bleed damage} per weapon damage die of whichever of the weapons you used that has the most weapon damage dice (maximum {@dice 4d8} for a major striking weapon). The target becomes {@condition flat-footed}, and its resistances to any physical damage types are reduced by 5; these two effects last until the beginning of your next turn."
 			]
 		},
 		{
@@ -6618,7 +6623,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You've learned to forestall the effects of your curse somewhat. If the next action you use is to cast a {@trait revelation} spell, the severity of your curse doesn't increase."
@@ -6660,7 +6665,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You can transform into a harmless bat. You gain the effects of a 4th-level {@spell pest form}, except you always transform into a bat."
@@ -7424,7 +7429,7 @@
 			],
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You craft an {@item elixir of life (generic)||elixir of life} using {@action Quick Alchemy}, and that elixir is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
@@ -7495,7 +7500,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"The blood of heroes courses through your veins, and you inspire your allies to dig deep and find a new level of resolve. You grant up to 10 willing creatures within 30 feet the effects of a 6th-level {@spell zealous conviction}, though the effect automatically ends on a target if you give that target a command they would normally find repugnant. This action has the {@trait auditory} trait or {@trait visual} trait, depending on how you inspire your allies."
@@ -7652,7 +7657,7 @@
 				"gnome"
 			],
 			"frequency": {
-				"freq": 2,
+				"number": 2,
 				"unit": "week"
 			},
 			"entries": [
@@ -7780,7 +7785,7 @@
 			],
 			"requirements": "You are wielding a melee weapon that deals piercing damage.",
 			"entries": [
-				"You impale your enemy and hold them in place with your weapon. Make a melee {@action Strike} with the required weapon. If the {@action Strike} hits and deals damage, your target is {@condition grabbed} until they successfully {@action Escape}, you attack with the required weapon, or you {@action Release} the required weapon, whichever comes first. When the target is no longer {@condition grabbed}, they take {@condition persistent damage ||persistent bleed damage} equal to the number of weapon damage dice."
+				"You impale your enemy and hold them in place with your weapon. Make a melee {@action Strike} with the required weapon. If the {@action Strike} hits and deals damage, your target is {@condition grabbed} until they successfully {@action Escape}, you attack with the required weapon, or you {@action Release} the required weapon, whichever comes first. When the target is no longer {@condition grabbed}, they take {@condition persistent damage||persistent bleed damage} equal to the number of weapon damage dice."
 			]
 		},
 		{
@@ -8236,7 +8241,7 @@
 			"prerequisites": "at least one arcane or occult innate spell gained from a gnome heritage or gnome ancestry feat",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You are attacked by a foe.",
 			"entries": [
@@ -8273,7 +8278,7 @@
 			],
 			"prerequisites": "divine ally (blade), tenets of evil",
 			"entries": [
-				"Your blade ally thirsts for the blood of your foes. Whenever you critically hit an enemy with the weapon inhabited by your blade ally while dealing extra damage from your champion's reaction, the target takes {@condition persistent damage ||persistent bleed damage} equal to two of the weapon's damage dice."
+				"Your blade ally thirsts for the blood of your foes. Whenever you critically hit an enemy with the weapon inhabited by your blade ally while dealing extra damage from your champion's reaction, the target takes {@condition persistent damage||persistent bleed damage} equal to two of the weapon's damage dice."
 			]
 		},
 		{
@@ -8362,7 +8367,7 @@
 			"prerequisites": "tyrant cause",
 			"entries": [
 				"Disobeying your {@action Iron Command|APG} has lasting consequences.",
-				"If an enemy refuses to kneel to you, you can deal {@condition persistent damage ||persistent mental damage} instead of normal mental damage. You must decide whether the mental damage will be persistent before your enemy chooses whether to kneel or not. The amount of damage is unchanged."
+				"If an enemy refuses to kneel to you, you can deal {@condition persistent damage||persistent mental damage} instead of normal mental damage. You must decide whether the mental damage will be persistent before your enemy chooses whether to kneel or not. The amount of damage is unchanged."
 			]
 		},
 		{
@@ -8467,7 +8472,7 @@
 			"prerequisites": "ki spells, {@feat Master of Many Styles}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You center yourself with the universe and draw upon its vast power. You cast a single action ki spell with the {@trait stance} trait, without spending a Focus Point."
@@ -8552,6 +8557,11 @@
 		},
 		{
 			"name": "Kobold Lore",
+			"otherSources": {
+				"Reprinted": [
+					"LTiBA|10"
+				]
+			},
 			"source": "APG",
 			"page": 14,
 			"level": 1,
@@ -9046,7 +9056,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You imbue your ammunition with eldritch power. When you select this feat, choose three types of {@filter common magical ammunition of 4th level or lower from the Core Rulebook or this book|items||source=crb;apg|Level=[0;4]|type=!generic variant|category=ammunition|rarity=common|item=magical}. Your GM might allow you to choose from other types of magical ammunition, such as uncommon ammunition, or ammunition from other books.",
@@ -10552,7 +10562,7 @@
 			"prerequisites": "{@feat Martial Artist Dedication|APG}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"With a burst of effort, you weave a path through your enemies, striking each in turn as you move past them. You {@action Stride}; this movement doesn't trigger reactions. You can {@action Strike} up to three times at any point during your movement, each against a different enemy. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you have made all your attacks."
@@ -10738,7 +10748,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You can concentrate an immense amount of magic to create a piece of ammunition that phases through everything but your target. Make a bow {@action Strike} against a foe who is {@condition observed} or {@condition hidden} to you (but not {@condition undetected}). The ammunition travels to your target in a straight line, passing through any non-magical barriers or walls in its way, though magical barriers stop the arrow. The shot ignores all cover, the {@condition concealed} condition, the {@condition hidden} condition, and circumstance bonuses to AC from shields. It has a +4 status bonus to hit creatures wearing any type of armor. The {@action Strike}'s damage can't be reduced with a {@feat Shield Block} reaction using a non-magical shield."
@@ -11290,7 +11300,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You fail a saving throw against a {@trait mental} effect.",
 			"entries": [
@@ -11387,7 +11397,7 @@
 			],
 			"prerequisites": "{@feat Verdant Weapon|APG}",
 			"entries": [
-				"Your verdant weapon can cut through the resistances of magical creatures. The weapon is treated as {@item cold iron (generic)||cold iron} and {@item silver (generic)||silver}. If you critically hit a creature that has a weakness to cold iron or silver, the target takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage} as the primal energies within your weapon slow its natural healing."
+				"Your verdant weapon can cut through the resistances of magical creatures. The weapon is treated as {@item cold iron (generic)||cold iron} and {@item silver (generic)||silver}. If you critically hit a creature that has a weakness to cold iron or silver, the target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} as the primal energies within your weapon slow its natural healing."
 			]
 		},
 		{
@@ -11528,7 +11538,7 @@
 			"prerequisites": "{@feat Cheek Pouches|APG}",
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You are adept at quickly moving items into your cheek pouches. You {@action Interact} to store one held item in your cheek pouches (provided it fits)."
@@ -11569,7 +11579,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"If your next action is to cast an oracle cantrip or an oracle spell that is at least 2 levels lower than the highest-level oracle spell slot you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
@@ -11592,7 +11602,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"If your next action is to cast a witch cantrip or a witch spell that is at least 2 levels lower than the highest-level witch spell slot you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
@@ -11790,7 +11800,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You blind or dazzle a creature.",
 			"entries": [
@@ -11952,7 +11962,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"Despite a lifetime filled with questionable decisions, you've managed to survive, as though you have uncanny luck that lets you avoid the consequences of your own actions. For the remainder of your turn, if you roll a failure or critical failure on a saving throw against a harmful effect, you get a success instead. Further, enemies and hazards that would damage you this turn roll the minimum possible damage.",
@@ -12021,7 +12031,7 @@
 			"traits": [
 				"swashbuckler"
 			],
-			"prerequisites": "{@action Opportune Riposte||APG}",
+			"prerequisites": "{@action Opportune Riposte|APG}",
 			"entries": [
 				"You can riposte almost without a thought. At the start of each of your turns when you regain your actions, you gain an additional reaction that can be used only to perform an Opportune Riposte."
 			]
@@ -12082,7 +12092,7 @@
 			"prerequisites": "harmful font or healing font",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"If your next action is to use your divine font to cast a 3-action {@spell heal} or {@spell harm} spell to damage creatures, you can harness the residual energy to counterbalance opposing forces. You use your {@spell heal} or {@spell harm} spell to attempt to counteract one effect in the spell's area with the {@trait chaotic}, {@trait evil}, {@trait good}, or {@trait lawful} trait. The chosen trait must oppose one component of your deity's alignment; if your deity is neutral, you can choose any one trait."
@@ -12578,11 +12588,16 @@
 			],
 			"prerequisites": "{@class Investigator|APG|forensic medicine|forensic medicine} methodology",
 			"entries": [
-				"Your stratagems benefit from your precise knowledge of anatomy. When you critically hit with an attack on which you substituted your attack roll due to {@action Devise a Stratagem|APG|Devising a Stratagem}, if your attack dealt piercing or slashing damage, you also deal {@damage 1d6} {@condition persistent damage ||persistent bleed damage} to your target."
+				"Your stratagems benefit from your precise knowledge of anatomy. When you critically hit with an attack on which you substituted your attack roll due to {@action Devise a Stratagem|APG|Devising a Stratagem}, if your attack dealt piercing or slashing damage, you also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage} to your target."
 			]
 		},
 		{
 			"name": "Scamper",
+			"otherSources": {
+				"Reprinted": [
+					"LTiBA|10"
+				]
+			},
 			"source": "APG",
 			"page": 14,
 			"activity": {
@@ -13146,7 +13161,7 @@
 			"prerequisites": "legendary {@skill Stealth}",
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You successfully use {@skill Stealth} to {@action Hide} and become {@condition hidden} from all your current foes, or use {@skill Stealth} to {@action Sneak} and become {@condition undetected} to all your current foes.",
 			"entries": [
@@ -13497,7 +13512,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"requirements": "You haven't acted yet on your turn.",
 			"entries": [
@@ -13738,7 +13753,7 @@
 			"prerequisites": "skyborn tengu heritage",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"To be a tengu is to be unburdened by the concerns of the world below. You grow a pair of magical wings or expand your existing ones. For 5 minutes, you gain a fly Speed equal to your land Speed or 20 feet, whichever is greater."
@@ -14039,7 +14054,7 @@
 			"prerequisites": "spirit instinct",
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You fail, but don't critically fail, a {@skill Perception} check or a skill check.",
 			"entries": [
@@ -14730,7 +14745,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "An ally you can see falls to 0 Hit Points.",
 			"entries": [
@@ -14828,7 +14843,7 @@
 			],
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "A foe takes a {@condition hostile} action against you in combat.",
 			"entries": [
@@ -15574,7 +15589,7 @@
 			"prerequisites": "{@feat Monastic Archer Stance|APG}, {@feat Stunning Fist}",
 			"requirements": "You are in Monastic Archer Stance and wielding a bow usable with that stance.",
 			"entries": [
-				"You string three arrows to your bow and fire them all at once. Make three ranged {@action Strike|CRB|Strikes} against a single target with the required weapon, each using your current multiple attack penalty, and you take an additional \u20132 penalty. This counts as two attacks when calculating your multiple attack penalty, and you combine the attacks' damage for the purpose of resistances and weaknesses. Your Stunning Fist benefit applies to Triangle Shot, even though it isn't a {@action Flurry of Blows}. If all three {@action Strike|CRB|Strikes} hit, the target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}."
+				"You string three arrows to your bow and fire them all at once. Make three ranged {@action Strike|CRB|Strikes} against a single target with the required weapon, each using your current multiple attack penalty, and you take an additional \u20132 penalty. This counts as two attacks when calculating your multiple attack penalty, and you combine the attacks' damage for the purpose of resistances and weaknesses. Your Stunning Fist benefit applies to Triangle Shot, even though it isn't a {@action Flurry of Blows}. If all three {@action Strike|CRB|Strikes} hit, the target takes {@damage 3d6} {@condition persistent damage||persistent bleed damage}."
 			]
 		},
 		{
@@ -15676,7 +15691,7 @@
 			"prerequisites": "{@feat Acrobat Dedication|APG}",
 			"frequency": {
 				"unit": "minute",
-				"freq": 1
+				"number": 1
 			},
 			"requirements": "Your most recent action was to {@action Tumble Through} or Tumbling {@action Strike}, and you successfully moved through an enemy's space.",
 			"entries": [
@@ -16093,7 +16108,8 @@
 			"level": 2,
 			"featType": {
 				"archetype": [
-					"Vigilante"
+					"Vigilante",
+					"Gray Gardener"
 				]
 			},
 			"traits": [
@@ -16525,7 +16541,7 @@
 			],
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You carefully consider your case and narrow down some of the details. When you {@action Pursue a Lead|APG}, you can spend 10 minutes instead of 1 minute to ask two questions of the GM as you complete the activity. The GM must answer truthfully with \"yes\" or \"no,\" though if the answer would be misleading or have no practical application to your investigation the GM can answer \"immaterial.\" You can't use Whodunnit? more than once for the same lead, even across different days.",

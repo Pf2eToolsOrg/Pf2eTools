@@ -56,7 +56,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You gain the effect of protection against evil."
@@ -93,11 +93,10 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "minute",
-						"entry": "1 minute"
+						"unit": "minute"
 					},
 					"components": [
-						"(Interact)"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You execute a creature {@condition restrained} beneath the blade. The executed creature takes {@damage 11d10} slashing damage and must succeed at a DC 45 Fortitude save or be decapitated as though it suffered a critical hit with a natural 20 from a {@runeItem scythe||+3 weapon potency||major striking||vorpal|}.",
@@ -135,11 +134,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"(Command)"
+						"command"
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"Issue an order as part of the command. You and each ally within 60 feet who follows that order gain a +1 status bonus to attack rolls, damage rolls, and saving throws against fear until the beginning of your next turn."
@@ -186,7 +185,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"(Interact)"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",

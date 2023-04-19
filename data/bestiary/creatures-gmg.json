@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Acolyte Of Nethys",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 212,
 			"level": 1,
@@ -115,8 +114,7 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				]
 			},
@@ -124,7 +122,6 @@
 		},
 		{
 			"name": "Acrobat",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 237,
 			"level": 2,
@@ -289,8 +286,7 @@
 				},
 				"hp": [
 					{
-						"hp": 28,
-						"abilities": null
+						"hp": 28
 					}
 				]
 			},
@@ -298,7 +294,6 @@
 		},
 		{
 			"name": "Adept",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 228,
 			"level": -1,
@@ -435,8 +430,7 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				]
 			},
@@ -444,7 +438,6 @@
 		},
 		{
 			"name": "Advisor",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 208,
 			"level": 5,
@@ -534,7 +527,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 22,
@@ -638,15 +630,13 @@
 				},
 				"hp": [
 					{
-						"hp": 56,
-						"abilities": null
+						"hp": 56
 					}
 				]
 			}
 		},
 		{
 			"name": "Antipaladin",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 247,
 			"level": 5,
@@ -790,8 +780,7 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				]
 			},
@@ -799,7 +788,6 @@
 		},
 		{
 			"name": "Apothecary",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 221,
 			"level": -1,
@@ -871,7 +859,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "1 acid plus {@damage 1d6} {@condition persistent damage ||persistent acid} and 1 splash acid",
+					"damage": "1 acid plus {@damage 1d6} {@condition persistent damage||persistent acid} and 1 splash acid",
 					"types": [
 						"acid",
 						"persistent",
@@ -906,15 +894,13 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			}
 		},
 		{
 			"name": "Apprentice",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 244,
 			"level": -1,
@@ -994,7 +980,7 @@
 						"requirements": "A direct superior is supervising the apprentice",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The apprentice gains a +2 circumstance bonus to attack rolls, damage rolls, saving throws, and skill checks until the end of their next turn."
@@ -1020,8 +1006,7 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				]
 			},
@@ -1029,7 +1014,6 @@
 		},
 		{
 			"name": "Archer Sentry",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 234,
 			"level": 2,
@@ -1143,15 +1127,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Assassin",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 212,
 			"level": 8,
@@ -1182,6 +1164,9 @@
 				"diplomacy": {
 					"std": 10
 				},
+				"intimidation": {
+					"std": 10
+				},
 				"medicine": {
 					"std": 14
 				},
@@ -1196,6 +1181,9 @@
 				},
 				"thievery": {
 					"std": 15
+				},
+				"underworld lore": {
+					"std": 14
 				}
 			},
 			"abilityMods": {
@@ -1206,6 +1194,16 @@
 				"wis": 2,
 				"cha": 0
 			},
+			"items": [
+				"+1 striking composite shortbow (20 arrows)",
+				"lesser darkvision elixir",
+				"giant centipede venom (3)",
+				"invisibility potion",
+				"leather armor",
+				"+1 rapier",
+				"simple injury poison (8 doses, {@damage 2d4} poison damage)",
+				"sleep poison (2)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1244,12 +1242,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+14 Str +3, Dex +5, Con +2, Int +2, Wis +2, Cha +0 Items +1 striking composite shortbow (20 arrows), lesser darkvision elixir, giant centipede venom (3), invisibility potion, leather armor, +1 rapier, simple injury poison (8 doses, {@damage 2d4} poison damage), sleep poison (2)"
-						],
-						"name": "Underworld Lore"
-					},
 					{
 						"entries": [
 							"The assassin can move their full Speed when Sneaking."
@@ -1335,15 +1327,13 @@
 				},
 				"hp": [
 					{
-						"hp": 130,
-						"abilities": null
+						"hp": 130
 					}
 				]
 			}
 		},
 		{
 			"name": "Astronomer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 241,
 			"level": 2,
@@ -1443,8 +1433,7 @@
 				},
 				"hp": [
 					{
-						"hp": 23,
-						"abilities": null
+						"hp": 23
 					}
 				]
 			},
@@ -1452,7 +1441,6 @@
 		},
 		{
 			"name": "Bandit",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 209,
 			"level": 2,
@@ -1553,14 +1541,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6, {@skill Thievery} +8 Str +3, Dex +3, Con +1, Int +0, Wis +2, Cha +1 Items hatchet, sling (10 bullets), studded leather armor."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -1601,8 +1581,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			},
@@ -1610,7 +1589,6 @@
 		},
 		{
 			"name": "Barkeep",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 238,
 			"level": 1,
@@ -1709,14 +1687,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+5, {@skill Thievery} +3 Str +3, Dex +0, Con +2, Int +0, Wis +1, Cha +3 Items barkeep's apron (functions as padded armor), flask of whiskey, pewter mug, sap."
-						],
-						"name": "Society"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -1735,9 +1705,12 @@
 							"linguistic",
 							"mental"
 						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
 						"entries": [
-							"Frequency once per day; The barkeep gives some pertinent advice to a single creature other than themself. For 24 hours, when that creature fails a skill check or saving throw, they can recall this advice and reroll the check, using the second result instead. Once that creature uses this ability, its effect ends.",
-							"A creature that receives the Barkeep's Advice is temporarily immune to the ability for 1 month."
+							"The barkeep gives some pertinent advice to a single creature other than themself. For 24 hours, when that creature fails a skill check or saving throw, they can recall this advice and reroll the check, using the second result instead. Once that creature uses this ability, its effect ends. A creature that receives the Barkeep's Advice is temporarily immune to the ability for 1 month."
 						],
 						"name": "Barkeep's Advice"
 					}
@@ -1760,8 +1733,7 @@
 				},
 				"hp": [
 					{
-						"hp": 25,
-						"abilities": null
+						"hp": 25
 					}
 				]
 			},
@@ -1769,7 +1741,6 @@
 		},
 		{
 			"name": "Barrister",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 233,
 			"level": -1,
@@ -1879,8 +1850,7 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				]
 			},
@@ -1888,7 +1858,6 @@
 		},
 		{
 			"name": "Beast Tamer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 238,
 			"level": 4,
@@ -1966,7 +1935,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 22,
@@ -2019,19 +1987,28 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Druid Order",
+					"type": "Focus",
+					"DC": 22,
+					"fp": 1,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "heal animal"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
 				"top": [
 					{
 						"entries": [
-							"+8, {@skill Survival} +10 Str +2, Dex +1, Con +2, Int +0, Wis +4, Cha +2 Items holly and mistletoe, leather armor, rope (50 feet), whip."
-						],
-						"name": "Performance"
-					},
-					{
-						"entries": [
-							"The beast tamer can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple Requests of them."
+							"The beast tamer can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple {@action Request||Requests} of them."
 						],
 						"name": "Wild Empathy"
 					}
@@ -2039,8 +2016,8 @@
 				"bot": [
 					{
 						"entries": [
-							"The beast tamer fights alongside a trained animal ally of its level or lower, most likely a tiger (Bestiary 53). The animal has the standard number of actions, uses its normal stat block, and counts toward the encounter's XP budget normally.",
-							"The beast tamer can spend 1 action to gain the support benefit appropriate to its trained animal (Core Rulebook 215). Unlike for an animal companion, this doesn't require the animal to use any of its actions."
+							"The beast tamer fights alongside a trained animal ally of its level or lower, most likely a {@creature tiger}. The animal has the standard number of actions, uses its normal stat block, and counts toward the encounter's XP budget normally.",
+							"The beast tamer can spend 1 action to gain the support benefit appropriate to its {@filter trained animal|companionsfamiliars||type=companion}. Unlike for an animal companion, this doesn't require the animal to use any of its actions."
 						],
 						"name": "Trained Animal"
 					}
@@ -2063,15 +2040,13 @@
 				},
 				"hp": [
 					{
-						"hp": 54,
-						"abilities": null
+						"hp": 54
 					}
 				]
 			}
 		},
 		{
 			"name": "Beggar",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 214,
 			"level": -1,
@@ -2175,8 +2150,7 @@
 				},
 				"hp": [
 					{
-						"hp": 10,
-						"abilities": null
+						"hp": 10
 					}
 				]
 			},
@@ -2184,7 +2158,6 @@
 		},
 		{
 			"name": "Bodyguard",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 226,
 			"level": 1,
@@ -2288,15 +2261,13 @@
 				},
 				"hp": [
 					{
-						"hp": 25,
-						"abilities": null
+						"hp": 25
 					}
 				]
 			}
 		},
 		{
 			"name": "Bosun",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 243,
 			"level": 3,
@@ -2408,7 +2379,7 @@
 						],
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The bosun orders an ally to attack or to get in position. Until the end of the ally's next turn, they gain the bosun's choice of a +2 status bonus to attack rolls or a +10-foot status bonus to their Speeds."
@@ -2445,8 +2416,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			},
@@ -2454,7 +2424,6 @@
 		},
 		{
 			"name": "Bounty Hunter",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 227,
 			"level": 4,
@@ -2587,8 +2556,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			},
@@ -2596,7 +2564,6 @@
 		},
 		{
 			"name": "Burglar",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 212,
 			"level": 4,
@@ -2755,8 +2722,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			},
@@ -2764,7 +2730,6 @@
 		},
 		{
 			"name": "Captain Of The Guard",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 236,
 			"level": 6,
@@ -2783,6 +2748,9 @@
 				]
 			},
 			"skills": {
+				"athletics": {
+					"std": 15
+				},
 				"diplomacy": {
 					"std": 11
 				},
@@ -2846,14 +2814,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+10, {@skill Lore||Warfare Lore} +8 Str +5, Dex +0, Con +2, Int +0, Wis +3, Cha +3 Items crossbow (20 bolts), dagger, full plate, +1 longsword, steel shield (Hardness 5, 20 HP, BT 10)"
-						],
-						"name": "Society"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2883,7 +2843,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -2894,7 +2853,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -2933,8 +2891,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				]
 			},
@@ -2942,7 +2899,6 @@
 		},
 		{
 			"name": "Charlatan",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 210,
 			"level": 3,
@@ -3034,7 +2990,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 20,
@@ -3155,8 +3110,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				]
 			},
@@ -3164,7 +3118,6 @@
 		},
 		{
 			"name": "Chronicler",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 216,
 			"level": 3,
@@ -3253,7 +3206,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 20,
@@ -3315,7 +3267,7 @@
 						"trigger": "The chronicler is {@condition dying}",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The chronicler reduces their {@condition dying} condition by 1. If the chronicler is no longer {@condition dying}, they remain {@condition unconscious} for at least 1 hour or until they regain 1 Hit Point."
@@ -3349,8 +3301,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			},
@@ -3358,7 +3309,6 @@
 		},
 		{
 			"name": "Commoner",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 214,
 			"level": -1,
@@ -3383,8 +3333,9 @@
 				"society": {
 					"std": 2
 				},
-				"lore (any one related to their trade)": {
-					"std": 6
+				"lore": {
+					"std": 6,
+					"note": "any one related to their trade"
 				}
 			},
 			"abilityMods": {
@@ -3455,15 +3406,13 @@
 				},
 				"hp": [
 					{
-						"hp": 10,
-						"abilities": null
+						"hp": 10
 					}
 				]
 			}
 		},
 		{
 			"name": "Cult Leader",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 231,
 			"level": 7,
@@ -3534,7 +3483,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 26,
@@ -3698,8 +3646,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				]
 			},
@@ -3707,7 +3654,6 @@
 		},
 		{
 			"name": "Cultist",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 229,
 			"level": 1,
@@ -3741,8 +3687,9 @@
 				"stealth": {
 					"std": 6
 				},
-				"cult lore (applies to the cultist's own cult)": {
-					"std": 8
+				"cult lore": {
+					"std": 8,
+					"note": "applies to the cultist's own cult"
 				}
 			},
 			"abilityMods": {
@@ -3790,14 +3737,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+3, {@skill Society} +4, {@skill Stealth} +6 Str +4, Dex +3, Con +2, Int +1, Wis \u20131, Cha +0 Items dagger, cultist garb (functions as leather armor)"
-						],
-						"name": "Occultism"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -3824,13 +3763,13 @@
 						"std": 8
 					},
 					"will": {
-						"std": 4
+						"std": 4,
+						"vs. higher-ranking members of the cult": 2
 					}
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			},
@@ -3838,7 +3777,6 @@
 		},
 		{
 			"name": "Dancer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 237,
 			"level": 1,
@@ -3944,7 +3882,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The dancer {@action Stride||Strides} up to their Speed. Once during this movement, when the dancer is adjacent to a creature, the dancer can make that creature attempt a DC 17 Will save. On a failure, that creature is {@condition fascinated} with the dancer until the end of its next turn."
@@ -3970,15 +3908,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Demonologist",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 231,
 			"level": 7,
@@ -4043,7 +3979,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 26,
@@ -4184,8 +4119,7 @@
 				},
 				"hp": [
 					{
-						"hp": 100,
-						"abilities": null
+						"hp": 100
 					}
 				]
 			},
@@ -4193,7 +4127,6 @@
 		},
 		{
 			"name": "Despot",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 249,
 			"level": 5,
@@ -4267,7 +4200,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "divine",
 					"DC": 23,
@@ -4347,12 +4279,6 @@
 				"top": [
 					{
 						"entries": [
-							"+12, {@skill Lore||Warfare Lore} +10 Str +2, Dex +2, Con +0, Int +4, Wis +2, Cha +4 Items lesser darkvision elixir, minor healing potion (2), spiked gauntlet."
-						],
-						"name": "Society"
-					},
-					{
-						"entries": [
 							"Any creature deceived by the despot's {@skill Deception} skill believes the deception more readily on the next day. Any attempts to later attempt a {@skill Perception} check against the despot's {@skill Deception} DC take a \u20132 circumstance penalty, as do other creatures' attempts to convince the creature otherwise, such as through {@skill Diplomacy} or further {@skill Deception}."
 						],
 						"name": "Persistent Lies"
@@ -4390,15 +4316,13 @@
 				},
 				"hp": [
 					{
-						"hp": 56,
-						"abilities": null
+						"hp": 56
 					}
 				]
 			}
 		},
 		{
 			"name": "Dockhand",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 224,
 			"level": 0,
@@ -4522,8 +4446,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			},
@@ -4531,7 +4454,6 @@
 		},
 		{
 			"name": "Drunkard",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 239,
 			"level": 2,
@@ -4639,8 +4561,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				]
 			},
@@ -4648,7 +4569,6 @@
 		},
 		{
 			"name": "Executioner",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 236,
 			"level": 6,
@@ -4757,15 +4677,13 @@
 				},
 				"hp": [
 					{
-						"hp": 105,
-						"abilities": null
+						"hp": 105
 					}
 				]
 			}
 		},
 		{
 			"name": "False Priest",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 229,
 			"level": 4,
@@ -4811,6 +4729,16 @@
 				"wis": 2,
 				"cha": 4
 			},
+			"items": [
+				"alchemical tools (used as \"blessed items\" to fool marks)",
+				"backpack",
+				"cloak",
+				"hand crossbow (20 bolts)",
+				"collection of fake relics",
+				"wooden religious symbol",
+				"studded leather armor",
+				"rapier"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -4844,14 +4772,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6 Str +0, Dex +4, Con +3, Int +0, Wis +2, Cha +4 Items alchemical tools (used as \"blessed items\" to fool marks), backpack, cloak, hand crossbow (20 bolts), collection of fake relics, wooden religious symbol, studded leather armor, rapier."
-						],
-						"name": "Society"
-					}
-				],
 				"bot": [
 					{
 						"entries": [
@@ -4890,7 +4810,7 @@
 						"trigger": "The false priest critically fails a {@skill Deception} or {@skill Performance} check",
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The false priest {@action Stride||Strides}."
@@ -4916,15 +4836,13 @@
 				},
 				"hp": [
 					{
-						"hp": 51,
-						"abilities": null
+						"hp": 51
 					}
 				]
 			}
 		},
 		{
 			"name": "Farmer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 224,
 			"level": 0,
@@ -5032,15 +4950,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Fence",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 210,
 			"level": 5,
@@ -5206,8 +5122,7 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				]
 			},
@@ -5215,7 +5130,6 @@
 		},
 		{
 			"name": "Gang Leader",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 249,
 			"level": 7,
@@ -5391,8 +5305,7 @@
 				},
 				"hp": [
 					{
-						"hp": 104,
-						"abilities": null
+						"hp": 104
 					}
 				]
 			},
@@ -5400,7 +5313,6 @@
 		},
 		{
 			"name": "Grave Robber",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 209,
 			"level": 1,
@@ -5477,9 +5389,7 @@
 					],
 					"effects": [
 						"varies by bomb"
-					],
-					"damage": "varies by bomb",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
@@ -5509,15 +5419,13 @@
 				},
 				"hp": [
 					{
-						"hp": 18,
-						"abilities": null
+						"hp": 18
 					}
 				]
 			}
 		},
 		{
 			"name": "Gravedigger",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 224,
 			"level": 1,
@@ -5608,15 +5516,13 @@
 				},
 				"hp": [
 					{
-						"hp": 22,
-						"abilities": null
+						"hp": 22
 					}
 				]
 			}
 		},
 		{
 			"name": "Guard",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 233,
 			"level": 1,
@@ -5721,7 +5627,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -5746,15 +5651,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Guide",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 217,
 			"level": 4,
@@ -5876,8 +5779,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			},
@@ -5885,7 +5787,6 @@
 		},
 		{
 			"name": "Guildmaster",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 245,
 			"level": 8,
@@ -5934,6 +5835,13 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"artisan's tools",
+				"construction schematics",
+				"guildmaster's uniform (functions as hide armor)",
+				"+1 striking light hammer",
+				"tax ledgers"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -5966,14 +5874,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Intimidation} +22, {@skill Society} +21 Str +3, Dex +1, Con +1, Int +4, Wis +2, Cha +3 Items artisan's tools, construction schematics, guildmaster's uniform (functions as hide armor), +1 striking light hammer, tax ledgers."
-						],
-						"name": "Diplomacy"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -6016,8 +5916,7 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				]
 			},
@@ -6025,7 +5924,6 @@
 		},
 		{
 			"name": "Harbormaster",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 225,
 			"level": 3,
@@ -6058,6 +5956,9 @@
 				},
 				"fishing lore": {
 					"std": 8
+				},
+				"sailing lore": {
+					"std": 10
 				}
 			},
 			"abilityMods": {
@@ -6111,12 +6012,6 @@
 				"top": [
 					{
 						"entries": [
-							"+10 Str +4, Dex +2, Con +2, Int +2, Wis +1, Cha +0 Items fishing tackle, hatchet (2), ledger, manacles, spyglass."
-						],
-						"name": "Lore"
-					},
-					{
-						"entries": [
 							"Whenever the harbormaster rolls a success on a check to {@action Balance}, they get a critical success instead. They're not {@condition flat-footed} while Balancing on narrow surfaces and uneven ground. They can attempt an {@skill Acrobatics} check instead of a Reflex save to {@action Grab an Edge}."
 						],
 						"name": "Steady Balance"
@@ -6148,8 +6043,7 @@
 				},
 				"hp": [
 					{
-						"hp": 46,
-						"abilities": null
+						"hp": 46
 					}
 				]
 			},
@@ -6157,7 +6051,6 @@
 		},
 		{
 			"name": "Harrow Reader",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 228,
 			"level": -1,
@@ -6250,15 +6143,13 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			}
 		},
 		{
 			"name": "Hunter",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 220,
 			"level": 7,
@@ -6301,6 +6192,12 @@
 				"wis": 4,
 				"cha": 0
 			},
+			"items": [
+				"+1 composite longbow",
+				"dagger",
+				"leather armor",
+				"shortsword"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -6355,18 +6252,9 @@
 				"top": [
 					{
 						"entries": [
-							"+17 Str +4, Dex +4, Con +2, Int +1, Wis +4, Cha +0 Items +1 composite longbow, dagger, leather armor, shortsword."
+							"While using {@skill Survival} to {@action Subsist}, if the hunter rolls a failure or a critical failure, they get a success instead. If the hunter rolls a success, they can provide food for 16 additional creatures that eat about as much as a human, or 32 creatures on a critical success."
 						],
-						"name": "Survival"
-					},
-					{
-						"entries": [
-							"As poacher, but the hunter feeds 16 additional creatures, or 32 on a critical success."
-						],
-						"name": "Forager",
-						"entries_as_xyz": [
-							"While using {@skill Survival} to {@action Subsist}, if the hunter rolls a failure or a critical failure, they get a success instead. If the hunter rolls a success, they can provide food for 4 additional creatures that eat about as much as a human, or 8 creatures on a critical success."
-						]
+						"name": "Forager"
 					},
 					{
 						"entries": [
@@ -6412,8 +6300,7 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				]
 			},
@@ -6421,7 +6308,6 @@
 		},
 		{
 			"name": "Innkeeper",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 239,
 			"level": 1,
@@ -6547,15 +6433,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Jailer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 234,
 			"level": 3,
@@ -6639,7 +6523,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -6703,8 +6586,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			},
@@ -6712,7 +6594,6 @@
 		},
 		{
 			"name": "Judge",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 224,
 			"level": -1,
@@ -6826,15 +6707,13 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			}
 		},
 		{
 			"name": "Librarian",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 240,
 			"level": -1,
@@ -6954,15 +6833,13 @@
 				},
 				"hp": [
 					{
-						"hp": 6,
-						"abilities": null
+						"hp": 6
 					}
 				]
 			}
 		},
 		{
 			"name": "Mage For Hire",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 226,
 			"level": 3,
@@ -7027,7 +6904,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 20,
@@ -7118,8 +6994,7 @@
 				},
 				"hp": [
 					{
-						"hp": 31,
-						"abilities": null
+						"hp": 31
 					}
 				]
 			},
@@ -7127,7 +7002,6 @@
 		},
 		{
 			"name": "Mastermind",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 247,
 			"level": 4,
@@ -7158,6 +7032,9 @@
 				"intimidation": {
 					"std": 15
 				},
+				"occultism": {
+					"std": 15
+				},
 				"performance": {
 					"std": 17
 				},
@@ -7172,6 +7049,9 @@
 				},
 				"thievery": {
 					"std": 9
+				},
+				"underworld lore": {
+					"std": 17
 				}
 			},
 			"abilityMods": {
@@ -7222,7 +7102,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 22,
@@ -7290,16 +7169,10 @@
 							"level": 2,
 							"spells": [
 								{
-									"name": "inspire competence",
-									"notes": [
-										"Core Rulebook 386"
-									]
+									"name": "inspire competence"
 								},
 								{
-									"name": "inspire courage",
-									"notes": [
-										"Core Rulebook 386"
-									]
+									"name": "inspire courage"
 								}
 							]
 						}
@@ -7308,12 +7181,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+17 Str +0, Dex +3, Con +0, Int +4, Wis +2, Cha +4 Items chain shirt, disguise kit, hand crossbow (10 bolts), shortsword."
-						],
-						"name": "Lore"
-					},
 					{
 						"entries": [
 							"The mastermind can use {@skill Performance} instead of {@skill Diplomacy} to {@action Make an Impression} and instead of {@skill Intimidation} to {@action Demoralize}. The mastermind can also use an acting {@skill Performance} instead of {@skill Deception} to {@action Impersonate}."
@@ -7356,8 +7223,7 @@
 				},
 				"hp": [
 					{
-						"hp": 54,
-						"abilities": null
+						"hp": 54
 					}
 				]
 			},
@@ -7365,7 +7231,6 @@
 		},
 		{
 			"name": "Merchant",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 244,
 			"level": -1,
@@ -7477,15 +7342,13 @@
 				},
 				"hp": [
 					{
-						"hp": 7,
-						"abilities": null
+						"hp": 7
 					}
 				]
 			}
 		},
 		{
 			"name": "Miner",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 224,
 			"level": 0,
@@ -7584,15 +7447,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Monster Hunter",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 227,
 			"level": 6,
@@ -7678,7 +7539,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -7731,15 +7591,13 @@
 				},
 				"hp": [
 					{
-						"hp": 108,
-						"abilities": null
+						"hp": 108
 					}
 				]
 			}
 		},
 		{
 			"name": "Navigator",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 242,
 			"level": 2,
@@ -7861,8 +7719,7 @@
 				},
 				"hp": [
 					{
-						"hp": 28,
-						"abilities": null
+						"hp": 28
 					}
 				]
 			},
@@ -7870,7 +7727,6 @@
 		},
 		{
 			"name": "Necromancer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 231,
 			"level": 5,
@@ -8041,7 +7897,7 @@
 						"requirements": "The necromancer hasn't acted yet on this turn",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The necromancer expends the power stored in their mace. This gives them the ability to cast one prepared spell they prepared today and already cast, without spending a spell slot."
@@ -8070,15 +7926,13 @@
 				},
 				"hp": [
 					{
-						"hp": 58,
-						"abilities": null
+						"hp": 58
 					}
 				]
 			}
 		},
 		{
 			"name": "Noble",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 207,
 			"level": 3,
@@ -8175,7 +8029,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The noble {@action Feint||Feints}. On a success, the noble {@action Strike||Strikes} the target."
@@ -8210,15 +8064,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Palace Guard",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 207,
 			"level": 4,
@@ -8298,7 +8150,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -8331,8 +8182,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			},
@@ -8340,7 +8190,6 @@
 		},
 		{
 			"name": "Physician",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 221,
 			"level": -1,
@@ -8453,8 +8302,7 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			},
@@ -8462,7 +8310,6 @@
 		},
 		{
 			"name": "Pirate",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 242,
 			"level": 2,
@@ -8567,7 +8414,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -8610,15 +8456,13 @@
 				},
 				"hp": [
 					{
-						"hp": 32,
-						"abilities": null
+						"hp": 32
 					}
 				]
 			}
 		},
 		{
 			"name": "Plague Doctor",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 222,
 			"level": 5,
@@ -8697,7 +8541,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 23,
@@ -8811,15 +8654,13 @@
 				},
 				"hp": [
 					{
-						"hp": 73,
-						"abilities": null
+						"hp": 73
 					}
 				]
 			}
 		},
 		{
 			"name": "Poacher",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 219,
 			"level": 2,
@@ -8946,8 +8787,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			},
@@ -8955,7 +8795,6 @@
 		},
 		{
 			"name": "Priest Of Pharasma",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 213,
 			"level": 6,
@@ -9038,7 +8877,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 24,
@@ -9152,8 +8990,7 @@
 				},
 				"hp": [
 					{
-						"hp": 80,
-						"abilities": null
+						"hp": 80
 					}
 				]
 			},
@@ -9161,7 +8998,6 @@
 		},
 		{
 			"name": "Prisoner",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 215,
 			"level": 1,
@@ -9289,15 +9125,13 @@
 				},
 				"hp": [
 					{
-						"hp": 17,
-						"abilities": null
+						"hp": 17
 					}
 				]
 			}
 		},
 		{
 			"name": "Prophet",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 212,
 			"level": 2,
@@ -9387,7 +9221,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "divine",
 					"DC": 18,
@@ -9471,15 +9304,13 @@
 				},
 				"hp": [
 					{
-						"hp": 24,
-						"abilities": null
+						"hp": 24
 					}
 				]
 			}
 		},
 		{
 			"name": "Reckless Scientist",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 249,
 			"level": 6,
@@ -9557,9 +9388,7 @@
 					],
 					"effects": [
 						"varies by bomb"
-					],
-					"damage": "varies by bomb",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
@@ -9639,8 +9468,7 @@
 				},
 				"hp": [
 					{
-						"hp": 92,
-						"abilities": null
+						"hp": 92
 					}
 				],
 				"resistances": [
@@ -9654,7 +9482,6 @@
 		},
 		{
 			"name": "Ruffian",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 210,
 			"level": 2,
@@ -9743,7 +9570,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -9796,15 +9622,13 @@
 				},
 				"hp": [
 					{
-						"hp": 32,
-						"abilities": null
+						"hp": 32
 					}
 				]
 			}
 		},
 		{
 			"name": "Saboteur",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 247,
 			"level": 2,
@@ -9935,15 +9759,13 @@
 				},
 				"hp": [
 					{
-						"hp": 27,
-						"abilities": null
+						"hp": 27
 					}
 				]
 			}
 		},
 		{
 			"name": "Sage",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 241,
 			"level": 6,
@@ -10015,14 +9837,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12, {@skill Society} +14 Str +2, Dex +2, Con +1, Int +4, Wis +3, Cha +0 Items religious symbol, +1 staff."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -10075,15 +9889,13 @@
 				},
 				"hp": [
 					{
-						"hp": 86,
-						"abilities": null
+						"hp": 86
 					}
 				]
 			}
 		},
 		{
 			"name": "Servant",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 224,
 			"level": -1,
@@ -10178,8 +9990,7 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			},
@@ -10187,7 +9998,6 @@
 		},
 		{
 			"name": "Server",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 238,
 			"level": -1,
@@ -10291,15 +10101,13 @@
 				},
 				"hp": [
 					{
-						"hp": 7,
-						"abilities": null
+						"hp": 7
 					}
 				]
 			}
 		},
 		{
 			"name": "Ship Captain",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 243,
 			"level": 6,
@@ -10399,18 +10207,10 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+10 Str +4, Dex +2, Con +0, Int +1, Wis +2, Cha +3 Items dagger, hand crossbow (10 bolts), leather armor, +1 rapier."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"When the pirate rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead. In addition, anytime they gain the {@condition frightened} condition, reduce its value by 1."
+							"When the ship captain rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead. In addition, anytime they gain the {@condition frightened} condition, reduce its value by 1."
 						],
 						"name": "Bravery"
 					}
@@ -10462,15 +10262,13 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				]
 			}
 		},
 		{
 			"name": "Smith",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 245,
 			"level": 3,
@@ -10581,15 +10379,13 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				]
 			}
 		},
 		{
 			"name": "Spy",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 208,
 			"level": 6,
@@ -10684,12 +10480,6 @@
 				"top": [
 					{
 						"entries": [
-							"+14, {@skill Thievery} +12 Str +0, Dex +4, Con +1, Int +2, Wis +4, Cha +4 Items dagger (4), disguise kit, fine clothes, leather armor, +1 rapier, thieves' tools."
-						],
-						"name": "Stealth"
-					},
-					{
-						"entries": [
 							"The spy has positioned themself to seem a trusted ally, gaining a +2 circumstance bonus to {@action Gather Information} or to {@action Make an Impression} among the nobles of that court."
 						],
 						"name": "Noble's Ally"
@@ -10703,7 +10493,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The spy draws a weapon and then {@action Strike||Strikes} with it. The target of the {@action Strike} is {@condition flat-footed} against the attack."
@@ -10738,8 +10528,7 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				]
 			},
@@ -10747,7 +10536,6 @@
 		},
 		{
 			"name": "Surgeon",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 222,
 			"level": 2,
@@ -10853,8 +10641,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			},
@@ -10862,7 +10649,6 @@
 		},
 		{
 			"name": "Tax Collector",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 224,
 			"level": -1,
@@ -10984,8 +10770,7 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				]
 			},
@@ -10993,7 +10778,6 @@
 		},
 		{
 			"name": "Teacher",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 240,
 			"level": -1,
@@ -11093,8 +10877,7 @@
 				},
 				"hp": [
 					{
-						"hp": 5,
-						"abilities": null
+						"hp": 5
 					}
 				]
 			},
@@ -11102,7 +10885,6 @@
 		},
 		{
 			"name": "Tomb Raider",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 217,
 			"level": 5,
@@ -11122,6 +10904,9 @@
 			},
 			"skills": {
 				"acrobatics": {
+					"std": 13
+				},
+				"athletics": {
 					"std": 13
 				},
 				"deception": {
@@ -11193,12 +10978,6 @@
 				"top": [
 					{
 						"entries": [
-							"+11, {@skill Thievery} +13 Str +4, Dex +4, Con +1, Int +2, Wis +2, Cha +0 Items climbing kit, hand crossbow (20 bolts), +1 kukri."
-						],
-						"name": "Stealth"
-					},
-					{
-						"entries": [
 							"The tomb raider automatically attempts a secret {@skill Perception} check to notice a hazard when they are within 10 feet of the hazard."
 						],
 						"name": "Hazard Spotter"
@@ -11234,15 +11013,13 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				]
 			}
 		},
 		{
 			"name": "Torchbearer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 216,
 			"level": 0,
@@ -11337,7 +11114,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A torchbearer is adept at attacking with {@item torch||torches} and deals 1 {@condition persistent damage ||persistent fire damage} when they critically hit with a torch."
+							"A torchbearer is adept at attacking with {@item torch||torches} and deals 1 {@condition persistent damage||persistent fire damage} when they critically hit with a torch."
 						],
 						"name": "Torch Combatant"
 					}
@@ -11360,15 +11137,13 @@
 				},
 				"hp": [
 					{
-						"hp": 15,
-						"abilities": null
+						"hp": 15
 					}
 				]
 			}
 		},
 		{
 			"name": "Tracker",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 220,
 			"level": 3,
@@ -11497,15 +11272,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Troubadour",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 238,
 			"level": 3,
@@ -11598,7 +11371,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 21,
@@ -11684,8 +11456,7 @@
 				},
 				"hp": [
 					{
-						"hp": 38,
-						"abilities": null
+						"hp": 38
 					}
 				]
 			},
@@ -11693,7 +11464,6 @@
 		},
 		{
 			"name": "Urchin",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 215,
 			"level": -1,
@@ -11817,8 +11587,7 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				]
 			},
@@ -11826,7 +11595,6 @@
 		},
 		{
 			"name": "Warden",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 225,
 			"level": 6,
@@ -11940,15 +11708,13 @@
 				},
 				"hp": [
 					{
-						"hp": 96,
-						"abilities": null
+						"hp": 96
 					}
 				]
 			}
 		},
 		{
 			"name": "Watch Officer",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 236,
 			"level": 3,
@@ -12045,7 +11811,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -12056,7 +11821,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -12071,7 +11835,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The watch officer {@action Stride||Strides} twice. If they end their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
@@ -12098,8 +11862,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			},
@@ -12107,7 +11870,6 @@
 		},
 		{
 			"name": "Zealot Of Asmodeus",
-			"isNpc": false,
 			"source": "GMG",
 			"page": 213,
 			"level": 4,
@@ -12190,7 +11952,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 19,
@@ -12256,7 +12017,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -12315,8 +12075,7 @@
 				},
 				"hp": [
 					{
-						"hp": 58,
-						"abilities": null
+						"hp": 58
 					}
 				]
 			}

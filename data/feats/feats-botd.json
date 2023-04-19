@@ -97,7 +97,7 @@
 			],
 			"prerequisites": "{@feat Undead Master Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -131,7 +131,7 @@
 			],
 			"prerequisites": "{@feat Ghost Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -168,7 +168,7 @@
 			},
 			"prerequisites": "{@feat Ghost Dedication|BotD}",
 			"entries": [
-				"Your ghostly form becomes innately weaker but also gains resistance to many forms of damage. Your maximum HP is reduced by your level. You gain resistance 1 to all damage except for force, positive, and any damage done by a weapon with the {@item ghost touch} rune (or any other source that acts like a ghost touch rune). This resistance increases to 2 if the source is non-magical.",
+				"Your ghostly form becomes innately weaker but also gains resistance to many forms of damage. Your maximum HP is reduced by your level. You gain resistance 1 to all damage except for force, positive, and any damage done by a weapon with the {@item ghost touch} rune (or any other source that acts like a {@item ghost touch} rune). This resistance increases to 2 if the source is non-magical.",
 				"At 10th level, the resistance increases to 2, or 4 if the source is non-magical. At 16th level, the resistance increases to 3, or 5 if the source is non-magical."
 			]
 		},
@@ -209,7 +209,7 @@
 			],
 			"prerequisites": "{@feat Ghost Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -238,7 +238,7 @@
 			],
 			"prerequisites": "master in {@skill Acrobatics}, {@feat Ghost Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -516,7 +516,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -538,7 +538,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"entries": [
-				"You've learned to harness the supernatural curse that animates you, imbuing your most powerful attacks with a terrible curse. When you critically hit with a fist {@action Strike}, negative energy binds to it; this is a {@trait curse} and a {@trait disease}. The creature takes {@damage 2d6} {@condition persistent damage ||persistent negative damage}. While the creature has this {@condition persistent damage}, it's also {@condition stupefied||stupefied 1}. The {@condition persistent damage} increases to {@dice 3d6} at 14th level and {@dice 4d6} at 20th level. This is a critical specialization effect."
+				"You've learned to harness the supernatural curse that animates you, imbuing your most powerful attacks with a terrible curse. When you critically hit with a fist {@action Strike}, negative energy binds to it; this is a {@trait curse} and a {@trait disease}. The creature takes {@damage 2d6} {@condition persistent damage||persistent negative damage}. While the creature has this {@condition persistent damage}, it's also {@condition stupefied||stupefied 1}. The {@condition persistent damage} increases to {@dice 3d6} at 14th level and {@dice 4d6} at 20th level. This is a critical specialization effect."
 			],
 			"leadsTo": [
 				"Channel Rot|BotD"
@@ -566,7 +566,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -636,7 +636,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -678,7 +678,7 @@
 				"skeleton"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -1077,7 +1077,7 @@
 			],
 			"prerequisites": "{@feat Zombie Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"trigger": "You would be reduced to 0 HP.",
@@ -1243,8 +1243,8 @@
 			],
 			"prerequisites": "{@feat Vampire Dedication|BotD}",
 			"entries": [
-				"You aim for your victim's prominent arteries. Your fangs {@action Strike} deals an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} on a critical hit.",
-				"At 14th level, the {@condition persistent damage ||persistent bleed damage} increases to {@dice 2d6}, and at 20th level, the {@condition persistent damage ||persistent bleed damage} increases to {@dice 3d6}."
+				"You aim for your victim's prominent arteries. Your fangs {@action Strike} deals an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage} on a critical hit.",
+				"At 14th level, the {@condition persistent damage||persistent bleed damage} increases to {@dice 2d6}, and at 20th level, the {@condition persistent damage||persistent bleed damage} increases to {@dice 3d6}."
 			]
 		},
 		{
@@ -1270,7 +1270,7 @@
 			],
 			"prerequisites": "{@feat Vampire Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -1299,7 +1299,7 @@
 			],
 			"prerequisites": "{@feat Vampire Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -1394,7 +1394,7 @@
 				"transmutation"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -1445,7 +1445,7 @@
 			],
 			"prerequisites": "{@feat Mummy Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -1783,7 +1783,7 @@
 					"type": "list",
 					"items": [
 						"{@b Floating} You can float but are still tethered to the ground. Replace your land Speed with an equal fly Speed. You can't rise more than a few inches above the ground when you {@action Fly}. This means you can move above many types of difficult or hazardous terrain without moving slowly or being damaged, even though you can't fly without limit. You can {@action Leap}, {@action High Jump}, {@action Long Jump}, and take similar actions, and use your fly Speed for any calculations that would normally require your land Speed.",
-						"{@b Items} You can transmute physical items to make them part of your incorporeal form. This requires spending 10 minutes with the items within reach, during which you transform the items into part of your form; you can return items you already have incorporated to a corporeal state at the same time. The items retain all their runes and other abilities, need to be invested normally if they have the {@trait invested} trait, and need to be worn, held, or stowed appropriately. Once you've incorporated the items, you and other incorporeal creatures can use them normally\u2014you can {@action Interact} with them, {@action Release} them, and so on. Your incorporated weapons gain the benefits of the ghost touch property rune, allowing you to use them normally against both corporeal and incorporeal creatures. Incorporated items become corporeal again only if you transmute them back or are destroyed, in which case, they drop to the ground under you.",
+						"{@b Items} You can transmute physical items to make them part of your incorporeal form. This requires spending 10 minutes with the items within reach, during which you transform the items into part of your form; you can return items you already have incorporated to a corporeal state at the same time. The items retain all their runes and other abilities, need to be invested normally if they have the {@trait invested} trait, and need to be worn, held, or stowed appropriately. Once you've incorporated the items, you and other incorporeal creatures can use them normally\u2014you can {@action Interact} with them, {@action Release} them, and so on. Your incorporated weapons gain the benefits of the {@item ghost touch} property rune, allowing you to use them normally against both corporeal and incorporeal creatures. Incorporated items become corporeal again only if you transmute them back or are destroyed, in which case, they drop to the ground under you.",
 						"{@b Attacks} Your unarmed attacks become magical and deal negative damage instead of their normal type.",
 						"{@b Strength} Unlike most incorporeal creatures, your Strength modifier is not \u20135; you keep the same Strength score you had before you became a ghost, though you can only attempt Strength-based skill checks\u2014typically {@skill Athletics} checks\u2014against other incorporeal creatures, as normal for an incorporeal creature. Against incorporeal creatures, use your Strength normally to determine the results of {@skill Athletics} checks, {@action Strike||Strikes} with melee weapons, and any other checks or damage rolls dependent on Strength.",
 						"{@b Ties that Bind} When you become a ghost, work with your GM to choose a bound site and unfinished business, both of which matter for your character's story, as well as some ghost archetype feats. Your bound site tethers you to the physical world and is typically either a location important to you in life or the place where you died. Unfinished business keeps you from passing to the afterlife. If someone resolves your unfinished business, you decide whether to accept the change and pass on, or to fight it. If you pass on, you get a few minutes to say your goodbyes, and then move into the River of Souls and the afterlife. Your character ceases to be. If you fight the change, you remain, though you and the GM might determine a new unfinished business. If you are physically destroyed, you cease your existence as a ghost but still might not be able to pass on to the afterlife if your unfinished business is incomplete. In this liminal state, you might come across strange energies and become another sort of creature, or anchor to a summoner and become an eidolon."
@@ -2243,7 +2243,7 @@
 			],
 			"prerequisites": "{@feat Soul Warden Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"requirements": "Your spiral is glowing.",
@@ -2273,7 +2273,7 @@
 			],
 			"prerequisites": "{@feat Soul Warden Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -2300,7 +2300,7 @@
 			],
 			"prerequisites": "{@feat Psychopomp Familiar|BotD}",
 			"entries": [
-				"Your psychopomp's continued service in {@deity Pharasma}'s name brings it favor from the goddess. It might change appearance to look like a different, more powerful kind of psychopomp. You can select four familiar or master abilities each day, instead of two, but two must be from the Psychopomp Familiar feat or the following ability.",
+				"Your psychopomp's continued service in {@deity Pharasma}'s name brings it favor from the goddess. It might change appearance to look like a different, more powerful kind of psychopomp. You can select four familiar or master abilities each day, instead of two, but two must be from the {@feat Psychopomp Familiar|BotD} feat or the following ability.",
 				{
 					"type": "list",
 					"items": [
@@ -2344,7 +2344,7 @@
 			],
 			"prerequisites": "{@feat Spiral Sworn|BotD}",
 			"entries": [
-				"Your prayers encompass your companions, granting you the ability to share {@deity Pharasma}'s blessings. When you use Spiral Sworn, you can spend 2 actions instead of 1 to grant the benefits to all allies who are in the light of your spiral when you take the action."
+				"Your prayers encompass your companions, granting you the ability to share {@deity Pharasma}'s blessings. When you use {@feat Spiral Sworn|BotD}, you can spend 2 actions instead of 1 to grant the benefits to all allies who are in the light of your spiral when you take the action."
 			]
 		},
 		{
@@ -2383,7 +2383,7 @@
 			],
 			"prerequisites": "{@feat Undead Slayer Dedication|BotD}",
 			"entries": [
-				"You establish a safe house where you can prepare for your hunt. The sanctum is roughly the size of a 20-foot cube. This sanctum is in a location you have access to and can be part of a larger structure, such as the basement of a temple or hidden room of a library. Setting up or moving your sanctum takes a week of downtime. Your sanctum protects objects and people inside it from magical detection and the prying eyes of undead. This has the effects of nondetection, using your {@skill Religion} modifier for the counteract DC and half your level rounded up for the counteract level. Additionally, undead attempting to locate the entrance to your sanctum via mundane {@skill Perception} must succeed against either your {@skill Religion} DC or the normal DC to find the sanctum, whichever is higher."
+				"You establish a safe house where you can prepare for your hunt. The sanctum is roughly the size of a 20-foot cube. This sanctum is in a location you have access to and can be part of a larger structure, such as the basement of a temple or hidden room of a library. Setting up or moving your sanctum takes a week of downtime. Your sanctum protects objects and people inside it from magical detection and the prying eyes of undead. This has the effects of {@spell nondetection}, using your {@skill Religion} modifier for the counteract DC and half your level rounded up for the counteract level. Additionally, undead attempting to locate the entrance to your sanctum via mundane {@skill Perception} must succeed against either your {@skill Religion} DC or the normal DC to find the sanctum, whichever is higher."
 			]
 		},
 		{
@@ -2528,9 +2528,9 @@
 				"oracle",
 				"wizard"
 			],
-			"prerequisites": "able to create or control undead; {@class cleric} with a negative font, {@class oracle|apg} of {@class oracle|apg|bones|bones}, or {@class wizard||necromancer|necromancy} {@class wizard}",
+			"prerequisites": "able to create or control undead; {@class cleric} with a negative font, {@class oracle|apg} of {@class oracle|apg|bones|bones}, or {@class wizard||necromancer wizard|necromancy}",
 			"entries": [
-				"Your presence has a bolstering effect on your undead minions. Undead creatures under your control and within a 30‑foot emanation around you gain a +2 status bonus to saving throws to resist positive damage and to Will saving throws to resist effects that would make them {@condition controlled}."
+				"Your presence has a bolstering effect on your undead minions. Undead creatures under your control and within a 30-foot emanation around you gain a +2 status bonus to saving throws to resist positive damage and to Will saving throws to resist effects that would make them {@condition controlled}."
 			],
 			"special": [
 				"This feat has the trait matching your spellcasting tradition."
@@ -2697,7 +2697,7 @@
 			],
 			"prerequisites": "{@feat Reanimator Dedication|BotD}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"requirements": "You have cast {@spell animate dead|APG} this turn.",

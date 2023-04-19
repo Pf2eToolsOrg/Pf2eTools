@@ -119,7 +119,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 3
+						"number": 3
 					},
 					"entries": [
 						"You become undetectable to undead creatures for 10 minutes. Undead can't see, hear, or smell you, nor detect you with sensory capabilities such as scent or {@ability tremorsense}. A creature can attempt a single DC 18 Will saving throw to ignore this effect.",
@@ -192,8 +192,13 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "gain scent",
-							"duration": "imprecise"
+							"entry": "gain scent (imprecise) 30 feet, gain a +3 item bonus to {@skill Survival} checks to follow tracks, and become {@condition stupefied 1}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition stupefied 2}",
+							"duration": "6 hours"
 						}
 					]
 				}

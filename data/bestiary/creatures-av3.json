@@ -1,4 +1,9 @@
 {
+	"_meta": {
+		"internalCopies": [
+			"creature"
+		]
+	},
 	"creature": [
 		{
 			"name": "Belcorra Haruvex",
@@ -97,15 +102,9 @@
 				],
 				"resistances": [
 					{
-						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"name": "all damage",
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -127,8 +126,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
-					"tradition": "Occult",
+					"tradition": "occult",
 					"type": "Spontaneous",
 					"DC": 33,
 					"attack": 25,
@@ -294,7 +292,7 @@
 						},
 						{
 							"name": "teleportation circle",
-							"source": "advanced players guide"
+							"source": "APG"
 						}
 					]
 				}
@@ -313,10 +311,12 @@
 					},
 					{
 						"name": "Site Bound",
-						"traits": [
-							"lowest three levels of the Abomination Vaults"
+						"entries": [
+							"(lowest three levels of the Abomination Vaults)"
 						],
-						"entries": []
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -327,8 +327,12 @@
 							"necromancy"
 						],
 						"entries": [
-							"When Belcorra is destroyed, she re-forms in {@dice 2d4} days within the Empty Vault (though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using the Ebon Fulcrum Lens [page 220]). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
-						]
+							"When Belcorra is destroyed, she re-forms in {@dice 2d4} days within the Empty Vault (though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using the {@item Ebon Fulcrum Lens|av3}). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -346,7 +350,10 @@
 						},
 						"entries": [
 							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied||stupefied 1} for 1 minute."
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"name": "Haunted Lighthouse",
@@ -355,7 +362,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"recurs": true,
 							"interval": 10,
 							"unit": "minute"
@@ -371,7 +378,7 @@
 							"unit": "free"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -383,8 +390,19 @@
 			"description": "Female ghost sorcerer (Pathfinder Bestiary 166)"
 		},
 		{
-			"name": "Bhazrade And Klathor",
-			"isNpc": false,
+			"name": "Klathor",
+			"source": "AV3",
+			"page": 33,
+			"_copy": {
+				"name": "Bhazrade",
+				"source": "AV3",
+				"_preserve": {
+					"description": true
+				}
+			}
+		},
+		{
+			"name": "Bhazrade",
 			"source": "AV3",
 			"page": 33,
 			"level": 9,
@@ -396,6 +414,7 @@
 				"elf",
 				"humanoid"
 			],
+			"description": "Male drow cavern seer (Pathfinder Bestiary 136)",
 			"perception": {
 				"std": 18
 			},
@@ -460,7 +479,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 28,
@@ -488,7 +506,6 @@
 					}
 				},
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 28,
@@ -590,9 +607,7 @@
 								},
 								{
 									"name": "ectoplasmic expulsion",
-									"notes": [
-										"page 75"
-									]
+									"source": "AV3"
 								},
 								{
 									"name": "prying eyes"
@@ -605,7 +620,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -638,7 +652,7 @@
 						"requirements": "The cavern seer is underground",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Pebbles and dust rise from the stone to impede vision. The cavern seer and their allies within 60 feet become {@condition concealed} for 1 minute. This concealment can't be used to {@action Hide} or {@action Sneak}."
@@ -670,8 +684,7 @@
 				},
 				"hp": [
 					{
-						"hp": 110,
-						"abilities": null
+						"hp": 110
 					}
 				],
 				"immunities": [
@@ -681,7 +694,6 @@
 		},
 		{
 			"name": "Bright Walker",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 78,
 			"level": 9,
@@ -837,7 +849,6 @@
 							"light"
 						],
 						"requirements": "The bright walker's",
-						"entries": [],
 						"name": "Light Flare"
 					},
 					{
@@ -892,7 +903,6 @@
 		},
 		{
 			"name": "Caligni Defender",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 35,
 			"level": 8,
@@ -942,6 +952,11 @@
 				"wis": 2,
 				"cha": 2
 			},
+			"items": [
+				"black smear poison (2 doses; Pathfinder Bestiary 51)",
+				"chainmail",
+				"shortbow (20 arrows)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -983,7 +998,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 24,
@@ -1014,13 +1028,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+17, {@skill Survival} +16 Str +4, Dex +5, Con +1, Int \u20131, Wis +2, Cha +2 Items black smear poison (2 doses; Pathfinder Bestiary 51), chainmail, shortbow (20 arrows)"
-						],
-						"name": "Stealth"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -1048,7 +1055,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1082,14 +1088,15 @@
 				"hp": [
 					{
 						"hp": 125,
-						"abilities": null
+						"abilities": [
+							"death flame"
+						]
 					}
 				]
 			}
 		},
 		{
 			"name": "Deepwater Dhuthorex",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 80,
 			"level": 9,
@@ -1191,7 +1198,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1204,7 +1210,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
 						"name": "Aquatic Ambush",
 						"generic": {
 							"tag": "ability"
@@ -1252,8 +1257,7 @@
 				},
 				"hp": [
 					{
-						"hp": 155,
-						"abilities": null
+						"hp": 155
 					}
 				],
 				"immunities": [
@@ -1264,7 +1268,6 @@
 		},
 		{
 			"name": "Dragon's Blood Puffball",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 79,
 			"level": 8,
@@ -1362,8 +1365,7 @@
 				},
 				"hp": [
 					{
-						"hp": 170,
-						"abilities": null
+						"hp": 170
 					}
 				],
 				"immunities": [
@@ -1384,7 +1386,6 @@
 		},
 		{
 			"name": "Dread Dhuthorex",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 80,
 			"level": 11,
@@ -1489,7 +1490,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 27,
@@ -1521,7 +1521,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1535,7 +1534,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 27."
+							"60 feet, DC 27"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -1549,7 +1548,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
 						"name": "Aquatic Ambush",
 						"generic": {
 							"tag": "ability"
@@ -1600,8 +1598,7 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				],
 				"immunities": [
@@ -1612,7 +1609,6 @@
 		},
 		{
 			"name": "Dread Wisp",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 81,
 			"level": 9,
@@ -1714,7 +1710,7 @@
 						"requirements": "An enemy within 15 feet of the dread wisp is under a {@trait fear} effect, {@condition drained}, or {@condition dying}",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The dread wisp feeds on the creature's despair. The dread wisp regains {@dice 2d8} Hit Points and deals {@damage 3d8} negative damage to the creature (DC 25 basic Fortitude save), and if the dread wisp has Gone Dark, their Dread Flickering reignites."
@@ -1794,7 +1790,6 @@
 		},
 		{
 			"name": "Drow Hunter",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 82,
 			"level": 7,
@@ -1843,6 +1838,11 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"chain shirt",
+				"+1 composite longbow (20 arrows)",
+				"longsword"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1878,7 +1878,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 23,
@@ -1909,13 +1908,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+16 (+18 to {@action Subsist}) Str +3, Dex +4, Con +2, Int +0, Wis +3, Cha +1 Items chain shirt, +1 composite longbow (20 arrows), longsword."
-						],
-						"name": "Survival"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -1938,11 +1930,11 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"prerequisites": "The hunter is wielding a ranged weapon with a reload of 0",
 						"entries": [
-							"The hunter makes two ranged {@action Strike||Strikes} against their prey. If both hit and deal damage, the target takes an additional {@damage 1d8} {@condition persistent damage ||persistent bleed damage}."
+							"The hunter makes two ranged {@action Strike||Strikes} against their prey. If both hit and deal damage, the target takes an additional {@damage 1d8} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Hunter's Wound"
 					},
@@ -1972,12 +1964,15 @@
 					},
 					"will": {
 						"std": 14
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic",
+						"+2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				],
 				"immunities": [
@@ -1987,7 +1982,6 @@
 		},
 		{
 			"name": "Drow Shootist",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 83,
 			"level": 8,
@@ -2041,6 +2035,13 @@
 				"wis": 4,
 				"cha": 2
 			},
+			"items": [
+				"+1 repeating hand crossbow (4 magazines; page 73)",
+				"rapier",
+				"shootist bandolier (page 73)",
+				"stupor poison (4; page 74)",
+				"studded leather armor"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -2079,7 +2080,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 24,
@@ -2110,13 +2110,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+17 Str +2, Dex +5, Con +1, Int +0, Wis +4, Cha +2 Items +1 repeating hand crossbow (4 magazines; page 73), rapier, shootist bandolier (page 73), stupor poison (4; page 74), studded leather armor."
-						],
-						"name": "Thievery"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -2135,7 +2128,7 @@
 						"trigger": "The shootist fails a save",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The shootist rerolls the save and uses the better result."
@@ -2172,7 +2165,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The shootist Interacts to draw a repeating hand crossbow and {@action Strike||Strikes} with it, or {@action Strike||Strikes} with a loaded repeating hand crossbow they're holding then Interacts to stow it."
@@ -2204,12 +2197,15 @@
 					},
 					"will": {
 						"std": 16
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic",
+						"+2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
-						"hp": 120,
-						"abilities": null
+						"hp": 120
 					}
 				],
 				"immunities": [
@@ -2219,7 +2215,6 @@
 		},
 		{
 			"name": "Drow Warden",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 82,
 			"level": 4,
@@ -2311,7 +2306,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 19,
@@ -2342,7 +2336,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -2355,7 +2348,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -2398,15 +2390,13 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			}
 		},
 		{
 			"name": "Dulac",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 9,
 			"level": 9,
@@ -2417,6 +2407,7 @@
 				"caligni",
 				"humanoid"
 			],
+			"description": "Female caligni cult leader (Pathfinder Bestiary 50)",
 			"perception": {
 				"std": 18
 			},
@@ -2484,7 +2475,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 28,
@@ -2554,13 +2544,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+16, {@skill Religion} +18, {@skill Stealth} +18 Str +4, Dex +3, Con +0, Int +1, Wis +3, Cha +5 Items chain shirt, +1 striking war flail."
-						],
-						"name": "Occultism"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -2594,9 +2577,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "An ally within",
+						"trigger": "An ally within Dulac's reach is targeted with a ranged or melee attack by an attacker she can see",
 						"entries": [
-							"Dulac's reach is targeted with a ranged or melee attack by an attacker she can see; The ally gains a +2 circumstance bonus to AC against the triggering attack, and the ally can {@action Step} after the attack."
+							"The ally gains a +2 circumstance bonus to AC against the triggering attack, and the ally can {@action Step} after the attack."
 						],
 						"name": "Warding Shove"
 					}
@@ -2628,14 +2611,15 @@
 				"hp": [
 					{
 						"hp": 155,
-						"abilities": null
+						"abilities": [
+							"death shadows"
+						]
 					}
 				]
 			}
 		},
 		{
 			"name": "Elder Child Of Belcorra",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 14,
 			"level": 9,
@@ -2707,7 +2691,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 28,
@@ -2775,7 +2758,6 @@
 					}
 				},
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 28,
@@ -2882,7 +2864,6 @@
 		},
 		{
 			"name": "Galudu",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 36,
 			"level": 11,
@@ -2893,6 +2874,7 @@
 				"caligni",
 				"humanoid"
 			],
+			"description": "Female caligni leader (Pathfinder Bestiary 50)",
 			"perception": {
 				"std": 18
 			},
@@ -2972,7 +2954,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 28,
@@ -3008,12 +2989,31 @@
 					}
 				},
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 30,
 					"attack": 22,
 					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -3102,13 +3102,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+20, {@skill Stealth} +20 Str +2, Dex +5, Con +0, Int +1, Wis +3, Cha +5 Items dagger, wand of continuation (stoneskin)"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -3140,34 +3133,19 @@
 				],
 				"bot": [
 					{
-						"traits": [
-							"6th"
-						],
 						"entries": [
-							"acid splash, daze, message, ray of frost, shield."
+							"Galudu deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Cantrips"
-					},
-					{
-						"entries": [
-							"Attack Galudu deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
-						],
-						"name": "Sneak"
+						"name": "Sneak Attack"
 					},
 					{
 						"traits": [
 							"healing"
 						],
 						"entries": [
-							"A creature that eats food conjured by Galudu's {@spell create food} spell regains {@dice 4d4} Hit."
+							"A creature that eats food conjured by Galudu's {@spell create food} spell regains {@dice 4d4} Hit Points. A creature can only benefit from this healing once per week."
 						],
 						"name": "Survivor's Nourishment"
-					},
-					{
-						"entries": [
-							"A creature can only benefit from this healing once per week."
-						],
-						"name": "Points."
 					}
 				]
 			},
@@ -3198,7 +3176,6 @@
 		},
 		{
 			"name": "Khurfel",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 89,
 			"level": 10,
@@ -3289,7 +3266,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 28,
@@ -3360,7 +3336,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -3446,7 +3421,6 @@
 		},
 		{
 			"name": "Lady's Whisper",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 49,
 			"level": 11,
@@ -3538,7 +3512,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 30,
@@ -3570,7 +3543,6 @@
 					}
 				},
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 30,
@@ -3778,7 +3750,6 @@
 		},
 		{
 			"name": "Padli",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 7,
 			"level": 9,
@@ -3789,6 +3760,7 @@
 				"caligni",
 				"humanoid"
 			],
+			"description": "Male caligni subcommander (Pathfinder Bestiary 50)",
 			"perception": {
 				"std": 16
 			},
@@ -3831,6 +3803,12 @@
 				"wis": 1,
 				"cha": 5
 			},
+			"items": [
+				"dagger (3)",
+				"key to area {@b A7}",
+				"leather armor",
+				"wand of magic missile (3rd level)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3852,7 +3830,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 26,
@@ -3922,13 +3899,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+18, {@skill Occultism} +14, {@skill Stealth} +18 Str +2, Dex +5, Con +1, Int \u20131, Wis +1, Cha +5 Items dagger (3), key to area A7, leather armor, wand of magic missile (3rd level)"
-						],
-						"name": "Intimidation"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -3985,14 +3955,15 @@
 				"hp": [
 					{
 						"hp": 160,
-						"abilities": null
+						"abilities": [
+							"death flame"
+						]
 					}
 				]
 			}
 		},
 		{
 			"name": "Quara Orshendiel",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 91,
 			"level": 11,
@@ -4089,7 +4060,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 28,
@@ -4138,7 +4108,6 @@
 						"name": "Cha"
 					},
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -4164,7 +4133,6 @@
 						"name": "Deny Advantage"
 					},
 					{
-						"entries": [],
 						"name": "Attack."
 					},
 					{
@@ -4213,7 +4181,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Quara Interacts to draw a loaded repeating hand crossbow and {@action Strike||Strikes} with it, or {@action Strike||Strikes} with a loaded repeating hand crossbow she's holding and then Interacts to stow it."
@@ -4249,8 +4217,7 @@
 				},
 				"hp": [
 					{
-						"hp": 190,
-						"abilities": null
+						"hp": 190
 					}
 				],
 				"immunities": [
@@ -4260,7 +4227,6 @@
 		},
 		{
 			"name": "Reaper Skull Puffball",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 79,
 			"level": 9,
@@ -4411,8 +4377,7 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				],
 				"immunities": [
@@ -4438,7 +4403,6 @@
 		},
 		{
 			"name": "Salaisa Malthulas",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 30,
 			"level": 11,
@@ -4450,6 +4414,7 @@
 				"elf",
 				"humanoid"
 			],
+			"description": "Female drow head warden (Pathfinder Bestiary 136)",
 			"perception": {
 				"std": 22
 			},
@@ -4489,6 +4454,12 @@
 				"wis": 3,
 				"cha": 1
 			},
+			"items": [
+				"breastplate",
+				"hand crossbow (10 bolts)",
+				"+1 striking corrosive longsword",
+				"stupor poison (3; page 74)"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -4521,7 +4492,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 28,
@@ -4552,13 +4522,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+21, {@skill Survival} +20 Str +5, Dex +4, Con +3, Int +0, Wis +3, Cha +1 Items breastplate, hand crossbow (10 bolts), +1 striking corrosive longsword, stupor poison (3; page 74)"
-						],
-						"name": "Stealth"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -4571,7 +4534,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -4614,12 +4576,15 @@
 					},
 					"will": {
 						"std": 22
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic",
+						"+2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
-						"hp": 200,
-						"abilities": null
+						"hp": 200
 					}
 				],
 				"immunities": [
@@ -4629,7 +4594,6 @@
 		},
 		{
 			"name": "Urdefhan Blood Mage",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 85,
 			"level": 8,
@@ -4714,7 +4678,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 26,
@@ -4751,7 +4714,6 @@
 					}
 				},
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 26,
@@ -4833,9 +4795,7 @@
 							"spells": [
 								{
 									"name": "call the blood",
-									"notes": [
-										"page 75"
-									]
+									"source": "AV3"
 								},
 								{
 									"name": "confusion"
@@ -4878,7 +4838,7 @@
 						],
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The blood mage cuts themself and takes 8 slashing damage. If the blood mage's next action is to {@action Cast a Spell}, the action can't be disrupted, and if the spell has a range, the blood mage can increase that spell's range by 30 feet."
@@ -4930,7 +4890,6 @@
 		},
 		{
 			"name": "Urdefhan Death Scout",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 84,
 			"level": 6,
@@ -4996,7 +4955,7 @@
 					"effects": [
 						"Wicked Bite"
 					],
-					"damage": "{@damage 1d6+4} slashing plus {@damage 1d6} {@condition persistent damage ||persistent bleed} and Wicked Bite",
+					"damage": "{@damage 1d6+4} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed} and Wicked Bite",
 					"types": [
 						"persistent",
 						"slashing"
@@ -5030,7 +4989,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 21,
@@ -5087,7 +5045,7 @@
 				"bot": [
 					{
 						"entries": [
-							"The death scout deals an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} with shauth blades and can use their Wicked Bite through magical shauth weapon {@action Strike||Strikes}."
+							"The death scout deals an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage} with shauth blades and can use their Wicked Bite through magical shauth weapon {@action Strike||Strikes}."
 						],
 						"name": "Shauth Bite"
 					},
@@ -5144,7 +5102,6 @@
 		},
 		{
 			"name": "Urdefhan Lasher",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 84,
 			"level": 7,
@@ -5230,7 +5187,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 22,
@@ -5288,17 +5244,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Melee jaws +17, Damage {@dice 2d6+7} plus Wicked Bite Divine Innate Spells DC 22, attack +14; 3rd paralyze; 2nd death knell; 1st feather fall (at will, self only), ray of enfeeblement."
-						],
-						"name": "and Wicked Bite"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 1d8+7} slashing, DC 25."
+							"{@damage 1d8+7} slashing, DC 25"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -5348,14 +5294,20 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"fear"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "positive"
+					}
 				]
 			},
 			"hasImages": true
 		},
 		{
 			"name": "Voidbracken Chuul",
-			"isNpc": false,
 			"source": "AV3",
 			"page": 57,
 			"level": 9,
@@ -5435,7 +5387,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -5518,8 +5469,7 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
 					}
 				],
 				"immunities": [

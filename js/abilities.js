@@ -39,7 +39,7 @@ class AbilitiesPage extends ListPage {
 		const time = it.activity ? Parser.timeToTableStr(it.activity) : "\u2014";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="col-6 bold pl-0">${it.name}</span>
+			<span class="col-6 bold pl-0">${it.name}${it.add_hash ? `<span class="ve-muted"> (${it.add_hash})</span>` : ""}</span>
 			<span class="col-4">${time}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -53,6 +53,7 @@ class AbilitiesPage extends ListPage {
 				source,
 				time,
 				normalisedTime: Parser.getNormalisedTime(it.activity),
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
@@ -122,12 +123,12 @@ function renderStatblock (ability) {
 	}
 	const statTab = Renderer.utils.tabButton(
 		"Ability",
-		() => {},
+		() => { },
 		buildStatsTab,
 	);
 	const infoTab = Renderer.utils.tabButton(
 		"Quick Rules",
-		() => {},
+		() => { },
 		buildInfoTab,
 	);
 	Renderer.utils.bindTabButtons(statTab, infoTab);

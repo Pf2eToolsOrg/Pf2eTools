@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Agent Of The Gray Queen",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 21,
 			"level": 19,
@@ -126,7 +125,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 41,
@@ -135,8 +133,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; good only"
+										"good only"
 									]
 								}
 							]
@@ -282,8 +281,7 @@
 				},
 				"hp": [
 					{
-						"hp": 290,
-						"abilities": null
+						"hp": 290
 					}
 				],
 				"immunities": [
@@ -300,7 +298,6 @@
 		},
 		{
 			"name": "Agradaemon",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 79,
 			"level": 19,
@@ -386,7 +383,7 @@
 						"range increment <100 feet>",
 						"splash"
 					],
-					"damage": "{@damage 4d8} fire plus {@damage 2d6} {@condition persistent damage ||persistent fire} plus 8 fire splash",
+					"damage": "{@damage 4d8} fire plus {@damage 2d6} {@condition persistent damage||persistent fire} plus 8 fire splash",
 					"types": [
 						"fire",
 						"persistent"
@@ -395,7 +392,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 41,
@@ -404,8 +400,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; good only"
+										"good only"
 									]
 								}
 							]
@@ -478,7 +475,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The agradaemon designates a single willing mortal as a pledged fanatic. That creature gains resistance to fire equal to its level, immunity to the agradaemon's choking smog aura, and smoke vision. The agradaemon can have up to 10 pledged fanatics at one time and can remove the status from any number of pledged fanatics as a free action with the {@trait concentrate} trait. The status can also be removed with an atone ritual."
@@ -508,7 +505,6 @@
 						"traits": [
 							"claw"
 						],
-						"entries": [],
 						"name": "Rend",
 						"generic": {
 							"tag": "ability"
@@ -533,8 +529,7 @@
 				},
 				"hp": [
 					{
-						"hp": 400,
-						"abilities": null
+						"hp": 400
 					}
 				],
 				"immunities": [
@@ -556,7 +551,6 @@
 		},
 		{
 			"name": "Alchemical Horror",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 55,
 			"level": 21,
@@ -695,8 +689,7 @@
 				},
 				"hp": [
 					{
-						"hp": 400,
-						"abilities": null
+						"hp": 400
 					}
 				],
 				"immunities": [
@@ -708,7 +701,6 @@
 		},
 		{
 			"name": "Avsheros The Betrayer",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 42,
 			"level": 23,
@@ -801,7 +793,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 47,
@@ -868,9 +859,7 @@
 								},
 								{
 									"name": "prismatic shield",
-									"notes": [
-										"page 75"
-									]
+									"source": "AoE6"
 								},
 								{
 									"name": "prismatic sphere"
@@ -883,6 +872,21 @@
 									"name": "weapon of judgment"
 								}
 							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "detect alignment"
+									},
+									{
+										"name": "tongues"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
 						}
 					}
 				}
@@ -894,7 +898,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -915,15 +918,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"5th"
-						],
-						"entries": [
-							"detect alignment, tongues, true seeing."
-						],
-						"name": "Constant"
-					},
 					{
 						"traits": [
 							"divine",
@@ -981,7 +975,6 @@
 		},
 		{
 			"name": "Baatamidar",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 76,
 			"level": 21,
@@ -1071,7 +1064,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 44,
@@ -1210,7 +1202,6 @@
 		},
 		{
 			"name": "Blune Bandersworth",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 87,
 			"level": 20,
@@ -1221,6 +1212,7 @@
 				"gnome",
 				"humanoid"
 			],
+			"description": "Male gnome architect, ex-thief, and illusionist",
 			"perception": {
 				"std": 36
 			},
@@ -1234,7 +1226,12 @@
 					"arcadian",
 					"common",
 					"draconic",
-					"elven"
+					"elven",
+					"gnomish",
+					"goblin",
+					"halfling",
+					"protean",
+					"sylvan"
 				]
 			},
 			"skills": {
@@ -1243,6 +1240,9 @@
 				},
 				"arcana": {
 					"std": 37
+				},
+				"architecture lore": {
+					"std": 35
 				},
 				"deception": {
 					"std": 31
@@ -1268,6 +1268,13 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"+3 major striking dancing rapier",
+				"greater ring of maniacal devices (fireball)",
+				"scroll of monstrosity form",
+				"wand of widening (7th-level prismatic spray)",
+				"3,500 gp"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1290,7 +1297,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 42,
@@ -1442,20 +1448,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +36, {@skill Arcana} +37, {@skill Lore||Architecture Lore} +35, {@skill Deception} +31, {@skill Occultism} +33, {@skill Society} +33"
-						],
-						"name": "Gnomish, Goblin, Halfling, Protean, Sylvan"
-					},
-					{
-						"entries": [
-							"+36, {@skill Thievery} +36 Str +1, Dex +6, Con +3, Int +7, Wis +2, Cha +3 Items +3 major striking dancing rapier, greater ring of maniacal devices (fireball), scroll of monstrosity form, wand of widening (7thlevel {@spell prismatic spray}), 3,500 gp."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -1467,17 +1459,15 @@
 							"illusion",
 							"visual"
 						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
 						"entries": [
-							"Frequency once per day; Blune calls into existence {@dice 1d4+2} illusory copies of himself, which dance around him and copy his every movement, making it almost impossible to pinpoint the true Blune. Any attack that would hit Blune has a random chance of hitting an illusory copy instead. This effect lasts for up to 1 minute or until all the copies are destroyed or Blune is incapacitated.",
-							"Once a copy is hit, it's destroyed. If an attack roll fails to hit Blune's AC but doesn't critically fail, it destroys a copy but has no additional effect (even if the attack would normally have an effect on a failure). If an attack roll is a critical success and would hit a copy, the copy is destroyed and the attack roll becomes a success against."
+							"Blune calls into existence {@dice 1d4+2} illusory copies of himself, which dance around him and copy his every movement, making it almost impossible to pinpoint the true Blune. Any attack that would hit Blune has a random chance of hitting an illusory copy instead. This effect lasts for up to 1 minute or until all the copies are destroyed or Blune is incapacitated.",
+							"Once a copy is hit, it's destroyed. If an attack roll fails to hit Blune's AC but doesn't critically fail, it destroys a copy but has no additional effect (even if the attack would normally have an effect on a failure). If an attack roll is a critical success and would hit a copy, the copy is destroyed and the attack roll becomes a success against Blune. Once all the copies are destroyed, this ability ends."
 						],
 						"name": "Illusory Copies"
-					},
-					{
-						"entries": [
-							"Once all the copies are destroyed, this ability ends."
-						],
-						"name": "Blune."
 					},
 					{
 						"entries": [
@@ -1507,15 +1497,13 @@
 				},
 				"hp": [
 					{
-						"hp": 375,
-						"abilities": null
+						"hp": 375
 					}
 				]
 			}
 		},
 		{
 			"name": "Blune's Illusory Toady",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 13,
 			"level": 16,
@@ -1526,6 +1514,7 @@
 				"incorporeal",
 				"protean"
 			],
+			"description": "Illusory minions of chaotic quintessence",
 			"perception": {
 				"std": 27
 			},
@@ -1581,12 +1570,19 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Innate Arcane",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 36,
 					"attack": 28,
 					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "guidance"
+								}
+							]
+						},
 						"5": {
 							"spells": [
 								{
@@ -1618,7 +1614,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1627,30 +1622,19 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "varies",
-							"entry": "[Bestiary 255]"
+							"unit": "varies"
 						},
 						"traits": [
 							"arcane",
 							"conjuration"
 						],
 						"entries": [
-							"When an illusory toady is destroyed, it dissolves into a puddle of cerulean quintessence before reforming to quasi-life once more. One round after it is destroyed, the toady starts re-forming.",
-							"One round after that, the toady is completely healed and begins to fight once more. If damaged while it is re-forming but before the process is complete, the toady is destroyed but splits into two cerulean puddles that begin re-forming into two identical toadies 1 round later, each with half the maximum HP of the original toady (this is similar to an ochre jelly's Split ability ); the toadies begin re-forming 1 round later. The toadies are permanently destroyed only by disjunction or if Blune falls {@condition unconscious}."
+							"When an illusory toady is destroyed, it dissolves into a puddle of cerulean quintessence before reforming to quasi-life once more. One round after it is destroyed, the toady starts re-forming. One round after that, the toady is completely healed and begins to fight once more. If damaged while it is re-forming but before the process is complete, the toady is destroyed but splits into two cerulean puddles that begin re-forming into two identical toadies 1 round later, each with half the maximum HP of the original toady (this is similar to an ochre jelly's Split ability [Bestiary 255]); the toadies begin re-forming 1 round later. The toadies are permanently destroyed only by disjunction or if Blune falls {@condition unconscious}."
 						],
 						"name": "Ferocious Devotion"
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"5th"
-						],
-						"entries": [
-							"guidance."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"activity": {
 							"number": 3,
@@ -1661,16 +1645,9 @@
 							"transmutation"
 						],
 						"entries": [
-							"The toady wills itself to become a conduit for Blune's next spell, empowering the spell. The toady becomes {@condition immobilized} until the beginning of its next turn. If."
+							"The toady wills itself to become a conduit for Blune's next spell, empowering the spell. The toady becomes {@condition immobilized} until the beginning of its next turn. If Blune Bandersworth is within 30 feet and Casts a Spell before the toady's next turn, the spell travels through the toady before redirecting toward its intended target. The spell is heightened by 1 level, to a maximum of 10th level. The toady is then destroyed."
 						],
 						"name": "Amplify Spell"
-					},
-					{
-						"entries": [
-							"Bandersworth is within 30 feet and Casts a Spell before the toady's next turn, the spell travels through the toady before redirecting toward its intended target.",
-							"The spell is heightened by 1 level, to a maximum of 10th level. The toady is then destroyed."
-						],
-						"name": "Blune"
 					}
 				]
 			},
@@ -1691,14 +1668,16 @@
 				},
 				"hp": [
 					{
-						"hp": 150,
-						"abilities": null
+						"hp": 150
 					}
 				],
 				"immunities": [
 					"death effects",
 					"disease",
-					"paralyzed"
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
 				"weaknesses": [
 					{
@@ -1709,20 +1688,14 @@
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "all"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or lawful;"
+						"name": "all",
+						"note": "except force, {@item ghost touch}, or lawful; double resistance against non-magical"
 					}
 				]
 			}
 		},
 		{
 			"name": "Camarach",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 77,
 			"level": 17,
@@ -1809,7 +1782,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 43,
@@ -1834,8 +1806,9 @@
 							"spells": [
 								{
 									"name": "project image",
+									"amount": "at will",
 									"notes": [
-										"at will; see project false image"
+										"see project false image"
 									]
 								}
 							]
@@ -1854,12 +1827,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+31 Str +10, Dex +5, Con +6, Int +6, Wis +6, Cha +9."
-						],
-						"name": "Survival"
-					},
 					{
 						"traits": [
 							"divination",
@@ -1906,7 +1873,7 @@
 									"Critical Success": "The creature is teleported to an open space it chooses within 30 feet of the camarach.",
 									"Success": "The creature isn't teleported.",
 									"Failure": "The creature is teleported to a random open space 1 mile from the camarach.",
-									"Critical Failure": "The creature is teleported to a random other plane, as plane shift."
+									"Critical Failure": "The creature is teleported to a random other plane, as {@spell plane shift}."
 								}
 							}
 						],
@@ -1919,17 +1886,13 @@
 						},
 						"trigger": "The camarach Grabs a creature",
 						"entries": [
-							"The camarach uses Swallow."
+							"The camarach uses Swallow Whole."
 						],
 						"name": "Fast Swallow"
 					},
 					{
-						"entries": [],
-						"name": "Whole."
-					},
-					{
 						"entries": [
-							"When the camarach casts project image, its illusory image can be another creature of its size or a structure of its size that features a large portal (such as a freestanding archway or a large hut with an open doorway)."
+							"When the camarach casts {@spell project image}, its illusory image can be another creature of its size or a structure of its size that features a large portal (such as a freestanding archway or a large hut with an open doorway)."
 						],
 						"name": "Project False Image"
 					},
@@ -1965,8 +1928,7 @@
 				},
 				"hp": [
 					{
-						"hp": 320,
-						"abilities": null
+						"hp": 320
 					}
 				],
 				"weaknesses": [
@@ -1978,7 +1940,8 @@
 				"resistances": [
 					{
 						"amount": 15,
-						"name": "physical"
+						"name": "physical",
+						"note": "except bludgeoning"
 					}
 				]
 			},
@@ -1986,7 +1949,6 @@
 		},
 		{
 			"name": "Chaos Gulgamodh",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 45,
 			"level": 21,
@@ -2120,7 +2082,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, foot, DC 43."
+							"Huge or smaller, foot, DC 43"
 						],
 						"name": "Trample",
 						"generic": {
@@ -2146,8 +2108,7 @@
 				},
 				"hp": [
 					{
-						"hp": 400,
-						"abilities": null
+						"hp": 400
 					}
 				],
 				"immunities": [
@@ -2168,7 +2129,6 @@
 		},
 		{
 			"name": "Daemonic Infector",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 56,
 			"level": 22,
@@ -2180,6 +2140,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Unholy reincarnation of {@creature Jonis Flakfatter|aoe4}",
 			"perception": {
 				"std": 40
 			},
@@ -2195,12 +2156,18 @@
 				"languages": [
 					"common",
 					"daemonic",
-					"infernal"
+					"infernal",
+					"osiriani",
+					"undercommon"
 				]
 			},
 			"skills": {
 				"acrobatics": {
 					"std": 39
+				},
+				"crafting": {
+					"std": 39,
+					"when crafting poison": 41
 				},
 				"deception": {
 					"std": 40
@@ -2259,7 +2226,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 46,
@@ -2407,44 +2373,48 @@
 					}
 				},
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 46,
 					"entry": {
 						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "fly"
+									}
+								]
+							},
 							"6": {
 								"spells": [
 									{
-										"name": "true"
+										"name": "true seeing"
 									}
 								]
 							}
 						}
 					}
+				},
+				{
+					"name": "Cleric Domain",
+					"type": "Focus",
+					"DC": 46,
+					"fp": 3,
+					"entry": {
+						"10": {
+							"spells": [
+								{
+									"name": "death's call"
+								},
+								{
+									"name": "eradicate undeath"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +39, {@skill Crafting} +39 (+41 when crafting poison)"
-						],
-						"name": "Osiriani, Undercommon"
-					},
-					{
-						"entries": [
-							"+40, {@skill Diplomacy} +40, {@skill Intimidation} +40, {@skill Lore||Norgorber Lore} +39, {@skill Religion} +42, {@skill Society} +36"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+37, {@skill Thievery} +35 Str +6, Dex +9, Con +10, Int +7, Wis +10, Cha +8."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -2459,7 +2429,7 @@
 							"poison"
 						],
 						"entries": [
-							"10 feet. A creature that enters or begins its turn within the aura must attempt a DC 44 Fortitude save. On a failed save, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, it's also {@condition clumsy|CRB|clumsy 1} for 1 minute. In addition, creatures within the aura attempting a flat check to remove {@condition persistent damage ||persistent poison damage} must roll twice and take the lower result."
+							"10 feet. A creature that enters or begins its turn within the aura must attempt a DC 44 Fortitude save. On a failed save, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, it's also {@condition clumsy|CRB|clumsy 1} for 1 minute. In addition, creatures within the aura attempting a flat check to remove {@condition persistent damage||persistent poison damage} must roll twice and take the lower result."
 						],
 						"name": "Toxic Fumes"
 					}
@@ -2476,15 +2446,9 @@
 							"poison"
 						],
 						"entries": [
-							"The."
+							"The Daemonic Infector exhales a 30-foot line of concentrated fumes. Each creature in the area takes {@damage 12d10} poison damage (DC 44 basic Fortitude save; on a critical failure the creature is also {@condition drained|CRB|drained 1}). The Infector can't Breathe Death again for {@dice 1d4} rounds."
 						],
 						"name": "Breathe Death"
-					},
-					{
-						"entries": [
-							"Infector exhales a 30-foot line of concentrated fumes. Each creature in the area takes {@damage 12d10} poison damage (DC 44 basic Fortitude save; on a critical failure the creature is also {@condition drained|CRB|drained 1}). The Infector can't Breathe Death again for {@dice 1d4} rounds."
-						],
-						"name": "Daemonic"
 					},
 					{
 						"activity": {
@@ -2497,27 +2461,15 @@
 							"divination"
 						],
 						"entries": [
-							"The."
+							"The Daemonic Infector targets a creature within 30 feet that's currently subject to a poison affliction. The poison affliction progresses to the next stage."
 						],
 						"name": "Infector"
 					},
 					{
 						"entries": [
-							"Infector targets a creature within 30 feet that's currently subject to a poison affliction. The poison affliction progresses to the next stage."
-						],
-						"name": "Daemonic"
-					},
-					{
-						"entries": [
-							"If a reaction would disrupt the."
+							"If a reaction would disrupt the Daemonic Infector's spellcasting action, he attempts a DC {@flatDC 15} flat check. On a success, the action isn't disrupted."
 						],
 						"name": "Steady Spellcasting"
-					},
-					{
-						"entries": [
-							"Infector's spellcasting action, he attempts a DC {@flatDC 15} flat check. On a success, the action isn't disrupted."
-						],
-						"name": "Daemonic"
 					}
 				]
 			},
@@ -2538,8 +2490,7 @@
 				},
 				"hp": [
 					{
-						"hp": 475,
-						"abilities": null
+						"hp": 475
 					}
 				],
 				"immunities": [
@@ -2561,7 +2512,6 @@
 		},
 		{
 			"name": "Daemonic Rumormonger",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 53,
 			"level": 22,
@@ -2574,6 +2524,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Skeletal reincarnation of {@creature Reginald Vancaskerkin|aoe5}",
 			"perception": {
 				"std": 41
 			},
@@ -2609,6 +2560,9 @@
 				},
 				"thievery": {
 					"std": 39
+				},
+				"engineering lore": {
+					"std": 38
 				}
 			},
 			"abilityMods": {
@@ -2667,7 +2621,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 45,
@@ -2716,14 +2669,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+38, {@skill Occultism} +38, {@skill Thievery} +39 Str +6, Dex +9, Con +4, Int +8, Wis +8, Cha +7."
-						],
-						"name": "Engineering Lore"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -2731,31 +2676,34 @@
 							"unit": "reaction"
 						},
 						"trigger": "A creature critically fails a {@action Strike} against the Daemonic Rumormonger",
-						"entries": [],
-						"name": "Opportune Dodge"
-					},
-					{
 						"entries": [
-							"Rumormonger dodges out of the way and uses his momentum to attack and move out of reach. He {@action Stride||Strides} up to 20 feet and can {@action Strike} at any point during this movement; this {@action Strike} counts toward the multiple attack penalty on his next turn."
+							"The Rumormonger dodges out of the way and uses his momentum to attack and move out of reach. He {@action Stride||Strides} up to 20 feet and can {@action Strike} at any point during this movement; this {@action Strike} counts toward the multiple attack penalty on his next turn."
 						],
-						"name": "The"
+						"name": "Opportune Dodge"
 					}
 				],
 				"bot": [
 					{
+						"type": "affliction",
+						"name": "Black Ink Delirium",
 						"traits": [
 							"poison"
 						],
-						"entries": [
-							"Saving Throw DC 38 Fortitude"
-						],
-						"name": "Black Ink Delirium"
-					},
-					{
-						"entries": [
-							"4 rounds; Stage 1 {@damage 3d6} poison and {@condition clumsy|CRB|clumsy 2} (1 round); Stage 2 {@damage 6d6} poison and {@condition confused} (1 round)"
-						],
-						"name": "Maximum Duration"
+						"DC": 38,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 3d6} poison and {@condition clumsy|CRB|clumsy 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 6d6} poison and {@condition confused}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -2769,15 +2717,9 @@
 							"poison"
 						],
 						"entries": [
-							"The."
+							"The Daemonic Rumormonger breathes a torrent of acidic sand and poisoned ink in an 80-foot line, dealing {@damage 6d12} acid damage and {@damage 6d12} poison damage and exposing victims to his black ink delirium. He can't use Breath of Lies again for {@dice 1d4} rounds."
 						],
 						"name": "Breath of Lies"
-					},
-					{
-						"entries": [
-							"Rumormonger breathes a torrent of acidic sand and poisoned ink in an 80-foot line, dealing {@damage 6d12} acid damage and {@damage 6d12} poison damage and exposing victims to his black ink delirium. He can't use Breath of Lies again for {@dice 1d4} rounds."
-						],
-						"name": "Daemonic"
 					},
 					{
 						"activity": {
@@ -2808,19 +2750,23 @@
 				},
 				"hp": [
 					{
-						"hp": 350,
-						"abilities": null
+						"hp": 350
 					}
 				],
 				"immunities": [
 					"poison",
 					"death effects"
+				],
+				"weaknesses": [
+					{
+						"amount": 20,
+						"name": "good"
+					}
 				]
 			}
 		},
 		{
 			"name": "Daemonic Skinner",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 51,
 			"level": 20,
@@ -2833,6 +2779,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Bloody reincarnation of Wrent Dicaspiron",
 			"perception": {
 				"std": 36
 			},
@@ -2878,6 +2825,9 @@
 			"speed": {
 				"walk": 30
 			},
+			"items": [
+				"Large +3 wounding greater striking cleaver (functions as orc neck-splitter without the {@trait orc} trait)"
+			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -2891,7 +2841,7 @@
 						"reach <10 feet>",
 						"sweep"
 					],
-					"damage": "{@damage 4d8+20} slashing plus {@damage 2d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 4d8+20} slashing plus {@damage 2d6} evil and {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"evil",
 						"persistent",
@@ -2922,7 +2872,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 38,
@@ -2965,14 +2914,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+34, {@skill Stealth} +34, {@skill Thievery} +32 Str +10, Dex +6, Con +9, Int +3, Wis +6, Cha +6 Items Large +3 wounding greater striking cleaver (functions as orc neck-splitter without the {@trait orc} trait)"
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -2981,7 +2922,7 @@
 						],
 						"entries": [
 							"20 feet. Chains of blood bind a bleeding creature to the Daemonic Skinner.",
-							"Creatures in range that are taking {@condition persistent damage ||persistent bleed damage} can't move out of the aura."
+							"Creatures in range that are taking {@condition persistent damage||persistent bleed damage} can't move out of the aura."
 						],
 						"name": "Bloody Chain Aura"
 					},
@@ -2992,29 +2933,17 @@
 							"healing"
 						],
 						"entries": [
-							"30 feet. Any time a creature in the aura takes {@condition persistent damage ||persistent bleed damage}"
-						],
-						"name": "Transfusion Aura"
-					},
-					{
-						"entries": [
-							"Skinner regains the same number of Hit Points as the damage dealt."
-						],
-						"name": "the Daemonic"
-					},
-					{
-						"entries": [
-							"Skinner can have only one aura active at a time.",
+							"30 feet. Any time a creature in the aura takes {@condition persistent damage||persistent bleed damage} the Daemonic Skinner regains the same number of Hit Points as the damage dealt.",
+							"The Skinner can have only one aura active at a time.",
 							"She can switch her active aura as an {@action Interact} action."
 						],
-						"name": "The"
+						"name": "Transfusion Aura"
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -3025,7 +2954,7 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature taking {@condition persistent damage ||persistent bleed damage} within 30 feet of the Daemonic Skinner Casts a Spell with a verbal component or speaks",
+						"trigger": "A creature taking {@condition persistent damage||persistent bleed damage} within 30 feet of the Daemonic Skinner {@action Cast a Spell||Casts a Spell} with a verbal component or speaks",
 						"entries": [
 							"The Skinner wills the triggering creature's blood to gush from their mouth and constrict their throat. The target's spell is disrupted. The target must succeed at a DC 47 Fortitude save or become {@condition sickened|CRB|sickened 2}."
 						],
@@ -3035,7 +2964,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Any creature taking {@condition persistent damage ||persistent bleed damage} is {@condition flat-footed} against the Daemonic Skinner's attacks. When attacking a {@condition flat-footed} creature, the Skinner deals an additional {@damage 2d6} precision damage."
+							"Any creature taking {@condition persistent damage||persistent bleed damage} is {@condition flat-footed} against the Daemonic Skinner's attacks. When attacking a {@condition flat-footed} creature, the Skinner deals an additional {@damage 2d6} precision damage."
 						],
 						"name": "Bloody Sneak Attack"
 					},
@@ -3069,14 +2998,13 @@
 				},
 				"hp": [
 					{
-						"hp": 450,
-						"abilities": null
+						"hp": 450
 					}
 				],
 				"immunities": [
-					"negative",
 					"bleeding",
 					"disease",
+					"negative",
 					"poison"
 				],
 				"weaknesses": [
@@ -3095,7 +3023,6 @@
 		},
 		{
 			"name": "Excorion Paragon",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 50,
 			"level": 18,
@@ -3273,7 +3200,6 @@
 		},
 		{
 			"name": "Ghaele Of Kharnas",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 32,
 			"level": 17,
@@ -3284,6 +3210,7 @@
 				"azata",
 				"celestial"
 			],
+			"description": "Magically enslaved {@creature ghaele azata||ghaele azatas}",
 			"perception": {
 				"std": 32
 			},
@@ -3370,7 +3297,7 @@
 						"light",
 						"range <300 feet>"
 					],
-					"damage": "{@damage 2d12} chaotic plus {@damage 1d12} good plus {@dice 2d6+6} other (see Choose",
+					"damage": "{@damage 2d12} chaotic plus {@damage 1d12} good plus {@dice 2d6+6} other (see Choose Weakness)",
 					"types": [
 						"chaotic",
 						"good",
@@ -3380,7 +3307,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 38,
@@ -3406,8 +3332,9 @@
 								},
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; evil only"
+										"evil only"
 									]
 								},
 								{
@@ -3443,8 +3370,9 @@
 								},
 								{
 									"name": "invisibility",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								},
 								{
@@ -3490,10 +3418,17 @@
 							]
 						},
 						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							},
 							"7": {
 								"spells": [
 									{
-										"name": "see"
+										"name": "see invisibility"
 									}
 								]
 							}
@@ -3513,14 +3448,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Religion} +28, {@skill Stealth} +24, {@skill Lore||Warfare Lore} +25 Str +8, Dex +5, Con +6, Int +4, Wis +5, Cha +7 Items +3 greatsword."
-						],
-						"name": "Nature"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -3542,12 +3469,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"Divine Innate Spells DC 38; 8th prismatic wall; 7th chromatic wall, dispel magic, heal, prismatic spray; 6th illusory scene; 5th banishment; 4th heal (×4), invisibility (at will; self only), restoration; 3rd mind reading; 2nd continual flame (at will), dispel magic (at will); 1st charm, detect alignment (at will; evil only), illusory disguise (at will); Cantrips (7th) dancing lights, detect magic, light; Constant (7th) see invisibility; (5th) tongues Divine Rituals DC 38; resurrect."
-						],
-						"name": "Weakness)"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -3577,15 +3498,9 @@
 							"visual"
 						],
 						"entries": [
-							"When a ghaele fixes their gaze upon a non-good creature, the creature is subjected to the effects of divine decree (DC 38 Will save). If it survives, the creature is temporarily immune to."
+							"When a ghaele fixes their gaze upon a non-good creature, the creature is subjected to the effects of {@spell divine decree} (DC 38 Will save). If it survives, the creature is temporarily immune to Ghaele's Gaze for 1 minute."
 						],
 						"name": "Ghaele's Gaze"
-					},
-					{
-						"entries": [
-							"Gaze for 1 minute."
-						],
-						"name": "Ghaele's"
 					},
 					{
 						"traits": [
@@ -3616,8 +3531,7 @@
 				},
 				"hp": [
 					{
-						"hp": 315,
-						"abilities": null
+						"hp": 315
 					}
 				],
 				"weaknesses": [
@@ -3629,12 +3543,18 @@
 						"amount": 15,
 						"name": "evil"
 					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "energy",
+						"note": "see Choose Weakness"
+					}
 				]
 			}
 		},
 		{
 			"name": "Graveknight Of Kharnas",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 36,
 			"level": 17,
@@ -3735,7 +3655,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -3806,8 +3725,7 @@
 				},
 				"hp": [
 					{
-						"hp": 260,
-						"abilities": null
+						"hp": 260
 					}
 				],
 				"resistances": [
@@ -3820,7 +3738,6 @@
 		},
 		{
 			"name": "Hegessik",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 80,
 			"level": 15,
@@ -3848,6 +3765,10 @@
 					"abyssal",
 					"celestial",
 					"protean"
+				],
+				"abilities": [
+					"telepathy 100 feet",
+					"tongues"
 				]
 			},
 			"skills": {
@@ -3945,7 +3866,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 38,
@@ -3954,8 +3874,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; lawful only"
+										"lawful only"
 									]
 								}
 							]
@@ -3986,8 +3907,9 @@
 								},
 								{
 									"name": "teleport",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								}
 							]
@@ -4038,19 +3960,13 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+29, {@skill Stealth} +27, {@skill Survival} +27 Str +8, Dex +6, Con +7, Int +4, Wis +6, Cha +6."
-						],
-						"name": "Religion"
-					},
-					{
 						"traits": [
 							"divination",
 							"divine",
 							"prediction"
 						],
 						"entries": [
-							"A hegessik can anticipate the most likely location of a creature through their supernatural insight into the forces of chaotic probabilities and chance. This grants the hegessik the ability to sense creatures within the listed range. The hegessik's entropy sense doesn't detect creatures under the effects of nondetection or that are otherwise shielded from divinations and predictions."
+							"A hegessik can anticipate the most likely location of a creature through their supernatural insight into the forces of chaotic probabilities and chance. This grants the hegessik the ability to sense creatures within the listed range. The hegessik's entropy sense doesn't detect creatures under the effects of {@spell nondetection} or that are otherwise shielded from divinations and predictions."
 						],
 						"name": "Entropy Sense"
 					}
@@ -4082,6 +3998,7 @@
 				],
 				"bot": [
 					{
+						"name": "Change Shape",
 						"activity": {
 							"number": 1,
 							"unit": "action"
@@ -4093,12 +4010,63 @@
 							"transmutation"
 						],
 						"entries": [
-							"The hegessik takes the appearance of any Large or smaller creature. This doesn't change its."
+							"The hegessik takes the appearance of any Large or smaller creature. This doesn't change its Speed or its attack and damage bonuses with its Strikes, but might change the damage type its Strikes deal."
 						],
-						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
 						}
+					},
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 2d8+14} bludgeoning, DC 36"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Leaching Glare",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"enchantment"
+						],
+						"entries": [
+							"The hegessik briefly opens its third eye. Non-protean creatures in a 30-foot cone must succeed at a DC 38 Will save or become {@condition stupefied||stupefied 2} for 1 round ({@condition stupefied||stupefied 3} on a critical failure)."
+						]
+					},
+					{
+						"name": "Telekinetic Reach",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"force"
+						],
+						"entries": [
+							"The hegessik manifests psychic versions of its natural attacks and makes a {@action Strike} with each of its jaws, claw, and tail, in any order. These Strikes have a reach of 60 feet. These attacks count toward the hegessik's multiple attack penalty, but the penalty doesn't increase until after it makes all the attacks."
+						]
+					},
+					{
+						"name": "Warpwave Strike",
+						"traits": [
+							"divine",
+							"transmutation"
+						],
+						"entries": [
+							"Any creature struck and damaged by a hegessik's jaws {@action Strike} must succeed at a DC 36 Fortitude save or be subject to a warpwave (see sidebar)."
+						]
 					}
 				]
 			},
@@ -4115,7 +4083,10 @@
 					},
 					"will": {
 						"std": 29
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. divine magic"
+					]
 				},
 				"hp": [
 					{
@@ -4130,13 +4101,22 @@
 						"amount": 15,
 						"name": "lawful"
 					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "precision"
+					},
+					{
+						"amount": 20,
+						"name": "protean anatomy"
+					}
 				]
 			},
 			"hasImages": true
 		},
 		{
 			"name": "Hestriviniaas",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 15,
 			"level": 22,
@@ -4147,17 +4127,18 @@
 				"monitor",
 				"protean"
 			],
+			"description": "Agender {@creature keketar} protean high priest",
 			"perception": {
 				"std": 40
 			},
 			"senses": [
 				{
-					"name": "darkvision"
-				},
-				{
 					"type": "imprecise",
 					"name": "entropy sense",
 					"range": 60
+				},
+				{
+					"name": "darkvision"
 				}
 			],
 			"languages": {
@@ -4167,7 +4148,8 @@
 					"protean"
 				],
 				"abilities": [
-					"telepathy 100 feet"
+					"telepathy 100 feet",
+					"tongues"
 				]
 			},
 			"skills": {
@@ -4265,7 +4247,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 45,
@@ -4275,8 +4256,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; lawful only"
+										"lawful only"
 									]
 								}
 							]
@@ -4304,7 +4286,10 @@
 								},
 								{
 									"name": "hallucinatory terrain",
-									"amount": 2
+									"amount": 2,
+									"notes": [
+										"see reshape reality"
+									]
 								}
 							]
 						},
@@ -4312,8 +4297,9 @@
 							"spells": [
 								{
 									"name": "teleport",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								}
 							]
@@ -4357,9 +4343,7 @@
 								},
 								{
 									"name": "prismatic shield",
-									"notes": [
-										"page 75"
-									]
+									"source": "AoE4"
 								},
 								{
 									"name": "prismatic sphere"
@@ -4387,18 +4371,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+42, {@skill Intimidation} +42, {@skill Religion} +42"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+38 Str +11, Dex +8, Con +8, Int +7, Wis +9, Cha +9."
-						],
-						"name": "Stealth"
-					},
 					{
 						"traits": [
 							"divination",
@@ -4440,7 +4412,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -4474,7 +4445,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d12+21} bludgeoning, DC 44."
+							"{@damage 2d12+21} bludgeoning, DC 44"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -4519,7 +4490,10 @@
 					},
 					"will": {
 						"std": 41
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -4549,7 +4523,6 @@
 		},
 		{
 			"name": "Hundun Chaos Mage",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 17,
 			"level": 18,
@@ -4559,6 +4532,7 @@
 				"large",
 				"aberration"
 			],
+			"description": "Mysterious alien agents of chaos",
 			"perception": {
 				"std": 30
 			},
@@ -4575,7 +4549,10 @@
 				"languages": [
 					"abyssal",
 					"aklo",
-					"protean (can't speak any"
+					"protean (can't speak any language)"
+				],
+				"abilities": [
+					"telepathy 100 feet"
 				]
 			},
 			"skills": {
@@ -4626,7 +4603,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 40,
@@ -4636,8 +4612,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; lawful only"
+										"lawful only"
 									]
 								}
 							]
@@ -4698,14 +4675,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+34 Str +9, Dex +6, Con +7, Int +4, Wis +6, Cha +8."
-						],
-						"name": "Occultism"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -4714,10 +4683,18 @@
 						},
 						"trigger": "A creature attempts to target the hundun with a {@trait mental} effect",
 						"entries": [
-							"The triggering creature is subject to the utter chaos of the hundun's mind and must attempt a Will save. Critical Success The creature is unaffected. Success The creature takes {@damage 10d6} mental damage. Failure The creature takes {@damage 10d6} mental damage, is {@condition drained|CRB|drained 1}, and is {@condition stupefied|CRB|stupefied 1} for 1 minute. Critical Failure As failure, but the creature is {@condition drained|CRB|drained 2} and {@condition stupefied|CRB|stupefied 2}."
+							"The triggering creature is subject to the utter chaos of the hundun's mind and must attempt a Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 10d6} mental damage.",
+									"Failure": "The creature takes {@damage 10d6} mental damage, is {@condition drained|CRB|drained 1}, and is {@condition stupefied|CRB|stupefied 1} for 1 minute.",
+									"Critical Failure": "As failure, but the creature is {@condition drained|CRB|drained 2} and {@condition stupefied|CRB|stupefied 2}."
+								}
+							}
 						],
-						"name": "Entropic Feedback",
-						"entries_as_xyz": "Ability not found: 'Entropic Feedback As failure, but the creature is {@condition drained|CRB|drained 2} and {@condition stupefied|CRB|stupefied 2}.' in Hundun Chaos Mage, p.17"
+						"name": "Entropic Feedback"
 					}
 				],
 				"bot": [
@@ -4780,15 +4757,14 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				],
 				"immunities": [
+					"auditory",
 					"cold",
 					"mental",
 					"poison",
-					"auditory",
 					"visual"
 				],
 				"weaknesses": [
@@ -4811,7 +4787,6 @@
 		},
 		{
 			"name": "Il'setsya Wyrmtouched",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 89,
 			"level": 18,
@@ -4822,6 +4797,7 @@
 				"ganzi",
 				"humanoid"
 			],
+			"description": "Female ganzi arcanist",
 			"perception": {
 				"std": 25
 			},
@@ -4841,7 +4817,9 @@
 					"aklo",
 					"celestial",
 					"common",
-					"daemonic"
+					"daemonic",
+					"draconic",
+					"protean"
 				]
 			},
 			"skills": {
@@ -4878,6 +4856,15 @@
 				"wis": 1,
 				"cha": 7
 			},
+			"items": [
+				"lavender and green ellipsoid aeon stone",
+				"brooch of shielding",
+				"+2 anarchic greater striking warpglass dagger (page 74)",
+				"dragon-shaped hookah",
+				"ring of spell turning",
+				"rod of wonder",
+				"spellbook"
+			],
 			"speed": {
 				"abilities": [
 					"freedom of movement"
@@ -4906,7 +4893,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "arcane",
 					"DC": 39,
@@ -5082,7 +5068,6 @@
 					}
 				},
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 39,
@@ -5091,7 +5076,7 @@
 							"4": {
 								"spells": [
 									{
-										"name": "freedom"
+										"name": "freedom of movement"
 									}
 								]
 							}
@@ -5102,32 +5087,13 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"Skills {@skill Acrobatics} +28, {@skill Arcana} +34, {@skill Deception} +35"
-						],
-						"name": "Draconic, Protean"
-					},
-					{
-						"entries": [
-							"+33, {@skill Lore||Maelstrom Lore} +34, {@skill Occultism} +32"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+32, {@skill Stealth} +30 Str +0, Dex +4, Con +2, Int +6, Wis +1, Cha +7."
-						],
-						"name": "Society"
-					},
-					{
 						"traits": [
 							"divination",
 							"divine",
 							"prediction"
 						],
 						"entries": [
-							"As hegessik (page 80)",
-							"Items lavender and green ellipsoid aeon stone, brooch of shielding, +2 anarchic greater striking warpglass dagger (page 74), dragon-shaped hookah, ring of spell turning, rod of wonder, spellbook."
+							"As hegessik (page 80)."
 						],
 						"name": "Entropy Sense"
 					}
@@ -5155,8 +5121,12 @@
 							"move",
 							"teleport"
 						],
+						"frequency": {
+							"unit": "day",
+							"number": 2
+						},
 						"entries": [
-							"Frequency twice per day; Il'setsya steps through a transient hole in space, instantly teleporting to a space within 60 feet that she can see."
+							"Il'setsya steps through a transient hole in space, instantly teleporting to a space within 60 feet that she can see."
 						],
 						"name": "Dimensional Slide"
 					},
@@ -5226,7 +5196,6 @@
 		},
 		{
 			"name": "Izfiitar",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 81,
 			"level": 20,
@@ -5288,6 +5257,9 @@
 				},
 				"stealth": {
 					"std": 38
+				},
+				"maelstrom lore": {
+					"std": 37
 				}
 			},
 			"abilityMods": {
@@ -5365,7 +5337,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 47,
@@ -5374,8 +5345,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; lawful only"
+										"lawful only"
 									]
 								}
 							]
@@ -5399,8 +5371,9 @@
 								},
 								{
 									"name": "hallucinatory terrain",
+									"amount": "at will",
 									"notes": [
-										"at will; see Reshape Reality"
+										"see Reshape Reality"
 									]
 								}
 							]
@@ -5409,8 +5382,9 @@
 							"spells": [
 								{
 									"name": "teleport",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								}
 							]
@@ -5471,6 +5445,13 @@
 							]
 						},
 						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									}
+								]
+							},
 							"5": {
 								"spells": [
 									{
@@ -5484,12 +5465,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+37, {@skill Occultism} +36, {@skill Religion} +38, {@skill Society} +35, {@skill Stealth} +38 Str +9, Dex +10, Con +9, Int +7, Wis +8, Cha +9."
-						],
-						"name": "Maelstrom Lore"
-					},
 					{
 						"traits": [
 							"divination",
@@ -5509,13 +5484,9 @@
 							"transmutation"
 						],
 						"entries": [
-							"The izfiitar continuously tinkers with the myriad possibilities in which it can move or manipulate magic. The izfiitar is always {@condition quickened} and can use the extra action only to {@action Cast a Spell}"
+							"The izfiitar continuously tinkers with the myriad possibilities in which it can move or manipulate magic. The izfiitar is always {@condition quickened} and can use the extra action only to {@action Cast a Spell}, {@action Step}, or {@action Stride}."
 						],
 						"name": "Kiss of the Speakers"
-					},
-					{
-						"entries": [],
-						"name": "Step, or Stride."
 					},
 					{
 						"activity": {
@@ -5571,7 +5542,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d8+17} bludgeoning, DC 44."
+							"{@damage 2d8+17} bludgeoning, DC 44"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -5625,7 +5596,10 @@
 					},
 					"will": {
 						"std": 38
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -5647,7 +5621,12 @@
 						"name": "acid"
 					},
 					{
+						"amount": 20,
 						"name": "precision"
+					},
+					{
+						"amount": 25,
+						"name": "protean anatomy"
 					}
 				]
 			},
@@ -5655,7 +5634,6 @@
 		},
 		{
 			"name": "Living Mural",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 31,
 			"level": 19,
@@ -5665,6 +5643,7 @@
 				"huge",
 				"construct"
 			],
+			"description": "Art come to monstrous life",
 			"perception": {
 				"std": 32
 			},
@@ -5737,14 +5716,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+38 Str +6, Dex +10, Con +5, Int \u20132, Wis +2, Cha +1."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -5805,21 +5776,28 @@
 				},
 				"hp": [
 					{
-						"hp": 100,
-						"abilities": null
+						"hp": 100
 					}
 				],
 				"immunities": [
 					"bleed",
 					"death effects",
 					"disease",
-					"doomed"
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"necromancy",
+					"nonlethal",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
 				]
 			}
 		},
 		{
 			"name": "Nenchuuj",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 85,
 			"level": 19,
@@ -5924,7 +5902,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 41,
@@ -5962,19 +5939,28 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "air walk"
+									},
+									{
+										"name": "detect magic"
+									},
+									{
+										"name": "mask of terror",
+										"notes": [
+											"see tainted backlash"
+										]
+									}
+								]
+							}
+						}
 					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+37, {@skill Occultism} +37, {@skill Stealth} +33 Str +5, Dex +8, Con +6, Int +10, Wis +6, Cha +8."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -5993,7 +5979,7 @@
 						],
 						"trigger": "A creature targets the nenchuuj with a spell",
 						"entries": [
-							"The nenchuuj warps the creature's magic, attempting an {@skill Arcana} check to counteract the spell. If successful, the nenchuuj can instead redirect the spell, as spell turning, onto the caster or onto a different target within range from the caster."
+							"The nenchuuj warps the creature's magic, attempting an {@skill Arcana} check to counteract the spell. If successful, the nenchuuj can instead redirect the spell, as {@spell spell turning}, onto the caster or onto a different target within range from the caster."
 						],
 						"name": "Distort Magic"
 					}
@@ -6035,12 +6021,14 @@
 					},
 					"will": {
 						"std": 37
-					}
+					},
+					"abilities": [
+						"+2 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
-						"hp": 355,
-						"abilities": null
+						"hp": 355
 					}
 				],
 				"immunities": [
@@ -6058,7 +6046,6 @@
 		},
 		{
 			"name": "Olansa Terimor",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 91,
 			"level": 23,
@@ -6083,7 +6070,9 @@
 					"abyssal",
 					"common",
 					"daemonic",
-					"gnomish"
+					"gnomish",
+					"infernal",
+					"osirian"
 				]
 			},
 			"skills": {
@@ -6101,6 +6090,9 @@
 				},
 				"intimidation": {
 					"std": 40
+				},
+				"religion": {
+					"std": 39
 				},
 				"society": {
 					"std": 41
@@ -6120,6 +6112,14 @@
 				"wis": 8,
 				"cha": 9
 			},
+			"items": [
+				"Cane of the Maelstrom",
+				"+3 glamered major resilient chain shirt",
+				"+3 speed wounding major striking dagger",
+				"elixir of rejuvenation",
+				"tears of death",
+				"whisper of the first lie"
+			],
 			"speed": {
 				"abilities": [
 					"freedom of movement",
@@ -6142,7 +6142,7 @@
 					"effects": [
 						"tears of death"
 					],
-					"damage": "{@damage 4d4+22} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and tears of death",
+					"damage": "{@damage 4d4+22} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed damage} and tears of death",
 					"types": [
 						"persistent",
 						"piercing"
@@ -6167,7 +6167,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 47,
@@ -6239,10 +6238,24 @@
 							]
 						},
 						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									}
+								]
+							},
+							"5": {
+								"spells": [
+									{
+										"name": "spider climb"
+									}
+								]
+							},
 							"6": {
 								"spells": [
 									{
-										"name": "true"
+										"name": "true seeing"
 									}
 								]
 							}
@@ -6251,27 +6264,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +45, {@skill Athletics} +38, {@skill Deception} +46"
-						],
-						"name": "Infernal, Osirian"
-					},
-					{
-						"entries": [
-							"+42, {@skill Intimidation} +40, {@skill Religion} +39, {@skill Society} +41, {@skill Stealth} +45, {@skill Thievery} +45 Str +7, Dex +10, Con +8, Int +8, Wis +8, Cha +9 Items Cane of the Maelstrom, +3 glamered major resilient chain shirt, +3 speed wounding major striking dagger, elixir of rejuvenation, tears of death, whisper of the first lie."
-						],
-						"name": "Diplomacy"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -6284,7 +6282,7 @@
 						},
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"trigger": "Olansa successfully uses {@skill Stealth} to {@action Hide} and become {@condition hidden} from all of her current foes, or she uses {@skill Stealth} to {@action Sneak} and become {@condition undetected} to all her current foes",
 						"entries": [
@@ -6297,9 +6295,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature within",
+						"trigger": "A creature within Olansa's melee reach is hit by a melee attack from one of her allies",
 						"entries": [
-							"Olansa's melee reach is hit by a melee attack from one of her allies; Olansa {@action Strike||Strikes} the triggering creature."
+							"Olansa {@action Strike||Strikes} the triggering creature."
 						],
 						"name": "Opportune Backstab"
 					}
@@ -6352,8 +6350,7 @@
 				},
 				"hp": [
 					{
-						"hp": 500,
-						"abilities": null
+						"hp": 500
 					}
 				],
 				"immunities": [
@@ -6369,7 +6366,6 @@
 		},
 		{
 			"name": "Overdrive Imentesh",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 9,
 			"level": 17,
@@ -6380,6 +6376,7 @@
 				"monitor",
 				"protean"
 			],
+			"description": "Super-enhanced {@creature imentesh|b2}",
 			"perception": {
 				"std": 29
 			},
@@ -6498,7 +6495,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 38,
@@ -6507,8 +6503,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; lawful only"
+										"lawful only"
 									]
 								}
 							]
@@ -6575,6 +6572,13 @@
 							]
 						},
 						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									}
+								]
+							},
 							"5": {
 								"spells": [
 									{
@@ -6588,18 +6592,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+30, {@skill Performance} +32, {@skill Stealth} +32"
-						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"+28 Str +9, Dex +6, Con +6, Int +9, Wis +5, Cha +6."
-						],
-						"name": "Thievery"
-					},
 					{
 						"traits": [
 							"divination",
@@ -6650,7 +6642,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d10+16} bludgeoning, DC 38."
+							"{@damage 2d10+16} bludgeoning, DC 38"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -6705,7 +6697,10 @@
 					},
 					"will": {
 						"std": 27
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -6720,12 +6715,21 @@
 						"amount": 14,
 						"name": "lawful"
 					}
+				],
+				"resistances": [
+					{
+						"amount": 14,
+						"name": "precision"
+					},
+					{
+						"amount": 19,
+						"name": "protean anatomy"
+					}
 				]
 			}
 		},
 		{
 			"name": "Penqual",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 84,
 			"level": 15,
@@ -6751,6 +6755,9 @@
 					"celestial",
 					"infernal",
 					"requian"
+				],
+				"abilities": [
+					"telepathy 100 feet"
 				]
 			},
 			"skills": {
@@ -6784,10 +6791,8 @@
 			"speed": {
 				"walk": 40
 			},
-			"attacks": [],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 36,
@@ -6808,7 +6813,10 @@
 							"8": {
 								"spells": [
 									{
-										"name": "mask of terror"
+										"name": "mask of terror",
+										"notes": [
+											"see Crush of Hundreds"
+										]
 									}
 								]
 							}
@@ -6820,19 +6828,7 @@
 				"top": [
 					{
 						"entries": [
-							"+27, {@skill Intimidation} +31, {@skill Performance} +27"
-						],
-						"name": "Dream Lore"
-					},
-					{
-						"entries": [
-							"+27 Str +5, Dex +5, Con +8, Int +6, Wis +6, Cha +8."
-						],
-						"name": "Society"
-					},
-					{
-						"entries": [
-							"The sahkil is considered 2 levels lower for the purposes of being summoned by rituals (such as planar binding), but is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+							"The sahkil is considered 2 levels lower for the purposes of being summoned by rituals (such as {@ritual planar binding}), but is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
 						],
 						"name": "Easy to Call"
 					}
@@ -6847,12 +6843,8 @@
 				],
 				"bot": [
 					{
-						"entries": [],
-						"name": "Crush of Hundreds)"
-					},
-					{
 						"entries": [
-							"A creature {@condition frightened} by the sahkil's mask of terror feels the press of a suffocating crowd. The creature is {@condition slowed|CRB|slowed 1} and takes a \u201310-foot penalty to all Speeds for as long as it is {@condition frightened}."
+							"A creature {@condition frightened} by the sahkil's {@spell mask of terror} feels the press of a suffocating crowd. The creature is {@condition slowed|CRB|slowed 1} and takes a \u201310-foot penalty to all Speeds for as long as it is {@condition frightened}."
 						],
 						"name": "Crush of Hundreds"
 					},
@@ -6876,15 +6868,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The penqual {@action Stride||Strides} twice, ignoring {@quickref difficult terrain||3|terrain}, and then uses Frantic Grasp. If it moves at least 20 feet away from its starting position"
+							"The penqual {@action Stride||Strides} twice, ignoring {@quickref difficult terrain||3|terrain}, and then uses Frantic Grasp. If it moves at least 20 feet away from its starting position the DC of Frantic Grasp increases by 2."
 						],
 						"name": "Mob Rush"
-					},
-					{
-						"entries": [
-							"Grasp increases by 2."
-						],
-						"name": "the DC of Frantic"
 					},
 					{
 						"activity": {
@@ -6897,7 +6883,7 @@
 							"teleportation"
 						],
 						"entries": [
-							"The sahkil can move itself between the Ethereal Plane and the Material Plane, as ethereal jaunt, except that this ability has an unlimited duration and can be Dismissed."
+							"The sahkil can move itself between the {@place Ethereal Plane} and the {@place Material Plane}, as {@spell ethereal jaunt}, except that this ability has an unlimited duration and can be {@action Dismiss||Dismissed}."
 						],
 						"name": "Skip Between"
 					}
@@ -6916,12 +6902,14 @@
 					},
 					"will": {
 						"std": 27
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
-						"hp": 205,
-						"abilities": null
+						"hp": 205
 					}
 				],
 				"immunities": [
@@ -6950,7 +6938,6 @@
 		},
 		{
 			"name": "Rhevanna",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 83,
 			"level": 22,
@@ -7014,6 +7001,10 @@
 				"wis": 8,
 				"cha": 11
 			},
+			"items": [
+				"black sapphires (4, worth 2,000 gp each)",
+				"+3 greater striking spiked chain."
+			],
 			"speed": {
 				"walk": 40,
 				"fly": 80
@@ -7053,7 +7044,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 45,
@@ -7133,21 +7123,23 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 45,
+					"rituals": [
+						{
+							"name": "call spirit"
+						},
+						{
+							"name": "imprisonment"
+						},
+						{
+							"name": "planar binding"
+						}
+					]
+				}
+			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+43, Intimidate +37, {@skill Religion} +38"
-						],
-						"name": "Deception"
-					},
-					{
-						"entries": [
-							"+36, {@skill Survival} +40 Str +10, Dex +8, Con +6, Int +6, Wis +8, Cha +11 Items black sapphires (4, worth 2,000 gp each), +3 greater striking spiked chain."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -7166,7 +7158,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -7182,7 +7173,7 @@
 						"trigger": "The rhevanna hits a creature with a weapon {@action Strike}",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The rhevanna casts an innate {@spell dimensional anchor} spell on the creature."
@@ -7226,12 +7217,12 @@
 					},
 					"will": {
 						"std": 36
-					}
+					},
+					"abilities": "+1 status to saves vs. magic"
 				},
 				"hp": [
 					{
-						"hp": 400,
-						"abilities": null
+						"hp": 400
 					}
 				],
 				"immunities": [
@@ -7248,7 +7239,6 @@
 		},
 		{
 			"name": "Slithering Rift",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 27,
 			"level": 18,
@@ -7382,8 +7372,7 @@
 				},
 				"hp": [
 					{
-						"hp": 535,
-						"abilities": null
+						"hp": 535
 					}
 				],
 				"immunities": [
@@ -7405,7 +7394,6 @@
 		},
 		{
 			"name": "Sordesdaemon",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 78,
 			"level": 15,
@@ -7490,7 +7478,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 38,
@@ -7499,8 +7486,9 @@
 							"spells": [
 								{
 									"name": "detect alignment",
+									"amount": "at will",
 									"notes": [
-										"at will; good only"
+										"good only"
 									]
 								}
 							]
@@ -7538,14 +7526,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Survival} +28 Str +8, Dex +3, Con +9, Int +6, Wis +5, Cha +5."
-						],
-						"name": "Stealth"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -7592,8 +7572,7 @@
 							},
 							{
 								"stage": 5,
-								"entry": "dead.",
-								"duration": null
+								"entry": "dead."
 							}
 						]
 					},
@@ -7608,7 +7587,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The sordesdaemon exhales a spray of sewage that deals {@damage 8d6} acid damage and {@damage 8d6} poison damage in a 30-foot cone (DC 40 basic Fortitude save)",
+							"The sordesdaemon exhales a spray of sewage that deals {@damage 8d6} acid damage and {@damage 8d6} poison damage in a 30-foot cone (DC 40 basic Fortitude save).",
 							"It can't use Retch of Foulness again for {@dice 1d4} rounds."
 						],
 						"name": "Retch of Foulness"
@@ -7628,12 +7607,14 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				],
 				"immunities": [
@@ -7651,7 +7632,6 @@
 		},
 		{
 			"name": "Ulressia The Blessed",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 39,
 			"level": 19,
@@ -7662,6 +7642,7 @@
 				"angel",
 				"celestial"
 			],
+			"description": "Cursed astral deva bound to Kharnas's service",
 			"perception": {
 				"std": 35
 			},
@@ -7749,12 +7730,19 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 39,
 					"attack": 33,
 					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "light"
+								}
+							]
+						},
 						"2": {
 							"spells": [
 								{
@@ -7814,23 +7802,24 @@
 								},
 								{
 									"name": "shattering gem",
-									"notes": [
-										"Pathfinder Lost Omens Gods & Magic 109"
-									]
+									"source": "LOGM"
 								}
 							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+33 Str +10, Dex +6, Con +7, Int +6, Wis +6, Cha +8 Items +3 greater striking warhammer, +1 vorpal dagger."
-						],
-						"name": "Religion"
-					},
 					{
 						"entries": [
 							"Ulressia automatically detects crystals or crystalline items within 30 feet."
@@ -7865,7 +7854,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -7873,15 +7861,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"7th"
-						],
-						"entries": [
-							"light; Constant (5th) tongues."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -7931,12 +7910,12 @@
 					},
 					"will": {
 						"std": 31
-					}
+					},
+					"abilities": "+1 status to all saves vs. magic"
 				},
 				"hp": [
 					{
-						"hp": 355,
-						"abilities": null
+						"hp": 355
 					}
 				],
 				"weaknesses": [
@@ -7955,7 +7934,6 @@
 		},
 		{
 			"name": "Veksciralenix",
-			"isNpc": false,
 			"source": "AoE6",
 			"page": 7,
 			"level": 20,
@@ -7966,6 +7944,7 @@
 				"dragon",
 				"time"
 			],
+			"description": "Ancient female time dragon",
 			"perception": {
 				"std": 36
 			},
@@ -7985,7 +7964,9 @@
 					"common",
 					"draconic",
 					"dwarven",
-					"elven"
+					"elven",
+					"infernal",
+					"sylvan"
 				]
 			},
 			"skills": {
@@ -7997,6 +7978,9 @@
 				},
 				"athletics": {
 					"std": 38
+				},
+				"deception": {
+					"std": 34
 				},
 				"diplomacy": {
 					"std": 36
@@ -8079,7 +8063,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 42,
@@ -8124,15 +8107,17 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 42,
+					"rituals": [
+						{
+							"name": "legend lore"
+						}
+					]
+				}
+			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +33, {@skill Arcana} +35, {@skill Athletics} +38, {@skill Deception} +34, {@skill Diplomacy} +36, {@skill Occultism} +38, {@skill Society} +34 Str +10, Dex +5, Con +7, Int +6, Wis +8, Cha +6."
-						],
-						"name": "Infernal, Sylvan"
-					}
-				],
 				"mid": [
 					{
 						"traits": [
@@ -8174,7 +8159,7 @@
 						},
 						"frequency": {
 							"unit": "day",
-							"freq": 3
+							"number": 3
 						},
 						"trigger": "Veksciralenix or a creature that Veksciralenix can see attempts a check and learns the results",
 						"entries": [
@@ -8194,18 +8179,39 @@
 							{
 								"type": "list",
 								"items": [
-									"{@bold Storm} (arcane, electricity, evocation) The dragon breathes a burst of lightning in a 50-foot cone that deals {@damage 20d6} electricity damage (DC 42 basic Reflex save).",
-									"{@bold Time Displacement} (arcane, transmutation) The dragon breathes a time storm. Each creature within a 50-foot cone must attempt a DC 42 Fortitude save."
+									{
+										"type": "ability",
+										"traits": [
+											"arcane",
+											"electricity",
+											"evocation"
+										],
+										"entries": [
+											"The dragon breathes a burst of lightning in a 50-foot cone that deals {@damage 20d6} electricity damage (DC 42 basic Reflex save)."
+										],
+										"name": "Storm"
+									},
+									{
+										"type": "ability",
+										"traits": [
+											"arcane",
+											"transmutation"
+										],
+										"entries": [
+											"The dragon breathes a time storm. Each creature within a 50-foot cone must attempt a DC 42 Fortitude save.",
+											{
+												"type": "successDegree",
+												"entries": {
+													"Critical Success": "The creature is unaffected.",
+													"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
+													"Failure": "The creature is {@condition stunned|CRB|stunned 4}.",
+													"Critical Failure": "The creature is {@condition stunned|CRB|stunned 6}."
+												}
+											}
+										],
+										"name": "Time Displacement"
+									}
 								]
-							},
-							{
-								"type": "successDegree",
-								"entries": {
-									"Critical Success": "The creature is unaffected.",
-									"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
-									"Failure": "The creature is {@condition stunned|CRB|stunned 4}.",
-									"Critical Failure": "The creature is {@condition stunned|CRB|stunned 6}."
-								}
 							}
 						],
 						"name": "Breath Weapon"
@@ -8241,12 +8247,14 @@
 					},
 					"will": {
 						"std": 35
-					}
+					},
+					"abilities": [
+						"1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
-						"hp": 375,
-						"abilities": null
+						"hp": 375
 					}
 				],
 				"immunities": [

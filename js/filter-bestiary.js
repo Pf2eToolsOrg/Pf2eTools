@@ -178,7 +178,7 @@ class PageFilterBestiary extends PageFilter {
 		if (cr.skills) {
 			Object.keys(cr.skills).forEach((k) => {
 				if (k.match(/lore/i)) cr._fskills.add("Lore");
-				else cr._fskills.add(k);
+				else if (k !== "notes") cr._fskills.add(k.toTitleCase());
 			})
 		}
 		cr._fskills = Array.from(cr._fskills);
@@ -205,7 +205,9 @@ class PageFilterBestiary extends PageFilter {
 		if (cr.spellcasting) {
 			cr.spellcasting.forEach((f) => {
 				if (f.type !== "Focus") {
-					cr._fSpellTypes.push(`${f.type} ${f.tradition}`)
+					if (f.type && f.tradition) cr._fSpellTypes.push(`${f.type} ${f.tradition}`.toTitleCase())
+					else if (f.type) cr._fSpellTypes.push(`${f.type}`.toTitleCase())
+					else cr._fSpellTypes.push(`${f.tradition}`.toTitleCase())
 				} else cr._fSpellTypes.push(f.type)
 				Object.keys(f.entry).forEach((k) => {
 					if (k.isNumeric() && Number(k) > cr._fHighestSpell) cr._fHighestSpell = Number(k)
@@ -216,7 +218,7 @@ class PageFilterBestiary extends PageFilter {
 		cr._fRitualTraditions = []
 		if (cr.rituals != null) {
 			cr.rituals.forEach((r) => {
-				cr._fRitualTraditions.push(r.tradition)
+				if (r.tradition) cr._fRitualTraditions.push(r.tradition.toTitleCase())
 			});
 		}
 		cr._fCreatureType = []

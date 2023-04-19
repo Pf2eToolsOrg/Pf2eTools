@@ -1,8 +1,12 @@
 {
+	"_meta": {
+		"internalCopies": [
+			"creature"
+		]
+	},
 	"creature": [
 		{
 			"name": "Abberton Ruffians",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 9,
 			"level": -1,
@@ -12,6 +16,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Human ruffians (3)",
 			"perception": {
 				"std": 4
 			},
@@ -94,14 +99,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+3, {@skill Thievery} +3 Str +3, Dex +1, Con +2, Int \u20131, Wis +2, Cha +1 Items bottles (2), dagger."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -133,15 +130,13 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				]
 			}
 		},
 		{
 			"name": "Abrikandilu",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 81,
 			"level": 4,
@@ -228,7 +223,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 20,
@@ -296,8 +290,7 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				],
 				"weaknesses": [
@@ -315,7 +308,6 @@
 		},
 		{
 			"name": "Blood Wolf",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 43,
 			"level": 3,
@@ -385,7 +377,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -431,8 +422,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				],
 				"weaknesses": [
@@ -451,7 +441,6 @@
 		},
 		{
 			"name": "Bone Croupier",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 80,
 			"level": 5,
@@ -488,6 +477,9 @@
 				},
 				"thievery": {
 					"std": 14
+				},
+				"gambling lore": {
+					"std": 12
 				}
 			},
 			"abilityMods": {
@@ -518,7 +510,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 22,
@@ -556,14 +547,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+12, {@skill Stealth} +14, {@skill Thievery} +14 Str +2, Dex +5, Con +2, Int +1, Wis +2, Cha +5."
-						],
-						"name": "Lore"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -578,7 +561,7 @@
 						"trigger": "A creature within 30 feet of the bone croupier attempts a check that uses a d20, but hasn't rolled yet",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The bone croupier pulls on the threads of luck that bind all things. Instead of rolling its check, the target automatically gets a failure."
@@ -626,7 +609,10 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				],
 				"resistances": [
 					{
@@ -634,7 +620,12 @@
 						"name": "cold"
 					},
 					{
+						"amount": 5,
 						"name": "piercing"
+					},
+					{
+						"amount": 5,
+						"name": "slashing"
 					}
 				]
 			},
@@ -642,7 +633,6 @@
 		},
 		{
 			"name": "Cavnakash",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 89,
 			"level": 5,
@@ -740,7 +730,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 24,
@@ -882,15 +871,13 @@
 				},
 				"hp": [
 					{
-						"hp": 83,
-						"abilities": null
+						"hp": 83
 					}
 				]
 			}
 		},
 		{
 			"name": "Corrosive Lizard",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 45,
 			"level": 2,
@@ -945,7 +932,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid damage} and {@ability Grab}",
+					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage||persistent acid damage} and {@ability Grab}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -1010,8 +997,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				],
 				"immunities": [
@@ -1027,7 +1013,6 @@
 		},
 		{
 			"name": "Corrupted Priest",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 39,
 			"level": 3,
@@ -1094,7 +1079,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 20,
@@ -1197,15 +1181,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Corrupted Retainer",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 35,
 			"level": 2,
@@ -1287,7 +1269,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -1336,15 +1317,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Daring Danika",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 28,
 			"level": 2,
@@ -1355,6 +1334,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female human lion-tamer",
 			"perception": {
 				"std": 7
 			},
@@ -1423,14 +1403,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+7, {@skill Nature} +6, {@skill Performance} +7 Str +0, Dex +3, Con +1, Int +1, Wis +1, Cha +3 Items lion tamer's outfit, short stool, whip."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -1458,19 +1430,20 @@
 					},
 					"will": {
 						"std": 7
-					}
+					},
+					"abilities": [
+						"+2 circumstance vs. Disarm"
+					]
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Flea Swarm",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 83,
 			"level": 5,
@@ -1513,7 +1486,6 @@
 			"speed": {
 				"walk": 30
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -1531,7 +1503,6 @@
 							"unit": "action"
 						},
 						"requirements": "The flea swarm's last action was",
-						"entries": [],
 						"name": "Suck Blood"
 					},
 					{
@@ -1569,8 +1540,7 @@
 				},
 				"hp": [
 					{
-						"hp": 55,
-						"abilities": null
+						"hp": 55
 					}
 				],
 				"immunities": [
@@ -1587,7 +1557,6 @@
 		},
 		{
 			"name": "Giant Flea",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 83,
 			"level": 3,
@@ -1685,16 +1654,24 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				]
 			},
 			"hasImages": true
 		},
 		{
-			"name": "Jaleen And Rhovo",
-			"isNpc": false,
+			"name": "Rhovo",
+			"source": "EC1",
+			"page": 9,
+			"description": "Male human drunken brawler",
+			"_copy": {
+				"name": "Jaleen",
+				"source": "EC1"
+			}
+		},
+		{
+			"name": "Jaleen",
 			"source": "EC1",
 			"page": 9,
 			"level": 1,
@@ -1705,6 +1682,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female human drunken brawler",
 			"perception": {
 				"std": 4
 			},
@@ -1813,15 +1791,13 @@
 				},
 				"hp": [
 					{
-						"hp": 27,
-						"abilities": null
+						"hp": 27
 					}
 				]
 			}
 		},
 		{
 			"name": "Jellico Bounce-bounce",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 28,
 			"level": 2,
@@ -1978,15 +1954,13 @@
 				},
 				"hp": [
 					{
-						"hp": 32,
-						"abilities": null
+						"hp": 32
 					}
 				]
 			}
 		},
 		{
 			"name": "Juvenile Boar",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 20,
 			"level": 0,
@@ -2048,7 +2022,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Ferocity",
 						"generic": {
 							"tag": "ability"
@@ -2085,15 +2058,13 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				]
 			}
 		},
 		{
 			"name": "Luminous Ooze",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 85,
 			"level": 4,
@@ -2213,8 +2184,7 @@
 				},
 				"hp": [
 					{
-						"hp": 80,
-						"abilities": null
+						"hp": 80
 					}
 				],
 				"immunities": [
@@ -2228,7 +2198,6 @@
 		},
 		{
 			"name": "Mechanical Carny",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 86,
 			"level": 2,
@@ -2324,8 +2293,7 @@
 				},
 				"hp": [
 					{
-						"hp": 33,
-						"abilities": null
+						"hp": 33
 					}
 				],
 				"immunities": [
@@ -2343,7 +2311,7 @@
 					{
 						"amount": 3,
 						"name": "physical",
-						"note": "(except adamantine)"
+						"note": "except adamantine"
 					}
 				]
 			},
@@ -2351,7 +2319,6 @@
 		},
 		{
 			"name": "Nemmia Bramblecloak",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 91,
 			"level": 3,
@@ -2436,7 +2403,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 19,
@@ -2445,8 +2411,8 @@
 							"spells": [
 								{
 									"name": "charm",
+									"amount": 3,
 									"notes": [
-										"3",
 										"targets animals only"
 									]
 								}
@@ -2466,10 +2432,9 @@
 							"spells": [
 								{
 									"name": "animal vision",
+									"amount": "at will",
 									"notes": [
-										"at will; target must be a rodent",
-										"serpent",
-										"or similar animal considered troublesome by humans"
+										"target must be a rodent, serpent or similar animal considered troublesome by humans"
 									]
 								}
 							]
@@ -2478,7 +2443,6 @@
 					}
 				},
 				{
-					"name": "Primal Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "primal",
 					"DC": 21,
@@ -2584,15 +2548,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Oil Living Graffiti",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 84,
 			"level": 3,
@@ -2704,8 +2666,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				],
 				"immunities": [
@@ -2721,7 +2682,6 @@
 		},
 		{
 			"name": "Pinacosaurus",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 50,
 			"level": 4,
@@ -2796,7 +2756,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Small or smaller, foot, DC 21."
+							"Small or smaller, foot, DC 21"
 						],
 						"name": "Trample",
 						"generic": {
@@ -2822,15 +2782,13 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				]
 			}
 		},
 		{
 			"name": "Pruana Two-punch",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 22,
 			"level": 3,
@@ -2841,6 +2799,7 @@
 				"dwarf",
 				"humanoid"
 			],
+			"description": "Female dwarf brawler",
 			"perception": {
 				"std": 7
 			},
@@ -2902,14 +2861,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Thievery} +7 Str +4, Dex +0, Con +2, Int +0, Wis +2, Cha +1 Items chain mail."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2948,19 +2899,20 @@
 					},
 					"will": {
 						"std": 7
-					}
+					},
+					"abilities": [
+						"+2 circumstance to Fortitude and Reflex vs. Shove or Trip"
+					]
 				},
 				"hp": [
 					{
-						"hp": 46,
-						"abilities": null
+						"hp": 46
 					}
 				]
 			}
 		},
 		{
 			"name": "Smiler",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 38,
 			"level": 3,
@@ -3186,7 +3138,6 @@
 		},
 		{
 			"name": "Smoldering Leopard",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 44,
 			"level": 3,
@@ -3292,7 +3243,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The smoldering leopard makes two claw {@action Strike||Strikes} against a creature it has {@condition grabbed}. A creature hit by both claw {@action Strike||Strikes} also takes {@damage 1d4} {@condition persistent damage ||persistent fire damage}. Both attacks count toward its multiple attack penalty, but the penalty increases only after both attacks are made."
+							"The smoldering leopard makes two claw {@action Strike||Strikes} against a creature it has {@condition grabbed}. A creature hit by both claw {@action Strike||Strikes} also takes {@damage 1d4} {@condition persistent damage||persistent fire damage}. Both attacks count toward its multiple attack penalty, but the penalty increases only after both attacks are made."
 						],
 						"name": "Scorching Maul"
 					},
@@ -3327,8 +3278,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				],
 				"weaknesses": [
@@ -3351,7 +3301,6 @@
 		},
 		{
 			"name": "Vermlek",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 82,
 			"level": 3,
@@ -3442,7 +3391,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 19,
@@ -3531,8 +3479,7 @@
 				},
 				"hp": [
 					{
-						"hp": 55,
-						"abilities": null
+						"hp": 55
 					}
 				],
 				"weaknesses": [
@@ -3554,7 +3501,6 @@
 		},
 		{
 			"name": "Viktor Volkano",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 29,
 			"level": 2,
@@ -3649,7 +3595,7 @@
 					},
 					{
 						"entries": [
-							"Viktor critically hits a target with an attack that deals fire damage, or if a target of one of his effects that deals fire damage critically fails its saving throw, the target takes {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
+							"Viktor critically hits a target with an attack that deals fire damage, or if a target of one of his effects that deals fire damage critically fails its saving throw, the target takes {@damage 1d4} {@condition persistent damage||persistent fire damage}."
 						],
 						"name": "Set on Fire If"
 					}
@@ -3672,15 +3618,13 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				]
 			}
 		},
 		{
 			"name": "Violet",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 22,
 			"level": 1,
@@ -3753,7 +3697,6 @@
 							"unit": "reaction"
 						},
 						"trigger": "A creature adjacent to both Violet and",
-						"entries": [],
 						"name": "Protect"
 					},
 					{
@@ -3799,15 +3742,13 @@
 				},
 				"hp": [
 					{
-						"hp": 24,
-						"abilities": null
+						"hp": 24
 					}
 				]
 			}
 		},
 		{
 			"name": "Xulgath Bilebearer",
-			"isNpc": false,
 			"source": "EC1",
 			"page": 87,
 			"level": 2,
@@ -3951,7 +3892,7 @@
 						],
 						"frequency": {
 							"unit": "minute",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"All adjacent creatures must attempt a DC 18 Fortitude save. On a failure, the creature is {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) until the end of its next turn and takes a \u20132 circumstance penalty to Fortitude saves against xulgath bile for 1 minute."
@@ -3999,8 +3940,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			},

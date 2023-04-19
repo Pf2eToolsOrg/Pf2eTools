@@ -12,7 +12,6 @@
 	"creature": [
 		{
 			"name": "Ahvothian",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 62,
 			"level": 7,
@@ -65,6 +64,11 @@
 				"wis": 4,
 				"cha": 2
 			},
+			"items": [
+				"javelins (3)",
+				"longspear",
+				"trophies (animal, beast, and humanoid)"
+			],
 			"speed": {
 				"abilities": [
 					"freedom of movement"
@@ -114,7 +118,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 23,
@@ -154,7 +157,18 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									},
+									{
+										"name": "speak with animals"
+									}
+								]
+							}
+						}
 					}
 				}
 			],
@@ -165,7 +179,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -173,12 +186,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"Divine Innate Spells DC 23; 4th creation; 3rd earthbind (at will), fear (at will); 2nd death knell (at will); 1st charm (at will); Constant (4th) freedom of movement, speak with animals."
-						],
-						"name": "Trophies"
-					},
 					{
 						"entries": [
 							"When an ahvothian uses an innate spell against a reptile, the DC is 27 rather than 23."
@@ -235,7 +242,6 @@
 		},
 		{
 			"name": "Angazhani Cultist",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 30,
 			"level": 4,
@@ -332,7 +338,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -428,7 +433,6 @@
 		},
 		{
 			"name": "Aspis Guard",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 44,
 			"level": 5,
@@ -613,7 +617,6 @@
 		},
 		{
 			"name": "Aspis Technician",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 45,
 			"level": 7,
@@ -702,7 +705,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "5 acid damage plus {@damage 2d6+2} {@condition persistent damage ||persistent acid} and 4 acid splash",
+					"damage": "5 acid damage plus {@damage 2d6+2} {@condition persistent damage||persistent acid} and 4 acid splash",
 					"types": [
 						"acid",
 						"persistent"
@@ -716,7 +719,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage ||persistent fire} and 4 fire splash",
+					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage||persistent fire} and 4 fire splash",
 					"types": [
 						"fire",
 						"persistent"
@@ -819,7 +822,6 @@
 		},
 		{
 			"name": "Croakchief Globblit Skink-eater",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 22,
 			"level": 5,
@@ -851,6 +853,9 @@
 				},
 				"survival": {
 					"std": 11
+				},
+				"swamp lore": {
+					"std": "8"
 				}
 			},
 			"abilityMods": {
@@ -897,9 +902,7 @@
 					],
 					"effects": [
 						"tongue grab"
-					],
-					"damage": "tongue grab",
-					"types": []
+					]
 				},
 				{
 					"range": "Ranged",
@@ -915,14 +918,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8 Str +5, Dex +2, Con +3, Int \u20131, Wis +2, Cha +2 Items breastplate, +1 striking greatclub, javelins (3)"
-						],
-						"name": "Lore"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -954,7 +949,7 @@
 						},
 						"frequency": {
 							"unit": "turn",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Globblit makes a greatclub {@action Strike} and a tongue {@action Strike} against the same target. If the greatclub {@action Strike} hits, the target is {@condition flat-footed} against his tongue {@action Strike}. This counts as two attacks for Globblit's multiple attack penalty, but the penalty doesn't increase until after his Smash and Slurp."
@@ -969,9 +964,9 @@
 					},
 					{
 						"entries": [
-							"Globblit hits a creature with his tongue, that creature becomes {@condition grabbed} by him. Unlike a normal grab, the creature isn't {@condition immobilized}, but it can't move beyond the reach of Globblit's tongue. A creature can sever the tongue by succeeding at an AC 18 {@action Strike} and dealing at least 6 slashing damage. Though this doesn't deal any damage to Globblit, it prevents him from using his tongue {@action Strike} until it regrows, which takes a week."
+							"If Globblit hits a creature with his tongue, that creature becomes {@condition grabbed} by him. Unlike a normal grab, the creature isn't {@condition immobilized}, but it can't move beyond the reach of Globblit's tongue. A creature can sever the tongue by succeeding at an AC 18 {@action Strike} and dealing at least 6 slashing damage. Though this doesn't deal any damage to Globblit, it prevents him from using his tongue {@action Strike} until it regrows, which takes a week."
 						],
-						"name": "Tongue Grab If"
+						"name": "Tongue Grab"
 					}
 				]
 			},
@@ -999,7 +994,6 @@
 		},
 		{
 			"name": "Cursebreaker",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 38,
 			"level": 9,
@@ -1162,14 +1156,13 @@
 					{
 						"amount": 10,
 						"name": "physical",
-						"note": "(except {@item adamantine (generic)||adamantine})"
+						"note": "except {@item adamantine (generic)||adamantine}"
 					}
 				]
 			}
 		},
 		{
 			"name": "Fuming Sludge",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 63,
 			"level": 7,
@@ -1217,7 +1210,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 2d10+6} bludgeoning plus {@damage 1d8} {@condition persistent damage ||persistent fire} and Grab",
+					"damage": "{@damage 2d10+6} bludgeoning plus {@damage 1d8} {@condition persistent damage||persistent fire} and Grab",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -1234,7 +1227,7 @@
 					"effects": [
 						"cooling glob"
 					],
-					"damage": "{@damage 3d6+6} bludgeoning plus {@damage 1d8} {@condition persistent damage ||persistent fire} and cooling glob",
+					"damage": "{@damage 3d6+6} bludgeoning plus {@damage 1d8} {@condition persistent damage||persistent fire} and cooling glob",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -1255,7 +1248,7 @@
 							"fire"
 						],
 						"entries": [
-							"15 feet. The fuming sludge constantly emits incendiary smoke that creates concealment around it. The smoke doesn't impair the fuming sludge's chemical sense. A creature that enters the aura or begins its turn in the aura becomes {@condition sickened|CRB|sickened 1} (DC 25 Fortitude negates) and cannot recover from {@condition persistent damage ||persistent fire damage} for 1 round. It is then temporarily immune to the sickening effect of the smoldering haze for 1 minute. A creature that is currently holding its breath, that doesn't need to breathe, or that's immune to poison is immune to the aura's {@condition sickened} effect but not the concealment or inability to recover from {@condition persistent damage ||persistent fire damage}."
+							"15 feet. The fuming sludge constantly emits incendiary smoke that creates concealment around it. The smoke doesn't impair the fuming sludge's chemical sense. A creature that enters the aura or begins its turn in the aura becomes {@condition sickened|CRB|sickened 1} (DC 25 Fortitude negates) and cannot recover from {@condition persistent damage||persistent fire damage} for 1 round. It is then temporarily immune to the sickening effect of the smoldering haze for 1 minute. A creature that is currently holding its breath, that doesn't need to breathe, or that's immune to poison is immune to the aura's {@condition sickened} effect but not the concealment or inability to recover from {@condition persistent damage||persistent fire damage}."
 						],
 						"name": "Smoldering Haze"
 					}
@@ -1266,7 +1259,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1280,7 +1272,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d8+6} bludgeoning plus {@damage 1d8} {@condition persistent damage ||persistent fire}, DC 24."
+							"{@damage 1d8+6} bludgeoning plus {@damage 1d8} {@condition persistent damage||persistent fire}, DC 24"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -1333,7 +1325,6 @@
 		},
 		{
 			"name": "Nyamat Mshwe",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 33,
 			"level": 6,
@@ -1504,7 +1495,6 @@
 					}
 				},
 				{
-					"name": "Cleric Domain Spells",
 					"tradition": "divine",
 					"DC": 24,
 					"fp": 2,
@@ -1514,7 +1504,9 @@
 							"spells": [
 								{
 									"name": "touch of obedience",
-									"note": "with a range of 30 feet"
+									"notes": [
+										"with a range of 30 feet"
+									]
 								}
 							]
 						}
@@ -1580,7 +1572,6 @@
 		},
 		{
 			"name": "Paga Nikohian",
-			"isNpc": false,
 			"source": "Sli",
 			"page": 51,
 			"level": 9,
@@ -1702,7 +1693,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 28,
@@ -1842,7 +1832,7 @@
 						"trigger": "Paga fails or critically fails a skill check or a saving throw",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Paga rerolls the saving throw and must take the new result."

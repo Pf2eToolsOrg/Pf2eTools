@@ -62,7 +62,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"trigger": "You are the target of a physical ranged attack",
@@ -81,7 +81,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You knock away a physical ranged attack by using the deflecting branch's other activation",
@@ -114,7 +114,7 @@
 			"entries": [
 				"Each of these golden spears was forged in the days of old Mzali, when the sun kings ruled the city. The majority of these weapons are lost, most likely buried with warriors in tombs and temples sealed by {@deity Walkena|LOGM}'s decrees.",
 				"{@deity Walkena|LOGM} retains a single golden blade, which he grants to his Master of Spears.",
-				"This +2 greater striking returning spear is coated in brilliant gold, and beautiful engravings run along the shaft, depicting the rising and setting of the sun against Mzali's skyline. The spear glows with the effects of 4th-level {@spell light}. You can suppress or resume this light by using an action, which has the {@trait concentrate} trait. When you hit a creature with the spear, it takes {@dice 1d6} additional fire damage. When you critically hit a creature with the spear, the creature takes {@damage 1d8} {@condition persistent damage ||persistent fire damage} and {@damage 1d8} {@condition persistent damage ||persistent bleed damage} as its blood boils away. Unlike normal when taking two types of {@condition persistent damage}, a creature needs only a single successful flat check to remove both the fire and bleed damage.",
+				"This +2 greater striking returning spear is coated in brilliant gold, and beautiful engravings run along the shaft, depicting the rising and setting of the sun against Mzali's skyline. The spear glows with the effects of 4th-level {@spell light}. You can suppress or resume this light by using an action, which has the {@trait concentrate} trait. When you hit a creature with the spear, it takes {@dice 1d6} additional fire damage. When you critically hit a creature with the spear, the creature takes {@damage 1d8} {@condition persistent damage||persistent fire damage} and {@damage 1d8} {@condition persistent damage||persistent bleed damage} as its blood boils away. Unlike normal when taking two types of {@condition persistent damage}, a creature needs only a single successful flat check to remove both the fire and bleed damage.",
 				{
 					"type": "ability",
 					"activity": {
@@ -125,7 +125,7 @@
 						"envision"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You critically hit a creature with the weapon",
@@ -151,7 +151,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -188,7 +188,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -337,58 +337,59 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "lesser",
-							"level": 6,
-							"price": {
-								"amount": 235,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "moderate",
-							"level": 10,
-							"price": {
-								"amount": 850,
-								"coin": "gp"
-							},
-							"entries": [
-								"The counteract modifier is +17, and the maximum radius is equal to triple the light's standard radius."
-							]
-						},
-						{
-							"name": "greater",
-							"level": 14,
-							"price": {
-								"amount": 3700,
-								"coin": "gp"
-							},
-							"entries": [
-								"As moderate twilight lantern, but the counteract modifier is +21."
-							]
-						},
-						{
-							"name": "major",
-							"level": 18,
-							"price": {
-								"amount": 18750,
-								"coin": "gp"
-							},
-							"entries": [
-								"The counteract modifier is +28, and the maximum radius is equal to quadruple the light's standard radius."
-							]
-						}
-					],
 					"entries": [
 						"You raise the lantern and unleash a beam of powerful moonlight, targeting a {@trait darkness} effect within 60 feet. The lantern attempts to counteract the effect with a counteract modifier of +10."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 6,
+					"price": {
+						"amount": 235,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "lesser"
+				},
+				{
+					"level": 10,
+					"price": {
+						"amount": 850,
+						"coin": "gp"
+					},
+					"entries": [
+						"The counteract modifier is +17, and the maximum radius is equal to triple the light's standard radius."
+					],
+					"variantType": "moderate"
+				},
+				{
+					"level": 14,
+					"price": {
+						"amount": 3700,
+						"coin": "gp"
+					},
+					"entries": [
+						"As moderate twilight lantern, but the counteract modifier is +21."
+					],
+					"variantType": "greater"
+				},
+				{
+					"level": 18,
+					"price": {
+						"amount": 18750,
+						"coin": "gp"
+					},
+					"entries": [
+						"The counteract modifier is +28, and the maximum radius is equal to quadruple the light's standard radius."
+					],
+					"variantType": "major"
+				}
+			],
+			"generic": "G"
 		}
 	]
 }

@@ -57,6 +57,7 @@ class BestiaryPage extends ListPage {
 				source,
 				level: cr.level,
 				type: cr._fCreatureType,
+				aliases: cr.alias ? cr.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: cr.uniqueId ? cr.uniqueId : mI,
@@ -487,7 +488,8 @@ class BestiaryPage extends ListPage {
 			() => {},
 			buildImageTab,
 		);
-		const tabs = [statTab, fluffTab];
+		// Kill Fluff for Paizo
+		const tabs = [statTab /* , fluffTab */];
 		if (cr.hasImages) tabs.push(imageTab);
 		Renderer.utils.bindTabButtons(...tabs);
 	}

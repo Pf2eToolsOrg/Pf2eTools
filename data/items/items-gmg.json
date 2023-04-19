@@ -387,8 +387,8 @@
 			"bulk": "L",
 			"category": "Worn",
 			"entries": [
-				"Appearing as a magic cloak such as a cloak of elvenkind, this garment is made of highly volatile fabric. While wearing it, if you take fire damage, you also take {@damage 1d10} {@condition persistent damage ||persistent fire damage}. Taking fire damage while the {@condition persistent damage ||persistent fire damage} is in effect has no additional effect. You can extinguish the {@condition persistent damage ||persistent fire damage} as normal.",
-				"Any creature that hits you with a melee unarmed attack while you are taking this {@condition persistent damage ||persistent fire damage} takes fire damage equal to the {@condition persistent damage ||persistent fire damage} you took on your previous turn. Once the curse has activated for the first time, the boots fuse to you."
+				"Appearing as a magic cloak such as a cloak of elvenkind, this garment is made of highly volatile fabric. While wearing it, if you take fire damage, you also take {@damage 1d10} {@condition persistent damage||persistent fire damage}. Taking fire damage while the {@condition persistent damage||persistent fire damage} is in effect has no additional effect. You can extinguish the {@condition persistent damage||persistent fire damage} as normal.",
+				"Any creature that hits you with a melee unarmed attack while you are taking this {@condition persistent damage||persistent fire damage} takes fire damage equal to the {@condition persistent damage||persistent fire damage} you took on your previous turn. Once the curse has activated for the first time, the boots fuse to you."
 			]
 		},
 		{
@@ -650,7 +650,7 @@
 					"components": [
 						"command",
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The elder sign casts a 10th-level {@spell banishment} spell on an eldritch creature. Even if the creature isn't extraplanar, the elder sign can still banish it, sending it back to the part of the Material Plane from which it originated. If the creature is a Great Old One, the elder sign banishes it automatically (as if it critically failed its save) but is then forever destroyed."
@@ -666,7 +666,7 @@
 					"components": [
 						"command",
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The elder sign casts {@spell dispel magic} on an effect from an eldritch creature, using a counteract level of 10 and +30 modifier for the roll."
@@ -682,7 +682,7 @@
 					"components": [
 						"command",
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The elder sign casts {@spell dimensional lock}, though it wards against travel by only eldritch creatures. Each time the elder sign casts {@spell dimensional lock} in this way, the previous {@spell dimensional lock} spell ends."
@@ -821,8 +821,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "minute",
-						"entry": "1 minute"
+						"unit": "minute"
 					},
 					"components": [
 						"{@action Interact}"
@@ -936,7 +935,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You are hit by an attack",
 					"entries": [
@@ -955,7 +954,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You call upon on the restorative powers of the seal to repair an item within reach. The rune instantly restores the item to full Hit Points, even if the item was destroyed, using the effects of the {@spell remake} spell, so long as the majority of the item is available for the repair. The seal can restore even magic items and artifacts of its level or lower. Once you have used this ability, the seal's ability to automatically repair shields becomes inactive until the next time you make your daily preparations."
@@ -1055,7 +1054,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The genius diadem casts 7th-level {@spell feeblemind}."
@@ -1151,7 +1150,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The Horns of Naraga transform into Naraga, an ancient black dragon (Bestiary 106). Naraga appears in an adjacent appropriate space, and if no such space is available, she does not appear. Naraga follows your commands without question. She remains for up to 1 hour or until you use an {@action Interact} action to dismiss her, after which she reverts back to the helm. If Naraga is slain, she immediately reverts back to the helm and can't be summoned for 1 week. You don't receive any of the helm's other benefits while it is transformed."
@@ -1383,7 +1382,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 3
+						"number": 3
 					},
 					"entries": [
 						"You breathe an elemental blast that deals {@dice 25d6} damage (DC 40 basic Reflex save) in either a 60-foot cone or a 100-foot line (your choice). The breath's damage type matches the Breath Weapon of the dragon type associated with the orb of dragonkind (acid for the black orb, electricity for the blue orb, and so on)"
@@ -1445,7 +1444,7 @@
 					],
 					"frequency": {
 						"unit": "minute",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You use the extractor to produce an alchemical item of your level or lower whose formula you know. The extractor can create 56 levels' worth of items per day in this way.",
@@ -1737,7 +1736,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)."
@@ -1824,7 +1823,7 @@
 			"entries": [
 				"Legends claim that some long-forgotten god stole the original bundle of shots of the First Vault from Abadar's repository.",
 				"Since then, individual pieces have turned up throughout the multiverse. When you pick up a shot of the First Vault, it immediately reshapes itself to function with any ranged weapon and establishes you as its owner until another creature picks it up. As its owner, you can use the shot's single-action activation after shooting it.",
-				"Instead of rolling weapon damage dice, a shot of the First Vault deals 25 damage plus any bonuses or additional damage as if 25 were the result of the weapon's damage dice; the damage type matches that normally dealt by the weapon. Upon damaging a creature, the shot of the First Vault shatters, and the fragments ricochet to hit any other enemies within 30 feet, making attack rolls with the same attack bonus. The shattered fragments remain lodged in the creatures they damage; the creatures are {@condition clumsy 2} while the fragments remain in place. A total of 3 actions, which have the {@trait manipulate} trait, are required to remove the fragments from yourself or an adjacent creature; alternatively, a single action and a successful DC 30 {@skill Medicine} check can be used. A critical failure on this {@skill Medicine} check deals 10 {@condition persistent damage ||persistent bleed damage} to the creature with the embedded fragment.",
+				"Instead of rolling weapon damage dice, a shot of the First Vault deals 25 damage plus any bonuses or additional damage as if 25 were the result of the weapon's damage dice; the damage type matches that normally dealt by the weapon. Upon damaging a creature, the shot of the First Vault shatters, and the fragments ricochet to hit any other enemies within 30 feet, making attack rolls with the same attack bonus. The shattered fragments remain lodged in the creatures they damage; the creatures are {@condition clumsy 2} while the fragments remain in place. A total of 3 actions, which have the {@trait manipulate} trait, are required to remove the fragments from yourself or an adjacent creature; alternatively, a single action and a successful DC 30 {@skill Medicine} check can be used. A critical failure on this {@skill Medicine} check deals 10 {@condition persistent damage||persistent bleed damage} to the creature with the embedded fragment.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -1836,7 +1835,7 @@
 						"command"
 					],
 					"entries": [
-						"You recall the shot of the First Vault, which automatically reloads itself into your weapon. If the shot had fragmented, the fragments violently dislodge themselves, dealing 15 {@condition persistent damage ||persistent bleed damage} to each creature in which they were embedded.",
+						"You recall the shot of the First Vault, which automatically reloads itself into your weapon. If the shot had fragmented, the fragments violently dislodge themselves, dealing 15 {@condition persistent damage||persistent bleed damage} to each creature in which they were embedded.",
 						"The fragments then unite to re-form the shot of the First Vault, which automatically reloads itself into your weapon."
 					]
 				},
@@ -1930,7 +1929,7 @@
 					],
 					"frequency": {
 						"unit": "minute",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The singing sword casts {@spell inspire courage}."
@@ -1948,7 +1947,7 @@
 					],
 					"frequency": {
 						"unit": "minute",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The singing sword casts {@spell inspire defense}."
@@ -1966,7 +1965,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You or an ally within 60 feet rolls a saving throw against an {@trait auditory} effect",
 					"entries": [

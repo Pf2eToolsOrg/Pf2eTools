@@ -1,0 +1,110 @@
+{
+	"spell": [
+		{
+			"name": "Gritty Wheeze",
+			"source": "ToK",
+			"page": 10,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"air",
+				"earth",
+				"evocation"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "see below"
+			},
+			"entries": [
+				"You exhale desiccating grit and sand in a small cloud. Creatures in the area take {@damage 2d4} bludgeoning damage and must attempt a Fortitude save. Water creatures and plant creatures use the outcome one degree of success worse than the result of their saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature takes no damage."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage and is {@condition dazzled} for 1 round."
+						],
+						"Critical Failure": [
+							"The creature takes double damage and is {@condition dazzled} for 1 minute."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Nettleskin",
+			"source": "ToK",
+			"page": 10,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"plant",
+				"transmutation"
+			],
+			"traditions": [
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Thorns sprout from your body; they pass through and don't damage any clothing or armor you wear. Adjacent creatures that hit you with a melee or unarmed attack take {@damage 1d4} piercing damage as the nettles jab them and break off. Each time a creature takes damage in this way, nettleskin's duration decreases by 1 round."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d4}."
+					]
+				}
+			}
+		}
+	]
+}

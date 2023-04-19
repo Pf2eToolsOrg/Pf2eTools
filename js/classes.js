@@ -568,6 +568,7 @@ class ClassesPage extends BaseComponent {
 			{
 				hash,
 				source,
+				aliases: cls.alias ? cls.alias.join(" - ") : "",
 			},
 			{
 				$lnk,

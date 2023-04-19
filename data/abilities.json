@@ -91,7 +91,7 @@
 			],
 			"page": 236,
 			"entries": [
-				"The skeleton is wreathed with fire, which doesn't consume its bones or gear. The skeleton gains immunity to fire and weakness 5 to cold, loses its resistance to cold, and its {@action Strike||Strikes} deal additional {@condition persistent damage ||persistent fire damage} equal to half the skeleton's level (minimum 1 damage)."
+				"The skeleton is wreathed with fire, which doesn't consume its bones or gear. The skeleton gains immunity to fire and weakness 5 to cold, loses its resistance to cold, and its {@action Strike||Strikes} deal additional {@condition persistent damage||persistent fire damage} equal to half the skeleton's level (minimum 1 damage)."
 			]
 		},
 		{
@@ -117,7 +117,7 @@
 			],
 			"page": 236,
 			"entries": [
-				"When the skeleton takes physical damage from a critical hit, one of its bones is pulverized into a fine powder. All creatures in a 5-foot emanation that breathe take {@damage 1d6} {@condition persistent damage ||persistent poison damage} (plus an additional {@dice 1d6} for every 6 levels the skeleton has)."
+				"When the skeleton takes physical damage from a critical hit, one of its bones is pulverized into a fine powder. All creatures in a 5-foot emanation that breathe take {@damage 1d6} {@condition persistent damage||persistent poison damage} (plus an additional {@dice 1d6} for every 6 levels the skeleton has)."
 			]
 		},
 		{
@@ -154,7 +154,7 @@
 				"unit": "action"
 			},
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -885,6 +885,135 @@
 			"page": 344,
 			"entries": [
 				"This sense allows a monster to feel vibrations caused by movement through a liquid. It's an imprecise sense with a limited range (listed in the ability). Wavesense functions only if monster and the subject are in the same body of liquid, and only if the subject is moving through the liquid."
+			]
+		},
+		{
+			"name": "Site Bound",
+			"source": "B1",
+			"page": 166,
+			"creature": [
+				"Ghost"
+			],
+			"entries": [
+				"A typical ghost can stray only a short distance from where it was killed or the place it haunts. A typical limit is 120 feet. Some ghosts are instead bound to a room, building, item, or creature that was special to it rather than a location."
+			]
+		},
+		{
+			"name": "Rejuvenation",
+			"source": "B1",
+			"page": 166,
+			"creature": [
+				"Ghost"
+			],
+			"traits": [
+				"divine",
+				"necromancy"
+			],
+			"entries": [
+				"When a ghost is destroyed, it re-forms after {@dice 2d4} days within the location it's bound to, fully healed. A ghost can be permanently destroyed only if someone determines the reason for its existence and sets right whatever prevents the spirit from resting."
+			],
+			"add_hash": "Ghost"
+		},
+		{
+			"name": "Corrupting Gaze",
+			"source": "B1",
+			"page": 166,
+			"creature": [
+				"Ghost"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 2
+			},
+			"entries": [
+				"The ghost stares at a creature it can see within 30 feet. The target takes {@damage 1d6} negative damage + {@damage 1d6} per 2 levels with a basic Will save. A creature that fails its save is also {@condition stupefied 1} for 1 minute."
+			]
+		},
+		{
+			"name": "Draining Touch",
+			"source": "B1",
+			"page": 166,
+			"creature": [
+				"Ghost"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 2
+			},
+			"entries": [
+				"With a touch, the ghost attempts to drain a living creature's life force. It makes a ghostly hand {@action Strike} but deals no damage on a hit. Instead, the target becomes {@condition drained 1} for 1 day, and the ghost regains HP equal to half its own level."
+			]
+		},
+		{
+			"name": "Frightful Moan",
+			"source": "B1",
+			"page": 166,
+			"creature": [
+				"Ghost"
+			],
+			"traits": [
+				"auditory",
+				"divine",
+				"emotion",
+				"enchantment",
+				"fear",
+				"mental"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 2
+			},
+			"entries": [
+				"The ghost laments its fate, forcing each living creature within 30 feet to attempt a Will save. On a failure, a creature becomes {@condition frightened 2} (or {@condition frightened 3} on a critical failure). On a success, a creature is temporarily immune to this ghost's frightful moan for 1 minute."
+			]
+		},
+		{
+			"name": "Inhabit Object",
+			"source": "B1",
+			"page": 166,
+			"creature": [
+				"Ghost"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 1
+			},
+			"entries": [
+				"The ghost possesses an object of size {@trait Large} or smaller within 20 feet, making it an animated object (pages 20\u201321). This animated object's level can be no higher than the ghost's level \u2013 2. If the target object is being held by a creature, the bearer can attempt a Will save to prevent the possession. This possession ends when the object is destroyed or the ghost leaves it. At this point, the ghost reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds."
+			]
+		},
+		{
+			"name": "Malevolent Possession",
+			"source": "B1",
+			"page": 167,
+			"creature": [
+				"Ghost"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 2
+			},
+			"entries": [
+				"The ghost attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell, except since the ghost doesn't have a physical body, it is unaffected by that restriction of the spell."
+			]
+		},
+		{
+			"name": "Telekinetic Assault",
+			"source": "B1",
+			"page": 167,
+			"traits": [
+				"divine",
+				"evocation"
+			],
+			"creature": [
+				"Ghost"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 2
+			},
+			"entries": [
+				"The ghost cries out in pain and anguish as small objects and debris fly about in a 30-foot emanation. Creatures in this area take {@damage 1d6} bludgeoning damage + {@damage 1d6} per 2 levels, subject to a basic Reflex save."
 			]
 		}
 	]

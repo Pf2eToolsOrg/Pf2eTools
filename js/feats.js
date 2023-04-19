@@ -43,6 +43,7 @@ class FeatsPage extends ListPage {
 				level: feat.level,
 				type: feat._slType,
 				prerequisites: feat._slPrereq,
+				aliases: feat.alias ? feat.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: feat.uniqueId ? feat.uniqueId : ftI,

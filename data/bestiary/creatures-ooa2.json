@@ -113,7 +113,7 @@
 					{
 						"name": "Sneak Attack A Gilded",
 						"entries": [
-							"Gunner goon's Strikes deal {@dice 1d6} additional precision damage to {@condition flat‑footed} creatures."
+							"Gunner goon's Strikes deal {@dice 1d6} additional precision damage to {@condition flat-footed} creatures."
 						]
 					}
 				]
@@ -289,7 +289,7 @@
 			},
 			"senses": [
 				{
-					"name": "low‑light vision"
+					"name": "low-light vision"
 				}
 			],
 			"skills": {
@@ -506,13 +506,13 @@
 					{
 						"name": "Scoundrel's Feint",
 						"entries": [
-							"When Lanks successfully {@action Feint||Feints}, his target is {@condition flat‑footed} against his attacks until the end of his next turn. On a critical success, the target is {@condition flat‑footed} against all attacks until the end of Lanks's next turn."
+							"When Lanks successfully {@action Feint||Feints}, his target is {@condition flat-footed} against his attacks until the end of his next turn. On a critical success, the target is {@condition flat-footed} against all attacks until the end of Lanks's next turn."
 						]
 					},
 					{
 						"name": "Sneak Attack",
 						"entries": [
-							"Lanks deals an additional {@damage 2d6} precision damage to {@condition flat‑footed} creatures."
+							"Lanks deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"generic": {
 							"tag": "ability"
@@ -638,7 +638,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"tradition": "arcane",
 					"type": "Innate",
 					"DC": 22,
@@ -670,7 +669,7 @@
 					{
 						"name": "Acidic Pustules",
 						"entries": [
-							"The marauder's skin is covered with necrotic boils that burst when struck. Whenever a creature deals slashing or piercing damage to the marauder, each creature within 5 feet takes {@damage 2d6} acid damage (DC 22 basic Reflex save). On a critically failed save, a creature also takes {@damage 1d4} {@condition persistent damage ||persistent acid damage}."
+							"The marauder's skin is covered with necrotic boils that burst when struck. Whenever a creature deals slashing or piercing damage to the marauder, each creature within 5 feet takes {@damage 2d6} acid damage (DC 22 basic Reflex save). On a critically failed save, a creature also takes {@damage 1d4} {@condition persistent damage||persistent acid damage}."
 						]
 					},
 					{
@@ -894,7 +893,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -912,7 +910,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The chimeric manticore's blue‑dragon head breathes a 60‑foot line of electricity that deals {@damage 8d6} electrical damage to all creatures in the area (DC 25 basic Reflex save). The chimeric manticore can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The chimeric manticore's blue-dragon head breathes a 60-foot line of electricity that deals {@damage 8d6} electrical damage to all creatures in the area (DC 25 basic Reflex save). The chimeric manticore can't use Breath Weapon again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -928,7 +926,7 @@
 					}
 				]
 			},
-			"description": "Genderless chimera‑manticore hybrid (Pathfinder Bestiary 63, 232)"
+			"description": "Genderless chimera-manticore hybrid (Pathfinder Bestiary 63, 232)"
 		},
 		{
 			"name": "I",
@@ -961,7 +959,9 @@
 				"languages": [
 					"common",
 					"gnoll",
-					"osiriani (can't speak any language);",
+					"osiriani (can't speak any language)"
+				],
+				"abilities": [
 					"telepathy 100 feet"
 				]
 			},
@@ -1044,7 +1044,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 25,
@@ -1061,11 +1060,11 @@
 							"spells": [
 								{
 									"name": "noxious vapors",
-									"source": "advanced players guide"
+									"source": "APG"
 								},
 								{
 									"name": "shifting sand",
-									"note": "Pathfinder Lost Omens Gods & Magic 110"
+									"source": "LOGM"
 								}
 							]
 						}
@@ -1099,12 +1098,12 @@
 									},
 									{
 										"stage": 2,
-										"entry": "{@damage 2d6} poison damage, {@condition enfeebled||enfeebled 1}, and {@condition flat‑footed}",
+										"entry": "{@damage 2d6} poison damage, {@condition enfeebled||enfeebled 1}, and {@condition flat-footed}",
 										"duration": "1 round"
 									},
 									{
 										"stage": 3,
-										"entry": "{@damage 2d6} poison damage, {@condition enfeebled||enfeebled 2}, and {@condition flat‑footed}",
+										"entry": "{@damage 2d6} poison damage, {@condition enfeebled||enfeebled 2}, and {@condition flat-footed}",
 										"duration": "1 round"
 									}
 								]
@@ -1263,8 +1262,8 @@
 						],
 						"requirements": "Palzu has rolled initiative but hasn't acted yet in combat",
 						"entries": [
-							"Palzu lets loose a blood‑curdling howl while firing his rifle, making the report sound unearthly and disturbing. Palzu makes a Jax {@action Strike} against a foe within 40 feet.",
-							"On a hit, creatures in a 10‑foot emanation centered on the target hit must attempt a DC 26 Will save or become {@condition frightened||frightened 1}."
+							"Palzu lets loose a blood-curdling howl while firing his rifle, making the report sound unearthly and disturbing. Palzu makes a Jax {@action Strike} against a foe within 40 feet.",
+							"On a hit, creatures in a 10-foot emanation centered on the target hit must attempt a DC 26 Will save or become {@condition frightened||frightened 1}."
 						]
 					},
 					{
@@ -1295,7 +1294,7 @@
 			},
 			"senses": [
 				{
-					"name": "low‑light vision"
+					"name": "low-light vision"
 				}
 			],
 			"languages": {
@@ -1391,7 +1390,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 20,
@@ -1411,7 +1409,7 @@
 							"spells": [
 								{
 									"name": "anticipate peril",
-									"note": "Gods & Magic 107"
+									"source": "LOGM"
 								},
 								{
 									"name": "heal"
@@ -1573,7 +1571,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 19,
@@ -1591,7 +1588,7 @@
 							"spells": [
 								{
 									"name": "acidic burst",
-									"note": "Gods & Magic 106"
+									"source": "LOGM"
 								}
 							]
 						}
@@ -1612,7 +1609,7 @@
 							"primal"
 						],
 						"entries": [
-							"Akrida spits a gout of slimy green acid in a 30‑foot line that deals {@damage 5d6} acid damage (DC 20 basic Reflex save). Akrida can't use Breath Weapon again for {@dice 1d4} rounds."
+							"Akrida spits a gout of slimy green acid in a 30-foot line that deals {@damage 5d6} acid damage (DC 20 basic Reflex save). Akrida can't use Breath Weapon again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -1658,7 +1655,9 @@
 			],
 			"languages": {
 				"languages": [
-					"aklo (can't speak any language);",
+					"aklo (can't speak any language)"
+				],
+				"abilities": [
 					"telepathy 300 feet"
 				]
 			},
@@ -1750,7 +1749,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 28,
@@ -1767,7 +1765,7 @@
 							"spells": [
 								{
 									"name": "agonizing despair",
-									"source": "advanced players guide"
+									"source": "APG"
 								},
 								{
 									"name": "haste"
@@ -1846,7 +1844,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Claws of Time casts a 4th‑level {@spell dimension door} spell, but it must transport itself into a space adjacent to an angle of 90º (or more acute) in the structure or environment around it. This means the hound can use dimension door to appear adjacent to any wall or corner in the Cradle of Quartz except for the central geode (area D16). Once per day, the hound can use this ability to plane shift to or from the Dimension of Time, with the same restrictions on what angles next to which it can appear."
+							"The Claws of Time casts a 4th-level {@spell dimension door} spell, but it must transport itself into a space adjacent to an angle of 90º (or more acute) in the structure or environment around it. This means the hound can use dimension door to appear adjacent to any wall or corner in the Cradle of Quartz except for the central geode (area D16). Once per day, the hound can use this ability to plane shift to or from the Dimension of Time, with the same restrictions on what angles next to which it can appear."
 						]
 					}
 				]
@@ -1928,7 +1926,7 @@
 					"range": "Melee",
 					"traits": [
 						"agile",
-						"free‑hand"
+						"free-hand"
 					],
 					"name": "knuckle duster",
 					"attack": 15,
@@ -1980,7 +1978,7 @@
 					{
 						"name": "Sneak Attack The Gilded",
 						"entries": [
-							"Gunner assassin deals an additional {@damage 2d6} precision damage to {@condition flat‑footed} creatures."
+							"Gunner assassin deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						]
 					}
 				]
@@ -2088,7 +2086,7 @@
 					{
 						"name": "Sneak Attack",
 						"entries": [
-							"The safecracker deals an additional {@damage 1d6} precision damage to {@condition flat‑footed} creatures."
+							"The safecracker deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"generic": {
 							"tag": "ability"
@@ -2134,7 +2132,7 @@
 				"cha": -5
 			},
 			"items": [
-				"integrated dragon‑mouth pistol (Guns & Gears 152)",
+				"integrated dragon-mouth pistol (Guns & Gears 152)",
 				"integrated +1 striking mace multipistol (Guns & Gears 159)"
 			],
 			"defenses": {
@@ -2213,7 +2211,7 @@
 						"reload <1>",
 						"scatter <5 feet>"
 					],
-					"name": "dragon‑mouth pistol",
+					"name": "dragon-mouth pistol",
 					"attack": 20,
 					"damage": "{@damage 1d6+3} piercing"
 				},
@@ -2250,7 +2248,7 @@
 					}
 				]
 			},
-			"description": "Custom‑built clockwork prototype"
+			"description": "Custom-built clockwork prototype"
 		},
 		{
 			"name": "Clockwork Disposer",
@@ -2526,7 +2524,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -2661,7 +2659,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2849,7 +2846,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2860,7 +2856,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3341,7 +3336,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 24,
@@ -3467,7 +3461,7 @@
 							"unit": "free"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "turn"
 						},
 						"entries": [
@@ -3597,7 +3591,7 @@
 						},
 						"trigger": "A creature leaves the trapjaw tangle's space",
 						"entries": [
-							"The swarm takes {@dice 1d6} damage as individual traps cling to the creature and continue chewing, dealing {@damage 2d10} {@condition persistent damage ||persistent slashing damage}.",
+							"The swarm takes {@dice 1d6} damage as individual traps cling to the creature and continue chewing, dealing {@damage 2d10} {@condition persistent damage||persistent slashing damage}.",
 							"High winds or electricity damage reduces the DC of the flat check to end this {@condition persistent damage} by 5. Any area damage dealt to the creature destroys these clinging trapjaws."
 						]
 					}
@@ -4009,7 +4003,7 @@
 						},
 						"requirements": "No enemies are within 60 feet of Sharkosa and her dueling pistol is loaded",
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "minute"
 						},
 						"entries": [

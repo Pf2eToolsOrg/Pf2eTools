@@ -229,33 +229,6 @@
 			}
 		},
 		{
-			"name": "Panabas",
-			"source": "LOIL",
-			"page": 221,
-			"type": "Item",
-			"traits": [
-				"forceful",
-				"sweep",
-				"two-hand <d10>"
-			],
-			"price": {
-				"amount": 1,
-				"coin": "gp"
-			},
-			"bulk": 1,
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"This blade features multiple curves in a serpentine pattern set on a wide, asymmetrical base, its hilt and sheath often intricately decorated."
-			],
-			"weaponData": {
-				"damage": "1d6",
-				"damageType": "S",
-				"group": "Sword"
-			}
-		},
-		{
 			"name": "Talwar",
 			"source": "LOIL",
 			"page": 221,
@@ -1027,9 +1000,97 @@
 			}
 		},
 		{
+			"name": "Jiu Huan Dao",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"sweep"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "sp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This sword has a broad blade, along which are threaded nine heavy metal rings, leading some to call it the nine-ring sword. The rings add weight to the weapon for broad swings and clash together to make noise."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Combat Lure",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"finesse",
+				"tethered",
+				"thrown <20 feet>",
+				"training"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A combat lure is a weighted leather sack at the end of a length of toughened cord and can be used both to bludgeon opponents and signal directions to a trained avian or other animal."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Flail"
+			}
+		},
+		{
+			"name": "Breaching Pike",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"hobgoblin",
+				"razing",
+				"reach"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Forged with a heavy metal wedge as a spearhead, breaching pikes are often used by hobgoblin infantry alongside a tower shield. Breaching pikes are particularly effective at damaging enemy shields, leaving large, triangular puncture holes behind."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Spear"
+			}
+		},
+		{
 			"name": "Bladed Scarf",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -1205,16 +1266,16 @@
 		},
 		{
 			"name": "Bola",
-			"source": "APG",
-			"page": 248,
+			"source": "TV",
+			"page": 30,
 			"otherSources": {
 				"Reprinted": [
+					"APG|248",
 					"LOGM|120"
 				]
 			},
 			"type": "Item",
 			"traits": [
-				"uncommon",
 				"nonlethal",
 				"ranged trip",
 				"thrown"
@@ -1228,7 +1289,7 @@
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"entries": [
-				"This throwing weapon consists of weights tied to the end of long cords, which can be used to bludgeon foes or entangle their legs."
+				"This throwing weapon consists of weights tied to the end of long cords, which can be used to entangle foes."
 			],
 			"weaponData": {
 				"damage": "1d6",
@@ -1241,7 +1302,6 @@
 			"name": "Armored Coat",
 			"source": "LOKL",
 			"page": 86,
-			"equipment": true,
 			"type": "Item",
 			"price": {
 				"amount": 20,
@@ -1315,6 +1375,329 @@
 			]
 		},
 		{
+			"name": "Gauntlet Bow",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"capacity <4>",
+				"free-hand",
+				"parry"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The gauntlet bow is a heavy metal glove with a built-in crossbow and rotating chamber mechanism for easy reloading. A gauntlet bow can be used to make melee attacks like a standard gauntlet. You can't reload a gauntlet bow with the hand wielding it."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"range": 60,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (10)"
+			}
+		},
+		{
+			"name": "Gakgung",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"deadly <d8>",
+				"monk",
+				"propulsive"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": "1+",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A gakgung is a type of composite reflex bow that combines speed and power in equal amounts for effective precision shooting."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"range": 100,
+				"group": "Bow",
+				"reload": 0,
+				"ammunition": "Arrow (10)"
+			}
+		},
+		{
+			"name": "Rotary Bow",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"capacity <4>"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This one-handed crossbow has four arms instead of two, and four rotating chambers that can be pre-loaded with bolts for more efficient firing. The chamber can be swapped and the arms redrawn with a simple crank device built into the crossbow."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"range": 80,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (10)"
+			}
+		},
+		{
+			"name": "Shield Bow",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"deadly <d8>",
+				"parry"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": "1+",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"As the name implies, a shield bow is a bow with an integrated shielding surface. While versatile and effective, a shield bow's architecture limits its flexibility somewhat, decreasing its total draw strength and penetrating power."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"range": 50,
+				"group": "Bow",
+				"reload": 0,
+				"ammunition": "Arrow (10)"
+			}
+		},
+		{
+			"name": "Spraysling",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"halfling",
+				"propulsive",
+				"scatter <5 ft.>"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A spraysling is similar to a standard sling but with a wider cup fitted with a thin blade affixed to the cup's edges. When used to make an attack with a specially prepared packet of spray pellets, the razor slices open the packet and the weapon launches a cluster of stinging pellets."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"range": 20,
+				"group": "Sling",
+				"reload": 0,
+				"ammunition": "Spray Pellets (10)"
+			}
+		},
+		{
+			"name": "Boomerang",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"recovery",
+				"thrown"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The boomerang is a carved piece of wood designed to curve as it flies through the air, returning to the wielder after a successful throw."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"range": 60,
+				"group": "Club"
+			}
+		},
+		{
+			"name": "Thunder Sling",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"agile",
+				"propulsive",
+				"tengu"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				""
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"range": 50,
+				"reload": 1,
+				"group": "Sling"
+			}
+		},
+		{
+			"name": "Chakri",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"recovery",
+				"thrown"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Similar to a chakram, chakri are too light to be wielded in melee but allow the user significantly more control over their throws. A chakri is small and light enough that up to two can be worn on each wrist; a chakri worn on the wrist is reload 0 instead of reload \u2014."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"range": 40,
+				"group": "Dart"
+			}
+		},
+		{
+			"name": "Phalanx Piercer",
+			"level": 1,
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"concussive",
+				"hobgoblin",
+				"propulsive",
+				"razing",
+				"volley <30 ft.>"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": "1+",
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"This massive bow is made from bone or wood reinforced with flexible metal strips and strung with reinforced cord. Designed by hobgoblin engineers to take down shielded opponents, the phalanx piercer fires heavy, iron-shod bolts."
+			],
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"range": 80,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (5)"
+			}
+		},
+		{
+			"name": "Sukgung",
+			"level": 1,
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"fatal aim <d12>"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The sukgung is an extremely efficient crossbow most common in the nation of Hwanggot. Capable of lethal shots at remarkable distances, the sukgung is well-balanced enough to be fired with one hand."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"range": 200,
+				"group": "Bow",
+				"reload": 1,
+				"ammunition": "Bolt (10)"
+			}
+		},
+		{
+			"name": "Harpoon",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"tethered",
+				"thrown"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Often used for hunting exceptionally large aquatic creatures, the harpoon is similar to a javelin but features a barbed head and rope tether so it (or the corpse it's attached to) can be easily retrieved."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"range": 30,
+				"group": "Dart"
+			}
+		},
+		{
 			"name": "Butchering Axe",
 			"source": "LOTGB",
 			"page": 107,
@@ -1344,8 +1727,13 @@
 		},
 		{
 			"name": "Butterfly Sword",
-			"source": "FRP2",
-			"page": 76,
+			"otherSources": {
+				"Originally": [
+					"FRP2|76"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -1366,7 +1754,7 @@
 			"category": "Weapon",
 			"subCategory": "Advanced",
 			"entries": [
-				"This short, single-edged sword typically features a cross guard that helps catch oncoming attacks. It is the preferred weapon of Butterfly Blades\u2014highly skilled Gokan assassins."
+				"This short, single-edged sword typically features a cross guard that helps catch oncoming attacks. It's the preferred weapon of Butterfly Blades\u2014highly skilled Gokan assassins. These swords are typically crafted and sold in pairs."
 			],
 			"weaponData": {
 				"damage": "1d4",
@@ -2232,6 +2620,33 @@
 			}
 		},
 		{
+			"name": "Atlatl",
+			"source": "TV",
+			"page": 30,
+			"type": "Item",
+			"traits": [
+				"propulsive"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"entries": [
+				"Atlatls are long, narrow pieces of shaped wood or antler used as levers to hurl darts faster and farther than would otherwise be possible. An atlatl uses darts as ammunition."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Dart",
+				"range": 60,
+				"reload": 1
+			}
+		},
+		{
 			"name": "Dwarven War Axe",
 			"source": "CRB",
 			"page": 281,
@@ -2316,6 +2731,577 @@
 				"damage": "1d8",
 				"damageType": "S",
 				"group": "Sword"
+			}
+		},
+		{
+			"name": "Quilted Armor",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"comfort"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"Quilted armor is built in a long coat intended for defensive use without other armor. Quilted armor protects the upper body and legs, differentiating it further from the typical padded undercoat. This armor is frequently made in stylish colors or patterns to facilitate use as protective outerwear or a military uniform."
+			],
+			"armorData": {
+				"ac": 2,
+				"dexCap": 2,
+				"checkPen": -1,
+				"speedPen": 0,
+				"str": 12,
+				"group": "Cloth"
+			}
+		},
+		{
+			"name": "Ceramic Plate",
+			"source": "TV",
+			"equipment": true,
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"adjusted <armor latches>",
+				"noisy"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Medium",
+			"entries": [
+				"Traditional armor from Senghor, ceramic plate alleviates the need for metallurgy and smithing, instead relying on ceramic firing, glazing, and strong cord work with a backing of leather and thick canvas. Ceramic plate that follows Senghor's style is colorful and artistic, and is built with the {@item armor latches|tv} armor adjustment."
+			],
+			"armorData": {
+				"ac": 3,
+				"dexCap": 2,
+				"checkPen": -2,
+				"speedPen": 5,
+				"str": 14,
+				"group": "Plate"
+			}
+		},
+		{
+			"name": "Hellknight Half Plate",
+			"source": "TV",
+			"page": 9,
+			"traits": [
+				"uncommon"
+			],
+			"level": 1,
+			"access": "A character who is a member of the {@organization Hellknights} has access to this option.",
+			"type": "Item",
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"bulk": 3,
+			"category": "Armor",
+			"subCategory": "Heavy",
+			"entries": [
+				"Hellknights wear a variety of armors decorated with designs specific to the order. {@item Hellknight half plate|TV} is the armor of choice for Hellknight signifiers, and {@item Hellknight breastplate|TV} serves those in the order who lack the training to wear heavy armor.",
+				"A character who is a member of the {@organization Hellknights} has access to these uncommon armors."
+			],
+			"armorData": {
+				"ac": 5,
+				"dexCap": 1,
+				"checkPen": -3,
+				"speedPen": 10,
+				"str": 16,
+				"group": "Plate"
+			}
+		},
+		{
+			"name": "Hellknight Plate",
+			"otherSources": {
+				"Originally": [
+					"LOCG|80"
+				]
+			},
+			"source": "TV",
+			"page": 9,
+			"access": "A character who is a member of the {@organization Hellknights} has access to this option.",
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"bulwark"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 35
+			},
+			"usage": "worn armor",
+			"bulk": 4,
+			"category": "Armor",
+			"subCategory": "Heavy",
+			"entries": [
+				"Hellknights wear a variety of armors decorated with designs specific to the order. {@item Hellknight half plate|TV} is the armor of choice for Hellknight signifiers, and {@item Hellknight breastplate|TV} serves those in the order who lack the training to wear heavy armor.",
+				"A character who is a member of the {@organization Hellknights} has access to these uncommon armors.",
+				{
+					"type": "entriesOtherSource",
+					"source": "LOCG",
+					"page": 80,
+					"entries": [
+						"Few armors in the Inner Sea region are as memorable as the iconic Hellknight plate. While each order has its own flourishes, Hellknight plate is instantly recognizable to any who know of the Hellknights.",
+						"Hellknights go to extreme measures to punish non-Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to {@item full plate}."
+					]
+				}
+			],
+			"armorData": {
+				"group": "Plate",
+				"ac": 6,
+				"dexCap": 0,
+				"str": 18,
+				"checkPen": 3,
+				"speedPen": 10
+			}
+		},
+		{
+			"name": "Hellknight Breastplate",
+			"source": "TV",
+			"access": "A character who is a member of the {@organization Hellknights} has access to this option.",
+			"page": 9,
+			"traits": [
+				"uncommon"
+			],
+			"level": 1,
+			"type": "Item",
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"subCategory": "Medium",
+			"entries": [
+				"Hellknights wear a variety of armors decorated with designs specific to the order. {@item Hellknight half plate|TV} is the armor of choice for Hellknight signifiers, and {@item Hellknight breastplate|TV} serves those in the order who lack the training to wear heavy armor.",
+				"A character who is a member of the {@organization Hellknights} has access to these uncommon armors."
+			],
+			"armorData": {
+				"ac": 4,
+				"dexCap": 1,
+				"checkPen": -2,
+				"speedPen": 5,
+				"str": 16,
+				"group": "Plate"
+			}
+		},
+		{
+			"name": "O-yoroi",
+			"source": "TV",
+			"page": 9,
+			"traits": [
+				"bulwark",
+				"laminar"
+			],
+			"level": 2,
+			"type": "Item",
+			"price": {
+				"amount": 35,
+				"coin": "gp"
+			},
+			"bulk": 5,
+			"category": "Armor",
+			"subCategory": "Heavy",
+			"entries": [
+				"Larger plates coupled with lamellar pieces to make up a suit of heavy lamellar. The custom-fitted and often highly decorative suit covers most of the body. Rounding out the suit are a tiered helmet and fearsome mask, often depicting a fiendish or monstrous creature."
+			],
+			"armorData": {
+				"ac": 6,
+				"dexCap": 0,
+				"checkPen": -3,
+				"speedPen": 10,
+				"str": 18,
+				"group": "Plate"
+			}
+		},
+		{
+			"name": "Fortress Plate",
+			"source": "TV",
+			"page": 9,
+			"traits": [
+				"bulwark",
+				"entrench <ranged>",
+				"ponderous"
+			],
+			"level": 2,
+			"type": "Item",
+			"price": {
+				"amount": 32,
+				"coin": "gp"
+			},
+			"bulk": 5,
+			"category": "Armor",
+			"subCategory": "Heavy",
+			"entries": [
+				"Dwarves of Dongun Hold developed fortress plate, which is still popular in Alkenstar and Dongun Hold. A trained wearer can adjust the articulated armor's overlapping layers of plates and panels to provide protection from missiles."
+			],
+			"armorData": {
+				"ac": 6,
+				"dexCap": 0,
+				"checkPen": -3,
+				"speedPen": 10,
+				"str": 18,
+				"group": "Plate"
+			}
+		},
+		{
+			"name": "Bastion Plate",
+			"source": "TV",
+			"page": 9,
+			"traits": [
+				"bulwark",
+				"entrench <melee>",
+				"hindering"
+			],
+			"level": 2,
+			"type": "Item",
+			"price": {
+				"amount": 33,
+				"coin": "gp"
+			},
+			"bulk": 5,
+			"category": "Armor",
+			"subCategory": "Heavy",
+			"entries": [
+				"This cumbersome and sturdy plate armor has fluting and additional protection built into the cuirass, helm, pauldrons, and vambraces. Bastion plate was invented for protection in combat tournaments meant to be sporting rather than lethal."
+			],
+			"armorData": {
+				"ac": 6,
+				"dexCap": 0,
+				"checkPen": -3,
+				"speedPen": 10,
+				"str": 18,
+				"group": "Plate"
+			}
+		},
+		{
+			"name": "Wooden Breastplate",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Medium",
+			"entries": [
+				"A suit of carved and tempered wood, a wooden breastplate resembles a metal breastplate in shape and function. Such suits can be carved from large pieces of wood, but they most often come from wood coaxed magically from special trees, whether by druids, elves, fey, or plant creatures such as arboreals or leshys."
+			],
+			"armorData": {
+				"ac": 3,
+				"dexCap": 2,
+				"checkPen": -2,
+				"speedPen": 5,
+				"str": 14,
+				"group": "Wood"
+			}
+		},
+		{
+			"name": "Niyaháat",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"laminar"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Medium",
+			"entries": [
+				"Erutaki communities deep in the Crown of the World, where wood is hard to come by, fashion armor from slats and strips of bone or horn, along with whole bones or horns. Wealthier wearers sometimes pay for decorative embellishments made of more precious materials. Niyaháat is usually woven together with strong cord, forming a suit like a breastplate. This suit is worn over heavy clothing or a surcoat like padded armor. Some suits incorporate parts of powerful creatures, creating a storied history for the suit and its wearers."
+			],
+			"armorData": {
+				"ac": 3,
+				"dexCap": 2,
+				"checkPen": -2,
+				"speedPen": 5,
+				"str": 14,
+				"group": "Skeletal"
+			}
+		},
+		{
+			"name": "Lattice Armor",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Medium",
+			"entries": [
+				"Fine metal cables woven into latticework patterns form this armor. This armor disperses blows much like rings of chain mail, but is much tighter in construction, making it quieter."
+			],
+			"armorData": {
+				"ac": 4,
+				"dexCap": 1,
+				"checkPen": -2,
+				"speedPen": 5,
+				"str": 16,
+				"group": "Chain"
+			}
+		},
+		{
+			"name": "Lamellar Breastplate",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"hindering",
+				"laminar"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Medium",
+			"entries": [
+				"Slats of lacquered steel or other metal held together with cord, whether leather or silk, make up most lamellar breastplates. The lacquering prevents the metal from corroding."
+			],
+			"armorData": {
+				"ac": 4,
+				"dexCap": 1,
+				"checkPen": -2,
+				"speedPen": 5,
+				"str": 16,
+				"group": "Composite"
+			}
+		},
+		{
+			"name": "Coral Armor",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"aquadynamic"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"category": "Armor",
+			"subCategory": "Medium",
+			"entries": [
+				"A good option for undersea explorers and aquatic peoples alike, coral armor consists of panels of carved coral. If worn underwater, some of this coral can even be alive."
+			],
+			"armorData": {
+				"ac": 3,
+				"dexCap": 2,
+				"checkPen": -2,
+				"speedPen": 5,
+				"str": 14,
+				"group": "Skeletal"
+			}
+		},
+		{
+			"name": "Sankeit",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"laminar"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"Sankeit is common armor among Varki in the northern Land of the Linnorm Kings, made of small wooden plates or longer slats, typically vertical, joined with sinew or cord and painted with decorations. Varki warriors traditionally wear sankeit with a fearsome wooden helm carved in the shape of a mighty creature."
+			],
+			"armorData": {
+				"ac": 2,
+				"dexCap": 3,
+				"checkPen": -1,
+				"speedPen": 0,
+				"str": 12,
+				"group": "Wood"
+			}
+		},
+		{
+			"name": "Leather Lamellar",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"laminar"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"Leather lamellar is a composite armor made of small rectangular pieces of lacquered leather laced together with high‑quality cord. It's typically worn with an undershirt."
+			],
+			"armorData": {
+				"ac": 1,
+				"dexCap": 4,
+				"checkPen": -1,
+				"speedPen": 0,
+				"str": 10,
+				"group": "Composite"
+			}
+		},
+		{
+			"name": "Leaf Weave",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"laminar"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"Specialized crafters, often elves, create leaf weave out of sturdy leaves from ancient or magically enriched trees. Such leaves, when treated properly, have the strength of leather, and other tough plant materials hold the leaves together to form the armor. Such suits are popular among those who wish to avoid materials taken from slain beasts. As a material, leaf weave has the same statistics as thin wood."
+			],
+			"armorData": {
+				"ac": 1,
+				"dexCap": 4,
+				"checkPen": -1,
+				"speedPen": 0,
+				"str": 10,
+				"group": "Wood"
+			}
+		},
+		{
+			"name": "Buckle Armor",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"adjusted <storage>",
+				"noisy"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"Absalom style once led famous adventurers to wear clothing with an unusual number of buckles, pouches, and straps. This fashion birthed a trend that led to \"buckle armor,\" a colloquial name for chic armor with spacious tool storage. Buckle armor comes with the {@item storage|tv} armor adjustment."
+			],
+			"armorData": {
+				"ac": 2,
+				"dexCap": 3,
+				"checkPen": -1,
+				"speedPen": 0,
+				"str": 12,
+				"group": "Leather"
+			}
+		},
+		{
+			"name": "Mantis Shell",
+			"source": "TV",
+			"page": 9,
+			"level": 1,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"adjusted <weapon harness>"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"Construction of mantis shell armor originates with the Red Mantis assassins. Authentic mantis shell can be found in some dark markets, but wearing such armor can attract deadly attention from the armor's originators. Mantis shell comes with the {@item weapon harness adjustment|tv}, though these special vambraces are meant to hold sawtooth sabers, and attaching anything else is an insult to the Red Mantis. A character who is a member of the Red Mantis assassins has access to this uncommon armor."
+			],
+			"armorData": {
+				"ac": 2,
+				"dexCap": 3,
+				"checkPen": -1,
+				"speedPen": 0,
+				"str": 12,
+				"group": "Skeletal"
+			}
+		},
+		{
+			"name": "Scroll Robes",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"inscribed"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"category": "Armor",
+			"subCategory": "Unarmored",
+			"entries": [
+				"Scroll robes are composed of paper alchemically treated for strength and flexibility. A layered structure prevents cutting and tearing, and for the purpose of calculating damage, the robes are considered to be cloth. The paper accepts all sorts of decoration, including magical writing, as detailed in the inscribed trait."
+			],
+			"armorData": {
+				"ac": 0,
+				"dexCap": 5,
+				"checkPen": 0,
+				"speedPen": 0,
+				"group": "Cloth"
+			}
+		},
+		{
+			"name": "Gi",
+			"source": "TV",
+			"page": 9,
+			"type": "Item",
+			"traits": [
+				"comfort"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"category": "Armor",
+			"subCategory": "Unarmored",
+			"entries": [
+				"Also called martial arts suits or practice clothes, gi are outfits of tough cloth built for comfort and unrestricted movement\u2014ideal for practicing martial arts. They have reinforced stitching resistant to strenuous use."
+			],
+			"armorData": {
+				"ac": 0,
+				"dexCap": 5,
+				"checkPen": 0,
+				"speedPen": 0,
+				"group": "Cloth"
 			}
 		},
 		{
@@ -2483,9 +3469,443 @@
 			}
 		},
 		{
+			"name": "Scizore",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"disarm",
+				"parry"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A scizore is a gauntlet or protective leather tube worn over the forearm and featuring a half-moon blade mounted to the end of the cap on a short pole."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Knife"
+			}
+		},
+		{
+			"name": "War Razor",
+			"source": "TV",
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"agile",
+				"backstabber",
+				"deadly <d8>",
+				"finesse"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A war razor is an exaggerated version of the barbers' tool. It's a brittle but extremely sharp weapon that is very easy to slip into a pocket or sleeve."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			}
+		},
+		{
+			"name": "Nodachi",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"brace",
+				"deadly <d12>",
+				"reach"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"Also known as a zhanmadao, the exceptionally long blade of the nodachi is designed to neutralize enemy mounts and counter the advantages of cavalry units. Its shape and size make it somewhat impractical for close combat but highly effective against charging opponents."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Falcata",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"fatal <d12>"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"The falcata is a heavy, one-handed sword with a single cutting edge, usually flaring to be wider towards the point of the weapon and narrower towards the hilt."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Panabas",
+			"source": "TV",
+			"page": 25,
+			"otherSources": {
+				"Originally": [
+					"LOIL|221"
+				]
+			},
+			"type": "Item",
+			"traits": [
+				"forceful",
+				"sweep",
+				"two-hand <d10>"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This weapon has practical uses in both farming and butchering, thanks to the efficiency and brutality of its forward-curving blade. It can be wielded in one or two hands."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Meteor Hammer",
+			"source": "TV",
+			"page": 25,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"type": "Item",
+			"traits": [
+				"backswing",
+				"disarm",
+				"reach",
+				"trip"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This weapon consists of a long chain connected to a heavy weight at each end. When a wielder swings the weights by the chain, they build momentum and can serve as deadly bludgeons with incredible reach."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Flail"
+			}
+		},
+		{
+			"name": "Machete",
+			"source": "TV",
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"deadly <d8>",
+				"sweep"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This medium-length sword has a wide, gently curved blade and long grip. Though it's typically used to hack through heavy foliage, the machete can also b used as a deadly weapon."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Long Hammer",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"brace",
+				"dwarf",
+				"reach",
+				"trip",
+				"versatile <P>"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The long hammer features a pronged hammer head designed for damaging knees and ankles, counterbalanced by a stout spike and affixed to a reinforced shaft between 5 and 7 feet long."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Hammer"
+			}
+		},
+		{
+			"name": "Flyssa",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"agile",
+				"finesse",
+				"versatile <P>"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This single-edged blade has a guardless hilt. Often decorated with elaborate etchings, a flyssa is longer than most daggers but shorter than average for most swords, making it useful in close and pitched combat."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Knife"
+			}
+		},
+		{
+			"name": "Earthbreaker",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"razing",
+				"shove",
+				"two-hand <d10>",
+				"versatile <P>"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This massive hammer's metal head is shaped or molded with heavy metal wedges along its primary striking surface, enabling it to tear through shields and armor with ease."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Hammer"
+			}
+		},
+		{
+			"name": "Dancer's Spear",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"backswing",
+				"finesse",
+				"reach",
+				"sweep",
+				"versatile <B>"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Traditionally a favored weapon in Molthune for settling disputes between military leaders, the dancer's spear has seen a recent resurgence in popularity in the neighboring kingdom of Nirmathas, largely due to its effectiveness at striking down attacking skeletons and other undead from a relatively safe distance. A dancer's spear has a 7-foot-long wooden haft capped with a triangular metal blade at one end, counterbalanced on the other end with a reinforced metal sleeve that, in a pinch, can be used as an effective striking surface."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Spear"
+			}
+		},
+		{
+			"name": "Bec De Corbin",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"razing",
+				"reach",
+				"shove",
+				"versatile <B>"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A bec de corbin is a spiked polearm that uses a hammer head to help balance the spike. The hammer portion can be used as a secondary striking surface, while the spike or fluke is specially designed to punch through armor and shields."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Polearm"
+			}
+		},
+		{
+			"name": "Battle Saddle",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"parry",
+				"sweep",
+				"vehicular"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The battle saddle is a special saddle for a mount that has two large, winglike blades. These blades normally lie flat alongside the saddle, providing additional protection for the rider, but they can be deployed with a tug on the reins to slash at enemies adjacent to the mount. When using a battle saddle to parry, you can decide whether the circumstance bonus to AC applies to you or to your mount."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Axe"
+			}
+		},
+		{
+			"name": "Frying Pan",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"fatal <d8>",
+				"halfling"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"entries": [
+				"The cast-iron frying pan is an essential tool for adventuring halflings, gold panners, and remote tavern owners. Characters with the {@feat Halfling Weapon Familiarity} ancestry feat are trained in the frying pan."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Club"
+			}
+		},
+		{
+			"name": "Corset knife",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"agile",
+				"concealable",
+				"finesse",
+				"thrown <10 ft.>"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"entries": [
+				"A favored self-defense weapon among bar and tavern workers, the corset knife has a weighted hilt and a cylindrical, needlelike blade designed to be easily hidden in clothing, but quickly retrieved in a pinch."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			}
+		},
+		{
 			"name": "Fighting Fan",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -2782,33 +4202,6 @@
 				"str": 18,
 				"checkPen": 3,
 				"speedPen": 10
-			}
-		},
-		{
-			"name": "Gaff",
-			"source": "B1",
-			"page": 253,
-			"type": "Item",
-			"traits": [
-				"trip",
-				"deadly <d10>",
-				"uncommon"
-			],
-			"price": {
-				"amount": 1,
-				"coin": "gp"
-			},
-			"bulk": 1,
-			"hands": 2,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"Ogres are known for using immense, curved picks called ogre hooks."
-			],
-			"weaponData": {
-				"damage": "1d10",
-				"damageType": "P",
-				"group": "Pick"
 			}
 		},
 		{
@@ -3563,37 +4956,6 @@
 			}
 		},
 		{
-			"name": "Hellknight Plate",
-			"source": "LOCG",
-			"page": 80,
-			"type": "Item",
-			"level": 2,
-			"traits": [
-				"uncommon",
-				"bulwark"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 35
-			},
-			"usage": "worn armor",
-			"bulk": 4,
-			"category": "Armor",
-			"subCategory": "Heavy",
-			"entries": [
-				"Few armors in the Inner Sea region are as memorable as the iconic Hellknight plate. While each order has its own flourishes, Hellknight plate is instantly recognizable to any who know of the Hellknights.",
-				"Hellknights go to extreme measures to punish non-Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to {@item full plate}."
-			],
-			"armorData": {
-				"group": "Plate",
-				"ac": 6,
-				"dexCap": 0,
-				"str": 18,
-				"checkPen": 3,
-				"speedPen": 10
-			}
-		},
-		{
 			"name": "Hide",
 			"source": "CRB",
 			"page": 275,
@@ -3649,8 +5011,13 @@
 		},
 		{
 			"name": "Hook Sword",
-			"source": "FRP2",
-			"page": 76,
+			"otherSources": {
+				"Originally": [
+					"FRP2|76"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -3854,8 +5221,13 @@
 		},
 		{
 			"name": "Karambit",
-			"source": "FRP2",
-			"page": 76,
+			"otherSources": {
+				"Originally": [
+					"FRP2|76"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -3970,8 +5342,13 @@
 		},
 		{
 			"name": "Khopesh",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -4052,8 +5429,13 @@
 		},
 		{
 			"name": "Kusarigama",
-			"source": "FRP2",
-			"page": 76,
+			"otherSources": {
+				"Originally": [
+					"FRP2|76"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -4136,8 +5518,13 @@
 		},
 		{
 			"name": "Leiomano",
-			"source": "FRP2",
-			"page": 76,
+			"otherSources": {
+				"Originally": [
+					"FRP2|76"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -4307,7 +5694,6 @@
 			"name": "Daikyu",
 			"source": "APG",
 			"page": 248,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"propulsive",
@@ -4523,32 +5909,6 @@
 			}
 		},
 		{
-			"name": "Machete",
-			"source": "LOGM",
-			"page": 120,
-			"type": "Item",
-			"traits": [
-				"deadly <d8>",
-				"sweep"
-			],
-			"price": {
-				"amount": 7,
-				"coin": "sp"
-			},
-			"bulk": "L",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"This medium-length sword has a wide blade and long grip. Though it is typically used to hack through heavy foliage, the machete can also be used as a deadly weapon."
-			],
-			"weaponData": {
-				"damage": "1d6",
-				"damageType": "S",
-				"group": "Sword"
-			}
-		},
-		{
 			"name": "Main-gauche",
 			"source": "CRB",
 			"page": 281,
@@ -4580,8 +5940,13 @@
 		},
 		{
 			"name": "Mambele",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -4630,34 +5995,6 @@
 				"damage": "1d12",
 				"damageType": "B",
 				"group": "Hammer"
-			}
-		},
-		{
-			"name": "Meteor Hammer",
-			"source": "LOGM",
-			"page": 120,
-			"type": "Item",
-			"traits": [
-				"backswing",
-				"disarm",
-				"reach",
-				"trip"
-			],
-			"price": {
-				"amount": 3,
-				"coin": "gp"
-			},
-			"bulk": 2,
-			"hands": 2,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"This weapon consists of a long chain connected to a heavy weight at one end. When a wielder swings the weight by the chain, it builds momentum and can serve as a deadly bludgeon with incredible reach."
-			],
-			"weaponData": {
-				"damage": "1d8",
-				"damageType": "B",
-				"group": "Flail"
 			}
 		},
 		{
@@ -4748,8 +6085,13 @@
 		},
 		{
 			"name": "Naginata",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -4859,6 +6201,37 @@
 				"damage": "1d6",
 				"damageType": "B",
 				"group": "Club"
+			}
+		},
+		{
+			"name": "Rope Dart",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"disarm",
+				"finesse",
+				"sweep",
+				"tethered",
+				"thrown <20 feet>",
+				"trip"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A deceptively simple weapon made from a length of cord attached to a weighted, conical metal spike. A rope dart can be whirled and manipulated at great speeds to attack in unexpected ways and from unexpected angles."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Dart"
 			}
 		},
 		{
@@ -5141,8 +6514,13 @@
 		},
 		{
 			"name": "Polytool",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -5165,6 +6543,35 @@
 				"group": "Sword",
 				"damage": "1d6",
 				"damageType": "modular"
+			}
+		},
+		{
+			"name": "Sansetsukon",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"backswing",
+				"disarm",
+				"monk",
+				"parry"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The sansetsukon, also known as a sanjiegun or three-section staff, is made up of three wooden staff segments, each about 14 inches in length. The staff sections are connected by short lengths of cord or chain, similar to nunchaku."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Flail"
 			}
 		},
 		{
@@ -5665,6 +7072,92 @@
 			}
 		},
 		{
+			"name": "Dwarven Dorn-dergar",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"dwarf",
+				"razing",
+				"reach"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"A heavy, weighted cube of metal at the end of a long chain, the dorn-dergar is used by dwarven berserkers and sappers who specialize in breaking through lines of shielded opponents or disabling enemy siege weapons."
+			],
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "B",
+				"group": "Flail"
+			}
+		},
+		{
+			"name": "Chain Sword",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"finesse",
+				"reach",
+				"sweep"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"This weapon has a hilt like a longsword attached to several bladed segments connected by chain links. A highly technical weapon, the chain sword is valued by duelists and experienced soldiers alike in the nations of Nirmathas and Molthune."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			}
+		},
+		{
+			"name": "Whipstaff",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"agile",
+				"finesse",
+				"monk",
+				"parry",
+				"sweep"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The whipstaff is a 5-foot-long staff carved from alchemically treated wood. Exceptionally light and well-balanced, whipstaffs are favored by travelers and martial artists who prioritize speed over power."
+			],
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			}
+		},
+		{
 			"name": "Scourge",
 			"source": "LOCG",
 			"page": 80,
@@ -5815,6 +7308,7 @@
 				"amount": 5,
 				"coin": "sp"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
@@ -5840,6 +7334,7 @@
 				"amount": 5,
 				"coin": "sp"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
@@ -5850,6 +7345,38 @@
 				"damage": "1d6",
 				"damageType": "P",
 				"group": "Shield"
+			}
+		},
+		{
+			"name": "Feng Huo Lun",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"agile",
+				"disarm",
+				"finesse",
+				"monk",
+				"parry",
+				"twin",
+				"versatile <P>"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"Also known as wind and fire wheels, these large, flat steel rings feature several protruding blades typically stylized to resemble flames."
+			],
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
 			}
 		},
 		{
@@ -5925,6 +7452,7 @@
 				"amount": 1,
 				"coin": "cp"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
@@ -6467,9 +7995,48 @@
 			}
 		},
 		{
+			"name": "Barricade Buster",
+			"source": "TV",
+			"page": 30,
+			"level": 1,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"kickback",
+				"orc",
+				"razing",
+				"repeating",
+				"volley <20 ft.>"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"bulk": 3,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"Developed by a half-orc inventor from Alkenstar who brought the technology north to battle the Whispering Tyrant alongside the orc hordes of Belkzen, the barricade buster features eight barrels fixed around a central pivot attached to a handle and firing mechanism. A barricade buster fires spheres of metal with extreme velocity and very little accuracy."
+			],
+			"weaponData": {
+				"ammunition": "8-Round Magazine|TV",
+				"damage": "1d10",
+				"damageType": "B",
+				"reload": 0,
+				"range": 40,
+				"group": "Firearm|G&G"
+			}
+		},
+		{
 			"name": "Taw Launcher",
-			"source": "LOAG",
-			"page": 139,
+			"otherSources": {
+				"Originally": [
+					"LOAG|139"
+				]
+			},
+			"source": "TV",
+			"page": 30,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -6486,10 +8053,10 @@
 			"category": "Weapon",
 			"subCategory": "Advanced",
 			"entries": [
-				"Designed by conrasu warriors, this complex device is a crossbow and fires small wooden bullets known as taws. A system of blades within the launcher can rapidly reshape a taw as it's loaded, allowing the launcher to fire taws of different shapes, such as fléchettes."
+				"This complex device is a crossbow and fires small wooden bullets known as taws. A system of blades within the launcher can rapidly reshape a taw as it's loaded, allowing the launcher to fire taws of different shapes, such as fléchettes."
 			],
 			"weaponData": {
-				"ammunition": "Wooden Taws|LOAG",
+				"ammunition": "Wooden Taws|TV",
 				"damage": "1d6",
 				"damageType": "modular",
 				"reload": 1,
@@ -6499,8 +8066,13 @@
 		},
 		{
 			"name": "Tekko-Kagi",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -6582,6 +8154,35 @@
 				"damage": "1d6",
 				"damageType": "S",
 				"group": "Sword"
+			}
+		},
+		{
+			"name": "Three-section Naginata",
+			"source": "TV",
+			"page": 25,
+			"type": "Item",
+			"traits": [
+				"uncommon",
+				"deadly <d8>",
+				"forceful",
+				"sweep",
+				"versatile <B>"
+			],
+			"price": {
+				"amount": 12,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"A fusion of a naginata and sansetsukon, this three-section weapon has a sweeping, curved blade along each of the outer sections. Though difficult for anyone but an expert weapon master to use effectively, the three-section naginata can be wielded at devastating speed to slice or smash apart a foe."
+			],
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Flail"
 			}
 		},
 		{
@@ -6754,6 +8355,296 @@
 			}
 		},
 		{
+			"name": "Caster's Targe",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"inscribed"
+			],
+			"shieldData": {
+				"bt": 6,
+				"hp": 12,
+				"hardness": 3,
+				"ac": 1
+			},
+			"entries": [
+				"This small shield is made from wood. It features a special panel of parchment along the inside surface that allows for writing."
+			]
+		},
+		{
+			"name": "Dart Shield",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"launching <dart>"
+			],
+			"shieldData": {
+				"bt": 6,
+				"hp": 12,
+				"hardness": 3,
+				"ac": 1
+			},
+			"entries": [
+				"This wooden shield features a spring-loaded device on its surface that can fire darts with powerful force. A small mechanism within the shield allows you to fire a dart even while actively holding the shield or blocking with it."
+			]
+		},
+		{
+			"name": "Fortress Shield",
+			"source": "TV",
+			"level": 1,
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 5,
+			"traits": [
+				"hefty <14>"
+			],
+			"shieldData": {
+				"bt": 12,
+				"hp": 24,
+				"hardness": 6,
+				"ac": 3,
+				"ac2": 4,
+				"speedPen": 10
+			},
+			"entries": [
+				"Also known as portable walls, these thick and heavy shields are slightly larger than tower shields. Like tower shields, they're typically made from wood reinforced with metal, but many are made from larger amounts of metal or even stone."
+			]
+		},
+		{
+			"name": "Gauntlet Buckler",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"foldaway"
+			],
+			"shieldData": {
+				"bt": 3,
+				"hp": 6,
+				"hardness": 3,
+				"ac": 1
+			},
+			"entries": [
+				"This buckler-sized shield is segmented, allowing it to collapse into a housing bound to a gauntlet for easy storage. A small catch enables you to expand the shield quickly in battle when you're in need of defense."
+			]
+		},
+		{
+			"name": "Harnessed Shield",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 2,
+			"traits": [
+				"harnessed"
+			],
+			"shieldData": {
+				"bt": 10,
+				"hp": 20,
+				"hardness": 5,
+				"ac": 2,
+				"speedPen": 5
+			},
+			"entries": [
+				"This large steel shield features a specialized opening to hold lances and similar weapons. Harnessed shields are a common backup for those who fight with jousting weapons in case they're forced into combat without their mounts. Balancing the weapon within the shield's hold is somewhat awkward, and longer weapons, like lances, need to be held closer to the body than usual for proper support."
+			]
+		},
+		{
+			"name": "Heavy Rondache",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"shieldData": {
+				"bt": 12,
+				"hp": 24,
+				"hardness": 5,
+				"ac": 1
+			},
+			"entries": [
+				"Similar in size to a buckler, this steel shield is intended to absorb as many blows as possible instead of deflecting attacks. It features multiple layers of metal and is reinforced with additional wood."
+			]
+		},
+		{
+			"name": "Hide Shield",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"deflecting <bludgeoning>"
+			],
+			"shieldData": {
+				"bt": 10,
+				"hp": 20,
+				"hardness": 4,
+				"ac": 2
+			},
+			"entries": [
+				"Hide shields come in a variety of shapes and sizes. Specialized tanning techniques combined with tough hides from creatures such as owlbears result in these particularly tough shields. The hardened hide of the shield still has enough flexibility to diminish the impact of battering and pummeling attacks."
+			]
+		},
+		{
+			"name": "Klar",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"integrated <1d6 S (versatile P)>"
+			],
+			"shieldData": {
+				"bt": 5,
+				"hp": 10,
+				"hardness": 3,
+				"ac": 1
+			},
+			"entries": [
+				"This traditional Shoanti armament combines a short metal blade with the skull of a large horned lizard, fashioned as a shield. The lightweight shield allows for quick attacks with its integrated blade."
+			]
+		},
+		{
+			"name": "Meteor Shield",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"shield throw <30 ft.>"
+			],
+			"shieldData": {
+				"bt": 8,
+				"hp": 16,
+				"hardness": 4,
+				"ac": 2
+			},
+			"entries": [
+				"Meteor shields are specifically designed with throwing in mind. A meteor shield is made from thin steel and has quick-release straps, allowing for easy, long-distance throws."
+			]
+		},
+		{
+			"name": "Razor Disc",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"integrated <1d6 S>",
+				"shield throw <20 ft.>"
+			],
+			"shieldData": {
+				"bt": 8,
+				"hp": 16,
+				"hardness": 4,
+				"ac": 1
+			},
+			"entries": [
+				"Several small blades line the outside edge of this steel shield. This specialized throwing shield is common among warriors in the Mwangi Expanse, where its blades can cut down foliage as it flies."
+			]
+		},
+		{
+			"name": "Salvo Shield",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"deflecting <physical ranged>"
+			],
+			"shieldData": {
+				"bt": 10,
+				"hp": 20,
+				"hardness": 4,
+				"ac": 2
+			},
+			"entries": [
+				"This specialized steel shield features an outer layer of angled wooden or steel plates, which help deflect or redirect incoming ranged projectiles but don't offer any additional protection against melee weapons."
+			]
+		},
+		{
+			"name": "Swordstealer Shield",
+			"source": "TV",
+			"page": 21,
+			"type": "Item",
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"category": "Shield",
+			"bulk": 1,
+			"traits": [
+				"deflecting <slashing>"
+			],
+			"shieldData": {
+				"bt": 10,
+				"hp": 20,
+				"hardness": 4,
+				"ac": 2
+			},
+			"entries": [
+				"This specialized steel shield features several wide metal hooks along its surface. These hooks help catch swords and other blades, reducing the impact of their incoming attacks."
+			]
+		},
+		{
 			"name": "Tower Shield",
 			"source": "CRB",
 			"page": 277,
@@ -6894,8 +8785,13 @@
 		},
 		{
 			"name": "Urumi",
-			"source": "LOGM",
-			"page": 120,
+			"otherSources": {
+				"Originally": [
+					"LOGM|120"
+				]
+			},
+			"source": "TV",
+			"page": 25,
 			"type": "Item",
 			"traits": [
 				"uncommon",
@@ -6911,7 +8807,7 @@
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"entries": [
-				"A bouquet of whiplike blades extends from the hilt of this sword."
+				"A bouquet of whiplike blades extends from the hilt of this sword, enabling deadly, sweeping attacks."
 			],
 			"weaponData": {
 				"damage": "1d6",
@@ -6974,34 +8870,6 @@
 				"damage": "1d10",
 				"damageType": "B",
 				"group": "Flail"
-			}
-		},
-		{
-			"name": "War Razor",
-			"source": "LOGM",
-			"page": 120,
-			"type": "Item",
-			"traits": [
-				"agile",
-				"backstabber",
-				"deadly <d8>",
-				"finesse"
-			],
-			"price": {
-				"amount": 3,
-				"coin": "sp"
-			},
-			"bulk": "L",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"A war razor is an exaggerated version of the barbers' tool. It is a brittle but extremely sharp weapon that is very easy to slip into a pocket or sleeve."
-			],
-			"weaponData": {
-				"damage": "1d4",
-				"damageType": "S",
-				"group": "Knife"
 			}
 		},
 		{

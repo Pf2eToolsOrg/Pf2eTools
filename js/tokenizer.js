@@ -161,6 +161,11 @@ class TokenizerUtils {
 			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
+	static get category () {
+		return [
+			{regex: /^Category\s/, type: "CATEGORY", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
 	static get usage () {
 		return [
 			{regex: /^Usage\s/, type: "USAGE", lookbehind: /(\n|[;.)]\s)$/},
@@ -196,6 +201,7 @@ class TokenizerUtils {
 			{regex: /^([A-Z][a-z]*?)\sLore\s/, type: "LORE"},
 			// We are back with ugly regex
 			{regex: /^((?:\b[\w-]*?\s)+)Lore\s/, type: "LORE"},
+			{regex: /^Lore\s+\(.*?\)\s/, type: "LORE_SOME"},
 			{regex: /^Lore\s/, type: "LORE_ALL"},
 			{regex: /^Medicine\s/, type: "MEDICINE"},
 			{regex: /^Nature\s/, type: "NATURE"},
@@ -249,6 +255,11 @@ class TokenizerUtils {
 	static get hp () {
 		return [
 			{regex: /^HP\s/, type: "HP", lookbehind: /\n$/, prev: {depth: 10, types: [...this.creatureSavingThrows.map(it => it.type)]}},
+		]
+	}
+	static get thresholds () {
+		return [
+			{regex: /^Thresholds\s/, type: "THRESHOLDS", lookbehind: /(\n|[;,.)]\s)$/},
 		]
 	}
 	static get resistances () {
@@ -404,6 +415,7 @@ class TokenizerUtils {
 			...this.traditions,
 			...this.traditionsSubclasses,
 			...this.trigger,
+			...this.category,
 			...this.usage,
 		]
 	}
@@ -471,6 +483,7 @@ class TokenizerUtils {
 			...this.targets,
 			...this.trigger,
 			...this.usage,
+			...this.category,
 		]
 	}
 	static get propertiesBackgrounds () {
@@ -498,6 +511,7 @@ class TokenizerUtils {
 			...this.ac,
 			...this.creatureSavingThrows,
 			...this.hp,
+			...this.thresholds,
 			...this.resistances,
 			...this.weaknesses,
 			...this.immunities,
@@ -911,6 +925,7 @@ class TokenizerUtils {
 			{cat: "Snare"},
 			{cat: "Spellheart"},
 			{cat: "Staff"},
+			{cat: "Missive"},
 			{cat: "Structure"},
 			{cat: "Talisman"},
 			{cat: "Tattoo"},

@@ -143,7 +143,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -200,7 +199,7 @@
 					"name": "defender's link"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 120
@@ -489,7 +488,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"tradition": "arcane",
 					"type": "Innate",
 					"DC": 41,
@@ -546,7 +544,6 @@
 				"bot": [
 					{
 						"name": "Improved Knockdown",
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -755,7 +752,7 @@
 							"fire"
 						],
 						"entries": [
-							"The clockwork cannoneer spews flames from one of its cannons, dealing {@damage 8d6} fire damage in a 30-foot cone (DC 36 basic Reflex save). Those that fail the save also take {@damage 2d6} {@condition persistent damage ||persistent fire damage}."
+							"The clockwork cannoneer spews flames from one of its cannons, dealing {@damage 8d6} fire damage in a 30-foot cone (DC 36 basic Reflex save). Those that fail the save also take {@damage 2d6} {@condition persistent damage||persistent fire damage}."
 						]
 					}
 				]
@@ -783,7 +780,9 @@
 			],
 			"languages": {
 				"languages": [
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"plus any two ancient languages (can't speak)"
 				]
 			},
@@ -931,7 +930,9 @@
 			"languages": {
 				"languages": [
 					"aklo",
-					"common",
+					"common"
+				],
+				"notes": [
 					"two other languages"
 				]
 			},
@@ -1008,12 +1009,11 @@
 					],
 					"name": "fanged-maw finger",
 					"attack": 20,
-					"damage": "{@damage 2d10+3} piercing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d10+3} piercing plus {@damage 1d8} {@condition persistent damage||persistent bleed}"
 				}
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 25,
@@ -1033,11 +1033,11 @@
 							"spells": [
 								{
 									"name": "blood vendetta",
-									"source": "advanced players guide"
+									"source": "APG"
 								},
 								{
 									"name": "charitable urge",
-									"source": "advanced players guide"
+									"source": "APG"
 								}
 							]
 						}
@@ -1090,9 +1090,9 @@
 							"occult",
 							"transmutation"
 						],
-						"requirements": "The conformer is within reach of an {@condition unconscious} or willing creature, or a creature taking {@condition persistent damage ||persistent bleed damage}",
+						"requirements": "The conformer is within reach of an {@condition unconscious} or willing creature, or a creature taking {@condition persistent damage||persistent bleed damage}",
 						"entries": [
-							"The conformer touches and absorbs some of the creature's flesh. The target must attempt a DC 26 Fortitude save; on a failure, they become {@condition drained||drained 1} and take damage from their {@condition persistent damage ||persistent bleed damage}, even though it isn't the end of their turn."
+							"The conformer touches and absorbs some of the creature's flesh. The target must attempt a DC 26 Fortitude save; on a failure, they become {@condition drained||drained 1} and take damage from their {@condition persistent damage||persistent bleed damage}, even though it isn't the end of their turn."
 						]
 					},
 					{
@@ -1248,7 +1248,7 @@
 							"evocation"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "turn"
 						},
 						"trigger": "The fleshforged dreadnought is damaged by a non-reach piercing or slashing melee {@action Strike}",
@@ -1281,7 +1281,7 @@
 						],
 						"entries": [
 							"The fleshforged dreadnought releases a wave of caustic fluid from vents in its sides.",
-							"Creatures within a 20-foot emanation take {@damage 8d6} acid damage (DC 40 basic Reflex save). Creatures who fail their saves also take {@damage 3d6} {@condition persistent damage ||persistent acid damage}."
+							"Creatures within a 20-foot emanation take {@damage 8d6} acid damage (DC 40 basic Reflex save). Creatures who fail their saves also take {@damage 3d6} {@condition persistent damage||persistent acid damage}."
 						]
 					},
 					{
@@ -1411,7 +1411,7 @@
 							"unit": "reaction"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "The skinskitter is reduced to 0 HP",
@@ -1548,7 +1548,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 20,
@@ -1709,7 +1708,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"tradition": "occult",
 					"type": "Spontaneous",
 					"DC": 21,
@@ -1787,7 +1785,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -1919,8 +1917,7 @@
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
-						},
-						"entries": []
+						}
 					}
 				],
 				"bot": [
@@ -2457,7 +2454,7 @@
 					{
 						"name": "Serrated Plates",
 						"entries": [
-							"Creatures who take damage from an ugvashi's body must attempt a DC 17 Reflex save or take {@damage 1d4} {@condition persistent damage ||persistent bleed damage} ({@dice 2d4} on a critical failure)."
+							"Creatures who take damage from an ugvashi's body must attempt a DC 17 Reflex save or take {@damage 1d4} {@condition persistent damage||persistent bleed damage} ({@dice 2d4} on a critical failure)."
 						]
 					}
 				]

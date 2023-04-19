@@ -77,7 +77,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 21,
@@ -168,7 +167,7 @@
 							"necromancy"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -556,7 +555,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "turn"
 						},
 						"requirements": "The pale stranger is wielding two loaded firearms",
@@ -691,12 +690,11 @@
 					],
 					"name": "rosebriar lash",
 					"attack": 28,
-					"damage": "{@damage 4d8+8} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 4d8+8} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
 				}
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 41,
@@ -944,7 +942,7 @@
 					"common",
 					"necril"
 				],
-				"abilities": [
+				"notes": [
 					"one other language"
 				]
 			},
@@ -1017,7 +1015,11 @@
 						],
 						"entries": [
 							"When destroyed, hungry ghosts reform after {@dice 2d4} days fully healed at whatever location they were at when last destroyed. They're only permanently destroyed when they have been given a proper burial, have had their grave cleaned and maintained for at least a year, or have been judged to be redeemed by {@deity Pharasma}."
-						]
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -1091,13 +1093,7 @@
 					{
 						"name": "all damage",
 						"amount": 5,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -1180,7 +1176,7 @@
 					],
 					"name": "jaws",
 					"attack": 15,
-					"damage": "{@damage 2d8+4} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d8+4} piercing plus {@damage 1d4} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -1200,7 +1196,6 @@
 						"traits": [
 							"page 212"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -1391,7 +1386,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 39,
@@ -1416,7 +1410,9 @@
 							"spells": [
 								{
 									"name": "haste",
-									"note": "self only"
+									"notes": [
+										"self only"
+									]
 								}
 							]
 						},
@@ -1517,13 +1513,7 @@
 					{
 						"name": "all damage",
 						"amount": 15,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -1673,7 +1663,9 @@
 			"languages": {
 				"languages": [
 					"common",
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"plus any one language spoken in life"
 				]
 			},
@@ -2036,7 +2028,7 @@
 					],
 					"name": "fangs",
 					"attack": 24,
-					"damage": "{@damage 2d12+13} piercing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d12+13} piercing plus {@damage 1d8} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -2052,7 +2044,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 30,
@@ -2080,7 +2071,9 @@
 							"spells": [
 								{
 									"name": "charm",
-									"note": "animals only"
+									"notes": [
+										"animals only"
+									]
 								}
 							]
 						},
@@ -2088,7 +2081,9 @@
 							"spells": [
 								{
 									"name": "command",
-									"note": "animals only"
+									"notes": [
+										"animals only"
+									]
 								},
 								{
 									"name": "vampiric touch"
@@ -2106,7 +2101,9 @@
 							"spells": [
 								{
 									"name": "nature's enmity",
-									"note": "only while within the area to which the bhuta is bound"
+									"notes": [
+										"only while within the area to which the bhuta is bound"
+									]
 								}
 							]
 						},
@@ -2212,13 +2209,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -2294,7 +2285,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 22,
@@ -2344,7 +2334,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "A creature within 30 feet of the bone croupier attempts a check but hasn't rolled the check yet",
@@ -2672,7 +2662,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 26,
@@ -2780,7 +2769,7 @@
 							"necromancy"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "minute"
 						},
 						"requirements": "The child of {@deity Urgathoa} is adjacent to a creature that died within the last minute",
@@ -2860,10 +2849,7 @@
 			"languages": {
 				"languages": [
 					"common",
-					"necril"
-				],
-				"abilities": [
-					"can't speak any language"
+					"necril (can't speak any language)"
 				]
 			},
 			"skills": {
@@ -2890,7 +2876,7 @@
 					"range": "Melee",
 					"name": "fire fist",
 					"attack": 12,
-					"damage": "{@damage 1d6+4} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent fire}"
+					"damage": "{@damage 1d6+4} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent fire}"
 				},
 				{
 					"range": "Ranged",
@@ -2899,7 +2885,7 @@
 					],
 					"name": "fire mote",
 					"attack": 11,
-					"damage": "{@damage 1d4+4} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}"
+					"damage": "{@damage 1d4+4} fire plus {@damage 1d6} {@condition persistent damage||persistent fire}"
 				}
 			],
 			"abilities": {
@@ -3089,7 +3075,6 @@
 						"traits": [
 							"page 212"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3105,7 +3090,7 @@
 							"primal"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"requirements": "The corpseroot has a creature {@condition grabbed} or {@condition restrained}",
@@ -3187,7 +3172,7 @@
 					"name": "greater darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -3266,7 +3251,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 34,
@@ -3305,7 +3289,9 @@
 							"spells": [
 								{
 									"name": "plane shift",
-									"note": "to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									"notes": [
+										"to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									]
 								}
 							]
 						}
@@ -3446,7 +3432,7 @@
 					"name": "greater darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -3504,7 +3490,7 @@
 					],
 					"name": "horn",
 					"attack": 31,
-					"damage": "{@damage 3d8+12} bludgeoning plus {@damage 1d10} cold and {@damage 2d8} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 3d8+12} bludgeoning plus {@damage 1d10} cold and {@damage 2d8} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -3520,7 +3506,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 36,
@@ -3563,7 +3548,9 @@
 								},
 								{
 									"name": "plane shift",
-									"note": "to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									"notes": [
+										"to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									]
 								}
 							]
 						},
@@ -3738,7 +3725,7 @@
 					"name": "greater darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -3818,7 +3805,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 40,
@@ -3846,7 +3832,9 @@
 								},
 								{
 									"name": "plane shift",
-									"note": "to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									"notes": [
+										"to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									]
 								},
 								{
 									"name": "true seeing"
@@ -4030,7 +4018,7 @@
 					"name": "greater darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -4096,7 +4084,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 43,
@@ -4113,7 +4100,9 @@
 							"spells": [
 								{
 									"name": "plane shift",
-									"note": "to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									"notes": [
+										"to Material Plane, Negative Energy Plane, or Shadow Plane only"
+									]
 								},
 								{
 									"name": "true seeing"
@@ -4178,7 +4167,7 @@
 						},
 						"requirements": "A creature is {@condition grabbed} or {@condition restrained} in the nasurgeth's jaws",
 						"entries": [
-							"The nasurgeth breaks a tooth off in the target, who takes {@damage 3d10} {@condition persistent damage ||persistent bleed damage} and is no longer {@condition grabbed} or {@condition restrained}. If the target is adjacent to a surface, the tooth also pins it in place, making it {@condition immobilized} ({@action Escape} DC 45)."
+							"The nasurgeth breaks a tooth off in the target, who takes {@damage 3d10} {@condition persistent damage||persistent bleed damage} and is no longer {@condition grabbed} or {@condition restrained}. If the target is adjacent to a surface, the tooth also pins it in place, making it {@condition immobilized} ({@action Escape} DC 45)."
 						]
 					},
 					{
@@ -4271,7 +4260,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -4326,7 +4315,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 34,
@@ -4454,13 +4442,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -4541,7 +4523,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"tradition": "divine",
 					"type": "Prepared",
 					"DC": 19,
@@ -4742,7 +4723,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"tradition": "divine",
 					"type": "Prepared",
 					"DC": 25,
@@ -4861,7 +4841,7 @@
 						],
 						"trigger": "A creature within 60 feet who the deathless hierophant can see and who doesn't worship {@deity Urgathoa} casts a divine spell",
 						"entries": [
-							"The deathless hierophant attempts to counteract the triggering spell using their spell attack modifier and a counteract level of 4. If the spell is counteracted, the caster takes {@damage 1d10} {@condition persistent damage ||persistent negative damage}. If the deathless hierophant fails to counteract the spell, the caster is temporarily immune to further uses of this ability for 24 hours."
+							"The deathless hierophant attempts to counteract the triggering spell using their spell attack modifier and a counteract level of 4. If the spell is counteracted, the caster takes {@damage 1d10} {@condition persistent damage||persistent negative damage}. If the deathless hierophant fails to counteract the spell, the caster is temporarily immune to further uses of this ability for 24 hours."
 						]
 					}
 				]
@@ -4979,10 +4959,10 @@
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": [
-										"The ecorche fully pulls the target's skin off its body. The creature takes {@damage 4d8} {@condition persistent damage ||persistent bleed damage}, and it's {@condition frightened||frightened 4} and {@condition stunned||stunned 4}. The bleed damage can't end naturally, only ending if the creature regains at least 75 HP or regains at least 10 HP from regeneration."
+										"The ecorche fully pulls the target's skin off its body. The creature takes {@damage 4d8} {@condition persistent damage||persistent bleed damage}, and it's {@condition frightened||frightened 4} and {@condition stunned||stunned 4}. The bleed damage can't end naturally, only ending if the creature regains at least 75 HP or regains at least 10 HP from regeneration."
 									],
 									"Success": [
-										"The target takes {@damage 2d8} {@condition persistent damage ||persistent bleed damage} and is {@condition stunned||stunned 1}."
+										"The target takes {@damage 2d8} {@condition persistent damage||persistent bleed damage} and is {@condition stunned||stunned 1}."
 									]
 								}
 							}
@@ -5591,7 +5571,7 @@
 							"negative"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -5900,7 +5880,7 @@
 							"mental"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "minute"
 						},
 						"entries": [
@@ -5918,7 +5898,7 @@
 							"necromancy"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"requirements": "The geist is within 100 feet of an active haunt",
@@ -5962,13 +5942,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -6072,7 +6046,7 @@
 							"fortune"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "The gholdako is about to roll a d20",
@@ -6231,7 +6205,10 @@
 						"name": "Ship Bound",
 						"entries": [
 							"The ghost is typically bound to a vessel, even one damaged beyond repair. They can't venture more than 120 feet away from the ship or site of its wreckage."
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -6253,8 +6230,12 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the ghost pirate captain is destroyed, they re-form after {@dice 2d4} days within the ship or location they're bound to, fully healed. They can be permanently destroyed if their desires are fulfilled, which could involve being defeated in a great battle or ensuring their treasure has been {@condition hidden}."
-						]
+							"When the ghost pirate captain is destroyed, they re-form after {@dice 2d4} days within the ship or location they're bound to, fully healed. They can be permanently destroyed if their desires are fulfilled, which could involve being defeated in a great battle or ensuring their treasure has been hidden."
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -6321,13 +6302,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -6614,7 +6589,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"tradition": "divine",
 					"type": "Prepared",
 					"DC": 23,
@@ -6980,13 +6954,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -7144,7 +7112,6 @@
 						"traits": [
 							"page 212"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -7172,7 +7139,7 @@
 							"visual"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -7334,7 +7301,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"tradition": "divine",
 					"type": "Prepared",
 					"DC": 24,
@@ -7579,7 +7545,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 25,
@@ -7604,7 +7569,7 @@
 							"spells": [
 								{
 									"name": "touch of corruption",
-									"note": "Advanced Player's Guide 229"
+									"source": "APG"
 								},
 								{
 									"name": "unimpeded stride"
@@ -7651,7 +7616,6 @@
 						"traits": [
 							"page 212"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -7665,7 +7629,6 @@
 						"traits": [
 							"page 213"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -7760,7 +7723,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -7830,7 +7793,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 35,
@@ -7839,7 +7801,9 @@
 							"spells": [
 								{
 									"name": "vampiric exsanguination",
-									"note": "drawing in moisture rather than blood"
+									"notes": [
+										"drawing in moisture rather than blood"
+									]
 								}
 							]
 						},
@@ -7974,7 +7938,9 @@
 			"languages": {
 				"languages": [
 					"common",
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"plus any one language"
 				]
 			},
@@ -8142,7 +8108,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 30
@@ -8228,7 +8194,7 @@
 							"transmutation"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "hour"
 						},
 						"entries": [
@@ -8318,7 +8284,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -8375,14 +8341,17 @@
 						],
 						"entries": [
 							"When a last guard is destroyed, they re-form after {@dice 2d4} days within the location they're bound to, fully healed. A last guard can be permanently destroyed and move on to the afterlife only if they successfully defend the location they're bound to from large-scale attack, or fulfill a call to war."
-						]
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					},
 					{
 						"name": "Troop Defenses",
 						"traits": [
 							"page 214"
-						],
-						"entries": []
+						]
 					}
 				],
 				"bot": [
@@ -8424,7 +8393,7 @@
 							"entry": "{@as 1} to {@as 3}"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -8469,10 +8438,19 @@
 					{
 						"hp": 330,
 						"abilities": [
-							"negative healing (page 213)",
-							"rejuvenation; Thresholds 220 (12 squares)",
-							"110 (8 squares)"
+							"negative healing",
+							"rejuvenation"
 						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 220,
+						"squares": 12
+					},
+					{
+						"value": 110,
+						"squares": 8
 					}
 				],
 				"immunities": [
@@ -8497,13 +8475,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -8587,7 +8559,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 39,
@@ -8742,8 +8713,7 @@
 			"abilities": {
 				"top": [
 					{
-						"name": "Jotun, Necril, Undercommon",
-						"entries": []
+						"name": "Jotun, Necril, Undercommon"
 					},
 					{
 						"name": "Deception+27,",
@@ -8880,7 +8850,7 @@
 					{
 						"name": "physical",
 						"amount": 10,
-						"note": "(except magic bludgeoning)"
+						"note": "except magic bludgeoning"
 					}
 				]
 			},
@@ -8991,7 +8961,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"tradition": "occult",
 					"type": "Spontaneous",
 					"DC": 45,
@@ -9208,7 +9177,7 @@
 							"manipulate"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -9287,7 +9256,7 @@
 					{
 						"name": "physical",
 						"amount": 10,
-						"note": "(except magic bludgeoning)"
+						"note": "except magic bludgeoning"
 					}
 				]
 			},
@@ -9315,7 +9284,9 @@
 			"languages": {
 				"languages": [
 					"common",
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"one additional language"
 				]
 			},
@@ -9619,13 +9590,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -9752,7 +9717,7 @@
 					{
 						"name": "Smoldering Fist",
 						"entries": [
-							"On a critical hit, the shadern immolator's fist {@action Strike} also deals {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
+							"On a critical hit, the shadern immolator's fist {@action Strike} also deals {@damage 1d4} {@condition persistent damage||persistent fire damage}."
 						]
 					}
 				]
@@ -9862,7 +9827,7 @@
 					],
 					"name": "bone spike",
 					"attack": 14,
-					"damage": "{@damage 2d8+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d8+2} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Ranged",
@@ -10209,7 +10174,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 15,
@@ -10327,7 +10291,9 @@
 			],
 			"languages": {
 				"languages": [
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"plus any one language they knew while alive"
 				]
 			},
@@ -10474,7 +10440,9 @@
 			"languages": {
 				"languages": [
 					"common",
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"plus any two languages they knew while alive"
 				]
 			},
@@ -10691,7 +10659,9 @@
 			],
 			"languages": {
 				"languages": [
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"plus any two languages they knew while alive"
 				]
 			},
@@ -10816,7 +10786,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -10897,7 +10867,9 @@
 			],
 			"languages": {
 				"languages": [
-					"necril",
+					"necril"
+				],
+				"notes": [
 					"plus any two languages they knew while alive"
 				]
 			},
@@ -10971,7 +10943,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"tradition": "divine",
 					"type": "Prepared",
 					"DC": 33,
@@ -11159,7 +11130,7 @@
 							"transmutation"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -11203,7 +11174,7 @@
 							"earth"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -11325,7 +11296,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 34,
@@ -11495,7 +11465,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 32,
@@ -11558,7 +11527,7 @@
 							"necromancy"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "hour"
 						},
 						"entries": [
@@ -11648,7 +11617,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 30
@@ -11657,7 +11626,7 @@
 				}
 			],
 			"languages": {
-				"languages": [
+				"notes": [
 					"any one language known by the polong's creator"
 				]
 			},
@@ -11757,7 +11726,6 @@
 						"traits": [
 							"page 213"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -11805,13 +11773,7 @@
 					{
 						"name": "all",
 						"amount": 5,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -12033,7 +11995,7 @@
 				"athletics": {
 					"std": 27
 				},
-				"intimidate": {
+				"intimidation": {
 					"std": 24
 				},
 				"stealth": {
@@ -12507,7 +12469,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"tradition": "primal",
 					"type": "Prepared",
 					"DC": 41,
@@ -12651,7 +12612,9 @@
 								},
 								{
 									"name": "wild shape",
-									"note": "any form from animal form, elemental form, insect form, pest form, plant shape, or soaring shape"
+									"notes": [
+										"any form from animal form, elemental form, insect form, pest form, plant shape, or soaring shape"
+									]
 								}
 							]
 						}
@@ -12674,8 +12637,7 @@
 				],
 				"bot": [
 					{
-						"name": "Blight Mastery",
-						"entries": []
+						"name": "Blight Mastery"
 					},
 					{
 						"name": "Steady Spellcasting",
@@ -13069,7 +13031,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"tradition": "arcane",
 					"type": "Innate",
 					"DC": 22,
@@ -13532,7 +13493,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 31,
@@ -13706,7 +13666,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 26,
@@ -13767,7 +13726,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The sluagh reaper becomes incorporeal until the start of their next turn, and Flies up to their fly Speed. While incorporeal, they are immune to precision damage, and have resistance 10 to all damage (except force, ghost touch, or positive); this resistance is doubled against non-magical damage. After using Ghostly Swoop, the sluagh reaper can't use it again for {@dice 1d4} rounds."
+							"The sluagh reaper becomes incorporeal until the start of their next turn, and Flies up to their fly Speed. While incorporeal, they are immune to precision damage, and have resistance 10 to all damage (except force, {@item ghost touch}, or positive); this resistance is doubled against non-magical damage. After using Ghostly Swoop, the sluagh reaper can't use it again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -13936,7 +13895,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 41,
@@ -13961,7 +13919,9 @@
 							"spells": [
 								{
 									"name": "visions of danger",
-									"note": "a swarm of sluagh reapers"
+									"notes": [
+										"a swarm of sluagh reapers"
+									]
 								}
 							]
 						},
@@ -14145,7 +14105,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -14196,7 +14156,7 @@
 					],
 					"name": "painful touch",
 					"attack": 28,
-					"damage": "{@damage 4d6+14} mental plus {@damage 2d6} {@condition persistent damage ||persistent mental damage}"
+					"damage": "{@damage 4d6+14} mental plus {@damage 2d6} {@condition persistent damage||persistent mental damage}"
 				}
 			],
 			"abilities": {
@@ -14249,7 +14209,7 @@
 							"piercing"
 						],
 						"entries": [
-							"The tormented was pierced with spears or blades and left to slowly die. The target takes {@damage 8d4} {@condition persistent damage ||persistent bleed damage}. (The creature doesn't take the {@condition persistent damage} this turn, nor does it get its flat check to end the damage.)"
+							"The tormented was pierced with spears or blades and left to slowly die. The target takes {@damage 8d4} {@condition persistent damage||persistent bleed damage}. (The creature doesn't take the {@condition persistent damage} this turn, nor does it get its flat check to end the damage.)"
 						]
 					},
 					{
@@ -14322,7 +14282,13 @@
 					"disease",
 					"paralyzed",
 					"poison",
-					"unconscious; Weakness endless suffering 10"
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "endless suffering"
+					}
 				]
 			},
 			"hasImages": true
@@ -14354,7 +14320,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 30
@@ -14605,7 +14571,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 32,
@@ -14660,12 +14625,10 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Jiang-Shi Vulnerabilities",
-						"entries": []
+						"name": "Jiang-Shi Vulnerabilities"
 					},
 					{
-						"name": "Warped Fulu",
-						"entries": []
+						"name": "Warped Fulu"
 					}
 				],
 				"bot": [
@@ -14825,7 +14788,7 @@
 								},
 								{
 									"name": "medusa's wrath",
-									"note": "Advanced Player's Guide 229"
+									"source": "APG"
 								},
 								{
 									"name": "wind jump"
@@ -14838,12 +14801,10 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Jiang-Shi Vulnerabilities",
-						"entries": []
+						"name": "Jiang-Shi Vulnerabilities"
 					},
 					{
-						"name": "Warped Fulu",
-						"entries": []
+						"name": "Warped Fulu"
 					}
 				],
 				"bot": [
@@ -14900,7 +14861,7 @@
 								"type": "list",
 								"items": [
 									"Cloudless Void The jiang-shi gains a +1 circumstance bonus to AC and their claw {@action Strike||Strikes} gain the {@trait reach} trait.",
-									"Sundered Veins Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage ||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled||enfeebled 1}."
+									"Sundered Veins Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled||enfeebled 1}."
 								]
 							}
 						]
@@ -15054,8 +15015,7 @@
 						]
 					},
 					{
-						"name": "Drain Thoughts.",
-						"entries": []
+						"name": "Drain Thoughts."
 					},
 					{
 						"name": "Drain Thoughts",
@@ -15209,7 +15169,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 30,
@@ -15226,7 +15185,6 @@
 					}
 				},
 				{
-					"name": "Occult Prepared",
 					"tradition": "occult",
 					"type": "Prepared",
 					"DC": 30,
@@ -15300,7 +15258,7 @@
 							"spells": [
 								{
 									"name": "agonizing despair",
-									"note": "Advanced Player's Guide 214"
+									"source": "APG"
 								},
 								{
 									"name": "fly"
@@ -15372,7 +15330,6 @@
 						"components": [
 							"and paralyzing claws"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -15386,8 +15343,7 @@
 							"necromancy",
 							"occult",
 							"possession"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Drain Thoughts",
@@ -15546,7 +15502,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 24,
@@ -15633,7 +15588,7 @@
 							"transmutation"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"interval": 10,
 							"unit": "minute"
 						},
@@ -15678,13 +15633,7 @@
 					{
 						"name": "all damage",
 						"amount": 5,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -15758,7 +15707,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the seetangeist's space takes {@damage 3d6} slashing and {@damage 3d6} poison damage (DC 32 basic Reflex save). A creature that fails this save also takes {@damage 1d12} {@condition persistent damage ||persistent poison damage}."
+							"Each enemy in the seetangeist's space takes {@damage 3d6} slashing and {@damage 3d6} poison damage (DC 32 basic Reflex save). A creature that fails this save also takes {@damage 1d12} {@condition persistent damage||persistent poison damage}."
 						]
 					}
 				]
@@ -16236,7 +16185,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 29,
@@ -16264,7 +16212,6 @@
 						"traits": [
 							"page 212"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -16294,7 +16241,6 @@
 						"traits": [
 							"page 213"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -16897,7 +16843,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 21,
@@ -16938,7 +16883,7 @@
 								},
 								{
 									"name": "sudden blight",
-									"note": "Advanced Player's Guide 226"
+									"source": "APG"
 								}
 							]
 						}
@@ -16989,7 +16934,7 @@
 							"necromancy"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -17304,7 +17249,6 @@
 						"traits": [
 							"page 213"
 						],
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -17458,7 +17402,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"tradition": "divine",
 					"type": "Innate",
 					"DC": 21,
@@ -17550,7 +17493,7 @@
 							"necromancy"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [

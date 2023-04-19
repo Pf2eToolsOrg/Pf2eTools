@@ -218,7 +218,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -353,7 +352,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"tradition": "divine",
 					"type": "Prepared",
 					"DC": 30,
@@ -703,7 +701,7 @@
 						},
 						"requirements": "Ajbal's last action was a melee {@action Strike} that dealt sneak attack damage to a {@condition flat-footed} target",
 						"entries": [
-							"Ajbal deals 6 {@condition persistent damage ||persistent bleed damage} to the target creature, and the target is {@condition enfeebled||enfeebled 1} for as long as it's bleeding."
+							"Ajbal deals 6 {@condition persistent damage||persistent bleed damage} to the target creature, and the target is {@condition enfeebled||enfeebled 1} for as long as it's bleeding."
 						]
 					},
 					{
@@ -1394,7 +1392,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "The cyclops bully fails (but does not critically fail) an attack roll or an {@skill Intimidation} check",
@@ -1408,7 +1406,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -1507,7 +1504,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 26,
@@ -1516,7 +1512,7 @@
 							"spells": [
 								{
 									"name": "ill omen",
-									"note": "Advanced Player's Guide 221"
+									"source": "APG"
 								}
 							]
 						},
@@ -1551,7 +1547,7 @@
 								},
 								{
 									"name": "seal fate",
-									"note": "Advanced Player's Guide 224"
+									"source": "APG"
 								}
 							]
 						}
@@ -1755,7 +1751,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Spontaneous",
 					"tradition": "primal",
 					"type": "Spontaneous",
 					"DC": 28,
@@ -2001,7 +1996,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"tradition": "divine",
 					"type": "Spontaneous",
 					"DC": 30,
@@ -2141,14 +2135,14 @@
 							"spells": [
 								{
 									"name": "brain drain",
-									"note": "Advanced Player's Guide 230"
+									"source": "APG"
 								},
 								{
 									"name": "scholarly recollection"
 								},
 								{
 									"name": "vision of weakness",
-									"note": "Advanced Player's Guide 234"
+									"source": "APG"
 								}
 							]
 						}
@@ -2175,7 +2169,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 3,
+							"number": 3,
 							"unit": "day"
 						},
 						"trigger": "Halbrux is about to attempt a skill check",
@@ -2215,7 +2209,7 @@
 							"unit": "free"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -2376,7 +2370,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 29,
@@ -2590,7 +2583,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 21,
@@ -2606,7 +2598,7 @@
 								},
 								{
 									"name": "vomit swarm",
-									"note": "Advanced Player's Guide 227"
+									"source": "APG"
 								}
 							]
 						},
@@ -2768,7 +2760,6 @@
 			},
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 30,
@@ -2789,7 +2780,7 @@
 								},
 								{
 									"name": "vomit swarm",
-									"note": "Advanced Player's Guide 227"
+									"source": "APG"
 								}
 							]
 						}
@@ -3133,7 +3124,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 26,
@@ -3181,7 +3171,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3209,7 +3198,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 2,
+							"number": 2,
 							"unit": "day"
 						},
 						"entries": [
@@ -3309,7 +3298,10 @@
 						"entries": [
 							"A screaming sulfur becomes bound to the location where the people whose souls make up its form died.",
 							"It can stray up to 1,000 feet from this site of death, or up to 100 feet from the edges of any waterway associated with its death, whichever distance is shorter."
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -3333,7 +3325,11 @@
 						],
 						"entries": [
 							"Blessing the site where the screaming sulfur was formed and burying whatever dead remain allows the spirits within the screaming sulfur to move on to the afterlife, rendering it inert."
-						]
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -3390,13 +3386,7 @@
 					{
 						"name": "all damage",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -3476,7 +3466,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 29,
@@ -3520,7 +3509,7 @@
 							"spells": [
 								{
 									"name": "transmute rock and mud",
-									"note": [
+									"notes": [
 										"rock to mud only"
 									]
 								}
@@ -3531,7 +3520,7 @@
 								"spells": [
 									{
 										"name": "endure elements",
-										"note": [
+										"notes": [
 											"cold"
 										]
 									}
@@ -3755,7 +3744,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3770,7 +3758,7 @@
 							"divine"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "The Terwa chosen rolls a success or a critical failure on a check",
@@ -3787,7 +3775,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -3806,7 +3794,7 @@
 							"fortune"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "hour"
 						},
 						"entries": [
@@ -3919,7 +3907,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 24,
@@ -4086,7 +4073,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"tradition": "occult",
 					"type": "Spontaneous",
 					"DC": 25,
@@ -4190,7 +4176,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "An attack or effect would reduce an ally within 30 feet to 0 Hit Points or would cause the ally to gain the {@condition dying} condition",
@@ -4330,7 +4316,7 @@
 							"fortune"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "Thiarvo fails a skill check or a saving throw",
@@ -4497,7 +4483,7 @@
 							"fortune"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "Yonsuu fails or critically fails a Reflex saving throw",

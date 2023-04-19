@@ -42,6 +42,7 @@ class BackgroundPage extends ListPage {
 				hash,
 				source,
 				boosts,
+				aliases: bg.alias ? bg.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: bg.uniqueId || bgI,

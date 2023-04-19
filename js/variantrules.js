@@ -53,6 +53,7 @@ class VariantRulesPage extends ListPage {
 				search: searchStack.join(","),
 				source,
 				category: rule.subCategory || rule.category || "",
+				aliases: rule.alias ? rule.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: rule.uniqueId ? rule.uniqueId : rlI,

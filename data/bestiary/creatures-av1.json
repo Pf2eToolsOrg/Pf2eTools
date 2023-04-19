@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Aller Rosk",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 43,
 			"level": 5,
@@ -13,6 +12,7 @@
 				"ghoul",
 				"undead"
 			],
+			"description": "Male ghoul tattoo artist (Pathfinder Bestiary 168)",
 			"perception": {
 				"std": 15
 			},
@@ -25,7 +25,8 @@
 				"languages": [
 					"aklo",
 					"common",
-					"necril"
+					"necril",
+					"undercommon"
 				]
 			},
 			"skills": {
@@ -34,6 +35,9 @@
 				},
 				"athletics": {
 					"std": 14
+				},
+				"crafting": {
+					"std": 13
 				},
 				"occultism": {
 					"std": 11
@@ -94,8 +98,9 @@
 						"traits": [
 							"manipulate"
 						],
+						"requirements": "Aller is adjacent to a tattooed scrap of flesh or to the corpse of a creature that died within the last hour",
 						"entries": [
-							"Requirements Aller is adjacent to a tattooed scrap of flesh or to the corpse of a creature that died within the last hour; Aller devours a bite of flesh and regains {@dice 4d6} Hit Points.",
+							"Aller devours a bite of flesh and regains {@dice 4d6} Hit Points.",
 							"If the piece of flesh was tattooed, he is also {@condition quickened|CRB|quickened 1} and can use this extra action to make a jaws {@action Strike}. Aller then can't Consume Flesh for {@dice 1d4} rounds. He has one piece of tattooed flesh on his person."
 						],
 						"name": "Consume Tattooed Flesh"
@@ -154,12 +159,18 @@
 							"negative healing"
 						]
 					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
 		{
 			"name": "Augrael",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 35,
 			"level": 3,
@@ -250,13 +261,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+10, {@skill Stealth} +10 Str +4, Dex +3, Con +1, Int +1, Wis +3, Cha +1."
-						],
-						"name": "Occultism"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -376,7 +380,6 @@
 		},
 		{
 			"name": "Bloodsiphon",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 23,
 			"level": 4,
@@ -512,7 +515,6 @@
 		},
 		{
 			"name": "Boss Skrawng",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 11,
 			"level": 1,
@@ -523,6 +525,7 @@
 				"fey",
 				"gremlin"
 			],
+			"description": "Male mitflit gang boss (Pathfinder Bestiary 192)",
 			"perception": {
 				"std": 7
 			},
@@ -568,6 +571,11 @@
 				"wis": 2,
 				"cha": 1
 			},
+			"items": [
+				"blowgun (10 darts, 2 with spear frog poison)",
+				"mud and bug crown",
+				"trident"
+			],
 			"speed": {
 				"walk": 20,
 				"climb": 20
@@ -614,7 +622,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 17,
@@ -638,8 +645,9 @@
 							"spells": [
 								{
 									"name": "speak with animals",
+									"amount": "at will",
 									"notes": [
-										"at will; arthropods only"
+										"arthropods only"
 									]
 								}
 							]
@@ -649,12 +657,6 @@
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+5, {@skill Stealth} +7, {@skill Thievery} +7 Str +1, Dex +4, Con +1, Int +0, Wis +2, Cha +1."
-						],
-						"name": "Nature"
-					},
 					{
 						"traits": [
 							"emotion",
@@ -668,8 +670,7 @@
 					},
 					{
 						"entries": [
-							"As mitflit.",
-							"Items blowgun (10 darts, 2 with spear frog poison), mud and bug crown, trident."
+							"As mitflit."
 						],
 						"name": "Vermin Empathy",
 						"entries_as_xyz": "Ability not found: 'Vermin Empathy As mitflit.' in Boss Skrawng, p.11"
@@ -677,19 +678,26 @@
 				],
 				"bot": [
 					{
+						"type": "affliction",
+						"name": "Spear Frog Poison",
 						"traits": [
 							"poison"
 						],
-						"entries": [
-							"Saving Throw DC 15 Fortitude"
-						],
-						"name": "Spear Frog Poison"
-					},
-					{
-						"entries": [
-							"6 rounds; Stage 1 {@damage 1d4} poison damage (1 round); Stage 2 {@damage 1d6} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round)"
-						],
-						"name": "Maximum Duration"
+						"DC": 15,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"traits": [
@@ -721,15 +729,13 @@
 				},
 				"hp": [
 					{
-						"hp": 24,
-						"abilities": null
+						"hp": 24
 					}
 				]
 			}
 		},
 		{
 			"name": "Canker Cultist",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 41,
 			"level": 3,
@@ -740,6 +746,7 @@
 				"ghoul",
 				"undead"
 			],
+			"description": "Ghoul zealot (Pathfinder Bestiary 168)",
 			"perception": {
 				"std": 11
 			},
@@ -823,7 +830,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Prepared",
 					"type": "Prepared",
 					"tradition": "occult",
 					"DC": 20,
@@ -873,14 +879,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Religion} +8, {@skill Stealth} +9 Str +4, Dex +3, Con +1, Int +1, Wis +3, Cha +3 Items 2 lumps of decayed flesh strung on a necklace."
-						],
-						"name": "Occultism"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -927,8 +925,12 @@
 							},
 							{
 								"stage": 5,
-								"entry": "as stage 4 ",
+								"entry": "as stage 4",
 								"duration": "1 day"
+							},
+							{
+								"stage": 6,
+								"entry": "dead, and rises as a ghoul the next midnight"
 							}
 						]
 					},
@@ -981,13 +983,15 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
 		{
 			"name": "Chandriu Invisar",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 50,
 			"level": 6,
@@ -1056,11 +1060,13 @@
 			"abilities": {
 				"top": [
 					{
-						"traits": [
-							"area c36 and c37"
+						"entries": [
+							"(area C36 and C37)"
 						],
-						"entries": [],
-						"name": "Site Bound"
+						"name": "Site Bound",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -1073,7 +1079,11 @@
 							"To put Chandriu to rest permanently, a hero must convince her to stop pining over Volluk with a successful DC 21 {@skill Diplomacy} check.",
 							"Regardless of the result of this check, Chandriu flies into a rage and attacks, but if the {@skill Diplomacy} check is successful, she is {@condition slowed|CRB|slowed 1} for 10 rounds while she fights. If defeated while she is {@condition slowed}, she is put to rest."
 						],
-						"name": "Rejuvenation"
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -1124,7 +1134,6 @@
 		},
 		{
 			"name": "Corpselight",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 82,
 			"level": 2,
@@ -1306,7 +1315,6 @@
 		},
 		{
 			"name": "Flickerwisp",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 83,
 			"level": 2,
@@ -1407,7 +1415,7 @@
 						"requirements": "A creature within 15 feet of the flickerwisp is {@condition confused}",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The flickerwisp feeds on the creature's confusion, even as its flashing body and disjointed gyrations cause existing confusion effects to persist. It regains {@dice 1d4} Hit Points, and if the creature's {@condition confused} condition has a limited duration, it lasts 1 additional round."
@@ -1449,8 +1457,7 @@
 				},
 				"hp": [
 					{
-						"hp": 18,
-						"abilities": null
+						"hp": 18
 					}
 				],
 				"immunities": [
@@ -1461,7 +1468,6 @@
 		},
 		{
 			"name": "Jarelle Kaldrian",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 40,
 			"level": 5,
@@ -1528,11 +1534,13 @@
 			"abilities": {
 				"top": [
 					{
-						"traits": [
-							"area c13"
+						"entries": [
+							"(area C13)"
 						],
-						"entries": [],
-						"name": "Site Bound"
+						"name": "Site Bound",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -1544,7 +1552,11 @@
 						"entries": [
 							"Removing this room's tables and tools allows Jarelle to move on to the afterlife."
 						],
-						"name": "Rejuvenation"
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -1563,7 +1575,10 @@
 						"entries": [
 							"Jarelle attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell (with a spell DC of 22), except since Jarelle doesn't have a physical body, she is unaffected by that restriction of the spell."
 						],
-						"name": "Malevolent Possession"
+						"name": "Malevolent Possession",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -1613,7 +1628,6 @@
 		},
 		{
 			"name": "Jaul Mezmin",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 59,
 			"level": 6,
@@ -1715,7 +1729,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 24,
@@ -1832,8 +1845,7 @@
 				},
 				"hp": [
 					{
-						"hp": 120,
-						"abilities": null
+						"hp": 120
 					}
 				],
 				"weaknesses": [
@@ -1846,7 +1858,6 @@
 		},
 		{
 			"name": "Jaul's Wolf",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 60,
 			"level": 4,
@@ -1908,7 +1919,6 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [],
 						"name": "Knockdown",
 						"generic": {
 							"tag": "ability"
@@ -1939,15 +1949,13 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			}
 		},
 		{
 			"name": "Morlock Cultist",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 85,
 			"level": 4,
@@ -1981,7 +1989,8 @@
 					"Climbing": 13
 				},
 				"crafting": {
-					"std": 11
+					"std": 11,
+					"note": "Repair only"
 				},
 				"occultism": {
 					"std": 13
@@ -2042,12 +2051,27 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 21,
 					"attack": 13,
 					"entry": {
+						"0": {
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -2080,13 +2104,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [
-							"+11 ({@action Repair} only), {@skill Occultism} +13, {@skill Stealth} +11 Str +3, Dex +3, Con +1, Int +5, Wis +3, Cha +0 Items club."
-						],
-						"name": "Crafting"
-					},
-					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -2129,19 +2146,20 @@
 					},
 					"will": {
 						"std": 11
-					}
+					},
+					"abilities": [
+						"+2 status to all saves vs. disease and poison"
+					]
 				},
 				"hp": [
 					{
-						"hp": 58,
-						"abilities": null
+						"hp": 58
 					}
 				]
 			}
 		},
 		{
 			"name": "Morlock Engineer",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 84,
 			"level": 3,
@@ -2239,7 +2257,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -2309,8 +2326,7 @@
 				},
 				"hp": [
 					{
-						"hp": 46,
-						"abilities": null
+						"hp": 46
 					}
 				]
 			},
@@ -2318,7 +2334,6 @@
 		},
 		{
 			"name": "Morlock Scavenger",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 84,
 			"level": 1,
@@ -2413,7 +2428,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -2465,8 +2479,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			},
@@ -2474,7 +2487,6 @@
 		},
 		{
 			"name": "Nhakazarin",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 48,
 			"level": 5,
@@ -2485,6 +2497,7 @@
 				"ghoul",
 				"undead"
 			],
+			"description": "Female ghoul cult leader (Pathfinder Bestiary 168)",
 			"perception": {
 				"std": 10
 			},
@@ -2581,7 +2594,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 22,
@@ -2653,24 +2665,25 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Domain",
+					"type": "Focus",
+					"DC": 22,
+					"fp": 1,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "touch of undeath"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+11, {@skill Religion} +10, {@skill Stealth} +11 Str +4, Dex +2, Con +4, Int +2, Wis \u20131, Cha +5 Items staff of necromancy."
-						],
-						"name": "Occultism"
-					}
-				],
 				"bot": [
-					{
-						"entries": [
-							"1 Focus Point, DC 22; 3rd touch of undeath (Core Rulebook 398)"
-						],
-						"name": "Domain Spells"
-					},
 					{
 						"activity": {
 							"number": 1,
@@ -2693,8 +2706,9 @@
 						"traits": [
 							"manipulate"
 						],
+						"requirements": "Nhakazarin is adjacent to the rotting statue of Belcorra in area {@b C34}",
 						"entries": [
-							"Requirements Nhakazarin is adjacent to the rotting statue of Belcorra in area C34; Nhakazarin devours a chunk of flesh from the statue and regains {@dice 3d6} Hit Points and is {@condition quickened|CRB|quickened 1} for 1 round. She can use this extra action only to make a jaws {@action Strike} or {@action Cast a Spell}. She can feed from the statue only once each day."
+							"Nhakazarin devours a chunk of flesh from the statue and regains {@dice 3d6} Hit Points and is {@condition quickened|CRB|quickened 1} for 1 round. She can use this extra action only to make a jaws {@action Strike} or {@action Cast a Spell}. She can feed from the statue only once each day."
 						],
 						"name": "Consume Masterpiece"
 					},
@@ -2755,13 +2769,15 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
 		{
 			"name": "Otari Ilvashti",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 89,
 			"level": 9,
@@ -2795,6 +2811,9 @@
 				},
 				"society": {
 					"std": 18
+				},
+				"stealth": {
+					"std": 20
 				},
 				"thievery": {
 					"std": 20
@@ -2831,16 +2850,12 @@
 				"top": [
 					{
 						"entries": [
-							"+4."
+							"(area D18)"
 						],
-						"name": "Cha"
-					},
-					{
-						"traits": [
-							"area d18"
-						],
-						"entries": [],
-						"name": "Site Bound"
+						"name": "Site Bound",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -2848,7 +2863,11 @@
 						"entries": [
 							"Securing the four icons of the Roseguard and placing them on the altar in area D13 allows Otari to move on to the afterlife."
 						],
-						"name": "Rejuvenation"
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -2933,12 +2952,26 @@
 							"rejuvenation"
 						]
 					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "all damage",
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
+					}
 				]
 			}
 		},
 		{
 			"name": "Scalathrax",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 86,
 			"level": 4,
@@ -3080,8 +3113,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				],
 				"weaknesses": [
@@ -3101,7 +3133,6 @@
 		},
 		{
 			"name": "Voidglutton",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 87,
 			"level": 8,
@@ -3181,14 +3212,11 @@
 					],
 					"effects": [
 						"ectoplasmic web trap"
-					],
-					"damage": "ectoplasmic web trap",
-					"types": []
+					]
 				}
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 26,
@@ -3279,7 +3307,7 @@
 						"requirements": "An enemy is affected by a {@trait fear} effect or has the {@condition frightened} or {@condition dying} condition, and is within 25 feet of the voidglutton",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The voidglutton feeds on the creature's terror. It regains {@dice 3d4} Hit Points and its Glow reignites if it had been extinguished. It cannot use Consume Light again for {@dice 1d4} rounds, as it is too glutted on fear to suppress its Glow."
@@ -3305,8 +3333,7 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				],
 				"immunities": [
@@ -3317,7 +3344,6 @@
 		},
 		{
 			"name": "Volluk Azrinae",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 54,
 			"level": 7,
@@ -3398,7 +3424,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 25,
@@ -3455,7 +3480,6 @@
 					}
 				},
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 25,
@@ -3567,7 +3591,7 @@
 					},
 					{
 						"amount": 7,
-						"name": "{@trait splash} damage"
+						"name": "splash damage"
 					}
 				],
 				"resistances": [
@@ -3580,7 +3604,6 @@
 		},
 		{
 			"name": "Wrin Sivinxi",
-			"isNpc": false,
 			"source": "AV1",
 			"page": 90,
 			"level": 5,
@@ -3592,6 +3615,7 @@
 				"humanoid",
 				"tiefling"
 			],
+			"description": "Female tiefling elf oddities merchant (Pathfinder Bestiary 262)",
 			"perception": {
 				"std": 12
 			},
@@ -3632,6 +3656,9 @@
 				},
 				"astrology lore": {
 					"std": 12
+				},
+				"spirit lore": {
+					"std": 16
 				}
 			},
 			"abilityMods": {
@@ -3642,6 +3669,12 @@
 				"wis": 3,
 				"cha": 4
 			},
+			"items": [
+				"harrow fortune-telling deck",
+				"silver religious symbol",
+				"+1 starknife",
+				"violin"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3695,7 +3728,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "primal",
 					"DC": 22,
@@ -3770,22 +3802,25 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Bloodline",
+					"type": "Focus",
+					"DC": 22,
+					"fp": 1,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "faerie dust"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
 				"top": [
-					{
-						"entries": [
-							"+12, {@skill Performance} +10, {@skill Religion} +13, Spirit."
-						],
-						"name": "Occultism"
-					},
-					{
-						"entries": [
-							"+16 Str +0, Dex +3, Con +0, Int +2, Wis +3, Cha +4."
-						],
-						"name": "Lore"
-					},
 					{
 						"entries": [
 							"Wrin becomes overwhelmed when she's underground, or when she's in an indoor space that's smaller than 10 feet in diameter. At these times, she is {@condition sickened|CRB|sickened 2} and cannot reduce her {@condition sickened} condition until she's outside of the enclosed area."
@@ -3794,8 +3829,7 @@
 					},
 					{
 						"entries": [
-							"Wrin can see creatures with the {@trait spirit} trait within 30 feet, regardless of whether they are visible to the naked eye. This ability sometimes allows Wrin to notice other supernatural auras, such as the buildup of spiritual energy atop Gauntlight.",
-							"Items harrow fortune-telling deck, silver religious symbol, +1 starknife, violin."
+							"Wrin can see creatures with the {@trait spirit} trait within 30 feet, regardless of whether they are visible to the naked eye. This ability sometimes allows Wrin to notice other supernatural auras, such as the buildup of spiritual energy atop {@i Gauntlight}."
 						],
 						"name": "Spirit Sight"
 					}
@@ -3803,15 +3837,9 @@
 				"bot": [
 					{
 						"entries": [
-							"1 Focus Point, DC 22; 3rd faerie dust (Core Rulebook 404)"
+							"When Wrin casts charm, enthrall, faerie dust, ghost sound, or hideous laughter, fey glamours dance around Wrin or one target of the spell, causing them to be {@condition concealed} for 1 round. Such obvious concealment can't be used to {@action Hide}."
 						],
-						"name": "Bloodline Spells"
-					},
-					{
-						"entries": [
-							"Wrin casts charm, enthrall, faerie dust, ghost sound, or hideous laughter, fey glamours dance around Wrin or one target of the spell, causing them to be {@condition concealed} for 1 round. Such obvious concealment can't be used to {@action Hide}."
-						],
-						"name": "Blood Magic When"
+						"name": "Blood Magic"
 					},
 					{
 						"traits": [
@@ -3822,27 +3850,21 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
-							"Wrin attempts to read the future in the stars by spending an hour studying the night sky\u2014she can't use this ability during the day, on an overcast night, or when she can't otherwise study the stars. Although Wrin usually performs this reading for an individual person or to answer a pressing question she has, for the purposes of this campaign she reads the stars for the party as a whole. She attempts an."
-						],
-						"name": "Read the Stars"
-					},
-					{
-						"entries": [
-							"{@skill Lore} check, using the DC appropriate for the heroes' current level (see Table 10\u20135: DCs by Level, Core Rulebook 503).",
+							"Wrin attempts to read the future in the stars by spending an hour studying the night sky\u2014she can't use this ability during the day, on an overcast night, or when she can't otherwise study the stars. Although Wrin usually performs this reading for an individual person or to answer a pressing question she has, for the purposes of this campaign she reads the stars for the party as a whole. She attempts an {@skill Astrology Lore} check, using the DC appropriate for the heroes' current level (see {@table dcs by level|crb|Table 10\u20135: DCs by Level}).",
 							{
 								"type": "successDegree",
 								"entries": {
-									"Critical Success": "The results of Wrin's astrological readings have the effects of read omens, and the heroes gain a +1 circumstance bonus to saving throws for 24 hours.",
-									"Success": "The results of Wrin's astrological readings have the effects of augury, but can predict results up to 24 hours into the future.",
+									"Critical Success": "The results of Wrin's astrological readings have the effects of {@spell read omens}, and the heroes gain a +1 circumstance bonus to saving throws for 24 hours.",
+									"Success": "The results of Wrin's astrological readings have the effects of {@spell augury}, but can predict results up to 24 hours into the future.",
 									"Failure": "No reading.",
 									"Critical Failure": "Wrin brushes against {@condition hostile} spiritual forces, and cannot Read the Stars for 1 week."
 								}
 							}
 						],
-						"name": "Astrology"
+						"name": "Read the Stars"
 					}
 				]
 			},
@@ -3863,8 +3885,7 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				]
 			}

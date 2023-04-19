@@ -1,0 +1,147 @@
+{
+	"creature": [
+		{
+			"name": "Giant Pirate Skeleton",
+			"source": "POS1",
+			"page": 8,
+			"level": 8,
+			"traits": [
+				"ne",
+				"large",
+				"mindless",
+				"skeleton",
+				"undead"
+			],
+			"perception": {
+				"std": 18
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 22
+				},
+				"intimidation": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 2,
+				"con": 4,
+				"int": -5,
+				"wis": 2,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 125,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 5
+					},
+					{
+						"name": "electricity",
+						"amount": 5
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 10 feet"
+					],
+					"name": "gaff hook",
+					"attack": 20,
+					"damage": "{@damage 2d10+10} piercing plus impaling hook"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach 10 feet"
+					],
+					"name": "claw",
+					"attack": 19,
+					"damage": "{@damage 2d8+10} slashing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Easily Distracted",
+						"entries": [
+							"The giant pirate skeleton's poor vision makes it easily distracted by creatures that flank it. Whenever it has the {@condition flat-footed} condition from being flanked, increase the penalty to its AC to \u20134."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Focused Assault",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The giant pirate skeleton makes two {@action Strike||Strikes} with its claw against one foe. The multiple attack penalty doesn't increase until after both attacks are resolved. The giant pirate skeleton doesn't use this ability if there is more than one creature within its reach that it can see."
+						]
+					},
+					{
+						"name": "Impaling Hook",
+						"entries": [
+							"A creature critically hit by the giant pirate skeleton's gaff hook is impaled upon it. The creature is {@condition grabbed} by the giant pirate skeleton and whenever the giant pirate skeleton maintains the grab, the creature takes {@damage 1d10+10} piercing damage from the agonizing wound."
+						]
+					}
+				]
+			}
+		}
+	]
+}

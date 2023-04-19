@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Bee Swarm",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 11,
 			"level": 1,
@@ -39,7 +38,6 @@
 			"speed": {
 				"fly": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -81,8 +79,7 @@
 				},
 				"hp": [
 					{
-						"hp": 18,
-						"abilities": null
+						"hp": 18
 					}
 				],
 				"immunities": [
@@ -93,7 +90,6 @@
 		},
 		{
 			"name": "Blood Ooze",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 63,
 			"level": 4,
@@ -144,7 +140,7 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 1d12+8} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 1d12+8} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -213,8 +209,7 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				],
 				"immunities": [
@@ -229,7 +224,6 @@
 		},
 		{
 			"name": "Bloodlash Bush",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 62,
 			"level": 2,
@@ -293,7 +287,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The tendrils of the bush reach out to siphon the blood from a victim up to 20 feet away with {@condition persistent damage ||persistent bleed damage}, causing the victim to immediately take that amount of bleed damage (basic Reflex DC 17). The bush regains an amount of Hit Points equal to double the damage dealt."
+							"The tendrils of the bush reach out to siphon the blood from a victim up to 20 feet away with {@condition persistent damage||persistent bleed damage}, causing the victim to immediately take that amount of bleed damage (basic Reflex DC 17). The bush regains an amount of Hit Points equal to double the damage dealt."
 						],
 						"name": "Blood Siphon"
 					},
@@ -309,7 +303,7 @@
 					},
 					{
 						"entries": [
-							"A bloodlash bush's vines cause terrible lacerations that continue to bleed. A creature hit with a vine attack takes 1 {@condition persistent damage ||persistent bleed damage} (2 on a critical hit). Unlike other forms of {@condition persistent damage}, this damage is cumulative, to a maximum of 5 {@condition persistent damage ||persistent bleed damage} but it can be stopped like any other {@condition persistent damage ||persistent bleed damage}."
+							"A bloodlash bush's vines cause terrible lacerations that continue to bleed. A creature hit with a vine attack takes 1 {@condition persistent damage||persistent bleed damage} (2 on a critical hit). Unlike other forms of {@condition persistent damage}, this damage is cumulative, to a maximum of 5 {@condition persistent damage||persistent bleed damage} but it can be stopped like any other {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Weeping Wounds"
 					}
@@ -332,8 +326,7 @@
 				},
 				"hp": [
 					{
-						"hp": 35,
-						"abilities": null
+						"hp": 35
 					}
 				],
 				"resistances": [
@@ -349,7 +342,6 @@
 		},
 		{
 			"name": "Caustic Wolf",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 5,
 			"level": 2,
@@ -455,15 +447,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Drunken Farmer",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 8,
 			"level": -1,
@@ -562,15 +552,13 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				]
 			}
 		},
 		{
 			"name": "Fiery Leopard",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 31,
 			"level": 1,
@@ -675,8 +663,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -686,7 +673,6 @@
 		},
 		{
 			"name": "Giant Lightning Serpent",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 20,
 			"level": 2,
@@ -816,15 +802,13 @@
 				},
 				"hp": [
 					{
-						"hp": 27,
-						"abilities": null
+						"hp": 27
 					}
 				]
 			}
 		},
 		{
 			"name": "Graytusk",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 40,
 			"level": 3,
@@ -928,7 +912,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Ferocity",
 						"generic": {
 							"tag": "ability"
@@ -965,15 +948,13 @@
 				},
 				"hp": [
 					{
-						"hp": 47,
-						"abilities": null
+						"hp": 47
 					}
 				]
 			}
 		},
 		{
 			"name": "Hallod",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 21,
 			"level": 3,
@@ -1017,6 +998,14 @@
 				"wis": 2,
 				"cha": 0
 			},
+			"items": [
+				"heavy crossbow (10 bolts)",
+				"+1 kukri",
+				"leather armor",
+				"lesser healing potion",
+				"lesser juggernaut mutagen (2)",
+				"strongbox key"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1063,21 +1052,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+8, {@skill Survival} +7 Str +4, Dex +3, Con +1, Int +0, Wis +2, Cha +0 Items heavy crossbow (10 bolts), +1 kukri, leather armor, lesser healing potion, lesser juggernaut mutagen (2), strongbox key."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1130,15 +1110,13 @@
 				},
 				"hp": [
 					{
-						"hp": 44,
-						"abilities": null
+						"hp": 44
 					}
 				]
 			}
 		},
 		{
 			"name": "Icy Rats",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 31,
 			"level": 0,
@@ -1228,8 +1206,7 @@
 				},
 				"hp": [
 					{
-						"hp": 15,
-						"abilities": null
+						"hp": 15
 					}
 				],
 				"immunities": [
@@ -1239,7 +1216,6 @@
 		},
 		{
 			"name": "Lord Nar",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 38,
 			"level": 4,
@@ -1342,7 +1318,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Ferocity",
 						"generic": {
 							"tag": "ability"
@@ -1356,7 +1331,6 @@
 							"unit": "reaction"
 						},
 						"trigger": "An adjacent foe moves away.",
-						"entries": [],
 						"name": "No Escape"
 					},
 					{
@@ -1395,15 +1369,13 @@
 				},
 				"hp": [
 					{
-						"hp": 68,
-						"abilities": null
+						"hp": 68
 					}
 				]
 			}
 		},
 		{
 			"name": "Mangy Wolves",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 5,
 			"level": -1,
@@ -1488,15 +1460,13 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				]
 			}
 		},
 		{
 			"name": "Mutant Wolves",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 27,
 			"level": 3,
@@ -1573,7 +1543,7 @@
 						},
 						"trigger": "The wolf dealt damage to a creature with its jaws during the previous action.",
 						"entries": [
-							"The wolf tears at the creature's flesh, dealing {@damage 1d6+2} slashing damage and 1 {@condition persistent damage ||persistent acid damage}."
+							"The wolf tears at the creature's flesh, dealing {@damage 1d6+2} slashing damage and 1 {@condition persistent damage||persistent acid damage}."
 						],
 						"name": "Tear"
 					}
@@ -1596,15 +1566,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Stone Horse",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 30,
 			"level": 2,
@@ -1684,15 +1652,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "The Amalgam",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 44,
 			"level": 4,
@@ -1827,15 +1793,13 @@
 				},
 				"hp": [
 					{
-						"hp": 65,
-						"abilities": null
+						"hp": 65
 					}
 				]
 			}
 		},
 		{
 			"name": "The Behemoth",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 47,
 			"level": 3,
@@ -1914,7 +1878,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1959,8 +1922,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				],
 				"immunities": [
@@ -1972,7 +1934,6 @@
 		},
 		{
 			"name": "The Sculptor",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 34,
 			"level": 4,
@@ -2064,9 +2025,7 @@
 					],
 					"effects": [
 						"varies by bomb"
-					],
-					"damage": "varies by bomb",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
@@ -2090,7 +2049,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Ferocity",
 						"generic": {
 							"tag": "ability"
@@ -2133,15 +2091,13 @@
 				},
 				"hp": [
 					{
-						"hp": 54,
-						"abilities": null
+						"hp": 54
 					}
 				]
 			}
 		},
 		{
 			"name": "Vilree",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 47,
 			"level": 5,
@@ -2190,6 +2146,19 @@
 				"wis": 1,
 				"cha": 0
 			},
+			"items": [
+				"alchemical crossbow",
+				"belt pouch (2 pp, 38 gp, 4 sp)",
+				"bracers of missile deflection",
+				"daggers (2)",
+				"key",
+				"leather armor",
+				"lesser potion of fire resistance",
+				"lesser juggernaut mutagen",
+				"lesser stone body mutagen",
+				"+1 striking dagger",
+				"moderate acid energy mutagen"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2247,20 +2216,43 @@
 					"traits": [
 						"thrown <30 feet>"
 					],
-					"effects": [
+					"damage": [
 						"as per bomb"
-					],
-					"damage": "as per bomb",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
-				"top": [
+				"bot": [
 					{
+						"name": "Alchemical Crossbow",
 						"entries": [
-							"+7, {@skill Intimidation} +7, {@skill Stealth} +11 Str +1, Dex +4, Con +2, Int +4, Wis +1, Cha +0 Items alchemical crossbow, belt pouch (2 pp, 38 gp, 4 sp), bracers of missile deflection, daggers (2), key, leather armor, lesser potion of fire resistance, lesser juggernaut mutagen, lesser stone body mutagen, +1 striking dagger, moderate acid energy mutagen."
+							"Vilree's crossbow can deliver bolts that are alchemically infused. As an action, she can slot an alchemical bomb into the crossbow, and the next 3 attacks she makes with it deal {@damage 1d6} damage of the type dealt by the bomb. These attacks never deal splash damage."
+						]
+					},
+					{
+						"name": "Alchemy",
+						"entries": [
+							"Vilree has used her alchemy ability to create 4 moderate acid flasks, 6 moderate alchemist's fire, 2 moderate bottled lightnings, 3 lesser elixirs of life, and 2 lesser tanglefoot bags. These are infusions. She can spend an action to create an additional vial of any one of these items, or any of the items listed as formulas in her book."
+						]
+					},
+					{
+						"name": "Far Lob",
+						"entries": [
+							"Vilree's bombs have a range increment of 30 feet."
+						]
+					},
+					{
+						"name": "Quick Bomber",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Vilree can interact to draw a bomb and then make a {@action Strike} with it."
 						],
-						"name": "Diplomacy"
+						"generic": {
+							"tag": "feat"
+						}
 					}
 				]
 			},
@@ -2281,15 +2273,13 @@
 				},
 				"hp": [
 					{
-						"hp": 68,
-						"abilities": null
+						"hp": 68
 					}
 				]
 			}
 		},
 		{
 			"name": "Vine Lasher",
-			"isNpc": false,
 			"source": "FoP",
 			"page": 62,
 			"level": 0,
@@ -2372,8 +2362,7 @@
 				},
 				"hp": [
 					{
-						"hp": 15,
-						"abilities": null
+						"hp": 15
 					}
 				]
 			},

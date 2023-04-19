@@ -159,7 +159,9 @@ class Converter {
 		const [match, name, type, level] = this._tokenizerUtils.dataHeaders.find(it => it.type === "SPELL").regex.exec(headerToken.value);
 		const spell = {};
 		spell.name = name.toTitleCase();
-		spell.type = type.toTitleCase();
+		if (type.toTitleCase() !== "Spell") {
+			spell.type = type.toTitleCase();
+		}
 		spell.level = Number(level);
 		spell.source = this._source;
 		spell.page = this._page;
@@ -173,6 +175,11 @@ class Converter {
 			this._tokenStack = [];
 		}
 		this._parsing = null;
+
+		if (spell.traditions) {
+			spell.traditions = spell.traditions.map(t => t.toLowerCase());
+		}
+
 		return PropOrder.getOrdered(spell, "spell");
 	}
 	_parseFeat () {
@@ -215,9 +222,9 @@ class Converter {
 		this._parsing = item.name;
 		this._parseTraits(item);
 		this._parseProperties(item);
-		this._parseItemCategory(item);
 		this._parseItemRuneAppliesTo(item);
 		this._parseEntries(item);
+		this._parseItemCategory(item);
 		// Staffs and Wands usually dont have craft requirements for each variant item.
 		if (this._tokenIsType(this._tokenizerUtils.craftRequirements)) {
 			this._parseCraftRequirements(item);
@@ -348,11 +355,15 @@ class Converter {
 		else if (this._tokenIsType(this._tokenizerUtils.traditionsSubclasses)) this._parseTraditionsSubclasses(obj, opts);
 		else if (this._tokenIsType(this._tokenizerUtils.trigger)) this._parseTrigger(obj, opts);
 		else if (this._tokenIsType(this._tokenizerUtils.usage)) this._parseUsage(obj, opts);
+		else if (this._tokenIsType(this._tokenizerUtils.category)) this._parseCategory(obj, opts);
 		else throw new Error(`Unimplemented property creation of type "${this._peek().type}"`);
 	}
 
 	_parseAccess (obj, opts) {
 		this._parseGenericProperty(obj, this._tokenizerUtils.access, "access", opts);
+	}
+	_parseCategory (obj, opts) {
+		this._parseGenericProperty(obj, this._tokenizerUtils.category, "category", opts);
 	}
 	_parseActivateProperty (obj, opts) {
 		opts = opts || {};
@@ -464,10 +475,10 @@ class Converter {
 		if (matched) {
 			obj.frequency = {};
 			const freq = matched[1].toLowerCase();
-			if (freq === "once") obj.frequency.freq = 1;
-			else if (freq === "twice") obj.frequency.freq = 2;
-			else if (!Number.isNaN(Number(freq.split(" ")[0]))) obj.frequency.freq = Number(freq.split(" ")[0]);
-			else obj.frequency.freq = freq.split(" ")[0];
+			if (freq === "once") obj.frequency.number = 1;
+			else if (freq === "twice") obj.frequency.number = 2;
+			else if (!Number.isNaN(Number(freq.split(" ")[0]))) obj.frequency.number = Number(freq.split(" ")[0]);
+			else obj.frequency.number = freq.split(" ")[0];
 
 			if (matched[2] === "every") obj.frequency.recurs = true;
 			if (matched[3]) obj.frequency.interval = Number(matched[3]);
@@ -598,6 +609,13 @@ class Converter {
 
 	_parseItemCategory (item) {
 		const cats = this._tokenizerUtils.itemCategories;
+		if (item.category) {
+			if (cats.map(c => c.cat.toLowerCase()).includes(item.category.toLowerCase())) {
+				return;
+			} else {
+				this._cbWarn(`Item category "${item.category}" is not recognised.`);
+			}
+		}
 		if (cats.map(c => c.cat.toLowerCase()).includes(item.type.toLowerCase())) {
 			item.category = item.type;
 			return;
@@ -615,6 +633,18 @@ class Converter {
 					return;
 				}
 			}
+		}
+		if (item.entries.filter(e => {
+			const regex = new RegExp(`${item.name} rune`, "i")
+			// TODO: this is now just shallow search, likely not going to improve on it further
+			if (typeof e === "string" && regex.test(e)) {
+				return true
+			} else if (typeof e === "object" && e.entries != null) {
+				return e.entries.some(ee => typeof ee === "string" && regex.test(ee));
+			}
+		}).length > 0) {
+			item.category = "Rune";
+			return;
 		}
 		item.category = "Unknown";
 		this._cbWarn(`Couldn't determine item category of "${item.name}".`);
@@ -693,6 +723,7 @@ class Converter {
 		else if (this._tokenIsType(this._tokenizerUtils.fort)) this._parseCreatureSavingThrows(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.hp)) this._parseHP(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.hardness)) this._parseHardness(obj);
+		else if (this._tokenIsType(this._tokenizerUtils.thresholds)) this._parseThresholds(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.immunities)) this._parseImmunities(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.weaknesses)) this._parseWeaknesses(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.resistances)) this._parseResistances(obj);
@@ -741,66 +772,114 @@ class Converter {
 	_parseLanguages (creature) {
 		this._consumeToken(this._tokenizerUtils.languages);
 		const entries = this._getEntries();
-		const languages = {};
+		let languages = [];
+		let abilities = [];
 
 		const numSemis = entries.filter(e => this._tokenIsType(this._tokenizerUtils.sentencesSemiColon, e)).length;
 		if (numSemis === 0) {
 			// assume no abilities
-			languages.languages = [];
 			entries.forEach(entry => {
 				if (this._tokenIsType(this._tokenizerUtils.sentences, entry)) {
 					const rendered = this._renderEntries([entry], {asString: true});
-					languages.languages.push(...rendered.split(", "));
+					languages.push(...rendered.split(", "));
 				} else if (this._tokenIsType(this._tokenizerUtils.parenthesis, entry)) {
-					languages.languages[languages.languages.length - 1] += ` ${this._renderToken(entry)}`;
+					languages[languages.length - 1] += ` ${this._renderToken(entry)}`;
 				} else {
 					throw new Error(`Unexpected token while paring languages: "${entry.type}"`);
 				}
 			});
 		} else if (numSemis === 1) {
 			const ixSemi = entries.findIndex(e => this._tokenIsType(this._tokenizerUtils.sentencesSemiColon, e));
-			languages.languages = this._renderEntries(entries.slice(0, ixSemi + 1), {asString: true}).split(", ");
-			languages.abilities = this._renderEntries(entries.slice(ixSemi + 1), {asString: true}).split(", ");
+			languages = this._renderEntries(entries.slice(0, ixSemi + 1), {asString: true}).split(", ");
+			abilities = this._renderEntries(entries.slice(ixSemi + 1), {asString: true}).split(", ");
 		} else {
 			// assume no abilities, languages seperated by semicolon
-			languages.languages = [];
 			entries.forEach(entry => {
 				if (this._tokenIsType(this._tokenizerUtils.sentences, entry)) {
 					const rendered = this._renderEntries([entry], {asString: true});
-					languages.languages.push(...rendered);
+					languages.push(...rendered);
 				} else if (this._tokenIsType(this._tokenizerUtils.parenthesis, entry)) {
-					languages.languages[languages.languages.length - 1] += ` ${this._renderToken(entry)}`;
+					languages[languages.length - 1] += ` ${this._renderToken(entry)}`;
 				} else {
 					throw new Error(`Unexpected token while paring languages: "${entry.type}"`);
 				}
 			});
 		}
-		creature.languages = languages;
+
+		const regexRemove = /['’-]/g;
+		const regexSplitWords = /\W+/;
+		const regexStartsUppercase = /^\p{Lu}/u;
+		const [filteredLanguages, notes] = languages.partition(lang => {
+			// heuristically detect language notes by looking for non-capitalized words
+			// remove some punctuation to avoid treating e.g. D'ziriak as multiple words
+			return lang.replace(regexRemove, "")
+				.split(regexSplitWords)
+				.every(w => regexStartsUppercase.test(w));
+		});
+
+		creature.languages = {};
+		if (filteredLanguages.length) {
+			// store languages as lowercased
+			creature.languages.languages = filteredLanguages.map(l => l.toLowerCase());
+		}
+		if (notes.length) {
+			creature.languages.notes = notes;
+		}
+		if (abilities.length) {
+			creature.languages.abilities = abilities;
+		}
 	}
 	_parseSkills (creature) {
 		this._consumeToken(this._tokenizerUtils.skillsProp);
 		const skills = {};
+		const loreSkillSome = /\((.*)\)/
 		const regexBonus = /\+(\d+)/;
 		const regexOtherBonus = /\+(\d+)\s([\w\s]+)/g;
-		while (this._tokenIsType(this._tokenizerUtils.skills)) {
+		// skill entries should be followed by the skill bonus
+		while (this._tokenIsType(this._tokenizerUtils.skills) && this._tokenIsType("SKILL_BONUS", this._peek(1))) {
 			const token = this._consumeToken(this._tokenizerUtils.skills);
-			const skill = token.value.trim().toLowerCase().replace(/\s/g, " ");
-			skills[skill] = {};
-			for (let i = 0; i < 2; i++) {
-				if (this._tokenIsType("PARENTHESIS")) {
-					const parenthesisText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
-					const matches = Array.from(parenthesisText.matchAll(regexOtherBonus));
-					if (matches.length) matches.forEach(m => skills[skill][m[2]] = Number(m[1]));
-					else skills[skill].note = parenthesisText;
-				} else if (this._tokenIsType("SKILL_BONUS")) {
-					const bonusToken = this._consumeToken("SKILL_BONUS");
-					skills[skill].std = Number(regexBonus.exec(bonusToken.value.replace(/\s/g, ""))[1]);
-				} else break;
+
+			let skill = "";
+			if (token.type === "LORE_SOME") {
+				// "Lore (any that match these criteria) +10"
+				skill = "lore";
+				const match = loreSkillSome.exec(token.value);
+				const note = match[1].trim().replace(/\s/g, " ");
+				skills[skill] = {};
+				skills[skill].note = note;
+			} else {
+				skill = token.value.trim().toLowerCase().replace(/\s/g, " ");
+				skills[skill] = {};
+			}
+
+			const bonusToken = this._consumeToken("SKILL_BONUS");
+			skills[skill].std = Number(regexBonus.exec(bonusToken.value.replace(/\s/g, ""))[1]);
+
+			// optionally followed by other bonuses for the same skill
+			if (this._tokenIsType("PARENTHESIS")) {
+				const parenthesisText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
+				const matches = Array.from(parenthesisText.matchAll(regexOtherBonus));
+				if (matches.length) matches.forEach(m => skills[skill][m[2]] = Number(m[1]));
+				else skills[skill].note = parenthesisText;
 			}
 		}
-		// FIXME: Skill abilities! Could also be regular ability? Probably not.
-		const entries = this._getEntries();
-		if (entries.length) throw new Error(`Skill abilities are not implemented yet! ${entries}`);
+
+		// if we found a skill entry without a bonus, assume it's part of a skill note
+		// e.g. "one or more Lore skills related to a specific plane" is incorrectly detected as a lore skill at first
+		let extraEntries = [];
+		if (this._tokenIsType(this._tokenizerUtils.skills)) {
+			const noteStart = this._consumeToken(this._tokenizerUtils.skills);
+			noteStart.type = "SENTENCE";
+			extraEntries.push(noteStart)
+		}
+
+		// assume that any text entries following the skills are skill notes
+		const entries = [...extraEntries, ...this._getEntries()];
+		if (entries.length) {
+			const rendered = this._renderEntries(entries, {asString: true});
+			skills.notes = rendered.split(", ");
+		}
+
 		creature.skills = skills;
 	}
 	_parseAbilityScores (creature) {
@@ -836,13 +915,16 @@ class Converter {
 		const stdACToken = this._consumeToken(this._tokenizerUtils.sentences);
 		ac.std = Number(stdACToken.value.trim().replace(/[,;]/g, ""));
 		if (this._tokenIsType("PARENTHESIS")) {
-			const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS")).replace(/^\(|\)$/g, "");
-			const regexOtherAC = /.*(\d+)\s(.+)/g;
-			Array.from(parenthesisText.matchAll(regexOtherAC)).forEach(m => {
-				const num = Number(m[1]);
-				// small ACs are likely abilities like "+2 vs. magic"
-				if (num > 4) ac[m[2]] = Number(m[1]);
-				else (ac.abilities = ac.abilities || []).push(m[0]);
+			const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS")).replace(/^\(|\);?$/g, "");
+			const regexOtherAC = /^(\d+)\s+(.+)$/;
+			parenthesisText.split(",").map(t => t.trim()).forEach(t => {
+				const match = regexOtherAC.exec(t);
+				if (match) {
+					ac[match[2]] = Number(match[1]);
+				} else {
+					ac.abilities = ac.abilities || [];
+					ac.abilities.push(t)
+				}
 			});
 		}
 		this._getStatAbilities(ac);
@@ -856,8 +938,16 @@ class Converter {
 			savingThrows[prop] = {std: bonus};
 			if (this._tokenIsType("PARENTHESIS")) {
 				const parenthesisText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
-				const regexOtherST = /\+(\d+)\s(.+)/g;
-				Array.from(parenthesisText.matchAll(regexOtherST)).forEach(m => savingThrows[prop][m[2]] = Number(m[1]));
+				const regexOtherST = /^\+(\d+)\s+(.+)$/;
+				parenthesisText.split(",").map(t => t.trim()).forEach(t => {
+					const match = regexOtherST.exec(t);
+					if (match) {
+						savingThrows[prop][match[2]] = Number(match[1]);
+					} else {
+						savingThrows[prop].abilities = savingThrows[prop].abilities || [];
+						savingThrows[prop].abilities.push(t)
+					}
+				});
 			}
 		}
 		if (this._tokenIsType(this._tokenizerUtils.fort)) {
@@ -884,8 +974,27 @@ class Converter {
 			if (this._tokenIsType("PARENTHESIS")) hp.name = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
 			hp.hp = this._getBonusPushAbilities();
 			creature.defenses.hp.push(hp);
+			if (this._tokenIsType("PARENTHESIS")) {
+				const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS")).replace(/^\(|\);?$/g, "");
+				parenthesisText.split(",").map(t => t.trim()).forEach(t => {
+					hp.notes = hp.notes || [];
+					hp.notes.push(t)
+				});
+			}
 			this._getStatAbilities(hp);
 		}
+	}
+	_parseThresholds (creature) {
+		creature.defenses = creature.defenses || {};
+		this._consumeToken(this._tokenizerUtils.thresholds);
+		const entries = this._getEntries();
+		const thresholds = this._splitSemiOrComma(entries);
+		creature.defenses.thresholds = thresholds.map(str => {
+			const regExp = /(\d+)\s+\((\d+)\s+squares\)/;
+			const match = regExp.exec(str);
+			if (match) return {value: Number(match[1]), squares: Number(match[2])};
+			return undefined;
+		});
 	}
 	_parseHardness (creature) {
 		creature.defenses = creature.defenses || {};
@@ -955,7 +1064,12 @@ class Converter {
 		const reNameBonus = /(.*?) \+\s?(\d+)/;
 		const textEntries = [];
 		entries.forEach(entryToken => {
-			if (this._tokenIsType(this._tokenizerUtils.actions, entryToken)) attack.activity = this._renderToken(entryToken, {asObject: true});
+			if (this._tokenIsType(this._tokenizerUtils.actions, entryToken)) {
+				const activity = this._renderToken(entryToken, {asObject: true});
+				if (!(activity.unit === "action" && activity.number === 1)) {
+					attack.activity = activity;
+				}
+			}
 			if (this._tokenIsType(this._tokenizerUtils.sentences, entryToken)) textEntries.push(entryToken);
 			if (this._tokenIsType("PARENTHESIS", entryToken)) attack.traits = this._splitSemiOrComma(this._getParenthesisInnerText(entryToken), {isText: true});
 		});
@@ -982,12 +1096,20 @@ class Converter {
 		const reSpellCast = this._tokenizerUtils.spellCasting.find(it => it.regex.test(castingToken.value)).regex;
 		const spellMatch = reSpellCast.exec(castingToken.value);
 		const name = spellMatch[1].trim();
-		casting.name = name;
+
 		const tradition = this._tokenizerUtils.spellTraditions.find(it => it.regex.test(name));
 		const type = this._tokenizerUtils.spellTypes.find(it => it.regex.test(name));
-		if (tradition) casting.tradition = tradition.unit;
-		if (type) casting.type = type.unit;
+		if (tradition) casting.tradition = tradition.unit.toLowerCase();
+		if (type) casting.type = type.unit.toTitleCase();
 		else casting.type = "Focus";
+
+		if (!casting.type || !casting.tradition
+			|| (!name.localeCompare(`${casting.type} ${casting.tradition}`, { sensitivity: "base" })
+				&& !name.localeCompare(`${casting.tradition} ${casting.type}`, { sensitivity: "base" }))
+		) {
+			casting.name = name;
+		}
+
 		this._parseSpells_parseProperties(casting);
 		casting.entry = this._parseSpellEntry();
 		if (this._tokenIsType(this._tokenizerUtils.cantrips)) casting.entry["0"] = this._parseCantrips();
@@ -1052,7 +1174,8 @@ class Converter {
 				const src = Parser._parse_bToA(Parser.SOURCE_JSON_TO_FULL, matchSource[0]).toLowerCase();
 				if (src && src !== SRC_CRB.toLowerCase()) spells[spells.length - 1].source = src;
 			} else {
-				spells[spells.length - 1].note = [...(spells[spells.length - 1].note || "").split("; ").filter(Boolean), e].join("; ");
+				spells[spells.length - 1].notes = spells[spells.length - 1].notes || [];
+				spells[spells.length - 1].notes.push(e);
 			}
 		});
 	}
@@ -1135,7 +1258,7 @@ class Converter {
 		const reRitualCast = this._tokenizerUtils.ritualCasting.find(it => it.regex.test(castingToken.value)).regex;
 		const name = reRitualCast.exec(castingToken.value)[1].trim();
 		const tradition = this._tokenizerUtils.spellTraditions.find(it => it.regex.test(name));
-		if (tradition) ritualCasting.tradition = tradition.unit;
+		if (tradition) ritualCasting.tradition = tradition.unit.toLowerCase();
 		this._parseSpells_parseProperties(ritualCasting);
 		ritualCasting.rituals = [...this._parseSpells_parseSpells()];
 		creature.rituals.push(ritualCasting);
@@ -1223,7 +1346,11 @@ class Converter {
 		// TODO:
 		opts = opts || {};
 		const rendered = opts.isText ? entries : this._renderEntries(entries, {asString: true, noTags: true});
-		return rendered.split(", ")
+
+		const sep = /\s*(?:;|,|$)\s*/;
+		const parts = rendered.split(sep);
+		if (opts.keepEmpty) return parts
+		else return parts.filter(s => s.length > 0)
 	}
 
 	_parseHazardProperties (obj) {

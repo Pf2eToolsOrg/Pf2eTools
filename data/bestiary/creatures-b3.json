@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Abandoned Zealot",
-			"isNpc": false,
 			"source": "B3",
 			"page": 8,
 			"level": 6,
@@ -33,7 +32,7 @@
 					"common",
 					"necril"
 				],
-				"abilities": [
+				"notes": [
 					"one regional language"
 				]
 			},
@@ -85,7 +84,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 24,
@@ -214,7 +212,6 @@
 		},
 		{
 			"name": "Abrikandilu",
-			"isNpc": false,
 			"source": "B3",
 			"page": 61,
 			"level": 4,
@@ -301,7 +298,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 20,
@@ -368,8 +364,7 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				],
 				"weaknesses": [
@@ -386,7 +381,6 @@
 		},
 		{
 			"name": "Adachros",
-			"isNpc": false,
 			"source": "B3",
 			"page": 95,
 			"level": 13,
@@ -478,7 +472,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 33,
@@ -593,8 +586,7 @@
 				},
 				"hp": [
 					{
-						"hp": 225,
-						"abilities": null
+						"hp": 225
 					}
 				],
 				"resistances": [
@@ -607,7 +599,6 @@
 		},
 		{
 			"name": "Adhukait",
-			"isNpc": false,
 			"source": "B3",
 			"page": 23,
 			"level": 7,
@@ -679,7 +670,7 @@
 						"agile",
 						"trip"
 					],
-					"damage": "{@damage 1d6+9} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed} and {@damage 1d4} evil",
+					"damage": "{@damage 1d6+9} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed} and {@damage 1d4} evil",
 					"types": [
 						"evil",
 						"persistent",
@@ -707,7 +698,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -764,8 +754,7 @@
 				},
 				"hp": [
 					{
-						"hp": 130,
-						"abilities": null
+						"hp": 130
 					}
 				],
 				"immunities": [
@@ -781,7 +770,6 @@
 		},
 		{
 			"name": "Adlet",
-			"isNpc": false,
 			"source": "B3",
 			"page": 9,
 			"level": 10,
@@ -955,8 +943,7 @@
 				},
 				"hp": [
 					{
-						"hp": 180,
-						"abilities": null
+						"hp": 180
 					}
 				],
 				"immunities": [
@@ -972,7 +959,6 @@
 		},
 		{
 			"name": "Adult Forest Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 75,
 			"level": 14,
@@ -1090,7 +1076,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 34,
@@ -1158,7 +1143,7 @@
 						"trigger": "The forest dragon is targeted with a water spell or effect",
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The forest dragon gains 35 temporary Hit Points."
@@ -1210,7 +1195,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 7d10} negative damage (DC 34 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting {@quickref difficult terrain||3|terrain}, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
@@ -1262,8 +1247,7 @@
 				},
 				"hp": [
 					{
-						"hp": 290,
-						"abilities": null
+						"hp": 290
 					}
 				],
 				"immunities": [
@@ -1281,7 +1265,6 @@
 		},
 		{
 			"name": "Adult Sea Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 78,
 			"level": 12,
@@ -1413,7 +1396,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 32,
@@ -1576,8 +1558,7 @@
 				},
 				"hp": [
 					{
-						"hp": 225,
-						"abilities": null
+						"hp": 225
 					}
 				],
 				"immunities": [
@@ -1588,7 +1569,6 @@
 		},
 		{
 			"name": "Adult Sky Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 80,
 			"level": 13,
@@ -1711,7 +1691,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 33,
@@ -1849,8 +1828,7 @@
 				},
 				"hp": [
 					{
-						"hp": 235,
-						"abilities": null
+						"hp": 235
 					}
 				],
 				"immunities": [
@@ -1862,7 +1840,6 @@
 		},
 		{
 			"name": "Adult Sovereign Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 82,
 			"level": 15,
@@ -1989,7 +1966,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 36,
@@ -2107,7 +2083,7 @@
 						],
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						}
 					},
 					{
@@ -2135,7 +2111,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The dragon chooses a mortal they've {@condition observed} performing an exceptional act and offers their august blessing in exchange for the creature carrying out a specific directive, such as defeating a tyrant or protecting a sacred site. If the creature agrees, until its next daily preparations, it gains a +1 status bonus to the dragon's choice of attack rolls, AC, or all of the following: {@skill Perception}, Will saves, and Charisma-based skill checks. The dragon can {@action Dismiss} this benefit by spending a single action (that has the {@trait concentrate} trait), which they're swift to do if the mortal dares to defy the dragon's directive."
@@ -2162,8 +2138,7 @@
 				},
 				"hp": [
 					{
-						"hp": 275,
-						"abilities": null
+						"hp": 275
 					}
 				],
 				"immunities": [
@@ -2180,7 +2155,6 @@
 		},
 		{
 			"name": "Adult Underworld Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 84,
 			"level": 11,
@@ -2306,7 +2280,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 30,
@@ -2389,7 +2362,7 @@
 							"fire"
 						],
 						"entries": [
-							"The dragon breathes a blast of fire that explodes in a 25-foot burst within 50 feet, dealing {@damage 10d6} fire damage (DC 30 basic Reflex save). Creatures that fail the save also take {@damage 2d6} {@condition persistent damage ||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The dragon breathes a blast of fire that explodes in a 25-foot burst within 50 feet, dealing {@damage 10d6} fire damage (DC 30 basic Reflex save). Creatures that fail the save also take {@damage 2d6} {@condition persistent damage||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -2442,8 +2415,7 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				],
 				"immunities": [
@@ -2455,7 +2427,6 @@
 		},
 		{
 			"name": "Aghash",
-			"isNpc": false,
 			"source": "B3",
 			"page": 69,
 			"level": 4,
@@ -2533,7 +2504,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 21,
@@ -2632,7 +2602,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The aghash creates a temporary sandstorm in a 30 foot emanation that lasts for 1 minute. Creatures within the emanation take a \u20134 circumstance penalty to {@skill Perception} checks and must succeed at a DC 18 Fortitude save. On a failure, they're forced to hold their breath or else they start suffocating. A creature within the sandstorm at the end of its turn takes {@damage 1d6} slashing damage. Divs are immune to all effects of an aghash's sandstorm."
@@ -2658,8 +2628,7 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				],
 				"immunities": [
@@ -2680,7 +2649,6 @@
 		},
 		{
 			"name": "Air Wisp",
-			"isNpc": false,
 			"source": "B3",
 			"page": 90,
 			"level": 0,
@@ -2793,8 +2761,7 @@
 				},
 				"hp": [
 					{
-						"hp": 10,
-						"abilities": null
+						"hp": 10
 					}
 				],
 				"immunities": [
@@ -2807,7 +2774,6 @@
 		},
 		{
 			"name": "Amalgamite",
-			"isNpc": false,
 			"source": "B3",
 			"page": 14,
 			"level": 13,
@@ -2843,8 +2809,9 @@
 				"occultism": {
 					"std": 27
 				},
-				"lore (any one subcategory)": {
-					"std": 27
+				"lore": {
+					"std": 27,
+					"note": "any one subcategory"
 				}
 			},
 			"abilityMods": {
@@ -2885,7 +2852,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 33,
@@ -3017,7 +2983,6 @@
 		},
 		{
 			"name": "Amphisbaena",
-			"isNpc": false,
 			"source": "B3",
 			"page": 15,
 			"level": 4,
@@ -3155,15 +3120,13 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				]
 			}
 		},
 		{
 			"name": "Ancient Forest Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 76,
 			"level": 19,
@@ -3289,7 +3252,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 41,
@@ -3372,7 +3334,7 @@
 						"trigger": "The forest dragon is targeted with a water spell or effect",
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The forest dragon gains 40 temporary Hit Points."
@@ -3428,7 +3390,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						}
 					},
 					{
@@ -3488,8 +3450,7 @@
 				},
 				"hp": [
 					{
-						"hp": 410,
-						"abilities": null
+						"hp": 410
 					}
 				],
 				"immunities": [
@@ -3501,7 +3462,6 @@
 		},
 		{
 			"name": "Ancient Sea Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 78,
 			"level": 17,
@@ -3634,7 +3594,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 38,
@@ -3785,7 +3744,7 @@
 						"frequency": {
 							"unit": "minute",
 							"interval": 10,
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The dragon slams their body down, sending a towering wave outward. This wave deals {@damage 10d12} bludgeoning damage in a 90-foot emanation. Each creature in the area must attempt a DC 38 Reflex save. Structures and unattended objects in the area take the full amount of damage with no saving throw.",
@@ -3822,8 +3781,7 @@
 				},
 				"hp": [
 					{
-						"hp": 350,
-						"abilities": null
+						"hp": 350
 					}
 				],
 				"immunities": [
@@ -3834,7 +3792,6 @@
 		},
 		{
 			"name": "Ancient Sky Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 80,
 			"level": 18,
@@ -3958,7 +3915,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 42,
@@ -4117,8 +4073,7 @@
 				},
 				"hp": [
 					{
-						"hp": 335,
-						"abilities": null
+						"hp": 335
 					}
 				],
 				"immunities": [
@@ -4130,7 +4085,6 @@
 		},
 		{
 			"name": "Ancient Sovereign Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 83,
 			"level": 20,
@@ -4258,7 +4212,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 43,
@@ -4390,7 +4343,7 @@
 						],
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						}
 					},
 					{
@@ -4422,7 +4375,7 @@
 						"name": "Inspire Envoy",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						}
 					}
 				]
@@ -4445,8 +4398,7 @@
 				},
 				"hp": [
 					{
-						"hp": 410,
-						"abilities": null
+						"hp": 410
 					}
 				],
 				"immunities": [
@@ -4463,7 +4415,6 @@
 		},
 		{
 			"name": "Ancient Underworld Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 85,
 			"level": 16,
@@ -4593,7 +4544,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 37,
@@ -4675,7 +4625,7 @@
 							"fire"
 						],
 						"entries": [
-							"The dragon breathes a blast of fire that explodes in a 30-foot burst within 60 feet, dealing {@damage 14d6} fire damage (DC 39 basic Reflex save). Creatures that fail the save also take {@damage 3d6} {@condition persistent damage ||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The dragon breathes a blast of fire that explodes in a 30-foot burst within 60 feet, dealing {@damage 14d6} fire damage (DC 39 basic Reflex save). Creatures that fail the save also take {@damage 3d6} {@condition persistent damage||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -4745,8 +4695,7 @@
 				},
 				"hp": [
 					{
-						"hp": 295,
-						"abilities": null
+						"hp": 295
 					}
 				],
 				"immunities": [
@@ -4758,7 +4707,6 @@
 		},
 		{
 			"name": "Android Infiltrator",
-			"isNpc": false,
 			"source": "B3",
 			"page": 16,
 			"level": 2,
@@ -4912,15 +4860,13 @@
 				},
 				"hp": [
 					{
-						"hp": 28,
-						"abilities": null
+						"hp": 28
 					}
 				]
 			}
 		},
 		{
 			"name": "Angazhani",
-			"isNpc": false,
 			"source": "B3",
 			"page": 17,
 			"level": 8,
@@ -4995,7 +4941,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 24,
@@ -5100,15 +5045,13 @@
 				},
 				"hp": [
 					{
-						"hp": 180,
-						"abilities": null
+						"hp": 180
 					}
 				]
 			}
 		},
 		{
 			"name": "Angheuvore Flesh-gnawer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 174,
 			"level": 2,
@@ -5313,7 +5256,6 @@
 		},
 		{
 			"name": "Animated Colossus",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Nex"
@@ -5443,7 +5385,8 @@
 			"defenses": {
 				"ac": {
 					"std": 39,
-					"when broken": 35
+					"when broken": 35,
+					"abilities": "construct armor"
 				},
 				"savingThrows": {
 					"fort": {
@@ -5459,8 +5402,7 @@
 				"hardness": 15,
 				"hp": [
 					{
-						"hp": 245,
-						"abilities": null
+						"hp": 245
 					}
 				],
 				"immunities": [
@@ -5482,7 +5424,6 @@
 		},
 		{
 			"name": "Animated Furnace",
-			"isNpc": false,
 			"source": "B3",
 			"page": 18,
 			"foundIn": [
@@ -5583,7 +5524,8 @@
 			"defenses": {
 				"ac": {
 					"std": 30,
-					"when broken": 26
+					"when broken": 26,
+					"abilities": "construct armor"
 				},
 				"savingThrows": {
 					"fort": {
@@ -5599,8 +5541,7 @@
 				"hardness": 10,
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				],
 				"immunities": [
@@ -5622,7 +5563,6 @@
 		},
 		{
 			"name": "Animated Silverware Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Nex"
@@ -5665,7 +5605,6 @@
 			"speed": {
 				"walk": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
@@ -5718,7 +5657,8 @@
 			"defenses": {
 				"ac": {
 					"std": 16,
-					"when broken": 12
+					"when broken": 12,
+					"abilities": "construct armor"
 				},
 				"savingThrows": {
 					"fort": {
@@ -5734,8 +5674,7 @@
 				"hardness": 3,
 				"hp": [
 					{
-						"hp": 14,
-						"abilities": null
+						"hp": 14
 					}
 				],
 				"immunities": [
@@ -5768,7 +5707,6 @@
 		},
 		{
 			"name": "Animated Trebuchet",
-			"isNpc": false,
 			"source": "B3",
 			"page": 19,
 			"foundIn": [
@@ -5885,7 +5823,8 @@
 			"defenses": {
 				"ac": {
 					"std": 36,
-					"when broken": 32
+					"when broken": 32,
+					"abilities": "construct armor"
 				},
 				"savingThrows": {
 					"fort": {
@@ -5901,8 +5840,7 @@
 				"hardness": 14,
 				"hp": [
 					{
-						"hp": 200,
-						"abilities": null
+						"hp": 200
 					}
 				],
 				"immunities": [
@@ -5924,7 +5862,6 @@
 		},
 		{
 			"name": "Aphorite Sharpshooter",
-			"isNpc": false,
 			"source": "B3",
 			"page": 204,
 			"foundIn": [
@@ -6025,7 +5962,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 18,
@@ -6049,7 +5985,7 @@
 						},
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The sharpshooter becomes {@condition concealed} for 4 rounds, though they can't use the concealment to {@action Hide} or {@action Sneak}, as normal for concealment where their position is obvious."
@@ -6099,8 +6035,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			},
@@ -6108,7 +6043,6 @@
 		},
 		{
 			"name": "Arboreal Archive",
-			"isNpc": false,
 			"source": "B3",
 			"page": 21,
 			"level": 12,
@@ -6187,7 +6121,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 32,
@@ -6289,8 +6222,7 @@
 				},
 				"hp": [
 					{
-						"hp": 230,
-						"abilities": null
+						"hp": 230
 					}
 				],
 				"weaknesses": [
@@ -6316,7 +6248,6 @@
 		},
 		{
 			"name": "Arboreal Reaper",
-			"isNpc": false,
 			"source": "B3",
 			"page": 20,
 			"level": 7,
@@ -6395,7 +6326,7 @@
 					"range": "Ranged",
 					"name": "thorns",
 					"attack": 16,
-					"damage": "{@damage 2d8+5} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d8+5} piercing plus {@damage 1d4} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -6404,7 +6335,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 22,
@@ -6468,8 +6398,7 @@
 				},
 				"hp": [
 					{
-						"hp": 130,
-						"abilities": null
+						"hp": 130
 					}
 				],
 				"weaknesses": [
@@ -6485,7 +6414,6 @@
 		},
 		{
 			"name": "Arcane Living Rune",
-			"isNpc": false,
 			"source": "B3",
 			"page": 163,
 			"level": 13,
@@ -6552,7 +6480,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 35,
@@ -6656,8 +6583,7 @@
 				},
 				"hp": [
 					{
-						"hp": 245,
-						"abilities": null
+						"hp": 245
 					}
 				],
 				"immunities": [
@@ -6679,7 +6605,6 @@
 		},
 		{
 			"name": "Azarketi Explorer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 26,
 			"level": 2,
@@ -6788,7 +6713,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -6843,15 +6767,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Azer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 27,
 			"level": 2,
@@ -7009,8 +6931,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				],
 				"immunities": [
@@ -7020,7 +6941,6 @@
 		},
 		{
 			"name": "Bauble Beast",
-			"isNpc": false,
 			"source": "B3",
 			"page": 28,
 			"level": 6,
@@ -7097,7 +7017,7 @@
 					"effects": [
 						"philanthropic bile"
 					],
-					"damage": "{@damage 1d8+7} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid} and philanthropic bile",
+					"damage": "{@damage 1d8+7} piercing plus {@damage 1d6} {@condition persistent damage||persistent acid} and philanthropic bile",
 					"types": [
 						"persistent",
 						"piercing"
@@ -7126,7 +7046,7 @@
 					"effects": [
 						"philanthropic bile"
 					],
-					"damage": "{@damage 2d8} acid plus {@damage 1d6} {@condition persistent damage ||persistent acid} and philanthropic bile",
+					"damage": "{@damage 2d8} acid plus {@damage 1d6} {@condition persistent damage||persistent acid} and philanthropic bile",
 					"types": [
 						"acid",
 						"persistent"
@@ -7174,15 +7094,13 @@
 				},
 				"hp": [
 					{
-						"hp": 100,
-						"abilities": null
+						"hp": 100
 					}
 				]
 			}
 		},
 		{
 			"name": "Baykok",
-			"isNpc": false,
 			"source": "B3",
 			"page": 29,
 			"level": 9,
@@ -7275,7 +7193,7 @@
 							"mental"
 						],
 						"entries": [
-							"120 feet, DC 25."
+							"120 feet, DC 25"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -7385,7 +7303,6 @@
 		},
 		{
 			"name": "Betobeto-san",
-			"isNpc": false,
 			"source": "B3",
 			"page": 31,
 			"level": 12,
@@ -7557,8 +7474,7 @@
 				},
 				"hp": [
 					{
-						"hp": 170,
-						"abilities": null
+						"hp": 170
 					}
 				],
 				"immunities": [
@@ -7571,14 +7487,13 @@
 					{
 						"amount": 10,
 						"name": "all damage",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			}
 		},
 		{
 			"name": "Bison",
-			"isNpc": false,
 			"source": "B3",
 			"page": 32,
 			"level": 4,
@@ -7691,15 +7606,13 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				]
 			}
 		},
 		{
 			"name": "Blood Hag",
-			"isNpc": false,
 			"source": "B3",
 			"page": 130,
 			"level": 8,
@@ -7803,7 +7716,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 26,
@@ -7900,8 +7812,7 @@
 				},
 				"hp": [
 					{
-						"hp": 170,
-						"abilities": null
+						"hp": 170
 					}
 				],
 				"immunities": [
@@ -7917,7 +7828,6 @@
 		},
 		{
 			"name": "Blood Painter",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Nex"
@@ -7988,7 +7898,7 @@
 						"agile",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 3d8+8} slashing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 3d8+8} slashing plus {@damage 1d8} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -7999,7 +7909,7 @@
 				"top": [
 					{
 						"entries": [
-							"A blood painter can detect exposed blood as an imprecise sense at the listed range, including from creatures taking {@condition persistent damage ||persistent bleed damage}."
+							"A blood painter can detect exposed blood as an imprecise sense at the listed range, including from creatures taking {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Bloodsense"
 					}
@@ -8024,7 +7934,7 @@
 							"mental",
 							"occult"
 						],
-						"requirements": "The blood painter is within reach of an enemy taking {@condition persistent damage ||persistent bleed damage}",
+						"requirements": "The blood painter is within reach of an enemy taking {@condition persistent damage||persistent bleed damage}",
 						"entries": [
 							"The blood painter touches the creature and applies blood to one of their four claws; the blood remains fresh for 1 minute. The target must succeed at a DC 28 Will save or become {@condition fascinated} with the blood painter."
 						],
@@ -8067,15 +7977,13 @@
 				},
 				"hp": [
 					{
-						"hp": 155,
-						"abilities": null
+						"hp": 155
 					}
 				]
 			}
 		},
 		{
 			"name": "Bone Ship",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Geb"
@@ -8293,8 +8201,7 @@
 				},
 				"hp": [
 					{
-						"hp": 415,
-						"abilities": null
+						"hp": 415
 					}
 				],
 				"immunities": [
@@ -8331,7 +8238,6 @@
 		},
 		{
 			"name": "Bore Worm Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Alkenstar",
@@ -8380,7 +8286,6 @@
 				"walk": 15,
 				"burrow": 30
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -8413,8 +8318,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				],
 				"immunities": [
@@ -8440,7 +8344,6 @@
 		},
 		{
 			"name": "Brainchild",
-			"isNpc": false,
 			"source": "B3",
 			"page": 38,
 			"level": 11,
@@ -8535,7 +8438,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 30,
@@ -8633,8 +8535,7 @@
 				},
 				"hp": [
 					{
-						"hp": 200,
-						"abilities": null
+						"hp": 200
 					}
 				],
 				"immunities": [
@@ -8655,7 +8556,6 @@
 		},
 		{
 			"name": "Brimorak",
-			"isNpc": false,
 			"source": "B3",
 			"page": 62,
 			"level": 5,
@@ -8744,7 +8644,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 21,
@@ -8862,8 +8761,7 @@
 				},
 				"hp": [
 					{
-						"hp": 80,
-						"abilities": null
+						"hp": 80
 					}
 				],
 				"immunities": [
@@ -8883,7 +8781,6 @@
 		},
 		{
 			"name": "Buso Farmer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 39,
 			"hasImages": true,
@@ -8983,7 +8880,7 @@
 						"requirements": "The buso touches a Small, Medium, or Large plant",
 						"frequency": {
 							"unit": "day",
-							"freq": 2
+							"number": 2
 						},
 						"entries": [
 							"The plant grows or shrinks by one size, remaining that size for the next 5 minutes. If used on a plant creature, this effect has the effects of enlarge or shrink (buso's choice). Unwilling plant creatures can attempt a DC 18 Fortitude saving throw to resist this effect."
@@ -9009,15 +8906,13 @@
 				},
 				"hp": [
 					{
-						"hp": 48,
-						"abilities": null
+						"hp": 48
 					}
 				]
 			}
 		},
 		{
 			"name": "Cactus Leshy",
-			"isNpc": false,
 			"source": "B3",
 			"page": 160,
 			"foundIn": [
@@ -9101,7 +8996,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 18,
@@ -9166,7 +9060,7 @@
 						},
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The cactus leshy shoots their spines in every direction. All creatures in a 10-foot emanation take {@damage 3d6} piercing damage (DC 18 basic Reflex save)."
@@ -9193,15 +9087,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Caligni Caller",
-			"isNpc": false,
 			"source": "B3",
 			"page": 41,
 			"level": 6,
@@ -9273,7 +9165,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 24,
@@ -9377,8 +9268,7 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				],
 				"weaknesses": [
@@ -9391,7 +9281,6 @@
 		},
 		{
 			"name": "Caligni Vanguard",
-			"isNpc": false,
 			"source": "B3",
 			"page": 40,
 			"level": 5,
@@ -9487,7 +9376,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -9548,8 +9436,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				],
 				"immunities": [
@@ -9571,7 +9458,6 @@
 		},
 		{
 			"name": "Calikang",
-			"isNpc": false,
 			"source": "B3",
 			"page": 42,
 			"level": 12,
@@ -9662,7 +9548,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 28,
@@ -9727,7 +9612,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The calikang breathes a blast of energy that deals {@damage 13d6} energy damage to creatures in a 60-foot line (DC 28 basic Reflex save). The calikang can choose the damage type each time: acid, cold, electricity, fire, or sonic. Increase the die size to d8 if the calikang chooses electricity."
@@ -9764,8 +9649,7 @@
 				},
 				"hp": [
 					{
-						"hp": 235,
-						"abilities": null
+						"hp": 235
 					}
 				],
 				"immunities": [
@@ -9775,7 +9659,6 @@
 		},
 		{
 			"name": "Camel",
-			"isNpc": false,
 			"source": "B3",
 			"page": 43,
 			"level": 1,
@@ -9835,9 +9718,7 @@
 					"attack": 6,
 					"effects": [
 						"camel spit"
-					],
-					"damage": "camel spit",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
@@ -9886,15 +9767,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Caulborn",
-			"isNpc": false,
 			"source": "B3",
 			"page": 94,
 			"level": 7,
@@ -9998,7 +9877,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 25,
@@ -10139,8 +10017,7 @@
 				},
 				"hp": [
 					{
-						"hp": 105,
-						"abilities": null
+						"hp": 105
 					}
 				],
 				"immunities": [
@@ -10150,7 +10027,6 @@
 		},
 		{
 			"name": "Cave Giant",
-			"isNpc": false,
 			"source": "B3",
 			"page": 108,
 			"level": 6,
@@ -10241,7 +10117,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Catch Rock",
 						"generic": {
 							"tag": "ability"
@@ -10271,7 +10146,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -10297,15 +10171,13 @@
 				},
 				"hp": [
 					{
-						"hp": 110,
-						"abilities": null
+						"hp": 110
 					}
 				]
 			}
 		},
 		{
 			"name": "Cecaelia Trapper",
-			"isNpc": false,
 			"source": "B3",
 			"page": 45,
 			"level": 5,
@@ -10450,15 +10322,13 @@
 				},
 				"hp": [
 					{
-						"hp": 53,
-						"abilities": null
+						"hp": 53
 					}
 				]
 			}
 		},
 		{
 			"name": "Chouchin-obake",
-			"isNpc": false,
 			"source": "B3",
 			"page": 277,
 			"level": 6,
@@ -10547,7 +10417,6 @@
 							"unit": "reaction"
 						},
 						"trigger": "A creature attempts to leave the chouchinobake's",
-						"entries": [],
 						"name": "Shadowbind"
 					},
 					{
@@ -10590,8 +10459,7 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				],
 				"immunities": [
@@ -10610,7 +10478,6 @@
 		},
 		{
 			"name": "Chyzaedu",
-			"isNpc": false,
 			"source": "B3",
 			"page": 46,
 			"level": 10,
@@ -10707,7 +10574,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 29,
@@ -10869,8 +10735,7 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				],
 				"resistances": [
@@ -10891,7 +10756,6 @@
 		},
 		{
 			"name": "City Guard Squadron",
-			"isNpc": false,
 			"source": "B3",
 			"page": 47,
 			"level": 5,
@@ -10935,7 +10799,6 @@
 				],
 				"walk": 25
 			},
-			"attacks": [],
 			"abilities": {
 				"top": [
 					{
@@ -10950,7 +10813,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Troop Defenses"
 					}
 				],
@@ -10973,7 +10835,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Form Up"
 					},
 					{
@@ -10984,7 +10845,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The city guards engage in a coordinated melee attack against each enemy within 10 feet, with a DC 19 basic Reflex save. The damage depends on the number of actions. {@as 1} {@damage 1d10} piercing or slashing damage {@as 2} {@damage 1d10+7} piercing or slashing damage {@as 3} {@damage 1d10+10} piercing or slashing damage."
@@ -11022,8 +10883,7 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				],
 				"weaknesses": [
@@ -11040,7 +10900,6 @@
 		},
 		{
 			"name": "Clacking Skull Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 244,
 			"level": 10,
@@ -11075,7 +10934,6 @@
 			"speed": {
 				"walk": 25
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
@@ -11203,7 +11061,6 @@
 		},
 		{
 			"name": "Clockwork Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Alkenstar",
@@ -11331,7 +11188,7 @@
 							"fire"
 						],
 						"entries": [
-							"The clockwork dragon breathes a spray of flaming oil that deals {@damage 16d6} fire damage in a 40-foot cone (DC 37 basic Reflex save). Creatures that fail their saves are covered in burning oil and take {@damage 2d6} {@condition persistent damage ||persistent fire damage}. The clockwork dragon can't use Breath Weapon again for 2 rounds."
+							"The clockwork dragon breathes a spray of flaming oil that deals {@damage 16d6} fire damage in a 40-foot cone (DC 37 basic Reflex save). Creatures that fail their saves are covered in burning oil and take {@damage 2d6} {@condition persistent damage||persistent fire damage}. The clockwork dragon can't use Breath Weapon again for 2 rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -11353,7 +11210,7 @@
 						"entries": [
 							"The clockwork dragon attacks with the sharp point of its tail.",
 							"It makes a tail {@action Strike} against each creature in a 20-foot line, rolling the attack roll once and applying the result to each target.",
-							"Any creature hit takes {@damage 4d6} {@condition persistent damage ||persistent bleed damage} (doubled on a critical hit)",
+							"Any creature hit takes {@damage 4d6} {@condition persistent damage||persistent bleed damage} (doubled on a critical hit)",
 							"This counts as two attacks for the dragon's multiple attack penalty."
 						],
 						"name": "Spearing Tail"
@@ -11378,8 +11235,7 @@
 				},
 				"hp": [
 					{
-						"hp": 265,
-						"abilities": null
+						"hp": 265
 					}
 				],
 				"immunities": [
@@ -11417,7 +11273,6 @@
 		},
 		{
 			"name": "Clockwork Mage",
-			"isNpc": false,
 			"foundIn": [
 				"Alkenstar",
 				"Mana Wastes",
@@ -11483,7 +11338,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 28,
@@ -11596,7 +11450,7 @@
 						"frequency": {
 							"unit": "minute",
 							"interval": 10,
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The clockwork mage regains a spell it has already cast that day. It must spend 1 hour of its operational time, or 2 hours if the spell is 3rd level or higher."
@@ -11623,8 +11477,7 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				],
 				"immunities": [
@@ -11658,7 +11511,6 @@
 		},
 		{
 			"name": "Clockwork Soldier",
-			"isNpc": false,
 			"source": "B3",
 			"page": 49,
 			"level": 6,
@@ -11749,7 +11601,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity"
 					}
 				],
@@ -11784,8 +11635,7 @@
 				},
 				"hp": [
 					{
-						"hp": 80,
-						"abilities": null
+						"hp": 80
 					}
 				],
 				"immunities": [
@@ -11817,7 +11667,6 @@
 		},
 		{
 			"name": "Clockwork Spy",
-			"isNpc": false,
 			"source": "B3",
 			"page": 48,
 			"foundIn": [
@@ -11927,8 +11776,7 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				],
 				"immunities": [
@@ -11950,7 +11798,6 @@
 		},
 		{
 			"name": "Cobbleswarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 52,
 			"level": 2,
@@ -11994,7 +11841,6 @@
 				"walk": 20,
 				"burrow": 10
 			},
-			"attacks": [],
 			"abilities": {
 				"top": [
 					{
@@ -12063,8 +11909,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -12082,7 +11927,6 @@
 		},
 		{
 			"name": "Common Eurypterid",
-			"isNpc": false,
 			"source": "B3",
 			"page": 97,
 			"level": -1,
@@ -12215,15 +12059,13 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			}
 		},
 		{
 			"name": "Consonite Choir",
-			"isNpc": false,
 			"source": "B3",
 			"page": 53,
 			"level": 13,
@@ -12344,8 +12186,7 @@
 				},
 				"hp": [
 					{
-						"hp": 200,
-						"abilities": null
+						"hp": 200
 					}
 				],
 				"immunities": [
@@ -12380,7 +12221,6 @@
 		},
 		{
 			"name": "Coral Capuchin",
-			"isNpc": false,
 			"source": "B3",
 			"page": 54,
 			"level": 1,
@@ -12490,15 +12330,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Corrupted Relic",
-			"isNpc": false,
 			"foundIn": [
 				"Impossible Lands"
 			],
@@ -12692,14 +12530,13 @@
 					{
 						"amount": 5,
 						"name": "all",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			}
 		},
 		{
 			"name": "Crossroads Guardian",
-			"isNpc": false,
 			"source": "B3",
 			"page": 59,
 			"level": 7,
@@ -12787,7 +12624,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 25,
@@ -12874,7 +12710,6 @@
 		},
 		{
 			"name": "Cunning Fox",
-			"isNpc": false,
 			"source": "B3",
 			"page": 252,
 			"hasImages": true,
@@ -12959,7 +12794,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 17,
@@ -13016,7 +12850,7 @@
 						},
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The spirit guide forms a bond with a mortal creature. While the bond exists, the spirit guide increases their current and maximum Hit Points by 10, gains a +2 status bonus to their attack and damage rolls, and can communicate telepathically with the bonded mortal as long as the two beings are on the same plane. The spirit guide can only be bonded with one mortal at a time, and they can take this action again to end the bond or to form a new bond (which also ends the old bond). The bond also ends if the spirit guide or the mortal dies.",
@@ -13054,8 +12888,7 @@
 				},
 				"hp": [
 					{
-						"hp": 14,
-						"abilities": null
+						"hp": 14
 					}
 				],
 				"immunities": [
@@ -13068,7 +12901,6 @@
 		},
 		{
 			"name": "Danava Titan",
-			"isNpc": false,
 			"source": "B3",
 			"page": 270,
 			"level": 23,
@@ -13201,7 +13033,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 46,
@@ -13345,8 +13176,7 @@
 				},
 				"hp": [
 					{
-						"hp": 470,
-						"abilities": null
+						"hp": 470
 					}
 				],
 				"immunities": [
@@ -13357,7 +13187,6 @@
 		},
 		{
 			"name": "Deimavigga",
-			"isNpc": false,
 			"source": "B3",
 			"page": 66,
 			"level": 17,
@@ -13441,7 +13270,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 42,
@@ -13607,8 +13435,7 @@
 				},
 				"hp": [
 					{
-						"hp": 285,
-						"abilities": null
+						"hp": 285
 					}
 				],
 				"immunities": [
@@ -13618,14 +13445,13 @@
 					{
 						"amount": 15,
 						"name": "physical",
-						"note": "(except silver)"
+						"note": "except silver"
 					}
 				]
 			}
 		},
 		{
 			"name": "Desert Giant",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Alkenstar",
@@ -13718,7 +13544,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Catch Rock"
 					}
 				],
@@ -13758,7 +13583,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -13784,15 +13608,13 @@
 				},
 				"hp": [
 					{
-						"hp": 185,
-						"abilities": null
+						"hp": 185
 					}
 				]
 			}
 		},
 		{
 			"name": "Divine Warden Of Nethys",
-			"isNpc": false,
 			"source": "B3",
 			"page": 73,
 			"level": 5,
@@ -13864,7 +13686,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 19,
@@ -13906,7 +13727,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"{@damage 5d6} negative, DC 19."
+							"{@damage 5d6} negative, DC 19"
 						],
 						"name": "Divine Destruction"
 					},
@@ -13950,8 +13771,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				],
 				"immunities": [
@@ -13973,7 +13793,6 @@
 		},
 		{
 			"name": "Domovoi",
-			"isNpc": false,
 			"source": "B3",
 			"page": 136,
 			"level": 2,
@@ -14051,7 +13870,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 18,
@@ -14125,8 +13943,7 @@
 				},
 				"hp": [
 					{
-						"hp": 35,
-						"abilities": null
+						"hp": 35
 					}
 				],
 				"weaknesses": [
@@ -14139,7 +13956,6 @@
 		},
 		{
 			"name": "Doru",
-			"isNpc": false,
 			"source": "B3",
 			"page": 68,
 			"level": 1,
@@ -14182,8 +13998,9 @@
 				"stealth": {
 					"std": 7
 				},
-				"lore (any one)": {
-					"std": 10
+				"lore": {
+					"std": 10,
+					"note": "any one"
 				}
 			},
 			"abilityMods": {
@@ -14222,7 +14039,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 17,
@@ -14249,8 +14065,9 @@
 							"spells": [
 								{
 									"name": "invisibility",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								}
 							]
@@ -14322,8 +14139,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"weaknesses": [
@@ -14341,7 +14157,6 @@
 		},
 		{
 			"name": "Draconal",
-			"isNpc": false,
 			"source": "B3",
 			"page": 13,
 			"level": 20,
@@ -14457,7 +14272,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 46,
@@ -14600,7 +14414,6 @@
 		},
 		{
 			"name": "Dramofir",
-			"isNpc": false,
 			"source": "B3",
 			"page": 86,
 			"level": 14,
@@ -14685,7 +14498,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 36,
@@ -14817,8 +14629,7 @@
 				},
 				"hp": [
 					{
-						"hp": 290,
-						"abilities": null
+						"hp": 290
 					}
 				],
 				"immunities": [
@@ -14839,7 +14650,6 @@
 		},
 		{
 			"name": "Draxie",
-			"isNpc": false,
 			"source": "B3",
 			"page": 255,
 			"level": 3,
@@ -14927,7 +14737,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 20,
@@ -15010,15 +14819,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Dretch",
-			"isNpc": false,
 			"source": "B3",
 			"page": 60,
 			"level": 2,
@@ -15102,7 +14909,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 16,
@@ -15156,7 +14962,7 @@
 					},
 					{
 						"entries": [
-							"A dretch makes the most of any weakness it finds. Whenever a dretch scores a critical hit with its claw {@action Strike}, the target takes an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"A dretch makes the most of any weakness it finds. Whenever a dretch scores a critical hit with its claw {@action Strike}, the target takes an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Vicious Criticals"
 					}
@@ -15180,15 +14986,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Duende",
-			"isNpc": false,
 			"source": "B3",
 			"page": 87,
 			"level": 2,
@@ -15268,7 +15072,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 18,
@@ -15347,7 +15150,7 @@
 						"requirements": "The duende is holding brown or yellow earthen objects, such as ginger or animal dung",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The duende makes the objects look, feel, and smell like gold trinkets of a similar size. A creature that touches or Interacts with an affected object can attempt a DC 18 {@skill Perception} check to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}, and a successful DC 20 check with {@skill Crafting} or an appropriate {@skill Lore} skill (such as {@skill Lore||Mining Lore}) reveals their true nature. The effect ends if the objects are exposed to sunlight."
@@ -15374,15 +15177,13 @@
 				},
 				"hp": [
 					{
-						"hp": 35,
-						"abilities": null
+						"hp": 35
 					}
 				]
 			}
 		},
 		{
 			"name": "Dvorovoi",
-			"isNpc": false,
 			"source": "B3",
 			"page": 137,
 			"level": 3,
@@ -15447,7 +15248,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 18,
@@ -15532,8 +15332,7 @@
 				},
 				"hp": [
 					{
-						"hp": 44,
-						"abilities": null
+						"hp": 44
 					}
 				],
 				"weaknesses": [
@@ -15546,7 +15345,6 @@
 		},
 		{
 			"name": "Dybbuk",
-			"isNpc": false,
 			"source": "B3",
 			"page": 88,
 			"level": 15,
@@ -15624,7 +15422,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 36,
@@ -15713,9 +15510,12 @@
 							"possession"
 						],
 						"entries": [
-							"The dybbuk possesses a Large or smaller unattended object within 20 feet, making it an animated object (Bestiary 20, Bestiary 3 18). This animated object's level can be no higher than the dybbuk's level \u2013 2. This possession ends when the object is destroyed or the dybbuk leaves it by using this ability again. At this point, the dybbuk reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds. If the object is destroyed, the dybbuk takes {@damage 5d6} force damage."
+							"The dybbuk possesses a {@trait Large} or smaller unattended object within 20 feet, making it an animated object (Bestiary 20, Bestiary 3 18). This animated object's level can be no higher than the dybbuk's level \u2013 2. This possession ends when the object is destroyed or the dybbuk leaves it by using this ability again. At this point, the dybbuk reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds. If the object is destroyed, the dybbuk takes {@damage 5d6} force damage."
 						],
-						"name": "Inhabit Object"
+						"name": "Inhabit Object",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -15733,7 +15533,10 @@
 							"The dybbuk attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell (DC 34) with an unlimited duration, except since the dybbuk doesn't have a physical body, they aren't {@condition unconscious}, and aren't {@condition paralyzed} when the effect ends, though they take {@damage 5d6} force damage if the body is knocked {@condition unconscious} or killed. If the dybbuk took control of the target with Malevolent Possession, when the dybbuk departs, the target has only incoherent memories of the interval it was possessed.",
 							"If a creature dies while possessed by the dybbuk and its corpse remains intact, the dybbuk can immediately inhabit the corpse (see Inhabit Object) as a reaction, in which case the corpse becomes an animated object."
 						],
-						"name": "Malevolent Possession"
+						"name": "Malevolent Possession",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			},
@@ -15780,7 +15583,6 @@
 		},
 		{
 			"name": "Earth Wisp",
-			"isNpc": false,
 			"source": "B3",
 			"page": 91,
 			"level": 0,
@@ -15898,8 +15700,7 @@
 				},
 				"hp": [
 					{
-						"hp": 15,
-						"abilities": null
+						"hp": 15
 					}
 				],
 				"immunities": [
@@ -15918,7 +15719,6 @@
 		},
 		{
 			"name": "Einherji",
-			"isNpc": false,
 			"source": "B3",
 			"page": 89,
 			"level": 10,
@@ -16049,7 +15849,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -16063,7 +15862,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -16119,8 +15917,7 @@
 				},
 				"hp": [
 					{
-						"hp": 175,
-						"abilities": null
+						"hp": 175
 					}
 				],
 				"resistances": [
@@ -16133,7 +15930,6 @@
 		},
 		{
 			"name": "Elder Sphinx",
-			"isNpc": false,
 			"source": "B3",
 			"page": 250,
 			"level": 16,
@@ -16212,7 +16008,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 37,
@@ -16327,7 +16122,7 @@
 						"frequency": {
 							"unit": "minute",
 							"interval": 10,
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The sphinx recites a riddle and compels up to 10 creatures within 30 feet to answer (DC 37 Will save). The GM either runs the riddle out of character by timing the players' attempts, or picks an appropriate associated skill for the riddle, such as {@skill Religion} for a riddle involving divine mysteries. The sphinx gains a +2 circumstance bonus to attack rolls and damage rolls against any creature that answers incorrectly even once. This bonus lasts for 1 day.",
@@ -16379,15 +16174,13 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				]
 			}
 		},
 		{
 			"name": "Elder Wyrmwraith",
-			"isNpc": false,
 			"source": "B3",
 			"page": 297,
 			"level": 23,
@@ -16484,7 +16277,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 46,
@@ -16690,7 +16482,6 @@
 		},
 		{
 			"name": "Elysian Titan",
-			"isNpc": false,
 			"source": "B3",
 			"page": 268,
 			"level": 21,
@@ -16807,7 +16598,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 44,
@@ -16908,7 +16698,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -16954,8 +16743,7 @@
 				},
 				"hp": [
 					{
-						"hp": 400,
-						"abilities": null
+						"hp": 400
 					}
 				],
 				"immunities": [
@@ -16966,7 +16754,6 @@
 		},
 		{
 			"name": "Empress Bore Worm",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Alkenstar",
@@ -17084,8 +16871,7 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
 					}
 				],
 				"immunities": [
@@ -17101,7 +16887,6 @@
 		},
 		{
 			"name": "Esipil",
-			"isNpc": false,
 			"source": "B3",
 			"page": 218,
 			"level": 1,
@@ -17187,7 +16972,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 15,
@@ -17289,8 +17073,7 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				],
 				"immunities": [
@@ -17300,7 +17083,6 @@
 		},
 		{
 			"name": "Etioling Blightmage",
-			"isNpc": false,
 			"source": "B3",
 			"page": 177,
 			"level": 10,
@@ -17374,7 +17156,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 29,
@@ -17536,7 +17317,7 @@
 				"bot": [
 					{
 						"entries": [
-							"As angheuvore flesh-gnawer, except up to 8 rounds, and the etioling gains the {@trait incorporeal} trait, a fly Speed of 25 feet, resistance 10 to all damage (except force, ghost touch, or positive; double this resistance vs. non-magical) while they hold their breath. They can't cast spells during this time."
+							"As angheuvore flesh-gnawer, except up to 8 rounds, and the etioling gains the {@trait incorporeal} trait, a fly Speed of 25 feet, resistance 10 to all damage (except force, {@item ghost touch}, or positive; double this resistance vs. non-magical) while they hold their breath. They can't cast spells during this time."
 						],
 						"name": "Death Gasp"
 					}
@@ -17570,7 +17351,6 @@
 		},
 		{
 			"name": "Eunemvro",
-			"isNpc": false,
 			"source": "B3",
 			"page": 96,
 			"level": 5,
@@ -17665,7 +17445,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 20,
@@ -17704,7 +17483,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity"
 					},
 					{
@@ -17763,8 +17541,7 @@
 				},
 				"hp": [
 					{
-						"hp": 78,
-						"abilities": null
+						"hp": 78
 					}
 				],
 				"immunities": [
@@ -17780,7 +17557,6 @@
 		},
 		{
 			"name": "Fading Fox",
-			"isNpc": false,
 			"source": "B3",
 			"page": 102,
 			"level": 2,
@@ -17916,15 +17692,13 @@
 				},
 				"hp": [
 					{
-						"hp": 25,
-						"abilities": null
+						"hp": 25
 					}
 				]
 			}
 		},
 		{
 			"name": "Feathered Bear",
-			"isNpc": false,
 			"source": "B3",
 			"page": 253,
 			"level": 10,
@@ -18011,7 +17785,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 27,
@@ -18112,8 +17885,7 @@
 				},
 				"hp": [
 					{
-						"hp": 160,
-						"abilities": null
+						"hp": 160
 					}
 				],
 				"immunities": [
@@ -18126,7 +17898,6 @@
 		},
 		{
 			"name": "Feral Skull Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 244,
 			"level": 12,
@@ -18170,7 +17941,6 @@
 			"speed": {
 				"walk": 40
 			},
-			"attacks": [],
 			"abilities": {
 				"top": [
 					{
@@ -18195,7 +17965,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 2d6} bludgeoning, {@damage 2d6} piercing, and {@damage 2d6} slashing damage (DC 32 basic Reflex save). A creature that fails its saving throw also takes {@damage 1d10} {@condition persistent damage ||persistent bleed damage}."
+							"Each enemy in the swarm's space takes {@damage 2d6} bludgeoning, {@damage 2d6} piercing, and {@damage 2d6} slashing damage (DC 32 basic Reflex save). A creature that fails its saving throw also takes {@damage 1d10} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Feral Gnaw"
 					},
@@ -18297,7 +18067,6 @@
 		},
 		{
 			"name": "Festrog",
-			"isNpc": false,
 			"source": "B3",
 			"page": 98,
 			"level": 1,
@@ -18443,7 +18212,6 @@
 		},
 		{
 			"name": "Fire Wisp",
-			"isNpc": false,
 			"source": "B3",
 			"page": 91,
 			"level": 0,
@@ -18500,7 +18268,7 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 1d4} fire plus 1 {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 1d4} fire plus 1 {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -18569,8 +18337,7 @@
 				},
 				"hp": [
 					{
-						"hp": 18,
-						"abilities": null
+						"hp": 18
 					}
 				],
 				"immunities": [
@@ -18594,7 +18361,6 @@
 		},
 		{
 			"name": "Flaming Skull",
-			"isNpc": false,
 			"source": "B3",
 			"page": 30,
 			"level": 2,
@@ -18676,7 +18442,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A flaming skull is shrouded in hideous flames. It deals {@damage 1d6} fire damage to any unattended item it touches and on a forehead {@action Strike}. On a critical hit with a {@action Strike}, the target catches fire, taking {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
+							"A flaming skull is shrouded in hideous flames. It deals {@damage 1d6} fire damage to any unattended item it touches and on a forehead {@action Strike}. On a critical hit with a {@action Strike}, the target catches fire, taking {@damage 1d4} {@condition persistent damage||persistent fire damage}."
 						],
 						"name": "Flaming Shroud"
 					}
@@ -18725,7 +18491,6 @@
 		},
 		{
 			"name": "Flumph",
-			"isNpc": false,
 			"source": "B3",
 			"page": 100,
 			"level": 1,
@@ -18784,7 +18549,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@damage 1d4} piercing plus {@damage 1d4} {@condition persistent damage ||persistent acid}",
+					"damage": "{@damage 1d4} piercing plus {@damage 1d4} {@condition persistent damage||persistent acid}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -18835,15 +18600,13 @@
 				},
 				"hp": [
 					{
-						"hp": 17,
-						"abilities": null
+						"hp": 17
 					}
 				]
 			}
 		},
 		{
 			"name": "Fortune Eater",
-			"isNpc": false,
 			"source": "B3",
 			"page": 101,
 			"level": 7,
@@ -18864,8 +18627,8 @@
 				}
 			],
 			"languages": {
-				"languages": [
-					"languages spoken by the adventurers (typically common, dwarven, elven, and goblin)"
+				"notes": [
+					"languages spoken by the adventurers (typically {@language common}, {@language dwarven}, {@language elven}, and {@language goblin})"
 				]
 			},
 			"skills": {
@@ -18952,7 +18715,11 @@
 						"entries": [
 							"Offering the fortune eater a chance to be instrumental in completing a heroic deed releases their component spirits to move on to the afterlife."
 						],
-						"name": "Rejuvenation"
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					},
 					{
 						"traits": [
@@ -19040,7 +18807,6 @@
 		},
 		{
 			"name": "Fossil Golem",
-			"isNpc": false,
 			"source": "B3",
 			"page": 116,
 			"level": 12,
@@ -19160,8 +18926,7 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				],
 				"immunities": [
@@ -19171,20 +18936,26 @@
 					"doomed",
 					"drained",
 					"fatigued",
-					"healing",
-					"magic (see below)"
+					"healing magic (see below)",
+					"mental",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "physical"
+						"name": "physical",
+						"note": "except adamantine or bludgeoning"
 					}
 				]
 			}
 		},
 		{
 			"name": "Fuath",
-			"isNpc": false,
 			"source": "B3",
 			"page": 121,
 			"level": 1,
@@ -19273,7 +19044,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 17,
@@ -19321,7 +19091,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The fuath surrounds the head of one air-breathing creature within 30 feet in a magical film of viscous water for 1 minute. The target must succeed at a DC 17 Reflex save or begin to choke and must hold their breath to avoid drowning (Core Rulebook 478). The film can be temporarily wiped away with a total of 3 {@action Interact} actions by the choking creature or creatures adjacent to it, allowing a new Reflex save with a +2 circumstance bonus to end the effect. (These actions don't need to be consecutive or made by the same creature.)"
@@ -19348,8 +19118,7 @@
 				},
 				"hp": [
 					{
-						"hp": 18,
-						"abilities": null
+						"hp": 18
 					}
 				],
 				"weaknesses": [
@@ -19366,7 +19135,6 @@
 		},
 		{
 			"name": "Galvo",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Impossible Lands"
@@ -19510,8 +19278,7 @@
 				},
 				"hp": [
 					{
-						"hp": 158,
-						"abilities": null
+						"hp": 158
 					}
 				],
 				"immunities": [
@@ -19545,7 +19312,6 @@
 		},
 		{
 			"name": "Ganzi Martial Artist",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -19641,7 +19407,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 19,
@@ -19666,7 +19431,7 @@
 						},
 						"frequency": {
 							"unit": "turn",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The martial artist makes two melee {@action Strike||Strikes}. The martial artist applies their multiple attack penalty to these {@action Strike||Strikes} normally."
@@ -19703,8 +19468,7 @@
 				},
 				"hp": [
 					{
-						"hp": 36,
-						"abilities": null
+						"hp": 36
 					}
 				],
 				"resistances": [
@@ -19719,7 +19483,6 @@
 		},
 		{
 			"name": "Garuda",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -19835,7 +19598,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 27,
@@ -19929,15 +19691,13 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				]
 			}
 		},
 		{
 			"name": "Gathlain Wanderer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 105,
 			"level": 1,
@@ -20068,8 +19828,7 @@
 				},
 				"hp": [
 					{
-						"hp": 14,
-						"abilities": null
+						"hp": 14
 					}
 				],
 				"weaknesses": [
@@ -20082,7 +19841,6 @@
 		},
 		{
 			"name": "Ghoran Manipulator",
-			"isNpc": false,
 			"source": "B3",
 			"page": 106,
 			"foundIn": [
@@ -20187,7 +19945,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 20,
@@ -20243,7 +20000,6 @@
 					}
 				},
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 20,
@@ -20251,10 +20007,7 @@
 						"1": {
 							"spells": [
 								{
-									"name": "goodberry",
-									"notes": [
-										"Core Rulebook 399"
-									]
+									"name": "goodberry"
 								},
 								{
 									"name": "purify food and drink"
@@ -20340,15 +20093,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Giant Flying Squirrel",
-			"isNpc": false,
 			"source": "B3",
 			"page": 257,
 			"level": 2,
@@ -20449,15 +20200,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Giant Hermit Crab",
-			"isNpc": false,
 			"source": "B3",
 			"page": 58,
 			"level": 5,
@@ -20589,8 +20338,7 @@
 				},
 				"hp": [
 					{
-						"hp": 114,
-						"abilities": null
+						"hp": 114
 					}
 				],
 				"weaknesses": [
@@ -20603,7 +20351,6 @@
 		},
 		{
 			"name": "Giant Opossum",
-			"isNpc": false,
 			"source": "B3",
 			"page": 192,
 			"level": 2,
@@ -20741,8 +20488,7 @@
 				},
 				"hp": [
 					{
-						"hp": 35,
-						"abilities": null
+						"hp": 35
 					}
 				],
 				"resistances": [
@@ -20755,7 +20501,6 @@
 		},
 		{
 			"name": "Giant Pangolin",
-			"isNpc": false,
 			"source": "B3",
 			"page": 199,
 			"level": 4,
@@ -20887,8 +20632,7 @@
 				},
 				"hp": [
 					{
-						"hp": 63,
-						"abilities": null
+						"hp": 63
 					}
 				]
 			},
@@ -20896,7 +20640,6 @@
 		},
 		{
 			"name": "Giant Porcupine",
-			"isNpc": false,
 			"source": "B3",
 			"page": 207,
 			"level": 2,
@@ -20963,7 +20706,7 @@
 					{
 						"entries": [
 							"A creature that hits a porcupine with an unarmed {@action Strike} or a non-reach melee {@action Strike} takes {@damage 1d8} piercing damage (basic Reflex save)",
-							"On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage ||persistent piercing damage} as the quills hook into its flesh."
+							"On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage||persistent piercing damage} as the quills hook into its flesh."
 						],
 						"name": "Passive Points"
 					}
@@ -20971,7 +20714,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A creature damaged by the porcupine's quills {@action Strike} must succeed at a DC 18 Reflex save or some of the quills remain embedded in its body, dealing {@damage 1d4} {@condition persistent damage ||persistent piercing damage}."
+							"A creature damaged by the porcupine's quills {@action Strike} must succeed at a DC 18 Reflex save or some of the quills remain embedded in its body, dealing {@damage 1d4} {@condition persistent damage||persistent piercing damage}."
 						],
 						"name": "Embed Quill"
 					},
@@ -21004,8 +20747,7 @@
 				},
 				"hp": [
 					{
-						"hp": 32,
-						"abilities": null
+						"hp": 32
 					}
 				]
 			},
@@ -21013,7 +20755,6 @@
 		},
 		{
 			"name": "Giant Seahorse",
-			"isNpc": false,
 			"source": "B3",
 			"page": 227,
 			"level": 3,
@@ -21115,8 +20856,7 @@
 				},
 				"hp": [
 					{
-						"hp": 58,
-						"abilities": null
+						"hp": 58
 					}
 				]
 			},
@@ -21124,7 +20864,6 @@
 		},
 		{
 			"name": "Giant Skunk",
-			"isNpc": false,
 			"source": "B3",
 			"page": 246,
 			"level": 1,
@@ -21235,15 +20974,13 @@
 				},
 				"hp": [
 					{
-						"hp": 21,
-						"abilities": null
+						"hp": 21
 					}
 				]
 			}
 		},
 		{
 			"name": "Giant Vulture",
-			"isNpc": false,
 			"source": "B3",
 			"page": 289,
 			"level": 3,
@@ -21338,7 +21075,7 @@
 						},
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The giant vulture vomits up its last meal on a creature within 10 feet. The creature takes {@damage 3d6} acid damage with a DC 20 basic Fortitude save. On a failed save, the target is also {@condition sickened 1}."
@@ -21364,8 +21101,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				]
 			},
@@ -21373,7 +21109,6 @@
 		},
 		{
 			"name": "Girtablilu Seer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 113,
 			"level": 12,
@@ -21463,7 +21198,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "divine",
 					"DC": 33,
@@ -21660,15 +21394,13 @@
 				},
 				"hp": [
 					{
-						"hp": 210,
-						"abilities": null
+						"hp": 210
 					}
 				]
 			}
 		},
 		{
 			"name": "Girtablilu Sentry",
-			"isNpc": false,
 			"source": "B3",
 			"page": 112,
 			"level": 8,
@@ -21838,15 +21570,13 @@
 				},
 				"hp": [
 					{
-						"hp": 160,
-						"abilities": null
+						"hp": 160
 					}
 				]
 			}
 		},
 		{
 			"name": "Gliminal",
-			"isNpc": false,
 			"source": "B3",
 			"page": 114,
 			"level": 9,
@@ -21938,7 +21668,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 28,
@@ -22047,8 +21776,7 @@
 				},
 				"hp": [
 					{
-						"hp": 160,
-						"abilities": null
+						"hp": 160
 					}
 				],
 				"immunities": [
@@ -22069,14 +21797,13 @@
 					{
 						"amount": 5,
 						"name": "all",
-						"note": "(except force, ghost touch, or negative; double resistance against non-magical)"
+						"note": "except force, {@item ghost touch}, or negative; double resistance against non-magical"
 					}
 				]
 			}
 		},
 		{
 			"name": "Globster",
-			"isNpc": false,
 			"source": "B3",
 			"page": 115,
 			"level": 5,
@@ -22184,8 +21911,7 @@
 				},
 				"hp": [
 					{
-						"hp": 170,
-						"abilities": null
+						"hp": 170
 					}
 				],
 				"immunities": [
@@ -22203,7 +21929,6 @@
 		},
 		{
 			"name": "Green Man",
-			"isNpc": false,
 			"source": "B3",
 			"page": 118,
 			"level": 24,
@@ -22314,7 +22039,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 48,
@@ -22520,8 +22244,7 @@
 				},
 				"hp": [
 					{
-						"hp": 525,
-						"abilities": null
+						"hp": 525
 					}
 				],
 				"weaknesses": [
@@ -22547,7 +22270,6 @@
 		},
 		{
 			"name": "Grimple",
-			"isNpc": false,
 			"source": "B3",
 			"page": 120,
 			"level": -1,
@@ -22634,7 +22356,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 16,
@@ -22700,8 +22421,7 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				],
 				"weaknesses": [
@@ -22714,7 +22434,6 @@
 		},
 		{
 			"name": "Grioth Cultist",
-			"isNpc": false,
 			"source": "B3",
 			"page": 123,
 			"level": 3,
@@ -22810,7 +22529,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 20,
@@ -22868,7 +22586,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 19,
@@ -22912,7 +22629,6 @@
 				],
 				"mid": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -22984,7 +22700,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The grioth cultist waves a hand in a complex pattern to invoke dark powers, dealing {@damage 3d8} mental damage. Each nongrioth creature within 20 feet must attempt a DC 20 Will save.",
@@ -23020,8 +22736,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				],
 				"immunities": [
@@ -23037,7 +22752,6 @@
 		},
 		{
 			"name": "Grioth Scout",
-			"isNpc": false,
 			"source": "B3",
 			"page": 122,
 			"level": 1,
@@ -23130,7 +22844,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 16,
@@ -23174,7 +22887,6 @@
 				],
 				"mid": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -23253,8 +22965,7 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				],
 				"immunities": [
@@ -23270,7 +22981,6 @@
 		},
 		{
 			"name": "Guecubu",
-			"isNpc": false,
 			"source": "B3",
 			"page": 126,
 			"level": 8,
@@ -23348,7 +23058,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 26,
@@ -23457,7 +23166,6 @@
 		},
 		{
 			"name": "Gurgist Mauler",
-			"isNpc": false,
 			"source": "B3",
 			"page": 175,
 			"level": 6,
@@ -23643,7 +23351,6 @@
 		},
 		{
 			"name": "Hadrinnex",
-			"isNpc": false,
 			"source": "B3",
 			"page": 127,
 			"level": 8,
@@ -23791,8 +23498,7 @@
 				},
 				"hp": [
 					{
-						"hp": 118,
-						"abilities": null
+						"hp": 118
 					}
 				],
 				"resistances": [
@@ -23809,7 +23515,6 @@
 		},
 		{
 			"name": "Haniver",
-			"isNpc": false,
 			"source": "B3",
 			"page": 120,
 			"level": -1,
@@ -23883,7 +23588,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 13,
@@ -23944,15 +23648,13 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			}
 		},
 		{
 			"name": "Harmona",
-			"isNpc": false,
 			"source": "B3",
 			"page": 132,
 			"level": 11,
@@ -24025,7 +23727,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 30,
@@ -24061,7 +23762,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
 						"name": "Push",
 						"generic": {
 							"tag": "ability"
@@ -24141,8 +23841,7 @@
 				},
 				"hp": [
 					{
-						"hp": 190,
-						"abilities": null
+						"hp": 190
 					}
 				],
 				"immunities": [
@@ -24158,7 +23857,6 @@
 		},
 		{
 			"name": "Harpy Skeleton",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Alkenstar",
@@ -24321,7 +24019,6 @@
 		},
 		{
 			"name": "Hatred Siktempora",
-			"isNpc": false,
 			"source": "B3",
 			"page": 235,
 			"level": 18,
@@ -24399,7 +24096,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 40,
@@ -24492,7 +24188,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"requirements": "The hatred siktempora has a creature {@condition grabbed}",
 						"entries": [
@@ -24546,7 +24242,6 @@
 		},
 		{
 			"name": "Hekatonkheires Titan",
-			"isNpc": false,
 			"source": "B3",
 			"page": 271,
 			"level": 24,
@@ -24647,7 +24342,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 48,
@@ -24724,7 +24418,7 @@
 						"trigger": "The titan casts plane shift",
 						"frequency": {
 							"unit": "month",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The titan arrives in a storm of shattered planar barriers. This has the effects of a 10th-level {@spell storm of vengeance}."
@@ -24794,8 +24488,7 @@
 				},
 				"hp": [
 					{
-						"hp": 500,
-						"abilities": null
+						"hp": 500
 					}
 				],
 				"immunities": [
@@ -24806,7 +24499,6 @@
 		},
 		{
 			"name": "Hellbound Attorney",
-			"isNpc": false,
 			"source": "B3",
 			"page": 64,
 			"level": 4,
@@ -24887,7 +24579,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 21,
@@ -24953,8 +24644,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				],
 				"weaknesses": [
@@ -24973,7 +24663,6 @@
 		},
 		{
 			"name": "Hellknight Cavalry Brigade",
-			"isNpc": false,
 			"source": "B3",
 			"page": 44,
 			"level": 8,
@@ -25028,14 +24717,12 @@
 				],
 				"walk": 40
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Troop Defenses"
 					}
 				],
@@ -25055,7 +24742,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
 						"name": "Form Up"
 					},
 					{
@@ -25094,7 +24780,7 @@
 						],
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"name": "Swing from the Saddle"
 					},
@@ -25129,8 +24815,7 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				],
 				"weaknesses": [
@@ -25153,7 +24838,6 @@
 		},
 		{
 			"name": "Hellwasp Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 133,
 			"level": 8,
@@ -25198,7 +24882,6 @@
 				],
 				"walk": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -25207,7 +24890,6 @@
 							"unit": "action"
 						},
 						"requirements": "The hellwasp swarm is controlling a corpse with",
-						"entries": [],
 						"name": "Abandon Corpse"
 					},
 					{
@@ -25309,8 +24991,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				],
 				"immunities": [
@@ -25331,7 +25012,6 @@
 		},
 		{
 			"name": "Herexen",
-			"isNpc": false,
 			"source": "B3",
 			"page": 134,
 			"level": 2,
@@ -25404,7 +25084,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 18,
@@ -25482,7 +25161,6 @@
 		},
 		{
 			"name": "Hermit Crab Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 58,
 			"level": 4,
@@ -25523,7 +25201,6 @@
 				"walk": 30,
 				"swim": 15
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -25532,7 +25209,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 2d8} piercing damage (DC 20 basic Reflex save). Creatures that fail this save also take {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+							"Each enemy in the swarm's space takes {@damage 2d8} piercing damage (DC 20 basic Reflex save). Creatures that fail this save also take {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Swarming Snips"
 					}
@@ -25555,8 +25232,7 @@
 				},
 				"hp": [
 					{
-						"hp": 42,
-						"abilities": null
+						"hp": 42
 					}
 				],
 				"immunities": [
@@ -25577,7 +25253,6 @@
 		},
 		{
 			"name": "Hesperid",
-			"isNpc": false,
 			"source": "B3",
 			"page": 189,
 			"level": 9,
@@ -25677,7 +25352,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 28,
@@ -25766,8 +25440,7 @@
 				},
 				"hp": [
 					{
-						"hp": 175,
-						"abilities": null
+						"hp": 175
 					}
 				],
 				"weaknesses": [
@@ -25780,7 +25453,6 @@
 		},
 		{
 			"name": "Hesperid Queen",
-			"isNpc": false,
 			"source": "B3",
 			"page": 191,
 			"level": 19,
@@ -25886,7 +25558,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 44,
@@ -26038,7 +25709,6 @@
 					}
 				},
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 44,
@@ -26179,8 +25849,7 @@
 				},
 				"hp": [
 					{
-						"hp": 306,
-						"abilities": null
+						"hp": 306
 					}
 				],
 				"weaknesses": [
@@ -26193,7 +25862,6 @@
 		},
 		{
 			"name": "Hieracosphinx",
-			"isNpc": false,
 			"source": "B3",
 			"page": 250,
 			"level": 5,
@@ -26344,15 +26012,13 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				]
 			}
 		},
 		{
 			"name": "House Drake",
-			"isNpc": false,
 			"source": "B3",
 			"page": 135,
 			"level": 1,
@@ -26427,7 +26093,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 17,
@@ -26516,8 +26181,7 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				],
 				"immunities": [
@@ -26528,7 +26192,6 @@
 		},
 		{
 			"name": "Huldra",
-			"isNpc": false,
 			"source": "B3",
 			"page": 138,
 			"level": 4,
@@ -26640,7 +26303,6 @@
 		},
 		{
 			"name": "Hyakume",
-			"isNpc": false,
 			"source": "B3",
 			"page": 139,
 			"level": 15,
@@ -26732,7 +26394,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 40,
@@ -26800,7 +26461,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -26825,7 +26485,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Up to six of the hyakume's eyes detach from the hyakume's body. Each eye has AC 26, HP 1, and a fly speed of 40 feet. The hyakume can see through all of their eye probes. They can move the probes all in separate directions using a single action. A hyakume can have no more than six eye probes active at a time; using this ability to create more causes the eye or eyes farthest away to shrivel and die. The hyakume can deliver touch spells through their eye probes and can make melee spell attacks through them. In addition, the hyakume can {@action Steal} Memories through an eye probe using a single action by touching the target with the eye."
@@ -26891,8 +26551,7 @@
 				},
 				"hp": [
 					{
-						"hp": 275,
-						"abilities": null
+						"hp": 275
 					}
 				],
 				"immunities": [
@@ -26902,7 +26561,6 @@
 		},
 		{
 			"name": "Incutilis",
-			"isNpc": false,
 			"source": "B3",
 			"page": 140,
 			"level": 2,
@@ -27020,15 +26678,13 @@
 				},
 				"hp": [
 					{
-						"hp": 21,
-						"abilities": null
+						"hp": 21
 					}
 				]
 			}
 		},
 		{
 			"name": "Ioton",
-			"isNpc": false,
 			"source": "B3",
 			"page": 92,
 			"level": 0,
@@ -27086,7 +26742,7 @@
 					"effects": [
 						"leech thought"
 					],
-					"damage": "{@damage 1d4} {@condition persistent damage ||persistent mental damage} and leech thought",
+					"damage": "{@damage 1d4} {@condition persistent damage||persistent mental damage} and leech thought",
 					"types": [
 						"persistent"
 					]
@@ -27094,7 +26750,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 14,
@@ -27142,8 +26797,8 @@
 							"transmutation"
 						],
 						"entries": [
-							"While a creature is taking {@condition persistent damage ||persistent mental damage} from the ioton, the ioton takes the shape of a creature familiar to the target, such as an acquaintance, pet, or common animal, though the appearance is imperfect and grants no benefit to {@action Impersonate} an individual.",
-							"While transformed, the ioton loses its {@trait incorporeal} trait, immunities, and resistances, but it gains an unarmed melee {@action Strike} with a +6 attack modifier that deals {@damage 1d8+2} bludgeoning damage. The ioton immediately returns to its original form once no creature is taking {@condition persistent damage ||persistent mental damage} from it."
+							"While a creature is taking {@condition persistent damage||persistent mental damage} from the ioton, the ioton takes the shape of a creature familiar to the target, such as an acquaintance, pet, or common animal, though the appearance is imperfect and grants no benefit to {@action Impersonate} an individual.",
+							"While transformed, the ioton loses its {@trait incorporeal} trait, immunities, and resistances, but it gains an unarmed melee {@action Strike} with a +6 attack modifier that deals {@damage 1d8+2} bludgeoning damage. The ioton immediately returns to its original form once no creature is taking {@condition persistent damage||persistent mental damage} from it."
 						],
 						"name": "Leech Thought"
 					}
@@ -27167,8 +26822,7 @@
 				},
 				"hp": [
 					{
-						"hp": 14,
-						"abilities": null
+						"hp": 14
 					}
 				],
 				"immunities": [
@@ -27187,7 +26841,6 @@
 		},
 		{
 			"name": "Ittan-momen",
-			"isNpc": false,
 			"source": "B3",
 			"page": 276,
 			"level": 2,
@@ -27309,8 +26962,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -27335,7 +26987,6 @@
 		},
 		{
 			"name": "Japalisura",
-			"isNpc": false,
 			"source": "B3",
 			"page": 23,
 			"level": 12,
@@ -27442,7 +27093,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Innate Divine",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 32,
@@ -27535,7 +27185,7 @@
 						],
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The japalisura whispers misleading words and falsehoods to one adjacent creature, attempting a {@skill Deception} check against the target's {@skill Perception} DC.",
@@ -27576,8 +27226,7 @@
 				},
 				"hp": [
 					{
-						"hp": 235,
-						"abilities": null
+						"hp": 235
 					}
 				],
 				"immunities": [
@@ -27593,7 +27242,6 @@
 		},
 		{
 			"name": "Jorogumo",
-			"isNpc": false,
 			"source": "B3",
 			"page": 141,
 			"level": 13,
@@ -27719,8 +27367,7 @@
 				},
 				"hp": [
 					{
-						"hp": 270,
-						"abilities": null
+						"hp": 270
 					}
 				],
 				"weaknesses": [
@@ -27733,7 +27380,6 @@
 		},
 		{
 			"name": "Kangaroo",
-			"isNpc": false,
 			"source": "B3",
 			"page": 146,
 			"level": 0,
@@ -27839,15 +27485,13 @@
 				},
 				"hp": [
 					{
-						"hp": 18,
-						"abilities": null
+						"hp": 18
 					}
 				]
 			}
 		},
 		{
 			"name": "Kappa",
-			"isNpc": false,
 			"source": "B3",
 			"page": 147,
 			"level": 2,
@@ -27953,15 +27597,13 @@
 				},
 				"hp": [
 					{
-						"hp": 35,
-						"abilities": null
+						"hp": 35
 					}
 				]
 			}
 		},
 		{
 			"name": "Kasa-obake",
-			"isNpc": false,
 			"source": "B3",
 			"page": 277,
 			"level": 4,
@@ -28071,8 +27713,7 @@
 				},
 				"hp": [
 					{
-						"hp": 65,
-						"abilities": null
+						"hp": 65
 					}
 				],
 				"immunities": [
@@ -28091,7 +27732,6 @@
 		},
 		{
 			"name": "Khravgodon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 192,
 			"level": 9,
@@ -28240,8 +27880,7 @@
 				},
 				"hp": [
 					{
-						"hp": 160,
-						"abilities": null
+						"hp": 160
 					}
 				],
 				"resistances": [
@@ -28258,7 +27897,6 @@
 		},
 		{
 			"name": "Kimenhul",
-			"isNpc": false,
 			"source": "B3",
 			"page": 222,
 			"level": 20,
@@ -28361,7 +27999,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 42,
@@ -28553,8 +28190,7 @@
 				},
 				"hp": [
 					{
-						"hp": 425,
-						"abilities": null
+						"hp": 425
 					}
 				],
 				"immunities": [
@@ -28571,7 +28207,6 @@
 		},
 		{
 			"name": "Kirin",
-			"isNpc": false,
 			"source": "B3",
 			"page": 148,
 			"level": 7,
@@ -28664,7 +28299,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 25,
@@ -28792,8 +28426,7 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				],
 				"immunities": [
@@ -28803,7 +28436,6 @@
 		},
 		{
 			"name": "Kishi",
-			"isNpc": false,
 			"source": "B3",
 			"page": 149,
 			"level": 8,
@@ -28882,7 +28514,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 27,
@@ -28960,8 +28591,7 @@
 				},
 				"hp": [
 					{
-						"hp": 138,
-						"abilities": null
+						"hp": 138
 					}
 				],
 				"weaknesses": [
@@ -28974,7 +28604,6 @@
 		},
 		{
 			"name": "Kitsune Trickster",
-			"isNpc": false,
 			"source": "B3",
 			"page": 150,
 			"level": 2,
@@ -29081,7 +28710,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "divine",
 					"DC": 18,
@@ -29171,15 +28799,13 @@
 				},
 				"hp": [
 					{
-						"hp": 24,
-						"abilities": null
+						"hp": 24
 					}
 				]
 			}
 		},
 		{
 			"name": "Kodama",
-			"isNpc": false,
 			"source": "B3",
 			"page": 143,
 			"level": 5,
@@ -29254,7 +28880,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Innate Divine",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 23,
@@ -29362,8 +28987,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				],
 				"weaknesses": [
@@ -29383,7 +29007,6 @@
 		},
 		{
 			"name": "Kokogiak",
-			"isNpc": false,
 			"source": "B3",
 			"page": 151,
 			"level": 12,
@@ -29482,7 +29105,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -29561,8 +29183,7 @@
 				},
 				"hp": [
 					{
-						"hp": 215,
-						"abilities": null
+						"hp": 215
 					}
 				],
 				"resistances": [
@@ -29575,7 +29196,6 @@
 		},
 		{
 			"name": "Kongamato",
-			"isNpc": false,
 			"source": "B3",
 			"page": 152,
 			"level": 11,
@@ -29751,8 +29371,7 @@
 				},
 				"hp": [
 					{
-						"hp": 190,
-						"abilities": null
+						"hp": 190
 					}
 				],
 				"immunities": [
@@ -29763,7 +29382,6 @@
 		},
 		{
 			"name": "Kovintus Geomancer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 153,
 			"level": 3,
@@ -29844,7 +29462,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 21,
@@ -29862,7 +29479,7 @@
 								},
 								{
 									"name": "pummeling rubble",
-									"source": "apg"
+									"source": "APG"
 								}
 							]
 						},
@@ -29931,8 +29548,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				],
 				"resistances": [
@@ -29957,7 +29573,6 @@
 		},
 		{
 			"name": "Krampus",
-			"isNpc": false,
 			"source": "B3",
 			"page": 154,
 			"level": 21,
@@ -30082,7 +29697,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 42,
@@ -30176,7 +29790,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [],
 						"name": "Improved Grab",
 						"generic": {
 							"tag": "ability"
@@ -30245,8 +29858,7 @@
 				},
 				"hp": [
 					{
-						"hp": 380,
-						"abilities": null
+						"hp": 380
 					}
 				],
 				"immunities": [
@@ -30269,7 +29881,6 @@
 		},
 		{
 			"name": "Kuchisake-onna",
-			"isNpc": false,
 			"source": "B3",
 			"page": 156,
 			"level": 14,
@@ -30383,7 +29994,7 @@
 					},
 					{
 						"entries": [
-							"The kuchisake-onna's silver scissors {@action Strike||Strikes} are manifestations of the toxic malice that created them and vanish when the kuchisake-onna is destroyed. When the kuchisake-onna has less than half their maximum Hit Points remaining, this concentrated enmity begins to leak out and make their attacks more vicious. Their silver scissors {@action Strike||Strikes} deal {@damage 6d6} {@condition persistent damage ||persistent bleed damage}."
+							"The kuchisake-onna's silver scissors {@action Strike||Strikes} are manifestations of the toxic malice that created them and vanish when the kuchisake-onna is destroyed. When the kuchisake-onna has less than half their maximum Hit Points remaining, this concentrated enmity begins to leak out and make their attacks more vicious. Their silver scissors {@action Strike||Strikes} deal {@damage 6d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Lingering Enmity"
 					}
@@ -30407,8 +30018,7 @@
 				},
 				"hp": [
 					{
-						"hp": 252,
-						"abilities": null
+						"hp": 252
 					}
 				],
 				"weaknesses": [
@@ -30427,7 +30037,6 @@
 		},
 		{
 			"name": "Kurobozu",
-			"isNpc": false,
 			"source": "B3",
 			"page": 157,
 			"level": 6,
@@ -30571,7 +30180,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The kurobozu makes two unarmed {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses, and the target must succeed at a DC 22 Fortitude save or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
@@ -30598,15 +30207,13 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				]
 			}
 		},
 		{
 			"name": "Kushtaka",
-			"isNpc": false,
 			"source": "B3",
 			"page": 158,
 			"level": 4,
@@ -30694,7 +30301,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 21,
@@ -30812,8 +30418,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				],
 				"resistances": [
@@ -30826,7 +30431,6 @@
 		},
 		{
 			"name": "Lampad",
-			"isNpc": false,
 			"source": "B3",
 			"page": 188,
 			"level": 5,
@@ -30923,7 +30527,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 22,
@@ -30954,7 +30557,7 @@
 								},
 								{
 									"name": "pummeling rubble",
-									"source": "apg"
+									"source": "APG"
 								}
 							]
 						},
@@ -30992,7 +30595,7 @@
 						],
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The lampad begins a heart-wrenching fit of weeping, inspiring sympathetic sobbing in nearby creatures. Each non-lampad creature within 30 feet who hears the lampad's weeping must succeed at a DC 20 Will save or be unable to use reactions for 1 round and {@condition slowed 1} on its next turn as it sobs uncontrollably."
@@ -31019,8 +30622,7 @@
 				},
 				"hp": [
 					{
-						"hp": 85,
-						"abilities": null
+						"hp": 85
 					}
 				],
 				"weaknesses": [
@@ -31033,7 +30635,6 @@
 		},
 		{
 			"name": "Lampad Queen",
-			"isNpc": false,
 			"source": "B3",
 			"page": 189,
 			"level": 15,
@@ -31142,7 +30743,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 38,
@@ -31269,7 +30869,6 @@
 					}
 				},
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 38,
@@ -31453,8 +31052,7 @@
 				},
 				"hp": [
 					{
-						"hp": 234,
-						"abilities": null
+						"hp": 234
 					}
 				],
 				"weaknesses": [
@@ -31467,7 +31065,6 @@
 		},
 		{
 			"name": "Ledalusca",
-			"isNpc": false,
 			"source": "B3",
 			"page": 159,
 			"level": 2,
@@ -31630,8 +31227,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				],
 				"immunities": [
@@ -31650,7 +31246,6 @@
 		},
 		{
 			"name": "Leng Ghoul",
-			"isNpc": false,
 			"source": "B3",
 			"page": 107,
 			"level": 10,
@@ -31857,7 +31452,6 @@
 		},
 		{
 			"name": "Levaloch",
-			"isNpc": false,
 			"source": "B3",
 			"page": 65,
 			"level": 7,
@@ -31954,9 +31548,7 @@
 					],
 					"effects": [
 						"barbed net"
-					],
-					"damage": "barbed net",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
@@ -32031,8 +31623,7 @@
 				},
 				"hp": [
 					{
-						"hp": 105,
-						"abilities": null
+						"hp": 105
 					}
 				],
 				"immunities": [
@@ -32060,7 +31651,6 @@
 		},
 		{
 			"name": "Lifeleecher Brawler",
-			"isNpc": false,
 			"source": "B3",
 			"page": 176,
 			"level": 8,
@@ -32129,7 +31719,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@damage 2d8+6} slashing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d8+6} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -32195,7 +31785,7 @@
 					},
 					{
 						"entries": [
-							"The lifeleecher's tusks have the effects of the ghost touch property rune on attacks against incorporeal undead."
+							"The lifeleecher's tusks have the effects of the {@item ghost touch} property rune on attacks against incorporeal undead."
 						],
 						"name": "Ghost Hunter"
 					},
@@ -32239,7 +31829,6 @@
 		},
 		{
 			"name": "Locathah Hunter",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -32398,15 +31987,13 @@
 				},
 				"hp": [
 					{
-						"hp": 38,
-						"abilities": null
+						"hp": 38
 					}
 				]
 			}
 		},
 		{
 			"name": "Love Siktempora",
-			"isNpc": false,
 			"source": "B3",
 			"page": 234,
 			"level": 16,
@@ -32488,7 +32075,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 37,
@@ -32664,7 +32250,6 @@
 		},
 		{
 			"name": "Lovelorn",
-			"isNpc": false,
 			"source": "B3",
 			"page": 165,
 			"level": 4,
@@ -32716,7 +32301,7 @@
 					"effects": [
 						"cynic's curse"
 					],
-					"damage": "{@damage 1d6+6} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed} and cynic's curse",
+					"damage": "{@damage 1d6+6} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed} and cynic's curse",
 					"types": [
 						"persistent",
 						"piercing"
@@ -32738,7 +32323,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 21,
@@ -32877,7 +32461,6 @@
 		},
 		{
 			"name": "Maftet Guardian",
-			"isNpc": false,
 			"source": "B3",
 			"page": 166,
 			"foundIn": [
@@ -32921,6 +32504,10 @@
 				},
 				"stealth": {
 					"std": 13
+				},
+				"ruins lore": {
+					"std": 15,
+					"note": "applies only to their home ruins"
 				}
 			},
 			"abilityMods": {
@@ -32956,7 +32543,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 23,
@@ -32984,14 +32570,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+15 (applies only to their home ruins), {@skill Stealth} +13 Str +5, Dex +3, Con +4, Int +3, Wis +2, Cha +0 Items scimitar (2)"
-						],
-						"name": "Lore"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -33062,15 +32640,13 @@
 				},
 				"hp": [
 					{
-						"hp": 92,
-						"abilities": null
+						"hp": 92
 					}
 				]
 			}
 		},
 		{
 			"name": "Maharaja",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -33179,7 +32755,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 47,
@@ -33386,7 +32961,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 47,
@@ -33437,7 +33011,7 @@
 						"trigger": "a foe's turn begins",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The maharaja's four heads allow them to quickly cast additional spells. They cast one of their 8th-level or lower occult spontaneous spells that normally takes 2 actions or fewer to cast."
@@ -33494,8 +33068,7 @@
 				},
 				"hp": [
 					{
-						"hp": 320,
-						"abilities": null
+						"hp": 320
 					}
 				],
 				"weaknesses": [
@@ -33508,14 +33081,13 @@
 					{
 						"amount": 20,
 						"name": "physical",
-						"note": "(except piercing)"
+						"note": "except piercing"
 					}
 				]
 			}
 		},
 		{
 			"name": "Manticore Paaridar",
-			"isNpc": false,
 			"foundIn": [
 				"Jalmeray"
 			],
@@ -33583,7 +33155,10 @@
 			],
 			"speed": {
 				"walk": 40,
-				"fly": 20
+				"fly": 20,
+				"abilities": [
+					"limited flight"
+				]
 			},
 			"attacks": [
 				{
@@ -33625,6 +33200,30 @@
 					]
 				}
 			],
+			"spellcasting": [
+				{
+					"name": "Monk Ki",
+					"type": "Focus",
+					"fp": 3,
+					"DC": 24,
+					"note": "The Paaridar's ki flow is unnaturally disrupted, causing them to take {@damage 1d6} negative damage each time they cast a ki spell.",
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "wholeness of body"
+								}
+							]
+						}
+					}
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -33647,7 +33246,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The paaridar makes two unarmed {@action Strike||Strikes} or two spike {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
@@ -33656,8 +33255,7 @@
 					},
 					{
 						"entries": [
-							"The manticore paaridar's wings are small and weak, insufficient to keep them in the air. If the paaridar Flies using their wings, they fall at the end of their turn if they haven't landed.",
-							"Monk Ki Spells The Paaridar's ki flow is unnaturally disrupted, causing them to take {@damage 1d6} negative damage each time they cast a ki spell. 3 Focus Points, DC 24; 4th ki rush (Core Rulebook 401), ki strike (Core Rulebook 401), wholeness of body (Core Rulebook 402)"
+							"The manticore paaridar's wings are small and weak, insufficient to keep them in the air. If the paaridar Flies using their wings, they fall at the end of their turn if they haven't landed."
 						],
 						"name": "Limited Flight"
 					}
@@ -33681,15 +33279,13 @@
 				},
 				"hp": [
 					{
-						"hp": 110,
-						"abilities": null
+						"hp": 110
 					}
 				]
 			}
 		},
 		{
 			"name": "Megalictis",
-			"isNpc": false,
 			"source": "B3",
 			"page": 291,
 			"level": 3,
@@ -33806,15 +33402,13 @@
 				},
 				"hp": [
 					{
-						"hp": 42,
-						"abilities": null
+						"hp": 42
 					}
 				]
 			}
 		},
 		{
 			"name": "Megatherium",
-			"isNpc": false,
 			"source": "B3",
 			"page": 248,
 			"level": 5,
@@ -33938,15 +33532,13 @@
 				},
 				"hp": [
 					{
-						"hp": 85,
-						"abilities": null
+						"hp": 85
 					}
 				]
 			}
 		},
 		{
 			"name": "Melixie",
-			"isNpc": false,
 			"source": "B3",
 			"page": 255,
 			"level": 0,
@@ -34031,7 +33623,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 17,
@@ -34092,15 +33683,13 @@
 				},
 				"hp": [
 					{
-						"hp": 17,
-						"abilities": null
+						"hp": 17
 					}
 				]
 			}
 		},
 		{
 			"name": "Mezlan",
-			"isNpc": false,
 			"source": "B3",
 			"page": 167,
 			"level": 14,
@@ -34177,9 +33766,7 @@
 					],
 					"effects": [
 						"viscous trap"
-					],
-					"damage": "viscous trap",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
@@ -34286,7 +33873,6 @@
 		},
 		{
 			"name": "Mi-Go",
-			"isNpc": false,
 			"source": "B3",
 			"page": 168,
 			"level": 6,
@@ -34443,8 +34029,7 @@
 				},
 				"hp": [
 					{
-						"hp": 120,
-						"abilities": null
+						"hp": 120
 					}
 				],
 				"immunities": [
@@ -34460,7 +34045,6 @@
 		},
 		{
 			"name": "Millindemalion",
-			"isNpc": false,
 			"source": "B3",
 			"page": 169,
 			"level": 13,
@@ -34626,8 +34210,7 @@
 				},
 				"hp": [
 					{
-						"hp": 275,
-						"abilities": null
+						"hp": 275
 					}
 				],
 				"weaknesses": [
@@ -34640,7 +34223,6 @@
 		},
 		{
 			"name": "Misery Siktempora",
-			"isNpc": false,
 			"source": "B3",
 			"page": 232,
 			"level": 12,
@@ -34714,7 +34296,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 29,
@@ -34847,9 +34428,7 @@
 					{
 						"hp": 160,
 						"abilities": [
-							"{@ability regeneration} 40 (deactivated by positive",
-							"mental",
-							"or orichalcum"
+							"{@ability regeneration} 40 (deactivated by positive, mental, or orichalcum)"
 						]
 					}
 				],
@@ -34862,7 +34441,6 @@
 		},
 		{
 			"name": "Mithral Golem",
-			"isNpc": false,
 			"source": "B3",
 			"page": 117,
 			"foundIn": [
@@ -35008,8 +34586,7 @@
 				},
 				"hp": [
 					{
-						"hp": 220,
-						"abilities": null
+						"hp": 220
 					}
 				],
 				"immunities": [
@@ -35031,14 +34608,14 @@
 				"resistances": [
 					{
 						"amount": 15,
-						"name": "physical"
+						"name": "physical",
+						"note": "except adamantine"
 					}
 				]
 			}
 		},
 		{
 			"name": "Mix Couatl",
-			"isNpc": false,
 			"source": "B3",
 			"page": 56,
 			"level": 8,
@@ -35125,7 +34702,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 26,
@@ -35298,15 +34874,13 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				]
 			}
 		},
 		{
 			"name": "Mobogo",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -35406,7 +34980,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 27,
@@ -35551,7 +35124,6 @@
 		},
 		{
 			"name": "Mokele-mbembe",
-			"isNpc": false,
 			"source": "B3",
 			"page": 171,
 			"level": 9,
@@ -35693,8 +35265,7 @@
 				},
 				"hp": [
 					{
-						"hp": 172,
-						"abilities": null
+						"hp": 172
 					}
 				]
 			},
@@ -35702,7 +35273,6 @@
 		},
 		{
 			"name": "Monkey",
-			"isNpc": false,
 			"source": "B3",
 			"page": 172,
 			"level": -1,
@@ -35781,15 +35351,13 @@
 				},
 				"hp": [
 					{
-						"hp": 9,
-						"abilities": null
+						"hp": 9
 					}
 				]
 			}
 		},
 		{
 			"name": "Monkey Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 172,
 			"level": 2,
@@ -35822,7 +35390,6 @@
 				"walk": 25,
 				"climb": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
@@ -35876,8 +35443,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -35908,7 +35474,6 @@
 		},
 		{
 			"name": "Moon Hag",
-			"isNpc": false,
 			"source": "B3",
 			"page": 131,
 			"level": 10,
@@ -35980,7 +35545,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 29,
@@ -36027,7 +35591,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Ferocity",
 						"generic": {
 							"tag": "ability"
@@ -36093,8 +35656,7 @@
 				},
 				"hp": [
 					{
-						"hp": 190,
-						"abilities": null
+						"hp": 190
 					}
 				],
 				"immunities": [
@@ -36104,7 +35666,6 @@
 		},
 		{
 			"name": "Moose",
-			"isNpc": false,
 			"source": "B3",
 			"page": 173,
 			"level": 3,
@@ -36229,15 +35790,13 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				]
 			}
 		},
 		{
 			"name": "Mothman",
-			"isNpc": false,
 			"source": "B3",
 			"page": 179,
 			"level": 7,
@@ -36312,7 +35871,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 25,
@@ -36403,7 +35961,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The mothman casts any spell of 5th level or lower that normally takes 2 or fewer actions to cast, whether they have those spells in their innate spells or not. They can use this ability only if doing so steers the flow of fate in its proper course toward a disaster or otherwise significantly memorable event. What the proper flow of fate entails is determined by the GM, but some examples include casting illusory scene to coax someone to a portentous location, casting sending to deliver an important message to someone the exact moment they need to hear it, or casting rusting grasp to weaken a structure and cause some necessary calamity."
@@ -36450,15 +36008,13 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				]
 			}
 		},
 		{
 			"name": "Munagola",
-			"isNpc": false,
 			"source": "B3",
 			"page": 66,
 			"level": 11,
@@ -36577,7 +36133,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 27,
@@ -36667,8 +36222,7 @@
 				},
 				"hp": [
 					{
-						"hp": 165,
-						"abilities": null
+						"hp": 165
 					}
 				],
 				"immunities": [
@@ -36684,14 +36238,13 @@
 					{
 						"amount": 10,
 						"name": "physical",
-						"note": "(except silver)"
+						"note": "except silver"
 					}
 				]
 			}
 		},
 		{
 			"name": "Munavri Spellblade",
-			"isNpc": false,
 			"source": "B3",
 			"page": 180,
 			"level": 2,
@@ -36768,7 +36321,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Light Blindness"
 					}
 				],
@@ -36785,7 +36337,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"By concentrating their psychic energy on a held object, the munavri intuits its use and understands how to effectively wield it. The munavri chooses one item they are holding. They gain the trained proficiency rank in one statistic required to use that item, but only for the purpose of using that specific item. For example, they could become trained in greatswords (to use a specific greatsword) or {@skill Acrobatics} (to use a jade cat talisman). This benefit lasts for 1 hour."
@@ -36812,15 +36364,13 @@
 				},
 				"hp": [
 					{
-						"hp": 28,
-						"abilities": null
+						"hp": 28
 					}
 				]
 			}
 		},
 		{
 			"name": "Myceloid",
-			"isNpc": false,
 			"source": "B3",
 			"page": 181,
 			"level": 4,
@@ -36900,7 +36450,7 @@
 						},
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The myceloid expels spores in a 10-foot burst centered on a corner of its own space. This cloud lasts until the start of the myceloid's next turn. Each creature that is in the cloud or enters it is exposed to purple pox."
@@ -36981,8 +36531,7 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				],
 				"weaknesses": [
@@ -36995,7 +36544,6 @@
 		},
 		{
 			"name": "Nagaji Soldier",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -37090,7 +36638,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -37106,7 +36653,7 @@
 						"requirements": "The nagaji is afflicted with a poison",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The nagaji accelerates their metabolism. They roll a saving throw against the affliction with a +2 circumstance bonus. If they must attempt an ongoing save against the same poison at the end of their turn, they also get a +2 circumstance bonus to that save."
@@ -37133,8 +36680,7 @@
 				},
 				"hp": [
 					{
-						"hp": 28,
-						"abilities": null
+						"hp": 28
 					}
 				],
 				"resistances": [
@@ -37147,7 +36693,6 @@
 		},
 		{
 			"name": "Namorrodor",
-			"isNpc": false,
 			"source": "B3",
 			"page": 183,
 			"level": 5,
@@ -37305,8 +36850,7 @@
 				},
 				"hp": [
 					{
-						"hp": 85,
-						"abilities": null
+						"hp": 85
 					}
 				],
 				"immunities": [
@@ -37320,7 +36864,6 @@
 		},
 		{
 			"name": "Narwhal",
-			"isNpc": false,
 			"source": "B3",
 			"page": 184,
 			"level": 3,
@@ -37427,15 +36970,13 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				]
 			}
 		},
 		{
 			"name": "Nemhaith",
-			"isNpc": false,
 			"source": "B3",
 			"page": 185,
 			"level": 15,
@@ -37532,7 +37073,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 36,
@@ -37562,7 +37102,10 @@
 						"entries": [
 							"The nemhaith is bound to a place or large stationary object and can't venture more than 500 feet from this focus."
 						],
-						"name": "Site Bound"
+						"name": "Site Bound",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -37586,7 +37129,11 @@
 						"entries": [
 							"Destroying the ritual object or place used in the nemhaith's creation destroys the nemhaith, freeing its bound spirits to move on to the afterlife."
 						],
-						"name": "Rejuvenation"
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
 					}
 				],
 				"bot": [
@@ -37666,7 +37213,6 @@
 		},
 		{
 			"name": "Nightgaunt",
-			"isNpc": false,
 			"source": "B3",
 			"page": 186,
 			"level": 4,
@@ -37743,9 +37289,7 @@
 					],
 					"effects": [
 						"tickle"
-					],
-					"damage": "tickle",
-					"types": []
+					]
 				}
 			],
 			"abilities": {
@@ -37826,8 +37370,7 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				],
 				"resistances": [
@@ -37840,7 +37383,6 @@
 		},
 		{
 			"name": "Nightmarchers",
-			"isNpc": false,
 			"source": "B3",
 			"page": 187,
 			"level": 14,
@@ -37894,10 +37436,8 @@
 				],
 				"walk": 25
 			},
-			"attacks": [],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 31,
@@ -37949,7 +37489,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Troop Defenses"
 					}
 				],
@@ -37978,7 +37517,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Form Up"
 					},
 					{
@@ -38020,8 +37558,7 @@
 				},
 				"hp": [
 					{
-						"hp": 240,
-						"abilities": null
+						"hp": 240
 					}
 				],
 				"immunities": [
@@ -38045,14 +37582,13 @@
 					{
 						"amount": 5,
 						"name": "all damage",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			}
 		},
 		{
 			"name": "Nikaramsa",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -38165,7 +37701,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 34,
@@ -38209,8 +37744,9 @@
 								},
 								{
 									"name": "invisibility",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								},
 								{
@@ -38324,8 +37860,7 @@
 				},
 				"hp": [
 					{
-						"hp": 315,
-						"abilities": null
+						"hp": 315
 					}
 				],
 				"immunities": [
@@ -38341,7 +37876,6 @@
 		},
 		{
 			"name": "Nosferatu Malefactor",
-			"isNpc": false,
 			"source": "B3",
 			"page": 285,
 			"level": 10,
@@ -38437,7 +37971,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 29,
@@ -38456,7 +37989,6 @@
 			"abilities": {
 				"mid": [
 					{
-						"entries": [],
 						"name": "Nosferatu Vulnerabilities"
 					}
 				],
@@ -38473,7 +38005,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"DC 29."
+							"DC 29"
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -38491,7 +38023,6 @@
 							"divine",
 							"mental"
 						],
-						"entries": [],
 						"name": "Command Thrall"
 					},
 					{
@@ -38507,7 +38038,7 @@
 							"visual"
 						],
 						"entries": [
-							"DC 29."
+							"DC 29"
 						],
 						"name": "Dominate"
 					},
@@ -38531,7 +38062,7 @@
 							"virulent"
 						],
 						"entries": [
-							"DC 29."
+							"DC 29"
 						],
 						"name": "Plague of Ancients"
 					}
@@ -38574,7 +38105,6 @@
 		},
 		{
 			"name": "Nosferatu Overlord",
-			"isNpc": false,
 			"source": "B3",
 			"page": 285,
 			"level": 15,
@@ -38659,12 +38189,11 @@
 							"aura"
 						],
 						"entries": [
-							"30 feet, DC 33."
+							"30 feet, DC 33"
 						],
 						"name": "Air of Sickness"
 					},
 					{
-						"entries": [],
 						"name": "Nosferatu Vulnerabilities"
 					}
 				],
@@ -38681,7 +38210,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"DC 36."
+							"DC 36"
 						],
 						"name": "Change Shape"
 					},
@@ -38710,7 +38239,7 @@
 							"visual"
 						],
 						"entries": [
-							"DC 36."
+							"DC 36"
 						],
 						"name": "Dominate"
 					},
@@ -38735,7 +38264,7 @@
 							"mental"
 						],
 						"entries": [
-							"DC 33."
+							"DC 33"
 						],
 						"name": "Paralytic Fear"
 					},
@@ -38745,7 +38274,7 @@
 							"virulent"
 						],
 						"entries": [
-							"DC 36."
+							"DC 36"
 						],
 						"name": "Plague of Ancients"
 					}
@@ -38788,14 +38317,13 @@
 					{
 						"amount": 15,
 						"name": "physical",
-						"note": "(except magical wood)"
+						"note": "except magical wood"
 					}
 				]
 			}
 		},
 		{
 			"name": "Nosferatu Thrall",
-			"isNpc": false,
 			"source": "B3",
 			"page": 284,
 			"level": 8,
@@ -38874,7 +38402,6 @@
 			"abilities": {
 				"mid": [
 					{
-						"entries": [],
 						"name": "Mindbound"
 					},
 					{
@@ -38882,7 +38409,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Mortal Shield"
 					},
 					{
@@ -38890,7 +38416,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Rally"
 					}
 				],
@@ -38903,7 +38428,7 @@
 						"requirements": "The nosferatu thrall's last action was a greatclub {@action Strike} that missed",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The nosferatu thrall makes another greatclub {@action Strike} against the same target, using the previous {@action Strike}'s multiple attack penalty."
@@ -38946,7 +38471,6 @@
 		},
 		{
 			"name": "Nucol",
-			"isNpc": false,
 			"source": "B3",
 			"page": 220,
 			"level": 4,
@@ -39025,7 +38549,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 20,
@@ -39149,8 +38672,7 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				],
 				"immunities": [
@@ -39167,7 +38689,6 @@
 		},
 		{
 			"name": "Nyktera",
-			"isNpc": false,
 			"source": "B3",
 			"page": 254,
 			"level": -1,
@@ -39244,7 +38765,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 17,
@@ -39298,15 +38818,13 @@
 				},
 				"hp": [
 					{
-						"hp": 10,
-						"abilities": null
+						"hp": 10
 					}
 				]
 			}
 		},
 		{
 			"name": "Oil Living Graffiti",
-			"isNpc": false,
 			"source": "B3",
 			"page": 162,
 			"level": 3,
@@ -39425,8 +38943,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				],
 				"immunities": [
@@ -39448,7 +38965,6 @@
 		},
 		{
 			"name": "Omox",
-			"isNpc": false,
 			"source": "B3",
 			"page": 63,
 			"level": 12,
@@ -39540,7 +39056,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 32,
@@ -39660,8 +39175,7 @@
 				},
 				"hp": [
 					{
-						"hp": 395,
-						"abilities": null
+						"hp": 395
 					}
 				],
 				"immunities": [
@@ -39685,7 +39199,6 @@
 		},
 		{
 			"name": "Ostovite",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Impossible Lands"
@@ -39757,7 +39270,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@damage 1d12} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 1d12} piercing plus {@damage 1d4} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -39806,8 +39319,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				],
 				"immunities": [
@@ -39832,7 +39344,6 @@
 		},
 		{
 			"name": "Ouroboros",
-			"isNpc": false,
 			"source": "B3",
 			"page": 194,
 			"level": 21,
@@ -40116,7 +39627,6 @@
 		},
 		{
 			"name": "Ovinnik",
-			"isNpc": false,
 			"source": "B3",
 			"page": 137,
 			"level": 4,
@@ -40181,7 +39691,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 21,
@@ -40273,8 +39782,7 @@
 				},
 				"hp": [
 					{
-						"hp": 59,
-						"abilities": null
+						"hp": 59
 					}
 				],
 				"weaknesses": [
@@ -40293,7 +39801,6 @@
 		},
 		{
 			"name": "Owb",
-			"isNpc": false,
 			"source": "B3",
 			"page": 196,
 			"level": 6,
@@ -40371,7 +39878,7 @@
 						"magical",
 						"range <120 feet>"
 					],
-					"damage": "{@damage 2d8} cold plus {@damage 1d8} {@condition persistent damage ||persistent cold}",
+					"damage": "{@damage 2d8} cold plus {@damage 1d8} {@condition persistent damage||persistent cold}",
 					"types": [
 						"cold",
 						"persistent"
@@ -40380,7 +39887,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 23,
@@ -40436,7 +39942,9 @@
 							"spells": [
 								{
 									"name": "plane shift",
-									"notes": "to or from the {@place Shadow Plane} only"
+									"notes": [
+										"to or from the {@place Shadow Plane} only"
+									]
 								}
 							]
 						}
@@ -40446,7 +39954,6 @@
 			"abilities": {
 				"top": [
 					{
-						"entries": [],
 						"name": "Light Blindness",
 						"generic": {
 							"tag": "ability"
@@ -40491,8 +39998,7 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				],
 				"immunities": [
@@ -40502,7 +40008,6 @@
 		},
 		{
 			"name": "Owb Prophet",
-			"isNpc": false,
 			"source": "B3",
 			"page": 197,
 			"level": 13,
@@ -40589,7 +40094,7 @@
 					"effects": [
 						"clutching cold"
 					],
-					"damage": "{@damage 4d8} cold plus {@damage 2d8} {@condition persistent damage ||persistent cold} and clutching cold",
+					"damage": "{@damage 4d8} cold plus {@damage 2d8} {@condition persistent damage||persistent cold} and clutching cold",
 					"types": [
 						"cold",
 						"persistent"
@@ -40598,7 +40103,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 33,
@@ -40686,7 +40190,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Light Blindness"
 					}
 				],
@@ -40749,8 +40252,7 @@
 				},
 				"hp": [
 					{
-						"hp": 225,
-						"abilities": null
+						"hp": 225
 					}
 				],
 				"immunities": [
@@ -40766,7 +40268,6 @@
 		},
 		{
 			"name": "Pairaka",
-			"isNpc": false,
 			"source": "B3",
 			"page": 70,
 			"level": 7,
@@ -40854,7 +40355,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 25,
@@ -40879,8 +40379,9 @@
 								},
 								{
 									"name": "misdirection",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								},
 								{
@@ -40936,7 +40437,7 @@
 							},
 							{
 								"stage": 3,
-								"entry": "{@condition enfeebled 3}, {@condition fatigued}, and take {@damage 1d6} {@condition persistent damage ||persistent bleed damage} every {@dice 1d20} minutes",
+								"entry": "{@condition enfeebled 3}, {@condition fatigued}, and take {@damage 1d6} {@condition persistent damage||persistent bleed damage} every {@dice 1d20} minutes",
 								"duration": "1 day"
 							}
 						]
@@ -40973,7 +40474,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The pairaka torments a sleeping creature within 100 feet with visions of betrayals by loved ones and friends. The target must attempt a DC 25 Will save, with the effects of the {@spell nightmare} spell."
@@ -40999,8 +40500,7 @@
 				},
 				"hp": [
 					{
-						"hp": 105,
-						"abilities": null
+						"hp": 105
 					}
 				],
 				"immunities": [
@@ -41011,7 +40511,6 @@
 		},
 		{
 			"name": "Pakalchi",
-			"isNpc": false,
 			"source": "B3",
 			"page": 220,
 			"level": 9,
@@ -41084,7 +40583,7 @@
 					"effects": [
 						"betrayal toxin"
 					],
-					"damage": "{@damage 2d10+6} slashing plus {@damage 1d6} evil, {@damage 1d6} {@condition persistent damage ||persistent bleed}, and betrayal toxin",
+					"damage": "{@damage 2d10+6} slashing plus {@damage 1d6} evil, {@damage 1d6} {@condition persistent damage||persistent bleed}, and betrayal toxin",
 					"types": [
 						"evil",
 						"persistent",
@@ -41116,7 +40615,7 @@
 					"effects": [
 						"betrayal toxin"
 					],
-					"damage": "{@damage 2d4+6} piercing plus {@damage 1d6} evil, {@damage 1d6} {@condition persistent damage ||persistent bleed}, and betrayal toxin",
+					"damage": "{@damage 2d4+6} piercing plus {@damage 1d6} evil, {@damage 1d6} {@condition persistent damage||persistent bleed}, and betrayal toxin",
 					"types": [
 						"evil",
 						"persistent",
@@ -41126,7 +40625,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 30,
@@ -41269,8 +40767,7 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
 					}
 				],
 				"immunities": [
@@ -41287,7 +40784,6 @@
 		},
 		{
 			"name": "Palace Skelm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 240,
 			"level": 8,
@@ -41391,7 +40887,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 26,
@@ -41512,7 +41007,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The skelm gives an impassioned speech calling for his followers to act upon their convictions. Each creature within 30 feet must attempt a DC 24 Will save.",
@@ -41547,8 +41042,7 @@
 				},
 				"hp": [
 					{
-						"hp": 155,
-						"abilities": null
+						"hp": 155
 					}
 				],
 				"weaknesses": [
@@ -41561,7 +41055,6 @@
 		},
 		{
 			"name": "Penanggalan",
-			"isNpc": false,
 			"source": "B3",
 			"page": 200,
 			"level": 5,
@@ -41655,7 +41148,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d4+3} bludgeoning, DC 21."
+							"{@damage 2d4+3} bludgeoning, DC 21"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -41734,8 +41227,7 @@
 				},
 				"hp": [
 					{
-						"hp": 83,
-						"abilities": null
+						"hp": 83
 					}
 				],
 				"weaknesses": [
@@ -41748,7 +41240,6 @@
 		},
 		{
 			"name": "Peri",
-			"isNpc": false,
 			"source": "B3",
 			"page": 201,
 			"level": 14,
@@ -41865,7 +41356,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 34,
@@ -41931,7 +41421,7 @@
 						],
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The peri {@action Stride||Strides} into an open flame of their size or larger and instantly transports themself to any other flame of sufficient size within 100 miles. Once they enter the first flame, the peri instantly learns the locations of all other flames within range."
@@ -41988,8 +41478,7 @@
 				},
 				"hp": [
 					{
-						"hp": 255,
-						"abilities": null
+						"hp": 255
 					}
 				],
 				"immunities": [
@@ -42009,7 +41498,6 @@
 		},
 		{
 			"name": "Phantom Beast",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Alkenstar",
@@ -42089,7 +41577,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 28,
@@ -42174,8 +41661,7 @@
 				},
 				"hp": [
 					{
-						"hp": 120,
-						"abilities": null
+						"hp": 120
 					}
 				],
 				"immunities": [
@@ -42188,7 +41674,6 @@
 		},
 		{
 			"name": "Phantom Knight",
-			"isNpc": false,
 			"source": "B3",
 			"page": 202,
 			"foundIn": [
@@ -42311,8 +41796,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				],
 				"immunities": [
@@ -42331,7 +41815,6 @@
 		},
 		{
 			"name": "Piranha Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 99,
 			"level": 3,
@@ -42377,7 +41860,6 @@
 			"speed": {
 				"swim": 30
 			},
-			"attacks": [],
 			"abilities": {
 				"top": [
 					{
@@ -42394,7 +41876,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 2d6} piercing damage (DC 20 basic Reflex save). A creature that fails the save also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and takes a \u20132 circumstance penalty to their Reflex saves against Feeding Frenzy while this damage continues, as the piranhas' frenzy increases in intensity when they smell blood."
+							"Each enemy in the swarm's space takes {@damage 2d6} piercing damage (DC 20 basic Reflex save). A creature that fails the save also takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and takes a \u20132 circumstance penalty to their Reflex saves against Feeding Frenzy while this damage continues, as the piranhas' frenzy increases in intensity when they smell blood."
 						],
 						"name": "Feeding Frenzy"
 					}
@@ -42417,8 +41899,7 @@
 				},
 				"hp": [
 					{
-						"hp": 40,
-						"abilities": null
+						"hp": 40
 					}
 				],
 				"immunities": [
@@ -42439,7 +41920,6 @@
 		},
 		{
 			"name": "Plague Giant",
-			"isNpc": false,
 			"source": "B3",
 			"page": 111,
 			"level": 14,
@@ -42545,7 +42025,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 34,
@@ -42560,10 +42039,7 @@
 									"amount": 3
 								},
 								{
-									"name": "take its course",
-									"notes": [
-										"Core Rulebook 397"
-									]
+									"name": "take its course"
 								}
 							]
 						}
@@ -42580,7 +42056,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Catch Rock"
 					},
 					{
@@ -42648,7 +42123,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -42674,8 +42148,7 @@
 				},
 				"hp": [
 					{
-						"hp": 285,
-						"abilities": null
+						"hp": 285
 					}
 				],
 				"immunities": [
@@ -42685,7 +42158,6 @@
 		},
 		{
 			"name": "Platecarpus",
-			"isNpc": false,
 			"source": "B3",
 			"page": 178,
 			"level": 3,
@@ -42797,15 +42269,13 @@
 				},
 				"hp": [
 					{
-						"hp": 46,
-						"abilities": null
+						"hp": 46
 					}
 				]
 			}
 		},
 		{
 			"name": "Popobawa",
-			"isNpc": false,
 			"source": "B3",
 			"page": 206,
 			"level": 15,
@@ -42898,7 +42368,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 36,
@@ -42941,7 +42410,7 @@
 							"spells": [
 								{
 									"name": "animated assault",
-									"source": "apg"
+									"source": "APG"
 								},
 								{
 									"name": "dominate"
@@ -42998,7 +42467,7 @@
 						],
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The popobawa draws strength from the suffering of others. It regains 10 Hit Points for each enemy within 30 feet that has one of the following conditions, to a maximum of 40 Hit Points: {@condition confused}, {@condition doomed}, {@condition dying}, {@condition enfeebled}, {@condition fatigued}, {@condition frightened}, {@condition sickened}, {@condition slowed}, {@condition stunned}, {@condition stupefied}, or {@condition wounded}."
@@ -43064,8 +42533,7 @@
 				},
 				"hp": [
 					{
-						"hp": 270,
-						"abilities": null
+						"hp": 270
 					}
 				],
 				"immunities": [
@@ -43077,7 +42545,6 @@
 		},
 		{
 			"name": "Procyal",
-			"isNpc": false,
 			"source": "B3",
 			"page": 12,
 			"level": 8,
@@ -43195,7 +42662,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 26,
@@ -43308,15 +42774,13 @@
 				},
 				"hp": [
 					{
-						"hp": 170,
-						"abilities": null
+						"hp": 170
 					}
 				]
 			}
 		},
 		{
 			"name": "Pufferfish",
-			"isNpc": false,
 			"source": "B3",
 			"page": 99,
 			"level": -1,
@@ -43440,15 +42904,13 @@
 				},
 				"hp": [
 					{
-						"hp": 12,
-						"abilities": null
+						"hp": 12
 					}
 				]
 			}
 		},
 		{
 			"name": "Pukwudgie",
-			"isNpc": false,
 			"source": "B3",
 			"page": 208,
 			"level": 7,
@@ -43562,7 +43024,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 25,
@@ -43603,7 +43064,7 @@
 				"mid": [
 					{
 						"entries": [
-							"A creature that hits a pukwudgie with an unarmed {@action Strike} or a non-reach melee {@action Strike} takes {@damage 3d8} piercing damage (basic Reflex save). On a critical failure, the creature also takes {@damage 1d6} {@condition persistent damage ||persistent poison damage} from the poisoned quills."
+							"A creature that hits a pukwudgie with an unarmed {@action Strike} or a non-reach melee {@action Strike} takes {@damage 3d8} piercing damage (basic Reflex save). On a critical failure, the creature also takes {@damage 1d6} {@condition persistent damage||persistent poison damage} from the poisoned quills."
 						],
 						"name": "Defensive Quills"
 					}
@@ -43621,7 +43082,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The pukwudgie takes on the physical form of a giant porcupine (page 207). Their size changes to Medium, they lose their weapon {@action Strike||Strikes}, and they gain a quill {@action Strike} (+18 for {@damage 2d8+6} piercing plus {@damage 1d8} {@condition persistent damage ||persistent poison})."
+							"The pukwudgie takes on the physical form of a giant porcupine (page 207). Their size changes to Medium, they lose their weapon {@action Strike||Strikes}, and they gain a quill {@action Strike} (+18 for {@damage 2d8+6} piercing plus {@damage 1d8} {@condition persistent damage||persistent poison})."
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -43675,8 +43136,7 @@
 				},
 				"hp": [
 					{
-						"hp": 100,
-						"abilities": null
+						"hp": 100
 					}
 				],
 				"weaknesses": [
@@ -43695,7 +43155,6 @@
 		},
 		{
 			"name": "Quintessivore",
-			"isNpc": false,
 			"source": "B3",
 			"page": 209,
 			"level": 10,
@@ -43773,7 +43232,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 29,
@@ -43932,15 +43390,13 @@
 				},
 				"hp": [
 					{
-						"hp": 180,
-						"abilities": null
+						"hp": 180
 					}
 				]
 			}
 		},
 		{
 			"name": "Raktavarna",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -44021,7 +43477,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 16,
@@ -44131,8 +43586,7 @@
 				},
 				"hp": [
 					{
-						"hp": 14,
-						"abilities": null
+						"hp": 14
 					}
 				],
 				"weaknesses": [
@@ -44145,7 +43599,6 @@
 		},
 		{
 			"name": "Rancorous Priesthood",
-			"isNpc": false,
 			"source": "B3",
 			"page": 213,
 			"level": 11,
@@ -44186,10 +43639,8 @@
 			"speed": {
 				"walk": 25
 			},
-			"attacks": [],
 			"spellcasting": [
 				{
-					"name": "Divine Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "divine",
 					"DC": 27,
@@ -44222,10 +43673,7 @@
 									"name": "fireball"
 								},
 								{
-									"name": "hurtling stone",
-									"notes": [
-										"Core Rulebook 393"
-									]
+									"name": "hurtling stone"
 								}
 							]
 						},
@@ -44236,10 +43684,7 @@
 									"name": "cry of destruction"
 								},
 								{
-									"name": "destructive aura",
-									"notes": [
-										"Core Rulebook 391"
-									]
+									"name": "destructive aura"
 								}
 							]
 						}
@@ -44252,7 +43697,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Troop Defenses"
 					}
 				],
@@ -44265,7 +43709,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Form Up"
 					},
 					{
@@ -44290,7 +43733,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The members of the mob wildly swing their weapons\u2014primarily greataxes\u2014in a chaotic attack at each enemy adjacent to the troop (DC 27 basic Reflex save). The damage depends on the number of actions. {@as 1} {@damage 1d12+2} slashing damage {@as 2} {@damage 2d12+9} slashing damage {@as 3} {@damage 3d12+9} slashing damage."
@@ -44317,8 +43760,7 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				],
 				"weaknesses": [
@@ -44330,7 +43772,6 @@
 		},
 		{
 			"name": "Rat Snake Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 249,
 			"level": 2,
@@ -44374,7 +43815,6 @@
 				"climb": 20,
 				"swim": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
@@ -44420,8 +43860,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -44456,7 +43895,6 @@
 		},
 		{
 			"name": "Red Fox",
-			"isNpc": false,
 			"source": "B3",
 			"page": 102,
 			"level": -1,
@@ -44551,15 +43989,13 @@
 				},
 				"hp": [
 					{
-						"hp": 5,
-						"abilities": null
+						"hp": 5
 					}
 				]
 			}
 		},
 		{
 			"name": "Rhu-chalik",
-			"isNpc": false,
 			"source": "B3",
 			"page": 214,
 			"level": 6,
@@ -44634,7 +44070,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 23,
@@ -44643,8 +44078,9 @@
 							"spells": [
 								{
 									"name": "invisibility",
+									"amount": "at will",
 									"notes": [
-										"self only; at will"
+										"self only"
 									]
 								},
 								{
@@ -44752,15 +44188,13 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				]
 			}
 		},
 		{
 			"name": "Ringhorn Ram",
-			"isNpc": false,
 			"source": "B3",
 			"page": 212,
 			"level": 0,
@@ -44866,15 +44300,13 @@
 				},
 				"hp": [
 					{
-						"hp": 15,
-						"abilities": null
+						"hp": 15
 					}
 				]
 			}
 		},
 		{
 			"name": "Roiling Incant",
-			"isNpc": false,
 			"source": "B3",
 			"page": 215,
 			"level": 9,
@@ -44939,7 +44371,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 30,
@@ -44956,8 +44387,9 @@
 							"spells": [
 								{
 									"name": "wall of fire",
+									"amount": "at will",
 									"notes": [
-										"at will; see Unstable Magic"
+										"see Unstable Magic"
 									]
 								}
 							]
@@ -45014,8 +44446,7 @@
 				},
 				"hp": [
 					{
-						"hp": 155,
-						"abilities": null
+						"hp": 155
 					}
 				],
 				"immunities": [
@@ -45040,7 +44471,6 @@
 		},
 		{
 			"name": "Rokurokubi",
-			"isNpc": false,
 			"source": "B3",
 			"page": 216,
 			"level": 2,
@@ -45073,7 +44503,8 @@
 					"std": 8
 				},
 				"intimidation": {
-					"std": 8
+					"std": 8,
+					"to {@action Demoralize} with Threatening Lunge": 10
 				},
 				"society": {
 					"std": 6
@@ -45102,7 +44533,7 @@
 						"finesse",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 1d8+3} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 1d8+3} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -45123,14 +44554,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6, {@skill Stealth} +8 Str +3, Dex +4, Con +3, Int +2, Wis +3, Cha +4."
-						],
-						"name": "Threatening Lunge), Society"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -45199,8 +44622,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				],
 				"immunities": [
@@ -45210,7 +44632,6 @@
 		},
 		{
 			"name": "Rosethorn Ram",
-			"isNpc": false,
 			"source": "B3",
 			"page": 212,
 			"level": 2,
@@ -45292,7 +44713,7 @@
 						},
 						"requirements": "The rosethorn ram damaged a creature with its horns on its most recent action this turn",
 						"entries": [
-							"The ram breaks off one of the thorny protrusions of its horns and leaves it in the wound, dealing {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"The ram breaks off one of the thorny protrusions of its horns and leaves it in the wound, dealing {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Broken Thorns"
 					},
@@ -45331,15 +44752,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Sabosan",
-			"isNpc": false,
 			"source": "B3",
 			"page": 217,
 			"level": 5,
@@ -45405,7 +44824,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@damage 2d10+4} piercing plus 1 {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d10+4} piercing plus 1 {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -45514,15 +44933,13 @@
 				},
 				"hp": [
 					{
-						"hp": 78,
-						"abilities": null
+						"hp": 78
 					}
 				]
 			}
 		},
 		{
 			"name": "Samsaran Anchorite",
-			"isNpc": false,
 			"source": "B3",
 			"page": 224,
 			"level": 1,
@@ -45603,7 +45020,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 17,
@@ -45656,7 +45072,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"trigger": "The samsaran anchorite is about to roll initiative",
 						"entries": [
@@ -45677,7 +45093,7 @@
 						"trigger": "The samsaran anchorite fails or critically fails a Will save against an {@trait emotion} effect",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Even in the face of overwhelming tribulation, the anchorite finds solace in the notion that all things are merely part of a never-ending cycle. They reroll the saving throw with a +1 status bonus; they must use the second result."
@@ -45704,15 +45120,13 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				]
 			}
 		},
 		{
 			"name": "Sasquatch",
-			"isNpc": false,
 			"source": "B3",
 			"page": 225,
 			"level": 2,
@@ -45800,7 +45214,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Catch Rock"
 					},
 					{
@@ -45849,7 +45262,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -45875,15 +45287,13 @@
 				},
 				"hp": [
 					{
-						"hp": 36,
-						"abilities": null
+						"hp": 36
 					}
 				]
 			}
 		},
 		{
 			"name": "Scalescribe",
-			"isNpc": false,
 			"source": "B3",
 			"page": 226,
 			"level": 3,
@@ -45970,7 +45380,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 20,
@@ -46050,7 +45459,7 @@
 				"bot": [
 					{
 						"entries": [
-							"When the scalescribe deals damage to a creature with their fountain pen, the creature takes {@damage 1d4} {@condition persistent damage ||persistent poison damage}. When a creature taking this damage attempts to take an action with the {@trait concentrate} trait, it must succeed at a DC {@flatDC 5} flat check or the action is disrupted."
+							"When the scalescribe deals damage to a creature with their fountain pen, the creature takes {@damage 1d4} {@condition persistent damage||persistent poison damage}. When a creature taking this damage attempts to take an action with the {@trait concentrate} trait, it must succeed at a DC {@flatDC 5} flat check or the action is disrupted."
 						],
 						"name": "Inkstain"
 					}
@@ -46074,15 +45483,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Seaweed Leshy",
-			"isNpc": false,
 			"source": "B3",
 			"page": 161,
 			"level": 3,
@@ -46174,7 +45581,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 20,
@@ -46244,15 +45650,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Seething Spirit",
-			"isNpc": false,
 			"source": "B3",
 			"page": 228,
 			"level": 11,
@@ -46328,7 +45732,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 32,
@@ -46474,14 +45877,13 @@
 					{
 						"amount": 10,
 						"name": "all damage",
-						"note": "(except emotion, force, ghost touch, mental, or positive; double resistance vs. non-magical)"
+						"note": "except emotion, force, {@item ghost touch}, mental, or positive; double resistance vs. non-magical"
 					}
 				]
 			}
 		},
 		{
 			"name": "Sepid",
-			"isNpc": false,
 			"source": "B3",
 			"page": 71,
 			"level": 14,
@@ -46582,7 +45984,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 34,
@@ -46599,8 +46000,9 @@
 							"spells": [
 								{
 									"name": "comprehend language",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								}
 							]
@@ -46627,14 +46029,16 @@
 								},
 								{
 									"name": "misdirection",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								},
 								{
 									"name": "nondetection",
+									"amount": "at will",
 									"notes": [
-										"at will; self only"
+										"self only"
 									]
 								},
 								{
@@ -46719,8 +46123,7 @@
 				},
 				"hp": [
 					{
-						"hp": 350,
-						"abilities": null
+						"hp": 350
 					}
 				],
 				"weaknesses": [
@@ -46738,7 +46141,6 @@
 		},
 		{
 			"name": "Severed Head",
-			"isNpc": false,
 			"source": "B3",
 			"page": 30,
 			"level": -1,
@@ -46798,7 +46200,7 @@
 						},
 						"requirements": "The beheaded's previous action was a jaws {@action Strike} that dealt damage to its target",
 						"entries": [
-							"The severed head makes a second jaws {@action Strike} as it violently shakes itself, trying to rip away a mouthful of flesh. On a success, the target takes an additional {@damage 1d4} slashing damage and 1 {@condition persistent damage ||persistent bleed damage}."
+							"The severed head makes a second jaws {@action Strike} as it violently shakes itself, trying to rip away a mouthful of flesh. On a success, the target takes an additional {@damage 1d4} slashing damage and 1 {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Gnash"
 					}
@@ -46840,7 +46242,6 @@
 		},
 		{
 			"name": "Shabti Redeemer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 229,
 			"foundIn": [
@@ -46937,7 +46338,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 19,
@@ -47027,8 +46427,7 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				],
 				"immunities": [
@@ -47038,7 +46437,6 @@
 		},
 		{
 			"name": "Shae",
-			"isNpc": false,
 			"source": "B3",
 			"page": 230,
 			"level": 4,
@@ -47134,7 +46532,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 21,
@@ -47163,7 +46560,8 @@
 								{
 									"name": "plane shift",
 									"notes": [
-										"self only; to Shadow Plane or Material Plane only"
+										"self only",
+										"to Shadow Plane or Material Plane only"
 									]
 								}
 							]
@@ -47248,8 +46646,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				],
 				"immunities": [
@@ -47269,7 +46666,6 @@
 		},
 		{
 			"name": "Shambler Troop",
-			"isNpc": false,
 			"source": "B3",
 			"page": 302,
 			"foundIn": [
@@ -47314,7 +46710,6 @@
 				],
 				"walk": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"top": [
 					{
@@ -47329,7 +46724,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Troop Defenses"
 					}
 				],
@@ -47342,7 +46736,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The shamblers lash out at any enemies in their squares or within 5 feet (DC 18 basic Reflex save). The damage depends on the number of actions. {@as 1} {@damage 2d6+5} bludgeoning damage {@as 2} {@damage 2d6+9} bludgeoning damage."
@@ -47363,7 +46757,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Form Up"
 					},
 					{
@@ -47391,8 +46784,7 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				],
 				"weaknesses": [
@@ -47404,7 +46796,6 @@
 		},
 		{
 			"name": "Shantak",
-			"isNpc": false,
 			"source": "B3",
 			"page": 231,
 			"level": 8,
@@ -47533,8 +46924,7 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				],
 				"immunities": [
@@ -47550,7 +46940,6 @@
 		},
 		{
 			"name": "Shaukeen",
-			"isNpc": false,
 			"source": "B3",
 			"page": 22,
 			"foundIn": [
@@ -47647,7 +47036,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 17,
@@ -47758,8 +47146,7 @@
 				},
 				"hp": [
 					{
-						"hp": 22,
-						"abilities": null
+						"hp": 22
 					}
 				],
 				"immunities": [
@@ -47769,7 +47156,6 @@
 		},
 		{
 			"name": "Shikigami",
-			"isNpc": false,
 			"source": "B3",
 			"page": 142,
 			"level": 1,
@@ -47863,7 +47249,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Innate Divine",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 17,
@@ -47931,8 +47316,7 @@
 				},
 				"hp": [
 					{
-						"hp": 25,
-						"abilities": null
+						"hp": 25
 					}
 				],
 				"immunities": [
@@ -47943,7 +47327,6 @@
 		},
 		{
 			"name": "Shrine Skelm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 239,
 			"level": 5,
@@ -48044,7 +47427,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 22,
@@ -48128,8 +47510,7 @@
 				},
 				"hp": [
 					{
-						"hp": 80,
-						"abilities": null
+						"hp": 80
 					}
 				],
 				"weaknesses": [
@@ -48142,7 +47523,6 @@
 		},
 		{
 			"name": "Shulsaga",
-			"isNpc": false,
 			"source": "B3",
 			"page": 93,
 			"level": 3,
@@ -48233,7 +47613,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 18,
@@ -48282,7 +47661,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -48301,7 +47679,7 @@
 						"trigger": "The shulsaga's last action was a successful melee {@action Strike} against an astral form created by the {@ritual astral projection|apg} ritual or a similar effect",
 						"frequency": {
 							"unit": "minute",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The shulsaga attempts to counteract the effect projecting the creature onto the Astral Plane, with the effects of a 5th-level {@spell dispel magic} spell (counteract modifier +18)."
@@ -48330,7 +47708,7 @@
 						"requirements": "The shulsaga is adjacent to a floating disk they created",
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The shulsaga {@action Step||Steps} into the disk's space and rides atop the disk. They can also use this action to dismount from their disk."
@@ -48358,15 +47736,13 @@
 				},
 				"hp": [
 					{
-						"hp": 35,
-						"abilities": null
+						"hp": 35
 					}
 				]
 			}
 		},
 		{
 			"name": "Silvanshee",
-			"isNpc": false,
 			"source": "B3",
 			"page": 10,
 			"level": 1,
@@ -48459,7 +47835,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 16,
@@ -48547,15 +47922,13 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			}
 		},
 		{
 			"name": "Skeleton Infantry",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Alkenstar",
@@ -48604,14 +47977,12 @@
 				],
 				"walk": 25
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Troop Defenses"
 					}
 				],
@@ -48624,7 +47995,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The skeletons engage in a coordinated longspear attack against each enemy within 10 feet (DC 27 basic Reflex save). The damage depends on the number of actions. {@as 1} {@damage 2d8} piercing damage {@as 2} {@damage 3d8+8} piercing damage {@as 3} {@damage 4d8+8} piercing damage."
@@ -48649,7 +48020,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Form Up"
 					},
 					{
@@ -48688,8 +48058,7 @@
 				},
 				"hp": [
 					{
-						"hp": 180,
-						"abilities": null
+						"hp": 180
 					}
 				],
 				"weaknesses": [
@@ -48728,7 +48097,6 @@
 		},
 		{
 			"name": "Skinstitch",
-			"isNpc": false,
 			"source": "B3",
 			"page": 242,
 			"level": 5,
@@ -48807,7 +48175,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The skinstitch makes a blade {@action Strike} against an animal or humanoid. On a success, the skinstitch slices a long strip of flesh from the target; if the skinstitch dealt damage, it deals an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+							"The skinstitch makes a blade {@action Strike} against an animal or humanoid. On a success, the skinstitch slices a long strip of flesh from the target; if the skinstitch dealt damage, it deals an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Flay"
 					},
@@ -48845,8 +48213,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				],
 				"immunities": [
@@ -48874,7 +48241,6 @@
 		},
 		{
 			"name": "Skull Peeler",
-			"isNpc": false,
 			"source": "B3",
 			"page": 243,
 			"level": 6,
@@ -48925,7 +48291,7 @@
 						"fatal <d12>",
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d4+8} slashing plus {@damage 1d8} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d4+8} slashing plus {@damage 1d8} {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -48958,7 +48324,7 @@
 				"bot": [
 					{
 						"entries": [
-							"The skull peeler's razor-sharp tongue is coated in an anticoagulant substance that makes wounds it inflicts particularly hard to close. The DC of the flat check to end the {@condition persistent damage ||persistent bleed damage} from a skull peeler's tongue is 16, or 11 with appropriate assistance."
+							"The skull peeler's razor-sharp tongue is coated in an anticoagulant substance that makes wounds it inflicts particularly hard to close. The DC of the flat check to end the {@condition persistent damage||persistent bleed damage} from a skull peeler's tongue is 16, or 11 with appropriate assistance."
 						],
 						"name": "Anticoagulant"
 					},
@@ -48996,15 +48362,13 @@
 				},
 				"hp": [
 					{
-						"hp": 75,
-						"abilities": null
+						"hp": 75
 					}
 				]
 			}
 		},
 		{
 			"name": "Skunk",
-			"isNpc": false,
 			"source": "B3",
 			"page": 246,
 			"level": -1,
@@ -49108,15 +48472,13 @@
 				},
 				"hp": [
 					{
-						"hp": 7,
-						"abilities": null
+						"hp": 7
 					}
 				]
 			}
 		},
 		{
 			"name": "Slithering Pit",
-			"isNpc": false,
 			"source": "B3",
 			"page": 247,
 			"level": 7,
@@ -49252,8 +48614,7 @@
 				},
 				"hp": [
 					{
-						"hp": 220,
-						"abilities": null
+						"hp": 220
 					}
 				],
 				"immunities": [
@@ -49268,7 +48629,6 @@
 		},
 		{
 			"name": "Sorcerous Skull Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 245,
 			"level": 14,
@@ -49312,10 +48672,8 @@
 			"speed": {
 				"fly": 40
 			},
-			"attacks": [],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 36,
@@ -49433,7 +48791,6 @@
 		},
 		{
 			"name": "Soul Skelm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 241,
 			"level": 10,
@@ -49547,7 +48904,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 29,
@@ -49593,7 +48949,8 @@
 								{
 									"name": "plane shift",
 									"notes": [
-										"self only; Astral or Material Plane only"
+										"self only",
+										"Astral or Material Plane only"
 									]
 								}
 							]
@@ -49673,8 +49030,7 @@
 				},
 				"hp": [
 					{
-						"hp": 170,
-						"abilities": null
+						"hp": 170
 					}
 				],
 				"immunities": [
@@ -49684,7 +49040,6 @@
 		},
 		{
 			"name": "Spiny Eurypterid",
-			"isNpc": false,
 			"source": "B3",
 			"page": 97,
 			"level": 5,
@@ -49823,15 +49178,13 @@
 				},
 				"hp": [
 					{
-						"hp": 70,
-						"abilities": null
+						"hp": 70
 					}
 				]
 			}
 		},
 		{
 			"name": "Squirming Swill",
-			"isNpc": false,
 			"source": "B3",
 			"page": 256,
 			"level": 2,
@@ -49993,7 +49346,6 @@
 		},
 		{
 			"name": "Squirrel Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 257,
 			"level": 1,
@@ -50039,7 +49391,6 @@
 				"walk": 25,
 				"climb": 15
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -50081,8 +49432,7 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				],
 				"immunities": [
@@ -50103,7 +49453,6 @@
 		},
 		{
 			"name": "Stheno Harpist",
-			"isNpc": false,
 			"source": "B3",
 			"page": 258,
 			"level": 1,
@@ -50202,7 +49551,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 17,
@@ -50279,15 +49627,13 @@
 				},
 				"hp": [
 					{
-						"hp": 19,
-						"abilities": null
+						"hp": 19
 					}
 				]
 			}
 		},
 		{
 			"name": "Stone Lion",
-			"isNpc": false,
 			"source": "B3",
 			"page": 125,
 			"level": 4,
@@ -50352,7 +49698,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 21,
@@ -50446,7 +49791,7 @@
 					},
 					{
 						"entries": [
-							"When not Inhabiting its Vessel, the lion is incorporeal and gains resistance 5 to all damage (except force damage and damage from {@action Strike||Strikes} with the ghost touch property rune; double resistance against non-magical)."
+							"When not Inhabiting its Vessel, the lion is incorporeal and gains resistance 5 to all damage (except force damage and damage from {@action Strike||Strikes} with the {@item ghost touch} property rune; double resistance against non-magical)."
 						],
 						"name": "Spirit Body"
 					}
@@ -50470,8 +49815,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				],
 				"immunities": [
@@ -50484,7 +49828,6 @@
 		},
 		{
 			"name": "Stone Lion Cub",
-			"isNpc": false,
 			"source": "B3",
 			"page": 124,
 			"level": 2,
@@ -50555,7 +49898,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 17,
@@ -50624,7 +49966,7 @@
 					},
 					{
 						"entries": [
-							"When not Inhabiting its Vessel, the cub is incorporeal and gains resistance 3 to all damage (except force damage and damage from {@action Strike||Strikes} with the ghost touch property rune; double resistance against non-magical)."
+							"When not Inhabiting its Vessel, the cub is incorporeal and gains resistance 3 to all damage (except force damage and damage from {@action Strike||Strikes} with the {@item ghost touch} property rune; double resistance against non-magical)."
 						],
 						"name": "Spirit Body"
 					}
@@ -50648,8 +49990,7 @@
 				},
 				"hp": [
 					{
-						"hp": 28,
-						"abilities": null
+						"hp": 28
 					}
 				],
 				"immunities": [
@@ -50662,7 +50003,6 @@
 		},
 		{
 			"name": "Storm Hag",
-			"isNpc": false,
 			"source": "B3",
 			"page": 128,
 			"level": 5,
@@ -50768,7 +50108,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 22,
@@ -50850,8 +50189,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				],
 				"immunities": [
@@ -50861,7 +50199,6 @@
 		},
 		{
 			"name": "Street Skelm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 238,
 			"level": 3,
@@ -50982,7 +50319,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -51059,8 +50395,7 @@
 				},
 				"hp": [
 					{
-						"hp": 55,
-						"abilities": null
+						"hp": 55
 					}
 				],
 				"weaknesses": [
@@ -51073,7 +50408,6 @@
 		},
 		{
 			"name": "Strix Kinmate",
-			"isNpc": false,
 			"source": "B3",
 			"page": 259,
 			"level": 2,
@@ -51188,7 +50522,7 @@
 						"frequency": {
 							"unit": "minute",
 							"interval": 10,
-							"freq": 1
+							"number": 1
 						},
 						"trigger": "The kinmate or a strix ally they can see is damaged by an enemy's critical hit",
 						"entries": [
@@ -51216,15 +50550,13 @@
 				},
 				"hp": [
 					{
-						"hp": 24,
-						"abilities": null
+						"hp": 24
 					}
 				]
 			}
 		},
 		{
 			"name": "Sturzstromer",
-			"isNpc": false,
 			"source": "B3",
 			"page": 52,
 			"level": 19,
@@ -51274,10 +50606,8 @@
 				"walk": 50,
 				"burrow": 20
 			},
-			"attacks": [],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 41,
@@ -51388,8 +50718,7 @@
 				},
 				"hp": [
 					{
-						"hp": 280,
-						"abilities": null
+						"hp": 280
 					}
 				],
 				"immunities": [
@@ -51401,7 +50730,6 @@
 		},
 		{
 			"name": "Sulfur Zombie",
-			"isNpc": false,
 			"source": "B3",
 			"page": 303,
 			"foundIn": [
@@ -51458,7 +50786,7 @@
 					"effects": [
 						"blinding sulfur"
 					],
-					"damage": "{@damage 2d6+5} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent fire} and blinding sulfur",
+					"damage": "{@damage 2d6+5} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent fire} and blinding sulfur",
 					"types": [
 						"bludgeoning",
 						"persistent"
@@ -51541,7 +50869,6 @@
 		},
 		{
 			"name": "Sumbreiva",
-			"isNpc": false,
 			"source": "B3",
 			"page": 260,
 			"level": 16,
@@ -51658,7 +50985,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 36,
@@ -51686,7 +51012,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity"
 					},
 					{
@@ -51775,7 +51100,6 @@
 		},
 		{
 			"name": "Swordkeeper",
-			"isNpc": false,
 			"source": "B3",
 			"page": 261,
 			"level": 10,
@@ -51884,7 +51208,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -51960,8 +51283,7 @@
 				},
 				"hp": [
 					{
-						"hp": 285,
-						"abilities": null
+						"hp": 285
 					}
 				],
 				"immunities": [
@@ -51981,7 +51303,6 @@
 		},
 		{
 			"name": "Tattoo Guardian",
-			"isNpc": false,
 			"source": "B3",
 			"page": 262,
 			"level": 3,
@@ -52088,8 +51409,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				],
 				"immunities": [
@@ -52115,7 +51435,6 @@
 		},
 		{
 			"name": "Terra-cotta Garrison",
-			"isNpc": false,
 			"source": "B3",
 			"page": 263,
 			"level": 13,
@@ -52155,7 +51474,6 @@
 				],
 				"walk": 25
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
@@ -52166,7 +51484,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity"
 					},
 					{
@@ -52177,7 +51494,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -52187,7 +51503,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Troop Defenses"
 					}
 				],
@@ -52200,7 +51515,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Form Up"
 					},
 					{
@@ -52241,8 +51555,7 @@
 				},
 				"hp": [
 					{
-						"hp": 240,
-						"abilities": null
+						"hp": 240
 					}
 				],
 				"immunities": [
@@ -52266,7 +51579,6 @@
 		},
 		{
 			"name": "Terra-cotta Soldier",
-			"isNpc": false,
 			"source": "B3",
 			"page": 263,
 			"level": 6,
@@ -52343,7 +51655,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -52357,7 +51668,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -52384,8 +51694,7 @@
 				},
 				"hp": [
 					{
-						"hp": 120,
-						"abilities": null
+						"hp": 120
 					}
 				],
 				"immunities": [
@@ -52406,7 +51715,6 @@
 		},
 		{
 			"name": "Terror Bird",
-			"isNpc": false,
 			"source": "B3",
 			"page": 264,
 			"level": 2,
@@ -52483,7 +51791,7 @@
 						},
 						"frequency": {
 							"unit": "minute",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The terror bird {@action Stride||Strides} three times in a straight line."
@@ -52492,7 +51800,7 @@
 					},
 					{
 						"entries": [
-							"The terror bird's powerful beak can tear through flesh. On a successful beak {@action Strike}, the target takes 1 {@condition persistent damage ||persistent bleed damage}. This bleed damage increases to {@dice 1d4} on a critical hit."
+							"The terror bird's powerful beak can tear through flesh. On a successful beak {@action Strike}, the target takes 1 {@condition persistent damage||persistent bleed damage}. This bleed damage increases to {@dice 1d4} on a critical hit."
 						],
 						"name": "Tearing Clutch"
 					}
@@ -52516,15 +51824,13 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				]
 			}
 		},
 		{
 			"name": "Terror Shrike",
-			"isNpc": false,
 			"source": "B3",
 			"page": 264,
 			"level": 4,
@@ -52605,7 +51911,7 @@
 						"name": "Sprint",
 						"frequency": {
 							"unit": "minute",
-							"freq": 1
+							"number": 1
 						}
 					},
 					{
@@ -52646,7 +51952,7 @@
 					},
 					{
 						"entries": [
-							"As terror bird, except {@damage 1d8} {@condition persistent damage ||persistent bleed damage} on a critical hit."
+							"As terror bird, except {@damage 1d8} {@condition persistent damage||persistent bleed damage} on a critical hit."
 						],
 						"name": "Tearing Clutch"
 					}
@@ -52670,15 +51976,13 @@
 				},
 				"hp": [
 					{
-						"hp": 60,
-						"abilities": null
+						"hp": 60
 					}
 				]
 			}
 		},
 		{
 			"name": "Thanatotic Titan",
-			"isNpc": false,
 			"source": "B3",
 			"page": 269,
 			"level": 22,
@@ -52792,7 +52096,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 45,
@@ -52997,8 +52300,7 @@
 				},
 				"hp": [
 					{
-						"hp": 540,
-						"abilities": null
+						"hp": 540
 					}
 				],
 				"immunities": [
@@ -53009,7 +52311,6 @@
 		},
 		{
 			"name": "Three-toed Sloth",
-			"isNpc": false,
 			"source": "B3",
 			"page": 248,
 			"level": -1,
@@ -53105,15 +52406,13 @@
 				},
 				"hp": [
 					{
-						"hp": 10,
-						"abilities": null
+						"hp": 10
 					}
 				]
 			}
 		},
 		{
 			"name": "Tiddalik",
-			"isNpc": false,
 			"source": "B3",
 			"page": 265,
 			"level": 7,
@@ -53227,15 +52526,13 @@
 				},
 				"hp": [
 					{
-						"hp": 155,
-						"abilities": null
+						"hp": 155
 					}
 				]
 			}
 		},
 		{
 			"name": "Tidehawk",
-			"isNpc": false,
 			"source": "B3",
 			"page": 266,
 			"level": 12,
@@ -53339,7 +52636,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 32,
@@ -53458,7 +52754,6 @@
 		},
 		{
 			"name": "Tikbalang",
-			"isNpc": false,
 			"source": "B3",
 			"page": 267,
 			"level": 9,
@@ -53539,7 +52834,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 29,
@@ -53616,8 +52910,7 @@
 				},
 				"hp": [
 					{
-						"hp": 197,
-						"abilities": null
+						"hp": 197
 					}
 				],
 				"weaknesses": [
@@ -53630,7 +52923,6 @@
 		},
 		{
 			"name": "Tolokand",
-			"isNpc": false,
 			"source": "B3",
 			"page": 272,
 			"level": 15,
@@ -53694,7 +52986,7 @@
 					"traits": [
 						"reach <10 feet>"
 					],
-					"damage": "{@damage 2d12+16} slashing plus {@damage 2d6} {@condition persistent damage ||persistent poison}",
+					"damage": "{@damage 2d12+16} slashing plus {@damage 2d6} {@condition persistent damage||persistent poison}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -53703,7 +52995,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 37,
@@ -53728,7 +53019,6 @@
 					}
 				},
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 37,
@@ -53845,8 +53135,7 @@
 				},
 				"hp": [
 					{
-						"hp": 245,
-						"abilities": null
+						"hp": 245
 					}
 				],
 				"immunities": [
@@ -53868,7 +53157,6 @@
 		},
 		{
 			"name": "Tomb Giant",
-			"isNpc": false,
 			"source": "B3",
 			"page": 110,
 			"level": 12,
@@ -53975,7 +53263,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 32,
@@ -54002,7 +53289,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Catch Rock",
 						"generic": {
 							"tag": "ability"
@@ -54043,7 +53329,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -54082,7 +53367,6 @@
 		},
 		{
 			"name": "Tooth Fairy",
-			"isNpc": false,
 			"source": "B3",
 			"page": 273,
 			"level": -1,
@@ -54150,7 +53434,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 13,
@@ -54193,7 +53476,7 @@
 						],
 						"requirements": "The tooth fairy's last action was a successful pliers {@action Strike} against a creature with teeth",
 						"entries": [
-							"The tooth fairy tugs on the creature's teeth, dealing 2 {@condition persistent damage ||persistent bleed damage} to the creature."
+							"The tooth fairy tugs on the creature's teeth, dealing 2 {@condition persistent damage||persistent bleed damage} to the creature."
 						],
 						"name": "Tooth Tug"
 					}
@@ -54217,8 +53500,7 @@
 				},
 				"hp": [
 					{
-						"hp": 8,
-						"abilities": null
+						"hp": 8
 					}
 				],
 				"weaknesses": [
@@ -54231,7 +53513,6 @@
 		},
 		{
 			"name": "Tooth Fairy Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 273,
 			"level": 3,
@@ -54272,7 +53553,6 @@
 				"walk": 10,
 				"fly": 40
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
@@ -54299,7 +53579,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The tooth fairies try to pry out one of their target's teeth. One enemy in the swarm's space takes {@damage 4d6} bludgeoning damage (DC 20 basic Reflex save). On a failed save, the target takes 2 {@condition persistent damage ||persistent bleed damage} and a \u20131 status penalty to Charisma-based skill checks, and they must succeed at a DC {@flatDC 5} flat check to {@action Cast a Spell} with a verbal component or the spell is disrupted. The penalty and spellcasting condition last for 1 day, or until the stolen tooth is returned and the target regains at least 1 Hit Point."
+							"The tooth fairies try to pry out one of their target's teeth. One enemy in the swarm's space takes {@damage 4d6} bludgeoning damage (DC 20 basic Reflex save). On a failed save, the target takes 2 {@condition persistent damage||persistent bleed damage} and a \u20131 status penalty to Charisma-based skill checks, and they must succeed at a DC {@flatDC 5} flat check to {@action Cast a Spell} with a verbal component or the spell is disrupted. The penalty and spellcasting condition last for 1 day, or until the stolen tooth is returned and the target regains at least 1 Hit Point."
 						],
 						"name": "Pry"
 					}
@@ -54322,8 +53602,7 @@
 				},
 				"hp": [
 					{
-						"hp": 28,
-						"abilities": null
+						"hp": 28
 					}
 				],
 				"immunities": [
@@ -54354,7 +53633,6 @@
 		},
 		{
 			"name": "Toshigami",
-			"isNpc": false,
 			"source": "B3",
 			"page": 145,
 			"level": 15,
@@ -54438,7 +53716,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 36,
@@ -54522,7 +53799,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -54584,8 +53860,7 @@
 				},
 				"hp": [
 					{
-						"hp": 370,
-						"abilities": null
+						"hp": 370
 					}
 				],
 				"weaknesses": [
@@ -54599,7 +53874,6 @@
 		},
 		{
 			"name": "Trailgaunt",
-			"isNpc": false,
 			"source": "B3",
 			"page": 274,
 			"level": 3,
@@ -54741,7 +54015,6 @@
 		},
 		{
 			"name": "Trilobite",
-			"isNpc": false,
 			"source": "B3",
 			"page": 275,
 			"level": -1,
@@ -54845,15 +54118,13 @@
 				},
 				"hp": [
 					{
-						"hp": 7,
-						"abilities": null
+						"hp": 7
 					}
 				]
 			}
 		},
 		{
 			"name": "Trilobite Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 275,
 			"level": 3,
@@ -54899,7 +54170,6 @@
 			"speed": {
 				"swim": 25
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -54932,8 +54202,7 @@
 				},
 				"hp": [
 					{
-						"hp": 30,
-						"abilities": null
+						"hp": 30
 					}
 				],
 				"immunities": [
@@ -54954,7 +54223,6 @@
 		},
 		{
 			"name": "Triumph Siktempora",
-			"isNpc": false,
 			"source": "B3",
 			"page": 233,
 			"level": 14,
@@ -55031,7 +54299,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 32,
@@ -55172,7 +54439,6 @@
 		},
 		{
 			"name": "Tupilaq",
-			"isNpc": false,
 			"source": "B3",
 			"page": 278,
 			"level": 7,
@@ -55226,7 +54492,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 24,
@@ -55279,8 +54544,7 @@
 				"hardness": 8,
 				"hp": [
 					{
-						"hp": 87,
-						"abilities": null
+						"hp": 87
 					}
 				],
 				"immunities": [
@@ -55302,7 +54566,6 @@
 		},
 		{
 			"name": "Tylosaurus",
-			"isNpc": false,
 			"source": "B3",
 			"page": 178,
 			"level": 8,
@@ -55434,15 +54697,13 @@
 				},
 				"hp": [
 					{
-						"hp": 137,
-						"abilities": null
+						"hp": 137
 					}
 				]
 			}
 		},
 		{
 			"name": "Tyrannosaurus Skeleton",
-			"isNpc": false,
 			"source": "B3",
 			"page": 236,
 			"foundIn": [
@@ -55518,14 +54779,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Fire that laid waste to Skills {@skill Athletics} +22 Str +7, Dex +0, Con +5, Int \u20135, Wis +2, Cha +0."
-						],
-						"name": "Radiant"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -55533,7 +54786,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The tyrannosaurus skeleton bends down, attempting to skewer one adjacent creature on one of its massive ribs. The creature takes {@damage 2d10+9} piercing damage (DC 28 basic Reflex save). If the creature fails its save and is Medium or smaller, it's also impaled and stuck to the rib. It moves with the skeleton and takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} until it either {@action Escape||Escapes} or someone uses {@action Force Open} to break the rib (either is DC 28)."
+							"The tyrannosaurus skeleton bends down, attempting to skewer one adjacent creature on one of its massive ribs. The creature takes {@damage 2d10+9} piercing damage (DC 28 basic Reflex save). If the creature fails its save and is Medium or smaller, it's also impaled and stuck to the rib. It moves with the skeleton and takes {@damage 2d6} {@condition persistent damage||persistent bleed damage} until it either {@action Escape||Escapes} or someone uses {@action Force Open} to break the rib (either is DC 28)."
 						],
 						"name": "Rib Skewer"
 					},
@@ -55610,7 +54863,6 @@
 		},
 		{
 			"name": "Tzitzimitl",
-			"isNpc": false,
 			"source": "B3",
 			"page": 279,
 			"level": 19,
@@ -55707,7 +54959,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 38,
@@ -55876,7 +55127,6 @@
 		},
 		{
 			"name": "Umasi",
-			"isNpc": false,
 			"source": "B3",
 			"page": 280,
 			"level": 6,
@@ -55988,7 +55238,6 @@
 						"traits": [
 							"page 306"
 						],
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -56067,7 +55316,6 @@
 		},
 		{
 			"name": "Valkyrie",
-			"isNpc": false,
 			"source": "B3",
 			"page": 281,
 			"level": 12,
@@ -56159,7 +55407,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 29,
@@ -56239,7 +55486,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity"
 					},
 					{
@@ -56255,7 +55501,7 @@
 						"trigger": "An allied creature within 60 feet who isn't a construct or undead is reduced to 0 Hit Points and their {@condition dying} value is 2 or less",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The valkyrie restores {@dice 5d10} Hit Points to the target."
@@ -56299,8 +55545,7 @@
 				},
 				"hp": [
 					{
-						"hp": 215,
-						"abilities": null
+						"hp": 215
 					}
 				],
 				"resistances": [
@@ -56313,7 +55558,6 @@
 		},
 		{
 			"name": "Vanara Disciple",
-			"isNpc": false,
 			"source": "B3",
 			"page": 286,
 			"level": 1,
@@ -56419,7 +55663,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 13,
@@ -56454,7 +55697,7 @@
 						},
 						"frequency": {
 							"unit": "round",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The vanara disciple makes two unarmed {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
@@ -56492,15 +55735,13 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				]
 			}
 		},
 		{
 			"name": "Vilderavn",
-			"isNpc": false,
 			"source": "B3",
 			"page": 287,
 			"level": 16,
@@ -56618,7 +55859,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 37,
@@ -56686,7 +55926,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -56700,7 +55939,7 @@
 							"occult"
 						],
 						"entries": [
-							"A creature hit by a vilderavn's melee attack becomes cursed. It takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} that's difficult to stanch. The DC to stop the bleeding using {@action Administer First Aid} is 35, and healing the creature to full HP doesn't automatically end the bleeding. Removing the curse ends the bleeding."
+							"A creature hit by a vilderavn's melee attack becomes cursed. It takes {@damage 2d6} {@condition persistent damage||persistent bleed damage} that's difficult to stanch. The DC to stop the bleeding using {@action Administer First Aid} is 35, and healing the creature to full HP doesn't automatically end the bleeding. Removing the curse ends the bleeding."
 						],
 						"name": "Bloodbird"
 					},
@@ -56753,8 +55992,7 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				],
 				"immunities": [
@@ -56773,7 +56011,6 @@
 		},
 		{
 			"name": "Vine Leshy",
-			"isNpc": false,
 			"source": "B3",
 			"page": 160,
 			"level": 0,
@@ -56862,7 +56099,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 15,
@@ -56936,15 +56172,13 @@
 				},
 				"hp": [
 					{
-						"hp": 13,
-						"abilities": null
+						"hp": 13
 					}
 				]
 			}
 		},
 		{
 			"name": "Viper Swarm",
-			"isNpc": false,
 			"source": "B3",
 			"page": 249,
 			"level": 4,
@@ -56988,7 +56222,6 @@
 				"climb": 30,
 				"swim": 30
 			},
-			"attacks": [],
 			"abilities": {
 				"bot": [
 					{
@@ -57058,8 +56291,7 @@
 				},
 				"hp": [
 					{
-						"hp": 50,
-						"abilities": null
+						"hp": 50
 					}
 				],
 				"immunities": [
@@ -57080,7 +56312,6 @@
 		},
 		{
 			"name": "Vishkanya Infiltrator",
-			"isNpc": false,
 			"source": "B3",
 			"foundIn": [
 				"Jalmeray"
@@ -57192,7 +56423,7 @@
 						},
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Using either saliva or blood, the vishkanya applies vishkanyan venom to one weapon they're holding. To use their blood, they must be injured, or they can deal themselves 1 slashing damage as part of the action."
@@ -57269,15 +56500,13 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			}
 		},
 		{
 			"name": "Vulpinal",
-			"isNpc": false,
 			"source": "B3",
 			"page": 11,
 			"level": 6,
@@ -57385,7 +56614,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 24,
@@ -57486,15 +56714,13 @@
 				},
 				"hp": [
 					{
-						"hp": 105,
-						"abilities": null
+						"hp": 105
 					}
 				]
 			}
 		},
 		{
 			"name": "Water Wisp",
-			"isNpc": false,
 			"source": "B3",
 			"page": 91,
 			"level": 0,
@@ -57633,8 +56859,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				],
 				"immunities": [
@@ -57653,7 +56878,6 @@
 		},
 		{
 			"name": "Wayang Whisperblade",
-			"isNpc": false,
 			"source": "B3",
 			"page": 290,
 			"level": 1,
@@ -57780,15 +57004,13 @@
 				},
 				"hp": [
 					{
-						"hp": 19,
-						"abilities": null
+						"hp": 19
 					}
 				]
 			}
 		},
 		{
 			"name": "Weasel",
-			"isNpc": false,
 			"source": "B3",
 			"page": 291,
 			"level": -1,
@@ -57894,15 +57116,13 @@
 				},
 				"hp": [
 					{
-						"hp": 7,
-						"abilities": null
+						"hp": 7
 					}
 				]
 			}
 		},
 		{
 			"name": "Werebat",
-			"isNpc": false,
 			"source": "B3",
 			"page": 293,
 			"level": 2,
@@ -58095,7 +57315,6 @@
 							"primal",
 							"transmutation"
 						],
-						"entries": [],
 						"name": "Moon Frenzy"
 					}
 				]
@@ -58118,8 +57337,7 @@
 				},
 				"hp": [
 					{
-						"hp": 35,
-						"abilities": null
+						"hp": 35
 					}
 				],
 				"weaknesses": [
@@ -58132,7 +57350,6 @@
 		},
 		{
 			"name": "Werecrocodile",
-			"isNpc": false,
 			"source": "B3",
 			"page": 293,
 			"level": 2,
@@ -58311,7 +57528,6 @@
 							"primal",
 							"transmutation"
 						],
-						"entries": [],
 						"name": "Moon Frenzy"
 					},
 					{
@@ -58345,15 +57561,13 @@
 				},
 				"hp": [
 					{
-						"hp": 55,
-						"abilities": null
+						"hp": 55
 					}
 				]
 			}
 		},
 		{
 			"name": "Wihsaak",
-			"isNpc": false,
 			"source": "B3",
 			"page": 220,
 			"level": 6,
@@ -58425,7 +57639,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 23,
@@ -58546,8 +57759,7 @@
 				},
 				"hp": [
 					{
-						"hp": 105,
-						"abilities": null
+						"hp": 105
 					}
 				],
 				"immunities": [
@@ -58563,7 +57775,6 @@
 		},
 		{
 			"name": "Winter Hag",
-			"isNpc": false,
 			"source": "B3",
 			"page": 129,
 			"level": 7,
@@ -58657,7 +57868,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 25,
@@ -58771,8 +57981,7 @@
 				},
 				"hp": [
 					{
-						"hp": 145,
-						"abilities": null
+						"hp": 145
 					}
 				],
 				"immunities": [
@@ -58782,7 +57991,6 @@
 		},
 		{
 			"name": "Wizard Sponge",
-			"isNpc": false,
 			"source": "B3",
 			"page": 294,
 			"level": 5,
@@ -58828,7 +58036,6 @@
 				"walk": 20,
 				"climb": 20
 			},
-			"attacks": [],
 			"abilities": {
 				"mid": [
 					{
@@ -58881,8 +58088,7 @@
 				},
 				"hp": [
 					{
-						"hp": 65,
-						"abilities": null
+						"hp": 65
 					}
 				],
 				"immunities": [
@@ -58916,7 +58122,6 @@
 		},
 		{
 			"name": "Wolliped",
-			"isNpc": false,
 			"source": "B3",
 			"page": 295,
 			"level": 3,
@@ -59046,15 +58251,13 @@
 				},
 				"hp": [
 					{
-						"hp": 55,
-						"abilities": null
+						"hp": 55
 					}
 				]
 			}
 		},
 		{
 			"name": "Wyrmwraith",
-			"isNpc": false,
 			"source": "B3",
 			"page": 296,
 			"level": 17,
@@ -59151,7 +58354,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 35,
@@ -59372,14 +58574,13 @@
 					{
 						"amount": 20,
 						"name": "all",
-						"note": "(except force, ghost touch, or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			}
 		},
 		{
 			"name": "Wyrwood Sneak",
-			"isNpc": false,
 			"source": "B3",
 			"page": 298,
 			"level": 1,
@@ -59402,7 +58603,7 @@
 				"languages": [
 					"common"
 				],
-				"abilities": [
+				"notes": [
 					"plus one regional language"
 				]
 			},
@@ -59499,8 +58700,7 @@
 				},
 				"hp": [
 					{
-						"hp": 16,
-						"abilities": null
+						"hp": 16
 					}
 				],
 				"immunities": [
@@ -59510,7 +58710,6 @@
 		},
 		{
 			"name": "Ximtal",
-			"isNpc": false,
 			"source": "B3",
 			"page": 222,
 			"level": 17,
@@ -59614,7 +58813,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 38,
@@ -59700,7 +58898,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The ximtal attempts to isolate its enemy's companions, forcing an impression that each creature's friends and allies have vanished and they are all alone against an insurmountable threat. The ximtal chooses up to four creatures, each of whom must be adjacent to one other target. Each target must attempt a DC 38 Will save. On a failure, a target becomes out of phase with all allies. The affected creatures can't perceive their allies or interact with them in any way, and they can move into allies' spaces as if their allies simply weren't there. Allies similarly can't perceive or interact with the affected creatures with one exception: an ally can target an effected creature with remove curse to remove the effects. Every 24 hours, an affected creature can attempt a new saving throw to end this effect."
@@ -59774,8 +58972,7 @@
 				},
 				"hp": [
 					{
-						"hp": 380,
-						"abilities": null
+						"hp": 380
 					}
 				],
 				"immunities": [
@@ -59791,7 +58988,6 @@
 		},
 		{
 			"name": "Xiuh Couatl",
-			"isNpc": false,
 			"source": "B3",
 			"page": 57,
 			"level": 12,
@@ -59887,7 +59083,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 32,
@@ -60103,8 +59298,7 @@
 				},
 				"hp": [
 					{
-						"hp": 220,
-						"abilities": null
+						"hp": 220
 					}
 				],
 				"immunities": [
@@ -60115,7 +59309,6 @@
 		},
 		{
 			"name": "Yithian",
-			"isNpc": false,
 			"source": "B3",
 			"page": 299,
 			"level": 9,
@@ -60144,9 +59337,11 @@
 					"common",
 					"yithian"
 				],
-				"abilities": [
-					"telepathy",
+				"notes": [
 					"20 other languages"
+				],
+				"abilities": [
+					"telepathy"
 				]
 			},
 			"skills": {
@@ -60195,7 +59390,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 28,
@@ -60284,15 +59478,13 @@
 				},
 				"hp": [
 					{
-						"hp": 112,
-						"abilities": null
+						"hp": 112
 					}
 				]
 			}
 		},
 		{
 			"name": "Young Forest Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 74,
 			"level": 10,
@@ -60409,7 +59601,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 29,
@@ -60490,7 +59681,7 @@
 						"trigger": "The forest dragon is targeted with a water spell or effect",
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The forest dragon gains 30 temporary Hit Points."
@@ -60568,8 +59759,7 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				],
 				"immunities": [
@@ -60587,7 +59777,6 @@
 		},
 		{
 			"name": "Young Sea Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 77,
 			"level": 8,
@@ -60713,7 +59902,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 26,
@@ -60873,8 +60061,7 @@
 				},
 				"hp": [
 					{
-						"hp": 140,
-						"abilities": null
+						"hp": 140
 					}
 				],
 				"immunities": [
@@ -60885,7 +60072,6 @@
 		},
 		{
 			"name": "Young Sky Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 79,
 			"level": 9,
@@ -61001,7 +60187,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 28,
@@ -61026,7 +60211,6 @@
 					}
 				},
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 28,
@@ -61211,8 +60395,7 @@
 				},
 				"hp": [
 					{
-						"hp": 155,
-						"abilities": null
+						"hp": 155
 					}
 				],
 				"immunities": [
@@ -61224,7 +60407,6 @@
 		},
 		{
 			"name": "Young Sovereign Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 81,
 			"level": 11,
@@ -61344,7 +60526,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 30,
@@ -61384,7 +60565,7 @@
 							"mental"
 						],
 						"entries": [
-							"90 feet, DC 28."
+							"90 feet, DC 28"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -61460,7 +60641,7 @@
 						],
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"The dragon's golden armor glows with a protective golden light. The dragon gains a +2 status bonus to AC and resistance 10 to energy damage. Each enemy in a 20-foot emanation must succeed at a DC 30 Fortitude save or be {@condition dazzled}. All these effects last until the end of the dragon's next turn."
@@ -61487,8 +60668,7 @@
 				},
 				"hp": [
 					{
-						"hp": 195,
-						"abilities": null
+						"hp": 195
 					}
 				],
 				"immunities": [
@@ -61505,7 +60685,6 @@
 		},
 		{
 			"name": "Young Underworld Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 83,
 			"level": 7,
@@ -61629,7 +60808,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 25,
@@ -61696,7 +60874,7 @@
 							"fire"
 						],
 						"entries": [
-							"The dragon breathes a blast of fire that explodes in a 20-foot burst within 40 feet, dealing {@damage 7d6} fire damage (DC 25 basic Reflex save). Creatures that fail the save also take {@damage 1d6} {@condition persistent damage ||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The dragon breathes a blast of fire that explodes in a 20-foot burst within 40 feet, dealing {@damage 7d6} fire damage (DC 25 basic Reflex save). Creatures that fail the save also take {@damage 1d6} {@condition persistent damage||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -61749,8 +60927,7 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				],
 				"immunities": [
@@ -61762,7 +60939,6 @@
 		},
 		{
 			"name": "Yzobu",
-			"isNpc": false,
 			"source": "B3",
 			"page": 300,
 			"level": 1,
@@ -61861,15 +61037,13 @@
 				},
 				"hp": [
 					{
-						"hp": 25,
-						"abilities": null
+						"hp": 25
 					}
 				]
 			}
 		},
 		{
 			"name": "Zetogeki",
-			"isNpc": false,
 			"source": "B3",
 			"page": 301,
 			"level": 7,
@@ -61986,15 +61160,13 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				]
 			}
 		},
 		{
 			"name": "Zombie Dragon",
-			"isNpc": false,
 			"source": "B3",
 			"page": 303,
 			"foundIn": [
@@ -62141,7 +61313,6 @@
 		},
 		{
 			"name": "Zuishin",
-			"isNpc": false,
 			"source": "B3",
 			"page": 144,
 			"level": 10,
@@ -62240,7 +61411,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 29,
@@ -62320,7 +61490,6 @@
 						"generic": {
 							"tag": "ability"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity"
 					}
 				],
@@ -62372,8 +61541,7 @@
 				},
 				"hp": [
 					{
-						"hp": 200,
-						"abilities": null
+						"hp": 200
 					}
 				],
 				"weaknesses": [

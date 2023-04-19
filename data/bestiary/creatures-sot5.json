@@ -70,7 +70,7 @@
 					],
 					"name": "jaws",
 					"attack": 29,
-					"damage": "{@damage 3d8+14} piercing and {@damage 2d8} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 3d8+14} piercing and {@damage 2d8} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Melee",
@@ -98,7 +98,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -241,7 +240,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 18,
@@ -408,7 +406,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 39,
@@ -466,7 +463,9 @@
 								},
 								{
 									"name": "disappearance",
-									"note": "self only"
+									"notes": [
+										"self only"
+									]
 								},
 								{
 									"name": "discern location"
@@ -533,7 +532,7 @@
 							"occult"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -646,7 +645,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 43,
@@ -700,7 +698,9 @@
 								},
 								{
 									"name": "disappearance",
-									"note": "self only"
+									"notes": [
+										"self only"
+									]
 								},
 								{
 									"name": "discern location"
@@ -772,8 +772,7 @@
 						"name": "Red Star",
 						"traits": [
 							"page 77"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Project Calm",
@@ -967,7 +966,7 @@
 							"flourish"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "turn"
 						},
 						"entries": [
@@ -1101,7 +1100,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 39,
@@ -1293,7 +1291,7 @@
 							"unit": "reaction"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "Dwandek attempts a save against an arcane spell but hasn't rolled yet",
@@ -1310,7 +1308,7 @@
 							"unit": "free"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -1424,7 +1422,9 @@
 			"languages": {
 				"languages": [
 					"akitonian",
-					"formian",
+					"formian"
+				],
+				"abilities": [
 					"telepathy 120 feet"
 				]
 			},
@@ -1472,7 +1472,7 @@
 					],
 					"name": "claw",
 					"attack": 32,
-					"damage": "{@damage 3d10+13} slashing plus {@damage 3d6} {@condition persistent damage ||persistent mental damage} and stupefying touch"
+					"damage": "{@damage 3d10+13} slashing plus {@damage 3d6} {@condition persistent damage||persistent mental damage} and stupefying touch"
 				},
 				{
 					"range": "Ranged",
@@ -1481,7 +1481,7 @@
 					],
 					"name": "acid spit",
 					"attack": 32,
-					"damage": "{@damage 3d6+8} acid plus {@damage 3d6} {@condition persistent damage ||persistent acid damage}"
+					"damage": "{@damage 3d6+8} acid plus {@damage 3d6} {@condition persistent damage||persistent acid damage}"
 				}
 			],
 			"abilities": {
@@ -1617,7 +1617,9 @@
 			"languages": {
 				"languages": [
 					"akitonian",
-					"formian",
+					"formian"
+				],
+				"abilities": [
 					"telepathy 200 feet"
 				]
 			},
@@ -1670,7 +1672,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 38,
@@ -1748,7 +1749,7 @@
 							"primal"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -1793,13 +1794,13 @@
 										"The creature is unaffected and is temporarily immune to Telepathic Feedback for 24 hours."
 									],
 									"Success": [
-										"The creature takes {@damage 3d6} mental damage, {@damage 1d6} {@condition persistent damage ||persistent mental damage}, and is {@condition sickened||sickened 1}."
+										"The creature takes {@damage 3d6} mental damage, {@damage 1d6} {@condition persistent damage||persistent mental damage}, and is {@condition sickened||sickened 1}."
 									],
 									"Failure": [
-										"The creature takes {@damage 6d6} mental damage, {@damage 1d6} {@condition persistent damage ||persistent mental damage}, and is {@condition sickened||sickened 2}."
+										"The creature takes {@damage 6d6} mental damage, {@damage 1d6} {@condition persistent damage||persistent mental damage}, and is {@condition sickened||sickened 2}."
 									],
 									"Critical Failure": [
-										"The creature takes {@damage 12d6} mental damage, {@damage 1d6} {@condition persistent damage ||persistent mental damage}, and is {@condition stunned||stunned 3}. Upon recovering from the {@condition stunned} condition, the creature becomes {@condition sickened||sickened 2}."
+										"The creature takes {@damage 12d6} mental damage, {@damage 1d6} {@condition persistent damage||persistent mental damage}, and is {@condition stunned||stunned 3}. Upon recovering from the {@condition stunned} condition, the creature becomes {@condition sickened||sickened 2}."
 									]
 								}
 							}
@@ -1869,7 +1870,9 @@
 			"languages": {
 				"languages": [
 					"akitonian",
-					"formian",
+					"formian"
+				],
+				"abilities": [
 					"telepathy 30 feet"
 				]
 			},
@@ -2040,7 +2043,7 @@
 							"primal"
 						],
 						"entries": [
-							"A gluttonworm in contact with a significant body of sand, such as a desert or beach, gains fast healing 10. If the gluttonworm is subject to {@condition persistent damage ||persistent bleed}, the flowing blood quickly congeals with the sand covering its body, instantly ending the bleed duration and giving the gluttonworm a +2 circumstance bonus to AC until the end of its next turn."
+							"A gluttonworm in contact with a significant body of sand, such as a desert or beach, gains fast healing 10. If the gluttonworm is subject to {@condition persistent damage||persistent bleed}, the flowing blood quickly congeals with the sand covering its body, instantly ending the bleed duration and giving the gluttonworm a +2 circumstance bonus to AC until the end of its next turn."
 						]
 					},
 					{
@@ -2213,7 +2216,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -2333,7 +2336,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 33,
@@ -2415,7 +2417,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2426,7 +2427,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2673,12 +2673,11 @@
 					],
 					"name": "tendril",
 					"attack": 34,
-					"damage": "{@damage 4d10+15} {@condition persistent damage ||persistent piercing damage} plus swarming bites"
+					"damage": "{@damage 4d10+15} {@condition persistent damage||persistent piercing damage} plus swarming bites"
 				}
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"tradition": "occult",
 					"type": "Spontaneous",
 					"DC": 44,
@@ -2817,7 +2816,9 @@
 								},
 								{
 									"name": "visions of danger",
-									"note": "biting ants only"
+									"notes": [
+										"biting ants only"
+									]
 								},
 								{
 									"name": "warp mind"
@@ -2866,7 +2867,9 @@
 								},
 								{
 									"name": "visions of danger",
-									"note": "biting ants only"
+									"notes": [
+										"biting ants only"
+									]
 								}
 							]
 						}
@@ -2908,7 +2911,7 @@
 					{
 						"name": "Biting Ants",
 						"entries": [
-							"Strides to a creature, ends h i s movement sharing a space with it, and deals {@damage 3d8} piercing damage and {@damage 3d8} poison damage to it (DC 39 basic Reflex save). A creature that fails this save also takes {@damage 2d8} {@condition persistent damage ||persistent piercing damage}."
+							"Strides to a creature, ends h i s movement sharing a space with it, and deals {@damage 3d8} piercing damage and {@damage 3d8} poison damage to it (DC 39 basic Reflex save). A creature that fails this save also takes {@damage 2d8} {@condition persistent damage||persistent piercing damage}."
 						]
 					},
 					{
@@ -2934,7 +2937,7 @@
 					{
 						"name": "Swarming Bites",
 						"entries": [
-							"While a creature is taking {@condition persistent damage ||persistent piercing damage} from the King of Biting Ants's tendril"
+							"While a creature is taking {@condition persistent damage||persistent piercing damage} from the King of Biting Ants's tendril"
 						]
 					},
 					{
@@ -3091,7 +3094,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 37,
@@ -3186,7 +3188,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3197,8 +3198,7 @@
 						"name": "Red Star",
 						"traits": [
 							"see page 77"
-						],
-						"entries": []
+						]
 					},
 					{
 						"name": "Iobane Vision",
@@ -3217,8 +3217,7 @@
 						},
 						"frequency": {
 							"special": "Until recharged"
-						},
-						"entries": []
+						}
 					},
 					{
 						"name": "Warder-Chief Mpondo Casts a",
@@ -3338,7 +3337,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"tradition": "occult",
 					"type": "Innate",
 					"DC": 40,
@@ -3368,7 +3366,9 @@
 								},
 								{
 									"name": "disappearance",
-									"note": "self only"
+									"notes": [
+										"self only"
+									]
 								}
 							]
 						},
@@ -3577,7 +3577,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3588,7 +3587,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3743,7 +3741,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3754,7 +3751,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -4220,7 +4216,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -4405,7 +4400,8 @@
 				],
 				"resistances": [
 					{
-						"name": "5 poison"
+						"amount": 5,
+						"name": "poison"
 					}
 				]
 			}
@@ -4479,7 +4475,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"tradition": "arcane",
 					"type": "Innate",
 					"DC": 36,
@@ -4612,7 +4607,10 @@
 						],
 						"entries": [
 							"Tollvych laments his fate, forcing each living creature within 30 feet to attempt a DC 36 Will save. On a failure, a creature becomes {@condition frightened||frightened 2} (or {@condition frightened||frightened 3} on a critical failure). On a success, a creature is temporarily immune to Tollvych's frightful moan for 1 minute."
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			},
@@ -4636,8 +4634,8 @@
 					{
 						"hp": 200,
 						"abilities": [
-							"(negative healing",
-							"rejuvenation)"
+							"negative healing",
+							"rejuvenation"
 						]
 					}
 				],
@@ -4653,13 +4651,7 @@
 					{
 						"name": "all damage",
 						"amount": 15,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			}

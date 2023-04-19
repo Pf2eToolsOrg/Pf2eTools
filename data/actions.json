@@ -1,6 +1,73 @@
 {
 	"action": [
 		{
+			"name": "Grow",
+			"source": "TV",
+			"page": 165,
+			"traits": [
+				"rare",
+				"downtime",
+				"manipulate"
+			],
+			"entries": [
+				"You can grow an item from a living thing, most commonly a plant. You need the {@feat Alchemical Crafting} skill feat to Grow an alchemical item, the {@feat Magical Crafting} skill feat to Grow a magic item, and the {@feat Snare Crafting} feat to Grow a snare. To Grow an item, you must meet the following requirements.",
+				{
+					"type": "list",
+					"items": [
+						"The item is your level or lower. An item that doesn't list a level is level 0. If the item is 9th level or higher, you must be a master in {@skill Crafting}, and if it's 16th or higher, you must be legendary. ",
+						"You have the formula for the item; see {@quickref Getting Formulas|CRB|1|Formulas} for more information. ",
+						"You have an appropriate set of tools for growing the item. While cultivation and gardening tools are typical for plants, you might also use a different technique that requires a different set of tools. For instance, if you play music to help your plants grow, you might use a musical instrument instead. ",
+						"You must supply special fertilizers or other magical nutrients worth at least half the item's Price. You always expend at least that quantity of fertilizers and magical nutrients when you Grow successfully. If you're in a settlement, you can usually spend currency to get the amount of magical nutrients you need, except in the case of rarer precious materials. You can also bring them with you in advance or forage for them with a skill like {@skill Lore||Herbalism Lore}, gaining an amount of value based on the rules for {@action Earn Income}."
+					]
+				},
+				"You must spend 4 days at work, at which point you attempt a {@skill Crafting} check. The GM determines the DC to Grow the item based on its level, rarity, and other circumstances. Depending on the specifics of the type of item, it might be easier to Grow than it is to Craft, or vice versa; typically, the GM can represent that by making an easy or hard DC adjustment.",
+				"If your attempt to create the item is successful, you expend the fertilizers and other magical nutrients you supplied. You can pay the remaining portion of the item's Price in additional growth accelerants to complete the item immediately, or you can spend additional downtime days cultivating the item. For each additional day taken, reduce the value of the accelerants you need to complete the item. This amount is determined using Core Rulebook {@table Income Earned||Table 4\u20132: Income Earned}, based on your proficiency rank in {@skill Crafting} and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in accelerants. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off.",
+				"You also have the option to allow the item to grow mostly untended, only stopping to supervise it occasionally, though the pace is much slower without your direct intervention. At the end of each season in which you spent at least 1 day of downtime to Grow the item, roll an additional {@skill Crafting} check and reduce the value of accelerants you need to expend to complete the item by the corresponding amount.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your attempt is successful. Each additional day spent Growing reduces the materials needed to complete the item by an amount based on your level + 1 and your proficiency rank in {@skill Crafting}. ",
+						"Success": "Your attempt is successful. Each additional day spent Growing reduces the materials needed to complete the item by an amount based on your level and your proficiency rank. ",
+						"Failure": "You fail to complete the item. You can salvage the raw materials you supplied for their full value. If you want to try again, you must start over. ",
+						"Critical Failure": "You fail to complete the item. You ruin 10% of the fertilizers and nutrients you supplied, but you can salvage the rest. If you want to try again, you must start over."
+					}
+				}
+			]
+		},
+		{
+			"name": "Deconstruct",
+			"source": "TV",
+			"page": 162,
+			"traits": [
+				"rare",
+				"downtime"
+			],
+			"entries": [
+				"You deconstruct an item to provide the starting point to convert it into a new item. You need the {@feat Alchemical Crafting} skill feat to deconstruct alchemical items and the {@feat Magical Crafting} skill feat to deconstruct magic items.",
+				"To Deconstruct an item, you must meet the following requirements.",
+				{
+					"type": "list",
+					"items": [
+						"The item is your level or lower. An item that doesn't list a level is level 0. If the item is 9th level or higher, you must be a master in Crafting, and if it's 16th or higher, you must be legendary. ",
+						"The item isn't a cursed item, artifact, or other item that is similarly hard to destroy. The item isn't a consumable item. ",
+						"The item has a listed Price. ",
+						"You must have an appropriate set of tools and, in many cases, a workshop. For example, you need access to a smithy to deconstruct a metal shield or an alchemist's lab to de-concoct alchemical items."
+					]
+				},
+				"At the start of this process, you must decide if you're using the deconstructed item to build a new, similar item, of if you are simply breaking it down for raw ingredients that can be used at a later date for any item. In either case, this activity takes 1 day to perform, but if you're using the item to create a new, similar item, that day can be counted as one of the crafting days for the new item.",
+				"At the end of the activity, you must attempt a Crafting check. The GM sets the DC of this check based on the level of the item you are attempting to deconstruct, its rarity, and other circumstances.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "If you are deconstructing the item to make a new, similar item, you can apply 80% of the cost of the deconstructed item to the new item. If you are deconstructing the item for raw materials alone, you can apply 55% of the cost of the deconstructed item to a single new item. In either case, if this is in excess of the new item's cost, the remainder is lost. ",
+						"Success": "As critical success, but you can only apply 75% of the deconstructed item's cost to the new similar item and 50% of the deconstructed item's cost to any single item. ",
+						"Failure": "You fail to deconstruct the item, wasting your time. You can try again. ",
+						"Critical Failure": "You fail to deconstruct the item and damage it in the process. You must either repair it before attempting again, or you can attempt to deconstruct it again but lose 5% of the value of the item."
+					}
+				}
+			]
+		},
+		{
 			"name": "Harvest Heartsliver",
 			"activity": {
 				"number": 1,
@@ -138,7 +205,7 @@
 				"thaumaturge"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"requirements": "You are holding your implement.",
@@ -172,7 +239,7 @@
 			],
 			"prerequisites": "{@action Exploit Vulnerability|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"requirements": "You're benefiting from {@action Exploit Vulnerability|DA}, you can see the subject, and you haven't used {@action Exploit Vulnerability|DA} this round.",
@@ -257,7 +324,7 @@
 				"thaumaturge"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"requirements": "You are holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|chalice|DA|1||chalice implement}.",
@@ -481,7 +548,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
@@ -507,7 +574,7 @@
 			},
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You and your eidolon act as one. Either you or your eidolon takes an action or activity using the same number of actions as Act Together, and the other takes a single action.",
@@ -742,7 +809,7 @@
 				"manipulate"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -835,7 +902,7 @@
 			},
 			"trigger": "You're hit with an unarmed {@action Strike} or a {@action Strike} with a non-reach melee weapon.",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -1078,7 +1145,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You are hit with an unarmed strike or a strike with a non-reach melee weapon.",
 			"entries": [
@@ -1243,7 +1310,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You are about to attempt a check to {@action Recall Knowledge}.",
 			"entries": [
@@ -1557,7 +1624,7 @@
 			"frequency": {
 				"unit": "minute",
 				"interval": 10,
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
 			"entries": [
@@ -2152,7 +2219,7 @@
 			},
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You assess a foe's weaknesses in combat and use them to formulate a plan of attack against your enemy. Choose a creature you can see and roll a {@dice d20}. If you {@action Strike} the chosen creature later this round, you must use the result of the roll you made to {@action Devise a Stratagem|APG} for your {@action Strike}'s attack roll instead of rolling. You make this substitution only for the first {@action Strike} you make against the creature this round, not any subsequent attacks.",
@@ -2313,7 +2380,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You expend the power stored in your bonded item, as long as the item is on your person. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
@@ -2491,7 +2558,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"Energy bursts forth from your body. You deal {@damage 1d6} damage of your chosen type to all adjacent creatures (basic Reflex save using your class DC or spell DC, whichever is higher). At 3rd level, and every 2 levels thereafter, this damage increases by {@damage 1d6}."
@@ -2571,7 +2638,7 @@
 			"frequency": {
 				"unit": "minute",
 				"interval": 10,
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You observe and assess your surroundings with great speed. You {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}."
@@ -3454,7 +3521,7 @@
 			},
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "A creature within 60 feet gains the {@condition frightened} condition.",
 			"entries": [
@@ -3928,7 +3995,7 @@
 			},
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"entries": [
@@ -4004,7 +4071,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You experience a brief resurgence of a mutagen. Choose one mutagen you've consumed since your last daily preparations. You gain the effects of that mutagen for 1 minute."
@@ -4074,7 +4141,7 @@
 			},
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"Temporarily cranking the gizmos on your body into overdrive, you try to add greater power to your attacks. Attempt a {@skill Crafting} check that has a {@table DCs by Level||standard DC for your level}.",
@@ -4297,7 +4364,7 @@
 			"frequency": {
 				"unit": "minute",
 				"interval": 10,
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a {@skill Diplomacy} check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
@@ -4341,7 +4408,7 @@
 			"frequency": {
 				"unit": "minute",
 				"interval": 10,
-				"freq": 1
+				"number": 1
 			},
 			"entries": [
 				"You spend 1 minute examining the details of one potential clue, designating the subject related to that clue as the target of your active investigation. This subject is typically a single creature, item, or small location (such as a room or corridor), but the GM might allow a different scope for your investigation. You don't need to know the identity, purpose, or nature of the subject, but you do need to be aware of its existence. For instance, finding a footprint is enough to investigate the creature that left it, and seeing a hasty sketch of an item or location can be enough to start your investigation of that subject.",
@@ -4769,8 +4836,7 @@
 			"page": 300,
 			"activity": {
 				"number": 10,
-				"unit": "minute",
-				"entry": "10 minutes"
+				"unit": "minute"
 			},
 			"traits": [
 				"concentrate",
@@ -5896,7 +5962,7 @@
 			},
 			"frequency": {
 				"unit": "day",
-				"freq": 1
+				"number": 1
 			},
 			"requirements": "You are wielding a piercing or slashing weapon.",
 			"entries": [
@@ -6076,7 +6142,7 @@
 			},
 			"frequency": {
 				"unit": "hour",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "A creature touches you, such as by Grappling you, successfully hitting you with an unarmed attack, or using a touch-range spell against you.",
 			"entries": [
@@ -6241,8 +6307,7 @@
 			"page": 248,
 			"activity": {
 				"number": 10,
-				"unit": "minute",
-				"entry": "10 minutes"
+				"unit": "minute"
 			},
 			"traits": [
 				"exploration",
@@ -6460,6 +6525,28 @@
 			},
 			"entries": [
 				"Your foes are but dross from which you carve and shoot your legend. Make a melee {@action Strike} and then a ranged {@action Strike} with a combination weapon, both against the same enemy; you don't need to change modes to do so. If the melee {@action Strike} hits, you gain a +1 circumstance bonus to the attack roll with the ranged {@action Strike}. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you've made both attacks. If both {@action Strike||Strikes} hit, you deal an additional {@damage 2d6} {@condition persistent damage||persistent bleed damage} to the enemy, and they're {@condition dazzled} until this {@condition persistent damage||persistent bleed damage} ends."
+			]
+		},
+		{
+			"name": "Befriend a Local",
+			"source": "AoA0",
+			"page": 9,
+			"traits": [
+				"concentrate",
+				"downtime",
+				"linguistic"
+			],
+			"entries": [
+				"You spend the day in the company of an NPC whose companionship you value in order to strengthen the bonds of your friendship with them. You can always roll a {@skill Diplomacy} check to determine your degree of success when you try to Befriend a Local, but you can instead attempt another skill check of your choice to engage that NPC in an area of expertise they might be interested in. For example, if you seek to befriend a local smith, you could instead roll a {@skill Crafting} check to make friends. Or if you seek to befriend an herbalist, you could attempt a {@skill Medicine} check or a {@skill Nature} check. As you interact with an NPC, you might discover other personality traits that suggest other skill check options\u2014for example, after a few days of chatting with a local hunter you might learn that they have a deep appreciation of music, allowing you to attempt a {@skill Performance} check to befriend them. If you elect to attempt a skill check other than {@skill Diplomacy}, your GM will decide if the check you chose is applicable\u2014if not, the outcome of your check is one degree of success worse. Regardless of the skill you choose, the DC is 20.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You befriend the NPC, and that NPC particularly favors your company. If the NPC is a merchant, goods and services purchased from them are discounted by 10% rather than 5%. If the NPC is not a merchant, their friendship instead grants you a +1 circumstance bonus to {@skill Diplomacy} checks you attempt as part of downtime activities in Breachill, as long as they favor you. These benefits are permanent, as long as you don't take actions that jeopardize this friendship (as determined by the GM). Once you have permanently gained an NPC's favor in this way, the GM might decide the NPC helps you in other ways as well.",
+						"Success": "Per critical success, except the NPC's favor lasts for a number of weeks equal to your Charisma modifier (minimum of 1 week).",
+						"Failure": "The NPC does not favor you.",
+						"Critical Failure": "The NPC is offended or insulted by something you did. You no longer gain the effects of an ongoing success or critical success with that NPC, and the DC to use Befriend a Local with that NPC in the future increases by 5."
+					}
+				}
 			]
 		}
 	]

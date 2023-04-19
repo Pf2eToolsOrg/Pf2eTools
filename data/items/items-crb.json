@@ -272,7 +272,7 @@
 			],
 			"usage": "worn armor",
 			"bulk": "varies by armor",
-			"category": "Armor",
+			"category": "Material",
 			"entries": [
 				"Adamantine armor has a shiny, black appearance and is amazingly durable."
 			],
@@ -316,7 +316,7 @@
 				"uncommon"
 			],
 			"usage": "varies by shield",
-			"category": "Shield",
+			"category": "Material",
 			"entries": [
 				"Adamantine shields are particularly sturdy, and when used for a shield bash, they are adamantine weapons."
 			],
@@ -409,7 +409,7 @@
 			],
 			"usage": "varies by weapon",
 			"bulk": "varies by weapon",
-			"category": "Weapon",
+			"category": "Material",
 			"entries": [
 				"Adamantine weapons have a shiny black appearance and cut through lesser items with ease. They treat any object they hit as if it had half as much Hardness as usual, unless the object's Hardness is greater than that of the adamantine weapon."
 			],
@@ -478,6 +478,7 @@
 				"transmutation"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Over millennia, these mysterious, intricately cut gemstones have been hoarded by mystics and fanatics hoping to discover their secrets. Despite their myriad forms and functions, these stones are purportedly all fragments of crystal tools used by otherworldly entities to construct the universe in primeval times.",
@@ -667,7 +668,7 @@
 					"source": "LOPSG",
 					"page": 121,
 					"entries": [
-						"While invested, this aeon stone grants the benefit of the ghost touch property rune to your weapons and unarmed attacks.",
+						"While invested, this aeon stone grants the benefit of the {@item ghost touch} property rune to your weapons and unarmed attacks.",
 						"The resonant power grants a special activation.",
 						"{@b Activate} {@as 1} envision; {@b Frequency} once per minute; {@b Effect} You gain the effects of see invisibility for 1 round."
 					]
@@ -755,6 +756,7 @@
 				"transmutation"
 			],
 			"usage": "worn eyepiece",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These brass goggles are engraved with flame patterns and have thick, heavy lenses. While worn, they give you a +1 item bonus to {@skill Crafting} checks to {@action Craft} alchemical items and a +1 item bonus to attack rolls with alchemical bombs. You can also ignore lesser cover when making {@action Strike||Strikes} with alchemical bombs."
@@ -1125,6 +1127,7 @@
 				"amount": 15000
 			},
 			"usage": "worn anklets",
+			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"These gem-studded golden anklets give you a +3 item bonus to {@skill Acrobatics} checks. When you invest the anklets, you either increase your Dexterity score by 2 or increase it to 18, whichever would give you a higher score.",
@@ -1140,7 +1143,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You click the anklets together, gaining a +20-foot status bonus to all your Speeds and the effects of water walk for the next 10 minutes."
@@ -1297,7 +1300,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "A spell targets you or includes you in its area",
 					"entries": [
@@ -1596,15 +1599,34 @@
 			"name": "Arrow",
 			"source": "CRB",
 			"page": 282,
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
 			"bulk": "L",
 			"category": "Ammunition",
 			"entries": [
-				"These projectiles are the ammunition for bows. The shaft of an arrow is made of wood. It is stabilized in flight by fletching at one end and bears a metal head on the other."
+				"These projectiles are the ammunition for bows. The shaft of an arrow is made of wood. It is stabilized in flight by fletching at one end and bears a metal head on the other.",
+				"{@note Different weapons have different prices for ammunition. The prices listed are thus, only for reference in the weapon statblocks themselves.}"
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "5-pack",
+					"name": "Arrow",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": "(price for 5)"
+					},
+					"add_hash": "5"
+				},
+				{
+					"variantType": "10-pack",
+					"name": "Arrow",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": "(price for 10)"
+					},
+					"add_hash": "10"
+				}
 			]
 		},
 		{
@@ -1638,7 +1660,7 @@
 					],
 					"frequency": {
 						"unit": "minute",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "A ranged weapon {@action Strike} targets a creature within 15 feet of you when you have this shield raised, and the attacker has not yet rolled their attack",
 					"entries": [
@@ -1780,6 +1802,7 @@
 				"coin": "sp",
 				"amount": 1
 			},
+			"bulk": "\u2014",
 			"category": "Adventuring Gear",
 			"entries": [
 				"A backpack holds up to 4 Bulk of items. and the first 2 Bulk of these items don't count against your Bulk limits. If you're carrying or stowing the pack rather than wearing it on your back, its Bulk is light instead of negligible."
@@ -1917,7 +1940,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You trace a finger along the wind motifs on the barding, granting your companion wearing the barding a fly Speed of 30 feet for 10 minutes. Even if the companion doesn't have the mount special ability, it can still {@action Fly} while being ridden."
@@ -2157,7 +2180,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You tighten the belt one notch to gain a regeneration effect. For {@dice 2d4} rounds, at the start of your turn each round, you recover 15 Hit Points unless you took acid or fire damage since the start of your previous turn."
@@ -2199,7 +2222,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"requirements": "You are a dwarf",
 					"entries": [
@@ -2662,6 +2685,7 @@
 				"amount": 20
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -2695,15 +2719,34 @@
 			"name": "Bolt",
 			"source": "CRB",
 			"page": 281,
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
 			"bulk": "L",
 			"category": "Ammunition",
 			"entries": [
-				"Shorter than traditional arrows but similar in construction, bolts are the ammunition used by crossbows."
+				"Shorter than traditional arrows but similar in construction, bolts are the ammunition used by crossbows.",
+				"{@note Different weapons have different prices for ammunition. The prices listed are thus, only for reference in the weapon statblocks themselves.}"
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "5-pack",
+					"name": "Bolt",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": "(price for 5)"
+					},
+					"add_hash": "5"
+				},
+				{
+					"variantType": "10-pack",
+					"name": "Bolt",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": "(price for 10)"
+					},
+					"add_hash": "10"
+				}
 			]
 		},
 		{
@@ -2877,7 +2920,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"Until the end of your turn, you ignore {@quickref difficult terrain||3|terrain} when moving on the ground. If you're wearing a cloak of elvenkind, you also gain a +5-foot status bonus to your land Speed until the end of your turn."
@@ -2940,7 +2983,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You click the heels of the boots together and gain the {@condition quickened} condition for 1 minute. You can use the extra action to {@action Stride}, {@action Climb}, or {@action Swim}. (You must still attempt an {@skill Athletics} check for the {@action Climb} and {@action Swim} actions unless you have the appropriate movement type.)"
@@ -3124,7 +3167,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You gain a +10-foot status bonus to Speed for 1 minute."
@@ -3237,7 +3280,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "A ranged weapon attack hits you but doesn't critically hit",
 					"requirements": "You are aware of the attack and not {@condition flat-footed}",
@@ -3395,7 +3438,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You grant allies within 100 feet a +2 status bonus to saves against {@trait fear} effects for 1 minute. When you activate this ability, each affected ally who's {@condition frightened} reduces their {@condition frightened} value by 1."
@@ -3500,6 +3543,7 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -3533,6 +3577,7 @@
 				"amount": 30
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This piece of silver or gold jewelry is adorned with miniature images of kite shields and can be used to fasten a cloak or cape. The brooch automatically absorbs {@spell magic missile} spells targeting you. A brooch of shielding can absorb 30 individual {@spell magic missile}s before it melts and becomes useless.",
@@ -3631,6 +3676,7 @@
 				"amount": 1,
 				"note": "for price of 10"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -3655,6 +3701,7 @@
 				"amount": 75
 			},
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -3705,7 +3752,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You cast {@spell dimension door}. The space you leave and the one you appear in are filled with puffs of smoke that make anyone within {@condition concealed} until they leave the smoke or the end of your next turn, at which point the smoke dissipates.",
@@ -3747,7 +3794,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You gain 1 Focus Point, which you can spend only to cast a cleric domain spell for a domain belonging to the deity the cassock is dedicated to. If you don't spend this Focus Point by the end of this turn, it is lost."
@@ -3823,7 +3870,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You pull the white thread free, then whirl the sling in circles at high speed. It lets out an ear-piercing wave of sound.",
@@ -3867,7 +3914,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The armor sprouts glowing wings that grant you a fly Speed of 30 feet. The wings shed bright light in a 40-foot radius (and dim light to the next 40 feet). The wings fade away after 10 minutes."
@@ -3907,6 +3954,7 @@
 				"amount": 1,
 				"note": "for price of 10"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -3930,6 +3978,7 @@
 				"amount": 56
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This nugget of polished tektite is trapped in a cage of braided wire and hangs from a silken cord. When wearing this amulet, you gain resistance 5 against damage from {@spell harm} spells if you're living, or against {@spell heal} spells if you're undead."
@@ -4136,6 +4185,7 @@
 				"amount": 15000
 			},
 			"usage": "worn circlet",
+			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"This elegant silver band often resembles curling fig leaves and fits around your brow. You gain a +2 item bonus to {@skill Deception} and {@skill Diplomacy} checks.",
@@ -4152,7 +4202,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You cast a 4th-level {@spell charm} spell (DC 38)."
@@ -4190,7 +4240,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You pull the cloak's hood up and gain the benefits of nondetection for 1 hour or until you pull the hood back down, whichever comes first."
@@ -4313,7 +4363,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You draw the hood up and gain the effects of invisibility, with the spell's normal duration or until you pull the hood back down, whichever comes first. If you're also wearing boots of elvenkind, you can activate this ability twice per day."
@@ -4373,7 +4423,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You can either transform the cloak into bat-like wings that grant you a fly Speed of 30 feet for 10 minutes, or have the cloak turn you into a bat by casting a 4th-level {@spell pest form} spell on you."
@@ -4420,6 +4470,7 @@
 						"coin": "sp",
 						"amount": 1
 					},
+					"bulk": "\u2014",
 					"entries": [
 						"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes."
 					]
@@ -4767,7 +4818,7 @@
 			"level": "5+",
 			"usage": "worn armor",
 			"bulk": "varies by armor",
-			"category": "Armor",
+			"category": "Material",
 			"entries": [
 				"Cold iron armor sickens certain creatures that touch it. A creature with weakness to cold iron (such as most demons and fey) that critically fails an unarmed attack against a creature in cold iron armor becomes {@condition sickened 1}. A creature with weakness to cold iron is {@condition sickened 1} as long as it wears cold iron armor."
 			],
@@ -4820,7 +4871,7 @@
 			"type": "Item",
 			"level": "2+",
 			"usage": "varies by shield",
-			"category": "Shield",
+			"category": "Material",
 			"entries": [
 				"Cold iron shields don't typically have an additional effect, though when used for a shield bash, they are cold iron weapons."
 			],
@@ -4923,7 +4974,7 @@
 			"level": "2+",
 			"usage": "varies by weapon",
 			"bulk": "varies by weapon",
-			"category": "Weapon",
+			"category": "Material",
 			"entries": [
 				"Cold iron weapons deal additional damage to creatures with weakness to cold iron, like demons and fey."
 			],
@@ -5054,6 +5105,7 @@
 				"coin": "gp",
 				"amount": 1
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -5225,6 +5277,7 @@
 				"magical"
 			],
 			"usage": "worn cloak",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This dusty coat is made of mangy brown-and-gray coyote fur.",
@@ -5266,6 +5319,7 @@
 				"transmutation"
 			],
 			"usage": "worn eyepiece",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with helpful labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
@@ -5298,10 +5352,10 @@
 								"unit": "minute"
 							},
 							"components": [
-								"Interact"
+								"{@action Interact}"
 							],
 							"frequency": {
-								"freq": 1,
+								"number": 1,
 								"unit": "day"
 							},
 							"entries": [
@@ -5327,10 +5381,10 @@
 											"unit": "minute"
 										},
 										"components": [
-											"Interact"
+											"{@action Interact}"
 										],
 										"frequency": {
-											"freq": 1,
+											"number": 1,
 											"unit": "day"
 										},
 										"entries": [
@@ -5399,6 +5453,7 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -5438,13 +5493,12 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "minute",
-						"entry": "1 minute"
+						"unit": "minute"
 					},
 					"components": [
-						"(command",
+						"command",
 						"envision",
-						"Interact)"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The crystal ball casts clairvoyance to your specifications."
@@ -5455,17 +5509,16 @@
 					"style": "compact",
 					"activity": {
 						"number": 10,
-						"unit": "minute",
-						"entry": "10 minutes"
+						"unit": "minute"
 					},
 					"components": [
-						"(command",
+						"command",
 						"envision",
-						"Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 2
+						"number": 2
 					},
 					"entries": [
 						"The crystal ball casts a DC 33 {@spell scrying} spell to your specifications."
@@ -5616,7 +5669,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You poison the creature you hit with dagger venom."
@@ -5697,6 +5750,7 @@
 				"visual"
 			],
 			"usage": "worn belt",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This long and billowing scarf is typically woven of silk or sheer fabric and adorned with bells or other jangling bits of shiny metal. It grants a +1 item bonus to {@skill Performance} checks to dance.",
@@ -6032,7 +6086,7 @@
 			],
 			"usage": "worn armor",
 			"bulk": "varies by armor",
-			"category": "Armor",
+			"category": "Material",
 			"entries": [
 				"Darkwood armor is 1 Bulk lighter than normal (or light Bulk if its normal Bulk is 1, with no effect on armor that normally has light Bulk). It's easier to wear than normal wood armor, reducing the Strength score necessary to ignore its check penalty by 2 and reducing its Speed penalty by 5 feet. (There are no types of wood armor in this book.)"
 			],
@@ -6076,7 +6130,7 @@
 				"uncommon"
 			],
 			"usage": "varies by shield",
-			"category": "Shield",
+			"category": "Material",
 			"entries": [
 				"Darkwood shields are 1 Bulk lighter than normal (or light Bulk if their normal Bulk is 1, with no effect on a shield that normally has light Bulk)."
 			],
@@ -6223,7 +6277,7 @@
 			],
 			"usage": "varies by weapon",
 			"bulk": "varies by weapon",
-			"category": "Weapon",
+			"category": "Material",
 			"entries": [
 				"Darkwood weapons are as dark as ebony, with a slight purple tint. A darkwood weapon's Bulk is reduced by 1 (or to light Bulk if its normal Bulk is 1, with no effect on a weapon that normally has light Bulk)."
 			],
@@ -6274,6 +6328,7 @@
 				"amount": 900
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -6448,7 +6503,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You cast {@spell dimension door}."
@@ -6487,7 +6542,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The mask casts a {@spell fear} spell with a DC of 20."
@@ -6551,7 +6606,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You gain the effects of {@spell hypercognition}."
@@ -6575,6 +6630,7 @@
 				"amount": 125
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"When displayed prominently, this brass badge makes creatures find you more agreeable. You gain a +1 item bonus to {@skill Diplomacy} checks.",
@@ -6590,7 +6646,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"Attempt a DC 20 check to {@action Recall Knowledge} about people of a human ethnicity, a non-human ancestry, or some other type of creature. (The GM determines what your options are.) If you succeed, the badge's bonus increases to +2 for {@skill Diplomacy} checks with creatures of that group for the rest of the day."
@@ -6692,6 +6748,7 @@
 				"amount": 2400
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -6775,6 +6832,7 @@
 				"magical"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This item consists of two magically linked rings: an intricate, gleaming golden ring with a square-cut ruby, and a thick, plain iron ring. When you wield a melee weapon in the hand wearing the golden ring, the weapon's fundamental runes are replicated onto any melee weapon you wield in the hand wearing the iron ring. (The fundamental runes are weapon potency and striking, which add an item bonus to attack rolls and extra weapon damage dice, respectively.) Any fundamental runes on the weapon in the hand wearing the iron ring are suppressed.",
@@ -6878,6 +6936,7 @@
 				"amount": 13
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -7154,7 +7213,7 @@
 			],
 			"usage": "worn armor",
 			"bulk": "varies by armor",
-			"category": "Armor",
+			"category": "Material",
 			"entries": [
 				"Dragonhide armor is immune to one damage type based on the type of dragon it is made from (as listed in the table on page 579). Wearing armor made from dragonhide also grants you a +1 circumstance bonus to your AC and saving throws against attacks and spells that deal the corresponding damage type."
 			],
@@ -7293,7 +7352,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You unleash a bout of dragon breath with a shape, damage type, and saving throw corresponding to the type of dragon used to make the armor (shown on the table below). The breath weapon deals {@dice 14d6} damage; each creature in the area must attempt a DC 36 basic saving throw."
@@ -7346,6 +7405,7 @@
 				"amount": 15000
 			},
 			"usage": "worn eyepiece",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"When tied over your eyes, this ragged strip of black linen gives you a +3 item bonus to {@skill Intimidation} checks and {@ability darkvision}. You can see through the blindfold, but only using {@ability darkvision}.",
@@ -7362,7 +7422,7 @@
 					],
 					"frequency": {
 						"unit": "minute",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You damage a creature with a {@action Strike}",
 					"entries": [
@@ -7404,7 +7464,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You gain 1 Focus Point, which you can spend only to cast an order spell. If you don't spend this Focus Point by the end of this turn, it is lost."
@@ -7431,6 +7491,7 @@
 				"amount": 50
 			},
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -7462,6 +7523,7 @@
 				"amount": 135
 			},
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -7617,6 +7679,7 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -7665,7 +7728,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You cast a 2nd-level {@spell shocking grasp} with a spell attack modifier of +19."
@@ -7692,6 +7755,7 @@
 				"amount": 200
 			},
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
@@ -7936,6 +8000,7 @@
 				"amount": 30
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -8030,7 +8095,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You gain the effects of an {@spell ethereal jaunt} spell. This doesn't require concentration and lasts for 10 minutes or until you choose to return to material form as a free action."
@@ -8096,7 +8161,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The rolled-up tent expands into a spacious yurt complete with a fire pit, 10 {@item bedroll|crb|bedrolls}, various cooking utensils, and basic food and water.",
@@ -8185,6 +8250,7 @@
 				"coin": "sp",
 				"amount": 1
 			},
+			"bulk": "\u2014",
 			"category": "Adventuring Gear",
 			"entries": [
 				"Using a {@item writing set}, you can draft correspondence and scribe scrolls. If you've written a large amount, you can refill your kit with extra ink and paper."
@@ -8207,6 +8273,7 @@
 				"amount": 400
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -8239,6 +8306,7 @@
 				"amount": 2700
 			},
 			"usage": "worn eyepiece",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Adherents of Erastil, god of the hunt, create these magical eye patches. An eye of fortune has a jeweled eye symbol on its front, allowing you to magically see through the eye patch as though it were transparent.",
@@ -8275,6 +8343,7 @@
 				"amount": 700
 			},
 			"usage": "worn eyepiece",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These lenses of amber crystal fit over your eyes. They grant you {@ability low-light vision} and a +2 item bonus to {@skill Perception} checks that involve sight."
@@ -8297,6 +8366,7 @@
 				"amount": 320
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -8332,6 +8402,7 @@
 				"amount": 20
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
@@ -8364,6 +8435,7 @@
 				"amount": 8
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -8393,6 +8465,7 @@
 				"magical"
 			],
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -8632,6 +8705,7 @@
 				"amount": 1800
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -8757,6 +8831,7 @@
 				"coin": "cp",
 				"amount": 5
 			},
+			"bulk": "\u2014",
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -8790,7 +8865,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The shield magically releases itself and floats off your arm into the air next to you, granting you its bonus automatically, as if you had Raised the Shield. Because you're not wielding the shield, you can't use reactions such as {@feat Shield Block} with the shield, but you gain its benefits even when using both of your hands. After 1 minute, the shield drops to the ground, ending its floating effect. While the shield is adjacent to you, you can {@action Interact} to grasp it, ending its floating effect early."
@@ -8875,7 +8950,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The shield surrounds you with a bubble of force that protects you from harm, granting you resistance 5 to physical damage for 1 minute. The bubble disappears if you cease holding the shield."
@@ -9182,6 +9257,7 @@
 				"amount": 100
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -9217,7 +9293,7 @@
 			],
 			"category": "Ammunition",
 			"entries": [
-				"Ghost ammunition is cool to the touch. This ammunition has the benefits of the ghost touch property rune and can fly through any obstacle except those that can block incorporeal creatures or effects. Though the ammunition penetrates barriers and ignores all cover, the target still benefits from the flat check from being {@condition concealed} or {@condition hidden}. You still can't target an {@condition undetected} creature without guessing.",
+				"Ghost ammunition is cool to the touch. This ammunition has the benefits of the {@item ghost touch} property rune and can fly through any obstacle except those that can block incorporeal creatures or effects. Though the ammunition penetrates barriers and ignores all cover, the target still benefits from the flat check from being {@condition concealed} or {@condition hidden}. You still can't target an {@condition undetected} creature without guessing.",
 				"After it is launched, the ammunition vanishes into mist.",
 				"However, in the dead of the night {@dice 1d4} days later, it reappears in the last quiver or other container it was taken from."
 			]
@@ -9239,6 +9315,7 @@
 				"amount": 1800
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -9275,7 +9352,7 @@
 				"Weapon"
 			],
 			"entries": [
-				"The weapon can harm creatures without physical form. A ghost touch weapon is particularly effective against incorporeal creatures, which almost always have a specific weakness to ghost touch weapons. Incorporeal creatures can touch, hold, and wield ghost touch weapons (unlike most physical objects)."
+				"The weapon can harm creatures without physical form. A {@item ghost touch} weapon is particularly effective against incorporeal creatures, which almost always have a specific weakness to {@item ghost touch} weapons. Incorporeal creatures can touch, hold, and wield {@item ghost touch} weapons (unlike most physical objects)."
 			]
 		},
 		{
@@ -9322,7 +9399,7 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 3,
+					"number": 2,
 					"unit": "action"
 				},
 				"components": [
@@ -9545,6 +9622,7 @@
 				"amount": 340
 			},
 			"usage": "worn gloves",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"An item can be stored inside these supple leather gloves, held in an extradimensional space. When an item is inside the glove, an image of the item appears as a simple, stitched pattern on the back of each glove.",
@@ -9593,6 +9671,7 @@
 				"transmutation"
 			],
 			"usage": "worn eyepiece",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"The opaque crystal lenses of these sleek goggles do not obscure vision, but rather enhance it. While wearing the goggles, you gain a +1 item bonus to {@skill Perception} checks involving sight.",
@@ -9608,7 +9687,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"Rotating the lenses 90 degrees, you gain {@ability darkvision} for 1 hour."
@@ -9858,6 +9937,7 @@
 				"amount": 55
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -9980,6 +10060,7 @@
 				"transmutation"
 			],
 			"usage": "worn gloves",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"As you invest these embroidered strips of cloth, you must meditate and slowly wrap them around your hands. These handwraps have weapon runes etched into them to give your unarmed attacks the benefits of those runes, making your unarmed attacks work like magic weapons. For example, +1 striking handwraps of mighty blows would give you a +1 item bonus to attack rolls with your unarmed attacks and increase the damage of your unarmed attacks from one weapon die to two (normally {@dice 2d4} instead of {@dice 1d4}, but if your fists have a different weapon damage die or you have other unarmed attacks, use two of that die size instead)",
@@ -10056,6 +10137,7 @@
 				"magical"
 			],
 			"usage": "worn headwear",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ordinary-looking hat allows you to cloak yourself in illusions.",
@@ -10064,15 +10146,14 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "minute",
-						"entry": "1 minute"
+						"unit": "minute"
 					},
 					"components": [
-						"(Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The hat casts a 1st-level {@spell illusory disguise} spell on you.",
@@ -10116,6 +10197,7 @@
 				"invested"
 			],
 			"usage": "worn headwear",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This hat comes in many forms, such as a colorful turban or a pointy hat with a brim, and can bear symbols or runes. It grants you a +1 item bonus to {@skill Arcana} checks and allows you to cast the {@spell prestidigitation} cantrip as an arcane innate spell."
@@ -10162,6 +10244,7 @@
 				"amount": 15000
 			},
 			"usage": "worn circlet",
+			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"This simple cloth headband remains pristine and clean at all times, no matter the circumstances. When you invest the headband, you either increase your Wisdom score by 2 or increase it to 18, whichever would give you a higher score.",
@@ -10177,7 +10260,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"When you are considering a course of action, you get a gut feeling about whether it's a good idea. You gain the effects of an {@spell augury} spell, except that you receive the result from your own instincts rather than an external source."
@@ -10195,7 +10278,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You fail a saving throw against an effect that makes you {@condition confused}, {@condition fascinated}, or {@condition stupefied}",
 					"entries": [
@@ -10232,7 +10315,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You can soothe a willing, living, adjacent creature, restoring {@dice 2d6+7} Hit Points to that creature. This is a {@trait positive} {@trait healing} effect. You can't harm undead with this healing."
@@ -10516,6 +10599,7 @@
 			"price": {
 				"amount": 0
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -10557,7 +10641,7 @@
 					"trigger": "You critically succeed at an attack roll against an {@trait evil} creature with the weapon",
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You regain HP equal to double the evil creature's level. This is a {@trait good}, {@trait positive}, {@trait healing} effect."
@@ -10626,7 +10710,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"requirements": "You hit a creature using the holy avenger on your previous action",
 					"entries": [
@@ -10652,6 +10736,7 @@
 				"positive"
 			],
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This strand of ordinary-looking prayer beads glows with a soft light and becomes warm to the touch the first time you cast a divine spell while holding it. When you do, the prayer beads become attuned to your deity, changing their form and iconography to prominently incorporate your deity's religious symbol and iconography. The beads don't transform or function for an evil spellcaster.",
@@ -10761,7 +10846,7 @@
 					],
 					"frequency": {
 						"unit": "round",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"When you activate the horn by blowing into it with destructive intent, you create a blast note targeting one creature within 30 feet. The blast deals {@damage 3d6} sonic damage. (DC 28 basic Fortitude save)."
@@ -10779,7 +10864,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You can blow even louder to create an intense blast wave in a 30-foot cone that deals {@damage 8d6} sonic damage. Each creature attempts a DC 28 Fortitude save with the following effects.",
@@ -10827,7 +10912,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You activate the horn by blowing deeply into it, causing it to issue forth a low blast and cast a 2nd-level {@spell obscuring mist} spell. You can {@action Dismiss} the mist at any time by blowing a second note on the horn using an {@action Interact} action."
@@ -10909,6 +10994,7 @@
 				"amount": 6
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -11102,7 +11188,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You command the apparatus to magically jury-rig an item you hold or that's within 5 feet of you. The item is repaired, as a 3rd-level {@spell mending} spell. This lasts for 10 minutes, after which the item returns to its previous state of disrepair unless you've Repaired it before then."
@@ -11237,7 +11323,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"Whispering the command word, you become {@condition invisible} for 1 minute, gaining the effects of a 2nd-level {@spell invisibility} spell."
@@ -11321,6 +11407,7 @@
 				"amount": 50
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
@@ -11354,6 +11441,7 @@
 				"amount": 900
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -11387,6 +11475,7 @@
 				"amount": 400
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -11420,6 +11509,7 @@
 				"amount": 175
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -11455,6 +11545,7 @@
 				"amount": 100
 			},
 			"usage": "affixed to a melee weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -11488,6 +11579,7 @@
 				"amount": 6
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -12063,7 +12155,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You animate the lion's head. You Raise the Shield and make a melee {@action Strike} with it as part of the same action. The shield's biting maw is a martial melee weapon that deals {@damage 2d6} piercing damage and has the deadly {@dice 1d6} trait; it can't be enhanced by runes. The shield remains animated for 1 minute, during which time you can {@action Strike} with it each time you Raise the Shield, as well as with a {@action Strike} action."
@@ -12077,6 +12169,7 @@
 			"page": 288,
 			"equipment": true,
 			"type": "Item",
+			"bulk": "\u2014",
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -12160,7 +12253,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You miss on a {@action Strike} with the luck blade",
 					"entries": [
@@ -12222,7 +12315,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You play the instrument, causing it to cast a DC 17 {@spell charm} spell."
@@ -12289,7 +12382,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -12397,6 +12490,7 @@
 				"coin": "gp",
 				"amount": 40
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -12435,7 +12529,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You are hit or critically hit with an attack, but damage hasn't been rolled yet",
 					"entries": [
@@ -12502,6 +12596,7 @@
 			"page": 288,
 			"equipment": true,
 			"type": "Item",
+			"bulk": "\u2014",
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -12689,7 +12784,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You dig furiously with the mattock to non-magically replicate the effects of an {@spell earthquake} spell."
@@ -12718,6 +12813,7 @@
 				"amount": 525
 			},
 			"usage": "affixed to a shield or weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -12851,6 +12947,7 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -12879,6 +12976,7 @@
 				"magical"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This silver signet ring changes to match the insignia of a lord or organization you serve (or your own face, if you serve no one else). It grants you a +2 item bonus to {@skill Diplomacy} checks and lets you cast {@spell message} as an arcane innate spell at will.",
@@ -12887,15 +12985,14 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "minute",
-						"entry": "1 minute"
+						"unit": "minute"
 					},
 					"components": [
-						"(envision)"
+						"envision"
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"The ring casts animal messenger to your specification. The animal is a magical creature that springs from the ring, and its appearance suits the iconography or heraldry of the lord or organization represented by the ring."
@@ -12993,6 +13090,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": []
@@ -13248,7 +13346,7 @@
 			],
 			"usage": "worn armor",
 			"bulk": "varies by armor",
-			"category": "Armor",
+			"category": "Material",
 			"entries": [
 				"Mithral armor is 1 Bulk lighter than normal (or light Bulk if its normal Bulk is 1, with no effect on armor that normally has light Bulk). It's easier to wear than normal metal armor, reducing the Strength score necessary to ignore its check penalty by 2 and reducing its Speed penalty by 5 feet."
 			],
@@ -13426,6 +13524,7 @@
 				"amount": 6
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -13474,7 +13573,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You touch the stitched image of the new moon on the armor's collar and suppress the {@condition dazzled} condition for 1 minute."
@@ -13495,6 +13594,7 @@
 				"amount": 1,
 				"coin": "cp"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": []
@@ -13516,6 +13616,7 @@
 				"amount": 175
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -13549,6 +13650,7 @@
 				"amount": 66
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -13635,6 +13737,7 @@
 				"magical"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This string of beads appears to be a hemp string with lustrous red beads of various sizes hanging from it. When activated, it briefly appears in its true form: a golden chain with golden spheres attached by fine threads.",
@@ -14007,6 +14110,7 @@
 				"amount": 1,
 				"coin": "cp"
 			},
+			"bulk": "\u2014",
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -14278,6 +14382,7 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -14430,7 +14535,7 @@
 			],
 			"usage": "worn armor",
 			"bulk": "varies by armor",
-			"category": "Armor",
+			"category": "Material",
 			"entries": [
 				"Orichalcum armor can be etched with four magic property runes instead of three due to the magical empowerment of orichalcum. If you are wearing armor made of orichalcum, the armor grants you insights into the future, granting you a +1 circumstance bonus to initiative rolls."
 			],
@@ -14544,6 +14649,7 @@
 				"amount": 3
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -14606,6 +14712,7 @@
 				"occult"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This amulet is hollow and shaped in the form of an unblinking eye. Its cavity typically holds some fragment of occult text. While wearing the pendant, you gain a +1 item bonus to {@skill Occultism} checks, and you can cast the {@spell guidance} cantrip as an occult innate spell."
@@ -14683,6 +14790,7 @@
 				"magical"
 			],
 			"usage": "worn mask",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Despite covering the entire face, this alabaster mask does not hinder vision or other senses. Wearing the mask grants a +1 item bonus to {@skill Performance} checks while acting, orating, performing comedy, or singing.",
@@ -14793,7 +14901,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You ask for guidance about a particular course of action, gaining the effects of an {@spell augury} spell."
@@ -14837,6 +14945,7 @@
 				"amount": 1,
 				"coin": "cp"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -14897,7 +15006,7 @@
 					"components": [
 						"command",
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You place the miniature theater on the ground, filling it with any set dressing and up to six figures you choose. Then, you tap a rhythm on the miniature, causing it to grow into a modest stage 20 feet wide and 15 feet deep. It's dressed with the decorations you selected, and simple mannequins wear the costumes you chose. A wooden proscenium arch frames the stage, and simple curtains along the sides conceal the wings.",
@@ -14931,12 +15040,11 @@
 					"style": "compact",
 					"activity": {
 						"number": 10,
-						"unit": "minute",
-						"entry": "10 minutes"
+						"unit": "minute"
 					},
 					"components": [
-						"(envision",
-						"Interact)"
+						"envision",
+						"{@action Interact}"
 					],
 					"entries": [
 						"As you flip through the book, you think about a broad topic you want to know more about. Choose one skill: {@skill Arcana}, {@skill Crafting}, {@skill Medicine}, {@skill Nature}, {@skill Occultism}, {@skill Religion}, {@skill Society}, or a single subcategory of {@skill Lore}. The book's pages fill with information about that skill, though only you can see the information. While the pages are full, you can spend an {@action Interact} action perusing the book just before attempting a check to {@action Recall Knowledge} with the chosen skill. This grants you a +3 item bonus to the check, and if you roll a critical failure, you get a failure instead.",
@@ -14963,6 +15071,7 @@
 				"amount": 4
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -15355,6 +15464,7 @@
 				"transmutation"
 			],
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This sprig of berry-festooned holly and mistletoe doesn't wilt or rot. It can be used as a primal focus, and it also grants the creature holding it a +1 item bonus to {@skill Nature} checks.",
@@ -15371,7 +15481,7 @@
 					"frequency": {
 						"unit": "minute",
 						"interval": 10,
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You squeeze juice from one of the berries and smear it onto a club or staff to cast {@spell shillelagh} upon it."
@@ -15389,7 +15499,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You can twine the sprig around the wrist of one hand and touch a tree to cast {@spell tree shape} upon yourself, except instead of a becoming a tree, you become a vine on the touched tree."
@@ -15629,7 +15739,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"requirements": "The reflecting shield is raised",
 					"entries": [
@@ -15736,6 +15846,7 @@
 				"coin": "sp",
 				"amount": 1
 			},
+			"bulk": "\u2014",
 			"category": "Adventuring Gear",
 			"entries": [
 				"If you've crafted a large number of disguises, you can replenish your cosmetics supply with replacement cosmetics suitable for the type of your {@item disguise kit}."
@@ -15769,6 +15880,7 @@
 			"page": 288,
 			"equipment": true,
 			"type": "Item",
+			"bulk": "\u2014",
 			"category": "Adventuring Gear",
 			"entries": [
 				"If your {@item thieves' tools (generic)||thieves' tools} are broken, you can repair them by replacing the lock picks with replacement picks appropriate to your tools; this doesn't require using the {@action Repair} action."
@@ -15884,7 +15996,7 @@
 			"bulk": 2,
 			"category": "Weapon",
 			"entries": [
-				"The blade of this +1 greataxe bears a design of a human skull. Whenever a creature damages you with an attack, the skull changes its appearance to look like the face of that creature. You gain a +2 circumstance bonus to your next damage roll against that creature before the end of your next turn.",
+				"The blade of this {@runeItem greataxe||+1 weapon potency|} bears a design of a human skull. Whenever a creature damages you with an attack, the skull changes its appearance to look like the face of that creature. You gain a +2 circumstance bonus to your next damage roll against that creature before the end of your next turn.",
 				"Because the face reshapes each time you're damaged, you get the additional damage only if you attack the creature that damaged you most recently."
 			]
 		},
@@ -15952,6 +16064,7 @@
 				"amount": 1750
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Claw-like prongs on his thick golden band bears extend to dig deep into sheer surfaces when you are Climbing. This ring grants you a climb Speed equal to half your land Speed.",
@@ -15975,6 +16088,7 @@
 				"amount": 925
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ornate silver ring bears two competing geometric designs of brightly colored and wildly clashing inlaid gemstones. A spellcaster can cast a single spell into this ring as long as no spell is currently stored within, expending the normal time, costs, and so forth to {@action Cast a Spell||Cast the Spell}. The spell's effect doesn't occur; the spell's power is instead stored within the ring.",
@@ -16023,6 +16137,7 @@
 				"magical"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring grants you resistance 5 against one type of energy damage: acid, cold, electricity, fire, or sonic. Each ring is crafted to protect against a particular type of energy damage, and its design usually embodies the type of energy it protects the wearer from in some way. For instance, a ring of fire resistance might be capped with a ruby, whereas a ring of cold resistance features a sapphire instead."
@@ -16079,6 +16194,7 @@
 				"amount": 850
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This plain silver ring has an almost oily sheen. While wearing the ring, you gain a +2 item bonus to {@skill Deception} checks.",
@@ -16090,7 +16206,7 @@
 						"unit": "action"
 					},
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"components": [
@@ -16114,6 +16230,7 @@
 				"magical"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring seems like simple tarnished brass, but it enhances your curiosity about traps and devices of all kinds. You can use an {@action Interact} action to pull a set of {@item thieves' tools} from the ring. These tools appear in your hand and fold back into the ring if they would leave your possession. They grant you a +2 item bonus to {@skill Thievery} checks to {@action Disable a Device} and to {@action Pick a Lock}, and the ring's insights grant you the same bonus to {@skill Crafting} checks to {@action Craft} and {@action Repair} snares and traps.",
@@ -16122,15 +16239,14 @@
 					"style": "compact",
 					"activity": {
 						"number": 10,
-						"unit": "minute",
-						"entry": "10 minutes"
+						"unit": "minute"
 					},
 					"components": [
-						"(Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You create a 4th-level {@spell glyph of warding} containing fireball. You can have only one glyph of warding from a ring of maniacal devices active at a time, even if you have multiple rings, and the spell ends if you lose your investiture in the ring."
@@ -16178,6 +16294,7 @@
 				"amount": 67000
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This golden ring has three diamonds set into its face.",
@@ -16215,6 +16332,7 @@
 				"amount": 325
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This polished wooden ring constantly refreshes your body and mind. You don't need to eat or drink while wearing it, and you need only 2 hours of sleep per day to gain the benefits of 8 hours of sleep. A ring of sustenance doesn't function until it's been worn and invested continuously for a week. Removing it resets this interval."
@@ -16236,6 +16354,7 @@
 				"amount": 1750
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This blue metal ring grants you a swim Speed equal to half your land Speed. Penalties to your Speed (including from your armor) apply before halving."
@@ -16254,6 +16373,7 @@
 				"magical"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This heavy iron ring is shaped to look like the head of a ram, with curling horns.",
@@ -16262,17 +16382,18 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "action",
+						"entry": "{@as 1} or more"
 					},
 					"components": [
-						"or more (Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
-						"A ram-shaped blast of force slams into one foe that you can see within 60 feet. The number of actions you spend to {@b Activate} this Item (from 1 to 3) determines the intensity of the force. The blow deals {@damage 2d6} force damage per action spent and pushes the target 5 feet per action spent. The target must attempt a DC 22 Fortitude save.",
+						"A ram-shaped blast of force slams into one foe that you can see within 60 feet. The number of actions you spend to {@action Activate an Item||Activate this Item} (from 1 to 3) determines the intensity of the force. The blow deals {@damage 2d6} force damage per action spent and pushes the target 5 feet per action spent. The target must attempt a DC 22 Fortitude save.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -16322,6 +16443,7 @@
 				"invested"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring is made from the purest platinum and is covered in esoteric arcane symbols. It does nothing unless you have a spellcasting class feature with the arcane tradition. While wearing the ring of wizardry, you gain a +1 item bonus to {@skill Arcana} checks and have two additional 1st-level arcane spell slots each day. You prepare spells in these slots or cast from them spontaneously, just as you normally cast your spells.",
@@ -16962,6 +17084,7 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -17624,6 +17747,7 @@
 				"amount": 23
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -17832,6 +17956,7 @@
 				"amount": 8,
 				"coin": "cp"
 			},
+			"bulk": "\u2014",
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
@@ -18048,7 +18173,7 @@
 			"level": "5+",
 			"usage": "worn armor",
 			"bulk": "varies by armor",
-			"category": "Armor",
+			"category": "Material",
 			"entries": [
 				"Silver armor sickens certain creatures that touch it. A creature with weakness to silver that critically fails an unarmed attack against a creature in silver armor becomes {@condition sickened 1}. A creature with weakness to silver is {@condition sickened 1} as long as it wears silver armor."
 			],
@@ -18101,7 +18226,7 @@
 			"type": "Item",
 			"level": "2+",
 			"usage": "varies by shield",
-			"category": "Shield",
+			"category": "Material",
 			"entries": [
 				"Silver shields don't typically have an additional effect, though when used for a shield bash, they are silver weapons."
 			],
@@ -18198,7 +18323,7 @@
 			"level": "2+",
 			"usage": "varies by weapon",
 			"bulk": "varies by weapon",
-			"category": "Weapon",
+			"category": "Material",
 			"entries": [
 				"Silver weapons deal additional damage to creatures with weakness to silver, like werewolves, and ignore the resistances of some other creatures, like devils."
 			],
@@ -18421,6 +18546,7 @@
 				"transmutation"
 			],
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"A grinning skull tops the bow of this macabre key. This key can be used in place of {@item thieves' tools} when attempting to {@action Pick a Lock}, and it grants a +1 item bonus to the {@skill Thievery} check.",
@@ -18437,7 +18563,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You attempt to {@action Pick a Lock} but haven't rolled yet",
 					"entries": [
@@ -18661,7 +18787,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"Tiny, hairlike tendrils extend from the slippers' soles, allowing you to walk on vertical surfaces or even to move upside down along ceilings. For 1 minute, you gain a 20-foot climb Speed and you don't need to use your hands to {@action Climb}. However, the slippers require decent traction for you to walk on a wall, so they provide no benefit when you're moving across greased, icy, or oiled surfaces."
@@ -18883,6 +19009,7 @@
 				"amount": 22
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -18908,6 +19035,7 @@
 				"amount": 2,
 				"coin": "cp"
 			},
+			"bulk": "\u2014",
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": []
@@ -20677,7 +20805,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You cast a 6th-level {@spell lightning bolt} (DC 33)."
@@ -20696,7 +20824,7 @@
 					"frequency": {
 						"unit": "minute",
 						"interval": 10,
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "An {@trait electricity} effect targets you or a creature within 10 feet of you, or has you or a creature within 10 feet of you in its area",
 					"entries": [
@@ -21039,6 +21167,7 @@
 				"amount": 70
 			},
 			"usage": "affixed to a shield",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -21419,6 +21548,7 @@
 				"amount": 40000
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"When invested, this ornate crown and its incandescent gemstone meld into your head and take the form of a tattoo.",
@@ -21437,7 +21567,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You gain the effects of an 8th-level {@spell true seeing} spell."
@@ -21728,6 +21858,7 @@
 				"amount": 30
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -21761,6 +21892,7 @@
 				"note": "for price of 10"
 			},
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -21893,7 +22025,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact",
+						"{@action Interact}",
 						"envision"
 					],
 					"entries": [
@@ -22116,7 +22248,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"trigger": "You critically succeed at an attack roll against a good creature with the weapon",
 					"entries": [
@@ -22181,6 +22313,7 @@
 				"amount": 160
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -22209,6 +22342,7 @@
 				"magical"
 			],
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This elegant copper ring has miniature images of songbirds engraved around its circumference. You gain a +1 item bonus to {@skill Deception} checks.",
@@ -22222,7 +22356,7 @@
 					},
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"components": [
 						"{@action Interact}"
@@ -22271,7 +22405,7 @@
 										"unit": "action"
 									},
 									"components": [
-										"Interact"
+										"{@action Interact}"
 									],
 									"entries": [
 										"Twisting the ring around your finger allows you to magically throw your voice, with the effects of a 2nd-level {@spell ventriloquism} (DC 27)."
@@ -22441,6 +22575,7 @@
 				"amount": 850
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -22516,6 +22651,7 @@
 				"amount": 14800
 			},
 			"usage": "worn backpack",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This leather rucksack has icons burned into it, and every time it's taken to a plane it hasn't been to before, a new icon representing that plane scorches into the surface. The pack grants you a +3 bonus to {@skill Survival} checks.",
@@ -22526,13 +22662,12 @@
 					"style": "compact",
 					"activity": {
 						"number": 10,
-						"unit": "minute",
-						"entry": "10 minutes"
+						"unit": "minute"
 					},
 					"components": [
-						"(command",
+						"command",
 						"envision",
-						"Interact)"
+						"{@action Interact}"
 					],
 					"entries": [
 						"As you activate the pack, you can harness up to four willing creatures to the ropes on the pack. At the end of the activation time, the pack casts a 7th-level {@spell plane shift} or {@spell teleport} spell, transporting you and everyone attached to the pack. Attempt a DC 45 {@skill Survival} check. On a success, you arrive 25 miles off target using plane shift or halve the distance you're off-target with teleport. On a critical success, you arrive exactly on target."
@@ -22562,7 +22697,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -22675,7 +22810,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -22750,7 +22885,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -22817,7 +22952,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -22930,7 +23065,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day",
 						"overcharge": true
 					},
@@ -23085,6 +23220,7 @@
 				"amount": 28
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This compact compass repurposes ancient technology to draw fantastic powers from the mysterious magical items called aeon stones. It serves as a badge of office for agents of the Pathfinder Society and as a status symbol among adventurers of any stripe. A wayfinder functions as a compass.",
@@ -23198,7 +23334,7 @@
 					"page": 106,
 					"entries": [
 						"The item bonus to attack rolls is +4, and the weapon can be etched with three property runes.",
-						"{@note This version of the potency rune has been added by PF2eTools. This rune is not available for purchase or {@action Crafting} through mundane means. It only exists on Unique and/or Artifact weaponry, such as {@item Axe Of The Dwarven Lords|GMG} or {@item Serithtial|GMG}.}"
+						"{@note This version of the potency rune has been added by PF2eTools. This rune is not available for purchase or {@action Craft||Crafting} through mundane means. It only exists on Unique and/or Artifact weaponry, such as {@item Axe Of The Dwarven Lords|GMG} or {@item Serithtial|GMG}.}"
 					],
 					"_mod": {
 						"entriesMode": "variant"
@@ -23231,6 +23367,7 @@
 				"amount": 60000
 			},
 			"usage": "worn",
+			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This delicate necklace contains bottled whispers distilled from a source on the Astral Plane rumored to be connected to the first lie ever told.",
@@ -23243,7 +23380,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact",
+						"{@action Interact}",
 						"envision",
 						"command"
 					],
@@ -23289,7 +23426,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You speak a command word and click the boots' heels together to cause the wings to animate and flap rapidly, granting you a fly Speed of 30 feet for 10 minutes."
@@ -23375,6 +23512,7 @@
 				"amount": 4
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,

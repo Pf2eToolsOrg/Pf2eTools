@@ -232,7 +232,7 @@
 			},
 			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"trigger": "A foe's {@action Strike} reduces you to 0 Hit Points.",
@@ -442,7 +442,7 @@
 			},
 			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, Invoke the Crimson Oath (Character Guide 95)",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -497,7 +497,7 @@
 			},
 			"prerequisites": "{@feat Lastwall Sentry Dedication|LOWG}, you worship a good-aligned deity",
 			"entries": [
-				"Your uttered prayers become an aegis, drawing the blessing of your deity across the surface of your shield. Until the beginning of your next turn your shield, any {@item shield boss}, or {@item shield spikes} gain the effects of a ghost touch property rune. Additionally, damage you take as a result of an incorporeal creature's {@action Strike} can trigger your Shield Block reaction, even if the damage isn't physical damage."
+				"Your uttered prayers become an aegis, drawing the blessing of your deity across the surface of your shield. Until the beginning of your next turn your shield, any {@item shield boss}, or {@item shield spikes} gain the effects of a {@item ghost touch} property rune. Additionally, damage you take as a result of an incorporeal creature's {@action Strike} can trigger your Shield Block reaction, even if the damage isn't physical damage."
 			]
 		},
 		{
@@ -734,7 +734,7 @@
 			},
 			"prerequisites": "{@feat Lastwall Sentry Dedication|LOWG}, master in {@skill Religion}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"trigger": "A creature you can see uses a spell or ability that has the {@trait evil} or {@trait negative} traits.",
@@ -1085,14 +1085,14 @@
 				"alchemist"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"trigger": "You use {@action Quick Alchemy} to craft an {@item alchemist's fire (generic)||alchemist's fire} or {@item ghost charge (generic)|apg|ghost charge}, and that bomb's level is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"You developed a method to chemically purify and consecrate your bombs on the fly.",
 				"You include this additive mixture when crafting your {@item alchemist's fire (generic)||alchemist's fire} or {@item ghost charge (generic)|apg|ghost charge}.",
-				"The created bomb deals {@damage 1d4} {@condition persistent damage ||persistent positive damage} in addition to whatever damage it would normally cause. As usual for positive damage, this damage harms only undead and creatures with {@ability negative healing|b2}."
+				"The created bomb deals {@damage 1d4} {@condition persistent damage||persistent positive damage} in addition to whatever damage it would normally cause. As usual for positive damage, this damage harms only undead and creatures with {@ability negative healing|b2}."
 			]
 		},
 		{
@@ -1115,7 +1115,7 @@
 			],
 			"prerequisites": "{@class barbarian|crb|spirit instinct|spirit}",
 			"entries": [
-				"Spirits around you coalesce upon your fists, enabling you to seize and harm other ghosts and spirits. Until the beginning of your next turn, your fists gain the effects of the ghost touch property rune, and you can make Strength-based skill checks against incorporeal creatures."
+				"Spirits around you coalesce upon your fists, enabling you to seize and harm other ghosts and spirits. Until the beginning of your next turn, your fists gain the effects of the {@item ghost touch} property rune, and you can make Strength-based skill checks against incorporeal creatures."
 			]
 		},
 		{
@@ -1177,7 +1177,7 @@
 			],
 			"prerequisites": "divine spells, you follow a good-aligned deity",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "turn"
 			},
 			"requirements": "Your most recent action was to cast a non-cantrip divine spell.",

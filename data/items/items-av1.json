@@ -29,7 +29,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "month"
 					},
 					"entries": [
@@ -46,7 +46,7 @@
 						"{@action Interact}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "month"
 					},
 					"entries": [
@@ -90,7 +90,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You direct the lantern's light upon a single living creature within 60 feet. That creature must attempt a DC 20 Will save to resist the light's effects.",
@@ -197,11 +197,10 @@
 					"type": "ability",
 					"activity": {
 						"number": 10,
-						"unit": "minute",
-						"entry": "10 minutes"
+						"unit": "minute"
 					},
 					"components": [
-						"(Investigate)"
+						"{@action Investigate}"
 					],
 					"entries": [
 						"You gain a +2 item bonus to skill checks to {@action Recall Knowledge} about {@deity Nhimbaloth|LOGM}, her faith, or creatures associated with her (such as incorporeal undead, vampiric mists, wisps, and other incorporeal creatures associated with death). Each time you use this ability after the first in a 24-hour period, you are exposed to the Empty Death."
@@ -219,7 +218,7 @@
 					],
 					"frequency": {
 						"unit": "hour",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You read aloud a phrase from the book and target a single incorporeal undead creature within 30 feet. That undead creature takes {@damage 5d6} positive damage (DC 27 basic Will save) as portions of their incorporeal being are consumed in patches of seven equally spaced holes. Each time you use this ability after the first in a 24-hour period, you are exposed to the Empty Death."
@@ -237,7 +236,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 1
+						"number": 1
 					},
 					"entries": [
 						"You invoke a tale from The Whispering Reeds that parallels the situation, environment, or creatures nearby. Eerie mists and indistinct whispers rise in a 20-foot emanation around you, and clusters of seven perfectly spaced divots manifest in the ground, vegetation, and flesh of creatures in the emanation other than yourself and up to three creatures you designate at the time of activation. Creatures afflicted with these divots suffer from agonizing mental anguish in the form of crippling despair and take {@damage 4d6} mental damage (DC 27 basic Will save). The mists, whispers, and strange divots fade away at the end of the round, but any creature that takes mental damage from the effect also takes a \u20131 penalty to saving throws against effects with the {@trait emotion} trait for 1 minute. You are exposed to the Empty Death each time you use this ability."
@@ -250,7 +249,7 @@
 					],
 					"frequency": {
 						"unit": "day",
-						"freq": 3
+						"number": 3
 					},
 					"entries": [
 						"You cast one of the following spells at the lowest level possible (unless otherwise specified): {@spell crushing despair} (one target within 30 feet only), {@spell fear} (3rd), {@spell paranoia}, or {@spell phantasmal killer}. You are exposed to the Empty Death each time you use this ability.",

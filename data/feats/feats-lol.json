@@ -38,12 +38,12 @@
 			],
 			"frequency": {
 				"unit": "round",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You use {@action Quick Alchemy} to craft an alchemist's fire, and that bomb's level is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
-				"Artokus developed a mixture of volatile materials that burns hotter and longer than typical alchemist's fire. You include this additive mixture when crafting your alchemist's fire. The alchemist's fire deals {@damage 1d4} {@condition persistent damage ||persistent fire damage} in addition to what the alchemist fire would normally cause (for instance, a moderate alchemist's fire deals {@damage 1d4+2} {@condition persistent damage ||persistent fire damage})",
-				"A creature taking {@condition persistent damage ||persistent fire damage} from the alchemist's fire requires two successful flat checks to end the {@condition persistent damage}, or one check if the creature had an assisted recovery that reduces the flat check to DC 10. The enhanced alchemist's fire burns even underwater, and any attempts to end the {@condition persistent damage} by using water have no effect."
+				"Artokus developed a mixture of volatile materials that burns hotter and longer than typical alchemist's fire. You include this additive mixture when crafting your alchemist's fire. The alchemist's fire deals {@damage 1d4} {@condition persistent damage||persistent fire damage} in addition to what the alchemist fire would normally cause (for instance, a moderate alchemist's fire deals {@damage 1d4+2} {@condition persistent damage||persistent fire damage})",
+				"A creature taking {@condition persistent damage||persistent fire damage} from the alchemist's fire requires two successful flat checks to end the {@condition persistent damage}, or one check if the creature had an assisted recovery that reduces the flat check to DC 10. The enhanced alchemist's fire burns even underwater, and any attempts to end the {@condition persistent damage} by using water have no effect."
 			]
 		},
 		{
@@ -128,7 +128,7 @@
 			"prerequisites": "{@feat Crimson Shroud|LOWG}",
 			"frequency": {
 				"customUnit": "Crimson Shroud",
-				"freq": 1
+				"number": 1
 			},
 			"trigger": "You are targeted with a {@action Strike} by someone you can detect while your Crimson",
 			"entries": [
@@ -232,7 +232,7 @@
 			"requirements": "You are wielding a sawtooth saber in each hand.",
 			"entries": [
 				"You've mastered the signature assassination style of the Red Mantis. Attempt to {@action Feint} an enemy within 30 feet. If your {@action Feint} is successful, when you use Prayer Attack on subsequent turns you automatically make the target {@condition flat-footed} against your melee attacks for that turn without rolling a check to {@action Feint}, so as long as you remain visible to the target and the target remains within 30 feet of you. If you use your Prayer Attack against a different target, you must attempt to {@action Feint} the target normally.",
-				"When you use Prayer Attack, your next successful {@action Strike} with a sawtooth saber that turn deals {@damage 2d6} {@condition persistent damage ||persistent bleed damage} to the target."
+				"When you use Prayer Attack, your next successful {@action Strike} with a sawtooth saber that turn deals {@damage 2d6} {@condition persistent damage||persistent bleed damage} to the target."
 			]
 		},
 		{

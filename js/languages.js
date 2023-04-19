@@ -40,6 +40,7 @@ class LanguagesPage extends ListPage {
 				source,
 				dialects: it.dialects || [],
 				type: it.type || "",
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,

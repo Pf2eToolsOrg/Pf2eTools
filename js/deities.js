@@ -46,6 +46,7 @@ class DeitiesPage extends ListPage {
 				category: g.category,
 				alignment,
 				domains,
+				aliases: g.alias ? g.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: g.uniqueId ? g.uniqueId : dtI,
@@ -173,7 +174,8 @@ function renderStatblock (deity) {
 	);
 	const tabs = [statTab];
 	if (deity.intercession) tabs.push(intercessionTab);
-	if (deity.hasLore) tabs.push(loreTab);
+	// Kill Fluff for Paizo
+	// if (deity.hasLore) tabs.push(loreTab);
 	if (deity.images) tabs.push(imageTab);
 	tabs.push(infoTab);
 	Renderer.utils.bindTabButtons(...tabs);

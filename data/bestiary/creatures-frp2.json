@@ -1,8 +1,12 @@
 {
+	"_meta": {
+		"internalCopies": [
+			"creature"
+		]
+	},
 	"creature": [
 		{
 			"name": "Akila Stormheel",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 38,
 			"level": 13,
@@ -125,7 +129,6 @@
 						"name": "Pounce"
 					},
 					{
-						"entries": [],
 						"name": "the Strike."
 					},
 					{
@@ -167,15 +170,13 @@
 				},
 				"hp": [
 					{
-						"hp": 230,
-						"abilities": null
+						"hp": 230
 					}
 				]
 			}
 		},
 		{
 			"name": "Amihan",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 40,
 			"level": 15,
@@ -186,6 +187,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female Tian-Sing battle dancer",
 			"perception": {
 				"std": 21
 			},
@@ -218,6 +220,12 @@
 				"wis": 0,
 				"cha": 5
 			},
+			"items": [
+				"3 greater alchemist's fires",
+				"bracers of armor I",
+				"+2 striking flaming scimitar",
+				"greater sturdy shield (Hardness 15, HP 120, BT 60) with a +2 striking shield boss"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -257,7 +265,7 @@
 						"splash 3 fire",
 						"thrown <20 feet>"
 					],
-					"damage": "{@damage 3d8+3} fire plus 3 {@condition persistent damage ||persistent fire}",
+					"damage": "{@damage 3d8+3} fire plus 3 {@condition persistent damage||persistent fire}",
 					"types": [
 						"fire",
 						"persistent"
@@ -265,21 +273,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+32 Str +4, Dex +5, Con +4, Int +0, Wis +0, Cha +5 Items 3 greater alchemist's fires, bracers of armor I, +2 striking flaming scimitar, greater sturdy shield (Hardness 15, HP 120, BT 60) with a +2 striking shield boss."
-						],
-						"name": "Performance"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -290,7 +289,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -314,13 +312,9 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The battle dancer Raises a Shield, then."
+							"The battle dancer Raises a Shield, then {@action Demoralize||Demoralizes}."
 						],
 						"name": "Shield Drum"
-					},
-					{
-						"entries": [],
-						"name": "Demoralizes."
 					},
 					{
 						"activity": {
@@ -359,15 +353,13 @@
 				},
 				"hp": [
 					{
-						"hp": 275,
-						"abilities": null
+						"hp": 275
 					}
 				]
 			}
 		},
 		{
 			"name": "Angoyang",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 78,
 			"level": 14,
@@ -381,13 +373,10 @@
 			},
 			"senses": [
 				{
-					"name": "dander scent (1 mile"
+					"name": "dander scent (1 mile, imprecise)"
 				},
 				{
 					"name": "darkvision"
-				},
-				{
-					"name": "imprecise)"
 				}
 			],
 			"languages": {
@@ -530,8 +519,7 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			},
@@ -539,7 +527,6 @@
 		},
 		{
 			"name": "Arm Of Balance",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 33,
 			"level": 15,
@@ -743,8 +730,8 @@
 								"entries": {
 									"Critical Success": "The creature is unaffected.",
 									"Success": "The creature takes half damage.",
-									"Failure": "The creature takes full damage and {@damage 1d6} {@condition persistent damage ||persistent fire damage} and loses 1 Focus Point. If it has no Focus Points, the creature instead loses a random prepared spell or spell slot from the highest level it has left (maximum 6th level).",
-									"Critical Failure": "As failure, but the creature takes double damage and {@damage 2d6} {@condition persistent damage ||persistent fire damage}."
+									"Failure": "The creature takes full damage and {@damage 1d6} {@condition persistent damage||persistent fire damage} and loses 1 Focus Point. If it has no Focus Points, the creature instead loses a random prepared spell or spell slot from the highest level it has left (maximum 6th level).",
+									"Critical Failure": "As failure, but the creature takes double damage and {@damage 2d6} {@condition persistent damage||persistent fire damage}."
 								}
 							}
 						],
@@ -770,15 +757,13 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				]
 			}
 		},
 		{
 			"name": "Artus Rodrivan",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 35,
 			"level": 15,
@@ -907,15 +892,13 @@
 				},
 				"hp": [
 					{
-						"hp": 330,
-						"abilities": null
+						"hp": 330
 					}
 				]
 			}
 		},
 		{
 			"name": "Blue Viper",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 36,
 			"level": 16,
@@ -926,6 +909,7 @@
 				"humanoid",
 				"ratfolk"
 			],
+			"description": "Male ysoki poisoner",
 			"perception": {
 				"std": 30
 			},
@@ -970,6 +954,11 @@
 				"wis": 2,
 				"cha": 1
 			},
+			"items": [
+				"dragon bile (applied to body)",
+				"+2 resilient explorer's clothing",
+				"+2 greater striking shortsword"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -996,26 +985,16 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"effects": [
-						"varies by bomb"
-					],
-					"damage": "varies by bomb",
-					"types": []
+					"damage": "varies by bomb"
 				}
 			],
 			"abilities": {
 				"top": [
 					{
 						"entries": [
-							"+23, {@skill Stealth} +29, {@skill Thievery} +27 Str +0, Dex +5, Con +6, Int +5, Wis +2, Cha +1 Items dragon bile (applied to body), +2 resilient explorer's clothing, +2 greater striking shortsword."
+							"Blue Viper carries the following infused items: 2 {@item greater acid flask||greater acid flasks}, 4 {@item greater alchemist's fire||greater alchemist's fires}, 6 {@item blightburn resin||blightburn resins}, 4 {@item greater bottled lightning||greater bottled lightnings}, 3 {@item deathcap powder||deathcap powders}, 4 {@item greater elixir of life||greater elixirs of life}, 2 {@item greater frost vial||greater frost vials}, 3 {@item malyass root paste||malyass root pastes}, 9 {@item purple worm venom||purple worm venoms}, 6 {@item shadow essence||shadow essences}, and 3 {@item spider root||spider roots}. These items last for 24 hours, or until the next time Blue Viper makes his daily preparations."
 						],
-						"name": "Diplomacy"
-					},
-					{
-						"entries": [
-							"Viper carries the following infused items: 2 greater acid flasks, 4 greater alchemist's fires, 6 blightburn resins, 4 greater bottled lightnings, 3 deathcap powders, 4 greater elixirs of life, 2 greater frost vials, 3 malyass root pastes, 9 purple worm venoms, 6 shadow essences, and 3 spider roots. These items last for 24 hours, or until the next time Blue Viper makes his daily preparations."
-						],
-						"name": "Infused Items Blue"
+						"name": "Infused Items"
 					}
 				],
 				"mid": [
@@ -1024,9 +1003,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature adjacent to Blue",
+						"trigger": "A creature adjacent to Blue Viper hits him with a melee unarmed {@action Strike}",
 						"entries": [
-							"Viper hits him with a melee unarmed {@action Strike}; The triggering creature is exposed to dragon bile. This consumes the poison and Blue Viper can't use Poisoned Coat again until he spends 10 minutes applying one dose of contact or injury poison to his clothing."
+							"The triggering creature is exposed to dragon bile. This consumes the poison and Blue Viper can't use Poisoned Coat again until he spends 10 minutes applying one dose of contact or injury poison to his clothing."
 						],
 						"name": "Poisoned Coat"
 					}
@@ -1044,9 +1023,9 @@
 					},
 					{
 						"entries": [
-							"Viper successfully {@action Strike||Strikes} a {@condition flat-footed} creature with a poisoned weapon or exposes a {@condition flat-footed} creature to an inhaled poison, the creature takes a \u20132 circumstance penalty to its initial save against that poison."
+							"When Blue Viper successfully {@action Strike||Strikes} a {@condition flat-footed} creature with a poisoned weapon or exposes a {@condition flat-footed} creature to an inhaled poison, the creature takes a \u20132 circumstance penalty to its initial save against that poison."
 						],
-						"name": "Pinpoint Poisoner When Blue"
+						"name": "Pinpoint Poisoner"
 					},
 					{
 						"activity": {
@@ -1061,9 +1040,9 @@
 					},
 					{
 						"entries": [
-							"Viper's infused poisons have a DC of 37."
+							"Blue Viper's infused poisons have a DC of 37."
 						],
-						"name": "Potent Poisoner Blue"
+						"name": "Potent Poisoner"
 					},
 					{
 						"activity": {
@@ -1094,15 +1073,13 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				]
 			}
 		},
 		{
 			"name": "Drake Courser",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 13,
 			"level": 12,
@@ -1233,7 +1210,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 3
+							"number": 3
 						},
 						"entries": [
 							"The drake courser moves up to twice its Speed. It can attempt to {@action Trip} with its tail once at any point during its movement."
@@ -1275,8 +1252,7 @@
 				},
 				"hp": [
 					{
-						"hp": 230,
-						"abilities": null
+						"hp": 230
 					}
 				],
 				"immunities": [
@@ -1294,7 +1270,6 @@
 		},
 		{
 			"name": "Grandfather Mantis",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 35,
 			"level": 15,
@@ -1360,7 +1335,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 35,
@@ -1428,8 +1402,7 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				],
 				"weaknesses": [
@@ -1446,7 +1419,6 @@
 		},
 		{
 			"name": "Halspin The Stung",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 41,
 			"level": 15,
@@ -1457,6 +1429,7 @@
 				"catfolk",
 				"humanoid"
 			],
+			"description": "Male catfolk beast-singer",
 			"perception": {
 				"std": 24
 			},
@@ -1497,6 +1470,12 @@
 				"wis": 1,
 				"cha": 5
 			},
+			"items": [
+				"+2 striking corrosive composite longbow with 20 arrows",
+				"+2 striking handwraps of mighty blows",
+				"+1 resilient leather armor",
+				"morin khurr"
+			],
 			"speed": {
 				"walk": 25,
 				"climb": 10
@@ -1536,7 +1515,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 34,
@@ -1671,17 +1649,41 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Bard Composition",
+					"type": "Focus",
+					"DC": 34,
+					"fp": 3,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "allegro"
+								},
+								{
+									"name": "inspire courage"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "counter performance"
+								},
+								{
+									"name": "inspire heroics"
+								},
+								{
+									"name": "soothing ballad"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25, {@skill Performance} +28 Str +2, Dex +5, Con +3, Int +2, Wis +1, Cha +5 Items +2 striking corrosive composite longbow with 20 arrows, +2 striking handwraps of mighty blows, +1 resilient leather armor, morin khurr."
-						],
-						"name": "Occultism"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1693,24 +1695,13 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"trigger": "Halspin fails or critically fails a Reflex saving throw",
 						"entries": [
 							"Halspin rerolls the save and takes the better result."
 						],
 						"name": "Cat's Luck"
-					}
-				],
-				"bot": [
-					{
-						"traits": [
-							"8th"
-						],
-						"entries": [
-							"allegro (Core Rulebook 386), inspire courage (Core Rulebook 386)"
-						],
-						"name": "Cantrips"
 					}
 				]
 			},
@@ -1731,15 +1722,13 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			}
 		},
 		{
 			"name": "Huldrin Skolsdottir",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 42,
 			"level": 14,
@@ -1841,7 +1830,6 @@
 						}
 					},
 					{
-						"entries": [],
 						"name": "Attack of Opportunity."
 					},
 					{
@@ -1899,8 +1887,7 @@
 				},
 				"hp": [
 					{
-						"hp": 280,
-						"abilities": null
+						"hp": 280
 					}
 				],
 				"resistances": [
@@ -1913,7 +1900,6 @@
 		},
 		{
 			"name": "Hummingbird",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 39,
 			"level": 13,
@@ -1980,7 +1966,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 35,
@@ -2132,7 +2117,7 @@
 						"requirements": "The transmuter hasn't acted yet on this turn",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"During this turn, the transmuter can cast one prepared spell she has already cast, without spending a spell slot."
@@ -2161,15 +2146,13 @@
 				},
 				"hp": [
 					{
-						"hp": 260,
-						"abilities": null
+						"hp": 260
 					}
 				]
 			}
 		},
 		{
 			"name": "Ji-yook",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 27,
 			"level": 13,
@@ -2180,6 +2163,7 @@
 				"humanoid",
 				"kitsune"
 			],
+			"description": "Female kitsune ninja",
 			"perception": {
 				"std": 26
 			},
@@ -2219,6 +2203,12 @@
 				"wis": 1,
 				"cha": 4
 			},
+			"items": [
+				"+2 striking returning darts (5)",
+				"+2 greater striking handwraps of mighty blows",
+				"+1 explorer's clothing",
+				"greater smokesticks (2)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2267,7 +2257,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 33,
@@ -2298,14 +2287,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24 Str +0, Dex +5, Con +3, Int +4, Wis +1, Cha +4 Items +2 striking returning darts (5), +2 greater striking handwraps of mighty blows, +1 explorer's clothing, greater smokesticks (2)"
-						],
-						"name": "Thievery"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -2319,24 +2300,12 @@
 							"transmutation"
 						],
 						"entries": [
-							"Ji-yook transforms into her human form."
+							"Ji-yook transforms into her human form. Using Change Shape counts as creating a disguise for the {@action Impersonate} use of {@skill Deception}. Ji-yook can remain in her human form indefinitely, and she can shift back to her kitsune form by using this action again."
 						],
 						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"entries": [
-							"Shape counts as creating a disguise for."
-						],
-						"name": "Using Change"
-					},
-					{
-						"entries": [
-							"{@action Impersonate} use of {@skill Deception}. Ji-yook can remain in her human form indefinitely, and she can shift back to her kitsune form by using this action again."
-						],
-						"name": "the"
 					},
 					{
 						"activity": {
@@ -2366,9 +2335,9 @@
 					},
 					{
 						"entries": [
-							"{@action Strike||Strikes} deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+							"Ji-yook {@action Strike||Strikes} deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
-						"name": "Sneak Attack Ji-yook"
+						"name": "Sneak Attack"
 					}
 				]
 			},
@@ -2389,15 +2358,13 @@
 				},
 				"hp": [
 					{
-						"hp": 190,
-						"abilities": null
+						"hp": 190
 					}
 				]
 			}
 		},
 		{
 			"name": "Joon-seo",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 41,
 			"level": 15,
@@ -2479,7 +2446,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 36,
@@ -2633,15 +2599,13 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			}
 		},
 		{
 			"name": "Juspix Rammel",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 42,
 			"level": 14,
@@ -2652,6 +2616,7 @@
 				"halfling",
 				"humanoid"
 			],
+			"description": "Male halfling witch",
 			"perception": {
 				"std": 27
 			},
@@ -2678,6 +2643,9 @@
 					"std": 27
 				},
 				"nature": {
+					"std": 27
+				},
+				"occultism": {
 					"std": 27
 				},
 				"stealth": {
@@ -2737,7 +2705,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 35,
@@ -2845,9 +2812,7 @@
 								},
 								{
 									"name": "blinding fury",
-									"notes": [
-										"Advanced Player's Guide 216"
-									]
+									"source": "APG"
 								}
 							]
 						},
@@ -2868,33 +2833,64 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Witch Hexes",
+					"type": "Focus",
+					"DC": 35,
+					"fp": 3,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "clinging ice",
+									"source": "APG"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "cackle",
+									"source": "APG"
+								},
+								{
+									"name": "elemental betrayal",
+									"source": "APG"
+								},
+								{
+									"name": "life boost",
+									"source": "APG"
+								},
+								{
+									"name": "phase familiar",
+									"source": "APG"
+								},
+								{
+									"name": "personal blizzard",
+									"source": "APG"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
 				"top": [
 					{
 						"entries": [
-							"Juspix doesn't need concealment or cover to {@action Hide} or {@action Sneak}. If he has lesser cover from creatures, he instead has cover and can {@action Take Cover}.",
-							"If he has cover from creatures, he instead has greater cover."
+							"Juspix doesn't need concealment or cover to {@action Hide} or {@action Sneak}. If he has lesser cover from creatures, he instead has cover and can {@action Take Cover}. If he has cover from creatures, he instead has greater cover."
 						],
 						"name": "Ceaseless Shadows"
 					}
 				],
 				"bot": [
 					{
-						"traits": [
-							"pathfinder advanced player's guide 237"
-						],
 						"entries": [
-							"3 Focus Points, DC 35; 7th cackle, elemental betrayal, life boost, phase familiar, personal blizzard; Hex Cantrip (7th) clinging ice."
+							"winter"
 						],
-						"name": "Witch Hexes"
-					},
-					{
-						"entries": [
-							"Patron winter."
-						],
-						"name": "Witch"
+						"name": "Witch Patron"
 					},
 					{
 						"entries": [
@@ -2921,15 +2917,19 @@
 				},
 				"hp": [
 					{
-						"hp": 240,
-						"abilities": null
+						"hp": 240
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "cold"
 					}
 				]
 			}
 		},
 		{
 			"name": "Kas Xi Rai",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 23,
 			"level": 17,
@@ -2940,6 +2940,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female Tian-Shu high-ranking criminal",
 			"perception": {
 				"std": 26
 			},
@@ -2981,6 +2982,11 @@
 				"wis": 3,
 				"cha": 5
 			},
+			"items": [
+				"bracers of armor II",
+				"+2 greater striking greater corrosive handwraps of mighty blows",
+				"potion of undetectability"
+			],
 			"speed": {
 				"walk": 50,
 				"climb": 35
@@ -3021,15 +3027,30 @@
 					]
 				}
 			],
-			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+30, {@skill Intimidation} +30, {@skill Stealth} +31, {@skill Thievery} +31 Str +4, Dex +6, Con +0, Int +2, Wis +3, Cha +5 Items bracers of armor II, +2 greater striking greater corrosive handwraps of mighty blows, potion of undetectability."
-						],
-						"name": "Deception"
+			"spellcasting": [
+				{
+					"name": "Monk Ki",
+					"type": "Focus",
+					"DC": 38,
+					"fp": 3,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "wind jump"
+								}
+							]
+						}
 					}
-				],
+				}
+			],
+			"abilities": {
 				"mid": [
 					{
 						"activity": {
@@ -3047,9 +3068,9 @@
 				"bot": [
 					{
 						"entries": [
-							"Rai targets the same creature with two {@action Strike||Strikes} from her {@action Flurry of Blows} and at least one hits and deals damage, the target must succeed at a DC 39 Fortitude save or be {@condition enfeebled|CRB|enfeebled 1} and take a \u20135-foot status penalty to land Speed while {@condition enfeebled}. On a critical failure, the creature is {@condition enfeebled|CRB|enfeebled 2} and takes a \u201310-foot status penalty to land Speed while {@condition enfeebled}."
+							"When Kas Xi Rai targets the same creature with two {@action Strike||Strikes} from her {@action Flurry of Blows} and at least one hits and deals damage, the target must succeed at a DC 39 Fortitude save or be {@condition enfeebled|CRB|enfeebled 1} and take a \u20135-foot status penalty to land Speed while {@condition enfeebled}. On a critical failure, the creature is {@condition enfeebled|CRB|enfeebled 2} and takes a \u201310-foot status penalty to land Speed while {@condition enfeebled}."
 						],
-						"name": "Exhausting Flurry When Kas Xi"
+						"name": "Exhausting Flurry"
 					},
 					{
 						"activity": {
@@ -3083,15 +3104,9 @@
 							"stance"
 						],
 						"entries": [
-							"Kas Xi Rai extends her arms and enters a deadly tree-like combat stance. As long as she is in this stance, Kas Xi Rai can use Tangled Forest."
+							"Kas Xi Rai extends her arms and enters a deadly tree-like combat stance. As long as she is in this stance, Kas Xi Rai can use Tangled Forest Trip and Tangled Forest Rake and make lashing branch {@action Strike||Strikes} with her fists."
 						],
 						"name": "Tangled Forest Stance"
-					},
-					{
-						"entries": [
-							"Rake and make lashing branch {@action Strike||Strikes} with her fists."
-						],
-						"name": "Trip and Tangled Forest"
 					}
 				]
 			},
@@ -3113,15 +3128,13 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				]
 			}
 		},
 		{
 			"name": "Kun",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 79,
 			"level": 14,
@@ -3210,7 +3223,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 32,
@@ -3314,8 +3326,7 @@
 				},
 				"hp": [
 					{
-						"hp": 230,
-						"abilities": null
+						"hp": 230
 					}
 				],
 				"weaknesses": [
@@ -3335,7 +3346,6 @@
 		},
 		{
 			"name": "Lantondo",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 35,
 			"level": 15,
@@ -3410,7 +3420,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 36,
@@ -3580,207 +3589,25 @@
 				},
 				"hp": [
 					{
-						"hp": 275,
-						"abilities": null
+						"hp": 275
 					}
 				]
 			}
 		},
 		{
 			"name": "Maalya",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 40,
-			"level": 15,
-			"traits": [
-				"rare",
-				"n",
-				"medium",
-				"human",
-				"humanoid"
-			],
-			"perception": {
-				"std": 21
-			},
-			"languages": {
-				"languages": [
-					"minatan",
-					"tien",
-					"wayang"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 30
-				},
-				"athletics": {
-					"std": 27
-				},
-				"intimidation": {
-					"std": 28
-				},
-				"performance": {
-					"std": 32
+			"_copy": {
+				"name": "Amihan",
+				"source": "FRP2",
+				"_preserve": {
+					"description": true
 				}
-			},
-			"abilityMods": {
-				"str": 4,
-				"dex": 5,
-				"con": 4,
-				"int": 0,
-				"wis": 0,
-				"cha": 5
-			},
-			"speed": {
-				"walk": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "scimitar",
-					"attack": 31,
-					"traits": [
-						"forceful",
-						"magical",
-						"sweep"
-					],
-					"damage": "{@damage 2d6+12} slashing plus {@dice 1d6} flaming",
-					"types": [
-						"flaming",
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "shield boss",
-					"attack": 31,
-					"traits": [
-						"magical"
-					],
-					"damage": "{@damage 2d6+12} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "greater alchemist's fire",
-					"attack": 32,
-					"traits": [
-						"splash 3 fire",
-						"thrown <20 feet>"
-					],
-					"damage": "{@damage 3d8+3} fire plus 3 {@condition persistent damage ||persistent fire}",
-					"types": [
-						"fire",
-						"persistent"
-					]
-				}
-			],
-			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+32 Str +4, Dex +5, Con +4, Int +0, Wis +0, Cha +5 Items 3 greater alchemist's fires, bracers of armor I, +2 striking flaming scimitar, greater sturdy shield (Hardness 15, HP 120, BT 60) with a +2 striking shield boss."
-						],
-						"name": "Performance"
-					}
-				],
-				"mid": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"entries": [],
-						"name": "Attack of Opportunity",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"entries": [],
-						"name": "Shield Block",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"The battle dancer Interacts to draw a weapon and {@action Strike||Strikes} with it."
-						],
-						"name": "Quick Draw"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"The battle dancer Raises a Shield, then."
-						],
-						"name": "Shield Drum"
-					},
-					{
-						"entries": [],
-						"name": "Demoralizes."
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"The battle dancer either {@action Step||Steps} and then Performs, or Performs and then {@action Step||Steps}. Compare the {@skill Performance} result to the Will DC of one creature in the battle dancer's reach.",
-							{
-								"type": "successDegree",
-								"entries": {
-									"Critical Success": "The creature is {@condition flat-footed} to all attacks until the start of the battle dancer's next turn.",
-									"Success": "The creature is {@condition flat-footed} to the next attack by a creature other than the battle dancer before the start of the battle dancer's next turn."
-								}
-							}
-						],
-						"name": "Threatening Dance"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 37,
-					"with shield raised": 39
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 25
-					},
-					"ref": {
-						"std": 28
-					},
-					"will": {
-						"std": 21
-					}
-				},
-				"hp": [
-					{
-						"hp": 275,
-						"abilities": null
-					}
-				]
 			}
 		},
 		{
 			"name": "Mafika Ayuwari",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 38,
 			"level": 17,
@@ -3791,6 +3618,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male Zenj Tempest-Sun halcyon speaker",
 			"perception": {
 				"std": 29
 			},
@@ -3800,7 +3628,10 @@
 					"draconic",
 					"gnoll",
 					"orc",
-					"keleshite"
+					"keleshite",
+					"mwangi",
+					"taldane",
+					"tien"
 				]
 			},
 			"skills": {
@@ -3855,12 +3686,31 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 41,
 					"attack": 33,
 					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -3995,23 +3845,27 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Druid Order",
+					"type": "Focus",
+					"DC": 41,
+					"fp": 2,
+					"entry": {
+						"9": {
+							"spells": [
+								{
+									"name": "impaling briars"
+								},
+								{
+									"name": "tempest surge"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"{@skill Lore||Skills Academia Lore} +32, {@skill Arcana} +34, {@skill Diplomacy} +30"
-						],
-						"name": "Mwangi, Taldane, Tien"
-					},
-					{
-						"entries": [
-							"+30, {@skill Society} +30, {@skill Stealth} +32 Str +0, Dex +4, Con +2, Int +6, Wis +4, Cha +4 Items bracers of armor III, +2 greater striking staff."
-						],
-						"name": "Nature"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -4033,38 +3887,24 @@
 							"number": 1,
 							"unit": "reaction"
 						},
+						"note": "Mafika transforms unrealized spell energy into a protective shield",
 						"trigger": "Mafika or an ally within 30 feet takes damage",
 						"entries": [
-							"Mafika transforms unrealized spell energy into a protective shield; ; Mafika expends a prepared spell in a spell slot. He reduces the triggering damage by four times the spell slot's level."
+							"Mafika expends a prepared spell in a spell slot. He reduces the triggering damage by four times the spell slot's level."
 						],
 						"name": "Tempest-Sun Shielding"
 					}
 				],
 				"bot": [
 					{
-						"traits": [
-							"9th"
-						],
-						"entries": [
-							"detect magic, electric arc, light, ray of frost, shield Druid Order Spells 2 Focus Points, DC 41; 9th impaling briars (Core Rulebook 400), tempest surge (Core Rulebook 400)"
-						],
-						"name": "Cantrips"
-					},
-					{
 						"activity": {
 							"number": 3,
 							"unit": "action"
 						},
 						"entries": [
-							"Mafika casts an arcane spell that takes 2 actions or fewer to Cast, then casts a druid order spell that takes 2 actions or fewer to Cast (paying 1."
+							"Mafika casts an arcane spell that takes 2 actions or fewer to {@action Cast a Spell||Cast}, then casts a druid order spell that takes 2 actions or fewer to {@action Cast a Spell||Cast} (paying 1 Focus Point, as normal)."
 						],
 						"name": "Halcyon Surge"
-					},
-					{
-						"entries": [
-							"Point, as normal)."
-						],
-						"name": "Focus"
 					},
 					{
 						"activity": {
@@ -4099,15 +3939,13 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			}
 		},
 		{
 			"name": "Master Xun",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 23,
 			"level": 14,
@@ -4253,15 +4091,13 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			}
 		},
 		{
 			"name": "Melodic Squall",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 57,
 			"level": 16,
@@ -4441,8 +4277,7 @@
 				},
 				"hp": [
 					{
-						"hp": 280,
-						"abilities": null
+						"hp": 280
 					}
 				],
 				"immunities": [
@@ -4455,7 +4290,6 @@
 		},
 		{
 			"name": "Minister Of Tumult",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 87,
 			"level": 14,
@@ -4503,6 +4337,9 @@
 				},
 				"stealth": {
 					"std": 24
+				},
+				"martial arts lore": {
+					"std": 22
 				}
 			},
 			"abilityMods": {
@@ -4528,39 +4365,52 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@damage 3d10+13} piercing plus",
+					"damage": "{@damage 3d10+13} piercing plus Grab",
 					"types": [
 						"piercing"
 					]
 				}
 			],
-			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+22, {@skill Society} +20, {@skill Stealth} +24 Str +7, Dex +4, Con +6, Int +4, Wis +8, Cha +4."
-						],
-						"name": "Arts Lore"
+			"spellcasting": [
+				{
+					"name": "Monk Focus",
+					"type": "Focus",
+					"DC": 34,
+					"fp": 3,
+					"entry": {
+						"7": {
+							"spells": [
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "medusa's wrath",
+									"source": "APG"
+								},
+								{
+									"name": "wind jump"
+								}
+							]
+						}
 					}
-				],
+				}
+			],
+			"abilities": {
 				"mid": [
 					{
-						"entries": [],
-						"name": "Jiang-Shi Vulnerabilities"
-					},
-					{
-						"entries": [],
-						"name": "Warped Fulu"
-					}
-				],
-				"bot": [
-					{
-						"entries": [],
-						"name": "Grab",
+						"name": "Jiang-Shi Vulnerabilities",
 						"generic": {
 							"tag": "ability"
 						}
 					},
+					{
+						"name": "Warped Fulu",
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
 					{
 						"activity": {
 							"number": 1,
@@ -4571,8 +4421,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When Draining Qi, the minister of tumult regains 19 HP.",
-							"Monk Focus Spells 3 Focus Points, DC 34; 8th ki rush (Core Rulebook 401), medusa's wrath (Advanced Player's Guide 229), wind jump (Core Rulebook 402)"
+							"When Draining Qi, the minister of tumult regains 19 HP."
 						],
 						"name": "Drain Qi"
 					},
@@ -4603,7 +4452,7 @@
 								"items": [
 									"{@bold Bone Corpse} When the minister successfully Drains Qi while in this stance, for 1 round each time the {@condition drained} creature {@action Stride||Strides} it must succeed at a DC {@flatDC 5} flat check or waste the action and fall {@condition prone}.",
 									"{@bold Cloudless Void} The jiang-shi gains a +1 circumstance bonus to AC and their claw {@action Strike||Strikes} gain the {@trait reach} trait.",
-									"{@bold Sundered Veins} Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage ||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled|CRB|enfeebled 1}."
+									"{@bold Sundered Veins} Creatures struck by the jiang-shi's claw {@action Strike||Strikes} take {@damage 1d10} {@condition persistent damage||persistent bleed damage}. On a critical hit, they are also {@condition enfeebled|CRB|enfeebled 1}."
 								]
 							}
 						],
@@ -4637,12 +4486,18 @@
 					}
 				],
 				"immunities": [
-					"death"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"sleep",
+					"prone"
 				],
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "physical"
+						"name": "physical",
+						"note": "except magical darkwood"
 					}
 				]
 			},
@@ -4650,7 +4505,6 @@
 		},
 		{
 			"name": "Peng",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 82,
 			"level": 12,
@@ -4725,7 +4579,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 31,
@@ -4822,8 +4675,7 @@
 				},
 				"hp": [
 					{
-						"hp": 200,
-						"abilities": null
+						"hp": 200
 					}
 				],
 				"weaknesses": [
@@ -4843,7 +4695,6 @@
 		},
 		{
 			"name": "Phuthi",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 39,
 			"level": 13,
@@ -4910,7 +4761,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"type": "Prepared",
 					"tradition": "arcane",
 					"DC": 35,
@@ -5062,7 +4912,7 @@
 						"requirements": "The transmuter hasn't acted yet on this turn",
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"During this turn, the transmuter can cast one prepared spell she has already cast, without spending a spell slot."
@@ -5091,15 +4941,13 @@
 				},
 				"hp": [
 					{
-						"hp": 260,
-						"abilities": null
+						"hp": 260
 					}
 				]
 			}
 		},
 		{
 			"name": "Portal Eater",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 56,
 			"level": 18,
@@ -5279,8 +5127,7 @@
 				},
 				"hp": [
 					{
-						"hp": 420,
-						"abilities": null
+						"hp": 420
 					}
 				],
 				"weaknesses": [
@@ -5299,7 +5146,6 @@
 		},
 		{
 			"name": "Provincial Jiang-shi",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 86,
 			"level": 11,
@@ -5392,19 +5238,31 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Innate",
 					"type": "Innate",
 					"tradition": "divine",
 					"DC": 32,
 					"attack": 22,
 					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "bind undead"
+								},
+								{
+									"name": "fear",
+									"amount": 3
+								}
+							]
+						},
 						"4": {
 							"spells": [
 								{
-									"name": "enervation"
+									"name": "enervation",
+									"source": "APG"
 								},
 								{
-									"name": "ghostly tragedy"
+									"name": "ghostly tragedy",
+									"source": "APG"
 								}
 							]
 						},
@@ -5435,12 +5293,16 @@
 			"abilities": {
 				"mid": [
 					{
-						"entries": [],
-						"name": "Jiang-Shi Vulnerabilities"
+						"name": "Jiang-Shi Vulnerabilities",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"entries": [],
-						"name": "Warped Fulu"
+						"name": "Warped Fulu",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -5454,16 +5316,9 @@
 							"necromancy"
 						],
 						"entries": [
-							"When Draining Qi, the provincial jiang-shi regains 13 HP.",
-							"Divine Innate Spells DC 32, attack +22; 6th harm (×7), spirit blast, vampiric exsanguination; 5th shadow blast; 4th enervation, ghostly tragedy (Advanced."
+							"When Draining Qi, the provincial jiang-shi regains 13 HP."
 						],
 						"name": "Drain Qi"
-					},
-					{
-						"entries": [
-							"220; ×2); 3rd bind undead, fear (×3)"
-						],
-						"name": "Player's Guide"
 					}
 				]
 			},
@@ -5493,12 +5348,18 @@
 					}
 				],
 				"immunities": [
-					"death"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"sleep",
+					"prone"
 				],
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "physical"
+						"name": "physical",
+						"note": "except darkwood"
 					}
 				]
 			},
@@ -5506,7 +5367,6 @@
 		},
 		{
 			"name": "Ran-to",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 37,
 			"level": 16,
@@ -5517,6 +5377,7 @@
 				"goblin",
 				"humanoid"
 			],
+			"description": "Male frost goblin grappler",
 			"perception": {
 				"std": 23
 			},
@@ -5558,6 +5419,11 @@
 				"wis": 1,
 				"cha": 2
 			},
+			"items": [
+				"+2 greater striking gauntlet",
+				"+2 greater striking halfling sling staff (20 bullets and 5 greater explosive bullets)",
+				"+2 resilient studded leather"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -5594,43 +5460,24 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25, {@skill Lore||Wrestling Lore} +21 Str +7, Dex +4, Con +6, Int \u20131, Wis +1, Cha +2 Items +2 greater striking gauntlet, +2 greater striking halfling sling staff (20 bullets and 5 greater explosive bullets), +2 resilient studded leather."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
+						"name": "Attack of Opportunity",
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
 						"entries": [
-							"When a creature triggers Ran-to's."
+							"When a creature triggers Ran-to's {@action Attack of Opportunity}, he can attempt an {@skill Athletics} check to {@action Grapple} the triggering creature instead of making a melee {@action Strike}. He can still disrupt a triggering manipulate action if he critically succeeds at his attempt."
 						],
-						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"entries": [
-							"Opportunity, he can attempt an {@skill Athletics} check."
-						],
-						"name": "Attack of"
-					},
-					{
-						"entries": [
-							"{@action Grapple} the triggering creature instead of making a melee {@action Strike}. He can still disrupt a triggering manipulate action if he critically succeeds at his attempt."
-						],
-						"name": "to"
 					}
 				],
 				"bot": [
 					{
+						"name": "Body Slam",
 						"activity": {
 							"number": 1,
 							"unit": "action"
@@ -5638,57 +5485,55 @@
 						"requirements": "Ran-to has a creature {@condition grabbed} or {@condition restrained}",
 						"entries": [
 							"Ran-to throws his foe to the ground. The {@condition grabbed} creature takes {@damage 10d6} bludgeoning damage (DC 37 basic Fortitude save) and is knocked {@condition prone}. The grab ends."
-						],
-						"name": "Body Slam"
+						]
 					},
 					{
+						"name": "Greater Leaping Catch",
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
 						"entries": [
-							"Ran-to bounds up and attempts."
-						],
-						"name": "Greater Leaping Catch"
+							"Ran-to bounds up and attempts to Grab a foe while he soars. He makes a {@action Leap}, {@action High Jump}, or {@action Long Jump}. His maximum distance is 75 feet. He must succeed at an {@skill Athletics} check to perform the leap as usual, but regardless of the type of leap the DC is equal to half the number of feet he moves in the air. Ran-to can attempt an {@skill Athletics} check to {@action Grapple} at any point during the jump. Immediately after the attempt, he (and the creature, if the {@action Grapple} was successful) falls to the ground. Ran-to takes no falling damage when using this ability, but the {@condition grabbed} creature takes the appropriate amount of falling damage as if they had fallen the distance moved."
+						]
 					},
 					{
+						"name": "Titan Wrestler",
 						"entries": [
-							"Grab a foe while he soars. He makes a {@action Leap}, {@action High Jump}"
-						],
-						"name": "to"
+							"Ran-to can attempt to {@action Disarm}, {@action Grapple}, {@action Shove}, or {@action Trip} creatures up to two sizes larger than him."
+						]
 					},
 					{
-						"entries": [
-							"His maximum distance is 75 feet. He must succeed at an {@skill Athletics} check to perform the leap as usual, but regardless of the type of leap the DC is equal to half the number of feet he moves in the air. Ran-to can attempt an {@skill Athletics} check to {@action Grapple} at any point during the jump. Immediately after the attempt, he (and the creature, if the {@action Grapple} was successful) falls to the ground. Ran-to takes no falling damage when using this ability, but the {@condition grabbed} creature takes the appropriate amount of falling damage as if they had fallen the distance moved."
-						],
-						"name": "or Long Jump."
-					},
-					{
-						"entries": [
-							"Wrestler Ran-to can attempt to {@action Disarm}, {@action Grapple}"
-						],
-						"name": "Titan"
-					},
-					{
-						"entries": [
-							"{@action Trip} creatures up to two sizes larger than him."
-						],
-						"name": "Shove, or"
-					},
-					{
+						"name": "Whirlwind Toss",
 						"activity": {
 							"number": 3,
 							"unit": "action"
 						},
-						"requirements": "Ran-to has a creature {@condition grabbed} or {@condition restrained}",
 						"frequency": {
-							"unit": "round",
-							"freq": 1
+							"number": 1,
+							"unit": "round"
 						},
+						"requirements": "Ran-to has a creature {@condition grabbed} or {@condition restrained}",
 						"entries": [
-							"Ran-to spins the creature he's holding, smashing them against any creatures within his reach, and then throws the creature aside. Ran-to attempts an {@skill Athletics} check against the {@condition grabbed} creature's Fortitude DC. Critical Success Ran-to tosses his foe a great distance. The grab ends. The {@condition grabbed} creature is thrown into a space within 10 feet, takes {@damage 12d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 37 basic Reflex save). Success As critical success, except the {@condition grabbed} creatures is thrown into a space within 5 feet, and creatures take {@damage 8d6} bludgeoning damage. Failure Ran-to tosses his foe aside. The grab ends. The {@condition grabbed} creature falls {@condition prone}. Critical Failure Ran-to loses hold of his foe, causing the grapple to end."
-						],
-						"name": "Whirlwind Toss"
+							"Ran-to spins the creature he's holding, smashing them against any creatures within his reach, and then throws the creature aside. Ran-to attempts an {@skill Athletics} check against the {@condition grabbed} creature's Fortitude DC.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"Ran-to tosses his foe a great distance. The grab ends. The {@condition grabbed} creature is thrown into a space within 10 feet, takes {@damage 12d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 37 basic Reflex save)."
+									],
+									"Success": [
+										"As critical success, except the {@condition grabbed} creatures is thrown into a space within 5 feet, and creatures take {@damage 8d6} bludgeoning damage."
+									],
+									"Failure": [
+										"Ran-to tosses his foe aside. The grab ends. The {@condition grabbed} creature falls {@condition prone}."
+									],
+									"Critical Failure": [
+										"Ran-to loses hold of his foe, causing the grapple to end."
+									]
+								}
+							}
+						]
 					}
 				]
 			},
@@ -5709,15 +5554,13 @@
 				},
 				"hp": [
 					{
-						"hp": 380,
-						"abilities": null
+						"hp": 380
 					}
 				]
 			}
 		},
 		{
 			"name": "Razu",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 91,
 			"level": 18,
@@ -5728,6 +5571,7 @@
 				"humanoid",
 				"tengu"
 			],
+			"description": "Male tengu master bard",
 			"perception": {
 				"std": 30
 			},
@@ -5759,7 +5603,13 @@
 				"performance": {
 					"std": 35
 				},
+				"goka lore": {
+					"std": 25
+				},
 				"theater lore": {
+					"std": 27
+				},
+				"warfare lore": {
 					"std": 27
 				}
 			},
@@ -5796,7 +5646,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 42,
@@ -5946,54 +5795,51 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Bard Composition",
+					"type": "Focus",
+					"DC": 42,
+					"fp": 2,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "dirge of doom"
+								},
+								{
+									"name": "inspire courage"
+								},
+								{
+									"name": "triple time"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "counter performance"
+								},
+								{
+									"name": "lingering composition"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25, {@skill Intimidation} +33"
-						],
-						"name": "Goka Lore"
-					},
-					{
-						"entries": [
-							"+35, {@skill Lore||Theater Lore} +27"
-						],
-						"name": "Performance"
-					},
-					{
-						"entries": [
-							"+27 Str +0, Dex +6, Con +3, Int +1, Wis +4"
-						],
-						"name": "Warfare Lore"
-					},
-					{
-						"entries": [
-							"+6 Items greater maestro's instrument (erhu), +3 greater striking erhu bow, oil of animation, potion of tongues, potion of true seeing, +3 greater resilient studded leather armor."
-						],
-						"name": "Cha"
-					}
-				],
 				"bot": [
 					{
-						"traits": [
-							"9th"
-						],
 						"entries": [
-							"dirge of doom (Core Rulebook 386), inspire courage (Core Rulebook 386), triple time (Core Rulebook 387)"
+							"Razu wields his instrument's unique runeenchanted bow as a deadly weapon. His decades of training with the item allow him to augment it with his own battle cries so that it also deals sonic damage. By attaching the bow's case to its end, he can change the weapon's damage to piercing and use the bow much like a short spear. Any other creature who wields the erhu bow does not deal sonic damage with it, but the weapon otherwise possesses the traits listed above. If sold without its runes, the bow is worth 50 gp."
 						],
-						"name": "Cantrips"
+						"name": "Bow Basher"
 					},
 					{
 						"entries": [
-							"Basher Razu wields his instrument's unique runeenchanted bow as a deadly weapon. His decades of training with the item allow him to augment it with his own battle cries so that it also deals sonic damage. By attaching the bow's case to its end, he can change the weapon's damage to piercing and use the bow much like a short spear. Any other creature who wields the erhu bow does not deal sonic damage with it, but the weapon otherwise possesses the traits listed above. If sold without its runes, the bow is worth 50 gp."
-						],
-						"name": "Bow"
-					},
-					{
-						"entries": [
-							"Razu's {@trait auditory} effects that normally have a range <60 feet> or less or an emanation area with a radius of 60 feet or less instead have a range or radius of 300 feet. His {@trait auditory} effects that normally have a range of greater than 60 feet or an emanation area with a radius of greater than 60 feet instead have a range or radius of 1,200 feet (unless it was already farther). His performances are audible up to 10 miles away."
+							"Razu's {@trait auditory} effects that normally have a range 60 feet or less or an emanation area with a radius of 60 feet or less instead have a range or radius of 300 feet. His {@trait auditory} effects that normally have a range of greater than 60 feet or an emanation area with a radius of greater than 60 feet instead have a range or radius of 1,200 feet (unless it was already farther). His performances are audible up to 10 miles away."
 						],
 						"name": "Incredible Volume"
 					}
@@ -6016,8 +5862,7 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			},
@@ -6025,7 +5870,6 @@
 		},
 		{
 			"name": "Rivka",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 83,
 			"level": 13,
@@ -6089,7 +5933,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Innate Primal",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 33,
@@ -6163,8 +6006,7 @@
 				},
 				"hp": [
 					{
-						"hp": 220,
-						"abilities": null
+						"hp": 220
 					}
 				]
 			},
@@ -6172,7 +6014,6 @@
 		},
 		{
 			"name": "Shadow Yai",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 80,
 			"level": 16,
@@ -6235,7 +6076,7 @@
 			],
 			"speed": {
 				"abilities": [
-					"Shadow {@action Step}"
+					"Shadow Step"
 				],
 				"walk": 40,
 				"fly": 40
@@ -6295,7 +6136,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 37,
@@ -6355,21 +6195,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+31, {@skill Performance} +33, {@skill Stealth} +30 Str +8, Dex +6, Con +5, Int +6, Wis +6, Cha +9 Items +2 greater striking glaive."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -6389,18 +6220,12 @@
 							"transmutation"
 						],
 						"entries": [
-							"The shadow yai takes on the appearance of a shadow giant. This doesn't change its Speed."
+							"The shadow yai takes on the appearance of a shadow giant. This doesn't change its Speed or {@action Strike} attack and damage."
 						],
 						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
 						}
-					},
-					{
-						"entries": [
-							"{@action Strike} attack and damage."
-						],
-						"name": "or"
 					},
 					{
 						"activity": {
@@ -6464,7 +6289,6 @@
 		},
 		{
 			"name": "Shino Hakusa",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 36,
 			"level": 16,
@@ -6475,6 +6299,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female Tian-Shu assassin",
 			"perception": {
 				"std": 30
 			},
@@ -6517,6 +6342,12 @@
 				"wis": 2,
 				"cha": 0
 			},
+			"items": [
+				"+2 greater striking greater shock handwraps of mighty blows",
+				"potion of flying",
+				"potion of haste",
+				"+2 greater striking returning shuriken"
+			],
 			"speed": {
 				"walk": 40
 			},
@@ -6553,14 +6384,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+28, {@skill Occultism} +24, {@skill Stealth} +28, {@skill Thievery} +28 Str +6, Dex +6, Con +4, Int +1, Wis +2, Cha +0 Items +2 greater striking greater shock handwraps of mighty blows, potion of flying, potion of haste, +2 greater striking returning shuriken."
-						],
-						"name": "Medicine"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -6577,15 +6400,9 @@
 				"bot": [
 					{
 						"entries": [
-							"Hakusa constantly leaps around and over her foes in combat. When she successfully."
+							"Hakusa constantly leaps around and over her foes in combat. When she successfully {@action Tumble Through||Tumbles Through} a creature's space, that creature becomes {@condition flat-footed} until the end of Hakusa's turn."
 						],
 						"name": "Disorienting Tumble"
-					},
-					{
-						"entries": [
-							"Through a creature's space, that creature becomes {@condition flat-footed} until the end of Hakusa's turn."
-						],
-						"name": "Tumbles"
 					},
 					{
 						"entries": [
@@ -6638,15 +6455,13 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				]
 			}
 		},
 		{
 			"name": "Sixth Pillar Student",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 14,
 			"level": 14,
@@ -6658,6 +6473,7 @@
 				"humanoid",
 				"nagaji"
 			],
+			"description": "Nagaji and human sorcerous monk",
 			"perception": {
 				"std": 23
 			},
@@ -6716,7 +6532,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "arcane",
 					"DC": 35,
@@ -6871,19 +6686,19 @@
 								{
 									"name": "elemental blast",
 									"notes": [
-										"air; Core Rulebook 404"
+										"air"
 									]
 								},
 								{
 									"name": "elemental motion",
 									"notes": [
-										"air; Core Rulebook 404"
+										"air"
 									]
 								},
 								{
 									"name": "elemental toss",
 									"notes": [
-										"air; Core Rulebook 404"
+										"air"
 									]
 								}
 							]
@@ -6896,7 +6711,7 @@
 					{
 						"entries": [
 							"The students' combine elemental energies with physical brawn, blasting opponents with huge gusts of compressed air instead of typical energies.",
-							"Any of the students' spells that deal energy damage (such as fireball, burning hands, ray of frost, and so on) instead deal bludgeoning damage."
+							"Any of the students' spells that deal energy damage (such as {@spell fireball}, {@spell burning hands}, {@spell ray of frost}, and so on) instead deal bludgeoning damage."
 						],
 						"name": "Bludgeoning Energy"
 					}
@@ -6915,19 +6730,20 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
-						"hp": 220,
-						"abilities": null
+						"hp": 220
 					}
 				]
 			}
 		},
 		{
 			"name": "Surjit Hamelan",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 39,
 			"level": 13,
@@ -7103,15 +6919,13 @@
 				},
 				"hp": [
 					{
-						"hp": 220,
-						"abilities": null
+						"hp": 220
 					}
 				]
 			}
 		},
 		{
 			"name": "Syu Tak-nwa",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 35,
 			"level": 16,
@@ -7122,6 +6936,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female Tian-Hwan white-haired witch",
 			"perception": {
 				"std": 29
 			},
@@ -7142,6 +6957,9 @@
 				},
 				"deception": {
 					"std": 29
+				},
+				"medicine": {
+					"std": 25
 				},
 				"nature": {
 					"std": 25
@@ -7210,7 +7028,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Prepared",
 					"type": "Prepared",
 					"tradition": "occult",
 					"DC": 38,
@@ -7341,30 +7158,52 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Witch Hexes",
+					"type": "Focus",
+					"DC": 38,
+					"fp": 3,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "evil eye",
+									"source": "APG"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "cackle",
+									"source": "APG"
+								},
+								{
+									"name": "curse of death",
+									"source": "APG"
+								},
+								{
+									"name": "malicious shadow",
+									"source": "APG"
+								},
+								{
+									"name": "needle of vengeance",
+									"source": "APG"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
 				"bot": [
 					{
-						"traits": [
-							"pathfinder advanced player's guide 237"
-						],
 						"entries": [
-							"3."
+							"fate"
 						],
-						"name": "Witch Hexes"
-					},
-					{
-						"entries": [
-							"DC 38; 8th cackle, curse of death, malicious shadow, needle of vengeance; Hex Cantrip (8th) evil eye."
-						],
-						"name": "Focus Points"
-					},
-					{
-						"entries": [
-							"Patron fate."
-						],
-						"name": "Witch"
+						"name": "Witch Patron"
 					},
 					{
 						"entries": [
@@ -7380,15 +7219,9 @@
 					},
 					{
 						"entries": [
-							"Tak-nwa's familiar is an elephant hawk moth named."
+							"Tak-nwa's familiar is an elephant hawk moth named Yon-so. Yon-so has a fly Speed of 40 feet, darkvision, and scent as an imprecise sense to a range of 30 feet."
 						],
 						"name": "Familiar"
-					},
-					{
-						"entries": [
-							"Yon-so has a fly Speed of 40 feet, darkvision, and scent as an imprecise sense to a range of 30 feet."
-						],
-						"name": "Yon-so."
 					}
 				]
 			},
@@ -7409,15 +7242,13 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			}
 		},
 		{
 			"name": "Taiga Yai",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 81,
 			"level": 15,
@@ -7534,7 +7365,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 34,
@@ -7573,6 +7403,7 @@
 							"spells": [
 								{
 									"name": "shifting sand",
+									"source": "LOGM",
 									"amount": 2
 								}
 							]
@@ -7601,21 +7432,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+30, {@skill Survival} +32 Str +6, Dex +8, Con +8, Int +5, Wis +7, Cha +6 Items +2 greater striking shortbow (20 arrows)"
-						],
-						"name": "Nature"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -7686,7 +7508,10 @@
 					},
 					"will": {
 						"std": 30
-					}
+					},
+					"abilities": [
+						"+1 status on all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -7701,7 +7526,6 @@
 		},
 		{
 			"name": "Takatorra",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 27,
 			"level": 13,
@@ -7712,6 +7536,7 @@
 				"humanoid",
 				"tengu"
 			],
+			"description": "Non-binary tengu sword master",
 			"perception": {
 				"std": 25
 			},
@@ -7750,6 +7575,11 @@
 				"wis": 3,
 				"cha": 0
 			},
+			"items": [
+				"+1 resilient hide armor",
+				"+2 greater striking tengu gale blades (2)",
+				"+1 striking frost composite longbow (20 arrows)"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -7801,14 +7631,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+19 Str +5, Dex +2, Con +5, Int +1, Wis +3, Cha +0 Items +1 resilient hide armor, +2 greater striking tengu gale blades (2; Pathfinder Advanced Player's Guide 248) +1 striking frost composite longbow (20 arrows)"
-						],
-						"name": "Performance"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -7833,7 +7655,7 @@
 						"entries": [
 							"Takatorra unleashes a flurry of attacks.",
 							"Takatorra makes five melee {@action Strike||Strikes}. Their multiple attack penalty applies as normal. They gain a cumulative +2 circumstance bonus to damage for each successful {@action Strike}.",
-							"If one target is hit with at least two of these {@action Strike||Strikes}, they also take {@damage 2d6} {@condition persistent damage ||persistent bleed damage}. They then become {@condition stunned|CRB|stunned 1} and {@condition flat-footed} until the start of their next turn."
+							"If one target is hit with at least two of these {@action Strike||Strikes}, they also take {@damage 2d6} {@condition persistent damage||persistent bleed damage}. They then become {@condition stunned|CRB|stunned 1} and {@condition flat-footed} until the start of their next turn."
 						],
 						"name": "Blade Barrage"
 					},
@@ -7864,7 +7686,7 @@
 						],
 						"frequency": {
 							"unit": "day",
-							"freq": 1
+							"number": 1
 						},
 						"entries": [
 							"Takatorra expands their wings, gaining a 25-foot fly Speed for 5 minutes."
@@ -7890,15 +7712,13 @@
 				},
 				"hp": [
 					{
-						"hp": 300,
-						"abilities": null
+						"hp": 300
 					}
 				]
 			}
 		},
 		{
 			"name": "Tino Tung",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 26,
 			"level": 13,
@@ -7909,24 +7729,33 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male Tian-Shu paladin of Irori",
 			"perception": {
 				"std": 23
 			},
 			"languages": {
 				"languages": [
 					"nagaji",
-					"tengu"
+					"tengu",
+					"taldane",
+					"tien"
 				]
 			},
 			"skills": {
 				"acrobatics": {
 					"std": 26
 				},
+				"athletics": {
+					"std": 25
+				},
 				"diplomacy": {
 					"std": 22
 				},
 				"medicine": {
 					"std": 20
+				},
+				"irori lore": {
+					"std": 19
 				}
 			},
 			"abilityMods": {
@@ -7937,6 +7766,11 @@
 				"wis": 1,
 				"cha": 3
 			},
+			"items": [
+				"+1 resilient explorer's clothing",
+				"+2 greater striking handwraps of mighty blows",
+				"+1 striking flaming temple sword"
+			],
 			"speed": {
 				"walk": 45
 			},
@@ -7981,6 +7815,12 @@
 							"spells": [
 								{
 									"name": "ki blast"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "lay on hands"
 								}
 							]
 						}
@@ -7988,14 +7828,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Acrobatics} +26, {@skill Athletics} +25, {@skill Diplomacy} +22, {@skill Lore||Irori Lore} +19, {@skill Medicine} +20 Str +4, Dex +5, Con +4, Int +0, Wis +1, Cha +3 Items +1 resilient explorer's clothing, +2 greater striking handwraps of mighty blows, +1 striking flaming temple sword."
-						],
-						"name": "Taldane, Tien"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -8003,7 +7835,7 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"If Tino's {@action Retributive Strike} against the triggering creature doesn't critically miss, that creature meets the requirements for Tino to use Defiant {@action Shove} until the end of his next turn."
+							"If Tino's {@action Retributive Strike} against the triggering creature doesn't critically miss, that creature meets the requirements for Tino to use Defiant Shove until the end of his next turn."
 						],
 						"name": "Retributive Strike",
 						"generic": {
@@ -8013,27 +7845,21 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							"DC 30; 7th (3 focus points) ki blast (Core Rulebook 401), ki strike (Core Rulebook 401), lay on hands (Core Rulebook 387)"
-						],
-						"name": "Focus Spells"
-					},
-					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"requirements": "Tino used Retributive",
+						"requirements": "Tino used Retributive Strike on a creature since the start of his previous turn, attempted the {@action Strike} it permitted, and didn't critically miss",
 						"entries": [
-							"{@action Strike} on a creature since the start of his previous turn, attempted the {@action Strike} it permitted, and didn't critically miss; Tino throws his whole body into a powerful push. He moves the target 5 feet in any direction and can then attempt to {@action Trip} that creature. This is forced movement."
+							"Tino throws his whole body into a powerful push. He moves the target 5 feet in any direction and can then attempt to {@action Trip} that creature. This is {@quickref forced movement||3|forced movement}."
 						],
 						"name": "Defiant Shove"
 					},
 					{
 						"entries": [
-							"Tino hits with his {@action Retributive Strike}, the target takes 3 {@condition persistent damage ||persistent good damage}."
+							"If Tino hits with his {@action Retributive Strike}, the target takes 3 {@condition persistent damage||persistent good damage}."
 						],
-						"name": "Divine Smite If"
+						"name": "Divine Smite"
 					},
 					{
 						"activity": {
@@ -8069,19 +7895,20 @@
 					},
 					"will": {
 						"std": 20
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. disease"
+					]
 				},
 				"hp": [
 					{
-						"hp": 240,
-						"abilities": null
+						"hp": 240
 					}
 				]
 			}
 		},
 		{
 			"name": "Troff Frostknuckles",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 43,
 			"level": 14,
@@ -8205,7 +8032,7 @@
 						],
 						"requirements": "Troff is within reach of a creature that has taken cold damage since the end of Troff's last turn",
 						"entries": [
-							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy. Critical Success The creature is unaffected. Success The creature takes {@damage 2d4} {@condition persistent damage ||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage ||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage ||persistent cold damage} (allowing a new flat check to end it at DC 10). Failure As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
+							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy. Critical Success The creature is unaffected. Success The creature takes {@damage 2d4} {@condition persistent damage||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage||persistent cold damage} (allowing a new flat check to end it at DC 10). Failure As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
 						],
 						"name": "Chattering Blow",
 						"entries_as_xyz": "Ability not found: 'Chattering Blow As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty.' in Troff Frostknuckles, p.43"
@@ -8242,8 +8069,7 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				],
 				"resistances": [
@@ -8256,7 +8082,6 @@
 		},
 		{
 			"name": "Umbasi",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 40,
 			"level": 13,
@@ -8267,6 +8092,7 @@
 				"elf",
 				"humanoid"
 			],
+			"description": "Pangender elf Uzunjati attendant",
 			"perception": {
 				"std": 21
 			},
@@ -8310,6 +8136,10 @@
 				"wis": 0,
 				"cha": 5
 			},
+			"items": [
+				"+1 striking composite longbow (20 arrows)",
+				"+1 resilient explorer's clothing"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -8348,7 +8178,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 34,
@@ -8469,17 +8298,38 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Bard Composition",
+					"type": "Focus",
+					"DC": 34,
+					"fp": 3,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "inspire courage"
+								},
+								{
+									"name": "inspire defense"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "counter performance"
+								},
+								{
+									"name": "inspire heroics"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25, {@skill Performance} +28 Str +3, Dex +4, Con +1, Int +4, Wis +0, Cha +5 Items +1 striking composite longbow (20 arrows), +1 resilient explorer's clothing."
-						],
-						"name": "Occultism"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -8515,15 +8365,13 @@
 				},
 				"hp": [
 					{
-						"hp": 190,
-						"abilities": null
+						"hp": 190
 					}
 				]
 			}
 		},
 		{
 			"name": "Urnak Lostwind",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 41,
 			"level": 14,
@@ -8535,6 +8383,7 @@
 				"humanoid",
 				"orc"
 			],
+			"description": "Male half-orc viking",
 			"perception": {
 				"std": 25
 			},
@@ -8591,14 +8440,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+25 Str +5, Dex +3, Con +5, Int +1, Wis +3, Cha +1 Items +2 greater striking frost greataxe, +2 resilient hide armor."
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -8639,9 +8480,9 @@
 					},
 					{
 						"entries": [
-							"Urnak uses Felling Throw, his greataxe bounces back to him at the end of the action and he can catch it as a free action. If he uses Felling Throw again before the end of his turn (even if it's not at the same target), the attack ignores all cover."
+							"When Urnak uses Felling Throw, his greataxe bounces back to him at the end of the action and he can catch it as a free action. If he uses Felling Throw again before the end of his turn (even if it's not at the same target), the attack ignores all cover."
 						],
-						"name": "Ricochet Throw When"
+						"name": "Ricochet Throw"
 					},
 					{
 						"activity": {
@@ -8672,8 +8513,7 @@
 				},
 				"hp": [
 					{
-						"hp": 310,
-						"abilities": null
+						"hp": 310
 					}
 				],
 				"resistances": [
@@ -8686,7 +8526,6 @@
 		},
 		{
 			"name": "Yabin The Just",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 27,
 			"level": 13,
@@ -8697,6 +8536,7 @@
 				"humanoid",
 				"nagaji"
 			],
+			"description": "Male nagaji dragon sorcerer",
 			"perception": {
 				"std": 23
 			},
@@ -8738,6 +8578,11 @@
 				"wis": 0,
 				"cha": 5
 			},
+			"items": [
+				"+2 greater striking bo staff",
+				"+2 explorer's clothing",
+				"greater tanglefoot bag"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -8765,14 +8610,11 @@
 					],
 					"effects": [
 						"nagaji venom"
-					],
-					"damage": "nagaji venom",
-					"types": []
+					]
 				}
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "arcane",
 					"DC": 32,
@@ -8925,22 +8767,13 @@
 						"7": {
 							"spells": [
 								{
-									"name": "dragon breath",
-									"notes": [
-										"Core Rulebook 403"
-									]
+									"name": "dragon breath"
 								},
 								{
-									"name": "dragon claws",
-									"notes": [
-										"Core Rulebook 403"
-									]
+									"name": "dragon claws"
 								},
 								{
-									"name": "dragon wings",
-									"notes": [
-										"Core Rulebook 403"
-									]
+									"name": "dragon wings"
 								}
 							]
 						}
@@ -8948,14 +8781,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+24, {@skill Occultism} +21 Str +0, Dex +3, Con +5, Int +2, Wis +0, Cha +5 Items +2 greater striking bo staff, +2 explorer's clothing, greater tanglefoot bag."
-						],
-						"name": "Intimidation"
-					}
-				],
 				"bot": [
 					{
 						"type": "affliction",
@@ -9013,19 +8838,20 @@
 					},
 					"will": {
 						"std": 19
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. poison"
+					]
 				},
 				"hp": [
 					{
-						"hp": 175,
-						"abilities": null
+						"hp": 175
 					}
 				]
 			}
 		},
 		{
 			"name": "Yarrika Mulandez",
-			"isNpc": false,
 			"source": "FRP2",
 			"page": 34,
 			"level": 15,
@@ -9104,7 +8930,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 36,
@@ -9286,8 +9111,7 @@
 				},
 				"hp": [
 					{
-						"hp": 250,
-						"abilities": null
+						"hp": 250
 					}
 				]
 			}

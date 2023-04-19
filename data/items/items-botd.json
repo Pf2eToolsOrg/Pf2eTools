@@ -31,7 +31,7 @@
 						"envision"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -48,7 +48,7 @@
 						"{@action Strike}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"requirements": "The Lady's chalice is full of a vial's worth of holy water",
@@ -98,7 +98,7 @@
 			],
 			"usage": "varies by weapon",
 			"bulk": "varies by weapon",
-			"category": "Weapon",
+			"category": "Material",
 			"entries": [
 				"Peachwood weapons have a particularly auburn tinge to them when under direct sunlight.",
 				"Peachwood is treated as darkwood for any undead creatures' resistances or weaknesses related to darkwood (allowing a peachwood weapon to bypass a jiang-shi's resistance, for example). In addition, peachwood weapons bypass a small portion of the resistances of any undead creature. {@action Strike||Strikes} with a peachwood weapon treat an undead's resistances against physical damage as 2 lower for standardgrade peachwood, and 4 lower for high-grade."
@@ -243,7 +243,7 @@
 						"envision"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You critically hit an undead creature with the celestial peachwood sword",
@@ -275,7 +275,7 @@
 						"{@action Cast a Spell}"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -425,7 +425,7 @@
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"This +3 greater disrupting greater striking silver longsword is made from the purest silver. The blade is carefully etched to depict a vast and sprawling necropolis, a place where the dead are laid to rest. Whenever you critically hit an undead creature with final rest, the undead creature takes {@damage 3d6} {@condition persistent damage ||persistent good damage}, with a DC 36 Fortitude save.",
+				"This +3 greater disrupting greater striking silver longsword is made from the purest silver. The blade is carefully etched to depict a vast and sprawling necropolis, a place where the dead are laid to rest. Whenever you critically hit an undead creature with final rest, the undead creature takes {@damage 3d6} {@condition persistent damage||persistent good damage}, with a DC 36 Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -433,13 +433,13 @@
 							"No effect."
 						],
 						"Success": [
-							"The creature takes half the {@condition persistent damage ||persistent good damage}."
+							"The creature takes half the {@condition persistent damage||persistent good damage}."
 						],
 						"Failure": [
-							"The creature is {@condition stunned||stunned 1} and takes the full {@condition persistent damage ||persistent good damage}."
+							"The creature is {@condition stunned||stunned 1} and takes the full {@condition persistent damage||persistent good damage}."
 						],
 						"Critical Failure": [
-							"The creature is {@condition stunned||stunned 3} and takes double the {@condition persistent damage ||persistent good damage}."
+							"The creature is {@condition stunned||stunned 3} and takes double the {@condition persistent damage||persistent good damage}."
 						]
 					}
 				},
@@ -454,7 +454,7 @@
 						"envision"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -502,7 +502,7 @@
 						"positive"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You gain the {@condition drained} condition from an undead creature",
@@ -563,7 +563,7 @@
 			"category": "Consumable",
 			"entries": [
 				"This crystal vial contains salts blessed by channeling life-giving energies into waters purified by holy fire.",
-				"You can activate this vial by throwing it as a {@action Strike}. It's a simple thrown ranged weapon with a range increment of 10 feet. Unlike an alchemical bomb, it doesn't add the {@trait manipulate} trait to the attack made with it. On a hit against an undead, life salt deals 1 {@condition persistent damage ||persistent positive damage}, and the undead must succeed at a DC 20 Will save or be unable to attack you as long as it continues taking the {@condition persistent damage ||persistent positive damage}.",
+				"You can activate this vial by throwing it as a {@action Strike}. It's a simple thrown ranged weapon with a range increment of 10 feet. Unlike an alchemical bomb, it doesn't add the {@trait manipulate} trait to the attack made with it. On a hit against an undead, life salt deals 1 {@condition persistent damage||persistent positive damage}, and the undead must succeed at a DC 20 Will save or be unable to attack you as long as it continues taking the {@condition persistent damage||persistent positive damage}.",
 				"If you use a {@condition hostile} action against any undead, this second effect ends, and the undead can attack you normally."
 			]
 		},

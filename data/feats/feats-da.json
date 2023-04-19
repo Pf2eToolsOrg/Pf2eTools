@@ -23,7 +23,7 @@
 						"fortune"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"trigger": "You're about to attempt a saving throw against a {@trait linguistic} effect",
@@ -56,7 +56,7 @@
 						"concentrate"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -105,7 +105,7 @@
 						"fortune"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"trigger": "You attempt a check to remove or counteract an effect with the {@condition confused}, {@condition controlled}, {@condition fascinated}, {@condition immobilized}, {@condition paralyzed}, or {@condition restrained} conditions",
@@ -215,7 +215,7 @@
 			],
 			"prerequisites": "You've been brought to 0 Hit Points by an enemy that has the {@trait fire} trait or an enemy's ability that has the {@trait fire} trait.",
 			"entries": [
-				"A sweltering heat and sparks of flame that take the form of tiny copies of you surround your body. You're hot to the touch, gaining resistance 5 to cold and fire. Whenever an adjacent creature {@action Strike||Strikes} you with a melee attack or touches you, it takes {@damage 1d6} {@condition persistent damage ||persistent fire damage}. You gain the Thermal Eruption action.",
+				"A sweltering heat and sparks of flame that take the form of tiny copies of you surround your body. You're hot to the touch, gaining resistance 5 to cold and fire. Whenever an adjacent creature {@action Strike||Strikes} you with a melee attack or touches you, it takes {@damage 1d6} {@condition persistent damage||persistent fire damage}. You gain the Thermal Eruption action.",
 				{
 					"name": "Thermal Eruption[two-actions]",
 					"traits": [
@@ -224,7 +224,7 @@
 						"primal"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -256,7 +256,7 @@
 						"water"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "minute"
 					},
 					"requirements": "You're on land and adjacent to a body of water",
@@ -399,7 +399,7 @@
 			],
 			"prerequisites": "expert in {@skill Occultism}, expert in {@skill Survival}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"requirements": "You must be in either natural terrain or in abandoned or relatively unused artificial terrain (such as a darkened alley or haunted house).",
@@ -510,7 +510,7 @@
 			],
 			"prerequisites": "expert in {@skill Occultism}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -540,7 +540,7 @@
 			],
 			"prerequisites": "expert in {@skill Occultism}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -566,13 +566,13 @@
 			"prerequisites": "expert in {@skill Medicine}",
 			"entries": [
 				"You firmly believe in the technique of strengthening one's life force, spiritual energies, and bodily fluids through the application of colored light. When using a torch, lantern, or other artificial light source to illuminate an area of dim light or darker, you use a combination of alchemical reagents, medicinal components, and colored lenses to turn that light one of seven colors, allowing you to help an ally recover from {@condition persistent damage}. You give that target an assisted recovery, but the target can be anywhere within the bright light of the light source instead of needing to be adjacent to you.",
-				"Ambient bright light (like sunlight) drowns out your artificial illumination and prevents you from using Chromotherapy. The color of the light you choose determines the type of {@condition persistent damage} from which you help the target recover. Color Description Red You increase blood flow to heat the body, attempting to end {@condition persistent damage ||persistent cold damage}.",
-				"Orange You cancel out electric charge, attempting to end {@condition persistent damage ||persistent electricity damage}.",
-				"Yellow You reduce pain and mental stress, attempting to end {@condition persistent damage ||persistent mental damage}.",
-				"Green You promote blood flow in a way that helps clot wounds, attempting to end {@condition persistent damage ||persistent bleed damage}.",
-				"Blue You cool the body, attempting to end {@condition persistent damage ||persistent fire damage}.",
-				"Indigo You render acids inert, attempting to end {@condition persistent damage ||persistent acid damage}.",
-				"Violet You purify the body, attempting to end {@condition persistent damage ||persistent poison damage}."
+				"Ambient bright light (like sunlight) drowns out your artificial illumination and prevents you from using Chromotherapy. The color of the light you choose determines the type of {@condition persistent damage} from which you help the target recover. Color Description Red You increase blood flow to heat the body, attempting to end {@condition persistent damage||persistent cold damage}.",
+				"Orange You cancel out electric charge, attempting to end {@condition persistent damage||persistent electricity damage}.",
+				"Yellow You reduce pain and mental stress, attempting to end {@condition persistent damage||persistent mental damage}.",
+				"Green You promote blood flow in a way that helps clot wounds, attempting to end {@condition persistent damage||persistent bleed damage}.",
+				"Blue You cool the body, attempting to end {@condition persistent damage||persistent fire damage}.",
+				"Indigo You render acids inert, attempting to end {@condition persistent damage||persistent acid damage}.",
+				"Violet You purify the body, attempting to end {@condition persistent damage||persistent poison damage}."
 			]
 		},
 		{
@@ -681,7 +681,7 @@
 			],
 			"prerequisites": "master in {@skill Intimidation}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"trigger": "You are targeted by or are in the area of a mental spell or effect.",
@@ -828,7 +828,7 @@
 			"entries": [
 				"Sharp shards of bone tear forth from your elbows, wrists, or other parts of your body. For 1 minute, you can make bone spike unarmed {@action Strike||Strikes}, which deal {@damage 1d6} piercing damage and have the versatile S and sweep trails. When you take the Bone Spikes action, you can choose one weapon on your person and duplicate its weapon runes onto your bone spikes (with the exception of any runes that couldn't apply to the bone spears).",
 				"{@b Awakening} Your bones grow longer, lashing flexibly at range. While you have bone spikes, you can {@action Interact} to give your bone spikes reach <10 feet> until the end of the current turn.",
-				"{@b Awakening} Grooves in your bone spikes form a channel for venom. Your bone spikes deal {@damage 1d4} {@condition persistent damage ||persistent poison damage}, which increases to {@dice 2d4} at 10th level and {@dice 3d4} at 18th level."
+				"{@b Awakening} Grooves in your bone spikes form a channel for venom. Your bone spikes deal {@damage 1d4} {@condition persistent damage||persistent poison damage}, which increases to {@dice 2d4} at 10th level and {@dice 3d4} at 18th level."
 			]
 		},
 		{
@@ -849,7 +849,7 @@
 			"entries": [
 				"Your limbs tense as you deliver a mighty swing. Make a melee {@action Strike}. If it hits, you deal an extra die of weapon damage and push the target back by 5 feet. If you're at least 10th level, increase this to two extra dice and push the target by 10 feet, and if you're at least 18th level, increase it to three extra dice and push the target by 15 feet.",
 				"{@b Awakening} On a critical hit, you push the target back double the normal distance and knock it {@condition prone}.",
-				"{@b Awakening} On a hit, you deal {@damage 1d6} {@condition persistent damage ||persistent bleed damage}. This increases to {@dice 2d6} at 10th level and {@dice 3d6} at 18th level."
+				"{@b Awakening} On a hit, you deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. This increases to {@dice 2d6} at 10th level and {@dice 3d6} at 18th level."
 			]
 		},
 		{
@@ -984,12 +984,12 @@
 						"concentrate"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You would take mental damage or be affected by a {@trait mental} effect",
 					"entries": [
-						"You gain a +2 circumstance bonus to Will saves and resistance to mental damage equal to your level against the triggering effect. This applies only to the initial effect, not successive saves, {@condition persistent damage ||persistent mental damage}, or other repeated effects."
+						"You gain a +2 circumstance bonus to Will saves and resistance to mental damage equal to your level against the triggering effect. This applies only to the initial effect, not successive saves, {@condition persistent damage||persistent mental damage}, or other repeated effects."
 					],
 					"type": "ability"
 				}
@@ -1022,7 +1022,7 @@
 						"visual"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"trigger": "You would be hit by a {@action Strike}",
@@ -1083,7 +1083,7 @@
 				"visual"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"entries": [
@@ -1106,7 +1106,7 @@
 				"reflection"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"trigger": "You're about to attempt a saving throw against a {@trait mental} effect.",
@@ -1158,7 +1158,7 @@
 			],
 			"prerequisites": "{@feat Morph-Risen|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"requirements": "You hit a creature with a melee {@action Strike} on your last action.",
@@ -1200,7 +1200,7 @@
 			],
 			"prerequisites": "{@feat Mirror-Risen|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"requirements": "You're within 5 feet of a mirrored surface.",
@@ -1411,7 +1411,7 @@
 						"unit": "action"
 					},
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "hour"
 					},
 					"entries": [
@@ -1648,7 +1648,7 @@
 			],
 			"prerequisites": "{@feat Time Mage Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -1705,7 +1705,7 @@
 			],
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"featType": {
@@ -1733,7 +1733,7 @@
 			],
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"featType": {
@@ -1781,7 +1781,7 @@
 			],
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"featType": {
@@ -1807,7 +1807,7 @@
 			],
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"featType": {
@@ -1834,7 +1834,7 @@
 			],
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"featType": {
@@ -1878,7 +1878,7 @@
 			],
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"featType": {
@@ -1905,7 +1905,7 @@
 			],
 			"prerequisites": "{@feat Chronoskimmer Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -2019,7 +2019,7 @@
 			],
 			"prerequisites": "{@feat Psychic Duelist Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -2130,11 +2130,11 @@
 			],
 			"prerequisites": "{@feat Mind Smith Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
-				"You alter your weapon's phase so it can more easily strike incorporeal creatures. Your mind weapon gains the effects of a ghost touch property rune for 1 minute."
+				"You alter your weapon's phase so it can more easily strike incorporeal creatures. Your mind weapon gains the effects of a {@item ghost touch} property rune for 1 minute."
 			]
 		},
 		{
@@ -2569,7 +2569,7 @@
 				"archetype"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -2599,7 +2599,7 @@
 			],
 			"prerequisites": "{@feat Time Mage Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -2701,9 +2701,9 @@
 				"archetype",
 				"skill"
 			],
-			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}, trained in",
+			"prerequisites": "{@feat Curse Maelstrom Dedication|DA}, trained in {@skill Occultism} or {@skill Lore||Curse Lore}",
 			"entries": [
-				"{@skill Occultism} or {@skill Lore||Curse Lore} Perhaps due to the curse within you, curses occasionally perceive you as an extension of themselves and readily reveal themselves to you. You gain a +2 circumstance bonus to checks to {@action Identify Magic} on a cursed item or a spell that has the {@trait curse} trait."
+				"Perhaps due to the curse within you, curses occasionally perceive you as an extension of themselves and readily reveal themselves to you. You gain a +2 circumstance bonus to checks to {@action Identify Magic} on a cursed item or a spell that has the {@trait curse} trait."
 			]
 		},
 		{
@@ -2868,7 +2868,7 @@
 						"occult"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "day"
 					},
 					"entries": [
@@ -3237,7 +3237,7 @@
 			],
 			"prerequisites": "{@feat Alter Ego Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -3351,7 +3351,7 @@
 			],
 			"prerequisites": "{@feat Living Vessel Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -3408,7 +3408,7 @@
 			],
 			"prerequisites": "{@feat Living Vessel Dedication|DA}, your entity is a fey",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -3460,7 +3460,7 @@
 			],
 			"prerequisites": "{@feat Living Vessel Dedication|DA}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -3529,7 +3529,7 @@
 						"manipulate"
 					],
 					"frequency": {
-						"freq": 1,
+						"number": 1,
 						"unit": "round"
 					},
 					"requirements": "You are holding your implement",
@@ -4096,7 +4096,7 @@
 				"thaumaturge"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -4422,7 +4422,7 @@
 				"psychic"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"entries": [
@@ -4498,7 +4498,7 @@
 				"psychic"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "turn"
 			},
 			"requirements": "Your most recent action was to {@action Cast a Spell} or to {@action Unleash Psyche|DA|Unleash your Psyche}.",
@@ -4608,7 +4608,7 @@
 				"psychic"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"trigger": "You cast a psi cantrip.",
@@ -4874,7 +4874,7 @@
 				"psychic"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"trigger": "A spell you cast has no effect because you critically failed all your spell attack rolls or because all targets critically succeeded at their saving throws.",
@@ -5015,7 +5015,7 @@
 				"teleportation"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"requirements": "You used your most recent action to {@action Cast a Spell}.",
@@ -5057,7 +5057,7 @@
 				"psychic"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"trigger": "You successfully reduce one or more non-mindless enemies to 0 Hit Points with a spell.",
@@ -5138,7 +5138,7 @@
 				"psychic"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"entries": [

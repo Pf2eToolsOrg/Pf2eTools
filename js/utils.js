@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.7.12"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.8.0"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -347,10 +347,10 @@ CleanUtil.JSON_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.JSON_REPLAC
 // SOURCES =============================================================================================================
 SourceUtil = {
 	ADV_BOOK_GROUPS: [
-		{group: "core", displayName: "Core"},
-		{group: "lost-omens", displayName: "Lost Omens"},
-		{group: "homebrew", displayName: "Homebrew"},
-		{group: "other", displayName: "Miscellaneous"},
+		{ group: "core", displayName: "Core" },
+		{ group: "lost-omens", displayName: "Lost Omens" },
+		{ group: "homebrew", displayName: "Homebrew" },
+		{ group: "other", displayName: "Miscellaneous" },
 	],
 
 	isAdventure (source) {
@@ -2039,7 +2039,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ORGANIZATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CREATURETEMPLATE] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash(BrewUtil.hasSourceJson(it.source) ? [it.name, it.source] : [it.name]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2508,12 +2508,12 @@ DataUtil = {
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
-	userDownload (filename, data, {fileType = null, isSkipAdditionalMetadata = false, propVersion = "siteVersion", valVersion = VERSION_NUMBER} = {}) {
+	userDownload (filename, data, { fileType = null, isSkipAdditionalMetadata = false, propVersion = "siteVersion", valVersion = VERSION_NUMBER } = {}) {
 		filename = `${filename}.json`;
 		if (isSkipAdditionalMetadata || data instanceof Array) return DataUtil._userDownload(filename, JSON.stringify(data, null, "\t"), "text/json");
 
-		data = {[propVersion]: valVersion, ...data};
-		if (fileType != null) data = {fileType, ...data};
+		data = { [propVersion]: valVersion, ...data };
+		if (fileType != null) data = { fileType, ...data };
 		return DataUtil._userDownload(filename, JSON.stringify(data, null, "\t"), "text/json");
 	},
 
@@ -2523,15 +2523,15 @@ DataUtil = {
 
 	_userDownload (filename, data, mimeType) {
 		const a = document.createElement("a");
-		const t = new Blob([data], {type: mimeType});
+		const t = new Blob([data], { type: mimeType });
 		a.href = window.URL.createObjectURL(t);
 		a.download = filename;
-		a.dispatchEvent(new MouseEvent("click", {bubbles: true, cancelable: true, view: window}));
+		a.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
 		setTimeout(() => window.URL.revokeObjectURL(a.href), 100);
 	},
 
 	/** Always returns an array of files, even in "single" mode. */
-	pUserUpload ({isMultiple = false, expectedFileType = null, propVersion = "siteVersion"} = {}) {
+	pUserUpload ({ isMultiple = false, expectedFileType = null, propVersion = "siteVersion" } = {}) {
 		return new Promise(resolve => {
 			const $iptAdd = $(`<input type="file" ${isMultiple ? "multiple" : ""} accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
 				const input = evt.target;
@@ -2561,11 +2561,11 @@ DataUtil = {
 							out.push(json);
 						}
 					} catch (e) {
-						errs.push({filename: name, message: e.message});
+						errs.push({ filename: name, message: e.message });
 					}
 
 					if (input.files[readIndex]) reader.readAsText(input.files[readIndex++]);
-					else resolve({jsons: out, errors: errs});
+					else resolve({ jsons: out, errors: errs });
 				};
 
 				reader.readAsText(input.files[readIndex++]);
@@ -2712,6 +2712,11 @@ DataUtil = {
 
 			if (copyMeta._mod) normaliseMods(copyMeta);
 
+			// apply weak/elite adjustment to copied creature
+			if (copyMeta.creatureAdjustment) {
+				scaleCreature.applyAdjustment(copyFrom, copyMeta.creatureAdjustment.toLowerCase());
+			}
+
 			// copy over required values
 			Object.keys(copyFrom).forEach(k => {
 				if (copyTo[k] === null) return delete copyTo[k];
@@ -2796,44 +2801,51 @@ DataUtil = {
 				});
 			}
 
-			function doMod_prependArr (modInfo, prop) {
+			function doMod_prependArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				copyTo[prop] = copyTo[prop] ? modInfo.items.concat(copyTo[prop]) : modInfo.items
+				const current = getPropertyFromPath(copyTo, path);
+				const replacement = current ? modInfo.items.concat(current) : modInfo.items;
+				setPropertyFromPath(copyTo, replacement, path);
 			}
 
-			function doMod_appendArr (modInfo, prop) {
+			function doMod_appendArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				copyTo[prop] = copyTo[prop] ? copyTo[prop].concat(modInfo.items) : modInfo.items
+				const current = getPropertyFromPath(copyTo, path);
+				const replacement = current ? current.concat(modInfo.items) : modInfo.items;
+				setPropertyFromPath(copyTo, replacement, path);
 			}
 
-			function doMod_appendIfNotExistsArr (modInfo, prop) {
+			function doMod_appendIfNotExistsArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				if (!copyTo[prop]) return copyTo[prop] = modInfo.items;
-				copyTo[prop] = copyTo[prop].concat(modInfo.items.filter(it => !copyTo[prop].some(x => CollectionUtil.deepEquals(it, x))));
+				const current = getPropertyFromPath(copyTo, path);
+				if (!current) return setPropertyFromPath(copyTo, modInfo.items, path);
+				const replacement = arr.concat(modInfo.items.filter(it => !current.some(x => CollectionUtil.deepEquals(it, x))));
+				setPropertyFromPath(copyTo, replacement, path);
 			}
 
-			function doMod_replaceArr (modInfo, prop, isThrow = true) {
+			function doMod_replaceArr (modInfo, path, isThrow = true) {
 				doEnsureArray(modInfo, "items");
+				const current = getPropertyFromPath(copyTo, path);
 
-				if (!copyTo[prop]) {
-					if (isThrow) throw new Error(`Could not find "${prop}" array`);
+				if (!current) {
+					if (isThrow) throw new Error(`Could not find "${path}" array`);
 					return false;
 				}
 
 				let ixOld;
 				if (modInfo.replace.regex) {
 					const re = new RegExp(modInfo.replace.regex, modInfo.replace.flags || "");
-					ixOld = copyTo[prop].findIndex(it => it.idName || it.name ? re.test(it.idName || it.name) : typeof it === "string" ? re.test(it) : false);
+					ixOld = current.findIndex(it => it.idName || it.name ? re.test(it.idName || it.name) : typeof it === "string" ? re.test(it) : false);
 				} else if (modInfo.replace.index != null) {
 					ixOld = modInfo.replace.index;
 				} else {
-					ixOld = copyTo[prop].findIndex(it => it.idName || it.name ? it.idName || it.name === modInfo.replace : it === modInfo.replace);
+					ixOld = current.findIndex(it => it.idName || it.name ? it.idName || it.name === modInfo.replace : it === modInfo.replace);
 				}
 
 				if (~ixOld) {
-					copyTo[prop].splice(ixOld, 1, ...modInfo.items);
+					current.splice(ixOld, 1, ...modInfo.items);
 					return true;
-				} else if (isThrow) throw new Error(`Could not find "${prop}" item with name or title "${modInfo.replace}" to replace`);
+				} else if (isThrow) throw new Error(`Could not find "${path}" item with name or title "${modInfo.replace}" to replace`);
 				return false;
 			}
 
@@ -2893,6 +2905,13 @@ DataUtil = {
 				else applyTo(modInfo.prop);
 			}
 
+			function doMod_setProps (modInfo, path) {
+				doEnsureArray(modInfo, "items");
+				const current = getPropertyFromPath(copyTo, path);
+				const replacement = current ? Object.assign(current, modInfo.props) : modInfo.props;
+				setPropertyFromPath(copyTo, replacement, path);
+			}
+
 			function doMod (modInfos, ...properties) {
 				function handleProp (prop) {
 					modInfos.forEach(modInfo => {
@@ -2927,6 +2946,8 @@ DataUtil = {
 									return doMod_scalarAddProp(modInfo, prop);
 								case "scalarMultProp":
 									return doMod_scalarMultProp(modInfo, prop);
+								case "setProps":
+									return doMod_setProps(modInfo, prop);
 								default:
 									throw new Error(`Unhandled mode: ${modInfo.mode}`);
 							}
@@ -3034,6 +3055,8 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {
 			page: true,
 			otherSources: true,
+			hasImages: true,
+			description: true,
 		},
 		_mergeCache: {},
 		async pMergeCopy (crList, cr, options) {

@@ -40,6 +40,7 @@ class PlacesPage extends ListPage {
 				hash,
 				source,
 				category: it.category,
+				aliases: it.alias ? it.alias.join(" - ") : "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : cdI,

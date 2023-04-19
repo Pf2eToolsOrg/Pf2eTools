@@ -2,7 +2,6 @@
 	"creature": [
 		{
 			"name": "Asanbosam",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 80,
 			"level": 6,
@@ -115,8 +114,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				]
 			},
@@ -124,7 +122,6 @@
 		},
 		{
 			"name": "Belmazog",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 77,
 			"level": 9,
@@ -239,7 +236,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 27,
@@ -388,15 +384,13 @@
 				},
 				"hp": [
 					{
-						"hp": 145,
-						"abilities": null
+						"hp": 145
 					}
 				]
 			}
 		},
 		{
 			"name": "Bida",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 81,
 			"level": 8,
@@ -487,7 +481,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Innate",
 					"type": "Innate",
 					"tradition": "occult",
 					"DC": 26,
@@ -517,7 +510,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d6+6} bludgeoning, DC 26."
+							"{@damage 1d6+6} bludgeoning, DC 26"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -559,8 +552,7 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				],
 				"immunities": [
@@ -572,7 +564,6 @@
 		},
 		{
 			"name": "Biloko Veteran",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 83,
 			"level": 4,
@@ -674,7 +665,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 21,
@@ -690,21 +680,12 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+11 Str +4, Dex +4, Con +0, Int +0, Wis +3, Cha +2 Items longspear, shortbow (20 arrows)"
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -728,21 +709,10 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The veteran makes a melee {@action Strike} and compares the attack roll result."
+							"The veteran makes a melee {@action Strike} and compares the attack roll result to the AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit.",
+							"A Swipe counts as two attacks for the veteran's multiple attack penalty."
 						],
 						"name": "Swipe"
-					},
-					{
-						"entries": [
-							"AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit."
-						],
-						"name": "to the"
-					},
-					{
-						"entries": [
-							"Swipe counts as two attacks for the veteran's multiple attack penalty."
-						],
-						"name": "A"
 					}
 				]
 			},
@@ -763,8 +733,7 @@
 				},
 				"hp": [
 					{
-						"hp": 58,
-						"abilities": null
+						"hp": 58
 					}
 				]
 			},
@@ -772,7 +741,6 @@
 		},
 		{
 			"name": "Biloko Warrior",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 82,
 			"level": 1,
@@ -862,7 +830,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 17,
@@ -884,7 +851,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -921,8 +887,7 @@
 				},
 				"hp": [
 					{
-						"hp": 19,
-						"abilities": null
+						"hp": 19
 					}
 				]
 			},
@@ -930,7 +895,6 @@
 		},
 		{
 			"name": "Charau-ka Acolyte Of Angazhan",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 85,
 			"level": 3,
@@ -1044,7 +1008,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 21,
@@ -1114,7 +1077,7 @@
 						"name": "Shrieking Frenzy",
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						}
 					},
 					{
@@ -1142,8 +1105,7 @@
 				},
 				"hp": [
 					{
-						"hp": 45,
-						"abilities": null
+						"hp": 45
 					}
 				]
 			},
@@ -1151,7 +1113,6 @@
 		},
 		{
 			"name": "Charau-ka Butcher",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 85,
 			"level": 6,
@@ -1274,7 +1235,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"name": "Attack of Opportunity",
 						"generic": {
 							"tag": "ability"
@@ -1298,7 +1258,7 @@
 					},
 					{
 						"entries": [
-							"While the charau-ka butcher is raging, its melee {@action Strike||Strikes} deal {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+							"While the charau-ka butcher is raging, its melee {@action Strike||Strikes} deal {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Mauler"
 					},
@@ -1328,7 +1288,7 @@
 						"name": "Shrieking Frenzy",
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						}
 					},
 					{
@@ -1356,8 +1316,7 @@
 				},
 				"hp": [
 					{
-						"hp": 95,
-						"abilities": null
+						"hp": 95
 					}
 				]
 			},
@@ -1365,7 +1324,6 @@
 		},
 		{
 			"name": "Charau-ka Dragon Priest",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 59,
 			"level": 6,
@@ -1378,6 +1336,7 @@
 				"humanoid",
 				"uncommon"
 			],
+			"description": "Male charau-ka priest",
 			"perception": {
 				"std": 15
 			},
@@ -1495,7 +1454,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Divine Prepared",
 					"type": "Prepared",
 					"tradition": "divine",
 					"DC": 25,
@@ -1553,14 +1511,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+15, {@skill Survival} +13 Str +4, Dex +3, Con +2, Int +0, Wis +5, Cha +3 Items leather armor, +1 striking longsword."
-						],
-						"name": "Religion"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -1612,8 +1562,9 @@
 							"evocation",
 							"fire"
 						],
+						"requirements": "The priest is standing on the ground.",
 						"entries": [
-							"Requirement The priest is standing on the ground. The priest slams his fists into the ground, causing fire to erupt from the earth. Each non-worshipper of {@deity Dahak|LOGM} standing on the ground in a 15-foot emanation must succeed at a DC 25 Reflex save or fall {@condition prone} and take {@damage 1d6} bludgeoning damage and {@damage 2d6} fire damage."
+							"The priest slams his fists into the ground, causing fire to erupt from the earth. Each non-worshipper of {@deity Dahak|LOGM} standing on the ground in a 15-foot emanation must succeed at a DC 25 Reflex save or fall {@condition prone} and take {@damage 1d6} bludgeoning damage and {@damage 2d6} fire damage."
 						],
 						"name": "Volcanic Eruption"
 					}
@@ -1636,8 +1587,7 @@
 				},
 				"hp": [
 					{
-						"hp": 90,
-						"abilities": null
+						"hp": 90
 					}
 				],
 				"immunities": [
@@ -1649,7 +1599,6 @@
 		},
 		{
 			"name": "Charau-ka Warrior",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 84,
 			"level": 1,
@@ -1799,7 +1748,7 @@
 						],
 						"frequency": {
 							"unit": "hour",
-							"freq": 1
+							"number": 1
 						},
 						"trigger": "The charau-ka's turn begins.",
 						"entries": [
@@ -1832,8 +1781,7 @@
 				},
 				"hp": [
 					{
-						"hp": 18,
-						"abilities": null
+						"hp": 18
 					}
 				]
 			},
@@ -1841,7 +1789,6 @@
 		},
 		{
 			"name": "Ekujae Guardian",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 11,
 			"level": 2,
@@ -1890,6 +1837,13 @@
 				"wis": 2,
 				"cha": 0
 			},
+			"items": [
+				"black adder venom (6)",
+				"cold iron dagger",
+				"silver dagger",
+				"longbow (20 arrows)",
+				"studded leather"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -1942,7 +1896,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 16,
@@ -1968,14 +1921,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+6 Str +3, Dex +3, Con +0, Int +1, Wis +2, Cha +0 Items black adder venom (6), cold iron dagger, silver dagger, longbow (20 arrows), studded leather."
-						],
-						"name": "Survival"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -1983,8 +1928,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Ekujae guardian makes two {@action Strike||Strikes} against the same target, one with each of their daggers. The guardian combines the damage of any attacks that hit and applies precision damage, resistance, and weaknesses only once. Both attacks count toward the guardian's multiple attack penalty, but the penalty increases only after both attacks.",
-							"Primal Innate Spells DC 16; Cantrips (1st) dancing lights, detect magic, disrupt undead, tanglefoot."
+							"The Ekujae guardian makes two {@action Strike||Strikes} against the same target, one with each of their daggers. The guardian combines the damage of any attacks that hit and applies precision damage, resistance, and weaknesses only once. Both attacks count toward the guardian's multiple attack penalty, but the penalty increases only after both attacks."
 						],
 						"name": "Double Slice"
 					},
@@ -1993,7 +1937,7 @@
 							"precision"
 						],
 						"entries": [
-							"{@dice 1d6}."
+							"{@dice 1d6}"
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -2002,9 +1946,9 @@
 					},
 					{
 						"entries": [
-							"Ekujae guardian ignores {@quickref difficult terrain||3|terrain} from plants."
+							"The Ekujae guardian ignores {@quickref difficult terrain||3|terrain} from plants."
 						],
-						"name": "Woodland Stride The"
+						"name": "Woodland Stride"
 					}
 				]
 			},
@@ -2025,15 +1969,13 @@
 				},
 				"hp": [
 					{
-						"hp": 26,
-						"abilities": null
+						"hp": 26
 					}
 				]
 			}
 		},
 		{
 			"name": "Eloko",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 83,
 			"level": 7,
@@ -2131,7 +2073,7 @@
 						"range increment <20 feet>",
 						"reload <1>"
 					],
-					"damage": "1 piercing plus {@damage 2d4} {@condition persistent damage ||persistent poison}",
+					"damage": "1 piercing plus {@damage 2d4} {@condition persistent damage||persistent poison}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -2155,7 +2097,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 22,
@@ -2171,14 +2112,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+13 Str +6, Dex +5, Con +1, Int +0, Wis +4, Cha +1 Items blowgun (10 poisoned darts), +1 dagger."
-						],
-						"name": "Survival"
-					}
-				],
 				"bot": [
 					{
 						"traits": [
@@ -2186,7 +2119,7 @@
 							"mental"
 						],
 						"entries": [
-							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+							"If a eloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
 						],
 						"name": "Inspired Feast"
 					},
@@ -2236,8 +2169,7 @@
 				},
 				"hp": [
 					{
-						"hp": 115,
-						"abilities": null
+						"hp": 115
 					}
 				]
 			},
@@ -2245,7 +2177,6 @@
 		},
 		{
 			"name": "Gerhard Pendergrast",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 37,
 			"level": 8,
@@ -2256,6 +2187,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Male human explorer",
 			"perception": {
 				"std": 19
 			},
@@ -2266,11 +2198,17 @@
 				]
 			},
 			"skills": {
+				"azlanti lore": {
+					"std": 14
+				},
 				"deception": {
 					"std": 18
 				},
 				"diplomacy": {
 					"std": 12
+				},
+				"engineering lore": {
+					"std": 14
 				},
 				"intimidation": {
 					"std": 18
@@ -2283,9 +2221,6 @@
 				},
 				"survival": {
 					"std": 18
-				},
-				"azlanti lore": {
-					"std": 14
 				}
 			},
 			"abilityMods": {
@@ -2296,6 +2231,17 @@
 				"wis": -1,
 				"cha": 6
 			},
+			"items": [
+				"bag of holding type I (containing three kegs of black powder he intends to use at area {@b A10}, or empty if the PCs already confronted him at {@b A10}; see that area for more details)",
+				"shoddy blunderbuss",
+				"daggers (10)",
+				"grapeshot (10)",
+				"gunpowder (10)",
+				"+1 leather armor",
+				"monocle",
+				"tindertwigs (5)",
+				"+1 striking whip"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -2359,20 +2305,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+14, {@skill Intimidation} +18, {@skill Nature} +16"
-						],
-						"name": "Engineering Lore"
-					},
-					{
-						"entries": [
-							"+16, {@skill Survival} +18 Str +3, Dex +4, Con +5, Int +0, Wis \u20131, Cha +6 Items bag of holding type I (containing three kegs of black powder he intends to use at area A10, or empty if the PCs already confronted him at A10; see that area for more details), shoddy blunderbuss, daggers (10), grapeshot (10), gunpowder (10), +1 leather armor, monocle, tindertwigs (5), +1 striking whip."
-						],
-						"name": "Performance"
-					}
-				],
 				"mid": [
 					{
 						"activity": {
@@ -2399,7 +2331,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Gerhard fires an explosive shot from his blunderbuss that deals {@damage 4d6} bludgeoning damage plus {@damage 2d10} fire damage to all creatures in a 30- foot cone (DC 26 basic Reflex)",
+							"Gerhard fires an explosive shot from his blunderbuss that deals {@damage 4d6} bludgeoning damage plus {@damage 2d10} fire damage to all creatures in a 30-foot cone (DC 26 basic Reflex).",
 							"When firing the blunderbuss, Gerhard must succeed at a DC 20 {@skill Crafting} or {@skill Lore||Engineering Lore} check or the weapon explodes, damaging him for the same amount as the creatures in the cone and destroying itself. If someone other than Gerhard uses the weapon, they must critically succeed at the check. A successful DC 22 {@skill Crafting} check is enough to confirm the weapon's unstable nature if someone examines it beforehand.",
 							"Reloading the blunderbuss takes 3 {@action Interact} actions: adding 1 dose of gunpowder, adding 1 grapeshot canister, and packing the contents."
 						],
@@ -2438,15 +2370,13 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				]
 			}
 		},
 		{
 			"name": "Grippli Archer",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 87,
 			"level": 3,
@@ -2572,8 +2502,7 @@
 				},
 				"hp": [
 					{
-						"hp": 44,
-						"abilities": null
+						"hp": 44
 					}
 				]
 			},
@@ -2581,7 +2510,6 @@
 		},
 		{
 			"name": "Grippli Greenspeaker",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 87,
 			"level": 5,
@@ -2676,7 +2604,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
 					"type": "Prepared",
 					"tradition": "primal",
 					"DC": 23,
@@ -2745,14 +2672,7 @@
 				"top": [
 					{
 						"entries": [
-							"+11, {@skill Stealth} +11, {@skill Survival} +11 Str +2, Dex +4, Con +1, Int +1, Wis +4, Cha +0."
-						],
-						"name": "Religion"
-					},
-					{
-						"entries": [
-							"The greenspeaker can use {@skill Diplomacy} to {@action Make an Impression} on and make very simple Requests of plants and fungi.",
-							"Items dart (4), staff."
+							"The greenspeaker can use {@skill Diplomacy} to {@action Make an Impression} on and make very simple {@action Request||Requests} of plants and fungi."
 						],
 						"name": "Green Empathy"
 					}
@@ -2783,8 +2703,7 @@
 				},
 				"hp": [
 					{
-						"hp": 71,
-						"abilities": null
+						"hp": 71
 					}
 				]
 			},
@@ -2792,7 +2711,6 @@
 		},
 		{
 			"name": "Grippli Scout",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 86,
 			"level": 1,
@@ -2919,8 +2837,7 @@
 				},
 				"hp": [
 					{
-						"hp": 20,
-						"abilities": null
+						"hp": 20
 					}
 				]
 			},
@@ -2928,7 +2845,6 @@
 		},
 		{
 			"name": "Hezle",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 50,
 			"level": 8,
@@ -2939,6 +2855,7 @@
 				"humanoid",
 				"kobold"
 			],
+			"description": "Female kobold researcher",
 			"perception": {
 				"std": 14
 			},
@@ -2982,6 +2899,15 @@
 				"wis": 2,
 				"cha": 3
 			},
+			"items": [
+				"greater antidote",
+				"+1 crossbow (16 regular bolts and 4 wyvern poisoned bolts)",
+				"+1 dagger",
+				"moderate healing potions (2)",
+				"infused reagents (5)",
+				"leather armor",
+				"greater staff of fire"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3045,14 +2971,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+16, {@skill Survival} +12 Str \u20131, Dex +4, Con +2, Int +6, Wis +2, Cha +3 Items greater antidote, +1 crossbow (16 regular bolts and 4 wyvern poisoned bolts), +1 dagger, moderate healing potions (2), infused reagents (5), leather armor, greater staff of fire."
-						],
-						"name": "Stealth"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -3064,8 +2982,9 @@
 							"fire",
 							"interact"
 						],
+						"cost": "1 batch of infused reagents.",
 						"entries": [
-							"Cost 1 batch of infused reagents. Hezle quickly cobbles together an explosive bomb and lobs it up to 30 feet. All creatures in a 5-foot burst take {@damage 5d6} fire damage (DC 26 basic Reflex save)."
+							"Hezle quickly cobbles together an explosive bomb and lobs it up to 30 feet. All creatures in a 5-foot burst take {@damage 5d6} fire damage (DC 26 basic Reflex save)."
 						],
 						"name": "Kobold Explosives"
 					},
@@ -3078,8 +2997,19 @@
 							"manipulate"
 						],
 						"requirements": "Hezle must be adjacent to at least one enemy.",
+						"cost": "1 batch of infused reagents.",
 						"entries": [
-							"Cost 1 batch of infused reagents. Hezle throws a mix of special powders centered on a corner of her space, creating a plume of smoke filling a 5-foot burst until the end of her turn that causes her to be {@condition hidden}. She then immediately {@action Sneak||Sneaks}, but must end her movement in a space that's not adjacent to any enemies. All creatures other than Hezle in the smoke cloud must attempt a DC 26 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition sickened|CRB|sickened 1}. Failure The creature is {@condition sickened|CRB|sickened 2}. Critical Failure The creature is {@condition sickened|CRB|sickened 3} and {@condition stunned|CRB|stunned 1}."
+							"Hezle throws a mix of special powders centered on a corner of her space, creating a plume of smoke filling a 5-foot burst until the end of her turn that causes her to be {@condition hidden}. She then immediately {@action Sneak||Sneaks}, but must end her movement in a space that's not adjacent to any enemies.",
+							"All creatures other than Hezle in the smoke cloud must attempt a DC 26 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition sickened|CRB|sickened 1}.",
+									"Failure": "The creature is {@condition sickened|CRB|sickened 2}.",
+									"Critical Failure": "The creature is {@condition sickened|CRB|sickened 3} and {@condition stunned|CRB|stunned 1}."
+								}
+							}
 						],
 						"name": "Smoky Retreat"
 					},
@@ -3088,7 +3018,7 @@
 							"precision"
 						],
 						"entries": [
-							"{@dice 2d6}."
+							"{@dice 2d6}"
 						],
 						"name": "Sneak Attack",
 						"generic": {
@@ -3120,15 +3050,16 @@
 				},
 				"hp": [
 					{
-						"hp": 122,
-						"abilities": null
+						"hp": 122
 					}
+				],
+				"immunities": [
+					"poison"
 				]
 			}
 		},
 		{
 			"name": "Jahsi",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 11,
 			"level": 8,
@@ -3274,7 +3205,6 @@
 					}
 				},
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 24,
@@ -3350,15 +3280,13 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				]
 			}
 		},
 		{
 			"name": "Kishi",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 88,
 			"level": 8,
@@ -3437,7 +3365,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Innate",
 					"type": "Innate",
 					"tradition": "arcane",
 					"DC": 27,
@@ -3454,14 +3381,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+15, {@skill Stealth} +18 Str +6, Dex +4, Con +1, Int +1, Wis +2, Cha +5."
-						],
-						"name": "Society"
-					}
-				],
 				"bot": [
 					{
 						"activity": {
@@ -3521,8 +3440,7 @@
 				},
 				"hp": [
 					{
-						"hp": 138,
-						"abilities": null
+						"hp": 138
 					}
 				],
 				"resistances": [
@@ -3530,13 +3448,18 @@
 						"amount": 10,
 						"name": "piercing"
 					}
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "cold iron"
+					}
 				]
 			},
 			"hasImages": true
 		},
 		{
 			"name": "Living Sap",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 89,
 			"level": 6,
@@ -3649,8 +3572,7 @@
 				},
 				"hp": [
 					{
-						"hp": 175,
-						"abilities": null
+						"hp": 175
 					}
 				],
 				"immunities": [
@@ -3668,7 +3590,6 @@
 		},
 		{
 			"name": "Mokele-mbembe",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 90,
 			"level": 9,
@@ -3760,7 +3681,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Large or smaller, foot, DC 28."
+							"Large or smaller, foot, DC 28"
 						],
 						"name": "Trample",
 						"generic": {
@@ -3808,8 +3729,7 @@
 				},
 				"hp": [
 					{
-						"hp": 172,
-						"abilities": null
+						"hp": 172
 					}
 				]
 			},
@@ -3817,7 +3737,6 @@
 		},
 		{
 			"name": "Nketiah",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 79,
 			"level": 6,
@@ -3941,7 +3860,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Occult Spontaneous",
 					"type": "Spontaneous",
 					"tradition": "occult",
 					"DC": 24,
@@ -4021,16 +3939,10 @@
 							"level": 3,
 							"spells": [
 								{
-									"name": "inspire competence",
-									"notes": [
-										"Pathfinder Core Rulebook 386"
-									]
+									"name": "inspire competence"
 								},
 								{
-									"name": "inspire courage",
-									"notes": [
-										"Pathfinder Core Rulebook 386"
-									]
+									"name": "inspire courage"
 								}
 							]
 						},
@@ -4044,7 +3956,6 @@
 					}
 				},
 				{
-					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "primal",
 					"DC": 24,
@@ -4117,15 +4028,13 @@
 				},
 				"hp": [
 					{
-						"hp": 74,
-						"abilities": null
+						"hp": 74
 					}
 				]
 			}
 		},
 		{
 			"name": "Racharak",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 34,
 			"level": 8,
@@ -4310,8 +4219,7 @@
 				},
 				"hp": [
 					{
-						"hp": 135,
-						"abilities": null
+						"hp": 135
 					}
 				],
 				"immunities": [
@@ -4323,7 +4231,6 @@
 		},
 		{
 			"name": "Sabosan",
-			"isNpc": false,
 			"source": "AoA2",
 			"page": 91,
 			"level": 5,
@@ -4386,7 +4293,7 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 14,
-					"damage": "{@damage 2d8+4} piercing plus 1 {@condition persistent damage ||persistent bleed}",
+					"damage": "{@damage 2d8+4} piercing plus 1 {@condition persistent damage||persistent bleed}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -4486,8 +4393,7 @@
 				},
 				"hp": [
 					{
-						"hp": 78,
-						"abilities": null
+						"hp": 78
 					}
 				]
 			},

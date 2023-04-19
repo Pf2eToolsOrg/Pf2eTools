@@ -225,7 +225,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -462,7 +462,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Innate",
 					"tradition": "primal",
 					"type": "Innate",
 					"DC": 14,
@@ -518,7 +517,7 @@
 					{
 						"name": "Spores",
 						"entries": [
-							"A creature that takes damage from a follower of Shumfallow's spore pod {@action Strike} must succeed at a DC 15 Fortitude save or take 1 {@condition persistent damage ||persistent poison damage}. A creature has its vision reduced as long as the {@condition persistent damage} continues and can see only within 20 feet (or 10 feet, on a critical failure)."
+							"A creature that takes damage from a follower of Shumfallow's spore pod {@action Strike} must succeed at a DC 15 Fortitude save or take 1 {@condition persistent damage||persistent poison damage}. A creature has its vision reduced as long as the {@condition persistent damage} continues and can see only within 20 feet (or 10 feet, on a critical failure)."
 						]
 					}
 				]
@@ -797,7 +796,7 @@
 					],
 					"name": "alchemist's fire",
 					"attack": 9,
-					"damage": "{@damage 1d8} fire plus 1 {@condition persistent damage ||persistent fire} plus 1 fire splash"
+					"damage": "{@damage 1d8} fire plus 1 {@condition persistent damage||persistent fire} plus 1 fire splash"
 				}
 			],
 			"abilities": {
@@ -997,7 +996,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"requirements": "The gunner is flanked by two or more creatures and the gunner's pistol is loaded",
@@ -1140,7 +1139,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal",
 					"tradition": "primal",
 					"type": "Focus",
 					"DC": 18,
@@ -1612,7 +1610,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -2096,7 +2093,7 @@
 							"unit": "action"
 						},
 						"frequency": {
-							"freq": 3,
+							"number": 3,
 							"unit": "day"
 						},
 						"entries": [
@@ -2506,7 +2503,7 @@
 					],
 					"name": "buzz-saw knuckles",
 					"attack": 14,
-					"damage": "{@damage 2d6+5} slashing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}"
+					"damage": "{@damage 2d6+5} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}"
 				},
 				{
 					"range": "Ranged",
@@ -2533,7 +2530,7 @@
 					{
 						"name": "Armor",
 						"entries": [
-							"Class is reduced to 20, he loses his physical resistance, he can't use his really big gun, and his buzzsaw knuckles no longer cause {@condition persistent damage ||persistent bleed damage}."
+							"Class is reduced to 20, he loses his physical resistance, he can't use his really big gun, and his buzzsaw knuckles no longer cause {@condition persistent damage||persistent bleed damage}."
 						]
 					},
 					{
@@ -2569,8 +2566,7 @@
 						]
 					},
 					{
-						"name": "Climb, Leap, Stand, Step, or Stride.",
-						"entries": []
+						"name": "Climb, Leap, Stand, Step, or Stride."
 					},
 					{
 						"name": "Really Big Gun",
@@ -2723,8 +2719,7 @@
 			"abilities": {
 				"top": [
 					{
-						"name": "Ignan, Kelish, Osiriani",
-						"entries": []
+						"name": "Ignan, Kelish, Osiriani"
 					},
 					{
 						"name": "Infused",

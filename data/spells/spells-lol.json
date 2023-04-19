@@ -38,9 +38,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is marked by Achaekek's symbol. For 1 minute, the first time per round that the target gains {@condition persistent damage ||persistent bleed damage}, they immediately take that amount of slashing damage as the mantis claws grow off the symbol and rake them.",
+						"Success": "The target is marked by Achaekek's symbol. For 1 minute, the first time per round that the target gains {@condition persistent damage||persistent bleed damage}, they immediately take that amount of slashing damage as the mantis claws grow off the symbol and rake them.",
 						"Failure": "As success, but the curse has an unlimited duration.",
-						"Critical Failure": "As failure, but the DC on the target's flat check to remove {@condition persistent damage ||persistent bleed damage} increases to 20 (15 with particularly effective assistance)."
+						"Critical Failure": "As failure, but the DC on the target's flat check to remove {@condition persistent damage||persistent bleed damage} increases to 20 (15 with particularly effective assistance)."
 					}
 				}
 			]
@@ -210,8 +210,7 @@
 			],
 			"cast": {
 				"number": 10,
-				"unit": "minute",
-				"entry": "10 minutes"
+				"unit": "minute"
 			},
 			"components": [
 				[

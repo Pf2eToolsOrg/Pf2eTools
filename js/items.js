@@ -61,6 +61,7 @@ class ItemsPage extends ListPage {
 				price: item._sPrice,
 				bulk: item._fBulk,
 				category: cats.join(", "),
+				aliases: item.alias ? item.alias.join(" - ") : "",
 				_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.variantType} ${item.name}`).join(" - ") : "",
 			},
 			{

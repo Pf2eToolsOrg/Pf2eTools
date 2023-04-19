@@ -266,7 +266,7 @@
 							"1 minute"
 						],
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "hour"
 						},
 						"entries": [
@@ -408,7 +408,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"entries": [],
 						"generic": {
 							"tag": "ability"
 						}
@@ -426,7 +425,7 @@
 						],
 						"trigger": "Vewslog is about to roll a d20",
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"entries": [
@@ -486,10 +485,7 @@
 					"type": "precise"
 				},
 				{
-					"name": "low-light"
-				},
-				{
-					"name": "vision"
+					"name": "low-light vision"
 				}
 			],
 			"skills": {
@@ -626,10 +622,19 @@
 				"hp": [
 					{
 						"hp": 240,
-						"abilities": [
-							"(16 squares); Thresholds 160 (12 squares)",
-							"80 (8 squares)"
+						"notes": [
+							"16 squares"
 						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 160,
+						"squares": 12
+					},
+					{
+						"value": 80,
+						"squares": 8
 					}
 				],
 				"immunities": [
@@ -703,7 +708,7 @@
 							"entry": "{@as 1} to {@as 2}"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
@@ -1293,7 +1298,9 @@
 			],
 			"languages": {
 				"languages": [
-					"common",
+					"common"
+				],
+				"notes": [
 					"any languages spoken by its preserved heads"
 				]
 			},
@@ -1394,7 +1401,9 @@
 					"rituals": [
 						{
 							"name": "create undead",
-							"note": "mummies; skeletons; and zombies"
+							"notes": [
+								"mummies, skeletons, and zombies"
+							]
 						}
 					]
 				}
@@ -1630,7 +1639,7 @@
 					"name": "darkvision"
 				},
 				{
-					"name": "lifesense ",
+					"name": "lifesense",
 					"range": {
 						"unit": "feet",
 						"number": 60
@@ -1700,13 +1709,7 @@
 					{
 						"name": "all",
 						"amount": 10,
-						"note": "except force"
-					},
-					{
-						"name": "ghost touch"
-					},
-					{
-						"name": "or positive; double resistance vs. non-magical)"
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 					}
 				]
 			},
@@ -2037,7 +2040,7 @@
 							"unit": "reaction"
 						},
 						"frequency": {
-							"freq": 1,
+							"number": 1,
 							"unit": "day"
 						},
 						"trigger": "Anjelique fails or critically fails a saving throw",
@@ -2094,7 +2097,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Anjelique makes a ranged {@action Strike} and deals an additional {@damage 2d8} piercing damage on a hit. If the target is {@condition frightened}, it also takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} on a hit."
+							"Anjelique makes a ranged {@action Strike} and deals an additional {@damage 2d8} piercing damage on a hit. If the target is {@condition frightened}, it also takes {@damage 2d6} {@condition persistent damage||persistent bleed damage} on a hit."
 						]
 					}
 				]
@@ -2205,7 +2208,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 33,
@@ -2283,7 +2285,9 @@
 							"spells": [
 								{
 									"name": "elemental form",
-									"note": "earth only"
+									"notes": [
+										"earth only"
+									]
 								},
 								{
 									"name": "impaling spike",
@@ -2440,7 +2444,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Arcane Prepared",
 					"tradition": "arcane",
 					"type": "Prepared",
 					"DC": 31,
@@ -2508,11 +2511,11 @@
 								},
 								{
 									"name": "seal fate",
-									"source": "advanced players guide"
+									"source": "APG"
 								},
 								{
 									"name": "vampiric maiden",
-									"source": "advanced players guide"
+									"source": "APG"
 								}
 							]
 						},

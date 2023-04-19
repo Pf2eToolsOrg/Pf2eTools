@@ -545,6 +545,7 @@ class ArchetypesPage extends BaseComponent {
 				source,
 				rarity,
 				level: arc.dedicationLevel,
+				aliases: arc.alias ? arc.alias.join(" - ") : "",
 			},
 			{
 				$lnk,

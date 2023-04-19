@@ -139,7 +139,7 @@
 				"undine"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -168,7 +168,7 @@
 				"undine"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"trigger": "A creature hits you with a melee {@action Strike}.",
@@ -227,7 +227,7 @@
 			],
 			"prerequisites": "{@feat Beastbrood|LOAG}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"requirements": "You're {@condition hidden} to at least one enemy.",
@@ -256,7 +256,7 @@
 			],
 			"prerequisites": "{@feat Faultspawn|LOIL}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -326,7 +326,7 @@
 			],
 			"prerequisites": "{@feat Faultspawn|LOIL}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -488,7 +488,7 @@
 				"ghoran"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -538,7 +538,7 @@
 			],
 			"prerequisites": "Endless Memories",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -572,7 +572,7 @@
 				"poison"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -619,7 +619,7 @@
 				"occult"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"trigger": "You attempt a skill check requiring 3 actions or fewer.",
@@ -799,7 +799,7 @@
 			],
 			"prerequisites": "focus pool, at least one innate spell from a kashrishi heritage or ancestry feat that shares a tradition with at least one of your focus spells",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -833,7 +833,7 @@
 				"occult"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"trigger": "Your turn begins, and you're {@condition grabbed} or {@condition restrained}.",
@@ -867,7 +867,7 @@
 				"kashrishi"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"trigger": "You have the {@condition dying} condition and are about to attempt a recovery check.",
@@ -920,7 +920,7 @@
 				"occult"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -1005,7 +1005,7 @@
 				"visual"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -1052,12 +1052,12 @@
 				"nagaji"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
 				"You claw open the top layer of your scales and peel off the premature shed in order to remove harmful substances from your skin.",
-				"You immediately end all {@condition persistent damage} from effects that coat your skin (such as fire and most {@condition persistent damage ||persistent acid damage}). If you're suffering from an effect other than {@condition persistent damage} that depends on continuous contact with your skin, and if that effect allows a saving throw, immediately attempt a new saving throw against that effect."
+				"You immediately end all {@condition persistent damage} from effects that coat your skin (such as fire and most {@condition persistent damage||persistent acid damage}). If you're suffering from an effect other than {@condition persistent damage} that depends on continuous contact with your skin, and if that effect allows a saving throw, immediately attempt a new saving throw against that effect."
 			]
 		},
 		{
@@ -1069,7 +1069,7 @@
 				"nagaji"
 			],
 			"entries": [
-				"You've learned the art of lobbing toxic spittle at vulnerable spots on your foes, especially the eyes. You gain a venomous spit ranged unarmed attack with a range increment of 10 feet that deals {@damage 1d4} poison damage. On a critical hit, the target takes {@condition persistent damage ||persistent poison damage} equal to the number of weapon damage dice. Your spit doesn't have a weapon group, nor a critical specialization effect."
+				"You've learned the art of lobbing toxic spittle at vulnerable spots on your foes, especially the eyes. You gain a venomous spit ranged unarmed attack with a range increment of 10 feet that deals {@damage 1d4} poison damage. On a critical hit, the target takes {@condition persistent damage||persistent poison damage} equal to the number of weapon damage dice. Your spit doesn't have a weapon group, nor a critical specialization effect."
 			],
 			"special": [
 				"If you have the hooded nagaji heritage, in addition to your venomous spit's normal critical hit effect, the target is also {@condition dazzled} until the start of your next turn."
@@ -1089,7 +1089,7 @@
 			],
 			"prerequisites": "you possess a {@action Strike} from a nagaji heritage or ancestry feat that deals poison damage",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -1123,7 +1123,7 @@
 				"nagaji"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"entries": [
@@ -1203,7 +1203,7 @@
 				"occult"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -1353,7 +1353,7 @@
 				"vanara"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"trigger": "An adjacent creature you can see fails an attack roll against you.",
@@ -1446,7 +1446,7 @@
 				"vanara"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"trigger": "An adjacent {@condition observed} creature succeeds at an attack roll against you.",
@@ -1721,7 +1721,7 @@
 				"visual"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"requirements": "trained in {@skill Performance}",
@@ -1760,8 +1760,8 @@
 				{
 					"type": "affliction",
 					"name": "Moderate Vishkanyan Venom",
-					"freq": {
-						"freq": 10,
+					"number": {
+						"number": 10,
 						"unit": "minute"
 					},
 					"note": "Level 9",
@@ -1817,7 +1817,7 @@
 				"vishkanya"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"entries": [
@@ -1946,7 +1946,7 @@
 			],
 			"prerequisites": "trained in {@skill Medicine}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -2175,8 +2175,8 @@
 				{
 					"type": "affliction",
 					"name": "Greater Vishkanyan Venom",
-					"freq": {
-						"freq": 1,
+					"number": {
+						"number": 1,
 						"unit": "minute"
 					},
 					"note": "Level 17",
@@ -2248,7 +2248,7 @@
 			],
 			"prerequisites": "way of the triggerbrand",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "minute"
 			},
 			"requirements": "You're wielding a combination weapon.",
@@ -2261,20 +2261,36 @@
 			"name": "Shieldmarshal Dedication",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"level": 2,
 			"traits": [
+				"uncommon",
 				"archetype",
 				"dedication"
 			],
 			"entries": [
 				"Your elite shieldmarshal training makes you equally at home in the squalor of Smokeside and the splendor of Skyside. You're intimately familiar with the city's labyrinthine streets and statutes. You become trained in {@skill Society}; if you were already trained, you become an expert in {@skill Society} instead.",
 				"In urban environments, you can attempt {@skill Society} checks to {@action Sense Direction}. You also gain the Courtly Graces and {@feat Streetwise} skill feats."
+			],
+			"leadsTo": [
+				"Consolidated Overlay Panopticon|LOIL",
+				"Equitable Defense|LOIL",
+				"Counterclockwork Focus|LOIL"
 			]
 		},
 		{
 			"name": "Consolidated Overlay Panopticon",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -2283,9 +2299,9 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Shieldmarshal Dedication",
+			"prerequisites": "{@feat Shieldmarshal Dedication|LOIL}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "hour"
 			},
 			"entries": [
@@ -2296,6 +2312,11 @@
 			"name": "Equitable Defense",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"activity": {
 				"number": 1,
 				"unit": "reaction"
@@ -2304,9 +2325,9 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Shieldmarshal Dedication",
+			"prerequisites": "{@feat Shieldmarshal Dedication|LOIL}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"interval": 10,
 				"unit": "minute"
 			},
@@ -2319,6 +2340,11 @@
 			"name": "Counterclockwork Focus",
 			"source": "LOIL",
 			"page": 109,
+			"featType": {
+				"archetype": [
+					"Shieldmarshal"
+				]
+			},
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -2327,9 +2353,9 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Shieldmarshal Dedication",
+			"prerequisites": "{@feat Shieldmarshal Dedication|LOIL}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "round"
 			},
 			"entries": [
@@ -2462,7 +2488,7 @@
 			],
 			"prerequisites": "{@feat Fey Influence|LOIL}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -2526,7 +2552,7 @@
 			],
 			"prerequisites": "{@feat Fey Influence|LOIL}",
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
@@ -2682,7 +2708,7 @@
 				"ranger"
 			],
 			"frequency": {
-				"freq": 1,
+				"number": 1,
 				"unit": "day"
 			},
 			"entries": [
