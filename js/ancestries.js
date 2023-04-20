@@ -465,12 +465,6 @@ class AncestriesPage extends BaseComponent {
 		Object.keys(validHLookup).forEach(k => {
 			if (!seenKeys.has(k) && target[k]) target[k] = false;
 		});
-
-		// Kill Fluff for Paizo
-		const ctrlClick = jQuery.Event("click");
-		ctrlClick.ctrlKey = true;
-		$("button[title='Select All']").trigger(ctrlClick)
-
 		// Run the sync in the other direction, a loop that *should* break once the hash/state match perfectly
 		if (!isInitialLoad) this._setHashFromState();
 	}
@@ -567,6 +561,18 @@ class AncestriesPage extends BaseComponent {
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
+
+		$ele.on("click", () => {
+			setTimeout(() => {
+				// Kill Fluff for Paizo (at least fill the page with heritages if no fluff is shown)
+				const nxtState = {};
+				this._listHeritage.visibleItems.concat(this._listVeHeritage.visibleItems)
+					.filter(it => it.values.mod === "brew" || it.values.mod === "fresh")
+					.map(it => it.values.stateKey)
+					.forEach(stateKey => nxtState[stateKey] = true);
+				this._proxyAssign("state", "_state", "__state", nxtState);
+			}, 1);
+		})
 
 		return new ListItem(
 			ancI,
@@ -1358,8 +1364,11 @@ window.addEventListener("load", async () => {
 	ancestriesPage.pOnLoad()
 	// Kill Fluff for Paizo (at least fill the page with heritages if no fluff is shown)
 		.then(() => {
-			const ctrlClick = jQuery.Event("click");
-			ctrlClick.ctrlKey = true;
-			$("button[title='Select All']").trigger(ctrlClick)
+			const nxtState = {};
+			this._listHeritage.visibleItems.concat(this._listVeHeritage.visibleItems)
+				.filter(it => it.values.mod === "brew" || it.values.mod === "fresh")
+				.map(it => it.values.stateKey)
+				.forEach(stateKey => nxtState[stateKey] = true);
+			this._proxyAssign("state", "_state", "__state", nxtState);
 		})
 });
