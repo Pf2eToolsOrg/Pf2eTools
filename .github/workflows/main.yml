@@ -84,6 +84,7 @@ jobs:
             run: |
                zip -r -s 500m img-${{ env.RELEASE_VERSION }}.zip img/
          -  name: Upload Release
+            continue-on-error: true
             # Add the files one-by-one in an effort to avoid timeouts
             run: |
                hub release create -a pf2ools-${{ env.RELEASE_VERSION }}.zip -F RELEASE_NOTES.md ${{ env.RELEASE_VERSION }}
