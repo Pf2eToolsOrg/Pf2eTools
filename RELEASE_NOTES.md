@@ -1,3 +1,3 @@
-v0.8.1
+v0.8.2
 
-- Fixed a rendering bug related to spellcasting notes in creatures
+- Fixed a bug regarding being unable to turn on or off heritages on the ancestry page
