@@ -27,7 +27,7 @@ class HazardsPage extends ListPage {
 		const type = it.traits.includes("complex") ? "Complex" : "Simple";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold pl-0 col-4-2">${it.name}</span>
+			<span class="bold pl-0 col-4-2">${it.name}${it.add_hash ? `<span class="ve-muted"> (${it.add_hash})</span>` : ""}</span>
 			<span class="col-4-1 text-center">${type}</span>
 			<span class="col-1-7 text-center">${it.level}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
@@ -68,7 +68,7 @@ class HazardsPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-5-2 pl-0">${it.name}</span>
+				<span class="bold col-5-2 pl-0">${it.name}${it.add_hash ? `<span class="ve-muted"> (${it.add_hash})</span>` : ""}</span>
 				<span class="col-4-6 text-center">${type}</span>
 				<span class="col-2-2 pr-0 text-center">${it.level}</span>
 			</a>
