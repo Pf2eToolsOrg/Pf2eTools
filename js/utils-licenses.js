@@ -36,7 +36,8 @@ class UtilsLicenses {
 					"{@b {@b System Reference Document}} © 2000. Wizards of the Coast, Inc; Authors: Jonathan Tweet, Monte Cook, Skip Williams, based on material by E. Gary Gygax and Dave Arneson.",
 				],
 			},
-			{ "type": "hr" }];
+			{ "type": "hr" },
+		];
 		const $wrp = $(`#wrp-licenses`).empty();
 		const renderer = Renderer.get();
 		licenses = licenses.concat(sources.filter(it => it.unreleased !== true).map(it => { return { ...it, type: "pf2-h4" } }))

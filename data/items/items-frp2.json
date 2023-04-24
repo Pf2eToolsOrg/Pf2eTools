@@ -151,7 +151,7 @@
 			"bulk": "L",
 			"category": "Held",
 			"entries": [
-				"Large turquoise gems stud the outer edge of this sturdy {@runeItem composite shortbow||+3 weapon potency||greater striking||ghost touch||}. Arrows shot from the bow are unimpaired by wind and {@trait air} effects.",
+				"Large turquoise gems stud the outer edge of this sturdy {@runeItem composite shortbow||+3 weapon potency||greater striking||ghost touch|}. Arrows shot from the bow are unimpaired by wind and {@trait air} effects.",
 				{
 					"type": "ability",
 					"activity": {
@@ -159,8 +159,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (conjuration",
-						"teleportation)"
+						"{@action Interact}"
+					],
+					"traits": [
+						"conjuration",
+						"teleportation"
 					],
 					"frequency": {
 						"unit": "day",
@@ -178,8 +181,9 @@
 					},
 					"components": [
 						"command",
-						"Interact (electricity)"
+						"{@action Interact}"
 					],
+					"traits": ["electricity"],
 					"frequency": {
 						"unit": "hour",
 						"number": 1

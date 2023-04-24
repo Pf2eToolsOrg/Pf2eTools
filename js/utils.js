@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.8.2"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.8.3"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -2034,7 +2034,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIANTRULES] = (it) => UrlUtil.encodeFor
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ORGANIZATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CREATURETEMPLATE] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
