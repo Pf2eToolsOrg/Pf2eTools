@@ -884,8 +884,8 @@ class TokenizerUtils {
 
 	static get sensesTypes () {
 		return [
-			{regex: /precise/, type: "precise"},
 			{regex: /imprecise/, type: "imprecise"},
+			{regex: /precise/, type: "precise"},
 			{regex: /vague/, type: "vague"},
 		]
 	}
