@@ -1,3 +1,5 @@
-v0.8.2
+v0.8.3
 
-- Fixed a bug regarding being unable to turn on or off heritages on the ancestry page
+- Fixed text searching within the Items page
+- Add Quest for the Frozen Flame Hazards (thanks H2Os!)
+- (Typos/Tags)
