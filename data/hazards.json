@@ -1,6 +1,1072 @@
 {
 	"hazard": [
 		{
+			"name": "Pouncing Tiger Haunt",
+			"source": "QFF1",
+			"page": 42,
+			"level": 2,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 21,
+				"minProf": "trained"
+			},
+			"description": [
+				"A cave painting of a great cat roars to life and leaps off the wall to attack."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Nature} (trained) or {@skill Religion} (trained) to quell the spirit"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"std": 8
+				},
+				"hp": {
+					"std": 30
+				},
+				"bt": {
+					"std": 15
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "acid",
+						"amount": 5
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Tiger Slash",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature approaches within 5 feet of the cave painting",
+					"entries": [
+						"The haunt deals {@damage 4d8} slashing damage with semisolid claws (DC 18 basic Will save). On a failed save, the target is also {@condition frightened||frightened 1} and {@condition fleeing} for 1 round (or {@condition frightened||frightened 2} and {@condition fleeing} for 1 minute on a critical failure)."
+					]
+				}
+			],
+			"reset": [
+				"If the cave painting isn't destroyed, the haunt resets after 1 day"
+			]
+		},
+		{
+			"name": "Hail of Razor Stones",
+			"source": "QFF1",
+			"page": 46,
+			"level": 2,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 21,
+				"minProf": "trained"
+			},
+			"description": [
+				"When a {@condition concealed} cord is tripped, several sharp stones fall onto the square containing the cord."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} (trained) to safely cut the trip cord"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"std": 8
+				},
+				"hp": {
+					"std": 32
+				},
+				"bt": {
+					"std": 16
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Deadfall",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature walks into the square containing the trip cord",
+					"entries": [
+						"Falling rocks deal {@damage 4d8} slashing damage (DC 19 basic Reflex save) to any creature in the square, possibly pinning them to the ground.",
+						"On a failed save, the creature falls {@condition prone}; on a critical failure, the creature is {@condition immobilized} (DC 17 to {@action Escape}). An adjacent creature can attempt a DC 19 {@skill Athletics} check to shove the rocks aside to free an {@condition immobilized} creature."
+					]
+				}
+			]
+		},
+		{
+			"name": "Death's Slumber Ward",
+			"source": "QFF1",
+			"page": 57,
+			"level": 5,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 16,
+				"minProf": "expert"
+			},
+			"description": [
+				"A whirlwind of four ephemeral, magical threads dispels the undead and shrouds the living in an endless slumber."
+			],
+			"disable": {
+				"entries": [
+					"DC 23 {@skill Religion} (expert) or DC 21 {@skill Performance} (trained) to dissipate one of the four threads. Characters who failed or critically failed a {@skill Performance} check to participate in Grandfather Eiwa's funeral in Chapter 1 have been able to reflect on the experience; these characters gain a +2 circumstance bonus to their {@skill Performance} checks to disable this trap. The trap is destroyed when all four threads are dissipated."
+				]
+			},
+			"actions": [
+				{
+					"name": "Breath of Pharasma",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"trigger": "A living or undead creature opens the trunk",
+					"entries": [
+						"The ephemeral winds rise, sapping energy. All living and undead creatures within 60 feet must succeed at a DC 22 Will save or become {@condition slowed||slowed 1} ({@condition slowed||slowed 2} on a critical failure). The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(4 actions) Each thread of energy passes through a random living or undead creature within 60 feet, dealing {@dice 4d6} damage (DC 22 basic Will save) to the creature.",
+				"A thread deals negative damage to living creatures and positive damage to undead creatures. Each thread passes through a different random creature, if possible.",
+				"Each dissipated thread reduces the trap's number of actions by 1."
+			],
+			"reset": [
+				"The haunt deactivates 1 minute after no living or undead creatures are within 100 feet, then resets."
+			]
+		},
+		{
+			"name": "Acid Strongbox Trap",
+			"source": "QFF1",
+			"page": 60,
+			"level": 4,
+			"traits": [
+				"acid",
+				"evocation",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "trained"
+			},
+			"description": [
+				"An {@condition invisible} magic field around the strongbox releases a spray of acid when disturbed."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Thievery} (expert) to harmlessly bleed away the magical field or dispel magic (2nd level; counteract DC 20) to dispel it."
+				]
+			},
+			"actions": [
+				{
+					"name": "Acidic Spray",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"acid",
+						"arcane",
+						"evocation"
+					],
+					"trigger": "A creature touches the strongbox directly or with a held tool",
+					"entries": [
+						"The trap deals {@damage 4d8+10} acid damage in a 15-foot cone in the direction of the triggering creature (DC 21 basic Reflex save)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Falling Stalactites",
+			"source": "QFF2",
+			"page": 6,
+			"level": 3,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "trained"
+			},
+			"description": [
+				"Unstable stalactites fall from the ceiling."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Survival} (trained) to remove a stalactite without triggering a fall"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 12
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 42
+				},
+				"bt": {
+					"std": 21
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Fall",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A stalactite is damaged or touched",
+					"entries": [
+						"The stalactite falls, making an attack against each creature underneath."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "stalactite",
+					"attack": 16,
+					"damage": "{@damage 2d10+13} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Cave-In",
+			"source": "QFF2",
+			"page": 6,
+			"level": 4,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "trained"
+			},
+			"description": [
+				"The tunnel collapses, filling the passage with stone."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Survival} (trained) to prop up the tunnel ceiling without triggering a collapse"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 14
+					}
+				},
+				"hardness": {
+					"std": 13
+				},
+				"hp": {
+					"std": 46
+				},
+				"bt": {
+					"std": 23
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Collapse",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves into the unstable tunnel",
+					"entries": [
+						"The tunnel collapses in a cave-in that deals {@damage 4d8+10} bludgeoning damage to the triggering creature and all creatures in area A2 (DC 21 basic Reflex save). On a failed save, the triggering creature is {@condition immobilized} ({@action Escape} DC 21). This collapse fully blocks the tunnel (area A2), making it impassable."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oil Explosion",
+			"source": "QFF2",
+			"page": 7,
+			"level": 4,
+			"traits": [
+				"environmental",
+				"fire"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "trained"
+			},
+			"description": [
+				"The flammable oil catches flame and explodes, burning up in a ball of fire."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Survival} (trained) or DC 23 {@skill Crafting} to neutralize the oil without setting it alight"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 14
+					}
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Explode",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "An open flame is brought into area A4",
+					"entries": [
+						"The oil on the walls explodes, dealing {@damage 4d8+10} fire damage to all creatures and objects in areas A4 and A3 (DC 21 basic Reflex save)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rockfall Ceiling",
+			"source": "QFF2",
+			"page": 11,
+			"level": 5,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "trained"
+			},
+			"description": [
+				"A load of rocks, held up by a rope pulley, is dropped on the cavern's lower level."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Thievery} (trained) to pin the pulley in place"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 15
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Drop Rocks",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature holding the rope pulley pulls it",
+					"entries": [
+						"The net releases, dropping rocks on all creatures and objects in the lower half of area A15, dealing {@damage 4d8+14} bludgeoning damage (DC 26 basic Reflex save). The area then becomes difficult terrain."
+					]
+				}
+			]
+		},
+		{
+			"name": "Abyss-Warped Trees",
+			"source": "QFF2",
+			"page": 13,
+			"level": 4,
+			"traits": [
+				"unique",
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"dc": 12,
+				"minProf": "trained",
+				"notes": "to determine the trees can move"
+			},
+			"description": [
+				"A forest of fiendish trees swing their branches and shift their roots to bludgeon and trip creatures in the tainted grove (area A21)."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Survival} (trained) to find a location the trees can't reach or DC 24 {@skill Religion} to recite a prayer that temporarily casts out the fiendish energy inside a single tree in the grove, disabling it for 1 minute. A disabled or destroyed tree creates a 5-foot-square area in the grove that's safe from this hazard."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 14
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 40,
+					"notes": {
+						"std": "per tree"
+					}
+				},
+				"bt": {
+					"std": 20
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Shift Roots",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature ends its movement in the grove",
+					"entries": [
+						"The trees throughout the tainted grove shift their roots wildly, making the area difficult terrain, then the Abyss-warped trees roll initiative."
+					]
+				},
+				{
+					"name": "Tighten Grip",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "The Abyss-warped trees critically hit a creature with a branch {@action Strike}",
+					"entries": [
+						"The Abyss‑warped trees loop their branches around the triggering creature, grabbing it ({@action Escape} DC 21)."
+					]
+				}
+			],
+			"routine": [
+				"(4 actions) The Abyss-warped trees use their first action each round to lash their roots; each creature in the tainted grove must succeed at a DC 21 Reflex save or fall {@condition prone}. The Abyss-warped trees use their second, third, and fourth actions to make branch Strikes against up to three different creatures in the tainted grove."
+			],
+			"reset": [
+				"The Abyss-warped trees cease moving 1 minute after no living creatures are in the tainted grove.",
+				"They reset immediately. A disabled tree reanimates after 1 minute. A destroyed tree regrows after 1 month."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"attack": 14,
+					"damage": "{@damage 2d8+5} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Punishing Altar",
+			"source": "QFF2",
+			"page": 15,
+			"level": 4,
+			"traits": [
+				"unique",
+				"magical",
+				"necromancy",
+				"negative",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "trained",
+				"notes": "to notice the bowl is the center point for a magical trap"
+			},
+			"description": [
+				"The bowl releases a wave of negative energy when a living creature approaches without displaying a religious symbol of Venexus."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Thievery} (expert) to remove the bowl without triggering the magic, or dispel magic (2nd level, counteract DC 20) to counteract the runes"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 14
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 46
+				},
+				"bt": {
+					"std": 23
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Necromantic Wave",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature approaches within 10 feet of the bowl without displaying a religious symbol of Venexus",
+					"entries": [
+						"The bowl releases a wave of necromantic energy, dealing {@damage 4d8+10} negative damage (DC 21 basic Reflex save) to the triggering creature and all creatures in the area not displaying a religious symbol of Venexus. On a critical failure, a creature becomes {@condition drained||drained 1}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Final Flight",
+			"source": "QFF2",
+			"page": 26,
+			"level": 5,
+			"traits": [
+				"unique",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 26,
+				"minProf": "expert"
+			},
+			"description": [
+				"A creature experiences the death of a priest carried off by griffons and fed to their chicks."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Diplomacy} (trained) to soothe the restless spirits, or DC 24 {@skill Religion} (trained) to recite a prayer honoring the deceased; two successful checks are required to disable the haunt"
+				]
+			},
+			"actions": [
+				{
+					"name": "Final Flight",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"illusion",
+						"mental",
+						"occult"
+					],
+					"trigger": "A creature enters the gathering circle",
+					"entries": [
+						"The triggering creature experiences the last moments of the priest who once tended the Lea of Honored Souls. Griffons swoop down from the sky and snatch the priest up in their claws, dealing {@damage 1d8+7} slashing damage. They're carried southwest across the valley to a mountain peak and dropped into a nest of young griffons. As the chicks devour the priest, the character takes {@damage 1d8+7} piercing damage and {@damage 2d8} mental damage. The affected creature must then attempt a DC 22 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes half damage from all damage dealt by the haunt."
+								],
+								"Failure": [
+									"The creature takes full damage."
+								],
+								"Critical Failure": [
+									"The creature takes full damage and can't shake off the vision; they take {@damage 1d8} {@condition persistent damage ||persistent bleed damage} and are {@condition frightened||frightened 1}—believing they're being eaten alive—as long as the bleed damage persists."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"The haunt deactivates 1 minute after all living creatures leave the Lea of Honored Souls. Ten minutes after deactivating, the haunt resets."
+			]
+		},
+		{
+			"name": "Footsteps of Legends",
+			"source": "QFF2",
+			"page": 31,
+			"level": 5,
+			"traits": [
+				"unique",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "expert"
+			},
+			"description": [
+				"The characters witness Burning Mammoths walking this mountain pass in ages long past."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Diplomacy} (trained) to convince the spirits to remain dormant, or DC 26 {@skill Religion} (trained) to ritually silence the spirits"
+				]
+			},
+			"actions": [
+				{
+					"name": "Ancestral Journey",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A good-aligned spiritual descendant of the Burning Mammoth following enters the mountain pass",
+					"entries": [
+						"Burning Mammoths from long ago appear alongside the party, walking the mountain pass as one united following. They walk in the footsteps of ancestors, heroes, and legends. Each creature that witnesses the vision gains a +1 status bonus to Will saving throws and all skill checks for 24 hours."
+					]
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Forest Fire",
+			"source": "QFF2",
+			"page": 35,
+			"level": 4,
+			"traits": [
+				"complex",
+				"environmental",
+				"fire"
+			],
+			"stealth": {
+				"bonus": -10
+			},
+			"description": [
+				"A 10-foot-by-10-foot bonfire spreads to the surrounding forest on each of its turns."
+			],
+			"disable": {
+				"entries": [
+					"A successful DC 22 {@skill Athletics}, {@skill Nature}, or {@skill Survival} check from an adjacent square is sufficient to smother one 5-foot-square of fire; each attempt is an {@action Interact} action. Dousing the flames automatically extinguishes one or more sections of fire, with no check. Water typically clears a 5-foot square if the amount is small (such as from a spell like create water or hydraulic push). Larger amounts of water, such as a full bucket, typically douse a 10-foot-by-10-foot area (or 4 squares in some other shape). Throwing a bucket of water on flames requires an {@action Interact} action. A waterskin doesn't contain enough water to put out even 1 square of fire.",
+					"Cold can also put out fire, but only if the cold can affect an area; cold is less effective than water, so a frost vial puts out only 1 square of fire, and a ray of frost is ineffective."
+				]
+			},
+			"actions": [
+				{
+					"name": "Stoke Flames",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A brimorak urges the fire to spread out of control",
+					"entries": [
+						"The bonfire becomes a forest fire and rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"On its turn, the fire spreads into a number of additional squares equal to half the number of squares the fire currently occupies (minimum 1 square). You determine the squares the fire spreads into. Any creature that ends its turn next to the flames takes {@damage 2d8+5} fire damage, or {@damage 4d8+10} fire damage if it ended its turn within the flames (DC 25 basic Reflex save in either case). A creature can take damage from the forest fire only once per round."
+			]
+		},
+		{
+			"name": "Soul Draining Cage",
+			"source": "QFF2",
+			"page": 38,
+			"level": 6,
+			"traits": [
+				"magical",
+				"necromancy",
+				"negative",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert",
+				"notes": "or detect magic"
+			},
+			"description": [
+				"Necromantic runes inscribed on the cage bars and lock drain the vitality of living creatures who interact with the cage."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 25 (expert) to drain the runes' power harmlessly or dispel magic (3rd level; counteract DC 22) to counteract the rune"
+				]
+			},
+			"actions": [
+				{
+					"name": "Soul Drain",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"necromancy",
+						"negative"
+					],
+					"trigger": "A creature touches the cage bars, door, or lock directly or with a tool",
+					"entries": [
+						"The trap deals {@damage 4d8+18} negative damage to the triggering creature, creatures inside the cage, and all creatures adjacent to the cage (DC 27 basic Fortitude save). On a failed save, a creature is also {@condition drained||drained 1}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Methane Flue",
+			"source": "QFF3",
+			"page": 33,
+			"level": 8,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 28,
+				"minProf": "expert",
+				"notes": "to hear hissing gas"
+			},
+			"description": [
+				"{@condition Invisible} but highly flammable natural gas has built up beneath the ground, where geological pressure can ignite it."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Survival} DC 28 to dig around the vent in a way that diffuses the fumes"
+				]
+			},
+			"actions": [
+				{
+					"name": "Flame Spurt",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves within 5 feet of the flue",
+					"entries": [
+						"A fiery geyser of flaming gas explodes from the ground. Creatures within 5 feet of the flue take {@damage 4d10} fire damage (DC 30 basic Reflex save); creatures that fail the save also take {@damage 4d10} {@condition persistent damage ||persistent fire damage}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tar Pit",
+			"source": "QFF3",
+			"page": 34,
+			"level": 9,
+			"traits": [
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"dc": 30,
+				"minProf": "expert"
+			},
+			"description": [
+				"A 15-foot-wide patch of tar covered with dirt and leaves attempts to capture creatures that step onto it."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Survival} DC 25 (expert) to disturb the surface and reveal the tar pit"
+				]
+			},
+			"actions": [
+				{
+					"name": "Capture",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A Huge or smaller creature walks onto the tar pit",
+					"entries": [
+						"The triggering creature sinks into the tar pit up to its waist. The tar pit rolls initiative if it hasn't already."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) On its initiative, the tar pit pulls down each creature within it, thick tar adhering to the creature's body. A creature that was submerged up to its waist becomes submerged up to its neck, and a creature that was submerged up to its neck is pulled under and must hold its breath to avoid suffocation.",
+				"A creature in the tar pit can attempt a DC 33 {@skill Athletics} check to {@action Climb} to either raise itself by one step (if it's submerged to its neck or full submerged) or to move 5 feet if it's submerged only up to its waist. On a critical failure, the creature is pulled down one step. Other creatures can {@action Aid} the creature, typically by using a rope or similar aid or by attempting to pull the creature out with their own DC 33 {@skill Athletics} check, with the same results as if the creature attempted the check. In addition to the usual results, a character adjacent to the tar pit who critically fails while Aiding moves into the tar pit. A creature that Climbs out of the tar pit escapes the hazard and lands {@condition prone} in an adjacent space."
+			],
+			"reset": [
+				"Though the hazard still captures anyone who touches it, the surface doesn't become {@condition hidden} again until it settles, which takes 24 hours."
+			]
+		},
+		{
+			"name": "Shattering Rune",
+			"source": "QFF3",
+			"page": 37,
+			"level": 9,
+			"traits": [
+				"evocation",
+				"magical",
+				"sonic",
+				"trap"
+			],
+			"stealth": {
+				"dc": 33,
+				"minProf": "master"
+			},
+			"description": [
+				"A magical rune is inscribed on the tarry earth at the entrance to the hut, buried beneath snow, with an {@condition invisible} sensor that detects creatures within a 10-foot-radius sphere."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 30 (master) to erase the rune without triggering the sensor or dispel magic (5th level; counteract DC 28) to dispel the rune"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shattering Shockwave",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"evocation",
+						"sonic"
+					],
+					"trigger": "A Small or larger creature comes within 10 feet of the rune",
+					"entries": [
+						"The rune unleashes a deafening peal of thunder that deals {@damage 10d8} sonic damage in a 20-foot burst (DC 30 basic Reflex save)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spectral Archers",
+			"source": "QFF3",
+			"page": 49,
+			"level": 8,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 28,
+				"minProf": "expert"
+			},
+			"description": [
+				"Ghostly soldiers wielding crossbows manifest within the towers that flank the gatehouse and rain bolts down upon intruders."
+			],
+			"disable": {
+				"entries": [
+					"DC 31 {@skill Intimidation} (expert) to cow the archers into {@condition fleeing} or DC 28 {@skill Religion} (expert) to temporarily banish the spirits"
+				]
+			},
+			"actions": [
+				{
+					"name": "Rain of Bolts",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature attacks the graveknights in area G1 or enters the castle",
+					"entries": [
+						"The haunt makes a spectral bolt {@action Strike} against the triggering creature, then rolls initiative."
+					]
+				},
+				{
+					"name": "Continuous Barrage",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "A creature in front of the gate finishes an action",
+					"entries": [
+						"The haunt makes a spectral bolt {@action Strike} against the triggering creature."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The hazard fires one bolt at every creature in a 30-foot-by-30-foot area in front of the gate as 1 action. Because the spectral archers fire bolts continuously, the haunt can also use the Continuous Barrage free action (below) to fire bolts at each creature during that creature's turn."
+			],
+			"reset": [
+				"The haunt vanishes permanently if the graveknights are destroyed. Otherwise, it returns after 1 hour."
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "spectral bolt",
+					"attack": 20,
+					"damage": "{@damage 2d10+11} negative",
+					"noMAP": true
+				}
+			]
+		},
+		{
+			"name": "Hall of Fiery Doom",
+			"source": "QFF3",
+			"page": 50,
+			"level": 10,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 32,
+				"minProf": "master"
+			},
+			"description": [
+				"While the roof is on fire and collapsing timbers crush those within the hall, demons fly down from the sky to pluck victims from the flames."
+			],
+			"disable": {
+				"entries": [
+					"two DC 32 {@skill Athletics} or {@skill Diplomacy} checks to douse the flames; {@skill Athletics} to do the work yourself or {@skill Diplomacy} to muster the ghostly soldiers. This reduces the hazard's actions by 1 and prevents it from using"
+				]
+			},
+			"actions": [
+				{
+					"name": "Burning Timbers.",
+					"entries": [
+						"Banish the demons with up to two DC 35 {@skill Arcana}, {@skill Occultism}, or {@skill Religion} checks; each success reduces the hazard's actions by 1, and two successes prevent it from using Demonic Abduction. When the hazard loses all 3 actions, Burning Timbers, and Demonic Abduction, it's disabled."
+					]
+				},
+				{
+					"name": "Burst of Fire",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature enters the hall or ends its turn in the hall",
+					"entries": [
+						"The hall bursts into flame, dealing {@damage 4d6} fire damage to each creature in the hall. The haunt then rolls initiative."
+					]
+				},
+				{
+					"name": "Burning Timbers",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Creatures within the 30-foot by 90-foot area of the hall take {@damage 4d6+12} fire damage (DC 29 basic Reflex save)."
+					]
+				},
+				{
+					"name": "Demonic Abduction",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Spectral demons lift a single creature 50 feet into the air and drop it. The haunt makes a {@action Strike} against the creature with a +23 attack bonus. On a success, the creature is lifted into the air and dropped, taking 25 bludgeoning damage, though it might negate some or all this damage using a spell, such as feather fall.",
+						"On a critical hit, the creature also takes {@damage 2d12+13} slashing damage as the demons' claws tear through its flesh."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The haunt spends 1 action to fill the hall with burning timbers falling from above, and 2 actions to pluck up random victims and drop them to their deaths."
+			],
+			"reset": [
+				"The hall falls quiet for 24 hours, after which it can trigger again."
+			]
+		}
+	]
+}
+{
 			"name": "Collapsing Structure",
 			"source": "LOMM",
 			"page": 40,
