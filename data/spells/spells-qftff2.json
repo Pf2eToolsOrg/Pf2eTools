@@ -1,0 +1,110 @@
+{
+	"spell": [
+		{
+			"name": "Bone Spray",
+			"source": "QFF2",
+			"page": 76,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"necromancy"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You fire a torrent of jagged bone shards from your hands, dealing {@damage 2d10} piercing damage and 1 {@condition persistent damage||persistent bleed damage} to all creatures in the area."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The piercing damage increases by {@damage 1d10} and the {@condition persistent damage||persistent bleed damage} increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Boneshaker",
+			"source": "QFF2",
+			"page": 76,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"necromancy"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+				"cast": {
+				"number": 2,
+				"unit": "varies",
+				"entry": "{@as 2} to {@as 3}"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"targets": "1 creature with a skeleton",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"You reach out a hand and seize a creature's skeleton from afar, harming their body and potentially wrenching them by the bones to move them against their will. The number of actions you spend when Casting this Spell determines the spell's effects. Regardless of the number of actions spent to Cast this Spell, the target must attempt a Fortitude save. {@as 2} (somatic, verbal) You clench your fist, painfully compressing the target's bones and dealing {@damage 3d8} bludgeoning damage.",
+				"{@as 3} (material, somatic, verbal) As the 2-action version, plus you pull the target's body by their bones, moving them around like an awkward marionette. This movement follows the rules for forced movement.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes half damage. If you cast the 3-action version, you can move the target up to 5 feet; it can choose to fall {@condition prone} to avoid moving."
+						],
+						"Failure": [
+							"The target takes full damage and is {@condition enfeebled||enfeebled 1}. If you cast the 3-action version, you can move the target up to 15 feet; it can fall {@condition prone} to avoid moving."
+						],
+						"Critical Failure": [
+							"The target takes double damage and is {@condition enfeebled||enfeebled 2}. If you cast the 3-action version, you can move the target up to 25 feet, then knock the target {@condition prone}; if you attempt to move the target to a hazardous location, such as into a pool of acid or off a cliff, it can fall {@condition prone} to avoid moving."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage increases by {@damage 3d8}."
+					]
+				}
+			}
+		}
+	]
+}
