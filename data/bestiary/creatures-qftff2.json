@@ -1,0 +1,4666 @@
+{
+	"creature": [
+		{
+			"name": "Ashen Swale",
+			"source": "QFF2",
+			"page": 88,
+			"description": "Male human god caller",
+			"level": 7,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 13
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"hallit",
+					"necril",
+					"sylvan"
+				],
+				"abilities": [
+					"telepathy 100 feet (Idovik only)"
+					]
+				},
+				"skills": {
+					"acrobatics": {
+						"std": 12
+					},
+					"arcana": {
+						"std": 15
+					},
+					"deception": {
+						"std": 17
+				},
+				"intimidation": {
+					"std": 17
+				},
+				"nature": {
+					"std": 15
+				},
+				"survival": {
+					"std": 13
+				},
+				"thievery": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 1,
+				"con": 3,
+				"int": 2,
+				"wis": 2,
+				"cha": 4
+			},
+			"items": [
+				"+1 spear",
+				"sure-step crampons (page 81)",
+				"wand of heal (3rd-level)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 120
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"thrown 20 feet"
+					],
+					"name": "spear",
+					"attack": 14,
+					"damage": "{@damage 1d6+4} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Spontaneous",
+					"DC": 25,
+					"attack": 17,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "light"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "bind undead"
+								},
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "envenom companion",
+									"source": "som"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "animate dead"
+								},
+								{
+									"name": "bone spray",
+									"source": "QFF2"
+								},
+								{
+									"name": "boneshaker",
+									"source": "QFF2"
+								},
+								{
+									"name": "enervation"
+								}
+							]
+						}
+					}
+				},
+				{
+					"type": "Focus",
+					"name": "Summoner Conduit",
+					"DC": 25,
+					"fp": 1,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "boost eidolon",
+									"source": "som"
+								},
+								{
+									"name": "reinforce eidolon",
+									"source": "som"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "create undead"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Siphon Life",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"concentrate",
+							"necromancy",
+							"positive",
+							"primal"
+						],
+						"trigger": "A creature within 30 feet uses a spell or ability with the {@trait healing} trait that restores Hit Points or is the target of a spell or ability with the {@trait healing} trait that restores Hit Points",
+						"entries": [
+							"Ashen Swale seizes upon the healing magic, drawing a portion of it into himself instead of the intended target. The {@trait healing} effect restores 10 fewer Hit Points to one of its targets and Ashen Swale is restored 10 Hit Points or the total amount of healing, whichever is less."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Corpse Puppet",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"enchantment",
+							"incapacitation",
+							"manipulate",
+							"necromancy",
+							"primal"
+						],
+						"entries": [
+							"Ashen Swale seizes control of the body of a creature within 30 feet that is dead or {@condition unconscious}. The target must attempt a Will save. Dead creatures automatically fail this save. On a success, the target is permanently immune to Corpse Puppet. On a failure, the target is {@condition controlled} by Ashen Swale. It gains the {@trait minion} trait and can act as though it were alive and conscious as long as it's {@condition controlled} by Ashen Swale. Controlling each target requires Ashen Swale to take an action to Command a Minion. The only actions the target can take during this time are {@action Interact}, {@action Stride}, and {@action Strike}."
+						]
+					},
+					{
+						"name": "Ashen",
+						"entries": [
+							"Swale retains control of the target for 10 minutes. This control ends immediately if the target loses the {@condition unconscious} condition or the target is dealt an additional 50 damage since Ashen Swale took control (which destroys the body completely). After he has lost control of a target, that target is permanently immune to Corpse Puppet.",
+							"Ashen Swale can control up to two targets with Corpse Puppet at a time."
+						]
+					},
+					{
+						"name": "Hasten Eidolon",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Ashen Swale focuses on the link he shares with Idovik to quicken his eidolon's actions. Idovik is {@condition quickened||quickened 1} until the beginning of Ashen Swale's next turn."
+						]
+					},
+					{
+						"name": "Manifest Eidolon",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"conjuration",
+							"magical",
+							"manipulate",
+							"teleportation"
+						],
+						"entries": [
+							"Ashen Swale summons Idovik in an adjacent open space. If Idovik was already manifested, Ashen Swale chooses whether to unmanifest Idovik or to teleport Idovik to an adjacent open space. If Idovik unmanifested at 0 Hit Points, this process takes 1 minute instead of 3 actions, but Idovik regains 1 Hit Point when he remanifests."
+						],
+						"generic": {
+							"tag": "action",
+							"source": "SoM"
+						}
+					},
+					{
+						"name": "Transpose",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"conjuration",
+							"manipulate",
+							"primal",
+							"teleportation"
+						],
+						"entries": [
+							"With a flash, Ashen Swale and Idovik switch places, each teleporting to the other's position."
+						],
+						"generic": {
+							"tag": "feat",
+							"source": "SoM"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Desiak",
+			"source": "QFF2",
+			"page": 53,
+			"description": "Male fleshwarp warrior (Pathfinder Lost Omens Ancestry Guide 88)",
+			"level": 8,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"aberration",
+				"humanoid"
+			],
+			"perception": {
+				"std": 16
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"hallit",
+					"necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 18
+				},
+				"athletics": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 4,
+				"con": 3,
+				"int": 2,
+				"wis": 1,
+				"cha": 0
+			},
+			"items": [
+				"+1 breastplate",
+				"bone religious symbol (Venexus)",
+				"runescribed disk (page 80)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 13
+					},
+					"abilities": [
+						"+1 status to all saves vs. disease and poisons"
+					]
+				},
+				"hp": [
+					  {
+						"hp": 135
+					  }
+				],
+				"resistances": [
+					{
+						"name": "negative",
+						"amount": 4
+					}
+				     ] 
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "bone spur",
+					"attack": 20,
+					"damage": "{@damage 2d10+6} piercing plus {@damage 1d10} negative"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 20,
+					"damage": "{@damage 2d8+6} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range increment 30 feet"
+					],
+					"name": "bone bolt",
+					"attack": 20,
+					"damage": "{@damage 1d10+6} piercing plus {@damage 1d10} negative"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Dual Assault",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Desiak makes either two claw Strikes or a bone spur {@action Strike} and a claw {@action Strike}. Both Strikes are against the same target and are made with his current multiple attack penalty. This counts as two attacks when calculating Desiak's multiple attack penalty."
+						]
+					},
+					{
+						"name": "Erupt Bone Spur",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Desiak forces his bones to erupt from or retract back into his flesh. While his bones protrude from his flesh, he can use a bone spur {@action Strike}. On a critical hit with a bone spur, Desiak can drain his target's vital energy to restore a number of Hit Points equal to half the damage dealt."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Azi",
+			"source": "QFF2",
+			"page": 54,
+			"description": "Female human necromancer",
+			"level": 8,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 19
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"hallit",
+					"necril"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 13
+				},
+				"deception": {
+					"std": 16
+				},
+				"diplomacy": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 18
+				},
+				"religion": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 2,
+				"int": 1,
+				"wis": 4,
+				"cha": 4
+			},
+			"items": [
+				"staff of necromancy"
+			],
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 97
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"two-hand d8"
+					],
+					"name": "staff",
+					"attack": 15,
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Spontaneous",
+					"DC": 26,
+					"attack": 18,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "guidance"
+								}
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "bane"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "harm"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "bone spray",
+									"source": "QFF2"
+								},
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "false life"
+								},
+								{
+									"name": "sudden blight"
+								}
+							]
+						},
+						"3": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "bind undead"
+								},
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "false life"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "air walk"
+								},
+								{
+									"name": "boneshaker",
+									"source": "QFF2"
+								},
+								{
+									"name": "enervation"
+								},
+								{
+									"name": "talking corpse"
+								}
+							]
+						}
+					}
+				},
+				{
+					"type": "Focus",
+					"name": "Sorcerer Bloodline",
+					"DC": 26,
+					"fp": 2,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "drain life"
+								},
+								{
+									"name": "undeath's blessing"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Bloodline Magic",
+						"entries": [
+							"When Azi casts bind undead, drain life, false life, harm, talking corpse, or undeath's blessing, either Azi gains temporary Hit Points equal to the spell's level for 1 round, or a target takes 1 negative damage per spell level (if the spell already deals initial negative damage, combine this with the spell's initial damage before determining weaknesses and resistances)."
+						]
+					},
+					{
+						"name": "Reach Spell",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"metamagic"
+						],
+						"entries": [
+							"Azi can extend the range of her spells. If the next action Azi uses is to {@action Cast a Spell} that has a range, increase that spell's range by 30 feet. If the spell normally has a range of touch, Azi extends its range to 30 feet."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Bargott",
+			"source": "QFF2",
+			"page": 33,
+			"description": "Male dryad husk (Battlezoo Bestiary 45)",
+			"level": 3,
+			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"fey",
+				"nymph",
+				"plant"
+			],
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"elven",
+					"sylvan"
+				],
+				"abilities": [
+					"speak with plants"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 9
+				},
+				"athletics": {
+					"std": 10
+				},
+				"intimidation": {
+					"std": 11
+				},
+				"nature": {
+					"std": 11
+				},
+				"stealth": {
+					"std": 11
+				},
+				"survival": {
+					"std": 9
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": 1,
+				"wis": 2,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 70
+					}
+				],
+				"immunities": [
+					"emotion effects"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse",
+						"magical",
+						"reach 10 feet"
+					],
+					"name": "blighted branch",
+					"attack": 11,
+					"damage": "{@damage 1d10+7} bludgeoning plus draining impact"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 11,
+					"damage": "{@damage 1d8+7} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 17,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkness"
+								},
+								{
+									"name": "shatter"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "fear"
+								}
+							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "speak with plants"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Draining Impact",
+						"traits": [
+							"primal"
+						],
+						"entries": [
+							"When Bargott hits a creature with his blighted branch {@action Strike}, the creature must attempt a DC 20 Fortitude save. Whatever the result, the creature is immune to Bargott's draining impact for 24 hours.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The creature is unaffected."
+									],
+									"Failure": [
+										"The creature is {@condition drained||drained 1}."
+									],
+									"Critical Failure": [
+										"The creature is {@condition drained||drained 2}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Impart Anguish",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"mental",
+							"primal",
+							"visual"
+						],
+						"entries": [
+							"Bargott twists his face into a visage of utter agony, sharing his anguish with those who gaze upon him. Creatures in a 15-foot cone take {@damage 3d6} mental damage (DC 19 basic Will save). On a critically failed save, the creature is also {@condition stupefied||stupefied 1} for 1 round."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Beaver",
+			"source": "QFF2",
+			"page": 82,
+			"level": null,
+			"traits": [
+				"n",
+				"small",
+				"animal"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 3
+				},
+				"crafting": {
+					"std": 2
+				},
+				"survival": {
+					"std": 4
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 2,
+				"con": 3,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 4
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 8
+					}
+				]
+			},
+			"speed": {
+				"walk": 15,
+				"swim": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 6,
+					"damage": "{@damage 1d6+1} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Deep Breath",
+						"entries": [
+							"A beaver can hold its breath for 15 minutes."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Construct Shelter",
+						"entries": [
+							"The beaver takes 1 minute to rapidly construct a simple mound along one side of its space, which can be used to {@action Take Cover}."
+						]
+					},
+					{
+						"name": "Penetrating Bite",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The beaver makes a jaws {@action Strike}. The {@action Strike} ignores the first 5 Hardness of organic materials, such as rope, leather, and wood."
+						]
+					},
+					{
+						"name": "Prop",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The beaver stabilizes itself with its tail, gaining a +1 circumstance bonus to its Fortitude and Reflex DCs against {@action Shove} and {@action Trip} attempts until it next takes an action with the {@trait move} trait."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Bone Warrior",
+			"source": "QFF2",
+			"page": 35,
+			"level": 4,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 11
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"hallit"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 10
+				},
+				"athletics": {
+					"std": 14
+				},
+				"crafting": {
+					"std": 9
+				},
+				"intimidation": {
+					"std": 8
+				},
+				"nature": {
+					"std": 7
+				},
+				"survival": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 2,
+				"con": 3,
+				"int": 1,
+				"wis": 1,
+				"cha": 0
+			},
+			"items": [
+				"bastard sword",
+				"moderate dread ampoules (2; Advanced Player's Guide 253)",
+				"hide armor",
+				"javelins (4)",
+				"bone religious symbol (Venexus)",
+				"wooden shield (Hardness 3",
+				"HP 12",
+				"BT 6)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 21,
+					"with shield raised": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 65
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"two-hand d12"
+					],
+					"name": "bastard sword",
+					"attack": 14,
+					"damage": "{@damage 1d8+6} slashing Melee{@as 1} fist +14 (agile, nonlethal), Damage {@damage 1d4+6} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"bomb",
+						"range increment 20 feet",
+						"splash"
+					],
+					"name": "moderate dread ampoule",
+					"attack": 12,
+					"damage": "{@damage 2d6} mental plus 2 mental splash damage"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range increment 30 feet"
+					],
+					"name": "javelin",
+					"attack": 12,
+					"damage": "{@damage 1d6+6} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Sudden Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The bone warrior Strides twice. If they end their movement within melee reach of an enemy, the bone warrior makes a melee {@action Strike} against that enemy."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Castoroides",
+			"source": "QFF2",
+			"page": 82,
+			"level": 3,
+			"traits": [
+				"n",
+				"medium",
+				"animal"
+			],
+			"perception": {
+				"std": 10
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 10
+				},
+				"crafting": {
+					"std": 7
+				},
+				"survival": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 1,
+				"con": 3,
+				"int": -4,
+				"wis": 3,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 45
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 12,
+					"damage": "{@damage 2d6+4} piercing plus Grab"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Deep Breath",
+						"entries": [
+							"A castoroides can hold its breath for 1 hour."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Slap",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The castoroides is targeted by a physical ranged {@action Strike} from an attacker it can see",
+						"entries": [
+							"The castoroides swats at the projectile with its wide tail, gaining a +2 circumstance bonus to its AC against the triggering attack."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Construct Shelter",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The castoroides takes three actions to rapidly construct a simple mound along one side of its space, which can be used to {@action Take Cover}."
+						]
+					},
+					{
+						"name": "Gouge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The castoroides deals {@damage 2d8} piercing damage to a creature it has {@condition grabbed} or {@condition restrained} (DC 20 basic Fortitude save). A creature that fails its save also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
+						]
+					},
+					{
+						"name": "Penetrating Bite",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The castoroides makes a jaws {@action Strike}. The {@action Strike} ignores the first 10 Hardness of organic materials, such as rope, leather, and wood."
+						]
+					},
+					{
+						"name": "Prop",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The castoroides stabilizes itself with its tail, gaining a +1 circumstance bonus to its Fortitude and Reflex DCs against {@action Shove} and {@action Trip} attempts until it next takes an action with the {@trait move} trait."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Corrupted Elder Tree",
+			"source": "QFF2",
+			"page": 34,
+			"description": "Variant arboreal regent",
+			"level": 8,
+			"traits": [
+				"unique",
+				"ne",
+				"gargantuan",
+				"fiend",
+				"plant"
+			],
+			"perception": {
+				"std": 18
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"arboreal",
+					"common",
+					"sylvan"
+				],
+				"abilities": [
+					"speak with plants"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 19
+				},
+				"diplomacy": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 16
+				},
+				"nature": {
+					"std": 18
+				},
+				"stealth": {
+					"std": 11,
+					"in forests": 21
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": -1,
+				"con": 6,
+				"int": 1,
+				"wis": 4,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 16
+					}
+				},
+				"hp": [
+					{
+						"hp": 150
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "axe vulnerability"
+					},
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					},
+					{
+						"name": "good",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 15 feet"
+					],
+					"name": "branch",
+					"attack": 19,
+					"damage": "{@damage 2d12+7} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"trip"
+					],
+					"name": "root",
+					"attack": 19,
+					"damage": "{@damage 2d8+7} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"brutal",
+						"range increment 120 feet"
+					],
+					"name": "rock",
+					"attack": 19,
+					"damage": "{@damage 2d10+7} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 26,
+					"entry": {
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "speak with plants"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Axe Vulnerability",
+						"entries": [
+							"The corrupted elder tree takes 5 additional damage from axes."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Awaken",
+						"entries": [
+							"Tree {@as 2}(concentrate, primal) The corrupted elder tree causes a tree within 180 feet to uproot itself and fight as a minion using the statistics for an awakened tree. The corrupted elder tree can control up to two awakened trees at a time, and it can issue commands to both trees as a single action, which has the {@trait concentrate} and {@trait auditory} traits."
+						]
+					},
+					{
+						"name": "Sunder Objects",
+						"entries": [
+							"When an corrupted elder tree damages an item or structure, it deals an additional {@dice 2d10} damage to that item or structure."
+						]
+					},
+					{
+						"name": "Throw Rock",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Crawling Hand Swarm",
+			"source": "QFF2",
+			"page": 38,
+			"level": 5,
+			"traits": [
+				"ne",
+				"large",
+				"swarm",
+				"undead"
+			],
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "lifesense ",
+					"range": {
+						"unit": "feet",
+						"number": 30
+					}
+				},
+				{
+					"name": "tremorsense",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"hallit"
+				],
+				"abilities": [
+					"can't speak any language"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 10
+				},
+				"stealth": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 4,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 60,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"swarm mind",
+					"unconscious",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 5
+					},
+					{
+						"name": "splash damage",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 2
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Stifle",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature in the swarm's space attempts to {@action Cast a Spell} with a verbal component or attempts an action with the linguistic or vocal traits",
+						"entries": [
+							"The swarming hands clamp over the triggering creature's mouth, preventing it from vocalizing. The affected creature must succeed at a DC 22 Reflex save or the triggering action is disrupted."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Pummeling Grasp",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the swarm's space takes {@damage 3d6} slashing damage (DC 20 basic Reflex save). A creature that fails its save against Pummeling Grasp is also knocked {@condition prone}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Elk",
+			"source": "QFF2",
+			"page": 85,
+			"level": 1,
+			"traits": [
+				"n",
+				"medium",
+				"animal"
+			],
+			"perception": {
+				"std": 7
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 7
+				},
+				"survival": {
+					"std": 5
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 2,
+				"con": 4,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "antlers",
+					"attack": 9,
+					"damage": "{@damage 1d6+4} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 9,
+					"damage": "{@damage 1d4+4} bludgeoning"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Buck",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"DC 17"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Startled Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "It's the first round of combat",
+						"entries": [
+							"The elk Strides twice and makes a hoof {@action Strike} at the end of either {@action Stride}. If the {@action Strike} hits, the elk deals an additional {@damage 1d4} piercing damage"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Fiendish Arboreal",
+			"source": "SOURCE",
+			"page": 13,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"ce",
+				"large",
+				"fiend",
+				"plant"
+			],
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"arboreal",
+					"common",
+					"sylvan"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 9,
+					"in forests": 14
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 1,
+				"con": 3,
+				"int": 1,
+				"wis": 3,
+				"cha": 1
+			},
+			"items": [
+				"large bark shield (Hardness 3",
+				"Hit Points 20",
+				"BT 10)",
+				"stone longsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 20,
+					"with shield raised": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 75
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "axe vulnerability"
+					},
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					},
+					{
+						"name": "good",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"evil",
+						"reach 10 feet"
+					],
+					"name": "stone longsword",
+					"attack": 13,
+					"damage": "{@damage 1d6+8} bludgeoning plus {@damage 1d4} evil"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"evil"
+					],
+					"name": "shield bash",
+					"attack": 13,
+					"damage": "{@damage 1d4+8} bludgeoning plus {@damage 1d4} evil"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Axe Vulnerability",
+						"entries": [
+							"An arboreal warden takes 5 additional damage from axes."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Shield Push",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The arboreal warden Strides and then makes a shield bash {@action Strike}. If the attack hits, the target is pushed 10 feet."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Idovik",
+			"source": "QFF2",
+			"page": 89,
+			"description": "Male Sarkorian god",
+			"level": 7,
+			"traits": [
+				"unique",
+				"cn",
+				"large",
+				"beast",
+				"eidolon"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"hallit",
+					"sylvan"
+				],
+				"abilities": [
+					"telepathy 100 feet (Ashen Swale only)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 11
+				},
+				"arcana": {
+					"std": 13
+				},
+				"athletics": {
+					"std": 17
+				},
+				"nature": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 0,
+				"con": 4,
+				"int": 2,
+				"wis": 3,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 125
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly d10",
+						"magical"
+					],
+					"name": "tusk",
+					"attack": 18,
+					"damage": "{@damage 2d10+8} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "hoof",
+					"attack": 18,
+					"damage": "{@damage 2d8+8} bludgeoning"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "God's Intervention",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"conjuration",
+							"primal",
+							"teleportation"
+						],
+						"trigger": "Ashen Swale is the target of a physical {@action Strike}",
+						"entries": [
+							"Sensing Ashen Swale's peril, Idovik teleports to his side and interposes himself between Ashen Swale and danger. Idovik teleports to a space adjacent to"
+						]
+					},
+					{
+						"name": "Ashen",
+						"entries": [
+							"Swale, then shields Ashen Swale with his body.",
+							"Idovik becomes the target of the triggering {@action Strike}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Independent",
+						"entries": [
+							"Action Idovik is even older and more powerful than most Sarkorian gods, and he knows how to manifest in some forms without a god caller at all.",
+							"Idovik does not share an initiative, actions, Hit Points, or a multiple attack penalty with Ashen Swale."
+						]
+					},
+					{
+						"name": "Indomitable",
+						"entries": [
+							"{@action Step} Idovik ignores difficult terrain and uneven ground, and he treats greater difficult terrain as normal difficult terrain."
+						]
+					},
+					{
+						"name": "Otherworldly Roar",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory"
+						],
+						"entries": [
+							"Idovik unleashes a powerful squeal while stomping his hooves and displaying his tusks. Idovik attempts Intimidate checks to {@action Demoralize} each foe within 30 feet. These checks take no penalty for not sharing a language."
+						]
+					},
+					{
+						"name": "Rampaging Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Idovik rushes forward, using his momentum to power his attack. Idovik Strides twice and then makes a tusk {@action Strike}. As long as he moved at least 20 feet, he gains a +2 circumstance bonus to his attack roll. A Medium or smaller creature struck by this attack must succeed at a DC 25 Reflex save or be knocked {@condition prone} by the force of the blow."
+						]
+					},
+					{
+						"name": "Spirit Link",
+						"entries": [
+							"Even if his link is unusual, Idovik is bound to his summoner; he must remain within 100 feet of Ashen Swale at all times. If he ever moves outside this range or is reduced to 0 Hit Points, Idovik's physical form dissolves. Because his link functions unusually and he does not share Hit"
+						]
+					},
+					{
+						"name": "Points with Ashen",
+						"entries": [
+							"Swale, Idovik remains manifested when Ashen Swale is {@condition unconscious} or dead, as long as he stays near Ashen Swale's body. If Ashen Swale dies, Idovik's form fades away over the next minute. When unmanifested, Idovik must be manifested before he can reappear."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Lagofir",
+			"source": "QFF2",
+			"page": 86,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"animal"
+			],
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"range": 30
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 10,
+					"to Escape": 12
+				},
+				"athletics": {
+					"std": 8,
+					"to Swim": 10
+				},
+				"stealth": {
+					"std": 9
+				},
+				"survival": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": -4,
+				"wis": 2,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 55
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "jaws",
+					"attack": 12,
+					"damage": "{@damage 1d8+3} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "feet",
+					"attack": 11,
+					"damage": "{@damage 2d8+3} bludgeoning plus Push Flammable Lagofirs excrete a warm, flammable oil. Any creature that Grapples a lagofir or is {@condition grabbed} or {@condition restrained} by a lagofir becomes coated in lagofir oil for 10 minutes or until the oil is washed off, which takes 1 minute of vigorous scrubbing. Any time a lagofir or a creature coated in lagofir oil is dealt fire damage, it catches flame, taking {@damage 1d6} {@condition persistent damage||persistent fire damage}."
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Deep Breath",
+						"entries": [
+							"A lagofir can hold its breath for 1 hour."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Cold Adaptation",
+						"entries": [
+							"The lagofir reduces the effects it suffers from cold environments by one step."
+						]
+					},
+					{
+						"name": "Consuming Fumes",
+						"traits": [
+							"aura",
+							"fire"
+						],
+						"entries": [
+							"15 feet. The lagofir is surrounded by fumes from the flammable oil it exudes. Each nonmagical open flame the size of a torch or larger within the emanation explodes, dealing {@damage 4d4} fire damage to all creatures and objects adjacent to the flame (DC 17 basic Reflex save). After exploding, the fire source is extinguished."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Gnaw",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The lagofir's last action was a successful jaws {@action Strike}",
+						"entries": [
+							"The lagofir gnaws on the target, driving its teeth deeper into its prey. The target takes {@damage 1d8+3} piercing damage."
+						]
+					},
+					{
+						"name": "Nimble Rush",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The lagofir attacks while darting around its foes. The lagofir Strides twice and Strikes at any point during its movement. It can substitute a {@action Swim} action in place of any {@action Stride}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Long-Horned Bison Beheaded",
+			"source": "SOURCE",
+			"page": 15,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"mindless",
+				"undead"
+			],
+			"perception": {
+				"std": 7
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 8,
+					"to Maneuver in Flight": 10
+				},
+				"athletics": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": -5,
+				"wis": 1,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 32,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "positive",
+						"amount": 3
+					}
+				]
+			},
+			"speed": {
+				"walk": 15,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 11,
+					"damage": "{@damage 1d10+3} piercing plus Push 10 feet"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Toss",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"requirements": "The beheaded's previous action was a horn {@action Strike} that dealt damage to its target",
+						"entries": [
+							"The beheaded tosses its head, attempting to move the target creature into another space within reach of its horns. It rolls an {@skill Athletics} check against the target's Fortitude DC. On a failure, the target remains in place."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Long-Horned Bison",
+			"source": "QFF2",
+			"page": 83,
+			"level": 6,
+			"traits": [
+				"n",
+				"huge",
+				"animal"
+			],
+			"perception": {
+				"std": 13
+			},
+			"senses": [
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 60
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 16
+				},
+				"survival": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 2,
+				"con": 5,
+				"int": -5,
+				"wis": 3,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 110
+					}
+				]
+			},
+			"speed": {
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 10 feet"
+					],
+					"name": "hoof",
+					"attack": 16,
+					"damage": "{@damage 2d8+8} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 10 feet"
+					],
+					"name": "horn",
+					"attack": 16,
+					"damage": "{@damage 2d10+8} piercing plus Knockdown"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Cold Adaptation",
+						"entries": [
+							"The bison reduces the effects it suffers from cold environments by one step."
+						]
+					},
+					{
+						"name": "Toss[reaction]",
+						"trigger": "A creature ends its movement within reach of the bison's horn {@action Strike}",
+						"entries": [
+							"The bison attempts to {@action Shove} the triggering creature with its horns. The bison can't {@action Stride} after the triggering creature on a success or critical success."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Pointed Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The bison surges toward its foe, horns lowered. It Strides twice. If the bison ends its movement with an enemy within its reach, it makes a horn {@action Strike} against that enemy. The strike gains the fatal d12 trait."
+						]
+					},
+					{
+						"name": "Rolling Thunder",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The bison kicks up dust and shakes the ground as it charges. The stampeding bison Strides up to twice its Speed in a straight line, dealing {@damage 4d8+8} bludgeoning damage (DC 24 basic Reflex save) to any Large or smaller creature in its path. Multiple bison can participate in Rolling Thunder by spending this ability's actions and waiting to charge until the herd is ready.",
+							"Before the beginning of its next turn, a bison can then charge as a reaction triggered by an adjacent bison beginning its Rolling Thunder charge. All bison in the combined charge must charge in parallel lines, so the areas can't overlap. The combined charge deals an additional {@damage 3d8} bludgeoning damage to creatures in the area, and a creature that fails the Reflex saving throw is also knocked {@condition prone}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Megaloceros",
+			"source": "QFF2",
+			"page": 85,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"animal"
+			],
+			"perception": {
+				"std": 10
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"survival": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 5,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 58
+					}
+				]
+			},
+			"speed": {
+				"walk": 50
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly d8"
+					],
+					"name": "antlers",
+					"attack": 13,
+					"damage": "{@damage 2d6+7} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 13,
+					"damage": "{@damage 2d4+7} bludgeoning"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Buck",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"DC 21"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Furious Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The megaloceros Strides twice and makes a hoof {@action Strike} after either {@action Stride}. If the {@action Strike} hits, the megaloceros deals an additional {@damage 2d4} bludgeoning damage"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Necrohusk",
+			"source": "QFF2",
+			"page": 87,
+			"level": 5,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "lifesense",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"hallit",
+					"necril"
+				],
+				"abilities": [
+					"can't speak"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 13
+				},
+				"athletics": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 4,
+				"con": 1,
+				"int": -3,
+				"wis": 3,
+				"cha": -1
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 75,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"prone",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 15,
+					"damage": "{@damage 2d6+5} piercing plus {@damage 1d6} poison"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "leg",
+					"attack": 15,
+					"damage": "{@damage 2d4+5} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range 30 feet"
+					],
+					"name": "ichor spit",
+					"attack": 14,
+					"damage": "{@damage 3d8} poison and vile innards"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Skitter",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature misses the necrohusk with a melee {@action Strike}",
+						"entries": [
+							"The necrohusk Steps."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Frenzied Assault",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The necrohusk makes three leg Strikes. If more than one {@action Strike} hits the same target, combine the damage of the Strikes that hit the creature and apply the creature's resistances and weaknesses only once."
+						]
+					},
+					{
+						"name": "Impaling Lunge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The necrohusk Strides twice. If the necrohusk ends its movement within melee range of an enemy, it makes a leg {@action Strike} against that enemy. On a hit, the {@action Strike} deals an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
+						]
+					},
+					{
+						"name": "Vile Innards",
+						"entries": [
+							"The necrohusk spews some of its rotting insides when it makes an ichor spit {@action Strike}. On a critical hit, the target is {@condition sickened||sickened 2}"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Retkyl and Vyrdor",
+			"source": "QFF2",
+			"page": 28,
+			"level": 6,
+			"traits": [
+				"ne",
+				"large",
+				"dragon",
+				"earth"
+			],
+			"perception": {
+				"std": 13
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"draconic"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 15
+				},
+				"athletics": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 13
+				},
+				"survival": {
+					"std": 11
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 4,
+				"int": -1,
+				"wis": 1,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 90
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 17,
+					"damage": "{@damage 2d10+7} piercing plus predatory grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 10 feet"
+					],
+					"name": "stinger",
+					"attack": 17,
+					"damage": "{@damage 2d6+7} piercing plus jungle drake venom"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Twisting Tail",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within reach of the jungle drake's stinger uses a move action or leaves a square during a move action it's using.",
+						"entries": [
+							"The jungle drake Strikes the target with its stinger. If it hits, the jungle drake disrupts the creature's action."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Draconic Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The jungle drake makes one fangs {@action Strike} and two stinger Strikes in any order.",
+							{
+								"type": "affliction",
+								"name": "Jungle Drake Venom",
+								"traits": [
+									"poison"
+								],
+								"DC": 24,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison and {@condition enfeebled||enfeebled 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 1d6} poison and {@condition enfeebled||enfeebled 2}",
+										"duration": "1 round"
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Predatory Grab",
+						"entries": [
+							"As Grab, but the jungle drake's Grab does not end if it moves away. Instead, it carries the {@condition grabbed} creature with it. A jungle drake can't {@action Fly} while grabbing a creature unless that creature can also {@action Fly}."
+						]
+					},
+					{
+						"name": "Speed Surge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The jungle drake moves up to twice its Speed. It can do this three times per day."
+						]
+					},
+					{
+						"name": "Spit",
+						"entries": [
+							"Venom {@as 2}(poison) A jungle drake can spit a sticky glob of its venom to a range of 50 feet that explodes in a 10-foot burst. Those in the burst must succeed at a DC 24 Reflex save or be exposed to jungle drake venom. The jungle drake can't use Spit Venom again for {@dice 1d6} rounds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Roru",
+			"source": "QFF2",
+			"page": 84,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"demon",
+				"fiend"
+			],
+			"perception": {
+				"std": 16
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"draconic"
+				],
+				"abilities": [
+					"speak with animals",
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 15
+				},
+				"athletics": {
+					"std": 17
+				},
+				"intimidation": {
+					"std": 15
+				},
+				"nature": {
+					"std": 14,
+					"to Command an Animal": 18
+				},
+				"survival": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 3,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 17
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 120
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "good",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "jaws",
+					"attack": 18,
+					"damage": "{@damage 2d10+8} piercing plus {@damage 1d6} evil"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 18,
+					"damage": "{@damage 2d6+8} slashing plus {@damage 1d6} evil"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 25,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "dominate",
+									"notes": [
+										"animals only"
+									]
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "abyssal pact"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Disobedience Vulnerability",
+						"entries": [
+							"The first time each round an attempt to {@action Command an Animal} fails within 60 feet of a roru, the roru takes {@damage 4d6} mental damage ({@dice 10d6} if the roru failed the attempt)."
+						]
+					},
+					{
+						"name": "Predatory Aura",
+						"traits": [
+							"aura"
+						],
+						"entries": [
+							"30 feet. An animal or beast entering or starting its turn in the emanation must succeed at a DC 25 Will save or become {@condition frightened||frightened 1} ({@condition frightened||frightened 2} on a critical failure). {@condition Frightened} animals within the emanation can't attack the roru. A creature that succeeds at a saving throw against predatory aura is immune for 24 hours."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Incite Ferocity",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"The roru focuses its corruption on an animal or beast it can see within 30 feet.",
+							"The creature must succeed at a DC 25 Will save or become {@condition confused} for {@dice 1d4} rounds. The {@condition confused} creature can't attack the roru. A creature that succeeds at its saving throw is temporarily immune to Incite Ferocity for 24 hours."
+						]
+					},
+					{
+						"name": "Wear Pelt",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"manipulate",
+							"transmutation"
+						],
+						"entries": [
+							"The roru dons the pelt of an adjacent dead animal, transforming into its lookalike. The roru becomes the same size and gains the same Speeds as the target animal. The roru loses its claw and jaws unarmed Strikes and gains the types of melee Strikes of the animal whose pelt it wears. The {@action Strike} deals damage equal to the roru's jaws {@action Strike} or, if the {@action Strike} has the {@trait agile} trait, the roru's claw {@action Strike}. Either way, the damage type changes to match the new unarmed attack. While a roru wears a pelt, half of physical damage dealt to the roru is instead dealt to the pelt.",
+							"A pelt has Hardness 5 and 25 HP. When a pelt reaches 0 HP, the roru is immediately expelled from the pelt and it is destroyed."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Skeletal Woolly Rhinoceroses",
+			"source": "QFF2",
+			"page": 36,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"ne",
+				"large",
+				"mindless",
+				"skeleton",
+				"undead"
+			],
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 1,
+				"con": 4,
+				"int": -5,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 75,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 5
+					},
+					{
+						"name": "electricity",
+						"amount": 5
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 10 feet"
+					],
+					"name": "horn",
+					"attack": 15,
+					"damage": "{@damage 2d10+5} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"attack": 15,
+					"damage": "{@damage 2d6+6} bludgeoning"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Rhinoceros Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The rhino Strides twice, then makes a horn {@action Strike}. As long as the rhino moved at least 20 feet, the {@action Strike}'s damage increases to {@dice 3d12+5}. A Medium or smaller creature struck by this attack must succeed at a DC 22 Reflex save or be automatically Shoved back 5 feet and knocked {@condition prone} by the force of the blow."
+						]
+					},
+					{
+						"name": "Trample",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Medium or smaller, foot, DC 19"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Turkek",
+			"source": "QFF2",
+			"page": 39,
+			"description": "Female human dhampir necromancer",
+			"level": 7,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"dhampir",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "bloodsense",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				},
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"hallit",
+					"necril"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 17
+				},
+				"athletics": {
+					"std": 14
+				},
+				"deception": {
+					"std": 10
+				},
+				"intimidation": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": 4,
+				"wis": 1,
+				"cha": 1
+			},
+			"items": [
+				"spellbook with all prepared spells",
+				"wand of widening (2nd-level {@spell darkness})"
+			],
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 14
+					},
+					"abilities": [
+						"+2 circumstance to all saves vs. disease"
+					]
+				},
+				"hp": [
+					{
+						"hp": 100,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"grapple",
+						"unarmed"
+					],
+					"name": "fangs",
+					"attack": 16,
+					"damage": "{@damage 1d6+5} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Prepared",
+					"DC": 25,
+					"attack": 17,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "grim tendrils"
+								},
+								{
+									"name": "mage armor"
+								},
+								{
+									"name": "ray of enfeeblement",
+									"amount": 2
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "bone spray",
+									"source": "QFF2"
+								},
+								{
+									"name": "false life"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "spider climb"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "bind undead"
+								},
+								{
+									"name": "grim tendrils",
+									"amount": 2
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "blood vendetta",
+									"source": "advanced players guide"
+								},
+								{
+									"name": "grim tendrils"
+								},
+								{
+									"name": "sanguine mist",
+									"source": "som"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Sanguine Aura",
+						"traits": [
+							"arcane",
+							"aura",
+							"necromancy"
+						],
+						"entries": [
+							"30 feet. Around Turkek, wounds heal slowly and blood flows faster. The flat check to stop {@condition persistent damage||persistent bleed damage} is DC 16, rather than DC 15. In addition, each time a creature in the emanation takes {@condition persistent damage||persistent bleed damage}, it takes {@dice 1d6} additional bleed damage."
+						]
+					},
+					{
+						"name": "Clot",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Turkek takes {@condition persistent damage||persistent bleed damage}",
+						"entries": [
+							"Turkek's blood hardens, sealing her wounds. Turkek automatically passes her next flat check to recover from the triggering {@condition persistent damage||persistent bleed damage}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Blood Let",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "Turkek's last action was a fang {@action Strike} that hit the target",
+						"entries": [
+							"Turkek rips her fangs across one of the target's arteries or veins, dealing an additional {@damage 1d6+5} slashing damage."
+						]
+					},
+					{
+						"name": "Siphon Blood",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "A creature within Turkek's sanguine aura is taking {@condition persistent damage||persistent bleed damage}",
+						"entries": [
+							"Turkek draws her enemy's blood into her own body to heal her wounds. She regains 7 Hit Points."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Varilyn \"Vare\" Eridge",
+			"source": "QFF2",
+			"page": 10,
+			"description": "Female halfling ex-crusader",
+			"level": 4,
+			"traits": [
+				"unique",
+				"ng",
+				"small",
+				"halfling",
+				"humanoid"
+			],
+			"perception": {
+				"std": 14
+			},
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 14
+				},
+				"athletics": {
+					"std": 12
+				},
+				"crafting": {
+					"std": 14
+				},
+				"scouting lore": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 11
+				},
+				"survival": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 1,
+				"con": 2,
+				"int": 1,
+				"wis": 3,
+				"cha": 0
+			},
+			"items": [
+				"crossbow (20 bolts)",
+				"scale mail",
+				"low-grade cold iron shortsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 60
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"versatile S"
+					],
+					"name": "shortsword",
+					"attack": 12,
+					"damage": "{@damage 1d6+6} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range increment 120 feet",
+						"reload 1"
+					],
+					"name": "crossbow",
+					"attack": 9,
+					"damage": "{@damage 1d8+2} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Guide's Warning When",
+						"entries": [
+							"Vare is about to roll a {@skill Perception} or {@skill Survival} check to determine her initiative, she can alert her allies as a free action. Vare visually or audibly warns allies, granting them a +1 circumstance bonus to their initiative rolls. Depending on how Vare warns allies, this action has the {@trait auditory} or {@trait visual} trait."
+						]
+					},
+					{
+						"name": "Snare Crafting",
+						"entries": [
+							"Vare can use the {@skill Crafting} skill to create the following snares: alarm snare, hampering snare, irritating thorn snare (page 79), marking snare, signaling snare, and smoke screen snare (page 80). Vare can create four snares each day without paying for the materials, using 3 {@action Interact} actions to set up each snare."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Guiding Words",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Vare points out a weakness of a creature within 30 feet. Vare and all allies that can hear or see her gain a +1 status bonus to attack and damage rolls against that creature until the beginning of Vare's next turn. Vare adds an extra {@damage 1d6} precision damage to her weapon and unarmed attacks that hit that creature for the duration."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Venexus's Chosen",
+			"source": "QFF2",
+			"page": 55,
+			"description": "Dragonkin monks (Pathfinder Lost Omens Ancestry Guide 78)",
+			"level": 6,
+			"traits": [
+				"rare",
+				"le",
+				"medium",
+				"beast",
+				"beastkin",
+				"humanoid"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"hallit"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 14
+				},
+				"athletics": {
+					"std": 11
+				},
+				"intimidation": {
+					"std": 10
+				},
+				"stealth": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 2,
+				"int": 1,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 115
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"nonlethal",
+						"unarmed"
+					],
+					"name": "fist",
+					"attack": 16,
+					"damage": "{@damage 1d6+5} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse",
+						"magical",
+						"reach 10 feet",
+						"unarmed"
+					],
+					"name": "tail",
+					"attack": 16,
+					"damage": "{@damage 1d10+5} bludgeoning plus Knockdown"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 24,
+					"attack": 16,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "ray of frost",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Tail Lash",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within reach of the chosen's tail {@action Strike} uses an action to {@action Strike} or attempt a skill check",
+						"entries": [
+							"Venexus's chosen attempts to {@action Strike} the triggering creature with their tail. If it hits, the creature takes a –2 circumstance penalty to the triggering roll."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"Venexus's chosen changes between their humanoid shape and hybrid shape. They gain a tail unarmed {@action Strike} while in their hybrid shape."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Flurry of Blows",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Venexus's chosen makes two unarmed Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
+						]
+					},
+					{
+						"name": "Ice Walk",
+						"entries": [
+							"Venexus's chosen ignores difficult terrain and greater difficult terrain from ice and snow and doesn't risk falling when crossing ice."
+						]
+					},
+					{
+						"name": "Powerful Fists",
+						"entries": [
+							"Venexus's chosen's fist Strikes are treated as cold iron and silver, and the chosen doesn't take penalties when making lethal attacks."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Venexus's Wyrmling",
+			"source": "QFF2",
+			"page": 58,
+			"level": 5,
+			"traits": [
+				"rare",
+				"ce",
+				"medium",
+				"cold",
+				"dragon"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 60
+				},
+				{
+					"name": "snow"
+				},
+				{
+					"name": "vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"hallit"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 12
+				},
+				"athletics": {
+					"std": 13
+				},
+				"intimidation": {
+					"std": 10
+				},
+				"stealth": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 4,
+				"con": 2,
+				"int": -1,
+				"wis": 1,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 90
+					}
+				],
+				"immunities": [
+					"cold",
+					"paralyzed",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 60,
+				"ice climb": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"cold",
+						"magical"
+					],
+					"name": "jaws",
+					"attack": 15,
+					"damage": "{@damage 2d8+5} piercing plus {@damage 1d4} cold"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 15,
+					"damage": "{@damage 2d6+5} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach 10 feet"
+					],
+					"name": "tail",
+					"attack": 13,
+					"damage": "{@damage 2d8+5} bludgeoning"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Snow Vision",
+						"entries": [
+							"Snow doesn't impair a white dragon's vision the wyrmling ignores concealment from snowfall."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet, DC 19"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Freezing Blood[reaction]",
+						"traits": [
+							"arcane",
+							"cold"
+						],
+						"trigger": "An adjacent creature deals piercing or slashing damage to the wyrmling",
+						"entries": [
+							"The wyrmling's blood splatters onto the triggering creature, dealing {@damage 1d4} cold damage. A creature that takes cold damage in this way is {@condition slowed||slowed 1} for 1 round."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Breath",
+						"entries": [
+							"Weapon{@as 2} (arcane, cold, evocation) The wyrmling breathes a cloud of frost that deals {@damage 6d6} cold damage in a 30-foot cone (DC 22 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Draconic Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The wyrmling makes two claw Strikes and one tail {@action Strike} in any order."
+						]
+					},
+					{
+						"name": "Draconic Momentum",
+						"entries": [
+							"When the wyrmling scores a critical hit with a {@action Strike}, they recharge their Breath Weapon."
+						]
+					},
+					{
+						"name": "Ice Climb",
+						"entries": [
+							"A white dragon can climb on ice as though they had the listed climb Speed. They ignore difficult terrain and greater difficult terrain from ice and snow and don't risk falling when crossing ice."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Venexus",
+			"source": "QFF2",
+			"page": 90,
+			"description": "Female young white dragon",
+			"level": 9,
+			"traits": [
+				"unique",
+				"ce",
+				"large",
+				"cold",
+				"dragon"
+			],
+			"perception": {
+				"std": 20
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise"
+				},
+				{
+					"name": ",",
+					"range": {
+						"unit": "feet",
+						"number": 60
+					}
+				},
+				{
+					"name": "storm vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"hallit"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 17
+				},
+				"arcana": {
+					"std": 17
+				},
+				"athletics": {
+					"std": 21
+				},
+				"intimidation": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 2,
+				"con": 4,
+				"int": 2,
+				"wis": 3,
+				"cha": 2
+			},
+			"items": [
+				"Primordial Flame"
+			],
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 17
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 170
+					}
+				],
+				"immunities": [
+					"cold",
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 120,
+				"ice climb": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"cold",
+						"magical",
+						"reach 10 feet"
+					],
+					"name": "jaws",
+					"attack": 21,
+					"damage": "{@damage 2d10+10} piercing plus {@damage 1d6} cold"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 21,
+					"damage": "{@damage 2d8+10} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"name": "tail",
+					"attack": 20,
+					"damage": "{@damage 2d6+8} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Innate",
+					"DC": 25,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "gust of wind",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "obscuring mist",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				},
+				{
+					"type": "Focus",
+					"name": "Primordial Flame",
+					"DC": 25,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "produce flame",
+									"amount": "at will"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "sunburst"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Storm Vision",
+						"entries": [
+							"Inclement weather doesn't impair Venexus's vision; she ignores concealment from fog, mist, rain, and snowfall."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet,"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "DC",
+						"entries": [
+							"25"
+						]
+					},
+					{
+						"name": "Mist Shroud",
+						"traits": [
+							"arcane",
+							"aura",
+							"evocation",
+							"water"
+						],
+						"entries": [
+							"10 feet. The Primordial Flame continually heats the cold emanating from Venexus's body, surrounding the dragon in a thin veil of fog. Creatures in the aura are {@condition concealed}, and other creatures are {@condition concealed} to creatures in the area. Venexus's storm vision allows her to see through this concealment, however. If wind disperses the aura, it returns automatically at the start of Venexus's turn. The aura is suppressed in water."
+						]
+					},
+					{
+						"name": "Freezing Blood",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"arcane",
+							"cold"
+						],
+						"trigger": "An adjacent creature deals piercing or slashing damage to Venexus",
+						"entries": [
+							"Venexus's blood splatters onto the triggering creature, dealing {@damage 2d6} cold damage. A creature that takes cold damage in this way is {@condition slowed||slowed 1} for 1 round."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Breath Weapon",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"cold",
+							"evocation"
+						],
+						"entries": [
+							"Venexus breathes a cloud of frost that deals {@damage 10d6} cold damage in a 40-foot cone (DC 28 basic Reflex save). She can't use Breath Weapon again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Draconic Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Venexus makes two claw Strikes and one tail {@action Strike} in any order."
+						]
+					},
+					{
+						"name": "Draconic Momentum",
+						"entries": [
+							"When Venexus scores a critical hit with a {@action Strike}, she recharges her Breath Weapon."
+						]
+					},
+					{
+						"name": "Ice",
+						"entries": [
+							"{@action Climb} Venexus can climb on ice as though she had the listed climb Speed. She ignores difficult terrain and greater difficult terrain from ice and snow and doesn't risk falling when crossing ice."
+						]
+					},
+					{
+						"name": "Shape Ice",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"transmutation",
+							"water"
+						],
+						"entries": [
+							"Venexus magically reshapes a cube of ice or snow she touches, up to 10 feet across. Any creature standing atop the ice must succeed at a DC 15 Reflex save or {@skill Acrobatics} check. On a failure, the creature falls {@condition prone} on the ice; on a critical failure, it falls off the ice entirely and is also {@condition prone}."
+						]
+					},
+					{
+						"name": "Snuff",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"evocation",
+							"water"
+						],
+						"entries": [
+							"Venexus releases a wave of sleet, which douses open flames within 30 feet. All non-magical fire is automatically extinguished.",
+							"All creatures in the area suffering from {@condition persistent damage||persistent fire damage} immediately attempt a DC {@flatDC 10} flat check to end the {@condition persistent damage}. If Snuff overlaps with an ongoing {@trait fire} effect, Snuff attempts to counteract the {@trait fire} effect."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Zombie Mammoth",
+			"source": "QFF2",
+			"page": 56,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"ne",
+				"huge",
+				"mindless",
+				"undead",
+				"zombie"
+			],
+			"perception": {
+				"std": 13
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"range": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 19
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 0,
+				"con": 4,
+				"int": -5,
+				"wis": 3,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 200,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "positive",
+						"amount": 10
+					},
+					{
+						"name": "slashing",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 45
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 15 feet"
+					],
+					"name": "tusk",
+					"attack": 20,
+					"damage": "{@damage 2d8+10} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 15 feet"
+					],
+					"name": "trunk",
+					"attack": 20,
+					"damage": "grabbing trunk"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 10 feet"
+					],
+					"name": "foot",
+					"attack": 20,
+					"damage": "{@damage 2d10+10} bludgeoning"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Slow",
+						"entries": [
+							"A zombie is permanently {@condition slowed||slowed 1} and can't use reactions."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Dual Tusks",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The zombie mammoth makes two tusk Strikes, each against a different creature. This counts as one attack for the mammoth's multiple attack penalty, and the penalty doesn't increase until after both attacks."
+						]
+					},
+					{
+						"name": "Grabbing Trunk A",
+						"entries": [
+							"Medium or smaller creature hit by the zombie mammoth's trunk is {@condition grabbed}. If the mammoth moves, it can bring the {@condition grabbed} creature along with it."
+						]
+					},
+					{
+						"name": "Impaling Tusks",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The zombie mammoth makes a tusk {@action Strike} against a creature it's grabbing with its trunk. If the attack hits, the creature is impaled upon one of the mammoth's tusks, freeing the trunk to make attacks.",
+							"Each of the mammoth's tusks can hold two Medium or smaller creatures. A mammoth can attack with its tusks while creatures are impaled upon them."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Zombie Megaloceros",
+			"source": "QFF2",
+			"page": 32,
+			"description": "Variant megaloceros",
+			"level": 4,
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"mindless",
+				"undead",
+				"zombie"
+			],
+			"perception": {
+				"std": 10
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"range": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"survival": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 5,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 100,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "positive",
+						"amount": 10
+					},
+					{
+						"name": "slashing",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 50
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly d8"
+					],
+					"name": "antlers",
+					"attack": 13,
+					"damage": "{@damage 2d6+7} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 13,
+					"damage": "{@damage 2d4+7} bludgeoning"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Slow",
+						"entries": [
+							"A zombie is permanently {@condition slowed||slowed 1} and can't use reactions."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Buck",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"DC 21"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Furious Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The megaloceros Strides twice and makes a hoof {@action Strike} after either {@action Stride}. If the {@action Strike} hits, the megaloceros deals an additional {@damage 2d4} bludgeoning damage."
+						]
+					}
+				]
+			}
+		}
+	]
+}
