@@ -1,0 +1,746 @@
+{
+	"item": [
+		{
+			"name": "Merciful Charm",
+			"source": "QFF2",
+			"page": 80,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"usage": "affixed to weapon",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This small limestone pendant is typically carved in the shape of clasped hands. When activated, the affixed weapon gains the {@trait nonlethal} trait for the triggering attack and all other attacks for 1 minute."
+			],
+			"trigger": "You {@action Strike} with the affixed weapon",
+			"requirements": "You're trained in the affixed weapon."
+		},
+		{
+			"name": "Runescribed Disk",
+			"source": "QFF2",
+			"page": 80,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"magical",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"amount": 100,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This decorative silver disk is inscribed with magical runes, similar in appearance to a miniature teleportation circle but with the runes indicating movement encircled by runes associated with time. When you activate the disk, you flicker out of sight, seeming to teleport directly to your destination as you accelerate your flow of time dramatically for the duration of your move action. Your movement doesn't trigger reactions."
+			],
+			"trigger": "You use an action with the {@trait move} trait",
+			"requirements": "You're an expert in {@skill Acrobatics}."
+		},
+		{
+			"name": "Metuak's Pendant",
+			"source": "QFF2",
+			"page": 81,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"unique",
+				"abjuration",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 155,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This black quartz pendant carved in the shape of an angel's feather hangs from a leather cord worn around the neck. Once worn by Metuak of the Burning Mammoths, this family heirloom anchors you to your ancestors, preserving your sense of self and protecting your mind from mental manipulation and demonic possession. You gain a +1 item bonus to saving throws against {@trait mental} effects that would make you {@condition confused}, {@condition controlled}, {@condition frightened}, or {@condition stupefied}. This bonus increases to +2 if the source of the effect is a fiend.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"trigger": "You succeed or critically succeed at a saving throw against a {@trait mental} effect that would make you {@condition confused}, {@condition controlled}, {@condition frightened}, or {@condition stupefied}",
+					"entries": [
+						"Empowered by your determination, your ancestors protect you and your nearby allies. For 1 minute, you and each of your allies within 30 feet gains a +1 status bonus to saving throws against {@trait mental} effects that would make you {@condition confused}, {@condition controlled}, {@condition frightened}, or {@condition stupefied}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spiritsight Ring",
+			"source": "QFF2",
+			"page": 81,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 225,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"category": "Worn",
+			"entries": [
+				"The opal set in this intricately carved ivory ring eventually becomes translucent and tickles your finger whenever an incorporeal creature is nearby. When in the presence of a nearby incorporeal creature, even if it's within a solid object, you eventually detect the creature, though you might not do so instantly, and you can't pinpoint the location. This acts as a vague sense, similar to humans' sense of smell. An incorporeal creature trying to hide its presence from this sense attempts a {@skill Stealth} check against your {@skill Perception} DC to hide from your vague sense, as normal for attempting to foil special senses. You gain a +2 item bonus when using the {@action Seek} action to find {@condition hidden} or {@condition undetected} incorporeal creatures within 30 feet of you."
+			]
+		},
+		{
+			"name": "Sure-Step Crampons",
+			"source": "QFF2",
+			"page": 81,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 210,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": 1,
+			"category": "Worn",
+			"entries": [
+				"These sturdy leather boots have warm fur lining and magically augmented steel crampons that offer the wearer purchase on even the slipperiest ice slicks. Sure-step crampons allow you to walk across ice without difficulty, ignoring the uneven ground and difficult terrain caused by ice, and reducing greater difficult terrain caused by ice to ordinary difficult terrain.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"requirements": "You're standing on an earthen, icy, or wooden surface",
+					"entries": [
+						"You dig the crampons into the spot where you're standing, offering additional support until the next time you move. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to {@action Shove} or {@action Trip} you. This bonus also applies to saving throws against spells or effects that attempt to move you or knock you {@condition prone}. The bonus lasts until you move from your current spot."
+					]
+				}
+			]
+		},
+		{
+			"name": "Malleable Clay",
+			"source": "QFF2",
+			"page": 80,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"magical",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"amount": 30,
+				"coin": "gp"
+			},
+			"usage": "affixed to weapon",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This small lump of clay is malleable and can be molded into innumerable shapes and forms. When affixed, the clay takes on the appearance of the affixed weapon.",
+				"When activated, the affixed weapon gains the versatile bludgeoning, versatile piercing, and versatile slashing weapon traits for the triggering {@action Strike} and all other attacks for 1 minute. With each attack, the clay changes shape, taking on the appearance of a different weapon that deals damage of the chosen damage type."
+			],
+			"trigger": "You {@action Strike} with the affixed weapon",
+			"requirements": "You're trained in the affixed weapon."
+		},
+		{
+			"name": "Blessed Ampoule",
+			"source": "QFF2",
+			"page": 80,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"divine",
+				"evocation",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"usage": "affixed to weapon",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This small glass vial contains a drop of holy water. When activated, the weapon's physical damage for the {@action Strike} becomes good damage."
+			],
+			"trigger": "Your {@action Strike} with the affixed weapon hits a target",
+			"requirements": "You're an expert with the affixed weapon."
+		},
+		{
+			"name": "Smoke Screen Snare",
+			"source": "QFF2",
+			"page": 80,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"consumable",
+				"mechanical",
+				"snare",
+				"trap"
+			],
+			"category": "Snare",
+			"entries": [
+				"You create a snare that releases a dense cloud of smoke when a creature enters the square, filling a specified area. All creatures within that area are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dispersed by a strong wind."
+			],
+			"craftReq": "Supply a lesser smokestick for the lesser snare or a greater smokestick for the greater snare",
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 1,
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"entries": [
+						"The smoke fills the snare's square and all adjacent squares."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 7,
+					"price": {
+						"amount": 60,
+						"coin": "gp"
+					},
+					"entries": [
+						"The smoke fills a 20-foot burst centered on the snare's square."
+					]
+				}
+			]
+		},
+		{
+			"name": "Irritating Thorn Snare",
+			"source": "QFF2",
+			"page": 79,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"mechanical",
+				"snare",
+				"trap"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"category": "Snare",
+			"entries": [
+				"You dip thorns, spines, or pine needles in a mild toxin that causes skin irritation and swelling, then lash them together into a ball. When a creature enters the snare's square, the thorny ball is lobbed at that creature, dealing {@damage 3d8} piercing damage. The creature must attempt a DC 19 Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes half damage."
+						],
+						"Failure": [
+							"The target takes full damage and {@damage 1d6} {@condition persistent damage||persistent poison damage}."
+						],
+						"Critical Failure": [
+							"The target takes double damage and {@damage 2d6} {@condition persistent damage||persistent poison damage}"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Winterstep Elixir",
+			"source": "QFF2",
+			"page": 79,
+			"type": "Item",
+			"level": "2+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"elixir"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Elixir",
+			"entries": [
+				"This frigid white elixir widens your feet and lightens your steps, enabling you to walk across ice and snow without difficulty. You ignore the uneven ground and difficult terrain caused by ice, and the difficult terrain caused by snow (reducing greater difficult terrain caused by ice or snow to ordinary difficult terrain)."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "minor",
+					"level": 2,
+					"price": {
+						"amount": 6,
+						"coin": "gp"
+					},
+					"entries": [
+						"The duration is 1 minute."
+					]
+				},
+				{
+					"variantType": "lesser",
+					"level": 6,
+					"price": {
+						"amount": 36,
+						"coin": "gp"
+					},
+					"entries": [
+						"The duration is 10 minutes."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 10,
+					"price": {
+						"amount": 160,
+						"coin": "gp"
+					},
+					"entries": [
+						"The duration is 1 hour."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 14,
+					"price": {
+						"amount": 640,
+						"coin": "gp"
+					},
+					"entries": [
+						"The duration is 8 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Water Bomb",
+			"source": "QFF2",
+			"page": 79,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"nonlethal",
+				"splash",
+				"water"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"This bladder of water explodes when put under pressure or upon being punctured, dealing minimal damage, neutralizing acids, and dousing flames. A water bomb deals the listed bludgeoning damage and bludgeoning splash damage. On a hit, if the target is suffering from {@condition persistent damage||persistent acid} or {@condition persistent damage||persistent fire damage}, it can attempt a flat check to end that {@condition persistent damage} immediately. As this is particularly effective assistance, the DC of the flat check is reduced from 15 to 10 for this check. On a hit against an unattended, non-magical fire, the bomb extinguishes the fire, or extinguishes one square of fire for a larger fire.",
+				"Many types grant an item bonus to attack rolls, and some types extinguish wider areas of fire."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 1,
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bomb deals 1 nonlethal bludgeoning damage and 1 nonlethal bludgeoning splash damage."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@dice 1d4} nonlethal bludgeoning damage and 2 nonlethal bludgeoning splash damage."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 11,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@dice 2d4} nonlethal bludgeoning damage and 3 nonlethal bludgeoning splash damage. Except on a critical failure, the bomb extinguishes non-magical fires within its splash area."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"amount": 2500,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@dice 3d4} nonlethal bludgeoning damage and 4 nonlethal bludgeoning splash damage. Except on a critical failure, the bomb extinguishes nonmagical fires within its splash area."
+					]
+				}
+			]
+		},
+		{
+			"name": "Quickmelt Slick",
+			"source": "QFF2",
+			"page": 78,
+			"type": "Item",
+			"level": "2+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"This clay jar is filled with a warm fluid composed primarily of lagofir oil and natural fire retardants. You can pour the fluid in an empty area adjacent to you, or over an adjacent frozen object, with an {@action Interact} action. The fluid instantly melts non-magical ice and snow in the area and harmlessly vaporizes the resulting meltwater. When used to melt magical ice and snow, quickmelt slick attempts a counteract check with the listed counteract modifier to melt the ice and snow, using the source of that ice and snow to determine the counteract level and DC."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 2,
+					"price": {
+						"amount": 5,
+						"coin": "gp"
+					},
+					"entries": [
+						"Lesser quickmelt slick melts ice and snow up to 1 foot in depth in one 5-foot square, or melts the ice covering a Small or smaller object. The slick has a +6 modifier for the counteract check and a counteract level of 1."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 4,
+					"price": {
+						"amount": 13,
+						"coin": "gp"
+					},
+					"entries": [
+						"Moderate quickmelt slick melts ice and snow up to 2 feet in depth in two adjacent 5-foot squares, or melts the ice covering a Medium or smaller object. The slick has a +8 modifier for the counteract check and a counteract level of 2."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 12,
+					"price": {
+						"amount": 310,
+						"coin": "gp"
+					},
+					"entries": [
+						"Greater quickmelt slick melts ice and snow up to 5 feet in depth in a 10-foot-square area or melts the ice covering a Large or smaller object. The slick has a +19 modifier for the counteract check and a counteract level of 6."
+					]
+				}
+			]
+		},
+		{
+			"name": "Pernicious Spore Bomb",
+			"source": "QFF2",
+			"page": 78,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"poison",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"This flask contains fast-growing mold spores, which quickly take root but just as quickly rot away. A pernicious spore bomb deals the listed poison damage, {@condition persistent damage||persistent piercing damage}, and splash damage. Many types grant an item bonus to attack rolls."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 1,
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bomb deals 1 poison damage, {@damage 1d4} {@condition persistent damage||persistent piercing damage}, and 1 poison splash damage. Except on a critical failure, one square of the target creature's space is coated in vegetation, becoming difficult terrain for 1 round."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The bomb deals 2 poison damage, {@damage 2d4} {@condition persistent damage||persistent piercing damage}, and 2 poison splash damage. Except on a critical failure, the bomb's splash area is coated in vegetation, becoming difficult terrain for 1 round."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 11,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The bomb deals 3 poison damage, {@damage 3d4} {@condition persistent damage||persistent piercing damage}, and 3 poison splash damage. Except on a critical failure, the bomb's splash area is coated in vegetation, becoming difficult terrain for 1 round."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"amount": 2500,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The bomb deals 4 poison damage, {@damage 4d4} {@condition persistent damage||persistent piercing damage}, and 4 poison splash damage.",
+						"Except on a critical failure, the bomb's splash area is coated in vegetation, becoming difficult terrain for 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mud Bomb",
+			"source": "QFF2",
+			"page": 78,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"earth",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"This clay vessel launches gobs of clinging mud and grit. A mud bomb deals the listed bludgeoning damage and splash damage. On a critical hit, the target is {@condition dazzled} until the start of your next turn. Many types grant an item bonus to attack rolls."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 1,
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bomb deals {@damage 1d6} bludgeoning damage and 1 bludgeoning splash damage."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} bludgeoning damage and 2 bludgeoning splash damage."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 11,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} bludgeoning damage and 3 bludgeoning splash damage."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"amount": 2500,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} bludgeoning damage and 4 bludgeoning splash damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Primordial Flame",
+			"source": "QFF2",
+			"page": 78,
+			"type": "Item",
+			"level": 23,
+			"traits": [
+				"unique",
+				"artifact",
+				"cursed",
+				"evocation",
+				"fire",
+				"light",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Artifact",
+			"entries": [
+				"Created by the Kellid goddess Sister Cinder to lead her believers out of the Age of Darkness, this hand-held lamp is constructed from animal bone, hide, and sinew, and it contains an eternal flame that requires neither fuel nor oxygen to burn. The lamp's flame can be covered or {@condition hidden}, but it can't be smothered or quenched. While uncovered, the Primordial Flame sheds bright light in a 100-foot radius (and dim light for the next 100 feet). If the light passes through an area of magical darkness or targets a creature affected by magical darkness, the Primordial Flame attempts to counteract the darkness with a counteract level of 10 and a counteract modifier of +35.",
+				"The presence of the Primordial Flame alters the surrounding environment, changing weather patterns, temperature, climate, and even seasons. Within a 10-mile radius of the Primordial Flame, the temperature remains 70° F (21° C) during the day and 60° F (16° C) at night. The weather is calm and free from extreme weather conditions (such as blizzards, hail, thunderstorms, and tornadoes), and the sky remains clear. Plants in the area flourish as if they were receiving optimal sunlight, water, and nutrients for their species, despite the lack of precipitation.",
+				"If the Primordial Flame remains in the same region for an extended time, the area of this effect increases (typically by 1 mile each year, though terrain and other factors might alter this limit). During the time Venexus carried the Primordial Flame, its environmental reach expanded to cover the entirety of Lost Mammoth Valley.",
+				"Cursed The Primordial Flame was cursed by Syarstik Painted-Tiger, the guardian spirit of Red Cat Cave. As long as it remains cursed, a creature that holds the Primordial Flame can't willingly give up possession. A creature that has held the Primordial Flame and no longer has it in their possession is wracked with mental anguish, becoming {@condition clumsy||clumsy 4}, {@condition enfeebled||enfeebled 4}, {@condition stupefied||stupefied 4}, and {@condition fatigued}; these conditions can't be reduced or removed until the creature regains possession of the Primordial Flame or the curse is removed. The curse can be removed only by avenging Syarstik.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "week"
+					},
+					"entries": [
+						"The Primordial Flame's light intensifies, shedding bright sunlight in a 10-mile radius (and dim light to the next mile) for 1 hour. If the light passes through an area of magical darkness or targets a creature affected by magical darkness, the Primordial Flame attempts to counteract the darkness with a counteract level of 10 and a counteract modifier of +35."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The Primordial Flame casts a 5th-level {@spell produce flame} spell. If you can cast spells higher than 5th level, the Primordial Flame automatically heightens produce flame to half your level rounded up."
+						
+					]
+				}
+			],
+			"destruction": [
+				"If used to slay a herald of Sister Cinder while on the Shadow Plane, the Primordial Flame is destroyed."
+			]
+		}
+	]
+}
