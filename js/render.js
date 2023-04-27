@@ -4476,11 +4476,11 @@ Renderer.creature = {
 			let renderStack = [];
 			for (let sc of cr.spellcasting) {
 				const meta = [];
-				let spellcastingName = sc.name ? sc.name : `${sc.tradition} ${sc.type}`.toTitleCase();
+				let spellcastingName = sc.name ? sc.name : `${sc.tradition} ${sc.type} Spells`.toTitleCase();
 				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
 				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
 				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${spellcastingName}${/Spell/.test(spellcastingName) ? "" : " Spells"}&nbsp;</strong>`)
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${spellcastingName}&nbsp;</strong>`)
 				if (sc.note != null) renderStack.push(`${renderer.render(sc.note)} `)
 				renderStack.push(renderer.render(meta.join(", ")))
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
