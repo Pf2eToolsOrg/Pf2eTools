@@ -4389,13 +4389,12 @@ Renderer.creature = {
 		if (!creature.defenses.ac) return null;
 		const renderer = Renderer.get();
 		const mainPart = `<strong>AC&nbsp;</strong> ${creature.defenses.ac.std}`;
-		const extraACList = Object.keys(creature.defenses.ac).filter(k => k !== "std" && k !== "note" && k !== "abilities")
-			.map(k => `${creature.defenses.ac[k]} ${k}`).join(", ");
-		const extraACs = extraACList ? ` (${extraACList})` : "";
-		// TODO: deprecate ac.note
-		const notePart = creature.defenses.ac.note ? renderer.render(creature.defenses.ac.note) : "";
+		const extraACs = Object.keys(creature.defenses.ac).filter(k => k !== "std" && k !== "notes" && k !== "abilities")
+			.map(k => `${creature.defenses.ac[k]} ${k}`);
+		const notes = (creature.defenses.ac.notes || []).map(n => renderer.render(n));
+		const notePart = (extraACs.length + notes.length) ? ` (${extraACs.concat(notes).join(", ")})` : "";
 		const abilitiesPart = creature.defenses.ac.abilities ? `; ${renderer.render(creature.defenses.ac.abilities)}` : "";
-		return `${mainPart}${extraACs}${notePart}${abilitiesPart}`;
+		return `${mainPart}${notePart}${abilitiesPart}`;
 	},
 	getDefenses_getSavingThrowPart (creature) {
 		if (!creature.defenses.savingThrows) return null;

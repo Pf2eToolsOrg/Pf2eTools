@@ -263,6 +263,12 @@ function updateFolder (folder) {
 							}
 						}
 					}
+					if (cr.defenses && cr.defenses.ac) {
+						if (cr.defenses.ac.note) {
+							cr.defenses.ac.notes = [cr.defenses.ac.note];
+							delete cr.defenses.ac.note;
+						}
+					}
 					if (cr.defenses && cr.defenses.resistances) {
 						cr.defenses.resistances = cr.defenses.resistances.map(r => {
 							if (r.note) {
