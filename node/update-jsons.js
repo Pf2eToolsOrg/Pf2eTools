@@ -314,6 +314,14 @@ function updateFolder (folder) {
 							) {
 								delete k.name;
 							}
+							if (!k.name && k.type && k.tradition) {
+								k.name = `${k.type} ${k.tradition} Spells`.toTitleCase();
+							} else if (!k.name.endsWith(" Spells")) {
+								// Exceptions to spellcasting naming that don't end in " Spells"
+								if (k.name !== "Witch Hexes") {
+									k.name = `${k.name} Spells`.toTitleCase();
+								}
+							}
 
 							const mapSpellLevel = (l) => {
 								l.spells = l.spells.map(s => {
