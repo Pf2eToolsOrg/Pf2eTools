@@ -284,7 +284,7 @@
 				"mental",
 				"thaumaturge"
 			],
-			"trigger": "The target of your {@action Exploit Vulnerability|DA} makes a Strike or Casts a Spell that would affect you or one of your allies.",
+			"trigger": "The target of your {@action Exploit Vulnerability|DA} makes a {@action Strike} or {@action Cast a Spell||Casts a Spell} that would affect you or one of your allies.",
 			"requirements": "You are holding your {@subclassFeature First Implement and Esoterica|Thaumaturge|DA|bell|DA|1||bell implement}, and the triggering creature is within 30 feet of you.",
 			"entries": [
 				"{@subclassFeature First Implement and Esoterica|Thaumaturge|DA|Your|DA|1||Your implement} sings out abruptly, disrupting your foe. The piece played depends on whether the trigger was a Strike or Spell, and it applies to the triggering Strike or Spell, except where noted otherwise.",
@@ -295,14 +295,14 @@
 							"type": "item",
 							"name": "Distracting Cacophony",
 							"entries": [
-								"The trigger is a spell. You create a musical crash of sonic energy that assails the target and breaks its concentration. The target must succeed at a Fortitude save against your class DC or become stupefied 1 until the end of your next turn (stupefied 2 on a critical failure). The target doesn't have to attempt a flat check to avoid losing the triggering spell, but the discordant ring does lower the spell attack roll or spell DC of the triggering spell from stupefied."
+								"The trigger is a spell. You create a musical crash of sonic energy that assails the target and breaks its concentration. The target must succeed at a Fortitude save against your class DC or become {@condition stupefied 1} until the end of your next turn ({@condition stupefied 2} on a critical failure). The target doesn't have to attempt a flat check to avoid losing the triggering spell, but the discordant ring does lower the spell attack roll or spell DC of the triggering spell from {@condition stupefied}."
 							]
 						},
 						{
 							"type": "item",
 							"name": "Disrupting Harmony",
 							"entries": [
-								"The trigger is a Strike. You create a strangely discordant harmony that sinks into your foe's mind and throws its movements off. The target must succeed at a Will save against your class DC or become your choice of enfeebled 1 or clumsy 1 until the end of your next turn (enfeebled 2 or clumsy 2 on a critical failure)."
+								"The trigger is a Strike. You create a strangely discordant harmony that sinks into your foe's mind and throws its movements off. The target must succeed at a Will save against your class DC or become your choice of {@condition enfeebled 1} or {@condition clumsy 1} until the end of your next turn ({@condition enfeebled 2} or {@condition clumsy 2} on a critical failure)."
 							]
 						}
 					]
@@ -6547,6 +6547,317 @@
 						"Critical Failure": "The NPC is offended or insulted by something you did. You no longer gain the effects of an ongoing success or critical success with that NPC, and the DC to use Befriend a Local with that NPC in the future increases by 5."
 					}
 				}
+			]
+		},
+		{
+			"name": "Repair Huntergate",
+			"source": "AoA2",
+			"page": 7,
+			"traits": [
+				"exploration",
+				"manipulate"
+			],
+			"prerequisites": "trained in {@skill Crafting} or {@skill Thievery}",
+			"requirements": "You have the Huntergate portal key ({@item hunter's arrowhead|tv}).",
+			"entries": [
+				"You use the {@item hunter's arrowhead|tv} to guide the misaligned magic of Huntergate back into the proper pathways through the stone's intricate carvings and decorations. You must attempt either a {@skill Crafting} check to {@action Repair} (in which case the hunter's arrowhead serves as the repair kit needed for this activity) or a {@skill Thievery} check to {@action Pick a Lock} (in which case the hunter's arrowhead serves as the thieves' tools needed for this activity). Regardless of the skill used, the activity takes an hour to perform, and the DC of the check is 24, with the following effects.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Huntergate is repaired, and the {@hazard vision of Dahak|aoa2} hazard inside of the Huntergate way station is reduced in power; reduce all of the hazard's modifiers and DCs by 2.",
+						"Success": "Huntergate is repaired.",
+						"Failure": "Huntergate is not repaired, and the character who attempted the repair becomes {@condition clumsy 2} for 1 hour as an orange arc of magical energy lances painfully through their body. A new attempt to repair the portal cannot be made again for 24 hours.",
+						"Critical Failure": "As failure, but the magical backlash also deals {@damage 6d6} fire damage to the character attempting the repairs."
+					}
+				}
+			]
+		},
+		{
+			"name": "Seek the Animals",
+			"source": "AoA2",
+			"page": 20,
+			"traits": [
+				"exploration"
+			],
+			"entries": [
+				"You help the elven hunters look for signs of animals. Attempt a DC 17 {@skill Nature} or {@skill Perception} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You make an impressive and potentially dangerous find, such as a large pack of particularly healthy (and thus cranky) red river boars or a large waterbuck with razor-sharp horns. You also find signs of animals that are safer to hunt than your impressive and delicious find.",
+						"Success": "You discover signs of animals that are safe to hunt.",
+						"Failure": "Your efforts have scared away the best game, and the hunting party must set their sights on river turtles and bats.",
+						"Critical Failure": "Your efforts have scared away too many animals, leaving the hunting party with a sparse amount of game to catch. The party loses 2 IP."
+					}
+				}
+			]
+		},
+		{
+			"name": "Position the Hunters",
+			"source": "AoA2",
+			"page": 20,
+			"traits": [
+				"exploration"
+			],
+			"entries": [
+				"With the target game animals located, you must move to an advantageous position without startling the prey. Attempt a {@skill Stealth} check. Against an impressive and dangerous find, the DC is 25. Against standard game, it's DC 20. Against river turtles, bats, and lesser game, it's DC 15.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The animals have no indication that they are in danger, and you gain a +2 circumstance bonus to rolls made during the hunting phase.",
+						"Success": "You position yourself well and take no penalty when Hunting.",
+						"Failure": "Your loud and clumsy movements alert the animals to your presence, and you take a \u20132 circumstance penalty to rolls made during the hunting phase.",
+						"Critical Failure": "You stumble loudly and startle the majority of the animals, which escape and leave the party with very few animals to catch. The party loses 2 IP."
+					}
+				}
+			]
+		},
+		{
+			"name": "Hunt the Animals",
+			"source": "AoA2",
+			"page": 20,
+			"traits": [
+				"exploration"
+			],
+			"entries": [
+				"When the hunt begins, the Ekujae elves and the PCs work together to bring down the game. Against an impressive find, each PC actively participating (and not just {@action Aid||Aiding}) attempts a DC 25 {@skill Survival} check. Against standard game, the DC is 20. No check is needed to hunt river turtles or bats\u2014hunting such game is automatically successful (but can never be a critical success).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You help take down the animals quickly and relatively painlessly, showing them mercy.",
+						"Success": "Your participation in the hunt helps the hunting party take down the animals quickly.",
+						"Failure": "Your involvement complicates the hunt\u2014one or two animals even escape uninjured. Each PC takes {@damage 2d6} damage from animal attacks (or {@damage 4d6} if the animals were an impressive find).",
+						"Critical Failure": "Several of the animals die poorly, and many escape with mortal wounds. Barely enough animals are caught for the feast, but the fact that they died in pain or escaped with injuries shames the Ekujae\u2014 the party loses 2 IP. Each PC takes {@damage 2d6+6} damage from animal attacks (or {@damage 4d6+12} if the animals were an impressive find)."
+					}
+				}
+			]
+		},
+		{
+			"name": "Camp in the Mwangi Jungle",
+			"source": "AoA2",
+			"page": 71,
+			"traits": [
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"Setting up a camp in the Mwangi Jungle takes about an hour and requires one PC to attempt a secret DC 22 {@skill Survival} check to determine the quality of the campsite. Utilizing Ekujae mosquito netting they provide grants the PC a +2 circumstance bonus to this {@skill Survival} check. At your option, other precautions taken by the PCs can instead grant this bonus, but multiple tactics are not cumulative. Certain magic spells like {@spell magnificent mansion} or {@spell rope trick}, or magic items like an {@item instant fortress}, can create shelters that result in an automatic success at camping in dangerous terrain like the Mwangi Jungle, but at this point in their adventuring careers, the PCs are unlikely to have access to this type of magic. This activity assumes the PCs are resting for 8 hours.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The camp serves the PCs well, allowing them to rest and make their daily preparations upon waking without difficulty. The camp is also camouflaged or protected, and as a result, there is no chance of a random encounter while the PCs rest.",
+						"Success": "The camp serves the PCs well, allowing them to rest and make their daily preparations upon waking without difficulty.",
+						"Failure": "The camp doesn't effectively prevent insects, rain, and other unpleasant jungle elements from reaching the PCs. The PCs can still rest and make their daily preparations, but each PC is also exposed to {@affliction dysentery|AoA2}.",
+						"Critical Failure": "The camp is an utter mess. The PCs are exposed to both {@affliction dysentery|AoA2} and {@affliction malaria|AoA2}. In addition, they gain no benefit from rest during the time spent camping, and they instead become {@condition fatigued}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Administer",
+			"source": "AoA2",
+			"page": 72,
+			"traits": [
+				"concentrate",
+				"downtime",
+				"linguistic",
+				"mental"
+			],
+			"entries": [
+				"You spend the day attending to administrative needs related to running Citadel Altaerein. The Administer activity can be used to undo poor public relations from the use of {@skill Deception} or {@skill Intimidate} to {@action Organize Labor|AoA2}, but it is also used to maintain relations with groups you make contact with over the course of the Age of Ashes campaign.",
+				"Only one person can attempt to Administer per day (though others can {@action Aid}), and once the castle has been Administered, no one else can Administer until after the interval specified in the result. However, the GM might allow exceptions to this if, for instance, the group is about to go on an adventure and wants to make sure the citadel runs smoothly while they're gone.",
+				"If you perform downtime activities involving Citadel Altaerein when it's not successfully Administered, you take a \u20134 circumstance penalty to your checks.",
+				"Administering requires a successful DC 20 {@skill Society} check (although for special actions later in the Adventure Path, this DC may change). You can pay a seneschal (see {@table Hired Help|AoA2}) to attend to Citadel Altaerein's administrative needs. As long as the seneschal is paid, the weekly requirement to Administer is automatically a success (but never a critical success).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You facilitate the prosperity of the citadel. The citadel functions smoothly for 1 month. In addition, during this time you gain a +2 circumstance bonus to all checks to {@action Organize Labor|AoA2}.",
+						"Success": "Citadel Altaerein functions smoothly for 1 week.",
+						"Failure": "Citadel Altaerein is not Administered, but you can try again the next day.",
+						"Critical Failure": "Citadel Altaerein is not Administered. Botched relations and flared tempers among certain citizens in Breachill prevent you from attempting to Administer again for 1 week."
+					}
+				}
+			]
+		},
+		{
+			"name": "Organize Labor",
+			"source": "AoA2",
+			"page": 72,
+			"traits": [
+				"concentrate",
+				"downtime",
+				"linguistic",
+				"mental"
+			],
+			"entries": [
+				"You spend a day in Breachill recruiting workers to aid in a repair or an upgrade at Citadel Altaerein. Attempt a DC 13 {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation} check to Organize Labor to organize workers, or a DC 18 check for specialists.",
+				"If you use {@skill Deception} or {@skill Intimidation} for this check, you gain a +2 circumstance bonus, but failure comes with extra risks, as detailed below. Using {@skill Diplomacy} grants no bonus to the check, but comes without added risk. When you Organize Labor, you must specify one repair or upgrade activity to be undertaken; once you successfully Organize Labor, you must begin that activity within a week.",
+				"A force of organized workers costs 1 gp per day, while a force of organized specialists costs 5 gp per day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You organize labor for the full duration of the repair or upgrade activity, and the cost to pay the workers is halved for the duration.",
+						"Success": "You organize labor for the full duration of a repair or upgrade activity.",
+						"Failure": "You organize labor for a single day of a repair or upgrade activity. Unless you used {@skill Diplomacy}, word of your deceptive or intimidating nature spreads, and you take a \u20131 circumstance penalty to all future checks to organize labor. This penalty increases with each subsequent failure, to a maximum penalty of \u20134.",
+						"Critical Failure": "You completely fail to organize labor. If you used {@skill Deception} or {@skill Intimidation}, word of your untrustworthiness or cruelty spreads, and you can no longer use that skill to Organize Labor."
+					}
+				}
+			]
+		},
+		{
+			"name": "Clean",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"entries": [
+				"You spend the day cleaning\u2014hauling out broken furniture, disposing of detritus, and making rooms clear enough to begin repairs. Citadel Altaerein requires 8 days of cleaning before any other basic repair activities can begin. Cleaning does not require a {@skill Crafting} check, nor does it cost gold."
+			]
+		},
+		{
+			"name": "Clear Courtyard",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (trained) or hired stonemason; organized workers",
+			"entries": [
+				"You work to repair the collapsed northern wall, drain and fill in the flooded sunken area, and clear out weeds. This activity requires 6 days of work and a DC 15 {@skill Crafting} check."
+			]
+		},
+		{
+			"name": "Make General Repairs",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (trained), Specialty Crafting (woodworking), or hired woodworker; organized workers",
+			"entries": [
+				"You make general repairs to the citadel furnishings, replacing or fixing furniture, replacing rotted floorboards, and rehanging doors throughout the structure. This task takes 14 days of work and a DC 15 {@skill Crafting} check."
+			]
+		},
+		{
+			"name": "Rebuild Battlements",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (expert), Specialty Crafting (stonemasonry), or hired stonemason; organized workers",
+			"entries": [
+				"You rebuild and restore the collapsed battlements along the northern section of the central tower. This task takes 28 days of work and a DC 20 {@skill Crafting} check."
+			]
+		},
+		{
+			"name": "Rebuild Collapsed Stairs",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (expert), Specialty Crafting (stonemasonry), or hired stonemason; organized workers",
+			"entries": [
+				"You work to clear rubble and rebuild the stairs connecting citadel floors, requiring a DC 20 {@skill Crafting} check. Repairing the stairs from the courtyard to the battlement (connecting areas {@b A12}} and {@b A22}) takes 4 days. Repairing the stairs from the courtyard to the vault (connecting areas {@b A12} and {@b B1}) takes 4 days. Digging out the long flight of stairs down to Alseta's Ring (connecting areas {@b B1} and {@b D7}) takes 8 days."
+			]
+		},
+		{
+			"name": "Repair Crumbled Walls",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (expert), Specialty Crafting (stonemasonry), or hired stonemason; organized workers",
+			"entries": [
+				"You work to repair a collapsed wall in either the training hall (area {@b A8}), the Court of the Nail (area {@b A13}), or the records room (area {@b A17}). Each room's repair takes 8 days of work and a DC 20 {@skill Crafting} check."
+			]
+		},
+		{
+			"name": "Build Infirmary",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (master), {@skill Medicine} (master), or hired medic; organized specialists",
+			"entries": [
+				"Choose a single room in Citadel Altaerein to serve as a dedicated infirmary. Once complete, the infirmary fulfills the healer's tools requirement for {@skill Medicine} skill actions and grants a +2 circumstance bonus to {@skill Medicine} checks made on site. This upgrade requires 20 days of work and a DC 25 {@skill Crafting} or {@skill Medicine} check."
+			]
+		},
+		{
+			"name": "Build Library",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (master), any {@skill Lore} (master), or hired bookmaker; organized specialists",
+			"entries": [
+				"Pick a single room in Citadel Altaerein to serve as a library. Once complete, the library grants a +2 circumstance bonus to skill checks made to {@action Borrow an Arcane Spell}, {@action Create Forgery}, {@action Decipher Writing}, {@action Identify Alchemy}, {@action Identify Magic}, {@action Learn a Spell}, or {@action Recall Knowledge} as long as the PC performing the action is on site. This upgrade takes 20 days of work and a DC 25 {@skill Crafting} or {@skill Lore} check."
+			]
+		},
+		{
+			"name": "Build Training Facility",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "expert in the skill listed below or hired trainer; organized specialists",
+			"entries": [
+				"Pick a room in Citadel Altaerein to serve as a training area for a single character class (you can have multiple training facilities, with each one devoted to a different class). Once complete, the training facility fills the role of a teacher when using the Retrain downtime activity for the chosen class, and reduces the time required to retrain a feat or skill increase by 2 days and the time required to retrain a class feature by 1 week. This upgrade takes 40 days of work.",
+				"Building the facility requires a DC 25 skill check using a skill depending on the class in question, as listed below. If a class lists multiple skills, the PC can choose whichever one they like (but they must be an expert in the chosen skill, as noted in the Requirements entry above).",
+				"{@b Alchemist} Crafting",
+				"{@b Barbarian} Athletics",
+				"{@b Bard} Occultism or Performance",
+				"{@b Champion} Religion",
+				"{@b Cleric} Religion",
+				"{@b Druid} Nature",
+				"{@b Fighter} Acrobatics or Athletics",
+				"{@b Monk} Acrobatics or Athletics",
+				"{@b Ranger} Athletics, Nature, or Survival",
+				"{@b Rogue} Acrobatics or Thievery",
+				"{@b Sorcerer} Arcana, Nature, Occultism, or Religion",
+				"{@b Wizard} Arcana"
+			]
+		},
+		{
+			"name": "Build Workshop (Crafting)",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (master), Specialty Crafting (any), or any hired specialist; organized specialists",
+			"entries": [
+				"Pick a room in Citadel Altaerein to serve as a crafting area for a specific {@skill Crafting} skill chosen from one of the crafting specialties listed under the {@feat Specialty Crafting} feat. You can have multiple workshops, each devoted to its own skill. Use of a workshop grants a +1 circumstance bonus to {@skill Crafting} checks, or a +3 circumstance bonus to {@skill Crafting} skill checks associated with that workshop's specialty. This upgrade takes 20 days of work to complete and a DC 25 {@skill Crafting} check."
+			]
+		},
+		{
+			"name": "Upgrade Defenses",
+			"source": "AoA2",
+			"page": 73,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"requirements": "{@skill Crafting} (master), Specialty Crafting (stonemasonry), or hired stonemason; organized specialists",
+			"entries": [
+				"You bolster Citadel Altaerein's walls with metal braces, skillful engineering, and other supports. This upgrade takes 40 days of work and a DC 25 {@skill Crafting} check.",
+				"{@b GM Note:} The effects of this upgrade come into play when Citadel Altaerein is attacked in the final adventure of Age of Ashes, but until then these upgraded defenses are largely cosmetic. (If you add additional encounters in which the castle is attacked during the next few adventures, be sure to keep any upgraded defenses in mind.)"
 			]
 		}
 	]
