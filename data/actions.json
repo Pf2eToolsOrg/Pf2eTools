@@ -6859,6 +6859,138 @@
 				"You bolster Citadel Altaerein's walls with metal braces, skillful engineering, and other supports. This upgrade takes 40 days of work and a DC 25 {@skill Crafting} check.",
 				"{@b GM Note:} The effects of this upgrade come into play when Citadel Altaerein is attacked in the final adventure of Age of Ashes, but until then these upgraded defenses are largely cosmetic. (If you add additional encounters in which the castle is attacked during the next few adventures, be sure to keep any upgraded defenses in mind.)"
 			]
+		},
+		{
+			"name": "Topple Crates",
+			"source": "AoA3",
+			"page": 31,
+			"traits": [
+				"manipulate"
+			],
+			"requirements": "You are adjacent to a column of crates.",
+			"entries": [
+				"You attempt to topple a stack of heavy crates onto a foe. Attempt a DC 22 {@skill Athletics} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You topple the crates toward a target within a 15-foot line from the column. The falling crates deal {@damage 3d10+6} bludgeoning damage with a DC 26 basic Reflex save. A creature that critically fails is also knocked {@condition prone}. Any squares where crates crashed down become {@quickref difficult terrain||3|terrain}.",
+						"Failure": "You are unable to topple the crates.",
+						"Critical Failure": "The crates topple onto you instead, with the same effects as a success but affecting only you and your square."
+					}
+				}
+			]
+		},
+		{
+			"name": "Deduce Traditions",
+			"source": "AoA4",
+			"page": 18,
+			"traits": [
+				"concentrate",
+				"linguistic",
+				"secret"
+			],
+			"entries": [
+				"By interpreting a regent's personality, drawing upon what you know about dwarven tradition, and making educated guesses, you surmise what sorts of skills are most valued by the dwarven regent's guild\u2014and thus infer what types of skills would most likely curry that regent's favor. Deduce Traditions requires a successful DC 30 {@skill Perception} check or a successful DC 25 {@skill Society} check to yield accurate results.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You learn one of the guild's favored skills and learn what that regent's Skepticism value is.",
+						"Success": "You learn one of the guild's favored skills.",
+						"Failure": "You learn none of the guild's favored skills.",
+						"Critical Failure": "You learn an incorrect favored skill."
+					}
+				}
+			]
+		},
+		{
+			"name": "Influence Regent",
+			"source": "AoA4",
+			"page": 18,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"mental",
+				"secret"
+			],
+			"entries": [
+				"You attempt to gain favor with one of Kovlar's regents, either by responding to their question with tact and respect and attempting a Diplomacy check, or by drawing upon your acumen in another skill. This second tactic usually can't succeed unless that skill is one favored by that regent's guild. At the GM's option, you may substitute an applicable {@skill Lore} skill check for the {@skill Diplomacy} check. If you attempt a {@skill Diplomacy} or {@skill Lore} check, it's a DC 32 check for success; if you attempt a favored skill check, it's a DC 28 check for success.",
+				"At the GM's option, a player who brings up a compelling point or roleplays particularly well in their attempt to Influence a Regent might gain a +2 circumstance bonus on the check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You reduce the regent's Skepticism by 2.",
+						"Success": "You reduce the regent's Skepticism by 1.",
+						"Failure": "You do not adjust the regent's Skepticism.",
+						"Critical Failure": "You increase the regent's Skepticism by 1."
+					}
+				}
+			]
+		},
+		{
+			"name": "Check the Walls",
+			"source": "AoA4",
+			"page": 18,
+			"traits": [
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"A PC spends a day studying the walls and patrolling them. The PC then attempts either a DC 32 {@skill Arcana} check or a DC 27 {@skill Crafting} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PC discovers an irregularity in the protective runes along the western portion of the wall\u2014a subtle distortion of the stone and magic that's a sign of repetitive strain, and while no obvious source for this strain is apparent, the distortions suggest the hidden source lies somewhere underground in the immediate area. Unfortunately, further research into city documents and architectural plans do not reveal the existence of any underground chambers in the area, suggesting either that no such chamber exists or, if it does, the records are either faulty or missing.",
+						"Success": "The PC discovers the irregularity in the barrier in the western portion of the wall\u2014enough to confirm Alljoiner Garnis's fears, yet not enough to suggest the source of the strain.",
+						"Failure": "While the PC is able to discern some basic information about the city's barriers, it is not enough to find the structural flaws. Once the PCs report to her, Alljoiner Garnis suggests the PC tries again to confirm their suspicions, as she still feels there's more to learn.",
+						"Critical Failure": "The PC discovers what they believe to be a flaw along the eastern walls that is, in fact, merely a quirk of the ancient magic's design. When the PCs report this finding to Alljoiner Garnis, she confronts Archmage Nalruven with the information, who immediately inspects the area and accurately points out the PCs' error. This failure on the PC's part results in both Alljoiner Garnis and Mountainheart Chiselrock becoming less supportive of the PCs' efforts in Kovlar."
+					}
+				}
+			]
+		},
+		{
+			"name": "Guild Investigation",
+			"source": "AoA4",
+			"page": 18,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"A PC spends a day and attempts a DC 30 Skill check to pursue their investigation into the guild.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PCs' investigation results in compelling evidence that Brigven is the culprit behind the shoddy weapons,and reveals the location of his shop to the PCs. This evidence forces Brigven to give up as soon as the PCs confront him in his shop without forcing them to talk him into a confession.",
+						"Success": "The investigation implies that Brigven is behind the shoddy weapons, and reveals the location of his shop to the PCs.",
+						"Failure": "The investigation yields no results, but does not alert Brigven of the threat.",
+						"Critical Failure": "The investigation yields no results, and Brigven learns that the PCs are on to him. He abandons his shop and flees to the Hidden Forge to seek shelter with the other {@deity Droskar|LOGM} cultists. In this case, the PCs can encounter Brigven in area {@b D2}\u2014you can represent him with the statistics for {@creature Thea|AoA4} in that encounter."
+					}
+				}
+			]
+		},
+		{
+			"name": "Seek the Hidden Forge",
+			"source": "AoA4",
+			"page": 18,
+			"traits": [
+				"downtime",
+				"secret"
+			],
+			"requirements": "At least one Hidden Forge clue.",
+			"entries": [
+				"By spending a day examining Hidden Forge clues, consulting with locals, studying maps of Kovlar, and otherwise investigating the mystery, a PC attempts to determine the location of the secret shrine to {@deity Droskar|LOGM} in the dwarven city. A character can attempt to interpret these clues with a {@skill Perception}, {@skill Society}, or {@skill Survival} check\u2014the DC remains 36 regardless of the check used to interpret the clues. This DC is reduced by 2 for each Hidden Forge clue possessed beyond the first. Thus, if the character has access to two Hidden Forge Clues, the DC is reduced to 34, up to a maximum reduction to DC 22 if a character has 8 Hidden Forge Clues.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PC pinpoints the entrance to the Hidden Forge.",
+						"Success": "The PC makes significant progress toward determining the Hidden Forge's location, and gains a +4 circumstance bonus on their next check to Seek the Hidden Forge.",
+						"Failure": "The PC fails to determine anything informative from the clues.",
+						"Critical Failure": "As failure, but the Droskar cultists catch wind of the investigation and are able to prepare their defenses."
+					}
+				}
+			]
 		}
 	]
 }

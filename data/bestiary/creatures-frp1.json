@@ -2328,7 +2328,16 @@
 						],
 						"requirements": "The grave spinosaurus is swimming on the surface of water",
 						"entries": [
-							"With a powerful lunge to the side, the grave spinosaurus uses its sail to slap the water's surface, creating a crushing wave that deals {@damage 8d6} bludgeoning damage in a 30-foot cone. Each creature in the water in the area must attempt a DC 36 Reflex save. Critical Success The creature is unaffected. Success The creature takes half damage. Failure The creature takes full damage and is {@condition slowed|CRB|slowed 1} until the end of its next turn. Critical Failure The creature takes double damage and is {@condition stunned|CRB|stunned 3}."
+							"With a powerful lunge to the side, the grave spinosaurus uses its sail to slap the water's surface, creating a crushing wave that deals {@damage 8d6} bludgeoning damage in a 30-foot cone. Each creature in the water in the area must attempt a DC 36 Reflex save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes half damage.",
+									"Failure": "The creature takes full damage and is {@condition slowed|CRB|slowed 1} until the end of its next turn.",
+									"Critical Failure": "The creature takes double damage and is {@condition stunned|CRB|stunned 3}."
+								}
+							}
 						],
 						"name": "Staggering Sail"
 					},

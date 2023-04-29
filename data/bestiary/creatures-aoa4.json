@@ -46,6 +46,11 @@
 				"wis": 5,
 				"cha": 2
 			},
+			"items": [
+				"+2 resilient full plate",
+				"soul chain (+2 greater striking flaming adamantine spiked chain, 11th level)",
+				"+2 striking adamantine warhammer"
+			],
 			"speed": {
 				"walk": 20
 			},
@@ -90,7 +95,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"As long as its soul chain remains intact, the accursed forge-spurned can't be truly destroyed and rises again fully healed at the next sundown, even if its physical body was destroyed. Information about soul chains appears on page 83."
+							"As long as its {@i soul chain} remains intact, the accursed forge-spurned can't be truly destroyed and rises again fully healed at the next sundown, even if its physical body was destroyed. Information about soul chains appears on page 83."
 						],
 						"name": "Eternal Damnation"
 					},
@@ -99,7 +104,7 @@
 							"fire"
 						],
 						"entries": [
-							"A creature that touches the accursed forge-spurned (including grappling it or hitting it with an unarmed attack) takes {@damage 4d6} fire damage (DC 33 basic Reflex save)."
+							"A creature that touches the accursed forge-spurned (including {@action Grapple||grappling} it or hitting it with an {@trait unarmed} attack) takes {@damage 4d6} fire damage (DC 33 basic Reflex save)."
 						],
 						"name": "Searing Heat"
 					}
@@ -138,7 +143,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"If a creature is slain by an attack from the soul chain and the accursed forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the soul chain (as bind soul) with a day of work at a forge and a DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the soul chain is destroyed (Hardness 10, 40 HP, BT 20)."
+							"If a creature is slain by an attack from the {@i soul chain} and the accursed forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the {@i soul chain} (as {@spell bind soul}) with a day of work at a forge and a DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the {@i soul chain} is destroyed (Hardness 10, 40 HP, BT 20)."
 						],
 						"name": "Soul Chain"
 					},
@@ -148,7 +153,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the accursed forge-spurned critically hits a target with its soul chain, the chain leeches away a portion of the target's soul. The target must attempt a DC 36 Fortitude save.",
+							"When the accursed forge-spurned critically hits a target with its {@i soul chain}, the chain leeches away a portion of the target's soul. The target must attempt a DC 36 Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -187,585 +192,17 @@
 						]
 					}
 				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"fire",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
 				"weaknesses": [
 					{
 						"amount": 10,
-						"name": "cold"
-					}
-				]
-			}
-		},
-		{
-			"name": "Adult Magma Dragon",
-			"source": "AoA4",
-			"page": 80,
-			"level": 13,
-			"traits": [
-				"rare",
-				"cn",
-				"huge",
-				"dragon",
-				"fire"
-			],
-			"perception": {
-				"std": 23
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"type": "imprecise",
-					"name": "scent",
-					"range": 60
-				}
-			],
-			"languages": {
-				"languages": [
-					"common",
-					"draconic",
-					"ignan",
-					"terran"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 22
-				},
-				"athletics": {
-					"std": 28
-				},
-				"deception": {
-					"std": 19
-				},
-				"intimidation": {
-					"std": 25
-				},
-				"nature": {
-					"std": 21
-				},
-				"stealth": {
-					"std": 22
-				},
-				"survival": {
-					"std": 21
-				}
-			},
-			"abilityMods": {
-				"str": 8,
-				"dex": 2,
-				"con": 5,
-				"int": 2,
-				"wis": 4,
-				"cha": 4
-			},
-			"speed": {
-				"abilities": [
-					"magma swim 40 feet"
-				],
-				"walk": 40,
-				"fly": 140
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 27,
-					"traits": [
-						"fire",
-						"magical",
-						"reach <15 feet>"
-					],
-					"damage": "{@damage 3d10+11} piercing plus {@damage 3d6} fire",
-					"types": [
-						"fire",
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 27,
-					"traits": [
-						"agile",
-						"magical",
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 3d10+11} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tail",
-					"attack": 25,
-					"traits": [
-						"magical",
-						"reach <20 feet>"
-					],
-					"damage": "{@damage 2d12+10} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "horns",
-					"attack": 25,
-					"traits": [
-						"magical",
-						"reach <15 feet>"
-					],
-					"damage": "{@damage 2d10+10} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "primal",
-					"DC": 31,
-					"attack": 23,
-					"entry": {
-						"0": {
-							"level": 7,
-							"spells": [
-								{
-									"name": "produce flame"
-								}
-							]
-						},
-						"6": {
-							"spells": [
-								{
-									"name": "burning hands",
-									"amount": "at will"
-								},
-								{
-									"name": "wall of fire",
-									"amount": "at will"
-								}
-							]
-						}
-					}
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"traits": [
-							"aura",
-							"emotion",
-							"fear",
-							"mental"
-						],
-						"entries": [
-							"90 feet, DC 29"
-						],
-						"name": "Frightful Presence",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"entries": [
-							"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
-						],
-						"name": "Wing Deflection",
-						"trigger": "The dragon is targeted with an attack."
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"evocation",
-							"fire",
-							"primal"
-						],
-						"entries": [
-							"The dragon breathes a blast of magma that deals {@damage 7d6} fire damage and {@damage 4d12} bludgeoning damage in a 40-foot cone (DC 33 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-						],
-						"name": "Breath Weapon"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"entries": [
-							"The dragon makes two claw {@action Strike||Strikes} and one horns {@action Strike} in any order."
-						],
-						"name": "Draconic Frenzy"
-					},
-					{
-						"entries": [
-							"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
-						],
-						"name": "Draconic Momentum"
-					},
-					{
-						"entries": [
-							"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
-						],
-						"name": "Magma Swim"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 3d6} {@condition persistent damage||persistent fire damage}, and as long as it has this {@condition persistent damage||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
-						],
-						"name": "Volcanic Purge"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 34
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 26
-					},
-					"ref": {
-						"std": 21
-					},
-					"will": {
-						"std": 23
-					},
-					"abilities": [
-						"+1 status to all saves vs. magic"
-					]
-				},
-				"hp": [
-					{
-						"hp": 270
-					}
-				],
-				"immunities": [
-					"fire",
-					"paralyzed",
-					"sleep"
-				],
-				"weaknesses": [
-					{
-						"amount": 15,
-						"name": "cold"
-					}
-				]
-			}
-		},
-		{
-			"name": "Ancient Magma Dragon",
-			"source": "AoA4",
-			"page": 81,
-			"level": 18,
-			"traits": [
-				"rare",
-				"cn",
-				"gargantuan",
-				"dragon",
-				"fire"
-			],
-			"perception": {
-				"std": 33
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"type": "imprecise",
-					"name": "scent",
-					"range": 60
-				}
-			],
-			"languages": {
-				"languages": [
-					"abyssal",
-					"common",
-					"draconic",
-					"ignan",
-					"terran",
-					"undercommon"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 28
-				},
-				"athletics": {
-					"std": 35
-				},
-				"deception": {
-					"std": 28
-				},
-				"intimidation": {
-					"std": 32
-				},
-				"nature": {
-					"std": 29
-				},
-				"stealth": {
-					"std": 28
-				},
-				"survival": {
-					"std": 29
-				}
-			},
-			"abilityMods": {
-				"str": 8,
-				"dex": 4,
-				"con": 6,
-				"int": 4,
-				"wis": 5,
-				"cha": 6
-			},
-			"speed": {
-				"abilities": [
-					"magma swim 50 feet"
-				],
-				"walk": 50,
-				"fly": 200
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 36,
-					"traits": [
-						"magical",
-						"reach <20 feet>"
-					],
-					"damage": "{@damage 3d12+20} piercing plus {@damage 4d6} fire",
-					"types": [
-						"fire",
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 36,
-					"traits": [
-						"agile",
-						"magical",
-						"reach <15 feet>"
-					],
-					"damage": "{@damage 3d10+20} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tail",
-					"attack": 34,
-					"traits": [
-						"magical",
-						"reach <25 feet>"
-					],
-					"damage": "{@damage 3d12+18} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "horns",
-					"attack": 34,
-					"traits": [
-						"magical",
-						"reach <20 feet>"
-					],
-					"damage": "{@damage 2d12+18} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "primal",
-					"DC": 40,
-					"attack": 32,
-					"entry": {
-						"0": {
-							"level": 9,
-							"spells": [
-								{
-									"name": "produce flame"
-								}
-							]
-						},
-						"8": {
-							"spells": [
-								{
-									"name": "burning hands",
-									"amount": "at will"
-								},
-								{
-									"name": "wall of fire",
-									"amount": "at will"
-								}
-							]
-						},
-						"9": {
-							"spells": [
-								{
-									"name": "fireball"
-								}
-							]
-						},
-						"constant": {
-							"4": {
-								"spells": [
-									{
-										"name": "fire shield"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"traits": [
-							"aura",
-							"emotion",
-							"fear",
-							"mental"
-						],
-						"entries": [
-							"90 feet, DC 36"
-						],
-						"name": "Frightful Presence",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"entries": [
-							"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
-						],
-						"name": "Wing Deflection",
-						"trigger": "The dragon is targeted with an attack."
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"evocation",
-							"fire",
-							"primal"
-						],
-						"entries": [
-							"The dragon breathes a blast of magma that deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage in a 60-foot cone (DC 42 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-						],
-						"name": "Breath Weapon"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"entries": [
-							"The dragon makes two claw {@action Strike||Strikes} and one horns {@action Strike} in any order."
-						],
-						"name": "Draconic Frenzy"
-					},
-					{
-						"entries": [
-							"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
-						],
-						"name": "Draconic Momentum"
-					},
-					{
-						"entries": [
-							"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
-						],
-						"name": "Magma Swim"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"entries": [
-							"Once per day, the dragon can spit a molten boulder at a target within 120 feet. This deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage, with a DC 42 basic Reflex save. If the creature fails its save, it's encased in magma that instantly cools and has Hardness 10, HP 40 and BT 20. The encased creature can't breathe and is {@condition restrained}."
-						],
-						"name": "Magma Tomb"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"As adult magma dragon, but the damage is {@dice 4d6}."
-						],
-						"name": "Volcanic Purge",
-						"entries_as_xyz": [
-							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the."
-						]
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 42
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 33
-					},
-					"ref": {
-						"std": 31
-					},
-					"will": {
-						"std": 30
-					},
-					"abilities": [
-						"+1 status to all saves vs. magic"
-					]
-				},
-				"hp": [
-					{
-						"hp": 390
-					}
-				],
-				"immunities": [
-					"fire",
-					"paralyzed",
-					"sleep"
-				],
-				"weaknesses": [
-					{
-						"amount": 15,
 						"name": "cold"
 					}
 				]
@@ -891,15 +328,9 @@
 							"concentrate"
 						],
 						"entries": [
-							"Until the next time it acts, the carnivorous crystal appears to be a mundane crystal formation. It has an automatic result of 40 on."
+							"Until the next time it acts, the carnivorous crystal appears to be a mundane crystal formation. It has an automatic result of 40 on {@skill Deception} and {@skill Stealth} checks and DCs to pass as a crystal formation."
 						],
 						"name": "Freeze"
-					},
-					{
-						"entries": [
-							"{@skill Stealth} checks and DCs to pass as a crystal formation."
-						],
-						"name": "Deception and"
 					},
 					{
 						"entries": [
@@ -931,9 +362,11 @@
 				],
 				"immunities": [
 					"acid",
+					"critical hits (except bludgeoning or sonic)",
 					"mental",
 					"precision",
-					"critical hits (except bludgeoning or sonic)"
+					"unconscious",
+					"visual"
 				],
 				"weaknesses": [
 					{
@@ -1225,8 +658,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The dalos blasts smoke from its head, creating a 20-foot-radius cloud of smoke that drifts to a location within 120 feet.",
-							"This has the effects of obscuring mist."
+							"The dalos blasts smoke from its head, creating a 20-foot-radius cloud of smoke that drifts to a location within 120 feet. This has the effects of {@spell obscuring mist}."
 						],
 						"name": "Belch Smoke"
 					},
@@ -1298,13 +730,15 @@
 						"name": "cold"
 					},
 					{
-						"name": "cold"
+						"amount": 10,
+						"name": "cold iron"
 					}
 				],
 				"resistances": [
 					{
 						"amount": 15,
-						"name": "physical"
+						"name": "physical",
+						"note": "except bludgeoning"
 					}
 				]
 			},
@@ -1431,7 +865,9 @@
 							"number": 1
 						},
 						"entries": [
-							"The deculi creates an extradimensional space adjacent to itself in any 10-foot-by-10-foot area of darkness and enters it. To non-deculis, the extradimensional space looks like an ordinary area of darkness (though effects such as true seeing can see through this illusion). The deculi's infrared vision functions normally between this extradimensional space and the area outside its confines, allowing the deculi to sense what is going on around it, and its innate {@spell darkness} spell also extends to the area around the shadow sanctuary. Attacks cannot be made into or from the extradimensional space. The deculi can {@action Dismiss} this effect to emerge from its shadow sanctuary, but the space it emerges into must be in darkness and must be unobstructed. If the area is obstructed, the deculi is shunted to the nearest available space and takes {@damage 1d6} bludgeoning damage per 5 feet shunted. If the area overlaying the shadow sanctuary becomes illuminated by magical light, the extradimensional space can no longer be accessed and the deculi is trapped within until the area is once again in darkness. The deculi can try to extinguish a magical {@trait light} effect obscuring its sanctuary once per day by attempting to counteract the {@trait light} effect with its darkness innate spell. If a deculi dies (including from hunger, thirst, or asphyxiation) while within the extradimensional space, the shadow sanctuary immediately ends and the deculi's corpse is expelled. If the area is illuminated, the corpse is not expelled until the sanctuary entrance is in darkness once again."
+							"The deculi creates an extradimensional space adjacent to itself in any 10-foot-by-10-foot area of darkness and enters it. To non-deculis, the extradimensional space looks like an ordinary area of darkness (though effects such as true seeing can see through this illusion). The deculi's infrared vision functions normally between this extradimensional space and the area outside its confines, allowing the deculi to sense what is going on around it, and its innate {@spell darkness} spell also extends to the area around the shadow sanctuary. Attacks cannot be made into or from the extradimensional space.",
+							"The deculi can {@action Dismiss} this effect to emerge from its shadow sanctuary, but the space it emerges into must be in darkness and must be unobstructed. If the area is obstructed, the deculi is shunted to the nearest available space and takes {@damage 1d6} bludgeoning damage per 5 feet shunted. If the area overlaying the shadow sanctuary becomes illuminated by magical light, the extradimensional space can no longer be accessed and the deculi is trapped within until the area is once again in darkness. The deculi can try to extinguish a magical {@trait light} effect obscuring its sanctuary once per day by attempting to counteract the {@trait light} effect with its {@spell darkness} innate spell.",
+							"If a deculi dies (including from hunger, thirst, or asphyxiation) while within the extradimensional space, the shadow sanctuary immediately ends and the deculi's corpse is expelled. If the area is illuminated, the corpse is not expelled until the sanctuary entrance is in darkness once again."
 						],
 						"name": "Create Shadow Sanctuary"
 					},
@@ -1473,171 +909,9 @@
 					{
 						"hp": 215
 					}
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Devourer",
-			"source": "AoA4",
-			"page": 79,
-			"level": 11,
-			"traits": [
-				"uncommon",
-				"ne",
-				"large",
-				"undead"
-			],
-			"perception": {
-				"std": 22
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				}
-			],
-			"languages": {
-				"languages": [
-					"abyssal",
-					"celestial",
-					"common",
-					"infernal",
-					"necril"
-				]
-			},
-			"skills": {
-				"arcana": {
-					"std": 21
-				},
-				"deception": {
-					"std": 21
-				},
-				"intimidation": {
-					"std": 23
-				},
-				"occultism": {
-					"std": 23
-				},
-				"stealth": {
-					"std": 20
-				}
-			},
-			"abilityMods": {
-				"str": 7,
-				"dex": 3,
-				"con": 5,
-				"int": 5,
-				"wis": 4,
-				"cha": 5
-			},
-			"speed": {
-				"walk": 30,
-				"fly": 30
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 24,
-					"traits": [
-						"agile",
-						"reach <10 feet>"
-					],
-					"effects": [
-						"drain life"
-					],
-					"damage": "{@damage 2d10+13} slashing plus drain life",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"rituals": [
-				{
-					"tradition": "occult",
-					"DC": 31,
-					"rituals": [
-						{
-							"name": "create undead"
-						}
-					]
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"traits": [
-							"abjuration",
-							"divine"
-						],
-						"entries": [
-							"A spellcaster can target a devourer with a mental spell, banishment, bind soul, divine decree, divine wrath, possession, spirit blast, or spirit song to attempt to counteract the devourer's Devour Soul effect. If this counteract attempt succeeds, the trapped soul is released (though the creature remains dead), and the devourer can't use any soul charges from the creature. Devourers are otherwise immune to these spells."
-						],
-						"name": "Spell Deflection"
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"death",
-							"divine",
-							"necromancy"
-						],
-						"entries": [
-							"The devourer touches a creature within reach, dealing {@damage 8d6} negative damage (DC 26 basic Fortitude save). If a creature is slain by this attack, its soul becomes trapped within the devourer. While trapped, a creature cannot be resurrected except by powerful magic such as a {@spell wish} spell. Destroying the devourer or successfully counteracting Devour Soul (see spell deflection) releases the soul. The devourer can hold only one soul at a time.",
-							"A soul has 5 soul charges per level. The devourer can expend charges to cast spells (see the soul spells ability below). If the soul is freed and the creature returns to life, the creature is {@condition drained|CRB|drained 1} for every 5 soul charges expended. If reduced to 0 charges, the soul is consumed and can be restored to life only by powerful magic such as wish."
-						],
-						"name": "Devour Soul"
-					},
-					{
-						"traits": [
-							"divine",
-							"necromancy"
-						],
-						"entries": [
-							"When the devourer damages a living creature with its claw {@action Strike}, the devourer gains 10 temporary Hit Points and the creature must succeed at a DC 24 Fortitude save or become {@condition drained|CRB|drained 1}. Further damage dealt by the devourer increases the amount of drain by 1 on a failed save, to a maximum of {@condition drained|CRB|drained 4}."
-						],
-						"name": "Drain Life"
-					},
-					{
-						"entries": [
-							"A devourer casts occult innate spells, but to do so must expend a number of soul charges equal to the spell's level (similar to casting a spell using charges from a staff). It can heighten any spell to a maximum of 6th level by expending more charges as it Casts the Spell. When encountered, a devourer typically has one trapped soul with 10 soul charges."
-						],
-						"name": "Soul Spells"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 31
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 20
-					},
-					"ref": {
-						"std": 18
-					},
-					"will": {
-						"std": 24
-					}
-				},
-				"hp": [
-					{
-						"hp": 175,
-						"abilities": [
-							"negative healing"
-						]
-					}
 				],
 				"immunities": [
-					"death effects",
-					"disease",
-					"paralyzed"
+					"visual"
 				]
 			},
 			"hasImages": true
@@ -1748,12 +1022,6 @@
 				"bot": [
 					{
 						"entries": [
-							"{@damage 1d12+9} slashing plus {@damage 2d6} negative plus {@damage 3d6} fire."
-						],
-						"name": "P), Damage"
-					},
-					{
-						"entries": [
 							"The dragonscarred dead's weapon is magically scorched by a dragon's breath. When wielded by the dragonscarred dead who carried it in life, the sword deals an extra {@damage 2d6} negative damage and {@damage 3d6} fire damage. In the hands of any other creature, it is merely a {@condition broken} greatsword."
 						],
 						"name": "Breath-Seared Sword"
@@ -1798,7 +1066,10 @@
 					},
 					"will": {
 						"std": 22
-					}
+					},
+					"abilities": [
+						"1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -1809,10 +1080,12 @@
 					}
 				],
 				"immunities": [
-					"fire",
 					"death effects",
 					"disease",
-					"paralyzed"
+					"fire",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				],
 				"weaknesses": [
 					{
@@ -2370,7 +1643,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"As long as its soul chain remains intact, a forge-spurned can't be truly destroyed. It rises again fully healed at the next sundown, even if its physical body was destroyed."
+							"As long as its {@i soul chain} remains intact, a forge-spurned can't be truly destroyed. It rises again fully healed at the next sundown, even if its physical body was destroyed."
 						],
 						"name": "Eternal Damnation"
 					},
@@ -2379,7 +1652,7 @@
 							"fire"
 						],
 						"entries": [
-							"A creature that touches a forge-spurned (including by Grappling it or hitting it with an unarmed attack) takes {@damage 2d6} fire damage with a DC 21 basic Reflex save."
+							"A creature that touches a forge-spurned (including by {@action Grapple||grappling} it or hitting it with an {@trait unarmed} attack) takes {@damage 2d6} fire damage with a DC 21 basic Reflex save."
 						],
 						"name": "Searing Heat"
 					}
@@ -2392,15 +1665,9 @@
 						},
 						"requirements": "The forgespurned has used Forge Breath.",
 						"entries": [
-							"The forge-spurned draws a massive breath to refill its emptied lungs, enabling it to use."
+							"The forge-spurned draws a massive breath to refill its emptied lungs, enabling it to use Forge Breath again."
 						],
 						"name": "Inflate Bellows"
-					},
-					{
-						"entries": [
-							"Breath again."
-						],
-						"name": "Forge"
 					},
 					{
 						"activity": {
@@ -2413,8 +1680,7 @@
 							"fire"
 						],
 						"entries": [
-							"The forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the forge-spurned and persists for {@dice 1d4} rounds.",
-							"Each creature that moves into or starts their turn in the area takes {@damage 6d6} fire damage, with a DC 21 basic Reflex save. A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the forge-spurned. The forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
+							"The forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the forge-spurned and persists for {@dice 1d4} rounds. Each creature that moves into or starts their turn in the area takes {@damage 6d6} fire damage, with a DC 21 basic Reflex save. A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the forge-spurned. The forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
 						],
 						"name": "Forge Breath"
 					},
@@ -2425,7 +1691,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"If a creature is slain by an attack from the soul chain and the forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the soul chain (as bind soul) with a day of work at a forge and a successful DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the soul chain is destroyed (Hardness 5, HP 20, BT 10)."
+							"If a creature is slain by an attack from the {@i soul chain} and the forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the {@i soul chain} (as {@spell bind soul}) with a day of work at a forge and a successful DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the {@i soul chain} is destroyed (Hardness 5, HP 20, BT 10)."
 						],
 						"name": "Soul Chain"
 					}
@@ -2457,198 +1723,16 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"fire",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				],
 				"weaknesses": [
 					{
 						"amount": 5,
 						"name": "cold"
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Gashadokuro",
-			"source": "AoA4",
-			"page": 84,
-			"level": 13,
-			"traits": [
-				"uncommon",
-				"ne",
-				"huge",
-				"undead"
-			],
-			"perception": {
-				"std": 24
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				}
-			],
-			"languages": {
-				"languages": [
-					"common (can't speak any language)"
-				]
-			},
-			"skills": {
-				"athletics": {
-					"std": 27
-				},
-				"intimidation": {
-					"std": 24
-				}
-			},
-			"abilityMods": {
-				"str": 8,
-				"dex": 4,
-				"con": 5,
-				"int": -3,
-				"wis": 3,
-				"cha": 3
-			},
-			"speed": {
-				"walk": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 27,
-					"traits": [
-						"reach <10 feet>"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 3d12+14} piercing plus Grab",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 27,
-					"traits": [
-						"agile",
-						"reach <15 feet>"
-					],
-					"damage": "{@damage 3d8+14} slashing",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"traits": [
-							"aura",
-							"divine",
-							"mental",
-							"necromancy"
-						],
-						"entries": [
-							"60 feet. Any creature that ends its turn in the aura feels the intense pain of starvation and must attempt a DC 30 Fortitude save. On a failure, the creature becomes {@condition fatigued} and takes {@dice 6d6} damage. Damage and fatigue a creature takes from this aura can't be healed until the affected creature has eaten a full meal."
-						],
-						"name": "Starvation Aura"
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"divine",
-							"necromancy"
-						],
-						"entries": [
-							"The gashadokuro breathes a spray of bone shards in a 30-foot cone. Each creature in the area takes {@damage 8d12} piercing damage (DC 34 basic Reflex save). It can't use."
-						],
-						"name": "Breath Weapon"
-					},
-					{
-						"entries": [
-							"Weapon again for {@dice 1d4} rounds."
-						],
-						"name": "Breath"
-					},
-					{
-						"traits": [
-							"divine",
-							"necromancy"
-						],
-						"entries": [
-							"If the gashadokuro kills a creature with Swallow Whole, it immediately regains Hit Points equal to the swallowed creature's level. As long as the gashadokuro still exists, creatures consumed in this way can't be resurrected except by wish or a similarly powerful effect."
-						],
-						"name": "Corpse Consumption"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"attack"
-						],
-						"entries": [
-							"Large, {@damage 3d6+8} bludgeoning, Rupture 24."
-						],
-						"name": "Swallow Whole",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 33
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 26
-					},
-					"ref": {
-						"std": 21
-					},
-					"will": {
-						"std": 24
-					}
-				},
-				"hp": [
-					{
-						"hp": 230,
-						"abilities": [
-							"negative healing"
-						]
-					}
-				],
-				"immunities": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				],
-				"resistances": [
-					{
-						"amount": 10,
-						"name": "cold"
-					},
-					{
-						"amount": 10,
-						"name": "electricity"
-					},
-					{
-						"amount": 10,
-						"name": "fire"
-					},
-					{
-						"amount": 10,
-						"name": "piercing"
 					}
 				]
 			},
@@ -2677,7 +1761,7 @@
 			"languages": {
 				"languages": [
 					"common",
-					"dwarf",
+					"dwarven",
 					"gnoll",
 					"undercommon"
 				]
@@ -2712,7 +1796,7 @@
 				"Fleshroaster (+2 striking flaming spiked chain)",
 				"+1 striking returning light hammer",
 				"good manacles (4)",
-				"religious symbol of Droskar"
+				"religious symbol of {@deity Droskar}"
 			],
 			"speed": {
 				"walk": 25
@@ -2948,7 +2032,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Ilssrah attempts a melee {@action Strike} with Fleshroaster. If she hits, she also draws her light hammer, makes a melee {@action Strike} with it against the same target, and immediately returns it to her belt. She then resumes her grip on Fleshroaster. Both {@action Strike||Strikes} count toward Ilssrah's multiple attack penalty, but the penalty doesn't increase until both {@action Strike||Strikes} have been made.",
+							"Ilssrah attempts a melee {@action Strike} with {@i Fleshroaster}. If she hits, she also draws her light hammer, makes a melee {@action Strike} with it against the same target, and immediately returns it to her belt. She then resumes her grip on {@i Fleshroaster}. Both {@action Strike||Strikes} count toward Ilssrah's multiple attack penalty, but the penalty doesn't increase until both {@action Strike||Strikes} have been made.",
 							"If the hammer {@action Strike} hits, it deals damage as normal and the target must attempt a DC 35 Fortitude save.",
 							{
 								"type": "successDegree",
@@ -3009,7 +2093,8 @@
 			"languages": {
 				"languages": [
 					"common",
-					"dwarven"
+					"dwarven",
+					"undercommon"
 				]
 			},
 			"skills": {
@@ -3025,6 +2110,9 @@
 				},
 				"society": {
 					"std": 21
+				},
+				"kovlar lore": {
+					"std": 24
 				}
 			},
 			"abilityMods": {
@@ -3035,49 +2123,43 @@
 				"wis": 4,
 				"cha": 3
 			},
+			"items": [
+				"+2 greater striking greater flaming warhammer",
+				"+1 striking light hammer (3)",
+				"leather armor",
+				"sterling blacksmith's tools"
+			],
 			"speed": {
 				"walk": 20
 			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"shove"
+					],
+					"name": "warhammer",
+					"attack": 20,
+					"damage": "{@damage 2d8+13} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"thrown <20 feet>"
+					],
+					"name": "light hammer",
+					"attack": 20,
+					"damage": "{@damage 2d6+8} bludgeoning"
+				}
+			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"Skills {@skill Athletics} +22, {@skill Crafting} +27 (+29 blacksmithing), {@skill Diplomacy} +23"
-						],
-						"name": "Undercommon"
-					},
-					{
-						"entries": [
-							"+25, {@skill Society} +21 Str +4, Dex +2, Con +3, Int +5, Wis +4"
-						],
-						"name": "Kovlar Lore"
-					},
-					{
-						"entries": [
-							"+3."
-						],
-						"name": "Cha"
-					},
-					{
-						"entries": [
-							"+2 greater striking greater flaming warhammer, +1 striking light hammer (3), leather armor, sterling blacksmith's tools."
-						],
-						"name": "Gear"
-					}
-				],
 				"bot": [
 					{
-						"entries": [
-							"As the most skillful blacksmith."
-						],
 						"name": "Master Smith",
-						"entries_as_xyz": "Ability not found: 'Master Smith As the most skillful blacksmith.' in Kelda Halrig, p.87"
-					},
-					{
 						"entries": [
-							"Kelda's abilities far surpass those of typical smiths. She can {@action Craft} items as if she were 16th level. Additionally, she knows how to make a vast catalog of items, including numerous uncommon formulas and several rare formulas. The exact formulas she knows can be tailored to fit the needs of each particular group of PCs, but most are for weapons, armor, and other items that could reasonably be made in a forge."
-						],
-						"name": "in Kovlar"
+							"As the most skillful blacksmith in Kovlar, Kelda's abilities far surpass those of typical smiths. She can {@action Craft} items as if she were 16th level. Additionally, she knows how to make a vast catalog of items, including numerous {@trait uncommon} formulas and several {@trait rare} formulas. The exact formulas she knows can be tailored to fit the needs of each particular group of PCs, but most are for weapons, armor, and other items that could reasonably be made in a forge."
+						]
 					}
 				]
 			},
@@ -3423,6 +2505,7 @@
 				"dwarf",
 				"humanoid"
 			],
+			"description": "Male duergar",
 			"perception": {
 				"std": 24
 			},
@@ -3457,6 +2540,14 @@
 				"wis": 4,
 				"cha": 3
 			},
+			"items": [
+				"+1 striking composite longbow (50 arrows)",
+				"manacles",
+				"+1 resilient scale mail",
+				"scroll of discern location",
+				"+2 striking corrosive whip",
+				"50 gp"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -3539,8 +2630,7 @@
 							"mental"
 						],
 						"entries": [
-							"Kralgurn's Attacks of Opportunity not only wound creatures, but also shatter their confidence.",
-							"If Kralgurn hits and deals damage with an {@action Attack of Opportunity}, the target is {@condition frightened|CRB|frightened 2}, or {@condition frightened|CRB|frightened 4} on a critical hit."
+							"Kralgurn's {@ability Attack of Opportunity||Attacks of Opportunity} not only wound creatures, but also shatter their confidence. If Kralgurn hits and deals damage with an {@ability Attack of Opportunity}, the target is {@condition frightened|CRB|frightened 2}, or {@condition frightened|CRB|frightened 4} on a critical hit."
 						],
 						"name": "Intimidating Attack of Opportunity"
 					}
@@ -3627,13 +2717,13 @@
 			"abilities": {
 				"mid": [
 					{
-						"traits": [
-							"pathfinder bestiary 184"
-						],
 						"entries": [
 							"harmed by cold and positive ({@dice 5d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by negative (area {@dice 2d8} HP); {@condition slowed} by earth."
 						],
-						"name": "Golem Antimagic"
+						"name": "Golem Antimagic",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -3648,9 +2738,9 @@
 					},
 					{
 						"entries": [
-							"Flesh a {@spell stone to flesh} spell negates the golem's antimagic and its resistance to physical damage for 1 round. A {@spell flesh to stone} spell reverses this effect immediately."
+							"A {@spell stone to flesh} spell negates the golem's antimagic and its resistance to physical damage for 1 round. A {@spell flesh to stone} spell reverses this effect immediately."
 						],
-						"name": "Vulnerable to Stone to"
+						"name": "Vulnerable to Stone to Flesh"
 					}
 				],
 				"bot": [
@@ -3692,7 +2782,7 @@
 							"negative"
 						],
 						"entries": [
-							"Each creature in a 10-foot emanation must succeed at a DC 32 Fortitude save or take {@damage 1d6} persistent necrotic damage and be {@condition slowed|CRB|slowed 1} for 1 minute as their flesh and bones temporarily atrophy. The golem can't use Necrotic Pulse again for {@dice 1d4} rounds."
+							"Each creature in a 10-foot emanation must succeed at a DC 32 Fortitude save or take {@damage 1d6} {@condition persistent damage||persistent necrotic damage} and be {@condition slowed|CRB|slowed 1} for 1 minute as their flesh and bones temporarily atrophy. The golem can't use Necrotic Pulse again for {@dice 1d4} rounds."
 						],
 						"name": "Necrotic Pulse"
 					}
@@ -3722,7 +2812,26 @@
 					"acid",
 					"bleed",
 					"death effects",
-					"disease"
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"magic (see below)",
+					"mental",
+					"necromancy",
+					"nonlethal",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "physical",
+						"note": "except adamantine"
+					}
 				]
 			}
 		},
@@ -3830,7 +2939,7 @@
 				"top": [
 					{
 						"entries": [
-							"The Saggorak poltergeists cannot travel more than 120 feet from area F2."
+							"The Saggorak poltergeists cannot travel more than 120 feet from area {@b F2}."
 						],
 						"name": "Site Bound",
 						"generic": {
@@ -3939,7 +3048,18 @@
 				],
 				"immunities": [
 					"death effects",
-					"disease"
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "all damage",
+						"note": "except force, {@item ghost touch}, or positive; double resistance against non-magical"
+					}
 				]
 			}
 		},
@@ -4006,7 +3126,7 @@
 				"mid": [
 					{
 						"entries": [
-							"When a soulbound ruin fails a saving throw against a spell that would banish tormented spirits or manipulate souls, such as banishment or bind soul, instead of experiencing the listed effects, it takes 10 damage per spell level."
+							"When a soulbound ruin fails a saving throw against a spell that would banish tormented spirits or manipulate souls, such as {@spell banishment} or {@spell bind soul}, instead of experiencing the listed effects, it takes 10 damage per spell level."
 						],
 						"name": "Vulnerability to Exorcism"
 					},
@@ -4033,22 +3153,13 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The ruin collapses up to three 10-footby- 10-foot sections of its ceiling. The ruin takes 10 damage per section it collapses, and it can't collapse the same section until it has been repaired. Each creature in one of these areas takes {@damage 8d10} bludgeoning damage with a DC 35 basic Reflex save. On a failed save, the creature is also {@condition restrained} under the rubble until it."
+							"The ruin collapses up to three 10-footby- 10-foot sections of its ceiling. The ruin takes 10 damage per section it collapses, and it can't collapse the same section until it has been repaired. Each creature in one of these areas takes {@damage 8d10} bludgeoning damage with a DC 35 basic Reflex save. On a failed save, the creature is also {@condition restrained} under the rubble until it {@action Escape||Escapes} (DC 33)"
 						],
 						"name": "Collapse Ceiling"
 					},
 					{
-						"traits": [
-							"dc 33"
-						],
 						"entries": [
-							"."
-						],
-						"name": "Escapes"
-					},
-					{
-						"entries": [
-							"The ruin can spend 10 minutes repairing itself to regain up to 30 Hit Points. If the ruin is interrupted during this time, it loses its focus and the repair fails. This ability functions even if the ruin is reduced to 0 HP, unless a consecrate ritual has been performed to purify the building, in which case the soulbound ruin is destroyed. This ritual must be dedicated to a good deity or a deity with a strong opposition to undead, such as {@deity Pharasma}."
+							"The ruin can spend 10 minutes repairing itself to regain up to 30 Hit Points. If the ruin is interrupted during this time, it loses its focus and the repair fails. This ability functions even if the ruin is reduced to 0 HP, unless a {@ritual consecrate} ritual has been performed to purify the building, in which case the soulbound ruin is destroyed. This ritual must be dedicated to a good deity or a deity with a strong opposition to undead, such as {@deity Pharasma}."
 						],
 						"name": "Self-Repair"
 					},
@@ -4085,7 +3196,18 @@
 				],
 				"immunities": [
 					"bleed",
-					"death effects"
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"necromancy",
+					"nonlethal",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
 				],
 				"weaknesses": [
 					{
@@ -4096,7 +3218,8 @@
 				"resistances": [
 					{
 						"amount": 10,
-						"name": "physical"
+						"name": "physical",
+						"note": "except adamantine"
 					}
 				]
 			},
@@ -4116,6 +3239,7 @@
 				"spirit",
 				"undead"
 			],
+			"description": "Female elf {@creatureTemplate ghost}",
 			"perception": {
 				"std": 24
 			},
@@ -4292,7 +3416,7 @@
 				"top": [
 					{
 						"entries": [
-							"Jewelgate way station."
+							"Jewelgate way station"
 						],
 						"name": "Site Bound",
 						"generic": {
@@ -4336,7 +3460,7 @@
 								"entries": {
 									"Critical Success": "The creature is unaffected.",
 									"Success": "The creature wails with anguish for 3 rounds. The shrieks resonate within the room's wailing crystals, giving the crystals a +2 status bonus on attack rolls against that creature during this time.",
-									"Failure": "As success, but the creature is {@condition slowed|CRB|slowed 1} for 1 minute as it sobs uncontrollably. If the creature is already {@condition slowed|CRB|slowed 1} by crushing despair, it is {@condition slowed|CRB|slowed 2} as long as it's under both effects simultaneously.",
+									"Failure": "As success, but the creature is {@condition slowed|CRB|slowed 1} for 1 minute as it sobs uncontrollably. If the creature is already {@condition slowed|CRB|slowed 1} by {@spell crushing despair}, it is {@condition slowed|CRB|slowed 2} as long as it's under both effects simultaneously.",
 									"Critical Failure": "As failure, but the creature is also {@condition stunned|CRB|stunned 3} from its overwhelming sadness."
 								}
 							}
@@ -4490,7 +3614,7 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"deadly 1d8",
+						"deadly <1d8>",
 						"disarm",
 						"finesse"
 					],
@@ -4503,12 +3627,50 @@
 					"traits": [
 						"agile",
 						"nonlethal",
-						"range increment 20 feet",
-						"reload 1"
+						"range increment <20 feet>",
+						"reload <1>"
 					],
 					"name": "blowgun",
 					"attack": 24,
 					"damage": "7 piercing plus poison"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Prepared",
+					"DC": 33,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "ghost sound"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "hideous laughter"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "illusory disguise"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {
@@ -4534,9 +3696,33 @@
 							"number": 1,
 							"unit": "free"
 						},
-						"trigger": "Thea's {@action Strike} hits a flatfooted creature and deals damage.",
+						"trigger": "Thea's {@action Strike} hits a flat- footed creature and deals damage.",
 						"entries": [
-							"Thea applies one of the following debilitations to the creature, which lasts until the end of her next turn."
+							"Thea applies one of the following debilitations to the creature, which lasts until the end of her next turn.",
+							{
+								"type": "list",
+								"items": [
+									"Brow Gash The target becomes {@condition flat-footed}.",
+									"Deep Cut The target takes an additional {@damage 2d6} precision damage from Thea's attacks.",
+									"Hamstring The target takes a \u201310-foot status penalty to its Speeds.",
+									"Low Blow The target becomes {@condition enfeebled||enfeebled 1}."
+								]
+							}
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"3d6"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Weapon Trick",
+						"entries": [
+							"When Thea critically succeeds at an attack roll against a {@condition flat-footed} creature, she applies the critical specialization effect for the weapon she is wielding."
 						]
 					}
 				]
@@ -4735,8 +3921,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
+						"trigger": "Veshumirix is targeted with an attack.",
 						"entries": [
-							"As young magma dragon (page 80)."
+							"Veshumirix raises his wing, gaining a +2 circumstance bonus to AC against the triggering attack. If Veshumirix is Flying, he descends 10 feet after the attack."
 						],
 						"name": "Wing Deflection"
 					}
@@ -4763,19 +3950,19 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As young magma dragon (page 80)."
+							"Veshumirix makes two claw {@action Strike||Strikes} and one horns {@action Strike} in any order."
 						],
 						"name": "Draconic Frenzy"
 					},
 					{
 						"entries": [
-							"As young magma dragon (page 80)."
+							"Veshumirix recharges his Breath Weapon whenever he scores a critical hit with a {@action Strike}."
 						],
 						"name": "Draconic Momentum"
 					},
 					{
 						"entries": [
-							"As young magma dragon (page 80)."
+							"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
 						],
 						"name": "Magma Swim"
 					},
@@ -4785,7 +3972,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As adult magma dragon (page 80), but the damage is {@dice 4d6}."
+							"If the next action Veshumirix uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 4d6} {@condition persistent damage||persistent fire damage}, and as long as it has this {@condition persistent damage||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
 						],
 						"name": "Volcanic Purge"
 					}
@@ -4838,7 +4025,7 @@
 				"large",
 				"aberration"
 			],
-			"description": "Male gug savant (Pathfinder Bestiary 198)",
+			"description": "Male {@creature gug} savant",
 			"perception": {
 				"std": 26
 			},
@@ -5046,257 +4233,6 @@
 			}
 		},
 		{
-			"name": "Young Magma Dragon",
-			"source": "AoA4",
-			"page": 80,
-			"level": 9,
-			"traits": [
-				"rare",
-				"cn",
-				"large",
-				"dragon",
-				"fire"
-			],
-			"perception": {
-				"std": 18
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"type": "imprecise",
-					"name": "scent",
-					"range": 60
-				}
-			],
-			"languages": {
-				"languages": [
-					"common",
-					"draconic",
-					"ignan"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 16
-				},
-				"athletics": {
-					"std": 18
-				},
-				"deception": {
-					"std": 14
-				},
-				"intimidation": {
-					"std": 18
-				},
-				"nature": {
-					"std": 16
-				},
-				"stealth": {
-					"std": 16
-				},
-				"survival": {
-					"std": 16
-				}
-			},
-			"abilityMods": {
-				"str": 6,
-				"dex": 1,
-				"con": 4,
-				"int": 0,
-				"wis": 3,
-				"cha": 3
-			},
-			"speed": {
-				"abilities": [
-					"magma swim"
-				],
-				"walk": 30,
-				"fly": 100,
-				"swim": 30
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 21,
-					"traits": [
-						"fire",
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 2d10+8} piercing plus {@damage 2d6} fire",
-					"types": [
-						"fire",
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 21,
-					"traits": [
-						"agile"
-					],
-					"damage": "{@damage 2d10+8} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tail",
-					"attack": 19,
-					"traits": [
-						"reach <15 feet>"
-					],
-					"damage": "{@damage 2d12+7} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "horns",
-					"attack": 19,
-					"traits": [
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 1d12+7} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "primal",
-					"DC": 26,
-					"attack": 18,
-					"entry": {
-						"0": {
-							"level": 5,
-							"spells": [
-								{
-									"name": "produce flame"
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "burning hands",
-									"amount": "at will"
-								}
-							]
-						}
-					}
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"traits": [
-							"aura",
-							"emotion",
-							"fear",
-							"mental"
-						],
-						"entries": [
-							"90 feet, DC 24"
-						],
-						"name": "Frightful Presence",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"trigger": "The dragon is targeted with an attack.",
-						"entries": [
-							"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
-						],
-						"name": "Wing Deflection"
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"evocation",
-							"fire",
-							"primal"
-						],
-						"entries": [
-							"The dragon breathes a blast of magma that deals {@damage 5d6} fire damage and {@damage 3d12} bludgeoning damage in a 30-foot cone (DC 28 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-						],
-						"name": "Breath Weapon"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"entries": [
-							"The dragon makes two claw {@action Strike||Strikes} and one horns {@action Strike} in any order."
-						],
-						"name": "Draconic Frenzy"
-					},
-					{
-						"entries": [
-							"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
-						],
-						"name": "Draconic Momentum"
-					},
-					{
-						"entries": [
-							"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
-						],
-						"name": "Magma Swim"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 28
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 19
-					},
-					"ref": {
-						"std": 16
-					},
-					"will": {
-						"std": 18
-					}
-				},
-				"hp": [
-					{
-						"hp": 175
-					}
-				],
-				"immunities": [
-					"fire",
-					"paralyzed",
-					"sleep"
-				],
-				"weaknesses": [
-					{
-						"amount": 10,
-						"name": "cold"
-					}
-				]
-			}
-		},
-		{
 			"name": "Zuferian",
 			"source": "AoA4",
 			"page": 37,
@@ -5308,6 +4244,7 @@
 				"human",
 				"humanoid"
 			],
+			"description": "Female human",
 			"perception": {
 				"std": 26
 			},
@@ -5326,10 +4263,14 @@
 					"std": 27
 				},
 				"crafting": {
-					"std": 31
+					"std": 31,
+					"to Craft alchemical items": 33
 				},
 				"intimidation": {
 					"std": 23
+				},
+				"occultism": {
+					"std": 25
 				},
 				"stealth": {
 					"std": 26
@@ -5346,19 +4287,32 @@
 				"wis": 7,
 				"cha": 0
 			},
+			"items": [
+				"infused greater acid flask (4)",
+				"greater alchemist goggles",
+				"infused greater alchemist's fire (4)",
+				"alchemist's tools",
+				"greater elixirs of life (2)",
+				"formula book",
+				"infused greater frost vial (4)",
+				"+2 resilient leather armor",
+				"+2 striking light mace",
+				"infused greater thunderstone (4)"
+			],
 			"speed": {
 				"walk": 25
 			},
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "light mace (agile, finesse, shove)",
-					"attack": 30,
-					"effects": [
-						"{@dice 2d4+8}"
+					"name": "light mace",
+					"traits": [
+						"agile",
+						"finesse",
+						"shove"
 					],
-					"damage": "{@dice 2d4+8}",
-					"types": []
+					"attack": 30,
+					"damage": "{@dice 2d4+8}"
 				},
 				{
 					"range": "Ranged",
@@ -5368,9 +4322,7 @@
 						"range increment <60 feet>",
 						"splash"
 					],
-					"effects": [
-						"varies by bomb"
-					]
+					"damage": "varies by bomb"
 				}
 			],
 			"abilities": {
@@ -5385,9 +4337,9 @@
 				"bot": [
 					{
 						"entries": [
-							"Formulas greater acid flask, greater alchemist's fire, greater bottled lightning, greater darkvision elixir, deathcap powder, greater elixir of life, greater frost vial, lethargy poison, purple worm venom, greater tanglefoot bag."
+							"{@item greater acid flask}, {@item greater alchemist's fire}, {@item greater bottled lightning}, {@item greater darkvision elixir}, {@item deathcap powder}, {@item greater elixir of life}, {@item greater frost vial}, {@item lethargy poison}, {@item purple worm venom}, {@item greater tanglefoot bag}."
 						],
-						"name": "Alchemical"
+						"name": "Alchemical Formulas"
 					},
 					{
 						"entries": [
@@ -5417,16 +4369,16 @@
 						"name": "Quick Bomber"
 					},
 					{
-						"entries": [
-							"80."
-						],
-						"name": "True Debilitating Bomb Pathfinder Core Rulebook"
+						"name": "True Debilitating Bomb",
+						"generic": {
+							"tag": "feat"
+						}
 					},
 					{
-						"entries": [
-							"80."
-						],
-						"name": "Uncanny Bombs Pathfinder Core Rulebook"
+						"name": "Uncanny Bombs",
+						"generic": {
+							"tag": "feat"
+						}
 					}
 				]
 			},
