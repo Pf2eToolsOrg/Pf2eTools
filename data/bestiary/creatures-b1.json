@@ -55551,6 +55551,20 @@
 				}
 			],
 			"abilities": {
+				"mid": [
+					{
+						"name": "Scoff at the Divine",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 30 feet casts a divine spell or uses a divine ability.",
+						"requirements": "The raja rakshasa has an unexpended spell slot that can be used to cast {@spell dispel magic}.",
+						"entries": [
+							"The raja rakshasa expends a spell slot that could be used to cast {@spell dispel magic} and attempts to counteract the triggering spell or ability. The raja rakshasa can't Scoff at the Divine for {@dice 1d4} rounds."
+						]
+					}
+				],
 				"bot": [
 					{
 						"activity": {
@@ -55604,7 +55618,10 @@
 					"will": {
 						"std": 18
 					},
-					"abilities": "+2 status to all saves vs. magic, +3 status to all saves vs. divine magic"
+					"abilities": [
+						"+2 status to all saves vs. magic",
+						"+3 status to all saves vs. divine magic"
+					]
 				},
 				"hp": [
 					{

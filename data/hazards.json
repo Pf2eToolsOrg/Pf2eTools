@@ -787,7 +787,7 @@
 			"stealth": {
 				"dc": 25,
 				"minProf": "expert",
-				"notes": "or detect magic"
+				"notes": "or {@spell detect magic}"
 			},
 			"description": [
 				"Necromantic runes inscribed on the cage bars and lock drain the vitality of living creatures who interact with the cage."
@@ -4395,7 +4395,7 @@
 			],
 			"stealth": {
 				"dc": 10,
-				"notes": "or detect magic."
+				"notes": "or {@spell detect magic}."
 			},
 			"description": [
 				"A roiling red orb, forged from a drop of the god Rovagug's blood, rains fire from the sky when a specified condition is met."
@@ -4439,11 +4439,11 @@
 				"minProf": "expert"
 			},
 			"description": [
-				"This dangerous sooty black mold readily releases its toxic spores when disturbed. The entire swath of fungus in area B2 is a single organism. There are nine 10-foot-square patches to remove, but the whole organism dies once it takes enough damage."
+				"This dangerous sooty black mold readily releases its toxic spores when disturbed. The entire swath of fungus in area {@b B2} is a single organism. There are nine 10-foot-square patches to remove, but the whole organism dies once it takes enough damage."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Survival} DC 27 (expert) to remove a 10-foot-square patch of ash web without triggering the spores."
+					"{@skill Survival} DC 27 (expert) to remove a 10-foot-square patch of ash web without triggering the spores"
 				]
 			},
 			"defenses": {
@@ -4477,8 +4477,9 @@
 						"unit": "reaction"
 					},
 					"trigger": "A creature moves into the ash web's space or damages the web with any type of damage other than cold damage.",
+					"requirements": "The ash web is not in direct sunlight.",
 					"entries": [
-						"Requirements The ash web is not in direct sunlight. The triggering creature and all creatures within 10 feet of that creature are exposed to ash web spores."
+						"The triggering creature and all creatures within 10 feet of that creature are exposed to ash web spores."
 					],
 					"name": "Spore Explosion"
 				},
@@ -4506,7 +4507,7 @@
 						},
 						{
 							"stage": 3,
-							"entry": "{@damage 6d6} poison and {@condition enfeebled|CRB|enfeebled 3}.",
+							"entry": "{@damage 6d6} poison and {@condition enfeebled|CRB|enfeebled 3}",
 							"duration": "1 round"
 						}
 					]
@@ -5036,7 +5037,16 @@
 					],
 					"trigger": "A living creature ends its turn in area A11 at night",
 					"entries": [
-						"A ghastly image of Belcorra, seemingly composed of fresh blood, rises from the bloodstain on the floor and rotates in place like a lighthouse. Beams of cold blue light shine from Belcorra's eyes and open mouth, causing blisters and decay to spread across flesh. Living creatures within a 30-foot burst from the center of area A11 must attempt a DC 20 Fortitude save. The haunt then rolls initiative. Critical Success The creature is unaffected. Success The creature takes {@damage 1d8} negative damage. Failure The creature takes {@damage 1d8+6} negative damage and is {@condition dazzled} for 1 round. Critical Failure The creature takes {@damage 2d8+6} negative damage and is {@condition blinded} for 1 round then {@condition dazzled} for 1 round."
+						"A ghastly image of Belcorra, seemingly composed of fresh blood, rises from the bloodstain on the floor and rotates in place like a lighthouse. Beams of cold blue light shine from Belcorra's eyes and open mouth, causing blisters and decay to spread across flesh. Living creatures within a 30-foot burst from the center of area A11 must attempt a DC 20 Fortitude save. The haunt then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes {@damage 1d8} negative damage.",
+								"Failure": "The creature takes {@damage 1d8+6} negative damage and is {@condition dazzled} for 1 round.",
+								"Critical Failure": "The creature takes {@damage 2d8+6} negative damage and is {@condition blinded} for 1 round then {@condition dazzled} for 1 round."
+							}
+						}
 					],
 					"name": "Gauntlight Beam"
 				}
@@ -5056,7 +5066,7 @@
 							"The creature takes {@damage 1d10+6} bleed damage."
 						],
 						"Critical Failure": [
-							"Failure The creature takes {@damage 2d10+6} bleed damage and is {@condition enfeebled|CRB|enfeebled 2} as long as it's bleeding."
+							"The creature takes {@damage 2d10+6} bleed damage and is {@condition enfeebled|CRB|enfeebled 2} as long as it's bleeding."
 						]
 					}
 				}
@@ -5228,7 +5238,7 @@
 			],
 			"stealth": {
 				"dc": 30,
-				"notes": "(or 0 if the trapdoor is disabled or {@condition broken}) or detect magic."
+				"notes": "(or 0 if the trapdoor is disabled or {@condition broken}) or {@spell detect magic}."
 			},
 			"description": [
 				"An iron trapdoor covers an infinitely deep 10-foot-square pit."
@@ -5348,7 +5358,16 @@
 					},
 					"trigger": "One round passes since a creature entered the refectory",
 					"entries": [
-						"A {@condition Broken} Rebus monk grabs the creature and yanks them toward the room's center. The triggering creature must attempt a DC 36 Fortitude save. The haunt can use this reaction any number of times per round, but only once per creature that tries to leave the room. The haunt then rolls initiative, if it hasn't already. Critical Success The creature is unaffected. Success The creature is pulled 10 feet into the room. Failure The creature is pulled 15 feet into the room. Critical Failure The creature is pulled 15 feet into the room, knocked {@condition prone}, and takes {@damage 2d6} bludgeoning damage."
+						"A {@condition Broken} Rebus monk grabs the creature and yanks them toward the room's center. The triggering creature must attempt a DC 36 Fortitude save. The haunt can use this reaction any number of times per round, but only once per creature that tries to leave the room. The haunt then rolls initiative, if it hasn't already.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is pulled 10 feet into the room.",
+								"Failure": "The creature is pulled 15 feet into the room.",
+								"Critical Failure": "The creature is pulled 15 feet into the room, knocked {@condition prone}, and takes {@damage 2d6} bludgeoning damage."
+							}
+						}
 					],
 					"name": "Ghostly Pull"
 				}
@@ -5536,7 +5555,16 @@
 					],
 					"trigger": "A creature attempts to open the door without using the key",
 					"entries": [
-						"The trap makes a loud buzz and deals {@damage 5d10} electricity damage and {@damage 5d10} sonic damage to the triggering creature (DC 32 basic Reflex save; this save applies to both the electricity damage and the sonic damage). Further, the creature must attempt a DC 32 Fortitude save. Critical Success No effect. Success The target is {@condition paralyzed} for 1 round. Failure The target is {@condition paralyzed} for {@dice 1d4} rounds. At the end of each of its turns, it can attempt a new DC 32 Fortitude save to reduce the remaining duration by 1 round, or end it entirely on a critical success. Critical Failure The target is {@condition paralyzed} for 1 minute. At the end of each of its turns, it can attempt a new Fortitude save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
+						"The trap makes a loud buzz and deals {@damage 5d10} electricity damage and {@damage 5d10} sonic damage to the triggering creature (DC 32 basic Reflex save; this save applies to both the electricity damage and the sonic damage). Further, the creature must attempt a DC 32 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "No effect.",
+								"Success": "The target is {@condition paralyzed} for 1 round.",
+								"Failure": "The target is {@condition paralyzed} for {@dice 1d4} rounds. At the end of each of its turns, it can attempt a new DC 32 Fortitude save to reduce the remaining duration by 1 round, or end it entirely on a critical success.",
+								"Critical Failure": "The target is {@condition paralyzed} for 1 minute. At the end of each of its turns, it can attempt a new Fortitude save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
+							}
+						}
 					],
 					"name": "Jolting Buzz"
 				}
@@ -7342,7 +7370,7 @@
 			"stealth": {
 				"dc": 35,
 				"minProf": "master",
-				"notes": "to hear the quiet murmurs of angry spirits."
+				"notes": "to hear the quiet murmurs of angry spirits"
 			},
 			"description": [
 				"Malevolent spirits led by a ghostly image of Ludika rise and begin a deadly brawl. These spirits attempt to overwhelm living creatures, forcing them to join the battle."
@@ -7365,16 +7393,15 @@
 						"mental",
 						"occult"
 					],
-					"trigger": "At least three creatures enter area H10.",
+					"trigger": "At least three creatures enter area {@b H10}.",
 					"entries": [
-						"The haunt takes control of all creatures in the prison, affecting them with confusion (8th level, DC 37)."
+						"The haunt takes control of all creatures in the prison, affecting them with {@spell confusion} (8th level, DC 37)."
 					],
 					"name": "Confuse"
 				}
 			],
 			"routine": [
-				"(1 action) As 1 action, the haunt causes a barrage of ghostly fists to lash from the walls, floors, and ceiling.",
-				"The haunt attempts a spectral fist {@action Strike} against each creature in area H10.",
+				"(1 action) As 1 action, the haunt causes a barrage of ghostly fists to lash from the walls, floors, and ceiling. The haunt attempts a spectral fist {@action Strike} against each creature in area {@b H10}.",
 				{
 					"type": "attack",
 					"range": "Melee",
@@ -7387,16 +7414,14 @@
 					"effects": [
 						"and the creature must attempt a new DC 37 Will save against confusion if it's not already {@condition confused}."
 					],
-					"damage": "{@damage 5d10} bludgeoning, and the creature must attempt a new DC 37 Will save against confusion if it's not already {@condition confused}.",
+					"damage": "{@damage 5d10} bludgeoning, and the creature must attempt a new DC 37 Will save against {@spell confusion} if it's not already {@condition confused}.",
 					"types": [
 						"bludgeoning"
-					],
-					"noMAP": true
+					]
 				}
 			],
 			"reset": [
-				"After 24 hours, the haunt returns.",
-				"The spirits are permanently put to rest only if a lawfully appointed judge from Saggorak (or Kovlar) comes into the prison, takes damage from the haunt, and survives the attack."
+				"After 24 hours, the haunt returns. The spirits are permanently put to rest only if a lawfully appointed judge from Saggorak (or Kovlar) comes into the prison, takes damage from the haunt, and survives the attack."
 			]
 		},
 		{
@@ -8088,7 +8113,16 @@
 					},
 					"trigger": "Pressure is placed on the floorboard.",
 					"entries": [
-						"The ceiling in the crawlway collapses in the square where the passage turns, and also in the two adjacent squares. Anyone in these three squares takes {@damage 3d6} bludgeoning damage and can attempt a DC 14 Reflex save to reduce the damage. For the creature in the center square, where the trap is triggered, this is a basic save. Creatures in the two adjacent squares take no damage on a success or critical success as they avoid the falling debris entirely, but take full damage on a failed save, and take double damage on a critical failure. Creatures that take damage from the debris are {@condition immobilized}, trapped under the crushing weight. Clearing out a square of debris requires a successful DC 17 {@skill Athletics} skill check, with the following effects. Critical Success The square is cleared in 1 minute. Success The square is cleared in 5 minutes. Failure The square is cleared in 10 minutes. Critical Failure The ceiling above the square collapses further, dealing an additional {@dice 2d6} to the character digging out the square and any character trapped in that square. This takes 1 minute and no progress is made."
+						"The ceiling in the crawlway collapses in the square where the passage turns, and also in the two adjacent squares. Anyone in these three squares takes {@damage 3d6} bludgeoning damage and can attempt a DC 14 Reflex save to reduce the damage. For the creature in the center square, where the trap is triggered, this is a basic save. Creatures in the two adjacent squares take no damage on a success or critical success as they avoid the falling debris entirely, but take full damage on a failed save, and take double damage on a critical failure. Creatures that take damage from the debris are {@condition immobilized}, trapped under the crushing weight. Clearing out a square of debris requires a successful DC 17 {@skill Athletics} skill check, with the following effects.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The square is cleared in 1 minute.",
+								"Success": "The square is cleared in 5 minutes.",
+								"Failure": "The square is cleared in 10 minutes.",
+								"Critical Failure": "The ceiling above the square collapses further, dealing an additional {@dice 2d6} to the character digging out the square and any character trapped in that square. This takes 1 minute and no progress is made."
+							}
+						}
 					],
 					"name": "Falling Debris"
 				}
@@ -8542,7 +8576,16 @@
 					],
 					"trigger": "A creature enters one of the three squares marked with a T on the map",
 					"entries": [
-						"The floor of the entire 10-foot-by-15-foot antechamber freezes over, sending deadly magical frost creeping up the legs of the intruders. Any creatures standing in the room must roll a DC 45 Reflex save. Critical Success The creature is unaffected. Success The creature takes {@damage 3d10+5} cold damage. Failure The creature takes {@damage 6d10+10} cold damage and is {@condition slowed|CRB|slowed 1} for {@dice 1d4} rounds. Critical Failure The creature takes {@damage 12d10+20} cold damage and is {@condition slowed|CRB|slowed 1} for 1 minute. Additionally, the golems in area B10 become aware of the intruders. The golems activate and come to this room to attack, if they haven't been destroyed already."
+						"The floor of the entire 10-foot-by-15-foot antechamber freezes over, sending deadly magical frost creeping up the legs of the intruders. Any creatures standing in the room must roll a DC 45 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes {@damage 3d10+5} cold damage.",
+								"Failure": "The creature takes {@damage 6d10+10} cold damage and is {@condition slowed|CRB|slowed 1} for {@dice 1d4} rounds.",
+								"Critical Failure": "The creature takes {@damage 12d10+20} cold damage and is {@condition slowed|CRB|slowed 1} for 1 minute. Additionally, the golems in area B10 become aware of the intruders. The golems activate and come to this room to attack, if they haven't been destroyed already."
+							}
+						}
 					],
 					"name": "Freeze Floor"
 				}
@@ -9243,7 +9286,16 @@
 					],
 					"trigger": "A creature moves into the area marked on the map",
 					"entries": [
-						"Misty blue hands stretch out from the hallway's stone tiles and grasp at the triggering creature, which must attempt a DC 26 Reflex save to avoid becoming hindered or harmed by the ethereal hands. Critical Success The target is unaffected. Success The target is {@condition slowed|CRB|slowed 1} for 1 round. Failure The target is {@condition slowed|CRB|slowed 2} for 1 round and takes {@damage 2d10+10} negative damage. Critical Failure The target is {@condition slowed|CRB|slowed 2} for 1 round and takes {@damage 4d10+15} negative damage."
+						"Misty blue hands stretch out from the hallway's stone tiles and grasp at the triggering creature, which must attempt a DC 26 Reflex save to avoid becoming hindered or harmed by the ethereal hands.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition slowed|CRB|slowed 1} for 1 round.",
+								"Failure": "The target is {@condition slowed|CRB|slowed 2} for 1 round and takes {@damage 2d10+10} negative damage.",
+								"Critical Failure": "The target is {@condition slowed|CRB|slowed 2} for 1 round and takes {@damage 4d10+15} negative damage."
+							}
+						}
 					],
 					"name": "Waylay"
 				}
@@ -10274,14 +10326,14 @@
 			"stealth": {
 				"dc": 30,
 				"minProf": "expert",
-				"notes": "or detect magic to note the presence of necromantic energies suffusing the crystals."
+				"notes": "or {@spell detect magic} to note the presence of necromantic energies suffusing the crystals."
 			},
 			"description": [
 				"Sharp, bloodthirsty crystals make walking through this chamber treacherous."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Religion} DC 30 (expert) to utter prayers that quell the crystals' necromantic compulsion to drink blood."
+					"{@skill Religion} DC 30 (expert) to utter prayers that quell the crystals' necromantic compulsion to drink blood"
 				]
 			},
 			"defenses": {
@@ -10325,7 +10377,16 @@
 					},
 					"trigger": "A creature with blood moves through a patch of lifeleech crystals.",
 					"entries": [
-						"The crystals twist and slash, animating and cutting into the creature as it walks, dealing {@damage 5d8} slashing damage. The creature must attempt a DC 28 Reflex saving throw. Critical Success The creature is unaffected. Success The creature takes full damage and is {@condition drained|CRB|drained 1}. Failure The creature takes double damage and is {@condition drained|CRB|drained 2}. Critical Failure As failure, plus the creature's blood causes fresh growth. A new 10-foot-square patch of lifeleech crystals grows in an adjacent space to the current patch of crystals."
+						"The crystals twist and slash, animating and cutting into the creature as it walks, dealing {@damage 5d8} slashing damage. The creature must attempt a DC 28 Reflex saving throw.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes full damage and is {@condition drained|CRB|drained 1}.",
+								"Failure": "The creature takes double damage and is {@condition drained|CRB|drained 2}.",
+								"Critical Failure": "As failure, plus the creature's blood causes fresh growth. A new 10-foot-square patch of lifeleech crystals grows in an adjacent space to the current patch of crystals."
+							}
+						}
 					],
 					"name": "Slice Legs"
 				}
@@ -10785,7 +10846,16 @@
 					],
 					"trigger": "A creature enters the marked area",
 					"entries": [
-						"A psychic wail affects all creatures within 10 feet of the marked area, requiring them to attempt a DC 41 Will save. Critical Success The target is unaffected. Success The target is {@condition stunned|CRB|stunned 2}. Failure The target is {@condition paralyzed} for 1 round, then {@condition stunned|CRB|stunned 2} when the paralysis ends. Critical Failure The target is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
+						"A psychic wail affects all creatures within 10 feet of the marked area, requiring them to attempt a DC 41 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition stunned|CRB|stunned 2}.",
+								"Failure": "The target is {@condition paralyzed} for 1 round, then {@condition stunned|CRB|stunned 2} when the paralysis ends.",
+								"Critical Failure": "The target is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
+							}
+						}
 					],
 					"name": "Psychic Screech"
 				}
@@ -11110,7 +11180,16 @@
 					],
 					"trigger": "A non-devil creature moves into the light",
 					"entries": [
-						"The light expands to fill the room, and each nondevil creature within the room must attempt a DC 26 Will save. A high-pitched chime sounds in the barracks (area D15), audible in this room as well. The trap then rolls initiative. Critical Success The target is unaffected. Success The target is {@condition stunned|CRB|stunned 2}. Failure The target is {@condition paralyzed} for 1 round. Critical Failure The target is {@condition stupefied|CRB|stupefied 2} for {@dice 1d4} rounds and {@condition paralyzed} for 1 round."
+						"The light expands to fill the room, and each nondevil creature within the room must attempt a DC 26 Will save. A high-pitched chime sounds in the barracks (area D15), audible in this room as well. The trap then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition stunned|CRB|stunned 2}.",
+								"Failure": "The target is {@condition paralyzed} for 1 round.",
+								"Critical Failure": "The target is {@condition stupefied|CRB|stupefied 2} for {@dice 1d4} rounds and {@condition paralyzed} for 1 round."
+							}
+						}
 					],
 					"name": "Stasis Field"
 				}
@@ -11142,16 +11221,10 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Religion} DC 27 (expert) to break the curse with recitations against the power of Hell (2 actions), or."
+					"{@skill Religion} DC 27 (expert) to break the curse with recitations against the power of Hell (2 actions), or {@skill Performance} DC 22 (expert) to {@action Perform} an opposing composition."
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"22 (expert) to {@action Perform} an opposing composition."
-					],
-					"name": "Performance DC"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -11986,14 +12059,30 @@
 			"stealth": {
 				"bonus": 17,
 				"minProf": "expert",
-				"notes": "or {@skill Perception} DC 27 (expert) to notice the six cleverly {@condition hidden} sluice gates while they are closed."
+				"notes": "or {@skill Perception} DC 27 (expert) to notice the six cleverly {@condition hidden} sluice gates while they are closed"
 			},
 			"description": [
 				"Six sluice gates open to allow thousands of gallons of water to begin flooding the room. The water churns through the room and flows out through three chutes on the south end of the room."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Thievery} DC 28 (expert) twice to close a sluice (on a critical success, a sluice is closed immediately) Sluiceway Hardness 17, Sluiceway HP 38 (BT 34); Immunities critical hits, object immunities, precision damage."
+					"{@skill Thievery} DC 28 (expert) twice to close a sluice (on a critical success, a sluice is closed immediately)"
+				]
+			},
+			"defenses": {
+				"hardness": {
+					"Sluiceway": 17
+				},
+				"hp": {
+					"Sluiceway": 38
+				},
+				"bt": {
+					"Sluiceway": 34
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
@@ -12010,18 +12099,11 @@
 				}
 			],
 			"routine": [
-				"(6 actions) The trap loses 1 action per disabled or destroyed sluice. On each of its actions, the water rushing from the sluices flows through the room, creating a river of churning water that fills the room to several inches and makes the floor of the chamber into {@quickref difficult terrain||3|terrain}. The water level never rises above this level in the room, as it drains out of the chutes to the south and begins to flood the quarry pit (area.",
-				{
-					"entries": [
-						"On the trap's second turn, the water starts filling the four slave pits in area J2. Each of the trap's actions fills the pits 4 inches (2 feet per round if all sluices are functional). If the slave pits fill to their total depth of 12 feet and the grates over the slave pits aren't open, the slaves begin to drown, {@condition dying} if they aren't freed in 5 rounds. Once the slave pits are full, the water continues to slowly fill the central area over the course of an hour until it empties the reservoir and floods area J2 to a depth of 15 feet.",
-						"Other options beyond disabling or destroying the sluices could prevent the flooding of the quarry pit at your discretion."
-					],
-					"type": "ability",
-					"name": "J2)."
-				}
+				"(6 actions) The trap loses 1 action per disabled or destroyed sluice. On each of its actions, the water rushing from the sluices flows through the room, creating a river of churning water that fills the room to several inches and makes the floor of the chamber into {@quickref difficult terrain||3|terrain}. The water level never rises above this level in the room, as it drains out of the chutes to the south and begins to flood the quarry pit (area {@b J2}). On the trap's second turn, the water starts filling the four slave pits in area {@b J2}. Each of the trap's actions fills the pits 4 inches (2 feet per round if all sluices are functional). If the slave pits fill to their total depth of 12 feet and the grates over the slave pits aren't open, the slaves begin to {@quickref drown||3|drowning and suffocating}, {@condition dying} if they aren't freed in 5 rounds. Once the slave pits are full, the water continues to slowly fill the central area over the course of an hour until it empties the reservoir and floods area {@b J2} to a depth of 15 feet.",
+				"Other options beyond disabling or destroying the sluices could prevent the flooding of the quarry pit at your discretion."
 			],
 			"reset": [
-				"The trap resets if all six sluices are closed. If all the water has {@condition drained} when this occurs, the water takes many months to refill."
+				"The trap resets if all six sluices are closed. If all the water has drained when this occurs, the water takes many months to refill."
 			]
 		},
 		{
@@ -12266,7 +12348,16 @@
 					},
 					"trigger": "A creature attempts to leave the chamber",
 					"entries": [
-						"A powerful wind pulls the creature back into the room. The triggering creature must attempt a DC 39 Fortitude save. The haunt can use this reaction any number of times per round, but only once per creature that tries to leave the room. The haunt then rolls initiative, if it hasn't already. Critical Success The creature is unaffected. Success The creature is pulled back 10 feet into the room. Failure The creature is pulled back 15 feet into the room and is {@condition blinded} for 1 round. Critical Failure The creature is pulled back 15 feet into the room and is {@condition blinded} for 1 minute."
+						"A powerful wind pulls the creature back into the room. The triggering creature must attempt a DC 39 Fortitude save. The haunt can use this reaction any number of times per round, but only once per creature that tries to leave the room. The haunt then rolls initiative, if it hasn't already.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is pulled back 10 feet into the room.",
+								"Failure": "The creature is pulled back 15 feet into the room and is {@condition blinded} for 1 round.",
+								"Critical Failure": "The creature is pulled back 15 feet into the room and is {@condition blinded} for 1 minute."
+							}
+						}
 					],
 					"name": "Sand Vacuum"
 				}
@@ -13798,7 +13889,16 @@
 					},
 					"trigger": "A creature takes a {@condition hostile} action against Mogaru, produces a visible area effect, or flies within 120 feet of Mogaru",
 					"entries": [
-						"Creatures in the area must succeed at a DC 40 Reflex save or take {@damage 6d10+28} bludgeoning damage. Critical Success The creature is unaffected. Success The creature takes half damage and is pushed 20 feet away. If flying, it descends 20 feet. Failure The creature takes full damage, is pushed 40 feet, and descends 60 feet (if flying) or is knocked {@condition prone}. Critical Failure The creature takes double damage, is pushed 60 feet away, descends 120 feet (if flying) or is knocked {@condition prone}, and is {@condition stunned|CRB|stunned 2}."
+						"Creatures in the area must succeed at a DC 40 Reflex save or take {@damage 6d10+28} bludgeoning damage.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes half damage and is pushed 20 feet away. If flying, it descends 20 feet.",
+								"Failure": "The creature takes full damage, is pushed 40 feet, and descends 60 feet (if flying) or is knocked {@condition prone}.",
+								"Critical Failure": "The creature takes double damage, is pushed 60 feet away, descends 120 feet (if flying) or is knocked {@condition prone}, and is {@condition stunned|CRB|stunned 2}."
+							}
+						}
 					],
 					"name": "Tail Swat"
 				}
@@ -14234,7 +14334,7 @@
 			"stealth": {
 				"bonus": 19,
 				"minProf": "expert",
-				"notes": "DC 29 to notice the line of cord running from the lathe's trigger toward the door to area A2."
+				"notes": "DC 29 to notice the line of cord running from the lathe's trigger toward the door to area {@b A2}."
 			},
 			"description": [
 				"The powered lathe's springs have been critically overwound so that when jostled or triggered, the lathe unwinds violently, hurling blades, gears, and sharp shards of metal around the room."
@@ -14279,13 +14379,13 @@
 					},
 					"trigger": "The lathe is jostled or damaged, or its trigger is remotely pulled.",
 					"entries": [
-						"The trap makes a sharpened fragment {@action Strike} against a random target in area A1, then rolls for initiative."
+						"The trap makes a sharpened fragment {@action Strike} against a random target in area {@b A1}, then rolls for initiative."
 					],
 					"name": "Unleash Fragments"
 				}
 			],
 			"routine": [
-				"(4 actions) The lathe attempts four sharpened fragment attacks against creatures in the room, selecting a target randomly from all available targets in area A1. The trap does not take multiple attack penalties for any of its attacks. The trap loses 1 action each turn as its springs wind down, and becomes disabled when it has 0 actions.",
+				"(4 actions) The lathe attempts four sharpened fragment attacks against creatures in the room, selecting a target randomly from all available targets in area {@b A1}. The trap does not take multiple attack penalties for any of its attacks. The trap loses 1 action each turn as its springs wind down, and becomes disabled when it has 0 actions.",
 				{
 					"type": "attack",
 					"range": "Ranged",
@@ -14295,8 +14395,7 @@
 					"types": [
 						"persistent",
 						"slashing"
-					],
-					"noMAP": true
+					]
 				}
 			]
 		},
@@ -14316,11 +14415,11 @@
 				"minProf": "expert"
 			},
 			"description": [
-				"The statue of the willow tree animates, its branches lashing out to try to grab anyone in area B2."
+				"The statue of the willow tree animates, its branches lashing out to try to grab anyone in area {@b B2}."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Athletics} or {@skill Thievery} DC 25 (trained) to force or lever open a single branch, disabling that branch and freeing any creature trapped within. {@skill Thievery} DC 29 (expert) to disrupt the tree's magical animation, shut it down, and free all trapped creatures. Placing a dreamstone in the tree's trunk takes 2 {@action Interact} actions and causes the trap to shut down, freeing all trapped creatures. Placing the cursed dreamstone from area B4 in the trunk instead increases the tree's actions per turn to 4 and gives it a +2 item bonus to all saving throws and attack rolls."
+					"{@skill Athletics} or {@skill Thievery} DC 25 (trained) to force or lever open a single branch, disabling that branch and freeing any creature trapped within. {@skill Thievery} DC 29 (expert) to disrupt the tree's magical animation, shut it down, and free all trapped creatures. Placing a {@item dreamstone|AoA3} in the tree's trunk takes 2 {@action Interact} actions and causes the trap to shut down, freeing all trapped creatures. Placing the {@item dreamstone, cursed|AoA3|cursed dreamstone} from area {@b B4} in the trunk instead increases the tree's actions per turn to 4 and gives it a +2 item bonus to all saving throws and attack rolls."
 				]
 			},
 			"defenses": {
@@ -14404,14 +14503,14 @@
 				}
 			],
 			"reset": [
-				"The trap deactivates and resets if it has no creatures {@condition grabbed} and no creatures in the room to attack. If an uncursed dreamstone is placed in its trunk, the statue doesn't reactivate."
+				"The trap deactivates and resets if it has no creatures {@condition grabbed} and no creatures in the room to attack. If an uncursed {@item dreamstone|AoA3} is placed in its trunk, the statue doesn't reactivate."
 			]
 		},
 		{
 			"name": "Shrieker",
 			"source": "GMG",
 			"page": 77,
-			"level": null,
+			"level": -1,
 			"traits": [
 				"environmental",
 				"fungus"
@@ -15995,7 +16094,7 @@
 			"stealth": {
 				"bonus": 27,
 				"minProf": "master",
-				"notes": "or DC 37 (master) to notice what appear to be screaming ghostly faces in the crystals."
+				"notes": "or DC 37 (master) to notice what appear to be screaming ghostly faces in the crystals"
 			},
 			"description": [
 				"Three clusters of gleaming, colorful crystals are corrupted with necromantic energy that causes them to reflect negative emotions. All three must be disabled or destroyed to negate the hazard."
@@ -16028,7 +16127,12 @@
 				},
 				"bt": {
 					"std": 36
-				}
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
 			},
 			"actions": [
 				{
@@ -16041,20 +16145,13 @@
 					],
 					"trigger": "A living creature approaches within 20 feet of a wailing crystal.",
 					"entries": [
-						"A despairing chorus of cries echoes off the crystals, working its way into the minds of all living creatures in Jewelgate Way Station, affecting them with crushing despair (7th level, DC 33). The hazard rolls initiative."
+						"A despairing chorus of cries echoes off the crystals, working its way into the minds of all living creatures in Jewelgate Way Station, affecting them with {@spell crushing despair} (7th level, DC 33). The hazard rolls initiative."
 					],
 					"name": "Echoing Cry"
 				}
 			],
 			"routine": [
-				"(3 actions) The hazard uses each action for an.",
-				{
-					"entries": [
-						"The wailing crystals lose 1 action for each 5-foot patch of crystals that is {@condition broken} or destroyed."
-					],
-					"type": "ability",
-					"name": "Anguished Shriek."
-				},
+				"(3 actions) The hazard uses each action for an Anguished Shriek. The wailing crystals lose 1 action for each 5-foot patch of crystals that is {@condition broken} or destroyed.",
 				{
 					"traits": [
 						"emotion",

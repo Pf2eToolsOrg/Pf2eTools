@@ -8032,7 +8032,16 @@
 						],
 						"requirements": "Troff is within reach of a creature that has taken cold damage since the end of Troff's last turn",
 						"entries": [
-							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy. Critical Success The creature is unaffected. Success The creature takes {@damage 2d4} {@condition persistent damage||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage||persistent cold damage} (allowing a new flat check to end it at DC 10). Failure As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
+							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 2d4} {@condition persistent damage||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage||persistent cold damage} (allowing a new flat check to end it at DC 10).",
+									"Failure": "As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot.",
+									"Critical Failure": "As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
+								}
+							}
 						],
 						"name": "Chattering Blow",
 						"entries_as_xyz": "Ability not found: 'Chattering Blow As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty.' in Troff Frostknuckles, p.43"
