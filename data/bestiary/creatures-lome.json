@@ -167,6 +167,11 @@
 			"name": "Anadi Elder",
 			"source": "LOME",
 			"page": 292,
+			"otherSources": {
+				"Originally": [
+					"AoA1|85"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"uncommon",
@@ -190,7 +195,8 @@
 					"to Climb in hybrid or spider form": 17
 				},
 				"crafting": {
-					"std": 13
+					"std": 13,
+					"to weaving": 17
 				},
 				"deception": {
 					"std": 13
@@ -374,7 +380,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
+							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi elder can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -421,6 +427,11 @@
 			"name": "Anadi Hunter",
 			"source": "LOME",
 			"page": 291,
+			"otherSources": {
+				"Originally": [
+					"AoA1|84"
+				]
+			},
 			"level": 2,
 			"traits": [
 				"uncommon",
@@ -443,7 +454,8 @@
 					"std": 8
 				},
 				"athletics": {
-					"std": 6
+					"std": 6,
+					"to Climb in hybrid or spider form": 8
 				},
 				"crafting": {
 					"std": 6,
@@ -602,6 +614,11 @@
 			"name": "Anadi Sage",
 			"source": "LOME",
 			"page": 292,
+			"otherSources": {
+				"Originally": [
+					"AoA1|85"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"uncommon",
@@ -625,7 +642,8 @@
 					"to Climb in hybrid or spider form": 14
 				},
 				"crafting": {
-					"std": 10
+					"std": 10,
+					"to weaving": 14
 				},
 				"deception": {
 					"std": 8
@@ -772,7 +790,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
+							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi sage can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -818,7 +836,12 @@
 		{
 			"name": "Asanbosam",
 			"source": "LOME",
-			"page": 294,
+			"page": 293,
+			"otherSources": {
+				"Originally": [
+					"AoA2|80"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"ce",
@@ -901,15 +924,24 @@
 				"bot": [
 					{
 						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The asanbosam is positioned above a creature",
+						"entries": [
+							"The asanbosam makes a claw {@action Strike} with its reach increased to 15 feet. On a hit, the {@action Strike} deals an additional {@damage 1d6} slashing damage and the asanbosam immediately {@ability Grab||Grabs} the target and pulls it to a space adjacent to the asanbosam. This counts as two attacks for the asanbosam's multiple attack penalty."
+						],
+						"name": "Attack from Above"
+					},
+					{
+						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
 						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws",
 						"entries": [
-							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary Hit Points.",
-							"These temporary Hit Points remain for 1 minute. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1 to a maximum of {@condition drained 3}, but doesn't restore any HP to the asanbosam.",
-							"A victim's {@condition drained} condition decreases by 1 each week.",
-							"A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
+							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary Hit Points. These temporary Hit Points remain for 1 minute. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1 to a maximum of {@condition drained 3}, but doesn't restore any HP to the asanbosam.",
+							"A victim's {@condition drained} condition decreases by 1 each week. A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
 						],
 						"name": "Drink Blood"
 					}
@@ -941,7 +973,12 @@
 		{
 			"name": "Biloko Veteran",
 			"source": "LOME",
-			"page": 296,
+			"page": 294,
+			"otherSources": {
+				"Originally": [
+					"AoA2|83"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"ne",
@@ -1117,7 +1154,12 @@
 		{
 			"name": "Biloko Warrior",
 			"source": "LOME",
-			"page": 296,
+			"page": 294,
+			"otherSources": {
+				"Originally": [
+					"AoA2|82"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"ne",
@@ -1276,7 +1318,12 @@
 		{
 			"name": "Charau-ka Acolyte Of Angazhan",
 			"source": "LOME",
-			"page": 298,
+			"page": 297,
+			"otherSources": {
+				"Originally": [
+					"AoA2|85"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"ne",
@@ -1466,8 +1513,7 @@
 					},
 					{
 						"entries": [
-							"Any weapon a charau-ka throws gains the {@trait deadly <d6>} weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
-							"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
+							"Any weapon a charau-ka throws gains the {@trait deadly <d6>} weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
 						],
 						"name": "Thrown Weapon Mastery"
 					}
@@ -1499,7 +1545,12 @@
 		{
 			"name": "Charau-ka Butcher",
 			"source": "LOME",
-			"page": 298,
+			"page": 297,
+			"otherSources": {
+				"Originally": [
+					"AoA2|85"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"ne",
@@ -1655,7 +1706,10 @@
 						"entries": [
 							"As the barbarian class ability; AC 22, +9 Hit Points, +2 melee damage."
 						],
-						"name": "Rage"
+						"name": "Rage",
+						"generic": {
+							"tag": "action"
+						}
 					},
 					{
 						"activity": {
@@ -1678,8 +1732,7 @@
 					},
 					{
 						"entries": [
-							"Any weapon a charau-ka throws gains the {@trait deadly <d6>} weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
-							"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
+							"Any weapon a charau-ka throws gains the {@trait deadly <d6>} weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
 						],
 						"name": "Thrown Weapon Mastery"
 					}
@@ -1711,7 +1764,12 @@
 		{
 			"name": "Charau-ka Warrior",
 			"source": "LOME",
-			"page": 229977,
+			"page": 296,
+			"otherSources": {
+				"Originally": [
+					"AoA2|84"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"ne",
@@ -1874,8 +1932,7 @@
 					},
 					{
 						"entries": [
-							"Any weapon a charau-ka throws gains the {@trait deadly <d6>} weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
-							"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
+							"Any weapon a charau-ka throws gains the {@trait deadly <d6>} weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
 						],
 						"name": "Thrown Weapon Mastery"
 					}
@@ -1907,7 +1964,12 @@
 		{
 			"name": "Eloko",
 			"source": "LOME",
-			"page": 296,
+			"page": 295,
+			"otherSources": {
+				"Originally": [
+					"AoA2|83"
+				]
+			},
 			"level": 7,
 			"traits": [
 				"ne",
@@ -1941,8 +2003,14 @@
 				"crafting": {
 					"std": 13
 				},
+				"deception": {
+					"std": 15
+				},
 				"nature": {
 					"std": 13
+				},
+				"stealth": {
+					"std": 16
 				},
 				"survival": {
 					"std": 13
@@ -1956,6 +2024,10 @@
 				"wis": 4,
 				"cha": 1
 			},
+			"items": [
+				"blowgun (10 poisoned darts)",
+				"+1 dagger"
+			],
 			"speed": {
 				"walk": 20
 			},

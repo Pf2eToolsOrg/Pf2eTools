@@ -685,7 +685,7 @@
 									"The creature takes full damage."
 								],
 								"Critical Failure": [
-									"The creature takes full damage and can't shake off the vision; they take {@damage 1d8} {@condition persistent damage ||persistent bleed damage} and are {@condition frightened||frightened 1}—believing they're being eaten alive—as long as the bleed damage persists."
+									"The creature takes full damage and can't shake off the vision; they take {@damage 1d8} {@condition persistent damage ||persistent bleed damage} and are {@condition frightened||frightened 1}\u2014believing they're being eaten alive\u2014as long as the bleed damage persists."
 								]
 							}
 						}
@@ -3968,8 +3968,14 @@
 				"ac": {
 					"std": 34
 				},
-				"fort": 28,
-				"ref": 20,
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 20
+					}
+				},
 				"hardness": {
 					"Nozzle": 15,
 					"Tank": 20
@@ -4052,9 +4058,18 @@
 					"mental"
 				],
 				"weaknesses": [
-					"acid 10",
-					"fire 10",
-					"slashing 10"
+					{
+						"amount": 10,
+						"name": "acid"
+					},
+					{
+						"amount": 10,
+						"name": "fire"
+					},
+					{
+						"amount": 10,
+						"name": "slashing"
+					}
 				]
 			},
 			"actions": [
@@ -4117,7 +4132,9 @@
 					"std": 220
 				},
 				"weaknesses": [
-					"earth vulnerability"
+					{
+						"name": "earth vulnerability"
+					}
 				],
 				"savingThrows": {
 					"fort": {
@@ -4286,7 +4303,10 @@
 					"mental"
 				],
 				"weaknesses": [
-					"fire 20"
+					{
+						"amount": 20,
+						"name": "fire"
+					}
 				]
 			},
 			"actions": [
@@ -4787,7 +4807,9 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"fire automatically penetrates hardness"
+					{
+						"name": "fire automatically penetrates hardness"
+					}
 				]
 			},
 			"actions": [
@@ -4989,10 +5011,17 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"positive 5"
+					{
+						"amount": 5,
+						"name": "positive"
+					}
 				],
 				"resistances": [
-					"physical 5 (except {@item ghost touch})"
+					{
+						"amount": 5,
+						"name": "physical",
+						"note": "except {@item ghost touch}"
+					}
 				]
 			},
 			"actions": [
@@ -5386,7 +5415,10 @@
 					"precision damage"
 				],
 				"resistances": [
-					"cold 15"
+					{
+						"amount": 15,
+						"name": "cold"
+					}
 				]
 			},
 			"actions": [
@@ -5618,7 +5650,10 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"sonic 10"
+					{
+						"amount": 10,
+						"name": "sonic"
+					}
 				]
 			},
 			"actions": [
@@ -6341,14 +6376,14 @@
 			],
 			"stealth": {
 				"bonus": 0,
-				"notes": "or detect magic."
+				"notes": "or {@spell detect magic}"
 			},
 			"description": [
-				"A ring of eight dragon pillar replicas mark the border of a dome of magical prismatic energy that entirely contains the Fortress of Sorrow."
+				"A ring of eight {@hazard dragon pillar|AoA2} replicas mark the border of a dome of magical prismatic energy that entirely contains the Fortress of Sorrow."
 			],
 			"disable": {
 				"entries": [
-					"Each dragon pillar that is destroyed removes the corresponding color's effect from {@deity Dahak|LOGM}'s shell; as long as even one color remains active, the pillars marking the shell's border cannot be damaged themselves, but a successful DC 32 {@skill Thievery} (master) check or a successful dispel magic (6th level; counteract DC 30) against one of the eight pillars can cause a randomly determined active color in the shell defense (below) to become deactivated for {@dice 1d4} rounds."
+					"Each {@hazard dragon pillar|AoA2} that is destroyed removes the corresponding color's effect from {@deity Dahak|LOGM}'s shell; as long as even one color remains active, the pillars marking the shell's border cannot be damaged themselves, but a successful DC 32 {@skill Thievery} (master) check or a successful {@spell dispel magic} (6th level; counteract DC 30) against one of the eight pillars can cause a randomly determined active color in the shell defense (below) to become deactivated for {@dice 1d4} rounds."
 				]
 			},
 			"actions": [
@@ -6362,7 +6397,7 @@
 						"divine",
 						"light"
 					],
-					"trigger": "a creature attempts and fails to disable one of the shell colors via {@skill Thievery} or dispel magic",
+					"trigger": "a creature attempts and fails to disable one of the shell colors via {@skill Thievery} or {@spell dispel magic}",
 					"entries": [
 						"{@deity Dahak|LOGM}'s shell {@action Strike||Strikes} the triggering creature with a random eye beam. Roll {@dice 1d8} to determine the color (1\u2013red, 2\u2013orange, 3\u2013yellow, 4\u2013green, 5\u2013blue, 6\u2013indigo, 7\u2013violet, 8\u2013black)."
 					],
@@ -6375,7 +6410,7 @@
 						"light"
 					],
 					"entries": [
-						"When a creature physically passes through the shell, the creature is affected simultaneously by all colors of energy currently active in the shell; apply these effects in the following order: red, orange, yellow, green, blue, indigo, violet, black. These effects are the same as that of the eye beams described on page 29, but with a save DC of 32. Each effect requires its own save."
+						"When a creature physically passes through the shell, the creature is affected simultaneously by all colors of energy currently active in the shell; apply these effects in the following order: red, orange, yellow, green, blue, indigo, violet, black. These effects are the same as that of the eye beams described in {@hazard dragon pillar|AoA2}, but with a save DC of 32. Each effect requires its own save."
 					],
 					"name": "Shell Defense"
 				}
@@ -6389,13 +6424,8 @@
 						"range <120 feet>"
 					],
 					"effects": [
-						"The target suffers an effect corresponding to the eye beam's color",
-						"as described on page 29",
-						"but with a save DC of 32. On a critical hit",
-						"the target's save result is one degree worse."
-					],
-					"damage": "The target suffers an effect corresponding to the eye beam's color, as described on page 29, but with a save DC of 32. On a critical hit, the target's save result is one degree worse.",
-					"noMAP": true
+						"The target suffers an effect corresponding to the eye beam's color, as described in {@hazard dragon pillar|AoA2}, but with a save DC of 32. On a critical hit, the target's save result is one degree worse."
+					]
 				}
 			]
 		},
@@ -6411,16 +6441,20 @@
 				"magical",
 				"trap"
 			],
+			"perception": {
+				"bonus": 16,
+				"notes": "{@ability darkvision}, {@spell see invisibility}"
+			},
 			"stealth": {
 				"bonus": 0,
-				"notes": ", but DC 24 to notice that the fiery lights within the skull's eye sockets seem to be looking around the room."
+				"notes": "but DC 24 to notice that the fiery lights within the skull's eye sockets seem to be looking around the room."
 			},
 			"description": [
 				"A pair of magical gems inside the dragon skull's eye sockets act as magical sensors with a 30-foot radius."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Thievery} DC 27 (expert) two times to pry the gems embedded deep in the skull's eye sockets without triggering the sensor, or dispel magic (4th level, counteract DC 22) twice to dispel both eyes."
+					"{@skill Thievery} DC 27 (expert) two times to pry the gems embedded deep in the skull's eye sockets without triggering the sensor, or {@spell dispel magic} (4th level, counteract DC 22) twice to dispel both eyes."
 				]
 			},
 			"defenses": {
@@ -6462,7 +6496,7 @@
 						"evocation",
 						"fire"
 					],
-					"trigger": "A living creature that is not a member of the Cinderclaws enters area C9",
+					"trigger": "A living creature that is not a member of the Cinderclaws enters area {@b C9}",
 					"entries": [
 						"One of the dragon skull's eye sockets shoots an eye beam at the triggering creature, then the hazard rolls initiative."
 					],
@@ -6485,8 +6519,7 @@
 					"damage": "{@damage 8d6} fire",
 					"types": [
 						"fire"
-					],
-					"noMAP": true
+					]
 				}
 			]
 		},
@@ -6891,6 +6924,15 @@
 			"name": "Dragon Pillar",
 			"source": "AoA2",
 			"page": 28,
+			"alias": [
+				"Black Dragon Pillar",
+				"Green Dragon Pillar",
+				"Indigo Dragon Pillar",
+				"Yellow Dragon Pillar",
+				"Orange Dragon Pillar",
+				"Red Dragon Pillar",
+				"Violet Dragon Pillar"
+			],
 			"level": 6,
 			"traits": [
 				"rare",
@@ -7389,7 +7431,10 @@
 					"physical damage"
 				],
 				"weaknesses": [
-					"positive 10"
+					{
+						"amount": 10,
+						"name": "positive"
+					}
 				],
 				"savingThrows": {
 					"fort": {
@@ -8161,7 +8206,10 @@
 					"Face": 75
 				},
 				"weaknesses": [
-					"sonic 20"
+					{
+						"amount": 20,
+						"name": "sonic"
+					}
 				]
 			},
 			"actions": [
@@ -8550,7 +8598,10 @@
 					"Sensor": 20
 				},
 				"weaknesses": [
-					"fire 15"
+					{
+						"amount": 15,
+						"name": "fire"
+					}
 				]
 			},
 			"actions": [
@@ -10260,7 +10311,10 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"sonic 10"
+					{
+						"amount": 10,
+						"name": "sonic"
+					}
 				]
 			},
 			"actions": [
@@ -10499,7 +10553,10 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"electricity 20"
+					{
+						"amount": 20,
+						"name": "electricity"
+					}
 				]
 			},
 			"actions": [
@@ -12955,7 +13012,10 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"fire 10"
+					{
+						"amount": 10,
+						"name": "fire"
+					}
 				]
 			},
 			"actions": [
@@ -13447,7 +13507,11 @@
 					"unconscious"
 				],
 				"resistances": [
-					"all damage 20 (except fire, force, {@item ghost touch}, or positive)"
+					{
+						"amount": 20,
+						"name": "all damage",
+						"note": "except fire, force, {@item ghost touch}, or positive"
+					}
 				]
 			},
 			"actions": [
@@ -15579,8 +15643,14 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"cold 8",
-					"positive 5"
+					{
+						"amount": 8,
+						"name": "cold"
+					},
+					{
+						"amount": 5,
+						"name": "positive"
+					}
 				]
 			},
 			"actions": [
@@ -15774,7 +15844,10 @@
 					"precision damage"
 				],
 				"weaknesses": [
-					"cold 10"
+					{
+						"amount": 10,
+						"name": "cold"
+					}
 				]
 			},
 			"actions": [
@@ -16438,23 +16511,44 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Thievery} DC 29 (expert) to disrupt the divine magic,"
+					"{@skill Thievery} DC 29 (expert) to disrupt the divine magic, {@skill Religion} DC 29 (expert) to placate the wrathful energies, or {@spell dispel magic} (5th level; counteract DC 26)."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 14
+					}
+				},
+				"hardness": {
+					"Door ": 18
+				},
+				"hp": {
+					"Door ": 72
+				},
+				"bt": {
+					"Door ": 36
+				},
+				"immunities": [
+					"critical hits",
+					"fire",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"29 (expert) to placate the wrathful energies, or dispel magic (5th level; counteract DC 26)",
-						"AC 30; Fort +22, Ref +14 Door Hardness 18; Door HP 72 (BT 36); Immunities critical hits, fire, object immunities, precision damage."
-					],
-					"name": "Religion DC"
-				},
 				{
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "A non-worshipper of {@deity Dahak|LOGM} touches either door leading to C7",
+					"trigger": "A non-worshipper of {@deity Dahak|LOGM} touches either door leading to {@b C7}",
 					"entries": [
 						"The hazard targets the creature with Face of the Fatal Divine, then rolls initiative."
 					],
@@ -16462,7 +16556,7 @@
 				}
 			],
 			"routine": [
-				"(1 action) On its initiative, the wrath of the destroyer targets the closest target in area C6 with Face of the Fatal Divine.",
+				"(1 action) On its initiative, the wrath of the destroyer targets the closest target in area {@b C6} with Face of the Fatal Divine.",
 				{
 					"activity": {
 						"number": 1,
@@ -16477,7 +16571,7 @@
 						"mental"
 					],
 					"entries": [
-						"The creature beholds the face of {@deity Dahak|LOGM} as it emerges to bite with its burning jaws, targeting the creature with phantasmal killer (5th level, Will DC 29)."
+						"The creature beholds the face of {@deity Dahak|LOGM} as it emerges to bite with its burning jaws, targeting the creature with {@spell phantasmal killer} (5th level, Will DC 29)."
 					],
 					"type": "ability",
 					"name": "Face of the Fatal Divine"
@@ -17506,8 +17600,14 @@
 				"ac": {
 					"std": 15
 				},
-				"fort": 11,
-				"ref": 5,
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 5
+					}
+				},
 				"hardness": {
 					"std": 9,
 					"notes": {
@@ -17751,8 +17851,14 @@
 				"ac": {
 					"std": 40
 				},
-				"fort": 23,
-				"ref": 29,
+				"savingThrows": {
+					"fort": {
+						"std": 23
+					},
+					"ref": {
+						"std": 29
+					}
+				},
 				"hardness": {
 					"std": 25
 				},
@@ -17766,7 +17872,10 @@
 					"poison"
 				],
 				"weaknesses": [
-					"positive 5"
+					{
+						"amount": 5,
+						"name": "positive"
+					}
 				]
 			},
 			"actions": [
