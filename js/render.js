@@ -1613,21 +1613,17 @@ function Renderer () {
 					// Resolving that, just add the entry at the end if the previous two are false.
 					if (entry.entries[i].type === "pf2-h1-flavor" || entry.entries[i].type === "pf2-sidebar") {
 						entry.entries.splice(i + 1, 0, `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
-						return
 					} else if (!entry.entries.filter(t => typeof t === "string").length) {
 						entry.entries.unshift(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
-						return
 					} else if (typeof entry.entries[i] === "object") {
 						entry.entries.splice(i, 0, `{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
-						return
 					} else {
 						entry.entries.push(`{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
-						return
 					}
 				}
 			}
-			// Dedpulication measure, not needed though (?)
-			// entry.entries = Array.from([...new Set(entry.entries)]);
+			// Dedpulication measure, FIXME: This is a lazy solution
+			entry.entries = Array.from([...new Set(entry.entries)]);
 		}
 	}
 
