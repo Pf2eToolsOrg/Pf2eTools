@@ -377,6 +377,11 @@ function updateFolder (folder) {
 							if (a.entries && a.entries.length === 0) {
 								delete a.entries;
 							}
+							if (a.activity) {
+								if (a.activity.number === 1 && a.activity.unit === "free") {
+									delete a.activity.entry;
+								}
+							}
 							return a;
 						}
 
