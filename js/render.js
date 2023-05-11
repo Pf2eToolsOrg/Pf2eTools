@@ -4395,7 +4395,7 @@ Renderer.creature = {
 	getDefenses_getSavingThrowPart (creature) {
 		if (!creature.defenses.savingThrows) return null;
 		const renderer = Renderer.get();
-		const abilities = [].concat(creature.defenses.savingThrows.abilities || []);
+		const abilities = creature.defenses.savingThrows.abilities || [];
 		const savingThrowParts = Object.keys(creature.defenses.savingThrows).filter(k => k !== "abilities")
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;

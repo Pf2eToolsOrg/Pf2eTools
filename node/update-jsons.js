@@ -269,6 +269,11 @@ function updateFolder (folder) {
 							delete cr.defenses.ac.note;
 						}
 					}
+					if (cr.defenses && cr.defenses.savingThrows) {
+						if (typeof cr.defenses.savingThrows.abilities === "string") {
+							cr.defenses.savingThrows.abilities = [cr.defenses.savingThrows.abilities];
+						}
+					}
 					if (cr.defenses && cr.defenses.resistances) {
 						cr.defenses.resistances = cr.defenses.resistances.map(r => {
 							if (r.note) {
