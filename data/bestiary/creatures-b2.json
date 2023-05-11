@@ -13592,6 +13592,11 @@
 			"name": "Cornugon",
 			"source": "B2",
 			"page": 77,
+			"otherSources": {
+				"Originally": [
+					"AoA5|87"
+				]
+			},
 			"level": 16,
 			"traits": [
 				"le",
@@ -13747,6 +13752,17 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 36,
+					"rituals": [
+						{
+							"name": "infernal pact",
+							"source": "B1"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -13757,7 +13773,7 @@
 							"evil"
 						],
 						"entries": [
-							"10 feet. A constant circle of protection against good is centered on the cornugon."
+							"10 feet. A constant {@spell circle of protection} against good is centered on the cornugon."
 						],
 						"name": "Circle of Protection"
 					},
@@ -13807,9 +13823,9 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"requirements": "The cornugon's last action was a success with a spiked chain",
+						"requirements": "The cornugon's last action was a success with a {@i spiked chain} {@action Strike}",
 						"entries": [
-							"{@action Strike}; The devil pulls the creature 5 feet closer and grabs it with the spiked chain ({@action Escape} DC 42). The creature is automatically freed if the devil makes another spiked chain attack or moves away."
+							"The devil pulls the creature 5 feet closer and grabs it with the spiked chain ({@action Escape} DC 42). The creature is automatically freed if the devil makes another {@i spiked chain} attack or moves away."
 						],
 						"name": "Chain of Malebolge"
 					},
@@ -13829,7 +13845,7 @@
 							"incapacitation"
 						],
 						"entries": [
-							"If the cornugon critically hits with its spiked chain {@action Strike}, the target must succeed at a DC 34 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
+							"If the cornugon critically hits with its {@i spiked chain} {@action Strike}, the target must succeed at a DC 34 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
 						],
 						"name": "Stunning Chain"
 					}
@@ -13849,7 +13865,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -16641,6 +16660,11 @@
 			"name": "Duneshaker Solifugid",
 			"source": "B2",
 			"page": 246,
+			"otherSources": {
+				"Originally": [
+					"AoA5|89"
+				]
+			},
 			"level": 18,
 			"traits": [
 				"n",
@@ -16735,7 +16759,7 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"claw"
 						],
 						"name": "Rend",
@@ -22637,6 +22661,11 @@
 			"name": "Giant Solifugid",
 			"source": "B2",
 			"page": 246,
+			"otherSources": {
+				"Originally": [
+					"AoA5|89"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"n",
@@ -22717,7 +22746,7 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"claw"
 						],
 						"name": "Rend",
@@ -36153,6 +36182,11 @@
 			"name": "Nalfeshnee",
 			"source": "B2",
 			"page": 68,
+			"otherSources": {
+				"Originally": [
+					"AoA5|86"
+				]
+			},
 			"level": 14,
 			"traits": [
 				"ce",
@@ -36282,8 +36316,27 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
 					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 34,
+					"rituals": [
+						{
+							"name": "Abyssal pact",
+							"source": "B1"
+						}
+					]
 				}
 			],
 			"abilities": {
@@ -36318,7 +36371,7 @@
 							"extradimensional"
 						],
 						"entries": [
-							"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into their hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a bag of holding), they vomit up all the items."
+							"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into their hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a {@item bag of holding (generic)}), they vomit up all the items."
 						],
 						"name": "Claim Wealth"
 					},
@@ -36358,7 +36411,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -42837,9 +42893,7 @@
 							"divine",
 							"necromancy"
 						],
-						"trigger": [
-							"A living creature within 30 feet of the ravener dies;"
-						],
+						"trigger": "A living creature within 30 feet of the ravener dies",
 						"entries": [
 							"The ravener tears the creature's soul from its body with their maw and gulps it down. The dying creature must attempt a DC 44 Fortitude save.",
 							{
@@ -58408,6 +58462,11 @@
 			"name": "Witchwyrd",
 			"source": "B2",
 			"page": 294,
+			"otherSources": {
+				"Originally": [
+					"AoA5|90"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"uncommon",
@@ -58586,7 +58645,7 @@
 							"evocation",
 							"force"
 						],
-						"trigger": "A {@i magic missile} is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
+						"trigger": "A {@spell magic missile} is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
 						"frequency": {
 							"unit": "round",
 							"number": 1
@@ -58610,7 +58669,7 @@
 							"force"
 						],
 						"entries": [
-							"The witchwyrd fires one magic missile per action spent (dealing {@damage 1d4+1} force damage each). They can't spend more actions on this ability than they have free hands. If they use a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
+							"The witchwyrd fires one {@spell magic missile} per action spent (dealing {@damage 1d4+1} force damage each). They can't spend more actions on this ability than they have free hands. If they use a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
 						],
 						"name": "Force Bolt"
 					}

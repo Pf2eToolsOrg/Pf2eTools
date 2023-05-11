@@ -97,7 +97,7 @@
 							"sonic"
 						],
 						"entries": [
-							"The aluum enforcer emits a keening wail in a 15-foot cone that deals {@damage 9d6} sonic damage (DC 27 basic Fortitude save). A creature that fails its save is {@condition stunned|CRB|stunned 1}, or stunne."
+							"The aluum enforcer emits a keening wail in a 15-foot cone that deals {@damage 9d6} sonic damage (DC 27 basic Fortitude save). A creature that fails its save is {@condition stunned|CRB|stunned 1}, or {@condition stunned|CRB|stunned 3} on a critical failure. The aluum can't use Soul Shriek again for {@dice 1d4} rounds."
 						],
 						"name": "Soul Shriek"
 					}
@@ -129,508 +129,20 @@
 					"death effects",
 					"doomed",
 					"drained",
-					"fatigued"
+					"fatigued",
+					"magic (see below)",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"name": "physical",
 						"amount": 10,
 						"note": "except adamantine"
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Calikang",
-			"source": "AoA5",
-			"page": 84,
-			"level": 12,
-			"traits": [
-				"uncommon",
-				"ln",
-				"large",
-				"humanoid"
-			],
-			"perception": {
-				"std": 20
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"name": "true seeing"
-				}
-			],
-			"languages": {
-				"languages": [
-					"common",
-					"jotun"
-				]
-			},
-			"skills": {
-				"athletics": {
-					"std": 25
-				},
-				"intimidation": {
-					"std": 24
-				}
-			},
-			"abilityMods": {
-				"str": 7,
-				"dex": 4,
-				"con": 5,
-				"int": -2,
-				"wis": 2,
-				"cha": 4
-			},
-			"items": [
-				"+1 striking longsword (2)"
-			],
-			"speed": {
-				"walk": 35
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "longsword",
-					"attack": 28,
-					"traits": [
-						"magical",
-						"reach <10 feet>",
-						"versatile <p>"
-					],
-					"damage": "{@damage 2d8+15} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "fist",
-					"attack": 25,
-					"traits": [
-						"agile",
-						"reach <10 feet>",
-						"nonlethal"
-					],
-					"damage": "{@damage 3d8+13} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "arcane",
-					"DC": 28,
-					"entry": {
-						"1": {
-							"spells": [
-								{
-									"name": "magic weapon",
-									"amount": "at will"
-								}
-							]
-						},
-						"6": {
-							"spells": [
-								{
-									"name": "chain lightning"
-								}
-							]
-						},
-						"constant": {}
-					}
-				}
-			],
-			"abilities": {
-				"top": [
-					{
-						"traits": [
-							"concentrate"
-						],
-						"entries": [
-							"By spending 5 minutes concentrating, the calikang can enter a state of suspended animation, freezing in place and becoming motionless but remaining aware of its surroundings. While in this state, the calikang gains a +4 status bonus to all Fortitude saves, does not age, and is immune to disease, inhaled toxins, poison, starvation, and thirst. The calikang can exit suspended animation as a free action. If it exits this state to attack, the calikang gains a +4 circumstance bonus to its initiative roll."
-						],
-						"name": "Suspended Animation"
-					}
-				],
-				"mid": [
-					{
-						"entries": [
-							"A calikang gains a circumstance bonus to its AC equal to the number of its hands that aren't wielding weapons, to a maximum of +4 (this bonus is already factored into this calikang's stats)."
-						],
-						"name": "Defensive Stance"
-					},
-					{
-						"traits": [
-							"abjuration",
-							"arcane"
-						],
-						"entries": [
-							"Whenever the calikang is hit by an electricity spell or rolls a successful save against a spell that deals energy damage, it absorbs the energy. This heals the calikang for an amount of HP equal to quadruple the spell's level, and recharges its Breath Weapon. A calikang can't absorb its own spells this way."
-						],
-						"name": "Energy Conversion"
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"acid",
-							"arcane",
-							"cold",
-							"electricity",
-							"evocation",
-							"fire",
-							"sonic"
-						],
-						"frequency": {
-							"unit": "day",
-							"number": 1
-						},
-						"entries": [
-							"The calikang breathes a blast of energy that deals {@damage 13d6} energy damage to all creatures in a 60-foot line (DC 28 basic Reflex save). The calikang can choose the damage type each time: acid, cold, electricity, fire, or sonic. Increase the die size to d8 if the calikang chooses electricity."
-						],
-						"name": "Breath Weapon"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"entries": [
-							"The calikang makes up to six fist {@action Strike||Strikes}. Each {@action Strike} can be against a different target.",
-							"These attacks count toward its multiple attack penalty, which doesn't increase until after all the attacks are complete."
-						],
-						"name": "Sixfold Flurry"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 35
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 23
-					},
-					"ref": {
-						"std": 22
-					},
-					"will": {
-						"std": 20
-					}
-				},
-				"hp": [
-					{
-						"hp": 235
-					}
-				],
-				"immunities": [
-					"electricity"
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Cornugon",
-			"source": "AoA5",
-			"page": 87,
-			"level": 16,
-			"traits": [
-				"le",
-				"large",
-				"devil",
-				"fiend"
-			],
-			"perception": {
-				"std": 28
-			},
-			"senses": [
-				{
-					"name": "greater darkvision"
-				}
-			],
-			"languages": {
-				"languages": [
-					"celestial",
-					"common",
-					"draconic",
-					"infernal"
-				],
-				"abilities": [
-					"telepathy 100 feet"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 28
-				},
-				"athletics": {
-					"std": 32
-				},
-				"intimidation": {
-					"std": 30
-				},
-				"religion": {
-					"std": 28
-				},
-				"stealth": {
-					"std": 26
-				},
-				"warfare lore": {
-					"std": 30
-				}
-			},
-			"abilityMods": {
-				"str": 8,
-				"dex": 6,
-				"con": 7,
-				"int": 2,
-				"wis": 6,
-				"cha": 6
-			},
-			"items": [
-				"+2 greater striking unholy spiked chain"
-			],
-			"speed": {
-				"walk": 25,
-				"fly": 50
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "unholy spiked chain",
-					"attack": 34,
-					"traits": [
-						"disarm",
-						"evil",
-						"finesse",
-						"magical",
-						"reach <10 feet>",
-						"trip"
-					],
-					"effects": [
-						"stunning chain"
-					],
-					"damage": "{@damage 3d8+14} slashing plus {@damage 1d6} evil and stunning chain",
-					"types": [
-						"evil",
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 32,
-					"traits": [
-						"agile",
-						"magical",
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 3d10+14} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tail",
-					"attack": 32,
-					"traits": [
-						"magical",
-						"reach <10 feet>"
-					],
-					"effects": [
-						"infernal wound"
-					],
-					"damage": "{@damage 2d10+14} slashing plus infernal wound",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "divine",
-					"DC": 36,
-					"entry": {
-						"4": {
-							"spells": [
-								{
-									"name": "dimension door",
-									"amount": "at will"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "dimension door"
-								}
-							]
-						},
-						"7": {
-							"spells": [
-								{
-									"name": "dispel magic"
-								},
-								{
-									"name": "fireball",
-									"amount": 2
-								},
-								{
-									"name": "lightning bolt",
-									"amount": 2
-								}
-							]
-						}
-					}
-				}
-			],
-			"rituals": [
-				{
-					"tradition": "divine",
-					"DC": 36,
-					"rituals": [
-						{
-							"name": "Infernal pact"
-						}
-					]
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"traits": [
-							"abjuration",
-							"aura",
-							"divine",
-							"evil"
-						],
-						"entries": [
-							"10 feet. A constant {@spell circle of protection} against good is centered on the horned devil. The horned devil can disable or activate this aura as a single action, which has the {@trait concentrate} trait."
-						],
-						"name": "Circle of Protection"
-					},
-					{
-						"traits": [
-							"aura",
-							"divine",
-							"enchantment"
-						],
-						"entries": [
-							"100 feet. Lower-level, allied evil creatures in the aura gain a +1 circumstance bonus to attack rolls, damage rolls, AC, saves, and skill checks."
-						],
-						"name": "Commander's Aura"
-					},
-					{
-						"traits": [
-							"aura",
-							"divine",
-							"emotion",
-							"enchantment",
-							"fear",
-							"mental"
-						],
-						"entries": [
-							"10 feet, DC 34"
-						],
-						"name": "Frightful Presence",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"name": "Attack of Opportunity",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"requirements": "The cornugon hit a creature with its spiked chain on its most recent action this turn",
-						"entries": [
-							"The devil pulls the creature 5 feet closer and grabs it with the spiked chain ({@action Escape} attempts use the cornugon's Athletics DC). The creature is automatically freed if the devil makes another spiked chain attack or moves away."
-						],
-						"name": "Chain of Malebolge"
-					},
-					{
-						"traits": [
-							"divine",
-							"necromancy"
-						],
-						"entries": [
-							"A cornugon's tail {@action Strike} deals {@damage 4d6} {@condition persistent damage||persistent bleed damage}. The flat check DC to stop the bleeding starts at 20, and is reduced to 15 only if someone successfully assists with the recovery. The DC to {@action Administer First Aid} to a creature with an infernal wound is increased by 10. A spellcaster or item using healing magic on an infernally {@condition wounded} creature must succeed at a DC 34 counteract check or the magic fails to heal the creature."
-						],
-						"name": "Infernal Wound"
-					},
-					{
-						"entries": [
-							"If the cornugon critically hits with its spiked chain {@action Strike}, the target must succeed at a DC 34 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
-						],
-						"name": "Stunning Chain"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 38
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 31
-					},
-					"ref": {
-						"std": 26
-					},
-					"will": {
-						"std": 26
-					},
-					"abilities": [
-						"+1 status to all saves vs. magic"
-					]
-				},
-				"hp": [
-					{
-						"hp": 300
-					}
-				],
-				"immunities": [
-					"fire"
-				],
-				"weaknesses": [
-					{
-						"amount": 15,
-						"name": "good"
-					}
-				],
-				"resistances": [
-					{
-						"amount": 15,
-						"name": "physical",
-						"note": "except silver"
-					},
-					{
-						"amount": 15,
-						"name": "poison"
 					}
 				]
 			},
@@ -678,6 +190,9 @@
 				},
 				"arcana": {
 					"std": 26
+				},
+				"crafting": {
+					"std": 30
 				},
 				"deception": {
 					"std": 26
@@ -777,20 +292,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+30, {@skill Thievery} +26 Str +4, Dex +7, Con +7, Int +3, Wis +7"
-						],
-						"name": "Stealth"
-					},
-					{
-						"entries": [
-							"+5."
-						],
-						"name": "Cha"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
@@ -844,7 +345,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -856,6 +360,7 @@
 				],
 				"weaknesses": [
 					{
+						"amount": 10,
 						"name": "good"
 					}
 				],
@@ -864,266 +369,6 @@
 						"amount": 10,
 						"name": "physical",
 						"note": "except adamantine"
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Duneshaker Solifugid",
-			"source": "AoA5",
-			"page": 89,
-			"level": 18,
-			"traits": [
-				"n",
-				"gargantuan",
-				"animal"
-			],
-			"perception": {
-				"std": 30
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"type": "imprecise",
-					"name": "{@ability tremorsense}",
-					"range": 30
-				}
-			],
-			"skills": {
-				"acrobatics": {
-					"std": 33
-				},
-				"athletics": {
-					"std": 35
-				},
-				"stealth": {
-					"std": 33,
-					"in deserts": 37
-				}
-			},
-			"abilityMods": {
-				"str": 9,
-				"dex": 7,
-				"con": 7,
-				"int": -5,
-				"wis": 4,
-				"cha": -4
-			},
-			"speed": {
-				"walk": 50,
-				"burrow": 25,
-				"climb": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 35,
-					"traits": [
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 4d10+17} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 35,
-					"traits": [
-						"agile",
-						"reach <20 feet>"
-					],
-					"damage": "{@damage 3d10+17} slashing",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"abilities": {
-				"bot": [
-					{
-						"entries": [
-							"The first time per turn the duneshaker solifugid moves adjacent to a Large or smaller creature, that creature must succeed at a DC 39 {@skill Acrobatics} check or fall {@condition prone}."
-						],
-						"name": "Earth Shaker"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"As giant solifugid (see above)."
-						],
-						"name": "Pounce"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"claw"
-						],
-						"name": "Rend",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"poison"
-						],
-						"entries": [
-							"The duneshaker solifugid spews toxic barbs at all creatures in a 30-foot cone. Each creature within the cone takes {@damage 10d6} poison damage (DC 39 basic Fortitude save). A creature that fails is {@condition blinded} for {@dice 1d6} rounds (or permanently on a critical failure). The duneshaker solifugid can't use Venom Spray again for {@dice 1d4} rounds."
-						],
-						"name": "Venom Spray"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 42
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 31
-					},
-					"ref": {
-						"std": 33
-					},
-					"will": {
-						"std": 28
-					}
-				},
-				"hp": [
-					{
-						"hp": 340
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Giant Solifugid",
-			"source": "AoA5",
-			"page": 89,
-			"level": 1,
-			"traits": [
-				"n",
-				"medium",
-				"animal"
-			],
-			"perception": {
-				"std": 6
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				}
-			],
-			"skills": {
-				"acrobatics": {
-					"std": 8
-				},
-				"athletics": {
-					"std": 6
-				},
-				"stealth": {
-					"std": 6,
-					"in deserts": 10
-				}
-			},
-			"abilityMods": {
-				"str": 1,
-				"dex": 3,
-				"con": 3,
-				"int": -5,
-				"wis": 1,
-				"cha": -4
-			},
-			"speed": {
-				"walk": 35,
-				"climb": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 8,
-					"damage": "{@damage 1d10+1} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 8,
-					"traits": [
-						"agile",
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 1d8+1} slashing",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"abilities": {
-				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"The giant solifugid {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the giant solifugid began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
-						],
-						"name": "Pounce"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"claw"
-						],
-						"name": "Rend",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 16
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 6
-					},
-					"ref": {
-						"std": 8
-					},
-					"will": {
-						"std": 4
-					}
-				},
-				"hp": [
-					{
-						"hp": 20
 					}
 				]
 			},
@@ -1310,7 +555,7 @@
 							"mental"
 						],
 						"entries": [
-							"A creature that fails to save against an immortal ichor's {@spell charm} spell becomes {@condition stupefied|CRB|stupefied 1}. The {@condition stupefied} value reduces by 1 every 24 hours. The first time each day a creature {@condition stupefied} by the ichor's charm fails to save against another casting of the ichor's charm, the value of the condition increases by {@dice 1d4}. If the {@condition stupefied} condition ever equals the creature's Wisdom score, it becomes {@condition controlled} by the ichor permanently; if it dies, it rises the next round as a zombie (of the GM's choice) under the ichor's control. If the ichor is killed, these zombies are destroyed."
+							"A creature that fails to save against an immortal ichor's {@spell charm} spell becomes {@condition stupefied|CRB|stupefied 1}. The {@condition stupefied} value reduces by 1 every 24 hours. The first time each day a creature {@condition stupefied} by the ichor's {@spell charm} fails to save against another casting of the ichor's {@spell charm}, the value of the condition increases by {@dice 1d4}. If the {@condition stupefied} condition ever equals the creature's Wisdom score, it becomes {@condition controlled} by the ichor permanently; if it dies, it rises the next round as a zombie (of the GM's choice) under the ichor's control. If the ichor is killed, these zombies are destroyed."
 						],
 						"name": "Corrupt Ally"
 					},
@@ -1366,6 +611,14 @@
 						]
 					}
 				],
+				"immunities": [
+					"acid",
+					"critical hits",
+					"mental",
+					"precision",
+					"unconscious",
+					"visual"
+				],
 				"resistances": [
 					{
 						"amount": 15,
@@ -1386,6 +639,7 @@
 				"large",
 				"beast"
 			],
+			"description": "Female {@creature lamia matriarch}",
 			"perception": {
 				"std": 29
 			},
@@ -1401,6 +655,9 @@
 				"crafting": {
 					"std": 31,
 					"for poison": 35
+				},
+				"deception": {
+					"std": 32
 				},
 				"intimidation": {
 					"std": 30
@@ -1420,6 +677,12 @@
 				"wis": 3,
 				"cha": 6
 			},
+			"items": [
+				"+2 corrosive greater striking dagger",
+				"{@item nightmare salt|TV|nightmare salt poison} (2)",
+				"{@item oblivion essence|AoA5|oblivion essence poison}",
+				"{@item weeping midnight|AoA5|weeping midnight poison} (3)"
+			],
 			"speed": {
 				"walk": 40,
 				"climb": 40,
@@ -1509,14 +772,19 @@
 							"number": 1,
 							"unit": "action"
 						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
 						"entries": [
-							"As lamia matriarch."
+							"The lamia matriarch can take on the appearance of a Medium humanoid. This doesn't change their Speed or their attack and damage modifiers with their {@action Strike||Strikes}, but it does prevent them from using their cursed touch. Each lamia matriarch has a fixed humanoid form\u2014they cannot adopt a different appearance each time they use this ability, and the appearance resembles that of their upper torso when in their true form."
 						],
 						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
-						},
-						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As lamia matriarch.' in Ishti, p.47"
+						}
 					},
 					{
 						"activity": {
@@ -1524,21 +792,25 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As lamia matriarch, but 2 actions and using her dagger."
+							"Ishti makes a dagger attack against each enemy within reach. Each attack counts toward her multiple attack penalty, but the penalty does not increase until after all the attacks. The first enemy she damages is subject to matriarch's caress."
 						],
-						"name": "Quick Dervish Strike",
-						"entries_as_xyz": "Ability not found: 'Quick Dervish {@action Strike} As lamia matriarch, but 2 actions and using her dagger.' in Ishti, p.47"
+						"name": "Quick Dervish Strike"
 					},
 					{
 						"activity": {
 							"number": 2,
 							"unit": "action"
 						},
-						"entries": [
-							"As lamia matriarch, but DC 40."
+						"traits": [
+							"curse",
+							"enchantment",
+							"mental",
+							"occult"
 						],
-						"name": "Matriarch's Caress",
-						"entries_as_xyz": "Ability not found: 'Matriarch's Caress As lamia matriarch, but DC 40.' in Ishti, p.47"
+						"entries": [
+							"Ishti touches a creature, who must succeed at a DC 40 Will save or become {@condition stupefied 1} (or {@condition stupefied 2} on a critical failure). If the target fails additional saves against this ability, the condition value increases by 1 (or 2 if it critically fails; to a maximum of {@condition stupefied 4}). This condition value decreases by 1 every 24 hours."
+						],
+						"name": "Matriarch's Caress"
 					},
 					{
 						"activity": {
@@ -1576,263 +848,16 @@
 					}
 				],
 				"immunities": [
-					"poison",
-					"controlled"
+					"controlled",
+					"poison"
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "mental"
+					}
 				]
 			}
-		},
-		{
-			"name": "Nalfeshnee",
-			"source": "AoA5",
-			"page": 86,
-			"level": 14,
-			"traits": [
-				"ce",
-				"huge",
-				"demon",
-				"fiend"
-			],
-			"perception": {
-				"std": 25
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"name": "true seeing"
-				}
-			],
-			"languages": {
-				"languages": [
-					"abyssal",
-					"celestial",
-					"draconic"
-				],
-				"abilities": [
-					"telepathy 100 feet"
-				]
-			},
-			"skills": {
-				"arcana": {
-					"std": 25
-				},
-				"athletics": {
-					"std": 28
-				},
-				"deception": {
-					"std": 26
-				},
-				"diplomacy": {
-					"std": 24
-				},
-				"intimidation": {
-					"std": 28
-				},
-				"religion": {
-					"std": 25
-				},
-				"abyss lore": {
-					"std": 25
-				}
-			},
-			"abilityMods": {
-				"str": 8,
-				"dex": 2,
-				"con": 8,
-				"int": 5,
-				"wis": 5,
-				"cha": 4
-			},
-			"speed": {
-				"walk": 30,
-				"fly": 40
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 28,
-					"traits": [
-						"magical",
-						"reach <15 feet>"
-					],
-					"damage": "{@damage 3d12+14} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 28,
-					"traits": [
-						"agile",
-						"magical",
-						"reach <15 feet>"
-					],
-					"damage": "{@damage 3d8+14} slashing",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "divine",
-					"DC": 34,
-					"entry": {
-						"4": {
-							"spells": [
-								{
-									"name": "circle of protection"
-								},
-								{
-									"name": "dimension door",
-									"amount": "at will"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "dimension door"
-								},
-								{
-									"name": "illusory object",
-									"amount": "at will"
-								}
-							]
-						},
-						"6": {
-							"spells": [
-								{
-									"name": "dispel magic",
-									"amount": "at will"
-								},
-								{
-									"name": "divine wrath",
-									"amount": "at will"
-								}
-							]
-						},
-						"constant": {
-							"6": {
-								"spells": [
-									{
-										"name": "true seeing"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"rituals": [
-				{
-					"tradition": "divine",
-					"DC": 34,
-					"rituals": [
-						{
-							"name": "Abyssal pact"
-						}
-					]
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"entries": [
-							"A nalfeshnee's greed is such that losing possessions causes it harm. If an item is stolen from a nalfeshnee, the demon takes {@damage 3d6} mental damage."
-						],
-						"name": "Forfeiture Aversion"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"trigger": "A creature critically fails a weapon {@action Strike} against the nalfeshnee",
-						"entries": [
-							"The nalfeshnee attempts to {@action Disarm} the weapon used in the triggering {@action Strike} at a \u20132 circumstance penalty. On a success, the nalfeshnee steals the weapon."
-						],
-						"name": "Greedy Grab"
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"conjuration",
-							"divine",
-							"extradimensional"
-						],
-						"entries": [
-							"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into its hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a {@item bag of holding}), it vomits up all the items."
-						],
-						"name": "ClaimWealth"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"traits": [
-							"divine",
-							"enchantment",
-							"light",
-							"mental"
-						],
-						"frequency": {
-							"unit": "hour",
-							"number": 1
-						},
-						"entries": [
-							"Beams of unholy light shoot out from the nalfeshnee toward four items within 60 feet. If someone is holding or wearing a targeted item, they can keep it from being affected with a DC 34 Reflex save. For 1 minute, all affected items glow in nauseating colors. Any non-demon is {@condition sickened|CRB|sickened 2} and {@condition slowed|CRB|slowed 1} as long as it holds, wears, or touches a glowing item. Recovering from this sickness requires a DC 29 Will save instead of a Fortitude save. Ending the sickness in this way ends the {@condition slowed} condition and makes the creature temporarily immune to the Light of Avarice for 24 hours. If the creature removes or drops the item, both the conditions end immediately, but the creature doesn't become immune."
-						],
-						"name": "Light of Avarice"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 34
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 26
-					},
-					"ref": {
-						"std": 22
-					},
-					"will": {
-						"std": 23
-					},
-					"abilities": [
-						"+1 status to all saves vs. magic"
-					]
-				},
-				"hp": [
-					{
-						"hp": 360
-					}
-				],
-				"weaknesses": [
-					{
-						"amount": 15,
-						"name": "cold iron"
-					},
-					{
-						"amount": 15,
-						"name": "good"
-					}
-				]
-			},
-			"hasImages": true
 		},
 		{
 			"name": "Scarlet Triad Boss",
@@ -1892,7 +917,7 @@
 				"+2 striking shortsword",
 				"+2 resilient studded leather armor",
 				"infiltrator thieves' tools",
-				"arrow with weeping midnight poison (page 79)"
+				"arrow with {@item weeping midnight|AoA5|weeping midnight poison}"
 			],
 			"speed": {
 				"walk": 30
@@ -2028,6 +1053,14 @@
 				"wis": 4,
 				"cha": 5
 			},
+			"items": [
+				"+2 striking composite shortbow",
+				"good manacles",
+				"moderate healing potion",
+				"+1 striking sap",
+				"+2 greater striking scimitar",
+				"+2 resilient studded leather"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -2084,17 +1117,11 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "An enemy critically fails a",
+						"trigger": "An enemy critically fails a {@action Strike} against the enforcer",
 						"entries": [
-							"{@action Strike} against the enforcer; The enforcer {@action Strike||Strikes} with their sap against that enemy if they're within reach; otherwise, the enforcer attempts an {@skill Intimidation} check."
+							"The enforcer {@action Strike||Strikes} with their sap against that enemy if they're within reach; otherwise, the enforcer attempts an {@skill Intimidation} check to {@action Demoralize} that enemy."
 						],
 						"name": "Stunning Retort"
-					},
-					{
-						"entries": [
-							"{@action Demoralize} that enemy."
-						],
-						"name": "to"
 					}
 				],
 				"bot": [
@@ -2631,8 +1658,7 @@
 				"bot": [
 					{
 						"entries": [
-							"As aluum enforcer (page 82)",
-							"Arcane Innate Spells DC 38; 9th bind soul (×3); 5th locate."
+							"Spiritbound aluum are immune to spells and magical abilities, with two exceptions. A negative spell or magical ability grants a spiritbound aluum the {@condition quickened} condition until the end of its next turn instead of its normal effects. A positive spell or ability makes a spiritbound aluum {@condition slowed|CRB|slowed 1} until the end of its next turn instead of its normal effects."
 						],
 						"name": "Aluum Antimagic"
 					},
@@ -2646,9 +1672,9 @@
 							"evocation",
 							"force"
 						],
+						"requirements": "The spiritbound aluum has bound a soul using its {@spell bind soul} innate spell",
 						"entries": [
-							"Requirements The spiritbound aluum has bound a soul using its bind soul innate spell; The spiritbound aluum transforms the captured soul's essence into raw magical energy, channeling the spirit into a beam that deals {@damage 20d6} force damage in a 30-foot line (DC 38 basic Reflex save). The remaining fragments of the captured soul are released to the Great Beyond.",
-							"The spiritbound aluum can't use Obliteration Beam again for {@dice 1d4} rounds."
+							"The spiritbound aluum transforms the captured soul's essence into raw magical energy, channeling the spirit into a beam that deals {@damage 20d6} force damage in a 30-foot line (DC 38 basic Reflex save). The remaining fragments of the captured soul are released to the Great Beyond. The spiritbound aluum can't use Obliteration Beam again for {@dice 1d4} rounds."
 						],
 						"name": "Obliteration Beam"
 					},
@@ -2659,15 +1685,13 @@
 							"necromancy"
 						],
 						"entries": [
-							"As aluum, but DC 35."
+							"A creature damaged by the spiritbound aluum's fist {@action Strike} must succeed at a DC 35 Fortitude save or become {@condition paralyzed} for 1 round. On a critical failure, the creature is {@condition paralyzed} for {@dice 1d4} minutes and falls {@condition prone}."
 						],
-						"name": "Paralyzing Force",
-						"entries_as_xyz": "Ability not found: 'Paralyzing Force As aluum, but DC 35.' in Spiritbound Aluum, p.83"
+						"name": "Paralyzing Force"
 					},
 					{
 						"entries": [
-							"When a spiritbound aluum uses its bind soul innate spell, it binds the soul into its central crystal instead of the normal material component.",
-							"The crystal can hold up to 60 souls. When encountered, a spiritbound aluum's crystal typically contains {@dice 1d6} souls."
+							"When a spiritbound aluum uses its bind soul innate spell, it binds the soul into its central crystal instead of the normal material component. The crystal can hold up to 60 souls. When encountered, a spiritbound aluum's crystal typically contains {@dice 1d6} souls."
 						],
 						"name": "Soul Binder"
 					},
@@ -2684,7 +1708,7 @@
 							"sonic"
 						],
 						"entries": [
-							"As aluum enforcer (page 82), but {@dice 16d6} damage."
+							"The spiritbound aluum emits a keening wail in a 15-foot cone that deals {@damage 16d6} sonic damage (DC 27 basic Fortitude save). A creature that fails its save is {@condition stunned|CRB|stunned 1}, or {@condition stunned|CRB|stunned 3} on a critical failure. The aluum can't use Soul Shriek again for {@dice 1d4} rounds."
 						],
 						"name": "Soul Shriek"
 					}
@@ -2711,7 +1735,26 @@
 					}
 				],
 				"immunities": [
-					"as aluum enforcer"
+					"bleed",
+					"disease",
+					"death effects",
+					"doomed",
+					"drained",
+					"fatigued",
+					"magic (see below)",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except adamantine"
+					}
 				]
 			},
 			"hasImages": true
@@ -2779,7 +1822,7 @@
 				"cha": 6
 			},
 			"items": [
-				"demilich eye gem (2)"
+				"{@item demilich eye gem|B1} (2)"
 			],
 			"speed": {
 				"fly": 30
@@ -2866,10 +1909,9 @@
 				"top": [
 					{
 						"entries": [
-							"As demilich."
+							"Typically, a demilich is inert when encountered and doesn't take actions until its {@i contingency} reaction has been triggered (see below)."
 						],
-						"name": "Torpor",
-						"entries_as_xyz": "Ability not found: 'Torpor As demilich.' in Teyam Ishtori, p.61"
+						"name": "Torpor"
 					}
 				],
 				"mid": [
@@ -2880,32 +1922,32 @@
 							"evocation"
 						],
 						"entries": [
-							"20 feet; As demilich."
+							"20 feet. Telekinetic whirlwind activates when the demilich ends torpor. Loose debris in the area whip up into a whirling storm. This obscures vision, making any creature in the area {@condition concealed}, and causes creatures in its area (except the demilich) to treat all creatures as {@condition concealed}. Any creature other than the demilich that enters or begins its turn in the aura takes {@damage 2d12} bludgeoning damage."
 						],
-						"name": "Telekinetic Whirlwind",
-						"entries_as_xyz": "Ability not found: 'Telekinetic Whirlwind As demilich.' in Teyam Ishtori, p.61"
+						"name": "Telekinetic Whirlwind"
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
+						"note": "A demilich has one permanent 8th-level {@spell contingency} spell in effect with one of its arcane innate spells of 5th level or lower as the companion spell\u2014typically {@spell dimension door}.",
+						"trigger": "While the lich is in torpor, a creature disturbs the demilich's remains, touches its treasure, or casts a spell that would affect the demilich.",
 						"entries": [
-							"As demilich."
+							"The demilich ends torpor, rolls initiative, and gains the effect of its {@spell contingency}'s companion spell. The {@i contingency} resets after 24 hours."
 						],
-						"name": "Contingency",
-						"entries_as_xyz": "Ability not found: 'Contingency As demilich.' in Teyam Ishtori, p.61"
+						"name": "Contingency"
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "free"
 						},
+						"trigger": "The demilich's turn begins.",
 						"entries": [
-							"As demilich."
+							"The demilich casts {@spell blink}, {@spell fly}, {@spell spell turning}, or {@spell true seeing} on itself. It usually chooses {@spell spell turning} unless it already has that spell in effect."
 						],
-						"name": "Countermeasures",
-						"entries_as_xyz": "Ability not found: 'Countermeasures As demilich.' in Teyam Ishtori, p.61"
+						"name": "Countermeasures"
 					}
 				],
 				"bot": [
@@ -2914,10 +1956,9 @@
 							"arcane"
 						],
 						"entries": [
-							"As demilich."
+							"A demilich has gemstone eyes that glow when the demilich is active. Each eye contains an 8th-level spell that targets one creature (usually one eye has {@spell maze} and the other {@spell polar ray}). The demilich can {@action Activate An Item||Activate} an eye. This uses the number of spellcasting actions the spell requires, and also requires command and envision components. When the demilich casts a spell from a gemstone eye, that eye stops glowing for {@dice 1d4} rounds, during which time that eye's spell can't be used. Occasionally, one or both of the two {@item demilich eye gem|B1|demilich eye gems} can be harvested from a destroyed demilich as magic items."
 						],
-						"name": "Demilich Eye Gems",
-						"entries_as_xyz": "Ability not found: 'Demilich Eye Gems As demilich.' in Teyam Ishtori, p.61"
+						"name": "Demilich Eye Gems"
 					},
 					{
 						"activity": {
@@ -2929,36 +1970,40 @@
 							"necromancy",
 							"negative"
 						],
+						"requirements": "A soul has been trapped in one of the demilich's blight quartz gems (see Trap Soul) for 24 hours.",
 						"entries": [
-							"As demilich."
+							"The demilich consumes the soul. The soul is utterly destroyed, and the demilich regains HP equal to double the creature's level."
 						],
-						"name": "Devour Soul",
-						"entries_as_xyz": "Ability not found: 'Devour Soul As demilich.' in Teyam Ishtori, p.61"
+						"name": "Devour Soul"
 					},
 					{
 						"entries": [
-							"As demilich."
+							"A demilich can replace all material and somatic components for casting spells with verbal components, and can replace all {@action Interact} components for activating magic items with envision components."
 						],
-						"name": "Mental Magic",
-						"entries_as_xyz": "Ability not found: 'Mental Magic As demilich.' in Teyam Ishtori, p.61"
+						"name": "Mental Magic"
 					},
 					{
 						"entries": [
-							"As demilich, but 10 charges and the spells of a staff of power."
+							"Teyam Ishtori long ago absorbed the spells from a staff into gemstone nodules embedded in her skull, with larger nodules representing higher-level spells. She can cast any of the spells as though she were {@action Activate an Item||Activating} the staff, and regains 1 charge per 4 hours spent in torpor, to a maximum of 10 charges. Teyam Ishtori has the spells from a {@item staff of power}."
 						],
-						"name": "Staff Gems",
-						"entries_as_xyz": "Ability not found: 'Staff Gems As demilich, but 10 charges and the spells of a staff of power.' in Teyam Ishtori, p.61"
+						"name": "Staff Gems"
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [
-							"As demilich, but DC 43 Fortitude."
+						"components": [
+							"command"
 						],
-						"name": "Trap Soul",
-						"entries_as_xyz": "Ability not found: 'Trap Soul As demilich, but DC 43 Fortitude.' in Teyam Ishtori, p.61"
+						"frequency": {
+							"special": "once per day per gem"
+						},
+						"entries": [
+							"Ten blight quartz gemstones on the demilich's skull can trap the souls of the living. The {@action Activate an Item||Activated} gem casts {@spell bind soul}. This {@spell bind soul} can target and affect a {@condition dying} creature instead of a corpse. The {@condition dying} creature can attempt a DC 43 Fortitude save; if it succeeds, it doesn't die and its soul is not trapped but it's enervated 2 (or is unaffected entirely on a critical success). When the soul of a creature gets trapped, the creature's body swiftly turns to dust.",
+							"The gemstones work like the black sapphires used in {@spell bind soul}, except that they can hold creatures of up to 17th level and have a value of 200 gp apiece. The demilich can Devour a Soul it has trapped."
+						],
+						"name": "Trap Soul"
 					}
 				]
 			},
@@ -3085,11 +2130,11 @@
 				"+2 greater resilient chain mail",
 				"+2 striking returning dagger",
 				"superior manacles",
-				"oblivion essence (page 79)",
+				"{@item oblivion essence|AoA5}",
 				"+3 major striking speed scimitar",
 				"steel shield with +2 greater striking shield spikes (Hardness 5, HP 20, BT 10)",
 				"wasp trapped in amber (portal key)",
-				"weeping midnight (page 79)",
+				"{@item weeping midnight|AoA5}",
 				"winged boots"
 			],
 			"speed": {
@@ -3245,250 +2290,6 @@
 					}
 				]
 			}
-		},
-		{
-			"name": "Witchwyrd",
-			"source": "AoA5",
-			"page": 90,
-			"level": 6,
-			"traits": [
-				"uncommon",
-				"ln",
-				"medium",
-				"humanoid"
-			],
-			"perception": {
-				"std": 12
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"name": "detect magic"
-				}
-			],
-			"languages": {
-				"languages": [
-					"common",
-					"draconic"
-				],
-				"notes": [
-					"one or more planar languages"
-				],
-				"abilities": [
-					"tongues"
-				]
-			},
-			"skills": {
-				"arcana": {
-					"std": 16
-				},
-				"deception": {
-					"std": 15
-				},
-				"diplomacy": {
-					"std": 15
-				},
-				"intimidation": {
-					"std": 15
-				},
-				"desert lore": {
-					"std": 14
-				},
-				"notes": [
-					"one or more Lore skills related to a specific plane"
-				]
-			},
-			"abilityMods": {
-				"str": 3,
-				"dex": 3,
-				"con": 1,
-				"int": 4,
-				"wis": 3,
-				"cha": 5
-			},
-			"items": [
-				"+1 ranseur"
-			],
-			"speed": {
-				"walk": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "ranseur",
-					"attack": 16,
-					"traits": [
-						"disarm",
-						"magical",
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 1d10+6} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "fist",
-					"attack": 15,
-					"traits": [
-						"agile",
-						"nonlethal"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 1d6+6} bludgeoning plus Grab",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "arcane",
-					"DC": 23,
-					"attack": 15,
-					"entry": {
-						"0": {
-							"level": 3,
-							"spells": [
-								{
-									"name": "detect magic"
-								}
-							]
-						},
-						"1": {
-							"spells": [
-								{
-									"name": "floating disk",
-									"amount": "at will"
-								},
-								{
-									"name": "unseen servant",
-									"amount": "at will"
-								}
-							]
-						},
-						"2": {
-							"spells": [
-								{
-									"name": "mirror image"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "dispel magic"
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "resist energy",
-									"amount": 2
-								},
-								{
-									"name": "suggestion"
-								},
-								{
-									"name": "resilient sphere"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "dimension door"
-								}
-							]
-						},
-						"constant": {
-							"5": {
-								"spells": [
-									{
-										"name": "tongues"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"traits": [
-							"arcane",
-							"evocation",
-							"force"
-						],
-						"frequency": {
-							"unit": "round",
-							"number": 1
-						},
-						"entries": [
-							"The witchwyrd uses a free hand to \"catch\" a single {@i magic missile} fired at it, as long as it is aware of the incoming {@i magic missile}. This absorbs the missile and causes that hand to glow while it holds this energy. A hand that's holding energy can't be used for any other purpose except to use Force Bolt. The energy lasts for 6 rounds or until it is released."
-						],
-						"name": "Absorb Force"
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "varies",
-							"entry": "{@as 1} to {@as 3}"
-						},
-						"traits": [
-							"arcane",
-							"evocation",
-							"force"
-						],
-						"entries": [
-							"The witchwyrd fires one {@i magic missile} per action spent (dealing {@dice 1d4+1} damage each). It can't spend more actions on this ability than it has free hands. If it uses a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
-						],
-						"name": "Force Bolt"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 22
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 13
-					},
-					"ref": {
-						"std": 13
-					},
-					"will": {
-						"std": 15
-					}
-				},
-				"hp": [
-					{
-						"hp": 110
-					}
-				],
-				"resistances": [
-					{
-						"amount": 5,
-						"name": "force"
-					}
-				]
-			},
-			"hasImages": true
 		},
 		{
 			"name": "Xotanispawn",
@@ -3668,6 +2469,12 @@
 					"chaotic",
 					"evil",
 					"fire"
+				],
+				"weaknesses": [
+					{
+						"amount": 20,
+						"name": "cold"
+					}
 				]
 			},
 			"hasImages": true

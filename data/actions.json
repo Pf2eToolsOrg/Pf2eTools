@@ -6992,6 +6992,574 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Haul Supplies",
+			"source": "AoA5",
+			"page": 13,
+			"traits": [
+				"exploration",
+				"move"
+			],
+			"entries": [
+				"You pack up as many supplies as you can carry and make your way back to Bazal's Basin with food and water. Attempt a DC 34 {@skill Athletics} check to determine the amount and quality of the food you manage to haul and keep safe from being damaged in the storm. A character who uses powerful magic (such as {@spell teleport}) to aid in transporting the food automatically achieves a result one category higher than they roll.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You return with 15 Bulk of supplies.",
+						"Success": "You return with 10 Bulk of supplies.",
+						"Failure": "Some of the food was damaged in transport, and you return with only 5 Bulk of supplies.",
+						"Critical Failure": "All of the supplies you attempted to transport are ruined."
+					}
+				}
+			]
+		},
+		{
+			"name": "Build Connections",
+			"source": "AoA5",
+			"page": 18,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You dedicate a day to making friends in high places, typically by inviting yourself to parties, performing small favors to be repaid later, and generally projecting an aura of confidence and capability. Attempt a DC 36 {@skill Crafting}, {@skill Diplomacy}, {@skill Performance}, or appropriate {@skill Lore} check. The result determines the impact of your efforts. If you have the {@feat Connections} skill feat and roll a success, you get a critical success instead.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "For 1 month, you gain a +1 circumstance bonus to your skill checks to pursue the downtime activities listed here. You also earn a single favor that you can call in when you or an ally you're working with attempts a skill check for one of these downtime actions. That creature can roll twice and use the better result, after which the favor is considered repaid; calling in the favor is a fortune effect.",
+						"Success": "For 1 week, you gain a +1 circumstance bonus to your skill checks for the downtime activities listed here.",
+						"Critical Failure": "A faux pas embarrasses you, and rumors recount the incident widely. For 3 days, you take a \u20131 circumstance penalty to skill checks for the downtime activities listed here."
+					}
+				}
+			]
+		},
+		{
+			"name": "Host Event",
+			"source": "AoA5",
+			"page": 18,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You dedicate a day to planning and hosting a special event, such as a feast, a small festival, or a public performance. Doing so requires an expenditure of 250 gp. Attempt a DC 36 {@skill Diplomacy}, {@skill Performance}, {@skill Society}, or appropriate {@skill Lore} check. The result determines the impact of your efforts. You gain a cumulative +1 circumstance bonus to this check (maximum +4) for each additional 250 gp you spend on the event.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Each PC gains a +2 circumstance bonus to skill checks to perform downtime activities for the next 3 days. Also, reduce the Support Points of two different guilds of your choice by 1 (see {@action Influence Guild}).",
+						"Success": "Each PC gains a +1 circumstance bonus to skill checks to perform downtime activities the following day. In addition, reduce the Support Points of one guild of your choice by 1 (see {@action Influence Guild}).",
+						"Critical Failure": "The party is a disaster. Each PC takes a \u20132 circumstance penalty to skill checks to perform downtime activities the following day."
+					}
+				}
+			]
+		},
+		{
+			"name": "Influence Guild",
+			"source": "AoA5",
+			"page": 19,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You dedicate a day to befriending members of a particular guild, assisting the organization, and convincing the guild members not to support the Scarlet Triad. Attempt a DC 34 skill check tied to one of the organization's favored skills (pages 20\u201321).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Reduce that organization's Support Points by 3.",
+						"Success": "Reduce that organization's Support Points by 1.",
+						"Critical Failure": "Increase that organization's Support Points by 1."
+					}
+				}
+			]
+		},
+		{
+			"name": "Issue Challange",
+			"source": "AoA5",
+			"page": 20,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You spend a day promoting your combat abilities, trash-talking the competition, calling out the leadership of the Gladiators' Guild, or performing public feats of bravado to compel the guildmaster of the Gladiators' Guild to accept your challenge to rule over the arena. This action ties specifically into Task 3: Blood on the Sand (page 32). Attempt a DC 36 {@skill Athletics}, {@skill Deception}, {@skill Intimidation}, {@skill Performance}, or appropriate {@skill Lore} skill check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You provoke Bshez Shak into accepting your challenge.",
+						"Success": "You weaken Bshez's resolve. For the next 7 days, your checks to Issue Challenges gain a cumulative +1 circumstance bonus (maximum +4).",
+						"Critical Failure": "Your boisterousness accidentally leads to embarrassment that undermines your stature. You lose any circumstance bonuses you've earned as a result of successful Issued Challenges, and can't Issue a Challenge the next day."
+					}
+				}
+			]
+		},
+		{
+			"name": "Contact Steel Falcons",
+			"source": "AoA5",
+			"page": 23,
+			"traits": [
+				"downtime"
+			],
+			"overcome": "DC 32 {@skill Lore||Andoran Lore}, DC 36 {@skill Diplomacy}, DC 34 {@skill Society}",
+			"special": [
+				"If the PCs don't succeed at this Opportunity, the Steel Falcons independently decide to launch their own heist that overlaps with\u2014and potentially interferes with\u2014the PCs' heist. See the Unexpected Falcons Complication on page 26."
+			],
+			"entries": [
+				"The PC surreptitiously tries to contact the Steel Falcons in Katapesh.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The PC arranges a meeting with the Steel Falcons. They're eager to combine forces with powerful operatives like the PCs in the name of liberating the oppressed, and they can provide information about the upcoming auction equivalent to a {@action Gather Information} success. In addition, the Steel Falcons grant the PCs 1 Edge Point.",
+						"Failure": "The PC fails to make contact.",
+						"Critical Failure": "The PC's clumsy attempt spooks the Steel Falcons. Future attempts at this activity take a \u20132 circumstance penalty."
+					}
+				}
+			]
+		},
+		{
+			"name": "Forge Documents",
+			"source": "AoA5",
+			"page": 23,
+			"traits": [
+				"downtime",
+				"secret"
+			],
+			"overcome": "DC 34 {@skill Society}",
+			"entries": [
+				"The PC prepares several forgeries that might serve as convincing props during the heist.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The PC creates convincing documents that grant the PCs 1 Edge Point they can use when presenting proper credentials, work orders, or invitations.",
+						"Failure": "The PC creates somewhat unconvincing documents. Inform the PCs the forgeries grant 1 Edge Point. However, when they use that Edge Point, it grants no benefit.",
+						"Critical Failure": "As failure, but a PC who uses the Edge Point on a failure gets a critical failure instead."
+					}
+				}
+			]
+		},
+		{
+			"name": "Gather Information",
+			"source": "AoA5",
+			"page": 24,
+			"traits": [
+				"downtime",
+				"secret"
+			],
+			"overcome": "DC 35 {@skill Diplomacy}",
+			"entries": [
+				"The PC seeks out rumors about Exavisu's status and location.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PCs learn information as a success, plus supporting details that assist in their preparations. The PCs gain a +2 circumstance bonus to checks to perform legwork tasks from this point on. In addition, the PC learns that the scheduling of the auction experienced some delays due to disagreements between the Scarlet Triad and Fleshmongers' Federation over how to split profits\u2014in the face of the gradual constriction of slave market, the longtime allies are both great taking pains to maintain their own profits without undercutting each other.",
+						"Success": "The PC learns that while nobody knows where Exavisu Kerndallion and her enslaved colleagues are, a private auction has been scheduled for the evening of 15 Neth, to be held at the Bhetshamtal Estate in Katapesh's Inner City. Invitations are nearly impossible to come by, and the audience is expected to include a large number of extraplanar bidders. Exavisu is among the slaves up for sale. Shipments into and out of the estate suggest preparations are already underway for the exclusive event, and the slaves are likely being kept off-site until the event begins.",
+						"Failure": "The PC learns nothing.",
+						"Critical Failure": "The PC learns a few misleading rumors that give the PCs a \u20132 circumstance penalty to their next check for a legwork task."
+					}
+				}
+			]
+		},
+		{
+			"name": "Secure Disguises",
+			"source": "AoA5",
+			"page": 24,
+			"traits": [
+				"downtime"
+			],
+			"overcome": "DC 35 {@skill Crafting}, DC 33 {@skill Deception}, DC 35 {@skill Performance}, DC 37 {@skill Society}",
+			"entries": [
+				"The PC tries to find disguises of a certain type (guards, for example, or socialites).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The PC finds or creates useful disguises that grant 1 Edge Point that the PCs can use for maintaining a cover identity.",
+						"Failure": "The PC finds no disguises."
+					}
+				}
+			]
+		},
+		{
+			"name": "Secure Invitation",
+			"source": "AoA5",
+			"page": 24,
+			"traits": [
+				"downtime"
+			],
+			"overcome": "DC 35 {@skill Crafting}, DC 35 {@skill Society}",
+			"entries": [
+				"The PC seeks out someone with an invitation they're willing to sell.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PC finds an invitation-holder and convinces them to give away the invitation for free. The PCs gain 1 Edge Point.",
+						"Success": "The PC finds someone willing to sell their invitation for 250 gp. If they pay, the group gets 1 Edge Point. They can attempt to steal it instead (DC 34 {@skill Thievery}), but if they do, increase Awareness at the beginning of Phase 2: Infiltration by 2.",
+						"Failure": "The PC is unable to find an invitation."
+					}
+				}
+			]
+		},
+		{
+			"name": "Scout the Facility",
+			"source": "AoA5",
+			"page": 24,
+			"traits": [
+				"downtime"
+			],
+			"overcome": "DC 36 {@skill Perception}, DC 38 {@skill Society}, DC 34 {@skill Stealth}",
+			"entries": [
+				"The PC spends part of the day observing the Bhetshamtal Estate, recording patrols, noting escape routes, and creating a mental map.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The PC makes decisive observations that grant the PCs 1 Edge Point that can be used for sneaking through or navigating the estate.",
+						"Failure": "The PC learns nothing noteworthy.",
+						"Critical Failure": "The PC misjudges some element of the security. Inform the PCs that the scouting grants 1 Edge Point. When they use that Edge Point, they don't get the normal benefit, and if they rolled a normal failure they get a critical failure instead."
+					}
+				}
+			]
+		},
+		{
+			"name": "Dimensional Interference",
+			"source": "AoA5",
+			"page": 26,
+			"traits": [
+				"exploration"
+			],
+			"trigger": "The PCs attempt to use a teleportation effect.",
+			"overcome": "2 successes; DC 35 {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
+			"entries": [
+				"Some of the protective wards in Bhetshamtal Estate provide magical static that causes teleportation effects to fail. If the PCs intend to just teleport away to safety, they need to disable these wards. This Complication is unlikely to arise until the PCs try to teleport and fail."
+			]
+		},
+		{
+			"name": "Do I Know You?",
+			"source": "AoA5",
+			"page": 26,
+			"traits": [
+				"exploration"
+			],
+			"trigger": "Awareness reaches 5 or 10.",
+			"overcome": "DC 30 {@skill Deception}, DC 35 {@skill Diplomacy}, DC 28 {@skill Performance}, DC 32 {@skill Stealth}",
+			"entries": [
+				"A partygoer or worker thinks they recognize one of the PCs, attracting unwanted attention. That PC either convinces them otherwise before slipping away or finds a way to dodge the bystander entirely."
+			]
+		},
+		{
+			"name": "Unexpected Falcons",
+			"source": "AoA5",
+			"page": 26,
+			"traits": [
+				"exploration"
+			],
+			"requirements": "The PCs got a critical failure while attempting to {@action Contact Steel Falcons|AoA5}. This Complication can occur whenever the GM sees fit.",
+			"overcome": "3 successes; DC 35 {@skill Deception}, DC 33 {@skill Diplomacy}, DC 37 {@skill Intimidation}",
+			"entries": [
+				"The Steel Falcons are performing their own heist to rescue their captain, Wallen Iuphasti, and they and the PCs encounter each other suddenly. Expecting trouble, the Steel Falcons have weapons drawn and are poised to attack. To overcome this encounter, the PCs quickly talk down the Andoren operatives.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Failure": "The Steel Falcons become more vocal and threatening, and a brief fight breaks out. This increases the Awareness Point total by 3 (instead of the normal 1 for a failure).",
+						"Critical Failure": "As failure, but increase Awareness by 5."
+					}
+				}
+			]
+		},
+		{
+			"name": "Unexpected Patrol",
+			"source": "AoA5",
+			"page": 27,
+			"traits": [
+				"exploration"
+			],
+			"trigger": "Awareness reaches 6 or 10.",
+			"overcome": "2 successes; DC 37 {@skill Deception}, DC 37 {@skill Perception}, DC 35 {@skill Stealth}",
+			"entries": [
+				"The PCs notice a group of guards on patrol that's only seconds away from stumbling upon them. The PCs seek out a place to hide, look for a alternate route around the guards, or craft cunning lies."
+			]
+		},
+		{
+			"name": "Blend In",
+			"source": "AoA5",
+			"page": 27,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "DC 35 {@skill Deception}, DC 37 {@skill Society}, DC 35 {@skill Stealth}",
+			"entries": [
+				"Sometimes the best option for crossing a crowded party is to act natural and join the crowd.",
+				"If a PC successfully Blends In, roll a secret DC 34 {@skill Perception} check for them to notice that something seems off about one of the guests. On a success, inform them about the {@action Dispel a Disguise|AoA5} Opportunity."
+			]
+		},
+		{
+			"name": "Breaking and Entering",
+			"source": "AoA5",
+			"page": 27,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "DC 37 {@skill Acrobatics}, DC 35 {@skill Athletics}, DC 35 {@skill Nature}, DC 35 {@skill Stealth}, DC 35 {@skill Thievery}",
+			"special": [
+				"If a PC successfully Breaks and Enters, they can attempt a DC 35 {@skill Perception} check to notice a set of keys carried by a guard or resting in a somewhat hard-to-reach area, allowing for that PC to take the {@action Steal Keys|AoA5} Opportunity."
+			],
+			"entries": [
+				"The PCs scale the walls, calm the guard dogs, hide from guards, and unlock gates."
+			]
+		},
+		{
+			"name": "Cunning Disguise",
+			"source": "AoA5",
+			"page": 27,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "DC 35 {@skill Deception} or DC 33 (see below)",
+			"entries": [
+				"The PCs conceal their true identities, relying on false personas to be admitted onto the estate. A PC can use a skill closely connected to their chosen disguise in place of {@skill Deception}, such as {@skill Intimidation} for a guard, {@skill Lore||Guild Lore} for a merchant, or any food-related {@skill Lore} for a caterer.",
+				"If a PC succeeds at a Cunning Disguise, roll a secret DC 34 {@skill Perception} check for them to notice something off about one of the guests. On a success, inform them about the {@action Dispel a Disguise|AoA5} Opportunity."
+			]
+		},
+		{
+			"name": "Smuggled",
+			"source": "AoA5",
+			"page": 27,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "DC 33 {@skill Stealth}",
+			"special": [
+				"This process leaves participating PCs disheveled, imposing a \u20131 circumstance penalty to checks tied to appearing well groomed or professional."
+			],
+			"entries": [
+				"The PCs hide themselves inside carts, wine barrels, or other large containers that are bound for the estate. This deposits them inside the walls but a distance from the manor."
+			]
+		},
+		{
+			"name": "Dispel a Disguise",
+			"source": "AoA5",
+			"page": 27,
+			"traits": [
+				"exploration",
+				"secret"
+			],
+			"requirements": "When {@action Blending In|AoA5} or using a {@action Cunning Disguise|AoA5}, a PC has noticed something is off about a guest.",
+			"overcome": "DC 35 {@skill Arcana}, DC 33 {@skill Occultism}, DC 37 {@skill Perception}",
+			"entries": [
+				"The PC is sure there's more to Baroness Epminia Fahlspar than meets the eye. They're right\u2014she's Reloon, a rakshasa in disguise!",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PC sees through the disguise and identifies a way to unveil the rakshasa without magic. Rakshasas are not unwelcome here, but the sudden reveal of Reloon's natural form and her dismayed outburst draws the attention of many partyers. Reduce Awareness by 2 (minimum 0).",
+						"Success": "The PC senses the magical disguise. To overcome this Opportunity, a PC must either magically counteract the disguise or succeed at a DC 40 {@skill Deception} or {@skill Intimidation} check to cause the baroness's concentration to waver, briefly disrupting her disguise. This reveals her, as described under critical success.",
+						"Failure": "The PC sees no evidence of a disguise.",
+						"Critical Failure": "The PC sees no evidence of a disguise, and their scrutiny invites a loud dressing down by the baroness."
+					}
+				}
+			]
+		},
+		{
+			"name": "Smooth the Path",
+			"source": "AoA5",
+			"page": 27,
+			"traits": [
+				"exploration"
+			],
+			"requirements": "The PC has successfully infiltrated the estate.",
+			"entries": [
+				"Now that they're on the inside, the PC helps an ally who's still trying to infiltrate. They describe what they're doing to help, and give the ally the benefits of {@action Following the Expert}. The GM might require the PC to attempt a relevant skill check (typically DC 32) to Smooth the Path."
+			]
+		},
+		{
+			"name": "Steal Keys",
+			"source": "AoA5",
+			"page": 28,
+			"traits": [
+				"exploration"
+			],
+			"requirements": "PCs noticed the keys while {@action Breaking and Entering|AoA5}.",
+			"overcome": "DC 35 {@skill Thievery}",
+			"entries": [
+				"The PC steals a ring of keys that can unlock many of the manor's doors.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The PCs gain 1 Edge Point usable for opening locks."
+					}
+				}
+			]
+		},
+		{
+			"name": "Diviner on Duty",
+			"source": "AoA5",
+			"page": 28,
+			"traits": [
+				"exploration"
+			],
+			"trigger": "A PC uses magic to aid in overcoming an Obstacle during infiltration.",
+			"overcome": "3 successes; DC 35 {@skill Arcana}, DC 37 {@skill Deception}, DC 35 {@skill Nature}, DC 35 {@skill Occultism}, DC 35 {@skill Religion}",
+			"entries": [
+				"Among the Scarlet Triad's security is a highly competent diviner! With spells such as {@spell discern lies}, {@spell mind reading}, {@spell see invisibility}, and {@spell true seeing}, this diviner can see through most magical schemes the PCs might use.",
+				"The diviner is watching for magical threats, not poison. With a successful DC 33 {@skill Deception}, {@skill Thievery}, or food-related {@skill Lore} check, a PC can trick her into consuming something laden with an ingested poison. Her Fortitude save bonus is +23, and she withdraws if successfully poisoned. If not successfully poisoned, increase the PCs' Awareness Points by 2."
+			]
+		},
+		{
+			"name": "Deadly Traps",
+			"source": "AoA5",
+			"page": 28,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "2 successes; DC 34 {@skill Arcana} or DC 34 {@skill Thievery}",
+			"special": [
+				"If a PC fails a check to overcome this scene, they trigger a trap that deals {@damage 16d6} damage to that PC (DC 36 basic Reflex). If the PC critically fails, it deals this damage to all PCs in the scene."
+			],
+			"entries": [
+				"The PCs suppress or disable dangerous traps set to kill would-be thieves and make an explosive ruckus."
+			]
+		},
+		{
+			"name": "Find the Cells",
+			"source": "AoA5",
+			"page": 28,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "3 successes; DC 33 {@skill Lore||Architecture Lore}, DC 35 {@skill Perception}, DC 35 {@skill Survival}",
+			"entries": [
+				"The PCs identify an efficient route through the manor and reach the holding cells and vaults in the basement\u2014all without opening too many doors, making too much noise, or wasting time searching for secret doors."
+			]
+		},
+		{
+			"name": "Locked Doors",
+			"source": "AoA5",
+			"page": 28,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "2 successes; DC 35 {@skill Athletics}, DC 35 {@skill Thievery}",
+			"entries": [
+				"Most of the manor is locked to prevent guests from wandering into restricted areas. The PCs quietly break into rooms or unlock doors."
+			]
+		},
+		{
+			"name": "Breaking the Chains",
+			"source": "AoA5",
+			"page": 28,
+			"traits": [
+				"exploration"
+			],
+			"requirements": "The PCs have overcome the other three Obstacles for this phase.",
+			"overcome": "2 successes; DC 37 {@skill Athletics}, DC 33 {@skill Thievery}",
+			"entries": [
+				"The captives are sealed behind bars and chained to the walls. The PCs undo these bindings as quietly as possible. Once the PCs defeat this Obstacle, they have freed Exavisu and one of her assistants and can begin Phase 4: Extraction. See the {@action That's Not Everyone|AoA5} Complication for more options."
+			]
+		},
+		{
+			"name": "Loot the Vaults",
+			"source": "AoA5",
+			"page": 28,
+			"traits": [
+				"exploration"
+			],
+			"requirements": "The PCs have reached the basement by Overcoming the {@action Find the Cells|AoA5} Obstacle.",
+			"overcome": "2 successes; {@skill Arcana} DC 33, {@skill Perception} DC 35, {@skill Thievery} DC 35",
+			"entries": [
+				"In addition to the captives, the Scarlet Triad has stored numerous treasures in the manor's basement. The PCs take several minutes to unlock a vault and identify the best objects to steal.",
+				"This Opportunity can be completed twice. The first time, the PCs recover a {@item Nethysian bulwark|AoA5}, a broad crystal bowl inlaid with faience designs of ibises (worth 300 gp), and an onyx-and-marble statue of {@deity Nethys} (worth 200 gp). In addition, the PCs also find a ledger detailing many Scarlet Triad transactions. With a successful DC 28 {@skill Lore||Guild Lore} or a DC 35 {@skill Society} check, a PC paging through the ledger determines that the Scarlet Triad has been dodging taxes, undercutting competition, and attempting to accumulate a lot of money very quickly\u2014all in ways that quietly harm the Fleshmonger Federation, Aspis Consortium, and church of Abadar. Once for each guild, a PC can use the ledger when Influencing a Guild to reduce that organization's Support Points by an additional 2 points.",
+				"The second time the PCs complete this Opportunity, they recover a {@item belt of regeneration}, as well as an alabaster-and-silver amphoriskos perfume bottle within which is bound the djinni vizier (Bestiary 162) Palqari the Wise. The Scarlet Triad trapped Palqari and offered him freedom in exchange for three wishes. Uri Zandivar already used two of these wishes to assist with the repair of the {@i Orb of Gold Dragonkind}, but then refrained from redeeming his last wish. Palqari is amenable to granting this last wish to the PCs if they help him escape; until then, he can't travel more than 20 feet from his amphoriskos, nor can he move it himself. This {@spell wish} can be used to automatically rescue all of the slaves, but the PCs will still need to escape on their own (see Extraction below). Although Palqari is eager to return to the {@place Plane of Air}, he could become a recurring ally later in the adventure at your discretion.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Failure": "The PCs are noticed by a group of guards. Play out this combat using the Basement Rooms map on page 24; this encounter is with a {@creature Scarlet Triad enforcer|AoA5}, a {@creature Scarlet Triad mage|AoA5}, and two {@creature calikang|AoA5|calikangs}. At the end of every round of combat, Awareness increases by 1."
+					}
+				}
+			]
+		},
+		{
+			"name": "That's Not Everyone",
+			"source": "AoA5",
+			"page": 29,
+			"traits": [
+				"exploration"
+			],
+			"trigger": "The PCs complete {@action Break the Chains|AoA5}",
+			"entries": [
+				"The enslaved members of the Jewelers' Guild were not all kept in one place. If the PCs intend to rescue all three assistants and Benneb, the missing antiquities dealer from Finderplain, they need to repeat either the {@action Break the Chains|AoA5} or {@action Locked Doors|AoA5} Obstacle a second time. The PCs can skip this Complication, but doing so impacts their rewards (page 30)."
+			]
+		},
+		{
+			"name": "Impromptu Tour",
+			"source": "AoA5",
+			"page": 29,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "3 successes; DC 33 {@skill Lore||Architecture Lore}, DC 36 {@skill Deception}, DC 34 {@skill Society}, DC 37 {@skill Stealth}",
+			"entries": [
+				"In anticipation of the auction, Jelek Jaziman has gathered groups of guests to explore the manor in guided tours. The PCs can try to avoid notice, or\u2014by blending in with a group and making informed statements about the artwork\u2014they can deflect attention long enough to slip away."
+			]
+		},
+		{
+			"name": "Obstructed Route",
+			"source": "AoA5",
+			"page": 29,
+			"traits": [
+				"exploration"
+			],
+			"overcome": "2 successes; DC 33 {@skill Acrobatics}, DC 33 {@skill Lore||Architecture Lore}, DC 37 {@skill Athletics}, DC 35 {@skill Perception}",
+			"entries": [
+				"The PCs' intended route is utterly impassible, perhaps due to witnesses, magical barriers, or collateral damage. The PCs squeeze through tight spaces, push aside the obstruction, or identify a quick alternate route."
+			]
+		},
+		{
+			"name": "Pander to the Crowd",
+			"source": "AoA5",
+			"page": 33,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"emotion",
+				"visual"
+			],
+			"requirements": "This is your first action in a gladiatorial match, or you've damaged or visibly impeded a foe while fighting a gladiatorial match.",
+			"entries": [
+				"With a mocking gesture, a triumphant flourish, or a bold challenge, you inspire the crowd to cheer you on. Attempt an {@skill Acrobatics}, {@skill Athletics}, {@skill Intimidation}, or {@skill Performance} check, with a DC typically set by the encounter's level. Crowds grow bored with repetition though; and attempting to Pander to the Crowd using the same skill that was used the last time someone used this action imposes a \u20132 circumstance penalty on the check. If you critically succeeded at an attack roll this turn, you gain a +2 circumstance bonus to your Pander to the Crowd attempt.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The crowd goes wild! You can either give yourself a +3 status bonus to attack rolls, damage rolls, saving throws, and skill checks until the end of your next turn, or give yourself and all your allies a +2 status bonus to the same rolls until the end of your next turn.",
+						"Success": "You appeal to the crowd. As critical success, but the bonus is +2 just for you, or +1 for you and your allies.",
+						"Failure": "You don't make an impression.",
+						"Critical Failure": "Your pandering is laughable, and the crowd begins to favor your opponents. The next creature hostile to you that attempts to Pander to the Crowd gains a +4 circumstance bonus to the check."
+					}
+				}
+			]
+		},
+		{
+			"name": "Scout Duneshadow",
+			"source": "AoA5",
+			"page": 36,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"move"
+			],
+			"entries": [
+				"Duneshadow's known to traverse a wide territory in north- central Katapesh, and the PCs first need to narrow down his current location to within a few miles. A full scouting attempt takes 4 hours, during which each PC attempts a skill check chosen from the following options, depending on how they wish to scout: {@skill Diplomacy} DC 40 (to ask local nomads about sightings) or {@skill Nature} DC 36 (to know about camel behavior and where Duneshadow might best be found). At your discretion, a PC can substitute an appropriate {@skill Lore} skill for any of these skills, in which case the DC is reduced by 2.",
+				"To find the camel's trail, the party must successfully Scout Duneshadow three times. Critical successes count as two successes, and critical failures negate one success. If all PCs abandon this task and no one is Scouting Duneshadow, the number of accumulated successes resets to zero. Magic such as {@spell discern location} gives two successes toward finding Duneshadow, though he moves so often and in such odd ways that even in the 10 minutes it takes to {@spell teleport}, only his trail will remain.",
+				"Once they get three successes, the PCs can then Track him (DC 40). They need to succeed twice in a row or critically succeed once, and can try again on a failure. On a critical failure, the PCs must wait at least 24 hours before Scouting Duneshadow again."
+			]
+		},
+		{
+			"name": "Approach Duneshadow",
+			"source": "AoA5",
+			"page": 36,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"move"
+			],
+			"entries": [
+				"Once the PCs have Tracked Duneshadow, they begin intermittently sighting him atop distant hills, hear his bellowing calls, or sense other signs that he's near. The camel is remarkably cunning and stealthy, able to exploit heat shimmers to hide his movements, predict hunters' next steps, and make exceptional use of the terrain. All the while, his path leads the PCs farther into the foothills of the Brazen Peaks.",
+				"An attempt to Approach Duneshadow is a slow and deliberate activity that takes 1 hour to perform, during which each PC attempts a skill check chosen from the following options: {@skill Acrobatics} or {@skill Athletics} DC 37 (to approach quickly via a shortcut), {@skill Deception} DC 38 (to trick Duneshadow into evading pursuit in the wrong direction), {@skill Nature} DC 35 (to keep Duneshadow calm and appear non-threatening), {@skill Performance} DC 34 (to intrigue Duneshadow with calming music), or {@skill Stealth} DC 36 (to approach undetected). {@skill Lore} skills can be substituted for any of these skills, reducing the DC by 2.",
+				"To reach Duneshadow, the party must successfully Approach four times. Critical successes count as two successes, and critical failures negate one success. If this reduces the total to two or fewer, Duneshadow runs off and the PCs must Scout for his location all over again."
+			]
 		}
 	]
 }

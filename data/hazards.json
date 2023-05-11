@@ -3936,8 +3936,7 @@
 					"types": [
 						"acid",
 						"piercing"
-					],
-					"noMAP": true
+					]
 				}
 			]
 		},
@@ -5805,7 +5804,7 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Occultism} DC 36 (master) or {@skill Religion} DC 36 (master) to exorcise the spirits."
+					"{@skill Occultism} DC 36 (master) or {@skill Religion} DC 36 (master) to exorcise the spirits"
 				]
 			},
 			"actions": [
@@ -7609,14 +7608,36 @@
 					"{@skill Occultism} DC 38 (master) or {@skill Religion} DC 38 (master) to calm the restless energies and suppress the haunt for 1 hour; a critical success deactivates the haunt permanently."
 				]
 			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"Painting ": 15
+				},
+				"hp": {
+					"Painting ": 30,
+					"notes": {
+						"Painting ": "per square (6 squares must be destroyed to disable the haunt)"
+					}
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
 			"actions": [
 				{
-					"entries": [
-						"20; Fort +13, Ref +5 Painting Hardness 15; Painting HP 30 per square (6 squares must be destroyed to disable the haunt); Immunities critical hits, object immunities, precision damage."
-					],
-					"name": "Painting AC"
-				},
-				{
+					"name": "Lifelike Scintillation",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -7628,13 +7649,14 @@
 					"trigger": "A living creature examines the mural or enters the room",
 					"entries": [
 						"The haunt activates and rolls initiative."
-					],
-					"name": "Lifelike Scintillation"
+					]
 				}
 			],
 			"routine": [
-				"(2 actions) The haunt lures creatures into area A2 using Captivate. Any actions it hasn't used to Captivate are used to drain a living creature in the room with Live a Thousand Lives.",
+				"(2 actions) The haunt lures creatures into area {@b A2} using Captivate. Any actions it hasn't used to Captivate are used to drain a living creature in the room with Live a Thousand Lives.",
 				{
+					"name": "Captivate",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -7651,15 +7673,50 @@
 						{
 							"type": "successDegree",
 							"entries": {
-								"Success": "The target becomes {@condition fatigued}.",
-								"Failure": "The target becomes {@condition drained|CRB|drained 1} (or its {@condition drained} value increases by 1, to a maximum of {@condition drained|CRB|drained 3}), and it is {@condition paralyzed} until the end of its next turn.",
-								"Critical Failure": "As failure, but the target also becomes {@condition doomed|CRB|doomed 1} (or its {@condition doomed} value increases by 1).",
-								"Critical Success": "The target is unaffected."
+								"Success": [
+									"The target is unaffected."
+								],
+								"Failure": [
+									"The target must spend all its actions on its next turn moving into the room, and is then {@condition paralyzed} until the end of its next turn."
+								],
+								"Critical Failure": [
+									"As failure, and the target is also {@condition stupefied||stupefied 2} for 1 minute."
+								]
 							}
 						}
-					],
+					]
+				},
+				{
+					"name": "Live a Thousand Lives",
 					"type": "ability",
-					"name": "Captivate"
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"mental",
+						"occult"
+					],
+					"entries": [
+						"The haunt causes a living creature in the room to experience a full elven life, weathering every wound, misfortune, loss, and consequence of aging centuries in a matter of seconds. The target must attempt a DC 38 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target is unaffected."
+								],
+								"Success": [
+									"The target becomes {@condition fatigued}."
+								],
+								"Failure": [
+									"The target becomes {@condition drained||drained 1} (or its {@condition drained} value increases by 1, to a maximum of {@condition drained||drained 3}), and it is {@condition paralyzed} until the end of its next turn."
+								],
+								"Critical Failure": [
+									"As failure, but the target also becomes {@condition doomed||doomed 1} (or its {@condition doomed} value increases by 1)."
+								]
+							}
+						}
+					]
 				}
 			],
 			"reset": [
@@ -10450,7 +10507,7 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Thievery} DC 40 (master) to disable the wards or dispel magic (9th level; counteract DC 38) to counteract the ward."
+					"{@skill Thievery} DC 40 (master) to disable the wards or dispel magic (9th level; counteract DC 38) to counteract the ward"
 				]
 			},
 			"actions": [
@@ -10829,7 +10886,7 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Arcana} (DC 41) to suppress the magic or {@skill Thievery} (DC 41) to scratch out the ward."
+					"{@skill Arcana} (DC 41) to suppress the magic or {@skill Thievery} (DC 41) to scratch out the ward"
 				]
 			},
 			"actions": [
@@ -12606,7 +12663,7 @@
 			],
 			"disable": {
 				"entries": [
-					"{@skill Thievery} DC 43 (master) to disable the wards or dispel magic (9th level; counteract DC 38) to counteract the ward."
+					"{@skill Thievery} DC 43 (master) to disable the wards or {@spell dispel magic} (9th level; counteract DC 38) to counteract the ward."
 				]
 			},
 			"actions": [
