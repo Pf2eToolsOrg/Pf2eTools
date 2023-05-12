@@ -16,7 +16,7 @@
 			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
-				"This ornate pendant of brass is adorned with a vibrant blue gemstone. An aluum charm grants control over a particular aluum and lesser influence over other such constructs. As long as you wear an aluum's linked aluum charm, that aluum follows your verbal commands, including somewhat nuanced orders like \"subdue this target\" or \"strike anyone wearing a blue robe.\"",
+				"This ornate pendant of brass is adorned with a vibrant blue gemstone. An {@i aluum charm} grants control over a particular aluum and lesser influence over other such constructs. As long as you wear an aluum's linked {@i aluum charm}, that aluum follows your verbal commands, including somewhat nuanced orders like \"subdue this target\" or \"strike anyone wearing a blue robe.\"",
 				{
 					"type": "ability",
 					"activity": {
@@ -31,7 +31,7 @@
 						"number": 1
 					},
 					"entries": [
-						"The charm grants you control over an aluum you can see within 60 feet, with a level equal to or lower than the charm. This has the effect of dominate and allows a DC 28 Will save. If the aluum is currently under the control of someone wearing its linked charm, it gets a result on its saving throw one degree higher than what it rolled. You can control only one aluum at a time using this activation, and controlling a new aluum ends the effect for one you had previously affected."
+						"The charm grants you control over an aluum you can see within 60 feet, with a level equal to or lower than the charm. This has the effect of {@spell dominate} and allows a DC 28 Will save. If the aluum is currently under the control of someone wearing its linked charm, it gets a result on its saving throw one degree higher than what it rolled. You can control only one aluum at a time using this activation, and controlling a new aluum ends the effect for one you had previously affected."
 					]
 				}
 			]
@@ -145,110 +145,6 @@
 							"stage": 3,
 							"entry": "{@damage 8d6} mental damage, {@condition fatigued}, attack nearby creatures as if {@condition confused}",
 							"duration": "1 round"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Gorgon's Breath",
-			"source": "AoA5",
-			"page": 78,
-			"type": "Item",
-			"level": 13,
-			"traits": [
-				"uncommon",
-				"alchemical",
-				"consumable",
-				"inhaled",
-				"poison"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 475
-			},
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"components": [
-					"{@action Interact}"
-				]
-			},
-			"category": "Poison",
-			"entries": [
-				"Gorgon's breath is a fine powder that can easily enter living creatures' bloodstreams through their lungs before binding to mucous membranes and causing any nearby soft tissues to harden.",
-				{
-					"type": "affliction",
-					"DC": 32,
-					"savingThrow": "Fortitude",
-					"onset": "1 round",
-					"maxDuration": "6 rounds",
-					"stages": [
-						{
-							"stage": 1,
-							"entry": "{@condition slowed|CRB|slowed 1}",
-							"duration": "1 round"
-						},
-						{
-							"stage": 2,
-							"entry": "{@damage 4d6} bludgeoning damage and {@condition slowed|CRB|slowed 1}",
-							"duration": "1 round"
-						},
-						{
-							"stage": 3,
-							"entry": "{@condition petrified} ;",
-							"duration": "1 round"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Grinning Pugwampi",
-			"source": "AoA5",
-			"page": 77,
-			"type": "Item",
-			"level": 14,
-			"traits": [
-				"uncommon",
-				"consumable",
-				"enchantment",
-				"magical",
-				"misfortune",
-				"talisman"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 700
-			},
-			"usage": "affixed to weapon",
-			"bulk": "\u2013",
-			"category": "Talisman",
-			"entries": [
-				"This bone statuette of a sneering gremlin crumbles to dust when activated, imparting a fraction of its subject's infamous misfortune unto those you strike.",
-				{
-					"type": "ability",
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"components": [
-						"envision"
-					],
-					"trigger": "You damage a {@condition flat-footed} creature with the affixed weapon",
-					"entries": [
-						"The damaged creature must attempt a DC 33 Will save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature must roll twice and take the worse result on the next check it attempts.",
-								"Failure": "The creature must roll twice and take the worse result on all checks until the end of its next turn."
-							}
 						}
 					]
 				}
@@ -387,8 +283,7 @@
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"This round shield is often fashioned to resemble the religious symbol of its dual-natured namesake.",
-				"A Nethysian bulwark is a high-grade cold iron shield (Hardness 10, HP 40, BT 20) that defends the wielder and can explode with retributive force when struck.",
+				"This round shield is often fashioned to resemble the religious symbol of its dual-natured namesake. A {@i Nethysian bulwark} is a high-grade cold iron shield (Hardness 10, HP 40, BT 20) that defends the wielder and can explode with retributive force when struck.",
 				{
 					"type": "ability",
 					"activity": {
@@ -398,66 +293,9 @@
 					"components": [
 						"envision"
 					],
-					"trigger": "The shield becomes {@condition broken} when performing a",
+					"trigger": "The shield becomes {@condition broken} when performing a {@feat Shield Block}",
 					"entries": [
 						"The shield explodes in a burst of bright light and shadowy tendrils, releasing a 15-foot cone of force that must include the attacker if possible. The cone deals {@damage 6d8} force damage to all creatures in the area (DC 34 basic Reflex save)."
-					]
-				}
-			]
-		},
-		{
-			"name": "Nightmare Salt",
-			"source": "AoA5",
-			"page": 79,
-			"type": "Item",
-			"level": 20,
-			"traits": [
-				"rare",
-				"alchemical",
-				"consumable",
-				"ingested",
-				"poison"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 14000
-			},
-			"usage": "held in 2 hands",
-			"bulk": "L",
-			"activate": {
-				"activity": {
-					"number": 3,
-					"unit": "action"
-				},
-				"components": [
-					"{@action Interact}"
-				]
-			},
-			"category": "Poison",
-			"entries": [
-				"This potent poison consists of crystals whose flavor and appearance mimics edible salt but whose effects are deadly: victims experience periods of waking nightmares that overload the senses and eventually result in death through a combination of shock and exhaustion.",
-				{
-					"type": "affliction",
-					"DC": 43,
-					"savingThrow": "Fortitude",
-					"onset": "1 hour",
-					"maxDuration": "5 days",
-					"stages": [
-						{
-							"stage": 1,
-							"entry": "{@condition frightened|CRB|frightened 2} once every {@dice 1d4} hours, plus {@condition fatigued}",
-							"duration": "1 day"
-						},
-						{
-							"stage": 2,
-							"entry": "{@condition confused} for 1 minute once every {@dice 1d4} hours, plus {@condition frightened|CRB|frightened 3} and {@condition fatigued}",
-							"duration": "1 day"
-						},
-						{
-							"stage": 3,
-							"entry": "{@condition frightened|CRB|frightened 3}, plus {@condition confused} for {@dice 1d4} minutes, once every hour, plus {@condition fatigued} ;",
-							"duration": "1 day"
-						}
 					]
 				}
 			]
