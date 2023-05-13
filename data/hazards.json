@@ -6562,7 +6562,7 @@
 			"stealth": {
 				"bonus": 37,
 				"minProf": "legendary",
-				"notes": "or DC 47 to notice the dagger left in the pool start to move on its own."
+				"notes": "or DC 47 to notice the dagger left in the pool start to move on its own"
 			},
 			"description": [
 				"An elven woman wearing a robe stands in the water. She beckons anyone who enters the room to join her in the pool."
@@ -6575,6 +6575,17 @@
 			"defenses": {
 				"ac": {
 					"std": 43
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 35
+					}
 				},
 				"hp": {
 					"std": 128,
@@ -6618,8 +6629,7 @@
 					"types": [
 						"negative",
 						"piercing"
-					],
-					"noMAP": true
+					]
 				}
 			],
 			"reset": [
@@ -7176,8 +7186,7 @@
 			],
 			"disable": {
 				"entries": [
-					"The dragonstorm can't be disabled\u2014only endured.",
-					"It ends only once the attack on Breachill and Citadel Altaerein is over."
+					"The dragonstorm can't be disabled\u2014only endured. It ends only once the attack on Breachill and Citadel Altaerein is over."
 				]
 			},
 			"actions": [
@@ -7191,23 +7200,59 @@
 					],
 					"trigger": "A new wave begins",
 					"entries": [
-						"Roll {@dice 1d10} to determine which effect manifests from the following possibilities. The placement of these effects is guided by {@deity Dahak|LOGM}'s will, and they should manifest in the most detrimental locations possible to."
+						"Roll {@dice 1d10} to determine which effect manifests from the following possibilities. The placement of these effects is guided by {@deity Dahak|LOGM}'s will, and they should manifest in the most detrimental locations possible to the PCs.",
+						{
+							"type": "ability",
+							"name": "1\u20132: Acid Rain",
+							"traits": [
+								"acid"
+							],
+							"entries": [
+								"A torrent of acid drenches creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} acid damage (DC 42 basic Reflex save). Creatures that critically fail also take 5 {@condition persistent damage||persistent acid damage}."
+							]
+						},
+						{
+							"type": "ability",
+							"name": "3\u20134: Freezing Wind",
+							"traits": [
+								"cold"
+							],
+							"entries": [
+								"A barrage of freezing wind and hail assaults all creatures in a 20-foot burst. Creatures in the area take {@damage 3d10} cold damage and {@damage 3d10} bludgeoning damage (DC 42 basic Reflex save) Creatures that critically fail are {@condition slowed|CRB|slowed 1} for 1 round."
+							]
+						},
+						{
+							"type": "ability",
+							"name": "5\u20136: Bolts of Lightning",
+							"traits": [
+								"electricity"
+							],
+							"entries": [
+								"Several bolts of lightning strike all creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} electricity damage (DC 42 basic Reflex save). Creatures that critically fail their saves become {@condition blinded} and {@condition deafened} for 1 round."
+							]
+						},
+						{
+							"type": "ability",
+							"name": "7\u20138: Flaming Vortex",
+							"traits": [
+								"fire"
+							],
+							"entries": [
+								"Gouts of flame fall on all creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} fire damage (DC 42 basic Reflex save). Creatures that critically fail their saves also take 5 {@condition persistent damage||persistent fire damage}."
+							]
+						},
+						{
+							"type": "ability",
+							"name": "9\u201310: Poison Miasma",
+							"traits": [
+								"poison"
+							],
+							"entries": [
+								"Poisonous mist rolls forth, covering a 20-foot burst for 1 round. Creatures within the mist become {@condition concealed}, and creatures outside it become {@condition concealed} to creatures within it. Creatures within the mist take {@damage 6d10} poison damage (DC 42 basic Fortitude save). Creatures that critically fail their saves become {@condition enfeebled|CRB|enfeebled 2}."
+							]
+						}
 					],
 					"name": "Localized Dragonstorm"
-				},
-				{
-					"entries": [
-						"1\u20132: Acid Rain (acid) A torrent of acid drenches creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} acid damage (DC 42 basic Reflex save). Creatures that critically fail also take 5 {@condition persistent damage||persistent acid damage}.",
-						"3\u20134: Freezing Wind (cold) A barrage of freezing wind and hail assaults all creatures in a 20-foot burst.",
-						"Creatures in the area take {@damage 3d10} cold damage and {@damage 3d10} bludgeoning damage (DC 42 basic Reflex save)",
-						"Creatures that critically fail are {@condition slowed|CRB|slowed 1} for 1 round.",
-						"5\u20136: Bolts of Lightning (electricity) Several bolts of lightning strike all creatures in a 20-foot burst.",
-						"Creatures in the area take {@damage 6d10} electricity damage (DC 42 basic Reflex save). Creatures that critically fail their saves become {@condition blinded} and {@condition deafened} for 1 round.",
-						"7\u20138: Flaming Vortex (fire) Gouts of flame fall on all creatures in a 20-foot burst. Creatures in the area take {@damage 6d10} fire damage (DC 42 basic Reflex save)",
-						"Creatures that critically fail their saves also take 5 {@condition persistent damage||persistent fire damage}.",
-						"9\u201310: Poison Miasma (poison) Poisonous mist rolls forth, covering a 20-foot burst for 1 round. Creatures within the mist become {@condition concealed}, and creatures outside it become {@condition concealed} to creatures within it. Creatures within the mist take {@damage 6d10} poison damage (DC 42 basic Fortitude save). Creatures that critically fail their saves become {@condition enfeebled|CRB|enfeebled 2}."
-					],
-					"name": "the PCs."
 				}
 			]
 		},
@@ -10294,8 +10339,7 @@
 				}
 			],
 			"routine": [
-				"(1 action) On its initiative, the lesser dragonstorm reaches out and blasts all creatures within {@deity Alseta|LOGM}'s Ring.",
-				"Affected creatures take {@dice 10d8} damage (DC 46 basic Reflex save), evenly split between acid, cold, fire, electricity, and poison. Creatures that fail their save are pulled 20 feet toward the center of {@deity Alseta|LOGM}'s Ring (or are knocked {@condition prone} and pulled 30 feet on a critical failure). After 10 rounds, the lesser dragonstorm is destroyed, but a much greater dragonstorm manifests in the surrounding region\u2014see The Dragonstorm on page 7."
+				"(1 action) On its initiative, the lesser dragonstorm reaches out and blasts all creatures within {@deity Alseta|LOGM}'s Ring. Affected creatures take {@dice 10d8} damage (DC 46 basic Reflex save), evenly split between acid, cold, fire, electricity, and poison. Creatures that fail their save are pulled 20 feet toward the center of {@deity Alseta|LOGM}'s Ring (or are knocked {@condition prone} and pulled 30 feet on a critical failure). After 10 rounds, the lesser dragonstorm is destroyed, but a much greater dragonstorm manifests in the surrounding region\u2014see The Dragonstorm on page 7."
 			]
 		},
 		{
