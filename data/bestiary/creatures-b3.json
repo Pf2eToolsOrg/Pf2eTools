@@ -16197,6 +16197,11 @@
 			"name": "Elder Wyrmwraith",
 			"source": "B3",
 			"page": 297,
+			"otherSources": {
+				"Originally": [
+					"AoA6|85"
+				]
+			},
 			"level": 23,
 			"traits": [
 				"rare",
@@ -16484,7 +16489,12 @@
 					}
 				],
 				"immunities": [
-					"as wyrmwraith"
+					"poison",
+					"precision",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"unconscious"
 				],
 				"resistances": [
 					{
@@ -38109,7 +38119,7 @@
 					{
 						"hp": 135,
 						"abilities": [
-							"fast healing 10 (page 305)",
+							"fast healing 10",
 							"{@ability negative healing|b2}",
 							"plagued coffin"
 						]
@@ -38321,7 +38331,7 @@
 					{
 						"hp": 216,
 						"abilities": [
-							"fast healing 15 (page 305)",
+							"fast healing 15",
 							"{@ability negative healing|b2}",
 							"plagued coffin restoration"
 						]
@@ -54882,6 +54892,11 @@
 			"name": "Tzitzimitl",
 			"source": "B3",
 			"page": 279,
+			"otherSources": {
+				"Originally": [
+					"AoA6|82"
+				]
+			},
 			"level": 19,
 			"traits": [
 				"uncommon",
@@ -55119,25 +55134,41 @@
 					{
 						"hp": 390,
 						"abilities": [
-							"fast healing 15 (page 305)",
+							"fast healing 15",
 							"{@ability negative healing|b2}"
 						]
 					}
 				],
 				"immunities": [
-					"electricity",
-					"negative",
-					"poison",
-					"precision",
+					"cold",
 					"death effects",
 					"disease",
+					"electricity",
+					"negative",
 					"paralyzed",
+					"poison",
+					"precision",
 					"unconscious"
 				],
 				"weaknesses": [
 					{
 						"amount": 15,
 						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "cold"
+					},
+					{
+						"amount": 15,
+						"name": "fire"
+					},
+					{
+						"amount": 15,
+						"name": "physical",
+						"note": "except bludgeoning"
 					}
 				]
 			}
@@ -58277,6 +58308,11 @@
 			"name": "Wyrmwraith",
 			"source": "B3",
 			"page": 296,
+			"otherSources": {
+				"Originally": [
+					"AoA6|84"
+				]
+			},
 			"level": 17,
 			"traits": [
 				"rare",

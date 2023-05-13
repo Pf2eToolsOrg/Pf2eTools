@@ -7560,6 +7560,115 @@
 				"An attempt to Approach Duneshadow is a slow and deliberate activity that takes 1 hour to perform, during which each PC attempts a skill check chosen from the following options: {@skill Acrobatics} or {@skill Athletics} DC 37 (to approach quickly via a shortcut), {@skill Deception} DC 38 (to trick Duneshadow into evading pursuit in the wrong direction), {@skill Nature} DC 35 (to keep Duneshadow calm and appear non-threatening), {@skill Performance} DC 34 (to intrigue Duneshadow with calming music), or {@skill Stealth} DC 36 (to approach undetected). {@skill Lore} skills can be substituted for any of these skills, reducing the DC by 2.",
 				"To reach Duneshadow, the party must successfully Approach four times. Critical successes count as two successes, and critical failures negate one success. If this reduces the total to two or fewer, Duneshadow runs off and the PCs must Scout for his location all over again."
 			]
+		},
+		{
+			"name": "Fight the Fire",
+			"source": "AoA6",
+			"page": 12,
+			"traits": [
+				"exploration",
+				"manipulate"
+			],
+			"entries": [
+				"You work to contain the fire. Attempt a DC 36 {@skill Acrobatics} check to move quickly through the building and extinguish burning areas opportunistically, a DC 38 {@skill Athletics} check to remove debris to prevent the spread of fire or haul buckets of water or sand to extinguish flames, or a DC 40 {@skill Diplomacy} or {@skill Intimidation} check to organize bystanders into helping fight the fire.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You make significant progress, allowing 1d6 citizens to escape to safety on their own, and no citizens still trapped in the building perish at the end of the phase. Any checks to Rescue Citizens for the remainder of this phase gain a +2 circumstance bonus. Increase the number of phases remaining before the building collapses by 1.",
+						"Success": "You curtail flames in areas where citizens are still trapped. No citizens still trapped in the building perish at the end of the phase. Any checks to Rescue Citizens for the remainder of this phase gain a +1 circumstance bonus.",
+						"Failure": "You take {@damage 4d6} fire damage.",
+						"Critical Failure": "Your attempts to Fight the Fire accidentally spread the flames instead. You take {@damage 8d6} fire damage. Reduce the number of phases remaining before the building collapses by 1."
+					}
+				}
+			]
+		},
+		{
+			"name": "Rescue Citizens",
+			"source": "AoA6",
+			"page": 12,
+			"traits": [
+				"exploration",
+				"move"
+			],
+			"entries": [
+				"You focus your efforts on helping citizens escape or recover from wounds. Attempt a DC 36 {@skill Diplomacy} or {@skill Intimidation} check to direct citizens to safety, a DC 38 {@skill Medicine} check to treat injured survivors, or a DC 40 {@skill Society} check to know about unusual escape routes to safety from the building and the surrounding alleys.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your efforts are resoundingly successful. Roll {@dice 2d6}\u2014this is the number of citizens trapped in the building who you lead to safety or the number of citizens who succumbed during this or the previous phase who you've managed to nurse back to life from the brink of death, split any way you wish.",
+						"Success": "You rescue {@dice 1d6} citizens from the flames.",
+						"Failure": "You fail to rescue any citizens from the fire and take {@damage 2d6} fire damage.",
+						"Critical Failure": "You take {@damage 4d6} fire damage as a blast of fire and falling debris strikes you. For every 5 fire damage you take from this, one citizen still trapped in the building perishes."
+					}
+				}
+			]
+		},
+		{
+			"name": "Distract Guards",
+			"source": "AoA6",
+			"page": 33,
+			"traits": [
+				"exploration",
+				"manipulate",
+				"move"
+			],
+			"entries": [
+				"You attempt to distract a specific group of guards away from their patrol route or their post. You can do so by attempting a DC 41 {@skill Deception} check, or by using a spell effect, in which case you attempt a DC 41 {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} check (as appropriate) to determine success. Each attempt to Distract Guards takes a minute to play out\u2014from the initial distraction to the guard's reaction.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You significantly distract the guards away from their patrol area or post to an area in the citadel of your choice. The guards return to their original post after 1 hour has passed.",
+						"Success": "You distract the guards away from their patrol area or post to an area in the citadel of your choice. The guards return to their original post after 20 minutes have passed.",
+						"Failure": "You fail to distract the guards. Any attempt made in the next 10 minutes to distract the same guards takes a \u20132 penalty to the check.",
+						"Critical Failure": "As failure above, but the guards realize you're trying to distract them and escort you out of the building. If this is your third critical failure against that particular group of guards, the guard instead places you under arrest."
+					}
+				}
+			]
+		},
+		{
+			"name": "Investigate Chamber",
+			"source": "AoA6",
+			"page": 33,
+			"traits": [
+				"exploration",
+				"manipulate",
+				"move"
+			],
+			"entries": [
+				"You take 10 minutes to investigate a specific room in the Golden Citadel to learn any information about it. Guards won't normally be annoyed by this if you investigate a public area, but if they see you investigating a private area they will attempt to escort you out before you can complete the investigation. Attempt a DC 36 {@skill Perception} check to determine your level of success.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You learn the room's read-aloud text, basic information, and any secret information.",
+						"Success": "You learn the room's read-aloud text and basic information.",
+						"Failure": "You fail to learn anything about the room other than its read-aloud text.",
+						"Critical Failure": "As failure above, but any guards who can observe you notice suspicious activity and attempt to escort you out of the area, either to the council chamber (area {@b C1}) or out of the building entirely."
+					}
+				}
+			]
+		},
+		{
+			"name": "Convince Mengkare",
+			"source": "AoA6",
+			"page": 46,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"mental"
+			],
+			"entries": [
+				"You spend several minutes debating with the gold dragon Mengkare and have presented a piece of information that could potentially raise his Doubt score and cause him to reconsider his plans to sacrifice the citizens of Promise. Select one of the key skills associated with the argument you made, and attempt a check with that skill\u2014the required DC depends on the skill used, as indicated in the Arguments against Glory section below.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You increase Mengkare's Doubt by 2.",
+						"Success": "You increase Mengkare's Doubt by 1.",
+						"Failure": "You fail to increase Mengkare's Doubt.",
+						"Critical Failure": "You undermine your argument. Reduce Mengkare's Doubt by 1."
+					}
+				}
+			]
 		}
 	]
 }
