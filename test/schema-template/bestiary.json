@@ -27,6 +27,12 @@
 					"name": {
 						"type": "string"
 					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
 					"page": {
 						"type": "integer",
 						"exclusiveMinimum": 0
@@ -311,7 +317,7 @@
 								},
 								"attack": {
 									"type": "integer",
-									"minimum": 10
+									"minimum": 0
 								},
 								"DC": {
 									"type": "integer",

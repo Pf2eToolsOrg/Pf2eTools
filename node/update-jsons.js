@@ -269,6 +269,11 @@ function updateFolder (folder) {
 							delete cr.defenses.ac.note;
 						}
 					}
+					if (cr.defenses && cr.defenses.savingThrows) {
+						if (typeof cr.defenses.savingThrows.abilities === "string") {
+							cr.defenses.savingThrows.abilities = [cr.defenses.savingThrows.abilities];
+						}
+					}
 					if (cr.defenses && cr.defenses.resistances) {
 						cr.defenses.resistances = cr.defenses.resistances.map(r => {
 							if (r.note) {
@@ -376,6 +381,11 @@ function updateFolder (folder) {
 						const mapAbility = (a) => {
 							if (a.entries && a.entries.length === 0) {
 								delete a.entries;
+							}
+							if (a.activity) {
+								if (a.activity.number === 1 && a.activity.unit === "free") {
+									delete a.activity.entry;
+								}
 							}
 							return a;
 						}
