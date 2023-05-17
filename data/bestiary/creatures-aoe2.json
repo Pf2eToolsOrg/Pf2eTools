@@ -285,7 +285,9 @@
 			"defenses": {
 				"ac": {
 					"std": 22,
-					"note": " (with mage armor)"
+					"notes": [
+						"with {@spell mage armor}"
+					]
 				},
 				"savingThrows": {
 					"fort": {
@@ -2264,7 +2266,16 @@
 						},
 						"requirements": "The Skinsaw seamer is currently grappling a creature",
 						"entries": [
-							"The seamer stitches a piece of cloth to the creature's arm, face, or leg, potentially hindering it. The creature must attempt a DC 26 Reflex saving throw; if the seamer has already successfully used their Flay ability against the creature within the past minute, the creature's save result is one degree of success worse. Critical Success The creature is unaffected. Success The creature takes {@damage 1d4} piercing damage. Failure The creature is {@condition clumsy|CRB|clumsy 1}, {@condition dazzled}, {@condition enfeebled|CRB|enfeebled 1}, or {@condition flat-footed} (seamer's choice). This effect lasts until the creature spends a single action to tear out the stitching, which deals {@damage 1d6} piercing damage to it. Critical Failure The creature is {@condition clumsy|CRB|clumsy 2}, {@condition blinded}, {@condition enfeebled|CRB|enfeebled 2}, or {@condition flat-footed} (seamer's choice). This effect lasts until the creature spends 2 actions to tear out the stitching, which deals {@damage 2d6} piercing damage to it."
+							"The seamer stitches a piece of cloth to the creature's arm, face, or leg, potentially hindering it. The creature must attempt a DC 26 Reflex saving throw; if the seamer has already successfully used their Flay ability against the creature within the past minute, the creature's save result is one degree of success worse.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 1d4} piercing damage.",
+									"Failure": "The creature is {@condition clumsy|CRB|clumsy 1}, {@condition dazzled}, {@condition enfeebled|CRB|enfeebled 1}, or {@condition flat-footed} (seamer's choice). This effect lasts until the creature spends a single action to tear out the stitching, which deals {@damage 1d6} piercing damage to it.",
+									"Critical Failure": "The creature is {@condition clumsy|CRB|clumsy 2}, {@condition blinded}, {@condition enfeebled|CRB|enfeebled 2}, or {@condition flat-footed} (seamer's choice). This effect lasts until the creature spends 2 actions to tear out the stitching, which deals {@damage 2d6} piercing damage to it."
+								}
+							}
 						],
 						"name": "Quick Stitch"
 					}

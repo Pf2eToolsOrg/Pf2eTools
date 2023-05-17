@@ -756,8 +756,10 @@ class Converter {
 				} else {
 					rendered.split(", ").forEach(senseStr => {
 						const {range, rest} = this._parseRange_parseRangeStr(senseStr);
-						if (rest === "" && range.unit !== "unknown") senses.last().range = range;
-						else {
+
+						if (rest === "" && range.unit !== "unknown") {
+							Object.assign(senses.last(), range)
+						} else {
 							const name = range.unit === "unknown" ? senseStr : rest || senseStr;
 							const sense = {name, range: range.unit === "unknown" ? undefined : range};
 							senses.push(sense);

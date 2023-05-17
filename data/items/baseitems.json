@@ -600,6 +600,232 @@
 			}
 		},
 		{
+			"name": "Bow Staff",
+			"source": "TV",
+			"page": 31,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"combination"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The bow staff is a whipstaff with a retracting spool of wire inside a metal cap on one end and a hooked protrusion on the other. A wielder trained in the weapon's use can quickly spool and attach or detach the wire to transition the weapon between bow and staff functionality."
+			],
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Bow",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 0,
+				"hands": "1+",
+				"range": 80,
+				"ammunition": "arrow (10)",
+				"traits": [
+					"deadly <d8>",
+					"monk"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Club",
+				"hands": 2,
+				"damage": "1d6",
+				"damageType": "B",
+				"traits": [
+					"finesse",
+					"monk",
+					"parry",
+					"sweep"
+				]
+			}
+		},
+		{
+			"name": "Mikazuki",
+			"source": "TV",
+			"page": 31,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"combination"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"The mikazuki combines a sansetsukon with a thin length of metal string and several locking mechanisms built into the joints, allowing it to be quickly locked into configuration as a bow."
+			],
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Bow",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 70,
+				"hands": "1+",
+				"ammunition": "bolt (10)",
+				"traits": [
+					"monk",
+					"propulsive"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Flail",
+				"hands": 2,
+				"damage": "1d6",
+				"damageType": "B",
+				"traits": [
+					"backswing",
+					"disarm",
+					"monk",
+					"parry"
+				]
+			}
+		},
+		{
+			"name": "Lancer",
+			"source": "TV",
+			"page": 31,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"combination"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This lance has a heavy grip with two parallel crossbow fixtures built into it, making it a useful weapon for combats who prefer to keep their distance at all times."
+			],
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Bow",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 2,
+				"range": 60,
+				"ammunition": "bolt (10)",
+				"traits": [
+					"capacity <2>"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Spear",
+				"damage": "1d6",
+				"damageType": "P",
+				"traits": [
+					"critical fusion",
+					"reach"
+				]
+			}
+		},
+		{
+			"name": "Wrecker",
+			"source": "TV",
+			"page": 31,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"combination"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"The wrecker combines a dwarven dorndergar with a heavy, gear-reinforced arm cover that allows it to be fired like an oversized sling, then retrieved and reloaded by manually activating a clockwork spool. A wrecker must be loaded to be switched from its ranged configuration to its melee configuration."
+			],
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Sling",
+				"damage": "1d6",
+				"damageType": "B",
+				"reload": 1,
+				"range": 20,
+				"traits": [
+					"dwarf",
+					"ranged trip",
+					"razing"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Flail",
+				"damage": "1d8",
+				"damageType": "B",
+				"traits": [
+					"dwarf",
+					"razing",
+					"reach"
+				]
+			}
+		},
+		{
+			"name": "Crescent Cross",
+			"source": "TV",
+			"page": 31,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"combination"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A crescent cross combines a small scizore with an arm-mounted crossbow apparatus that can hold up to three bolts at a time."
+			],
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Bow",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "rounds (10)|G&G|rounds",
+				"traits": [
+					"capacity <3>",
+					"parry"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Knife",
+				"damage": "1d4",
+				"damageType": "S",
+				"traits": [
+					"critical fusion",
+					"parry"
+				]
+			}
+		},
+		{
 			"name": "Triggerbrand",
 			"source": "LOIL",
 			"page": 107,

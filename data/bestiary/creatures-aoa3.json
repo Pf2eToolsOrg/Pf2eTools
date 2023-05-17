@@ -1,121 +1,252 @@
 {
 	"creature": [
 		{
-			"name": "Augur",
-			"source": "AoA3",
-			"page": 82,
-			"level": 1,
+			"name": "Jaggaki",
+			"source": "AoA2",
+			"page": 52,
+			"level": 13,
 			"traits": [
 				"uncommon",
-				"le",
-				"tiny",
-				"fiend",
-				"velstrac"
+				"ne",
+				"large",
+				"undead"
 			],
 			"perception": {
-				"std": 8
+				"std": 22
 			},
 			"senses": [
 				{
 					"name": "darkvision"
-				},
-				{
-					"name": "painsight"
 				}
 			],
 			"languages": {
 				"languages": [
 					"common",
-					"infernal",
-					"shadowtongue (can't"
+					"jotun",
+					"necril"
 				]
 			},
 			"skills": {
 				"acrobatics": {
-					"std": 8
+					"std": 19
 				},
-				"deception": {
-					"std": 6
+				"arcana": {
+					"std": 27
+				},
+				"athletics": {
+					"std": 25
 				},
 				"intimidation": {
-					"std": 7
-				},
-				"religion": {
-					"std": 4
+					"std": 23
 				},
 				"stealth": {
-					"std": 8
-				},
-				"torture lore": {
-					"std": 7
+					"std": 21,
+					"in rocky terrain": 25
 				}
 			},
 			"abilityMods": {
-				"str": -1,
-				"dex": 3,
-				"con": 1,
-				"int": 2,
-				"wis": 1,
-				"cha": -1
+				"str": 6,
+				"dex": 2,
+				"con": 4,
+				"int": 5,
+				"wis": 3,
+				"cha": 4
+			},
+			"items": [
+				"+1 striking greater staff of necromancy"
+			],
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 21
+					},
+					"will": {
+						"std": 22
+					},
+					"abilities": [
+						"+1 status to all saves vs. positive"
+					]
+				},
+				"hp": [
+					{
+						"hp": 200,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 20
+					},
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except magic bludgeoning"
+					}
+				]
 			},
 			"speed": {
-				"walk": 20,
-				"fly": 40
+				"walk": 35
 			},
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "blade",
-					"attack": 8,
 					"traits": [
-						"agile",
-						"finesse",
-						"versatile <p>"
+						"two-hand <d8>"
 					],
-					"damage": "{@dice 1d4-1} slashing plus {@damage 1d4} {@condition persistent damage||persistent bleed}",
-					"types": [
-						"persistent",
-						"slashing"
-					]
+					"name": "staff",
+					"attack": 26,
+					"damage": "{@damage 2d4+12} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "hand",
+					"attack": 25,
+					"damage": "{@damage 4d8} negative plus paralyzing touch"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"brutal",
+						"range increment <120 feet>"
+					],
+					"name": "rock",
+					"attack": 25,
+					"damage": "{@damage 2d6+12} bludgeoning"
 				}
 			],
 			"spellcasting": [
 				{
-					"type": "Innate",
-					"tradition": "divine",
-					"DC": 17,
+					"tradition": "arcane",
+					"type": "Prepared",
+					"DC": 34,
+					"attack": 26,
 					"entry": {
 						"0": {
-							"level": 1,
+							"level": 7,
 							"spells": [
 								{
+									"name": "acid splash"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
 									"name": "mage hand"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
 								}
 							]
 						},
 						"1": {
 							"spells": [
 								{
-									"name": "harm",
-									"amount": 3
+									"name": "grim tendrils"
+								},
+								{
+									"name": "ray of enfeeblement",
+									"amount": 2
 								}
 							]
 						},
 						"2": {
 							"spells": [
 								{
-									"name": "augury",
-									"amount": 2
+									"name": "magic missile"
+								},
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "telekinetic maneuver"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "paralyze"
+								},
+								{
+									"name": "slow"
 								}
 							]
 						},
 						"4": {
 							"spells": [
 								{
-									"name": "read omens",
-									"notes": [
-										"once per week"
-									]
+									"name": "fly"
+								},
+								{
+									"name": "lightning bolt"
+								},
+								{
+									"name": "phantasmal killer"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "black tentacles"
+								},
+								{
+									"name": "cloudkill"
+								},
+								{
+									"name": "fireball"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "chain lightning"
+								},
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "flesh to stone"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "cone of cold"
+								},
+								{
+									"name": "eclipse burst"
 								}
 							]
 						}
@@ -123,106 +254,73 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+4, {@skill Stealth} +8, {@skill Lore||Torture Lore} +7 Str \u20131, Dex +3, Con +1, Int +2, Wis +1, Cha \u20131."
-						],
-						"name": "Religion"
-					},
-					{
-						"traits": [
-							"divination",
-							"divine"
-						],
-						"entries": [
-							"A velstrac automatically knows whether a creature it sees has any of the {@condition doomed}, {@condition dying}, and {@condition wounded} conditions, as well as the value of those conditions."
-						],
-						"name": "Painsight"
-					}
-				],
 				"mid": [
 					{
-						"traits": [
-							"aura",
-							"divine",
-							"enchantment",
-							"fear",
-							"mental",
-							"visual"
-						],
-						"entries": [
-							"30 feet. When a creature ends its turn in the aura, it feels the sharp barbs of the augur's blades on its skin. The creature must succeed at a DC 17 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
-						],
-						"name": "Unnerving Gaze"
+						"name": "Catch Rock",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
 					{
+						"name": "Bones of Stone",
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
 						"traits": [
-							"concentrate",
-							"divine",
-							"enchantment",
-							"fear",
-							"mental",
-							"visual"
+							"arcane",
+							"earth",
+							"necromancy"
 						],
-						"entries": [
-							"The augur stares at a creature it can see within 30 feet. The target must immediately attempt a Will save against the augur's unnerving gaze. After attempting this save, the creature is then temporarily immune until the start of the augur's next turn."
-						],
-						"name": "Focus Gaze"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
+						"requirements": "The target is standing on or adjacent to a stone surface.",
+						"frequency": {
+							"number": 1,
+							"unit": "round"
 						},
 						"entries": [
-							"The augur Flies or {@action Stride||Strides}, whirling as it moves. The augur deals the damage of its blade {@action Strike} to each creature whose space it enters (DC 16 basic Reflex save). Each creature is affected only once, even if the augur moves through its space multiple times."
-						],
-						"name": "Whirling Slice"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 17
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 4
+							"Jaggaki calls upon unquiet spirits within the land, causing a giant skeletal arm made of jagged stone to reach out of a stone surface adjacent to a creature within 60 feet. Jaggaki makes a hand {@action Strike} against the target via this stone arm rather than using his own hand. If the {@action Strike} hits, it deals {@dice 4d6} additional bludgeoning damage."
+						]
 					},
-					"ref": {
-						"std": 10
-					},
-					"will": {
-						"std": 7
-					}
-				},
-				"hp": [
 					{
-						"hp": 14,
-						"abilities": [
-							"{@ability regeneration} 2 (deactivated by good or silver)"
+						"name": "Drain Phylactery",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"Jaggaki taps into his phylactery's power to cast any arcane spell up to the highest level he can cast, even if the spell being cast is not one of his prepared spells. His phylactery doesn't need to be present for him to use this ability."
+						]
+					},
+					{
+						"name": "Paralyzing Touch",
+						"traits": [
+							"arcane",
+							"curse",
+							"incapacitation",
+							"necromancy"
+						],
+						"entries": [
+							"A creature damaged by Jaggaki's hand {@action Strike} must succeed at a DC 29 Fortitude save. The creature becomes {@condition paralyzed} for 1 round on a failure. On a critical failure, the creature is {@condition paralyzed} permanently, falls {@condition prone}, and seems dead. A DC 25 {@skill Medicine} check reveals the victim is alive."
+						]
+					},
+					{
+						"name": "Steady Spellcasting",
+						"entries": [
+							"If another creature's reaction would disrupt Jaggaki's spellcasting action, Jaggaki attempts a DC {@flatDC 15} flat check. If he succeeds, his action isn't disrupted."
 						]
 					}
-				],
-				"weaknesses": [
-					{
-						"amount": 5,
-						"name": "good"
-					},
-					{
-						"amount": 5,
-						"name": "silver"
-					}
 				]
-			},
-			"hasImages": true
+			}
 		},
 		{
 			"name": "Barushak Il-varashma",
@@ -458,7 +556,7 @@
 					}
 				},
 				{
-					"name": "Wizard School",
+					"name": "Wizard School Spells",
 					"type": "Focus",
 					"DC": 22,
 					"fp": 2,
@@ -667,15 +765,9 @@
 							"mental"
 						],
 						"entries": [
-							"The blood boar lets forth a hair-raising squeal. Each creature within 30 feet must succeed at a DC 23 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure). If the blood boar uses Terrifying Squeal on the same turn after using."
+							"The blood boar lets forth a hair-raising squeal. Each creature within 30 feet must succeed at a DC 23 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure). If the blood boar uses Terrifying Squeal on the same turn after using Chase Down, the Will save DC is instead 25."
 						],
 						"name": "Terrifying Squeal"
-					},
-					{
-						"entries": [
-							"Will save DC is instead 25."
-						],
-						"name": "Chase Down, the"
 					}
 				]
 			},
@@ -697,204 +789,6 @@
 				"hp": [
 					{
 						"hp": 98
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Evangelist",
-			"source": "AoA3",
-			"page": 83,
-			"level": 6,
-			"traits": [
-				"uncommon",
-				"le",
-				"medium",
-				"fiend",
-				"velstrac"
-			],
-			"perception": {
-				"std": 13
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"name": "painsight"
-				}
-			],
-			"languages": {
-				"languages": [
-					"common",
-					"infernal",
-					"shadowtongue"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 13
-				},
-				"athletics": {
-					"std": 15
-				},
-				"crafting": {
-					"std": 10
-				},
-				"intimidation": {
-					"std": 15
-				},
-				"religion": {
-					"std": 11
-				},
-				"torture lore": {
-					"std": 12
-				}
-			},
-			"abilityMods": {
-				"str": 4,
-				"dex": 3,
-				"con": 2,
-				"int": 0,
-				"wis": 1,
-				"cha": 1
-			},
-			"speed": {
-				"walk": 25
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "chain",
-					"attack": 17,
-					"traits": [
-						"disarm",
-						"reach <10 feet>",
-						"trip"
-					],
-					"effects": [
-						"impaling chain"
-					],
-					"damage": "{@damage 2d8+7} piercing plus {@damage 1d6} {@condition persistent damage||persistent bleed} and impaling chain",
-					"types": [
-						"persistent",
-						"piercing"
-					]
-				}
-			],
-			"abilities": {
-				"top": [
-					{
-						"traits": [
-							"divination",
-							"divine"
-						],
-						"entries": [
-							"As augur (page 82)."
-						],
-						"name": "Painsight"
-					}
-				],
-				"mid": [
-					{
-						"traits": [
-							"aura",
-							"divine",
-							"enchantment",
-							"mental",
-							"visual"
-						],
-						"entries": [
-							"30 feet. When a creature ends its turn in the aura, it sees the face of a departed loved one in place of the evangelist's face. The creature must succeed at a DC 21 Will save or become {@condition frightened|CRB|frightened 2} ({@condition frightened|CRB|frightened 3} on a critical failure)."
-						],
-						"name": "Unnerving Gaze"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"name": "Attack of Opportunity",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				],
-				"bot": [
-					{
-						"traits": [
-							"divine",
-							"transmutation"
-						],
-						"entries": [
-							"Chains in the evangelist's vicinity sprout barbs and writhe menacingly. The evangelist can make chain {@action Strike||Strikes} against any creature that is adjacent to an unattended chain within 20 feet, in addition to within the reach of its own chain {@action Strike}."
-						],
-						"name": "Animate Chains"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"concentrate",
-							"divine",
-							"enchantment",
-							"fear",
-							"mental",
-							"visual"
-						],
-						"entries": [
-							"As augur (page 82). In addition, if the creature was already {@condition frightened}, on a failed save, the evangelist is {@condition concealed} from the creature for as long as the creature remains {@condition frightened}."
-						],
-						"name": "Focus Gaze"
-					},
-					{
-						"entries": [
-							"When the evangelist critically hits with a chain {@action Strike}, the target is impaled and anchored in place, becoming {@condition grabbed} by the chain. It's unable to recover from {@condition persistent damage||persistent bleed damage} until it gets free ({@action Escape} DC 25)."
-						],
-						"name": "Impaling Chain"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 24
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 15
-					},
-					"ref": {
-						"std": 14
-					},
-					"will": {
-						"std": 11
-					},
-					"abilities": [
-						"+1 status to all saves vs. magic"
-					]
-				},
-				"hp": [
-					{
-						"hp": 90,
-						"abilities": [
-							"{@ability regeneration} 10 (deactivated by good or silver)"
-						]
-					}
-				],
-				"immunities": [
-					"cold"
-				],
-				"weaknesses": [
-					{
-						"amount": 10,
-						"name": "good"
-					},
-					{
-						"amount": 10,
-						"name": "silver"
 					}
 				]
 			},
@@ -965,7 +859,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@damage 2d8+9} slashing plus",
+					"damage": "{@damage 2d8+9} slashing plus Grab and paralysis",
 					"types": [
 						"slashing"
 					]
@@ -995,15 +889,9 @@
 						],
 						"requirements": "The ghastly bear is adjacent to the corpse of a creature that died within the last hour.",
 						"entries": [
-							"The ghastly bear devours a chunk of the corpse and regains {@dice 6d6}."
+							"The ghastly bear devours a chunk of the corpse and regains {@dice 6d6} Hit Points. It can regain Hit Points from any given corpse only once."
 						],
 						"name": "Consume Flesh"
-					},
-					{
-						"entries": [
-							"It can regain Hit Points from any given corpse only once."
-						],
-						"name": "Hit Points."
 					},
 					{
 						"type": "affliction",
@@ -1089,7 +977,11 @@
 					}
 				],
 				"immunities": [
-					"death effects"
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
 				]
 			}
 		},
@@ -1355,244 +1247,6 @@
 			}
 		},
 		{
-			"name": "Interlocutor",
-			"source": "AoA3",
-			"page": 84,
-			"level": 12,
-			"traits": [
-				"uncommon",
-				"le",
-				"large",
-				"fiend",
-				"velstrac"
-			],
-			"perception": {
-				"std": 24
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				},
-				{
-					"name": "painsight"
-				}
-			],
-			"languages": {
-				"languages": [
-					"common",
-					"infernal",
-					"shadowtongue"
-				]
-			},
-			"skills": {
-				"athletics": {
-					"std": 25
-				},
-				"crafting": {
-					"std": 22,
-					"for sculpting flesh": 24
-				},
-				"intimidation": {
-					"std": 25
-				},
-				"medicine": {
-					"std": 26
-				},
-				"religion": {
-					"std": 22
-				},
-				"stealth": {
-					"std": 19
-				},
-				"torture lore": {
-					"std": 20
-				}
-			},
-			"abilityMods": {
-				"str": 7,
-				"dex": 3,
-				"con": 5,
-				"int": 2,
-				"wis": 6,
-				"cha": 5
-			},
-			"speed": {
-				"walk": 40
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 25,
-					"traits": [
-						"deadly <2d10>",
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 3d10+13} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}",
-					"types": [
-						"persistent",
-						"slashing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "divine",
-					"DC": 33,
-					"entry": {
-						"0": {
-							"level": 6,
-							"spells": [
-								{
-									"name": "stabilize"
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "heal",
-									"amount": 2
-								},
-								{
-									"name": "restoration",
-									"amount": 2
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "breath of life"
-								}
-							]
-						},
-						"7": {
-							"spells": [
-								{
-									"name": "plane shift",
-									"notes": [
-										"self only",
-										"to the Material or Shadow Plane only"
-									]
-								}
-							]
-						}
-					}
-				}
-			],
-			"abilities": {
-				"top": [
-					{
-						"traits": [
-							"divination",
-							"divine"
-						],
-						"entries": [
-							"As augur (page 82)."
-						],
-						"name": "Painsight"
-					}
-				],
-				"mid": [
-					{
-						"traits": [
-							"aura",
-							"divine",
-							"enchantment",
-							"mental",
-							"visual"
-						],
-						"entries": [
-							"30 feet. When a creature ends its turn in the aura, it sees pieces of its own body amid the interlocutor's form. The creature must succeed at a DC 29 Will save or become {@condition stunned|CRB|stunned 1}."
-						],
-						"name": "Unnerving Gaze"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"name": "Attack of Opportunity",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"concentrate",
-							"divine",
-							"enchantment",
-							"mental",
-							"visual"
-						],
-						"entries": [
-							"As augur (page 82). Also, if the creature was already {@condition stunned}, on a failed save it feels its muscles and organs twitch and writhe, causing it to be {@condition clumsy|CRB|clumsy 2} for 1 minute."
-						],
-						"name": "Focus Gaze"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"This functions as the Rend ability, dealing claw damage. In addition, if the target is a living creature with organs and muscle, the interlocutor opens a precise wound. Until the creature is restored to its maximum Hit Points, closing the wound, {@action Strike||Strikes} against the creature deal {@dice 1d6} extra precision damage."
-						],
-						"name": "Surgical Rend"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 33
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 23
-					},
-					"ref": {
-						"std": 21
-					},
-					"will": {
-						"std": 26
-					},
-					"abilities": [
-						"+1 status to all saves vs. magic"
-					]
-				},
-				"hp": [
-					{
-						"hp": 215,
-						"abilities": [
-							"regeneration 20 (deactivated by good or silver)"
-						]
-					}
-				],
-				"immunities": [
-					"cold"
-				],
-				"weaknesses": [
-					{
-						"name": "good",
-						"amount": 15
-					},
-					{
-						"name": "silver",
-						"amount": 15
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
 			"name": "Kalavakus",
 			"source": "AoA3",
 			"page": 77,
@@ -1788,7 +1442,7 @@
 								"entries": {
 									"Success": "The target avoids being enslaved and is temporarily immune for 24 hours.",
 									"Failure": "The target is enslaved and is {@condition enfeebled|CRB|enfeebled 2} for 24 hours or until the slaver demon is slain, whichever comes first.",
-									"Critical Failure": "As failure, and the target also suffers the effects of a failed saving throw against dominate."
+									"Critical Failure": "As failure, and the target also suffers the effects of a failed saving throw against {@spell dominate}."
 								}
 							}
 						],
@@ -1809,7 +1463,10 @@
 					},
 					"will": {
 						"std": 19
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -2134,18 +1791,10 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"entries": [
-							"+11, {@skill Thievery} +11 Str +4, Dex +4, Con +3, Int +0, Wis +2, Cha \u20131 Items leather armor, scimitar, shortbow (20 arrows)"
-						],
-						"name": "Survival"
-					}
-				],
 				"mid": [
 					{
 						"entries": [
-							"The mercenary sailor is not {@condition flat-footed} while Balancing or Climbing while on a watercraft."
+							"The mercenary sailor is not {@condition flat-footed} while {@action Balance||Balancing} or {@action Climb||Climbing} while on a watercraft."
 						],
 						"name": "Shipboard Grace"
 					}
@@ -2838,269 +2487,6 @@
 			}
 		},
 		{
-			"name": "Osyluth",
-			"source": "AoA3",
-			"page": 78,
-			"level": 9,
-			"traits": [
-				"le",
-				"large",
-				"devil",
-				"fiend"
-			],
-			"perception": {
-				"std": 17
-			},
-			"senses": [
-				{
-					"name": "greater darkvision"
-				}
-			],
-			"languages": {
-				"languages": [
-					"celestial",
-					"draconic",
-					"infernal"
-				],
-				"abilities": [
-					"telepathy 100 feet"
-				]
-			},
-			"skills": {
-				"arcana": {
-					"std": 18
-				},
-				"deception": {
-					"std": 19
-				},
-				"intimidation": {
-					"std": 21
-				},
-				"religion": {
-					"std": 15
-				},
-				"stealth": {
-					"std": 20
-				}
-			},
-			"abilityMods": {
-				"str": 5,
-				"dex": 5,
-				"con": 4,
-				"int": 3,
-				"wis": 2,
-				"cha": 4
-			},
-			"speed": {
-				"walk": 35,
-				"fly": 30
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 20,
-					"damage": "{@damage 2d10+11} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 20,
-					"traits": [
-						"agile",
-						"reach <10 feet>"
-					],
-					"damage": "{@damage 2d6+11} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "stinger",
-					"attack": 21,
-					"traits": [
-						"reach <15 feet>"
-					],
-					"effects": [
-						"bone devil venom"
-					],
-					"damage": "{@damage 1d10+11} piercing plus bone devil venom",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "bone shard",
-					"attack": 20,
-					"traits": [
-						"range increment <30 feet>"
-					],
-					"damage": "{@damage 2d6+8} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "divine",
-					"DC": 25,
-					"entry": {
-						"2": {
-							"spells": [
-								{
-									"name": "invisibility",
-									"amount": "at will",
-									"notes": [
-										"self only"
-									]
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "dimension door",
-									"amount": "at will"
-								},
-								{
-									"name": "dimensional anchor",
-									"amount": 2
-								},
-								{
-									"name": "discern lies"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "dimension door"
-								},
-								{
-									"name": "phantom pain"
-								}
-							]
-						}
-					}
-				}
-			],
-			"rituals": [
-				{
-					"tradition": "divine",
-					"DC": 25,
-					"rituals": [
-						{
-							"name": "infernal pact"
-						}
-					]
-				}
-			],
-			"abilities": {
-				"bot": [
-					{
-						"type": "affliction",
-						"name": "Bone Devil Venom",
-						"traits": [
-							"poison"
-						],
-						"DC": 25,
-						"savingThrow": "Fortitude",
-						"maxDuration": "6 rounds",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@damage 2d6} poison damage, {@condition enfeebled|CRB|enfeebled 1}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 3,
-								"entry": "{@damage 3d6} poison damage, {@condition enfeebled|CRB|enfeebled 2}, and the creature takes a \u20134 status penalty to Will saves against attempts to {@action Coerce} it",
-								"duration": "1 hour"
-							}
-						]
-					},
-					{
-						"traits": [
-							"bone"
-						],
-						"entries": [
-							"devil can cast {@spell invisibility} on itself using only 1 action."
-						],
-						"name": "Quick Invisibility The"
-					},
-					{
-						"traits": [
-							"bone"
-						],
-						"entries": [
-							"devil deals an extra {@dice 2d6} damage whenever it hits an creature that has the {@condition enfeebled}, {@condition frightened}, or {@condition prone} condition with any of its {@action Strike||Strikes}."
-						],
-						"name": "Sadistic Strike A"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"The bone devil sweeps its tail in a 15-foot cone.",
-							"Each creature in the cone must succeed at a DC 26 Reflex save or be knocked {@condition prone}."
-						],
-						"name": "Tail Sweep"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 28
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 21
-					},
-					"ref": {
-						"std": 18
-					},
-					"will": {
-						"std": 15
-					}
-				},
-				"hp": [
-					{
-						"hp": 146
-					}
-				],
-				"immunities": [
-					"fire"
-				],
-				"weaknesses": [
-					{
-						"amount": 10,
-						"name": "good"
-					}
-				],
-				"resistances": [
-					{
-						"amount": 10,
-						"name": "physical"
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
 			"name": "Precentor",
 			"source": "AoA3",
 			"page": 85,
@@ -3172,7 +2558,8 @@
 			},
 			"speed": {
 				"walk": 30,
-				"fly": 30
+				"fly": 30,
+				"speedNote": "(from fly)"
 			},
 			"attacks": [
 				{
@@ -3197,19 +2584,41 @@
 					"tradition": "divine",
 					"DC": 38,
 					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "sound burst",
+									"amount": "at will"
+								},
+								{
+									"name": "synesthesia",
+									"amount": "at will"
+								}
+							]
+						},
 						"8": {
 							"spells": [
 								{
 									"name": "harm"
 								},
 								{
-									"name": "plane shift"
-								},
-								{
-									"name": "self only"
-								},
-								{
-									"name": "to the"
+									"name": "plane shift",
+									"amount": "at will",
+									"notes": [
+										"self only",
+										"to the Material or Shadow Plane only"
+									]
 								}
 							]
 						},
@@ -3219,6 +2628,28 @@
 									"name": "wail of the banshee"
 								}
 							]
+						},
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "fly"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							},
+							"8": {
+								"spells": [
+									{
+										"name": "detect magic"
+									},
+									{
+										"name": "mind blank"
+									}
+								]
+							}
 						}
 					}
 				}
@@ -3231,7 +2662,7 @@
 							"divine"
 						],
 						"entries": [
-							"As augur (page 82)."
+							"A velstrac automatically knows whether a creature it sees has any of the {@condition doomed}, {@condition dying}, and {@condition wounded} conditions, as well as the value of those conditions."
 						],
 						"name": "Painsight"
 					}
@@ -3252,12 +2683,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"Plane only); 5th sound burst (at will), synesthesia (at will); Cantrips (8th) daze, sigil; Constant (8th) detect magic, mind blank; (6th) fly, true seeing."
-						],
-						"name": "Material or Shadow"
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -3281,7 +2706,7 @@
 							"visual"
 						],
 						"entries": [
-							"As augur (page 82)",
+							"The precentor stares at a creature they can see within 30 feet. The target must immediately attempt a Will save against feel the blades. After attempting this save, the creature is then temporarily immune until the start of the precentor's next turn.",
 							"In addition, if the creature was already {@condition doomed}, on a failed save it sees the skin of its own body peel back, making it {@condition confused} for as long as it remains {@condition doomed}."
 						],
 						"name": "Focus Gaze"
@@ -3327,7 +2752,10 @@
 					},
 					"will": {
 						"std": 30
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -3463,15 +2891,9 @@
 							"number": 3
 						},
 						"entries": [
-							"The remnant of Barzillai stirs up and amplifies unsettled spirits in the area to create a single haunt of 6th level or lower at his present location. This haunt is permanent until it is disabled or the remnant."
+							"The remnant of Barzillai stirs up and amplifies unsettled spirits in the area to create a single haunt of 6th level or lower at his present location. This haunt is permanent until it is disabled or the remnant of Barzillai is destroyed."
 						],
 						"name": "Create Haunt"
-					},
-					{
-						"entries": [
-							"Barzillai is destroyed."
-						],
-						"name": "of"
 					}
 				]
 			},
@@ -3496,280 +2918,21 @@
 					}
 				],
 				"immunities": [
-					"poison",
-					"precision",
 					"death effects",
 					"disease",
-					"paralyzed"
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
 				],
 				"resistances": [
 					{
 						"amount": 8,
 						"name": "all damage",
 						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
-			"name": "Rusalka",
-			"source": "AoA3",
-			"page": 81,
-			"level": 12,
-			"traits": [
-				"ne",
-				"medium",
-				"aquatic",
-				"fey"
-			],
-			"perception": {
-				"std": 22
-			},
-			"senses": [
-				{
-					"name": "low-light vision"
-				}
-			],
-			"languages": {
-				"languages": [
-					"common",
-					"sylvan"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 21
-				},
-				"athletics": {
-					"std": 22
-				},
-				"deception": {
-					"std": 25
-				},
-				"diplomacy": {
-					"std": 21
-				},
-				"nature": {
-					"std": 21
-				},
-				"performance": {
-					"std": 23,
-					"to sing": 25
-				},
-				"stealth": {
-					"std": 25
-				}
-			},
-			"abilityMods": {
-				"str": 4,
-				"dex": 5,
-				"con": 3,
-				"int": 1,
-				"wis": 3,
-				"cha": 7
-			},
-			"speed": {
-				"abilities": [
-					"water walk"
-				],
-				"walk": 25,
-				"swim": 50
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "tresses",
-					"attack": 24,
-					"traits": [
-						"agile",
-						"finesse",
-						"reach <15 feet>"
-					],
-					"effects": [
-						"Improved Grab"
-					],
-					"damage": "{@damage 3d8+10} bludgeoning plus {@ability Improved Grab}",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"type": "Innate",
-					"tradition": "primal",
-					"DC": 35,
-					"entry": {
-						"2": {
-							"spells": [
-								{
-									"name": "invisibility",
-									"amount": "at will"
-								},
-								{
-									"name": "obscuring mist",
-									"amount": "at will"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "charm",
-									"amount": "at will"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "control water",
-									"amount": "at will"
-								},
-								{
-									"name": "summon elemental",
-									"notes": [
-										"living waterfall only"
-									]
-								}
-							]
-						},
-						"constant": {
-							"6": {
-								"spells": [
-									{
-										"name": "water walk"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"entries": [
-							"A rusalka is {@condition concealed} while underwater."
-						],
-						"name": "Blurred Form"
-					}
-				],
-				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"auditory",
-							"concentrate",
-							"enchantment",
-							"incapacitation",
-							"mental",
-							"primal"
-						],
-						"entries": [
-							"The rusalka cries out a compelling invitation. Each non-fey creature within a 300-foot emanation must attempt a DC 27 Will save. The effect lasts for 1 round, but if the rusalka uses Beckoning Call again on subsequent rounds, the duration extends by 1 round for all affected creatures.",
-							"Once a creature succeeds at any save against Beckoning Call, that creature is temporarily immune for 24 hours.",
-							{
-								"type": "successDegree",
-								"entries": {
-									"Success": "The creature is unaffected.",
-									"Failure": "The creature is {@condition fascinated} and must spend each of its actions to move closer to the rusalka, while avoiding obvious dangers. If a beckoned creature is adjacent to the rusalka, it stays still and doesn't act. If attacked by the rusalka, the creature is freed from captivation at the end of the rusalka's turn.",
-									"Critical Failure": "As failure, but if attacked by the rusalka, the creature can attempt a new save only at the start of its next turn, rather than being freed at the end of the rusalka's turn."
-								}
-							}
-						],
-						"name": "Beckoning Call"
 					},
 					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 2d8+10} bludgeoning, DC 32"
-						],
-						"name": "Constrict",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"entries": [
-							"A rusalka can have up to eight creatures {@condition grabbed} within their tresses at a time."
-						],
-						"name": "Entangling Tresses"
-					},
-					{
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"entries": [
-							"The rusalka attempts an {@skill Athletics} check and compares the result to each {@condition grabbed} creature's Fortitude DC. The rusalka moves each creature they succeed against up to 10 feet and each creature they critically succeed against up to 20 feet. This movement must all be within reach of its tresses."
-						],
-						"name": "Flowing Hair"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"emotion",
-							"enchantment",
-							"mental",
-							"primal"
-						],
-						"entries": [
-							"The rusalka touches a creature within 5 feet using their hand, stirring up memories of regret and shame. The target must attempt a DC 35 Will save.",
-							{
-								"type": "successDegree",
-								"entries": {
-									"Critical Success": "The target is unaffected.",
-									"Success": "The target is {@condition sickened|CRB|sickened 1}.",
-									"Failure": "The creature is {@condition sickened|CRB|sickened 1} and {@condition stunned|CRB|stunned 1}.",
-									"Critical Failure": "The creature is {@condition sickened|CRB|sickened 1} and {@condition stunned|CRB|stunned 1}, and it must use its first action on its next turn to {@action Strike} itself, automatically hitting."
-								}
-							}
-						],
-						"name": "Shameful Touch"
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 33
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 21
-					},
-					"ref": {
-						"std": 25
-					},
-					"will": {
-						"std": 21
-					}
-				},
-				"hp": [
-					{
-						"hp": 180
-					}
-				],
-				"weaknesses": [
-					{
-						"amount": 15,
-						"name": "cold iron"
-					}
-				],
-				"resistances": [
-					{
-						"amount": 10,
-						"name": "fire"
+						"name": "haunted form"
 					}
 				]
 			},
@@ -3874,7 +3037,7 @@
 				"top": [
 					{
 						"entries": [
-							"Rusty Mae adds earthbind, passwall, and spellwrack to her coven's spells."
+							"Rusty Mae adds {@spell earthbind}, {@spell passwall}, and {@spell spellwrack} to her coven's spells."
 						],
 						"name": "Coven"
 					}
@@ -3919,7 +3082,7 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"claw"
 						],
 						"name": "Rend",
@@ -3929,10 +3092,10 @@
 					},
 					{
 						"entries": [
-							"Mae's claws cause metal to rapidly rust and corrode. If she succeeds at a claws {@action Strike} or {@action Disarm} attempt, she deals {@dice 2d6} damage (doubled on a critical hit) to a metal item the target is wearing or holding, ignoring its Hardness, in addition to the damage she deals to the target with her claws. If she hits an unattended metal item, the item takes {@dice 2d6} damage automatically.",
-							"If a creature uses the Shield Block reaction with a metal shield against Rusty Mae's claw attack, the shield is automatically {@condition broken}, but no other item is affected on that attack."
+							"Rusty Mae's claws cause metal to rapidly rust and corrode. If she succeeds at a claws {@action Strike} or {@action Disarm} attempt, she deals {@dice 2d6} damage (doubled on a critical hit) to a metal item the target is wearing or holding, ignoring its Hardness, in addition to the damage she deals to the target with her claws. If she hits an unattended metal item, the item takes {@dice 2d6} damage automatically.",
+							"If a creature uses the {@action Shield Block} reaction with a metal shield against Rusty Mae's claw attack, the shield is automatically {@condition broken}, but no other item is affected on that attack."
 						],
-						"name": "Rust Rusty"
+						"name": "Rust"
 					}
 				]
 			},
@@ -4346,6 +3509,13 @@
 				"wis": 4,
 				"cha": 0
 			},
+			"items": [
+				"+1 striking composite longbow (40 arrows)",
+				"keys to manacles",
+				"+1 leather armor",
+				"good manacles",
+				"+1 pick"
+			],
 			"speed": {
 				"abilities": [
 					"swiftness"
@@ -4606,191 +3776,6 @@
 			}
 		},
 		{
-			"name": "Shadow Giant",
-			"source": "AoA3",
-			"page": 79,
-			"level": 13,
-			"traits": [
-				"le",
-				"large",
-				"giant",
-				"humanoid"
-			],
-			"perception": {
-				"std": 20
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				}
-			],
-			"languages": {
-				"languages": [
-					"jotun",
-					"shadowtongue"
-				]
-			},
-			"skills": {
-				"athletics": {
-					"std": 27
-				},
-				"intimidation": {
-					"std": 24
-				},
-				"stealth": {
-					"std": 21,
-					"to Hide in dim light": 23
-				}
-			},
-			"abilityMods": {
-				"str": 8,
-				"dex": 2,
-				"con": 5,
-				"int": 0,
-				"wis": 1,
-				"cha": 3
-			},
-			"items": [
-				"+1 breastplate",
-				"sack with 5 rocks",
-				"spiked chain"
-			],
-			"speed": {
-				"walk": 35
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "spiked chain",
-					"attack": 27,
-					"traits": [
-						"disarm",
-						"reach <10 feet>",
-						"trip"
-					],
-					"effects": [
-						"pall of shadow"
-					],
-					"damage": "{@damage 3d8+18} slashing plus pall of shadow",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "fist",
-					"attack": 27,
-					"traits": [
-						"agile",
-						"nonlethal",
-						"reach <10 feet>"
-					],
-					"effects": [
-						"pall of shadow"
-					],
-					"damage": "{@damage 3d8+18} bludgeoning plus pall of shadow",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "rock",
-					"attack": 27,
-					"traits": [
-						"brutal",
-						"range increment <120 feet>"
-					],
-					"damage": "{@damage 2d8+18} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"abilities": {
-				"mid": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"name": "Attack of Opportunity",
-						"generic": {
-							"tag": "ability"
-						}
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"name": "Catch Rock",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				],
-				"bot": [
-					{
-						"traits": [
-							"divine",
-							"necromancy"
-						],
-						"entries": [
-							"When a shadow giant hits with a melee attack, the target must succeed at a DC 30 Fortitude save or become {@condition drained|CRB|drained 1} and take a \u20131 status penalty to {@skill Perception} checks involving sight as long as they remain {@condition drained}. On a critical failure, this condition doesn't heal naturally and can be removed only with magic."
-						],
-						"name": "Pall of Shadow"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"divine",
-							"illusion"
-						],
-						"entries": [
-							"The shadow giant gains the effect of the {@spell blur} spell for 1 minute or until it is exposed to direct sunlight, whichever comes first."
-						],
-						"name": "Shadowcloak"
-					},
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"name": "Throw Rock",
-						"generic": {
-							"tag": "ability"
-						}
-					}
-				]
-			},
-			"defenses": {
-				"ac": {
-					"std": 33
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 25
-					},
-					"ref": {
-						"std": 20
-					},
-					"will": {
-						"std": 23
-					}
-				},
-				"hp": [
-					{
-						"hp": 275
-					}
-				]
-			},
-			"hasImages": true
-		},
-		{
 			"name": "Vaklish",
 			"source": "AoA3",
 			"page": 54,
@@ -4802,7 +3787,7 @@
 				"fiend",
 				"rakshasa"
 			],
-			"description": "Male raja rakshasa",
+			"description": "Male {@creature raja rakshasa}",
 			"perception": {
 				"std": 22
 			},
@@ -5027,14 +4012,16 @@
 			"abilities": {
 				"mid": [
 					{
+						"name": "Scoff at the Divine",
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
+						"trigger": "A creature within 30 feet casts a divine spell or uses a divine ability.",
+						"requirements": "Vaklish has an unexpended spell slot that can be used to cast {@spell dispel magic}.",
 						"entries": [
-							"As raja rakshasa."
-						],
-						"name": "Scoff at the Divine"
+							"Vaklish expends a spell slot that could be used to cast {@spell dispel magic} and attempts to counteract the triggering spell or ability. Vaklish can't Scoff at the Divine for {@dice 1d4} rounds."
+						]
 					}
 				],
 				"bot": [
@@ -5043,8 +4030,14 @@
 							"number": 1,
 							"unit": "action"
 						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
 						"entries": [
-							"As raja rakshasa."
+							"Vaklish takes on the appearance of any Medium humanoid. This doesn't change Vaklish's Speed or his attack and damage modifiers with his {@action Strike||Strikes} but might change the damage type his {@action Strike||Strikes} deal (typically to bludgeoning). He typically loses his fangs {@action Strike} unless the humanoid form has fangs or a similar unarmed attack."
 						],
 						"name": "Change Shape",
 						"generic": {
@@ -5056,11 +4049,16 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [
-							"As raja rakshasa, but DC 32."
+						"traits": [
+							"concentrate",
+							"enchantment",
+							"mental",
+							"occult"
 						],
-						"name": "Disturbing Vision",
-						"entries_as_xyz": "Ability not found: 'Disturbing Vision As raja rakshasa, but DC 32.' in Vaklish, p.54"
+						"entries": [
+							"Vaklish's eyes flash green as he projects a telepathic wave in a 30-foot emanation. All creatures in the area are assailed by a vision of evil decadence from one of Vaklish's past lives. Each non-evil creature in the area must succeed at a DC 32 Will save or become {@condition sickened 1} (and {@condition stunned 1} on a critical failure). The visions last {@dice 1d4} rounds, and while they do, Vaklish and all evil creatures in the area gain a +1 status bonus to all checks. Vaklish can use this ability again only once the previous visions end."
+						],
+						"name": "Disturbing Vision"
 					}
 				]
 			},

@@ -526,7 +526,7 @@
 			"hasImages": true
 		},
 		{
-			"name": "Arm Of Balance",
+			"name": "Arms of Balance",
 			"source": "FRP2",
 			"page": 33,
 			"level": 15,
@@ -715,7 +715,7 @@
 					},
 					{
 						"traits": [
-							" jivati rovat; fire"
+							"jivati rovat; fire"
 						],
 						"entries": [
 							"Jivati's breath ignites a fire in the spirit of each creature within 10 feet."
@@ -1651,7 +1651,7 @@
 					}
 				},
 				{
-					"name": "Bard Composition",
+					"name": "Bard Composition Spells",
 					"type": "Focus",
 					"DC": 34,
 					"fp": 3,
@@ -3029,7 +3029,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Monk Ki",
+					"name": "Monk Ki Spells",
 					"type": "Focus",
 					"DC": 38,
 					"fp": 3,
@@ -3847,7 +3847,7 @@
 					}
 				},
 				{
-					"name": "Druid Order",
+					"name": "Druid Order Spells",
 					"type": "Focus",
 					"DC": 41,
 					"fp": 2,
@@ -4373,7 +4373,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Monk Focus",
+					"name": "Monk Focus Spells",
 					"type": "Focus",
 					"DC": 34,
 					"fp": 3,
@@ -5797,7 +5797,7 @@
 					}
 				},
 				{
-					"name": "Bard Composition",
+					"name": "Bard Composition Spells",
 					"type": "Focus",
 					"DC": 42,
 					"fp": 2,
@@ -6676,7 +6676,7 @@
 					}
 				},
 				{
-					"name": "Sorcerer Bloodline",
+					"name": "Sorcerer Bloodline Spells",
 					"type": "Focus",
 					"DC": 35,
 					"fp": 3,
@@ -7806,7 +7806,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Focus",
+					"name": "Focus Spells",
 					"type": "Focus",
 					"DC": 30,
 					"fp": 3,
@@ -8032,7 +8032,16 @@
 						],
 						"requirements": "Troff is within reach of a creature that has taken cold damage since the end of Troff's last turn",
 						"entries": [
-							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy. Critical Success The creature is unaffected. Success The creature takes {@damage 2d4} {@condition persistent damage||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage||persistent cold damage} (allowing a new flat check to end it at DC 10). Failure As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
+							"Troff jabs a pressure point on the creature made vulnerable by cold. The creature must attempt a DC 31 Fortitude save as its skin freezes and its limbs turn sluggish and clammy.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 2d4} {@condition persistent damage||persistent cold damage} and a \u20135-foot status penalty to its Speeds until the {@condition persistent damage||persistent cold damage} ends. Dealing fire damage to the creature is an especially effective way to help end the {@condition persistent damage||persistent cold damage} (allowing a new flat check to end it at DC 10).",
+									"Failure": "As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot.",
+									"Critical Failure": "As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty."
+								}
+							}
 						],
 						"name": "Chattering Blow",
 						"entries_as_xyz": "Ability not found: 'Chattering Blow As success, but the damage is {@dice 4d4} and the penalty is \u201315-foot. Critical Failure As success, but the damage is {@dice 6d4} and the creature is {@condition immobilized} instead of taking a Speed penalty.' in Troff Frostknuckles, p.43"
@@ -8300,7 +8309,7 @@
 					}
 				},
 				{
-					"name": "Bard Composition",
+					"name": "Bard Composition Spells",
 					"type": "Focus",
 					"DC": 34,
 					"fp": 3,
@@ -8759,7 +8768,7 @@
 					}
 				},
 				{
-					"name": "Sorcerer Bloodline",
+					"name": "Sorcerer Bloodline Spells",
 					"type": "Focus",
 					"DC": 32,
 					"fp": 3,

@@ -126,7 +126,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Monk Ki",
+					"name": "Monk Ki Spells",
 					"type": "Focus",
 					"DC": 40,
 					"attack": 32,
@@ -3290,7 +3290,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Monk Ki",
+					"name": "Monk Ki Spells",
 					"type": "Focus",
 					"DC": 37,
 					"attack": 28,
@@ -3977,7 +3977,15 @@
 						],
 						"requirements": "The sanzuwu is in their fiery form",
 						"entries": [
-							"The sanzuwu spreads their wings, emitting a bright cascade of light in a 30-foot cone. Creatures in the cone must attempt a DC 33 Fortitude save. Success The creature is unaffected. Failure The creature is {@condition stunned|CRB|stunned 1}. Critical Failure The creature is {@condition stunned|CRB|stunned 2}."
+							"The sanzuwu spreads their wings, emitting a bright cascade of light in a 30-foot cone. Creatures in the cone must attempt a DC 33 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": "The creature is unaffected.",
+									"Failure": "The creature is {@condition stunned|CRB|stunned 1}.",
+									"Critical Failure": "The creature is {@condition stunned|CRB|stunned 2}."
+								}
+							}
 						],
 						"name": "Transfixing Sunbeam"
 					}

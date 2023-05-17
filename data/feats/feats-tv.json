@@ -1,73 +1,6 @@
 {
 	"feat": [
 		{
-			"name": "Ursine Avenger Form",
-			"source": "TV",
-			"page": 183,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"level": 2,
-			"traits": [
-				"archetype",
-				"artifact",
-				"morph",
-				"primal",
-				"transmutation"
-			],
-			"entries": [
-				"You draw the Ursine Avenger Hood over your head and its fur over your arms, assuming an ursine form that has traits of your original form as well as that of a bear. In your ursine form, you gain a jaws unarmed attack that deals {@damage 1d8} piercing damage and a claws unarmed attack that deals {@damage 1d6} slashing damage and has the {@trait agile} trait. Both unarmed attacks are in the brawling group. You lose the ability to speak complex sentences while transformed and can only communicate through grunts and gestures; this prevents you from using effects that require a shared or spoken language until you revert back to your non-hybrid form. You can use this action while transformed to remove the hood and return to your original form."
-			]
-		},
-		{
-			"name": "Senses of the Bear",
-			"source": "TV",
-			"page": 183,
-			"level": 4,
-			"traits": [
-				"archetype"
-			],
-			"entries": [
-				"While in ursine form, you gain low-light vision and scent (imprecise) 30 feet. If you already had low-light vision, you instead gain darkvision."
-			]
-		},
-		{
-			"name": "Bear Hug",
-			"source": "TV",
-			"page": 183,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"level": 6,
-			"traits": [
-				"archetype"
-			],
-			"requirements": "Your last action was a successful claw {@action Strike}.",
-			"entries": [
-				"You snatch at your opponent with your claws, pulling them close in a ferocious bear hug. You make another claw {@action Strike} against the same target. If this {@action Strike} hits, the target is also {@condition grabbed}."
-			]
-		},
-		{
-			"name": "Call Ursine Ally",
-			"source": "TV",
-			"page": 184,
-			"level": 8,
-			"traits": [
-				"archetype",
-				"conjuration",
-				"primal"
-			],
-			"frequency": {
-				"number": 1,
-				"unit": "hour"
-			},
-			"entries": [
-				"You can cast a 3rd-level {@spell summon animal} as an innate spell, but only to summon a black bear. At 10th level, the {@spell summon animal} spell is heightened to 4th level, and you can summon a grizzly bear. At 12th level, your {@spell summon animal} innate spell is heightened to 5th level, and you can summon a polar bear. At 14th level, it's heightened to 6th level, and you can summon a cave bear."
-			]
-		},
-		{
 			"name": "Quick Setup",
 			"source": "TV",
 			"page": 159,
@@ -87,8 +20,100 @@
 			]
 		},
 		{
+			"name": "Ursine Avenger Form",
+			"source": "TV",
+			"page": 183,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
+			"level": 2,
+			"traits": [
+				"archetype",
+				"artifact",
+				"morph",
+				"primal",
+				"transmutation"
+			],
+			"entries": [
+				"You draw the Ursine Avenger Hood over your head and its fur over your arms, assuming an ursine form that has traits of your original form as well as that of a bear. In your ursine form, you gain a jaws unarmed attack that deals {@damage 1d8} piercing damage and a claws unarmed attack that deals {@damage 1d6} slashing damage and has the {@trait agile} trait. Both unarmed attacks are in the brawling group. You lose the ability to speak complex sentences while transformed and can only communicate through grunts and gestures; this prevents you from using effects that require a shared or spoken language until you revert back to your non-hybrid form. You can use this action while transformed to remove the hood and return to your original form."
+			]
+		},
+		{
+			"name": "Senses of the Bear",
+			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
+			"page": 183,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"entries": [
+				"While in ursine form, you gain low-light vision and scent (imprecise) 30 feet. If you already had low-light vision, you instead gain darkvision."
+			]
+		},
+		{
+			"name": "Bear Hug",
+			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
+			"page": 183,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"requirements": "Your last action was a successful claw {@action Strike}.",
+			"entries": [
+				"You snatch at your opponent with your claws, pulling them close in a ferocious bear hug. You make another claw {@action Strike} against the same target. If this {@action Strike} hits, the target is also {@condition grabbed}."
+			]
+		},
+		{
+			"name": "Call Ursine Ally",
+			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
+			"page": 184,
+			"level": 8,
+			"traits": [
+				"archetype",
+				"conjuration",
+				"primal"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You can cast a 3rd-level {@spell summon animal} as an innate spell, but only to summon a black bear. At 10th level, the {@spell summon animal} spell is heightened to 4th level, and you can summon a grizzly bear. At 12th level, your {@spell summon animal} innate spell is heightened to 5th level, and you can summon a polar bear. At 14th level, it's heightened to 6th level, and you can summon a cave bear."
+			]
+		},
+		{
 			"name": "Bear Empathy",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
 			"page": 184,
 			"level": 10,
 			"traits": [
@@ -103,6 +128,11 @@
 		{
 			"name": "Great Bear",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
 			"page": 184,
 			"level": 12,
 			"traits": [
@@ -120,6 +150,11 @@
 		{
 			"name": "Terrible Transformation",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
 			"page": 184,
 			"level": 14,
 			"traits": [
@@ -133,6 +168,11 @@
 		{
 			"name": "Fearsome Fangs",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
 			"page": 184,
 			"level": 16,
 			"traits": [
@@ -146,6 +186,11 @@
 		{
 			"name": "Mighty Bear",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
 			"page": 184,
 			"level": 18,
 			"traits": [
@@ -159,6 +204,11 @@
 		{
 			"name": "Immortal Bear",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Ursine Avenger Hood"
+				]
+			},
 			"page": 184,
 			"level": 20,
 			"traits": [
@@ -172,19 +222,29 @@
 		{
 			"name": "First Frost",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 2,
 			"traits": [
 				"archetype"
 			],
 			"entries": [
-				"The gelid shard within your heart may sap your ability to feel and experience emotion, but it also lets you create and manipulate cold. You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with the frost's touch (see below) and {@spell ray of frost} cantrips. You're trained in spell attack rolls and spell DCs for arcane spells.",
+				"The gelid shard within your heart may sap your ability to feel and experience emotion, but it also lets you create and manipulate cold. You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with the {@spell frost's touch|Tv} and {@spell ray of frost} cantrips. You're trained in spell attack rolls and spell DCs for arcane spells.",
 				"Your key spellcasting ability is Charisma."
 			]
 		},
 		{
 			"name": "Snowcaster",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 4,
 			"traits": [
@@ -197,6 +257,11 @@
 		{
 			"name": "Snow Step",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 6,
 			"traits": [
@@ -209,6 +274,11 @@
 		{
 			"name": "Frozen Breadth",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 8,
 			"traits": [
@@ -221,6 +291,11 @@
 		{
 			"name": "Winter's Embrace",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 10,
 			"traits": [
@@ -234,6 +309,11 @@
 		{
 			"name": "Expert Snowcasting",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 12,
 			"traits": [
@@ -246,6 +326,11 @@
 		{
 			"name": "Winter's Kiss",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 14,
 			"traits": [
@@ -258,6 +343,11 @@
 		{
 			"name": "Greater Snow Step",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 16,
 			"traits": [
@@ -270,6 +360,11 @@
 		{
 			"name": "Master Snowcasting",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 18,
 			"traits": [
@@ -282,6 +377,11 @@
 		{
 			"name": "Icy Apotheosis",
 			"source": "TV",
+			"featType": {
+				"archetype": [
+					"Gelid Shard"
+				]
+			},
 			"page": 185,
 			"level": 20,
 			"traits": [

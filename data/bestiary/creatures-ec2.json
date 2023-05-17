@@ -1894,7 +1894,9 @@
 					"will": {
 						"std": 15
 					},
-					"abilities": "+1 to all saves vs. magic"
+					"abilities": [
+						"+1 to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -2045,7 +2047,16 @@
 							"number": 1
 						},
 						"entries": [
-							"The iridescent elephant blasts a beam of light from its trunk in a 30-foot line. Each creature in the area must attempt a DC 22 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition dazzled} for 1 round. Failure The creature is {@condition blinded} for 1 minute. Critical Failure The creature is {@condition blinded} permanently."
+							"The iridescent elephant blasts a beam of light from its trunk in a 30-foot line. Each creature in the area must attempt a DC 22 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition dazzled} for 1 round.",
+									"Failure": "The creature is {@condition blinded} for 1 minute.",
+									"Critical Failure": "The creature is {@condition blinded} permanently."
+								}
+							}
 						],
 						"name": "Trunk Beam"
 					}
@@ -2447,7 +2458,7 @@
 					}
 				},
 				{
-					"name": "Bard Composition",
+					"name": "Bard Composition Spells",
 					"type": "Focus",
 					"fp": 3,
 					"DC": 30,
@@ -3452,7 +3463,7 @@
 					}
 				},
 				{
-					"name": "Cleric Domain",
+					"name": "Cleric Domain Spells",
 					"type": "Focus",
 					"fp": 1,
 					"DC": 24,
@@ -3842,7 +3853,7 @@
 					}
 				},
 				{
-					"name": "Bloodline",
+					"name": "Bloodline Spells",
 					"type": "Focus",
 					"fp": 3,
 					"DC": 26,

@@ -425,30 +425,42 @@
 			},
 			"targets": "1 or 2 creatures other than yourself (see text)",
 			"entries": [
-				" Nothing is so contagious as a thought. You place either a pleasant thought or a terrifying one in a creature's mind. You can then plant the same thought in a second creature's mind. You can't choose a creature that's already been a target of this casting of contagious idea, nor can you choose yourself. The second target can be beyond the range of the spell, but it must be within 30 feet of the first target.",
+				"Nothing is so contagious as a thought. You place either a pleasant thought or a terrifying one in a creature's mind. You can then plant the same thought in a second creature's mind. You can't choose a creature that's already been a target of this casting of contagious idea, nor can you choose yourself. The second target can be beyond the range of the spell, but it must be within 30 feet of the first target.",
 				{
 					"type": "list",
 					"items": [
-						"Pleasant Thought The target is soothed, gaining 5 temporary Hit Points that last for 1 minute.",
-						"Terrifying Thought The target must attempt a Will save."
+						{
+							"type": "item",
+							"name": "Pleasant Thought",
+							"entries": [
+								"The target is soothed, gaining 5 temporary Hit Points that last for 1 minute."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Terrifying Thought",
+							"entries": [
+								"The target must attempt a Will save.",
+								{
+									"type": "successDegree",
+									"entries": {
+										"Critical Success": [
+											"The target is unaffected and is temporarily immune for 1 minute."
+										],
+										"Success": [
+											"The target is {@condition frightened||frightened 1} and is then temporarily immune for 1 minute."
+										],
+										"Failure": [
+											"The target becomes {@condition frightened||frightened 2}."
+										],
+										"Critical Failure": [
+											"The target becomes {@condition frightened||frightened 3}."
+										]
+									}
+								}
+							]
+						}
 					]
-				},
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": [
-							"The target is unaffected and is temporarily immune for 1 minute."
-						],
-						"Success": [
-							"The target is {@condition frightened||frightened 1} and is then temporarily immune for 1 minute."
-						],
-						"Failure": [
-							"The target becomes {@condition frightened||frightened 2}."
-						],
-						"Critical Failure": [
-							"The target becomes {@condition frightened||frightened 3}."
-						]
-					}
 				}
 			],
 			"heightened": {
@@ -848,7 +860,7 @@
 				"unit": "round"
 			},
 			"entries": [
-				"You set up a transparent, rippling screen of telekinetic energy that seizes small, fast-moving projectiles. Creatures can pass through the screen, but ammunition from physical ranged attacks\u2014such as {@item arrow||arrows}, {@item bolt||bolts}, {@item sling bullets}, and other objects of similar size\u2014is automatically trapped in the screen, clattering to the ground once the spell ends. Attacks with bigger ranged weapons, such as {@item javelin||javelins}, take a \u20132 circumstance penalty to their attack rolls if their paths pass through the screen. Massive ranged weapons and spell effects that don't create physical objects pass through the screen with no penalty."
+				"You set up a transparent, rippling screen of telekinetic energy that seizes small, fast-moving projectiles. Creatures can pass through the screen, but ammunition from physical ranged attacks\u2014such as {@item arrow (generic)||arrows}, {@item bolt (generic)||bolts}, {@item sling bullets}, and other objects of similar size\u2014is automatically trapped in the screen, clattering to the ground once the spell ends. Attacks with bigger ranged weapons, such as {@item javelin||javelins}, take a \u20132 circumstance penalty to their attack rolls if their paths pass through the screen. Massive ranged weapons and spell effects that don't create physical objects pass through the screen with no penalty."
 			],
 			"heightened": {
 				"X": {

@@ -104,7 +104,7 @@
 					}
 				},
 				{
-					"name": "Champion Devotion",
+					"name": "Champion Devotion Spells",
 					"type": "Focus",
 					"DC": 20,
 					"fp": 1,
@@ -611,7 +611,9 @@
 					"will": {
 						"std": 21
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -890,7 +892,9 @@
 					"will": {
 						"std": 23
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -1134,7 +1138,9 @@
 					"will": {
 						"std": 21
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -1395,7 +1401,9 @@
 					"will": {
 						"std": 26
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -1635,7 +1643,9 @@
 					"will": {
 						"std": 22
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -1865,8 +1875,29 @@
 							{
 								"type": "list",
 								"items": [
-									"{@bold Flame} (arcane, evocation, fire); The dragon breathes a blast of flame in a 40-foot cone that deals {@damage 15d6} fire damage (DC 37 basic Reflex save).",
-									"{@bold Weakening Gas} (arcane, necromancy); The dragon breathes a blast of weakening gas. Each creature within a 40-foot cone must succeed at a DC 37 Fortitude save or become {@condition enfeebled 2} for 1 minute (or {@condition enfeebled 3} on a critical failure)."
+									{
+										"type": "ability",
+										"name": "Flame",
+										"traits": [
+											"arcane",
+											"evocation",
+											"fire"
+										],
+										"entries": [
+											"The dragon breathes a blast of flame in a 40-foot cone that deals {@damage 15d6} fire damage (DC 37 basic Reflex save)."
+										]
+									},
+									{
+										"type": "ability",
+										"name": "Weakening Gas",
+										"traits": [
+											"arcane",
+											"necromancy"
+										],
+										"entries": [
+											"The dragon breathes a blast of weakening gas. Each creature within a 40-foot cone must succeed at a DC 37 Fortitude save or become {@condition enfeebled 2} for 1 minute (or {@condition enfeebled 3} on a critical failure)."
+										]
+									}
 								]
 							}
 						],
@@ -1905,7 +1936,9 @@
 					"will": {
 						"std": 28
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -2176,7 +2209,9 @@
 					"will": {
 						"std": 23
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -2444,7 +2479,9 @@
 					"will": {
 						"std": 26
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -2693,7 +2730,9 @@
 					"will": {
 						"std": 28
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -2978,7 +3017,9 @@
 					"will": {
 						"std": 17
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -3752,7 +3793,9 @@
 					"will": {
 						"std": 29
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -4075,7 +4118,9 @@
 					"will": {
 						"std": 33
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -4313,7 +4358,9 @@
 					"will": {
 						"std": 30
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -4610,7 +4657,9 @@
 					"will": {
 						"std": 34
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -4892,7 +4941,9 @@
 					"will": {
 						"std": 32
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -5131,8 +5182,29 @@
 							{
 								"type": "list",
 								"items": [
-									"{@bold Flame} (arcane, evocation, fire); The dragon breathes a blast of flame in a 50-foot cone that deals {@damage 20d6} fire damage (DC 44 basic Reflex save).",
-									"{@bold Weakening Gas} (arcane, necromancy); The dragon breathes a blast of weakening gas. Each creature within a 50-foot cone must succeed at a DC 44 Fortitude save or become {@condition enfeebled 3} for 1 minute (or {@condition enfeebled 4} on a critical failure)."
+									{
+										"type": "ability",
+										"name": "Flame",
+										"traits": [
+											"arcane",
+											"evocation",
+											"fire"
+										],
+										"entries": [
+											"The dragon breathes a blast of flame in a 50-foot cone that deals {@damage 20d6} fire damage (DC 44 basic Reflex save)."
+										]
+									},
+									{
+										"type": "ability",
+										"name": "Weakening Gas",
+										"traits": [
+											"arcane",
+											"necromancy"
+										],
+										"entries": [
+											"The dragon breathes a blast of weakening gas. Each creature within a 50-foot cone must succeed at a DC 44 Fortitude save or become {@condition enfeebled 3} for 1 minute (or {@condition enfeebled 4} on a critical failure)."
+										]
+									}
 								]
 							}
 						],
@@ -5171,7 +5243,9 @@
 					"will": {
 						"std": 39
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -5475,7 +5549,9 @@
 					"will": {
 						"std": 32
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -5778,7 +5854,9 @@
 					"will": {
 						"std": 35
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -6054,7 +6132,9 @@
 					"will": {
 						"std": 34
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -6362,7 +6442,9 @@
 					"will": {
 						"std": 24
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -7140,7 +7222,9 @@
 					"will": {
 						"std": 14
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -7308,7 +7392,9 @@
 					"will": {
 						"std": 7
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -7938,7 +8024,9 @@
 					"will": {
 						"std": 26
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -8188,7 +8276,9 @@
 					"will": {
 						"std": 22
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -8516,7 +8606,9 @@
 					"will": {
 						"std": 18
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -8987,7 +9079,9 @@
 					"will": {
 						"std": 18
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -9371,8 +9465,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The balor hits a creature, object, or spell effect with a weapon {@action Strike}.",
 						"frequency": {
@@ -9397,8 +9490,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine",
@@ -9434,7 +9526,9 @@
 					"will": {
 						"std": 34
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -10027,8 +10121,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The devil hits a creature with a glaive {@action Strike}.",
 						"entries": [
@@ -10067,7 +10160,9 @@
 					"will": {
 						"std": 11
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -11567,7 +11662,9 @@
 					"will": {
 						"std": 18
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -12329,8 +12426,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The bunyip deals bleed damage to a living creature.",
 						"requirements": "The bunyip is not {@condition fatigued} or already in a frenzy.",
@@ -14440,7 +14536,7 @@
 					}
 				},
 				{
-					"name": "Druid Order",
+					"name": "Druid Order Spells",
 					"type": "Focus",
 					"DC": 21,
 					"fp": 1,
@@ -14894,7 +14990,9 @@
 					"will": {
 						"std": 16
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -15299,8 +15397,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine",
@@ -16075,7 +16172,9 @@
 					"will": {
 						"std": 22
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -16575,8 +16674,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divination",
@@ -16941,7 +17039,9 @@
 					"will": {
 						"std": 10
 					},
-					"abilities": "+2 status to all saves vs. magic, +3 status to all saves vs. divine magic"
+					"abilities": [
+						"+2 status to all saves vs. magic, +3 status to all saves vs. divine magic"
+					]
 				},
 				"hp": [
 					{
@@ -18117,7 +18217,7 @@
 				"cha": 5
 			},
 			"items": [
-				"demilich eye gem (2)"
+				"{@item demilich eye gem|B1} (2)"
 			],
 			"speed": {
 				"fly": 30
@@ -18204,7 +18304,7 @@
 				"top": [
 					{
 						"entries": [
-							"Typically, a demilich is inert when encountered and doesn't take actions until its contingency reaction has been triggered (see below)."
+							"Typically, a demilich is inert when encountered and doesn't take actions until its {@i contingency} reaction has been triggered (see below)."
 						],
 						"name": "Torpor"
 					}
@@ -18226,21 +18326,21 @@
 							"number": 1,
 							"unit": "reaction"
 						},
+						"note": "A demilich has one permanent 8th-level {@spell contingency} spell in effect with one of its arcane innate spells of 5th level or lower as the companion spell\u2014typically {@spell dimension door}.",
 						"trigger": "While the lich is in torpor, a creature disturbs the demilich's remains, touches its treasure, or casts a spell that would affect the demilich.",
 						"entries": [
-							"A demilich has one permanent 8th-level {@spell contingency} spell in effect with one of its arcane innate spells of 5th level or lower as the companion spell\u2014typically dimension door. The demilich ends torpor, rolls initiative, and gains the effect of its contingency's companion spell. The contingency resets after 24 hours."
+							"The demilich ends torpor, rolls initiative, and gains the effect of its {@spell contingency}'s companion spell. The {@i contingency} resets after 24 hours."
 						],
 						"name": "Contingency"
 					},
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The demilich's turn begins.",
 						"entries": [
-							"The demilich casts blink, fly, spell turning, or true seeing on itself. It usually chooses spell turning unless it already has that spell in effect."
+							"The demilich casts {@spell blink}, {@spell fly}, {@spell spell turning}, or {@spell true seeing} on itself. It usually chooses {@spell spell turning} unless it already has that spell in effect."
 						],
 						"name": "Countermeasures"
 					}
@@ -18251,7 +18351,7 @@
 							"arcane"
 						],
 						"entries": [
-							"A demilich has gemstone eyes that glow when the demilich is active. Each eye contains an 8th-level spell that targets one creature (usually one eye has maze and the other polar ray). The demilich can Activate an eye. This uses the number of spellcasting actions the spell requires, and also requires command and envision components. When the demilich casts a spell from a gemstone eye, that eye stops glowing for {@dice 1d4} rounds, during which time that eye's spell can't be used. Occasionally, one or both of the two demilich eye gems can be harvested from a destroyed demilich as magic items (see below)."
+							"A demilich has gemstone eyes that glow when the demilich is active. Each eye contains an 8th-level spell that targets one creature (usually one eye has {@spell maze} and the other {@spell polar ray}). The demilich can {@action Activate An Item||Activate} an eye. This uses the number of spellcasting actions the spell requires, and also requires command and envision components. When the demilich casts a spell from a gemstone eye, that eye stops glowing for {@dice 1d4} rounds, during which time that eye's spell can't be used. Occasionally, one or both of the two {@item demilich eye gem|B1|demilich eye gems} can be harvested from a destroyed demilich as magic items."
 						],
 						"name": "Demilich Eye Gems"
 					},
@@ -18279,7 +18379,7 @@
 					},
 					{
 						"entries": [
-							"A demilich long ago absorbed the spells from a staff into gemstone nodules embedded in its skull, with larger nodules representing higher-level spells. It can cast any of the spells as though it were {@action Activate an Item||Activating} the staff, and regains 1 charge per 4 hours spent in torpor, to a maximum of 8 charges. A typical demilich has the spells from a greater staff of necromancy, but it could have spells from another staff of 8th level or lower instead."
+							"A demilich long ago absorbed the spells from a staff into gemstone nodules embedded in its skull, with larger nodules representing higher-level spells. It can cast any of the spells as though it were {@action Activate an Item||Activating} the staff, and regains 1 charge per 4 hours spent in torpor, to a maximum of 8 charges. A typical demilich has the spells from a {@item greater staff of necromancy}, but it could have spells from another staff of 8th level or lower instead."
 						],
 						"name": "Staff Gems"
 					},
@@ -18288,14 +18388,15 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"components": [
 							"command"
 						],
 						"frequency": {
 							"special": "once per day per gem"
 						},
 						"entries": [
-							"Ten blight quartz gemstones on the demilich's skull can trap the souls of the living. The Activated gem casts bind soul. This bind soul can target and affect a {@condition dying} creature instead of a corpse. The {@condition dying} creature can attempt a DC 38 Fortitude save; if it succeeds, it doesn't die and its soul is not trapped but it's enervated 2 (or is unaffected entirely on a critical success). When the soul of a creature gets trapped, the creature's body swiftly turns to dust. The gemstones work like the black sapphires used in bind soul, except that they can hold creatures of up to 17th level and have a value of 200 gp apiece. The demilich can Devour a Soul it has trapped."
+							"Ten blight quartz gemstones on the demilich's skull can trap the souls of the living. The {@action Activate an Item||Activated} gem casts {@spell bind soul}. This {@spell bind soul} can target and affect a {@condition dying} creature instead of a corpse. The {@condition dying} creature can attempt a DC 38 Fortitude save; if it succeeds, it doesn't die and its soul is not trapped but it's enervated 2 (or is unaffected entirely on a critical success). When the soul of a creature gets trapped, the creature's body swiftly turns to dust.",
+							"The gemstones work like the black sapphires used in {@spell bind soul}, except that they can hold creatures of up to 17th level and have a value of 200 gp apiece. The demilich can Devour a Soul it has trapped."
 						],
 						"name": "Trap Soul"
 					}
@@ -18315,7 +18416,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. positive"
+					]
 				},
 				"hp": [
 					{
@@ -18658,7 +18762,7 @@
 			"items": [
 				"{@item aklys}",
 				"{@item giant centipede venom} (4 doses)",
-				"{@item hand crossbow} (20 {@item bolt||bolts}"
+				"{@item hand crossbow} (20 {@item bolt (generic)||bolts}"
 			],
 			"speed": {
 				"walk": 20
@@ -18837,7 +18941,7 @@
 			},
 			"items": [
 				"{@item aklys}",
-				"{@item hand crossbow} (10 {@item bolt||bolts})",
+				"{@item hand crossbow} (10 {@item bolt (generic)||bolts})",
 				"{@item lethargy poison} (5 doses)",
 				"{@item rope (50 feet)}"
 			],
@@ -20619,7 +20723,9 @@
 					"will": {
 						"std": 15
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -20829,7 +20935,9 @@
 					"will": {
 						"std": 4
 					},
-					"abilities": "+1 status to all saves vs. magic, +2 status to all saves vs. mental"
+					"abilities": [
+						"+1 status to all saves vs. magic, +2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -21091,7 +21199,9 @@
 					"will": {
 						"std": 11
 					},
-					"abilities": "+1 status to all saves vs. magic, +2 status to all saves vs. mental"
+					"abilities": [
+						"+1 status to all saves vs. magic, +2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -21291,7 +21401,9 @@
 					"will": {
 						"std": 6
 					},
-					"abilities": "+1 status to all saves vs. magic, +2 status to all saves vs. mental"
+					"abilities": [
+						"+1 status to all saves vs. magic, +2 status to all saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -22124,7 +22236,9 @@
 					"will": {
 						"std": 4
 					},
-					"abilities": "+2 status to all saves vs. magic"
+					"abilities": [
+						"+2 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -22463,7 +22577,9 @@
 					"will": {
 						"std": 8
 					},
-					"abilities": "+2 status to all saves vs. magic, iron mind"
+					"abilities": [
+						"+2 status to all saves vs. magic, iron mind"
+					]
 				},
 				"hp": [
 					{
@@ -24618,7 +24734,9 @@
 					"will": {
 						"std": 16
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -25068,8 +25186,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"requirements": "The faceless stalker is in an assumed form.",
 						"entries": [
@@ -27508,7 +27625,9 @@
 					"will": {
 						"std": 26
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -27783,8 +27902,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The ghaele ends its turn while unable to act or attempts a greatsword {@action Strike} that would take a circumstance or status penalty.",
 						"entries": [
@@ -31355,7 +31473,7 @@
 				"cha": 4
 			},
 			"items": [
-				"+1 striking {@item hand crossbow} (20 {@item bolt||bolts}"
+				"+1 striking {@item hand crossbow} (20 {@item bolt (generic)||bolts}"
 			],
 			"speed": {
 				"abilities": [
@@ -32207,7 +32325,9 @@
 					"will": {
 						"std": 24
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -34155,8 +34275,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divination",
@@ -35131,7 +35250,9 @@
 					"will": {
 						"std": 12
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -35846,7 +35967,9 @@
 					"will": {
 						"std": 38
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -38133,7 +38256,9 @@
 					"will": {
 						"std": 11
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -38909,7 +39034,9 @@
 					"will": {
 						"std": 27
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -40430,7 +40557,9 @@
 					"will": {
 						"std": 34
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -41110,7 +41239,9 @@
 					"will": {
 						"std": 22
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -41541,7 +41672,9 @@
 					"will": {
 						"std": 14
 					},
-					"abilities": "+4 status to all saves vs. fear"
+					"abilities": [
+						"+4 status to all saves vs. fear"
+					]
 				},
 				"hp": [
 					{
@@ -42048,7 +42181,9 @@
 					"will": {
 						"std": 17
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -42057,6 +42192,12 @@
 				],
 				"immunities": [
 					"controlled"
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "mental"
+					}
 				]
 			}
 		},
@@ -42649,7 +42790,9 @@
 					"will": {
 						"std": 15
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -43113,7 +43256,9 @@
 					"will": {
 						"std": 32
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -43413,7 +43558,9 @@
 					"will": {
 						"std": 19
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -43677,8 +43824,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"6th level."
@@ -46209,7 +46355,9 @@
 					"will": {
 						"std": 27
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -47786,7 +47934,9 @@
 					"will": {
 						"std": 29
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -47930,8 +48080,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "A creature within 10 feet of the mu spore moves or attacks the mu spore.",
 						"entries": [
@@ -48175,8 +48324,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The mukradi would be {@condition confused}, {@condition paralyzed}, {@condition slowed}, or {@condition stunned}.",
 						"entries": [
@@ -49404,8 +49552,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine",
@@ -49478,7 +49625,9 @@
 					"will": {
 						"std": 12
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -49929,7 +50078,9 @@
 					"will": {
 						"std": 18
 					},
-					"abilities": "+2 status to all saves vs. magic, \u20132 to all saves if the night hag does not have her heartstone"
+					"abilities": [
+						"+2 status to all saves vs. magic, \u20132 to all saves if the night hag does not have her heartstone"
+					]
 				},
 				"hp": [
 					{
@@ -52370,7 +52521,9 @@
 					"will": {
 						"std": 23
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -52648,7 +52801,9 @@
 					"will": {
 						"std": 28
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -52989,8 +53144,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"concentrate"
@@ -53048,7 +53202,9 @@
 					"will": {
 						"std": 35
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -53270,7 +53426,9 @@
 					"will": {
 						"std": 12
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -53716,7 +53874,9 @@
 					"will": {
 						"std": 37
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -55176,8 +55336,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"emotion",
@@ -55551,6 +55710,20 @@
 				}
 			],
 			"abilities": {
+				"mid": [
+					{
+						"name": "Scoff at the Divine",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 30 feet casts a divine spell or uses a divine ability.",
+						"requirements": "The raja rakshasa has an unexpended spell slot that can be used to cast {@spell dispel magic}.",
+						"entries": [
+							"The raja rakshasa expends a spell slot that could be used to cast {@spell dispel magic} and attempts to counteract the triggering spell or ability. The raja rakshasa can't Scoff at the Divine for {@dice 1d4} rounds."
+						]
+					}
+				],
 				"bot": [
 					{
 						"activity": {
@@ -55604,7 +55777,10 @@
 					"will": {
 						"std": 18
 					},
-					"abilities": "+2 status to all saves vs. magic, +3 status to all saves vs. divine magic"
+					"abilities": [
+						"+2 status to all saves vs. magic",
+						"+3 status to all saves vs. divine magic"
+					]
 				},
 				"hp": [
 					{
@@ -55804,7 +55980,7 @@
 			},
 			"items": [
 				"alchemist's tools",
-				"{@item hand crossbow} (20 {@item bolt||bolts})",
+				"{@item hand crossbow} (20 {@item bolt (generic)||bolts})",
 				"studded leather armor"
 			],
 			"speed": {
@@ -55879,8 +56055,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"frequency": {
 							"unit": "round",
@@ -57199,7 +57374,9 @@
 					"will": {
 						"std": 21
 					},
-					"abilities": "+2 status to all saves vs. magic"
+					"abilities": [
+						"+2 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -57433,8 +57610,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"arcane",
@@ -57449,8 +57625,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"arcane",
@@ -58318,8 +58493,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"rage"
@@ -58494,8 +58668,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"rage"
@@ -58653,8 +58826,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"rage"
@@ -58834,7 +59006,9 @@
 					"will": {
 						"std": 10
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -59960,7 +60134,9 @@
 					"will": {
 						"std": 27
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -60183,7 +60359,9 @@
 					"will": {
 						"std": 19
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -60565,7 +60743,9 @@
 					"will": {
 						"std": 30
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -60891,7 +61071,9 @@
 					"will": {
 						"std": 6
 					},
-					"abilities": "+1 status to saves vs. magic, +4 status to saves vs. mental"
+					"abilities": [
+						"+1 status to saves vs. magic, +4 status to saves vs. mental"
+					]
 				},
 				"hp": [
 					{
@@ -64447,7 +64629,9 @@
 					"will": {
 						"std": 17
 					},
-					"abilities": "+1 status to all saves vs. {@trait magic}"
+					"abilities": [
+						"+1 status to all saves vs. {@trait magic}"
+					]
 				},
 				"hp": [
 					{
@@ -64721,7 +64905,9 @@
 					"will": {
 						"std": 31
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -65084,7 +65270,9 @@
 					"will": {
 						"std": 33
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -65453,8 +65641,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"requirements": "The adept hasn't acted yet on this turn.",
 						"frequency": {
@@ -65885,7 +66072,9 @@
 					"will": {
 						"std": 33
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -66178,8 +66367,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"abjuration",
@@ -66218,7 +66406,9 @@
 					"will": {
 						"std": 43
 					},
-					"abilities": "+2 status to all saves vs. magic"
+					"abilities": [
+						"+2 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -67490,8 +67680,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"name": "Mist Escape"
 					}
@@ -67817,8 +68006,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"name": "Mist Escape"
 					}
@@ -67871,8 +68059,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"arcane",
@@ -68366,8 +68553,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"concentrate",
@@ -68470,7 +68656,9 @@
 					"will": {
 						"std": 24
 					},
-					"abilities": "+2 status to all saves vs. magic"
+					"abilities": [
+						"+2 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -69223,7 +69411,9 @@
 					"will": {
 						"std": 15
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -69722,8 +69912,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"death",
@@ -70636,7 +70825,9 @@
 					"will": {
 						"std": 26
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -70957,7 +71148,7 @@
 				"cha": 1
 			},
 			"items": [
-				"{@item hand crossbow} (20 {@item bolt||bolts})",
+				"{@item hand crossbow} (20 {@item bolt (generic)||bolts})",
 				"{@item leather armor}",
 				"{@item shortsword}"
 			],
@@ -72681,8 +72872,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"A xulgath skulker can suppress its stench aura as a free action to better hide its presence. The skulker can resume its stench aura as a free action."
@@ -72968,8 +73158,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"emotion",
@@ -73936,7 +74125,9 @@
 					"will": {
 						"std": 19
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -74161,7 +74352,9 @@
 					"will": {
 						"std": 16
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -74367,8 +74560,29 @@
 							{
 								"type": "list",
 								"items": [
-									"{@bold Flame} (arcane, evocation, fire); The dragon breathes a blast of flame in a 30-foot cone that deals {@damage 11d6} fire damage (DC 31 basic Reflex save).",
-									"{@bold Weakening Gas} (arcane, necromancy); The dragon breathes a blast of weakening gas. Each creature within a 30-foot cone must succeed at a DC 31 Fortitude save or become {@condition enfeebled 1} for 1 minute (or {@condition enfeebled 2} on a critical failure)."
+									{
+										"type": "ability",
+										"name": "Flame",
+										"traits": [
+											"arcane",
+											"evocation",
+											"fire"
+										],
+										"entries": [
+											"The dragon breathes a blast of flame in a 30-foot cone that deals {@damage 11d6} fire damage (DC 31 basic Reflex save)."
+										]
+									},
+									{
+										"type": "ability",
+										"name": "Weakening Gas",
+										"traits": [
+											"arcane",
+											"necromancy"
+										],
+										"entries": [
+											"The dragon breathes a blast of weakening gas. Each creature within a 30-foot cone must succeed at a DC 31 Fortitude save or become {@condition enfeebled 1} for 1 minute (or {@condition enfeebled 2} on a critical failure)."
+										]
+									}
 								]
 							}
 						],
@@ -74406,7 +74620,9 @@
 					"will": {
 						"std": 22
 					},
-					"abilities": "+1 status to all saves vs. magic"
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{

@@ -263,6 +263,17 @@ function updateFolder (folder) {
 							}
 						}
 					}
+					if (cr.defenses && cr.defenses.ac) {
+						if (cr.defenses.ac.note) {
+							cr.defenses.ac.notes = [cr.defenses.ac.note];
+							delete cr.defenses.ac.note;
+						}
+					}
+					if (cr.defenses && cr.defenses.savingThrows) {
+						if (typeof cr.defenses.savingThrows.abilities === "string") {
+							cr.defenses.savingThrows.abilities = [cr.defenses.savingThrows.abilities];
+						}
+					}
 					if (cr.defenses && cr.defenses.resistances) {
 						cr.defenses.resistances = cr.defenses.resistances.map(r => {
 							if (r.note) {
@@ -314,6 +325,12 @@ function updateFolder (folder) {
 							) {
 								delete k.name;
 							}
+							if (k.name && !k.name.endsWith(" Spells")) {
+								// Exceptions to spellcasting names that don't end in " Spells"
+								if (k.name !== "Witch Hexes") {
+									k.name = `${k.name} Spells`.toTitleCase();
+								}
+							}
 
 							const mapSpellLevel = (l) => {
 								l.spells = l.spells.map(s => {
@@ -364,6 +381,11 @@ function updateFolder (folder) {
 						const mapAbility = (a) => {
 							if (a.entries && a.entries.length === 0) {
 								delete a.entries;
+							}
+							if (a.activity) {
+								if (a.activity.number === 1 && a.activity.unit === "free") {
+									delete a.activity.entry;
+								}
 							}
 							return a;
 						}

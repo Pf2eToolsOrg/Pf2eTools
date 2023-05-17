@@ -2252,7 +2252,16 @@
 						],
 						"trigger": "The venom mage is reduced to 0 Hit Points",
 						"entries": [
-							"The venom mage explodes into a cloud of poison within a 20-foot burst. The venom mage then reforms at a point they choose within the burst, avoids being knocked out, and remains at 1 Hit Point. The venom mage's {@condition wounded} value increases by 1 when they use this ability, and they can't use this ability when they're {@condition wounded|CRB|wounded 3} or more. Creatures other than the venom mage within the burst must attempt a Fortitude save. Critical Success No effect. Success The creature is {@condition sickened|CRB|sickened 1}. Failure The creature is {@condition sickened|CRB|sickened 2} and cannot recover from the {@condition sickened} condition while within 20 feet of the venom mage. Critical Failure As failure, but {@condition sickened|CRB|sickened 4}."
+							"The venom mage explodes into a cloud of poison within a 20-foot burst. The venom mage then reforms at a point they choose within the burst, avoids being knocked out, and remains at 1 Hit Point. The venom mage's {@condition wounded} value increases by 1 when they use this ability, and they can't use this ability when they're {@condition wounded|CRB|wounded 3} or more. Creatures other than the venom mage within the burst must attempt a Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "No effect.",
+									"Success": "The creature is {@condition sickened|CRB|sickened 1}.",
+									"Failure": "The creature is {@condition sickened|CRB|sickened 2} and cannot recover from the {@condition sickened} condition while within 20 feet of the venom mage.",
+									"Critical Failure": "As failure, but {@condition sickened|CRB|sickened 4}."
+								}
+							}
 						],
 						"name": "Venom Explosion",
 						"entries_as_xyz": "Ability not found: 'Venom Explosion As failure, but {@condition sickened|CRB|sickened 4}.' in Morgrat And Fillick, p.29"

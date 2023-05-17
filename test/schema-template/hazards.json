@@ -21,9 +21,15 @@
 					"page": {
 						"type": "integer"
 					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
 					"level": {
 						"type": "integer",
-						"minimum": 0
+						"minimum": -1
 					},
 					"traits": {
 						"type": "array",
@@ -76,22 +82,9 @@
 					"perception": {
 						"type": "object",
 						"properties": {
-							"dc": {
-								"type": "integer",
-								"minimum": 0
-							},
 							"bonus": {
 								"type": "integer",
 								"minimum": 0
-							},
-							"minProf": {
-								"type": "string",
-								"enum": [
-									"trained",
-									"expert",
-									"master",
-									"legendary"
-								]
 							},
 							"notes": {
 								"type": "string"

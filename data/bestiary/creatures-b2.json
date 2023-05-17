@@ -915,8 +915,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"primal",
@@ -1244,7 +1243,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -3250,8 +3252,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"primal",
@@ -3602,7 +3603,10 @@
 					},
 					"will": {
 						"std": 31
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -5374,6 +5378,11 @@
 			"name": "Augur",
 			"source": "B2",
 			"page": 280,
+			"otherSources": {
+				"Originally": [
+					"AoA3|82"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"le",
@@ -6908,8 +6917,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The bastion archon hits a creature with two fist {@action Strike||Strikes} this turn and can use its Holy Beam;",
 						"entries": [
@@ -10310,8 +10318,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"fortune"
@@ -13585,6 +13592,11 @@
 			"name": "Cornugon",
 			"source": "B2",
 			"page": 77,
+			"otherSources": {
+				"Originally": [
+					"AoA5|87"
+				]
+			},
 			"level": 16,
 			"traits": [
 				"le",
@@ -13740,6 +13752,17 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 36,
+					"rituals": [
+						{
+							"name": "infernal pact",
+							"source": "B1"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -13750,7 +13773,7 @@
 							"evil"
 						],
 						"entries": [
-							"10 feet. A constant circle of protection against good is centered on the cornugon."
+							"10 feet. A constant {@spell circle of protection} against good is centered on the cornugon."
 						],
 						"name": "Circle of Protection"
 					},
@@ -13800,9 +13823,9 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"requirements": "The cornugon's last action was a success with a spiked chain",
+						"requirements": "The cornugon's last action was a success with a {@i spiked chain} {@action Strike}",
 						"entries": [
-							"{@action Strike}; The devil pulls the creature 5 feet closer and grabs it with the spiked chain ({@action Escape} DC 42). The creature is automatically freed if the devil makes another spiked chain attack or moves away."
+							"The devil pulls the creature 5 feet closer and grabs it with the spiked chain ({@action Escape} DC 42). The creature is automatically freed if the devil makes another {@i spiked chain} attack or moves away."
 						],
 						"name": "Chain of Malebolge"
 					},
@@ -13822,7 +13845,7 @@
 							"incapacitation"
 						],
 						"entries": [
-							"If the cornugon critically hits with its spiked chain {@action Strike}, the target must succeed at a DC 34 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
+							"If the cornugon critically hits with its {@i spiked chain} {@action Strike}, the target must succeed at a DC 34 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
 						],
 						"name": "Stunning Chain"
 					}
@@ -13842,7 +13865,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -15223,6 +15249,11 @@
 			"name": "Devourer",
 			"source": "B2",
 			"page": 78,
+			"otherSources": {
+				"Originally": [
+					"AoA4|79"
+				]
+			},
 			"level": 11,
 			"traits": [
 				"uncommon",
@@ -15294,6 +15325,70 @@
 					]
 				}
 			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 31,
+					"note": "see soul spells below",
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "harm"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "death knell"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "bind undead"
+								},
+								{
+									"name": "paralyze"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 31,
+					"rituals": [
+						{
+							"name": "create undead"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -15302,7 +15397,7 @@
 							"divine"
 						],
 						"entries": [
-							"A spellcaster who targets a devourer with a mental spell, banishment, bind soul, divine decree, divine wrath, possession, spirit blast, or spirit song can attempt a counteract check to free a soul the devourer has trapped with Devour Soul. If this counteract attempt succeeds, the trapped soul is released (though the creature remains dead), and the devourer can't use any soul charges from that creature. Devourers are otherwise immune to these spells."
+							"A spellcaster who targets a devourer with a {@trait mental} spell, {@spell banishment}, {@spell bind soul}, {@spell divine decree}, {@spell divine wrath}, {@spell possession}, {@spell spirit blast}, or {@spell spirit song} can attempt a counteract check to free a soul the devourer has trapped with Devour Soul. If this counteract attempt succeeds, the trapped soul is released (though the creature remains dead), and the devourer can't use any soul charges from that creature. Devourers are otherwise immune to these spells."
 						],
 						"name": "Spell Deflection"
 					}
@@ -15319,8 +15414,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"The devourer touches a creature within reach, dealing {@damage 8d6} negative damage (DC 31 basic Fortitude save). If a creature is slain by this attack, its soul becomes trapped within the devourer. While its soul is trapped, a creature can't be resurrected except by powerful magic such as a {@spell wish} spell.",
-							"Destroying the devourer or successfully counteracting Devour Soul (see Spell Deflection above) releases the soul. The devourer can hold only one soul at a time. A soul has 5 soul charges per level of the originating creature (see Soul Spells below). The devourer can expend these charges to cast spells. If the soul is freed and the creature returns to life, the creature is {@condition drained 1} for every 5 soul charges expended. If reduced to 0 soul charges, the soul is consumed and can be restored to life only by powerful magic such as wish."
+							"The devourer touches a creature within reach, dealing {@damage 8d6} negative damage (DC 31 basic Fortitude save). If a creature is slain by this attack, its soul becomes trapped within the devourer. While its soul is trapped, a creature can't be resurrected except by powerful magic such as a {@spell wish} spell. Destroying the devourer or successfully counteracting Devour Soul (see Spell Deflection above) releases the soul. The devourer can hold only one soul at a time. A soul has 5 soul charges per level of the originating creature (see Soul Spells below). The devourer can expend these charges to cast spells. If the soul is freed and the creature returns to life, the creature is {@condition drained 1} for every 5 soul charges expended. If reduced to 0 soul charges, the soul is consumed and can be restored to life only by powerful magic such as {@spell wish}."
 						],
 						"name": "Devour Soul"
 					},
@@ -15336,7 +15430,7 @@
 					},
 					{
 						"entries": [
-							"A devourer casts occult innate spells, but to do so it must expend a number of soul charges equal to the spell's level (similar to casting a spell using charges from a staff). It can heighten any spell to a maximum of 6th level by expending more charges as it Casts the Spell. When encountered, a devourer typically has one trapped soul with 10 soul charges."
+							"A devourer casts occult innate spells, but to do so it must expend a number of soul charges equal to the spell's level (similar to casting a spell using charges from a staff). It can heighten any spell to a maximum of 6th level by expending more charges as it {@action Cast a Spell||Casts the Spell}. When encountered, a devourer typically has one trapped soul with 10 soul charges."
 						],
 						"name": "Soul Spells"
 					}
@@ -15517,7 +15611,10 @@
 					},
 					"will": {
 						"std": 7
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -16563,6 +16660,11 @@
 			"name": "Duneshaker Solifugid",
 			"source": "B2",
 			"page": 246,
+			"otherSources": {
+				"Originally": [
+					"AoA5|89"
+				]
+			},
 			"level": 18,
 			"traits": [
 				"n",
@@ -16657,7 +16759,7 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"claw"
 						],
 						"name": "Rend",
@@ -18166,6 +18268,11 @@
 			"name": "Evangelist",
 			"source": "B2",
 			"page": 282,
+			"otherSources": {
+				"Originally": [
+					"AoA3|83"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"le",
@@ -18206,6 +18313,9 @@
 				},
 				"religion": {
 					"std": 11
+				},
+				"torture lore": {
+					"std": 12
 				}
 			},
 			"abilityMods": {
@@ -18331,7 +18441,10 @@
 					},
 					"will": {
 						"std": 11
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -18343,6 +18456,16 @@
 				],
 				"immunities": [
 					"cold"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "good"
+					},
+					{
+						"amount": 5,
+						"name": "silver"
+					}
 				]
 			}
 		},
@@ -22538,6 +22661,11 @@
 			"name": "Giant Solifugid",
 			"source": "B2",
 			"page": 246,
+			"otherSources": {
+				"Originally": [
+					"AoA5|89"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"n",
@@ -22618,7 +22746,7 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
+						"entries": [
 							"claw"
 						],
 						"name": "Rend",
@@ -24758,6 +24886,11 @@
 			"name": "Grippli Scout",
 			"source": "B2",
 			"page": 139,
+			"otherSources": {
+				"Originally": [
+					"AoA2|86"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"n",
@@ -25586,8 +25719,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine",
@@ -28661,6 +28793,11 @@
 			"name": "Interlocutor",
 			"source": "B2",
 			"page": 284,
+			"otherSources": {
+				"Originally": [
+					"AoA3|84"
+				]
+			},
 			"level": 12,
 			"traits": [
 				"le",
@@ -28745,13 +28882,41 @@
 					"tradition": "divine",
 					"DC": 33,
 					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "stabilize"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "heal",
+									"amount": 2
+								},
+								{
+									"name": "restoration",
+									"amount": 2
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "breath of life"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
-									"name": "plane shift"
-								},
-								{
-									"name": "to the Material Plane or Shadow"
+									"name": "plane shift",
+									"notes": [
+										"self only",
+										"to the Material Plane or Shadow Plane only"
+									]
 								}
 							]
 						}
@@ -28843,7 +29008,10 @@
 					},
 					"will": {
 						"std": 26
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -28855,6 +29023,16 @@
 				],
 				"immunities": [
 					"cold"
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "good"
+					},
+					{
+						"amount": 15,
+						"name": "silver"
+					}
 				]
 			}
 		},
@@ -31874,8 +32052,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"abjuration",
@@ -36005,6 +36182,11 @@
 			"name": "Nalfeshnee",
 			"source": "B2",
 			"page": 68,
+			"otherSources": {
+				"Originally": [
+					"AoA5|86"
+				]
+			},
 			"level": 14,
 			"traits": [
 				"ce",
@@ -36134,8 +36316,27 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
 					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 34,
+					"rituals": [
+						{
+							"name": "Abyssal pact",
+							"source": "B1"
+						}
+					]
 				}
 			],
 			"abilities": {
@@ -36170,7 +36371,7 @@
 							"extradimensional"
 						],
 						"entries": [
-							"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into their hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a bag of holding), they vomit up all the items."
+							"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into their hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a {@item bag of holding (generic)}), they vomit up all the items."
 						],
 						"name": "Claim Wealth"
 					},
@@ -36210,7 +36411,10 @@
 					},
 					"will": {
 						"std": 23
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -39200,6 +39404,11 @@
 			"name": "Osyluth",
 			"source": "B2",
 			"page": 74,
+			"otherSources": {
+				"Originally": [
+					"AoA3|78"
+				]
+			},
 			"level": 9,
 			"traits": [
 				"le",
@@ -39366,6 +39575,17 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "infernal pact",
+							"source": "B1"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"bot": [
 					{
@@ -39390,14 +39610,17 @@
 							},
 							{
 								"stage": 3,
-								"entry": "{@damage 3d6} poison damage and {@condition enfeebled 2}.",
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled 2}",
 								"duration": "1 round"
 							}
+						],
+						"entries": [
+							"Once a creature reaches stage 3, it takes a \u20134 status penalty to Will saves against attempts to {@action Coerce} it for 1 hour (this is a {@trait mental} effect)."
 						]
 					},
 					{
 						"entries": [
-							"The osyluth can cast innate invisibility using only 1 action."
+							"The osyluth can cast innate {@spell invisibility} using only 1 action."
 						],
 						"name": "Quick Invisibility"
 					},
@@ -39417,7 +39640,7 @@
 							"mental"
 						],
 						"entries": [
-							"The osyluth telepathically questions a creature affected by zone of truth. After 1 round, if the creature intentionally refuses to answer the question, it takes {@damage 2d6} mental damage."
+							"The osyluth telepathically questions a creature affected by {@spell zone of truth}. After 1 round, if the creature intentionally refuses to answer the question, it takes {@damage 2d6} mental damage."
 						],
 						"name": "Stygian Inquisitor"
 					},
@@ -39447,7 +39670,10 @@
 					},
 					"will": {
 						"std": 17
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -39461,6 +39687,17 @@
 					{
 						"amount": 10,
 						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "physical",
+						"note": "except silver"
+					},
+					{
+						"amount": 10,
+						"name": "poison"
 					}
 				]
 			}
@@ -42622,8 +42859,7 @@
 						"trigger": "The ravener takes excess damage to their soul ward but still has at least 51 Hit Points in their soul ward;",
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"The ravener draws deeply into their soul ward, discorporating their body into soul energy in order to escape. They take 50 damage to their soul ward and their physical body vanishes, reappearing {@dice 1d4} hours later in a random location within 1 mile from the location where they used Discorporate."
@@ -42650,17 +42886,14 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"death",
 							"divine",
 							"necromancy"
 						],
-						"trigger": [
-							"A living creature within 30 feet of the ravener dies;"
-						],
+						"trigger": "A living creature within 30 feet of the ravener dies",
 						"entries": [
 							"The ravener tears the creature's soul from its body with their maw and gulps it down. The dying creature must attempt a DC 44 Fortitude save.",
 							{
@@ -43408,6 +43641,11 @@
 			"name": "Rusalka",
 			"source": "B2",
 			"page": 229,
+			"otherSources": {
+				"Originally": [
+					"AoA3|81"
+				]
+			},
 			"level": 12,
 			"traits": [
 				"ne",
@@ -44891,8 +45129,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"concentrate",
@@ -45869,6 +46106,11 @@
 			"name": "Shadow Giant",
 			"source": "B2",
 			"page": 127,
+			"otherSources": {
+				"Originally": [
+					"AoA3|79"
+				]
+			},
 			"level": 13,
 			"traits": [
 				"le",
@@ -45912,6 +46154,11 @@
 				"wis": 1,
 				"cha": 3
 			},
+			"items": [
+				"+1 resilient breastplate",
+				"sack with 5 rocks",
+				"+1 striking spiked chain"
+			],
 			"speed": {
 				"walk": 35
 			},
@@ -50426,8 +50673,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"aura",
@@ -54111,7 +54357,7 @@
 					}
 				},
 				{
-					"name": "Sorcerer Bloodline",
+					"name": "Sorcerer Bloodline Spells",
 					"type": "Focus",
 					"fp": 1,
 					"DC": 17,
@@ -56590,8 +56836,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine",
@@ -56850,8 +57095,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine",
@@ -56992,8 +57236,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine",
@@ -58219,6 +58462,11 @@
 			"name": "Witchwyrd",
 			"source": "B2",
 			"page": 294,
+			"otherSources": {
+				"Originally": [
+					"AoA5|90"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"uncommon",
@@ -58397,7 +58645,7 @@
 							"evocation",
 							"force"
 						],
-						"trigger": "A {@i magic missile} is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
+						"trigger": "A {@spell magic missile} is fired at the witchwyrd, and the witchwyrd is aware of it and has a free hand",
 						"frequency": {
 							"unit": "round",
 							"number": 1
@@ -58421,7 +58669,7 @@
 							"force"
 						],
 						"entries": [
-							"The witchwyrd fires one magic missile per action spent (dealing {@damage 1d4+1} force damage each). They can't spend more actions on this ability than they have free hands. If they use a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
+							"The witchwyrd fires one {@spell magic missile} per action spent (dealing {@damage 1d4+1} force damage each). They can't spend more actions on this ability than they have free hands. If they use a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
 						],
 						"name": "Force Bolt"
 					}
@@ -60101,8 +60349,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"Creeper tendrils tear through the brute's limbs, causing its forearms to tear loose. The brute's melee reach increases by 5 feet."
@@ -60346,8 +60593,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The yellow musk thrall is reduced to 4 HP or fewer",
 						"entries": [
@@ -61372,6 +61618,9 @@
 				},
 				"athletics": {
 					"std": 19
+				},
+				"deception": {
+					"std": 14
 				},
 				"intimidation": {
 					"std": 18

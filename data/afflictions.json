@@ -1,6 +1,68 @@
 {
 	"disease": [
 		{
+			"name": "Dysentery",
+			"source": "AoA2",
+			"page": 71,
+			"type": "Disease",
+			"level": 4,
+			"traits": [
+				"disease"
+			],
+			"entries": [
+				"The victim suffers from violent nausea and gradual dehydration, and can't recover from the sickened condition from dysentery until the disease is cured.",
+				{
+					"type": "affliction",
+					"DC": 19,
+					"savingThrow": "Fortitude",
+					"onset": "1 day",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition sickened 1}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition fatigued} and {@condition sickened 1}",
+							"duration": "1 day"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Malaria",
+			"source": "AoA2",
+			"page": 71,
+			"type": "Disease",
+			"level": 7,
+			"traits": [
+				"disease"
+			],
+			"entries": [
+				"The victim has a fever and flu-like symptoms, and can't recover from the {@condition fatigued} condition from malaria until the disease is cured.",
+				{
+					"type": "affliction",
+					"DC": 23,
+					"savingThrow": "Fortitude",
+					"onset": "{@dice 1d6+6} days",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition fatigued}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition enfeebled 1}",
+							"duration": "1 day"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Exhaustive Addiction",
 			"source": "LOMM",
 			"page": 65,

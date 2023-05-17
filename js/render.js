@@ -1613,21 +1613,17 @@ function Renderer () {
 					// Resolving that, just add the entry at the end if the previous two are false.
 					if (entry.entries[i].type === "pf2-h1-flavor" || entry.entries[i].type === "pf2-sidebar") {
 						entry.entries.splice(i + 1, 0, `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
-						return
 					} else if (!entry.entries.filter(t => typeof t === "string").length) {
 						entry.entries.unshift(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
-						return
 					} else if (typeof entry.entries[i] === "object") {
 						entry.entries.splice(i, 0, `{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
-						return
 					} else {
 						entry.entries.push(`{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
-						return
 					}
 				}
 			}
-			// Dedpulication measure, not needed though (?)
-			// entry.entries = Array.from([...new Set(entry.entries)]);
+			// Dedpulication measure, FIXME: This is a lazy solution
+			entry.entries = Array.from([...new Set(entry.entries)]);
 		}
 	}
 
@@ -3911,6 +3907,9 @@ Renderer.action = {
 		if (it.trigger != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trigger&nbsp;</strong>${renderer.render(it.trigger)}</p>`);
 		}
+		if (it.overcome != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Overcome&nbsp;</strong>${renderer.render(it.overcome)}</p>`);
+		}
 		if (it.requirements != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Requirements&nbsp;</strong>${renderer.render(it.requirements)}</p>`);
 		}
@@ -4121,11 +4120,11 @@ Renderer.companion = {
 		${Renderer.utils.getTraitsDiv(companion.traits)}
 		${companion.access ? `<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(companion.access)}</p>` : ""}
 		${(companion.traits && companion.traits.length) || companion.access ? Renderer.utils.getDividerDiv() : ""}
-		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${companion.size}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${companion.size.map(s => s.toTitleCase()).join(" or ")}</p>
 		${Renderer.creature.getAttacks(companion)}
 		${Renderer.creature.getAbilityMods(companion.abilityMods)}
 		<p class="pf2-stat pf2-stat__section"><strong>Hit Points&nbsp;</strong>${companion.hp}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill}}`)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill.toTitleCase()}}`)}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(companion)}
 		${Renderer.creature.getSpeed(companion)}
 		${companion.special ? `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(companion.special)}</p>` : ""}
@@ -4389,18 +4388,17 @@ Renderer.creature = {
 		if (!creature.defenses.ac) return null;
 		const renderer = Renderer.get();
 		const mainPart = `<strong>AC&nbsp;</strong> ${creature.defenses.ac.std}`;
-		const extraACList = Object.keys(creature.defenses.ac).filter(k => k !== "std" && k !== "note" && k !== "abilities")
-			.map(k => `${creature.defenses.ac[k]} ${k}`).join(", ");
-		const extraACs = extraACList ? ` (${extraACList})` : "";
-		// TODO: deprecate ac.note
-		const notePart = creature.defenses.ac.note ? renderer.render(creature.defenses.ac.note) : "";
+		const extraACs = Object.keys(creature.defenses.ac).filter(k => k !== "std" && k !== "notes" && k !== "abilities")
+			.map(k => `${creature.defenses.ac[k]} ${k}`);
+		const notes = (creature.defenses.ac.notes || []).map(n => renderer.render(n));
+		const notePart = (extraACs.length + notes.length) ? ` (${extraACs.concat(notes).join(", ")})` : "";
 		const abilitiesPart = creature.defenses.ac.abilities ? `; ${renderer.render(creature.defenses.ac.abilities)}` : "";
-		return `${mainPart}${extraACs}${notePart}${abilitiesPart}`;
+		return `${mainPart}${notePart}${abilitiesPart}`;
 	},
 	getDefenses_getSavingThrowPart (creature) {
 		if (!creature.defenses.savingThrows) return null;
 		const renderer = Renderer.get();
-		const abilities = [].concat(creature.defenses.savingThrows.abilities || []);
+		const abilities = creature.defenses.savingThrows.abilities || [];
 		const savingThrowParts = Object.keys(creature.defenses.savingThrows).filter(k => k !== "abilities")
 			.map(k => {
 				const saveName = `${Parser.savingThrowAbvToFull(k)} Save`;
@@ -4477,11 +4475,11 @@ Renderer.creature = {
 			let renderStack = [];
 			for (let sc of cr.spellcasting) {
 				const meta = [];
-				let spellcastingName = sc.name ? sc.name : `${sc.tradition} ${sc.type}`.toTitleCase();
+				let spellcastingName = sc.name ? sc.name : `${sc.tradition} ${sc.type} Spells`.toTitleCase();
 				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
 				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
 				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${spellcastingName}${/Spell/.test(spellcastingName) ? "" : " Spells"}&nbsp;</strong>`)
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${spellcastingName}&nbsp;</strong>`)
 				if (sc.note != null) renderStack.push(`${renderer.render(sc.note)} `)
 				renderStack.push(renderer.render(meta.join(", ")))
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
@@ -4563,6 +4561,7 @@ Renderer.creature = {
 		const $ele = $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
+					${ability.components && ability.components.length ? `${ability.components.map(t => renderer.render(t)).join(", ")} ` : ""}
 					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}) ` : ""}
 					${ability.note ? renderer.render_addTerm(ability.note) : ""}
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
@@ -5044,8 +5043,7 @@ Renderer.hazard = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Stealth&nbsp;</strong>${renderer.render(stealthText)}</p>`);
 		}
 		if (hazard.perception) {
-			let perceptionText = hazard.perception.dc != null ? `DC ${hazard.perception.dc}` : `{@d20 ${hazard.perception.bonus}||perception}`;
-			if (hazard.perception.minProf) perceptionText += ` (${hazard.perception.minProf})`;
+			let perceptionText = `{@d20 ${hazard.perception.bonus}||perception}`;
 			if (hazard.perception.notes) perceptionText += ` ${hazard.perception.notes}`;
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${renderer.render(perceptionText)}</p>`);
 		}
@@ -5398,6 +5396,7 @@ Renderer.item = {
 		${data.traits && data.traits.length ? `<p class="pf2-stat pf2-stat__section"><strong>Traits&nbsp;</strong>${data.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}</p>` : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Damage&nbsp;</strong>${renderer.render(`{@damage ${data.damage}}&nbsp;${Parser.dmgTypeToFull(data.damageType)}${data.damage2 ? ` and {@damage ${data.damage2}}&nbsp;${data.damageType2 ? Parser.dmgTypeToFull(data.damageType2) : Parser.dmgTypeToFull(data.damageType)}` : ""}`)}</p>
 		${rangedLine ? `<p class="pf2-stat pf2-stat__section">${rangedLine}</p>` : ""}
+		${data.hands ? `<p class="pf2-stat pf2-stat__section"><strong>Hands&nbsp;</strong>${data.hands}</p>` : ""}
 		${opts.doRenderGroup ? `<p class="pf2-stat pf2-stat__section"><strong>Group&nbsp;</strong>${renderer.render(`{@group ${data.group}}`)}</p>` : ""}
 		`;
 	},

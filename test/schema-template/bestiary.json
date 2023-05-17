@@ -27,6 +27,12 @@
 					"name": {
 						"type": "string"
 					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
 					"page": {
 						"type": "integer",
 						"exclusiveMinimum": 0
@@ -129,10 +135,7 @@
 							"abilities": {
 								"type": "array",
 								"items": {
-									"type": "string",
-									"enum": [
-										"//TODO"
-									]
+									"type": "string"
 								},
 								"minItems": 1,
 								"uniqueItems": true
@@ -314,7 +317,7 @@
 								},
 								"attack": {
 									"type": "integer",
-									"minimum": 10
+									"minimum": 0
 								},
 								"DC": {
 									"type": "integer",
@@ -343,7 +346,6 @@
 							},
 							"additionalProperties": false,
 							"required": [
-								"name",
 								"type",
 								"DC",
 								"entry"

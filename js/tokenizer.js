@@ -307,7 +307,7 @@ class TokenizerUtils {
 		return [
 			{regex: /^((?:Arcane|Divine|Occult|Primal)\s(?:Innate|Prepared|Spontaneous)?)\s?Spells?/, type: "SPELL_CASTING", lookbehind: /\n$/, mode: "cr_spells"},
 			{regex: /^((?:Innate|Prepared|Spontaneous)\s(?:Arcane|Divine|Occult|Primal)?)\s?Spells?/, type: "SPELL_CASTING", lookbehind: /\n$/, mode: "cr_spells"},
-			{regex: /^((?:[A-Z][a-z]+ )+)Spells\s(?![A-Z][a-z])/, type: "SPELL_CASTING", lookbehind: /\n$/, mode: "cr_spells"},
+			{regex: /^((?:[A-Z][a-z]+\s)+Spells)\s(?![A-Z][a-z])/, type: "SPELL_CASTING", lookbehind: /\n$/, mode: "cr_spells"},
 			{regex: /^(Witch Hexes)/, type: "SPELL_CASTING", lookbehind: /\n$/, mode: "cr_spells"},
 		]
 	}
@@ -884,8 +884,8 @@ class TokenizerUtils {
 
 	static get sensesTypes () {
 		return [
-			{regex: /precise/, type: "precise"},
 			{regex: /imprecise/, type: "imprecise"},
+			{regex: /precise/, type: "precise"},
 			{regex: /vague/, type: "vague"},
 		]
 	}

@@ -9469,6 +9469,9 @@
 			"otherSources": {
 				"Expanded": [
 					"LOIL|323"
+				],
+				"Originally": [
+					"AoA5|84"
 				]
 			},
 			"traits": [
@@ -9567,7 +9570,15 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
 					}
 				}
 			],
@@ -9645,7 +9656,10 @@
 					},
 					"will": {
 						"std": 20
-					}
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
 				},
 				"hp": [
 					{
@@ -13701,7 +13715,7 @@
 					}
 				},
 				{
-					"name": "Divine Domain",
+					"name": "Divine Domain Spells",
 					"type": "Focus",
 					"fp": 1,
 					"DC": 19,
@@ -15820,7 +15834,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Champion Devotion",
+					"name": "Champion Devotion Spells",
 					"type": "Focus",
 					"fp": 2,
 					"DC": 29,
@@ -16183,6 +16197,11 @@
 			"name": "Elder Wyrmwraith",
 			"source": "B3",
 			"page": 297,
+			"otherSources": {
+				"Originally": [
+					"AoA6|85"
+				]
+			},
 			"level": 23,
 			"traits": [
 				"rare",
@@ -16470,7 +16489,12 @@
 					}
 				],
 				"immunities": [
-					"as wyrmwraith"
+					"poison",
+					"precision",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"unconscious"
 				],
 				"resistances": [
 					{
@@ -24153,8 +24177,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"The misery siktempora {@action Stride||Strides} once and makes a claw {@action Strike}, in either order."
@@ -24412,8 +24435,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The titan casts plane shift",
 						"frequency": {
@@ -24459,8 +24481,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"The titan molds a weapon from interstellar darkness. This is a +3 major striking weapon in any form. It can't be disarmed and deals an additional {@damage 2d12} force damage. If Released, a void weapon vanishes."
@@ -24611,8 +24632,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"auditory",
@@ -28438,6 +28458,11 @@
 			"name": "Kishi",
 			"source": "B3",
 			"page": 149,
+			"otherSources": {
+				"Originally": [
+					"AoA2|88"
+				]
+			},
 			"level": 8,
 			"traits": [
 				"ne",
@@ -28537,7 +28562,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d10+9} piercing, DC 26 ({@condition grabbed} by jaws only; page 304)"
+							"{@damage 1d10+9} piercing, DC 26 ({@condition grabbed} by jaws only)"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -28547,8 +28572,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"The kishi switches between showing their attractive human face and their snarling hyena face. A kishi can use their innate spell and their {@skill Deception} and {@skill Diplomacy} skills only when their human face is showing, and they can use their jaws {@action Strike} only when their hyena face is showing."
@@ -28598,6 +28622,12 @@
 					{
 						"amount": 10,
 						"name": "cold iron"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "piercing"
 					}
 				]
 			}
@@ -32106,7 +32136,7 @@
 					}
 				},
 				{
-					"name": "Bard Composition",
+					"name": "Bard Composition Spells",
 					"type": "Focus",
 					"fp": 3,
 					"DC": 37,
@@ -32168,8 +32198,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"The misery siktempora {@action Stride||Strides} once and makes a claw {@action Strike}, in either order."
@@ -33005,8 +33034,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "a foe's turn begins",
 						"frequency": {
@@ -33202,7 +33230,7 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Monk Ki",
+					"name": "Monk Ki Spells",
 					"type": "Focus",
 					"fp": 3,
 					"DC": 24,
@@ -34354,8 +34382,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The misery siktempora rolls Dimension of {@skill Lore||Time Lore} for initiative",
 						"entries": [
@@ -35126,6 +35153,11 @@
 			"name": "Mokele-mbembe",
 			"source": "B3",
 			"page": 171,
+			"otherSources": {
+				"Originally": [
+					"AoA2|90"
+				]
+			},
 			"level": 9,
 			"traits": [
 				"uncommon",
@@ -38015,8 +38047,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"auditory",
@@ -38088,7 +38119,7 @@
 					{
 						"hp": 135,
 						"abilities": [
-							"fast healing 10 (page 305)",
+							"fast healing 10",
 							"{@ability negative healing|b2}",
 							"plagued coffin"
 						]
@@ -38300,7 +38331,7 @@
 					{
 						"hp": 216,
 						"abilities": [
-							"fast healing 15 (page 305)",
+							"fast healing 15",
 							"{@ability negative healing|b2}",
 							"plagued coffin restoration"
 						]
@@ -39472,8 +39503,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"generic": {
 							"tag": "ability"
@@ -42483,8 +42513,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The popobawa moves an object with mage hand or telekinetic haul, controls a creature with dominate, or casts animated assault",
 						"entries": [
@@ -44761,6 +44790,11 @@
 			"name": "Sabosan",
 			"source": "B3",
 			"page": 217,
+			"otherSources": {
+				"Originally": [
+					"AoA2|91"
+				]
+			},
 			"level": 5,
 			"traits": [
 				"ne",
@@ -45219,8 +45253,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"trigger": "The sasquatch is in forest terrain and rolls {@skill Stealth} for Initiative",
 						"entries": [
@@ -46352,7 +46385,7 @@
 					}
 				},
 				{
-					"name": "Champion Devotion",
+					"name": "Champion Devotion Spells",
 					"type": "Focus",
 					"DC": 19,
 					"fp": 2,
@@ -46891,8 +46924,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"abjuration",
@@ -47702,8 +47734,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"requirements": "The shulsaga is adjacent to a floating disk they created",
 						"frequency": {
@@ -50679,8 +50710,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"requirements": "The sturzstromer's most recent action was to cast {@spell earthquake}",
 						"entries": [
@@ -51229,8 +51259,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"requirements": "The swordkeeper has a central weapon",
 						"entries": [
@@ -52209,8 +52238,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"traits": [
 							"divine"
@@ -54365,8 +54393,7 @@
 					{
 						"activity": {
 							"number": 1,
-							"unit": "free",
-							"entry": "{@as F}"
+							"unit": "free"
 						},
 						"entries": [
 							"The misery siktempora {@action Stride||Strides} once and makes a claw {@action Strike}, in either order."
@@ -54865,6 +54892,11 @@
 			"name": "Tzitzimitl",
 			"source": "B3",
 			"page": 279,
+			"otherSources": {
+				"Originally": [
+					"AoA6|82"
+				]
+			},
 			"level": 19,
 			"traits": [
 				"uncommon",
@@ -55102,25 +55134,41 @@
 					{
 						"hp": 390,
 						"abilities": [
-							"fast healing 15 (page 305)",
+							"fast healing 15",
 							"{@ability negative healing|b2}"
 						]
 					}
 				],
 				"immunities": [
-					"electricity",
-					"negative",
-					"poison",
-					"precision",
+					"cold",
 					"death effects",
 					"disease",
+					"electricity",
+					"negative",
 					"paralyzed",
+					"poison",
+					"precision",
 					"unconscious"
 				],
 				"weaknesses": [
 					{
 						"amount": 15,
 						"name": "good"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "cold"
+					},
+					{
+						"amount": 15,
+						"name": "fire"
+					},
+					{
+						"amount": 15,
+						"name": "physical",
+						"note": "except bludgeoning"
 					}
 				]
 			}
@@ -56671,7 +56719,7 @@
 					}
 				},
 				{
-					"name": "Champion Focus",
+					"name": "Champion Focus Spells",
 					"type": "Focus",
 					"DC": 24,
 					"fp": 1,
@@ -58260,6 +58308,11 @@
 			"name": "Wyrmwraith",
 			"source": "B3",
 			"page": 296,
+			"otherSources": {
+				"Originally": [
+					"AoA6|84"
+				]
+			},
 			"level": 17,
 			"traits": [
 				"rare",
