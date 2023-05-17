@@ -5043,8 +5043,7 @@ Renderer.hazard = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Stealth&nbsp;</strong>${renderer.render(stealthText)}</p>`);
 		}
 		if (hazard.perception) {
-			let perceptionText = hazard.perception.dc != null ? `DC ${hazard.perception.dc}` : `{@d20 ${hazard.perception.bonus}||perception}`;
-			if (hazard.perception.minProf) perceptionText += ` (${hazard.perception.minProf})`;
+			let perceptionText = `{@d20 ${hazard.perception.bonus}||perception}`;
 			if (hazard.perception.notes) perceptionText += ` ${hazard.perception.notes}`;
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${renderer.render(perceptionText)}</p>`);
 		}
