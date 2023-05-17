@@ -1937,8 +1937,12 @@
 								"exclusiveMinimum": 0
 							}
 						},
-						"note": {
-							"type": "string"
+						"notes": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"minItems": 1
 						},
 						"abilities": {
 							"type": "array",
@@ -2041,6 +2045,15 @@
 								"std": {
 									"type": "integer",
 									"exclusiveMinimum": 0
+								},
+								"notes": {
+									"type": "object",
+									"patternProperties": {
+										"^.+$": {
+											"type": "string"
+										}
+									},
+									"minProperties": 1
 								}
 							},
 							"patternProperties": {
@@ -2058,33 +2071,19 @@
 								"description": "Hit Points",
 								"type": "object",
 								"properties": {
-									"std": {
-										"type": "integer",
-										"exclusiveMinimum": 0
-									}
-								},
-								"patternProperties": {
-									"^.+$": {
-										"type": "integer",
-										"exclusiveMinimum": 0
-									}
-								},
-								"additionalProperties": false,
-								"minProperties": 1
-							}
-						},
-						{
-							"type": "array",
-							"items": {
-								"description": "Hit Points",
-								"type": "object",
-								"properties": {
 									"hp": {
 										"type": "integer",
 										"exclusiveMinimum": 0
 									},
 									"name": {
 										"type": "string"
+									},
+									"abilities": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"minItems": 1
 									},
 									"notes": {
 										"type": "array",
@@ -2093,7 +2092,11 @@
 										},
 										"minItems": 1
 									}
-								}
+								},
+								"additionalProperties": false,
+								"required": [
+									"hp"
+								]
 							}
 						}
 					]
