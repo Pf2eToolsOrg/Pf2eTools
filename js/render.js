@@ -827,6 +827,8 @@ function Renderer () {
 		if (entry.noMAP) MAP = 0;
 		if (entry.traits && entry.traits.map(t => t.toLowerCase()).includes("agile")) MAP = -4;
 
+		const showBBStrike = options && options.beginnerBoxLayout;
+
 		let actions;
 		if (entry.activity) {
 			actions = Parser.timeToFullEntry(entry.activity);
@@ -842,7 +844,7 @@ function Renderer () {
 		}
 
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${this.render(actions)} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
+			<strong>${entry.range}${showBBStrike ? " Strike" : ""}&nbsp;</strong>${this.render(actions)} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
@@ -4454,17 +4456,18 @@ Renderer.creature = {
 
 	getSpeed (cr) {
 		const renderer = Renderer.get();
+		const title = cr.beginnerBoxLayout ? renderer.render("Stride {@as 1}") : "Speed"
 		const speeds = cr.speed.walk != null ? [`${cr.speed.walk} feet`] : [];
 		speeds.push(...Object.keys(cr.speed).filter(k => !(["abilities", "walk", "speedNote"].includes(k))).map(k => `${k} ${cr.speed[k]} feet`));
 		return `<p class="pf2-stat pf2-stat__section">
-				<strong>Speed&nbsp;</strong>${speeds.join(", ")}${cr.speed.abilities != null ? `; ${renderer.render(cr.speed.abilities.join(", "))}` : ""}${cr.speed.speedNote ? ` ${cr.speed.speedNote}` : ""}</p>`
+				<strong>${title}&nbsp;</strong>${speeds.join(", ")}${cr.speed.abilities != null ? `; ${renderer.render(cr.speed.abilities.join(", "))}` : ""}${cr.speed.speedNote ? ` ${cr.speed.speedNote}` : ""}</p>`
 	},
 
 	getAttacks (cr) {
 		if (cr.attacks) {
 			const renderer = Renderer.get();
 			const renderStack = [""];
-			cr.attacks.forEach(a => renderer._renderAttack(a, renderStack));
+			cr.attacks.forEach(a => renderer._renderAttack(a, renderStack, null, { beginnerBoxLayout: cr.beginnerBoxLayout }));
 			return renderStack.join("");
 		}
 	},
@@ -4474,18 +4477,28 @@ Renderer.creature = {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			for (let sc of cr.spellcasting) {
-				const meta = [];
-				let spellcastingName = sc.name ? sc.name : `${sc.tradition} ${sc.type} Spells`.toTitleCase();
-				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
-				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
-				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
+				const useBBLayout = cr.beginnerBoxLayout && sc.note;
+
+				let spellcastingName;
+				if (useBBLayout) spellcastingName = "Spells";
+				else spellcastingName = sc.name ? sc.name : `${sc.tradition} ${sc.type} Spells`.toTitleCase();
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${spellcastingName}&nbsp;</strong>`)
-				if (sc.note != null) renderStack.push(`${renderer.render(sc.note)} `)
-				renderStack.push(renderer.render(meta.join(", ")))
+
+				if (sc.note != null) renderStack.push(`${renderer.render(sc.note)} `);
+
+				const meta = [];
+				const metaPrefix = useBBLayout ? "spell " : "";
+				if (sc.DC != null) meta.push(`${metaPrefix}DC ${sc.DC}`);
+				if (sc.attack != null) meta.push(`${metaPrefix}attack {@hit ${sc.attack}||Spell attack}`);
+				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
+				const metaText = renderer.render(meta.join(", "));
+				renderStack.push(useBBLayout ? `(${metaText})` : metaText);
+
+				const levelText = useBBLayout ? " Level" : "";
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
 					if (lvl !== "constant") {
-						renderStack.push(`<span>; <strong>${lvl === "0" ? "Cantrips" : Parser.getOrdinalForm(lvl)}&nbsp;</strong>`)
-						if (sc.entry[lvl].level != null) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)})&nbsp;</strong>`)
+						renderStack.push(`<span>; <strong>${lvl === "0" ? "Cantrips" : Parser.getOrdinalForm(lvl) + levelText}&nbsp;</strong>`)
+						if (sc.entry[lvl].level != null) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)}${levelText})&nbsp;</strong>`)
 						if (sc.entry[lvl].slots != null) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
 						let spells = []
 						for (let spell of sc.entry[lvl].spells) {
@@ -4502,7 +4515,7 @@ Renderer.creature = {
 						renderStack.push(`<span>; <strong>Constant&nbsp;</strong></span>`)
 						Object.keys(sc.entry["constant"]).sort().reverse().forEach((clvl, idx) => {
 							if (idx !== 0) renderStack.push("; ");
-							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)})&nbsp;</strong></span>`)
+							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)}${levelText})&nbsp;</strong></span>`)
 							let spells = []
 							for (let spell of sc.entry["constant"][clvl].spells) {
 								let bracket = ""
@@ -5037,10 +5050,22 @@ Renderer.hazard = {
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(hazard.traits || [])}`);
 		if (hazard.stealth) {
-			let stealthText = hazard.stealth.dc != null ? `DC ${hazard.stealth.dc}` : `{@d20 ${hazard.stealth.bonus}||Stealth}`;
-			if (hazard.stealth.minProf) stealthText += ` (${hazard.stealth.minProf})`;
-			if (hazard.stealth.notes) stealthText += ` ${hazard.stealth.notes}`;
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Stealth&nbsp;</strong>${renderer.render(stealthText)}</p>`);
+			if (hazard.beginnerBoxLayout) {
+				if (hazard.stealth.dc) {
+					let noticeText = `DC ${hazard.stealth.dc} {@skill Perception} check`;
+					if (hazard.stealth.notes) noticeText += ` ${hazard.stealth.notes}`;
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Notice&nbsp;</strong>${renderer.render(noticeText)}</p>`);
+				}
+				if (hazard.stealth.bonus) {
+					let initiativeText = `{@d20 ${hazard.stealth.bonus}||Stealth}`;
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Initiative&nbsp;</strong>${renderer.render(initiativeText)}</p>`);
+				}
+			} else {
+				let stealthText = hazard.stealth.dc != null ? `DC ${hazard.stealth.dc}` : `{@d20 ${hazard.stealth.bonus}||Stealth}`;
+				if (hazard.stealth.minProf) stealthText += ` (${hazard.stealth.minProf})`;
+				if (hazard.stealth.notes) stealthText += ` ${hazard.stealth.notes}`;
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Stealth&nbsp;</strong>${renderer.render(stealthText)}</p>`);
+			}
 		}
 		if (hazard.perception) {
 			let perceptionText = hazard.perception.dc != null ? `DC ${hazard.perception.dc}` : `{@d20 ${hazard.perception.bonus}||perception}`;
@@ -5073,7 +5098,7 @@ Renderer.hazard = {
 			allActions.forEach(a => {
 				if (a.type === "attack") {
 					let textStack = [""]
-					renderer._renderAttack(a, textStack)
+					renderer._renderAttack(a, textStack, null, { beginnerBoxLayout: hazard.beginnerBoxLayout })
 					renderStack.push(textStack)
 				} else renderStack.push(Renderer.creature.getRenderedAbility(a, { noButton: true, asHTML: true }))
 			});
@@ -5082,7 +5107,7 @@ Renderer.hazard = {
 			renderStack.push(Renderer.utils.getDividerDiv());
 			hazard.routine.forEach((entry, idx) => {
 				if (idx !== 0) {
-					if (typeof entry === "object") renderer.recursiveRender(entry, renderStack);
+					if (typeof entry === "object") renderer.recursiveRender(entry, renderStack, { beginnerBoxLayout: hazard.beginnerBoxLayout });
 					else renderer.recursiveRender(entry, renderStack, { prefix: `<p class="pf2-stat pf2-stat__text--wide">`, suffix: "</p>" });
 				} else renderStack.push(`<p class="pf2-stat pf2-stat__text--wide"><strong>Routine&nbsp;</strong>${renderer.render(entry)}</p>`);
 			});
@@ -5105,13 +5130,20 @@ Renderer.hazard = {
 		const immunitiesPart = Renderer.creature.getDefenses_getImmunitiesPart(hazard);
 		const weakPart = Renderer.creature.getDefenses_getResWeakPart(hazard.defenses.weaknesses, "Weaknesses");
 		const resistPart = Renderer.creature.getDefenses_getResWeakPart(hazard.defenses.resistances, "Resistances");
-		const sect1 = [acPart, savingThrowPart].filter(Boolean);
-		const sect2 = [hpHardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
-		return `<p class="pf2-stat pf2-stat__section">
-					${sect1.join("; ")}
-					${sect1.length && sect2.length ? "</p><p class='pf2-stat pf2-stat__section'>" : ""}
-					${sect2.join("; ")}
-				</p>`;
+		if (hazard.beginnerBoxLayout) {
+			const parts = [acPart, savingThrowPart, hpHardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
+			return `<p class="pf2-stat pf2-stat__section">
+						${parts.join("</p><p class='pf2-stat pf2-stat__section'>")}
+					</p>`;
+		} else {
+			const sect1 = [acPart, savingThrowPart].filter(Boolean);
+			const sect2 = [hpHardnessPart, immunitiesPart, weakPart, resistPart].filter(Boolean);
+			return `<p class="pf2-stat pf2-stat__section">
+						${sect1.join("; ")}
+						${sect1.length && sect2.length ? "</p><p class='pf2-stat pf2-stat__section'>" : ""}
+						${sect2.join("; ")}
+					</p>`;
+		}
 	},
 	getDefenses_getHPHardnessPart (hazard) {
 		if (!hazard.defenses.hp) return null;

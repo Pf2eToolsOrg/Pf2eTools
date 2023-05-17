@@ -6111,13 +6111,14 @@
 			"source": "TiO",
 			"page": 14,
 			"level": 1,
+			"beginnerBoxLayout": true,
 			"traits": [
 				"mechanical",
 				"trap"
 			],
 			"stealth": {
 				"dc": 19,
-				"notes": "{@skill Perception} check (or 0 after the hazard is triggered)"
+				"notes": "(or 0 after the hazard is triggered)"
 			},
 			"description": [
 				"A section of splintery and rotten floorboards drop a creature 6 feet onto uneven rocks and piercing shards of wood."
@@ -10580,6 +10581,7 @@
 			"source": "TiO",
 			"page": 28,
 			"level": 5,
+			"beginnerBoxLayout": true,
 			"traits": [
 				"complex",
 				"magical",
@@ -10587,7 +10589,7 @@
 			],
 			"stealth": {
 				"dc": 22,
-				"notes": "{@skill Perception} check to spot the magical energies reverberating in the pillars"
+				"notes": "to spot the magical energies reverberating in the pillars"
 			},
 			"description": [
 				"Starknife symbols on the six pillars glow and shoot across the room."
@@ -11150,6 +11152,7 @@
 			"source": "TiO",
 			"page": 41,
 			"level": 6,
+			"beginnerBoxLayout": true,
 			"traits": [
 				"complex",
 				"magical",
@@ -11157,7 +11160,7 @@
 			],
 			"stealth": {
 				"dc": 22,
-				"notes": "{@skill Perception} to detect the subtle magical aura of the land"
+				"notes": "to detect the subtle magical aura of the land"
 			},
 			"description": [
 				"What seems like an innocent stretch of land assaults trespassers with terrible illusions."
@@ -14319,14 +14322,14 @@
 			"source": "TiO",
 			"page": 44,
 			"level": 5,
+			"beginnerBoxLayout": true,
 			"traits": [
 				"complex",
 				"mechanical",
 				"trap"
 			],
 			"stealth": {
-				"dc": 23,
-				"notes": "{@skill Perception}."
+				"dc": 23
 			},
 			"description": [
 				"Nozzles {@condition hidden} in the ceiling of the four corridors leading to the intersection spray jets of flame along their lengths when the trap is triggered."
@@ -15925,14 +15928,14 @@
 			"source": "TiO",
 			"page": 31,
 			"level": 1,
+			"beginnerBoxLayout": true,
 			"traits": [
 				"uncommon",
 				"mechanical",
 				"trap"
 			],
 			"stealth": {
-				"dc": 15,
-				"notes": "{@skill Perception} check"
+				"dc": 15
 			},
 			"description": [
 				"A ceramic urn containing a coiled viper tips and shatters when a tripwire is pulled."
@@ -16501,13 +16504,13 @@
 			"source": "TiO",
 			"page": 17,
 			"level": 2,
+			"beginnerBoxLayout": true,
 			"traits": [
 				"mechanical",
 				"trap"
 			],
 			"stealth": {
-				"dc": 22,
-				"notes": "{@skill Perception} check"
+				"dc": 22
 			},
 			"description": [
 				"Discreet webbing at throat level snags a creature that walks into it."
@@ -16566,7 +16569,7 @@
 					"range": "Melee",
 					"name": "noose",
 					"attack": 13,
-					"effects": [
+					"traits": [
 						"deadly <d10>"
 					],
 					"damage": "{@damage 3d6} bludgeoning and the target gains the {@condition grabbed} condition is and pulled off the ground ({@action Escape} DC 22).",
@@ -18195,10 +18198,10 @@
 			"source": "BB",
 			"page": 12,
 			"level": 1,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"stealth": {
-				"dc": 20,
-				"notes": "{@skill Perception} check"
+				"dc": 20
 			},
 			"disable": {
 				"entries": [
@@ -18234,10 +18237,10 @@
 			"source": "BB",
 			"page": 14,
 			"level": 1,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"stealth": {
-				"dc": 20,
-				"notes": "{@skill Perception} check"
+				"dc": 20
 			},
 			"disable": {
 				"entries": [
@@ -18276,10 +18279,11 @@
 			"source": "BB",
 			"page": 21,
 			"level": 3,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"stealth": {
-				"bonus": 10,
-				"notes": "; DC 20 {@skill Perception} check to notice."
+				"dc": 20,
+				"bonus": 10
 			},
 			"disable": {
 				"entries": [
@@ -18342,13 +18346,14 @@
 			"source": "BB",
 			"page": 49,
 			"level": 0,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"description": [
 				"A wooden trapdoor covers a 10-foot square pit that's 20 feet deep."
 			],
 			"stealth": {
 				"dc": 18,
-				"notes": "{@skill Perception} check (or DC 0 if the trapdoor is disabled or {@condition broken})."
+				"notes": "(or DC 0 if the trapdoor is disabled or {@condition broken})."
 			},
 			"disable": {
 				"entries": [
@@ -18399,13 +18404,13 @@
 			"source": "BB",
 			"page": 49,
 			"level": 1,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"description": [
 				"A spring-loaded, poisoned spine is hidden near the keyhole of a lock. Disabling or breaking the trap doesn't disable or break the lock."
 			],
 			"stealth": {
-				"dc": 17,
-				"notes": "{@skill Perception} check"
+				"dc": 17
 			},
 			"disable": {
 				"entries": [
@@ -18459,13 +18464,13 @@
 			"source": "BB",
 			"page": 49,
 			"level": 1,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"description": [
 				"Pressure-sensitive panels in the floor connect to a stone slab hidden in a hallway's ceiling."
 			],
 			"stealth": {
-				"dc": 17,
-				"notes": "{@skill Perception} check"
+				"dc": 17
 			},
 			"disable": {
 				"entries": [
@@ -18520,10 +18525,10 @@
 			"source": "BB",
 			"page": 49,
 			"level": 2,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"stealth": {
-				"dc": 20,
-				"notes": "{@skill Perception} check"
+				"dc": 20
 			},
 			"description": [
 				"A wall socket loaded with a spear connects to a floor tile in one 5-foot square."
@@ -18580,10 +18585,10 @@
 			"source": "BB",
 			"page": 49,
 			"level": 4,
+			"beginnerBoxLayout": true,
 			"traits": [],
 			"stealth": {
-				"dc": 23,
-				"notes": "{@skill Perception} check"
+				"dc": 23
 			},
 			"description": [
 				"Two blades, each hidden in a 15-foot-long ceiling groove, are both connected to a trip wire."
