@@ -91,9 +91,9 @@
 					],
 					"effects": [
 						"{@dice 4d8+12}",
-						"{@condition stunned|CRB|stunned 1} (DC 38 Fortitude negates)"
+						"{@condition stunned|CRB|stunned 1} ({@dc 38} Fortitude negates)"
 					],
-					"damage": "{@dice 4d8+12} plus {@condition stunned|CRB|stunned 1} (DC 38 Fortitude negates)",
+					"damage": "{@dice 4d8+12} plus {@condition stunned|CRB|stunned 1} ({@dc 38} Fortitude negates)",
 					"types": []
 				},
 				{
@@ -157,7 +157,7 @@
 							"fire"
 						],
 						"entries": [
-							"The ammut exhales a blast of flame that deals {@damage 18d6} fire damage to all creatures in a 30- foot cone (DC 37 basic Reflex save). The ammut can't use their Breath Weapon again for {@dice 1d4} rounds."
+							"The ammut exhales a blast of flame that deals {@damage 18d6} fire damage to all creatures in a 30- foot cone ({@dc 37} basic Reflex save). The ammut can't use their Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -207,7 +207,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"A creature dealt damage by an ammut's claw {@action Strike} must succeed at a DC 37 Will save or become {@condition enfeebled|CRB|enfeebled 1} and {@condition drained|CRB|drained 1} (or {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 2} on a critical failed save). The conditions cannot be mitigated until the curse is removed, and the curse cannot be removed until all damage dealt by the claw {@action Strike} is healed. Each day, a creature afflicted with wasting wound must attempt another saving throw; on a failed save, the values of its {@condition enfeebled} and {@condition drained} conditions each increase by 1. If the victim dies while cursed, its soul is destroyed, as per the ammut's devour soul ability."
+							"A creature dealt damage by an ammut's claw {@action Strike} must succeed at a {@dc 37} Will save or become {@condition enfeebled|CRB|enfeebled 1} and {@condition drained|CRB|drained 1} (or {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 2} on a critical failed save). The conditions cannot be mitigated until the curse is removed, and the curse cannot be removed until all damage dealt by the claw {@action Strike} is healed. Each day, a creature afflicted with wasting wound must attempt another saving throw; on a failed save, the values of its {@condition enfeebled} and {@condition drained} conditions each increase by 1. If the victim dies while cursed, its soul is destroyed, as per the ammut's devour soul ability."
 						],
 						"name": "Wasting Wound"
 					}
@@ -618,7 +618,7 @@
 						},
 						"trigger": "The death drider is reduced to 0 Hit Points",
 						"entries": [
-							"The death drider explodes in a shower of spiders. Each adjacent creature must succeed at a DC 31 Reflex save or take {@damage 3d6} piercing damage and be exposed to death drider venom."
+							"The death drider explodes in a shower of spiders. Each adjacent creature must succeed at a {@dc 31} Reflex save or take {@damage 3d6} piercing damage and be exposed to death drider venom."
 						],
 						"name": "Sack of Spiders"
 					}
@@ -654,7 +654,7 @@
 					},
 					{
 						"entries": [
-							"A creature hit by a death drider's web attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} DC 31). Each round thereafter until it breaks free, the creature takes {@damage 3d6} piercing damage (DC 31 basic Reflex save) and, on a failed save, is exposed to death drider venom."
+							"A creature hit by a death drider's web attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} {@dc 31}). Each round thereafter until it breaks free, the creature takes {@damage 3d6} piercing damage ({@dc 31} basic Reflex save) and, on a failed save, is exposed to death drider venom."
 						],
 						"name": "Hungering Web"
 					}
@@ -1073,7 +1073,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. Living creatures are {@condition frightened|CRB|frightened 2} while in Dyzallin's utter despair aura. They can't naturally recover from this fear while in the area but lose the {@condition frightened} condition immediately upon leaving the area. When a creature first enters the aura, it must succeed at a DC 39 Will save (after taking the penalty from being {@condition frightened}) or be {@condition paralyzed} for {@dice 1d4} rounds. The creature is then temporarily immune to the paralysis caused by the utter despair aura for 24 hours."
+							"30 feet. Living creatures are {@condition frightened|CRB|frightened 2} while in Dyzallin's utter despair aura. They can't naturally recover from this fear while in the area but lose the {@condition frightened} condition immediately upon leaving the area. When a creature first enters the aura, it must succeed at a {@dc 39} Will save (after taking the penalty from being {@condition frightened}) or be {@condition paralyzed} for {@dice 1d4} rounds. The creature is then temporarily immune to the paralysis caused by the utter despair aura for 24 hours."
 						],
 						"name": "Utter Despair"
 					},
@@ -1358,7 +1358,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Hollow Hush feeds on the emotional unrest of a single creature within 30 feet that's currently affected by an {@trait emotion} effect. The target must succeed at a DC 41 Will save or take {@damage 5d10} mental damage and be {@condition stunned} for 1 round. If the target fails its saving throw, Hollow Hush regains the same number of Hit Points and Feed on Emotion does not cost Hollow Hush an action, allowing it to use another action this turn."
+							"Hollow Hush feeds on the emotional unrest of a single creature within 30 feet that's currently affected by an {@trait emotion} effect. The target must succeed at a {@dc 41} Will save or take {@damage 5d10} mental damage and be {@condition stunned} for 1 round. If the target fails its saving throw, Hollow Hush regains the same number of Hit Points and Feed on Emotion does not cost Hollow Hush an action, allowing it to use another action this turn."
 						],
 						"name": "Feed on Emotion"
 					},
@@ -1545,7 +1545,7 @@
 							"occult"
 						],
 						"entries": [
-							"60 feet, DC 45. A creature entering or starting its turn in the aura that fails at a Fortitude save becomes {@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 1}. If the target was already {@condition doomed} or {@condition drained}, the values of these conditions increase by 1, to a maximum of {@condition doomed|CRB|doomed 3} and {@condition drained|CRB|drained 3}. A creature that dies while {@condition doomed|CRB|doomed 3} and {@condition drained|CRB|drained 3} in this way disintegrates into black sand."
+							"60 feet, {@dc 45}. A creature entering or starting its turn in the aura that fails at a Fortitude save becomes {@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 1}. If the target was already {@condition doomed} or {@condition drained}, the values of these conditions increase by 1, to a maximum of {@condition doomed|CRB|doomed 3} and {@condition drained|CRB|drained 3}. A creature that dies while {@condition doomed|CRB|doomed 3} and {@condition drained|CRB|drained 3} in this way disintegrates into black sand."
 						],
 						"name": "Aura of Annihilation"
 					},
@@ -1586,7 +1586,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"DC 43, {@damage 10d6} negative, {@action Escape} DC 43, Rupture 45."
+							"{@dc 43}, {@damage 10d6} negative, {@action Escape} {@dc 43}, Rupture 45."
 						],
 						"name": "Engulf",
 						"generic": {
@@ -1599,7 +1599,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Iffdahsil deals {@damage 8d8} piercing damage to each creature in a 10-foot emanation (DC 43 basic Reflex save) and can also attempt to Grab any creatures who critically fail their save as a free action.",
+							"Iffdahsil deals {@damage 8d8} piercing damage to each creature in a 10-foot emanation ({@dc 43} basic Reflex save) and can also attempt to Grab any creatures who critically fail their save as a free action.",
 							"Iffdahsil is then {@condition flat-footed} until the start of its next turn."
 						],
 						"name": "Tentacular Burst"
@@ -1828,7 +1828,7 @@
 							"negative"
 						],
 						"entries": [
-							"When Kharostan dies, his daemon-tainted flesh quickly rots away and sublimates into a foul-smelling gas that fills a 10-foot emanation around his body. All creatures within the area take {@damage 20d6} negative damage as their flesh curdles and rots as well (DC 37 basic Fortitude save)."
+							"When Kharostan dies, his daemon-tainted flesh quickly rots away and sublimates into a foul-smelling gas that fills a 10-foot emanation around his body. All creatures within the area take {@damage 20d6} negative damage as their flesh curdles and rots as well ({@dc 37} basic Fortitude save)."
 						],
 						"name": "Necrotic Decay"
 					},
@@ -1904,7 +1904,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Kharostan's bite leaves the victim's flesh translucent around the site of the injury. He chooses one of the effects below, each of which requires the damaged creature to attempt a DC 37 Fortitude save. If the jaws {@action Strike} was a critical hit, the creature takes both effects, rolling the saving throw once and using the result for both effects.",
+							"Kharostan's bite leaves the victim's flesh translucent around the site of the injury. He chooses one of the effects below, each of which requires the damaged creature to attempt a {@dc 37} Fortitude save. If the jaws {@action Strike} was a critical hit, the creature takes both effects, rolling the saving throw once and using the result for both effects.",
 							{
 								"type": "list",
 								"items": [
@@ -2133,7 +2133,7 @@
 							"aura"
 						],
 						"entries": [
-							"30 feet, DC 33. Swirling winds of noxious, flammable gas surround a muurfeli.",
+							"30 feet, {@dc 33}. Swirling winds of noxious, flammable gas surround a muurfeli.",
 							"An open flame, spark, or similar {@trait fire} effect in the area causes an explosion that deals {@damage 20d6} fire damage to all creatures in the aura (including the muurfeli) and temporarily disables the aura for 1 minute. When the muurfeli takes damage from an ability with the {@trait water} trait or fails a saving throw against a {@trait water} effect, their firedamp winds aura is disabled for 1 minute. A creature that enters or begins its turn in the aura must attempt a Fortitude save.",
 							{
 								"type": "successDegree",
@@ -2327,7 +2327,7 @@
 						},
 						"entries": [
 							"The obsidian golem slings razor-sharp shards of itself in a 15-foot cone.",
-							"Creatures in the area take {@damage 4d8+9} slashing damage (DC 37 basic Reflex save)."
+							"Creatures in the area take {@damage 4d8+9} slashing damage ({@dc 37} basic Reflex save)."
 						],
 						"name": "Fling Shards"
 					},
@@ -2774,7 +2774,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. A creature that enters the area must attempt a DC 32 Fortitude save.",
+							"30 feet. A creature that enters the area must attempt a {@dc 32} Fortitude save.",
 							"On a failure, the creature is {@condition sickened|CRB|sickened 2} and {@condition doomed|CRB|doomed 1} for as long as it is {@condition sickened}; on a critical failure, the creature is instead {@condition doomed|CRB|doomed 2} for as long as it is {@condition sickened}. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
 							"A creature that succeeds at its save is temporarily immune to any creature's death stench for 1 minute."
 						],
@@ -2798,7 +2798,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the Raptor Guard wight damages a living creature with a melee {@action Strike}, the wight gains 13 temporary Hit Points and the target creature must succeed at a DC 32 Fortitude save or become {@condition drained|CRB|drained 1}. Further damage dealt by the wight increases the {@condition drained} condition by 1 on a failed save, to a maximum of {@condition drained|CRB|drained 4}."
+							"When the Raptor Guard wight damages a living creature with a melee {@action Strike}, the wight gains 13 temporary Hit Points and the target creature must succeed at a {@dc 32} Fortitude save or become {@condition drained|CRB|drained 1}. Further damage dealt by the wight increases the {@condition drained} condition by 1 on a failed save, to a maximum of {@condition drained|CRB|drained 4}."
 						],
 						"name": "Drain Life"
 					},
@@ -3056,17 +3056,17 @@
 							"evocation"
 						],
 						"entries": [
-							"As graveknight, but {@damage 8d12} cold and DC 36."
+							"As graveknight, but {@damage 8d12} cold and {@dc 36}."
 						],
 						"name": "Devastating Blast",
-						"entries_as_xyz": "Ability not found: 'Devastating Blast As graveknight, but {@damage 8d12} cold and DC 36.' in Shraen Graveknight, p.52"
+						"entries_as_xyz": "Ability not found: 'Devastating Blast As graveknight, but {@damage 8d12} cold and {@dc 36}.' in Shraen Graveknight, p.52"
 					},
 					{
 						"entries": [
-							"As graveknight, but DC 36."
+							"As graveknight, but {@dc 36}."
 						],
 						"name": "Graveknight's Curse",
-						"entries_as_xyz": "Ability not found: 'Graveknight's Curse As graveknight, but DC 36.' in Shraen Graveknight, p.52"
+						"entries_as_xyz": "Ability not found: 'Graveknight's Curse As graveknight, but {@dc 36}.' in Shraen Graveknight, p.52"
 					},
 					{
 						"activity": {
@@ -3074,7 +3074,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Shraen graveknight {@action Step||Steps} once then {@action Strike||Strikes} with its rapier. A creature damaged by the attack must attempt a DC 36 Fortitude save. On a failure, the creature takes {@damage 4d6} {@condition persistent damage||persistent bleed damage}. On a critical failure, the attack pierces the creature's heart, and the creature dies."
+							"The Shraen graveknight {@action Step||Steps} once then {@action Strike||Strikes} with its rapier. A creature damaged by the attack must attempt a {@dc 36} Fortitude save. On a failure, the creature takes {@damage 4d6} {@condition persistent damage||persistent bleed damage}. On a critical failure, the attack pierces the creature's heart, and the creature dies."
 						],
 						"name": "Heart-Seeking Strike"
 					},
@@ -3360,10 +3360,10 @@
 				"mid": [
 					{
 						"entries": [
-							"As urdefhan warrior, but {@damage 15d6} negative damage and DC 34."
+							"As urdefhan warrior, but {@damage 15d6} negative damage and {@dc 34}."
 						],
 						"name": "Necrotic Decay",
-						"entries_as_xyz": "Ability not found: 'Necrotic Decay As urdefhan warrior, but {@damage 15d6} negative damage and DC 34.' in Urdefhan Dominator, p.83"
+						"entries_as_xyz": "Ability not found: 'Necrotic Decay As urdefhan warrior, but {@damage 15d6} negative damage and {@dc 34}.' in Urdefhan Dominator, p.83"
 					}
 				],
 				"bot": [
@@ -3380,10 +3380,10 @@
 					},
 					{
 						"entries": [
-							"As urdefhan warrior, but DC 33."
+							"As urdefhan warrior, but {@dc 33}."
 						],
 						"name": "Wicked Bite",
-						"entries_as_xyz": "Ability not found: 'Wicked Bite As urdefhan warrior, but DC 33.' in Urdefhan Dominator, p.83"
+						"entries_as_xyz": "Ability not found: 'Wicked Bite As urdefhan warrior, but {@dc 33}.' in Urdefhan Dominator, p.83"
 					}
 				]
 			},
@@ -3611,10 +3611,10 @@
 							"negative"
 						],
 						"entries": [
-							"As urdefhan warrior, but {@damage 10d6} negative damage and DC 29."
+							"As urdefhan warrior, but {@damage 10d6} negative damage and {@dc 29}."
 						],
 						"name": "Necrotic Decay",
-						"entries_as_xyz": "Ability not found: 'Necrotic Decay As urdefhan warrior, but {@damage 10d6} negative damage and DC 29.' in Urdefhan High Tormentor, p.82"
+						"entries_as_xyz": "Ability not found: 'Necrotic Decay As urdefhan warrior, but {@damage 10d6} negative damage and {@dc 29}.' in Urdefhan High Tormentor, p.82"
 					}
 				],
 				"bot": [
@@ -3637,10 +3637,10 @@
 					},
 					{
 						"entries": [
-							"As urdefhan warrior, but DC 29."
+							"As urdefhan warrior, but {@dc 29}."
 						],
 						"name": "Wicked Bite",
-						"entries_as_xyz": "Ability not found: 'Wicked Bite As urdefhan warrior, but DC 29.' in Urdefhan High Tormentor, p.82"
+						"entries_as_xyz": "Ability not found: 'Wicked Bite As urdefhan warrior, but {@dc 29}.' in Urdefhan High Tormentor, p.82"
 					}
 				]
 			},
@@ -3823,10 +3823,10 @@
 				"mid": [
 					{
 						"entries": [
-							"As urdefhan warrior, but {@damage 12d6} negative damage and DC 32."
+							"As urdefhan warrior, but {@damage 12d6} negative damage and {@dc 32}."
 						],
 						"name": "Necrotic Decay",
-						"entries_as_xyz": "Ability not found: 'Necrotic Decay As urdefhan warrior, but {@damage 12d6} negative damage and DC 32.' in Urdefhan Hunter, p.82"
+						"entries_as_xyz": "Ability not found: 'Necrotic Decay As urdefhan warrior, but {@damage 12d6} negative damage and {@dc 32}.' in Urdefhan Hunter, p.82"
 					}
 				],
 				"bot": [
@@ -3863,10 +3863,10 @@
 					},
 					{
 						"entries": [
-							"As urdefhan warrior, but DC 32."
+							"As urdefhan warrior, but {@dc 32}."
 						],
 						"name": "Wicked Bite",
-						"entries_as_xyz": "Ability not found: 'Wicked Bite As urdefhan warrior, but DC 32.' in Urdefhan Hunter, p.82"
+						"entries_as_xyz": "Ability not found: 'Wicked Bite As urdefhan warrior, but {@dc 32}.' in Urdefhan Hunter, p.82"
 					}
 				]
 			},
@@ -4029,7 +4029,7 @@
 						},
 						"trigger": "A creature lands a critical hit with a melee {@action Strike} against the vitalia",
 						"entries": [
-							"The vitalia sprays blood at the triggering creature. The creature must succeed at a DC 39 Reflex save or become {@condition dazzled} for 1 round (or {@condition blinded} for 1 round on a critical failure)."
+							"The vitalia sprays blood at the triggering creature. The creature must succeed at a {@dc 39} Reflex save or become {@condition dazzled} for 1 round (or {@condition blinded} for 1 round on a critical failure)."
 						],
 						"name": "Blood Eruption"
 					}
@@ -4041,7 +4041,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 4d8+10} bludgeoning, DC 37"
+							"{@damage 4d8+10} bludgeoning, {@dc 37}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -4320,7 +4320,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. As xulgath warrior (Bestiary 336), but DC 28."
+							"30 feet. As xulgath warrior (Bestiary 336), but {@dc 28}."
 						],
 						"name": "Stench"
 					}
@@ -4752,7 +4752,7 @@
 					},
 					{
 						"entries": [
-							"A creature hit by Zinogyvaz's web attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} DC 35)."
+							"A creature hit by Zinogyvaz's web attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} {@dc 35})."
 						],
 						"name": "Web Trap"
 					}

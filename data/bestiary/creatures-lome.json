@@ -941,7 +941,7 @@
 						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws",
 						"entries": [
 							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary Hit Points. These temporary Hit Points remain for 1 minute. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1 to a maximum of {@condition drained 3}, but doesn't restore any HP to the asanbosam.",
-							"A victim's {@condition drained} condition decreases by 1 each week. A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
+							"A victim's {@condition drained} condition decreases by 1 each week. A blood transfusion, which requires a successful {@dc 20} {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
 						],
 						"name": "Drink Blood"
 					}
@@ -2341,7 +2341,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"tail only, {@damage 2d12+12} bludgeoning, DC 34"
+							"tail only, {@damage 2d12+12} bludgeoning, {@dc 34}"
 						],
 						"name": "Greater Constrict",
 						"generic": {
@@ -2367,7 +2367,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The grootslang makes a foot {@action Strike} against a creature in reach. Whether or not the {@action Strike} hits, all creatures within 10 feet of the grootslang must attempt a DC 37 Reflex save.",
+							"The grootslang makes a foot {@action Strike} against a creature in reach. Whether or not the {@action Strike} hits, all creatures within 10 feet of the grootslang must attempt a {@dc 37} Reflex save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2482,13 +2482,13 @@
 				"mid": [
 					{
 						"entries": [
-							"When offered a gift worth at least 50 gp, the k'nonna must attempt a DC 20 Will saving throw; if the gift is worth at least 100 gp, the DC is instead 25. If they fail the save, the k'nonna accepts the gift, becomes {@condition fascinated} until the end of their next turn, and cannot attack while {@condition fascinated}. On a critical failure, the fascination lasts for 1 minute. Offering a gift is an {@action Interact} action, and offering multiple gifts in the same round has no additional effect."
+							"When offered a gift worth at least 50 gp, the k'nonna must attempt a {@dc 20} Will saving throw; if the gift is worth at least 100 gp, the DC is instead 25. If they fail the save, the k'nonna accepts the gift, becomes {@condition fascinated} until the end of their next turn, and cannot attack while {@condition fascinated}. On a critical failure, the fascination lasts for 1 minute. Offering a gift is an {@action Interact} action, and offering multiple gifts in the same round has no additional effect."
 						],
 						"name": "Gilded Fascination"
 					},
 					{
 						"entries": [
-							"A k'nonna can communicate easily with other k'nonna, but when communicating with other creatures, only half of the spoken words make sense. In order to convey information to a k'nonna or understand what they're saying, a non-k'nonna must succeed at a DC 20 {@skill Perception} check."
+							"A k'nonna can communicate easily with other k'nonna, but when communicating with other creatures, only half of the spoken words make sense. In order to convey information to a k'nonna or understand what they're saying, a non-k'nonna must succeed at a {@dc 20} {@skill Perception} check."
 						],
 						"name": "Half-Speaker"
 					},
@@ -3070,7 +3070,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The maliadi tries to capsize an adjacent aquatic vessel of its size or smaller. The maliadi must succeed at a DC 35 {@skill Athletics} check (reduced by 5 for each size smaller the vessel is than the maliadi) or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
+							"The maliadi tries to capsize an adjacent aquatic vessel of its size or smaller. The maliadi must succeed at a {@dc 35} {@skill Athletics} check (reduced by 5 for each size smaller the vessel is than the maliadi) or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
 						],
 						"name": "Capsize"
 					},
@@ -3203,7 +3203,7 @@
 							"primal"
 						],
 						"entries": [
-							"30 feet. The mamlambo emits dim light from its skin. A creature that enters or begins its turn in the aura must attempt a DC 23 Will save. Humanoids take a \u20132 penalty to this saving throw. Regardless of the save's result, the creature is temporarily immune for 10 minutes.",
+							"30 feet. The mamlambo emits dim light from its skin. A creature that enters or begins its turn in the aura must attempt a {@dc 23} Will save. Humanoids take a \u20132 penalty to this saving throw. Regardless of the save's result, the creature is temporarily immune for 10 minutes.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3250,7 +3250,7 @@
 						},
 						"requirements": "The mamlambo has a creature {@condition grabbed} or {@condition restrained}, or there is a {@condition dying}, {@condition immobilized}, or {@condition unconscious} creature within the mamlambo's reach",
 						"entries": [
-							"The mamlambo deals {@damage 2d8+11} piercing damage to the creature (DC 28 basic Fortitude save). On a failure, the creature also takes an additional {@damage 2d6} {@condition persistent damage||persistent bleed damage}, or {@damage 4d6} {@condition persistent damage||persistent bleed damage} on a critical failure."
+							"The mamlambo deals {@damage 2d8+11} piercing damage to the creature ({@dc 28} basic Fortitude save). On a failure, the creature also takes an additional {@damage 2d6} {@condition persistent damage||persistent bleed damage}, or {@damage 4d6} {@condition persistent damage||persistent bleed damage} on a critical failure."
 						],
 						"name": "Face Eater"
 					},
@@ -3518,7 +3518,7 @@
 							"primal"
 						],
 						"entries": [
-							"60 feet. The rompo hums in a low voice. Each creature within the emanation must succeed at a DC 19 Will save or become {@condition fascinated} and compelled to move away from the rompo, traveling to the furthest edge of the emanation.",
+							"60 feet. The rompo hums in a low voice. Each creature within the emanation must succeed at a {@dc 19} Will save or become {@condition fascinated} and compelled to move away from the rompo, traveling to the furthest edge of the emanation.",
 							"{@condition Fascinated} creatures are also {@condition flat-footed}. The effect lasts for 1 round, but if the rompo spends a single action on subsequent rounds, it can extend the duration by 1 round for all affected creatures. If the rompo attacks, the {@condition fascinated} condition ends only for the creature that is attacked. On a successful save, a creature is temporarily immune to Crooning Cry for 24 hours."
 						],
 						"name": "Crooning Cry"
@@ -3721,7 +3721,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Sié Goluo {@action Stride||Strides} twice, then makes a horn {@action Strike}. On a hit, Sié Goluo creates a shock wave that deals {@damage 4d12} force damage in a 30-foot cone (DC 34 basic Reflex save). Creatures that fail their save are pushed away 5 feet (10 feet on a critical failure)."
+							"Sié Goluo {@action Stride||Strides} twice, then makes a horn {@action Strike}. On a hit, Sié Goluo creates a shock wave that deals {@damage 4d12} force damage in a 30-foot cone ({@dc 34} basic Reflex save). Creatures that fail their save are pushed away 5 feet (10 feet on a critical failure)."
 						],
 						"name": "Spirit Charge"
 					},
@@ -3846,7 +3846,7 @@
 							"light"
 						],
 						"entries": [
-							"30 feet. The solar ibis's halo sheds bright light. Creatures that start their turn in the aura must succeed at a DC 22 Fortitude save or be {@condition dazzled} for 1 minute. A creature that critically fails its save is instead {@condition blinded} for 1 minute. Creatures who successfully save are temporarily immune to this effect for 24 hours. The solar ibis can extinguish or resume the halo's light as a single action, which has the {@trait concentrate} trait."
+							"30 feet. The solar ibis's halo sheds bright light. Creatures that start their turn in the aura must succeed at a {@dc 22} Fortitude save or be {@condition dazzled} for 1 minute. A creature that critically fails its save is instead {@condition blinded} for 1 minute. Creatures who successfully save are temporarily immune to this effect for 24 hours. The solar ibis can extinguish or resume the halo's light as a single action, which has the {@trait concentrate} trait."
 						],
 						"name": "Blinding Halo"
 					},
@@ -3881,7 +3881,7 @@
 							"light"
 						],
 						"entries": [
-							"The solar ibis detonates its halo, sending shards of burning light in all directions that deal {@damage 6d8} fire damage to all creatures in a 20-foot emanation (DC 22 basic Reflex save). The shards deal an extra {@damage 6d8} good damage against fiends and undead. The solar ibis can't use Light Shatter again for {@dice 1d4} rounds, and its Blinding Halo is extinguished during this time. The halo is restored automatically once the {@dice 1d4} rounds have passed."
+							"The solar ibis detonates its halo, sending shards of burning light in all directions that deal {@damage 6d8} fire damage to all creatures in a 20-foot emanation ({@dc 22} basic Reflex save). The shards deal an extra {@damage 6d8} good damage against fiends and undead. The solar ibis can't use Light Shatter again for {@dice 1d4} rounds, and its Blinding Halo is extinguished during this time. The halo is restored automatically once the {@dice 1d4} rounds have passed."
 						],
 						"name": "Light Shatter"
 					}
@@ -4013,7 +4013,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d10+6} bludgeoning, DC 29"
+							"{@damage 2d10+6} bludgeoning, {@dc 29}"
 						],
 						"name": "Greater Constrict",
 						"generic": {

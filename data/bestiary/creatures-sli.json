@@ -1076,7 +1076,7 @@
 						],
 						"trigger": "Cursebreaker hits a {@condition slowed} creature",
 						"entries": [
-							"The creature must succeed at a DC 27 Fortitude save or become {@condition paralyzed} for 1 round."
+							"The creature must succeed at a {@dc 27} Fortitude save or become {@condition paralyzed} for 1 round."
 						],
 						"name": "Impose Paralysis"
 					},
@@ -1086,7 +1086,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Cursebreaker {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can attempt to bar the way by succeeding at a DC 32 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise it is damaged as if hit by Cursebreaker's fist."
+							"Cursebreaker {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can attempt to bar the way by succeeding at a {@dc 32} Fortitude save. On a critical success, the resisting creature takes no damage; otherwise it is damaged as if hit by Cursebreaker's fist."
 						],
 						"name": "Inexorable March"
 					},
@@ -1101,7 +1101,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"Each creature in a 10-foot emanation must succeed at a DC 27 Fortitude save or be {@condition slowed|CRB|slowed 1} for 1 minute.",
+							"Each creature in a 10-foot emanation must succeed at a {@dc 27} Fortitude save or be {@condition slowed|CRB|slowed 1} for 1 minute.",
 							"Cursebreaker can't use Slowing Pulse again for {@dice 1d4} rounds."
 						],
 						"name": "Slowing Pulse"
@@ -1248,7 +1248,7 @@
 							"fire"
 						],
 						"entries": [
-							"15 feet. The fuming sludge constantly emits incendiary smoke that creates concealment around it. The smoke doesn't impair the fuming sludge's chemical sense. A creature that enters the aura or begins its turn in the aura becomes {@condition sickened|CRB|sickened 1} (DC 25 Fortitude negates) and cannot recover from {@condition persistent damage||persistent fire damage} for 1 round. It is then temporarily immune to the sickening effect of the smoldering haze for 1 minute. A creature that is currently holding its breath, that doesn't need to breathe, or that's immune to poison is immune to the aura's {@condition sickened} effect but not the concealment or inability to recover from {@condition persistent damage||persistent fire damage}."
+							"15 feet. The fuming sludge constantly emits incendiary smoke that creates concealment around it. The smoke doesn't impair the fuming sludge's chemical sense. A creature that enters the aura or begins its turn in the aura becomes {@condition sickened|CRB|sickened 1} ({@dc 25} Fortitude negates) and cannot recover from {@condition persistent damage||persistent fire damage} for 1 round. It is then temporarily immune to the sickening effect of the smoldering haze for 1 minute. A creature that is currently holding its breath, that doesn't need to breathe, or that's immune to poison is immune to the aura's {@condition sickened} effect but not the concealment or inability to recover from {@condition persistent damage||persistent fire damage}."
 						],
 						"name": "Smoldering Haze"
 					}
@@ -1272,7 +1272,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d8+6} bludgeoning plus {@damage 1d8} {@condition persistent damage||persistent fire}, DC 24"
+							"{@damage 1d8+6} bludgeoning plus {@damage 1d8} {@condition persistent damage||persistent fire}, {@dc 24}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -1282,7 +1282,7 @@
 					{
 						"entries": [
 							"A fuming sludge's ejected globs cling to targets.",
-							"A creature hit by an ejected glob {@action Strike} is {@condition encumbered} for 1 round. If the attack was a critical hit, the creature is instead {@condition restrained} for 1 round ({@action Escape} DC 24)."
+							"A creature hit by an ejected glob {@action Strike} is {@condition encumbered} for 1 round. If the attack was a critical hit, the creature is instead {@condition restrained} for 1 round ({@action Escape} {@dc 24})."
 						],
 						"name": "Cooling Glob"
 					}
@@ -1853,7 +1853,7 @@
 							"visual"
 						],
 						"entries": [
-							"Paga cringes and cowers before a creature within 10 feet that can see her. The target must attempt a DC 28 Will save. The target is then temporarily immune for 1 hour.",
+							"Paga cringes and cowers before a creature within 10 feet that can see her. The target must attempt a {@dc 28} Will save. The target is then temporarily immune for 1 hour.",
 							{
 								"type": "successDegree",
 								"entries": {

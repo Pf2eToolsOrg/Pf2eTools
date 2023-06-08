@@ -138,7 +138,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Krant intones blasphemous words to gain control over a zombie he can see within 100 feet. A zombie that is mindless and not under someone else's control falls under his control automatically; otherwise, the zombie or its controller can attempt a DC 22 Will save to avoid being {@condition controlled} (whichever has the higher modifier). The target zombie is temporarily immune for 24 hours if successful. The attempt fails if the zombie is the same level as Krant or higher. The zombie remains {@condition controlled} by Krant until either is destroyed. Krant can control up to 8 zombies at a time. If Krant would control a number of zombies over this limit, he chooses which to release."
+							"Krant intones blasphemous words to gain control over a zombie he can see within 100 feet. A zombie that is mindless and not under someone else's control falls under his control automatically; otherwise, the zombie or its controller can attempt a {@dc 22} Will save to avoid being {@condition controlled} (whichever has the higher modifier). The target zombie is temporarily immune for 24 hours if successful. The attempt fails if the zombie is the same level as Krant or higher. The zombie remains {@condition controlled} by Krant until either is destroyed. Krant can control up to 8 zombies at a time. If Krant would control a number of zombies over this limit, he chooses which to release."
 						]
 					},
 					{
@@ -322,7 +322,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d6+2} bludgeoning, DC 16"
+							"{@damage 1d6+2} bludgeoning, {@dc 16}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -352,7 +352,7 @@
 						],
 						"requirements": "The shredskin is restraining a creature",
 						"entries": [
-							"The shredskin wraps itself around the {@condition restrained} creature like a shirt, seizing control. The shredskin rolls an {@skill Athletics} check against the creature's Fortitude DC. On a success, the creature becomes {@condition restrained} until it Escapes and the shredskin can control the creature as described in Control Body. At the start of each of its turns, the shredskin can attempt to Constrict the enshrouded creature as a free action. An enshrouded creature can attempt a DC 16 {@action Escape} check to break free (DC 18 if the shredskin critically succeeded its {@skill Athletics} check to Enshroud)."
+							"The shredskin wraps itself around the {@condition restrained} creature like a shirt, seizing control. The shredskin rolls an {@skill Athletics} check against the creature's Fortitude DC. On a success, the creature becomes {@condition restrained} until it Escapes and the shredskin can control the creature as described in Control Body. At the start of each of its turns, the shredskin can attempt to Constrict the enshrouded creature as a free action. An enshrouded creature can attempt a {@dc 16} {@action Escape} check to break free ({@dc 18} if the shredskin critically succeeded its {@skill Athletics} check to Enshroud)."
 						]
 					}
 				]
@@ -505,7 +505,7 @@
 							"visual"
 						],
 						"entries": [
-							"If a pale stranger sees their own reflection or any object important to them in life, they must attempt a DC 30 Will save.",
+							"If a pale stranger sees their own reflection or any object important to them in life, they must attempt a {@dc 30} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -545,7 +545,7 @@
 							"occult"
 						],
 						"entries": [
-							"Shots from a pale stranger's firearms deal an additional {@damage 1d6} precision damage, or {@damage 2d6} precision damage against the one who murdered them. A creature who has never killed a living being doesn't take this precision damage. When a pale stranger critically succeeds at a ranged {@action Strike} with a pistol, the target must succeed at a DC 29 Fortitude save or be {@condition stunned||stunned 1}."
+							"Shots from a pale stranger's firearms deal an additional {@damage 1d6} precision damage, or {@damage 2d6} precision damage against the one who murdered them. A creature who has never killed a living being doesn't take this precision damage. When a pale stranger critically succeeds at a ranged {@action Strike} with a pistol, the target must succeed at a {@dc 29} Fortitude save or be {@condition stunned||stunned 1}."
 						]
 					},
 					{
@@ -814,7 +814,7 @@
 							"occult"
 						],
 						"entries": [
-							"80 feet. The aura of a pale sovereign is beguiling and inviting, affecting creatures beginning their turns within it with an 8th-level {@spell charm} (DC 39 Will save). A creature that fails its Will save perceives the pale sovereign as they were in life, not their current undead form. A creature that succeeds at its save is then temporarily immune to that pale sovereign's aura for 24 hours."
+							"80 feet. The aura of a pale sovereign is beguiling and inviting, affecting creatures beginning their turns within it with an 8th-level {@spell charm} ({@dc 39} Will save). A creature that fails its Will save perceives the pale sovereign as they were in life, not their current undead form. A creature that succeeds at its save is then temporarily immune to that pale sovereign's aura for 24 hours."
 						]
 					}
 				],
@@ -834,7 +834,7 @@
 							"sleep"
 						],
 						"entries": [
-							"The pale sovereign touches an adjacent living creature to send it into an endless slumber. The target must attempt a DC 39 Will save.",
+							"The pale sovereign touches an adjacent living creature to send it into an endless slumber. The target must attempt a {@dc 39} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -866,7 +866,7 @@
 							"occult"
 						],
 						"entries": [
-							"The pale sovereign siphons the life force from creatures around them. All living creatures in a 30-foot emanation take {@damage 6d8} negative damage (DC 39 basic Fortitude save). The pale sovereign regains HP equal to the highest damage a single creature took from this effect."
+							"The pale sovereign siphons the life force from creatures around them. All living creatures in a 30-foot emanation take {@damage 6d8} negative damage ({@dc 39} basic Fortitude save). The pale sovereign regains HP equal to the highest damage a single creature took from this effect."
 						]
 					}
 				]
@@ -1035,7 +1035,7 @@
 							"negative"
 						],
 						"entries": [
-							"The hungry ghost touches a creature in reach. If the target is a living creature, it takes damage from the ghost's ghostly touch with a DC 24 Fortitude save. If the ghost is in their living visage, they can disguise Feed on the Living as a benign touch and delay the effects for 1 minute while keeping the target unaware of the effect. A creature can be affected by only one delayed Feed on the Living at a time, and if the ghost loses their living visage during that minute, the Feed on the Living is lost.",
+							"The hungry ghost touches a creature in reach. If the target is a living creature, it takes damage from the ghost's ghostly touch with a {@dc 24} Fortitude save. If the ghost is in their living visage, they can disguise Feed on the Living as a benign touch and delay the effects for 1 minute while keeping the target unaware of the effect. A creature can be affected by only one delayed Feed on the Living at a time, and if the ghost loses their living visage during that minute, the Feed on the Living is lost.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1248,7 +1248,7 @@
 						],
 						"requirements": "The ghul is in its hyena shape",
 						"entries": [
-							"The ghul lets out an alluring chitter. Each creature in a 60-foot emanation must succeed at a DC 19 Will save or become {@condition fascinated}, {@condition flat-footed}, and compelled to move toward the ghul on the creature's turn. The effect lasts until the end of the ghul's next turn, but the ghul can {@action Sustain a Spell} on Luring Laugh. If the ghul attacks, the {@condition fascinated} condition ends for only the creature that's attacked. On a successful save, a creature is temporarily immune to Luring Laugh for 24 hours."
+							"The ghul lets out an alluring chitter. Each creature in a 60-foot emanation must succeed at a {@dc 19} Will save or become {@condition fascinated}, {@condition flat-footed}, and compelled to move toward the ghul on the creature's turn. The effect lasts until the end of the ghul's next turn, but the ghul can {@action Sustain a Spell} on Luring Laugh. If the ghul attacks, the {@condition fascinated} condition ends for only the creature that's attacked. On a successful save, a creature is temporarily immune to Luring Laugh for 24 hours."
 						]
 					}
 				]
@@ -1461,7 +1461,7 @@
 							"prediction"
 						],
 						"entries": [
-							"A creature struck by the fluxwraith's temporal fracturing ray receives a glimpse of a possible tragic event in its future. It must succeed at a DC 35 Will save or become {@condition slowed||slowed 1} and {@condition stupefied||stupefied 1} ({@condition slowed||slowed 2} and {@condition stupefied||stupefied 2} on a critical failure). If the creature is already affected by terrible foresight, it increases its {@condition stupefied} value by 1 on a failed save, to a maximum of {@condition stupefied||stupefied 4}.",
+							"A creature struck by the fluxwraith's temporal fracturing ray receives a glimpse of a possible tragic event in its future. It must succeed at a {@dc 35} Will save or become {@condition slowed||slowed 1} and {@condition stupefied||stupefied 1} ({@condition slowed||slowed 2} and {@condition stupefied||stupefied 2} on a critical failure). If the creature is already affected by terrible foresight, it increases its {@condition stupefied} value by 1 on a failed save, to a maximum of {@condition stupefied||stupefied 4}.",
 							"Each time the creature gets a full night's rest, its condition values from terrible foresight decrease by 1."
 						]
 					},
@@ -1472,7 +1472,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"A creature struck by the fluxwraith's time-shifting touch must succeed at a DC 35 Will saving throw or be thrust forward in time, vanishing from its space. The target automatically reappears in the same location after {@dice 1d4} rounds but can attempt an additional Will save at the end of each of its turns to end the duration. If its original space is occupied when it returns, the creature appears in the nearest unoccupied space.",
+							"A creature struck by the fluxwraith's time-shifting touch must succeed at a {@dc 35} Will saving throw or be thrust forward in time, vanishing from its space. The target automatically reappears in the same location after {@dice 1d4} rounds but can attempt an additional Will save at the end of each of its turns to end the duration. If its original space is occupied when it returns, the creature appears in the nearest unoccupied space.",
 							"Since the creature is shunted forward in time, it doesn't experience any of the intervening time. Likewise, {@trait any} effects on the creature with a duration don't decrease their duration, resuming when the creature reappears. A creature that succeeds at any saving throw against time shift is temporarily immune for 1 hour."
 						]
 					}
@@ -1732,7 +1732,7 @@
 							"mental"
 						],
 						"entries": [
-							"The skull chooses one creature within 60 feet and antagonizes it mercilessly. The target must attempt a DC 22 Will save to resist the effect.",
+							"The skull chooses one creature within 60 feet and antagonizes it mercilessly. The target must attempt a {@dc 22} Will save to resist the effect.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1871,7 +1871,7 @@
 							"visual"
 						],
 						"entries": [
-							"The daqqanoenyent's face twists into an expression of unbridled rage. Each creature within 30 feet that can see the daqqanoenyent must attempt a DC 28 Will save. The creature is then temporarily immune for 1 minute.",
+							"The daqqanoenyent's face twists into an expression of unbridled rage. Each creature within 30 feet that can see the daqqanoenyent must attempt a {@dc 28} Will save. The creature is then temporarily immune for 1 minute.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2774,7 +2774,7 @@
 						},
 						"requirements": "The child of {@deity Urgathoa} is adjacent to a creature that died within the last minute",
 						"entries": [
-							"The child of {@deity Urgathoa} animates the dead with a touch of their hand. The creature must succeed at a DC 26 Will save or arise as a {@creature zombie lord|BotD}. These zombies are {@condition controlled} by the child of {@deity Urgathoa}. A child of {@deity Urgathoa} can control no more than four zombie lords at a time. If a child of {@deity Urgathoa} has raised zombie lords before an encounter begins, they count toward the encounter's XP budget normally"
+							"The child of {@deity Urgathoa} animates the dead with a touch of their hand. The creature must succeed at a {@dc 26} Will save or arise as a {@creature zombie lord|BotD}. These zombies are {@condition controlled} by the child of {@deity Urgathoa}. A child of {@deity Urgathoa} can control no more than four zombie lords at a time. If a child of {@deity Urgathoa} has raised zombie lords before an encounter begins, they count toward the encounter's XP budget normally"
 						]
 					}
 				]
@@ -2897,7 +2897,7 @@
 							"fire"
 						],
 						"entries": [
-							"5 feet, {@damage 2d6} fire, DC 17 basic Reflex."
+							"5 feet, {@damage 2d6} fire, {@dc 17} basic Reflex."
 						]
 					},
 					{
@@ -2920,7 +2920,7 @@
 							"occult"
 						],
 						"entries": [
-							"The combusted screams in agony, causing creatures in a 15-foot emanation to burst into flame, which deals {@damage 4d6} fire damage to each creature in the area (DC 17 basic Will save). A creature that critically fails its save is {@condition frightened||frightened 1}; this {@condition frightened} condition is an emotion, {@trait fear}, and {@trait mental} effect. The combusted can't use Blazing Howl for {@dice 1d4} rounds."
+							"The combusted screams in agony, causing creatures in a 15-foot emanation to burst into flame, which deals {@damage 4d6} fire damage to each creature in the area ({@dc 17} basic Will save). A creature that critically fails its save is {@condition frightened||frightened 1}; this {@condition frightened} condition is an emotion, {@trait fear}, and {@trait mental} effect. The combusted can't use Blazing Howl for {@dice 1d4} rounds."
 						]
 					}
 				]
@@ -3044,7 +3044,7 @@
 					{
 						"name": "Plant",
 						"entries": [
-							"When it isn't in danger, the corpseroot spends 1 minute rooting to the earth, becoming planted in place. While the corpseroot is planted and immobile, creatures must actively {@action Seek} and succeed at a DC 36 {@skill Perception} check (DC 40 in forests) to detect the corpseroot's true nature."
+							"When it isn't in danger, the corpseroot spends 1 minute rooting to the earth, becoming planted in place. While the corpseroot is planted and immobile, creatures must actively {@action Seek} and succeed at a {@dc 36} {@skill Perception} check ({@dc 40} in forests) to detect the corpseroot's true nature."
 						]
 					}
 				],
@@ -3064,8 +3064,8 @@
 							"primal"
 						],
 						"entries": [
-							"30 feet. A plant entering or starting its turn in the corpseroot's aura begins to wither and must succeed at a DC 27 Fortitude save or become {@condition sickened||sickened 2} ({@condition sickened||sickened 4} on a critical failure). A plant that succeeds is temporarily immune for 1 minute.",
-							"A plant that stays in the aura for 7 consecutive days must succeed at a DC 27 Fortitude save or die. If the plant was a creature or tree, it rises as a corpseroot. The newly risen corpseroot can't create more corpseroots but has all other corpseroot abilities. Plants that are neither magical nor creatures automatically fail saves against blight."
+							"30 feet. A plant entering or starting its turn in the corpseroot's aura begins to wither and must succeed at a {@dc 27} Fortitude save or become {@condition sickened||sickened 2} ({@condition sickened||sickened 4} on a critical failure). A plant that succeeds is temporarily immune for 1 minute.",
+							"A plant that stays in the aura for 7 consecutive days must succeed at a {@dc 27} Fortitude save or die. If the plant was a creature or tree, it rises as a corpseroot. The newly risen corpseroot can't create more corpseroots but has all other corpseroot abilities. Plants that are neither magical nor creatures automatically fail saves against blight."
 						]
 					}
 				],
@@ -3095,7 +3095,7 @@
 						},
 						"requirements": "The corpseroot has a creature {@condition grabbed} or {@condition restrained}",
 						"entries": [
-							"The corpseroot buries its roots into the creature, dealing {@damage 1d6+11} piercing damage and draining the target's life force (DC 30 basic Fortitude save). On a failure, the creature is {@condition drained||drained 1} (or increases the value by 1 if already {@condition drained}), and the corpseroot regains 10 HP. If this would make a creature {@condition drained||drained 5}, the creature dies."
+							"The corpseroot buries its roots into the creature, dealing {@damage 1d6+11} piercing damage and draining the target's life force ({@dc 30} basic Fortitude save). On a failure, the creature is {@condition drained||drained 1} (or increases the value by 1 if already {@condition drained}), and the corpseroot regains 10 HP. If this would make a creature {@condition drained||drained 5}, the creature dies."
 						]
 					}
 				]
@@ -3309,7 +3309,7 @@
 							"negative"
 						],
 						"entries": [
-							"40 feet. Vanyvers leak entropy and corruption from their very being. A living creature entering or starting its turn in the aura takes {@damage 3d6} negative damage with a DC 30 basic Fortitude save. If it fails, it's also {@condition enfeebled||enfeebled 1} for 1 minute and pulled 10 feet toward the vanyver."
+							"40 feet. Vanyvers leak entropy and corruption from their very being. A living creature entering or starting its turn in the aura takes {@damage 3d6} negative damage with a {@dc 30} basic Fortitude save. If it fails, it's also {@condition enfeebled||enfeebled 1} for 1 minute and pulled 10 feet toward the vanyver."
 						]
 					},
 					{
@@ -3338,7 +3338,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 3d10+5} piercing, DC 33"
+							"{@damage 3d10+5} piercing, {@dc 33}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -3577,7 +3577,7 @@
 							"negative"
 						],
 						"entries": [
-							"40 feet. As vanyver, but DC 33 and {@dice 4d6} damage."
+							"40 feet. As vanyver, but {@dc 33} and {@dice 4d6} damage."
 						]
 					},
 					{
@@ -3623,7 +3623,7 @@
 							"visual"
 						],
 						"entries": [
-							"The sykever fixes their nightmarish gaze on one creature they can see, who must attempt a DC 36 Will save. Regardless of the result, the target is temporarily immune for 10 minutes.",
+							"The sykever fixes their nightmarish gaze on one creature they can see, who must attempt a {@dc 36} Will save. Regardless of the result, the target is temporarily immune for 10 minutes.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3872,7 +3872,7 @@
 							"negative"
 						],
 						"entries": [
-							"60 feet. As vanyver, but DC 38 and {@dice 5d6} damage."
+							"60 feet. As vanyver, but {@dc 38} and {@dice 5d6} damage."
 						]
 					},
 					{
@@ -4137,7 +4137,7 @@
 							"negative"
 						],
 						"entries": [
-							"60 feet. A nasurgeth's entropy grows even stronger underwater. All water within the aura is completely dark (as 4th-level {@spell darkness}). Magical light with a counteract level of 4th level or lower, along with magical {@spell light} cantrips, are suppressed. A living creature entering or starting its turn in the aura takes {@damage 4d6} negative damage, and the creature also takes an additional {@damage 2d10} cold damage if it's in water (DC 39 basic Fortitude save). If it fails, it's also {@condition enfeebled||enfeebled 1} for 1 minute and pulled 10 feet toward the nasurgeth."
+							"60 feet. A nasurgeth's entropy grows even stronger underwater. All water within the aura is completely dark (as 4th-level {@spell darkness}). Magical light with a counteract level of 4th level or lower, along with magical {@spell light} cantrips, are suppressed. A living creature entering or starting its turn in the aura takes {@damage 4d6} negative damage, and the creature also takes an additional {@damage 2d10} cold damage if it's in water ({@dc 39} basic Fortitude save). If it fails, it's also {@condition enfeebled||enfeebled 1} for 1 minute and pulled 10 feet toward the nasurgeth."
 						]
 					},
 					{
@@ -4154,7 +4154,7 @@
 						},
 						"trigger": "The nasurgeth takes slashing or piercing damage from a critical hit, or a swallowed creature cuts itself free",
 						"entries": [
-							"Darkness and negative energy spill out from the nasurgeth's wound, dealing {@damage 8d8} negative damage to creatures within 20 feet (DC 40 basic Fortitude)."
+							"Darkness and negative energy spill out from the nasurgeth's wound, dealing {@damage 8d8} negative damage to creatures within 20 feet ({@dc 40} basic Fortitude)."
 						]
 					}
 				],
@@ -4167,7 +4167,7 @@
 						},
 						"requirements": "A creature is {@condition grabbed} or {@condition restrained} in the nasurgeth's jaws",
 						"entries": [
-							"The nasurgeth breaks a tooth off in the target, who takes {@damage 3d10} {@condition persistent damage||persistent bleed damage} and is no longer {@condition grabbed} or {@condition restrained}. If the target is adjacent to a surface, the tooth also pins it in place, making it {@condition immobilized} ({@action Escape} DC 45)."
+							"The nasurgeth breaks a tooth off in the target, who takes {@damage 3d10} {@condition persistent damage||persistent bleed damage} and is no longer {@condition grabbed} or {@condition restrained}. If the target is adjacent to a surface, the tooth also pins it in place, making it {@condition immobilized} ({@action Escape} {@dc 45})."
 						]
 					},
 					{
@@ -4177,7 +4177,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The nasurgeth barrels forward with their mouth open, Swimming twice in a straight line and moving through the spaces of Huge or smaller creatures. The nasurgeth deals the damage of their jaws {@action Strike} to each creature whose space they enter (DC 45 basic Reflex save). Any creature that critically fails is automatically Swallowed Whole."
+							"The nasurgeth barrels forward with their mouth open, Swimming twice in a straight line and moving through the spaces of Huge or smaller creatures. The nasurgeth deals the damage of their jaws {@action Strike} to each creature whose space they enter ({@dc 45} basic Reflex save). Any creature that critically fails is automatically Swallowed Whole."
 						]
 					},
 					{
@@ -4366,7 +4366,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"30 feet. A living creature that enters the area must succeed at a DC 31 Will save or gain the {@condition doomed||doomed 1} condition. A critical failure increases this condition to {@condition doomed||doomed 2}. Regardless of the result of the saving throw, the creature is temporarily immune to this death coach's aura of doom for 1 minute."
+							"30 feet. A living creature that enters the area must succeed at a {@dc 31} Will save or gain the {@condition doomed||doomed 1} condition. A critical failure increases this condition to {@condition doomed||doomed 2}. Regardless of the result of the saving throw, the creature is temporarily immune to this death coach's aura of doom for 1 minute."
 						]
 					},
 					{
@@ -4381,7 +4381,7 @@
 						],
 						"trigger": "A {@condition dying} creature within the death coach's Aura of Doom dies or its {@condition dying} value increases",
 						"entries": [
-							"The death coach attempts to collect the triggering creature's soul. The triggering creature must succeed at a DC 34 Will save or its soul becomes trapped within the death coach's interior. A creature whose soul has been collected can't be restored to life while the soul remains in the death coach by any means short of a 10th-level spell, such as miracle. Eventually, the death coach grinds the soul down into raw spiritual essence, typically several hours later. At this point, restoring the soul to life is slightly easier, requiring a spell or ritual of 8th level or higher. If a death coach with a collected soul is slain before the soul is completely dissolved, the creature's soul returns to its body, allowing it to be returned to life normally. A death coach can choose not to dissolve a collected soul, though it usually has no reason to keep the soul intact."
+							"The death coach attempts to collect the triggering creature's soul. The triggering creature must succeed at a {@dc 34} Will save or its soul becomes trapped within the death coach's interior. A creature whose soul has been collected can't be restored to life while the soul remains in the death coach by any means short of a 10th-level spell, such as miracle. Eventually, the death coach grinds the soul down into raw spiritual essence, typically several hours later. At this point, restoring the soul to life is slightly easier, requiring a spell or ritual of 8th level or higher. If a death coach with a collected soul is slain before the soul is completely dissolved, the creature's soul returns to its body, allowing it to be returned to life normally. A death coach can choose not to dissolve a collected soul, though it usually has no reason to keep the soul intact."
 						]
 					}
 				],
@@ -4399,7 +4399,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Large or smaller, incorporeal wheel, DC 34"
+							"Large or smaller, incorporeal wheel, {@dc 34}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -4993,7 +4993,7 @@
 						],
 						"requirements": "The ecorche is wearing skin",
 						"entries": [
-							"The ecorche destroys the skin it's currently wearing. The ecorche reverts to its true appearance and size, and anyone within 120 feet who witnesses this must succeed at a DC 37 Will save or become {@condition frightened||frightened 2} ({@condition frightened||frightened 4} on a critical failure). Regardless of the results of their saving throws, the creatures are temporarily immune for 24 hours."
+							"The ecorche destroys the skin it's currently wearing. The ecorche reverts to its true appearance and size, and anyone within 120 feet who witnesses this must succeed at a {@dc 37} Will save or become {@condition frightened||frightened 2} ({@condition frightened||frightened 4} on a critical failure). Regardless of the results of their saving throws, the creatures are temporarily immune for 24 hours."
 						]
 					},
 					{
@@ -5151,7 +5151,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The excorion spews necrotic blood all over a foe it has {@condition grabbed} or {@condition restrained}. The {@condition grabbed} creature must succeed at a DC 25 Fortitude save or become {@condition sickened||sickened 2}."
+							"The excorion spews necrotic blood all over a foe it has {@condition grabbed} or {@condition restrained}. The {@condition grabbed} creature must succeed at a {@dc 25} Fortitude save or become {@condition sickened||sickened 2}."
 						]
 					}
 				]
@@ -5322,7 +5322,7 @@
 							"occult"
 						],
 						"entries": [
-							"The fiddling bones plays a catchy song that compels others to dance. Each creature in a 30-foot emanation must attempt a DC 19 Will save. Fiddling bones are immune. The effect lasts until the end of the fiddling bones's next turn, but the fiddling bones can Sustain the effect on all affected creatures that remain within the emanation.",
+							"The fiddling bones plays a catchy song that compels others to dance. Each creature in a 30-foot emanation must attempt a {@dc 19} Will save. Fiddling bones are immune. The effect lasts until the end of the fiddling bones's next turn, but the fiddling bones can Sustain the effect on all affected creatures that remain within the emanation.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -5352,7 +5352,7 @@
 						],
 						"requirements": "Dance with Death is in effect",
 						"entries": [
-							"The fiddling bones performs a boisterous finale. They choose a 30-foot cone or 15-foot emanation, and they deal {@damage 4d6} sonic damage to all creatures in that area (DC 21 basic Reflex save). Dance with Death immediately ends, and the fiddling bones can't use Dance with Death or Destructive Finale for {@dice 1d4} rounds."
+							"The fiddling bones performs a boisterous finale. They choose a 30-foot cone or 15-foot emanation, and they deal {@damage 4d6} sonic damage to all creatures in that area ({@dc 21} basic Reflex save). Dance with Death immediately ends, and the fiddling bones can't use Dance with Death or Destructive Finale for {@dice 1d4} rounds."
 						]
 					}
 				]
@@ -5513,7 +5513,7 @@
 						],
 						"entries": [
 							"30 feet.",
-							"A gallowdead is surrounded by an aura of blasphemous whispers. A creature who hears them understands them to be mutterings of its most closely guarded secrets and private failings laid bare. A creature that first enters the area must attempt a DC 34 Will save. Regardless of the result of the saving throw, the creature is temporarily immune to aura of whispers for 1 minute. The {@condition frightened} condition from this aura can't be reduced while in the aura.",
+							"A gallowdead is surrounded by an aura of blasphemous whispers. A creature who hears them understands them to be mutterings of its most closely guarded secrets and private failings laid bare. A creature that first enters the area must attempt a {@dc 34} Will save. Regardless of the result of the saving throw, the creature is temporarily immune to aura of whispers for 1 minute. The {@condition frightened} condition from this aura can't be reduced while in the aura.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -5547,7 +5547,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Those who destroy gallowdead are subject to a powerful death curse. When a creature reduces a gallowdead to 0 HP, the creature must attempt a DC 34 Will save. A creature that fails this saving throw is {@condition doomed||doomed 1} and can't remove the condition until the curse has been lifted."
+							"Those who destroy gallowdead are subject to a powerful death curse. When a creature reduces a gallowdead to 0 HP, the creature must attempt a {@dc 34} Will save. A creature that fails this saving throw is {@condition doomed||doomed 1} and can't remove the condition until the curse has been lifted."
 						]
 					}
 				],
@@ -5693,7 +5693,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"60 feet. Any creature that ends its turn in the aura feels the intense pain of starvation and must attempt a DC 30 Fortitude save. On a failure, the creature becomes {@condition fatigued} and takes {@dice 6d6} damage. Damage and fatigue a creature takes from this aura can't be healed until the affected creature has eaten a full meal."
+							"60 feet. Any creature that ends its turn in the aura feels the intense pain of starvation and must attempt a {@dc 30} Fortitude save. On a failure, the creature becomes {@condition fatigued} and takes {@dice 6d6} damage. Damage and fatigue a creature takes from this aura can't be healed until the affected creature has eaten a full meal."
 						]
 					}
 				],
@@ -5709,7 +5709,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"The gashadokuro breathes a spray of bone shards in a 30-foot cone. Each creature in the area takes {@damage 8d12} piercing damage (DC 34 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The gashadokuro breathes a spray of bone shards in a 30-foot cone. Each creature in the area takes {@damage 8d12} piercing damage ({@dc 34} basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -5868,7 +5868,7 @@
 					{
 						"name": "Power of the Haunt",
 						"entries": [
-							"If a geist is within 100 feet of a haunt that isn't disabled or destroyed, they gain a +2 status bonus to AC and saving throws and deal an additional {@damage 1d6} negative damage with bite {@action Strike||Strikes}. A creature that succeeds at a DC 20 check to {@action Seek} or {@action Recall Knowledge} about the geist sees that the tendrils from the geist's cloak grow thicker and more agitated the closer it gets to the haunt."
+							"If a geist is within 100 feet of a haunt that isn't disabled or destroyed, they gain a +2 status bonus to AC and saving throws and deal an additional {@damage 1d6} negative damage with bite {@action Strike||Strikes}. A creature that succeeds at a {@dc 20} check to {@action Seek} or {@action Recall Knowledge} about the geist sees that the tendrils from the geist's cloak grow thicker and more agitated the closer it gets to the haunt."
 						]
 					}
 				],
@@ -5891,7 +5891,7 @@
 							"unit": "minute"
 						},
 						"entries": [
-							"The geist unleashes soul-piercing laughter in a 20-foot emanation, lasting until the beginning of their next turn. Any creature in the area or entering it must succeed at a DC 26 Will save or be overcome with panicked laughter, becoming {@condition frightened||frightened 2} (or {@condition frightened||frightened 3} on a critical failure). A creature attempts only one save per Terrifying Laugh, and a creature that succeeds on its saving throw is temporarily immune for 24 hours."
+							"The geist unleashes soul-piercing laughter in a 20-foot emanation, lasting until the beginning of their next turn. Any creature in the area or entering it must succeed at a {@dc 26} Will save or be overcome with panicked laughter, becoming {@condition frightened||frightened 2} (or {@condition frightened||frightened 3} on a critical failure). A creature attempts only one save per Terrifying Laugh, and a creature that succeeds on its saving throw is temporarily immune for 24 hours."
 						]
 					},
 					{
@@ -5910,7 +5910,7 @@
 						},
 						"requirements": "The geist is within 100 feet of an active haunt",
 						"entries": [
-							"The haunt feeds necromantic power into the geist, becoming inactive until the end of the geist's next turn and deactivating the power of the haunt aura until the haunt becomes active again. The edges of the geist's cloak transform into whip-like tendrils that lash out at nearby creatures. Any living creature within 10 feet of the geist takes {@damage 4d10} slashing damage plus {@damage 4d6} negative damage (DC 28 basic Reflex save)."
+							"The haunt feeds necromantic power into the geist, becoming inactive until the end of the geist's next turn and deactivating the power of the haunt aura until the haunt becomes active again. The edges of the geist's cloak transform into whip-like tendrils that lash out at nearby creatures. Any living creature within 10 feet of the geist takes {@damage 4d10} slashing damage plus {@damage 4d6} negative damage ({@dc 28} basic Reflex save)."
 						]
 					}
 				]
@@ -6066,7 +6066,7 @@
 					{
 						"name": "Blinding",
 						"entries": [
-							"Breath {@as 2}(concentrate, divine, necromancy, negative) The gholdako exhales a 60-foot cone of noxious breath that deals {@damage 7d8} negative damage (DC 29 basic Reflex save). A creature that fails its save is also {@condition blinded} until the end of its next turn (or for 1 minute on a critical failure) as a milky film coats its eyes. The gholdako can't use Blinding Breath again for {@dice 1d4} rounds."
+							"Breath {@as 2}(concentrate, divine, necromancy, negative) The gholdako exhales a 60-foot cone of noxious breath that deals {@damage 7d8} negative damage ({@dc 29} basic Reflex save). A creature that fails its save is also {@condition blinded} until the end of its next turn (or for 1 minute on a critical failure) as a milky film coats its eyes. The gholdako can't use Blinding Breath again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -6078,7 +6078,7 @@
 							"poison"
 						],
 						"entries": [
-							"The first time each round the gholdako damages a creature with a claw {@action Strike}, the creature must attempt a DC 27 Will save, as its mind is assaulted by horrifying visions. On a failure, the creature is {@condition confused} until the end of its next turn. On a critical success, the creature is immune for 24 hours."
+							"The first time each round the gholdako damages a creature with a claw {@action Strike}, the creature must attempt a {@dc 27} Will save, as its mind is assaulted by horrifying visions. On a failure, the creature is {@condition confused} until the end of its next turn. On a critical success, the creature is immune for 24 hours."
 						]
 					}
 				]
@@ -6227,7 +6227,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the ghost pirate captain is reduced to 0 HP, all creatures within 60 feet are subjected to a DC 25 mariner's curse spell. The locations of those that critically fail are known to the ghost until the curse is removed. This curse ends if the ghost is permanently destroyed."
+							"When the ghost pirate captain is reduced to 0 HP, all creatures within 60 feet are subjected to a {@dc 25} mariner's curse spell. The locations of those that critically fail are known to the ghost until the curse is removed. This curse ends if the ghost is permanently destroyed."
 						]
 					},
 					{
@@ -6268,7 +6268,7 @@
 						],
 						"trigger": "The ghost reduces a living creature to 0 Hit Points with a melee {@action Strike}",
 						"entries": [
-							"The creature attempts a DC 25 Fortitude save. If the creature fails its save, it remains conscious but is {@condition controlled} by the ghost until it loses its {@condition dying} condition. It continues to attempt recovery checks as normal for the {@condition dying} condition. The effect ends if the creature loses the {@condition dying} condition. If the creature dies while under this effect, it joins the ghost's undead crew in {@dice 1d4} days. If the ghost is destroyed before the creature dies, the creature is spared this terrible fate."
+							"The creature attempts a {@dc 25} Fortitude save. If the creature fails its save, it remains conscious but is {@condition controlled} by the ghost until it loses its {@condition dying} condition. It continues to attempt recovery checks as normal for the {@condition dying} condition. The effect ends if the creature loses the {@condition dying} condition. If the creature dies while under this effect, it joins the ghost's undead crew in {@dice 1d4} days. If the ghost is destroyed before the creature dies, the creature is spared this terrible fate."
 						]
 					}
 				]
@@ -6438,7 +6438,7 @@
 								"DC": 16,
 								"savingThrow": "Fortitude",
 								"notes": [
-									"The lacedon discharges a spray of carrion vomit at a creature within 20 feet, dealing {@damage 1d6} poison damage with a DC 17 basic Fortitude save. A non-elf creature that fails its save is also {@condition paralyzed}. It can attempt a new save to end the paralysis at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save. The lacedon can't use Paralyzing Spew again for {@dice 1d4} rounds."
+									"The lacedon discharges a spray of carrion vomit at a creature within 20 feet, dealing {@damage 1d6} poison damage with a {@dc 17} basic Fortitude save. A non-elf creature that fails its save is also {@condition paralyzed}. It can attempt a new save to end the paralysis at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save. The lacedon can't use Paralyzing Spew again for {@dice 1d4} rounds."
 								],
 								"stages": [
 									{
@@ -6694,7 +6694,7 @@
 						],
 						"trigger": "A ghoul ally within 30 feet Consumes Flesh to regain Hit Points",
 						"entries": [
-							"The priest of {@deity Kabriri|LOGM} unleashes a rapturous howl in praise of their god. All ghouls within 30 feet of the priest of {@deity Kabriri|LOGM}, including the priest but not the triggering ghoul, regain half as many Hit Points as the triggering ghoul. All living creatures within 30 feet take negative damage equal to half the number of Hit Points the triggering ghoul gained, with a DC 20 basic Fortitude save. Only one Ecstatic Ululation can affect a use of"
+							"The priest of {@deity Kabriri|LOGM} unleashes a rapturous howl in praise of their god. All ghouls within 30 feet of the priest of {@deity Kabriri|LOGM}, including the priest but not the triggering ghoul, regain half as many Hit Points as the triggering ghoul. All living creatures within 30 feet take negative damage equal to half the number of Hit Points the triggering ghoul gained, with a {@dc 20} basic Fortitude save. Only one Ecstatic Ululation can affect a use of"
 						]
 					},
 					{
@@ -6724,7 +6724,7 @@
 							"disease"
 						],
 						"entries": [
-							"As lacedon, but DC 20."
+							"As lacedon, but {@dc 20}."
 						]
 					},
 					{
@@ -6735,7 +6735,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Any living, non-elf creature hit by the priest's jaws or claws {@action Strike} must succeed at a DC 20 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+							"Any living, non-elf creature hit by the priest's jaws or claws {@action Strike} must succeed at a {@dc 20} Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
 						]
 					},
 					{
@@ -6921,7 +6921,7 @@
 					{
 						"name": "Victory Celebration",
 						"entries": [
-							"If a spirit knocks a creature {@condition unconscious}, each creature within 60 feet that witnesses the victory is targeted with a DC 26 {@spell roaring applause|SoM} spell (Secrets of Magic 126). The spirit must spend all their actions until the end of the turn celebrating, and a new medal or belt appears on the spirit."
+							"If a spirit knocks a creature {@condition unconscious}, each creature within 60 feet that witnesses the victory is targeted with a {@dc 26} {@spell roaring applause|SoM} spell (Secrets of Magic 126). The spirit must spend all their actions until the end of the turn celebrating, and a new medal or belt appears on the spirit."
 						]
 					}
 				]
@@ -7079,7 +7079,7 @@
 					{
 						"name": "Hungry Armor",
 						"entries": [
-							"A creature that {@action Strike||Strikes} a graveknight warmaster with a melee weapon must succeed at a DC 31 Reflex save or be disarmed of that weapon. If the creature critically fails, the weapon ends up in the graveknight's space. A creature that hits a graveknight warmaster with an unarmed attack must succeed at a DC 31 Reflex save or become {@condition grabbed} by the graveknight until the end of its next turn, it Escapes, or the graveknight moves, whichever comes first."
+							"A creature that {@action Strike||Strikes} a graveknight warmaster with a melee weapon must succeed at a {@dc 31} Reflex save or be disarmed of that weapon. If the creature critically fails, the weapon ends up in the graveknight's space. A creature that hits a graveknight warmaster with an unarmed attack must succeed at a {@dc 31} Reflex save or become {@condition grabbed} by the graveknight until the end of its next turn, it Escapes, or the graveknight moves, whichever comes first."
 						]
 					},
 					{
@@ -7137,7 +7137,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The graveknight unleashes a 30-foot cone of lightning. Creatures in the area take {@damage 8d12} electricity damage (DC 34 basic Reflex save). The graveknight can use this ability once every {@dice 1d4} rounds."
+							"The graveknight unleashes a 30-foot cone of lightning. Creatures in the area take {@damage 8d12} electricity damage ({@dc 34} basic Reflex save). The graveknight can use this ability once every {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -7401,7 +7401,7 @@
 							"negative"
 						],
 						"entries": [
-							"When the herexen is destroyed, it explodes in a wave of negative energy with the effects of a 3rd-level, 3-action {@spell harm} spell (DC 24). The herexen is destroyed, so it doesn't gain any Hit Points from this use of harm, and it doesn't need to have any {@spell harm} spells remaining to use this ability."
+							"When the herexen is destroyed, it explodes in a wave of negative energy with the effects of a 3rd-level, 3-action {@spell harm} spell ({@dc 24}). The herexen is destroyed, so it doesn't gain any Hit Points from this use of harm, and it doesn't need to have any {@spell harm} spells remaining to use this ability."
 						]
 					},
 					{
@@ -7611,7 +7611,7 @@
 							"negative"
 						],
 						"entries": [
-							"As faithless ecclesiarch, except it has the effects of a 4th-level, 3-action {@spell harm} spell (DC 26)."
+							"As faithless ecclesiarch, except it has the effects of a 4th-level, 3-action {@spell harm} spell ({@dc 26})."
 						]
 					},
 					{
@@ -7674,7 +7674,7 @@
 						],
 						"requirements": "The fallen champion's last action was a {@action Strike} that dealt damage to a living creature",
 						"entries": [
-							"The fallen champion saps the hope and faith from that creature. It takes {@damage 3d6} negative damage with a DC 25 basic Will save. Regardless of the result of the save, the creature becomes {@condition frightened||frightened 1} or increases the value of its {@condition frightened} condition by 1."
+							"The fallen champion saps the hope and faith from that creature. It takes {@damage 3d6} negative damage with a {@dc 25} basic Will save. Regardless of the result of the save, the creature becomes {@condition frightened||frightened 1} or increases the value of its {@condition frightened} condition by 1."
 						]
 					}
 				]
@@ -7836,7 +7836,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"30 feet. A cloud of choking, acrid dust swirls about the hollow serpent, draining moisture from any enemy within. A creature entering the aura or starting its turn in the aura must succeed at a DC 34 Fortitude save or become {@condition enfeebled||enfeebled 2} and {@condition slowed||slowed 1} for {@dice 1d4} rounds ({@dice 2d4} rounds on a critical failure). A creature that succeeds is temporarily immune for 24 hours."
+							"30 feet. A cloud of choking, acrid dust swirls about the hollow serpent, draining moisture from any enemy within. A creature entering the aura or starting its turn in the aura must succeed at a {@dc 34} Fortitude save or become {@condition enfeebled||enfeebled 2} and {@condition slowed||slowed 1} for {@dice 1d4} rounds ({@dice 2d4} rounds on a critical failure). A creature that succeeds is temporarily immune for 24 hours."
 						]
 					},
 					{
@@ -7859,7 +7859,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d10+7} bludgeoning plus {@condition drained||drained 1}, DC 36"
+							"{@damage 1d10+7} bludgeoning plus {@condition drained||drained 1}, {@dc 36}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -8022,7 +8022,7 @@
 						],
 						"cost": "1 batch of infused reagents",
 						"entries": [
-							"The ichor slinger creates a vial of tomb juice, an alchemical tonic that has the {@trait infused} trait and becomes inert after 24 hours. Tomb juice has the effects of snake oil, and maybe more depending on the results of the ichor slinger's DC 20 {@skill Crafting} check.",
+							"The ichor slinger creates a vial of tomb juice, an alchemical tonic that has the {@trait infused} trait and becomes inert after 24 hours. Tomb juice has the effects of snake oil, and maybe more depending on the results of the ichor slinger's {@dc 20} {@skill Crafting} check.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -8205,7 +8205,7 @@
 							"unit": "hour"
 						},
 						"entries": [
-							"The iruxi ossature beckons with glowing hands, commanding the earth to trip up opponents and marshaling the bone walls of its protectorate to lash out at intruders. The floor in a 30-foot cone in front of the ossature becomes {@quickref difficult terrain||3|terrain} for 1 minute. Any square of a wall built by iruxis that's in the cone lashes out, with fossilized claws damaging any enemy within 5 feet of the wall. This deals {@damage 6d6} piercing damage with a DC 22 basic Reflex save. A creature attempts the save only once, even if adjacent to more than one affected square of the wall. Fossil Fury has no effect on the ossature's allies and never damages iruxi eggs."
+							"The iruxi ossature beckons with glowing hands, commanding the earth to trip up opponents and marshaling the bone walls of its protectorate to lash out at intruders. The floor in a 30-foot cone in front of the ossature becomes {@quickref difficult terrain||3|terrain} for 1 minute. Any square of a wall built by iruxis that's in the cone lashes out, with fossilized claws damaging any enemy within 5 feet of the wall. This deals {@damage 6d6} piercing damage with a {@dc 22} basic Reflex save. A creature attempts the save only once, even if adjacent to more than one affected square of the wall. Fossil Fury has no effect on the ossature's allies and never damages iruxi eggs."
 						]
 					},
 					{
@@ -8222,7 +8222,7 @@
 							"primal"
 						],
 						"entries": [
-							"The iruxi ossature visits visions made of starlight, resembling totemic paintings or constellation diagrams, upon creatures in a 30-foot emanation. Any lizardfolk allies in the area are inspired, gaining a +1 status bonus to attack rolls, and each enemy in the area must succeed at a DC 21 Will save or be {@condition dazzled}. Both effects last for 1 minute or until the ossature is destroyed, whichever comes first."
+							"The iruxi ossature visits visions made of starlight, resembling totemic paintings or constellation diagrams, upon creatures in a 30-foot emanation. Any lizardfolk allies in the area are inspired, gaining a +1 status bonus to attack rolls, and each enemy in the area must succeed at a {@dc 21} Will save or be {@condition dazzled}. Both effects last for 1 minute or until the ossature is destroyed, whichever comes first."
 						]
 					}
 				]
@@ -8389,7 +8389,7 @@
 							"sonic"
 						],
 						"entries": [
-							"The last guards unleash a soul-shaking bellow in unison. All creatures in a 60-foot cone take {@damage 7d6} sonic damage (DC 42 basic Will save). Any creature that fails its save is also {@condition frightened||frightened 3} (or {@condition frightened||frightened 4} on a critical failure). If the troop occupies 8 or fewer squares, this area decreases to a 30-foot cone."
+							"The last guards unleash a soul-shaking bellow in unison. All creatures in a 60-foot cone take {@damage 7d6} sonic damage ({@dc 42} basic Will save). Any creature that fails its save is also {@condition frightened||frightened 3} (or {@condition frightened||frightened 4} on a critical failure). If the troop occupies 8 or fewer squares, this area decreases to a 30-foot cone."
 						]
 					},
 					{
@@ -8404,7 +8404,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The last guards engage in a coordinated attack with their spectral curve blades against each enemy within 5 feet (DC 40 basic Reflex save). The damage depends on the number of actions.",
+							"The last guards engage in a coordinated attack with their spectral curve blades against each enemy within 5 feet ({@dc 40} basic Reflex save). The damage depends on the number of actions.",
 							"{@as 1} {@damage 1d8+2} slashing and {@damage 1d8} negative damage {@as 2} {@damage 2d8+14} slashing and {@damage 2d8} negative damage {@as 3} {@damage 3d8+14} slashing and {@damage 3d8} negative damage"
 						]
 					},
@@ -8415,7 +8415,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The last guards charge, swarming through their foes. The troop Flies up to double its Speed, dealing {@damage 4d8} negative damage to each creature whose space it moves through (DC 40 basic Reflex save). Any creature that fails its save is also {@condition drained||drained 1} (or {@condition drained||drained 2} on a critical failure). The troop can affect each creature only once in a single use of Spectral Charge."
+							"The last guards charge, swarming through their foes. The troop Flies up to double its Speed, dealing {@damage 4d8} negative damage to each creature whose space it moves through ({@dc 40} basic Reflex save). Any creature that fails its save is also {@condition drained||drained 1} (or {@condition drained||drained 2} on a critical failure). The troop can affect each creature only once in a single use of Spectral Charge."
 						]
 					},
 					{
@@ -9150,7 +9150,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 38"
+							"60 feet, {@dc 38}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -9383,7 +9383,7 @@
 						},
 						"requirements": "The little man in the woods has a creature {@condition grabbed} or {@condition restrained}",
 						"entries": [
-							"The little man in the woods tightens his grip around the creature's neck, extending the Grab, dealing {@damage 2d6+3} bludgeoning damage with a DC 24 basic Fortitude save, and strangling the creature for as long as it remains {@condition grabbed} or {@condition restrained}. A strangled creature can't speak, which prevents it from casting spells with a verbal component or activating items with a command component. The strangled creature must hold its breath or start suffocating (Core Rulebook 478)."
+							"The little man in the woods tightens his grip around the creature's neck, extending the Grab, dealing {@damage 2d6+3} bludgeoning damage with a {@dc 24} basic Fortitude save, and strangling the creature for as long as it remains {@condition grabbed} or {@condition restrained}. A strangled creature can't speak, which prevents it from casting spells with a verbal component or activating items with a command component. The strangled creature must hold its breath or start suffocating (Core Rulebook 478)."
 						]
 					}
 				]
@@ -9505,7 +9505,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d6+12} negative, DC 31"
+							"{@damage 2d6+12} negative, {@dc 31}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -9514,7 +9514,7 @@
 					{
 						"name": "Funereal Touch",
 						"entries": [
-							"A creature touched by a llorona must attempt a DC 29 Fortitude save. On a failure, the creature becomes {@condition drained||drained 1} ({@condition drained||drained 2} on a critical failure) or increases their {@condition drained} value by 1 (2 on a critical failure), up to a maximum of {@condition drained||drained 4}. Every time a creature becomes {@condition drained} in this way, the llorona gains 10 temporary Hit Points for 1 hour."
+							"A creature touched by a llorona must attempt a {@dc 29} Fortitude save. On a failure, the creature becomes {@condition drained||drained 1} ({@condition drained||drained 2} on a critical failure) or increases their {@condition drained} value by 1 (2 on a critical failure), up to a maximum of {@condition drained||drained 4}. Every time a creature becomes {@condition drained} in this way, the llorona gains 10 temporary Hit Points for 1 hour."
 						]
 					},
 					{
@@ -9539,7 +9539,7 @@
 							"occult"
 						],
 						"entries": [
-							"The llorona unleashes a somber wail. Each living creature within 120 feet must attempt a DC 31 Will save. Regardless of its result, the creature is then temporarily immune for 24 hours.",
+							"The llorona unleashes a somber wail. Each living creature within 120 feet must attempt a {@dc 31} Will save. Regardless of its result, the creature is then temporarily immune for 24 hours.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -9550,7 +9550,7 @@
 										"The creature is {@condition stunned||stunned 1}."
 									],
 									"Failure": [
-										"The creature is {@condition fascinated} with the nearest body of water and compelled to move toward the water and drown itself. If there's no nearby body of water, the creature instead remains still. The creature can attempt another DC 31 Will save at the end of each of its turns. On a success, the creature is no longer {@condition fascinated}. Once the {@condition fascinated} condition ends, the creature becomes {@condition stunned||stunned 1}."
+										"The creature is {@condition fascinated} with the nearest body of water and compelled to move toward the water and drown itself. If there's no nearby body of water, the creature instead remains still. The creature can attempt another {@dc 31} Will save at the end of each of its turns. On a success, the creature is no longer {@condition fascinated}. Once the {@condition fascinated} condition ends, the creature becomes {@condition stunned||stunned 1}."
 									],
 									"Critical Failure": [
 										"As failure, except the creature receives another Will save only at the end of a round in which it's submerged in water."
@@ -10054,7 +10054,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The relictner erodes an object within 30 feet, dealing {@damage 3d10} bludgeoning damage to it, with a DC 31 basic Reflex save if the object is attended."
+							"The relictner erodes an object within 30 feet, dealing {@damage 3d10} bludgeoning damage to it, with a {@dc 31} basic Reflex save if the object is attended."
 						]
 					},
 					{
@@ -10069,7 +10069,7 @@
 						],
 						"entries": [
 							"As shadern immolator, except up to 12 rounds.",
-							"Demolition {@as 3}(divine, evocation) The relictner bellows in fury, causing the surrounding structure to collapse. All creatures in a 30-foot emanation take {@damage 8d10} bludgeoning damage from falling debris (DC 31 basic Reflex save). A creature that fails its save is knocked {@condition prone}.",
+							"Demolition {@as 3}(divine, evocation) The relictner bellows in fury, causing the surrounding structure to collapse. All creatures in a 30-foot emanation take {@damage 8d10} bludgeoning damage from falling debris ({@dc 31} basic Reflex save). A creature that fails its save is knocked {@condition prone}.",
 							"The area becomes {@quickref difficult terrain||3|terrain}. The relictner can't use Demolition again for {@dice 1d4} rounds."
 						]
 					}
@@ -10525,7 +10525,7 @@
 							"occult"
 						],
 						"entries": [
-							"30 feet. Living creatures are {@condition frightened||frightened 1} while in an ice mummy's great despair aura. They can't naturally recover from this fear while in the area but recover instantly once they leave it. When a creature first enters the area, it must succeed at a DC 24 Will save (after taking the penalty from being {@condition frightened}) or be {@condition paralyzed} for {@dice 1d4} rounds. The creature is then temporarily immune for 24 hours."
+							"30 feet. Living creatures are {@condition frightened||frightened 1} while in an ice mummy's great despair aura. They can't naturally recover from this fear while in the area but recover instantly once they leave it. When a creature first enters the area, it must succeed at a {@dc 24} Will save (after taking the penalty from being {@condition frightened}) or be {@condition paralyzed} for {@dice 1d4} rounds. The creature is then temporarily immune for 24 hours."
 						]
 					}
 				],
@@ -10557,7 +10557,7 @@
 							"This affliction can't be reduced below stage 1, nor can damage from it be healed, until successfully treated with remove curse or a similar effect. The affliction can then be removed as normal for a disease. A creature killed by cold rot turns to ice crystals and can't be resurrected except by a 7th-level resurrect ritual or similar magic; Saving",
 							{
 								"type": "affliction",
-								"name": "Throw DC 24 Fortitude;",
+								"name": "Throw {@dc 24} Fortitude;",
 								"stages": [
 									{
 										"stage": 1,
@@ -10586,7 +10586,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The ice mummy exhales a 60-foot cone of razor-sharp ice that deals {@damage 5d6} cold and {@damage 4d6} slashing damage (DC 26 basic Reflex save). The ice mummy can't use Frozen Breath again for {@dice 1d4} rounds."
+							"The ice mummy exhales a 60-foot cone of razor-sharp ice that deals {@damage 5d6} cold and {@damage 4d6} slashing damage ({@dc 26} basic Reflex save). The ice mummy can't use Frozen Breath again for {@dice 1d4} rounds."
 						]
 					}
 				]
@@ -10765,7 +10765,7 @@
 						],
 						"entries": [
 							"30 feet.",
-							"When a creature enters or starts its turn in the aura, it's affected by calm emotions for 1 minute, with a DC 27 Will save. A creature that succeeds at the save is temporarily immune for 24 hours. If the Iroran mummy takes a {@condition hostile} action, the aura of peace is suppressed and its effects end for anyone already affected. The Iroran mummy must spend 10 minutes in meditation to restore the aura."
+							"When a creature enters or starts its turn in the aura, it's affected by calm emotions for 1 minute, with a {@dc 27} Will save. A creature that succeeds at the save is temporarily immune for 24 hours. If the Iroran mummy takes a {@condition hostile} action, the aura of peace is suppressed and its effects end for anyone already affected. The Iroran mummy must spend 10 minutes in meditation to restore the aura."
 						]
 					},
 					{
@@ -10797,7 +10797,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The Iroran mummy makes two unarmed {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses, and the target must succeed at a DC 29 Fortitude save or be {@condition stunned||stunned 1} (or {@condition stunned||stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
+							"The Iroran mummy makes two unarmed {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses, and the target must succeed at a {@dc 29} Fortitude save or be {@condition stunned||stunned 1} (or {@condition stunned||stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
 						]
 					}
 				]
@@ -11086,7 +11086,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. As ice mummy, but DC 31."
+							"30 feet. As ice mummy, but {@dc 31}."
 						]
 					}
 				],
@@ -11120,7 +11120,7 @@
 						],
 						"requirements": "The prophet's Sandstorm is active",
 						"entries": [
-							"The prophet inhales its Sandstorm, suppressing the effect until the end of the prophet's next turn. It then exhales a 120-foot cone of negatively charged sand that deals {@damage 7d6} negative and {@damage 7d6} slashing damage (DC 33 basic Reflex save)."
+							"The prophet inhales its Sandstorm, suppressing the effect until the end of the prophet's next turn. It then exhales a 120-foot cone of negatively charged sand that deals {@damage 7d6} negative and {@damage 7d6} slashing damage ({@dc 33} basic Reflex save)."
 						]
 					},
 					{
@@ -11185,7 +11185,7 @@
 							"unit": "day"
 						},
 						"entries": [
-							"The mummy creates a temporary sandstorm in a 30-foot emanation that lasts for 1 minute. Creatures within the emanation take a \u20134 circumstance penalty to {@skill Perception} checks and must succeed at a DC 33 Fortitude save or be forced to hold their breath or start suffocating (Core Rulebook 478). A creature within the sandstorm at the end of its turn takes {@damage 2d6} negative and {@damage 1d6} slashing damage."
+							"The mummy creates a temporary sandstorm in a 30-foot emanation that lasts for 1 minute. Creatures within the emanation take a \u20134 circumstance penalty to {@skill Perception} checks and must succeed at a {@dc 33} Fortitude save or be forced to hold their breath or start suffocating (Core Rulebook 478). A creature within the sandstorm at the end of its turn takes {@damage 2d6} negative and {@damage 1d6} slashing damage."
 						]
 					}
 				]
@@ -11338,7 +11338,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. When a creature ends its turn in the obrousian's waves of sorrow aura, the creature is overwhelmed by the sorrow that suffuses the obrousian's being. The creature must succeed at a DC 33 Will saving throw or become {@condition paralyzed} for 1 round."
+							"30 feet. When a creature ends its turn in the obrousian's waves of sorrow aura, the creature is overwhelmed by the sorrow that suffuses the obrousian's being. The creature must succeed at a {@dc 33} Will saving throw or become {@condition paralyzed} for 1 round."
 						]
 					}
 				],
@@ -11523,7 +11523,7 @@
 						],
 						"requirements": "The onryo's last action was a successful claw {@action Strike}",
 						"entries": [
-							"The onryo attempts to instill its need for vengeance into the creature. The onryo, with their touch, casts a 5th-level geas on the creature they hit (DC 30 Will). On a failure, it's forced to seek and slay loved ones of the onryo's wrongdoer and anyone who attempts to defend them for up to one week. On a critical failure, the duration is 1 month and the creature gains Onryo's Rancor, which it's also compelled to use by the geas. Regardless of the outcome, the creature is temporarily immune to Onryo's Rancor from this individual for 1 year."
+							"The onryo attempts to instill its need for vengeance into the creature. The onryo, with their touch, casts a 5th-level geas on the creature they hit ({@dc 30} Will). On a failure, it's forced to seek and slay loved ones of the onryo's wrongdoer and anyone who attempts to defend them for up to one week. On a critical failure, the duration is 1 month and the creature gains Onryo's Rancor, which it's also compelled to use by the geas. Regardless of the outcome, the creature is temporarily immune to Onryo's Rancor from this individual for 1 year."
 						]
 					},
 					{
@@ -11538,7 +11538,7 @@
 							"unit": "hour"
 						},
 						"entries": [
-							"The onryo channels their boundless resentment, manifesting it as a tangled clump of wet hair, a clot of rancid swamp mud, or other disgusting mass of matter in the throat of a creature within 30 feet. The creature must attempt a DC 32 Fortitude save.",
+							"The onryo channels their boundless resentment, manifesting it as a tangled clump of wet hair, a clot of rancid swamp mud, or other disgusting mass of matter in the throat of a creature within 30 feet. The creature must attempt a {@dc 32} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -11717,7 +11717,7 @@
 							"possession"
 						],
 						"entries": [
-							"The polong attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell (DC 26 Will), except the duration is 24 hours and, since the polong doesn't have a physical body, they're unaffected by that restriction of the spell. If the target has critically failed its save and become fully possessed by this polong before, it gets a save result one degree of success worse than it rolled.",
+							"The polong attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell ({@dc 26} Will), except the duration is 24 hours and, since the polong doesn't have a physical body, they're unaffected by that restriction of the spell. If the target has critically failed its save and become fully possessed by this polong before, it gets a save result one degree of success worse than it rolled.",
 							"A creature possessed by a polong becomes {@condition drained||drained 1} and {@condition doomed||doomed 1}. These conditions don't reduce naturally unless the polong spends an entire day without possessing the creature. For each consecutive day the polong is able to return and possess the creature, the {@condition drained} and {@condition doomed} values each increase by 1, to a maximum of 4. If the polong possesses a different creature, the conditions end for any creature it previously possessed."
 						]
 					},
@@ -11897,7 +11897,7 @@
 					{
 						"name": "Involuntary Reaction",
 						"entries": [
-							"A creature struck by a raw nerve's nerve ending strike must succeed at a DC 26 Reflex saving throw or be unable to use reactions until the start of its next turn."
+							"A creature struck by a raw nerve's nerve ending strike must succeed at a {@dc 26} Reflex saving throw or be unable to use reactions until the start of its next turn."
 						]
 					},
 					{
@@ -11913,7 +11913,7 @@
 							"occult"
 						],
 						"entries": [
-							"The raw nerve releases a burst of mental energy in a 30-foot cone, dealing {@damage 4d12} mental damage to each creature in the cone (DC 23 Will save).",
+							"The raw nerve releases a burst of mental energy in a 30-foot cone, dealing {@damage 4d12} mental damage to each creature in the cone ({@dc 23} Will save).",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -12055,7 +12055,7 @@
 					{
 						"name": "Self-Loathing",
 						"entries": [
-							"As pale stranger, but DC 33."
+							"As pale stranger, but {@dc 33}."
 						]
 					},
 					{
@@ -12073,7 +12073,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 3d8+7} bludgeoning, DC 33"
+							"{@damage 3d8+7} bludgeoning, {@dc 33}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -12205,7 +12205,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"10 feet. A creature entering the aura or starting its turn in the aura must succeed at a DC 13 Fortitude save or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} for as long as it's {@condition sickened} on a critical failure). While within the aura, affected creatures take a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+							"10 feet. A creature entering the aura or starting its turn in the aura must succeed at a {@dc 13} Fortitude save or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} for as long as it's {@condition sickened} on a critical failure). While within the aura, affected creatures take a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 						]
 					}
 				],
@@ -12335,7 +12335,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"15 feet. As predatory rabbit, but DC 14."
+							"15 feet. As predatory rabbit, but {@dc 14}."
 						]
 					}
 				],
@@ -12638,7 +12638,7 @@
 							"primal"
 						],
 						"entries": [
-							"20 feet, DC 37"
+							"20 feet, {@dc 37}"
 						]
 					}
 				],
@@ -12661,7 +12661,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"DC 37"
+							"{@dc 37}"
 						]
 					}
 				]
@@ -13212,7 +13212,7 @@
 					{
 						"name": "Abdomen Cache",
 						"entries": [
-							"The abdomen of a beetle carapace can be fitted with a simple hinge, allowing it to open and be used as storage. The abdomen can hold up to one Medium or smaller creature, a Large or smaller swarm, or a similar amount of cargo. The beetle or a creature stored in it can {@action Interact} to open the hatch. If the beetle carapace takes a critical hit by a bludgeoning weapon, roll a DC {@flatDC 10} flat check. If the check fails, the cache is breached, and its contents spill out of the beetle. The hatch can also be Forced Open (DC 22 {@skill Athletics})."
+							"The abdomen of a beetle carapace can be fitted with a simple hinge, allowing it to open and be used as storage. The abdomen can hold up to one Medium or smaller creature, a Large or smaller swarm, or a similar amount of cargo. The beetle or a creature stored in it can {@action Interact} to open the hatch. If the beetle carapace takes a critical hit by a bludgeoning weapon, roll a DC {@flatDC 10} flat check. If the check fails, the cache is breached, and its contents spill out of the beetle. The hatch can also be Forced Open ({@dc 22} {@skill Athletics})."
 						]
 					},
 					{
@@ -13222,7 +13222,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d8+2} piercing, DC 24"
+							"{@damage 2d8+2} piercing, {@dc 24}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -13531,7 +13531,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The skeletal titan slams its mountain sword into the ground. The shock wave reverberates, dealing mountain sword damage to all creatures in a 20- foot line (DC 34 basic Reflex save). Those who fail are also knocked {@condition prone}."
+							"The skeletal titan slams its mountain sword into the ground. The shock wave reverberates, dealing mountain sword damage to all creatures in a 20- foot line ({@dc 34} basic Reflex save). Those who fail are also knocked {@condition prone}."
 						]
 					},
 					{
@@ -13541,7 +13541,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, foot, DC 34"
+							"Huge or smaller, foot, {@dc 34}"
 						]
 					}
 				]
@@ -13722,7 +13722,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet, DC 26"
+							"30 feet, {@dc 26}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -13756,8 +13756,8 @@
 							"occult"
 						],
 						"entries": [
-							"The sluagh reaper touches a {@condition dying} creature or a creature that died within the past 1 hour. If the target is a {@condition dying} creature, it must attempt a DC 28 Fortitude save\u2014on a failure, its {@condition dying} value increases by 1 (2 on a critical failure). If the target is dead, it receives no save and the sluagh imprisons its soul in a small, grimy sack that keeps stolen souls fresh.",
-							"The sack is magically locked. Any sluagh can open it without difficulty, but any others must {@action Pick a Lock||Pick the Lock} (DC 35) or use dispel magic (5th level; counteract DC 32). A creature can {@action Interact} to empty an unlocked sack, which frees the souls but doesn't return them to life. While a soul is imprisoned, it can't be brought back to life by any means short of a wish or miracle. The sack can hold 12 souls at a time. Sluagh reapers typically attempt to return the souls to a queen so she can devour them."
+							"The sluagh reaper touches a {@condition dying} creature or a creature that died within the past 1 hour. If the target is a {@condition dying} creature, it must attempt a {@dc 28} Fortitude save\u2014on a failure, its {@condition dying} value increases by 1 (2 on a critical failure). If the target is dead, it receives no save and the sluagh imprisons its soul in a small, grimy sack that keeps stolen souls fresh.",
+							"The sack is magically locked. Any sluagh can open it without difficulty, but any others must {@action Pick a Lock||Pick the Lock} ({@dc 35}) or use dispel magic (5th level; counteract {@dc 32}). A creature can {@action Interact} to empty an unlocked sack, which frees the souls but doesn't return them to life. While a soul is imprisoned, it can't be brought back to life by any means short of a wish or miracle. The sack can hold 12 souls at a time. Sluagh reapers typically attempt to return the souls to a queen so she can devour them."
 						]
 					}
 				]
@@ -13975,7 +13975,7 @@
 							"mental"
 						],
 						"entries": [
-							"120 feet, DC 37"
+							"120 feet, {@dc 37}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -14007,7 +14007,7 @@
 							"occult"
 						],
 						"entries": [
-							"The queen touches a {@condition dying} creature or a creature that died within the past 1 hour with her proboscis. If the target is {@condition dying}, it must attempt a DC 41 Fortitude save; on a failure, its {@condition dying} value increases by 2 (3 on a critical failure). If the target is dead, the queen devours the soul. Unless the queen is destroyed, the target can't be returned to life through any means, even powerful magic such as wish."
+							"The queen touches a {@condition dying} creature or a creature that died within the past 1 hour with her proboscis. If the target is {@condition dying}, it must attempt a {@dc 41} Fortitude save; on a failure, its {@condition dying} value increases by 2 (3 on a critical failure). If the target is dead, the queen devours the soul. Unless the queen is destroyed, the target can't be returned to life through any means, even powerful magic such as wish."
 						]
 					},
 					{
@@ -14033,7 +14033,7 @@
 						],
 						"requirements": "The queen has a creature {@condition grabbed} or {@condition restrained} with her proboscis",
 						"entries": [
-							"The queen devours a portion of the creature's soul and steals some of its ability. The creature takes {@damage 5d8} negative damage (DC 41 Fortitude save). The queen gains temporary HP equal to the total amount of HP the target loses, including any HP lost from being {@condition drained}.",
+							"The queen devours a portion of the creature's soul and steals some of its ability. The creature takes {@damage 5d8} negative damage ({@dc 41} Fortitude save). The queen gains temporary HP equal to the total amount of HP the target loses, including any HP lost from being {@condition drained}.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -14241,7 +14241,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet, or 60 feet if the tormented is at 125 HP or lower. The psychic agony of a tormented spills into the world around them, inflicting murderous hallucinations replicating the tormented's last moments. A non-undead creature that ends its turn in the aura must succeed at a DC 32 Will save or take the effect listed under Endless Suffering. While it has a condition from Tortured Gaze, a creature can't gain a new condition from the aura but can take damage from it again."
+							"30 feet, or 60 feet if the tormented is at 125 HP or lower. The psychic agony of a tormented spills into the world around them, inflicting murderous hallucinations replicating the tormented's last moments. A non-undead creature that ends its turn in the aura must succeed at a {@dc 32} Will save or take the effect listed under Endless Suffering. While it has a condition from Tortured Gaze, a creature can't gain a new condition from the aura but can take damage from it again."
 						]
 					}
 				],
@@ -14259,7 +14259,7 @@
 							"mental"
 						],
 						"entries": [
-							"Each creature in the tormented's Tortured Gaze aura takes {@damage 14d6} mental damage (DC 34 basic Will save). A creature that fails is also {@condition sickened||sickened 1} (or {@condition sickened||sickened 2} on a critical failure). The tormented can't Scream in Agony again for {@dice 1d4} rounds, but recharges the ability whenever they take damage from an attacker's critical hit or their own critical failure on a saving throw."
+							"Each creature in the tormented's Tortured Gaze aura takes {@damage 14d6} mental damage ({@dc 34} basic Will save). A creature that fails is also {@condition sickened||sickened 1} (or {@condition sickened||sickened 2} on a critical failure). The tormented can't Scream in Agony again for {@dice 1d4} rounds, but recharges the ability whenever they take damage from an attacker's critical hit or their own critical failure on a saving throw."
 						]
 					}
 				]
@@ -14424,7 +14424,7 @@
 							"occult"
 						],
 						"entries": [
-							"The unrisen howls in pain at its cursed existence. Creatures within a 30-foot emanation take {@damage 9d8} mental damage (DC 30 basic Will save). The unrisen can't use Agonized Howl again for {@dice 1d4} rounds."
+							"The unrisen howls in pain at its cursed existence. Creatures within a 30-foot emanation take {@damage 9d8} mental damage ({@dc 30} basic Will save). The unrisen can't use Agonized Howl again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -14434,7 +14434,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The unrisen reshapes its grotesque form to move swiftly. It Strides twice. Any living creature that can see the unrisen during this movement must succeed at a DC 28 Fortitude save or be {@condition sickened||sickened 1} ({@condition sickened||sickened 2} on a critical failure). This is a {@trait mental} and {@trait visual} effect. The unrisen can't use Awful Approach again for {@dice 1d4} rounds."
+							"The unrisen reshapes its grotesque form to move swiftly. It Strides twice. Any living creature that can see the unrisen during this movement must succeed at a {@dc 28} Fortitude save or be {@condition sickened||sickened 1} ({@condition sickened||sickened 2} on a critical failure). This is a {@trait mental} and {@trait visual} effect. The unrisen can't use Awful Approach again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -14450,7 +14450,7 @@
 						],
 						"requirements": "The unrisen has a living creature {@condition grabbed} or {@condition restrained}",
 						"entries": [
-							"The unrisen attempts to destroy its victim's life force to share the unrisen's fate. The creature must succeed at a DC 30 Fortitude save or become {@condition doomed||doomed 1}. While the curse lasts, the creature regains only half as many HP from positive {@trait healing} effects; if it dies, any attempt to raise it from the dead causes it to return as an unrisen. The curse ends automatically if the creature's {@condition doomed} value is reduced to 0."
+							"The unrisen attempts to destroy its victim's life force to share the unrisen's fate. The creature must succeed at a {@dc 30} Fortitude save or become {@condition doomed||doomed 1}. While the curse lasts, the creature regains only half as many HP from positive {@trait healing} effects; if it dies, any attempt to raise it from the dead causes it to return as an unrisen. The curse ends automatically if the creature's {@condition doomed} value is reduced to 0."
 						]
 					}
 				]
@@ -15327,7 +15327,7 @@
 						],
 						"trigger": "A creature targets the vetalarana manipulator with a {@trait mental} effect or spell",
 						"entries": [
-							"The manipulator psychically lashes out at the triggering creature, dealing {@damage 3d8} mental damage (DC 24 basic Will save)."
+							"The manipulator psychically lashes out at the triggering creature, dealing {@damage 3d8} mental damage ({@dc 24} basic Will save)."
 						]
 					}
 				],
@@ -15374,7 +15374,7 @@
 					{
 						"name": "Paralyzing Claws",
 						"entries": [
-							"DC 27"
+							"{@dc 27}"
 						]
 					}
 				]
@@ -15566,7 +15566,7 @@
 						"name": "Forest Guardian",
 						"entries": [
 							"A waldgeist is compelled to investigate the sound of wood or trees being damaged, such as by being burned or chopped down.",
-							"A waldgeist that hears such a sound must succeed at a DC 26 Will save or spend all their actions moving toward the sound until they identify the cause. This can't be used to compel a waldgeist to leave their bonded woodland. A waldgeist that succeeds at their saving throw is temporarily immune for 10 minutes."
+							"A waldgeist that hears such a sound must succeed at a {@dc 26} Will save or spend all their actions moving toward the sound until they identify the cause. This can't be used to compel a waldgeist to leave their bonded woodland. A waldgeist that succeeds at their saving throw is temporarily immune for 10 minutes."
 						]
 					},
 					{
@@ -15585,7 +15585,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The touch of a waldgeist transforms flesh into wood. A living creature damaged by the waldgeist's lignifying hand {@action Strike} must succeed at a DC 24 Fortitude save or become {@condition slowed||slowed 1} (or {@condition slowed||slowed 2} on a critical failure). Further failed saves against lignify increases the {@condition slowed} condition. Once a creature's actions are reduced to 0 by lignify, that creature becomes {@condition petrified}, except they're transformed into wood instead of stone."
+							"The touch of a waldgeist transforms flesh into wood. A living creature damaged by the waldgeist's lignifying hand {@action Strike} must succeed at a {@dc 24} Fortitude save or become {@condition slowed||slowed 1} (or {@condition slowed||slowed 2} on a critical failure). Further failed saves against lignify increases the {@condition slowed} condition. Once a creature's actions are reduced to 0 by lignify, that creature becomes {@condition petrified}, except they're transformed into wood instead of stone."
 						]
 					},
 					{
@@ -15706,7 +15706,7 @@
 							"poison"
 						],
 						"entries": [
-							"60 feet. A seetangeist secretes foul fluids into the surrounding water, poisoning it. A creature that enters or starts its turn in the aura must succeed at a DC 29 Fortitude save or become {@condition sickened||sickened 2} ({@condition sickened||sickened 3} on a critical failure). Creatures that breathe water take a \u20132 circumstance penalty to this saving throw. As long as a creature remains in the aura, it can't reduce its {@condition sickened} condition below 1. A creature that succeeds at its save is temporarily immune for 1 minute."
+							"60 feet. A seetangeist secretes foul fluids into the surrounding water, poisoning it. A creature that enters or starts its turn in the aura must succeed at a {@dc 29} Fortitude save or become {@condition sickened||sickened 2} ({@condition sickened||sickened 3} on a critical failure). Creatures that breathe water take a \u20132 circumstance penalty to this saving throw. As long as a creature remains in the aura, it can't reduce its {@condition sickened} condition below 1. A creature that succeeds at its save is temporarily immune for 1 minute."
 						]
 					}
 				],
@@ -15718,7 +15718,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the seetangeist's space takes {@damage 3d6} slashing and {@damage 3d6} poison damage (DC 32 basic Reflex save). A creature that fails this save also takes {@damage 1d12} {@condition persistent damage||persistent poison damage}."
+							"Each enemy in the seetangeist's space takes {@damage 3d6} slashing and {@damage 3d6} poison damage ({@dc 32} basic Reflex save). A creature that fails this save also takes {@damage 1d12} {@condition persistent damage||persistent poison damage}."
 						]
 					}
 				]
@@ -15880,7 +15880,7 @@
 						},
 						"trigger": "The hunter wight is reduced to 0 Hit Points",
 						"entries": [
-							"The hunter wight has rigged their own body with a snare, which they trigger before being destroyed. Slivers of bone launch at an adjacent creature, dealing {@damage 4d8} piercing damage (DC 25 basic Reflex save)."
+							"The hunter wight has rigged their own body with a snare, which they trigger before being destroyed. Slivers of bone launch at an adjacent creature, dealing {@damage 4d8} piercing damage ({@dc 25} basic Reflex save)."
 						]
 					}
 				],
@@ -15898,7 +15898,7 @@
 					{
 						"name": "Hit",
 						"entries": [
-							"Points, and the creature must succeed at a DC 22 Fortitude save or become {@condition drained||drained 1}. Further damage dealt by the hunter wight's unarmed and bound weapon attacks increases the value of the {@condition drained} condition by 1 on a failed save, to a maximum of {@condition drained||drained 4}."
+							"Points, and the creature must succeed at a {@dc 22} Fortitude save or become {@condition drained||drained 1}. Further damage dealt by the hunter wight's unarmed and bound weapon attacks increases the value of the {@condition drained} condition by 1 on a failed save, to a maximum of {@condition drained||drained 4}."
 						]
 					},
 					{
@@ -16045,7 +16045,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"As hunter wight, but 9 temporary Hit Points and DC 25."
+							"As hunter wight, but 9 temporary Hit Points and {@dc 25}."
 						]
 					},
 					{
@@ -16271,7 +16271,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"As hunter wight, but 12 temporary Hit Points and DC 29."
+							"As hunter wight, but 12 temporary Hit Points and {@dc 29}."
 						]
 					},
 					{
@@ -16701,7 +16701,7 @@
 						],
 						"requirements": "The zombie owlbear has a creature {@condition grabbed} or {@condition restrained} with its talons",
 						"entries": [
-							"The zombie owlbear repeatedly slams the creature into the ground. This deals {@damage 1d10+7} bludgeoning damage (DC 20 basic Fortitude save). On a critical failure, the creature is {@condition stunned||stunned 1}, and on a critical success the creature is no longer {@condition grabbed} or {@condition restrained}."
+							"The zombie owlbear repeatedly slams the creature into the ground. This deals {@damage 1d10+7} bludgeoning damage ({@dc 20} basic Fortitude save). On a critical failure, the creature is {@condition stunned||stunned 1}, and on a critical success the creature is no longer {@condition grabbed} or {@condition restrained}."
 						]
 					},
 					{
@@ -16717,7 +16717,7 @@
 							"mental"
 						],
 						"entries": [
-							"The zombie owlbear unleashes a {@condition broken}, snarling screech that unnerves those who hear it. Each creature in a 60-foot emanation must attempt a DC 19 Will save. Regardless of the result, creatures are temporarily immune for 1 minute.",
+							"The zombie owlbear unleashes a {@condition broken}, snarling screech that unnerves those who hear it. Each creature in a 60-foot emanation must attempt a {@dc 19} Will save. Regardless of the result, creatures are temporarily immune for 1 minute.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -16916,7 +16916,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"The zombie lord intones blasphemous words to gain control over a zombie they can see within 100 feet. A zombie that is mindless and not under someone else's control falls under their control automatically; otherwise, the zombie or its controller can attempt a DC 22 Will save to avoid it being {@condition controlled} (whichever has the higher modifier). The target zombie is temporarily immune for 24 hours if successful. The attempt fails if the zombie is the same level as the zombie lord or higher.",
+							"The zombie lord intones blasphemous words to gain control over a zombie they can see within 100 feet. A zombie that is mindless and not under someone else's control falls under their control automatically; otherwise, the zombie or its controller can attempt a {@dc 22} Will save to avoid it being {@condition controlled} (whichever has the higher modifier). The target zombie is temporarily immune for 24 hours if successful. The attempt fails if the zombie is the same level as the zombie lord or higher.",
 							"The zombie remains {@condition controlled} by the zombie lord until either is destroyed.",
 							"A zombie lord can control up to 8 zombies at a time. If the zombie lord would control a number of zombies over this limit, they choose which to release."
 						]
@@ -17271,7 +17271,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d10+7} bludgeoning, DC 30"
+							"{@damage 2d10+7} bludgeoning, {@dc 30}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -17284,7 +17284,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As Trample, Large or smaller, foot, DC 30 but the zombie mammoth Strides up to its Speed instead of double."
+							"As Trample, Large or smaller, foot, {@dc 30} but the zombie mammoth Strides up to its Speed instead of double."
 						]
 					}
 				]
@@ -17472,7 +17472,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Krant intones blasphemous words to gain control over a zombie he can see within 100 feet. A zombie that is mindless and not under someone else's control falls under his control automatically; otherwise, the zombie or its controller can attempt a DC 22 Will save to avoid being {@condition controlled} (whichever has the higher modifier). The target zombie is temporarily immune for 24 hours if successful. The attempt fails if the zombie is the same level as Krant or higher. The zombie remains {@condition controlled} by Krant until either is destroyed. Krant can control up to 8 zombies at a time. If Krant would control a number of zombies over this limit, he chooses which to release."
+							"Krant intones blasphemous words to gain control over a zombie he can see within 100 feet. A zombie that is mindless and not under someone else's control falls under his control automatically; otherwise, the zombie or its controller can attempt a {@dc 22} Will save to avoid being {@condition controlled} (whichever has the higher modifier). The target zombie is temporarily immune for 24 hours if successful. The attempt fails if the zombie is the same level as Krant or higher. The zombie remains {@condition controlled} by Krant until either is destroyed. Krant can control up to 8 zombies at a time. If Krant would control a number of zombies over this limit, he chooses which to release."
 						]
 					},
 					{

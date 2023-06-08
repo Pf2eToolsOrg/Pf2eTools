@@ -349,7 +349,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied||stupefied 1} for 1 minute."
+							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage ({@dc 33} basic Will save). A creature that fails its save is also {@condition stupefied||stupefied 1} for 1 minute."
 						],
 						"generic": {
 							"tag": "ability"
@@ -792,7 +792,7 @@
 							"light"
 						],
 						"entries": [
-							"When a bright walker is reduced to 0 Hit Points, they flash out in a burst of light, obtaining the blazing end they were denied at death. This blaze deals {@damage 10d6} fire damage (DC 25 basic Reflex save) to creatures within 20 feet. Creatures who fail this save are also {@condition dazzled} for 1 minute ({@condition blinded} for 1 minute on a critical failure)."
+							"When a bright walker is reduced to 0 Hit Points, they flash out in a burst of light, obtaining the blazing end they were denied at death. This blaze deals {@damage 10d6} fire damage ({@dc 25} basic Reflex save) to creatures within 20 feet. Creatures who fail this save are also {@condition dazzled} for 1 minute ({@condition blinded} for 1 minute on a critical failure)."
 						],
 						"name": "Bright Release"
 					},
@@ -803,7 +803,7 @@
 							"light"
 						],
 						"entries": [
-							"30 feet. The bright walker sheds bright light. Any creature that starts its turn in the aura must attempt at a DC 24 Fortitude save.",
+							"30 feet. The bright walker sheds bright light. Any creature that starts its turn in the aura must attempt at a {@dc 24} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -853,7 +853,7 @@
 					},
 					{
 						"entries": [
-							"Aura is suppressed; The bright walker reignites their Light Aura with a burst of brightness that deals {@damage 5d6} fire damage (DC 25 basic Reflex save) to creatures within a 20-foot burst. Creatures who are {@condition dazzled} or with light blindness find this flare particularly painful; such a creature's save result is one degree of success worse than the result it rolled."
+							"Aura is suppressed; The bright walker reignites their Light Aura with a burst of brightness that deals {@damage 5d6} fire damage ({@dc 25} basic Reflex save) to creatures within a 20-foot burst. Creatures who are {@condition dazzled} or with light blindness find this flare particularly painful; such a creature's save result is one degree of success worse than the result it rolled."
 						],
 						"name": "Light"
 					},
@@ -1046,7 +1046,7 @@
 							"light"
 						],
 						"entries": [
-							"When the caligni defender dies, their body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage (DC 26 basic Reflex save). Their gear and treasure are unaffected by the flames and are left in a pile where they died."
+							"When the caligni defender dies, their body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage ({@dc 26} basic Reflex save). Their gear and treasure are unaffected by the flames and are left in a pile where they died."
 						],
 						"name": "Death Flame"
 					},
@@ -1342,7 +1342,7 @@
 				"mid": [
 					{
 						"entries": [
-							"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation (DC 26 basic Fortitude save)."
+							"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation ({@dc 26} basic Fortitude save)."
 						],
 						"name": "Spore Explosion"
 					}
@@ -1534,7 +1534,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 27"
+							"60 feet, {@dc 27}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -1683,7 +1683,7 @@
 							"light"
 						],
 						"entries": [
-							"20 feet. A dread wisp, though naturally {@condition invisible}, glows with a grayish illumination, casting dim light in the aura and making them visible. Living creatures that end their turn in the aura must succeed at a DC 25 Will saving throw or become {@condition frightened|CRB|frightened 1} (or {@condition frightened|CRB|frightened 2} on a critical failure)",
+							"20 feet. A dread wisp, though naturally {@condition invisible}, glows with a grayish illumination, casting dim light in the aura and making them visible. Living creatures that end their turn in the aura must succeed at a {@dc 25} Will saving throw or become {@condition frightened|CRB|frightened 1} (or {@condition frightened|CRB|frightened 2} on a critical failure)",
 							"Those that critically succeed are temporarily immune for 10 minutes."
 						],
 						"name": "Dread Flickering"
@@ -1713,7 +1713,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The dread wisp feeds on the creature's despair. The dread wisp regains {@dice 2d8} Hit Points and deals {@damage 3d8} negative damage to the creature (DC 25 basic Fortitude save), and if the dread wisp has Gone Dark, their Dread Flickering reignites."
+							"The dread wisp feeds on the creature's despair. The dread wisp regains {@dice 2d8} Hit Points and deals {@damage 3d8} negative damage to the creature ({@dc 25} basic Fortitude save), and if the dread wisp has Gone Dark, their Dread Flickering reignites."
 						],
 						"name": "Feed on Despair"
 					},
@@ -2357,7 +2357,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A target damaged by the warden's melee {@action Strike} must succeed at a DC 21 Fortitude save or be {@condition slowed|CRB|slowed 1} until the end of the warden's next turn."
+							"A target damaged by the warden's melee {@action Strike} must succeed at a {@dc 21} Fortitude save or be {@condition slowed|CRB|slowed 1} until the end of the warden's next turn."
 						],
 						"name": "Hampering Slash"
 					},
@@ -2557,7 +2557,7 @@
 							"darkness"
 						],
 						"entries": [
-							"When Dulac dies, her body is destroyed in a burst of chilling shadows. All creatures in a 20-foot burst take {@damage 8d8} cold damage (DC 28 basic Reflex save). Dulac's gear and treasure are unaffected by the shadows and are left in a pile where she died."
+							"When Dulac dies, her body is destroyed in a burst of chilling shadows. All creatures in a 20-foot burst take {@damage 8d8} cold damage ({@dc 28} basic Reflex save). Dulac's gear and treasure are unaffected by the shadows and are left in a pile where she died."
 						],
 						"name": "Death Shadows"
 					},
@@ -2782,7 +2782,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. A creature that begins its turn within the area feels as if its lungs were filling with water and must succeed at a DC 28 Fortitude save or be unable to speak or breathe. The creature can still hold its breath and can attempt a new save at the end of its turn. A creature that succeeds is temporarily immune for 24 hours."
+							"30 feet. A creature that begins its turn within the area feels as if its lungs were filling with water and must succeed at a {@dc 28} Fortitude save or be unable to speak or breathe. The creature can still hold its breath and can attempt a new save at the end of its turn. A creature that succeeds is temporarily immune for 24 hours."
 						],
 						"name": "Breath of the Bog"
 					},
@@ -3115,7 +3115,7 @@
 							"light"
 						],
 						"entries": [
-							"When Galudu dies, her body explodes into brilliant motes of magical energy. All creatures in a 20-foot burst take {@damage 12d6} force damage (DC 30 basic Reflex save). Galudu's gear is unaffected by the explosion and is left in a pile where she died."
+							"When Galudu dies, her body explodes into brilliant motes of magical energy. All creatures in a 20-foot burst take {@damage 12d6} force damage ({@dc 30} basic Reflex save). Galudu's gear is unaffected by the explosion and is left in a pile where she died."
 						],
 						"name": "Death Motes"
 					},
@@ -3327,7 +3327,7 @@
 							"negative"
 						],
 						"entries": [
-							"When Khurfel dies, his {@condition invisible} flesh quickly rots away and sublimates into a foul-smelling gas that fills a 10-foot emanation around his body. The gas deals {@damage 10d6} negative damage to creatures in this area as their flesh too curdles and rots (DC 28 basic Fortitude save)."
+							"When Khurfel dies, his {@condition invisible} flesh quickly rots away and sublimates into a foul-smelling gas that fills a 10-foot emanation around his body. The gas deals {@damage 10d6} negative damage to creatures in this area as their flesh too curdles and rots ({@dc 28} basic Fortitude save)."
 						],
 						"name": "Necrotic Decay"
 					},
@@ -3372,7 +3372,7 @@
 						},
 						"requirements": "Khurfel damaged a creature with a jaws {@action Strike} on his last action",
 						"entries": [
-							"Khurfel maintains contact, turning the creature's flesh translucent around the injury. Khurfel chooses one of two options, each of which requires a DC 28 Fortitude save. If the jaws {@action Strike} was a critical hit, the creature suffers both effects, using the same save result for both.",
+							"Khurfel maintains contact, turning the creature's flesh translucent around the injury. Khurfel chooses one of two options, each of which requires a {@dc 28} Fortitude save. If the jaws {@action Strike} was a critical hit, the creature suffers both effects, using the same save result for both.",
 							{
 								"type": "list",
 								"items": [
@@ -3681,7 +3681,7 @@
 							"mental"
 						],
 						"entries": [
-							"20 feet. Each creature that begins its turn within the aura and can hear the ominous whispers must succeed at a DC 30 Will save or become {@condition frightened|CRB|frightened 2}. On a success, the creature is temporarily immune for 1 minute."
+							"20 feet. Each creature that begins its turn within the aura and can hear the ominous whispers must succeed at a {@dc 30} Will save or become {@condition frightened|CRB|frightened 2}. On a success, the creature is temporarily immune for 1 minute."
 						],
 						"name": "Sibilant Whispers"
 					}
@@ -3707,7 +3707,7 @@
 							"teleportation"
 						],
 						"entries": [
-							"When Lady's Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a DC 30 Will saving throw to resist this effect."
+							"When Lady's Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a {@dc 30} Will saving throw to resist this effect."
 						],
 						"name": "Unwilling Teleportation"
 					}
@@ -3911,7 +3911,7 @@
 							"light"
 						],
 						"entries": [
-							"When Padli dies, his body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage (DC 28 basic Reflex save)",
+							"When Padli dies, his body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage ({@dc 28} basic Reflex save)",
 							"His gear is unaffected by the flames and is left in a pile where he died."
 						],
 						"name": "Death Flame"
@@ -4298,12 +4298,12 @@
 				"mid": [
 					{
 						"entries": [
-							"As dragon's blood puffball, but DC 28 and {@damage 8d8} poison damage.",
+							"As dragon's blood puffball, but {@dc 28} and {@damage 8d8} poison damage.",
 							"Creatures that fail the save are exposed to skull rot."
 						],
 						"name": "Spore Explosion",
 						"entries_as_xyz": [
-							"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation (DC 26 basic Fortitude save)."
+							"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation ({@dc 26} basic Fortitude save)."
 						]
 					}
 				],
@@ -4317,7 +4317,7 @@
 							"poison"
 						],
 						"entries": [
-							"The puffball releases a 30-foot cone of spores that deals {@damage 4d8} poison damage (DC 28 basic Fortitude save) to creatures in the cone. Creatures that fail this save are also exposed to skull rot."
+							"The puffball releases a 30-foot cone of spores that deals {@damage 4d8} poison damage ({@dc 28} basic Fortitude save) to creatures in the cone. Creatures that fail this save are also exposed to skull rot."
 						],
 						"name": "Spore Cloud"
 					},
@@ -4327,7 +4327,7 @@
 							"poison"
 						],
 						"entries": [
-							"A creature hit by the puffball's tendril must succeed a DC 28 Fortitude save or become {@condition paralyzed}. The {@condition paralyzed} creature can attempt a new save at the end of each of its turns."
+							"A creature hit by the puffball's tendril must succeed a {@dc 28} Fortitude save or become {@condition paralyzed}. The {@condition paralyzed} creature can attempt a new save at the end of each of its turns."
 						],
 						"name": "Paralysis"
 					},
@@ -4820,7 +4820,7 @@
 							"negative"
 						],
 						"entries": [
-							"As urdefhan warrior (Bestiary 2 272), but DC 24 and {@damage 8d6} negative damage."
+							"As urdefhan warrior (Bestiary 2 272), but {@dc 24} and {@damage 8d6} negative damage."
 						],
 						"name": "Necrotic Decay"
 					}
@@ -4851,7 +4851,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As urdefhan warrior (Bestiary 2 272), but DC 26 and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
+							"As urdefhan warrior (Bestiary 2 272), but {@dc 26} and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
 						],
 						"name": "Wicked Bite"
 					}
@@ -5037,7 +5037,7 @@
 							"negative"
 						],
 						"entries": [
-							"As urdefhan warrior (Bestiary 2 272), but DC 23 and {@damage 6d6} negative damage."
+							"As urdefhan warrior (Bestiary 2 272), but {@dc 23} and {@damage 6d6} negative damage."
 						],
 						"name": "Necrotic Decay"
 					}
@@ -5064,7 +5064,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As urdefhan warrior (Bestiary 2 272) but DC 24."
+							"As urdefhan warrior (Bestiary 2 272) but {@dc 24}."
 						],
 						"name": "Wicked Bite"
 					}
@@ -5232,7 +5232,7 @@
 							"negative"
 						],
 						"entries": [
-							"As urdefhan warrior (Bestiary 2 272), but DC 24 and {@damage 7d6} negative damage."
+							"As urdefhan warrior (Bestiary 2 272), but {@dc 24} and {@damage 7d6} negative damage."
 						],
 						"name": "Necrotic Decay"
 					}
@@ -5244,7 +5244,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d8+7} slashing, DC 25"
+							"{@damage 1d8+7} slashing, {@dc 25}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -5263,7 +5263,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As urdefhan warrior (Bestiary 2 272), but DC 25 and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
+							"As urdefhan warrior (Bestiary 2 272), but {@dc 25} and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
 						],
 						"name": "Wicked Bite"
 					}
@@ -5400,7 +5400,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d8+12} bludgeoning, DC 28 ({@condition grabbed} by claws only)"
+							"{@damage 1d8+12} bludgeoning, {@dc 28} ({@condition grabbed} by claws only)"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -5412,7 +5412,7 @@
 							"poison"
 						],
 						"entries": [
-							"Saving Throw DC 28 Fortitude"
+							"Saving Throw {@dc 28} Fortitude"
 						],
 						"name": "Draining Venom"
 					},

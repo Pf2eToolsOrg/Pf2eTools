@@ -870,7 +870,7 @@
 							"water"
 						],
 						"entries": [
-							"When the great grodair dies, his body explodes in a blast of pressurized water that deals {@damage 6d6} bludgeoning damage to creatures within a 15-foot emanation (DC 25 basic Reflex save). A creature that fails its save is pushed 5 feet (or 10 feet on a critical failure)."
+							"When the great grodair dies, his body explodes in a blast of pressurized water that deals {@damage 6d6} bludgeoning damage to creatures within a 15-foot emanation ({@dc 25} basic Reflex save). A creature that fails its save is pushed 5 feet (or 10 feet on a critical failure)."
 						],
 						"name": "Death Flood"
 					}
@@ -1113,7 +1113,7 @@
 						},
 						"trigger": "A {@condition hostile} creature targets the jinxer with a melee {@action Strike}",
 						"entries": [
-							"Tattoos on the jinxer's body swirl and shift in mesmerizing patterns. The creature must attempt a DC 22 Will save.",
+							"Tattoos on the jinxer's body swirl and shift in mesmerizing patterns. The creature must attempt a {@dc 22} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1485,7 +1485,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The i'iko dragon breathes a spray of jagged glass shards that deals {@damage 7d6} piercing damage in a 15-foot cone (DC 23 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The i'iko dragon breathes a spray of jagged glass shards that deals {@damage 7d6} piercing damage in a 15-foot cone ({@dc 23} basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -1513,7 +1513,7 @@
 							"mental"
 						],
 						"entries": [
-							"The i'iko dragon spreads their wings, bares their teeth, and threatens their opponent in a terrifying display of draconic majesty. All creatures within 30 feet must attempt a DC 24 Will save. Regardless of the result of the saving throw, the creatures are temporarily immune."
+							"The i'iko dragon spreads their wings, bares their teeth, and threatens their opponent in a terrifying display of draconic majesty. All creatures within 30 feet must attempt a {@dc 24} Will save. Regardless of the result of the saving throw, the creatures are temporarily immune."
 						],
 						"name": "Draconic Grandeur"
 					},
@@ -1670,7 +1670,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Creatures hit by Kiru's dagger {@action Strike} must succeed at a DC 20 Fortitude save or become {@condition clumsy|CRB|clumsy 1} for 1 round (1 minute on a critical failure). If Kiru's {@action Strike} is a critical hit, the DC increases to 25."
+							"Creatures hit by Kiru's dagger {@action Strike} must succeed at a {@dc 20} Fortitude save or become {@condition clumsy|CRB|clumsy 1} for 1 round (1 minute on a critical failure). If Kiru's {@action Strike} is a critical hit, the DC increases to 25."
 						],
 						"name": "Knife Jab"
 					},
@@ -2363,7 +2363,7 @@
 						},
 						"trigger": "The mpeshi falls at least 10 feet",
 						"entries": [
-							"The mpeshi reorients itself to slam headfirst into the ground with a thundering crash. Creatures within 10 feet of the mpeshi take sonic damage equal to the bludgeoning damage the mpeshi took from the fall (DC 23 basic Fortitude save). Creatures that fail this save are {@condition stunned|CRB|stunned 1} ({@condition stunned|CRB|stunned 2} on a critical failure)."
+							"The mpeshi reorients itself to slam headfirst into the ground with a thundering crash. Creatures within 10 feet of the mpeshi take sonic damage equal to the bludgeoning damage the mpeshi took from the fall ({@dc 23} basic Fortitude save). Creatures that fail this save are {@condition stunned|CRB|stunned 1} ({@condition stunned|CRB|stunned 2} on a critical failure)."
 						],
 						"name": "Thunderous Fall"
 					}
@@ -2496,7 +2496,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. A creature that enters the area must attempt a DC 23 Fortitude save.",
+							"30 feet. A creature that enters the area must attempt a {@dc 23} Fortitude save.",
 							"On a failure, the creature is {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). A creature taking {@condition persistent damage||persistent acid damage} from the ooze's pseudopod can't recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 						],
 						"name": "Noxious Scent"
@@ -2513,7 +2513,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The sewer ooze unleashes a wave of filth, covering all creatures within a 20-foot emanation. Each creature in the area must succeed at a DC 24 Reflex save or take {@damage 1d4} acid damage and a \u201310-foot penalty to its Speeds for 1 minute (on a critical failure, the creature also falls {@condition prone}). A creature can spend an {@action Interact} action to clean someone off, decreasing."
+							"The sewer ooze unleashes a wave of filth, covering all creatures within a 20-foot emanation. Each creature in the area must succeed at a {@dc 24} Reflex save or take {@damage 1d4} acid damage and a \u201310-foot penalty to its Speeds for 1 minute (on a critical failure, the creature also falls {@condition prone}). A creature can spend an {@action Interact} action to clean someone off, decreasing."
 						],
 						"name": "Filth Wave"
 					},
@@ -2659,7 +2659,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Old Thrasher makes up to three tail {@action Strike||Strikes} against different targets. Any target hit must succeed at a DC 25 Fortitude save (DC 30 on a critical hit) or be knocked {@condition prone}."
+							"Old Thrasher makes up to three tail {@action Strike||Strikes} against different targets. Any target hit must succeed at a {@dc 25} Fortitude save ({@dc 30} on a critical hit) or be knocked {@condition prone}."
 						],
 						"name": "Thunderous Tail"
 					}
@@ -3337,7 +3337,7 @@
 							"poison"
 						],
 						"entries": [
-							"Saving Throw DC 22 Fortitude"
+							"Saving Throw {@dc 22} Fortitude"
 						],
 						"name": "Serpentfolk Venom"
 					},
@@ -3631,10 +3631,10 @@
 							"poison"
 						],
 						"entries": [
-							"As granitescale, but DC 23."
+							"As granitescale, but {@dc 23}."
 						],
 						"name": "Serpentfolk Venom",
-						"entries_as_xyz": "Ability not found: 'Serpentfolk Venom As granitescale, but DC 23.' in Serpentfolk Venom Caller, p.87"
+						"entries_as_xyz": "Ability not found: 'Serpentfolk Venom As granitescale, but {@dc 23}.' in Serpentfolk Venom Caller, p.87"
 					},
 					{
 						"activity": {
@@ -3651,7 +3651,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage (DC 25 basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
+							"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage ({@dc 25} basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
 						],
 						"name": "Venom Pool"
 					}

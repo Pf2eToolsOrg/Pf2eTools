@@ -114,7 +114,7 @@
 						},
 						"trigger": "Ainamuuren takes at least 40 points of physical damage from a single attack, and he isn't currently discorporated;",
 						"entries": [
-							"Ainamuuren discorporates into a whirling blizzard for 3 rounds. During this time, he gains resistance 10 to physical damage and weakness 10 to force damage. He gains a fly speed of 40 feet, but the only action he can take is to {@action Fly}. While discorporated, the first time each round that Ainamuuren enters another creature's space or a creature enters Ainamuuren's space, that creature takes {@damage 4d8} cold damage and must succeed at a DC 34 Fortitude save or be {@condition stunned||stunned 1}. At the start of his turn, Ainamuuren can end this effect as a free action."
+							"Ainamuuren discorporates into a whirling blizzard for 3 rounds. During this time, he gains resistance 10 to physical damage and weakness 10 to force damage. He gains a fly speed of 40 feet, but the only action he can take is to {@action Fly}. While discorporated, the first time each round that Ainamuuren enters another creature's space or a creature enters Ainamuuren's space, that creature takes {@damage 4d8} cold damage and must succeed at a {@dc 34} Fortitude save or be {@condition stunned||stunned 1}. At the start of his turn, Ainamuuren can end this effect as a free action."
 						]
 					}
 				],
@@ -135,7 +135,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Ainamuuren activates the runes covering his body to create an icy prison around a Huge or smaller creature he can see within 60 feet. The prison is a sphere made of unmelting ice, just large enough to fit his target. The target, and any creatures sharing its space, must attempt a DC 34 Reflex save. A creature that fails becomes trapped inside the prison. If it succeeds, the creature is pushed outside the prison into a space of its choice. If the target shares its space with a gargantuan creature, the effect fails.",
+							"Ainamuuren activates the runes covering his body to create an icy prison around a Huge or smaller creature he can see within 60 feet. The prison is a sphere made of unmelting ice, just large enough to fit his target. The target, and any creatures sharing its space, must attempt a {@dc 34} Reflex save. A creature that fails becomes trapped inside the prison. If it succeeds, the creature is pushed outside the prison into a space of its choice. If the target shares its space with a gargantuan creature, the effect fails.",
 							"The dome has AC 10, Hardness 20, and 40 Hit Points; and is immune to cold, critical hits, and precision damage. The prison lasts until destroyed, until Ainamuuren uses this ability to create a new prison, or until he dies."
 						]
 					}
@@ -325,7 +325,7 @@
 							"fire"
 						],
 						"entries": [
-							"5 feet. Cuetzmonquali's flesh burns as hot as flame. Creatures that end their turn in the emanation take {@damage 4d6} fire damage (DC 35 basic Fortitude save)."
+							"5 feet. Cuetzmonquali's flesh burns as hot as flame. Creatures that end their turn in the emanation take {@damage 4d6} fire damage ({@dc 35} basic Fortitude save)."
 						]
 					},
 					{
@@ -352,7 +352,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Cuetzmonquali unleashes a blast of fire that deals {@damage 12d10} fire damage in a 50-foot cone (DC 38 basic Reflex save). Creatures that fail their saves catch on fire and take {@damage 1d12} {@condition persistent damage||persistent fire damage}. Cuetzmonquali can't use Breath Weapon again for {@dice 1d4} rounds."
+							"Cuetzmonquali unleashes a blast of fire that deals {@damage 12d10} fire damage in a 50-foot cone ({@dc 38} basic Reflex save). Creatures that fail their saves catch on fire and take {@damage 1d12} {@condition persistent damage||persistent fire damage}. Cuetzmonquali can't use Breath Weapon again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -393,7 +393,7 @@
 							"number": 1
 						},
 						"entries": [
-							"{@damage 2d6+8} bludgeoning plus {@damage 2d10} fire, DC 38"
+							"{@damage 2d6+8} bludgeoning plus {@damage 2d10} fire, {@dc 38}"
 						]
 					},
 					{
@@ -429,7 +429,7 @@
 							"number": 3
 						},
 						"entries": [
-							"Large or smaller, claw, DC 38"
+							"Large or smaller, claw, {@dc 38}"
 						]
 					}
 				]
@@ -669,7 +669,7 @@
 							"mental"
 						],
 						"entries": [
-							"90 feet, DC 38"
+							"90 feet, {@dc 38}"
 						]
 					},
 					{
@@ -702,7 +702,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Desert's Howl vents a long and desolate wail full of nightmares and despair. The devastating howl can be heard up to 1 mile away under the open sky. Any creature who hears it experiences a sudden sinking in its stomach and heart palpitations, its hair stands on end, and it must attempt a DC 38 Will save.",
+							"Desert's Howl vents a long and desolate wail full of nightmares and despair. The devastating howl can be heard up to 1 mile away under the open sky. Any creature who hears it experiences a sudden sinking in its stomach and heart palpitations, its hair stands on end, and it must attempt a {@dc 38} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -733,7 +733,7 @@
 					{
 						"name": "Paralytic Secretion",
 						"entries": [
-							"Desert's Howl's saliva is a potent paralytic substance that drains the energy from prey. A creature hit by its spit {@action Strike} must succeed at a DC 41 Fortitude save or become {@condition drained <2>} as well as {@condition paralyzed} for 1 round. If the target was already drained, it instead increases the condition's value by 1, to a maximum of drained 4."
+							"Desert's Howl's saliva is a potent paralytic substance that drains the energy from prey. A creature hit by its spit {@action Strike} must succeed at a {@dc 41} Fortitude save or become {@condition drained <2>} as well as {@condition paralyzed} for 1 round. If the target was already drained, it instead increases the condition's value by 1, to a maximum of drained 4."
 						]
 					},
 					{
@@ -744,7 +744,7 @@
 						},
 						"requirements": "Desert's Howl has a creature {@condition grabbed}",
 						"entries": [
-							"Desert's Howl begins to consume the creature, dealing {@damage 2d12+15} piercing damage (DC 41 basic Fortitude save) and exposing the creature to its paralytic secretion."
+							"Desert's Howl begins to consume the creature, dealing {@damage 2d12+15} piercing damage ({@dc 41} basic Fortitude save) and exposing the creature to its paralytic secretion."
 						]
 					}
 				]
@@ -941,7 +941,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 27"
+							"60 feet, {@dc 27}"
 						]
 					},
 					{
@@ -974,7 +974,7 @@
 					{
 						"name": "Paralytic Secretion",
 						"entries": [
-							"The howling spawn's saliva is a potent paralytic substance that drains the energy from prey. A creature hit by its spit {@action Strike} must succeed at a DC 30 Fortitude save or become {@condition drained <1>} as well as {@condition paralyzed} for 1 round. If the target was already drained, it instead increases the condition's value by 1, to a maximum of drained 4."
+							"The howling spawn's saliva is a potent paralytic substance that drains the energy from prey. A creature hit by its spit {@action Strike} must succeed at a {@dc 30} Fortitude save or become {@condition drained <1>} as well as {@condition paralyzed} for 1 round. If the target was already drained, it instead increases the condition's value by 1, to a maximum of drained 4."
 						]
 					},
 					{
@@ -985,7 +985,7 @@
 						},
 						"requirements": "The howling spawn has a creature {@condition grabbed}",
 						"entries": [
-							"The howling spawn begins to consume the creature, dealing {@damage 2d12+5} piercing damage (DC 30 basic Fortitude save) and exposing the creature to its paralytic secretion."
+							"The howling spawn begins to consume the creature, dealing {@damage 2d12+5} piercing damage ({@dc 30} basic Fortitude save) and exposing the creature to its paralytic secretion."
 						]
 					}
 				]
@@ -1193,7 +1193,7 @@
 							"primal"
 						],
 						"entries": [
-							"When a creature slays Fafnheir, it becomes home to his soul, which slowly emerges from his killer's body. The creature must attempt a DC 52 Will save or become {@condition doomed||doomed 2} (doomed 1 on a success, unaffected on a critical success). Unless the creature critically succeeded at the saving throw, each day the doomed value increases by 1. If the creature dies while suffering the curse of the woeful wyrd, its corpse explodes in a 60-foot burst with the effect of Blasting Breath. Fafnheir is immediately returned to life in the nearest available space to the corpse with full Hit Points and no conditions. Even an indirect slaying usually still allows Fafnheir to curse the soul of his slayer through the metaphysical link between them."
+							"When a creature slays Fafnheir, it becomes home to his soul, which slowly emerges from his killer's body. The creature must attempt a {@dc 52} Will save or become {@condition doomed||doomed 2} (doomed 1 on a success, unaffected on a critical success). Unless the creature critically succeeded at the saving throw, each day the doomed value increases by 1. If the creature dies while suffering the curse of the woeful wyrd, its corpse explodes in a 60-foot burst with the effect of Blasting Breath. Fafnheir is immediately returned to life in the nearest available space to the corpse with full Hit Points and no conditions. Even an indirect slaying usually still allows Fafnheir to curse the soul of his slayer through the metaphysical link between them."
 						]
 					},
 					{
@@ -1220,7 +1220,7 @@
 							"mental"
 						],
 						"entries": [
-							"90 feet, DC 45"
+							"90 feet, {@dc 45}"
 						]
 					},
 					{
@@ -1262,7 +1262,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Fafnheir exhales a cataclysmic firestorm laced with lightning and hurricane-strength winds, dealing {@damage 20d6} fire damage in a 90-foot cone (DC 48 basic Reflex save). Additionally, Fafnheir deals {@damage 10d6} additional electricity damage to one creature within the area of Blasting Breath of Fafnheir's choice, determined by the same basic Reflex save. Creatures in the area must also attempt a DC 48 Fortitude save to resist the powerful winds and deafening thunderclaps of the breath. Creatures that fail experience the effects of {@spell gust of wind}, affecting Large or smaller creatures as normal. Finally, creatures that fail their Fortitude save become {@condition deafened} for 1 minute (permanently deafened on a critical failure)."
+							"Fafnheir exhales a cataclysmic firestorm laced with lightning and hurricane-strength winds, dealing {@damage 20d6} fire damage in a 90-foot cone ({@dc 48} basic Reflex save). Additionally, Fafnheir deals {@damage 10d6} additional electricity damage to one creature within the area of Blasting Breath of Fafnheir's choice, determined by the same basic Reflex save. Creatures in the area must also attempt a {@dc 48} Fortitude save to resist the powerful winds and deafening thunderclaps of the breath. Creatures that fail experience the effects of {@spell gust of wind}, affecting Large or smaller creatures as normal. Finally, creatures that fail their Fortitude save become {@condition deafened} for 1 minute (permanently deafened on a critical failure)."
 						]
 					},
 					{
@@ -1527,7 +1527,7 @@
 							"number": 1
 						},
 						"entries": [
-							"{@damage 2d8+4} bludgeoning, DC 25"
+							"{@damage 2d8+4} bludgeoning, {@dc 25}"
 						]
 					},
 					{
@@ -1712,7 +1712,7 @@
 							"visual"
 						],
 						"entries": [
-							"40 feet. Any creature that begins its turn in the aura must attempt a DC 34 Fort save or be {@condition blinded} for 1 minute and become temporarily immune for 1 day. If the creature critically fails this save, it's permanently blinded."
+							"40 feet. Any creature that begins its turn in the aura must attempt a {@dc 34} Fort save or be {@condition blinded} for 1 minute and become temporarily immune for 1 day. If the creature critically fails this save, it's permanently blinded."
 						]
 					}
 				],
@@ -1748,7 +1748,7 @@
 						},
 						"trigger": "Grogrisant uses Rend",
 						"entries": [
-							"The target's armor takes damage equal to the damage from Rend. The target can attempt a DC 37 basic Reflex save, negating the armor damage on a successful save."
+							"The target's armor takes damage equal to the damage from Rend. The target can attempt a {@dc 37} basic Reflex save, negating the armor damage on a successful save."
 						]
 					}
 				]
@@ -1952,7 +1952,7 @@
 						},
 						"trigger": "The grisantian lion uses Rend",
 						"entries": [
-							"The target's armor takes damage equal to the damage from Rend. The target can attempt a DC 37 basic Reflex save, negating the armor damage on a successful save."
+							"The target's armor takes damage equal to the damage from Rend. The target can attempt a {@dc 37} basic Reflex save, negating the armor damage on a successful save."
 						]
 					}
 				]
@@ -2129,7 +2129,7 @@
 							"mental"
 						],
 						"entries": [
-							"20 feet, DC 26"
+							"20 feet, {@dc 26}"
 						]
 					},
 					{
@@ -2139,7 +2139,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"20 feet. A creature entering the aura or starting its turn in the aura must succeed at a DC 20 Fortitude save or become {@condition sickened||sickened 1} (sickened 2 on a critical failure). A creature that succeeds at its saves is temporarily immune for 1 minute."
+							"20 feet. A creature entering the aura or starting its turn in the aura must succeed at a {@dc 20} Fortitude save or become {@condition sickened||sickened 1} (sickened 2 on a critical failure). A creature that succeeds at its saves is temporarily immune for 1 minute."
 						]
 					},
 					{
@@ -2220,7 +2220,7 @@
 						],
 						"requirements": "The Kallas Devil has a creature {@condition grabbed}, and it has been grabbed since her last turn",
 						"entries": [
-							"The Kallas Devil flays her prey, dealing {@damage 2d12+17} slashing damage, and the target must attempt a DC 25 Fortitude save. On a failure, it becomes {@condition drained||drained 1} (drained 2 on a critical failure). On a critical success, the creature escapes from being grabbed; otherwise, the Kallas Devil extends the grabbed condition until the end of her next turn."
+							"The Kallas Devil flays her prey, dealing {@damage 2d12+17} slashing damage, and the target must attempt a {@dc 25} Fortitude save. On a failure, it becomes {@condition drained||drained 1} (drained 2 on a critical failure). On a critical success, the creature escapes from being grabbed; otherwise, the Kallas Devil extends the grabbed condition until the end of her next turn."
 						]
 					}
 				]
@@ -2452,7 +2452,7 @@
 							"mental"
 						],
 						"entries": [
-							"300 feet, DC 41"
+							"300 feet, {@dc 41}"
 						]
 					},
 					{
@@ -2468,7 +2468,7 @@
 							"poison"
 						],
 						"entries": [
-							"120 feet. A creature that enters or begins its turn in the emanation must succeed at a DC 41 Fortitude save or be {@condition sickened||sickened 2} (sickened 3 on a critical failure)."
+							"120 feet. A creature that enters or begins its turn in the emanation must succeed at a {@dc 41} Fortitude save or be {@condition sickened||sickened 2} (sickened 3 on a critical failure)."
 						]
 					},
 					{
@@ -2484,7 +2484,7 @@
 							"auditory"
 						],
 						"entries": [
-							"120 feet. Kothogaz's heartbeat booms like a deity's drum. A creature that enters or begins its turn in the emanation must attempt a DC 41 Will save. On a failure, its next two actions must be {@trait move} actions to move at least half its Speed away from Kothogaz. A creature that critically succeeds is temporarily immune to tympanic heartbeat for 1 minute."
+							"120 feet. Kothogaz's heartbeat booms like a deity's drum. A creature that enters or begins its turn in the emanation must attempt a {@dc 41} Will save. On a failure, its next two actions must be {@trait move} actions to move at least half its Speed away from Kothogaz. A creature that critically succeeds is temporarily immune to tympanic heartbeat for 1 minute."
 						]
 					},
 					{
@@ -2548,7 +2548,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"Kothogaz raises a pustule from the ground within 120 feet, which erupts in a 10-foot radius, 200-foot-high cylinder of cloying filth. Creatures in the area must succeed at a DC 44 basic Reflex save or take {@damage 6d10} poison damage. On a failure, they can't fly for 1 round (1 minute on a critical failure); flying creatures fall safely to the ground."
+							"Kothogaz raises a pustule from the ground within 120 feet, which erupts in a 10-foot radius, 200-foot-high cylinder of cloying filth. Creatures in the area must succeed at a {@dc 44} basic Reflex save or take {@damage 6d10} poison damage. On a failure, they can't fly for 1 round (1 minute on a critical failure); flying creatures fall safely to the ground."
 						]
 					},
 					{
@@ -2558,7 +2558,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The earth festers in Kothogaz's wake. Kothogaz {@action stride||Strides} up to its Speed. Squares through which Kothogaz passes are {@quickref greater difficult terrain||3|terrain} until the start of its next turn, and any creature that enters or begins its turn in those squares must succeed at a DC 44 Reflex save or take {@damage 4d10} poison damage and {@damage 4d10} acid damage (on a critical failure, double damage and exposed to many-eyed blight)."
+							"The earth festers in Kothogaz's wake. Kothogaz {@action stride||Strides} up to its Speed. Squares through which Kothogaz passes are {@quickref greater difficult terrain||3|terrain} until the start of its next turn, and any creature that enters or begins its turn in those squares must succeed at a {@dc 44} Reflex save or take {@damage 4d10} poison damage and {@damage 4d10} acid damage (on a critical failure, double damage and exposed to many-eyed blight)."
 						]
 					},
 					{
@@ -2707,7 +2707,7 @@
 							"poison"
 						],
 						"entries": [
-							"When a spawn dies, its foulness seeps into the land in a 100-foot radius. Non-magical plant life in the area decays within 1 hour, and new non-magical growth can't sprout for 1 month. A creature can act on the spawn's corpse within 1 minute of its death to limit this decay to a 10-foot square by succeeding at a DC 22 {@skill Medicine}, {@skill Nature}, or {@skill Occultism} check."
+							"When a spawn dies, its foulness seeps into the land in a 100-foot radius. Non-magical plant life in the area decays within 1 hour, and new non-magical growth can't sprout for 1 month. A creature can act on the spawn's corpse within 1 minute of its death to limit this decay to a 10-foot square by succeeding at a {@dc 22} {@skill Medicine}, {@skill Nature}, or {@skill Occultism} check."
 						]
 					}
 				],
@@ -2722,7 +2722,7 @@
 							"acid"
 						],
 						"entries": [
-							"The spawn retches up thick, caustic sludge and spits it at a creature within 60 feet, causing equipment and flesh to melt and partially fuse together. The creature must succeed at a DC 23 Reflex save or be {@condition clumsy||clumsy 2} for 1 minute."
+							"The spawn retches up thick, caustic sludge and spits it at a creature within 60 feet, causing equipment and flesh to melt and partially fuse together. The creature must succeed at a {@dc 23} Reflex save or be {@condition clumsy||clumsy 2} for 1 minute."
 						]
 					}
 				]
@@ -2878,7 +2878,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet, DC 23"
+							"30 feet, {@dc 23}"
 						]
 					}
 				],
@@ -2901,7 +2901,7 @@
 						},
 						"trigger": "The Krampus celebrant hits a {@condition frightened} creature with its birch bundle {@action Strike}",
 						"entries": [
-							"The target must attempt a DC 26 Will save to resist the effects of the fearful assault.",
+							"The target must attempt a {@dc 26} Will save to resist the effects of the fearful assault.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3212,7 +3212,7 @@
 							"mental"
 						],
 						"entries": [
-							"120 feet, DC 42"
+							"120 feet, {@dc 42}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -3231,7 +3231,7 @@
 						"name": "Bountiful Bag",
 						"entries": [
 							"Krampus carries a large bag brimming with barely contained gifts and trinkets, including one of every {@filter common item with the {@trait consumable} trait of levels 1 to 20|items||source=|Level=[0;20]|rarity=common|item=consumable|weapon==sand}, at least 20 {@item golden rod memento|LOMM|golden rod mementos}, and an assortment of food and valuables. Once every 24 hours, the bag's contents magically regenerate, replacing any of these items that have been removed. Krampus can Interact with the bag to stow or withdraw items, always finding the desired stored item at the top of the bag. The bag is an extradimensional space, so the weight of its contents doesn't count against Krampus's Bulk limit. The bag functions as a normal sack if used by anyone other than Krampus, and if the bag is stolen or Krampus is slain, the bag retains only {@dice 2d4} random {@filter common consumable items of 16th level or higher|items||source=|Level=[16;28]|rarity=common|item=consumable|weapon==sand}",
-							"A creature can use {@action Disarm} or {@action Steal} to extract a consumable item from Krampus's bag. As part of the action, the creature can envision a specific item it wants to extract. On a success, the creature Disarms or Steals the object and rolls a DC 13 flat check.",
+							"A creature can use {@action Disarm} or {@action Steal} to extract a consumable item from Krampus's bag. As part of the action, the creature can envision a specific item it wants to extract. On a success, the creature Disarms or Steals the object and rolls a {@dc 13} flat check.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3245,7 +3245,7 @@
 					{
 						"name": "Crushing Avarice",
 						"entries": [
-							"Krampus's greed is so great that expending any of his wealth causes him to become physically ill and potentially nauseous. Whenever Krampus uses a {@trait consumable} item from his bountiful bag, or when he witnesses one of his possessions stolen, he must attempt a DC 44 Will save.",
+							"Krampus's greed is so great that expending any of his wealth causes him to become physically ill and potentially nauseous. Whenever Krampus uses a {@trait consumable} item from his bountiful bag, or when he witnesses one of his possessions stolen, he must attempt a {@dc 44} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3267,7 +3267,7 @@
 						"requirements": "Krampus has a Medium or smaller creature {@condition grabbed}",
 						"entries": [
 							"Krampus attempts to stuff the {@condition grabbed} creature into his basket, attempting an {@skill Athletics} check against the target's Reflex DC. If he succeeds, the creature is shoved into Krampus's basket and Krampus's spiked chain or claw is freed for future {@action Strike||Strikes}.",
-							"The captured creature is {@condition grabbed} and {@condition slowed 1}. If the victim {@action Escape||Escapes} (DC 48), it climbs out of the basket. A captured creature can attack the interior of the basket, but only with unarmed attacks or weapons of light Bulk or less, against an AC of 40. If the captured creature deals 40 slashing or piercing damage, the basket is {@condition broken} and all the creatures inside spill out. A creature that gets free by either Escaping or by someone breaking the basket is deposited in a square of their choosing adjacent to Krampus.",
+							"The captured creature is {@condition grabbed} and {@condition slowed 1}. If the victim {@action Escape||Escapes} ({@dc 48}), it climbs out of the basket. A captured creature can attack the interior of the basket, but only with unarmed attacks or weapons of light Bulk or less, against an AC of 40. If the captured creature deals 40 slashing or piercing damage, the basket is {@condition broken} and all the creatures inside spill out. A creature that gets free by either Escaping or by someone breaking the basket is deposited in a square of their choosing adjacent to Krampus.",
 							"The basket is an extradimensional space, so the weight of the creatures within doesn't count against Krampus's Bulk limit. Up to four Small creatures or two Medium creatures can fit in the basket at one time. Krampus can {@action Repair} the basket as a 2-action activity that doesn't require tools. If the basket is lost or destroyed, Krampus can create a new one with 1 hour of work. The basket functions as a normal sack if used by anyone other than Krampus."
 						],
 						"name": "Capture"
@@ -3451,7 +3451,7 @@
 							"source": "LOMM"
 						},
 						"entries": [
-							"DC 32"
+							"{@dc 32}"
 						]
 					},
 					{
@@ -3461,7 +3461,7 @@
 							"number": 2
 						},
 						"entries": [
-							"Kuworsys releases a choking field of spores within a 30-foot radius, continuing to release them until the end of its next turn. Creatures who begin their turns within the area of the spores, or who enter the area, must attempt a DC 32 Fortitude save. On a failure, the creature becomes afflicted with {@disease addictive exhaustion|LOMM}. Kuworsys then can't use its Infectious Spores again for {@dice 1d4} rounds."
+							"Kuworsys releases a choking field of spores within a 30-foot radius, continuing to release them until the end of its next turn. Creatures who begin their turns within the area of the spores, or who enter the area, must attempt a {@dc 32} Fortitude save. On a failure, the creature becomes afflicted with {@disease addictive exhaustion|LOMM}. Kuworsys then can't use its Infectious Spores again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -3471,7 +3471,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Kuworsys studies a creature it can see, attempting to predict its actions. The creature attempts a DC 32 Will save. On a failed save, Kuworsys predicts the creature's moves, gaining a +2 circumstance bonus to attack rolls and AC against the target creature for 1 minute."
+							"Kuworsys studies a creature it can see, attempting to predict its actions. The creature attempts a {@dc 32} Will save. On a failed save, Kuworsys predicts the creature's moves, gaining a +2 circumstance bonus to attack rolls and AC against the target creature for 1 minute."
 						]
 					},
 					{
@@ -3645,7 +3645,7 @@
 							"poison"
 						],
 						"entries": [
-							"60 feet. A creature that enters the emanation must attempt a DC 21 Will save. Regardless of outcome, the creature is temporarily immune to terrorspores for 1 minute.",
+							"60 feet. A creature that enters the emanation must attempt a {@dc 21} Will save. Regardless of outcome, the creature is temporarily immune to terrorspores for 1 minute.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3691,7 +3691,7 @@
 						],
 						"requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
 						"entries": [
-							"The Melfesh Monster targets the cloud with one of its abilities with the {@trait fire} trait. The spore cloud explodes, dealing {@damage 4d10} fire damage and {@damage 4} persistent fire damage in a 40-foot burst originating from a single square within the cloud (DC 24 basic Reflex)."
+							"The Melfesh Monster targets the cloud with one of its abilities with the {@trait fire} trait. The spore cloud explodes, dealing {@damage 4d10} fire damage and {@damage 4} persistent fire damage in a 40-foot burst originating from a single square within the cloud ({@dc 24} basic Reflex)."
 						]
 					},
 					{
@@ -3710,7 +3710,7 @@
 						},
 						"requirements": "The Melfesh Monster has created a spore cloud, and the cloud is within range of one of the Melfesh Monster's {@trait fire} abilities;",
 						"entries": [
-							"The Melfesh Monster conjures a cloud of spores within 60 feet in a 20-foot burst. The cloud lasts 1 minute. Creatures that enter or begin their turn within the cloud must succeed at a DC 21 Fortitude save or take {@damage 3d8} poison damage, be {@condition sickened||sickened 2}, and inhale spores that remain in their bodies for 1 minute (on a critical failure, sickened 3 and an additional {@damage 4} persistent poison damage)."
+							"The Melfesh Monster conjures a cloud of spores within 60 feet in a 20-foot burst. The cloud lasts 1 minute. Creatures that enter or begin their turn within the cloud must succeed at a {@dc 21} Fortitude save or take {@damage 3d8} poison damage, be {@condition sickened||sickened 2}, and inhale spores that remain in their bodies for 1 minute (on a critical failure, sickened 3 and an additional {@damage 4} persistent poison damage)."
 						]
 					}
 				]
@@ -3881,7 +3881,7 @@
 							"visual"
 						],
 						"entries": [
-							"30 feet. When a creature ends its turn in the emanation, it must attempt a DC 29 Will save. If the creature fails, it becomes {@condition frightened||frightened 1}. If it's already frightened, its frightened value instead increases by 1 (maximum frightened 3) and doesn't decrease by 1 at the end of the creature's next turn. If a creature's frightened value is 3 or higher before failing its save, the creature is also {@condition fleeing} for 1 round."
+							"30 feet. When a creature ends its turn in the emanation, it must attempt a {@dc 29} Will save. If the creature fails, it becomes {@condition frightened||frightened 1}. If it's already frightened, its frightened value instead increases by 1 (maximum frightened 3) and doesn't decrease by 1 at the end of the creature's next turn. If a creature's frightened value is 3 or higher before failing its save, the creature is also {@condition fleeing} for 1 round."
 						]
 					}
 				],

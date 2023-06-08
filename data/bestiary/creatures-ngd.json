@@ -248,7 +248,7 @@
 						]
 					},
 					{
-						"name": "DC 36",
+						"name": "{@dc 36}",
 						"entries": [
 							"Fortitude save or become {@condition sickened||sickened 1} ({@condition sickened||sickened 2} on a critical failure)."
 						]
@@ -280,7 +280,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 3d8+7} slashing, DC 38"
+							"{@damage 3d8+7} slashing, {@dc 38}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -693,7 +693,7 @@
 							"mental"
 						],
 						"entries": [
-							"The director general utters a few words to a non-{@condition frightened} target within 60 feet that can hear them, bolstering the target's indignation of cowards. The target creature must succeed at a DC 39 Will save, or it doesn't count {@condition frightened} creatures as allies and can't {@action Aid} them or flank with them. This effect lasts for 1 round (1 minute on a critical failure)."
+							"The director general utters a few words to a non-{@condition frightened} target within 60 feet that can hear them, bolstering the target's indignation of cowards. The target creature must succeed at a {@dc 39} Will save, or it doesn't count {@condition frightened} creatures as allies and can't {@action Aid} them or flank with them. This effect lasts for 1 round (1 minute on a critical failure)."
 						]
 					}
 				]
@@ -810,7 +810,7 @@
 					{
 						"name": "Decapitation",
 						"entries": [
-							"If the guillotine golem critically hits a creature with its blade {@action Strike}, the creature must succeed at a DC 40 Fortitude save or be decapitated, {@condition dying} instantly unless it can survive without a head."
+							"If the guillotine golem critically hits a creature with its blade {@action Strike}, the creature must succeed at a {@dc 40} Fortitude save or be decapitated, {@condition dying} instantly unless it can survive without a head."
 						]
 					},
 					{
@@ -857,7 +857,7 @@
 						]
 					},
 					{
-						"name": "DC 44",
+						"name": "{@dc 44}",
 						"entries": [
 							"Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it is damaged as if hit by the golem's blade {@action Strike}."
 						]
@@ -1598,7 +1598,7 @@
 						"trigger": "A creature communicates telepathically with the conqueror worm (even to respond to the conqueror worm's telepathy or through a mental spell like sending) or fails a saving throw against a mental spell cast by the conqueror worm",
 						"entries": [
 							"The conqueror worm infects the mind of the creature, allowing it to mentally contact the creature from afar.",
-							"The creature must attempt a DC 48 Will saving throw and is temporarily immune for 1 year.",
+							"The creature must attempt a {@dc 48} Will saving throw and is temporarily immune for 1 year.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1629,7 +1629,7 @@
 							"possession"
 						],
 						"entries": [
-							"When the conqueror worm dies, it telepathically projects its consciousness into a creature infected by its Mental Invader ability and who is on the same plane as the conqueror worm. The creature must succeed at a DC 48 Will save or it is overtaken by the conqueror worm. This has the same effect as the {@spell possession} spell with an unlimited duration, except the conqueror worm has wholly foregone its physical body. A host body possessed by a conqueror worm undergoes terrible changes. Every day, the host must succeed at a DC 48 Will save or become permanently {@condition stupefied||stupefied 1} (or increase its {@condition stupefied} value by 1) and increasingly pale, balding, and bloated.",
+							"When the conqueror worm dies, it telepathically projects its consciousness into a creature infected by its Mental Invader ability and who is on the same plane as the conqueror worm. The creature must succeed at a {@dc 48} Will save or it is overtaken by the conqueror worm. This has the same effect as the {@spell possession} spell with an unlimited duration, except the conqueror worm has wholly foregone its physical body. A host body possessed by a conqueror worm undergoes terrible changes. Every day, the host must succeed at a {@dc 48} Will save or become permanently {@condition stupefied||stupefied 1} (or increase its {@condition stupefied} value by 1) and increasingly pale, balding, and bloated.",
 							"When the host reaches {@condition stupefied||stupefied 4}, an ectoplasmic cocoon forms around it. Over the next 24 hours, the host undergoes a swift metamorphosis and emerges as a new conqueror worm with all the memories of its previous incarnation. At this point, the host is dead and can't be restored except by miracle, wish, or similar magic. Before that point, however, this horrid transformation can be ended by {@trait any} effect that expels the conqueror worm's possession, meaning would be slayers of a conqueror worm had best locate its consciousness and end the possession before it's too late and the worm rises again."
 						]
 					}
@@ -1647,7 +1647,7 @@
 							"occult"
 						],
 						"entries": [
-							"The conqueror worm disgorges acid in a 120-foot-line that deals {@damage 14d10} acid damage to all creatures in the area (DC 44 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The conqueror worm disgorges acid in a 120-foot-line that deals {@damage 14d10} acid damage to all creatures in the area ({@dc 44} basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -1832,7 +1832,7 @@
 							"occult"
 						],
 						"entries": [
-							"1,000 feet. Creatures that begin their turn in the area take {@damage 5d6} negative damage and must succeed at a DC 42 Fortitude save or become {@condition doomed||doomed 1}. If the creature is 13th level or lower, this {@condition doomed} condition from soul bleed is cumulative, increasing by 1 with each failed save until the creature dies (typically at {@condition doomed||doomed 4})."
+							"1,000 feet. Creatures that begin their turn in the area take {@damage 5d6} negative damage and must succeed at a {@dc 42} Fortitude save or become {@condition doomed||doomed 1}. If the creature is 13th level or lower, this {@condition doomed} condition from soul bleed is cumulative, increasing by 1 with each failed save until the creature dies (typically at {@condition doomed||doomed 4})."
 						]
 					}
 				],
@@ -1850,7 +1850,7 @@
 					{
 						"name": "Life Sap",
 						"entries": [
-							"A creature damaged by the gray death's hand {@action Strike} must succeed at a DC 42 Fortitude save or become {@condition drained||drained 1}, and {@condition paralyzed} for 1 round on a critical failure."
+							"A creature damaged by the gray death's hand {@action Strike} must succeed at a {@dc 42} Fortitude save or become {@condition drained||drained 1}, and {@condition paralyzed} for 1 round on a critical failure."
 						]
 					},
 					{
@@ -1871,7 +1871,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The gray death chooses a living creature within 30 feet. The target must succeed at a DC 42 Will save or a fragment of embittered soul-stuff lodges within the target's spirit and turns it against its allies. While the target has this fragment, it doesn't count as anyone's ally for the purposes of providing flanking, and a would-be ally casting a spell that normally works only on an ally on the creature must succeed at a DC 42 counteract check (level 20) or the spell has no effect. The fragment fades after 24 hours."
+							"The gray death chooses a living creature within 30 feet. The target must succeed at a {@dc 42} Will save or a fragment of embittered soul-stuff lodges within the target's spirit and turns it against its allies. While the target has this fragment, it doesn't count as anyone's ally for the purposes of providing flanking, and a would-be ally casting a spell that normally works only on an ally on the creature must succeed at a {@dc 42} counteract check (level 20) or the spell has no effect. The fragment fades after 24 hours."
 						]
 					},
 					{
@@ -2107,7 +2107,7 @@
 							"visual"
 						],
 						"entries": [
-							"The riekanoy sways in a compelling fashion. Each non-fey creature within a 300-foot emanation that can see the riekanoy must attempt a DC 38 Will save. The effect lasts for 1 round, but if the riekanoy uses Beckoning Dance again on subsequent rounds, the duration extends by 1 round for all affected creatures. Once a creature succeeds at any save against Beckoning Dance, that creature is temporarily immune for 24 hours.",
+							"The riekanoy sways in a compelling fashion. Each non-fey creature within a 300-foot emanation that can see the riekanoy must attempt a {@dc 38} Will save. The effect lasts for 1 round, but if the riekanoy uses Beckoning Dance again on subsequent rounds, the duration extends by 1 round for all affected creatures. Once a creature succeeds at any save against Beckoning Dance, that creature is temporarily immune for 24 hours.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2131,7 +2131,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 3d10+12} bludgeoning, DC 41"
+							"{@damage 3d10+12} bludgeoning, {@dc 41}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -2577,7 +2577,7 @@
 						],
 						"entries": [
 							"100 feet.",
-							"Creatures within the aura must succeed at a DC 37 Fortitude save. On a failure, they can't breathe and must hold their breath to avoid suffocation until they leave the aura. The tumblak can activate or deactivate the aura with a single free action, which has the {@trait concentrate} trait."
+							"Creatures within the aura must succeed at a {@dc 37} Fortitude save. On a failure, they can't breathe and must hold their breath to avoid suffocation until they leave the aura. The tumblak can activate or deactivate the aura with a single free action, which has the {@trait concentrate} trait."
 						]
 					},
 					{
@@ -2597,7 +2597,7 @@
 							"mental"
 						],
 						"entries": [
-							"A creature {@condition fatigued} by the tumblak's {@spell nightmare} spell is subject to paralyzing glimpses of being buried alive. Anyone using an effect that would remove the {@condition fatigued} condition through a means other than a full night's rest must succeed on a DC 44 counteract check or the {@condition fatigued} condition isn't removed. When the {@condition fatigued} creature enters a stressful situation, such as rolling initiative in combat or entering a high-stakes negotiation, it is affected by Entombing Echoes."
+							"A creature {@condition fatigued} by the tumblak's {@spell nightmare} spell is subject to paralyzing glimpses of being buried alive. Anyone using an effect that would remove the {@condition fatigued} condition through a means other than a full night's rest must succeed on a {@dc 44} counteract check or the {@condition fatigued} condition isn't removed. When the {@condition fatigued} creature enters a stressful situation, such as rolling initiative in combat or entering a high-stakes negotiation, it is affected by Entombing Echoes."
 						]
 					},
 					{
@@ -2610,7 +2610,7 @@
 							"mental"
 						],
 						"entries": [
-							"A creature struck by the tumblak's fist or impacted by Claustrophobic Nightmares must succeed on a DC 44 Will save or feel itself confined on all sides. The creature is {@condition immobilized} and {@condition flat-footed} until it Escapes (DC 44)."
+							"A creature struck by the tumblak's fist or impacted by Claustrophobic Nightmares must succeed on a {@dc 44} Will save or feel itself confined on all sides. The creature is {@condition immobilized} and {@condition flat-footed} until it Escapes ({@dc 44})."
 						]
 					},
 					{

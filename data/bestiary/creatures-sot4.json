@@ -230,7 +230,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 38"
+							"60 feet, {@dc 38}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -254,7 +254,7 @@
 						"entries": [
 							"10 feet.",
 							"The avatar of {@deity Walkena|LOGM} radiates with an intense light.",
-							"Creatures that enter or begin their turn in the emanation are {@condition dazzled} and take {@damage 3d8} fire damage (DC 35 basic Fortitude save). Creatures remain {@condition dazzled} until they leave the emanation."
+							"Creatures that enter or begin their turn in the emanation are {@condition dazzled} and take {@damage 3d8} fire damage ({@dc 35} basic Fortitude save). Creatures remain {@condition dazzled} until they leave the emanation."
 						]
 					}
 				],
@@ -266,7 +266,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d4+11} bludgeoning plus {@damage 2d8} fire, DC 38"
+							"{@damage 2d4+11} bludgeoning plus {@damage 2d8} fire, {@dc 38}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -285,7 +285,7 @@
 							"light"
 						],
 						"entries": [
-							"The avatar of {@deity Walkena|LOGM} plucks a small drop of sunlight from the sky and rains down sunfire on the battlefield. The avatar selects a 20-foot burst within 90 feet. Sunfire rains down in the area, dealing {@damage 12d8} fire damage (DC 38 basic Reflex save) to all creatures that enter or begin their turn in the area. The power of the sun restores the avatar; it instead recovers an equal number of Hit Points while in the area. The sunfire continues to rain until the end of the avatar's next turn. The avatar can't use Pull"
+							"The avatar of {@deity Walkena|LOGM} plucks a small drop of sunlight from the sky and rains down sunfire on the battlefield. The avatar selects a 20-foot burst within 90 feet. Sunfire rains down in the area, dealing {@damage 12d8} fire damage ({@dc 38} basic Reflex save) to all creatures that enter or begin their turn in the area. The power of the sun restores the avatar; it instead recovers an equal number of Hit Points while in the area. The sunfire continues to rain until the end of the avatar's next turn. The avatar can't use Pull"
 						]
 					},
 					{
@@ -306,7 +306,7 @@
 							"light"
 						],
 						"entries": [
-							"The avatar intensifies its light. All creatures within 30 feet must attempt a DC 38 Fortitude save. The avatar can't use Radiate Glory again for {@dice 1d4} rounds. During this time, the avatar's Sun Touch no longer dazzles creatures.",
+							"The avatar intensifies its light. All creatures within 30 feet must attempt a {@dc 38} Fortitude save. The avatar can't use Radiate Glory again for {@dice 1d4} rounds. During this time, the avatar's Sun Touch no longer dazzles creatures.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -476,7 +476,7 @@
 					{
 						"name": "Caustic Acid",
 						"entries": [
-							"Whenever a creature takes acid damage from any of a ba'aupa mdoudu's abilities or {@action Strike||Strikes}, it must succeed at a DC 30 Fortitude save or become {@condition drained||drained 1} ({@condition drained||drained 2} on a critical failure). On each subsequent failure, the {@condition drained} condition value increases by 1 (or by 2 on a critical failure), to a maximum of {@condition drained||drained 4}."
+							"Whenever a creature takes acid damage from any of a ba'aupa mdoudu's abilities or {@action Strike||Strikes}, it must succeed at a {@dc 30} Fortitude save or become {@condition drained||drained 1} ({@condition drained||drained 2} on a critical failure). On each subsequent failure, the {@condition drained} condition value increases by 1 (or by 2 on a critical failure), to a maximum of {@condition drained||drained 4}."
 						]
 					},
 					{
@@ -490,7 +490,7 @@
 							"primal"
 						],
 						"entries": [
-							"The ba'aupa mdoudu spews copious amounts of acid into the air, creating a cascading rain to fall in a 10- foot radius around itself. All creatures in the area take {@damage 14d6} acid damage (DC 33 basic Reflex save). The ba'aupa mdoudu can't use Caustic Rain again for {@dice 1d4} rounds."
+							"The ba'aupa mdoudu spews copious amounts of acid into the air, creating a cascading rain to fall in a 10- foot radius around itself. All creatures in the area take {@damage 14d6} acid damage ({@dc 33} basic Reflex save). The ba'aupa mdoudu can't use Caustic Rain again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -679,7 +679,7 @@
 							"mental"
 						],
 						"entries": [
-							"The biloko reaver unleashes a frightful roar. Any non-biloko within 30 feet must succeed at a DC 29 Will save or become {@condition frightened||frightened 1} ({@condition frightened||frightened 3} on a critical failure). Those who critically succeed are temporarily immune for 1 minute."
+							"The biloko reaver unleashes a frightful roar. Any non-biloko within 30 feet must succeed at a {@dc 29} Will save or become {@condition frightened||frightened 1} ({@condition frightened||frightened 3} on a critical failure). Those who critically succeed are temporarily immune for 1 minute."
 						]
 					}
 				]
@@ -1001,7 +1001,7 @@
 							"primal"
 						],
 						"entries": [
-							"Dimari-Diji tries to overwhelm foes with a surge of information he has absorbed over his long life. This surge deals {@damage 12d6} mental damage to each enemy within 60 feet, who must attempt a DC 32 Will save.",
+							"Dimari-Diji tries to overwhelm foes with a surge of information he has absorbed over his long life. This surge deals {@damage 12d6} mental damage to each enemy within 60 feet, who must attempt a {@dc 32} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1192,7 +1192,7 @@
 							"water"
 						],
 						"entries": [
-							"The drenchdead touches a creature and causes water from its own body to flow into the creature's lungs. If the creature can't breathe water, it must attempt a DC 32 Fortitude save.",
+							"The drenchdead touches a creature and causes water from its own body to flow into the creature's lungs. If the creature can't breathe water, it must attempt a {@dc 32} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1555,7 +1555,7 @@
 						},
 						"entries": [
 							"The gold defender Strides up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement.",
-							"A creature can attempt to bar the way by succeeding at a DC 37 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it is damaged as if hit by the defender's fist {@action Strike}."
+							"A creature can attempt to bar the way by succeeding at a {@dc 37} Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it is damaged as if hit by the defender's fist {@action Strike}."
 						]
 					},
 					{
@@ -1570,7 +1570,7 @@
 						],
 						"requirements": "The gold defender is not in darkness",
 						"entries": [
-							"The gold defender reshapes its skin into a reflective surface that magnifies ambient light into a precise beam that burns all creatures in a 30-foot cone, dealing {@damage 14d6} fire damage (DC 31 Reflex save if the gold defender is in dim light, DC 33 Reflex save if it's in bright light). It can't use Light Reflection again for {@dice 1d4} rounds.",
+							"The gold defender reshapes its skin into a reflective surface that magnifies ambient light into a precise beam that burns all creatures in a 30-foot cone, dealing {@damage 14d6} fire damage ({@dc 31} Reflex save if the gold defender is in dim light, {@dc 33} Reflex save if it's in bright light). It can't use Light Reflection again for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1750,7 +1750,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The garrison makes a melee attack against each enemy within 5 feet (DC 30 basic Reflex save). The damage depends on the number of actions.",
+							"The garrison makes a melee attack against each enemy within 5 feet ({@dc 30} basic Reflex save). The damage depends on the number of actions.",
 							"{@as 1} {@damage 2d8+2} bludgeoning damage {@as 2} {@damage 3d8+12} bludgeoning damage {@as 3} {@damage 4d8+15} bludgeoning damage"
 						]
 					},
@@ -1973,7 +1973,7 @@
 							"fire"
 						],
 						"entries": [
-							"The grave karina breathes a cloud of burning ash in 30-foot cone that deals {@damage 9d8} fire damage (DC 30 basic Reflex save). The area becomes filled with ash for 1 round. All creatures within the cloud of ash become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. The grave karina can't use Breath Weapon again for {@dice 1d4} rounds.",
+							"The grave karina breathes a cloud of burning ash in 30-foot cone that deals {@damage 9d8} fire damage ({@dc 30} basic Reflex save). The area becomes filled with ash for 1 round. All creatures within the cloud of ash become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. The grave karina can't use Breath Weapon again for {@dice 1d4} rounds.",
 							{
 								"type": "affliction",
 								"name": "Grave Blight",
@@ -2031,7 +2031,7 @@
 						},
 						"requirements": "The grave karina is adjacent to a creature that's casting a shadow",
 						"entries": [
-							"The grave karina drives a talon into a creature's shadow and attempts to manipulate it like a puppet with the effects of dominate (DC 27 Will save), except the duration is only 1 minute."
+							"The grave karina drives a talon into a creature's shadow and attempts to manipulate it like a puppet with the effects of dominate ({@dc 27} Will save), except the duration is only 1 minute."
 						]
 					}
 				]
@@ -2174,13 +2174,13 @@
 							"evocation"
 						],
 						"entries": [
-							"{@damage 4d12} electricity, DC 24; as graveknight."
+							"{@damage 4d12} electricity, {@dc 24}; as graveknight."
 						]
 					},
 					{
 						"name": "Graveknight's Curse",
 						"entries": [
-							"DC 24; as graveknight."
+							"{@dc 24}; as graveknight."
 						]
 					},
 					{
@@ -2393,13 +2393,13 @@
 							"fire"
 						],
 						"entries": [
-							"{@damage 8d12} fire, DC 36; as graveknight"
+							"{@damage 8d12} fire, {@dc 36}; as graveknight"
 						]
 					},
 					{
 						"name": "Graveknight's Curse",
 						"entries": [
-							"DC 36; as graveknight."
+							"{@dc 36}; as graveknight."
 						]
 					},
 					{
@@ -2744,7 +2744,7 @@
 							"primal"
 						],
 						"entries": [
-							"60 feet. A creature that enters the emanation or starts its turn within it tumbles down a deep well of dread and must attempt a DC 33 Will save.",
+							"60 feet. A creature that enters the emanation or starts its turn within it tumbles down a deep well of dread and must attempt a {@dc 33} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2786,7 +2786,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@dice 2d12+15}, DC 36"
+							"{@dice 2d12+15}, {@dc 36}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -2804,7 +2804,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"The kilia mwibo feeds on the negative emotions of a creature within 60 feet; this must be a creature that it can precisely sense with its emotion sense. The target must succeed at a DC 36 Will save or increase its {@condition drained} condition value by 1 (by 2 on a critical failure), to a maximum of {@condition drained||drained 4}."
+							"The kilia mwibo feeds on the negative emotions of a creature within 60 feet; this must be a creature that it can precisely sense with its emotion sense. The target must succeed at a {@dc 36} Will save or increase its {@condition drained} condition value by 1 (by 2 on a critical failure), to a maximum of {@condition drained||drained 4}."
 						]
 					}
 				]
@@ -2970,7 +2970,7 @@
 							"fire"
 						],
 						"entries": [
-							"The sun-spire collects solar energy and uses the energy to create a deadly beam of fire. It fires the beam in a 120-foot line, dealing {@damage 11d8} fire damage to all creatures in the line (DC 33 basic Reflex save). The concentrated beam ignites everything in its path, including the air, creating a wall of burning flame along the line that continues to burn until the end of the sun-spire's next turn. This wall has the effects of a 5th-level {@spell wall of fire} spell, dealing {@damage 5d6} fire damage to any creature that crosses the wall or occupies the wall's area at the start of its turn. The sun-spire can't use the Beam of the Seven Suns again for {@dice 1d4} rounds, although rounds it's not in sunlight don't count toward this number."
+							"The sun-spire collects solar energy and uses the energy to create a deadly beam of fire. It fires the beam in a 120-foot line, dealing {@damage 11d8} fire damage to all creatures in the line ({@dc 33} basic Reflex save). The concentrated beam ignites everything in its path, including the air, creating a wall of burning flame along the line that continues to burn until the end of the sun-spire's next turn. This wall has the effects of a 5th-level {@spell wall of fire} spell, dealing {@damage 5d6} fire damage to any creature that crosses the wall or occupies the wall's area at the start of its turn. The sun-spire can't use the Beam of the Seven Suns again for {@dice 1d4} rounds, although rounds it's not in sunlight don't count toward this number."
 						]
 					},
 					{
@@ -2980,7 +2980,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Large or smaller, arm, DC 33"
+							"Large or smaller, arm, {@dc 33}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -3461,7 +3461,7 @@
 							"fire"
 						],
 						"entries": [
-							"When the sun hunter is destroyed, they explode in a blast of flame that deals {@damage 6d6} fire damage in a 10-foot emanation (DC 27 basic Reflex save). Creatures that critically fail their saves are marked with {@deity Walkena|LOGM}'s religious symbol on a visible area of their body, which remains for 1 day. This mark allows {@deity Walkena|LOGM} to treat the creature as if he knew the creature's identity but not having met them for the purposes of scrying, lowering the spell's DC by 2. The sun hunter's gear and treasure are unaffected by the explosion and left in a pile where they die."
+							"When the sun hunter is destroyed, they explode in a blast of flame that deals {@damage 6d6} fire damage in a 10-foot emanation ({@dc 27} basic Reflex save). Creatures that critically fail their saves are marked with {@deity Walkena|LOGM}'s religious symbol on a visible area of their body, which remains for 1 day. This mark allows {@deity Walkena|LOGM} to treat the creature as if he knew the creature's identity but not having met them for the purposes of scrying, lowering the spell's DC by 2. The sun hunter's gear and treasure are unaffected by the explosion and left in a pile where they die."
 						]
 					},
 					{
@@ -4049,7 +4049,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 1d4+9} bludgeoning plus {@damage 2d6} fire, DC 27"
+							"{@damage 1d4+9} bludgeoning plus {@damage 2d6} fire, {@dc 27}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -4076,7 +4076,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The sun warrior attempts to drive their spear through a foe to pin them in place. The sun warrior makes a spear {@action Strike}. On a hit, the target's clothes, armor, or other piece of equipment becomes pinned to the ground. The sun warrior Releases the spear, and the target is {@condition immobilized} until they can remove the spear ({@action Escape} DC 27). If the {@action Strike} was a critical hit, the DC increases by 2."
+							"The sun warrior attempts to drive their spear through a foe to pin them in place. The sun warrior makes a spear {@action Strike}. On a hit, the target's clothes, armor, or other piece of equipment becomes pinned to the ground. The sun warrior Releases the spear, and the target is {@condition immobilized} until they can remove the spear ({@action Escape} {@dc 27}). If the {@action Strike} was a critical hit, the DC increases by 2."
 						]
 					}
 				]
@@ -4204,7 +4204,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 30"
+							"60 feet, {@dc 30}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -4222,7 +4222,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The soul swarm unleashes a blast of burning sunlight or moonlight, dealing {@damage 4d8+6} fire damage to creatures in a 10-foot burst within 20 feet (DC 30 basic Reflex save). When the soul swarm is reduced to 8 or fewer squares, this decreases to a 5-foot burst."
+							"The soul swarm unleashes a blast of burning sunlight or moonlight, dealing {@damage 4d8+6} fire damage to creatures in a 10-foot burst within 20 feet ({@dc 30} basic Reflex save). When the soul swarm is reduced to 8 or fewer squares, this decreases to a 5-foot burst."
 						]
 					},
 					{
@@ -4244,7 +4244,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The soul swarm reaches out and tries to tear at the spiritual energy of enemies within 5 feet (DC 32 basic Reflex save). The soul swarm can choose to deal slashing damage as it cuts away at a creature, fire damage as it burns other souls away, or negative damage as it attempts to unmake a soul. The damage depends on the number of actions.",
+							"The soul swarm reaches out and tries to tear at the spiritual energy of enemies within 5 feet ({@dc 32} basic Reflex save). The soul swarm can choose to deal slashing damage as it cuts away at a creature, fire damage as it burns other souls away, or negative damage as it attempts to unmake a soul. The damage depends on the number of actions.",
 							"{@as 1} {@dice 2d6+1} damage {@as 2} {@dice 4d6+11} damage {@as 3} {@dice 6d6+11} damage"
 						]
 					},
@@ -4439,7 +4439,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The members of the brigade wildly swing their weapons\u2014primarily spears\u2014in a frenzied attack at each enemy adjacent to the troop (DC 29 basic Reflex save). The damage depends on the number of actions.",
+							"The members of the brigade wildly swing their weapons\u2014primarily spears\u2014in a frenzied attack at each enemy adjacent to the troop ({@dc 29} basic Reflex save). The damage depends on the number of actions.",
 							"{@as 1} {@damage 1d12+1} piercing damage {@as 2} {@damage 2d12+11} piercing damage {@as 3} {@damage 3d12+11} piercing damage"
 						]
 					},
@@ -4469,7 +4469,7 @@
 						],
 						"entries": [
 							"The brigade calls upon {@deity Walkena|LOGM} to burn and blind their foes. The sun warriors present their religious symbols and create a white-hot flash of light in a 45-foot cone.",
-							"Creatures in the cone take {@damage 10d8} fire damage (DC 29 basic Fortitude save). Creatures that fail their save become {@condition dazzled} for 1 round. Creatures that critically fail become {@condition blinded} for 1 round instead. When the troop is reduced to 8 or fewer squares, this area decreases to a 20-foot cone."
+							"Creatures in the cone take {@damage 10d8} fire damage ({@dc 29} basic Fortitude save). Creatures that fail their save become {@condition dazzled} for 1 round. Creatures that critically fail become {@condition blinded} for 1 round instead. When the troop is reduced to 8 or fewer squares, this area decreases to a 20-foot cone."
 						]
 					}
 				]
@@ -4607,7 +4607,7 @@
 							"visual"
 						],
 						"entries": [
-							"60 feet. The sunburst corpse sheds bright light. Any creature that starts its turn in the emanation must succeed at a DC 31 Fortitude save.",
+							"60 feet. The sunburst corpse sheds bright light. Any creature that starts its turn in the emanation must succeed at a {@dc 31} Fortitude save.",
 							"If it fails, it's {@condition blinded} for 1 minute, and if it critically fails, it's {@condition blinded} permanently. A creature that succeeds at its save is temporarily immune to this effect for 24 hours."
 						]
 					},
@@ -4626,7 +4626,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d6+6} bludgeoning plus {@damage 2d8} fire and residual light, DC 34"
+							"{@damage 2d6+6} bludgeoning plus {@damage 2d8} fire and residual light, {@dc 34}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -4644,7 +4644,7 @@
 							"occult"
 						],
 						"entries": [
-							"The sunburst corpse intensifies its light and unleashes a burning blast of energy. It deals {@damage 12d8} fire damage to all creatures in a 20-foot emanation (DC 34 basic Fortitude save). A creature that fails its save becomes {@condition dazzled} until the end of its next turn. The sunburst corpse can't use Nova Burst again for {@dice 1d4} rounds, and its blinding aura becomes inactive during this time."
+							"The sunburst corpse intensifies its light and unleashes a burning blast of energy. It deals {@damage 12d8} fire damage to all creatures in a 20-foot emanation ({@dc 34} basic Fortitude save). A creature that fails its save becomes {@condition dazzled} until the end of its next turn. The sunburst corpse can't use Nova Burst again for {@dice 1d4} rounds, and its blinding aura becomes inactive during this time."
 						]
 					},
 					{
@@ -4655,7 +4655,7 @@
 							"occult"
 						],
 						"entries": [
-							"When a sunburst corpse {@action Strike||Strikes} or Grapples a creature, some of the corpse's light clings to the creature for a moment. The creature must attempt a DC 34 Fortitude save. On a failure, the creature is {@condition dazzled} until the end of its next turn. On a critical failure, the creature is {@condition dazzled} for 1 minute. A {@condition dazzled} creature can use an {@action Interact} action to wick off the light and remove the {@condition dazzled} condition."
+							"When a sunburst corpse {@action Strike||Strikes} or Grapples a creature, some of the corpse's light clings to the creature for a moment. The creature must attempt a {@dc 34} Fortitude save. On a failure, the creature is {@condition dazzled} until the end of its next turn. On a critical failure, the creature is {@condition dazzled} for 1 minute. A {@condition dazzled} creature can use an {@action Interact} action to wick off the light and remove the {@condition dazzled} condition."
 						]
 					}
 				]

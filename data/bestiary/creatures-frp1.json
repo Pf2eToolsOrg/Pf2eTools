@@ -840,7 +840,7 @@
 							"mental"
 						],
 						"entries": [
-							"If a berberoka sees a crab or crab-like creature, the berberoka must attempt a DC 33 Will save. They then becomes immune to the sight of that creature for 10 minutes.",
+							"If a berberoka sees a crab or crab-like creature, the berberoka must attempt a {@dc 33} Will save. They then becomes immune to the sight of that creature for 10 minutes.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -860,7 +860,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d12+12} bludgeoning, DC 33"
+							"{@damage 2d12+12} bludgeoning, {@dc 33}"
 						],
 						"name": "Greater Constrict",
 						"generic": {
@@ -884,7 +884,7 @@
 						},
 						"requirements": "The berberoka is waterlogged",
 						"entries": [
-							"The berberoka sprays a blast of water in a 60-foot line. All creatures in the line take {@damage 6d8} bludgeoning damage (DC 35 basic Reflex save). On a failed save, a creature is knocked {@condition prone} and pushed back 5 feet (10 feet on a critically failed save)."
+							"The berberoka sprays a blast of water in a 60-foot line. All creatures in the line take {@damage 6d8} bludgeoning damage ({@dc 35} basic Reflex save). On a failed save, a creature is knocked {@condition prone} and pushed back 5 feet (10 feet on a critically failed save)."
 						],
 						"name": "Spray Water"
 					}
@@ -1315,7 +1315,7 @@
 				"mid": [
 					{
 						"entries": [
-							"A creature that touches the caustic monitor takes {@damage 2d8} acid damage (DC 32 basic Fortitude save)."
+							"A creature that touches the caustic monitor takes {@damage 2d8} acid damage ({@dc 32} basic Fortitude save)."
 						],
 						"name": "Corrosive Flesh"
 					},
@@ -1351,7 +1351,7 @@
 							"acid"
 						],
 						"entries": [
-							"The caustic monitor spits a spray of corrosive bile that deals {@damage 5d8} acid damage in a 20-foot cone (DC 32 basic Reflex save). It can't use."
+							"The caustic monitor spits a spray of corrosive bile that deals {@damage 5d8} acid damage in a 20-foot cone ({@dc 32} basic Reflex save). It can't use."
 						],
 						"name": "Caustic Spray"
 					},
@@ -1376,7 +1376,7 @@
 							"poison"
 						],
 						"entries": [
-							"Saving Throw DC 32 Fortitude;"
+							"Saving Throw {@dc 32} Fortitude;"
 						],
 						"name": "Caustic Monitor Venom"
 					},
@@ -1520,7 +1520,7 @@
 							"mental"
 						],
 						"entries": [
-							"The dread roc screeches terrifyingly. Each creature in a 120-foot emanation must attempt a DC 32 Will save.",
+							"The dread roc screeches terrifyingly. Each creature in a 120-foot emanation must attempt a {@dc 32} Will save.",
 							"Regardless of the result, creatures are temporarily immune for 1 minute.",
 							{
 								"type": "successDegree",
@@ -1697,7 +1697,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Medium or smaller, talon, DC 26"
+							"Medium or smaller, talon, {@dc 26}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -1850,10 +1850,10 @@
 							"primal"
 						],
 						"entries": [
-							"As cauthooj, but DC 34."
+							"As cauthooj, but {@dc 34}."
 						],
 						"name": "Warbling Song",
-						"entries_as_xyz": "Ability not found: 'Warbling Song As cauthooj, but DC 34.' in Elder Cauthooj, p.49"
+						"entries_as_xyz": "Ability not found: 'Warbling Song As cauthooj, but {@dc 34}.' in Elder Cauthooj, p.49"
 					}
 				]
 			},
@@ -2005,7 +2005,7 @@
 							"mental"
 						],
 						"entries": [
-							"As ghost. DC 25."
+							"As ghost. {@dc 25}."
 						],
 						"name": "Frightful Moan",
 						"generic": {
@@ -2022,7 +2022,7 @@
 							"evocation"
 						],
 						"entries": [
-							"As ghost. {@damage 5d6} bludgeoning, DC 25."
+							"As ghost. {@damage 5d6} bludgeoning, {@dc 25}."
 						],
 						"name": "Telekinetic Assault",
 						"generic": {
@@ -2182,7 +2182,7 @@
 							"incapacitation"
 						],
 						"entries": [
-							"When Gomwai targets the same creature with two {@action Strike||Strikes} from his {@action Flurry of Blows}, he can try to stun the creature. If either {@action Strike} hits and deals damage, the target must succeed at a DC 30 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure)."
+							"When Gomwai targets the same creature with two {@action Strike||Strikes} from his {@action Flurry of Blows}, he can try to stun the creature. If either {@action Strike} hits and deals damage, the target must succeed at a {@dc 30} Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure)."
 						],
 						"name": "Stunning Fist"
 					}
@@ -2314,7 +2314,7 @@
 						},
 						"requirements": "The grave spinosaurus has a creature {@condition grabbed} in its jaws",
 						"entries": [
-							"The grave spinosaurus reaches up, slashes the creature it has {@condition grabbed} with its claws, dealing {@damage 6d10} slashing damage (DC 36 basic Reflex save) and {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
+							"The grave spinosaurus reaches up, slashes the creature it has {@condition grabbed} with its claws, dealing {@damage 6d10} slashing damage ({@dc 36} basic Reflex save) and {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
 						],
 						"name": "Rip and Tear"
 					},
@@ -2328,7 +2328,7 @@
 						],
 						"requirements": "The grave spinosaurus is swimming on the surface of water",
 						"entries": [
-							"With a powerful lunge to the side, the grave spinosaurus uses its sail to slap the water's surface, creating a crushing wave that deals {@damage 8d6} bludgeoning damage in a 30-foot cone. Each creature in the water in the area must attempt a DC 36 Reflex save.",
+							"With a powerful lunge to the side, the grave spinosaurus uses its sail to slap the water's surface, creating a crushing wave that deals {@damage 8d6} bludgeoning damage in a 30-foot cone. Each creature in the water in the area must attempt a {@dc 36} Reflex save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2451,7 +2451,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Hana's Hundreds launch a volley of throwing knives in a 10-foot burst within 50 feet that deals {@damage 4d6+13} piercing damage (DC 33 basic Reflex save)",
+							"Hana's Hundreds launch a volley of throwing knives in a 10-foot burst within 50 feet that deals {@damage 4d6+13} piercing damage ({@dc 33} basic Reflex save)",
 							"When the team is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
 						],
 						"name": "Rain of Knives"
@@ -2462,7 +2462,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Hana's Hundreds attempt to trample all foes in their way. The team Forms Up and {@action Stride||Strides} twice, moving through the space of Medium or smaller creatures. Each creature the team moves through takes {@damage 4d8+14} bludgeoning damage (DC 33 basic Reflex save)",
+							"Hana's Hundreds attempt to trample all foes in their way. The team Forms Up and {@action Stride||Strides} twice, moving through the space of Medium or smaller creatures. Each creature the team moves through takes {@damage 4d8+14} bludgeoning damage ({@dc 33} basic Reflex save)",
 							"On a critical failure, the creature is also knocked {@condition prone}."
 						],
 						"name": "Run Them Over!"
@@ -2484,7 +2484,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Hana's Hundreds flail their swords wildly at each enemy adjacent to the team (DC 33 basic Reflex save). The damage depends on the number of actions.",
+							"Hana's Hundreds flail their swords wildly at each enemy adjacent to the team ({@dc 33} basic Reflex save). The damage depends on the number of actions.",
 							"{@as 1} {@damage 2d8} slashing damage",
 							"{@as 2} {@damage 3d8+13} slashing damage",
 							"{@as 3} {@damage 4d8+16} slashing damage."
@@ -2674,7 +2674,7 @@
 							"occult"
 						],
 						"entries": [
-							"30 feet. A creature that enters the emanation must attempt a DC 27 Will save. On a failure, the creature is {@condition confused} until the end of its next turn (1 minute on a critical failure). During this confusion, the creature attempts to cause turmoil, using its actions to create disarray in its general vicinity by throwing around objects or scaring passersby. A creature that succeeds at its save is immune to all hantu belians' unrest auras for 1 hour. A hantu belian can suppress or resume the effects of this aura as an action, which has the {@trait concentrate} trait."
+							"30 feet. A creature that enters the emanation must attempt a {@dc 27} Will save. On a failure, the creature is {@condition confused} until the end of its next turn (1 minute on a critical failure). During this confusion, the creature attempts to cause turmoil, using its actions to create disarray in its general vicinity by throwing around objects or scaring passersby. A creature that succeeds at its save is immune to all hantu belians' unrest auras for 1 hour. A hantu belian can suppress or resume the effects of this aura as an action, which has the {@trait concentrate} trait."
 						],
 						"name": "Unrest Aura"
 					}
@@ -2848,7 +2848,7 @@
 							"mental"
 						],
 						"entries": [
-							"The hantu denai unleashes a loud animal cry to scare off nearby creatures. Each creature in a 120-foot emanation must attempt a DC 27 Will save and is then immune to the hantu denai's Terrifying Cry for 1 minute.",
+							"The hantu denai unleashes a loud animal cry to scare off nearby creatures. Each creature in a 120-foot emanation must attempt a {@dc 27} Will save and is then immune to the hantu denai's Terrifying Cry for 1 minute.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3003,7 +3003,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, foot, DC 36"
+							"Huge or smaller, foot, {@dc 36}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -3037,7 +3037,7 @@
 						],
 						"entries": [
 							"Jaiban cracks its tail, creating a sonic boom in a 5-foot burst centered on a corner within reach of its tail {@action Strike}.",
-							"Each creature in the burst's area must attempt a DC 36 Fortitude save.",
+							"Each creature in the burst's area must attempt a {@dc 36} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3177,7 +3177,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As ghost. {@damage 7d6} negative damage, DC 33."
+							"As ghost. {@damage 7d6} negative damage, {@dc 33}."
 						],
 						"name": "Corrupting Gaze",
 						"generic": {
@@ -4159,10 +4159,10 @@
 							"move"
 						],
 						"entries": [
-							"As giant snapping turtle, but DC 43."
+							"As giant snapping turtle, but {@dc 43}."
 						],
 						"name": "Capsize",
-						"entries_as_xyz": "Ability not found: 'Capsize As giant snapping turtle, but DC 43.' in Mammoth Turtle, p.31"
+						"entries_as_xyz": "Ability not found: 'Capsize As giant snapping turtle, but {@dc 43}.' in Mammoth Turtle, p.31"
 					},
 					{
 						"activity": {
@@ -4495,7 +4495,7 @@
 					},
 					{
 						"entries": [
-							"When a muckish creep {@action Stride||Strides} or {@action Step||Steps}, it leaves behind a slimy mud trail that coats the traversed area. All traversed squares are covered in grease (DC 26) until the start of the muckish creep's next turn."
+							"When a muckish creep {@action Stride||Strides} or {@action Step||Steps}, it leaves behind a slimy mud trail that coats the traversed area. All traversed squares are covered in grease ({@dc 26}) until the start of the muckish creep's next turn."
 						],
 						"name": "Mud Trail"
 					},
@@ -4509,7 +4509,7 @@
 						],
 						"requirements": "The muckish creep has a creature {@condition grabbed}",
 						"entries": [
-							"The muckish creep fills the {@condition grabbed} creature's mouth and nose with mud. The creature begins to suffocate unless it succeeds at a DC 23 Fortitude save. The suffocating creature or any adjacent creatures can clear the suffocating creature's airway with an {@action Interact} action."
+							"The muckish creep fills the {@condition grabbed} creature's mouth and nose with mud. The creature begins to suffocate unless it succeeds at a {@dc 23} Fortitude save. The suffocating creature or any adjacent creatures can clear the suffocating creature's airway with an {@action Interact} action."
 						],
 						"name": "Overwhelm"
 					},
@@ -4694,7 +4694,7 @@
 						],
 						"trigger": "Nai Yan Fei hits a {@condition flat-footed} creature and deals damage",
 						"entries": [
-							"The target attempts a DC 39 Fortitude save. It then becomes immune to Nai Yan Fei's Master {@action Strike} for 1 day.",
+							"The target attempts a {@dc 39} Fortitude save. It then becomes immune to Nai Yan Fei's Master {@action Strike} for 1 day.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -4878,7 +4878,7 @@
 							"positive"
 						],
 						"entries": [
-							"{@damage 14d6} positive, DC 32"
+							"{@damage 14d6} positive, {@dc 32}"
 						],
 						"name": "Divine Destruction"
 					},
@@ -5143,7 +5143,7 @@
 							"pathfinder bestiary 3 305"
 						],
 						"entries": [
-							"Aim as One {@as 2} The terra-cotta squadron launches a ranged attack in the form of a 10-foot burst within 100 feet that deals {@dice 3d8+13} damage (DC 33 basic Reflex save). When the garrison is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
+							"Aim as One {@as 2} The terra-cotta squadron launches a ranged attack in the form of a 10-foot burst within 100 feet that deals {@dice 3d8+13} damage ({@dc 33} basic Reflex save). When the garrison is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
 						],
 						"name": "Form Up"
 					},
@@ -5168,7 +5168,7 @@
 						},
 						"entries": [
 							"The troop raises steel shields, with the effects of {@action Raise a Shield}.",
-							"{@action Strike} as One {@as 1} to {@as 3} Frequency once per round; The squadron makes a melee attack against each enemy within 5 feet (DC 30 basic Reflex save)",
+							"{@action Strike} as One {@as 1} to {@as 3} Frequency once per round; The squadron makes a melee attack against each enemy within 5 feet ({@dc 30} basic Reflex save)",
 							"The damage depends on the number of actions.",
 							"{@as 1} {@damage 2d8} slashing damage {@as 2} {@damage 3d8+13} slashing damage {@as 3} {@damage 4d8+16} slashing damage."
 						],
@@ -5367,7 +5367,7 @@
 							{
 								"type": "successDegree",
 								"entries": {
-									"Critical Success": "Ran-to tosses his foe a great distance. The grapple ends. The {@condition grabbed} creature is thrown into a space within 10 feet, takes {@damage 10d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 34 basic Reflex save).",
+									"Critical Success": "Ran-to tosses his foe a great distance. The grapple ends. The {@condition grabbed} creature is thrown into a space within 10 feet, takes {@damage 10d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage ({@dc 34} basic Reflex save).",
 									"Success": "As critical success, except the {@condition grabbed} creatures is thrown into a space within 5 feet, and creatures take {@damage 6d6} bludgeoning damage.",
 									"Failure": "Ran-to tosses his foe aside. The grapple ends. The {@condition grabbed} creature falls {@condition prone}.",
 									"Critical Failure": "Ran-to loses hold of his foe and the grapple ends."
@@ -5528,14 +5528,14 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Hakusa targets a foe's pressure points to debilitate them. Hakusa makes a fist {@action Strike}. On a hit, the target takes damage as normal and must attempt a DC 35 Fortitude save. Regardless of the result of the save, the target is temporarily immune to Pressure Point Attack for 1 minute.",
+							"Hakusa targets a foe's pressure points to debilitate them. Hakusa makes a fist {@action Strike}. On a hit, the target takes damage as normal and must attempt a {@dc 35} Fortitude save. Regardless of the result of the save, the target is temporarily immune to Pressure Point Attack for 1 minute.",
 							{
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The target is unaffected.",
 									"Success": "The target's muscles become temporarily weaker. For 1 round, the target is {@condition enfeebled|CRB|enfeebled 2} and must succeed at a DC {@flatDC 5} flat check when attempting to use actions with the {@trait manipulate} trait or the action is lost.",
 									"Failure": "As success, but the duration is 1 minute.",
-									"Critical Failure": "As success, but the duration is 1 minute, the flat check is DC 11, and the target also takes \u201310-foot status penalty to their Speed for the duration."
+									"Critical Failure": "As success, but the duration is 1 minute, the flat check is {@dc 11}, and the target also takes \u201310-foot status penalty to their Speed for the duration."
 								}
 							}
 						],
@@ -5673,7 +5673,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. A creature that enters the emanation must attempt a DC 19 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, or {@condition sickened|CRB|sickened 2} on a critical failure. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is immune to all sigbins' stenches for 1 minute."
+							"30 feet. A creature that enters the emanation must attempt a {@dc 19} Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, or {@condition sickened|CRB|sickened 2} on a critical failure. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is immune to all sigbins' stenches for 1 minute."
 						],
 						"name": "Stench"
 					}
@@ -6357,7 +6357,7 @@
 							"sonic"
 						],
 						"entries": [
-							"Tamikan unleashes a powerful and deadly blast of sonic force from her maw that deals {@damage 12d6} sonic damage in a 100- foot line (DC 37 basic Reflex save). She can't use Sonic Screech again for {@dice 1d4} rounds."
+							"Tamikan unleashes a powerful and deadly blast of sonic force from her maw that deals {@damage 12d6} sonic damage in a 100- foot line ({@dc 37} basic Reflex save). She can't use Sonic Screech again for {@dice 1d4} rounds."
 						],
 						"name": "Sonic Screech"
 					},
@@ -6367,10 +6367,10 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As kongamato, but DC 37."
+							"As kongamato, but {@dc 37}."
 						],
 						"name": "Wailing Dive",
-						"entries_as_xyz": "Ability not found: 'Wailing Dive As kongamato, but DC 37.' in Tamikan, p.39"
+						"entries_as_xyz": "Ability not found: 'Wailing Dive As kongamato, but {@dc 37}.' in Tamikan, p.39"
 					}
 				]
 			},
@@ -6641,10 +6641,10 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As tyrannosaurus, but DC 29."
+							"As tyrannosaurus, but {@dc 29}."
 						],
 						"name": "Fling",
-						"entries_as_xyz": "Ability not found: 'Fling As tyrannosaurus, but DC 29.' in Tyrannosaurus Imperator, p.31"
+						"entries_as_xyz": "Ability not found: 'Fling As tyrannosaurus, but {@dc 29}.' in Tyrannosaurus Imperator, p.31"
 					},
 					{
 						"activity": {
@@ -6679,7 +6679,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The tyrannosaurus sweeps its tail in a 15-foot cone, dealing {@damage 4d8+12} bludgeoning damage to all creatures in the cone. Creatures in the area must attempt a DC 34 Reflex save.",
+							"The tyrannosaurus sweeps its tail in a 15-foot cone, dealing {@damage 4d8+12} bludgeoning damage to all creatures in the cone. Creatures in the area must attempt a {@dc 34} Reflex save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -6698,7 +6698,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, foot, DC 34"
+							"Huge or smaller, foot, {@dc 34}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -6879,7 +6879,7 @@
 							"incapacitation",
 							"mental"
 						],
-						"requirements": "As poltergeist, but DC 33.",
+						"requirements": "As poltergeist, but {@dc 33}.",
 						"name": "Frighten"
 					},
 					{
@@ -7906,7 +7906,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Ji-yook pins a foe's clothing to a wall or floor or the ground. Ji-yook makes a dart {@action Strike}. If the attack hits, it deals no damage and instead pins the target to an adjacent surface. The target is {@condition immobilized} and must spend an {@action Interact} action to attempt a DC 10 {@skill Athletics} check to pull the dart free; it can't move from its space until it succeeds. If Ji-yook's dart {@action Strike} was a critical hit, the target must succeed at two separate {@skill Athletics} checks to pull the dart free. The target is flatfooted while it remains {@condition immobilized} in this way."
+							"Ji-yook pins a foe's clothing to a wall or floor or the ground. Ji-yook makes a dart {@action Strike}. If the attack hits, it deals no damage and instead pins the target to an adjacent surface. The target is {@condition immobilized} and must spend an {@action Interact} action to attempt a {@dc 10} {@skill Athletics} check to pull the dart free; it can't move from its space until it succeeds. If Ji-yook's dart {@action Strike} was a critical hit, the target must succeed at two separate {@skill Athletics} checks to pull the dart free. The target is flatfooted while it remains {@condition immobilized} in this way."
 						],
 						"name": "Pinning Shot"
 					},

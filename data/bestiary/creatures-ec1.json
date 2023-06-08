@@ -255,7 +255,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the wrecker demon hits a creature with a jaws {@action Strike}, the creature must succeed at a DC 21 Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty to Charisma-based checks.",
+							"When the wrecker demon hits a creature with a jaws {@action Strike}, the creature must succeed at a {@dc 21} Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty to Charisma-based checks.",
 							"This penalty is cumulative up to \u20133, and remains even if the wounds are healed.",
 							"The penalty is reduced by 1 every 24 hours until it reaches 0."
 						],
@@ -814,7 +814,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. A creature that enters the aura must attempt a DC 22 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
+							"30 feet. A creature that enters the aura must attempt a {@dc 22} Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
 							"A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
 						],
 						"name": "Stench"
@@ -832,7 +832,7 @@
 					},
 					{
 						"entries": [
-							"1 Focus Point, DC 22; 3rd cry of destruction (Core Rulebook 390)"
+							"1 Focus Point, {@dc 22}; 3rd cry of destruction (Core Rulebook 390)"
 						],
 						"name": "Cleric Domain Spell"
 					},
@@ -964,7 +964,7 @@
 							"primal"
 						],
 						"entries": [
-							"The corrosive lizard vomits a gout of acid in a 15-foot cone. Each creature in this area takes {@damage 3d6} acid damage (DC 20 basic Reflex save). The lizard can't use Gout of Acid again for {@dice 1d4} rounds."
+							"The corrosive lizard vomits a gout of acid in a 15-foot cone. Each creature in this area takes {@damage 3d6} acid damage ({@dc 20} basic Reflex save). The lizard can't use Gout of Acid again for {@dice 1d4} rounds."
 						],
 						"name": "Gout of Acid"
 					},
@@ -1150,7 +1150,7 @@
 						},
 						"trigger": "The corrupted priest is targeted by an effect with the {@trait mental} trait or that requires a Will save",
 						"entries": [
-							"The hermit's mind is a storm of chaos due to demonic influences. The creator of the triggering effect takes {@damage 3d8} mental damage (DC 20 basic Will save)."
+							"The hermit's mind is a storm of chaos due to demonic influences. The creator of the triggering effect takes {@damage 3d8} mental damage ({@dc 20} basic Will save)."
 						],
 						"name": "Roiling Mind"
 					}
@@ -1493,7 +1493,7 @@
 							"disease"
 						],
 						"entries": [
-							"As giant flea, except DC 19."
+							"As giant flea, except {@dc 19}."
 						],
 						"name": "Flea Fever"
 					},
@@ -1517,7 +1517,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 2d4+7} piercing damage and must attempt a DC 22 basic Reflex save. A creature that fails its save is exposed to flea fever."
+							"Each enemy in the swarm's space takes {@damage 2d4+7} piercing damage and must attempt a {@dc 22} basic Reflex save. A creature that fails its save is exposed to flea fever."
 						],
 						"name": "Swarming Bites"
 					}
@@ -1631,7 +1631,7 @@
 							"disease"
 						],
 						"entries": [
-							"Drain from flea fever can't be reduced or recovered from naturally until the disease is cured. Saving Throw DC 18 Fortitude; Stage 1 {@condition drained|CRB|drained 1} ({@dice 1d4} hours), Stage 2 {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} (1 day), Stage 3 {@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1} (1 day), Stage 4."
+							"Drain from flea fever can't be reduced or recovered from naturally until the disease is cured. Saving Throw {@dc 18} Fortitude; Stage 1 {@condition drained|CRB|drained 1} ({@dice 1d4} hours), Stage 2 {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} (1 day), Stage 3 {@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1} (1 day), Stage 4."
 						],
 						"name": "Flea Fever"
 					}
@@ -2131,7 +2131,7 @@
 							"visual"
 						],
 						"entries": [
-							"5 feet. A luminous ooze constantly sheds distracting multicolored light. A creature that ends its turn within the aura must attempt a DC 21 Fortitude save or become {@condition dazzled} until the end of its next turn. On a critical failure, it instead becomes {@condition blinded} until the end of its next turn."
+							"5 feet. A luminous ooze constantly sheds distracting multicolored light. A creature that ends its turn within the aura must attempt a {@dc 21} Fortitude save or become {@condition dazzled} until the end of its next turn. On a critical failure, it instead becomes {@condition blinded} until the end of its next turn."
 						],
 						"name": "Bedazzling"
 					},
@@ -2153,7 +2153,7 @@
 							"visual"
 						],
 						"entries": [
-							"The ooze glows with blinding brightness. All creatures within a 30-foot emanation must attempt a DC 21 Fortitude save.",
+							"The ooze glows with blinding brightness. All creatures within a 30-foot emanation must attempt a {@dc 21} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2746,7 +2746,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A creature hit by the pinacosaurus's tail must attempt a DC 21 Fortitude save. On a failure, it's {@condition slowed|CRB|slowed 1} until the end of its next turn; on a critical failure, it's {@condition stunned} until the end of its next turn."
+							"A creature hit by the pinacosaurus's tail must attempt a {@dc 21} Fortitude save. On a failure, it's {@condition slowed|CRB|slowed 1} until the end of its next turn; on a critical failure, it's {@condition stunned} until the end of its next turn."
 						],
 						"name": "Punishing Tail"
 					},
@@ -2756,7 +2756,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Small or smaller, foot, DC 21"
+							"Small or smaller, foot, {@dc 21}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -2871,7 +2871,7 @@
 							"press"
 						],
 						"entries": [
-							"Pruana makes a fist {@action Strike} against a target she has previously attacked this turn. If she hits, she gains a +3 circumstance bonus to the damage, and the creature must attempt a DC 20 Fortitude save to resist the staggering force of the blow.",
+							"Pruana makes a fist {@action Strike} against a target she has previously attacked this turn. If she hits, she gains a +3 circumstance bonus to the damage, and the creature must attempt a {@dc 20} Fortitude save to resist the staggering force of the blow.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3023,7 +3023,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"10 feet. A creature entering the aura or starting its turn in the aura must succeed at a DC 18 Fortitude save or become {@condition sickened|CRB|sickened 1} (plus {@condition slowed|CRB|slowed 1} as long as itʼs {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+							"10 feet. A creature entering the aura or starting its turn in the aura must succeed at a {@dc 18} Fortitude save or become {@condition sickened|CRB|sickened 1} (plus {@condition slowed|CRB|slowed 1} as long as itʼs {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 						],
 						"name": "Stench"
 					}
@@ -3091,7 +3091,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Any living creature hit by Smiler's attack must succeed at a DC 18 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+							"Any living creature hit by Smiler's attack must succeed at a {@dc 18} Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
 						],
 						"name": "Paralysis"
 					},
@@ -3454,7 +3454,7 @@
 							"visual"
 						],
 						"entries": [
-							"Whenever the vermlek Abandons a Body or Inhabits a Body, all creatures within 30 feet who can see the vermlek must succeed at a DC 19 Will save or become {@condition frightened|CRB|frightened 1}.",
+							"Whenever the vermlek Abandons a Body or Inhabits a Body, all creatures within 30 feet who can see the vermlek must succeed at a {@dc 19} Will save or become {@condition frightened|CRB|frightened 1}.",
 							"On a critical failure, the creature is {@condition frightened|CRB|frightened 1} and {@condition sickened|CRB|sickened 1}. Regardless of the result, creatures are immune to the same vermlek's unsettling movement for 24 hours."
 						],
 						"name": "Unsettling Movement"
@@ -3579,7 +3579,7 @@
 						],
 						"requirements": "Viktor is holding an ignited baton",
 						"entries": [
-							"Viktor breathes fire in a 20-foot cone. Creatures within the cone take {@damage 3d6} fire damage (DC 18 basic Reflex save). Once Viktor breathes fire, he cannot do so again for {@dice 1d4} rounds."
+							"Viktor breathes fire in a 20-foot cone. Creatures within the cone take {@damage 3d6} fire damage ({@dc 18} basic Reflex save). Once Viktor breathes fire, he cannot do so again for {@dice 1d4} rounds."
 						],
 						"name": "Breathe Fire"
 					},
@@ -3875,7 +3875,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. A creature that enters the area must attempt a DC 16 Fortitude save. On a failure, the creature is {@condition sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute. A xulgath bilebearer can activate or deactivate its stench aura as a free action."
+							"30 feet. A creature that enters the area must attempt a {@dc 16} Fortitude save. On a failure, the creature is {@condition sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute. A xulgath bilebearer can activate or deactivate its stench aura as a free action."
 						],
 						"name": "Stench"
 					}
@@ -3895,7 +3895,7 @@
 							"number": 1
 						},
 						"entries": [
-							"All adjacent creatures must attempt a DC 18 Fortitude save. On a failure, the creature is {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) until the end of its next turn and takes a \u20132 circumstance penalty to Fortitude saves against xulgath bile for 1 minute."
+							"All adjacent creatures must attempt a {@dc 18} Fortitude save. On a failure, the creature is {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) until the end of its next turn and takes a \u20132 circumstance penalty to Fortitude saves against xulgath bile for 1 minute."
 						],
 						"name": "Putrid Blast"
 					},

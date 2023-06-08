@@ -58,7 +58,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 3d6} piercing damage (DC 24 basic Reflex save) plus exposure to marrow rot."
+							"Each enemy in the swarm's space takes {@damage 3d6} piercing damage ({@dc 24} basic Reflex save) plus exposure to marrow rot."
 						],
 						"name": "Swarming Bites"
 					},
@@ -593,7 +593,7 @@
 						],
 						"entries": [
 							"The dreadsong dancer whirls their howling songblades and cloaks themself in illusion magic.",
-							"Each non-fiend creature in a 30-foot emanation from the dreadsong dancer must attempt a DC 29 Will save.",
+							"Each non-fiend creature in a 30-foot emanation from the dreadsong dancer must attempt a {@dc 29} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -776,7 +776,7 @@
 						},
 						"entries": [
 							"The excorion spews necrotic blood all over a foe it has {@condition grabbed}.",
-							"The {@condition grabbed} creature must succeed at a DC 25 Fortitude save or become {@condition sickened|CRB|sickened 2}."
+							"The {@condition grabbed} creature must succeed at a {@dc 25} Fortitude save or become {@condition sickened|CRB|sickened 2}."
 						],
 						"name": "Vomit Blood"
 					}
@@ -1122,7 +1122,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet, DC 25"
+							"30 feet, {@dc 25}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -1311,7 +1311,7 @@
 					},
 					{
 						"entries": [
-							"As bone skipper swarm, but DC 25."
+							"As bone skipper swarm, but {@dc 25}."
 						],
 						"name": "Marrow Rot",
 						"entries_as_xyz": [
@@ -1748,7 +1748,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"10 feet, DC 24.",
+							"10 feet, {@dc 24}.",
 							"As zombie ability (Bestiary 340)."
 						],
 						"name": "Rotting Aura"
@@ -1770,10 +1770,10 @@
 							"disease"
 						],
 						"entries": [
-							"As ofalth, but DC 22."
+							"As ofalth, but {@dc 22}."
 						],
 						"name": "Wretched Weeps",
-						"entries_as_xyz": "Ability not found: 'Wretched Weeps As ofalth, but DC 22.' in Ofalth Zombie, p.47"
+						"entries_as_xyz": "Ability not found: 'Wretched Weeps As ofalth, but {@dc 22}.' in Ofalth Zombie, p.47"
 					}
 				]
 			},
@@ -2266,7 +2266,7 @@
 						},
 						"requirements": "The Skinsaw seamer is currently grappling a creature",
 						"entries": [
-							"The seamer stitches a piece of cloth to the creature's arm, face, or leg, potentially hindering it. The creature must attempt a DC 26 Reflex saving throw; if the seamer has already successfully used their Flay ability against the creature within the past minute, the creature's save result is one degree of success worse.",
+							"The seamer stitches a piece of cloth to the creature's arm, face, or leg, potentially hindering it. The creature must attempt a {@dc 26} Reflex saving throw; if the seamer has already successfully used their Flay ability against the creature within the past minute, the creature's save result is one degree of success worse.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2537,7 +2537,7 @@
 						],
 						"requirements": "The tenome has a creature {@condition grabbed} or {@condition restrained}",
 						"entries": [
-							"The tenome makes a jaws {@action Strike} against the {@condition grabbed} or {@condition restrained} creature. If the {@action Strike} hits, the creature must succeed at a DC 18 Fortitude save or become {@condition drained|CRB|drained 1} (or the value of the creature's {@condition drained} condition increases by 1 if it already has a {@condition drained} value, to a maximum of {@condition drained|CRB|drained 4}). The tenome regains {@dice 1d8} Hit Points each time it uses Bone Drink."
+							"The tenome makes a jaws {@action Strike} against the {@condition grabbed} or {@condition restrained} creature. If the {@action Strike} hits, the creature must succeed at a {@dc 18} Fortitude save or become {@condition drained|CRB|drained 1} (or the value of the creature's {@condition drained} condition increases by 1 if it already has a {@condition drained} value, to a maximum of {@condition drained|CRB|drained 4}). The tenome regains {@dice 1d8} Hit Points each time it uses Bone Drink."
 						],
 						"name": "Bone Drink"
 					},
@@ -2560,7 +2560,7 @@
 							"or"
 						],
 						"entries": [
-							"{@as 2} (emotion, enchantment, fear, incapacitation, mental, occult, visual) A tenome can gaze at a creature within 30 feet by presenting one of its eyes. The target must succeed at a DC 21 Will save or become {@condition frightened|CRB|frightened 1}. If the tenome uses 2 actions and presents both of its eyes, the target is also {@condition paralyzed} if it fails the save. A creature that successfully saves is temporarily immune for 24 hours."
+							"{@as 2} (emotion, enchantment, fear, incapacitation, mental, occult, visual) A tenome can gaze at a creature within 30 feet by presenting one of its eyes. The target must succeed at a {@dc 21} Will save or become {@condition frightened|CRB|frightened 1}. If the tenome uses 2 actions and presents both of its eyes, the target is also {@condition paralyzed} if it fails the save. A creature that successfully saves is temporarily immune for 24 hours."
 						],
 						"name": "Terrifying Gaze"
 					}
@@ -2717,7 +2717,7 @@
 						},
 						"requirements": "The teraphant has a creature {@condition grabbed}",
 						"entries": [
-							"The teraphant slams the creature onto one of its horns. The target must attempt a DC 27 Reflex save or suffer {@damage 3d6+9} piercing damage and {@damage 1d6} {@condition persistent damage||persistent bleed damage} ({@damage 6d6+18} piercing damage on a critical failure)."
+							"The teraphant slams the creature onto one of its horns. The target must attempt a {@dc 27} Reflex save or suffer {@damage 3d6+9} piercing damage and {@damage 1d6} {@condition persistent damage||persistent bleed damage} ({@damage 6d6+18} piercing damage on a critical failure)."
 						],
 						"name": "Impale"
 					},
@@ -2727,7 +2727,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The teraphant lets out a loud trumpet that deals {@damage 8d8} mental damage (DC 27 basic Will save) in a 30-foot cone. A creature that fails its save is also pushed 15 feet (30 feet on a critical failure). If a pushed creatures strikes a solid barrier, it takes {@damage 3d6} bludgeoning damage and stops. The teraphant can't use."
+							"The teraphant lets out a loud trumpet that deals {@damage 8d8} mental damage ({@dc 27} basic Will save) in a 30-foot cone. A creature that fails its save is also pushed 15 feet (30 feet on a critical failure). If a pushed creatures strikes a solid barrier, it takes {@damage 3d6} bludgeoning damage and stops. The teraphant can't use."
 						],
 						"name": "Psychokinetic Trumpet"
 					},
@@ -2743,7 +2743,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Large or smaller, foot, DC 27"
+							"Large or smaller, foot, {@dc 27}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -2872,7 +2872,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"DC 23, {@damage 2d8+9} acid, {@action Escape} DC 23, Rupture 14 (19 when using Metallify)"
+							"{@dc 23}, {@damage 2d8+9} acid, {@action Escape} {@dc 23}, Rupture 14 (19 when using Metallify)"
 						],
 						"name": "Engulf",
 						"generic": {

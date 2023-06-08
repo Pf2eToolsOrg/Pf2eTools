@@ -104,7 +104,7 @@
 							"fire"
 						],
 						"entries": [
-							"A creature that touches the accursed forge-spurned (including {@action Grapple||grappling} it or hitting it with an {@trait unarmed} attack) takes {@damage 4d6} fire damage (DC 33 basic Reflex save)."
+							"A creature that touches the accursed forge-spurned (including {@action Grapple||grappling} it or hitting it with an {@trait unarmed} attack) takes {@damage 4d6} fire damage ({@dc 33} basic Reflex save)."
 						],
 						"name": "Searing Heat"
 					}
@@ -132,7 +132,7 @@
 							"fire"
 						],
 						"entries": [
-							"The accursed forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the accursed forge-spurned and persists for {@dice 1d4} rounds. Creatures that move into or start their turn in the area take {@damage 12d6} fire damage (DC 36 basic Reflex save). A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the accursed forge-spurned. The accursed forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
+							"The accursed forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the accursed forge-spurned and persists for {@dice 1d4} rounds. Creatures that move into or start their turn in the area take {@damage 12d6} fire damage ({@dc 36} basic Reflex save). A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the accursed forge-spurned. The accursed forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
 						],
 						"name": "Forge Breath"
 					},
@@ -143,7 +143,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"If a creature is slain by an attack from the {@i soul chain} and the accursed forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the {@i soul chain} (as {@spell bind soul}) with a day of work at a forge and a DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the {@i soul chain} is destroyed (Hardness 10, 40 HP, BT 20)."
+							"If a creature is slain by an attack from the {@i soul chain} and the accursed forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the {@i soul chain} (as {@spell bind soul}) with a day of work at a forge and a {@dc 20} {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the {@i soul chain} is destroyed (Hardness 10, 40 HP, BT 20)."
 						],
 						"name": "Soul Chain"
 					},
@@ -153,7 +153,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the accursed forge-spurned critically hits a target with its {@i soul chain}, the chain leeches away a portion of the target's soul. The target must attempt a DC 36 Fortitude save.",
+							"When the accursed forge-spurned critically hits a target with its {@i soul chain}, the chain leeches away a portion of the target's soul. The target must attempt a {@dc 36} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -286,7 +286,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet. A creature that enters or starts its turn within the aura must succeed at a DC 28 Will save or become {@condition stunned|CRB|stunned 1}."
+							"60 feet. A creature that enters or starts its turn within the aura must succeed at a {@dc 28} Will save or become {@condition stunned|CRB|stunned 1}."
 						],
 						"name": "Subsonic Hum"
 					}
@@ -302,7 +302,7 @@
 						],
 						"requirements": "The crystal has a creature engulfed.",
 						"entries": [
-							"The engulfed creature must succeed at a DC 28 Fortitude save or become {@condition slowed|CRB|slowed 1} until it is no longer engulfed. If the creature is already {@condition slowed}, it becomes {@condition petrified} as it is turned into crystal and expelled by the carnivorous crystal onto the ground. In {@dice 1d4} hours, the {@condition petrified} victim shatters and a new carnivorous crystal emerges from the remains."
+							"The engulfed creature must succeed at a {@dc 28} Fortitude save or become {@condition slowed|CRB|slowed 1} until it is no longer engulfed. If the creature is already {@condition slowed}, it becomes {@condition petrified} as it is turned into crystal and expelled by the carnivorous crystal onto the ground. In {@dice 1d4} hours, the {@condition petrified} victim shatters and a new carnivorous crystal emerges from the remains."
 						],
 						"name": "Crystallize"
 					},
@@ -312,7 +312,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"DC 28, {@damage 2d6} slashing, {@action Escape} DC 28, Rupture 25 (bludgeoning only)."
+							"{@dc 28}, {@damage 2d6} slashing, {@action Escape} {@dc 28}, Rupture 25 (bludgeoning only)."
 						],
 						"name": "Engulf",
 						"generic": {
@@ -636,7 +636,7 @@
 							"fire"
 						],
 						"entries": [
-							"10 feet, {@damage 3d6} fire damage (DC 29 basic Reflex save)"
+							"10 feet, {@damage 3d6} fire damage ({@dc 29} basic Reflex save)"
 						],
 						"name": "Volcanic Heat"
 					},
@@ -646,7 +646,7 @@
 						],
 						"entries": [
 							"Whenever the dalos takes damage from a melee {@action Strike}, magma splashes from its open wound and sticks to nearby creatures.",
-							"Each creature in a 10-foot emanation must attempt a DC 31 Reflex save. On a failure, the creature takes {@damage 3d6} {@condition persistent damage||persistent fire damage} as the superheated rock sticks to them and cools. The DC to end this {@condition persistent damage} decreases by 5 each turn after the first as the magma cools."
+							"Each creature in a 10-foot emanation must attempt a {@dc 31} Reflex save. On a failure, the creature takes {@damage 3d6} {@condition persistent damage||persistent fire damage} as the superheated rock sticks to them and cools. The DC to end this {@condition persistent damage} decreases by 5 each turn after the first as the magma cools."
 						],
 						"name": "Magma Splash"
 					}
@@ -685,7 +685,7 @@
 							"fire"
 						],
 						"entries": [
-							"The dalos causes a volcanic explosion to erupt from its head, lobbing a mass of molten rock up to 100 feet. This lava bomb deals {@damage 6d8} fire damage and {@damage 6d8} bludgeoning damage to each creature in a 20-foot radius of its impact point, with a DC 33 basic Reflex save. The dalos can't use Lava Bomb again for {@dice 1d4} rounds."
+							"The dalos causes a volcanic explosion to erupt from its head, lobbing a mass of molten rock up to 100 feet. This lava bomb deals {@damage 6d8} fire damage and {@damage 6d8} bludgeoning damage to each creature in a 20-foot radius of its impact point, with a {@dc 33} basic Reflex save. The dalos can't use Lava Bomb again for {@dice 1d4} rounds."
 						],
 						"name": "Lava Bomb"
 					},
@@ -1011,7 +1011,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 29"
+							"60 feet, {@dc 29}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -1038,7 +1038,7 @@
 							"visual"
 						],
 						"entries": [
-							"The dragonscarred dead focuses its boundless frustration in a gaze targeting one creature it can see within 30 feet. That creature must attempt a DC 30 Will save.",
+							"The dragonscarred dead focuses its boundless frustration in a gaze targeting one creature it can see within 30 feet. That creature must attempt a {@dc 30} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1410,7 +1410,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"10 feet. A creature entering the aura or starting its turn there must succeed at a DC 34 Fortitude save or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} as long as it's {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+							"10 feet. A creature entering the aura or starting its turn there must succeed at a {@dc 34} Fortitude save or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} as long as it's {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 						]
 					},
 					{
@@ -1478,7 +1478,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"Any living creature hit by Falrok's attack must succeed at a DC 34 Fortitude save or become {@condition paralyzed}.",
+							"Any living creature hit by Falrok's attack must succeed at a {@dc 34} Fortitude save or become {@condition paralyzed}.",
 							"It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
 						],
 						"name": "Paralysis"
@@ -1652,7 +1652,7 @@
 							"fire"
 						],
 						"entries": [
-							"A creature that touches a forge-spurned (including by {@action Grapple||grappling} it or hitting it with an {@trait unarmed} attack) takes {@damage 2d6} fire damage with a DC 21 basic Reflex save."
+							"A creature that touches a forge-spurned (including by {@action Grapple||grappling} it or hitting it with an {@trait unarmed} attack) takes {@damage 2d6} fire damage with a {@dc 21} basic Reflex save."
 						],
 						"name": "Searing Heat"
 					}
@@ -1680,7 +1680,7 @@
 							"fire"
 						],
 						"entries": [
-							"The forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the forge-spurned and persists for {@dice 1d4} rounds. Each creature that moves into or starts their turn in the area takes {@damage 6d6} fire damage, with a DC 21 basic Reflex save. A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the forge-spurned. The forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
+							"The forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the forge-spurned and persists for {@dice 1d4} rounds. Each creature that moves into or starts their turn in the area takes {@damage 6d6} fire damage, with a {@dc 21} basic Reflex save. A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the forge-spurned. The forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
 						],
 						"name": "Forge Breath"
 					},
@@ -1691,7 +1691,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"If a creature is slain by an attack from the {@i soul chain} and the forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the {@i soul chain} (as {@spell bind soul}) with a day of work at a forge and a successful DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the {@i soul chain} is destroyed (Hardness 5, HP 20, BT 10)."
+							"If a creature is slain by an attack from the {@i soul chain} and the forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the {@i soul chain} (as {@spell bind soul}) with a day of work at a forge and a successful {@dc 20} {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the {@i soul chain} is destroyed (Hardness 5, HP 20, BT 10)."
 						],
 						"name": "Soul Chain"
 					}
@@ -2033,7 +2033,7 @@
 						},
 						"entries": [
 							"Ilssrah attempts a melee {@action Strike} with {@i Fleshroaster}. If she hits, she also draws her light hammer, makes a melee {@action Strike} with it against the same target, and immediately returns it to her belt. She then resumes her grip on {@i Fleshroaster}. Both {@action Strike||Strikes} count toward Ilssrah's multiple attack penalty, but the penalty doesn't increase until both {@action Strike||Strikes} have been made.",
-							"If the hammer {@action Strike} hits, it deals damage as normal and the target must attempt a DC 35 Fortitude save.",
+							"If the hammer {@action Strike} hits, it deals damage as normal and the target must attempt a {@dc 35} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2407,7 +2407,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 33"
+							"60 feet, {@dc 33}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -2751,7 +2751,7 @@
 						},
 						"entries": [
 							"The golem {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement.",
-							"A creature can bar the way by succeeding at a DC 36 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it takes damage equal to that dealt by the golem's fist {@action Strike}."
+							"A creature can bar the way by succeeding at a {@dc 36} Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it takes damage equal to that dealt by the golem's fist {@action Strike}."
 						],
 						"name": "Inexorable March"
 					},
@@ -2765,7 +2765,7 @@
 						],
 						"trigger": "The golem hits a {@condition slowed} creature.",
 						"entries": [
-							"The creature must succeed at a DC 34 Fortitude save or become {@condition drained|CRB|drained 1} (or {@condition drained|CRB|drained 2} on a critical failure) as the golem's lazurite leeches vital energies and causes wounds to rot."
+							"The creature must succeed at a {@dc 34} Fortitude save or become {@condition drained|CRB|drained 1} (or {@condition drained|CRB|drained 2} on a critical failure) as the golem's lazurite leeches vital energies and causes wounds to rot."
 						],
 						"name": "Necrotic Affliction"
 					},
@@ -2782,7 +2782,7 @@
 							"negative"
 						],
 						"entries": [
-							"Each creature in a 10-foot emanation must succeed at a DC 32 Fortitude save or take {@damage 1d6} {@condition persistent damage||persistent necrotic damage} and be {@condition slowed|CRB|slowed 1} for 1 minute as their flesh and bones temporarily atrophy. The golem can't use Necrotic Pulse again for {@dice 1d4} rounds."
+							"Each creature in a 10-foot emanation must succeed at a {@dc 32} Fortitude save or take {@damage 1d6} {@condition persistent damage||persistent necrotic damage} and be {@condition slowed|CRB|slowed 1} for 1 minute as their flesh and bones temporarily atrophy. The golem can't use Necrotic Pulse again for {@dice 1d4} rounds."
 						],
 						"name": "Necrotic Pulse"
 					}
@@ -2995,7 +2995,7 @@
 						],
 						"requirements": "The poltergeist must be {@condition invisible}.",
 						"entries": [
-							"The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Each creature within 30 feet must attempt a DC 33 Will save, becoming {@condition frightened|CRB|frightened 2} on a failure. On a critical failure, it's also {@condition fleeing} for as long as it's {@condition frightened}. On a success, the creature is temporarily immune for 1 minute. At the start of its next turn, the poltergeist becomes {@condition invisible} again."
+							"The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Each creature within 30 feet must attempt a {@dc 33} Will save, becoming {@condition frightened|CRB|frightened 2} on a failure. On a critical failure, it's also {@condition fleeing} for as long as it's {@condition frightened}. On a success, the creature is temporarily immune for 1 minute. At the start of its next turn, the poltergeist becomes {@condition invisible} again."
 						],
 						"name": "Frighten"
 					},
@@ -3141,7 +3141,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The soulbound ruin reacts violently to stop the creature's movement, shooting spikes, throwing bricks, or otherwise impeding the target. The target must succeed at a DC 35 Reflex save or fall {@condition prone}."
+							"The soulbound ruin reacts violently to stop the creature's movement, shooting spikes, throwing bricks, or otherwise impeding the target. The target must succeed at a {@dc 35} Reflex save or fall {@condition prone}."
 						],
 						"name": "Impede"
 					}
@@ -3153,7 +3153,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The ruin collapses up to three 10-footby- 10-foot sections of its ceiling. The ruin takes 10 damage per section it collapses, and it can't collapse the same section until it has been repaired. Each creature in one of these areas takes {@damage 8d10} bludgeoning damage with a DC 35 basic Reflex save. On a failed save, the creature is also {@condition restrained} under the rubble until it {@action Escape||Escapes} (DC 33)"
+							"The ruin collapses up to three 10-footby- 10-foot sections of its ceiling. The ruin takes 10 damage per section it collapses, and it can't collapse the same section until it has been repaired. Each creature in one of these areas takes {@damage 8d10} bludgeoning damage with a {@dc 35} basic Reflex save. On a failed save, the creature is also {@condition restrained} under the rubble until it {@action Escape||Escapes} ({@dc 33})"
 						],
 						"name": "Collapse Ceiling"
 					},
@@ -3454,7 +3454,7 @@
 							"sonic"
 						],
 						"entries": [
-							"Talamira releases an anguish-filled cry of despair. All creatures within 30 feet must attempt a DC 33 Will save to resist. Talamira can't use Resonant Wail for {@dice 1d4} rounds.",
+							"Talamira releases an anguish-filled cry of despair. All creatures within 30 feet must attempt a {@dc 33} Will save to resist. Talamira can't use Resonant Wail for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -3477,7 +3477,7 @@
 							"evocation"
 						],
 						"entries": [
-							"Talamira fills the air with whirling crystals, dealing {@damage 7d6} slashing damage to all creatures in a 30-foot emanation (DC 33 basic Reflex save)."
+							"Talamira fills the air with whirling crystals, dealing {@damage 7d6} slashing damage to all creatures in a 30-foot emanation ({@dc 33} basic Reflex save)."
 						],
 						"name": "Telekinetic Crystalline Assault"
 					}
@@ -3909,7 +3909,7 @@
 							"mental"
 						],
 						"entries": [
-							"90 feet, DC 34"
+							"90 feet, {@dc 34}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -3940,7 +3940,7 @@
 							"primal"
 						],
 						"entries": [
-							"Veshumirix breathes a blast of magma that deals {@damage 9d6} fire damage and {@damage 4d12} bludgeoning damage in a 60-foot cone (DC 42 basic Reflex save). He can't use Breath Weapon again for {@dice 1d4} rounds."
+							"Veshumirix breathes a blast of magma that deals {@damage 9d6} fire damage and {@damage 4d12} bludgeoning damage in a 60-foot cone ({@dc 42} basic Reflex save). He can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
