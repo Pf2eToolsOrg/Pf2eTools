@@ -20,8 +20,9 @@ class PageFilter {
 	mutateAndAddToFilters (entity, isExcluded, opts) {
 		try {
 			this.mutateForFilters(entity, opts);
-		} catch {
-			throw new Error(`The following entry has broken the page's filters: ${entity.name}|${entity.source}`)
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error(`The following entry has broken the page's filters: ${entity.name}|${entity.source}`, error)
 		}
 		this.addToFilters(entity, isExcluded, opts);
 	}

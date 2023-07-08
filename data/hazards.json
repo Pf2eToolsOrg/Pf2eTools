@@ -1,6 +1,194 @@
 {
 	"hazard": [
 		{
+			"name": "Soporific Lecture",
+			"source": "GW3",
+			"page": 13,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 28,
+				"minProf": "expert"
+			},
+			"description": [
+				"Several {@condition hidden} nozzles spray colorless sleeping gas into the seating area."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Thievery} (expert) to crimp shut the primary feeding tube for the gas, or DC 31 {@skill Perception} (expert) to discover the {@condition hidden} bypass switch next to the door to area A3 that shuts the trap off"
+				]
+			},
+			"actions": [
+				{
+					"name": "Gas Spray",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"incapacitation",
+						"mental",
+						"poison",
+						"sleep"
+					],
+					"trigger": "Pressure is applied to any of the steps in the middle of the seating area, or applied to the manual trigger on the stage. This manual trigger can activate the trap even if its {@condition hidden} bypass switch is engaged",
+					"entries": [
+						"Sleeping gas is silently sprayed into the seating area. All creatures in the area must roll a DC 26 Will save to resist its effects.",
+						"The gas persists in the area for 3 rounds before becoming inert. Any creature who ends their turn in this area during these 3 rounds must attempt a new DC 26 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected and realizes that the area has been gassed."
+								],
+								"Success": [
+									"The creature is unaffected but doesn't notice the gas."
+								],
+								"Failure": [
+									"The creature feels a bit drowsy and lethargic, and becomes {@condition fatigued} for 1 minute. If the creature is already {@condition fatigued}, it instead falls {@condition unconscious}. If it's still {@condition unconscious} after 1 minute, it wakes up automatically."
+								],
+								"Critical Failure": [
+									"The creature falls {@condition unconscious}. If it's still {@condition unconscious} after 1 hour, it wakes up automatically."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Etward's Nightmare",
+			"source": "GW3",
+			"page": 19,
+			"level": 9,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 30,
+				"minProf": "master"
+			},
+			"description": [
+				"The incense burners begin to smoke, filling the air with strangely nostalgic scents."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Occultism} (expert) to enter a state akin to lucid dreaming so as to unweave the nightmare from within, or DC 30 {@skill Intimidation} (master) to stand resolute against the nightmares and turn the fear back upon itself"
+				]
+			},
+			"actions": [
+				{
+					"name": "Light Incense Burners",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"enchantment",
+						"incapacitation",
+						"mental",
+						"occult",
+						"sleep"
+					],
+					"trigger": "A creature lies down on the bed, or a living creature spends more than 3 rounds inside this room",
+					"entries": [
+						"Incense swiftly fills the room (even if the incense burners have been removed or were destroyed). All creatures in area A12 must attempt a DC 32 Fortitude save. The haunt then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is {@condition sickened||sickened 1} by the incense's scent."
+								],
+								"Failure": [
+									"The creature falls {@condition unconscious}. If it's still {@condition unconscious} after 1 minute, it wakes up automatically."
+								],
+								"Critical Failure": [
+									"As failure, but if it's still {@condition unconscious} after 1 hour, it wakes up automatically."
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "DC 28",
+					"entries": [
+						"Fortitude saving throw. If at the end of the round there are no {@condition unconscious} creatures in the room, Etward's nightmare ends and the trap deactivates.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected and wakes up."
+								],
+								"Success": [
+									"The creature remains {@condition unconscious} and takes {@damage 1d10} cold damage and {@damage 1d10} mental damage. This damage does not wake the creature, and those who are awake can see the {@condition unconscious} creature thrash as if in the throes of a nightmare while their body rimes over with layers of frost. The creature can fight against the bitter cold and monstrous shapes by attempting a DC 28 Will save as a three-action activity on its turn\u2014 on a success, the creature wakes up."
+								],
+								"Failure": [
+									"As success, but {@damage 1d10+6} cold and {@damage 1d10+6} mental damage, and with a DC 32 Will save to wake up."
+								],
+								"Critical Failure": [
+									"The creature remains {@condition unconscious} and takes {@damage 2d10+12} cold damage and {@damage 2d10+12} mental damage."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(2 actions; cold, enchantment, mental, occult) The haunt uses its first action to light incense burners again, forcing any creature that isn't already {@condition unconscious} to save against that effect once more. Its second action is to cause any {@condition unconscious} creatures in the room to experience horrific, vivid dreams about being lost in the arctic during a blizzard, while enormous furred figures\u2014 saumen kar\u2014lunge at them through the snow to attack repeatedly. Each {@condition unconscious} creature must attempt a"
+			],
+			"reset": [
+				"The hazard resets when Etward dreams in this room."
+			]
+		},
+		{
+			"name": "Dream-Poisoned Door",
+			"source": "GW3",
+			"page": 54,
+			"level": 12,
+			"traits": [
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 35,
+				"minProf": "master"
+			},
+			"description": [
+				"Eerie shapes manifest within the doorway as it's opened, conjuring a group of four animate dreams into being."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Occultism} (expert) to concentrate on the eldritch energies and diffuse them through meditation, DC 35 {@skill Thievery} (master) to scratch warding runes along the door's hinges and block dreams from manifesting, or dispel magic (6th level; counteract DC 30) to counteract the trap"
+				]
+			},
+			"actions": [
+				{
+					"name": "Manifest Dream Guardians",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"conjuration",
+						"occult"
+					],
+					"trigger": "The door is opened",
+					"entries": [
+						"A group of four animate dreams manifest in the area just beyond the door. These four animate dreams each appear as vaguely whale-shaped but human-sized masses of tendrils. They swim through he air and attack the intruders at once, fighting to the death and pursuing any who flee the temple."
+					]
+				}
+			]
+		},
+		{
 			"name": "Pouncing Tiger Haunt",
 			"source": "QFF1",
 			"page": 42,
