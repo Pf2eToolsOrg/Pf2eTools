@@ -1,5 +1,977 @@
 {
 	"hazard": [
+
+		{
+			"name": "Cordon Alarm",
+			"source": "GW1",
+			"page": 0,
+			"level": 2,
+			"traits": [
+				"abjuration",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 18,
+				"minProf": "trained"
+			},
+			"description": [
+				"A hempen rope tied between trees emanates an {@condition invisible}, cylindrical barrier that sounds an alarm when crossed."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} (trained) to move the rope without setting off the alarm, or dispel magic (1st level; counteract DC 16) to disable the rope's magic"
+				]
+			},
+			"actions": [
+				{
+					"name": "Alarm",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"abjuration",
+						"primal"
+					],
+					"trigger": "An object or creature of at least 1 Bulk crosses an {@condition invisible} vertical barrier extending 30 feet above and below the rope",
+					"entries": [
+						"The rope squawks like an angry squirrel from the point where the barrier was breached. This alarm is as loud as a human scream and lasts for 1 minute.",
+						"If an item or creature is still breaching the barrier at the end of this duration, the alarm immediately triggers again."
+					]
+				}
+			],
+			"reset": [
+				"The alarm resets immediately. Multiple breaches can cause the alarm to sound in multiple places at the same time, though the alarm can still be triggered only once per round."
+			]
+		},
+		{
+			"name": "Shadowshift Field",
+			"source": "GW1",
+			"page": 0,
+			"level": 1,
+			"traits": [
+				"complex",
+				"conjuration",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 7,
+				"minProf": "trained",
+				"notes": "to notice the air and plants wavering and shifting"
+			},
+			"description": [
+				"Cross-planar seepage from the Oaksteward rebels' ritual causes shadowy warping effects to strain and damage living creatures in the forest clearing."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Arcana} (trained) to will the Material Plane's hold on the area back into firmness and disable the effect for 1 hour, or dispel magic (1st level; counteract DC 15) to end the effect permanently"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shadowshift",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"conjuration",
+						"primal"
+					],
+					"trigger": "A character enters the affected area",
+					"entries": [
+						"The hazard rolls initiative as the field of planar warping surges, filling the forest clearing."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) Each creature in the clearing must attempt a DC 17 Fortitude save as the planar warping threatens to create microscopic tears inside their body.",
+				"Fey, plant creatures, and druids are unaffected.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected and immune for 24 hours. The land is healed {@dice 1d6} points by the primal magic."
+						],
+						"Success": [
+							"The creature is unaffected and immune to the effect for 24 hours."
+						],
+						"Failure": [
+							"The creature takes {@damage 1d6+3} force damage."
+						],
+						"Critical Failure": [
+							"The creature takes {@damage 2d6+6} force damage."
+						]
+					}
+				}
+			],
+			"reset": [
+				"This effect continues for 1 day, after which it ends and cannot be triggered again without another ritual."
+			]
+		},
+		{
+			"name": "Exploding Stove",
+			"source": "GW1",
+			"page": 0,
+			"level": 3,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "expert"
+			},
+			"description": [
+				"The stove has been rigged to explode when pressure sensors under the floor are depressed."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Thievery} (trained) to disable the pressure sensors, or DC 20 {@skill Survival} (trained) to safely extinguish the stove fires"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 5
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 42
+				},
+				"bt": {
+					"std": 21
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Explode",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on the floor within 5 feet of the stove",
+					"entries": [
+						"The stove explodes, dealing {@damage 2d10+13} fire damage to each creature within 10 feet (basic DC 20 Reflex save)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Violet Mister",
+			"source": "GW1",
+			"page": 0,
+			"level": 2,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "trained",
+				"notes": "to notice the trap's trigger-thread attached to the door"
+			},
+			"description": [
+				"Opening the door pulls a thread, which causes a plant mister to spray a cloud of poison into the triggering creature's face."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} to safely cut the thread"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 10
+					}
+				},
+				"hardness": {
+					"std": 7
+				},
+				"hp": {
+					"std": 25,
+					"notes": {
+						"std": ""
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Poisoned Welcome",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature attempts to open the door",
+					"entries": [
+						"Every creature within 10 feet of the door is exposed to violet venom poison.",
+						{
+							"type": "affliction",
+							"name": "Violet Venom",
+							"traits": [
+								"contact",
+								"poison"
+							],
+							"DC": 17,
+							"savingThrow": "Fortitude",
+							"onset": "1 minute",
+							"maxDuration": "6 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 1d6} poison plus {@condition enfeebled||enfeebled 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 1d6} poison plus {@condition drained||drained 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@damage 2d6} poison plus {@condition enfeebled||enfeebled 1}",
+									"duration": "1 round"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Falling Bridge",
+			"source": "GW1",
+			"page": 0,
+			"level": 3,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "trained"
+			},
+			"description": [
+				"The frayed ropes on both sides of this bridge snap when enough weight is put on the bridge's center."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Survival} (trained) to reinforce and secure the ropes on one side of the bridge"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 10
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 1
+					},
+					"ref": {
+						"std": 1
+					}
+				},
+				"hp": {
+					"Rope ": 6
+				},
+				"bt": {
+					"Rope ": 3
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Collapse",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A Medium or larger creature steps onto the middle of the bridge (any of the squares marked \"T\" on the map)",
+					"entries": [
+						"The ropes on both sides of the bridge snap simultaneously, causing the bridge to collapse. Any creature on the bridge falls to the forest floor 50 feet below and takes 25 bludgeoning damage. A creature within 10 feet of one end of the bridge can attempt a DC 18 Reflex saving throw to Grab a Ledge along the side of either A8 or A13.",
+						"If one side of the bridge has been disabled by resecuring the ropes, a character on any section of the bridge can attempt a DC 18 Reflex save to hang onto the bridge as one side of it falls. The dangling bridge thereafter functions as a ladder connecting either area"
+					]
+				},
+				{
+					"name": "A8 or A13",
+					"activity": {
+						"unit": "varies",
+						"entry": "whichever was secured"
+					},
+					"components": [
+						"to the forest floor."
+					],
+					"entries": []
+				}
+			]
+		},
+		{
+			"name": "Corpse Disposal",
+			"source": "GW1",
+			"page": 0,
+			"level": 2,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 21,
+				"notes": "(or 0 if the trapdoor is disabled or {@condition broken})"
+			},
+			"description": [
+				"A wooden trapdoor conceals a spike-filled pit 10 feet square and 20 feet deep. The DC to {@action Climb} out of the pit is 10."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} (trained) to jam the trapdoor open"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 7
+					}
+				},
+				"hardness": {
+					"Trapdoor ": 9
+				},
+				"hp": {
+					"Trapdoor ": 30
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Dispose",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps onto the trapdoor (marked \"T\" on the map)",
+					"entries": [
+						"The triggering creature falls into the pit. The creature can use the {@action Grab an Edge} reaction to avoid falling. Failing that, the creature falls 20 feet (taking 10 bludgeoning damage from the fall) and takes {@damage 3d6} piercing damage from the metal spikes jutting up from the pit's floor. A creature who takes damage from the spikes is exposed to tetanus.",
+						{
+							"type": "affliction",
+							"name": "Tetanus",
+							"traits": [
+								"disease"
+							],
+							"DC": 14,
+							"savingThrow": "Fortitude",
+							"onset": "10 days",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@condition clumsy||clumsy 1}",
+									"duration": "1 week"
+								},
+								{
+									"stage": 2,
+									"entry": "{@condition clumsy||clumsy 2} and can't speak",
+									"duration": "1 day"
+								},
+								{
+									"stage": 3,
+									"entry": "{@condition paralyzed} with spasms",
+									"duration": "1 day"
+								},
+								{
+									"stage": 4,
+									"entry": "death"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shadow Guards",
+			"source": "GW1",
+			"page": 0,
+			"level": 2,
+			"traits": [
+				"complex",
+				"evocation",
+				"magical",
+				"shadow",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 11,
+				"minProf": "trained",
+				"notes": "to notice the runes {@condition concealed} among the drawings"
+			},
+			"description": [
+				"Shadowy caricatures of elves peel themselves from the floor and attack everyone in the room."
+			],
+			"disable": {
+				"entries": [
+					"DC 16 {@skill Acrobatics} to move through the room without touching any of the runes, followed by DC 18"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 11
+					}
+				},
+				"hardness": {
+					"std": 8
+				},
+				"hp": {
+					"std": 32,
+					"notes": {
+						"std": ""
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Thievery",
+					"traits": [
+						"trained"
+					],
+					"entries": [
+						"to carve them out of the wood without triggering them; or dispel magic (1st level; counteract DC 16) to counteract the runes"
+					]
+				},
+				{
+					"name": "Shadow Rush",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature enters the room",
+					"entries": [
+						"After waiting 1 round, the trap animates its shadowy stick figures and makes a painted spear {@action Strike} against each creature in the room. The trap rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The drawings stab at each character in the room with spears drawn from sharp lines."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "painted spear",
+					"attack": 11,
+					"damage": "{@damage 1d10+4} piercing"
+				}
+			],
+			"reset": [
+				"The trap deactivates and resets after 1 minute. The drawings cannot pursue characters out of the room."
+			]
+		},
+		{
+			"name": "Mindhammer Mushrooms",
+			"source": "GW1",
+			"page": 0,
+			"level": 3,
+			"traits": [
+				"environmental",
+				"fungus"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "trained",
+				"notes": "to notice small animal skeletons among the mushrooms"
+			},
+			"description": [
+				"The mushrooms emit powerful psychic blasts that overwhelm potential predators with exhausting psychedelic visions."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Survival} (trained) to navigate a safe path without triggering the mushrooms"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hp": {
+					"std": 20
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Psychic Blast",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature walks through the mushrooms",
+					"entries": [
+						"The mushrooms release a loud hum of psychic energy. The triggering creature takes {@damage 2d8+8} mental damage (DC 23 basic Will save). On a critical failure, the creature is {@condition fatigued}."
+					]
+				}
+			],
+			"reset": [
+				"The mushrooms must rest for 24 hours before they can emit another Psychic Blast."
+			]
+		},
+		{
+			"name": "Sacred Geyser",
+			"source": "GW1",
+			"page": 0,
+			"level": 3,
+			"traits": [
+				"environmental",
+				"fire",
+				"water"
+			],
+			"stealth": {
+				"dc": 19,
+				"minProf": "trained"
+			},
+			"description": [
+				"A geyser of boiling water erupts at any character who attempts to take water from the oasis."
+			],
+			"disable": {
+				"entries": [
+					"DC 21 {@skill Thievery} (trained) to concoct a mechanism for indirectly harvesting the water from a safe distance"
+				]
+			},
+			"actions": [
+				{
+					"name": "Boiling Geyser",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature dips a vessel or otherwise attempts to remove water from the oasis",
+					"entries": [
+						"A jet of magical boiling water targets the triggering creature and affects all creatures within 5 feet of the target. Creatures caught in the burst take {@damage 2d10+13} fire damage (basic DC 23 Reflex save)."
+					]
+				}
+			],
+			"reset": [
+				"The geyser resets automatically and adapts to previous circumvention, requiring a new check to disable it each time."
+			]
+		},
+		{
+			"name": "Poisonous Atmosphere",
+			"source": "GW1",
+			"page": 0,
+			"level": 1,
+			"traits": [
+				"complex",
+				"environmental",
+				"magical",
+				"mental",
+				"poison"
+			],
+			"stealth": {
+				"bonus": 5,
+				"minProf": "expert",
+				"notes": "to identify the source of sudden nausea"
+			},
+			"description": [
+				"Aucturn's poisonous, magical atmosphere has strange effects on the planet's creatures."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Survival} (trained) or {@skill Occultism} (trained) to breathe pockets of safe air trapped in bags and clothing"
+				]
+			},
+			"actions": [
+				{
+					"name": "Poisonous Atmosphere",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"illusion",
+						"mental",
+						"occult"
+					],
+					"trigger": "A non-native creature breathes the atmosphere",
+					"entries": [
+						"The triggering creature must attempt a DC 17 Fortitude save. The hazard then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is invigorated by the atmosphere and is {@condition quickened} for 1 round."
+								],
+								"Success": [
+									"The creature is unaffected."
+								],
+								"Failure": [
+									"The creature is {@condition clumsy||clumsy 1}."
+								],
+								"Critical Failure": [
+									"The creature is {@condition confused} for 1 round."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action; illusion, mental, occult) The atmosphere continues to affect all creatures in the area, requiring a new Fortitude save each round against its Poisonous Atmosphere (above). A creature holding its breath gains a +2 circumstance bonus to the save."
+			]
+		},
+		{
+			"name": "Rushing Wind",
+			"source": "GW1",
+			"page": 0,
+			"level": 2,
+			"traits": [
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 7,
+				"minProf": "trained",
+				"notes": "to detect the change in pressure"
+			},
+			"description": [
+				"A raging wind sucks creatures in the area toward the aiudara."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Thievery} (trained) or {@skill Arcana} (trained) to recognize what's happening and craft a patch to block air from escaping through the portal"
+				]
+			},
+			"actions": [
+				{
+					"name": "Gale",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The aiudara appears here on Eox",
+					"entries": [
+						"A jet of wind pulls creatures caught between the worlds toward the archway. The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The hazard uses its action to suck each creature (except the cairn wight) toward the aiudara. Each affected creature must attempt a DC 18 Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is pulled 5 feet toward the aiudara and is {@condition stunned||stunned 1}. If the creature is already adjacent to the aiudara, it doesn't move but is {@condition stunned||stunned 2}."
+						],
+						"Critical Failure": [
+							"The creature is pulled 10 feet toward the aiudara, falls {@condition prone}, and is {@condition stunned||stunned 1}. If the creature is already adjacent to the aiudara, it doesn't move but falls {@condition prone} and is {@condition stunned||stunned 2}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Formian Sting Trench",
+			"source": "GW1",
+			"page": 0,
+			"level": 4,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "trained"
+			},
+			"description": [
+				"A thin layer of canvas conceals this 10-foot-square pit, the walls of which are studded with dagger-sized formian stingers. Creatures that fall into the trap risk being gouged by the poisonous barbs."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Thievery} (trained)"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hp": {
+					"Canvas ": 30
+				},
+				"bt": {
+					"Canvas ": 15
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Entrench",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A creature walks onto the canvas",
+					"entries": [
+						"The creature falls into the {@condition concealed} trench and takes falling damage (typically 10 bludgeoning damage). The creature is also gouged by three poisoned stingers as they fall. The creature can use the {@action Grab an Edge} reaction to avoid falling."
+					]
+				},
+				{
+					"type": "affliction",
+					"name": "Formian Trench Poison",
+					"traits": [
+						"poison"
+					],
+					"DC": 21,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d6} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d6} poison damage and {@condition clumsy||clumsy 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 1d6} poison damage, {@condition clumsy||clumsy 1}, and {@condition enfeebled||enfeebled 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 2d6} poison damage, {@condition clumsy||clumsy 1}, and {@condition enfeebled||enfeebled 1}",
+							"duration": "1 round"
+						}
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "stinger",
+					"attack": 17,
+					"damage": "{@dice 1d8+3} plus formian trench poison"
+				}
+			],
+			"reset": [
+				"Creatures can still fall into the trap, but the canvas must be reset manually for the trap to become {@condition hidden} again."
+			]
+		},
+		{
+			"name": "Haunted Aiudara",
+			"source": "GW1",
+			"page": 0,
+			"level": 6,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 15,
+				"minProf": "expert"
+			},
+			"description": [
+				"The spiritual imprints of long-dead explorers haunt this aiudara, manifesting as a trio of astral wraiths who guard the gateway jealously."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Religion} (trained) to exorcise one of the wraiths or DC 25 {@skill Occultism} (expert) to erase one of the wraith's astral sigils; three successful checks are required to disable the haunt"
+				]
+			},
+			"actions": [
+				{
+					"name": "Forceful Screech",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"trigger": "A creature comes within 30 feet of the aiudara",
+					"entries": [
+						"Three aiudara wraiths screech in unison and manifest to protect the arch. Each creature within 30 feet must attempt a DC 27 Will save. The haunt rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": [
+									"The creature is unaffected."
+								],
+								"Failure": [
+									"The creature takes {@damage 2d8+9} force damage."
+								],
+								"Critical Failure": [
+									"The creature takes {@damage 4d8+9} force damage and is {@condition fatigued}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(3 actions; conjuration, divine, teleportation) With spectral claws, the aiudara wraiths hurl trespassers through time and space. Each of the three wraiths has 1 action which it can use to make a forceful hand {@action Strike} against a creature within 60 feet. The haunt loses 1 action for each successful check to disable the haunt.",
+				"When the haunt rolls a critical hit to {@action Strike} a creature, the creature is instantly shunted to an empty space within 30 feet. The haunt chooses which space the creature is transported to."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "forceful hand",
+					"attack": 17,
+					"damage": "{@damage 2d8+9} force",
+					"noMAP": true
+				}
+			],
+			"reset": [
+				"The aiudara wraiths disperse after 1 minute, but the haunt resets after 24 hours."
+			]
+		},
+		{
+			"name": "Blooming Jijioa",
+			"source": "GW1",
+			"page": 0,
+			"level": 5,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 26,
+				"minProf": "expert"
+			},
+			"description": [
+				"An {@condition invisible} solar flare causes this patch of unassuming ground cover to suddenly bloom into a radioactive field."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Survival} (trained) to remove a 5-foot square of jijioa, or 5 points of fire damage to destroy an affected area"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 9
+					}
+				},
+				"hp": {
+					"std": 52
+				},
+				"bt": {
+					"std": 26
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Solar Bloom",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The jijioa patch is exposed to a solar flare",
+					"entries": [
+						"The countless jijioa flowers suddenly bloom, magnifying the ambient heat of the sun a hundredfold.",
+						"Creatures in the jijioa patch take {@damage 4d6} fire damage (DC 22 basic Fortitude save). Creatures that end their turn in the patch continue to take damage in this way as long as the jijioa is in bloom."
+					]
+				}
+			],
+			"reset": [
+				"An hour after blooming, a jijioa patch goes dormant for 1 week."
+			]
+		}
+	,
 		{
 			"name": "Soporific Lecture",
 			"source": "GW3",
