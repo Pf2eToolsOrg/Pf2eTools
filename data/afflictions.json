@@ -1,6 +1,61 @@
 {
 	"disease": [
 		{
+			"name": "Obnubilate Curse",
+			"source": "GW1",
+			"page": 79,
+			"type": "Curse",
+			"level": 10,
+			"traits": [
+				"curse",
+				"enchantment",
+				"incapacitation",
+				"magical",
+				"mental",
+				"shadow"
+			],
+			"entries": [
+				"Only elves can be afflicted with this magical curse; other creatures are immune. An elf who touches the Shadewither Key must save against the curse. Victims quickly fall {@condition unconscious}; then, over several days, they slowly blacken and shrivel like rotting fruit until they die. The corpse of an elf killed by the obnubilate curse is dry and charcoal-like; it collapses into ash at the slightest touch.",
+				{
+					"type": "affliction",
+					"DC": 27,
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition unconscious} and {@damage 3d6} mental damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage",
+							"duration": "2 days"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage",
+							"duration": "2 days"
+						},
+						{
+							"stage": 4,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage, permanent loss of most recent year of memory",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage, permanent loss of all memory",
+							"duration": "1 day"
+						},
+						{
+							"stage": 6,
+							"entry": "death"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Dysentery",
 			"source": "AoA2",
 			"page": 71,

@@ -116,39 +116,6 @@
 						"unit": "day"
 					},
 					"trigger": "You are damaged by a melee attack from an adjacent creature",
-					"variants": [
-						{
-							"name": "cloak of gnawing leaves",
-							"level": 3,
-							"price": {
-								"amount": 60,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "cloak of thirsty fronds",
-							"level": 7,
-							"price": {
-								"amount": 330,
-								"coin": "gp"
-							},
-							"entries": [
-								"The save DC is 23, and the cloak can be activated once per minute. The leaves deal {@damage 1d6} piercing damage to a creature on a failed save, or {@damage 2d6} piercing damage and 2 bleed damage on a critical failure."
-							]
-						},
-						{
-							"name": "cloak of devouring thorns",
-							"level": 12,
-							"price": {
-								"amount": 2000,
-								"coin": "gp"
-							},
-							"entries": [
-								"The save DC is 30, and the cloak can be activated once per round. The leaves deal {@damage 2d6} piercing damage to a creature on a failed save, or {@damage 4d6} piercing damage and 3 bleed damage on a critical failure."
-							]
-						}
-					],
 					"entries": [
 						"The leaves lash out at your attacker, rising up to reveal snapping jaws made of wicked thorns. The triggering creature must attempt a DC 17 Reflex saving throw.",
 						{
@@ -167,7 +134,41 @@
 						}
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 3,
+					"price": {
+						"amount": 60,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "cloak of gnawing leaves"
+				},
+				{
+					"level": 7,
+					"price": {
+						"amount": 330,
+						"coin": "gp"
+					},
+					"entries": [
+						"The save DC is 23, and the cloak can be activated once per minute. The leaves deal {@damage 1d6} piercing damage to a creature on a failed save, or {@damage 2d6} piercing damage and 2 bleed damage on a critical failure."
+					],
+					"variantType": "cloak of thirsty fronds"
+				},
+				{
+					"level": 12,
+					"price": {
+						"amount": 2000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The save DC is 30, and the cloak can be activated once per round. The leaves deal {@damage 2d6} piercing damage to a creature on a failed save, or {@damage 4d6} piercing damage and 3 bleed damage on a critical failure."
+					],
+					"variantType": "cloak of devouring thorns"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Stalk Goggles",
@@ -200,44 +201,45 @@
 						"number": 1,
 						"unit": "day"
 					},
-					"variants": [
-						{
-							"name": "stalk goggles",
-							"level": 1,
-							"price": {
-								"amount": 20,
-								"coin": "gp"
-							},
-							"entries": []
-						},
-						{
-							"name": "greater stalk goggles",
-							"level": 3,
-							"price": {
-								"amount": 60,
-								"coin": "gp"
-							},
-							"entries": [
-								"When you activate the goggles, you also gain a +1 item bonus to {@skill Perception} checks involving sight for the duration of the effect."
-							]
-						},
-						{
-							"name": "major stalk goggles",
-							"level": 8,
-							"price": {
-								"amount": 450,
-								"coin": "gp"
-							},
-							"entries": [
-								"When you activate the goggles, you also gain a +2 item bonus to {@skill Perception} checks involving sight and low- light vision for the duration of the effect."
-							]
-						}
-					],
 					"entries": [
 						"By focusing hard, you can watch for enemies in all directions. You gain all-around vision for 1 minute; during this time, you can't be flanked."
 					]
 				}
-			]
+			],
+			"variants": [
+				{
+					"level": 1,
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [],
+					"variantType": "stalk goggles"
+				},
+				{
+					"level": 3,
+					"price": {
+						"amount": 60,
+						"coin": "gp"
+					},
+					"entries": [
+						"When you activate the goggles, you also gain a +1 item bonus to {@skill Perception} checks involving sight for the duration of the effect."
+					],
+					"variantType": "greater stalk goggles"
+				},
+				{
+					"level": 8,
+					"price": {
+						"amount": 450,
+						"coin": "gp"
+					},
+					"entries": [
+						"When you activate the goggles, you also gain a +2 item bonus to {@skill Perception} checks involving sight and low- light vision for the duration of the effect."
+					],
+					"variantType": "major stalk goggles"
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Bottled Omen",

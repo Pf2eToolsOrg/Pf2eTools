@@ -1,5 +1,190 @@
 {
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"B1",
+				"B3"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		]
+	},
 	"creature": [
+		{
+			"name": "Cliffhunter Pteranodon",
+			"source": "GW1",
+			"_copy": {
+				"name": "Pteranodon",
+				"source": "B1",
+				"_mod": {
+					"abilities.bot": [
+						{
+							"mode": "insertArr",
+							"items": {
+								"name": "Pluck",
+								"activity": {
+									"number": 1,
+									"unit": "free"
+								},
+								"frequency": {
+									"number": 1,
+									"unit": "round"
+								},
+								"trigger": "The pteranodon's last action this turn was a successful beak {@action Strike}. The pteranodon can use this ability mid-Swoop",
+								"entries": [
+									"The pteranodon attempts to fling the struck creature into harm's way. The pteranodon makes an {@skill Athletics} check against the target's Fortitude DC.",
+									{
+										"type": "successDegree",
+										"entries": {
+											"Success": [
+												"The target creature is flung 15 feet in a direction of the pteranodon's choosing and potentially falls or takes damage accordingly. The creature cannot use the {@action Grab an Edge} reaction."
+											],
+											"Failure": [
+												"The pteranodon fails to move the target creature."
+											],
+											"Critical Failure": [
+												"As failure, but the pteranodon's {@condition clumsy} movement leaves it open to attack. The pteranodon's turn ends, and it becomes {@condition flat-footed} until the beginning of its next turn."
+											]
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			"page": 48,
+			"description": "Variant {@creature pteranodon|b1}"
+		},
+		{
+			"name": "Amelekana",
+			"source": "GW1",
+			"page": 84,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"amphibious",
+				"beast"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "lifesense ",
+					"range": {
+						"unit": "feet",
+						"number": 100
+					}
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 10
+				},
+				"athletics": {
+					"std": 10
+				},
+				"stealth": {
+					"std": 12
+				},
+				"survival": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 1,
+				"con": 4,
+				"int": -3,
+				"wis": 4,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 72
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "pseudopod",
+					"attack": 13,
+					"damage": "{@damage 2d4+8} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"name": "lob amoeba",
+					"attack": 14,
+					"damage": "{@damage 2d4+8} bludgeoning plus lob amoeba"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Reflective Shell",
+						"entries": [
+							"An amelekana submerged in water gains a +4 circumstance bonus to {@skill Stealth} checks. If the water is moving, this bonus increases to +8."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Lob Amoeba",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The amelekana flings a symbiotic amoeba at a target within 40 feet\u2014this is a ranged attack that doesn't count toward the amelekana's multiple attack penalty, and its multiple attack penalty doesn't apply to this attack.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The target takes {@damage 2d4+8} bludgeoning damage and the symbiotic amoeba lands in a square adjacent to the target."
+									],
+									"Failure": [
+										"The target takes no damage, but the symbiotic amoeba still spawns in a square adjacent to the target."
+									],
+									"Critical Failure": [
+										"The target takes no damage and the lobbed amoeba dies on impact."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Symbiotic Amoeba",
+						"entries": [
+							"An amoeba produced by the amelekana is a Tiny, mindless, semi-independent creature {@condition controlled} by the amelekana. It has the {@trait minion} trait, AC 15, 1 Hit Point, and the same skills and saving throws as the amelekana. Each round, the amelekana can Command a Minion to make an amoeba {@action Step} or {@action Swim} 20 feet and make a pseudopod {@action Strike} (Melee pseudopod +13, Damage {@damage 2d4} acid). If an amelekana is killed, its symbiotic amoebas are also killed by the host creature's psychic backlash. An amelekana can have up to three extant symbiotic amoebas at a time."
+						]
+					}
+				]
+			}
+		},
 		{
 			"name": "Oaksteward Enforcers",
 			"source": "GW1",
@@ -175,221 +360,31 @@
 		{
 			"name": "Leiko",
 			"source": "GW1",
-			"page": 0,
-			"description": "Female shae experimenter (Pathfinder Bestiary 3 230)",
+			"page": 37,
+			"description": "Female {@creature shae|B3} experimenter",
 			"level": 4,
-			"perception": {
-				"std": 10
-			},
-			"senses": [
-				{
-					"name": "darkvision"
-				}
-			],
-			"languages": {
-				"languages": [
-					"aklo",
-					"auran",
-					"common",
-					"shae",
-					"undercommon"
-				]
-			},
-			"skills": {
-				"acrobatics": {
-					"std": 13
-				},
-				"deception": {
-					"std": 9
-				},
-				"occultism": {
-					"std": 11
-				},
-				"shadow plane lore": {
-					"std": 11
-				},
-				"stealth": {
-					"std": 13
-				}
-			},
-			"abilityMods": {
-				"str": 3,
-				"dex": 5,
-				"con": 1,
-				"int": 3,
-				"wis": 2,
-				"cha": 3
-			},
-			"items": [
-				"dagger (15)"
-			],
-			"defenses": {
-				"ac": {
-					"std": 21
-				},
-				"savingThrows": {
-					"fort": {
-						"std": 9
-					},
-					"ref": {
-						"std": 11
-					},
-					"will": {
-						"std": 10
-					}
-				},
-				"hp": [
-					{
-						"hp": 45
-					}
-				],
-				"immunities": [
-					"precision"
-				],
-				"resistances": [
-					{
-						"name": "cold",
-						"amount": 5
-					},
-					{
-						"name": "negative",
-						"amount": 5
-					}
-				]
-			},
-			"speed": {
-				"walk": 25,
-				"fly": 35,
-				"abilities": [
-					"swift steps",
-					"tenebral form"
-				]
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"traits": [
-						"agile",
-						"finesse",
-						"versatile S"
-					],
-					"name": "dagger",
-					"attack": 13,
-					"damage": "{@damage 1d4+5} piercing plus {@damage 1d6} cold"
-				},
-				{
-					"range": "Ranged",
-					"traits": [
-						"agile",
-						"thrown 10 feet",
-						"versatile S"
-					],
-					"name": "dagger",
-					"attack": 13,
-					"damage": "{@damage 1d4+5} piercing plus {@damage 1d6} cold"
-				}
-			],
-			"spellcasting": [
-				{
-					"tradition": "occult",
-					"type": "Innate",
-					"DC": 21,
-					"entry": {
-						"0": {
-							"level": 2,
-							"spells": [
-								{
-									"name": "chill touch"
-								},
-								{
-									"name": "detect magic"
-								}
-							]
+			"_copy": {
+				"name": "Shae",
+				"source": "B3",
+				"_mod": {
+					"*": [
+						{
+							"mode": "replaceTxt",
+							"replace": "The shae are",
+							"with": "Leiko is"
 						},
-						"4": {
-							"spells": [
-								{
-									"name": "gaseous form",
-									"amount": "at will"
-								}
-							]
+						{
+							"mode": "replaceTxt",
+							"replace": "The shae",
+							"with": "Leiko"
 						},
-						"7": {
-							"spells": [
-								{
-									"name": "plane shift",
-									"notes": [
-										"self only",
-										"to Shadow Plane or Material Plane only"
-									]
-								}
-							]
+						{
+							"mode": "replaceTxt",
+							"replace": "shae are",
+							"with": "Leiko is"
 						}
-					}
+					]
 				}
-			],
-			"abilities": {
-				"top": [
-					{
-						"name": "Shadow Shift",
-						"entries": [
-							"Being made partially of shadow herself, Leiko is {@condition concealed} in dim light or darkness even to creatures that can see clearly in those light levels."
-						]
-					}
-				],
-				"mid": [
-					{
-						"name": "Counterattack",
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"trigger": "Leiko is targeted by an attack from an adjacent creature that misses due to Leiko being {@condition concealed}",
-						"requirements": "Leiko is aware of the attack",
-						"entries": [
-							"Leiko makes a {@action Strike} against the attacker."
-						]
-					},
-					{
-						"name": "Slip",
-						"activity": {
-							"number": 1,
-							"unit": "reaction"
-						},
-						"trigger": "A creature moves adjacent to Leiko",
-						"entries": [
-							"Leiko teleports to a clear space adjacent to another creature she can see within 30 feet."
-						]
-					}
-				],
-				"bot": [
-					{
-						"name": "Bide",
-						"activity": {
-							"number": 2,
-							"unit": "action"
-						},
-						"entries": [
-							"Leiko prepares to take action against her foes, watching her opponent and waiting for the right opportunity to respond. Leiko gains a second reaction until the start of her next turn, though she still can't use more than one reaction on the same triggering action."
-						]
-					},
-					{
-						"name": "Swift",
-						"entries": [
-							"Steps Leiko's movement doesn't trigger reactions."
-						],
-						"generic": {
-							"tag": "feat",
-							"source": "LOAG"
-						}
-					},
-					{
-						"name": "Tenebral",
-						"entries": [
-							"Form Leiko can {@action Fly} at full Speed in gaseous form."
-						]
-					}
-				]
 			}
 		},
 		{
@@ -583,8 +578,7 @@
 			"abilities": {
 				"top": [
 					{
-						"name": "Sylvan",
-						"entries": []
+						"name": "Sylvan"
 					}
 				],
 				"mid": [

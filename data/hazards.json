@@ -1,6 +1,168 @@
 {
 	"hazard": [
-
+		{
+			"name": "Scholar's Bane",
+			"source": "GW1",
+			"page": 53,
+			"level": 4,
+			"traits": [
+				"complex",
+				"illusion",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 14,
+				"minProf": "trained",
+				"notes": "to notice magical sensors {@condition hidden} within four of the carvings' eyes"
+			},
+			"description": [
+				"Illusion magic overwhelms the minds of particularly intelligent creatures, forcing them to relive every intellectual failure and shame they've ever suffered."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Thievery} (trained) to carve out one eye sensor, DC 22 {@skill Arcana} or {@skill Occultism} (trained) to blank out one's mind (disables trap for self only), or dispel magic (2nd level; counteract DC 20) to counteract one eye sensor"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hardness": {
+					"Eye ": 6
+				},
+				"hp": {
+					"Eye ": 20,
+					"notes": {
+						"Eye ": ""
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Reveal Failurs",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature with an Intelligence score of 10 or greater enters the room",
+					"entries": [
+						"The trap fills the triggering creature's mind with shameful memories. The creature must succeed at a DC 22 Will save or take {@damage 2d8+2} mental damage. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(4 actions) The trap uses each action to target a creature in the room with an Intelligence score of 10 or greater. A target must succeed at a DC 22 Will save or take {@damage 2d8+2} mental damage. On a critical failure, the creature takes a \u201310-foot status penalty to Speed for 1 minute as they stagger under the weight of their failures. The trap loses 1 action for each eye sensor disabled or destroyed."
+			],
+			"reset": [
+				"The trap can function for 10 rounds, which don't need to be consecutive, before it must recharge for 24 hours."
+			]
+		},
+		{
+			"name": "Reservoir Trap",
+			"source": "GW1",
+			"page": 0,
+			"level": 2,
+			"traits": [
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 11,
+				"dc": 19,
+				"minProf": "expert",
+				"notes": "to notice the water tank bulging under the immense pressure"
+			},
+			"description": [
+				"Pipes extending from a pressurized water tank spray flesh-cutting jets of water at unwary passersby."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Thievery} (trained) to safely puncture a pipe, or DC 16 {@skill Lore||Engineering Lore} (trained) to find and turn a pressure release valve; any combination of three punctured pipes or turned valves disables the trap"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 3
+					}
+				},
+				"hardness": {
+					"Tank ": 7,
+					"Pipe ": 7
+				},
+				"hp": {
+					"Tank ": 50,
+					"Pipe ": 30
+				},
+				"bt": {
+					"Tank ": 25,
+					"Pipe ": 15
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Water Jets",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on a floor space in this room",
+					"entries": [
+						"Seals on the water pipes burst, issuing forth high-pressure water jets in random directions. The hazard makes a water jet {@action Strike} against the triggering creature. The hazard rolls initiative."
+					]
+				},
+				{
+					"name": "Violent Deluge",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The water tank is {@condition broken} or destroyed",
+					"entries": [
+						"A torrent of water bursts from the shattered tank, dealing {@damage 3d8} bludgeoning damage to each creature within 15 feet (basic DC 22 Reflex save). The trap is then disabled."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) For each pipe destroyed or disabled, the trap loses 1 action. On each of the trap's actions, the trap targets a random creature in the room with a water jet {@action Strike}."
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"traits": [
+						"water"
+					],
+					"name": "water jet",
+					"attack": 11,
+					"damage": "{@damage 2d8} piercing",
+					"noMAP": true
+				}
+			],
+			"reset": [
+				"The trap deactivates after 5 rounds. It cannot be reactivated until the reservoir is refilled, which takes an average of 5 days."
+			]
+		},
 		{
 			"name": "Cordon Alarm",
 			"source": "GW1",
@@ -970,8 +1132,7 @@
 			"reset": [
 				"An hour after blooming, a jijioa patch goes dormant for 1 week."
 			]
-		}
-	,
+		},
 		{
 			"name": "Soporific Lecture",
 			"source": "GW3",
