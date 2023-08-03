@@ -61,8 +61,8 @@
 			],
 			"entries": [
 				"With a signature flair, you shape blasts of elemental power into the form of a weapon, such as a sword made of whirling wind or a bow that shoots flames. If your next action is an {@action Elemental Blast|RoE}, choose a weapon shape for it to take. You can choose to change the blast's damage type to bludgeoning, piercing, or slashing\u2014whichever suits the weapon shape\u2014and you can choose other alterations depending on whether you make a melee or ranged blast.",
-				"Melee Add one of the following traits of your choice: agile, backswing, forceful, reach, sweep.",
-				"Ranged Choose one of three options: range increment 100 feet and the volley 30 feet trait, range increment 50 feet and the {@trait propulsive} trait, or range increment 20 feet and the {@trait thrown} trait."
+				"{@b Melee} Add one of the following traits of your choice: {@trait agile}, {@trait backswing}, {@trait forceful}, {@trait reach}, {@trait sweep}.",
+				"{@b Ranged} Choose one of three options: range increment 100 feet and the {@trait volley <30 feet>} trait, range increment 50 feet and the {@trait propulsive} trait, or range increment 20 feet and the {@trait thrown} trait."
 			]
 		},
 		{
@@ -74,13 +74,7 @@
 				"kineticist"
 			],
 			"entries": [
-				"Rather than incantations and gestures, you can use your kinetic gate to directly unlock the potential of elementally empowered magic items. You can Activate magic items that require you to be able to {@action Cast a Spell}, provided you activate them to {@action Cast a Spell} with the same trait as one of your kinetic elements; for example, if you can channel fire, you could",
-				{
-					"type": "ability",
-					"components": [
-						"a scroll of fireball."
-					]
-				},
+				"Rather than incantations and gestures, you can use your kinetic gate to directly unlock the potential of elementally empowered magic items. You can Activate magic items that require you to be able to {@action Cast a Spell}, provided you activate them to {@action Cast a Spell} with the same trait as one of your kinetic elements; for example, if you can channel fire, you could Activate a scroll of fireball.",
 				"For {@trait any} effects of these items that use a spell attack roll or spell DC, you can substitute your impulse attack roll or class DC.",
 				"You can also prepare a staff that has at least one spell with an appropriate trait, using half your level rounded up to determine the number of charges you add. This doesn't allow you to cast spells without the trait of one of your kinetic elements, and you don't get the extra benefits prepared and spontaneous spellcasters do."
 			]
@@ -168,9 +162,11 @@
 			"prerequisites": "exactly one kinetic element",
 			"trigger": "You're targeted by or in the area of an effect that has the trait matching your kinetic element and originates from an enemy or hazard.",
 			"entries": [
-				"Your absolute dedication to a single element lets you attempt to gain control over it, even when the element is in service to another entity. You attempt to counteract the effect, using your kineticist class DC \u2013 10 as your counteract check modifier and half this impulse's level rounded up as the counteract rank. If you counteract the effect, you protect only yourself unless you got a critical success on your counteract check.",
-				"Level (12th) If you successfully counteract the effect, you can have it target or affect a different creature within 30 feet of you. If you got a critical success on the counteract check, you can choose the effect's targets or entire area."
-			]
+				"Your absolute dedication to a single element lets you attempt to gain control over it, even when the element is in service to another entity. You attempt to counteract the effect, using your kineticist class DC \u2013 10 as your counteract check modifier and half this impulse's level rounded up as the counteract rank. If you counteract the effect, you protect only yourself unless you got a critical success on your counteract check."
+			],
+			"footer": {
+				"Level (12th)": "If you successfully counteract the effect, you can have it target or affect a different creature within 30 feet of you. If you got a critical success on the counteract check, you can choose the effect's targets or entire area."
+			}
 		},
 		{
 			"name": "Fearsome Familiar",
@@ -422,9 +418,11 @@
 			],
 			"entries": [
 				"A blade of shearing wind races away from you in a 60-foot line. Each creature in the area takes {@damage 2d4} slashing damage with a basic Reflex save against your class DC. In the final square of the line, the boomerang whirls in place until the end of your next turn. Any creature that ends its turn in that square has to save against the boomerang.",
-				"On your next turn, you can use a single action, which has the {@trait concentrate} trait, to return the boomerang to you. It returns in a line from its square to your current location, with the same effect as the initial line, then the impulse ends. You must have line of effect to the boomerang and be within 60 feet of it.",
-				"Level (+2) The damage increases by {@damage 1d4}."
-			]
+				"On your next turn, you can use a single action, which has the {@trait concentrate} trait, to return the boomerang to you. It returns in a line from its square to your current location, with the same effect as the initial line, then the impulse ends. You must have line of effect to the boomerang and be within 60 feet of it."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d4}."
+			}
 		},
 		{
 			"name": "Air Cushion",
@@ -443,9 +441,11 @@
 			],
 			"trigger": "A creature within 60 feet is falling.",
 			"entries": [
-				"Air currents flow upward to slow the target's fall to 60 feet per round. The cushion ends when the target reaches the ground, and the creature takes no damage from the fall. The cushion expires if the creature doesn't reach the ground within 1 minute, but any distance it fell during that minute doesn't count for any damage the creature would take from the fall. You can't use Air Cushion again while you have one in effect.",
-				"Level (8th) The range is 120 feet, and you can create cushions for up to 5 falling creatures with one reaction."
-			]
+				"Air currents flow upward to slow the target's fall to 60 feet per round. The cushion ends when the target reaches the ground, and the creature takes no damage from the fall. The cushion expires if the creature doesn't reach the ground within 1 minute, but any distance it fell during that minute doesn't count for any damage the creature would take from the fall. You can't use Air Cushion again while you have one in effect."
+			],
+			"footer": {
+				"Level (8th)": "The range is 120 feet, and you can create cushions for up to 5 falling creatures with one reaction."
+			}
 		},
 		{
 			"name": "Four Winds",
@@ -464,9 +464,11 @@
 			],
 			"entries": [
 				"Mimicking the anemoi\u2014monarchs of the four winds\u2014you propel four creatures. Target up to four willing creatures within 30 feet of you. Each of those creatures can {@action Stride} up to half its Speed.",
-				"If it has a fly Speed, it can instead {@action Fly} up to half its fly Speed.",
-				"Level (10th) The targets move up to full Speed instead of half."
-			]
+				"If it has a fly Speed, it can instead {@action Fly} up to half its fly Speed."
+			],
+			"footer": {
+				"Level (10th)": "The targets move up to full Speed instead of half."
+			}
 		},
 		{
 			"name": "Whisper on the Wind",
@@ -488,10 +490,12 @@
 			],
 			"entries": [
 				"You speak in a whisper, a soft wind carrying your words far away.",
-				"This has the effect of the {@spell message} spell with a range of 500 feet, and it can target only a creature surrounded by air. If you start your message with the target's name, you and the target don't need to be able to see each other, nor do you need line of effect.",
-				"Level (4th) The range is 1 mile.",
-				"Level (14th) The range is planetary plus the Plane of Air."
-			]
+				"This has the effect of the {@spell message} spell with a range of 500 feet, and it can target only a creature surrounded by air. If you start your message with the target's name, you and the target don't need to be able to see each other, nor do you need line of effect."
+			],
+			"footer": {
+				"Level (4th)": "The range is 1 mile.",
+				"Level (14th)": "The range is planetary plus the Plane of Air."
+			}
 		},
 		{
 			"name": "Air Shroud",
@@ -533,8 +537,11 @@
 				"primal"
 			],
 			"entries": [
-				"For an instant, you transform yourself into a being of pure lightning and fly forward, shocking anyone in your way. You propel yourself forward in a 30-foot line. You can move through creatures during this movement, and this movement doesn't trigger reactions that are triggered by movement. Each creature you move through takes {@damage 2d12} electricity damage with a basic Reflex save against your class DC. You return to your normal form in the final square of the line. If you're in the air, you fall unless you have a fly Speed. Level (+3) The length of the line increases by 5 feet, and the damage increases by {@damage 1d12}."
-			]
+				"For an instant, you transform yourself into a being of pure lightning and fly forward, shocking anyone in your way. You propel yourself forward in a 30-foot line. You can move through creatures during this movement, and this movement doesn't trigger reactions that are triggered by movement. Each creature you move through takes {@damage 2d12} electricity damage with a basic Reflex save against your class DC. You return to your normal form in the final square of the line. If you're in the air, you fall unless you have a fly Speed."
+			],
+			"footer": {
+				"Level (+3)": "The length of the line increases by 5 feet, and the damage increases by {@damage 1d12}."
+			}
 		},
 		{
 			"name": "Clear as Air",
@@ -555,10 +562,12 @@
 			],
 			"entries": [
 				"Compact layers of air diffract and bend light around your body, making you appear as clear as the sky on a perfect day. You become {@condition invisible} until the end of your next turn. You can Sustain the impulse. If you use a {@condition hostile} action, the impulse ends after that action is completed. If you activate your kinetic aura, the impulse conceals its elements, though any special effects of your aura might give away your location.",
-				"This impulse weakens if you use it too frequently. Using it again within 10 minutes makes you {@condition concealed} instead of {@condition invisible}.",
-				"Level (10th) The impulse doesn't end if you take a {@condition hostile} action, but if you're {@condition invisible}, you become {@condition concealed} instead of {@condition invisible} until the start of your next turn.",
-				"Level (16th) Taking a {@condition hostile} action has no effect on the impulse."
-			]
+				"This impulse weakens if you use it too frequently. Using it again within 10 minutes makes you {@condition concealed} instead of {@condition invisible}."
+			],
+			"footer": {
+				"Level (10th)": "The impulse doesn't end if you take a {@condition hostile} action, but if you're {@condition invisible}, you become {@condition concealed} instead of {@condition invisible} until the start of your next turn.",
+				"Level (16th)": "Taking a {@condition hostile} action has no effect on the impulse."
+			}
 		},
 		{
 			"name": "Flinging Updraft",
@@ -609,9 +618,11 @@
 				"primal"
 			],
 			"entries": [
-				"Whorls of wind surround your lower body, forming a cyclone that lifts you into the air. You gain a fly Speed equal to your land Speed or 30 feet, whichever is greater, for 10 minutes. Unlike with a normal fly Speed, you can move upward without treating it as difficult terrain. In addition, you can remain in the air at the end of your turn if you used an air impulse during that turn, even if you didn't use a {@action Fly} action that turn.",
-				"Level (14th) You can target up to five additional creatures, each of which gains a fly Speed equal to its land Speed or 30 feet, whichever is greater. They don't gain the other benefits."
-			]
+				"Whorls of wind surround your lower body, forming a cyclone that lifts you into the air. You gain a fly Speed equal to your land Speed or 30 feet, whichever is greater, for 10 minutes. Unlike with a normal fly Speed, you can move upward without treating it as difficult terrain. In addition, you can remain in the air at the end of your turn if you used an air impulse during that turn, even if you didn't use a {@action Fly} action that turn."
+			],
+			"footer": {
+				"Level (14th)": "You can target up to five additional creatures, each of which gains a fly Speed equal to its land Speed or 30 feet, whichever is greater. They don't gain the other benefits."
+			}
 		},
 		{
 			"name": "Storm Spiral",
@@ -632,9 +643,11 @@
 				"sonic"
 			],
 			"entries": [
-				"Dark thunderclouds swirl in a miniature storm, crisscrossed with lightning bolts; a tremendous thunderclap fills the air. The storm appears in a 20-foot burst within 60 feet. Each creature in the area takes {@damage 3d12} electricity damage and {@damage 1d10} sonic damage, with a basic Reflex save against your class DC. A creature that fails its save is {@condition deafened} until the end of its next turn (or for 1 minute on a critical failure). A creature wearing metal armor or made of metal takes a \u20131 circumstance penalty to its save.",
-				"Level (+3) The electricity damage increases by {@damage 1d12}."
-			]
+				"Dark thunderclouds swirl in a miniature storm, crisscrossed with lightning bolts; a tremendous thunderclap fills the air. The storm appears in a 20-foot burst within 60 feet. Each creature in the area takes {@damage 3d12} electricity damage and {@damage 1d10} sonic damage, with a basic Reflex save against your class DC. A creature that fails its save is {@condition deafened} until the end of its next turn (or for 1 minute on a critical failure). A creature wearing metal armor or made of metal takes a \u20131 circumstance penalty to its save."
+			],
+			"footer": {
+				"Level (+3)": "The electricity damage increases by {@damage 1d12}."
+			}
 		},
 		{
 			"name": "Ghosts in the Storm",
@@ -714,9 +727,11 @@
 			"entries": [
 				"Your gathered air consumes your body, leaving only a cloud of living vapor. This has the same effects on you as vapor form.",
 				"The effect lasts until the end of your next turn, but you can Sustain the form up to 5 minutes. If you activate your kinetic aura, Body of Air ends.",
-				"You can use Body of Air as a reaction only when the trigger is met, but you can use it as a 2-action activity without the trigger being met.",
-				"Level (+1) The resistance increases by 1."
-			]
+				"You can use Body of Air as a reaction only when the trigger is met, but you can use it as a 2-action activity without the trigger being met."
+			],
+			"footer": {
+				"Level (+1)": "The resistance increases by 1."
+			}
 		},
 		{
 			"name": "Crowned in Tempest's Fury",
@@ -803,9 +818,11 @@
 			],
 			"entries": [
 				"Stone encases you like armor. The stone armor is medium armor but uses your highest armor proficiency. The stone armor's statistics are: AC Bonus +4; Dex Cap +1; Check Penalty \u20132; Speed Penalty \u201310 feet; Strength 16; Bulk 1; Group plate. You gain its armor specialization effect. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any runes that could apply to the stone armor are replicated onto it.",
-				"The stone armor lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends.",
-				"Level (3rd) The armor becomes heavy armor. Its AC Bonus becomes +5, and it gains the bulwark armor trait."
-			]
+				"The stone armor lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends."
+			],
+			"footer": {
+				"Level (3rd)": "The armor becomes heavy armor. Its AC Bonus becomes +5, and it gains the bulwark armor trait."
+			}
 		},
 		{
 			"name": "Geologic Attunement",
@@ -824,9 +841,11 @@
 				"stance"
 			],
 			"entries": [
-				"You tune to the earth and stone around you, extending your senses through it in rippling waves. You gain tremorsense (imprecise) in your kinetic aura. Once per round, you can {@action Point Out} a creature you can sense with tremorsense as a free action.",
-				"Level (13th) The tremorsense becomes precise."
-			]
+				"You tune to the earth and stone around you, extending your senses through it in rippling waves. You gain tremorsense (imprecise) in your kinetic aura. Once per round, you can {@action Point Out} a creature you can sense with tremorsense as a free action."
+			],
+			"footer": {
+				"Level (13th)": "The tremorsense becomes precise."
+			}
 		},
 		{
 			"name": "Stepping Stones",
@@ -845,9 +864,11 @@
 				"primal"
 			],
 			"entries": [
-				"Disks of rock fly to points that you designate to make a new path. You can set them horizontally to make a path across the ground or atop a liquid, or anchor them into a vertical surface to make steps. The path can be up to 20 feet (4 squares) long, and steps can extend up to 10 feet up the side of the surface. All squares must be contiguous and within 60 feet of you. Moving across the path lets a creature ignore difficult terrain and hazardous terrain from the ground beneath it. The disks last until the end of your next turn, but you can Sustain the impulse.",
-				"Level (+2) Increase the length of the path by 10 feet or the height of the steps by 5 feet, and increase the maximum distance away from you a square can be by 10 feet."
-			]
+				"Disks of rock fly to points that you designate to make a new path. You can set them horizontally to make a path across the ground or atop a liquid, or anchor them into a vertical surface to make steps. The path can be up to 20 feet (4 squares) long, and steps can extend up to 10 feet up the side of the surface. All squares must be contiguous and within 60 feet of you. Moving across the path lets a creature ignore difficult terrain and hazardous terrain from the ground beneath it. The disks last until the end of your next turn, but you can Sustain the impulse."
+			],
+			"footer": {
+				"Level (+2)": "Increase the length of the path by 10 feet or the height of the steps by 5 feet, and increase the maximum distance away from you a square can be by 10 feet."
+			}
 		},
 		{
 			"name": "Tremor",
@@ -866,9 +887,11 @@
 				"primal"
 			],
 			"entries": [
-				"You unleash a small, localized tremor in a 10-foot burst within 30 feet. Each creature in the area takes {@damage 1d8} bludgeoning damage with a basic Fortitude save against your class DC. A creature that critically fails is knocked {@condition prone}. Earth and stone in the area is difficult terrain until the start of your next turn.",
-				"Level (+2) The damage increases by {@damage 1d10}."
-			]
+				"You unleash a small, localized tremor in a 10-foot burst within 30 feet. Each creature in the area takes {@damage 1d8} bludgeoning damage with a basic Fortitude save against your class DC. A creature that critically fails is knocked {@condition prone}. Earth and stone in the area is difficult terrain until the start of your next turn."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d10}."
+			}
 		},
 		{
 			"name": "Calcifying Sand",
@@ -3491,12 +3514,12 @@
 				{
 					"type": "list",
 					"items": [
-						"Air If your familiar stays completely still for 1 round, it becomes {@condition invisible} until it next takes an action. Any motion, even being moved or carried by another creature, ends this effect.",
-						"Earth Your familiar gains resistance to physical damage (except adamantine) equal to half your level.",
-						"Fire Your familiar sheds bright light in a 20-foot radius (and dim light for the next 20 feet) and emits warmth. Creatures who remain within a 15-foot emanation don't take damage from severe environmental cold.",
-						"Metal Your familiar gains resistance to physical damage from metal weapons equal to half your level.",
-						"Water Your familiar can move through a gap at least 2 inches wide without Squeezing and can {@action Squeeze} through a gap at least 1 inch wide.",
-						"Wood If your familiar remains in bright light for 1 round, it gains fast healing equal to half your level. Once it is out of bright light, this effect ends."
+						"{@b Air} If your familiar stays completely still for 1 round, it becomes {@condition invisible} until it next takes an action. Any motion, even being moved or carried by another creature, ends this effect.",
+						"{@b Earth} Your familiar gains resistance to physical damage (except adamantine) equal to half your level.",
+						"{@b Fire} Your familiar sheds bright light in a 20-foot radius (and dim light for the next 20 feet) and emits warmth. Creatures who remain within a 15-foot emanation don't take damage from severe environmental cold.",
+						"{@b Metal} Your familiar gains resistance to physical damage from metal weapons equal to half your level.",
+						"{@b Water} Your familiar can move through a gap at least 2 inches wide without Squeezing and can {@action Squeeze} through a gap at least 1 inch wide.",
+						"{@b Wood} If your familiar remains in bright light for 1 round, it gains fast healing equal to half your level. Once it is out of bright light, this effect ends."
 					]
 				}
 			]

@@ -363,7 +363,7 @@
 			"classSource": "RoE",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level, you gain a {@filter kineticist class feat|feats||type=class|Class=kineticist|level=[1;2]}."
+				"At 1st level and every even-numbered level, you gain a {@filter kineticist class feat|feats||type=class|Class=kineticist;!impulse|level=[1]}."
 			]
 		},
 		{
@@ -455,14 +455,14 @@
 							"type": "item",
 							"name": "Expand the Portal:",
 							"entries": [
-								"Your gate attunes more precisely to one of your elements. Gain an impulse feat of your level or lower for one of your kinetic elements; if you have more than one element, you can choose a composite impulse (page 36). You also gain a gate junction for one of your kinetic elements. If you have no valid options for the feat\u2014typically because you have one kinetic element and devoted your class feats to gaining that element's impulses\u2014you can instead select any kineticist class feat of your level or lower for which you meet the prerequisites."
+								"Your gate attunes more precisely to one of your elements. Gain an {@filter impulse feat|feats||type=class|Class=impulse|level=[1;5]} of your level or lower for one of your kinetic elements; if you have more than one element, you can choose a {@filter composite feat|feats||type=class|Class=impulse;composite|level=[1;5]}. You also gain a gate junction for one of your kinetic elements. If you have no valid options for the feat\u2014typically because you have one kinetic element and devoted your class feats to gaining that element's impulses\u2014you can instead select any kineticist class feat of your level or lower for which you meet the prerequisites."
 							]
 						},
 						{
 							"type": "item",
 							"name": "Fork the Path:",
 							"entries": [
-								"Your gate reaches to another elemental plane. Add a new element of your choice to your kinetic elements. Gain an impulse feat of your level or lower with the trait of that element. You can't select a composite impulse feat with this feat selection."
+								"Your gate reaches to another elemental plane. Add a new element of your choice to your kinetic elements. Gain an {@filter impulse feat|feats||type=class|Class=impulse|level=[1;5]} of your level or lower with the trait of that element. You can't select a composite impulse feat with this feat selection."
 							]
 						}
 					]
@@ -553,7 +553,7 @@
 			"classSource": "RoE",
 			"level": 11,
 			"entries": [
-				"You twist one of the impulses you've learned into a different but still similar magic. When you make your daily preparations, you can replace one of your impulse feats with a different impulse feat that has the same elemental trait. You can reflow only impulse feats that have exactly one elemental trait, not composite impulse feats or feats that vary by element. This follows the same rules as retraining; you can replace impulse feats gained through your class feats or through class features that grant you impulse feats."
+				"You twist one of the impulses you've learned into a different but still similar magic. When you make your daily preparations, you can replace one of your {@filter impulse feats|feats||type=class|Class=impulse|level=[1;11]} with a different {@filter impulse feat|feats||type=class|Class=impulse|level=[1;11]} that has the same elemental trait. You can reflow only impulse feats that have exactly one elemental trait, not composite impulse feats or feats that vary by element. This follows the same rules as retraining; you can replace impulse feats gained through your class feats or through class features that grant you impulse feats."
 			]
 		},
 		{
@@ -619,7 +619,7 @@
 			"classSource": "RoE",
 			"level": 17,
 			"entries": [
-				"Your kinetic gate becomes even more adaptable. When you use reflow elements, you can replace two impulse feats instead of one."
+				"Your kinetic gate becomes even more adaptable. When you use {@classFeature reflow elements|kineticist|RoE|11}, you can replace two impulse feats instead of one."
 			]
 		},
 		{
@@ -671,7 +671,7 @@
 					"type": "pf2-h4",
 					"name": "Dual Gate",
 					"entries": [
-						"Your kinetic gate is a harmonious conduit between two planes, allowing you to combine their elements to give you a versatile set of abilities. Select two elements to be your kinetic elements. Then, select two 1st-level impulse feats, one with the trait of the first element and one with the trait of the other."
+						"Your kinetic gate is a harmonious conduit between two planes, allowing you to combine their elements to give you a versatile set of abilities. Select two elements to be your kinetic elements. Then, select two {@filter 1st-level impulse feats|feats||type=class|Class=impulse|level=[1]}, one with the trait of the first element and one with the trait of the other."
 					]
 				}
 			]
@@ -690,7 +690,7 @@
 					"type": "pf2-h4",
 					"name": "Single Gate",
 					"entries": [
-						"Your kinetic gate links to a single elemental plane, starting you with a single element but giving you greater power with it. Choose one element to be your kinetic element, and select two 1st-level impulse feats that have that element's trait.",
+						"Your kinetic gate links to a single elemental plane, starting you with a single element but giving you greater power with it. Choose one element to be your kinetic element, and select two {@filter 1st-level impulse feats|feats||type=class|Class=impulse|level=[1]} that have that element's trait.",
 						"In addition, you gain an impulse junction, a benefit that occurs when you use an impulse of the chosen element that takes 2 actions or more. This happens before the other effects of the impulse, unless noted otherwise. You can gain only one impulse junction per round; they are described in full below.",
 						{
 							"type": "list",
