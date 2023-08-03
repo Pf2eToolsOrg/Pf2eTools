@@ -1,55 +1,41 @@
 {
 	"disease": [
 		{
-			"name": "Obnubilate Curse",
-			"source": "GW1",
-			"page": 79,
-			"type": "Curse",
-			"level": 10,
-			"traits": [
-				"curse",
-				"enchantment",
-				"incapacitation",
-				"magical",
-				"mental",
-				"shadow"
-			],
+			"name": "Blightburn Sickness",
+			"source": "TV",
+			"page": 45,
+			"type": "Disease",
+			"level": "Level Varies",
 			"entries": [
-				"Only elves can be afflicted with this magical curse; other creatures are immune. An elf who touches the Shadewither Key must save against the curse. Victims quickly fall {@condition unconscious}; then, over several days, they slowly blacken and shrivel like rotting fruit until they die. The corpse of an elf killed by the obnubilate curse is dry and charcoal-like; it collapses into ash at the slightest touch.",
+				"Caused by exposure to blightburn crystal, blightburn sickness burns and dissolves the afflicted creature from within. The target can't recover from the disease's {@condition drained} or {@condition sickened} condition except by magic. It's typically a 15th-level affliction (DC 32 Fortitude), but exposure to other forms of blightburn can change it.",
 				{
 					"type": "affliction",
-					"DC": 27,
-					"savingThrow": "Fortitude",
-					"onset": "1 minute",
+					"onset": "{@dice 1d4} days",
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition unconscious} and {@damage 3d6} mental damage",
+							"entry": "{@condition drained 1}",
 							"duration": "1 day"
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition unconscious} and {@damage 6d6} mental damage",
-							"duration": "2 days"
+							"entry": "{@condition drained 1} and {@condition sickened 1}",
+							"duration": "1 day"
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition unconscious} and {@damage 6d6} mental damage",
-							"duration": "2 days"
+							"entry": "{@condition drained 2} and {@condition sickened 2}",
+							"duration": "1 week"
 						},
 						{
 							"stage": 4,
-							"entry": "{@condition unconscious} and {@damage 6d6} mental damage, permanent loss of most recent year of memory",
-							"duration": "1 day"
+							"entry": "{@condition drained 3} and {@condition sickened 3}",
+							"duration": "1 month"
 						},
 						{
 							"stage": 5,
-							"entry": "{@condition unconscious} and {@damage 6d6} mental damage, permanent loss of all memory",
-							"duration": "1 day"
-						},
-						{
-							"stage": 6,
-							"entry": "death"
+							"entry": "increase {@condition drained} condition by 1",
+							"duration": "1 year"
 						}
 					]
 				}
@@ -946,6 +932,61 @@
 		}
 	],
 	"curse": [
+		{
+			"name": "Obnubilate Curse",
+			"source": "GW1",
+			"page": 79,
+			"type": "Curse",
+			"level": 10,
+			"traits": [
+				"curse",
+				"enchantment",
+				"incapacitation",
+				"magical",
+				"mental",
+				"shadow"
+			],
+			"entries": [
+				"Only elves can be afflicted with this magical curse; other creatures are immune. An elf who touches the Shadewither Key must save against the curse. Victims quickly fall {@condition unconscious}; then, over several days, they slowly blacken and shrivel like rotting fruit until they die. The corpse of an elf killed by the obnubilate curse is dry and charcoal-like; it collapses into ash at the slightest touch.",
+				{
+					"type": "affliction",
+					"DC": 27,
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition unconscious} and {@damage 3d6} mental damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage",
+							"duration": "2 days"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage",
+							"duration": "2 days"
+						},
+						{
+							"stage": 4,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage, permanent loss of most recent year of memory",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "{@condition unconscious} and {@damage 6d6} mental damage, permanent loss of all memory",
+							"duration": "1 day"
+						},
+						{
+							"stage": 6,
+							"entry": "death"
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "Curse of Biting Swarms",
 			"source": "LOIL",
