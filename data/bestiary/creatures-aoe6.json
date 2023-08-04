@@ -226,7 +226,7 @@
 							"negative"
 						],
 						"entries": [
-							"When an astradaemon hits with its claw, jaws, or tail, it drains the target's spiritual and vital essences. The target takes {@damage 2d10} negative damage and the astradaemon regains an equal number of Hit Points. The target must succeed at a DC 37 Fortitude save or become {@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 1}. If the target was already {@condition drained} or {@condition doomed}, it instead increases both conditions' values by 1, to a maximum of 4."
+							"When an astradaemon hits with its claw, jaws, or tail, it drains the target's spiritual and vital essences. The target takes {@damage 2d10} negative damage and the astradaemon regains an equal number of Hit Points. The target must succeed at a {@dc 37} Fortitude save or become {@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 1}. If the target was already {@condition drained} or {@condition doomed}, it instead increases both conditions' values by 1, to a maximum of 4."
 						],
 						"name": "Essence Drain"
 					},
@@ -241,7 +241,7 @@
 						],
 						"requirements": "The astradaemon has killed a Large or smaller creature with Overtake",
 						"entries": [
-							"Soul within the past 24 hours and that creature is within the daemon's reach; The astradaemon takes over and wears the body of their victim. This automatically creates a disguise to allow the astradaemon to {@action Impersonate} the target creature. The body has a number of Hit Points equal to 3 times the level of the creature. Any damage targeting the astradaemon damages the body first. Once the body is reduced to 0 Hit Points, it's destroyed and forces the astradaemon out, back to the daemon's normal form. If the astradaemon takes any good damage while wearing the body, the damage is dealt to the astradaemon directly and it must succeed at a DC {@flatDC 5} flat check or be forced out of the body. Additionally, disjunction and dispel magic can force the astradaemon out of the body with a successful counteract check against DC 41. While wearing the disguise, the astradaemon's attacks use the reach of the body it inhabits, and its size changes to match that of the creature whose soul it consumed. Additionally, the astradaemon is {@condition clumsy|CRB|clumsy 2} and {@condition enfeebled|CRB|enfeebled 4} while wearing the disguise. (These penalties haven't been incorporated into this stat block.)"
+							"Soul within the past 24 hours and that creature is within the daemon's reach; The astradaemon takes over and wears the body of their victim. This automatically creates a disguise to allow the astradaemon to {@action Impersonate} the target creature. The body has a number of Hit Points equal to 3 times the level of the creature. Any damage targeting the astradaemon damages the body first. Once the body is reduced to 0 Hit Points, it's destroyed and forces the astradaemon out, back to the daemon's normal form. If the astradaemon takes any good damage while wearing the body, the damage is dealt to the astradaemon directly and it must succeed at a DC {@flatDC 5} flat check or be forced out of the body. Additionally, disjunction and dispel magic can force the astradaemon out of the body with a successful counteract check against {@dc 41}. While wearing the disguise, the astradaemon's attacks use the reach of the body it inhabits, and its size changes to match that of the creature whose soul it consumed. Additionally, the astradaemon is {@condition clumsy|CRB|clumsy 2} and {@condition enfeebled|CRB|enfeebled 4} while wearing the disguise. (These penalties haven't been incorporated into this stat block.)"
 						],
 						"name": "Mortal Shell"
 					},
@@ -258,7 +258,7 @@
 						],
 						"requirements": "The astradaemon hasn't used an action with the {@trait attack} trait yet this turn",
 						"entries": [
-							"The astradaemon draws out and consumes the soul of a living creature it has {@condition grabbed}. The creature must succeed at a DC 39 Fortitude save or instantly die. If it dies, the astradaemon gains 10 temporary Hit Points. A creature that survives is temporarily immune for 1 minute."
+							"The astradaemon draws out and consumes the soul of a living creature it has {@condition grabbed}. The creature must succeed at a {@dc 39} Fortitude save or instantly die. If it dies, the astradaemon gains 10 temporary Hit Points. A creature that survives is temporarily immune for 1 minute."
 						],
 						"name": "Overtake Soul"
 					}
@@ -493,7 +493,7 @@
 							"fire"
 						],
 						"entries": [
-							"The agradaemon regains 15 Hit Points, and a pledged fanatic of the agradaemon's choice that it can see loses 15 Hit Points (no effects apply that would decrease this Hit Point loss). A pledged creature that dies in this way explodes and deals {@damage 9d10} fire damage in a 20-foot emanation (DC 41 basic Reflex save)."
+							"The agradaemon regains 15 Hit Points, and a pledged fanatic of the agradaemon's choice that it can see loses 15 Hit Points (no effects apply that would decrease this Hit Point loss). A pledged creature that dies in this way explodes and deals {@damage 9d10} fire damage in a 20-foot emanation ({@dc 41} basic Reflex save)."
 						],
 						"name": "Proven Devotion"
 					},
@@ -650,7 +650,7 @@
 							"primal"
 						],
 						"entries": [
-							"The alchemical horror spews a torrent of alchemical fluids in a 30-foot cone that deals {@damage 20d6} acid damage to creatures in the area (DC 43 basic Reflex save). The alchemical horror can't use this ability again for {@dice 1d4} rounds."
+							"The alchemical horror spews a torrent of alchemical fluids in a 30-foot cone that deals {@damage 20d6} acid damage to creatures in the area ({@dc 43} basic Reflex save). The alchemical horror can't use this ability again for {@dice 1d4} rounds."
 						],
 						"name": "Alchemical Torrent"
 					},
@@ -912,7 +912,7 @@
 						],
 						"entries": [
 							"60 feet.",
-							"When a creature ends its turn in the aura, it must attempt a DC 45 Fortitude save. If the creature fails, it is {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} ({@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 2} on a critical failure). Avsheros can deactivate or activate this aura using a single action, which has the {@trait concentrate} trait. No matter the result of the save, a creature can't be affected by Avsheros's hateful gaze again for 1 minute."
+							"When a creature ends its turn in the aura, it must attempt a {@dc 45} Fortitude save. If the creature fails, it is {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} ({@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 2} on a critical failure). Avsheros can deactivate or activate this aura using a single action, which has the {@trait concentrate} trait. No matter the result of the save, a creature can't be affected by Avsheros's hateful gaze again for 1 minute."
 						],
 						"name": "Hateful Gaze"
 					}
@@ -940,7 +940,7 @@
 						],
 						"entries": [
 							"Avsheros lets out an agonized wail that invokes grief and a feeling of betrayal in those who hear it.",
-							"All creatures within 120 feet must succeed at a DC 47 Will save or become {@condition frightened|CRB|frightened 2}.",
+							"All creatures within 120 feet must succeed at a {@dc 47} Will save or become {@condition frightened|CRB|frightened 2}.",
 							"A creature {@condition frightened} in this way can't willingly accept aid of any kind from an ally until the {@condition frightened} condition is removed.",
 							"On a successful save, the creature is immune to Avsheros's Wail of the Betrayed for 24 hours."
 						],
@@ -1117,7 +1117,7 @@
 							"mental"
 						],
 						"entries": [
-							"1 mile. Creatures who start their turn in the aura must succeed at a DC 48 Will save or become unable to understand any communication (including telepathy), distinguish social rank or authority, or differentiate the relative value of objects or services.",
+							"1 mile. Creatures who start their turn in the aura must succeed at a {@dc 48} Will save or become unable to understand any communication (including telepathy), distinguish social rank or authority, or differentiate the relative value of objects or services.",
 							"This persists for as long as the creature is in the aura.",
 							"Creatures who succeed at the save are temporarily immune for 1 hour (24 hours on a critical success). Proteans are immune to the unrelativity field. The baatamidar can suppress this aura or activate it again as a free action."
 						],
@@ -1133,7 +1133,7 @@
 							"mental"
 						],
 						"entries": [
-							"The baatamidar's tentacles leech away thought. A creature that starts its turn {@condition grabbed} by the baatamidar must attempt a DC 41 Will save.",
+							"The baatamidar's tentacles leech away thought. A creature that starts its turn {@condition grabbed} by the baatamidar must attempt a {@dc 41} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1851,7 +1851,7 @@
 							"occult"
 						],
 						"entries": [
-							"The camarach vomits a spray of coruscating light. This has the effect of a DC 42 prismatic spray, except that each creature is affected by one violet beam and one other beam (roll {@dice 1d6} instead of {@dice 1d8} to determine which other beam). The camarach can't Disgorge a Portal again for {@dice 1d4} rounds."
+							"The camarach vomits a spray of coruscating light. This has the effect of a {@dc 42} prismatic spray, except that each creature is affected by one violet beam and one other beam (roll {@dice 1d6} instead of {@dice 1d8} to determine which other beam). The camarach can't Disgorge a Portal again for {@dice 1d4} rounds."
 						],
 						"name": "Disgorge Portal"
 					},
@@ -1866,7 +1866,7 @@
 							"teleportation"
 						],
 						"entries": [
-							"The camarach shunts one creature within its body through an inner portal to send it away. The target must attempt a DC 38 Will save.",
+							"The camarach shunts one creature within its body through an inner portal to send it away. The target must attempt a {@dc 38} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2066,7 +2066,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Chaos Gulgamodh unleashes a salvo of explosive blasts in a 30-foot cone. Creatures in the area take {@damage 10d10+20} fire damage (basic DC 43 Reflex save). On a failed save, a creature is subjected to a warpwave effect (page 81). On a critically failed save, a creature is {@condition stunned|CRB|stunned 1}. Chaos Gulgamodh can't use."
+							"Chaos Gulgamodh unleashes a salvo of explosive blasts in a 30-foot cone. Creatures in the area take {@damage 10d10+20} fire damage (basic {@dc 43} Reflex save). On a failed save, a creature is subjected to a warpwave effect (page 81). On a critically failed save, a creature is {@condition stunned|CRB|stunned 1}. Chaos Gulgamodh can't use."
 						],
 						"name": "Cannon Fusillade"
 					},
@@ -2082,7 +2082,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, foot, DC 43"
+							"Huge or smaller, foot, {@dc 43}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -2429,7 +2429,7 @@
 							"poison"
 						],
 						"entries": [
-							"10 feet. A creature that enters or begins its turn within the aura must attempt a DC 44 Fortitude save. On a failed save, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, it's also {@condition clumsy|CRB|clumsy 1} for 1 minute. In addition, creatures within the aura attempting a flat check to remove {@condition persistent damage||persistent poison damage} must roll twice and take the lower result."
+							"10 feet. A creature that enters or begins its turn within the aura must attempt a {@dc 44} Fortitude save. On a failed save, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, it's also {@condition clumsy|CRB|clumsy 1} for 1 minute. In addition, creatures within the aura attempting a flat check to remove {@condition persistent damage||persistent poison damage} must roll twice and take the lower result."
 						],
 						"name": "Toxic Fumes"
 					}
@@ -2446,7 +2446,7 @@
 							"poison"
 						],
 						"entries": [
-							"The Daemonic Infector exhales a 30-foot line of concentrated fumes. Each creature in the area takes {@damage 12d10} poison damage (DC 44 basic Fortitude save; on a critical failure the creature is also {@condition drained|CRB|drained 1}). The Infector can't Breathe Death again for {@dice 1d4} rounds."
+							"The Daemonic Infector exhales a 30-foot line of concentrated fumes. Each creature in the area takes {@damage 12d10} poison damage ({@dc 44} basic Fortitude save; on a critical failure the creature is also {@condition drained|CRB|drained 1}). The Infector can't Breathe Death again for {@dice 1d4} rounds."
 						],
 						"name": "Breathe Death"
 					},
@@ -2956,7 +2956,7 @@
 						},
 						"trigger": "A creature taking {@condition persistent damage||persistent bleed damage} within 30 feet of the Daemonic Skinner {@action Cast a Spell||Casts a Spell} with a verbal component or speaks",
 						"entries": [
-							"The Skinner wills the triggering creature's blood to gush from their mouth and constrict their throat. The target's spell is disrupted. The target must succeed at a DC 47 Fortitude save or become {@condition sickened|CRB|sickened 2}."
+							"The Skinner wills the triggering creature's blood to gush from their mouth and constrict their throat. The target's spell is disrupted. The target must succeed at a {@dc 47} Fortitude save or become {@condition sickened|CRB|sickened 2}."
 						],
 						"name": "Spell Choke"
 					}
@@ -3133,7 +3133,7 @@
 						],
 						"entries": [
 							"The excorion paragon projects a mist of burning blood in a 10-foot cone.",
-							"Creatures in the area take {@damage 10d8} acid damage and {@damage 5d8} bludgeoning damage (basic DC 37 Reflex save). On a failed save, an affected creature is also {@condition blinded} for 1 round (or 2 rounds on a critical failure). The excorion can't using Blinding Bile again for {@dice 1d4} rounds."
+							"Creatures in the area take {@damage 10d8} acid damage and {@damage 5d8} bludgeoning damage (basic {@dc 37} Reflex save). On a failed save, an affected creature is also {@condition blinded} for 1 round (or 2 rounds on a critical failure). The excorion can't using Blinding Bile again for {@dice 1d4} rounds."
 						],
 						"name": "Blinding Bile"
 					},
@@ -3154,7 +3154,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The excorion spews necrotic blood all over a foe it has {@condition grabbed}. The {@condition grabbed} creature must succeed at a DC 39 Fortitude save or become {@condition sickened|CRB|sickened 2}."
+							"The excorion spews necrotic blood all over a foe it has {@condition grabbed}. The {@condition grabbed} creature must succeed at a {@dc 39} Fortitude save or become {@condition sickened|CRB|sickened 2}."
 						],
 						"name": "Vomit Blood"
 					}
@@ -3498,7 +3498,7 @@
 							"visual"
 						],
 						"entries": [
-							"When a ghaele fixes their gaze upon a non-good creature, the creature is subjected to the effects of {@spell divine decree} (DC 38 Will save). If it survives, the creature is temporarily immune to Ghaele's Gaze for 1 minute."
+							"When a ghaele fixes their gaze upon a non-good creature, the creature is subjected to the effects of {@spell divine decree} ({@dc 38} Will save). If it survives, the creature is temporarily immune to Ghaele's Gaze for 1 minute."
 						],
 						"name": "Ghaele's Gaze"
 					},
@@ -3674,13 +3674,13 @@
 						],
 						"entries": [
 							"The graveknight unleashes a 30-foot cone of energy.",
-							"Creatures in the area take {@damage 10d12} fire damage (DC 37 basic Reflex save). The graveknight can't use this ability again for {@dice 1d4} rounds."
+							"Creatures in the area take {@damage 10d12} fire damage ({@dc 37} basic Reflex save). The graveknight can't use this ability again for {@dice 1d4} rounds."
 						],
 						"name": "Devastating Blast"
 					},
 					{
 						"entries": [
-							"This curse affects anyone who wears a graveknight's armor for at least 1 hour; Saving Throw DC 43 Will save; Onset 1 hour; Stage 1 {@condition doomed|CRB|doomed 1} and can't remove the armor (1 day); Stage 2 {@condition doomed|CRB|doomed 2}, hampered 10, and can't remove the armor (1 day); Stage 3 dies and transforms into the armor's graveknight."
+							"This curse affects anyone who wears a graveknight's armor for at least 1 hour; Saving Throw {@dc 43} Will save; Onset 1 hour; Stage 1 {@condition doomed|CRB|doomed 1} and can't remove the armor (1 day); Stage 2 {@condition doomed|CRB|doomed 2}, hampered 10, and can't remove the armor (1 day); Stage 3 dies and transforms into the armor's graveknight."
 						],
 						"name": "Graveknight's Curse"
 					},
@@ -3980,7 +3980,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. A susurrus of distracting whispers and dilations in reality surround a hegessik. When a non-protean ends its turn in the aura, it must attempt a DC 33 Will save. If it fails, it becomes {@condition confused} for 1 round."
+							"30 feet. A susurrus of distracting whispers and dilations in reality surround a hegessik. When a non-protean ends its turn in the aura, it must attempt a {@dc 33} Will save. If it fails, it becomes {@condition confused} for 1 round."
 						],
 						"name": "Maddening Whispers"
 					},
@@ -4023,7 +4023,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d8+14} bludgeoning, DC 36"
+							"{@damage 2d8+14} bludgeoning, {@dc 36}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -4040,7 +4040,7 @@
 							"enchantment"
 						],
 						"entries": [
-							"The hegessik briefly opens its third eye. Non-protean creatures in a 30-foot cone must succeed at a DC 38 Will save or become {@condition stupefied||stupefied 2} for 1 round ({@condition stupefied||stupefied 3} on a critical failure)."
+							"The hegessik briefly opens its third eye. Non-protean creatures in a 30-foot cone must succeed at a {@dc 38} Will save or become {@condition stupefied||stupefied 2} for 1 round ({@condition stupefied||stupefied 3} on a critical failure)."
 						]
 					},
 					{
@@ -4065,7 +4065,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"Any creature struck and damaged by a hegessik's jaws {@action Strike} must succeed at a DC 36 Fortitude save or be subject to a warpwave (see sidebar)."
+							"Any creature struck and damaged by a hegessik's jaws {@action Strike} must succeed at a {@dc 36} Fortitude save or be subject to a warpwave (see sidebar)."
 						]
 					}
 				]
@@ -4402,10 +4402,10 @@
 							"transmutation"
 						],
 						"entries": [
-							"30 feet. As keketar, but DC 45."
+							"30 feet. As keketar, but {@dc 45}."
 						],
 						"name": "Spatial Riptide",
-						"entries_as_xyz": "Ability not found: 'Spatial Riptide As keketar, but DC 45.' in Hestriviniaas, p.15"
+						"entries_as_xyz": "Ability not found: 'Spatial Riptide As keketar, but {@dc 45}.' in Hestriviniaas, p.15"
 					},
 					{
 						"activity": {
@@ -4445,7 +4445,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d12+21} bludgeoning, DC 44"
+							"{@damage 2d12+21} bludgeoning, {@dc 44}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -4471,7 +4471,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"A creature struck by Hestriviniaas's jaws or claw {@action Strike} must succeed at a DC 45 Fortitude save or be subject to a warpwave (page 81)."
+							"A creature struck by Hestriviniaas's jaws or claw {@action Strike} must succeed at a {@dc 45} Fortitude save or be subject to a warpwave (page 81)."
 						],
 						"name": "Warpwave Strike"
 					}
@@ -4710,7 +4710,7 @@
 						],
 						"entries": [
 							"The hundun releases its staff-like attractor, which hovers in place. The hundun can use an action, which has the {@trait concentrate} trait, to move the attractor up to 60 feet, to a maximum of 300 feet from the hundun. It can also use an action, which has the {@trait concentrate} trait, to recall the attractor, which flies to the hundun and immediately deactivates.",
-							"Creatures within 40 feet of the attractor must attempt a DC 40 Will save if they're within the area when the attractor is activated or as soon as they enter the area while it's active. Once a creature has attempted the save, it uses the same result for the rest of that activation of the attractor.",
+							"Creatures within 40 feet of the attractor must attempt a {@dc 40} Will save if they're within the area when the attractor is activated or as soon as they enter the area while it's active. Once a creature has attempted the save, it uses the same result for the rest of that activation of the attractor.",
 							"Any restrictions on a creature's movement apply only if it voluntarily moves away from the attractor. For example, if the attractor moves closer to a creature, the creature doesn't then need to move away.",
 							"Chaotic creatures are immune to the effects of the attractor.",
 							"The attractor can't be harmed by physical attacks but is destroyed by disintegrate, disjunction, a rod of cancellation (Advancer Player's Guide 262), a sphere of annihilation (Gamemastery Guide 113), and other similarly powerful effects. The attractor has an AC of 40 and a counteract DC of 37. A hundun can rebuild a destroyed attractor after {@dice 1d8} hours of uninterrupted meditation. If the hundun is slain, its attractor disappears.",
@@ -5542,7 +5542,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d8+17} bludgeoning, DC 44"
+							"{@damage 2d8+17} bludgeoning, {@dc 44}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -5555,7 +5555,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"Any creature struck and damaged by an izfiitar's jaws or claw {@action Strike} must succeed at a DC 42 Fortitude save or be subject to a particularly powerful warpwave (page 81). Roll twice and apply both affects, rerolling any duplicates."
+							"Any creature struck and damaged by an izfiitar's jaws or claw {@action Strike} must succeed at a {@dc 42} Fortitude save or be subject to a particularly powerful warpwave (page 81). Roll twice and apply both affects, rerolling any duplicates."
 						],
 						"name": "Greater Warpwave Strike"
 					},
@@ -5753,7 +5753,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The living mural expels a 15-foot cone of paint. Creatures in the area must succeed at a DC 41 Reflex save or be {@condition blinded} for 1 round. The living mural can't use Paint the Masses again for {@dice 1d4} rounds."
+							"The living mural expels a 15-foot cone of paint. Creatures in the area must succeed at a {@dc 41} Reflex save or be {@condition blinded} for 1 round. The living mural can't use Paint the Masses again for {@dice 1d4} rounds."
 						],
 						"name": "Paint the Masses"
 					}
@@ -6642,7 +6642,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d10+16} bludgeoning, DC 38"
+							"{@damage 2d10+16} bludgeoning, {@dc 38}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -6659,7 +6659,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"An imentesh inflicts a warpwave on a creature within 100 feet (page 81; DC 38 Fortitude save to resist)."
+							"An imentesh inflicts a warpwave on a creature within 100 feet (page 81; {@dc 38} Fortitude save to resist)."
 						],
 						"name": "Inflict Warpwave"
 					},
@@ -6678,7 +6678,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"Any creature struck and damaged by an imentesh's jaws {@action Strike} must succeed at a DC 38 Fortitude save or be subject to a warpwave (page 81)."
+							"Any creature struck and damaged by an imentesh's jaws {@action Strike} must succeed at a {@dc 38} Fortitude save or be subject to a warpwave (page 81)."
 						],
 						"name": "Warpwave Strike"
 					}
@@ -6858,7 +6858,7 @@
 							"magical"
 						],
 						"entries": [
-							"Each enemy in the penqual's space takes {@damage 4d12} slashing damage (DC 36 basic Reflex save)."
+							"Each enemy in the penqual's space takes {@damage 4d12} slashing damage ({@dc 36} basic Reflex save)."
 						],
 						"name": "Frantic Grasp"
 					},
@@ -7305,7 +7305,7 @@
 				"top": [
 					{
 						"entries": [
-							"A slithering rift is so clear that it's difficult to spot. A successful DC 48 {@skill Perception} check is required to notice a stationary slithering rift, and a creature must be Searching to attempt this check. A creature that walks into the rift's space might fall into any pit currently in effect due to Dimensional Pit."
+							"A slithering rift is so clear that it's difficult to spot. A successful {@dc 48} {@skill Perception} check is required to notice a stationary slithering rift, and a creature must be Searching to attempt this check. A creature that walks into the rift's space might fall into any pit currently in effect due to Dimensional Pit."
 						],
 						"name": "Transparent"
 					}
@@ -7339,8 +7339,8 @@
 							"extradimensional"
 						],
 						"entries": [
-							"The slithering rift opens an extradimensional, 20-foot-deep pit that covers its own space and all adjacent squares unless they are walls or similarly blocking terrain. Any other creature occupying spaces in the pit must succeed at a DC 40 Reflex save or fall into the pit, taking damage from the fall (typically 10 bludgeoning damage). Any creature {@condition grabbed} by the ooze is released from the Grab and falls in, even if it was outside the pit squares.",
-							"While the pit is open, the slithering rift is {@condition immobilized} and can't be forced to move. It can make pseudopod {@action Strike||Strikes} originating from the walls of the pit. A creature that starts its turn at the bottom of the pit takes {@damage 5d6} acid damage. Creatures can climb the walls with a DC 40 {@skill Athletics} check. When the slithering rift dies, the pit closes and creatures inside are ejected, as Out you Go."
+							"The slithering rift opens an extradimensional, 20-foot-deep pit that covers its own space and all adjacent squares unless they are walls or similarly blocking terrain. Any other creature occupying spaces in the pit must succeed at a {@dc 40} Reflex save or fall into the pit, taking damage from the fall (typically 10 bludgeoning damage). Any creature {@condition grabbed} by the ooze is released from the Grab and falls in, even if it was outside the pit squares.",
+							"While the pit is open, the slithering rift is {@condition immobilized} and can't be forced to move. It can make pseudopod {@action Strike||Strikes} originating from the walls of the pit. A creature that starts its turn at the bottom of the pit takes {@damage 5d6} acid damage. Creatures can climb the walls with a {@dc 40} {@skill Athletics} check. When the slithering rift dies, the pit closes and creatures inside are ejected, as Out you Go."
 						],
 						"name": "Dimensional Pit"
 					},
@@ -7350,7 +7350,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The slithering rift closes all pit spaces it created using Dimensional Pit, ejecting all its occupants onto the ground into random free spaces where the opening of the pit was. Each occupant takes {@damage 9d6} bludgeoning damage (DC 40 basic Reflex save)."
+							"The slithering rift closes all pit spaces it created using Dimensional Pit, ejecting all its occupants onto the ground into random free spaces where the opening of the pit was. Each occupant takes {@damage 9d6} bludgeoning damage ({@dc 40} basic Reflex save)."
 						],
 						"name": "Out You Go"
 					}
@@ -7535,7 +7535,7 @@
 							"disease"
 						],
 						"entries": [
-							"30 feet. Creatures in the aura can't reduce the value of the {@condition sickened} condition. A creature that enters the aura or begins its turn in it must succeed at a DC 34 Fortitude save or be {@condition sickened|CRB|sickened 2} (plus {@condition slowed|CRB|slowed 1} as long as it is {@condition sickened} on a critical failure). A creature that succeeds at its save is temporarily immune for 1 minute. Creatures made of water (such as water elementals) and plant creatures use an outcome one degree of success worse than the result of their save."
+							"30 feet. Creatures in the aura can't reduce the value of the {@condition sickened} condition. A creature that enters the aura or begins its turn in it must succeed at a {@dc 34} Fortitude save or be {@condition sickened|CRB|sickened 2} (plus {@condition slowed|CRB|slowed 1} as long as it is {@condition sickened} on a critical failure). A creature that succeeds at its save is temporarily immune for 1 minute. Creatures made of water (such as water elementals) and plant creatures use an outcome one degree of success worse than the result of their save."
 						],
 						"name": "Miasma of Pollution"
 					}
@@ -7589,7 +7589,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The sordesdaemon exhales a spray of sewage that deals {@damage 8d6} acid damage and {@damage 8d6} poison damage in a 30-foot cone (DC 40 basic Fortitude save).",
+							"The sordesdaemon exhales a spray of sewage that deals {@damage 8d6} acid damage and {@damage 8d6} poison damage in a 30-foot cone ({@dc 40} basic Fortitude save).",
 							"It can't use Retch of Foulness again for {@dice 1d4} rounds."
 						],
 						"name": "Retch of Foulness"
@@ -7838,7 +7838,7 @@
 							"visual"
 						],
 						"entries": [
-							"60 feet. Any creature that ends its turn in the aura while in possession of any crystals, gemstones, or other precious stones must attempt a DC 39 Fortitude save.",
+							"60 feet. Any creature that ends its turn in the aura while in possession of any crystals, gemstones, or other precious stones must attempt a {@dc 39} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -7870,7 +7870,7 @@
 						},
 						"requirements": "Ulressia hit a foe earlier this turn with a weapon {@action Strike}",
 						"entries": [
-							"Ulressia makes a weapon {@action Strike} against the foe. On a success, the foe must succeed at a DC 41 Fortitude save or become {@condition stunned|CRB|stunned 1}. On a critical failure, the foe is {@condition stunned|CRB|stunned 2} instead."
+							"Ulressia makes a weapon {@action Strike} against the foe. On a success, the foe must succeed at a {@dc 41} Fortitude save or become {@condition stunned|CRB|stunned 1}. On a critical failure, the foe is {@condition stunned|CRB|stunned 2} instead."
 						],
 						"name": "Stunning Strike"
 					},
@@ -7884,7 +7884,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"Ulressia channels her warped powers over crystals through her blade and into a creature's body, partially crystallizing its blood. Ulressia makes a melee dagger {@action Strike}. On a hit, the creature takes damage as normal and must also roll a DC 41 Fortitude save.",
+							"Ulressia channels her warped powers over crystals through her blade and into a creature's body, partially crystallizing its blood. Ulressia makes a melee dagger {@action Strike}. On a hit, the creature takes damage as normal and must also roll a {@dc 41} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -8191,7 +8191,7 @@
 											"evocation"
 										],
 										"entries": [
-											"The dragon breathes a burst of lightning in a 50-foot cone that deals {@damage 20d6} electricity damage (DC 42 basic Reflex save)."
+											"The dragon breathes a burst of lightning in a 50-foot cone that deals {@damage 20d6} electricity damage ({@dc 42} basic Reflex save)."
 										],
 										"name": "Storm"
 									},
@@ -8202,7 +8202,7 @@
 											"transmutation"
 										],
 										"entries": [
-											"The dragon breathes a time storm. Each creature within a 50-foot cone must attempt a DC 42 Fortitude save.",
+											"The dragon breathes a time storm. Each creature within a 50-foot cone must attempt a {@dc 42} Fortitude save.",
 											{
 												"type": "successDegree",
 												"entries": {

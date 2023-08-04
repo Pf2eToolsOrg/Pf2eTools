@@ -3831,6 +3831,7 @@ Renderer.action = {
 		${Renderer.utils.getTraitsDiv(it.traits || [])}
 		${Renderer.action.getSubHead(it)}
 		${Renderer.generic.getRenderedEntries(it)}
+		${Renderer.action.getFooter(it)}
 		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
 	getSubHead (it) {
@@ -3914,6 +3915,17 @@ Renderer.action = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Requirements&nbsp;</strong>${renderer.render(it.requirements)}</p>`);
 		}
 		if (renderStack.length !== 0) renderStack.push(Renderer.utils.getDividerDiv())
+		return renderStack.join("");
+	},
+	getFooter (it) {
+		if (!it.footer) return "";
+		const renderStack = [Renderer.utils.getDividerDiv()];
+		const renderer = Renderer.get()
+
+		it.footer.forEach(entry => {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${entry.name}&nbsp;</strong>${renderer.render(entry.entries)}</p>`)
+		})
+
 		return renderStack.join("");
 	},
 	getQuickRules (it) {

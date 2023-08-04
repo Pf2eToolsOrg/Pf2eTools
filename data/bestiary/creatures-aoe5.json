@@ -94,7 +94,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The guard makes a club {@action Strike}. On a hit, if the target is {@condition flat-footed}, the target must succeed at a DC 33 Fortitude save or be {@condition stunned|CRB|stunned 2}."
+							"The guard makes a club {@action Strike}. On a hit, if the target is {@condition flat-footed}, the target must succeed at a {@dc 33} Fortitude save or be {@condition stunned|CRB|stunned 2}."
 						],
 						"name": "Clobber"
 					},
@@ -452,7 +452,7 @@
 						],
 						"trigger": "A living creature within 30 feet is reduced to 0 Hit Points",
 						"entries": [
-							"Calennia targets the creature with a {@spell death knell} spell (DC 34). If the target dies, all of Calennia's enemies within 60 feet are targeted by a {@spell fear} spell (DC 34). A creature that succeeds at either save is temporarily immune to this ability for 24 hours."
+							"Calennia targets the creature with a {@spell death knell} spell ({@dc 34}). If the target dies, all of Calennia's enemies within 60 feet are targeted by a {@spell fear} spell ({@dc 34}). A creature that succeeds at either save is temporarily immune to this ability for 24 hours."
 						],
 						"name": "Terrible Justice"
 					}
@@ -949,7 +949,7 @@
 						"entries": [
 							"For the clockwork assassin to act, it must be wound by another creature using a unique key. This takes 1 minute. Once wound, it remains operational for 24 hours, after which time it becomes unaware of its surroundings and can't act until it's wound again.",
 							"The assassin can enter standby mode as a 3-action activity. Its operational time doesn't decrease in standby, but it can sense its surroundings (with a \u20132 penalty to {@skill Perception}). It can't act, with one exception: When it perceives a creature, it can exit standby as a reaction (rolling initiative if appropriate)",
-							"A creature can attempt a DC 31 {@skill Thievery} check to {@action Disable a Device} to wind the clockwork down. For each success, the clockwork loses 1 hour of operational time.",
+							"A creature can attempt a {@dc 31} {@skill Thievery} check to {@action Disable a Device} to wind the clockwork down. For each success, the clockwork loses 1 hour of operational time.",
 							"This can be done even if the clockwork is in standby mode."
 						],
 						"name": "Wind-Up"
@@ -1220,7 +1220,7 @@
 						],
 						"requirements": "The master assassin used Study Target during the previous round and must have a garrote bolt",
 						"entries": [
-							"The master assassin makes a crossbow {@action Strike} against the target she previously studied. If she rolls a success on her attack roll, she gets a critical success instead. The target must attempt a DC 36 Fortitude save.",
+							"The master assassin makes a crossbow {@action Strike} against the target she previously studied. If she rolls a success on her attack roll, she gets a critical success instead. The target must attempt a {@dc 36} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1364,10 +1364,10 @@
 							"unit": "action"
 						},
 						"entries": [
-							"As sea hag, but DC 37."
+							"As sea hag, but {@dc 37}."
 						],
 						"name": "Dread Gaze",
-						"entries_as_xyz": "Ability not found: 'Dread Gaze As sea hag, but DC 37.' in Graem And Grinlowe, p.40"
+						"entries_as_xyz": "Ability not found: 'Dread Gaze As sea hag, but {@dc 37}.' in Graem And Grinlowe, p.40"
 					},
 					{
 						"activity": {
@@ -1381,7 +1381,7 @@
 						],
 						"requirements": "A creature within 60 feet of Graem or Grinlowe is in contact with the waters of Stormholt",
 						"entries": [
-							"The hag casts {@spell maze} (DC 37) on the creature, magically pulling the creature beneath the water (regardless of its actual depth) into an extradimensional underwater maze of shipwrecks. Between the two of them, Graem and Grinlowe can have only one creature trapped in the maze, but either hag can use the {@action Sustain a Spell} action to sustain the effect."
+							"The hag casts {@spell maze} ({@dc 37}) on the creature, magically pulling the creature beneath the water (regardless of its actual depth) into an extradimensional underwater maze of shipwrecks. Between the two of them, Graem and Grinlowe can have only one creature trapped in the maze, but either hag can use the {@action Sustain a Spell} action to sustain the effect."
 						],
 						"name": "Pull Under"
 					}
@@ -1754,7 +1754,7 @@
 							"occult"
 						],
 						"entries": [
-							"Ixusoth reaches out with her mind and attempts to steal memories from a creature within 30 feet. The target must succeed at a DC 40 Will saving throw or become {@condition stupefied|CRB|stupefied 2} and have some of its memories stolen. When Ixusoth steals memories, she learns some of the creature's memories (chosen by the GM). These memories are then lost to that creature."
+							"Ixusoth reaches out with her mind and attempts to steal memories from a creature within 30 feet. The target must succeed at a {@dc 40} Will saving throw or become {@condition stupefied|CRB|stupefied 2} and have some of its memories stolen. When Ixusoth steals memories, she learns some of the creature's memories (chosen by the GM). These memories are then lost to that creature."
 						],
 						"name": "Steal Memories"
 					},
@@ -1767,7 +1767,7 @@
 							"occult"
 						],
 						"entries": [
-							"A creature hit by Ixusoth's fist {@action Strike} must attempt a DC 36 Will save. The creature is then temporarily immune until the start of its next turn.",
+							"A creature hit by Ixusoth's fist {@action Strike} must attempt a {@dc 36} Will save. The creature is then temporarily immune until the start of its next turn.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2558,7 +2558,7 @@
 							"water"
 						],
 						"entries": [
-							"Tentacles of water rise up and attempt to {@action Grapple} all enemies within 15 feet of the minchgorm. The minchgorm attempts an {@skill Athletics} check against the Fortitude DC of each creature in the area. On a success, the creature is {@condition grabbed} ({@action Escape} DC 40). On a critical success, or a success against a creature that is already {@condition grabbed}, the target begins to {@quickref drown||3|drowning and suffocating}."
+							"Tentacles of water rise up and attempt to {@action Grapple} all enemies within 15 feet of the minchgorm. The minchgorm attempts an {@skill Athletics} check against the Fortitude DC of each creature in the area. On a success, the creature is {@condition grabbed} ({@action Escape} {@dc 40}). On a critical success, or a success against a creature that is already {@condition grabbed}, the target begins to {@quickref drown||3|drowning and suffocating}."
 						],
 						"name": "Riptide"
 					},
@@ -3199,7 +3199,7 @@
 					},
 					{
 						"entries": [
-							"A creature hit by Mother Venom's spit attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} DC 38)."
+							"A creature hit by Mother Venom's spit attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} {@dc 38})."
 						],
 						"name": "Spit"
 					}
@@ -3861,7 +3861,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. When a creature ends its turn in the aura, it is overwhelmed by the sorrow that suffuses the obrousian's being. The creature must succeed at a DC 33 Will save or become {@condition paralyzed} for 1 round."
+							"30 feet. When a creature ends its turn in the aura, it is overwhelmed by the sorrow that suffuses the obrousian's being. The creature must succeed at a {@dc 33} Will save or become {@condition paralyzed} for 1 round."
 						],
 						"name": "Waves of Sorrow"
 					}
@@ -4066,7 +4066,7 @@
 							"poison"
 						],
 						"entries": [
-							"Reginald's lungs are equipped with ink canisters, allowing him to spew a 60-foot line of ink that deals {@damage 9d6} poison damage (DC 39 basic Reflex save; on a failure, the creature is also subjected to Reginald's poison ink)."
+							"Reginald's lungs are equipped with ink canisters, allowing him to spew a 60-foot line of ink that deals {@damage 9d6} poison damage ({@dc 39} basic Reflex save; on a failure, the creature is also subjected to Reginald's poison ink)."
 						],
 						"name": "Breath Weapon"
 					},
@@ -4081,8 +4081,8 @@
 						"note": "Reginald is equipped with clockwork organs to power his body",
 						"requirements": "Reginald has 175 Hit Points or fewer",
 						"entries": [
-							"Reginald gains 200 temporary Hit Points, a +15-foot status bonus to Speed, and a +2 status bonus to melee attack rolls. His body begins to overheat, spewing steam that deals {@damage 9d6} fire damage at the beginning of his turn to all creatures within 30 feet (DC 40 basic Reflex save)",
-							"After 2 rounds, Reginald explodes, dealing {@damage 19d6} fire damage to all creatures within 60 feet (DC 40 basic Reflex save)",
+							"Reginald gains 200 temporary Hit Points, a +15-foot status bonus to Speed, and a +2 status bonus to melee attack rolls. His body begins to overheat, spewing steam that deals {@damage 9d6} fire damage at the beginning of his turn to all creatures within 30 feet ({@dc 40} basic Reflex save)",
+							"After 2 rounds, Reginald explodes, dealing {@damage 19d6} fire damage to all creatures within 60 feet ({@dc 40} basic Reflex save)",
 							"Reginald dies. For the purposes of his Secret of Rebirth ability, the last creature to damage Reginald counts as killing him."
 						],
 						"name": "Overdrive Engine"
@@ -4280,9 +4280,9 @@
 					],
 					"effects": [
 						"{@condition deafened}",
-						"blinding blast (DC 28)"
+						"blinding blast ({@dc 28})"
 					],
-					"damage": "{@damage 3d4} sonic plus 3 sonic splash, {@condition deafened}, and blinding blast (DC 28)",
+					"damage": "{@damage 3d4} sonic plus 3 sonic splash, {@condition deafened}, and blinding blast ({@dc 28})",
 					"types": [
 						"sonic"
 					]
@@ -4919,7 +4919,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"DC 35, no damage, {@action Escape} DC 35, Rupture 28."
+							"{@dc 35}, no damage, {@action Escape} {@dc 35}, Rupture 28."
 						],
 						"name": "Engulf",
 						"generic": {
@@ -5085,10 +5085,10 @@
 							"disease"
 						],
 						"entries": [
-							"As ghoul, but DC 27 and the victim rises as a zeal-damned ghoul."
+							"As ghoul, but {@dc 27} and the victim rises as a zeal-damned ghoul."
 						],
 						"name": "Ghoul Fever",
-						"entries_as_xyz": "Ability not found: 'Ghoul Fever As ghoul, but DC 27 and the victim rises as a zeal-damned ghoul.' in Zeal-damned Ghoul, p.9"
+						"entries_as_xyz": "Ability not found: 'Ghoul Fever As ghoul, but {@dc 27} and the victim rises as a zeal-damned ghoul.' in Zeal-damned Ghoul, p.9"
 					},
 					{
 						"traits": [
@@ -5097,10 +5097,10 @@
 							"necromancy"
 						],
 						"entries": [
-							"As ghoul, but DC 27."
+							"As ghoul, but {@dc 27}."
 						],
 						"name": "Paralysis",
-						"entries_as_xyz": "Ability not found: 'Paralysis As ghoul, but DC 27.' in Zeal-damned Ghoul, p.9"
+						"entries_as_xyz": "Ability not found: 'Paralysis As ghoul, but {@dc 27}.' in Zeal-damned Ghoul, p.9"
 					},
 					{
 						"activity": {
@@ -5328,7 +5328,7 @@
 				"bot": [
 					{
 						"entries": [
-							"DC 33; geas."
+							"{@dc 33}; geas."
 						],
 						"name": "Occult Ritual"
 					}

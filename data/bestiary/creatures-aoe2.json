@@ -1,6 +1,183 @@
 {
 	"creature": [
 		{
+			"name": "Tyrroicese",
+			"source": "AoE2",
+			"page": 40,
+			"description": "Eldritch horror from the Dark Tapestry",
+			"level": 10,
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"construct",
+				"ooze"
+			],
+			"perception": {
+				"std": 16
+			},
+			"senses": [
+				{
+					"name": "motion sense ",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 23
+				},
+				"dark tapestry lore": {
+					"std": 15
+				},
+				"religion": {
+					"std": 18
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 2,
+				"con": 5,
+				"int": -3,
+				"wis": 3,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 19
+					}
+				},
+				"hp": [
+					{
+						"hp": 320
+					}
+				],
+				"immunities": [
+					"acid",
+					"critical hits",
+					"piercing",
+					"precision",
+					"slashing",
+					"unconscious",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "evil",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"acid",
+						"magical",
+						"reach <15 feet>",
+						"versatile <P>"
+					],
+					"name": "pseudopod",
+					"attack": 23,
+					"damage": "{@damage 2d10+13} bludgeoning plus {@damage 1d6} acid"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Motion",
+						"entries": [
+							"Sense Tyrroicese can sense nearby motion through vibration and air movement."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Pseudopod Burst",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Tyrroicese makes up to three pseudopod strikes, each against a different creature.",
+							"Tyrroicese's multiple attack penalty doesn't increase until after all these attacks are made."
+						]
+					},
+					{
+						"name": "Rallying Call",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"occult"
+						],
+						"entries": [
+							"When Tyrroicese subsumed Corporal Quordein, it gained a perverted form of the commander's ability to rally allies. The first time Tyrroicese uses this ability, it summons an ochre jelly (Bestiary 255), which leaks out of the ceiling of area D13 and drops to the floor to join the fight, siding with Tyrroicese. Thereafter, when Tyrroicese uses this ability, any oozes within 60 feet become {@condition quickened} for 1 round (the oozes can use their extra action only to {@action Stride}) and, if they're not allied with the agents, the oozes ally themselves with Tyrroicese."
+						]
+					},
+					{
+						"name": "Stretching Step",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"move"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Tyrroicese forcefully extends a sticky pseudopod, plants it on a wall within 45 feet, and retracts the muscle.",
+							"Tyrroicese springs over to a space adjacent to the wall, moving through the intervening squares as normal but ignoring any difficult or greater difficult terrain."
+						]
+					},
+					{
+						"name": "Subsume",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"incapacitation"
+						],
+						"entries": [
+							"Tyrroicese lifts an adjacent {@condition dying} creature with its pseudopods and subsumes that creature into its own oozy flesh. The subsumed creature's {@condition dying} value does not increase, though it can't decrease either. Tyrroicese regains 30 HP and also gains the ability to use one or two of the subsumed creature's special abilities or feats, subject to the GM's discretion. A creature adjacent to Tyrroicese can extract a subsumed creature by spending 2 actions to attempt a DC 29 {@skill Athletics} check.",
+							"On a success, the subsumed creature is pulled from Tyrroicese and falls into the nearest available space."
+						]
+					}
+				]
+			}
+		},
+		{
 			"name": "Bone Skipper Swarm",
 			"source": "AoE2",
 			"page": 80,
@@ -58,7 +235,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 3d6} piercing damage (DC 24 basic Reflex save) plus exposure to marrow rot."
+							"Each enemy in the swarm's space takes {@damage 3d6} piercing damage ({@dc 24} basic Reflex save) plus exposure to marrow rot."
 						],
 						"name": "Swarming Bites"
 					},
@@ -593,7 +770,7 @@
 						],
 						"entries": [
 							"The dreadsong dancer whirls their howling songblades and cloaks themself in illusion magic.",
-							"Each non-fiend creature in a 30-foot emanation from the dreadsong dancer must attempt a DC 29 Will save.",
+							"Each non-fiend creature in a 30-foot emanation from the dreadsong dancer must attempt a {@dc 29} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -776,7 +953,7 @@
 						},
 						"entries": [
 							"The excorion spews necrotic blood all over a foe it has {@condition grabbed}.",
-							"The {@condition grabbed} creature must succeed at a DC 25 Fortitude save or become {@condition sickened|CRB|sickened 2}."
+							"The {@condition grabbed} creature must succeed at a {@dc 25} Fortitude save or become {@condition sickened|CRB|sickened 2}."
 						],
 						"name": "Vomit Blood"
 					}
@@ -1122,7 +1299,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet, DC 25"
+							"30 feet, {@dc 25}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -1311,7 +1488,7 @@
 					},
 					{
 						"entries": [
-							"As bone skipper swarm, but DC 25."
+							"As bone skipper swarm, but {@dc 25}."
 						],
 						"name": "Marrow Rot",
 						"entries_as_xyz": [
@@ -1748,7 +1925,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"10 feet, DC 24.",
+							"10 feet, {@dc 24}.",
 							"As zombie ability (Bestiary 340)."
 						],
 						"name": "Rotting Aura"
@@ -1770,10 +1947,10 @@
 							"disease"
 						],
 						"entries": [
-							"As ofalth, but DC 22."
+							"As ofalth, but {@dc 22}."
 						],
 						"name": "Wretched Weeps",
-						"entries_as_xyz": "Ability not found: 'Wretched Weeps As ofalth, but DC 22.' in Ofalth Zombie, p.47"
+						"entries_as_xyz": "Ability not found: 'Wretched Weeps As ofalth, but {@dc 22}.' in Ofalth Zombie, p.47"
 					}
 				]
 			},
@@ -2266,7 +2443,7 @@
 						},
 						"requirements": "The Skinsaw seamer is currently grappling a creature",
 						"entries": [
-							"The seamer stitches a piece of cloth to the creature's arm, face, or leg, potentially hindering it. The creature must attempt a DC 26 Reflex saving throw; if the seamer has already successfully used their Flay ability against the creature within the past minute, the creature's save result is one degree of success worse.",
+							"The seamer stitches a piece of cloth to the creature's arm, face, or leg, potentially hindering it. The creature must attempt a {@dc 26} Reflex saving throw; if the seamer has already successfully used their Flay ability against the creature within the past minute, the creature's save result is one degree of success worse.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2537,7 +2714,7 @@
 						],
 						"requirements": "The tenome has a creature {@condition grabbed} or {@condition restrained}",
 						"entries": [
-							"The tenome makes a jaws {@action Strike} against the {@condition grabbed} or {@condition restrained} creature. If the {@action Strike} hits, the creature must succeed at a DC 18 Fortitude save or become {@condition drained|CRB|drained 1} (or the value of the creature's {@condition drained} condition increases by 1 if it already has a {@condition drained} value, to a maximum of {@condition drained|CRB|drained 4}). The tenome regains {@dice 1d8} Hit Points each time it uses Bone Drink."
+							"The tenome makes a jaws {@action Strike} against the {@condition grabbed} or {@condition restrained} creature. If the {@action Strike} hits, the creature must succeed at a {@dc 18} Fortitude save or become {@condition drained|CRB|drained 1} (or the value of the creature's {@condition drained} condition increases by 1 if it already has a {@condition drained} value, to a maximum of {@condition drained|CRB|drained 4}). The tenome regains {@dice 1d8} Hit Points each time it uses Bone Drink."
 						],
 						"name": "Bone Drink"
 					},
@@ -2560,7 +2737,7 @@
 							"or"
 						],
 						"entries": [
-							"{@as 2} (emotion, enchantment, fear, incapacitation, mental, occult, visual) A tenome can gaze at a creature within 30 feet by presenting one of its eyes. The target must succeed at a DC 21 Will save or become {@condition frightened|CRB|frightened 1}. If the tenome uses 2 actions and presents both of its eyes, the target is also {@condition paralyzed} if it fails the save. A creature that successfully saves is temporarily immune for 24 hours."
+							"{@as 2} (emotion, enchantment, fear, incapacitation, mental, occult, visual) A tenome can gaze at a creature within 30 feet by presenting one of its eyes. The target must succeed at a {@dc 21} Will save or become {@condition frightened|CRB|frightened 1}. If the tenome uses 2 actions and presents both of its eyes, the target is also {@condition paralyzed} if it fails the save. A creature that successfully saves is temporarily immune for 24 hours."
 						],
 						"name": "Terrifying Gaze"
 					}
@@ -2717,7 +2894,7 @@
 						},
 						"requirements": "The teraphant has a creature {@condition grabbed}",
 						"entries": [
-							"The teraphant slams the creature onto one of its horns. The target must attempt a DC 27 Reflex save or suffer {@damage 3d6+9} piercing damage and {@damage 1d6} {@condition persistent damage||persistent bleed damage} ({@damage 6d6+18} piercing damage on a critical failure)."
+							"The teraphant slams the creature onto one of its horns. The target must attempt a {@dc 27} Reflex save or suffer {@damage 3d6+9} piercing damage and {@damage 1d6} {@condition persistent damage||persistent bleed damage} ({@damage 6d6+18} piercing damage on a critical failure)."
 						],
 						"name": "Impale"
 					},
@@ -2727,7 +2904,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The teraphant lets out a loud trumpet that deals {@damage 8d8} mental damage (DC 27 basic Will save) in a 30-foot cone. A creature that fails its save is also pushed 15 feet (30 feet on a critical failure). If a pushed creatures strikes a solid barrier, it takes {@damage 3d6} bludgeoning damage and stops. The teraphant can't use."
+							"The teraphant lets out a loud trumpet that deals {@damage 8d8} mental damage ({@dc 27} basic Will save) in a 30-foot cone. A creature that fails its save is also pushed 15 feet (30 feet on a critical failure). If a pushed creatures strikes a solid barrier, it takes {@damage 3d6} bludgeoning damage and stops. The teraphant can't use."
 						],
 						"name": "Psychokinetic Trumpet"
 					},
@@ -2743,7 +2920,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Large or smaller, foot, DC 27"
+							"Large or smaller, foot, {@dc 27}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -2872,7 +3049,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"DC 23, {@damage 2d8+9} acid, {@action Escape} DC 23, Rupture 14 (19 when using Metallify)"
+							"{@dc 23}, {@damage 2d8+9} acid, {@action Escape} {@dc 23}, Rupture 14 (19 when using Metallify)"
 						],
 						"name": "Engulf",
 						"generic": {

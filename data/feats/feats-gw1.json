@@ -1,0 +1,254 @@
+{
+	"feat": [
+		{
+			"name": "Oatia Skysage Dedication",
+			"source": "GW1",
+			"page": 82,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in {@skill Occultism}",
+			"entries": [
+				"Your study of the stars unlocks supernatural insights and magic. You either become trained in {@skill Lore||Astronomy Lore} or an expert in {@skill Occultism}.",
+				"You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with two common cantrips of your choice; these cantrips can be from any spell tradition, but they must be divination spells. You cast these spells as occult spells as you draw on the stars and night sky. You're trained in occult spell attack rolls and spell DCs. If you have a hand free and you've gazed at the night sky in the last 24 hours, you can usually replace material components with somatic components, so you don't need to use a spell component pouch. Your key spellcasting ability for these spells is Intelligence."
+			],
+			"special": [
+				"You can't select another dedication feat until you have gained two other feats from the Oatia skysage archetype."
+			],
+			"leadsTo": [
+				"Basic Skysage Divination|GW1",
+				"Expert Skysage Divination|GW1",
+				"Master Skysage Divination|GW1",
+				"Stargazer's Eyes|GW1",
+				"Night's Glow|GW1",
+				"Night's Shine|GW1",
+				"Minor Omen|GW1",
+				"Scholar's Hunch|GW1",
+				"Starlit Spells|GW1",
+				"Night's Warning|GW1",
+				"Starlight Armor|GW1"
+			]
+		},
+		{
+			"name": "Basic Skysage Divination",
+			"source": "GW1",
+			"page": 82,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"entries": [
+				"The stars move, granting you a sliver of their magic.",
+				"Choose a 1st-level spell from any spell list to add to your spell repertoire. You can Cast this Spell as an occult Oatia skysage spell.",
+				"At 6th level, you gain a 2nd-level spell, and at 8th level, you gain a 3rd-level spell. Each of these spells must be from the divination school."
+			],
+			"leadsTo": [
+				"Expert Skysage Divination|GW1",
+				"Master Skysage Divination|GW1"
+			]
+		},
+		{
+			"name": "Stargazer's Eyes",
+			"source": "GW1",
+			"page": 82,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"entries": [
+				"Long hours in darkened observatories have sharpened your senses. If you don't have low-light vision or darkvision, you gain low-light vision, or if you already have low-light vision, you gain darkvision."
+			],
+			"special": [
+				"You can take this feat a second time, upgrading your low-light vision to darkvision."
+			]
+		},
+		{
+			"name": "Night's Glow",
+			"source": "GW1",
+			"page": 82,
+			"level": 6,
+			"traits": [
+				"archetype",
+				"evocation",
+				"occult"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"entries": [
+				"The stars and moon lend you their light. You gain your choice of the moonbeam or zenith star (Lost Omens Gods & Magic 117) domain spell. Like your Oatia skysage spells, you cast this focus spell as an occult spell. It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover by using the {@action Refocus} to reflect upon or gaze at the stars."
+			],
+			"special": [
+				"You can take this feat a second time, gaining the focus spell that you didn't gain the first time. Increase the number of Focus Points in your pool by 1."
+			],
+			"leadsTo": [
+				"Night's Shine|GW1"
+			]
+		},
+		{
+			"name": "Minor Omen",
+			"source": "GW1",
+			"page": 82,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"archetype",
+				"divination",
+				"fortune",
+				"occult"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"trigger": "You fail a Reflex save.",
+			"requirements": "You can see the night sky.",
+			"entries": [
+				"The stars warn you of danger in the nick of time. Reroll the failed save and use the new result."
+			]
+		},
+		{
+			"name": "Scholar's Hunch",
+			"source": "GW1",
+			"page": 82,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"archetype",
+				"fortune",
+				"occult"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"trigger": "You fail a {@skill Lore} or {@skill Occultism} skill check.",
+			"entries": [
+				"Scholarly debates have taught you to think on your feet. Reroll the failed check and use the new result."
+			]
+		},
+		{
+			"name": "Starlit Spells",
+			"source": "GW1",
+			"page": 82,
+			"level": 10,
+			"traits": [
+				"archetype",
+				"evocation",
+				"occult"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"entries": [
+				"The stars reveal and punish your enemies. You can cast {@spell faerie fire} and 3rd-level {@spell searing light} as occult innate spells, each once per day."
+			]
+		},
+		{
+			"name": "Expert Skysage Divination",
+			"source": "GW1",
+			"page": 82,
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Basic Skysage Divination|GW1}",
+			"entries": [
+				"Your studies of the stars have taught you about the mysteries of the cosmos. You learn a 4th-level spell from any spell list. At 12th level, you learn a 5th-level spell, and at 14th level, you learn a 6th-level spell. Each of these spells must come from the divination school. You become an expert with spell attack rolls and spell DCs for occult spells."
+			],
+			"leadsTo": [
+				"Master Skysage Divination|GW1"
+			]
+		},
+		{
+			"name": "Night's Shine",
+			"source": "GW1",
+			"page": 83,
+			"level": 12,
+			"traits": [
+				"archetype",
+				"evocation",
+				"occult"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}, {@feat Night's Glow|GW1}",
+			"entries": [
+				"Your power from the moon and stars becomes strong enough to illuminate the night sky. You gain your choice of the asterism (Lost Omens Gods & Magic 117) or touch of the moon domain spell. Increase the number of Focus Points in your pool by 1."
+			],
+			"special": [
+				"You can take this feat a second time, gaining the focus spell that you didn't gain the first time. Increase the number of Focus Points in your pool by 1."
+			]
+		},
+		{
+			"name": "Night's Warning",
+			"source": "GW1",
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 14,
+			"traits": [
+				"archetype",
+				"concentrate",
+				"occult"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"trigger": "A creature targets you with an attack and you can see the attacker.",
+			"requirements": "You can see the night sky.",
+			"entries": [
+				"Portents written in the night sky show you how to avoid an attack. The triggering attack roll targets your {@skill Occultism} DC instead of your AC. Though this allows you to avoid taking penalties to your AC, it doesn't remove any conditions or other effects causing such penalties.",
+				"For example, an enemy with sneak attack would still deal extra damage to you for being {@condition flat-footed}, even though you wouldn't take the \u20132 circumstance penalty when defending against the attack."
+			]
+		},
+		{
+			"name": "Starlight Armor",
+			"source": "GW1",
+			"page": 83,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"level": 14,
+			"traits": [
+				"archetype",
+				"conjuration",
+				"occult"
+			],
+			"prerequisites": "{@feat Oatia Skysage Dedication|GW1}",
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"You armor yourself in the light of distant suns, shielding yourself from harm. The armor grants you resistance 7 to piercing, bludgeoning, and slashing damage. The armor also sheds bright light for 20 feet (and dim light for the next 20 feet). Whenever an adjacent creature attacks you, the attacker must attempt a Will save against your spell DC at the end of its action. On a failure, it becomes {@condition dazzled} until the end of its next turn. Regardless of the result of the save, the attacker is temporarily immune until the end of its next turn. The dazzling effect has the {@trait light} and {@trait visual} traits.",
+				"When you reach 17th level, the resistance increases to 10."
+			]
+		},
+		{
+			"name": "Master Skysage Divination",
+			"source": "GW1",
+			"page": 83,
+			"level": 16,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Expert Skysage Divination|GW1}",
+			"entries": [
+				"You unlock the most powerful secrets hidden in the stars above. You learn a 7th-level spell from any spell list. At 18th level, you learn an 8th-level spell, and at 20th level, you learn a 9th-level spell. Each of these spells must come from the divination school. You gain master proficiency with spell attack rolls and spell DCs for occult spells."
+			]
+		}
+	]
+}

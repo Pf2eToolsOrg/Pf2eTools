@@ -155,7 +155,7 @@
 							"curse"
 						],
 						"entries": [
-							"The creature must succeed at a DC 21 Fortitude save or become {@condition clumsy||clumsy 2} ({@condition clumsy||clumsy 3} on a critical failure) and gain a +1 status bonus to AC as their skin hardens to stone. The {@condition clumsy} condition can be temporarily relieved for 24 hours by casting stone to flesh on the cursed creature but can't be removed or reduced by any other means short of removing the curse; during this time, the cursed creature also no longer receives the status bonus to AC."
+							"The creature must succeed at a {@dc 21} Fortitude save or become {@condition clumsy||clumsy 2} ({@condition clumsy||clumsy 3} on a critical failure) and gain a +1 status bonus to AC as their skin hardens to stone. The {@condition clumsy} condition can be temporarily relieved for 24 hours by casting stone to flesh on the cursed creature but can't be removed or reduced by any other means short of removing the curse; during this time, the cursed creature also no longer receives the status bonus to AC."
 						]
 					},
 					{
@@ -334,7 +334,7 @@
 							"evocation"
 						],
 						"entries": [
-							"The Quantium golem's eyes take on a brilliant glow and it unleashes an arc of destruction dealing {@damage 10d6} fire damage and {@damage 10d6} energy damage (see Twin Defenders) to creatures in a 120-foot line (DC 42 basic Reflex save). The Quantium golem can't use Lambent Beam for {@dice 1d4} rounds."
+							"The Quantium golem's eyes take on a brilliant glow and it unleashes an arc of destruction dealing {@damage 10d6} fire damage and {@damage 10d6} energy damage (see Twin Defenders) to creatures in a 120-foot line ({@dc 42} basic Reflex save). The Quantium golem can't use Lambent Beam for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -526,7 +526,7 @@
 							"evocation"
 						],
 						"entries": [
-							"30 feet. {@damage 5d6} cold damage (DC 41 basic Reflex save). On a failure, the creature takes a \u201315-foot status penalty to its Speeds for 1 round."
+							"30 feet. {@damage 5d6} cold damage ({@dc 41} basic Reflex save). On a failure, the creature takes a \u201315-foot status penalty to its Speeds for 1 round."
 						]
 					},
 					{
@@ -554,7 +554,7 @@
 							"cold"
 						],
 						"entries": [
-							"A creature who takes damage from the benthic reaver's eye beam {@action Strike} must succeed at a DC 41 Fortitude save or become {@condition slowed||slowed 2} as cold stiffens its limbs. A flying creature who fails its save also descends safely to the ground below. This is forced movement."
+							"A creature who takes damage from the benthic reaver's eye beam {@action Strike} must succeed at a {@dc 41} Fortitude save or become {@condition slowed||slowed 2} as cold stiffens its limbs. A flying creature who fails its save also descends safely to the ground below. This is forced movement."
 						]
 					},
 					{
@@ -576,7 +576,7 @@
 						]
 					},
 					{
-						"name": "DC 41",
+						"name": "{@dc 41}",
 						"entries": [
 							"Will save to resist. The benthic reaver can't use Song of the Lost for {@dice 1d4} rounds.",
 							{
@@ -718,7 +718,7 @@
 					{
 						"name": "Wind-Up",
 						"entries": [
-							"24 hours, DC 33, standby"
+							"24 hours, {@dc 33}, standby"
 						]
 					}
 				],
@@ -733,7 +733,7 @@
 							"fire"
 						],
 						"entries": [
-							"The clockwork cannoneer launches an explosive shot up to a range of 200 feet that explodes in a 20-foot burst. Creatures within the burst take {@damage 5d10} bludgeoning damage (DC 36 basic Reflex save)."
+							"The clockwork cannoneer launches an explosive shot up to a range of 200 feet that explodes in a 20-foot burst. Creatures within the burst take {@damage 5d10} bludgeoning damage ({@dc 36} basic Reflex save)."
 						]
 					},
 					{
@@ -752,7 +752,7 @@
 							"fire"
 						],
 						"entries": [
-							"The clockwork cannoneer spews flames from one of its cannons, dealing {@damage 8d6} fire damage in a 30-foot cone (DC 36 basic Reflex save). Those that fail the save also take {@damage 2d6} {@condition persistent damage||persistent fire damage}."
+							"The clockwork cannoneer spews flames from one of its cannons, dealing {@damage 8d6} fire damage in a 30-foot cone ({@dc 36} basic Reflex save). Those that fail the save also take {@damage 2d6} {@condition persistent damage||persistent fire damage}."
 						]
 					}
 				]
@@ -873,7 +873,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. When a creature enters or ends its turn within the cursed king's aura, it must attempt a DC 26 Will save. If it fails, it becomes {@condition frightened||frightened 2}. If it critically fails, it's cowed into submission; in addition to becoming {@condition frightened||frightened 2}, it must use its first action on its turn to kneel or flee from the cursed king. A creature who succeeds at its saving throw becomes immune to the king's false authority for 24 hours."
+							"30 feet. When a creature enters or ends its turn within the cursed king's aura, it must attempt a {@dc 26} Will save. If it fails, it becomes {@condition frightened||frightened 2}. If it critically fails, it's cowed into submission; in addition to becoming {@condition frightened||frightened 2}, it must use its first action on its turn to kneel or flee from the cursed king. A creature who succeeds at its saving throw becomes immune to the king's false authority for 24 hours."
 						]
 					},
 					{
@@ -882,7 +882,7 @@
 							"curse"
 						],
 						"entries": [
-							"When a creature slays a cursed king, it must attempt a DC 29 Will save. On a failure, it suffers the effects of the usurper's curse."
+							"When a creature slays a cursed king, it must attempt a {@dc 29} Will save. On a failure, it suffers the effects of the usurper's curse."
 						]
 					},
 					{
@@ -902,7 +902,7 @@
 						"name": "Berserk",
 						"entries": [
 							"At the beginning of each of its turns in combat, a cursed king must attempt a DC {@flatDC 2} flat check. If it succeeds, the DC increases by 1. If it fails, it immediately goes berserk, becoming mindless for the rest of its turn, immune to all {@trait mental} effects, and attacking the nearest creature it can reach. While it's berserk, each of its unarmed attacks gain the deadly d8 trait. At the end of a turn it failed this flat check or whenever the combat encounter ends, the DC resets to 2.",
-							"Usurper's Curse (curse, necromancy, polymorph) DC 30 Will saving throw. On a failure, the creature who killed the cursed king becomes {@condition stupefied||stupefied 1}. On a critical failure, it becomes {@condition stupefied||stupefied 2}. As long as that creature remains cursed, it can't remove or decrease the value of the {@condition stupefied} condition in any way. Afflicted creatures must attempt the saving throw again every 24 hours, increasing the {@condition stupefied} condition by 1 on a failure or 2 on a critical failure. If the condition ever increases past {@condition stupefied||stupefied 4}, they transform, body and mind, into the same animal as the cursed king's head, similar to the critical failure effect of baleful polymorph."
+							"Usurper's Curse (curse, necromancy, polymorph) {@dc 30} Will saving throw. On a failure, the creature who killed the cursed king becomes {@condition stupefied||stupefied 1}. On a critical failure, it becomes {@condition stupefied||stupefied 2}. As long as that creature remains cursed, it can't remove or decrease the value of the {@condition stupefied} condition in any way. Afflicted creatures must attempt the saving throw again every 24 hours, increasing the {@condition stupefied} condition by 1 on a failure or 2 on a critical failure. If the condition ever increases past {@condition stupefied||stupefied 4}, they transform, body and mind, into the same animal as the cursed king's head, similar to the critical failure effect of baleful polymorph."
 						]
 					}
 				]
@@ -1092,7 +1092,7 @@
 						],
 						"requirements": "The conformer is within reach of an {@condition unconscious} or willing creature, or a creature taking {@condition persistent damage||persistent bleed damage}",
 						"entries": [
-							"The conformer touches and absorbs some of the creature's flesh. The target must attempt a DC 26 Fortitude save; on a failure, they become {@condition drained||drained 1} and take damage from their {@condition persistent damage||persistent bleed damage}, even though it isn't the end of their turn."
+							"The conformer touches and absorbs some of the creature's flesh. The target must attempt a {@dc 26} Fortitude save; on a failure, they become {@condition drained||drained 1} and take damage from their {@condition persistent damage||persistent bleed damage}, even though it isn't the end of their turn."
 						]
 					},
 					{
@@ -1253,7 +1253,7 @@
 						},
 						"trigger": "The fleshforged dreadnought is damaged by a non-reach piercing or slashing melee {@action Strike}",
 						"entries": [
-							"Corrosive fluid sprays the attacker, dealing {@damage 8d6} acid damage (DC 40 basic Reflex save)."
+							"Corrosive fluid sprays the attacker, dealing {@damage 8d6} acid damage ({@dc 40} basic Reflex save)."
 						]
 					}
 				],
@@ -1281,7 +1281,7 @@
 						],
 						"entries": [
 							"The fleshforged dreadnought releases a wave of caustic fluid from vents in its sides.",
-							"Creatures within a 20-foot emanation take {@damage 8d6} acid damage (DC 40 basic Reflex save). Creatures who fail their saves also take {@damage 3d6} {@condition persistent damage||persistent acid damage}."
+							"Creatures within a 20-foot emanation take {@damage 8d6} acid damage ({@dc 40} basic Reflex save). Creatures who fail their saves also take {@damage 3d6} {@condition persistent damage||persistent acid damage}."
 						]
 					},
 					{
@@ -1294,7 +1294,7 @@
 							"attack"
 						],
 						"entries": [
-							"Huge or smaller, battering ram, DC 44"
+							"Huge or smaller, battering ram, {@dc 44}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -1789,7 +1789,7 @@
 							"unit": "day"
 						},
 						"entries": [
-							"The kashrishi evaluator assesses the disharmony between themself and a creature within 30 feet and then sparks the discordance, sending psychic energy to overwhelm the target's feelings. This deals {@damage 6d6} mental damage (DC 21 basic Will save). On a critical failure, the target also becomes {@condition stunned||stunned 1}."
+							"The kashrishi evaluator assesses the disharmony between themself and a creature within 30 feet and then sparks the discordance, sending psychic energy to overwhelm the target's feelings. This deals {@damage 6d6} mental damage ({@dc 21} basic Will save). On a critical failure, the target also becomes {@condition stunned||stunned 1}."
 						]
 					}
 				]
@@ -2056,7 +2056,7 @@
 					{
 						"name": "Combust",
 						"entries": [
-							"Due to the volatile nature of its composition, the gunpowder ooze reacts explosively when exposed to open flame. Any time the gunpowder ooze takes fire damage from a source other than a gunpowder ooze's combust or gunpowder residue, it explodes, dealing {@damage 15d6} fire damage to creatures in a 15- foot emanation including itself (DC 34 basic Reflex save). When the gunpowder ooze combusts, it automatically splits as long as it has 10 or more HP."
+							"Due to the volatile nature of its composition, the gunpowder ooze reacts explosively when exposed to open flame. Any time the gunpowder ooze takes fire damage from a source other than a gunpowder ooze's combust or gunpowder residue, it explodes, dealing {@damage 15d6} fire damage to creatures in a 15- foot emanation including itself ({@dc 34} basic Reflex save). When the gunpowder ooze combusts, it automatically splits as long as it has 10 or more HP."
 						]
 					},
 					{
@@ -2073,7 +2073,7 @@
 							"fire"
 						],
 						"entries": [
-							"A creature hit by the gunpowder ooze's pseudopod or blast is coated in explosive material unless it succeeds at a DC 34 Reflex save. If a creature makes an attack with a firearm, takes fire damage, or uses an action, activity, or item with the {@trait fire} trait while coated with the residue, the residue explodes, dealing {@dice 7d6} damage to the creature and all adjacent creatures (DC 34 basic Reflex save). The residue remains active for 24 hours, until it's ignited, or until it's scrubbed off (an activity that takes at least 10 minutes and requires soap and water). A creature can only be coated with one layer of gunpowder residue at a time."
+							"A creature hit by the gunpowder ooze's pseudopod or blast is coated in explosive material unless it succeeds at a {@dc 34} Reflex save. If a creature makes an attack with a firearm, takes fire damage, or uses an action, activity, or item with the {@trait fire} trait while coated with the residue, the residue explodes, dealing {@dice 7d6} damage to the creature and all adjacent creatures ({@dc 34} basic Reflex save). The residue remains active for 24 hours, until it's ignited, or until it's scrubbed off (an activity that takes at least 10 minutes and requires soap and water). A creature can only be coated with one layer of gunpowder residue at a time."
 						]
 					}
 				]
@@ -2361,7 +2361,7 @@
 						],
 						"requirements": "The spellscar fext's last action was a successful fist {@action Strike}",
 						"entries": [
-							"The spellscar fext attempts a counteract check against a single spell affecting the creature (counteract level 4, counteract modifier +17). If the check is successful, the creature also takes {@damage 6d6} mental damage (DC 25 basic Will save)."
+							"The spellscar fext attempts a counteract check against a single spell affecting the creature (counteract level 4, counteract modifier +17). If the check is successful, the creature also takes {@damage 6d6} mental damage ({@dc 25} basic Will save)."
 						]
 					}
 				]
@@ -2454,7 +2454,7 @@
 					{
 						"name": "Serrated Plates",
 						"entries": [
-							"Creatures who take damage from an ugvashi's body must attempt a DC 17 Reflex save or take {@damage 1d4} {@condition persistent damage||persistent bleed damage} ({@dice 2d4} on a critical failure)."
+							"Creatures who take damage from an ugvashi's body must attempt a {@dc 17} Reflex save or take {@damage 1d4} {@condition persistent damage||persistent bleed damage} ({@dice 2d4} on a critical failure)."
 						]
 					}
 				]

@@ -103,7 +103,7 @@
 						},
 						"trigger": "A creature within the alapolo's reach attempts to move away from the alapolo",
 						"entries": [
-							"The triggering creature must succeed at a DC 36 Reflex save or its movement ends before it leaves the alopolo's reach."
+							"The triggering creature must succeed at a {@dc 36} Reflex save or its movement ends before it leaves the alopolo's reach."
 						]
 					}
 				],
@@ -121,7 +121,7 @@
 							"primal"
 						],
 						"entries": [
-							"The alapolo whispers an invitation to a creature within 30 feet. The creature must attempt a DC 38 Will save.",
+							"The alapolo whispers an invitation to a creature within 30 feet. The creature must attempt a {@dc 38} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -297,7 +297,7 @@
 							"mental"
 						],
 						"entries": [
-							"The alate ant sprays a cloud of pheromones in a 15-foot cone. Non-ant creatures in the cone must succeed at a DC 37 Will save or become {@condition confused} for {@dice 1d4} rounds (1 minute on a critical failure). It can't use Pheromone Spray again for {@dice 1d4} rounds."
+							"The alate ant sprays a cloud of pheromones in a 15-foot cone. Non-ant creatures in the cone must succeed at a {@dc 37} Will save or become {@condition confused} for {@dice 1d4} rounds (1 minute on a critical failure). It can't use Pheromone Spray again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -326,7 +326,7 @@
 							"poison"
 						],
 						"entries": [
-							"As red guard ant, but DC 37.",
+							"As red guard ant, but {@dc 37}.",
 							"While a creature is {@condition enfeebled} from this poison, it is {@condition confused} (this confusion is an emotion, {@trait enchantment}, and {@trait mental} effect)."
 						]
 					}
@@ -427,7 +427,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the swarm's space takes {@damage 7d8} piercing damage (DC 39 basic Fortitude save). A creature that fails its save against Swarming Bites becomes {@condition clumsy||clumsy 1} for 1 round (1 minute on a critical failure). If the creature attempts a concentrate or manipulate action while affected, it must succeed at a DC {@flatDC 5} flat check or the action is lost; roll the check after spending the action, but before {@trait any} effects are applied."
+							"Each enemy in the swarm's space takes {@damage 7d8} piercing damage ({@dc 39} basic Fortitude save). A creature that fails its save against Swarming Bites becomes {@condition clumsy||clumsy 1} for 1 round (1 minute on a critical failure). If the creature attempts a concentrate or manipulate action while affected, it must succeed at a DC {@flatDC 5} flat check or the action is lost; roll the check after spending the action, but before {@trait any} effects are applied."
 						]
 					}
 				]
@@ -621,7 +621,7 @@
 							"primal"
 						],
 						"entries": [
-							"The Aspect of Hunger breathes a blast in a 60-foot cone that deals {@damage 18d6} mental damage to all creatures in the area (DC 41 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+							"The Aspect of Hunger breathes a blast in a 60-foot cone that deals {@damage 18d6} mental damage to all creatures in the area ({@dc 41} basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -953,7 +953,7 @@
 							"primal"
 						],
 						"entries": [
-							"The Aspect of Insects breathes a blast of energy from one of its three heads; each creature in the area must attempt a DC 42 basic Reflex save. The Aspect of Insects can't use Breath Weapon again for {@dice 1d4} rounds.",
+							"The Aspect of Insects breathes a blast of energy from one of its three heads; each creature in the area must attempt a {@dc 42} basic Reflex save. The Aspect of Insects can't use Breath Weapon again for {@dice 1d4} rounds.",
 							{
 								"type": "list",
 								"items": [
@@ -977,7 +977,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Aspect of Insects makes two {@action Strike||Strikes} with different maws against the same target. If both hit, the target takes an extra {@damage 2d12+13} slashing damage (DC 42 basic Fortitude save). On a critical failure, the creature is torn to pieces and dies. The Aspect of Insect's multiple attack penalty increases only after all the attacks are made."
+							"The Aspect of Insects makes two {@action Strike||Strikes} with different maws against the same target. If both hit, the target takes an extra {@damage 2d12+13} slashing damage ({@dc 42} basic Fortitude save). On a critical failure, the creature is torn to pieces and dies. The Aspect of Insect's multiple attack penalty increases only after all the attacks are made."
 						]
 					},
 					{
@@ -1000,7 +1000,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, leg, DC 42"
+							"Huge or smaller, leg, {@dc 42}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -1224,7 +1224,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"90 feet. The chromatic ooze emanates noxious chemicals into the environment. A creature that enters the aura or starts its turn within it is {@condition sickened||sickened 1} unless it succeeds at a DC 37 Fortitude save. Creatures with the scent ability or a particularly heightened sense of smell are {@condition sickened||sickened 2}, or {@condition sickened||sickened 1} on a successful Fortitude save. Creatures in the aura can't recover from the {@condition sickened} condition."
+							"90 feet. The chromatic ooze emanates noxious chemicals into the environment. A creature that enters the aura or starts its turn within it is {@condition sickened||sickened 1} unless it succeeds at a {@dc 37} Fortitude save. Creatures with the scent ability or a particularly heightened sense of smell are {@condition sickened||sickened 2}, or {@condition sickened||sickened 1} on a successful Fortitude save. Creatures in the aura can't recover from the {@condition sickened} condition."
 						]
 					},
 					{
@@ -1254,7 +1254,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 3d10+13} bludgeoning, DC 40"
+							"{@damage 3d10+13} bludgeoning, {@dc 40}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -1365,7 +1365,7 @@
 					{
 						"name": "Wind-Up",
 						"entries": [
-							"1 week, DC 40 (Bestiary 3 48)"
+							"1 week, {@dc 40} (Bestiary 3 48)"
 						]
 					}
 				],
@@ -1389,7 +1389,7 @@
 						],
 						"trigger": "The clockwork clock tower rolls initiative",
 						"entries": [
-							"The clock tower chimes, and all non-clockwork creatures within 300 feet who can hear it must succeed at a DC 42 Will save or be {@condition slowed||slowed 1} for 1 round ({@condition slowed||slowed 2} on a critical failure)."
+							"The clock tower chimes, and all non-clockwork creatures within 300 feet who can hear it must succeed at a {@dc 42} Will save or be {@condition slowed||slowed 1} for 1 round ({@condition slowed||slowed 2} on a critical failure)."
 						]
 					}
 				],
@@ -1412,7 +1412,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"A creature struck by a clockwork clock tower's fist must make a DC 40 Will save as time flows unevenly around it.",
+							"A creature struck by a clockwork clock tower's fist must make a {@dc 40} Will save as time flows unevenly around it.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1443,7 +1443,7 @@
 							"attack"
 						],
 						"entries": [
-							"Huge or smaller, foot, DC 42"
+							"Huge or smaller, foot, {@dc 42}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -1581,7 +1581,7 @@
 						},
 						"trigger": "The crawling slurry takes bludgeoning damage from a creature it can sense within 10 feet",
 						"entries": [
-							"The crawling slurry ejects a splash of acid onto the creature, dealing acid damage equal to the bludgeoning damage dealt to the crawling slurry (DC 37 basic Reflex)."
+							"The crawling slurry ejects a splash of acid onto the creature, dealing acid damage equal to the bludgeoning damage dealt to the crawling slurry ({@dc 37} basic Reflex)."
 						]
 					}
 				],
@@ -1593,7 +1593,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d10+3} bludgeoning plus {@damage 2d8} acid, DC 37"
+							"{@damage 2d10+3} bludgeoning plus {@damage 2d8} acid, {@dc 37}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -1612,7 +1612,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"DC 37, {@damage 5d10} acid, {@action Escape} DC 37, Rupture 20. A crawling slurry regains 30 Hit Points if a living creature it is engulfing dies."
+							"{@dc 37}, {@damage 5d10} acid, {@action Escape} {@dc 37}, Rupture 20. A crawling slurry regains 30 Hit Points if a living creature it is engulfing dies."
 						],
 						"generic": {
 							"tag": "ability"
@@ -1818,7 +1818,7 @@
 							"primal"
 						],
 						"entries": [
-							"20 feet. The hivebound arboreal is host to a cloud of flying ants that swarm around it and gnaw at any creature within the aura. Non-arboreal creatures that enter the aura or start their turn within it take {@damage 7d8} piercing damage from the bites (DC 38 basic Fortitude save). If the hivebound arboreal fails a saving throw against an area effect, the biting ants die off, and the aura is deactivated until new ants swarm out at the end of the hivebound arboreal's next turn (or after 1 minute, if the hivebound arboreal critically fails it saving throw)."
+							"20 feet. The hivebound arboreal is host to a cloud of flying ants that swarm around it and gnaw at any creature within the aura. Non-arboreal creatures that enter the aura or start their turn within it take {@damage 7d8} piercing damage from the bites ({@dc 38} basic Fortitude save). If the hivebound arboreal fails a saving throw against an area effect, the biting ants die off, and the aura is deactivated until new ants swarm out at the end of the hivebound arboreal's next turn (or after 1 minute, if the hivebound arboreal critically fails it saving throw)."
 						]
 					}
 				],
@@ -1830,7 +1830,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 4d6+16} bludgeoning, DC 41"
+							"{@damage 4d6+16} bludgeoning, {@dc 41}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -1985,7 +1985,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 4d6+20} bludgeoning, DC 44"
+							"{@damage 4d6+20} bludgeoning, {@dc 44}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -2002,7 +2002,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The ironclad annihilator beetle stomps the ground. All creatures within a 30-foot emanation must succeed at a DC 44 Fortitude saving throw or fall {@condition prone} and become {@condition stunned||stunned 1} ({@condition stunned} for 1 round on a critical failure)."
+							"The ironclad annihilator beetle stomps the ground. All creatures within a 30-foot emanation must succeed at a {@dc 44} Fortitude saving throw or fall {@condition prone} and become {@condition stunned||stunned 1} ({@condition stunned} for 1 round on a critical failure)."
 						]
 					},
 					{
@@ -2014,7 +2014,7 @@
 						"requirements": "The ironclad annihilator beetle has a creature {@condition grabbed}",
 						"entries": [
 							"The ironclad annihilator injects its ovipositor under the {@condition grabbed} creature's skin.",
-							"The creature takes {@damage 4d6+20} bludgeoning damage (DC 44 basic Fortitude save). On a failed save, the beetle implants an egg, and the target creature takes {@damage 4d6} {@condition persistent damage||persistent bleed damage} that is unusually tenacious. The DC to stop the bleeding using {@action Administer First Aid} is 40, and healing the creature to full Hit Points doesn't automatically stop the bleeding. If the target creature dies from this bleed damage, its body is destroyed and unrecoverable except with powerful magic such as miracle or wish, and an immature ironclad annihilator beetle (with statistics as a giant stag beetle; Pathfinder Bestiary 41) bursts forth."
+							"The creature takes {@damage 4d6+20} bludgeoning damage ({@dc 44} basic Fortitude save). On a failed save, the beetle implants an egg, and the target creature takes {@damage 4d6} {@condition persistent damage||persistent bleed damage} that is unusually tenacious. The DC to stop the bleeding using {@action Administer First Aid} is 40, and healing the creature to full Hit Points doesn't automatically stop the bleeding. If the target creature dies from this bleed damage, its body is destroyed and unrecoverable except with powerful magic such as miracle or wish, and an immature ironclad annihilator beetle (with statistics as a giant stag beetle; Pathfinder Bestiary 41) bursts forth."
 						]
 					},
 					{
@@ -2030,7 +2030,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, foot, DC 44"
+							"Huge or smaller, foot, {@dc 44}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -2145,7 +2145,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The golem Strides up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can try to bar the way by attempting a DC 43 Fortitude save.",
+							"The golem Strides up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can try to bar the way by attempting a {@dc 43} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2187,7 +2187,7 @@
 							"fire"
 						],
 						"entries": [
-							"The golem vents a 30-foot cone of fiery splinters from its internal forge. This deals {@damage 13d6} piercing damage to all creatures in the cone (DC 38 basic Reflex save). Creatures who fail the save also take {@damage 2d6} {@condition persistent damage||persistent fire damage} ({@damage 4d6} {@condition persistent damage||persistent fire damage} on a critical failure). The golem can't use Vent Splinters again for {@dice 1d4} rounds."
+							"The golem vents a 30-foot cone of fiery splinters from its internal forge. This deals {@damage 13d6} piercing damage to all creatures in the cone ({@dc 38} basic Reflex save). Creatures who fail the save also take {@damage 2d6} {@condition persistent damage||persistent fire damage} ({@damage 4d6} {@condition persistent damage||persistent fire damage} on a critical failure). The golem can't use Vent Splinters again for {@dice 1d4} rounds."
 						]
 					}
 				]
@@ -2345,7 +2345,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@dice 5d10}, DC 38. Before using Constrict, the ant can choose to smash one creature that it has {@condition Grabbed} or {@condition restrained} against the ground. That creature uses the result one degree of success worse than its Fortitude save result against Constrict, but it is then no longer {@condition grabbed} or {@condition restrained} by the ant."
+							"{@dice 5d10}, {@dc 38}. Before using Constrict, the ant can choose to smash one creature that it has {@condition Grabbed} or {@condition restrained} against the ground. That creature uses the result one degree of success worse than its Fortitude save result against Constrict, but it is then no longer {@condition grabbed} or {@condition restrained} by the ant."
 						],
 						"generic": {
 							"tag": "ability"
@@ -2371,7 +2371,7 @@
 							"poison"
 						],
 						"entries": [
-							"As red guard ant, but DC 38."
+							"As red guard ant, but {@dc 38}."
 						]
 					},
 					{
@@ -2518,7 +2518,7 @@
 							"primal"
 						],
 						"entries": [
-							"The red guard ant sprays a 15-foot cone of acid from its abdomen that deals {@damage 10d10} acid damage (DC 34 basic Reflex save). It can't use Formic Acid Spray again for {@dice 1d4} rounds."
+							"The red guard ant sprays a 15-foot cone of acid from its abdomen that deals {@damage 10d10} acid damage ({@dc 34} basic Reflex save). It can't use Formic Acid Spray again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -2729,7 +2729,7 @@
 						"name": "Practiced Subterfuge When the Red",
 						"entries": [
 							"Queen makes a {@skill Deception} check to {@action Feint}, she compares her result to the Will DC of each enemy within 30 feet to determine the effect against that enemy. On a critical success, the creature is {@condition flat-footed} to all melee attacks, not just melee attacks from the Red Queen, until the end of her next turn.",
-							"Red Ant Venom (poison) As red guard ant (page 72), but DC 40."
+							"Red Ant Venom (poison) As red guard ant (page 72), but {@dc 40}."
 						]
 					}
 				]
@@ -3034,7 +3034,7 @@
 						],
 						"requirements": "Shianshi has a creature {@condition grabbed} with her shadow whip",
 						"entries": [
-							"The {@condition grabbed} creature must succeed at a DC 41 Fortitude save or become {@condition drained||drained 2} ({@condition drained||drained 3} on a critical failure). If the creature is already {@condition drained}, this increases its {@condition drained} value instead, to a maximum of {@condition drained||drained 4}."
+							"The {@condition grabbed} creature must succeed at a {@dc 41} Fortitude save or become {@condition drained||drained 2} ({@condition drained||drained 3} on a critical failure). If the creature is already {@condition drained}, this increases its {@condition drained} value instead, to a maximum of {@condition drained||drained 4}."
 						]
 					}
 				]
@@ -3233,7 +3233,7 @@
 							"sonic"
 						],
 						"entries": [
-							"The slana emits a deafening roar. All creatures within a 100-foot cone take {@damage 16d8} sonic damage (DC 44 basic Reflex saving throw). On a failed save, a creature is also {@condition deafened} for 1 minute and {@condition stunned||stunned 1} (or {@condition deafened} permanently and {@condition stunned||stunned 3} on a critical failure). The slana can't use Great Roar again for {@dice 1d4} rounds."
+							"The slana emits a deafening roar. All creatures within a 100-foot cone take {@damage 16d8} sonic damage ({@dc 44} basic Reflex saving throw). On a failed save, a creature is also {@condition deafened} for 1 minute and {@condition stunned||stunned 1} (or {@condition deafened} permanently and {@condition stunned||stunned 3} on a critical failure). The slana can't use Great Roar again for {@dice 1d4} rounds."
 						]
 					},
 					{
@@ -3249,7 +3249,7 @@
 					{
 						"name": "Thunder Trap",
 						"entries": [
-							"A creature hit by the slana's thunderclap attack is {@condition immobilized} and held in place by reverberations of sound until it Escapes or Forces Open the bonds of thunder that constrain it (DC 44). The target is {@condition deafened} as long as it is {@condition immobilized} by a thunder trap."
+							"A creature hit by the slana's thunderclap attack is {@condition immobilized} and held in place by reverberations of sound until it Escapes or Forces Open the bonds of thunder that constrain it ({@dc 44}). The target is {@condition deafened} as long as it is {@condition immobilized} by a thunder trap."
 						]
 					}
 				]
@@ -3393,7 +3393,7 @@
 						"trigger": "a non\u2013cold iron metal object damages the ta'apundo",
 						"entries": [
 							"The ta'apundo emits a jolt of magic into the object, transforming it into wood with an unlimited duration.",
-							"A thrown weapon, ammunition, or other unattended item automatically transforms; the wielder of an attended object can resist this effect with a successful DC 41 Fortitude save. Dispel magic can end the effect. While a weapon is wood, the ta'apundo's resistance applies. Once transformed, a formerly metal item's Hardness and HP change to those of wood. This typically inflicts a \u20132 circumstance penalty to attack rolls made with metal weapons and a \u20132 circumstance penalty to AC for those wearing metal armor; the GM might determine a different penalty for a specific weapon or armor."
+							"A thrown weapon, ammunition, or other unattended item automatically transforms; the wielder of an attended object can resist this effect with a successful {@dc 41} Fortitude save. Dispel magic can end the effect. While a weapon is wood, the ta'apundo's resistance applies. Once transformed, a formerly metal item's Hardness and HP change to those of wood. This typically inflicts a \u20132 circumstance penalty to attack rolls made with metal weapons and a \u20132 circumstance penalty to AC for those wearing metal armor; the GM might determine a different penalty for a specific weapon or armor."
 						]
 					}
 				],
@@ -3680,7 +3680,7 @@
 							"occult"
 						],
 						"entries": [
-							"When Tatterthread deals acid damage with a {@action Strike}, she regains 10 Hit Points. The target must succeed at a DC 39 Fortitude save or become {@condition doomed||doomed 1} ({@condition doomed||doomed 2} on a critical failure)."
+							"When Tatterthread deals acid damage with a {@action Strike}, she regains 10 Hit Points. The target must succeed at a {@dc 39} Fortitude save or become {@condition doomed||doomed 1} ({@condition doomed||doomed 2} on a critical failure)."
 						]
 					},
 					{
@@ -3701,7 +3701,7 @@
 							"unit": "day"
 						},
 						"entries": [
-							"Tatterthread produces a scrap of shadow linked to the fate of a creature within 100 feet of her, then snips it with her caustic shears. The target takes 100 acid damage (DC 42 basic Fortitude save). If the target is reduced to 0 Hit Points from this damage, it melts into a puddle of fetid acid and dies immediately.",
+							"Tatterthread produces a scrap of shadow linked to the fate of a creature within 100 feet of her, then snips it with her caustic shears. The target takes 100 acid damage ({@dc 42} basic Fortitude save). If the target is reduced to 0 Hit Points from this damage, it melts into a puddle of fetid acid and dies immediately.",
 							"If the target failed the saving throw, it loses any acid resistance it has for 1 minute (1 day on a critical failure). A creature slain by Shadow Snip can't be restored to life except by miracle, wish, or similarly powerful magic, or by divine intervention.",
 							"Regardless of the outcome of its save, a creature targeted by Shadow Snip becomes temporarily immune for 24 hours. The norn can't use Shadow Snip again for {@dice 1d4} rounds."
 						]
@@ -5262,7 +5262,7 @@
 							"unit": "day"
 						},
 						"entries": [
-							"Mariama ties her fate with that of another creature within 30 feet. The creature must attempt a DC 40 Will save. Regardless of the result of its save, the creature is temporarily immune for 1 day.",
+							"Mariama ties her fate with that of another creature within 30 feet. The creature must attempt a {@dc 40} Will save. Regardless of the result of its save, the creature is temporarily immune for 1 day.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -5270,13 +5270,13 @@
 										"The creature is unaffected."
 									],
 									"Success": [
-										"The two fates are bound. Whenever Mariama takes damage, the creature takes damage of the same type equal to half the damage Mariama took (DC 37 basic Fortitude save). Immunities, resistances, and weaknesses still apply as normal. The creature can attempt to sever the bond by spending an action, which has the {@trait concentrate} trait, to attempt another DC 40 Will save. On a success, the bond is severed, and the effect ends. The bond also ends when Mariama falls {@condition unconscious}, or if she actively ends the effect herself as a free action."
+										"The two fates are bound. Whenever Mariama takes damage, the creature takes damage of the same type equal to half the damage Mariama took ({@dc 37} basic Fortitude save). Immunities, resistances, and weaknesses still apply as normal. The creature can attempt to sever the bond by spending an action, which has the {@trait concentrate} trait, to attempt another {@dc 40} Will save. On a success, the bond is severed, and the effect ends. The bond also ends when Mariama falls {@condition unconscious}, or if she actively ends the effect herself as a free action."
 									],
 									"Failure": [
 										"As success, but the creature takes damage equal to the full amount Mariama took. Severing the bond requires a 2-action activity, which has the {@trait concentrate} trait."
 									],
 									"Critical Failure": [
-										"As failure, but the basic Fortitude save is DC 40. Severing the bond requires a 3-action activity, which has the {@trait concentrate} trait."
+										"As failure, but the basic Fortitude save is {@dc 40}. Severing the bond requires a 3-action activity, which has the {@trait concentrate} trait."
 									]
 								}
 							}
@@ -5670,7 +5670,7 @@
 							"shadow"
 						],
 						"entries": [
-							"Okoro can create immense blisters on a creature's shadow, which immediately burst, dealing {@damage 20d6} acid damage. He targets a creature within 60 feet that is casting a shadow, which must attempt a DC 37 Will save.",
+							"Okoro can create immense blisters on a creature's shadow, which immediately burst, dealing {@damage 20d6} acid damage. He targets a creature within 60 feet that is casting a shadow, which must attempt a {@dc 37} Will save.",
 							"Okoro can't use Rupture Shadow again for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
@@ -5909,7 +5909,7 @@
 					{
 						"name": "Staggering Blow",
 						"entries": [
-							"A creature damaged by the wereant disciple's carapace fist {@action Strike} must succeed at a DC 35 Fortitude save or become {@condition stunned||stunned 1} ({@condition stunned||stunned 2} on a critical failure). If the {@action Strike} is a critical hit, a creature that fails the save is also {@condition paralyzed} for 1 round."
+							"A creature damaged by the wereant disciple's carapace fist {@action Strike} must succeed at a {@dc 35} Fortitude save or become {@condition stunned||stunned 1} ({@condition stunned||stunned 2} on a critical failure). If the {@action Strike} is a critical hit, a creature that fails the save is also {@condition paralyzed} for 1 round."
 						]
 					}
 				]

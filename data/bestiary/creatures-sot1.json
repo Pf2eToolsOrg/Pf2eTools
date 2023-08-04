@@ -745,8 +745,8 @@
 						},
 						{
 							"mode": "replaceTxt",
-							"replace": "DC 13 Reflex",
-							"with": "DC 15 Reflex"
+							"replace": "{@dc 13} Reflex",
+							"with": "{@dc 15} Reflex"
 						}
 					],
 					"traits": {
@@ -1460,7 +1460,7 @@
 						},
 						"trigger": "A creature {@action Stride||Strides} or {@action Step||Steps} into {@quickref difficult terrain||3|terrain} adjacent to the gnagrif",
 						"entries": [
-							"The gnagrif gives the ground a hearty pound and it shifts beneath the triggering creature's feet. The triggering creature must succeed on a DC 18 Reflex save or fall {@condition prone}."
+							"The gnagrif gives the ground a hearty pound and it shifts beneath the triggering creature's feet. The triggering creature must succeed on a {@dc 18} Reflex save or fall {@condition prone}."
 						],
 						"name": "Soften Stone"
 					}
@@ -1698,7 +1698,7 @@
 							"primal"
 						],
 						"entries": [
-							"20 feet. Creatures other than animals, gremlins, and gnolls in the aura become extremely unlucky (DC 20 Will save; a creature must roll this Will save twice and take the worse result). On a successful save, the creature is temporarily immune to pugwampi unluck auras for 24 hours. On a failure, the creature must roll twice and take the worse result on all checks as long as it remains within the aura's emanation."
+							"20 feet. Creatures other than animals, gremlins, and gnolls in the aura become extremely unlucky ({@dc 20} Will save; a creature must roll this Will save twice and take the worse result). On a successful save, the creature is temporarily immune to pugwampi unluck auras for 24 hours. On a failure, the creature must roll twice and take the worse result on all checks as long as it remains within the aura's emanation."
 						],
 						"name": "Unluck Aura"
 					}
@@ -2157,7 +2157,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Each enemy in the silverfish swarm's space takes {@damage 1d4} piercing damage (DC 14 basic Fortitude save). A creature that fails its save is {@condition sickened|CRB|sickened 1}."
+							"Each enemy in the silverfish swarm's space takes {@damage 1d4} piercing damage ({@dc 14} basic Fortitude save). A creature that fails its save is {@condition sickened|CRB|sickened 1}."
 						],
 						"name": "Swarming Bites"
 					},
@@ -2308,7 +2308,7 @@
 						],
 						"requirements": "The spellskein is folded into its lizard shape",
 						"entries": [
-							"The spellskein puffs out its cloth frills and shakes them from side to side to look fierce. The first creature hit by its sharp edge {@action Strike} before the start of its next turn must succeed on a DC 14 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
+							"The spellskein puffs out its cloth frills and shakes them from side to side to look fierce. The first creature hit by its sharp edge {@action Strike} before the start of its next turn must succeed on a {@dc 14} Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
 						],
 						"name": "Lizard Frill"
 					},
@@ -2540,7 +2540,7 @@
 						],
 						"requirements": "A foe within Stone Ghost's reach is standing on stone or soil",
 						"entries": [
-							"Stone Ghost briefly extends his intangibility to a foe and drags or pounds them into the earth. He makes an {@skill Athletics} check against the target's Fortitude DC. On a success, the foe is planted waist-deep in the ground and is {@condition immobilized} and {@condition flat-footed} until it Escapes (DC 22). On a critical success, the foe is completely buried and must hold its breath until it is free or else start suffocating. A successful {@action Escape} returns the foe to its original square on the surface, or the closest unoccupied square."
+							"Stone Ghost briefly extends his intangibility to a foe and drags or pounds them into the earth. He makes an {@skill Athletics} check against the target's Fortitude DC. On a success, the foe is planted waist-deep in the ground and is {@condition immobilized} and {@condition flat-footed} until it Escapes ({@dc 22}). On a critical success, the foe is completely buried and must hold its breath until it is free or else start suffocating. A successful {@action Escape} returns the foe to its original square on the surface, or the closest unoccupied square."
 						],
 						"name": "Entombing Grasp"
 					}
@@ -2879,7 +2879,7 @@
 							"primal"
 						],
 						"entries": [
-							"Umbo targets one creature affected by purple pox within 30 feet. That creature must attempt a DC 18 Will save. It is then temporarily immune to spore domination for 10 minutes.",
+							"Umbo targets one creature affected by purple pox within 30 feet. That creature must attempt a {@dc 18} Will save. It is then temporarily immune to spore domination for 10 minutes.",
 							{
 								"type": "successDegree",
 								"entries": {

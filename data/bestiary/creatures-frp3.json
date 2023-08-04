@@ -252,7 +252,7 @@
 						],
 						"requirements": "Abbot Tsujon's khakkhara holds a glowing orb from Absorb Worldly Influence",
 						"entries": [
-							"Abbot Tsujon strikes her prayer staff once upon the ground, releasing the energy she captured in it along with the jingling of its rings. She blasts a wave of force in a 30- foot emanation, dealing {@damage 2d6} force damage per level of the ability she counteracted (DC 40 basic Reflex save). If the ability she counteracted usually deals energy damage, she can choose to deal this type of damage instead (for instance, if she used Absorb Worldly Influence to counteract a fireball, she could deal either fire or force damage)."
+							"Abbot Tsujon strikes her prayer staff once upon the ground, releasing the energy she captured in it along with the jingling of its rings. She blasts a wave of force in a 30- foot emanation, dealing {@damage 2d6} force damage per level of the ability she counteracted ({@dc 40} basic Reflex save). If the ability she counteracted usually deals energy damage, she can choose to deal this type of damage instead (for instance, if she used Absorb Worldly Influence to counteract a fireball, she could deal either fire or force damage)."
 						],
 						"name": "Release Worldly Passions"
 					},
@@ -263,7 +263,7 @@
 						},
 						"entries": [
 							"Frequency once per round; Abbot Tsujon makes two {@action Strike||Strikes}, each of which must be an unarmed {@action Strike} or crying temple bell {@action Strike}.",
-							"If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. If either {@action Strike} hits and deals damage, the target must succeed at a DC 39 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
+							"If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. If either {@action Strike} hits and deals damage, the target must succeed at a {@dc 39} Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
 						],
 						"name": "Stunning Flurry"
 					}
@@ -615,7 +615,7 @@
 						],
 						"trigger": "The bul-gae takes damage",
 						"entries": [
-							"The bul-gae releases a solar flare in a 30-foot emanation. Each creature in the area takes {@damage 6d8} fire damage (DC 34 basic Reflex save). On a critical failure, a creature also takes {@damage 2d10} {@condition persistent damage||persistent fire damage}. After using this ability, the bul-gae's flames cool and they can't use Solar Flare again until after they have used Lunar Burst."
+							"The bul-gae releases a solar flare in a 30-foot emanation. Each creature in the area takes {@damage 6d8} fire damage ({@dc 34} basic Reflex save). On a critical failure, a creature also takes {@damage 2d10} {@condition persistent damage||persistent fire damage}. After using this ability, the bul-gae's flames cool and they can't use Solar Flare again until after they have used Lunar Burst."
 						],
 						"name": "Solar Flare"
 					}
@@ -632,7 +632,7 @@
 							"occult"
 						],
 						"entries": [
-							"The bul-gae releases a blast of otherworldly frost that deals {@damage 6d8} cold damage to each creature in a 10-foot emanation (DC 34 basic Reflex save). On a critical failure, a creature also becomes {@condition slowed|CRB|slowed 2}. After using this ability, the bul-gae's flames heat up and they can't use Lunar Burst again until after they have used Solar Flare."
+							"The bul-gae releases a blast of otherworldly frost that deals {@damage 6d8} cold damage to each creature in a 10-foot emanation ({@dc 34} basic Reflex save). On a critical failure, a creature also becomes {@condition slowed|CRB|slowed 2}. After using this ability, the bul-gae's flames heat up and they can't use Lunar Burst again until after they have used Solar Flare."
 						],
 						"name": "Lunar Burst"
 					},
@@ -856,7 +856,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The canopy elder launches a rapidly growing net of fungus from the mushrooms growing on its body at a single creature within 80 feet. The target must attempt a DC 39 Reflex save or become {@condition restrained} by the fungal web ({@action Escape} DC 39). While {@condition restrained}, the creature takes {@damage 4d6} poison damage at the end of each of their turns."
+							"The canopy elder launches a rapidly growing net of fungus from the mushrooms growing on its body at a single creature within 80 feet. The target must attempt a {@dc 39} Reflex save or become {@condition restrained} by the fungal web ({@action Escape} {@dc 39}). While {@condition restrained}, the creature takes {@damage 4d6} poison damage at the end of each of their turns."
 						],
 						"name": "Fungal Web"
 					},
@@ -866,7 +866,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The canopy elder releases a dense cloud of pollen from the epiphytes living in its branches. The cloud emanates from the canopy elder in a 40-foot emanation. The cloud doesn't move with the canopy elder and remains in place for {@dice 1d6} rounds before dissipating. Creatures inside the cloud become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. Non-plant and non-fungus creatures within the cloud must attempt a DC 38 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 3}, and on a critical failure the creature is also {@condition blinded} for 1 minute. Regardless of the result, a creature is then temporarily immune to the sickening and blinding effects of the canopy elder's pollen for 24 hours."
+							"The canopy elder releases a dense cloud of pollen from the epiphytes living in its branches. The cloud emanates from the canopy elder in a 40-foot emanation. The cloud doesn't move with the canopy elder and remains in place for {@dice 1d6} rounds before dissipating. Creatures inside the cloud become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. Non-plant and non-fungus creatures within the cloud must attempt a {@dc 38} Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 3}, and on a critical failure the creature is also {@condition blinded} for 1 minute. Regardless of the result, a creature is then temporarily immune to the sickening and blinding effects of the canopy elder's pollen for 24 hours."
 						],
 						"name": "Pollen Cloud"
 					},
@@ -1090,10 +1090,10 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet. As kirin, but DC 39. Cloudsplitter allows anyone involved in the player character's bout with Jin-Hae to use {@condition hostile} actions without a Will save."
+							"60 feet. As kirin, but {@dc 39}. Cloudsplitter allows anyone involved in the player character's bout with Jin-Hae to use {@condition hostile} actions without a Will save."
 						],
 						"name": "Peaceful Aura",
-						"entries_as_xyz": "Ability not found: 'Peaceful Aura As kirin, but DC 39. Cloudsplitter allows anyone involved in the player character's bout with Jin-Hae to use {@condition hostile} actions without a Will save.' in Cloudsplitter, p.19"
+						"entries_as_xyz": "Ability not found: 'Peaceful Aura As kirin, but {@dc 39}. Cloudsplitter allows anyone involved in the player character's bout with Jin-Hae to use {@condition hostile} actions without a Will save.' in Cloudsplitter, p.19"
 					},
 					{
 						"activity": {
@@ -1125,7 +1125,7 @@
 							"fire"
 						],
 						"entries": [
-							"Cloudsplitter breathes fire in a 30-foot cone, dealing {@damage 18d6} fire damage (DC 40 basic Reflex save). Cloudsplitter can't use Breath Weapon again for {@dice 1d4} rounds."
+							"Cloudsplitter breathes fire in a 30-foot cone, dealing {@damage 18d6} fire damage ({@dc 40} basic Reflex save). Cloudsplitter can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -1146,7 +1146,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Medium or smaller, phantom hoof, DC 40"
+							"Medium or smaller, phantom hoof, {@dc 40}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -1255,7 +1255,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet. The night parade sweeps up those nearby in a riotous celebration. All creatures in the aura must attempt a DC 39 Will save. The target is then temporarily immune for 10 minutes.",
+							"60 feet. The night parade sweeps up those nearby in a riotous celebration. All creatures in the aura must attempt a {@dc 39} Will save. The target is then temporarily immune for 10 minutes.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1300,7 +1300,7 @@
 							"sonic"
 						],
 						"entries": [
-							"The night parade shouts a series of energetic call-and-responses, dealing {@damage 3d10} sonic damage and {@damage 4d6} mental damage to all creatures in a 10-foot burst within 20 feet (DC 41 basic Will save). If the troop is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
+							"The night parade shouts a series of energetic call-and-responses, dealing {@damage 3d10} sonic damage and {@damage 4d6} mental damage to all creatures in a 10-foot burst within 20 feet ({@dc 41} basic Will save). If the troop is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
 						],
 						"name": "Seiya! Soiya!"
 					},
@@ -1331,7 +1331,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The night parade dances with wild abandon, unintentionally striking nearby creatures. It deals damage to each adjacent creature (DC 41 basic Reflex save), and any creature that fails its save is pushed 10 feet in any direction as the night parade bounces it overhead. The damage depends on the number of actions.",
+							"The night parade dances with wild abandon, unintentionally striking nearby creatures. It deals damage to each adjacent creature ({@dc 41} basic Reflex save), and any creature that fails its save is pushed 10 feet in any direction as the night parade bounces it overhead. The damage depends on the number of actions.",
 							"{@as 1} {@damage 1d10+7} bludgeoning damage",
 							"{@as 2} {@damage 4d10+14} bludgeoning damage",
 							"{@as 3} {@damage 6d10+14} bludgeoning damage"
@@ -1476,7 +1476,7 @@
 						],
 						"entries": [
 							"40 feet. Desecrated guardians exude a palpable malice that nauseates all but the most wicked passersby.",
-							"Non-evil creatures that enter the aura must attempt a DC 37 Will save. On a failure, the creature becomes {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). In addition, any non-evil creatures that attempt to {@action Cast a Spell} within the aura must succeed at a DC {@flatDC 5} flat check or the spell is lost."
+							"Non-evil creatures that enter the aura must attempt a {@dc 37} Will save. On a failure, the creature becomes {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). In addition, any non-evil creatures that attempt to {@action Cast a Spell} within the aura must succeed at a DC {@flatDC 5} flat check or the spell is lost."
 						],
 						"name": "Desecration Aura"
 					},
@@ -1501,7 +1501,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The desecrated guardian thrashes its body about, causing the nearby terrain to crumble and crash down on creatures in a 60-foot cone, dealing {@damage 12d10} bludgeoning damage (DC 42 basic Reflex save). It can't use Avalanche again for {@dice 1d4} rounds."
+							"The desecrated guardian thrashes its body about, causing the nearby terrain to crumble and crash down on creatures in a 60-foot cone, dealing {@damage 12d10} bludgeoning damage ({@dc 42} basic Reflex save). It can't use Avalanche again for {@dice 1d4} rounds."
 						],
 						"name": "Avalanche"
 					},
@@ -1517,7 +1517,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 2d8+18} bludgeoning, DC 39"
+							"{@damage 2d8+18} bludgeoning, {@dc 39}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -1561,7 +1561,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Huge or smaller, tail, DC 37"
+							"Huge or smaller, tail, {@dc 37}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -1719,8 +1719,8 @@
 							"air"
 						],
 						"entries": [
-							"A kaminari's bag holds the four winds. The kaminari unleashes four 20-foot bursts within 60 feet with the effects of a 9th-level {@spell wall of wind}. In addition, a creature that enters one of the bursts takes {@damage 6d6} slashing damage (DC 40 basic Reflex save). The bursts can't overlap. After using this activity the kaminari can't use Hurricane Bag for {@dice 1d4} rounds.",
-							"If a kaminari creates a column of lighting using Thunder Drums that intersects one of the areas of the wind, the wind explodes in a peal of thunder, dealing {@damage 6d10} sonic damage to creatures in the area of that wall of wind burst. Affected creatures must attempt a DC 40 Fortitude save. The kaminari can detonate only one burst per use of Thunder Drums.",
+							"A kaminari's bag holds the four winds. The kaminari unleashes four 20-foot bursts within 60 feet with the effects of a 9th-level {@spell wall of wind}. In addition, a creature that enters one of the bursts takes {@damage 6d6} slashing damage ({@dc 40} basic Reflex save). The bursts can't overlap. After using this activity the kaminari can't use Hurricane Bag for {@dice 1d4} rounds.",
+							"If a kaminari creates a column of lighting using Thunder Drums that intersects one of the areas of the wind, the wind explodes in a peal of thunder, dealing {@damage 6d10} sonic damage to creatures in the area of that wall of wind burst. Affected creatures must attempt a {@dc 40} Fortitude save. The kaminari can detonate only one burst per use of Thunder Drums.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1753,7 +1753,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Electricity leaps between two kaminari. The kaminari establishes a connection with another kaminari within 150 feet, and lightning and thunder form a line between the centers of their spaces. For the next minute, a creature that begins its turn in the line or enters the line on its turn takes {@damage 4d12} electricity damage (DC 40 basic Reflex save). A creature can take this damage only once per round, even if it moves through several tempest tethers. If the distance between the kaminari ever exceeds 150 feet, the tether breaks."
+							"Electricity leaps between two kaminari. The kaminari establishes a connection with another kaminari within 150 feet, and lightning and thunder form a line between the centers of their spaces. For the next minute, a creature that begins its turn in the line or enters the line on its turn takes {@damage 4d12} electricity damage ({@dc 40} basic Reflex save). A creature can take this damage only once per round, even if it moves through several tempest tethers. If the distance between the kaminari ever exceeds 150 feet, the tether breaks."
 						],
 						"name": "Tempest Tether"
 					},
@@ -1766,7 +1766,7 @@
 							"electricity"
 						],
 						"entries": [
-							"The peal of a kaminari's drums bring thunder and lightning. The kaminari summons four 100-foot-tall columns of lightning to strike in 5-foot bursts within 60 feet. These columns can't overlap. Creatures in the burst take {@damage 8d12} electricity damage and must attempt a DC 40 Reflex save. The kaminari can't use Thunder Drums again for {@dice 1d4} rounds.",
+							"The peal of a kaminari's drums bring thunder and lightning. The kaminari summons four 100-foot-tall columns of lightning to strike in 5-foot bursts within 60 feet. These columns can't overlap. Creatures in the burst take {@damage 8d12} electricity damage and must attempt a {@dc 40} Reflex save. The kaminari can't use Thunder Drums again for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1998,7 +1998,7 @@
 							"occult"
 						],
 						"entries": [
-							"Any creature that converses with a gumiho must attempt a DC 35 Will save. The creature then becomes temporarily immune for 24 hours.",
+							"Any creature that converses with a gumiho must attempt a {@dc 35} Will save. The creature then becomes temporarily immune for 24 hours.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2281,7 +2281,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet. Any creature within 60 feet of an inmyeonjo that the inmyeonjo can see must attempt a DC 32 Will save. The effects last for 1 day while it is within the area of blurred countenance.",
+							"60 feet. Any creature within 60 feet of an inmyeonjo that the inmyeonjo can see must attempt a {@dc 32} Will save. The effects last for 1 day while it is within the area of blurred countenance.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2710,7 +2710,7 @@
 					},
 					{
 						"entries": [
-							"Barriers Laruhao wishes for nothing more than to dance atop his yagura, undisturbed. When he uses his {@spell house of imaginary walls} composition spell, he creates four 10-foot-by-10-foot walls in a cube around him. A creature must succeed at a DC 41 counteract check to teleport within these walls; otherwise, the teleportation attempt fails."
+							"Barriers Laruhao wishes for nothing more than to dance atop his yagura, undisturbed. When he uses his {@spell house of imaginary walls} composition spell, he creates four 10-foot-by-10-foot walls in a cube around him. A creature must succeed at a {@dc 41} counteract check to teleport within these walls; otherwise, the teleportation attempt fails."
 						],
 						"name": "Master of"
 					}
@@ -2912,7 +2912,7 @@
 							"visual"
 						],
 						"entries": [
-							"A creature hit by a lophiithu's lure must succeed at a DC 41 Will save or be {@condition fascinated} with the lophiithu's lures for 1 minute. On a critical failure, it can't use reactions while it remains {@condition fascinated}. A creature that succeeds at its save is temporarily immune for 1 hour."
+							"A creature hit by a lophiithu's lure must succeed at a {@dc 41} Will save or be {@condition fascinated} with the lophiithu's lures for 1 minute. On a critical failure, it can't use reactions while it remains {@condition fascinated}. A creature that succeeds at its save is temporarily immune for 1 hour."
 						],
 						"name": "Beguiling Lure"
 					},
@@ -3085,7 +3085,7 @@
 							"mental"
 						],
 						"entries": [
-							"60 feet, DC 37"
+							"60 feet, {@dc 37}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -3533,7 +3533,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The Rai Sho postulant makes two {@action Strike||Strikes}, which can be any combination of claw or icicle {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. If either {@action Strike} hits and deals damage, the target must succeed at a DC 37 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
+							"The Rai Sho postulant makes two {@action Strike||Strikes}, which can be any combination of claw or icicle {@action Strike||Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. If either {@action Strike} hits and deals damage, the target must succeed at a {@dc 37} Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
 						],
 						"name": "Frozen Flurry"
 					},
@@ -3548,10 +3548,10 @@
 							"mental"
 						],
 						"entries": [
-							"As yeti, but DC 37."
+							"As yeti, but {@dc 37}."
 						],
 						"name": "Grisly Arrival",
-						"entries_as_xyz": "Ability not found: 'Grisly Arrival As yeti, but DC 37.' in Rai Sho Postulant, p.13"
+						"entries_as_xyz": "Ability not found: 'Grisly Arrival As yeti, but {@dc 37}.' in Rai Sho Postulant, p.13"
 					},
 					{
 						"entries": [
@@ -3698,7 +3698,7 @@
 						},
 						"requirements": "Ran-to is grabbing a creature",
 						"entries": [
-							"Ran-to throws his foe against the ground. The {@condition grabbed} creature takes {@damage 12d6} bludgeoning damage (DC 43 basic Fortitude save) and is knocked {@condition prone}. The creature is no longer {@condition grabbed}."
+							"Ran-to throws his foe against the ground. The {@condition grabbed} creature takes {@damage 12d6} bludgeoning damage ({@dc 43} basic Fortitude save) and is knocked {@condition prone}. The creature is no longer {@condition grabbed}."
 						],
 						"name": "Body Slam"
 					},
@@ -3708,7 +3708,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 7d4+5} bludgeoning, DC 43"
+							"{@damage 7d4+5} bludgeoning, {@dc 43}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -3764,7 +3764,7 @@
 							{
 								"type": "successDegree",
 								"entries": {
-									"Critical Success": "Ran-to tosses his foe mightily. The {@condition grabbed} creature is thrown into a space within 20 feet, takes {@damage 16d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 43 basic Reflex save).",
+									"Critical Success": "Ran-to tosses his foe mightily. The {@condition grabbed} creature is thrown into a space within 20 feet, takes {@damage 16d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage ({@dc 43} basic Reflex save).",
 									"Success": "As critical success, except the {@condition grabbed} creature is thrown into a space within 10 feet, and creatures take {@damage 12d6} bludgeoning damage.",
 									"Failure": "Ran-to tosses his foe aside. The {@condition grabbed} creature falls {@condition prone}.",
 									"Critical Failure": "Ran-to loses hold of his foe."
@@ -3928,7 +3928,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The sanzuwu transforms into an enormous bird made of flame. As the sanzuwu begins their transformation, creatures within a 10-foot emanation take {@damage 6d8} fire damage (DC 33 basic Reflex save). While in their flame form, the sanzuwu gains the effects of 4th-level {@spell enlarge}. They can use Fiery Transformation again to revert back to their standard form."
+							"The sanzuwu transforms into an enormous bird made of flame. As the sanzuwu begins their transformation, creatures within a 10-foot emanation take {@damage 6d8} fire damage ({@dc 33} basic Reflex save). While in their flame form, the sanzuwu gains the effects of 4th-level {@spell enlarge}. They can use Fiery Transformation again to revert back to their standard form."
 						],
 						"name": "Fiery Transformation"
 					},
@@ -3943,7 +3943,7 @@
 							"primal"
 						],
 						"entries": [
-							"The sanzuwu opens their mouth to produce a bead of burning energy, hurling it a point within 200 feet. The bead detonates, dealing {@damage 7d8} fire damage and {@damage 4d10} sonic damage to all creatures in a 30-foot burst (DC 33 basic Reflex save). Creatures that critically fail become {@condition blinded} for 1 round. The sanzuwu can't use."
+							"The sanzuwu opens their mouth to produce a bead of burning energy, hurling it a point within 200 feet. The bead detonates, dealing {@damage 7d8} fire damage and {@damage 4d10} sonic damage to all creatures in a 30-foot burst ({@dc 33} basic Reflex save). Creatures that critically fail become {@condition blinded} for 1 round. The sanzuwu can't use."
 						],
 						"name": "Radiant Blast"
 					},
@@ -3977,7 +3977,7 @@
 						],
 						"requirements": "The sanzuwu is in their fiery form",
 						"entries": [
-							"The sanzuwu spreads their wings, emitting a bright cascade of light in a 30-foot cone. Creatures in the cone must attempt a DC 33 Fortitude save.",
+							"The sanzuwu spreads their wings, emitting a bright cascade of light in a 30-foot cone. Creatures in the cone must attempt a {@dc 33} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -4173,7 +4173,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Hakusa rapidly strikes at pressure points to debilitate a foe. She makes a fingers {@action Strike}. On a hit, the target takes damage as normal and must attempt a DC 43 Fortitude save.",
+							"Hakusa rapidly strikes at pressure points to debilitate a foe. She makes a fingers {@action Strike}. On a hit, the target takes damage as normal and must attempt a {@dc 43} Fortitude save.",
 							"Regardless of the result of the save, the target is then temporarily immune to Pressure Point Attack for 1 minute.",
 							{
 								"type": "successDegree",
@@ -4181,7 +4181,7 @@
 									"Critical Success": "The target is unaffected.",
 									"Success": "The target's muscles become temporarily weaker. For 1 round, the target is {@condition enfeebled|CRB|enfeebled 2}, and any time it attempts to take an action with the {@trait manipulate} trait, the action is disrupted unless it succeeds at a flat check with a DC equal to 5 + its {@condition enfeebled} value.",
 									"Failure": "As success, but the duration is 1 minute.",
-									"Critical Failure": "As success, but the duration is 1 minute, the flat check is DC 11, and the target takes a \u201310-foot status penalty to all Speeds for the duration."
+									"Critical Failure": "As success, but the duration is 1 minute, the flat check is {@dc 11}, and the target takes a \u201310-foot status penalty to all Speeds for the duration."
 								}
 							}
 						],
@@ -4208,13 +4208,13 @@
 							"number": 1
 						},
 						"entries": [
-							"Hakusa strikes a series of pressure points on her target's body that redirects its ki to the heart, before following up with a palm strike to the sternum. She makes a fingers {@action Strike} and a palm {@action Strike}, dealing damage as normal. If both hit, the target takes {@damage 8d10} negative damage as its life energy escapes from its body in a shower of bird-shaped sparks. The target attempts a DC 43 Fortitude save.",
+							"Hakusa strikes a series of pressure points on her target's body that redirects its ki to the heart, before following up with a palm strike to the sternum. She makes a fingers {@action Strike} and a palm {@action Strike}, dealing damage as normal. If both hit, the target takes {@damage 8d10} negative damage as its life energy escapes from its body in a shower of bird-shaped sparks. The target attempts a {@dc 43} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The target is unaffected.",
 									"Success": "The target takes half the negative damage.",
-									"Failure": "The target takes full damage, its life energy exploding violently from its back in a 30-foot cone originating from the target. All of Hakusa's other enemies in the cone also take the negative damage (DC 43 basic Fortitude save).",
+									"Failure": "The target takes full damage, its life energy exploding violently from its back in a 30-foot cone originating from the target. All of Hakusa's other enemies in the cone also take the negative damage ({@dc 43} basic Fortitude save).",
 									"Critical Failure": "As failure, but the target takes double negative damage."
 								}
 							}
@@ -4424,7 +4424,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Syndara makes six {@action Strike||Strikes}. Any creature struck must succeed at a DC 46 Will save or be teleported to a location of Syndara's choice within 60 feet of him when the flurry is complete. The teleportation has the {@trait conjuration}, {@trait divine}, and {@trait teleportation} traits."
+							"Syndara makes six {@action Strike||Strikes}. Any creature struck must succeed at a {@dc 46} Will save or be teleported to a location of Syndara's choice within 60 feet of him when the flurry is complete. The teleportation has the {@trait conjuration}, {@trait divine}, and {@trait teleportation} traits."
 						],
 						"name": "Dimensional Flurry"
 					},
@@ -4448,7 +4448,7 @@
 							"divine"
 						],
 						"entries": [
-							"With great regret, Syndara calls his masterpieces from the firmament to crash down upon his enemies. He flings four worldspheres to any four points within 500 feet. Each worldsphere deals {@dice 20d6} damage in a 40-foot burst (DC 48 basic Reflex save). Syndara chooses the type of damage for each worldsphere, which can be any type he chooses, though each worldsphere must deal a different type of damage. On a failed save, the target is pushed to the edge of the burst. No matter how many overlapping explosions it's caught in, a creature can take damage from only one worldsphere per round. Syndara is immune to the damage dealt by his worldspheres.",
+							"With great regret, Syndara calls his masterpieces from the firmament to crash down upon his enemies. He flings four worldspheres to any four points within 500 feet. Each worldsphere deals {@dice 20d6} damage in a 40-foot burst ({@dc 48} basic Reflex save). Syndara chooses the type of damage for each worldsphere, which can be any type he chooses, though each worldsphere must deal a different type of damage. On a failed save, the target is pushed to the edge of the burst. No matter how many overlapping explosions it's caught in, a creature can take damage from only one worldsphere per round. Syndara is immune to the damage dealt by his worldspheres.",
 							"Syndara can't use Mover of Worlds again for {@dice 1d4} rounds."
 						],
 						"name": "Mover of Worlds"
@@ -4705,7 +4705,7 @@
 							"primal"
 						],
 						"entries": [
-							"100 feet. A spirit turtle exudes a constant feeling of calm. Creatures within the aura are subjected to a 10th-level {@spell calm emotions} spell (DC 44 Will save). The effects persist up to 1 hour, even if the creature leaves the aura. Regardless of the result of the saving throw, the creature is temporarily immune for 1 hour."
+							"100 feet. A spirit turtle exudes a constant feeling of calm. Creatures within the aura are subjected to a 10th-level {@spell calm emotions} spell ({@dc 44} Will save). The effects persist up to 1 hour, even if the creature leaves the aura. Regardless of the result of the saving throw, the creature is temporarily immune for 1 hour."
 						],
 						"name": "Pacifying Aura"
 					}
@@ -4717,7 +4717,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"{@damage 4d12+7} bludgeoning, DC 41"
+							"{@damage 4d12+7} bludgeoning, {@dc 41}"
 						],
 						"name": "Constrict",
 						"generic": {
@@ -4746,7 +4746,7 @@
 						},
 						"entries": [
 							"The spirit turtle makes a foot {@action Strike}. Whether or not the {@action Strike} hits, the stomp creates a shockwave on the ground in a 15-foot burst centered on the target.",
-							"All creatures in the area other than the spirit turtle take {@damage 10d10} bludgeoning and {@damage 4d8} energy damage and are knocked {@condition prone} (DC 41 basic Reflex save). Creatures that critically succeed at their Reflex save are not knocked {@condition prone}. The spirit turtle can't use Unbalancing Stomp again for {@dice 1d4} rounds."
+							"All creatures in the area other than the spirit turtle take {@damage 10d10} bludgeoning and {@damage 4d8} energy damage and are knocked {@condition prone} ({@dc 41} basic Reflex save). Creatures that critically succeed at their Reflex save are not knocked {@condition prone}. The spirit turtle can't use Unbalancing Stomp again for {@dice 1d4} rounds."
 						],
 						"name": "Unbalancing Stomp"
 					}
@@ -4928,7 +4928,7 @@
 							"primal"
 						],
 						"entries": [
-							"20 feet. A creature that starts its turn in the aura takes {@damage 6d6} cold damage (DC 42 basic Fortitude). If the creature is {@condition grabbed} or {@condition restrained} by the sthira, it takes one degree of success worse than it rolled."
+							"20 feet. A creature that starts its turn in the aura takes {@damage 6d6} cold damage ({@dc 42} basic Fortitude). If the creature is {@condition grabbed} or {@condition restrained} by the sthira, it takes one degree of success worse than it rolled."
 						],
 						"name": "Freezing Death"
 					},
@@ -4947,7 +4947,7 @@
 							"cold"
 						],
 						"entries": [
-							"A creature that damages the sthira with an unarmed attack, tries to {@action Grapple} it, or otherwise touches it takes {@damage 6d6} cold damage (DC 42 basic Fortitude)."
+							"A creature that damages the sthira with an unarmed attack, tries to {@action Grapple} it, or otherwise touches it takes {@damage 6d6} cold damage ({@dc 42} basic Fortitude)."
 						],
 						"name": "Frozen to the Touch"
 					}
@@ -4955,7 +4955,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A creature that takes cold damage from a sthira's {@action Strike||Strikes} or aura must attempt a DC 42 Fortitude save. A creature that already has {@condition persistent damage||persistent cold damage} from frostbite ignores this effect.",
+							"A creature that takes cold damage from a sthira's {@action Strike||Strikes} or aura must attempt a {@dc 42} Fortitude save. A creature that already has {@condition persistent damage||persistent cold damage} from frostbite ignores this effect.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -5218,7 +5218,7 @@
 						],
 						"requirements": "Syndara is in the {@i Glass Lighthouse}",
 						"entries": [
-							"Syndara exerts his will over the {@i Glass Lighthouse} to cause one of several effects. The effect is magical, but Syndara isn't using magic when he takes this action\u2014just triggering a {@trait magical} effect he already set up. The level for each of these effects is 10, and any save is DC 45. Syndara or Syndara's Reflection can't use Planar Restructuring for {@dice 1d4} rounds.",
+							"Syndara exerts his will over the {@i Glass Lighthouse} to cause one of several effects. The effect is magical, but Syndara isn't using magic when he takes this action\u2014just triggering a {@trait magical} effect he already set up. The level for each of these effects is 10, and any save is {@dc 45}. Syndara or Syndara's Reflection can't use Planar Restructuring for {@dice 1d4} rounds.",
 							{
 								"type": "list",
 								"items": [
@@ -5248,7 +5248,7 @@
 					},
 					{
 						"entries": [
-							"Syndara has had an eternity to reflect on his own weaknesses and the weakness of others. If he critically hits with a melee {@action Strike}, he can target the eyes, joints, or other weak points to add one of the following effects of his choice unless the target succeeds on a DC 46 Fortitude save.",
+							"Syndara has had an eternity to reflect on his own weaknesses and the weakness of others. If he critically hits with a melee {@action Strike}, he can target the eyes, joints, or other weak points to add one of the following effects of his choice unless the target succeeds on a {@dc 46} Fortitude save.",
 							{
 								"type": "list",
 								"items": [

@@ -74,9 +74,6 @@
 					"$ref": "#/definitions/combatTrait"
 				},
 				{
-					"$ref": "#/definitions/actionAbilityTrait"
-				},
-				{
 					"$ref": "#/definitions/spellTrait"
 				},
 				{
@@ -89,9 +86,6 @@
 					"$ref": "#/definitions/settlementTrait"
 				},
 				{
-					"$ref": "#/definitions/classTrait"
-				},
-				{
 					"$ref": "#/definitions/variableTraits"
 				},
 				{
@@ -99,9 +93,73 @@
 				},
 				{
 					"$ref": "#/definitions/creatureTrait"
+				},
+				{
+					"$ref": "#/definitions/actionAbilityTrait"
+				},
+				{
+					"$ref": "#/definitions/classTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"classTrait": {
+			"type": "string",
+			"description": "A list of all Class traits.",
+			"enum": [
+				"[class]",
+				"aftermath",
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"class",
+				"cleric",
+				"composite",
+				"deviant",
+				"druid",
+				"fighter",
+				"gunslinger",
+				"impulse",
+				"infusion",
+				"inventor",
+				"investigator",
+				"kineticist",
+				"magus",
+				"monk",
+				"oracle",
+				"overflow",
+				"psychic",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"spellshot",
+				"summoner",
+				"swashbuckler",
+				"thaumaturge",
+				"witch",
+				"wizard"
+			]
+		},
+		"actionAbilityTrait": {
+			"type": "string",
+			"description": "A list of all Action & Ability traits.",
+			"enum": [
+				"composite",
+				"concentrate",
+				"deviant",
+				"downtime",
+				"esoterica",
+				"exploration",
+				"impulse",
+				"infusion",
+				"instinct",
+				"mindshift",
+				"overflow",
+				"psyche",
+				"reckless",
+				"tandem"
+			]
 		},
 		"creatureTrait": {
 			"type": "string",
@@ -332,39 +390,6 @@
 				}
 			]
 		},
-		"classTrait": {
-			"type": "string",
-			"description": "A list of all Class traits.",
-			"enum": [
-				"[class]",
-				"aftermath",
-				"alchemist",
-				"barbarian",
-				"bard",
-				"champion",
-				"class",
-				"cleric",
-				"deviant",
-				"druid",
-				"fighter",
-				"gunslinger",
-				"inventor",
-				"investigator",
-				"magus",
-				"monk",
-				"oracle",
-				"psychic",
-				"ranger",
-				"rogue",
-				"sorcerer",
-				"spellshot",
-				"summoner",
-				"swashbuckler",
-				"thaumaturge",
-				"witch",
-				"wizard"
-			]
-		},
 		"settlementTrait": {
 			"type": "string",
 			"description": "A list of all Settlement traits.",
@@ -470,22 +495,6 @@
 				"litany"
 			]
 		},
-		"actionAbilityTrait": {
-			"type": "string",
-			"description": "A list of all Action & Ability traits.",
-			"enum": [
-				"concentrate",
-				"deviant",
-				"downtime",
-				"esoterica",
-				"exploration",
-				"instinct",
-				"mindshift",
-				"psyche",
-				"reckless",
-				"tandem"
-			]
-		},
 		"combatTrait": {
 			"type": "string",
 			"description": "A list of all Combat traits.",
@@ -571,6 +580,7 @@
 				"revolutionary",
 				"secret",
 				"shadow",
+				"spellshape",
 				"structure",
 				"true name",
 				"wayfaring"

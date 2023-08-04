@@ -115,7 +115,7 @@
 					{
 						"name": "Firearms Critical Specialization",
 						"entries": [
-							"When the shieldmarshal makes a critical hit with a firearm weapon, the target must succeed at a DC 25 Fortitude save or be {@condition stunned||stunned 1}."
+							"When the shieldmarshal makes a critical hit with a firearm weapon, the target must succeed at a {@dc 25} Fortitude save or be {@condition stunned||stunned 1}."
 						]
 					},
 					{
@@ -452,7 +452,7 @@
 						]
 					},
 					{
-						"name": "DC 25",
+						"name": "{@dc 25}",
 						"entries": [
 							"Fortitude save or become {@condition stunned||stunned 1}."
 						]
@@ -712,7 +712,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The shamblers lash out at any enemies in their squares or within 5 feet (DC 25 basic Reflex save). The damage depends on the number of actions.",
+							"The shamblers lash out at any enemies in their squares or within 5 feet ({@dc 25} basic Reflex save). The damage depends on the number of actions.",
 							"{@as 1} {@damage 3d6+9} bludgeoning damage {@as 2} {@damage 3d8+13} bludgeoning damage"
 						]
 					},
@@ -846,7 +846,7 @@
 					{
 						"name": "Wind-Up",
 						"entries": [
-							"24 hours, DC 29, standby"
+							"24 hours, {@dc 29}, standby"
 						]
 					}
 				],
@@ -897,7 +897,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Large or smaller, foot, DC 32"
+							"Large or smaller, foot, {@dc 32}"
 						],
 						"generic": {
 							"tag": "ability"
@@ -1038,7 +1038,7 @@
 					{
 						"name": "Wind Up",
 						"entries": [
-							"24 hours, DC 26, standby"
+							"24 hours, {@dc 26}, standby"
 						]
 					}
 				],
@@ -1046,7 +1046,7 @@
 					{
 						"name": "Firearms Critical Specialization",
 						"entries": [
-							"When the buccaneer makes a critical hit with a firearm, the target must succeed at a DC 28 Fortitude save or be {@condition stunned||stunned 1}."
+							"When the buccaneer makes a critical hit with a firearm, the target must succeed at a {@dc 28} Fortitude save or be {@condition stunned||stunned 1}."
 						]
 					},
 					{
@@ -1090,7 +1090,7 @@
 						},
 						"requirements": "The clockwork buccaneer has a full water tank",
 						"entries": [
-							"The clockwork buccaneer fires a narrow but highly pressurized blast of water in a 60-foot line, dealing {@damage 10d6} bludgeoning damage to creatures and unattended objects in the area (DC 28 basic Fortitude save; unattended objects automatically fail). Creatures and objects that fail the save are also knocked back 5 feet (10 feet on a critical failure). This empties the buccaneer's water tank."
+							"The clockwork buccaneer fires a narrow but highly pressurized blast of water in a 60-foot line, dealing {@damage 10d6} bludgeoning damage to creatures and unattended objects in the area ({@dc 28} basic Fortitude save; unattended objects automatically fail). Creatures and objects that fail the save are also knocked back 5 feet (10 feet on a critical failure). This empties the buccaneer's water tank."
 						]
 					},
 					{
@@ -1220,7 +1220,7 @@
 					{
 						"name": "Wind Up",
 						"entries": [
-							"24 hours, DC 22, standby"
+							"24 hours, {@dc 22}, standby"
 						]
 					}
 				],
@@ -1231,7 +1231,7 @@
 							"aura"
 						],
 						"entries": [
-							"30 feet. A cloud of flying, spiderlike clockworks surrounds the clockwork puppeteer. A creature that ends its turn in the cloud takes {@damage 4d8} piercing damage (DC 29 basic Reflex save)."
+							"30 feet. A cloud of flying, spiderlike clockworks surrounds the clockwork puppeteer. A creature that ends its turn in the cloud takes {@damage 4d8} piercing damage ({@dc 29} basic Reflex save)."
 						]
 					}
 				],
@@ -1430,7 +1430,7 @@
 							"negative"
 						],
 						"entries": [
-							"The cranium preserver ejects one of its preserved-head jars at a point within 100 feet. The jar explodes, and all creatures in a 10-foot burst must attempt a DC 28 Will save.",
+							"The cranium preserver ejects one of its preserved-head jars at a point within 100 feet. The jar explodes, and all creatures in a 10-foot burst must attempt a {@dc 28} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1453,7 +1453,7 @@
 					{
 						"name": "Slosh",
 						"entries": [
-							"Whenever the cranium preserver ends a {@action Stride}, the movement causes necrotic embalming fluid and preserved body parts to slosh about and spill from its central vat. Each creature adjacent to the cranium preserver when it finishes its {@action Stride} must attempt a DC 26 Will save.",
+							"Whenever the cranium preserver ends a {@action Stride}, the movement causes necrotic embalming fluid and preserved body parts to slosh about and spill from its central vat. Each creature adjacent to the cranium preserver when it finishes its {@action Stride} must attempt a {@dc 26} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1587,7 +1587,7 @@
 							"fire"
 						],
 						"entries": [
-							"5 feet. {@damage 4d6} fire, DC 29 basic Reflex save. This aura can't cause other pyronite oozes to split."
+							"5 feet. {@damage 4d6} fire, {@dc 29} basic Reflex save. This aura can't cause other pyronite oozes to split."
 						]
 					},
 					{
@@ -1599,7 +1599,7 @@
 					{
 						"name": "Split",
 						"entries": [
-							"When a Large pyronite ooze is hit by an attack that would deal bludgeoning or fire damage and it has 10 or more HP, it explodes, dealing {@damage 6d6} fire damage to creatures in a 10-foot radius (DC 29 basic Reflex save). This explosion can't cause other pyronite oozes to split. After exploding, the ooze splits into two Medium pyronite oozes, each with half the original's HP, which each fly through the air and land 15 feet from the original ooze in a random direction. If no space is unoccupied where the ooze would land, it automatically pushes creatures and objects out of the way to fill a space (the GM decides if an object or creature is too big or sturdy to push)."
+							"When a Large pyronite ooze is hit by an attack that would deal bludgeoning or fire damage and it has 10 or more HP, it explodes, dealing {@damage 6d6} fire damage to creatures in a 10-foot radius ({@dc 29} basic Reflex save). This explosion can't cause other pyronite oozes to split. After exploding, the ooze splits into two Medium pyronite oozes, each with half the original's HP, which each fly through the air and land 15 feet from the original ooze in a random direction. If no space is unoccupied where the ooze would land, it automatically pushes creatures and objects out of the way to fill a space (the GM decides if an object or creature is too big or sturdy to push)."
 						]
 					}
 				],
@@ -1612,7 +1612,7 @@
 						},
 						"requirements": "The pyronite ooze is Large",
 						"entries": [
-							"The pyronite ooze explodes in a violent conflagration, dealing {@damage 3d6} fire and {@damage 3d6} bludgeoning damage to all creatures in a 30-foot radius (DC 29 basic Reflex save). This explosion can't cause other pyronite oozes to split. After exploding, the ooze splits into two Medium pyronite oozes (see above), but this splitting doesn't deal additional damage."
+							"The pyronite ooze explodes in a violent conflagration, dealing {@damage 3d6} fire and {@damage 3d6} bludgeoning damage to all creatures in a 30-foot radius ({@dc 29} basic Reflex save). This explosion can't cause other pyronite oozes to split. After exploding, the ooze splits into two Medium pyronite oozes (see above), but this splitting doesn't deal additional damage."
 						]
 					}
 				]
@@ -1746,7 +1746,7 @@
 						],
 						"entries": [
 							"30 feet.",
-							"Creatures within the aura are {@condition concealed}, and creatures outside the aura are {@condition concealed} to creatures within it. A creature that ends its turn within the aura must attempt a DC 25 Fortitude save.",
+							"Creatures within the aura are {@condition concealed}, and creatures outside the aura are {@condition concealed} to creatures within it. A creature that ends its turn within the aura must attempt a {@dc 25} Fortitude save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2053,7 +2053,7 @@
 					{
 						"name": "Firearms Critical Specialization When",
 						"entries": [
-							"Anjelique makes a critical hit with a firearm, the target must succeed a DC 34 Fortitude save or be {@condition stunned||stunned 1}."
+							"Anjelique makes a critical hit with a firearm, the target must succeed a {@dc 34} Fortitude save or be {@condition stunned||stunned 1}."
 						]
 					},
 					{
@@ -2087,7 +2087,7 @@
 						"name": "Plant Pyronite Charge",
 						"entries": [
 							"After making a successful melee {@action Strike} against a creature, Anjelique makes a {@skill Thievery} check against the target's {@skill Perception} DC. On a success, she activates and secretly plants a specially formulated sticky pyronite charge on the creature.",
-							"This charge detonates after 3 rounds, dealing {@damage 4d8} fire damage to all creatures within a 10-foot radius (DC 34 basic Reflex save) and detonating any other pyronite charges within the area. After making a successful ranged {@action Strike} against a creature stuck with a planted charge, Anjelique can choose to shoot a bullet through the charge, dealing normal damage and detonating the charge immediately. A creature can use an {@action Interact} action to find and remove a planted charge from itself or an adjacent creature. These pyronite charges have the {@trait infused} trait and are inert until activated by Anjelique."
+							"This charge detonates after 3 rounds, dealing {@damage 4d8} fire damage to all creatures within a 10-foot radius ({@dc 34} basic Reflex save) and detonating any other pyronite charges within the area. After making a successful ranged {@action Strike} against a creature stuck with a planted charge, Anjelique can choose to shoot a bullet through the charge, dealing normal damage and detonating the charge immediately. A creature can use an {@action Interact} action to find and remove a planted charge from itself or an adjacent creature. These pyronite charges have the {@trait infused} trait and are inert until activated by Anjelique."
 						]
 					},
 					{
@@ -2562,7 +2562,7 @@
 							"unstable"
 						],
 						"entries": [
-							"Parsus pushes their necromechanical innovation beyond its normal limits, dealing {@damage 10d6} negative damage in a 10-foot emanation (DC 31 basic Reflex save). Parsus can choose to include themself in this effect."
+							"Parsus pushes their necromechanical innovation beyond its normal limits, dealing {@damage 10d6} negative damage in a 10-foot emanation ({@dc 31} basic Reflex save). Parsus can choose to include themself in this effect."
 						],
 						"generic": {
 							"tag": "action",

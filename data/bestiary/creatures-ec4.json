@@ -171,7 +171,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The swarm deals {@damage 4d6} piercing damage and {@damage 2d4} {@condition persistent damage||persistent bleed damage} to every creature in its space (DC 29 basic Reflex save). The first time per round that a creature is affected by an aukashungi swarm's Burrowing Agony, the creature is also exposed to expeditious evolution."
+							"The swarm deals {@damage 4d6} piercing damage and {@damage 2d4} {@condition persistent damage||persistent bleed damage} to every creature in its space ({@dc 29} basic Reflex save). The first time per round that a creature is affected by an aukashungi swarm's Burrowing Agony, the creature is also exposed to expeditious evolution."
 						],
 						"name": "Burrowing Agony"
 					},
@@ -367,7 +367,7 @@
 						],
 						"entries": [
 							"The brughadatch conjures a decadent, enticing feast void of nutritional substance. This conjuration takes 1 minute and lasts for 24 hours.",
-							"For each item of illusory food a creature eats, it must attempt a DC 29 Will save.",
+							"For each item of illusory food a creature eats, it must attempt a {@dc 29} Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -391,7 +391,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The brughadatch feasts on the souls of the creatures they've tricked. They target up to five creatures within 30 feet and feast on their ambient brainpower, dealing {@damage 4d10} mental damage (DC 26 basic Will save) to each creature. Unless a target succeeds at the Will save, this damage does not end the charm effect or the effect of Deceitful Feast as a {@condition hostile} action normally would."
+							"The brughadatch feasts on the souls of the creatures they've tricked. They target up to five creatures within 30 feet and feast on their ambient brainpower, dealing {@damage 4d10} mental damage ({@dc 26} basic Will save) to each creature. Unless a target succeeds at the Will save, this damage does not end the charm effect or the effect of Deceitful Feast as a {@condition hostile} action normally would."
 						],
 						"name": "Psychic Sip"
 					}
@@ -584,7 +584,7 @@
 						],
 						"requirements": "A doblagub has bonded with their current location by being called there via a ritual or by remaining in one place for 10 years",
 						"entries": [
-							"40 feet. ; The doblagub grows etheric fibers that they can use to psychically keep prey close. Any time a creature tries to move within this aura, it must succeed at a DC 30 Will save or the movement fails and the action is wasted."
+							"40 feet. ; The doblagub grows etheric fibers that they can use to psychically keep prey close. Any time a creature tries to move within this aura, it must succeed at a {@dc 30} Will save or the movement fails and the action is wasted."
 						],
 						"name": "Etheric Fibers"
 					}
@@ -609,7 +609,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Requirements The doblagub's etheric fibers aura is active; ; All nonbrughadatch creatures within the aura must succeed at a DC 30 Fortitude save or be pulled 10 feet toward the doblagub."
+							"Requirements The doblagub's etheric fibers aura is active; ; All nonbrughadatch creatures within the aura must succeed at a {@dc 30} Fortitude save or be pulled 10 feet toward the doblagub."
 						],
 						"name": "Etheric Tug"
 					},
@@ -783,7 +783,7 @@
 							"mental"
 						],
 						"entries": [
-							"10 feet, DC 26. This aura is suppressed if the faceless butcher is using {@action Change Shape|LOAG}."
+							"10 feet, {@dc 26}. This aura is suppressed if the faceless butcher is using {@action Change Shape|LOAG}."
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -1052,7 +1052,7 @@
 							"acid"
 						],
 						"entries": [
-							"The giant aukashungi releases an acidic gas from its ventral glands in a 30-foot burst. Each creature that starts its turn in the area takes {@damage 10d8} acid damage plus {@damage 2d8} {@condition persistent damage||persistent acid damage} (DC 32 basic Fortitude save). The gas moves 10 feet away from the giant aukashungi each round and lasts for 1 minute.",
+							"The giant aukashungi releases an acidic gas from its ventral glands in a 30-foot burst. Each creature that starts its turn in the area takes {@damage 10d8} acid damage plus {@damage 2d8} {@condition persistent damage||persistent acid damage} ({@dc 32} basic Fortitude save). The gas moves 10 feet away from the giant aukashungi each round and lasts for 1 minute.",
 							"The giant aukashungi can't use Acidic Effluence again for 1 minute."
 						],
 						"name": "Acidic Effluence"
@@ -1070,7 +1070,7 @@
 					},
 					{
 						"entries": [
-							"Up, that creature must succeed at a DC 35 Fortitude save or become."
+							"Up, that creature must succeed at a {@dc 35} Fortitude save or become."
 						],
 						"name": "Rolls"
 					},
@@ -1272,7 +1272,7 @@
 							"misfortune"
 						],
 						"entries": [
-							"A creature struck by one of the harrow doll's cards must attempt a DC 25 Will save or be cursed with misfortune, which forces the creature to roll twice and take the lower result on its next roll of a specific type, determined by the card's suit (roll {@dice 1d6} to randomly determine the suit). A creature can be cursed with only one effect from harrowing misfortune at a time, with a new curse overriding any previous curse. The curse ends after 1 minute or after the specified roll is made, whichever comes first. The suits and their effects are: Hammers (melee attack roll), Keys (Reflex save), Shields (Fortitude save), Books (skill check), Stars (Will save), and Crowns (spell attack roll)."
+							"A creature struck by one of the harrow doll's cards must attempt a {@dc 25} Will save or be cursed with misfortune, which forces the creature to roll twice and take the lower result on its next roll of a specific type, determined by the card's suit (roll {@dice 1d6} to randomly determine the suit). A creature can be cursed with only one effect from harrowing misfortune at a time, with a new curse overriding any previous curse. The curse ends after 1 minute or after the specified roll is made, whichever comes first. The suits and their effects are: Hammers (melee attack roll), Keys (Reflex save), Shields (Fortitude save), Books (skill check), Stars (Will save), and Crowns (spell attack roll)."
 						],
 						"name": "Harrowing Misfortune"
 					}
@@ -1631,7 +1631,7 @@
 							"number": 1
 						},
 						"entries": [
-							"Helg drains away the life force from a creature targeted by the spell, with a result depending on its Fortitude save (DC 36). This effect is magical and can be counteracted with {@spell dispel magic} (Level 15, DC 36). This ability cannot affect a creature that critically succeeded at the spell's saving throw, if any.",
+							"Helg drains away the life force from a creature targeted by the spell, with a result depending on its Fortitude save ({@dc 36}). This effect is magical and can be counteracted with {@spell dispel magic} (Level 15, {@dc 36}). This ability cannot affect a creature that critically succeeded at the spell's saving throw, if any.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -2047,7 +2047,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet, DC 33"
+							"30 feet, {@dc 33}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -2276,7 +2276,7 @@
 				"mid": [
 					{
 						"entries": [
-							"Any creature that {@action Strike||Strikes} the qurashith with a melee weapon must attempt a DC 37 Reflex save. On a failure, the creature is disarmed of its weapon, which becomes stuck to the qurashith's body; if the {@action Strike} was an unarmed attack, the creature's limb sticks to the qurashith's body and the creature becomes {@condition immobilized}. A creature must succeed at a DC 31 {@skill Athletics} check to retrieve a stuck weapon. On a failure, the creature takes {@damage 2d6} acid damage and the weapon remains stuck, and on a critical failure, the creature also becomes stuck to the qurashith and becomes {@condition immobilized}. A stuck creature takes {@damage 2d6} acid damage each round it remains stuck to the qurashith and can use an {@action Escape} action to try to free itself from the monster (DC 31)."
+							"Any creature that {@action Strike||Strikes} the qurashith with a melee weapon must attempt a {@dc 37} Reflex save. On a failure, the creature is disarmed of its weapon, which becomes stuck to the qurashith's body; if the {@action Strike} was an unarmed attack, the creature's limb sticks to the qurashith's body and the creature becomes {@condition immobilized}. A creature must succeed at a {@dc 31} {@skill Athletics} check to retrieve a stuck weapon. On a failure, the creature takes {@damage 2d6} acid damage and the weapon remains stuck, and on a critical failure, the creature also becomes stuck to the qurashith and becomes {@condition immobilized}. A stuck creature takes {@damage 2d6} acid damage each round it remains stuck to the qurashith and can use an {@action Escape} action to try to free itself from the monster ({@dc 31})."
 						],
 						"name": "Adhesive Body"
 					},
@@ -2288,7 +2288,7 @@
 							"mental"
 						],
 						"entries": [
-							"90 feet, DC 33"
+							"90 feet, {@dc 33}"
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -2299,7 +2299,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A creature that takes damage from a qurashith's jaws or spittle must succeed at a DC 39 Fortitude save or be {@condition slowed|CRB|slowed 1} for {@dice 1d4} rounds ({@condition slowed|CRB|slowed 2} on a critical failure). If a creature is already {@condition slowed} when it fails its save, it becomes {@condition paralyzed} for 1 round."
+							"A creature that takes damage from a qurashith's jaws or spittle must succeed at a {@dc 39} Fortitude save or be {@condition slowed|CRB|slowed 1} for {@dice 1d4} rounds ({@condition slowed|CRB|slowed 2} on a critical failure). If a creature is already {@condition slowed} when it fails its save, it becomes {@condition paralyzed} for 1 round."
 						],
 						"name": "Paralytic Saliva"
 					},
@@ -2309,7 +2309,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The qurashith unleashes a debilitating psionic scream. Creatures in a 60-foot cone must succeed at a DC 35 Will save or become {@condition stupefied|CRB|stupefied 2} ({@condition stupefied|CRB|stupefied 4} on a critical failure) for 1 minute. A creature that critically succeeds at its Will save is immune to the qurashith's Psychic Howl for 24 hours. The qurashith can't use Psychic Howl again for {@dice 1d4} rounds."
+							"The qurashith unleashes a debilitating psionic scream. Creatures in a 60-foot cone must succeed at a {@dc 35} Will save or become {@condition stupefied|CRB|stupefied 2} ({@condition stupefied|CRB|stupefied 4} on a critical failure) for 1 minute. A creature that critically succeeds at its Will save is immune to the qurashith's Psychic Howl for 24 hours. The qurashith can't use Psychic Howl again for {@dice 1d4} rounds."
 						],
 						"name": "Psychic Howl"
 					},
@@ -2425,7 +2425,7 @@
 				"mid": [
 					{
 						"entries": [
-							"When a sodden sentinel is reduced to 0 Hit Points, it explodes, dealing {@damage 6d6} bludgeoning damage to each creature in a 10-foot emanation (DC 30 basic Reflex save). A creature that fails this save is also {@condition blinded} for {@dice 1d4} rounds (1 minute on a critical failure)."
+							"When a sodden sentinel is reduced to 0 Hit Points, it explodes, dealing {@damage 6d6} bludgeoning damage to each creature in a 10-foot emanation ({@dc 30} basic Reflex save). A creature that fails this save is also {@condition blinded} for {@dice 1d4} rounds (1 minute on a critical failure)."
 						],
 						"name": "Tainted Guts"
 					}
@@ -2454,7 +2454,7 @@
 							"water"
 						],
 						"entries": [
-							"The sodden sentinel vomits up a supernaturally tainted wave of seawater in a 30-foot cone. Each living creature in the area takes {@damage 6d10} negative damage (DC 30 basic Reflex save). It can't use Seawater Retch again for {@dice 1d4} rounds."
+							"The sodden sentinel vomits up a supernaturally tainted wave of seawater in a 30-foot cone. Each living creature in the area takes {@damage 6d10} negative damage ({@dc 30} basic Reflex save). It can't use Seawater Retch again for {@dice 1d4} rounds."
 						],
 						"name": "Seawater Retch"
 					}
@@ -2581,7 +2581,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"60 feet. Any creature that ends its turn in the aura feels the intense pain of starvation and must attempt a DC 32 Fortitude save. On a failure, the creature becomes {@condition fatigued} and takes {@dice 7d6} damage. The damage and fatigue a creature takes from this aura can't be healed until the affected creature has eaten a full meal."
+							"60 feet. Any creature that ends its turn in the aura feels the intense pain of starvation and must attempt a {@dc 32} Fortitude save. On a failure, the creature becomes {@condition fatigued} and takes {@dice 7d6} damage. The damage and fatigue a creature takes from this aura can't be healed until the affected creature has eaten a full meal."
 						],
 						"name": "Starvation Aura"
 					}
@@ -2598,7 +2598,7 @@
 						],
 						"entries": [
 							"The gashadokuro breathes a spray of bone shards in a 30-foot cone.",
-							"Each creature in the area takes {@damage 9d12} piercing damage (DC 36 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+							"Each creature in the area takes {@damage 9d12} piercing damage ({@dc 36} basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
 						],
 						"name": "Breath Weapon"
 					},
@@ -3030,7 +3030,7 @@
 							"aura"
 						],
 						"entries": [
-							"10 feet. Any creature that starts its turn in or enters a square in the area must attempt a DC 30 {@skill Acrobatics} check to {@action Balance}. A creature that takes a {@action Step} doesn't need to roll this check."
+							"10 feet. Any creature that starts its turn in or enters a square in the area must attempt a {@dc 30} {@skill Acrobatics} check to {@action Balance}. A creature that takes a {@action Step} doesn't need to roll this check."
 						],
 						"name": "Greasy Seepage"
 					}
@@ -3042,7 +3042,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"DC 30, {@damage 4d10} bludgeoning, {@action Escape} DC 26, Rupture 25."
+							"{@dc 30}, {@damage 4d10} bludgeoning, {@action Escape} {@dc 26}, Rupture 25."
 						],
 						"name": "Engulf",
 						"generic": {
@@ -3051,7 +3051,7 @@
 					},
 					{
 						"entries": [
-							"When the tallow ooze critically succeeds at an attack against a creature or a creature escapes from being engulfed by the ooze, that creature's hands and gear become slick with grease. For {@dice 1d4} rounds, the affected creature must attempt a DC 30 Reflex save whenever it uses any item (including weapons) that must be wielded or held. On a failure, the creature takes a \u20132 circumstance penalty to any attack roll or check to use the item; on a critical failure, the creature drops the item, which lands in a random adjacent square.",
+							"When the tallow ooze critically succeeds at an attack against a creature or a creature escapes from being engulfed by the ooze, that creature's hands and gear become slick with grease. For {@dice 1d4} rounds, the affected creature must attempt a {@dc 30} Reflex save whenever it uses any item (including weapons) that must be wielded or held. On a failure, the creature takes a \u20132 circumstance penalty to any attack roll or check to use the item; on a critical failure, the creature drops the item, which lands in a random adjacent square.",
 							"The creature (or an adjacent ally) can use 1 {@action Interact} action to wipe off the grease from an item or from its hands."
 						],
 						"name": "Residual Grease"
@@ -3446,7 +3446,7 @@
 							"mental"
 						],
 						"entries": [
-							"10 feet, DC 33. This aura is suppressed while the Vanish Man is using Change Shape."
+							"10 feet, {@dc 33}. This aura is suppressed while the Vanish Man is using Change Shape."
 						],
 						"name": "Frightful Presence",
 						"generic": {
@@ -3606,7 +3606,7 @@
 							"unit": "reaction"
 						},
 						"entries": [
-							"DC 32"
+							"{@dc 32}"
 						],
 						"name": "Buck",
 						"generic": {
@@ -3632,7 +3632,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A creature struck by the war sauropelta's tail must attempt a DC 32 Fortitude save. On a failure, it's {@condition stunned|CRB|stunned 1}; on a critical failure, it's {@condition stunned|CRB|stunned 3}."
+							"A creature struck by the war sauropelta's tail must attempt a {@dc 32} Fortitude save. On a failure, it's {@condition stunned|CRB|stunned 1}; on a critical failure, it's {@condition stunned|CRB|stunned 3}."
 						],
 						"name": "Punishing Tail"
 					},
@@ -3642,7 +3642,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"Medium or smaller, foot, DC 32"
+							"Medium or smaller, foot, {@dc 32}"
 						],
 						"name": "Trample",
 						"generic": {
@@ -3827,7 +3827,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When the wight damages a living creature with its claw or ranseur {@action Strike}, the wight gains 12 temporary Hit Points and the creature must succeed at a DC 29 Fortitude save or become {@condition drained|CRB|drained 1}. Further damage dealt by the wight increases the amount of drain by 1 on a failed save, to a maximum of {@condition drained|CRB|drained 4}."
+							"When the wight damages a living creature with its claw or ranseur {@action Strike}, the wight gains 12 temporary Hit Points and the creature must succeed at a {@dc 29} Fortitude save or become {@condition drained|CRB|drained 1}. Further damage dealt by the wight increases the amount of drain by 1 on a failed save, to a maximum of {@condition drained|CRB|drained 4}."
 						],
 						"name": "Drain Life"
 					},
@@ -4050,7 +4050,7 @@
 							"mental"
 						],
 						"entries": [
-							"30 feet. A creature that begins its turn in the area must succeed at a DC 32 Will save or become {@condition fascinated} with the xilvirek. If the creature is already {@condition fascinated} by the xilvirek and fails its save, the creature is compelled to approach the xilvirek and allow itself to be {@condition grabbed}, which ends the fascination."
+							"30 feet. A creature that begins its turn in the area must succeed at a {@dc 32} Will save or become {@condition fascinated} with the xilvirek. If the creature is already {@condition fascinated} by the xilvirek and fails its save, the creature is compelled to approach the xilvirek and allow itself to be {@condition grabbed}, which ends the fascination."
 						],
 						"name": "Hypnotic Stench"
 					},
@@ -4076,7 +4076,7 @@
 							"inhaled"
 						],
 						"entries": [
-							"The xilvirek retches a small pool of debilitating, acrid bile onto itself. All creatures within 30 feet take {@damage 4d6} acid damage as they inhale the bile's noxious fumes (DC 32 basic Fortitude save; on a failure, the creature is {@condition sickened|CRB|sickened 1}, or {@condition sickened|CRB|sickened 2} on a critical failure). The xilvirek can't Disgorge Bile again for {@dice 1d4} rounds."
+							"The xilvirek retches a small pool of debilitating, acrid bile onto itself. All creatures within 30 feet take {@damage 4d6} acid damage as they inhale the bile's noxious fumes ({@dc 32} basic Fortitude save; on a failure, the creature is {@condition sickened|CRB|sickened 1}, or {@condition sickened|CRB|sickened 2} on a critical failure). The xilvirek can't Disgorge Bile again for {@dice 1d4} rounds."
 						],
 						"name": "Disgorge Bile"
 					},
@@ -4234,7 +4234,7 @@
 							"acid"
 						],
 						"entries": [
-							"Requirements The gutrager has 45 or fewer HP; The gutrager compresses its gut and explodes in a burst of viscera, {@condition dying} instantly and dealing {@damage 8d8} acid damage to creatures and unattended objects in a 20-foot emanation centered on the gutrager (DC 31 basic Reflex save)."
+							"Requirements The gutrager has 45 or fewer HP; The gutrager compresses its gut and explodes in a burst of viscera, {@condition dying} instantly and dealing {@damage 8d8} acid damage to creatures and unattended objects in a 20-foot emanation centered on the gutrager ({@dc 31} basic Reflex save)."
 						],
 						"name": "Self-Detonate"
 					}
@@ -4419,7 +4419,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. As xulgath herd-tender (page 10), but DC 32."
+							"30 feet. As xulgath herd-tender (page 10), but {@dc 32}."
 						],
 						"name": "Powerful Stench"
 					},
@@ -4653,7 +4653,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. A creature that enters the area must attempt a DC 26 Fortitude save.",
+							"30 feet. A creature that enters the area must attempt a {@dc 26} Fortitude save.",
 							"On a failure, the creature is {@condition sickened|CRB|sickened 2}, and on a critical failure, the creature is also {@condition slowed|CRB|slowed 1} for as long as it is {@condition sickened}. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
 						],
 						"name": "Powerful Stench"
@@ -4835,7 +4835,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. As xulgath herd-tender (page 10), but DC 30."
+							"30 feet. As xulgath herd-tender (page 10), but {@dc 30}."
 						],
 						"name": "Powerful Stench"
 					}
@@ -5023,7 +5023,7 @@
 							"olfactory"
 						],
 						"entries": [
-							"30 feet. As xulgath herd-tender (page 10), but DC 34."
+							"30 feet. As xulgath herd-tender (page 10), but {@dc 34}."
 						],
 						"name": "Powerful Stench"
 					},
