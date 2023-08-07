@@ -6649,7 +6649,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Recall Knowledge"
+						"{@action Recall Knowledge}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -8331,7 +8331,10 @@
 						"unit": "free"
 					},
 					"components": [
-						"envision (fortune)"
+						"envision"
+					],
+					"traits": [
+						"fortune"
 					],
 					"trigger": "You attack a {@condition concealed} or {@condition hidden} creature and haven't attempted the flat check yet",
 					"entries": [
@@ -9005,7 +9008,10 @@
 						"unit": "free"
 					},
 					"components": [
-						"command (fire)"
+						"command"
+					],
+					"traits": [
+						"fire"
 					],
 					"trigger": "You use the forge warden to {@feat Shield Block} an adjacent creature's attack and the shield takes damage",
 					"entries": [
@@ -10292,7 +10298,10 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"envision (fortune)"
+						"envision"
+					],
+					"traits": [
+						"fortune"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -11471,7 +11480,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Brutal Finish"
+					"{@feat Brutal Finish}"
 				]
 			},
 			"category": "Talisman",
@@ -12174,7 +12183,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Raise a Shield"
+						"{@action Raise a Shield}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -12726,7 +12735,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Treat Poison or 8 hours (Treat Disease)"
+						"{@action Treat Poison} or 8 hours ({@action Treat Disease})"
 					],
 					"entries": [
 						"You can activate the tools when you use them to {@action Treat Poison} in order to produce the effects of neutralize poison, or when you {@action Treat Disease} in order to produce the effects of remove disease. Once these medicines have been used to treat a patient's poison or disease, they can't be used again to treat the same affliction for that patient."
@@ -13554,7 +13563,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Climb"
+					"{@action Climb}"
 				],
 				"requirements": "You are trained in {@skill Athletics}"
 			},
@@ -22147,7 +22156,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (auditory)"
+						"{@action Interact}"
+					],
+					"traits": [
+						"auditory"
 					],
 					"entries": [
 						"You can raise the conch to your lips and blow into it, letting out a long, rumbling note. For the next minute, you and all allies who were within 30 feet of you when you activated the conch gain a +2 item bonus to {@skill Athletics} checks to {@action Swim} and can breathe under water."
@@ -22677,8 +22689,11 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"envision (death",
-						"incapacitation)"
+						"envision"
+					],
+					"traits": [
+						"death",
+						"incapacitation"
 					],
 					"trigger": "You roll a natural 20 on a {@action Strike} with the weapon, critically succeed, and deal slashing damage.",
 					"entries": [
