@@ -3984,7 +3984,10 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact (move)"
+					"{@action Interact}"
+				],
+				"traits": [
+					"move"
 				]
 			},
 			"category": "Consumable",
@@ -5213,7 +5216,10 @@
 					},
 					"components": [
 						"command",
-						"envision (fortune)"
+						"envision"
+					],
+					"traits": [
+						"fortune"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -6133,7 +6139,8 @@
 				},
 				"requirements": "Your last action was an {@action Interact} action to stow the affixed firearm or crossbow.",
 				"components": [
-					"envision, manipulate"
+					"envision",
+					"manipulate"
 				]
 			},
 			"category": "Talisman",
@@ -6428,7 +6435,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (evil)"
+						"envision"
+					],
+					"traits": [
+						"evil"
 					],
 					"requirements": "There's at least one soul stored in the reaper's grasp",
 					"entries": [
@@ -6443,7 +6453,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (evil)"
+						"envision"
+					],
+					"traits": [
+						"evil"
 					],
 					"requirements": "There's at least one soul stored in the reaper's grasp",
 					"entries": [
@@ -6581,8 +6594,12 @@
 					"components": [
 						"command",
 						"envision",
-						"Interact (1 minute)"
+						"{@action Interact} (1 minute)"
 					],
+					"frequency": {
+						"unit": "minute",
+						"number": 10
+					},
 					"entries": [
 						"You hold aloft the Rowan Rifle and step into a tree in Briarbough, and you tree stride to another tree in Briarbough."
 					]
@@ -6638,9 +6655,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (auditory",
+						"{@action Interact}"
+					],
+					"traits": [
+						"auditory",
 						"light",
-						"transmutation)"
+						"transmutation"
 					],
 					"entries": [
 						"If your next {@action Strike} from the weapon to which the scope is attached hits a creature, the sound of the impact transforms into light, causing the creature to glow until the end of your next turn. A visible creature can't be {@condition concealed} while they glow. If a creature is {@condition invisible}, they're {@condition concealed} while glowing, rather than being {@condition undetected}. Because the effect requires a solid impact, incorporeal creatures are unaffected unless the bullet can deal force damage or has the effects of the {@item ghost touch} property rune."
@@ -7756,9 +7776,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (electricity",
+						"{@action Interact}"
+					],
+					"traits": [
+						"electricity",
 						"evocation",
-						"magical)"
+						"magical"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -7775,9 +7798,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (electricity",
+						"{@action Interact}"
+					],
+					"traits": [
+						"electricity",
 						"evocation",
-						"magical)"
+						"magical"
 					],
 					"frequency": {
 						"unit": "day",
