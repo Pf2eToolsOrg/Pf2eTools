@@ -5616,7 +5616,7 @@ Renderer.nation = {
 			renderStack.push(renderer.render(`<strong>${element.name}</strong> `))
 			if (element.alignment || element.gender || element.ancestry || element.position) {
 				renderStack.push(`(`)
-				if (element.alignment) residentStack.push(`{@trait ${element.alignment}}`)
+				if (element.alignment) residentStack.push(`{@trait ${element.alignment.toUpperCase()}}`)
 				if (element.gender) residentStack.push(Parser.genderToFull(element.gender))
 				if (element.ancestry) residentStack.push(element.ancestry)
 				if (element.position) residentStack.push(element.position)
