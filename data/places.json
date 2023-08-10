@@ -1,6 +1,101 @@
 {
 	"place": [
 		{
+			"name": "Highhelm",
+			"source": "SKT0",
+			"page": 4,
+			"category": "Settlement",
+			"level": 14,
+			"traits": [
+				"ln",
+				"metropolis"
+			],
+			"description": "Ancient dwarven city embodying the essence of dwarven culture in its architecture, arts, and social organization while gradually becoming more cosmopolitan.",
+			"settlementData": {
+				"government": "Monarchy with a council",
+				"population": {
+					"total": 41527,
+					"ancestries": {
+						"dwarf": 83,
+						"human": 7,
+						"elf": 5,
+						"other": 5
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Dwarven}",
+					"{@language Elven}",
+					"{@language Terran}"
+				],
+				"religions": [
+					"{@deity Torag}, {@deity Folgrit|LOGM}, {@deity Grundinnar|LOGM}, {@deity Kols|LOGM}, other deities of the {@deity dwarven pantheon|LOGM}, {@deity Abadar}, {@deity Pharasma}"
+				],
+				"threats": [
+					"aberrant horrors and monsters from the Depths and Darklands",
+					"evil orcs",
+					"infighting",
+					"natural disasters"
+				],
+				"features": [
+					{
+						"name": "Of Dwarven Make",
+						"entries": [
+							"{@filter Uncommon dwarf items|items||rarity=uncommon|ancestry & heritage=dwarf}, including magic items, are common within Highhelm."
+						]
+					},
+					{
+						"name": "Forged with Power",
+						"entries":[
+							"Highhelm offers higher level access to weapons and armor thanks to the city's forges; {@filter armaments of up to 17th level|items||Level=[0;17]|category=armor;weapon} are available."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Borogrim the Hale",
+					"alignment": "ln",
+					"gender": "m",
+					"ancestry": "dwarf",
+					"position": "magnate",
+					"bond": "High King of Highhelm and convener of the Gathering Council of leaders from other Five Kings Mountains' dwarven city-states"
+				},
+				{
+					"name": "Arridor Orridus",
+					"alignment": "lg",
+					"gender": "m",
+					"ancestry": "dwarf",
+					"position": "cleric of {@deity Folgrit|LOGM}",
+					"bond": "Head priest of {@deity Folgrit|LOGM} and co-head of the powerful religious council called the Nine-Eyed Hammer"
+				},
+				{
+					"name": "Vanth Orridus",
+					"alignment": "ln",
+					"gender": "f",
+					"ancestry": "dwarf",
+					"position": "cleric of {@deity Torag}",
+					"bond": "Head priestess of {@deity Torag} and co-head of the powerful religious council called the Nine-Eyed Hammer"
+				},
+				{
+					"name": "Kaltan the Pike",
+					"alignment": "ln",
+					"gender": "m",
+					"ancestry": "dwarf",
+					"position": "battle master",
+					"bond": "General of the Highhelm First Army"
+				},
+				{
+					"name": "Geralde Brightfist",
+					"alignment": "ln",
+					"gender": "f",
+					"ancestry": "dwarf",
+					"position": "ruffian",
+					"bond": "Head of the Blacknoon Thieves' Guild, Highhelm's largest gang"
+				}
+			]
+		},
+		{
 			"name": "Sevenarches",
 			"source": "GW1",
 			"page": 13,
