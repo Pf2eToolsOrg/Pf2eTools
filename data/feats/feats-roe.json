@@ -596,11 +596,14 @@
 							"You make the creature jump up to half the maximum distance."
 						],
 						"Critical Failure": [
-							"You make the creature jump up to the maximum distance. Level (+2) The maximum distance increases by 15 feet."
+							"You make the creature jump up to the maximum distance."
 						]
 					}
 				}
-			]
+			],
+			"footer": {
+				"Level (+2)": "The maximum distance increases by 15 feet."
+			}
 		},
 		{
 			"name": "Cyclonic Ascent",
@@ -947,9 +950,11 @@
 			],
 			"entries": [
 				"You can create a permanent stone object, either sculpting stone pulled directly from your kinetic gate or manipulating earth and stone around you. It must fit within one 5-foot cube that's adjacent to you and on solid ground, and you can make the object large enough to occupy the square. If you create the object underneath you or another willing creature, you cause the target to rise on top of the object; you can't create it under an unwilling creature. This impulse has an unlimited duration, but if you use Igneogenesis again, the object returns to its original location or form. You can spend 1 hour to use Igneogenesis as an exploration activity; in this case, the object is permanent and non-magical.",
-				"The object can't include any intricate parts or moving pieces. You can attempt a {@skill Crafting} skill check as part of using this impulse to add details to your creation, such as a symbol, short message, or pattern (with the DC determined by the GM). Level (+3) You can add an additional 5-foot cube to the object.",
-				"Each cube must be contiguous."
-			]
+				"The object can't include any intricate parts or moving pieces. You can attempt a {@skill Crafting} skill check as part of using this impulse to add details to your creation, such as a symbol, short message, or pattern (with the DC determined by the GM)."
+			],
+			"footer": {
+				"Level (+3)": "You can add an additional 5-foot cube to the object. Each cube must be contiguous."
+			}
 		},
 		{
 			"name": "Sand Snatcher",
@@ -1003,12 +1008,14 @@
 							"The creature takes full damage and is pushed downward 40 feet without taking falling damage. If it reaches the bottom of the cylinder or the ground, the push ends. If the creature is pushed to the ground, it can't {@action Fly}, levitate, or otherwise leave the ground for 1 round."
 						],
 						"Critical Failure": [
-							"As failure, but double damage and the distance the creature is pushed is 80 feet.",
-							"Level (+2) The damage increases by {@damage 1d8}."
+							"As failure, but double damage and the distance the creature is pushed is 80 feet."
 						]
 					}
 				}
-			]
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d8}."
+			}
 		},
 		{
 			"name": "Spike Skin",
@@ -1027,8 +1034,11 @@
 			],
 			"entries": [
 				"You touch a willing creature, causing its skin to harden and form spiky protrusions. The target gains resistance 4 to all physical damage (except adamantine). Whenever a creature damages the target with an unarmed attack or non-reach melee weapon, the attacking creature takes 2 piercing damage.",
-				"This impulse lasts for 10 minutes, but each time the target takes physical damage, the duration decreases by 1 minute. The target is temporarily immune to this impulse for 1 hour. If you use Spike Skin again, any previous one ends. Level (+2) The resistance and damage each increase by 2."
-			]
+				"This impulse lasts for 10 minutes, but each time the target takes physical damage, the duration decreases by 1 minute. The target is temporarily immune to this impulse for 1 hour. If you use Spike Skin again, any previous one ends."
+			],
+			"footer": {
+				"Level (+2)": "The resistance and damage each increase by 2."
+			}
 		},
 		{
 			"name": "Swim Through Earth",
@@ -1090,9 +1100,11 @@
 				"primal"
 			],
 			"entries": [
-				"Drawing on your connection to the Plane of Earth, you form a wall of rock and earth. This has the effect of wall of stone, but the wall's maximum length is 40 feet. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute.",
-				"Level (+4) The maximum length of the wall increases by 10 feet, and the Hit Points of each section increase by 5."
-			]
+				"Drawing on your connection to the Plane of Earth, you form a wall of rock and earth. This has the effect of wall of stone, but the wall's maximum length is 40 feet. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
+			],
+			"footer": {
+				"Level (+4)": "The maximum length of the wall increases by 10 feet, and the Hit Points of each section increase by 5."
+			}
 		},
 		{
 			"name": "Assume Earth's Mantle",
@@ -1231,8 +1243,11 @@
 				"primal"
 			],
 			"entries": [
-				"A Tiny shape of flame appears, taking a form of your choice\u2014 such as a bird, an arrow, or a simple sphere. It Flies from you up to 30 feet in a path you choose. Each creature it passes through takes {@damage 1d6} fire damage with a basic Reflex save against your class DC. A creature attempts only one save, even if the flame passes through it multiple times. Level (+2) The damage increases by {@damage 1d6}."
-			]
+				"A Tiny shape of flame appears, taking a form of your choice\u2014 such as a bird, an arrow, or a simple sphere. It Flies from you up to 30 feet in a path you choose. Each creature it passes through takes {@damage 1d6} fire damage with a basic Reflex save against your class DC. A creature attempts only one save, even if the flame passes through it multiple times."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Scorching Column",
@@ -1252,8 +1267,11 @@
 			],
 			"entries": [
 				"With an upward gesture, you shape a vertical column of extreme heat. The cylinder is 10 feet in diameter and 30 feet high, and the bottom must be within 60 feet of you. Each creature in the area takes {@damage 1d6} fire damage with a basic Reflex save against your class DC.",
-				"The flame remains briefly, making all squares in the column hazardous terrain until the end of your next turn, and you can Sustain the impulse up to 1 minute. A creature takes 1 fire damage each time it moves into one of these squares. Level (+3) The initial damage increases by {@damage 1d6}, and the hazardous terrain damage increases by 2."
-			]
+				"The flame remains briefly, making all squares in the column hazardous terrain until the end of your next turn, and you can Sustain the impulse up to 1 minute. A creature takes 1 fire damage each time it moves into one of these squares."
+			],
+			"footer": {
+				"Level (+3)": "The initial damage increases by {@damage 1d6}, and the hazardous terrain damage increases by 2."
+			}
 		},
 		{
 			"name": "Blazing Wave",
@@ -1272,8 +1290,11 @@
 				"primal"
 			],
 			"entries": [
-				"Flames flow out of you in a cascade, engulfing everyone in a 30-foot cone. Each creature in the area takes {@damage 4d6} fire damage with a basic Reflex save against your class DC. A creature that critically fails its save is knocked {@condition prone}. Level (+2) The damage increases by {@damage 1d6}."
-			]
+				"Flames flow out of you in a cascade, engulfing everyone in a 30-foot cone. Each creature in the area takes {@damage 4d6} fire damage with a basic Reflex save against your class DC. A creature that critically fails its save is knocked {@condition prone}."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Thermal Nimbus",
@@ -1336,9 +1357,11 @@
 			],
 			"trigger": "An enemy in your kinetic aura damages you.",
 			"entries": [
-				"Lava reflexively explodes underneath you and the creature that hurt you. The triggering enemy takes {@damage 1d6} fire damage with a basic Reflex save against your class DC. You {@action Leap} up to half your Speed in any direction; this movement doesn't trigger reactions.",
-				"Level (+4) The damage increases by {@damage 1d6}."
-			]
+				"Lava reflexively explodes underneath you and the creature that hurt you. The triggering enemy takes {@damage 1d6} fire damage with a basic Reflex save against your class DC. You {@action Leap} up to half your Speed in any direction; this movement doesn't trigger reactions."
+			],
+			"footer": {
+				"Level (+4)": "The damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Kindle Inner Flames",
@@ -1395,11 +1418,14 @@
 							"The creature takes full damage and is {@condition blinded} until the start of your next turn."
 						],
 						"Critical Failure": [
-							"The creature takes double damage and is {@condition blinded} for 1 minute. Level (+2) Increase the fire damage by {@dice 1d6} and the vitality damage by {@dice 1d6}."
+							"The creature takes double damage and is {@condition blinded} for 1 minute."
 						]
 					}
 				}
-			]
+			],
+			"footer": {
+				"Level (+2)": "Increase the fire damage by {@dice 1d6} and the vitality damage by {@dice 1d6}."
+			}
 		},
 		{
 			"name": "Architect of Flame",
@@ -1419,9 +1445,11 @@
 				"primal"
 			],
 			"entries": [
-				"Flames rise and shape to your will, forming a wall or dome of your design. You create a wall of fire. In addition to the normal choices, you can make the wall up to 10 feet long and 60 feet high. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute.",
-				"Level (+3) The damage increases by {@damage 1d6}."
-			]
+				"Flames rise and shape to your will, forming a wall or dome of your design. You create a wall of fire. In addition to the normal choices, you can make the wall up to 10 feet long and 60 feet high. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
+			],
+			"footer": {
+				"Level (+3)": "The damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Furnace Form",
@@ -1464,9 +1492,11 @@
 			],
 			"entries": [
 				"You fall through your own kinetic gate, leaving behind an effigy of flame and reappearing majestically near another fire.",
-				"You instantly transport yourself, and any items you're wearing and holding, from your current space to a clear space within 120 feet you can observe that's adjacent to an open flame or a creature taking {@condition persistent damage||persistent fire damage}. If this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the action fails. A whorl of fire surrounds you in a 5-foot emanation either before you depart or after you arrive. Each creature in the area takes {@damage 4d6} fire damage with a basic Reflex save against your class DC.",
-				"Level (+3) The fire damage increases by {@damage 1d6}."
-			]
+				"You instantly transport yourself, and any items you're wearing and holding, from your current space to a clear space within 120 feet you can observe that's adjacent to an open flame or a creature taking {@condition persistent damage||persistent fire damage}. If this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the action fails. A whorl of fire surrounds you in a 5-foot emanation either before you depart or after you arrive. Each creature in the area takes {@damage 4d6} fire damage with a basic Reflex save against your class DC."
+			],
+			"footer": {
+				"Level (+3)": "The fire damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "All Shall End in Flames",
@@ -1549,8 +1579,11 @@
 				"primal"
 			],
 			"entries": [
-				"Small pieces of metal fly from you, propelled with magnetism at great velocity. Make ranged impulse attack rolls against up to three creatures within 60 feet of you; you gain a +1 circumstance bonus to your attack roll against any target wearing metal armor or made of metal. All three attacks count toward your multiple attack penalty, but it doesn't increase until after all the attacks. The metal pieces deal {@damage 1d4} bludgeoning damage and {@damage 1d4} piercing damage on a hit (or double damage on a critical hit). Level (+2) Each type of damage increases by {@damage 1d4}."
-			]
+				"Small pieces of metal fly from you, propelled with magnetism at great velocity. Make ranged impulse attack rolls against up to three creatures within 60 feet of you; you gain a +1 circumstance bonus to your attack roll against any target wearing metal armor or made of metal. All three attacks count toward your multiple attack penalty, but it doesn't increase until after all the attacks. The metal pieces deal {@damage 1d4} bludgeoning damage and {@damage 1d4} piercing damage on a hit (or double damage on a critical hit)."
+			],
+			"footer": {
+				"Level (+2)": "Each type of damage increases by {@damage 1d4}."
+			}
 		},
 		{
 			"name": "Metal Carapace",
@@ -1571,8 +1604,11 @@
 				"Sheets of bent and rusted metal cover you in an armored shell. The carapace is medium armor but uses your highest armor proficiency. The carapace's statistics are: AC Bonus +3; Dex Cap +2; Check Penalty \u20132; Speed Penalty \u20135 feet; Strength 14; Bulk 2; Group plate; Armor Traits noisy. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any that could apply to the metal carapace are replicated onto it.",
 				"When you use this impulse, you can also create a rusty steel shield in a free hand, which uses the statistics of a regular steel shield. You can Shield Block with this shield even if you don't have that feat. The hand wielding this shield counts as a free hand for using impulses. The shield crumbles to flakes of rust if it becomes {@condition broken} or leaves your grasp.",
 				"The impulse lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends.",
-				"The metal is rusted and fragile. If you take damage from a critical hit, the metal shatters and the impulse ends. Level (+3) The shield's Hardness increases by 1, its HP by 4, and its BT by 2."
-			]
+				"The metal is rusted and fragile. If you take damage from a critical hit, the metal shatters and the impulse ends."
+			],
+			"footer": {
+				"Level (+3)": "The shield's Hardness increases by 1, its HP by 4, and its BT by 2."
+			}
 		},
 		{
 			"name": "Shard Strike",
@@ -1590,9 +1626,11 @@
 				"primal"
 			],
 			"entries": [
-				"Jagged metal shards form in the air and lash out from you. You choose shards or spines, which changes the area, damage type, and critical failure effect. Each creature in the area attempts a basic Reflex save against your class DC. Shards deal {@damage 1d6} slashing damage in a 15-foot cone, and a creature that critically fails takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}. Spines deal {@damage 1d6} piercing damage in a 30-foot line, and a creature that critically fails is {@condition clumsy||clumsy 1} until the start of your next turn.",
-				"Level (+2) The damage increases by {@damage 1d6}."
-			]
+				"Jagged metal shards form in the air and lash out from you. You choose shards or spines, which changes the area, damage type, and critical failure effect. Each creature in the area attempts a basic Reflex save against your class DC. Shards deal {@damage 1d6} slashing damage in a 15-foot cone, and a creature that critically fails takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}. Spines deal {@damage 1d6} piercing damage in a 30-foot line, and a creature that critically fails is {@condition clumsy||clumsy 1} until the start of your next turn."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Magnetic Field",
@@ -1673,9 +1711,11 @@
 				"primal"
 			],
 			"entries": [
-				"Ragged pieces of metal weld together into a ramshackle structure. The barricade is up to 30 feet long, 15 feet high, and 1/2 inch thick. It must form in a straight line in an unbroken open space that doesn't pass through any creatures or objects, or the impulse fails. Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points, and it's immune to critical hits and precision damage. If any section is destroyed, the entire wall collapses, and each creature adjacent to the wall takes {@damage 2d8} slashing damage with a basic Reflex save against your class DC. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute.",
-				"Level (+2) The maximum length of the wall increases by 10 feet, the HP of each section increases by 10, and the damage when it's destroyed increases by {@dice 1d8}."
-			]
+				"Ragged pieces of metal weld together into a ramshackle structure. The barricade is up to 30 feet long, 15 feet high, and 1/2 inch thick. It must form in a straight line in an unbroken open space that doesn't pass through any creatures or objects, or the impulse fails. Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points, and it's immune to critical hits and precision damage. If any section is destroyed, the entire wall collapses, and each creature adjacent to the wall takes {@damage 2d8} slashing damage with a basic Reflex save against your class DC. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
+			],
+			"footer": {
+				"Level (+2)": "The maximum length of the wall increases by 10 feet, the HP of each section increases by 10, and the damage when it's destroyed increases by {@dice 1d8}."
+			}
 		},
 		{
 			"name": "Conductive Sphere",
@@ -1736,9 +1776,11 @@
 				"primal"
 			],
 			"entries": [
-				"Razor-sharp slivers of metal fall from the sky. Each creature in a 20-foot burst within 60 feet takes {@damage 9d6} slashing damage with a basic Reflex save against your class DC. The razors embed in all surfaces in the area, making them hazardous terrain for 1 minute. A creature that moves through this hazardous terrain takes 3 slashing damage for every square of the area it moves into.",
-				"Level (+2) The initial damage increases by {@damage 1d6} and the hazardous terrain damage increases by 1."
-			]
+				"Razor-sharp slivers of metal fall from the sky. Each creature in a 20-foot burst within 60 feet takes {@damage 9d6} slashing damage with a basic Reflex save against your class DC. The razors embed in all surfaces in the area, making them hazardous terrain for 1 minute. A creature that moves through this hazardous terrain takes 3 slashing damage for every square of the area it moves into."
+			],
+			"footer": {
+				"Level (+2)": "The initial damage increases by {@damage 1d6} and the hazardous terrain damage increases by 1."
+			}
 		},
 		{
 			"name": "Shattershields",
@@ -1757,9 +1799,11 @@
 				"stance"
 			],
 			"entries": [
-				"Four plates of pitted metal float around you to intercept attacks. You and allies in your kinetic aura gain a +1 circumstance bonus to AC. When any creature with this bonus would take damage from a physical attack, one of the plates reduces the damage by its Hardness of 5. If the damage exceeds the Hardness, that plate is destroyed. You can replenish all destroyed plates as a single action that has the {@trait concentrate} trait.",
-				"Level (+2) The Hardness increases by 1."
-			]
+				"Four plates of pitted metal float around you to intercept attacks. You and allies in your kinetic aura gain a +1 circumstance bonus to AC. When any creature with this bonus would take damage from a physical attack, one of the plates reduces the damage by its Hardness of 5. If the damage exceeds the Hardness, that plate is destroyed. You can replenish all destroyed plates as a single action that has the {@trait concentrate} trait."
+			],
+			"footer": {
+				"Level (+2)": "The Hardness increases by 1."
+			}
 		},
 		{
 			"name": "Alloy Flesh and Steel",
@@ -1864,8 +1908,11 @@
 				"water"
 			],
 			"entries": [
-				"A blessing of the living sea salves wounds and douses flames. Touch a willing living creature. It regains {@dice 1d8} Hit Points and gains resistance 2 to fire for 1 minute. If it has {@condition persistent damage||persistent fire damage}, it can attempt a flat check to remove it with especially appropriate help. The target is temporarily immune to healing from Ocean's Balm for 10 minutes. Level (+2) The healing increases by {@dice 1d8}, and the resistance increases by 1."
-			]
+				"A blessing of the living sea salves wounds and douses flames. Touch a willing living creature. It regains {@dice 1d8} Hit Points and gains resistance 2 to fire for 1 minute. If it has {@condition persistent damage||persistent fire damage}, it can attempt a flat check to remove it with especially appropriate help. The target is temporarily immune to healing from Ocean's Balm for 10 minutes."
+			],
+			"footer": {
+				"Level (+2)": "The healing increases by {@dice 1d8}, and the resistance increases by 1."
+			}
 		},
 		{
 			"name": "Tidal Hands",
@@ -1884,9 +1931,11 @@
 				"water"
 			],
 			"entries": [
-				"With an emphatic gesture, you create waves that rush out from you in the shape of your hands. You either form two 15-foot cones that don't overlap or you combine the hands into one 30-foot cone. Each creature in a wave takes {@damage 1d8} bludgeoning damage with a basic Reflex save against your class DC. If a creature critically fails, you also push that creature 5 feet.",
-				"Level (+2) The damage increases by {@damage 1d8}."
-			]
+				"With an emphatic gesture, you create waves that rush out from you in the shape of your hands. You either form two 15-foot cones that don't overlap or you combine the hands into one 30-foot cone. Each creature in a wave takes {@damage 1d8} bludgeoning damage with a basic Reflex save against your class DC. If a creature critically fails, you also push that creature 5 feet."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d8}."
+			}
 		},
 		{
 			"name": "Winter's Clutch",
@@ -1906,9 +1955,11 @@
 			],
 			"entries": [
 				"Gleaming flakes of chilling snow fall in a 10-foot burst within 60 feet. Each creature in the area takes {@damage 2d4} cold damage with a basic Reflex save against your class DC. The ground in the area is covered in a snow drift, which is difficult terrain.",
-				"Each square of the drift lasts until it melts, either naturally or until fire damage is dealt in that square.",
-				"Level (+2) The damage increases by {@damage 1d4}."
-			]
+				"Each square of the drift lasts until it melts, either naturally or until fire damage is dealt in that square."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d4}."
+			}
 		},
 		{
 			"name": "Return to the Sea",
@@ -1970,9 +2021,11 @@
 				"water"
 			],
 			"entries": [
-				"Heavy drops of rain batter down, hitting like sling stones and impeding vision. Each creature in a 15-foot burst within 120 feet takes {@damage 3d8} bludgeoning damage with a basic Reflex save against your class DC. Until the start of your next turn, all creatures are {@condition concealed} while in the area, and all creatures outside the area are {@condition concealed} to creatures within it.",
-				"Level (+2) The damage increases by {@damage 1d8}."
-			]
+				"Heavy drops of rain batter down, hitting like sling stones and impeding vision. Each creature in a 15-foot burst within 120 feet takes {@damage 3d8} bludgeoning damage with a basic Reflex save against your class DC. Until the start of your next turn, all creatures are {@condition concealed} while in the area, and all creatures outside the area are {@condition concealed} to creatures within it."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d8}."
+			}
 		},
 		{
 			"name": "Torrent in the Blood",
@@ -1994,8 +2047,11 @@
 				"water"
 			],
 			"entries": [
-				"A healing wave splashes across creatures in a 30-foot cone, its cleansing water driving afflictions from the body. Each creature in the area regains {@dice 3d8} Hit Points and can attempt a new save against one poison or disease affliction affecting it; on a failed save, the condition doesn't worsen. Each creature that benefited from this impulse becomes temporarily immune to Torrent in the Blood for 10 minutes. Level (+2) The healing increases by {@dice 1d8}."
-			]
+				"A healing wave splashes across creatures in a 30-foot cone, its cleansing water driving afflictions from the body. Each creature in the area regains {@dice 3d8} Hit Points and can attempt a new save against one poison or disease affliction affecting it; on a failed save, the condition doesn't worsen. Each creature that benefited from this impulse becomes temporarily immune to Torrent in the Blood for 10 minutes."
+			],
+			"footer": {
+				"Level (+2)": "The healing increases by {@dice 1d8}."
+			}
 		},
 		{
 			"name": "Call the Hurricane",
@@ -2014,8 +2070,11 @@
 				"water"
 			],
 			"entries": [
-				"Massive waves spiral around you, with you as the eye of the hurricane. The waves appear in a 20-foot emanation, or a 30-foot emanation if you're in a body of water. Each creature in the area takes {@damage 6d8} bludgeoning damage with a basic Reflex save against your class DC. A creature that fails its save is battered by the waves and pushed 10 feet (or 20 feet on a critical failure). Level (+2) The damage increases by {@damage 1d8}."
-			]
+				"Massive waves spiral around you, with you as the eye of the hurricane. The waves appear in a 20-foot emanation, or a 30-foot emanation if you're in a body of water. Each creature in the area takes {@damage 6d8} bludgeoning damage with a basic Reflex save against your class DC. A creature that fails its save is battered by the waves and pushed 10 feet (or 20 feet on a critical failure)."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d8}."
+			}
 		},
 		{
 			"name": "Impenetrable Fog",
@@ -2035,9 +2094,11 @@
 				"water"
 			],
 			"entries": [
-				"Fog condenses in a chaotic, swirling pattern, thick enough that it seems to push back against you. You call forth a fog bank in a 10-foot burst within 120 feet. All creatures in the fog are {@condition concealed}, and all creatures outside the fog become {@condition concealed} to creatures within it. The fog is so magically dense it impedes movement, making the area difficult terrain. The fog lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute.",
-				"Level (+3) You can make the radius of the burst larger. Increase its maximum size by 5 feet."
-			]
+				"Fog condenses in a chaotic, swirling pattern, thick enough that it seems to push back against you. You call forth a fog bank in a 10-foot burst within 120 feet. All creatures in the fog are {@condition concealed}, and all creatures outside the fog become {@condition concealed} to creatures within it. The fog is so magically dense it impedes movement, making the area difficult terrain. The fog lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute."
+			],
+			"footer": {
+				"Level (+3)": "You can make the radius of the burst larger. Increase its maximum size by 5 feet."
+			}
 		},
 		{
 			"name": "Glacial Prison",
@@ -2096,9 +2157,11 @@
 			],
 			"entries": [
 				"Eerily beautiful elemental water beings race around you, eager to protect and heal you and your allies. Their forms vary and might include eels formed of undulating water or ice crystals whirling in the shape of a jellyfish. The guardians flow around combatants and don't occupy a space. They attempt to intercept all dangers, granting you and your allies within your kinetic aura a +1 status bonus to AC and saving throws.",
-				"If any creature affected is critically hit or critically fails at a saving throw against an attack, effect from an enemy, or hazard and remains above 0 HP, the guardians reach out to heal that creature. The creature regains {@dice 4d8+8} Hit Points, and the impulse ends. If the creature is in water, the healing dice are d10s instead of d8s.",
-				"Level (+3) The healing increases by {@dice 1d8+4}."
-			]
+				"If any creature affected is critically hit or critically fails at a saving throw against an attack, effect from an enemy, or hazard and remains above 0 HP, the guardians reach out to heal that creature. The creature regains {@dice 4d8+8} Hit Points, and the impulse ends. If the creature is in water, the healing dice are d10s instead of d8s."
+			],
+			"footer": {
+				"Level (+3)": "The healing increases by {@dice 1d8+4}."
+			}
 		},
 		{
 			"name": "Barrier of Boreal Frost",
@@ -2191,9 +2254,11 @@
 				"wood"
 			],
 			"entries": [
-				"You grow a nourishing nut, vegetable, seed, or fruit. Choose a creature in your kinetic aura. The produce grows in their open hand, or at their feet if they have no open hands. The produce has light Bulk. A creature can eat it with an {@action Interact} action to regain {@dice 1d4+1} HP; this is a healing vitality effect. The creature feels full for 10 minutes, during which it has resistance 2 to void damage and can't eat another piece of produce. Produce not consumed by the start of your next turn withers away.",
-				"Level (+2) The healing increases by {@dice 1d4+5}, and the resistance increases by 2."
-			]
+				"You grow a nourishing nut, vegetable, seed, or fruit. Choose a creature in your kinetic aura. The produce grows in their open hand, or at their feet if they have no open hands. The produce has light Bulk. A creature can eat it with an {@action Interact} action to regain {@dice 1d4+1} HP; this is a healing vitality effect. The creature feels full for 10 minutes, during which it has resistance 2 to void damage and can't eat another piece of produce. Produce not consumed by the start of your next turn withers away."
+			],
+			"footer": {
+				"Level (+2)": "The healing increases by {@dice 1d4+5}, and the resistance increases by 2."
+			}
 		},
 		{
 			"name": "Hail of Splinters",
@@ -2212,9 +2277,11 @@
 				"wood"
 			],
 			"entries": [
-				"A fusillade of jagged splinters flies from you. Creatures in a 30-foot cone take {@damage 1d4} piercing damage and {@damage 1d4} {@condition persistent damage||persistent bleed damage} with a basic Reflex save against your class DC.",
-				"Level (+2) Each type of damage increases by {@damage 1d4}."
-			]
+				"A fusillade of jagged splinters flies from you. Creatures in a 30-foot cone take {@damage 1d4} piercing damage and {@damage 1d4} {@condition persistent damage||persistent bleed damage} with a basic Reflex save against your class DC."
+			],
+			"footer": {
+				"Level (+2)": "Each type of damage increases by {@damage 1d4}."
+			}
 		},
 		{
 			"name": "Hardwood Armor",
@@ -2234,8 +2301,11 @@
 			"entries": [
 				"Wood and bark grow over your body like armor. This hardwood armor is medium armor but uses your highest armor proficiency.",
 				"The wooden armor's statistics are: AC Bonus +3; Dex Cap +2; Check Penalty \u20132; Speed Penalty \u20135 feet; Strength 14; Bulk 1; Group wood TV. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any runes that could apply to the hardwood armor are replicated onto it. When you use this impulse, you can also create a wooden shield in a free hand. You can Shield Block with this shield even if you don't have that feat. The hand wielding this shield counts as a free hand for using impulses. The shield decays in an instant if it becomes {@condition broken} or leaves your grasp.",
-				"The armor lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends. Level (+3) The shield's Hardness increases by 1, its HP by 4, and its BT by 2."
-			]
+				"The armor lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends."
+			],
+			"footer": {
+				"Level (+3)": "The shield's Hardness increases by 1, its HP by 4, and its BT by 2."
+			}
 		},
 		{
 			"name": "Timber Sentinel",
@@ -2276,8 +2346,11 @@
 			],
 			"entries": [
 				"Thorny vines grow in geometric patterns on surfaces in your kinetic aura. A creature that starts its turn in the thorns takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area. The thorns are hazardous terrain. A creature takes 2 piercing damage each time it moves into one of these squares.",
-				"If any square the thorns grow on is water or soil, double the hazardous terrain damage for all thorns. If you move, the thorns disappear; new thorns grow at the end of your turn. Level (+4) The damage increases by 1."
-			]
+				"If any square the thorns grow on is water or soil, double the hazardous terrain damage for all thorns. If you move, the thorns disappear; new thorns grow at the end of your turn."
+			],
+			"footer": {
+				"Level (+4)": "The damage increases by 1."
+			}
 		},
 		{
 			"name": "Tumbling Lumber",
@@ -2309,11 +2382,14 @@
 							"The creature takes full damage and is pushed out of the line in the most direct path available."
 						],
 						"Critical Failure": [
-							"The creature takes double damage and is knocked {@condition prone}. Level (+3) The damage increases by {@damage 1d8}."
+							"The creature takes double damage and is knocked {@condition prone}."
 						]
 					}
 				}
-			]
+			],
+			"footer": {
+				"Level (+3)": "The damage increases by {@damage 1d8}."
+			}
 		},
 		{
 			"name": "Dash of Herbs",
@@ -2335,9 +2411,11 @@
 			],
 			"entries": [
 				"A small cloud of medicinal herbs heal a creature. The type of herbs depends on which malady you decide to treat: {@condition confused}, disease, poison, {@condition sickened}, or injuries. Target one living creature within 30 feet, who regains {@dice 2d8+4} HP and can attempt a new save against one malady of the chosen kind. If you chose injuries, instead increase the healing dice to d10s. The creature becomes temporarily immune to Dash of Herbs for 10 minutes.",
-				"Alternatively, you can add the herbs to a dish of food being prepared for up to six people. Creatures who partake in the meal gain the benefits. The herbs' {@trait healing} effects wear off if not eaten within an hour, though their flavor remains.",
-				"Level (+2) The healing increases by {@dice 1d8}."
-			]
+				"Alternatively, you can add the herbs to a dish of food being prepared for up to six people. Creatures who partake in the meal gain the benefits. The herbs' {@trait healing} effects wear off if not eaten within an hour, though their flavor remains."
+			],
+			"footer": {
+				"Level (+2)": "The healing increases by {@dice 1d8}."
+			}
 		},
 		{
 			"name": "Wooden Palisade",
@@ -2358,9 +2436,11 @@
 			],
 			"entries": [
 				"Planks of wood, embellished with carvings, spring forth to form a wall. The palisade is up to 30 feet long, 20 feet high, and 1 inch thick. It must form in a straight line in an unbroken open space that doesn't pass through any creatures or objects, or the impulse fails. When you create the wall, you can choose to create ledges on one side of the wall, 4 feet from the top, with ladders reaching to them from the bottom of the wall.",
-				"Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points, and is immune to critical hits and precision damage. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute.",
-				"Level (+2) The maximum length of the wall increases by 10 feet, and the HP of each section increase by 10."
-			]
+				"Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points, and is immune to critical hits and precision damage. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
+			],
+			"footer": {
+				"Level (+2)": "The maximum length of the wall increases by 10 feet, and the HP of each section increase by 10."
+			}
 		},
 		{
 			"name": "Drifting Pollen",
@@ -2402,9 +2482,11 @@
 			],
 			"entries": [
 				"Blood-drinking vines grow from the ground in a 15-foot burst within 120 feet. Each living enemy in the area has its blood {@condition drained}, taking {@damage 3d6} piercing damage with a basic Fortitude save against your class DC. Each time the vines drink blood, living creatures in the area who aren't your enemies regain HP equal to half the damage a single creature took; calculate this using the highest damage a single creature took. This is a healing vitality effect. Your enemies with void healing in the area take vitality damage in the same amount as the healing.",
-				"The vines last until the end of your next turn, and you can Sustain the impulse. The first time you Sustain the impulse on subsequent turns, you can repeat the effect.",
-				"Level (+2) The damage increases by {@damage 1d6}."
-			]
+				"The vines last until the end of your next turn, and you can Sustain the impulse. The first time you Sustain the impulse on subsequent turns, you can repeat the effect."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Hedge Maze",
@@ -2462,12 +2544,14 @@
 							"The target takes full damage and is {@condition clumsy||clumsy 2} and {@condition immobilized} until the end of its next turn."
 						],
 						"Critical Failure": [
-							"The target takes double damage and is {@condition clumsy||clumsy 2} and {@condition immobilized}. It attempts a new save at the end of each of its turns, ending the effect if it succeeds.",
-							"Level (+4) The damage increases by {@damage 1d10}."
+							"The target takes double damage and is {@condition clumsy||clumsy 2} and {@condition immobilized}. It attempts a new save at the end of each of its turns, ending the effect if it succeeds."
 						]
 					}
 				}
-			]
+			],
+			"footer": {
+				"Level (+4)": "The damage increases by {@damage 1d10}."
+			}
 		},
 		{
 			"name": "Orchard's Endurance",
@@ -2487,9 +2571,11 @@
 				"wood"
 			],
 			"entries": [
-				"Patches of bark appear on the skin of you and your nearby allies. You and your allies in your kinetic aura gain resistance 5 to bludgeoning and piercing damage. In addition, you and your affected allies roll flat checks to recover from {@condition persistent damage} twice and take the higher result; this is a {@trait fortune} effect.",
-				"Level (+4) The resistance increases by 2."
-			]
+				"Patches of bark appear on the skin of you and your nearby allies. You and your allies in your kinetic aura gain resistance 5 to bludgeoning and piercing damage. In addition, you and your affected allies roll flat checks to recover from {@condition persistent damage} twice and take the higher result; this is a {@trait fortune} effect."
+			],
+			"footer": {
+				"Level (+4)": "The resistance increases by 2."
+			}
 		},
 		{
 			"name": "Rouse the Forest's Fury",
@@ -2559,9 +2645,11 @@
 			"entries": [
 				"You plant the seed of a giant bladderwort in an unoccupied square of ground or water within 30 feet. It lasts for 10 minutes.",
 				"Using this impulse again ends any previous one. If a creature enters its square, the seed erupts into a voluminous, translucent plant that seals tight around the triggering creature and fills with water. Unless the creature succeeds at a Reflex save against your class DC, it's {@condition immobilized} within the bladderwort and must hold its breath or begin drowning. The {@action Escape} DC is also your class DC. The plant has AC 10 and 50 Hit Points.",
-				"If a creature dies inside it, the plant shrinks down, converting itself and the remains into a watery fruit. A creature can eat this consumable to regain {@dice 1d8+4} HP, after which that creature is temporarily immune for 10 minutes. This fruit rots after 1 hour.",
-				"Level (+4) The bladderwort's HP increase by 25 and the fruit's healing increases by {@dice 1d8+4}."
-			]
+				"If a creature dies inside it, the plant shrinks down, converting itself and the remains into a watery fruit. A creature can eat this consumable to regain {@dice 1d8+4} HP, after which that creature is temporarily immune for 10 minutes. This fruit rots after 1 hour."
+			],
+			"footer": {
+				"Level (+4)": "The bladderwort's HP increase by 25 and the fruit's healing increases by {@dice 1d8+4}."
+			}
 		},
 		{
 			"name": "Lava Leap",
@@ -2583,9 +2671,11 @@
 			],
 			"entries": [
 				"You wreath yourself in molten stone and hurtle toward your enemy. {@action Leap} up to your Speed. At the end of your {@action Leap}, a wave of lava crashes onto all creatures in a 10-foot emanation. Each creature in the area takes {@damage 1d6} bludgeoning damage and {@damage 2d6} fire damage, with a basic Reflex save against your class DC.",
-				"The cooling remains of the lava form a temporary protective shell around you, granting you a +2 circumstance bonus to AC until the start of your next turn.",
-				"Level (+3) Each type of damage increases by {@damage 1d6}."
-			]
+				"The cooling remains of the lava form a temporary protective shell around you, granting you a +2 circumstance bonus to AC until the start of your next turn."
+			],
+			"footer": {
+				"Level (+3)": "Each type of damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Living Bonfire",
@@ -2606,9 +2696,11 @@
 			],
 			"entries": [
 				"Roots and branches of living wood writhe in elemental fire at your command, forming a bonfire fearsome enough to scare off predators in the night. You conjure a bonfire in an unoccupied 10-foot-square space within 30 feet. The bonfire burns for 10 hours, providing all the benefits of a normal campfire. If you use this impulse again, any previous one ends.",
-				"When you make a wood ranged {@action Elemental Blast|RoE}, you can have it come from the bonfire instead of you, flinging burning logs. This blast deals an additional {@damage 1d6} fire damage. Each time you do this, the size of the bonfire is reduced by one 5-foot square. If all the squares are removed, the impulse ends.",
-				"Level (+5) The fire damage increases by {@damage 1d6}."
-			]
+				"When you make a wood ranged {@action Elemental Blast|RoE}, you can have it come from the bonfire instead of you, flinging burning logs. This blast deals an additional {@damage 1d6} fire damage. Each time you do this, the size of the bonfire is reduced by one 5-foot square. If all the squares are removed, the impulse ends."
+			],
+			"footer": {
+				"Level (+5)": "The fire damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Rain of Rust",
@@ -2628,8 +2720,11 @@
 				"water"
 			],
 			"entries": [
-				"You conjure a red raincloud in a 10-foot burst within 60 feet, which pours rust-colored rain directly below it. Any creature in the rain with the metal trait, that is made of metal, or is wearing metal armor is covered in corrosive build-up. Any such creature is {@condition clumsy||clumsy 1} as long as it remains in the area. If such a creature is in the rain at the start of its turn, it takes {@dice 3d6} damage with a basic Fortitude save against your class DC, plus {@damage 1d6} {@condition persistent damage} if it fails. Damage from this impulse ignores Hardness. Level (+2) The initial damage increases by {@damage 1d6}."
-			]
+				"You conjure a red raincloud in a 10-foot burst within 60 feet, which pours rust-colored rain directly below it. Any creature in the rain with the metal trait, that is made of metal, or is wearing metal armor is covered in corrosive build-up. Any such creature is {@condition clumsy||clumsy 1} as long as it remains in the area. If such a creature is in the rain at the start of its turn, it takes {@dice 3d6} damage with a basic Fortitude save against your class DC, plus {@damage 1d6} {@condition persistent damage} if it fails. Damage from this impulse ignores Hardness."
+			],
+			"footer": {
+				"Level (+2)": "The initial damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Whirling Grindstone",
@@ -2651,9 +2746,11 @@
 			],
 			"entries": [
 				"A whirling grindstone made of flint appears in an unoccupied square within 30 feet. The grindstone shreds flesh and shoots sparks. Attempt an impulse attack roll against the AC of a creature adjacent to the grindstone. On a hit, the creature takes {@damage 2d6} slashing damage and {@damage 1d6} fire damage (or double damage on a critical hit). The grindstone lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute. On subsequent turns, the first time you Sustain the impulse that turn, you can roll the grindstone up to 20 feet and can repeat the attack.",
-				"A creature within reach of the grindstone can {@action Interact} with it to sharpen a metal weapon. This grants a +2 circumstance bonus to the next damage roll made with that weapon within 1 minute.",
-				"Level (+5) The grindstone's damage increases by {@damage 1d6} slashing and {@damage 1d6} fire, and the bonus to weapons increases by 1."
-			]
+				"A creature within reach of the grindstone can {@action Interact} with it to sharpen a metal weapon. This grants a +2 circumstance bonus to the next damage roll made with that weapon within 1 minute."
+			],
+			"footer": {
+				"Level (+5)": "The grindstone's damage increases by {@damage 1d6} slashing and {@damage 1d6} fire, and the bonus to weapons increases by 1."
+			}
 		},
 		{
 			"name": "Ash Strider",
@@ -2674,9 +2771,11 @@
 				"primal"
 			],
 			"entries": [
-				"You discorporate into a cloud of whirling ash and {@action Stride}. If you have a fly Speed, you can {@action Fly} instead. This movement doesn't trigger reactions, you can move through occupied spaces and tiny cracks, and you ignore any difficult terrain and greater difficult terrain that wouldn't impede smoke. The first creature you pass through during this movement takes {@damage 3d6} fire damage with a basic Reflex save against your class DC. Ash lingers around you after your movement is complete, granting you concealment until the start of your next turn.",
-				"Level (+2) The damage increases by {@damage 1d6}."
-			]
+				"You discorporate into a cloud of whirling ash and {@action Stride}. If you have a fly Speed, you can {@action Fly} instead. This movement doesn't trigger reactions, you can move through occupied spaces and tiny cracks, and you ignore any difficult terrain and greater difficult terrain that wouldn't impede smoke. The first creature you pass through during this movement takes {@damage 3d6} fire damage with a basic Reflex save against your class DC. Ash lingers around you after your movement is complete, granting you concealment until the start of your next turn."
+			],
+			"footer": {
+				"Level (+2)": "The damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Desert Wind",
@@ -2698,9 +2797,11 @@
 			],
 			"entries": [
 				"A vortex of sand and dust surrounds you. Each creature inside your kinetic aura (including you) is {@condition concealed} from any creature outside your kinetic aura, and creatures outside the aura are {@condition concealed} from creatures inside the aura other than you.",
-				"Your air impulses carry sands that cut at great speed. When you use a damaging air impulse that affects at least one creature in your kinetic aura, that impulse deals 1 additional slashing damage, or 2 if the impulse has a single target.",
-				"Level (+2) The extra damage increases by 1, or 2 if the impulse has a single target."
-			]
+				"Your air impulses carry sands that cut at great speed. When you use a damaging air impulse that affects at least one creature in your kinetic aura, that impulse deals 1 additional slashing damage, or 2 if the impulse has a single target."
+			],
+			"footer": {
+				"Level (+2)": "The extra damage increases by 1, or 2 if the impulse has a single target."
+			}
 		},
 		{
 			"name": "Elemental Artillery",
@@ -2720,9 +2821,11 @@
 				"wood"
 			],
 			"entries": [
-				"Spinning wood and metal together, you create a rugged wooden ballista. The ballista is Medium and appears in an unoccupied space within 30 feet. It immediately shoots a bolt with a jagged tip of elemental metal. Make an impulse attack roll against the AC of a target within 120 feet. The target takes {@damage 3d12} piercing damage on a hit (or double damage on a critical hit). The ballista can be shot again, but it must first be reloaded with two {@action Interact} actions. The ballista lasts until the end of your next turn, and you can Sustain the impulse. Each time you Sustain it, you can roll the ballista up to 20 feet, shoot it if it's loaded, or contribute 1 action toward reloading it.",
-				"Level (+3) The damage increases by {@damage 1d12}."
-			]
+				"Spinning wood and metal together, you create a rugged wooden ballista. The ballista is Medium and appears in an unoccupied space within 30 feet. It immediately shoots a bolt with a jagged tip of elemental metal. Make an impulse attack roll against the AC of a target within 120 feet. The target takes {@damage 3d12} piercing damage on a hit (or double damage on a critical hit). The ballista can be shot again, but it must first be reloaded with two {@action Interact} actions. The ballista lasts until the end of your next turn, and you can Sustain the impulse. Each time you Sustain it, you can roll the ballista up to 20 feet, shoot it if it's loaded, or contribute 1 action toward reloading it."
+			],
+			"footer": {
+				"Level (+3)": "The damage increases by {@damage 1d12}."
+			}
 		},
 		{
 			"name": "Jagged Berms",
@@ -2745,8 +2848,11 @@
 			"entries": [
 				"You conjure up to six cube-shaped mounds of packed earth. Each appears in an unoccupied square within 120 feet, fills its square, and provides cover. A mound has AC 10, Hardness 10, and 20 HP, and is immune to critical hits and precision damage.",
 				"If destroyed, a mound becomes difficult terrain. The mounds last for an unlimited duration, but if you use the impulse again, any previous one ends.",
-				"Sharpened wooden stakes protrude from each mound into adjacent squares. They can project from any of its sides; you choose which sides for each mound. For each square of wooden stakes a creature enters, that creature takes {@damage 2d6} piercing damage. Destroying a mound also destroys its stakes. Level (+2) The HP of each section of the wall increases by 10, and the piercing damage increases by {@damage 1d6}."
-			]
+				"Sharpened wooden stakes protrude from each mound into adjacent squares. They can project from any of its sides; you choose which sides for each mound. For each square of wooden stakes a creature enters, that creature takes {@damage 2d6} piercing damage. Destroying a mound also destroys its stakes."
+			],
+			"footer": {
+				"Level (+2)": "The HP of each section of the wall increases by 10, and the piercing damage increases by {@damage 1d6}."
+			}
 		},
 		{
 			"name": "Lightning Rod",
@@ -2766,9 +2872,11 @@
 				"primal"
 			],
 			"entries": [
-				"You smash a metal rod into your foe and call lightning to it. Attempt a 1-action melee {@action Elemental Blast|RoE} using the metal element. On a hit, the target is skewered with a metal rod, which gives it a \u20131 circumstance penalty to AC and saves against electricity; the penalty is \u20132 if the creature also has the metal trait, is made of metal, or is wearing metal armor. A hit creature immediately takes {@damage 1d12} electricity damage with a basic Reflex save against your class DC. The creature can {@action Interact} to attempt a DC 10 {@skill Athletics} check to pull the lightning rod free.",
-				"Level (+6) The electricity damage increases by {@damage 1d12}."
-			]
+				"You smash a metal rod into your foe and call lightning to it. Attempt a 1-action melee {@action Elemental Blast|RoE} using the metal element. On a hit, the target is skewered with a metal rod, which gives it a \u20131 circumstance penalty to AC and saves against electricity; the penalty is \u20132 if the creature also has the metal trait, is made of metal, or is wearing metal armor. A hit creature immediately takes {@damage 1d12} electricity damage with a basic Reflex save against your class DC. The creature can {@action Interact} to attempt a DC 10 {@skill Athletics} check to pull the lightning rod free."
+			],
+			"footer": {
+				"Level (+6)": "The electricity damage increases by {@damage 1d12}."
+			}
 		},
 		{
 			"name": "Molten Wire",
@@ -2789,9 +2897,11 @@
 			],
 			"entries": [
 				"Spinning molten iron through a vortex of fire, you trap your foe in searing wires. Make an impulse attack roll against a creature within 15 feet. On a success, the target takes {@damage 2d6} slashing damage and is wrapped in molten wire for 1 minute.",
-				"It is {@condition clumsy||clumsy 1} and takes {@damage 2d4} fire damage at the start of each of its turns, with a basic Reflex save. The wire's {@action Escape} DC is your class DC. The wire has AC 10 and 75 HP. The impulse ends if the creature Escapes or the wire is destroyed.",
-				"Level (+4) The slashing damage increases by {@damage 1d6}, the fire damage increases by {@damage 1d4}, and the wire's HP increases by 25."
-			]
+				"It is {@condition clumsy||clumsy 1} and takes {@damage 2d4} fire damage at the start of each of its turns, with a basic Reflex save. The wire's {@action Escape} DC is your class DC. The wire has AC 10 and 75 HP. The impulse ends if the creature Escapes or the wire is destroyed."
+			],
+			"footer": {
+				"Level (+4)": "The slashing damage increases by {@damage 1d6}, the fire damage increases by {@damage 1d4}, and the wire's HP increases by 25."
+			}
 		},
 		{
 			"name": "Rising Hurricane",
@@ -2812,9 +2922,11 @@
 				"water"
 			],
 			"entries": [
-				"A hurricane lifts your enemies into the air before bringing them crashing down in a bloody rain. Your hurricane appears in a cylinder that's 40 feet tall, has a 30-foot diameter, and is within 120 feet. All creatures in the area take {@damage 2d6} bludgeoning damage with a basic Fortitude save against your class DC. Lift any creature that fails its save to any height you choose within the area, move it up to 5 feet in any direction, then drop it. It takes falling damage normally unless it has a fly Speed.",
-				"Level (+3) The rain damage increases by {@damage 1d6}, and the cylinder's height increases by 5 feet."
-			]
+				"A hurricane lifts your enemies into the air before bringing them crashing down in a bloody rain. Your hurricane appears in a cylinder that's 40 feet tall, has a 30-foot diameter, and is within 120 feet. All creatures in the area take {@damage 2d6} bludgeoning damage with a basic Fortitude save against your class DC. Lift any creature that fails its save to any height you choose within the area, move it up to 5 feet in any direction, then drop it. It takes falling damage normally unless it has a fly Speed."
+			],
+			"footer": {
+				"Level (+3)": "The rain damage increases by {@damage 1d6}, and the cylinder's height increases by 5 feet."
+			}
 		},
 		{
 			"name": "Roiling Mudslide",
@@ -2834,9 +2946,11 @@
 				"water"
 			],
 			"entries": [
-				"You form water and earth into a mudslide that smashes your opponents and coats them in mud. Each creature in the area takes {@damage 2d8} bludgeoning damage with a basic Fortitude save against your class DC. A creature that fails is also pushed 5 feet (or 10 feet on a critical failure) and coated in mud until the end of its next turn. While coated in mud, the creature falls {@condition prone} at the end of its movement any time it ends a move action other than a {@action Crawl} or {@action Step}. The creature can attempt an {@skill Acrobatics} check or Reflex save against your class DC, avoiding the fall if it succeeds.",
-				"Level (+4) The damage increases by {@damage 1d8}."
-			]
+				"You form water and earth into a mudslide that smashes your opponents and coats them in mud. Each creature in the area takes {@damage 2d8} bludgeoning damage with a basic Fortitude save against your class DC. A creature that fails is also pushed 5 feet (or 10 feet on a critical failure) and coated in mud until the end of its next turn. While coated in mud, the creature falls {@condition prone} at the end of its movement any time it ends a move action other than a {@action Crawl} or {@action Step}. The creature can attempt an {@skill Acrobatics} check or Reflex save against your class DC, avoiding the fall if it succeeds."
+			],
+			"footer": {
+				"Level (+4)": "The damage increases by {@damage 1d8}."
+			}
 		},
 		{
 			"name": "Steam Knight",
@@ -2865,9 +2979,11 @@
 						"When you {@action Leap}, you can jump up to your Speed. You don't immediately fall at the end of a jump, provided you {@action Leap} again with your next action. If you {@action Leap} over a creature and come within 10 feet, that creature takes {@damage 2d6} fire damage with a basic Reflex save against your class DC.",
 						"At the start of each of your turns, you can emit steam as a free action. It deals {@damage 2d6} fire damage to each creature in your kinetic aura with a basic Reflex save against your class DC. A creature that fails is also pushed 5 feet."
 					]
-				},
-				"Level (+5) The fire damage from a jump or blast of steam increases by {@dice 1d6}."
-			]
+				}
+			],
+			"footer": {
+				"Level (+5)": "The fire damage from a jump or blast of steam increases by {@dice 1d6}."
+			}
 		},
 		{
 			"name": "Tree of Duality",
@@ -2892,10 +3008,13 @@
 					"type": "list",
 					"items": [
 						"Cleansing Pollen (healing, vitality) Each living ally that's in the area or enters it regains {@dice 3d4} HP and is then temporarily immune to regaining HP from Tree of Duality for 10 minutes.",
-						"Hallucinogenic Spores (mental) Enemies in the area are {@condition dazzled}. An enemy that leaves the area remains {@condition dazzled} until the start of its next turn. Level (+2) The healing increases by {@dice 1d4}."
+						"Hallucinogenic Spores (mental) Enemies in the area are {@condition dazzled}. An enemy that leaves the area remains {@condition dazzled} until the start of its next turn."
 					]
 				}
-			]
+			],
+			"footer": {
+				"Level (+2)": "The healing increases by {@dice 1d4}."
+			}
 		},
 		{
 			"name": "Ambersoul",
@@ -3628,7 +3747,7 @@
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, wood is in your elemental philosophy",
 			"entries": [
 				"You enhance your spell with elemental wood, causing your magic to expand and grow beyond its original limitations. If the next action you use this turn is to Cast a non-cantrip Spell that affects an area, expand the area of the spell. For bursts, expand the radius by 5 feet; for cones, expand the cone by 10 feet; and for lines, expand the length by 15 feet.",
-				"The spell gains the wood trait."
+				"The spell gains the {@trait wood} trait."
 			]
 		},
 		{
