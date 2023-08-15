@@ -143,7 +143,23 @@
 				"kineticist"
 			],
 			"entries": [
-				"Elements are wild and dangerous, but you've found ways to reduce their risk. When you {@action Channel Elements|RoE} or use a stance impulse that affects your kinetic aura, you can designate a number of creatures up to your Constitution modifier (minimum 1 creature). Choose whether they are immune to the benefits of your kinetic aura or immune to its damage and drawbacks. You don't have to be able to see a creature to designate it, nor does it need to be in your kinetic aura, but you can't designate a creature that's {@condition unnoticed} by you. In addition, you gain the Pacifying Infusion action. Pacifying Infusion {@as 1} (infusion) If your next action is an impulse, it gains the {@trait nonlethal} trait. If it has an area, you can exclude creatures you've designated with Safe Elements from its effects."
+				"Elements are wild and dangerous, but you've found ways to reduce their risk. When you {@action Channel Elements|RoE} or use a stance impulse that affects your kinetic aura, you can designate a number of creatures up to your Constitution modifier (minimum 1 creature). Choose whether they are immune to the benefits of your kinetic aura or immune to its damage and drawbacks. You don't have to be able to see a creature to designate it, nor does it need to be in your kinetic aura, but you can't designate a creature that's {@condition unnoticed} by you.",
+				"In addition, you gain the Pacifying Infusion action.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Pacifying Infusion",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"infusion"
+					],
+					"entries": [
+						"If your next action is an impulse, it gains the {@trait nonlethal} trait. If it has an area, you can exclude creatures you've designated with Safe Elements from its effects."
+					]
+				}
 			]
 		},
 		{
@@ -972,10 +988,12 @@
 				"primal"
 			],
 			"entries": [
-				"A figure of sand with grasping arms arises in an unoccupied square within 30 feet. You can choose to make it Small or Medium size, and it can flank. When the sand snatcher appears, you can have it attempt to {@action Grapple} one creature adjacent to it that's no more than one size larger than it. This {@action Grapple} uses your impulse attack roll instead of an {@skill Athletics} check and shares your multiple attack penalty. The sand snatcher lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute. Each time you Sustain the impulse, you can have the sand snatcher either {@action Grapple} again or {@action Burrow}, {@action Climb}, or {@action Stride} up to 20 feet. Attempts to {@action Escape} its grasp use your class DC.",
-				"Level (10th) You can also choose Large size.",
-				"Level (14th) You can also choose Large or Huge size."
-			]
+				"A figure of sand with grasping arms arises in an unoccupied square within 30 feet. You can choose to make it Small or Medium size, and it can flank. When the sand snatcher appears, you can have it attempt to {@action Grapple} one creature adjacent to it that's no more than one size larger than it. This {@action Grapple} uses your impulse attack roll instead of an {@skill Athletics} check and shares your multiple attack penalty. The sand snatcher lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute. Each time you Sustain the impulse, you can have the sand snatcher either {@action Grapple} again or {@action Burrow}, {@action Climb}, or {@action Stride} up to 20 feet. Attempts to {@action Escape} its grasp use your class DC."
+			],
+			"footer": {
+				"Level (10th)": "You can also choose Large size.",
+				"Level (14th)": "You can also choose Large or Huge size."
+			}
 		},
 		{
 			"name": "Weight of Stone",
@@ -1056,9 +1074,11 @@
 				"primal"
 			],
 			"entries": [
-				"The earth parts before you, letting you swim through it. You gain a burrow Speed equal to your land Speed and can immediately {@action Burrow} once. You don't gain the ability to breathe while in the earth, so you must hold your breath. The impulse ends at the end of your next turn, but you can Sustain it up to 1 minute. If you're inside the earth when the impulse ends, you immediately return to the surface directly above you, fall {@condition prone} when you reach the surface, and are {@condition slowed||slowed 1} until the end of your next turn.",
-				"Level (14th) You can burrow through rock and similar dense earthen matter, leaving no tunnels or signs of your passing."
-			]
+				"The earth parts before you, letting you swim through it. You gain a burrow Speed equal to your land Speed and can immediately {@action Burrow} once. You don't gain the ability to breathe while in the earth, so you must hold your breath. The impulse ends at the end of your next turn, but you can Sustain it up to 1 minute. If you're inside the earth when the impulse ends, you immediately return to the surface directly above you, fall {@condition prone} when you reach the surface, and are {@condition slowed||slowed 1} until the end of your next turn."
+			],
+			"footer": {
+				"Level (14th)": "You can burrow through rock and similar dense earthen matter, leaving no tunnels or signs of your passing."
+			}
 		},
 		{
 			"name": "Rattle the Earth",
@@ -1077,10 +1097,12 @@
 				"primal"
 			],
 			"entries": [
-				"Striking the ground with the gravity of the deepest rocks, you cause an earthquake. This has the effects of earthquake but comes from you, with an area of a 60-foot cone or an emanation with the same size as your kinetic aura. You and your space are unaffected by the quake. The fissures are only 10 feet deep, and the DC of the flat check for a collapse is 4 higher.",
-				"Level (16th) Fissures are 20 feet deep, and the DC of the flat check is 2 higher.",
-				"Level (20th) The fissures and flat check are unchanged from the spell."
-			]
+				"Striking the ground with the gravity of the deepest rocks, you cause an earthquake. This has the effects of earthquake but comes from you, with an area of a 60-foot cone or an emanation with the same size as your kinetic aura. You and your space are unaffected by the quake. The fissures are only 10 feet deep, and the DC of the flat check for a collapse is 4 higher."
+			],
+			"footer": {
+				"Level (16th)": "Fissures are 20 feet deep, and the DC of the flat check is 2 higher.",
+				"Level (20th)": "The fissures and flat check are unchanged from the spell."
+			}
 		},
 		{
 			"name": "Rock Rampart",
@@ -1156,9 +1178,11 @@
 			"entries": [
 				"Rock overflows from within you to consume your form before cracking open to reveal your body transformed into living stone.",
 				"You gain 40 temporary Hit Points. You're immune to critical hits and precision damage. You can't be pushed, pulled, or tripped while you're standing on earth or stone. Your earth Elemental Blasts deal an additional {@dice 1d10} damage of their normal type.",
-				"These benefits last until the end of your next turn, but you can Sustain them up to 1 minute. After you gain temporary Hit Points from this impulse, you can't do so again for 10 minutes.",
-				"Level (20th) You gain 50 temporary Hit Points."
-			]
+				"These benefits last until the end of your next turn, but you can Sustain them up to 1 minute. After you gain temporary Hit Points from this impulse, you can't do so again for 10 minutes."
+			],
+			"footer": {
+				"Level (20th)": "You gain 50 temporary Hit Points."
+			}
 		},
 		{
 			"name": "The Shattered Mountain Weeps",
@@ -1177,9 +1201,11 @@
 				"primal"
 			],
 			"entries": [
-				"A massive sphere of rock explodes, unleashing a cataclysm of falling debris and deadly shrapnel. Its destruction falls in a 20-foot burst within 120 feet. Creatures in the area take {@damage 9d10} bludgeoning damage with a basic Fortitude save against your class DC. Those who fail are knocked {@condition prone}. For the next minute, rocks continue to fall, making the area difficult terrain and dealing {@damage 3d10} bludgeoning damage to any creature that ends its turn in the area. If you use this impulse again, any previous one ends.",
-				"Level (20th) The initial damage is {@dice 10d10}, and the area damage is {@dice 4d10}."
-			]
+				"A massive sphere of rock explodes, unleashing a cataclysm of falling debris and deadly shrapnel. Its destruction falls in a 20-foot burst within 120 feet. Creatures in the area take {@damage 9d10} bludgeoning damage with a basic Fortitude save against your class DC. Those who fail are knocked {@condition prone}. For the next minute, rocks continue to fall, making the area difficult terrain and dealing {@damage 3d10} bludgeoning damage to any creature that ends its turn in the area. If you use this impulse again, any previous one ends."
+			],
+			"footer": {
+				"Level (20th)": "The initial damage is {@dice 10d10}, and the area damage is {@dice 4d10}."
+			}
 		},
 		{
 			"name": "Burning Jet",
@@ -1197,10 +1223,12 @@
 				"primal"
 			],
 			"entries": [
-				"A condensed burst of flame shoots behind you, propelling you forward with its sheer force. {@action Stride} up to 40 feet in a straight line. Movement from this impulse ignores difficult terrain and doesn't trigger reactions.",
-				"Level (6th) The maximum distance of the {@action Stride} is 60 feet. You can choose to {@action Leap} up to 40 feet in any direction instead of Striding. If you're in the air at the end of this {@action Leap}, you fall normally.",
-				"Level (10th) As 6th level, but you hover briefly after leaping into the air. If you {@action Leap}, you don't fall until the end of your next turn. If you use Burning Jet again on a subsequent turn, you remain airborne."
-			]
+				"A condensed burst of flame shoots behind you, propelling you forward with its sheer force. {@action Stride} up to 40 feet in a straight line. Movement from this impulse ignores difficult terrain and doesn't trigger reactions."
+			],
+			"footer": {
+				"Level (6th)": "The maximum distance of the {@action Stride} is 60 feet. You can choose to {@action Leap} up to 40 feet in any direction instead of {@action Stride||Striding}. If you're in the air at the end of this {@action Leap}, you fall normally.",
+				"Level (10th)": "As 6th level, but you hover briefly after leaping into the air. If you {@action Leap}, you don't fall until the end of your next turn. If you use Burning Jet again on a subsequent turn, you remain airborne."
+			}
 		},
 		{
 			"name": "Eternal Torch",
@@ -1223,9 +1251,11 @@
 				"You open a connection to your kinetic gate, large enough for a torch flame to flow. You create a magical, torch-like flame within 120 feet in any color you choose. It's as bright and hot as a torch.",
 				"You can have it orbit a target willing creature or emit from a target object that's unattended or attended by a willing creature.",
 				"If you create a flame on a weapon, you still need to use it as an improvised weapon to attack with the flame, just as with a torch.",
-				"The flame has an unlimited duration. You can have a maximum number of Eternal Torches equal to your Constitution modifier, and you can {@action Dismiss} each torch individually.",
-				"Level (8th) All your torches\u2014even ones you already created\u2014 shed bright light in a 60-foot radius (and dim light for the next 60 feet)."
-			]
+				"The flame has an unlimited duration. You can have a maximum number of Eternal Torches equal to your Constitution modifier, and you can {@action Dismiss} each torch individually."
+			],
+			"footer": {
+				"Level (8th)": "All your torches\u2014even ones you already created\u2014 shed bright light in a 60-foot radius (and dim light for the next 60 feet)."
+			}
 		},
 		{
 			"name": "Flying Flame",
@@ -1334,10 +1364,13 @@
 				"primal"
 			],
 			"entries": [
-				"You mimic the motions of a beast of your devising, and it becomes real, with a flaming pelt and searing claws. It is Small and appears in an unoccupied space within 30 feet. You can sense from the crawling fire's space as well as your own, using your senses. When you use a fire impulse, you can have it originate from the crawling fire instead of you (with the exception of impulses that affect your kinetic aura). The creation lasts until the end of your next turn, but you can Sustain it up to 1 minute. Each time you Sustain it, you can have the crawling fire {@action Stride} up to 40 feet. The crawling fire can be attacked. It uses your statistics for defenses but is immune to fire. Any damage that would be dealt to the crawling fire is dealt to you instead, though you take damage only once from any ability that includes both you and the creation in the area of effect. If you use Crawling Fire again, any previous one ends. Level (8th) The fire can be Small or Medium.",
-				"Level (10th) The fire can be Small, Medium, or Large.",
-				"Level (14th) The fire can be Small, Medium, Large, or Huge."
-			]
+				"You mimic the motions of a beast of your devising, and it becomes real, with a flaming pelt and searing claws. It is Small and appears in an unoccupied space within 30 feet. You can sense from the crawling fire's space as well as your own, using your senses. When you use a fire impulse, you can have it originate from the crawling fire instead of you (with the exception of impulses that affect your kinetic aura). The creation lasts until the end of your next turn, but you can Sustain it up to 1 minute. Each time you Sustain it, you can have the crawling fire {@action Stride} up to 40 feet. The crawling fire can be attacked. It uses your statistics for defenses but is immune to fire. Any damage that would be dealt to the crawling fire is dealt to you instead, though you take damage only once from any ability that includes both you and the creation in the area of effect. If you use Crawling Fire again, any previous one ends."
+			],
+			"footer": {
+				"Level (8th)": "The fire can be Small or Medium.",
+				"Level (10th)": "The fire can be Small, Medium, or Large.",
+				"Level (14th)": "The fire can be Small, Medium, Large, or Huge."
+			}
 		},
 		{
 			"name": "Volcanic Escape",
@@ -1380,9 +1413,11 @@
 				"stance"
 			],
 			"entries": [
-				"As a candle can light another, you awaken the latent potential to channel fire in other creatures. You shed faint, glowing embers, as do your allies while they're in your kinetic aura. Anyone shedding these embers gains a +1 status bonus to Reflex saves and {@skill Acrobatics} checks and can {@action Step} as a free action once per round. When an affected creature takes a move action, its Strikes deal an extra 2 fire damage until the end of its turn.",
-				"Level (12th) The status bonus to Reflex saves and {@skill Acrobatics} checks is +2, and the Strikes gain the flaming rune instead of the extra 2 fire damage."
-			]
+				"As a candle can light another, you awaken the latent potential to channel fire in other creatures. You shed faint, glowing embers, as do your allies while they're in your kinetic aura. Anyone shedding these embers gains a +1 status bonus to Reflex saves and {@skill Acrobatics} checks and can {@action Step} as a free action once per round. When an affected creature takes a move action, its Strikes deal an extra 2 fire damage until the end of its turn."
+			],
+			"footer": {
+				"Level (12th)": "The status bonus to Reflex saves and {@skill Acrobatics} checks is +2, and the Strikes gain the flaming rune instead of the extra 2 fire damage."
+			}
 		},
 		{
 			"name": "Solar Detonation",
@@ -1469,9 +1504,11 @@
 				"primal"
 			],
 			"entries": [
-				"Opening your kinetic gate, you allow flames to consume your form and leave you a living flame. You gain the benefits of the {@spell fiery body} spell (except the ability to cast ignition) until the end of your next turn. You can Sustain the impulse up to 1 minute, and when you do, you can {@action Fly} up to half your fly Speed. Your fire Elemental Blasts deal an additional die of damage.",
-				"Level (16th) This duration is 1 minute, you can't Sustain the impulse, and you can {@action Dismiss} the impulse."
-			]
+				"Opening your kinetic gate, you allow flames to consume your form and leave you a living flame. You gain the benefits of the {@spell fiery body} spell (except the ability to cast ignition) until the end of your next turn. You can Sustain the impulse up to 1 minute, and when you do, you can {@action Fly} up to half your fly Speed. Your fire Elemental Blasts deal an additional die of damage."
+			],
+			"footer": {
+				"Level (16th)": "This duration is 1 minute, you can't Sustain the impulse, and you can {@action Dismiss} the impulse."
+			}
 		},
 		{
 			"name": "Walk Through the Conflagration",
@@ -1517,9 +1554,11 @@
 			],
 			"entries": [
 				"White-hot fire consumes everything in a cataclysmic sphere of death. The fire fills your choice of a 30-foot burst within 500 feet or a 30-foot emanation. This deals {@damage 13d6} fire damage with a basic Reflex save against your class DC. Any creature dropped to 0 HP by this fire dies, reduced to a pile of ash.",
-				"If you die to this impulse, you return to life at the start of your next turn in the same space. When you return, you have Hit Points equal to double your level.",
-				"Level (20th) The damage is {@dice 15d6}."
-			]
+				"If you die to this impulse, you return to life at the start of your next turn in the same space. When you return, you have Hit Points equal to double your level."
+			],
+			"footer": {
+				"Level (20th)": "The damage is {@dice 15d6}."
+			}
 		},
 		{
 			"name": "Ignite the Sun",
@@ -1823,9 +1862,11 @@
 				"primal"
 			],
 			"entries": [
-				"Elemental energy replaces every cell of your body with raw metal. You gain the benefits of the ferrous form spell (except you can't cast needle darts; see page 142) until the end of your next turn. You can Sustain the impulse up to 1 minute, and when you do, you can Raise a metal Shield if you're wielding one. Your metal Elemental Blasts deal an additional die of damage. If you suspend any conditions with Alloy Flesh and Steel, when it ends, you're temporarily immune to Alloy Flesh and Steel for 1 hour.",
-				"Level (16th) The resistance is 15."
-			]
+				"Elemental energy replaces every cell of your body with raw metal. You gain the benefits of the ferrous form spell (except you can't cast needle darts; see page 142) until the end of your next turn. You can Sustain the impulse up to 1 minute, and when you do, you can Raise a metal Shield if you're wielding one. Your metal Elemental Blasts deal an additional die of damage. If you suspend any conditions with Alloy Flesh and Steel, when it ends, you're temporarily immune to Alloy Flesh and Steel for 1 hour."
+			],
+			"footer": {
+				"Level (16th)": "The resistance is 15."
+			}
 		},
 		{
 			"name": "Beasts of Slumbering Steel",
@@ -1864,9 +1905,11 @@
 				"primal"
 			],
 			"entries": [
-				"The landscape fills with monumental filaments of metal. The needles lance into a cube 30 feet on a side within 500 feet. Each creature in the area takes {@damage 13d6} piercing damage, with a basic Reflex save against your class DC. Each creature that fails its save is impaled, becoming {@condition immobilized} until it Escapes (the DC is your class DC); a creature that critically failed is also off-guard as long as it's impaled. The hell remains until the end of your next turn, but you can Sustain it up to 1 minute. Using this impulse again ends any previous one. The first time you Sustain it each round, lightning crisscrosses the needles. Each creature in the area takes {@damage 3d12} electricity damage with a basic Reflex save against your class DC. Squares in the area are hazardous terrain. A creature takes 6 piercing damage for every square of the area it moves through.",
-				"Level (20th) The initial damage is {@dice 17d6}, and the hazardous terrain damage is 7."
-			]
+				"The landscape fills with monumental filaments of metal. The needles lance into a cube 30 feet on a side within 500 feet. Each creature in the area takes {@damage 13d6} piercing damage, with a basic Reflex save against your class DC. Each creature that fails its save is impaled, becoming {@condition immobilized} until it Escapes (the DC is your class DC); a creature that critically failed is also off-guard as long as it's impaled. The hell remains until the end of your next turn, but you can Sustain it up to 1 minute. Using this impulse again ends any previous one. The first time you Sustain it each round, lightning crisscrosses the needles. Each creature in the area takes {@damage 3d12} electricity damage with a basic Reflex save against your class DC. Squares in the area are hazardous terrain. A creature takes 6 piercing damage for every square of the area it moves through."
+			],
+			"footer": {
+				"Level (20th)": "The initial damage is {@dice 17d6}, and the hazardous terrain damage is 7."
+			}
 		},
 		{
 			"name": "Deflecting Wave",
@@ -1978,9 +2021,11 @@
 				"water"
 			],
 			"entries": [
-				"You adapt a creature to living and moving in water. Target a willing creature within 30 feet. For 10 minutes, it gains the effects of a {@spell feet to fins} spell, can breathe water, and gets a +1 status bonus to AC and saves against any creature with the amphibious, {@trait aquatic}, or {@trait water} trait. In addition, its attacks ignore the effects water normally has on bludgeoning and slashing attacks. If you use Return to the Sea again, any existing one ends.",
-				"Level (6th) You can target up to 5 willing creatures."
-			]
+				"You adapt a creature to living and moving in water. Target a willing creature within 30 feet. For 10 minutes, it gains the effects of a {@spell feet to fins} spell, can breathe water, and gets a +1 status bonus to AC and saves against any creature with the amphibious, {@trait aquatic}, or {@trait water} trait. In addition, its attacks ignore the effects water normally has on bludgeoning and slashing attacks. If you use Return to the Sea again, any existing one ends."
+			],
+			"footer": {
+				"Level (6th)": "You can target up to 5 willing creatures."
+			}
 		},
 		{
 			"name": "Winter Sleet",
@@ -2597,9 +2642,11 @@
 			"entries": [
 				"Terrifying trees attack your enemies. Three Large trees appear in unoccupied spaces within 500 feet, at least 15 feet from one another. Each tree has AC 40, Fortitude +33, Reflex +24, Will +30, and 200 HP. The trees can flank, but are unable to move.",
 				"When the trees appear, each makes a {@action Strike}; they share a multiple attack penalty. The tree's melee {@action Strike} is a branch that has reach 10 feet; on a hit, the target is {@condition grabbed} by the tree ({@action Escape} DC 40). The ranged {@action Strike} is a hurled fruit, gourd, seed, or stone with a range increment of 60 feet. Either {@action Strike} has a +30 attack modifier and deals {@damage 4d10+9} bludgeoning damage.",
-				"The trees last until the end of your next turn, and you can Sustain the impulse. Each time you Sustain the impulse, you can have one tree make a {@action Strike}.",
-				"Level (20th) The attack modifier is +32 and the {@action Strike} damage is {@dice 5d10+9}."
-			]
+				"The trees last until the end of your next turn, and you can Sustain the impulse. Each time you Sustain the impulse, you can have one tree make a {@action Strike}."
+			],
+			"footer": {
+				"Level (20th)": "The attack modifier is +32 and the {@action Strike} damage is {@dice 5d10+9}."
+			}
 		},
 		{
 			"name": "Turn the Wheel of Seasons",
@@ -2618,10 +2665,40 @@
 				"wood"
 			],
 			"entries": [
-				"The seasons shift rapidly. This impulse affects a cube 100 feet in each dimension within 1,000 feet. Choose the starting season. The impulse lasts for 4 rounds, proceeding to the next season at the start of each of your turns. You can't use this impulse again until the previous one ends. Spring Each ally in the cube gains 20 temporary HP that last until the start of your next turn. Any {@condition dying} ally rolls a recovery check, but can't get worse than a success.",
-				"Summer (light) Each enemy in the area is exposed to sunlight and must attempt a Reflex save against your class DC. It's unaffected on a critical success, dazed until the start of your next turn on a success, or {@condition blinded} until the start of your next turn on a failure.",
-				"Autumn Leaves and rain make everything in the area {@condition concealed} until the start of your next turn, and a cold wind makes each enemy in the area {@condition slowed||slowed 1} until the start of your next turn unless it succeeds at a Fortitude save against your class DC.",
-				"Winter Each enemy in the aura takes {@damage 5d6} cold damage with a basic Reflex save against your class DC. A creature that fails its save also takes {@damage 2d6} {@condition persistent damage||persistent cold damage}."
+				"The seasons shift rapidly. This impulse affects a cube 100 feet in each dimension within 1,000 feet. Choose the starting season. The impulse lasts for 4 rounds, proceeding to the next season at the start of each of your turns. You can't use this impulse again until the previous one ends.",
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"type": "item",
+							"name": "Spring",
+							"entries": [
+								"Each ally in the cube gains 20 temporary HP that last until the start of your next turn. Any {@condition dying} ally rolls a recovery check, but can't get worse than a success."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Summer",
+							"entries": [
+								"({@trait light}) Each enemy in the area is exposed to sunlight and must attempt a Reflex save against your class DC. It's unaffected on a critical success, {@condition dazed} until the start of your next turn on a success, or {@condition blinded} until the start of your next turn on a failure."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Autumn",
+							"entries": [
+								"Leaves and rain make everything in the area {@condition concealed} until the start of your next turn, and a cold wind makes each enemy in the area {@condition slowed||slowed 1} until the start of your next turn unless it succeeds at a Fortitude save against your class DC."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Winter",
+							"entries": [
+								"Each enemy in the aura takes {@damage 5d6} cold damage with a basic Reflex save against your class DC. A creature that fails its save also takes {@damage 2d6} {@condition persistent damage||persistent cold damage}."
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3007,8 +3084,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Cleansing Pollen (healing, vitality) Each living ally that's in the area or enters it regains {@dice 3d4} HP and is then temporarily immune to regaining HP from Tree of Duality for 10 minutes.",
-						"Hallucinogenic Spores (mental) Enemies in the area are {@condition dazzled}. An enemy that leaves the area remains {@condition dazzled} until the start of its next turn."
+						"Cleansing Pollen ({@trait healing}, {@trait positive||vitality}) Each living ally that's in the area or enters it regains {@dice 3d4} HP and is then temporarily immune to regaining HP from Tree of Duality for 10 minutes.",
+						"Hallucinogenic Spores ({@trait mental}) Enemies in the area are {@condition dazzled}. An enemy that leaves the area remains {@condition dazzled} until the start of its next turn."
 					]
 				}
 			],
