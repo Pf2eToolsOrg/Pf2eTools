@@ -10602,7 +10602,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"You enhance yourself with a shard of Cayden's divine fortune and cast {@spell indestructibility|APG} APG.",
+						"You enhance yourself with a shard of Cayden's divine fortune and cast {@spell indestructibility|APG}.",
 						"Destruction If a lawful evil creature carries Cayden's Tankard into the Starstone Cathedral, drinks from it, and returns outside with it, the tankard shatters."
 					]
 				}
@@ -10710,7 +10710,7 @@
 			"bulk": 2,
 			"category": "Artifact",
 			"entries": [
-				"The barrel of this long rifle is translucent in places, forming a swirled pattern along the metal, and its stock is formed of crimson wood. Ghosthand's Comet is a +4 major striking beast‑bane SoM greater impactful SoM advanced firearm with a range increment of 300 feet. It deals {@damage 5d8} force damage and has the backstabber, concussive, kickback, and fatal d12 traits. As a star gun, Ghosthand's Comet runs on magic and doesn't use ammunition or black powder. The weapon is silent when fired.",
+				"The barrel of this long rifle is translucent in places, forming a swirled pattern along the metal, and its stock is formed of crimson wood. Ghosthand's Comet is a +4 major striking {@item bane|SoM|beast‑bane} {@item greater impactful|SoM} advanced firearm with a range increment of 300 feet. It deals {@damage 5d8} force damage and has the backstabber, concussive, kickback, and fatal d12 traits. As a star gun, Ghosthand's Comet runs on magic and doesn't use ammunition or black powder. The weapon is silent when fired.",
 				{
 					"type": "ability",
 					"activity": {
@@ -10968,7 +10968,7 @@
 			"bulk": 2,
 			"category": "Artifact",
 			"entries": [
-				"This +4 major striking greater brilliant SoM keen glaive binds the souls of powerful creatures it slays. The soul can't be returned to life by any means while imprisoned within the glaive and can be freed only by a deed of great benevolence or selflessness. While using the glaive as a weapon, whenever you reduce a sapient creature of 18th level or higher to 0 Hit Points or roll a critical success with a {@action Strike} against such a target, the creature must attempt a DC 50 Fortitude save.",
+				"This +4 major striking {@item greater brilliant|SoM} {@item keen} {@item glaive} binds the souls of powerful creatures it slays. The soul can't be returned to life by any means while imprisoned within the glaive and can be freed only by a deed of great benevolence or selflessness. While using the glaive as a weapon, whenever you reduce a sapient creature of 18th level or higher to 0 Hit Points or roll a critical success with a {@action Strike} against such a target, the creature must attempt a DC 50 Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -11202,7 +11202,40 @@
 				"When a skilled musician dies before reaching their full potential or accomplishing an important goal, their soul might refuse to move on to the Boneyard. Rather than becoming undead, the spirit possesses an instrument they played in life, turning it into an intelligent item and a virtuoso instrument. (Other phantom instruments exist, but most are heavy.) A phantom piano offers a bargain to any bard or other skilled musician who finds it: receive musical aid as you dedicate yourself to reaching the success the spirit felt they were denied in life. The piano refuses to play for those who reject this deal. If you accept, the piano asks only that you practice with it and perform for increasingly refined and august audiences, requiring a successful {@skill Performance} check appropriate to your proficiency level.",
 				"The piano sets no strict timeline, but at the GM's discretion, if you go too long without making progress, the piano can cease cooperating with you until it's satisfied with your dedication once again.",
 				"While you keep up your end of the bargain, the piano grants you a +2 item bonus to {@skill Performance} checks made with it. The piano also provides access to composition spells based on your {@skill Performance} proficiency rank, as if you had the corresponding feat. The spells you can use comprise a cumulative list, but you can cast them only when using the piano. You must spend the actions and Focus Points required to cast these spells.",
-				"Trained: inspire competence, inspire courage Expert: hymn of healing APG, inspire defense Master: symphony of the unfettered heart Legendary: soothing ballad A phantom piano has the following activations.",
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"type": "item",
+							"name": "Trained",
+							"entries": [
+								"{@spell inspire competence}, {@spell inspire courage}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Expert",
+								"entries": [
+									"{@spell hymn of healing|APG}, {@spell inspire defense}"
+								]
+						},
+						{
+							"type": "item",
+							"name": "Master",
+							"entries": [
+								"{@spell symphony of the unfettered heart|APG}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Legendary",
+							"entries": [
+								"{@spell soothing ballad}"
+							]
+						}
+					]
+				},
+				"A phantom piano has the following activations.",
 				{
 					"type": "ability",
 					"activity": {
@@ -25976,7 +26009,7 @@
 						"unit": "week"
 					},
 					"entries": [
-						"If your next action is to cast a cozy cabin APG, {@spell magnificent mansion} or {@spell resplendent mansion} spell, you add a room to the structure that is up to 10 feet per side per level of the spell. This room is outfitted with all the accoutrements for a particular type of recreation, determined by you when you cast the spell. Any character who spends at least 1 hour using this recreational facility and then sleeps a full 8 hours inside the location created by the spell is exceptionally well-rested. They regain double the amount of Hit Points they would normally receive for an 8-hour rest, and when they make the next day's preparations, they gain a +1 circumstance bonus to {@skill Athletics} checks and Will saves for the next 12 hours."
+						"If your next action is to cast a {@spell cozy cabin|APG}, {@spell magnificent mansion} or {@spell resplendent mansion} spell, you add a room to the structure that is up to 10 feet per side per level of the spell. This room is outfitted with all the accoutrements for a particular type of recreation, determined by you when you cast the spell. Any character who spends at least 1 hour using this recreational facility and then sleeps a full 8 hours inside the location created by the spell is exceptionally well-rested. They regain double the amount of Hit Points they would normally receive for an 8-hour rest, and when they make the next day's preparations, they gain a +1 circumstance bonus to {@skill Athletics} checks and Will saves for the next 12 hours."
 					]
 				}
 			]
@@ -30185,7 +30218,7 @@
 					},
 					"requirements": "You hit a creature using the rime foil as your last action",
 					"entries": [
-						"You cast 5th-level {@spell phantom prison|SoM}SoM on the target (DC 22 Will to disbelieve). If the target has been damaged by a shattered plan in the last round, the DC is instead 24. Special The rime foil pairs with the shattered plan."
+						"You cast 5th-level {@spell phantom prison|SoM} on the target (DC 22 Will to disbelieve). If the target has been damaged by a shattered plan in the last round, the DC is instead 24. Special The rime foil pairs with the shattered plan."
 					]
 				}
 			]
