@@ -383,7 +383,7 @@
 						"range increment <100 feet>",
 						"splash"
 					],
-					"damage": "{@damage 4d8} fire plus {@damage 2d6} {@condition persistent damage||persistent fire} plus 8 fire splash",
+					"damage": "{@damage 4d8} fire plus {@damage 2d6} {@condition persistent damage||persistent fire} plus 8 fire {@trait splash}",
 					"types": [
 						"fire",
 						"persistent"
@@ -633,7 +633,7 @@
 						},
 						"trigger": "The alchemical horror takes damage from an alchemical bomb",
 						"entries": [
-							"The volatile substances that compose the alchemical horror froth outward as they react with the bomb. The bomb's full effects affect creatures in every space within 15 feet of the alchemical horror, and splash damage affects creatures 5 feet beyond that."
+							"The volatile substances that compose the alchemical horror froth outward as they react with the bomb. The bomb's full effects affect creatures in every space within 15 feet of the alchemical horror, and {@trait splash} damage affects creatures 5 feet beyond that."
 						],
 						"name": "Alchemical Reaction"
 					}

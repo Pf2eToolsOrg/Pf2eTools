@@ -1569,20 +1569,20 @@
 							"source": "DA",
 							"page": 20,
 							"entries": [
-								"You can drastically increase the heat against adjacent targets. When using produce flame as a melee attack, increase the damage dice of the initial damage (but not the persistent damage) from d4s to d6s. Your produce flame also gains the following amp.",
+								"You can drastically increase the heat against adjacent targets. When using produce flame as a melee attack, increase the damage dice of the initial damage (but not the {@condition persistent damage}) from {@dice d4|d4s} to {@dice d6|d6s}. Your {@spell produce flame} also gains the following amp.",
 								{
 									"type": "pf2-options",
 									"items": [
 										{
 											"name": "Amp",
 											"entries": [
-												"You project pure heat that causes a target to combust. The initial damage changes to 1d10 fire damage (not adding your ability modifier) plus 1 fire splash damage. When using amped produce flame as a melee attack, increase the damage dice of the initial damage from d10s to d12s. You are not harmed by splash damage from amped produce flame."
+												"You project pure heat that causes a target to combust. The initial damage changes to {@damage 1d10} fire damage (not adding your ability modifier) plus 1 fire {@trait splash} damage. When using amped produce flame as a melee attack, increase the damage dice of the initial damage from {@dice d10|d10s} to {@dice d12|d12s}. You are not harmed by {@trait splash} damage from amped produce flame."
 											]
 										},
 										{
 											"name": "Amp Heightened (+1)",
 											"entries": [
-												"Instead of using produce flame's normal heightened entry, the initial damage increases by 1d10 (1d12 for melee) and the splash damage increases by 1. The persistent fire damage on a critical hit increases by 1d4."
+												"Instead of using produce flame's normal heightened entry, the initial damage increases by {@damage 1d10} ({@damage 1d12} for melee) and the {@trait splash} damage increases by 1. The {@condition persistent damage||persistent} fire damage on a critical hit increases by {@damage 1d4}."
 											]
 										}
 									]

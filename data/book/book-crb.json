@@ -4406,7 +4406,7 @@
 							"entries": [
 								"Certain feats, class features, weapon runes, and other effects can grant you additional benefits when you make a Strike with certain weapons and get a critical success. This is called a critical specialization effect. The exact effect depends on which weapon group your weapon belongs to, as listed below. You can always decide not to add the critical specialization effect of your weapon.",
 								"{@b Axe:} Choose one creature adjacent to the initial target and within reach. If its AC is lower than your attack roll result for the critical hit, you deal damage to that creature equal to the result of the weapon damage die you rolled (including extra dice for its potency rune, if any). This amount isn't doubled, and no bonuses or other additional dice apply to this damage.",
-								"{@b Bomb:} Increase the radius of the bomb's splash damage (if any) to 10 feet.",
+								"{@b Bomb:} Increase the radius of the bomb's {@trait splash} damage (if any) to 10 feet.",
 								"{@b Bow:} If the target of the critical hit is adjacent to a surface, it gets stuck to that surface by the missile. The target is immobilized and must spend an Interact action to attempt a DC 10 {@skill Athletics} check to pull the missile free; it can't move from its space until it succeeds. The creature doesn't become stuck if it is incorporeal, is liquid (like a water elemental or some oozes), or could otherwise escape without effort.",
 								"{@b Brawling:} The target must succeed at a Fortitude save against your class DC or be slowed 1 until the end of your next turn.",
 								"{@b Club:} You knock the target away from you up to 10 feet (you choose the distance). This is {@quickref forced movement||3|forced movement}.",
@@ -4680,13 +4680,13 @@
 									"page": 292,
 									"name": "Alchemical Bombs",
 									"entries": [
-										"Alchemical bombs are consumable weapons that deal damage or produce special effects, and they sometimes deal splash damage. For more on alchemical bombs, see page 544.",
-										"{@b Lesser Acid Flask:} This alchemical bomb deals 1 acid damage, 1d6 persistent acid damage, and 1 acid splash damage.",
-										"{@b Lesser Alchemist's Fire:} This alchemical bomb deals 1d8 fire damage, 1 persistent fire damage, and 1 fire splash damage.",
-										"{@b Lesser Bottled Lightning:} This alchemical bomb deals 1d6 electricity damage and 1 electricity splash damage, and it makes the target {@condition flat-footed}.",
-										"{@b Lesser Frost Vial:} This alchemical bomb deals 1d6 cold damage and 1 cold splash damage, and it gives the target a \u20135-foot status penalty to its Speeds until the end of its next turn.",
+										"Alchemical bombs are consumable weapons that deal damage or produce special effects, and they sometimes deal {@trait splash} damage. For more on alchemical bombs, see page 544.",
+										"{@b Lesser Acid Flask:} This alchemical bomb deals 1 acid damage, {@damage 1d6} persistent acid damage, and 1 acid {@trait splash} damage.",
+										"{@b Lesser Alchemist's Fire:} This alchemical bomb deals 1d8 fire damage, 1 persistent fire damage, and 1 fire {@trait splash} damage.",
+										"{@b Lesser Bottled Lightning:} This alchemical bomb deals {@damage 1d6} electricity damage and 1 electricity {@trait splash} damage, and it makes the target {@condition flat-footed}.",
+										"{@b Lesser Frost Vial:} This alchemical bomb deals {@damage 1d6} cold damage and 1 cold {@trait splash} damage, and it gives the target a \u20135-foot status penalty to its Speeds until the end of its next turn.",
 										"{@b Lesser Tanglefoot Bag:} This alchemical bomb gives the target a \u201310-foot status penalty to its Speeds for 1 minute, and the target is immobilized on a critical hit unless it {@action Escape||Escapes}.",
-										"{@b Lesser Thunderstone:} This alchemical bomb deals {@damage 1d4} sonic damage and 1 sonic splash damage, and any creature within 10 feet that fails a DC 17 Fortitude save is deafened until the end of its turn."
+										"{@b Lesser Thunderstone:} This alchemical bomb deals {@damage 1d4} sonic damage and 1 sonic {@trait splash} damage, and any creature within 10 feet that fails a DC 17 Fortitude save is deafened until the end of its turn."
 									]
 								},
 								{
@@ -4731,8 +4731,8 @@
 									"name": "Consumable Magic Items",
 									"entries": [
 										"You can typically purchase {@item holy water||holy} and {@item unholy water} in a settlement. Particularly good settlements tend to ban {@item unholy water} and evil settlements tend to ban {@item holy water}.",
-										"{@b Holy Water:} You can throw {@item holy water} like a bomb, dealing {@dice 1d6} good damage and 1 good splash damage to {@filter fiends|bestiary||creature type=fiend}, {@filter undead|bestiary||creature type=undead}, and {@filter other creatures weak to good damage|bestiary||weaknesses=good}.",
-										"{@b Unholy Water:} You can throw {@item unholy water} like a bomb, dealing {@dice 1d6} evil damage and 1 evil splash damage to {@filter celestials|bestiary||creature type=celestial} and {@filter other creatures weak to evil damage|bestiary||weaknesses=evil}."
+										"{@b Holy Water:} You can throw {@item holy water} like a bomb, dealing {@dice 1d6} good damage and 1 good {@trait splash} damage to {@filter fiends|bestiary||creature type=fiend}, {@filter undead|bestiary||creature type=undead}, and {@filter other creatures weak to good damage|bestiary||weaknesses=good}.",
+										"{@b Unholy Water:} You can throw {@item unholy water} like a bomb, dealing {@dice 1d6} evil damage and 1 evil {@trait splash} damage to {@filter celestials|bestiary||creature type=celestial} and {@filter other creatures weak to evil damage|bestiary||weaknesses=evil}."
 									]
 								},
 								{
@@ -11553,8 +11553,8 @@
 									"page": 543,
 									"name": "Splash Trait",
 									"entries": [
-										"Most bombs also have the splash trait. When you use a thrown weapon with the splash trait, you don't add your Strength modifier to the damage roll. If an attack with a splash weapon fails, succeeds, or critically succeeds, all creatures within 5 feet of the target (including the target) take the listed splash damage. On a critical failure, the bomb misses entirely, dealing no damage. Add splash damage together with the initial damage against the target before applying the target's resistance or weakness. You don't multiply splash damage on a critical hit.",
-										"For example, if you throw a lesser acid flask and hit your target, that creature takes 1 acid damage, 1d6 persistent acid damage, and 1 acid splash damage. All other creatures within 5 feet of it take 1 acid splash damage. On a critical hit, the target takes 2 acid damage and 2d6 persistent acid damage, but the splash damage is still 1. If you miss, the target and all creatures within 5 feet take only 1 splash damage. If you critically fail, no one takes any damage."
+										"Most bombs also have the splash trait. When you use a thrown weapon with the splash trait, you don't add your Strength modifier to the damage roll. If an attack with a splash weapon fails, succeeds, or critically succeeds, all creatures within 5 feet of the target (including the target) take the listed {@trait splash} damage. On a critical failure, the bomb misses entirely, dealing no damage. Add {@trait splash} damage together with the initial damage against the target before applying the target's resistance or weakness. You don't multiply {@trait splash} damage on a critical hit.",
+										"For example, if you throw a lesser acid flask and hit your target, that creature takes 1 acid damage, 1d6 persistent acid damage, and 1 acid {@trait splash} damage. All other creatures within 5 feet of it take 1 acid {@trait splash} damage. On a critical hit, the target takes 2 acid damage and 2d6 persistent acid damage, but the {@trait splash} damage is still 1. If you miss, the target and all creatures within 5 feet take only 1 {@trait splash} damage. If you critically fail, no one takes any damage."
 									]
 								}
 							]

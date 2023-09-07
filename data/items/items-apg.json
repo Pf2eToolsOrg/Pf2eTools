@@ -125,7 +125,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Blight bombs contain volatile toxic chemicals that rot flesh. A blight bomb deals the listed poison damage, {@condition persistent damage||persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
+				"Blight bombs contain volatile toxic chemicals that rot flesh. A blight bomb deals the listed poison damage, {@condition persistent damage||persistent poison damage}, and {@trait splash} damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -137,12 +137,12 @@
 						"amount": 3
 					},
 					"entries": [
-						"The bomb deals {@damage 1d6} poison damage, {@damage 1d4} {@condition persistent damage||persistent poison damage}, and 1 poison splash damage."
+						"The bomb deals {@damage 1d6} poison damage, {@damage 1d4} {@condition persistent damage||persistent poison damage}, and 1 poison {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "A lesser blight bomb deals {@damage 1d6} {@condition persistent damage||persistent poison damage} and 1 poison splash damage."
+							"with": "A lesser blight bomb deals {@damage 1d6} {@condition persistent damage||persistent poison damage} and 1 poison {@trait splash} damage."
 						}
 					}
 				},
@@ -154,12 +154,12 @@
 						"amount": 10
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} poison damage, {@damage 2d4} {@condition persistent damage||persistent poison damage}, and 2 poison splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} poison damage, {@damage 2d4} {@condition persistent damage||persistent poison damage}, and 2 poison {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "A moderate blight bomb deals {@damage 2d6} poison damage, {@damage 2d4} {@condition persistent damage||persistent poison damage}, and 2 poison splash damage. You gain a +1 item bonus to attack rolls."
+							"with": "A moderate blight bomb deals {@damage 2d6} poison damage, {@damage 2d4} {@condition persistent damage||persistent poison damage}, and 2 poison {@trait splash} damage. You gain a +1 item bonus to attack rolls."
 						}
 					}
 				},
@@ -171,12 +171,12 @@
 						"amount": 250
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "A greater blight bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison splash damage. You gain a +2 item bonus to attack rolls."
+							"with": "A greater blight bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison {@trait splash} damage. You gain a +2 item bonus to attack rolls."
 						}
 					}
 				},
@@ -188,12 +188,12 @@
 						"amount": 2500
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "A major blight bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison splash damage. You gain a +3 item bonus to attack rolls."
+							"with": "A major blight bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison {@trait splash} damage. You gain a +3 item bonus to attack rolls."
 						}
 					}
 				}
@@ -201,7 +201,7 @@
 			"_vmod": {
 				"entries": {
 					"mode": "replaceTxt",
-					"replace": "A blight bomb deals the listed poison damage, {@condition persistent damage\\|\\|persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
+					"replace": "A blight bomb deals the listed poison damage, {@condition persistent damage\\|\\|persistent poison damage}, and {@trait splash} damage. Many types grant an item bonus to attack rolls."
 				},
 				"entriesMode": "generic"
 			}
@@ -475,7 +475,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This flask holds a pressurized red-brown gas flecked with bits of sublimated crystal. You gain the listed item bonus to attack rolls. When the bomb explodes, it deals the listed piercing damage and piercing splash damage as the mixture suddenly turns into solid crystals flying at high speeds.",
+				"This flask holds a pressurized red-brown gas flecked with bits of sublimated crystal. You gain the listed item bonus to attack rolls. When the bomb explodes, it deals the listed piercing damage and piercing {@trait splash} damage as the mixture suddenly turns into solid crystals flying at high speeds.",
 				"Surfaces in the splash area grow brittle, gleaming red crystals that crumble to dust after 1 minute. The crystals on level surfaces are caltrops (Core Rulebook 287). The crystals on vertical surfaces can be used briefly as handholds, granting the listed item bonus to the next {@skill Athletics} check to {@action Climb} each space. The crystals in each space crumble after the creature leaves, whether Climbing or moving through the caltrops."
 			],
 			"generic": "G",
@@ -488,7 +488,7 @@
 						"amount": 16
 					},
 					"entries": [
-						"The item bonus is +1. The bomb deals {@damage 2d4} piercing damage and 4 piercing splash damage."
+						"The item bonus is +1. The bomb deals {@damage 2d4} piercing damage and 4 piercing {@trait splash} damage."
 					]
 				},
 				{
@@ -499,7 +499,7 @@
 						"amount": 350
 					},
 					"entries": [
-						"The item bonus is +2. The bomb deals {@damage 3d4} piercing damage and 5 piercing splash damage."
+						"The item bonus is +2. The bomb deals {@damage 3d4} piercing damage and 5 piercing {@trait splash} damage."
 					]
 				},
 				{
@@ -510,7 +510,7 @@
 						"amount": 4000
 					},
 					"entries": [
-						"The item bonus is +3. The bomb deals {@damage 4d4} piercing damage and 6 piercing splash damage."
+						"The item bonus is +3. The bomb deals {@damage 4d4} piercing damage and 6 piercing {@trait splash} damage."
 					]
 				}
 			]
@@ -682,7 +682,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This flask is filled with a murky purple gas that briefly interferes with normal brain activity. A dread ampoule deals the listed mental damage and mental splash damage.",
+				"This flask is filled with a murky purple gas that briefly interferes with normal brain activity. A dread ampoule deals the listed mental damage and mental {@trait splash} damage.",
 				"On a hit, the target becomes {@condition frightened|CRB|frightened 1}, or {@condition frightened|CRB|frightened 2} on a critical hit. Many types also grant an item bonus to attack rolls."
 			],
 			"generic": "G",
@@ -695,7 +695,7 @@
 						"amount": 3
 					},
 					"entries": [
-						"The bomb deals {@damage 1d6} mental damage and 1 mental splash damage."
+						"The bomb deals {@damage 1d6} mental damage and 1 mental {@trait splash} damage."
 					]
 				},
 				{
@@ -706,7 +706,7 @@
 						"amount": 10
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} mental damage and 2 mental splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} mental damage and 2 mental {@trait splash} damage."
 					]
 				},
 				{
@@ -717,7 +717,7 @@
 						"amount": 300
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} mental damage and 3 mental splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} mental damage and 3 mental {@trait splash} damage."
 					]
 				},
 				{
@@ -728,7 +728,7 @@
 						"amount": 3000
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} mental damage and 4 mental splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} mental damage and 4 mental {@trait splash} damage."
 					]
 				}
 			]
@@ -1342,7 +1342,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"These spring-loaded metal canisters contain a mixture of chemicals and salts that drain and disintegrate nearby undead creatures. A ghost charge deals the listed positive damage and splash damage, though as usual for positive damage, this damage harms only undead and creatures with negative healing. Ghost charges are designed to explode even on contact with a spiritual substance, making them ideal for damaging incorporeal undead. A primary target that takes damage from a ghost charge becomes {@condition enfeebled} until the start of your next turn. Many types grant an item bonus to attack rolls."
+				"These spring-loaded metal canisters contain a mixture of chemicals and salts that drain and disintegrate nearby undead creatures. A ghost charge deals the listed positive damage and {@trait splash} damage, though as usual for positive damage, this damage harms only undead and creatures with negative healing. Ghost charges are designed to explode even on contact with a spiritual substance, making them ideal for damaging incorporeal undead. A primary target that takes damage from a ghost charge becomes {@condition enfeebled} until the start of your next turn. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -1354,7 +1354,7 @@
 						"amount": 3
 					},
 					"entries": [
-						"The bomb deals {@damage 1d8} positive damage and 1 positive splash damage, and the target is {@condition enfeebled|CRB|enfeebled 1} until the start of your next turn."
+						"The bomb deals {@damage 1d8} positive damage and 1 positive {@trait splash} damage, and the target is {@condition enfeebled|CRB|enfeebled 1} until the start of your next turn."
 					]
 				},
 				{
@@ -1365,7 +1365,7 @@
 						"amount": 10
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} positive damage and 2 positive splash damage, and the target is {@condition enfeebled|CRB|enfeebled 1} until the start of your next turn."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} positive damage and 2 positive {@trait splash} damage, and the target is {@condition enfeebled|CRB|enfeebled 1} until the start of your next turn."
 					]
 				},
 				{
@@ -1376,7 +1376,7 @@
 						"amount": 250
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} positive damage and 3 positive splash damage, and the target is {@condition enfeebled|CRB|enfeebled 2} until the start of your next turn."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} positive damage and 3 positive {@trait splash} damage, and the target is {@condition enfeebled|CRB|enfeebled 2} until the start of your next turn."
 					]
 				},
 				{
@@ -1387,7 +1387,7 @@
 						"amount": 2500
 					},
 					"entries": [
-						"The bomb deals {@damage 4d8} positive damage and 4 positive splash damage, and the target is {@condition enfeebled|CRB|enfeebled 2} until the start of your next turn."
+						"The bomb deals {@damage 4d8} positive damage and 4 positive {@trait splash} damage, and the target is {@condition enfeebled|CRB|enfeebled 2} until the start of your next turn."
 					]
 				}
 			]
