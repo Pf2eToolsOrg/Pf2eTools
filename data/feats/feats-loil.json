@@ -9,7 +9,7 @@
 				"uncommon",
 				"fleshwarp"
 			],
-			"prerequisites": "cataphract fleshwarp heritage",
+			"prerequisites": "{@ancestry fleshwarp|LOAG||cataphract|LOIL} heritage",
 			"access": "You're from Nex.",
 			"entries": [
 				"Nex's Fleshforges shaped you not to achieve individual greatness at arms, but rather to become a part of a legion, a modular piece integral to the combined arms stratagems of Nexian battlemages. You become trained in {@skill Arcana} and {@skill Athletics}. If you would automatically become trained in one of those skills, you instead gain the trained rank in another skill of your choice. You also become trained in {@skill Lore||Warfare Lore}."
@@ -24,7 +24,7 @@
 				"uncommon",
 				"fleshwarp"
 			],
-			"prerequisites": "cataphract fleshwarp heritage",
+			"prerequisites": "{@ancestry fleshwarp|LOAG||cataphract|LOIL} heritage",
 			"access": "You're from Nex.",
 			"entries": [
 				"Your colossal might marks you as a behemoth, the pride of Nex's Fleshforges, and the heaviest ordnance is a child's toy in your monumental grasp. You're a dreadnought, a living siege weapon, albeit one that wields other siege weapons in battle as your endoskeleton and flesh toughens. You gain the {@feat Hefty Hauler} skill feat, and your maximum Bulk limit further increases by 3, for a total of 2 to your {@condition encumbered} limit and 5 to your maximum limit."
@@ -52,7 +52,7 @@
 			],
 			"entries": [
 				"When your allies call for swift reinforcements or lightning raids, you're ready to answer. Your titanic form encompasses both cavalry and rider so that you're able to traverse vast distances and exploit opportunities in the theater of war. Your pores distend and extrude copious amounts of blood, subcutaneous fat, and lymphatic fluid for you to harden and flash-sculpt into gliding wings or a swift-hurtling mount.",
-				"You can cast {@spell feather fall} and phantom steed each once per day as innate occult spells. When you cast {@spell feather fall} in this way, gliding wings slow your fall, and when you cast {@spell phantom steed} in this way, the steed physically protrudes from your own lower body. Neither of these cosmetic changes alter the spells' effects; for example, foes can still attack the phantom steed as normal."
+				"You can cast {@spell feather fall} and {@spell phantom steed} each once per day as innate occult spells. When you cast {@spell feather fall} in this way, gliding wings slow your fall, and when you cast {@spell phantom steed} in this way, the steed physically protrudes from your own lower body. Neither of these cosmetic changes alter the spells' effects; for example, foes can still attack the {@spell phantom steed} as normal."
 			]
 		},
 		{
@@ -143,8 +143,7 @@
 				"unit": "day"
 			},
 			"entries": [
-				"Geniekin can't grant magical wishes, but some echo of power lingers within you.",
-				"Faced with a mechanism that is damaged but not destroyed, you can wish it back into a functional state for a period of 10 minutes. The object must be mundane and no larger than 5 Bulk, such as a disabled locking mechanism in a door. For 10 minutes, the object functions as it should, ignoring any damage to its mechanism.",
+				"Geniekin can't grant magical wishes, but some echo of power lingers within you. Faced with a mechanism that is damaged but not destroyed, you can wish it back into a functional state for a period of 10 minutes. The object must be mundane and no larger than 5 Bulk, such as a disabled locking mechanism in a door. For 10 minutes, the object functions as it should, ignoring any damage to its mechanism.",
 				"This doesn't grant you any knowledge of what a device might do or how it ought to function. Once the 10 minutes are up, the object falls back into disrepair and is temporarily immune to Miraculous {@action Repair} for 1 day"
 			]
 		},
@@ -173,8 +172,7 @@
 			},
 			"trigger": "A creature hits you with a melee {@action Strike}.",
 			"entries": [
-				"You shift your body briefly between planes, reducing the damage from your foe's attack. You gain resistance 25 to all damage against the triggering attack.",
-				"Observers simply see you shimmer with elemental energy for a moment, just as the attack lands."
+				"You shift your body briefly between planes, reducing the damage from your foe's attack. You gain resistance 25 to all damage against the triggering attack. Observers simply see you shimmer with elemental energy for a moment, just as the attack lands."
 			]
 		},
 		{
@@ -199,7 +197,7 @@
 					],
 					"trigger": "You attempt a saving throw against a spell or magic effect but haven't rolled yet",
 					"entries": [
-						"You find some kind of fault with the magic, using that flaw to protect yourself from the effect. You gain a +1 circumstance bonus to your saving throw against the triggering effect, which increases to a +2 circumstance bonus if the effect is divine and originates from a worshipper of the deity you chose for your grudge."
+						"You find some kind of fault with the magic, using that flaw to protect yourself from the effect. You gain a +1 circumstance bonus to your saving throw against the triggering effect, which increases to a +2 circumstance bonus if the effect is {@trait divine} and originates from a worshipper of the deity you chose for your grudge."
 					],
 					"type": "ability"
 				}
@@ -232,9 +230,7 @@
 			},
 			"requirements": "You're {@condition hidden} to at least one enemy.",
 			"entries": [
-				"While {@condition hidden}, you manifest a version of your animalistic nature.",
-				"You create an illusion of a Large or smaller creature within 60 feet of your location with the effects of the {@spell illusory creature} spell.",
-				"The creature shares your animalistic beastbrood features. Unlike most actions taken while {@condition hidden}, using Reveal {@condition Hidden} Self and Sustaining the Spell don't automatically end your {@condition hidden} condition. Use the higher of your class DC or spell DC against attempts to disbelieve the illusion. If a creature observes you, it automatically disbelieves the illusion, and if you're no longer {@condition hidden} to at least one enemy, the effect ends."
+				"While {@condition hidden}, you manifest a version of your animalistic nature. You create an illusion of a Large or smaller creature within 60 feet of your location with the effects of the {@spell illusory creature} spell. The creature shares your animalistic beastbrood features. Unlike most actions taken while {@condition hidden}, using Reveal Hidden Self and {@condition sustain a spell||Sustaining the Spell} don't automatically end your {@condition hidden} condition. Use the higher of your class DC or spell DC against attempts to disbelieve the illusion. If a creature observes you, it automatically disbelieves the illusion, and if you're no longer {@condition hidden} to at least one enemy, the effect ends."
 			]
 		},
 		{
@@ -260,8 +256,7 @@
 				"unit": "hour"
 			},
 			"entries": [
-				"You fill an area with your force of will, towering beyond where your true form should be.",
-				"Increase your size to Large until the beginning of your next turn. Your equipment grows with you but returns to natural size if removed. You're {@condition clumsy||clumsy 1}. Your reach increases by 5 feet (or by 10 feet if you started out Tiny), and you gain a +2 status bonus to melee damage. Towering Presence has no effect if you were already Large or larger."
+				"You fill an area with your force of will, towering beyond where your true form should be. Increase your size to Large until the beginning of your next turn. Your equipment grows with you but returns to natural size if removed. You're {@condition clumsy||clumsy 1}. Your reach increases by 5 feet (or by 10 feet if you started out Tiny), and you gain a +2 status bonus to melee damage. Towering Presence has no effect if you were already Large or larger."
 			]
 		},
 		{
@@ -274,7 +269,7 @@
 			],
 			"prerequisites": "{@feat Faultspawn|LOIL}",
 			"entries": [
-				"You can cast {@spell blood vendetta|APG} and death knell once per day each as 2nd-level divine innate spells."
+				"You can cast {@spell blood vendetta|APG} and {@spell death knell} once per day each as 2nd-level {@trait divine} innate spells."
 			]
 		},
 		{
@@ -287,7 +282,7 @@
 			],
 			"prerequisites": "{@feat Beastbrood|LOAG}",
 			"entries": [
-				"You can cast {@spell dispel magic} and {@spell reaper's lantern|apg} once per day each as 2nd-level divine innate spells. {@spell Reaper's lantern|apg} manifests as a lantern shaped like the head of your rakshasa incarnation."
+				"You can cast {@spell dispel magic} and {@spell reaper's lantern|apg} once per day each as 2nd-level {@trait divine} innate spells. {@spell Reaper's lantern|apg} manifests as a lantern shaped like the head of your rakshasa incarnation."
 			]
 		},
 		{
@@ -330,8 +325,7 @@
 				"unit": "day"
 			},
 			"entries": [
-				"For a short time, you fully manifest the expectations of the god destroyer within you.",
-				"All creatures within a 10-foot emanation take {@damage 8d6} force damage with a basic Fortitude save. A creature that fails this save is also knocked {@condition prone}. For 1 minute, any creature who ends its turn within the 10-foot emanation takes {@damage 5d6} force damage with a basic Fortitude save. If you aren't {@condition drained}, you can choose to become {@condition drained||drained 2} when you use Dominion Aura to increase the radius of the emanation from 10 feet to 20 feet."
+				"For a short time, you fully manifest the expectations of the god destroyer within you. All creatures within a 10-foot emanation take {@damage 8d6} force damage with a basic Fortitude save. A creature that fails this save is also knocked {@condition prone}. For 1 minute, any creature who ends its turn within the 10-foot emanation takes {@damage 5d6} force damage with a basic Fortitude save. If you aren't {@condition drained}, you can choose to become {@condition drained||drained 2} when you use Dominion Aura to increase the radius of the emanation from 10 feet to 20 feet."
 			]
 		},
 		{
@@ -343,8 +337,7 @@
 				"ghoran"
 			],
 			"entries": [
-				"In the long years since Ghorus's day, you've done pretty much everything at one time or another. During your daily preparations, you can explore your memories of your past lives to become trained in one skill of your choice.",
-				"This proficiency lasts until you prepare again. Since this proficiency is temporary, you can't use it as a prerequisite for a skill increase or a permanent character option like a feat."
+				"In the long years since Ghorus's day, you've done pretty much everything at one time or another. During your daily preparations, you can explore your memories of your past lives to become trained in one skill of your choice. This proficiency lasts until you prepare again. Since this proficiency is temporary, you can't use it as a prerequisite for a skill increase or a permanent character option like a feat."
 			]
 		},
 		{
@@ -357,8 +350,7 @@
 			],
 			"prerequisites": "any heritage except strong oak",
 			"entries": [
-				"Your body is as supple as a sapling, capable of bending without breaking.",
-				"You become trained in {@skill Acrobatics}, and if you roll a success to {@action Squeeze}, you get a critical success instead. If you would automatically become trained in {@skill Acrobatics} (from your background or class, for example), you instead become trained in a skill of your choice."
+				"Your body is as supple as a sapling, capable of bending without breaking. You become trained in {@skill Acrobatics}, and if you roll a success to {@action Squeeze}, you get a critical success instead. If you would automatically become trained in {@skill Acrobatics} (from your background or class, for example), you instead become trained in a skill of your choice."
 			]
 		},
 		{
@@ -382,8 +374,7 @@
 				"ghoran"
 			],
 			"entries": [
-				"Over the course of your long, long existence, you've had a chance to practice with traditional ghoran weapons. You're trained with the glaive, greatclub, hatchet, scythe, and sickle. In addition, you gain access to all uncommon ghoran weapons.",
-				"For the purpose of determining your proficiency, martial ghoran weapons are simple weapons and advanced ghoran weapons are martial weapons."
+				"Over the course of your long, long existence, you've had a chance to practice with traditional ghoran weapons. You're trained with the glaive, greatclub, hatchet, scythe, and sickle. In addition, you gain access to all uncommon ghoran weapons. For the purpose of determining your proficiency, martial ghoran weapons are simple weapons and advanced ghoran weapons are martial weapons."
 			]
 		},
 		{
@@ -395,8 +386,7 @@
 				"ghoran"
 			],
 			"entries": [
-				"Some flowers can hide their thorns, and yours happen to be {@condition hidden} along your arms. You gain a thorns unarmed attack that deals {@damage 1d6} piercing damage.",
-				"Your thorns are in the knife weapon group and have the {@trait finesse} and {@trait unarmed} traits."
+				"Some flowers can hide their thorns, and yours happen to be {@condition hidden} along your arms. You gain a thorns unarmed attack that deals {@damage 1d6} piercing damage. Your thorns are in the knife weapon group and have the {@trait finesse} and {@trait unarmed} traits."
 			]
 		},
 		{
@@ -694,7 +684,7 @@
 				"kashrishi"
 			],
 			"entries": [
-				"While many kashrishi never use their horns for more than cracking open hard-shelled fruits or amplifying their psychic powers, you've practiced using yours offensively. You gain a horn unarmed attack that deals {@damage 1d6} piercing damage. Your horn is in the brawling group and has the {@trait finesse} and {@trait unarmed} traits."
+				"While many kashrishi never use their horns for more than cracking open hard-shelled fruits or amplifying their psychic powers, you've practiced using yours offensively. You gain a horn unarmed attack that deals {@damage 1d6} piercing damage. Your horn is in the {@group brawling} group and has the {@trait finesse} and {@trait unarmed} traits."
 			],
 			"special": [
 				"If you have the xyloshi heritage, your horn instead deals {@damage 1d8} piercing damage."
@@ -752,8 +742,7 @@
 			],
 			"prerequisites": "Puncturing Horn or xyloshi",
 			"entries": [
-				"You can modify the size and shape of your horn over time using your mental powers.",
-				"Choose two of the following weapon traits: disarm, grapple, shove, and trip. Your horn gains the chosen traits."
+				"You can modify the size and shape of your horn over time using your mental powers. Choose two of the following weapon traits: disarm, grapple, shove, and trip. Your horn gains the chosen traits."
 			],
 			"special": [
 				"You can take this feat a second time, adding the traits you didn't choose when you first took it."
@@ -872,8 +861,7 @@
 			},
 			"trigger": "You have the {@condition dying} condition and are about to attempt a recovery check.",
 			"entries": [
-				"You can use Kashrishi Revivification even if you're otherwise unable to act.",
-				"The well of psychic energy held within your mind can exceed the limitations of your physical body. You're restored to 1 Hit Point, lose the {@condition dying} and {@condition unconscious} conditions, and can act normally on this turn. You gain or increase the {@condition wounded} condition as normal for losing the {@condition dying} condition."
+				"You can use Kashrishi Revivification even if you're otherwise unable to act. The well of psychic energy held within your mind can exceed the limitations of your physical body. You're restored to 1 Hit Point, lose the {@condition dying} and {@condition unconscious} conditions, and can act normally on this turn. You gain or increase the {@condition wounded} condition as normal for losing the {@condition dying} condition."
 			]
 		},
 		{
@@ -1056,8 +1044,7 @@
 				"unit": "day"
 			},
 			"entries": [
-				"You claw open the top layer of your scales and peel off the premature shed in order to remove harmful substances from your skin.",
-				"You immediately end all {@condition persistent damage} from effects that coat your skin (such as fire and most {@condition persistent damage||persistent acid damage}). If you're suffering from an effect other than {@condition persistent damage} that depends on continuous contact with your skin, and if that effect allows a saving throw, immediately attempt a new saving throw against that effect."
+				"You claw open the top layer of your scales and peel off the premature shed in order to remove harmful substances from your skin. You immediately end all {@condition persistent damage} from effects that coat your skin (such as fire and most {@condition persistent damage||persistent acid damage}). If you're suffering from an effect other than {@condition persistent damage} that depends on continuous contact with your skin, and if that effect allows a saving throw, immediately attempt a new saving throw against that effect."
 			]
 		},
 		{
@@ -1106,8 +1093,7 @@
 				"nagaji"
 			],
 			"entries": [
-				"Your mind, like a dark naga's, foils attempts to read your thoughts.",
-				"Any effect that specifically attempts to read your mind to glean information must succeed at a counteract check against the higher of your class DC or your spell DC to do so successfully; otherwise, it gains no information. The counteract level is equal to half your level rounded up."
+				"Your mind, like a dark naga's, foils attempts to read your thoughts. Any effect that specifically attempts to read your mind to glean information must succeed at a counteract check against the higher of your class DC or your spell DC to do so successfully; otherwise, it gains no information. The counteract level is equal to half your level rounded up."
 			]
 		},
 		{
@@ -1220,8 +1206,7 @@
 				"nagaji"
 			],
 			"entries": [
-				"Your roar shakes the earth and splits the heavens. Once per day, you can cast {@spell chain lightning} as a 7th-level innate occult spell.",
-				"Any creature that critically fails its save against the spell is {@condition blinded} and {@condition deafened} for 1 round."
+				"Your roar shakes the earth and splits the heavens. Once per day, you can cast {@spell chain lightning} as a 7th-level innate occult spell. Any creature that critically fails its save against the spell is {@condition blinded} and {@condition deafened} for 1 round."
 			]
 		},
 		{
@@ -2003,8 +1988,7 @@
 			],
 			"prerequisites": "Student of Perfection Dedication",
 			"entries": [
-				"You gain an appropriate ki spell for your School of Perfection:",
-				"unblinking flame aura for Unblinking Flame, unbreaking wave vapor for Unbreaking Waves, unfolding wind buffet for Unfolding Wind, or untwisting iron roots for Untwisting Iron. Increase the number of Focus Points in your focus pool by 1. You become an expert in occult spell DCs and occult spell attack rolls."
+				"You gain an appropriate ki spell for your School of Perfection: {@spell unblinking flame aura|LOIL} for Unblinking Flame, {@spell unbreaking wave vapor|LOIL} for Unbreaking Waves, {@spell unfolding wind buffet|LOIL} for Unfolding Wind, or {@spell untwisting iron roots|LOIL} for Untwisting Iron. Increase the number of Focus Points in your focus pool by 1. You become an expert in occult spell DCs and occult spell attack rolls."
 			]
 		},
 		{
@@ -2017,8 +2001,7 @@
 			],
 			"prerequisites": "Student of Perfection Dedication",
 			"entries": [
-				"You gain an appropriate ki spell for your School of Perfection:",
-				"unblinking flame emblem for Unblinking Flame, unbreaking wave barrier for Unbreaking Waves, unfolding wind blitz for Unfolding Wind, or untwisting iron augmentation for Untwisting Iron. Increase the number of Focus Points in your focus pool by 1. You become an expert in occult spell DCs and occult spell attack rolls."
+				"You gain an appropriate ki spell for your School of Perfection: {@spell unblinking flame emblem|LOIL} for Unblinking Flame, {@spell unbreaking wave barrier|LOIL} for Unbreaking Waves, {@spell unfolding wind blitz|LOIL} for Unfolding Wind, or {@spell untwisting iron augmentation|LOIL} for Untwisting Iron. Increase the number of Focus Points in your focus pool by 1. You become an expert in occult spell DCs and occult spell attack rolls."
 			]
 		},
 		{
@@ -2031,8 +2014,7 @@
 			],
 			"prerequisites": "Perfect Ki Expert or Perfect Ki Exemplar",
 			"entries": [
-				"You gain an appropriate ki spell for your School of Perfection:",
-				"unblinking flame ignition for Unblinking Flame, unbreaking wave containment for Unbreaking Waves, unfolding wind crash for Unfolding Wind, or untwisting iron pillar for Untwisting Iron. Increase the number of Focus Points in your focus pool by 1. You become a master in occult spell DCs and occult spell attack rolls."
+				"You gain an appropriate ki spell for your School of Perfection: {@spell unblinking flame ignition|LOIL} for Unblinking Flame, {@spell unbreaking wave containment|LOIL} for Unbreaking Waves, {@spell unfolding wind crash|LOIL} for Unfolding Wind, or {@spell untwisting iron pillar|LOIL} for Untwisting Iron. Increase the number of Focus Points in your focus pool by 1. You become a master in occult spell DCs and occult spell attack rolls."
 			]
 		},
 		{
@@ -2089,7 +2071,7 @@
 			"prerequisites": "Jalmeri Heavenseeker Dedication",
 			"requirements": "You're unarmored.",
 			"entries": [
-				"Your jagged blows are like lightning. The only Strikes you can make are skyward slash unarmed attacks. These unarmed attacks deal {@damage 1d10} slashing damage; are in the brawling group; and have the nonlethal, unarmed, and versatile P traits. While in Sky and Heaven Stance, you gain resistance 2 to electricity and resistance 2 to sonic damage. These resistances increase to 5 at 12th level and to 8 at 18th level."
+				"Your jagged blows are like lightning. The only Strikes you can make are skyward slash unarmed attacks. These unarmed attacks deal {@damage 1d10} slashing damage; are in the {@group brawling} group; and have the {@trait nonlethal}, {@trait  unarmed}, and {@trait versatile <P>} traits. While in Sky and Heaven Stance, you gain resistance 2 to electricity and resistance 2 to sonic damage. These resistances increase to 5 at 12th level and to 8 at 18th level."
 			]
 		},
 		{
@@ -2132,7 +2114,7 @@
 			"prerequisites": "Sky and Heaven Stance",
 			"requirements": "You're in Sky and Heaven Stance.",
 			"entries": [
-				"You {@action Stride} up to your Speed, and your ki enshrouds your limbs in terrifying stormy energy, increasing the reach of your Sky and Heaven Stance unarmed attacks by 5 feet. At the end of your movement, make up to three Strikes against a target you can reach, each at a \u20132 penalty. Each attack counts toward your multiple attack penalty, but the multiple attack penalty doesn't increase until after you've made all your attacks. Instead of the usual slashing or piercing damage, the damage for these Strikes is either electricity or sonic, as you choose with each {@action Strike}. If you successfully hit with all three Strikes, the target is {@condition drained||drained 3}."
+				"You {@action Stride} up to your Speed, and your ki enshrouds your limbs in terrifying stormy energy, increasing the reach of your Sky and Heaven Stance unarmed attacks by 5 feet. At the end of your movement, make up to three {@action strike||Strikes} against a target you can reach, each at a \u20132 penalty. Each attack counts toward your multiple attack penalty, but the multiple attack penalty doesn't increase until after you've made all your attacks. Instead of the usual slashing or piercing damage, the damage for these {@action strike||Strikes} is either electricity or sonic, as you choose with each {@action Strike}. If you successfully hit with all three S{@action strike||trikes}, the target is {@condition drained||drained 3}."
 			]
 		},
 		{
@@ -2145,7 +2127,7 @@
 			],
 			"prerequisites": "Jalmeri Heavenseeker Dedication",
 			"entries": [
-				"You can take away the air that keeps a flying foe aloft. You gain the steal the sky ki spell. Increase the number of Focus Points in your focus pool by 1."
+				"You can take away the air that keeps a flying foe aloft. You gain the {@spell steal the sky|LOIL} ki spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -2158,7 +2140,7 @@
 			],
 			"prerequisites": "Jalmeri Heavenseeker Dedication",
 			"entries": [
-				"You gain the speaking sky ki spell. Increase the number of Focus Points in your focus pool by 1."
+				"You gain the {@spell speaking sky|LOIL} ki spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -2229,9 +2211,9 @@
 				"gunslinger"
 			],
 			"prerequisites": "way of the triggerbrand",
-			"requirements": "You're wielding a combination weapon.",
+			"requirements": "You're wielding a {@trait combination} weapon.",
 			"entries": [
-				"You slice, stab, or batter your opponent with the melee portion of your combination weapon before pulling the trigger at point-blank range. Make a melee {@action Strike} with your combination weapon. If the {@action Strike} is successful, you can immediately make a ranged {@action Strike} against the same target with that combination weapon, and you get a +2 circumstance bonus to the attack roll. This counts as two attacks toward your multiple attack penalty, but you don't apply the multiple attack penalty until after making both attacks."
+				"You slice, stab, or batter your opponent with the melee portion of your {@trait combination} weapon before pulling the trigger at point-blank range. Make a melee {@action Strike} with your {@trait combination} weapon. If the {@action Strike} is successful, you can immediately make a ranged {@action Strike} against the same target with that {@trait combination} weapon, and you get a +2 circumstance bonus to the attack roll. This counts as two attacks toward your multiple attack penalty, but you don't apply the multiple attack penalty until after making both attacks."
 			]
 		},
 		{
@@ -2253,7 +2235,7 @@
 			},
 			"requirements": "You're wielding a combination weapon.",
 			"entries": [
-				"You dance through your foes, stabbing and shooting. You {@action Stride}, making up to three Strikes with your combination weapon at any point during your movement, each against a different target. You can make any combination of melee and ranged attacks without needing to change modes to do so, though typically you can't make more than one ranged attack because of the need to reload. This counts as three attacks toward your multiple attack penalty, but you don't apply the multiple attack penalty until after making all three attacks.",
+				"You dance through your foes, stabbing and shooting. You {@action Stride}, making up to three {@action strike||Strikes} with your combination weapon at any point during your movement, each against a different target. You can make any combination of melee and ranged attacks without needing to change modes to do so, though typically you can't make more than one ranged attack because of the need to reload. This counts as three attacks toward your multiple attack penalty, but you don't apply the multiple attack penalty until after making all three attacks.",
 				"After using Triggerbrand Blitz, you become {@condition fatigued} for 1 minute."
 			]
 		},
@@ -2305,7 +2287,7 @@
 				"unit": "hour"
 			},
 			"entries": [
-				"You volunteered for a controversial experimental procedure to install clockwork prosthetic eyes. These eyes relay what you see to shieldmarshal headquarters, which consolidates and analyzes environmental data\u2014Bronzetime/Surgetime probabilities, pressure, temperature, wind, and so on\u2014and feeds them back to you. The Ironmaster periodically reviews the information archives in their ongoing efforts to root out police corruption. When you use your Consolidated Overlay Panopticon, you supercharge the prosthetic eyes; for the next minute, you gain darkvision and low-light vision, and you gain a +1 status bonus to visual {@skill Perception} checks. Even when the prosthetic eyes aren't supercharged, you retain your normal vision."
+				"You volunteered for a controversial experimental procedure to install clockwork prosthetic eyes. These eyes relay what you see to shieldmarshal headquarters, which consolidates and analyzes environmental data\u2014Bronzetime/Surgetime probabilities, pressure, temperature, wind, and so on\u2014and feeds them back to you. The Ironmaster periodically reviews the information archives in their ongoing efforts to root out police corruption. When you use your Consolidated Overlay Panopticon, you supercharge the prosthetic eyes; for the next minute, you gain {@ability darkvision|B1} and {@ability low-light vision|B1}, and you gain a +1 status bonus to visual {@skill Perception} checks. Even when the prosthetic eyes aren't supercharged, you retain your normal vision."
 			]
 		},
 		{
@@ -2359,7 +2341,7 @@
 				"unit": "round"
 			},
 			"entries": [
-				"You understand the need for law enforcement doctrine to adapt to the ever-changing innovations in technology and arcana. Your training in special weapons and tactics give you access to unusual techniques to respond to clockwork- and magic-related crimes. You apply special additives to a loaded firearm. On your next {@action Strike} with that firearm before the end of your turn, you deal an additional {@dice 2d6} damage if the target is a construct, and you can treat the ammunition as your choice of cold iron or adamantine. At 18th level, this additional damage increases to {@dice 3d6}, and you can choose to instead treat the ammunition as orichalcum."
+				"You understand the need for law enforcement doctrine to adapt to the ever-changing innovations in technology and arcana. Your training in special weapons and tactics give you access to unusual techniques to respond to clockwork- and magic-related crimes. You apply special additives to a loaded firearm. On your next {@action Strike} with that firearm before the end of your turn, you deal an additional {@dice 2d6} damage if the target is a {@trait construct}, and you can treat the ammunition as your choice of {@item cold iron} or {@item adamantine}. At 18th level, this additional damage increases to {@dice 3d6}, and you can choose to instead treat the ammunition as {@item orichalcum}."
 			]
 		},
 		{
@@ -2380,7 +2362,11 @@
 			],
 			"prerequisites": "trained in {@skill Performance}",
 			"entries": [
-				"You have mastered the opening steps to the Masquerade of Seasons, a dance that channels the power of spring, summer, winter, and autumn. Choose one of the following traits: water, fire, negative, or cold. You gain resistance 5 to damage dealt by effects with the chosen trait. You can use an action to reenter this stance at any time, changing the granted resistance to another of the available options. If you are at least 12th level, the granted resistance increases to be equal to half your level."
+				"You have mastered the opening steps to the Masquerade of Seasons, a dance that channels the power of spring, summer, winter, and autumn. Choose one of the following traits: {@trait water}, {@trait fire}, {@trait negative}, or {@trait cold}. You gain resistance 5 to damage dealt by effects with the chosen trait. You can use an action to reenter this stance at any time, changing the granted resistance to another of the available options. If you are at least 12th level, the granted resistance increases to be equal to half your level."
+			],
+			"leadsTo": [
+				"Pirouette|LOIL",
+				"Grand Dance|LOIL"
 			]
 		},
 		{
@@ -2398,9 +2384,9 @@
 				"rogue",
 				"swashbuckler"
 			],
-			"prerequisites": "Masquerade of Seasons Stance",
+			"prerequisites": "{@feat Masquerade of Seasons Stance|LOIL}",
 			"trigger": "An enemy targets you with a {@action Strike}.",
-			"requirements": "You're in Masquerade of Seasons Stance.",
+			"requirements": "You're in {@feat Masquerade of Seasons Stance|LOIL}.",
 			"entries": [
 				"You twirl gracefully, spinning on one foot to evade your opponent's attack. You gain a +2 circumstance bonus to AC against the triggering attack. If the attack misses you, you can immediately {@action Step}. If the attack hits you anyway, reduce the damage it deals by an amount equal to half your level; this reduction in damage is applied after calculating immunities, resistances, and weakness."
 			]
@@ -2420,8 +2406,8 @@
 				"rogue",
 				"swashbuckler"
 			],
-			"prerequisites": "Masquerade of Seasons Stance",
-			"requirements": "You're in Masquerade of Seasons Stance.",
+			"prerequisites": "{@feat Masquerade of Seasons Stance|LOIL}",
+			"requirements": "You're in {@feat Masquerade of Seasons Stance|LOIL}.",
 			"entries": [
 				"You can summon the full magic of Bhopan's grand dance. {@action Stride} up to your Speed; during this {@action Stride}, you can walk on air as if it were solid ground. You can ascend and descend in this way at a maximum of a 45-degree angle. You must end your {@action Stride} on a surface that can support you or you fall."
 			]
@@ -2456,7 +2442,7 @@
 				}
 			],
 			"special": [
-				"This feat gains the trait appropriate for your ancestry (human for human, goblin for goblin, etc.)."
+				"This feat gains the trait appropriate for your ancestry ({@trait human} for {@ancestry human}, {@trait goblin} for {@ancestry goblin}, etc.)."
 			],
 			"leadsTo": [
 				"Drain Emotion|LOIL",
@@ -2530,7 +2516,7 @@
 				}
 			],
 			"special": [
-				"This feat gains the trait appropriate for your ancestry (human for human, goblin for goblin, etc.)."
+				"This feat gains the trait appropriate for your ancestry ({@trait human} for {@ancestry human}, {@trait goblin} for {@ancestry goblin}, etc.)."
 			]
 		},
 		{
@@ -2561,7 +2547,7 @@
 				"An item {@condition drained} by this action becomes non-magical until the next time you make your daily preparations."
 			],
 			"special": [
-				"This feat gains the trait appropriate for your ancestry (human for human, goblin for goblin, etc.)."
+				"This feat gains the trait appropriate for your ancestry ({@trait human} for {@ancestry human}, {@trait goblin} for {@ancestry goblin}, etc.)."
 			]
 		},
 		{
@@ -2579,10 +2565,10 @@
 			],
 			"prerequisites": "{@feat Fey Influence|LOIL}",
 			"entries": [
-				"You unlock a new level of fey power and can manipulate the perceptions of others using a font of First World magic. You gain the {@spell fey glamour} focus spell (Pathfinder Core Rulebook 404) as a primal spell that doesn't have the {@trait sorcerer} trait. If you don't already have a focus pool, you gain a focus pool of 1 Focus Point."
+				"You unlock a new level of fey power and can manipulate the perceptions of others using a font of First World magic. You gain the {@spell fey glamour} focus spell as a {@trait primal} spell that doesn't have the {@trait sorcerer} trait. If you don't already have a focus pool, you gain a focus pool of 1 Focus Point."
 			],
 			"special": [
-				"This feat gains the trait appropriate for your ancestry (human for human, goblin for goblin, etc.)."
+				"This feat gains the trait appropriate for your ancestry ({@trait human} for {@ancestry human}, {@trait goblin} for {@ancestry goblin}, etc.)."
 			]
 		},
 		{
@@ -2604,7 +2590,7 @@
 				"However, your extraordinary emotional detachment makes it difficult to encourage you. You reduce any bonus you gain from an {@trait emotion} effect by 1."
 			],
 			"special": [
-				"This feat gains the trait appropriate for your ancestry (human for human, goblin for goblin, etc.)."
+				"This feat gains the trait appropriate for your ancestry ({@trait human} for {@ancestry human}, {@trait goblin} for {@ancestry goblin}, etc.)."
 			]
 		},
 		{
@@ -2622,10 +2608,10 @@
 			],
 			"prerequisites": "{@feat Fey Influence|LOIL}",
 			"entries": [
-				"You become a powerful fey creature, gaining strengths tied to the First World but also some of the weakness against which all fey must contend. You gain a +2 status bonus to saves against illusion, {@trait emotion}, and {@trait enchantment} effects, and you can use {@skill Diplomacy} to {@action Make an Impression} on and to make very simple Requests of animals and plants. You regain twice the number of Hit Points when resting in a natural wooded area, such as a forest or jungle. You have weakness to cold iron equal to half your level."
+				"You become a powerful fey creature, gaining strengths tied to the First World but also some of the weakness against which all fey must contend. You gain a +2 status bonus to saves against illusion, {@trait emotion}, and {@trait enchantment} effects, and you can use {@skill Diplomacy} to {@action Make an Impression} on and to make very simple {@action request||Requests} of animals and plants. You regain twice the number of Hit Points when resting in a natural wooded area, such as a forest or jungle. You have weakness to cold iron equal to half your level."
 			],
 			"special": [
-				"This feat gains the trait appropriate for your ancestry (human for human, goblin for goblin, etc.)."
+				"This feat gains the trait appropriate for your ancestry ({@trait human} for {@ancestry human}, {@trait goblin} for {@ancestry goblin}, etc.)."
 			]
 		},
 		{
@@ -2712,7 +2698,7 @@
 				"unit": "day"
 			},
 			"entries": [
-				"You have mastered a magical technique for moving through dangerous woodlands unseen. You can cast {@spell pass without trace} as an innate primal spell heightened to a spell level equal to half your level rounded up."
+				"You have mastered a magical technique for moving through dangerous woodlands unseen. You can cast {@spell pass without trace} as an innate {@trait primal} spell heightened to a spell level equal to half your level rounded up."
 			]
 		},
 		{
@@ -2728,8 +2714,7 @@
 			],
 			"prerequisites": "Defy Fey",
 			"entries": [
-				"Your experience fighting against and alongside fey creatures is nearly unrivaled.",
-				"Any weapon you wield or unarmed attack you make against a fey creature is treated as cold iron. Whenever you critically fail a save against a spell cast by a fey creature, it's instead treated as a normal failure. Whenever you critically succeed on a {@action Strike} against a fey creature, the target is immediately subject to the effects of a {@spell faerie fire} spell. For the purposes of counteracting this effect, it's an innate 2nd-level primal spell."
+				"Your experience fighting against and alongside {@trait fey} creatures is nearly unrivaled. Any weapon you wield or unarmed attack you make against a {@trait fey} creature is treated as {@item cold iron}. Whenever you critically fail a save against a spell cast by a {@trait fey} creature, it's instead treated as a normal failure. Whenever you critically succeed on a {@action Strike} against a {@trait fey} creature, the target is immediately subject to the effects of a {@spell faerie fire} spell. For the purposes of counteracting this effect, it's an innate 2nd-level {@trait primal} spell."
 			]
 		}
 	]

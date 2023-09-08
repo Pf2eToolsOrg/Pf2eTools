@@ -218,7 +218,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage||persistent fire} plus 6 fire splash",
+					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage||persistent fire} plus 6 fire {@trait splash}",
 					"types": [
 						"fire",
 						"persistent"
@@ -504,7 +504,7 @@
 				"mid": [
 					{
 						"entries": [
-							"Froglegs isn't {@condition flat-footed} to creatures of 8th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
+							"Froglegs isn't {@condition flat-footed} to creatures of 8th level or lower that are {@condition hidden}, {@condition undetected}, {@quickref flanking|CRB|3|flanking}, or using surprise attack."
 						],
 						"name": "Deny Advantage"
 					}
@@ -512,7 +512,7 @@
 				"bot": [
 					{
 						"entries": [
-							"Froglegs deals an additional {@damage 2d6} precision damage with weapons from the {@group knife|knife group}, and knives gain the {@trait deadly <d10>} weapon property while she wields them."
+							"Froglegs deals an additional {@damage 2d6} precision damage with weapons from the {@group knife} group, and knives gain the {@trait deadly <d10>} weapon property while she wields them."
 						],
 						"name": "Knife Fighter"
 					},

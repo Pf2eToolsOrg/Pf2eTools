@@ -10,7 +10,7 @@
 			],
 			"entries": [
 				"A small creature made of elemental matter springs forth from your kinetic gate. This elemental familiar appears to be made of one of your kinetic elements, though it might have unusual or distinguishing aspects. Like other familiars, your elemental familiar can assist you in various tasks and on adventures.",
-				"You gain an elemental familiar (page 42) with the trait of one of your kinetic elements. If you have more than one kinetic element, you can change the element you've selected for your familiar to a different one of your kinetic elements each time you make your daily preparations. The familiar uses your Constitution modifier to determine its {@skill Perception}, {@skill Acrobatics}, and {@skill Stealth} modifiers."
+				"You gain an elemental familiar with the trait of one of your kinetic elements. If you have more than one kinetic element, you can change the element you've selected for your familiar to a different one of your kinetic elements each time you make your daily preparations. The familiar uses your Constitution modifier to determine its {@skill Perception}, {@skill Acrobatics}, and {@skill Stealth} modifiers."
 			]
 		},
 		{
@@ -27,9 +27,27 @@
 				{
 					"type": "list",
 					"items": [
-						"Proliferate You cause an existing element to expand. This works like the generate option, except that you can either create an equal quantity of the element in the same square as its source or in an adjacent square, or cause the element to expand to fill its square (making a flame bigger or turning a twig into a small tree, for example). After you proliferate an element, it reacts to the environment naturally\u2014water you proliferated into thin air would splash back down, for example. This affects only natural forms of the element, not durable, crafted goods.",
-						"Regulate (air, fire, metal, or water only) You change the temperature of an existing element, making it colder or warmer. This can snuff out a flame or turn water to ice or steam. After this change, the element cools or warms naturally unless you Sustain the impulse. An item that gets cold or hot enough (as determined by the GM) can be used as an improvised weapon that deals 1 cold damage or 1 fire damage in addition to the damage the GM determines for the improvised weapon.",
-						"Sculpt (earth, metal, or wood only) Reshape an existing element into a small object of a design you choose. It looks crude and artificial on close examination. The sculpted element can be shaped into a functional short tool (or a long tool if your {@action Base Kinesis|RoE} can affect 1 Bulk or greater). It's too fragile and artificial to be used as a weapon or have any monetary value."
+						{
+							"type": "item",
+							"name": "Proliferate",
+							"entries": [
+								"You cause an existing element to expand. This works like the generate option, except that you can either create an equal quantity of the element in the same square as its source or in an adjacent square, or cause the element to expand to fill its square (making a flame bigger or turning a twig into a small tree, for example). After you proliferate an element, it reacts to the environment naturally\u2014water you proliferated into thin air would splash back down, for example. This affects only natural forms of the element, not durable, crafted goods."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regulate",
+							"entries": [
+								"(air, fire, metal, or water only) You change the temperature of an existing element, making it colder or warmer. This can snuff out a flame or turn water to ice or steam. After this change, the element cools or warms naturally unless you Sustain the impulse. An item that gets cold or hot enough (as determined by the GM) can be used as an improvised weapon that deals 1 cold damage or 1 fire damage in addition to the damage the GM determines for the improvised weapon."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Sculpt",
+							"entries": [
+								"(earth, metal, or wood only) Reshape an existing element into a small object of a design you choose. It looks crude and artificial on close examination. The sculpted element can be shaped into a functional short tool (or a long tool if your {@action Base Kinesis|RoE} can affect 1 Bulk or greater). It's too fragile and artificial to be used as a weapon or have any monetary value."
+							]
+						}
 					]
 				}
 			]
@@ -43,7 +61,7 @@
 				"kineticist"
 			],
 			"entries": [
-				"Accessing a wider realm of elemental manifestations, you can make blasts with rare forms of your elements. Add the following damage types to those you can choose for Elemental Blasts of that element: air cold, earth poison, fire cold, metal electricity, water acid, wood poison."
+				"Accessing a wider realm of elemental manifestations, you can make blasts with rare forms of your elements. Add the following damage types to those you can choose for Elemental Blasts of that element: {@b air} cold, {@b earth} poison, {@b fire} cold, {@b metal} electricity, {@b water} acid, {@b wood} poison."
 			]
 		},
 		{
@@ -1254,7 +1272,7 @@
 				"The flame has an unlimited duration. You can have a maximum number of Eternal Torches equal to your Constitution modifier, and you can {@action Dismiss} each torch individually."
 			],
 			"footer": {
-				"Level (8th)": "All your torches\u2014even ones you already created\u2014 shed bright light in a 60-foot radius (and dim light for the next 60 feet)."
+				"Level (8th)": "All your torches\u2014even ones you already created\u2014shed bright light in a 60-foot radius (and dim light for the next 60 feet)."
 			}
 		},
 		{
@@ -1273,7 +1291,7 @@
 				"primal"
 			],
 			"entries": [
-				"A Tiny shape of flame appears, taking a form of your choice\u2014 such as a bird, an arrow, or a simple sphere. It Flies from you up to 30 feet in a path you choose. Each creature it passes through takes {@damage 1d6} fire damage with a basic Reflex save against your class DC. A creature attempts only one save, even if the flame passes through it multiple times."
+				"A Tiny shape of flame appears, taking a form of your choice\u2014such as a bird, an arrow, or a simple sphere. It Flies from you up to 30 feet in a path you choose. Each creature it passes through takes {@damage 1d6} fire damage with a basic Reflex save against your class DC. A creature attempts only one save, even if the flame passes through it multiple times."
 			],
 			"footer": {
 				"Level (+2)": "The damage increases by {@damage 1d6}."
@@ -1709,7 +1727,7 @@
 				"primal"
 			],
 			"entries": [
-				"Precious metal flows from your fingers to plate an object. This has the effects of a clad in metal spell (page 142) with a rank equal to half your level rounded up. While you're wearing or holding an item of light Bulk or greater that's Plated in Treasure, any metal created by one of your impulses is plated with the metal. If you use Plate in Treasure again, any previous one ends."
+				"Precious metal flows from your fingers to plate an object. This has the effects of a clad in metal spell with a rank equal to half your level rounded up. While you're wearing or holding an item of light Bulk or greater that's Plated in Treasure, any metal created by one of your impulses is plated with the metal. If you use Plate in Treasure again, any previous one ends."
 			]
 		},
 		{
@@ -1862,7 +1880,7 @@
 				"primal"
 			],
 			"entries": [
-				"Elemental energy replaces every cell of your body with raw metal. You gain the benefits of the ferrous form spell (except you can't cast needle darts; see page 142) until the end of your next turn. You can Sustain the impulse up to 1 minute, and when you do, you can Raise a metal Shield if you're wielding one. Your metal Elemental Blasts deal an additional die of damage. If you suspend any conditions with Alloy Flesh and Steel, when it ends, you're temporarily immune to Alloy Flesh and Steel for 1 hour."
+				"Elemental energy replaces every cell of your body with raw metal. You gain the benefits of the ferrous form spell (except you can't cast needle darts) until the end of your next turn. You can Sustain the impulse up to 1 minute, and when you do, you can Raise a metal Shield if you're wielding one. Your metal Elemental Blasts deal an additional die of damage. If you suspend any conditions with Alloy Flesh and Steel, when it ends, you're temporarily immune to Alloy Flesh and Steel for 1 hour."
 			],
 			"footer": {
 				"Level (16th)": "The resistance is 15."
@@ -2045,7 +2063,7 @@
 				"water"
 			],
 			"entries": [
-				"Bone-chilling, swirling sleet surrounds you, cruel as deepest winter. Surfaces in your kinetic aura are coated in slippery ice. A creature that moves on this uneven ground immediately falls unless it Balances (DC 15). A creature is off-guard on the ice, as normal for uneven ground. You're immune to these effects.",
+				"Bone-chilling, swirling sleet surrounds you, cruel as deepest winter. Surfaces in your kinetic aura are coated in slippery ice. A creature that moves on this uneven ground immediately falls unless it {@action balance||Balances} (DC 15). A creature is off-guard on the ice, as normal for uneven ground. You're immune to these effects.",
 				"If a creature on the ice is critically hit by one of your water impulses or critically fails at a save against one, that creature is {@condition slowed||slowed 1} until the end of its next turn."
 			]
 		},
@@ -2369,7 +2387,7 @@
 				"wood"
 			],
 			"entries": [
-				"A slim, symmetrical tree travels from the Plane of Wood. You conjure a tree within 30 feet, as a protector tree SoM spell of a rank equal to half your level rounded up. If you use this impulse again, any previous one ends, and an ordinary tree remains."
+				"A slim, symmetrical tree travels from the Plane of Wood. You conjure a tree within 30 feet, as a {@spell protector tree|SoM} spell of a rank equal to half your level rounded up. If you use this impulse again, any previous one ends, and an ordinary tree remains."
 			]
 		},
 		{
@@ -2552,7 +2570,7 @@
 				"wood"
 			],
 			"entries": [
-				"You sculpt a manicured maze of hedges. You create a wall of shrubs (page 199) in a square 30 feet on a side, with 15-foot- high walls. You can place up to four more walls inside, each 10 feet wide and 15 feet high. The hedge lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute.",
+				"You sculpt a manicured maze of hedges. You create a wall of shrubs in a square 30 feet on a side, with 15-foot- high walls. You can place up to four more walls inside, each 10 feet wide and 15 feet high. The hedge lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute.",
 				"You can spend 10 minutes using this impulse as an exploration activity to instead create a cozy cabin with hedges for walls. It lasts for 12 hours, but ends if you use the impulse again."
 			]
 		},
@@ -3277,7 +3295,7 @@
 				"ardande"
 			],
 			"entries": [
-				"Your connection to the magic of the Plane of Wood allows you to call upon the power of plants and trees to protect yourself. You can cast mantle of the unwavering heart (page 197) as a 5th-rank primal innate spell once per day."
+				"Your connection to the magic of the Plane of Wood allows you to call upon the power of plants and trees to protect yourself. You can cast mantle of the unwavering heart as a 5th-rank primal innate spell once per day."
 			]
 		},
 		{
@@ -3315,7 +3333,7 @@
 				"talos"
 			],
 			"entries": [
-				"Whether in their pure elemental forms or as part of an alloy such as steel, the elemental metal in your soul resonates strongly with iron, bronze, and other sturdy, practical metals suitable for weaponry. Your fist attacks gain the modular B, P, or {@trait S} trait (Pathfinder Treasure Vault 25) and lose the {@trait nonlethal} trait. Your fist's damage die increases to {@dice 1d6}."
+				"Whether in their pure elemental forms or as part of an alloy such as steel, the elemental metal in your soul resonates strongly with iron, bronze, and other sturdy, practical metals suitable for weaponry. Your fist attacks gain the {@trait modular <B, P, or S>} trait and lose the {@trait nonlethal} trait. Your fist's damage die increases to {@damage 1d6}."
 			]
 		},
 		{
@@ -3429,10 +3447,10 @@
 				"talos"
 			],
 			"entries": [
-				"Your connection with elemental iron grants you a natural field of weak magnetic attraction. You can cast {@spell magnetic attraction|SoM} (Secrets of Magic 114) and magnetic repulsion (Secrets of Magic 115) once per day each as 2nd-rank primal innate spells."
+				"Your connection with elemental iron grants you a natural field of weak magnetic attraction. You can cast {@spell magnetic attraction|SoM} and magnetic repulsion once per day each as 2nd-rank primal innate spells."
 			],
 			"special": [
-				"If you chose the gildedsoul lineage, you can replace one of the above spells with enthrall."
+				"If you chose the gildedsoul lineage, you can replace one of the above spells with {@spell enthrall}."
 			]
 		},
 		{
@@ -3521,7 +3539,7 @@
 			],
 			"prerequisites": "Constitution +2",
 			"entries": [
-				"You become trained in kineticist class DC and impulse attack rolls. Choose one element to be your kinetic element (air, earth, fire, metal, water, or wood). You gain a kinetic aura and the {@action Channel Elements|RoE} action (page 15), though you don't get to use an {@action Elemental Blast|RoE} or stance impulse when you take that action. You gain the {@action Elemental Blast|RoE} action (page 16). Your {@action Elemental Blast|RoE} does not automatically gain additional damage dice every four levels, instead requiring you to take the Improved {@action Elemental Blast|RoE} feat."
+				"You become trained in kineticist class DC and impulse attack rolls. Choose one element to be your kinetic element (air, earth, fire, metal, water, or wood). You gain a kinetic aura and the {@action Channel Elements|RoE} action, though you don't get to use an {@action Elemental Blast|RoE} or stance impulse when you take that action. You gain the {@action Elemental Blast|RoE} action. Your {@action Elemental Blast|RoE} does not automatically gain additional damage dice every four levels, instead requiring you to take the Improved {@action Elemental Blast|RoE} feat."
 			],
 			"leadsTo": [
 				"Base Kinesis|RoE",
@@ -3545,7 +3563,7 @@
 			],
 			"prerequisites": "{@feat Kineticist Dedication|RoE}",
 			"entries": [
-				"You gain the {@action Base Kinesis|RoE} impulse (page 16). For the purposes of determining when the range and Bulk improvements of the action occur, your kineticist level is equal to half your level (for example, {@action Base Kinesis|RoE} for a 10th- level character with this feat would have a range of 45 feet and could affect 1 Bulk of their chosen element)."
+				"You gain the {@action Base Kinesis|RoE} impulse. For the purposes of determining when the range and Bulk improvements of the action occur, your kineticist level is equal to half your level (for example, {@action Base Kinesis|RoE} for a 10th- level character with this feat would have a range of 45 feet and could affect 1 Bulk of their chosen element)."
 			]
 		},
 		{
@@ -3706,7 +3724,7 @@
 			],
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, Familiar",
 			"entries": [
-				"Your familiar becomes an elemental spirit capable of taking on aspects of the elements. Other than taking the form of an elemental instead of an animal, this familiar continues to use all the same rules as other familiars. If you want to give your familiar the elemental familiar abilities found on page 42, you must select that familiar ability. Your familiar gains one additional familiar ability each day, which must be one of the following elemental familiar abilities. While your familiar has an elemental familiar ability, your familiar is composed of the associated elemental matter and gains the matching {@trait elemental} trait. You can't select more than one elemental familiar ability at a time.",
+				"Your familiar becomes an elemental spirit capable of taking on aspects of the elements. Other than taking the form of an elemental instead of an animal, this familiar continues to use all the same rules as other familiars. If you want to give your familiar the elemental familiar abilities, you must select that familiar ability. Your familiar gains one additional familiar ability each day, which must be one of the following elemental familiar abilities. While your familiar has an elemental familiar ability, your familiar is composed of the associated elemental matter and gains the matching {@trait elemental} trait. You can't select more than one elemental familiar ability at a time.",
 				{
 					"type": "list",
 					"items": [

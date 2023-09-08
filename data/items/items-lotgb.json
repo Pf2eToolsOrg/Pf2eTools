@@ -2585,7 +2585,7 @@
 			"entries": [
 				"This variant on the shield boss is usually shaped like a dragon's head, its jaws open wide enough to wedge a small vessel of liquid within. A dragon's crest can be etched with weapon runes, much like a shield boss or shield spikes, but doesn't otherwise alter your shield's statistics. A shield bearing a dragon's crest can't be combined with an attached weapon, like shield spikes.",
 				"You can use an {@action Interact} action to wedge an alchemical bomb into the crest's jaws. While a bomb is wedged in the shield, you take a \u20131 penalty to attack rolls with the shield.",
-				"When you successfully {@action Strike} a creature with the shield, the vessel shatters, exposing the creature you hit\u2014and yourself\u2014 to the substance within. This counts as a successful hit with the bomb against the creature if it's adjacent to you or a successful hit against the appropriate adjacent square if it's not. The bomb deals splash damage as normal to surrounding creatures, including you. In addition, the bomb deals full damage to the attached shield."
+				"When you successfully {@action Strike} a creature with the shield, the vessel shatters, exposing the creature you hit\u2014and yourself\u2014to the substance within. This counts as a successful hit with the bomb against the creature if it's adjacent to you or a successful hit against the appropriate adjacent square if it's not. The bomb deals {@trait splash} damage as normal to surrounding creatures, including you. In addition, the bomb deals full damage to the attached shield."
 			]
 		},
 		{
@@ -3407,7 +3407,7 @@
 						"amount": 160
 					},
 					"entries": [
-						"These pointed crystal shards embedded in your fingers grant you a fist {@action Strike} that deals {@damage 1d6} piercing damage, is in the brawling group, and has the {@trait magical} and {@trait unarmed} traits. Combat fleshgems can be enhanced with the effects of {@item handwraps of mighty blows}, as normal for an unarmed attack."
+						"These pointed crystal shards embedded in your fingers grant you a fist {@action Strike} that deals {@damage 1d6} piercing damage, is in the {@group brawling} group, and has the {@trait magical} and {@trait unarmed} traits. Combat fleshgems can be enhanced with the effects of {@item handwraps of mighty blows}, as normal for an unarmed attack."
 					],
 					"variantType": "combat fleshgem"
 				},
@@ -7840,11 +7840,11 @@
 						"amount": 4
 					},
 					"entries": [
-						"The bomb deals {@damage 1d4} acid damage and 1 acid splash damage."
+						"The bomb deals {@damage 1d4} acid damage and 1 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "The bomb deals {@damage 1d4} acid damage and 1 acid splash damage."
+							"with": "The bomb deals {@damage 1d4} acid damage and 1 acid {@trait splash} damage."
 						}
 					}
 				},
@@ -7856,11 +7856,11 @@
 						"amount": 12
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid splash damage."
+							"with": "You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid {@trait splash} damage."
 						}
 					}
 				},
@@ -7872,11 +7872,11 @@
 						"amount": 275
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid splash damage."
+							"with": "You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid {@trait splash} damage."
 						}
 					}
 				},
@@ -7888,11 +7888,11 @@
 						"amount": 2750
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage."
+							"with": "You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid {@trait splash} damage."
 						}
 					}
 				}
@@ -8444,7 +8444,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This flask contains a fine red powder made from toxic berries. A vexing vapor bomb deals the listed mental damage and mental splash damage. On a hit, the target must succeed at a DC {@flatDC 5} flat check before taking actions with the {@trait concentrate} trait. This lasts until the end of its next turn (1 minute on a critical hit)."
+				"This flask contains a fine red powder made from toxic berries. A vexing vapor bomb deals the listed mental damage and mental {@trait splash} damage. On a hit, the target must succeed at a DC {@flatDC 5} flat check before taking actions with the {@trait concentrate} trait. This lasts until the end of its next turn (1 minute on a critical hit)."
 			],
 			"generic": "G",
 			"variants": [
@@ -8456,11 +8456,11 @@
 						"amount": 4
 					},
 					"entries": [
-						"The bomb deals {@damage 1d6} mental damage and 1 mental splash damage."
+						"The bomb deals {@damage 1d6} mental damage and 1 mental {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "{@damage 1d6} mental damage and 1 mental splash damage."
+							"with": "{@damage 1d6} mental damage and 1 mental {@trait splash} damage."
 						}
 					}
 				},
@@ -8472,11 +8472,11 @@
 						"amount": 12
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} mental damage and 2 mental splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} mental damage and 2 mental {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "{@damage 2d6} mental damage and 2 mental splash damage. You gain a +1 item bonus to attack rolls."
+							"with": "{@damage 2d6} mental damage and 2 mental {@trait splash} damage. You gain a +1 item bonus to attack rolls."
 						}
 					}
 				},
@@ -8488,11 +8488,11 @@
 						"amount": 300
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} mental damage and 3 mental splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} mental damage and 3 mental {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "{@damage 3d6} mental damage and 3 mental splash damage. You gain a +1 item bonus to attack rolls."
+							"with": "{@damage 3d6} mental damage and 3 mental {@trait splash} damage. You gain a +1 item bonus to attack rolls."
 						}
 					}
 				},
@@ -8504,11 +8504,11 @@
 						"amount": 3000
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} mental damage and 4 mental splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} mental damage and 4 mental {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
-							"with": "{@damage 4d6} mental damage and 4 mental splash damage. You gain a +1 item bonus to attack rolls."
+							"with": "{@damage 4d6} mental damage and 4 mental {@trait splash} damage. You gain a +1 item bonus to attack rolls."
 						}
 					}
 				}
@@ -8516,7 +8516,7 @@
 			"_vmod": {
 				"entries": {
 					"mode": "replaceTxt",
-					"replace": "the listed mental damage and mental splash damage."
+					"replace": "the listed mental damage and mental {@trait splash} damage."
 				},
 				"entriesMode": "generic"
 			}

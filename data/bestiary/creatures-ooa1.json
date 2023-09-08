@@ -796,7 +796,7 @@
 					],
 					"name": "alchemist's fire",
 					"attack": 9,
-					"damage": "{@damage 1d8} fire plus 1 {@condition persistent damage||persistent fire} plus 1 fire splash"
+					"damage": "{@damage 1d8} fire plus 1 {@condition persistent damage||persistent fire} plus 1 fire {@trait splash}"
 				}
 			],
 			"abilities": {
@@ -851,7 +851,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The bombardier shakes a bottle of alchemist's fire, and then Strikes with it. The radius of the splash damage for this {@action Strike} increases to 10 feet."
+							"The bombardier shakes a bottle of alchemist's fire, and then Strikes with it. The radius of the {@trait splash} damage for this {@action Strike} increases to 10 feet."
 						]
 					}
 				]
