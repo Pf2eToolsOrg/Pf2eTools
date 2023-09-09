@@ -127,11 +127,17 @@
 					"type": "ability",
 					"activity": {
 						"number": 1,
-						"unit": "varies",
-						"entry": "{@as 1} {@action Interact} (concentrate) Frequency"
+						"unit": "action"
+					},
+					"frequency": {
+						"unit": "hour",
+						"number": 1
 					},
 					"components": [
-						"once per hour"
+						"{@action Interact}"
+					],
+					"traits": [
+						"concentrate"
 					],
 					"entries": [
 						"You play a pounding rhythm on the drum. If the next action you use is to cast a {@filter composition cantrip that has an emanation|spells||Spell Type=cantrip;focus=sand~sand~b1|General=Composition|Area Type=Emanation}, increase the area of the emanation by 30 feet."

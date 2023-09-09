@@ -113,7 +113,7 @@
 				"Other"
 			],
 			"entries": [
-				"An {@i arsonous} curse creates flaws in the mystic pathways that channel magic through an item, allowing excess power to escape as sparks. Whenever you {@action activate an item||activate} the magic item, a random ally within 30 feet takes {@dice 1d10} persistent fire damage. If no ally is in range, you take the damage instead. At the GM's discretion, this curse might ignite an unattended object or the surrounding environment instead."
+				"An {@i arsonous} curse creates flaws in the mystic pathways that channel magic through an item, allowing excess power to escape as sparks. Whenever you {@action activate an item||activate} the magic item, a random ally within 30 feet takes {@dice 1d10} {@condition persistent damage||persistent fire damage}. If no ally is in range, you take the damage instead. At the GM's discretion, this curse might ignite an unattended object or the surrounding environment instead."
 			]
 		},
 		{
@@ -809,7 +809,7 @@
 						"unit": "minute"
 					},
 					"components": [
-						"({@action Interact})"
+						"{@action Interact}"
 					],
 					"requirements": "The prism has only one input stream, and a creature is encased in magic in the input stream",
 					"entries": [
@@ -824,7 +824,7 @@
 						"unit": "minute"
 					},
 					"components": [
-						"{@action Interact}"
+						"({@action Interact})"
 					],
 					"requirements": "The prism has two input streams, and a creature is encased in magic in each of the input streams",
 					"entries": [
@@ -1260,12 +1260,17 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "{@as 2} envision (emotion, enchantment, incapacitation,"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
-						"visual)"
+						"envision"
+					],
+					"traits": [
+						"emotion",
+						"enchantment",
+						"incapacitation",
+						"visual"
 					],
 					"entries": [
 						"You force a creature looking at the mirror to attempt an additional Will save against the mirror's fascination effect, even if they succeeded at their save."
@@ -1275,12 +1280,16 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "{@as 3} command (emotion, enchantment,"
+						"number": 3,
+						"unit": "action"
 					},
 					"components": [
-						"incapacitation)"
+						"command"
+					],
+					"traits": [
+						"emotion",
+						"enchantment",
+						"incapacitation"
 					],
 					"requirements": "The target must be {@condition fascinated} by the mirror",
 					"entries": [

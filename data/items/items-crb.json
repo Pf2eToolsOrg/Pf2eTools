@@ -26,7 +26,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This flask filled with corrosive acid deals 1 acid damage, the listed {@condition persistent damage||persistent acid damage}, and the listed acid splash damage. Many types grant an item bonus to attack rolls."
+				"This flask filled with corrosive acid deals 1 acid damage, the listed {@condition persistent damage||persistent acid damage}, and the listed acid {@trait splash} damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -39,12 +39,12 @@
 						"amount": 3
 					},
 					"entries": [
-						"It deals {@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid splash damage."
+						"It deals {@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "{@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid splash damage."
+							"with": "{@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid {@trait splash} damage."
 						}
 					}
 				},
@@ -56,12 +56,12 @@
 						"amount": 10
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "{@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid splash damage. You gain a +1 item bonus to attack rolls."
+							"with": "{@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid {@trait splash} damage. You gain a +1 item bonus to attack rolls."
 						}
 					}
 				},
@@ -73,12 +73,12 @@
 						"amount": 250
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "{@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid splash damage. You gain a +2 item bonus to attack rolls."
+							"with": "{@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid {@trait splash} damage. You gain a +2 item bonus to attack rolls."
 						}
 					}
 				},
@@ -90,12 +90,12 @@
 						"amount": 2500
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "{@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid splash damage. You gain a +3 item bonus to attack rolls."
+							"with": "{@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid {@trait splash} damage. You gain a +3 item bonus to attack rolls."
 						}
 					}
 				}
@@ -103,7 +103,7 @@
 			"_vmod": {
 				"entries": {
 					"mode": "replaceTxt",
-					"replace": "the listed {@condition persistent damage\\|\\|persistent acid damage}, and the listed acid splash damage\\. Many types grant an item bonus to attack rolls\\."
+					"replace": "the listed {@condition persistent damage\\|\\|persistent acid damage}, and the listed acid {@trait splash} damage\\. Many types grant an item bonus to attack rolls\\."
 				},
 				"entriesMode": "generic"
 			}
@@ -653,7 +653,7 @@
 					"entries": [
 						"The first time each day you die, your vital and spiritual essences mingle together and reside within this aeon stone.",
 						"You have a limited sense of how many life forces are currently within 30 feet of the stone, which you can potentially use to determine when it's safe to call on the stone's power. At any time within the next hour after your body died, you can spend 1 minute concentrating in order to return to your body.",
-						"As long as your body is still intact, you are no longer dead\u2014 you are restored to 1 HP with the {@condition doomed 3} and {@condition wounded 3} conditions. You can benefit from the effects of only one pale orange rhomboid aeon stone in a given day.",
+						"As long as your body is still intact, you are no longer dead\u2014you are restored to 1 HP with the {@condition doomed 3} and {@condition wounded 3} conditions. You can benefit from the effects of only one pale orange rhomboid aeon stone in a given day.",
 						"The resonant power allows you to wait more than an hour to return to your body with the aeon stone; as long as the wayfinder remains on the body, your body doesn't decay and you can return at any point."
 					]
 				},
@@ -844,7 +844,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air. Alchemist's fire deals the listed fire damage, {@condition persistent damage||persistent fire damage}, and splash damage. Many types grant an item bonus to attack rolls."
+				"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air. Alchemist's fire deals the listed fire damage, {@condition persistent damage||persistent fire damage}, and {@trait splash} damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -857,7 +857,7 @@
 						"amount": 3
 					},
 					"entries": [
-						"The bomb deals {@damage 1d8} fire damage, 1 {@condition persistent damage||persistent fire damage}, and 1 fire splash damage."
+						"The bomb deals {@damage 1d8} fire damage, 1 {@condition persistent damage||persistent fire damage}, and 1 fire {@trait splash} damage."
 					]
 				},
 				{
@@ -868,7 +868,7 @@
 						"amount": 10
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage, 2 {@condition persistent damage||persistent fire damage}, and 2 fire splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage, 2 {@condition persistent damage||persistent fire damage}, and 2 fire {@trait splash} damage."
 					]
 				},
 				{
@@ -879,7 +879,7 @@
 						"amount": 250
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage, 3 {@condition persistent damage||persistent fire damage}, and 3 fire splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage, 3 {@condition persistent damage||persistent fire damage}, and 3 fire {@trait splash} damage."
 					]
 				},
 				{
@@ -890,7 +890,7 @@
 						"amount": 2500
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage, 4 {@condition persistent damage||persistent fire damage}, and 4 fire splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage, 4 {@condition persistent damage||persistent fire damage}, and 4 fire {@trait splash} damage."
 					]
 				}
 			],
@@ -2769,7 +2769,7 @@
 			},
 			"category": "Snare",
 			"entries": [
-				"You create a snare that catalyzes three 3rd-level moderate alchemical bombs of the same type to explode when a creature enters the snare's square. The target and all creatures in adjacent squares must attempt a DC 26 Reflex save, as the snare deals damage equal to three times the direct hit damage from one of the component bombs (for example, {@damage 6d6} electricity damage from bottled lightning) with no splash damage or other effects.",
+				"You create a snare that catalyzes three 3rd-level moderate alchemical bombs of the same type to explode when a creature enters the snare's square. The target and all creatures in adjacent squares must attempt a DC 26 Reflex save, as the snare deals damage equal to three times the direct hit damage from one of the component bombs (for example, {@damage 6d6} electricity damage from bottled lightning) with no {@trait splash} damage or other effects.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -3055,7 +3055,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Bottled lightning is packed with volatile reagents that create a blast of electricity when they are exposed to air. Bottled lightning deals the listed electricity damage and electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. Many types grant an item bonus to attack rolls."
+				"Bottled lightning is packed with volatile reagents that create a blast of electricity when they are exposed to air. Bottled lightning deals the listed electricity damage and electricity {@trait splash} damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -3068,12 +3068,12 @@
 						"amount": 3
 					},
 					"entries": [
-						"It deals {@damage 1d6} electricity damage and 1 electricity splash damage."
+						"It deals {@damage 1d6} electricity damage and 1 electricity {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "The bomb deals {@damage 1d6} electricity damage and 1 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn."
+							"with": "The bomb deals {@damage 1d6} electricity damage and 1 electricity {@trait splash} damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn."
 						}
 					}
 				},
@@ -3085,12 +3085,12 @@
 						"amount": 10
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} electricity damage and 2 electricity splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} electricity damage and 2 electricity {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "The bomb deals {@damage 2d6} electricity damage and 2 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +1 item bonus to attack rolls."
+							"with": "The bomb deals {@damage 2d6} electricity damage and 2 electricity {@trait splash} damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +1 item bonus to attack rolls."
 						}
 					}
 				},
@@ -3102,12 +3102,12 @@
 						"amount": 250
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} electricity damage and 3 electricity splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} electricity damage and 3 electricity {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "The bomb deals {@damage 3d6} electricity damage and 3 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +2 item bonus to attack rolls."
+							"with": "The bomb deals {@damage 3d6} electricity damage and 3 electricity {@trait splash} damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +2 item bonus to attack rolls."
 						}
 					}
 				},
@@ -3119,12 +3119,12 @@
 						"amount": 2500
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} electricity damage and 4 electricity splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} electricity damage and 4 electricity {@trait splash} damage."
 					],
 					"_mod": {
 						"entries": {
 							"replaceTags": true,
-							"with": "The bomb deals {@damage 4d6} electricity damage and 4 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +3 item bonus to attack rolls."
+							"with": "The bomb deals {@damage 4d6} electricity damage and 4 electricity {@trait splash} damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +3 item bonus to attack rolls."
 						}
 					}
 				}
@@ -3133,7 +3133,7 @@
 				"entriesMode": "generic",
 				"entries": {
 					"mode": "replaceTxt",
-					"replace": "Bottled lightning deals the listed electricity damage and electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. Many types grant an item bonus to attack rolls."
+					"replace": "Bottled lightning deals the listed electricity damage and electricity {@trait splash} damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. Many types grant an item bonus to attack rolls."
 				}
 			}
 		},
@@ -3664,7 +3664,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"These four-pronged metal spikes can damage a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 {@skill Acrobatics} check or take 1d4 piercing damage and 1 persistent bleed damage. A creature taking persistent bleed damage from caltrops takes a \u20135-foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough are ruined that other creatures moving into the square are safe. Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough are ruined that they can't be salvaged."
+				"These four-pronged metal spikes can damage a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 {@skill Acrobatics} check or take 1d4 piercing damage and 1 {@condition persistent damage||persistent bleed damage}. A creature taking {@condition persistent damage||persistent bleed damage} from caltrops takes a \u20135-foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough are ruined that other creatures moving into the square are safe. Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough are ruined that they can't be salvaged."
 			]
 		},
 		{
@@ -6649,7 +6649,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Recall Knowledge"
+						"{@action Recall Knowledge}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -8331,7 +8331,10 @@
 						"unit": "free"
 					},
 					"components": [
-						"envision (fortune)"
+						"envision"
+					],
+					"traits": [
+						"fortune"
 					],
 					"trigger": "You attack a {@condition concealed} or {@condition hidden} creature and haven't attempted the flat check yet",
 					"entries": [
@@ -9005,7 +9008,10 @@
 						"unit": "free"
 					},
 					"components": [
-						"command (fire)"
+						"command"
+					],
+					"traits": [
+						"fire"
 					],
 					"trigger": "You use the forge warden to {@feat Shield Block} an adjacent creature's attack and the shield takes damage",
 					"entries": [
@@ -9180,7 +9186,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"The liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
+				"The liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold {@trait splash} damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -9194,11 +9200,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A lesser frost vial deals {@damage 1d6} cold damage and 1 cold splash damage. On a hit, the target takes a \u20135-foot status penalty to its Speeds until the end of its next turn."
+							"with": "A lesser frost vial deals {@damage 1d6} cold damage and 1 cold {@trait splash} damage. On a hit, the target takes a \u20135-foot status penalty to its Speeds until the end of its next turn."
 						}
 					},
 					"entries": [
-						"The bomb deals {@damage 1d6} cold damage and 1 cold splash damage, and the target takes a \u20135-foot penalty."
+						"The bomb deals {@damage 1d6} cold damage and 1 cold {@trait splash} damage, and the target takes a \u20135-foot penalty."
 					]
 				},
 				{
@@ -9210,11 +9216,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A moderate frost vial deals {@damage 2d6} cold damage and 2 cold splash damage. On a hit, the target takes a \u201310-foot status penalty to its Speeds until the end of its next turn. You gain a +1 item bonus to attack rolls."
+							"with": "A moderate frost vial deals {@damage 2d6} cold damage and 2 cold {@trait splash} damage. On a hit, the target takes a \u201310-foot status penalty to its Speeds until the end of its next turn. You gain a +1 item bonus to attack rolls."
 						}
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls, the bomb deals {@damage 2d6} cold damage and 2 cold splash damage, and the target takes a \u201310-foot penalty."
+						"You gain a +1 item bonus to attack rolls, the bomb deals {@damage 2d6} cold damage and 2 cold {@trait splash} damage, and the target takes a \u201310-foot penalty."
 					]
 				},
 				{
@@ -9226,11 +9232,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A greater frost vial deals {@damage 3d6} cold damage and 3 cold splash damage. On a hit, the target takes a \u201310-foot status penalty to its Speeds until the end of its next turn. You gain a +2 item bonus to attack rolls."
+							"with": "A greater frost vial deals {@damage 3d6} cold damage and 3 cold {@trait splash} damage. On a hit, the target takes a \u201310-foot status penalty to its Speeds until the end of its next turn. You gain a +2 item bonus to attack rolls."
 						}
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls, the bomb deals {@damage 3d6} cold damage and 3 cold splash damage, and the target takes a \u201310-foot penalty."
+						"You gain a +2 item bonus to attack rolls, the bomb deals {@damage 3d6} cold damage and 3 cold {@trait splash} damage, and the target takes a \u201310-foot penalty."
 					]
 				},
 				{
@@ -9242,11 +9248,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A major frost vial deals {@damage 4d6} cold damage and 4 cold splash damage. On a hit, the target takes a \u201315-foot status penalty to its Speeds until the end of its next turn. You gain a +3 item bonus to attack rolls."
+							"with": "A major frost vial deals {@damage 4d6} cold damage and 4 cold {@trait splash} damage. On a hit, the target takes a \u201315-foot status penalty to its Speeds until the end of its next turn. You gain a +3 item bonus to attack rolls."
 						}
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls, the bomb deals {@damage 4d6} cold damage and 4 cold splash damage, and the target takes a \u201315-foot penalty."
+						"You gain a +3 item bonus to attack rolls, the bomb deals {@damage 4d6} cold damage and 4 cold {@trait splash} damage, and the target takes a \u201315-foot penalty."
 					]
 				}
 			],
@@ -9254,7 +9260,7 @@
 				"entriesMode": "generic",
 				"entries": {
 					"mode": "replaceTxt",
-					"replace": "A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
+					"replace": "A frost vial deals the listed cold damage and cold {@trait splash} damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
 				}
 			}
 		},
@@ -10082,7 +10088,7 @@
 			"category": "Worn",
 			"entries": [
 				"As you invest these embroidered strips of cloth, you must meditate and slowly wrap them around your hands. These handwraps have weapon runes etched into them to give your unarmed attacks the benefits of those runes, making your unarmed attacks work like magic weapons. For example, +1 striking handwraps of mighty blows would give you a +1 item bonus to attack rolls with your unarmed attacks and increase the damage of your unarmed attacks from one weapon die to two (normally {@dice 2d4} instead of {@dice 1d4}, but if your fists have a different weapon damage die or you have other unarmed attacks, use two of that die size instead)",
-				"You can upgrade, add, and transfer runes to and from the handwraps just as you would for a weapon, and you can attach talismans to the handwraps. Treat the handwraps as melee weapons of the brawling group with light Bulk for these purposes. Property runes apply only when they would be applicable to the unarmed attack you're using. For example, a property that must be applied to a slashing weapon wouldn't function when you attacked with a fist, but you would gain its benefits if you attacked with a claw or some other slashing unarmed attack.",
+				"You can upgrade, add, and transfer runes to and from the handwraps just as you would for a weapon, and you can attach talismans to the handwraps. Treat the handwraps as melee weapons of the {@group brawling} group with light Bulk for these purposes. Property runes apply only when they would be applicable to the unarmed attack you're using. For example, a property that must be applied to a slashing weapon wouldn't function when you attacked with a fist, but you would gain its benefits if you attacked with a claw or some other slashing unarmed attack.",
 				"The entries below list the most typical combinations of fundamental runes."
 			],
 			"generic": "G",
@@ -10292,7 +10298,10 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"envision (fortune)"
+						"envision"
+					],
+					"traits": [
+						"fortune"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -10835,7 +10844,7 @@
 			"category": "Consumable",
 			"entries": [
 				"This vial contains water blessed by a good deity. You activate a vial of holy water by throwing it as a {@action Strike}. It's a simple thrown weapon with a range increment of 20 feet. Unlike an alchemical bomb, it doesn't add the {@trait manipulate} trait to the attack made with it.",
-				"Holy water deals {@damage 1d6} good damage and 1 good splash damage. It damages only fiends, undead, and creatures that have a weakness to good damage."
+				"Holy water deals {@damage 1d6} good damage and 1 good {@trait splash} damage. It damages only fiends, undead, and creatures that have a weakness to good damage."
 			]
 		},
 		{
@@ -11471,7 +11480,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Brutal Finish"
+					"{@feat Brutal Finish}"
 				]
 			},
 			"category": "Talisman",
@@ -12174,7 +12183,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Raise a Shield"
+						"{@action Raise a Shield}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -12726,7 +12735,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Treat Poison or 8 hours (Treat Disease)"
+						"{@action Treat Poison} or 8 hours ({@action Treat Disease})"
 					],
 					"entries": [
 						"You can activate the tools when you use them to {@action Treat Poison} in order to produce the effects of neutralize poison, or when you {@action Treat Disease} in order to produce the effects of remove disease. Once these medicines have been used to treat a patient's poison or disease, they can't be used again to treat the same affliction for that patient."
@@ -13554,7 +13563,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Climb"
+					"{@action Climb}"
 				],
 				"requirements": "You are trained in {@skill Athletics}"
 			},
@@ -21697,7 +21706,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"When this stone hits a creature or a hard surface, it explodes with a deafening bang. A thunderstone deals the listed sonic damage and sonic splash damage, and each creature within 10 feet of the space in which the stone exploded must succeed at a Fortitude saving throw with the listed DC or be {@condition deafened} until the end of its next turn. Many types of thunderstone grant an item bonus to attack rolls."
+				"When this stone hits a creature or a hard surface, it explodes with a deafening bang. A thunderstone deals the listed sonic damage and sonic {@trait splash} damage, and each creature within 10 feet of the space in which the stone exploded must succeed at a Fortitude saving throw with the listed DC or be {@condition deafened} until the end of its next turn. Many types of thunderstone grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -21709,15 +21718,15 @@
 						"amount": 3
 					},
 					"entries": [
-						"The bomb deals {@damage 1d4} sonic damage and 1 sonic splash damage, and the DC is 17."
+						"The bomb deals {@damage 1d4} sonic damage and 1 sonic {@trait splash} damage, and the DC is 17."
 					],
 					"equipment": true,
 					"_mod": {
 						"entries": [
 							{
 								"mode": "replaceTxt",
-								"replace": "the listed sonic damage and sonic splash damage",
-								"with": "{@damage 1d4} sonic damage and 1 sonic splash damage"
+								"replace": "the listed sonic damage and sonic {@trait splash} damage",
+								"with": "{@damage 1d4} sonic damage and 1 sonic {@trait splash} damage"
 							},
 							{
 								"mode": "replaceTxt",
@@ -21741,14 +21750,14 @@
 						"amount": 10
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} sonic damage and 2 sonic splash damage, and the DC is 20."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} sonic damage and 2 sonic {@trait splash} damage, and the DC is 20."
 					],
 					"_mod": {
 						"entries": [
 							{
 								"mode": "replaceTxt",
-								"replace": "the listed sonic damage and sonic splash damage",
-								"with": "{@damage 2d4} sonic damage and 2 sonic splash damage"
+								"replace": "the listed sonic damage and sonic {@trait splash} damage",
+								"with": "{@damage 2d4} sonic damage and 2 sonic {@trait splash} damage"
 							},
 							{
 								"mode": "replaceTxt",
@@ -21772,14 +21781,14 @@
 						"amount": 250
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} sonic damage and 3 sonic splash damage, and the DC is 28."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} sonic damage and 3 sonic {@trait splash} damage, and the DC is 28."
 					],
 					"_mod": {
 						"entries": [
 							{
 								"mode": "replaceTxt",
-								"replace": "the listed sonic damage and sonic splash damage",
-								"with": "{@damage 3d4} sonic damage and 3 sonic splash damage"
+								"replace": "the listed sonic damage and sonic {@trait splash} damage",
+								"with": "{@damage 3d4} sonic damage and 3 sonic {@trait splash} damage"
 							},
 							{
 								"mode": "replaceTxt",
@@ -21803,14 +21812,14 @@
 						"amount": 2500
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} sonic damage and 4 sonic splash damage, and the DC is 36."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} sonic damage and 4 sonic {@trait splash} damage, and the DC is 36."
 					],
 					"_mod": {
 						"entries": [
 							{
 								"mode": "replaceTxt",
-								"replace": "the listed sonic damage and sonic splash damage",
-								"with": "{@damage 4d4} sonic damage and 4 sonic splash damage"
+								"replace": "the listed sonic damage and sonic {@trait splash} damage",
+								"with": "{@damage 4d4} sonic damage and 4 sonic {@trait splash} damage"
 							},
 							{
 								"mode": "replaceTxt",
@@ -22147,7 +22156,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (auditory)"
+						"{@action Interact}"
+					],
+					"traits": [
+						"auditory"
 					],
 					"entries": [
 						"You can raise the conch to your lips and blow into it, letting out a long, rumbling note. For the next minute, you and all allies who were within 30 feet of you when you activated the conch gain a +2 item bonus to {@skill Athletics} checks to {@action Swim} and can breathe under water."
@@ -22345,7 +22357,7 @@
 			"category": "Consumable",
 			"entries": [
 				"An evil deity's malice lies within this vial of water. You activate a vial of unholy water by throwing it as a {@action Strike}. It's a simple thrown weapon with a range increment of 20 feet. Unlike an alchemical bomb, it doesn't add the {@trait manipulate} trait to the attack made with it.",
-				"Unholy water deals {@damage 1d6} evil damage and 1 evil splash damage.",
+				"Unholy water deals {@damage 1d6} evil damage and 1 evil {@trait splash} damage.",
 				"It damages only celestials and creatures that have a weakness to evil damage."
 			]
 		},
@@ -22677,8 +22689,11 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"envision (death",
-						"incapacitation)"
+						"envision"
+					],
+					"traits": [
+						"death",
+						"incapacitation"
 					],
 					"trigger": "You roll a natural 20 on a {@action Strike} with the weapon, critically succeed, and deal slashing damage.",
 					"entries": [

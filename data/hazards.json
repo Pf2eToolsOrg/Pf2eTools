@@ -1262,7 +1262,7 @@
 									"The creature is unaffected and wakes up."
 								],
 								"Success": [
-									"The creature remains {@condition unconscious} and takes {@damage 1d10} cold damage and {@damage 1d10} mental damage. This damage does not wake the creature, and those who are awake can see the {@condition unconscious} creature thrash as if in the throes of a nightmare while their body rimes over with layers of frost. The creature can fight against the bitter cold and monstrous shapes by attempting a DC 28 Will save as a three-action activity on its turn\u2014 on a success, the creature wakes up."
+									"The creature remains {@condition unconscious} and takes {@damage 1d10} cold damage and {@damage 1d10} mental damage. This damage does not wake the creature, and those who are awake can see the {@condition unconscious} creature thrash as if in the throes of a nightmare while their body rimes over with layers of frost. The creature can fight against the bitter cold and monstrous shapes by attempting a DC 28 Will save as a three-action activity on its turn\u2014on a success, the creature wakes up."
 								],
 								"Failure": [
 									"As success, but {@damage 1d10+6} cold and {@damage 1d10+6} mental damage, and with a DC 32 Will save to wake up."
@@ -1276,7 +1276,7 @@
 				}
 			],
 			"routine": [
-				"(2 actions; cold, enchantment, mental, occult) The haunt uses its first action to light incense burners again, forcing any creature that isn't already {@condition unconscious} to save against that effect once more. Its second action is to cause any {@condition unconscious} creatures in the room to experience horrific, vivid dreams about being lost in the arctic during a blizzard, while enormous furred figures\u2014 saumen kar\u2014lunge at them through the snow to attack repeatedly. Each {@condition unconscious} creature must attempt a"
+				"(2 actions; cold, enchantment, mental, occult) The haunt uses its first action to light incense burners again, forcing any creature that isn't already {@condition unconscious} to save against that effect once more. Its second action is to cause any {@condition unconscious} creatures in the room to experience horrific, vivid dreams about being lost in the arctic during a blizzard, while enormous furred figures\u2014saumen kar\u2014lunge at them through the snow to attack repeatedly. Each {@condition unconscious} creature must attempt a"
 			],
 			"reset": [
 				"The hazard resets when Etward dreams in this room."
@@ -2006,7 +2006,7 @@
 									"The creature takes full damage."
 								],
 								"Critical Failure": [
-									"The creature takes full damage and can't shake off the vision; they take {@damage 1d8} {@condition persistent damage ||persistent bleed damage} and are {@condition frightened||frightened 1}\u2014believing they're being eaten alive\u2014as long as the bleed damage persists."
+									"The creature takes full damage and can't shake off the vision; they take {@damage 1d8} {@condition persistent damage||persistent bleed damage} and are {@condition frightened||frightened 1}\u2014believing they're being eaten alive\u2014as long as the bleed damage persists."
 								]
 							}
 						}
@@ -2167,7 +2167,7 @@
 					},
 					"trigger": "A creature moves within 5 feet of the flue",
 					"entries": [
-						"A fiery geyser of flaming gas explodes from the ground. Creatures within 5 feet of the flue take {@damage 4d10} fire damage (DC 30 basic Reflex save); creatures that fail the save also take {@damage 4d10} {@condition persistent damage ||persistent fire damage}."
+						"A fiery geyser of flaming gas explodes from the ground. Creatures within 5 feet of the flue take {@damage 4d10} fire damage (DC 30 basic Reflex save); creatures that fail the save also take {@damage 4d10} {@condition persistent damage||persistent fire damage}."
 					]
 				}
 			]
@@ -4055,7 +4055,7 @@
 					],
 					"trigger": "The front gate is opened",
 					"entries": [
-						"A moderate thunderstone falls on the flagstones and activates, dealing 2 sonic splash damage to each creature within 10 feet of the gate. Creatures in the area must succeed at a DC 17 Fortitude saving throw or be {@condition deafened} for 1 round. Adjacent creatures can attempt to catch the falling thunderstone (see Disable, above)."
+						"A moderate thunderstone falls on the flagstones and activates, dealing 2 sonic {@trait splash} damage to each creature within 10 feet of the gate. Creatures in the area must succeed at a DC 17 Fortitude saving throw or be {@condition deafened} for 1 round. Adjacent creatures can attempt to catch the falling thunderstone (see Disable, above)."
 					]
 				}
 			]
@@ -4624,7 +4624,7 @@
 					},
 					"trigger": "A creature steps on the bottle or the bottle becomes {@condition broken}",
 					"entries": [
-						"The bottle explodes, dealing {@damage 2d8} fire damage plus 2 {@condition persistent damage||persistent fire damage} and 2 fire splash damage to each creature sharing its square (DC 18 basic Reflex save)."
+						"The bottle explodes, dealing {@damage 2d8} fire damage plus 2 {@condition persistent damage||persistent fire damage} and 2 fire {@trait splash} damage to each creature sharing its square (DC 18 basic Reflex save)."
 					]
 				}
 			]
@@ -6540,7 +6540,7 @@
 					},
 					"trigger": "The trip wire is pulled or severed",
 					"entries": [
-						"An acid flask detonates, spraying acid at nearby creatures and causing the tub of boiling water to burst in the same direction. All creatures in a 5-foot cone east of the triggered boiling tub trap take {@damage 3d6} {@condition persistent damage||persistent acid damage}, 3 acid splash damage, and {@damage 8d6+20} fire damage (DC 31 basic Reflex save)."
+						"An acid flask detonates, spraying acid at nearby creatures and causing the tub of boiling water to burst in the same direction. All creatures in a 5-foot cone east of the triggered boiling tub trap take {@damage 3d6} {@condition persistent damage||persistent acid damage}, 3 acid {@trait splash} damage, and {@damage 8d6+20} fire damage (DC 31 basic Reflex save)."
 					],
 					"name": "Overflowing Boiling Water"
 				}

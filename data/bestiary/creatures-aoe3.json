@@ -1052,7 +1052,7 @@
 						"bomb",
 						"range increment <30 feet>"
 					],
-					"damage": "{@damage 2d6} cold or electricity plus 2 splash",
+					"damage": "{@damage 2d6} cold or electricity plus 2 {@trait splash}",
 					"types": [
 						"cold",
 						"electricity",
@@ -2821,7 +2821,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d6} {@condition persistent damage||persistent acid} plus 2 acid splash",
+					"damage": "{@damage 2d6} {@condition persistent damage||persistent acid} plus 2 acid {@trait splash}",
 					"types": [
 						"acid",
 						"persistent"
@@ -2839,7 +2839,7 @@
 						"range increment <20 feet>",
 						"splash"
 					],
-					"damage": "{@damage 2d8} fire plus 2 {@condition persistent damage||persistent fire} and 2 fire splash",
+					"damage": "{@damage 2d8} fire plus 2 {@condition persistent damage||persistent fire} and 2 fire {@trait splash}",
 					"types": [
 						"fire",
 						"persistent"

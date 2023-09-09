@@ -3307,7 +3307,7 @@
 			],
 			"prerequisites": "divine ally (shield), tenets of evil",
 			"entries": [
-				"Your shield ally is more than just a spirit of protection\u2014 it's a conduit for deadly divine magic. When you use your shield ally to {@feat Shield Block} a melee unarmed attack or a melee weapon {@action Strike} from an adjacent creature, the attacker takes {@damage 1d6} evil or negative damage (your choice). If the attack or {@action Strike} breaks or destroys your shield, double this additional damage.",
+				"Your shield ally is more than just a spirit of protection\u2014it's a conduit for deadly divine magic. When you use your shield ally to {@feat Shield Block} a melee unarmed attack or a melee weapon {@action Strike} from an adjacent creature, the attacker takes {@damage 1d6} evil or negative damage (your choice). If the attack or {@action Strike} breaks or destroys your shield, double this additional damage.",
 				"The damage the attacker takes increases to {@dice 2d6} at 11th level and {@dice 3d6} at 16th level."
 			]
 		},
@@ -3855,7 +3855,7 @@
 					},
 					"trigger": "A creature moves into the hazard's space",
 					"entries": [
-						"The hazard explodes, dealing the bombs' damage and splash damage to the inanimate object. Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' splash damage, similarly combined for the purpose of resistances and weaknesses.",
+						"The hazard explodes, dealing the bombs' damage and {@trait splash} damage to the inanimate object. Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' {@trait splash} damage, similarly combined for the purpose of resistances and weaknesses.",
 						"As a reminder, since you didn't throw the bombs, Calculated Splash and similar effects don't apply."
 					]
 				}
@@ -6757,7 +6757,7 @@
 				"archetype",
 				"vigilante"
 			],
-			"prerequisites": "expert in {@skill Intimidation}, {@feat Startling Appearance|LOAG}",
+			"prerequisites": "expert in {@skill Intimidation}, {@feat Startling Appearance|APG}",
 			"entries": [
 				"Your dramatic appearances can frighten bystanders. When you make a Startling Appearance, you can also attempt to {@action Demoralize} each opponent within 10 feet to whom you were {@condition unnoticed} before your {@action Strike}."
 			]
@@ -12914,7 +12914,7 @@
 			"prerequisites": "{@feat Viking Dedication|APG}",
 			"trigger": "Your {@feat Shield Block} causes your shield to break or be destroyed.",
 			"entries": [
-				"You're used to your shield breaking in the middle of battle, and you're prepared to use a backup or any convenient nearby object to defend yourself. You can {@action Interact} to draw a shield on your person or an unattended shield within your reach. If there is an object within your reach that could serve as an improvised shield\u2014for example, a table or chair\u2014 you can {@action Interact} to draw it with this feat. The GM determines if something can be used as an improvised shield. Your new shield isn't raised until you use the {@action Raise a Shield} action, as normal."
+				"You're used to your shield breaking in the middle of battle, and you're prepared to use a backup or any convenient nearby object to defend yourself. You can {@action Interact} to draw a shield on your person or an unattended shield within your reach. If there is an object within your reach that could serve as an improvised shield\u2014for example, a table or chair\u2014you can {@action Interact} to draw it with this feat. The GM determines if something can be used as an improvised shield. Your new shield isn't raised until you use the {@action Raise a Shield} action, as normal."
 			]
 		},
 		{
@@ -14229,6 +14229,10 @@
 			"entries": [
 				"You can startle foes who are unaware of your presence.",
 				"Make a {@action Strike} against your target. That creature is {@condition flat-footed} against this {@action Strike}, as normal. If your {@action Strike} hits, the target remains {@condition flat-footed} for the rest of your turn and is {@condition frightened 1} ({@condition frightened 2} on a critical hit)."
+			],
+			"leadsTo": [
+				"Frightening Appearance|APG",
+				"Stunning Appearance|APG"
 			]
 		},
 		{
@@ -14558,7 +14562,7 @@
 				"archetype",
 				"vigilante"
 			],
-			"prerequisites": "{@feat Startling Appearance|LOAG}",
+			"prerequisites": "{@feat Startling Appearance|APG}",
 			"entries": [
 				"Your sudden appearance leaves your foe unable to respond.",
 				"When you use Startling Appearance, if your foe's level is equal to or lower than yours, they are also {@condition stunned 1} on a hit, or {@condition stunned 2} on a critical hit."
@@ -15044,7 +15048,7 @@
 				"investigator"
 			],
 			"entries": [
-				"You've mastered combat practices that let you get up close and bring down perpetrators alive. You can use your Intelligence modifier on attack rolls when you {@action Devise a Stratagem|APG} if you're using a weapon of the club group in one hand (like a club, staff, or sap), in addition to the usual weapons, and those {@action Strike|CRB|Strikes} qualify for your strategic strike. Additionally, you can make any of your {@action Strike|CRB|Strikes} nonlethal without taking the normal \u20132 penalty."
+				"You've mastered combat practices that let you get up close and bring down perpetrators alive. You can use your Intelligence modifier on attack rolls when you {@action Devise a Stratagem|APG} if you're using a weapon of the {@group club} group in one hand (like a club, staff, or sap), in addition to the usual weapons, and those {@action Strike|CRB|Strikes} qualify for your strategic strike. Additionally, you can make any of your {@action Strike|CRB|Strikes} nonlethal without taking the normal \u20132 penalty."
 			]
 		},
 		{
@@ -15234,7 +15238,7 @@
 				"tengu"
 			],
 			"entries": [
-				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the sword group. You can choose from among all {@filter common martial swords|items||rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
+				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the {@group sword} group. You can choose from among all {@filter common martial swords|items||rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
 				"You also gain access to all {@filter uncommon tengu weapons|items||Category=Weapon|rarity=uncommon|ancestry & heritage=tengu}. For the purpose of determining your proficiency, martial tengu weapons are simple weapons, and advanced tengu weapons are martial weapons."
 			],
 			"leadsTo": [
@@ -16147,6 +16151,8 @@
 				"Safe House|APG",
 				"Social Purview|APG",
 				"Startling Appearance|APG",
+				"Frightening Appearance|APG",
+				"Stunning Appearance|APG",
 				"Subjective Truth|APG",
 				"Executioner Weapon Training|NGD",
 				"Harsh Judgment|NGD",

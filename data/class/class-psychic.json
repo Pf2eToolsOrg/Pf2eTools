@@ -380,7 +380,7 @@
 					"page": 10,
 					"name": "Cantrips",
 					"entries": [
-						"Some of your spells are cantrips. A cantrip is a special type of spell that doesn't use spell slots. You can cast a cantrip at will, any number of times per day. A cantrip is automatically heightened to half your level rounded up\u2014 this is usually equal to the highest level of psychic spell slot you have. For example, as a 1st-level psychic, your cantrips are 1st-level spells, and as a 5th-level psychic, your cantrips are 3rd-level spells.",
+						"Some of your spells are cantrips. A cantrip is a special type of spell that doesn't use spell slots. You can cast a cantrip at will, any number of times per day. A cantrip is automatically heightened to half your level rounded up\u2014this is usually equal to the highest level of psychic spell slot you have. For example, as a 1st-level psychic, your cantrips are 1st-level spells, and as a 5th-level psychic, your cantrips are 3rd-level spells.",
 						"As a psychic, you get the ability to improve some of your cantrips with special benefits and psi amps. Over the course of your career, your choice of conscious mind class feature gives you extra cantrips, benefits and psi amps for cantrips, and a collection of unique psi cantrips."
 					]
 				},
@@ -721,7 +721,7 @@
 			"entries": [
 				"The magic of your mind manifests as psi cantrips, which you can modify by spending Focus Points. Like other cantrips, you can cast psi cantrips as often as you like, and they are automatically heightened to half your level rounded up. Your psi cantrips are in addition to the cantrips you choose from the occult list as part of your psychic spellcasting. Generally, only feats can give you more psi cantrips. Unlike other cantrips, you can't swap out psi cantrips gained from psychic feats at a later level, unless you swap out the specific feat via retraining. ",
 				"At 1st level, you learn three psi cantrips determined by your choice of conscious mind; one is a unique psi cantrip and two are common cantrips, typically from the occult spellcasting tradition, that you always cast as psi cantrips. You automatically gain more psi cantrips as you progress in your career as a psychic.",
-				"You start with a focus pool of 2 Focus Points. However, unlike other spellcasters, you don't gain focus spells that cost Focus Points to cast. Instead, you use your Focus Points to boost or modify your psi cantrips by applying amps\u2014 specialized thoughtforms that alter the expression of your psychic power. Each of your psi cantrips has a special amp heading. Whenever you cast a psi cantrip, you can amp it by spending 1 Focus Point to add the amp effect. You can also gain additional amps through feats, allowing you to substitute a psi cantrip's normal amp effect for another one. You choose which amp to use, if you choose to use any, each time you cast a psi cantrip. Unless otherwise noted, you can apply only one amp to a given psi cantrip.",
+				"You start with a focus pool of 2 Focus Points. However, unlike other spellcasters, you don't gain focus spells that cost Focus Points to cast. Instead, you use your Focus Points to boost or modify your psi cantrips by applying amps\u2014specialized thoughtforms that alter the expression of your psychic power. Each of your psi cantrips has a special amp heading. Whenever you cast a psi cantrip, you can amp it by spending 1 Focus Point to add the amp effect. You can also gain additional amps through feats, allowing you to substitute a psi cantrip's normal amp effect for another one. You choose which amp to use, if you choose to use any, each time you cast a psi cantrip. Unless otherwise noted, you can apply only one amp to a given psi cantrip.",
 				"You refill your focus pool during your daily preparations, and you can regain Focus Points by spending 10 minutes using the Refocus activity to explore your mind, whether via meditation, practicing a craft or activity that gives you the mental space to self-reflect, or talking through your thoughts and feelings with yourself or another. If you've spent Focus Points only to amp psi cantrips or fuel psychic abilities since the last time you Refocused, you regain 2 Focus Points when you Refocus, up to your maximum of 2. If you've spent Focus Points on focus spells or abilities other than those from the psychic class (for instance, to cast a focus spell you gained from an archetype), you regain only 1 Focus Point."
 			]
 		},
@@ -1506,7 +1506,7 @@
 					"source": "DA",
 					"page": 19,
 					"entries": [
-						"At the heart of all things is energy. Though it may change its form or resting place, it is eternal, fundamental, the purest of building blocks. Your powers let you shift energy\u2014either concentrating it in a single point to explosive end or freezing objects by plundering it away\u2014 in an endless oscillation of temperature.",
+						"At the heart of all things is energy. Though it may change its form or resting place, it is eternal, fundamental, the purest of building blocks. Your powers let you shift energy\u2014either concentrating it in a single point to explosive end or freezing objects by plundering it away\u2014in an endless oscillation of temperature.",
 						{
 							"type": "pf2-options",
 							"items": [
@@ -1569,20 +1569,20 @@
 							"source": "DA",
 							"page": 20,
 							"entries": [
-								"You can drastically increase the heat against adjacent targets. When using produce flame as a melee attack, increase the damage dice of the initial damage (but not the persistent damage) from d4s to d6s. Your produce flame also gains the following amp.",
+								"You can drastically increase the heat against adjacent targets. When using produce flame as a melee attack, increase the damage dice of the initial damage (but not the {@condition persistent damage}) from {@dice d4|d4s} to {@dice d6|d6s}. Your {@spell produce flame} also gains the following amp.",
 								{
 									"type": "pf2-options",
 									"items": [
 										{
 											"name": "Amp",
 											"entries": [
-												"You project pure heat that causes a target to combust. The initial damage changes to 1d10 fire damage (not adding your ability modifier) plus 1 fire splash damage. When using amped produce flame as a melee attack, increase the damage dice of the initial damage from d10s to d12s. You are not harmed by splash damage from amped produce flame."
+												"You project pure heat that causes a target to combust. The initial damage changes to {@damage 1d10} fire damage (not adding your ability modifier) plus 1 fire {@trait splash} damage. When using amped produce flame as a melee attack, increase the damage dice of the initial damage from {@dice d10|d10s} to {@dice d12|d12s}. You are not harmed by {@trait splash} damage from amped produce flame."
 											]
 										},
 										{
 											"name": "Amp Heightened (+1)",
 											"entries": [
-												"Instead of using produce flame's normal heightened entry, the initial damage increases by 1d10 (1d12 for melee) and the splash damage increases by 1. The persistent fire damage on a critical hit increases by 1d4."
+												"Instead of using produce flame's normal heightened entry, the initial damage increases by {@damage 1d10} ({@damage 1d12} for melee) and the {@trait splash} damage increases by 1. The {@condition persistent damage||persistent} fire damage on a critical hit increases by {@damage 1d4}."
 											]
 										}
 									]
@@ -1861,7 +1861,7 @@
 										{
 											"name": "Amp",
 											"entries": [
-												"Your bolt leaves phase completely, becoming invisible and intangible until it's already embedded in the target\u2014 giving the impression it simply teleported itself into place. The target is flat-footed against the attack. Additionally, the bolt ignores an amount of Hardness or resistance to piercing damage equal to half the spell's level. On a critical success, the target can't be affected by teleportation effects until the start of your next turn."
+												"Your bolt leaves phase completely, becoming invisible and intangible until it's already embedded in the target\u2014giving the impression it simply teleported itself into place. The target is flat-footed against the attack. Additionally, the bolt ignores an amount of Hardness or resistance to piercing damage equal to half the spell's level. On a critical success, the target can't be affected by teleportation effects until the start of your next turn."
 											]
 										},
 										{
