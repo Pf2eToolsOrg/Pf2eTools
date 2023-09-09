@@ -5004,6 +5004,11 @@ Renderer.feat = {
 		return renderStack.join("");
 	},
 
+	getFooterEntry (feat) {
+		const renderer = Renderer.get();
+		return Object.keys(feat.footer).sort().map(lvl => `<p class="pf2-stat pf2-stat__section"><strong>${lvl}</strong>&nbsp;${renderer.render(feat.footer[lvl])}</p>`).join("");
+	},
+
 	getLeadsTo (feat) {
 		const renderer = Renderer.get();
 		if (feat.leadsTo && feat.leadsTo.length) {
@@ -5021,6 +5026,7 @@ Renderer.feat = {
 			${Renderer.feat.getSubHead(feat)}
 			${Renderer.generic.getRenderedEntries(feat)}
 			${feat.amp ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getAmpEntry(feat)}` : ""}
+			${feat.footer ? `${Renderer.utils.getDividerDiv()}${Renderer.feat.getFooterEntry(feat)}` : ""}
 			${opts.renderLeadsTo ? Renderer.feat.getLeadsTo(feat) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(feat)}`;
 	},
@@ -5616,7 +5622,7 @@ Renderer.nation = {
 			renderStack.push(renderer.render(`<strong>${element.name}</strong> `))
 			if (element.alignment || element.gender || element.ancestry || element.position) {
 				renderStack.push(`(`)
-				if (element.alignment) residentStack.push(`{@trait ${element.alignment}}`)
+				if (element.alignment) residentStack.push(`{@trait ${element.alignment.toUpperCase()}}`)
 				if (element.gender) residentStack.push(Parser.genderToFull(element.gender))
 				if (element.ancestry) residentStack.push(element.ancestry)
 				if (element.position) residentStack.push(element.position)

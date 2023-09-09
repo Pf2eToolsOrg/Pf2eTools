@@ -26,7 +26,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Aether marbles create violent, lingering eddies of force that extend partially into unseen planes. When the bomb explodes, it deals the listed force damage and force splash damage. Many aether marbles grant an item bonus to attack rolls.",
+				"Aether marbles create violent, lingering eddies of force that extend partially into unseen planes. When the bomb explodes, it deals the listed force damage and force {@trait splash} damage. Many aether marbles grant an item bonus to attack rolls.",
 				"Surfaces in the splash area are filled with twisting eddies of force, which are difficult terrain for incorporeal creatures but not for corporeal ones. The force eddies in a square disperse after an incorporeal creature enters the square."
 			],
 			"generic": "G",
@@ -38,7 +38,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} force damage and 2 force splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} force damage and 2 force {@trait splash} damage."
 					],
 					"variantType": "lesser"
 				},
@@ -49,7 +49,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} force damage and 3 force splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} force damage and 3 force {@trait splash} damage."
 					],
 					"variantType": "moderate"
 				},
@@ -60,7 +60,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} force damage and 4 force splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} force damage and 4 force {@trait splash} damage."
 					],
 					"variantType": "greater"
 				}
@@ -197,7 +197,7 @@
 				"amount": 1300,
 				"coin": "gp"
 			},
-			"bulk": "L (when not activated) While many of the magical wonders created by saumen kar have been destroyed, ice forges, while rare, still see use today among the few individuals who manage to discover and keep one of these portable treasures. When an ice forge isn't activated, it appears to be a small anvil carved from a lump of ice no larger than an apple. While in this state, the ice forge remains cold to the touch but doesn't melt in the presence of high temperatures. It can be used to chill a beverage in a small container, although those who venerate and respect these items' legacy would doubtless find this use to be insulting at best.",
+			"bulk": "L (when not activated)",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -210,7 +210,9 @@
 				"requirements": "The ice forge is in forge form"
 			},
 			"category": "Structure",
-			"entries": [],
+			"entries": [
+				"While many of the magical wonders created by saumen kar have been destroyed, ice forges, while rare, still see use today among the few individuals who manage to discover and keep one of these portable treasures. When an ice forge isn't activated, it appears to be a small anvil carved from a lump of ice no larger than an apple. While in this state, the ice forge remains cold to the touch but doesn't melt in the presence of high temperatures. It can be used to chill a beverage in a small container, although those who venerate and respect these items' legacy would doubtless find this use to be insulting at best."
+			],
 			"frequency": {
 				"number": 1,
 				"unit": "day"

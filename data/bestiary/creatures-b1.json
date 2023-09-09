@@ -3296,7 +3296,7 @@
 							"manipulate"
 						],
 						"entries": [
-							"The golem fills an empty vial from one of its alchemical chambers to create a bomb and then makes a bomb {@action Strike}. Determine the type of bomb created by rolling {@dice 1d6} on the alchemical chambers list above. On a roll of 1\u20134, it creates the corresponding greater alchemical bomb: an acid flask from chamber 1, a frost vial from chamber 2, bottled lightning from chamber 3, or alchemist's fire from chamber 4. On a roll of 5, it creates a poisonous bomb that deals {@damage 3d10} poison damage and 3 poison splash damage with no other effects. On a roll of 6, it creates a sickness bomb, which exposes the target and all creatures in the splash radius to the sickness effect; creatures hit by only the splash receive a +2 circumstance bonus to their Fortitude saves."
+							"The golem fills an empty vial from one of its alchemical chambers to create a bomb and then makes a bomb {@action Strike}. Determine the type of bomb created by rolling {@dice 1d6} on the alchemical chambers list above. On a roll of 1\u20134, it creates the corresponding greater alchemical bomb: an acid flask from chamber 1, a frost vial from chamber 2, bottled lightning from chamber 3, or alchemist's fire from chamber 4. On a roll of 5, it creates a poisonous bomb that deals {@damage 3d10} poison damage and 3 poison {@trait splash} damage with no other effects. On a roll of 6, it creates a sickness bomb, which exposes the target and all creatures in the splash radius to the sickness effect; creatures hit by only the splash receive a +2 circumstance bonus to their Fortitude saves."
 						],
 						"name": "Generate Bomb"
 					}
@@ -38619,7 +38619,7 @@
 					{
 						"entries": [
 							"A hydra ordinarily has five heads. A creature can attempt to sever one of the hydra's heads by specifically targeting it and dealing damage equal to the head's Hit Points. A head that is not completely severed returns to full Hit Points at the end of any creature's turn.",
-							"A hydra can regrow a severed head using Hydra Regeneration. A creature can prevent this regrowth by dealing acid or fire damage to the stump, cauterizing it. Single-target {@trait acid} or {@trait fire} effects need to be targeted at a specific stump, but effects that deal splash damage or affect areas covering the hydra's whole space cauterize all stumps if they deal acid or fire damage. If the attack that severs a head deals any acid or fire damage, the stump is cauterized instantly. If all five heads are cauterized, the hydra dies."
+							"A hydra can regrow a severed head using Hydra Regeneration. A creature can prevent this regrowth by dealing acid or fire damage to the stump, cauterizing it. Single-target {@trait acid} or {@trait fire} effects need to be targeted at a specific stump, but effects that deal {@trait splash} damage or affect areas covering the hydra's whole space cauterize all stumps if they deal acid or fire damage. If the attack that severs a head deals any acid or fire damage, the stump is cauterized instantly. If all five heads are cauterized, the hydra dies."
 						],
 						"name": "Head Regrowth"
 					},

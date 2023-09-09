@@ -399,7 +399,7 @@
 						"range increment <100 feet>"
 					],
 					"entries": [
-						"{@dice 10d6} damage and 3 splash damage, three different targets within a 15-foot burst, DC 30 Reflex. The damage type depends on the alchemical ammunition used: acid, cold, electricity, or fire. Creatures take the splash damage only once from the launch, even if they're in the area of more than one of the three splashes."
+						"{@dice 10d6} damage and 3 {@trait splash} damage, three different targets within a 15-foot burst, DC 30 Reflex. The damage type depends on the alchemical ammunition used: acid, cold, electricity, or fire. Creatures take the {@trait splash} damage only once from the launch, even if they're in the area of more than one of the three splashes."
 					]
 				}
 			],
@@ -2372,7 +2372,7 @@
 						"amount": 3
 					},
 					"entries": [
-						"The area is a 5-foot burst, the {@skill Acrobatics} DC is 17, and the cold splash damage is 1. The floating ice can support one creature up to Medium size."
+						"The area is a 5-foot burst, the {@skill Acrobatics} DC is 17, and the cold {@trait splash} damage is 1. The floating ice can support one creature up to Medium size."
 					],
 					"_mod": {
 						"entries": [
@@ -2392,7 +2392,7 @@
 								"mode": "replaceTxt",
 								"replaceTags": true,
 								"replace": "deals cold splash",
-								"with": "deals 1 cold splash"
+								"with": "deals 1 cold {@trait splash}"
 							},
 							{
 								"mode": "replaceTxt",
@@ -2412,7 +2412,7 @@
 						"amount": 25
 					},
 					"entries": [
-						"The area is a 10-foot burst, the {@skill Acrobatics} DC is 21, and the cold splash damage is 3. The floating ice can support one Large creature or two Medium or smaller creatures."
+						"The area is a 10-foot burst, the {@skill Acrobatics} DC is 21, and the cold {@trait splash} damage is 3. The floating ice can support one Large creature or two Medium or smaller creatures."
 					],
 					"_mod": {
 						"entries": [
@@ -2432,7 +2432,7 @@
 								"mode": "replaceTxt",
 								"replaceTags": true,
 								"replace": "deals cold splash",
-								"with": "deals 3 cold splash"
+								"with": "deals 3 cold {@trait splash}"
 							},
 							{
 								"mode": "replaceTxt",
@@ -2452,7 +2452,7 @@
 						"amount": 250
 					},
 					"entries": [
-						"The area is a 15-foot burst, the {@skill Acrobatics} DC is 30, and the cold splash damage is 5. The floating ice can support one Huge creature, two Large creatures, or four Medium or smaller creatures."
+						"The area is a 15-foot burst, the {@skill Acrobatics} DC is 30, and the cold {@trait splash} damage is 5. The floating ice can support one Huge creature, two Large creatures, or four Medium or smaller creatures."
 					],
 					"_mod": {
 						"entries": [
@@ -2472,7 +2472,7 @@
 								"mode": "replaceTxt",
 								"replaceTags": true,
 								"replace": "deals cold splash",
-								"with": "deals 5 cold splash"
+								"with": "deals 5 cold {@trait splash}"
 							},
 							{
 								"mode": "replaceTxt",
@@ -2492,7 +2492,7 @@
 						"amount": 2500
 					},
 					"entries": [
-						"The area is a 20-foot burst, the {@skill Acrobatics} DC is 39, and the cold splash damage is 8. The floating ice can support one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a {@creature mu spore}."
+						"The area is a 20-foot burst, the {@skill Acrobatics} DC is 39, and the cold {@trait splash} damage is 8. The floating ice can support one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a {@creature mu spore}."
 					],
 					"_mod": {
 						"entries": [
@@ -2512,7 +2512,7 @@
 								"mode": "replaceTxt",
 								"replaceTags": true,
 								"replace": "deals cold splash",
-								"with": "deals 8 cold splash"
+								"with": "deals 8 cold {@trait splash}"
 							},
 							{
 								"mode": "replaceTxt",
@@ -2785,7 +2785,7 @@
 			"category": "Weapon",
 			"subCategory": "Beast Gun",
 			"entries": [
-				"A drake rifle is a firearm made from the saliva glands of a drake. The firearm launches small bursts of empowered spittle instead of typical rounds of ammunition. A drake rifle is a {@item +1 weapon potency||+1} weapon. It's a distinct type of martial firearm that deals {@damage 1d10} damage with a range increment of 150 feet and reload <1>. It deals acid, cold, electricity, fire, or poison damage, depending on the drake from which it was made. On a critical hit, the spittle clings to the target and they take persistent damage of the same type as the weapon equal to {@damage 1d4} + the number of weapon damage dice. A drake rifle does not add critical specialization effects.",
+				"A drake rifle is a firearm made from the saliva glands of a drake. The firearm launches small bursts of empowered spittle instead of typical rounds of ammunition. A drake rifle is a {@item +1 weapon potency||+1} weapon. It's a distinct type of martial firearm that deals {@damage 1d10} damage with a range increment of 150 feet and reload 1. It deals acid, cold, electricity, fire, or poison damage, depending on the drake from which it was made. On a critical hit, the spittle clings to the target and they take {@condition persistent damage} of the same type as the weapon equal to {@damage 1d4} + the number of weapon damage dice. A drake rifle does not add critical specialization effects.",
 				{
 					"type": "ability",
 					"activity": {
@@ -2804,7 +2804,7 @@
 						"number": 1
 					},
 					"entries": [
-						"You fire a large, specialized burst designed to hamper your foes. Make a ranged {@action Strike} with the drake rifle. As long as the {@action Strike} isn't a critical failure, the drake rifle deals 1 splash damage per weapon damage die to the target and creatures within 5 feet of the target. This splash damage is of the same type as its normal damage.",
+						"You fire a large, specialized burst designed to hamper your foes. Make a ranged {@action Strike} with the drake rifle. As long as the {@action Strike} isn't a critical failure, the drake rifle deals 1 {@trait splash} damage per weapon damage die to the target and creatures within 5 feet of the target. This {@trait splash} damage is of the same type as its normal damage.",
 						"On a hit, the drake rifle provides one of the following additional effects based on its damage type:",
 						{
 							"type": "list",
@@ -3072,9 +3072,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You gain the {@condition quickened} condition for 1 minute and can use the extra action each round only to {@action Stride} or {@action Strike}.",
-						"Success": "As critical success, but you also take 3 persistent electrical damage.",
-						"Failure": "You gain the {@condition quickened} condition for 2 rounds and can use the extra action each round only to {@action Stride} or {@action Strike}. You take 3 persistent electrical damage.",
-						"Critical Failure": "You take {@damage 2d6} electrical damage and 3 persistent electrical damage."
+						"Success": "As critical success, but you also take 3 {@condition persistent damage||persistent electrical damage}.",
+						"Failure": "You gain the {@condition quickened} condition for 2 rounds and can use the extra action each round only to {@action Stride} or {@action Strike}. You take 3 {@condition persistent damage||persistent electrical damage}.",
+						"Critical Failure": "You take {@damage 2d6} electrical damage and 3 {@condition persistent damage||persistent electrical damage}."
 					}
 				}
 			]
@@ -3984,7 +3984,10 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact (move)"
+					"{@action Interact}"
+				],
+				"traits": [
+					"move"
 				]
 			},
 			"category": "Consumable",
@@ -5213,7 +5216,10 @@
 					},
 					"components": [
 						"command",
-						"envision (fortune)"
+						"envision"
+					],
+					"traits": [
+						"fortune"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -6133,7 +6139,8 @@
 				},
 				"requirements": "Your last action was an {@action Interact} action to stow the affixed firearm or crossbow.",
 				"components": [
-					"envision, manipulate"
+					"envision",
+					"manipulate"
 				]
 			},
 			"category": "Talisman",
@@ -6428,7 +6435,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (evil)"
+						"envision"
+					],
+					"traits": [
+						"evil"
 					],
 					"requirements": "There's at least one soul stored in the reaper's grasp",
 					"entries": [
@@ -6443,7 +6453,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (evil)"
+						"envision"
+					],
+					"traits": [
+						"evil"
 					],
 					"requirements": "There's at least one soul stored in the reaper's grasp",
 					"entries": [
@@ -6581,8 +6594,12 @@
 					"components": [
 						"command",
 						"envision",
-						"Interact (1 minute)"
+						"{@action Interact} (1 minute)"
 					],
+					"frequency": {
+						"unit": "minute",
+						"number": 10
+					},
 					"entries": [
 						"You hold aloft the Rowan Rifle and step into a tree in Briarbough, and you tree stride to another tree in Briarbough."
 					]
@@ -6638,9 +6655,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (auditory",
+						"{@action Interact}"
+					],
+					"traits": [
+						"auditory",
 						"light",
-						"transmutation)"
+						"transmutation"
 					],
 					"entries": [
 						"If your next {@action Strike} from the weapon to which the scope is attached hits a creature, the sound of the impact transforms into light, causing the creature to glow until the end of your next turn. A visible creature can't be {@condition concealed} while they glow. If a creature is {@condition invisible}, they're {@condition concealed} while glowing, rather than being {@condition undetected}. Because the effect requires a solid impact, incorporeal creatures are unaffected unless the bullet can deal force damage or has the effects of the {@item ghost touch} property rune."
@@ -7238,7 +7258,7 @@
 			"category": "Weapon",
 			"subCategory": "Beast Gun",
 			"entries": [
-				"Built from the spiked tail of a manticore, a spike launcher is designed to launch large, spear-like projectiles. A spike launcher is a +1 striking weapon. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the backstabber, fatal aim d12, and kickback traits with a range increment of 120 feet and reload <2>. It uses the critical specialization of the bow weapon group, rather than the firearm critical specialization.",
+				"Built from the spiked tail of a manticore, a spike launcher is designed to launch large, spear-like projectiles. A spike launcher is a +1 striking weapon. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the backstabber, fatal aim d12, and kickback traits with a range increment of 120 feet and reload 2. It uses the critical specialization of the bow weapon group, rather than the firearm critical specialization.",
 				{
 					"type": "ability",
 					"activity": {
@@ -7756,9 +7776,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (electricity",
+						"{@action Interact}"
+					],
+					"traits": [
+						"electricity",
 						"evocation",
-						"magical)"
+						"magical"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -7775,9 +7798,12 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (electricity",
+						"{@action Interact}"
+					],
+					"traits": [
+						"electricity",
 						"evocation",
-						"magical)"
+						"magical"
 					],
 					"frequency": {
 						"unit": "day",

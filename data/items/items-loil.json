@@ -844,7 +844,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The target takes {@damage 1d4} acid damage, 1 {@condition persistent damage||persistent acid damage}, and 1 acid splash damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 15."
+						"The target takes {@damage 1d4} acid damage, 1 {@condition persistent damage||persistent acid damage}, and 1 acid {@trait splash} damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 15."
 					],
 					"variantType": "lesser"
 				},
@@ -855,7 +855,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The target takes {@damage 2d4} acid damage, 2 {@condition persistent damage||persistent acid damage}, and 2 acid splash damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 17."
+						"You gain a +1 item bonus to attack rolls. The target takes {@damage 2d4} acid damage, 2 {@condition persistent damage||persistent acid damage}, and 2 acid {@trait splash} damage. They take a \u20135-foot circumstance penalty to their Speeds. The {@action Escape} DC is 17."
 					],
 					"variantType": "moderate"
 				},
@@ -866,7 +866,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The target takes {@damage 3d4} acid damage, 3 {@condition persistent damage||persistent acid damage}, and 3 acid splash damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 26."
+						"You gain a +2 item bonus to attack rolls. The target takes {@damage 3d4} acid damage, 3 {@condition persistent damage||persistent acid damage}, and 3 acid {@trait splash} damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 26."
 					],
 					"variantType": "greater"
 				},
@@ -877,7 +877,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The target takes {@damage 4d4} acid damage, 4 {@condition persistent damage||persistent acid damage}, and 4 acid splash damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 35."
+						"You gain a +3 item bonus to attack rolls. The target takes {@damage 4d4} acid damage, 4 {@condition persistent damage||persistent acid damage}, and 4 acid {@trait splash} damage. They take a \u201310-foot circumstance penalty to their Speeds. The {@action Escape} DC is 35."
 					],
 					"variantType": "major"
 				}
@@ -990,8 +990,12 @@
 				{
 					"type": "ability",
 					"components": [
-						"{@action Interact} Frequency once per day"
+						"{@action Interact}"
 					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
 					"entries": [
 						"You feed a corpse of a Small-sized or larger creature to the cask, little by little. The activation requires a three-action activity for a Small or Medium creature, a 1-minute activity for a Larger creature, and a 10-minute activity for a Huge creature. A Gargantuan creature is too large for the cask to devour."
 					]

@@ -552,19 +552,18 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	handleClick (evt, ix, add, customHashId) {
-		const data = customHashId ? {customHashId} : undefined;
 		if (add) {
 			ListUtil.pDoSublistAdd({
 				index: ix,
 				doFinalize: true,
 				addCount: evt.shiftKey ? 5 : 1,
-				customHashId: data,
+				customHashId,
 			});
 		} else {
 			ListUtil.pDoSublistSubtract({
 				index: ix,
 				subtractCount: evt.shiftKey ? 5 : 1,
-				customHashId: data,
+				customHashId,
 			});
 		}
 	}

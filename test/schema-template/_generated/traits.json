@@ -47,16 +47,10 @@
 					"$ref": "#/definitions/itemTrait"
 				},
 				{
-					"$ref": "#/definitions/planarTrait"
-				},
-				{
 					"$ref": "#/definitions/weaponTrait"
 				},
 				{
 					"$ref": "#/definitions/unknownTrait"
-				},
-				{
-					"$ref": "#/definitions/energyElementTrait"
 				},
 				{
 					"$ref": "#/definitions/generalTrait"
@@ -95,50 +89,67 @@
 					"$ref": "#/definitions/creatureTrait"
 				},
 				{
+					"$ref": "#/definitions/classTrait"
+				},
+				{
 					"$ref": "#/definitions/actionAbilityTrait"
 				},
 				{
-					"$ref": "#/definitions/classTrait"
+					"$ref": "#/definitions/planarTrait"
+				},
+				{
+					"$ref": "#/definitions/energyElementTrait"
 				}
 			],
 			"uniqueItems": true
 		},
-		"classTrait": {
+		"energyElementTrait": {
 			"type": "string",
-			"description": "A list of all Class traits.",
+			"description": "A list of all Energy & Element traits.",
 			"enum": [
-				"[class]",
-				"aftermath",
-				"alchemist",
-				"barbarian",
-				"bard",
-				"champion",
-				"class",
-				"cleric",
-				"composite",
-				"deviant",
-				"druid",
-				"fighter",
-				"gunslinger",
-				"impulse",
-				"infusion",
-				"inventor",
-				"investigator",
-				"kineticist",
-				"magus",
-				"monk",
-				"oracle",
-				"overflow",
-				"psychic",
-				"ranger",
-				"rogue",
-				"sorcerer",
-				"spellshot",
-				"summoner",
-				"swashbuckler",
-				"thaumaturge",
-				"witch",
-				"wizard"
+				"acid",
+				"air",
+				"cold",
+				"earth",
+				"electricity",
+				"energy",
+				"fire",
+				"force",
+				"metal",
+				"negative",
+				"positive",
+				"sonic",
+				"water",
+				"wood"
+			]
+		},
+		"planarTrait": {
+			"type": "string",
+			"description": "A list of all Planar traits.",
+			"enum": [
+				"air",
+				"chaotic",
+				"earth",
+				"erratic",
+				"evil",
+				"finite",
+				"fire",
+				"flowing",
+				"good",
+				"high gravity",
+				"immeasurable",
+				"lawful",
+				"low gravity",
+				"metal",
+				"microgravity",
+				"sentient",
+				"static",
+				"strange gravity",
+				"subjective gravity",
+				"timeless",
+				"unbounded",
+				"water",
+				"wood"
 			]
 		},
 		"actionAbilityTrait": {
@@ -159,6 +170,40 @@
 				"psyche",
 				"reckless",
 				"tandem"
+			]
+		},
+		"classTrait": {
+			"type": "string",
+			"description": "A list of all Class traits.",
+			"enum": [
+				"[class]",
+				"aftermath",
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"class",
+				"cleric",
+				"deviant",
+				"druid",
+				"fighter",
+				"gunslinger",
+				"inventor",
+				"investigator",
+				"kineticist",
+				"magus",
+				"monk",
+				"oracle",
+				"psychic",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"spellshot",
+				"summoner",
+				"swashbuckler",
+				"thaumaturge",
+				"witch",
+				"wizard"
 			]
 		},
 		"creatureTrait": {
@@ -586,24 +631,6 @@
 				"wayfaring"
 			]
 		},
-		"energyElementTrait": {
-			"type": "string",
-			"description": "A list of all Energy & Element traits.",
-			"enum": [
-				"acid",
-				"air",
-				"cold",
-				"earth",
-				"electricity",
-				"energy",
-				"fire",
-				"force",
-				"negative",
-				"positive",
-				"sonic",
-				"water"
-			]
-		},
 		"unknownTrait": {
 			"type": "string",
 			"description": "A list of all Unknown traits.",
@@ -681,33 +708,6 @@
 				"vehicular",
 				"versatile",
 				"volley"
-			]
-		},
-		"planarTrait": {
-			"type": "string",
-			"description": "A list of all Planar traits.",
-			"enum": [
-				"air",
-				"chaotic",
-				"earth",
-				"erratic",
-				"evil",
-				"finite",
-				"fire",
-				"flowing",
-				"good",
-				"high gravity",
-				"immeasurable",
-				"lawful",
-				"low gravity",
-				"microgravity",
-				"sentient",
-				"static",
-				"strange gravity",
-				"subjective gravity",
-				"timeless",
-				"unbounded",
-				"water"
 			]
 		},
 		"itemTrait": {

@@ -238,7 +238,7 @@
 					"components": [
 						"command"
 					],
-					"trigger": "You're affected by an area effect that requires a Reflex save, or you would take splash damage from a scatter weapon",
+					"trigger": "You're affected by an area effect that requires a Reflex save, or you would take {@trait splash} damage from a scatter weapon",
 					"entries": [
 						"The blast suit locks together into a rigid bulwark, protecting you from the blast but preventing you from moving from your position under any circumstances. You become {@condition immobilized}, gain a +2 circumstance bonus to your Reflex save against area effects, and gain resistance 5 to all damage you would normally take from area effects and scatter splash damage (this doesn't damage the blast suit). These effects persist for as long as the suit remains in the locked position. You can {@action Interact} with the suit to unlock it."
 					]
@@ -360,7 +360,7 @@
 			"category": "Bomb",
 			"entries": [
 				"symbol of a four-pointed star on their outer surface, explode outward in the shape of a cross whenever they {@action Strike} a target.",
-				"When you throw a star grenade, arrange two perpendicular 25-foot lines over the target, both centered on the target and moving straight through the target, not diagonally. Creatures other than the target within these two lines take splash damage (typically 8 squares take splash damage for a Medium creature). {@trait Any} effect that alters or adjusts the splash area's shape or size, like the alchemist feat Expanded Splash, doesn't apply to star grenades."
+				"When you throw a star grenade, arrange two perpendicular 25-foot lines over the target, both centered on the target and moving straight through the target, not diagonally. Creatures other than the target within these two lines take {@trait splash} damage (typically 8 squares take {@trait splash} damage for a Medium creature). {@trait Any} effect that alters or adjusts the splash area's shape or size, like the alchemist feat Expanded Splash, doesn't apply to star grenades."
 			],
 			"generic": "G",
 			"variants": [
@@ -371,7 +371,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The bomb deals {@damage 1d8} fire damage and 1 splash damage."
+						"The bomb deals {@damage 1d8} fire damage and 1 {@trait splash} damage."
 					],
 					"variantType": "lesser"
 				},
@@ -382,7 +382,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage and 2 splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage and 2 {@trait splash} damage."
 					],
 					"variantType": "moderate"
 				},
@@ -393,7 +393,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage and 3 splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage and 3 {@trait splash} damage."
 					],
 					"variantType": "greater"
 				},
@@ -404,7 +404,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage and 4 splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage and 4 {@trait splash} damage."
 					],
 					"variantType": "major"
 				}

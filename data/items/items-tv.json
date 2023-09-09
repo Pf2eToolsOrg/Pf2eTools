@@ -10602,7 +10602,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"You enhance yourself with a shard of Cayden's divine fortune and cast {@spell indestructibility|APG} APG.",
+						"You enhance yourself with a shard of Cayden's divine fortune and cast {@spell indestructibility|APG}.",
 						"Destruction If a lawful evil creature carries Cayden's Tankard into the Starstone Cathedral, drinks from it, and returns outside with it, the tankard shatters."
 					]
 				}
@@ -10710,7 +10710,7 @@
 			"bulk": 2,
 			"category": "Artifact",
 			"entries": [
-				"The barrel of this long rifle is translucent in places, forming a swirled pattern along the metal, and its stock is formed of crimson wood. Ghosthand's Comet is a +4 major striking beast‑bane SoM greater impactful SoM advanced firearm with a range increment of 300 feet. It deals {@damage 5d8} force damage and has the backstabber, concussive, kickback, and fatal d12 traits. As a star gun, Ghosthand's Comet runs on magic and doesn't use ammunition or black powder. The weapon is silent when fired.",
+				"The barrel of this long rifle is translucent in places, forming a swirled pattern along the metal, and its stock is formed of crimson wood. Ghosthand's Comet is a +4 major striking {@item bane|SoM|beast‑bane} {@item greater impactful|SoM} advanced firearm with a range increment of 300 feet. It deals {@damage 5d8} force damage and has the backstabber, concussive, kickback, and fatal d12 traits. As a star gun, Ghosthand's Comet runs on magic and doesn't use ammunition or black powder. The weapon is silent when fired.",
 				{
 					"type": "ability",
 					"activity": {
@@ -10968,7 +10968,7 @@
 			"bulk": 2,
 			"category": "Artifact",
 			"entries": [
-				"This +4 major striking greater brilliant SoM keen glaive binds the souls of powerful creatures it slays. The soul can't be returned to life by any means while imprisoned within the glaive and can be freed only by a deed of great benevolence or selflessness. While using the glaive as a weapon, whenever you reduce a sapient creature of 18th level or higher to 0 Hit Points or roll a critical success with a {@action Strike} against such a target, the creature must attempt a DC 50 Fortitude save.",
+				"This +4 major striking {@item greater brilliant|SoM} {@item keen} {@item glaive} binds the souls of powerful creatures it slays. The soul can't be returned to life by any means while imprisoned within the glaive and can be freed only by a deed of great benevolence or selflessness. While using the glaive as a weapon, whenever you reduce a sapient creature of 18th level or higher to 0 Hit Points or roll a critical success with a {@action Strike} against such a target, the creature must attempt a DC 50 Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -11202,7 +11202,40 @@
 				"When a skilled musician dies before reaching their full potential or accomplishing an important goal, their soul might refuse to move on to the Boneyard. Rather than becoming undead, the spirit possesses an instrument they played in life, turning it into an intelligent item and a virtuoso instrument. (Other phantom instruments exist, but most are heavy.) A phantom piano offers a bargain to any bard or other skilled musician who finds it: receive musical aid as you dedicate yourself to reaching the success the spirit felt they were denied in life. The piano refuses to play for those who reject this deal. If you accept, the piano asks only that you practice with it and perform for increasingly refined and august audiences, requiring a successful {@skill Performance} check appropriate to your proficiency level.",
 				"The piano sets no strict timeline, but at the GM's discretion, if you go too long without making progress, the piano can cease cooperating with you until it's satisfied with your dedication once again.",
 				"While you keep up your end of the bargain, the piano grants you a +2 item bonus to {@skill Performance} checks made with it. The piano also provides access to composition spells based on your {@skill Performance} proficiency rank, as if you had the corresponding feat. The spells you can use comprise a cumulative list, but you can cast them only when using the piano. You must spend the actions and Focus Points required to cast these spells.",
-				"Trained: inspire competence, inspire courage Expert: hymn of healing APG, inspire defense Master: symphony of the unfettered heart Legendary: soothing ballad A phantom piano has the following activations.",
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"type": "item",
+							"name": "Trained",
+							"entries": [
+								"{@spell inspire competence}, {@spell inspire courage}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Expert",
+							"entries": [
+								"{@spell hymn of healing|APG}, {@spell inspire defense}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Master",
+							"entries": [
+								"{@spell symphony of the unfettered heart|APG}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Legendary",
+							"entries": [
+								"{@spell soothing ballad}"
+							]
+						}
+					]
+				},
+				"A phantom piano has the following activations.",
 				{
 					"type": "ability",
 					"activity": {
@@ -14119,7 +14152,7 @@
 				"Armor"
 			],
 			"entries": [
-				"This rune counters burning and corrosive agents. Armor with this rune reduces the DC of the flat check to end {@condition persistent damage ||persistent acid} or fire damage affecting you from 15 to 12 (7 with particularly effective assistance)."
+				"This rune counters burning and corrosive agents. Armor with this rune reduces the DC of the flat check to end {@condition persistent damage||persistent acid} or fire damage affecting you from 15 to 12 (7 with particularly effective assistance)."
 			],
 			"generic": "G",
 			"variants": [
@@ -14161,7 +14194,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The DC of the flat check is reduced from 15 to 5 (particularly effective assistance automatically removes the {@condition persistent damage ||persistent acid} or fire damage)."
+						"The DC of the flat check is reduced from 15 to 5 (particularly effective assistance automatically removes the {@condition persistent damage||persistent acid} or fire damage)."
 					],
 					"variantType": "true quenching"
 				}
@@ -14934,7 +14967,7 @@
 					},
 					"entries": [
 						"You call forth the cursed regenerative blood of an ouroboros to recover from your wounds. You gain regeneration 15 (Pathfinder Bestiary 343) for 1 minute; fire damage deactivates this regeneration. Each time you regain Hit Points from this regeneration, if you're in your normal form, you collapse into a Large swarm of Tiny snakes. This is a {@trait polymorph} effect that changes you into a battle form.",
-						"When you're a swarm of snakes, you gain low-light vision, imprecise scent (30 feet), a Speed of 20 feet, a climb Speed of 20 feet, and a swim Speed of 20 feet. You have an AC of 16 + your level and ignore your armor's check penalty and Speed reduction. Also, you gain resistance 5 to physical damage and weakness 5 to area damage and splash damage. You can use none of your normal Strikes. Instead, you can use Swarming Bites, a single action that deals {@damage 4d4} piercing damage plus {@damage 2d6} poison damage to creatures in your space with a DC 41 basic Reflex save.",
+						"When you're a swarm of snakes, you gain low-light vision, imprecise scent (30 feet), a Speed of 20 feet, a climb Speed of 20 feet, and a swim Speed of 20 feet. You have an AC of 16 + your level and ignore your armor's check penalty and Speed reduction. Also, you gain resistance 5 to physical damage and weakness 5 to area damage and {@trait splash} damage. You can use none of your normal Strikes. Instead, you can use Swarming Bites, a single action that deals {@damage 4d4} piercing damage plus {@damage 2d6} poison damage to creatures in your space with a DC 41 basic Reflex save.",
 						"If you're in this battle form and are already at full HP when your regeneration occurs, the snakes instantaneously slither together, and you transform into your original form."
 					]
 				},
@@ -15204,7 +15237,7 @@
 					},
 					"trigger": "An enemy within 30 feet Strikes you with an attack",
 					"entries": [
-						"You animate the exoskeletons of the wasp guard armor into a spectral swarm of wasps that seeks revenge for the slight. The swarm flies to the triggering enemy's space and swarms about them, dealing {@damage 1d8} {@condition persistent damage ||persistent poison damage}. If the affected enemy has any allies within 30 feet, the enemy can spend a single action, which has the {@trait manipulate} trait, to shoo the swarm away. This ends the {@condition persistent damage} on that enemy automatically, but the swarm instead moves to affect the enemy's ally."
+						"You animate the exoskeletons of the wasp guard armor into a spectral swarm of wasps that seeks revenge for the slight. The swarm flies to the triggering enemy's space and swarms about them, dealing {@damage 1d8} {@condition persistent damage||persistent poison damage}. If the affected enemy has any allies within 30 feet, the enemy can spend a single action, which has the {@trait manipulate} trait, to shoo the swarm away. This ends the {@condition persistent damage} on that enemy automatically, but the swarm instead moves to affect the enemy's ally."
 					]
 				}
 			],
@@ -15266,7 +15299,7 @@
 						"unit": "hour"
 					},
 					"entries": [
-						"You gain a jaws unarmed attack that you make using your hands. This attack deals {@damage 1d8} piercing damage plus 1 cold damage, is in the brawling group, and has the {@trait trip} and {@trait unarmed} traits."
+						"You gain a jaws unarmed attack that you make using your hands. This attack deals {@damage 1d8} piercing damage plus 1 cold damage, is in the {@group brawling} group, and has the {@trait trip} and {@trait unarmed} traits."
 					]
 				}
 			],
@@ -15356,7 +15389,7 @@
 			],
 			"category": "Poison",
 			"entries": [
-				"Monster hunters favor bane ammunition that contains a capsule of reagents tailored to a particular type of creature\u2014 aberration, animal, beast, dragon, fey, giant, ooze, or both fungus and plant. Each type requires a different formula. When activated bane ammunition hits a target that has {@trait a} trait matching the selected type, it takes {@condition persistent damage||persistent poison damage} in addition to the damage the attack normally deals."
+				"Monster hunters favor bane ammunition that contains a capsule of reagents tailored to a particular type of creature\u2014aberration, animal, beast, dragon, fey, giant, ooze, or both fungus and plant. Each type requires a different formula. When activated bane ammunition hits a target that has {@trait a} trait matching the selected type, it takes {@condition persistent damage||persistent poison damage} in addition to the damage the attack normally deals."
 			],
 			"generic": "G",
 			"variants": [
@@ -15484,7 +15517,7 @@
 			],
 			"category": "Consumable",
 			"entries": [
-				"When activated, the reservoir of alchemical reagents in elemental ammunition atomizes on impact, dealing {@condition persistent damage||persistent acid}, cold, electricity, fire, or poison damage to the target and splash damage in addition to the damage the attack normally deals. Each damage type requires a different formula, and the ammunition gains {@trait a} trait matching the damage type."
+				"When activated, the reservoir of alchemical reagents in elemental ammunition atomizes on impact, dealing {@condition persistent damage||persistent acid}, cold, electricity, fire, or poison damage to the target and {@trait splash} damage in addition to the damage the attack normally deals. Each damage type requires a different formula, and the ammunition gains {@trait a} trait matching the damage type."
 			],
 			"generic": "G",
 			"variants": [
@@ -15495,7 +15528,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The ammunition deals 1 {@condition persistent damage} and 1 splash damage."
+						"The ammunition deals 1 {@condition persistent damage} and 1 {@trait splash} damage."
 					],
 					"variantType": "lesser"
 				},
@@ -15506,7 +15539,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The ammunition deals {@damage 2d4} {@condition persistent damage} and 2 splash damage."
+						"The ammunition deals {@damage 2d4} {@condition persistent damage} and 2 {@trait splash} damage."
 					],
 					"variantType": "moderate"
 				},
@@ -15517,7 +15550,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The ammunition deals {@damage 3d4} {@condition persistent damage} and 3 splash damage."
+						"The ammunition deals {@damage 3d4} {@condition persistent damage} and 3 {@trait splash} damage."
 					],
 					"variantType": "greater"
 				}
@@ -15553,7 +15586,7 @@
 			],
 			"category": "Consumable",
 			"entries": [
-				"Freeze ammunition carries chilling reagents that activate on contact with the target. A creature hit by activated freeze ammunition takes cold damage instead of the weapon's normal damage type, plus 2 cold splash damage. Hitting a 5-foot-square surface successfully with freeze ammunition deals 2 cold splash damage and covers the space in a layer of ice. Each creature standing on the icy surface must succeed at a DC 20 Reflex save or {@skill Acrobatics} check or else fall {@condition prone}.",
+				"Freeze ammunition carries chilling reagents that activate on contact with the target. A creature hit by activated freeze ammunition takes cold damage instead of the weapon's normal damage type, plus 2 cold {@trait splash} damage. Hitting a 5-foot-square surface successfully with freeze ammunition deals 2 cold {@trait splash} damage and covers the space in a layer of ice. Each creature standing on the icy surface must succeed at a DC 20 Reflex save or {@skill Acrobatics} check or else fall {@condition prone}.",
 				"Creatures using an action to move onto the icy surface must attempt either a Reflex save or an {@skill Acrobatics} check to {@action Balance}. Creatures that {@action Step} or {@action Crawl} don't need to attempt a check or save. The ice melts after 1 minute, although unusually hot or cold temperatures can change this duration at the GM's discretion. Dealing at least 1 point of fire damage to the ice removes it instantly."
 			]
 		},
@@ -15813,7 +15846,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Blightburn bombs have radioactive materials sealed inside flasks treated with lead. The bomb grants an item bonus to attack rolls and deals poison damage, {@condition persistent damage||persistent poison damage}, and poison splash damage, according to the bomb's type. A creature that takes the {@condition persistent damage||persistent poison damage} deals the splash damage again from its current position as the radiation continues to harm nearby creatures. The {@condition persistent damage} can last up to 1 minute.",
+				"Blightburn bombs have radioactive materials sealed inside flasks treated with lead. The bomb grants an item bonus to attack rolls and deals poison damage, {@condition persistent damage||persistent poison damage}, and poison {@trait splash} damage, according to the bomb's type. A creature that takes the {@condition persistent damage||persistent poison damage} deals the {@trait splash} damage again from its current position as the radiation continues to harm nearby creatures. The {@condition persistent damage} can last up to 1 minute.",
 				"Blightburn bombs also expose the primary target to {@disease blightburn sickness|TV} at the listed Fortitude DC."
 			],
 			"generic": "G",
@@ -15825,7 +15858,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison splash damage. The Fortitude DC is 34."
+						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison {@trait splash} damage. The Fortitude DC is 34."
 					],
 					"variantType": "blightburn bomb"
 				},
@@ -15836,7 +15869,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison splash damage. The Fortitude DC is 43."
+						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison {@trait splash} damage. The Fortitude DC is 43."
 					],
 					"variantType": "greater blightburn bomb"
 				}
@@ -15867,7 +15900,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This bomb is made of volatile fluids that rapidly expand and harden when exposed to air. A boulder seed grants an item bonus to attack rolls and deals bludgeoning damage and bludgeoning splash damage, according to the bomb's type. When activated, the bomb fills a 5-foot cube with hardened foam, which has stats according to the bomb's type and which pushes a primary target of a certain size or smaller occupying that space 5 feet away from you. On a critical hit, the target also falls {@condition prone}. The splash zone fills with rubble, creating difficult terrain. The \"boulder\" the bomb creates fails all saving throws and loses 1 Hardness per round, disintegrating into fine powder when the boulder's Hardness is reduced to 0. At that time, the difficult terrain the bomb created also disappears."
+				"This bomb is made of volatile fluids that rapidly expand and harden when exposed to air. A boulder seed grants an item bonus to attack rolls and deals bludgeoning damage and bludgeoning {@trait splash} damage, according to the bomb's type. When activated, the bomb fills a 5-foot cube with hardened foam, which has stats according to the bomb's type and which pushes a primary target of a certain size or smaller occupying that space 5 feet away from you. On a critical hit, the target also falls {@condition prone}. The splash zone fills with rubble, creating difficult terrain. The \"boulder\" the bomb creates fails all saving throws and loses 1 Hardness per round, disintegrating into fine powder when the boulder's Hardness is reduced to 0. At that time, the difficult terrain the bomb created also disappears."
 			],
 			"generic": "G",
 			"variants": [
@@ -15878,7 +15911,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d4} bludgeoning damage plus 3 bludgeoning splash damage. It creates a boulder as hard as wood (Hardness 5, HP 20) that pushes Medium or smaller targets."
+						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d4} bludgeoning damage plus 3 bludgeoning {@trait splash} damage. It creates a boulder as hard as wood (Hardness 5, HP 20) that pushes Medium or smaller targets."
 					],
 					"variantType": "boulder seed"
 				},
@@ -15889,7 +15922,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d4} bludgeoning damage plus 4 bludgeoning splash damage. It creates a boulder as hard as stone (Hardness 10, HP 40) that pushes Large or smaller targets."
+						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d4} bludgeoning damage plus 4 bludgeoning {@trait splash} damage. It creates a boulder as hard as stone (Hardness 10, HP 40) that pushes Large or smaller targets."
 					],
 					"variantType": "greater boulder seed"
 				}
@@ -15921,7 +15954,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Lodestone bombs hold reactive ionized minerals preserved in a dormant state until {@condition broken}. The bomb grants an item bonus to attack rolls and deals force damage and force splash damage, according to the bomb's type. In addition, a target made of metal, wearing metal armor, or using metal weapons takes {@condition persistent damage||persistent force damage} and is {@condition clumsy||clumsy 1} and {@condition enfeebled||enfeebled 1} while taking the {@condition persistent damage}. The {@condition persistent damage} can last up to 1 minute."
+				"Lodestone bombs hold reactive ionized minerals preserved in a dormant state until {@condition broken}. The bomb grants an item bonus to attack rolls and deals force damage and force {@trait splash} damage, according to the bomb's type. In addition, a target made of metal, wearing metal armor, or using metal weapons takes {@condition persistent damage||persistent force damage} and is {@condition clumsy||clumsy 1} and {@condition enfeebled||enfeebled 1} while taking the {@condition persistent damage}. The {@condition persistent damage} can last up to 1 minute."
 			],
 			"generic": "G",
 			"variants": [
@@ -15932,7 +15965,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d4} force damage plus 2 force splash damage. The bomb deals {@damage 2d4} {@condition persistent damage||persistent force damage} to applicable targets."
+						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d4} force damage plus 2 force {@trait splash} damage. The bomb deals {@damage 2d4} {@condition persistent damage||persistent force damage} to applicable targets."
 					],
 					"variantType": "lodestone bomb"
 				},
@@ -15943,7 +15976,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d4} force damage plus 3 force splash damage. The bomb deals {@damage 3d4} {@condition persistent damage||persistent force damage} to applicable targets."
+						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d4} force damage plus 3 force {@trait splash} damage. The bomb deals {@damage 3d4} {@condition persistent damage||persistent force damage} to applicable targets."
 					],
 					"variantType": "greater lodestone bomb"
 				}
@@ -15976,7 +16009,7 @@
 			"category": "Bomb",
 			"entries": [
 				"A shatterstone is a small ceramic orb, much like a thunderstone.",
-				"Inside are reactive agents that set up an intense field of sonic vibration when the stone breaks. The bomb grants an item bonus to attack rolls and deals sonic damage and sonic splash damage, according to the bomb's type. Much of the sound is ultrasonic, and creatures with sonic weakness that take damage from the bomb must succeed at a Fortitude saving throw at the listed DC or be {@condition deafened} until the end of their next turn."
+				"Inside are reactive agents that set up an intense field of sonic vibration when the stone breaks. The bomb grants an item bonus to attack rolls and deals sonic damage and sonic {@trait splash} damage, according to the bomb's type. Much of the sound is ultrasonic, and creatures with sonic weakness that take damage from the bomb must succeed at a Fortitude saving throw at the listed DC or be {@condition deafened} until the end of their next turn."
 			],
 			"generic": "G",
 			"variants": [
@@ -15987,7 +16020,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d6} sonic damage and 3 sonic splash damage. The Fortitude DC is 30."
+						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d6} sonic damage and 3 sonic {@trait splash} damage. The Fortitude DC is 30."
 					],
 					"variantType": "shatterstone"
 				},
@@ -15998,7 +16031,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d6} sonic damage and 4 sonic splash damage. The Fortitude DC is 40."
+						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d6} sonic damage and 4 sonic {@trait splash} damage. The Fortitude DC is 40."
 					],
 					"variantType": "greater shatterstone"
 				}
@@ -16031,7 +16064,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Skunk bombs are made from the concentrated odors of xulgaths, hezrous, and other creatures with natural or supernatural stench. The bomb grants an item bonus to attack rolls and deals poison damage and poison splash damage. Any creature hit by the bomb or in its splash area must attempt a Fortitude saving throw with a DC based on the bomb's type. Creatures in the splash area treat the results of their saving throw as one step better.",
+				"Skunk bombs are made from the concentrated odors of xulgaths, hezrous, and other creatures with natural or supernatural stench. The bomb grants an item bonus to attack rolls and deals poison damage and poison {@trait splash} damage. Any creature hit by the bomb or in its splash area must attempt a Fortitude saving throw with a DC based on the bomb's type. Creatures in the splash area treat the results of their saving throw as one step better.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -16060,7 +16093,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The bomb deals {@damage 1d4} poison damage and 1 poison splash damage. The Fortitude DC is 15."
+						"The bomb deals {@damage 1d4} poison damage and 1 poison {@trait splash} damage. The Fortitude DC is 15."
 					],
 					"variantType": "lesser"
 				},
@@ -16071,7 +16104,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} poison damage and 2 poison splash damage. The Fortitude DC is 17."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} poison damage and 2 poison {@trait splash} damage. The Fortitude DC is 17."
 					],
 					"variantType": "moderate"
 				},
@@ -16082,7 +16115,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} poison damage and 3 poison splash damage. The Fortitude DC is 28."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} poison damage and 3 poison {@trait splash} damage. The Fortitude DC is 28."
 					],
 					"variantType": "greater"
 				},
@@ -16093,7 +16126,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} poison damage and 4 poison splash damage. The Fortitude DC is 37."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} poison damage and 4 poison {@trait splash} damage. The Fortitude DC is 37."
 					],
 					"variantType": "major"
 				}
@@ -16147,7 +16180,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"Assassin vine wine that has been aged for several years\u2014 or artificially aged with alchemy\u2014develops both a greater complexity of flavor and a stronger connection to an assassin vine's bond with nature. When you drink the wine, vegetation in a 20-foot emanation around you begins to writhe, becoming difficult terrain until the start of your next turn."
+						"Assassin vine wine that has been aged for several years\u2014or artificially aged with alchemy\u2014develops both a greater complexity of flavor and a stronger connection to an assassin vine's bond with nature. When you drink the wine, vegetation in a 20-foot emanation around you begins to writhe, becoming difficult terrain until the start of your next turn."
 					],
 					"variantType": "aged assassin vine wine"
 				}
@@ -16475,7 +16508,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Animalistic Lemon juice and powdered claws or talons are added to the cocktail. You gain an unarmed attack in the brawling group of your choice between a jaws attack that deals {@damage 1d6} piercing damage or a claw attack that has the {@trait agile} trait and deals {@damage 1d4} slashing damage.",
+						"Animalistic Lemon juice and powdered claws or talons are added to the cocktail. You gain an unarmed attack in the {@group brawling} group of your choice between a jaws attack that deals {@damage 1d6} piercing damage or a claw attack that has the {@trait agile} trait and deals {@damage 1d4} slashing damage.",
 						"Double This cocktail is just stronger, with more ginger and more rum. You gain resistance 1 to physical damage. The resistance increases to 2 for a moderate fury cocktail or 5 for a greater fury cocktail.",
 						"Mournful A few flower petals add a powerful aroma to the drink. You gain resistance 1 to negative damage, or resistance 1 to positive damage if you have negative healing. The resistance increases to 5 for a moderate fury cocktail or 10 for a greater fury cocktail.",
 						"Skeptical A splash of bitters gives the drink a more complex flavor. You gain a +1 item bonus to saves against magic. This bonus is +2 for a moderate fury cocktail or +3 for a greater fury cocktail.",
@@ -18462,7 +18495,7 @@
 			"category": "Elixir",
 			"entries": [
 				"When you use a dose of addiction suppressant, it suppresses the effects of that addiction for 1 day, as if you had taken an actual dose of the drug, but without any of the drug's effects, and it doesn't increase the addiction DC. You also gain an item bonus against the ongoing save against the drug's addiction depending on the type of addiction suppressant.",
-				"For every drug, a specific suppressant must be crafted\u2014 no generalized addiction suppressant yet exists. In order to create an addiction suppressant, you must begin with a dose of the drug to be suppressed, then use alchemical reagents to generate an elixir that can be used to fight that drug's addiction. An addiction suppressant must be a higher level than the drug it is meant to suppress in order to work."
+				"For every drug, a specific suppressant must be crafted\u2014no generalized addiction suppressant yet exists. In order to create an addiction suppressant, you must begin with a dose of the drug to be suppressed, then use alchemical reagents to generate an elixir that can be used to fight that drug's addiction. An addiction suppressant must be a higher level than the drug it is meant to suppress in order to work."
 			],
 			"generic": "G",
 			"variants": [
@@ -19603,7 +19636,7 @@
 			"bulk": "L",
 			"category": "Held",
 			"entries": [
-				"This apparatus increases the viscosity of the reagents in alchemical bombs, to {@trait deadly} effect. As a 10-minute activity that has the {@trait manipulate} trait, you can use a bomb coagulant alembic to distill the contents of one alchemical bomb that deals splash damage into a stickier substance. After distilling, the bomb deals no splash damage but instead deals {@condition persistent damage} equal to and of the same type as its original splash damage. If the bomb already deals {@condition persistent damage}, distilling increases that damage by the bomb's original splash damage."
+				"This apparatus increases the viscosity of the reagents in alchemical bombs, to {@trait deadly} effect. As a 10-minute activity that has the {@trait manipulate} trait, you can use a bomb coagulant alembic to distill the contents of one alchemical bomb that deals {@trait splash} damage into a stickier substance. After distilling, the bomb deals no {@trait splash} damage but instead deals {@condition persistent damage} equal to and of the same type as its original {@trait splash} damage. If the bomb already deals {@condition persistent damage}, distilling increases that damage by the bomb's original {@trait splash} damage."
 			]
 		},
 		{
@@ -19632,7 +19665,7 @@
 			},
 			"category": "Armor",
 			"entries": [
-				"This suit of bone-based {@item fortress plate|TV} is a masterpiece of alchemical science. This armor has a receiver that can hold a single {@item lodestone bomb|TV}, which takes 3 {@action Interact} actions to install. A loaded suit of bone dreadnought plate can be activated to cause the bomb to shift numerous small plates and hinges, offering a wide variety of protections, granting you resistance to cold, electricity, fire, piercing, and slashing damage equal to the loaded lodestone bomb's splash damage. These effects last for 20 minutes, but each time you're hit by an attack that deals damage of one of these types, decrease the remaining duration by 1 minute. Once activated, the armor can't be deactivated. The armor uses up the lodestone bomb during the duration and can't be activated again until a new one is installed."
+				"This suit of bone-based {@item fortress plate|TV} is a masterpiece of alchemical science. This armor has a receiver that can hold a single {@item lodestone bomb|TV}, which takes 3 {@action Interact} actions to install. A loaded suit of bone dreadnought plate can be activated to cause the bomb to shift numerous small plates and hinges, offering a wide variety of protections, granting you resistance to cold, electricity, fire, piercing, and slashing damage equal to the loaded lodestone bomb's {@trait splash} damage. These effects last for 20 minutes, but each time you're hit by an attack that deals damage of one of these types, decrease the remaining duration by 1 minute. Once activated, the armor can't be deactivated. The armor uses up the lodestone bomb during the duration and can't be activated again until a new one is installed."
 			]
 		},
 		{
@@ -19695,7 +19728,7 @@
 			"category": "Worn",
 			"entries": [
 				"The faceplate of a dread helm has a fierce visage that magnifies the effects of fear. Cleverly {@condition concealed} within is a reservoir that can hold a single dread ampoule (Advanced Player's Guide 253), which takes 3 {@action Interact} actions to install.",
-				"A loaded dread helm can be activated to atomize the dread ampoule, creating a fear-inducing mist that hangs around your face. The mist grants an item bonus to {@skill Intimidation} checks equal to the dread ampoule's item bonus. The mist also deals mental damage equal to the dread ampoule's splash damage to all creatures within a 5-foot emanation other than you. The effects last for 3 rounds, consuming the dread ampoule, and once the atomization process has begun it can't be deactivated."
+				"A loaded dread helm can be activated to atomize the dread ampoule, creating a fear-inducing mist that hangs around your face. The mist grants an item bonus to {@skill Intimidation} checks equal to the dread ampoule's item bonus. The mist also deals mental damage equal to the dread ampoule's {@trait splash} damage to all creatures within a 5-foot emanation other than you. The effects last for 3 rounds, consuming the dread ampoule, and once the atomization process has begun it can't be deactivated."
 			]
 		},
 		{
@@ -19808,7 +19841,7 @@
 			},
 			"category": "Armor",
 			"entries": [
-				"This leather armor has been treated with extract from oozes, which can be reactivated in the presence of a strong acid. A receptacle in the armor can hold an acid flask, which takes 3 {@action Interact} actions to install. A loaded suit of ooze skin can be activated to cause the leather to weep slippery protoplasm, granting an item bonus to {@action Escape} and {@action Squeeze} checks equal to the acid flask's item bonus. The protoplasm also irritates the skin on prolonged contact, causing any creature that grapples or swallows you to take acid damage equal to the acid flask's splash damage. Ooze skin remains activated for a number of rounds equal to the level of the acid flask installed. The effects consume the acid flask, and once the reaction has begun it can't be deactivated."
+				"This leather armor has been treated with extract from oozes, which can be reactivated in the presence of a strong acid. A receptacle in the armor can hold an acid flask, which takes 3 {@action Interact} actions to install. A loaded suit of ooze skin can be activated to cause the leather to weep slippery protoplasm, granting an item bonus to {@action Escape} and {@action Squeeze} checks equal to the acid flask's item bonus. The protoplasm also irritates the skin on prolonged contact, causing any creature that grapples or swallows you to take acid damage equal to the acid flask's {@trait splash} damage. Ooze skin remains activated for a number of rounds equal to the level of the acid flask installed. The effects consume the acid flask, and once the reaction has begun it can't be deactivated."
 			]
 		},
 		{
@@ -19931,7 +19964,7 @@
 			},
 			"category": "Held",
 			"entries": [
-				"This trigger array uses thunderstones and crystals to remotely detonate alchemical bombs through harmonic vibrations. When a switch on the trigger is flipped up, the remote trigger begins to emit infrasonic pulses that slowly build up over the course of 30 minutes in up to three alchemical bombs placed next to the trigger (the trigger can be left to attune during your daily preparations). You can later activate the trigger to detonate one or more of the attuned bombs as long as they're within 60 feet. Bombs detonated in this way deal their splash damage as if they had missed a target in the square where they were triggered."
+				"This trigger array uses thunderstones and crystals to remotely detonate alchemical bombs through harmonic vibrations. When a switch on the trigger is flipped up, the remote trigger begins to emit infrasonic pulses that slowly build up over the course of 30 minutes in up to three alchemical bombs placed next to the trigger (the trigger can be left to attune during your daily preparations). You can later activate the trigger to detonate one or more of the attuned bombs as long as they're within 60 feet. Bombs detonated in this way deal their {@trait splash} damage as if they had missed a target in the square where they were triggered."
 			]
 		},
 		{
@@ -20070,7 +20103,7 @@
 			},
 			"category": "Adjustment",
 			"entries": [
-				"This set of tubing snakes down the striking surface of a weapon to deliver alchemical explosives. A single lesser alchemical bomb can be fitted to the weapon siphon as an {@action Interact} action. The bomb must be one that deals energy damage, such as an acid flask, alchemist's fire, bottled lightning, frost vial, or thunderstone. The next three attacks made with the weapon deal {@damage 1d4} damage of the bomb's damage type in addition to the weapon's normal damage. If the second and third attacks aren't all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and aren't modified by any abilities that add to or modify a bomb's effect.",
+				"This set of tubing snakes down the striking surface of a weapon to deliver alchemical explosives. A single lesser alchemical bomb can be fitted to the weapon siphon as an {@action Interact} action. The bomb must be one that deals energy damage, such as an {@item acid flask (generic)||acid flask}, {@item alchemist's fire (generic)||alchemist's fire}, {@item bottled lightning (generic)||bottled lightning}, {@item frost vial (generic)||frost vial}, or {@item thunderstone (generic)||thunderstone}. The next three attacks made with the weapon deal {@damage 1d4} damage of the bomb's damage type in addition to the weapon's normal damage. If the second and third attacks aren't all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal {@trait splash} damage or other special effects of the bomb and aren't modified by any abilities that add to or modify a bomb's effect.",
 				"Adding a weapon siphon to a weapon throws off its balance, causing the multiple attack penalty with the weapon to be one greater than usual (usually \u20136 on a second attack and \u201311 on a third; or \u20135 and \u201310 with an agile weapon)."
 			]
 		},
@@ -22356,7 +22389,7 @@
 			},
 			"category": "Potion",
 			"entries": [
-				"A small bit from a humanoid\u2014such as a hair, scale, or feather\u2014 steeps in the clear liquid of a rebirth potion. When the potion is created, this bit determines the ancestry and heritage the potion changes the imbiber to. After you drink the potion, you transform into that ancestry over 8 hours during your next period of rest, finishing the transformation after the 8 hours are up. Throughout this time, you are {@condition clumsy||clumsy 2}, {@condition enfeebled||enfeebled 2}, and {@condition stupefied||stupefied 2}. Once the transformation is complete, the potion's magic ends and can't be counteracted. Replace your ancestry Hit Points, size, Speeds, ability boosts, ability flaws, traits, and special abilities with those of your new ancestry. You lose your ancestry feats, selecting replacements valid for your new ancestry. You have mild control over the change, but you end up with a unique appearance fitting for your new ancestry, and some quirks of your body remain, such as relative age, general health, scars, and missing digits, limbs, or organs.",
+				"A small bit from a humanoid\u2014such as a hair, scale, or feather\u2014steeps in the clear liquid of a rebirth potion. When the potion is created, this bit determines the ancestry and heritage the potion changes the imbiber to. After you drink the potion, you transform into that ancestry over 8 hours during your next period of rest, finishing the transformation after the 8 hours are up. Throughout this time, you are {@condition clumsy||clumsy 2}, {@condition enfeebled||enfeebled 2}, and {@condition stupefied||stupefied 2}. Once the transformation is complete, the potion's magic ends and can't be counteracted. Replace your ancestry Hit Points, size, Speeds, ability boosts, ability flaws, traits, and special abilities with those of your new ancestry. You lose your ancestry feats, selecting replacements valid for your new ancestry. You have mild control over the change, but you end up with a unique appearance fitting for your new ancestry, and some quirks of your body remain, such as relative age, general health, scars, and missing digits, limbs, or organs.",
 				"Drinking a rebirth potion of your current ancestry works normally, allowing you to rearrange some of the cited ancestry elements and change your appearance (provided you abide by the potion's limitations regarding health and age)."
 			]
 		},
@@ -25976,7 +26009,7 @@
 						"unit": "week"
 					},
 					"entries": [
-						"If your next action is to cast a cozy cabin APG, {@spell magnificent mansion} or {@spell resplendent mansion} spell, you add a room to the structure that is up to 10 feet per side per level of the spell. This room is outfitted with all the accoutrements for a particular type of recreation, determined by you when you cast the spell. Any character who spends at least 1 hour using this recreational facility and then sleeps a full 8 hours inside the location created by the spell is exceptionally well-rested. They regain double the amount of Hit Points they would normally receive for an 8-hour rest, and when they make the next day's preparations, they gain a +1 circumstance bonus to {@skill Athletics} checks and Will saves for the next 12 hours."
+						"If your next action is to cast a {@spell cozy cabin|APG}, {@spell magnificent mansion} or {@spell resplendent mansion} spell, you add a room to the structure that is up to 10 feet per side per level of the spell. This room is outfitted with all the accoutrements for a particular type of recreation, determined by you when you cast the spell. Any character who spends at least 1 hour using this recreational facility and then sleeps a full 8 hours inside the location created by the spell is exceptionally well-rested. They regain double the amount of Hit Points they would normally receive for an 8-hour rest, and when they make the next day's preparations, they gain a +1 circumstance bonus to {@skill Athletics} checks and Will saves for the next 12 hours."
 					]
 				}
 			]
@@ -28836,7 +28869,7 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"Derived from a mixture of krooth venom and an agitating agent, scarlet mist causes bleeding that turns into a foaming mist. When a creature under the effects of scarlet mist takes {@condition persistent damage||persistent bleed damage} from the toxin, creatures within 5 feet take the splash damage. The {@condition persistent damage} can't be staunched until the poison's effects end. A creature that can't bleed doesn't take the bleed damage or cause the splash damage but can still take the poison damage.",
+				"Derived from a mixture of krooth venom and an agitating agent, scarlet mist causes bleeding that turns into a foaming mist. When a creature under the effects of scarlet mist takes {@condition persistent damage||persistent bleed damage} from the toxin, creatures within 5 feet take the {@trait splash} damage. The {@condition persistent damage} can't be staunched until the poison's effects end. A creature that can't bleed doesn't take the bleed damage or cause the {@trait splash} damage but can still take the poison damage.",
 				{
 					"type": "affliction",
 					"DC": 25,
@@ -28845,17 +28878,17 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@damage 3d6} poison damage, {@damage 1d4} {@condition persistent damage||persistent bleed damage}, and 1 poison splash damage",
+							"entry": "{@damage 3d6} poison damage, {@damage 1d4} {@condition persistent damage||persistent bleed damage}, and 1 poison {@trait splash} damage",
 							"duration": "1 round"
 						},
 						{
 							"stage": 2,
-							"entry": "{@damage 3d6} poison damage, {@damage 2d4} {@condition persistent damage||persistent bleed damage}, and 2 poison splash damage",
+							"entry": "{@damage 3d6} poison damage, {@damage 2d4} {@condition persistent damage||persistent bleed damage}, and 2 poison {@trait splash} damage",
 							"duration": "1 round"
 						},
 						{
 							"stage": 3,
-							"entry": "{@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent bleed damage}, and 3 poison splash damage",
+							"entry": "{@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent bleed damage}, and 3 poison {@trait splash} damage",
 							"duration": "1 round"
 						}
 					]
@@ -29718,8 +29751,8 @@
 				"Weapon"
 			],
 			"entries": [
-				"Sharp needles impale anyone who attempts to wield this weapon other than its rightful owner. Each authorized rune is etched with the blood of a specific creature. If any other creature wields the weapon, needles immediately erupt from the weapon's hilt or shaft, dealing {@damage 1d8} piercing damage plus {@damage 1d4} {@condition persistent damage ||persistent bleed damage} to the wielder. If the weapon has a striking rune, this damage increases to {@damage 1d8} per damage die and {@damage 1d4} {@condition persistent damage} per damage die; this counts only the weapon's base die and dice from the striking rune.",
-				"The {@condition persistent damage ||persistent bleed damage} can't end while the creature still holds the weapon. The spikes retract once the creature lets go.",
+				"Sharp needles impale anyone who attempts to wield this weapon other than its rightful owner. Each authorized rune is etched with the blood of a specific creature. If any other creature wields the weapon, needles immediately erupt from the weapon's hilt or shaft, dealing {@damage 1d8} piercing damage plus {@damage 1d4} {@condition persistent damage||persistent bleed damage} to the wielder. If the weapon has a striking rune, this damage increases to {@damage 1d8} per damage die and {@damage 1d4} {@condition persistent damage} per damage die; this counts only the weapon's base die and dice from the striking rune.",
+				"The {@condition persistent damage||persistent bleed damage} can't end while the creature still holds the weapon. The spikes retract once the creature lets go.",
 				"When the rune is crafted, the crafter can choose to broaden the criteria for who can safely wield the item, expanding the users to creatures with a particular alignment, bloodline, or patron deity, as the crafter chooses. This criterion must be shared by the creature who contributed the blood for the rune."
 			]
 		},
@@ -30185,7 +30218,7 @@
 					},
 					"requirements": "You hit a creature using the rime foil as your last action",
 					"entries": [
-						"You cast 5th-level {@spell phantom prison|SoM}SoM on the target (DC 22 Will to disbelieve). If the target has been damaged by a shattered plan in the last round, the DC is instead 24. Special The rime foil pairs with the shattered plan."
+						"You cast 5th-level {@spell phantom prison|SoM} on the target (DC 22 Will to disbelieve). If the target has been damaged by a shattered plan in the last round, the DC is instead 24. Special The rime foil pairs with the shattered plan."
 					]
 				}
 			]
@@ -30461,7 +30494,7 @@
 			},
 			"category": "Adventuring Gear",
 			"entries": [
-				"An alchemical gauntlet emits small alchemical detonations when it makes contact with a foe. As an {@action Interact} action, you can place a bomb into a metal bracket near the wrist of the gauntlet. The bomb must be one that deals energy damage, such as an acid flask, alchemist's fire, bottled lightning, frost vial, or thunderstone. The next three attacks made with the gauntlet deal {@damage 1d4} damage of the bomb's damage type in addition to the gauntlet's normal damage. If the second and third attacks aren't all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and aren't modified by any abilities that add to or modify a bomb's effect."
+				"An alchemical gauntlet emits small alchemical detonations when it makes contact with a foe. As an {@action Interact} action, you can place a bomb into a metal bracket near the wrist of the gauntlet. The bomb must be one that deals energy damage, such as an {@item acid flask (generic)||acid flask}, {@item alchemist's fire (generic)||alchemist's fire}, {@item bottled lightning (generic)||bottled lightning}, {@item frost vial (generic)||frost vial}, or {@item thunderstone (generic)||thunderstone}. The next three attacks made with the gauntlet deal {@damage 1d4} damage of the bomb's damage type in addition to the gauntlet's normal damage. If the second and third attacks aren't all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal {@trait splash} damage or other special effects of the bomb and aren't modified by any abilities that add to or modify a bomb's effect."
 			]
 		},
 		{
@@ -30490,7 +30523,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Concentrated wolfsbane and other anti-shapechanger reagents fill trueshape bombs. These bombs grant an item bonus to attack rolls and deal poison damage, {@condition persistent damage||persistent poison damage}, and poison splash damage, according to their type. If the primary target is under the effects of a {@trait morph} or {@trait polymorph} effect, it must succeed at a Fortitude saving throw at the bomb's listed DC, or else the effects end and the creature returns to its normal form. Targets taking {@condition persistent damage||persistent poison damage} from this bomb must succeed at another Fortitude saving throw at the same DC to change shape using a {@trait morph} or {@trait polymorph} effect.",
+				"Concentrated wolfsbane and other anti-shapechanger reagents fill trueshape bombs. These bombs grant an item bonus to attack rolls and deal poison damage, {@condition persistent damage||persistent poison damage}, and poison {@trait splash} damage, according to their type. If the primary target is under the effects of a {@trait morph} or {@trait polymorph} effect, it must succeed at a Fortitude saving throw at the bomb's listed DC, or else the effects end and the creature returns to its normal form. Targets taking {@condition persistent damage||persistent poison damage} from this bomb must succeed at another Fortitude saving throw at the same DC to change shape using a {@trait morph} or {@trait polymorph} effect.",
 				"The {@condition persistent damage} can last up to 1 minute."
 			],
 			"generic": "G",
@@ -30502,7 +30535,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison splash damage. The Fortitude DC is 30."
+						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage||persistent poison damage}, and 3 poison {@trait splash} damage. The Fortitude DC is 30."
 					],
 					"variantType": "trueshape bomb"
 				},
@@ -30513,7 +30546,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison splash damage. The Fortitude DC is 40."
+						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage||persistent poison damage}, and 4 poison {@trait splash} damage. The Fortitude DC is 40."
 					],
 					"variantType": "greater trueshape bomb"
 				}
@@ -31032,7 +31065,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"One of the panels from the solar shellflower detaches and unfurls into a tigridia-shaped construct of flame. For the next 1 minute, whenever you {@action Strike} an enemy with the solar shellflower, the construct fires a smaller jet of fire that automatically hits the target, dealing {@dice 3d4} additional {@condition persistent damage ||persistent fire damage} or twice that on a critical hit. The solar shellflower usually requires a full day to replenish enough solar energy to recharge this Activation, but if used in an environment with especially strong sunlight, such as in a desert, cliff above the clouds, or near the summer solstice, it can recharge in 1 hour instead."
+						"One of the panels from the solar shellflower detaches and unfurls into a tigridia-shaped construct of flame. For the next 1 minute, whenever you {@action Strike} an enemy with the solar shellflower, the construct fires a smaller jet of fire that automatically hits the target, dealing {@dice 3d4} additional {@condition persistent damage||persistent fire damage} or twice that on a critical hit. The solar shellflower usually requires a full day to replenish enough solar energy to recharge this Activation, but if used in an environment with especially strong sunlight, such as in a desert, cliff above the clouds, or near the summer solstice, it can recharge in 1 hour instead."
 					]
 				}
 			]

@@ -110,7 +110,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This volatile-looking bomb is cobbled together from jagged metal scrap, broken glass, and other bits of razor-sharp fragments, lashed around a core of explosive alchemical slag. A junk bomb deals the listed slashing damage, {@condition persistent damage||persistent bleed damage}, and piercing splash damage. Many types grant an item bonus to attack rolls."
+				"This volatile-looking bomb is cobbled together from jagged metal scrap, broken glass, and other bits of razor-sharp fragments, lashed around a core of explosive alchemical slag. A junk bomb deals the listed slashing damage, {@condition persistent damage||persistent bleed damage}, and piercing {@trait splash} damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"_vmod": {
@@ -118,7 +118,7 @@
 				"entries": {
 					"mode": "replaceTxt",
 					"replaceTags": true,
-					"replace": "A junk bomb deals the listed slashing damage, \\{@condition persistent damage\\|\\|persistent bleed damage\\}, and piercing splash damage. Many types grant an item bonus to attack rolls."
+					"replace": "A junk bomb deals the listed slashing damage, \\{@condition persistent damage\\|\\|persistent bleed damage\\}, and piercing {@trait splash} damage. Many types grant an item bonus to attack rolls."
 				}
 			},
 			"variants": [
@@ -131,11 +131,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A lesser junk bomb deals {@damage 1d8} slashing damage, 1 {@condition persistent damage||persistent bleed damage}, and 1 piercing splash damage."
+							"with": "A lesser junk bomb deals {@damage 1d8} slashing damage, 1 {@condition persistent damage||persistent bleed damage}, and 1 piercing {@trait splash} damage."
 						}
 					},
 					"entries": [
-						"The bomb deals {@damage 1d8} slashing damage, 1 {@condition persistent damage||persistent bleed damage}, and 1 piercing splash damage."
+						"The bomb deals {@damage 1d8} slashing damage, 1 {@condition persistent damage||persistent bleed damage}, and 1 piercing {@trait splash} damage."
 					]
 				},
 				{
@@ -147,11 +147,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A moderate junk bomb deals {@damage 2d8} slashing damage, 2 {@condition persistent damage||persistent bleed damage}, and 2 piercing splash damage. You gain a +1 item bonus to attack rolls."
+							"with": "A moderate junk bomb deals {@damage 2d8} slashing damage, 2 {@condition persistent damage||persistent bleed damage}, and 2 piercing {@trait splash} damage. You gain a +1 item bonus to attack rolls."
 						}
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} slashing damage, 2 {@condition persistent damage||persistent bleed damage}, and 2 piercing splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} slashing damage, 2 {@condition persistent damage||persistent bleed damage}, and 2 piercing {@trait splash} damage."
 					]
 				},
 				{
@@ -163,11 +163,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A greater junk bomb deals {@damage 3d8} slashing damage, 3 {@condition persistent damage||persistent bleed damage}, and 3 piercing splash damage. You gain a +2 item bonus to attack rolls."
+							"with": "A greater junk bomb deals {@damage 3d8} slashing damage, 3 {@condition persistent damage||persistent bleed damage}, and 3 piercing {@trait splash} damage. You gain a +2 item bonus to attack rolls."
 						}
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} slashing damage, 3 {@condition persistent damage||persistent bleed damage}, and 3 piercing splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} slashing damage, 3 {@condition persistent damage||persistent bleed damage}, and 3 piercing {@trait splash} damage."
 					]
 				},
 				{
@@ -179,11 +179,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A greater junk bomb deals {@damage 4d8} slashing damage, 4 {@condition persistent damage||persistent bleed damage}, and 4 piercing splash damage. You gain a +3 item bonus to attack rolls."
+							"with": "A greater junk bomb deals {@damage 4d8} slashing damage, 4 {@condition persistent damage||persistent bleed damage}, and 4 piercing {@trait splash} damage. You gain a +3 item bonus to attack rolls."
 						}
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} slashing damage, 4 {@condition persistent damage||persistent bleed damage}, and 4 piercing splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} slashing damage, 4 {@condition persistent damage||persistent bleed damage}, and 4 piercing {@trait splash} damage."
 					]
 				}
 			]
@@ -215,7 +215,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This tightly sealed metal container is filled with highly pressurized gas that can explode to release a powerful shockwave. A pressure bomb deals the listed bludgeoning damage and splash damage. On a critical hit, the target is knocked {@condition prone}. Many types grant an item bonus to attack rolls, and more powerful pressure bombs can knock creatures back."
+				"This tightly sealed metal container is filled with highly pressurized gas that can explode to release a powerful shockwave. A pressure bomb deals the listed bludgeoning damage and {@trait splash} damage. On a critical hit, the target is knocked {@condition prone}. Many types grant an item bonus to attack rolls, and more powerful pressure bombs can knock creatures back."
 			],
 			"generic": "G",
 			"_vmod": {
@@ -223,7 +223,7 @@
 				"entries": {
 					"mode": "replaceTxt",
 					"replaceTags": true,
-					"replace": "A pressure bomb deals the listed bludgeoning damage and splash damage. On a critical hit, the target is knocked \\{@condition prone\\}. Many types grant an item bonus to attack rolls, and more powerful pressure bombs can knock creatures back."
+					"replace": "A pressure bomb deals the listed bludgeoning damage and {@trait splash} damage. On a critical hit, the target is knocked \\{@condition prone\\}. Many types grant an item bonus to attack rolls, and more powerful pressure bombs can knock creatures back."
 				}
 			},
 			"variants": [
@@ -236,11 +236,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A lesser pressure bomb deals {@damage 1d4} bludgeoning damage and 1 bludgeoning splash damage. On a critical hit, the target is knocked {@condition prone}. Tiny or smaller targets are pushed 5 feet away from you."
+							"with": "A lesser pressure bomb deals {@damage 1d4} bludgeoning damage and 1 bludgeoning {@trait splash} damage. On a critical hit, the target is knocked {@condition prone}. Tiny or smaller targets are pushed 5 feet away from you."
 						}
 					},
 					"entries": [
-						"The bomb deals {@damage 1d4} bludgeoning damage and 1 bludgeoning splash damage. Tiny or smaller targets are pushed 5 feet away from you."
+						"The bomb deals {@damage 1d4} bludgeoning damage and 1 bludgeoning {@trait splash} damage. Tiny or smaller targets are pushed 5 feet away from you."
 					]
 				},
 				{
@@ -252,11 +252,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A moderate pressure bomb deals {@damage 2d4} bludgeoning damage and 2 bludgeoning splash damage. On a critical hit, the target is knocked {@condition prone}. You gain a +1 item bonus to attack rolls, and Small or smaller targets are pushed 5 feet away from you."
+							"with": "A moderate pressure bomb deals {@damage 2d4} bludgeoning damage and 2 bludgeoning {@trait splash} damage. On a critical hit, the target is knocked {@condition prone}. You gain a +1 item bonus to attack rolls, and Small or smaller targets are pushed 5 feet away from you."
 						}
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} bludgeoning damage and 2 bludgeoning splash damage. Small or smaller targets are pushed 5 feet away from you."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} bludgeoning damage and 2 bludgeoning {@trait splash} damage. Small or smaller targets are pushed 5 feet away from you."
 					]
 				},
 				{
@@ -268,11 +268,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A greater pressure bomb deals {@damage 3d4} bludgeoning damage and 3 bludgeoning splash damage. On a critical hit, the target is knocked {@condition prone}. You gain a +2 item bonus to attack rolls, and Medium or smaller targets are pushed 5 feet away from you."
+							"with": "A greater pressure bomb deals {@damage 3d4} bludgeoning damage and 3 bludgeoning {@trait splash} damage. On a critical hit, the target is knocked {@condition prone}. You gain a +2 item bonus to attack rolls, and Medium or smaller targets are pushed 5 feet away from you."
 						}
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} bludgeoning damage and 3 bludgeoning splash damage. Medium or smaller targets are pushed 5 feet away from you."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} bludgeoning damage and 3 bludgeoning {@trait splash} damage. Medium or smaller targets are pushed 5 feet away from you."
 					]
 				},
 				{
@@ -284,11 +284,11 @@
 					},
 					"_mod": {
 						"entries": {
-							"with": "A major pressure bomb deals {@damage 4d4} bludgeoning damage and 4 bludgeoning splash damage. On a critical hit, the target is knocked {@condition prone}. You gain a +3 item bonus to attack rolls, and Medium or smaller creatures who take splash damage are pushed 5 feet away from the target, and then, if the target is Large or smaller, it is pushed 5 feet away from you."
+							"with": "A major pressure bomb deals {@damage 4d4} bludgeoning damage and 4 bludgeoning {@trait splash} damage. On a critical hit, the target is knocked {@condition prone}. You gain a +3 item bonus to attack rolls, and Medium or smaller creatures who take {@trait splash} damage are pushed 5 feet away from the target, and then, if the target is Large or smaller, it is pushed 5 feet away from you."
 						}
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} bludgeoning damage and 4 bludgeoning splash damage. Medium or smaller creatures who take splash damage are pushed 5 feet away from the target, and then, if the target is Large or smaller, it is pushed 5 feet away from you."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} bludgeoning damage and 4 bludgeoning {@trait splash} damage. Medium or smaller creatures who take {@trait splash} damage are pushed 5 feet away from the target, and then, if the target is Large or smaller, it is pushed 5 feet away from you."
 					]
 				}
 			]

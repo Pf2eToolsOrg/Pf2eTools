@@ -2475,7 +2475,7 @@
 						"range increment <60 feet>",
 						"splash 10 feet"
 					],
-					"damage": "7 acid damage plus {@damage 3d6} {@condition persistent damage||persistent acid damage} and 9 acid splash damage",
+					"damage": "7 acid damage plus {@damage 3d6} {@condition persistent damage||persistent acid damage} and 9 acid {@trait splash} damage",
 					"types": [
 						"acid",
 						"persistent"
@@ -2489,7 +2489,7 @@
 						"range increment <60 feet>",
 						"splash 10 feet"
 					],
-					"damage": "{@damage 3d8+6} fire plus 3 {@condition persistent damage||persistent fire} and 9 fire splash",
+					"damage": "{@damage 3d8+6} fire plus 3 {@condition persistent damage||persistent fire} and 9 fire {@trait splash}",
 					"types": [
 						"fire",
 						"persistent"
@@ -2557,7 +2557,7 @@
 				"bot": [
 					{
 						"entries": [
-							"When throwing an alchemical bomb with the {@trait splash} trait, Qormintur can choose to deal splash damage to her primary target only, rather than dealing the usual splash damage."
+							"When throwing an alchemical bomb with the {@trait splash} trait, Qormintur can choose to deal {@trait splash} damage to her primary target only, rather than dealing the usual {@trait splash} damage."
 						],
 						"name": "Bomber"
 					},
