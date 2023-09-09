@@ -12,14 +12,14 @@ Object.assign(global, require("../js/converter.js"));
 */
 
 class PdfConverter extends Converter {
-	constructor(opts) {
+	constructor (opts) {
 		opts = opts || {};
 		super(opts);
 		this._args = opts.args;
 		this._errors = {};
 	}
 
-	exec() {
+	exec () {
 		const files = ut.listFiles({
 			dir: this._args.input,
 			whitelistFileExts: [".txt"],
@@ -35,14 +35,14 @@ class PdfConverter extends Converter {
 			Object.entries(this._errors).forEach(([file, errors]) => {
 				console.log(`"${file}": ${errors.length} errors:`);
 				errors.forEach((err) =>
-					console.log(`--- "${err.block}": ${err.e.message}`)
+					console.log(`--- "${err.block}": ${err.e.message}`),
 				);
 				console.log("-----------------------------------------------");
 			});
 		}
 	}
 
-	_parseFile(file) {
+	_parseFile (file) {
 		console.log(`Parsing "${file}"...`);
 		const source = file.split("/").last().replace(/\.txt/, "");
 		const { data, strFailedChunks } = this._parseChunks(file, source);
@@ -62,7 +62,7 @@ class PdfConverter extends Converter {
 		});
 	}
 
-	_parseChunks(file, source) {
+	_parseChunks (file, source) {
 		const fileContent = fs.readFileSync(file, "utf-8");
 		const sourceText = this._preprocessString(fileContent);
 		const chunks = sourceText
@@ -99,7 +99,7 @@ class PdfConverter extends Converter {
  * output="./trash"
  * merge
  */
-async function main() {
+async function main () {
 	ut.patchLoadJson();
 	const args = ut.ArgParser.parse();
 	const converter = new PdfConverter({

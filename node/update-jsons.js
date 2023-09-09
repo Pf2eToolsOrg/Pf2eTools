@@ -5,7 +5,7 @@ const ut = require("./util");
 require("../js/utils");
 require("../js/parser");
 
-function updateFolder(folder) {
+function updateFolder (folder) {
 	console.log(`Updating directory ${folder}...`);
 	const files = ut.listFiles({ dir: folder });
 	files
@@ -16,26 +16,26 @@ function updateFolder(folder) {
 			if (json.item) {
 				json.item = json.item.map((x) => {
 					if (
-						x.category !== "Coda" &&
-						x.traits &&
-						Array.isArray(x.traits) &&
-						x.traits.filter((t) => t.includes("coda")).length > 0
+						x.category !== "Coda"
+						&& x.traits
+						&& Array.isArray(x.traits)
+						&& x.traits.filter((t) => t.includes("coda")).length > 0
 					) {
 						console.log(
-							`\tUpdating ${x.name} coda category in ${file}...`
+							`\tUpdating ${x.name} coda category in ${file}...`,
 						);
 						x.category = "Coda";
 					}
 					if (
-						x.entries &&
-						Array.isArray(x.entries) &&
-						x.entries.length
+						x.entries
+						&& Array.isArray(x.entries)
+						&& x.entries.length
 					) {
 						x.entries = x.entries.map((e) => {
 							if (typeof e === "object") {
 								if (e.variants) {
 									console.log(
-										`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`
+										`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`,
 									);
 									if (!Array.isArray(x.variants)) {
 										x.variants = e.variants;
@@ -52,21 +52,21 @@ function updateFolder(folder) {
 					if (x.variants) {
 						if (!x.generic) {
 							console.log(
-								`\tUpdating ${x.name} not having generic attribute in ${file}...`
+								`\tUpdating ${x.name} not having generic attribute in ${file}...`,
 							);
 							x.generic = "G";
 						}
 						x.variants.map((v) => {
 							if (
-								v.entries &&
-								Array.isArray(v.entries) &&
-								v.entries.length
+								v.entries
+								&& Array.isArray(v.entries)
+								&& v.entries.length
 							) {
 								v.entries = v.entries.map((e) => {
 									if (typeof e === "object") {
 										if (e.variants) {
 											console.log(
-												`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`
+												`\tUpdating ${x.name} item variants being stuck in abilities in ${file}...`,
 											);
 											x.variants.push(...e.variants);
 											delete e.variants;
@@ -78,7 +78,7 @@ function updateFolder(folder) {
 							}
 							if (!v.variantType) {
 								console.log(
-									`\tUpdating ${x.name} item variants in ${file}...`
+									`\tUpdating ${x.name} item variants in ${file}...`,
 								);
 								if (!v.type && v.name) {
 									v.variantType =
@@ -93,7 +93,7 @@ function updateFolder(folder) {
 							}
 							if (v.craftReq && !Array.isArray(v.craftReq)) {
 								console.log(
-									`\tUpdating ${x.name} item variant craftReq to array in ${file}...`
+									`\tUpdating ${x.name} item variant craftReq to array in ${file}...`,
 								);
 								v.craftReq = [v.craftReq];
 							}
@@ -105,7 +105,7 @@ function updateFolder(folder) {
 						"string"
 					) {
 						console.log(
-							`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`
+							`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`,
 						);
 						if (typeof x.special === "string") {
 							x.special = [x.special];
@@ -118,28 +118,28 @@ function updateFolder(folder) {
 						}
 					}
 					if (
-						x.activate &&
-						x.activate.components &&
-						!Array.isArray(x.activate.components)
+						x.activate
+						&& x.activate.components
+						&& !Array.isArray(x.activate.components)
 					) {
 						console.log(
-							`\tUpdating ${x.name} components to array in ${file}...`
+							`\tUpdating ${x.name} components to array in ${file}...`,
 						);
 						x.activate.components = [x.activate.components];
 					}
 					if (
-						x.activate &&
-						x.activate.components &&
-						x.activate.components.length
+						x.activate
+						&& x.activate.components
+						&& x.activate.components.length
 					) {
 						x.activate.components.map((component) => {
 							if (
-								component.toLowerCase() === "strike" ||
-								component.toLowerCase() === "interact" ||
-								component.toLowerCase() === "cast a spell"
+								component.toLowerCase() === "strike"
+								|| component.toLowerCase() === "interact"
+								|| component.toLowerCase() === "cast a spell"
 							) {
 								console.log(
-									`\tTagging ${x.name} components in ${file}...`
+									`\tTagging ${x.name} components in ${file}...`,
 								);
 								component = `{@action ${component}}`;
 							}
@@ -160,7 +160,7 @@ function updateFolder(folder) {
 					}
 					if (x.type === "Equipment" && !(x.equipment === true)) {
 						console.log(
-							`\tUpdating ${x.name} types from Equipment to Item in ${file}...`
+							`\tUpdating ${x.name} types from Equipment to Item in ${file}...`,
 						);
 						x.type = "Item";
 					}
@@ -171,7 +171,7 @@ function updateFolder(folder) {
 				json.baseitem = json.baseitem.map((x) => {
 					if (x.type === "Equipment" && !(x.equipment === true)) {
 						console.log(
-							`\tUpdating ${x.name} types from Equipment to Item in ${file}...`
+							`\tUpdating ${x.name} types from Equipment to Item in ${file}...`,
 						);
 						x.type = "Item";
 					}
@@ -181,12 +181,12 @@ function updateFolder(folder) {
 			if (json.spell) {
 				json.spell = json.spell.map((sp) => {
 					if (
-						sp.heightened &&
-						sp.heightened.X &&
-						Array.isArray(sp.heightened.X)
+						sp.heightened
+						&& sp.heightened.X
+						&& Array.isArray(sp.heightened.X)
 					) {
 						console.log(
-							`\tUpdating ${sp.name} spell heightening in ${file}...`
+							`\tUpdating ${sp.name} spell heightening in ${file}...`,
 						);
 						let heightenedOld = sp.heightened.X;
 						sp.heightened.X = {};
@@ -199,7 +199,7 @@ function updateFolder(folder) {
 					}
 					if (sp && sp.range && sp.range.type) {
 						console.log(
-							`\tUpdating ${sp.name} spell range in ${file}...`
+							`\tUpdating ${sp.name} spell range in ${file}...`,
 						);
 						sp.range.unit = sp.range.type;
 						delete sp.range.type;
@@ -210,25 +210,25 @@ function updateFolder(folder) {
 						delete sp.type;
 					}
 					if (
-						sp &&
-						typeof sp.components === "object" &&
-						!Array.isArray(sp.components)
+						sp
+						&& typeof sp.components === "object"
+						&& !Array.isArray(sp.components)
 					) {
 						console.log(
-							`\tUpdating ${sp.name} spell components in ${file}...`
+							`\tUpdating ${sp.name} spell components in ${file}...`,
 						);
 						sp.components = [Object.keys(sp.components)];
 					}
 					if (
-						sp &&
-						sp.traditions &&
-						sp.traditions.some((rx) => rx.match(/[A-Z]/g))
+						sp
+						&& sp.traditions
+						&& sp.traditions.some((rx) => rx.match(/[A-Z]/g))
 					) {
 						console.log(
-							`\tUpdating ${sp.name} traditions in ${file}...`
+							`\tUpdating ${sp.name} traditions in ${file}...`,
 						);
 						sp.traditions = sp.traditions.map((t) =>
-							t.toLowerCase()
+							t.toLowerCase(),
 						);
 					}
 					if (sp && sp.subclass && sp.subclass["Cleric|Domain"]) {
@@ -249,8 +249,8 @@ function updateFolder(folder) {
 							duration.sustained = true;
 						}
 						if (
-							duration.unit === "unlimited" ||
-							duration.unit === "special"
+							duration.unit === "unlimited"
+							|| duration.unit === "special"
 						) {
 							delete duration.number;
 						}
@@ -271,11 +271,11 @@ function updateFolder(folder) {
 			if (json.ancestry) {
 				json.ancestry = json.ancestry.map((x) => {
 					if (
-						typeof x.size === "string" ||
-						x.size instanceof String
+						typeof x.size === "string"
+						|| x.size instanceof String
 					) {
 						console.log(
-							`\tUpdating ${x.name} ancestry size in ${file}...`
+							`\tUpdating ${x.name} ancestry size in ${file}...`,
 						);
 						x.size = x.size.split(/, or |, | or /g);
 					}
@@ -286,7 +286,7 @@ function updateFolder(folder) {
 				json.feat = json.feat.map((x) => {
 					if (typeof x.special === "string") {
 						console.log(
-							`\tUpdating ${x.name} special to arrays in ${file}...`
+							`\tUpdating ${x.name} special to arrays in ${file}...`,
 						);
 						x.special = [x.special];
 					}
@@ -300,7 +300,7 @@ function updateFolder(folder) {
 						"string"
 					) {
 						console.log(
-							`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`
+							`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`,
 						);
 						if (typeof x.special === "string") {
 							x.special = [x.special];
@@ -320,10 +320,10 @@ function updateFolder(folder) {
 				json.creature = json.creature.map((cr) => {
 					if (cr.creatureType) {
 						console.log(
-							`\tUpdating ${cr.name} creature type in ${file}...`
+							`\tUpdating ${cr.name} creature type in ${file}...`,
 						);
 						cr.traits.push(
-							cr.creatureType.map((t) => t.toLowerCase())
+							cr.creatureType.map((t) => t.toLowerCase()),
 						);
 						delete cr.creatureType;
 						cr.traits = [...new Set(cr.traits.flat())];
@@ -335,12 +335,12 @@ function updateFolder(folder) {
 						delete cr.hasImages;
 					}
 					if (
-						cr.skills &&
-						Object.keys(cr.skills).find((k) => k.match(/[A-Z]/g))
+						cr.skills
+						&& Object.keys(cr.skills).find((k) => k.match(/[A-Z]/g))
 					) {
 						// Stolen from https://bobbyhadz.com/blog/javascript-lowercase-object-keys
 						console.log(
-							`\tUpdating ${cr.name} skill to lowercase in ${file}...`
+							`\tUpdating ${cr.name} skill to lowercase in ${file}...`,
 						);
 
 						cr.skills = Object.keys(cr.skills).reduce(
@@ -348,12 +348,12 @@ function updateFolder(folder) {
 								accumulator[key.toLowerCase()] = cr.skills[key];
 								return accumulator;
 							},
-							{}
+							{},
 						);
 					}
 					if (cr.skills) {
 						for (const skill of Object.keys(cr.skills).filter((s) =>
-							s.match(/[Ll]ore\s+\(.*\)/g)
+							s.match(/[Ll]ore\s+\(.*\)/g),
 						)) {
 							cr.skills["lore"] = cr.skills[skill];
 							const match = /\((.*)\)/.exec(skill);
@@ -363,18 +363,18 @@ function updateFolder(folder) {
 						}
 					}
 					if (
-						cr.ac ||
-						cr.savingThrows ||
-						cr.hardness ||
-						cr.hp ||
-						cr.bt ||
-						cr.immunities ||
-						cr.weaknesses ||
-						cr.resistances
+						cr.ac
+						|| cr.savingThrows
+						|| cr.hardness
+						|| cr.hp
+						|| cr.bt
+						|| cr.immunities
+						|| cr.weaknesses
+						|| cr.resistances
 					) {
 						cr.defenses = cr.defenses || {};
 						console.log(
-							`\tUpdating ${cr.name} defenses in ${file}...`
+							`\tUpdating ${cr.name} defenses in ${file}...`,
 						);
 						for (let k of [
 							"ac",
@@ -415,7 +415,7 @@ function updateFolder(folder) {
 									r.note = r.note.trimAnyChar("()");
 								}
 								return r;
-							}
+							},
 						);
 					}
 					if (cr.defenses && cr.defenses.weaknesses) {
@@ -425,35 +425,35 @@ function updateFolder(folder) {
 									r.note = r.note.trimAnyChar("()");
 								}
 								return r;
-							}
+							},
 						);
 					}
 					if (
-						cr.languages &&
-						cr.languages.languages &&
-						cr.languages.languages.length &&
-						cr.languages.languages.find((k) => k.match(/[A-Z]/g))
+						cr.languages
+						&& cr.languages.languages
+						&& cr.languages.languages.length
+						&& cr.languages.languages.find((k) => k.match(/[A-Z]/g))
 					) {
 						console.log(
-							`\tUpdating ${cr.name} languages to lowercase in ${file}...`
+							`\tUpdating ${cr.name} languages to lowercase in ${file}...`,
 						);
 						cr.languages.languages = cr.languages.languages.map(
-							(k) => k.toLowerCase()
+							(k) => k.toLowerCase(),
 						);
 					}
 					if (cr.attacks && cr.attacks.length) {
 						if (
 							cr.attacks.find(
 								(k) =>
-									k.activity &&
-									k.activity.unit &&
-									k.activity.unit === "action" &&
-									k.activity.number &&
-									k.activity.number === 1
+									k.activity
+									&& k.activity.unit
+									&& k.activity.unit === "action"
+									&& k.activity.number
+									&& k.activity.number === 1,
 							)
 						) {
 							console.log(
-								`\tUpdating ${cr.name} attacks to remove vestigial data in ${file}...`
+								`\tUpdating ${cr.name} attacks to remove vestigial data in ${file}...`,
 							);
 							cr.attacks = cr.attacks.map((k) => {
 								delete k.activity;
@@ -478,16 +478,16 @@ function updateFolder(folder) {
 								k.tradition = k.tradition.toLowerCase();
 							}
 							if (
-								k.name &&
-								k.type &&
-								k.tradition &&
-								(k.name.localeCompare(
+								k.name
+								&& k.type
+								&& k.tradition
+								&& (k.name.localeCompare(
 									`${k.type} ${k.tradition}`,
-									{ sensitivity: "base" }
-								) ||
-									k.name.localeCompare(
+									{ sensitivity: "base" },
+								)
+									|| k.name.localeCompare(
 										`${k.tradition} ${k.type}`,
-										{ sensitivity: "base" }
+										{ sensitivity: "base" },
 									))
 							) {
 								delete k.name;
@@ -519,15 +519,15 @@ function updateFolder(folder) {
 									const level = l.toString();
 									if (k.entry[level]) {
 										k.entry[level] = mapSpellLevel(
-											k.entry[level]
+											k.entry[level],
 										);
 									}
 									if (
-										k.entry.constant &&
-										k.entry.constant[level]
+										k.entry.constant
+										&& k.entry.constant[level]
 									) {
 										k.entry.constant[level] = mapSpellLevel(
-											k.entry.constant[level]
+											k.entry.constant[level],
 										);
 									}
 								}
@@ -558,8 +558,8 @@ function updateFolder(folder) {
 							}
 							if (a.activity) {
 								if (
-									a.activity.number === 1 &&
-									a.activity.unit === "free"
+									a.activity.number === 1
+									&& a.activity.unit === "free"
 								) {
 									delete a.activity.entry;
 								}
@@ -583,17 +583,17 @@ function updateFolder(folder) {
 			if (json.hazard) {
 				json.hazard = json.hazard.map((h) => {
 					if (
-						h.actions &&
-						h.actions.filter((a) => a.type === "attack").length
+						h.actions
+						&& h.actions.filter((a) => a.type === "attack").length
 					) {
 						console.log(
-							`\tUpdating ${h.name} actions in ${file}...`
+							`\tUpdating ${h.name} actions in ${file}...`,
 						);
 						h.attacks = h.actions.filter(
-							(a) => a.type === "attack"
+							(a) => a.type === "attack",
 						);
 						h.actions = h.actions.filter(
-							(a) => a.type !== "attack"
+							(a) => a.type !== "attack",
 						);
 					}
 					if (h.actions) {
@@ -628,8 +628,8 @@ function updateFolder(folder) {
 										std: h.defenses.savingThrows[k],
 									};
 								} else if (
-									h.defenses.savingThrows[k] &&
-									h.defenses.savingThrows[k].default
+									h.defenses.savingThrows[k]
+									&& h.defenses.savingThrows[k].default
 								) {
 									h.defenses.savingThrows[k].std =
 										h.defenses.savingThrows[k].default;
@@ -648,16 +648,16 @@ function updateFolder(folder) {
 							delete h.defenses.notes;
 						}
 						if (
-							h.defenses &&
-							h.defenses.hp &&
-							h.defenses.hp.notes
+							h.defenses
+							&& h.defenses.hp
+							&& h.defenses.hp.notes
 						) {
 							Object.keys(h.defenses.hp.notes).forEach(
 								(k) =>
 									(h.defenses.hp.notes[k] =
 										h.defenses.hp.notes[k].trimAnyChar(
-											".,;"
-										))
+											".,;",
+										)),
 							);
 						}
 					}
@@ -677,8 +677,8 @@ function updateFolder(folder) {
 							duration.sustained = true;
 						}
 						if (
-							duration.unit === "unlimited" ||
-							duration.unit === "special"
+							duration.unit === "unlimited"
+							|| duration.unit === "special"
 						) {
 							delete duration.number;
 						}
@@ -699,9 +699,9 @@ function updateFolder(folder) {
 			if (json.archetype) {
 				json.archetype = json.archetype.map((a) => {
 					if (
-						a.traits &&
-						Array.isArray(a.traits) &&
-						a.traits.length
+						a.traits
+						&& Array.isArray(a.traits)
+						&& a.traits.length
 					) {
 						a.rarity = a.traits[0];
 						delete a.traits;

@@ -5004,7 +5004,7 @@ Renderer.feat = {
 		return renderStack.join("");
 	},
 
-	getFooterEntry(feat) {
+	getFooterEntry (feat) {
 		const renderer = Renderer.get();
 		return Object.keys(feat.footer).sort().map(lvl => `<p class="pf2-stat pf2-stat__section"><strong>${lvl}</strong>&nbsp;${renderer.render(feat.footer[lvl])}</p>`).join("");
 	},
