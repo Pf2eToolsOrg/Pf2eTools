@@ -160,6 +160,18 @@
 					]
 				},
 				{
+					"name": "Elemental",
+					"shortName": "Elemental",
+					"type": "Instinct",
+					"source": "RoE",
+					"page": 54,
+					"subclassFeatures": [
+						"Instinct|Barbarian|CRB|Elemental|RoE|1",
+						"Weapon Specialization|Barbarian|CRB|Elemental|RoE|7",
+						"Raging Resistance|Barbarian|CRB|Elemental|RoE|9"
+					]
+				},
+				{
 					"name": "Fury",
 					"shortName": "Fury",
 					"type": "Instinct",
@@ -902,6 +914,127 @@
 					"name": "Raging Resistance",
 					"entries": [
 						"You resist piercing damage and the damage type of your dragon's breath weapon."
+					]
+				}
+			]
+		},		
+		{
+			"name": "Instinct",
+			"source": "RoE",
+			"page": 54,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Elemental",
+			"subclassSource": "RoE",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Elemental Instinct",
+					"entries": [
+						"This instinct option for barbarians allows you to channel elemental forces, bonding with a single element and its associated plane. Perhaps your ancestors were elemental conjurers or blessed by an elemental lord. Select an element from {@table Elemental Instincts|RoE|Table 3\u20135: Elemental Instincts} to be your instinct's element. If your element offers multiple damage types, choose one of those type when you select your element.",
+ 					{
+							"type": "table",
+							"name": "Elemental Instincts",
+							"id": "3-5",
+							"source": "RoE",
+							"page": 54,
+							"colSizes": [
+								2,
+								2,
+								3
+							],
+							"rows": [
+								[
+									"Element",
+									"Trait",
+									"Damage"
+								],
+								[
+									"Air",
+									"{@trait Air}",
+									"Electricity or slashing"
+								],
+								[
+									"Earth",
+									"{@trait Earth}",
+									"Bludgeoning or piercing"
+								],
+								[
+									"Fire",
+									"{@trait Fire}",
+									"Fire"
+								],
+								[
+									"Metal",
+									"{@trait Metal}",
+									"Piercing or slashing"
+								],
+								[
+									"Water",
+									"{@trait Water}",
+									"Bludgeoning or cold"
+								],
+								[
+									"Wood",
+									"{@trait Wood}",
+									"Bludgeoning or piercing"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Anathema",
+					"entries": [
+						"Disrespecting an elemental creature is anathema to your instinct; defending yourself against one is not. Purposefully despoiling the elemental plane associated with your element is anathema to your instinct, though this doesn't prevent you from responsibly altering that plane."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Elemental Rage (Instinct Ability)",
+					"entries": [
+						"While raging, you're cloaked in a vortex of elemental matter; you become {@condition concealed} against ranged attacks. You can't use this concealment to {@action Hide} or {@action Sneak}. While raging, you increase the additional damage from {@action Rage} from 2 to 4 and change its damage type to the one you selected for your element.",
+						"If you have any {@class Kineticist|roe} {@trait impulses} with the same element type as the one you chose for your instinct, such as ones gained by taking the Kineticist Dedication multiclass feat, they gain the {@trait rage} trait."
+					]
+				}
+			]
+		},
+		{
+			"name": "Weapon Specialization",
+			"source": "RoE",
+			"page": 54,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Elemental",
+			"subclassSource": "RoE",
+			"level": 7,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Specialization Ability",
+					"entries": [
+						"When you use elemental rage, you increase the damage from {@action Rage} from 4 to 6. If you have greater weapon specialization, instead increase the damage from {@action Rage} when using elemental rage from 6 to 12."
+					]
+				}
+			]
+		},
+		{
+			"name": "Raging Resistance",
+			"source": "RoE",
+			"page": 54,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Elemental",
+			"subclassSource": "RoE",
+			"level": 9,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Raging Resistance",
+					"entries": [
+						"You resist the damage dealt by attacks and abilities of elemental creatures of your chosen element, as well as creatures made of your element, regardless of the damage type. You also resist damage dealt by attacks, spells, and abilities with your elemental trait."
 					]
 				}
 			]
