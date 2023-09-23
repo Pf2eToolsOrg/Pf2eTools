@@ -2892,6 +2892,11 @@
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"RoE|92"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ne"
@@ -2930,6 +2935,9 @@
 				"might",
 				"secrecy"
 			],
+			"alternateDomains": [
+				"cities", "dust", "metal", "undeath"
+			],
 			"spells": {
 				"1": [
 					"shockwave"
@@ -2949,6 +2957,41 @@
 			"favoredWeapon": {
 				"weapons": [
 					"morningstar"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Ayrzul gains the following additional abilities.",
+				"immune": ["petrified"],
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"trait": [
+					"immune to petrified"
+				],
+				"melee": [
+					{
+						"name": "fossilized jaw",
+						"traits": [
+							"reach <20 feet>"
+						],
+						"damage": "6d6+8",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "radioactive ray",
+						"range": 120,
+						"rangedIncrement": true,
+						"trait": [
+							"air"
+						],
+						"damage": "4d6+3",
+						"damageType": "poison",
+						"damage2": "2d6",
+						"damageType2": "persistent poison"
+					}
 				]
 			}
 		},
@@ -14664,6 +14707,11 @@
 			],
 			"source": "LOGM",
 			"page": 128,
+			"otherSources": {
+				"Expanded": [
+					"RoE|93"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ng"
@@ -14703,6 +14751,9 @@
 				"toil",
 				"wealth"
 			],
+			"alternateDomains": [
+				"creation", "protection"
+			],
 			"spells": {
 				"1": [
 					"shattering gem|LOGM"
@@ -14722,6 +14773,39 @@
 			"favoredWeapon": {
 				"weapons": [
 					"pick"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Sairazul gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"immune": [
+					"petrified"
+				],
+				"shield": 15,
+				"melee": [
+					{
+						"name": "pick",
+						"traits": [
+							"fatal <d10>",
+							"reach <15 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "returning gemstones",
+						"range": 120,
+						"trait": [
+							"agile","nonlethal", "thrown <60 feet>", "versatile <bludgeoning>"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}
 				]
 			}
 		},
