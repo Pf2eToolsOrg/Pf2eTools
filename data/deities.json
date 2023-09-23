@@ -14,12 +14,6 @@
 				"inevitability",
 				"mourning"
 			],
-			"alignment": {
-				"followerAlignment": [
-					"lg",
-					"ln"
-				]
-			},
 			"font": [
 				"harm"
 			],
@@ -68,6 +62,35 @@
 			"favoredWeapon": {
 				"weapons": [
 					"pick"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Ferrumnestra gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "mandibles",
+						"traits": [
+							"reach <15 feet>"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "deteriorating spit",
+						"range": 60,
+						"rangedIncrement": true,
+						"damage": "4d6+3",
+						"damageType": "acid",
+						"damage2": "2d6",
+						"damageType2": "persistent acid"
+					}
 				]
 			},
 			"hasLore": true
@@ -137,6 +160,27 @@
 					"alchemical bomb"
 				],
 				"entry": "{@item alchemical bomb|CRB}; a cleric of Laudinmio doesn't automatically gain any access to uncommon bombs"
+			},
+			"avatar": {
+				"preface": "When casting the avatar spell, a worshipper of Laudinmio gains the following additional abilities. The avatar of Laudinmio manifests with a shard bomb in each hand but must Interact to draw a new one. The avatar is immune to the shard bomb's splash damage.",
+				"speed": {
+					"walk": 60
+				},
+				"ignoreTerrain": true,
+				"ranged": [
+					{
+						"name": "shard bomb",
+						"traits": [
+							"splash"
+						],
+						"range": 120,
+						"damage": "4d6+3",
+						"damageType": "slashing",
+						"damage2": "3",
+						"damageType2": "slashing splash damage",
+						"note": "The avatar is immune to the shard bombs {@trait splash} damage"
+					}
+				]
 			},
 			"hasLore": true
 		},
@@ -8789,6 +8833,11 @@
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"RoE|68"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ne"
@@ -8846,6 +8895,42 @@
 			"favoredWeapon": {
 				"weapons": [
 					"longbow"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Hshurha gains the following additional abilities. The imperceptible form ability allows the caster to spend a single action casting {@spell invisibility} at will as a divine innate spell.",
+				"speed": {
+					"fly": 70
+				},
+				"trait": [
+					"no land speed",
+					"imperceptible form"
+				],
+				"melee": [
+					{
+						"name": "twisting gale",
+						"traits": [
+							"agile",
+							"shove",
+							"thrown <20 feet>",
+							"versatile <S>"
+						],
+						"damage": "4d6+6",
+						"damageType": "bludgeoning plus Grab"
+					}
+				],
+				"ranged": [
+					{
+						"name": "cruel outburst",
+						"range": 120,
+						"trait": [
+							"air"
+						],
+						"damage": "4d6+3",
+						"damageType": "bludgeoning",
+						"damage2": "2d6",
+						"damageType2": "sonic splash damage"
+					}
 				]
 			}
 		},
@@ -14253,10 +14338,15 @@
 		{
 			"name": "Ranginori",
 			"alias": [
-				"Zephyrous Prince"
+				"The Zephyrous Prince"
 			],
 			"source": "LOGM",
 			"page": 128,
+			"otherSources": {
+				"Expanded": [
+					"RoE|69"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ng"
@@ -14315,6 +14405,51 @@
 			"favoredWeapon": {
 				"weapons": [
 					"whip"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Ranginori gains the following additional abilities.",
+				"speed": {
+					"walk": 30,
+					"fly": 70
+				},
+				"trait": [
+					"immune to forced movement",
+					"immune to immobilized"
+				],
+				"melee": [
+					{
+						"name": "crackling jaws",
+						"traits": [
+							"reach <20 feet>"
+						],
+						"damage": "4d6+6",
+						"damageType": "piercing",
+						"damage2": "2d6",
+						"damageType2": "electricity"
+					},
+					{
+						"name": "hundred raking claws",
+						"traits": [
+							"agile",
+							"reach <15 feet>"
+						],
+						"damage": "4d6+6",
+						"damageType": "slashing",
+						"damage2": "1d6",
+						"damageType2": "persistent bleed"
+					}
+				],
+				"ranged": [
+					{
+						"name": "lightning bolt",
+						"range": 120,
+						"trait": [
+							"electricity"
+						],
+						"damage": "6d6+3",
+						"damageType": "electricity"
+					}
 				]
 			}
 		},
