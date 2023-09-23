@@ -1,6 +1,222 @@
 {
 	"companion": [
 		{
+			"name": "Air Elemental",
+			"source": "RoE",
+			"page": 40,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"air"
+			],
+			"fluff": [],
+			"access": "You are a member of the {@class druid||storm order|storm}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "gust",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 1,
+				"dex": 2,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 1
+			},
+			"hp": 4,
+			"skill": "stealth",
+			"speed": {
+				"fly": 50
+			},
+			"support": "Your air elemental swirls around you with concealing gusts, making it harder for your foes to hit you and possibly giving you a moment to hide. Until the start of your next turn, if you hit with a Strike and deal damage to a creature in your air elemental's reach, you are {@condition concealed} to that creature until the start of your next turn.",
+			"maneuver": {
+				"name": "Circling Flyby",
+				"source": "RoE",
+				"page": 40,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your air elemental flies in a circle, blowing gusts at your foes before returning back to its starting position. The air elemental Flies up to half its Speed, makes two gust Strikes, then Flies up to half its Speed again to return to its original location. Both attacks count toward the air elemental's multiple attack penalty, but the penalty doesn't increase until after it makes both attacks."
+				]
+			}
+		},
+		{
+			"name": "Earth Elemental",
+			"source": "RoE",
+			"page": 40,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"earth"
+			],
+			"fluff": [],
+			"access": "You are a member of the {@class druid||stone order|stone}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 0,
+				"con": 3,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 10,
+			"skill": "survival",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 10
+			},
+			"support": "Your earth elemental cracks the earth beneath your foe's feet, making it difficult for the foe to move. Until the start of your next turn, if you hit with a Strike and deal damage to a creature in your earth elemental's reach, the first square the creature moves into after taking that damage is {@quickref difficult terrain||3|terrain}.",
+			"maneuver": {
+				"name": "Polling Knockdown",
+				"source": "RoE",
+				"page": 40,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your earth elemental rolls along the ground like a bowling ball and knocks a foe over. It Strides up to 10 feet then makes a fist Strike. If it hits, the target is also knocked {@condition prone}."
+				]
+			}
+		},
+		{
+			"name": "Fire Elemental",
+			"source": "RoE",
+			"page": 40,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"fire"
+			],
+			"fluff": [],
+			"access": "You are a member of the {@class druid||flame order|flame}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tendril",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d6} fire"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 2,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 4,
+			"skill": "intimidation",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"special": "{@i Immunities} {@trait fire}, {@i Weaknesses} {@trait cold} and {@trait water} (equal to the fire elemental's level)",
+			"support": "Your fire elemental burns your foes and sets them on fire. Until the start of your next turn, your Strikes that damage a creature in your fire elemental's reach also deal {@damage 1d6} {@condition persistent damage||persistent fire damage}. If your fire elemental is nimble or savage, the {@condition persistent damage||persistent fire damage} increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Flamethrower",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The fire elemental makes a tendril Strike against all creatures in a 60-foot line, even those that aren't in the tendril Strike's reach. All these Strikes count toward the fire elemental's multiple attack penalty, but it doesn't increase until all the Strikes."
+				]
+			}
+		},
+		{
+			"name": "Metal Elemental",
+			"source": "RoE",
+			"page": 41,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"metal"
+			],
+			"fluff": [],
+			"access": "Metal elementals don't have any special access because druids don't have an order dedicated to the elemental magic of metal.",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spike",
+					"damage": "{@damage 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "intimidation",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"support": "Your metal elemental pierces an enemy with metal spikes that cause it to bleed. Until the start of your next turn, your Strikes that damage a creature in your metal elemental's reach also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. If your metal elemental is nimble or savage, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Spiked Bunker",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"Your metal elemental surrounds itself with protective metal spikes, hunkering down defensively. It gains a +2 circumstance bonus to AC. Any creature that hits the metal elemental with a melee {@trait unarmed} attack while it's in its Spiked Bunker takes {@damage 2d6} piercing damage (or {@damage 3d6} piercing damage if your metal elemental has a specialization). The metal elemental can't move, Strike, or take other actions that require it to use its body while in its Spiked Bunker, but it can retract the bunker as a single action, ending the effects."
+				]
+			}
+		},
+		{
 			"name": "Water Wraith",
 			"source": "LOIL",
 			"page": 107,
@@ -42,6 +258,9 @@
 				"swim": 25
 			},
 			"support": "Your water wraith hisses and changes colors swiftly in an iridescent clash, overwhelming your foes in an avalanche of shades and hues. Until the start of your next turn, each time you hit a creature within your water wraith's reach, the creature is {@condition dazzled} for 1 round.",
+			"traits": [
+				"uncommon"
+			],
 			"maneuver": {
 				"name": "Gulp Blood",
 				"source": "LOIL",
