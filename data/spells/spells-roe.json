@@ -1,0 +1,1624 @@
+{
+	"spell": [
+		{
+			"name": "Airlift",
+			"source": "RoE",
+			"page": 70,
+			"level": 4,
+			"traits": [
+				"air",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "10-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"entries": [
+				"A massive rush of wind lifts, briefly carrying you and everything around you to a nearby destination. You, each creature in the area, and each item of 10 Bulk or lighter are lifted by this powerful gale. You and all affected creatures and objects {@action Fly} up to 60 feet and land on a solid surface, arriving in the same relative position to each other. If there wouldn't be enough room at the destination for everything you're bringing, the spell fails, though the GM might allow you to rearrange the group slightly to accommodate the spell. Any unwilling participant can attempt a Reflex save to avoid being carried along. The airlift doesn't carry items that are secured in place (such as a hinged door or a person manacled to a wall)."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"The distance you {@action Fly} increases to 120 feet, and the Bulk limit of an item you can airlift increases to 20."
+					]
+				}
+			}
+		},
+		{
+			"name": "Blastback",
+			"source": "RoE",
+			"page": 70,
+			"level": 3,
+			"traits": [
+				"air",
+				"concentrate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "20-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You hit the ground with a shuddering boom, propelling the force of your fall out in a wave. You take no damage from the fall as the displaced air allows you to land gently, but all other creatures in the spell's area take {@damage 6d4} bludgeoning damage. Creatures that fail their save are also pushed back 5 feet."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The emanation increases by 10 feet, and the damage increases by {@damage 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cleanse Air",
+			"source": "RoE",
+			"page": 70,
+			"level": 2,
+			"traits": [
+				"air",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "30-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [
+				"You purify the air in the area, making it clean and breathable. This removes inhaled poisons, pollution, and similar contaminants from the air but doesn't prevent future contamination. This effect is immediate; for the remaining duration, the spell prevents any further contamination from altering air in the area, including keeping toxic air bordering the area from coming inside. This spell doesn't create air, 70 so casting it underwater wouldn't create breathable air, nor would it affect any toxins within air suspended in the water."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The area increases to 60 feet."
+					],
+					"4": [
+						"The area increases to 120 feet."
+					],
+					"6": [
+						"The area increases to 500 feet."
+					],
+					"9": [
+						"The area increases to 1 mile."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cloud Dragon's Cloak",
+			"source": "RoE",
+			"page": 70,
+			"level": 3,
+			"traits": [
+				"air",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"entries": [
+				"A cloud of mist enshrouds the target, appearing much like the deflecting clouds created by cloud dragons. The target is treated as {@condition hidden} for the purposes of resolving the triggering attack (so normally the attacker must succeed at a DC {@flatDC 11} flat check to target it) and all ranged attacks against it for the duration."
+			]
+		},
+		{
+			"name": "Deep Breath",
+			"source": "RoE",
+			"page": 70,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"air",
+				"cantrip",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You take an incredibly deep breath and can hold it for the spell's duration. You don't lose breath when hit, but you do lose all the air you inhaled if you speak (including to {@action Cast a Spell}). This spell doesn't create air; if you don't have air to breathe when you cast it, you get no benefit."
+			],
+			"heightened": {
+				"X": {
+					"2": [
+						"The duration increases to 1 hour, and you lose only 10 minutes of breath if you speak."
+					],
+					"4": [
+						"The duration increases to 8 hours, and you lose only 10 minutes of breath if you speak."
+					]
+				}
+			}
+		},
+		{
+			"name": "Gentle Breeze",
+			"source": "RoE",
+			"page": 70,
+			"level": 2,
+			"traits": [
+				"air",
+				"concentrate",
+				"healing",
+				"manipulate",
+				"vitality"
+			],
+			"traditions": [
+				"divine",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "40-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [
+				"A light, soothing breeze flows through the area, making it easier to rest and recover. {@skill Medicine} checks attempted to benefit living creatures in the area get a +2 status bonus. Any living creature in the area also gets a +2 status bonus to saving throws against afflictions and, if it remains within the area for the full duration, regains 10 Hit Points. In addition, the cool breeze reduces the temperature effects of heat by one step for any creature in the area."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The healing increases by 10 Hit Points."
+					]
+				}
+			}
+		},
+		{
+			"name": "Phantom Orchestra",
+			"source": "RoE",
+			"page": 71,
+			"level": 6,
+			"traits": [
+				"air",
+				"concentrate",
+				"manipulate",
+				"sonic"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				],
+				"basic": true
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You orchestrate an {@condition invisible} ensemble of lost sounds captured inside errant breezes across the Plane of Air, and you can direct this symphony to attack foes within range. The sounds materialize and manifest as directed, appearing as silhouetted instruments and musicians that dance and bob in the wind. When you Cast the Spell, a captured breath of ephemeral music explodes in a great crescendo, appearing in a space you choose within range. On subsequent rounds, the first time you Sustain the Spell each round, you can move your conjured melody to a space within range (if needed) and create another explosion of music. Each explosion of sound from the phantom orchestra deals {@damage 8d6} sonic damage to all creatures in a 10-foot burst (basic Fortitude save). The phantom orchestra doesn't take up space, grant flanking, or have any other attributes a creature would."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Pressure Zone",
+			"source": "RoE",
+			"page": 71,
+			"level": 5,
+			"traits": [
+				"air",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 500
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [
+				"Air pressure drops precipitously, causing pain and debilitation in creatures' inner ears and joints. Each living creature in the area of the spell when you cast it or that enters the area during the spell's duration must attempt a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition deafened} and {@condition clumsy||clumsy 1} until the end of its next turn, after which it's temporarily immune for 1 hour."
+						],
+						"Failure": [
+							"The creature is {@condition deafened} and {@condition clumsy||clumsy 2}. At the end of each of its turns, it can attempt a new save if it's no longer in the pressure zone. On a success, it ends the effects and is temporarily immune for 1 hour."
+						],
+						"Critical Failure": [
+							"The creature is {@condition deafened} and {@condition clumsy||clumsy 2} for the duration of the spell. A creature {@condition deafened} by this spell can attempt to end the condition by popping its ears. It can use a single action to attempt a new Fortitude save, losing the {@condition deafened} condition from this spell on a success. Some creatures with anatomies that lack inner ears or joints might be immune to these effects, as determined by the GM."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Propulsive Breeze",
+			"source": "RoE",
+			"page": 71,
+			"level": 2,
+			"traits": [
+				"air",
+				"manipulate",
+				"move"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"entries": []
+		},
+		{
+			"name": "Shock to the System",
+			"source": "RoE",
+			"page": 71,
+			"level": 7,
+			"traits": [
+				"air",
+				"concentrate",
+				"electricity",
+				"healing",
+				"manipulate",
+				"vitality"
+			],
+			"traditions": [
+				"divine",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"A dense lightning cloud descends to fill the target's space, then fires a jolt of revitalizing lightning into the target. If the target is a corpse that died within the last round, the creature comes back to life with 0 Hit Points, and {@trait any} effects and conditions it had when it died, with the exception of {@condition dying}, and its {@condition wounded} condition increases by 1. The creature's initiative is right before yours. Regardless of whether the creature came back to life or was already alive, it regains {@dice 8d8} Hit Points, and the bolt wakes it up if it was {@condition unconscious}. For the duration of the spell, the target is supercharged. It becomes {@condition quickened} and can use the extra action to {@action Stand}, {@action Stride}, {@action Strike}, or {@action Fly} (if it has a fly Speed). In addition, it can cast 5th-rank thunderstrike as an innate spell at will, using your spell DC. The cloud that covered the creature remains until the end of the target's next turn. Any creature in the cloud is {@condition hidden}, and anything outside the cloud is {@condition hidden} to any creature inside the cloud."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The healing increases by {@dice 2d8}, and the thunderstrike rank increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Slashing Gust",
+			"source": "RoE",
+			"page": 71,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"air",
+				"attack",
+				"cantrip",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"requirements": "You have at least one free hand.",
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 or 2 creatures Defense AC You slash your hand through the air, channeling miniature ripples of air from each finger to slice your enemy. If you have two hands free, you can target two creatures with this spell; otherwise, you target one. Make a spell attack roll against each target's AC. This deals {@damage 2d4} slashing damage. On a critical success, a target also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}. If you're attacking two creatures, this counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after both attacks.",
+			"entries": [
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target takes double damage and {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
+						],
+						"Success": [
+							"The target takes full damage."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d4}, and the {@condition persistent damage} on a critical hit increases by {@dice 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Stifling Stillness",
+			"source": "RoE",
+			"page": 71,
+			"level": 4,
+			"traits": [
+				"air",
+				"concentrate",
+				"manipulate",
+				"poison"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [
+				"You make all air in the target area unnaturally still and unyielding, creating a shimmering haze. The stagnant, heavy air becomes an area of difficult terrain. Creatures in the area that breathe air and aren't holding their breath must spend a single action on their turn straining to breathe the stagnant air; once they do, they still mostly breathe their own exhaled air, taking {@damage 3d6} poison damage (basic Fortitude save) and becoming {@condition fatigued}."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage increases by {@damage 3d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Tempest Cloak",
+			"source": "RoE",
+			"page": 72,
+			"level": 3,
+			"traits": [
+				"air",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"You shroud one creature in a cloak of fierce, howling winds, shielding it from attacks and making it difficult to approach. The twisting shield of wind creates difficult terrain in a 5-foot burst surrounding the target. The target also gains a +2 circumstance bonus to its AC against physical ranged attacks, such as attacks made with bows, javelins, or slings. In addition, the sound of the swirling storms makes it easier for the target to ignore anything it doesn't want to hear, granting the target a +2 circumstance bonus to all defenses against {@trait auditory} effects."
+			]
+		},
+		{
+			"name": "Vacuum",
+			"source": "RoE",
+			"page": 72,
+			"level": 7,
+			"traits": [
+				"air",
+				"concentrate",
+				"incapacitation",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "sustained up to 1 minute of nearby creatures. During vacuum's duration, you take a \u20131 circumstance penalty against inhaled threats, such as inhaled poisons. If you cast vacuum in an environment where you can't breathe, the spell fails and you immediately begin to suffocate. Creatures in the area must attempt a Fortitude save. A creature that's holding its breath gets a result one degree of success better than it rolled, and creatures that don't need to breathe air are immune to the spell. A creature that later enters the area or ceases holding its breath must attempt a save against the effect. On subsequent rounds, the first time each round you Sustain the spell, you can force each creature in the area to save against the effect."
+			},
+			"entries": [
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature begins holding its breath."
+						],
+						"Failure": [
+							"The creature wheezes and gasps as its breath is stolen, becoming {@condition stunned||stunned 1}. The creature then begins holding its breath but has only half its normal number of rounds of remaining air."
+						],
+						"Critical Failure": [
+							"The creature has all the air sucked out from its lungs and immediately starts to suffocate."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Voice on the Breeze",
+			"source": "RoE",
+			"page": 73,
+			"level": 2,
+			"traits": [
+				"air",
+				"concentrate"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "mile",
+				"number": 10
+			},
+			"area": {
+				"entry": "10-foot burst which carries it to a designated spot. The message travels to a specific 10-foot burst within range that's familiar to you, provided there's a path for the wind to follow between you and the area. The gentle breeze goes all but {@condition unnoticed} until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends. Your message can contain no more than 25 words, 1 round's worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can't activate {@trait magical} effects triggered by voices.",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [],
+			"heightened": {
+				"X": {
+					"4": [
+						"The range increases to 1,000 miles, and the message can contain up to 100 words."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wisdom of the Wind",
+			"source": "RoE",
+			"page": 73,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"air",
+				"manipulate",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult",
+				"primal"
+			],
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You ask a question of the spirits of air, imploring them to send signals through the winds to help you find your way. You might be guided by air elementals, anemoi, or even the Lords of Air themselves. You receive guidance as either words of wisdom or a rustling wind that guides you to a {@condition helpful} destination\u2014whichever the spirits think will be most beneficial. The spirits don't give guidance you can't follow, such as winds that lead somewhere you can't reach, nor do they give advice that will help their causes at the expense of your own. If you've upset all the spirits of air, they don't mislead you but do refuse to guide you.",
+				{
+					"type": "list",
+					"items": [
+						"Guiding Gale (detection) A noticeable wind flows continuously toward a destination the spirits think will be valuable for you to find. Though you can't ask for a specific destination, the spirits understand your current circumstances and urgent priorities. They won't lead you to a location you're already aware of or can currently see, unless this might lead you to a fruitful destination you've already dismissed as an option. The spell has a duration of 8 hours or until you reach the destination, whichever comes first. When you arrive, the winds swirl in playful circles and then disperse to make it clear you're in the right place.",
+						"Voice of the Sky (auditory, linguistic, prediction) A voice on the wind, clearly audible to you, gives you advice on a course of action that holds positive potential for you. This advice is rarely more than two or three sentences long, typically spoken in Sussuran if you understand it, and Common if not. If you can't hear, the spirits blow small objects around to mimic written words or sign language. If following the advice poses great danger, the spirits typically note this risk but rarely go into detail. The advice is instant, so the spell doesn't have a duration."
+					]
+				}
+			]
+		},
+		{
+			"name": "Zephyr Slip",
+			"source": "RoE",
+			"page": 73,
+			"level": 4,
+			"traits": [
+				"air",
+				"manipulate",
+				"move"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"entries": [
+				"An arresting breeze sweeps you up in an instant and moves you to safety. You {@action Fly} 15 feet directly away from the triggering creature."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"You and one adjacent ally {@action Fly} up to 25 feet directly away from the triggering creature."
+					],
+					"8": [
+						"You and up to 5 allies within 30 feet {@action Fly} up to 25 feet directly away from the triggering creature."
+					]
+				}
+			}
+		}, 
+
+{
+	"spell": [
+		{
+			"name": "Burrow Ward",
+			"source": "RoE",
+			"page": 94,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You solidify the earth around you, hindering burrowing creatures. Creatures that can't burrow through stone can't burrow through the area. Such creatures already underground within the area must succeed at a Fortitude save or be ejected from the area toward the surface. Those who succeed are forced out of the area but can remain underground. Creatures that can burrow through stone treat the area as difficult terrain."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"You create a 30-foot emanation."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cave Fangs",
+			"source": "RoE",
+			"page": 94,
+			"level": 3,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [
+				"Sharp flowstone formations protrude from the ground and ceiling, dealing {@damage 6d6} piercing damage to creatures in the area with a basic Reflex save. Densely packed with protrusions, the area becomes difficult terrain for the duration. The protrusions turn to dust when the spell ends. You can {@action Dismiss} the spell."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Engrave Memor",
+			"source": "RoE",
+			"page": 94,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"You store memories inside a stone. This memory can convey up to 10 minutes of material. When you Cast this Spell, choose a command word. Doing so creates a carved symbol on the stone that hints at the word. Any creature can access the memories stored within the stone by using an action to speak the command word. As it imparts the memories, the stone crumbles to dust, but the memory is infallibly available to the creature that activated the stone for the next 24 hours. After that time, the creature's normal capacity for memory must be relied upon to recall the stone's imparted memory. It's up to the GM what benefit the imparted memory grants, from circumstance bonuses to checks related to the memory or clear information on subjects the memory covers."
+			]
+		},
+		{
+			"name": "Exploding Earth",
+			"source": "RoE",
+			"page": 94,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"entries": [
+				"You throw a hard-packed ball of earth and stone at a creature, and the projectile explodes upon impact. Attempt a spell attack against the target's AC. If you hit, you deal {@damage 4d6} bludgeoning damage plus {@damage 1d6} bludgeoning splash damage. On a critical hit, double the initial damage, but not the splash damage, and the target you hit must succeed at a Fortitude saving throw or fall {@condition prone}."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage increases by {@damage 2d6}, and the splash damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Glass Form",
+			"source": "RoE",
+			"page": 94,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"You grant the target properties of dull, transparent glass. The target becomes {@condition concealed}, has no scent, and can't bleed. They gain resistance 5 to acid, cold, electricity, and piercing damage and weakness 5 to sonic and bludgeoning damage. A creature in this form is affected by the {@spell shatter} spell as though the creature were an unattended object. Each time the target takes damage to which the spell grants resistance or weakness, reduce the duration by 1 minute."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The resistances and weaknesses increase by 5."
+					]
+				}
+			}
+		},
+		{
+			"name": "Glass Shield",
+			"source": "RoE",
+			"page": 94,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"cantrip",
+				"concentrate",
+				"earth"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"You summon a layer of clear glass to keep you from harm. This cantrip functions as the {@spell shield} spell, except it has Hardness 2 and 4 Hit Points. If this shield breaks, provided the breaker is within 5 feet, they must succeed at a basic Reflex save or take {@damage 1d4} piercing damage from the glass shards."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The shield has Hardness 4 and 8 Hit Points, and the damage increases to {@dice 1d4} + your spellcasting attribute modifier."
+					],
+					"5": [
+						"The shield has Hardness 7 and 16 Hit Points, and the damage increases to {@dice 2d4} + your spellcasting attribute modifier."
+					],
+					"7": [
+						"The shield has Hardness 10 and 24 Hit Points, and the damage increases to {@dice 3d4} + your spellcasting attribute modifier."
+					],
+					"9": [
+						"The shield has Hardness 12 and 32 Hit Points, and the damage increases to {@dice 4d4} + your spellcasting attribute modifier."
+					]
+				}
+			}
+		},
+		{
+			"name": "Grasping Earth",
+			"source": "RoE",
+			"page": 95,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "10-foot burst on the ground",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"Handlike protrusions of rock and soil grab and bury creatures. Each creature in the area when you cast the spell, and each creature that ends its turn in the area during the spell's duration, must attempt a Fortitude save. The first time each round you Sustain this spell, each creature still {@condition grabbed} by the earth takes {@damage 1d6} bludgeoning damage, and each creature {@condition restrained} by the earth takes {@damage 2d6} bludgeoning damage. A creature can attempt to {@action Escape}, rolling against your spell DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is {@condition grabbed} by the earth."
+						],
+						"Critical Failure": [
+							"The creature is {@condition restrained} by the earth."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The bludgeoning damage dealt when you Sustain this spell increases by {@dice 1d6} for {@condition grabbed} creatures and {@dice 2d6} for {@condition restrained} creatures."
+					]
+				}
+			}
+		},
+		{
+			"name": "Heaving Earth",
+			"source": "RoE",
+			"page": 95,
+			"level": 7,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"entries": [
+				"You strike the ground, and unleash a wave that travels through the struck surface to the target. The effect ends as soon as it can't travel through a solid surface, such as a stone floor. Each creature in a line between you and the target is shaken by tremors and must attempt a Reflex saving throw against your spell DC. A creature that fails this save is pushed 10 feet away from you. The wave explodes once it reaches the target, showering the target with earth and stone and dealing {@damage 12d10} bludgeoning damage with a basic Reflex save. A target that fails its save against this explosion is also pushed back 10 feet and knocked {@condition prone}. A creature subject to the explosion doesn't need to save against the tremors."
+			],
+			"heightened": {
+				"X": {
+					"9": [
+						"The wave explodes on one additional target of your choice in the line to the final target."
+					]
+				}
+			}
+		},
+		{
+			"name": "Instant Potter",
+			"source": "RoE",
+			"page": 95,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 10
+			},
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You pull earthen material out of the environment, then shape it into one or more earthenware objects that, in combination, can be up to light Bulk. Alternatively, you can cast this spell on objects previously created with this spell, extending their duration. No object can have intricate artistry or complex moving parts, can fulfill a cost or the like, or is made of anything more than clay or earth. Each object is obviously the product of temporary magic and thus can't be sold or passed off as a valuable item."
+			],
+			"heightened": {
+				"X": {
+					"2": [
+						"You can create objects of up to 1 Bulk. They last 8 hours."
+					],
+					"3": [
+						"You can create objects of up to 2 Bulk. They last 24 hours."
+					]
+				}
+			}
+		},
+		{
+			"name": "Interposing Earth",
+			"source": "RoE",
+			"page": 95,
+			"level": 1,
+			"traits": [
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 3,
+				"unit": "round"
+			},
+			"entries": [
+				"You raise a flimsy barrier of earth to shield you from harm. This barrier is 1 inch thick, 5 feet long, 5 feet high, and must be placed on the border between two squares. This barrier appears between you and the source of the triggering effect and grants you standard cover against the triggering effect. If you would be damaged by the triggering effect despite this barrier, the barrier is destroyed, and the damage dealt to you is reduced by 2. The barrier remains in place for 3 rounds (or until destroyed). It has AC 5, 2 Hardness, and 5 Hit Points."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The damage reduced increases to 8, the barrier's hardness increases to 8, and the barrier's Hit Points increases to 20."
+					]
+				}
+			}
+		},
+		{
+			"name": "Pave Ground",
+			"source": "RoE",
+			"page": 95,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "60-foot line along the ground",
+				"types": [
+					"Misc."
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You even out the ground and push aside low obstacles. Non-magical difficult terrain or greater difficult terrain composed of earth, rubble, sand, and the like in the area becomes normal terrain. You can attempt a counteract check against magical difficult terrain and greater difficult terrain composed of earthen materials in the area, too, making it normal terrain for the duration if you succeed. The ground doesn't change quickly enough to cause anyone to lose footing, and it doesn't clear concealing features enough to make them non-concealing. At the GM's discretion, if you use this spell on \"ground\" that has no underlying surface to flatten and clear, such as ice on the surface of a lake, the spell fails."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The area increases to a 120-foot line along the ground."
+					],
+					"6": [
+						"The area increases to a 500-foot line along the ground."
+					]
+				}
+			}
+		},
+		{
+			"name": "Rubble Step",
+			"source": "RoE",
+			"page": 96,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"The target leaves behind a trail of shifting rubble that typically consists of stones, but you could choose another earthen material, such as loose sand or soil. For 2 rounds, when the target willingly moves out of a space, and if the target is in contact with the ground, the ground in that space becomes difficult terrain. The difficult terrain remains for the spell's duration."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The target leaves difficult terrain behind for 1 minute instead of two rounds, and the spell's duration is 10 minutes."
+					]
+				}
+			}
+		},
+		{
+			"name": "Sand Form",
+			"source": "RoE",
+			"page": 96,
+			"level": 3,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"You grant the target's body and gear aspects of sand. The target gains resistance 5 to piercing and slashing damage, has no scent, and can't bleed. In sandy terrain, even when out in the open, the target has enough concealment to attempt to {@action Hide}. Each time the target takes damage to which sand form grants resistance, reduce the duration of the spell by 1 minute."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"The resistance is 10."
+					],
+					"7": [
+						"The resistance is 15."
+					]
+				}
+			}
+		},
+		{
+			"name": "Sliding Blocks",
+			"source": "RoE",
+			"page": 96,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"duration": {
+				"sustained": true,
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You conjure up to six 5-foot stone cubes you can gently move with a gesture. Each cube appears in any space within range, and they're capable of levitating. If you conjure a cube in an occupied space or in a space that can't accommodate it, it fails to appear. Each 5-foot cube can be Climbed with a successful DC 10 {@skill Athletics} check and has AC 10, Hardness 10, and 40 Hit Points. If any of the cubes is ever farther away from you than the range of this spell, it immediately crumbles into dust. Each time you Sustain this spell, you can move up to two of the conjured cubes up to 10 feet each in any direction, including vertically. You can choose different cubes to move each time you Sustain."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The cubes have 10 additional Hit Points, and you can move the chosen cubes an additional 5 feet each time you Sustain this Spell."
+					]
+				}
+			}
+		},
+		{
+			"name": "Tremor Signs",
+			"source": "RoE",
+			"page": 97,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"cantrip",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"entries": [],
+			"heightened": {
+				"X": {
+					"4": [
+						"The spell can target up to 5 creatures."
+					]
+				}
+			}
+		},
+		{
+			"name": "Tremorsense",
+			"source": "RoE",
+			"page": 97,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You become aware of vibrations in the ground around you. You gain tremorsense as an imprecise sense with a range of 30 feet. As normal for tremorsense, you can detect a creature only if it's on the same surface as you and only if the subject is moving along (or burrowing through) the surface."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The spell's duration is 1 hour."
+					],
+					"5": [
+						"The spell's duration is 8 hours."
+					]
+				}
+			}
+		},
+		{
+			"name": "Vitrifying Blast",
+			"source": "RoE",
+			"page": 97,
+			"level": 6,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "15-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"entries": [
+				"You launch a cone of glass shards, which embed in creatures to turn them partially to glass. The shards deal {@damage 8d6} piercing damage to creatures in the area, based on each creature's saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes half damage and gains weakness 3 to sonic and bludgeoning damage for 1 round."
+						],
+						"Failure": [
+							"The target takes full damage, is {@condition slowed||slowed 1}, and gains weakness to sonic and bludgeoning damage. The weakness is equal to 3 × the {@condition slowed} value it has from this spell. The target must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the creature's {@condition slowed} value increases by 1 (or by 2 on a critical failure), to a maximum of {@condition slowed||slowed 3}. A successful save reduces the creature's {@condition slowed} value by 1 (or by 2 on a critical success). If the creature ends its turn with a {@condition slowed} value of 0, the effect ends."
+						],
+						"Critical Failure": [
+							"As failure, but the target is initially {@condition slowed||slowed 2}."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Weaken Earth",
+			"source": "RoE",
+			"page": 97,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"If your target has Hardness, you can affect one contiguous object, up to a 5-foot cube, or one creature, decreasing the Hardness by 5, to a minimum of 0. If the target lacks Hardness, it gains weakness 3 to physical damage. A target with a Fortitude modifier can attempt a Fortitude saving throw, negating the effect on a success."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"Hardness decreases by 5, the size of a contiguous object increases by one 5-foot cube, and the weakness increases by 3."
+					]
+				}
+			}
+		},
+		{
+			"name": "Practice Makes Perfect",
+			"source": "RoE",
+			"page": 97,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"Toil Trigger You or an Ally Within Range Fails a Skill Check for a Skill in Which You or They Are Trained."
+			],
+			"subclass": {},
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "the triggering creature The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check.",
+			"entries": []
+		},
+		{
+			"name": "Tireless Worker",
+			"source": "RoE",
+			"page": 97,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"focus",
+				"healing",
+				"manipulate"
+			],
+			"domains": [
+				"Toil Range 30 Feet;"
+			],
+			"subclass": {},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"targets": "1 creature Duration sustained up to 1 minute You suppress your choice of one of the following conditions that's affecting the target: {@condition clumsy}, {@condition encumbered}, {@condition enfeebled}, or {@condition fatigued}. If you don't remove the effect that caused the condition, the condition returns after the spell's duration expires.",
+			"entries": []
+		}
+	]
+}
+	]
+}
+
