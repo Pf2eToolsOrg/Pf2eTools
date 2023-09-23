@@ -1617,6 +1617,804 @@
 					"entries": []
 				}
 			]
+		},
+		{
+			"name": "Blazing Armory",
+			"source": "RoE",
+			"page": 118,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"As long as you have magic, you're never unarmed. You materialize a flaming simulacrum of any common simple or martial weapon into the target's grasp. The target must have a free hand to hold the weapon, or else the weapon falls to the ground in the target's space. The blazing weapon functions as a +1 striking weapon, and its damage type changes to fire. The damage type can't be changed using the {@trait versatile} trait, {@trait modular} trait, or similar methods. A thrown weapon rematerializes in the target's hand after the {@action Strike} is complete. If you choose a ranged weapon that uses ammunition, the wielder must still reload the weapon using the normal number of actions, though this generates ammunition automatically; this functions as normal ammunition, and the blazing weapon can't use other types of ammunition. Any creature other than you or the target that attempts to touch, make a {@action Strike} with, or {@action Disarm} the weapon takes {@damage 1d6} fire damage each time."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"You can target up to 5 willing creatures and can choose a different weapon for each target. The weapons function as +1 striking flaming weapons."
+					],
+					"6": [
+						"As 4th, but the weapons function as +2 greater striking flaming weapons."
+					],
+					"8": [
+						"As 4th, but the weapons function as +3 greater striking greater flaming weapons."
+					],
+					"10": [
+						"As 4th, but the weapons function as +3 superior striking greater flaming weapons."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cauterize Wounds",
+			"source": "RoE",
+			"page": 118,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"fire",
+				"healing",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"entries": [
+				"You seal bleeding wounds with fire. Any target that has {@condition persistent damage||persistent bleed damage} can choose to take 1 fire damage. If it does, it can attempt to recover from its {@condition persistent damage||persistent bleed damage}, with the lower DC for particularly effective assistance. During the spell's duration, you can use a single action, which has the {@trait concentrate} trait, to repeat this effect for one target of the spell."
+			]
+		},
+		{
+			"name": "Cinder Swarm",
+			"source": "RoE",
+			"page": 118,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You breathe life into a mass of fiery critters. They swarm the target and create an aura around it in a 5-foot emanation. The target and enemies in the aura are subject to an effect depending on the insects you choose. On subsequent rounds, the first time you Sustain this spell each round, you repeat the effect on the target and all your enemies in the insect aura. Pick a type of insect to determine the effects.",
+				{
+					"type": "list",
+					"items": [
+						"Fire Ants You create fiery flying ants that deal {@damage 3d6} piercing damage plus {@damage 2d6} {@condition persistent damage||persistent fire damage} with a basic Reflex save. A creature that fails its save must move 5 feet in a direction of your choice as it tries to escape the biting ants; this happens after all the creatures attempt their saves and can't add new creatures to the aura if the main target moves.",
+						"Fireflies (incapacitation) You create a flurry of fireflies that deal {@damage 3d6} fire damage and can dazzle or blind, depending on the target's Fortitude save."
+					]
+				},
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature takes no damage."
+						],
+						"Success": [
+							"The creature takes half damage and is {@condition dazzled} for 1 round."
+						],
+						"Failure": [
+							"The creature takes full damage and is {@condition blinded} for 1 round. It's then temporarily immune to being {@condition blinded} by cinder swarm for 24 hours."
+						],
+						"Critical Failure": [
+							"As failure, but double damage and {@condition blinded} for 1 minute."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the ants' piercing damage and fireflies' fire damage by {@dice 2d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Dehydrate",
+			"source": "RoE",
+			"page": 118,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "5-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [
+				"You stir the inner fire of all things within the area, driving out moisture. All creatures in the area take {@damage 1d6} {@condition persistent damage||persistent fire damage} with a basic Fortitude save; creatures with the {@trait water} or {@trait plant} traits get a result one degree of success worse than they rolled. The spell ends for a creature when its {@condition persistent damage} ends. A creature affected by dehydrate attempts an additional Fortitude save at the end of each of its turns, before rolling to recover from the {@condition persistent damage}. It can forgo this additional save if it consumed water or a similar hydrating liquid within the last round (drinking typically requires a single action).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature takes no additional effect."
+						],
+						"Failure": [
+							"The creature is {@condition enfeebled||enfeebled 1} until the end of its next turn."
+						],
+						"Critical Failure": [
+							"The creature is {@condition enfeebled||enfeebled 2} until the end of its next turn."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The range increases by 10 feet, the burst increases by 5 feet, and the {@condition persistent damage||persistent fire damage} increases by {@damage 3d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Eat Fire",
+			"source": "RoE",
+			"page": 119,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"cantrip",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"You consume and ingest fire, making it less harmful to you. You gain resistance 5 to fire damage until the end of the current turn. During the remaining duration of the spell, you can use the Belch Smoke action. The spell ends if you fall {@condition unconscious}, inhale, or exhale (this includes speaking). Belch Smoke {@as 1} You exhale what remains of the smoke, ending the spell and creating a smoke cloud in a 5-foot burst within 20 feet. All creatures within the smoke cloud are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dispersed by a strong wind."
+			],
+			"heightened": {
+				"plusX": {
+					"3": [
+						"The resistance increases by 5."
+					]
+				}
+			}
+		},
+		{
+			"name": "Falsify Heat",
+			"source": "RoE",
+			"page": 119,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"fire",
+				"illusion",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"entries": [
+				"You veil the signs of the fires of vitality, altering the target's apparent body temperature. This illusion applies to all senses, and a creature that touches the target can attempt to disbelieve the illusion. You can {@action Dismiss} the spell. Choose an illusory body temperature when you cast the spell.",
+				{
+					"type": "list",
+					"items": [
+						"Moderate The target's body temperature appears the same as the surrounding environment, giving the target a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} an undead, a cold-blooded creature, or an inanimate object (such as a corpse). The target is also {@condition invisible} to heatvision (page 120) and other abilities that sense heat similarly.",
+						"Warm The target appears to emit substantial body heat, gaining a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} a warm-blooded creature."
+					]
+				}
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"You can target up to 10 creatures, and you can choose a different body temperature for each of them."
+					]
+				}
+			}
+		},
+		{
+			"name": "Fire's Pathwa",
+			"source": "RoE",
+			"page": 119,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"fire",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You step into a blazing fire that's big enough for you to fit inside and instantly teleport to any other fire within 5 miles that also has a sufficiently large size. Once you enter the first fire, you instantly know the rough locations of other sufficiently large fires within range and can exit from the original fire, if you prefer. You can't carry extradimensional spaces with you; if you attempt to do so, the spell fails."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"The fire you exit can be up to 50 miles away."
+					],
+					"8": [
+						"The fire you exit can be up to 500 miles away."
+					],
+					"9": [
+						"The fire you exit can be anywhere on the same planet."
+					]
+				}
+			}
+		},
+		{
+			"name": "Fireproof",
+			"source": "RoE",
+			"page": 119,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 objectup to 10 Bulk",
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You prevent the target item from conducting heat or catching fire for the spell's duration. The item gains fire resistance 10. In addition, effects with the {@trait fire} trait that target the item must first succeed at a counteract check against your spell DC."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The duration is 24 hours."
+					],
+					"6": [
+						"The duration is unlimited."
+					]
+				}
+			}
+		},
+		{
+			"name": "Flame Dancer",
+			"source": "RoE",
+			"page": 119,
+			"level": 5,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"entries": [
+				"Fire encircles the target's hands and feet, and its eyes and hair catch ablaze. The target's unarmed Strikes deal an additional {@damage 2d6} fire damage. Critical hits with these Strikes also deal {@damage 2d4} {@condition persistent damage||persistent fire damage}. Additionally, when the target attempts to {@action Demoralize} a foe, they can use {@skill Performance} instead of {@skill Intimidation}; when using {@skill Performance} to {@action Demoralize}, the action loses the {@trait auditory} trait but gains the {@trait visual} trait, and the target doesn't take a penalty when attempting to {@action Demoralize} a creature that doesn't understand its language."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"The fire damage increases to {@dice 3d6}, and the {@condition persistent damage||persistent fire damage} increases to {@dice 3d4}. If the target gets a critical success on a {@action Demoralize} check using {@skill Performance}, the target of the {@action Demoralize} check becomes {@condition fleeing} from the target of flame dancer for 1 round."
+					]
+				}
+			}
+		},
+		{
+			"name": "Flames of Ego",
+			"source": "RoE",
+			"page": 119,
+			"level": 5,
+			"traits": [
+				"concentrate",
+				"fire",
+				"incapacitation",
+				"light",
+				"manipulate",
+				"mental"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"entries": [
+				"Elegant flames of incredible beauty coruscate across the target's body, creating overconfidence and carelessness. The target attempts a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target sheds bright light in a 20-foot emanation (and dim light to the next 40 feet) and becomes {@condition fascinated} with itself for 1 round. It must spend at least 1 action on its turn on a taunting display of arrogance or overconfidence. Using actions that include such a display\u2014such as using {@action Perform} to show off\u2014count toward this requirement."
+						],
+						"Failure": [
+							"As success, but the duration is 1 minute and the target can't act {@condition hostile} toward a creature until that creature acts {@condition hostile} toward the target."
+						],
+						"Critical Failure": [
+							"As failure, except the target must spend at least 2 actions on its turn on a taunting display of arrogance or overconfidence."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Heatvision",
+			"source": "RoE",
+			"page": 120,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"The target visually senses the heat energy emitted by the creatures and objects around it, gaining infrared vision at a range of 60 feet as a precise sense. This vision can detect any warm-blooded creature or source of heat not completely covered behind a solid object, such as a wall; this bypasses any concealment granted by smoke or darkness. It can similarly detect especially cold creatures and sources of cold. Almost all creatures with the {@trait cold} or {@trait fire} trait can be detected with heatvision. Undead and constructs are typically the same temperature as their environment and can't be detected with heatvision. The GM decides in other cases."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"The duration lasts until you next make your daily preparations, and the range increases to 120 feet."
+					]
+				}
+			}
+		},
+		{
+			"name": "Illuminate",
+			"source": "RoE",
+			"page": 120,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"cantrip",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "30-foot emanation (see text) You light all non-magical light sources in the area that use fire to provide their light\u2014such as candles, lamps, and sconces. You can choose to make the emanation smaller than its maximum, to any distance of your choice. If a light source is attended by an unwilling creature, that creature can attempt a Reflex save to snuff the light out before it becomes noticeable.",
+				"types": [
+					"Emanation"
+				]
+			},
+			"entries": [],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The maximum area increases by 10 feet."
+					]
+				}
+			}
+		},
+		{
+			"name": "Phoenix Ward",
+			"source": "RoE",
+			"page": 120,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You raise a fiery shield around yourself, gaining resistance 10 to fire. If you take fire damage that would reduce you to 0 Hit Points, the phoenix ward absorbs any damage beyond the amount that would bring you to 1 Hit Point. The ward then heals you in a brilliant display of flames in the shape of a phoenix's wings and envelop you in light. You regain Hit Points equal to {@dice 4d8} + the absorbed damage; this is a healing vitality effect. The phoenix ward then ends, and you can't cast it again for 24 hours."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The healing increases by {@dice 1d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Rainbow Fumarole",
+			"source": "RoE",
+			"page": 121,
+			"level": 8,
+			"traits": [
+				"concentrate",
+				"fire",
+				"incapacitation",
+				"light",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 500
+			},
+			"area": {
+				"entry": "20-foot radius, 60-foot-tall cylinder",
+				"types": [
+					"Cylinder"
+				]
+			},
+			"entries": [
+				"Multi-hued flames break through cracks in the ground, reaching high into the sky and giving off dangerous fumes. When you cast the spell, roll {@dice 1d8} on the table below to determine the effects of the fumarole. Any creature caught inside the area of rainbow fumarole when you cast it takes the indicated damage with a basic Reflex save and, on a failure, takes any added effect listed. Creatures must also attempt a saving throw when they move through the spell's area or end their turn in it. Squares within the area of the rainbow fumarole are difficult terrain."
+			]
+		},
+		{
+			"name": "Signal Skyrocket",
+			"source": "RoE",
+			"page": 121,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate",
+				"sonic"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 0
+			},
+			"area": {
+				"entry": "30-foot burst forth blistering red energy that shoots straight upward into the air and explodes, unleashing a crackling boom. Over time, you might even customize your own pattern and color for the skyrocket as you refine the spell. You can't change the direction or distance of the rocket\u2014it must go straight up, continuing up to the maximum range if possible. If the rocket explodes at its maximum height, the bright light can be seen up to 10 miles away, and the sound of the explosion can be heard up to 1 mile away under clear weather conditions. If the rocket explodes in an enclosed space smaller than the full size of the burst, each creature in the area takes {@damage 1d10} sonic damage depending on the result of its Reflex save.",
+				"types": [
+					"Burst"
+				]
+			},
+			"entries": [
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage and is {@condition dazzled} for 1 round."
+						],
+						"Critical Failure": [
+							"The creature takes double damage and is {@condition blinded} for 1 round."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The sonic damage increases by {@damage 1d10}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Thermal Remed",
+			"source": "RoE",
+			"page": 121,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You adjust the delicate levels of bitter ingredients in food and drink to draw out their full restorative and fortifying properties. Choose one of the benefits listed below. Any creature that consumes the targeted drink or food gains that benefit. Up to 10 creatures can partake in the meal, and a creature gets no extra benefit for consuming more than one portion.",
+				{
+					"type": "list",
+					"items": [
+						"Gain 5 temporary Hit Points.",
+						"Gain resistance 2 to fire.",
+						"Gain a +1 circumstance bonus to saves against disease."
+					]
+				}
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"Your remedy provides two benefits of your choice instead of one. The temporary Hit Points increase to 10, the resistance to fire increases to 3, the bonus against disease increases to +2, and the duration is 2 hours."
+					],
+					"7": [
+						"The remedy provides all three benefits. The temporary Hit Points increase to 15, the resistance to fire increases to 5, the bonus against disease increases to +3, and the duration is 8 hours."
+					]
+				}
+			}
+		},
+		{
+			"name": "Ymeri's Mark",
+			"source": "RoE",
+			"page": 121,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"curse",
+				"detection",
+				"fire",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"You place the fiery mark of the Queen of the Inferno on the target, burning into the creature's very essence. The mark gives off a heat that only you can sense; as long as you're on the same plane as the target, you can sense the direction it's in. The target is {@condition fatigued} and can't reduce the value of this condition normally. You can detonate the mark at any point during its duration by Dismissing the spell. The rune explodes in a 10-foot emanation centered on the target that deals {@damage 5d6} fire damage with a basic Reflex save. You choose whether the mark's target is included in the explosion. When you cast the spell, the target attempts a Fortitude save to determine how long the mark lasts. If the spell's duration elapses, the rune doesn't detonate.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The duration is 1 minute."
+						],
+						"Failure": [
+							"The duration is 1 week."
+						],
+						"Critical Failure": [
+							"The duration is unlimited."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d6}."
+					]
+				}
+			}
 		}
 	]
 }
