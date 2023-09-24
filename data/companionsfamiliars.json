@@ -3362,6 +3362,131 @@
 	],
 	"eidolon": [
 		{
+			"name": "Elemental Eidolon",
+			"type": "Eidolon",
+			"source": "RoE",
+			"page": 38,
+			"fluff": [
+				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
+				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
+			],
+			"tradition": "primal",
+			"traits": [
+				"eidolon",
+				"elemental",
+				"air",
+				"earth",
+				"fire",
+				"metal",
+				"water",
+				"wood"
+			],
+			"home": "elemental plane matching their Elemental Core",
+			"size": [
+				"medium"
+			],
+			"suggestedAttacks": [
+				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+			],
+			"stats": [
+				{
+					"name": "Adaptable Elemental",
+					"abilityScores": {
+						"str": 12,
+						"dex": 18,
+						"con": 16,
+						"int": 10,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				},
+				{
+					"name": "Primordial Elemental",
+					"abilityScores": {
+						"str": 18,
+						"dex": 14,
+						"con": 16,
+						"int": 8,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				}
+			],
+			"skills": [
+				"Nature",
+				"Survival"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"{@language Sussuran} (air elemental)",
+				"{@language Petran} (earth elemental)",
+				"{@language Pyric} (fire elemental)",
+				"{@language Talican} (metal elemental)",
+				"{@language Thalassic} (water elemental)",
+				"{@language Muan} (wood elemental)"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Elemental Core",
+					"type": "initial",
+					"entries": [
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Air}: Your eidolon is formed from elemental air and is light as a breeze. Your eidolon can {@action Leap}, {@action High Jump}, and {@action Long Jump} twice as far, and doesn't take falling damage.",
+						"{@b Earth}: Your eidolon is formed from elemental earth, and is incredibly hard to move by force. Your eidolon gains a +2 circumstance bonus to their Fortitude or Reflex DCs against attempts to {@action Shove} or {@action Trip} them. This bonus also applies to saving throws against spells or effects that attempt to knock them prone. In addition, if any effect would force them to move 10 feet or more, they're moved only half the distance.",
+						"{@b Fire}: Your eidolon is formed from elemental fire and burns with embers of flame. Your eidolon gains resistance equal to half your level (minimum 1) to fire and an equal amount of weakness to cold and water. Their unarmed attacks deal 1 additional fire damage.",
+						"{@b Metal}: Your eidolon is formed from elemental metal and can adapt their metallic form to battle. One of your eidolon's starting melee unarmed attacks gains the {@trait versatile} bludgeoning, piercing, or slashing trait, as your eidolon learns how to shift the metal into various weaponlike forms.",
+						"{@b Water}: Your eidolon is formed from elemental water and swims with ease. Your eidolon gains the amphibious trait, allowing them to breathe in water and air and to avoid the normal \u20132 penalty for making bludgeoning and slashing {@trait unarmed} {@action Strike||Strikes} underwater. Your eidolon's land Speed is reduced to 15 feet, and they gain a swim Speed of 25 feet. You can take the {@feat Amphibious Form|SoM} feat  to increase their land Speed back up to 25 feet, as described in the feat.",
+						"{@b Wood}: Your eidolon is formed from elemental wood, and its living wooden form twists and regrows as you focus your elemental energies. You can choose to have your eidolon gain the {@trait plant} trait. Whenever you {@action Refocus}, your eidolon regains a number of Hit Points equal to double your level."
+					]
+				},
+				{
+					"name": "Elemental Burt",
+					"type": "symbiosis",
+					"traits": ["concentrate", "eidolon"],
+					"entries": [
+						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage’s type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon’s primary unarmed attack if your eidolon isn’t a fire elemental. Elemental Burst gains any traits that your eidolon’s unarmed attacks gain from elemental core."
+							]
+						}
+					]
+				},
+				{
+					"name": "Elemental Maelstrom",
+					"type": "transcendence",
+					"traits": ["eidolon"],
+					"entries": [
+						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon’s reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon’s multiple attack penalty, but the penalty doesn’t increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+					]
+				}
+			]
+		},
+		{
 			"name": "Undead Eidolon",
 			"type": "Eidolon",
 			"source": "BotD",
