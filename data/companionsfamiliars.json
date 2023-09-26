@@ -61,7 +61,7 @@
 				"earth"
 			],
 			"fluff": [],
-			"access": "You are a member of the {@class druid||stone order|stone}",
+			"access": "You are a member of the {@class druid||stone order|stone|SoM}",
 			"size": [
 				"small"
 			],
@@ -115,7 +115,7 @@
 				"fire"
 			],
 			"fluff": [],
-			"access": "You are a member of the {@class druid||flame order|flame}",
+			"access": "You are a member of the {@class druid||flame order|flame|SoM}",
 			"size": [
 				"small"
 			],
@@ -159,7 +159,7 @@
 					"unit": "action"
 				},
 				"entries": [
-					"The fire elemental makes a tendril Strike against all creatures in a 60-foot line, even those that aren't in the tendril Strike's reach. All these Strikes count toward the fire elemental's multiple attack penalty, but it doesn't increase until all the Strikes."
+					"The fire elemental makes a tendril {@action Strike} against all creatures in a 60-foot line, even those that aren't in the tendril Strike's reach. All these {@action Strike||Strikes} count toward the fire elemental's multiple attack penalty, but it doesn't increase until all the Strikes."
 				]
 			}
 		},
@@ -202,7 +202,7 @@
 			"speed": {
 				"walk": 25
 			},
-			"support": "Your metal elemental pierces an enemy with metal spikes that cause it to bleed. Until the start of your next turn, your Strikes that damage a creature in your metal elemental's reach also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. If your metal elemental is nimble or savage, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
+			"support": "Your metal elemental pierces an enemy with metal spikes that cause it to bleed. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your metal elemental's reach also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. If your metal elemental is nimble or savage, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
 			"maneuver": {
 				"name": "Spiked Bunker",
 				"source": "RoE",
@@ -213,6 +213,120 @@
 				},
 				"entries": [
 					"Your metal elemental surrounds itself with protective metal spikes, hunkering down defensively. It gains a +2 circumstance bonus to AC. Any creature that hits the metal elemental with a melee {@trait unarmed} attack while it's in its Spiked Bunker takes {@damage 2d6} piercing damage (or {@damage 3d6} piercing damage if your metal elemental has a specialization). The metal elemental can't move, Strike, or take other actions that require it to use its body while in its Spiked Bunker, but it can retract the bunker as a single action, ending the effects."
+				]
+			}
+		},
+		{
+			"name": "Water Elemental",
+			"source": "RoE",
+			"page": 41,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"water"
+			],
+			"fluff": [
+				"Your companion is a water elemental, such asa brine shark."
+			],
+			"access": "You are a member of the {@class druid||wave order|wave|SoM}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "wave",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 2,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "survival",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 15,
+				"swim": 35
+			},
+			"special": "{@i Resistances} {@trait fire} (equal to the water elemental's level)",
+			"support": "Your water elemental waterlogs a foe. The first time before the start of your next turn you hit with a {@action Strike} that deals damage to a creature within your water elemental's reach, that creature becomes {@trait clumsy} 1 until the end of your next turn.",
+			"maneuver": {
+				"name": "Drench",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"Your water elemental drenches nearby fires to extinguish them. Your elemental puts out all fires in a 5-foot emanation. It extinguishes all non-magical fires automatically and attempts to counteract magical fires (its counteract modifier is equal to its attack modifier with its wave Strike, unmodified by any bonuses or effects that apply to attack rolls)."
+				]
+			}
+		},
+		{
+			"name": "Wood Elemental",
+			"source": "RoE",
+			"page": 41,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"plant",
+				"wood"
+			],
+			"fluff": [
+				"Your companion is a wood elemental, such as a moss sloth."
+			],
+			"access": "You are a member of the {@class druid||leaf order|leaf}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "survival",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"support": "Your wood elemental entangles your foes with detachable branches and roots. Until the start of your next turn, if you hit with a {@action Strike} that deals damage to a creature in your wood elemental's reach, the creature takes a \u20135-foot circumstance penalty to its Speeds for 1 minute (\u201310 on a critical success). The creature, or a creature adjacent to it, can use an {@action Interact} action to unravel the branches and roots and remove the penalty.",
+			"maneuver": {
+				"name": "Grabbing Branches",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your wood elemental surrounds a foe with branches, grabbing it in place. Your wood elemental makes a branch {@action Strike}; on a success, the target is also grabbed by the wood elemental until the end of your next turn unless your wood elemental moves or the target {@action Escape||Escapes}."
 				]
 			}
 		},
@@ -2124,6 +2238,203 @@
 	],
 	"familiar": [
 		{
+			"name": "Mood Cloud",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"traits": [
+				"air",
+				"elemental"
+			],
+			"fluff": [
+				"This air elemental is little more than a tiny cloud with just enough internality to have emotions. Elemental scholars believe mood clouds to be related to {@creature despairing palls|RoE}, though far less evolved."
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility elemental|RoE|elemental (air only)}",
+				"{@familiarAbility flier}"
+			],
+			"abilities": [
+				{
+					"name": "Emote",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"The cloud of sentiment changes the expression on its miniature face. It prepares to {@action Aid} you on a skill check for a skill matching its expression: {@skill Deception} for an inscrutable expression, {@skill Diplomacy} for a friendly expression, or {@skill Intimidation} for an angry expression. It gains a reaction this round, which it can use only to {@action Aid} you in this way. It automatically succeeds at its check to {@action Aid} you with the skill or automatically critically succeeds if you're a master of the skill in question."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crysmal Shardling",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"traits": [
+				"earth",
+				"elemental"
+			],
+			"fluff": [
+				"A crysmal shardling is a younger, smaller version of {@creature crysmal|RoE}. When acting as a familiar, a shardling's hunger for crystals is sated by magic, turning an urgent need into a mere interest."
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility burrower}",
+				"{@familiarAbility elemental|RoE|elemental (earth only)}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Crystal Scent",
+					"entries": [
+						"A crysmal can sense crystals or gems within 60 feet as if using the {@familiarAbility scent} ability."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Wisp",
+			"source": "RoE",
+			"page": 43,
+			"type": "Familiar",
+			"traits": [
+				"elemental"
+			],
+			"fluff": [
+				"Wisps are tiny elementals that often act as familiars. They each usually have different personalities: {@trait air} wisps are playful and capricious, {@trait earth} wisps are timid but loyal, {@trait fire} wisps are carefree and boisterous, {@trait metal} wisps are serious and morose, {@trait water} wisps are gentle and nurturing, and {@trait wood} wisps are fierce and controlling."
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility accompanist}",
+				"{@familiarAbility elemental|RoE}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Elemental Mobility",
+					"entries": [
+						"Your wisp gains a familiar ability depending on its element. {@trait Air} wisps gain {@familiarAbility flier}, {@trait earth} wisps gain {@familiarAbility burrower}, {@trait fire} wisps gain {@familiarAbility jet|RoE}, {@trait metal} wisps gain {@familiarAbility levitator|RoE}, {@trait water} wisps gain {@familiarAbility amphibious}, and {@trait wood} wisps gain {@familiarAbility climber}."
+					]
+				},
+				{
+					"name": "Innate Element",
+					"entries": [
+						"An elemental wisp's element is set. You choose the element when you gain the specific familiar and can't change it each day."
+					]
+				},
+				{
+					"name": "Resonance",
+					"entries": [
+						"(aura) 30 feet. Your wisp vibrates at a frequency attuned to their element, resonating with and empowering all effects sharing that trait. Creatures in the area gain a +1 status bonus to damage rolls for alchemical and magical effects with the same elemental trait as your wisp. If your wisp is a {@trait wood} wisp, the status bonus also applies to damage rolls for effects with the {@trait plant} trait"
+					]
+				}
+			]
+		},
+		{
+			"name": "Gennayn",
+			"source": "RoE",
+			"page": 43,
+			"type": "Familiar",
+			"traits": [
+				"elemental"
+			],
+			"fluff": [
+				"Minor genies, gennayn are elementally adaptable and personable. They look like miniature humanoids with elemental energy surrounding them, and frequently carry messages or announce the arrival of their allies."
+			],
+			"requires": 5,
+			"granted": [
+				"{@familiarAbility elemental|RoE}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Elemental Mobility",
+					"entries": [
+						"Your wisp gains a familiar ability depending on its element. {@trait Air} wisps gain {@familiarAbility flier}, {@trait earth} wisps gain {@familiarAbility burrower}, {@trait fire} wisps gain {@familiarAbility jet|RoE}, {@trait metal} wisps gain {@familiarAbility levitator|RoE}, {@trait water} wisps gain {@familiarAbility amphibious}, and {@trait wood} wisps gain {@familiarAbility climber}."
+					]
+				},
+				{
+					"name": "Little Wish",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"fortune"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "A creature the gennayn can see that is within 60 feet attempts a saving throw or skill check",
+					"entries": [
+						"The gennayn reshapes reality in a small way to twist fate, allowing the creature to reroll the saving throw or skill check."
+					]
+				},
+				{
+					"name": "Elemental Diplomat",
+					"entries": [
+						"A gennayn's modifier for {@skill Diplomacy} is equal to your level plus your key spellcasting attribute modifier, rather than just your level. The gennayn gets a +1 circumstance bonus to {@skill Diplomacy} checks against elementals and grants you the same bonus if you're in the same space."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Scamp",
+			"source": "RoE",
+			"page": 43,
+			"type": "Familiar",
+			"traits": [
+				"elemental"
+			],
+			"fluff": [
+				"The elementals called scamps look humanoid in appearance, except for the elemental matter in their bodies and their batlike wings. An elemental scamp familiar is a bit smaller than other scamps but makes up for it by being more mischievous. Driven by ego, scamps often take on long names with many titles and insist on being addressed in full."
+			],
+			"requires": 5,
+			"granted": [
+				"{@familiarAbility elemental|RoE}",
+				"{@familiarAbility flier}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Elemental Mobility",
+					"entries": [
+						"Your wisp gains a familiar ability depending on its element. {@trait Air} wisps gain {@familiarAbility flier}, {@trait earth} wisps gain {@familiarAbility burrower}, {@trait fire} wisps gain {@familiarAbility jet|RoE}, {@trait metal} wisps gain {@familiarAbility levitator|RoE}, {@trait water} wisps gain {@familiarAbility amphibious}, and {@trait wood} wisps gain {@familiarAbility climber}."
+					]
+				},
+				{
+					"name": "Elemental Breath",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"The scamp breathes elemental matter in a 10-foot cone. Each creature in the area takes {@dice 1d6} damage for every 2 levels you have, with a basic Reflex save against your class DC or spell DC, whichever is higher. The damage type depends on the type of scamp."
+					]
+				},
+				{
+					"name": "Scamp Elements",
+					"entries": [
+						"An elemental scamp's element or elements are set. You choose a type of scamp and can't change the element each day. This determines the scamp's elemental traits and the damage type of their Elemental Breath. {@b Air} ({@trait air}) slashing damage; {@b earth} ({@trait earth}) bludgeoning damage; {@b fire} ({@trait fire}) {@b fire} damage; {@b metal} ({@trait metal}) slashing damage; {@b water} ({@trait water}) acid damage; {@b wood} ({@trait plant}, {@trait wood}) poison damage."
+					]
+				}
+			]
+		},
+		{
 			"name": "Ceru",
 			"source": "LOIL",
 			"page": 220,
@@ -2891,6 +3202,33 @@
 		}
 	],
 	"familiarAbility": [
+		{
+			"name": "Elemental",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@trait bleed}, {@trait paralyzed}, {@trait poison}, {@trait sleep}, and the element matching its trait. Your familiar must have the resistance familiar ability to select this, unless it's a specific familiar. You can't select this ability if your familiar has a trait other than {@trait animal} (such as a leshy familiar or an undead familiar)."
+			]
+		},
+		{
+			"name": "Elemental",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@trait bleed}, {@trait paralyzed}, {@trait poison}, {@trait sleep}, and the element matching its trait. Your familiar must have the resistance familiar ability to select this, unless it's a specific familiar. You can't select this ability if your familiar has a trait other than {@trait animal} (such as a leshy familiar or an undead familiar)."
+			]
+		},
+		{
+			"name": "Levitator",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"entries": [
+				"Using magnetism, magic, or other forces, your familiar can float up to 3 feet above solid and liquid surfaces while moving at a Speed of 25 feet. This allows it to ignore difficult terrain and damaging effects related to coming into direct contact with the surface. It typically allows the familiar to also avoid triggering the reactions of hazards that require you to step on them or an attached pressure plate."
+			]
+		},
 		{
 			"name": "Alchemical Gut",
 			"source": "TV",
