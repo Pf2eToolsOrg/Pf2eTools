@@ -106,23 +106,27 @@
 							"aura"
 						],
 						"entries": [
-							"10 feet. The vehicle has a warding {@trait aura} that protects its passengers. Creatures and objects in the {@trait aura} gain resistance 10 to {@trait acid}, {@trait cold}, {@trait electricity}, {@trait fire}, {@trait force}, {@trait sonic}, {@trait vitality}, and {@trait void} damage. They are also protected from severe cold, severe heat, extreme cold, and extreme heat. The aura also provides breathable air for all passengers, though this air can still become filled with smoke and similar substances."
+							"10 feet. The vehicle has a warding {@trait aura} that protects its passengers. Creatures and objects in the {@trait aura} gain resistance 10 to {@trait acid}, {@trait cold}, {@trait electricity}, {@trait fire}, {@trait force}, {@trait sonic}, {@trait vitality}, and {@trait void} damage. They are also protected from severe cold, severe heat, extreme cold, and extreme heat. The {@trait aura} also provides breathable air for all passengers, though this air can still become filled with smoke and similar substances."
 						]
 					},
 					{
 						"name": "Journey the Planes",
 						"entries": [
-							"(10 minutes) The pilot locks onto a plane, using one of the vehicle’s planar keys as a focus. A canal of planar energy from the destination plane appears ahead of the ship. The pilot spends 10 minutes navigating the passage, then attempts a piloting check (typically DC 34). On a success, the vehicle casts {@spell plane shift||interplanar teleport}, transporting itself and all passengers and cargo to the destination plane as it reaches the terminus of the canal. The pilot is considered the target of the spell for the purposes of determining the location at which the vehicle arrives on the plane. The skiff can’t {@spell plane shift||interplanar teleport} again for 8 hours."
+							"(10 minutes) The pilot locks onto a plane, using one of the vehicle's planar keys as a focus. A canal of planar energy from the destination plane appears ahead of the ship. The pilot spends 10 minutes navigating the passage, then attempts a piloting check (typically DC 34). On a success, the vehicle casts {@spell plane shift||interplanar teleport}, transporting itself and all passengers and cargo to the destination plane as it reaches the terminus of the canal. The pilot is considered the target of the spell for the purposes of determining the location at which the vehicle arrives on the plane. The skiff can't {@spell plane shift||interplanar teleport} again for 8 hours."
 						]
 					},
 					{
 						"name": "Planar Evacuation",
 						"activity": {
-							"number": 3, "unit": "action"
+							"number": 3,
+							"unit": "action"
 						},
-						"traits": ["move", "reckless"],
+						"traits": [
+							"move",
+							"reckless"
+						],
 						"entries": [
-							"The pilot overcharges one of the vehicle’s planar keys, forcing an emergency transport of the ship. The pilot attempts a DC 44 piloting check. On a success, the vehicle casts {@spell plane shift||interplanar teleport} as noted in Journey the Planes. (The pilot can’t succeed on the check if the vessel is unable to {@spell plane shift||interplanar teleport}.) This process severely taxes the vehicle, and it can’t {@spell plane shift||interplanar teleport} again for {@dice 1d4} days."
+							"The pilot overcharges one of the vehicle's planar keys, forcing an emergency transport of the ship. The pilot attempts a DC 44 piloting check. On a success, the vehicle casts {@spell plane shift||interplanar teleport} as noted in Journey the Planes. (The pilot can't succeed on the check if the vessel is unable to {@spell plane shift||interplanar teleport}.) This process severely taxes the vehicle, and it can't {@spell plane shift||interplanar teleport} again for {@dice 1d4} days."
 						]
 					}
 				]
