@@ -1,6 +1,156 @@
 {
 	"ritual": [
 		{
+			"name": "Bountiful Oasis",
+			"source": "RoE",
+			"page": 175,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"water"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "3 drops of fresh water taken from a naturally occurring lake within 1,000 miles of the ritual site",
+			"primaryCheck": {
+				"skills": [
+					"Nature"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Nature",
+					"Survival"
+				]
+			},
+			"area": {
+				"types": [
+					"Burst"
+				],
+				"entry": "10-foot"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "year"
+			},
+			"entries": [
+				"You redirect the flow of underground lakes and other nearby sources of water to cause a lush natural spring to emerge from the ground. The water of the spring is a clean source of fresh water, perfect for drinking, farming, and supporting all forms of life. The spring purifies itself every morning at dawn, removing toxins and contaminants unless they're more than double the spring's rank.",
+				"The ritual creates a spring that's geographically appropriate to the terrain where the ritual is performed; for example, it creates a desert oasis in sandy, arid regions and a natural hot spring in a mountain range.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "A small pond or oasis appears, fed by a natural spring that discharges enough pure drinking water to sustain a small settlement. The ground in a 20-foot burst surrounding the spring bursts with life, invigorated by the spring's irrigation. A variety of regionally appropriate, fruit-bearing plants and other crops immediately take root and prosper.",
+						"Success": "As critical success, but the oasis is a small pool that discharges enough pure drinking water to sustain roughly a dozen people, without any plants growing around the perimeter.",
+						"Failure": "You're unable to redirect the flow of the water.",
+						"Critical Failure": "You create a small pond of fetid and stagnant water that never dries, attracting disease- carrying insects and sickening creatures who partake of its waters."
+					}
+				}
+			]
+		},
+		{
+			"name": "Elemental Servitor",
+			"source": "RoE",
+			"page": 223,
+			"level": 5,
+			"traits": [
+				"uncommon"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "rare items and offerings worth a total value of 2 gp × the spell rank × the target's level, see text for more details",
+			"primaryCheck": {
+				"skills": [
+					"Arcana",
+					"Nature"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Diplomacy"
+				]
+			},
+			"secondaryCasters": {
+				"number": 2
+			},
+			"duration": "see text",
+			"entries": [
+				"You implore an elemental lord to send an elemental servitor of the lord's choice, with a level no greater than double the ritual's spell rank. The secondary casters explain what sort of assistance you need and why you need it; if the task is incredibly fitting to the elemental lord, the GM can grant a circumstance bonus to the secondary {@skill Diplomacy} check or rule that the check is automatically a critical success. If you use the ritual without good reason, the result is automatically a critical failure.",
+				"If the ritual succeeds, you must offer the servitor payment depending on factors such as the duration and danger of the task. Payment always costs at least as much as a consumable item of the creature's level, and often costs as much as a permanent magic item of the creature's level to persuade a creature to fight alongside you. Your offerings should either align with the personal tastes of the elemental lord, or with the element\u2014such as fresh flowers and bonsai plants for {@trait wood}, or gemstones for {@trait earth}.",
+				"You can alternatively name a being native to an elemental plane that you know personally, with the same level restriction. Such a creature might request something they personally want as payment, such as a favor or a game of chance.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your elemental lord sends a servitor, and the servitor's payment costs only half as much as normal. If you ask for a particular elemental creature by name, your lord is likely to send them unless the creature is busy.",
+						"Success": "Your elemental lord sends a servitor",
+						"Failure": "Your elemental lord does not send a servitor.",
+						"Critical Failure": "Your elemental lord is offended and sends a sign of displeasure or possibly even an elemental creature to scold or attack you, depending on your lord's nature."
+					}
+				}
+			]
+		},
+		{
+			"name": "Sky Signs",
+			"source": "RoE",
+			"page": 73,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"air",
+				"illusion",
+				"visual"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "lenses and fine mineral dusts worth 300 gp total",
+			"primaryCheck": {
+				"skills": [
+					"Nature"
+				],
+				"prof": "master"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Crafting",
+					"Diplomacy"
+				]
+			},
+			"secondaryCasters": {
+				"number": 2
+			},
+			"duration": {
+				"number": 8,
+				"unit": "hours"
+			},
+			"entries": [
+				"You emblazon a message across the sky itself. Casting the ritual requires choosing a set of symbols for the message you want to send, which you can convey with an atmospheric phenomenon of your choice. Common choices include carefully shaped clouds during the day and auroras at night. Some cultures\u2014such as the many denizens of the {@plane Plane of Air|GMG} and star-gazing iruxis\u2014develop complex symbology to communicate clearly using sky signs.",
+				"The message appears in the sky above you and can be seen to the horizon. To be conveyed in this way, the message must be very simple\u2014typically something that can be expressed in 5 words or fewer. The symbols look the same to anyone who sees them. If you wish to conceal a message, you need to choose symbols that will make sense to your chosen audience but not to any other onlookers.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You display your chosen signs, and the message is clear to anyone who sees it.",
+						"Success": "You display a somewhat muddled version of your message. The signs aren't entirely clear and require interpretation from those who view them\u2014and many interpret them incorrectly.",
+						"Failure": "You're unable to show your message.",
+						"Critical Failure": "The spirits of air find your message audacious and offensive. As punishment, they emblazon the opposite of your intended message across the sky, and the message is clear to anyone who sees it."
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"10": [
+						"The scope of your message is truly staggering and can be seen across the entire planet."
+					]
+				}
+			}
+		},
+		{
 			"name": "Mosquito Blight",
 			"source": "LOMM",
 			"page": 77,
