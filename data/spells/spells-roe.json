@@ -36,7 +36,8 @@
 				]
 			},
 			"entries": [
-				"A massive rush of wind lifts, briefly carrying you and everything around you to a nearby destination. You, each creature in the area, and each item of 10 Bulk or lighter are lifted by this powerful gale. You and all affected creatures and objects {@action Fly} up to 60 feet and land on a solid surface, arriving in the same relative position to each other. If there wouldn't be enough room at the destination for everything you're bringing, the spell fails, though the GM might allow you to rearrange the group slightly to accommodate the spell. Any unwilling participant can attempt a Reflex save to avoid being carried along. The airlift doesn't carry items that are secured in place (such as a hinged door or a person manacled to a wall)."
+				"A massive rush of wind lifts, briefly carrying you and everything around you to a nearby destination. You, each creature in the area, and each item of 10 Bulk or lighter are lifted by this powerful gale. You and all affected creatures and objects {@action Fly} up to 60 feet and land on a solid surface, arriving in the same relative position to each other. If there wouldn't be enough room at the destination for everything you're bringing, the spell fails, though the GM might allow you to rearrange the group slightly to accommodate the spell.",
+				"Any unwilling participant can attempt a Reflex save to avoid being carried along. The airlift doesn't carry items that are secured in place (such as a hinged door or a person manacled to a wall)."
 			],
 			"heightened": {
 				"X": {
@@ -68,6 +69,9 @@
 					"S",
 					"V"
 				]
+			],
+			"trigger": [
+				"You fall more than 10 feet"
 			],
 			"area": {
 				"entry": "20-foot emanation",
@@ -127,6 +131,10 @@
 					"Burst"
 				]
 			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
 			"entries": [
 				"You purify the air in the area, making it clean and breathable. This removes inhaled poisons, pollution, and similar contaminants from the air but doesn't prevent future contamination. This effect is immediate; for the remaining duration, the spell prevents any further contamination from altering air in the area, including keeping toxic air bordering the area from coming inside. This spell doesn't create air, 70 so casting it underwater wouldn't create breathable air, nor would it affect any toxins within air suspended in the water."
 			],
@@ -173,6 +181,14 @@
 			"range": {
 				"unit": "feet",
 				"number": 60
+			},
+			"trigger": [
+				"You or an ally in range is targeted by a ranged attack"
+			],
+			"targets": "the creature targeted by the attack",
+			"duration": {
+				"number": 1,
+				"unit": "round"
 			},
 			"entries": [
 				"A cloud of mist enshrouds the target, appearing much like the deflecting clouds created by cloud dragons. The target is treated as {@condition hidden} for the purposes of resolving the triggering attack (so normally the attacker must succeed at a DC {@flatDC 11} flat check to target it) and all ranged attacks against it for the duration."
@@ -258,6 +274,10 @@
 					"Burst"
 				]
 			},
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
 			"entries": [
 				"A light, soothing breeze flows through the area, making it easier to rest and recover. {@skill Medicine} checks attempted to benefit living creatures in the area get a +2 status bonus. Any living creature in the area also gets a +2 status bonus to saving throws against afflictions and, if it remains within the area for the full duration, regains 10 Hit Points. In addition, the cool breeze reduces the temperature effects of heat by one step for any creature in the area."
 			],
@@ -301,7 +321,6 @@
 			},
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				],
 				"basic": true
@@ -312,7 +331,9 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You orchestrate an {@condition invisible} ensemble of lost sounds captured inside errant breezes across the Plane of Air, and you can direct this symphony to attack foes within range. The sounds materialize and manifest as directed, appearing as silhouetted instruments and musicians that dance and bob in the wind. When you Cast the Spell, a captured breath of ephemeral music explodes in a great crescendo, appearing in a space you choose within range. On subsequent rounds, the first time you {@spell Sustain a spell||Sustain the Spell} each round, you can move your conjured melody to a space within range (if needed) and create another explosion of music. Each explosion of sound from the phantom orchestra deals {@damage 8d6} sonic damage to all creatures in a 10-foot burst (basic Fortitude save). The phantom orchestra doesn't take up space, grant flanking, or have any other attributes a creature would."
+				"You orchestrate an {@condition invisible} ensemble of lost sounds captured inside errant breezes across the {@plane Plane of Air|GMG}, and you can direct this symphony to attack foes within range. The sounds materialize and manifest as directed, appearing as silhouetted instruments and musicians that dance and bob in the wind.",
+				"When you {@action Cast a spell||Cast the Spell}, a captured breath of ephemeral music explodes in a great crescendo, appearing in a space you choose within range. On subsequent rounds, the first time you {@action Sustain a spell||Sustain the Spell} each round, you can move your conjured melody to a space within range (if needed) and create another explosion of music.",
+				"Each explosion of sound from the phantom orchestra deals {@damage 8d6} sonic damage to all creatures in a 10-foot burst (basic Fortitude save). The phantom orchestra doesn't take up space, grant flanking, or have any other attributes a creature would."
 			],
 			"heightened": {
 				"plusX": {
@@ -356,6 +377,15 @@
 					"Burst"
 				]
 			},
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
 			"entries": [
 				"Air pressure drops precipitously, causing pain and debilitation in creatures' inner ears and joints. Each living creature in the area of the spell when you cast it or that enters the area during the spell's duration must attempt a Fortitude save.",
 				{
@@ -371,10 +401,11 @@
 							"The creature is {@condition deafened} and {@condition clumsy||clumsy 2}. At the end of each of its turns, it can attempt a new save if it's no longer in the pressure zone. On a success, it ends the effects and is temporarily immune for 1 hour."
 						],
 						"Critical Failure": [
-							"The creature is {@condition deafened} and {@condition clumsy||clumsy 2} for the duration of the spell. A creature {@condition deafened} by this spell can attempt to end the condition by popping its ears. It can use a single action to attempt a new Fortitude save, losing the {@condition deafened} condition from this spell on a success. Some creatures with anatomies that lack inner ears or joints might be immune to these effects, as determined by the GM."
+							"The creature is {@condition deafened} and {@condition clumsy||clumsy 2} for the duration of the spell."
 						]
 					}
-				}
+				},
+				"A creature {@condition deafened} by this spell can attempt to end the condition by popping its ears. It can use a single action to attempt a new Fortitude save, losing the {@condition deafened} condition from this spell on a success. Some creatures with anatomies that lack inner ears or joints might be immune to these effects, as determined by the GM."
 			]
 		},
 		{
@@ -401,12 +432,14 @@
 					"V"
 				]
 			],
+			"trigger": "An ally in range {@action Stride||Strides} or {@action Leap||Leaps}",
 			"range": {
 				"unit": "feet",
 				"number": 60
 			},
+			"targets": "the triggering creature",
 			"entries": [
-				"You create a current of wind at your ally’s back, propelling their movement. When your ally’s {@action Stride} or {@action Leap} ends, the current propels them an additional 15 feet in the same direction as the last 5 feet of their {@action Stride} or {@action Leap}."
+				"You create a current of wind at your ally's back, propelling their movement. When your ally's {@action Stride} or {@action Leap} ends, the current propels them an additional 15 feet in the same direction as the last 5 feet of their {@action Stride} or {@action Leap}."
 			]
 		},
 		{
@@ -441,12 +474,15 @@
 				"unit": "feet",
 				"number": 30
 			},
+			"targets": "1 living creature or 1 corpse that died within the last round",
 			"duration": {
 				"number": 1,
 				"unit": "minute"
 			},
 			"entries": [
-				"A dense lightning cloud descends to fill the target's space, then fires a jolt of revitalizing lightning into the target. If the target is a corpse that died within the last round, the creature comes back to life with 0 Hit Points, and {@trait any} effects and conditions it had when it died, with the exception of {@condition dying}, and its {@condition wounded} condition increases by 1. The creature's initiative is right before yours. Regardless of whether the creature came back to life or was already alive, it regains {@dice 8d8} Hit Points, and the bolt wakes it up if it was {@condition unconscious}. For the duration of the spell, the target is supercharged. It becomes {@condition quickened} and can use the extra action to {@action Stand}, {@action Stride}, {@action Strike}, or {@action Fly} (if it has a fly Speed). In addition, it can cast 5th-rank thunderstrike as an innate spell at will, using your spell DC. The cloud that covered the creature remains until the end of the target's next turn. Any creature in the cloud is {@condition hidden}, and anything outside the cloud is {@condition hidden} to any creature inside the cloud."
+				"A dense lightning cloud descends to fill the target's space, then fires a jolt of revitalizing lightning into the target. If the target is a corpse that died within the last round, the creature comes back to life with 0 Hit Points, and {@trait any} effects and conditions it had when it died, with the exception of {@condition dying}, and its {@condition wounded} condition increases by 1. The creature's initiative is right before yours.",
+				"Regardless of whether the creature came back to life or was already alive, it regains {@dice 8d8} Hit Points, and the bolt wakes it up if it was {@condition unconscious}. For the duration of the spell, the target is supercharged. It becomes {@condition quickened} and can use the extra action to {@action Stand}, {@action Stride}, {@action Strike}, or {@action Fly} (if it has a fly Speed). In addition, it can cast 5th-rank thunderstrike as an innate spell at will, using your spell DC.",
+				"The cloud that covered the creature remains until the end of the target's next turn. Any creature in the cloud is {@condition hidden}, and anything outside the cloud is {@condition hidden} to any creature inside the cloud."
 			],
 			"heightened": {
 				"plusX": {
@@ -488,8 +524,15 @@
 				"unit": "feet",
 				"number": 60
 			},
-			"targets": "1 or 2 creatures Defense AC You slash your hand through the air, channeling miniature ripples of air from each finger to slice your enemy. If you have two hands free, you can target two creatures with this spell; otherwise, you target one. Make a spell attack roll against each target's AC. This deals {@damage 2d4} slashing damage. On a critical success, a target also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}. If you're attacking two creatures, this counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after both attacks.",
+			"targets": "1 or 2 creatures",
+			"savingThrow": {
+				"type": [
+					"AC"
+				]
+			},
 			"entries": [
+				"You slash your hand through the air, channeling miniature ripples of air from each finger to slice your enemy. If you have two hands free, you can target two creatures with this spell; otherwise, you target one.",
+				"Make a spell attack roll against each target's AC. This deals {@damage 2d4} slashing damage. On a critical success, a target also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}. If you're attacking two creatures, this counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after both attacks.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -682,8 +725,8 @@
 				]
 			},
 			"entries": [
-				"You whisper a secret message or sound into the wind, which carries it to a designated spot. The message travels to a specific 10-foot burst within range that’s familiar to you, provided there’s a path for the wind to follow between you and the area. The gentle breeze goes all but unnoticed until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends.",
-				"Your message can contain no more than 25 words, 1 round’s worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can’t activate magical effects triggered by voices."
+				"You whisper a secret message or sound into the wind, which carries it to a designated spot. The message travels to a specific 10-foot burst within range that's familiar to you, provided there's a path for the wind to follow between you and the area. The gentle breeze goes all but unnoticed until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends.",
+				"Your message can contain no more than 25 words, 1 round's worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can't activate magical effects triggered by voices."
 			],
 			"heightened": {
 				"X": {
@@ -1057,7 +1100,7 @@
 				]
 			},
 			"entries": [
-				"Handlike protrusions of rock and soil grab and bury creatures. Each creature in the area when you cast the spell, and each creature that ends its turn in the area during the spell's duration, must attempt a Fortitude save. The first time each round you {@spell Sustain a spell||Sustain this spell}, each creature still {@condition grabbed} by the earth takes {@damage 1d6} bludgeoning damage, and each creature {@condition restrained} by the earth takes {@damage 2d6} bludgeoning damage. A creature can attempt to {@action Escape}, rolling against your spell DC.",
+				"Handlike protrusions of rock and soil grab and bury creatures. Each creature in the area when you cast the spell, and each creature that ends its turn in the area during the spell's duration, must attempt a Fortitude save. The first time each round you {@action Sustain a spell||Sustain this spell}, each creature still {@condition grabbed} by the earth takes {@damage 1d6} bludgeoning damage, and each creature {@condition restrained} by the earth takes {@damage 2d6} bludgeoning damage. A creature can attempt to {@action Escape}, rolling against your spell DC.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1360,12 +1403,12 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You conjure up to six 5-foot stone cubes you can gently move with a gesture. Each cube appears in any space within range, and they're capable of levitating. If you conjure a cube in an occupied space or in a space that can't accommodate it, it fails to appear. Each 5-foot cube can be Climbed with a successful DC 10 {@skill Athletics} check and has AC 10, Hardness 10, and 40 Hit Points. If any of the cubes is ever farther away from you than the range of this spell, it immediately crumbles into dust. Each time you {@spell Sustain a spell||Sustain this spell}, you can move up to two of the conjured cubes up to 10 feet each in any direction, including vertically. You can choose different cubes to move each time you {@spell Sustain a spell||Sustain}."
+				"You conjure up to six 5-foot stone cubes you can gently move with a gesture. Each cube appears in any space within range, and they're capable of levitating. If you conjure a cube in an occupied space or in a space that can't accommodate it, it fails to appear. Each 5-foot cube can be Climbed with a successful DC 10 {@skill Athletics} check and has AC 10, Hardness 10, and 40 Hit Points. If any of the cubes is ever farther away from you than the range of this spell, it immediately crumbles into dust. Each time you {@action Sustain a spell||Sustain this spell}, you can move up to two of the conjured cubes up to 10 feet each in any direction, including vertically. You can choose different cubes to move each time you {@action Sustain a spell||Sustain}."
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The cubes have 10 additional Hit Points, and you can move the chosen cubes an additional 5 feet each time you {@spell Sustain a spell||Sustain this Spell}."
+						"The cubes have 10 additional Hit Points, and you can move the chosen cubes an additional 5 feet each time you {@action Sustain a spell||Sustain this Spell}."
 					]
 				}
 			}
@@ -1597,7 +1640,7 @@
 			},
 			"targets": "the triggering creature",
 			"entries": [
-				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target’s check."
+				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
 			]
 		},
 		{
@@ -1750,13 +1793,22 @@
 				"unit": "feet",
 				"number": 60
 			},
+			"area": {
+				"entry": "5-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": "F"
+			},
 			"duration": {
 				"number": 1,
 				"unit": "minute",
 				"sustained": true
 			},
 			"entries": [
-				"You breathe life into a mass of fiery critters. They swarm the target and create an aura around it in a 5-foot emanation. The target and enemies in the aura are subject to an effect depending on the insects you choose. On subsequent rounds, the first time you minute {@spell Sustain a spell||Sustain this spell} each round, you repeat the effect on the target and all your enemies in the insect aura. Pick a type of insect to determine the effects.",
+				"You breathe life into a mass of fiery critters. They swarm the target and create an aura around it in a 5-foot emanation. The target and enemies in the aura are subject to an effect depending on the insects you choose. On subsequent rounds, the first time you minute {@action Sustain a spell||Sustain this spell} each round, you repeat the effect on the target and all your enemies in the insect aura. Pick a type of insect to determine the effects.",
 				"{@b Fire Ants} You create fiery flying ants that deal {@damage 3d6} piercing damage plus {@damage 2d6} {@condition persistent damage||persistent fire damage} with a basic Reflex save. A creature that fails its save must move 5 feet in a direction of your choice as it tries to escape the biting ants; this happens after all the creatures attempt their saves and can't add new creatures to the aura if the main target moves.",
 				"{@b Fireflies} (incapacitation) You create a flurry of fireflies that deal {@damage 3d6} fire damage and can dazzle or blind, depending on the target's Fortitude save.",
 				{
@@ -1817,6 +1869,11 @@
 				"entry": "5-foot burst",
 				"types": [
 					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F"
 				]
 			},
 			"entries": [
@@ -2335,7 +2392,7 @@
 						[
 							"8",
 							"Blue",
-							"Choose the color for each affected creature and use that color’s damage and added effect; if a creature is affected again, you can choose a different color.",
+							"Choose the color for each affected creature and use that color's damage and added effect; if a creature is affected again, you can choose a different color.",
 							"\u2014"
 						]
 					]
@@ -2853,7 +2910,7 @@
 				"sustained": true
 			},
 			"entries": [
-				"The roiling magnetic fields of the Plane of Metal radiate from you as you channel and reshape them at your merest thought. When you Cast this Spell, you can relocate each affected target to any other unoccupied space within the emanation. You can't move yourself in this way. An unwilling target can resist being moved with a successful Reflex save. The creatures move all at once\u2014after you know the results of all the saves, you determine which target occupies each space in whatever order you choose. You can move a creature into a space that was previously occupied by another creature so long as you also relocate the first creature elsewhere as part of the movement. If you move a target into the air, it descends to the ground harmlessly after being moved unless it chooses not to. You can choose to be affected by an 8th-rank {@spell magnetic repulsion|SoM} spell (Secrets of Magic 115) that lasts for the duration of magnetic dominion. Each time you {@spell Sustain a spell||Sustain the spell}, you can move one creature in the emanation, with the same targeting restrictions and stipulations as above."
+				"The roiling magnetic fields of the Plane of Metal radiate from you as you channel and reshape them at your merest thought. When you Cast this Spell, you can relocate each affected target to any other unoccupied space within the emanation. You can't move yourself in this way. An unwilling target can resist being moved with a successful Reflex save. The creatures move all at once\u2014after you know the results of all the saves, you determine which target occupies each space in whatever order you choose. You can move a creature into a space that was previously occupied by another creature so long as you also relocate the first creature elsewhere as part of the movement. If you move a target into the air, it descends to the ground harmlessly after being moved unless it chooses not to. You can choose to be affected by an 8th-rank {@spell magnetic repulsion|SoM} spell (Secrets of Magic 115) that lasts for the duration of magnetic dominion. Each time you {@action Sustain a spell||Sustain the spell}, you can move one creature in the emanation, with the same targeting restrictions and stipulations as above."
 			]
 		},
 		{
@@ -3451,7 +3508,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"Tapping the ground, you create a shallow pool of water that spreads over the affected area, and majestic sprays, jets, and mists of water erupt forth in a dazzling water show. When you Cast the Spell, and the first time each round you {@spell Sustain a spell||Sustain the spell}, you can command the fountain to use one of the following displays, which is accompanied by a loud burst of music. The dancing fountain is somewhat fickle in its desire for novelty, meaning it can't be commanded to use the same display on two consecutive turns.",
+				"Tapping the ground, you create a shallow pool of water that spreads over the affected area, and majestic sprays, jets, and mists of water erupt forth in a dazzling water show. When you Cast the Spell, and the first time each round you {@action Sustain a spell||Sustain the spell}, you can command the fountain to use one of the following displays, which is accompanied by a loud burst of music. The dancing fountain is somewhat fickle in its desire for novelty, meaning it can't be commanded to use the same display on two consecutive turns.",
 				{
 					"type": "list",
 					"items": [
@@ -3537,7 +3594,7 @@
 				"number": 10
 			},
 			"entries": [
-				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can’t draw more than a few cups before depleting the ambient moisture."
+				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can't draw more than a few cups before depleting the ambient moisture."
 			]
 		},
 		{
@@ -3736,7 +3793,9 @@
 				]
 			},
 			"entries": [
-				"A spiral of dark, corrupted water appears in the ground, plunging open a door to the depths that seems to descend for miles. Disembodied glowing eyes and gnashing teeth spin within the vortex, consuming anything that crosses their path. All creatures in the area take {@damage 4d8} piercing damage plus {@damage 4d4} void damage (basic Reflex save). Each time you {@spell Sustain a spell||Sustain the spell}, you can increase the vortex's radius by 5 feet, to a maximum of 15 feet, or you can move the vortex up to 10 feet in a straight line. Each creature the vortex moves through takes the damage with a basic Reflex save. A creature can take damage from hungry depths only once per round. If cast underwater, hungry depths instead fills a 40-foot‑tall cylinder with a 5-foot radius."
+				"A spiral of dark, corrupted water appears in the ground, plunging open a door to the depths that seems to descend for miles. Disembodied glowing eyes and gnashing teeth spin within the vortex, consuming anything that crosses their path.",
+				"All creatures in the area take {@damage 4d8} piercing damage plus {@damage 4d4} void damage (basic Reflex save). Each time you {@action Sustain a spell||Sustain the spell}, you can increase the vortex's radius by 5 feet, to a maximum of 15 feet, or you can move the vortex up to 10 feet in a straight line. Each creature the vortex moves through takes the damage with a basic Reflex save. A creature can take damage from hungry depths only once per round.",
+				"If cast underwater, hungry depths instead fills a 40-foot‑tall cylinder with a 5-foot radius."
 			],
 			"heightened": {
 				"X": {
@@ -3773,7 +3832,10 @@
 			},
 			"targets": "1 body of water of at least 5 square feet",
 			"entries": [
-				"Some say water holds memories or impressions of the past, and you can raise those memories to the surface to glimpse recent events. When you Cast the Spell, you fix your mind on an amount of time in the past, up to 24 hours ago. A mist rises from the target body of water, filling a 30-foot burst and coalescing into a misty scene of the events that took place at that time within 60 feet of the water. Any creature who can see the area can observe the images produced, which are a translucent white color and detailed enough to show a silhouette, outline, or contour of creatures and objects that passed through the area and the motions hey took. Fine details, such as facial features or written letters, are too precise for the mist to form, and the scene is silent. You can minute {@spell Sustain a spell||Sustain the spell} to cause the mist to play events backward or forward, with each minute spent {@spell Sustain a spell||Sustaining} corresponding to a minute of playback. Strong winds from a magical source can disrupt this spell if the effect succeeds at a counteract check against your spell DC."
+				"Some say water holds memories or impressions of the past, and you can raise those memories to the surface to glimpse recent events. When you Cast the Spell, you fix your mind on an amount of time in the past, up to 24 hours ago. A mist rises from the target body of water, filling a 30-foot burst and coalescing into a misty scene of the events that took place at that time within 60 feet of the water.",
+				"Any creature who can see the area can observe the images produced, which are a translucent white color and detailed enough to show a silhouette, outline, or contour of creatures and objects that passed through the area and the motions hey took. Fine details, such as facial features or written letters, are too precise for the mist to form, and the scene is silent.",
+				"You can {@action Sustain a spell||Sustain the spell} to cause the mist to play events backward or forward, with each minute spent {@action Sustain a spell||Sustaining} corresponding to a minute of playback.",
+				"Strong winds from a magical source can disrupt this spell if the effect succeeds at a counteract check against your spell DC."
 			]
 		},
 		{
@@ -3805,7 +3867,9 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You surround yourself in a bubble-like shroud of seawater that fills your space completely and moves with you. You can breathe, speak, and perceive normally while within your personal ocean, and you gain a swim Speed equal to your land Speed if you don't have one. The rules of aquatic combat apply to you, attacks targeting you, or attacks passing through your square. For instance, a bludgeoning or slashing melee attack targeting you would take a \u20132 circumstance penalty, and you can't cast fire spells or use actions with the {@trait fire} trait. Each time you move, you extinguish non-magical fires in spaces you pass through and can attempt to counteract magical fires you move through. If you successfully counteract a fire larger than the spaces you moved through, you merely push it out of the spaces along your path. If you fail to counteract a given fire, you can't counteract that fire for the duration of the spell. You can {@action Dismiss} the spell."
+				"You surround yourself in a bubble-like shroud of seawater that fills your space completely and moves with you. You can breathe, speak, and perceive normally while within your personal ocean, and you gain a swim Speed equal to your land Speed if you don't have one. The rules of aquatic combat apply to you, attacks targeting you, or attacks passing through your square. For instance, a bludgeoning or slashing melee attack targeting you would take a \u20132 circumstance penalty, and you can't cast fire spells or use actions with the {@trait fire} trait.",
+				"Each time you move, you extinguish non-magical fires in spaces you pass through and can attempt to counteract magical fires you move through. If you successfully counteract a fire larger than the spaces you moved through, you merely push it out of the spaces along your path. If you fail to counteract a given fire, you can't counteract that fire for the duration of the spell.",
+				"You can {@action Dismiss} the spell."
 			]
 		},
 		{
@@ -3874,7 +3938,7 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"You cause a splash of cold water to descend on an ally’s head, granting some temporary vigor. The target gains {@dice 1d4} temporary Hit Points, which last for 1 minute. The target is then temporarily immune to the temporary Hit Points from rousing splash for 10 minutes. The target can also attempt an immediate flat check to recover from a single source of persistent acid or fire damage, with the DC reduction from appropriate assistance."
+				"You cause a splash of cold water to descend on an ally's head, granting some temporary vigor. The target gains {@dice 1d4} temporary Hit Points, which last for 1 minute. The target is then temporarily immune to the temporary Hit Points from rousing splash for 10 minutes. The target can also attempt an immediate flat check to recover from a single source of persistent acid or fire damage, with the DC reduction from appropriate assistance."
 			],
 			"heightened": {
 				"plusX": {
@@ -3909,7 +3973,7 @@
 				"unit": "touch"
 			},
 			"entries": [
-				"You touch the water's surface, and as the ripples spread out, so do your senses. When you Cast this Spell, you automatically know the location of any unoccupied, flowing water with a surface area of at least 1 square within 500 feet. You can pick any one of these streams to see and hear out of for the duration of the spell, though your field of vision is perpendicular to the flowing surface. For example, you could look normally out of a waterfall but would look straight up from out of a river. Each time you {@spell Sustain a spell||Sustain the spell}, you can change to a different water source or move elsewhere along the same one.",
+				"You touch the water's surface, and as the ripples spread out, so do your senses. When you Cast this Spell, you automatically know the location of any unoccupied, flowing water with a surface area of at least 1 square within 500 feet. You can pick any one of these streams to see and hear out of for the duration of the spell, though your field of vision is perpendicular to the flowing surface. For example, you could look normally out of a waterfall but would look straight up from out of a river. Each time you {@action Sustain a spell||Sustain the spell}, you can change to a different water source or move elsewhere along the same one.",
 				"If the water you're scrying through ceases flowing, such as by a faucet turning off, a river damming, or a waterfall freezing over, this spell ends. Additionally, your face appears as a faint reflection in the water's surface as you peek through. A creature that Seeks and succeeds at their {@skill Perception} check against your spell DC detects your presence in the water."
 			],
 			"heightened": {
