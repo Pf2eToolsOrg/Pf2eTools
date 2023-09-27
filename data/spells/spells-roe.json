@@ -439,7 +439,7 @@
 			},
 			"targets": "the triggering creature",
 			"entries": [
-				"You create a current of wind at your ally's back, propelling their movement. When your ally's {@action Stride} or {@action Leap} ends, the current propels them an additional 15 feet in the same direction as the last 5 feet of their {@action Stride} or {@action Leap}."
+				"You create a current of wind at your ally’s back, propelling their movement. When your ally’s {@action Stride} or {@action Leap} ends, the current propels them an additional 15 feet in the same direction as the last 5 feet of their {@action Stride} or {@action Leap}."
 			]
 		},
 		{
@@ -525,11 +525,6 @@
 				"number": 60
 			},
 			"targets": "1 or 2 creatures",
-			"savingThrow": {
-				"type": [
-					"AC"
-				]
-			},
 			"entries": [
 				"You slash your hand through the air, channeling miniature ripples of air from each finger to slice your enemy. If you have two hands free, you can target two creatures with this spell; otherwise, you target one.",
 				"Make a spell attack roll against each target's AC. This deals {@damage 2d4} slashing damage. On a critical success, a target also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}. If you're attacking two creatures, this counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after both attacks.",
@@ -588,6 +583,16 @@
 					"Burst"
 				]
 			},
+			"savingThrow": {
+				"type": [
+					"F"
+				],
+				"basic": true
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
 			"entries": [
 				"You make all air in the target area unnaturally still and unyielding, creating a shimmering haze. The stagnant, heavy air becomes an area of difficult terrain. Creatures in the area that breathe air and aren't holding their breath must spend a single action on their turn straining to breathe the stagnant air; once they do, they still mostly breathe their own exhaled air, taking {@damage 3d6} poison damage (basic Fortitude save) and becoming {@condition fatigued}."
 			],
@@ -626,6 +631,11 @@
 			"range": {
 				"unit": "feet",
 				"number": 30
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You shroud one creature in a cloak of fierce, howling winds, shielding it from attacks and making it difficult to approach. The twisting shield of wind creates difficult terrain in a 5-foot burst surrounding the target. The target also gains a +2 circumstance bonus to its AC against physical ranged attacks, such as attacks made with bows, javelins, or slings. In addition, the sound of the swirling storms makes it easier for the target to ignore anything it doesn't want to hear, granting the target a +2 circumstance bonus to all defenses against {@trait auditory} effects."
@@ -725,8 +735,8 @@
 				]
 			},
 			"entries": [
-				"You whisper a secret message or sound into the wind, which carries it to a designated spot. The message travels to a specific 10-foot burst within range that's familiar to you, provided there's a path for the wind to follow between you and the area. The gentle breeze goes all but unnoticed until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends.",
-				"Your message can contain no more than 25 words, 1 round's worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can't activate magical effects triggered by voices."
+				"You whisper a secret message or sound into the wind, which carries it to a designated spot. The message travels to a specific 10-foot burst within range that’s familiar to you, provided there’s a path for the wind to follow between you and the area. The gentle breeze goes all but unnoticed until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends.",
+				"Your message can contain no more than 25 words, 1 round’s worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can’t activate magical effects triggered by voices."
 			],
 			"heightened": {
 				"X": {
@@ -797,6 +807,7 @@
 					"V"
 				]
 			],
+			"trigger": "A creature enters a space within 5 feet of you",
 			"entries": [
 				"An arresting breeze sweeps you up in an instant and moves you to safety. You {@action Fly} 15 feet directly away from the triggering creature."
 			],
@@ -1640,7 +1651,7 @@
 			},
 			"targets": "the triggering creature",
 			"entries": [
-				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
+				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target’s check."
 			]
 		},
 		{
@@ -1800,7 +1811,9 @@
 				]
 			},
 			"savingThrow": {
-				"type": "F"
+				"type": [
+					"F"
+				]
 			},
 			"duration": {
 				"number": 1,
@@ -2392,7 +2405,7 @@
 						[
 							"8",
 							"Blue",
-							"Choose the color for each affected creature and use that color's damage and added effect; if a creature is affected again, you can choose a different color.",
+							"Choose the color for each affected creature and use that color’s damage and added effect; if a creature is affected again, you can choose a different color.",
 							"\u2014"
 						]
 					]
@@ -3594,7 +3607,7 @@
 				"number": 10
 			},
 			"entries": [
-				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can't draw more than a few cups before depleting the ambient moisture."
+				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can’t draw more than a few cups before depleting the ambient moisture."
 			]
 		},
 		{
@@ -3938,7 +3951,7 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"You cause a splash of cold water to descend on an ally's head, granting some temporary vigor. The target gains {@dice 1d4} temporary Hit Points, which last for 1 minute. The target is then temporarily immune to the temporary Hit Points from rousing splash for 10 minutes. The target can also attempt an immediate flat check to recover from a single source of persistent acid or fire damage, with the DC reduction from appropriate assistance."
+				"You cause a splash of cold water to descend on an ally’s head, granting some temporary vigor. The target gains {@dice 1d4} temporary Hit Points, which last for 1 minute. The target is then temporarily immune to the temporary Hit Points from rousing splash for 10 minutes. The target can also attempt an immediate flat check to recover from a single source of persistent acid or fire damage, with the DC reduction from appropriate assistance."
 			],
 			"heightened": {
 				"plusX": {
