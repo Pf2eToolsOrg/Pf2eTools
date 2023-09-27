@@ -312,7 +312,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You orchestrate an {@condition invisible} ensemble of lost sounds captured inside errant breezes across the Plane of Air, and you can direct this symphony to attack foes within range. The sounds materialize and manifest as directed, appearing as silhouetted instruments and musicians that dance and bob in the wind. When you Cast the Spell, a captured breath of ephemeral music explodes in a great crescendo, appearing in a space you choose within range. On subsequent rounds, the first time you Sustain the Spell each round, you can move your conjured melody to a space within range (if needed) and create another explosion of music. Each explosion of sound from the phantom orchestra deals {@damage 8d6} sonic damage to all creatures in a 10-foot burst (basic Fortitude save). The phantom orchestra doesn't take up space, grant flanking, or have any other attributes a creature would."
+				"You orchestrate an {@condition invisible} ensemble of lost sounds captured inside errant breezes across the Plane of Air, and you can direct this symphony to attack foes within range. The sounds materialize and manifest as directed, appearing as silhouetted instruments and musicians that dance and bob in the wind. When you Cast the Spell, a captured breath of ephemeral music explodes in a great crescendo, appearing in a space you choose within range. On subsequent rounds, the first time you {@spell Sustain a spell||Sustain the Spell} each round, you can move your conjured melody to a space within range (if needed) and create another explosion of music. Each explosion of sound from the phantom orchestra deals {@damage 8d6} sonic damage to all creatures in a 10-foot burst (basic Fortitude save). The phantom orchestra doesn't take up space, grant flanking, or have any other attributes a creature would."
 			],
 			"heightened": {
 				"plusX": {
@@ -405,7 +405,9 @@
 				"unit": "feet",
 				"number": 60
 			},
-			"entries": []
+			"entries": [
+				"You create a current of wind at your ally’s back, propelling their movement. When your ally’s {@action Stride} or {@action Leap} ends, the current propels them an additional 15 feet in the same direction as the last 5 feet of their {@action Stride} or {@action Leap}."
+			]
 		},
 		{
 			"name": "Shock to the System",
@@ -619,15 +621,16 @@
 			},
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				]
 			},
 			"duration": {
-				"unit": "unknown",
-				"entry": "sustained up to 1 minute of nearby creatures. During vacuum's duration, you take a \u20131 circumstance penalty against inhaled threats, such as inhaled poisons. If you cast vacuum in an environment where you can't breathe, the spell fails and you immediately begin to suffocate. Creatures in the area must attempt a Fortitude save. A creature that's holding its breath gets a result one degree of success better than it rolled, and creatures that don't need to breathe air are immune to the spell. A creature that later enters the area or ceases holding its breath must attempt a save against the effect. On subsequent rounds, the first time each round you Sustain the spell, you can force each creature in the area to save against the effect."
+				"unit": "minute",
+				"number": 1,
+				"sustained": true
 			},
 			"entries": [
+				"During vacuum's duration, you take a \u20131 circumstance penalty against inhaled threats, such as inhaled poisons. If you cast vacuum in an environment where you can't breathe, the spell fails and you immediately begin to suffocate. Creatures in the area must attempt a Fortitude save. A creature that's holding its breath gets a result one degree of success better than it rolled, and creatures that don't need to breathe air are immune to the spell. A creature that later enters the area or ceases holding its breath must attempt a save against the effect. On subsequent rounds, the first time each round you {@action Sustain a spell||Sustain the spell}, you can force each creature in the area to save against the effect.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -673,12 +676,15 @@
 				"number": 10
 			},
 			"area": {
-				"entry": "10-foot burst which carries it to a designated spot. The message travels to a specific 10-foot burst within range that's familiar to you, provided there's a path for the wind to follow between you and the area. The gentle breeze goes all but {@condition unnoticed} until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends. Your message can contain no more than 25 words, 1 round's worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can't activate {@trait magical} effects triggered by voices.",
+				"entry": "10-foot burst",
 				"types": [
 					"Burst"
 				]
 			},
-			"entries": [],
+			"entries": [
+				"You whisper a secret message or sound into the wind, which carries it to a designated spot. The message travels to a specific 10-foot burst within range that’s familiar to you, provided there’s a path for the wind to follow between you and the area. The gentle breeze goes all but unnoticed until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends.",
+				"Your message can contain no more than 25 words, 1 round’s worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can’t activate magical effects triggered by voices."
+			],
 			"heightened": {
 				"X": {
 					"4": [
@@ -1051,7 +1057,7 @@
 				]
 			},
 			"entries": [
-				"Handlike protrusions of rock and soil grab and bury creatures. Each creature in the area when you cast the spell, and each creature that ends its turn in the area during the spell's duration, must attempt a Fortitude save. The first time each round you Sustain this spell, each creature still {@condition grabbed} by the earth takes {@damage 1d6} bludgeoning damage, and each creature {@condition restrained} by the earth takes {@damage 2d6} bludgeoning damage. A creature can attempt to {@action Escape}, rolling against your spell DC.",
+				"Handlike protrusions of rock and soil grab and bury creatures. Each creature in the area when you cast the spell, and each creature that ends its turn in the area during the spell's duration, must attempt a Fortitude save. The first time each round you {@spell Sustain a spell||Sustain this spell}, each creature still {@condition grabbed} by the earth takes {@damage 1d6} bludgeoning damage, and each creature {@condition restrained} by the earth takes {@damage 2d6} bludgeoning damage. A creature can attempt to {@action Escape}, rolling against your spell DC.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1070,7 +1076,7 @@
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The bludgeoning damage dealt when you Sustain this spell increases by {@dice 1d6} for {@condition grabbed} creatures and {@dice 2d6} for {@condition restrained} creatures."
+						"The bludgeoning damage dealt when you {@action Sustain a spell||Sustain this spell} increases by {@dice 1d6} for {@condition grabbed} creatures and {@dice 2d6} for {@condition restrained} creatures."
 					]
 				}
 			}
@@ -1354,12 +1360,12 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You conjure up to six 5-foot stone cubes you can gently move with a gesture. Each cube appears in any space within range, and they're capable of levitating. If you conjure a cube in an occupied space or in a space that can't accommodate it, it fails to appear. Each 5-foot cube can be Climbed with a successful DC 10 {@skill Athletics} check and has AC 10, Hardness 10, and 40 Hit Points. If any of the cubes is ever farther away from you than the range of this spell, it immediately crumbles into dust. Each time you Sustain this spell, you can move up to two of the conjured cubes up to 10 feet each in any direction, including vertically. You can choose different cubes to move each time you Sustain."
+				"You conjure up to six 5-foot stone cubes you can gently move with a gesture. Each cube appears in any space within range, and they're capable of levitating. If you conjure a cube in an occupied space or in a space that can't accommodate it, it fails to appear. Each 5-foot cube can be Climbed with a successful DC 10 {@skill Athletics} check and has AC 10, Hardness 10, and 40 Hit Points. If any of the cubes is ever farther away from you than the range of this spell, it immediately crumbles into dust. Each time you {@spell Sustain a spell||Sustain this spell}, you can move up to two of the conjured cubes up to 10 feet each in any direction, including vertically. You can choose different cubes to move each time you {@spell Sustain a spell||Sustain}."
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The cubes have 10 additional Hit Points, and you can move the chosen cubes an additional 5 feet each time you Sustain this Spell."
+						"The cubes have 10 additional Hit Points, and you can move the chosen cubes an additional 5 feet each time you {@spell Sustain a spell||Sustain this Spell}."
 					]
 				}
 			}
@@ -1395,7 +1401,11 @@
 				"unit": "feet",
 				"number": 120
 			},
-			"entries": [],
+			"entries": [
+				"You send a series of tremors, no longer than a short sentence of speech, toward your target. If the target is within range and connected to the same body of earth as you, the vibrations reach the target through the ground. You need neither line of sight nor line of effect, so a target on another floor of a building is a valid target.",
+				"The target can give a brief, vibrational response as a reaction, or as a free action on their next turn, but they must be within range to do so. If they respond, their response is delivered to you through tremors you feel, as with the original message. The tremors impart a clear meaning only if you and the target know that meaning, such as three tremors for a specific warning, two for another. Neither of you can impart a nuanced or new meaning using this spell.",
+				"A creature that has tremorsense can feel the vibrations from this spell if the creature is within range of the vibrations at any point during their journey to any target."
+			],
 			"heightened": {
 				"X": {
 					"4": [
@@ -1569,9 +1579,8 @@
 				"manipulate"
 			],
 			"domains": [
-				"Toil Trigger You or an Ally Within Range Fails a Skill Check for a Skill in Which You or They Are Trained."
+				"Toil"
 			],
-			"subclass": {},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
@@ -1586,8 +1595,10 @@
 				"unit": "feet",
 				"number": 30
 			},
-			"targets": "the triggering creature The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check.",
-			"entries": []
+			"targets": "the triggering creature",
+			"entries": [
+				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target’s check."
+			]
 		},
 		{
 			"name": "Tireless Worker",
@@ -1602,9 +1613,12 @@
 				"manipulate"
 			],
 			"domains": [
-				"Toil Range 30 Feet;"
+				"Toil"
 			],
-			"subclass": {},
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -1615,8 +1629,15 @@
 					"V"
 				]
 			],
-			"targets": "1 creature Duration sustained up to 1 minute You suppress your choice of one of the following conditions that's affecting the target: {@condition clumsy}, {@condition encumbered}, {@condition enfeebled}, or {@condition fatigued}. If you don't remove the effect that caused the condition, the condition returns after the spell's duration expires.",
-			"entries": []
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
+			"targets": "the triggering creature",
+			"entries": [
+				"You suppress your choice of one of the following conditions that's affecting the target: {@condition clumsy}, {@condition encumbered}, {@condition enfeebled}, or {@condition fatigued}. If you don't remove the effect that caused the condition, the condition returns after the spell's duration expires."
+			]
 		},
 		{
 			"name": "Blazing Armory",
@@ -1731,17 +1752,13 @@
 			},
 			"duration": {
 				"number": 1,
-				"unit": "minute"
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
-				"You breathe life into a mass of fiery critters. They swarm the target and create an aura around it in a 5-foot emanation. The target and enemies in the aura are subject to an effect depending on the insects you choose. On subsequent rounds, the first time you Sustain this spell each round, you repeat the effect on the target and all your enemies in the insect aura. Pick a type of insect to determine the effects.",
-				{
-					"type": "list",
-					"items": [
-						"{@b Fire Ants} You create fiery flying ants that deal {@damage 3d6} piercing damage plus {@damage 2d6} {@condition persistent damage||persistent fire damage} with a basic Reflex save. A creature that fails its save must move 5 feet in a direction of your choice as it tries to escape the biting ants; this happens after all the creatures attempt their saves and can't add new creatures to the aura if the main target moves.",
-						"{@b Fireflies} (incapacitation) You create a flurry of fireflies that deal {@damage 3d6} fire damage and can dazzle or blind, depending on the target's Fortitude save."
-					]
-				},
+				"You breathe life into a mass of fiery critters. They swarm the target and create an aura around it in a 5-foot emanation. The target and enemies in the aura are subject to an effect depending on the insects you choose. On subsequent rounds, the first time you minute {@spell Sustain a spell||Sustain this spell} each round, you repeat the effect on the target and all your enemies in the insect aura. Pick a type of insect to determine the effects.",
+				"{@b Fire Ants} You create fiery flying ants that deal {@damage 3d6} piercing damage plus {@damage 2d6} {@condition persistent damage||persistent fire damage} with a basic Reflex save. A creature that fails its save must move 5 feet in a direction of your choice as it tries to escape the biting ants; this happens after all the creatures attempt their saves and can't add new creatures to the aura if the main target moves.",
+				"{@b Fireflies} (incapacitation) You create a flurry of fireflies that deal {@damage 3d6} fire damage and can dazzle or blind, depending on the target's Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1803,7 +1820,8 @@
 				]
 			},
 			"entries": [
-				"You stir the inner fire of all things within the area, driving out moisture. All creatures in the area take {@damage 1d6} {@condition persistent damage||persistent fire damage} with a basic Fortitude save; creatures with the {@trait water} or {@trait plant} traits get a result one degree of success worse than they rolled. The spell ends for a creature when its {@condition persistent damage} ends. A creature affected by dehydrate attempts an additional Fortitude save at the end of each of its turns, before rolling to recover from the {@condition persistent damage}. It can forgo this additional save if it consumed water or a similar hydrating liquid within the last round (drinking typically requires a single action).",
+				"You stir the inner fire of all things within the area, driving out moisture. All creatures in the area take {@damage 1d6} {@condition persistent damage||persistent fire damage} with a basic Fortitude save; creatures with the {@trait water} or {@trait plant} traits get a result one degree of success worse than they rolled. The spell ends for a creature when its {@condition persistent damage} ends.",
+				"A creature affected by dehydrate attempts an additional Fortitude save at the end of each of its turns, before rolling to recover from the {@condition persistent damage}. It can forgo this additional save if it consumed water or a similar hydrating liquid within the last round (drinking typically requires a single action).",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1857,7 +1875,8 @@
 				"unit": "turn"
 			},
 			"entries": [
-				"You consume and ingest fire, making it less harmful to you. You gain resistance 5 to fire damage until the end of the current turn. During the remaining duration of the spell, you can use the Belch Smoke action. The spell ends if you fall {@condition unconscious}, inhale, or exhale (this includes speaking). Belch Smoke {@as 1} You exhale what remains of the smoke, ending the spell and creating a smoke cloud in a 5-foot burst within 20 feet. All creatures within the smoke cloud are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dispersed by a strong wind."
+				"You consume and ingest fire, making it less harmful to you. You gain resistance 5 to fire damage until the end of the current turn. During the remaining duration of the spell, you can use the Belch Smoke action. The spell ends if you fall {@condition unconscious}, inhale, or exhale (this includes speaking).",
+				"{@b Belch Smoke} {@as 1} You exhale what remains of the smoke, ending the spell and creating a smoke cloud in a 5-foot burst within 20 feet. All creatures within the smoke cloud are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dispersed by a strong wind."
 			],
 			"heightened": {
 				"plusX": {
@@ -1901,7 +1920,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Moderate The target's body temperature appears the same as the surrounding environment, giving the target a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} an undead, a cold-blooded creature, or an inanimate object (such as a corpse). The target is also {@condition invisible} to heatvision (page 120) and other abilities that sense heat similarly.",
+						"Moderate The target's body temperature appears the same as the surrounding environment, giving the target a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} an undead, a cold-blooded creature, or an inanimate object (such as a corpse). The target is also {@condition invisible} to {@spell heatvision|RoE} and other abilities that sense heat similarly.",
 						"Warm The target appears to emit substantial body heat, gaining a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} a warm-blooded creature."
 					]
 				}
@@ -2154,12 +2173,14 @@
 				]
 			],
 			"area": {
-				"entry": "30-foot emanation (see text) You light all non-magical light sources in the area that use fire to provide their light\u2014such as candles, lamps, and sconces. You can choose to make the emanation smaller than its maximum, to any distance of your choice. If a light source is attended by an unwilling creature, that creature can attempt a Reflex save to snuff the light out before it becomes noticeable.",
+				"entry": "30-foot emanation (see text)",
 				"types": [
 					"Emanation"
 				]
 			},
-			"entries": [],
+			"entries": [
+				"You light all non-magical light sources in the area that use fire to provide their light\u2014such as candles, lamps, and sconces. You can choose to make the emanation smaller than its maximum, to any distance of your choice. If a light source is attended by an unwilling creature, that creature can attempt a Reflex save to snuff the light out before it becomes noticeable."
+			],
 			"heightened": {
 				"plusX": {
 					"1": [
@@ -2704,7 +2725,7 @@
 				"unit": "hour"
 			},
 			"entries": [
-				"Your body transforms entirely into flexible iron. You gain resistance 10 to physical damage, except adamantine. You're immune to {@trait death} effects, disease, {@condition drained}, {@condition fatigued}, healing, nonlethal attacks, {@condition paralyzed}, poison, {@condition sickened}, vitality, and void; any of those conditions you had when the spell is cast are suspended until the spell ends, then return with their remaining duration when the spell ends. While made of iron, you're subject to rusting effects like the rust cloud spell (page 145). Your fist Strikes have a {@dice 1d10} damage die, and your metal spells deal one additional die of damage (of the same damage die and damage type the spell uses). You can cast needle darts (page 144) as an innate spell; the casting is reduced from 2 actions to 1. In this form, you don't need to breathe. Your Bulk doubles (to 6 if you're Small or 12 if you're Medium), and you become too dense to {@action Swim} in water, automatically sinking to the bottom. You can {@action Dismiss} the spell."
+				"Your body transforms entirely into flexible iron. You gain resistance 10 to physical damage, except adamantine. You're immune to {@trait death} effects, disease, {@condition drained}, {@condition fatigued}, healing, nonlethal attacks, {@condition paralyzed}, poison, {@condition sickened}, vitality, and void; any of those conditions you had when the spell is cast are suspended until the spell ends, then return with their remaining duration when the spell ends. While made of iron, you're subject to rusting effects like the {@spell rust cloud|RoE} spell. Your fist Strikes have a {@dice 1d10} damage die, and your metal spells deal one additional die of damage (of the same damage die and damage type the spell uses). You can cast {@spell needle darts|RoE} as an innate spell; the casting is reduced from 2 actions to 1. In this form, you don't need to breathe. Your Bulk doubles (to 6 if you're Small or 12 if you're Medium), and you become too dense to {@action Swim} in water, automatically sinking to the bottom. You can {@action Dismiss} the spell."
 			],
 			"heightened": {
 				"X": {
@@ -2717,7 +2738,7 @@
 		{
 			"name": "Field of Razors",
 			"source": "RoE",
-			"page": 142,
+			"page": 143,
 			"level": 6,
 			"traits": [
 				"concentrate",
@@ -2762,7 +2783,7 @@
 		{
 			"name": "Fold Metal",
 			"source": "RoE",
-			"page": 142,
+			"page": 143,
 			"level": 1,
 			"traits": [
 				"concentrate",
@@ -2799,7 +2820,7 @@
 		{
 			"name": "Magnetic Dominion",
 			"source": "RoE",
-			"page": 142,
+			"page": 143,
 			"level": 9,
 			"traits": [
 				"concentrate",
@@ -2827,15 +2848,18 @@
 				]
 			},
 			"duration": {
-				"unit": "unknown",
-				"entry": "sustained up to 1 minute The roiling magnetic fields of the Plane of Metal radiate from you as you channel and reshape them at your merest thought. When you Cast this Spell, you can relocate each affected target to any other unoccupied space within the emanation. You can't move yourself in this way. An unwilling target can resist being moved with a successful Reflex save. The creatures move all at once\u2014after you know the results of all the saves, you determine which target occupies each space in whatever order you choose. You can move a creature into a space that was previously occupied by another creature so long as you also relocate the first creature elsewhere as part of the movement. If you move a target into the air, it descends to the ground harmlessly after being moved unless it chooses not to. You can choose to be affected by an 8th-rank {@spell magnetic repulsion|SoM} spell (Secrets of Magic 115) that lasts for the duration of magnetic dominion. Each time you Sustain the spell, you can move one creature in the emanation, with the same targeting restrictions and stipulations as above."
+				"unit": "minute",
+				"number": 1,
+				"sustained": true
 			},
-			"entries": []
+			"entries": [
+				"The roiling magnetic fields of the Plane of Metal radiate from you as you channel and reshape them at your merest thought. When you Cast this Spell, you can relocate each affected target to any other unoccupied space within the emanation. You can't move yourself in this way. An unwilling target can resist being moved with a successful Reflex save. The creatures move all at once\u2014after you know the results of all the saves, you determine which target occupies each space in whatever order you choose. You can move a creature into a space that was previously occupied by another creature so long as you also relocate the first creature elsewhere as part of the movement. If you move a target into the air, it descends to the ground harmlessly after being moved unless it chooses not to. You can choose to be affected by an 8th-rank {@spell magnetic repulsion|SoM} spell (Secrets of Magic 115) that lasts for the duration of magnetic dominion. Each time you {@spell Sustain a spell||Sustain the spell}, you can move one creature in the emanation, with the same targeting restrictions and stipulations as above."
+			]
 		},
 		{
 			"name": "Mantle of the Melting Heart",
 			"source": "RoE",
-			"page": 142,
+			"page": 143,
 			"level": 5,
 			"traits": [
 				"concentrate",
@@ -2877,7 +2901,7 @@
 		{
 			"name": "Mercurial Stride",
 			"source": "RoE",
-			"page": 142,
+			"page": 144,
 			"level": 4,
 			"traits": [
 				"concentrate",
@@ -2936,7 +2960,7 @@
 		{
 			"name": "Needle Darts",
 			"source": "RoE",
-			"page": 142,
+			"page": 144,
 			"type": "Cantrip",
 			"level": 1,
 			"traits": [
@@ -2991,7 +3015,7 @@
 		{
 			"name": "Noxious Metals",
 			"source": "RoE",
-			"page": 142,
+			"page": 145,
 			"level": 3,
 			"traits": [
 				"concentrate",
@@ -3053,7 +3077,7 @@
 		{
 			"name": "Rust Cloud",
 			"source": "RoE",
-			"page": 142,
+			"page": 145,
 			"level": 4,
 			"traits": [
 				"concentrate",
@@ -3098,7 +3122,7 @@
 		{
 			"name": "Shielded Arm",
 			"source": "RoE",
-			"page": 142,
+			"page": 145,
 			"level": 1,
 			"traits": [
 				"concentrate",
@@ -3137,7 +3161,7 @@
 		{
 			"name": "Wall of Metal",
 			"source": "RoE",
-			"page": 142,
+			"page": 145,
 			"level": 6,
 			"traits": [
 				"concentrate",
@@ -3189,7 +3213,7 @@
 		{
 			"name": "Serrate",
 			"source": "RoE",
-			"page": 142,
+			"page": 145,
 			"type": "Focus",
 			"level": 1,
 			"traits": [
@@ -3199,9 +3223,11 @@
 				"metal"
 			],
 			"domains": [
-				"Metal Range Touch;"
+				"Metal"
 			],
-			"subclass": {},
+			"range": {
+				"unit": "touch"
+			},
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -3212,8 +3238,10 @@
 					"V"
 				]
 			],
-			"targets": "1 metal weapon With a pinch, the metal of a weapon twists, adding numerous jagged blades along its surface. Strikes with the target weapon deal an additional {@damage 1d4} slashing damage until the start of your next turn.",
-			"entries": [],
+			"targets": "1 metal weapon",
+			"entries": [
+				"With a pinch, the metal of a weapon twists, adding numerous jagged blades along its surface. Strikes with the target weapon deal an additional {@damage 1d4} slashing damage until the start of your next turn."
+			],
 			"heightened": {
 				"plusX": {
 					"2": [
@@ -3225,7 +3253,7 @@
 		{
 			"name": "Repel Metal",
 			"source": "RoE",
-			"page": 142,
+			"page": 145,
 			"type": "Focus",
 			"level": 4,
 			"traits": [
@@ -3259,6 +3287,742 @@
 			"entries": [
 				"You call forth a repelling field. The target gains a +2 circumstance bonus to AC against the triggering attack. If the attack then misses, you direct the {@action Strike} back at the attacker, who compares the attack roll to their own AC. The target then becomes immune to this spell for 10 minutes."
 			]
+		},
+		{
+			"name": "Brine Dragon Bile",
+			"source": "RoE",
+			"page": 172,
+			"level": 2,
+			"traits": [
+				"acid",
+				"concentrate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"You spit a glob of caustic saltwater that stings the wounds of the creature. Make a ranged spell attack against the triggering creature's AC. On a hit, salt scours its open wound, dealing {@damage 2d6} {@condition persistent damage||persistent acid damage}."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The {@condition persistent damage} increases by {@damage 2d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Buoyant Bubbles",
+			"source": "RoE",
+			"page": 172,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"You create a thin layer of foamy bubbles that adhere to the target, causing it to float in water and similar liquids. The target doesn't sink, even if it hasn't succeeded at a {@action Swim} check this round; an already-sinking target resurfaces with the bubbles' help over the course of 1 round. If on a plane where the water or liquid has a surface, the bubbles also prevent the target from diving beneath that surface unless it succeeds at a Fortitude save against your spell DC."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"You can target up to 5 creatures."
+					]
+				}
+			}
+		},
+		{
+			"name": "Coral Scourge",
+			"source": "RoE",
+			"page": 172,
+			"level": 3,
+			"traits": [
+				"concentrate",
+				"incapacitation",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"Barnacles, coral, and other rough aquatic creatures grow on the target's body, getting in between their joints and stiffening their movement. This impedes the target's movement depending on the result of its saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition clumsy||clumsy 1}. The target can {@action Interact} to scrape the coral growths from its body, decreasing the {@condition clumsy} condition to 0 and ending the spell."
+						],
+						"Failure": [
+							"The target is {@condition clumsy||clumsy 2}. Each round at the beginning of its turn, the target becomes {@condition clumsy||clumsy 1} or increases its {@condition clumsy} condition by 1, to a maximum of 4. The target can {@action Interact} to scrape the coral growths from its body, decreasing the {@condition clumsy} condition to 0 and ending the spell. If the target's {@condition clumsy} condition caused by coral scourge reaches 4, the growths spread to cover the target's entire body, and the target becomes {@condition paralyzed}."
+						],
+						"Critical Failure": [
+							"As failure, but when the target Interacts to scrape the coral growths from its body, it reduces its {@condition clumsy} condition by 1, instead of decreasing it to 0, and decreasing the {@condition clumsy} condition to 0 doesn't end the spell."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Dancing Fountain",
+			"source": "RoE",
+			"page": 172,
+			"level": 7,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "30-foot burst centered on you",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Tapping the ground, you create a shallow pool of water that spreads over the affected area, and majestic sprays, jets, and mists of water erupt forth in a dazzling water show. When you Cast the Spell, and the first time each round you {@spell Sustain a spell||Sustain the spell}, you can command the fountain to use one of the following displays, which is accompanied by a loud burst of music. The dancing fountain is somewhat fickle in its desire for novelty, meaning it can't be commanded to use the same display on two consecutive turns.",
+				{
+					"type": "list",
+					"items": [
+						"Chasing Jets A series of vertical jets shoot up in a chase sequence, forcing one creature within the fountain to move 15 feet in a direction of your choice unless it succeeds at a Reflex save against your spell DC. The fountain can't make a creature move outside its area.",
+						"Flashing Spray Diffuse fog fills the area of the emanation. All creatures within the fountain become {@condition concealed}, and all creatures outside the fountain become {@condition concealed} to creatures within it. The spray persists until the beginning of your next turn.",
+						"Power Rings The fountain blasts a series of rings of water into the air that land with a crash in a 10-foot burst centered on a location of your choice within the fountain. The falling torrent deals {@damage 10d6} bludgeoning damage to all creatures within the burst (basic Reflex)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dive and Breach",
+			"source": "RoE",
+			"page": 172,
+			"level": 3,
+			"traits": [
+				"attack",
+				"concentrate",
+				"manipulate",
+				"teleportation",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You make the briefest of dives through the Plane of Water. You {@action Leap} 10 feet, and where you would land on the ground, you instead disappear in a splash of water, your body entering the surface like a diver entering a pool. You then exit from an unoccupied surface within 40 feet, appearing in another splash of water as you {@action Leap} out, landing 10 feet away from where you exited. Each splash deals {@damage 3d10} bludgeoning damage to all creatures in a 5-foot emanation; creatures in multiple splash zones take damage only once."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage dealt by each splash increases by {@dice 1d10}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Draw Moisture",
+			"source": "RoE",
+			"page": 172,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"cantrip",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 10
+			},
+			"entries": [
+				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can’t draw more than a few cups before depleting the ambient moisture."
+			]
+		},
+		{
+			"name": "Freezing Rain",
+			"source": "RoE",
+			"page": 172,
+			"level": 5,
+			"traits": [
+				"cold",
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"sustained": true
+			},
+			"entries": [
+				"Intense cold rain comes from nowhere, a microcosm of a sudden downpour, and a magical tweak can turn the rain to freezing sleet. The driving rain and pooling water make the area difficult terrain and extinguish non-magical fires.",
+				"On subsequent rounds, the first time you {@action Sustain a spell||Sustain the spell} each round, you can move the area up to 20 feet and can also freeze the rain. If you freeze the rain, each creature in the area takes {@damage 4d6} cold damage and might be {@condition slowed}, depending on result of its Reflex save.",
+				{
+					"successDegree": {
+						"entries": {
+							"Critical Success": [
+								"The creature is unaffected."
+							],
+							"Success": [
+								"The creature takes half damage."
+							],
+							"Failure": [
+								"The creature takes full damage and is {@condition slowed||slowed 1} for 1 round."
+							],
+							"Critical Failure": [
+								"The creature takes double damage and is {@condition slowed||slowed 2} for 1 round."
+							]
+						},
+						"heightened": {
+							"plusX": {
+								"1": [
+									"The damage increases by {@damage 1d6}."
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Frost Pillar",
+			"source": "RoE",
+			"page": 172,
+			"level": 6,
+			"traits": [
+				"cold",
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"Ice crystallizes around a creature, imprisoning it within an icy pillar. On a successful saving throw, the creature is pushed to an adjacent space of its choice; otherwise, it's frozen inside the pillar and becomes {@condition restrained} as its body can barely move within the ice. The ice has AC 10, Hardness 10, and 60 Hit Point; it's immune to critical hits, cold damage, and precision damage, and it has weakness 15 to fire. If the ice is destroyed, the creature within is freed and the spell immediately ends."
+			]
+		},
+		{
+			"name": "Grasp of the Deep",
+			"source": "RoE",
+			"page": 172,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"mental",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"entries": [
+				"You grip one target with the phantasmal pressure of the deep sea, disorienting and crushing its lungs and joints. The target takes {@damage 6d6} bludgeoning damage and other effects, depending on its Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The target takes half damage."
+						],
+						"Failure": [
+							"The target takes half damage, and feels as though it's being crushed. The target becomes {@condition grabbed} and takes {@damage 6d6} bludgeoning damage; it can attempt to {@action Escape} with an {@action Escape} DC equal to your spell DC."
+						],
+						"Critical Failure": [
+							"As failure, but the target takes double damage."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"You can target up to 5 creatures."
+					]
+				}
+			}
+		},
+		{
+			"name": "Hungry Depths",
+			"source": "RoE",
+			"page": 172,
+			"level": 7,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"void",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "5-foot burst (see text)",
+				"types": [
+					"Burst",
+					"Cylinder"
+				]
+			},
+			"entries": [
+				"A spiral of dark, corrupted water appears in the ground, plunging open a door to the depths that seems to descend for miles. Disembodied glowing eyes and gnashing teeth spin within the vortex, consuming anything that crosses their path. All creatures in the area take {@damage 4d8} piercing damage plus {@damage 4d4} void damage (basic Reflex save). Each time you {@spell Sustain a spell||Sustain the spell}, you can increase the vortex's radius by 5 feet, to a maximum of 15 feet, or you can move the vortex up to 10 feet in a straight line. Each creature the vortex moves through takes the damage with a basic Reflex save. A creature can take damage from hungry depths only once per round. If cast underwater, hungry depths instead fills a 40-foot‑tall cylinder with a 5-foot radius."
+			],
+			"heightened": {
+				"X": {
+					"9": [
+						"The vortex deals {@damage 5d8} piercing damage and {@damage 5d4} void damage."
+					]
+				}
+			}
+		},
+		{
+			"name": "Misty Memory",
+			"source": "RoE",
+			"page": 173,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"duration": {
+				"sustained": true,
+				"number": 10,
+				"unit": "minute"
+			},
+			"targets": "1 body of water of at least 5 square feet",
+			"entries": [
+				"Some say water holds memories or impressions of the past, and you can raise those memories to the surface to glimpse recent events. When you Cast the Spell, you fix your mind on an amount of time in the past, up to 24 hours ago. A mist rises from the target body of water, filling a 30-foot burst and coalescing into a misty scene of the events that took place at that time within 60 feet of the water. Any creature who can see the area can observe the images produced, which are a translucent white color and detailed enough to show a silhouette, outline, or contour of creatures and objects that passed through the area and the motions hey took. Fine details, such as facial features or written letters, are too precise for the mist to form, and the scene is silent. You can minute {@spell Sustain a spell||Sustain the spell} to cause the mist to play events backward or forward, with each minute spent {@spell Sustain a spell||Sustaining} corresponding to a minute of playback. Strong winds from a magical source can disrupt this spell if the effect succeeds at a counteract check against your spell DC."
+			]
+		},
+		{
+			"name": "Personal Ocean",
+			"source": "RoE",
+			"page": 172,
+			"level": 6,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You surround yourself in a bubble-like shroud of seawater that fills your space completely and moves with you. You can breathe, speak, and perceive normally while within your personal ocean, and you gain a swim Speed equal to your land Speed if you don't have one. The rules of aquatic combat apply to you, attacks targeting you, or attacks passing through your square. For instance, a bludgeoning or slashing melee attack targeting you would take a \u20132 circumstance penalty, and you can't cast fire spells or use actions with the {@trait fire} trait. Each time you move, you extinguish non-magical fires in spaces you pass through and can attempt to counteract magical fires you move through. If you successfully counteract a fire larger than the spaces you moved through, you merely push it out of the spaces along your path. If you fail to counteract a given fire, you can't counteract that fire for the duration of the spell. You can {@action Dismiss} the spell."
+			]
+		},
+		{
+			"name": "Pillar of Water",
+			"source": "RoE",
+			"page": 172,
+			"level": 3,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You create a large, self-contained cylinder of still, clear fresh water. You choose the radius and height of the pillar, to a maximum radius of 15 feet and a maximum height of 60 feet. Creatures inside the pillar can {@action Swim} through the water as normal ({@skill Athletics} DC 10), or if the spell was cast on solid ground, walk along the bottom (which is difficult terrain). Any creature that exits the pillar falls or lands accordingly."
+			]
+		},
+		{
+			"name": "Rousing Splash",
+			"source": "RoE",
+			"page": 172,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You cause a splash of cold water to descend on an ally’s head, granting some temporary vigor. The target gains {@dice 1d4} temporary Hit Points, which last for 1 minute. The target is then temporarily immune to the temporary Hit Points from rousing splash for 10 minutes. The target can also attempt an immediate flat check to recover from a single source of persistent acid or fire damage, with the DC reduction from appropriate assistance."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The amount of temporary Hit Points granted increases by {@dice 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Scrying Ripple",
+			"source": "RoE",
+			"page": 172,
+			"level": 3,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"scrying",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"You touch the water's surface, and as the ripples spread out, so do your senses. When you Cast this Spell, you automatically know the location of any unoccupied, flowing water with a surface area of at least 1 square within 500 feet. You can pick any one of these streams to see and hear out of for the duration of the spell, though your field of vision is perpendicular to the flowing surface. For example, you could look normally out of a waterfall but would look straight up from out of a river. Each time you {@spell Sustain a spell||Sustain the spell}, you can change to a different water source or move elsewhere along the same one.",
+				"If the water you're scrying through ceases flowing, such as by a faucet turning off, a river damming, or a waterfall freezing over, this spell ends. Additionally, your face appears as a faint reflection in the water's surface as you peek through. A creature that Seeks and succeeds at their {@skill Perception} check against your spell DC detects your presence in the water."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"You know the location of and can scry through flowing water within 1 mile."
+					]
+				}
+			}
+		},
+		{
+			"name": "Waterproof",
+			"source": "RoE",
+			"page": 172,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"entries": [
+				"You prevent the target item from taking on water or becoming wet for the duration of the spell. The hydrophobic properties of the spell also grant resistance 10 to acid and a +2 bonus to saves and DCs against damaging effects with the {@trait water} or {@trait acid} traits."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The duration is 1 day."
+					],
+					"8": [
+						"The duration is unlimited."
+					]
+				}
+			}
+		},
+		{
+			"name": "Whirlpool",
+			"source": "RoE",
+			"page": 172,
+			"level": 8,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 500
+			},
+			"area": {
+				"entry": "25-foot radius, 20-foot tall cylinder",
+				"types": [
+					"Cylinder"
+				]
+			},
+			"entries": [
+				"With a spin of your hand, you create a large swirling vortex of storming waves. All squares in the whirlpool are difficult terrain. The constant churning of the fierce waves means that creatures are constantly tossed between areas of air and water, allowing both air- and water-breathing creatures to breathe within the vortex. Any creature with a swim Speed can {@action Swim} instead of {@action Stride} to move within the whirlpool; the DC to {@action Swim} within it is equal to your spell DC.",
+				"All creatures in the area take {@damage 6d10} bludgeoning damage as the waves crash into them. On subsequent rounds, the first time you {@action Sustain a Spell||Sustain the spell} each round, the waves crash again with the same effect.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage and is drawn 10 feet toward the center of the whirlpool."
+						],
+						"Critical Failure": [
+							"The creature takes double damage and is drawn to the center of the whirlpool."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The bludgeoning damage increases by {@damage 1d10}."
+					]
+				}
+			}
 		}
 	]
 }
