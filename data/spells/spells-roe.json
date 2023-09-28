@@ -4362,6 +4362,1136 @@
 					]
 				}
 			}
+		},
+		{
+			"name": "Arrow Salvo",
+			"source": "RoE",
+			"page": 196,
+			"level": 6,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"area": {
+				"entry": "30-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You conjure an immense wooden bow that launches a salvo of massive arrows at all nearby enemies. All creatures in the affected area take {@damage 8d10} piercing damage, with a basic Reflex save. On a critical failure, the target is knocked {@condition prone} from the force of the impact."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the damage by {@dice 1d10}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Entwined Roots",
+			"source": "RoE",
+			"page": 196,
+			"level": 5,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"targets": "Up to 5 willing living creatures",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"Slithering roots gird you and your allies in layers of flexible wooden protection. Each affected creature gains resistance 5 to bludgeoning and piercing damage. Whenever a creature protected by these roots is targeted by a ranged weapon attack but takes no damage (such as if the attack missed or the damage was reduced to 0 by resistance), the roots snatch up the ammunition or thrown weapon and hold it. The protected creature can retrieve the thrown weapon or ammunition as an {@action Interact} action."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"The resistances increase to 10."
+					],
+					"9": [
+						"The resistances increase to 15."
+					]
+				}
+			}
+		},
+		{
+			"name": "Flourishing Flora",
+			"source": "RoE",
+			"page": 196,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "5-foot burst",
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"Plants rapidly grow up from the ground. All creatures in the target area take {@dice 2d4} damage. The type of damage depends on the type of plant you choose to grow. On a critical failure, targets experience additional effects, also depending on what you choose to grow. The type of plant and its effects are chosen when you Cast the Spell.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Cacti} Piercing damage, and 1 {@condition persistent damage||persistent bleed damage} on a critical failure.",
+						"{@b Flowers} Poison damage, and {@condition dazzled} for 2 rounds on a critical failure.",
+						"{@b Fruits} Bludgeoning damage, and {@condition clumsy||clumsy 1} for 2 rounds on a critical failure.",
+						"{@b Roots} Bludgeoning damage, and the affected creatures fall {@condition prone} on a critical failure."
+					]
+				}
+			]
+		},
+		{
+			"name": "Helpful Wood Spirits",
+			"source": "RoE",
+			"page": 196,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "5-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Upon casting this spell, a cluster of little wood spirits tumbles into the area. They perform a simple task each round. These spirits are a magical echo of the true spirits that live on the {@plane Plane of Wood|RoE} and can't be attacked, damaged, or otherwise interfered with. These spirits often look like kodama but can appear in any of the countless varieties of wood spirits that inhabit the Plane of Wood.",
+				"Choose the kind of aid your wood spirits supply from the list below when you {@action Cast a spell||Cast the Spell}. The first time each round you {@action Sustain a spell||Sustain the spell}, you can move the area occupied by the apparitions up to 10 feet and you can choose the kind of aid they provide this round.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Chores} The wood spirits perform a minor manual task of your choice, such as cleaning, opening a door, picking up an unattended object, or carrying an object from one location to another. The spirits can't pick up or carry an object of greater than 2 Bulk.",
+						"{@b Distract} The wood spirits distract your foes, clambering all over their feet and bodies and being a nuisance. Creatures in the area are off-guard unless they succeed at a Reflex save.",
+						"{@b Obstacle} The wood spirits fill the area as a chaotic, bouncing mass. The area they occupy is difficult terrain.",
+						"{@b Search} The wood spirits {@action Seek} in the area they occupy, using your {@skill Perception} check as their own. You learn anything they do from Seeking in this way."
+					]
+				}
+			]
+		},
+		{
+			"name": "Life-Draining Roots",
+			"source": "RoE",
+			"page": 196,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "30-foot line",
+				"types": [
+					"Misc."
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"Thorny roots erupt from your hands in a tangled cascade, puncturing creatures in the way of their growth and revitalizing you. You deal {@damage 8d6} piercing damage to creatures in the line (basic Reflex save). You gain {@dice 1d4} temporary Hit Points for every living creature in the line, as the roots transfer nutrients from those damaged into you. The temporary Hit Points last for 1 minute."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d6}"
+					]
+				}
+			}
+		},
+		{
+			"name": "Lignify",
+			"source": "RoE",
+			"page": 197,
+			"level": 6,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"targets": "1 creature mode of flesh",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You turn the target's flesh slowly into wood. The target must attempt a Fortitude save. Creatures with the {@trait plant} trait have a +2 circumstance bonus to saves against this spell.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition slowed||slowed 1} for 1 round."
+						],
+						"Failure": [
+							"The target is {@condition slowed||slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (or 2 on a critical failure). A successful save reduces the {@condition slowed} condition by 1. When a creature is unable to act due to the {@condition slowed} condition from lignify, the creature is permanently non-magically {@condition petrified}, though it's turned to wood instead of stone. The spell ends if the creature is magically {@condition petrified} or the {@condition slowed} condition is removed."
+						],
+						"Critical Failure": [
+							"As failure, but the target is initially {@condition slowed||slowed 2}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Lotus Walk",
+			"source": "RoE",
+			"page": 197,
+			"level": 3,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Lotuses, water lilies, and other watery plants bloom at your feet, allowing you to walk on the surface of water and other liquids. You can go underwater if you wish, but in that case, you must {@action Swim} normally. As you {@action Stride} or {@action Step} on water, you leave a trail of oversized lily pads, lotus leaves, or spatterdock that fill the squares' surfaces in your wake. Each square of this trail can withstand the weight of 1 Medium creature and lasts until the end of your next turn. You can {@action Dismiss} this spell early."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The duration of this spell increases to 10 minutes. The trail lasts until the spell ends or you {@action Dismiss} the spell on you, whichever comes first."
+					],
+					"6": [
+						"The duration increases to 1 hour. Your trail is permanent even if you {@action Dismiss} the spell on you, although if the water can't support such plants, they'll die in a week. The trail can be removed by dispel magic or a similar spell."
+					]
+				}
+			}
+		},
+		{
+			"name": "Mantle of the Unwavering Heart",
+			"source": "RoE",
+			"page": 197,
+			"level": 5,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"morph",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Vines and branches envelop you in an instant, growing a wild bloom of colors that open to reveal your new form. Upon Casting this Spell, pick two of the options below. As a single action, which has the {@trait concentrate} trait, you can change one of your chosen abilities to a different option from the list.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Evergreen Vitality} You gain fast healing 3 and a +2 bonus to saves against poison and disease. This effect has the {@trait healing} and {@trait vitality} traits.",
+						"{@b Overwhelming Perfume} (aura, olfactory) A cloud of potent floral scent surrounds you in a 15-foot emanation. Creatures in the aura can't benefit from the scent ability and are {@condition sickened||sickened 1} as long as they remain in the aura. The sickness is a {@trait disease} effect.",
+						"{@b Towering Trunk} You grow to a considerable height. Increase your size to Large. You're {@condition clumsy||clumsy 1}. Your reach increases by 5 feet (or by 10 feet if you started out Tiny), and you gain a grasping branch unarmed attack; this attack is in the brawling weapon group and deals {@damage 2d8} bludgeoning damage plus Grab.",
+						"{@b Unyielding Will} Your mind becomes incredibly resilient to change. You're immune to being {@condition fascinated}, and you get a +1 bonus to saves and DCs against {@trait mental} effects."
+					]
+				}
+			]
+		},
+		{
+			"name": "Pollen Pods",
+			"source": "RoE",
+			"page": 197,
+			"level": 7,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"area": {
+				"entry": "four unoccupied 5-foot squares, each of which is at least 20 feet apart",
+				"types": [
+					"Misc."
+				]
+			},
+			"duration": {
+				"number": 12,
+				"unit": "hour"
+			},
+			"entries": [
+				"You cultivate four wooden bulbs, each filled with toxic pollen and sensitive to motion. When a creature enters a space adjacent to a bulb, or when a bulb is touched or damaged (each bulb has AC 5), the bulb blossoms and releases pollen in a 15-foot emanation. Creatures in the area take {@damage 8d8} poison damage and must attempt a Fortitude save with the following results.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage and becomes {@condition dazzled} for 1 round."
+						],
+						"Failure": [
+							"The creature takes full damage, becomes {@condition dazzled} for 1 round, and becomes {@condition stupefied||stupefied 1} for 1 minute."
+						],
+						"Critical Failure": [
+							"The creature takes double damage, is {@condition dazzled} for 1 round, and becomes {@condition stupefied||stupefied 2} for 1 minute."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Rigid Form",
+			"source": "RoE",
+			"page": 197,
+			"level": 4,
+			"traits": [
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You utilize wood's rigidity to prevent harmful shapechanging effects. For the duration of this spell, whenever you're targeted by a harmful {@trait polymorph} effect, you can use your reaction to attempt to counteract the effect."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"The duration increases to 10 minutes."
+					]
+				}
+			}
+		},
+		{
+			"name": "Root Reading",
+			"source": "RoE",
+			"page": 197,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "30-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"entries": [
+				"You gain general insights into the immediate vicinity by sending your sense through the root systems of trees and bushes. If there are any {@condition unnoticed} Medium or larger creatures in the area, you learn of their presence and they're {@condition undetected} to you. You can immediately attempt to {@action Seek} an {@condition undetected} creature, and you gain a +1 status bonus to this attempt and any of your other attempts to {@action Seek} {@condition hidden} or {@condition undetected} creatures until the end of your next turn. You also learn if any such creatures passed through this area in the last hour, although you get only the vaguest sense of direction from the spell. If you begin to {@action Track} a creature detected in this way, you gain a +1 status bonus to the initial check."
+			]
+		},
+		{
+			"name": "Splinter Volley",
+			"source": "RoE",
+			"page": 198,
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 or 2 creatures",
+			"entries": [
+				"You launch a volley of splinters at your foes. Make a spell attack roll against a single creature. On a hit, the splinters deal {@damage 4d6} piercing damage. The splinters deal double damage on a critical hit and 1 {@condition persistent damage||persistent bleed damage}. You can spend a third action while casting this spell to fire splinters at two different targets instead of one. These attacks each increase your multiple attack penalty, but you don't increase your multiple attack penalty until after you make both spell attack rolls for splinter volley."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"Increase the damage dealt to each target by {@dice 4d6} and the {@condition persistent damage||persistent bleed damage} by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Take Root",
+			"source": "RoE",
+			"page": 198,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"cantrip",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"Roots sprout from the flesh of the target and coil across the floor or around objects, reinforcing their stance or grip. The targeted creature gains a +1 circumstance bonus to their Fortitude DC against attempts to {@action Shove} them and a +1 circumstance bonus to their Reflex DC against attempts to {@action Disarm} or {@action Trip} them. This bonus also applies to saving throws against spells or effects that would attempt to remove a held item from their grasp."
+			]
+		},
+		{
+			"name": "Timber",
+			"source": "RoE",
+			"page": 196,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"cantrip",
+				"concentrate",
+				"manipulate",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot line",
+				"types": [
+					"Line"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You create a small dead tree in your space that falls over on anyone in its path, then immediately decomposes. Any creature in the area takes {@damage 2d4} bludgeoning damage, with a basic Reflex saving throw. A creature that critically fails its save is knocked for a loop, making it {@condition dazzled} until the end of its next turn."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The initial damage increases by {@damage 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Verdant Sprout",
+			"source": "RoE",
+			"page": 199,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"You create a single plant seed imbued with primal energy and throw it onto a surface, where it gradually sprouts into a Medium plant. After 10 minutes, the plant is sturdy enough to provide standard cover, and its space is difficult terrain. The plant is laden with nutritious nuts or fruit sufficient to feed one Medium creature for a day. The plant has AC 10, Hardness 5, and 20 Hit Points."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"You create and throw an additional seed, which grows into an additional plant within range."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wall of Shrubs",
+			"source": "RoE",
+			"page": 199,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You call forth a line of bushes native to the region to spring from the ground. The wall of shrubs stands in a line 60 feet long, is less than 5 feet tall, and is a foot thick, providing lesser cover."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The shrubs are now 10 feet tall and 5 feet thick and provide standard cover. The duration of the spell increases to 10 minutes."
+					],
+					"5": [
+						"Instead of a line, the shrubs can be made in a ring with a diameter of up to 30 feet that's 10 feet tall and 5 feet thick. The shrubs provide greater cover. The duration of the spell increases to 1 hour."
+					]
+				}
+			}
+		},
+		{
+			"name": "Weave Wood",
+			"source": "RoE",
+			"page": 199,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 piece of unprocessed wood, reeds, or plant fiber of 1 Bulk or less",
+			"entries": [
+				"With a touch, you cause the target to break into fibrous strands that then weave themselves into a woven mundane object of the same Bulk or less, such as a basket, hat, shield, or mat. You can create up to 4 objects with one casting of this spell, providing their total Bulk doesn't exceed the Bulk of your target. The objects have Hardness 2 and 8 Hit Points."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the maximum Bulk that you can target by 1 and the maximum number of objects you can create by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wooden Double",
+			"source": "RoE",
+			"page": 199,
+			"level": 3,
+			"traits": [
+				"manipulate",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"trigger": "You’re critically hit by a damage-dealing effect or a {@action Strike}.",
+			"entries": [
+				"A wooden double appears out of nowhere and takes the blow in your place. Take a {@action Step} action. A wooden block of your size and roughly shaped like you appears in the space you left and absorbs the hit. This block has Hardness 5 and 20 Hit Points. If the wooden block is destroyed, you take any excess damage that the block didn't absorb. After taking the blow, the wooden block collapses into a pile of splinters and dust."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The block's Hit Points increase by 10."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wooden Fists",
+			"source": "RoE",
+			"page": 199,
+			"level": 1,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"morph",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your arms and hands swell with new growth, transforming into tree trunks twice as big as their current size. Your fists deal {@damage 1d6} bludgeoning damage, lose the {@trait nonlethal} trait, and have reach."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"Your fists gain the {@trait magical} trait and become a striking weapon, increasing the damage your fists deal to {@damage 2d6} bludgeoning."
+					],
+					"7": [
+						"Your fists gain the {@trait magical} trait and become a greater striking weapon, increasing the damage your fists deal to {@damage 3d6} bludgeoning. The duration is 10 minutes."
+					],
+					"9": [
+						"Your fists gain the {@trait magical} trait and become a major striking weapon, increasing the damage your fists deal to {@damage 4d6} bludgeoning. The duration is 1 hour."
+					]
+				}
+			}
+		},
+		{
+			"name": "Arms of Nature",
+			"source": "RoE",
+			"page": 199,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"wood"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"targets": "1 wooden object or plant of at least 4 Bulk",
+			"entries": [
+				"All wood, dead or alive, is your armory. When you cast this spell, you draw forth a +1 weapon of your choice from the target. The weapon must be 2 Bulk or less. This weapon is of the same material as the target."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The weapon is a +1 striking weapon."
+					],
+					"5": [
+						"The weapon is a +2 striking weapon."
+					],
+					"7": [
+						"The weapon is a +3 greater striking weapon."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wood Walk",
+			"source": "RoE",
+			"page": 199,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"focus",
+				"concentrate",
+				"manipulate",
+				"wood"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Wood shapes itself according to your will readily, making staircases appear as you climb up the side of a tree, automatically weaving vines into ladders, or lowering branches to lift you up to the top. Move up to your Speed in any direction or along any surface, so long as there are living plants or trees of size Large or larger within 15 feet of you. The wood allows you to move but doesn't protect you from hazardous terrain or other dangers.",
+				"Each time you Sustain this spell, you can move again in the same way."
+			],
+			"heightened": {
+				"X": {
+					"8": [
+						"The duration of this spell becomes 10 minutes. You no longer need to {@action Sustain a spell||Sustain the spell} to extend its duration, but you can {@action Sustain a spell||Sustain} it to move as described."
+					]
+				}
+			}
+		},
+		{
+			"name": "Elemental Breath",
+			"source": "RoE",
+			"page": 222,
+			"level": 5,
+			"traits": [
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action",
+				"entry": "{@as 2} to {@as 3}"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "60-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You open a miniature portal to an elemental plane within your mouth, then exhale a powerful explosion of the plane's element. Roll {@dice 1d6} to determine the element. If you used 3 actions to {@action Cast a spell||Cast this Spell}, you can choose the element instead. This spell gains the trait matching the element. Each creature in the cone must attempt a basic Reflex save.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Air} Strong winds and lightning strikes buffet creatures in the cone, dealing {@damage 6d10} electricity damage. A creature that fails its save is also pushed 10 feet.",
+						"{@b Earth} A cone of mud deals {@damage 5d10} bludgeoning damage to creatures in the area. A creature on the ground that fails its save slips and falls {@condition prone}.",
+						"{@b Fire} A surging cone of fire deals {@damage 7d10} fire damage.",
+						"{@b Metal} A cone of rust slices flesh and damages metal. Each creature in the area takes {@damage 5d10} slashing damage. A creature made of metal gets a result one degree of success worse than it rolled, and an unattended metal object gets a critical failure.",
+						"{@b Water} A torrent of chilled water deals {@damage 3d10} cold damage and {@damage 3d10} bludgeoning damage.",
+						"{@b Wood} Branches rip through creatures, dealing {@damage 3d10} piercing damage and {@damage 3d10} slashing damage. Ground in the area becomes difficult terrain for 1 minute."
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d10}. For water and wood, you can choose which damage type increases for each rank the spell is heightened."
+					]
+				}
+			}
+		},
+		{
+			"name": "Elemental Counter",
+			"source": "RoE",
+			"page": 222,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"concentrate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"trigger": "You or a creature within 60 feet rolls a saving throw against a spell with the {@trait earth}, {@trait fire}, {@trait metal}, {@trait plant}, {@trait water}, or {@trait wood} trait, or are targeted by a spell attack with such a trait.",
+			"requirements": "You have a spell slot from which you could {@action Cast a Spell} of the triggering spell's countering element; see text.",
+			"entries": [
+				"Each element in the elemental cycle counters another (as described on pages 8\u20139), and you can use your elemental spells to protect against elements they counter. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell, using the rank of the spell you lost for the counteract rank. You can lose a plant or wood spell to counter earth, an earth spell to counter water, a water spell to counter fire, a fire spell to counter metal, or a metal spell to counter plant or wood."
+			]
+		},
+		{
+			"name": "Elemental Sense",
+			"source": "RoE",
+			"page": 222,
+			"level": 4,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"revelation"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"The elements grant you sensory enhancements. Choose one of the options below. The spell gains the listed trait or traits.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Aquatic} Echolocation ({@trait water}) You use your hearing as a precise sense when underwater.",
+						"{@b Heatsense} ({@trait fire}) You can sense creatures with a temperature of 90º Fahrenheit or higher within 30 feet as an imprecise sense.",
+						"{@b Magnetoreception} ({@trait metal|RoE}) You can sense creatures carrying metal items with a total of 1 Bulk or greater; this is an imprecise sense with a range of 30 feet. If a creature is made of metal or has the {@trait metal} trait, you can detect it as though magnetoreception were a precise sense. In addition, you continuously know which direction is north.",
+						"{@b Mechanoreception} (air) You can see {@condition invisible} creatures and objects. They appear to you as translucent shapes, and they are {@condition concealed} to you.",
+						"{@b Tremorsense} ({@trait earth}) You gain {@ability tremorsense} (imprecise) with a range of 30 feet.",
+						"{@b Woodsense} ({@trait plant}, {@trait wood|RoE}) You can sense creatures carrying wood items with a total of 1 Bulk or greater; this is an imprecise sense with a range of 30 feet. If a creature is made of wood or has the {@trait plant} or {@trait wood} trait, you can detect it as though woodsense were a precise sense."
+					]
+				}
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"The duration increases to 8 hours, and you can take 1 minute to recalibrate the sense, switching from your current elemental sense to a different one."
+					]
+				}
+			}
+		},
+		{
+			"name": "Summon Elemental Herald",
+			"source": "RoE",
+			"page": 222,
+			"level": 8,
+			"traits": [
+				"concentrate",
+				"incarnate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"duration": {
+				"unit": "turn",
+				"entry": "until the end of your next turn"
+			},
+			"entries": [
+				"Your meditation into the different elemental planes connects you to them deeply, and this connection allows you to summon a herald of an elemental lord. The herald arrives in the form of a natural disaster centralized on your enemies. The herald occupies the space of a Huge creature. When you {@action Cast a Spell||Cast this Spell}, choose one of the elemental heralds below to summon; if you're a divine spellcaster who worships an elemental lord, you must choose the option matching your deity's element. This spell gains the trait ({@trait air}, {@trait earth}, {@trait fire}, {@trait metal|RoE}, {@trait water}, or {@trait wood|RoE}) matching your choice.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Air} Speed fly 60 feet; {@b Arrive} ({@trait air}) {@i Supercell Front} The herald of air arrives in the form of a twisting tornado, with high-speed winds slamming into your enemies. Each enemy in a 100-foot emanation takes {@damage 10d8} bludgeoning damage with a basic Fortitude save; {@b Depart} ({@trait air}) {@i Twister Downdraft} Each enemy in a 60-foot line must attempt a Fortitude save. A creature that fails is knocked {@condition prone} if it's on the ground or descends 40 feet if it's in the air. A creature that descends takes falling damage if this forced movement brings it to the ground.",
+						"{@b Earth} Speed 50 feet, burrow 30 feet; {@b Arrive} ({@trait earth}) {@i Tectonic Rise} The herald of earth erupts from the ground, splitting it open in a 50-foot emanation. Each enemy in the emanation takes {@damage 10d6} slashing damage from the flying debris with a basic Reflex save. Enemies who critically fail fall 30 feet into the crevasse, taking falling damage (the sides of the fissure require successful DC 15 {@skill Athletics} checks to {@action Climb}); {@b Depart} ({@trait sonic}) {@i Plate Crash} The herald of earth sinks back into the ground, and the sides of the crevasse slam together with a deafening blow, dealing {@damage 5d10} sonic damage with a basic Fortitude save to all enemies in a 30-foot emanation. An enemy that critically fails is {@condition deafened} for 10 minutes.",
+						"{@b Fire} Speed 60 feet, fly 40 feet; {@b Arrive} (fire) {@i Magma Flow} The herald of fire flows into the area as living magma, dealing {@damage 10d6} fire damage and {@damage 3d6} {@condition persistent damage||persistent fire damage} to all enemies in a 60-foot emanation with a basic Reflex save; {@b Depart} (fire) {@i Flame Vortex} Each enemy in a 60‑foot line takes {@damage 6d6} fire damage and {@damage 3d6} {@condition persistent damage||persistent fire damage} with a basic Reflex save as the fire herald whips into a fire pillar before vanishing.",
+						"{@b Metal} Speed 50 feet, fly 50 feet; {@b Arrive} ({@trait metal|RoE}) {@i Shard Cloud} The herald of metal arrives as a cloud of metal shards and static electricity, dealing {@damage 4d8} slashing damage and {@damage 4d12} electricity damage to all enemies in a 50-foot emanation with a basic Reflex save; {@b Depart} ({@trait metal|RoE}) {@i Rust Mist} The shards in the cloud rapidly rust and cling to enemies in the 50-foot emanation, dealing {@dice 10d6} damage to metal creatures and objects in the area with a basic Reflex save, ignoring Hardness. Unattended objects automatically critically fail this save.",
+						"{@b Water} Speed 40 feet, swim 60 feet; {@b Arrive} ({@trait cold}, {@trait water}) Hurricane Formation The herald of water forms as a miniature hurricane. Each enemy in a 60-foot emanation takes {@damage 4d10} bludgeoning damage from the slamming rains and {@damage 4d10} cold damage from the falling hail with a basic Fortitude save; {@b Depart} ({@trait cold}, {@trait water}) {@i Cataclysmic Deluge} The hurricane collapses into a rushing flood, dealing {@damage 6d8} bludgeoning damage to all enemies in a 120-foot cone with a basic Fortitude save. A creature that fails its save is pushed 20 feet away from the herald (or 40 feet on a critical failure).",
+						"{@b Wood} Speed 50 feet, burrow 30 feet; {@b Arrive} ({@trait plant}, {@trait wood|RoE}) {@i Advantageous Roots} The herald of wood bursts forth from the ground as a complex root system. Each enemy in a 50-foot emanation takes {@damage 6d10} piercing damage with a basic Reflex save as the roots skewer its limbs and body. Each enemy that fails its save takes a \u201310-foot status penalty to its Speeds until the herald departs; {@b Depart} ({@trait plant}, {@trait wood|RoE}) {@i Retreat to Soil} The roots retreat into the ground, dealing {@damage 6d10} piercing damage to each enemy in a 50-foot emanation with a basic Reflex save. Any creature with a penalty to Speeds from its initial save automatically takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}. The ground in the emanation is difficult terrain after the roots retreat."
+					]
+				}
+			]
 		}
 	]
 }
