@@ -3566,6 +3566,12 @@
 				"unit": "feet",
 				"number": 30
 			},
+			"trigger": [
+				"A creature within range takes damage from a slashing or piercing attack, or one that inflicts {@condition persistent damage||persistent bleed damage}."
+			],
+			"targets": [
+				"the creature that took damage"
+			],
 			"entries": [
 				"You spit a glob of caustic saltwater that stings the wounds of the creature. Make a ranged spell attack against the triggering creature's AC. On a hit, salt scours its open wound, dealing {@damage 2d6} {@condition persistent damage||persistent acid damage}."
 			],
@@ -3603,6 +3609,11 @@
 			"range": {
 				"unit": "feet",
 				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You create a thin layer of foamy bubbles that adhere to the target, causing it to float in water and similar liquids. The target doesn't sink, even if it hasn't succeeded at a {@action Swim} check this round; an already-sinking target resurfaces with the bubbles' help over the course of 1 round. If on a plane where the water or liquid has a surface, the bubbles also prevent the target from diving beneath that surface unless it succeeds at a Fortitude save against your spell DC."
@@ -3643,6 +3654,16 @@
 			"range": {
 				"unit": "feet",
 				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"Barnacles, coral, and other rough aquatic creatures grow on the target's body, getting in between their joints and stiffening their movement. This impedes the target's movement depending on the result of its saving throw.",
@@ -3786,6 +3807,7 @@
 				"unit": "feet",
 				"number": 10
 			},
+			"targets": "1 object",
 			"entries": [
 				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can't draw more than a few cups before depleting the ambient moisture."
 			]
@@ -3825,8 +3847,15 @@
 					"Burst"
 				]
 			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
 			"duration": {
-				"number": 1,
+				"number": 10,
+				"unit": "minute",
 				"sustained": true
 			},
 			"entries": [
@@ -3888,6 +3917,17 @@
 				"unit": "feet",
 				"number": 30
 			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
 			"entries": [
 				"Ice crystallizes around a creature, imprisoning it within an icy pillar. On a successful saving throw, the creature is pushed to an adjacent space of its choice; otherwise, it's frozen inside the pillar and becomes {@condition restrained} as its body can barely move within the ice. The ice has AC 10, Hardness 10, and 60 Hit Point; it's immune to critical hits, cold damage, and precision damage, and it has weakness 15 to fire. If the ice is destroyed, the creature within is freed and the spell immediately ends."
 			]
@@ -3920,6 +3960,16 @@
 			"range": {
 				"unit": "feet",
 				"number": 60
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
 				"You grip one target with the phantasmal pressure of the deep sea, disorienting and crushing its lungs and joints. The target takes {@damage 6d6} bludgeoning damage and other effects, depending on its Will saving throw.",
@@ -3984,6 +4034,17 @@
 					"Burst",
 					"Cylinder"
 				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
 				"A spiral of dark, corrupted water appears in the ground, plunging open a door to the depths that seems to descend for miles. Disembodied glowing eyes and gnashing teeth spin within the vortex, consuming anything that crosses their path.",
@@ -4165,6 +4226,12 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 gallon of water or more",
+			"duration": {
+				"number": 10,
+				"unit": "minute",
+				"sustained": true
+			},
 			"entries": [
 				"You touch the water's surface, and as the ripples spread out, so do your senses. When you Cast this Spell, you automatically know the location of any unoccupied, flowing water with a surface area of at least 1 square within 500 feet. You can pick any one of these streams to see and hear out of for the duration of the spell, though your field of vision is perpendicular to the flowing surface. For example, you could look normally out of a waterfall but would look straight up from out of a river. Each time you {@action Sustain a spell||Sustain the spell}, you can change to a different water source or move elsewhere along the same one.",
 				"If the water you're scrying through ceases flowing, such as by a faucet turning off, a river damming, or a waterfall freezing over, this spell ends. Additionally, your face appears as a faint reflection in the water's surface as you peek through. A creature that Seeks and succeeds at their {@skill Perception} check against your spell DC detects your presence in the water."
@@ -4203,6 +4270,11 @@
 			],
 			"range": {
 				"unit": "touch"
+			},
+			"targets": "1 objectup to 10 Bulk",
+			"duration": {
+				"number": 1,
+				"unit": "hour"
 			},
 			"entries": [
 				"You prevent the target item from taking on water or becoming wet for the duration of the spell. The hydrophobic properties of the spell also grant resistance 10 to acid and a +2 bonus to saves and DCs against damaging effects with the {@trait water} or {@trait acid} traits."
@@ -4251,6 +4323,16 @@
 				"types": [
 					"Cylinder"
 				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
 			},
 			"entries": [
 				"With a spin of your hand, you create a large swirling vortex of storming waves. All squares in the whirlpool are difficult terrain. The constant churning of the fierce waves means that creatures are constantly tossed between areas of air and water, allowing both air- and water-breathing creatures to breathe within the vortex. Any creature with a swim Speed can {@action Swim} instead of {@action Stride} to move within the whirlpool; the DC to {@action Swim} within it is equal to your spell DC.",
