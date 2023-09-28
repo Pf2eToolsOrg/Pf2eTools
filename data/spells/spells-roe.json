@@ -2730,7 +2730,7 @@
 			"area": {
 				"entry": "60-foot line",
 				"types": [
-					"Misc."
+					"Line"
 				]
 			},
 			"savingThrow": {
@@ -2791,12 +2791,15 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 metal object of 5 Bulk or less that's unattended or attended by a willing creature",
 			"duration": {
 				"number": 1,
 				"unit": "minute"
 			},
 			"entries": [
-				"You briefly swap the outer surface of the metal in an object with a suitable amount of a common precious metal from the Plane of Metal. You can instead choose an uncommon or rare metal if you have access to it or the GM has given you access to it. The object functions as an item of that metal, provided the item would be 2nd level or lower. For example, you could make a dagger into a cold iron or silver dagger (2nd-level items) but couldn't make full plate into cold iron armor or silver armor (5th-level items). This imparts any special properties of the precious metal\u2014a weapon clad in cold iron activates weaknesses to cold iron, for example\u2014and suppresses any special properties of the original metal of which the item was made. The spell neither changes the structural integrity of the item nor damages it. The object can pass a cursory inspection, but the {@trait magical} effect is obvious to anyone who studies the item closely, so it doesn't alter the Price of the item if you attempt to sell it."
+				"You briefly swap the outer surface of the metal in an object with a suitable amount of a common precious metal from the {@plane Plane of Metal|RoE}. You can instead choose an uncommon or rare metal if you have access to it or the GM has given you access to it.",
+				"The object functions as an item of that metal, provided the item would be 2nd level or lower. For example, you could make a dagger into a cold iron or silver dagger (2nd-level items) but couldn't make full plate into cold iron armor or silver armor (5th-level items). This imparts any special properties of the precious metal\u2014a weapon clad in cold iron activates weaknesses to cold iron, for example\u2014and suppresses any special properties of the original metal of which the item was made.",
+				"The spell neither changes the structural integrity of the item nor damages it. The object can pass a cursory inspection, but the {@trait magical} effect is obvious to anyone who studies the item closely, so it doesn't alter the Price of the item if you attempt to sell it."
 			],
 			"heightened": {
 				"plusX": {
@@ -2834,6 +2837,7 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 metal weapon that is unattended or is wielded by you or a willing ally",
 			"duration": {
 				"number": 1,
 				"unit": "minute"
@@ -2878,7 +2882,8 @@
 				]
 			},
 			"entries": [
-				"You attune yourself to magnetic fields, becoming aware of the presence or absence of metallic objects, veins, and deposits within the area. You can choose to ignore metal you're fully aware of, such as the gear you and your allies wear and carry. You detect metal {@condition hidden} by illusions (such as invisibility) only if the illusion has a lower rank than your detect metal spell. Against deceptive illusions, detect metal always notices an absence of metal when a non-metallic object is disguised as metallic. However, if the deception involves disguising one metallic object as another, such as pretending a copper coin is made of gold, detect metal registers only the presence of metal, not its type, even if the rank of your detect metal spell exceeds that of the {@trait illusion} effect."
+				"You attune yourself to magnetic fields, becoming aware of the presence or absence of metallic objects, veins, and deposits within the area. You can choose to ignore metal you're fully aware of, such as the gear you and your allies wear and carry.",
+				"You detect metal {@condition hidden} by illusions (such as invisibility) only if the illusion has a lower rank than your detect metal spell. Against deceptive illusions, detect metal always notices an absence of metal when a non-metallic object is disguised as metallic. However, if the deception involves disguising one metallic object as another, such as pretending a copper coin is made of gold, detect metal registers only the presence of metal, not its type, even if the rank of your detect metal spell exceeds that of the {@trait illusion} effect."
 			],
 			"heightened": {
 				"X": {
@@ -2918,7 +2923,9 @@
 				"unit": "hour"
 			},
 			"entries": [
-				"Your body transforms entirely into flexible iron. You gain resistance 10 to physical damage, except adamantine. You're immune to {@trait death} effects, disease, {@condition drained}, {@condition fatigued}, healing, nonlethal attacks, {@condition paralyzed}, poison, {@condition sickened}, vitality, and void; any of those conditions you had when the spell is cast are suspended until the spell ends, then return with their remaining duration when the spell ends. While made of iron, you're subject to rusting effects like the {@spell rust cloud|RoE} spell. Your fist Strikes have a {@dice 1d10} damage die, and your metal spells deal one additional die of damage (of the same damage die and damage type the spell uses). You can cast {@spell needle darts|RoE} as an innate spell; the casting is reduced from 2 actions to 1. In this form, you don't need to breathe. Your Bulk doubles (to 6 if you're Small or 12 if you're Medium), and you become too dense to {@action Swim} in water, automatically sinking to the bottom. You can {@action Dismiss} the spell."
+				"Your body transforms entirely into flexible iron. You gain resistance 10 to physical damage, except adamantine. You're immune to {@trait death} effects, disease, {@condition drained}, {@condition fatigued}, healing, nonlethal attacks, {@condition paralyzed}, poison, {@condition sickened}, vitality, and void; any of those conditions you had when the spell is cast are suspended until the spell ends, then return with their remaining duration when the spell ends. While made of iron, you're subject to rusting effects like the {@spell rust cloud|RoE} spell.",
+				"Your fist {@action Strike||Strikes} have a {@dice 1d10} damage die, and your metal spells deal one additional die of damage (of the same damage die and damage type the spell uses). You can cast {@spell needle darts|RoE} as an innate spell; the casting is reduced from 2 actions to 1.",
+				"In this form, you don't need to breathe. Your Bulk doubles (to 6 if you're Small or 12 if you're Medium), and you become too dense to {@action Swim} in water, automatically sinking to the bottom. You can {@action Dismiss} the spell."
 			],
 			"heightened": {
 				"X": {
@@ -2962,8 +2969,20 @@
 					"Burst"
 				]
 			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
 			"entries": [
-				"You grind a chunk of your choice of metal to fine dust between your hands and blow it into the air, where it grows into a tangle of wires covered in razor-sharp prongs. The metal must be of a type you currently have in your possession. The covered area is difficult terrain. A creature that moves through the area takes 5 slashing damage per square traversed. If a creature takes slashing, piercing, or {@condition persistent damage||persistent bleed damage} while inside the thicket, you can spend a reaction to grow the iron in the shed blood into additional wires, expanding the burst by 5 feet. You can grow the area four times in this way, to a maximum of a 40-foot burst. The barbed wires are made of the metal you chose and activate resistances, weaknesses, and the like normally. The metal reforms in your possession when the spell ends."
+				"You grind a chunk of your choice of metal to fine dust between your hands and blow it into the air, where it grows into a tangle of wires covered in razor-sharp prongs. The metal must be of a type you currently have in your possession. The covered area is difficult terrain. A creature that moves through the area takes 5 slashing damage per square traversed.",
+				"If a creature takes slashing, piercing, or {@condition persistent damage||persistent bleed damage} while inside the thicket, you can spend a reaction to grow the iron in the shed blood into additional wires, expanding the burst by 5 feet. You can grow the area four times in this way, to a maximum of a 40-foot burst.",
+				"The barbed wires are made of the metal you chose and activate resistances, weaknesses, and the like normally. The metal reforms in your possession when the spell ends."
 			],
 			"heightened": {
 				"plusX": {
@@ -2999,8 +3018,14 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 unattended metallic object up to 5 Bulk",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
 			"entries": [
-				"You bend the target object into a smooth metallic ball no larger than an egg. The target reverts to its original shape only when you {@action Dismiss} the spell, the duration expires, or if the ball touches water or fire, whichever comes first. Creatures that see the reshaped object can attempt a {@skill Perception} check against your spell DC to notice the ball might not actually be what it seems. If the object is magical, it retains its magical auras but can't be worn, affixed, or Activated."
+				"You bend the target object into a smooth metallic ball no larger than an egg. The target reverts to its original shape only when you {@action Dismiss} the spell, the duration expires, or if the ball touches water or fire, whichever comes first.",
+				"Creatures that see the reshaped object can attempt a {@skill Perception} check against your spell DC to notice the ball might not actually be what it seems. If the object is magical, it retains its magical auras but can't be worn, affixed, or Activated."
 			],
 			"heightened": {
 				"X": {
@@ -3035,9 +3060,15 @@
 				]
 			],
 			"area": {
-				"entry": "100-foot emanation that have the {@trait metal} trait, and unattended metal objects Defense Reflex",
+				"entry": "100-foot emanation",
 				"types": [
 					"Emanation"
+				]
+			},
+			"targets": "any number of creatures wearing metal armor, creatures made of metal, creatures that have the {@trait metal} trait, and unattended metal objects",
+			"savingThrow": {
+				"type": [
+					"R"
 				]
 			},
 			"duration": {
@@ -3046,7 +3077,9 @@
 				"sustained": true
 			},
 			"entries": [
-				"The roiling magnetic fields of the Plane of Metal radiate from you as you channel and reshape them at your merest thought. When you Cast this Spell, you can relocate each affected target to any other unoccupied space within the emanation. You can't move yourself in this way. An unwilling target can resist being moved with a successful Reflex save. The creatures move all at once\u2014after you know the results of all the saves, you determine which target occupies each space in whatever order you choose. You can move a creature into a space that was previously occupied by another creature so long as you also relocate the first creature elsewhere as part of the movement. If you move a target into the air, it descends to the ground harmlessly after being moved unless it chooses not to. You can choose to be affected by an 8th-rank {@spell magnetic repulsion|SoM} spell (Secrets of Magic 115) that lasts for the duration of magnetic dominion. Each time you {@action Sustain a spell||Sustain the spell}, you can move one creature in the emanation, with the same targeting restrictions and stipulations as above."
+				"The roiling magnetic fields of the {@plane Plane of Metal|RoE} radiate from you as you channel and reshape them at your merest thought. When you {@action Cast a spell||Cast this Spell}, you can relocate each affected target to any other unoccupied space within the emanation. You can't move yourself in this way. An unwilling target can resist being moved with a successful Reflex save.",
+				"The creatures move all at once\u2014after you know the results of all the saves, you determine which target occupies each space in whatever order you choose. You can move a creature into a space that was previously occupied by another creature so long as you also relocate the first creature elsewhere as part of the movement. If you move a target into the air, it descends to the ground harmlessly after being moved unless it chooses not to.",
+				"You can choose to be affected by an 8th-rank {@spell magnetic repulsion|SoM} spell that lasts for the duration of magnetic dominion. Each time you {@action Sustain a spell||Sustain the spell}, you can move one creature in the emanation, with the same targeting restrictions and stipulations as above."
 			]
 		},
 		{
@@ -3118,7 +3151,6 @@
 			],
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				]
 			},
@@ -3183,8 +3215,10 @@
 				"unit": "feet",
 				"number": 60
 			},
+			"targets": "1 creature",
 			"entries": [
-				"You shape three needles out of a piece of metal in your possession and send them flying in a tight group toward one target. Make a spell attack roll against your target's AC. The needles deal {@damage 3d4} piercing damage and might cause bleeding. The needles impart any special properties of the metal that forms them; for instance, cold iron needles deal additional damage to creatures with weakness to cold iron. All the needles are made of the same metal, and the metal returns to you after the attack.",
+				"You shape three needles out of a piece of metal in your possession and send them flying in a tight group toward one target. Make a spell attack roll against your target's AC.",
+				"The needles deal {@damage 3d4} piercing damage and might cause bleeding. The needles impart any special properties of the metal that forms them; for instance, cold iron needles deal additional damage to creatures with weakness to cold iron. All the needles are made of the same metal, and the metal returns to you after the attack.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -3238,6 +3272,12 @@
 				"types": [
 					"Burst"
 				]
+			},
+			"savingThrow": {
+				"type": [
+					"F"
+				],
+				"basic": true
 			},
 			"entries": [
 				"This spell forces toxic metal to coalesce on the skin or surface of all living creatures in the area, dealing {@damage 4d6} poison damage with a basic Fortitude save. Any creature that has the {@trait plant} trait, has the {@trait wood} trait, or has an anathema toward metal, takes the following effects depending on the result of that Fortitude save.",
@@ -3301,8 +3341,19 @@
 					"Burst"
 				]
 			},
+			"savingThrow": {
+				"type": [
+					"F"
+				],
+				"basic": true
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
 			"entries": [
-				"Red-blown flecks of rust jitter in the air, forming a cloud of agitated particles. All creatures within the cloud become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. The cloud deals {@damage 5d10} slashing damage to any creature that starts its turn in the area, with a basic Fortitude save. Metal that rusts off of a creature adds to the cloud. When a metal creature takes damage from the cloud, the cloud's area increases by 5 feet (to a maximum of a 40-foot burst), and the creature starts to rust, taking {@damage 1d4} {@condition persistent damage||persistent slashing damage}. You can {@action Dismiss} the cloud."
+				"Red-blown flecks of rust jitter in the air, forming a cloud of agitated particles. All creatures within the cloud become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. The cloud deals {@damage 5d10} slashing damage to any creature that starts its turn in the area, with a basic Fortitude save.",
+				"Metal that rusts off of a creature adds to the cloud. When a metal creature takes damage from the cloud, the cloud's area increases by 5 feet (to a maximum of a 40-foot burst), and the creature starts to rust, taking {@damage 1d4} {@condition persistent damage||persistent slashing damage}. You can {@action Dismiss} the cloud."
 			],
 			"heightened": {
 				"plusX": {
@@ -3340,8 +3391,15 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"entry": "1 minute or until expended"
+			},
 			"entries": [
-				"Reinforcing veins of ore run through the target's arm, letting it ward off blows with its bare skin. It can use the {@action Raise a Shield} action to instead raise its arm, gaining a +2 circumstance bonus to AC. It can Shield Block with its Raised arm as well; when it does, the target reduces the damage as if it had a shield with Hardness 4 and 15 Hit Points. This shield doesn't have a {@condition Broken} Threshold, and the spell ends if the shield's Hit Points are expended. This spell doesn't modify the target's unarmed attacks and can't be used to make a shield bash {@action Strike}."
+				"Reinforcing veins of ore run through the target's arm, letting it ward off blows with its bare skin. It can use the {@action Raise a Shield} action to instead raise its arm, gaining a +2 circumstance bonus to AC. It can Shield Block with its Raised arm as well; when it does, the target reduces the damage as if it had a shield with Hardness 4 and 15 Hit Points. This shield doesn't have a {@condition Broken} Threshold, and the spell ends if the shield's Hit Points are expended.",
+				"This spell doesn't modify the target's unarmed attacks and can't be used to make a shield bash {@action Strike}. Casting or coming under the effects of this spell also counts as using a metallic item with regards to anathema."
 			],
 			"heightened": {
 				"plusX": {
@@ -3459,9 +3517,8 @@
 				"Metal"
 			],
 			"trigger": [
-				"Trigger a Strike with a Metallic Weapon or Projectile Would Hit You or an Ally Within Range."
+				"a {@action Strike} with a metallic weapon or projectile would hit you or an ally within range."
 			],
-			"subclass": {},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
