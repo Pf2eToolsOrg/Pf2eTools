@@ -439,7 +439,7 @@
 			},
 			"targets": "the triggering creature",
 			"entries": [
-				"You create a current of wind at your ally’s back, propelling their movement. When your ally’s {@action Stride} or {@action Leap} ends, the current propels them an additional 15 feet in the same direction as the last 5 feet of their {@action Stride} or {@action Leap}."
+				"You create a current of wind at your ally's back, propelling their movement. When your ally's {@action Stride} or {@action Leap} ends, the current propels them an additional 15 feet in the same direction as the last 5 feet of their {@action Stride} or {@action Leap}."
 			]
 		},
 		{
@@ -735,8 +735,8 @@
 				]
 			},
 			"entries": [
-				"You whisper a secret message or sound into the wind, which carries it to a designated spot. The message travels to a specific 10-foot burst within range that’s familiar to you, provided there’s a path for the wind to follow between you and the area. The gentle breeze goes all but unnoticed until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends.",
-				"Your message can contain no more than 25 words, 1 round’s worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can’t activate magical effects triggered by voices."
+				"You whisper a secret message or sound into the wind, which carries it to a designated spot. The message travels to a specific 10-foot burst within range that's familiar to you, provided there's a path for the wind to follow between you and the area. The gentle breeze goes all but unnoticed until it reaches its destination, where it delivers its whisper-quiet message. The message is delivered regardless of who or what is present to hear it, even if no one receives it at all. Once the message is delivered, the spell ends.",
+				"Your message can contain no more than 25 words, 1 round's worth of other sounds, or a simple rustling in the air at the target location. It moves at a speed of your choosing between 1 mile per hour and 1 mile per 10 minutes; when it arrives, the wind swirls around the area and whispers the full message. A voice on the breeze can't activate magical effects triggered by voices."
 			],
 			"heightened": {
 				"X": {
@@ -902,6 +902,14 @@
 					"Burst"
 				]
 			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"savingThrow": {
+				"type": "R",
+				"basic": true
+			},
 			"entries": [
 				"Sharp flowstone formations protrude from the ground and ceiling, dealing {@damage 6d6} piercing damage to creatures in the area with a basic Reflex save. Densely packed with protrusions, the area becomes difficult terrain for the duration. The protrusions turn to dust when the spell ends. You can {@action Dismiss} the spell."
 			],
@@ -914,7 +922,7 @@
 			}
 		},
 		{
-			"name": "Engrave Memor",
+			"name": "Engrave Memory",
 			"source": "RoE",
 			"page": 94,
 			"level": 5,
@@ -935,8 +943,14 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 stone of at least 1 Bulk",
+			"duration": {
+				"unit": "unknown",
+				"entry": "unlimited"
+			},
 			"entries": [
-				"You store memories inside a stone. This memory can convey up to 10 minutes of material. When you Cast this Spell, choose a command word. Doing so creates a carved symbol on the stone that hints at the word. Any creature can access the memories stored within the stone by using an action to speak the command word. As it imparts the memories, the stone crumbles to dust, but the memory is infallibly available to the creature that activated the stone for the next 24 hours. After that time, the creature's normal capacity for memory must be relied upon to recall the stone's imparted memory. It's up to the GM what benefit the imparted memory grants, from circumstance bonuses to checks related to the memory or clear information on subjects the memory covers."
+				"You store memories inside a stone. This memory can convey up to 10 minutes of material. When you Cast this Spell, choose a command word. Doing so creates a carved symbol on the stone that hints at the word. Any creature can access the memories stored within the stone by using an action to speak the command word.",
+				"As it imparts the memories, the stone crumbles to dust, but the memory is infallibly available to the creature that activated the stone for the next 24 hours. After that time, the creature's normal capacity for memory must be relied upon to recall the stone's imparted memory. It's up to the GM what benefit the imparted memory grants, from circumstance bonuses to checks related to the memory or clear information on subjects the memory covers."
 			]
 		},
 		{
@@ -967,6 +981,7 @@
 				"unit": "feet",
 				"number": 120
 			},
+			"targets": "1 creature",
 			"entries": [
 				"You throw a hard-packed ball of earth and stone at a creature, and the projectile explodes upon impact. Attempt a spell attack against the target's AC. If you hit, you deal {@damage 4d6} bludgeoning damage plus {@damage 1d6} bludgeoning splash damage. On a critical hit, double the initial damage, but not the splash damage, and the target you hit must succeed at a Fortitude saving throw or fall {@condition prone}."
 			],
@@ -1004,6 +1019,11 @@
 			],
 			"range": {
 				"unit": "touch"
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
 			},
 			"entries": [
 				"You grant the target properties of dull, transparent glass. The target becomes {@condition concealed}, has no scent, and can't bleed. They gain resistance 5 to acid, cold, electricity, and piercing damage and weakness 5 to sonic and bludgeoning damage. A creature in this form is affected by the {@spell shatter} spell as though the creature were an unattended object. Each time the target takes damage to which the spell grants resistance or weakness, reduce the duration by 1 minute."
@@ -1104,6 +1124,11 @@
 					"Burst"
 				]
 			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
 			"savingThrow": {
 				"type": [
 					"F",
@@ -1162,6 +1187,12 @@
 			"range": {
 				"unit": "feet",
 				"number": 120
+			},
+			"targets": "1 creature or object on the ground",
+			"savingThrow": {
+				"type": [
+					"R"
+				]
 			},
 			"entries": [
 				"You strike the ground, and unleash a wave that travels through the struck surface to the target. The effect ends as soon as it can't travel through a solid surface, such as a stone floor. Each creature in a line between you and the target is shaken by tremors and must attempt a Reflex saving throw against your spell DC. A creature that fails this save is pushed 10 feet away from you. The wave explodes once it reaches the target, showering the target with earth and stone and dealing {@damage 12d10} bludgeoning damage with a basic Reflex save. A target that fails its save against this explosion is also pushed back 10 feet and knocked {@condition prone}. A creature subject to the explosion doesn't need to save against the tremors."
@@ -1237,6 +1268,7 @@
 					"V"
 				]
 			],
+			"trigger": "You are the target of a {@action Strike} or would attempt a Reflex save against a damaging area effect.",
 			"duration": {
 				"number": 3,
 				"unit": "round"
@@ -1279,7 +1311,7 @@
 			"area": {
 				"entry": "60-foot line along the ground",
 				"types": [
-					"Misc."
+					"Line"
 				]
 			},
 			"duration": {
@@ -1328,6 +1360,11 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
 			"entries": [
 				"The target leaves behind a trail of shifting rubble that typically consists of stones, but you could choose another earthen material, such as loose sand or soil. For 2 rounds, when the target willingly moves out of a space, and if the target is in contact with the ground, the ground in that space becomes difficult terrain. The difficult terrain remains for the spell's duration."
 			],
@@ -1365,6 +1402,11 @@
 			],
 			"range": {
 				"unit": "touch"
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
 			},
 			"entries": [
 				"You grant the target's body and gear aspects of sand. The target gains resistance 5 to piercing and slashing damage, has no scent, and can't bleed. In sandy terrain, even when out in the open, the target has enough concealment to attempt to {@action Hide}. Each time the target takes damage to which sand form grants resistance, reduce the duration of the spell by 1 minute."
@@ -1414,7 +1456,8 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You conjure up to six 5-foot stone cubes you can gently move with a gesture. Each cube appears in any space within range, and they're capable of levitating. If you conjure a cube in an occupied space or in a space that can't accommodate it, it fails to appear. Each 5-foot cube can be Climbed with a successful DC 10 {@skill Athletics} check and has AC 10, Hardness 10, and 40 Hit Points. If any of the cubes is ever farther away from you than the range of this spell, it immediately crumbles into dust. Each time you {@action Sustain a spell||Sustain this spell}, you can move up to two of the conjured cubes up to 10 feet each in any direction, including vertically. You can choose different cubes to move each time you {@action Sustain a spell||Sustain}."
+				"You conjure up to six 5-foot stone cubes you can gently move with a gesture. Each cube appears in any space within range, and they're capable of levitating. If you conjure a cube in an occupied space or in a space that can't accommodate it, it fails to appear. Each 5-foot cube can be Climbed with a successful DC 10 {@skill Athletics} check and has AC 10, Hardness 10, and 40 Hit Points. If any of the cubes is ever farther away from you than the range of this spell, it immediately crumbles into dust.",
+				"Each time you {@action Sustain a spell||Sustain this spell}, you can move up to two of the conjured cubes up to 10 feet each in any direction, including vertically. You can choose different cubes to move each time you {@action Sustain a spell||Sustain}."
 			],
 			"heightened": {
 				"plusX": {
@@ -1455,6 +1498,7 @@
 				"unit": "feet",
 				"number": 120
 			},
+			"targets": "1 creature",
 			"entries": [
 				"You send a series of tremors, no longer than a short sentence of speech, toward your target. If the target is within range and connected to the same body of earth as you, the vibrations reach the target through the ground. You need neither line of sight nor line of effect, so a target on another floor of a building is a valid target.",
 				"The target can give a brief, vibrational response as a reaction, or as a free action on their next turn, but they must be within range to do so. If they respond, their response is delivered to you through tremors you feel, as with the original message. The tremors impart a clear meaning only if you and the target know that meaning, such as three tremors for a specific warning, two for another. Neither of you can impart a nuanced or new meaning using this spell.",
@@ -1545,6 +1589,15 @@
 					"Cone"
 				]
 			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
 			"entries": [
 				"You launch a cone of glass shards, which embed in creatures to turn them partially to glass. The shards deal {@damage 8d6} piercing damage to creatures in the area, based on each creature's saving throw.",
 				{
@@ -1600,9 +1653,9 @@
 			"range": {
 				"unit": "touch"
 			},
+			"targets": "1 creature, unattended object, or hazard or structure made of stone or earth",
 			"savingThrow": {
 				"type": [
-					"F",
 					"F"
 				]
 			},
@@ -1645,13 +1698,14 @@
 					"V"
 				]
 			],
+			"trigger": "You are an ally within range fails a skill check for a skill in which you or they are trained.",
 			"range": {
 				"unit": "feet",
 				"number": 30
 			},
 			"targets": "the triggering creature",
 			"entries": [
-				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target’s check."
+				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
 			]
 		},
 		{
@@ -2405,7 +2459,7 @@
 						[
 							"8",
 							"Blue",
-							"Choose the color for each affected creature and use that color’s damage and added effect; if a creature is affected again, you can choose a different color.",
+							"Choose the color for each affected creature and use that color's damage and added effect; if a creature is affected again, you can choose a different color.",
 							"\u2014"
 						]
 					]
@@ -3607,7 +3661,7 @@
 				"number": 10
 			},
 			"entries": [
-				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can’t draw more than a few cups before depleting the ambient moisture."
+				"You draw water out of an object, possibly to clean up spills or quickly dry a soaked book or shirt. You draw up to a pint of water from the object; this dries objects of less than 1 Bulk. The water collects in a globule floating in your hand, which you can direct into a nearby container as part of Casting the Spell; otherwise, it splashes to the ground. Repeated applications of draw moisture can be used to dry larger objects, although doing so might take significant time. You can use this spell in especially humid environments to condense drinkable water from the air, though typically, you can't draw more than a few cups before depleting the ambient moisture."
 			]
 		},
 		{
@@ -3951,7 +4005,7 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"You cause a splash of cold water to descend on an ally’s head, granting some temporary vigor. The target gains {@dice 1d4} temporary Hit Points, which last for 1 minute. The target is then temporarily immune to the temporary Hit Points from rousing splash for 10 minutes. The target can also attempt an immediate flat check to recover from a single source of persistent acid or fire damage, with the DC reduction from appropriate assistance."
+				"You cause a splash of cold water to descend on an ally's head, granting some temporary vigor. The target gains {@dice 1d4} temporary Hit Points, which last for 1 minute. The target is then temporarily immune to the temporary Hit Points from rousing splash for 10 minutes. The target can also attempt an immediate flat check to recover from a single source of persistent acid or fire damage, with the DC reduction from appropriate assistance."
 			],
 			"heightened": {
 				"plusX": {
