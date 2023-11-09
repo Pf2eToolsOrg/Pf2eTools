@@ -1999,7 +1999,7 @@ function Renderer () {
 						// path: page,
 						// hash,
 						// hashPreEncoded: true,
-						path: UrlUtil.getCurrentPage(),
+						path: `${page}#${hash}`,
 					},
 					text: displayText,
 				};
