@@ -13,7 +13,7 @@ on:
 
 env:
    # See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
-   IMAGE_NAME: pf2etools
+   IMAGE_NAME: ${{ env.IMAGE_NAME }}
 
 concurrency:
    group: "release"
@@ -43,7 +43,7 @@ jobs:
 
          -  name: Archive Release
             run: |
-               zip -r pf2ools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*img*' '*.editorconfig*' '*CNAME*' 'RELEASE_NOTES.md'
+               zip -r ${{ env.IMAGE_NAME }}-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*img*' '*.editorconfig*' '*CNAME*' 'RELEASE_NOTES.md'
          -  name: Set Deployed Flag
             run: |
                bash ./.github/set-deployed-flag.sh ${{ env.RELEASE_VERSION }}
