@@ -1,10 +1,10 @@
 "use strict";
 
 const fs = require("fs");
-const ut = require("./util");
-require("../js/utils");
-require("../js/render");
-require("../js/parser");
+const ut = require("./util.js");
+require("../js/utils.js");
+require("../js/render.js");
+require("../js/parser.js");
 
 // TODO: Incoming data structure change...
 async function replaceReferences (folder) {

@@ -10,4 +10,4 @@ fi
 version=$1
 
 # Set the IS_DEPLOYED variable for production.
-sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' js/utils.js
+sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' ./js/utils.js

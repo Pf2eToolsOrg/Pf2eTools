@@ -1,8 +1,8 @@
 "use strict";
 
 const fs = require("fs");
-const ut = require("./util");
-require("../js/utils");
+const ut = require("./util.js");
+require("../js/utils.js");
 
 const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,

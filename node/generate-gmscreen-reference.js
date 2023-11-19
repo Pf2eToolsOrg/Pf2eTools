@@ -1,5 +1,5 @@
 const fs = require("fs");
-const utB = require("./util-book-reference");
+const utB = require("./util-book-reference.js");
 
 const index = utB.UtilBookReference.getIndex(
 	{
@@ -14,7 +14,7 @@ const index = utB.UtilBookReference.getIndex(
 	},
 );
 
-fs.writeFileSync("data/generated/bookref-gmscreen.json", JSON.stringify(index), "utf8");
+fs.writeFileSync("../data/generated/bookref-gmscreen.json", JSON.stringify(index), "utf8");
 
 function flattenReferenceIndex (ref, skipHeaders) {
 	const outMeta = {
@@ -73,5 +73,5 @@ function flattenReferenceIndex (ref, skipHeaders) {
 	};
 }
 
-fs.writeFileSync("data/generated/bookref-gmscreen-index.json", JSON.stringify(flattenReferenceIndex(index.reference)), "utf8");
+fs.writeFileSync("../data/generated/bookref-gmscreen-index.json", JSON.stringify(flattenReferenceIndex(index.reference)), "utf8");
 console.log("Updated GM Screen references.");

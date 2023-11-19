@@ -1,9 +1,9 @@
 "use strict";
 
 const fs = require("fs");
-const ut = require("./util");
-require("../js/utils");
-const PropOrder = require("../js/utils-proporder");
+const ut = require("./util.js");
+require("../js/utils.js");
+const PropOrder = require("../js/utils-proporder.js");
 
 const FILE_BLACKLIST = new Set([
 	"index.json",

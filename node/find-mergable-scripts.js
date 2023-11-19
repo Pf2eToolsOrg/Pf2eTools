@@ -3,8 +3,8 @@
 */
 
 const fs = require("fs");
-const ut = require("./util");
-require("../js/utils");
+const ut = require("./util.js");
+require("../js/utils.js");
 
 const files = ut.listFiles({
 	dir: ".",

@@ -1,8 +1,8 @@
 const fs = require("fs");
+const ut = require("./util.js");
 require("../js/utils.js");
 require("../js/render.js");
 require("../js/render-dice.js");
-const ut = require("./util.js");
 Object.assign(global, require("../js/converterutils.js"));
 
 const BLACKLIST_FILE_PREFIXES = [

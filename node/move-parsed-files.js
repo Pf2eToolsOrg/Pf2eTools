@@ -1,9 +1,9 @@
 "use strict"
 
+const fs = require("fs")
+const ut = require("./util.js")
 require("../js/parser.js");
 require("../js/utils.js");
-const ut = require("./util.js")
-const fs = require("fs")
 
 function main () {
 	const files = ut.listFiles({dir: "./trash/parsed"});

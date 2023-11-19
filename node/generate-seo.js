@@ -3,18 +3,19 @@
  */
 
 const fs = require("fs");
-require("../js/utils");
-require("../js/render");
-require("../js/render-dice");
+require("../js/utils.js");
+require("../js/render.js");
+require("../js/render-dice.js");
 
 function rd (path) {
 	return JSON.parse(fs.readFileSync(path, "utf-8"));
 }
 
 const IS_DEV_MODE = !!process.env.VET_SEO_IS_DEV_MODE;
-const BASE_SITE_URL = process.env.VET_BASE_SITE_URL || "https://pf2etools.com/";
+const BASE_SITE_URL = process.env.VET_BASE_SITE_URL || "https://starfinder2.com/";
 const isSkipUaEtc = !!process.env.VET_SEO_IS_SKIP_UA_ETC;
 const isOnlyVanilla = !!process.env.VET_SEO_IS_ONLY_VANILLA;
+const appName = process.env.IMAGE_NAME;
 const version = rd("package.json").version;
 
 const lastMod = (() => {
@@ -37,21 +38,21 @@ const baseSitemapData = (() => {
 })();
 
 const getTemplate = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE html><html lang="en"><head>
-  <!--PF2ETOOLS_CMP-->
-  <!--PF2ETOOLS_ANALYTICS-->
-  <!--PF2ETOOLS_ADCODE-->
-  <meta charset="utf-8"><meta name="description" content=""><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="apple-mobile-web-app-capable" content="yes"><title>Pf2etools</title><link rel="stylesheet" href="/css/bootstrap.css?v=${version}"><link rel="stylesheet" href="/css/style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png"><link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png"><link rel="icon" type="image/png" sizes="128x128" href="/favicon-128x128.png"><link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="application-name" content="Pf2etools"><meta name="theme-color" content="#006bc4"><meta name="msapplication-config" content="browserconfig.xml"/><meta name="msapplication-TileColor" content="#006bc4"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="apple-touch-icon" sizes="360x360" href="/apple-touch-icon-360x360.png"><link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-167x167.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><meta name="apple-mobile-web-app-title" content="Pf2etools"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#006bc4"><link rel="search" href="/open-search.xml" title="Search Pf2etools" type="application/opensearchdescription+xml"><script type="text/javascript" src="/js/header.js?v=${VERSION_NUMBER}"></script><script>_SEO_PAGE="${page}";_SEO_SOURCE="${source}";_SEO_HASH="${hash}";_SEO_STYLE=${textStyle};_SEO_FLUFF=${isFluff}</script></head><body><div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--PF2ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--PF2ETOOLS_AD_RIGHT_2--></div></div><div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--PF2ETOOLS_AD_LEADERBOARD--></div></div><header class="hidden-xs hidden-sm page__header"><div class="container"><h1 class="page__title"></h1></div></header><nav class="container page__nav" id="navigation"><ul class="nav nav-pills page__nav-inner" id="navbar"></ul></nav><main class="container"><div class="row"><div id="wrp-pagecontent"><table id="pagecontent" class="stats pf2-stat"><tr><th class="border" colspan="6"></th></tr><tr><td colspan="6" class="initial-message">Loading...</td></tr><tr><th class="border" colspan="6"></th></tr></table></div></div><div class="row" id="link-page"></div></main><script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1/dist/jquery.min.js,gh/weixsong/elasticlunr.js@0.9/elasticlunr.min.js"></script><script type="text/javascript" src="/lib/localforage.js"></script></script></script><script type="text/javascript" src="/js/shared.js?v=${VERSION_NUMBER}"></script><script type="text/javascript" src="/js/seo-loader.js?v=${VERSION_NUMBER}"></script></body></html>`;
+  <!--${appName}_CMP-->
+  <!--${appName}_ANALYTICS-->
+  <!--${appName}_ADCODE-->
+  <meta charset="utf-8"><meta name="description" content=""><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="apple-mobile-web-app-capable" content="yes"><title>${appName}</title><link rel="stylesheet" href="/css/bootstrap.css?v=${version}"><link rel="stylesheet" href="/css/style.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png"><link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png"><link rel="icon" type="image/png" sizes="128x128" href="/favicon-128x128.png"><link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="application-name" content="Pf2etools"><meta name="theme-color" content="#006bc4"><meta name="msapplication-config" content="browserconfig.xml"/><meta name="msapplication-TileColor" content="#006bc4"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="apple-touch-icon" sizes="360x360" href="/apple-touch-icon-360x360.png"><link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-167x167.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><meta name="apple-mobile-web-app-title" content="${appName}"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#006bc4"><link rel="search" href="/open-search.xml" title="Search ${appName}" type="application/opensearchdescription+xml"><script type="text/javascript" src="/js/header.js?v=${VERSION_NUMBER}"></script><script>_SEO_PAGE="${page}";_SEO_SOURCE="${source}";_SEO_HASH="${hash}";_SEO_STYLE=${textStyle};_SEO_FLUFF=${isFluff}</script></head><body><div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--${appName}_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--${appName}_AD_RIGHT_2--></div></div><div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--${appName}_AD_LEADERBOARD--></div></div><header class="hidden-xs hidden-sm page__header"><div class="container"><h1 class="page__title"></h1></div></header><nav class="container page__nav" id="navigation"><ul class="nav nav-pills page__nav-inner" id="navbar"></ul></nav><main class="container"><div class="row"><div id="wrp-pagecontent"><table id="pagecontent" class="stats pf2-stat"><tr><th class="border" colspan="6"></th></tr><tr><td colspan="6" class="initial-message">Loading...</td></tr><tr><th class="border" colspan="6"></th></tr></table></div></div><div class="row" id="link-page"></div></main><script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1/dist/jquery.min.js,gh/weixsong/elasticlunr.js@0.9/elasticlunr.min.js"></script><script type="text/javascript" src="/lib/localforage.js"></script></script></script><script type="text/javascript" src="/js/shared.js?v=${VERSION_NUMBER}"></script><script type="text/javascript" src="/js/seo-loader.js?v=${VERSION_NUMBER}"></script></body></html>`;
 
 const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE html><html lang="en"><head>
-  <!--PF2ETOOLS_CMP-->
-  <!--PF2ETOOLS_ANALYTICS-->
-  <!--PF2ETOOLS_ADCODE-->
+  <!--${appName}_CMP-->
+  <!--${appName}_ANALYTICS-->
+  <!--${appName}_ADCODE-->
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Pf2etools</title>
+  <title>${appName}</title>
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" href="/css/jquery-ui.css">
   <link rel="stylesheet" href="/css/main.css">
@@ -64,7 +65,7 @@ const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE ht
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/manifest.webmanifest">
-  <meta name="application-name" content="Pf2etools">
+  <meta name="application-name" content="${appName}">
   <meta name="theme-color" content="#006bc4">
   <meta name="msapplication-config" content="browserconfig.xml"/>
   <meta name="msapplication-TileColor" content="#006bc4">
@@ -73,7 +74,7 @@ const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE ht
   <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-167x167.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-  <meta name="apple-mobile-web-app-title" content="Pf2etools">
+  <meta name="apple-mobile-web-app-title" content="${appName}">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#006bc4">
   <script type="text/javascript" src="/js/styleswitch.js"></script>
   <script type="text/javascript" src="/js/navigation.js"></script>
@@ -81,8 +82,8 @@ const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE ht
   <script>_SEO_PAGE="${page}";_SEO_SOURCE="${source}";_SEO_HASH="${hash}";_SEO_STYLE=${textStyle};_SEO_FLUFF=${isFluff}</script>
   </head>
   <body>
-  <div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--PF2ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--PF2ETOOLS_AD_RIGHT_2--></div></div>
-  <div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--PF2ETOOLS_AD_LEADERBOARD--></div></div>
+  <div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--${appName}_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--${appName}_AD_RIGHT_2--></div></div>
+  <div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--${appName}_AD_LEADERBOARD--></div></div>
 
   <header class="hidden-xs hidden-sm page__header"><div class="container"><h1 class="page__title"></h1></div></header><nav class="container page__nav" id="navigation"><ul class="nav nav-pills page__nav-inner" id="navbar"></ul></nav>
 

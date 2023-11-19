@@ -1,6 +1,6 @@
 const fs = require("fs");
 const ut = require("./util.js");
-require("../js/utils");
+require("../js/utils.js");
 const probe = require("probe-image-size");
 
 const allFiles = [];

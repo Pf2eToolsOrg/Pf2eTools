@@ -3,10 +3,10 @@
 version=$1
 
 # Set the IS_DEPLOYED variable for production.
-sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' js/utils.js
+sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' ../js/utils.js
 
 echo "Minifying JavaScript."
-for f in js/*.js
+for f in ../js/*.js
 do
     npm run minify:js -- "$f" --output "$f"
 done
@@ -16,11 +16,11 @@ npm run minify:json
 
 echo "Optimizing the header."
 # Header / Day-Night mode
-npm run minify:js -- js/styleswitch.js --output js/styleswitch.js
-npm run minify:js -- js/navigation.js --output js/navigation.js
-npm run minify:js -- js/browsercheck.js --output js/browsercheck.js
-cat js/styleswitch.js <(echo ";") js/navigation.js <(echo ";") js/browsercheck.js > js/header.js
-rm js/styleswitch.js js/navigation.js
+npm run minify:js -- ./js/styleswitch.js --output ./js/styleswitch.js
+npm run minify:js -- ./js/navigation.js --output ./js/navigation.js
+npm run minify:js -- ./js/browsercheck.js --output ./js/browsercheck.js
+cat ./js/styleswitch.js <(echo ";") ./js/navigation.js <(echo ";") ./js/browsercheck.js > ./js/header.js
+rm ./js/styleswitch.js ./js/navigation.js
 
 # Replace the files with the minified version we made above
 find . -maxdepth 1 -type f -name '*.html' -print0 |
@@ -32,8 +32,8 @@ find . -maxdepth 1 -type f -name '*.html' -print0 |
 
 echo "Optimizing the JS."
 # Improve cache performance by gluing these together. Order is important. `echo`s add newlines.
-cat js/parser.js <(echo ";") js/utils.js <(echo ";") js/utils-ui.js <(echo ";") js/omnidexer.js <(echo ";") js/omnisearch.js <(echo ";") js/render.js <(echo ";") js/render-dice.js <(echo ";") js/scalecreature.js <(echo ";") js/hist.js > js/shared.js
-rm js/utils.js js/utils-ui.js js/omnidexer.js js/omnisearch.js js/render.js js/render-dice.js js/scalecreature.js js/hist.js
+cat ../js/parser.js <(echo ";") ../js/utils.js <(echo ";") ../js/utils-ui.js <(echo ";") ../js/omnidexer.js <(echo ";") ../js/omnisearch.js <(echo ";") ../js/render.js <(echo ";") ../js/render-dice.js <(echo ";") ../js/scalecreature.js <(echo ";") ../js/hist.js > ../js/shared.js
+rm ../js/utils.js ../js/utils-ui.js ../js/omnidexer.js ../js/omnisearch.js ../js/render.js ../js/render-dice.js ../js/scalecreature.js ../js/hist.js
 
 # Replace the files with the minified version we made above
 find . -maxdepth 1 -type f -name '*.html' -print0 |

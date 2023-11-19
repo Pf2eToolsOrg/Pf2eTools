@@ -1,6 +1,6 @@
 const fs = require("fs");
-require("../js/utils.js");
 const ut = require("./util.js");
+require("../js/utils.js");
 
 FEAT_LEADS_TO = {};
 

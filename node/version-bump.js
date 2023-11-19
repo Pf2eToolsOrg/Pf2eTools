@@ -1,10 +1,10 @@
 const fs = require("fs");
 const git = require("simple-git")();
-require("../js/utils");
+require("../js/utils.js");
 
-const FILES_TO_REPLACE_VERSION_IN = ["js/utils.js"];
-const VERSION_MARKER_START = "/* PF2ETOOLS_VERSION__OPEN */";
-const VERSION_MARKER_END = "/* PF2ETOOLS_VERSION__CLOSE */";
+const FILES_TO_REPLACE_VERSION_IN = ["../js/utils.js"];
+const VERSION_MARKER_START = "/* VERSION__OPEN */";
+const VERSION_MARKER_END = "/* VERSION__CLOSE */";
 const VERSION_REPLACE_REGEXP = new RegExp(`${VERSION_MARKER_START.escapeRegexp()}.*?${VERSION_MARKER_END.escapeRegexp()}`, "g");
 
 async function main () {

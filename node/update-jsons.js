@@ -1,9 +1,9 @@
 "use strict";
 
 const fs = require("fs");
-const ut = require("./util");
-require("../js/utils");
-require("../js/parser");
+const ut = require("./util.js");
+require("../js/utils.js");
+require("../js/parser.js");
 
 function updateFolder (folder) {
 	console.log(`Updating directory ${folder}...`);

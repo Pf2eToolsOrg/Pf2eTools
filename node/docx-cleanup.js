@@ -1,7 +1,7 @@
 const fs = require("fs");
 const ut = require("./util.js");
 const {TagJsons} = require("./tag-jsons.js");
-const {ConverterUtils} = require("../js/converterutils");
+const {ConverterUtils} = require("../js/converterutils.js");
 
 function doClean (args) {
 	const walker = MiscUtil.getWalker({keyBlacklist: new Set(["source", "page", "type", "name"])});

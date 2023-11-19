@@ -1,9 +1,9 @@
 const fs = require("fs");
-require("../js/utils");
+require("../js/utils.js");
 
-const FILES_TO_REPLACE_VERSION_IN = ["js/parser.js"];
-const VERSION_MARKER_START = "/* PF2ETOOLS_SOURCE__OPEN */";
-const VERSION_MARKER_END = "/* PF2ETOOLS_SOURCE__CLOSE */";
+const FILES_TO_REPLACE_VERSION_IN = ["../js/parser.js"];
+const VERSION_MARKER_START = "/* SOURCE__OPEN */";
+const VERSION_MARKER_END = "/* SOURCE__CLOSE */";
 const VERSION_REPLACE_REGEXP = new RegExp(`${VERSION_MARKER_START.escapeRegexp()}((.|\n|\r)*)${VERSION_MARKER_END.escapeRegexp()}`, "g");
 
 async function main () {
