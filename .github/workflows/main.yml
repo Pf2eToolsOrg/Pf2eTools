@@ -17,9 +17,9 @@ env:
    VET_BASE_SITE_URL: ${{ github.ref_name == 'main' && vars.VET_BASE_SITE_URL_PROD || vars.VET_BASE_SITE_URL_DEV }}
    VET_SEO_IS_SKIP_UA_ETC: true 
 
-concurrency:
-   group: "release"
-   cancel-in-progress: true
+#concurrency:
+#   group: "release"
+#   cancel-in-progress: true
 
 jobs:
    build-and-deploy:
@@ -76,11 +76,20 @@ jobs:
                sed -i 's/sw.js//g' .gitignore
                sed -i 's/sw-injector.js//g' .gitignore
          # See: https://github.com/JamesIves/github-pages-deploy-action
-         -  name: Deploy
-            uses: JamesIves/github-pages-deploy-action@releases/v4
-            with:
-               branch: prod
-               folder: .
+        # -  name: Deploy
+        #    uses: JamesIves/github-pages-deploy-action@releases/v4
+         #   with:
+         #      branch: prod
+         #      folder: .
+
+         - name: 📂 Sync files
+           uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+           with:
+              branch: prod
+              server: ${{ secrets.ftp_server }}
+              username: ${{ secrets.ftp_username }}
+              password: ${{ secrets.ftp_password }}
+              server-dir: ${{ env.FTP_DESTINATION_SERVER_DIR }}
 
          -  name: Archive Images
             run: |
