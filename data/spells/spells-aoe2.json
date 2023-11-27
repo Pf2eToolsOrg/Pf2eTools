@@ -242,10 +242,15 @@
 					"V"
 				]
 			],
-			"trigger": "You make a successful unarmed",
+			"trigger": "You make a successful unarmed {@action Strike} against a flying creature",
+			"targets": "the creature you hit",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"entries": [
-				"{@action Strike} against a flying creature.",
-				"Targets the creature you hit Saving Throw Fortitude You deny a flying creature the support of the air.",
+				"You deny a flying creature the support of the air.",
 				{
 					"type": "successDegree",
 					"entries": {
