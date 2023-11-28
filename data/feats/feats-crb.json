@@ -773,7 +773,7 @@
 			],
 			"prerequisites": "{@class barbarian|crb|Animal instinct|animal}",
 			"entries": [
-				"Your proficiency in unarmored defense increases to expert. While you are raging and unarmored, your skin transforms into a thick hide resembling your animal's skin. You gain a +1 status bonus to AC instead of taking a \u20131 penalty to AC; if you have the {@classFeature greater juggernaut|Barbarian||13} class feature, this status bonus increases to +2. The thickness of your hide gives you a Dexterity modifier cap to your AC of +3."
+				"Your proficiency in unarmored defense increases to expert. When you are raging and unarmored, your skin transforms into a thick hide. You gain a +2 item bonus to AC (+3 if you have the {@classFeature greater juggernaut|Barbarian||13} class feature). The thickness of your hide gives you a Dexterity modifier cap to your AC of +3. This item bonus to AC is cumulative with {@item armor potency (generic)||armor potency runes} on your {@item explorer's clothing}, {@spell mage armor}, and {@item bracers of armor (generic)}."
 			]
 		},
 		{
@@ -941,7 +941,7 @@
 			"traits": [
 				"barbarian"
 			],
-			"trigger": "A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
+			"trigger": "A creature within your reach uses a {@trait manipulate} action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"entries": [
 				"You swat a foe that leaves an opening. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
 			]
@@ -959,7 +959,7 @@
 			"traits": [
 				"champion"
 			],
-			"trigger": "A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
+			"trigger": "A creature within your reach uses a {@trait manipulate} action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"entries": [
 				"You lash out at a foe that leaves an opening. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
 			]
@@ -2731,7 +2731,7 @@
 				"rage"
 			],
 			"entries": [
-				"You open yourself to attacks so you can respond in turn. Until your rage ends, you are {@condition flat-footed}, and damage rolls against you gain a +2 circumstance bonus. If a creature hits you, that creature is {@condition flat-footed} to you until the end of your next turn. If you hit it before the end of your next turn, you gain temporary Hit Points equal to your Constitution modifier, or double that on a critical hit. These temporary Hit Points last until the end of your rage."
+				"You open yourself to attacks so you can respond in turn. Until your {@action Rage||rage} ends, you are {@condition flat-footed}, and damage rolls against you gain a +2 circumstance bonus. If a creature hits you, that creature is {@condition flat-footed} to you until the end of your next turn. If you hit it before the end of your next turn, you gain temporary Hit Points equal to your Constitution modifier, or double that on a critical hit. These temporary Hit Points last until the end of your rage."
 			],
 			"leadsTo": [
 				"Vengeful Strike"
@@ -4057,7 +4057,7 @@
 				"rage"
 			],
 			"prerequisites": "{@class barbarian|crb|dragon instinct|dragon}",
-			"requirements": "You haven't used this ability since you last Raged.",
+			"requirements": "You haven't used this ability since you last {@action rage||Raged}.",
 			"entries": [
 				"You breathe deeply and exhale powerful energy in a 30-foot cone or 60-foot line, dealing {@damage #$prompt_number:min=6,title=Character Level,default=6$#d6|1d6} damage per level. The area and damage type match those of your dragon (see {@table Dragon Instincts||Table 3\u20134}). If you used this ability in the last hour, the area and the damage are halved (15-foot cone or 30-foot line; {@damage floor((#$prompt_number:min=6,title=Character Level,default=6$#)/2)d6|1d6} damage for every 2 levels). Each creature in the area must attempt a basic Reflex save."
 			]
@@ -5247,7 +5247,7 @@
 				"barbarian"
 			],
 			"entries": [
-				"Your rage is a frenzy of rapid movements. While you are raging, you gain a +10-foot status bonus to your Speed."
+				"While raging, you gain a +10-foot status bonus to your Speed."
 			]
 		},
 		{
@@ -10420,7 +10420,7 @@
 			],
 			"prerequisites": "expert in {@skill Athletics}",
 			"entries": [
-				"Physical obstacles can't hold back your fury. While you are {@action Rage||raging}, you gain a climb Speed and swim Speed equal to your land Speed and the DC of {@action High Jump||High Jumps} and {@action Long Jump||Long Jumps} decreases by 10. Your distance for a vertical Leap increases to 5 feet vertically, and your distance for a horizontal Leap increases to 15 feet if your Speed is at least 15 feet and to 20 feet if your Speed is at least 30 feet."
+				"Physical obstacles can't hold back your fury. While you are {@action Rage||raging}, you gain a climb Speed and swim Speed equal to your land Speed and the DC of {@action High Jump||High Jumps} and {@action Long Jump||Long Jumps} decreases by 10. Your distance for a vertical {@action Leap} increases to 5 feet vertically, and your distance for a horizontal Leap increases to 15 feet if your Speed is at least 15 feet and to 20 feet if your Speed is at least 30 feet."
 			]
 		},
 		{
@@ -10444,7 +10444,7 @@
 				"barbarian"
 			],
 			"entries": [
-				"Thrown weapons become especially deadly in your fury. You apply the additional damage from {@action Rage} to your thrown weapon attacks. If you have the {@feat Brutal Critical} feat or the devastator class feature, apply their benefits to thrown weapon attacks."
+				"Thrown weapons become especially deadly in your fury. You apply the additional damage from {@action Rage} to your thrown weapon attacks. If you have the {@feat Brutal Critical} feat or the {@classFeature devastator|Barbarian||19} class feature, apply their benefits to thrown weapon attacks."
 			]
 		},
 		{
@@ -11167,7 +11167,7 @@
 				"barbarian"
 			],
 			"entries": [
-				"You can enter a second rage, but afterward you need to catch your breath. You can {@action Rage} without waiting for 1 minute after the previous {@action Rage} (or 1 round, with quick rage), but when you end this second {@action Rage}, you're {@condition fatigued} until you rest for 10 minutes."
+				"You can enter a second rage, but afterward you need to catch your breath. You can {@action Rage} without waiting for 1 minute after the previous {@action Rage} (or 1 round, with {@classFeature quick rage|Barbarian||17}), but when you end this second {@action Rage}, you're {@condition fatigued} until you rest for 10 minutes."
 			]
 		},
 		{
@@ -11291,7 +11291,7 @@
 				"rage",
 				"visual"
 			],
-			"requirements": "You haven't used this ability since you last Raged.",
+			"requirements": "You haven't used this ability since you last {@action Rage||Raged}.",
 			"entries": [
 				"You stoke an ally's fury. While you are raging, one willing creature within 30 feet gains the effects of the {@action Rage} action, except it can still use {@trait concentrate} actions."
 			],
@@ -12917,7 +12917,7 @@
 			],
 			"prerequisites": "{@feat Intimidating Glare}",
 			"entries": [
-				"You unleash a terrifying howl. Attempt Intimidate checks to {@action Demoralize} each creature within 30 feet. Regardless of the results of your checks, each creature is then temporarily immune to Terrifying Howl for 1 minute."
+				"You unleash a terrifying howl. Attempt {@skill Intimidation||Intimidate} checks to {@action Demoralize} each enemy within 30 feet. Regardless of the results of your checks, each creature is then temporarily immune to Terrifying Howl for 1 minute."
 			]
 		},
 		{
