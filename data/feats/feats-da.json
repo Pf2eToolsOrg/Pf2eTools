@@ -3207,9 +3207,8 @@
 				"skill"
 			],
 			"prerequisites": "{@feat Alter Ego Dedication|DA}; trained in {@skill Athletics}, master in {@skill Deception}",
-			"trigger": "An enemy makes a successful {@action Disarm}, {@action Escape},",
+			"trigger": "An enemy makes a successful {@action Disarm}, {@action Escape}, {@action Grapple}, {@action Shove}, or {@action Trip} attempt.",
 			"entries": [
-				"{@action Grapple}, {@action Shove}, or {@action Trip} attempt.",
 				"Your study of another allows you to mirror their movements subtly, even in the heat of combat. You study the successful maneuver of an enemy and instinctively learn to do it. The next time you take the same action they did, you gain a +1 circumstance bonus to your {@skill Athletics} check, or a +2 circumstance bonus if the enemy critically succeeded on their triggering action. You lose this benefit if you don't use it before the end of your next turn."
 			]
 		},
@@ -3861,7 +3860,15 @@
 			],
 			"prerequisites": "{@action Exploit Vulnerability|DA}",
 			"entries": [
-				"You can find the one weak point in a creature's scales, wards, or armor to get past its resistances. When you succeed at {@action Exploit Vulnerability|DA}, you learn about the highest of the creature's resistances that can be bypassed (for example, if the creature has resistance to physical damage except silver), if the creature has one. If you prefer, you can choose the following benefit instead of one of the usual two benefits from {@action Exploit Vulnerability|DA} Breached Defenses You can choose this benefit only if you succeeded at {@action Exploit Vulnerability|DA} and learned the creature has at least one resistance that can be bypassed. Choose one such resistance. Your unarmed and weapon {@action Strike||Strikes} bypass the chosen resistance."
+				"You can find the one weak point in a creature's scales, wards, or armor to get past its resistances. When you succeed at {@action Exploit Vulnerability|DA}, you learn about the highest of the creature's resistances that can be bypassed (for example, if the creature has resistance to physical damage except silver), if the creature has one. If you prefer, you can choose the following benefit instead of one of the usual two benefits from {@action Exploit Vulnerability|DA}.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Breached Defenses",
+					"entries": [
+						"You can choose this benefit only if you succeeded at {@action Exploit Vulnerability|DA} and learned the creature has at least one resistance that can be bypassed. Choose one such resistance. Your unarmed and weapon {@action Strike||Strikes} bypass the chosen resistance."
+					]
+				}
 			]
 		},
 		{
