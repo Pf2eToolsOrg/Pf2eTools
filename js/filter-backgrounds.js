@@ -1,7 +1,7 @@
 "use strict";
 
 class PageFilterBackgrounds extends PageFilter {
-	constructor() {
+	constructor () {
 		super();
 
 		this._traitsFilter = new TraitsFilter({ header: "Traits" });
@@ -46,7 +46,7 @@ class PageFilterBackgrounds extends PageFilter {
 		});
 	}
 
-	mutateForFilters(bg) {
+	mutateForFilters (bg) {
 		bg._fSources = SourceFilter.getCompleteFilterSources(bg);
 		bg._fTraits = (bg.traits || []).map((t) => Parser.getTraitName(t));
 		bg._fSpells = (bg.spells || []).map((s) => s.split("|")[0]);
@@ -67,7 +67,7 @@ class PageFilterBackgrounds extends PageFilter {
 		});
 	}
 
-	addToFilters(bg, isExcluded) {
+	addToFilters (bg, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(bg._fSources);
@@ -80,7 +80,7 @@ class PageFilterBackgrounds extends PageFilter {
 		this._miscFilter.addItem(bg._fMisc);
 	}
 
-	async _pPopulateBoxOptions(opts) {
+	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
 			this._traitsFilter,
@@ -93,7 +93,7 @@ class PageFilterBackgrounds extends PageFilter {
 		];
 	}
 
-	toDisplay(values, bg) {
+	toDisplay (values, bg) {
 		return this._filterBox.toDisplay(
 			values,
 			bg._fSources,
@@ -103,7 +103,7 @@ class PageFilterBackgrounds extends PageFilter {
 			bg.lore,
 			bg.feats,
 			bg._fSpells,
-			bg._fMisc
+			bg._fMisc,
 		);
 	}
 }

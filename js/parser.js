@@ -28,7 +28,7 @@ Parser.numberToText = function (number, freq) {
 	if (typeof number === "string") return number;
 	if (Math.abs(number) >= 100) return `${number}`;
 
-	function getAsText(num) {
+	function getAsText (num) {
 		const abs = Math.abs(num);
 		switch (abs) {
 			case 0:
@@ -82,7 +82,7 @@ Parser.numberToText = function (number, freq) {
 			case 40:
 				return "forty";
 			case 50:
-				return '<span title="fiddy">fifty</span>'; // :^)
+				return "<span title=\"fiddy\">fifty</span>"; // :^)
 			case 60:
 				return "sixty";
 			case 70:
@@ -94,7 +94,7 @@ Parser.numberToText = function (number, freq) {
 			default: {
 				const str = String(abs);
 				return `${getAsText(Number(`${str[0]}0`))}-${getAsText(
-					Number(str[1])
+					Number(str[1]),
 				)}`;
 			}
 		}
@@ -231,28 +231,28 @@ Parser._buildSourceCache = function (dict) {
 Parser._sourceFullCache = null;
 Parser.hasSourceFull = function (source) {
 	Parser._sourceFullCache =
-		Parser._sourceFullCache ||
-		Parser._buildSourceCache(Parser.SOURCE_JSON_TO_FULL);
+		Parser._sourceFullCache
+		|| Parser._buildSourceCache(Parser.SOURCE_JSON_TO_FULL);
 	return !!Parser._sourceFullCache[source.toLowerCase()];
 };
 Parser._sourceAbvCache = null;
 Parser.hasSourceAbv = function (source) {
 	Parser._sourceAbvCache =
-		Parser._sourceAbvCache ||
-		Parser._buildSourceCache(Parser.SOURCE_JSON_TO_ABV);
+		Parser._sourceAbvCache
+		|| Parser._buildSourceCache(Parser.SOURCE_JSON_TO_ABV);
 	return !!Parser._sourceAbvCache[source.toLowerCase()];
 };
 Parser._sourceDateCache = null;
 Parser.hasSourceDate = function (source) {
 	Parser._sourceDateCache =
-		Parser._sourceDateCache ||
-		Parser._buildSourceCache(Parser.SOURCE_JSON_TO_DATE);
+		Parser._sourceDateCache
+		|| Parser._buildSourceCache(Parser.SOURCE_JSON_TO_DATE);
 	return !!Parser._sourceDateCache[source.toLowerCase()];
 };
 Parser.hasSourceStore = function (source) {
 	Parser._sourceStoreCache =
-		Parser._sourceStoreCache ||
-		Parser._buildSourceCache(Parser.SOURCE_JSON_TO_STORE);
+		Parser._sourceStoreCache
+		|| Parser._buildSourceCache(Parser.SOURCE_JSON_TO_STORE);
 	return !!Parser._sourceStoreCache[source.toLowerCase()];
 };
 Parser.sourceJsonToFull = function (source) {
@@ -260,7 +260,7 @@ Parser.sourceJsonToFull = function (source) {
 	if (Parser.hasSourceFull(source)) {
 		return Parser._sourceFullCache[source.toLowerCase()].replace(
 			/'/g,
-			"\u2019"
+			"\u2019",
 		);
 	}
 	if (BrewUtil.hasSourceJson(source)) {
@@ -268,7 +268,7 @@ Parser.sourceJsonToFull = function (source) {
 	}
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(
 		/'/g,
-		"\u2019"
+		"\u2019",
 	);
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
@@ -276,11 +276,11 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 	Object.keys(Parser.SOURCE_PREFIX_TO_SHORT).forEach((prefix) => {
 		compact = compact.replace(
 			prefix,
-			Parser.SOURCE_PREFIX_TO_SHORT[prefix] || prefix
+			Parser.SOURCE_PREFIX_TO_SHORT[prefix] || prefix,
 		);
 	});
 	Parser.COMPACT_PREFIX_MAP.forEach(
-		(it) => (compact = compact.replace(it.re, it.replaceWith))
+		(it) => (compact = compact.replace(it.re, it.replaceWith)),
 	);
 	return compact;
 };
@@ -313,7 +313,7 @@ Parser.sourceJsonToStore = function (source) {
 Parser.sourceJsonToColor = function (source) {
 	return `source${Parser._getSourceStringFromSource(source).replace(
 		/[&\\/\\#,+()$~%.'":*?<>{}]/g,
-		"_"
+		"_",
 	)}`;
 };
 
@@ -425,14 +425,14 @@ Parser.itemValueToFullMultiCurrency = function (item, isShortForm) {
 		item,
 		"value",
 		"valueMult",
-		isShortForm
+		isShortForm,
 	);
 };
 Parser._moneyToFull = function (it, prop, propMult, isShortForm) {
 	if (it[prop]) {
 		const { coin, mult } = Parser.getCurrencyAndMultiplier(
 			it[prop],
-			it.currencyConversion
+			it.currencyConversion,
 		);
 		return `${(it[prop] * mult).toLocaleString(undefined, {
 			maximumFractionDigits: 5,
@@ -450,11 +450,11 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 			},
 			{
 				currencyConversionId: it.currencyConversion,
-			}
+			},
 		);
 
 		const conversionTable = Parser.getCurrencyConversionTable(
-			it.currencyConversion
+			it.currencyConversion,
 		);
 
 		return [...conversionTable]
@@ -464,7 +464,7 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 				(meta) =>
 					`${simplified[meta.coin].toLocaleString(undefined, {
 						maximumFractionDigits: 5,
-					})} ${meta.coin}`
+					})} ${meta.coin}`,
 			)
 			.join(", ");
 	} else if (it[propMult]) {
@@ -509,10 +509,10 @@ Parser.FULL_CURRENCY_CONVERSION_TABLE = [
 Parser.getCurrencyConversionTable = function (currencyConversionId) {
 	const fromBrew = currencyConversionId
 		? MiscUtil.get(
-				BrewUtil.homebrewMeta,
-				"currencyConversions",
-				currencyConversionId
-		  )
+			BrewUtil.homebrewMeta,
+			"currencyConversions",
+			currencyConversionId,
+		)
 		: null;
 	const conversionTable =
 		fromBrew && fromBrew.length
@@ -683,7 +683,7 @@ Parser.getClassSideBar = function (sidebarEntries) {
 					{ type: "pf2-title", name: it.name },
 					...it.entries,
 				])
-				.flat()
+				.flat(),
 		),
 	};
 };
@@ -716,7 +716,7 @@ Parser.getClassSideBarEntries = function (cls) {
 		],
 	});
 
-	function initProfParser(thing, entry) {
+	function initProfParser (thing, entry) {
 		Object.keys(thing).forEach((k) => {
 			let thingArray = [];
 			let prof = "";
@@ -748,7 +748,7 @@ Parser.getClassSideBarEntries = function (cls) {
 				}
 				case "add":
 					return entry.push(
-						`{@indentSubsequent Trained in a number of additional skills equal to ${thing.add} plus your Intelligence modifier}`
+						`{@indentSubsequent Trained in a number of additional skills equal to ${thing.add} plus your Intelligence modifier}`,
 					);
 				default:
 			}
@@ -756,13 +756,13 @@ Parser.getClassSideBarEntries = function (cls) {
 				if (typeof element === "object") {
 					if (element.entry) {
 						return entry.push(
-							`{@indentSubsequent ${prof} in ${element.entry}}`
+							`{@indentSubsequent ${prof} in ${element.entry}}`,
 						);
 					} else if (element.type === "and") {
 						return entry.push(
 							`{@indentSubsequent ${prof} in ${element.skill
 								.map((s) => `{@skill ${s}}`)
-								.joinConjunct(", ", " and ")}}`
+								.joinConjunct(", ", " and ")}}`,
 						);
 					} else {
 						return entry.push(
@@ -772,12 +772,12 @@ Parser.getClassSideBarEntries = function (cls) {
 									: `your choice of`
 							} ${element.skill
 								.map((s) => `{@skill ${s}}`)
-								.joinConjunct(", ", " or ")}}`
+								.joinConjunct(", ", " or ")}}`,
 						);
 					}
 				} else {
 					return entry.push(
-						`{@indentSubsequent ${prof} in ${element}}`
+						`{@indentSubsequent ${prof} in ${element}}`,
 					);
 				}
 			});
@@ -811,7 +811,7 @@ Parser.spSchoolToStyle = function (school) {
 		school.toLowerCase(),
 		"_data",
 		"school",
-		"color"
+		"color",
 	);
 	if (!rawColor || !rawColor.trim()) return "";
 	const validColor = BrewUtil.getValidColor(rawColor);
@@ -824,7 +824,7 @@ Parser.spSchoolToAbv = function (school) {
 		school.toLowerCase(),
 		"_data",
 		"school",
-		"short"
+		"short",
 	);
 	if (!schoolAbv || !schoolAbv.trim()) return school;
 	return schoolAbv;
@@ -1236,8 +1236,8 @@ Parser.freqToFullEntry = function (freq) {
 		freq.interval >= 2
 			? `${freq.unit}s`
 			: freq.customUnit
-			? freq.customUnit
-			: freq.unit
+				? freq.customUnit
+				: freq.unit
 	}${freq.overcharge ? ", plus overcharge" : ""}`;
 };
 
@@ -1263,8 +1263,8 @@ Parser.durationToFull = function (duration) {
 	if (duration == null) return null;
 	if (duration.entry) return duration.entry;
 	if (
-		duration.sustained &&
-		(duration.unit == null || duration.unit === "unlimited")
+		duration.sustained
+		&& (duration.unit == null || duration.unit === "unlimited")
 	) {
 		return "sustained";
 	}
@@ -1337,7 +1337,7 @@ Parser.getNormalisedRange = function (range) {
 			const fromBrew = MiscUtil.get(
 				BrewUtil.homebrewMeta,
 				"spellDistanceUnits",
-				range.unit
+				range.unit,
 			);
 			if (fromBrew) {
 				const ftPerUnit = fromBrew.feetPerUnit;
@@ -2346,9 +2346,9 @@ Parser.SOURCES_ACCESSORIES = new Set(SRC_CFD, SRC_CHD, SRC_HPD);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(
 	Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(
 		(it) =>
-			!Parser.SOURCES_ADVENTURES.has(it) &&
-			!Parser.SOURCES_ACCESSORIES.has(it)
-	)
+			!Parser.SOURCES_ADVENTURES.has(it)
+			&& !Parser.SOURCES_ACCESSORIES.has(it),
+	),
 );
 
 Parser.getTagSource = function (tag, source) {
@@ -2417,9 +2417,9 @@ Parser.levelToDC = function (level, isSpell, traits) {
 	if (isNaN(level)) return "?";
 	let DC = 0;
 	if (
-		isSpell.toLowerCase() === "focus" ||
-		isSpell.toLowerCase() === "spell" ||
-		isSpell === true
+		isSpell.toLowerCase() === "focus"
+		|| isSpell.toLowerCase() === "spell"
+		|| isSpell === true
 	) {
 		level = level * 2 - 1;
 	}
@@ -2603,7 +2603,7 @@ Parser.parseSkills = function (array, opts) {
 // Naked: Scatter 10 ft.
 // Tag: {@trait Scatter||Scatter 10 ft.}
 /**
- 	@param {Object[]} array Array of traits
+	@param {Object[]} array Array of traits
 	@param {Object} opts Options object.
 	@param {string} opts.toTags Convert to tags.
 	@param {string} opts.toNaked Remove brackets {}.
