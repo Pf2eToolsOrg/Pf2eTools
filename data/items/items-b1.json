@@ -1,6 +1,61 @@
 {
 	"item": [
 		{
+			"name": "Black Smear Poison",
+			"source": "B1",
+			"page": 51,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"injury",
+				"poison"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 5
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 3,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Poison",
+			"entries": [
+				"Many {@trait caligni||calignis} use a debilitating poison crafted from subterranean fungi.",
+				{
+					"type": "affliction",
+					"DC": 16,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d6} poison and {@condition enfeebled 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "As stage 1"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 1d6} poison, and {@condition enfeebled 2}",
+							"duration": "1 round"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Demilich Eye Gem",
 			"source": "B1",
 			"page": 223,
