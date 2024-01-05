@@ -7,46 +7,46 @@ if (typeof module !== "undefined") {
 
 class PageFilterSpells extends PageFilter {
 	// region static
-	static sortSpells(a, b, o) {
+	static sortSpells (a, b, o) {
 		switch (o.sortBy) {
 			case "name":
 				return SortUtil.compareListNames(a, b);
 			case "source":
 				return (
-					SortUtil.ascSort(a.values.source, b.values.source) ||
-					SortUtil.compareListNames(a, b)
+					SortUtil.ascSort(a.values.source, b.values.source)
+					|| SortUtil.compareListNames(a, b)
 				);
 			case "level":
 				return (
-					SortUtil.ascSort(a.values.level, b.values.level) ||
-					SortUtil.compareListNames(a, b)
+					SortUtil.ascSort(a.values.level, b.values.level)
+					|| SortUtil.compareListNames(a, b)
 				);
 			case "type":
 				return (
-					SortUtil.ascSort(a.values.type, b.values.type) ||
-					SortUtil.compareListNames(a, b)
+					SortUtil.ascSort(a.values.type, b.values.type)
+					|| SortUtil.compareListNames(a, b)
 				);
 			case "school":
 				return (
-					SortUtil.ascSort(a.values.school, b.values.school) ||
-					SortUtil.compareListNames(a, b)
+					SortUtil.ascSort(a.values.school, b.values.school)
+					|| SortUtil.compareListNames(a, b)
 				);
 			case "time":
 				return (
 					SortUtil.ascSort(
 						a.values.normalisedTime,
-						b.values.normalisedTime
+						b.values.normalisedTime,
 					) || SortUtil.compareListNames(a, b)
 				);
 		}
 	}
 
-	static getFltrSpellLevelStr(level) {
+	static getFltrSpellLevelStr (level) {
 		return `${Parser.spLevelToFull(level)} level`;
 	}
 	// endregion
 
-	constructor() {
+	constructor () {
 		super();
 
 		this._sourceFilter = new SourceFilter();
@@ -151,7 +151,7 @@ class PageFilterSpells extends PageFilter {
 		});
 	}
 
-	mutateForFilters(spell) {
+	mutateForFilters (spell) {
 		// used for sorting
 		spell._normalisedTime = Parser.getNormalisedTime(spell.cast);
 		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
@@ -159,10 +159,10 @@ class PageFilterSpells extends PageFilter {
 			spell.traits.includes("cantrip") && spell.focus
 				? "FC"
 				: spell.traits.includes("cantrip")
-				? "C"
-				: spell.focus
-				? "F"
-				: "S";
+					? "C"
+					: spell.focus
+						? "F"
+						: "S";
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
@@ -171,31 +171,30 @@ class PageFilterSpells extends PageFilter {
 			.concat(
 				spell.traditions
 					? spell.traditions
-							.map((x) => x.toLowerCase())
-							.includes("primal" || "arcane")
+						.map((x) => x.toLowerCase())
+						.includes("primal" || "arcane")
 						? "Halcyon"
 						: []
-					: []
+					: [],
 			)
 			.map((t) => t.toTitleCase());
 		spell._fSpellType =
 			spell.traits.includes("cantrip") && spell.focus
 				? ["Focus", "Cantrip"]
 				: spell.traits.includes("cantrip")
-				? ["Cantrip"]
-				: spell.focus
-				? ["Focus"]
-				: ["Spell"];
+					? ["Cantrip"]
+					: spell.focus
+						? ["Focus"]
+						: ["Spell"];
 		spell._fTraits = spell.traits.map((t) => Parser.getTraitName(t));
 		if (
 			!spell._fTraits
 				.map((t) => Renderer.trait.isTraitInCategory(t, "Rarity"))
 				.some(Boolean)
-		)
-			spell._fTraits.push("Common");
+		) { spell._fTraits.push("Common"); }
 		spell._fClasses =
 			spell._fTraits.filter((t) =>
-				Renderer.trait.isTraitInCategory(t, "Class")
+				Renderer.trait.isTraitInCategory(t, "Class"),
 			) || [];
 		spell._fSubClasses = Object.entries(spell.subclass || {})
 			.map(([k, v]) => {
@@ -218,17 +217,18 @@ class PageFilterSpells extends PageFilter {
 		spell._areaTypes = spell.area ? spell.area.types : [];
 		spell._fRange = Parser.getFilterRange(spell);
 		if (spell.savingThrow) {
-			if (spell.savingThrow.type)
+			if (spell.savingThrow.type) {
 				spell._fSavingThrow = spell.savingThrow.type.map((t) =>
-					Parser.savingThrowAbvToFull(t)
+					Parser.savingThrowAbvToFull(t),
 				);
+			}
 			if (spell.savingThrow.basic) spell._fSavingThrow.push("Basic");
 		}
 		// TODO: Figure out how to make various configurations of components work in filters
 		// Example: [V], [V and S], [V and S and M]
 		// Right now we'll just live with this.
 		spell._fComponents = [...new Set((spell.components || []).flat())].map(
-			(x) => Parser.COMPONENTS_TO_FULL[x].toTitleCase()
+			(x) => Parser.COMPONENTS_TO_FULL[x].toTitleCase(),
 		);
 		if (spell.cost != null) spell._fComponents.push("Cost");
 		spell._fMisc = [];
@@ -236,10 +236,8 @@ class PageFilterSpells extends PageFilter {
 		if (spell.trigger) spell._fMisc.push("Has Trigger");
 		if (spell.targets) spell._fMisc.push("Has Targets");
 		if (spell.heightened) spell._fMisc.push("Can be Heightened");
-		if (spell.duration && spell.duration.sustain)
-			spell._fMisc.push("Sustained");
-		if (spell.duration && spell.duration.dismiss)
-			spell._fMisc.push("Can be Dismissed");
+		if (spell.duration && spell.duration.sustain) { spell._fMisc.push("Sustained"); }
+		if (spell.duration && spell.duration.dismiss) { spell._fMisc.push("Can be Dismissed"); }
 		if (spell.summoning) spell._fMisc.push("Summoning");
 		if (spell.miscTags) {
 			spell.miscTags.forEach((element) => {
@@ -258,21 +256,20 @@ class PageFilterSpells extends PageFilter {
 		}
 		// "Possible Elementalist Spell" shenanigans, could be optimised?
 		if (
-			!spell._fTraditions.includes("Elemental") &&
-			(spell.traits.some((trait) =>
-				trait.includes("Fire" || "Water" || "Earth" || "Air")
-			) ||
-				(spell._fTraditions.includes("Arcane") &&
-					spell._fTraditions.includes("Occult") &&
-					spell._fTraditions.includes("Primal") &&
-					spell._fTraditions.includes("Divine")))
-		)
-			spell._fMisc.push("Possible Elementalist Spells");
+			!spell._fTraditions.includes("Elemental")
+			&& (spell.traits.some((trait) =>
+				trait.includes("Fire" || "Water" || "Earth" || "Air"),
+			)
+				|| (spell._fTraditions.includes("Arcane")
+					&& spell._fTraditions.includes("Occult")
+					&& spell._fTraditions.includes("Primal")
+					&& spell._fTraditions.includes("Divine")))
+		) { spell._fMisc.push("Possible Elementalist Spells"); }
 		// Remaster hack
 		if (spell.remaster) spell._fMisc.push("Remaster");
 	}
 
-	addToFilters(spell, isExcluded) {
+	addToFilters (spell, isExcluded) {
 		if (isExcluded) return;
 
 		if (spell.level > 10) this._levelFilter.addItem(spell.level);
@@ -294,7 +291,7 @@ class PageFilterSpells extends PageFilter {
 		this._miscFilter.addItem(spell._fMisc);
 	}
 
-	async _pPopulateBoxOptions(opts) {
+	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
 			this._spellTypeFilter,
@@ -313,7 +310,7 @@ class PageFilterSpells extends PageFilter {
 		];
 	}
 
-	toDisplay(values, s) {
+	toDisplay (values, s) {
 		return this._filterBox.toDisplay(
 			values,
 			s._fSources,
@@ -329,7 +326,7 @@ class PageFilterSpells extends PageFilter {
 			s._fSavingThrow,
 			[s.domains, s._fClasses, s._fSubClasses],
 			s._fTraits,
-			s._fMisc
+			s._fMisc,
 		);
 	}
 }
