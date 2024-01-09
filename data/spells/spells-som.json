@@ -1509,6 +1509,11 @@
 			"name": "Combustion",
 			"source": "SoM",
 			"page": 200,
+			"otherSources": {
+				"Expanded": [
+					"RoE|62"
+				]
+			},
 			"focus": true,
 			"level": 3,
 			"traits": [
@@ -1822,6 +1827,11 @@
 			"name": "Crushing Ground",
 			"source": "SoM",
 			"page": 200,
+			"otherSources": {
+				"Expanded": [
+					"RoE|62"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2403,10 +2413,16 @@
 			"name": "Draw The Lightning",
 			"source": "SoM",
 			"page": 101,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"electricity",
-				"evocation"
+				"evocation",
+				"metal"
 			],
 			"traditions": [
 				"arcane",
@@ -2646,6 +2662,11 @@
 			"name": "Elemental Absorption",
 			"source": "SoM",
 			"page": 102,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"abjuration"
@@ -2672,7 +2693,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"You absorb elemental energy, which you can release as a powerful counterattack. Choose air, earth, fire, or water. You gain resistance 5 to damage dealt by effects with the chosen {@trait elemental} trait; if you choose water, you also gain resistance to cold damage. As usual, if a spell has a multiple effects, such as a spell that deals both fire damage and bludgeoning damage with superheated rocks, you gain resistance to only the effects associated with the element you chose. Keep track of how much damage you have prevented with this spell.",
+				"You absorb elemental energy, which you can release as a powerful counterattack. Choose air, earth, fire, metal, water or wood. You gain resistance 5 to damage dealt by effects with the chosen {@trait elemental} trait; if you choose water, you also gain resistance to cold damage. If you choose metal, you gain resistance to {@trait electricty} and slashing damage, if you choose wood, you gain resistance to bludgeoning or {@trait vitality} damage. As usual, if a spell has a multiple effects, such as a spell that deals both fire damage and bludgeoning damage with superheated rocks, you gain resistance to only the effects associated with the element you chose. Keep track of how much damage you have prevented with this spell.",
 				"As a 2-action activity, which has the {@trait concentrate} trait and the trait matching the element you chose, you can release the stored energy. This deals damage equal to the amount you've stored (maximum 30 damage) to one enemy within 60 feet, with a basic Reflex save. The damage type depends on the element you chose: fire damage for fire; bludgeoning or cold damage for water; bludgeoning or slashing damage for air; or bludgeoning, piercing, or slashing damage for earth. After releasing the energy, the spell ends. If you do not use the stored energy before the spell ends, the energy is lost."
 			],
 			"heightened": {
@@ -2687,13 +2708,20 @@
 			"name": "Elemental Annihilation Wave",
 			"source": "SoM",
 			"page": 102,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"air",
 				"earth",
 				"evocation",
 				"fire",
-				"water"
+				"metal",
+				"water",
+				"wood"
 			],
 			"traditions": [
 				"arcane",
@@ -2748,13 +2776,20 @@
 			"name": "Elemental Confluence",
 			"source": "SoM",
 			"page": 102,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"air",
 				"conjuration",
 				"earth",
 				"fire",
-				"water"
+				"metal",
+				"water",
+				"wood"
 			],
 			"traditions": [
 				"arcane",
@@ -2797,8 +2832,10 @@
 						"{@bold Air} ({@trait air}, {@trait electricity}) The elemental looses a bolt of electricity from the confluence, dealing {@damage 4d4} electricity damage to creatures within 20 feet of the confluence, with a basic Reflex save. This doesn't affect creatures that are completely inside of the confluence.",
 						"{@bold Earth} ({@trait earth}) The confluence gains a +2 circumstance bonus to AC and resistance 10 to all physical damage (except adamantine) for 1 round.",
 						"{@bold Fire} ({@trait fire}) Flames roar through the confluence, dealing {@damage 1d6} {@condition persistent damage||persistent fire damage} to those partially or entirely inside the confluence.",
+						"{@bold Metal} ({@trait metal}) The elemental flings shards of metal through the confluence, dealing {@damage 2d6} slashing damage to those partially or entirely inside the confluence with a basic Reflex save. A creature that critically fails also takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}.",
 						"{@bold Water} ({@trait attack}, {@trait water}) The elemental expels a powerful jet of water. Attempt a ranged spell attack against a target within 60 feet of the confluence, using your spell attack roll modifier. This attack ignores concealment granted by the confluence, and the elemental gets a +2 circumstance bonus on the spell attack roll against a target inside the confluence.",
-						"The water deals {@damage 4d6} bludgeoning damage on a hit (doubled on a critical hit). This attack doesn't count toward your multiple attack penalty."
+						"The water deals {@damage 4d6} bludgeoning damage on a hit (doubled on a critical hit). This attack doesn't count toward your multiple attack penalty.",
+						"{@bold Wood} ({@trait wood}) Roots and stumps grow, making ground in the area diffcult terrain."
 					]
 				}
 			]
@@ -2807,6 +2844,11 @@
 			"name": "Elemental Gift",
 			"source": "SoM",
 			"page": 103,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"transmutation"
@@ -2845,7 +2887,9 @@
 						"{@bold Air} The target gains a +30-foot status bonus to its land Speed and gains a fly Speed equal to its land Speed without the status bonus.",
 						"{@bold Earth} While on the ground, the target gets a +2 status bonus to Fortitude and Reflex saves against effects that would {@action Shove} or {@action Trip} it, and to saves against effects that would attempt to knock it {@condition prone}. In addition, the ground adjacent to the target is {@quickref difficult terrain||3|terrain}, and the {@quickref difficult terrain||3|terrain} moves with the target, though the target ignores this {@quickref difficult terrain||3|terrain} with its own movement.",
 						"{@bold Fire} The target's melee unarmed {@action Strike||Strikes} and melee weapon {@action Strike||Strikes} deal {@damage 1d6} {@condition persistent damage||persistent fire damage} on a hit.",
-						"{@bold Water} The target takes on a watery sheen, gaining resistance 5 to fire and a swim Speed equal to its land Speed."
+						"{@bold Metal} The target's Strikes using a metal weapon or an {@trait unarmed} attack deal an additional {@damage 1d4} {@trait electricity} damage on a hit and get a +1 status bonus to the attack roll if the target is made of metal or wearing metal armor.",
+						"{@bold Water} The target takes on a watery sheen, gaining resistance 5 to fire and a swim Speed equal to its land Speed.",
+						"{@bold Wood} The target gains a number of temporary Hit Points equal to the spell's rank, then gains half that number of temporary HP at the start of each of its turns."
 					]
 				}
 			],
@@ -2861,6 +2905,11 @@
 			"name": "Elemental Zone",
 			"source": "SoM",
 			"page": 104,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 2,
 			"traits": [
 				"evocation"
@@ -2897,7 +2946,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"Select an elemental trait: {@trait air}, {@trait earth}, {@trait fire}, or {@trait water}. Elemental zone gains the trait you chose. You imbue the area with the raw energy of that element, creating a zone that emits and amplifies magic of that type. The temperature might suddenly rise or fall, a storm cloud might form, and so on. Spells with the chosen elemental trait cast against creatures in the zone get a +2 status bonus to one damage type the spell deals based on the chosen trait: bludgeoning or electricity for {@trait air}, bludgeoning for {@trait earth}, fire for {@trait fire}, and bludgeoning or cold for {@trait water}. The caster chooses one type to add the bonus to if the spell deals more than one eligible type. This bonus is halved if the spell didn't use a spell slot (such as a cantrip, focus spell, or innate spell).",
+				"Select an elemental trait: {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water} or {@trait wood}. Elemental zone gains the trait you chose. You imbue the area with the raw energy of that element, creating a zone that emits and amplifies magic of that type. The temperature might suddenly rise or fall, a storm cloud might form, and so on. Spells with the chosen elemental trait cast against creatures in the zone get a +2 status bonus to one damage type the spell deals based on the chosen trait: bludgeoning or electricity for {@trait air}, bludgeoning for {@trait earth}, fire for {@trait fire}, electricty or slashing for {@trait metal},  bludgeoning or cold for {@trait water} and bludgeoning or vitality for {@trait wood}. The caster chooses one type to add the bonus to if the spell deals more than one eligible type. This bonus is halved if the spell didn't use a spell slot (such as a cantrip, focus spell, or innate spell).",
 				"The zone has no effect on the spell if the spell doesn't deal any damage of an eligible type."
 			],
 			"heightened": {
@@ -4513,11 +4562,17 @@
 			"name": "Instant Armor",
 			"source": "SoM",
 			"page": 112,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 2,
 			"traits": [
 				"conjuration",
 				"contingency",
-				"extradimensional"
+				"extradimensional",
+				"metal"
 			],
 			"traditions": [
 				"arcane",
@@ -4954,10 +5009,16 @@
 			"name": "Magnetic Acceleration",
 			"source": "SoM",
 			"page": 114,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"attack",
-				"evocation"
+				"evocation",
+				"metal"
 			],
 			"traditions": [
 				"arcane",
@@ -4993,9 +5054,15 @@
 			"name": "Magnetic Attraction",
 			"source": "SoM",
 			"page": 114,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 2,
 			"traits": [
-				"evocation"
+				"evocation",
+				"metal"
 			],
 			"traditions": [
 				"arcane",
@@ -5026,9 +5093,15 @@
 			"name": "Magnetic Repulsion",
 			"source": "SoM",
 			"page": 115,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 2,
 			"traits": [
-				"abjuration"
+				"abjuration",
+				"metal"
 			],
 			"traditions": [
 				"arcane",
@@ -5369,11 +5442,17 @@
 			"name": "Murderous Vine",
 			"source": "SoM",
 			"page": 117,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"attack",
 				"conjuration",
-				"plant"
+				"plant",
+				"wood"
 			],
 			"traditions": [
 				"primal"
@@ -5416,11 +5495,17 @@
 			"name": "Nature's Reprisal",
 			"source": "SoM",
 			"page": 117,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 6,
 			"traits": [
 				"plant",
 				"poison",
-				"transmutation"
+				"transmutation",
+				"wood"
 			],
 			"traditions": [
 				"primal"
@@ -6071,11 +6156,17 @@
 			"name": "Petal Storm",
 			"source": "SoM",
 			"page": 121,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 4,
 			"traits": [
 				"air",
 				"conjuration",
-				"plant"
+				"plant",
+				"wood"
 			],
 			"traditions": [
 				"primal"
@@ -6362,6 +6453,11 @@
 			"name": "Powerful Inhalation",
 			"source": "SoM",
 			"page": 201,
+			"otherSources": {
+				"Expanded": [
+					"RoE|61"
+				]
+			},
 			"focus": true,
 			"level": 3,
 			"traits": [
@@ -6537,10 +6633,16 @@
 			"name": "Protector Tree",
 			"source": "SoM",
 			"page": 123,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"conjuration",
-				"plant"
+				"plant",
+				"wood"
 			],
 			"traditions": [
 				"primal"
@@ -6635,6 +6737,11 @@
 			"name": "Pulverizing Cascade",
 			"source": "SoM",
 			"page": 201,
+			"otherSources": {
+				"Expanded": [
+					"RoE|62"
+				]
+			},
 			"focus": true,
 			"level": 3,
 			"traits": [
@@ -7130,6 +7237,11 @@
 			"name": "Rising Surf",
 			"source": "SoM",
 			"page": 201,
+			"otherSources": {
+				"Expanded": [
+					"RoE|62"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -7878,10 +7990,16 @@
 			"name": "Soothing Blossoms",
 			"source": "SoM",
 			"page": 129,
+			"otherSources": {
+				"Expanded": [
+					"RoE|55"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"conjuration",
-				"plant"
+				"plant",
+				"wood"
 			],
 			"traditions": [
 				"divine",
@@ -8089,6 +8207,11 @@
 			"name": "Stone Lance",
 			"source": "SoM",
 			"page": 201,
+			"otherSources": {
+				"Expanded": [
+					"RoE|62"
+				]
+			},
 			"focus": true,
 			"level": 3,
 			"traits": [
@@ -9263,6 +9386,11 @@
 			"name": "Updraft",
 			"source": "SoM",
 			"page": 201,
+			"otherSources": {
+				"Expanded": [
+					"RoE|61"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -9691,6 +9819,11 @@
 			"name": "Wildfire",
 			"source": "SoM",
 			"page": 201,
+			"otherSources": {
+				"Expanded": [
+					"RoE|62"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [

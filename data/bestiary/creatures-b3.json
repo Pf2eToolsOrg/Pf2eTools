@@ -11933,7 +11933,22 @@
 				],
 				"weaknesses": [
 					{
+						"amount": 3,
 						"name": "area damage"
+					},
+					{
+						"amount": 3,
+						"name": "splash damage"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "piercing"
+					},
+					{
+						"amount": 5,
+						"name": "slashing"
 					}
 				]
 			},
@@ -24227,7 +24242,7 @@
 						"entries": [
 							"The hatred siktempora tightens their garrote, dealing {@damage 5d10} bludgeoning damage to each creature they're Grabbing. Each creature {@condition grabbed} by the siktempora must attempt a {@dc 40} Fortitude save.",
 							{
-								"type": "suceessDegree",
+								"type": "successDegree",
 								"entries": {
 									"Critical Success": "The creature takes no damage.",
 									"Success": "The creature takes half damage.",

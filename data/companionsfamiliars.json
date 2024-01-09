@@ -1,6 +1,336 @@
 {
 	"companion": [
 		{
+			"name": "Air Elemental",
+			"source": "RoE",
+			"page": 40,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"air"
+			],
+			"fluff": [],
+			"access": "You are a member of the {@class druid||storm order|storm}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "gust",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 1,
+				"dex": 2,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 1
+			},
+			"hp": 4,
+			"skill": "stealth",
+			"speed": {
+				"fly": 50
+			},
+			"support": "Your air elemental swirls around you with concealing gusts, making it harder for your foes to hit you and possibly giving you a moment to hide. Until the start of your next turn, if you hit with a Strike and deal damage to a creature in your air elemental's reach, you are {@condition concealed} to that creature until the start of your next turn.",
+			"maneuver": {
+				"name": "Circling Flyby",
+				"source": "RoE",
+				"page": 40,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your air elemental flies in a circle, blowing gusts at your foes before returning back to its starting position. The air elemental Flies up to half its Speed, makes two gust Strikes, then Flies up to half its Speed again to return to its original location. Both attacks count toward the air elemental's multiple attack penalty, but the penalty doesn't increase until after it makes both attacks."
+				]
+			}
+		},
+		{
+			"name": "Earth Elemental",
+			"source": "RoE",
+			"page": 40,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"earth"
+			],
+			"fluff": [],
+			"access": "You are a member of the {@class druid||stone order|stone|SoM}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 0,
+				"con": 3,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 10,
+			"skill": "survival",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 10
+			},
+			"support": "Your earth elemental cracks the earth beneath your foe's feet, making it difficult for the foe to move. Until the start of your next turn, if you hit with a Strike and deal damage to a creature in your earth elemental's reach, the first square the creature moves into after taking that damage is {@quickref difficult terrain||3|terrain}.",
+			"maneuver": {
+				"name": "Polling Knockdown",
+				"source": "RoE",
+				"page": 40,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your earth elemental rolls along the ground like a bowling ball and knocks a foe over. It Strides up to 10 feet then makes a fist Strike. If it hits, the target is also knocked {@condition prone}."
+				]
+			}
+		},
+		{
+			"name": "Fire Elemental",
+			"source": "RoE",
+			"page": 40,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"fire"
+			],
+			"fluff": [],
+			"access": "You are a member of the {@class druid||flame order|flame|SoM}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tendril",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d6} fire"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 2,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 4,
+			"skill": "intimidation",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"special": "{@i Immunities} {@trait fire}, {@i Weaknesses} {@trait cold} and {@trait water} (equal to the fire elemental's level)",
+			"support": "Your fire elemental burns your foes and sets them on fire. Until the start of your next turn, your Strikes that damage a creature in your fire elemental's reach also deal {@damage 1d6} {@condition persistent damage||persistent fire damage}. If your fire elemental is nimble or savage, the {@condition persistent damage||persistent fire damage} increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Flamethrower",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The fire elemental makes a tendril {@action Strike} against all creatures in a 60-foot line, even those that aren't in the tendril Strike's reach. All these {@action Strike||Strikes} count toward the fire elemental's multiple attack penalty, but it doesn't increase until all the Strikes."
+				]
+			}
+		},
+		{
+			"name": "Metal Elemental",
+			"source": "RoE",
+			"page": 41,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"metal"
+			],
+			"fluff": [],
+			"access": "Metal elementals don't have any special access because druids don't have an order dedicated to the elemental magic of metal.",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spike",
+					"damage": "{@damage 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "intimidation",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"support": "Your metal elemental pierces an enemy with metal spikes that cause it to bleed. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your metal elemental's reach also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. If your metal elemental is nimble or savage, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Spiked Bunker",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"Your metal elemental surrounds itself with protective metal spikes, hunkering down defensively. It gains a +2 circumstance bonus to AC. Any creature that hits the metal elemental with a melee {@trait unarmed} attack while it's in its Spiked Bunker takes {@damage 2d6} piercing damage (or {@damage 3d6} piercing damage if your metal elemental has a specialization). The metal elemental can't move, Strike, or take other actions that require it to use its body while in its Spiked Bunker, but it can retract the bunker as a single action, ending the effects."
+				]
+			}
+		},
+		{
+			"name": "Water Elemental",
+			"source": "RoE",
+			"page": 41,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"water"
+			],
+			"fluff": [
+				"Your companion is a water elemental, such asa brine shark."
+			],
+			"access": "You are a member of the {@class druid||wave order|wave|SoM}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "wave",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 2,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "survival",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 15,
+				"swim": 35
+			},
+			"special": "{@i Resistances} {@trait fire} (equal to the water elemental's level)",
+			"support": "Your water elemental waterlogs a foe. The first time before the start of your next turn you hit with a {@action Strike} that deals damage to a creature within your water elemental's reach, that creature becomes {@trait clumsy} 1 until the end of your next turn.",
+			"maneuver": {
+				"name": "Drench",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"Your water elemental drenches nearby fires to extinguish them. Your elemental puts out all fires in a 5-foot emanation. It extinguishes all non-magical fires automatically and attempts to counteract magical fires (its counteract modifier is equal to its attack modifier with its wave Strike, unmodified by any bonuses or effects that apply to attack rolls)."
+				]
+			}
+		},
+		{
+			"name": "Wood Elemental",
+			"source": "RoE",
+			"page": 41,
+			"type": "Companion",
+			"traits": [
+				"uncommon",
+				"plant",
+				"wood"
+			],
+			"fluff": [
+				"Your companion is a wood elemental, such as a moss sloth."
+			],
+			"access": "You are a member of the {@class druid||leaf order|leaf}",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "survival",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"support": "Your wood elemental entangles your foes with detachable branches and roots. Until the start of your next turn, if you hit with a {@action Strike} that deals damage to a creature in your wood elemental's reach, the creature takes a \u20135-foot circumstance penalty to its Speeds for 1 minute (\u201310 on a critical success). The creature, or a creature adjacent to it, can use an {@action Interact} action to unravel the branches and roots and remove the penalty.",
+			"maneuver": {
+				"name": "Grabbing Branches",
+				"source": "RoE",
+				"page": 41,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your wood elemental surrounds a foe with branches, grabbing it in place. Your wood elemental makes a branch {@action Strike}; on a success, the target is also grabbed by the wood elemental until the end of your next turn unless your wood elemental moves or the target {@action Escape||Escapes}."
+				]
+			}
+		},
+		{
 			"name": "Water Wraith",
 			"source": "LOIL",
 			"page": 107,
@@ -42,6 +372,9 @@
 				"swim": 25
 			},
 			"support": "Your water wraith hisses and changes colors swiftly in an iridescent clash, overwhelming your foes in an avalanche of shades and hues. Until the start of your next turn, each time you hit a creature within your water wraith's reach, the creature is {@condition dazzled} for 1 round.",
+			"traits": [
+				"uncommon"
+			],
 			"maneuver": {
 				"name": "Gulp Blood",
 				"source": "LOIL",
@@ -1905,6 +2238,203 @@
 	],
 	"familiar": [
 		{
+			"name": "Mood Cloud",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"traits": [
+				"air",
+				"elemental"
+			],
+			"fluff": [
+				"This air elemental is little more than a tiny cloud with just enough internality to have emotions. Elemental scholars believe mood clouds to be related to {@creature despairing palls|RoE}, though far less evolved."
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility elemental|RoE|elemental (air only)}",
+				"{@familiarAbility flier}"
+			],
+			"abilities": [
+				{
+					"name": "Emote",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"The cloud of sentiment changes the expression on its miniature face. It prepares to {@action Aid} you on a skill check for a skill matching its expression: {@skill Deception} for an inscrutable expression, {@skill Diplomacy} for a friendly expression, or {@skill Intimidation} for an angry expression. It gains a reaction this round, which it can use only to {@action Aid} you in this way. It automatically succeeds at its check to {@action Aid} you with the skill or automatically critically succeeds if you're a master of the skill in question."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crysmal Shardling",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"traits": [
+				"earth",
+				"elemental"
+			],
+			"fluff": [
+				"A crysmal shardling is a younger, smaller version of {@creature crysmal|RoE}. When acting as a familiar, a shardling's hunger for crystals is sated by magic, turning an urgent need into a mere interest."
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility burrower}",
+				"{@familiarAbility elemental|RoE|elemental (earth only)}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Crystal Scent",
+					"entries": [
+						"A crysmal can sense crystals or gems within 60 feet as if using the {@familiarAbility scent} ability."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Wisp",
+			"source": "RoE",
+			"page": 43,
+			"type": "Familiar",
+			"traits": [
+				"elemental"
+			],
+			"fluff": [
+				"Wisps are tiny elementals that often act as familiars. They each usually have different personalities: {@trait air} wisps are playful and capricious, {@trait earth} wisps are timid but loyal, {@trait fire} wisps are carefree and boisterous, {@trait metal} wisps are serious and morose, {@trait water} wisps are gentle and nurturing, and {@trait wood} wisps are fierce and controlling."
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility accompanist}",
+				"{@familiarAbility elemental|RoE}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Elemental Mobility",
+					"entries": [
+						"Your wisp gains a familiar ability depending on its element. {@trait Air} wisps gain {@familiarAbility flier}, {@trait earth} wisps gain {@familiarAbility burrower}, {@trait fire} wisps gain {@familiarAbility jet|RoE}, {@trait metal} wisps gain {@familiarAbility levitator|RoE}, {@trait water} wisps gain {@familiarAbility amphibious}, and {@trait wood} wisps gain {@familiarAbility climber}."
+					]
+				},
+				{
+					"name": "Innate Element",
+					"entries": [
+						"An elemental wisp's element is set. You choose the element when you gain the specific familiar and can't change it each day."
+					]
+				},
+				{
+					"name": "Resonance",
+					"entries": [
+						"(aura) 30 feet. Your wisp vibrates at a frequency attuned to their element, resonating with and empowering all effects sharing that trait. Creatures in the area gain a +1 status bonus to damage rolls for alchemical and magical effects with the same elemental trait as your wisp. If your wisp is a {@trait wood} wisp, the status bonus also applies to damage rolls for effects with the {@trait plant} trait"
+					]
+				}
+			]
+		},
+		{
+			"name": "Gennayn",
+			"source": "RoE",
+			"page": 43,
+			"type": "Familiar",
+			"traits": [
+				"elemental"
+			],
+			"fluff": [
+				"Minor genies, gennayn are elementally adaptable and personable. They look like miniature humanoids with elemental energy surrounding them, and frequently carry messages or announce the arrival of their allies."
+			],
+			"requires": 5,
+			"granted": [
+				"{@familiarAbility elemental|RoE}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Elemental Mobility",
+					"entries": [
+						"Your wisp gains a familiar ability depending on its element. {@trait Air} wisps gain {@familiarAbility flier}, {@trait earth} wisps gain {@familiarAbility burrower}, {@trait fire} wisps gain {@familiarAbility jet|RoE}, {@trait metal} wisps gain {@familiarAbility levitator|RoE}, {@trait water} wisps gain {@familiarAbility amphibious}, and {@trait wood} wisps gain {@familiarAbility climber}."
+					]
+				},
+				{
+					"name": "Little Wish",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"fortune"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "A creature the gennayn can see that is within 60 feet attempts a saving throw or skill check",
+					"entries": [
+						"The gennayn reshapes reality in a small way to twist fate, allowing the creature to reroll the saving throw or skill check."
+					]
+				},
+				{
+					"name": "Elemental Diplomat",
+					"entries": [
+						"A gennayn's modifier for {@skill Diplomacy} is equal to your level plus your key spellcasting attribute modifier, rather than just your level. The gennayn gets a +1 circumstance bonus to {@skill Diplomacy} checks against elementals and grants you the same bonus if you're in the same space."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Scamp",
+			"source": "RoE",
+			"page": 43,
+			"type": "Familiar",
+			"traits": [
+				"elemental"
+			],
+			"fluff": [
+				"The elementals called scamps look humanoid in appearance, except for the elemental matter in their bodies and their batlike wings. An elemental scamp familiar is a bit smaller than other scamps but makes up for it by being more mischievous. Driven by ego, scamps often take on long names with many titles and insist on being addressed in full."
+			],
+			"requires": 5,
+			"granted": [
+				"{@familiarAbility elemental|RoE}",
+				"{@familiarAbility flier}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Elemental Mobility",
+					"entries": [
+						"Your wisp gains a familiar ability depending on its element. {@trait Air} wisps gain {@familiarAbility flier}, {@trait earth} wisps gain {@familiarAbility burrower}, {@trait fire} wisps gain {@familiarAbility jet|RoE}, {@trait metal} wisps gain {@familiarAbility levitator|RoE}, {@trait water} wisps gain {@familiarAbility amphibious}, and {@trait wood} wisps gain {@familiarAbility climber}."
+					]
+				},
+				{
+					"name": "Elemental Breath",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"The scamp breathes elemental matter in a 10-foot cone. Each creature in the area takes {@dice 1d6} damage for every 2 levels you have, with a basic Reflex save against your class DC or spell DC, whichever is higher. The damage type depends on the type of scamp."
+					]
+				},
+				{
+					"name": "Scamp Elements",
+					"entries": [
+						"An elemental scamp's element or elements are set. You choose a type of scamp and can't change the element each day. This determines the scamp's elemental traits and the damage type of their Elemental Breath. {@b Air} ({@trait air}) slashing damage; {@b earth} ({@trait earth}) bludgeoning damage; {@b fire} ({@trait fire}) {@b fire} damage; {@b metal} ({@trait metal}) slashing damage; {@b water} ({@trait water}) acid damage; {@b wood} ({@trait plant}, {@trait wood}) poison damage."
+					]
+				}
+			]
+		},
+		{
 			"name": "Ceru",
 			"source": "LOIL",
 			"page": 220,
@@ -2673,6 +3203,24 @@
 	],
 	"familiarAbility": [
 		{
+			"name": "Elemental",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@trait bleed}, {@trait paralyzed}, {@trait poison}, {@trait sleep}, and the element matching its trait. Your familiar must have the resistance familiar ability to select this, unless it's a specific familiar. You can't select this ability if your familiar has a trait other than {@trait animal} (such as a leshy familiar or an undead familiar)."
+			]
+		},
+		{
+			"name": "Levitator",
+			"source": "RoE",
+			"page": 42,
+			"type": "Familiar",
+			"entries": [
+				"Using magnetism, magic, or other forces, your familiar can float up to 3 feet above solid and liquid surfaces while moving at a Speed of 25 feet. This allows it to ignore difficult terrain and damaging effects related to coming into direct contact with the surface. It typically allows the familiar to also avoid triggering the reactions of hazards that require you to step on them or an attached pressure plate."
+			]
+		},
+		{
 			"name": "Alchemical Gut",
 			"source": "TV",
 			"page": 41,
@@ -3142,6 +3690,696 @@
 		}
 	],
 	"eidolon": [
+		{
+			"name": "Elemental Eidolon (air)",
+			"type": "Eidolon",
+			"source": "RoE",
+			"page": 38,
+			"fluff": [
+				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
+				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
+			],
+			"tradition": "primal",
+			"traits": [
+				"eidolon",
+				"elemental",
+				"air"
+			],
+			"home": "Plane of Air",
+			"size": [
+				"medium"
+			],
+			"suggestedAttacks": [
+				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+			],
+			"stats": [
+				{
+					"name": "Adaptable Elemental",
+					"abilityScores": {
+						"str": 12,
+						"dex": 18,
+						"con": 16,
+						"int": 10,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				},
+				{
+					"name": "Primordial Elemental",
+					"abilityScores": {
+						"str": 18,
+						"dex": 14,
+						"con": 16,
+						"int": 8,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				}
+			],
+			"skills": [
+				"Nature",
+				"Survival"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"{@language Sussuran} (air elemental)"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Elemental Core",
+					"type": "initial",
+					"entries": [
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Air}: Your eidolon is formed from elemental air and is light as a breeze. Your eidolon can {@action Leap}, {@action High Jump}, and {@action Long Jump} twice as far, and doesn't take falling damage."
+					]
+				},
+				{
+					"name": "Elemental Burst",
+					"type": "symbiosis",
+					"traits": [
+						"concentrate",
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
+							]
+						}
+					]
+				},
+				{
+					"name": "Elemental Maelstrom",
+					"type": "transcendence",
+					"traits": [
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Eidolon (earth)",
+			"type": "Eidolon",
+			"source": "RoE",
+			"page": 38,
+			"fluff": [
+				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
+				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
+			],
+			"tradition": "primal",
+			"traits": [
+				"eidolon",
+				"elemental",
+				"earth"
+			],
+			"home": "Plane of Earth",
+			"size": [
+				"medium"
+			],
+			"suggestedAttacks": [
+				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+			],
+			"stats": [
+				{
+					"name": "Adaptable Elemental",
+					"abilityScores": {
+						"str": 12,
+						"dex": 18,
+						"con": 16,
+						"int": 10,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				},
+				{
+					"name": "Primordial Elemental",
+					"abilityScores": {
+						"str": 18,
+						"dex": 14,
+						"con": 16,
+						"int": 8,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				}
+			],
+			"skills": [
+				"Nature",
+				"Survival"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"{@language Petran} (earth elemental)"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Elemental Core",
+					"type": "initial",
+					"entries": [
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Earth}: Your eidolon is formed from elemental earth, and is incredibly hard to move by force. Your eidolon gains a +2 circumstance bonus to their Fortitude or Reflex DCs against attempts to {@action Shove} or {@action Trip} them. This bonus also applies to saving throws against spells or effects that attempt to knock them prone. In addition, if any effect would force them to move 10 feet or more, they're moved only half the distance."
+					]
+				},
+				{
+					"name": "Elemental Burst",
+					"type": "symbiosis",
+					"traits": [
+						"concentrate",
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
+							]
+						}
+					]
+				},
+				{
+					"name": "Elemental Maelstrom",
+					"type": "transcendence",
+					"traits": [
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Eidolon (fire)",
+			"type": "Eidolon",
+			"source": "RoE",
+			"page": 38,
+			"fluff": [
+				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
+				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
+			],
+			"tradition": "primal",
+			"traits": [
+				"eidolon",
+				"elemental",
+				"fire"
+			],
+			"home": "Plane of Fire",
+			"size": [
+				"medium"
+			],
+			"suggestedAttacks": [
+				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+			],
+			"stats": [
+				{
+					"name": "Adaptable Elemental",
+					"abilityScores": {
+						"str": 12,
+						"dex": 18,
+						"con": 16,
+						"int": 10,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				},
+				{
+					"name": "Primordial Elemental",
+					"abilityScores": {
+						"str": 18,
+						"dex": 14,
+						"con": 16,
+						"int": 8,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				}
+			],
+			"skills": [
+				"Nature",
+				"Survival"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"{@language Pyric} (fire elemental)"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Elemental Core",
+					"type": "initial",
+					"entries": [
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Fire}: Your eidolon is formed from elemental fire and burns with embers of flame. Your eidolon gains resistance equal to half your level (minimum 1) to fire and an equal amount of weakness to cold and water. Their unarmed attacks deal 1 additional fire damage."
+					]
+				},
+				{
+					"name": "Elemental Burst",
+					"type": "symbiosis",
+					"traits": [
+						"concentrate",
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
+							]
+						}
+					]
+				},
+				{
+					"name": "Elemental Maelstrom",
+					"type": "transcendence",
+					"traits": [
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Eidolon (metal)",
+			"type": "Eidolon",
+			"source": "RoE",
+			"page": 38,
+			"fluff": [
+				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
+				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
+			],
+			"tradition": "primal",
+			"traits": [
+				"eidolon",
+				"elemental",
+				"metal"
+			],
+			"home": "Plane of Metal",
+			"size": [
+				"medium"
+			],
+			"suggestedAttacks": [
+				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+			],
+			"stats": [
+				{
+					"name": "Adaptable Elemental",
+					"abilityScores": {
+						"str": 12,
+						"dex": 18,
+						"con": 16,
+						"int": 10,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				},
+				{
+					"name": "Primordial Elemental",
+					"abilityScores": {
+						"str": 18,
+						"dex": 14,
+						"con": 16,
+						"int": 8,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				}
+			],
+			"skills": [
+				"Nature",
+				"Survival"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"{@language Talican} (metal elemental)"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Elemental Core",
+					"type": "initial",
+					"entries": [
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Metal}: Your eidolon is formed from elemental metal and can adapt their metallic form to battle. One of your eidolon's starting melee unarmed attacks gains the {@trait versatile} bludgeoning, piercing, or slashing trait, as your eidolon learns how to shift the metal into various weaponlike forms."
+					]
+				},
+				{
+					"name": "Elemental Burst",
+					"type": "symbiosis",
+					"traits": [
+						"concentrate",
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
+							]
+						}
+					]
+				},
+				{
+					"name": "Elemental Maelstrom",
+					"type": "transcendence",
+					"traits": [
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Eidolon (water)",
+			"type": "Eidolon",
+			"source": "RoE",
+			"page": 38,
+			"fluff": [
+				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
+				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
+			],
+			"tradition": "primal",
+			"traits": [
+				"eidolon",
+				"elemental",
+				"water"
+			],
+			"home": "Plane of Water",
+			"size": [
+				"medium"
+			],
+			"suggestedAttacks": [
+				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+			],
+			"stats": [
+				{
+					"name": "Adaptable Elemental",
+					"abilityScores": {
+						"str": 12,
+						"dex": 18,
+						"con": 16,
+						"int": 10,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				},
+				{
+					"name": "Primordial Elemental",
+					"abilityScores": {
+						"str": 18,
+						"dex": 14,
+						"con": 16,
+						"int": 8,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				}
+			],
+			"skills": [
+				"Nature",
+				"Survival"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"{@language Thalassic} (water elemental)"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Elemental Core",
+					"type": "initial",
+					"entries": [
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Water}: Your eidolon is formed from elemental water and swims with ease. Your eidolon gains the amphibious trait, allowing them to breathe in water and air and to avoid the normal \u20132 penalty for making bludgeoning and slashing {@trait unarmed} {@action Strike||Strikes} underwater. Your eidolon's land Speed is reduced to 15 feet, and they gain a swim Speed of 25 feet. You can take the {@feat Amphibious Form|SoM} feat  to increase their land Speed back up to 25 feet, as described in the feat."
+					]
+				},
+				{
+					"name": "Elemental Burst",
+					"type": "symbiosis",
+					"traits": [
+						"concentrate",
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
+							]
+						}
+					]
+				},
+				{
+					"name": "Elemental Maelstrom",
+					"type": "transcendence",
+					"traits": [
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Eidolon (wood)",
+			"type": "Eidolon",
+			"source": "RoE",
+			"page": 38,
+			"fluff": [
+				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
+				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
+			],
+			"tradition": "primal",
+			"traits": [
+				"eidolon",
+				"elemental",
+				"wood"
+			],
+			"home": "Plane of Wood",
+			"size": [
+				"medium"
+			],
+			"suggestedAttacks": [
+				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+			],
+			"stats": [
+				{
+					"name": "Adaptable Elemental",
+					"abilityScores": {
+						"str": 12,
+						"dex": 18,
+						"con": 16,
+						"int": 10,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				},
+				{
+					"name": "Primordial Elemental",
+					"abilityScores": {
+						"str": 18,
+						"dex": 14,
+						"con": 16,
+						"int": 8,
+						"wis": 12,
+						"cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				}
+			],
+			"skills": [
+				"Nature",
+				"Survival"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"{@language Muan} (wood elemental)"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Elemental Core",
+					"type": "initial",
+					"entries": [
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Wood}: Your eidolon is formed from elemental wood, and its living wooden form twists and regrows as you focus your elemental energies. You can choose to have your eidolon gain the {@trait plant} trait. Whenever you {@action Refocus}, your eidolon regains a number of Hit Points equal to double your level."
+					]
+				},
+				{
+					"name": "Elemental Burst",
+					"type": "symbiosis",
+					"traits": [
+						"concentrate",
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
+							]
+						}
+					]
+				},
+				{
+					"name": "Elemental Maelstrom",
+					"type": "transcendence",
+					"traits": [
+						"eidolon"
+					],
+					"entries": [
+						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+					]
+				}
+			]
+		},
 		{
 			"name": "Undead Eidolon",
 			"type": "Eidolon",

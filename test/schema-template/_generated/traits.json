@@ -11,9 +11,6 @@
 			"description": "Any Trait in the game.",
 			"anyOf": [
 				{
-					"$ref": "#/definitions/equipmentTrait"
-				},
-				{
 					"$ref": "#/definitions/morphicTrait"
 				},
 				{
@@ -50,12 +47,6 @@
 					"$ref": "#/definitions/weaponTrait"
 				},
 				{
-					"$ref": "#/definitions/unknownTrait"
-				},
-				{
-					"$ref": "#/definitions/generalTrait"
-				},
-				{
 					"$ref": "#/definitions/schoolTrait"
 				},
 				{
@@ -74,9 +65,6 @@
 					"$ref": "#/definitions/featTrait"
 				},
 				{
-					"$ref": "#/definitions/ancestryHeritageTrait"
-				},
-				{
 					"$ref": "#/definitions/settlementTrait"
 				},
 				{
@@ -89,67 +77,101 @@
 					"$ref": "#/definitions/creatureTrait"
 				},
 				{
-					"$ref": "#/definitions/classTrait"
-				},
-				{
-					"$ref": "#/definitions/actionAbilityTrait"
+					"$ref": "#/definitions/generalTrait"
 				},
 				{
 					"$ref": "#/definitions/planarTrait"
 				},
 				{
 					"$ref": "#/definitions/energyElementTrait"
+				},
+				{
+					"$ref": "#/definitions/classTrait"
+				},
+				{
+					"$ref": "#/definitions/unknownTrait"
+				},
+				{
+					"$ref": "#/definitions/actionAbilityTrait"
+				},
+				{
+					"$ref": "#/definitions/equipmentTrait"
+				},
+				{
+					"$ref": "#/definitions/ancestryHeritageTrait"
 				}
 			],
 			"uniqueItems": true
 		},
-		"energyElementTrait": {
+		"ancestryHeritageTrait": {
 			"type": "string",
-			"description": "A list of all Energy & Element traits.",
+			"description": "A list of all Ancestry & Heritage traits.",
 			"enum": [
-				"acid",
-				"air",
-				"cold",
-				"earth",
-				"electricity",
-				"energy",
-				"fire",
-				"force",
-				"metal",
-				"negative",
-				"positive",
-				"sonic",
-				"water",
-				"wood"
+				"aasimar",
+				"anadi",
+				"android",
+				"aphorite",
+				"ardande",
+				"automaton",
+				"azarketi",
+				"beastkin",
+				"catfolk",
+				"changeling",
+				"conrasu",
+				"dhampir",
+				"duskwalker",
+				"dwarf",
+				"elf",
+				"fetchling",
+				"fleshwarp",
+				"ganzi",
+				"geniekin",
+				"ghoran",
+				"gnoll",
+				"gnome",
+				"goblin",
+				"goloma",
+				"grippli",
+				"half-elf",
+				"half-orc",
+				"halfling",
+				"hobgoblin",
+				"human",
+				"ifrit",
+				"kashrishi",
+				"kitsune",
+				"kobold",
+				"leshy",
+				"lizardfolk",
+				"nagaji",
+				"orc",
+				"oread",
+				"poppet",
+				"ratfolk",
+				"reflection",
+				"shisk",
+				"shoony",
+				"skeleton",
+				"sprite",
+				"strix",
+				"suli",
+				"sylph",
+				"talos",
+				"tengu",
+				"tiefling",
+				"undine",
+				"vanara",
+				"vishkanya"
 			]
 		},
-		"planarTrait": {
+		"equipmentTrait": {
 			"type": "string",
-			"description": "A list of all Planar traits.",
+			"description": "A list of all Equipment traits.",
 			"enum": [
-				"air",
-				"chaotic",
-				"earth",
-				"erratic",
-				"evil",
-				"finite",
-				"fire",
-				"flowing",
-				"good",
-				"high gravity",
-				"immeasurable",
-				"lawful",
-				"low gravity",
-				"metal",
-				"microgravity",
-				"sentient",
-				"static",
-				"strange gravity",
-				"subjective gravity",
-				"timeless",
-				"unbounded",
-				"water",
-				"wood"
+				"bottled breath",
+				"censer",
+				"figurehead",
+				"spellheart"
 			]
 		},
 		"actionAbilityTrait": {
@@ -170,6 +192,23 @@
 				"psyche",
 				"reckless",
 				"tandem"
+			]
+		},
+		"unknownTrait": {
+			"type": "string",
+			"description": "A list of all Unknown traits.",
+			"enum": [
+				"adjustment",
+				"charm",
+				"clockwork",
+				"focus",
+				"gadget",
+				"hellknight",
+				"kaiju",
+				"lineage",
+				"saggorak",
+				"steam",
+				"unstable"
 			]
 		},
 		"classTrait": {
@@ -204,6 +243,75 @@
 				"thaumaturge",
 				"witch",
 				"wizard"
+			]
+		},
+		"energyElementTrait": {
+			"type": "string",
+			"description": "A list of all Energy & Element traits.",
+			"enum": [
+				"acid",
+				"air",
+				"cold",
+				"earth",
+				"electricity",
+				"energy",
+				"fire",
+				"force",
+				"metal",
+				"negative",
+				"positive",
+				"sonic",
+				"vitality",
+				"void",
+				"water",
+				"wood"
+			]
+		},
+		"planarTrait": {
+			"type": "string",
+			"description": "A list of all Planar traits.",
+			"enum": [
+				"air",
+				"chaotic",
+				"earth",
+				"erratic",
+				"evil",
+				"finite",
+				"fire",
+				"flowing",
+				"good",
+				"high gravity",
+				"immeasurable",
+				"lawful",
+				"low gravity",
+				"metal",
+				"microgravity",
+				"sentient",
+				"static",
+				"strange gravity",
+				"subjective gravity",
+				"timeless",
+				"unbounded",
+				"water",
+				"wood"
+			]
+		},
+		"generalTrait": {
+			"type": "string",
+			"description": "A list of all General traits.",
+			"enum": [
+				"academic",
+				"manipulate",
+				"metamagic",
+				"militaristic",
+				"pervasive magic",
+				"revolutionary",
+				"secret",
+				"shadow",
+				"spellshape",
+				"structure",
+				"true name",
+				"wayfaring"
 			]
 		},
 		"creatureTrait": {
@@ -446,65 +554,6 @@
 				"village"
 			]
 		},
-		"ancestryHeritageTrait": {
-			"type": "string",
-			"description": "A list of all Ancestry & Heritage traits.",
-			"enum": [
-				"aasimar",
-				"anadi",
-				"android",
-				"aphorite",
-				"automaton",
-				"azarketi",
-				"beastkin",
-				"catfolk",
-				"changeling",
-				"conrasu",
-				"dhampir",
-				"duskwalker",
-				"dwarf",
-				"elf",
-				"fetchling",
-				"fleshwarp",
-				"ganzi",
-				"geniekin",
-				"ghoran",
-				"gnoll",
-				"gnome",
-				"goblin",
-				"goloma",
-				"grippli",
-				"half-elf",
-				"half-orc",
-				"halfling",
-				"hobgoblin",
-				"human",
-				"ifrit",
-				"kashrishi",
-				"kitsune",
-				"kobold",
-				"leshy",
-				"lizardfolk",
-				"nagaji",
-				"orc",
-				"oread",
-				"poppet",
-				"ratfolk",
-				"reflection",
-				"shisk",
-				"shoony",
-				"skeleton",
-				"sprite",
-				"strix",
-				"suli",
-				"sylph",
-				"tengu",
-				"tiefling",
-				"undine",
-				"vanara",
-				"vishkanya"
-			]
-		},
 		"featTrait": {
 			"type": "string",
 			"description": "A list of all Feat traits.",
@@ -611,40 +660,6 @@
 				"illusion",
 				"necromancy",
 				"transmutation"
-			]
-		},
-		"generalTrait": {
-			"type": "string",
-			"description": "A list of all General traits.",
-			"enum": [
-				"academic",
-				"manipulate",
-				"metamagic",
-				"militaristic",
-				"pervasive magic",
-				"revolutionary",
-				"secret",
-				"shadow",
-				"spellshape",
-				"structure",
-				"true name",
-				"wayfaring"
-			]
-		},
-		"unknownTrait": {
-			"type": "string",
-			"description": "A list of all Unknown traits.",
-			"enum": [
-				"adjustment",
-				"charm",
-				"clockwork",
-				"gadget",
-				"hellknight",
-				"kaiju",
-				"lineage",
-				"saggorak",
-				"steam",
-				"unstable"
 			]
 		},
 		"weaponTrait": {
@@ -904,13 +919,6 @@
 			"enum": [
 				"metamorphic",
 				"sentient"
-			]
-		},
-		"equipmentTrait": {
-			"type": "string",
-			"description": "A list of all Equipment traits.",
-			"enum": [
-				"spellheart"
 			]
 		}
 	}

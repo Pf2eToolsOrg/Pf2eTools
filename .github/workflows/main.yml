@@ -50,6 +50,7 @@ jobs:
          # Builds the data
          -  name: Build Site
             run: |
+               sudo apt-get install -y hub
                node --version
                npm --version
                npm i
