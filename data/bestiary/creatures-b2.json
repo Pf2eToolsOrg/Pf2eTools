@@ -32738,6 +32738,18 @@
 			"abilities": {
 				"bot": [
 					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The lurker in light uses a {@trait move} action",
+						"requirements": "The lurker in light is in an area of bright light",
+						"entries": [
+							"The lurker in light becomes {@condition invisible} until it enters an area of dim light or darkness, or until it uses a hostile action."
+						],
+						"name": "Lurker's Glow"
+					},
+					{
 						"traits": [
 							"evocation",
 							"light",

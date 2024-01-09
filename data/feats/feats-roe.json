@@ -1,7 +1,7 @@
 {
 	"feat": [
 		{
-			"name": "Elemental Familiar",
+			"name": "Elemental Familiar (Kineticist)",
 			"source": "RoE",
 			"page": 20,
 			"level": 1,
@@ -3682,7 +3682,7 @@
 			],
 			"leadsTo": [
 				"Dousing Spell|RoE",
-				"Elemental Familiar|RoE",
+				"Elemental Familiar (Elementalist)|RoE",
 				"Burning Spell|RoE",
 				"Current Spell|RoE",
 				"Expanded Elemental Magic|RoE",
@@ -3709,19 +3709,29 @@
 				"spellshape",
 				"water"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, water is in your elemental philosophy",
 			"entries": [
 				"You enhance your spell with elemental water, soaking the target. If the next action you use is to {@action Cast a Spell} targeting a single creature, you soak the target of the spell with water. If the target has {@condition persistent damage||persistent acid} or fire damage, the DC to end those conditions is reduced to 10, and the creature can attempt a flat check to end those types of {@condition persistent damage} immediately. The spell gains the {@trait water} trait (causing it to deal extra damage to creatures with weakness to water)."
 			]
 		},
 		{
-			"name": "Elemental Familiar",
+			"name": "Elemental Familiar (Elementalist)",
 			"source": "RoE",
 			"page": 59,
 			"level": 4,
 			"traits": [
 				"archetype"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, Familiar",
 			"entries": [
 				"Your familiar becomes an elemental spirit capable of taking on aspects of the elements. Other than taking the form of an elemental instead of an animal, this familiar continues to use all the same rules as other familiars. If you want to give your familiar the elemental familiar abilities, you must select that familiar ability. Your familiar gains one additional familiar ability each day, which must be one of the following elemental familiar abilities. While your familiar has an elemental familiar ability, your familiar is composed of the associated elemental matter and gains the matching {@trait elemental} trait. You can't select more than one elemental familiar ability at a time.",
@@ -3752,6 +3762,11 @@
 				"fire",
 				"spellshape"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, fire is in your elemental philosophy",
 			"entries": [
 				"You enhance your spell with elemental fire, causing it to set the target on fire. If the next action you use is to Cast a non- cantrip Spell that deals damage at a single target, the spell deals additional {@condition persistent damage||persistent fire damage} equal to the spell rank, in addition to its other effects. This has no effect if the spell already deals {@condition persistent damage||persistent fire damage}. The spell gains the {@trait fire} trait."
@@ -3771,6 +3786,11 @@
 				"concentrate",
 				"spellshape"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, air or water is in your elemental philosophy",
 			"entries": [
 				"As you use your magic to manipulate air or water, you divert some of its currents to form a barrier around you. If your next action is to {@action Cast a Spell} with the {@trait air} or {@trait water} trait, until the start of your next turn, you gain a +1 circumstance bonus to AC or a +2 circumstance bonus against ranged attacks. This effect has the {@trait air} or {@trait water} trait, or both, depending on the traits of the spell you cast. You also gain a +1 circumstance bonus to all saves against effects with the {@trait air} trait, {@trait water} trait, or both until the start of your next turn, depending on the spell's traits."
@@ -3784,6 +3804,11 @@
 			"traits": [
 				"archetype"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}",
 			"entries": [
 				"You reach new understandings of the elements, taking an expansive view. Add to your elemental philosophy any of the following elements it doesn't already include: air, earth, fire, metal, water, and wood."
@@ -3801,6 +3826,11 @@
 			"traits": [
 				"archetype"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}",
 			"trigger": "You take damage from a foe's spell or magical ability with {@trait a} trait of one of the elements in your elemental philosophy.",
 			"entries": [
@@ -3821,6 +3851,11 @@
 				"metal",
 				"spellshape"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, metal is in your elemental philosophy",
 			"entries": [
 				"Your spell disorients your targets with a metallic clangor. If the next action you use this turn is to Cast a non-cantrip Spell that deals damage in an area (such as a burst, line, or cone), the spell deals an additional {@damage 1d8} sonic damage and all creatures who fail their save against the spell are {@condition deafened} for 1 round. Targets who critically fail their saves against this spell are instead {@condition deafened} for 1 minute. The spell gains the {@trait sonic} trait."
@@ -3839,6 +3874,11 @@
 				"archetype",
 				"spellshape"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, wood is in your elemental philosophy",
 			"entries": [
 				"You enhance your spell with elemental wood, causing your magic to expand and grow beyond its original limitations. If the next action you use this turn is to Cast a non-cantrip Spell that affects an area, expand the area of the spell. For bursts, expand the radius by 5 feet; for cones, expand the cone by 10 feet; and for lines, expand the length by 15 feet.",
@@ -3859,6 +3899,11 @@
 				"earth",
 				"spellshape"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, earth is in your elemental philosophy",
 			"entries": [
 				"You enhance your spell with elemental earth, causing chunks of stone to litter the ground. If the next action you use is to Cast a non-cantrip Spell that affects an area, a number of 5-foot squares in the area equal to the spell rank become difficult terrain for 1 round. These squares must be on the ground, and the entire area of difficult terrain must be contiguous. The spell gains the {@trait earth} trait."
@@ -3876,6 +3921,11 @@
 			"traits": [
 				"archetype"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}",
 			"trigger": "The spell attack roll for a foe's spell with an {@trait elemental} trait targeting you fails or critically fails, and the {@trait elemental} trait is in your elemental philosophy.",
 			"entries": [
@@ -3890,6 +3940,11 @@
 			"traits": [
 				"archetype"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, water is in your elemental philosophy",
 			"entries": [
 				"You can {@action Stride} across liquid and surfaces normally wouldn't support your weight. This benefit lasts only during your movement. If you end your movement on a surface that can't support you, you fall in or it collapses as normal."
@@ -3910,6 +3965,11 @@
 				"concentrate",
 				"spellshape"
 			],
+			"featType": {
+				"archetype": [
+					"Elementalist"
+				]
+			},
 			"prerequisites": "{@feat Elementalist Dedication|RoE}, air is in your elemental philosophy",
 			"entries": [
 				"You enhance your spell with elemental air, using the wind to find your target and carry your magic around cover. If the next action you use is to {@action Cast a Spell} that requires a spell attack roll, you ignore the target's {@condition concealed} condition and any cover they have from you. The spell gains the {@trait air} trait."
