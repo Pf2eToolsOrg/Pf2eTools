@@ -1,15 +1,105 @@
 {
 	"trait": [
 		{
-			"name": "Wood",
+			"name": "Ardande",
 			"source": "RoE",
-			"page": 238,
+			"page": 235,
 			"categories": [
-				"Energy & Element",
-				"Planar"
+				"Ancestry & Heritage"
 			],
 			"entries": [
-				"Effects with the metal trait conjure or manipulate wood. Those that manipulate wood have no effect in an area without wood. Creatures with this trait consist primarily of wood or have a connection to magical wood."
+				"Ardandes are planar scions descended from {@creature kizidhar|RoE} and other beings of elemental wood."
+			]
+		},
+		{
+			"name": "Bottled Breath",
+			"source": "RoE",
+			"page": 235,
+			"categories": [
+				"Equipment"
+			],
+			"entries": [
+				"Bottles of breath are enchanted bottles of cloud and mist, first developed by the denizens of the {@place Plane of Air|GMG}. You can Activate an item with the bottled breath trait as you inhale it or cause another creature to inhale it. You can make another creature inhale bottled breath only if that creature is within reach and willing or so helpless that it can't resist. You usually need only one hand to consume a bottled breath or make another creature inhale it.",
+				"The bottled breath is held in a user's lungs, and its effects last as long as the user holds its breath. This is typically a maximum number of rounds equal to 5 + its Constitution modifier, but this time can be reduced due to the creature's actions or it taking damage, or extended by abilities that increase the amount of time a creature can hold its breath.",
+				"Some bottled breath consumables have a special effect when you exhale them. Since you're exhaling the breath, doing this expends the item."
+			]
+		},
+		{
+			"name": "Censer",
+			"source": "RoE",
+			"page": 123,
+			"categories": [
+				"Equipment"
+			],
+			"entries": [
+				"An item with the censer trait must be filled with incense to Activate it, which ignites the incense and causes the censer to exude a cloud of smoke. The smoke creates an aura in an emanation from the censer's square. The smoke lasts for 1 minute but is immediately dispersed by a strong wind (ending the activation) or if you Dismiss the activation to snuff out the incense. Unless specifically noted otherwise, the smoke from a censer isn't thick enough to make creatures {@condition concealed}, and you can choose to be immune to the smoke of any censer you Activate. You must be holding a censer to Activate it, but if you Release the censer, the incense continues to burn from the censer's location.",
+				"A magical censer requires incense, as noted in its activation, which can be purchased in most settlements. You can use an alchemical or magical incense item for this purpose, but the magic of the censer overwhelms the incense and negates any other magical or alchemical properties it has. You can typically use the censer without activating it to burn incense as though it were a mundane censer."
+			]
+		},
+		{
+			"name": "Composite",
+			"source": "RoE",
+			"page": 15,
+			"categories": [
+				"Action & Ability"
+			],
+			"entries": [
+				"A composite impulse combines multiple elements. You can gain an impulse with the composite trait only if your kinetic elements include all the elements listed in the impulse's traits."
+			]
+		},
+		{
+			"name": "Figurehead",
+			"source": "RoE",
+			"page": 177,
+			"categories": [
+				"Equipment"
+			],
+			"entries": [
+				"While many ships are adorned with decorative carvings, daring crews sometimes procure magical figureheads for their vessels. Installing an item with the figurehead trait takes 1 hour. The item then shifts slightly to match the vessel's purpose or crew as determined by the attuned creature, such as gaining avian features on a {@ancestry tengu|RoE} vessel. A ship can have only one figurehead attached to it at a time; attaching another one suppresses all the figureheads.",
+				"A figurehead can be activated only by a creature that's attuned to it, a process that takes 1 hour and can be performed while the creature is installing the figurehead. Only one creature can be attuned to the figurehead at a time unless otherwise noted. The attuned creature can activate the figurehead from anywhere aboard the vessel. Typically, the owner or captain of the vessel attunes to their vessel's figurehead.",
+				"The figureheads presented here TODO assume the vehicles they attach to are sailing ships or similar aquatic vessels, but figureheads might be modified or crafted to function on other vehicles instead."
+			]
+		},
+		{
+			"name": "Focus",
+			"source": "RoE",
+			"page": 236,
+			"categories": [],
+			"entries": [
+				"A spell you can cast by spending a Focus Point, and that is automatically heightened to half your level rounded up."
+			]
+		},
+		{
+			"name": "Impulse",
+			"source": "RoE",
+			"page": 15,
+			"categories": [
+				"Action & Ability"
+			],
+			"entries": [
+				"The primary magical actions kineticists use are called impulses. You can use an impulse only if your kinetic aura is active and channeling that element, and only if you have a hand free to shape the elemental flow. The impulse trait means the action has the {@trait concentrate} trait unless another ability changes this. If an impulse allows you to choose an element, you can choose any element you're channeling, and the impulse gains that element's trait."
+			]
+		},
+		{
+			"name": "Infusion",
+			"source": "RoE",
+			"page": 15,
+			"categories": [
+				"Action & Ability"
+			],
+			"entries": [
+				"Actions with the infusion trait tweak your kineticist impulses. You must use an infusion action directly before the impulse action you want to alter. If you use any action (including free actions and reactions) other than an impulse action directly after, you waste the benefits of the infusion action. Any additional effects added by an infusion action are part of the impulse's effect, not of the infusion action itself."
+			]
+		},
+		{
+			"name": "Kineticist",
+			"source": "RoE",
+			"page": 237,
+			"categories": [
+				"Class"
+			],
+			"entries": [
+				"This indicates abilities from the kineticist class."
 			]
 		},
 		{
@@ -36,47 +126,59 @@
 			]
 		},
 		{
-			"name": "Infusion",
+			"name": "Spellshape",
 			"source": "RoE",
-			"page": 15,
+			"page": 238,
 			"categories": [
-				"Action & Ability"
+				"General"
 			],
 			"entries": [
-				"Actions with the infusion trait tweak your kineticist impulses. You must use an infusion action directly before the impulse action you want to alter. If you use any action (including free actions and reactions) other than an impulse action directly after, you waste the benefits of the infusion action. Any additional effects added by an infusion action are part of the impulse's effect, not of the infusion action itself."
+				"Actions with the spellshape trait tweak the properties of your spells. You must use a spellshape action directly before casting the spell you want to alter. If you use any action (including free actions and reactions) other than casting a spell directly after, you waste the benefits of the spellshape action. Any additional effects added by a spellshape action are part of the spell's effect, not of the spellshape action itself."
 			]
 		},
 		{
-			"name": "Composite",
+			"name": "Talos",
 			"source": "RoE",
-			"page": 15,
+			"page": 238,
 			"categories": [
-				"Action & Ability"
+				"Ancestry & Heritage"
 			],
 			"entries": [
-				"A composite impulse combines multiple elements. You can gain an impulse with the composite trait only if your kinetic elements include all the elements listed in the impulse's traits."
+				"Taloses are planar scions descended from {@creature zuhra|RoE|zuhras}."
 			]
 		},
 		{
-			"name": "Impulse",
+			"name": "Vitality",
 			"source": "RoE",
-			"page": 15,
+			"page": 238,
 			"categories": [
-				"Action & Ability"
+				"Energy & Element"
 			],
 			"entries": [
-				"The primary magical actions kineticists use are called impulses. You can use an impulse only if your kinetic aura is active and channeling that element, and only if you have a hand free to shape the elemental flow. The impulse trait means the action has the {@trait concentrate} trait unless another ability changes this. If an impulse allows you to choose an element, you can choose any element you're channeling, and the impulse gains that element's trait."
+				"Effects with this trait heal living creatures with energy from the Forge of Creation, deal vitality energy damage to {@trait undead}, or manipulate vitality energy."
 			]
 		},
 		{
-			"name": "Kineticist",
+			"name": "Void",
 			"source": "RoE",
-			"page": 237,
+			"page": 238,
 			"categories": [
-				"Class"
+				"Energy & Element"
 			],
 			"entries": [
-				"This indicates abilities from the kineticist class."
+				"Effects with this trait heal {@trait undead} creatures with void energy, deal void damage to living creatures, or manipulate void energy"
+			]
+		},
+		{
+			"name": "Wood",
+			"source": "RoE",
+			"page": 238,
+			"categories": [
+				"Energy & Element",
+				"Planar"
+			],
+			"entries": [
+				"Effects with the metal trait conjure or manipulate wood. Those that manipulate wood have no effect in an area without wood. Creatures with this trait consist primarily of wood or have a connection to magical wood."
 			]
 		},
 		{
@@ -3922,17 +4024,6 @@
 			],
 			"entries": [
 				"These aquatic humanoids have an upper body similar to a human and a lower body similar to a fish."
-			]
-		},
-		{
-			"name": "Spellshape",
-			"source": "RoE",
-			"page": 238,
-			"categories": [
-				"General"
-			],
-			"entries": [
-				"Actions with the spellshape trait tweak the properties of your spells. You must use a spellshape action directly before casting the spell you want to alter. If you use any action (including free actions and reactions) other than casting a spell directly after, you waste the benefits of the spellshape action. Any additional effects added by a spellshape action are part of the spell's effect, not of the spellshape action itself."
 			]
 		},
 		{

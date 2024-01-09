@@ -1,6 +1,379 @@
 {
 	"deity": [
 		{
+			"name": "Ferrumnestra",
+			"category": "Elemental Lords",
+			"alias": [
+				"The Lady of Rust"
+			],
+			"source": "RoE",
+			"page": 140,
+			"areasOfConcern": [
+				"metal",
+				"decline",
+				"inevitability",
+				"mourning"
+			],
+			"font": [
+				"harm"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"wisdom"
+				],
+				"entry": "Constitution or Wisdom"
+			},
+			"divineSkill": {
+				"skills": [
+					"athletics"
+				]
+			},
+			"domains": [
+				"decay",
+				"destruction",
+				"metal",
+				"void"
+			],
+			"alternateDomains": [
+				"sorrow",
+				"vigil"
+			],
+			"spells": {
+				"1": [
+					"detect metal|RoE"
+				],
+				"3": [
+					"noxious metals|RoE"
+				],
+				"4": [
+					"rust cloud|RoE"
+				]
+			},
+			"edicts": [
+				"accept the inevitable",
+				"clear what remains of that which has fallen to ruin",
+				"usher the past into obscurity"
+			],
+			"anathema": [
+				"preserve knowledge that has outlived its time",
+				"restore an object or structure that has been reclaimed by the elements"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"pick"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Ferrumnestra gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "mandibles",
+						"traits": [
+							"reach <15 feet>"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "deteriorating spit",
+						"range": 60,
+						"rangedIncrement": true,
+						"damage": "4d6+3",
+						"damageType": "acid",
+						"damage2": "2d6",
+						"damageType2": "persistent acid"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Laudinmio",
+			"category": "Elemental Lords",
+			"alias": [
+				"The Sovereign of Alchemy"
+			],
+			"source": "RoE",
+			"page": 141,
+			"areasOfConcern": [
+				"metal",
+				"alchemy",
+				"discovery",
+				"experiments",
+				"regret"
+			],
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineAbility": {
+				"abilities": [
+					"intelligence",
+					"charisma"
+				],
+				"entry": "Intelligence or Charisma"
+			},
+			"divineSkill": {
+				"skills": [
+					"crafting"
+				]
+			},
+			"domains": [
+				"change",
+				"creation",
+				"metal",
+				"sorrow"
+			],
+			"alternateDomains": [
+				"wealth"
+			],
+			"spells": {
+				"1": [
+					"detect metal|RoE"
+				],
+				"2": [
+					"summon elemental (metal only)"
+				],
+				"5": [
+					"impaling strike|APG"
+				]
+			},
+			"edicts": [
+				"discover new alloys and concoctions",
+				"have multiple concurrent plans",
+				"innovate use of metals"
+			],
+			"anathema": [
+				"allow your creation to fall into malicious hands",
+				"destroy an alchemical formula"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"alchemical bomb"
+				],
+				"entry": "{@item alchemical bomb|CRB}; a cleric of Laudinmio doesn't automatically gain any access to uncommon bombs"
+			},
+			"avatar": {
+				"preface": "When casting the avatar spell, a worshipper of Laudinmio gains the following additional abilities. The avatar of Laudinmio manifests with a shard bomb in each hand but must Interact to draw a new one. The avatar is immune to the shard bomb's splash damage.",
+				"speed": {
+					"walk": 60
+				},
+				"ignoreTerrain": true,
+				"ranged": [
+					{
+						"name": "shard bomb",
+						"traits": [
+							"splash"
+						],
+						"range": 120,
+						"damage": "4d6+3",
+						"damageType": "slashing",
+						"damage2": "3",
+						"damageType2": "slashing splash damage",
+						"note": "The avatar is immune to the shard bombs {@trait splash} damage"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Shumunue",
+			"category": "Elemental Lords",
+			"alias": [
+				"The Carved Lady of Mimicry"
+			],
+			"source": "RoE",
+			"page": 194,
+			"areasOfConcern": [
+				"wood",
+				"camouflage",
+				"carpentry",
+				"life",
+				"mimicry"
+			],
+			"font": [
+				"heal"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"charisma"
+				],
+				"entry": "Constitution or Charisma"
+			},
+			"divineSkill": {
+				"skills": [
+					"deception"
+				]
+			},
+			"domains": [
+				"creation",
+				"passion",
+				"swarm",
+				"wood"
+			],
+			"alternateDomains": [
+				"perfection",
+				"repose"
+			],
+			"spells": {
+				"1": [
+					"weave wood|RoE"
+				],
+				"2": [
+					"summon elemental (wood only)"
+				],
+				"6": [
+					"plant form"
+				]
+			},
+			"edicts": [
+				"celebrate births",
+				"make time for nature",
+				"recreate life in your works"
+			],
+			"anathema": [
+				"permanently damage a plant or wood creature",
+				"polymorph another without permission"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"club"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Shumunue gains the following additional abilities.",
+				"speed": {
+					"walk": 70,
+					"fly": 70
+				},
+				"melee": [
+					{
+						"name": "hand of wood",
+						"traits": [
+							"reach <15 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "splinter shot",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Verilorn",
+			"category": "Elemental Lords",
+			"alias": [
+				"Custodian of Oak and Ash"
+			],
+			"source": "RoE",
+			"page": 195,
+			"areasOfConcern": [
+				"wood",
+				"culitvation",
+				"forestry",
+				"gardening",
+				"security"
+			],
+			"font": [
+				"harm"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"wisdom"
+				],
+				"entry": "Constitution or Wisdom"
+			},
+			"divineSkill": {
+				"skills": [
+					"nature"
+				]
+			},
+			"domains": [
+				"creation",
+				"nature",
+				"protection",
+				"wood"
+			],
+			"alternateDomains": [
+				"duty",
+				"perfection"
+			],
+			"spells": {
+				"1": [
+					"protector tree|SoM"
+				],
+				"2": [
+					"barkskin"
+				],
+				"5": [
+					"nature's reprisal|SoM"
+				]
+			},
+			"edicts": [
+				"patiently plant your seeds",
+				"plan for orderly beauty",
+				"watch over your sproutlings"
+			],
+			"anathema": [
+				"abandon your post",
+				"neglect your crops",
+				"purposely pervert nature"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"sickle"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Verilorn gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "reaping sickle",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach <15 feet>",
+							"trip"
+						],
+						"damage": "6d4+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "leaf swarm",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "slashing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
 			"name": "Vineshvakhi",
 			"category": "Other Gods",
 			"alias": [
@@ -2506,6 +2879,11 @@
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"RoE|116"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ng"
@@ -2517,6 +2895,11 @@
 					"cg"
 				]
 			},
+			"areasOfConcern": [
+				"fire",
+				"purification",
+				"radiance"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"burn away corruption",
@@ -2564,6 +2947,33 @@
 				"weapons": [
 					"katar"
 				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Atreia gains the following additional abilities.",
+				"speed": {
+					"walk": 40,
+					"fly": 70
+				},
+				"melee": [
+					{
+						"name": "sickle beaks",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach <15 feet>"
+						],
+						"damage": "6d8+8",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "fire feather",
+						"range": 120,
+						"damage": "6d4+3",
+						"damageType": "fire"
+					}
+				]
 			}
 		},
 		{
@@ -2573,6 +2983,11 @@
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"RoE|92"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ne"
@@ -2584,6 +2999,12 @@
 					"ce"
 				]
 			},
+			"areasOfConcern": [
+				"bone",
+				"buried secrets",
+				"earth",
+				"radiation"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"use the strength of stone to protect yourself and your secrets",
@@ -2611,6 +3032,12 @@
 				"might",
 				"secrecy"
 			],
+			"alternateDomains": [
+				"cities",
+				"dust",
+				"metal",
+				"undeath"
+			],
 			"spells": {
 				"1": [
 					"shockwave"
@@ -2630,6 +3057,43 @@
 			"favoredWeapon": {
 				"weapons": [
 					"morningstar"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Ayrzul gains the following additional abilities.",
+				"immune": [
+					"petrified"
+				],
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"trait": [
+					"immune to petrified"
+				],
+				"melee": [
+					{
+						"name": "fossilized jaw",
+						"traits": [
+							"reach <20 feet>"
+						],
+						"damage": "6d6+8",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "radioactive ray",
+						"range": 120,
+						"rangedIncrement": true,
+						"trait": [
+							"air"
+						],
+						"damage": "4d6+3",
+						"damageType": "poison",
+						"damage2": "2d6",
+						"damageType2": "persistent poison"
+					}
 				]
 			}
 		},
@@ -8514,6 +8978,11 @@
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"RoE|68"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ne"
@@ -8525,6 +8994,11 @@
 					"ce"
 				]
 			},
+			"areasOfConcern": [
+				"air",
+				"last breaths",
+				"windstorms"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"revel in formlessness and freedom",
@@ -8571,6 +9045,42 @@
 			"favoredWeapon": {
 				"weapons": [
 					"longbow"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Hshurha gains the following additional abilities. The imperceptible form ability allows the caster to spend a single action casting {@spell invisibility} at will as a divine innate spell.",
+				"speed": {
+					"fly": 70
+				},
+				"trait": [
+					"no land speed",
+					"imperceptible form"
+				],
+				"melee": [
+					{
+						"name": "twisting gale",
+						"traits": [
+							"agile",
+							"shove",
+							"thrown <20 feet>",
+							"versatile <S>"
+						],
+						"damage": "4d6+6",
+						"damageType": "bludgeoning plus Grab"
+					}
+				],
+				"ranged": [
+					{
+						"name": "cruel outburst",
+						"range": 120,
+						"trait": [
+							"air"
+						],
+						"damage": "4d6+3",
+						"damageType": "bludgeoning",
+						"damage2": "2d6",
+						"damageType2": "sonic splash damage"
+					}
 				]
 			}
 		},
@@ -9580,6 +10090,11 @@
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"RoE|170"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ne"
@@ -9591,6 +10106,11 @@
 					"ce"
 				]
 			},
+			"areasOfConcern": [
+				"drowning",
+				"water",
+				"waves"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"instill hydrophobia in others",
@@ -9618,6 +10138,11 @@
 				"travel",
 				"water"
 			],
+			"alternateDomains": [
+				"tyranny",
+				"wyrmkin",
+				"zeal"
+			],
 			"spells": {
 				"1": [
 					"fear"
@@ -9637,6 +10162,39 @@
 			"favoredWeapon": {
 				"weapons": [
 					"trident"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Kelizandri gains the following additional abilities.",
+				"speed": {
+					"walk": 40,
+					"fly": 30,
+					"swim": 70
+				},
+				"melee": [
+					{
+						"name": "brine claw",
+						"traits": [
+							"reach <20 feet>"
+						],
+						"damage": "5d6+6",
+						"damageType": "slashing",
+						"damage2": "1d6",
+						"damageType2": "acid"
+					}
+				],
+				"ranged": [
+					{
+						"name": "brackish breath",
+						"range": 120,
+						"trait": [
+							"water"
+						],
+						"damage": "3d6+3",
+						"damageType": "bludgeoning",
+						"damage2": "3d6+3",
+						"damageType2": "acid"
+					}
 				]
 			}
 		},
@@ -11166,6 +11724,11 @@
 			],
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"RoE|171"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ng"
@@ -11177,6 +11740,13 @@
 					"cg"
 				]
 			},
+			"areasOfConcern": [
+				"currents",
+				"flow",
+				"oceans",
+				"tides",
+				"water"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"respect and aid natural cycles",
@@ -11206,6 +11776,11 @@
 				"nature",
 				"water"
 			],
+			"alternateDomains": [
+				"dreams",
+				"protection",
+				"time"
+			],
 			"spells": {
 				"1": [
 					"hydraulic push"
@@ -11225,6 +11800,53 @@
 			"favoredWeapon": {
 				"weapons": [
 					"spear"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Lysianassa gains the following additional abilities.",
+				"immune": [
+					"immobilizied"
+				],
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"trait": [
+					"ignore underwater difficult terrain and greater difficult terrain"
+				],
+				"melee": [
+					{
+						"name": "wave",
+						"traits": [
+							"reach <15 feet>",
+							"shove"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					},
+					{
+						"name": "wave (underwater)",
+						"traits": [
+							"reach <15 feet>",
+							"shove"
+						],
+						"damage": "6d10+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "boundless torrent",
+						"range": 120,
+						"damage": "6d6",
+						"damageType": "bludgeoning"
+					},
+					{
+						"name": "boundless torrent (underwater)",
+						"range": 120,
+						"damage": "6d8",
+						"damageType": "bludgeoning"
+					}
 				]
 			}
 		},
@@ -13978,10 +14600,15 @@
 		{
 			"name": "Ranginori",
 			"alias": [
-				"Zephyrous Prince"
+				"The Zephyrous Prince"
 			],
 			"source": "LOGM",
 			"page": 128,
+			"otherSources": {
+				"Expanded": [
+					"RoE|69"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ng"
@@ -13993,6 +14620,11 @@
 					"cg"
 				]
 			},
+			"areasOfConcern": [
+				"air",
+				"thunderstorms",
+				"welcome breezes"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"open closed areas to fresh air",
@@ -14040,6 +14672,51 @@
 			"favoredWeapon": {
 				"weapons": [
 					"whip"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Ranginori gains the following additional abilities.",
+				"speed": {
+					"walk": 30,
+					"fly": 70
+				},
+				"trait": [
+					"immune to forced movement",
+					"immune to immobilized"
+				],
+				"melee": [
+					{
+						"name": "crackling jaws",
+						"traits": [
+							"reach <20 feet>"
+						],
+						"damage": "4d6+6",
+						"damageType": "piercing",
+						"damage2": "2d6",
+						"damageType2": "electricity"
+					},
+					{
+						"name": "hundred raking claws",
+						"traits": [
+							"agile",
+							"reach <15 feet>"
+						],
+						"damage": "4d6+6",
+						"damageType": "slashing",
+						"damage2": "1d6",
+						"damageType2": "persistent bleed"
+					}
+				],
+				"ranged": [
+					{
+						"name": "lightning bolt",
+						"range": 120,
+						"trait": [
+							"electricity"
+						],
+						"damage": "6d6+3",
+						"damageType": "electricity"
+					}
 				]
 			}
 		},
@@ -14254,6 +14931,11 @@
 			],
 			"source": "LOGM",
 			"page": 128,
+			"otherSources": {
+				"Expanded": [
+					"RoE|93"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ng"
@@ -14265,6 +14947,12 @@
 					"cg"
 				]
 			},
+			"areasOfConern": [
+				"bounties of the earth",
+				"caves",
+				"fertility",
+				"gems"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"shelter others within stone and earth",
@@ -14293,6 +14981,10 @@
 				"toil",
 				"wealth"
 			],
+			"alternateDomains": [
+				"creation",
+				"protection"
+			],
 			"spells": {
 				"1": [
 					"shattering gem|LOGM"
@@ -14312,6 +15004,42 @@
 			"favoredWeapon": {
 				"weapons": [
 					"pick"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Sairazul gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"burrow": 30
+				},
+				"immune": [
+					"petrified"
+				],
+				"shield": 15,
+				"melee": [
+					{
+						"name": "pick",
+						"traits": [
+							"fatal <d10>",
+							"reach <15 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "returning gemstones",
+						"range": 120,
+						"trait": [
+							"agile",
+							"nonlethal",
+							"thrown <60 feet>",
+							"versatile <bludgeoning>"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}
 				]
 			}
 		},
@@ -17852,6 +18580,11 @@
 			],
 			"source": "LOGM",
 			"page": 128,
+			"otherSources": {
+				"Expanded": [
+					"RoE|117"
+				]
+			},
 			"alignment": {
 				"alignment": [
 					"ne"
@@ -17863,6 +18596,11 @@
 					"ce"
 				]
 			},
+			"areasOfConcern": [
+				"fire",
+				"heat",
+				"smoke"
+			],
 			"category": "Elemental Lords",
 			"edicts": [
 				"inspire your lessers with zeal and strategy",
@@ -17909,6 +18647,36 @@
 			"favoredWeapon": {
 				"weapons": [
 					"longsword"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Ymeri gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"fly": 70
+				},
+				"melee": [
+					{
+						"name": "longsword",
+						"traits": [
+							"reach <15 feet>",
+							"versatile <P>"
+						],
+						"damage": "5d8+6",
+						"damageType": "slashing",
+						"damage2": "1d8",
+						"damageType2": "fire"
+					}
+				],
+				"ranged": [
+					{
+						"name": "eruption",
+						"range": 120,
+						"damage": "5d6+3",
+						"damageType": "fire",
+						"damage2": "1d6",
+						"damageType2": "persistent fire"
+					}
 				]
 			}
 		},
