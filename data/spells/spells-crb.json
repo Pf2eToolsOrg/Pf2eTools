@@ -860,14 +860,20 @@
 						"5 temporary Hit Points.",
 						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +9, and your damage bonus is +1. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack bonus is higher, you can use it instead.",
-						"{@skill Athletics} modifier of +9, unless your own modifier is higher. You also gain specific abilities based on the type of animal you choose:",
+						"{@skill Athletics} modifier of +9, unless your own modifier is higher."
+					]
+				},
+				"You also gain specific abilities based on the type of animal you choose:",
+				{
+					"type": "list",
+					"items": [
 						"{@bold Ape} Speed 25 feet, climb Speed 20 feet; {@b Melee} {@as 1} fist, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Bear} Speed 30 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d8} piercing; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 1d8} slashing.",
 						"{@bold Bull} Speed 30 feet; {@b Melee} {@as 1} horn, {@b Damage} {@damage 2d8} piercing.",
 						"{@bold Canine} Speed 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d8} piercing.",
 						"{@bold Cat} Speed 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d6} piercing; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 1d10} slashing.",
 						"{@bold Deer} Speed 50 feet; {@b Melee} {@as 1} antler, {@b Damage} {@damage 2d6} piercing.",
-						"{@bold Frog} Speed 25 feet, swim Speed 25 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} tongue (reach <15 feet>), {@b Damage} {@damage 2d4} bludgeoning.",
+						"{@bold Frog} Speed 25 feet, swim Speed 25 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} tongue ({@trait reach <15 feet>}), {@b Damage} {@damage 2d4} bludgeoning.",
 						"{@bold Shark} swim Speed 35 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d8} piercing; breathe underwater but not in air.",
 						"{@bold Snake} Speed 20 feet, climb Speed 20 feet, swim Speed 20 feet; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 2d4} piercing plus {@damage 1d6} poison."
 					]
@@ -4873,13 +4879,19 @@
 						"15 temporary Hit Points.",
 						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +16, and your damage bonus is +9. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
-						"{@skill Athletics} modifier of +18, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
+						"{@skill Athletics} modifier of +18, unless your own modifier is higher."
+					]
+				},
+				"You also gain specific abilities based on the form you choose:",
+				{
+					"type": "list",
+					"items": [
 						"{@bold Ankylosaurus} Speed 25 feet; {@b Melee} {@as 1} tail ({@trait backswing}, {@trait reach <10 feet>}), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Brontosaurus} Speed 25 feet; {@b Melee} {@as 1} tail ({@trait reach <15 feet>}), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning.",
 						"{@bold Deinonychus} Speed 40 feet; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 2d4} piercing plus 1 {@condition persistent damage||persistent bleed}; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 1d10} piercing.",
 						"{@bold Stegosaurus} Speed 30 feet; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 2d8} piercing.",
 						"{@bold Triceratops} Speed 30 feet; {@b Melee} {@as 1} horn, {@b Damage} {@damage 2d8} piercing, plus {@damage 1d6} {@condition persistent damage||persistent bleed} on a critical hit; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
-						"{@bold Tyrannosaurus} Speed 30 feet; {@b Melee} {@as 1} jaws ({@trait deadly <d12>}, {@trait reach <10 feet>}), {@b Damage} {@damage 1d12} piercing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 1d10} bludgeoning."
+						"{@bold Tyrannosaurus} Speed 30 feet; {@b Melee} {@as 1} jaws ({@trait deadly <d12>}, {@trait reach <10 feet>}), {@b Damage} {@damage 1d12} piercing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 1d10} bludgeoning."
 					]
 				}
 			],
@@ -5941,15 +5953,15 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Black} swim Speed 60 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} acid; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns (reach <10 feet>), {@b Damage} {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 11d6} acid.",
-						"{@bold Blue} burrow Speed 20 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10} piercing plus {@damage 1d12} electricity; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns (reach <10 feet>), {@b Damage} {@damage 3d8} piercing; breath weapon 80-foot line, {@damage 6d12} electricity.",
-						"{@bold Green} swim Speed 40 feet, ignores {@quickref difficult terrain||3|terrain} from non-magical foliage; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} poison; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns (reach <10 feet>), {@b Damage} {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 10d6} poison (Fortitude save instead of Reflex).",
-						"{@b Red} ignore {@condition concealed} from smoke; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 4d6} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} wing (reach <10 feet>), {@b Damage} {@damage 3d8} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} fire.",
-						"{@bold White} climb Speed 25 feet on ice only; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 3d6} piercing plus {@damage 2d6} cold; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} cold.",
-						"{@bold Brass} burrow Speed 20 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 3d8} piercing plus {@damage 2d4} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} spikes (reach <10 feet>), {@b Damage} {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 15d4} fire.",
-						"{@bold Bronze} swim Speed 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10} piercing plus {@damage 1d12} electricity; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} wing (reach <10 feet>), {@b Damage} {@damage 3d8} slashing; breath weapon 80-foot line, {@damage 6d12} electricity.",
-						"{@bold Copper} climb Speed 25 feet on stone only; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} acid; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} wing (reach <10 feet>), {@b Damage} {@damage 3d8} bludgeoning; breath weapon 60-foot line, {@damage 10d6} acid.",
-						"{@bold Gold} swim Speed 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 4d6} slashing; {@b Melee} {@as 1} tail (reach <10 feet>), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns (reach <10 feet>), {@b Damage} {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 6d10} fire.",
+						"{@bold Black} swim Speed 60 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} acid; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 11d6} acid.",
+						"{@bold Blue} burrow Speed 20 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10} piercing plus {@damage 1d12} electricity; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} piercing; breath weapon 80-foot line, {@damage 6d12} electricity.",
+						"{@bold Green} swim Speed 40 feet, ignores {@quickref difficult terrain||3|terrain} from non-magical foliage; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} poison; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 10d6} poison (Fortitude save instead of Reflex).",
+						"{@b Red} ignore {@condition concealed} from smoke; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 4d6} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} wing ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} fire.",
+						"{@bold White} climb Speed 25 feet on ice only; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 3d6} piercing plus {@damage 2d6} cold; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} cold.",
+						"{@bold Brass} burrow Speed 20 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 3d8} piercing plus {@damage 2d4} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@damage 3d10} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} spikes ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 15d4} fire.",
+						"{@bold Bronze} swim Speed 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10} piercing plus {@damage 1d12} electricity; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} wing ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} slashing; breath weapon 80-foot line, {@damage 6d12} electricity.",
+						"{@bold Copper} climb Speed 25 feet on stone only; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} acid; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} wing ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} bludgeoning; breath weapon 60-foot line, {@damage 10d6} acid.",
+						"{@bold Gold} swim Speed 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 4d6} slashing; {@b Melee} {@as 1} tail ({@trait reach <10 feet>}), {@b Damage} {@damage 3d10} bludgeoning; {@b Melee} {@as 1} horns ({@trait reach <10 feet>}), {@b Damage} {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 6d10} fire.",
 						"{@b Silver} walk on clouds; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d12} piercing plus {@damage 2d6} cold; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d10} slashing; {@b Melee} {@as 1} tail (reach 10), {@b Damage} {@damage 3d10} bludgeoning; breath weapon 30-foot cone, {@damage 8d8} cold."
 					]
 				}
@@ -6702,7 +6714,13 @@
 						"10 temporary Hit Points.",
 						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +18, and your damage bonus is +9. These are Dexterity based ({@trait air} or {@trait fire}) or Strength based ({@trait earth} or {@trait water}). If your corresponding unarmed attack modifier is higher, you can use it instead.",
-						"{@bold Acrobatics} ({@trait air} or {@trait fire}) or {@skill Athletics} (earth or water) modifier of +20; ignore this change if your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
+						"{@bold Acrobatics} ({@trait air} or {@trait fire}) or {@skill Athletics} (earth or water) modifier of +20; ignore this change if your own modifier is higher."
+					]
+				},
+				"You also gain specific abilities based on the type of elemental you choose:",
+				{
+					"type": "list",
+					"items": [
 						"{@bold Air} fly Speed 80 feet, movement doesn't trigger reactions; {@b Melee} {@as 1} gust, {@b Damage} {@damage 1d4} bludgeoning.",
 						"{@bold Earth} Speed 20 feet, burrow Speed 20 feet; {@b Melee} {@as 1} fist, {@b Damage} {@damage 2d10} bludgeoning.",
 						"{@bold Fire} Speed 50 feet; fire resistance 10, weakness 5 to cold and 5 to water; {@b Melee} {@as 1} tendril, {@b Damage} {@damage 1d8} fire plus {@damage 1d4} {@condition persistent damage||persistent fire}.",
@@ -11137,13 +11155,19 @@
 						"10 temporary Hit Points.",
 						"Low-light vision.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +13, and your damage bonus is +2. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition). If your unarmed attack modifier is higher, you can use it instead.",
-						"{@skill Athletics} modifier of +13, unless your own is higher. You also gain specific abilities based on the form you choose:",
+						"{@skill Athletics} modifier of +13, unless your own is higher."
+					]
+				},
+				"You also gain specific abilities based on the form you choose:",
+				{
+					"type": "list",
+					"items": [
 						"{@bold Ant} Speed 30 feet, climb Speed 30 feet; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Beetle} Speed 25 feet; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 2d10} bludgeoning.",
 						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; {@ability darkvision}; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage||persistent poison}.",
 						"{@bold Mantis} Speed 40 feet; imprecise {@ability scent} 30 feet; {@b Melee} {@as 1} foreleg, {@b Damage} {@damage 2d8} bludgeoning.",
 						"{@bold Scorpion} Speed 40 feet; {@ability darkvision}, imprecise {@ability tremorsense} 60 feet; {@b Melee} {@as 1} stinger, {@b Damage} {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage||persistent poison}; {@b Melee} {@as 1} pincer ({@trait agile}), {@b Damage} {@damage 1d6} bludgeoning.",
-						"{@bold Spider} {@ability darkvision}; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage||persistent poison}; {@b Melee} {@as 1} Speed 25 feet, climb Speed 25 feet; {@b Ranged} {@as 1} web (range increment <20 feet>), Damage entangles the target for 1 round."
+						"{@bold Spider} Speed 25 feet, climb Speed 25 feet; {@ability darkvision}; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage||persistent poison}; {@b Ranged} {@as 1} web ({@trait range increment <20 feet>}), {@b Damage} entangles the target for 1 round."
 					]
 				}
 			],
@@ -13661,10 +13685,16 @@
 						"20 temporary Hit Points.",
 						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +28, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
-						"{@skill Athletics} modifier of +30, unless your own modifier is higher. You also gain specific abilities based on the type of monster you choose:",
-						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; {@b Melee} {@as 1} beak (reach <15 feet>), {@b Damage} {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage||persistent fire}; {@b Melee} {@as 1} talon (agile, reach <15 feet>), {@b Damage} {@damage 2d8+12} slashing; Shroud of Flame (aura, evocation, fire, primal) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
-						"{@bold Purple Worm} Speed 40 feet, burrow Speed 30 feet, swim Speed 20 feet; {@b Melee} {@as 1} jaws (reach <10 feet>), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} stinger (agile, reach <10 feet>), {@b Damage} {@damage 2d8+15} piercing plus {@damage 2d6} {@condition persistent damage||persistent poison}; {@b Melee} {@as 1} body (reach <10 feet>) {@b Damage} {@damage 2d8+20} bludgeoning; Inexorable You automatically recover from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of each of your turns. You're also immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}.",
-						"{@bold Sea Serpent} Speed 20 feet, swim Speed 90 feet; {@b Melee} {@as 1} jaws (reach <15 feet>), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} tail (reach <25 feet>), {@b Damage} {@damage 2d8+20} bludgeoning; Spine Rake {@as 2} ({@trait move}) You extend your spines and {@action Swim} or {@action Stride}. Each creature you're adjacent to at any point during your movement takes {@damage 4d8+10} slashing damage (basic Reflex against your spell DC)."
+						"{@skill Athletics} modifier of +30, unless your own modifier is higher."
+					]
+				},
+				"You also gain specific abilities based on the type of monster you choose:",
+				{
+					"type": "list",
+					"items": [
+						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; {@b Melee} {@as 1} beak ({@trait reach <15 feet>}), {@b Damage} {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage||persistent fire}; {@b Melee} {@as 1} talon (agile, {@trait reach <15 feet>}), {@b Damage} {@damage 2d8+12} slashing; {@b Shroud of Flame} ({@trait aura}, {@trait evocation}, {@trait fire}, {@trait primal}) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
+						"{@bold Purple Worm} Speed 40 feet, burrow Speed 30 feet, swim Speed 20 feet; {@b Melee} {@as 1} jaws ({@trait reach <10 feet>}), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} stinger (agile, {@trait reach <10 feet>}), {@b Damage} {@damage 2d8+15} piercing plus {@damage 2d6} {@condition persistent damage||persistent poison}; {@b Melee} {@as 1} body ({@trait reach <10 feet>}) {@b Damage} {@damage 2d8+20} bludgeoning; {@b Inexorable} You automatically recover from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of each of your turns. You're also immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}.",
+						"{@bold Sea Serpent} Speed 20 feet, swim Speed 90 feet; {@b Melee} {@as 1} jaws ({@trait reach <15 feet>}), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} tail ({@trait reach <25 feet>}), {@b Damage} {@damage 2d8+20} bludgeoning; {@b Spine Rake} {@as 2} ({@trait move}) You extend your spines and {@action Swim} or {@action Stride}. Each creature you're adjacent to at any point during your movement takes {@damage 4d8+10} slashing damage (basic Reflex against your spell DC)."
 					]
 				}
 			],
@@ -13854,8 +13884,8 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +36, unless your own modifier is higher. You also gain specific abilities based on the type of incarnation you choose:",
-						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; {@b Melee} {@as 1} vines ({@trait reach <30 feet>}, {@trait versatile <P>}), {@b Damage} {@damage 6d8+12} bludgeoning; {@b Ranged} {@as 1} thorns (range <100 feet>), {@b Damage} {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
-						"{@bold Kaiju} Speed 50 feet; resistance 5 to physical damage; {@b Melee} {@as 1} jaws ({@trait reach <30 feet>}), {@b Damage} {@damage 6d10+10} piercing; {@b Melee} {@as 1} claws (agile, reach <30 feet>), {@b Damage} {@damage 6d8+8} slashing; {@b Melee} {@as 1} foot (agile, reach <15 feet>), {@b Damage} {@damage 6d6+10} bludgeoning; Unstoppable You are immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Trample {@as 3} You move up to double your Speed and move through the spaces of Huge or smaller creatures, trampling each creature whose space you enter. A trampled creature takes foot damage with a basic Reflex save against your spell DC."
+						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; {@b Melee} {@as 1} vines ({@trait reach <30 feet>}, {@trait versatile <P>}), {@b Damage} {@damage 6d8+12} bludgeoning; {@b Ranged} {@as 1} thorns (range 100 feet), {@b Damage} {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
+						"{@bold Kaiju} Speed 50 feet; resistance 5 to physical damage; {@b Melee} {@as 1} jaws ({@trait reach <30 feet>}), {@b Damage} {@damage 6d10+10} piercing; {@b Melee} {@as 1} claws (agile, {@trait reach <30 feet>}), {@b Damage} {@damage 6d8+8} slashing; {@b Melee} {@as 1} foot (agile, {@trait reach <15 feet>}), {@b Damage} {@damage 6d6+10} bludgeoning; Unstoppable You are immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Trample {@as 3} You move up to double your Speed and move through the spaces of Huge or smaller creatures, trampling each creature whose space you enter. A trampled creature takes foot damage with a basic Reflex save against your spell DC."
 					]
 				}
 			],
@@ -14951,10 +14981,16 @@
 						"Resistance 10 to poison.",
 						"Low-light vision.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +17, and your damage bonus is +11. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
-						"{@skill Athletics} modifier of +19, unless your own modifier is higher. You also gain specific abilities based on the type of plant you choose:",
-						"{@bold Arboreal} Speed 30 feet; {@b Melee} {@as 1} branch (reach <15 feet>), {@b Damage} {@damage 2d10} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning; you can speak in this form, but you still can't {@action Cast a Spell} or supply verbal components.",
-						"{@bold Flytrap} Speed 15 feet; resistance 10 to acid; {@b Melee} {@as 1} leaf (reach <10 feet>), {@b Damage} {@damage 2d8} piercing, and you can spend an action after a hit to Grab the target.",
-						"{@bold Shambler} Speed 20 feet, swim Speed 20 feet; resistance 10 to electricity; {@b Melee} {@as 1} vine (reach <15 feet>), {@b Damage} {@damage 2d8} slashing."
+						"{@skill Athletics} modifier of +19, unless your own modifier is higher."
+					]
+				},
+				"You also gain specific abilities based on the type of plant you choose:",
+				{
+					"type": "list",
+					"items": [
+						"{@bold Arboreal} Speed 30 feet; {@b Melee} {@as 1} branch ({@trait reach <15 feet>}), {@b Damage} {@damage 2d10} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning; you can speak in this form, but you still can't {@action Cast a Spell} or supply verbal components.",
+						"{@bold Flytrap} Speed 15 feet; resistance 10 to acid; {@b Melee} {@as 1} leaf ({@trait reach <10 feet>}), {@b Damage} {@damage 2d8} piercing, and you can spend an action after a hit to Grab the target.",
+						"{@bold Shambler} Speed 20 feet, swim Speed 20 feet; resistance 10 to electricity; {@b Melee} {@as 1} vine ({@trait reach <15 feet>}), {@b Damage} {@damage 2d8} slashing."
 					]
 				}
 			],
@@ -15440,7 +15476,7 @@
 						"20 temporary Hit Points.",
 						"Speed 40 feet.",
 						"Low-light vision.",
-						"The following unarmed melee attacks, which are the only attacks the target can use. They're trained with them. When attacking with these attacks, the target uses their attack modifier with the proficiency and item bonuses of their most favorable weapon or unarmed {@action Strike}, and the damage is listed for each attack. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If the target's unarmed attack modifier is higher, they can use it instead. {@b Melee} {@as 1} tusk (reach <15 feet>), {@b Damage} {@damage 4d8+19} piercing; {@b Melee} {@as 1} trunk (agile, reach <15 feet>), {@b Damage} {@damage 4d6+16} bludgeoning; {@b Melee} {@as 1} foot (agile, reach <15 feet>), {@b Damage} {@damage 4d6+13} bludgeoning.",
+						"The following unarmed melee attacks, which are the only attacks the target can use. They're trained with them. When attacking with these attacks, the target uses their attack modifier with the proficiency and item bonuses of their most favorable weapon or unarmed {@action Strike}, and the damage is listed for each attack. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If the target's unarmed attack modifier is higher, they can use it instead. {@b Melee} {@as 1} tusk ({@trait reach <15 feet>}), {@b Damage} {@damage 4d8+19} piercing; {@b Melee} {@as 1} trunk (agile, {@trait reach <15 feet>}), {@b Damage} {@damage 4d6+16} bludgeoning; {@b Melee} {@as 1} foot (agile, {@trait reach <15 feet>}), {@b Damage} {@damage 4d6+13} bludgeoning.",
 						"{@skill Athletics} modifier of +30, unless the target's own modifier is higher.",
 						"{@bold Trample} {@as 3} You move up to twice your Speed and move through the space of Large or smaller creatures, trampling each creature whose space you enter. A trampled creature takes damage from its foot {@action Strike} based on a basic Reflex save (DC = 19 + the target's level)."
 					]
