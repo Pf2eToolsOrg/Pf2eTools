@@ -1,6 +1,125 @@
 {
 	"action": [
 		{
+			"name": "Leap",
+			"remaster": true,
+			"source": "PC1",
+			"page": 417,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You take a short horizontal or vertical jump. Jumping a greater distance requires using the {@skill Athletics} skill for a {@action High Jump|PC1} or {@action Long Jump|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Horizontal",
+							"entries": [
+								"Jump up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your Leap ends (meaning you can typically clear a 5-foot gap, or a 10-foot gap if your Speed is 30 feet or more). You can't make a horizontal Leap if your Speed is less than 15 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Vertical",
+							"entries": [
+								"Jump up to 3 feet vertically and 5 feet horizontally onto an elevated surface."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "High Jump",
+			"remaster": true,
+			"source": "PC1",
+			"page": 235,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You {@action Stride}, then attempt a DC 30 {@skill Athletics} check to make a jump vertically. If you didn't {@action Stride} at least 10 feet, you automatically fail. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You {@action Leap|PC1} up to 8 feet vertically and 10 feet horizontally.",
+						"Success": "You {@action Leap|PC1} up to 5 feet vertically and 5 feet horizontally.",
+						"Failure": "You {@action Leap|PC1} normally.",
+						"Critical Failure": "You fall {@condition prone} in your space."
+					}
+				}
+			]
+		},
+		{
+			"name": "Long Jump",
+			"remaster": true,
+			"source": "PC1",
+			"page": 235,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You {@action Stride}, then attempt a DC 15 {@skill Athletics} check to make a long jump in the direction you were {@action Stride||Striding}. If you didn't {@action Stride} at least 10 feet, you automatically fail your check. The GM might increase or decrease this DC depending on the situation.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You {@action Leap|PC1} up to a distance equal to your check result rounded down to the nearest 5 feet. You can't jump farther than your land Speed.",
+						"Failure": "You make a normal horizontal {@action Leap|PC1}.",
+						"Critical Failure": "You make a normal horizontal {@action Leap|PC1}, then fall and land {@condition prone}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Reposition",
+			"remaster": true,
+			"alias": [
+				"Drag",
+				"Pull"
+			],
+			"source": "PC1",
+			"page": 235,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"requirements": "You either have at least one hand free, or you're {@condition grabbed||grabbing} or {@condition restrained||restraining} the target. The target can't be more than one size larger than you.",
+			"entries": [
+				"You muscle a creature or object around. Attempt an {@skill Athletics} check against the target's Fortitude DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You move the creature up to 10 feet. It must remain within your reach during this movement, and you can't move it into or through obstacles.",
+						"Success": "You move the target up to 5 feet. It must remain within your reach during this movement, and you can't move it into or through obstacles.",
+						"Critical Failure": "The target can move you up to 5 feet as though it successfully Repositioned you."
+					}
+				}
+			],
+			"actionType": {
+				"basic": true
+			}
+		},
+		{
 			"name": "Extract Element",
 			"source": "RoE",
 			"activity": {
