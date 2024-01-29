@@ -14079,6 +14079,48 @@
 			"miscTags": [
 				"THP"
 			]
+		},
+		{
+			"source": "PC1",
+			"name": "Tempest Surge",
+			"page": 382,
+			"focus": true,
+			"level": 4,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"uncommon",
+				"air",
+				"concentrate",
+				"druid",
+				"electricity",
+				"focus",
+				"manipulate"
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"basic": true,
+				"type": [
+					"R"
+				]
+			},
+			"entries": [
+				"You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage to the target with a basic Reflex save. On a failure, the target also is {@condition clumsy 2} for 1 round."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The initial damage increases by {@scaledice 1d12|1-10|1d12}."
+					]
+				}
+			},
+			"remaster": true
 		}
 	]
 }
