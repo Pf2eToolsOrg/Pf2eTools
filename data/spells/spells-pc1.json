@@ -4613,6 +4613,11 @@
 				"unit": "feet"
 			},
 			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"entries": [
 				"An orb of biting cold coalesces around your target, freezing its body. The target takes {@damage 2d4} cold damage with a basic Fortitude save. On a critical failure, the target also gains weakness 1 to bludgeoning until the start of your next turn."
 			],
@@ -5152,7 +5157,7 @@
 			"targets": "1 living creature or 1 willing undead creature",
 			"entries": [
 				"You channel void energy to harm the living or heal the undead. If the target is a living creature, you deal {@damage 1d8} void damage to it, and it gets a basic Fortitude save. If the target is a willing undead creature, you restore that amount of Hit Points. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
-				"{@as 1} The spell has a range of touch.",
+				"{@b {@as 1}} The spell has a range of touch.",
 				"{@b {@as 2} ({@trait concentrate})} The spell has a range of 30 feet. If you're healing an undead creature, increase the Hit Points restored by 8.",
 				"{@b {@as 3} ({@trait concentrate})} You disperse void energy in a 30-foot emanation. This targets all living and undead creatures in the area."
 			],
@@ -5230,7 +5235,7 @@
 			"targets": "1 willing living creature or 1 undead creature",
 			"entries": [
 				"You channel vital energy to heal the living or damage the undead. If the target is a willing living creature, you restore {@damage 1d8} Hit Points. If the target is undead, you deal that amount of vitality damage to it, and it gets a basic Fortitude save. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
-				"{@as 1} The spell has a range of touch.",
+				"{@b {@as 1}} The spell has a range of touch.",
 				"{@b {@as 2} ({@trait concentrate})} The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
 				"{@b {@as 3} ({@trait concentrate})} You disperse vital energy in a 30-foot emanation. This targets all living and undead creatures in the burst."
 			],
