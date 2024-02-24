@@ -1,6 +1,84 @@
 {
 	"item": [
 		{
+			"name": "Blackaxe",
+			"source": "B1",
+			"page": 313,
+			"type": "Item",
+			"level": 25,
+			"traits": [
+				"unique",
+				"artifact",
+				"cursed",
+				"evocation",
+				"primal"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "2",
+			"category": "Weapon",
+			"entries": [
+				"This potent weapon used by {@creature Treerazer} is a +4 {@item greater corrosive} {@item major striking} obsidian {@item greataxe} that grants a +4 item bonus to attack rolls, deals an extra {@damage 2d6} damage to {@trait plant||plants}, and has the properties of {@item adamantine weapon (generic)||adamantine}.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divination",
+						"scrying"
+					],
+					"requirements": "You aren’t wielding Blackaxe and you are its true owner.",
+					"entries": [
+						"You sense the world around Blackaxe as though you were in its location and can use any of your innate spells through the link as if it were the source of the spell. If another creature is wielding Blackaxe, it must succeed at a DC 50 Will save or be {@condition slowed 2} until it relinquishes the weapon."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"command"
+					],
+					"traits": [
+						"conjuration",
+						"teleportation"
+					],
+					"requirements": "You aren’t wielding Blackaxe and you are its true owner.",
+					"entries": [
+						"Blackaxe appears in your hands, teleporting instantly from its prior location."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"traits": [
+						"death",
+						"healing",
+						"necromancy"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"Make a Strike against a living tree with Blackaxe. If it hits, the tree withers to ash and you heal 250 Hit Points and gain the benefit of {@spell restoration} (6th) and {@spell restore senses}."
+					]
+				}
+			]
+		},
+		{
 			"name": "Black Smear Poison",
 			"source": "B1",
 			"page": 51,
