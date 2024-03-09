@@ -1650,6 +1650,7 @@ SRC_SoT6 = "SoT6";
 SRC_TaL = "TaL";
 SRC_TiO = "TiO";
 SRC_ToK = "ToK";
+SRC_SDfS0 = "SDfS0";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
 Parser.SOURCE_JSON_TO_FULL[SRC_TV] = "Treasure Vault";
@@ -1787,6 +1788,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SoT6] =
 Parser.SOURCE_JSON_TO_FULL[SRC_TaL] = "Torment and Legacy";
 Parser.SOURCE_JSON_TO_FULL[SRC_TiO] = "Troubles in Otari";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToK] = "Threshold of Knowledge";
+Parser.SOURCE_JSON_TO_FULL[SRC_SDfS0] = "Seven Dooms for Sandpoint Player's Guide";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_TV] = "TV";
@@ -1888,6 +1890,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SoT6] = "SoT6";
 Parser.SOURCE_JSON_TO_ABV[SRC_TaL] = "TaL";
 Parser.SOURCE_JSON_TO_ABV[SRC_TiO] = "TiO";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToK] = "ToK";
+Parser.SOURCE_JSON_TO_ABV[SRC_SDfS0] = "SDfS0";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_TV] = "2023-02-22";
@@ -1989,6 +1992,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SoT6] = "2021-07-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_TaL] = "2019-09-11";
 Parser.SOURCE_JSON_TO_DATE[SRC_TiO] = "2020-12-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_ToK] = "2021-11-19";
+Parser.SOURCE_JSON_TO_DATE[SRC_SDfS0] = "2024-03-08";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_RoE] = "https://paizo.com/products/btq02eal";
@@ -2101,6 +2105,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SoT6] = "https://paizo.com/products/btq027u1";
 Parser.SOURCE_JSON_TO_STORE[SRC_TaL] = "https://paizo.com/products/btq021ax";
 Parser.SOURCE_JSON_TO_STORE[SRC_TiO] = "https://paizo.com/products/btq026k1";
 Parser.SOURCE_JSON_TO_STORE[SRC_ToK] = "https://paizo.com/products/btq027qf";
+Parser.SOURCE_JSON_TO_STORE[SRC_SDfS0] = "https://downloads.paizo.com/SevenDoomsforSandpoint_PlayersGuide.pdf";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
 	SRC_AoA0,
@@ -2171,6 +2176,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_TiO,
 	SRC_ToK,
 	SRC_SKT0,
+	SRC_SDfS0,
 ]);
 Parser.SOURCES_VANILLA = new Set([
 	SRC_APG,
@@ -2336,6 +2342,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_TiO,
 	SRC_ToK,
 	SRC_SKT0,
+	SRC_SDfS0,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
