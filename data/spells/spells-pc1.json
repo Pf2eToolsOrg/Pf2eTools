@@ -27,16 +27,19 @@
 			"savingThrow": {
 				"type": [
 					"R"
-				],
-				"basic": true
-			},
-			"duration": {
-				"entry": "varies",
-				"unit": "special"
+				]
 			},
 			"entries": [
-				"An ephemeral, taloned hand grips the target, burning it with magical acid.",
-				"The target takes {@damage 2d8} acid damage plus {@damage 1d6} {@condition persistent damage||persistent acid damage} depending on its Reflex save. A creature taking persistent damage from this spell takes a \u201310-foot status bonus to its Speeds."
+				"An ephemeral, taloned hand grips the target, burning it with magical acid. The target takes {@damage 2d8} acid damage plus {@damage 1d6} {@condition persistent damage||persistent acid damage} depending on its Reflex save. A creature taking {@condition persistent damage} from this spell takes a \u201310-foot status bonus to its Speeds.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature takes half damage and no {@condition persistent damage}, and the claw moves it up to 5 feet in a direction of your choice.",
+						"Failure": "The creature takes full damage and {@condition persistent damage}, and the claw moves it up to 10 feet in a direction of your choice.",
+						"Critical Failure": "The creature takes double damage and full {@condition persistent damage}, and the claw moves it up to 20 feet in a direction of your choice."
+					}
+				}
 			],
 			"heightened": {
 				"plusX": {
@@ -896,7 +899,7 @@
 			]
 		},
 		{
-			"name": "Breath Of Life",
+			"name": "Breath of Life",
 			"source": "PC1",
 			"remaster": true,
 			"page": 319,
@@ -1030,7 +1033,7 @@
 			]
 		},
 		{
-			"name": "Canticle Of Everlasting Grief",
+			"name": "Canticle of Everlasting Grief",
 			"source": "PC1",
 			"remaster": true,
 			"page": 319,
@@ -1412,8 +1415,8 @@
 				"primal"
 			],
 			"cast": {
-				"number": 1,
-				"unit": "minute"
+				"number": 2,
+				"unit": "action"
 			},
 			"range": {
 				"number": 1,
@@ -1848,7 +1851,7 @@
 			}
 		},
 		{
-			"name": "Crisis Of Faith",
+			"name": "Crisis of Faith",
 			"source": "PC1",
 			"remaster": true,
 			"page": 322,
@@ -4076,7 +4079,7 @@
 			}
 		},
 		{
-			"name": "Field Of Life",
+			"name": "Field of Life",
 			"source": "PC1",
 			"remaster": true,
 			"page": 331,
@@ -4592,7 +4595,6 @@
 			"page": 332,
 			"level": 1,
 			"traits": [
-				"attack",
 				"cantrip",
 				"cold",
 				"concentrate",
@@ -4611,6 +4613,11 @@
 				"unit": "feet"
 			},
 			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"entries": [
 				"An orb of biting cold coalesces around your target, freezing its body. The target takes {@damage 2d4} cold damage with a basic Fortitude save. On a critical failure, the target also gains weakness 1 to bludgeoning until the start of your next turn."
 			],
@@ -5026,7 +5033,7 @@
 			]
 		},
 		{
-			"name": "Gust Of Wind",
+			"name": "Gust of Wind",
 			"source": "PC1",
 			"remaster": true,
 			"page": 334,
@@ -5150,7 +5157,7 @@
 			"targets": "1 living creature or 1 willing undead creature",
 			"entries": [
 				"You channel void energy to harm the living or heal the undead. If the target is a living creature, you deal {@damage 1d8} void damage to it, and it gets a basic Fortitude save. If the target is a willing undead creature, you restore that amount of Hit Points. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
-				"{@as 1} The spell has a range of touch.",
+				"{@b {@as 1}} The spell has a range of touch.",
 				"{@b {@as 2} ({@trait concentrate})} The spell has a range of 30 feet. If you're healing an undead creature, increase the Hit Points restored by 8.",
 				"{@b {@as 3} ({@trait concentrate})} You disperse void energy in a 30-foot emanation. This targets all living and undead creatures in the area."
 			],
@@ -5228,7 +5235,7 @@
 			"targets": "1 willing living creature or 1 undead creature",
 			"entries": [
 				"You channel vital energy to heal the living or damage the undead. If the target is a willing living creature, you restore {@damage 1d8} Hit Points. If the target is undead, you deal that amount of vitality damage to it, and it gets a basic Fortitude save. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
-				"{@as 1} The spell has a range of touch.",
+				"{@b {@as 1}} The spell has a range of touch.",
 				"{@b {@as 2} ({@trait concentrate})} The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
 				"{@b {@as 3} ({@trait concentrate})} You disperse vital energy in a 30-foot emanation. This targets all living and undead creatures in the burst."
 			],
@@ -6381,7 +6388,7 @@
 			]
 		},
 		{
-			"name": "Know The Way",
+			"name": "Know the Way",
 			"source": "PC1",
 			"remaster": true,
 			"page": 340,
@@ -6919,7 +6926,7 @@
 			}
 		},
 		{
-			"name": "Mask Of Terror",
+			"name": "Mask of Terror",
 			"source": "PC1",
 			"remaster": true,
 			"page": 342,
@@ -7419,7 +7426,7 @@
 			]
 		},
 		{
-			"name": "Moment Of Renewal",
+			"name": "Moment of Renewal",
 			"source": "PC1",
 			"remaster": true,
 			"page": 344,
@@ -9583,7 +9590,7 @@
 			}
 		},
 		{
-			"name": "Ring Of Truth",
+			"name": "Ring of Truth",
 			"source": "PC1",
 			"remaster": true,
 			"page": 354,
@@ -9898,7 +9905,7 @@
 			]
 		},
 		{
-			"name": "See The Unseen",
+			"name": "See the Unseen",
 			"source": "PC1",
 			"remaster": true,
 			"page": 355,
@@ -10593,7 +10600,7 @@
 			}
 		},
 		{
-			"name": "Speak With Animals",
+			"name": "Speak with Animals",
 			"source": "PC1",
 			"remaster": true,
 			"page": 358,
@@ -10618,7 +10625,7 @@
 			]
 		},
 		{
-			"name": "Speak With Plants",
+			"name": "Speak with Plants",
 			"source": "PC1",
 			"remaster": true,
 			"page": 358,
@@ -10654,7 +10661,7 @@
 			}
 		},
 		{
-			"name": "Speak With Stone",
+			"name": "Speak with Stone",
 			"source": "PC1",
 			"remaster": true,
 			"page": 358,
@@ -12185,7 +12192,7 @@
 			},
 			"targets": "1 creature",
 			"entries": [
-				"With a rush of telekinetic power, you move a foe or something they carry. You can attempt to {@action Disarm}, {@action Shove}, or {@action Trip} the target using a spell attack roll instead of an {@skill Athletics} check."
+				"With a rush of telekinetic power, you move a foe or something they carry. You can attempt to {@action Disarm}, {@action Reposition|PC1}, {@action Shove}, or {@action Trip} the target using a spell attack roll instead of an {@skill Athletics} check."
 			]
 		},
 		{
@@ -12485,7 +12492,7 @@
 			}
 		},
 		{
-			"name": "Tree Of Seasons",
+			"name": "Tree of Seasons",
 			"source": "PC1",
 			"remaster": true,
 			"page": 364,
@@ -13086,7 +13093,7 @@
 			]
 		},
 		{
-			"name": "Veil Of Privacy",
+			"name": "Veil of Privacy",
 			"source": "PC1",
 			"remaster": true,
 			"page": 366,
@@ -13213,7 +13220,7 @@
 			]
 		},
 		{
-			"name": "Vision Of Death",
+			"name": "Vision of Death",
 			"source": "PC1",
 			"remaster": true,
 			"page": 366,
@@ -13441,7 +13448,7 @@
 			}
 		},
 		{
-			"name": "Wails Of The Damned",
+			"name": "Wails of the Damned",
 			"source": "PC1",
 			"remaster": true,
 			"page": 367,
@@ -13486,7 +13493,7 @@
 			]
 		},
 		{
-			"name": "Wall Of Fire",
+			"name": "Wall of Fire",
 			"source": "PC1",
 			"remaster": true,
 			"page": 367,
@@ -13527,7 +13534,7 @@
 			}
 		},
 		{
-			"name": "Wall Of Force",
+			"name": "Wall of Force",
 			"source": "PC1",
 			"remaster": true,
 			"page": 367,
@@ -13566,7 +13573,7 @@
 			}
 		},
 		{
-			"name": "Wall Of Ice",
+			"name": "Wall of Ice",
 			"source": "PC1",
 			"remaster": true,
 			"page": 367,
@@ -13609,7 +13616,7 @@
 			}
 		},
 		{
-			"name": "Wall Of Stone",
+			"name": "Wall of Stone",
 			"source": "PC1",
 			"remaster": true,
 			"page": 367,
@@ -13647,7 +13654,7 @@
 			}
 		},
 		{
-			"name": "Wall Of Thorns",
+			"name": "Wall of Thorns",
 			"source": "PC1",
 			"remaster": true,
 			"page": 367,
@@ -13687,7 +13694,7 @@
 			}
 		},
 		{
-			"name": "Wall Of Wind",
+			"name": "Wall of Wind",
 			"source": "PC1",
 			"remaster": true,
 			"page": 368,
@@ -14077,6 +14084,48 @@
 			"miscTags": [
 				"THP"
 			]
+		},
+		{
+			"source": "PC1",
+			"name": "Tempest Surge",
+			"page": 382,
+			"focus": true,
+			"level": 4,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"uncommon",
+				"air",
+				"concentrate",
+				"druid",
+				"electricity",
+				"focus",
+				"manipulate"
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"basic": true,
+				"type": [
+					"R"
+				]
+			},
+			"entries": [
+				"You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage to the target with a basic Reflex save. On a failure, the target also is {@condition clumsy 2} for 1 round."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The initial damage increases by {@scaledice 1d12|1-10|1d12}."
+					]
+				}
+			},
+			"remaster": true
 		}
 	]
 }

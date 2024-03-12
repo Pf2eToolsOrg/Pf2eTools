@@ -6728,88 +6728,16 @@
 									"entries": [
 										"If you'd like to create your map randomly, begin by selecting a hex on a blank map as the starting point. Then decide the type of terrain for that starting point or roll it on Table 3\u20134: Random Terrain Type. From that point onward, let the players decide which direction they travel. If they enter an unexplored hex, generate that hex by rolling {@dice 1d20} on Table 3\u20134 and Table 3\u20135: Random Terrain Feature to determine a type and element for that hex. Apply common sense when producing terrain in this way. Unless magic is involved, it is unlikely a patch of arctic ice would appear in the heart of a desert\u2014though figuring out a way for that to occur could lead to an interesting encounter or subplot later on.",
 										{
-											"type": "table",
-											"rollable": true,
-											"source": "GMG",
-											"page": 171,
-											"name": "RANDOM TERRAIN TYPE",
-											"id": "3-4",
-											"colSizes": [
-												1,
-												4
-											],
-											"rows": [
-												[
-													"{@dice 1d20}",
-													"Result"
-												],
-												[
-													"1\u20133",
-													"Plains"
-												],
-												[
-													"4\u20135",
-													"Desert"
-												],
-												[
-													"6\u20137",
-													"Aquatic (lake, sea, or ocean)"
-												],
-												[
-													"8\u20139",
-													"Mountain"
-												],
-												[
-													"10\u201311",
-													"Forest"
-												],
-												[
-													"12",
-													"Swamp"
-												],
-												[
-													"13",
-													"Arctic"
-												],
-												[
-													"14\u201320",
-													"Match the previous hex"
-												]
-											]
+											"type": "data",
+											"tag": "table",
+											"name": "Random Terrain Type",
+											"source": "GMG"
 										},
 										{
-											"type": "table",
-											"rollable": true,
-											"source": "GMG",
-											"page": 171,
-											"name": "RANDOM TERRAIN FEATURE",
-											"id": "3-5",
-											"colSizes": [
-												1,
-												4
-											],
-											"rows": [
-												[
-													"{@dice 1d20}",
-													"Result"
-												],
-												[
-													"1\u20133",
-													"{@b Landmark} A feature of some significance that distinguishes the hex as noteworthy."
-												],
-												[
-													"4\u20136",
-													"{@b Secret} The hex contains a secret the party uncovers upon exploring the hex."
-												],
-												[
-													"7\u20139",
-													"{@b Resource} The hex contains some valuable resource appropriate to the terrain."
-												],
-												[
-													"10\u201320",
-													"{@b Standard} A standard representation of the terrain type."
-												]
-											]
+											"type": "data",
+											"tag": "table",
+											"name": "Random Terrain Feature",
+											"source": "GMG"
 										},
 										{
 											"type": "pf2-brown-box",
@@ -6931,41 +6859,10 @@
 								"Once you have your hexploration map ready, it's time for the PCs to start exploring! Each day, the PCs decide how they plan on exploring, either learning more about their current hex or traversing a new hex. They do this by declaring one or more hexploration activities for the day.",
 								"These activities take two forms: group or individual. The number of hexploration activities a group can accomplish each day is based on the Speed of their slowest member. If a group is willing to split up, faster members can perform more hexploration activities based on their own Speed, but such a decision may be deadly given the threat of random encounters. A group moving at a Speed of 10 feet or less is so slow it can't even traverse an open hex in a single day; it takes such a group 2 days for each hexploration activity.",
 								{
-									"type": "table",
-									"source": "GMG",
-									"page": 172,
-									"name": "HEXPLORATION ACTIVITIES PER DAY",
-									"id": "3-6",
-									"colStyles": [
-										"",
-										"text-center"
-									],
-									"rows": [
-										[
-											"Speed",
-											"Activities per Day"
-										],
-										[
-											"10 feet or less",
-											"1/2"
-										],
-										[
-											"15\u201325 feet",
-											"1"
-										],
-										[
-											"30\u201340 feet",
-											"2"
-										],
-										[
-											"45\u201355 feet",
-											"3"
-										],
-										[
-											"60 feet or more",
-											"4"
-										]
-									]
+									"type": "data",
+									"tag": "table",
+									"name": "Hexploration Activities per Day",
+									"source": "GMG"
 								},
 								"This rate assumes the PCs are taking time to camp and rest at healthy intervals. When a new day of hexploration begins, the group can decide to take a forced march as long as no one in the group is {@condition fatigued}. Doing so allows them to gain an extra Travel activity (or perform a full Travel activity each day if their Speed is 10 feet or less), but this is the only activity they can perform that day. A character can participate in a forced march safely for a number of days equal to the character's Constitution modifier (minimum 1 day). Any additional days of forced march make the character {@condition fatigued} until they spend an entire day of downtime resting.",
 								{
@@ -7028,82 +6925,16 @@
 									"entries": [
 										"When exploring, there is always a chance the PC will stumble upon random encounters, depending on the terrain. At the start of each day of hexploration, roll a flat check and consult the appropriate terrain type on Table 3\u20137: Random Encounter Chance. If the flat check is a success, the PCs have a random encounter, and on a critical success, they have two random encounters. Roll on Table 3\u20138: Random Encounter Type to determine the type of encounter. Once you know the type of the encounter, either choose from the list you made for that region or choose your own.",
 										{
-											"type": "table",
-											"source": "GMG",
-											"page": 173,
-											"name": "RANDOM ENCOUNTER CHANCE",
-											"id": "3-7",
-											"colStyles": [
-												"",
-												"text-center"
-											],
-											"rows": [
-												[
-													"Terrain Type",
-													"Flat Check DC*"
-												],
-												[
-													"Aquatic",
-													"17"
-												],
-												[
-													"Arctic",
-													"17"
-												],
-												[
-													"Desert",
-													"17"
-												],
-												[
-													"Forest",
-													"14"
-												],
-												[
-													"Mountain",
-													"16"
-												],
-												[
-													"Plains",
-													"12"
-												],
-												[
-													"Swamp",
-													"14"
-												]
-											],
-											"footnotes": [
-												"* On a road or river, decrease the DC by 2. If PCs are flying, increase the DC by 3, but choose a hazard or monster that is relevant to flying PCs."
-											]
+											"type": "data",
+											"tag": "table",
+											"name": "Random Encounter Chance",
+											"source": "GMG"
 										},
 										{
-											"type": "table",
-											"rollable": true,
-											"source": "GMG",
-											"page": 173,
-											"name": "RANDOM ENCOUNTER TYPE",
-											"id": "3-8",
-											"colStyles": [
-												"",
-												"text-center"
-											],
-											"rows": [
-												[
-													"{@dice 1d10}",
-													"Encounter"
-												],
-												[
-													"1\u20135",
-													"Harmless"
-												],
-												[
-													"6\u20137",
-													"Hazard"
-												],
-												[
-													"8\u201310",
-													"Creature"
-												]
-											]
+											"type": "data",
+											"tag": "table",
+											"name": "Random Encounter Type",
+											"source": "GMG"
 										}
 									]
 								},
