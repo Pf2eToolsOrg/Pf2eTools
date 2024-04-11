@@ -2393,14 +2393,32 @@
 			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
-				"This silver disc displays an ever-changing etching of an animal.",
-				"When you affix the beastmaster's sigil, the animal settles into a single form based on where you affix it, showing the animal the item can summon when affixed that way. The spell DC of any spell cast by activating this item is 19. A weapon can benefit from only the melee weapon benefit or ranged weapon benefit. A thrown melee weapon gets the melee weapon benefit, and a combination weapon gets only one benefit, which you choose when you affix the spellheart. If it's unclear which one should apply, the GM decides.",
+				"This silver disc displays an ever-changing etching of an animal. When you affix the beastmaster's sigil, the animal settles into a single form based on where you affix it, showing the animal the item can summon when affixed that way. The spell DC of any spell cast by activating this item is 19.",
+				"A weapon can benefit from only the melee weapon benefit or ranged weapon benefit. A {@trait thrown} melee weapon gets the melee weapon benefit, and a {@trait combination} weapon gets only one benefit, which you choose when you affix the spellheart. If it's unclear which one should apply, the GM decides.",
 				{
 					"type": "list",
 					"items": [
-						"Armor The sigil grants you a +1 item bonus to saving throws against poison.",
-						"Melee Weapon The sigil grants you a +1 item bonus to {@skill Athletics} checks to {@action Trip}.",
-						"Ranged Weapon If you critically hit with the affixed weapon, and the target is adjacent to a creature summoned with the sigil, the target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"The sigil grants you a +1 item bonus to saving throws against {@trait poison}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Melee Weapon",
+							"entries": [
+								"The sigil grants you a +1 item bonus to {@skill Athletics} checks to {@action Trip}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Ranged Weapon",
+							"entries": [
+								"If you critically hit with the affixed weapon, and the target is adjacent to a creature summoned with the sigil, the target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
+							]
+						}
 					]
 				},
 				{
@@ -2409,24 +2427,34 @@
 						"{@action Cast a Spell}"
 					],
 					"entries": [
-						"You cast {@spell tame|SoM} ."
-					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast 2nd-level {@spell summon animal} to summon a cave scorpion B2 (armor), wolf (melee weapon), or bat swarm (ranged weapon)."
+						"You cast {@spell tame|SoM}."
 					]
 				}
 			],
 			"variants": [
+				{
+					"level": 5,
+					"price": {
+						"amount": 160,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast 2nd-level {@spell summon animal} to summon a {@creature cave scorpion|B2} (armor), {@creature wolf} (melee weapon), or bat swarm (ranged weapon)."
+							]
+						}
+					],
+					"variantType": "beastmaster's sigil"
+				},
 				{
 					"level": 7,
 					"price": {
@@ -2445,7 +2473,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast 3rd-level {@spell summon animal} to summon a giant monitor lizard (armor), wolverine B2 (melee), or giant bat (ranged)."
+								"You cast 3rd-level {@spell summon animal} to summon a {@creature giant monitor lizard} (armor), {@creature wolverine|B2} (melee), or {@creature giant bat} (ranged)."
 							]
 						}
 					],
@@ -2469,7 +2497,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast 4th-level {@spell summon animal} to summon a giant scorpion (armor), dire wolf (melee), or fen mosquito swarm B2 (ranged)."
+								"You cast 4th-level {@spell summon animal} to summon a {@creature giant scorpion} (armor), {@creature dire wolf} (melee), or {@creature fen mosquito swarm|B2} (ranged)."
 							]
 						}
 					],
@@ -2499,8 +2527,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain the ability to speak with flowers, as speak with plants.",
-						"Weapon (disease) After you cast a plant spell by activating the posy, pollen coats your weapon. Your next {@action Strike} causes the target to be {@condition sickened||sickened 1} on a hit ({@condition sickened||sickened 2} on a critical hit). If the creature attempts to recover, it sneezes rather than retching (rolling against the spellheart's spell DC). If you don't make a {@action Strike} by the end of your next turn, the pollen becomes inert. Plant creatures are immune."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain the ability to speak with flowers, as {@spell speak with plants}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"({@trait disease}) After you cast a plant spell by activating the posy, pollen coats your weapon. Your next {@action Strike} causes the target to be {@condition sickened||sickened 1} on a hit ({@condition sickened||sickened 2} on a critical hit). If the creature attempts to recover, it sneezes rather than retching (rolling against the spellheart's spell DC). If you don't make a {@action Strike} by the end of your next turn, the pollen becomes inert. {@trait Plant} creatures are immune."
+							]
+						}
 					]
 				},
 				{
@@ -2511,22 +2551,32 @@
 					"entries": [
 						"You cast {@spell tanglefoot}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell soothing blossoms|SoM} ."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 88,
+					"price": {
+						"amount": 450,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell soothing blossoms|SoM}."
+							]
+						}
+					],
+					"variantType": "brightbloom posy"
+				},
 				{
 					"level": 11,
 					"price": {
@@ -2558,7 +2608,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell petal storm|SoM} ."
+								"You cast {@spell petal storm|SoM}."
 							]
 						}
 					],
@@ -2595,7 +2645,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell burning blossoms|SoM} ."
+								"You cast {@spell burning blossoms|SoM}."
 							]
 						}
 					],
@@ -2623,8 +2673,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor The desolation locket numbs you to further despair, and you gain a +2 item bonus to saving throws against {@trait emotion} effects.",
-						"Weapon (emotion, mental) After you cast an enchantment spell by activating the locket, you emanate an aura of hopelessness in a 5-foot emanation until the start of your next turn. A creature that ends its turn in the aura must succeed at a Will saving throw against the locket's spell DC or become {@condition slowed||slowed 1} ({@condition slowed||slowed 2} on a critical failure) until the end of its next turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"The desolation locket numbs you to further despair, and you gain a +2 item bonus to saving throws against {@trait emotion} effects."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"({@trait emotion}, {@trait mental}) After you cast an {@trait enchantment} spell by activating the locket, you emanate an aura of hopelessness in a 5-foot emanation until the start of your next turn. A creature that ends its turn in the aura must succeed at a Will saving throw against the locket's spell DC or become {@condition slowed||slowed 1} ({@condition slowed||slowed 2} on a critical failure) until the end of its next turn."
+							]
+						}
 					]
 				},
 				{
@@ -2633,24 +2695,34 @@
 						"{@action Cast a Spell}"
 					],
 					"entries": [
-						"You cast {@spell haunting hymn|SoM} ."
-					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell agonizing despair|APG} ."
+						"You cast {@spell haunting hymn|SoM}."
 					]
 				}
 			],
 			"variants": [
+				{
+					"level": 8,
+					"price": {
+						"amount": 470,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell agonizing despair|APG}."
+							]
+						}
+					],
+					"variantType": "desolation locket"
+				},
 				{
 					"level": 13,
 					"price": {
@@ -2719,7 +2791,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell canticle of everlasting grief|SoM} ."
+								"You cast {@spell canticle of everlasting grief|SoM}."
 							]
 						}
 					],
@@ -2748,8 +2820,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor After you cast an illusion spell by activating the mirror, choose one ally within 30 feet. That ally gains a single illusory image, per mirror image. The image lasts until the end of your next turn if not destroyed before then.",
-						"Weapon After you cast an illusion spell by activating the mirror, illusory copies of the weapon swirl in the air around it. You're affected by the {@spell thicket of knives|SoM} spell until the end of your next turn. The spell ends if you stop wielding the affixed weapon."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"After you cast an {@trait illusion} spell by activating the mirror, choose one ally within 30 feet. That ally gains a single illusory image, per {@spell mirror image}. The image lasts until the end of your next turn if not destroyed before then."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast an {@trait illusion} spell by activating the mirror, illusory copies of the weapon swirl in the air around it. You're affected by the {@spell thicket of knives|SoM} spell until the end of your next turn. The spell ends if you stop wielding the affixed weapon."
+							]
+						}
 					]
 				},
 				{
@@ -2760,22 +2844,32 @@
 					"entries": [
 						"You cast {@spell forbidding ward}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell mirror image}."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 7,
+					"price": {
+						"amount": 325,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell mirror image}."
+							]
+						}
+					],
+					"variantType": "enigma mirror"
+				},
 				{
 					"level": 10,
 					"price": {
@@ -2794,7 +2888,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast mirror's misfortune ."
+								"You cast {@spell mirror's misfortune|SoM}."
 							]
 						}
 					],
@@ -2818,7 +2912,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast mirror's misfortune."
+								"You cast {@spell mirror's misfortune|SoM}."
 							]
 						},
 						{
@@ -2831,7 +2925,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell mirror malefactors|SoM} ."
+								"You cast {@spell mirror malefactors|SoM}."
 							]
 						}
 					],
@@ -2859,8 +2953,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor After you cast a necromancy spell by activating the planchette, you gain resistance 5 to all physical damage (except ghost touch) until the start of your next turn. Attacks by incorporeal creatures (such as a ghost's ghostly hand) count as ghost touch.",
-						"Weapon After you cast a necromancy spell by activating the planchette, the affixed weapon gains the effects of the ghost touch property rune until the end of your next turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"After you cast a {@trait necromancy} spell by activating the planchette, you gain resistance 5 to all physical damage (except {@item ghost touch}) until the start of your next turn. Attacks by incorporeal creatures (such as a ghost's ghostly hand) count as {@item ghost touch}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast a {@trait necromancy} spell by activating the planchette, the affixed weapon gains the effects of the {@item ghost touch} property rune until the end of your next turn."
+							]
+						}
 					]
 				},
 				{
@@ -2871,22 +2977,32 @@
 					"entries": [
 						"You cast {@spell chill touch}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell invoke spirits|SoM} ."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 12,
+					"price": {
+						"amount": 1750,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell invoke spirits|SoM}."
+							]
+						}
+					],
+					"variantType": "ghostcaller's planchette"
+				},
 				{
 					"level": 18,
 					"price": {
@@ -2918,7 +3034,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell tempest of shades|SoM} ."
+								"You cast {@spell tempest of shades|SoM}."
 							]
 						}
 					],
@@ -2947,8 +3063,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain resistance 2 to electricity.",
-						"Weapon After you cast an electricity spell by activating the coil, your Strikes with the weapon deal an additional {@damage 1d4} electricity damage until the end of your next turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain resistance 2 to electricity."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast an {@trait electricity} spell by activating the coil, your Strikes with the weapon deal an additional {@damage 1d4} electricity damage until the end of your next turn."
+							]
+						}
 					]
 				},
 				{
@@ -2989,7 +3117,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell light}ning bolt."
+								"You cast {@spell lightning bolt}."
 							]
 						}
 					],
@@ -3013,7 +3141,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast 4th-level {@spell light}ning bolt."
+								"You cast 4th-level {@spell lightning bolt}."
 							]
 						},
 						{
@@ -3026,7 +3154,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell draw the lightning|SoM} ."
+								"You cast {@spell draw the lightning|SoM}."
 							]
 						}
 					],
@@ -3054,8 +3182,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor After you cast a spell by activating the thurible, the thurible casts circle of protection on you, with a duration of 1 round. You choose the alignment, which must be one opposed by one of your deity's alignments.",
-						"Weapon After you cast a spell by activating the thurible, the weapon gains your choice of an anarchic, axiomatic, holy, or unholy rune until the end of your next turn. You can choose a rune only if it matches an alignment your deity has (anarchic for chaotic, axiomatic for lawful, holy for good, or unholy for evil)."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"After you cast a spell by activating the thurible, the thurible casts {@spell circle of protection} on you, with a duration of 1 round. You choose the alignment, which must be one opposed by one of your deity's alignments."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast a spell by activating the thurible, the weapon gains your choice of an {@item anarchic}, {@item axiomatic}, {@item holy}, or {@item unholy} rune until the end of your next turn. You can choose a rune only if it matches an alignment your deity has ({@item anarchic} for {@trait chaotic}, {@item axiomatic} for {@trait lawful}, {@item holy} for {@trait good}, or {@item unholy} for {@trait evil})."
+							]
+						}
 					]
 				},
 				{
@@ -3066,22 +3206,32 @@
 					"entries": [
 						"You cast {@spell divine lance}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell divine wrath}."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 10,
+					"price": {
+						"amount": 975,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell divine wrath}."
+							]
+						}
+					],
+					"variantType": "judgment thurible"
+				},
 				{
 					"level": 17,
 					"price": {
@@ -3150,7 +3300,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell summon deific herald|SoM} ."
+								"You cast {@spell summon deific herald|SoM}."
 							]
 						}
 					],
@@ -3176,13 +3326,24 @@
 			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
-				"A jyoti's feather is a shimmering red and gold feather, seeming almost metallic, although delicate and flexible to the touch.",
-				"Though most aren't made from true jyoti feathers, as the reclusive outsiders avoid visitors from the Material Plane, their connection to positive energy lent the spellhearts their name.",
+				"A {@i jyoti's feather} is a shimmering red and gold feather, seeming almost metallic, although delicate and flexible to the touch. Though most aren't made from true jyoti feathers, as the reclusive outsiders avoid visitors from the Material Plane, their connection to positive energy lent the spellhearts their name.",
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain a +2 item bonus to saving throws against {@trait death} effects and negative energy.",
-						"Weapon The weapon has the disrupting rune while the feather is affixed."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain a +2 item bonus to saving throws against {@trait death} effects and negative energy."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"The weapon has the {@item disrupting} rune while the feather is affixed."
+							]
+						}
 					]
 				},
 				{
@@ -3193,22 +3354,32 @@
 					"entries": [
 						"You cast {@spell stabilize}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell vital beacon}."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 10,
+					"price": {
+						"amount": 960,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell vital beacon}."
+							]
+						}
+					],
+					"variantType": "jyoti's feather"
+				},
 				{
 					"level": 14,
 					"price": {
@@ -3240,7 +3411,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell heal}ing well ."
+								"You cast {@spell healing well|SoM}."
 							]
 						}
 					],
@@ -3306,8 +3477,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain a +2 item bonus to saving throws against illusions and {@skill Deception} checks to {@action Create a Diversion}.",
-						"Weapon (visual) After you cast an illusion spell by activating the scarf, the weapon is shrouded in a mesmerizing illusory pattern. Your next {@action Strike} causes the target to be {@condition confused} for 1 round if it hits. If you don't make a {@action Strike} by the end of your next turn, the illusion ends with no effect."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain a +2 item bonus to saving throws against illusions and {@skill Deception} checks to {@action Create a Diversion}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"({@trait visual}) After you cast an {@trait illusion} spell by activating the scarf, the weapon is shrouded in a mesmerizing illusory pattern. Your next {@action Strike} causes the target to be {@condition confused} for 1 round if it hits. If you don't make a {@action Strike} by the end of your next turn, the illusion ends with no effect."
+							]
+						}
 					]
 				},
 				{
@@ -3318,22 +3501,32 @@
 					"entries": [
 						"You cast {@spell dancing lights}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell hypnotic pattern}."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 8,
+					"price": {
+						"amount": 500,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell hypnotic pattern}."
+							]
+						}
+					],
+					"variantType": "lightweave scarf"
+				},
 				{
 					"level": 15,
 					"price": {
@@ -3432,8 +3625,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain a +1 item bonus to {@skill Thievery} checks to {@action Pick a Lock}.",
-						"Weapon If you critically succeed at a {@action Strike} with the weapon, the target is {@condition dazzled} until the end of its next turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain a +1 item bonus to {@skill Thievery} checks to {@action Pick a Lock}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"If you critically succeed at a {@action Strike} with the weapon, the target is {@condition dazzled} until the end of its next turn."
+							]
+						}
 					]
 				},
 				{
@@ -3444,22 +3649,32 @@
 					"entries": [
 						"You cast {@spell ghost sound}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell phantasmal treasure|APG} ."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 6,
+					"price": {
+						"amount": 215,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell phantasmal treasure|APG}."
+							]
+						}
+					],
+					"variantType": "phantasmal doorknob"
+				},
 				{
 					"level": 10,
 					"price": {
@@ -3543,8 +3758,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor (light) After you cast an abjuration spell by activating the prism, you glow with dim light in a multitude of shimmering hues, shedding light like a torch and making you {@condition concealed} until the end of your next turn.",
-						"Weapon After you cast an abjuration spell by activating the prism, your Strikes with the weapon gain the brilliant property rune until the end of your next turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"({@trait light}) After you cast an {@trait abjuration} spell by activating the prism, you glow with dim light in a multitude of shimmering hues, shedding light like a {@item torch} and making you {@condition concealed} until the end of your next turn."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast an {@trait abjuration} spell by activating the prism, your {@action Strike||Strikes} with the weapon gain the {@item brilliant|SoM} property rune until the end of your next turn."
+							]
+						}
 					]
 				},
 				{
@@ -3555,22 +3782,32 @@
 					"entries": [
 						"You cast {@spell light}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell prismatic armor|SoM} ."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 16,
+					"price": {
+						"amount": 8600,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell prismatic armor|SoM}."
+							]
+						}
+					],
+					"variantType": "radiant prism"
+				},
 				{
 					"level": 18,
 					"price": {
@@ -3668,8 +3905,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain resistance 2 to sonic damage and a +1 item bonus to saving throws against effects with the {@trait auditory} or {@trait sonic} trait.",
-						"Weapon After you cast a sonic spell by activating the fork, the weapon reverberates with trapped sound waves. Your next {@action Strike} causes the target to be {@condition deafened} for 1 round if it hits (or for 3 rounds on a critical hit). If you don't make a {@action Strike} by the end of your next turn, the sound waves dissipate with no effect."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain resistance 2 to sonic damage and a +1 item bonus to saving throws against effects with the {@trait auditory} or {@trait sonic} trait."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast a {@trait sonic} spell by activating the fork, the weapon reverberates with trapped sound waves. Your next {@action Strike} causes the target to be {@condition deafened} for 1 round if it hits (or for 3 rounds on a critical hit). If you don't make a {@action Strike} by the end of your next turn, the sound waves dissipate with no effect."
+							]
+						}
 					]
 				},
 				{
@@ -3678,24 +3927,34 @@
 						"{@action Cast a Spell}"
 					],
 					"entries": [
-						"You cast {@spell bullhorn|SoM} ."
-					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell biting words|SoM} ."
+						"You cast {@spell bullhorn|SoM}."
 					]
 				}
 			],
 			"variants": [
+				{
+					"level": 5,
+					"price": {
+						"amount": 140,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell biting words|SoM}."
+							]
+						}
+					],
+					"variantType": "resonating fork"
+				},
 				{
 					"level": 7,
 					"price": {
@@ -3764,7 +4023,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell painful vibrations|SoM} ."
+								"You cast {@spell painful vibrations|SoM}."
 							]
 						}
 					],
@@ -3793,8 +4052,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain resistance 2 to cold.",
-						"Weapon After you cast a cold spell by activating the crystal, your Strikes with the weapon deal an additional {@damage 1d4} cold damage until the end of your next turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain resistance 2 to cold."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast a {@trait cold} spell by activating the crystal, your {@action Strike||Strikes} with the weapon deal an additional {@damage 1d4} cold damage until the end of your next turn."
+							]
+						}
 					]
 				},
 				{
@@ -3835,7 +4106,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast 3rd-level {@spell chilling spray|LOGM} ."
+								"You cast 3rd-level {@spell chilling spray|LOGM}."
 							]
 						}
 					],
@@ -3859,7 +4130,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell ice storm|APG} ."
+								"You cast {@spell ice storm|APG}."
 							]
 						},
 						{
@@ -3901,8 +4172,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain resistance 3 to {@condition persistent damage||persistent bleed damage} and a +2 item bonus on saving throws against effects with the {@trait negative} trait.",
-						"Weapon After you cast a necromancy spell by activating the fang, your Strikes with the weapon deal {@damage 1d4} {@condition persistent damage||persistent bleed damage} until the end of your next turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain resistance 3 to {@condition persistent damage||persistent bleed damage} and a +2 item bonus on saving throws against effects with the {@trait negative} trait."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast a {@trait necromancy} spell by activating the fang, your Strikes with the weapon deal {@damage 1d4} {@condition persistent damage||persistent bleed damage} until the end of your next turn."
+							]
+						}
 					]
 				},
 				{
@@ -3913,22 +4196,32 @@
 					"entries": [
 						"You cast {@spell chill touch}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell vampiric touch}."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 9,
+					"price": {
+						"amount": 650,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell vampiric touch}."
+							]
+						}
+					],
+					"variantType": "sanguine fang"
+				},
 				{
 					"level": 12,
 					"price": {
@@ -3947,7 +4240,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell sanguine mist|SoM} ."
+								"You cast {@spell sanguine mist|SoM}."
 							]
 						},
 						{
@@ -4025,8 +4318,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain imprecise scent with a range of 30 feet.",
-						"Weapon (auditory, emotion, fear, visual) When you cast a polymorph spell by activating the spike, your battle form is exceptionally fearsome. Each enemy in a 30-foot emanation must succeed at a DC 27 Will saving throw or become {@condition frightened||frightened 1} ({@condition frightened||frightened 2} on a critical failure)."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain imprecise scent with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"({@trait auditory}, {@trait emotion}, {@trait fear}, {@trait visual}) When you cast a {@trait polymorph} spell by activating the spike, your battle form is exceptionally fearsome. Each enemy in a 30-foot emanation must succeed at a DC 27 Will saving throw or become {@condition frightened||frightened 1} ({@condition frightened||frightened 2} on a critical failure)."
+							]
+						}
 					]
 				},
 				{
@@ -4035,24 +4340,34 @@
 						"{@action Cast a Spell}"
 					],
 					"entries": [
-						"You cast {@spell gouging claw|SoM} ."
-					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell dinosaur form}."
+						"You cast {@spell gouging claw|SoM}."
 					]
 				}
 			],
 			"variants": [
+				{
+					"level": 9,
+					"price": {
+						"amount": 700,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell dinosaur form}."
+							]
+						}
+					],
+					"variantType": "saurian spike"
+				},
 				{
 					"level": 11,
 					"price": {
@@ -4123,8 +4438,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor (revelation) You aren't {@condition flat-footed} to {@condition hidden} or {@condition undetected} creatures of the eye's level or lower, or creatures of the eye's level or lower using surprise attack, though you can still be flanked.",
-						"Weapon When you make a {@action Strike} with the weapon against a target that's {@condition concealed}, {@condition hidden}, or {@condition undetected}, the DC of your flat check to target it is 4 if the target is {@condition concealed} or 10 if it's {@condition hidden} or {@condition undetected}."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"({@trait revelation}) You aren't {@condition flat-footed} to {@condition hidden} or {@condition undetected} creatures of the eye's level or lower, or creatures of the eye's level or lower using surprise attack, though you can still be flanked."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"When you make a {@action Strike} with the weapon against a target that's {@condition concealed}, {@condition hidden}, or {@condition undetected}, the DC of your flat check to target it is 4 if the target is {@condition concealed} or 10 if it's {@condition hidden} or {@condition undetected}."
+							]
+						}
 					]
 				},
 				{
@@ -4135,22 +4462,32 @@
 					"entries": [
 						"You cast {@spell detect magic}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell web} of eyes ."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 9,
+					"price": {
+						"amount": 650,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell web of eyes|SoM}."
+							]
+						}
+					],
+					"variantType": "vigilant eye"
+				},
 				{
 					"level": 11,
 					"price": {
@@ -4235,8 +4572,21 @@
 				{
 					"type": "list",
 					"items": [
-						"Armor You gain resistance 1 against ranged weapon attacks.",
-						"Weapon When you hit with a {@action Strike} using the affixed weapon, or when a spell effect you created by activating the statuette hits with a {@action Strike}, you can choose a creature adjacent to the creature that was hit. That creature gains a +1 status bonus to AC until the start of your next turn. No more than one creature can benefit from this each turn."
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"You gain resistance 1 against ranged weapon attacks."
+							]
+						},
+
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"When you hit with a {@action Strike} using the affixed weapon, or when a spell effect you created by activating the statuette hits with a {@action Strike}, you can choose a creature adjacent to the creature that was hit. That creature gains a +1 status bonus to AC until the start of your next turn. No more than one creature can benefit from this each turn."
+							]
+						}
 					]
 				},
 				{
@@ -4247,22 +4597,32 @@
 					"entries": [
 						"You cast {@spell shield}."
 					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell spiritual weapon}."
-					]
 				}
 			],
 			"variants": [
+				{
+					"level": 7,
+					"price": {
+						"amount": 325,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell spiritual weapon}."
+							]
+						}
+					],
+					"variantType": "warding statuette"
+				},
 				{
 					"level": 13,
 					"price": {
@@ -4318,40 +4678,61 @@
 			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
-				"The tip of a metallic dragon's claw is set into a band of silver.",
-				"When you summon dragons using the claw, you must choose metallic dragons.",
+				"The tip of a metallic dragon's claw is set into a band of silver. When you summon {@trait dragon||dragons} using the claw, you must choose metallic dragons.",
 				{
 					"type": "list",
 					"items": [
-						"Armor After you cast a conjuration spell by activating the wyrm claw, you gain resistance 5 to acid, cold, electricity, and fire for the next minute.",
-						"Weapon After you cast a conjuration spell by activating the claw, you gain a Breath Weapon activity that takes 2 actions and deals {@dice 6d6} damage with a DC 28 basic Reflex save. Choose the area and type of damage when you use"
+						{
+							"type": "item",
+							"name": "Armor",
+							"entries": [
+								"After you cast a conjuration spell by activating the wyrm claw, you gain resistance 5 to acid, cold, electricity, and fire for the next minute."
+							]
+						},
+
+						{
+							"type": "item",
+							"name": "Weapon",
+							"entries": [
+								"After you cast a conjuration spell by activating the claw, you gain a Breath Weapon activity that takes 2 actions and deals {@dice 6d6} damage with a DC 28 basic Reflex save. Choose the area and type of damage when you use Breath Weapon: a 30-foot line that deals acid, electricity, or fire, or a 15-foot cone that deals cold or fire. You can use this activity once before the end of your next turn."
+							]
+						}
 					]
 				},
-				"Breath Weapon: a 30-foot line that deals acid, electricity, or fire, or a 15-foot cone that deals cold or fire. You can use this activity once before the end of your next turn.",
 				{
 					"type": "ability",
 					"components": [
 						"{@action Cast a Spell}"
 					],
 					"entries": [
-						"You cast {@spell gouging claw|SoM} ."
-					]
-				},
-				{
-					"type": "ability",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"number": 1,
-						"unit": "day"
-					},
-					"entries": [
-						"You cast {@spell summon dragon}."
+						"You cast {@spell gouging claw|SoM}."
 					]
 				}
 			],
 			"variants": [
+				{
+					"level": 12,
+					"price": {
+						"amount": 1000,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell summon dragon}."
+							]
+						}
+					],
+					"variantType": "wyrm claw"
+				},
 				{
 					"level": 15,
 					"price": {
@@ -4394,7 +4775,7 @@
 								"unit": "day"
 							},
 							"entries": [
-								"You cast {@spell summon draconic legion|SoM} ."
+								"You cast {@spell summon draconic legion|SoM}."
 							]
 						}
 					],
@@ -4443,9 +4824,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip daze",
-								"1st bane, ill omen",
-								"2nd blood vendetta , warrior's regret"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell daze}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell bane}, {@spell ill omen|LOGM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell blood vendetta|APG}, {@spell warrior's regret|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -4461,8 +4860,20 @@
 						{
 							"type": "list",
 							"items": [
-								"3rd claim curse , cup of dust",
-								"4th outcast's curse, remove curse, warrior's regret"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell claim curse|SoM}, {@spell cup of dust|LOGM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell outcast's curse}, {@spell remove curse}, {@spell warrior's regret|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -4478,8 +4889,20 @@
 						{
 							"type": "list",
 							"items": [
-								"5th inevitable disaster , mariner's curse",
-								"6th blinding fury , feeblemind, remove curse"
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell inevitable disaster|SoM}, {@spell mariner's curse}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell blinding fury|APG}, {@spell feeblemind}, {@spell remove curse}"
+									]
+								}
 							]
 						}
 					],
@@ -4503,7 +4926,7 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"The visages of beasts are carved into the painted wood of a beast staff, with a large head on top. When used as a weapon, the staff is a +1 striking staff. While wielding the staff while you have it prepared, you're affected by speak with animals. If you have Wild Empathy, you gain a +1 circumstance bonus on checks using it.",
+				"The visages of beasts are carved into the painted wood of a beast staff, with a large head on top. When used as a weapon, the staff is a {@runeItem staff||+1 weapon potency||striking|}. While wielding the staff while you have it prepared, you're affected by {@spell speak with animals}. If you have {@feat Wild Empathy}, you gain a +1 circumstance bonus on checks using it.",
 				{
 					"type": "ability",
 					"components": [
@@ -4528,9 +4951,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip gouging claw",
-								"1st magic fang, pest form",
-								"2nd animal form, enlarge"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell gouging claw|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell magic fang}, {@spell pest form}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell animal form}, {@spell enlarge}"
+									]
+								}
 							]
 						}
 					],
@@ -4547,8 +4988,20 @@
 						{
 							"type": "list",
 							"items": [
-								"3rd animal form, insect form",
-								"4th animal form, bestial curse , insect form, pest form"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell animal form}, {@spell insect form}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell animal form}, {@spell bestial curse|APG}, {@spell insect form}, {@spell pest form}"
+									]
+								}
 							]
 						}
 					],
@@ -4565,8 +5018,20 @@
 						{
 							"type": "list",
 							"items": [
-								"5th animal form, insect form, moon frenzy",
-								"6th baleful polymorph, moon frenzy"
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell animal form}, {@spell insect form}, {@spell moon frenzy}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell baleful polymorph}, {@spell moon frenzy}"
+									]
+								}
 							]
 						}
 					],
@@ -4590,7 +5055,7 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"A boreal staff is chiseled from a cylinder of ice to form a spiky, jagged icicle, its surface gleaming with the colors of the northern lights. It gives the air around you a distinct chill. When used as a weapon, a boreal staff is a +1 striking staff.",
+				"A boreal staff is chiseled from a cylinder of ice to form a spiky, jagged icicle, its surface gleaming with the colors of the northern lights. It gives the air around you a distinct chill. When used as a weapon, a boreal staff is a {@runeItem staff||+1 weapon potency||striking|}.",
 				{
 					"type": "ability",
 					"activity": {
@@ -4633,10 +5098,34 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip ray of frost",
-								"1st chilling spray , snowball",
-								"2nd chilling spray, snowball",
-								"3rd chilling spray, elemental absorption (water only)"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell ray of frost}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell chilling spray|LOGM}, {@spell snowball|LOWG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell chilling spray|LOGM}, {@spell snowball|LOWG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell chilling spray|LOGM}, {@spell elemental absorption|SoM} ({@trait water} only)"
+									]
+								}
 							]
 						}
 					],
@@ -4653,8 +5142,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th chilling spray, ice storm",
-								"5th cone of cold, mantle of the frozen heart"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell chilling spray|LOGM}, {@spell ice storm|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell cone of cold}, {@spell mantle of the frozen heart|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -4671,8 +5172,20 @@
 						{
 							"type": "list",
 							"items": [
-								"6th cone of cold",
-								"7th cone of cold, frigid flurry"
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell cone of cold}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell cone of cold}, {@spell frigid flurry|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -4702,7 +5215,7 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"Heavenly radiance shines from an active celestial staff, a golden staff capped with a pair of sculpted angel's wings. Used as a weapon, the staff is a +2 greater striking holy staff. While wielding a celestial staff, you gain a +1 circumstance bonus to saving throws against effects that have the {@trait evil} trait and effects created by evil creatures. When you prepare this staff, if you're evil, you become {@condition drained||drained 1} until your next daily preparations.",
+				"Heavenly radiance shines from an active celestial staff, a golden staff capped with a pair of sculpted angel's wings. Used as a weapon, the staff is a {@runeItem staff||+2 weapon potency||greater striking||holy|}. While wielding a celestial staff, you gain a +1 circumstance bonus to saving throws against effects that have the {@trait evil} trait and effects created by {@trait evil} creatures. When you prepare this staff, if you're {@trait evil}, you become {@condition drained||drained 1} until your next daily preparations.",
 				{
 					"type": "ability",
 					"components": [
@@ -4713,14 +5226,62 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip divine lance (good only)",
-								"1st bless, protection",
-								"2nd continual flame, inner radiance torrent",
-								"3rd circle of protection, sanctified ground",
-								"4th holy cascade, inner radiance torrent",
-								"5th spiritual guardian, summon celestial",
-								"6th holy cascade, summon celestial",
-								"7th angel form , inner radiance torrent, summon celestial"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell divine lance} ({@trait good} only)"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell bless}, {@spell protection}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell continual flame}, {@spell inner radiance torrent|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell circle of protection}, {@spell sanctified ground}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell holy cascade}, {@spell inner radiance torrent|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell spiritual guardian}, {@spell summon celestial}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell holy cascade}, {@spell summon celestial}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell angel form|SoM}, {@spell inner radiance torrent|SoM}, {@spell summon celestial}"
+									]
+								}
 							]
 						}
 					]
@@ -4750,7 +5311,7 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"Clock faces and gears adorn the twisted iron shaft of a chronomancer staff, the hands of the clocks continually ticking or winding backward. Used as a weapon, the staff is a +2 greater striking speed staff. While wielding this staff, you also gain a +1 circumstance bonus to initiative rolls.",
+				"Clock faces and gears adorn the twisted iron shaft of a chronomancer staff, the hands of the clocks continually ticking or winding backward. Used as a weapon, the staff is a {@runeItem staff||+2 weapon potency||greater striking||speed|}. While wielding this staff, you also gain a +1 circumstance bonus to initiative rolls.",
 				{
 					"type": "ability",
 					"components": [
@@ -4761,14 +5322,62 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip time sense DA",
-								"1st déjà vu , synchronize",
-								"2nd loose time's arrow DA, synchronize",
-								"3rd day's weight , haste, slow, time jump",
-								"4th curse of lost time",
-								"5th quicken time DA, rewinding step , stagnate time DA",
-								"6th cast into time , day's weight",
-								"7th time beacon"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell time sense|DA}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell déjà vu|APG}, {@spell synchronize|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell loose time's arrow|DA}, {@spell synchronize|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell day's weight|SoM}, {@spell haste}, {@spell slow}, {@spell time jump|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell curse of lost time|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell quicken time|DA}, {@spell rewinding step|SoM}, {@spell stagnate time|DA}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell cast into time|SoM}, {@spell day's weight|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell time beacon|LOGM}"
+									]
+								}
 							]
 						}
 					]
@@ -4818,8 +5427,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip haunting hymn , summon instrument",
-								"1st concordant choir"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell haunting hymn|SoM}, {@spell summon instrument|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell concordant choir|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -4835,8 +5456,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd sonata span",
-								"3rd concordant choir, roaring applause , sculpt sound"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell sonata span|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell concordant choir|SoM}, {@spell roaring applause|SoM}, {@spell sculpt sound|APG}"
+									]
+								}
 							]
 						}
 					],
@@ -4853,8 +5486,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th infectious melody",
-								"5th concordant choir, sculpt sound"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell infectious melody|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell concordant choir|SoM}, {@spell sculpt sound|APG}"
+									]
+								}
 							]
 						}
 					],
@@ -4864,7 +5509,7 @@
 			"generic": "G"
 		},
 		{
-			"name": "Dragonscale Staff",
+			"name": "Dragonprism Staff",
 			"source": "TV",
 			"page": 132,
 			"type": "Item",
@@ -4878,8 +5523,8 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"A multi-hued array of scales covers a dragonscale staff, forming a gradient of color, and a dragon's claw holds a gem upon the staff's head. Dragons give allies these staves as a mark of esteem.",
-				"While wielding a dragonscale staff you seem fiercer, gaining a +1 circumstance bonus to {@skill Intimidation} checks to {@action Demoralize}.",
+				"A multi-hued array of scales covers a dragonprism staff, forming a gradient of color, and a dragon's claw holds a gem upon the staff's head. Dragons give allies these staves as a mark of esteem.",
+				"While wielding a dragonprism staff you seem fiercer, gaining a +1 circumstance bonus to {@skill Intimidation} checks to {@action Demoralize}.",
 				{
 					"type": "ability",
 					"components": [
@@ -4904,17 +5549,59 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip gouging claw , puff of poison",
-								"1st burning hands, fear",
-								"2nd acid arrow, resist energy",
-								"3rd fear, lightning bolt",
-								"4th fly, reflective scales",
-								"5th cone of cold, summon dragon",
-								"6th dragon form, reflective scales, summon dragon"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell gouging claw|SoM}, {@spell puff of poison|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell burning hands}, {@spell fear}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell acid arrow}, {@spell resist energy}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell fear}, {@spell lightning bolt}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell fly}, {@spell reflective scales|LOGM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell cone of cold}, {@spell summon dragon}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell dragon form}, {@spell reflective scales|LOGM}, {@spell summon dragon}"
+									]
+								}
 							]
 						}
 					],
-					"variantType": "dragonscale staff"
+					"variantType": "dragonprism staff"
 				},
 				{
 					"level": 20,
@@ -4926,13 +5613,31 @@
 						{
 							"type": "list",
 							"items": [
-								"7th summon dragon",
-								"8th dragon form, summon dragon",
-								"9th summon draconic legion , summon dragon"
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell summon dragon}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "8th",
+									"entries": [
+										"{@spell dragon form}, {@spell summon dragon}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "9th",
+									"entries": [
+										"{@spell summon draconic legion|SoM}, {@spell summon dragon}"
+									]
+								}
 							]
 						}
 					],
-					"variantType": "greater dragonscale staff"
+					"variantType": "greater dragonprism staff"
 				}
 			],
 			"generic": "G"
@@ -4968,12 +5673,48 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip wash your luck",
-								"1st nudge the odds",
-								"2nd lucky number",
-								"3rd shift blame",
-								"4th read omens, winning streak",
-								"5th nudge the odds"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell wash your luck|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell nudge the odds|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell lucky number|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell shift blame|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell read omens}, {@spell winning streak|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell nudge the odds|SoM}"
+									]
+								}
 							]
 						}
 					]
@@ -5036,9 +5777,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip forbidding ward",
-								"1st sanctuary, spirit link",
-								"2nd shield other, spirit link"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell forbidding ward}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell sanctuary}, {@spell spirit link}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell shield other}, {@spell spirit link}"
+									]
+								}
 							]
 						}
 					],
@@ -5054,8 +5813,20 @@
 						{
 							"type": "list",
 							"items": [
-								"3rd life connection , spirit link",
-								"4th freedom of movement, spirit link"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell life connection|SoM}, {@spell spirit link}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell freedom of movement}, {@spell spirit link}"
+									]
+								}
 							]
 						}
 					],
@@ -5071,8 +5842,20 @@
 						{
 							"type": "list",
 							"items": [
-								"5th blessing of defiance , death ward, spirit link",
-								"6th freedom of movement, repulsion, scintillating safeguard , spirit link"
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell blessing of defiance|SoM}, {@spell death ward}, {@spell spirit link}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell freedom of movement}, {@spell repulsion}, {@spell scintillating safeguard|APG}, {@spell spirit link}"
+									]
+								}
 							]
 						}
 					],
@@ -5103,8 +5886,8 @@
 			"category": "Staff",
 			"entries": [
 				"A hell staff is a tall, pointed staff forged of red-tinted steel with Infernal inscriptions that march neatly down its sides. At its top sits an inverted ruby pyramid divided into nine sections.",
-				"Found mostly in Cheliax or other lands where diabolic influences hold sway, when used as a weapon the staff is a +3 greater striking axiomatic unholy staff. When you prepare this staff, if you're chaotic or good, you become {@condition drained||drained 1} until your next daily preparations.",
-				"The staff's {@spell summon lesser servitor|SoM} spell can be used only to summon animals with the {@trait fiend} trait, devils, or hell hounds (at 4th level). Its {@spell summon fiend} spell can summon only devils or hell hounds.",
+				"Found mostly in Cheliax or other lands where diabolic influences hold sway, when used as a weapon the staff is a {@runeItem staff||+3 weapon potency||greater striking||axiomatic||unholy|}. When you prepare this staff, if you're chaotic or good, you become {@condition drained||drained 1} until your next daily preparations.",
+				"The staff's {@spell summon lesser servitor|SoM} spell can be used only to summon animals with the {@trait fiend} trait, {@trait devil||devils}, or {@creature hell hound||hell hounds} (at 4th level). Its {@spell summon fiend} spell can summon only {@trait devil||devils} or {@creature hell hound||hell hounds}.",
 				{
 					"type": "ability",
 					"components": [
@@ -5115,21 +5898,69 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip divine lance (evil or lawful only)",
-								"1st protection, summon lesser servitor",
-								"2nd summon lesser servitor, undetectable alignment",
-								"3rd chilling darkness, summon lesser servitor",
-								"4th divine wrath (evil or lawful only), summon lesser servitor",
-								"5th flame strike, summon fiend",
-								"6th devil form , summon fiend",
-								"7th divine decree (evil or lawful only), summon fiend"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell divine lance} ({@trait evil} or {@trait lawful} only)"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell protection}, {@spell summon lesser servitor|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell summon lesser servitor|SoM}, {@spell undetectable alignment}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell chilling darkness}, {@spell summon lesser servitor|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell divine wrath} ({@trait evil} or {@trait lawful} only), {@spell summon lesser servitor|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell flame strike}, {@spell summon fiend}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell devil form|SoM}, {@spell summon fiend}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell divine decree} ({@trait evil} or {@trait lawful} only), {@spell summon fiend}"
+									]
+								}
 							]
 						}
 					]
 				}
 			],
 			"craftReq": [
-				"You're lawful evil. Supply one casting of all listed levels of all listed spells."
+				"You're {@trait lawful} {@trait evil}. Supply one casting of all listed levels of all listed spells."
 			]
 		},
 		{
@@ -5188,9 +6019,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip approximate , read aura",
-								"1st pocket library , quick sort , share lore",
-								"2nd comprehend language, timely tutor"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell approximate|SoM}, {@spell read aura}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell pocket library|SoM}, {@spell quick sort|SoM}, {@spell share lore|LOGM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell comprehend language}, {@spell timely tutor|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -5207,9 +6056,27 @@
 						{
 							"type": "list",
 							"items": [
-								"3rd comprehend language, pocket library, quick sort, share lore",
-								"4th comprehend language",
-								"5th quick sort, share lore"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell comprehend language}, {@spell pocket library|SoM}, {@spell quick sort|SoM}, {@spell share lore|LOGM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell comprehend language}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell quick sort|SoM}, {@spell share lore|LOGM}"
+									]
+								}
 							]
 						}
 					],
@@ -5258,9 +6125,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip guidance, summon instrument",
-								"1st concordant choir",
-								"2nd guiding star , remove paralysis"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell guidance}, {@spell summon instrument|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell concordant choir|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell guiding star|SoM}, {@spell remove paralysis}"
+									]
+								}
 							]
 						}
 					],
@@ -5277,8 +6162,20 @@
 						{
 							"type": "list",
 							"items": [
-								"3rd dream message, safe passage , wanderer's guide",
-								"4th concordant choir, dream message, freedom of movement, remove paralysis"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell dream message}, {@spell safe passage|APG}, {@spell wanderer's guide}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell concordant choir|SoM}, {@spell dream message}, {@spell freedom of movement}, {@spell remove paralysis}"
+									]
+								}
 							]
 						}
 					],
@@ -5295,9 +6192,27 @@
 						{
 							"type": "list",
 							"items": [
-								"5th safe passage, summon celestial (azatas only)",
-								"6th concordant choir, zealous conviction",
-								"7th cosmic form , remove paralysis"
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell safe passage|APG}, {@spell summon celestial} ({@trait azata||azatas} only)"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell concordant choir|SoM}, {@spell zealous conviction}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell cosmic form|SoM}, {@spell remove paralysis}"
+									]
+								}
 							]
 						}
 					],
@@ -5326,7 +6241,7 @@
 			"category": "Staff",
 			"entries": [
 				"Carved of driftwood stained white with the salt of the sea, a pirate staff has jewels and gold pieces embedded in the wood.",
-				"A skull and crossbones sit on top. When used as a weapon, the staff is a +2 striking fearsome staff. While wielding the staff, you gain a +2 circumstance bonus to {@skill Intimidation} checks to {@action Coerce}.",
+				"A skull and crossbones sit on top. When used as a weapon, the staff is a {@runeItem staff||+2 weapon potency||striking||fearsome|APG}. While wielding the staff, you gain a +2 circumstance bonus to {@skill Intimidation} checks to {@action Coerce}.",
 				{
 					"type": "ability",
 					"components": [
@@ -5337,12 +6252,48 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip gale blast , know direction",
-								"1st seashell of stolen sound",
-								"2nd obscuring mist, water breathing, water walk",
-								"3rd mind of menace , water breathing",
-								"4th solid fog, water walk",
-								"5th flowing strike , mariner's curse"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell gale blast|SoM}, {@spell know direction}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell seashell of stolen sound|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell obscuring mist}, {@spell water breathing}, {@spell water walk}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell mind of menace|SoM}, {@spell water breathing}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell solid fog}, {@spell water walk}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell flowing strike|SoM}, {@spell mariner's curse}"
+									]
+								}
 							]
 						}
 					]
@@ -5382,12 +6333,48 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip read the air",
-								"1st charm, restyle",
-								"2nd befitting attire , phantom crowd",
-								"3rd bottomless stomach , shift blame",
-								"4th befitting attire, suggestion",
-								"5th befitting attire, charm, glimmer of charm , suggestion"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell read the air|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell charm}, {@spell restyle|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell befitting attire|SoM}, {@spell phantom crowd|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell bottomless stomach|SoM}, {@spell shift blame|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell befitting attire|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell befitting attire|SoM}, {@spell charm}, {@spell glimmer of charm|SoM}, {@spell suggestion}"
+									]
+								}
 							]
 						}
 					]
@@ -5412,7 +6399,7 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"A spellstriker staff is wrought iron with gleaming arcane sigils etched into its surface and a sharp point at the bottom. Used as a weapon, the staff is a +1 striking shifting staff.",
+				"A spellstriker staff is wrought iron with gleaming arcane sigils etched into its surface and a sharp point at the bottom. Used as a weapon, the staff is a {@runeItem staff||+1 weapon potency||striking|}.",
 				{
 					"type": "ability",
 					"activity": {
@@ -5455,9 +6442,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip produce flame",
-								"1st echoing weapon , true strike",
-								"2nd acid arrow, telekinetic maneuver"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell produce flame}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell echoing weapon|SoM}, {@spell true strike}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell acid arrow}, {@spell telekinetic maneuver}"
+									]
+								}
 							]
 						}
 					],
@@ -5470,12 +6475,24 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"Used as a weapon, the staff is a +2 striking shifting staff.",
+						"Used as a weapon, the staff is a {@runeItem staff||+2 weapon potency||striking||shifting|}.",
 						{
 							"type": "list",
 							"items": [
-								"3rd echoing weapon, haste",
-								"4th acid arrow, weapon storm"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell echoing weapon|SoM}, {@spell haste}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell acid arrow}, {@spell weapon storm}"
+									]
+								}
 							]
 						}
 					],
@@ -5488,13 +6505,31 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"Used as a weapon, the staff is a +2 greater striking shifting staff.",
+						"Used as a weapon, the staff is a {@runeItem staff||+2 weapon potency||greater striking||shifting|}.",
 						{
 							"type": "list",
 							"items": [
-								"5th blink charge , echoing weapon, vampiric touch",
-								"6th acid arrow, weapon storm",
-								"7th blink charge, true target"
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell blink charge|SoM}, {@spell echoing weapon|SoM}, {@spell vampiric touch}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell acid arrow}, {@spell weapon storm}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell blink charge|SoM}, {@spell true target}"
+									]
+								}
 							]
 						}
 					],
@@ -5557,9 +6592,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip message",
-								"1st illusory disguise, {@condition invisible} item , message rune",
-								"2nd humanoid form, illusory disguise, misdirection"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"message"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell illusory disguise}, {@spell invisible item|APG}, {@spell message rune|LOGM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell humanoid form}, {@spell illusory disguise}, {@spell misdirection}"
+									]
+								}
 							]
 						}
 					],
@@ -5576,8 +6629,20 @@
 						{
 							"type": "list",
 							"items": [
-								"3rd clairaudience, illusory disguise, nondetection",
-								"4th clairvoyance, private sanctum"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell clairaudience}, {@spell illusory disguise}, {@spell nondetection}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell clairvoyance}, {@spell private sanctum}"
+									]
+								}
 							]
 						}
 					],
@@ -5594,8 +6659,20 @@
 						{
 							"type": "list",
 							"items": [
-								"5th mind probe, prying eye",
-								"6th mislead, scrying"
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell mind probe}, {@spell prying eye}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell mislead}, {@spell scrying}"
+									]
+								}
 							]
 						}
 					],
@@ -5644,8 +6721,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip gale blast",
-								"1st air bubble, gust of wind"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell gale blast|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell air bubble}, {@spell gust of wind}"
+									]
+								}
 							]
 						}
 					],
@@ -5661,8 +6750,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd ash cloud , obscuring mist",
-								"3rd blazing dive , lightning bolt, wall of wind"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell ash cloud|SoM}, {@spell obscuring mist}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell blazing dive|SoM}, {@spell lightning bolt}, {@spell wall of wind}"
+									]
+								}
 							]
 						}
 					],
@@ -5678,8 +6779,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th air walk, ash cloud",
-								"5th blazing dive, lightning storm"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell air walk}, {@spell ash cloud|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell blazing dive|SoM}, {@spell lightning storm|APG}"
+									]
+								}
 							]
 						}
 					],
@@ -5728,8 +6841,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip scatter scree",
-								"1st pummeling rubble"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell scatter scree|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell pummeling rubble|APG}"
+									]
+								}
 							]
 						}
 					],
@@ -5745,8 +6870,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd expeditious excavation , pummeling rubble",
-								"3rd earthbind, shifting sand"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell expeditious excavation|LOGM}, {@spell pummeling rubble|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell earthbind}, {@spell shifting sand|LOGM}"
+									]
+								}
 							]
 						}
 					],
@@ -5762,8 +6899,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th expeditious excavation, shape stone, spike stones",
-								"5th blazing fissure , wall of stone"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell expeditious excavation|LOGM}, {@spell shape stone}, {@spell spike stones|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell blazing fissure|SoM}, {@spell wall of stone}"
+									]
+								}
 							]
 						}
 					],
@@ -5812,8 +6961,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip spout",
-								"1st create water, hydraulic push"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell spout|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell create water}, {@spell hydraulic push}"
+									]
+								}
 							]
 						}
 					],
@@ -5830,8 +6991,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd quench , water walk",
-								"3rd aqueous orb , wall of water"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell quench|APG}, {@spell water walk}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell aqueous orb|APG}, {@spell wall of water|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -5848,8 +7021,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th crashing wave , hydraulic torrent",
-								"5th control water, geyser"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell crashing wave|APG}, {@spell hydraulic torrent}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell control water}, {@spell geyser|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -5877,7 +7062,7 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"A zealot staff's color, iconography, and materials vary depending on the faith it's dedicated to. An Iomedaean staff might be forged of gold and shaped like an ornamental sword, while a Lamashtan one could instead be made of blackened iron depicting monstrous faces. Used as a weapon, the staff is a +3 greater striking staff.",
+				"A zealot staff's color, iconography, and materials vary depending on the faith it's dedicated to. An Iomedaean staff might be forged of gold and shaped like an ornamental sword, while a Lamashtan one could instead be made of blackened iron depicting monstrous faces. Used as a weapon, the staff is a {@runeItem staff||+3 weapon potency||greater striking|}.",
 				"The staff represents vehement support of the deity to whom the staff is dedicated, punishing defiance. When the staff's effects require choosing alignments, you can choose only that deity's alignments. No such staves exist for deities that are true neutral. When you prepare this staff, if you don't worship its deity, you become {@condition drained||drained 1} until your next daily preparations.",
 				{
 					"type": "ability",
@@ -5903,14 +7088,62 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip divine lance",
-								"1st bane",
-								"2nd brand the impenitent , spiritual weapon",
-								"3rd crisis of faith, warding aggression",
-								"4th anathematic reprisal, spiritual weapon",
-								"5th divine wrath",
-								"6th spiritual weapon, zealous conviction",
-								"7th divine decree"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell divine lance}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell bane}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell brand the impenitent|LOGM}, {@spell spiritual weapon}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell crisis of faith}, {@spell warding aggression|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell anathematic reprisal}, {@spell spiritual weapon}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell divine wrath}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell spiritual weapon}, {@spell zealous conviction}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell divine decree}"
+									]
+								}
 							]
 						}
 					]
@@ -5960,9 +7193,27 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip protect companion",
-								"1st animate dead , necromancer's generosity",
-								"2nd animate dead, final sacrifice"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell protect companion|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell animate dead|APG}, {@spell necromancer's generosity|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell animate dead|APG}, {@spell final sacrifice|APG}"
+									]
+								}
 							]
 						}
 					],
@@ -5978,8 +7229,20 @@
 						{
 							"type": "list",
 							"items": [
-								"3rd animate dead, bind undead, necromancer's generosity",
-								"4th animate dead, enervation , final sacrifice"
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell animate dead|APG}, {@spell bind undead}, {@spell necromancer's generosity|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell animate dead|APG}, {@spell enervation|APG}, {@spell final sacrifice|APG}"
+									]
+								}
 							]
 						}
 					],
@@ -5995,8 +7258,20 @@
 						{
 							"type": "list",
 							"items": [
-								"5th animate dead, necromancer's generosity",
-								"6th animate dead, final sacrifice, necrotize"
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell animate dead|APG}, {@spell necromancer's generosity|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell animate dead|APG}, {@spell final sacrifice|APG}, {@spell necrotize|SoM}"
+									]
+								}
 							]
 						}
 					],
@@ -6046,8 +7321,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip daze",
-								"1st bane"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell daze}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell bane}"
+									]
+								}
 							]
 						}
 					],
@@ -6063,8 +7350,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd deafness, knock, shatter",
-								"3rd agonizing despair , paralyze"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell deafness}, {@spell knock}, {@spell shatter}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell agonizing despair|APG}, {@spell paralyze}"
+									]
+								}
 							]
 						}
 					],
@@ -6081,8 +7380,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th confusion, painful vibrations",
-								"5th banishment, crushing despair, synaptic pulse"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell confusion}, {@spell painful vibrations|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell banishment}, {@spell crushing despair}, {@spell synaptic pulse}"
+									]
+								}
 							]
 						}
 					],
@@ -6132,8 +7443,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip shield",
-								"1st mage armor, magic missile, true strike"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell shield}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell mage armor}, {@spell magic missile}, {@spell true strike}"
+									]
+								}
 							]
 						}
 					],
@@ -6149,8 +7472,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd false life, sound burst, spiritual weapon",
-								"3rd haste, heroism"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell false life}, {@spell sound burst}, {@spell spiritual weapon}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell haste}, {@spell heroism}"
+									]
+								}
 							]
 						}
 					],
@@ -6167,8 +7502,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th spell immunity, tortoise and the hare",
-								"5th death ward, quicken time DA, spell immunity"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell spell immunity}, {@spell tortoise and the hare|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell death ward}, {@spell quicken time|DA}, {@spell spell immunity}"
+									]
+								}
 							]
 						}
 					],
@@ -6218,8 +7565,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip infectious enthusiasm",
-								"1st bless, ventriloquism"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell infectious enthusiasm|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell bless}, {@spell ventriloquism}"
+									]
+								}
 							]
 						}
 					],
@@ -6235,8 +7594,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd calm emotions, mirror image",
-								"3rd enthrall, heroism, illusory creature"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell calm emotions}, {@spell mirror image}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell enthrall}, {@spell heroism}, {@spell illusory creature}"
+									]
+								}
 							]
 						}
 					],
@@ -6253,8 +7624,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th glibness, infectious melody",
-								"5th hallucination, illusory creature, illusory scene, suggestion"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell glibness}, {@spell infectious melody|SoM}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell hallucination}, {@spell illusory creature}, {@spell illusory scene}, {@spell suggestion}"
+									]
+								}
 							]
 						}
 					],
@@ -6296,14 +7679,62 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrips dancing lights, ghost sound, message",
-								"1st command",
-								"2nd calm emotions, faerie fire",
-								"3rd enthrall",
-								"4th glibness",
-								"5th sending",
-								"6th calm emotions, dominate, vibrant pattern",
-								"7th dominate, prismatic spray, true target, vibrant pattern, visions of danger"
+								{
+									"type": "item",
+									"name": "Cantrips",
+									"entries": [
+										"{@spell dancing lights}, {@spell ghost sound}, {@spell message}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell command}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell calm emotions}, {@spell faerie fire}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell enthrall}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell glibness}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell sending}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "6th",
+									"entries": [
+										"{@spell calm emotions}, {@spell dominate}, {@spell vibrant pattern}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "7th",
+									"entries": [
+										"{@spell dominate}, {@spell prismatic spray}, {@spell true target}, {@spell vibrant pattern}, {@spell visions of danger}"
+									]
+								}
 							]
 						}
 					]
@@ -6355,8 +7786,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip daze",
-								"1st charm, command, fear"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell daze}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell charm}, {@spell command}, {@spell fear}"
+									]
+								}
 							]
 						}
 					],
@@ -6372,8 +7815,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd hideous laughter, touch of idiocy",
-								"3rd charm, hypnotic pattern, mind reading, zone of truth"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell hideous laughter}, {@spell touch of idiocy}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell charm}, {@spell hypnotic pattern}, {@spell mind reading}, {@spell zone of truth}"
+									]
+								}
 							]
 						}
 					],
@@ -6390,8 +7845,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th confusion, suggestion",
-								"5th charm, glimmer of charm , suggestion, telepathy"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell confusion}, {@spell suggestion}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell charm}, {@spell glimmer of charm|SoM}, {@spell suggestion}, {@spell telepathy}"
+									]
+								}
 							]
 						}
 					],
@@ -6442,8 +7909,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip guidance, read aura",
-								"1st detect alignment"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell guidance}, {@spell read aura}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell detect alignment}"
+									]
+								}
 							]
 						}
 					],
@@ -6459,8 +7938,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd augury, see invisibility",
-								"3rd clairaudience, hypercognition, wanderer's guide"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell augury}, {@spell see invisibility}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell clairaudience}, {@spell hypercognition}, {@spell wanderer's guide}"
+									]
+								}
 							]
 						}
 					],
@@ -6477,8 +7968,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th clairvoyance, read omens",
-								"5th inevitable disaster , prying eye, tongues"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell clairvoyance}, {@spell read omens}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell inevitable disaster|SoM}, {@spell prying eye}, {@spell tongues}"
+									]
+								}
 							]
 						}
 					],
@@ -6541,8 +8044,20 @@
 						{
 							"type": "list",
 							"items": [
-								"Cantrip prestidigitation",
-								"1st illusory disguise, item facade, ventriloquism"
+								{
+									"type": "item",
+									"name": "Cantrip",
+									"entries": [
+										"{@spell prestidigitation}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "1st",
+									"entries": [
+										"{@spell illusory disguise}, {@spell item facade}, {@spell ventriloquism}"
+									]
+								}
 							]
 						}
 					],
@@ -6558,8 +8073,20 @@
 						{
 							"type": "list",
 							"items": [
-								"2nd illusory creature, illusory disguise, invisibility, mirror image",
-								"3rd illusory disguise, phantom prison , sculpt sound"
+								{
+									"type": "item",
+									"name": "2nd",
+									"entries": [
+										"{@spell illusory creature}, {@spell illusory disguise}, {@spell invisibility}, {@spell mirror image}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "3rd",
+									"entries": [
+										"{@spell illusory disguise}, {@spell phantom prison|SoM}, {@spell sculpt sound|APG}"
+									]
+								}
 							]
 						}
 					],
@@ -6576,8 +8103,20 @@
 						{
 							"type": "list",
 							"items": [
-								"4th confusion, invisibility, veil",
-								"5th hallucination, illusory scene, veil"
+								{
+									"type": "item",
+									"name": "4th",
+									"entries": [
+										"{@spell confusion}, {@spell invisibility}, {@spell veil}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "5th",
+									"entries": [
+										"{@spell hallucination}, {@spell illusory scene}, {@spell veil}"
+									]
+								}
 							]
 						}
 					],
@@ -6614,7 +8153,7 @@
 						"overcharge": true
 					},
 					"entries": [
-						"You cast the wand's spell, but the mist prevents creatures from being able to breathe in its area. They must hold their breath or start suffocating (Core Rulebook 478)."
+						"You cast the wand's spell, but the mist prevents creatures from being able to breathe in its area. They must hold their breath or start {@quickref suffocating|CRB|3|drowning and suffocating}."
 					]
 				}
 			],
@@ -12353,7 +13892,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"The majordomo torc casts befitting attire (Secrets of Magic 90) on you, usually to your specifications. However the torc can also choose the appearance of the illusion for you."
+						"The majordomo torc casts {@spell befitting attire|SoM} on you, usually to your specifications. However the torc can also choose the appearance of the illusion for you."
 					]
 				}
 			]
@@ -12444,7 +13983,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"The wayfinder casts wanderer's guide on you."
+						"The wayfinder casts {@spell wanderer's guide} on you."
 					]
 				}
 			]
@@ -30693,7 +32232,7 @@
 			"bulk": 2,
 			"category": "Held",
 			"entries": [
-				"This +1 striking bo staff is covered in scales shed by or harvested from a dragon. When benefiting from the circumstance bonus to AC granted by the bo staff's {@trait parry} trait, you also gain resistance 5 to acid, cold, electricity, fire, or poison, according to the type of damage dealt by the breath weapon of the dragon that provided the scales; for instance, a staff made with scales taken from a white dragon would provide cold resistance. When this resistance prevents you from taking damage, the dragonscale staff deals an additional 1 damage of the type matching its resistance for 1 round."
+				"This {@runeItem bo staff||+1 weapon potency||striking|} is covered in scales shed by or harvested from a dragon. When benefiting from the circumstance bonus to AC granted by the bo staff's {@trait parry} trait, you also gain resistance 5 to acid, cold, electricity, fire, or poison, according to the type of damage dealt by the breath weapon of the dragon that provided the scales; for instance, a staff made with scales taken from a white dragon would provide cold resistance. When this resistance prevents you from taking damage, the dragonscale staff deals an additional 1 damage of the type matching its resistance for 1 round."
 			],
 			"craftReq": [
 				"The initial raw materials must include scales from a dragon with a breath weapon that deals acid, cold, electricity, fire, or poison damage."
