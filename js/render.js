@@ -8424,7 +8424,9 @@ Renderer._stripTagLayer = function (str) {
 
 					case "@runeItem": {
 						const parts = Renderer.splitTagByPipe(text);
-						return parts.length % 2 ? parts[parts.length - 1] : parts.push(parts.shift()).map(it => it[0]).map(it => Renderer.runeItem.getRuneShortName(it)).join(" ");
+						if (parts.length % 2) return parts[parts.length - 1];
+						const runesString = parts.slice(2).filter((v, i) => i % 2 === 0).map(runeName => Renderer.runeItem.getRuneShortName(runeName)).join(" ");
+						return `${runesString} ${parts[0]}`;
 					}
 
 					case "@homebrew": {
