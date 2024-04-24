@@ -26,7 +26,7 @@ class BackgroundPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(bg);
 		const name = bg.name
 		const source = Parser.sourceJsonToAbv(bg.source);
-		const boosts = bg.boosts.sort(SortUtil.abilitySort).map((str, i) => i === 0 || str !== "free" ? str.toTitleCase() : "free").join(", ");
+		const boosts = bg.boosts.sort(SortUtil.abilitySort).map((str, i) => i === 0 || str !== "free" ? str.toTitleCase() : str).join(", ");
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-4 pl-0">${bg.name}</span>
