@@ -3917,15 +3917,12 @@ Renderer.action = {
 		if (renderStack.length !== 0) renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("");
 	},
-	getFooter (it) {
+	getFooter(it) {
 		if (!it.footer) return "";
+
 		const renderStack = [Renderer.utils.getDividerDiv()];
-		const renderer = Renderer.get()
-
-		it.footer.forEach(entry => {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${entry.name}&nbsp;</strong>${renderer.render(entry.entries)}</p>`)
-		})
-
+		const renderer = Renderer.get();
+		renderStack.push(Object.keys(it.footer).sort().map(lvl => `<p class="pf2-stat pf2-stat__section"><strong>${lvl}</strong>&nbsp;${renderer.render(it.footer[lvl])}</p>`).join(""));
 		return renderStack.join("");
 	},
 	getQuickRules (it) {
