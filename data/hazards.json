@@ -476,19 +476,8 @@
 					"trigger": "A Medium or larger creature steps onto the middle of the bridge (any of the squares marked \"T\" on the map)",
 					"entries": [
 						"The ropes on both sides of the bridge snap simultaneously, causing the bridge to collapse. Any creature on the bridge falls to the forest floor 50 feet below and takes 25 bludgeoning damage. A creature within 10 feet of one end of the bridge can attempt a DC 18 Reflex saving throw to Grab a Ledge along the side of either A8 or A13.",
-						"If one side of the bridge has been disabled by resecuring the ropes, a character on any section of the bridge can attempt a DC 18 Reflex save to hang onto the bridge as one side of it falls. The dangling bridge thereafter functions as a ladder connecting either area"
+						"If one side of the bridge has been disabled by resecuring the ropes, a character on any section of the bridge can attempt a DC 18 Reflex save to hang onto the bridge as one side of it falls. The dangling bridge thereafter functions as a ladder connecting either area A8 or A13, whichever was secured to the forest floor."
 					]
-				},
-				{
-					"name": "A8 or A13",
-					"activity": {
-						"unit": "varies",
-						"entry": "whichever was secured"
-					},
-					"components": [
-						"to the forest floor."
-					],
-					"entries": []
 				}
 			]
 		},
@@ -604,7 +593,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 16 {@skill Acrobatics} to move through the room without touching any of the runes, followed by DC 18"
+					"DC 16 {@skill Acrobatics} to move through the room without touching any of the runes, followed by DC 18 {@skill Thievery} (trained) to carve them out of the wood without triggering them; or {@spell dispel magic} (1st level; counteract DC 16) to counteract the runes"
 				]
 			},
 			"defenses": {
@@ -623,22 +612,15 @@
 					"std": 8
 				},
 				"hp": {
-					"std": 32,
-					"notes": {
-						"std": ""
-					}
-				}
+					"std": 32
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
 			},
 			"actions": [
-				{
-					"name": "Thievery",
-					"traits": [
-						"trained"
-					],
-					"entries": [
-						"to carve them out of the wood without triggering them; or {@spell dispel magic} (1st level; counteract DC 16) to counteract the runes"
-					]
-				},
 				{
 					"name": "Shadow Rush",
 					"activity": {
@@ -1250,33 +1232,27 @@
 							}
 						}
 					]
-				},
-				{
-					"name": "DC 28",
-					"entries": [
-						"Fortitude saving throw. If at the end of the round there are no {@condition unconscious} creatures in the room, Etward's nightmare ends and the trap deactivates.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": [
-									"The creature is unaffected and wakes up."
-								],
-								"Success": [
-									"The creature remains {@condition unconscious} and takes {@damage 1d10} cold damage and {@damage 1d10} mental damage. This damage does not wake the creature, and those who are awake can see the {@condition unconscious} creature thrash as if in the throes of a nightmare while their body rimes over with layers of frost. The creature can fight against the bitter cold and monstrous shapes by attempting a DC 28 Will save as a three-action activity on its turn\u2014on a success, the creature wakes up."
-								],
-								"Failure": [
-									"As success, but {@damage 1d10+6} cold and {@damage 1d10+6} mental damage, and with a DC 32 Will save to wake up."
-								],
-								"Critical Failure": [
-									"The creature remains {@condition unconscious} and takes {@damage 2d10+12} cold damage and {@damage 2d10+12} mental damage."
-								]
-							}
-						}
-					]
 				}
 			],
 			"routine": [
-				"(2 actions; cold, enchantment, mental, occult) The haunt uses its first action to light incense burners again, forcing any creature that isn't already {@condition unconscious} to save against that effect once more. Its second action is to cause any {@condition unconscious} creatures in the room to experience horrific, vivid dreams about being lost in the arctic during a blizzard, while enormous furred figures\u2014saumen kar\u2014lunge at them through the snow to attack repeatedly. Each {@condition unconscious} creature must attempt a"
+				"(2 actions; cold, enchantment, mental, occult) The haunt uses its first action to light incense burners again, forcing any creature that isn't already {@condition unconscious} to save against that effect once more. Its second action is to cause any {@condition unconscious} creatures in the room to experience horrific, vivid dreams about being lost in the arctic during a blizzard, while enormous furred figures\u2014saumen kar\u2014lunge at them through the snow to attack repeatedly. Each {@condition unconscious} creature must attempt a DC 28 Fortitude saving throw. If at the end of the round there are no {@condition unconscious} creatures in the room, Etward's nightmare ends and the trap deactivates.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected and wakes up."
+						],
+						"Success": [
+							"The creature remains {@condition unconscious} and takes {@damage 1d10} cold damage and {@damage 1d10} mental damage. This damage does not wake the creature, and those who are awake can see the {@condition unconscious} creature thrash as if in the throes of a nightmare while their body rimes over with layers of frost. The creature can fight against the bitter cold and monstrous shapes by attempting a DC 28 Will save as a three-action activity on its turn\u2014on a success, the creature wakes up."
+						],
+						"Failure": [
+							"As success, but {@damage 1d10+6} cold and {@damage 1d10+6} mental damage, and with a DC 32 Will save to wake up."
+						],
+						"Critical Failure": [
+							"The creature remains {@condition unconscious} and takes {@damage 2d10+12} cold damage and {@damage 2d10+12} mental damage."
+						]
+					}
+				}
 			],
 			"reset": [
 				"The hazard resets when Etward dreams in this room."
@@ -2335,16 +2311,10 @@
 			],
 			"disable": {
 				"entries": [
-					"two DC 32 {@skill Athletics} or {@skill Diplomacy} checks to douse the flames; {@skill Athletics} to do the work yourself or {@skill Diplomacy} to muster the ghostly soldiers. This reduces the hazard's actions by 1 and prevents it from using"
+					"two DC 32 {@skill Athletics} or {@skill Diplomacy} checks to douse the flames; {@skill Athletics} to do the work yourself or {@skill Diplomacy} to muster the ghostly soldiers. This reduces the hazard's actions by 1 and prevents it from using Burning Timbers. Banish the demons with up to two DC 35 {@skill Arcana}, {@skill Occultism}, or {@skill Religion} checks; each success reduces the hazard's actions by 1, and two successes prevent it from using Demonic Abduction. When the hazard loses all 3 actions, Burning Timbers, and Demonic Abduction, it's disabled."
 				]
 			},
 			"actions": [
-				{
-					"name": "Burning Timbers.",
-					"entries": [
-						"Banish the demons with up to two DC 35 {@skill Arcana}, {@skill Occultism}, or {@skill Religion} checks; each success reduces the hazard's actions by 1, and two successes prevent it from using Demonic Abduction. When the hazard loses all 3 actions, Burning Timbers, and Demonic Abduction, it's disabled."
-					]
-				},
 				{
 					"name": "Burst of Fire",
 					"activity": {
@@ -2355,8 +2325,12 @@
 					"entries": [
 						"The hall bursts into flame, dealing {@damage 4d6} fire damage to each creature in the hall. The haunt then rolls initiative."
 					]
-				},
+				}
+			],
+			"routine": [
+				"(3 actions) The haunt spends 1 action to fill the hall with burning timbers falling from above, and 2 actions to pluck up random victims and drop them to their deaths.",
 				{
+					"type": "ability",
 					"name": "Burning Timbers",
 					"activity": {
 						"number": 1,
@@ -2367,6 +2341,7 @@
 					]
 				},
 				{
+					"type": "ability",
 					"name": "Demonic Abduction",
 					"activity": {
 						"number": 1,
@@ -2377,9 +2352,6 @@
 						"On a critical hit, the creature also takes {@damage 2d12+13} slashing damage as the demons' claws tear through its flesh."
 					]
 				}
-			],
-			"routine": [
-				"(3 actions) The haunt spends 1 action to fill the hall with burning timbers falling from above, and 2 actions to pluck up random victims and drop them to their deaths."
 			],
 			"reset": [
 				"The hall falls quiet for 24 hours, after which it can trigger again."
@@ -3256,13 +3228,7 @@
 					],
 					"trigger": "A creature enters a square adjacent to the ledge of an island or steps onto one of the red ropes",
 					"entries": [
-						"The call of the void tugs at the mind of intruders, compelling them to leap off the ledge. The creature must succeed at a DC 34 Will save or"
-					]
-				},
-				{
-					"name": "DC 32",
-					"entries": [
-						"{@skill Acrobatics} check to {@action Balance} or else drop off the ledge. If the creature falls off, it drops 100 feet, loops through the closed space of the mindscape, and lands in the square it fell from, taking falling damage as normal (usually 50 bludgeoning damage). The call of the void then rolls initiative."
+						"The call of the void tugs at the mind of intruders, compelling them to leap off the ledge. The creature must succeed at a DC 34 Will save or DC 32 {@skill Acrobatics} check to {@action Balance} or else drop off the ledge. If the creature falls off, it drops 100 feet, loops through the closed space of the mindscape, and lands in the square it fell from, taking falling damage as normal (usually 50 bludgeoning damage). The call of the void then rolls initiative."
 					]
 				}
 			],
@@ -4078,7 +4044,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 15 {@skill Thievery} (trained) to clog the nozzle or DC 14"
+					"DC 15 {@skill Thievery} (trained) to clog the nozzle or DC 14 {@skill Athletics} (trained) to redirect the stream away from the path; the {@skill Athletics} check can be made at a distance with a thrown object, but a critical failure triggers the trap's Sudden Spray."
 				]
 			},
 			"defenses": {
@@ -4109,19 +4075,6 @@
 				]
 			},
 			"actions": [
-				{
-					"name": "Athletics",
-					"traits": [
-						"trained"
-					],
-					"entries": [
-						"to redirect the stream away from the path; the {@skill Athletics} check can be made at a distance with a thrown object, but a critical failure triggers the trap's"
-					]
-				},
-				{
-					"name": "Sudden Spray.",
-					"entries": []
-				},
 				{
 					"name": "Sudden Spray",
 					"activity": {
@@ -4479,7 +4432,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 26 {@skill Thievery} (Trained) to disconnect the wire to the counterweight, preventing it from falling, or DC 20"
+					"DC 26 {@skill Thievery} (Trained) to disconnect the wire to the counterweight, preventing it from falling, or DC 20 {@skill Crafting} (Alchemical Crafting) to create a counteragent to the sleeping gas"
 				]
 			},
 			"defenses": {
@@ -4510,15 +4463,6 @@
 				]
 			},
 			"actions": [
-				{
-					"name": "Crafting",
-					"traits": [
-						"Alchemical Crafting"
-					],
-					"entries": [
-						"to create a counteragent to the sleeping gas"
-					]
-				},
 				{
 					"name": "Slam Door",
 					"activity": {
@@ -4791,7 +4735,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 18 {@skill Thievery} (trained) to disarm the desk switch;"
+					"DC 18 {@skill Thievery} (trained) to disarm the desk switch; DC 28 (expert) to disarm the trapdoor charge"
 				]
 			},
 			"defenses": {
@@ -4822,12 +4766,6 @@
 				]
 			},
 			"actions": [
-				{
-					"name": "DC",
-					"entries": [
-						"28 (expert) to disarm the trapdoor charge"
-					]
-				},
 				{
 					"name": "Explosive Charge",
 					"activity": {
@@ -7298,22 +7236,15 @@
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "The Rumormonger or the",
-					"entries": [
-						"Inkmaster enters the room; The trap rolls initiative."
+					"trigger": "The Rumormonger or the Inkmaster enters the room",
+					"effect": [
+						"The trap rolls initiative"
 					],
 					"name": "Arm Activation"
 				}
 			],
 			"routine": [
-				"(4 actions) The trap loses 1 action per arm destroyed or disabled. On its turn, the trap makes claw {@action Strike||Strikes} against creatures other than the Rumormonger or the.",
-				{
-					"entries": [
-						"If an arm already has a creature {@condition grabbed}, the trap spends 2 actions to use its Open Hatch ability."
-					],
-					"type": "ability",
-					"name": "Inkmaster."
-				},
+				"(4 actions) The trap loses 1 action per arm destroyed or disabled. On its turn, the trap makes claw {@action Strike||Strikes} against creatures other than the Rumormonger or the Inkmaster. If an arm already has a creature {@condition grabbed}, the trap spends 2 actions to use its Open Hatch ability.",
 				{
 					"type": "attack",
 					"range": "Melee",
@@ -7329,7 +7260,7 @@
 					"types": [
 						"slashing"
 					],
-					"noMAP": true
+					"noMAP": false
 				},
 				{
 					"activity": {
@@ -8105,10 +8036,7 @@
 					"range": "Ranged",
 					"name": "dart",
 					"attack": 12,
-					"effects": [
-						"no multiple attack penalty"
-					],
-					"damage": "{@damage 3d6} piercing, no multiple attack penalty",
+					"damage": "{@damage 3d6} piercing",
 					"types": [
 						"piercing"
 					],
@@ -8941,16 +8869,10 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 26 {@skill Thievery} (expert), DC 28 {@skill Arcana} (expert),"
+					"DC 26 {@skill Thievery} (expert), DC 28 {@skill Arcana} (expert), or DC 28 {@skill Occultism} (expert) to harmlessly bleed away the electrical energy from the rune. Once the trap has been activated, the electrical energy is stronger, so three successful checks (of any combination of the relevant skills) are necessary to deactivate it, but these checks can be attempted from anywhere in the room."
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"28 {@skill Occultism} (expert) to harmlessly bleed away the electrical energy from the rune. Once the trap has been activated, the electrical energy is stronger, so three successful checks (of any combination of the relevant skills) are necessary to deactivate it, but these checks can be attempted from anywhere in the room."
-					],
-					"name": "or DC"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -10148,15 +10070,9 @@
 					],
 					"trigger": "A creature touches the warded object or area.",
 					"entries": [
-						"The triggering creature and all creatures within 30 feet are trapped in a disrupted time flow (DC 38 Fortitude negates). The creatures' minds move so quickly that each round seems to last a century, but their bodies and magical energies move so slowly that they can't use any actions except Recall."
+						"The triggering creature and all creatures within 30 feet are trapped in a disrupted time flow (DC 38 Fortitude negates). The creatures' minds move so quickly that each round seems to last a century, but their bodies and magical energies move so slowly that they can't use any actions except Recall Knowledge. An affected creature must attempt a DC 36 Will saving throw against a {@spell warp mind} spell immediately and again for every minute of real time that passes while the creature is trapped in the frozen moment. This effect has an unlimited duration but can be counteracted."
 					],
 					"name": "Adrift in Time"
-				},
-				{
-					"entries": [
-						"An affected creature must attempt a DC 36 Will saving throw against a {@spell warp mind} spell immediately and again for every minute of real time that passes while the creature is trapped in the frozen moment. This effect has an unlimited duration but can be counteracted."
-					],
-					"name": "Knowledge."
 				}
 			]
 		},
@@ -10180,7 +10096,23 @@
 			],
 			"disable": {
 				"entries": [
-					"Four DC 20 {@skill Thievery} checks to block the gas vents, or a DC 26 {@skill Thievery} check to unlock the door and escape Door Hardness 13, Door HP 52 (BT 26); Immunities critical hits, object immunities, precision damage."
+					"Four DC 20 {@skill Thievery} checks to block the gas vents, or a DC 26 {@skill Thievery} check to unlock the door and escape"
+				]
+			},
+			"defenses": {
+				"hardness": {
+					"Door": 13
+				},
+				"hp": {
+					"Door": 52
+				},
+				"bt": {
+					"Door": 26
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
@@ -10582,7 +10514,7 @@
 					}
 				},
 				"hardness": {
-					"default": 0
+					"std": 0
 				},
 				"hp": {
 					"std": 1
@@ -11036,15 +10968,9 @@
 					],
 					"trigger": "A creature ends a move action within the trap's area",
 					"entries": [
-						"The triggering creature takes {@damage 2d10+10} mental damage (DC 32 basic Will save) as it recalls its past failures. A creature that takes damage hears a soft whisper offering, \"Let me take something from you and I can stop the pain.\" A creature who agrees loses access to a random skill feat that isn't a prerequisite for another feat, and the creature doesn't take further damage from."
+						"The triggering creature takes {@damage 2d10+10} mental damage (DC 32 basic Will save) as it recalls its past failures. A creature that takes damage hears a soft whisper offering, \"Let me take something from you and I can stop the pain.\" A creature who agrees loses access to a random skill feat that isn't a prerequisite for another feat, and the creature doesn't take further damage from Echoes of Defeat. This effect lasts for 1 week and can be ended by effects that remove curses."
 					],
 					"name": "Echoes of Defeat"
-				},
-				{
-					"entries": [
-						"This effect lasts for 1 week and can be ended by effects that remove curses."
-					],
-					"name": "Echoes of Defeat."
 				}
 			],
 			"reset": [
@@ -11087,15 +11013,9 @@
 					],
 					"trigger": "A creature ends a move action within the trap's area",
 					"entries": [
-						"The triggering creature takes {@damage 2d10+10} mental damage (DC 32 basic Will save) as it considers its future failures. A creature that takes damage hears a soft whisper offering, \"Let me take something from you and I can stop the pain.\" A creature who agrees loses access to a random class feat that isn't a prerequisite for another feat, and the creature doesn't take further damage from."
+						"The triggering creature takes {@damage 2d10+10} mental damage (DC 32 basic Will save) as it considers its future failures. A creature that takes damage hears a soft whisper offering, \"Let me take something from you and I can stop the pain.\" A creature who agrees loses access to a random class feat that isn't a prerequisite for another feat, and the creature doesn't take further damage from Flood of Despair. This effect lasts for 1 week and can be ended by effects that remove curses. The creature also immediately detects the secret door at the end of the hall, no matter how far away from the end of the hall they are."
 					],
 					"name": "Flood of Despair"
-				},
-				{
-					"entries": [
-						"This effect lasts for 1 week and can be ended by effects that remove curses. The creature also immediately detects the secret door at the end of the hall, no matter how far away from the end of the hall they are."
-					],
-					"name": "Flood of Despair."
 				}
 			],
 			"reset": [
@@ -11318,14 +11238,7 @@
 				}
 			],
 			"routine": [
-				"(6 actions) The hazard loses 1 action for every tentacle that is disabled or destroyed. The tentacles can combine their actions to use the hazard's Inky Imitator ability. A {@condition broken} tentacle can still {@action Strike}, but it can't.",
-				{
-					"entries": [
-						"This hazard takes no multiple attack penalty."
-					],
-					"type": "ability",
-					"name": "Grab."
-				},
+				"(6 actions) The hazard loses 1 action for every tentacle that is disabled or destroyed. The tentacles can combine their actions to use the hazard's Inky Imitator ability. A {@condition broken} tentacle can still {@action Strike}, but it can't Grab. This hazard takes no multiple attack penalty.",
 				{
 					"type": "attack",
 					"range": "Melee",
@@ -11453,15 +11366,26 @@
 					"ref": {
 						"std": 0
 					}
-				}
+				},
+				"hardness": {
+					"Pressure Plate": 6,
+					"Iron Maiden": 12
+				},
+				"hp": {
+					"Pressure Plate": 24,
+					"Iron Maiden": 46
+				},
+				"bt": {
+					"Pressure Plate": 12,
+					"Iron Maiden": 23
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"6; Pressure Plate HP 24 (BT 12); Iron Maiden Hardness 12; Iron Maiden HP 46 (BT 23); Immunities critical hits, object immunities, precision damage."
-					],
-					"name": "Pressure Plate Hardness"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -11469,15 +11393,9 @@
 					},
 					"trigger": "A creature steps onto the trap's pressure plate (indicated on the map)",
 					"entries": [
-						"The front of the iron maiden slams shut with incredible force and locks itself. The triggering creature takes {@damage 4d10+10} piercing damage and {@damage 2d6} {@condition persistent damage||persistent bleed damage} (DC 26 basic Reflex save; if the creature critically succeeds, they avoid the trap completely). The triggering creature is also {@condition immobilized}. The victim can end their immobilization only once a creature outside the iron maiden unlocks the device (requiring two successful DC 28 {@skill Thievery} checks."
+						"The front of the iron maiden slams shut with incredible force and locks itself. The triggering creature takes {@damage 4d10+10} piercing damage and {@damage 2d6} {@condition persistent damage||persistent bleed damage} (DC 26 basic Reflex save; if the creature critically succeeds, they avoid the trap completely). The triggering creature is also {@condition immobilized}. The victim can end their immobilization only once a creature outside the iron maiden unlocks the device (requiring two successful DC 28 {@skill Thievery} checks to {@action Disable a Device}) or breaks the iron maiden, after which the trapped creature must succeed at a DC 25 check to {@action Escape} the trap's spike-lined interior."
 					],
 					"name": "Slam Shut"
-				},
-				{
-					"entries": [
-						"{@action Disable a Device}) or breaks the iron maiden, after which the trapped creature must succeed at a DC 25 check to {@action Escape} the trap's spike-lined interior."
-					],
-					"name": "to"
 				}
 			],
 			"reset": [
@@ -12114,31 +12032,29 @@
 			"disable": {
 				"entries": [
 					"DC 29 {@skill Religion} (expert) or {@skill Occultism} or DC 31 Thievery (expert) to dismiss the magic on a single statue.",
-					"Replacing the two missing masks (a mask made of or incorporating coins on the merchant statue and a mask made of any valuable fabric on the tailor statue) and succeeding at a DC 27 {@skill Religion} check disarms the trap.",
-					"AC 30; Fort +20, Ref +16 Statue Hardness 18; Statue HP 48 (BT 24); Immunities critical hits, object immunities, precision damage."
+					"Replacing the two missing masks (a mask made of or incorporating coins on the merchant statue and a mask made of any valuable fabric on the tailor statue) and succeeding at a DC 27 {@skill Religion} check disarms the trap."
 				]
 			},
 			"defenses": {
 				"ac": {
 					"std": 30
 				},
-				"fort": {
-					"default": 20
-				},
-				"ref": {
-					"default": 16
-				},
-				"hardness": {
-					"std": 18
-				},
-				"hp": {
-					"std": 48,
-					"notes": {
-						"std": "per statue"
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 16
 					}
 				},
+				"hardness": {
+					"Statue": 18
+				},
+				"hp": {
+					"Statue": 48
+				},
 				"bt": {
-					"std": 24
+					"Statue": 24
 				},
 				"immunities": [
 					"critical hits",
@@ -12191,19 +12107,28 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 26 {@skill Thievery} (expert) or {@spell dispel magic} (5th level; counteract DC 28) to stop the mirrors' shuffling; DC 28."
+					"DC 26 {@skill Thievery} (expert) or {@spell dispel magic} (5th level; counteract DC 28) to stop the mirrors' shuffling; DC 28 {@skill Occultism} or {@skill Religion} (expert) to dispel the minotaur"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 14
+					}
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
-				{
-					"traits": [
-						"expert"
-					],
-					"entries": [
-						"to dispel the minotaur AC 28; Fort +29, Ref +14 Hardness 18; HP 64 (BT 32); Immunities critical hits, object immunities, precision damage."
-					],
-					"name": "Occultism or Religion"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -12211,15 +12136,9 @@
 					},
 					"trigger": "A creature enters the maze",
 					"entries": [
-						"Creatures in the maze can't escape it except by use of teleportation magic or as described in Trapped in the."
+						"Creatures in the maze can't escape it except by use of teleportation magic or as described in Trapped in the Maze. The trap rolls initiative."
 					],
 					"name": "The Maze Awakens"
-				},
-				{
-					"entries": [
-						"The trap rolls initiative."
-					],
-					"name": "Maze."
 				},
 				{
 					"entries": [
@@ -12327,16 +12246,10 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 50 {@skill Performance} (legendary)"
+					"DC 50 {@skill Performance} (legendary) or DC 53 {@skill Deception} (legendary) to momentarily divert Mogaru's attention."
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"53 {@skill Deception} (legendary) to momentarily divert Mogaru's attention."
-					],
-					"name": "or DC"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -12996,36 +12909,37 @@
 					"ref": {
 						"std": 25
 					}
-				}
+				},
+				"hardness": {
+					"Control Panel": 24
+				},
+				"hp": {
+					"Control Panel": 96
+				},
+				"bt": {
+					"Control Panel": 48
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"24; Control Panel HP 96 (BT 48); Immunities critical hits, object immunities, precision damage."
-					],
-					"name": "Control Panel Hardness"
-				},
 				{
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "A creature makes noise in the hall, which can be avoided with a successful DC 28",
+					"trigger": "A creature makes noise in the hall, which can be avoided with a successful DC 28 {@skill Stealth} check",
 					"entries": [
-						"{@skill Stealth} check; The trap makes a poisoned dart {@action Strike} against the triggering creature, then rolls initiative."
+						"The trap makes a poisoned dart {@action Strike} against the triggering creature, then rolls initiative."
 					],
 					"name": "Dart Volley"
 				}
 			],
 			"routine": [
-				"(1 action) The trap launches one dart against every creature in the hall as 1 action. Because it launches darts continuously, the trap can also use the.",
-				{
-					"entries": [
-						"Barrage free action (see below) to launch darts at each creature during that creature's turn. The trap doesn't take a multiple attack penalty."
-					],
-					"type": "ability",
-					"name": "Continuous"
-				},
+				"(1 action) The trap launches one dart against every creature in the hall as 1 action. Because it launches darts continuously, the trap can also use the Continuous Barrage free action (see below) to launch darts at each creature during that creature's turn. The trap doesn't take a multiple attack penalty.",
 				{
 					"type": "attack",
 					"range": "Ranged",
@@ -13053,21 +12967,31 @@
 					"name": "Continuous Barrage"
 				},
 				{
+					"type": "affliction",
+					"name": "Terinav Root Poison",
 					"traits": [
 						"poison"
 					],
-					"entries": [
-						"Saving Throw DC 28."
-					],
-					"type": "ability",
-					"name": "Terinav Root Poison"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 2} (1 round); Stage 2 {@damage 5d6} poison damage, {@condition clumsy|CRB|clumsy 2}, and \u20135-foot status penalty to all Speeds (1 round); Stage 3 {@damage 7d6} poison damage, {@condition clumsy|CRB|clumsy 2}, and \u201310-foot status penalty to all Speeds (1 round)"
-					],
-					"type": "ability",
-					"name": "Fortitude; Maximum Duration"
+					"DC": 28,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 5d6} poison damage, {@condition clumsy|CRB|clumsy 2}, and \u20135-foot status penalty to all Speeds",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 7d6} poison damage, {@condition clumsy|CRB|clumsy 2}, and \\u201310-foot status penalty to all Speeds",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"reset": [
@@ -13298,16 +13222,37 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 34 {@skill Thievery} (expert) to break the mechanism,"
+					"DC 34 {@skill Thievery} (expert) to break the mechanism, or DC 39 {@skill Perception} (master) to identify the three stones that, when pressed, prevent the trap from triggering"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 36
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 19
+					}
+				},
+				"hardness": {
+					"std": 23
+				},
+				"hp": {
+					"std": 92
+				},
+				"bt": {
+					"std": 46
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"39 {@skill Perception} (master) to identify the three stones that, when pressed, prevent the trap from triggering AC 36; Fort +28, Ref +19 Hardness 23; HP 92 (BT 46); Immunities critical hits, object immunities, precision damage."
-					],
-					"name": "or DC"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -13323,19 +13268,31 @@
 					"name": "Spring"
 				},
 				{
+					"type": "affliction",
+					"name": "Purple Worm Venom",
 					"traits": [
 						"poison"
 					],
-					"entries": [
-						"Saving Throw DC 34."
-					],
-					"name": "Purple Worm Venom"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 5d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 2 {@damage 6d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 3 {@damage 8d6} poison and {@condition enfeebled|CRB|enfeebled 2} (1 round)"
-					],
-					"name": "Fortitude; Maximum Duration"
+					"DC": 34,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 5d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 6d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 8d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"reset": [
@@ -13679,7 +13636,7 @@
 					}
 				},
 				"hardness": {
-					"default": 0
+					"std": 0
 				},
 				"hp": {
 					"std": 1
@@ -14175,15 +14132,23 @@
 					"ref": {
 						"std": 13
 					}
-				}
+				},
+				"hardness": {
+					"Scythe Blade": 16
+				},
+				"hp": {
+					"Scythe Blade": 30
+				},
+				"bt": {
+					"Scythe Blade": 15
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"16, Scythe Blade HP 30 (BT 15); Immunities critical hits, object immunities, precision damage."
-					],
-					"name": "Scythe Blade Hardness"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -14202,20 +14167,16 @@
 					},
 					"entries": [
 						"The blades travel erratically throughout the hallway's branches, out of sight under the floors or behind the walls. For each blade, roll {@dice 1d4} to determine the region in which it next makes scythe {@action Strike||Strikes}. A creature can {@action Seek} (DC 22) to learn clues about blades in the region they're currently occupying. On a success, the creature knows how many blades are currently in its region.",
-						"1. Main intersection (the 15-foot-by-25-foot area where the hallways connect, as marked on area B20) 2. North branch (from the main intersection to the secret door to area B14) 3. Central hall (from the main intersection to the secret door to area B24) 4. South branch (from the main intersection to the wall shared with area B25)"
+						"1. Main intersection (the 15-foot-by-25-foot area where the hallways connect, as marked on area B20)",
+						"2. North branch (from the main intersection to the secret door to area B14)",
+						"3. Central hall (from the main intersection to the secret door to area B24)",
+						"4. South branch (from the main intersection to the wall shared with area B25)"
 					],
 					"name": "Scythe Shuffle"
 				}
 			],
 			"routine": [
-				"(7 actions) The trap spends 1 action for each of its blades; a blade makes a scythe {@action Strike} against each creature in its region. With its final action, the trap uses.",
-				{
-					"entries": [
-						"Reduce the number of actions the trap can take by 1 for each destroyed blade."
-					],
-					"type": "ability",
-					"name": "Scythe Shuffle."
-				},
+				"(7 actions) The trap spends 1 action for each of its blades; a blade makes a scythe {@action Strike} against each creature in its region. With its final action, the trap uses Scythe Shuffle. Reduce the number of actions the trap can take by 1 for each destroyed blade.",
 				{
 					"type": "attack",
 					"range": "Melee",
@@ -14447,7 +14408,7 @@
 			]
 		},
 		{
-			"name": "Spike Launcher",
+			"name": "Spike Launchers",
 			"source": "AV1",
 			"page": 25,
 			"level": 0,
@@ -14463,16 +14424,37 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 16 {@skill Thievery} to disable one of the four launchers."
+					"DC 16 {@skill Thievery} to disable one of the four launchers or DC 12 {@skill Acrobatics} to step over a trip line (this doesn't disarm the trap, but avoids triggering it)"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 3
+					}
+				},
+				"hardness": {
+					"std": 3
+				},
+				"hp": {
+					"std": 16
+				},
+				"bt": {
+					"std": 8
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"12 {@skill Acrobatics} to step over a trip line (this doesn't disarm the trap, but avoids triggering it) AC 16; Fort +9, Ref +3 Hardness 3; HP 16 (BT 8); Immunities critical hits, object immunities, precision damage."
-					],
-					"name": "or DC"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -15634,7 +15616,7 @@
 					}
 				},
 				"hardness": {
-					"default": 0
+					"std": 0
 				},
 				"hp": {
 					"std": 54
@@ -16381,7 +16363,7 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 23 {@skill Religion} (trained) to exorcise the spirit, or DC 23"
+					"DC 23 {@skill Religion} (trained) to exorcise the spirit, or DC 23 {@skill Thievery} (trained) to quickly cover the mirror"
 				]
 			},
 			"defenses": {
@@ -16412,17 +16394,6 @@
 				]
 			},
 			"actions": [
-				{
-					"name": "Thievery",
-					"activity": {
-						"unit": "varies",
-						"entry": "trained"
-					},
-					"components": [
-						"to quickly cover the mirror"
-					],
-					"entries": []
-				},
 				{
 					"name": "Spectral Impale",
 					"activity": {
@@ -17024,8 +16995,10 @@
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "Three or more creatures enter the area of the haunt; Effect sharp fragments lift up from the ground and begin to spin in rapid circles taking up one 5-foot square. The haunt rolls initiative.",
-					"entries": []
+					"trigger": "Three or more creatures enter the area of the haunt",
+					"entries": [
+						"sharp fragments lift up from the ground and begin to spin in rapid circles taking up one 5-foot square. The haunt rolls initiative."
+					]
 				}
 			],
 			"routine": [
@@ -17088,13 +17061,7 @@
 					],
 					"trigger": "A creature approaches within 30 feet of the orchestra",
 					"entries": [
-						"The orchestra compels all creatures that can hear it to begin dancing. Each creature must attempt a"
-					]
-				},
-				{
-					"name": "DC 41",
-					"entries": [
-						"Will save, with the following effects.",
+						"The orchestra compels all creatures that can hear it to begin dancing. Each creature must attempt a DC 41 Will save, with the following effects.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -17112,6 +17079,7 @@
 								]
 							}
 						}
+
 					]
 				}
 			],
@@ -17717,14 +17685,7 @@
 			],
 			"routine": [
 				"(4 actions) The trap loses 1 action each turn per {@condition drained} or destroyed tub. On each action, a different tub spews hot wax at a random creature in the room, dealing {@damage 3d12} fire damage to the target and all adjacent creatures (DC 35 basic Reflex save). On a failure or critical failure, the creature is also encased in hot wax.",
-				"A creature that starts its turn encased in wax takes {@damage 8d12} fire damage and is {@condition immobilized} until it Escapes the hardening wax (DC 35). Each turn it remains encased, the damage dealt by the hot wax decreases by {@dice 2d12} but.",
-				{
-					"entries": [
-						"{@action Escape} increases by 2 (minimum 0 damage, maximum DC 43). A creature that can't get free from the wax might suffocate (Core Rulebook 478)."
-					],
-					"type": "ability",
-					"name": "the DC to"
-				}
+				"A creature that starts its turn encased in wax takes {@damage 8d12} fire damage and is {@condition immobilized} until it Escapes the hardening wax (DC 35). Each turn it remains encased, the damage dealt by the hot wax decreases by {@dice 2d12} but the DC to {@action Escape} increases by 2 (minimum 0 damage, maximum DC 43). A creature that can't get free from the wax might suffocate (Core Rulebook 478)."
 			],
 			"reset": [
 				"The trap deactivates and resets after 1 hour. At that time, the wax in the tubs cools and congeals, and any wax elsewhere in the room magically goes back into the tubs."
@@ -17831,7 +17792,7 @@
 					"range": "Melee",
 					"name": "noose",
 					"attack": 13,
-					"effects": [
+					"traits": [
 						"deadly <d10>"
 					],
 					"damage": "{@damage 3d6} bludgeoning and the target is {@condition grabbed} and pulled off the ground ({@action Escape} DC 22). The target takes {@damage 1d6} bludgeoning damage at the end of each of its turns as long as it's caught in the noose.",
@@ -17911,7 +17872,7 @@
 					"range": "Melee",
 					"name": "noose",
 					"attack": 13,
-					"effects": [
+					"traits": [
 						"deadly <d10>"
 					],
 					"damage": "{@damage 3d6} bludgeoning and the target gains the {@condition grabbed} condition is and pulled off the ground ({@action Escape} DC 22).",
