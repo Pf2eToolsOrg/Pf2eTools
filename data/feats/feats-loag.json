@@ -1562,17 +1562,9 @@
 			"name": "Energize Wings",
 			"source": "LOAG",
 			"page": 132,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"level": 9,
+			"level": 5,
 			"traits": [
-				"concentrate",
-				"morph",
-				"primal",
-				"sprite",
-				"transmutation"
+				"sprite"
 			],
 			"prerequisites": "{@feat Evanescent Wings|LOAG}",
 			"frequency": {
@@ -1580,7 +1572,7 @@
 				"number": 1
 			},
 			"entries": [
-				"You stoke your magic to energize your wings, temporarily transforming them into glowing, majestic forms. For 1 minute, you gain a fly Speed of 30 feet."
+				"Your magic energizes your wings, allowing you to fly farther. The fly Speed you gain from {@feat Evanescent Wings|LOAG} increases to 25 feet."
 			],
 			"leadsTo": [
 				"Hero's Wings|LOAG"
@@ -1632,11 +1624,19 @@
 			"source": "LOAG",
 			"page": 131,
 			"level": 1,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
 			"traits": [
 				"sprite"
 			],
+			"frequency": {
+				"number": 1,
+				"unit": "round"
+			},
 			"entries": [
-				"You've manifested wings that can flutter for brief spurts. You don't need to spend any additional actions to reach something in your space that a Medium creature could reach. For instance, if you wanted to open a cookie jar located four feet off the ground, you only need to spend a single {@action Interact} action to do so. When you use Evanescent Wings to flutter to a higher place in your space, your action gains the {@trait move} trait."
+				"You’ve manifested wings that can flutter for brief spurts. You {@action Fly}. If you don’t normally have a fly Speed, you gain a fly Speed of 15 feet for this movement. If you aren’t on solid ground at the end of this movement, you fall."
 			],
 			"leadsTo": [
 				"Energize Wings|LOAG",
@@ -1930,7 +1930,7 @@
 				"number": 1,
 				"unit": "action"
 			},
-			"level": 5,
+			"level": 1,
 			"traits": [
 				"strix"
 			],
@@ -1939,7 +1939,11 @@
 				"number": 1
 			},
 			"entries": [
-				"You can fly through the air in short bursts at half your land Speed. If you don't end your movement on solid ground, you fall at the end of your turn."
+				"You can fly through the air in short bursts. You {@action Fly}. If you don’t normally have a fly Speed, you gain a fly Speed of 15 feet for this movement. If you aren’t on solid ground at the end of this movement, you fall. "
+			],
+			"leadsTo": [
+				"Juvenile Flight|LOAG",
+				"Fully Flighted|LOAG"
 			]
 		},
 		{
@@ -2055,13 +2059,16 @@
 			"name": "Fully Flighted",
 			"source": "LOAG",
 			"page": 138,
-			"level": 13,
+			"level": 9,
 			"traits": [
 				"strix"
 			],
 			"prerequisites": "{@feat Juvenile Flight|LOAG}",
 			"entries": [
-				"You gain the effects of Juvenile Flight at all times, rather than just once per day for 10 minutes. This includes the status bonus to your Speed if you have Fledgling Flight."
+				"You can take to the skies at any time. You have a fly Speed of 25 feet at all times."
+			],
+			"special": [
+				"You can take this feat a second time. If you do, your fly Speed increases to 35 feet."
 			]
 		},
 		{
@@ -2441,13 +2448,13 @@
 			"name": "Hero's Wings",
 			"source": "LOAG",
 			"page": 132,
-			"level": 17,
+			"level": 9,
 			"traits": [
 				"sprite"
 			],
 			"prerequisites": "{@feat Energize Wings|LOAG}",
 			"entries": [
-				"You have begun the final steps to reaching your full potential. Your wings are always in their majestic form without you needing to use Energize Wings, granting you a permanent fly Speed. Furthermore, sprites recognize you as a powerful hero (or villain) by your unique wings and are appropriately impressed. You gain a +2 circumstance bonus on all {@skill Diplomacy} and {@skill Intimidation} checks against sprites and gain the benefits of the {@feat Glad-Hand} skill feat against other sprites, without taking a \u20135 penalty to your {@skill Diplomacy} check."
+				"Your wings have grown to their full, majestic form, granting you the unlimited power of flight. You have a fly Speed of 25 feet at all times. Furthermore, {@ancestry sprite|LOAG|sprites} recognize you as a powerful hero (or villain) by your unique wings and are appropriately impressed. You gain a +2 circumstance bonus on all {@skill Diplomacy} and {@skill Intimidation} checks against sprites and gain the benefits of the {@feat Glad-Hand} skill feat against other {@ancestry sprite|LOAG|sprites}, without taking a  –5 penalty to your {@skill Diplomacy} check. "
 			]
 		},
 		{
@@ -2851,7 +2858,7 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"level": 9,
+			"level": 5,
 			"traits": [
 				"strix"
 			],
@@ -2859,8 +2866,9 @@
 				"unit": "day",
 				"number": 1
 			},
+			"prerequisites": "{@feat Fledgling Flight|LOAG}",
 			"entries": [
-				"You unfold your wings for travel and can keep them unfolded for 10 minutes. You gain a fly Speed equal to your land Speed while your wings are unfurled. If you have Fledgling Flight, you gain a +10-foot status bonus to your fly Speed with Juvenile Flight. As normal, since your fly Speed is derived from your land Speed, this status bonus isn't cumulative with a status bonus to your land Speed, if you have one."
+				"Your wings become stronger, allowing you to fly farther.  The fly Speed you gain from {@feat Fledgling Flight|LOAG} increases to 25 feet."
 			],
 			"leadsTo": [
 				"Fully Flighted|LOAG"
@@ -3443,18 +3451,6 @@
 				"Consistent Surge|LOAG",
 				"Offensive Subroutine|LOAG",
 				"Protective Subroutine|LOAG"
-			]
-		},
-		{
-			"name": "Nestling Fall",
-			"source": "LOAG",
-			"page": 137,
-			"level": 1,
-			"traits": [
-				"strix"
-			],
-			"entries": [
-				"You trust the strength of your wings and can spread them to glide safely to the ground. As long as you can act, you take no damage from falling, no matter what distance you fall."
 			]
 		},
 		{
