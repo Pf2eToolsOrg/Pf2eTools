@@ -1477,14 +1477,19 @@
 		},
 		{
 			"name": "Combination",
-			"source": "G&G",
-			"page": 231,
+			"source": "TV",
+			"page": 24,
+			"otherSources": {
+				"Originally": [
+					"G&G|159"
+				]
+			},
 			"categories": [
 				"Weapon"
 			],
 			"entries": [
-				"Combination is a new trait for weapons that combine the functionality of melee weapons and firearms in unique or unusual ways. A combination weapon has both a firearm form or usage and a melee weapon form or usage. {@table Uncommon Combination Weapons|G&G|Table 4\u20133: Uncommon Combination Weapons} lists the firearm statistics first, and the melee weapon statistics indented beneath, just above the ammunition. Switching between the melee weapon usage and the firearm usage requires an {@action Interact} action. However, if your last action was a successful melee {@action Strike} against a foe using a combination weapon, you can make a firearm {@action Strike} with the combination weapon against that foe without fully switching to the firearm usage, firing the firearm just as you hit with the melee attack. In this case, the combination weapon returns to its melee usage after the firearm {@action Strike}.",
-				"Since a combination weapon is one weapon with two usages, both usages share any fundamental runes. You can put a property rune on a combination weapon as long as it's appropriate for either of the two usages, but if only one of the usages meets the property rune's requirements, the effects of the property rune only apply for that usage. For instance, a {@item vorpal} {@group axe} musket only applies the {@item vorpal} property rune when you are using it as an {@group axe}. Due to their complexity, combination weapons can't have another weapon, such as a {@item bayonet|G&G} or {@item reinforced stock|G&G}, attached to them."
+				"Combination weapons combine the functionality of melee weapons and ranged weapons in unique or unusual ways. A combination weapon has a ranged form or usage and a melee weapon form or usage. The weapons table lists the ranged weapon statistics first and the melee weapon statistics indented beneath, just above the ammunition. You can {@action Interact} to swap between the melee weapon usage and the ranged weapon usage. However, if your last action was a successful melee {@action Strike} against a foe using a combination weapon, you can make a ranged {@action Strike} with the combination weapon against that foe without fully swapping to the ranged weapon usage, firing the ranged weapon just as you hit with the melee attack. In this case, the combination weapon returns to its melee usage after the ranged weapon {@action Strike}.",
+				"Since a combination weapon is one weapon with two usages, both usages share any fundamental runes. You can put a property rune on a combination weapon as long as it's appropriate for either of the two usages, but if only one of the usages meets the property rune's requirements, the effects of the property rune only apply for that usage. For instance, a {@runeItem axe musket|G&G|vorpal|} only applies the {@item vorpal} property rune when you are using it as an axe. Due to their complexity, combination weapons can't have another weapon, such as a {@item bayonet|G&G} or {@item reinforced stock|G&G}, attached to them."
 			]
 		},
 		{
@@ -1743,13 +1748,19 @@
 		},
 		{
 			"name": "Critical Fusion",
-			"source": "G&G",
-			"page": 231,
+			"source": "TV",
+			"page": 24,
+			"otherSources": {
+				"Originally": [
+					"G&G|159"
+				]
+			},
 			"categories": [
 				"Weapon"
 			],
 			"entries": [
-				"Critical fusion is a new trait for combination weapons that grants you two additional options for the critical specialization effect when using the combination weapon's melee version to make a melee attack while the firearm is loaded. If you choose to use one of them, they replace the melee usage's normal critical specialization effect. First, you can discharge the firearm to create a loud bang and concussion, using the critical specialization effect for firearms instead of the melee weapon group's critical specialization effect. Second, you can choose to discharge the firearm to increase the critical hit's momentum or shoot the foe as you attack them in melee, dealing 2 additional damage per weapon damage die. Both options discharge the firearm, which typically means you have to reload it before firing it again."
+				"Critical fusion is a trait for {@trait combination} weapons that grants you two additional options for the critical specialization effect when using the {@trait combination} weapon's melee version to make a melee attack while the ranged weapon is loaded. If you choose to use one of them, they replace the melee usage's normal critical specialization effect.",
+				"First, if the ranged weapon is a {@group firearm|G&G}, you can discharge it to create a loud bang and concussion, using the critical specialization effect for {@group firearm|G&G|firearms} instead of the melee weapon group's critical specialization effect. Second, you can choose to discharge the ranged weapon to increase the critical hit's momentum or shoot the foe as you attack them in melee, dealing 2 additional damage per weapon damage die. Both of these options discharge the ranged weapon, which typically means you have to reload it before firing it again."
 			]
 		},
 		{
@@ -3265,7 +3276,7 @@
 				"Weapon"
 			],
 			"entries": [
-				"A weapon with the hampering trait is designed to be shaken, cast outward, or whipped about to control space on the battlefield. You can use an Interact action to thrash the weapon in a square within the weapon's reach. That square becomes {@quickref difficult terrain||3|terrain} until you attack with the weapon, move, or would otherwise stop intentionally thrashing it."
+				"A weapon with the hampering trait is designed to be shaken, cast outward, or whipped about to control space on the battlefield. After you hit with the weapon, you can use an Interact action to give the target a –10-foot circumstance penalty to all Speeds. The penalty ends after the target takes a move action, at the start of your next turn, if you attack with the weapon, or if you move out of reach of the target, whichever comes first."
 			]
 		},
 		{
@@ -5032,7 +5043,7 @@
 				"Weapon"
 			],
 			"entries": [
-				"These weapons can't be loaded with individual bolts or bullets like other crossbows and firearms; instead, they require a magazine of specialized ammunition to be loaded into a special slot. Once that magazine is in place, the ammunition loads automatically each time the weapon is cocked to fire, reducing its reload to the value in its reload entry (typically 0). When the ammunition runs out, a new magazine must be loaded, which requires a free hand and 3 Interact actions (to remove the old magazine, retrieve the new magazine, and slot the new magazine in place). These actions don't need to be consecutive."
+				"These weapons can't be loaded with individual bolts or bullets like other crossbows and firearms; instead, they require a magazine of specialized ammunition to be loaded into a special slot. Once that magazine is in place, the ammunition loads automatically each time the weapon is cocked to fire, reducing its reload to the value in its reload entry (typically 0). When the ammunition runs out, a new magazine must be loaded, which requires a free hand and 3 {@action Interact} actions (to remove the old magazine, retrieve the new magazine, and slot the new magazine in place). These actions don't need to be consecutive. The {@action Interact} actions to replace a magazine are the same as {@action Interact||Interacting} to reload."
 			]
 		},
 		{
@@ -5092,14 +5103,19 @@
 		},
 		{
 			"name": "Scatter",
-			"source": "G&G",
-			"page": 235,
+			"source": "TV",
+			"page": 26,
+			"otherSources": {
+				"Originally": [
+					"G&G|152"
+				]
+			},
 			"variable": true,
 			"categories": [
 				"Weapon"
 			],
 			"entries": [
-				"This weapon fires a cluster of pellets in a wide spray. Scatter always has an area listed with it, indicating the radius of the spray. On a hit, the primary target of attacks with a scatter weapon take the listed damage, and the target and all other creatures within the listed radius around it take 1 point of {@trait splash} damage per weapon damage die."
+				"This weapon fires a cluster of pellets in a wide spray. Scatter always has an area listed with it, indicating the radius of the spray. On a hit, the primary target of attacks with a scatter weapon takes the listed damage, and the target and all other creatures within the listed radius around it take 1 point of {@trait splash} damage per weapon damage die, of the same type as the initial attack."
 			]
 		},
 		{

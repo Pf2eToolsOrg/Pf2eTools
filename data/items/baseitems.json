@@ -929,7 +929,7 @@
 				"damage": "1d6",
 				"damageType": "P",
 				"reload": 1,
-				"range": 40,
+				"range": 50,
 				"ammunition": "round (10)|G&G|round",
 				"traits": [
 					"concussive",
@@ -943,6 +943,7 @@
 				"damageType": "S",
 				"traits": [
 					"critical fusion",
+					"forceful",
 					"sweep"
 				]
 			}
@@ -973,7 +974,7 @@
 				"damageType": "P",
 				"reload": "1 min.",
 				"range": 180,
-				"group": "Bow"
+				"group": "Crossbow|PC1"
 			}
 		},
 		{
@@ -1136,7 +1137,7 @@
 			"subCategory": "Martial",
 			"entries": [
 				"Developed by a goblin weaponsmith who missed the 'hand' part of 'hand cannon', this comically-oversized gun has a heavily reinforced barrel and is loaded with a worrisome quantity of gunpowder.",
-				"This {@item hand cannon|G&G} is a martial weapon, instead of a simple weapon. It has the {@trait fatal <d12>} trait and a range of 20 feet. It also has the following modified critical failure condition:",
+				"This {@item hand cannon|G&G} is a martial weapon, instead of a simple weapon. It has the {@trait fatal <d12>} trait and a range increment of 20 feet. It also has the following modified critical failure condition:",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1159,7 +1160,8 @@
 			"type": "Item",
 			"traits": [
 				"uncommon",
-				"combination"
+				"combination",
+				"monk"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -2054,7 +2056,8 @@
 			"type": "Item",
 			"traits": [
 				"uncommon",
-				"combination"
+				"combination",
+				"concealable"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -2592,7 +2595,7 @@
 					"critical fusion",
 					"finesse",
 					"thrown <10 ft.>",
-					"versatile <p>"
+					"versatile <S>"
 				]
 			}
 		},
@@ -3621,6 +3624,7 @@
 				"ammunition": "round (5)|G&G|round",
 				"traits": [
 					"backstabber",
+					"fatal <d10>",
 					"goblin",
 					"scatter <5 ft.>"
 				]
@@ -3631,6 +3635,7 @@
 				"damage": "1d6",
 				"damageType": "S",
 				"traits": [
+					"agile",
 					"backstabber",
 					"goblin",
 					"critical fusion",
@@ -4603,11 +4608,11 @@
 				"damage": "1d6",
 				"damageType": "P",
 				"reload": 2,
-				"range": 40,
+				"range": 50,
 				"ammunition": "round (10)|G&G|round",
 				"traits": [
 					"concussive",
-					"fatal <1d10>",
+					"fatal <d10>",
 					"gnome"
 				]
 			},
@@ -4617,6 +4622,7 @@
 				"damage": "1d8",
 				"damageType": "B",
 				"traits": [
+					"backswing",
 					"critical fusion",
 					"gnome",
 					"trip",
@@ -4867,10 +4873,10 @@
 			"weaponData": {
 				"type": "Ranged",
 				"group": "Firearm|G&G",
-				"damage": "1d8",
+				"damage": "1d10",
 				"damageType": "P",
 				"reload": 1,
-				"range": 50,
+				"range": 30,
 				"ammunition": "round (10)|G&G|round",
 				"traits": [
 					"concussive",
@@ -5010,7 +5016,7 @@
 			"comboWeaponData": {
 				"type": "Melee",
 				"group": "Hammer",
-				"damage": "1d8",
+				"damage": "1d10",
 				"damageType": "B",
 				"traits": [
 					"critical fusion",
@@ -5924,6 +5930,7 @@
 			"type": "Item",
 			"traits": [
 				"uncommon",
+				"kickback",
 				"repeating"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
@@ -6161,6 +6168,7 @@
 				"damageType": "B",
 				"traits": [
 					"critical fusion",
+					"finesse",
 					"shove"
 				]
 			}
@@ -6702,12 +6710,11 @@
 			"comboWeaponData": {
 				"type": "Melee",
 				"group": "Sword",
-				"damage": "1d4",
+				"damage": "1d6",
 				"damageType": "S",
 				"traits": [
 					"critical fusion",
 					"finesse",
-					"forceful",
 					"sweep"
 				]
 			}
@@ -6966,6 +6973,7 @@
 				"range": 30,
 				"ammunition": "round (10)|G&G|round",
 				"traits": [
+					"backstabber",
 					"concussive",
 					"fatal <d8>"
 				]
@@ -6991,7 +6999,7 @@
 			"traits": [
 				"attached <to crossbow or firearm>",
 				"finesse",
-				"two-hand <d6>"
+				"two-hand <d8>"
 			],
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"price": {
@@ -7039,7 +7047,7 @@
 				"damageType": "P",
 				"reload": 0,
 				"range": 120,
-				"group": "Bow"
+				"group": "Crossbow|PC1"
 			}
 		},
 		{
@@ -7074,7 +7082,7 @@
 				"damageType": "P",
 				"reload": 0,
 				"range": 60,
-				"group": "Bow"
+				"group": "Crossbow|PC1"
 			}
 		},
 		{
@@ -7104,7 +7112,7 @@
 				"damageType": "P",
 				"reload": 1,
 				"range": 180,
-				"group": "Bow"
+				"group": "Crossbow|PC1"
 			}
 		},
 		{
@@ -8443,7 +8451,7 @@
 			}
 		},
 		{
-			"name": "Three Peaked Tree",
+			"name": "Three-Peaked Tree",
 			"source": "G&G",
 			"page": 158,
 			"type": "Item",
@@ -8467,7 +8475,7 @@
 			"weaponData": {
 				"type": "Ranged",
 				"group": "Firearm|G&G",
-				"damage": "1d4",
+				"damage": "1d6",
 				"damageType": "P",
 				"reload": 1,
 				"range": 60,
@@ -8475,7 +8483,7 @@
 				"traits": [
 					"concussive",
 					"elf",
-					"fatal <d8>",
+					"fatal <d10>",
 					"parry"
 				]
 			},

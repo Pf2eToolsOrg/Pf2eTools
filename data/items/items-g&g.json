@@ -870,7 +870,7 @@
 			},
 			"bulk": 1,
 			"category": "Ammunition",
-			"group": "Bow",
+			"group": "Crossbow|PC1",
 			"entries": [
 				"{@note For use with the {@item Backpack Ballista|G&G}.}"
 			],
@@ -3179,7 +3179,7 @@
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 60
+						"amount": 12
 					},
 					"entries": [
 						"The range is 30 feet, the counteract modifier is +7, and the counteract level is 2."
@@ -3195,7 +3195,7 @@
 					"level": 7,
 					"price": {
 						"coin": "gp",
-						"amount": 360
+						"amount": 70
 					},
 					"entries": [
 						"The range is 40 feet, the counteract modifier is +13, and the counteract level is 4."
@@ -3211,7 +3211,7 @@
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 1400
+						"amount": 300
 					},
 					"entries": [
 						"The range is 60 feet, the counteract modifier is +18, and the counteract level is 6."
@@ -3227,7 +3227,7 @@
 					"level": 15,
 					"price": {
 						"coin": "gp",
-						"amount": 6500
+						"amount": 1300
 					},
 					"entries": [
 						"The range is 90 feet, the counteract modifier is +24, and the counteract level is 8."
@@ -3489,7 +3489,7 @@
 			],
 			"category": "Consumable",
 			"entries": [
-				"These bullets are seaweed-green, refract light like an emerald, and are covered in a thin film of gray-green powder. When fired, a fairy bullet creates an effect that functions as the {@spell glitterdust} spell in a line between you and your target. This line can be no more than 60 feet long, so if the target is more than 60 feet away from you, the line simply ends after reaching its maximum distance. Since the fairy bullet is fired before the glitterdust can reveal the target, the effects don't affect the flat check for the attack roll with the fairy bullet."
+				"These bullets glimmer with emerald green light that dances across the surface of the bullet like a mischievous sprite. On a successful {@action Strike}, a fairy bullet casts revealing light (DC 23) extending outward from a corner of the target's space. You choose which corner of the target's space you want the burst to extend out from at the time you declare the associated {@action Strike}. Since the fairy bullet is fired before revealing light can reveal the target, the effects don’t affect the flat check for the attack roll with the fairy bullet if the target is hidden from you."
 			]
 		},
 		{
@@ -4924,7 +4924,7 @@
 				"This charred and blackened +2 striking clan pistol is coated in a thick layer of soot and grease and its retort sounds uncomfortably like a scream. Clearly at dangerous risk of misfire, this weapon claimed the life of its dwarven crafter shortly after completion and is haunted by that pained spirit.",
 				"This ever-burning spirit keeps the firearm warm to the touch, regardless of surrounding environment.",
 				"No matter how much you clean and maintain it, an immolation clan pistol is always at risk of a misfire, and the flat check to avoid a misfire is DC 7 rather than DC 5.",
-				"On a misfire, an immolation hand cannon releases a blast of concentrated fire, dealing you {@damage 2d6} fire damage and {@damage 2d6} {@condition persistent damage||persistent fire damage}.",
+				"On a misfire, an immolation clan pistol releases a blast of concentrated fire, dealing you {@damage 2d6} fire damage and {@damage 2d6} {@condition persistent damage||persistent fire damage}.",
 				"An immolation clan pistol fuses with you when you first fire it. While you're fused with the immolation clan pistol, the pained spirit haunts your dreams, forcing you to relive its death each night. If you fired the immolation clan pistol that day, you are unharmed by these dreams. If you didn't fire the immolation clan pistol that day, but still possess it, you awaken {@condition fatigued}. If you no longer possess the immolation clan pistol, the spirit of its dwarven smith is enraged by your neglect; you awaken {@condition fatigued} and aflame, taking {@damage 2d6} {@condition persistent damage||persistent fire damage}."
 			]
 		},
@@ -5249,8 +5249,8 @@
 			"category": "Customization",
 			"subCategory": "Weapon",
 			"entries": [
-				"These modifications include a heavier stock and larger replacement barrel designed to increase the stopping power of firearms. Large bore modifications can only be applied to firearms with the kickback or scatter traits, and attaching large bore modifications takes 1 hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires.",
-				"When you attach large bore modifications to a {@trait kickback} weapon, the circumstance bonus to damage granted by the kickback trait increases from 1 to 2 additional damage and the Strength requirement to fire the weapon without penalty increases to 18.",
+				"These modifications include a heavier stock and larger replacement barrel designed to increase the stopping power of firearms. Large bore modifications can only be applied to firearms with the {@trait kickback} or {@trait scatter} traits, and attaching large bore modifications takes 1 hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires.",
+				"When you attach large bore modifications to a {@trait kickback} weapon, the  bonus to damage granted by the {@trait kickback} trait increases from 1 to 2 additional damage and the Strength requirement to fire the weapon without penalty increases to 18.",
 				"When you attach large bore modifications to a weapon with the {@trait scatter} trait, the radius of the scatter effect increases by 5 feet, but the weapon imposes a \u20132 penalty on attack rolls if the wielder's Strength score is less than 14. If the weapon has both the {@trait kickback} and {@trait scatter} traits, apply both sets of modifications with the Strength requirement raised to 18 to avoid penalties when firing."
 			]
 		},
@@ -5347,7 +5347,52 @@
 					"entries": [
 						"You draw a card from the bandolier and {@action Interact} to load the card into a gun or crossbow you're wielding that requires 1 action to reload. The drawn card immediately transforms into magical ammunition with a type depending on the drawn card's suit, and a new copy of that card returns to the deck, ready to be drawn again.",
 						"When the card transforms into ammunition, it transforms into a firearm round or crossbow bolt appropriate for the weapon you chose to reload, even if magical ammunition of the drawn variety would normally be limited to ammunition of a different type (such as a storm arrow normally only being available in arrow form). Either draw a card from the Harrow deck or roll {@dice 1d6} to determine the suit of the card.",
-						"The result determines the type of magical ammunition the card becomes, as per the table below. Magical ammunition created this way lasts 10 minutes or until you fire it, whichever comes first."
+						"The result determines the type of magical ammunition the card becomes, as per the table below. Magical ammunition created this way lasts 10 minutes or until you fire it, whichever comes first.",
+						{
+							"type": "table",
+							"colSizes": [
+								2,
+								5,
+								5
+							],
+							"rows": [
+								[
+									"{@dice d6}",
+									"Ability (Suit)",
+									"Ammunition"
+								],
+								[
+									"1",
+									"Strength (Hammer)",
+									"{@item Meteor shot|G&G}"
+								],
+								[
+									"2",
+									"Dexterity (Key)",
+									"{@item Storm arrow}"
+								],
+								[
+									"3",
+									"Constitution (Shield)",
+									"{@item Corrosive ammunition|APG}"
+								],
+								[
+									"4",
+									"Intelligence (Book)",
+									"{@item Explosive ammunition}"
+								],
+								[
+									"5",
+									"Wisdom (Star)",
+									"{@item Terrifying ammunition|APG}"
+								],
+								[
+									"6",
+									"Charisma (Crown)",
+									"{@item Fairy bullet|G&G}"
+								]
+							]
+						}
 					]
 				}
 			],
@@ -5369,8 +5414,7 @@
 						"amount": 2000
 					},
 					"entries": [
-						"You can activate a greater lucky draw bandolier once per hour instead of being able to activate it once per day.",
-						"d6 Ability (Suit) Ammunition 1 Strength (Hammer) Meteor shot (page 171) 2 Dexterity (Key) Storm arrow 3 Constitution (Shield) Corrosive ammunition 4 Intelligence (Book) Explosive shot 5 Wisdom (Star) Terrifying ammunition (Advanced Player's Guide 259) 6 Charisma (Crown) Fairy bullet (page 170)"
+						"You can activate a greater lucky draw bandolier once per hour instead of being able to activate it once per day."
 					],
 					"variantType": "greater lucky draw bandolier"
 				}
@@ -5399,8 +5443,8 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"This magnetized suit is strapped to your body over your armor or clothes. When you {@action Activate an Item||Activate} it, you must choose whether to set it to attract or repel.",
-				"While set to attract, you take a \u20131 item penalty to your AC against attacks made by metal weapons, while creatures within a 5-foot emanation other than you gain a +1 item bonus to their AC. If set to repel, you gain a +1 item bonus to AC against attacks made with metal weapons. While attracting metal, you gain a +1 item bonus to {@skill Athletics} checks to {@action Climb} metal objects and {@action Grapple} metal creatures and a \u20131 item penalty to {@skill Athletics} checks to {@action Shove} metal creatures. While repelling metal, you gain a +1 item bonus to {@skill Athletics} checks to {@action Shove} metal creatures, but you take a \u20131 item penalty to {@action Climb} metal objects and {@action Grapple} metal creatures."
+				"This magnetized suit is strapped to your body over your armor or clothes. When you {@action Activate an Item||Activate} it, you must choose whether to set it to attract or repel. The activation lasts 10 minutes.",
+				"While set to attract, you take a \u20131 status penalty to your AC against attacks made by metal weapons, while allies within a 10-foot emanation other than you gain a +1 status bonus to their AC. If set to repel, you gain a +1 status bonus to AC against attacks made with metal weapons. While attracting metal, you gain a +1 status bonus to {@skill Athletics} checks to {@action Climb} metal objects and {@action Grapple} metal creatures and a \u20131 status penalty to {@skill Athletics} checks to {@action Shove} metal creatures. While repelling metal, you gain a +1 status bonus to {@skill Athletics} checks to {@action Shove} metal creatures, but you take a \u20131 status penalty to {@action Climb} metal objects and {@action Grapple} metal creatures."
 			],
 			"generic": "G",
 			"variants": [
@@ -5420,14 +5464,14 @@
 						"amount": 200
 					},
 					"entries": [
-						"The area that gains an AC bonus when attracting is a 10-foot emanation, and the item bonuses and penalties increase from 1 to 2."
+						"The area that gains an AC bonus when attracting is a 15-foot emanation, and the item bonuses and penalties increase from 1 to 2."
 					],
 					"_mod": {
 						"entries": [
 							{
 								"mode": "replaceTxt",
-								"replace": "5-foot",
-								"with": "10-foot"
+								"replace": "10-foot",
+								"with": "15-foot"
 							},
 							{
 								"mode": "replaceTxt",
@@ -5452,7 +5496,7 @@
 						"entries": [
 							{
 								"mode": "replaceTxt",
-								"replace": "5-foot",
+								"replace": "10-foot",
 								"with": "20-foot"
 							},
 							{
@@ -6477,7 +6521,7 @@
 			},
 			"bulk": "L",
 			"category": "Ammunition",
-			"group": "Bow",
+			"group": "Crossbow|PC1",
 			"entries": [
 				"{@note For use with repeating crossbows.}"
 			],
@@ -7276,7 +7320,8 @@
 					"entries": [
 						"The spike launcher fires a volley of smaller spikes in a 10-foot burst centered anywhere within its range.",
 						"Make a {@action Strike} with the spike launcher against each creature in the area. On a success, the spike causes the creature to take a \u20135-foot status penalty to their Speed.",
-						"On a critical success, the creature becomes {@condition immobilized} instead. In either case, the creature, or an adjacent creature, can use an {@action Interact} action to remove the spike and end the penalty or {@condition immobilized} condition."
+						"On a critical success, the creature becomes {@condition immobilized} instead. In either case, the creature, or an adjacent creature, can use an {@action Interact} action to remove the spike and end the penalty or {@condition immobilized} condition.",
+						"Your multiple attack penalty does not increase until you've completed all granted {@action Strike||Strikes}."
 					]
 				}
 			],

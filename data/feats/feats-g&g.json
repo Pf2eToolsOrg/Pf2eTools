@@ -97,9 +97,9 @@
 			"traits": [
 				"gunslinger"
 			],
-			"requirements": "You have an alchemical bomb worn or in one hand, and are wielding a firearm or crossbow in the other.",
+			"requirements": "You have an alchemical bomb worn or in one hand, and are wielding a firearm or crossbow.",
 			"entries": [
-				"You've practiced a technique for mixing alchemical bombs with your loaded shot. You {@action Interact} to retrieve the bomb (if it's not already in your hand) and pour its contents onto your ammunition, consuming the bomb. Next, {@action Strike} with your firearm. The {@action Strike} deals damage of the same type as the bomb (for instance, fire damage for alchemist's fire), and it deals an additional {@damage 1d6} {@condition persistent damage} of the same type as the bomb. If the {@action Strike} is a failure, you take {@dice 1d6} damage of the same type as the bomb you used, and the firearm misfires.",
+				"You've practiced a technique for mixing alchemical bombs with your loaded shot. You {@action Interact} to retrieve the bomb (if it’s not already in your hand) and pour its contents onto your ammunition, consuming the bomb, then resume your grip on the required weapon. Next, {@action Strike} with your firearm. The {@action Strike} deals damage of the same type as the bomb (for instance, fire damage for alchemist's fire), and it deals an additional {@damage 1d6} {@condition persistent damage} of the same type as the bomb. If the {@action Strike} is a failure, you take {@dice 1d6} damage of the same type as the bomb you used, and the firearm misfires.",
 				"The {@condition persistent damage} increases to {@dice 2d6} if the bomb is 11th level or higher, or {@dice 3d6} if it's 17th level or higher."
 			]
 		},
@@ -435,7 +435,7 @@
 			],
 			"access": "You are from Arcadia.",
 			"entries": [
-				"You've incorporated beast tech from Arcadia into your dynamo, adding in components from various terrifying creatures to enhance your prosthesis's capabilities. The beast parts can unleash a disturbing howl as you make a powerful attack with your dynamo. Attempt a single {@skill Intimidation} check to {@action Demoralize} each enemy within 30 feet; you don't take a penalty when you attempt to {@action Demoralize} a creature that doesn't understand your language. Then, make a dynamo {@action Strike}. Reduce the operational time of your sterling dynamo by 1 hour."
+				"You've incorporated beast tech from Arcadia into your dynamo, adding in components from various terrifying creatures to enhance your prosthesis's capabilities. The beast parts can unleash a disturbing howl as you make a powerful attack with your dynamo. Attempt {@skill Intimidation} checks to {@action Demoralize} against each enemy within 30 feet; you don’t take a penalty when you attempt to {@action Demoralize} a creature that doesn’t understand your language. Then, make a dynamo {@action Strike}. Reduce the operational time of your sterling dynamo by 1 hour."
 			]
 		},
 		{
@@ -457,7 +457,7 @@
 			"prerequisites": "expert with at least one type of firearm, trained in {@skill Arcana} or {@skill Crafting}, you own a beast gun and have slain the type of creature associated with your beast gun in a fair hunt (see above)",
 			"entries": [
 				"You've bonded to your beast gun and unlocked the first hints of its hidden potential. You treat all beast guns as martial firearms when determining your proficiency with them, even beast guns that are normally advanced weapons. You can change your bonded beast gun to another beast gun you own each day during your daily preparations, as long as you've previously performed a ritual hunt associated with the new beast gun.",
-				"The beast gun also acts as a conduit, drawing out and amplifying any latent or active magic power you have. You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with one cantrip of your choice, from either the arcane or primal spell list. You choose this cantrip from the common spells on your chosen spell list or from other spells you have access to on the list. This cantrip must require a spell attack roll. You're trained in spell attack rolls and spell DCs for arcane or primal spells, whichever of the two traditions you chose. Your key spellcasting ability for these spells is Charisma.",
+				"The beast gun also acts as a conduit, drawing out and amplifying any latent or active magic power you have. You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with one cantrip of your choice, from either the arcane or primal spell list. You choose this cantrip from the common spells on your chosen spell list or from other spells you have access to on the list. This cantrip must require a spell attack roll. You're trained in spell attack rolls and spell DCs for arcane or primal spells, whichever of the two traditions you chose. Your key spellcasting ability for these spells is either Charisma or Intelligence, chosen when you take this feat.",
 				"If you already cast arcane or primal spells from spell slots, you learn one additional cantrip from that tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
 				"You also gain Spellsling.",
 				{
@@ -504,7 +504,10 @@
 			"prerequisites": "{@feat Black Powder Boost|G&G}",
 			"requirements": "You're wielding a loaded firearm.",
 			"entries": [
-				"You learn to take advantage of every shot, flying across the battlefield with the help of your weapon's recoil. {@action Stride} and use Black Powder Boost. Make a ranged {@action Strike} with the required weapon at any point during the Black Powder Boost."
+				"You learn to take advantage of every shot, flying across the battlefield with the help of your weapon’s recoil. {@action Stride} and use {@feat Black Powder Boost|G&G}. Make a melee {@action Strike} with the required weapon at any point during the {@feat Black Powder Boost|G&G}."
+			],
+			"special": [
+				"If you have {@feat Bullet Dancer Burn|G&G}, apply the additional fire damage to the granted {@action Strike}."
 			]
 		},
 		{
@@ -684,7 +687,7 @@
 			"name": "Bullet Dancer Burn",
 			"source": "G&G",
 			"page": 132,
-			"level": 6,
+			"level": 4,
 			"featType": {
 				"archetype": [
 					"Bullet Dancer"
@@ -696,7 +699,7 @@
 			"prerequisites": "Bullet Dancer Stance",
 			"requirements": "You're wielding a firearm with an attached {@item bayonet|G&G} or {@item reinforced stock|G&G}.",
 			"entries": [
-				"The fiery blaze of your weapons combined with your unorthodox technique leaves your opponents with little opportunity to capitalize on any gaps in your defenses, or properly defend themselves against your onslaught. While in Bullet Dancer Stance, when you successfully {@action Strike} an opponent with a bayonet or reinforced stock attached to your firearm, the next ranged {@action Strike} you make against that opponent doesn't trigger reactions that would trigger on a ranged attack, such as {@action Attack of Opportunity}. While in Bullet Dancer Stance, when you make a successful ranged {@action Strike} against an opponent within your melee reach using a firearm, the next reinforced stock or bayonet attack attached to that firearm deals an additional 1 fire damage per weapon damage die.",
+				"The fiery blaze of your weapons combined with your unorthodox technique leaves your opponents with little opportunity to capitalize on any gaps in your defenses, or properly defend themselves against your onslaught. While in Bullet Dancer Stance, when you successfully {@action Strike} an opponent with a bayonet or reinforced stock attached to your firearm, the next ranged {@action Strike} you make against that opponent doesn't trigger reactions that would trigger on a ranged attack, such as {@action Attack of Opportunity||Reactive Strike}. While in Bullet Dancer Stance, when you make a successful ranged {@action Strike} against an opponent within your melee reach using a firearm, the next reinforced stock or bayonet attack attached to that firearm deals an additional 1 fire damage and 1 {@condition persistent damage||persistent fire damage} per weapon damage die.",
 				"The benefit on your next {@action Strike} from either use of Bullet Dancer Burn is lost if not used by the end of your next turn."
 			],
 			"leadsTo": [
@@ -720,7 +723,7 @@
 			],
 			"prerequisites": "expert in unarmored defense and trained in simple weapons",
 			"entries": [
-				"You've learned how to synchronize traditional martial arts and guns. You gain the Bullet Dancer Stance action. Whenever your proficiency in any weapon increases to expert or beyond, you gain that new proficiency with bayonets, reinforced stocks, simple firearms and unarmed attacks.",
+				"You've learned how to synchronize traditional martial arts and guns. You gain the Bullet Dancer Stance action and are trained in {@item bayonet|G&G|bayonets} and {@item reinforced stock|G&G|reinforced stocks}. Whenever your proficiency in any weapon increases to expert or beyond, you gain that new proficiency with {@item bayonet|G&G|bayonets}, {@item reinforced stock|G&G|reinforced stocks}, simple firearms and unarmed attacks.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -753,7 +756,7 @@
 				"number": 1,
 				"unit": "action"
 			},
-			"level": 12,
+			"level": 10,
 			"featType": {
 				"archetype": [
 					"Bullet Dancer"
@@ -1305,7 +1308,7 @@
 				"gunslinger"
 			],
 			"entries": [
-				"You have a deep understanding of the crossbow. When you're wielding a crossbow and {@action Interact} to reload it, including {@action Interact} actions as part of your slinger's reload and similar effects, you gain a +2 circumstance bonus to the damage roll on your next {@action Strike} with that crossbow. As normal, this isn't cumulative with the +1 circumstance bonus from singular expertise. If the crossbow is a simple crossbow, also increase the damage die size for that attack by one step. You must make the attack before the end of your turn or these benefits are lost."
+				"You’re exceptionally skilled with the crossbow. The first time each round that you {@action Interact} to reload a crossbow you are wielding, including {@action Interact} actions as part of your slinger’s reload and similar effects, you increase the range increment for your next {@action Strike} with that weapon by 10 feet and deal 1 additional precision damage per weapon damage die with that {@action Strike}. If your crossbow has the {@trait backstabber} trait and you are attacking an {@condition flat-footed||off-guard} target, {@trait backstabber} deals 2 additional precision damage per weapon damage die instead of its normal effects."
 			]
 		},
 		{
@@ -1660,17 +1663,13 @@
 			"name": "Dual-weapon Reload",
 			"source": "G&G",
 			"page": 111,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
 			"level": 1,
 			"traits": [
 				"gunslinger"
 			],
 			"requirements": "You're wielding two one-handed weapons, each in a different hand, one of which is a ranged weapon.",
 			"entries": [
-				"You carry your ammunition in a way that allows you to reload while holding two weapons. You {@action Interact} to reload a one-handed ranged weapon you're holding. Unlike most {@action Interact} actions, you don't need a free hand to reload your ranged weapon in this way."
+				"You carry your ammunition in a way that allows you to reload while holding two weapons. While you’re wielding two one-handed weapons, each in a different hand, you don’t need a free hand to reload a one-handed ranged weapon you’re wielding."
 			]
 		},
 		{
@@ -3774,8 +3773,8 @@
 				"number": 1
 			},
 			"entries": [
-				"Throughout the day, your body produces powerful projectiles within your chassis. You fire them all at once in either a 30-foot cone or a 10-foot emanation. Foes in the area take {@damage 6d6} piercing damage. This increases to {@dice 7d6} at 12th level, {@dice 8d6} at 15th level, and {@dice 9d6} at 18th level.",
-				"{@b Enhancement} The projectiles regenerate quicker, they are much more powerful, and you can refine the metallic content to harm certain creatures. You can use Rain of Bolts once per hour instead of once per day. The damage increases to {@dice 12d6} and each time you use the action, you can choose adamantine, cold iron, or silver. The damage from Rain of Bolts is treated as the metal you chose. At 20th level, the damage increases to {@dice 13d6}."
+				"Throughout the day, your body produces powerful projectiles within your chassis. You fire them all at once in either a 30-foot cone or a 10-foot emanation. Foes in the area take {@damage 6d6} piercing damage with a basic Reflex save against the higher of your class DC or spell DC. This increases to {@dice 7d6} at 12th level, {@dice 8d6} at 15th level, and {@dice 9d6} at 18th level.",
+				"{@b Enhancement} The projectiles regenerate quicker, they are much more powerful, and you can refine the metallic content to harm certain creatures. You can use Rain of Bolts once per hour instead of once per day. The damage increases to {@dice 12d6} and each time you use the action, you can choose {@item adamantine (generic)}, {@item cold iron (generic)}, or {@item silver (generic)}. The damage from Rain of Bolts is treated as the metal you chose. At 20th level, the damage increases to {@dice 13d6}."
 			]
 		},
 		{
@@ -3855,9 +3854,8 @@
 			],
 			"requirements": "You're wielding a loaded firearm or loaded crossbow in one hand and a bludgeoning or slashing melee weapon in the other.",
 			"entries": [
-				"You hurl your melee weapon at an opponent, then fire a bullet into the weapon's hilt, making it deal additional damage and bounce back to your grasp. Make a thrown ranged {@action Strike} with the melee weapon, then a ranged {@action Strike} with your firearm.",
-				"Both {@action Strike||Strikes} use the same multiple attack penalty. If the melee weapon doesn't already have the {@trait thrown} trait, it gains the thrown <10 feet> trait during a Rebounding Assault.",
-				"If both attacks are successful, the bolt or bullet hits the thrown melee weapon instead of your target, adding its force into one attack. Combine the damage from both {@action Strike||Strikes}, using the thrown weapon's damage type, and add an additional {@damage 1d6} precision damage.",
+				"You hurl your melee weapon at an opponent, then fire a bullet into the weapon’s hilt, making it bounce back to your grasp. Make a {@trait thrown} ranged {@action Strike} with the melee weapon, then a ranged {@action Strike} with your firearm. Both {@action Strike||Strikes} use your current multiple attack penalty and this counts as two attacks when calculating your multiple attack penalty. If the melee weapon doesn’t already have the {@trait thrown} trait, it gains the {@trait thrown <10 feet>} trait during a Rebounding Assault.",
+				"If both attacks are successful, the bolt or bullet hits the {@trait thrown} melee weapon instead of your target, adding its force into one attack. Combine the damage from both {@action Strike||Strikes}, using the {@trait thrown} weapon's damage type, and add an additional {@damage 1d6} precision damage.",
 				"The impact sends the melee weapon rebounding off the target and back to your hand.",
 				"In any circumstance other than both attacks hitting, carry out the individual {@action Strike||Strikes} normally. The thrown weapon doesn't rebound and remains in the target's space as normal for thrown weapons."
 			]
@@ -4246,7 +4244,7 @@
 				"gunslinger"
 			],
 			"entries": [
-				"Your ability to react to unexpected circumstances is preternaturally sharp. At the start of each enemy's turn, you gain an additional reaction you can use on only that turn to use a gunslinger reaction."
+				"Your ability to react to unexpected circumstances is preternaturally sharp. At the start of each creature’s turn, you gain an additional reaction you can use on only that turn to use a gunslinger reaction."
 			]
 		},
 		{
@@ -4410,30 +4408,10 @@
 			],
 			"prerequisites": "way of the spellshot",
 			"entries": [
-				"You've steeped yourself in magic and gunplay to the extent that you can conjure bullets from thin air, using a rudimentary knowledge of arcane theory to create a temporary piece of ammunition. You gain the Conjure Bullet action.",
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Conjure Bullet",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"conjuration",
-						"magical"
-					],
-					"frequency": {
-						"unit": "round",
-						"number": 1
-					},
-					"entries": [
-						"You conjure an ordinary level-0 bolt or bullet out of thin air and then immediately Interact to load it into your weapon. If the bolt or bullet isn't fired before the end of your turn, the effect is wasted."
-					]
-				}
+				"You cast {@trait arcane} spells like a wizard, gaining a spellbook with four {@trait common} {@trait arcane} {@trait cantrip||cantrips} of your choice. You gain the {@action Cast a Spell} activity. You can prepare two {@trait cantrip||cantrips} each day from your spellbook. You’re trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for spellshot archetype spells is Intelligence, and they are {@trait arcane} spells. You become trained in {@skill Arcana}; if you were already trained in {@skill Arcana}, you instead become trained in a skill of your choice. This counts as the wizard archetype for the benefits of {@feat Basic Wizard Spellcasting}. "
 			],
 			"special": [
-				"You can't select another dedication feat other than Beast Gunner Dedication until you've gained two other feats from the {@archetype spellshot|G&G} or {@archetype beast gunner|G&G} archetypes."
+				"You can’t select another dedication feat other than {@feat Beast Gunner Dedication|G&G} until you’ve gained two other feats from the spellshot or beast gunner archetypes."
 			],
 			"leadsTo": [
 				"Black Powder Embodiment|G&G",
@@ -4602,7 +4580,7 @@
 			],
 			"entries": [
 				"You're comfortable wielding a firearm or crossbow in one hand and a melee weapon in the other, combining melee attacks with shots from the firearm. When you make a successful ranged {@action Strike} against an enemy within your reach with your one-handed firearm or one-handed crossbow, that enemy is {@condition flat-footed} against your next melee attack with a one-handed melee weapon.",
-				"When you make a successful melee {@action Strike} against an enemy with your one-handed melee weapon, the next ranged {@action Strike} you make against that enemy with a one-handed firearm or one-handed crossbow doesn't trigger reactions that would trigger on a ranged attack but not a melee attack, such as {@action Attack of Opportunity}. Either of these benefits is lost if not used by the end of your next turn."
+				"When you make a successful melee {@action Strike} against an enemy with your one-handed melee weapon, the next ranged {@action Strike} you make against that enemy with a one-handed firearm or one-handed crossbow doesn't trigger reactions that would trigger on a ranged attack but not a melee attack, such as {@action Attack of Opportunity||Reactive Strike}. Either of these benefits is lost if not used by the end of your next turn."
 			]
 		},
 		{
