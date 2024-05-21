@@ -854,7 +854,7 @@
 				"primal"
 			],
 			"entries": [
-				"Stone encases you like armor. The stone armor is medium armor but uses your highest armor proficiency. The stone armor's statistics are: AC Bonus +4; Dex Cap +1; Check Penalty \u20132; Speed Penalty \u201310 feet; Strength 16; Bulk 1; Group plate. You gain its armor specialization effect. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any runes that could apply to the stone armor are replicated onto it.",
+				"Stone encases you like armor. The stone armor is medium armor but uses your highest armor proficiency. The stone armor's statistics are: AC Bonus +4; Dex Cap +1; Check Penalty \u20132; Speed Penalty \u201310 feet; Strength +3; Bulk 1; Group plate. You gain its armor specialization effect. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any runes that could apply to the stone armor are replicated onto it.",
 				"The stone armor lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends."
 			],
 			"footer": {
@@ -927,7 +927,7 @@
 				"You unleash a small, localized tremor in a 10-foot burst within 30 feet. Each creature in the area takes {@damage 1d8} bludgeoning damage with a basic Fortitude save against your class DC. A creature that critically fails is knocked {@condition prone}. Earth and stone in the area is difficult terrain until the start of your next turn."
 			],
 			"footer": {
-				"Level (+2)": "The damage increases by {@damage 1d10}."
+				"Level (+2)": "The damage increases by {@damage 1d8}."
 			}
 		},
 		{
@@ -1190,8 +1190,7 @@
 				"impulse",
 				"kineticist",
 				"polymorph",
-				"primal",
-				"stance"
+				"primal"
 			],
 			"entries": [
 				"Rock overflows from within you to consume your form before cracking open to reveal your body transformed into living stone.",
@@ -1498,7 +1497,7 @@
 				"primal"
 			],
 			"entries": [
-				"Flames rise and shape to your will, forming a wall or dome of your design. You create a wall of fire. In addition to the normal choices, you can make the wall up to 10 feet long and 60 feet high. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
+				"Flames rise and shape to your will, forming a wall or dome of your design. You create a {@spell wall of fire} within 120 feet. In addition to the normal choices, you can make the wall up to 10 feet long and 60 feet high. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
 			],
 			"footer": {
 				"Level (+3)": "The damage increases by {@damage 1d6}."
@@ -1629,6 +1628,7 @@
 			},
 			"level": 1,
 			"traits": [
+				"attack",
 				"impulse",
 				"kineticist",
 				"metal",
@@ -1658,7 +1658,7 @@
 				"primal"
 			],
 			"entries": [
-				"Sheets of bent and rusted metal cover you in an armored shell. The carapace is medium armor but uses your highest armor proficiency. The carapace's statistics are: AC Bonus +3; Dex Cap +2; Check Penalty \u20132; Speed Penalty \u20135 feet; Strength 14; Bulk 2; Group plate; Armor Traits noisy. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any that could apply to the metal carapace are replicated onto it.",
+				"Sheets of bent and rusted metal cover you in an armored shell. The carapace is medium armor but uses your highest armor proficiency. The carapace's statistics are: AC Bonus +3; Dex Cap +2; Check Penalty \u20132; Speed Penalty \u20135 feet; Strength +2; Bulk 2; Group plate; Armor Traits noisy. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any that could apply to the metal carapace are replicated onto it.",
 				"When you use this impulse, you can also create a rusty steel shield in a free hand, which uses the statistics of a regular steel shield. You can Shield Block with this shield even if you don't have that feat. The hand wielding this shield counts as a free hand for using impulses. The shield crumbles to flakes of rust if it becomes {@condition broken} or leaves your grasp.",
 				"The impulse lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends.",
 				"The metal is rusted and fragile. If you take damage from a critical hit, the metal shatters and the impulse ends."
@@ -1768,7 +1768,7 @@
 				"primal"
 			],
 			"entries": [
-				"Ragged pieces of metal weld together into a ramshackle structure. The barricade is up to 30 feet long, 15 feet high, and 1/2 inch thick. It must form in a straight line in an unbroken open space that doesn't pass through any creatures or objects, or the impulse fails. Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points, and it's immune to critical hits and precision damage. If any section is destroyed, the entire wall collapses, and each creature adjacent to the wall takes {@damage 2d8} slashing damage with a basic Reflex save against your class DC. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
+				"Ragged pieces of metal weld together into a ramshackle structure within 120 feet. The barricade is up to 30 feet long, 15 feet high, and 1/2 inch thick. It must form in a straight line in an unbroken open space that doesn't pass through any creatures or objects, or the impulse fails. Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points, and it's immune to critical hits and precision damage. If any section is destroyed, the entire wall collapses, and each creature adjacent to the wall takes {@damage 2d8} slashing damage with a basic Reflex save against your class DC. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
 			],
 			"footer": {
 				"Level (+2)": "The maximum length of the wall increases by 10 feet, the HP of each section increases by 10, and the damage when it's destroyed increases by {@dice 1d8}."
@@ -1793,7 +1793,10 @@
 			],
 			"entries": [
 				"A floating metal ball forms in a space within 30 feet, flashing with electricity. It can't be targeted or damaged. Any of your allies adjacent to it gain resistance to electricity equal to your level and add the shock rune to all their Strikes with metal objects. The sphere lasts until the end of your next turn, but you can Sustain it up to 1 minute. When you conjure the sphere and the first time you Sustain the impulse on subsequent rounds, you can either have it {@action Fly} up to 20 feet or deal {@damage 1d12} electricity damage to an adjacent creature with a basic Reflex save against your class DC."
-			]
+			],
+			"footer": {
+				"Level (+3)": "The damage dealt by the sphere increases by {@damage 1d12}."
+			}
 		},
 		{
 			"name": "Retch Rust",
@@ -2063,7 +2066,7 @@
 				"water"
 			],
 			"entries": [
-				"Bone-chilling, swirling sleet surrounds you, cruel as deepest winter. Surfaces in your kinetic aura are coated in slippery ice. A creature that moves on this uneven ground immediately falls unless it {@action balance||Balances} (DC 15). A creature is off-guard on the ice, as normal for uneven ground. You're immune to these effects.",
+				"Bone-chilling, swirling sleet surrounds you, cruel as deepest winter. Surfaces in your kinetic aura are coated in slippery ice. A creature that moves on the ice immediately falls unless it succeeds at an {@skill Acrobatics} check or Reflex save against your impulse DC – 2. A creature that {@action Step||Steps} or {@action Crawl||Crawls} doesn’t have to attempt a check or save. You’re immune to this effect.",
 				"If a creature on the ice is critically hit by one of your water impulses or critically fails at a save against one, that creature is {@condition slowed||slowed 1} until the end of its next turn."
 			]
 		},
@@ -2363,7 +2366,7 @@
 			],
 			"entries": [
 				"Wood and bark grow over your body like armor. This hardwood armor is medium armor but uses your highest armor proficiency.",
-				"The wooden armor's statistics are: AC Bonus +3; Dex Cap +2; Check Penalty \u20132; Speed Penalty \u20135 feet; Strength 14; Bulk 1; Group wood TV. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any runes that could apply to the hardwood armor are replicated onto it. When you use this impulse, you can also create a wooden shield in a free hand. You can Shield Block with this shield even if you don't have that feat. The hand wielding this shield counts as a free hand for using impulses. The shield decays in an instant if it becomes {@condition broken} or leaves your grasp.",
+				"The wooden armor's statistics are: AC Bonus +3; Dex Cap +2; Check Penalty \u20132; Speed Penalty \u20135 feet; Strength +2; Bulk 1; Group wood TV. Any bonuses, runes, and magical abilities of your actual armor are suppressed, but any runes that could apply to the hardwood armor are replicated onto it. When you use this impulse, you can also create a wooden shield in a free hand. You can Shield Block with this shield even if you don't have that feat. The hand wielding this shield counts as a free hand for using impulses. The shield decays in an instant if it becomes {@condition broken} or leaves your grasp.",
 				"The armor lasts for 10 minutes, and you can {@action Dismiss} this impulse. If you use this impulse again, any existing one ends."
 			],
 			"footer": {
@@ -2498,7 +2501,7 @@
 				"wood"
 			],
 			"entries": [
-				"Planks of wood, embellished with carvings, spring forth to form a wall. The palisade is up to 30 feet long, 20 feet high, and 1 inch thick. It must form in a straight line in an unbroken open space that doesn't pass through any creatures or objects, or the impulse fails. When you create the wall, you can choose to create ledges on one side of the wall, 4 feet from the top, with ladders reaching to them from the bottom of the wall.",
+				"Planks of wood, embellished with carvings, spring forth to form a wall within 120 feet. The palisade is up to 30 feet long, 20 feet high, and 1 inch thick. It must form in a straight line in an unbroken open space that doesn't pass through any creatures or objects, or the impulse fails. When you create the wall, you can choose to create ledges on one side of the wall, 4 feet from the top, with ladders reaching to them from the bottom of the wall.",
 				"Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points, and is immune to critical hits and precision damage. The wall lasts until the end of your next turn, but you can Sustain it up to 1 minute."
 			],
 			"footer": {
@@ -2570,7 +2573,7 @@
 				"wood"
 			],
 			"entries": [
-				"You sculpt a manicured maze of hedges. You create a wall of shrubs in a square 30 feet on a side, with 15-foot- high walls. You can place up to four more walls inside, each 10 feet wide and 15 feet high. The hedge lasts until the end of your next turn, and you can Sustain the impulse up to 1 minute.",
+				"You sculpt a manicured maze of hedges. Up to 10 hedges spring from the ground where you choose in a 30-foot-square area within 120 feet. Each is 10 feet long, 5 feet wide, and 15 feet tall. The hedges grant standard cover, are difficult terrain, and have a {@action Climb} DC of 15. They last until the end of your next turn, and you can Sustain the impulse up to 1 minute.",
 				"You can spend 10 minutes using this impulse as an exploration activity to instead create a cozy cabin with hedges for walls. It lasts for 12 hours, but ends if you use the impulse again."
 			]
 		},
@@ -2815,7 +2818,8 @@
 				"water"
 			],
 			"entries": [
-				"You conjure a red raincloud in a 10-foot burst within 60 feet, which pours rust-colored rain directly below it. Any creature in the rain with the metal trait, that is made of metal, or is wearing metal armor is covered in corrosive build-up. Any such creature is {@condition clumsy||clumsy 1} as long as it remains in the area. If such a creature is in the rain at the start of its turn, it takes {@dice 3d6} damage with a basic Fortitude save against your class DC, plus {@damage 1d6} {@condition persistent damage} if it fails. Damage from this impulse ignores Hardness."
+				"You conjure a red raincloud in a 10-foot burst within 60 feet, which pours rust-colored rain directly below it. Any creature in the rain with the metal trait, that is made of metal, or is wearing metal armor is covered in corrosive build-up. Any such creature is {@condition clumsy||clumsy 1} as long as it remains in the area. If such a creature is in the rain at the start of its turn, it takes {@dice 3d6} damage with a basic Fortitude save against your class DC, plus {@damage 1d6} {@condition persistent damage} if it fails. Damage from this impulse ignores Hardness.",
+				"The cloud lasts 1 minute but ends if you use the impulse again."
 			],
 			"footer": {
 				"Level (+2)": "The initial damage increases by {@damage 1d6}."
@@ -2858,6 +2862,7 @@
 			"level": 6,
 			"traits": [
 				"air",
+				"composite",
 				"fire",
 				"impulse",
 				"kineticist",
@@ -2908,6 +2913,7 @@
 			},
 			"level": 6,
 			"traits": [
+				"attack",
 				"composite",
 				"impulse",
 				"kineticist",
@@ -2967,7 +2973,7 @@
 				"primal"
 			],
 			"entries": [
-				"You smash a metal rod into your foe and call lightning to it. Attempt a 1-action melee {@action Elemental Blast|RoE} using the metal element. On a hit, the target is skewered with a metal rod, which gives it a \u20131 circumstance penalty to AC and saves against electricity; the penalty is \u20132 if the creature also has the metal trait, is made of metal, or is wearing metal armor. A hit creature immediately takes {@damage 1d12} electricity damage with a basic Reflex save against your class DC. The creature can {@action Interact} to attempt a DC 10 {@skill Athletics} check to pull the lightning rod free."
+				"You smash a metal rod into your foe and call lightning to it. Attempt a 2-action melee or ranged {@spell Elemental Blast} using the {@trait metal} element. On a hit, the target takes an additional {@damage 1d12} electricity damage and is skewered with a metal rod, which gives it a –1 circumstance penalty to AC and saves against {@trait electricity}; the penalty is –2 if the creature also has the {@trait metal} trait, is made of metal, or is wearing metal armor. The creature can attempt to pull the rod free using an {@action Interact} action, but must succeed at a DC 10 {@skill Athletics} check."
 			],
 			"footer": {
 				"Level (+6)": "The electricity damage increases by {@damage 1d12}."
@@ -2983,6 +2989,7 @@
 			},
 			"level": 6,
 			"traits": [
+				"attack",
 				"composite",
 				"fire",
 				"impulse",
@@ -3041,7 +3048,7 @@
 				"water"
 			],
 			"entries": [
-				"You form water and earth into a mudslide that smashes your opponents and coats them in mud. Each creature in the area takes {@damage 2d8} bludgeoning damage with a basic Fortitude save against your class DC. A creature that fails is also pushed 5 feet (or 10 feet on a critical failure) and coated in mud until the end of its next turn. While coated in mud, the creature falls {@condition prone} at the end of its movement any time it ends a move action other than a {@action Crawl} or {@action Step}. The creature can attempt an {@skill Acrobatics} check or Reflex save against your class DC, avoiding the fall if it succeeds."
+				"You form water and earth into a mudslide that smashes your opponents and coats them in mud. Each creature in a 30-foot cone takes {@damage 2d8} bludgeoning damage with a basic Fortitude save against your class DC. A creature that fails is also pushed 5 feet (or 10 feet on a critical failure) and coated in mud until the end of its next turn. While coated in mud, the creature falls {@condition prone} at the end of its movement any time it ends a move action other than a {@action Crawl} or {@action Step}. The creature can attempt an {@skill Acrobatics} check or Reflex save against your class DC, avoiding the fall if it succeeds."
 			],
 			"footer": {
 				"Level (+4)": "The damage increases by {@damage 1d8}."
