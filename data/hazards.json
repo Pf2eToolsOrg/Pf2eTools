@@ -1,5 +1,95 @@
 {
-	"hazard": [
+	"hazard": [{
+			"name": "Grasping Currents",
+			"source": "SoG1",
+			"page": 18,
+			"level": 3,
+			"traits": [
+				"unqiue",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 20,
+				"minProf": "trained",
+				"notes": "to notice a weird, faintly glowing ripple of the current beneath the water."
+			},
+			"description": [
+				"A swath of drowned spirits tries to pull someone down into the water to join them."
+			],
+			"disable": {
+				"entries": [
+					"DC 23 {@skill Religion} to calm the unquiet spirits in the waters for an hour, or light the Eternal Lantern (automatically disables the haunt)"
+				]
+			},
+			"actions": [
+				{
+					"name": "Ghostly Grasp",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "A creature attempts to cross the lake by {@action swim||swimming} or piloting a boat",
+					"entries": [
+						"Ghostly arms reach up to grab and clutch at the creature or the boat, causing a \u20132 penalty to the {@skill Athletics} or {@skill lore||Piloting} check that triggered the haunt. The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) On its initiative, the grasping currents attempt to {@action Grapple} a swimming creature or capsize a rowboat by attempting an {@skill Athletics} check with a {@dice 1d20+12|+12|Athletics} modifier. A creature that's {@condition restrained} by the grasping currents is pulled underwater and risks drowning. To capsize a rowboat, the haunt's {@skill Athletics} check is rolled against the pilot's {@skill Athletics} or {@skill lore||Sailing Lore} DC, whichever is higher."
+			],
+			"reset": [
+				"The grasping currents quickly build up power and can trigger again after 10 minutes have passed."
+			]
+		},
+		{
+			"name": "Haphazard Wood Pile",
+			"source": "SoG1",
+			"page": 22,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 17,
+				"minProf": "trained",
+				"notes": "to notice how the pile might fall on a person disabling it; DC 0 to see the pile."
+			},
+			"description": [
+				"Beams of heavy and sharp wood rest against one another to form a precariously balanced cage tied to several trip lines and tension-bearing dowels."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Thievery} (trained), {@skill Crafting} (trained), or {@skill Lore||Engineering Lore} (trained) to figure out how to safely dismantle the pile without it collapsing on anyone."
+				]
+			},
+			"actions": [
+				{
+					"name": "Collapse Inward",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Any of the four revelers within the hazard perform any action with the {@trait move} trait",
+					"entries": [
+						"The pile collapses onto the four revelers, dealing {@dice 1d6+5} bludgeoning damage (DC 17 basic Reflex save) to each of them. All four also take {@dice 1d6} {@condition persistent damage||persistent bludgeoning} damage until they're pulled from the rubble with a DC 17 {@skill Athletics} check or can {@action Escape} (DC 17)."
+					]
+				},
+				{
+					"name": "Collapse Outward",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "An attempt to disable the hazard from outside critically fails, or the hazard is intentionally triggered by someone from outside of the wood pile",
+					"entries": [
+						"The pile collapses outward, inflicting {@dice 1d6+5} bludgeoning damage to the four revelers (DC 15 basic Reflex save), and {@dice 2d6+5} bludgeoning damage (DC 17 basic Reflex save) to all creatures in a 10-foot area surrounding the central 10-foot-square where the revelers were trapped."
+					]
+				}
+			]
+		},
 		{
 			"name": "Scholar's Bane",
 			"source": "GW1",

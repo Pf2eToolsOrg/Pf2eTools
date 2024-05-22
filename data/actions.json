@@ -7958,6 +7958,28 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Invoke Shrine Blessing",
+			"source": "SoG1",
+			"page": 22,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"manipulate"
+			],
+			"entries": [
+				"You offer prayers to a shrine and implore its associated deity to bless a copper coin. Place the copper coin before the shrine, then spend 10 minutes in prayer before the shrine. Attempt a DC 15 Religion or deity {@skill Lore} check or a DC 17 skill check associated with the deity's teachings\u2014two alternate skills are available for each shrine, as detailed in the Willowshore's Shrines table on page 23. If you worship the deity in question, increase the result of your check by one degree of success.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The deity blesses the copper coin but also imbues you with additional divine energy and insight. You heal {@dice 1d8+8} Hit Points and can cast {@spell guidance} once in the next 24 hours as a {@trait divine} spell. You treat all further critical successes at Invoking Shrine Blessing as regular successes instead.",
+						"Success": "The deity blesses the copper coin.",
+						"Failure": "You fail to achieve a blessing but suffer no ill effects. You can't attempt to invoke a blessing at this specific shrine again for 24 hours.",
+						"Critical Failure": "You anger the deity. The copper coin vanishes, you can't attempt to invoke a blessing at this shrine again for 1 week, and you become {@condition stupefied||stupefied 1} for 1 hour."
+					}
+				}
+			]
 		}
 	]
 }

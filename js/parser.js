@@ -1641,6 +1641,7 @@ SRC_TiO = "TiO";
 SRC_ToK = "ToK";
 SRC_7DfS0 = "7DfS0";
 SRC_SoG0 = "SoG0";
+SRC_SoG1 = "SoG1";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
@@ -1781,6 +1782,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_TiO] = "Troubles in Otari";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToK] = "Threshold of Knowledge";
 Parser.SOURCE_JSON_TO_FULL[SRC_7DfS0] = "Seven Dooms for Sandpoint Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG0] = "Season of Ghosts Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_SoG1] = "Season of Ghosts #1: The Summer That Never Was";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
@@ -1885,6 +1887,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_TiO] = "TiO";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToK] = "ToK";
 Parser.SOURCE_JSON_TO_ABV[SRC_7DfS0] = "7DfS0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG0] = "SoG0";
+Parser.SOURCE_JSON_TO_ABV[SRC_SoG1] = "SoG1";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
@@ -1988,7 +1991,8 @@ Parser.SOURCE_JSON_TO_DATE[SRC_TaL] = "2019-09-11";
 Parser.SOURCE_JSON_TO_DATE[SRC_TiO] = "2020-12-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_ToK] = "2021-11-19";
 Parser.SOURCE_JSON_TO_DATE[SRC_7DfS0] = "2024-03-08";
-Parser.SOURCE_JSON_TO_DATE[SRC_SoG0] = "2024-02-10";
+Parser.SOURCE_JSON_TO_DATE[SRC_SoG0] = "2023-10-02";
+Parser.SOURCE_JSON_TO_DATE[SRC_SoG1] = "2023-10-18";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
@@ -2104,6 +2108,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_TiO] = "https://paizo.com/products/btq026k1";
 Parser.SOURCE_JSON_TO_STORE[SRC_ToK] = "https://paizo.com/products/btq027qf";
 Parser.SOURCE_JSON_TO_STORE[SRC_7DfS0] = "https://downloads.paizo.com/SevenDoomsforSandpoint_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG0] = "https://downloads.paizo.com/SeasonofGhosts_PlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_SoG1] = "https://paizo.com/products/btq02efy";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
 	SRC_AoA0,
@@ -2177,6 +2182,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_WoW0,
 	SRC_7DfS0,
 	SRC_SoG0,
+	SRC_SoG1,
 ]);
 Parser.SOURCES_VANILLA = new Set([
 	SRC_APG,
@@ -2345,6 +2351,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_WoW0,
 	SRC_7DfS0,
 	SRC_SoG0,
+	SRC_SoG1,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
