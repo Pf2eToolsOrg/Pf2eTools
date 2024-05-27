@@ -1,0 +1,536 @@
+{
+	"spell": [
+		{
+			"name": "Cycle of Retribution",
+			"source": "SoG2",
+			"page": 71,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"enchantment",
+				"mental"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 1,
+				"unit": "touch"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"An understanding of how violence begets more violence fills your target, causing it mental anguish when it attempts to take violent actions. The target must attempt a Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The next time the target takes a {@quickref hostile action|CRB|2|hostile actions|0}, the target takes {@damage 1d4} mental damage; the spell's duration then ends.",
+						"Failure": "The first time in a round when the target takes a hostile action, the target takes {@damage 1d4} mental damage.",
+						"Critical Failure": "Each time the target takes a hostile action, the target takes {@damage 1d4} mental damage."
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The mental damage increases by {@damage 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Fateful Condemnation",
+			"source": "SoG2",
+			"page": 71,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"aura",
+				"enchantment",
+				"incapacitation",
+				"mental"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"targets": "1 living creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You draw upon the target's negative fate to afflict it and its nearby allies with the unintended consequences of its past lives. Spiritual echoes of the target's past lives instill overwhelming feelings of doubt, regret, and despair into the minds of the target and its nearby allies. The effects depend on the target's Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature takes {@damage 4d6} mental damage, and then an aura of shimmering mist with a 10-foot emanation surrounds the creature. This mist isn't dense enough to affect sight, but it does cause the creature and any of its allies in the aura to take a \u20131 status penalty to all skill checks.",
+						"Failure": "As success, but the creature takes an initial {@damage 8d6} mental damage and is then {@condition slowed 1} for the duration of the effect.",
+						"Critical Failure": "As success, but the creature takes an initial {@damage 16d6} mental damage, then is {@condition slowed 1} for the duration of the effect. Any of the target's allies who begin their turn in the 10-foot emanation is {@condition slowed 1} for 1 round."
+					}
+				}
+			]
+		},
+		{
+			"name": "Fated Healing",
+			"source": "SoG2",
+			"page": 71,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"enchantment",
+				"mental",
+				"linguistic"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"duration": {
+				"number": 5,
+				"unit": "round"
+			},
+			"targets": "2 creatures who are {@condition hostile} toward each other",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You speak about the consequences of actions people take against each other and how it's possible to break cycles of violence simply by making a different choice. The targets regain {@dice 1d4} Hit Points at the end of their own turns while the spell is in effect. If a target uses a {@quickref hostile action|CRB|2|hostile actions|0} against the other target, the spell ends for the target that used the hostile action."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The targets regain an additional {@dice 1d4} Hit Points at the end of their own turns."
+					]
+				}
+			}
+		},
+		{
+			"name": "Life's Flowing River",
+			"source": "SoG2",
+			"page": 71,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"evocation"
+			],
+			"traditions": [
+				"occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"M",
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 120,
+				"unit": "feet"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You create a volume of faint shimmering light that resembles a flowing river and sheds dim light for 10 feet on each side. The river begins in an adjacent square to you and extends in a straight 5-foot path to its maximum range or until it hits a solid wall, whichever comes first. A creature that begins its turn in the river or enters one of the river's spaces must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature ignores the river's effects until the start of its next turn.",
+						"Success": "The creature treats all squares occupied by the river as {@quickref difficult terrain||3|terrain} until the start of its next turn. If the creature is {@trait undead} or a {@trait nindoru} {@trait fiend}, it takes {@damage 2d6} mental damage.",
+						"Failure": "As success, but the creature is also knocked {@condition prone}. If the creature is {@trait undead} or a {@trait nindoru} {@trait fiend}, it takes {@damage 4d6} mental damage.",
+						"Critical Failure": "As failure, but the creature is pushed 20 feet along the river's path in the direction of flow. If the creature is {@trait undead} or a {@trait nindoru} {@trait fiend}, it takes {@damage 8d6} mental damage."
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The mental damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Entangle Fate",
+			"source": "SoG2",
+			"page": 75,
+			"level": 4,
+			"traits": [
+				"rare",
+				"divination",
+				"mental"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"targets": "2 to 4 creatures in range",
+			"duration": {
+				"number": 3,
+				"unit": "round"
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You cause a swirl of energy to entangle the fates of all caught within the blast. Each creature in the area must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature's fate becomes distorted, and momentary conflicting glimpses of the immediate future cause the creature to become {@condition flat-footed} until the start of its next turn.",
+						"Failure": "As success, but the creature is {@condition flat-footed} for the duration of the spell. If more than one of the targets failed to resist this spell, the creature also becomes {@condition stupefied 1} for the duration of the spell as its fate and those of the other creatures continue to clash and strain against each other.",
+						"Critical Failure": "As failure, but any creature that becomes {@condition stupefied 1} for the duration of the spell also becomes {@condition enfeebled 1} and {@condition clumsy 1} for the spell's duration."
+					}
+				}
+			]
+		},
+		{
+			"name": "Life's Fresh Bloom",
+			"source": "SoG2",
+			"page": 75,
+			"level": 4,
+			"traits": [
+				"rare",
+				"healing",
+				"necromancy",
+				"positive"
+			],
+			"traditions": [
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"area": {
+				"types": [
+					"Burst"
+				],
+				"entry": "20-foot burst"
+			},
+			"duration": {
+				"number": 5,
+				"unit": "round",
+				"sustained": true
+			},
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"entries": [
+				"The ground around you blooms with life, sprouting sparkling grass, flowers, and small shrubs. Each living and non-nindoru creature that starts its turn standing on the ground in the area recovers {@dice 1d6} Hit Points and gains a +5-foot status bonus to its Speed until the end of its next turn. {@trait Nindoru} {@trait fiend||fiends} and {@trait undead} that start their turn in the area of life's fresh bloom instead become {@condition sickened 1} unless they succeed at a Fortitude saving throw."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"Increase the Hit Points restored to {@dice 1d8} and the {@condition sickened} condition value to 2."
+					],
+					"10": [
+						"Increase the Hit Points restored to {@dice 1d10} and the {@condition sickened} condition value to 3."
+					]
+				}
+			}
+		},
+		{
+			"name": "Prophet's Luck",
+			"source": "SoG2",
+			"page": 76,
+			"level": 4,
+			"traits": [
+				"rare",
+				"divination",
+				"fortune",
+				"misfortune"
+			],
+			"traditions": [
+				"arcane",
+				"divine"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"components": [
+				[
+					"V"
+				]
+			],
+			"trigger": "You or a creature within range attempts a saving throw against an obvious threat.",
+			"range": {
+				"number": 60,
+				"unit": "feet"
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You prophesize the result of the triggering saving throw as either a success (including a critical success) or a failure (including a critical failure). The target gains a +1 status bonus to the save if you predict success or a \u20131 status penalty if you predict failure. If you predict the result correctly, fortune favors you, and you gain a +1 status bonus to saving throws. If you predict incorrectly, fortune spurns the target, imparting a \u20131 status penalty to its saving throws."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"The save bonus or penalty increases to +2 or \u20132."
+					],
+					"9": [
+						"The save bonus or penalty increases to +3 or \u20133."
+					]
+				}
+			}
+		},
+		{
+			"name": "Sacred Nimbus",
+			"source": "SoG2",
+			"page": 76,
+			"level": 4,
+			"traits": [
+				"rare",
+				"conjuration",
+				"good"
+			],
+			"traditions": [
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"area": {
+				"types": [
+					"Misc."
+				],
+				"entry": "10-foot square"
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
+			"entries": [
+				"You summon a small, fluffy white nimbus cloud that floats 10 feet above the ground and rains down pleasantly warm sanctified water. The rain deals {@damage 5d6} good damage to {@trait fiend||fiends}, {@trait undead}, and creatures that have a weakness to good damage in the area at the end of your turn. When you {@action sustain a spell||Sustain the Spell}, you can move the cloud at a fly speed of 15 feet to anywhere in the spell's range. The water dissipates as it makes contact with any creatures or surfaces, leaving only a bit of humidity in its place."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Tomorrow's Dawn",
+			"source": "SoG2",
+			"page": 76,
+			"level": 4,
+			"traits": [
+				"rare",
+				"abjuration",
+				"light"
+			],
+			"traditions": [
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
+			"entries": [
+				"The golden light of a new dawn and the promise of life beyond death radiates from your body. You cast bright light in a 20-foot radius (and dim light for the next 20 feet) and gain {@trait mental} resistance 5. Any {@trait nindoru|SoG1} fiend or {@trait undead} that begins its turn adjacent to you must attempt a Will save with the following results.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected and immune to this spell's effects for the remainder of the spell's duration.",
+						"Success": "The creature is {@condition sickened 1} until the end of its turn.",
+						"Failure": "The creature is {@condition sickened 1}. In addition, it becomes {@condition slowed 1} until the end of its next turn.",
+						"Critical Failure": "As failure, but {@condition sickened 2} and the creature remains {@condition slowed 1} for the rest of the spell's duration."
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"You gain {@trait mental} resistance 10."
+					],
+					"8": [
+						"You gain {@trait mental} resistance 15."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wall of Mirrors",
+			"source": "SoG2",
+			"page": 76,
+			"level": 4,
+			"traits": [
+				"rare",
+				"conjuration"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 120,
+				"unit": "feet"
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You create a solid wall of shimmering reflective glass up to 50 feet long and 20 feet high. The wall is an inch thick and stands vertically. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 40 Hit Points, and it's immune to critical hits and precision damage. Everything on each side of the wall is {@condition concealed} from creatures on the opposite side. If a creature {@action strike||Strikes} the wall, the wall causes the creature to endure the mental anguish of that attack's pain as well; the creature takes {@damage 4d4} mental damage and can resist this damage with a basic Will save."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The Hit Points of each section of the wall increase by 10."
+					]
+				}
+			}
+		}
+	]
+}

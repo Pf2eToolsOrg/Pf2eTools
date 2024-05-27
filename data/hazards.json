@@ -1,5 +1,491 @@
 {
-	"hazard": [{
+	"hazard": [
+		{
+			"name": "Writhing Hair",
+			"source": "SoG2",
+			"page": 17,
+			"level": 5,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 0,
+				"minProf": "trained"
+			},
+			"description": [
+				"A ghostly woman floats quietly through the shop, plucking hair and sending it slithering into the rafters or out to infest uncooked steamed buns."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 23} {@skill Diplomacy} to calm the upset spirit down, or {@dc 21} {@skill Religion} to convince the spirit to abandon the haunting via prayer. If the PCs use Hinode Akari's name or otherwise let the haunt know that they understand her story, checks to Disable this haunt gain a +2 circumstance bonus."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 15
+					}
+				},
+				"hp": {
+					"std": 54
+				},
+				"immunities": [
+					"critical hits",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "positive"
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Cyclone of Hair",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature attempts to interact with or speak to the haunt",
+					"entries": [
+						"The ghostly woman shrieks and rises into the air as her hair grows swiftly, snaking through the shop to tangle into the rafters or weave through the seating area. All creatures in the shop must attempt a {@dc 22} Reflex save to avoid becoming {@condition immobilized} (or {@condition restrained} on a critical failure). The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The haunt targets one creature in the shop at random, preferring targets who are {@condition immobilized} or {@condition restrained}. The ghostly figure moves over to the victim and begins to strangle them with coils of her hair while she begins clawing through the target's hair as if ripping it out by the handful. The target takes {@damage 2d8+7} mental damage ({@dc 22} basic Will Save) from enduring the painful sensations of being strangled and having their hair plucked out, even though they're not actually being physically strangled or losing their hair."
+			]
+		},
+		{
+			"name": "Goh's Shame",
+			"source": "SoG2",
+			"page": 20,
+			"level": 5,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 13,
+				"minProf": "expert"
+			},
+			"description": [
+				"A strange shadowy figure churns in the waters at Goh's feet."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 21} {@skill Diplomacy} to calm Goh enough that the haunt dissipates, {@dc 23} {@skill Religion} to exorcise the haunt, or {@dc 25} {@skill Intimidation} to \"scare the shame\" out of Goh."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 15
+					}
+				},
+				"hp": {
+					"std": 54
+				},
+				"immunities": [
+					"critical hits",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "positive"
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Grasping Hands",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Goh steps into the Ceiba River",
+					"entries": [
+						"A shadowy figure that looks like a swimming child appears to grab ahold of Goh's ankles and begins to pull him deeper into the water; Goh becomes {@condition grabbed}. The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(2 actions; emotion, enchantment, fear, incapacitation, mental, occult) The haunt uses its first action to {@action grapple} with Goh and attempts to pull him underwater. Goh has a Fortitude DC of 19. In order to pull Goh underwater, the haunt must critically succeed at its grapple check against him with a result of 29 or higher to successfully {@condition restrained||restrain} Goh. Goh is overwhelmed by terror and makes no attempt to escape, so it falls to the PCs to get him free from the haunt. If Goh is restrained and pulled underwater, the haunt must continue to grapple him in following rounds. If the haunt manages to critically succeed at grappling Goh while he's restrained, the man dies from a combination of fright and drowning, at which point the haunt immediately ends.",
+				"If Goh is pulled free and taken out of the water, the haunt loses one action and no longer attempts to grapple him. The haunt uses its second action to manifest the image of a frightening watery drowned ghost, causing one creature it targets within 30 feet to attempt a {@dc 22} Will save (the haunt always targets a creature who attempted to free Goh from its grip if possible).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is {@condition frightened 1}.",
+						"Failure": "The creature is {@condition frightened 2} and {@condition fleeing} for as long as it remains frightened.",
+						"Critical Failure": "The creature is {@condition frightened 2} and {@condition fleeing} as long as it remains frightened, or for 1 minute, whichever comes second."
+					}
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "grapple",
+					"attack": 15,
+					"damage": "grapple",
+					"type": "attack"
+				}
+			],
+			"reset": [
+				"The haunt ends if Goh dies and doesn't reset. If Goh is dragged out of the water, the haunt ends at the end of its next turn but resets immediately the next time Goh enters the river."
+			]
+		},
+		{
+			"name": "Kugaptee's Anger",
+			"source": "SoG2",
+			"page": 30,
+			"level": 6,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 22,
+				"minProf": "expert"
+			},
+			"description": [
+				"The sound of toppling trees and thunderous footsteps fills the air, as if some immense giant had taken notice and now slowly approaches through the forest."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 23} {@skill Nature} or {@skill Religion} to offer prayers against the evil to reduce Kugaptee's Anger's actions during its routine to 1 (see below) for 1 round; Placing Sui-Jing's heart into her corpse at area A2 is the only way to disable this hazard"
+				]
+			},
+			"actions": [
+				{
+					"name": "Terrifying Roar",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental",
+						"occult"
+					],
+					"trigger": "A PC picks up Sui-Jing's heart",
+					"entries": [
+						"A thunderous roar ripples through the forest. All of the PCs must attempt a {@dc 22} Will save. The haunt rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The character is unaffected and is temporarily immune to Terrifying Roar for 24 hours.",
+								"Success": "The character is unaffected.",
+								"Failure": "The character is {@condition frightened 1}.",
+								"Critical Failure": "The character's frightened condition increases by 2. If this would increase the character's frightened condition value above 4, the character is instead {@condition fleeing} until the end of their next turn."
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(2 actions) The sound of something immense striding just out of sight through the forest, darkness,and fog fills the air. The haunt's first action is to unleash a Terrifying Roar ({@dc 22} Will with the same effects as Terrifying Roar above). The second action is to infuse the trees of the entire mindscape with malevolent life, causing clawlike branches to lash out at each PC. These claws inflict {@damage 4d6} slashing damage ({@dc 22} basic Reflex save) to each character. A character standing on the path or in a clearing gets a +1 circumstance bonus to this saving throw, and the character who carries Sui-Jing's heart gains a +4 item bonus to this saving throw. On a PC's turn, they can take further action to protect themselves from the clawed branches. By {@action raise a shield||Raising a Shield} or by {@action drop prone||Dropping Prone}, a PC gains a +2 circumstance bonus to their Reflex saving throw. A {@condition prone} PC can {@action Take Cover} to gain the benefits of {@quickref greater cover|CRB|3|cover|0} against the claws (increasing their circumstance bonus to this Reflex save to +4). A PC who {@action tumble through||Tumbles Through} on their turn and succeeds at a {@dc 22} Acrobatics check gains a +2 status bonus to their Reflex saves against the clawed branches. A PC who succeeds at a {@dc 22} {@skill Stealth} check to {@action Sneak} improves the result of their Reflex save by one degree of success.",
+				"If a PC successfully used {@skill Nature} or {@skill Religion} to pray against the evil on the previous round, Kugaptee's Anger has only 1 action; randomly determine if it uses its Terrifying Roar or lashes out with trees with this action."
+			]
+		},
+		{
+			"name": "Arms of the Drowned",
+			"source": "SoG2",
+			"page": 35,
+			"level": 3,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 20,
+				"minProf": "expert",
+				"notes": "to catch glimpses of ghostly figures drowning in the water below."
+			},
+			"description": [
+				"Ghostly arms rise up from the water to clutch and grab, while a geyser of leech-infested water sprays up into the central shrine."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 20} {@skill Religion} to offer prayers to calm the haunt, or {@dc 23} {@skill Intimidation} to threaten the unquiet spirits away"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 15
+					}
+				},
+				"hp": {
+					"std": 46
+				},
+				"bt": {
+					"std": 23
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "positive"
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Rising Waters",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature swims more than halfway across the river, ends their turn in the bridge shrine, or sets foot onto the northern bridge",
+					"entries": [
+						"Ghostly arms rise up from the river to grab and shake both bridges. Creatures standing on the bridge must attempt a {@dc 20} Reflex save or be knocked {@condition prone}. A blast of river water sprays up inside the shrine to deposit two {@creature brood leech swarm|B2|brood leech swarms} in the shrine. The haunt and the leech swarms then roll initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) Ghostly arms flail about and attempt to grab creatures in the shrine or on either bridge. Each round, the haunt uses 3 actions to attempt to {@action grapple} a PC on the bridge or in the shrine. If a PC is {@condition restrained}, the haunt can use one of its actions to drag a PC into the river. A PC who's restrained in the river risks {@quickref drowning|CRB|3|drowning and suffocating|0}."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "ghostly arms",
+					"attack": 12,
+					"damage": "grapple",
+					"type": "attack"
+				}
+			],
+			"reset": [
+				"The haunt deactivates and resets at the start of any round in which the PCs aren't in the river, on the bridges, or in the shrines, but the leech swarms remain in the shrine for 10 minutes before retreating back into the water below."
+			]
+		},
+		{
+			"name": "Fiendish Reflection",
+			"source": "SoG2",
+			"page": 47,
+			"level": 3,
+			"traits": [
+				"unique",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 23,
+				"minProf": "expert"
+			},
+			"description": [
+				"Reflections viewed in the water here appear monstrous and fiendish."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 20} {@skill Religion} to exorcise the haunt, or {@dc 23} {@skill Intimidation} to turn the fear back on the haunt and overwhelm it"
+				]
+			},
+			"actions": [
+				{
+					"name": "Frightening Visage",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental"
+					],
+					"trigger": "A creature looks at the water",
+					"entries": [
+						"The creature sees its reflection on the water's surface distort into a fiendish version of themselves; they must succeed at a {@dc 20} Will save or become {@condition frightened 2} (and {@condition fleeing} for as long as they remain frightened on a critical failure)."
+					]
+				}
+			],
+			"reset": [
+				"The haunt resets immediately and can trigger again the next round."
+			]
+		},
+		{
+			"name": "Kugaptee's Tree",
+			"source": "SoG2",
+			"page": 47,
+			"level": 6,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 15,
+				"minProf": "expert"
+			},
+			"description": [
+				"The branches of the stone tree statue animate, extend, and lash out at intruders."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 25} {@skill Religion} to exorcise the haunt, or {@dc 28} {@skill Intimidation} to appear overwhelmingly strong of body and mind"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 12
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "positive"
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Pulse of Fear",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental",
+						"occult"
+					],
+					"trigger": "An intruder to the monastery begins their turn in area E3",
+					"entries": [
+						"The stone statue lurches to life, its branches whipping through the air as a horrifying roar rips through the monastery\u2014a roar that seems to come from underground. All intruders within the monastery must attempt a {@dc 21} Will save. The haunt then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The character is unaffected.",
+								"Success": "The creature is {@condition frightened 1}.",
+								"Failure": "The creature is {@condition frightened 2}.",
+								"Critical Failure": "The creature is frightened 2 and {@condition fleeing} for as long as it remains frightened."
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) Kugaptee's tree lashes out with its branches, using its three actions to attempt branch {@action strike||Strikes} against any creature in reach. Targets that are within reach but are outside of area E3 have {@quickref cover|CRB|3|cover|0} from the surrounding archways. The haunt favors targets in area E3 but otherwise selects its targets randomly."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"attack": 17,
+					"traits": [
+						"magical",
+						"reach <40 feet>"
+					],
+					"damage": "{@damage 1d8+9} bludgeoning plus {@damage 1d8} mental",
+					"types": [
+						"bludgeoning",
+						"mental"
+					],
+					"type": "attack"
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Unholy Hunger",
+			"source": "SoG2",
+			"page": 50,
+			"level": 6,
+			"traits": [
+				"unique",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 25,
+				"minProf": "expert"
+			},
+			"description": [
+				"A miasma of foul-smelling vapor with shrieking faces barely visible in the steam bubbles up from the soup."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 19} {@skill lore||Cooking Lore} to neutralize the haunted stew with the addition of a few select spices from nearby shelves, or {@dc 25} {@skill Religion} to exorcise the haunt"
+				]
+			},
+			"actions": [
+				{
+					"name": "Worse Than It Smells",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"conjuration",
+						"occult"
+					],
+					"trigger": "A non-{@trait nindoru|SoG2} creature takes the lid off the cooking pot",
+					"entries": [
+						"All creatures within 15 feet of the pot must succeed at a {@dc 27} Fortitude save or become {@condition sickened 2}. The triggering creature instead must attempt a {@dc 24} Will save to resist the compulsion to dip their face into the stew and swallow a mouthful of the stuff (this effect has the {@trait enchantment} and {@trait mental} traits). On a failure, the triggering creature takes {@damage 5d6} poison damage ({@dc 24} basic Fortitude save)."
+					]
+				}
+			],
+			"reset": [
+				"The haunt resets 1 round after the lid is replaced on the cooking pot."
+			]
+		},
+		{
 			"name": "Grasping Currents",
 			"source": "SoG1",
 			"page": 18,

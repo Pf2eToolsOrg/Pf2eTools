@@ -1499,6 +1499,15 @@ BL_PREFIX_SHORT = "BL: ";
 GW_PREFIX = "Gatewalkers: ";
 GW_PREFIX_SHORT = "GW: ";
 
+SoG_PREFIX = "Season of Ghosts: ";
+SoG_PREFIX_SHORT = "SoG: ";
+
+SKT_PREFIX = "Sky King's Tomb: ";
+SKT_PREFIX_SHORT = "SKT: ";
+
+SevenDfS_PREFIX = "Seven Dooms for Sandpoint: ";
+SevenDfS_PREFIX_SHORT = "7DfS: ";
+
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
 
@@ -1513,6 +1522,9 @@ Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: " },
 	{ re: /Blood Lords #(\d): /, replaceWith: "BL$1: " },
 	{ re: /Gatewalkers #(\d): /, replaceWith: "GW$1: " },
+	{ re: /Season of Ghosts #(\d): /, replaceWith: "SoG$1: " },
+	{ re: /Sky King's Tomb #(\d): /, replaceWith: "SKT$1: " },
+	{ re: /Seven Dooms for Sandpoint #(\d): /, replaceWith: "7DfS$1: " },
 ];
 
 Parser.SOURCE_PREFIX_TO_SHORT = {};
@@ -1527,6 +1539,9 @@ Parser.SOURCE_PREFIX_TO_SHORT[SoT_PREFIX] = SoT_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[OoA_PREFIX] = OoA_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[BL_PREFIX] = BL_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[GW_PREFIX] = GW_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SoG_PREFIX] = SoG_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SKT_PREFIX] = SKT_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SevenDfS_PREFIX] = SevenDfS_PREFIX_SHORT;
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_ABV = {};
@@ -1642,6 +1657,7 @@ SRC_ToK = "ToK";
 SRC_7DfS0 = "7DfS0";
 SRC_SoG0 = "SoG0";
 SRC_SoG1 = "SoG1";
+SRC_SoG2 = "SoG2";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
@@ -1783,6 +1799,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_ToK] = "Threshold of Knowledge";
 Parser.SOURCE_JSON_TO_FULL[SRC_7DfS0] = "Seven Dooms for Sandpoint Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG0] = "Season of Ghosts Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG1] = "Season of Ghosts #1: The Summer That Never Was";
+Parser.SOURCE_JSON_TO_FULL[SRC_SoG2] = "Season of Ghosts #2: Let the Leaves Fall";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
@@ -1888,6 +1905,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_ToK] = "ToK";
 Parser.SOURCE_JSON_TO_ABV[SRC_7DfS0] = "7DfS0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG0] = "SoG0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG1] = "SoG1";
+Parser.SOURCE_JSON_TO_ABV[SRC_SoG2] = "SoG2";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
@@ -1993,6 +2011,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_ToK] = "2021-11-19";
 Parser.SOURCE_JSON_TO_DATE[SRC_7DfS0] = "2024-03-08";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG0] = "2023-10-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG1] = "2023-10-18";
+Parser.SOURCE_JSON_TO_DATE[SRC_SoG2] = "2023-11-15";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
@@ -2109,6 +2128,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_ToK] = "https://paizo.com/products/btq027qf";
 Parser.SOURCE_JSON_TO_STORE[SRC_7DfS0] = "https://downloads.paizo.com/SevenDoomsforSandpoint_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG0] = "https://downloads.paizo.com/SeasonofGhosts_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG1] = "https://paizo.com/products/btq02efy";
+Parser.SOURCE_JSON_TO_STORE[SRC_SoG2] = "https://paizo.com/products/btq02eha";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
 	SRC_AoA0,
@@ -2183,6 +2203,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_7DfS0,
 	SRC_SoG0,
 	SRC_SoG1,
+	SRC_SoG2,
 ]);
 Parser.SOURCES_VANILLA = new Set([
 	SRC_APG,
@@ -2352,6 +2373,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_7DfS0,
 	SRC_SoG0,
 	SRC_SoG1,
+	SRC_SoG2,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;

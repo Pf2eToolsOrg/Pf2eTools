@@ -5159,10 +5159,11 @@ Renderer.item = {
 			${Renderer.item.getSubHead(item)}
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
-			${item.craftReq || item.special || item.destruction || item.gifts ? Renderer.utils.getDividerDiv() : ""}
+			${item.craftReq || item.special || item.destruction || item["Tea Ceremony"] || item.gifts ? Renderer.utils.getDividerDiv() : ""}
 			${Renderer.item.getGifts(item)}
 			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements" })}
 			${Renderer.generic.getSpecial(item, { title: "Destruction" })}
+			${Renderer.generic.getSpecial(item, { type: "Tea Ceremony", title: "Tea Ceremony" })}
 			${Renderer.generic.getSpecial(item)}
 			${Renderer.item.getGenericItem(item)}
 			${Renderer.utils.getPageP(item)}`;

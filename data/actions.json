@@ -1,6 +1,258 @@
 {
 	"action": [
 		{
+			"name": "Repair and Restore",
+			"source": "SoG2",
+			"page": 9,
+			"traits": [
+				"downtime",
+				"manipulate",
+				"preparation|SoG2"
+			],
+			"entries": [
+				"You spend the week cleaning, repairing, and restoring the Cerulean Teahouse. Attempt a {@dc 19} {@skill Crafting}, {@dc 21} {@skill lore||Architecture} or {@skill lore||Labor Lore}, or {@dc 24} {@skill Athletics} check. If you expend 10 gp on resources to help, increase the result of your check by one degree of success. Once the PCs earn a total of 5 Restoration Points, the Cerulean Teahouse is fully restored; they earn 80 XP and 1 Reputation Point with both factions.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You make excellent progress, and the PCs gain 2 Restoration Points.",
+						"Success": "You make normal progress, and the PCs gain 1 Restoration Point.",
+						"Failure": "You fail to make any progress.",
+						"Critical Failure": "Setback! You've accidentally damaged the building, and the PCs lose 1 Restoration Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Befriend Yami",
+			"source": "SoG2",
+			"page": 9,
+			"traits": [
+				"concentrate",
+				"downtime",
+				"preparation|SoG2"
+			],
+			"entries": [
+				"Yami, the \"local cat\" who returns to the teahouse after hiding in the wild all summer, is initially wary of the PCs and doesn't allow anyone to approach at first. A PC can attempt a {@dc 14} {@skill Nature} check to befriend Yami. Once a PC achieves a Critical Success at Befriending Yami, this preparation activity can no longer be attempted.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Yami takes a liking to the entire party, but particularly to the PC who rolled this critical success. No further rolls can be attempted to Befriend Yami. At the end of each week, the PC who Yami particularly likes should attempt a DC {@flatDC 11} flat check; on a success, Yami brings that PC a gift (roll on the \"Yami's Gifts\" table below). The PCs earn 80 XP and 1 Hope Point.",
+						"Success": "Yami takes a liking to the party and allows people to pet her and hold her, but she remains randomly standoffish.",
+						"Failure": "Yami remains wary but isn't chased off.",
+						"Critical Failure": "Yami hisses and runs into the wild for several days; you can't attempt to Befriend Yami for the rest of this week or the next week."
+					}
+				},
+				{
+					"type": "data",
+					"tag": "table",
+					"name": "Yami's Gifts",
+					"source": "SoG2"
+				}
+			]
+		},
+		{
+			"name": "Host Ceremony",
+			"source": "SoG2",
+			"page": 10,
+			"traits": [
+				"concentrate",
+				"downtime",
+				"manipulate",
+				"preparation|SoG2"
+			],
+			"requirements": "The Cerulean Teahouse is fully repaired, and you have a functional set of tea ware.",
+			"entries": [
+				"You spend the week preparing to host a tea ceremony for paying customers, then perform the ceremony for attendees on the last day of the workweek, providing them with tea, light snacks, and scintillating conversation. Spend 10 gp on supplies. If, instead, you spend 100 gp on supplies, treat a failure as a success. Attempt a {@dc 19} {@skill Performance} check or a {@dc 21} {@skill Society} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The ceremony is an overwhelming success! You make a bit of money and earn 15 gp. The party gains 2 Hope Points.",
+						"Success": "The tea ceremony is a success! The party gains 1 Hope Point.",
+						"Failure": "The tea ceremony was disappointing. If another PC attempts to Host Ceremony this week, that attempt suffers a \u20131 circumstance penalty.",
+						"Critical Failure": "The ceremony was a disaster. No one can Host Ceremony again this week, and any attempt to Host Ceremony next week suffers a \u20131 circumstance penalty to the check. The party loses 1 Hope Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Aid Harvest",
+			"source": "SoG2",
+			"page": 10,
+			"traits": [
+				"downtime",
+				"manipulate",
+				"move",
+				"preparation|SoG2"
+			],
+			"entries": [
+				"You spend the week helping farmers to harvest grain, rice, fruits, and vegetables, either by working in the fields, providing logistical expertise, or offering insights from your knowledge of the natural world. If the PCs successfully secured the old village expansion north of Willowshore as a supplementary site for last-minute crops in the previous adventure, then all checks to Aid Harvest gain a +1 circumstance bonus, and the first roll in any given week to Aid Harvest is improved by one degree of success. To Aid Harvest, attempt a {@dc 17} {@skill lore||Farming Lore}, {@dc 19} {@skill Athletics}, or {@dc 21} {@skill Nature} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Not only is this week's harvest wildly successful, but supplemental foraging from the nearby wilds brought in even more food. The party gains 2 Food Points.",
+						"Success": "The crop harvest is a success, with a fair amount of surplus gathered. The party gains 1 Food Point.",
+						"Failure": "The crop yield is unimpressive; it's enough to help feed folks in the short term, but not enough to set aside anything for stores.",
+						"Critical Failure": "Disaster! The crop was infested with pests, riddled with fungus, or simply became spoiled. The party loses 1 Food Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Aid Hunt",
+			"source": "SoG2",
+			"page": 11,
+			"traits": [
+				"concentrate",
+				"downtime",
+				"move",
+				"preparation|SoG2"
+			],
+			"entries": [
+				"You spend the week helping hunters and fishers to stalk game, check traps, and catch fish, either by using your skill at woodland survival, providing expert advice, or simply by lending your knowledge of the natural world. Attempt a {@dc 17} {@skill lore||Fishing} or {@skill lore||Hunting Lore}, {@dc 19} {@skill Survival}, or {@dc 21} {@skill Nature} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gather an impressive amount of food while not overhunting the area. The party gains 2 Food Points.",
+						"Success": "You catch and secure a fair amount of game and fish, but the area's bounty becomes scarce; no one can Aid Hunt for the rest of the week. The party gains 1 Food Point.",
+						"Failure": "You find only a few animals and catch a few fish; it's enough to supplement food for the week, but not enough to build up the town stores.",
+						"Critical Failure": "Your attempt to hunt and fish ends in disaster, with poorly managed hunts and overfishing overtaxing the ecosystem\u2014and even worse, some of the fish and game previously gathered is revealed to be infected or spoiled and must be destroyed. No one can Aid Hunt for the rest of the week. The party loses 1 Food Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Aid Townsfolk",
+			"source": "SoG2",
+			"page": 12,
+			"traits": [
+				"downtime",
+				"preparation|SoG2"
+			],
+			"entries": [
+				"You spend the week helping the people of Willowshore prepare for winter. This could entail physical labor, such as chopping wood to build up the town's supply of firewood or helping to harvest dead trees or branches to prevent deadfalls. Alternately, you could work to keep the town's workers' spirits up by providing entertainment or helping them to relax after a hard day's work. Finally, you can draw upon your knowledge of Willowshore and its history to remind folks what has and hasn't worked well in previous winters. To Aid Townsfolk, attempt a {@dc 17} {@skill Athletics}, {@dc 19} {@skill lore||Willowshore Lore}, or {@dc 21} {@skill Performance} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You've really helped to bolster the town's spirits, and the citizens find your aid to be as inspiring as it is helpful. The party gains 2 Security Points. You can choose instead to gain 1 Security Point and 1 Hope Point.",
+						"Success": "Your assistance helps the townsfolk accomplish more than they could've on their own. The party gains 1 Security Point.",
+						"Failure": "The work proves to be more complicated, difficult, and tiring than expected. The party gains no Security Points.",
+						"Critical Failure": "An unforeseen setback or accident undoes a lot of the work, potentially damaging townsfolk morale. The party loses 1 Security Point. If this is the first time a critical failure was rolled for Aid Townsfolk this week, the party also loses 1 Hope Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Reinforce Buildings",
+			"source": "SoG2",
+			"page": 12,
+			"traits": [
+				"downtime",
+				"preparation|SoG2"
+			],
+			"entries": [
+				"You spend the week lending your labors to the efforts to repair and reinforce buildings to prepare for the upcoming winter. Alternately, you could lend your skill at crafting to help direct those efforts or to handle delicate repairs or improvements. Finally, you could use your knowledge to come up with solutions to bolster the town's infrastructure or to suggest unexplored methods of winter preparation. To Reinforce Buildings, attempt a {@dc 17} {@skill lore||Architecture} or {@skill lore||Engineering Lore}, {@dc 19} {@skill Crafting}, or {@dc 21} {@skill Athletics} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The work went better than you expected! The party gains 2 Security Points.",
+						"Success": "Work proceeds on schedule without any accidents or setbacks. The party gains 1 Security Point.",
+						"Failure": "While reinforcements continue, the work has revealed underlying and unexpected damage or other unanticipated repair needs. The party gains no Security Points.",
+						"Critical Failure": "An accident hinders progress, be it a collapsing roof, a twisted ankle, or a painful mistake with a tool. The party loses 1 Security point from the damage caused by the accident, and the character who attempted this check must now attempt a {@dc 20} Fortitude saving throw to avoid becoming {@condition enfeebled 1} or {@condition clumsy 1} for 1 week (or until the condition is healed magically); the PC chooses which affliction they gain. If the Fortitude save is a critical failure, the PC gains both conditions."
+					}
+				}
+			]
+		},
+		{
+			"name": "Aid Festival Preparations",
+			"source": "SoG2",
+			"page": 15,
+			"traits": [
+				"downtime",
+				"preparation|SoG2"
+			],
+			"entries": [
+				"You spend the week helping townsfolk get ready for First Long Night, either by preparing food for the celebration, cleaning and preparing downtown's town square to host the event, or helping to craft outfits and other accessories for locals to wear during the festivities. To Aid Festival Preparations, attempt a {@dc 17} {@skill Lore} (any Food, Games, Labor, or Willowshore), {@dc 19} {@skill Crafting}, or {@dc 21} {@skill Society} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your time preparing for the festival is not only efficient and helpful, but also highly enjoyable. During First Long Night, you gain a +1 circumstance bonus to all skill checks to resolve the effects of any contests you take part in. The party gains 2 Hope Points.",
+						"Success": "Your assistance has helped Willowshore prepare well for First Long Night. The party gains 1 Hope Point.",
+						"Failure": "You did your best to assist but weren't able to contribute anything particularly helpful.",
+						"Critical Failure": "Your attempts to help backfire, with you getting in the way more than actually providing assistance, spreading frustration through the townsfolk. During First Long Night, you take a \u20131 circumstance penalty to all skill checks to resolve the effects of any contests you take part in as a result of being nervous about making more embarrassing mistakes. The party loses 1 Hope Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Fight Barn Fire",
+			"source": "SoG2",
+			"page": 20,
+			"traits": [
+				"exploration",
+				"manipulate",
+				"move"
+			],
+			"entries": [
+				"You help fight the fire that threatens to consume Willowshore Stables and, if left untended, that can potentially spread into the rest of town. To fight the fire, attempt a {@dc 19} {@skill Athletics} check to actively fight the flames by joining a bucket brigade or creating fire breaks to contain the fire or a {@dc 21} {@skill Diplomacy} check to organize townsfolk to help them be more efficient about their firefighting techniques. If you have magical spells that might help to fight the fire, you can use them to do so\u2014expend up to three spells that the GM agrees would be helpful in fighting fires, then attempt an {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} check (as is appropriate for your spellcasting tradition). The DC of this check is 17 if you used three spells, 19 if you used two, and 21 if you used one.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your efforts to fight the fire are enormously helpful. The party gains 2 Victory Points. In addition, your impressive efforts earn the party 1 Hope Point.",
+						"Success": "Your firefighting efforts help the townsfolk stem the blaze. The party gains 1 Victory Point.",
+						"Failure": "You did your best to assist but weren't able to contribute anything particularly helpful. Worse, you got burned in the process and take {@damage 3d6} fire damage ({@dc 19} basic Reflex save).",
+						"Critical Failure": "Disaster! Your attempt to fight the fire caused the flames to spread! Worse, you got badly burned in the process and take {@damage 3d10} fire damage ({@dc 19} basic Reflex save). The party loses 1 Victory Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Prepare for the Feast",
+			"source": "SoG2",
+			"page": 22,
+			"traits": [
+				"exploration",
+				"manipulate",
+				"move"
+			],
+			"entries": [
+				"You spend time preparing the teahouse for the upcoming feast, either by decorating it in a way the kami will appreciate or by gathering and staging ingredients and resources for the feast. Alternately, you spend time out in town offering prayers and gifts to the local kami to let them know that they've all been invited to the feast. To add to the festive flair, ask each player to describe how their character decorates, prepares, or makes invitations\u2014a PC who comes up with a particularly fun or amusing description can be rewarded with a +1 status bonus to their check at your option.",
+				"To decorate the teahouse, attempt a {@dc 17} {@skill lore||Art Lore} or a {@dc 19} {@skill Performance} check. This check's results earn the party Decoration Points.",
+				"To prepare for the banquet itself, attempt a {@dc 17} {@skill lore||Food} or {@skill lore||Drink Lore} or a {@dc 19} {@skill Crafting} check. This check's results earn the party Banquet points.",
+				"To invite the kami, attempt a {@dc 17} {@skill Religion} or a {@dc 19} {@skill Diplomacy} check. This check's results earn the party Entertainment Points.",
+				"If Great Willow has been successfully invited, word spreads. Every check to Prepare Feast after Great Willow is invited gains a +1 circumstance bonus.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PCs gain 1 point as appropriate for the skill chosen, plus an additional 1 point for any of the three categories.",
+						"Success": "The PCs gain 1 point as appropriate for the skill chosen.",
+						"Critical Failure": "The PCs lose 1 point as appropriate for the skill chosen."
+					}
+				}
+			]
+		},
+		{
+			"name": "Purify Statue",
+			"source": "SoG2",
+			"page": 43,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"requirements": "All hostile creatures in the encounter area where the statue is located are defeated.",
+			"entries": [
+				"You spend 10 minutes offering prayers to the statue's guardian spirits, cleaning or repairing damage done to the statue, or removing malignant encrustations and supernatural markings. Attempt a {@dc 20} {@skill Religion} check, a {@dc 22} {@skill Crafting} check, or a {@dc 24} {@skill Thievery} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The statue is purified.",
+						"Success": "The statue is purified, but as you do so, a weakened blast of pure loathing lashes out as it's driven from the statue. You take {@damage 2d6} mental damage ({@dc 22} basic Will save).",
+						"Failure": "The statue remains unpurified. A blast of psychic rage lashes out at you, inflicting {@damage 5d6} mental damage ({@dc 22} basic Will save) to you and anyone who attempted to {@action Aid} your attempt to Purify the Statue.",
+						"Critical Failure": "As failure, but {@damage 10d6} mental damage, and no one can attempt to Purify this particular Statue again for 1 hour."
+					}
+				}
+			]
+		},
+		{
 			"name": "Leap",
 			"remaster": true,
 			"source": "PC1",
