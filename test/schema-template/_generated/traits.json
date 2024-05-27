@@ -41,16 +41,10 @@
 					"$ref": "#/definitions/alignmentTrait"
 				},
 				{
-					"$ref": "#/definitions/itemTrait"
-				},
-				{
 					"$ref": "#/definitions/weaponTrait"
 				},
 				{
 					"$ref": "#/definitions/schoolTrait"
-				},
-				{
-					"$ref": "#/definitions/creatureTypeTrait"
 				},
 				{
 					"$ref": "#/definitions/traditionTrait"
@@ -99,9 +93,101 @@
 				},
 				{
 					"$ref": "#/definitions/ancestryHeritageTrait"
+				},
+				{
+					"$ref": "#/definitions/creatureTypeTrait"
+				},
+				{
+					"$ref": "#/definitions/itemTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"itemTrait": {
+			"type": "string",
+			"description": "A list of all Item traits.",
+			"enum": [
+				"alchemical",
+				"apex",
+				"artifact",
+				"barding",
+				"bomb",
+				"catalyst",
+				"coda",
+				"companion",
+				"consumable",
+				"contact",
+				"contract",
+				"cursed",
+				"deflecting",
+				"drug",
+				"elixir",
+				"expandable",
+				"extradimensional",
+				"focused",
+				"foldaway",
+				"fulu",
+				"grimoire",
+				"harnessed",
+				"hefty",
+				"infused",
+				"ingested",
+				"inhaled",
+				"injury",
+				"integrated",
+				"intelligent",
+				"invested",
+				"launching",
+				"lozenge",
+				"magical",
+				"missive",
+				"mutagen",
+				"oil",
+				"poison",
+				"potion",
+				"precious",
+				"processed",
+				"relic",
+				"scroll",
+				"shield throw",
+				"snare",
+				"spellgun",
+				"staff",
+				"talisman",
+				"tattoo",
+				"tea",
+				"virulent",
+				"wand"
+			]
+		},
+		"creatureTypeTrait": {
+			"type": "string",
+			"description": "A list of all Creature Type traits.",
+			"enum": [
+				"aberration",
+				"animal",
+				"astral",
+				"beast",
+				"celestial",
+				"construct",
+				"dragon",
+				"dream",
+				"eidolon",
+				"elemental",
+				"fey",
+				"fiend",
+				"fungus",
+				"giant",
+				"humanoid",
+				"monitor",
+				"nindoru",
+				"ooze",
+				"petitioner",
+				"plant",
+				"spirit",
+				"time",
+				"undead"
+			]
 		},
 		"ancestryHeritageTrait": {
 			"type": "string",
@@ -586,7 +672,8 @@
 				"contingency",
 				"cursebound",
 				"incarnate",
-				"litany"
+				"litany",
+				"summon"
 			]
 		},
 		"combatTrait": {
@@ -618,34 +705,6 @@
 				"divine",
 				"occult",
 				"primal"
-			]
-		},
-		"creatureTypeTrait": {
-			"type": "string",
-			"description": "A list of all Creature Type traits.",
-			"enum": [
-				"aberration",
-				"animal",
-				"astral",
-				"beast",
-				"celestial",
-				"construct",
-				"dragon",
-				"dream",
-				"eidolon",
-				"elemental",
-				"fey",
-				"fiend",
-				"fungus",
-				"giant",
-				"humanoid",
-				"monitor",
-				"ooze",
-				"petitioner",
-				"plant",
-				"spirit",
-				"time",
-				"undead"
 			]
 		},
 		"schoolTrait": {
@@ -723,62 +782,6 @@
 				"vehicular",
 				"versatile",
 				"volley"
-			]
-		},
-		"itemTrait": {
-			"type": "string",
-			"description": "A list of all Item traits.",
-			"enum": [
-				"alchemical",
-				"apex",
-				"artifact",
-				"barding",
-				"bomb",
-				"catalyst",
-				"coda",
-				"companion",
-				"consumable",
-				"contact",
-				"contract",
-				"cursed",
-				"deflecting",
-				"drug",
-				"elixir",
-				"expandable",
-				"extradimensional",
-				"focused",
-				"foldaway",
-				"fulu",
-				"grimoire",
-				"harnessed",
-				"hefty",
-				"infused",
-				"ingested",
-				"inhaled",
-				"injury",
-				"integrated",
-				"intelligent",
-				"invested",
-				"launching",
-				"lozenge",
-				"magical",
-				"missive",
-				"mutagen",
-				"oil",
-				"poison",
-				"potion",
-				"precious",
-				"processed",
-				"relic",
-				"scroll",
-				"shield throw",
-				"snare",
-				"spellgun",
-				"staff",
-				"talisman",
-				"tattoo",
-				"virulent",
-				"wand"
 			]
 		},
 		"alignmentTrait": {
