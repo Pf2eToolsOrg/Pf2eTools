@@ -1,7 +1,7 @@
 "use strict";
 
 class BackgroundPage extends ListPage {
-	constructor() {
+	constructor () {
 		const pageFilter = new PageFilterBackgrounds();
 		super({
 			dataSource: DataUtil.background.loadJSON,
@@ -17,7 +17,7 @@ class BackgroundPage extends ListPage {
 		});
 	}
 
-	getListItem(bg, bgI, isExcluded) {
+	getListItem (bg, bgI, isExcluded) {
 		this._pageFilter.mutateAndAddToFilters(bg, isExcluded);
 
 		const eleLi = document.createElement("li");
@@ -56,13 +56,13 @@ class BackgroundPage extends ListPage {
 		return listItem;
 	}
 
-	handleFilterChange() {
+	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	getSublistItem(bg, pinId) {
+	getSublistItem (bg, pinId) {
 		const hash = UrlUtil.autoEncodeHash(bg);
 		const boosts = bg.boosts.join(", ");
 		const name = bg.name
@@ -88,7 +88,7 @@ class BackgroundPage extends ListPage {
 		return listItem;
 	}
 
-	doLoadHash(id) {
+	doLoadHash (id) {
 		this._renderer.setFirstSection(true);
 		const $pgContent = $("#pagecontent").empty();
 		const bg = this._dataList[id];
@@ -115,7 +115,7 @@ class BackgroundPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	async pDoLoadSubHash(sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
 	}

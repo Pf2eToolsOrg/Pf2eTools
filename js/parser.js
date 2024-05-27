@@ -28,7 +28,7 @@ Parser.numberToText = function (number, freq) {
 	if (typeof number === "string") return number;
 	if (Math.abs(number) >= 100) return `${number}`;
 
-	function getAsText(num) {
+	function getAsText (num) {
 		const abs = Math.abs(num);
 		switch (abs) {
 			case 0:
@@ -715,7 +715,7 @@ Parser.getClassSideBarEntries = function (cls) {
 		],
 	});
 
-	function initProfParser(thing, entry) {
+	function initProfParser (thing, entry) {
 		Object.keys(thing).forEach((k) => {
 			let thingArray = [];
 			let prof = "";
