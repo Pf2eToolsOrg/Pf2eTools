@@ -357,7 +357,7 @@ Parser.priceToFull = function (price, noPlatinum) {
 	if (typeof price === "object") {
 		if (price.amount == null || price.coin == null) return "\u2014";
 		return `${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""
-			}`;
+		}`;
 	} else if (typeof price === "number" && !isNaN(price)) {
 		// assume it's all copper (1/100 gp)
 		let coin = "";
@@ -856,8 +856,9 @@ Parser.getArticle = function (str) {
 };
 
 Parser.spLevelToFullLevelText = function (level, dash) {
-	return `${Parser.spLevelToFull(level)}${level === 0 ? "s" : `${dash ? "-" : " "}level`
-		}`;
+	return `${Parser.spLevelToFull(level)}${
+		level === 0 ? "s" : `${dash ? "-" : " "}level`
+	}`;
 };
 
 Parser.COMPONENTS_TO_FULL = {};
@@ -1088,20 +1089,25 @@ Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 	if (ordinal === undefined) return "";
 	switch (ordinal.type) {
 		case "part":
-			return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${preNoSuff ? "" : " \u2014 "
-				}`;
+			return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${
+				preNoSuff ? "" : " \u2014 "
+			}`;
 		case "chapter":
-			return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "
-				}`;
+			return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${
+				preNoSuff ? "" : ": "
+			}`;
 		case "episode":
-			return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "
-				}`;
+			return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${
+				preNoSuff ? "" : ": "
+			}`;
 		case "appendix":
-			return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "
-				}`;
+			return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${
+				preNoSuff ? "" : ": "
+			}`;
 		case "level":
-			return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "
-				}`;
+			return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${
+				preNoSuff ? "" : ": "
+			}`;
 		default:
 			throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
 	}
@@ -1222,13 +1228,15 @@ Parser.timeToFullEntry = function (time) {
 
 Parser.freqToFullEntry = function (freq) {
 	if (freq.special != null) return freq.special;
-	return `${Parser.numberToText(freq.number, true)} ${freq.recurs ? "every" : "per"
-		} ${freq.interval || ""} ${freq.interval >= 2
+	return `${Parser.numberToText(freq.number, true)} ${
+		freq.recurs ? "every" : "per"
+	} ${freq.interval || ""} ${
+		freq.interval >= 2
 			? `${freq.unit}s`
 			: freq.customUnit
 				? freq.customUnit
 				: freq.unit
-		}${freq.overcharge ? ", plus overcharge" : ""}`;
+	}${freq.overcharge ? ", plus overcharge" : ""}`;
 };
 
 Parser.timeToTableStr = function (time) {
@@ -1244,8 +1252,9 @@ Parser.timeToTableStr = function (time) {
 		}
 		return "Action";
 	}
-	return `${time.number} ${time.unit.uppercaseFirst()}${time.number >= 2 ? "s" : ""
-		}`;
+	return `${time.number} ${time.unit.uppercaseFirst()}${
+		time.number >= 2 ? "s" : ""
+	}`;
 };
 
 Parser.durationToFull = function (duration) {
@@ -1257,8 +1266,9 @@ Parser.durationToFull = function (duration) {
 	) {
 		return "sustained";
 	}
-	const rendered = `${duration.number == null ? "" : `${duration.number} `}${duration.number > 1 ? `${duration.unit}s` : duration.unit
-		}`;
+	const rendered = `${duration.number == null ? "" : `${duration.number} `}${
+		duration.number > 1 ? `${duration.unit}s` : duration.unit
+	}`;
 	if (duration.sustained) return `sustained up to ${rendered}`;
 	else return rendered;
 };

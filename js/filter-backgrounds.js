@@ -50,13 +50,13 @@ class PageFilterBackgrounds extends PageFilter {
 		bg._fSpells = (bg.spells || []).map(
 			(s) => s.match(/\|/)
 				? s.replace(/^([^|]+)\|([^}]+)$/, (match, p1, p2) => `${p1.toTitleCase()} (${p2.toUpperCase()})`)
-				: s.toTitleCase()
+				: s.toTitleCase(),
 		);
 		bg._fBoosts = (bg.boosts || []).map((s) => s.toTitleCase());
 		bg._fFeats = (bg.feats || []).map(
 			(s) => s.match(/\|/)
 				? s.replace(/^([^|]+)\|([^}]+)$/, (match, p1, p2) => `${p1.toTitleCase()} (${p2.toUpperCase()})`)
-				: s.toTitleCase()
+				: s.toTitleCase(),
 		);
 		bg._fMisc = (bg.miscTags || []).map((tag) => {
 			switch (tag) {
