@@ -645,7 +645,6 @@
 				"While most monastic orders and traditional fighting schools shun firearms as loud and unreliable technology for unskilled conscripts, you fuse flourishing feints and ricocheting gunplay into a whirling ballet of bullets. As a bullet dancer, you might become the target of brash duelists and gladiators looking to make a name for themselves. But you tend to welcome the attention and might have proven your reputation while dancing your deadly ballet in tournaments from Tymon to Goka. You've found your fluid motions and explosive attacks to be surefire crowd-pleasers, even as they serve to confound and shock your foes."
 			],
 			"extraFeats": [
-				"4|Brawling Focus|CRB",
 				"6|Black Powder Boost|G&G",
 				"8|Snap Shot|CRB",
 				"12|Trick Shot|G&G",
@@ -2420,66 +2419,10 @@
 							"name": "Initial Deed",
 							"entries": [
 								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
+									"type": "data",
+									"tag": "action",
 									"name": "Energy Shot",
-									"traits": [
-										"evocation",
-										"magical",
-										"spellshot"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"trigger": "You roll initiative.",
-									"entries": [
-										"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
-									],
-									"activity": {
-										"unit": "free",
-										"number": 1
-									}
-								}
-							]
-						},
-						{
-							"type": "pf2-h3",
-							"name": "Initial Deed",
-							"entries": [
-								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
-									"name": "Energy Shot",
-									"traits": [
-										"evocation",
-										"magical",
-										"spellshot"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"trigger": "You roll initiative.",
-									"entries": [
-										"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
-									],
-									"activity": {
-										"unit": "free",
-										"number": 1
-									}
+									"source": "G&G"
 								}
 							]
 						},
@@ -2489,33 +2432,10 @@
 							"level": 9,
 							"entries": [
 								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
+									"type": "data",
+									"tag": "action",
 									"name": "Recall Ammunition",
-									"traits": [
-										"conjuration",
-										"magical",
-										"spellshot",
-										"teleportation"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"trigger": "You miss with a firearm or crossbow {@action Strike} while using an ordinary level-0 bolt or bullet",
-									"entries": [
-										"You amplify the connection between bullet and firearm, calling your missed shot back into your gun. The ammunition you just fired is reloaded back into your gun and immediately ready to fire again."
-									],
-									"activity": {
-										"unit": "reaction",
-										"number": 1
-									}
+									"source": "G&G"
 								}
 							]
 						},
@@ -2525,31 +2445,10 @@
 							"level": 15,
 							"entries": [
 								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
+									"type": "data",
+									"tag": "action",
 									"name": "Dispelling Bullet",
-									"traits": [
-										"abjuration",
-										"magical",
-										"spellshot"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"entries": [
-										"You imprint a bullet with a field of abjuration built upon your magical signature, disrupting the magic of whatever it hits. Make a firearm or crossbow {@action Strike} against a foe you can see. If you hit, you attempt to counteract a spell effect active on the target (your choice, or the highest-level effect if you don't choose). Your counteract level is equal to half your level (rounded up), and your counteract check modifier is equal to your class DC \u2013 10."
-									],
-									"activity": {
-										"unit": "action",
-										"number": 2
-									}
+									"source": "G&G"
 								}
 							]
 						}
@@ -2560,7 +2459,14 @@
 				"Class Archetype"
 			],
 			"dedicationLevel": 2,
-			"rarity": "uncommon"
+			"rarity": "uncommon",
+			"extraFeats": [
+				"4|Basic Arcana|CRB",
+				"4|Basic Wizard Spellcasting|CRB",
+				"6|Advanced Arcana|CRB",
+				"8|Arcane Breadth|CRB",
+				"12|Expert Wizard Spellcasting|CRB"
+			]
 		},
 		{
 			"name": "Staff Acrobat",

@@ -95,7 +95,8 @@ Avoid binding ALT-modified events, as these are not available under MacOS or var
 
 ### Dev Server
 
-Do `npm run serve:dev` to launch a local dev server that serves the project files on [`http://localhost:8080/index.html`](http://localhost:8080/index.html).
+Make sure you have everything installed (`npm install`) and built (`npm run build`) to have a fully functional site.
+Run `npm run serve:dev` to launch a local dev server that serves the project files on [`http://localhost:8080/index.html`](http://localhost:8080/index.html).
 
 ### JSON Schema
 

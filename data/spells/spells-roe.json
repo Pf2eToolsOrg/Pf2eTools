@@ -2110,8 +2110,16 @@
 				{
 					"type": "list",
 					"items": [
-						"Moderate The target's body temperature appears the same as the surrounding environment, giving the target a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} an undead, a cold-blooded creature, or an inanimate object (such as a corpse). The target is also {@condition invisible} to {@spell heatvision|RoE} and other abilities that sense heat similarly.",
-						"Warm The target appears to emit substantial body heat, gaining a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} a warm-blooded creature."
+						{
+							"type": "item",
+							"name": "Moderate",
+							"entry": "The target's body temperature appears the same as the surrounding environment, giving the target a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} an undead, a cold-blooded creature, or an inanimate object (such as a corpse). The target is also {@condition invisible} to {@spell heatvision|RoE} and other abilities that sense heat similarly."
+						},
+						{
+							"type": "item",
+							"name": "Warm",
+							"entry": "The target appears to emit substantial body heat, gaining a +2 circumstance bonus to {@skill Deception} checks to {@action Impersonate} a warm-blooded creature."
+						}
 					]
 				}
 			],
@@ -2638,7 +2646,7 @@
 			}
 		},
 		{
-			"name": "Thermal Remed",
+			"name": "Thermal Remedy",
 			"source": "RoE",
 			"remaster": true,
 			"page": 121,
@@ -3815,7 +3823,6 @@
 			"page": 172,
 			"level": 3,
 			"traits": [
-				"attack",
 				"concentrate",
 				"manipulate",
 				"teleportation",
@@ -3938,33 +3945,24 @@
 			},
 			"entries": [
 				"Intense cold rain comes from nowhere, a microcosm of a sudden downpour, and a magical tweak can turn the rain to freezing sleet. The driving rain and pooling water make the area difficult terrain and extinguish non-magical fires.",
-				"On subsequent rounds, the first time you {@action Sustain a spell||Sustain the spell} each round, you can move the area up to 20 feet and can also freeze the rain. If you freeze the rain, each creature in the area takes {@damage 4d6} cold damage and might be {@condition slowed}, depending on result of its Reflex save.",
+				"On subsequent rounds, the first time you {@action Sustain a spell||Sustain} the spell each round, you can move the area up to 20 feet and can also freeze the rain. If you freeze the rain, each creature in the area takes {@damage 4d6} cold damage and might be {@condition slowed}, depending on result of its Reflex save.",
 				{
-					"successDegree": {
-						"entries": {
-							"Critical Success": [
-								"The creature is unaffected."
-							],
-							"Success": [
-								"The creature takes half damage."
-							],
-							"Failure": [
-								"The creature takes full damage and is {@condition slowed||slowed 1} for 1 round."
-							],
-							"Critical Failure": [
-								"The creature takes double damage and is {@condition slowed||slowed 2} for 1 round."
-							]
-						},
-						"heightened": {
-							"plusX": {
-								"1": [
-									"The damage increases by {@damage 1d6}."
-								]
-							}
-						}
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature takes half damage.",
+						"Failure": "The creature takes full damage and is {@condition slowed||slowed 1} for 1 round.",
+						"Critical Failure": "The creature takes double damage and is {@condition slowed||slowed 2} for 1 round."
 					}
 				}
-			]
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
 		},
 		{
 			"name": "Frost Pillar",
@@ -4063,7 +4061,7 @@
 							"The target takes half damage."
 						],
 						"Failure": [
-							"The target takes half damage, and feels as though it's being crushed. The target becomes {@condition grabbed} and takes {@damage 6d6} bludgeoning damage; it can attempt to {@action Escape} with an {@action Escape} DC equal to your spell DC."
+							"The target takes full damage, and feels as though it's being crushed. The target also becomes {@condition grabbed}, but it can attempt to {@action Escape} with an {@action Escape} DC equal to your spell DC."
 						],
 						"Critical Failure": [
 							"As failure, but the target takes double damage."
@@ -5201,10 +5199,10 @@
 			"heightened": {
 				"X": {
 					"3": [
-						"The shrubs are now 10 feet tall and 5 feet thick and provide standard cover. The duration of the spell increases to 10 minutes."
+						"The shrubs are 10 feet tall and 5 feet thick, provide standard cover, are difficult terrain, and have a Climb DC of 15. The duration increases to 10 minutes."
 					],
 					"5": [
-						"Instead of a line, the shrubs can be made in a ring with a diameter of up to 30 feet that's 10 feet tall and 5 feet thick. The shrubs provide greater cover. The duration of the spell increases to 1 hour."
+						"As 3rd rank, but the shrubs provide greater cover and the duration is 1 hour. You can choose to form a ring of shrubs with a diameter of up to 30 feet instead of a line."
 					]
 				}
 			}
@@ -5436,10 +5434,6 @@
 				"unit": "action",
 				"entry": "{@as 2} to {@as 3}"
 			},
-			"range": {
-				"unit": "feet",
-				"number": 30
-			},
 			"area": {
 				"entry": "60-foot cone",
 				"types": [
@@ -5456,6 +5450,7 @@
 				"You open a miniature portal to an elemental plane within your mouth, then exhale a powerful explosion of the plane's element. Roll {@dice 1d6} to determine the element. If you used 3 actions to {@action Cast a spell||Cast this Spell}, you can choose the element instead. This spell gains the trait matching the element. Each creature in the cone must attempt a basic Reflex save.",
 				{
 					"type": "list",
+					"style": "list-decimal",
 					"items": [
 						"{@b Air} Strong winds and lightning strikes buffet creatures in the cone, dealing {@damage 6d10} electricity damage. A creature that fails its save is also pushed 10 feet.",
 						"{@b Earth} A cone of mud deals {@damage 5d10} bludgeoning damage to creatures in the area. A creature on the ground that fails its save slips and falls {@condition prone}.",

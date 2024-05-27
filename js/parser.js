@@ -356,8 +356,7 @@ Parser.priceToFull = function (price, noPlatinum) {
 	if (price == null) return "\u2014";
 	if (typeof price === "object") {
 		if (price.amount == null || price.coin == null) return "\u2014";
-		return `${Parser._addCommas(price.amount)} ${price.coin}${
-			price.note ? ` ${price.note}` : ""
+		return `${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""
 		}`;
 	} else if (typeof price === "number" && !isNaN(price)) {
 		// assume it's all copper (1/100 gp)
@@ -766,10 +765,9 @@ Parser.getClassSideBarEntries = function (cls) {
 						);
 					} else {
 						return entry.push(
-							`{@indentSubsequent ${prof} in ${
-								element.skill.length === 1
-									? ""
-									: `your choice of`
+							`{@indentSubsequent ${prof} in ${element.skill.length === 1
+								? ""
+								: `your choice of`
 							} ${element.skill
 								.map((s) => `{@skill ${s}}`)
 								.joinConjunct(", ", " or ")}}`,
@@ -858,8 +856,7 @@ Parser.getArticle = function (str) {
 };
 
 Parser.spLevelToFullLevelText = function (level, dash) {
-	return `${Parser.spLevelToFull(level)}${
-		level === 0 ? "s" : `${dash ? "-" : " "}level`
+	return `${Parser.spLevelToFull(level)}${level === 0 ? "s" : `${dash ? "-" : " "}level`
 	}`;
 };
 
@@ -1091,24 +1088,19 @@ Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 	if (ordinal === undefined) return "";
 	switch (ordinal.type) {
 		case "part":
-			return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${
-				preNoSuff ? "" : " \u2014 "
+			return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${preNoSuff ? "" : " \u2014 "
 			}`;
 		case "chapter":
-			return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${
-				preNoSuff ? "" : ": "
+			return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "
 			}`;
 		case "episode":
-			return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${
-				preNoSuff ? "" : ": "
+			return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "
 			}`;
 		case "appendix":
-			return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${
-				preNoSuff ? "" : ": "
+			return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "
 			}`;
 		case "level":
-			return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${
-				preNoSuff ? "" : ": "
+			return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "
 			}`;
 		default:
 			throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
@@ -1230,14 +1222,12 @@ Parser.timeToFullEntry = function (time) {
 
 Parser.freqToFullEntry = function (freq) {
 	if (freq.special != null) return freq.special;
-	return `${Parser.numberToText(freq.number, true)} ${
-		freq.recurs ? "every" : "per"
-	} ${freq.interval || ""} ${
-		freq.interval >= 2
-			? `${freq.unit}s`
-			: freq.customUnit
-				? freq.customUnit
-				: freq.unit
+	return `${Parser.numberToText(freq.number, true)} ${freq.recurs ? "every" : "per"
+	} ${freq.interval || ""} ${freq.interval >= 2
+		? `${freq.unit}s`
+		: freq.customUnit
+			? freq.customUnit
+			: freq.unit
 	}${freq.overcharge ? ", plus overcharge" : ""}`;
 };
 
@@ -1254,8 +1244,7 @@ Parser.timeToTableStr = function (time) {
 		}
 		return "Action";
 	}
-	return `${time.number} ${time.unit.uppercaseFirst()}${
-		time.number >= 2 ? "s" : ""
+	return `${time.number} ${time.unit.uppercaseFirst()}${time.number >= 2 ? "s" : ""
 	}`;
 };
 
@@ -1268,8 +1257,7 @@ Parser.durationToFull = function (duration) {
 	) {
 		return "sustained";
 	}
-	const rendered = `${duration.number == null ? "" : `${duration.number} `}${
-		duration.number > 1 ? `${duration.unit}s` : duration.unit
+	const rendered = `${duration.number == null ? "" : `${duration.number} `}${duration.number > 1 ? `${duration.unit}s` : duration.unit
 	}`;
 	if (duration.sustained) return `sustained up to ${rendered}`;
 	else return rendered;
@@ -1511,6 +1499,15 @@ BL_PREFIX_SHORT = "BL: ";
 GW_PREFIX = "Gatewalkers: ";
 GW_PREFIX_SHORT = "GW: ";
 
+SoG_PREFIX = "Season of Ghosts: ";
+SoG_PREFIX_SHORT = "SoG: ";
+
+SKT_PREFIX = "Sky King's Tomb: ";
+SKT_PREFIX_SHORT = "SKT: ";
+
+SevenDfS_PREFIX = "Seven Dooms for Sandpoint: ";
+SevenDfS_PREFIX_SHORT = "7DfS: ";
+
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
 
@@ -1525,6 +1522,9 @@ Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: " },
 	{ re: /Blood Lords #(\d): /, replaceWith: "BL$1: " },
 	{ re: /Gatewalkers #(\d): /, replaceWith: "GW$1: " },
+	{ re: /Season of Ghosts #(\d): /, replaceWith: "SoG$1: " },
+	{ re: /Sky King's Tomb #(\d): /, replaceWith: "SKT$1: " },
+	{ re: /Seven Dooms for Sandpoint #(\d): /, replaceWith: "7DfS$1: " },
 ];
 
 Parser.SOURCE_PREFIX_TO_SHORT = {};
@@ -1539,6 +1539,9 @@ Parser.SOURCE_PREFIX_TO_SHORT[SoT_PREFIX] = SoT_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[OoA_PREFIX] = OoA_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[BL_PREFIX] = BL_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[GW_PREFIX] = GW_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SoG_PREFIX] = SoG_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SKT_PREFIX] = SKT_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SevenDfS_PREFIX] = SevenDfS_PREFIX_SHORT;
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_ABV = {};
@@ -1550,6 +1553,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 // Listing of all the sources
 /* PF2ETOOLS_SOURCE__OPEN */
 SRC_SKT0 = "SKT0";
+SRC_WoW0 = "WoW0";
 SRC_RoE = "RoE";
 SRC_TV = "TV";
 SRC_AAWS = "AAWS";
@@ -1650,7 +1654,12 @@ SRC_SoT6 = "SoT6";
 SRC_TaL = "TaL";
 SRC_TiO = "TiO";
 SRC_ToK = "ToK";
+SRC_7DfS0 = "7DfS0";
+SRC_SoG0 = "SoG0";
+SRC_SoG1 = "SoG1";
+SRC_SoG2 = "SoG2";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
 Parser.SOURCE_JSON_TO_FULL[SRC_TV] = "Treasure Vault";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
@@ -1787,7 +1796,12 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SoT6] =
 Parser.SOURCE_JSON_TO_FULL[SRC_TaL] = "Torment and Legacy";
 Parser.SOURCE_JSON_TO_FULL[SRC_TiO] = "Troubles in Otari";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToK] = "Threshold of Knowledge";
+Parser.SOURCE_JSON_TO_FULL[SRC_7DfS0] = "Seven Dooms for Sandpoint Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_SoG0] = "Season of Ghosts Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_SoG1] = "Season of Ghosts #1: The Summer That Never Was";
+Parser.SOURCE_JSON_TO_FULL[SRC_SoG2] = "Season of Ghosts #2: Let the Leaves Fall";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
+Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_TV] = "TV";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
@@ -1888,7 +1902,12 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SoT6] = "SoT6";
 Parser.SOURCE_JSON_TO_ABV[SRC_TaL] = "TaL";
 Parser.SOURCE_JSON_TO_ABV[SRC_TiO] = "TiO";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToK] = "ToK";
+Parser.SOURCE_JSON_TO_ABV[SRC_7DfS0] = "7DfS0";
+Parser.SOURCE_JSON_TO_ABV[SRC_SoG0] = "SoG0";
+Parser.SOURCE_JSON_TO_ABV[SRC_SoG1] = "SoG1";
+Parser.SOURCE_JSON_TO_ABV[SRC_SoG2] = "SoG2";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
+Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_TV] = "2023-02-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
@@ -1989,8 +2008,13 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SoT6] = "2021-07-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_TaL] = "2019-09-11";
 Parser.SOURCE_JSON_TO_DATE[SRC_TiO] = "2020-12-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_ToK] = "2021-11-19";
+Parser.SOURCE_JSON_TO_DATE[SRC_7DfS0] = "2024-03-08";
+Parser.SOURCE_JSON_TO_DATE[SRC_SoG0] = "2023-10-02";
+Parser.SOURCE_JSON_TO_DATE[SRC_SoG1] = "2023-10-18";
+Parser.SOURCE_JSON_TO_DATE[SRC_SoG2] = "2023-11-15";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_RoE] = "https://paizo.com/products/btq02eal";
 Parser.SOURCE_JSON_TO_STORE[SRC_TV] = "https://paizo.com/products/btq02eav";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] =
@@ -2101,6 +2125,10 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SoT6] = "https://paizo.com/products/btq027u1";
 Parser.SOURCE_JSON_TO_STORE[SRC_TaL] = "https://paizo.com/products/btq021ax";
 Parser.SOURCE_JSON_TO_STORE[SRC_TiO] = "https://paizo.com/products/btq026k1";
 Parser.SOURCE_JSON_TO_STORE[SRC_ToK] = "https://paizo.com/products/btq027qf";
+Parser.SOURCE_JSON_TO_STORE[SRC_7DfS0] = "https://downloads.paizo.com/SevenDoomsforSandpoint_PlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_SoG0] = "https://downloads.paizo.com/SeasonofGhosts_PlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_SoG1] = "https://paizo.com/products/btq02efy";
+Parser.SOURCE_JSON_TO_STORE[SRC_SoG2] = "https://paizo.com/products/btq02eha";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
 	SRC_AoA0,
@@ -2171,6 +2199,11 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_TiO,
 	SRC_ToK,
 	SRC_SKT0,
+	SRC_WoW0,
+	SRC_7DfS0,
+	SRC_SoG0,
+	SRC_SoG1,
+	SRC_SoG2,
 ]);
 Parser.SOURCES_VANILLA = new Set([
 	SRC_APG,
@@ -2336,6 +2369,11 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_TiO,
 	SRC_ToK,
 	SRC_SKT0,
+	SRC_WoW0,
+	SRC_7DfS0,
+	SRC_SoG0,
+	SRC_SoG1,
+	SRC_SoG2,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;

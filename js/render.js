@@ -842,7 +842,7 @@ function Renderer () {
 		}
 
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${this.render(actions)} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
+			<strong>${entry.range}&nbsp;</strong>${this.render(actions)} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${Parser.parseTraits(entry.traits, { toTags: true }).join(", ")})`)}` : ""}${onHit}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
@@ -3919,13 +3919,10 @@ Renderer.action = {
 	},
 	getFooter (it) {
 		if (!it.footer) return "";
+
 		const renderStack = [Renderer.utils.getDividerDiv()];
-		const renderer = Renderer.get()
-
-		it.footer.forEach(entry => {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${entry.name}&nbsp;</strong>${renderer.render(entry.entries)}</p>`)
-		})
-
+		const renderer = Renderer.get();
+		renderStack.push(Object.keys(it.footer).sort().map(lvl => `<p class="pf2-stat pf2-stat__section"><strong>${lvl}</strong>&nbsp;${renderer.render(it.footer[lvl])}</p>`).join(""));
 		return renderStack.join("");
 	},
 	getQuickRules (it) {
@@ -5162,10 +5159,11 @@ Renderer.item = {
 			${Renderer.item.getSubHead(item)}
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
-			${item.craftReq || item.special || item.destruction || item.gifts ? Renderer.utils.getDividerDiv() : ""}
+			${item.craftReq || item.special || item.destruction || item["Tea Ceremony"] || item.gifts ? Renderer.utils.getDividerDiv() : ""}
 			${Renderer.item.getGifts(item)}
 			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements" })}
 			${Renderer.generic.getSpecial(item, { title: "Destruction" })}
+			${Renderer.generic.getSpecial(item, { type: "Tea Ceremony", title: "Tea Ceremony" })}
 			${Renderer.generic.getSpecial(item)}
 			${Renderer.item.getGenericItem(item)}
 			${Renderer.utils.getPageP(item)}`;
@@ -5359,11 +5357,10 @@ Renderer.item = {
 			const renderStack = [];
 
 			Object.keys(gifts).map((type) => {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${type.toTitleCase()} Gift${gifts[type].length > 1 ? "s" : ""}&nbsp;</strong>${
-					gifts[type].map((gift) => {
-						let split = gift.split("|")
-						return `{@relicGift ${split[0].replace(/\(.+?\)/, "").trim()}|${split[1] ?? ""}|${split[0]}}`
-					}).join(", ")
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${type.toTitleCase()} Gift${gifts[type].length > 1 ? "s" : ""}&nbsp;</strong>${gifts[type].map((gift) => {
+					let split = gift.split("|")
+					return `{@relicGift ${split[0].replace(/\(.+?\)/, "").trim()}|${split[1] ?? ""}|${split[0]}}`
+				}).join(", ")
 				}
 				</p>`);
 			})
@@ -8424,7 +8421,9 @@ Renderer._stripTagLayer = function (str) {
 
 					case "@runeItem": {
 						const parts = Renderer.splitTagByPipe(text);
-						return parts.length % 2 ? parts[parts.length - 1] : parts.push(parts.shift()).map(it => it[0]).map(it => Renderer.runeItem.getRuneShortName(it)).join(" ");
+						if (parts.length % 2) return parts[parts.length - 1];
+						const runesString = parts.slice(2).filter((v, i) => i % 2 === 0).map(runeName => Renderer.runeItem.getRuneShortName(runeName)).join(" ");
+						return `${runesString} ${parts[0]}`;
 					}
 
 					case "@homebrew": {

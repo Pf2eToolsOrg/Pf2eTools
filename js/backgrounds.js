@@ -26,7 +26,7 @@ class BackgroundPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(bg);
 		const name = bg.name
 		const source = Parser.sourceJsonToAbv(bg.source);
-		const boosts = bg.boosts.sort(SortUtil.abilitySort).join(", ");
+		const boosts = bg.boosts.sort(SortUtil.abilitySort).map((str, i) => i === 0 || str !== "free" ? str.toTitleCase() : str).join(", ");
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-4 pl-0">${bg.name}</span>
@@ -102,12 +102,12 @@ class BackgroundPage extends ListPage {
 		}
 		const statsTab = Renderer.utils.tabButton(
 			"Background",
-			() => {},
+			() => { },
 			buildStatsTab,
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Quick Rules",
-			() => {},
+			() => { },
 			buildInfoTab,
 		);
 		Renderer.utils.bindTabButtons(statsTab, infoTab);

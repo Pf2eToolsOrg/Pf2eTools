@@ -28,11 +28,9 @@ class PageFilterBackgrounds extends PageFilter {
 		});
 		this._featFilter = new Filter({
 			header: "Feats",
-			displayFn: (it) => it.toTitleCase(),
 		});
 		this._spellFilter = new Filter({
 			header: "Spells",
-			displayFn: (it) => it.toTitleCase(),
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -49,8 +47,17 @@ class PageFilterBackgrounds extends PageFilter {
 	mutateForFilters (bg) {
 		bg._fSources = SourceFilter.getCompleteFilterSources(bg);
 		bg._fTraits = (bg.traits || []).map((t) => Parser.getTraitName(t));
-		bg._fSpells = (bg.spells || []).map((s) => s.split("|")[0]);
+		bg._fSpells = (bg.spells || []).map(
+			(s) => s.match(/\|/)
+				? s.replace(/^([^|]+)\|([^}]+)$/, (match, p1, p2) => `${p1.toTitleCase()} (${p2.toUpperCase()})`)
+				: s.toTitleCase(),
+		);
 		bg._fBoosts = (bg.boosts || []).map((s) => s.toTitleCase());
+		bg._fFeats = (bg.feats || []).map(
+			(s) => s.match(/\|/)
+				? s.replace(/^([^|]+)\|([^}]+)$/, (match, p1, p2) => `${p1.toTitleCase()} (${p2.toUpperCase()})`)
+				: s.toTitleCase(),
+		);
 		bg._fMisc = (bg.miscTags || []).map((tag) => {
 			switch (tag) {
 				case "ability":
@@ -75,7 +82,7 @@ class PageFilterBackgrounds extends PageFilter {
 		this._skillFilter.addItem(bg.skills);
 		this._loreFilter.addItem(bg.lore);
 		this._boostFilter.addItem(bg._fBoosts);
-		this._featFilter.addItem(bg.feats);
+		this._featFilter.addItem(bg._fFeats);
 		this._spellFilter.addItem(bg._fSpells);
 		this._miscFilter.addItem(bg._fMisc);
 	}
@@ -101,7 +108,7 @@ class PageFilterBackgrounds extends PageFilter {
 			bg._fBoosts,
 			bg.skills,
 			bg.lore,
-			bg.feats,
+			bg._fFeats,
 			bg._fSpells,
 			bg._fMisc,
 		);

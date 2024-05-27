@@ -25,7 +25,7 @@ class OrganizationsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(g.source);
 		const hash = UrlUtil.autoEncodeHash(g);
 
-		const alignment = g.followerAlignment.map(it => Parser.getTraitName(it.main)).join(", ") || "\u2014";
+		const alignment = (g.followerAlignment ?? []).map(it => Parser.getTraitName(it.main)).join(", ") || "\u2014";
 		const size = g.traits.find(t => Renderer.trait.isTraitInCategory(t, "Size")).toTitleCase();
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-6 pl-0">${g.name}</span>

@@ -1,0 +1,3357 @@
+{
+	"creature": [
+		{
+			"name": "Phantom Boar",
+			"source": "SoG1",
+			"page": 15,
+			"level": 2,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"ethereal",
+				"incorporeal",
+				"phantom",
+				"spirit"
+			],
+			"description": "Variant phantom (Pathfinder Bestiary 3 202)",
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 7
+				},
+				"intimidation": {
+					"std": 6
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 1,
+				"con": 4,
+				"int": -3,
+				"wis": 2,
+				"cha": 0
+			},
+			"speed": {
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tusk",
+					"attack": 7,
+					"traits": [
+						"finesse",
+						"force",
+						"magical"
+					],
+					"damage": "{@damage 1d8+3} force",
+					"types": [
+						"force"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "occult",
+					"DC": 15,
+					"attack": 7,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The phantom walks the thin line between the {@place Ethereal Plane||Ethereal} and {@place Material Plane||Material Planes} in order to exist on both planes simultaneously. They can shift back to solely the {@place Ethereal Plane} by using this ability again."
+						],
+						"name": "Walk the Ethereal Line"
+					}
+				],
+				"mid": [
+					{
+						"entries": [
+							"Though phantoms aren't alive, neither are they undead, and they are uniquely vulnerable to the effects of death. A phantom whose Hit Points are reduced to 0 as a result of a {@trait death} effect (such as from a spell like {@spell finger of death}) is immediately whisked away to the River of Souls, where their soul resumes the usual path to the afterlife."
+						],
+						"name": "Susceptible to Death"
+					},
+					{
+						"name": "Vulnerable to Kindness",
+						"entries": [
+							"Any creature within 30 feet that the phantom can see and hear can issue a calm and friendly greeting to it as a two-action activity with the {@trait auditory}, {@trait concentrate}, {@trait linguistic}, and {@trait mental} traits. A creature greeting the phantom in this manner must attempt a DC 18 {@skill Diplomacy} check.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The phantom takes {@damage 4d8} mental damage and is {@condition stunned||stunned 1}.",
+									"Success": "The phantom takes {@damage 2d8} mental damage.",
+									"Failure": "The phantom takes {@damage 1d8} mental damage.",
+									"Critical Failure": "The phantom is unaffected, and is not affected by this weakness for 1 round."
+								}
+							}
+						]
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The phantom boar {@action stride||Strides} twice and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll."
+						],
+						"name": "Boar Charge"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 22
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision"
+				],
+				"resistances": [
+					{
+						"amount": 2,
+						"name": "all damage",
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
+					}
+				]
+			}
+		},
+		{
+			"name": "Phantom Raven",
+			"source": "SoG1",
+			"page": 15,
+			"level": -1,
+			"traits": [
+				"rare",
+				"ne",
+				"tiny",
+				"ethereal",
+				"incorporeal",
+				"phantom",
+				"spirit"
+			],
+			"description": "Variant phantom (Pathfinder Bestiary 3 202)",
+			"perception": {
+				"std": 5
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 5
+				},
+				"intimidation": {
+					"std": 4
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 3,
+				"con": 0,
+				"int": -3,
+				"wis": 3,
+				"cha": 0
+			},
+			"speed": {
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "beak",
+					"attack": 7,
+					"traits": [
+						"finesse",
+						"force",
+						"magical"
+					],
+					"damage": "{@damage 1d6} force",
+					"types": [
+						"force"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "occult",
+					"DC": 13,
+					"attack": 5,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The phantom walks the thin line between the {@place Ethereal Plane||Ethereal} and {@place Material Plane||Material Planes} in order to exist on both planes simultaneously. They can shift back to solely the {@place Ethereal Plane} by using this ability again."
+						],
+						"name": "Walk the Ethereal Line"
+					}
+				],
+				"mid": [
+					{
+						"entries": [
+							"Though phantoms aren't alive, neither are they undead, and they are uniquely vulnerable to the effects of death. A phantom whose Hit Points are reduced to 0 as a result of a {@trait death} effect (such as from a spell like {@spell finger of death}) is immediately whisked away to the River of Souls, where their soul resumes the usual path to the afterlife."
+						],
+						"name": "Susceptible to Death"
+					},
+					{
+						"name": "Vulnerable to Kindness",
+						"entries": [
+							"Any creature within 30 feet that the phantom can see and hear can issue a calm and friendly greeting to it as a two-action activity with the {@trait auditory}, {@trait concentrate}, {@trait linguistic}, and {@trait mental} traits. A creature greeting the phantom in this manner must attempt a DC 15 {@skill Diplomacy} check.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The phantom takes {@damage 4d8} mental damage and is {@condition stunned||stunned 1}.",
+									"Success": "The phantom takes {@damage 2d8} mental damage.",
+									"Failure": "The phantom takes {@damage 1d8} mental damage.",
+									"Critical Failure": "The phantom is unaffected, and is not affected by this weakness for 1 round."
+								}
+							}
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 2
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 6
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision"
+				],
+				"resistances": [
+					{
+						"amount": 1,
+						"name": "all damage",
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
+					}
+				]
+			}
+		},
+		{
+			"name": "Phantom Wolf",
+			"source": "SoG1",
+			"page": 15,
+			"level": 1,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"ethereal",
+				"incorporeal",
+				"phantom",
+				"spirit"
+			],
+			"description": "Variant phantom (Pathfinder Bestiary 3 202)",
+			"perception": {
+				"std": 7
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 7
+				},
+				"intimidation": {
+					"std": 5
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 4,
+				"con": 1,
+				"int": -3,
+				"wis": 2,
+				"cha": 0
+			},
+			"speed": {
+				"fly": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 7,
+					"traits": [
+						"finesse",
+						"force",
+						"magical"
+					],
+					"damage": "{@damage 1d6+2} force",
+					"types": [
+						"force"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "occult",
+					"DC": 14,
+					"attack": 6,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The phantom walks the thin line between the {@place Ethereal Plane||Ethereal} and {@place Material Plane||Material Planes} in order to exist on both planes simultaneously. They can shift back to solely the {@place Ethereal Plane} by using this ability again."
+						],
+						"name": "Walk the Ethereal Line"
+					}
+				],
+				"mid": [
+					{
+						"entries": [
+							"Though phantoms aren't alive, neither are they undead, and they are uniquely vulnerable to the effects of death. A phantom whose Hit Points are reduced to 0 as a result of a {@trait death} effect (such as from a spell like {@spell finger of death}) is immediately whisked away to the River of Souls, where their soul resumes the usual path to the afterlife."
+						],
+						"name": "Susceptible to Death"
+					},
+					{
+						"name": "Vulnerable to Kindness",
+						"entries": [
+							"Any creature within 30 feet that the phantom can see and hear can issue a calm and friendly greeting to it as a two-action activity with the {@trait auditory}, {@trait concentrate}, {@trait linguistic}, and {@trait mental} traits. A creature greeting the phantom in this manner must attempt a DC 17 {@skill Diplomacy} check.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The phantom takes {@damage 4d8} mental damage and is {@condition stunned||stunned 1}.",
+									"Success": "The phantom takes {@damage 2d8} mental damage.",
+									"Failure": "The phantom takes {@damage 1d8} mental damage.",
+									"Critical Failure": "The phantom is unaffected, and is not affected by this weakness for 1 round."
+								}
+							}
+						]
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"The phantom wolf's Strikes deal an additional {@damage 1d4} damage to creatures within reach of at least one of its allies."
+						],
+						"name": "Pack Attack"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 14
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision"
+				],
+				"resistances": [
+					{
+						"amount": 2,
+						"name": "all damage",
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
+					}
+				]
+			}
+		},
+		{
+			"name": "Phantom Gecko",
+			"source": "SoG1",
+			"page": 21,
+			"level": 1,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"ethereal",
+				"incorporeal",
+				"phantom",
+				"spirit"
+			],
+			"description": "Variant phantom (Pathfinder Bestiary 3 202)",
+			"perception": {
+				"std": 5
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 6
+				},
+				"intimidation": {
+					"std": 6
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 4,
+				"con": 1,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"speed": {
+				"fly": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 7,
+					"traits": [
+						"finesse",
+						"force",
+						"magical"
+					],
+					"damage": "{@damage 1d6+2} force",
+					"types": [
+						"force"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The phantom walks the thin line between the {@place Ethereal Plane||Ethereal} and {@place Material Plane||Material Planes} in order to exist on both planes simultaneously. They can shift back to solely the {@place Ethereal Plane} by using this ability again."
+						],
+						"name": "Walk the Ethereal Line"
+					}
+				],
+				"mid": [
+					{
+						"entries": [
+							"Though phantoms aren't alive, neither are they undead, and they are uniquely vulnerable to the effects of death. A phantom whose Hit Points are reduced to 0 as a result of a {@trait death} effect (such as from a spell like {@spell finger of death}) is immediately whisked away to the River of Souls, where their soul resumes the usual path to the afterlife."
+						],
+						"name": "Susceptible to Death"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 5
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 15
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision"
+				],
+				"resistances": [
+					{
+						"amount": 2,
+						"name": "all damage",
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
+					}
+				]
+			}
+		},
+		{
+			"name": "Very Drunken Jinkin",
+			"source": "SoG1",
+			"page": 29,
+			"level": -1,
+			"traits": [
+				"uncommon",
+				"ce",
+				"tiny",
+				"fey",
+				"gremlin"
+			],
+			"description": "Variant {@creature jinkin}",
+			"perception": {
+				"std": 0
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 2
+				},
+				"crafting": {
+					"std": 0,
+					"traps": 2
+				},
+				"deception": {
+					"std": 2
+				},
+				"nature": {
+					"std": 2
+				},
+				"stealth": {
+					"std": 2
+				},
+				"thievery": {
+					"std": 2
+				}
+			},
+			"abilityMods": {
+				"str": -2,
+				"dex": 0,
+				"con": 0,
+				"int": -2,
+				"wis": 0,
+				"cha": 0
+			},
+			"items": [
+				"{@item club} (table leg or bottle)"
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "club",
+					"attack": 0,
+					"traits": [
+						"thrown <10 feet>"
+					],
+					"damage": "{@damage 1d6-2} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "club",
+					"attack": 17,
+					"traits": [
+						"thrown <10 feet>"
+					],
+					"damage": "{@damage 1d6-2} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 13,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "prestidigitation"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Far Too Drunk",
+						"entries": [
+							"The jinkins are inefficient with their actions and always spend one action each round to cackle, stumble in place, or otherwise perform ineffective antics."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 12
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 2
+					},
+					"ref": {
+						"std": 4
+					},
+					"will": {
+						"std": 2
+					}
+				},
+				"hp": [
+					{
+						"hp": 9
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 2,
+						"name": "cold iron"
+					}
+				]
+			}
+		},
+		{
+			"name": "Animated Cookware Swarm",
+			"source": "SoG1",
+			"page": 32,
+			"level": 1,
+			"traits": [
+				"n",
+				"large",
+				"construct",
+				"mindless",
+				"swarm"
+			],
+			"description": "Variant {@creature animated silverware swarm|B3}",
+			"perception": {
+				"std": 5
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 4,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"speed": {
+				"walk": 20
+			},
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"Like normal objects, an animated cookware swarm has Hardness. This Hardness reduces any damage the swarm takes by an amount equal to the Hardness.",
+							"Once an animated cookware swarm is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 12."
+						],
+						"name": "Construct Armor"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"magical"
+						],
+						"entries": [
+							"Each enemy in the animated cookware swarm's space takes {@damage 1d6} points of bludgeoning or slashing damage (DC 17 basic Reflex save)."
+						],
+						"name": "Slice and Pound"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"magical"
+						],
+						"entries": [
+							"The animated cookware swarm attempts to pin a single creature. The target must attempt a {@dc 17} Reflex save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "Cookware pins portions of the target's clothing and gear. The target takes a \u201310-foot circumstance penalty to its Speeds as long as it remains in the swarm's space.",
+									"Failure": "As success, and the target also can't {@action Step} until it leaves the swarm's space.",
+									"Critical Failure": "The target is thoroughly pinned by the cookware, becoming {@condition immobilized} until it {@action Escape||Escapes} ({@dc 17}) or uses 2 {@action Interact} actions to remove all of the cookware pinning them down."
+								}
+							}
+						],
+						"name": "Stick a Fork in It"
+					}
+				]
+			},
+			"hasImages": true,
+			"defenses": {
+				"ac": {
+					"std": 16,
+					"when broken": 12,
+					"abilities": "construct armor"
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 3
+					}
+				},
+				"hardness": 3,
+				"hp": [
+					{
+						"hp": 14
+					}
+				],
+				"immunities": [
+					"mental",
+					"precision",
+					"poison",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"sickened",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"amount": 3,
+						"name": "area damage"
+					},
+					{
+						"amount": 3,
+						"name": "splash damage"
+					}
+				]
+			}
+		},
+		{
+			"name": "Fan Hongrui",
+			"source": "SoG1",
+			"page": 46,
+			"level": 2,
+			"traits": [
+				"unique",
+				"ce",
+				"small",
+				"undead"
+			],
+			"description": "Variant female red-hooded thatchling (The Summer That Never Was page 89)",
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 7
+				},
+				"deception": {
+					"std": 8
+				},
+				"performance": {
+					"std": 10
+				},
+				"stealth": {
+					"std": 7,
+					"in undergrowth": 9
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": 4
+			},
+			"speed": {
+				"walk": 30,
+				"abilities": [
+					"thicket walker"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "frond",
+					"attack": 9,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d6+2} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
+					"types": [
+						"slashing",
+						"bleed"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 18,
+					"attack": 10,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "illusory disguise"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Distracting Giggle",
+						"traits": [
+							"auditory",
+							"aura",
+							"emotion",
+							"mental",
+							"enchantment",
+							"occult"
+						],
+						"entries": [
+							"15 feet. The thatchling's giggle echoes in the back of the mind. Creatures within the aura take a \u20131 status penalty to Will saves."
+						]
+					},
+					{
+						"name": "Rejuvenation",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When a thatchling is destroyed by damage other than fire, it attempts a DC {@flatDC 11} flat check. On a success, it reforms after {@dice 2d4} days within 120 feet of where it was destroyed, fully healed. A thatchling is always permanently destroyed if reduced to 0 Hit Points by fire damage or if the obstacle preventing the soul from reincarnating is removed."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Create Thatchling Spawn",
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"A living {@trait humanoid} who's slain by a red-hooded thatchling while under the effects of Thatchling's Curse rises as a {@creature thatchling|SoG1} after {@dice 1d4} rounds. This spawn is under the command of the red-hooded thatchling that killed it. If a red-hooded thatchling controls too many at once (as determined by the GM), some thatchlings can free themselves with a DC 18 Will saving throw at the start of their turn. If the red-hooded thatchling who created the spawn is destroyed, the spawn becomes an autonomous thatchling."
+						]
+					},
+					{
+						"name": "Howl of Vengeful Fury",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy",
+							"occult",
+							"sonic"
+						],
+						"frequency": {
+							"unit": "hour",
+							"number": 1
+						},
+						"entries": [
+							"The red-hooded thatchling sobs pitifully before unleashing a terrifying scream. All non-thatchling creatures within a 30-foot emanation take {@damage 2d10} sonic damage (DC 18 basic Fortitude save) and become immune to all thatchlings' distracting giggle for 1 minute. Thatchlings in the area gain 5 temporary Hit Points and a +1 status bonus to their {@action strike||Strikes} and saving throws for 1 minute."
+						]
+					},
+					{
+						"name": "Thatchling's Curse",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"curse",
+							"enchantment",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"The thatchling focuses its attention on a single target within 30 feet that it can see, and then begins muttering and whispering nonsense. The target must attempt a DC 18 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected and is temporarily immune to Thatchling's Curse for 24 hours.",
+									"Success": "The target is momentarily disoriented and has difficulty moving in the right direction. The target takes a \u20135-foot status penalty to its Speeds for 1 round.",
+									"Failure": "As success, but the penalty to its Speeds lasts for 1 minute.",
+									"Critical Failure": "As failure, but the penalty to its Speeds lasts until the curse is removed or until the thatchling that created the effect is permanently destroyed, whichever comes first. In addition, when the cursed creature attempts a {@skill Survival} check to {@action Sense Direction} or {@action Track}, they use the outcome for one degree of success worse than the result of their check, and they can't take the {@action Scout} exploration activity."
+								}
+							}
+						]
+					},
+					{
+						"name": "Thicket Walker",
+						"entries": [
+							"Thatchlings ignore {@quickref difficult terrain||3|terrain} caused by brambles, tangled grass, and undergrowth, even those manipulated by magic."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 16,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 2
+					},
+					{
+						"name": "piercing",
+						"amount": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "Zoudou the Zealous",
+			"source": "SoG1",
+			"page": 66,
+			"level": 3,
+			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"aberration"
+			],
+			"description": "Female noppera-bo",
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "no face"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"abilities": [
+					"telepathy 30 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 9
+				},
+				"deception": {
+					"std": 11
+				},
+				"diplomacy": {
+					"std": 9
+				},
+				"occultism": {
+					"std": 10
+				},
+				"religion": {
+					"std": 9
+				},
+				"society": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 3,
+				"int": 3,
+				"wis": 2,
+				"cha": 4
+			},
+			"speed": {
+				"walk": 25
+			},
+			"items": [
+				"{@item Fiend's Hunger|SoG1}",
+				"tattered ledger",
+				"twisted knot of wood ({@item religious symbol (generic)||religious symbol} of Kugaptee)"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "Fiend's Hunger",
+					"attack": 9,
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"damage": "{@damage 1d4+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Prepared",
+					"tradition": "divine",
+					"DC": 21,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "bane"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkness"
+								},
+								{
+									"name": "harm"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"rituals": [
+						{
+							"name": "consecrate"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "No Face",
+						"entries": [
+							"Noppera-bos have no sense of vision, but their sense of hearing is precise. They don't breathe and are immune to effects that require breathing. They gain sustenance by absorbing fluids through their skin\u2014traditionally by immersing their hands or faceless head into the fluid to \"drink\" through osmosis; they can also benefit from consumables, such as potions or elixirs, in this way."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Identity Crisis",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"emotion",
+							"mental",
+							"occult",
+							"visual"
+						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"trigger": "Zoudou successfully Steals the Face of an adjacent creature.",
+						"entries": [
+							"As Zoudou Steals the creature's Face, she telepathically draws at the creature's sense of identity and self. The creature must attempt a DC 20 Will save. On a failure, the creature questions their own identity and becomes {@condition slowed||slowed 1} for 1 round. On a critical failure, they're slowed 1 for 1 minute."
+						]
+					},
+					{
+						"name": "Oath of Anonymity",
+						"entries": [
+							"When Zoudou has a face, she can't cast divine prepared spells."
+						]
+					},
+					{
+						"name": "Sensitive Hearing",
+						"entries": [
+							"As long as a noppera-bo is {@condition deafened}, they are {@condition slowed||slowed 1}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Impersonate Shape",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The noppera-bo changes into a Small or Medium humanoid they've touched during the last 24 hours and gains the target creature's face and voice. While transformed and their face is covered, the noppera-bo gains a +2 circumstance bonus to {@action Impersonate} that creature. The noppera-bo can change back by using this ability again. As long as the noppera-bo has a face, it loses its no face ability and its listed immunities."
+						]
+					},
+					{
+						"name": "Regain Anonymity",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"requirements": "Zoudou has a face",
+						"entries": [
+							"Zoudou melts the face she's wearing and gains {@dice 3d6} temporary Hit Points. She can't Regain Anonymity again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Silent Casting",
+						"entries": [
+							"When Zoudou is faceless, she can substitute an additional somatic component for a verbal component."
+						]
+					},
+					{
+						"name": "Steal Face",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"curse",
+							"incapacitation",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"requirements": "Zoudou is faceless",
+						"entries": [
+							"Zoudou targets one creature within 30 feet. The creature must attempt a DC 20 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target is {@condition dazzled} until the start of its next turn.",
+									"Failure": "Zoudou gains the target's face. The target's face vanishes until the end of its next turn. Until then, it is {@condition blinded}, can't speak or ingest, and can't smell. The target must also hold its breath or begin to {@quickref suffocate|CRB|3|drowning and suffocating|0}.",
+									"Critical Failure": "As failure, but the effect doesn't end automatically. The target can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such attempt."
+								}
+							}
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 45
+					}
+				],
+				"immunities": [
+					"inhaled",
+					"olfactory",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "sensitive hearing"
+					}
+				]
+			}
+		},
+		{
+			"name": "Kugaptee's Blessing",
+			"source": "SoG1",
+			"page": 67,
+			"level": 2,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"mindless",
+				"undead",
+				"zombie"
+			],
+			"description": "Variant {@creature zombie brute}",
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 9
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": -3,
+				"con": 4,
+				"int": -5,
+				"wis": 0,
+				"cha": -2
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 11,
+					"traits": [
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 1d12+5} bludgeoning plus {@ability Improved Push} 5 feet",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The Kugaptee's Blessing is permanently {@condition slowed 1} and can't use reactions."
+						],
+						"name": "Slow"
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 3
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 70,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"mental",
+					"poison",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "positive",
+						"amount": 10
+					},
+					{
+						"name": "slashing",
+						"amount": 10
+					}
+				]
+			}
+		},
+		{
+			"name": "Noppera-Bo Grunt",
+			"source": "SoG1",
+			"page": 84,
+			"level": 0,
+			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"aberration"
+			],
+			"perception": {
+				"std": 4
+			},
+			"senses": [
+				{
+					"name": "no face"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"abilities": [
+					"telepathy 30 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 3
+				},
+				"athletics": {
+					"std": 5
+				},
+				"deception": {
+					"std": 4
+				},
+				"intimidation": {
+					"std": 4
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 2,
+				"con": 2,
+				"int": 1,
+				"wis": 0,
+				"cha": 2
+			},
+			"speed": {
+				"walk": 25
+			},
+			"items": [
+				"{@item leather} armor",
+				"{@item spear}"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 7,
+					"damage": "{@damage 1d6+1} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 5,
+					"traits": [
+						"thrown <20 feet>"
+					],
+					"damage": "{@damage 1d6+1} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "No Face",
+						"entries": [
+							"Noppera-bos have no sense of vision, but their sense of hearing is precise. They don't breathe and are immune to effects that require breathing. They gain sustenance by absorbing fluids through their skin\u2014traditionally by immersing their hands or faceless head into the fluid to \"drink\" through osmosis; they can also benefit from consumables, such as potions or elixirs, in this way."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Sensitive Hearing",
+						"entries": [
+							"As long as a noppera-bo is {@condition deafened}, they are {@condition slowed||slowed 1}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Impersonate Shape",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The noppera-bo grunt changes into a faceless version of a Small or Medium humanoid they've touched during the last 24 hours. While transformed and their face is covered, the grunt gains a +2 circumstance bonus to {@action Impersonate} that creature. The noppera-bo grunt can change back by using this ability again."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 18
+					}
+				],
+				"immunities": [
+					"inhaled",
+					"olfactory",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "sensitive hearing"
+					}
+				]
+			}
+		},
+		{
+			"name": "Noppera-Bo Trickster",
+			"source": "SoG1",
+			"page": 84,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"aberration"
+			],
+			"perception": {
+				"std": 5
+			},
+			"senses": [
+				{
+					"name": "no face"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"abilities": [
+					"telepathy 30 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 6
+				},
+				"athletics": {
+					"std": 4
+				},
+				"deception": {
+					"std": 8
+				},
+				"stealth": {
+					"std": 6
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 2,
+				"int": 1,
+				"wis": 0,
+				"cha": 3
+			},
+			"speed": {
+				"walk": 25
+			},
+			"items": [
+				"{@item leather} armor",
+				"{@item shortbow} (20 arrows)",
+				"{@item shortsword}"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile <S>"
+					],
+					"damage": "{@damage 1d6+1} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "shortbow",
+					"attack": 8,
+					"traits": [
+						"deadly <1d10>",
+						"range increment <60 feet>"
+					],
+					"damage": "{@damage 1d6} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "No Face",
+						"entries": [
+							"Noppera-bos have no sense of vision, but their sense of hearing is precise. They don't breathe and are immune to effects that require breathing. They gain sustenance by absorbing fluids through their skin\u2014traditionally by immersing their hands or faceless head into the fluid to \"drink\" through osmosis; they can also benefit from consumables, such as potions or elixirs, in this way."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Sensitive Hearing",
+						"entries": [
+							"As long as a noppera-bo is {@condition deafened}, they are {@condition slowed||slowed 1}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Impersonate Shape",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The noppera-bo changes into a  Small or Medium humanoid they've touched during the last 24 hours and gains the target creature's face and voice. While transformed and their face is covered, the noppera-bo gains a +2 circumstance bonus to {@action Impersonate} that creature. The noppera-bo can change back by using this ability again. As long as the noppera-bo has a face, it loses its no face ability and its listed immunities."
+						]
+					},
+					{
+						"name": "Remove Face",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"enchantment",
+							"fear",
+							"mental",
+							"occult",
+							"visual"
+						],
+						"requirements": "The noppera-bo trickster is {@action impersonate||Impersonating} a creature with a face.",
+						"entries": [
+							"The noppera-bo trickster's facial features melt into nothingness, and they menace a creature within 30 feet. The creature becomes {@condition frightened||frightened 1} on a failed DC 17 Will save (frightened 2 on a critical failure)."
+						]
+					},
+					{
+						"entries": [
+							"The noppera-bo trickster deals an additional {@damage 1d4} precision damage to creatures that are {@condition flat-footed}."
+						],
+						"name": "Sneak Attack",
+						"generic": {
+							"tag": "ability",
+							"name": "Sneak Attack",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "sneak%20attack_b1"
+						}
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 20
+					}
+				],
+				"immunities": [
+					"inhaled",
+					"olfactory",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "sensitive hearing"
+					}
+				]
+			}
+		},
+		{
+			"name": "Noppera-Bo Occultist",
+			"source": "SoG1",
+			"page": 85,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"aberration"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "no face"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"abilities": [
+					"telepathy 30 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 7
+				},
+				"athletics": {
+					"std": 5
+				},
+				"crafting": {
+					"std": 7
+				},
+				"deception": {
+					"std": 9
+				},
+				"occultism": {
+					"std": 7
+				},
+				"stealth": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 2,
+				"int": 3,
+				"wis": 0,
+				"cha": 3
+			},
+			"speed": {
+				"walk": 25
+			},
+			"items": [
+				"{@item staff}"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "staff",
+					"attack": 7,
+					"traits": [
+						"two-hand <d8>"
+					],
+					"damage": "{@damage 1d4+3} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 18,
+					"attack": 9,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "phantom pain"
+								},
+								{
+									"name": "sleep"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "No Face",
+						"entries": [
+							"Noppera-bos have no sense of vision, but their sense of hearing is precise. They don't breathe and are immune to effects that require breathing. They gain sustenance by absorbing fluids through their skin\u2014traditionally by immersing their hands or faceless head into the fluid to \"drink\" through osmosis; they can also benefit from consumables, such as potions or elixirs, in this way."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Sensitive Hearing",
+						"entries": [
+							"As long as a noppera-bo is {@condition deafened}, they are {@condition slowed||slowed 1}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Remove Face",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"enchantment",
+							"fear",
+							"mental",
+							"occult",
+							"visual"
+						],
+						"requirements": "The noppera-bo occultist is {@action impersonate||Impersonating} a creature with a face.",
+						"entries": [
+							"The noppera-bo occultist's facial features melt into nothingness, and they menace a creature within 30 feet. The creature becomes {@condition frightened||frightened 1} on a failed DC 18 Will save (frightened 2 on a critical failure)."
+						]
+					},
+					{
+						"name": "Impersonate Shape",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The noppera-bo changes into a  Small or Medium humanoid they've touched during the last 24 hours and gains the target creature's face and voice. While transformed and their face is covered, the noppera-bo gains a +2 circumstance bonus to {@action Impersonate} that creature. The noppera-bo can change back by using this ability again. As long as the noppera-bo has a face, it loses its no face ability and its listed immunities."
+						]
+					},
+					{
+						"name": "Steal Face",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"curse",
+							"incapacitation",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"requirements": "The noppera-bo occultist is faceless",
+						"entries": [
+							"The noppera-bo occultist targets one creature within 30 feet. The creature must attempt a DC 20 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target is {@condition dazzled} until the start of its next turn.",
+									"Failure": "The noppera-bo occultist gains the target's face. The target's face vanishes until the end of its next turn. Until then, it is {@condition blinded}, can't speak or ingest, and can't smell. The target must also hold its breath or begin to {@quickref suffocate|CRB|3|drowning and suffocating|0}.",
+									"Critical Failure": "As failure, but the effect doesn't end automatically. The target can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such attempt."
+								}
+							}
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 30
+					}
+				],
+				"immunities": [
+					"inhaled",
+					"olfactory",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "sensitive hearing"
+					}
+				]
+			}
+		},
+		{
+			"name": "Shinigami",
+			"source": "SoG1",
+			"page": 86,
+			"level": 17,
+			"traits": [
+				"uncommon",
+				"ln",
+				"large",
+				"monitor"
+			],
+			"perception": {
+				"std": 31
+			},
+			"senses": [
+				{
+					"name": "{@spell detect alignment} (chaotic and lawful only)"
+				},
+				{
+					"name": "{@spell true seeing}"
+				}
+			],
+			"languages": {
+				"languages": [
+					"celestial",
+					"common",
+					"draconic",
+					"infernal",
+					"necril",
+					"requian",
+					"utopian"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 31
+				},
+				"arcana": {
+					"std": 30
+				},
+				"boneyard lore": {
+					"std": 32
+				},
+				"diplomacy": {
+					"std": 32
+				},
+				"intimidation": {
+					"std": 34
+				},
+				"occultism": {
+					"std": 30
+				},
+				"religion": {
+					"std": 33
+				},
+				"society": {
+					"std": 30
+				},
+				"stealth": {
+					"std": 31
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 6,
+				"con": 7,
+				"int": 5,
+				"wis": 6,
+				"cha": 9
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 30
+			},
+			"items": [
+				"{@runeItem naginata|TV|+2 weapon potency||greater striking||axiomatic|}",
+				"pouch of four gems"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "naginata",
+					"attack": 33,
+					"traits": [
+						"deadly <2d8>",
+						"reach",
+						"versatile <P>"
+					],
+					"damage": "{@damage 3d8+16} slashing plus {@damage 1d6} lawful and spirit touch",
+					"types": [
+						"slashing",
+						"lawful"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "divine",
+					"DC": 38,
+					"entry": {
+						"7": {
+							"spells": [
+								{
+									"name": "enervation",
+									"source": "APG",
+									"amount": 3
+								},
+								{
+									"name": "plane shift"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "finger of death",
+									"amount": 3
+								},
+								{
+									"name": "scrying"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "bind soul",
+									"amount": 3
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "detect alignment",
+										"notes": [
+											"chaotic and lawful only"
+										]
+									},
+									{
+										"name": "tongues"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, {@dc 35}"
+						],
+						"name": "Frightful Presence",
+						"generic": {
+							"tag": "ability",
+							"name": "Frightful Presence",
+							"source": "B1",
+							"page": "abilities.html"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The shinigami takes on the appearance of a specific Small or Medium humanoid creature. This doesn't change their statistics, other than to remove the {@trait reach} trait from their Strikes. The shinigami's human shape is unique to the shinigami and can't be used to {@action Impersonate} a creature."
+						]
+					},
+					{
+						"name": "Pouch of Four Gems",
+						"entries": [
+							"Each shinigami carries a pouch containing four black sapphires for use with {@spell bind soul}. Each gem is capable of holding a soul of a maximum level equal to that of the shinigami. If the shinigami dies, the gems are destroyed as well, and any souls they contain are released harmlessly to travel to the {@plane Boneyard}."
+						]
+					},
+					{
+						"name": "Release Soul",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate",
+							"necromancy"
+						],
+						"requirements": "One of the gems in the shinigami's pouch contains a soul from {@spell bind soul}",
+						"entries": [
+							"The shinigami crushes the gem, sending the soul to the {@plane Boneyard} while releasing a wave of necromantic energy. All creatures within a 30-foot emanation take {@damage 18d6} damage (DC 38 basic Fortitude save); the shinigami chooses whether this damage is positive damage or negative damage. A creature who takes damage from this effect and fails the saving throw is also {@condition sickened||sickened 2} and {@condition drained||drained 1} (or sickened 4 and drained 2 on a critical failure)"
+						]
+					},
+					{
+						"name": "Spirit Touch",
+						"entries": [
+							"A shinigami's {@action strike||Strikes} can affect {@trait incorporeal} creatures with the effect of a {@item ghost touch} property rune."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 31
+					},
+					"abilities": [
+						"+1 status to all saves vs magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 260,
+						"abilities": [
+							"fast healing 40"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"negative"
+				],
+				"weaknesses": [
+					{
+						"name": "silver",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "all physical",
+						"amount": 15,
+						"note": "except chaotic and silver"
+					},
+					{
+						"name": "cold",
+						"amount": 15
+					},
+					{
+						"name": "poison",
+						"amount": 15
+					}
+				]
+			}
+		},
+		{
+			"name": "Stone Spider",
+			"source": "SoG1",
+			"page": 87,
+			"level": 5,
+			"traits": [
+				"rare",
+				"ng",
+				"large",
+				"celestial"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"celestial",
+					"common"
+				],
+				"abilities": [
+					"{@ability telepathy} 60 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 12
+				},
+				"athletics": {
+					"std": 13
+				},
+				"intimidation": {
+					"std": 9
+				},
+				"religion": {
+					"std": 14
+				},
+				"settlement lore": {
+					"std": 12,
+					"note": "regarding their home settlement"
+				},
+				"society": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 3,
+				"int": 1,
+				"wis": 5,
+				"cha": 0
+			},
+			"speed": {
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "spirit web",
+					"attack": 14,
+					"traits": [
+						"range increment <30 feet>"
+					],
+					"effects": [
+						"spirit web trap"
+					],
+					"damage": "spirit web trap",
+					"types": []
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "divine",
+					"DC": 21,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "detect alignment",
+									"amount": "at will",
+									"notes": [
+										"evil only"
+									]
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "dream message"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Anchored Soul",
+						"entries": [
+							"The stone spider is bonded to a specific settlement and must remain within 10 miles of the settlement's border."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Bonded Vessel",
+						"entries": [
+							"The condition of a stone spider's vessel dictates its maximum HP. Undamaged, the vessel is an object with 62 HP (BT 31). When the stone spider is in spirit form, damaging it doesn't hurt the vessel, but damaging the vessel deals an equal amount of damage to the stone spider. When the stone spider Inhabits its Vessel, they're a single target, and damage reduces the HP of both the stone spider and the vessel. If the vessel is {@condition broken}, the stone spider can still fight while inhabiting it and suffers no ill effect, but if the vessel is ever destroyed, the stone spider is instantly slain and can't reconstitute."
+						]
+					},
+					{
+						"name": "Reconstitution",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When the stone spider reaches 0 Hit Points, its spirit dissipates. If its bonded vessel is intact, the stone spider re-forms in this vessel after {@dice 2d4} days, fully healed. If the vessel is {@condition broken}, it must first be {@action repair||Repaired}, after which the stone spider re-forms in {@dice 3d4} days."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Inhabit Vessel",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The spider touches and melds with its bonded vessel, bringing it to life. It can cease Inhabiting its Vessel by spending a single action, which has the {@trait concentrate} trait. While Inhabiting the Vessel, it loses its fly Speed and gains {@b Immunities} healing, nonlethal; {@b Resistances} physical 6 (except bludgeoning); Speed 25 feet, climb 25 feet; and the following {@action Strike}.",
+							{
+								"type": "list",
+								"items": [
+									"{@b Melee} {@as 1} stone fangs {@hit 14} ({@trait finesse}), Damage {@damage 2d8+7} piercing"
+								]
+							}
+						]
+					},
+					{
+						"name": "Spirit Body",
+						"entries": [
+							"When not Inhabiting its Vessel, the stone spider is incorporeal and gains resistance 6 to all damage (except force damage and {@item ghost touch}; double resistance against non-magical)."
+						]
+					},
+					{
+						"name": "Spirit Web Trap",
+						"traits": [
+							"force"
+						],
+						"entries": [
+							"A creature hit by the stone spider's web attack is {@condition immobilized} and stuck to the nearest surface until it {@action escape||Escapes} (DC 22)."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 62
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"petrified",
+					"poison"
+				]
+			}
+		},
+		{
+			"name": "Thatchling",
+			"source": "SoG1",
+			"page": 88,
+			"level": 0,
+			"traits": [
+				"uncommon",
+				"ce",
+				"small",
+				"undead"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 5
+				},
+				"stealth": {
+					"std": 5,
+					"in undergrowth": 7
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": 3
+			},
+			"speed": {
+				"walk": 30,
+				"abilities": [
+					"thicket walker"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "frond",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d6} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Distracting Giggle",
+						"traits": [
+							"auditory",
+							"aura",
+							"emotion",
+							"mental",
+							"enchantment",
+							"occult"
+						],
+						"entries": [
+							"15 feet. The thatchling's giggle echoes in the back of the mind. Creatures within the aura take a \u20131 status penalty to Will saves."
+						]
+					},
+					{
+						"name": "Rejuvenation",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When a thatchling is destroyed by damage other than fire, it attempts a DC {@flatDC 11} flat check. On a success, it reforms after {@dice 2d4} days within 120 feet of where it was destroyed, fully healed. A thatchling is always permanently destroyed if reduced to 0 Hit Points by fire damage or if the obstacle preventing the soul from reincarnating is removed."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Thatchling's Curse",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"curse",
+							"enchantment",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"The thatchling focuses its attention on a single target within 30 feet that it can see, and then begins muttering and whispering nonsense. The target must attempt a DC 16 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected and is temporarily immune to Thatchling's Curse for 24 hours.",
+									"Success": "The target is momentarily disoriented and has difficulty moving in the right direction. The target takes a \u20135-foot status penalty to its Speeds for 1 round.",
+									"Failure": "As success, but the penalty to its Speeds lasts for 1 minute.",
+									"Critical Failure": "As failure, but the penalty to its Speeds lasts until the curse is removed or until the thatchling that created the effect is permanently destroyed, whichever comes first. In addition, when the cursed creature attempts a {@skill Survival} check to {@action Sense Direction} or {@action Track}, they use the outcome for one degree of success worse than the result of their check, and they can't take the {@action Scout} exploration activity."
+								}
+							}
+						]
+					},
+					{
+						"name": "Thicket Walker",
+						"entries": [
+							"Thatchlings ignore {@quickref difficult terrain||3|terrain} caused by brambles, tangled grass, and undergrowth, even those manipulated by magic."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 16,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 2
+					},
+					{
+						"name": "piercing",
+						"amount": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "Red-Hooded Thatchling",
+			"source": "SoG1",
+			"page": 89,
+			"level": 2,
+			"traits": [
+				"rare",
+				"ce",
+				"small",
+				"undead"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 7
+				},
+				"deception": {
+					"std": 8
+				},
+				"stealth": {
+					"std": 7,
+					"in undergrowth": 9
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": 4
+			},
+			"speed": {
+				"walk": 30,
+				"abilities": [
+					"thicket walker"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "frond",
+					"attack": 9,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d6+2} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}",
+					"types": [
+						"slashing",
+						"bleed"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 18,
+					"attack": 10,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "illusory disguise"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Distracting Giggle",
+						"traits": [
+							"auditory",
+							"aura",
+							"emotion",
+							"mental",
+							"enchantment",
+							"occult"
+						],
+						"entries": [
+							"15 feet. The thatchling's giggle echoes in the back of the mind. Creatures within the aura take a \u20131 status penalty to Will saves."
+						]
+					},
+					{
+						"name": "Rejuvenation",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When a thatchling is destroyed by damage other than fire, it attempts a DC {@flatDC 11} flat check. On a success, it reforms after {@dice 2d4} days within 120 feet of where it was destroyed, fully healed. A thatchling is always permanently destroyed if reduced to 0 Hit Points by fire damage or if the obstacle preventing the soul from reincarnating is removed."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Create Thatchling Spawn",
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"A living {@trait humanoid} who's slain by a red-hooded thatchling while under the effects of Thatchling's Curse rises as a {@creature thatchling|SoG1} after {@dice 1d4} rounds. This spawn is under the command of the red-hooded thatchling that killed it. If a red-hooded thatchling controls too many at once (as determined by the GM), some thatchlings can free themselves with a DC 18 Will saving throw at the start of their turn. If the red-hooded thatchling who created the spawn is destroyed, the spawn becomes an autonomous thatchling."
+						]
+					},
+					{
+						"name": "Howl of Vengeful Fury",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy",
+							"occult",
+							"sonic"
+						],
+						"frequency": {
+							"unit": "hour",
+							"number": 1
+						},
+						"entries": [
+							"The red-hooded thatchling sobs pitifully before unleashing a terrifying scream. All non-thatchling creatures within a 30-foot emanation take {@damage 2d10} sonic damage (DC 18 basic Fortitude save) and become immune to all thatchlings' distracting giggle for 1 minute. Thatchlings in the area gain 5 temporary Hit Points and a +1 status bonus to their {@action strike||Strikes} and saving throws for 1 minute."
+						]
+					},
+					{
+						"name": "Thatchling's Curse",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"curse",
+							"enchantment",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"The thatchling focuses its attention on a single target within 30 feet that it can see, and then begins muttering and whispering nonsense. The target must attempt a DC 18 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected and is temporarily immune to Thatchling's Curse for 24 hours.",
+									"Success": "The target is momentarily disoriented and has difficulty moving in the right direction. The target takes a \u20135-foot status penalty to its Speeds for 1 round.",
+									"Failure": "As success, but the penalty to its Speeds lasts for 1 minute.",
+									"Critical Failure": "As failure, but the penalty to its Speeds lasts until the curse is removed or until the thatchling that created the effect is permanently destroyed, whichever comes first. In addition, when the cursed creature attempts a {@skill Survival} check to {@action Sense Direction} or {@action Track}, they use the outcome for one degree of success worse than the result of their check, and they can't take the {@action Scout} exploration activity."
+								}
+							}
+						]
+					},
+					{
+						"name": "Thicket Walker",
+						"entries": [
+							"Thatchlings ignore {@quickref difficult terrain||3|terrain} caused by brambles, tangled grass, and undergrowth, even those manipulated by magic."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 16,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 2
+					},
+					{
+						"name": "piercing",
+						"amount": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "Hu Ban-Niang",
+			"alias": [
+				"Granny Hu"
+			],
+			"isNpc": true,
+			"source": "SoG1",
+			"page": 91,
+			"level": 5,
+			"traits": [
+				"unique",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"description": "Female human guard captain",
+			"perception": {
+				"std": 11
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"halfling"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 11
+				},
+				"crafting": {
+					"std": 11
+				},
+				"deception": {
+					"std": 13
+				},
+				"diplomacy": {
+					"std": 11
+				},
+				"intimidation": {
+					"std": 13
+				},
+				"society": {
+					"std": 11
+				},
+				"willowshore lore": {
+					"std": 11
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 1,
+				"con": 1,
+				"int": 2,
+				"wis": 2,
+				"cha": 4
+			},
+			"items": [
+				"{@runeItem longsword||+1 weapon potency||striking|}",
+				"smoking pipe worth 20 gp",
+				"{@item spider lily tattoo|SoG1}"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "longsword",
+					"attack": 13,
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"damage": "{@damage 2d8+3} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "So Have You Heard?",
+						"traits": [
+							"exploration"
+						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"entries": [
+							"Granny Hu can shift a PC's reputation in Willowshore over the course of 2 hours of work. She attempts a {@skill Deception} check against the target's Deception, {@skill Diplomacy}, or {@skill Intimidation} DC, whichever is highest. If the target is admired or revered by at least one faction in Willowshore, Granny Hu takes a \u20131 status penalty to her check, or \u20132 if the target is admired or revered by both factions. The target is then temporarily immune to So Have You Heard? for 1 week.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target takes a \u20132 circumstance penalty to Charisma-based skill checks when interacting with Willowshore residents for a week.",
+									"Success": "As critical success, but only a \u20131 circumstance penalty and for only 1 day.",
+									"Failure": "The target is unaffected.",
+									"Critical Failure": "The plan backfires; not only is the target unaffected, but Granny Hu can't use So Have You Heard? for 1 month."
+								}
+							}
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Nerves of Steel",
+						"entries": [
+							"If Granny Hu succeeds at a save against a fear effect, she gets a critical success instead."
+						]
+					},
+					{
+						"name": "Are You Sure About That?",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"emotion",
+							"mental",
+							"visual"
+						],
+						"trigger": "A creature within 30 feet who's visible to Granny Hu and who has been exposed to Want to Try Me? in the past week says or does something that would be against Granny Hu's interests",
+						"entries": [
+							"Granny Hu makes a subtle gesture, reminding the triggering creature of their secret. The creature must succeed at a DC 22 Will Save or the triggering action is disrupted. Regardless of the outcome, the creature then becomes temporarily immune to this ability for 24 hours."
+						]
+					},
+					{
+						"name": "Want to Try Me?",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"trigger": "A creature within 30 feet attempts to {@action Coerce} or {@action Demoralize} a creature",
+						"entries": [
+							"Granny Hu threatens to expose a secret of the triggering creature. She attempts an {@skill Intimidation} check against the triggering creature's Will DC. Her reputation means she can threaten a PC even if she doesn't actually know a secret, but if she does know an especially dangerous or shameful one, she gains a +2 circumstance bonus to her Intimidation check.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is {@condition frightened||frightened 2}, and the result of their {@action Coerce} or {@action Demoralize} attempt is reduced by one degree of success.",
+									"Success": "As critical success, but frightened 1.",
+									"Failure": "The creature is unaffected.",
+									"Critical Failure": "The creature is unaffected, gains a +1 circumstance bonus to their Coerce or Demoralize attempt, and is immune to Want to Try Me? for 24 hours."
+								}
+							}
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 13
+					},
+					"abilities": [
+						"+1 status bonus vs {@trait fear}",
+						"nerves of steel"
+					]
+				},
+				"hp": [
+					{
+						"hp": 75
+					}
+				]
+			}
+		},
+		{
+			"name": "Shou Matsuki",
+			"alias": [
+				"Old Matsuki"
+			],
+			"isNpc": true,
+			"source": "SoG1",
+			"page": 93,
+			"level": 5,
+			"traits": [
+				"unique",
+				"ng",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"description": "Male human carpenter",
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "cataracts"
+				},
+				{
+					"name": "wood-grain speaker"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"hwan",
+					"minkaian",
+					"tengu"
+				]
+			},
+			"skills": {
+				"crafting": {
+					"std": 13
+				},
+				"diplomacy": {
+					"std": 12
+				},
+				"nature": {
+					"std": 12
+				},
+				"society": {
+					"std": 11
+				},
+				"willowshore lore": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": -1,
+				"con": 1,
+				"int": 4,
+				"wis": 3,
+				"cha": 3
+			},
+			"items": [
+				"calabash bottle worth 20 gp",
+				"{@runeItem staff||+1 weapon potency||striking|}",
+				"{@item sterling artisan's tools||sterling carpenter's artisan tools}"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "staff",
+					"attack": 11,
+					"traits": [
+						"magical",
+						"two-hand <d8>"
+					],
+					"damage": "{@damage 2d4+4} slashing",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Cataracts",
+						"entries": [
+							"Old Matsuki's deteriorating eyesight imposes a \u20132 circumstance penalty to vision-based {@skill Perception} checks."
+						]
+					},
+					{
+						"name": "Wood-Grain Speaker",
+						"entries": [
+							"Old Matsuki gains a +2 circumstance bonus to {@skill Perception} when examining wood items, structures, and trees. He can use {@skill Crafting} to {@action Identify Magic} for items primarily made of wood. This ability isn't affected by Old Matsuki's cataracts."
+						]
+					},
+					{
+						"name": "You Know, They Say...",
+						"entries": [
+							"Old Matsuki can use {@skill lore||Willowshore Lore} in place of {@skill Arcana}, {@skill Medicine}, {@skill Occultism}, or {@skill Religion} to attempt {@action Recall Knowledge} checks with a \u20132 penalty. He has the effects of the {@feat Dubious Knowledge} feat for {@action Recall Knowledge checks attempted in this way."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "A Drink for Good Luck",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"enchantment",
+							"fortune",
+							"mental",
+							"occult"
+						],
+						"frequency": {
+							"unit": "season",
+							"number": 1
+						},
+						"requirements": "Old Matsuki has a drink in hand",
+						"entries": [
+							"Old Matsuki toasts to good fortune, then selects up to six other creatures within 30 feet before he drinks his drink. He, and all creatures that drink before the end of their next turn, become infused with good luck. Once before the end of the current season, each target can reroll a failed saving throw as a free action, taking the second result."
+						]
+					},
+					{
+						"name": "Respect Your Elders!",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"enchantment",
+							"linguistic",
+							"mental",
+							"occult"
+						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"entries": [
+							"Old Matsuki publicly chastises a character he can see and who's within 30 feet for being disrespectful, not just against him or Willowshore's other elders, but against Willowshore's traditions. Whether or not his reprimands are justified, the target of this tirade must attempt a DC 22 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected and immune to Respect Your Elders! for 1 week.",
+									"Success": "The creature feels a momentary bout of shame, becoming {@condition stupefied||stupefied 1} for 1 round.",
+									"Failure": "Feelings of shame and doubt nag at the creature, distracting them enough that they become stupefied 1 for 1 hour."
+								}
+							}
+						]
+					},
+					{
+						"name": "Wait, Give Me a Moment...",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Old Matsuki fails a check to {@action Recall Knowledge}",
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"entries": [
+							"Old Matsuki realizes his error, then rerolls the triggering check with a +2 circumstance bonus."
+						]
+					}
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 70
+					}
+				]
+			}
+		}
+	]
+}

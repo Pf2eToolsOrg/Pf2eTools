@@ -1,6 +1,186 @@
 {
 	"place": [
 		{
+			"name": "Willowshore",
+			"source": "SoG0",
+			"otherSources": {
+				"Reprinted": [
+					"SoG1|71",
+					"SoG2|7"
+				]
+			},
+			"page": 16,
+			"category": "Settlement",
+			"level": 4,
+			"traits": [
+				"N",
+				"town"
+			],
+			"description": "Isolated lumber town",
+			"settlementData": {
+				"government": "Appointed governor (Heh Shan-Bao)",
+				"population": {
+					"total": 225,
+					"ancestries": {
+						"humans": 73,
+						"half-elves": 6,
+						"halflings": 4,
+						"kitsune": 4,
+						"elves": 3,
+						"tengu": 3,
+						"nagaji": 2,
+						"others": 5
+					}
+				},
+				"languages": [
+					"{@language Common} ({@language Tien})",
+					"{@language Elven}",
+					"{@language Halfling}",
+					"{@language Minatan|FRP0}",
+					"{@language Nagaji|FRP0}",
+					"{@language Tengu|B1}",
+					"Tian-hwa",
+					"Tian-min"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Daikitsu|LOGM}",
+					"{@deity Lady Nanbyo|LOGM}",
+					"{@deity Pharasma}",
+					"{@deity Sangpotshi|LOGM}",
+					"others (represented by small shrines)"
+				],
+				"threats": [
+					"malicious spirits",
+					"ravenous vermin",
+					"struggling self-sufficiency",
+					"supernatural influences",
+					"territorial beasts"
+				],
+				"features": [
+					{
+						"name": "Teeth-Clenching Teamwork",
+						"entries": [
+							"Willowshore's residents help one another despite differences. You can attempt to {@action Request} help from another Willowshore resident even if they're {@condition indifferent} or {@condition unfriendly}, but you do so with a \u20132 circumstance penalty."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "\"Granny\" Hu Ban-niang",
+					"alignment": "ln",
+					"gender": "f",
+					"ancestry": "Tian-shu",
+					"position": "retired guard captain",
+					"bond": "retired imperial guard captain"
+				},
+				{
+					"name": "\"Old\" Matsuki Shou",
+					"alignment": "ng",
+					"gender": "m",
+					"ancestry": "Tian-shu",
+					"position": "family patriarch",
+					"bond": "retired carpenter and Willowshore's living history"
+				},
+				{
+					"name": "Heh Shan-Bao",
+					"alignment": "ln",
+					"gender": "m",
+					"ancestry": "Tian-shu",
+					"position": "governor",
+					"bond": "appointed administrator of Willowshore"
+				}
+			]
+		},
+		{
+			"name": "Sandpoint",
+			"source": "7DfS0",
+			"page": 17,
+			"category": "Settlement",
+			"level": 4,
+			"traits": [
+				"NG",
+				"town"
+			],
+			"description": "Diverse coastal town caught in the middle of sinister plots",
+			"settlementData": {
+				"government": "Mayor (elected leader)",
+				"population": {
+					"total": 1240,
+					"ancestries": {
+						"humans": 89,
+						"halflings": 3,
+						"elves": 2,
+						"dwarves": 2,
+						"gnomes": 1,
+						"half-elves": 1,
+						"half-orcs": 1,
+						"goblins": 0.5,
+						"other": 0.5
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Shoanti}",
+					"{@language Varisian}"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Calistria}",
+					"{@deity Desna}",
+					"{@deity Erastil}",
+					"{@deity Gozreh}",
+					"{@deity Sarenrae}",
+					"{@deity Shelyn}"
+				],
+				"threats": [
+					"ancient hidden dangers",
+					"criminals",
+					"ghouls",
+					"goblins"
+				],
+				"features": [
+					{
+						"name": "Quick to Chat",
+						"entries": [
+							"The majority of Sandpoint's citizens are eager to gossip and spread news. The {@action Gather Information} exploration activity takes half as long as normal in Sandpoint (typically reducing the time to 1 hour). If a character has the {@feat Hobnobber} feat, then the {@action Gather Information} activity takes only a quarter as long for that character while they are in Sandpoint (typically reducing the time to 30 minutes)."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Abstalar Zantus",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "cleric of {@deity Desna}",
+					"bond": "town priest"
+				},
+				{
+					"name": "Belor Hemlock",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "fighter",
+					"bond": "sheriff"
+				},
+				{
+					"name": "Kendra Deverin",
+					"gender": "f",
+					"ancestry": "halfling",
+					"position": "politician",
+					"bond": "current mayor"
+				},
+				{
+					"name": "Titus Scarnetti",
+					"gender": "m",
+					"ancestry": "tiefling",
+					"position": "aristocrat",
+					"bond": "notorious nobleman"
+				}
+			]
+		},
+		{
 			"name": "Plane of Metal",
 			"source": "RoE",
 			"page": 139,

@@ -1,0 +1,581 @@
+{
+	"item": [
+		{
+			"name": "Cape of Justice",
+			"source": "SoG1",
+			"page": 81,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"rare",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 100
+			},
+			"usage": "worn cloak",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"While {@deity Yaezhing|LOGM} is feared and seldom worshipped in the open, some regions of Tian Xia see him as a god of necessary evil and their only hope for justice. This garment is often worn by bounty hunters or priests of {@deity Yaezhing|LOGM}, yet non-worshippers of the god of harsh justice sometimes wear this item without fear of religious persecution. The red cape appears almost black while in the shadows, with a lighter red mandala pattern on it that resembles a shuriken.",
+				"When you invest a cape of justice, you must designate a single creature as your offender. You must have met the creature before, or the creature should have a persona well known to the public (for instance, a bandit's epithet, if not their face as shown on a wanted poster). You gain a +1 item bonus to {@action Demoralize} this creature. If you don't designate a creature as your offender when you invest the cape of justice, or if 24 hours pass without you either slaying or capturing your offender, your thoughts become worried and distracted and you take a \u20131 item penalty to {@skill Perception} checks for the next 24 hours.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"traits": [
+						"force"
+					],
+					"frequency": {
+						"unit": "hour",
+						"number": 1
+					},
+					"entries": [
+						"By using a free hand to grab the edge of your cape and give it a quick flourish, you cause a red, shuriken-shaped bolt of force to fire at a target within 60 feet that you can see. The shuriken hits automatically and deals {@damage 1d4+1} force damage, or {@damage 2d4+2} force damage if the target is your designated offender. If the target is within 30 feet, you can attempt to {@action Demoralize} the target as a free action after the shuriken strikes them."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"traits": [
+						"incapacitation"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You produce manacles from the cape and then fling them at a Medium or Small bipedal target within 30 feet. The target must attempt a DC 18 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected, and the manacles vanish.",
+								"Success": "The manacles strike the target's legs but fail to latch properly. The target is {@condition flat-footed} until the start of your next turn, at which point the manacles vanish.",
+								"Failure": "The manacles lock on the target's legs, causing the target to take a \u201315-foot circumstance penalty to its Speeds for 1 minute, or until it {@action escape||Escapes} or is freed by someone using {@action Pick a Lock} (DC 18), after which the manacles vanish.",
+								"Critical Failure": "As failure, but the target is {@condition immobilized} for as long as the manacles remain in place."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fiend's Hunger",
+			"source": "SoG1",
+			"page": 81,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"unique",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 100
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"The blade of this {@runeItem dagger||+1 weapon potency||+1 low-grade silver dagger} has a sickly red tinge. Though once used to send souls to empower Kugaptee, the fury of those slain by the blade now allow its wielder to periodically strike back against fiends.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"command"
+					],
+					"traits": [
+						"divine",
+						"enchantment",
+						"mental"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"trigger": "You score a critical hit against a {@trait fiend}",
+					"entries": [
+						"Vengeful echoes of the fallen lance out into the psyche of the fiend struck. After the normal effects of the critical hit, the target must roll a DC 18 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature becomes distracted by vengeful spirits and becomes {@condition flat-footed} until the start of your next turn.",
+								"Failure": "As success, but the creature is also {@condition slowed||slowed 1} for 1 round.",
+								"Critical Failure": "As success, but the creature is also {@condition slowed||slowed 1} for 1 minute."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Hongrui's Gratitude",
+			"source": "SoG1",
+			"page": 82,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"unique",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 60
+			},
+			"usage": "worn cloak",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"Given as thanks for honoring the memories of three unfortunate travelers who met a tragic end in the Willowshore Hinterlands, this red-hooded cloak is decorated with an image of an elaborately dressed performer whose two companions hold a lantern and umbrella for her.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"traits": [
+						"evocation",
+						"light"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"requirements": "You don't have the umbrella activation of this cloak active",
+					"entries": [
+						"With a wave of the cloak to the left, you cause the image of the lantern-holding companion on the cloak to vanish. A floating red lantern appears at your side and follows you at an arm's length while casting bright light in a 20-foot radius (and dim light for the next 20 feet) like a torch. For 1 hour, while the light from this lantern is active, you gain a +1 item bonus to {@skill Diplomacy} checks. You can {@action activate an item||Activate} the cloak again to dismiss the torch."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"traits": [
+						"abjuration"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"requirements": "You don't have the lantern activation of this cloak active",
+					"entries": [
+						"With a wave of the cloak to the right, you cause the image of the umbrella- holding companion on the cloak to vanish. An indestructible red wax paper umbrella appears above you and follows you, shielding you from weather effects, such as rain or bright sunlight. For 1 hour, while this umbrella is active, you gain a +1 item bonus to {@skill Survival} checks. You can {@action activate an item||Activate} the cloak again to dismiss the umbrella."
+					]
+				}
+			]
+		},
+		{
+			"name": "Matsuki's Medicinal Wine",
+			"source": "SoG1",
+			"page": 82,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"rare",
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Poison",
+			"entries": [
+				"{@creature shou matsuki|SoG1|Old Matsuki}'s private brew has quite the kick. In addition to making you tipsy, this medicinal wine works wonders in helping to recover from disease\u2014including (ironically) drug addiction. Matsuki's medicinal wine functions as {@item alcohol|GMG}, except that its saving throw is a DC 18 Fortitude save. In addition, upon drinking a dose of Matsuki's medicinal wine, you gain a +2 item bonus to Fortitude saving throws against diseases and poisons for 24 hours. This applies to your daily save against a disease's progression; however, the bonus doesn't apply to any checks you attempt against Matsuki's medicinal wine itself."
+			]
+		},
+		{
+			"name": "Noppera-Bo Hood",
+			"source": "SoG1",
+			"page": 82,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"rare",
+				"illusion",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 85
+			},
+			"usage": "worn helmet",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This unpleasant-looking hood appears to be a completely smooth, round sack of skin that feels uncannily warm to the touch. When you wear this hood and invest it, it merges with your head and face, becoming imperceptible as a worn item except on close examination, which reveals a slight oily sheen to your facial features. You can cause minor shifts and changes to your features while wearing a noppera-bo hood; this counts as having a {@item disguise kit} to {@action Impersonate} any creature that is the same ancestry as you.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"transmutation"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"requirements": "You don't have the umbrella activation of this cloak active",
+					"entries": [
+						"You focus on the hood's magic, and then gain the effects of 1st-level {@spell illusory disguise}, though it's a {@trait transmutation} effect rather than an {@trait illusion}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spider Lily Tattoo",
+			"source": "SoG1",
+			"page": 82,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"rare",
+				"invested",
+				"magical",
+				"necromancy",
+				"tattoo"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 60
+			},
+			"usage": "tattooed on the body",
+			"bulk": "\u2013",
+			"category": "Tattoo",
+			"entries": [
+				"The spider lily tattoo marks you as a trusted member of {@creature hu ban-niang|SoG1|Granny Hu}'s network. This crimson tattoo fades and becomes invisible within a day of being applied, reappearing only when you {@action activate an item||Activate} it, when you gain the {@condition doomed} condition, or when you die. The higher the doomed value, the more vivid the color.",
+				"If your tattoo is plainly visible, you gain a +1 item bonus to {@skill Intimidation} checks against all creatures that can see the tattoo, but you take a \u20131 item penalty to {@skill Diplomacy} checks to {@action Make an Impression} on those who understand the actual meaning of the spider lily tattoo (including all of Willowshore's citizens).",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"concentrate"
+					],
+					"requirements": "Your tattoo isn't currently visible",
+					"entries": [
+						"You make the tattoo visible. You can use this activation again to make the tattoo not visible, unless you have the doomed condition."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"trigger": "An {@trait undead} creature detects you for the first time",
+					"entries": [
+						"The spider lily tattoo manipulates your life force to make you appear to be undead for a short time. Attempt a {@skill Deception} check against the triggering undead creature's {@skill Perception} DC. On a success, the triggering undead believes you're undead as well\u2014a {@trait mindless} undead is likely to ignore you, while a sapient undead might react with curiosity or confusion. You can continue attempting {@skill Deception} checks each round as a single action to {@action sustain an activation||Sustain} the effect for up to 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Trap",
+			"source": "SoG1",
+			"page": 83,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"snare",
+				"trap"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 5
+			},
+			"category": "Snare",
+			"entries": [
+				"A spirit trap consists of a net dipped in water that has been steeped with sacred herbs to better combat phantoms. This snare's components function as a {@item net|APG} when not set up. You set this snare up in a 10-foot-by-10-foot area. The first creature with the {@trait spirit} trait that steps into the area must attempt a DC 16 Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is {@condition flat-footed} for 1 round.",
+						"Failure": "The creature is {@condition immobilized} for 1 round.",
+						"Critical Failure": "The creature is immobilized until it {@action escape||Escapes} (DC 16)."
+					}
+				}
+			]
+		},
+		{
+			"name": "Ugly Cute's Gift",
+			"source": "SoG1",
+			"page": 83,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"unique",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 60
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This spiky, stony fragment shed from Ugly Cute's carapace fits quite comfortably over the hand. Though a little bulkier than the typical gauntlet, it still functions as a {@runeItem spiked gauntlet||+1 weapon potency||+1 spiked gauntlet}.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You draw upon Ugly Cute's latent spiritual energy to infuse the gauntlet with forceful power. For 1 minute, Ugly Cute's gift gains the advantages of a {@item ghost touch} property rune and deals an additional 2 force damage on a successful {@action Strike}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Animal-Turning Fulu",
+			"source": "SoG1",
+			"page": 83,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"rare",
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction"
+				},
+				"components": [
+					"envision"
+				],
+				"trigger": "A creature with the {@trait animal} trait successfully {@action strike||Strikes} you."
+			},
+			"category": "Talisman",
+			"entries": [
+				"Frightened animals depicted on this fulu flee in all directions from a central figure (traditionally represented by a human hunter, but sometimes depicted as a skeletal undead creature or even a fiend with long, broken arms). You activate this fulu, gaining a +2 item bonus to AC against the triggering {@action Strike}. If this causes the Strike to miss, you become {@condition concealed} from the triggering creature until the start of your next turn."
+			]
+		},
+		{
+			"name": "Firecracker Fulu",
+			"source": "SoG1",
+			"page": 83,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"rare",
+				"consumable",
+				"evocation",
+				"fulu",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				],
+				"trigger": "You critically succeed at an attack roll with the affixed weapon."
+			},
+			"category": "Talisman",
+			"entries": [
+				"The fulu explodes and showers the area with bright sparks. The creature struck takes an additional {@damage 1d4} sonic damage and must succeed at a DC 15 Fortitude save or be {@condition dazzled} for 1 round (or dazzled for 1 minute on a critical failure)."
+			]
+		},
+		{
+			"name": "Privacy Ward Fulu",
+			"source": "SoG1",
+			"page": 83,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"rare",
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
+			],
+			"usage": "affixed to a wall",
+			"bulk": "\u2014",
+			"category": "Talisman",
+			"entries": [
+				"This fulu seeks to keep thieves, spies, and unwanted attention away from a room. A depiction of a lock appears in the center of this fulu, which is in turn surrounded by circles of broken keys. When applied to a wall inside a room, all creatures within the room gain an item bonus to Stealth checks against creatures outside the room."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "hallway",
+					"level": 1,
+					"price": {
+						"amount": 4,
+						"coin": "gp"
+					},
+					"entries": [
+						"The privacy ward fulu can shield a room of up to 10 square feet, grants a +1 item bonus, and has a duration of 1 hour."
+					]
+				},
+				{
+					"variantType": "room",
+					"level": 5,
+					"price": {
+						"amount": 25,
+						"coin": "gp"
+					},
+					"entries": [
+						"The fulu can shield a room of up to 30 square feet, grants a +1 item bonus, and has a duration of 8 hours. If you become {@condition hidden} within the room, you automatically become {@condition undetected} to creatures of the fulu's level or lower."
+					]
+				},
+				{
+					"variantType": "chamber",
+					"level": 9,
+					"price": {
+						"amount": 120,
+						"coin": "gp"
+					},
+					"entries": [
+						"The fulu can shield a room of up to 90 square feet, grants a +2 item bonus, and has a duration of 24 hours. If you become {@condition hidden} within the room, you automatically become {@condition undetected} to creatures of the fulu's level or lower."
+					]
+				}
+			]
+		},
+		{
+			"name": "Traveler's Fulu",
+			"source": "SoG1",
+			"page": 83,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"rare",
+				"consumable",
+				"divination",
+				"fulu",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				],
+				"trigger": "You critically fail an attempt to {@action Sense Direction}.",
+				"requirements": "You're trained in {@skill Survival}."
+			},
+			"category": "Talisman",
+			"entries": [
+				"This fulu shows a series of constellations and arrows depicting astronomical movements through the night sky. When you activate a traveler's fulu, the magic infuses your mind with sensations of deja vu, as if you'd been in this region before. You gain a success on the triggering check."
+			]
+		}
+	]
+}
