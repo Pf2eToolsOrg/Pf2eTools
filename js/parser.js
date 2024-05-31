@@ -1668,6 +1668,12 @@ SRC_7DfS0 = "7DfS0";
 SRC_SoG0 = "SoG0";
 SRC_SoG1 = "SoG1";
 SRC_SoG2 = "SoG2";
+SRC_LOTXWG = "LOTXWG";
+SRC_WtD1 = "WtD1";
+SRC_WtD2 = "WtD2";
+SRC_WtD3 = "WtD3";
+SRC_WtD4 = "WtD4";
+SRC_WtD5 = "WtD5";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
@@ -1810,6 +1816,12 @@ Parser.SOURCE_JSON_TO_FULL[SRC_7DfS0] = "Seven Dooms for Sandpoint Player's Guid
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG0] = "Season of Ghosts Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG1] = "Season of Ghosts #1: The Summer That Never Was";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG2] = "Season of Ghosts #2: Let the Leaves Fall";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOTXWG] = "Lost Omens: Tian Xia World Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_WtD1] = "Wake the Dead #1";
+Parser.SOURCE_JSON_TO_FULL[SRC_WtD2] = "Wake the Dead #2";
+Parser.SOURCE_JSON_TO_FULL[SRC_WtD3] = "Wake the Dead #3";
+Parser.SOURCE_JSON_TO_FULL[SRC_WtD4] = "Wake the Dead #4";
+Parser.SOURCE_JSON_TO_FULL[SRC_WtD5] = "Wake the Dead #5";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
@@ -1916,6 +1928,12 @@ Parser.SOURCE_JSON_TO_ABV[SRC_7DfS0] = "7DfS0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG0] = "SoG0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG1] = "SoG1";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG2] = "SoG2";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOTXWG] = "LOTXWG";
+Parser.SOURCE_JSON_TO_ABV[SRC_WtD1] = "WtD1";
+Parser.SOURCE_JSON_TO_ABV[SRC_WtD2] = "WtD2";
+Parser.SOURCE_JSON_TO_ABV[SRC_WtD3] = "WtD3";
+Parser.SOURCE_JSON_TO_ABV[SRC_WtD4] = "WtD4";
+Parser.SOURCE_JSON_TO_ABV[SRC_WtD5] = "WtD5";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
@@ -2022,6 +2040,12 @@ Parser.SOURCE_JSON_TO_DATE[SRC_7DfS0] = "2024-03-08";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG0] = "2023-10-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG1] = "2023-10-18";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG2] = "2023-11-15";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOTXWG] = "2024-04-24";
+Parser.SOURCE_JSON_TO_DATE[SRC_WtD1] = "2023-05-31";
+Parser.SOURCE_JSON_TO_DATE[SRC_WtD2] = "2023-07-26";
+Parser.SOURCE_JSON_TO_DATE[SRC_WtD3] = "2023-09-27";
+Parser.SOURCE_JSON_TO_DATE[SRC_WtD4] = "2023-11-28";
+Parser.SOURCE_JSON_TO_DATE[SRC_WtD5] = "2024-01-31";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
@@ -2139,6 +2163,12 @@ Parser.SOURCE_JSON_TO_STORE[SRC_7DfS0] = "https://downloads.paizo.com/SevenDooms
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG0] = "https://downloads.paizo.com/SeasonofGhosts_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG1] = "https://paizo.com/products/btq02efy";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG2] = "https://paizo.com/products/btq02eha";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOTXWG] = "https://paizo.com/products/btq02ex6";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD1] = "https://paizo.com/products/btq02eic";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD2] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022202011";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD3] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022203011";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD4] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022204011";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD5] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022205011";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
 	SRC_AoA0,
@@ -2305,6 +2335,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_LOWG,
 	SRC_PFUM,
 	SRC_SoM,
+	SRC_LOTXWG,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -2388,7 +2419,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
 });
-Parser.SOURCES_ACCESSORIES = new Set(SRC_CFD, SRC_CHD, SRC_HPD);
+Parser.SOURCES_ACCESSORIES = new Set(SRC_CFD, SRC_CHD, SRC_HPD, SRC_WtD1, SRC_WtD2, SRC_WtD3, SRC_WtD4, SRC_WtD5);
 /* PF2ETOOLS_SOURCE__CLOSE */
 
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(

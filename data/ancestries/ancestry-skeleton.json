@@ -157,6 +157,40 @@
 					"entries": [
 						"Inhuman skeletons are often created for both their deadly physical attacks and their terrifying appearances. Beasts and monstrous humanoids with the strangest skeletons tend to be the centerpiece of the collection of a necromancer skilled enough to raise one. You gain a claw, horn, tail, or wing unarmed attack that deals 1d6 damage. A claw deals slashing damage, a horn deals piercing damage, and a tail or wing deals bludgeoning damage. This unarmed attack is in the {@group brawling} group and has the {@trait finesse} and {@trait unarmed} traits."
 					]
+				},
+				{
+					"name": "Shifting Skeleton",
+					"shortName": "Shifting",
+					"source": "WtD4",
+					"page": 25,
+					"entries": [
+						"Constructed from the bones of various shapechanging creatures, shifting skeletons retain a measure of reconfigurability, allowing them to shift forms. You gain the Rearrange Bones action.",
+						{
+							"name": "Rearrange Bones",
+							"source": "WtD4",
+							"type": "ability",
+							"style": "full",
+							"page": 25,
+							"activity": {
+								"number": 1,
+								"unit": "action"
+							},
+							"traits": [
+								"manipulate"
+							],
+							"actionType": {
+								"ancestry": [
+									"Skeleton|BotD"
+								],
+								"heritage": [
+									"Shifting Skeleton|WtD4"
+								]
+							},
+							"entries": [
+								"You arrange your bones into the form of a {@trait Small} or {@trait Medium} {@trait humanoid}'s skeleton. This doesn't change your normal Speeds, {@action strike||Strikes}, or senses. If you are wearing heavy clothing or {@action impersonate||impersonating} a skeleton, this counts as setting up a disguise for the Impersonate use of {@skill Deception}, and grants a +1 status bonus to those Deception checks."
+							]
+						}
+					]
 				}
 			],
 			"summary": {

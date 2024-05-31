@@ -1,0 +1,180 @@
+{
+	"item": [
+		{
+			"name": "Nexian Sealing Blade",
+			"source": "WtD1",
+			"page": 25,
+			"type": "Item",
+			"level": "9+",
+			"traits": [
+				"rare",
+				"arcane",
+				"evocation",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"More often called by their nickname “screamswords,” the Nexian sealing blades were developed by the Arclords of Nex as special tools to ward off Gebbite infiltrators and assassins. Screamswords are {@runeItem longsword||+1 weapon potency||striking||disrupting||+1 striking disrupting silver longswords} with a couple of extra tricks. Each Nexian sealing blade can sense {@trait undead} within 60 feet and responds by screaming loudly until there are no longer {@trait undead} within that range. This same screaming can be unleashed as a sonic blast if needed.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"The screamsword does what it does best and lets out an ear-shattering shriek. Each creature in a 30-foot cone takes {@damage 6d6} sonic damage ({@dc 25} basic Fortitude save). Any creature who fails is {@condition deafened} for 1 round, or 1 hour on a critical failure."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "Nexian sealing blade",
+					"level": 9,
+					"price": {
+						"coin": "gp",
+						"amount": 750
+					},
+					"entries": []
+				},
+				{
+					"variantType": "greater Nexian sealing blade",
+					"level": 14,
+					"price": {
+						"coin": "gp",
+						"amount": 4000
+					},
+					"entries": [
+						"This is a {@runeItem longsword||+2 weapon potency||greater striking||disrupting||+2 greater striking disrupting silver longsword}. When activating the sword, it deals {@damage 10d6} sonic damage with a DC of 31."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rattling Bolt",
+			"source": "WtD1",
+			"page": 26,
+			"type": "Item",
+			"level": "4+",
+			"traits": [
+				"uncommon",
+				"arcane",
+				"consumable",
+				"evocation",
+				"magical"
+			],
+			"ammunition": [
+				"{@item bolt (generic)||bolts}"
+			],
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Ammunition",
+			"entries": [
+				"Sometimes when dealing with {@trait undead} incursions, a more subtle approach is called for. Paradoxically, this is precisely what the rattling bolts are most often used for, despite each one ringing like a shaken chain when launched. Once it hits the target, the rattling transfers into that creature's body. A target damaged by the rattling bolt must succeed at a {@dc 25} Fortitude save or be {@condition deafened} and {@condition stupefied 1} for 1 round (or 1 minute on a critical hit). An {@trait undead} affected by a rattling bolt further loses any {@ability lifesense} ability it might have had for the same duration as the deafening."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "rattling bolt",
+					"level": 4,
+					"price": {
+						"amount": 15,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"variantType": "greater rattling bolt",
+					"level": 13,
+					"price": {
+						"amount": 425,
+						"coin": "gp"
+					},
+					"entries": [
+						"A greater rattling bolt has a DC of 30."
+					]
+				}
+			]
+		},
+		{
+			"name": "Silver Orb",
+			"source": "WtD1",
+			"page": 26,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"bomb"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"Filled with sharp silver filings and alchemical reagents, this glass sphere leaves behind a cloud of dangerous shards. A creature hit with the orb takes 1 slashing damage and is covered with silver filings, making weapons and unarmed attacks damaging them be treated as {@item silver} until they spend an {@action Interact} action to clean off.",
+				"Except on a critical miss, the filings linger airborne in a 5-foot burst around the target. The cloud lasts for 1 minute or until dispersed by a strong wind. Creatures inside the cloud are concealed to those outside. Each breathing creature who ends its turn in the cloud takes the listed slashing damage from a {@item silver} source, with a basic Fortitude save."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser silver orb",
+					"level": 5,
+					"price": {
+						"amount": 30,
+						"coin": "gp"
+					},
+					"entries": [
+						"The cloud deals {@damage 1d6} slashing damage and the save DC is 19."
+					]
+				},
+				{
+					"variantType": "silver powder orb",
+					"level": 12,
+					"price": {
+						"amount": 400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The cloud deals {@damage 3d6} slashing damage and the save DC is 29."
+					]
+				},
+				{
+					"variantType": "greater silver orb",
+					"level": 18,
+					"price": {
+						"amount": 5000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The cloud deals {@damage 5d6} slashing damage and the save DC is 39."
+					]
+				}
+			]
+		}
+	]
+}

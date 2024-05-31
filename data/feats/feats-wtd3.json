@@ -1,0 +1,71 @@
+{
+	"feat": [
+		{
+			"name": "Calm and Centered",
+			"source": "WtD3",
+			"page": 25,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"bard",
+				"manipulate",
+				"metamagic",
+				"oracle",
+				"sorcerer",
+				"witch",
+				"wizard"
+			],
+			"entries": [
+				"This is the secret of chaotic magic—your foe can hardly predict and counter your moves if you yourself have no idea what will happen. If the next action you use is to {@action Cast a Spell} that deals acid, cold, electricity, fire, or sonic damage, roll a {@dice d6}. The spell's damage type changes to the type below associated with the result of the roll, and each creature who is damaged by the spell takes the listed additional effect.",
+				{
+					"type": "list",
+					"style": "list-decimal",
+					"items": [
+						{
+							"type": "item",
+							"name": "(Acid)",
+							"entries": [
+								"{@condition Sickened 1}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "(Cold)",
+							"entries": [
+								"–10 ft. penalty to all Speeds until the end of your next turn"
+							]
+						},
+						{
+							"type": "item",
+							"name": "(Electricity)",
+							"entries": [
+								"{@condition Flat-footed} until the end of your next turn"
+							]
+						},
+						{
+							"type": "item",
+							"name": "(Fire)",
+							"entries": [
+								"{@condition persistent damage||Persistent fire damage} equal to the spell's level"
+							]
+						},
+						{
+							"type": "item",
+							"name": "(Force)",
+							"entries": [
+								"No added effect"
+							]
+						},
+						{
+							"type": "item",
+							"name": "(Sonic)",
+							"entries": [
+								"{@condition Deafened} for 2 rounds"
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

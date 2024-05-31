@@ -1,0 +1,305 @@
+{
+	"item": [
+		{
+			"name": "Nyctessa's Staff",
+			"source": "WtD5",
+			"page": 24,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"unique",
+				"magical",
+				"necromancy",
+				"staff"
+			],
+			"price": {
+				"amount": 90,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "—",
+			"category": "Staff",
+			"entries": [
+				"This macabre staff is crafted from gleaming white bone, a spinal column spiralling out of its base with a skull swinging from the spine's tip. It was handcrafted for {@creature Nyctessa|WtD5} by her father, a powerful Blood Lord, from her mortal mother's bones.",
+				"When you damage a creature with Nyctessa's staff, that creature gains weakness 2 to negative damage until the end of your next turn.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"components": [
+						"{@action Cast a Spell}"
+					],
+					"entries": [
+						"You expend a number of charges from the staff to cast a spell from its list.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold Cantrip} {@spell chill touch}",
+								"{@bold 1st} {@spell animate dead|APG}, {@spell fear}"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bottled Night",
+			"source": "WtD5",
+			"page": 25,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"darkness"
+			],
+			"price": {
+				"amount": 12,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Tiny black motes swirl around this crystalline vial. The vial can be thrown up to 20 feet, shattering and releasing the motes to absorb light within a 15-foot burst. Light sources within the motes' area of effect create a 5-foot radius of {@quickref dim light||3|dim light} instead of their normal light and light sources outside the motes do not illuminate the area within them. The darkness lasts for 1 minute, but will disperse immediately in a strong wind."
+			]
+		},
+		{
+			"name": "Plate of Yled",
+			"source": "WtD5",
+			"page": 25,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"rare",
+				"aberration",
+				"evil",
+				"magical",
+				"necromancy"
+			],
+			"usage": "worn armor",
+			"bulk": 4,
+			"category": "Armor",
+			"entries": [
+				"This sinister suit of jet-black {@runeItem full plate||+1 armor potency|} was designed to bolster the {@creature graveknight||graveknights} of Yled's {@trait undead} armies, creating unstoppable legions.",
+				"The armor gains additional abilities if it is a {@creature graveknight}'s armor. If a graveknight wearing undamaged plate of Yled is destroyed, the armor rebuilds its body over the course of {@dice 1d10} rounds instead of {@dice 1d10} days. A living creature who dons the armor is affected by the {@curse graveknight's curse|B1} immediately instead of in 1 hour.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"requirements": "Your previous action was a weapon {@action Strike} that reduced a living creature to 0 HP",
+					"entries": [
+						"The creature is targeted with {@spell death knell} ({@dc 20})"
+					]
+				}
+			],
+			"craftReq": [
+				"The metals used to create this armor must include a fragment from a previous {@creature graveknight}'s armor."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "graveknight plate",
+					"level": 6,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"variantType": "greater graveknight plate",
+					"level": 8,
+					"price": {
+						"amount": 415,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is {@runeItem full plate||+1 armor potency||resilient|} and the save DC is 24."
+					]
+				},
+				{
+					"variantType": "major graveknight plate",
+					"level": 11,
+					"price": {
+						"amount": 1160,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is {@runeItem full plate||+2 armor potency||resilient|} and the save DC is 28."
+					]
+				},
+				{
+					"variantType": "true graveknight plate",
+					"level": 14,
+					"price": {
+						"amount": 3600,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is {@runeItem full plate||+2 armor potency||greater resilient|} and the save DC is 31."
+					]
+				}
+			]
+		},
+		{
+			"name": "Steadfast Sentinel",
+			"source": "WtD5",
+			"page": 26,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"rare",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 38,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This catalyst is a bird's claw soaked in a mixture of blood and grave dirt. A {@spell shadow spy|DA} spell empowered by it creates an unusually long-lasting {@creature homunculus}. Instead of the spell expiring when you next make your daily preparations, you can renew it by expending a spell slot for {@spell shadow spy|DA} again, maintaining the same {@creature homunculus} so it can continue its observations. Steadfast sentinels are often used by powerful spellcasters of Geb to covertly monitor their rivals."
+			]
+		},
+		{
+			"name": "Steelscour",
+			"source": "WtD5",
+			"page": 26,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"acid",
+				"alchemical",
+				"bomb",
+				"consumable"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact} or {@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"A viscous acidic goo fills this glass vial, specially designed to eat through metallic objects. You can throw the steelscour as an {@trait alchemical} {@trait bomb}, targeting a {@trait metal} creature or metal object held by a creature. Steelscour has no effect on living or {@trait undead} flesh and deals half damage to objects constructed of non-metal materials.",
+				"Instead of using steelscour as a bomb, you can pour it on an adjacent unattended metal object with an {@action Interact} action, automatically dealing the listed {@condition persistent damage||persistent acid damage} for 5 rounds with no flat check to end the condition. When used this way, steelscour loses the {@trait bomb} trait."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "steelscour (lesser)",
+					"level": 1,
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"entries": [
+						"It deals {@damage 1d8} {@condition persistent damage||persistent acid damage} that ignores up to 5 hardness from metal."
+					]
+				},
+				{
+					"variantType": "steelscour (moderate)",
+					"level": 3,
+					"price": {
+						"amount": 9,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. It deals {@damage 2d8} {@condition persistent damage||persistent acid damage} that ignores up to 5 hardness from metal."
+					]
+				},
+				{
+					"variantType": "steelscour (greater)",
+					"level": 11,
+					"price": {
+						"amount": 215,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. It deals {@damage 3d8} {@condition persistent damage||persistent acid damage} that ignores up to 10 hardness from metal."
+					]
+				},
+				{
+					"variantType": "steelscour (major)",
+					"level": 17,
+					"price": {
+						"amount": 2100,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. It deals {@damage 4d8} {@condition persistent damage||persistent acid damage} that ignores up to 15 hardness from metal."
+					]
+				}
+			]
+		},
+		{
+			"name": "Void Salts",
+			"source": "WtD5",
+			"page": 26,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This sachet is filled with a fine powder that seethes with energy distilled directly from the {@plane Negative Energy Plane}. When used in casting a {@spell grim tendrils} spell, void salts allow you to split the area of the spell, creating any number of lines originating from you that total 30 feet in length. A creature that multiple lines pass through is only affected once."
+			]
+		}
+	]
+}

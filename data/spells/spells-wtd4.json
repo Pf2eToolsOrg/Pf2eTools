@@ -1,0 +1,203 @@
+{
+	"spell": [
+		{
+			"name": "Bonewall Bulwark",
+			"source": "WtD4",
+			"page": 26,
+			"level": 3,
+			"traits": [
+				"rare",
+				"necromancy"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"M",
+					"S"
+				]
+			],
+			"range": {
+				"number": 5,
+				"unit": "feet"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You create a miniature replica of the infamous Bonewall of Yled, a jumble of bones with threatening limbs reaching from it. The bulwark is 10 feet high, 10 feet long, and 1 foot thick. The bulwark has an AC of 10 and 30 Hit Points. You must create the bulwark in an unbroken open space so it doesn't pass through any creatures or objects, or the bulwark's dimensions are reduced to fit the smaller space. It must pass within 5 feet of you.",
+				"The bonewall bulwark grants {@quickref cover||3|cover} from creatures on the opposite side. At the beginning of your turn, you may have the limbs attack a single creature you're aware of within 5 feet of the wall using your spell attack modifier and dealing {@damage 3d10} bludgeoning damage. This ignore cover and {@condition concealed||concealment} provided by the bonewall bulwark."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The bludgeoning damage increases by {@damage 1d10} and the HP of the wall increases by 10."
+					]
+				}
+			}
+		},
+		{
+			"name": "Carrion Mire",
+			"source": "WtD4",
+			"page": 26,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"conjuration",
+				"negative"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"M",
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"area": {
+				"types": [
+					"Burst"
+				],
+				"entry": "15-foot burst"
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
+			"entries": [
+				"The ground opens into a seemingly endless mass of corpse limbs, grasping at all creatures within the area to drag them down. Creatures in the area when the spell is cast or beginning their turn in the area must succeed at a Reflex save or fall {@condition prone}. When a creature in the spell's areas would be healed by a {@trait vitality} effect, the carrion mire attempts to {@quickref counteract|CRB|3|counteracting|0} that effect, preventing that healing but not otherwise prevent the effect if its counteracted."
+			]
+		},
+		{
+			"name": "Deathless March",
+			"source": "WtD4",
+			"page": 26,
+			"level": 4,
+			"traits": [
+				"rare",
+				"auditory",
+				"enchantment"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "20-foot emanation"
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You chant a marching song of Yled to empower the {@trait undead} and terrify the living. {@trait Undead} creatures within the area gain the {@condition quickened} condition for 1 minute, which they can use only to {@action Stride}.",
+				"Living creatures in the area must attempt a Will save. This gains the {@trait emotion}, {@trait fear}, and {@trait mental} traits for living creatures.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is {@condition frightened 1}.",
+						"Failure": "The creature is {@condition frightened 2}.",
+						"Critical Failure": "The creature is {@condition frightened 3} and {@condition paralyzed}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Osseous Cage",
+			"source": "WtD4",
+			"page": 26,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"necromancy"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"number": 30,
+				"unit": "feet"
+			},
+			"area": {
+				"entry": "1 5-foot cube",
+				"types": [
+					"Misc."
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute",
+				"sustained": true
+			},
+			"entries": [
+				"You conjure a prison made of bone. Creatures in the space where you create the cage can attempt a Reflex save; if they fail or don't attempt the save, they're trapped within it. The spell automatically fails if the space contains a creature larger than the spell's area.",
+				"A creature inside the cage is {@condition immobilized} until it {@action escape||Escapes}, uses an effect that can pass through solid objects, or destroys the cage. The cage has AC 10, Hardness 5, and 10 Hit Points, and it's immune to critical hits and precision damage.",
+				"The osseous cage provides {@quickref lesser cover||3|cover} from attacks that pass through the cage, either from the outside to the inside, or vice versa."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The spell's area grows by 5 feet on aside and it's Hit Points increase by 20."
+					]
+				}
+			}
+		}
+	]
+}
