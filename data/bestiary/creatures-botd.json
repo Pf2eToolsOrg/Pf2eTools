@@ -1193,9 +1193,6 @@
 				"bot": [
 					{
 						"name": "Grab",
-						"traits": [
-							"page 212"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -3072,9 +3069,6 @@
 				"bot": [
 					{
 						"name": "Grab",
-						"traits": [
-							"page 212"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -6214,7 +6208,8 @@
 							"The ghost is typically bound to a vessel, even one damaged beyond repair. They can't venture more than 120 feet away from the ship or site of its wreckage."
 						],
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"name": "Site Bound"
 						}
 					}
 				],
@@ -7089,13 +7084,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When a graveknight is destroyed, their armor rebuilds their body over the course of {@dice 1d10} days\u2014or more quickly if the armor is worn by a living host (Graveknight Armor, Bestiary 191). If the body is destroyed before then, the process restarts. A graveknight can only be permanently destroyed by obliterating their armor (such as with disintegrate), transporting it to the Positive"
-						]
-					},
-					{
-						"name": "Energy",
-						"entries": [
-							"Plane, or throwing it into the heart of a volcano."
+							"When a graveknight is destroyed, their armor rebuilds their body over the course of {@dice 1d10} days\u2014or more quickly if the armor is worn by a living host (Graveknight Armor, Bestiary 191). If the body is destroyed before then, the process restarts. A graveknight can only be permanently destroyed by obliterating their armor (such as with disintegrate), transporting it to the Positive Energy Plane, or throwing it into the heart of a volcano"
 						]
 					},
 					{
@@ -7116,9 +7105,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 212"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -7141,43 +7127,60 @@
 						]
 					},
 					{
-						"name": "Exemplar of Violence[two-actions]",
+						"name": "Exemplar of Violence",
 						"traits": [
 							"visual"
 						],
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"frequency": {
 							"number": 1,
 							"unit": "round"
 						},
 						"entries": [
-							"The graveknight attempts a {@action Strike} as their armor flashes with sinister power that spurs allies to violence. After the {@action Strike}, allies who can see the graveknight can use a reaction to {@action Step} or {@action Stride}, but they must end this movement in a space adjacent to an enemy. One ally of the graveknight's choice can instead use a reaction to {@action Strike}.",
+							"The graveknight attempts a {@action Strike} as their armor flashes with sinister power that spurs allies to violence. After the {@action Strike}, allies who can see the graveknight can use a reaction to {@action Step} or {@action Stride}, but they must end this movement in a space adjacent to an enemy. One ally of the graveknight's choice can instead use a reaction to {@action Strike}."
+						]
+					},
+					{
+						"type": "affliction",
+						"name": "Graveknight's Curse",
+						"notes": [
+							"This curse affects anyone who wears a graveknight's armor for at least 1 hour"
+						],
+						"DC": 39,
+						"savingThrow": "Will",
+						"onset": "1 hour",
+						"stages": [
 							{
-								"type": "affliction",
-								"name": "Graveknight's Curse This curse affects anyone who",
-								"notes": [
-									"The graveknight summons a supernatural mount as per phantom steed, heightened to 7th level. The steed has AC 34,"
-								],
-								"DC": 39,
-								"savingThrow": "Will",
-								"onset": "1 hour",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition doomed||doomed 1} and can't remove the armor",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition doomed||doomed 2}, hampered 10, and can't remove the armor",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "dies and transforms into the armor's graveknight Phantom {@action Mount} {@as 3}",
-										"duration": "arcane, conjuration"
-									}
-								]
+								"stage": 1,
+								"entry": "{@condition doomed||doomed 1} and can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition doomed||doomed 2}, hampered 10, and can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "dies and transforms into the armor's graveknight"
 							}
+						]
+					},
+					{
+						"name": "Phantom Mount",
+						"traits": [
+							"arcane",
+							"conjuration"
+						],
+						"activity": {
+							"unit": "action",
+							"number": 3
+						},
+						"entries": [
+							"The graveknight summons a supernatural mount as per {@spell phantom steed}, heightened to 7th level. The steed has AC 34, Fort +23, Ref +20, Will +20, and 85 Hit Points. If the steed is destroyed, the graveknight must wait 1 hour before using this ability again."
 						]
 					},
 					{
@@ -7207,11 +7210,7 @@
 					},
 					"will": {
 						"std": 20
-					},
-					"abilities": [
-						"and 85 Hit Points. If the steed is destroyed",
-						"the graveknight must wait 1 hour before using this ability again."
-					]
+					}
 				},
 				"hp": [
 					{
@@ -7620,9 +7619,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 212"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -7633,9 +7629,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 213"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -8356,9 +8349,10 @@
 					},
 					{
 						"name": "Troop Defenses",
-						"traits": [
-							"page 214"
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
 					}
 				],
 				"bot": [
@@ -8368,10 +8362,10 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"entries": [
-							"The troop chooses one of the squares it currently occupies and redistributes its squares to any configuration in which all squares are contiguous and within 15 feet of the chosen square.",
-							"The troop can't share its space with other creatures."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
 					},
 					{
 						"name": "Frightful Battle Cry",
@@ -8522,7 +8516,10 @@
 					"common",
 					"draconic",
 					"dwarven",
-					"infernal"
+					"infernal",
+					"jotun",
+					"necril",
+					"undercommon"
 				]
 			},
 			"skills": {
@@ -8535,6 +8532,21 @@
 				"crafting": {
 					"std": 29,
 					"note": "can craft magic items"
+				},
+				"deception": {
+					"std": 27
+				},
+				"intimidation": {
+					"std": 27
+				},
+				"religion": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 27
+				},
+				"thievery": {
+					"std": 27
 				}
 			},
 			"abilityMods": {
@@ -8718,17 +8730,6 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"name": "Jotun, Necril, Undercommon"
-					},
-					{
-						"name": "Deception+27,",
-						"entries": [
-							"{@skill Intimidation} +27, {@skill Religion} +25, {@skill Stealth} +27, {@skill Thievery} +27"
-						]
-					}
-				],
 				"mid": [
 					{
 						"name": "Rejuvenation",
@@ -10554,10 +10555,11 @@
 							"necromancy"
 						],
 						"entries": [
-							"This affliction can't be reduced below stage 1, nor can damage from it be healed, until successfully treated with remove curse or a similar effect. The affliction can then be removed as normal for a disease. A creature killed by cold rot turns to ice crystals and can't be resurrected except by a 7th-level resurrect ritual or similar magic; Saving",
+							"This affliction can't be reduced below stage 1, nor can damage from it be healed, until successfully treated with remove curse or a similar effect. The affliction can then be removed as normal for a disease. A creature killed by cold rot turns to ice crystals and can't be resurrected except by a 7th-level resurrect ritual or similar magic",
 							{
 								"type": "affliction",
-								"name": "Throw {@dc 24} Fortitude;",
+								"savingThrow": "Fortitude",
+								"DC": 24,
 								"stages": [
 									{
 										"stage": 1,
@@ -11730,9 +11732,6 @@
 						"components": [
 							"scythe claw"
 						],
-						"traits": [
-							"page 213"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -12644,7 +12643,10 @@
 				],
 				"bot": [
 					{
-						"name": "Blight Mastery"
+						"name": "Blight Mastery",
+						"entries": [
+							"Any of the siabrae's spells or effects that would normally be restricted to affecting animal can also affect undead animals. Furthermore, any animals the siabrae takes the form of or summons appear to be diseased, malnourished, or even dead and rotting. (This doesn't affect their statistics.)"
+						]
 					},
 					{
 						"name": "Steady Spellcasting",
@@ -14636,10 +14638,16 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Jiang-Shi Vulnerabilities"
+						"name": "Jiang-Shi Vulnerabilities",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"name": "Warped Fulu"
+						"name": "Warped Fulu",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -14812,10 +14820,16 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Jiang-Shi Vulnerabilities"
+						"name": "Jiang-Shi Vulnerabilities",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"name": "Warped Fulu"
+						"name": "Warped Fulu",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -15022,11 +15036,8 @@
 					{
 						"name": "Anticipatory Attack",
 						"entries": [
-							"The vetalarana emergent uses consumed memories to anticipate their prey's movements. The vetalarana emergent's {@action Strike||Strikes} deal an additional {@damage 1d8} precision damage to creatures {@condition stupefied} due to the vetalarana's"
+							"The vetalarana emergent uses consumed memories to anticipate their prey's movements. The vetalarana emergent's {@action Strike||Strikes} deal an additional {@damage 1d8} precision damage to creatures {@condition stupefied} due to the vetalarana's Drain Thoughts."
 						]
-					},
-					{
-						"name": "Drain Thoughts."
 					},
 					{
 						"name": "Drain Thoughts",
@@ -15354,7 +15365,10 @@
 							"necromancy",
 							"occult",
 							"possession"
-						]
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"name": "Drain Thoughts",
@@ -16220,9 +16234,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 212"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -16249,9 +16260,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 213"
-						],
 						"generic": {
 							"tag": "ability"
 						}
@@ -17257,9 +17265,6 @@
 				"bot": [
 					{
 						"name": "Improved Grab",
-						"traits": [
-							"page 213"
-						],
 						"generic": {
 							"tag": "ability"
 						}

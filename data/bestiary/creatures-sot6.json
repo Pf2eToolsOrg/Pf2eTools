@@ -4191,15 +4191,15 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Shadow's Displeasure As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Shadow's Displeasure",
+						"entries": [
+							"When Anchor Root has fewer than 150 Hit Points, his shadow pulls at his essence to show the Vesicant Egg's displeasure. She looks pained and confused, and she becomes {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} until healed to 150 Hit Points or more. These conditions increase to 2 when below 100 Hit Points. When below 50 Hit Points, she falls {@condition unconscious}."
 						]
 					},
 					{
-						"name": "Vesicated Shadow As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Vesicated Shadow",
+						"entries": [
+							"Anchor Root's shadow has become corrupted via the power of the Vesicant Egg. Her shredded shadow grants him some control over acid and shadows. She gains a +4 status bonus to resist {@trait acid} and {@trait shadow} effects."
 						]
 					}
 				],
@@ -4217,13 +4217,25 @@
 							"shadow"
 						],
 						"entries": [
-							"As"
-						]
-					},
-					{
-						"name": "Unshadowed Okoro",
-						"traits": [
-							"page 19"
+							"Okoro can create immense blisters on a creature's shadow, which immediately burst, dealing {@damage 20d6} acid damage. He targets a creature within 60 feet that is casting a shadow, which must attempt a {@dc 37} Will save.",
+							"Okoro can't use Rupture Shadow again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The target is unaffected and becomes temporarily immune for 1 day."
+									],
+									"Success": [
+										"The target takes half damage. The bursting shadow deals 5 acid {@trait splash} damage to all creatures within 5 feet of the target."
+									],
+									"Failure": [
+										"The target takes full damage, and the bursting shadow deals 10 acid {@trait splash} damage."
+									],
+									"Critical Failure": [
+										"The target takes double damage, the bursting shadow deals 20 acid {@trait splash} damage, and the target also takes {@damage 4d6} {@condition persistent damage||persistent acid damage}."
+									]
+								}
+							}
 						]
 					}
 				]
@@ -4526,15 +4538,15 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Shadow's Displeasure As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Shadow's Displeasure",
+						"entries": [
+							"When Haibram has fewer than 150 Hit Points, his shadow pulls at his essence to show the Vesicant Egg's displeasure. He looks pained and confused, and he becomes {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} until healed to 150 Hit Points or more. These conditions increase to 2 when below 100 Hit Points. When below 50 Hit Points, he falls {@condition unconscious}."
 						]
 					},
 					{
-						"name": "Vesicated Shadow As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Vesicated Shadow",
+						"entries": [
+							"Haibram's shadow has become corrupted via the power of the Vesicant Egg. His shredded shadow grants him some control over acid and shadows. He gains a +4 status bonus to resist {@trait acid} and {@trait shadow} effects."
 						]
 					}
 				],
@@ -4552,13 +4564,25 @@
 							"shadow"
 						],
 						"entries": [
-							"As"
-						]
-					},
-					{
-						"name": "Unshadowed Okoro",
-						"traits": [
-							"page 19"
+							"Haibram can create immense blisters on a creature's shadow, which immediately burst, dealing {@damage 20d6} acid damage. He targets a creature within 60 feet that is casting a shadow, which must attempt a {@dc 37} Will save.",
+							"Haibram can't use Rupture Shadow again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The target is unaffected and becomes temporarily immune for 1 day."
+									],
+									"Success": [
+										"The target takes half damage. The bursting shadow deals 5 acid {@trait splash} damage to all creatures within 5 feet of the target."
+									],
+									"Failure": [
+										"The target takes full damage, and the bursting shadow deals 10 acid {@trait splash} damage."
+									],
+									"Critical Failure": [
+										"The target takes double damage, the bursting shadow deals 20 acid {@trait splash} damage, and the target also takes {@damage 4d6} {@condition persistent damage||persistent acid damage}."
+									]
+								}
+							}
 						]
 					},
 					{
@@ -4640,7 +4664,12 @@
 			"languages": {
 				"languages": [
 					"common",
-					"draconic,"
+					"draconic",
+					"gnoll",
+					"iruxi",
+					"necril",
+					"orc",
+					"sylvan"
 				]
 			},
 			"skills": {
@@ -4876,22 +4905,17 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"name": "Gnoll, Iruxi, Necril, Orc, Sylvan"
-					}
-				],
 				"mid": [
 					{
-						"name": "Shadow's Displeasure As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Shadow's Displeasure",
+						"entries": [
+							"When Koride has fewer than 150 Hit Points, his shadow pulls at his essence to show the Vesicant Egg's displeasure. She looks pained and confused, and she becomes {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} until healed to 150 Hit Points or more. These conditions increase to 2 when below 100 Hit Points. When below 50 Hit Points, she falls {@condition unconscious}."
 						]
 					},
 					{
-						"name": "Vesicated Shadow As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Vesicated Shadow",
+						"entries": [
+							"Koride's shadow has become corrupted via the power of the Vesicant Egg. Her shredded shadow grants him some control over acid and shadows. She gains a +4 status bonus to resist {@trait acid} and {@trait shadow} effects."
 						]
 					}
 				],
@@ -4909,13 +4933,25 @@
 							"shadow"
 						],
 						"entries": [
-							"As"
-						]
-					},
-					{
-						"name": "Unshadowed Okoro",
-						"traits": [
-							"page 18"
+							"Koride can create immense blisters on a creature's shadow, which immediately burst, dealing {@damage 20d6} acid damage. She targets a creature within 60 feet that is casting a shadow, which must attempt a {@dc 37} Will save.",
+							"Koride can't use Rupture Shadow again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The target is unaffected and becomes temporarily immune for 1 day."
+									],
+									"Success": [
+										"The target takes half damage. The bursting shadow deals 5 acid {@trait splash} damage to all creatures within 5 feet of the target."
+									],
+									"Failure": [
+										"The target takes full damage, and the bursting shadow deals 10 acid {@trait splash} damage."
+									],
+									"Critical Failure": [
+										"The target takes double damage, the bursting shadow deals 20 acid {@trait splash} damage, and the target also takes {@damage 4d6} {@condition persistent damage||persistent acid damage}."
+									]
+								}
+							}
 						]
 					}
 				]
@@ -5227,21 +5263,21 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Shadow's Displeasure As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Shadow's Displeasure",
+						"entries": [
+							"When Mariama has fewer than 150 Hit Points, his shadow pulls at his essence to show the Vesicant Egg's displeasure. She looks pained and confused, and she becomes {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} until healed to 150 Hit Points or more. These conditions increase to 2 when below 100 Hit Points. When below 50 Hit Points, she falls {@condition unconscious}."
 						]
 					},
 					{
-						"name": "Vesicated Shadow As Unshadowed Okoro",
-						"traits": [
-							"page 18"
+						"name": "Vesicated Shadow",
+						"entries": [
+							"Mariama's shadow has become corrupted via the power of the Vesicant Egg. Her shredded shadow grants him some control over acid and shadows. She gains a +4 status bonus to resist {@trait acid} and {@trait shadow} effects."
 						]
 					},
 					{
 						"name": "Weird Astrology",
 						"entries": [
-							"Perhaps because of Mariama's quirky nature, she has received all the effects of the astrological evaluator. When she gains any of the {@condition clumsy}, {@condition drained}, {@condition enfeebled}, or {@condition stupefied} conditions, she reduces the value by 1. This means her Shadow's Displeasure doesn't affect her until she has fewer than 50 Hit Points, when she falls {@condition unconscious}."
+							"Perhaps because of Mariama's quirky nature, she has received all the effects of the astrological evaluator. When she gains any of the {@condition clumsy||clumsy 1}, {@condition drained}, {@condition enfeebled}, or {@condition stupefied} conditions, she reduces the value by 1. This means her Shadow's Displeasure doesn't affect her until she has fewer than 50 Hit Points, when she falls {@condition unconscious}."
 						]
 					}
 				],
@@ -5295,13 +5331,25 @@
 							"shadow"
 						],
 						"entries": [
-							"As"
-						]
-					},
-					{
-						"name": "Unshadowed Okoro",
-						"traits": [
-							"page 19"
+							"Mariama can create immense blisters on a creature's shadow, which immediately burst, dealing {@damage 20d6} acid damage. She targets a creature within 60 feet that is casting a shadow, which must attempt a {@dc 37} Will save.",
+							"Mariama can't use Rupture Shadow again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The target is unaffected and becomes temporarily immune for 1 day."
+									],
+									"Success": [
+										"The target takes half damage. The bursting shadow deals 5 acid {@trait splash} damage to all creatures within 5 feet of the target."
+									],
+									"Failure": [
+										"The target takes full damage, and the bursting shadow deals 10 acid {@trait splash} damage."
+									],
+									"Critical Failure": [
+										"The target takes double damage, the bursting shadow deals 20 acid {@trait splash} damage, and the target also takes {@damage 4d6} {@condition persistent damage||persistent acid damage}."
+									]
+								}
+							}
 						]
 					}
 				]
@@ -5353,7 +5401,8 @@
 				"languages": [
 					"common",
 					"draconic",
-					"elven,"
+					"elven",
+					"terran"
 				]
 			},
 			"skills": {
@@ -5603,22 +5652,11 @@
 				}
 			],
 			"abilities": {
-				"top": [
-					{
-						"name": "Terran"
-					}
-				],
 				"mid": [
 					{
-						"name": "Shadow's Displeasure When",
+						"name": "Shadow's Displeasure",
 						"entries": [
-							"Okoro has fewer than 150"
-						]
-					},
-					{
-						"name": "Hit",
-						"entries": [
-							"Points, his shadow pulls at his essence to show the Vesicant Egg's displeasure. He looks pained and {@condition confused}, and he becomes {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} until healed to 150 Hit Points or more. These conditions increase to 2 when below 100 Hit Points. When below 50 Hit Points, he falls {@condition unconscious}."
+							"When Okoro has fewer than 150 Hit Points, his shadow pulls at his essence to show the Vesicant Egg's displeasure. He looks pained and confused, and he becomes {@condition clumsy||clumsy 1} and {@condition stupefied||stupefied 1} until healed to 150 Hit Points or more. These conditions increase to 2 when below 100 Hit Points. When below 50 Hit Points, he falls {@condition unconscious}."
 						]
 					},
 					{
