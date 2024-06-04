@@ -10157,9 +10157,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -10430,14 +10427,11 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature attempts to leave the chouchinobake's",
-						"name": "Shadowbind"
-					},
-					{
+						"trigger": "A creature attempts to leave the chouchinobake's Lifewick Candle aura during a move action",
 						"entries": [
-							"Candle aura during a move action; The chouchin-obake attempts to bind the creature using their own shadow. The triggering creature must succeed at a {@dc 26} Reflex save or become {@condition immobilized} until its next turn."
+							"The chouchin-obake attempts to bind the creature using their own shadow. The triggering creature must succeed at a {@dc 26} Reflex save or become {@condition immobilized} until its next turn."
 						],
-						"name": "Lifewick"
+						"name": "Shadowbind"
 					}
 				],
 				"bot": [
@@ -10825,7 +10819,8 @@
 				"mid": [
 					{
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Troop Defenses"
 					}
@@ -10847,7 +10842,8 @@
 							"unit": "action"
 						},
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Form Up"
 					},
@@ -13609,9 +13605,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -15898,9 +15891,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -16744,9 +16734,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -24765,9 +24752,10 @@
 			"abilities": {
 				"mid": [
 					{
-						"traits": [
-							"page 306"
-						],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -24786,6 +24774,10 @@
 						"activity": {
 							"number": 1,
 							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Form Up"
 					},
@@ -24934,14 +24926,11 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"requirements": "The hellwasp swarm is controlling a corpse with",
-						"name": "Abandon Corpse"
-					},
-					{
+						"requirements": "The hellwasp swarm is controlling a corpse with Infest Corpse",
 						"entries": [
 							"The hellwasp swarm leaves its host corpse, which dies instantly and becomes a normal corpse in all respects. The hellwasp swarm expands out from that space to its normal size."
 						],
-						"name": "Infest Corpse; Effect"
+						"name": "Abandon Corpse"
 					},
 					{
 						"activity": {
@@ -25784,7 +25773,7 @@
 				"top": [
 					{
 						"entries": [
-							"As lampad queen, except the hesperid queen is tied to an isolated region such as an island or island chain, a remote coast, or a secluded valley. Their counteract modifier is +37 and their counteract level is 10."
+							"A hesperid queen is intrinsically tied to a specific underground region, usually an isolated region such as an island or island chain, a remote coast, or a secluded valley. As long as the queen is healthy, the environment is exceptionally resilient, allowing the hesperid queen to automatically attempt to counteract spells and rituals that would harm the environment, such as blight, with a +37 counteract modifier and a counteract level of 10. When the hesperid queen becomes physically or psychologically unhealthy, however, their warded region eventually becomes twisted or unhealthy as well. In that case, restoring the hesperid queen swiftly heals the entire region."
 						],
 						"name": "Tied to the Land"
 					}
@@ -37543,9 +37532,10 @@
 						}
 					},
 					{
-						"traits": [
-							"page 306"
-						],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -37572,7 +37562,8 @@
 							"unit": "action"
 						},
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Form Up"
 					},
@@ -38046,7 +38037,10 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Nosferatu Vulnerabilities"
+						"name": "Nosferatu Vulnerabilities",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -38079,6 +38073,9 @@
 							"divine",
 							"mental"
 						],
+						"generic": {
+							"tag": "ability"
+						},
 						"name": "Command Thrall"
 					},
 					{
@@ -38250,7 +38247,10 @@
 						"name": "Air of Sickness"
 					},
 					{
-						"name": "Nosferatu Vulnerabilities"
+						"name": "Nosferatu Vulnerabilities",
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -38280,6 +38280,9 @@
 							"divine",
 							"mental"
 						],
+						"generic": {
+							"tag": "ability"
+						},
 						"name": "Command Thrall"
 					},
 					{
@@ -38458,12 +38461,18 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Mindbound"
+						"name": "Mindbound",
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
 						},
 						"name": "Mortal Shield"
 					},
@@ -38471,6 +38480,9 @@
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
 						},
 						"name": "Rally"
 					}
@@ -40028,7 +40040,7 @@
 							"occult"
 						],
 						"entries": [
-							"The owb inflicts a curse on one creature taking {@condition persistent damage||persistent cold damage} damage||persistent cold damage} from their burning cold Strike, stealing the victim's vibrancy. The creature must attempt a {@dc 23} Fortitude save. On a failure, the creature gains light blindness and its coloration turns to washed out shades of gray, along with all equipment it carries, wields, or wears. These effects have an unlimited duration. Regardless of the result of its save, the creature is temporarily immune for 1 minute.",
+							"The owb inflicts a curse on one creature taking {@condition persistent damage||persistent cold damage} from their burning cold Strike, stealing the victim's vibrancy. The creature must attempt a {@dc 23} Fortitude save. On a failure, the creature gains light blindness and its coloration turns to washed out shades of gray, along with all equipment it carries, wields, or wears. These effects have an unlimited duration. Regardless of the result of its save, the creature is temporarily immune for 1 minute.",
 							"If the owb uses this ability on a caligni, the curse can't be removed short of {@spell wish} or similar powerful magic."
 						],
 						"name": "Curse of Darkness"
@@ -42175,9 +42187,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -43748,9 +43757,10 @@
 			"abilities": {
 				"mid": [
 					{
-						"traits": [
-							"page 306"
-						],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -43761,7 +43771,8 @@
 							"unit": "action"
 						},
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Form Up"
 					},
@@ -45317,10 +45328,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"page 306"
-						],
-						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
 						}
@@ -46779,9 +46786,10 @@
 				],
 				"mid": [
 					{
-						"traits": [
-							"page 306"
-						],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -46813,7 +46821,8 @@
 							"unit": "action"
 						},
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Form Up"
 					},
@@ -47728,9 +47737,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -48049,9 +48055,10 @@
 			"abilities": {
 				"mid": [
 					{
-						"traits": [
-							"page 306"
-						],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -48087,7 +48094,8 @@
 							"unit": "action"
 						},
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Form Up"
 					},
@@ -51558,18 +51566,16 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
 						}
 					},
 					{
-						"traits": [
-							"page 306"
-						],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -51580,7 +51586,8 @@
 							"unit": "action"
 						},
 						"generic": {
-							"tag": "ability"
+							"tag": "ability",
+							"source": "B3"
 						},
 						"name": "Form Up"
 					},
@@ -51732,9 +51739,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -53392,9 +53396,6 @@
 							"number": 1,
 							"unit": "action"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Throw Rock",
 						"generic": {
 							"tag": "ability"
@@ -55321,9 +55322,6 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"page 306"
-						],
 						"name": "Shield Block",
 						"generic": {
 							"tag": "ability"
@@ -57401,6 +57399,9 @@
 							"primal",
 							"transmutation"
 						],
+						"generic": {
+							"tag": "ability"
+						},
 						"name": "Moon Frenzy"
 					}
 				]
@@ -57614,6 +57615,9 @@
 							"primal",
 							"transmutation"
 						],
+						"generic": {
+							"tag": "ability"
+						},
 						"name": "Moon Frenzy"
 					},
 					{

@@ -745,7 +745,8 @@
 					"common",
 					"draconic",
 					"requian",
-					"sphinx"
+					"sphinx",
+					"sylvan"
 				],
 				"abilities": [
 					"{@spell speak with animals}",
@@ -918,12 +919,6 @@
 			"abilities": {
 				"top": [
 					{
-						"name": "Requian, Sphinx, Sylvan;",
-						"entries": [
-							"speak with animals, speak with plants; telepathy 300 feet"
-						]
-					},
-					{
 						"name": "Fungus Sight",
 						"traits": [
 							"divination",
@@ -961,30 +956,21 @@
 							"transmutation"
 						],
 						"entries": [
-							"60 feet.",
-							"Dimari-Diji's natural power enhances primal spellcasting around him. All creatures within the emanation can alter a primal spell as if they had just used Reach Spell or Widen"
-						]
-					},
-					{
-						"name": "Spell",
-						"activity": {
-							"unit": "varies",
-							"entry": "Core Rulebook 210"
-						},
-						"components": [
-							"when they {@action Cast a Spell||Cast the Spell}."
+							"60 feet. Dimari-Diji's natural power enhances primal spellcasting around him. All creatures within the emanation can alter a primal spell as if they had just used {@feat Reach Spell (Sorcerer)||Reach Spell} or {@feat Widen Spell (Sorcerer)||Widen Spell} when they {@action Cast a Spell||Cast the Spell}."
 						]
 					}
 				],
 				"bot": [
 					{
-						"name": "Memories of Ages"
-					},
-					{
 						"name": "Forest Growth",
 						"entries": [
-							"Once per month, Dimari-Diji can spend 1 hour to sprout a new forest. He causes the forest to sprout in a 50-foot burst within 300 feet. The forest instantly springs to life, and is composed of fungi, plants, and trees most appropriate to the area he selected. The forest grows to the height, density, and liveliness of a forest that has grown for 10 years.",
-							"The forest doesn't feature any animals or other creatures, but animals within 1 mile are aware of the new forest and might make the forest their new habitat as appropriate. Memories of Ages Dimari-Diji's mental blasts cloud the minds of his foes, making it difficult for them to focus on combat. A creature that takes damage from Dimari-Diji's mental blast is {@condition dazzled} for 1 round. If the attack was a critical hit, the creature is {@condition dazzled} for 1 minute instead."
+							"Once per month, Dimari-Diji can spend 1 hour to sprout a new forest. He causes the forest to sprout in a 50-foot burst within 300 feet. The forest instantly springs to life, and is composed of fungi, plants, and trees most appropriate to the area he selected. The forest grows to the height, density, and liveliness of a forest that has grown for 10 years. The forest doesn't feature any animals or other creatures, but animals within 1 mile are aware of the new forest and might make the forest their new habitat as appropriate."
+						]
+					},
+					{
+						"name": "Memories of Ages",
+						"entries": [
+							"Dimari-Diji's mental blasts cloud the minds of his foes, making it difficult for them to focus on combat. A creature that takes damage from Dimari-Diji's mental blast is {@condition dazzled} for 1 round. If the attack was a critical hit, the creature is {@condition dazzled} for 1 minute instead."
 						]
 					},
 					{
@@ -1727,6 +1713,10 @@
 						]
 					},
 					{
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -1736,6 +1726,10 @@
 						"activity": {
 							"number": 1,
 							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
 						}
 					},
 					{
@@ -2148,7 +2142,14 @@
 			"abilities": {
 				"mid": [
 					{
-						"name": "Graveknight's Shield"
+						"name": "Graveknight's Shield",
+						"traits": [
+							"arcane",
+							"necromancy"
+						],
+						"entries": [
+							"The graveknight's curse extends to their shield, or the graveknight's armor uses a portion of itself to produce a shield. The graveknight has a shield that uses the statistics of a {@item sturdy shield} of a level no higher than the graveknight's level – 1. The shield is quasi-independent of the graveknight and automatically protects the graveknight from harm. When the shield is raised, it automatically uses {@action Shield Block} to reduce the damage of the first attack against the graveknight each round without the graveknight needing to spend their reaction to do so. The shield automatically rejuvenates with the rest of the graveknight and must be destroyed in the same manner as the graveknight's armor."
+						]
 					},
 					{
 						"name": "Attack of Opportunity",
@@ -2324,6 +2325,40 @@
 					"DC": 33,
 					"attack": 25,
 					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "fireball"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "cone of cold"
+								},
+								{
+									"name": "flame strike"
+								}
+							]
+						},
 						"6": {
 							"spells": [
 								{
@@ -2364,25 +2399,29 @@
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
-						}
+						},
+						"traits": [
+							"arcane",
+							"transmutation"
+						],
+						"trigger": "A creature attempts to move away from the graveknight",
+						"entries": [
+							"The graveknight's armor animates and attempts to Grab the triggering creature. It makes an {@skill Athletics} check to {@action Grapple} using the graveknight's Athletics modifier – 2. The armor can continue to Grapple the creature normally. Since the armor is grappling the creature, the graveknight doesn't need a free hand to do so."
+						]
 					}
 				],
 				"bot": [
-					{
-						"name": "SoM;",
-						"entries": [
-							"5th cone of cold, flame strike; 4th fireball; Cantrips (7th) chill touch, daze, light, shield"
-						]
-					},
 					{
 						"name": "Channel Magic",
 						"activity": {
 							"number": 2,
 							"unit": "action"
-						}
+						},
+						"entries": [
+							"The graveknight redirects magical energies through its armor, allowing it to deliver magic through an attack. The graveknight Casts a Spell that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into an attack instead. The graveknight then makes a melee Strike with a weapon or unarmed attack. The spell is coupled with the attack, using the attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for the graveknight's multiple attack penalty but doesn't apply the penalty until after it's completed Channeling Magic. The graveknight can't use Channel Magic again for 1d4 rounds."
+						]
 					},
 					{
-						"name": "Devastating Blast",
 						"activity": {
 							"number": 2,
 							"unit": "action"
@@ -2393,20 +2432,42 @@
 							"fire"
 						],
 						"entries": [
-							"{@damage 8d12} fire, {@dc 36}; as graveknight"
-						]
+							"The graveknight unleashes a 30-foot cone of energy.",
+							"Creatures in the area take {@damage 8d12} fire damage ({@dc 36} basic Reflex save). The graveknight can't use this ability again for {@dice 1d4} rounds."
+						],
+						"name": "Devastating Blast"
 					},
 					{
+						"type": "affliction",
 						"name": "Graveknight's Curse",
-						"entries": [
-							"{@dc 36}; as graveknight."
+						"notes": [
+							"This curse affects anyone who wears a graveknight's armor for at least 1 hour"
+						],
+						"DC": 43,
+						"savingThrow": "Will",
+						"onset": "1 hour",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition doomed||doomed 1} and can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition doomed||doomed 2}, hampered 10, and can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "dies and transforms into the armor's graveknight"
+							}
 						]
 					},
 					{
-						"name": "Weapon Master",
 						"entries": [
-							"As graveknight."
-						]
+							"The graveknight has access to the critical specialization effects of any weapons it wields."
+						],
+						"name": "Weapon Master"
 					}
 				]
 			},
@@ -2582,12 +2643,9 @@
 						"frequency": {
 							"number": 1,
 							"unit": "round"
-						}
-					},
-					{
-						"name": "The Jackal",
+						},
 						"entries": [
-							"Guard swings their weapon with a sweeping spin. They attempt separate {@skill Athletics} checks to {@action Trip} any number of creatures within their reach. Each attempt counts toward the Jackal Guard's multiple attack penalty, but the multiple attack penalty doesn't increase until after they make all the attacks."
+							"The Jackal Guard swings their weapon with a sweeping spin. They attempt separate {@skill Athletics} checks to {@action Trip} any number of creatures within their reach. Each attempt counts toward the Jackal Guard's multiple attack penalty, but the multiple attack penalty doesn't increase until after they make all the attacks."
 						]
 					},
 					{
@@ -2601,13 +2659,7 @@
 							"unit": "round"
 						},
 						"entries": [
-							"The"
-						]
-					},
-					{
-						"name": "Jackal",
-						"entries": [
-							"Guard uses their spear to jump over or around a creature and create an opening. The Jackal Guard Strides up to half their Speed. This movement doesn't trigger reactions. During this movement, they can move through the space of one creature, and when the Jackal Guard moves through a creature's space in this way, that creature becomes flatfooted until the end of the Jackal Guard's turn. If the Jackal Guard ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
+							"The Jackal Guard uses their spear to jump over or around a creature and create an opening. The Jackal Guard Strides up to half their Speed. This movement doesn't trigger reactions. During this movement, they can move through the space of one creature, and when the Jackal Guard moves through a creature's space in this way, that creature becomes flatfooted until the end of the Jackal Guard's turn. If the Jackal Guard ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
 						]
 					}
 				]
@@ -2615,9 +2667,7 @@
 			"defenses": {
 				"ac": {
 					"std": 29,
-					"abilities": [
-						"31 with shield raised);"
-					]
+					"with shield raised": 31
 				},
 				"savingThrows": {
 					"fort": {
@@ -4211,6 +4261,10 @@
 						}
 					},
 					{
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -4230,6 +4284,10 @@
 						"activity": {
 							"number": 1,
 							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
 						}
 					},
 					{
@@ -4416,6 +4474,10 @@
 			"abilities": {
 				"mid": [
 					{
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						},
 						"name": "Troop Defenses"
 					}
 				],
@@ -4425,6 +4487,10 @@
 						"activity": {
 							"number": 1,
 							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
 						}
 					},
 					{

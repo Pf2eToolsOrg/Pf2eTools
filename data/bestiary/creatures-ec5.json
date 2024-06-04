@@ -180,12 +180,9 @@
 						},
 						"trigger": "The ammut Grabs a creature",
 						"entries": [
-							"The ammut uses."
+							"The ammut uses Swallow Whole."
 						],
 						"name": "Fast Swallow"
-					},
-					{
-						"name": "Swallow Whole."
 					},
 					{
 						"activity": {
@@ -3027,11 +3024,17 @@
 			"abilities": {
 				"mid": [
 					{
-						"entries": [
-							"30 feet. As graveknight, but with a +24 counteract modifier."
+						"traits": [
+							"abjuration",
+							"aura",
+							"divine",
+							"evil"
 						],
-						"name": "Sacrilegious Aura",
-						"entries_as_xyz": "Ability not found: 'Sacrilegious Aura As graveknight, but with a +24 counteract modifier.' in Shraen Graveknight, p.52"
+						"entries": [
+							"30 feet.",
+							"When a creature in the aura uses a positive spell or ability, the graveknight automatically attempts to counteract it, with a +24 counteract modifier."
+						],
+						"name": "Sacrilegious Aura"
 					},
 					{
 						"activity": {
@@ -3046,6 +3049,7 @@
 				],
 				"bot": [
 					{
+						"name": "Devastating Blast",
 						"activity": {
 							"number": 2,
 							"unit": "action"
@@ -3056,17 +3060,34 @@
 							"evocation"
 						],
 						"entries": [
-							"As graveknight, but {@damage 8d12} cold and {@dc 36}."
-						],
-						"name": "Devastating Blast",
-						"entries_as_xyz": "Ability not found: 'Devastating Blast As graveknight, but {@damage 8d12} cold and {@dc 36}.' in Shraen Graveknight, p.52"
+							"The graveknight unleashes a 30-foot cone of lightning. Creatures in the area take {@damage 8d12} cold damage ({@dc 36} basic Reflex save). The graveknight can use this ability once every {@dice 1d4} rounds."
+						]
 					},
 					{
-						"entries": [
-							"As graveknight, but {@dc 36}."
-						],
+						"type": "affliction",
 						"name": "Graveknight's Curse",
-						"entries_as_xyz": "Ability not found: 'Graveknight's Curse As graveknight, but {@dc 36}.' in Shraen Graveknight, p.52"
+						"notes": [
+							"This curse affects anyone who wears a graveknight's armor for at least 1 hour"
+						],
+						"DC": 36,
+						"savingThrow": "Will",
+						"onset": "1 hour",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition doomed||doomed 1} and can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition doomed||doomed 2}, hampered 10, and can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "dies and transforms into the armor's graveknight"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -3089,18 +3110,16 @@
 						"name": "Quick Draw"
 					},
 					{
-						"entries": [
-							"As graveknight."
-						],
 						"name": "Ruinous Weapons",
-						"entries_as_xyz": "Ability not found: 'Ruinous Weapons As graveknight.' in Shraen Graveknight, p.52"
+						"entries": [
+							"Any weapon or unarmed attack the graveknight uses gains the effects of the +1 greater striking and greater shock weapon runes."
+						]
 					},
 					{
-						"entries": [
-							"As graveknight."
-						],
 						"name": "Weapon Master",
-						"entries_as_xyz": "Ability not found: 'Weapon Master As graveknight.' in Shraen Graveknight, p.52"
+						"entries": [
+							"The graveknight has access to the critical specialization effects of any weapons they wield."
+						]
 					}
 				]
 			},
@@ -4335,12 +4354,9 @@
 							"concentrate"
 						],
 						"entries": [
-							"The deepmouth warps part of a scalescribed creature's flesh into a mouthed tentacle, then wills it to lash out. The deepmouth makes a jaws {@action Strike} that originates from any living scalescribed creature within 120 feet; this {@action Strike} also has reach <15 feet> and deals an additional {@damage 2d8} negative damage. If the {@action Strike} originates from a creature other than the deepmouth, that creature triggers reactions as though it had made."
+							"The deepmouth warps part of a scalescribed creature's flesh into a mouthed tentacle, then wills it to lash out. The deepmouth makes a jaws {@action Strike} that originates from any living scalescribed creature within 120 feet; this {@action Strike} also has reach <15 feet> and deals an additional {@damage 2d8} negative damage. If the {@action Strike} originates from a creature other than the deepmouth, that creature triggers reactions as though it had made the Strike."
 						],
 						"name": "Devourer's Dictum"
-					},
-					{
-						"name": "the Strike."
 					},
 					{
 						"traits": [
@@ -4645,10 +4661,9 @@
 							"mental"
 						],
 						"entries": [
-							"As vampire, but hunting spiders or spider swarms only."
+							"The vampire's presence brings forth creatures of the night to do the master's bidding. Zinogyvaz can only bring forth hunting spiders and spider swarms. The vampire can give telepathic orders to these creatures as long as they are within 100 feet, but they can't communicate back."
 						],
-						"name": "Children of the Night",
-						"entries_as_xyz": "Ability not found: 'Children of the Night As vampire, but hunting spiders or spider swarms only.' in Zinogyvaz, p.35"
+						"name": "Children of the Night"
 					}
 				],
 				"mid": [
@@ -4658,10 +4673,9 @@
 							"unit": "free"
 						},
 						"entries": [
-							"As vampire."
+							"The vampire is reduced to 0 HP. Effect The vampire uses Turn to Mist. It can take move actions to move toward its coffin even though it's at 0 HP. While at 0 HP in this form, the vampire is unaffected by further damage. It automatically returns to its corporeal form, unconscious, if it reaches its coffin or after 2 hours, whichever comes first."
 						],
-						"name": "Mist Escape",
-						"entries_as_xyz": "Ability not found: 'Mist {@action Escape} As vampire.' in Zinogyvaz, p.35"
+						"name": "Mist Escape"
 					}
 				],
 				"bot": [
@@ -4677,13 +4691,12 @@
 							"transmutation"
 						],
 						"entries": [
-							"As vampire, but hunting spider or spider swarm only, and Zinogyvaz keeps her fangs and web {@action Strike||Strikes} in either form."
+							"The vampire transforms into one of its animal forms or back into its normal form. Use the options in the aerial form and animal form spells as guidelines. Zinogyvaz can turn into a hunting spider or spider swarm only, and she keeps her fangs and web Strikes in either form."
 						],
 						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
-						},
-						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As vampire, but hunting spider or spider swarm only, and Zinogyvaz keeps her fangs and web {@action Strike||Strikes} in either form.' in Zinogyvaz, p.35"
+						}
 					},
 					{
 						"traits": [
@@ -4692,10 +4705,9 @@
 							"necromancy"
 						],
 						"entries": [
-							"As vampire."
+							"If a creature dies after being reduced to 0 HP by Drink Blood, the vampire can turn this victim into a vampire by donating some of its own blood to the victim and burying the victim in earth for 3 nights. If the new vampire is lower level than its creator, it is under the creator's control. If a vampire controls too many spawn at once (as determined by the GM), strong-willed spawn can free themselves by succeeding at a Will saving throw against the vampire's Will DC."
 						],
-						"name": "Create Spawn",
-						"entries_as_xyz": "Ability not found: 'Create Spawn As vampire.' in Zinogyvaz, p.35"
+						"name": "Create Spawn"
 					},
 					{
 						"activity": {
@@ -4706,11 +4718,13 @@
 							"divine",
 							"necromancy"
 						],
+						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vampire's reach.",
 						"entries": [
-							"As vampire. When Drinking Blood, Zinogyvaz regains 24 Hit Points and may inject the victim with vampire drider venom."
+							"The vampire sinks its fangs into that creature to drink its blood. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is grabbed and is automatic for any of the other conditions. The victim is drained 1 and Zinogyvaz regains 24 Hit Points, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that's already drained doesn't restore any HP to the vampire but increases the victim's drain value by 1. A vampire can also consume blood that's been emptied into a vessel for sustenance, but it gains no HP from doing so.",
+							" A victim's drained condition decreases by 1 per week. A blood transfusion, which requires a {@dc 20} {@skill Medicine} check and sufficient blood or a blood donor, reduces the drain by 1 after 10 minutes.",
+							"When Drinking Blood, Zinogyvaz may inject the victim with vampire drider venom."
 						],
-						"name": "Drink Blood",
-						"entries_as_xyz": "Ability not found: 'Drink Blood As vampire.' in Zinogyvaz, p.35"
+						"name": "Drink Blood"
 					},
 					{
 						"activity": {
@@ -4723,10 +4737,9 @@
 							"transmutation"
 						],
 						"entries": [
-							"As vampire."
+							"The vampire turns into a cloud of vapor, as the {@spell gaseous form} spell, or back to its normal form. The vampire loses fast healing while in gaseous form. The vampire can remain in this form indefinitely."
 						],
-						"name": "Turn to Mist",
-						"entries_as_xyz": "Ability not found: 'Turn to Mist As vampire.' in Zinogyvaz, p.35"
+						"name": "Turn to Mist"
 					},
 					{
 						"type": "affliction",

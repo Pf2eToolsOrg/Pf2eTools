@@ -1489,27 +1489,51 @@
 			"abilities": {
 				"bot": [
 					{
+						"type": "affliction",
+						"name": "Flea Fever",
 						"traits": [
 							"disease"
 						],
-						"entries": [
-							"As giant flea, except {@dc 19}."
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained|CRB|drained 1}",
+								"duration": "{@dice 1d4} hours"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition drained|CRB|drained 3} and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "dead"
+							}
 						],
-						"name": "Flea Fever"
+						"note": "Drain from flea fever can't be reduced or recovered from naturally until the disease is cured."
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
-						"requirements": "The flea swarm's last action was",
-						"name": "Suck Blood"
-					},
-					{
+						"requirements": "The flea swarm's last action was Swarming Bites, and it dealt damage to at least one enemy",
 						"entries": [
-							"Bites, and it dealt damage to at least one enemy; The flea swarm drinks the creatures' blood. Each victim becomes {@condition drained|CRB|drained 1} and the swarm regains 3 HP for each victim {@condition drained}."
+							"The flea swarm drinks the creatures' blood. Each victim becomes {@condition drained|CRB|drained 1} and the swarm regains 3 HP for each victim {@condition drained}."
 						],
-						"name": "Swarming"
+						"name": "Suck Blood"
 					},
 					{
 						"activity": {
@@ -1627,13 +1651,40 @@
 						"name": "Suck Blood"
 					},
 					{
+						"type": "affliction",
+						"name": "Flea Fever",
 						"traits": [
 							"disease"
 						],
-						"entries": [
-							"Drain from flea fever can't be reduced or recovered from naturally until the disease is cured. Saving Throw {@dc 18} Fortitude; Stage 1 {@condition drained|CRB|drained 1} ({@dice 1d4} hours), Stage 2 {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} (1 day), Stage 3 {@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1} (1 day), Stage 4."
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained|CRB|drained 1}",
+								"duration": "{@dice 1d4} hours"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition drained|CRB|drained 3} and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "dead"
+							}
 						],
-						"name": "Flea Fever"
+						"note": "Drain from flea fever can't be reduced or recovered from naturally until the disease is cured."
 					}
 				]
 			},
@@ -3696,14 +3747,11 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "A creature adjacent to both Violet and",
-						"name": "Protect"
-					},
-					{
+						"trigger": "A creature adjacent to both Violet and Two-Punch hits Pruana with a melee attack",
 						"entries": [
-							"Two-Punch hits Pruana with a melee attack; Violet shields Pruana from the worst of the blow, taking half the damage from the attack and Pruana takes the remainder."
+							"Violet shields Pruana from the worst of the blow, taking half the damage from the attack and Pruana takes the remainder."
 						],
-						"name": "Pruana"
+						"name": "Protect"
 					}
 				],
 				"bot": [

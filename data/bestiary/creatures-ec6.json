@@ -2038,6 +2038,23 @@
 					"DC": 45,
 					"attack": 37,
 					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"6": {
 							"spells": [
 								{
@@ -2100,8 +2117,37 @@
 									"name": "weapon of judgment"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "air walk"
+									},
+									{
+										"name": "freedom of movement"
+									}
+								]
+							}
 						}
 					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 45,
+					"rituals": [
+						{
+							"name": "abyssal pact"
+						},
+						{
+							"name": "atone"
+						},
+						{
+							"name": "commune"
+						}
+					]
 				}
 			],
 			"abilities": {
@@ -2129,29 +2175,17 @@
 					{
 						"entries": [
 							"Sarvel begins combat with two tentacles. Each tentacle has 66 HP and is immune to area damage.",
-							"A creature can attempt to sever one."
+							"A creature can attempt to sever one of Sarvel's tentacles by specifically targeting it and dealing damage equal to the tentacle's Hit Points. A tentacle not completely severed returns to full HP at the end of any creature's turn. For each tentacle he has, Sarvel gains an extra reaction at the start of his turn that can be used only for an {@action Attack of Opportunity}. If he has no tentacles, he can no longer make tentacle {@action Strike||Strikes}, Writhe Independently, or Constrict."
 						],
 						"name": "Touch of Zevgavizeb"
-					},
-					{
-						"entries": [
-							"Sarvel's tentacles by specifically targeting it and dealing damage equal to the tentacle's Hit Points. A tentacle not completely severed returns to full HP at the end of any creature's turn. For each tentacle he has, Sarvel gains an extra reaction at the start of his turn that can be used only for an {@action Attack of Opportunity}. If he has no tentacles, he can no longer make tentacle {@action Strike||Strikes}, Writhe."
-						],
-						"name": "of"
-					},
-					{
-						"name": "Independently, or Constrict."
 					},
 					{
 						"activity": {
 							"number": 1,
 							"unit": "reaction"
 						},
-						"traits": [
-							"tentacle"
-						],
 						"entries": [
-							"only."
+							"tentacle only"
 						],
 						"name": "Attack of Opportunity",
 						"generic": {
@@ -2160,15 +2194,6 @@
 					}
 				],
 				"bot": [
-					{
-						"traits": [
-							"10th"
-						],
-						"entries": [
-							"divine lance, message, read aura, shield; Constant (4th) air walk, freedom of movement Rituals {@dc 45}; Abyssal pact, atone, commune."
-						],
-						"name": "Cantrips"
-					},
 					{
 						"activity": {
 							"number": 1,
