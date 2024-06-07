@@ -4788,6 +4788,7 @@ Renderer.deity = {
 		// Cleric stuff
 		if ((deity.edicts || deity.anathema) && deity.font) renderStack.push(Renderer.utils.getDividerDiv());
 		if (deity.font) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(deity.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`);
+		if (deity.divineSanctification) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Sanctification&nbsp;</strong>${renderer.render(deity.divineSanctification.entry ?? deity.divineSanctification.sanctification.join(" or "))}</p>`);
 		if (deity.divineAbility) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(deity.divineAbility.entry ? deity.divineAbility.entry : deity.divineAbility.abilities.map(x => x.toTitleCase()).joinConjunct(", ", " or "))}</p>`);
 		if (deity.divineSkill) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(deity.divineSkill.entry ? deity.divineSkill.entry : deity.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`);
 		if (deity.domains) renderStack.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(deity.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
@@ -4800,7 +4801,7 @@ Renderer.deity = {
 		if (deity.avatar) {
 			renderStack.push(`<p class="pf2-h3">Avatar</p>`);
 			if (deity.avatar.preface) renderStack.push(`<p class="pf2-stat">${renderer.render(deity.avatar.preface)}</p>`);
-			renderStack.push(`<p class="pf2-stat"><strong>${deity.name}</strong> `);
+			renderStack.push(`<p class="pf2-stat"><strong>${deity.avatar.name ?? deity.name}</strong> `);
 
 			if (deity.avatar.speed) renderStack.push(`${deity.avatar.speed.walk ? `Speed ${deity.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(deity.avatar.speed).filter(type => type !== "walk").map(s => (typeof deity.avatar.speed[s] === "number") ? `, ${s} Speed ${deity.avatar.speed[s]} feet` : "").join("")}`);
 
@@ -4808,7 +4809,8 @@ Renderer.deity = {
 			if (deity.avatar.airWalk) notes.push(`{@spell air walk}`);
 			if (deity.avatar.immune) notes.push(`immune to ${deity.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`);
 			if (deity.avatar.ignoreTerrain) notes.push("ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}");
-			if (deity.avatar.speed.speedNote) notes.push(`${deity.avatar.speed.speedNote}`);
+			if (deity.avatar.waterBreathing) notes.push("can breathe underwater");
+			if (deity.avatar.speedNote) notes.push(deity.avatar.speedNote);
 			if (notes.length > 0) renderStack.push(`, ${renderer.render(notes.join(", "))}`);
 			if (deity.avatar.shield) renderStack.push(`; shield (${deity.avatar.shield} Hardness, can't be damaged)`);
 
@@ -4894,7 +4896,7 @@ Renderer.deity = {
 		const renderer = Renderer.get()
 		let out = []
 		let meleeTraits = []
-		if (attack.traits && attack.traits.length) meleeTraits = meleeTraits.concat(attack.traits.map(t => `{@trait ${t.toLowerCase()}}`))
+		if (attack.traits && attack.traits.length) meleeTraits = meleeTraits.concat(attack.traits.map(t => `{@trait ${t}}`))
 		if (attack.preciousMetal) meleeTraits = meleeTraits.concat(attack.preciousMetal)
 		if (attack.traitNote) meleeTraits.push(attack.traitNote)
 

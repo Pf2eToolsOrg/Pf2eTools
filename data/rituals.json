@@ -1,6 +1,280 @@
 {
 	"ritual": [
 		{
+			"name": "Perfection of Essence",
+			"level": 10,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 50,
+			"traits": [
+				"rare",
+				"trial|LOTXWG"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "special foods, herbs, and minerals worth a total value of 45,000 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"skills": [
+					"Crafting"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Medicine",
+					"Religion"
+				],
+				"entry": "{@skill Medicine} or {@skill Religion}"
+			},
+			"duration": {
+				"unit": "special",
+				"entry": "see text"
+			},
+			"entries": [
+				"Many have pursued alchemical means to immortality, and most haven't survived the attempt. The most common manner of purifying one's essence requires ingesting the following {@trait poison}, and surviving the effects unassisted for at least a day.",
+				{
+					"type": "affliction",
+					"DC": 43,
+					"savingThrow": "Fortitude",
+					"onset": "1 hour",
+					"maxDuration": "5 days",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 7d12} spirit damage plus {@condition doomed 1}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 9d12} spirit damage and {@condition confused} for 1 minute once every {@dice 1d4} minutes, plus {@condition doomed 2}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 9d12} spirit damage and {@condition doomed 3}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "death"
+						}
+					]
+				},
+				"Anathema for this ritual is determined at the time of the ritual. You choose 1 anathema, and the GM chooses 2 anathema. You're aware of all of your anathema. Appropriate anathema might include avoiding physical contact with a certain creature or substance (such as members of your bloodline or jade), eating certain foods (such as meat or grains), or wearing certain items or materials (such as silk or cotton). If the ritual is ended in this way, you must conduct an {@ritual atone|PC1} ritual before attempting this ritual again.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, except you choose 1 anathema and your GM chooses 1 anathema.",
+						"Success": "You've purified your body enough to attempt to attain immortality. You're bound by the ritual's anathema and must ingest the final potion to complete your apotheosis. Once you've withstood the effects of the poison for 1 day or completely recovered from the poison's effects without outside assistance, you gain immortality as follows: you don't age unless you wish to. You can't die except due to old age; if your {@condition dying} or {@condition doomed} condition would increase to a high enough value to kill you, it doesn't increase, and any effect that would instantly kill you instead just reduces you to 0 Hit Points. If you ever truly die and aren't returned to life within 1 year, you descend from the {@plane heaven||Heavens} as an adult into a new mortal body somewhere in the world.",
+						"Failure": "Your actions don't achieve immortality, and you automatically fail the first save against the poison.",
+						"Critical Failure": "As failure, except the poison is also {@trait virulent}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Power of the Beasts",
+			"level": 2,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 50,
+			"traits": [
+				"rare",
+				"trial|LOTXWG"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "bones, teeth, or claws of beasts worth 150 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"skills": [
+					"Athletics"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Cooking Lore",
+					"Crafting",
+					"Religion"
+				],
+				"entry": "{@skill lore||Cooking Lore}, {@skill Crafting}, or {@skill Religion}"
+			},
+			"duration": {
+				"unit": "special",
+				"entry": "see text"
+			},
+			"entries": [
+				"To simply kill the magical beasts who populate Tian Xia is needless and wasteful. The gods reward a hunter who seeks to truly understand their prey, approaching the creatures on their own level and seeking to gain their strength. Powdering the bones of strong beasts, for use in a soup or wine, is often the first step in the process of capturing part of their power.",
+				"Using weapons is anathema to this ritual and immediately ends its benefits. If the ritual is ended in this way, you must conduct an {@ritual atone|PC1} ritual before attempting this ritual again.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, except you can defeat three enemies that are only one size larger than you instead.",
+						"Success": "The power begins to take root. Once you've defeated an enemy two or more sizes larger than you in single combat, you gain the {@feat Titan Wrestler|PC1} feat.",
+						"Failure": "You drink the soup or wine, but the understanding eludes you.",
+						"Critical Failure": "The drink contains shards of bone you didn't grind down properly. You're {@condition sickened 2} for 1 week, during which the condition can't be reduced."
+					}
+				}
+			]
+		},
+		{
+			"name": "Seed of Mercy",
+			"level": 3,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 50,
+			"traits": [
+				"rare",
+				"trial|LOTXWG"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "potent medicine valued at 200 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"skills": [
+					"Medicine"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Nature",
+					"Religion"
+				],
+				"entry": "{@skill Nature} or {@skill Religion}"
+			},
+			"duration": {
+				"unit": "special",
+				"entry": "see text"
+			},
+			"entries": [
+				"The gods who value benevolence and the caretaking of small and vulnerable beings also value those qualities in the mortal adventurers who journey through the lands of Tian Xia. You demonstrate your willingness to aid even the most helpless of life by nursing a small, injured bird to health and allowing it to fly away to freedom, earning in return the protection of the natural world. If you're able to nurse the bird to health, it will return to you with a seed, which will grow into a sprout bearing a single flower.",
+				"The sprout withers if you don't personally water it with at least 1 Bulk of pure spring water a day or if it's left unattended in dangerous circumstances. It's anathema to this ritual to let the sprout wither, and doing so immediately ends its benefits. If the ritual is ended in this way, you must conduct an {@ritual atone|PC1} ritual before attempting this ritual again.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, except the sprout also grows a single fruit after you've cared for it for a week. Removing the fruit causes the sapling to wither, but the fruit can be eaten as a {@item moderate healing potion|GMC}.",
+						"Success": "You nurse the bird to health. It returns to you with a seed that, when planted and watered, grows into a sprout with a single flower. Once you've cared for it for a week, you gain the {@feat Toughness|PC1} feat. If you lose Toughness due to violating the ritual's anathema, you lose a number of Hit Points equal to the decrease in your maximum Hit Points.",
+						"Failure": "You aren't able to heal the bird, but you help its passing to be as painless as possible.",
+						"Critical Failure": "Your attempt to heal the bird causes greater suffering. Another bird brings you a seed that, if planted, will grow into a gourd that releases a small {@trait demon} to attack you."
+					}
+				}
+			]
+		},
+		{
+			"name": "The Unseeing Blade Master",
+			"level": 6,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 51,
+			"traits": [
+				"rare",
+				"trial|LOTXWG"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "rare incense worth 1,500 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"skills": [
+					"Perception"
+				],
+				"prof": "master"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Religion",
+					"Warfare Lore"
+				],
+				"entry": "{@skill Religion} or {@skill lore||Warfare Lore}"
+			},
+			"duration": {
+				"unit": "special",
+				"entry": "see text"
+			},
+			"entries": [
+				"There are many legends of blade masters who, not wanting to rely on flawed mortal eyes, learned to fight through reliance on both their other keen senses and knowledge from the universe itself. Those who intentionally seek out the path often do so by running through forms in thick clouds of incense.",
+				"Making a {@action Strike} against an enemy you can see is anathema to this ritual and immediately ends its benefits. If the ritual is ended in this way, you must conduct an atone ritual before attempting this ritual again.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, except you can instead defeat an enemy in single combat that both uses a sword and is higher level than you.",
+						"Success": "You call a blessing into your sword to guide you on the path and are bound by the ritual's anathema. Once you've used that sword against 20 enemies, each significant enough to grant XP, you gain the {@feat Blind-Fight|PC1} feat.",
+						"Failure": "The incense is dispersed by a strange gust of wind and you learn nothing.",
+						"Critical Failure": "The sword you're intending to use for the ritual becomes {@condition broken}. If you aren't permanently blind, you're instead {@condition blinded} for 1 month and can't repeat this ritual during that time."
+					}
+				}
+			]
+		},
+		{
+			"name": "Seed of Mercy",
+			"level": 3,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 51,
+			"traits": [
+				"rare",
+				"trial|LOTXWG"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "animal food worth a total value of 150 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"skills": [
+					"Diplomacy"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Nature",
+					"Religion"
+				],
+				"entry": "{@skill Nature} or {@skill Religion}"
+			},
+			"duration": {
+				"unit": "special",
+				"entry": "see text"
+			},
+			"entries": [
+				"To many, the animals of Tian Xia are simply beasts to be conquered or harvested, but this isn't how all of the gods intended it. You approach, feed, and commune with the most notably hostile beasts in an effort to forge a true friendship and allegiance with the natural world.",
+				"Wantonly attacking or killing {@trait animal||animals} is anathema to this ritual and immediately ends its benefits. If the ritual is ended in this way, you must conduct an {@ritual atone|PC1} ritual before attempting this ritual again.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, except you can instead resolve a conflict with one {@trait animal} of level 15 or higher.",
+						"Success": "You declare your allegiance to the wild and are bound by the ritual's anathema, but you still must prove yourself. Once you've nonviolently resolved conflicts with three different {@trait animal||animals} of a higher level than yours, you gain the {@feat Animal Empathy|PC1} feat.",
+						"Failure": "Your actions don't impress the gods of the wilds.",
+						"Critical Failure": "You deeply offend the gods you were trying to impress, and they send a sign of displeasure, often an animal attack. You must conduct an {@ritual atone|PC1} ritual before attempting this ritual again."
+					}
+				}
+			]
+		},
+		{
 			"name": "Unseen Heralds",
 			"source": "WtD2",
 			"page": 26,
@@ -50,10 +324,10 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The ritual creates six 'mouths', like {@spell magic mouth||magic mouths}, at places you select within the area. By spending a single action with the {@trait concentrate} trait, you can command the mouths to speak—they can say anything you like, and you can set them to repeat messages or announcements at any interval you choose. You can also choose to have only certain mouths speak. Any secondary casters you include in the ritual, even beyond the two required, can speak through the mouths in the same way you can.",
+						"Critical Success": "The ritual creates six 'mouths', like {@spell magic mouth||magic mouths}, at places you select within the area. By spending a single action with the {@trait concentrate} trait, you can command the mouths to speak\u2014they can say anything you like, and you can set them to repeat messages or announcements at any interval you choose. You can also choose to have only certain mouths speak. Any secondary casters you include in the ritual, even beyond the two required, can speak through the mouths in the same way you can.",
 						"Success": "As critical success, but the ritual creates three mouths.",
 						"Failure": "The ritual has no effect.",
-						"Critical Failure": "The mouths form, and promptly start screaming, gibbering, and/or swearing at passers by—it is impossible to get any rest or relaxation within hearing range of the mouths until their magic wears out in about a day."
+						"Critical Failure": "The mouths form, and promptly start screaming, gibbering, and/or swearing at passers by\u2014it is impossible to get any rest or relaxation within hearing range of the mouths until their magic wears out in about a day."
 					}
 				}
 			],

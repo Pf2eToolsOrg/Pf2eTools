@@ -1,0 +1,4572 @@
+{
+	"creature": [
+		{
+			"name": "Inkdrop",
+			"level": -1,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 278,
+			"traits": [
+				"tiny",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 2
+				},
+				"stealth": {
+					"std": 3,
+					"in dim light or darkness": 5
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": -3,
+				"con": 2,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 7
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 2
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 5
+					}
+				},
+				"hp": [
+					{
+						"hp": 15
+					}
+				],
+				"immunities": [
+					"critical hits",
+					"mental",
+					"precision",
+					"spirit",
+					"unconscious",
+					"vitality",
+					"void"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "cold"
+					},
+					{
+						"amount": 5,
+						"name": "fire"
+					}
+				]
+			},
+			"speed": {
+				"walk": 10,
+				"climb": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "pseudopod",
+					"attack": 6,
+					"damage": "{@damage 1d4} bludgeoning plus blinding ink",
+					"effects": [
+						"blinding ink"
+					],
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Perfect Memory",
+						"entries": [
+							"An inkdrop remembers the exact pattern of any ink it moves over physically."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Blotting",
+						"entries": [
+							"While a creature has the inkdrop {@condition grabbed} or {@condition restrained||pinned}, it can destroy the inkdrop by smudging the inkdrop out with an {@action Interact} action."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Blinding Ink",
+						"entries": [
+							"A creature critically {@action strike||struck} by the inkdrop's pseudopod is {@condition blinded} by the ink until it clears its eyes using an {@action Interact} action."
+						]
+					},
+					{
+						"name": "Ink Blot",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The inkdrop leaves a pattern it remembers over a square foot of surface. If there's existing non-magical ink on the surface, the inkdrop erases the non-magical ink."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Animated Kite",
+			"level": 0,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 278,
+			"traits": [
+				"small",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 0,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 15,
+					"when broken": 13,
+					"abilities": "construct armor"
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 4
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 4
+					}
+				},
+				"hp": [
+					{
+						"hp": 15
+					}
+				],
+				"hardness": 1,
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"spirit",
+					"unconscious",
+					"vitality",
+					"void"
+				]
+			},
+			"speed": {
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "frame",
+					"attack": 7,
+					"traits": [
+						"magical",
+						"finesse"
+					],
+					"damage": "{@damage 1d6} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Construct Armor",
+						"entries": [
+							"Like normal objects, an animated kite has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated kite is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 13."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Attach Line",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The animated kite gives its line to an adjacent ally with a free hand. The kite remains attached until the creature releases it or the kite flies more than 60 feet away. A creature between them can also sever the line with a successful {@action Strike} against AC 13 that deals any amount of slashing damage."
+						]
+					},
+					{
+						"name": "Sawing Line",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The animated kite has its line attached to an ally",
+						"entries": [
+							"Each creature along the line between the kite and its ally takes {@damage 1d6} slashing damage ({@dc 16} basic Reflex save)."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Animated Bamboo Figure",
+			"level": 2,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 279,
+			"traits": [
+				"medium",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 10
+				},
+				"athletics": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 4,
+				"con": 3,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 18,
+					"when broken": 16,
+					"abilities": "construct armor"
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 30
+					}
+				],
+				"hardness": 3,
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"spirit",
+					"unconscious",
+					"vitality",
+					"void"
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 10,
+					"traits": [
+						"magical",
+						"reach <10 feet>"
+					],
+					"effects": [
+						"Knockdown"
+					],
+					"damage": "{@damage 1d8+4} bludgeoning plus {@ability Knockdown}",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Construct Armor",
+						"entries": [
+							"Like normal objects, an animated kite has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated kite is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 16."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Spring Forward",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The animated bamboo figure {@action leap||jumps} up to 30 feet and makes two fist {@action strike||Strikes} against different targets. It can use {@ability Knockdown} following this activity, attempting to {@action Trip} each creature struck."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Animated Wine Vessel",
+			"level": 3,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 279,
+			"traits": [
+				"large",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 0,
+				"con": 4,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 19,
+					"when broken": 17,
+					"abilities": "construct armor"
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 7
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 45
+					}
+				],
+				"hardness": 4,
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"spirit",
+					"unconscious",
+					"vitality",
+					"void"
+				]
+			},
+			"speed": {
+				"walk": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 11,
+					"traits": [
+						"magical"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+4} bludgeoning plus {@ability Grab}",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Construct Armor",
+						"entries": [
+							"Like normal objects, an animated kite has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated kite is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 17."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Spit Wine",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"water"
+						],
+						"entries": [
+							"The wine vessel opens its mouth and blows a stream of wine in a 15-foot line, dealing {@damage 2d8} bludgeoning damage ({@dc 19} basic Reflex save)."
+						]
+					},
+					{
+						"name": "Swallow Whole",
+						"generic": {
+							"tag": "ability",
+							"name": "Swallow Whole",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "swallow%20whole_b1"
+						},
+						"traits": [
+							"attack"
+						],
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Medium, {@damage 2d8+4} bludgeoning plus wine-soaked, Rupture 10."
+						]
+					},
+					{
+						"name": "Wine-Soaked",
+						"entries": [
+							"When a creature ends its turn {@ability swallow whole|B1|Swallowed Whole} by the animated wine vessel, it must succeed at a {@dc 19} Fortitude save or become {@condition sickened 1}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Aoyin",
+			"level": 10,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 280,
+			"traits": [
+				"rare",
+				"large",
+				"animal"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"type": "precise",
+					"name": "bloodsense",
+					"range": 60
+				},
+				{
+					"name": "{@ability low-light vision}"
+				},
+				{
+					"type": "precise",
+					"name": "{@ability scent}",
+					"range": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 21
+				},
+				"stealth": {
+					"std": 18
+				},
+				"survival": {
+					"std": 19,
+					"in mountains": 21
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 4,
+				"con": 6,
+				"int": -4,
+				"wis": 3,
+				"cha": -2
+			},
+			"defenses": {
+				"ac": {
+					"std": 29
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 16
+					}
+				},
+				"hp": [
+					{
+						"hp": 210
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"abilities": [
+					"mountain stride"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 21,
+					"traits": [
+						"deadly <d12>",
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 2d12+7} piercing plus {@damage 2d6} {@condition persistent damage||persistent bleed}",
+					"types": [
+						"piercing",
+						"bleed"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 2d8+7} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Bloodsense",
+						"entries": [
+							"An aoyin can detect exposed blood as a precise sense at the listed range, including from creatures taking {@condition persistent damage||persistent bleed damage}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Driven by Hunger",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The aoyin fails or succeeds at a save against an {@trait emotion} effect",
+						"entries": [
+							"The aoyin's hunger is powerful enough to blot out any other emotion. The aoyin critically succeeds at the save instead. If a creature within 40 feet is taking {@condition persistent damage||persistent bleed damage}, the aoyin can also {@action Stride} up to its Speed in a straight line toward that target as it seeks out the closest source of food."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Horn Toss",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The aoyin {@action stride||Strides} and makes a horn {@action Strike}. If the Strike hits, the target is flung 20 feet in a direction of the aoyin's choice."
+						]
+					},
+					{
+						"name": "Mountain Stride",
+						"entries": [
+							"An aoyin isn't impeded by {@quickref difficult terrain||3|terrain} caused by snow or mountainous terrain, nor does it need to {@action Balance} to move over {@quickref uneven ground||3|terrain} created by those conditions."
+						]
+					},
+					{
+						"name": "Trample",
+						"generic": {
+							"tag": "ability",
+							"name": "Trample",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "trample_b1"
+						},
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Medium, hoof, {@dc 29}"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Aso Berang",
+			"alias": [
+				"Bear Dog"
+			],
+			"level": 12,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 281,
+			"traits": [
+				"rare",
+				"large",
+				"spirit"
+			],
+			"perception": {
+				"std": 23
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability scent}",
+					"range": 120
+				}
+			],
+			"languages": {
+				"languages": [
+					"empyrean",
+					"fey",
+					"petran",
+					"tien"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 21
+				},
+				"athletics": {
+					"std": 25
+				},
+				"intimidation": {
+					"std": 23
+				},
+				"nature": {
+					"std": 25
+				},
+				"occultism": {
+					"std": 21
+				},
+				"religion": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 5,
+				"con": 5,
+				"int": 3,
+				"wis": 7,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 32
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 260
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "fire"
+					},
+					{
+						"amount": 15,
+						"name": "void"
+					}
+				]
+			},
+			"speed": {
+				"walk": 35,
+				"climb": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tusk",
+					"attack": 25,
+					"traits": [
+						"magical",
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 3d12+10} piercing plus {@damage 2d4} fire",
+					"types": [
+						"piercing",
+						"fire"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 25,
+					"traits": [
+						"agile",
+						"magical",
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 2d4+10} slashing plus {@damage 2d4} fire",
+					"types": [
+						"slashing",
+						"fire"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spectral flame",
+					"attack": 23,
+					"traits": [
+						"divine",
+						"range <60 feet>"
+					],
+					"damage": "{@damage 7d6} fire",
+					"types": [
+						"fire"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "divine",
+					"DC": 32,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "share life",
+									"source": "PC1",
+									"notes": [
+										"at will"
+									]
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "cleanse affliction",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "nature's pathway",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Watch Over Evil",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 30 feet of the aso berang {@action cast a spell||Casts a Spell}",
+						"entries": [
+							"The aso berang makes a spectral flame {@action Strike} against the triggering creature. If the Strike hits a creature with the {@trait tanggal|B3} trait or is a critical hit, the triggering action is disrupted."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"generic": {
+							"tag": "ability",
+							"name": "Change Shape",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "change%20shape_b1"
+						},
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph"
+						],
+						"entries": [
+							"The aso berang takes the appearance of any {@trait Medium} or {@trait Small} {@trait humanoid} creature. In this form, the aso berang can't use their tusk {@action strike||Strikes}, and their claw Strike becomes a fist Strike that deals bludgeoning damage and loses the {@trait reach} trait."
+						]
+					},
+					{
+						"name": "Cleanse the Forest",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"The aso berang dashes to attack each nearby enemy so quickly that it's impossible to tell they've moved at all, save for a slight flicker in their outline. The aso berang {@action stride||Strides} adjacent to an enemy and attempts a melee {@action Strike}. If successful, the aso berang can Stride and attempt to Strike a different enemy. If this second attack is successful, they can Stride and attempt to Strike a third enemy. Once they fail a Strike (or upon succeeding at their third Strike), the aso berang Strides back to the space where they began."
+						]
+					},
+					{
+						"name": "Phantom Flames",
+						"entries": [
+							"The aso berang's flames are as much spectral as physical. Whenever an aso berang deals fire damage, they can have that damage be spirit damage instead. The aso berang's flames never burn plants or objects unless the aso berang wishes it."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Bul-Gae",
+			"level": 14,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 282,
+			"traits": [
+				"uncommon",
+				"medium",
+				"beast",
+				"cold",
+				"fire"
+			],
+			"perception": {
+				"std": 26
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision||greater darkvision}"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability scent}",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"tien"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 28
+				},
+				"intimidation": {
+					"std": 23
+				},
+				"stealth": {
+					"std": 23
+				},
+				"survival": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 4,
+				"con": 7,
+				"int": 5,
+				"wis": 6,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 25
+					}
+				},
+				"hp": [
+					{
+						"hp": 255
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "cold"
+					},
+					{
+						"amount": 15,
+						"name": "fire"
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 27,
+					"traits": [
+						"agile"
+					],
+					"effects": [
+						"Knockdown"
+					],
+					"damage": "{@damage 2d8+12} piercing plus {@damage 2d6} cold or fire and {@ability Knockdown}",
+					"types": [
+						"piercing",
+						"cold",
+						"fire"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Eclipse Aura",
+						"traits": [
+							"aura",
+							"darkness",
+							"occult"
+						],
+						"entries": [
+							"100 feet. Light and shadows morph strangely around the bul-gae. Non-magical bright light is reduced to {@quickref dim light||3|dim light} within the aura. When a creature attempts an action within the aura that has the {@trait light} trait, it must attempt a {@dc 34} Will save. On a failure, the action is disrupted."
+						]
+					},
+					{
+						"name": "Solar Flare",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"fire",
+							"occult"
+						],
+						"trigger": "The bul-gae takes damage",
+						"entries": [
+							"The bul-gae releases a solar flare in a 30-foot emanation. Each creature in the area takes {@damage 6d8} fire damage ({@dc 34} basic Reflex save). On a critical failure, a creature also takes {@damage 2d10} {@condition persistent damage||persistent fire damage}. After using this ability, the bul-gae's flames cool, and they can't use Solar Flare again until after they've used their Lunar Burst ability."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Lunar Burst",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"cold",
+							"occult"
+						],
+						"entries": [
+							"The bul-gae releases a blast of otherworldly frost that deals {@damage 6d8} cold damage to each creature in a 10-foot emanation ({@dc 34} basic Reflex save). On a critical failure, a creature also becomes {@condition slowed 2} for 1 round. After using this ability, the bul-gae's flames heat up and they can't use Lunar Burst again until after they've used their Solar Flare reaction."
+						]
+					},
+					{
+						"name": "Shadow Leap",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"occult",
+							"shadow",
+							"teleportation"
+						],
+						"requirements": "The bul-gae is in dim light or darkness",
+						"entries": [
+							"The bul-gae dives into a shadow and reappears from a shadow within 40 feet."
+						]
+					},
+					{
+						"name": "Thermal Mastery",
+						"entries": [
+							"The bul-gae has total control over the powers of cold and fire. Each time it attacks with its jaws, it can choose to have the additional damage be either cold damage or fire damage."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Gau Cho Rong",
+			"alias": [
+				"Hollow Bear"
+			],
+			"level": 4,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 283,
+			"traits": [
+				"uncommon",
+				"small",
+				"beast"
+			],
+			"perception": {
+				"std": 10
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"intimidation": {
+					"std": 11
+				},
+				"stealth": {
+					"std": 13
+				},
+				"survival": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 0,
+				"int": -2,
+				"wis": 2,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 50
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "bludgeoning"
+					},
+					{
+						"amount": 5,
+						"name": "slashing"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 13,
+					"damage": "{@damage 2d8+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claws",
+					"attack": 13,
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 2d6+5} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Full Belly",
+						"entries": [
+							"When a gau cho rong is full, which requires consuming an entire {@trait Medium} creature or 6 Bulk of meat, it becomes peaceful and even playful. It has an automatic result of 33 on {@skill Deception} checks and DCs to pass as a normal sun bear, but it loses its resistances. A gau cho rong remains full for 8 hours."
+						]
+					},
+					{
+						"name": "Subsumed Traits",
+						"entries": [
+							"After it finishes digesting a full meal, the gau cho rong will gain a trait from that creature until the next time it's full. Gau cho rongs that gain the {@trait animal} trait have {@ability scent} out to 60 feet as an imprecise sense, while those with the {@trait amphibious} or {@trait aquatic} trait gain a swim speed of 25 feet. {@trait Humanoid} hollow bears gain the {@ability attack of opportunity||Reactive Strike} reaction. Traits like {@trait fire} add that damage type to a gau cho rong's resistances. Other traits have effects at the GM's discretion."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Ambush",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The gau cho rong is {@condition hidden||hiding} and a creature that hasn't detected it is within 20 feet",
+						"entries": [
+							"The gau cho rong {@action stride||Strides} toward the creature. Once the creature is in reach, the gau cho rong makes a {@action Strike} against it. The target creature is {@condition flat-footed||off-guard} to this attack."
+						]
+					},
+					{
+						"name": "Devour",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The gau cho rong's last action was a successful jaws {@action Strike}",
+						"entries": [
+							"The target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}. The gau cho rong gains some knowledge from the creature's blood, learning how to understand and speak all languages that creature knows for 1 minute, which it does in a distorted version of the target's voice. During that time, the gau cho rong also gains a +2 circumstance bonus to {@skill Intimidation} checks to {@action Demoralize} that creature."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Great Flood",
+			"level": 20,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 285,
+			"traits": [
+				"unique",
+				"gargantuan",
+				"amphibious",
+				"beast"
+			],
+			"perception": {
+				"std": 39
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability scent}",
+					"range": 120
+				}
+			],
+			"languages": {
+				"languages": [
+					"draconic",
+					"petran",
+					"thalassic",
+					"tien"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 38
+				},
+				"deception": {
+					"std": 33
+				},
+				"diplomacy": {
+					"std": 33
+				},
+				"intimidation": {
+					"std": 38
+				},
+				"nature": {
+					"std": 31
+				},
+				"performance": {
+					"std": 29
+				},
+				"society": {
+					"std": 33
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 8,
+				"con": 9,
+				"int": 7,
+				"wis": 5,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 44
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 37
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 33
+					}
+				},
+				"hp": [
+					{
+						"hp": 472
+					}
+				],
+				"immunities": [
+					"disease",
+					"poison"
+				],
+				"weaknesses": [
+					{
+						"amount": 20,
+						"name": "mental"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 20,
+						"name": "fire"
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"swim": 80
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 40,
+					"traits": [
+						"reach <15 feet>"
+					],
+					"damage": "{@damage 4d8+20} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 40,
+					"traits": [
+						"agile",
+						"reach <15 feet>"
+					],
+					"damage": "{@damage 4d6+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "breath",
+					"attack": 39,
+					"traits": [
+						"range <180 feet>"
+					],
+					"effects": [
+						"flood breath"
+					],
+					"damage": "{@damage 4d12} poison plus flood breath",
+					"types": [
+						"poison"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Leading Head",
+						"entries": [
+							"During each of the Great Flood's appearances, one head takes the lead once combat begins, chosen by the GM when initiative is rolled. Whichever head is in the lead grants a different action the Great Flood can use during its first turn each round (see Coordinated Actions).",
+							{
+								"type": "pf2-options",
+								"style": "pf2-p",
+								"skipSort": true,
+								"noColon": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "{@indentFirst Aloof\u2014The Flood's Command {@as 1}}",
+										"traits": [
+											"divine"
+										],
+										"entries": [
+											"The aloof head casts a 5th-rank {@spell command|PC1} (Will DC {@dc 42})."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Ambitious\u2014Claim Position {@as 1}",
+										"traits": [
+											"divine"
+										],
+										"entries": [
+											"The ambitious head declares a divine position above its station. It gains 100 temporary Hit Points for 1 minute. It also gains a weakness 20 to spirit damage and can't Claim Position again for 1 minute."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Assertive\u2014Rush In {@as 1}",
+										"entries": [
+											"The Great Flood {@action swim||Swims}, then makes a melee {@action Strike}."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Capricious\u2014Changing Thoughts {@as 1}",
+										"traits": [
+											"concentrate"
+										],
+										"entries": [
+											"The capricious head {@quickref counteracts|CRB|3|counteracting|0} each {@trait mental} effect on themself as a 10th-rank effect with a +32 counteract modifier."
+										]
+									},
+									{
+										"type": "item",
+										"name": "People Pleaser\u2014Build Consensus {@as 1}",
+										"traits": [
+											"concentrate"
+										],
+										"entries": [
+											"The heads discuss and audibly agree on a creature to target. Until they Build Consensus again, their Strikes deal an additional 20 precision damage to that creature."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Perfectionist\u2014Find Fault {@as 1}",
+										"traits": [
+											"auditory",
+											"concentrate",
+											"emotion",
+											"linguistic",
+											"mental"
+										],
+										"entries": [
+											"The perfectionist head criticizes a creature within their aura. The creature must succeed at a {@dc 42} Will save or take {@damage 9d6} {@condition persistent damage||persistent mental damage}."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Playful\u2014Bad Jokes {@as 1}",
+										"entries": [
+											"The playful head makes an ill-timed quip about the impermanence of life. They attempt to {@action Demoralize} each creature within their aura."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Secretive\u2014Secret Movement {@as 1}",
+										"traits": [
+											"concentrate",
+											"divine",
+											"teleportation"
+										],
+										"entries": [
+											"The Great Flood is {@condition invisible} until the end of their turn and teleports to an open space within their aura."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Suspicious\u2014Eighteen Eyes {@as 1}",
+										"traits": [
+											"concentrate"
+										],
+										"entries": [
+											"The Great Flood peers at their surroundings. Until they move, they see through {@trait illusion||illusions} in their aura and the {@trait reach} of their jaws is increased to 25 feet."
+										]
+									}
+								]
+							}
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Bitter Breath",
+						"traits": [
+							"aura",
+							"disease",
+							"poison"
+						],
+						"entries": [
+							"90 feet. If a creature ends its turn in the aura, it's exposed to the Great Flood's flood breath disease."
+						]
+					},
+					{
+						"name": "Coordinated Actions",
+						"entries": [
+							"The Great Flood's multiple heads allow them to act on two separate initiatives, rolling initiative twice and acting on both results. They can't {@action Delay}. At the start of each of their turns, they gain 2 actions (see Multiple Reactions below for reactions). Any ability that would sever one of the Great Flood's heads doesn't cause the Great Flood to die if they still have at least one head, but it does cause them to lose the additional reaction granted by the severed head."
+						]
+					},
+					{
+						"name": "Multiple Reactions",
+						"entries": [
+							"The Great Flood gains an extra reaction per round for each of its nine heads, which they can use only to make {@action attack of opportunity||Reactive Strikes} with their jaws. They can't use more than 1 reaction on the same triggering action, even if a creature leaves several squares within the Great Flood's reach, and they gain reactions on only their first turn each round."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability",
+							"name": "Attack of Opportunity",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "attack%20of%20opportunity_b1"
+						}
+					}
+				],
+				"bot": [
+					{
+						"type": "affliction",
+						"name": "Flood Breath",
+						"traits": [
+							"disease",
+							"poison"
+						],
+						"DC": 42,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained 2} and {@condition doomed 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "You die and your body collapses, releasing a cloud of toxin. Any creature within 10 feet of your death is exposed to flood breath",
+								"duration": "1 day"
+							}
+						]
+					},
+					{
+						"name": "Great Wave",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"water"
+						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"entries": [
+							"The Great Flood gathers all nearby water and floods a mile burst. Any creature in the area must succeed at a {@dc 42} Reflex save or be moved up to 60 feet in a direction of the Great Flood's choice. The area remains flooded with 30-foot-deep water for 1 hour or until the Great Flood dies, then drains naturally."
+						]
+					},
+					{
+						"name": "Nine-Jawed Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "It's the Great Flood's second turn in the round (see Coordinated Actions)",
+						"entries": [
+							"The Great Flood {@action stride||Strides} or {@action swim||Swims} twice, moving through smaller creatures' spaces freely. Each creature they move through or are adjacent to takes {@damage 4d8+20} piercing damage ({@dc 42} basic Reflex save). Creatures that fail the save are also exposed to flood breath."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Hopping Head",
+			"level": 1,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 286,
+			"traits": [
+				"tiny",
+				"clockwork",
+				"construct"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"languages": {
+				"languages": [
+					"sakvroth",
+					"tien"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 6
+				},
+				"intimidation": {
+					"std": 6
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 0,
+				"int": -1,
+				"wis": 2,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 14
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 5
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 25
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious",
+					"vitality",
+					"void"
+				],
+				"weaknesses": [
+					{
+						"amount": 2,
+						"name": "electricity"
+					},
+					{
+						"amount": 2,
+						"name": "orichalcum"
+					}
+				]
+			},
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spring",
+					"attack": 8,
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6+1} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "bite",
+					"attack": 6,
+					"damage": "{@damage 1d8+1} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Hopping Strike",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The hopping head {@action leap||Leaps} 15 feet and makes one spring {@action Strike} at any point during that movement, dealing an additional {@damage 1d6} bludgeoning damage."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Caterpillar Carriage",
+			"level": 18,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 286,
+			"traits": [
+				"unique",
+				"gargantuan",
+				"clockwork",
+				"construct"
+			],
+			"perception": {
+				"std": 30
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 100
+				}
+			],
+			"languages": {
+				"languages": [
+					"sakvroth",
+					"tien"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 35
+				},
+				"diplomacy": {
+					"std": 30
+				},
+				"intimidation": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 3,
+				"con": 7,
+				"int": 2,
+				"wis": 4,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 30
+					}
+				},
+				"hp": [
+					{
+						"hp": 380
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious",
+					"vitality",
+					"void"
+				],
+				"weaknesses": [
+					{
+						"amount": 15,
+						"name": "electricity"
+					},
+					{
+						"amount": 15,
+						"name": "orichalcum"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "physical",
+						"note": "except adamantine and orichalcum"
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"burrow": 40,
+				"swim": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 35,
+					"traits": [
+						"reach <15 feet>"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 4d10+17} piercing plus {@ability Improved Grab}",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "wheel",
+					"attack": 35,
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 4d8+17} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Like Clockwork",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "The caterpillar carriage gains the {@condition slowed} or {@condition stunned} condition",
+						"entries": [
+							"The carriage is {@condition quickened} for 1 round."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"generic": {
+							"tag": "ability",
+							"name": "Constrict",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "constrict_b1"
+						},
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 4d10+4} bludgeoning, {@dc 40}"
+						]
+					},
+					{
+						"name": "Rescue",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The caterpillar carriage absorbs a willing {@trait construct} within its reach. That construct doesn't exist separately until the caterpillar carriage releases it as an {@action Interact} action or is destroyed."
+						]
+					},
+					{
+						"name": "Rock Tunneler",
+						"entries": [
+							"The caterpillar carriage can burrow through solid stone at a Speed of 20 feet. It can leave a tunnel if it desires, and it usually does."
+						]
+					},
+					{
+						"name": "Trample",
+						"generic": {
+							"tag": "ability",
+							"name": "Trample",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "trample_b1"
+						},
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Huge or smaller, wheel, {@dc 40}"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Imugi",
+			"level": 7,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 287,
+			"traits": [
+				"uncommon",
+				"large",
+				"amphibious",
+				"dragon",
+				"water"
+			],
+			"perception": {
+				"std": 13
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability scent}",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"draconic",
+					"tien"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 15
+				},
+				"athletics": {
+					"std": 17
+				},
+				"intimidation": {
+					"std": 15
+				},
+				"stealth": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 4,
+				"con": 4,
+				"int": 2,
+				"wis": 1,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 19
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 135
+					}
+				],
+				"immunities": [
+					"paralyzed",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "poison"
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"swim": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 17,
+					"traits": [
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 2d10+8} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claws",
+					"attack": 17,
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 2d6+8} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 17,
+					"traits": [
+						"reach <15 feet>"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d4+8} bludgeoning plus {@ability Grab}",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 25,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "detect magic",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "fly",
+									"source": "PC1"
+								},
+								{
+									"name": "water breathing",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Nesting",
+						"entries": [
+							"By coiling around a butterfly koi egg for 1 minute, the imugi designates it as their chosen heir, which grants the imugi the effects of a constant {@spell status|PC1} spell on that egg. If the egg is destroyed or otherwise made nonviable, the imugi can choose a new koi egg with this ability after 1 week."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Parental Wrath",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature damages the imugi's chosen koi egg or ends its turn within 40 feet of the egg",
+						"entries": [
+							"The imugi {@action stride||Strides} or {@action swim||Swims} toward the triggering creature. If they end their movement within reach of the creature, they can attempt a melee {@action Strike} against it."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"generic": {
+							"tag": "ability",
+							"name": "Constrict",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "constrict_b1"
+						},
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 2d8+4} bludgeoning, {@dc 25}"
+						]
+					},
+					{
+						"name": "Floodwaters",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"primal",
+							"water"
+						],
+						"entries": [
+							"Waters rush forth in a 60-foot line, dealing {@damage 4d6} bludgeoning damage ({@dc 25} basic Reflex save). Creatures that fail the save and aren't {@condition grabbed} by the imugi are pushed 10 feet away."
+						]
+					},
+					{
+						"name": "Storm Veil",
+						"entries": [
+							"The imugi twists any nearby precipitation into a swirling veil of sleet and wind. They gain {@condition concealed||concealment} when in any form of mist or rain."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Jiidon",
+			"level": 3,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 288,
+			"traits": [
+				"uncommon",
+				"tiny",
+				"beast"
+			],
+			"perception": {
+				"std": 10
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"languages": {
+				"languages": [
+					"fey",
+					"tien"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 11
+				},
+				"deception": {
+					"std": 9
+				},
+				"stealth": {
+					"std": 11
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 3,
+				"int": 1,
+				"wis": 2,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 40
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 11,
+					"traits": [
+						"finesse"
+					],
+					"effects": [
+						"sneak attack"
+					],
+					"damage": "{@damage 2d6+4} piercing plus {@ability sneak attack}",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Scurrying Retreat",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The jiidon takes damage from a {@action Strike}",
+						"requirements": "They're currently transformed into in a {@trait humanoid} form",
+						"entries": [
+							"The jiidon reverts to their rat form and {@action climb||Climbs} or {@action stride||Strides}. They can't resume humanoid form for 1 minute."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Consumed Fragments",
+						"traits": [
+							"concentrate",
+							"polymorph",
+							"primal"
+						],
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The jiidon takes on the form of any {@trait Medium} or {@trait Small} {@trait humanoid} creature whose fingernails or similar fragments they've consumed within the last week, gaining the effects of a 3rd-rank {@spell illusory disguise|PC1} spell to {@action impersonate} the creature for 8 hours; this is a {@trait polymorph} effect rather than an {@trait illusion} effect. Once a jiidon has transformed into a creature in this way, they must eat that creature's fingernails again to transform into it again. If a jiidon consumes the nails of a specific humanoid three nights in a row, they can take the form of that humanoid at will but can't use this ability to imitate any other humanoid thereafter."
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"generic": {
+							"tag": "ability",
+							"name": "Sneak Attack",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "sneak%20attack_b1"
+						},
+						"entries": [
+							"The jiidon deals an additional {@damage 1d6} precision damage to {@condition flat-footed||off-guard} creatures."
+						]
+					},
+					{
+						"name": "Tactical Gnaw",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The jiidon uses their nearly indestructible teeth to chew through even the toughest armor, leaving an opponent vulnerable. The jiidon makes a jaws {@action Strike}. On a successful attack, if the target is wearing armor with Hardness 10 or lower, the armor becomes {@condition broken}. This Strike doesn't further damage armor that's already broken."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Kun",
+			"level": 14,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 289,
+			"traits": [
+				"uncommon",
+				"gargantuan",
+				"aquatic",
+				"beast",
+				"cold",
+				"unholy"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"name": "{@ability light blindness}"
+				},
+				{
+					"name": "{@ability wavesense}",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"thalassic (can't speak any language)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 25
+				},
+				"athletics": {
+					"std": 29
+				},
+				"intimidation": {
+					"std": 22
+				},
+				"survival": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 4,
+				"con": 7,
+				"int": 1,
+				"wis": 5,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 36
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 230
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "holy"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "cold"
+					}
+				]
+			},
+			"speed": {
+				"swim": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 28,
+					"traits": [
+						"reach <15 feet>"
+					],
+					"effects": [
+						"Grab",
+						"heart of darkness"
+					],
+					"damage": "{@damage 3d12+14} piercing plus {@ability Grab} and heart of darkness",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 28,
+					"traits": [
+						"reach <20 feet>",
+						"sweep"
+					],
+					"damage": "{@damage 3d12+14} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 32,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "control water",
+									"source": "PC1",
+									"amount": "at will"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "darkness",
+									"source": "PC1",
+									"amount": "at will"
+								},
+								{
+									"name": "wall of ice",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Spite",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within reach of the kun's tail uses an action to heal or help anyone else",
+						"entries": [
+							"The kun bats the triggering creature away with their tail, making a tail {@action Strike} against the creature. On a hit, the action is disrupted and the creature is pushed 10 feet."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Funnel",
+						"traits": [
+							"cold",
+							"primal",
+							"water"
+						],
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The kun inhales violently, sucking in heat and all creatures in the water in a 60-foot cone. Creatures take {@damage 10d8} cold damage and must attempt a {@dc 33} Fortitude save. The kun can't Funnel again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes half damage.",
+									"Failure": "The creature takes full damage and is pulled 30 feet toward the kun.",
+									"Critical Failure": "The creature takes double damage and is pulled 60 feet toward the kun."
+								}
+							}
+						]
+					},
+					{
+						"name": "Heart of Darkness",
+						"entries": [
+							"Whenever the kun makes a jaws {@action Strike} from within an area of darkness, their jaws deals an additional {@damage 2d6} spirit damage and gains the {@trait unholy|PC1} trait."
+						]
+					},
+					{
+						"name": "Swallow Whole",
+						"generic": {
+							"tag": "ability",
+							"name": "Swallow Whole",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "swallow%20whole_b1"
+						},
+						"traits": [
+							"attack"
+						],
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Huge, {@damage 3d12+7} bludgeoning, Rupture 30"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Manananggal",
+			"alias": [
+				"Tik-tik"
+			],
+			"level": 8,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 290,
+			"traits": [
+				"medium",
+				"aberration",
+				"tanggal|B3"
+			],
+			"perception": {
+				"std": 16
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 18
+				},
+				"deception": {
+					"std": 16
+				},
+				"religion": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 5,
+				"con": 2,
+				"int": 1,
+				"wis": 3,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 17
+					},
+					"will": {
+						"std": 19
+					}
+				},
+				"hp": [
+					{
+						"hp": 180
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 8,
+						"name": "slashing"
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"speedNote": "(or fly 80 feet when body is separated)"
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claws",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+9} slashing plus {@ability Grab}",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 18,
+					"traits": [
+						"magical"
+					],
+					"damage": "{@damage 2d10+9} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "occult",
+					"DC": 26,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "light",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "enfeeble",
+									"source": "PC1",
+									"amount": 3
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkness",
+									"source": "PC1",
+									"amount": 3
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "fear",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "sleep",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Blood Drain",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The manananggal has a creature {@condition grabbed}",
+						"entries": [
+							"The manananggal drives their tongue into the {@condition grabbed} creature to drink its blood. This deals {@damage 4d6} damage, and the manananggal gains temporary Hit Points equal to the damage dealt. A creature whose blood is drained by a manananggal is {@condition drained 1} until it receives healing (of any kind or amount)."
+						]
+					},
+					{
+						"name": "Separated Body",
+						"entries": [
+							"A manananggal typically resembles a living {@trait humanoid}. They don't appear as an {@trait aberration} at first glance and receive a +4 status bonus to their {@skill Deception} DC when {@action impersonate||Impersonating} a humanoid. At any time, but especially at night, a manananggal can, as a 3-action activity with the {@trait manipulate} trait, rip their upper torso from their bottom half, leaving the lower torso limp and helpless but allowing the upper torso to fly free. A manananggal can separate their body at any time, but they risk further damage if they do so during the day.",
+							"The manananggal's upper and lower halves share the same pool of HP. If its lower half is damaged, the manananggal is immediately aware of the attack. Each minute a manananggal remains separated after sunrise and before sunset, it takes {@damage 2d6} points of damage until it reattaches its upper and lower torsos or is destroyed, whichever comes first."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Nue",
+			"level": 11,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 291,
+			"traits": [
+				"large",
+				"beast"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"languages": {
+				"languages": [
+					"tien"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 20
+				},
+				"athletics": {
+					"std": 22
+				},
+				"deception": {
+					"std": 18
+				},
+				"intimidation": {
+					"std": 18
+				},
+				"occultism": {
+					"std": 18
+				},
+				"survival": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 6,
+				"con": 4,
+				"int": 1,
+				"wis": 3,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 200
+					}
+				],
+				"immunities": [
+					"fear"
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "non-magical"
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 24,
+					"traits": [
+						"finesse",
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 3d10+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 24,
+					"traits": [
+						"agile",
+						"disarm",
+						"finesse",
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 3d8+7} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 24,
+					"traits": [
+						"agile",
+						"finesse",
+						"reach <15 feet>"
+					],
+					"damage": "{@damage 3d4+7} piercing plus {@damage 2d4} poison",
+					"types": [
+						"piercing",
+						"poison"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Viper Tail",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 15 feet of the nue leaves a square during a {@trait move} action it's using or moves into a square that would cause the nue to become {@quickref flanked|CRB|3|flanking|0}",
+						"entries": [
+							"The nue whips around and attempts a tail {@action Strike} against the triggering creature. This Strike doesn't count toward the nue's multiple attack penalty, and its multiple attack penalty doesn't apply to this Strike."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Cloud Form",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"polymorph"
+						],
+						"entries": [
+							"The nue changes its shape into that of a dark storm cloud. In Cloud Form, the nue is {@condition concealed}, gains a 60-foot fly Speed, gains a +4 status bonus to its {@skill Deception} DC to prevent others from seeing through its disguise, and can't make attacks, though it can use its howl abilities. The nue can {@action Dismiss} this effect."
+						]
+					},
+					{
+						"name": "Monstrous Howl",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"mental",
+							"void"
+						],
+						"entries": [
+							"The nue lets out an eerie howl that rattles creatures' very souls. Creatures within 60 feet must attempt a {@dc 27} Will save ({@dc 29} at night). They're then temporarily immune to Monstrous Howl for 10 minutes.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 2d8} {@condition persistent damage||persistent void damage}.",
+									"Failure": "As success, plus the target is {@condition drained 1}.",
+									"Critical Failure": "As success, plus the target is {@condition drained 2} and {@condition stunned 1}."
+								}
+							}
+						]
+					},
+					{
+						"name": "Thundering Howl",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"electricity"
+						],
+						"entries": [
+							"The nue howls to the sky, calling down a bolt of lightning that strikes the creature closest to the nue, to a maximum range of 60 feet. The bolt deals {@damage 12d6} electricity damage ({@dc 27} basic Reflex save). The nue then can't use Thundering Howl for {@dice 1d4} rounds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Giant Orchid Mantis",
+			"level": 2,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 292,
+			"traits": [
+				"medium",
+				"animal"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "{@ability low-light vision}"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 8
+				},
+				"athletics": {
+					"std": 7
+				},
+				"stealth": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 3,
+				"int": -5,
+				"wis": 2,
+				"cha": -4
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 30
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 20,
+				"fly": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "mandibles",
+					"attack": 11,
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d10+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "leg",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d8+3} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Floral Camouflage",
+						"entries": [
+							"When {@action hide||Hiding}, the giant orchid mantis is {@condition concealed} by any amount of leaves or petals, even if they aren't thick enough to make other creatures concealed."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Barbed Limbs",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The giant orchid mantis makes two leg {@action strike||Strikes}. If it hits the same creature with both attacks, that creature is {@condition grabbed} until the end of the mantis's next turn."
+						]
+					},
+					{
+						"name": "Sudden Strike",
+						"entries": [
+							"In the first round of combat, creatures that haven't acted are {@condition flat-footed||off-guard} to the orchid mantis."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Orchid Mantis Swarm",
+			"level": 6,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 292,
+			"traits": [
+				"large",
+				"animal",
+				"swarm"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "{@ability low-light vision}"
+				}
+			],
+			"skills": {
+				"stealth": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": -2,
+				"dex": 4,
+				"con": 1,
+				"int": -5,
+				"wis": 2,
+				"cha": -4
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 100
+					}
+				],
+				"immunities": [
+					"precision",
+					"{@ability swarm mind}"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "area damage"
+					},
+					{
+						"amount": 5,
+						"name": "splash damage"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 2,
+						"name": "bludgeoning"
+					},
+					{
+						"amount": 5,
+						"name": "piercing"
+					},
+					{
+						"amount": 5,
+						"name": "slashing"
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 20,
+				"fly": 20
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Floral Camouflage",
+						"entries": [
+							"When {@action hide||Hiding}, the orchid mantis swarm is {@condition concealed} by any amount of leaves or petals, even if they aren't thick enough to make other creatures concealed."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Biting Blossoms",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the swarm's space takes {@damage 3d6} piercing damage ({@dc 24} basic Reflex save). Creatures that fail this save also take {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
+						]
+					},
+					{
+						"name": "Drifting Petals",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"The swarm {@action fly||Flies}. Each creature whose space it moves through must attempt a {@dc 24} Will save or be transfixed by their blossom-like bodies.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "No effect.",
+									"Success": " The creature is {@condition dazzled} for 1 round.",
+									"Failure": "The creature is {@condition dazzled} and {@condition stupefied 1} for 1 round.",
+									"Critical Failure": "The creature is {@condition blinded} and {@condition stupefied 2} for 1 round."
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Five-Color Orchid Mantis",
+			"level": 9,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 293,
+			"traits": [
+				"uncommon",
+				"medium",
+				"beast"
+			],
+			"perception": {
+				"std": 18
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 19
+				},
+				"athletics": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 21
+				},
+				"survival": {
+					"std": 18
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 6,
+				"con": 4,
+				"int": -3,
+				"wis": 3,
+				"cha": -4
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 21
+					},
+					"will": {
+						"std": 16
+					}
+				},
+				"hp": [
+					{
+						"hp": 137
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 20,
+				"fly": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "mandibles",
+					"attack": 21,
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 3d10+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "leg",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 3d8+7} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Floral Camouflage",
+						"entries": [
+							"When {@action hide||Hiding}, the five-color orchid mantis is {@condition concealed} by any amount of leaves or petals, even if they aren't thick enough to make other creatures concealed."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Elemental Expulsion",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"requirements": "The mantis has an elemental trait from Color Shift",
+						"trigger": "It's damaged by a weapon {@action Strike}",
+						"entries": [
+							"Elemental energy pushes back against the blow, giving the attacker a \u20132 status penalty to attack rolls until the beginning of its next turn. If the weapon contains material that matches the mantis's trait (such as {@trait earth} for a thrown rock or {@trait fire} for a lit torch), the mantis gains resistance 10 to all damage from this {@action Strike}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Color Shift",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "round",
+							"number": 1
+						},
+						"entries": [
+							"The mantis attunes itself to one of five elements, changing color accordingly (yellow for {@trait earth}, red for {@trait fire}, white for {@trait metal}, black for {@trait water}, or green for {@trait wood}). It gains that trait and a +2 status bonus to saving throws against effects with that trait until the beginning of its next turn. If the mantis uses Color Shift on its next turn, it must choose a different color."
+						]
+					},
+					{
+						"name": "Barbed Limbs",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The mantis makes two leg attacks. If both attacks hit, the mantis gains 10 temporary Hit Points, and the target must succeed at a {@dc 27} Fortitude saving throw or become {@condition drained 1} (drained 2 on a critical failure). The drained condition ends when the mantis is reduced to 0 Hit Points."
+						]
+					},
+					{
+						"name": "Sudden Strike",
+						"entries": [
+							"In the first round of combat, creatures that haven't acted are {@condition flat-footed||off-guard} to the mantis."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Peng",
+			"level": 12,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 294,
+			"traits": [
+				"rare",
+				"gargantuan",
+				"air",
+				"beast",
+				"cold",
+				"holy|PC1"
+			],
+			"perception": {
+				"std": 25
+			},
+			"languages": {
+				"languages": [
+					"sussuran"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 23
+				},
+				"athletics": {
+					"std": 22
+				},
+				"nature": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 6,
+				"con": 5,
+				"int": 3,
+				"wis": 5,
+				"cha": 7
+			},
+			"defenses": {
+				"ac": {
+					"std": 32
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 23
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 200
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "unholy"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "cold"
+					}
+				]
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 70,
+				"abilities": [
+					"windslice"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "beak",
+					"attack": 24,
+					"traits": [
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 3d8+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"attack": 24,
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 3d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "primal",
+					"DC": 32,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "gust of wind",
+									"source": "PC1",
+									"amount": "at will"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "wall of wind",
+									"source": "PC1",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "howling blizzard",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Heaven's View",
+						"entries": [
+							"Clouds don't impair a peng's vision."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Calm Weather Aura",
+						"traits": [
+							"air",
+							"aura",
+							"primal"
+						],
+						"entries": [
+							"1 mile. The ambient weather around a peng is always lightly cloudy with a pleasant breeze, and the temperature is pleasantly warm for the season. Another creature that attempts to alter the weather within this aura (such as with a {@ritual control weather|PC1} ritual or localized effect like {@spell gust of wind|PC1}) must succeed at a {@dc 32} Will save; otherwise, the effect is disrupted. The peng can activate or deactivate this aura as a single action with the {@trait concentrate} trait."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Cloud Cover",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"air",
+							"primal"
+						],
+						"entries": [
+							"The peng exhales a thick cloud and envelops themself in the mist. The peng is {@condition concealed} until the end of their next turn."
+						]
+					},
+					{
+						"name": "Flap Wings",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"air",
+							"cold",
+							"primal"
+						],
+						"entries": [
+							"The peng beats their wings to create a mighty burst of frosty air and push away foes. Each creature within 10 feet of the peng takes {@damage 4d6} bludgeoning and {@damage 4d6} cold damage ({@dc 32} basic Reflex save). Creatures that fail their save are pushed away 10 feet; creatures that critically fail are pushed away 20 feet and knocked {@condition prone}."
+						]
+					},
+					{
+						"name": "Windslice",
+						"entries": [
+							"Pengs can move in any wind with easy grace. A peng ignores {@quickref difficult terrain||3|terrain|0} caused by wind and doesn't need to {@action Maneuver in Flight} in high winds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Pixiu",
+			"level": 8,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 295,
+			"traits": [
+				"uncommon",
+				"large",
+				"dragon"
+			],
+			"perception": {
+				"std": 18
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"type": "precise",
+					"name": "goldsense",
+					"range": 120
+				}
+			],
+			"languages": {
+				"languages": [
+					"draconic"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 14
+				},
+				"athletics": {
+					"std": 18
+				},
+				"religion": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 2,
+				"con": 6,
+				"int": -2,
+				"wis": 4,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 16
+					}
+				},
+				"hp": [
+					{
+						"hp": 165
+					}
+				],
+				"resistances": [
+					{
+						"amount": 10,
+						"name": "void"
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 20,
+					"traits": [
+						"magical"
+					],
+					"effects": [
+						"Devour Wealth"
+					],
+					"damage": "{@damage 2d10+5} piercing plus {@damage 1d4} holy and Devour Wealth",
+					"types": [
+						"piercing",
+						"spirit"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"damage": "{@damage 2d6+5} slashing plus {@damage 1d4} spirit",
+					"types": [
+						"slashing",
+						"spirit"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "divine",
+					"DC": 26,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "cleanse affliction",
+									"source": "PC1",
+									"amount": 3
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Goldsense",
+						"entries": [
+							"The pixiu can detect the presence, location, and approximate value of gold within 120 feet."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Good Fortune",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"fortune"
+						],
+						"trigger": "The pixiu, or an ally within 30 feet, is about to attempt a saving throw but hasn't rolled yet",
+						"frequency": {
+							"unit": "hour",
+							"number": 1
+						},
+						"entries": [
+							"That creature rolls the triggering saving throw twice and takes the better result."
+						]
+					},
+					{
+						"name": "Stored Wealth",
+						"entries": [
+							"Pixius can eat gold and gems with no adverse effects. A pixiu's belly can hold any number of gold pieces, usually around 100. Whenever it takes slashing or piercing damage, a number of gold pieces equal to the damage falls from its belly to the ground in its square."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Devour Wealth",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The pixiu's previous action was a successful jaws {@action Strike}",
+						"entries": [
+							"The pixiu swallows up to {@dice 2d12} gold pieces on the target's person and gains temporary Hit Points equal to the amount devoured. These temporary Hit Points last for 1 minute."
+						]
+					},
+					{
+						"name": "Trample",
+						"generic": {
+							"tag": "ability",
+							"name": "Trample",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "trample_b1"
+						},
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Medium or smaller, claw, {@dc 26}"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Joseung Saja",
+			"alias": [
+				"Reaper"
+			],
+			"level": 14,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 296,
+			"traits": [
+				"medium",
+				"monitor",
+				"psychopomp"
+			],
+			"perception": {
+				"std": 28
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"name": "{@ability lifesense}",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"chthonian",
+					"diabolic",
+					"empyrean",
+					"requian"
+				],
+				"abilities": [
+					"{@spell truespeech|PC1}"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 25
+				},
+				"boneyard lore": {
+					"std": 26
+				},
+				"diplomacy": {
+					"std": 28
+				},
+				"religion": {
+					"std": 28
+				},
+				"society": {
+					"std": 24
+				},
+				"stealth": {
+					"std": 24
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 4,
+				"con": 5,
+				"int": 4,
+				"wis": 8,
+				"cha": 8
+			},
+			"items": [
+				"{@runeItem longsword||+2 weapon potency||striking|}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 35
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 28
+					}
+				},
+				"hp": [
+					{
+						"hp": 250
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease"
+				],
+				"resistances": [
+					{
+						"amount": 15,
+						"name": "poison"
+					},
+					{
+						"amount": 15,
+						"name": "void"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "longsword",
+					"attack": 29,
+					"traits": [
+						"versatile <P>"
+					],
+					"effects": [
+						"reap souls",
+						"spirit touch"
+					],
+					"damage": "{@damage 2d8+8} slashing plus reap souls and spirit touch",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "divine",
+					"DC": 34,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "invisibility",
+									"source": "PC1",
+									"amount": "at will",
+									"notes": [
+										"self only"
+									]
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "talking corpse",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "translocate",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "truespeech",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Reap Memory",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"The joseung saja looks into the eyes of a creature within 30 feet and removes inconvenient or painful memories that are preventing it from moving on to death. The target is aware that the joseung saja attempted to alter its memory and can attempt a Will save to resist. Willing targets receive the effects of a critical failure.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target takes {@damage 2d10} mental damage and is {@condition stupefied 2} for 1 round.",
+									"Failure": "The target takes {@damage 4d10} mental damage and is {@condition stupefied 2} for 1 round.",
+									"Critical Failure": "The target loses all painful emotions and memories, leaving an indistinct haze. If the target is an {@creature ijhyeojin|LOTXWG}, then all of their memories are reaped and they become a joseung saja."
+								}
+							}
+						]
+					},
+					{
+						"name": "Reap Souls",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"death"
+						],
+						"trigger": "The joseung saja brings a target to 0 Hit Points or successfully {@action strike||Strikes} a target with the {@condition dying} condition",
+						"entries": [
+							"The target must succeed at a {@dc 34} Will save or immediately die. A reaped creature can't be return to life or become {@trait undead} except by a 9th-rank or higher ritual."
+						]
+					},
+					{
+						"name": "Shifting Form",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"The joseung saja is {@trait incorporeal} until the end of their next turn. While they're incorporeal, they have resistance 10 to all damage (except force, void, and {@item ghost touch} weapons)."
+						]
+					},
+					{
+						"name": "Spirit Touch",
+						"entries": [
+							"A joseung saja's {@action strike||Strikes} all have the effects of a {@item ghost touch} property rune and deal an extra {@damage 3d6} void damage to living creatures and {@damage 3d6} vitality damage to {@trait undead}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ijhyeojin",
+			"level": 14,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 296,
+			"traits": [
+				"medium",
+				"fiend",
+				"sahkil",
+				"unholy|PC1"
+			],
+			"perception": {
+				"std": 28
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				},
+				{
+					"name": "{@ability lifesense}",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"chthonian",
+					"diabolic",
+					"empyrean",
+					"requian"
+				],
+				"abilities": [
+					"{@ability telepathy} 100 feet",
+					"{@spell truespeech|PC1}"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 25
+				},
+				"boneyard lore": {
+					"std": 28
+				},
+				"deception": {
+					"std": 28
+				},
+				"intimidation": {
+					"std": 28
+				},
+				"religion": {
+					"std": 28
+				},
+				"stealth": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 5,
+				"con": 4,
+				"int": 4,
+				"wis": 8,
+				"cha": 8
+			},
+			"defenses": {
+				"ac": {
+					"std": 35
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 28
+					}
+				},
+				"hp": [
+					{
+						"hp": 310
+					}
+				],
+				"immunities": [
+					"fear"
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "holy"
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 28,
+					"traits": [
+						"agile"
+					],
+					"effects": [
+						"swipe countenance"
+					],
+					"damage": "{@damage 3d8+14} slashing plus swipe countenance",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "divine",
+					"DC": 34,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "invisibility",
+									"source": "PC1",
+									"amount": "at will",
+									"notes": [
+										"self only"
+									]
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "rewrite memory",
+									"source": "PC1",
+									"amount": "at will"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "truespeech",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Easy to Call",
+						"entries": [
+							"An ijhyeojin's level is considered 2 lower for the purpose of being conjured by the {@ritual binding circle|PC1} ritual (and potentially other rituals, at the GM's discretion), but they're always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Forgotten Presence",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The ijhyeojin critically succeeds at a saving throw against a spell",
+						"entries": [
+							"The ijhyeojin redirects the triggering spell to a new target other than its caster. If the ijhyeojin is wearing that target's face, the new target takes a \u20132 circumstance penalty to this saving throw."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Overwrite Memory",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"ijhyeojin alters the memories of a target within 30 feet, insinuating their faceless visage in the place of others. The target must attempt a {@dc 34} Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target is {@condition frightened 1} and treats no one as an ally for as long as it's frightened.",
+									"Failure": "The target is {@condition frightened 2} and is {@condition confused} for as long as it's frightened.",
+									"Critical Failure": "The target is {@condition frightened 4} and {@condition confused} for as long as it's frightened. If the target is a {@creature joseung saja|LOTXWG}, they instead realize the fear of being forgotten and become an ijhyeojin."
+								}
+							}
+						]
+					},
+					{
+						"name": "Reap Souls",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"death"
+						],
+						"trigger": "The joseung saja brings a target to 0 Hit Points or successfully {@action strike||Strikes} a target with the {@condition dying} condition",
+						"entries": [
+							"The target must succeed at a {@dc 34} Will save or immediately die. A reaped creature can't be return to life or become {@trait undead} except by a 9th-rank or higher ritual."
+						]
+					},
+					{
+						"name": "Swipe Countenance",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"mental",
+							"visual"
+						],
+						"requirements": "The ijhyeojin's previous action was a successful claw {@action Strike} against the target",
+						"entries": [
+							"The ijhyeojin copies the countenance of the target, imprinting it perfectly onto their own blank face. While only their face changes, creatures must {@action Seek} them and succeed at a {@dc 34} Will save to distinguish them visually from the original creature. The sahkil keeps the same visage for 24 hours or until they steal another."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Shui Gui",
+			"level": 5,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 298,
+			"traits": [
+				"uncommon",
+				"medium",
+				"aquatic",
+				"ghost",
+				"incorporeal",
+				"spirit",
+				"undead",
+				"water"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "{@ability darkvision}"
+				}
+			],
+			"languages": {
+				"languages": [
+					"tien"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"deception": {
+					"std": 13
+				},
+				"diplomacy": {
+					"std": 11
+				},
+				"ghost lore": {
+					"std": 15
+				},
+				"religion": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 5,
+				"con": 0,
+				"int": 4,
+				"wis": 3,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 135,
+						"abilities": [
+							"{@ability void healing|MC}",
+							"{@ability rejuvenation (ghost)}"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "fire"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "all damage",
+						"note": "except fire, force, {@item ghost touch}, or vitality; double resistance vs. non-magical"
+					}
+				]
+			},
+			"speed": {
+				"walk": 10,
+				"swim": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "ghostly hand",
+					"attack": 17,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+4} void plus {@ability Grab}",
+					"types": [
+						"void"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Water-Bound Curse",
+						"generic": {
+							"tag": "ability",
+							"name": "Site Bound",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "site%20bound_b1"
+						},
+						"entries": [
+							"The shui gui is bound to the body of water in which it died. It's unable to move further than 120 feet from the edge of the water."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Rejuvenation",
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost",
+							"name": "Rejuvenation",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "rejuvenation%20(ghost)_b1"
+						},
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"When the shui gui is destroyed, it reforms after {@dice 2d4} days within the body of water it's bound to, fully healing. It can be permanently destroyed if the body of the shui gui who originally died in the water can be found and laid to rest."
+						]
+					},
+					{
+						"name": "Ti Shōn",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"death",
+							"divine"
+						],
+						"trigger": "A creature grabbed by the shui gui dies of {@quickref suffocation|CRB|3|drowning and suffocating|0}",
+						"entries": [
+							"Ripping the spirit of its drowned victim out of the target's body, the shui gui enters the corpse to take the original owner's place. The shui gui then returns to life at the edge of its body of water as if it had been the target of a successful {@ritual resurrect|PC1} ritual, except it has the appearance of the target rather than its original body. After a week, the spirit of the drowned creature becomes a shui gui. The new spirit can't be raised from the dead by normal magical means until they've been destroyed as a shui gui."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Drag Under",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The shui gui {@action swim||Swims} at half Speed, along with any creature it has {@condition grabbed}."
+						]
+					},
+					{
+						"name": "Drown the Living",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The target must be {@quickref holding its breath|CRB|3|drowning and suffocating|0} and be {@condition grabbed} by the shui gui",
+						"entries": [
+							"The shui gui tightens its grip. The target must succeed at a {@dc 24} Fortitude save or immediately lose {@dice 1d4} actions worth of air (or twice that on a critical failure)."
+						]
+					},
+					{
+						"name": "Ghostly Grasp",
+						"entries": [
+							"A shui gui can {@action Grapple} corporeal creatures despite being {@trait incorporeal}. The shui gui uses its {@skill Athletics} check to Grapple as normal but can't use Athletics for other actions that require corporeal contact, like {@action Force Open} or {@action Trip}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Yeongno",
+			"level": 7,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 299,
+			"traits": [
+				"large",
+				"celestial"
+			],
+			"perception": {
+				"std": 17
+			},
+			"senses": [
+				{
+					"type": "precise",
+					"name": "goldsense",
+					"range": 120
+				}
+			],
+			"languages": {
+				"languages": [
+					"diabolic",
+					"draconic",
+					"empyrean",
+					"tien"
+				],
+				"abilities": [
+					"{@ability telepathy} 100 feet"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 17
+				},
+				"diplomacy": {
+					"std": 15
+				},
+				"religion": {
+					"std": 15
+				},
+				"society": {
+					"std": 15
+				},
+				"stealth": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 2,
+				"con": 4,
+				"int": 2,
+				"wis": 6,
+				"cha": 4
+			},
+			"items": [
+				"wooden pipe"
+			],
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 17
+					}
+				},
+				"hp": [
+					{
+						"hp": 120
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 17,
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 3d6+8} piercing plus {@ability Grab}",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "pipe",
+					"attack": 13,
+					"traits": [
+						"divine",
+						"sonic",
+						"range <60 feet>"
+					],
+					"damage": "{@damage 4d6} sonic",
+					"types": [
+						"sonic"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Goldsense",
+						"entries": [
+							"The yeongno can detect the presence, location, and approximate value of gold within 120 feet."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Fortune's Favor",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"curse",
+							"divine",
+							"incapacitation",
+							"polymorph"
+						],
+						"frequency": {
+							"unit": "day",
+							"number": 1
+						},
+						"entries": [
+							"A target creature within 30 feet must succeed at a {@dc 25} Will save or gain the effects of {@spell cursed metamorphosis|PC1}, being polymorphed into a pig whose girth is determined by the target's wealth. After 24 hours, the target can end this effect using a {@action Dismiss} action, at which point the yeongno becomes aware that the effect has ended. A yeongno can use Fortune's Favor only if no targets are currently under its effects."
+						]
+					},
+					{
+						"name": "Money is Pain",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"mental"
+						],
+						"requirements": "The target is carrying at least 100 gp worth of precious metals",
+						"entries": [
+							"The yeongno crushes a creature it can see with the weight of their wealth. Apparitions of gold coins approximating the wealth of the target materialize and pummel the target from all sides. The target attempts a {@dc 25} Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target is {@condition slowed 1} for 1 round.",
+									"Failure": "The target takes {@damage 3d6} {@condition persistent damage||persistent mental damage} and is {@condition slowed 1} as long as the damage continues. The effect immediately ends if they're carrying less than 100 gp worth of precious metals.",
+									"Critical Failure": "As failure, except any flat checks to remove the {@condition persistent damage} automatically fail."
+								}
+							}
+						]
+					},
+					{
+						"name": "Swallow Whole",
+						"generic": {
+							"tag": "ability",
+							"name": "Swallow Whole",
+							"source": "B1",
+							"page": "abilities.html",
+							"hash": "swallow%20whole_b1"
+						},
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Medium, {@damage 3d6+6} bludgeoning, Rupture 20"
+						]
+					}
+				]
+			}
+		}
+	]
+}

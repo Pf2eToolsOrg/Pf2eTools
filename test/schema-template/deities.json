@@ -131,6 +131,28 @@
 						},
 						"minItems": 1
 					},
+					"divineSanctification": {
+						"type": "object",
+						"properties": {
+							"sanctification": {
+								"type": "array",
+								"items": {
+									"enum": [
+										"holy",
+										"unholy"
+									]
+								},
+								"minItems": 1,
+								"maxItems": 2,
+								"uniqueItems": true
+							},
+							"entry": {
+								"type": "string",
+								"minLength": 1
+							}
+						},
+						"minProperties": 1
+					},
 					"divineAbility": {
 						"type": "object",
 						"properties": {
@@ -219,6 +241,10 @@
 					"avatar": {
 						"type": "object",
 						"properties": {
+							"name": {
+								"type": "string",
+								"minLength": 1
+							},
 							"preface": {
 								"type": "string",
 								"not": {
@@ -228,7 +254,12 @@
 								}
 							},
 							"speed": {
-								"$ref": "utils.json#/definitions/speed"
+								"type": "object",
+								"minProperties": 1
+							},
+							"speedNote": {
+								"type": "string",
+								"minLength": 1
 							},
 							"immune": {
 								"type": "array",
@@ -253,6 +284,9 @@
 								"enum": [
 									true
 								]
+							},
+							"waterBreathing": {
+								"const": true
 							},
 							"airWalk": {
 								"type": "boolean",

@@ -24,6 +24,11 @@ class PageFilterDeities extends PageFilter {
 			items: ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"],
 			itemSortFn: null,
 		});
+		this._divineSanctification = new Filter({
+			header: "Divine Sanctification",
+			items: [],
+			displayFn: StrUtil.uppercaseFirst,
+		});
 		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});
 		this._weaponFilter = new Filter({header: "Favored Weapon", displayFn: StrUtil.toTitleCase});
 		this._domainFilter = new Filter({header: "Domain", displayFn: StrUtil.toTitleCase});
@@ -44,7 +49,7 @@ class PageFilterDeities extends PageFilter {
 		});
 		this._benefitsFilter = new MultiFilter({
 			header: "Devotee Benefits",
-			filters: [this._fontFilter, this._abilityFilter, this._skillFilter, this._weaponFilter, this._domainFilter],
+			filters: [this._fontFilter, this._divineSanctification, this._abilityFilter, this._skillFilter, this._weaponFilter, this._domainFilter],
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -81,6 +86,7 @@ class PageFilterDeities extends PageFilter {
 
 		this._sourceFilter.addItem(g._fSources);
 		if (g._fFont) this._fontFilter.addItem(g._fFont);
+		if (g.divineSanctification) g.divineSanctification.sanctification?.forEach(s => this._divineSanctification.addItem(s));
 		if (g._fAbility) this._abilityFilter.addItem(g._fAbility);
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
@@ -129,6 +135,7 @@ class PageFilterDeities extends PageFilter {
 			g.category,
 			[
 				g._fFont,
+				g.divineSanctification?.sanctification || [],
 				g._fAbility,
 				g._fSkill,
 				g._fWeapon,
