@@ -1,6 +1,2324 @@
 {
 	"deity": [
 		{
+			"name": "Baekho",
+			"category": "Tian Gods",
+			"alias": [
+				"The Lord of Seasons"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 24,
+			"areasOfConcern": [
+				"balance",
+				"healing",
+				"nature",
+				"seasons"
+			],
+			"edicts": [
+				"bridge rifts between allies",
+				"embrace change",
+				"consider all sides of a disagreement before passing judgment"
+			],
+			"anathema": [
+				"allow bias to guide your judgment",
+				"reject change in favor of stagnation",
+				"sow discord between allies",
+				"take more than you give"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"wisdom"
+				],
+				"entry": "Strength or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"thunderstrike|PC1"
+				],
+				"3": [
+					"animal vision|PC2"
+				],
+				"4": [
+					"tree of seasons|PC1"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"nature"
+				]
+			},
+			"domains": [
+				"change",
+				"healing",
+				"nature",
+				"truth"
+			],
+			"alternateDomains": [
+				"duty",
+				"might"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"katana"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Baekho gains the following additional abilities.",
+				"speed": {
+					"walk": 70,
+					"fly": 70
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "katana",
+						"traits": [
+							"deadly <3d8>",
+							"two-hand <d10>",
+							"reach <15 feet>",
+							"versatile <P>"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "tiger's piercing gaze",
+						"range": 120,
+						"traits": [
+							"mental"
+						],
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Daikitsu",
+			"category": "Tian Gods",
+			"alias": [
+				"Lady of Foxes"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 25,
+			"areasOfConcern": [
+				"agriculture",
+				"craftsmanship",
+				"kitsune",
+				"rice"
+			],
+			"edicts": [
+				"ensure the health of crops and vegetation",
+				"perfect a craft or trade",
+				"leave offerings for foxes",
+				"celebrate the turning of the seasons"
+			],
+			"anathema": [
+				"mistreat your tools",
+				"pass a beggar without giving alms",
+				"discriminate against sex workers or the lower class",
+				"commit murder or torture",
+				"harm an innocent"
+			],
+			"divineAbility": {
+				"abilities": [
+					"dexterity",
+					"intelligence"
+				],
+				"entry": "Dexterity or Intelligence"
+			},
+			"spells": {
+				"1": [
+					"pest form|PC1"
+				],
+				"2": [
+					"humanoid form|PC1"
+				],
+				"5": [
+					"illusory scene|PC1"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"crafting"
+				]
+			},
+			"domains": [
+				"change",
+				"creation",
+				"family",
+				"nature"
+			],
+			"alternateDomains": [
+				"earth"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"flail"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Daikitsu gains the following additional abilities.",
+				"speed": {
+					"walk": 60
+				},
+				"ignoreTerrain": true,
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "flail",
+						"traits": [
+							"reach <15 feet>"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "spectral foxfire",
+						"range": 120,
+						"traits": [
+							"mental"
+						],
+						"damage": "6d6+6",
+						"damageType": "mental"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Fumeiyoshi",
+			"category": "Tian Gods",
+			"alias": [
+				"Lord of Envy"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 26,
+			"areasOfConcern": [
+				"envy",
+				"graves",
+				"infamy",
+				"undead"
+			],
+			"edicts": [
+				"punish those who have good fortune they don't deserve",
+				"devour the pleasures of the living",
+				"encourage resentment",
+				"make graveyards supernaturally unsafe"
+			],
+			"anathema": [
+				"pass by food without stealing a bite",
+				"allow honor or tradition to prevent you from taking what you want"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"charisma"
+				],
+				"entry": "Constitution or Charisma"
+			},
+			"spells": {
+				"1": [
+					"grim tendrils|PC1"
+				],
+				"2": [
+					"feast of ashes|LODM"
+				],
+				"7": [
+					"possession|PC1"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"unholy"
+				],
+				"entry": "can choose unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"intimidation"
+				]
+			},
+			"domains": [
+				"ambition",
+				"destruction",
+				"earth",
+				"undeath"
+			],
+			"alternateDomains": [
+				"indulgence"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"naginata|TV"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Fumeiyoshi gains the following additional abilities.",
+				"speed": {
+					"walk": 60,
+					"burrow": 40,
+					"fly": 60
+				},
+				"melee": [
+					{
+						"name": "vengeful naginata",
+						"traits": [
+							"deadly <1d8>",
+							"reach <20 feet>",
+							"versatile <P>"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "life-draining stare",
+						"range": 120,
+						"damage": "6d6",
+						"damageType": "void",
+						"note": "+ caster gains 5 temporary Hit Points"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "General Susumu",
+			"category": "Tian Gods",
+			"alias": [
+				"The Black Daimyo"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 27,
+			"areasOfConcern": [
+				"fear",
+				"glory",
+				"warfare",
+				"death"
+			],
+			"edicts": [
+				"seek glory in battle",
+				"loudly proclaim your victories",
+				"protect your possessions and strongholds"
+			],
+			"anathema": [
+				"cower from fights",
+				"refuse a challenge from an equal",
+				"mistreat your weapons",
+				"abuse your mount"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"dexterity"
+				],
+				"entry": "Strength or Dexterity"
+			},
+			"spells": {
+				"1": [
+					"sure strike|PC1"
+				],
+				"3": [
+					"wall of wind|PC1"
+				],
+				"4": [
+					"weapon storm|PC1"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"unholy"
+				],
+				"entry": "can choose unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"athletics"
+				]
+			},
+			"domains": [
+				"confidence",
+				"destruction",
+				"might",
+				"zeal"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"longbow"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of General Susumu gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"fly": 50
+				},
+				"speedNote": "(when mounted)",
+				"melee": [
+					{
+						"name": "katana",
+						"traits": [
+							"deadly <3d8>",
+							"two-hand <d10>",
+							"reach <15 feet>",
+							"versatile <P>"
+						],
+						"damage": "6d8+8",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "longbow",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Hei Feng",
+			"category": "Tian Gods",
+			"alias": [
+				"Duke of Thunder"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 28,
+			"areasOfConcern": [
+				"sea",
+				"storms",
+				"tengu",
+				"sailors"
+			],
+			"edicts": [
+				"follow your passions",
+				"make token attempts to apologize to those you have wronged",
+				"respect the power of the sea and sky",
+				"encourage flashy entertainment"
+			],
+			"anathema": [
+				"fake friendship with those you despise",
+				"disrespect Hei Feng or Hei Feng's estranged wife {@deity Lady Jingxi|LOTXWG}",
+				"ignore an affront to you, Hei Feng, or Lady Jingxi"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"charisma"
+				],
+				"entry": "Constitution or Charisma"
+			},
+			"spells": {
+				"1": [
+					"gust of wind|PC1"
+				],
+				"4": [
+					"hydraulic torrent|PC1"
+				],
+				"6": [
+					"chain lightning|PC1"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy",
+					"unholy"
+				],
+				"entry": "can choose unholy, can choose holy if you are a tengu"
+			},
+			"divineSkill": {
+				"skills": [
+					"performance"
+				]
+			},
+			"domains": [
+				"air",
+				"indulgence",
+				"lightning",
+				"water"
+			],
+			"alternateDomains": [
+				"destruction",
+				"travel"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"jiu huan dao|TV"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Hei Feng gains the following additional abilities.",
+				"speed": {
+					"walk": 70
+				},
+				"airWalk": true,
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "drunken sword",
+						"traits": [
+							"forceful",
+							"reach <15 feet>"
+						],
+						"damage": "4d6+6",
+						"damageType": "slashing",
+						"damage2": "1d6",
+						"damageType2": "electricity splash"
+					}
+				],
+				"ranged": [
+					{
+						"name": "storm surge",
+						"range": 120,
+						"traits": [
+							"air",
+							"water"
+						],
+						"damage": "4d6+3",
+						"damageType": "bludgeoning",
+						"damageType2": "electricity splash",
+						"note": "The caster is immune to this {@trait splash} damage"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Irori",
+			"category": "Tian Gods",
+			"alias": [
+				"Master of Masters"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 29,
+			"areasOfConcern": [
+				"history",
+				"knowledge",
+				"self-perfection"
+			],
+			"edicts": [
+				"be humble",
+				"help others perfect themselves",
+				"hone your body, mind, and spirit to a more perfect state",
+				"practice discipline"
+			],
+			"anathema": [
+				"become addicted to a substance",
+				"destroy an important historical text",
+				"repeatedly fail to maintain self-control"
+			],
+			"divineAbility": {
+				"abilities": [
+					"intelligence",
+					"wisdom"
+				],
+				"entry": "Intelligence or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"jump|PC1"
+				],
+				"3": [
+					"haste|PC1"
+				],
+				"4": [
+					"mountain resilience|PC1"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy",
+					"unholy"
+				],
+				"entry": "can choose holy or unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"athletics"
+				]
+			},
+			"domains": [
+				"knowledge",
+				"might",
+				"perfection",
+				"truth"
+			],
+			"alternateDomains": [
+				"change",
+				"vigil"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"fist"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Irori gains the following additional abilities.",
+				"speed": {
+					"walk": 80
+				},
+				"airWalk": true,
+				"melee": [
+					{
+						"name": "unfettered strike",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach <15 feet>",
+							"versatile <P or S>"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "wind strike",
+						"range": 60,
+						"damage": "6d4+6",
+						"damageType": "bludgeoning"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Jin Li",
+			"category": "Tian Gods",
+			"alias": [
+				"The Golden Dragon Carp"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 30,
+			"areasOfConcern": [
+				"challenges",
+				"dares",
+				"promotions",
+				"self-improvement"
+			],
+			"edicts": [
+				"take up dares and challenges in good faith",
+				"persist with creativity and tenacity",
+				"own up to your failures as a way to improve oneself"
+			],
+			"anathema": [
+				"give up without trying",
+				"dismiss or mock someone's effort",
+				"take success for granted",
+				"discount the power of beginner's luck or luck in general"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"wisdom"
+				],
+				"entry": "Strength or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"jump|PC1"
+				],
+				"2": [
+					"feet to fins|PC1"
+				],
+				"5": [
+					"hydraulic torrent|PC1"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"entry": "none"
+			},
+			"divineSkill": {
+				"skills": [
+					"athletics"
+				]
+			},
+			"domains": [
+				"ambition",
+				"change",
+				"might",
+				"toil"
+			],
+			"alternateDomains": [
+				"water",
+				"luck"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"sansetsukon|TV"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Jin Li gains the following additional abilities.",
+				"speed": {
+					"walk": 30,
+					"swim": 60
+				},
+				"ignoreTerrain": true,
+				"waterBreathing": true,
+				"melee": [
+					{
+						"name": "smashing flop",
+						"traits": [
+							"backswing",
+							"reach <15 feet>",
+							"shove"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "mighty splash",
+						"range": 60,
+						"damage": "4d6+3",
+						"damageType": "bludgeoning",
+						"damage2": "1d6",
+						"damageType2": "bludgeoning splash",
+						"note": "The caster is immune to this {@trait splash} damage"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Kofusachi",
+			"category": "Tian Gods",
+			"alias": [
+				"The Laughing God"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 31,
+			"areasOfConcern": [
+				"abundance",
+				"discovery",
+				"happiness",
+				"prosperity"
+			],
+			"edicts": [
+				"support local businesses",
+				"bring prosperity to your community",
+				"sample life's pleasures"
+			],
+			"anathema": [
+				"become tied to one location",
+				"judge another based on sexual desires or gender roles",
+				"harm innocents",
+				"spread despair",
+				"commit murder"
+			],
+			"divineAbility": {
+				"abilities": [
+					"dexterity",
+					"constitution"
+				],
+				"entry": "Dexterity or Constitution"
+			},
+			"spells": {
+				"1": [
+					"soothe|PC1"
+				],
+				"2": [
+					"laughing fit|PC1"
+				],
+				"8": [
+					"uncontrollable dance|PC1"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"performance"
+				]
+			},
+			"domains": [
+				"luck",
+				"passion",
+				"travel",
+				"wealth"
+			],
+			"alternateDomains": [
+				"fate"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"staff"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Kofusachi gains the following additional abilities.",
+				"speed": {
+					"walk": 70,
+					"fly": 70
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "walking staff",
+						"traits": [
+							"reach <15 feet>",
+							"two-hand <d8>"
+						],
+						"damage": "6d4+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "springing jindo bite",
+						"range": 60,
+						"damage": "5d6+3",
+						"damageType": "piercing",
+						"damage2": "1d6",
+						"damageType2": "{@condition persistent damage||persistent bleed}"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Lady Jingxi",
+			"category": "Tian Gods",
+			"alias": [
+				"The Poet of Dawn and Dusk"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 32,
+			"areasOfConcern": [
+				"daybreak",
+				"liminal spaces",
+				"twilight",
+				"solitude"
+			],
+			"edicts": [
+				"create art with words",
+				"master the written language",
+				"display the soft beauty of natural colors"
+			],
+			"anathema": [
+				"destroy a natural plum tree",
+				"drink excessive amounts of alcohol",
+				"act rude or boorish",
+				"commit torture or murder",
+				"knowingly harm an innocent"
+			],
+			"divineAbility": {
+				"abilities": [
+					"intelligence",
+					"wisdom"
+				],
+				"entry": "Intelligence or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"dizzying colors|PC1"
+				],
+				"3": [
+					"enthrall|PC1"
+				],
+				"7": [
+					"project image|PC1"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"performance"
+				]
+			},
+			"domains": [
+				"creation",
+				"glyph",
+				"knowledge",
+				"repose"
+			],
+			"alternateDomains": [
+				"moon",
+				"nature",
+				"sun"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"fighting fan|TV"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Lady Jingxi gains the following additional abilities.",
+				"speed": {
+					"walk": 50,
+					"fly": 50
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "lotus fan",
+						"traits": [
+							"deadly <3d6>",
+							"finesse",
+							"nonlethal",
+							"reach <15 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "cascading twilight curtain",
+						"range": 120,
+						"traits": [
+							"nonlethal"
+						],
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Lady Nanbyo",
+			"category": "Tian Gods",
+			"alias": [
+				"The Widow of Suffering"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 33,
+			"areasOfConcern": [
+				"earthquakes",
+				"plagues",
+				"fire",
+				"suffering"
+			],
+			"edicts": [
+				"revel in destruction",
+				"make natural disasters worse",
+				"allow natural disasters to take their due"
+			],
+			"anathema": [
+				"allow a natural disaster to completely destroy a community or leave a group with no survivors"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"constitution"
+				],
+				"entry": "Strength or Constitution"
+			},
+			"spells": {
+				"1": [
+					"breathe fire|PC1"
+				],
+				"5": [
+					"control water|PC1"
+				],
+				"6": [
+					"phantasmal calamity|PC1"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"unholy"
+				],
+				"entry": "must choose unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"nature"
+				]
+			},
+			"domains": [
+				"destruction",
+				"fire",
+				"plague",
+				"water"
+			],
+			"alternateDomains": [
+				"dust",
+				"earth",
+				"lightning",
+				"sorrow"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"warhammer"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Lady Nanbyo gains the following additional abilities.",
+				"speed": {
+					"walk": 70,
+					"fly": 70
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "destructive warhammer",
+						"traits": [
+							"disarm",
+							"reach <15 feet>",
+							"sweep",
+							"trip"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "sufferable storm surge",
+						"range": 120,
+						"traits": [
+							"air",
+							"electricity",
+							"water"
+						],
+						"damage": "4d6",
+						"damageType": "bludgeoning",
+						"damage2": "1d6",
+						"damageType2": "electricity splash",
+						"note": "The caster is immune to this {@trait splash} damage"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Lady of the North Star",
+			"category": "Tian Gods",
+			"alias": [
+				"Mother of Secrets"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 34,
+			"areasOfConcern": [
+				"secrets",
+				"remembrance",
+				"winter",
+				"immortality"
+			],
+			"edicts": [
+				"seek lost knowledge",
+				"uncover hidden mysteries",
+				"honor that which is forgotten",
+				"pursue immortality"
+			],
+			"anathema": [
+				"destroy sources of knowledge",
+				"make public that which should remain secret",
+				"desecrate a memorial",
+				"grow complacent about one's ignorance and mortality",
+				"commit torture or murder",
+				"knowingly harm an innocent"
+			],
+			"divineAbility": {
+				"abilities": [
+					"intelligence",
+					"wisdom"
+				],
+				"entry": "Intelligence or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"penumbral shroud|LODM"
+				],
+				"2": [
+					"stupefy|PC1"
+				],
+				"6": [
+					"blanket of stars|PC2"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"occultism"
+				]
+			},
+			"domains": [
+				"cold",
+				"darkness",
+				"secrecy",
+				"vigil"
+			],
+			"alternateDomains": [
+				"change",
+				"star"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"glaive"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of the Lady of the North Star gains the following additional abilities.",
+				"speed": {
+					"walk": 70,
+					"fly": 70
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "glaive",
+						"traits": [
+							"deadly <d8>",
+							"reach <20 feet>"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "chilling revelation",
+						"range": 120,
+						"traits": [
+							"versatile <cold>"
+						],
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Lao Shu Po",
+			"category": "Tian Gods",
+			"alias": [
+				"Old Rat Woman"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 35,
+			"areasOfConcern": [
+				"night",
+				"rats",
+				"thieves"
+			],
+			"edicts": [
+				"work quietly toward your goals in the shadows",
+				"steal what you need",
+				"keep an ear among the ignored and downtrodden"
+			],
+			"anathema": [
+				"work honestly for something you could steal instead",
+				"risk too much for another creature"
+			],
+			"divineAbility": {
+				"abilities": [
+					"dexterity",
+					"intelligence"
+				],
+				"entry": "Dexterity or Intelligence"
+			},
+			"spells": {
+				"1": [
+					"summon animal|PC1 (rodents only)"
+				],
+				"2": [
+					"knock|PC1"
+				],
+				"3": [
+					"veil of privacy|PC1"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"unholy"
+				],
+				"entry": "can choose unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"thievery"
+				]
+			},
+			"domains": [
+				"darkness",
+				"luck",
+				"swarm",
+				"trickery"
+			],
+			"alternateDomains": [
+				"secrecy",
+				"wealth"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"dagger"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Lao Shu Po gains the following additional abilities.",
+				"speed": {
+					"walk": 70,
+					"climb": 70
+				},
+				"immune": [
+					"frightened"
+				],
+				"melee": [
+					{
+						"name": "bite",
+						"traits": [
+							"reach <15 feet>"
+						],
+						"damage": "6d8+6",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "nightmare rat swarm",
+						"range": 120,
+						"traits": [
+							"mental"
+						],
+						"damage": "3d6+2",
+						"damageType": "piercing",
+						"damage2": "3d6+2",
+						"damageType2": "mental"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Mugura and Nrithu",
+			"category": "Tian Gods",
+			"alias": [
+				"The Divine Dancers"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 36,
+			"areasOfConcern": [
+				"dance and storytelling",
+				"lovers and rivals",
+				"fame and gratitude"
+			],
+			"edicts": [
+				"practice until perfect",
+				"create stories and relationships",
+				"trust and listen to your partner"
+			],
+			"anathema": [
+				"steal credit from others",
+				"upstage or sabotage",
+				"spread rumors to get ahead"
+			],
+			"divineAbility": {
+				"abilities": [
+					"dexterity",
+					"charisma"
+				],
+				"entry": "Dexterity or Charisma"
+			},
+			"spells": {
+				"1": [
+					"shockwave|LODM"
+				],
+				"3": [
+					"hypnotize|PC1"
+				],
+				"4": [
+					"mirror's misfortune|SoM"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy",
+					"unholy"
+				],
+				"entry": "can choose holy or unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"performance"
+				]
+			},
+			"domains": [
+				"ambition",
+				"freedom",
+				"passion",
+				"repose"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"fist"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Mugura and Nrithu gains the following additional abilities.",
+				"speed": {
+					"walk": 60,
+					"fly": 70
+				},
+				"melee": [
+					{
+						"name": "sweeping legs",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach <15 feet>"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "echo of bells",
+						"range": 120,
+						"damage": "6d6+6",
+						"damageType": "sonic"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Nalinivati",
+			"category": "Tian Gods",
+			"alias": [
+				"The Serpent's Kiss"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 37,
+			"areasOfConcern": [
+				"family",
+				"fertility",
+				"snakes",
+				"sorcery"
+			],
+			"edicts": [
+				"seek out magic and use it",
+				"use poison",
+				"heal poisons",
+				"bear or adopt children",
+				"raise snakes"
+			],
+			"anathema": [
+				"kill a harmless snake or swan",
+				"spurn friends due to jealousy or romantic competition",
+				"betray your offspring",
+				"separate lovers"
+			],
+			"divineAbility": {
+				"abilities": [
+					"wisdom",
+					"charisma"
+				],
+				"entry": "Wisdom or Charisma"
+			},
+			"spells": {
+				"1": [
+					"charm|PC1"
+				],
+				"2": [
+					"invisibility|PC1"
+				],
+				"3": [
+					"lightning bolt|PC1"
+				],
+				"4": [
+					"reflective scales|LODM"
+				],
+				"5": [
+					"subconscious suggestion|PC1"
+				],
+				"6": [
+					"mislead|PC1"
+				],
+				"7": [
+					"contingency|PC1"
+				],
+				"8": [
+					"confusing colors|PC2"
+				],
+				"9": [
+					"wrathful storm|PC1"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy",
+					"unholy"
+				],
+				"entry": "can choose holy or unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"arcana"
+				]
+			},
+			"domains": [
+				"magic",
+				"naga",
+				"passion",
+				"wyrmkin"
+			],
+			"alternateDomains": [
+				"family",
+				"glyph"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"jaws",
+					"urumi|TV"
+				],
+				"entry": "jaws or {@item urumi|TV}"
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Nalinivati gains the following additional abilities.",
+				"speed": {
+					"walk": 70
+				},
+				"melee": [
+					{
+						"name": "tail swipe",
+						"traits": [
+							"finesse",
+							"reach <15 feet>"
+						],
+						"damage": "6d8",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "venom spit",
+						"range": 30,
+						"damage": "5d6",
+						"damageType": "poison",
+						"damage2": "1d6",
+						"damageType2": "{@condition persistent damage||persistent poison}"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Phi Deva",
+			"category": "Tian Gods",
+			"alias": [
+				"The Thousand-Souled Chorus"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 38,
+			"areasOfConcern": [
+				"people",
+				"the defenseless",
+				"the collective good"
+			],
+			"edicts": [
+				"protect the defenseless",
+				"assist those who ask for your help",
+				"put the collective above yourself"
+			],
+			"anathema": [
+				"harm the innocent",
+				"take more than you need",
+				"overturn a collective decision"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"wisdom"
+				],
+				"entry": "Constitution or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"soothe|PC1"
+				],
+				"4": [
+					"flicker|PC1"
+				],
+				"7": [
+					"project image|PC1"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"medicine"
+				]
+			},
+			"domains": [
+				"family",
+				"healing",
+				"protection",
+				"repose"
+			],
+			"alternateDomains": [
+				"freedom",
+				"nature"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"shortbow"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Phi Deva gains the following additional abilities.",
+				"speed": {
+					"walk": 60,
+					"fly": 60
+				},
+				"melee": [
+					{
+						"name": "thousand grasping hands",
+						"traits": [
+							"deadly <d8>",
+							"reach <15 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "grudge of the downtrodden",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Qi Zhong",
+			"category": "Tian Gods",
+			"alias": [
+				"Master of Medicine"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 39,
+			"areasOfConcern": [
+				"cycles",
+				"elements",
+				"health",
+				"medicine"
+			],
+			"edicts": [
+				"teach knowledge to others",
+				"relieve suffering despite personal difficulty",
+				"heal sickness and injury"
+			],
+			"anathema": [
+				"deal lethal damage to another living creature (unless as part of a necessary medical treatment)"
+			],
+			"divineAbility": {
+				"abilities": [
+					"intelligence",
+					"wisdom"
+				],
+				"entry": "Intelligence or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"soothe|PC1"
+				],
+				"2": [
+					"false vitality|PC1"
+				],
+				"5": [
+					"containment|PC2"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"medicine"
+				]
+			},
+			"domains": [
+				"healing",
+				"knowledge",
+				"magic",
+				"protection"
+			],
+			"alternateDomains": [
+				"air",
+				"earth",
+				"fire",
+				"nature",
+				"water"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"mace"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Qi Zhong gains the following additional abilities.",
+				"speed": {
+					"walk": 50
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "mace",
+						"traits": [
+							"nonlethal",
+							"reach <15 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "acupoint strike",
+						"range": 120,
+						"traits": [
+							"nonlethal"
+						],
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Shizuru",
+			"category": "Tian Gods",
+			"alias": [
+				"Ruler of Heaven"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 40,
+			"areasOfConcern": [
+				"ancestors",
+				"order",
+				"the sun",
+				"growth"
+			],
+			"edicts": [
+				"practice your chosen skill every day",
+				"honor your ancestors",
+				"protect nature and society from corruption and destruction"
+			],
+			"anathema": [
+				"abandon a companion in need",
+				"harm the innocent",
+				"disrespect your ancestors",
+				"parlay with truce breakers",
+				"separate lovers",
+				"cast an unholy spell"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"wisdom"
+				],
+				"entry": "Strength or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"sure strike|PC1"
+				],
+				"4": [
+					"reflective scales|LODM"
+				],
+				"7": [
+					"planar palace|PC1"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"society"
+				]
+			},
+			"domains": [
+				"duty",
+				"perfection",
+				"sun",
+				"vigil"
+			],
+			"alternateDomains": [
+				"sorrow"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"katana"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Shizuru gains the following additional abilities.",
+				"speed": {
+					"walk": 70
+				},
+				"airWalk": true,
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "katana",
+						"traits": [
+							"deadly <3d8>",
+							"two-hand <d10>",
+							"reach <15 feet>",
+							"versatile <P>"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "sunbolt arrow",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "fire"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Srikalis, Sritaming, and Sribaril",
+			"category": "Tian Gods",
+			"alias": [
+				"The Three-Headed God of Raiding and War",
+				"Dewangayaw"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 41,
+			"areasOfConcern": [
+				"raiding",
+				"treasure",
+				"war contracts",
+				"warriors"
+			],
+			"edicts": [
+				"die in battle",
+				"revel in protective violence",
+				"support what is yours"
+			],
+			"anathema": [
+				"lay waste to nature",
+				"kill indiscriminately without reason or conviction",
+				"choose not to raid when it is needed"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"dexterity"
+				],
+				"entry": "Strength or Dexterity"
+			},
+			"spells": {
+				"1": [
+					"sure strike|PC1"
+				],
+				"3": [
+					"haste|PC1"
+				],
+				"5": [
+					"control water|PC1"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy",
+					"unholy"
+				],
+				"entry": "can choose holy or unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"society"
+				]
+			},
+			"domains": [
+				"ambition",
+				"passion",
+				"perfection",
+				"zeal"
+			],
+			"alternateDomains": [
+				"duty",
+				"freedom",
+				"pain"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"kris|LOIL",
+					"arquebus|G&G"
+				],
+				"entry": "{@item kris|LOIL} or {@item arquebus|G&G}"
+			},
+			"avatar": {
+				"name": "The Dewangayaw",
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of the Dewangayaw gains the following additional abilities.",
+				"speed": {
+					"walk": 60,
+					"swim": 120
+				},
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "six-part weapon",
+						"traits": [
+							"agile",
+							"deadly <1d10>",
+							"reach <30 feet>",
+							"versatile <B, P>"
+						],
+						"damage": "6d10+5",
+						"damageType": "slashing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Sun Wukong",
+			"category": "Tian Gods",
+			"alias": [
+				"The Monkey King"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 42,
+			"areasOfConcern": [
+				"drunkenness",
+				"nature",
+				"trickery"
+			],
+			"edicts": [
+				"live life freely",
+				"drink",
+				"play pranks"
+			],
+			"anathema": [
+				"refuse a reasonable bet or duel",
+				"let social pressure change your behavior"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"charisma"
+				],
+				"entry": "Strength or Charisma"
+			},
+			"spells": {
+				"1": [
+					"jump|PC1"
+				],
+				"3": [
+					"mad monkeys|PC1"
+				],
+				"4": [
+					"creation|PC1"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy",
+					"unholy"
+				],
+				"entry": "can choose holy or unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"acrobatics"
+				]
+			},
+			"domains": [
+				"indulgence",
+				"might",
+				"nature",
+				"trickery"
+			],
+			"alternateDomains": [
+				"freedom",
+				"magic",
+				"protection",
+				"travel"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"bo staff"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Sun Wukong gains the following additional abilities.",
+				"speed": {
+					"walk": 70,
+					"fly": 60
+				},
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "{@i Ruyi Bang, the Extending Cudgel}",
+						"traits": [
+							"backswing",
+							"finesse",
+							"forceful",
+							"reach <30 feet>",
+							"sweep"
+						],
+						"damage": "6d8+8",
+						"damageType": "bludgeoning"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Tsukiyo",
+			"category": "Tian Gods",
+			"alias": [
+				"Prince of the Moon"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 43,
+			"areasOfConcern": [
+				"jade",
+				"the moon",
+				"spirits"
+			],
+			"edicts": [
+				"provide aid and counsel without judgment to those who seek help",
+				"help the dead find their rest",
+				"amplify or help speak for the powerless and demonized"
+			],
+			"anathema": [
+				"harm another out of envy",
+				"force aid on those who do not want it",
+				"inflict harmful mental effects on others as punishment",
+				"knowingly hurt the innocent",
+				"commit murder"
+			],
+			"divineAbility": {
+				"abilities": [
+					"constitution",
+					"intelligence"
+				],
+				"entry": "Constitution or Intelligence"
+			},
+			"spells": {
+				"1": [
+					"soothe|PC1"
+				],
+				"4": [
+					"peaceful bubble|PC1"
+				],
+				"5": [
+					"hallucination|PC1"
+				]
+			},
+			"font": [
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"occultism"
+				]
+			},
+			"domains": [
+				"delirium",
+				"moon",
+				"repose",
+				"soul"
+			],
+			"alternateDomains": [
+				"change"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"spear"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Tsukiyo gains the following additional abilities.",
+				"speed": {
+					"walk": 70
+				},
+				"airWalk": true,
+				"ignoreTerrain": true,
+				"melee": [
+					{
+						"name": "longspear",
+						"traits": [
+							"reach <20 feet>"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "moonbeam",
+						"traits": [
+							"nonlethal"
+						],
+						"range": 120,
+						"preciousMetal": [
+							"silver"
+						],
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Yaezhing",
+			"category": "Tian Gods",
+			"alias": [
+				"The Minister of Blood"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 44,
+			"areasOfConcern": [
+				"harsh justice",
+				"murder",
+				"punishment"
+			],
+			"edicts": [
+				"commit assassinations for hire",
+				"strike unseen",
+				"carry out punishment for convicted criminals"
+			],
+			"anathema": [
+				"show mercy to a target",
+				"take credit for your assassinations",
+				"refuse to punish a lawfully convicted criminal",
+				"slaughter indiscriminately"
+			],
+			"divineAbility": {
+				"abilities": [
+					"dexterity",
+					"intelligence"
+				],
+				"entry": "Dexterity or Intelligence"
+			},
+			"spells": {
+				"1": [
+					"sure strike|PC1"
+				],
+				"2": [
+					"invisibility|PC1"
+				],
+				"6": [
+					"mislead|PC1"
+				]
+			},
+			"font": [
+				"harm"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy",
+					"unholy"
+				],
+				"entry": "can choose holy or unholy"
+			},
+			"divineSkill": {
+				"skills": [
+					"stealth"
+				]
+			},
+			"domains": [
+				"death",
+				"duty",
+				"pain",
+				"trickery"
+			],
+			"alternateDomains": [
+				"darkness"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"shuriken"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Yaezhing gains the following additional abilities.",
+				"speed": {
+					"walk": 70
+				},
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "hidden blade",
+						"traits": [
+							"agile",
+							"reach <15 feet>",
+							"versatile <P>"
+						],
+						"damage": "4d6",
+						"damageType": "slashing",
+						"damage2": "2d6",
+						"damageType2": "{@condition persistent damage||persistent bleed}"
+					}
+				],
+				"ranged": [
+					{
+						"name": "bo shuriken",
+						"range": 50,
+						"traits": [
+							"versatile <P>"
+						],
+						"damage": "6d6+3",
+						"damageType": "slashing"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Yamatsumi",
+			"category": "Tian Gods",
+			"alias": [
+				"The Mountain Lord"
+			],
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 45,
+			"areasOfConcern": [
+				"mountains",
+				"volcanoes",
+				"winter"
+			],
+			"edicts": [
+				"strive to be self-sufficient",
+				"respect nature",
+				"test yourself against the elements"
+			],
+			"anathema": [
+				"become reliant on civilization",
+				"destroy something without creating or growing something in its place"
+			],
+			"divineAbility": {
+				"abilities": [
+					"strength",
+					"wisdom"
+				],
+				"entry": "Strength or Wisdom"
+			},
+			"spells": {
+				"1": [
+					"shockwave|LODM"
+				],
+				"3": [
+					"shifting sands|LODM"
+				],
+				"7": [
+					"volcanic eruption|PC1"
+				]
+			},
+			"font": [
+				"harm",
+				"heal"
+			],
+			"divineSanctification": {
+				"sanctification": [
+					"holy"
+				],
+				"entry": "can choose holy"
+			},
+			"divineSkill": {
+				"skills": [
+					"athletics"
+				]
+			},
+			"domains": [
+				"cold",
+				"earth",
+				"fire",
+				"might"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"greatclub"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar|PC1} spell, a worshipper of Yamatsumi gains the following additional abilities.",
+				"speed": {
+					"walk": 50
+				},
+				"melee": [
+					{
+						"name": "greatclub",
+						"traits": [
+							"backswing",
+							"reach <15 feet>"
+						],
+						"damage": "6d6+8",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "molten boulder",
+						"range": 80,
+						"damage": "3d6+3",
+						"damageType": "bludgeoning",
+						"damage2": "3d6",
+						"damageType2": "fire"
+					}
+				]
+			},
+			"hasLore": true
+		},
+		{
 			"name": "Ferrumnestra",
 			"category": "Elemental Lords",
 			"alias": [
@@ -1398,7 +3716,7 @@
 							"backswing",
 							"finesse",
 							"reach <15 feet>",
-							"versatile <p>"
+							"versatile <P>"
 						],
 						"damage": "6d8+6",
 						"damageType": "slashing"
@@ -1732,7 +4050,7 @@
 							"finesse",
 							"reach <15 feet>",
 							"thrown <40 feet>",
-							"versatile <p>"
+							"versatile <P>"
 						]
 					}
 				],
@@ -4688,7 +7006,7 @@
 							"agile",
 							"finesse",
 							"reach <15 feet>",
-							"versatile <s>"
+							"versatile <S>"
 						]
 					}
 				],
@@ -7753,7 +10071,7 @@
 						"damageType": "slashing",
 						"name": "greatsword",
 						"traits": [
-							"versatile <p>",
+							"versatile <P>",
 							"reach <15 feet>"
 						]
 					}
@@ -8031,7 +10349,7 @@
 							"deadly <3d8>",
 							"finesse",
 							"reach <15 feet>",
-							"versatile <p>"
+							"versatile <P>"
 						],
 						"damage": "6d6+6",
 						"damageType": "bludgeoning"
@@ -9325,7 +11643,7 @@
 					{
 						"name": "longsword",
 						"traits": [
-							"versatile <p>",
+							"versatile <P>",
 							"reach <15 feet>"
 						],
 						"damage": "6d8+6",
@@ -9525,7 +11843,7 @@
 						"damageType": "bludgeoning",
 						"traits": [
 							"agile",
-							"versatile <p or s>",
+							"versatile <P or S>",
 							"finesse",
 							"reach <15 feet>"
 						]
@@ -12543,7 +14861,7 @@
 					{
 						"name": "morningstar",
 						"traits": [
-							"versatile <p>",
+							"versatile <P>",
 							"reach <15 feet>"
 						],
 						"damage": "6d8+6",
@@ -13623,7 +15941,7 @@
 						"traits": [
 							"agile",
 							"finesse",
-							"versatile <s>",
+							"versatile <S>",
 							"reach <15 feet>"
 						],
 						"damage": "6d6+6",
@@ -14905,7 +17223,7 @@
 						"name": "leg",
 						"traits": [
 							"agile",
-							"versatile <p>",
+							"versatile <P>",
 							"reach <15 feet>"
 						],
 						"damage": "6d8+6",
@@ -15815,7 +18133,7 @@
 							"deadly <3d8>",
 							"two-hand <d10>",
 							"reach <15 feet>",
-							"versatile <p>"
+							"versatile <P>"
 						]
 					}
 				],
@@ -17003,7 +19321,7 @@
 					{
 						"name": "morningstar",
 						"traits": [
-							"versatile <p>",
+							"versatile <P>",
 							"reach <15 feet>"
 						],
 						"damage": "6d6+6",
