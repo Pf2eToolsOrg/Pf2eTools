@@ -25,6 +25,14 @@
 			]
 		},
 		{
+			"name": "Form Up",
+			"source": "B3",
+			"page": 304,
+			"entries": [
+				"The troop chooses one of the squares it currently occupies and redistributes its squares to any configuration in which all squares are contiguous and within 15 feet of the chosen square. The troop can't share its space with other creatures."
+			]
+		},
+		{
 			"name": "Bloody",
 			"source": "B1",
 			"page": 298,
@@ -1014,6 +1022,358 @@
 			},
 			"entries": [
 				"The ghost cries out in pain and anguish as small objects and debris fly about in a 30-foot emanation. Creatures in this area take {@damage 1d6} bludgeoning damage + {@damage 1d6} per 2 levels, subject to a basic Reflex save."
+			]
+		},
+		{
+			"name": "Inspiration",
+			"source": "B1",
+			"page": 246,
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental",
+				"primal"
+			],
+			"creature": [
+				"Nymph Queen"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 3
+			},
+			"entries": [
+				"A nymph queen can inspire a single intelligent creature by giving that creature a token of her favor, typically a lock of her hair. As long as the creature carries her token and remains in good standing with the nymph queen, the creature gains a +1 status bonus to all Crafting checks, Performance checks, and Will saves.",
+				"If a nymph queen grants her Inspiration to a bard and the nymph queen is that bard’s muse, the bard gains an additional benefit depending on their muse theme: for lore muse, the bard also gains a +1 status bonus to all Lore checks; for maestro muse, the status bonus to Performance checks increases to +2 for the purpose of determining the effects of compositions; for polymath muse, the bard gains a +4 status bonus to untrained skill checks; and for all other muses, the Will save bonus increases to +2 against fey."
+			]
+		},
+		{
+			"name": "Focus Beauty",
+			"source": "B1",
+			"page": 246,
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental",
+				"primal",
+				"visual"
+			],
+			"creature": [
+				"Nymph Queen"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 1
+			},
+			"entries": [
+				"The nymph queen focuses her beauty upon a target within her aura. The creature must attempt a Will save. On a failure, it is affected as if by the nymph queen’s nymph’s beauty aura; if it was already affected by the aura, it suffers a greater effect described in the nymph queen’s entry. A nymph queen can Focus Beauty on a given creature only once per turn."
+			]
+		},
+		{
+			"name": "Change Shape",
+			"source": "B1",
+			"page": 246,
+			"traits": [
+				"polymorph",
+				"primal",
+				"transmutation"
+			],
+			"creature": [
+				"Nymph Queen"
+			],
+			"activity": {
+				"unit": "action",
+				"number": 1
+			},
+			"entries": [
+				"Nymph queens can transform between their original form, which looks much like a typical nymph of their kind, and any Small or Medium humanoid form, typically choosing a more humanoid-looking version of their natural form."
+			],
+			"add_hash": "Nymph Queen"
+		},
+		{
+			"name": "Nymph's Beauty",
+			"source": "B1",
+			"page": 246,
+			"creature": [
+				"Nymph Queen"
+			],
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental",
+				"primal",
+				"visual"
+			],
+			"entries": [
+				"30 feet.",
+				"Creatures that start their turn in the aura must succeed at a Will save or suffer an effect described in the nymph queen’s entry."
+			]
+		},
+		{
+			"name": "Tied to the Land",
+			"source": "B1",
+			"page": 246,
+			"creature": [
+				"Nymph Queen"
+			],
+			"entries": [
+				"A nymph queen is intrinsically tied to a specific region, such as a forest for a dryad queen. As long as the queen is healthy, the environment is exceptionally resilient, allowing the nymph queen to automatically attempt to counteract spells and rituals such as blight that would harm the environment, using her Spell DC with a counteract level equal to the highest-level druid spell she can cast. When the nymph queen becomes physically or psychologically unhealthy, however, her warded region eventually becomes twisted or unhealthy as well. In that case, restoring the nymph queen swiftly heals the entire region."
+			]
+		},
+		{
+			"name": "Jiang-shi Vulnerabilities",
+			"source": "BotD",
+			"page": 157,
+			"creature": [
+				"Vampire, Jiang-Shi"
+			],
+			"entries": [
+				"All jiang-shi possess the following vulnerabilities.",
+				{
+					"type": "ability",
+					"name": "Revulsion",
+					"entries": [
+						"A jiang-shi can't voluntarily come within 10 feet of a brandished mirror or the sound of ringing handbells. A creature can Interact with a mirror or handbell to brandish or ring that item for 1 round (similar to {@action Raise a Shield||Raising a Shield}). If the jiang-shi involuntarily comes within 10 feet of an object of their revulsion, they gain the {@condition fleeing} condition, running from the object of their revulsion until they are 10 feet or farther from the object. After 1 round of being exposed to the object of their revulsion, a jiang-shi can attempt a {@dc 25} Will save as a single action, which has the {@trait concentrate} trait. On a success, they overcome their revulsions for {@dice 1d6} rounds (or 1 hour on a critical success)."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Bitter Epiphany",
+					"entries": [
+						"A jiang-shi is afflicted by severe melancholia when reminded of their debased nature and the truth of their existential disconnection from living beings. When a jiang-shi sees an altar with at least 1 Bulk of food offerings to ancestor spirits, they must attempt a {@dc 25} Will save. They are then temporarily immune to bitter epiphany for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The jiang-shi is unaffected.",
+								"Success": "The jiang-shi is {@condition stupefied 1} for 1 round.",
+								"Failure": "The jiang-shi is {@condition stupefied 2} for 1 minute.",
+								"Critical Failure": "The jiang-shi is {@condition stupefied 2} and {@condition confused} for 1 minute."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Warped Fulu",
+			"source": "BotD",
+			"page": 158,
+			"creature": [
+				"Vampire, Jiang-Shi"
+			],
+			"entries": [
+				"The jiang-shi has corrupted the fulu attached to their brow. The jiang-shi is immune to spells cast from a magic item without expending a spell slot, such as from a scroll or wand. A creature can {@action Steal} a jiang-shi's fulu to remove it, rolling against the jiang-shi's Perception DC. This immediately ends the jiang-shi's immunity to these effects. If a creature then destroys a jiang-shi's removed fulu with an Interact action, the jiang-shi also loses their {@ability fast healing} ability. A jiang-shi can create a replacement fulu by spending 1 uninterrupted hour inscribing a strip of paper (or similar) with a writing instrument."
+			]
+		},
+		{
+			"name": "Nosferatu Vulnerabilities",
+			"source": "B3",
+			"page": 282,
+			"creature": [
+				"Vampire, Nosferatu"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"name": "Revulsion",
+					"entries": [
+						"A nosferatu can't voluntarily come within 10 feet of brandished garlic or a brandished religious symbol of a non-evil deity. To brandish garlic or a religious symbol, a creature must Interact to do so for 1 round (similar to {@action Raise a Shield}). If the nosferatu involuntarily comes within 10 feet of an object of their revulsion, they gain the {@condition fleeing} condition, running from the object of their revulsion until they end an action beyond 10 feet. After 1 round of being exposed to the subject of their revulsion, a nosferatu can attempt a {@dc 25} 25 Will save as a single action, which has the {@trait concentrate} trait. On a success, they overcome their revulsions for {@dice 1d6} rounds (or 1 hour on a critical success)."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Stake",
+					"entries": [
+						"A magical wooden stake (such as one affected by a {@item weapon potency (generic)||weapon potency rune}, {@spell magic weapon}, or similar magic) driven through the nosferatu's heart drops the nosferatu to 0 HP and prevents them from healing above 0 HP, even in their coffin. Staking a nosferatu requires 3 actions and works only if the nosferatu is {@condition unconscious}. If the stake is removed, the nosferatu can heal above 0 HP again, and if they're in their coffin, the 1-hour rest period begins once the stake is removed. If the nosferatu's head is severed and anointed with holy water while the stake is in place, the nosferatu is destroyed."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Sunlight",
+					"entries": [
+						"If exposed to direct sunlight, a nosferatu immediately becomes {@condition slowed 1}. The slowed value increases by 1 each time the nosferatu ends their turn in sunlight, and the condition ends when they're no longer in sunlight. If the nosferatu loses all their actions in this way, they're destroyed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Command Thrall",
+			"source": "B3",
+			"page": 282,
+			"traits": [
+				"auditory",
+				"divine",
+				"mental"
+			],
+			"creature": [
+				"Vampire, Nosferatu"
+			],
+			"activity": {
+				"unit": "free",
+				"number": 1
+			},
+			"requirements": "One of the nosferatu's thralls is present and can hear the nosferatu",
+			"entries": [
+				"The nosferatu gives a single command to one of their thralls, which the thrall follows to the best of its ability during its next turn."
+			]
+		},
+		{
+			"name": "Mindbound",
+			"source": "B3",
+			"page": 282,
+			"traits": [
+				"divine",
+				"enchantment"
+			],
+			"creature": [
+				"Nosferatu Thrall"
+			],
+			"entries": [
+				"A nosferatu master exerts a fierce hold over their thrall's mind. If any creature other than the thrall's master targets them with an effect that would give them the {@condition controlled} condition, the thrall's master rolls a counteract check against it using their Dominate DC - 10 as the counteract check modifier."
+			]
+		},
+		{
+			"name": "Rally",
+			"source": "B3",
+			"page": 282,
+			"trigger": "The thrall ends their turn more than 30 feet away from their master",
+			"creature": [
+				"Nosferatu Thrall"
+			],
+			"activity": {
+				"unit": "reaction",
+				"number": 1
+			},
+			"entries": [
+				"The thrall Strides up to their Speed toward their master."
+			]
+		},
+		{
+			"name": "Mortal Shield",
+			"source": "B3",
+			"page": 282,
+			"trigger": "The thrall's master would take damage from a Strike or spell attack and is in an adjacent square",
+			"creature": [
+				"Nosferatu Thrall"
+			],
+			"activity": {
+				"unit": "reaction",
+				"number": 1
+			},
+			"entries": [
+				"The thrall throws themself in front of their master, taking half the damage of the attack (before applying any weaknesses or resistances). The thrall's master takes the remaining damage, applying any weaknesses or resistances as normal."
+			]
+		},
+		{
+			"name": "Mist Escape",
+			"source": "B1",
+			"page": 318,
+			"creature": [
+				"Vampire"
+			],
+			"activity": {
+				"unit": "free",
+				"number": 1
+			},
+			"trigger": "The vampire is reduced to 0 HP.",
+			"entries": [
+				"The vampire uses Turn to Mist. It can take move actions to move toward its coffin even though it's at 0 HP. While at 0 HP in this form, the vampire is unaffected by further damage. It automatically returns to its corporeal form, unconscious, if it reaches its coffin or after 2 hours, whichever comes first."
+			]
+		},
+		{
+			"name": "Create Spawn",
+			"source": "B1",
+			"page": 318,
+			"creature": [
+				"Vampire"
+			],
+			"traits": [
+				"divine",
+				"downtime",
+				"necromancy"
+			],
+			"entries": [
+				"If a creature dies after being reduced to 0 HP by Drink Blood, the vampire can turn this victim into a vampire by donating some of its own blood to the victim and burying the victim in earth for 3 nights. If the new vampire is lower level than its creator, it is under the creator's control. If a vampire controls too many spawn at once (as determined by the GM), strong-willed spawn can free themselves by succeeding at a Will saving throw against the vampire's Will DC."
+			]
+		},
+		{
+			"name": "Children of the Night",
+			"source": "B1",
+			"page": 318,
+			"creature": [
+				"Vampire"
+			],
+			"traits": [
+				"divine",
+				"enchantment",
+				"mental"
+			],
+			"entries": [
+				"The vampire's presence brings forth creatures of the night to do the master's bidding. These typically include rat swarms, bat swarms, and wolves, but can include other creatures. The vampire can give telepathic orders to these creatures as long as they are within 100 feet, but they can't communicate back."
+			]
+		},
+		{
+			"name": "Turn to Mist",
+			"source": "B1",
+			"page": 318,
+			"creature": [
+				"Vampire"
+			],
+			"traits": [
+				"concentrate",
+				"divine",
+				"transmutation"
+			],
+			"entries": [
+				"The vampire turns into a cloud of vapor, as the {@spell gaseous form} spell, or back to its normal form. The vampire loses fast healing while in gaseous form. The vampire can remain in this form indefinitely."
+			]
+		},
+		{
+			"name": "Vrykolakas Vulnerabilities",
+			"source": "B2",
+			"page": 275,
+			"creature": [
+				"Vampire, Vrykolakas"
+			],
+			"entries": [
+				"Vrykolakas all have the following vulnerabilities",
+				{
+					"type": "ability",
+					"name": "Burial Site Bound",
+					"entries": [
+						" A vrykolakas is bound to the place of its death or interment. It must return to this location once per week and bury itself in the earth for 24 hours, during which time it is paralyzed and can be beheaded. If it is unable to return to this site, it is reduced to 0 Hit Points and attempts to use Feral Corruption; if this host animal can't return to the burial site before the possession effect ends, the vrykolakas is destroyed and the animal host returns to normal. "
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Vulnerable to Decapitation",
+					"entries": [
+						"A vrykolakas that is beheaded can't use its Feral Possession, and a beheaded corpse cannot rise as a vrykolakas."
+					]
+				}
+			]
+		},
+		{
+			"name": "Control Comatose",
+			"source": "BotD",
+			"page": 160,
+			"creature": [
+				"Vampire, Vetalarana"
+			],
+			"traits": [
+				"exploration",
+				"incapacitation",
+				"mental",
+				"necromancy",
+				"occult",
+				"possession"
+			],
+			"frequency": {
+				"unit": "day",
+				"number": 1
+			},
+			"entries": [
+				"The vetalarana manipulator spends 10 minutes to take psychic control of the creatures they've rendered comatose with Drain Thoughts. This has the effects of the {@spell possession} spell, but lasts for up to 6 hours, has a range of 1 mile, and the vetalarana can control a number of comatose victims at a time equal to half the vetalarana's level. A comatose victim can't resist this possession and automatically gets a critical failure on its saving throw against Control Comatose.",
+				"As long as a comatose victim is controlled by a vetalarana manipulator in this way, the victim's stupefied and unconscious conditions are temporarily suppressed."
 			]
 		}
 	]
