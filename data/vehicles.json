@@ -1,6 +1,508 @@
 {
 	"vehicle": [
 		{
+			"name": "Atakebune",
+			"level": 11,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 266,
+			"traits": [
+				"huge"
+			],
+			"price": {
+				"amount": 4000,
+				"coin": "gp"
+			},
+			"entries": [
+				"The structure of these gargantuan vessels is fully covered by iron. These vessels are akin to floating fortresses rather than true warships, and are typically used in coastal actions and for river blockades. They use oars for propulsion, as their full iron cladding, as well as their bulk, impedes propulsion via sails.",
+				"Many of these vessels are beautifully gilded with red and gold inlays across their iron cladding. This added weight only further contributes to their suspect stability."
+			],
+			"space": {
+				"long": {
+					"number": 75,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 30,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 30,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "rower",
+					"number": 80,
+					"entry": "rowers"
+				}
+			],
+			"passengers": 60,
+			"pilotingCheck": [
+				{
+					"skill": "Sailing Lore",
+					"dc": 27
+				},
+				{
+					"skill": "Diplomacy",
+					"dc": 29
+				},
+				{
+					"skill": "Intimidation",
+					"dc": 29
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 26
+				},
+				"savingThrows": {
+					"fort": 21
+				},
+				"hardness": {
+					"default": 20
+				},
+				"hp": {
+					"default": 150
+				},
+				"bt": {
+					"default": 75
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": [
+				{
+					"type": "swim",
+					"speed": 30,
+					"note": "rowed"
+				}
+			],
+			"collision": {
+				"damage": "{@dice 8d10}",
+				"dc": 27
+			},
+			"abilities": {
+				"bot": [
+					{
+						"name": "Sluggish",
+						"entries": [
+							"This vehicle must move twice its length for each 90-degree turn it makes."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Baochuan",
+			"level": 13,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 266,
+			"traits": [
+				"gargantuan"
+			],
+			"price": {
+				"amount": 8000,
+				"coin": "gp"
+			},
+			"entries": [
+				"The keel of these vessels consists of wooden beams bound together with iron hoops to provide added stability during ocean transits. In stormy weather, holes in the prow partially fill with water when the ship pitches forward, lessening the violent turbulence caused by waves. Renowned for their seaworthiness, Baochuan were often chosen for transporting valuable treasure or important emissaries during stormy seasons. As such, they're often referred to as “treasure ships” and highly sought prizes by pirates."
+			],
+			"space": {
+				"long": {
+					"number": 300,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 50,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 40,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "rower",
+					"number": 200,
+					"entry": "rowers"
+				}
+			],
+			"passengers": 400,
+			"pilotingCheck": [
+				{
+					"skill": "Sailing Lore",
+					"dc": 31
+				},
+				{
+					"skill": "Nature",
+					"dc": 33
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 29
+				},
+				"savingThrows": {
+					"fort": 23
+				},
+				"hardness": {
+					"default": 10
+				},
+				"hp": {
+					"default": 250
+				},
+				"bt": {
+					"default": 150
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"weaknesses": [
+				{
+					"name": "fire",
+					"amount": 10,
+					"note": "until broken"
+				}
+			],
+			"speed": [
+				{
+					"type": "swim",
+					"speed": 30,
+					"note": "wind"
+				}
+			],
+			"collision": {
+				"damage": "{@dice 9d10}",
+				"dc": 22
+			}
+		},
+		{
+			"name": "Djong",
+			"level": 15,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 267,
+			"traits": [
+				"gargantuan"
+			],
+			"price": {
+				"amount": 17000,
+				"coin": "gp"
+			},
+			"entries": [
+				"Djongs are immense multi-decked outriggers used by the Tian-Sing for transit within the Minata archipelago. Similar in design to the smaller karakoa, djongs have an open hull design that makes them very fast and exceptionally stable, capable of carrying hundreds of rowers on their decks, as well as a large woven triangular sail on a mast. The broad platforms on the djongs made them excellent for ferrying cargo, and their size and stability enabled them to host hundreds of warriors and their gear for transport. During peacetime, djongs are often used to host major celebrations and important weddings, with dignitaries bringing large entourages on their own djongs and then rafting up with other celebrants to form a floating village.",
+				"The size of the djongs is limited by the availability of the large timber required to form each of its twin hulls. Many of the giant trees suitable to build djongs have been harvested, making the surviving djongs even more valuable, with their overall length becoming a metric of status for their owners."
+			],
+			"space": {
+				"long": {
+					"number": 250,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 100,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 50,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "rower",
+					"number": 400,
+					"entry": "rowers"
+				}
+			],
+			"passengers": 100,
+			"pilotingCheck": [
+				{
+					"skill": "Sailing Lore",
+					"dc": 34
+				},
+				{
+					"skill": "Diplomacy",
+					"dc": 36
+				},
+				{
+					"skill": "Intimidation",
+					"dc": 36
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 32
+				},
+				"savingThrows": {
+					"fort": 26
+				},
+				"hardness": {
+					"default": 15
+				},
+				"hp": {
+					"default": 280
+				},
+				"bt": {
+					"default": 140
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"weaknesses": [
+				{
+					"name": "fire",
+					"amount": 15,
+					"note": "until broken"
+				}
+			],
+			"speed": [
+				{
+					"type": "swim",
+					"speed": 50,
+					"note": "rowed, wind"
+				}
+			],
+			"collision": {
+				"damage": "{@dice 9d12}",
+				"dc": 34
+			},
+			"abilities": {
+				"bot": [
+					{
+						"name": "Sluggish",
+						"entries": [
+							"This vehicle must move twice its length for each 90-degree turn it makes."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Geobukseon",
+			"level": 12,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 267,
+			"traits": [
+				"gargantuan"
+			],
+			"price": {
+				"amount": 6000,
+				"coin": "gp"
+			},
+			"entries": [
+				"These squat vessels are built with a protective shell- like covering on their deck rather than the open main deck design of most sailing vessels. The fully covered deck protects the vessel's 80 rowers and complement of 50 soldiers from arrows and incendiary weapons. In addition, this armored deck is covered with iron spikes to discourage enemies from attempting to board.",
+				"On the bow of the vessel is mounted a dragon head which can emit sulfur smoke to effectively hide its movement in close combat. Below the dragon head is mounted a large anchor with a wooden crest shaped like a face, and these can be used to ram into enemy ships."
+			],
+			"space": {
+				"long": {
+					"number": 110,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 35,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 40,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "rower",
+					"number": 80,
+					"entry": "rowers"
+				}
+			],
+			"passengers": 50,
+			"pilotingCheck": [
+				{
+					"skill": "Sailing Lore",
+					"dc": 30
+				},
+				{
+					"skill": "Diplomacy",
+					"dc": 32
+				},
+				{
+					"skill": "Intimidation",
+					"dc": 32
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 23
+				},
+				"savingThrows": {
+					"fort": 18
+				},
+				"hardness": {
+					"default": 20
+				},
+				"hp": {
+					"default": 180
+				},
+				"bt": {
+					"default": 90
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": [
+				{
+					"type": "swim",
+					"speed": 30,
+					"note": "rowed, wind"
+				}
+			],
+			"collision": {
+				"damage": "{@dice 8d10}",
+				"dc": 30
+			},
+			"abilities": {
+				"bot": [
+					{
+						"name": "Smoking Breath",
+						"entries": [
+							"When the geobukseon Stops, it's {@condition concealed} by the smoke for 1 round or until it next moves. The geobukseon can't use this concealment to {@action Hide} or {@action Sneak}."
+						]
+					},
+					{
+						"name": "Turtleback Spikes",
+						"entries": [
+							"The roof of a geobukseon is {@quickref difficult terrain||3|terrain} and {@quickref hazardous terrain||3|terrain}. A creature that moves on the roof takes {@damage 1d6} piercing damage for every square of that area it moves into. Falling {@condition prone} on the geobukseon's roof deals {@damage 5d6} piercing damage."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Karakoa",
+			"level": 5,
+			"source": "LOTXWG",
+			"remaster": true,
+			"page": 267,
+			"traits": [
+				"large"
+			],
+			"price": {
+				"amount": 450,
+				"coin": "gp"
+			},
+			"entries": [
+				"Karakoa are large twin-hulled outriggers used by the Tian-Sing for transit within the massive Minata archipelago. Fast and sturdy, karakoa are distinct from other Tian vessels in that they're equipped with platforms for transporting warriors and fighting at sea. During peacetime, they're also used as trading ships, able to carry goods and passengers. While capable of crossing oceans, their open hull design may perform poorly during rough seas as breaking whitecaps could swamp the craft."
+			],
+			"space": {
+				"long": {
+					"number": 80,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 40,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 30,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "rower",
+					"number": 20,
+					"entry": "rowers"
+				}
+			],
+			"passengers": 20,
+			"pilotingCheck": [
+				{
+					"skill": "Sailing Lore",
+					"dc": 20
+				},
+				{
+					"skill": "Athletics",
+					"dc": 22
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 17
+				},
+				"savingThrows": {
+					"fort": 12
+				},
+				"hardness": {
+					"default": 10
+				},
+				"hp": {
+					"default": 70
+				},
+				"bt": {
+					"default": 35
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 10,
+						"note": "until broken"
+					}
+				]
+			},
+			"speed": [
+				{
+					"type": "swim",
+					"speed": 40,
+					"note": "rowed, wind"
+				}
+			],
+			"collision": {
+				"damage": "{@dice 5d8}",
+				"dc": 20
+			}
+		},
+		{
 			"name": "Planar Skiff",
 			"source": "RoE",
 			"page": 225,
