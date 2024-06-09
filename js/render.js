@@ -5828,13 +5828,14 @@ Renderer.plane = {
 		return renderStack.join("");
 	},
 	getSubHead (it) {
-		if (!it.planeData) return "";
 		const renderer = Renderer.get()
 		const renderStack = []
-		if (it.planeData.category) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
-		if (it.planeData.divinities) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
-		if (it.planeData.inhabitants) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
-		renderStack.push(Renderer.utils.getDividerDiv())
+		if (it.planeData?.category) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
+		if (it.planeData?.divinities) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
+		if (it.planeData?.inhabitants) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
+		if (it.keyAnchor) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Key Anchor&nbsp;</strong>${renderer.render(it.keyAnchor)}</p>`);
+		if (it.mindscapeEntry) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Entry&nbsp;</strong>${renderer.render(it.mindscapeEntry)}</p>`);
+		if (renderStack.length) renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("")
 	},
 };
