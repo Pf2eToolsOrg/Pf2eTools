@@ -957,6 +957,52 @@
 	],
 	"curse": [
 		{
+			"name": "Soul Degradation",
+			"type": "Curse",
+			"level": 7,
+			"source": "SoG3",
+			"page": 25,
+			"traits": [
+				"rare",
+				"curse",
+				"magical"
+			],
+			"entries": [
+				"The PC's sense of self becomes subsumed by ghostly desires, eventually rendering them a senseless shell. Soul degradation doesn't increase or decrease its stage over the passage of time. Instead, each time a {@ritual transmigrate|SoG3|transmigrated} PC recovers from the {@condition dying} condition, they must attempt a new saving throw against this curse. Certain events or effects that the PCs might encounter in Chapter 3 of this adventure can also force them to save against soul degradation. Once the effects of transmigration end for a PC, they immediately and fully recover from soul degradation.",
+				{
+					"type": "affliction",
+					"savingThrow": "Will",
+					"DC": 23,
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "weakness 5 to positive damage"
+						},
+						{
+							"stage": 2,
+							"entry": "weakness 10 to positive damage"
+						},
+						{
+							"stage": 3,
+							"entry": "weakness 10 to positive damage, and each time the PC critically fails an attack roll or skill check they're {@condition stunned 1} as their mind obsesses over the failure"
+						},
+						{
+							"stage": 4,
+							"entry": "as stage 3"
+						},
+						{
+							"stage": 5,
+							"entry": "as stage 3"
+						},
+						{
+							"stage": 6,
+							"entry": "The PC is reduced to an unthinking {@trait haunt}. Until the curse is removed or the duration of the {@ritual transmigrate|SoG3} ritual ends, they repeat a short loop of actions and are no longer under the control of the player (unlimited duration)."
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Obnubilate Curse",
 			"source": "GW1",
 			"page": 79,
