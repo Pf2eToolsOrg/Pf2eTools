@@ -2,6 +2,228 @@
 	"table": [
 		{
 			"type": "table",
+			"source": "SoG3",
+			"page": 14,
+			"name": "Ill Omens in Willowshore",
+			"labelRowIdx": [
+				0
+			],
+			"colStyles": [
+				"text-left",
+				"text-left"
+			],
+			"colSizes": [
+				2,
+				20
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice 1d8|d8 Roll}",
+					"Result"
+				],
+				[
+					"1",
+					"Someone bites into a large, ripe persimmon. The torrent of juice that flows down their mouth and chin smells overwhelmingly sweet but looks exactly like blood; no amount of accusation or persuasion can make the person cognizant of this fact."
+				],
+				[
+					"2",
+					"A PC feels something like a taut strand of hair snap across their cheek while walking forward and takes 1 point of slashing damage. A razor thin cut appears on their face, as if the hair was sharp enough to draw blood."
+				],
+				[
+					"3",
+					"A PC feels something oddly soft brush their skin. A ball of silkworms has fallen from somewhere on high and struck the PC on the way down. The caterpillars writhe helplessly on the ground like maggots, as there are no mulberry trees in winter to feed them."
+				],
+				[
+					"4",
+					"A mysterious black shadow slowly appears on a building that a PC is standing near, as if the walls were being burnt from the inside. An investigation reveals no sign of any fire."
+				],
+				[
+					"5",
+					"A PC hears a sharp crunching noise beneath their feet. An investigation reveals the broken fragments of teeth embedded in their shoes or skin, leaving no lasting damage other than a sense of disquiet."
+				],
+				[
+					"6",
+					"A person minces river fish to prepare them for fermentation into fish paste. The fish have glassy human eyes and prominent human teeth in their mouths."
+				],
+				[
+					"7",
+					"A crimson butterfly emerges from an unexpected nearby location, such as from a cup of tea or out of a PC's mouth when they sneeze. The butterfly flutters around the party for a few rounds before it drops to the ground and melts into a bloodstain."
+				],
+				[
+					"8",
+					"A strangely cold breeze rustles through the area; as it blows across the party, one PC (determined randomly) hears threatening whispers promising death and doom—the voice delivering the whispers seems to be that of a different PC."
+				]
+			]
+		},
+		{
+			"type": "table",
+			"source": "SoG3",
+			"page": 28,
+			"name": "Unexpected Trouble",
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				1,
+				3,
+				3
+			],
+			"colStyles": [
+				"text-center",
+				"text-left",
+				"text-left"
+			],
+			"rows": [
+				[
+					"{@dice 1d6|Roll}",
+					"Preparation Point Loss",
+					"Minimize with a DC 24 Skill Check"
+				],
+				[
+					"1–2",
+					"{@dice 1d4} Food Points",
+					"{@skill Nature} or {@skill Survival} check"
+				],
+				[
+					"3–4",
+					"{@dice 1d4+2} Hope Points",
+					"{@skill Diplomacy} or {@skill Performance} check"
+				],
+				[
+					"5–6",
+					"{@dice 1d4} Security Points",
+					"{@skill Athletics} or {@skill Crafting} check"
+				]
+			]
+		},
+		{
+			"type": "table",
+			"source": "SoG3",
+			"page": 29,
+			"name": "More of Yami's Gifts",
+			"labelRowIdx": [
+				0
+			],
+			"colStyles": [
+				"text-left",
+				"text-left"
+			],
+			"colSizes": [
+				1,
+				20
+			],
+			"rollable": true,
+			"rows": [
+				[
+					"{@dice 1d8|Roll}",
+					"Gift"
+				],
+				[
+					"1",
+					"A partially chewed origami crane."
+				],
+				[
+					"2",
+					"A partially eaten sparrow (possibly still alive)."
+				],
+				[
+					"3",
+					"A squished lemon."
+				],
+				[
+					"4",
+					"A fresh dumpling from Mama Bao's."
+				],
+				[
+					"5",
+					"A {@item grim trophy} talisman that appears to be a still-bloody human ear.*"
+				],
+				[
+					"6",
+					"A waterproof bag of saffron worth 100 gp.*"
+				],
+				[
+					"7",
+					"A {@item greater smokestick}.*"
+				],
+				[
+					"8",
+					"A {@item greater hat of disguise} currently taking the form of a zhanjiao putou (a black hat with two long, stiff, wing-like flaps).*"
+				]
+			],
+			"footnotes": [
+				"*This gift can only be rolled once; treat further rolls of this gift as 1 platinum coin."
+			]
+		},
+		{
+			"type": "table",
+			"source": "SoG3",
+			"page": 48,
+			"name": "A Summary of Terror",
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				2,
+				2,
+				6
+			],
+			"colStyles": [
+				"text-center",
+				"text-center",
+				"text-left"
+			],
+			"rows": [
+				[
+					"Terror Threshold",
+					"NPC Fear",
+					"Fortress Response"
+				],
+				[
+					"1",
+					"–",
+					"None."
+				],
+				[
+					"2",
+					"–",
+					"The two {@creature exorcist|SoG3|exorcists} from area C1 leave to patrol the village. Villagers and cooks inside the fort retreat to the village."
+				],
+				[
+					"3",
+					"{@condition Frightened 1}",
+					"Earth Gate is locked. The Small Wood Gate is locked and guarded by {@creature warden|GMG|mercenaries} from area C6."
+				],
+				[
+					"4",
+					"{@condition Frightened 1}",
+					"The {@creature shrine maiden|SoG3|shrine maidens} from area C15 patrol the periphery hall."
+				],
+				[
+					"5",
+					"{@condition Frightened 1}",
+					"All exterior fortress gates (area C2) are closed and locked."
+				],
+				[
+					"6",
+					"{@condition Frightened 2}",
+					"Fenfang and two {@creature exorcist|SoG3|exorcists} retreat to area C16."
+				],
+				[
+					"7",
+					"{@condition Frightened 2}",
+					"The fortress's nine {@creature warden|GMG|mercenaries} barricade themselves into area C5. {@creature Mago Kai|SoG3} retreats to his quarters in area C20."
+				],
+				[
+					"8",
+					"{@condition Frightened 3}",
+					"{@creature Mago Kai|SoG3} has a {@creature shrine maiden|SoG3} cast {@spell sending} to report to allies back in the city of Sze about the situation and ask for reinforcements. Help won't arrive immediately, but within the next several days, {@creature exorcist|SoG3|exorcists}, {@creature warden|GMG|mercenaries}, and {@creature shrine maiden|SoG3|shrine maidens} the PCs might have defeated are replaced by new ones. Mago Kai can call for reinforcements up to three times."
+				]
+			]
+		},
+		{
+			"type": "table",
 			"source": "SoG2",
 			"page": 10,
 			"name": "Yami's Gifts",
