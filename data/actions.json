@@ -1,6 +1,47 @@
 {
 	"action": [
 		{
+			"name": "Solving Tenon's Problem",
+			"source": "SoG3",
+			"page": 31,
+			"traits": [
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"You spend the day considering a solution to Tenon's problem, speaking to Kawaka and others in town to try to recruit assistance, and then report the results of your work back to Tenon. Attempt a {@dc 22} {@skill Diplomacy} check, a {@dc 24} {@skill lore||Willowshore Lore} check, or a {@dc 24} {@skill Society} check. This activity can only be attempted once, but other PCs can {@action Aid} this attempt by succeeding at a {@dc 20} {@skill Diplomacy}, {@skill Society}, or {@skill lore||Willowshore Lore} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PCs—working with Kawaka, {@creature shou matsuki|SoG1|Old Matsuki}, and several artisans in town—manage to recruit enough support to begin work on shoring up the old farmhouse immediately, ensuring that it will survive the winter. Kawaka and other townsfolk agree to visit Tenon regularly to keep him from getting lonely until a new family can be found to live in the house. Many townsfolk pitch in to help shore up and protect the building from the winter storms yet to come, at no cost to the PCs or the town's security. The PCs earn 120 XP and {@dice 1d4+1} Hope Points.",
+						"Success": "As critical success, but the PCs must either spend 400 gp or the town must expend 2 Security Points to ensure the house is protected from the coming winter. The PCs earn 80 XP and 1 Hope Point.",
+						"Failure": "As success, but no one in town is interested in spending time with a potentially dangerous and unpredictable spirit, including Kawaka. A PC can commit to keeping Tenon company through the winter by making several lengthy visits to the house as their weekly downtime activity; however, if no PC performs this in a week, his despair takes over. In a fit of frustration, Tenon accidentally damages the slipshod repair work on the house, causing the house to collapse into ruins, killing Tenon permanently. If this occurs, the tragic news costs 1 Hope Point. The PCs earn 40 XP.",
+						"Critical Failure": "As failure, but a local offers to keep Tenon company. This local should be someone who recently lost a loved one or friend to a vanishing or death in town—choose an NPC who fits your game's story. Unfortunately, this NPC is only volunteering out of a misplaced sense of obligation and has been more affected by their grief than anyone (including themself) realizes. This NPC's grief compounds with Tenon's,forming a destructive cycle that eventually compels the NPC to burn the house down while they're inside. Reduce Willowshore's population by 1; worse, the tragic end costs {@dice 1d4+1} Hope Points."
+					}
+				}
+			]
+		},
+		{
+			"name": "Prepare for Royalty",
+			"source": "SoG3",
+			"page": 38,
+			"traits": [
+				"exploration"
+			],
+			"entries": [
+				"One of the PCs spends 8 hours preparing a chosen site to host {@creature ren mei li|SOG4|Lady Ren}. Other PCs can {@action Aid} this check, but if no PC even attempts the check to prepare, then treat it as if they'd critically failed at this activity. The PC must attempt a {@dc 24} {@skill Crafting}, {@skill Society}, or {@skill lore||Tea Lore} check. This check takes a \u20134 circumstance penalty if the site the PCs choose hasn't been built up over the course of the campaign.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PCs gain a +1 circumstance bonus to all {@action Influence|GMG} checks during this encounter.",
+						"Success": "The PCs prepare the site but had to dip into the stores to get everything set up. Reduce Food Points by 1.",
+						"Failure": "As success, but reduce Food Points by {@dice 1d4+1}.",
+						"Critical Failure": "As Failure, but the shabby job causes the PCs to take a \u20132 circumstance penalty to all {@action Influence|GMG} checks during this encounter."
+					}
+				}
+			]
+		},
+		{
 			"name": "Repair and Restore",
 			"source": "SoG2",
 			"page": 9,
