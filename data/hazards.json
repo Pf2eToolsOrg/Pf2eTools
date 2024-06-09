@@ -1,6 +1,378 @@
 {
 	"hazard": [
 		{
+			"name": "Spiritual Disruptor",
+			"level": 5,
+			"source": "SoG3",
+			"page": 10,
+			"traits": [
+				"rare",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 21,
+				"minProf": "expert"
+			},
+			"description": [
+				"A flickering humanoid shape with four gold eyes, clad in red robes with black sleeves and wielding a torch that burns with red fire and smoke, strides purposefully across the ground, creating distortions in reality around it that cause wood to twist and decay and send agonizing pain through the flesh."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 23} (expert) {@skill Intimidation} to disrupt the haunt's concentration in the living world and break the link to the mindscape, {@skill Religion} {@dc 27} (expert) to banish the energy from the mindscape, or {@skill Occultism} {@dc 30} (expert) to turn the haunt's energy back against itself to cancel it out."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": {
+					"std": 60
+				},
+				"bt": {
+					"std": 30
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"amount": 10,
+						"name": "mental"
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Manifest",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The PCs enter or otherwise interact with the building and its contents",
+					"entries": [
+						"A spiritual disruptor manifests at both locations marked A4. Both hazards then roll initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The spiritual disruptor's first action each round is always to create a pulse of rippling energy in a 10-foot emanation that causes the surrounding structure to appear to age rapidly and become distorted, causing the ground in this area to become {@quickref difficult terrain||3|terrain}. If the spiritual disruptor is adjacent to a living target, it attempts to disrupt that target's life energy by making a {@action Strike} with its smoking torch. If the spiritual disruptor isn't adjacent to a living target, it {@action stride||Strides} toward the closest target. If it has multiple adjacent targets, the spiritual disruptor favors higher-level targets, selecting randomly from multiple adjacent equal-level targets.",
+				{
+					"type": "ability",
+					"name": "Speed",
+					"entries": [
+						"20 feet"
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "smoking torch",
+					"attack": 17,
+					"damage": "{@damage 2d10+9} negative",
+					"types": [
+						"negative"
+					],
+					"type": "attack"
+				}
+			],
+			"reset": [
+				"If both hazards are disabled or destroyed, a new one forms adjacent to a randomly determined character still inside the crumbling building after {@dice 1d4+2} rounds. Once all three NPCs are rescued or exorcised, these hazards don't reset."
+			]
+		},
+		{
+			"name": "Manor Wards",
+			"level": 10,
+			"source": "SoG3",
+			"page": 18,
+			"traits": [
+				"unique",
+				"environmental",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 5
+			},
+			"description": [
+				"Layers of fulus and strips of prayer-printed ribbons are plastered over the walls and entrances to the manor, demarcating a boundary around the mansion where no ghosts or spirits can pass."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 35} {@skill Arcana}, {@skill Occultism}, or {@skill Thievery} (master) to compromise the magic to allow entry into the manor, {@dc 32} {@skill Athletics} to force your way through the barrier and enter the manor (this doesn't allow other PCs to enter behind you, though!), or {@spell dispel magic} (5th level; counteract {@dc 28}) to {@quickref counteract|CRB|3|counteracting|0} the wards"
+				]
+			},
+			"actions": [
+				{
+					"name": "Denied!",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "A creature without a nullifying seal script on their hand approaches within 5 feet of the manor or attempts to damage the manor",
+					"entries": [
+						"An explosive blast of magic violently slams against the intruder, who must attempt a {@dc 33} Reflex save. If the triggering creature isn't adjacent to the manor, it adjusts the result of this save up by one degree of success.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature takes {@damage 1d12} force damage and is pushed 5 feet away from the manor.",
+								"Success": "The creature takes {@damage 2d12+13} force damage and is pushed 5 feet away from the manor",
+								"Failure": "The creature takes {@damage 4d12+16} force damage and is thrown 20 feet back and knocked {@condition prone}, taking 10 bludgeoning damage from the fall.",
+								"Critical Failure": "As failure, but 100 feet back and knocked {@condition prone}, taking 50 bludgeoning damage from the fall."
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"The wards reset automatically, continuing to prevent entry and damaging those attempting to bypass until they're disabled."
+			]
+		},
+		{
+			"name": "Nosoi's Vengeance",
+			"level": 11,
+			"source": "SoG3",
+			"page": 53,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 23,
+				"minProf": "master"
+			},
+			"description": [
+				"The sparrow on the scroll animates, speaking to the PCs in Noguchi's voice (one of the {@creature nosoi||nosois} from Event 11: Nosois' Brunch): \"They're the ones! They're the blasphemers who can't even properly serve tea! Send them along to the Lady!\""
+			],
+			"disable": {
+				"entries": [
+					"{@dc 36} {@skill Thievery} (to quickly destroy the scroll without triggering the hazard), {@dc 33} {@skill Religion} (to apologize to {@deity Pharasma} and the {@creature nosoi||nosois} for the previous insult), or {@spell dispel magic} (6th level; {@quickref counteract|CRB|3|counteracting|0} {@dc 29})."
+				]
+			},
+			"actions": [
+				{
+					"name": "Summon Vanths",
+					"traits": [
+						"conjuration",
+						"divine",
+						"summon"
+					],
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "One of the PCs enters the room and is noticed by the hazard",
+					"entries": [
+						"The trap summons four {@creature vanth|B2|vanths}, who then roll initiative and remain for up to 1 minute before the spell ends and the vanths disappear. The {@trait summoned} vanths can use 3 actions each round and can use reactions, unlike most {@trait summoned} creatures."
+					]
+				}
+			]
+		},
+		{
+			"name": "Warding Bell",
+			"level": 11,
+			"source": "SoG3",
+			"page": 55,
+			"traits": [
+				"complex",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 0
+			},
+			"description": [
+				"At the heart of the shrine hangs a massive bronze temple bell."
+			],
+			"disable": {
+				"entries": [
+					"Ringing the bell as an {@action Interact} action eight times in succession with the ceremonial ringer (carried by {@creature Mago Kai|SoG3}) over the course of three consecutive rounds automatically deactivates the hazard, {@dc 36} {@skill Thievery} to extinguish the flame within the bell, {@dc 36} {@skill Religion} to appeal to {@deity Pharasma} to extinguish the flame, or {@spell dispel magic} or a {@creature shimmerthief|SoG3}'s Drain Light (6th level; {@quickref counteract|CRB|3|counteracting|0} {@dc 29})"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 31
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 18
+					}
+				},
+				"hardness": {
+					"std": 20
+				},
+				"hp": {
+					"std": 80
+				},
+				"bt": {
+					"std": 40
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Flare Up",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"The warding bell's light increases from a faint flickering to luminous enough that the whole room is brightly lit. The hazard then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; {@trait divine}, {@trait emotion}, {@trait enchantment}, {@trait fear}, {@trait mental}) The warding bell emits a harrowing ring that can be heard only by {@trait undead} or {@ritual transmigrate|SoG3|transmigrated} PCs in area C11; affected characters must attempt a {@dc 30} Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected and is temporarily immune to the warding bell's routine for 24 hours.",
+						"Success": "The creature is unaffected.",
+						"Failure": "The creature becomes {@condition frightened 1} and takes {@damage 6d6} mental damage.",
+						"Critical Failure": "The creature becomes {@condition frightened 2}, takes {@damage 12d6} mental damage, and is {@condition fleeing} as long as it remains frightened."
+					}
+				}
+			],
+			"reset": [
+				"Reactivating the warding bell requires a complicated rite taking several days."
+			]
+		},
+		{
+			"name": "Explosive Manifestation",
+			"level": 7,
+			"source": "SoG3",
+			"page": 71,
+			"traits": [
+				"uncommon",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 27,
+				"minProf": "expert"
+			},
+			"description": [
+				"Reality suddenly and violently transforms, shifting from a harmless patch of terrain into something truly deadly as the mindscape draws from memories of pain and agony, revisiting old wounds."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 27} {@skill Occultism} to cause the hazard to fade away without triggering it, or {@dc 30} {@skill Survival} to sense what parts of reality are in flux and to avoid the area"
+				]
+			},
+			"actions": [
+				{
+					"name": "Reaction",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature {@action interact||Interacts} with the hazardous object, or steps into the hazardous area",
+					"entries": [
+						"A sudden blast detonates, centered on the triggering creature's square. This blast fills a 20-foot burst and inflicts {@damage 4d10+18} damage to all creatures in the area ({@dc 25} basic Reflex save). The type of damage is chosen by the GM from physical (bludgeoning or piercing), or from acid, cold, electricity, fire, or sonic. The description of how this explosion manifests should vary to match the type of damage inflicted, but should also draw from the triggering creature's past, as if memories of old wounds had suddenly come back with a vengeance. An explosive manifestation that deals piercing damage might be conveyed as a sudden blast of spikes radiating up out of the ground (stemming from a creature's memory of the time it fell into a spiked pit and almost died). One that deals fire damage might involve the sound of a dragon's roar as the air erupts into flames (coming from a creature's memory of being nearly incinerated by a dragon). A moment later, all evidence of the hazard's manifestation (save for the damage it causes to the creatures in its area) vanish."
+					]
+				}
+			]
+		},
+		{
+			"name": "Temporal Warp",
+			"level": 7,
+			"source": "SoG3",
+			"page": 72,
+			"traits": [
+				"uncommon",
+				"environmental",
+				"incapacitation"
+			],
+			"stealth": {
+				"bonus": 27,
+				"minProf": "expert"
+			},
+			"description": [
+				"Just as a fight begins, time suddenly seems to break in the area, causing some elements to freeze in place and others to slow down or speed up, imparting a disjointed and nightmarish sensation upon those present."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 27} {@skill Occultism} to cause the hazard to fade away and release all those affected by it from the hazard's effects, or {@dc 30} {@skill Intimidation} to shock a single adjacent creature out of the distortion and free them from the hazard's effects."
+				]
+			},
+			"actions": [
+				{
+					"name": "Reaction",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Initiative is rolled at the start of a combat where the PCs face a type of foe they have fought before",
+					"entries": [
+						"As the combat begins, everything suddenly feels distorted and dreamlike. Just as in dreams, time itself seems to stretch or compress in ways that transform everything into a nightmare. All creatures within a 30-foot-burst from the first creature to act in combat must attempt a Will saving throw as, for a brief moment, time appears to stand still.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is {@condition quickened 1} for 1 minute; it can only use the extra action each round for actions with the {@trait move} trait.",
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is {@condition slowed 1} for 1 minute.",
+								"Critical Failure": "The creature is {@condition stunned 3} as it perceives time to have stopped entirely for it. When it recovers from the stun, it is {@condition slowed 1} for 1 minute."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "False Victory",
+			"level": 7,
+			"source": "SoG3",
+			"page": 72,
+			"traits": [
+				"rare",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 27,
+				"minProf": "expert"
+			},
+			"description": [
+				"After a battle concludes, the battlefield shimmers strangely as dead bodies twitch, destroyed objects shake, and feelings of déjà vu grow overwhelmingly strong."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 27} {@skill Occultism} to cause the hazard to fade away before it manifests, or {@dc 30} {@skill Deception} to pretend to ignore the growing continuity break and proceed without fear, causing it to collapse in on itself."
+				]
+			},
+			"actions": [
+				{
+					"name": "Reaction",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The PCs conclude an encounter in which a battle took place",
+					"entries": [
+						"The mindscape starts to revert the results of the battle, shifting things back to the way they were at the start of the encounter. The reversion takes 1 round to complete, during which the PCs can attempt to disable the hazard or take any other actions to prepare for facing the same encounter over again. At the end of the round, the encounter resets and initiative is rolled again; all foes and environmental elements return to the condition they were in just before the fight began, but the PCs themselves do not."
+					]
+				}
+			]
+		},
+		{
 			"name": "Writhing Hair",
 			"source": "SoG2",
 			"page": 17,
