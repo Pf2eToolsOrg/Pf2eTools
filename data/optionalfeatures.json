@@ -1,5 +1,366 @@
 {
-	"optionalfeature": [
+	"optionalfeature": [{
+			"name": "Curiosity",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Minor Spirit Power",
+			"source": "SoG3",
+			"page": 78,
+			"traits": [
+				"rare",
+				"divination",
+				"linguistic",
+				"mental",
+				"occult"
+			],
+			"entries": [
+				"A desire for knowledge can be a powerful motivation. This focus also commonly manifests in young or otherwise innocent spirits, as they're bound mainly by a desire to see the world a little longer. You reach out to touch an adjacent living target, and for a moment, your hand becomes incorporeal as it passes through their body. The target must attempt a Will save, after which they're immune to this power.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "You perceive vague surface thoughts from the target and find out whether its Intelligence modifier is higher than, equal to, or lower than yours.",
+						"Failure": "As success, but you can probe into the target's mind and attempt to uncover the answer to a question you telepathically pose to them. The target can attempt a {@skill Deception} check against your spirit power's DC; if the target succeeds, you don't learn the answer, and on a critical success, the target gives you a false answer you believe is truthful.",
+						"Critical Failure": "As failure, but once you resolve the telepathic question and its answer, the target loses all memory of this event."
+					}
+				}
+			]
+		},
+		{
+			"name": "Delusion",
+			"type": "Minor Spirit Power",
+			"source": "SoG3",
+			"page": 79,
+			"traits": [
+				"rare",
+				"auditory",
+				"illusion",
+				"occult",
+				"olfactory",
+				"visual"
+			],
+			"entries": [
+				"You weave illusions to fool mortal senses. However, the metaphysical distance between the spirit world and that of the living distorts how these figments appear to living viewers. To {@trait undead}, and to creatures with {@trait illusion}-piercing abilities such as {@spell true seeing}, the images appear as you intend for them to. To other observers, these illusions always take on a macabre tone. Blood, bone, and shadow replace more mundane materials in the composition. Speech is warped to resemble either shrill screams or low-pitched growls and is generally unintelligible. You gain a +2 status bonus to {@skill Deception} checks.",
+				"Once per day, you can cast one of the following spells as a 5th-level innate occult spell: {@spell hallucinatory terrain}, {@spell illusory creature}, or {@spell illusory object}."
+			]
+		},
+		{
+			"name": "Duty",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Minor Spirit Power",
+			"source": "SoG3",
+			"page": 79,
+			"traits": [
+				"rare",
+				"enchantment",
+				"incapacitation",
+				"linguistic",
+				"mental",
+				"occult"
+			],
+			"entries": [
+				"Stoic resolve or plain stubbornness form the core of this focus. While the dead can't demand their flesh persist beyond their time, they can still impose some of their iron will on other people. This focus expresses itself as an ability to whisper in the ears of the living. You whisper to a target within 30 feet that you can see. The target must then attempt a Will saving throw, after which they're immune to this power.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target hears your whispered words but isn't otherwise affected.",
+						"Success": "The target is unnerved by your whispered words, and becomes {@condition frightened 1}.",
+						"Failure": "The target hears your whispered words and must obey your suggested course of action for 1 minute, until it has completed the task, or until the task becomes self-destructive or has other obvious negative effects. Your suggested course of action must be phrased in such a way as to seem like a logical course of action to the target.",
+						"Critical Failure": "As failure but the base duration is 1 hour."
+					}
+				}
+			]
+		},
+		{
+			"name": "Love",
+			"type": "Minor Spirit Power",
+			"source": "SoG3",
+			"page": 79,
+			"traits": [
+				"rare",
+				"divination",
+				"mental",
+				"occult"
+			],
+			"entries": [
+				"A powerful and all-consuming devotion, love for another can sometimes reach them beyond the grave. Romantic, familial, or platonic love can be the driving force behind this focus. It expresses itself as an aura of empathy for {@trait animal||animals}, who are sensitive toward otherworldly beings and easier to influence with ghostly emotions than more logical creatures. You can ask questions of, receive answers from, and use the {@skill Diplomacy} skill with {@trait animal||animals}. When you are within 30 feet of a trusted ally (such as another PC), you gain a +1 status bonus to Will saving throws. This increases to a +2 status bonus if a trusted ally you love is within this range."
+			]
+		},
+		{
+			"name": "Obsession",
+			"type": "Minor Spirit Power",
+			"source": "SoG3",
+			"page": 80,
+			"traits": [
+				"rare",
+				"evocation",
+				"occult"
+			],
+			"entries": [
+				"This spirit power represents an extreme fixation on a particular object. While this is most often a result of insatiable greed, this could also represent fondness for a cherished heirloom or attachment to a defining piece of art that a person created. This focus is appropriate for a character particularly attached to their wealth or to a particular piece of gear. It expresses itself as an ability to telekinetically control small objects. You can cast {@spell telekinetic projectile} at will as an innate occult spell.",
+				"Once per day, you can cast one of the following spells as a 5th-level innate occult spell: {@spell animate rope|APG}, {@spell animated assault|APG}, or {@spell telekinetic haul}."
+			]
+		},
+		{
+			"name": "Passion",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Minor Spirit Power",
+			"source": "SoG3",
+			"page": 80,
+			"traits": [
+				"rare",
+				"evocation",
+				"fire",
+				"occult"
+			],
+			"entries": [
+				"Even in death, the flames of excitement burn hot. Be it the result of ignited enthusiasm or burning anger inspired by love for another or something more, the chill of the grave can't quench the hero's emotions. You kindle your passion into actual flames for 1 minute. During this time, your body is engulfed in fire of a color of your choice that sheds bright light in a 40-foot radius (and dim light to the next 40 feet). Your melee {@action strike||Strikes} inflict an additional {@damage 1d6} points of fire damage, you gain resistance 10 to fire, and you gain the following reaction.",
+				{
+					"type": "ability",
+					"name": "Reactive Scorch",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature {@action strike||Strikes} you",
+					"entries": [
+						"The creature takes {@damage 2d6} fire damage (basic Reflex save)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spite",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Minor Spirit Power",
+			"source": "SoG3",
+			"page": 80,
+			"traits": [
+				"rare",
+				"curse",
+				"necromancy",
+				"occult"
+			],
+			"entries": [
+				"Even if a person was kind in life, the dead have many reasons to spite the living, and the violent grudges of the departed are why ghosts are so often feared. This focus isn't just fueled by hate; righteous fury can empower these abilities, though even the most virtuous of feelings can become twisted over time. Spite takes the form of curses, punishing the target with various bodily maladies. Point to a target you can see within 30 feet. The target must then attempt a Will saving throw, after which they're immune to this power.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target's skin itches uncontrollably. If the target doesn't spend an action to scratch at the itch, they become {@condition flat-footed} until the start of their next turn. This effect lasts for 1 minute.",
+						"Failure": "The target's skin breaks out in painful lesions and unsightly sores. The victim becomes {@condition enfeebled 2}, {@condition clumsy 2}, and {@condition drained 2} for 24 hours.",
+						"Critical Failure": "As failure, but the target is also {@condition slowed 1} for the duration."
+					}
+				}
+			]
+		},
+		{
+			"name": "Chilling Paralysis",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 80,
+			"traits": [
+				"rare",
+				"cold",
+				"incapacitation",
+				"necromancy",
+				"occult"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"The unnatural cold of your touch freezes muscles and locks joints, leaving your victims shivering and unable to move. Attempt a melee weapon or unarmed {@action Strike} against a target. If you hit, in addition to all the Strike's normal effects, the target must attempt a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The supernatural cold causes the target to shiver and quake, making them {@condition slowed 1} until the end of their next turn.",
+						"Failure": "The supernatural cold {@condition paralyzed||paralyzes} the target for 1 round, then leaves them {@condition slowed 1} for 1 round after.",
+						"Critical Failure": "The target becomes frozen in place by the cold, and is {@condition paralyzed} for 1 minute. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each attempt. Once the target recovers, they're {@condition slowed 1} for 1 round."
+					}
+				}
+			]
+		},
+		{
+			"name": "Dematerialize",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 80,
+			"traits": [
+				"rare",
+				"necromancy",
+				"occult"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"You cause your body to flicker and fade, becoming truly ghostlike in appearance and becoming unable to touch or to be touched in turn. You become {@trait incorporeal|B1} for 1 round, and can sustain this effect for up to 5 rounds."
+			]
+		},
+		{
+			"name": "Flickering Figure",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 80,
+			"traits": [
+				"rare",
+				"illusion",
+				"occult",
+				"visual"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"You transform your body so it appears to grow translucent, so that your appearance shimmers and blends with your surroundings. You become {@condition concealed} and can use this concealment to {@action Hide}. This effect lasts for 10 minutes."
+			]
+		},
+		{
+			"name": "Flight",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 81,
+			"traits": [
+				"rare",
+				"occult",
+				"transmutation"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"Unbound by the weight of flesh and bones, you become untouched by even the most basic of mortal experiences— gravity. You gain a fly Speed equal to your Speed or 30 feet, whichever is greater, for 10 minutes. While flying, you may grow more ghostly in appearance, or you might leave some sort of temporary flickering trail in the air while you travel as you see fit."
+			]
+		},
+		{
+			"name": "Grudge",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 81,
+			"traits": [
+				"rare",
+				"emotion",
+				"enchantment",
+				"fear",
+				"incapacitation",
+				"mental",
+				"occult"
+			],
+			"entries": [
+				"Your hatred is so powerful that it can overwhelm another's mind. Choose a creature within 30 feet of you that's aware of you. That creature sees your expression suddenly transform into a supernaturally distorted visage of hatred, and must attempt a Will save. Since this perception of your hatred is all perceived directly in the target's mind, it does not have the {@trait visual} trait—if the target can't see you, your hatred manifests in different ways that the target will have no problem observing. Perhaps your voice manifests asa sinister whisper in their ears, or maybe you flood them with a scent that invokes a horrific memory. The creature is then immune to Grudge for 24 hours.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature becomes {@condition frightened 1}",
+						"Failure": "The creature becomes {@condition frightened 2}, falls {@condition prone} from the shock, and is {@condition fleeing} as long as it remains frightened.",
+						"Critical Failure": "The creature faints from fear, becoming {@condition unconscious}. It becomes {@condition frightened 2} and is {@condition fleeing} as soon as it is no longer unconscious."
+					}
+				}
+			]
+		},
+		{
+			"name": "Resist Death",
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 81,
+			"traits": [
+				"rare",
+				"necromancy",
+				"occult"
+			],
+			"entries": [
+				"Your spirit is so single-minded in its purpose that even obliteration of your {@ritual transmigrate|SoG3|transmigrated} body isn't enough to stop them. The next time you are reduced to 0 Hit Points within the next 24 hours, you are instead reduced to 10 Hit Points and are exposed to {@curse Soul Degradation|SoG3}."
+			]
+		},
+		{
+			"name": "River's Reflection",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 81,
+			"traits": [
+				"rare",
+				"manipulate",
+				"metamagic"
+			],
+			"entries": [
+				"Existing between life and death can offer insights when it comes to channeling the energies of life and death. If the next action you use is to {@action Cast a Spell} with the {@trait positive} or {@trait negative} traits, that spell's effects on living and {@trait undead} targets are reversed. All negative damage becomes positive damage and vice versa. Any ability to heal living creatures or undead creatures is similarly swapped."
+			]
+		},
+		{
+			"name": "Sap Life",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 81,
+			"traits": [
+				"rare",
+				"necromancy",
+				"negative",
+				"occult"
+			],
+			"entries": [
+				"Just as some {@trait undead} hunger for life, you feel the urge to draw vitality from the living. Attempt an unarmed {@action Strike} against a foe. If you hit, you inflict {@damage 4d6} negative damage and restore 10 Hit Points to yourself."
+			]
+		},
+		{
+			"name": "Undying Flesh",
+			"type": "Major Spirit Power",
+			"source": "SoG3",
+			"page": 81,
+			"traits": [
+				"rare",
+				"abjuration",
+				"occult"
+			],
+			"entries": [
+				"You are a fearsome and vengeful spirit, and certain physical weapons seem to have little effect on you. Choose bludgeoning, slashing, or piercing; you gain resistance 10 to that damage type. Whether your resistance to that damage manifests in the form of a weapon appearing to pass harmlessly through your body or by appearing to leave grievous wounds that you ignore is left to you to decide, but once the decision is made, you can't change it."
+			]
+		},
 		{
 			"source": "G&G",
 			"page": 23,

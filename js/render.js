@@ -4972,7 +4972,7 @@ Renderer.domain = {
 Renderer.feat = {
 	getSubHead (feat) {
 		const renderStack = [];
-		const renderer = Renderer.get()
+		const renderer = Renderer.get();
 		if (feat.access != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(feat.access)}</p>`);
 		}
@@ -5646,13 +5646,15 @@ Renderer.optionalFeature = {
 	getRenderedString (it, opts) {
 		opts = opts || {};
 		return `
-		${Renderer.utils.getNameDiv(it)}
-		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getTraitsDiv(it.traits)}
-		${it.prerequisite ? `<p class="pf2-stat pf2-stat__section">${Renderer.utils.getPrerequisiteHtml(it.prerequisite)}</p>` : ""}
-		${it.traits ? Renderer.utils.getDividerDiv() : it.prerequisite ? Renderer.utils.getDividerDiv() : ""}
-		${Renderer.generic.getRenderedEntries(it)}
-		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
+			${Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_OPTIONAL_FEATURES, type: it.type, activity: true, ...opts })}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(it.traits)}
+			${it.prerequisite ? `<p class="pf2-stat pf2-stat__section">${Renderer.utils.getPrerequisiteHtml(it.prerequisite)}</p>` : ""}
+			${it.frequency ? `<p class="pf2-stat pf2-stat__section" > <strong>Frequency&nbsp;</strong>${Parser.freqToFullEntry(it.frequency)}</p>` : ""}
+			${it.prerequisite || it.frequency ? Renderer.utils.getDividerDiv() : ""}
+			${Renderer.generic.getRenderedEntries(it)}
+			${opts.noPage ? "" : Renderer.utils.getPageP(it)}
+		`;
 	},
 };
 
