@@ -1096,20 +1096,49 @@
 					],
 					"name": "mandibles",
 					"attack": 35,
-					"damage": "{@damage 3d12+16} slashing plus"
+					"damage": "{@damage 3d12+16} slashing plus {@ability Grab}"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"acid",
+						"brutal",
+						"range increment <120 feet>"
+					],
+					"name": "acid glob",
+					"attack": 35,
+					"damage": "{@damage 2d8+16} bludgeoning plus {@damage 4d6} {@condition persistent damage||persistent acid}"
 				}
 			],
 			"abilities": {
 				"bot": [
 					{
-						"name": "Grab",
-						"range": {
-							"unit": "feet",
-							"number": 120
+						"name": "Bombadier's Spray",
+						"activity": {
+							"number": 2,
+							"unit": "action"
 						},
-						"generic": {
-							"tag": "ability"
-						}
+						"traits": [
+							"acid",
+							"primal"
+						],
+						"entries": [
+							"The cataclysm beetle sprays a 60-foot cone of acid from its abdomen that deals {@damage 12d10} acid damage ({@dc 40} basic Reflex save). It can’t use Bombardier’s Spray or Burning Pool for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Burning Pool",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"acid",
+							"primal"
+						],
+						"entries": [
+							"The cataclysm beetle spills acid directly from its abdomen, creating a wave of acid that deals {@damage 10d12} acid damage to all creatures in a 30-foot emanation ({@dc 40} basic Fortitude save). Creatures that fail this save are pushed back 10 feet from the cataclysm beetle (30 feet on a critical failure). It can’t use Bombardier’s Spray or Burning Pool for {@dice 1d4} rounds."
+						]
 					}
 				]
 			},
