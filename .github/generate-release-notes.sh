@@ -47,5 +47,6 @@ fi
     changelog=$(sed -E "s/</?i>/*/g" <<< "$changelog")
     changelog=$(sed -E "s/</?b>/**/g" <<< "$changelog")
     changelog=$(sed -E "s/</?kbd>/\`/g" <<< "$changelog")
+    changelog=$(sed -E "s/</?sup>/\"/g" <<< "$changelog")
     jq -r '.txt' <<< "$changelog"
 }
