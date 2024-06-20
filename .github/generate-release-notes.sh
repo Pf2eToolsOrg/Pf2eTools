@@ -44,9 +44,9 @@ fi
     # Changelog text is already markdown-formatted, so no additional formatting
     # needs to be done here.
     # Spappz: jk actually it's HTML and needs to be coerced
-    changelog=$(sed -E "s/</?i>/*/g" <<< "$changelog")
-    changelog=$(sed -E "s/</?b>/**/g" <<< "$changelog")
-    changelog=$(sed -E "s/</?kbd>/\`/g" <<< "$changelog")
-    changelog=$(sed -E "s/</?sup>/\"/g" <<< "$changelog")
+    changelog=$(sed -E "s/<\/?i>/*/g" <<< "$changelog")
+    changelog=$(sed -E "s/<\/?b>/**/g" <<< "$changelog")
+    changelog=$(sed -E "s/<\/?kbd>/\`/g" <<< "$changelog")
+    changelog=$(sed -E "s/<\/?sup>/\"/g" <<< "$changelog")
     jq -r '.txt' <<< "$changelog"
 }
