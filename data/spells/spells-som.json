@@ -4961,8 +4961,23 @@
 				"unit": "special"
 			},
 			"entries": [
-				"When you {@action Cast a Spell||Cast this Spell}, roll {@dice 1d20} and make a note of the result. You gain the following reaction; once you use the reaction, the spell ends, and you become temporarily immune to lucky number until the next time you make your daily preparations.",
-				"That's My Number! {@as R} (divination, fortune) Trigger You roll your lucky number as your d20 result on a non-secret attack roll, saving throw, or skill check; Effect You call upon the fortune stored within your lucky number and reroll the triggering check. However, pushing your luck has a price: if your result on the reroll is the same number again, you critically fail, regardless of what degree of success you ordinarily would have received."
+				"When you {@action Cast a Spell||Cast this Spell}, roll {@dice 1d20} and make a note of the result. You gain the following reaction; once you use the reaction, the spell ends, and you become temporarily immune to {@i lucky number} until the next time you make your daily preparations.",
+				{
+					"type": "ability",
+					"name": "That's My Number!",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divination",
+						"fortune"
+					],
+					"trigger": "You roll your lucky number as your {@dice d20} result on a non-{@trait secret} attack roll, saving throw, or skill check",
+					"entries": [
+						"You call upon the fortune stored within your lucky number and reroll the triggering check. However, pushing your luck has a price: if your result on the reroll is the same number again, you critically fail, regardless of what degree of success you ordinarily would have received."
+					]
+				}
 			]
 		},
 		{
@@ -5289,14 +5304,32 @@
 			},
 			"entries": [
 				"This spell wards against those who attempt to subvert your mind and turns mental magic back on them. When the spell is complete, you gain the Fight with Fear reaction; once you use the reaction, the spell ends.",
-				"Fight with Fear {@as R} (concentrate, emotion, enchantment, fear, mental) Trigger A creature that you can see uses a {@trait mental} effect against you; Effect The triggering creature must attempt a Will save, which has the following effects.",
 				{
-					"type": "successDegree",
-					"entries": {
-						"Success": "The creature is unaffected.",
-						"Failure": "The creature is {@condition frightened 2}, and you gain a +2 status bonus to your saving throw or other defense against the triggering {@trait mental} effect.",
-						"Critical Failure": "The creature is {@condition frightened 2}, and you're unaffected by the triggering {@trait mental} effect."
-					}
+					"type": "ability",
+					"name": "Fight with Fear",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"concentrate",
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental"
+					],
+					"trigger": "A creature that you can see uses a {@trait mental} effect against you",
+					"entries": [
+						"The triggering creature must attempt a Will save, which has the following effects.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is {@condition frightened 2}, and you gain a +2 status bonus to your saving throw or other defense against the triggering {@trait mental} effect.",
+								"Critical Failure": "The creature is {@condition frightened 2}, and you're unaffected by the triggering {@trait mental} effect."
+							}
+						}
+					]
 				}
 			]
 		},
