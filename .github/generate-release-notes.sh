@@ -48,6 +48,7 @@ fi
     changelog=$(sed -E "s/<\/?b>/**/g" <<< "$changelog")
     changelog=$(sed -E "s/<\/?kbd>/\`/g" <<< "$changelog")
     changelog=$(sed -E "s/<\/?sup>/\"/g" <<< "$changelog")
+    changelog=$(sed -E "s/<a href="'\\"'"([^"'\\"'"]+)"'\\"'">([^<]+)<\/a>/[\2](\1)/g" <<< "$changelog")
     jq -r '.txt' <<< "$changelog"
 
 	# Add stagnation notice
