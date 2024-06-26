@@ -10,6 +10,7 @@ class UtilsChangelog {
 			let [vMajor, vMinor, vPatch] = it.ver.split(".");
 			vMajor = Number(vMajor);
 			vMinor = Number(vMinor);
+			vPatch = Number(vPatch);
 
 			const hLevel = vMajor !== lastMajorVersion ? "2" : vMinor !== lastMinorVersion ? "3" : "4";
 			const blocks = it.txt.trim().split(/\n\n+/g);
@@ -58,12 +59,13 @@ class UtilsChangelog {
 
 			htmlStack += `</div>`;
 
-			const isLast = i === changelog.length - 1;
+			// Earliest Github release was v0.1.2
+			const hasGithubRelease = vMajor || vMinor > 1 || vMinor === 1 && vPatch >= 2;
 
 			const titlePart = it.title ? `, &quot;<span ${it.titleAlt ? `class="help" title="AKA &quot;${it.titleAlt.escapeQuotes()}&quot; Edition"` : ""}>${it.title.escapeQuotes()}</span>&quot; Edition` : "";
 			$wrp.prepend(`<div class="flex-col" id="v${it.ver}">
 				<div class="split-v-center">
-					<h${hLevel} class="bold">v${isLast ? `<a href="https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/v${it.ver}">` : ""}${it.ver}${isLast ? `</a>` : ""}${titlePart}</h${hLevel}>
+					<h${hLevel} class="bold">${hasGithubRelease ? `<a href="https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/v${it.ver}">` : ""}v${it.ver}${hasGithubRelease ? `</a>` : ""}${titlePart}</h${hLevel}>
 					<span class="text-muted">${it.date}</span>
 				</div>
 
