@@ -20,8 +20,17 @@
 			"usage": "held in 2 hands",
 			"bulk": "L",
 			"category": "Poison",
+			"activate": {
+				"activity": {
+					"number": 3,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
 			"entries": [
-				"Activate{@as 3}{@action Interact} This gray mold can be found growing on the remains of venomous arachnids\u2014particularly, giant spiders. Its lack of color and faint taste make it particularly suited for mixing into meals meant to poison an unwary feaster.",
+				"This gray mold can be found growing on the remains of venomous arachnids\u2014particularly, giant spiders. Its lack of color and faint taste make it particularly suited for mixing into meals meant to poison an unwary feaster.",
 				{
 					"type": "affliction",
 					"DC": 20,
@@ -47,7 +56,7 @@
 						{
 							"stage": 4,
 							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up",
-							"duration": "1d4 hours"
+							"duration": "{@dice 1d4} hours"
 						}
 					]
 				}
