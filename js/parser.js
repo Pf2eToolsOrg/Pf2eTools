@@ -1568,6 +1568,7 @@ SRC_RoE = "RoE";
 SRC_TV = "TV";
 SRC_AAWS = "AAWS";
 SRC_AFoF = "AFoF";
+SRC_AFFM = "AFFM";
 SRC_AoA0 = "AoA0";
 SRC_AoA1 = "AoA1";
 SRC_AoA2 = "AoA2";
@@ -1681,6 +1682,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
 Parser.SOURCE_JSON_TO_FULL[SRC_TV] = "Treasure Vault";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_AFoF] = "A Fistful of Flowers";
+Parser.SOURCE_JSON_TO_FULL[SRC_AFFM] = "A Few Flowers More";
 Parser.SOURCE_JSON_TO_FULL[SRC_AoA0] = "Age of Ashes Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_AoA1] = "Age of Ashes #1: Hellknight Hill";
 Parser.SOURCE_JSON_TO_FULL[SRC_AoA2] = "Age of Ashes #2: Cult of Cinders";
@@ -1830,6 +1832,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_TV] = "TV";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_AFoF] = "AFoF";
+Parser.SOURCE_JSON_TO_ABV[SRC_AFFM] = "AFFM";
 Parser.SOURCE_JSON_TO_ABV[SRC_AoA0] = "AoA0";
 Parser.SOURCE_JSON_TO_ABV[SRC_AoA1] = "AoA1";
 Parser.SOURCE_JSON_TO_ABV[SRC_AoA2] = "AoA2";
@@ -1943,6 +1946,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_TV] = "2023-02-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_AFoF] = "2022-07-25";
+Parser.SOURCE_JSON_TO_DATE[SRC_AFFM] = "2023-07-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_AoA0] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_AoA1] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_AoA2] = "2019-09-01";
@@ -2058,6 +2062,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_TV] = "https://paizo.com/products/btq02eav";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] =
 	"https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_AFoF] = "https://paizo.com/products/btq02d8f";
+Parser.SOURCE_JSON_TO_STORE[SRC_AFFM] = "https://paizo.com/products/btq02eio";
 Parser.SOURCE_JSON_TO_STORE[SRC_AoA0] = "https://paizo.com/products/btq024wj";
 Parser.SOURCE_JSON_TO_STORE[SRC_AoA1] = "https://paizo.com/products/btq024tw";
 Parser.SOURCE_JSON_TO_STORE[SRC_AoA2] = "https://paizo.com/products/btq022ci";
@@ -2176,6 +2181,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_WtD4] = "https://www.dynamite.com/htmlfiles/view
 Parser.SOURCE_JSON_TO_STORE[SRC_WtD5] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022205011";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
+	SRC_AFFM,
 	SRC_AoA0,
 	SRC_AoA1,
 	SRC_AoA2,
@@ -2348,6 +2354,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 });
 [
 	SRC_AFoF,
+	SRC_AFFM,
 	SRC_AoA0,
 	SRC_AoA1,
 	SRC_AoA2,
