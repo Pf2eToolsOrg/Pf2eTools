@@ -1,0 +1,494 @@
+{
+	"creature": [
+		{
+			"name": "Simulacra",
+			"source": "DaLl",
+			"page": 6,
+			"level": 4,
+			"traits": [
+				"rare",
+				"n",
+				"medium",
+				"dwarf",
+				"humanoid",
+				"minion"
+			],
+			"perception": {
+				"std": 12
+			},
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 10
+				},
+				"deception": {
+					"std": 10,
+					"to {@action Impersonate}": 12
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": 0
+			},
+			"items": [
+				"key ring (carried by Auldegrund's simulacrum)",
+				"{@item scale mail}",
+				"{@item warhammer}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 60
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"shove"
+					],
+					"name": "warhammer",
+					"attack": 12,
+					"damage": "{@damage 1d8+4} bludgeoning"
+				}
+			]
+		},
+		{
+			"name": "Cultist of Alocer",
+			"source": "DaLl",
+			"page": 12,
+			"description": "Human cleric of {@deity Alocer|DaLl}",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 10
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"infernal"
+				]
+			},
+			"skills": {
+				"crafting": {
+					"std": 10
+				},
+				"deception": {
+					"std": 8
+				},
+				"nature": {
+					"std": 8
+				},
+				"occultism": {
+					"std": 10
+				},
+				"religion": {
+					"std": 10
+				},
+				"survival": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 2,
+				"con": 0,
+				"int": 3,
+				"wis": 3,
+				"cha": 0
+			},
+			"items": [
+				"{@item scale mail}",
+				"{@item composite shortbow} (20 {@item arrow (generic)||arrows} and 3 {@item sleep arrow||sleep arrows})",
+				"{@item spiked gauntlet}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 45
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"free-hand"
+					],
+					"name": "spiked gauntlet",
+					"attack": 8,
+					"damage": "{@damage 1d4+1} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly d10",
+						"range 60 feet"
+					],
+					"name": "composite shortbow",
+					"attack": 9,
+					"damage": "{@damage 1d6+1} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Focus",
+					"DC": 20,
+					"attack": 12,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "harm"
+								},
+								{
+									"name": "spiritual weapon"
+								},
+								{
+									"name": "undetectable alignment"
+								}
+							]
+						}
+					}
+				},
+				{
+					"type": "Focus",
+					"name": "Cleric Domain Spells",
+					"fp": 1,
+					"DC": 20,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "weapon surge"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Divine Font",
+						"entries": [
+							"{@spell harm}"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Auldegrund Grimcarver",
+			"source": "DaLl",
+			"page": 13,
+			"description": "Male dwarf ritualist",
+			"level": 7,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"devil",
+				"dwarf",
+				"fiend",
+				"humanoid"
+			],
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"dwarven",
+					"infernal"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 17
+				},
+				"athletics": {
+					"std": 14
+				},
+				"crafting": {
+					"std": 13
+				},
+				"deception": {
+					"std": 15
+				},
+				"religion": {
+					"std": 15
+				},
+				"occultism": {
+					"std": 17
+				},
+				"society": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 3,
+				"con": 2,
+				"int": 4,
+				"wis": 0,
+				"cha": 2
+			},
+			"items": [
+				"{@item breastplate}",
+				"{@runeItem composite shortbow||+1 weapon potency||striking|} (20 {@item arrow (generic)||arrows} and 5 {@item sleep arrow||sleep arrows})",
+				"{@item lesser healing potion||lesser healing potions} (3)",
+				"infernal contract",
+				"key ring containing keys to all locks in Lionlodge",
+				"{@item warhammer}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 13
+					}
+				},
+				"hp": [
+					{
+						"hp": 125
+					}
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "silver"
+					}
+				],
+				"resistances": [
+					{
+						"amount": 5,
+						"name": "fire"
+					},
+					{
+						"amount": 5,
+						"name": "physical",
+						"note": "except silver"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"shove"
+					],
+					"name": "warhammer",
+					"attack": 15,
+					"damage": "{@damage 1d8+2} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly d10",
+						"propulsive",
+						"range 60 feet"
+					],
+					"name": "shortbow",
+					"attack": 17,
+					"damage": "{@damage 2d6+5} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 22,
+					"attack": 14,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "true strike",
+									"amount": 3
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "undetectable alignment"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "crisis of faith"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "glibness"
+								},
+								{
+									"name": "summon animal",
+									"notes": [
+										"lion only"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"rituals": [
+						{
+							"name": "animate object"
+						},
+						{
+							"name": "infernal pact|B1"
+						},
+						{
+							"name": "simulacrum|APG"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Invoke Alocer",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"transmutation"
+						],
+						"trigger": "Auldegrund is reduced to 60 or fewer Hit Points",
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"Auldegrund calls out, in {@language Infernal}, \"Give me the strength to slay these foes in your name, almighty {@deity Alocer|DaLl}!\" As he does so, his skin darkens to red, diabolic horns jut from his brow, a flaming lion-like mane appears around his head, burning wings burst from his shoulders, and his weapons ignite with black fire. He immediately heals {@dice 3d6+7} Hit Points, gains a fly speed of 25 feet, and deals an additional {@damage 1d6} fire damage with his melee and ranged {@action strike||Strikes}. This is a risky gambit, though, for {@deity Alocer|DaLl} is not patient. At the end of each of Auldegrund's turns, he must attempt a DC {@flatDC 11} flat check (the DC of this flat check increases by 1 each round). On a failure, {@deity Alocer|DaLl} grows disappointed that Auldegrund has not defeated his foes and the effects of Invoke {@deity Alocer|DaLl} end immediately. This deals {@dice 3d6+7} damage to Auldegrund, removes his fly speed and additional fire damage to weapon {@action strike||Strikes}, and causes Auldegrund to become {@condition frightened||frightened 3}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Cruel Shot",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Auldegrund takes time to line up a shot with his bow and smiles cruelly as he makes a ranged {@action Strike} with it. If he hits, he deals {@damage 2d6} precision damage and {@damage 1d6} bleed damage. Even if he misses, he still deals {@dice 2d6} damage from the glancing blow. Only on a critical miss does his cruel shot deal no damage."
+						]
+					}
+				]
+			}
+		}
+	]
+}

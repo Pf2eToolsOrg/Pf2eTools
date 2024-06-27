@@ -1,6 +1,106 @@
 {
 	"hazard": [
 		{
+			"name": "Poisoned Lock",
+			"source": "DaLl",
+			"page": 11,
+			"level": 5,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "expert"
+			},
+			"description": [
+				"A spring-loaded, poisoned needle is {@condition hidden} near the drawer's keyhole. Disabling or breaking the trap does not disable or break the lock."
+			],
+			"disable": {
+				"entries": [
+					"DC 23 {@skill Thievery} (expert) on the spring mechanism"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 9
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Spring",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature tries to unlock or {@action Pick a Lock||Pick the Lock}",
+					"entries": [
+						"The needle extends to attack the triggering creature."
+					]
+				},
+				{
+					"type": "affliction",
+					"name": "Hunting Spider Venom",
+					"traits": [
+						"poison"
+					],
+					"DC": 23,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"notes": [
+						"The {@condition clumsy} condition caused by this venom persists for 24 hours before fading."
+					],
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d10} poison damage and {@condition flat-footed}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d12} poison damage, {@condition clumsy||clumsy 1}, and {@condition flat-footed}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 2d6} poison damage, {@condition clumsy||clumsy 2}, and {@condition flat-footed}",
+							"duration": "1 round"
+						}
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "needle",
+					"attack": 19,
+					"damage": "1 piercing plus enhanced hunting spider venom"
+				}
+			]
+		},
+		{
 			"name": "Spiritual Disruptor",
 			"level": 5,
 			"source": "SoG3",
@@ -9759,6 +9859,11 @@
 		{
 			"name": "Electric Latch Rune",
 			"source": "CRB",
+			"otherSources": {
+				"Reprinted": [
+					"DaLl|7"
+				]
+			},
 			"page": 523,
 			"level": 3,
 			"traits": [

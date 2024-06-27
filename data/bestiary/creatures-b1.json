@@ -6718,6 +6718,9 @@
 			"otherSources": {
 				"Expanded": [
 					"LOIL|323"
+				],
+				"Reprinted": [
+					"DaLl|9"
 				]
 			},
 			"level": 3,
@@ -9929,6 +9932,11 @@
 		},
 		{
 			"name": "Barbazu",
+			"otherSources": {
+				"Reprinted": [
+					"DaLl|11"
+				]
+			},
 			"source": "B1",
 			"page": 88,
 			"level": 5,
@@ -31925,7 +31933,7 @@
 				"cha": 5
 			},
 			"items": [
-				"{@item composite longbow} (20 {@item arrow||arrows})",
+				"{@item composite longbow} (20 {@item arrow (generic)||arrows})",
 				"{@runeItem full plate||+1 armor potency||resilient|}",
 				"{@item greatsword}"
 			],
@@ -39120,6 +39128,11 @@
 			"perception": {
 				"std": 7
 			},
+			"otherSources": {
+				"Reprinted": [
+					"DaLl|10"
+				]
+			},
 			"senses": [
 				{
 					"name": "greater darkvision"
@@ -39247,10 +39260,10 @@
 							{
 								"type": "list",
 								"items": [
-									"{@bold Boar size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet; Melee tusk +9 (finesse), Damage {@dice 1d10-1} piercing",
-									"{@bold Giant Spider size} Medium; Speed 25 feet, climb 25 feet; Melee fangs +9 (finesse, poison), Damage {@dice 1d6-1} piercing plus {@damage 1d4} poison",
-									"Rat {@ability scent}; Speed 20 feet; Melee jaws +9 (agile, finesse), Damage 1 piercing",
-									"Raven {@ability scent}; Speed 10 feet, fly 40 feet; Melee beak +9 (finesse), Damage 1 piercing"
+									"{@b Boar} size Medium; {@ability scent} (imprecise) 30 feet; {@b Speed} 40 feet; {@b Melee} tusk +9 ({@trait finesse}), {@b Damage} {@dice 1d10-1} piercing",
+									"{@b Giant Spider} size Medium; {@b Speed} 25 feet, climb 25 feet; {@b Melee} fangs +9 ({@trait finesse}, {@trait poison}), {@b Damage} {@dice 1d6-1} piercing plus {@damage 1d4} poison",
+									"{@b Rat} {@ability scent} (imprecise) 30 feet; {@b Speed} 20 feet; {@b Melee} jaws +9 ({@trait agile}, {@trait finesse}), {@b Damage} 1 piercing",
+									"{@b Raven} {@ability scent}; {@b Speed} 10 feet, fly 40 feet; {@b Melee} beak +9 ({@trait finesse}), {@b Damage} 1 piercing"
 								]
 							}
 						],
@@ -39318,7 +39331,7 @@
 							"number": 1
 						},
 						"entries": [
-							"The imp offers a non-fiend within 15 feet a bargain, granting a boon of good luck if the creature accepts. The boon lasts for 1 hour once accepted. If the creature dies while the boon is in place, its soul travels to Hell, where it is bound for eternity and unable to be raised or resurrected except by wish or similar magic. Once during the hour, the creature can roll an attack roll or saving throw twice and use the higher result."
+							"The imp offers a non-fiend within 15 feet a bargain, granting a boon of good luck if the creature accepts. The boon lasts for 1 hour once accepted. If the creature dies while the boon is in place, its soul travels to Hell, where it is bound for eternity and unable to be raised or resurrected except by {@spell wish} or similar magic. Once during the hour, the creature can roll an attack roll or saving throw twice and use the higher result."
 						],
 						"name": "Infernal Temptation"
 					}
@@ -48579,7 +48592,7 @@
 							"necromancy",
 							"negative"
 						],
-						"note": "This disease and any damage from it can't be healed until this curse is removed. A creature killed by mummy rot turns to dust and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
+						"note": "This disease and any damage from it can't be healed until this curse is removed. A creature killed by mummy rot turns to dust and can't be resurrected except by a 7th-level {@ritual resurrect} ritual or similar magic.",
 						"DC": 22,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -48808,7 +48821,7 @@
 							"divine",
 							"necromancy"
 						],
-						"note": "This disease and any damage from it can't be healed until this curse is removed. A creature killed by insidious mummy rot turns to sand and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
+						"note": "This disease and any damage from it can't be healed until this curse is removed. A creature killed by insidious mummy rot turns to sand and can't be resurrected except by a 7th-level {@ritual resurrect} ritual or similar magic.",
 						"DC": 26,
 						"savingThrow": "Fortitude",
 						"stages": [
@@ -52541,7 +52554,7 @@
 						],
 						"entries": [
 							"The contract devil produces an infernal contract for a single living mortal. This contract can grant a wide range of abilities and effects, akin to the power of a {@spell wish} spell but fulfilled to the letter by the contract devil. To receive any of those benefits, the mortal must willingly sign its true name to the contract. At that point, the mortal's soul is bound to the contract devil and Hell.",
-							"While the contract is in effect, the victim can't be restored to life except by wish or similar magic. If the mortal is restored to life by those means, the contract devil knows which mortal came to life and can locate the creature or creatures who restored the mortal to life for 1 year, gaining the effects of a {@spell locate} spell with unlimited range. Avoiding the terms of an infernal contract is difficult and often dangerous."
+							"While the contract is in effect, the victim can't be restored to life except by {@spell wish} or similar magic. If the mortal is restored to life by those means, the contract devil knows which mortal came to life and can locate the creature or creatures who restored the mortal to life for 1 year, gaining the effects of a {@spell locate} spell with unlimited range. Avoiding the terms of an infernal contract is difficult and often dangerous."
 						],
 						"name": "Draft Contract"
 					},
@@ -70005,7 +70018,7 @@
 						],
 						"trigger": "The warsworn moves into a {@condition dying} creature's space.",
 						"entries": [
-							"The warsworn absorbs the {@condition dying} creature into itself, instantly killing the creature and healing the warsworn for a number of Hit Points equal to the creature's level. As long as the warsworn still exists, absorbed creatures can't be resurrected except by wish or a similarly powerful effect."
+							"The warsworn absorbs the {@condition dying} creature into itself, instantly killing the creature and healing the warsworn for a number of Hit Points equal to the creature's level. As long as the warsworn still exists, absorbed creatures can't be resurrected except by {@spell wish} or a similarly powerful effect."
 						],
 						"name": "Absorb"
 					},
