@@ -6681,10 +6681,37 @@
 			],
 			"entries": [
 				"Part of your body has an obvious, fiendish appearance. Your hands end in razor-sharp claws, you have hooves instead of feet, sharp teeth fill your mouth, or a whipping tail extends from your spine. You gain your choice of one of the following unarmed attacks. The attack is in the {@group brawling} group and has the listed damage die and traits.",
-				"Claw {@damage 1d4} slashing (agile, finesse, unarmed, versatile piercing)",
-				"Hoof {@damage 1d6} bludgeoning (finesse, unarmed)",
-				"Jaws {@damage 1d6} piercing (finesse, unarmed)",
-				"Tail {@damage 1d4} bludgeoning (agile, finesse, unarmed)"
+				{
+					"type": "pf2-options",
+					"skipSort": true,
+					"noColon": true,
+					"items": [
+						{
+							"name": "Claw",
+							"entries": [
+								"{@damage 1d4} slashing ({@trait agile}, {@trait finesse}, {@trait unarmed}, {@trait versatile <piercing>})"
+							]
+						},
+						{
+							"name": "Hoof",
+							"entries": [
+								"{@damage 1d6} bludgeoning ({@trait finesse}, {@trait unarmed})"
+							]
+						},
+						{
+							"name": "Jaws",
+							"entries": [
+								"{@damage 1d6} piercing ({@trait finesse}, {@trait unarmed})"
+							]
+						},
+						{
+							"name": "Tail",
+							"entries": [
+								"{@damage 1d4} bludgeoning ({@trait agile}, {@trait finesse}, {@trait unarmed})"
+							]
+						}
+					]
+				}
 			],
 			"special": [
 				"You can select this feat only at 1st level, and you can't retrain into or out of this feat, nor can you change the type of attack you gained."
