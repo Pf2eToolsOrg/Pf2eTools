@@ -2545,6 +2545,18 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 21,
+					"rituals": [
+						{
+							"name": "div pact",
+							"source": "B3"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
@@ -2555,12 +2567,6 @@
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"{@dc 21}; {@ritual div pact|b3}"
-						],
-						"name": "Divine Ritual"
-					},
 					{
 						"activity": {
 							"number": 2,
@@ -17049,7 +17055,7 @@
 				"top": [
 					{
 						"entries": [
-							"A sahkil's level is considered 2 lower for the purpose of being conjured by the planar binding ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+							"A sahkil's level is considered 2 lower for the purpose of being conjured by the {@ritual planar binding} ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
 						],
 						"name": "Easy to Call"
 					}
@@ -22246,7 +22252,7 @@
 					},
 					{
 						"entries": [
-							"A green man can perform all their rituals without secondary casters, relying on their own primal ties to the vital essence in spirits of nature. A green man's awaken animal and primal call rituals work on plants instead of their usual range of choices. Most green men also know the ritual to create various types of leshys and possibly even magic allowing the creation of arboreals or more powerful plant creatures."
+							"A green man can perform all their rituals without secondary casters, relying on their own primal ties to the vital essence in spirits of nature. A green man's {@ritual awaken animal} and {@ritual primal call} rituals work on plants instead of their usual range of choices. Most green men also know the ritual to create various types of leshys and possibly even magic allowing the creation of arboreals or more powerful plant creatures."
 						],
 						"name": "Green Rituals"
 					},
@@ -23122,7 +23128,7 @@
 							"transmutation"
 						],
 						"entries": [
-							"The guecubu stomps, and the ground breaks and ripples in a 30-foot emanation, erupting in razor-sharp, crisscrossing spikes of rock that deal {@damage 3d8} piercing damage to creatures in the area ({@dc 26} basic Reflex save). The area becomes {@quickref difficult terrain||3|terrain} and hazardous terrain, with each square dealing 3 piercing damage to a creature that moves through it. A guecubu is immune to these effects. Ground under the effects of a consecrate ritual or a {@spell circle of protection} spell tuned against evil or chaos can't be affected by this ability."
+							"The guecubu stomps, and the ground breaks and ripples in a 30-foot emanation, erupting in razor-sharp, crisscrossing spikes of rock that deal {@damage 3d8} piercing damage to creatures in the area ({@dc 26} basic Reflex save). The area becomes {@quickref difficult terrain||3|terrain} and hazardous terrain, with each square dealing 3 piercing damage to a creature that moves through it. A guecubu is immune to these effects. Ground under the effects of a {@ritual consecrate} ritual or a {@spell circle of protection} spell tuned against {@trait evil} or {@trait chaos} can't be affected by this ability."
 						],
 						"name": "Break Ground"
 					},
@@ -28106,7 +28112,7 @@
 				"top": [
 					{
 						"entries": [
-							"A sahkil's level is considered 2 lower for the purpose of being conjured by the planar binding ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+							"A sahkil's level is considered 2 lower for the purpose of being conjured by the {@ritual planar binding} ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
 						],
 						"name": "Easy to Call"
 					}
@@ -38692,7 +38698,7 @@
 				"top": [
 					{
 						"entries": [
-							"A sahkil's level is considered 2 lower for the purpose of being conjured by the planar binding ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+							"A sahkil's level is considered 2 lower for the purpose of being conjured by the {@ritual planar binding} ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
 						],
 						"name": "Easy to Call"
 					}
@@ -39558,7 +39564,7 @@
 							"visual"
 						],
 						"entries": [
-							"100 feet. The ouroboros is the embodiment of perfect of diamonds in a resurrect ritual infinity, and this concept pulls at the threads of mortal minds, desperately straining the limits of their comprehension. When a creature ends its turn in the aura, it must attempt a {@dc 41} Will save. The creature is then temporarily immune for 1 minute.",
+							"100 feet. The ouroboros is the embodiment of perfect of diamonds in a {@ritual resurrect} ritual infinity, and this concept pulls at the threads of mortal minds, desperately straining the limits of their comprehension. When a creature ends its turn in the aura, it must attempt a {@dc 41} Will save. The creature is then temporarily immune for 1 minute.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -40498,23 +40504,28 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "div pact",
+							"source": "B3"
+						}
+					]
+				}
+			],
 			"abilities": {
 				"mid": [
 					{
 						"entries": [
-							"Pairakas hate the color red.",
-							"They won't wear the color or willingly enter any place painted red. Given a choice, they'll attack a creature wearing red first. If barred from expressing their displeasure toward the color by force or some {@trait magical} effect, they take {@damage 2d6} mental damage at the end of their turn."
+							"Pairakas hate the color red. They won't wear the color or willingly enter any place painted red. Given a choice, they'll attack a creature wearing red first. If barred from expressing their displeasure toward the color by force or some {@trait magical} effect, they take {@damage 2d6} mental damage at the end of their turn."
 						],
 						"name": "Hatred of Red"
 					}
 				],
 				"bot": [
-					{
-						"entries": [
-							"{@dc 25}; {@ritual div pact|b3}"
-						],
-						"name": "Divine Ritual"
-					},
 					{
 						"type": "affliction",
 						"name": "Bubonic Plague",
@@ -40606,6 +40617,16 @@
 				],
 				"immunities": [
 					"disease"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "cold iron"
+					},
+					{
+						"amount": 5,
+						"name": "good"
+					}
 				]
 			},
 			"hasImages": true
@@ -40788,7 +40809,7 @@
 				"top": [
 					{
 						"entries": [
-							"A sahkil's level is considered 2 lower for the purpose of being conjured by the planar binding ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+							"A sahkil's level is considered 2 lower for the purpose of being conjured by the {@ritual planar binding} ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
 						],
 						"name": "Easy to Call"
 					}
@@ -46184,12 +46205,6 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							"{@dc 34}; {@ritual div pact|b3}, create undead (no secondary caster required)"
-						],
-						"name": "Divine Ritual"
-					},
-					{
 						"activity": {
 							"number": 2,
 							"unit": "action"
@@ -46206,6 +46221,24 @@
 					}
 				]
 			},
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 34,
+					"rituals": [
+						{
+							"name": "div pact",
+							"source": "B3"
+						},
+						{
+							"name": "create undead",
+							"notes": [
+								"no secondary caster required"
+							]
+						}
+					]
+				}
+			],
 			"defenses": {
 				"ac": {
 					"std": 34
@@ -50284,7 +50317,7 @@
 				"bot": [
 					{
 						"entries": [
-							"A storm hag can perform a special control weather ritual, which requires no secondary casters, to change the weather within 5 miles of her location for {@dice 4d12} hours. The primary check is a {@dc 23} {@skill Occultism} check, and she can't get an outcome worse than a failure. The storm hag can create only hurricanes, thunderstorms, and tornadoes, but she can do so regardless of the current season. She can also quell natural weather events but never willingly does so."
+							"A storm hag can perform a special {@ritual control weather} ritual, which requires no secondary casters, to change the weather within 5 miles of her location for {@dice 4d12} hours. The primary check is a {@dc 23} {@skill Occultism} check, and she can't get an outcome worse than a failure. The storm hag can create only hurricanes, thunderstorms, and tornadoes, but she can do so regardless of the current season. She can also quell natural weather events but never willingly does so."
 						],
 						"name": "Stormcalling"
 					},
@@ -52798,7 +52831,7 @@
 							"primal"
 						],
 						"entries": [
-							"When a tidehawk dies, it melts into a torrent of rainwater. If this rain falls into a body of water, such as an ocean or lake, the tidehawk returns to life fully healed {@dice 1d4} rounds later, as if subject to a 6th-level resurrect ritual. Self-resurrection happens only if there are remains to resurrect; for instance, a tidehawk killed by a {@spell disintegrate} spell can't use this ability. A tidehawk that dies while above land must wait until its rainwater runs or seeps into an appropriate body of water to self-resurrect. A tidehawk can self-resurrect only once per year."
+							"When a tidehawk dies, it melts into a torrent of rainwater. If this rain falls into a body of water, such as an ocean or lake, the tidehawk returns to life fully healed {@dice 1d4} rounds later, as if subject to a 6th-level {@ritual resurrect} ritual. Self-resurrection happens only if there are remains to resurrect; for instance, a tidehawk killed by a {@spell disintegrate} spell can't use this ability. A tidehawk that dies while above land must wait until its rainwater runs or seeps into an appropriate body of water to self-resurrect. A tidehawk can self-resurrect only once per year."
 						],
 						"name": "Self-Resurrection"
 					}
@@ -57823,7 +57856,7 @@
 				"top": [
 					{
 						"entries": [
-							"A sahkil's level is considered 2 lower for the purpose of being conjured by the planar binding ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+							"A sahkil's level is considered 2 lower for the purpose of being conjured by the {@ritual planar binding} ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
 						],
 						"name": "Easy to Call"
 					}
@@ -58089,7 +58122,7 @@
 							"occult"
 						],
 						"entries": [
-							"A winter hag can spend 1 day performing a specific ritual to create a +1 striking staff of black ice. Once per day, she can use the staff to cast {@spell cone of cold}. The staff's magic functions only in the hands of the hag who created it; for anyone else, it is a mundane staff. If the hag dies or if the staff remains in another creature's possession for 24 hours, the staff melts into a puddle of foul-smelling water."
+							"A winter hag can spend 1 day performing a specific ritual to create a {@runeItem staff||+1 weapon potency||striking|} of black ice. Once per day, she can use the staff to cast {@spell cone of cold}. The staff's magic functions only in the hands of the hag who created it; for anyone else, it is a mundane staff. If the hag dies or if the staff remains in another creature's possession for 24 hours, the staff melts into a puddle of foul-smelling water."
 						],
 						"name": "Craft Ice Staff"
 					},
@@ -59007,7 +59040,7 @@
 				"top": [
 					{
 						"entries": [
-							"A sahkil's level is considered 2 lower for the purpose of being conjured by the planar binding ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
+							"A sahkil's level is considered 2 lower for the purpose of being conjured by the {@ritual planar binding} ritual (and potentially other rituals, at the GM's discretion), but it is always free to attack or leave instead of negotiate unless the primary caster's check is a critical success."
 						],
 						"name": "Easy to Call"
 					}

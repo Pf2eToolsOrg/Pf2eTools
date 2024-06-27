@@ -1,6 +1,189 @@
 {
 	"action": [
 		{
+			"name": "Swipe Manor Keys",
+			"page": 6,
+			"source": "MotM",
+			"traits": [
+				"uncommon",
+				"exploration"
+			],
+			"entries": [
+				"Manors often contain locked passageways, and you secure one of the keys without anyone noticing. Attempt a DC 22 {@skill Thievery} check; this is DC 20 for Kangir to reflect her {@feat Pickpocket} skill feat.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, but you also acquire a security key designed to deactivate the manor’s traps. Whoever is holding the key gains a +2 circumstance bonus to checks to {@action Disable a Device||Disable} traps within the manor.",
+						"Success": "You acquire a key that belongs to one locked obstacle inside the manor, such as unlocking the doors to area {@b A5} or the desk in area {@b A10}. You decide which lock the key works on when you use it, after which the key only works for that lock.",
+						"Failure": "You don’t acquire keys.",
+						"Critical Failure": "Though you escape before being caught, you raise the suspicion of the guards. Gain 1 AP."
+					}
+				}
+			]
+		},
+		{
+			"name": "Scope Everbloom Manor",
+			"page": 6,
+			"source": "MotM",
+			"traits": [
+				"uncommon",
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"You study Everbloom Manor from several vantage points, identifying its layout, likely obstacles, and defenses. Attempt a DC 20 {@skill Perception}, {@skill Stealth}, or {@skill Survival} check or a DC 18 {@skill Lore||Warfare Lore} check. If you have a {@item spyglass} and succeed at the check, you receive the results of a critical success instead.",
+				"Note that many of these facts might change if the adventure uses any of the alternate challenges.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain the unmarked map at the back of this adventure. In addition, you learn three of the facts listed in the success result that you or your allies haven’t already discovered.",
+						"Success": [
+							"You gain the unmarked map at the back of this adventure. In addition, you learn one of the following facts that you or your allies have not already discovered.",
+							{
+								"type": "list",
+								"items": [
+									"Several of the manor’s windows are barred—specifically, those into areas {@b A6}, {@b A8}, {@b A11}, {@b A12}, and {@b A13}.",
+									"Several of the doors are kept locked—the west door near area {@b A8} and the doors into area A5. The main door to area {@b A3} seems to be left unlocked.",
+									"The flat roof has limited access. There is a hatch toward the north, providing access into the manor. There’s also a ladder stowed in the bushes east of the round tower. The roof has two large skylights that likely can’t support a human’s weight.",
+									"{@i {@creature Pairaka|MotM} only}—The manor has many flowering bushes. Some of these should be in bloom, yet the red flowers appear to have been pruned so that no flowers are visible from the manor itself. There are also several red blankets and tapestries amid the estate’s garbage.",
+									"{@i {@creature Shambler} only}—The manor grounds show signs of recent excavation and renovation. More than a dozen flowering bushes having been removed, forming stacks of brush in several places behind the manor. Birds and squirrels seem to purposefully avoid these brush piles.",
+									"The PC counts six guards on duty and expects there will be 10–12 guards during the evening event. The flat roof provides a natural vantage point for a few guards, though most will be patrolling the grounds."
+								]
+							}
+						],
+						"Failure": "You gain the unmarked map at the back of this adventure but no additional information.",
+						"Critical Failure": "You gain the unmarked map at the back of this adventure. You also learn about two of the topics above but gain misleading information, such as misjudging where obstacles are or misinterpreting what the exterior guard creature is."
+					}
+				}
+			]
+		},
+		{
+			"name": "Orchestrate Timely Distraction",
+			"page": 6,
+			"source": "MotM",
+			"traits": [
+				"uncommon",
+				"exploration"
+			],
+			"entries": [
+				"You organize an attention-grabbing event that’s primed to occur this evening near the manor. This might be an unsanctioned street performance, an explosion, a brawl, or other clash. Attempt a DC 20 {@skill Deception}, {@skill Performance}, {@skill Religion}, or {@skill Society} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, plus the distraction is so spectacular that when you use it, it pulls the manor staff’s attention away from your infiltration and drowns out subtle signs of your presence. Reduce your Awareness Point total by 1.",
+						"Success": "You gain 1 EP that you can use while outside the manor.",
+						"Failure": "The manor’s guards hold fast to their duties.",
+						"Critical Failure": "The distraction backfires, reminding the guards of the need to remain vigilant against danger at all times. Gain 1 AP."
+					}
+				}
+			]
+		},
+		{
+			"name": "Uncover Everbloom Manor's Secrets",
+			"page": 5,
+			"source": "MotM",
+			"traits": [
+				"uncommon",
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"You learn key information about Everbloom Manor through interviews and archival investigation. Attempt a DC 20 {@skill Diplomacy}, {@skill Intimidation}, or {@skill Society} check. Alternatively, attempt a DC 18 {@skill Lore||Absalom Lore} check. Cumulatively, the PCs can attempt this check twice.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"You learn two of the following facts.",
+							{
+								"type": "list",
+								"items": [
+									"Everbloom Manor is built atop the ruins of an estate destroyed during a siege a millennium ago. It gets its name from its myriad red-flowering bushes, at least one of which is always in bloom regardless of season.",
+									"Absalom is so old that the city surface rests atop countless layers of older construction. Many Petal District manors have cellars built into the millennia-old, subterranean ruins, though the means of accessing these rooms is often hidden.",
+									"The Kelorbeyan family tree boasts many proud worshippers of Iomedae. The manor has a private chapel, and the family often celebrates {@deity Iomedae||Iomedaean} holidays by hosting large picnics. The most recent holiday passed with little fanfare. The Kelorbeyan family founders were divine champions who famously defeated myriad arctic beasts before settling in Absalom. Their motto is “A green wall against evil winds.”",
+									"Discouraged by Doatara’s rhetoric, the district’s Lotus Guard often avoids her manor. She’s hired her own household guards, with several on duty at all hours."
+								]
+							}
+						],
+						"Critical Failure": "You learn nothing of note, but your prying draws unwanted attention. Gain 1 AP."
+					}
+				}
+			]
+		},
+		{
+			"name": "Uncover Doatara's Secrets",
+			"page": 5,
+			"source": "MotM",
+			"traits": [
+				"uncommon",
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"You uncover key information about Doatara Kelorbeyan. Attempt a DC 20 {@skill Diplomacy}, {@skill Intimidation}, or {@skill Society} check. Alternatively, attempt a DC 18 {@skill Lore||Assassin Lore} or {@skill Lore||Underworld Lore} check. If you are using {@creature Doatara the Priest|MotM}, swap the information about Doatara from the second success bullet point and the critical failure entry.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"You learn the following about Doatara.",
+							{
+								"type": "list",
+								"items": [
+									"Once an Osirian cotton merchant of some repute in the region, Doatara married the heiress of the impressive Kelorbeyan fortune. Mere months later, footpads killed Doatara’s wife in a bungled robbery, leaving the Kelorbeyan estate under the young widow’s control. Doatara has since become an outspoken anti-crime advocate running for a district council position. She’s trained tirelessly with fencing masters to ensure she can defend herself where Absalom’s guards have clearly failed to keep the peace.",
+									"{@i {@creature Doatara the Poisoner|MotM} Only}—Although Doatara often wears heavy perfume and dresses in extravagant clothing of the finest quality, witnesses report that she also smells of bitter herbs. Because she also regularly orders strange powders, animal parts, and glassware, you conclude that Doatara is an accomplished alchemist. Expect her to have numerous powerful toxins and explosives at her disposal."
+								]
+							}
+						],
+						"Critical Failure": "{@i {@creature Doatara the Poisoner|MotM} Only}—Doatara spends considerable time in the Ascendant Court, where temples of nearly every god can be found. By combining reports of her magically vanishing from parties and your knowledge of her divine patron, you conclude Doatara is a cleric of {@deity Norgorber}. Expect her to have defensive and evasive spells, plus negative energy attacks."
+					}
+				}
+			]
+		},
+		{
+			"name": "Prepare Tools for Assassination",
+			"page": 5,
+			"source": "MotM",
+			"traits": [
+				"uncommon",
+				"exploration"
+			],
+			"entries": [
+				"You create a tool specially designed for an upcoming obstacle, such as a specific outfit, a camouflaged cloak that perfectly matches the manor’s gardens, forged invitations to the party, a prybar sized for the manor’s windows, carefully formulated bait, or the like. As a master assassin, whatever comes your way, you’ve thought of it. Attempt a DC 20 {@skill Crafting} check to create these tools.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You create an effective tool that grants 1 Edge Point for an obstacle. At any point during the infiltration, you can spend that EP to describe a flashback scene of you preparing just the right tool for the job. In doing so, you must describe how the tool helps overcome the specific obstacle.",
+						"Failure": "You create a middling tool. You gain 1 EP that (unknown to you) provides no benefit when used.",
+						"Critical Failure": "As a failure, but a PC who tries to use the Edge Point gets a critical failure, even if they use the EP after rolling a failure."
+					}
+				}
+			]
+		},
+		{
+			"name": "Red Mantis Assassination",
+			"page": 10,
+			"source": "MotM",
+			"traits": [
+				"rare",
+				"exploration",
+				"move"
+			],
+			"entries": [
+				"You stalk the shadows, watching for targets and preparing to dispatch them with a quiet, decisive blow. While using this activity, if you are unnoticed by a {@trait humanoid} of your level or lower, you can {@action Stride} up to half your Speed, ending the movement adjacent to the target. Attempt either an attack roll against the target’s AC + 5, or attempt a {@skill Deception} check or {@skill Stealth} check against the target’s {@skill Perception} DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You kill the target without earning an Awareness Point, even if another creature could witness the attack.",
+						"Success": "You kill the target without earning an Awareness Point, so long as no other creatures witness the attack. If witnessed, you earn 1 Awareness Point.",
+						"Failure": "You kill the target but make noise, earning 1 Awareness Point.",
+						"Critical Failure": "You kill the target after a prolonged struggle, earning 2 Awareness Points."
+					}
+				}
+			],
+			"special": [
+				"Kangir and Zeah can perform this action with a ranged weapon so long as they end their movement within the first {@trait range increment} of their ranged or {@trait thrown} weapon."
+			]
+		},
+		{
 			"name": "Solving Tenon's Problem",
 			"source": "SoG3",
 			"page": 31,

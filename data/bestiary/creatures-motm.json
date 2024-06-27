@@ -1,0 +1,841 @@
+{
+	"creature": [
+		{
+			"name": "Kelorbeyan Guard",
+			"source": "MotM",
+			"page": 11,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 12
+			},
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 11
+				},
+				"athletics": {
+					"std": 12
+				},
+				"intimidation": {
+					"std": 9
+				},
+				"society": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 1,
+				"int": 0,
+				"wis": 2,
+				"cha": 1
+			},
+			"items": [
+				"{@item hooded lantern}",
+				"{@item longsword}",
+				"{@item sap}",
+				"{@item composite shortbow} (20 {@item arrow (generic)||arrows})",
+				"{@item signal whistle}",
+				"{@item studded leather||studded leather armor}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 60
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"versatile <P>"
+					],
+					"name": "longsword",
+					"attack": 14,
+					"damage": "{@damage 1d8+8} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"nonlethal"
+					],
+					"name": "sap",
+					"attack": 14,
+					"damage": "{@damage 1d6+8} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"range increment <60 feet>",
+						"reload <0>"
+					],
+					"name": "composite shortbow",
+					"attack": 13,
+					"damage": "{@damage 1d6+6} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Combat Grab",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The Kelorbeyan guard has one hand free, and their target is in reach of that hand",
+						"entries": [
+							"The guard makes a melee {@action Strike} while keeping one hand free. If the {@action Strike} hits, they grab the target using their free hand. The creature remains {@condition grabbed} until the end of the guard's next turn or until it Escapes, whichever comes first."
+						]
+					},
+					{
+						"name": "Knockdown",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The Kelorbeyan guard makes an attack to knock a foe off-balance, then follows up immediately with a sweep to topple them. The guard makes a melee {@action Strike}. If it hits and deals damage, they attempt an {@skill Athletics} check to {@action Trip} the creature they hit. Both attacks count toward their multiple attack penalty, but the penalty doesn't increase until after they've made both."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Pairaka",
+			"source": "MotM",
+			"page": 16,
+			"description": "Variant {@creature pairaka|B3} {@trait div}",
+			"level": 7,
+			"traits": [
+				"ne",
+				"medium",
+				"div",
+				"fiend"
+			],
+			"perception": {
+				"std": 15
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 14
+				},
+				"arcana": {
+					"std": 13
+				},
+				"deception": {
+					"std": 20
+				},
+				"diplomacy": {
+					"std": 20
+				},
+				"intimidation": {
+					"std": 16
+				},
+				"religion": {
+					"std": 13
+				},
+				"society": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 3,
+				"int": 2,
+				"wis": 4,
+				"cha": 7
+			},
+			"items": [
+				"poisoned {@item dart||darts} (10)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 17
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 105
+					}
+				],
+				"immunities": [
+					"disease"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "good",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"evil",
+						"finesse",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 16,
+					"damage": "{@damage 2d8+6} slashing plus {@damage 1d6} evil and bubonic plague"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"thrown <20 feet>"
+					],
+					"name": "poisoned dart",
+					"attack": 16,
+					"damage": "{@damage 1d4+6} piercing plus {@damage 1d8} poison"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 25,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "detect magic"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "charm",
+									"amount": "at will"
+								},
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								},
+								{
+									"name": "misdirection",
+									"amount": "at will",
+									"notes": [
+										"self only"
+									]
+								},
+								{
+									"name": "outcast's curse",
+									"amount": "at will"
+								},
+								{
+									"name": "suggestion",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "div pact",
+							"source": "B3"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Bubonic Plague",
+						"traits": [
+							"disease"
+						],
+						"type": "affliction",
+						"note": "A creature can't remove the {@condition fatigued} condition while infected",
+						"DC": 23,
+						"savingThrow": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled||enfeebled 2} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled||enfeebled 3}, {@condition fatigued}, and take {@damage 1d6} {@condition persistent damage||persistent bleed damage} every {@dice 1d20} minutes",
+								"duration": "1 day"
+							}
+						]
+					},
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The pairaka can take the appearance of any Small or Medium {@trait humanoid} or {@trait animal}. This doesn't change her Speed or her attack and damage modifiers with the {@action Strike||Strikes}, but it might change the damage type her strikes deal."
+						]
+					},
+					{
+						"name": "Tormenting Dreams",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"emotion",
+							"enchantment",
+							"mental"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"The pairaka torments a sleeping creature within 100 feet with visions of betrayals by loved ones and friends. The target must attempt a DC 25 Will save, with the effects of the {@spell nightmare|PC1} spell."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Doatara the Poisoner",
+			"source": "MotM",
+			"page": 19,
+			"level": 7,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 12
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic",
+					"osiriani"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 16
+				},
+				"assassin lore": {
+					"std": 15
+				},
+				"crafting": {
+					"std": 17
+				},
+				"deception": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 14
+				},
+				"religion": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 16
+				},
+				"thievery": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 5,
+				"con": 1,
+				"int": 4,
+				"wis": 1,
+				"cha": 3
+			},
+			"items": [
+				"{@item moderate alchemist's fire} (2)",
+				"{@item moderate bottled lightning} (2)",
+				"{@item dagger||daggers} (4)",
+				"{@item moderate darkvision elixir}",
+				"{@item moderate elixir of life}",
+				"{@item giant scorpion venom} (2)",
+				"{@item giant wasp venom}",
+				"{@item leather||leather armor}",
+				"silver {@item religious symbol (generic)||religious symbol}",
+				"{@runeItem shortsword||+1 weapon potency||striking|}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 115
+					}
+				],
+				"resistances": [
+					{
+						"name": "poison",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile <S>"
+					],
+					"name": "shortsword",
+					"attack": 17,
+					"damage": "{@damage 2d6+7} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 16,
+					"damage": "{@damage 1d4+7} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range increment <30 feet>",
+						"splash"
+					],
+					"name": "bomb",
+					"attack": 16,
+					"damage": "varies by bomb"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 16,
+					"damage": "{@damage 1d4+7} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Reckless Toxin",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature critically fails a melee {@action Strike} against Doatara",
+						"requirements": "The triggering creature is affected by a {@trait poison}",
+						"entries": [
+							"The poison makes it difficult to distinguish friend from foe. The triggering creature makes a melee {@action Strike} against another creature of Doatara's choice within its reach. The triggering creature's multiple attack penalty doesn't apply to this {@action Strike}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Blackfingers's Blessing",
+						"entries": [
+							"Doatara deals an extra {@damage 2d6} poison damage when she deals piercing or slashing damage to {@condition flat-footed} creatures."
+						]
+					},
+					{
+						"name": "Quick Bomber",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Doatara {@action Interact||Interacts} to draw a bomb, then {@action Strike||Strikes} with it."
+						],
+						"generic": {
+							"tag": "feat"
+						}
+					},
+					{
+						"name": "Toxic Flourish",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "Doatara has one hand free",
+						"entries": [
+							"Doatara {@action Interact||Interacts} to draw an {@trait injury} {@trait poison}, applies that poison to one piercing or slashing weapon she's wielding, and then {@action Strike||Strikes}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Doatara the Priest",
+			"source": "MotM",
+			"page": 22,
+			"level": 7,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 17
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic",
+					"osiriani"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 16
+				},
+				"assassin lore": {
+					"std": 12
+				},
+				"crafting": {
+					"std": 12
+				},
+				"deception": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 14
+				},
+				"religion": {
+					"std": 17
+				},
+				"stealth": {
+					"std": 16
+				},
+				"thievery": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 5,
+				"con": 1,
+				"int": 1,
+				"wis": 4,
+				"cha": 3
+			},
+			"items": [
+				"{@item dagger||daggers} (4)",
+				"{@item moderate darkvision elixir}",
+				"{@item moderate elixir of life}",
+				"{@item giant scorpion venom} (2)",
+				"{@item giant wasp venom}",
+				"{@item leather||leather armor}",
+				"silver {@item religious symbol (generic)||religious symbol}",
+				"{@runeItem shortsword||+1 weapon potency||striking|}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 17
+					}
+				},
+				"hp": [
+					{
+						"hp": 115
+					}
+				],
+				"resistances": [
+					{
+						"name": "poison",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile <S>"
+					],
+					"name": "shortsword",
+					"attack": 17,
+					"damage": "{@damage 2d6+7} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 16,
+					"damage": "{@damage 1d4+7} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 16,
+					"damage": "{@damage 1d4+7} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Prepared",
+					"DC": 25,
+					"attack": 17,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkvision"
+								},
+								{
+									"name": "faerie fire"
+								},
+								{
+									"name": "restore senses"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "harm",
+									"amount": 4
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "invisibility"
+								}
+							]
+						}
+					}
+				},
+				{
+					"tradition": "divine",
+					"type": "Focus",
+					"fp": 1,
+					"DC": 25,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "sudden shift"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Channel Smite",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "Doatara expends a {@spell harm|PC1} spell",
+						"entries": [
+							"Doatara makes a melee {@action Strike} and adds the {@spell harm} spell's negative damage to the {@action Strike}'s damage."
+						]
+					},
+					{
+						"name": "Poison Weapon",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "Doatara is wielding a piercing or slashing weapon",
+						"entries": [
+							"Doatara {@action Interact||Interacts} to draw an {@trait injury} {@trait poison} and applies the poison to the required weapon. If her next attack with that weapon before the end of her next turn hits and deals damage, it applies the effects of the poison. If she critically fails the attack roll, the poison is wasted as normal."
+						]
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,6 +1,229 @@
 {
 	"hazard": [
 		{
+			"name": "Ghostly Choir",
+			"source": "MotM",
+			"page": 21,
+			"level": 6,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "expert"
+			},
+			"description": [
+				"A choir of righteous {@deity Iomedae||Iomedaean} souls rises out of the floor to reclaim this space, singing an eerie chant that terrifies listeners and buffets their bodies with walls of sound."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Performance} (trained) to disrupt the song's resonance with another tune or DC 28 {@skill Religion} (trained) to ritually silence the spirits"
+				]
+			},
+			"actions": [
+				{
+					"name": "Profane Chant",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental",
+						"occult"
+					],
+					"trigger": "A creature enters the haunted room",
+					"entries": [
+						"The choir rises, and its song deals {@damage 4d8+18} mental damage to evil creatures within 30 feet of the souls' spectral forms. Affected creatures must each attempt a DC 24 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes half damage and becomes {@condition frightened||frightened 1}."
+								],
+								"Failure": [
+									"The creature takes full damage and becomes {@condition frightened||frightened 2}."
+								],
+								"Critical Failure": [
+									"The creature takes double damage. It also becomes {@condition frightened||frightened 3} and is {@condition fleeing} for 1 round."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Hail of Darts",
+			"source": "MotM",
+			"page": 15,
+			"level": 6,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "expert"
+			},
+			"description": [
+				"An array of spring-loaded, ceiling-mounted darts are primed to fire down into the hallway when triggered by a pressure plate."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Thievery} (expert) on the floor tile or wall socket"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 55
+				},
+				"bt": {
+					"std": 27
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Darts",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Pressure is applied to the floor tile",
+					"entries": [
+						"The trap shoots darts, making an attack against each creature in a 30-foot line centered on the floor tile."
+					]
+				},
+				{
+					"type": "affliction",
+					"name": "Old Giant Wasp Venom",
+					"traits": [
+						"poison"
+					],
+					"DC": 22,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 2d6} poison damage and {@condition clumsy||clumsy 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 3d6} poison damage and {@condition clumsy||clumsy 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 4d6} poison damage and {@condition clumsy||clumsy 2}",
+							"duration": "1 round"
+						}
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "dart",
+					"attack": 20,
+					"damage": "{@damage 4d6+12} piercing plus old giant wasp venom"
+				}
+			]
+		},
+		{
+			"name": "Boreal Rage Trap",
+			"source": "MotM",
+			"page": 13,
+			"level": 6,
+			"traits": [
+				"cold",
+				"evocation",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert"
+			},
+			"description": [
+				"A stuffed {@creature owlbear} twists toward intruders and breathes a gust of frigid air."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Thievery} (expert) on the owlbear's base"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 60
+				},
+				"bt": {
+					"std": 30
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Exhale",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature enters either of the marked areas, or a creature remains in the room for 1 minute",
+					"entries": [
+						"The trap breathes cold that envelops a 15-foot burst centered on the triggering creature's square. This deals {@damage 4d8+18} cold damage (DC 24 basic Reflex save), and a creature that critically fails the save becomes {@condition clumsy||clumsy 1} for 10 minutes due to frostbite."
+					]
+				}
+			],
+			"reset": [
+				"10 minutes"
+			]
+		},
+		{
 			"name": "Poisoned Lock",
 			"source": "DaLl",
 			"page": 11,
