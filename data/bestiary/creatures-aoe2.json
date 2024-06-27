@@ -2243,25 +2243,16 @@
 			"abilities": {
 				"bot": [
 					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 1d6+5} piercing Melee war razor +17 (agile, backstabber, deadly <d8>, finesse), Damage {@damage 1d4+5} piercing Ranged {@as 1} dagger +17 (agile, finesse, thrown <10 feet>, versatile S), Damage {@damage 1d4+5} piercing."
-						],
-						"name": "S), Damage"
-					},
-					{
+						"name": "Sneak Attack",
 						"entries": [
 							"When attacking a {@condition flat-footed} creature, the Skinsaw murderer deals {@dice 1d6} additional precision damage."
 						],
-						"name": "Sneak Attack",
 						"generic": {
 							"tag": "ability"
 						}
 					},
 					{
+						"name": "Twin Takedown",
 						"activity": {
 							"number": 1,
 							"unit": "action"
@@ -2270,9 +2261,11 @@
 							"flourish"
 						],
 						"entries": [
-							"As the ranger feat (Core Rulebook 171)."
+							"As the ranger feat."
 						],
-						"name": "Twin Takedown"
+						"generic": {
+							"tag": "feat"
+						}
 					}
 				]
 			},
@@ -2412,16 +2405,6 @@
 					}
 				],
 				"bot": [
-					{
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"entries": [
-							"{@damage 2d6+7} piercing Ranged dagger +20 (agile, finesse, thrown <10 feet>, versatile S), Damage {@damage 1d4+7} piercing."
-						],
-						"name": "S), Damage"
-					},
 					{
 						"activity": {
 							"number": 1,
