@@ -1,6 +1,57 @@
 {
 	"ritual": [
 		{
+			"name": "Amity Cycle",
+			"level": 4,
+			"source": "TEC",
+			"page": 61,
+			"traits": [
+				"rare",
+				"emotion",
+				"transmutation"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "hour"
+			},
+			"secondaryCasters": {
+				"number": 3,
+				"note": "or more"
+			},
+			"primaryCheck": {
+				"skills": [
+					"Performance"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Crafting",
+					"Performance",
+					"Society"
+				]
+			},
+			"range": {
+				"distance": {
+					"amount": 100,
+					"type": "feet"
+				}
+			},
+			"targets": "audience of up to 200 people",
+			"entries": [
+				"You perform an anbarit, which involves poetry reading, singing, music, and dancing. The primary caster can either act as a narrator throughout the performance or be one of the lead performers. The secondary casters can be dancers, musicians, or orators who participate in the anbarit.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "For 1 week, all audience and cast members gain a +2 status bonus to {@skill Diplomacy} checks to {@action Make an Impression} on other citizens of Thuvia and 10 temporary Hit Points, their minds filled with feelings of unity and camaraderie with the people from other cities in their nation. If they travel to a Thuvian city other than the one they are from and share part of the anbarit with others while under the ritual’s effects, the listeners gain a +1 status bonus to {@skill Diplomacy} checks to {@action Make an Impression} on other Thuvian citizens for 24 hours.",
+						"Success": "The audience members are filled with feelings of unity and camaraderie for the people from other cities in their nation; they gain a +1 status bonus to {@skill Diplomacy} checks to {@action Make an Impression} on other citizens of Thuvia for 24 hours.",
+						"Failure": "The audience enjoys the performance but gains no benefit.",
+						"Critical Failure": "The audience is disturbed by the performance and can receive no bonuses from {@trait emotion} effects for one week."
+					}
+				}
+			]
+		},
+		{
 			"name": "Extract Brain",
 			"level": 4,
 			"source": "Mal",
@@ -1129,7 +1180,7 @@
 			},
 			"duration": {
 				"number": 8,
-				"unit": "hours"
+				"unit": "hour"
 			},
 			"entries": [
 				"You emblazon a message across the sky itself. Casting the ritual requires choosing a set of symbols for the message you want to send, which you can convey with an atmospheric phenomenon of your choice. Common choices include carefully shaped clouds during the day and auroras at night. Some cultures\u2014such as the many denizens of the {@plane Plane of Air|GMG} and star-gazing iruxis\u2014develop complex symbology to communicate clearly using sky signs.",

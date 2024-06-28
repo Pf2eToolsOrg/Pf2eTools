@@ -1,6 +1,434 @@
 {
 	"place": [
 		{
+			"name": "Duwwor",
+			"source": "TEC",
+			"page": 59,
+			"category": "Settlement",
+			"level": 6,
+			"traits": [
+				"N",
+				"city"
+			],
+			"settlementData": {
+				"government": "Democracy",
+				"population": {
+					"total": 8300,
+					"ancestries": {
+						"humans": 60,
+						"dwarves": 15,
+						"elves": 10,
+						"gnomes": 10,
+						"other": 5
+					}
+				},
+				"languages": [
+					"{@language Dwarven}",
+					"{@language Mwangi}",
+					"{@language Osiriani}",
+					"{@language Taldane}"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Brigh|LOGM}",
+					"{@deity Gozreh}",
+					"{@deity Sarenrae}"
+				],
+				"threats": [
+					"harsh environment",
+					"raiders from the mountains",
+					"out-of-control clockworks"
+				],
+				"features": [
+					{
+						"name": "Quality Resources",
+						"entries": [
+							"Few can deny the fine quality of ore from Duwwor. Ingots of steel, silver, and {@item adamantine ingot||adamantine} up to high quality are always available, although all these materials cost 10% more than normal. Their purity makes them easy to work with; the {@action Craft} activity done with these materials takes 1 fewer day (minimum 1)."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Gamplix Noraneanithar",
+					"alignment": "cg",
+					"gender": "m",
+					"ancestry": "gnome",
+					"position": "inventor",
+					"level": 12,
+					"bond": "Erratic creator of clockwork miners"
+				},
+				{
+					"name": "Kharane",
+					"alignment": "n",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "fighter",
+					"level": 12,
+					"bond": "Defender of Duwwor"
+				},
+				{
+					"name": "Saadia",
+					"alignment": "n",
+					"gender": "f",
+					"ancestry": "half-elf",
+					"position": "druid",
+					"level": 16,
+					"bond": "Archdruid of the House of Resurgent Life"
+				}
+			]
+		},
+		{
+			"name": "Pashow",
+			"source": "TEC",
+			"page": 58,
+			"category": "Settlement",
+			"level": 8,
+			"traits": [
+				"N",
+				"city"
+			],
+			"settlementData": {
+				"government": "Democratic collective",
+				"population": {
+					"total": 5932,
+					"ancestries": {
+						"humans": 65,
+						"dwarves": 15,
+						"elves": 10,
+						"other": 10
+					}
+				},
+				"languages": [
+					"{@language Dwarven}",
+					"{@language Kelish}",
+					"{@language Osiriani}",
+					"{@language Taldane}"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Gozreh}",
+					"{@deity Nethys}",
+					"{@deity Sarenrae}"
+				],
+				"threats": [
+					"Water Lords",
+					"spies trying to get to the Citadel of the Alchemist",
+					"harsh environment"
+				],
+				"features": [
+					{
+						"name": "Elemental Education",
+						"entries": [
+							"Those wishing to learn elemental magic will find the Scrollspire well-stocked and its teachers welcoming. Spells with {@trait elemental} traits up to level 12 are available."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Emir Guldis",
+					"alignment": "n",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "councilor",
+					"level": 8,
+					"bond": "Former leader of Pashow and current city councilor"
+				},
+				{
+					"name": "Lumi",
+					"alignment": "n",
+					"gender": "nb",
+					"ancestry": "elf",
+					"position": "elementalist",
+					"level": 12,
+					"bond": "High Priest of {@deity Nethys}"
+				},
+				{
+					"name": "Shanouri al-Quaddam",
+					"alignment": "ng",
+					"gender": "f",
+					"ancestry": "dwarf",
+					"position": "wizard",
+					"level": 11,
+					"bond": "Protector of the shields"
+				},
+				{
+					"name": "Ziralia",
+					"alignment": "ng",
+					"gender": "f",
+					"ancestry": "human",
+					"position": "arcanist",
+					"level": 12,
+					"bond": "Leader of Pashow, daughter of Prince Zinlo"
+				}
+			]
+		},
+		{
+			"name": "Lamasara",
+			"source": "TEC",
+			"page": 57,
+			"category": "Settlement",
+			"level": 8,
+			"traits": [
+				"cg",
+				"city"
+			],
+			"settlementData": {
+				"government": "Monarchy",
+				"population": {
+					"total": 11450,
+					"ancestries": {
+						"humans": 50,
+						"elves": 25,
+						"gnomes": 10,
+						"halflings": 5,
+						"catfolk": 5,
+						"other": 7
+					}
+				},
+				"languages": [
+					"{@language Elven}",
+					"{@language Kelish}",
+					"{@language Osiriani}",
+					"{@language Taldane}"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Brigh|LOGM}",
+					"{@deity Nethys}",
+					"{@deity Pharasma}",
+					"{@deity Sarenrae}",
+					"{@deity Shelyn}"
+				],
+				"threats": [
+					"Water Lords",
+					"thieves' guilds",
+					"{@trait div||divs}"
+				],
+				"features": [
+					{
+						"name": "Artistically Inclined",
+						"entries": [
+							"The incredible art scene in Lamasara means there are more opportunities for those interested in creative work. {@action Earn Income} tasks up to level 15 are available for any {@skill Craft} related to the arts, as well as {@skill Performance}."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Djamila bint Nacera",
+					"alignment": "ng",
+					"gender": "f",
+					"ancestry": "half-elf",
+					"position": "cleric",
+					"level": 10,
+					"bond": "High priestess of {@deity Shelyn} at the Larksong Temple"
+				},
+				{
+					"name": "Queen Zamere",
+					"alignment": "ng",
+					"gender": "f",
+					"ancestry": "human",
+					"position": "queen",
+					"level": 10,
+					"bond": "Queen of Lamasara, famed orator"
+				},
+				{
+					"name": "Quinten Murrey",
+					"alignment": "cg",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "bard",
+					"level": 12,
+					"bond": "Skilled performer with tales of his plane-hopping adventures"
+				},
+				{
+					"name": "Silue Starbow",
+					"alignment": "cn",
+					"gender": "f",
+					"ancestry": "elf",
+					"position": "guide",
+					"level": 8,
+					"bond": "Proprietor of Starbow's Tours, offering expeditions into the desert"
+				}
+			]
+		},
+		{
+			"name": "Aspenthar",
+			"source": "TEC",
+			"page": 56,
+			"category": "Settlement",
+			"level": 1,
+			"traits": [
+				"LN",
+				"metropolis"
+			],
+			"settlementData": {
+				"government": "Monarchy",
+				"population": {
+					"total": 25680,
+					"ancestries": {
+						"humans": 60,
+						"half-orc": 15,
+						"dwarf": 10,
+						"gnoll": 5,
+						"other": 10
+					}
+				},
+				"languages": [
+					"{@language Kelish}",
+					"{@language Orcish}",
+					"{@language Osiriani}",
+					"{@language Taldane}"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Gorum}",
+					"{@deity Iomedae}",
+					"{@deity Sarenrae}"
+				],
+				"threats": [
+					"Osirion border raids",
+					"Water Lords",
+					"civil unrest"
+				],
+				"features": [
+					{
+						"name": "Well-Armed",
+						"entries": [
+							"Due to the military focus and a well-armed population, weapons, armor, and runes for each are available up to level 14."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Izaith Sandborn",
+					"alignment": "ng",
+					"gender": "nb",
+					"ancestry": "half-orc",
+					"position": "cameleer",
+					"level": 13,
+					"bond": "Dean of the camelry program at the Royal Military Academy"
+				},
+				{
+					"name": "Jhuniri",
+					"alignment": "ln",
+					"gender": "f",
+					"ancestry": "dwarf",
+					"position": "general",
+					"level": 12,
+					"bond": "Military leader of Aspenthar's forces"
+				},
+				{
+					"name": "Prince Zinlo",
+					"alignment": "ln",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "ruler",
+					"level": 14,
+					"bond": "Supreme leader of Aspenthar"
+				},
+				{
+					"name": "Vhuthir",
+					"alignment": "le",
+					"gender": "m",
+					"ancestry": "half-orc",
+					"position": "bandit lord",
+					"level": 13,
+					"bond": "Water Lord of the Shining Sands Oasis"
+				}
+			]
+		},
+		{
+			"name": "Merab",
+			"source": "TEC",
+			"page": 55,
+			"category": "Settlement",
+			"level": 12,
+			"traits": [
+				"LN",
+				"metropolis"
+			],
+			"settlementData": {
+				"government": "elected leader (mayor)",
+				"population": {
+					"total": 56870,
+					"ancestries": {
+						"humans": 65,
+						"dwarves": 15,
+						"elves": 8,
+						"halflings": 5,
+						"other": 7
+					}
+				},
+				"languages": [
+					"{@language Kelish}",
+					"{@language Osiriani}",
+					"{@language Taldane}"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Gozreh}",
+					"{@deity Nethys}",
+					"{@deity Pharasma}",
+					"{@deity Sarenrae}"
+				],
+				"threats": [
+					"Water Lords",
+					"Inner Sea pirates",
+					"{@trait div||divs}"
+				],
+				"features": [
+					{
+						"name": "Alchemical Oasis",
+						"entries": [
+							"As the home to many important schools of alchemy, Merab’s markets have much greater access to {@trait alchemical} items. {@trait Alchemical} formulae and items up to level 20 can be purchased there."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Iledopus",
+					"alignment": "ln",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "prince",
+					"level": 12,
+					"bond": "Patron of Merab"
+				},
+				{
+					"name": "Maisa el-Aarfa",
+					"alignment": "ne",
+					"gender": "f",
+					"ancestry": "elf",
+					"position": "merchant",
+					"level": 9,
+					"bond": "Ringleader of a smuggling operation"
+				},
+				{
+					"name": "Ulthiir",
+					"alignment": "lg",
+					"gender": "m",
+					"ancestry": "half-elf",
+					"position": "champion",
+					"level": 12,
+					"bond": "Leader of the Blessed Orchid"
+				},
+				{
+					"name": "Yulinix",
+					"alignment": "n",
+					"gender": "m",
+					"ancestry": "gnome",
+					"position": "alchemist",
+					"level": 16,
+					"bond": "High Alchemist of Merab, leader of the Alchemists' Guild"
+				}
+			]
+		},
+		{
 			"name": "Dreaming of Another Life",
 			"category": "Mindscape",
 			"source": "SoG3",
@@ -1217,7 +1645,7 @@
 				"religions": [
 					"{@deity Abadar}",
 					"{@deity Angradd}",
-					"{@deity Brigh}",
+					"{@deity Brigh|LOGM}",
 					"{@deity Torag}"
 				],
 				"threats": [
@@ -1458,7 +1886,7 @@
 				],
 				"religions": [
 					"{@deity Abadar}",
-					"{@deity Brigh}",
+					"{@deity Brigh|LOGM}",
 					"{@deity Erastil}"
 				],
 				"threats": [
@@ -1538,7 +1966,7 @@
 				],
 				"religions": [
 					"{@deity Abadar}",
-					"{@deity Brigh}",
+					"{@deity Brigh|LOGM}",
 					"{@deity Erastil}",
 					"{@deity Irori}",
 					"{@deity Torag}"
@@ -1580,7 +2008,7 @@
 					"level": 15,
 					"ancestry": "human",
 					"position": "cleric",
-					"bond": "head of the Church of {@deity Brigh}"
+					"bond": "head of the Church of {@deity Brigh|LOGM}"
 				},
 				{
 					"name": "Ironmaster Ytharia Vulane",
@@ -2991,7 +3419,7 @@
 				],
 				"religions": [
 					"{@deity Balumbdar}",
-					"{@deity Brigh}",
+					"{@deity Brigh|LOGM}",
 					"{@deity Desna}",
 					"{@deity Erastil}",
 					"{@deity Gozreh}",

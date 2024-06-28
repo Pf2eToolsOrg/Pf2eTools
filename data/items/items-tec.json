@@ -1,0 +1,93 @@
+{
+	"item": [
+		{
+			"name": "Desiccating Scepter",
+			"source": "TEC",
+			"page": 61,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"rare",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 150,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"Often wielded by priests of cruel desert gods, this thin scepter is carved from dry, yellowed bone and can destroy the moisture in anything it touches.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 2,
+						"unit": "day"
+					},
+					"entries": [
+						"You touch the scepter to a body of water containing 20 gallons or less, which is instantly reduced to dust; larger bodies of water are unaffected. Alternatively, you can touch a creature whose body contains water with the scepter; the target takes {@damage 4d6} fire damage and must attempt a DC 19 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target is unaffected."
+								],
+								"Success": [
+									"The target takes half damage."
+								],
+								"Failure": [
+									"The target takes full damage and is {@condition slowed||slowed 1}."
+								],
+								"Critical Failure": [
+									"As failure, but the target is {@condition slowed||slowed 2}."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Statue Skin Salve",
+			"source": "TEC",
+			"page": 61,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 3,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"This gritty salve can be applied to the skin of a creature to form a thin layer of smooth stone on its body for 20 minutes. During this time, it gains resistance 3 to piercing and slashing damage. Further, the creature gains a +2 item bonus to {@action Impersonate} a statue or creature made of stone for 8 hours, or until its body is fully submersed in water."
+			]
+		}
+	]
+}

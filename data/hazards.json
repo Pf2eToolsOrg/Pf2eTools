@@ -1,6 +1,424 @@
 {
 	"hazard": [
 		{
+			"name": "The Enmity Cycle",
+			"source": "TEC",
+			"page": 51,
+			"level": 6,
+			"traits": [
+				"rare",
+				"complex",
+				"curse",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 16,
+				"minProf": "expert",
+				"notes": "or detect magic"
+			},
+			"description": [
+				"Discordant music, dance, and poetry combine to build a deep suspicion and distrust of strangers."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Performance} DC 26 to counteract the performance or {@skill Religion} or Occult DC 27 to disrupt the spiritual energy. Three total successes are needed to disable the trap."
+				]
+			},
+			"actions": [
+				{
+					"name": "Discordant Performance",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"emotion",
+						"mental",
+						"occult"
+					],
+					"trigger": "Zridi spends an action to activate The Enmity Cycle while in area F2",
+					"entries": [
+						"All creatures other than Zridi in F2 take {@damage 2d8+9} mental damage (DC 25 basic Will save). The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The performance continues to sow seeds of enmity, discord, and distrust on those in its area. All creatures in attendance other than Zridi must attempt a DC 25 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected and is immune to the effects for 1 day."
+						],
+						"Success": [
+							"The target is {@condition frightened||frightened 1} for 2 rounds."
+						],
+						"Failure": [
+							"The target is {@condition frightened||frightened 2} for 1 minute and is certain the source of this fear is their fellow citizens, especially those from places other than their hometown. For 1 week the target suffers a \u20132 penalty to all {@skill Diplomacy} skill checks against people from other Thuvian cities and regains the {@condition frightened||frightened 2} condition whenever they are in one of those cities."
+						],
+						"Critical Failure": [
+							"As failure, but the target becomes a carrier for The Enmity Cycle for the next week. The target is compelled to travel to a city other than where they were exposed and recite as many lines from the anbarit as they can recall. Those who hear or witness the performance are treated as if they had attended a performance of The Enmity Cycle, but the Will save DC is 23."
+						]
+					}
+				}
+			],
+			"reset": [
+				"A new production of The Enmity Cycle must be arranged; this process usually takes at least 1 week."
+			]
+		},
+		{
+			"name": "Clockwork Dancers",
+			"source": "TEC",
+			"page": 45,
+			"level": 7,
+			"traits": [
+				"unique",
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 16,
+				"minProf": "expert"
+			},
+			"description": [
+				"Several clockwork humanoid figures armed with spinning blades move throughout the area."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 25 (expert) to deactivate the clockworks from the control panel. Two successes are needed to deactivate the trap."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hardness": {
+					"std": 15
+				},
+				"hp": {
+					"std": 58
+				},
+				"bt": {
+					"std": 29
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "sonic",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Spring Attack",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature ends its turn in F2",
+					"entries": [
+						"Clockwork figures spring out from the pillars and attack anyone on the stage with a spinning blade {@action Strike}.",
+						"The trap then rolls initiative."
+					]
+				},
+				{
+					"name": "Spinning Blade",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"blade +18",
+						"Damage {@damage 2d8+9} slashing"
+					],
+					"entries": []
+				}
+			],
+			"routine": [
+				"(1 action) The clockwork dancers target each creature on the stage within 10 feet of a pillar by a spinning blade {@action Strike}."
+			],
+			"reset": [
+				"The trap deactivates after 4 rounds and resets after 1 minute."
+			]
+		},
+		{
+			"name": "Corrupted Draft",
+			"source": "TEC",
+			"page": 38,
+			"level": 8,
+			"traits": [
+				"unique",
+				"complex",
+				"curse",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 16,
+				"minProf": "expert",
+				"notes": "or detect magic"
+			},
+			"description": [
+				"Discordant music, dance, and poetry combine to build a deep suspicion and distrust of strangers."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Performance} DC 28 to counteract the performance or {@skill Religion} or Occult DC 28 to disrupt the spiritual energy. Two total successes are needed to disable the trap. The mechanical head can automatically disable the trap with two uses of Inspired Recitation."
+				]
+			},
+			"actions": [
+				{
+					"name": "Sickening Performance",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"emotion",
+						"mental",
+						"occult"
+					],
+					"trigger": "Two or more characters enter area E3 and make any sound at all",
+					"entries": [
+						"Sounds or speech are amplified and garbled into a terrible, shrieking cry. All creatures in the area take {@damage 2d10+11} mental damage (DC 28 basic Will save). The trap then rolls initiative."
+					]
+				},
+				{
+					"name": "DC 28",
+					"entries": [
+						"Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target is unaffected and is immune to the effects for 1 minute."
+								],
+								"Success": [
+									"The target takes half damage."
+								],
+								"Failure": [
+									"The target takes full damage and is {@condition sickened||sickened 1} by feelings of distrust and anxiety."
+								],
+								"Critical Failure": [
+									"The target takes double damage and is {@condition sickened||sickened 2}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action; emotion, fear, mental, occult) The echoes continue to reverberate, tearing at those in the area and filling them with distrust of others. All creatures in the area take {@damage 2d10+11} mental damage and must attempt a"
+			],
+			"reset": [
+				"The hazard stops when there are no conscious creatures in area E3 and resets after 1 minute."
+			]
+		},
+		{
+			"name": "Deadly Workshop",
+			"source": "TEC",
+			"page": 26,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 16,
+				"minProf": "expert",
+				"notes": "to notice the blades embedded in the chains and the complex system of pulleys connecting them"
+			},
+			"description": [
+				"Swinging bladed chains whip through the entire workshop."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 20 (expert) on the control panel on the raised platform deactivates the trap."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 14
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 50,
+					"notes": {
+						"std": "to destroy the chains and disable the trap"
+					}
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Swinging Blades",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "Two or more creatures enter the workshop or end their turn in the workshop",
+					"entries": [
+						"The trap makes a slashing blade {@action Strike} against the triggering creatures, then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The trap swings one slashing blade against every creature in the workshop as 1 action. The entire workshop is treated as difficult terrain because of the sheer number of slashing chains. This trap doesn't take a multiple attack penalty."
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "slashing blade",
+					"attack": 15,
+					"damage": "{@damage 2d8+7} slashing"
+				}
+			],
+			"reset": [
+				"The trap deactivates and resets after 1 minute."
+			]
+		},
+		{
+			"name": "Entangling Shredder Trap",
+			"source": "TEC",
+			"page": 24,
+			"level": 6,
+			"traits": [
+				"simple",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert",
+				"notes": "to notice the pressure plates under the rugs"
+			},
+			"description": [
+				"Dozens of ropes embedded with steel barbs spring out from the walls when at least two creatures step on the rugs."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 24 (expert) on the pressure plates."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 16
+					}
+				},
+				"hardness": {
+					"std": 13
+				},
+				"hp": {
+					"std": 54,
+					"notes": {
+						"std": "to cut the barbed ropes and disable the trap"
+					}
+				},
+				"bt": {
+					"std": 27
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Entangling Ropes",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "Two creatures enter the hallway or end their turn in the hallway",
+					"entries": [
+						"The trap makes a barbed rope {@action Strike} against the triggering creatures. This trap doesn't take a multiple attack penalty."
+					]
+				},
+				{
+					"name": "Grasping Ropes",
+					"entries": [
+						"The ropes whip around the limbs of the target. The target must attempt a DC 25 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": [
+									"The target is unaffected."
+								],
+								"Failure": [
+									"The target is {@condition flat-footed} until it cuts the ropes or {@action Escape||Escapes} (DC 25)."
+								],
+								"Critical Failure": [
+									"As failure, but the target is also {@condition immobilized}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "barbed rope",
+					"attack": 20,
+					"damage": "{@damage 4d8+14} slashing plus grasping ropes"
+				}
+			],
+			"reset": [
+				"manual"
+			]
+		},
+		{
 			"name": "Mouth of Tchekuth",
 			"source": "Mal",
 			"page": 46,

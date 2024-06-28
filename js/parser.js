@@ -1679,6 +1679,7 @@ SRC_WtD5 = "WtD5";
 SRC_DaLl = "DaLl";
 SRC_MotM = "MotM";
 SRC_HStR = "HStR";
+SRC_TEC = "TEC";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
@@ -1832,6 +1833,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_WtD5] = "Wake the Dead #5";
 Parser.SOURCE_JSON_TO_FULL[SRC_DaLl] = "Dinner at Lionlodge";
 Parser.SOURCE_JSON_TO_FULL[SRC_MotM] = "Mark of the Mantis";
 Parser.SOURCE_JSON_TO_FULL[SRC_HStR] = "Head-Shot the Rot";
+Parser.SOURCE_JSON_TO_FULL[SRC_TEC] = "The Enmity Cycle";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
@@ -1949,6 +1951,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_WtD5] = "WtD5";
 Parser.SOURCE_JSON_TO_ABV[SRC_DaLl] = "DaLl";
 Parser.SOURCE_JSON_TO_ABV[SRC_MotM] = "MotM";
 Parser.SOURCE_JSON_TO_ABV[SRC_HStR] = "HStR";
+Parser.SOURCE_JSON_TO_ABV[SRC_TEC] = "TEC";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
@@ -2066,6 +2069,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_WtD5] = "2024-01-31";
 Parser.SOURCE_JSON_TO_DATE[SRC_DaLl] = "2021-05-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_MotM] = "2022-02-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_HStR] = "2021-10-21";
+Parser.SOURCE_JSON_TO_DATE[SRC_TEC] = "2023-05-24";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
@@ -2194,6 +2198,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_WtD5] = "https://www.dynamite.com/htmlfiles/view
 Parser.SOURCE_JSON_TO_STORE[SRC_DaLl] = "https://paizo.com/products/btq027ug";
 Parser.SOURCE_JSON_TO_STORE[SRC_MotM] = "https://paizo.com/products/btq02c32";
 Parser.SOURCE_JSON_TO_STORE[SRC_HStR] = "https://paizo.com/products/btq02anr";
+Parser.SOURCE_JSON_TO_STORE[SRC_TEC] = "https://paizo.com/products/btq02e50";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
 	SRC_AFFM,
@@ -2274,6 +2279,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_DaLl,
 	SRC_MotM,
 	SRC_HStR,
+	SRC_TEC,
 ]);
 Parser.SOURCES_VANILLA = new Set([
 	SRC_APG,
@@ -2450,6 +2456,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_DaLl,
 	SRC_MotM,
 	SRC_HStR,
+	SRC_TEC,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
