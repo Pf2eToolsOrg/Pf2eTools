@@ -15,7 +15,7 @@
 			"stealth": {
 				"bonus": 16,
 				"minProf": "expert",
-				"notes": "or detect magic"
+				"notes": "or {@spell detect magic}"
 			},
 			"description": [
 				"Discordant music, dance, and poetry combine to build a deep suspicion and distrust of strangers."
@@ -174,7 +174,7 @@
 			"stealth": {
 				"bonus": 16,
 				"minProf": "expert",
-				"notes": "or detect magic"
+				"notes": "or {@spell detect magic}"
 			},
 			"description": [
 				"Discordant music, dance, and poetry combine to build a deep suspicion and distrust of strangers."
@@ -796,10 +796,10 @@
 					"Hatchet ": 14
 				},
 				"hp": {
-					"Hatchet ": 60
+					"std": 60
 				},
 				"bt": {
-					"Hatchet ": 30
+					"std ": 30
 				},
 				"immunities": [
 					"critical hits",
@@ -1151,7 +1151,7 @@
 		{
 			"name": "Xarwin Manor Phantasm",
 			"source": "Mal",
-			"level": "-1",
+			"level": -1,
 			"page": 11,
 			"traits": [
 				"uncommon",
@@ -5323,7 +5323,7 @@
 					],
 					"trigger": "A creature touches the window",
 					"entries": [
-						"The triggering creature takes {@damage 8d10+44} negative damage (DC 42 basic Will save) as the window attempts to steal their soul. If this damage would kill the target, its soul is trapped inside the window with the effects of bind soul."
+						"The triggering creature takes {@damage 8d10+44} negative damage (DC 42 basic Will save) as the window attempts to steal their soul. If this damage would kill the target, its soul is trapped inside the window with the effects of {@spell bind soul}."
 					]
 				}
 			],

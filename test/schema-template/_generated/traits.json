@@ -92,16 +92,46 @@
 					"$ref": "#/definitions/ancestryHeritageTrait"
 				},
 				{
-					"$ref": "#/definitions/creatureTypeTrait"
-				},
-				{
 					"$ref": "#/definitions/itemTrait"
 				},
 				{
 					"$ref": "#/definitions/spellTrait"
+				},
+				{
+					"$ref": "#/definitions/creatureTypeTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"creatureTypeTrait": {
+			"type": "string",
+			"description": "A list of all Creature Type traits.",
+			"enum": [
+				"aberration",
+				"animal",
+				"astral",
+				"beast",
+				"celestial",
+				"construct",
+				"div",
+				"dragon",
+				"dream",
+				"eidolon",
+				"elemental",
+				"fey",
+				"fiend",
+				"fungus",
+				"giant",
+				"humanoid",
+				"monitor",
+				"nindoru",
+				"ooze",
+				"petitioner",
+				"plant",
+				"spirit",
+				"time",
+				"undead"
+			]
 		},
 		"spellTrait": {
 			"type": "string",
@@ -174,35 +204,6 @@
 				"tea",
 				"virulent",
 				"wand"
-			]
-		},
-		"creatureTypeTrait": {
-			"type": "string",
-			"description": "A list of all Creature Type traits.",
-			"enum": [
-				"aberration",
-				"animal",
-				"astral",
-				"beast",
-				"celestial",
-				"construct",
-				"dragon",
-				"dream",
-				"eidolon",
-				"elemental",
-				"fey",
-				"fiend",
-				"fungus",
-				"giant",
-				"humanoid",
-				"monitor",
-				"nindoru",
-				"ooze",
-				"petitioner",
-				"plant",
-				"spirit",
-				"time",
-				"undead"
 			]
 		},
 		"ancestryHeritageTrait": {
