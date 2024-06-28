@@ -2885,10 +2885,7 @@
 					"std": 7
 				},
 				"hp": {
-					"std": 25,
-					"notes": {
-						"std": ""
-					}
+					"std": 25
 				}
 			},
 			"actions": [
@@ -5599,9 +5596,16 @@
 				"hp": {
 					"std": 60,
 					"notes": {
-						"std": "per hound; Resistance all damage 10 (except force, {@item ghost touch}, or positive; double resistance to non-magical)"
+						"std": "per hound"
 					}
-				}
+				},
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 10,
+						"note": "except force, {@item ghost touch}, or positive; double resistance to non-magical"
+					}
+				]
 			},
 			"actions": [
 				{
@@ -5663,11 +5667,15 @@
 					}
 				},
 				"hp": {
-					"Spirit": 230,
-					"notes": {
-						"Spirit": "Resistance all damage 20 (except force, {@item ghost touch}, or positive; double resistance to non-magical)"
+					"Spirit": 230
+				},
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 20,
+						"note": "except force, {@item ghost touch}, or positive; double resistance to non-magical"
 					}
-				}
+				]
 			},
 			"actions": [
 				{
@@ -17555,7 +17563,7 @@
 					{
 						"amount": 20,
 						"name": "all damage",
-						"note": "except fire, force, {@item ghost touch}, or positive"
+						"note": "except {@trait fire}, force, {@item ghost touch}, or positive"
 					}
 				]
 			},
