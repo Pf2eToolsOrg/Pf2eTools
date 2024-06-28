@@ -904,6 +904,7 @@ function Renderer () {
 		}
 
 		const preamble = [];
+		if (entry.research) preamble.push(`<strong>Research</strong>&nbsp;${entry.research}`);
 		if (entry.cost) preamble.push(`<strong>Cost&nbsp;</strong>${entry.cost}`);
 		if (entry.frequency) preamble.push(`<strong>Frequency&nbsp;</strong>${Parser.freqToFullEntry(entry.frequency)}`);
 		if (entry.note) preamble.push(entry.note);
@@ -5267,10 +5268,13 @@ Renderer.item = {
 		if (item.skills) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>`);
 			const skills = [];
-			Object.keys(item.skills).forEach(skill => {
-				skills.push(`${skill.includes("Lore") ? `${renderer.render(`{@skill Lore||${skill}}`)}` : `${renderer.render(`{@skill ${skill}}`)}`}&nbsp;${renderer.render(`{@d20 ${item.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(item.skills[skill], { exclude: ["default"], dice: { name: skill } })}`);
-			});
-			renderStack.push(skills.join(", "))
+			Object.keys(item.skills)
+				.filter((skill) => skill !== "special")
+				.forEach(skill => {
+					skills.push(`${skill.includes("Lore") ? `${renderer.render(`{@skill Lore||${skill}}`)}` : `${renderer.render(`{@skill ${skill}}`)}`}&nbsp;${renderer.render(`{@d20 ${item.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(item.skills[skill], { exclude: ["default"], dice: { name: skill } })}`);
+				});
+				renderStack.push(skills.join(", "))
+				if (item.skills.special) renderStack.push(`${skills.length ? "; " : ""}${item.skills.special}`);
 			renderStack.push(`</p>`);
 		}
 		if (item.abilityMods) {
@@ -5283,16 +5287,53 @@ Renderer.item = {
 			renderStack.push(renderer.render(`{@d20 ${item.abilityMods.Cha}||Charisma}`));
 			renderStack.push(`</p>`);
 		}
-		if (item.savingThrows) {
+		if (item.ac || item.savingThrows) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-			if (item.savingThrows.Will) {
-				renderStack.push(`<strong>Will&nbsp;</strong>`)
-				renderStack.push(Renderer.get().render(`{@d20 ${item.savingThrows.Will.default}||Will Save}`))
-				renderStack.push(Renderer.utils.getNotes(item.savingThrows.Will, { exclude: ["default", "abilities"], dice: { name: "Will Save" } }));
+			if (item.ac) renderStack.push(`<strong>AC</strong>&nbsp;${item.ac}`);
+			if (item.savingThrows) {
+				const savingThrowRenderStack = [];
+				if (item.savingThrows.Fort) {
+					savingThrowRenderStack.push(
+						`<strong>Fort&nbsp;</strong>${Renderer.get().render(`{@d20 ${item.savingThrows.Fort.default}||Fort Save}`)
+						}${Renderer.utils.getNotes(item.savingThrows.Fort, { exclude: ["default", "abilities"], dice: { name: "Fort Save" } })
+						}`
+					);
+				}
+				if (item.savingThrows.Ref) {
+					savingThrowRenderStack.push(
+						`<strong>Ref&nbsp;</strong>${Renderer.get().render(`{@d20 ${item.savingThrows.Ref.default}||Ref Save}`)
+						}${Renderer.utils.getNotes(item.savingThrows.Ref, { exclude: ["default", "abilities"], dice: { name: "Ref Save" } })
+						}`
+					);
+				}
+				if (item.savingThrows.Will) {
+					savingThrowRenderStack.push(
+						`<strong>Will&nbsp;</strong>${Renderer.get().render(`{@d20 ${item.savingThrows.Will.default}||Will Save}`)
+						}${Renderer.utils.getNotes(item.savingThrows.Will, { exclude: ["default", "abilities"], dice: { name: "Will Save" } })
+						}`
+					);
+				}
+				if (item.ac) {
+					renderStack.push(`; ${savingThrowRenderStack.join(", ")}`);
+				} else {
+					renderStack.push(savingThrowRenderStack.join(", "));
+				}
 			}
-			renderStack.push(`</p>`);
+			renderStack.push("</p>");
 		}
-		if (item.perception || item.communication || item.skills || item.abilityMods || item.savingThrows) renderStack.push(Renderer.utils.getDividerDiv());
+
+		if (item.hp || item.immunities || item.resistances || item.weaknesses) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+			const HPIRWRenderStack = [];
+			if (item.hp) HPIRWRenderStack.push(`<strong>HP</strong>&nbsp;${item.hp}`);
+			if (item.immunities) HPIRWRenderStack.push(`<strong>Immunities</strong>&nbsp;${item.immunities.join(", ")}`);
+			if (item.resistances) HPIRWRenderStack.push(`<strong>Resistances</strong>&nbsp;${item.resistances.map((obj) => `${obj.name} ${obj.amount}`).join(", ")}`);
+			if (item.weaknesses) HPIRWRenderStack.push(`<strong>Weaknesses</strong>&nbsp;${item.weaknesses.map((obj) => `${obj.name} ${obj.amount}`).join(", ")}`);
+			renderStack.push(HPIRWRenderStack.join("; "));
+			renderStack.push("</p>");
+		}
+
+		if (item.perception || item.communication || item.skills || item.abilityMods || item.ac || item.savingThrows || item.hp || item.immunities || item.weaknesses || item.weaknesses) renderStack.push(Renderer.utils.getDividerDiv());
 		return renderStack.join("");
 	},
 
@@ -8384,6 +8425,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@relicGift":
 					case "@item":
 					case "@language":
+					case "@curse":
 					case "@object":
 					case "@ancestry":
 					case "@archetype":
