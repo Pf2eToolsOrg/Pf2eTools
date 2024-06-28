@@ -31,7 +31,7 @@ class PageFilterHazards extends PageFilter {
 		});
 		this._savingThrowFilter = new MultiFilter({
 			header: "Saving Throws",
-			filters: [this._fortFilter, this._refFilter],
+			filters: [this._fortFilter, this._refFilter, this._willFilter],
 		});
 		this._traitsFilter = new Filter({header: "Traits"});
 		this._miscFilter = new Filter({header: "Miscellaneous"});
@@ -107,6 +107,7 @@ class PageFilterHazards extends PageFilter {
 			[
 				it._fFort,
 				it._fRef,
+				it._fWill,
 			],
 			it._fMisc,
 		)
