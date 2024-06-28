@@ -43,9 +43,9 @@
 				"cha": 3
 			},
 			"items": [
-				"crude wooden religious symbol of {@deity Sarenrae}",
-				"scimitar",
-				"scorpion whip",
+				"crude {@item wooden religious symbol} of {@deity Sarenrae}",
+				"{@item scimitar}",
+				"{@item scorpion whip|EC1}",
 				"robes"
 			],
 			"defenses": {
@@ -84,7 +84,7 @@
 					"traits": [
 						"disarm",
 						"finesse",
-						"reach 10 feet",
+						"reach <10 feet>",
 						"trip"
 					],
 					"name": "scorpion whip",
@@ -145,9 +145,9 @@
 				"cha": 3
 			},
 			"items": [
-				"+1 chain mail",
-				"scorpion whip",
-				"wooden religious symbol"
+				"{@runeItem chain mail||+1 armor potency|}",
+				"{@item scorpion whip|EC1}",
+				"{@item wooden religious symbol}"
 			],
 			"defenses": {
 				"ac": {
@@ -264,7 +264,7 @@
 			"name": "Noolik",
 			"source": "TEC",
 			"page": 25,
-			"description": "Jinkin leader",
+			"description": "{@creature Jinkin} leader",
 			"level": 4,
 			"traits": [
 				"ce",
@@ -315,8 +315,8 @@
 				"cha": 3
 			},
 			"items": [
-				"shortsword",
-				"traveler's any-tool"
+				"{@item shortsword}",
+				"{@item traveler's any-tool}"
 			],
 			"defenses": {
 				"ac": {
@@ -355,7 +355,7 @@
 						"agile",
 						"finesse",
 						"magical",
-						"versatile S"
+						"versatile <S>"
 					],
 					"name": "shortsword",
 					"attack": 14,
@@ -382,12 +382,12 @@
 			"abilities": {
 				"bot": [
 					{
-						"name": "Sneak",
+						"name": "Sneak Attack",
 						"entries": [
-							"Attack Noolik deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+							"Noolik deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"generic": {
-							"tag": "action"
+							"tag": "ability"
 						}
 					},
 					{
@@ -398,8 +398,8 @@
 							"transmutation"
 						],
 						"entries": [
-							"A group of six jinkins can work together for an hour to imbue an item with a curse at a range of 60 feet. While this process is lengthy, it's also unobtrusive and can be performed while Hiding.",
-							"Jinkins prefer to use this ability on magic items. The curse makes the item unreliable (DC {@flatDC 5} flat check or waste any action to {@action Interact} with or Activate the item), adds a bizarre requirement to use the item, or imparts some other curse of a similar caliber."
+							"A group of six jinkins can work together for an hour to imbue an item with a curse at a range of 60 feet. While this process is lengthy, it's also unobtrusive and can be performed while {@action Hide||Hiding}.",
+							"Jinkins prefer to use this ability on magic items. The curse makes the item unreliable (DC {@flatDC 5} flat check or waste any action to {@action Interact} with or {@action Activate an Item||Activate the item}), adds a bizarre requirement to use the item, or imparts some other curse of a similar caliber."
 						]
 					},
 					{
@@ -440,12 +440,18 @@
 				"athletics": {
 					"std": 10
 				},
-				"notes": [
-					"Disguise +9",
-					"{@skill Intimidation} +9",
-					"{@skill Religion} +5",
-					"{@skill Stealth} +9"
-				]
+				"deception": {
+					"std": 9
+				},
+				"intimidation": {
+					"std": 9
+				},
+				"religion": {
+					"std": 5
+				},
+				"stealth": {
+					"std": 9
+				}
 			},
 			"abilityMods": {
 				"str": 4,
@@ -456,10 +462,10 @@
 				"cha": 3
 			},
 			"items": [
-				"leather armor",
-				"religious symbol of {@deity Ahriman|B3}",
-				"scimitar",
-				"whip"
+				"{@item leather||leather armor}",
+				"{@item religious symbol (generic)||religious symbol} of {@deity Ahriman|B3}",
+				"{@item scimitar}",
+				"{@item whip}"
 			],
 			"defenses": {
 				"ac": {
@@ -498,7 +504,7 @@
 						"disarm",
 						"finesse",
 						"nonlethal",
-						"reach 10 feet",
+						"reach <10 feet>",
 						"trip"
 					],
 					"name": "whip",
@@ -560,10 +566,8 @@
 				"religion": {
 					"std": 13
 				},
-				"notes": [
-					"{@skill Stealth}+10",
-					"{@skill Survival} +12"
-				]
+				"stealth":{"std":10},
+				"survival":{"std":12}
 			},
 			"abilityMods": {
 				"str": 3,
@@ -574,10 +578,10 @@
 				"cha": 4
 			},
 			"items": [
-				"falchion",
-				"hide armor",
-				"staff of conjuration",
-				"wooden religious symbol"
+				"{@item falchion}",
+				"{@item hide||hide armor}",
+				"{@item staff of conjuration}",
+				"{@item wooden religious symbol}"
 			],
 			"defenses": {
 				"ac": {
@@ -893,7 +897,7 @@
 				"cha": 6
 			},
 			"items": [
-				"handheld instrument"
+				"{@item handheld musical instrument||handheld instrument}"
 			],
 			"defenses": {
 				"ac": {
@@ -1021,13 +1025,7 @@
 					{
 						"name": "Fox's Cunning",
 						"entries": [
-							"A vulpinal's core value is cunning. They can apply their knowledge and stories from their extensive travels to just about any situation in an instant. Before spending any other action on their turn, the vulpinal can"
-						]
-					},
-					{
-						"name": "Recall",
-						"entries": [
-							"Knowledge as a free action."
+							"A vulpinal's core value is cunning. They can apply their knowledge and stories from their extensive travels to just about any situation in an instant. Before spending any other action on their turn, the vulpinal can {@action Recall Knowledge} as a free action."
 						]
 					}
 				]
@@ -1091,9 +1089,9 @@
 				"cha": 5
 			},
 			"items": [
-				"leather armor",
-				"lute",
-				"+1 striking rapier"
+				"{@item leather||leather armor}",
+				"{@item handheld musical instrument||lute}",
+				"{@runeItem rapier||+1 weapon potency||striking|}"
 			],
 			"defenses": {
 				"ac": {
@@ -1192,7 +1190,8 @@
 						"3": {
 							"spells": [
 								{
-									"name": "agonizing despair"
+									"name": "agonizing despair",
+									"source": "APG"
 								},
 								{
 									"name": "roaring applause",
@@ -1234,7 +1233,7 @@
 			"name": "Seddek",
 			"source": "TEC",
 			"page": 42,
-			"description": "Male janni enforcer (Bestiary 162)",
+			"description": "Male {@creature janni} enforcer",
 			"level": 8,
 			"traits": [
 				"unique",
@@ -1285,9 +1284,9 @@
 				"cha": 5
 			},
 			"items": [
-				"murderer's knot",
-				"composite shortbow (20 arrows)",
-				"+1 striking shifting scimitar"
+				"{@item murderer's knot}",
+				"{@item composite shortbow} (20 {@item arrow (generic)||arrows})",
+				"{@runeItem scimitar||+1 weapon potency||striking||shifting|}"
 			],
 			"defenses": {
 				"ac": {
@@ -1324,7 +1323,7 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"forceful +1",
+						"forceful <+1>",
 						"sweep"
 					],
 					"name": "scimitar",
@@ -1387,9 +1386,7 @@
 								{
 									"name": "plane shift",
 									"notes": [
-										"to Astral Plane",
-										"Elemental Planes",
-										"or Material Plane only"
+										"to {@place Astral Plane|GMG}, Elemental Planes, or {@place Material Plane|GMG} only"
 									]
 								}
 							]
@@ -1430,7 +1427,7 @@
 			"name": "Samir and Amina",
 			"source": "TEC",
 			"page": 47,
-			"description": "Muse phantoms (Pathfinder Adventure Path #152: Legacy of the Lost God 81)",
+			"description": "{@creature Muse Phantom|EC2|Muse phantoms}",
 			"level": 5,
 			"traits": [
 				"uncommon",
@@ -1652,7 +1649,7 @@
 			"name": "Zridi",
 			"source": "TEC",
 			"page": 49,
-			"description": "Female pairaka (Pathfinder Bestiary 3 70)",
+			"description": "Female {@creature pairaka|B3}",
 			"level": 8,
 			"traits": [
 				"unique",
@@ -1713,7 +1710,7 @@
 				"cha": 7
 			},
 			"items": [
-				"horn of fog"
+				"{@item horn of fog}"
 			],
 			"defenses": {
 				"ac": {
@@ -1819,7 +1816,8 @@
 					"DC": 26,
 					"rituals": [
 						{
-							"name": "div pact"
+							"name": "div pact",
+							"source": "B3"
 						}
 					]
 				}
@@ -1835,34 +1833,30 @@
 				],
 				"bot": [
 					{
+						"type": "affliction",
+						"note": "A creature can't remove the {@condition fatigued} condition while infected",
 						"name": "Bubonic Plague",
 						"traits": [
 							"disease"
 						],
-						"entries": [
-							"A creature can't remove the {@condition fatigued} condition while infected;",
+						"DC": 24,
+						"savingThrow": "Fortitude",
+						"onset": "1 day",
+						"stages": [
 							{
-								"type": "affliction",
-								"DC": 24,
-								"savingThrow": "Fortitude",
-								"onset": "1 day",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition enfeebled||enfeebled 2} and {@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition enfeebled||enfeebled 3}, {@condition fatigued}, and take {@damage 1d6} {@condition persistent damage||persistent bleed damage} every {@dice 1d20} minutes",
-										"duration": "1 day"
-									}
-								]
+								"stage": 1,
+								"entry": "{@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled||enfeebled 2} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled||enfeebled 3}, {@condition fatigued}, and take {@damage 1d6} {@condition persistent damage||persistent bleed damage} every {@dice 1d20} minutes",
+								"duration": "1 day"
 							}
 						]
 					},
@@ -1974,10 +1968,11 @@
 			],
 			"languages": {
 				"languages": [
-					"auran"
+					"auran",
+					"terran"
 				],
 				"notes": [
-					"Terran (can't speak any language)"
+					"(can't speak any language)"
 				]
 			},
 			"skills": {
