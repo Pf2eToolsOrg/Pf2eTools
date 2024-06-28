@@ -4853,10 +4853,14 @@ Renderer.deity = {
 			const renderer = Renderer.get();
 			return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(alignment.entry)}</p>`;
 		} else {
-			if (alignment.alignment && alignment.followerAlignment) {
-				return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment)} (${formatAlignmentList(alignment.followerAlignment)})</p>`
+			if (alignment.alignment) {
+				if (alignment.followerAlignment) {
+					return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment)} (${formatAlignmentList(alignment.followerAlignment)})</p>`;
+				} else {
+					return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment)}</p>`;
+				}
 			} else {
-				return `<p class="pf2-stat__section"><strong>Alignment&nbsp;</strong>${formatAlignmentList(alignment.alignment || alignment.followerAlignment)}</p>`
+				return `<p class="pf2-stat__section"><strong>Follower Alignment${alignment.followerAlignment.length > 1 ? "s" : ""}&nbsp;</strong>${formatAlignmentList(alignment.followerAlignment)}</p>`;
 			}
 		}
 
