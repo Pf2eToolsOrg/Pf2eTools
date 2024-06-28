@@ -86,7 +86,7 @@
 									"For a brief moment, the creature feels the awful touch of the rasping tongue as it brushes against them, licking away memories and causing the creature to become {@condition stupefied||stupefied 1} for 24 hours. The creature then falls (as success above)."
 								],
 								"Critical Failure": [
-									"The creature feels the tongue wrap around them and then experiences the awfulness of being pulled downward for what seems like days, but in fact, only an instant passes. The creature becomes {@condition stupefied||stupefied 2} for 24 hours, during which time they can't remember their name. The creature also increases the value of their malevolence condition by 1 and then falls (as success above)."
+									"The creature feels the tongue wrap around them and then experiences the awfulness of being pulled downward for what seems like days, but in fact, only an instant passes. The creature becomes {@condition stupefied||stupefied 2} for 24 hours, during which time they can't remember their name. The creature also increases the value of their {@condition malevolence|Mal} condition by 1 and then falls (as success above)."
 								]
 							}
 						}
@@ -278,10 +278,10 @@
 									"The creature is {@condition sickened||sickened 1} by the pain."
 								],
 								"Failure": [
-									"The creature takes {@damage 2d8+9} mental damage and increases their malevolence value by 1."
+									"The creature takes {@damage 2d8+9} mental damage and increases their {@condition malevolence|Mal} value by 1."
 								],
 								"Critical Failure": [
-									"The creature takes {@damage 4d8+9} mental damage, is {@condition stunned||stunned 1} by the pain, and increases their malevolence value by 2."
+									"The creature takes {@damage 4d8+9} mental damage, is {@condition stunned||stunned 1} by the pain, and increases their {@condition malevolence|Mal} value by 2."
 								]
 							}
 						}
@@ -541,7 +541,7 @@
 							"As success, but {@damage 2d8+6} slashing damage, {@damage 1d6} {@condition persistent damage||persistent bleed damage}, and {@condition frightened||frightened 2}."
 						],
 						"Critical Failure": [
-							"As failure, but {@damage 4d8+12} slashing damage, {@damage 2d6} {@condition persistent damage||persistent bleed damage}, and {@condition frightened||frightened 3}. Increase the value of the character's malevolence condition by 1."
+							"As failure, but {@damage 4d8+12} slashing damage, {@damage 2d6} {@condition persistent damage||persistent bleed damage}, and {@condition frightened||frightened 3}. Increase the value of the character's {@condition malevolence|Mal} condition by 1."
 						]
 					}
 				}
@@ -813,10 +813,10 @@
 									"The creature is unaffected."
 								],
 								"Failure": [
-									"If the creature doesn't have the malevolence condition, the value of its malevolence condition increases by 1."
+									"If the creature doesn't have the {@condition malevolence|Mal} condition, the value of its {@condition malevolence|Mal} condition increases by 1."
 								],
 								"Critical Failure": [
-									"The creature increases its malevolence condition by 1."
+									"The creature increases its {@condition malevolence|Mal} condition by 1."
 								]
 							}
 						}
