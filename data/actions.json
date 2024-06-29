@@ -1,6 +1,58 @@
 {
 	"action": [
 		{
+			"name": "Invoke Eiseth",
+			"source": "SaS",
+			"page": 51,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"auditory",
+				"concentrate",
+				"emotion",
+				"linguistic",
+				"mental"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You attempt to demoralize Lorthact by invoking his nemesis. Attempt a DC 33 {@skill Deception}, {@skill Intimidation}, {@skill Performance}, or {@skill Religion} check. Regardless of your result, Lorthact is temporarily immune to your further attempts to Invoke Eiseth for 10 minutes, though not the attempts of others.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Lorthact becomes {@condition frightened 2} and {@condition slowed 1}.",
+						"Success": "Lorthact becomes {@condition frightened 2}.",
+						"Failure": "Lorthact becomes {@condition frightened 1}.",
+						"Critical Failure": "Your floundering attempt backfires and instead amuses Lorthact; he is temporarily immune to all attempts to Invoke Eiseth until the end of your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Spread Disinformation",
+			"page": 7,
+			"source": "SaS",
+			"traits": [
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"You spread falsehoods through the city’s rumor mill to reduce attention your party has received while investigating. After spending four hours on this activity, attempt a DC 28 {@skill Deception} check. Attention Points can never be reduced below 0.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Reduce Attention Points by 2.",
+						"Success": "Reduce Attention Points by 1.",
+						"Critical Failure": "Increase Attention Points by 1."
+					}
+				}
+			]
+		},
+		{
 			"name": "Dream Research",
 			"page": 59,
 			"source": "Mal",

@@ -4502,8 +4502,8 @@ Renderer.creature = {
 							let amount = spell.amount != null ? typeof (spell.amount) === "number" ? [`×${spell.amount}`] : [spell.amount] : []
 							let notes = spell.notes || []
 							let bracket = ""
-							if (amount.length || notes.length) {
-								bracket = ` (${amount.concat(notes).join(", ")})`
+							if (amount.length || notes.length || spell.starred) {
+								bracket = `${spell.starred ? "*" : ""}${amount.length || notes.length ? ` (${amount.concat(notes).join(", ")})` : ""}`
 							}
 							spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 						}
@@ -4516,8 +4516,8 @@ Renderer.creature = {
 							let spells = []
 							for (let spell of sc.entry["constant"][clvl].spells) {
 								let bracket = ""
-								if (spell?.notes?.length) {
-									bracket = ` (${spell.notes.join(", ")})`
+								if (spell?.notes?.length || spell.starred) {
+									bracket = `${starred ? "*" : ""}${spell?.notes?.length ? ` (${spell.notes.join(", ")})` : ""}`
 								}
 								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 							}
@@ -4526,6 +4526,7 @@ Renderer.creature = {
 					}
 				});
 				renderStack.push(`</p>`)
+				if (sc.footer) renderStack.push(`<p class="pf2-stat pf2-stat__section">${renderer.render(sc.footer)}</p>`)
 			}
 			return renderStack.join("")
 		} else return ""

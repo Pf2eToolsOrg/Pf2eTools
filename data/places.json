@@ -1,13 +1,86 @@
 {
 	"place": [
 		{
+			"name": "Korvosa",
+			"source": "SaS",
+			"page": 55,
+			"category": "Settlement",
+			"level": 9,
+			"traits": [
+				"ln",
+				"city"
+			],
+			"description": "A gateway for trade that bears scars of a bloody past.",
+			"settlementData": {
+				"government": "Queen (constitutional monarchy)",
+				"population": {
+					"total": 15250,
+					"ancestries": {
+						"humans": 79,
+						"dwarves": 6,
+						"elves": 4,
+						"halflings": 3,
+						"half-elves": 3,
+						"gnomes": 2,
+						"other": 3
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Shoanti}",
+					"{@language Varisian}"
+				],
+				"religions": [
+					"{@deity Abadar}",
+					"{@deity Asmodeus}",
+					"{@deity Pharasma}",
+					"{@deity Sarenrae}",
+					"{@deity Shelyn}"
+				],
+				"threats": [
+					"crime family violence",
+					"Ileoa loyalists",
+					"Lorthact's machinations",
+					"underground dangers"
+				],
+				"features": [
+					{
+						"name": "Arcane Learning",
+						"entries": [
+							"Although Acadamae is the most notable college in Korvosa, smaller schools also teach arcane arts. Many graduates remain in the city, leading to a thriving trade in {@trait arcane} items and information. {@trait Arcane} scrolls and wands of up to level 13 are often available in shops, along with many other components and ritual ingredients."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Cressida Kroft",
+					"alignment": "ln",
+					"gender": "f",
+					"ancestry": "human",
+					"position": "soldier",
+					"level": 9,
+					"bond": "former guard field mashal and reluctant queen"
+				},
+				{
+					"name": "Toff Ornelos",
+					"alignment": "ln",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "wizard",
+					"level": 17,
+					"bond": "calculating headmaster of the Acadamae"
+				}
+			]
+		},
+		{
 			"name": "Duwwor",
 			"source": "TEC",
 			"page": 59,
 			"category": "Settlement",
 			"level": 6,
 			"traits": [
-				"N",
+				"n",
 				"city"
 			],
 			"settlementData": {
@@ -85,7 +158,7 @@
 			"category": "Settlement",
 			"level": 8,
 			"traits": [
-				"N",
+				"n",
 				"city"
 			],
 			"settlementData": {
@@ -488,7 +561,7 @@
 			"category": "Settlement",
 			"level": 4,
 			"traits": [
-				"N",
+				"n",
 				"town"
 			],
 			"description": "Isolated lumber town",

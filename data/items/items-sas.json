@@ -1,0 +1,72 @@
+{
+	"item": [
+		{
+			"name": "Gray Maiden Plate",
+			"source": "SaS",
+			"page": 53,
+			"equipment": true,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"bulwark"
+			],
+			"price": {
+				"amount": 35,
+				"coin": "gp"
+			},
+			"bulk": 3,
+			"category": "Armor",
+			"subCategory": "Heavy",
+			"entries": [
+				"These suits of faceless full plate were first designed and distributed under Queen Ileosa’s rule, but today, each new suit of this infamous style of plate armor is made by a Gray Maiden herself or a new member’s sponsor."
+			],
+			"armorData": {
+				"group": "Plate",
+				"ac": 6,
+				"dexCap": 0,
+				"str": 16,
+				"checkPen": 3,
+				"speedPen": 10
+			}
+		},
+		{
+			"name": "Horn of the Sun Aurochs",
+			"source": "SaS",
+			"page": 53,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"amount": 3000,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"A horn of the sun aurochs grants a +2 item bonus to {@skill Performance} checks when played as an instrument.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The horn is clearly audible for hundreds of feet, but within a 20-foot emanation, the sound causes agony in those who wish harm upon the user; the horn also sheds bright light in that area and dim light to the next 20 feet. Enemies of the user in this area take {@damage 7d6} sonic damage and {@damage 7d6} good damage (basic DC 30 Fortitude save). Creatures that are specifically vulnerable to sunlight are also {@condition frightened||frightened 1} if they fail this save or {@condition frightened||frightened 2} on a critical failure. This activation also attempts to counteract any {@trait darkness} or {@trait sleep} effects in the area ({@dice d20+23|+23} counteract check)."
+					]
+				}
+			]
+		}
+	]
+}

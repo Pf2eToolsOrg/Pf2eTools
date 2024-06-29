@@ -1,6 +1,190 @@
 {
 	"creatureTemplate": [
 		{
+			"name": "Strigoi Progenitor",
+			"source": "SaS",
+			"page": 60,
+			"type": "Template",
+			"abilities": {
+				"entries": [
+					"Powerful strigoi that form from the fusion of a {@creatureTemplate strigoi|SaS} from the {@place Shadow Plane|GMG} and a living host gain additional abilities as detailed below. A creature below level 13 is not a significant enough host to become a strigoi progenitor."
+				],
+				"abilities": [
+					{
+						"name": "Resistances",
+						"entries": [
+							"The strigoi progenitor resists all physical damage except {@trait magical} {@item silver weapon (generic)||silver weapons} or {@trait magical} weapons that shed at least 5 feet of bright light."
+						]
+					},
+					{
+						"name": "Fly Speed",
+						"entries": [
+							"Instead of being able to levitate at will, a strigoi progenitor gains a fly Speed equal to their land Speed. When a strigoi progenitor flies, it manifests batlike wings made of shadow."
+						]
+					},
+					{
+						"name": "Create Spawn",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shadow Escape",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Domain of Dusk",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Dominate",
+						"generic": {
+							"source": "B1",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Drink Essence",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability",
+							"hash": "Strigoi Progenitor"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Strigoi",
+			"type": "Template",
+			"source": "SaS",
+			"page": 58,
+			"entries": [
+				"A creature of 8th to 12th level can become a strigoi servant (see {@creature strigoi servants|SaS|strigoi servant} for the typical statistics); only 13th-level or higher creatures can become strigoi progenitors. A creature below 8th level infected by a strigoi becomes a free-willed moroi vampire instead (indeed, it is from this method the first moroi eventually came into the world). You can turn an existing living creature into a strigoi using the following steps.",
+				"Increase the creature’s level by 1 and change its statistics as follows:",
+				{
+					"type": "list",
+					"items": [
+						"It gains the {@trait shadow}, {@trait undead}, and {@trait vampire} traits, and almost always becomes evil.",
+						"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
+						"Increase damage with Strikes and other offensive abilities by 1. If an ability can be used only a small number of times, increase the damage by 2 instead.",
+						"The strigoi gains {@ability fast healing} and resistance to all physical damage except from {@item silver weapon (generic)||silver weapons} or weapons that shed at least 5 feet of bright light (such as a lit torch or a weapon targeted by the {@spell light} spell, but not a {@item flaming} weapon) based on the table below. These abilities are the reason the strigoi has fewer HP."
+					]
+				},
+				{
+					"type": "table",
+					"source": "SaS",
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Decrease",
+							"{@ability Fast Healing}/Resistance"
+						],
+						[
+							"8\u201314",
+							"\u221240",
+							"10"
+						],
+						[
+							"15+",
+							"\u221260",
+							"15"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Basic Strigoi Abilities",
+						"entries": [
+							"All strigoi gain the following abilities. If the base creature has any abilities that specifically come from it being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as human and humanoid. You might also need to adjust abilities that conflict with the strigoi’s theme."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Greater Darkvision",
+						"generic": {
+							"source": "B1",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"source": "B2",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Coffin Restoration",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Strigoi Weaknesses",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Levitation",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Claws",
+						"entries": [
+							"If the creature had hands, its shadow solidifies around the fingers when it attacks, granting it a claw {@action Strike} that deals slashing damage, and has the {@trait agile} and {@trait magical||magic} traits. The damage caused by its claws should be roughly the same as the moderate {@action Strike} damage for a creature of its level."
+						]
+					},
+					{
+						"name": "Drink Essence",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability",
+							"hash": "Strigoi"
+						}
+					},
+					{
+						"name": "Grab",
+						"entries": [
+							"The creature’s claw attacks gain {@ability Grab}. When it uses this ability, its shadowy claws seem almost to latch on to any shadows cast by the {@condition grabbed} creature."
+						]
+					},
+					{
+						"name": "Shadow Form",
+						"generic": {
+							"source": "SaS",
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
 			"name": "Mana Wastes Mutant",
 			"type": "Template",
 			"hasLore": true,
@@ -64,15 +248,19 @@
 							{
 								"type": "table",
 								"caption": "Energy Resistance",
-								"colLabels": [
-									"Mutant's Level",
-									"Energy Resistance"
+								"source": "LOIL",
+								"labelRowIdx": [
+									0
 								],
 								"colStyles": [
-									"col-2 text-center",
-									"col-10 text-center"
+									"text-center",
+									"text-center"
 								],
 								"rows": [
+									[
+										"Mutant's Level",
+										"Energy Resistance"
+									],
 									[
 										"2 or lower",
 										"2"
@@ -1067,7 +1255,7 @@
 					{
 						"name": "Burning Eyes",
 						"entries": [
-							"The cryptid's eyes are distinctive perhaps they burn bright red in the dark night. The rumored cryptid gains {@ability darkvision}. If the base creature already has {@ability darkvision}, it gains {@ability greater darkvision}."
+							"The cryptid's eyes are distinctive perhaps they burn bright red in the dark night. The rumored cryptid gains {@ability darkvision}. If the base creature already has {@ability darkvision}, it gains {@ability darkvision||greater darkvision}."
 						]
 					},
 					{

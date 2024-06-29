@@ -2238,6 +2238,77 @@
 	],
 	"familiar": [
 		{
+			"name": "House Drake",
+			"source": "SaS",
+			"traits": [
+				"uncommon",
+				"dragon"
+			],
+			"type": "Familiar",
+			"requires": 6,
+			"granted": [
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility flier}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility speech}"
+			],
+			"page": 53,
+			"abilities": [
+				{
+					"name": "Breath Weapon",
+					"traits": [
+						"arcane",
+						"conjuration",
+						"mental"
+					],
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The house drake breathes a 10-foot cone of silver mist. Each creature in the area must attempt a Will save against your class DC or spell DC, whichever is higher. A creature that fails its save is {@condition stupefied 2} for 1 round. The house drake can’t use Breath Weapon or Silver Infusion for {@dice 1d4} rounds."
+					]
+				},
+				{
+					"name": "Silver Infusion",
+					"traits": [
+						"arcane",
+						"transmutation"
+					],
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Your house drake breathes on one of your weapons. Until the start of your next turn, that weapon counts as {@item silver (generic)||silver} instead of its normal material for any physical damage it deals. The house drake can’t use Breath Weapon or Silver Infusion for {@dice 1d4} rounds."
+					]
+				},
+				{
+					"name": "Tenacious Mind",
+					"entries": [
+						"Once per day, as long as your house drake took no actions on the previous round, you gain the following.",
+						{
+							"type": "ability",
+							"name": "Ferocious Will",
+							"traits": [
+								"abjuration",
+								"arcane",
+								"mental"
+							],
+							"activity": {
+								"number": 1,
+								"unit": "reaction"
+							},
+							"trigger": "You succeed at a saving throw against a magical mental effect",
+							"entries": [
+								"You send a blast of magical feedback at the effect’s source, dealing {@damage 2d6} mental damage (basic Will save against your class DC or spell DC, whichever is higher) to that creature. On a failed save, the creature is also {@condition slowed 1} for 1 round."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Sweet Beast (Chocolate Mouse)",
 			"source": "WtD3",
 			"page": 25,

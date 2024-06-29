@@ -1,6 +1,243 @@
 {
 	"hazard": [
 		{
+			"name": "Paradox Engine",
+			"source": "SaS",
+			"page": 45,
+			"level": 14,
+			"traits": [
+				"unique",
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 0
+			},
+			"description": [
+				"All six sides of this adamantine-reinforced box are covered with Thassilonian runes. Touching a rune allows one to exchange its position with another."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 41 (expert) to feel the subtle vibrations when moving a rune to shift into the right position, or"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 36
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 22
+					}
+				},
+				"hardness": {
+					"std": 24
+				},
+				"hp": {
+					"std": 90
+				},
+				"bt": {
+					"std": 45
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Thassilon Lore DC",
+					"entries": [
+						"33 (expert) or {@skill Society} DC 38 (master) while being able to read Thassilonian to work out the anagram puzzle using traditional means, or dispel magic (7th level; counteract DC 34)"
+					]
+				},
+				{
+					"name": "Slicing Shadows",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"conjuration"
+					],
+					"trigger": "The paradox engine is damaged, or a creature fails a check to disable it",
+					"entries": [
+						"Slats on the sides of the box open to release beams of razor-sharp freezing darkness that swipe throughout area C5 and extend 10 feet south into area C4; all creatures in this area who lack the {@trait Shadow} trait take {@damage 5d6} slashing damage and {@damage 5d6} cold damage (DC 34 basic Reflex save)."
+					]
+				}
+			],
+			"routine": [
+				"{@as 3} (arcane, conjuration) The slicing shadows congeal into the form of what appears to be the upper half of a skeletal, cowled humanoid: an owb prophet (Pathfinder Bestiary 3 197). This owb prophet is a creation of the paradox engine and does not have a forsaken patron. While the owb prophet is active, the paradox engine no longer uses its Slicing Shadows reaction; instead, the owb prophet focuses its attacks on creatures that attempt to damage or deactivate the engine. If the owb prophet is destroyed, the paradox engine's disable DCs and Hardness are reduced by 5. It thereafter functions as a simple hazard with the Slicing Shadows reaction, and resets after 1 round."
+			],
+			"reset": [
+				"The paradox engine deactivates 1 minute, and its owb prophet returns to its interior after all creatures leave the area, but resets immediately thereafter."
+			]
+		},
+		{
+			"name": "Brooding Fvalthahalia",
+			"source": "SaS",
+			"page": 42,
+			"level": 13,
+			"traits": [
+				"unique",
+				"magical"
+			],
+			"stealth": {
+				"minProf": "expert",
+				"notes": "check avoids triggering the hazard, but this does not disable it."
+			},
+			"description": [
+				"Tiny black flames mirror living creatures' movements in the city above as scraps of shadow patrol the streets\u2014flames that notice intruders in their \"sky\" below and reach out to the intruders \"above\" with a deafening violence that incidentally alerts several of the vault's denizens to the intruders' presence."
+			],
+			"disable": {
+				"entries": [
+					"DC 40 {@skill Thievery} (master) to adjust the model so its attention is focused inward, DC 37 {@skill Occultism} (expert) to cause the accumulated psychic energy to discharge harmlessly, or dispel magic (7th level; counteract DC 32). A character who sneaks through the room with a DC 32"
+				]
+			},
+			"actions": [
+				{
+					"name": "Call of Fvalthahalia",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"abjuration",
+						"occult"
+					],
+					"trigger": "A creature without supernatural ties to the Shadow Plane enters the room (creatures like fetchlings or divine spellcasters who worship {@deity Zon-Kuthon} represent two examples of creatures who won't trigger this hazard)",
+					"entries": [
+						"The flickering dark flames on the city's streets flare up and the sound of an entire city populace screaming an alarm fills the room. All creatures in area C1 take {@damage 18d6} sonic damage (DC 33 basic Fortitude save), and all strigoi from Aliriel's Vault immediately know intruders have been spotted in this room. Any strigoi in area C2 quickly investigate and attack the PCs on sight."
+					]
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Ileosa's Sixth Manifestation",
+			"source": "SaS",
+			"page": 38,
+			"level": 13,
+			"traits": [
+				"rare",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 37,
+				"minProf": "expert"
+			},
+			"description": [
+				"Ileosa manifests as a crimson ghost and reaches out as if to receive a gift from the ritual's primary caster."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Religion} DC 37 (expert) or DC 40 Occult (trained) to reverse the ritual's power."
+				]
+			},
+			"actions": [
+				{
+					"name": "Queen's Laugh",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"emotion",
+						"enchantment",
+						"mental"
+					],
+					"trigger": "Someone attempts to contact Ileosa with call spirit and achieves any result other than a critical success to cast the ritual",
+					"entries": [
+						"Ileosa closes her fingers and attempts to pull the primary caster's heart from their chest. The primary caster must attempt a DC 33 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature takes no damage."
+								],
+								"Success": [
+									"The creature feels Ileosa's hand grip and tug at their heart; they take 25 negative damage, and then the manifestation vanishes."
+								],
+								"Failure": [
+									"As success, but the creature takes 50 negative damage and becomes {@condition drained||drained 1} as they momentarily see their heart appear in Ileosa's hand before the manifestation vanishes."
+								],
+								"Critical Failure": [
+									"The creature takes 75 negative damage and becomes {@condition drained||drained 2}. If this reduces the target to 0 Hit Points, the target dies instantly. For a brief moment, the victim's heart appears in Ileosa's hand before the manifestation vanishes. If the victim is slain by this hazard, their heart drops to the ground with a splat, pulsing its final beats after the manifestation vanishes."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ileosa's Fifth Manifestation",
+			"source": "SaS",
+			"page": 14,
+			"level": 11,
+			"traits": [
+				"rare",
+				"haunt"
+			],
+			"stealth": {
+				"dc": 33,
+				"minProf": "master"
+			},
+			"description": [
+				"Mist coils from the ground, perhaps through a sewer grate or from cracks along a basement foundation, quickly forming into the ghostly image of Queen Ileosa."
+			],
+			"disable": {
+				"entries": [
+					"DC 33 {@skill Religion} (expert) to exorcise the manifestation, or DC 36 {@skill Intimidation} (trained) to stand one's ground without showing fear."
+				]
+			},
+			"actions": [
+				{
+					"name": "Queen's Laugh",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"emotion",
+						"enchantment",
+						"mental"
+					],
+					"trigger": "A living creature moves within 10 feet of where the manifestation will appear",
+					"entries": [
+						"Ileosa laughs, becoming more substantial as bloody, spectral bodies appear to pile under her feet. Each living creature within 30 feet of the area must attempt a DC 30 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature takes no damage."
+								],
+								"Success": [
+									"The creature takes {@damage 5d10} mental damage as false memories of being tormented and persecuted under Ileosa's rule tear through their mind."
+								],
+								"Failure": [
+									"As above, but the creature takes {@damage 10d10} mental damage and becomes {@condition stupefied||stupefied 1} until the next sunrise from the overwhelming nature of the false memories."
+								],
+								"Critical Failure": [
+									"As failure, but the creature becomes {@condition stupefied||stupefied 2} instead. In addition, the creature continues to see dead, bloody bodies crawling from the ground during times of stress, causing them to treat all ground as difficult terrain during combat. This hallucination persists as long as the character remains {@condition stupefied} from the hazard."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "The Enmity Cycle",
 			"source": "TEC",
 			"page": 51,

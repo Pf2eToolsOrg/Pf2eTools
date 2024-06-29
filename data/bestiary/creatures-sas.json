@@ -1,0 +1,3080 @@
+{
+	"creature": [
+		{
+			"name": "Lorthact",
+			"source": "SaS",
+			"page": 62,
+			"level": 16,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"devil",
+				"fiend"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"aklo",
+					"azlanti",
+					"common",
+					"draconic",
+					"dwarven",
+					"elven",
+					"ignan",
+					"infernal",
+					"jotun",
+					"shoanti",
+					"thassilonian",
+					"undercommon",
+					"varisian"
+				],
+				"abilities": [
+					"telepathy 300 feet",
+					"tongues"
+				]
+			},
+			"skills": {
+				"academia lore": {
+					"std": 32
+				},
+				"acrobatics": {
+					"std": 28
+				},
+				"arcana": {
+					"std": 30
+				},
+				"deception": {
+					"std": 33
+				},
+				"diplomacy": {
+					"std": 31
+				},
+				"intimidation": {
+					"std": 31
+				},
+				"legal lore": {
+					"std": 30
+				},
+				"occultism": {
+					"std": 30
+				},
+				"religion": {
+					"std": 27
+				},
+				"society": {
+					"std": 30
+				},
+				"stealth": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 6,
+				"con": 6,
+				"int": 6,
+				"wis": 3,
+				"cha": 9
+			},
+			"items": [
+				"staff of power"
+			],
+			"defenses": {
+				"ac": {
+					"std": 38
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 25
+					}
+				},
+				"hp": [
+					{
+						"hp": 300
+					}
+				],
+				"immunities": [
+					"divination",
+					"fire"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "mental",
+						"amount": 15
+					},
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except silver"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"two-hand d8",
+						"versatile <P>"
+					],
+					"name": "staff",
+					"attack": 32,
+					"damage": "{@damage 3d4+14} bludgeoning plus {@damage 2d8} mental plus thought theft"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 30,
+					"damage": "{@damage 3d4+14} slashing plus {@damage 2d8} mental plus thought theft"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Innate",
+					"DC": 37,
+					"attack": 29,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "dominate",
+									"amount": 2
+								},
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "scrying",
+									"amount": 3
+								},
+								{
+									"name": "slow"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "divine decree",
+									"notes": [
+										"lawful or evil"
+									]
+								},
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "teleport"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "maze"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						},
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						}
+					}
+				},
+				{
+					"tradition": "arcane",
+					"type": "Prepared",
+					"DC": 37,
+					"attack": 29,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "mirror image"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "mind reading"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "invisibility"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "magic missile"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "phantasmal killer"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "shadow blast"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "horrid wilting"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Divination Immunity",
+						"entries": [
+							"As a side effect of existing slightly outside the normal time stream, Lorthact is difficult to detect via divination spells and abilities. These effects function as though Lorthact and items he carries are not present, and those specifically targeting him, such as scrying, fail entirely unless the source of the divination is a higher level than Lorthact\u2014in which case they succeed only if the caster succeeds at a DC 16 secret flat check."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Arcane Absorption",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"enchantment",
+							"manipulate",
+							"mental"
+						],
+						"requirements": "Any creature adjacent to Lorthact is {@condition stupefied}, capable of casting prepared arcane spells, and is either {@condition immobilized}, {@condition unconscious}, or willing",
+						"entries": [
+							"Lorthact attempts to drain a 1st- through 8th-level prepared spell from the target, who can resist with a successful DC 37 Will saving throw. On a failure or against a willing target, the prepared arcane spell is transferred from that creature as if it were cast, and Lorthact immediately prepares that spell in the same level slot. If he already had a spell prepared in that slot, the previously prepared spell is lost. That creature is then immune to Arcane Absorption for 24 hours."
+						]
+					},
+					{
+						"name": "Arcane Spellcaster",
+						"entries": [
+							"As long as Lorthact has one arcane spell prepared in this way, all arcane spells are on his spell list, which allows him to activate items such as scrolls, wands, and staves. He can recharge his staff of power as a prepared spellcaster by using his arcane spell slots. He has one spell slot to prepare arcane spells of each level from 1st to 8th, and can prepare any Common arcane spell in these slots during his daily preparations. The spells listed above represent those he most typically prepares, but given time, he can adjust this selection as needed for the task at hand."
+						]
+					},
+					{
+						"name": "Scholastic Masquerade",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"Lorthact takes on the appearance of Volshyenek Ornelos or reverts to his true form. In Volshyenek's form, he loses his fly Speed and claw {@action Strike||Strikes}, doesn't inflict additional mental damage with his {@action Strike||Strikes}, and reduces his AC to 34. He gains a +4 status bonus on {@skill Deception} checks to appear human in this guise.",
+							"Staff of Power Lorthact's staff of power is tipped with a pair of metal tines that grant the weapon the {@trait versatile <piercing>} trait."
+						]
+					},
+					{
+						"name": "Thought Theft",
+						"traits": [
+							"curse",
+							"divine",
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"Any creature that takes mental damage from Lorthact's claws or staff must succeed at a DC 37 Will save or become {@condition stupefied||stupefied 1} ({@condition stupefied||stupefied 2} on a critical failure). Further mental damage dealt by Lorthact increases the value of the {@condition stupefied} condition by 1 on a failed save to a maximum of {@condition stupefied||stupefied 4}. Whenever Lorthact causes a creature to become {@condition stupefied} in this way, he absorbs some of those thoughts and gains a +1 status bonus on all Will saving throws and Intelligence-, Wisdom-, or Charisma-based skill checks until the end of his next turn."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Strigoi Progenitor",
+			"source": "SaS",
+			"page": 61,
+			"level": 13,
+			"traits": [
+				"rare",
+				"le",
+				"medium",
+				"shadow",
+				"undead",
+				"vampire"
+			],
+			"perception": {
+				"std": 23
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril",
+					"shadowtongue",
+					"thassilonian"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 25
+				},
+				"arcana": {
+					"std": 23
+				},
+				"athletics": {
+					"std": 25
+				},
+				"crafting": {
+					"std": 23
+				},
+				"deception": {
+					"std": 26
+				},
+				"religion": {
+					"std": 22
+				},
+				"stealth": {
+					"std": 27
+				},
+				"thassilon lore": {
+					"std": 24
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 8,
+				"con": 5,
+				"int": 5,
+				"wis": 4,
+				"cha": 5
+			},
+			"items": [
+				"+1 resilient studded leather armor",
+				"religious symbol"
+			],
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 22
+					}
+				},
+				"hp": [
+					{
+						"hp": 180,
+						"abilities": [
+							"coffin restoration",
+							"fast healing 10",
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyze",
+					"poison",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "strigoi weaknesses"
+					}
+				],
+				"resistances": [
+					{
+						"name": "all physical",
+						"amount": 15,
+						"note": "except magical silver weapons or magical weapons shedding bright light"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claws",
+					"attack": 25,
+					"damage": "{@damage 3d8+14} slashing plus Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Spontaneous",
+					"DC": 33,
+					"attack": 25,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "harm",
+									"starred": true
+								},
+								{
+									"name": "ray of enfeeblement"
+								},
+								{
+									"name": "sanctuary"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "comprehend language"
+								},
+								{
+									"name": "dispel magic",
+									"starred": true
+								},
+								{
+									"name": "see invisibility"
+								},
+								{
+									"name": "undetectable alignment"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "chilling darkness",
+									"starred": true
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "dimensional anchor"
+								},
+								{
+									"name": "divine wrath",
+									"starred": true
+								},
+								{
+									"name": "remove curse"
+								},
+								{
+									"name": "talking corpse"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "flame strike",
+									"starred": true
+								},
+								{
+									"name": "gentle repose"
+								},
+								{
+									"name": "sending"
+								},
+								{
+									"name": "tongues"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "blade barrier"
+								},
+								{
+									"name": "spirit blast"
+								},
+								{
+									"name": "true seeing"
+								},
+								{
+									"name": "vampiric exsanguination",
+									"starred": true
+								}
+							]
+						},
+						"7": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "eclipse burst"
+								},
+								{
+									"name": "ethereal jaunt"
+								},
+								{
+									"name": "finger of death"
+								}
+							]
+						}
+					},
+					"footer": "*Spells marked with an asterisk are {@classFeature signature spells|oracle|APG|3}; the strigoi progenitor may heighten these spells freely."
+				},
+				{
+					"name": "Oracle Revelation Spell",
+					"DC": 33,
+					"type": "Focus",
+					"entry": {
+						"7": {
+							"spells": [
+								{
+									"name": "brain drain",
+									"source": "APG"
+								}
+							]
+						}
+					},
+					"fp": 1
+				}
+			],
+			"rituals": [
+				{
+					"DC": 33,
+					"rituals": [
+						{
+							"name": "create undead"
+						},
+						{
+							"name": "planar binding"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Shadow Escape",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": []
+					}
+				],
+				"bot": [
+					{
+						"name": "Oracle Mystery Lore",
+						"entries": [
+							"{@subclassFeature mystery|oracle|APG|lore|APG|1||Oracle Mystery Lore}"
+						]
+					},
+					{
+						"name": "Create Spawn",
+						"traits": [
+							"divine",
+							"downtime",
+							"necromancy"
+						],
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Domain of Dusk",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"divine",
+							"shadow"
+						],
+						"entries": [
+							"{@damage 7d6} negative damage (DC 31 basic Fortitude save)."
+						]
+					},
+					{
+						"name": "Dominate",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"enchantment",
+							"incapacitation",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"DC 33"
+						]
+					},
+					{
+						"name": "Drink Essence",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"When drinking essence, the strigoi progenitor regains 18 HP."
+						]
+					},
+					{
+						"name": "Shadow Form",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"shadow",
+							"transmutation"
+						],
+						"entries": []
+					}
+				]
+			}
+		},
+		{
+			"name": "Scarlet Walker",
+			"source": "SaS",
+			"page": 57,
+			"level": 12,
+			"traits": [
+				"rare",
+				"le",
+				"huge",
+				"aberration",
+				"dream"
+			],
+			"perception": {
+				"std": 23
+			},
+			"senses": [
+				{
+					"name": "bloodsense ",
+					"range": {
+						"unit": "feet",
+						"number": 60
+					}
+				},
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"infernal"
+				],
+				"abilities": [
+					"telepathy 300 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 25
+				},
+				"arcana": {
+					"std": 22
+				},
+				"athletics": {
+					"std": 22
+				},
+				"blood lore": {
+					"std": 26
+				},
+				"intimidate": {
+					"std": 23
+				},
+				"medicine": {
+					"std": 23
+				},
+				"occultism": {
+					"std": 24
+				},
+				"stealth": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 7,
+				"con": 5,
+				"int": 4,
+				"wis": 5,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 33
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 21
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 225
+					}
+				],
+				"immunities": [
+					"cold"
+				],
+				"weaknesses": [
+					{
+						"name": "electricity",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "poison",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30,
+				"abilities": [
+					"air walk"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"name": "claw",
+					"attack": 24,
+					"damage": "{@damage 3d6+12} piercing plus {@damage 2d12} {@condition persistent damage||persistent bleed}"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach 15 feet"
+					],
+					"name": "tentacle",
+					"attack": 24,
+					"damage": "{@damage 3d8+12} bludgeoning plus paralysis"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 32,
+					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "daze"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion",
+									"amount": 3
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "mind probe"
+								},
+								{
+									"name": "sending",
+									"amount": 3
+								},
+								{
+									"name": "subconscious suggestion"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "true seeing"
+								},
+								{
+									"name": "vampiric exsanguination"
+								}
+							]
+						},
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Bloodsense",
+						"entries": [
+							"The scarlet walker can sense living creatures with blood in their veins, as well as undead that feed on blood (such as vampires)."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Blood-Draining Gaze",
+						"traits": [
+							"aura",
+							"necromancy",
+							"occult",
+							"visual"
+						],
+						"entries": [
+							"20 feet. When a living, non\u2013scarlet walker creature ends its turn in the aura, it must attempt a DC 29 Fortitude save to prevent thin streams of blood from streaming from its eyes and into the eyeless pits in the scarlet walker's face. On a failed save, the victim becomes {@condition drained||drained 1} ({@condition drained||drained 2} on a critical failure) and {@condition sickened||sickened 1} from the pain."
+						]
+					},
+					{
+						"name": "No Breath",
+						"entries": [
+							"The scarlet walker doesn't breathe and is immune to effects that require breathing (such as an inhaled poison)."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Eerie Flexibility",
+						"entries": [
+							"The scarlet walker can fit through tight spaces as if it were a Medium creature. While Squeezing, it can move at its full Speed."
+						]
+					},
+					{
+						"name": "Paralysis",
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"Any living, non\u2013scarlet walker creature hit by a scarlet walker's tentacle {@action Strike} must attempt a Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature is {@condition slowed||slowed 1} for 1 round."
+									],
+									"Failure": [
+										"The creature is {@condition paralyzed} for 1 round, and is then {@condition slowed||slowed 1} for 1 round after recovering."
+									],
+									"Critical Failure": [
+										"As failure, but the paralysis doesn't automatically end after 1 round. The creature can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Loreavor",
+			"source": "SaS",
+			"page": 56,
+			"level": 9,
+			"traits": [
+				"rare",
+				"n",
+				"small",
+				"astral"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "thoughtsense",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 19
+				},
+				"arcana": {
+					"std": 17
+				},
+				"occultism": {
+					"std": 21
+				},
+				"society": {
+					"std": 17
+				},
+				"stealth": {
+					"std": 19
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 6,
+				"con": 4,
+				"int": 6,
+				"wis": 4,
+				"cha": 3
+			},
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 21
+					},
+					"will": {
+						"std": 19
+					}
+				},
+				"hp": [
+					{
+						"hp": 155
+					}
+				],
+				"resistances": [
+					{
+						"name": "mental",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "touch",
+					"attack": 19,
+					"damage": "{@damage 2d10+7} mental plus search memory"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range 60 feet"
+					],
+					"name": "mind bolt",
+					"attack": 21,
+					"damage": "{@damage 2d12+4} mental"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Thoughtsense",
+						"entries": [
+							"The loreavor senses all non-mindless creatures at the listed range."
+						],
+						"generic": {
+							"tag": "feat",
+							"source": "DA"
+						}
+					}
+				],
+				"mid": [
+					{
+						"name": "Reconstruct Spell",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divination",
+							"mental",
+							"occult"
+						],
+						"trigger": "A creature within 30 feet attempts and fails to {@action Cast a Spell} while {@condition stupefied}",
+						"entries": [
+							"The loreavor gains use of the failed spell as an occult innate spell. It can cast that spell once; if the spell is of a higher level than half the loreavor's level (5th level or higher for most loreavors), the loreavor must succeed at a flat check with a DC equal to 5 + the level of the spell it is attempting to cast; on a failure, the spell fails, and the loreavor becomes {@condition stupefied||stupefied 1} for 1 minute. If the spell isn't cast within 24 hours, or if the loreavor uses Reconstruct Spell again before casting the spell, the spell is lost. No more than one loreavor can reconstruct a given spell this way."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Search Memory",
+						"traits": [
+							"divination",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"When the loreavor damages a creature with its touch {@action Strike}, the creature must succeed at a 28 Will save or become {@condition stupefied||stupefied 1}, or {@condition stupefied||stupefied 2} on a critical failure."
+						]
+					},
+					{
+						"name": "Redact",
+						"traits": [
+							"occult",
+							"transmutation"
+						],
+						"entries": [
+							"By spending an hour in contact with a nonmagical document or piece of artwork no larger than 1 Bulk, a loreavor can consume either a few words from the text or render the artistry of the work more mundane. Doing so heals the loreavor of {@dice 4d8} HP. Words fade from the text, leaving an obvious blank space behind, while artwork is reduced in worth by 10% of its original value. A loreavor can consume incidental text in this manner from a spellbook but cannot consume actual spells recorded in the book. The loreavor can't use Redact for 24 hours."
+						]
+					}
+				]
+			},
+			"spellcasting": [
+				{
+					"type": "Innate",
+					"tradition": "occult",
+					"DC": 28,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "modify memory",
+									"note": "at will"
+								}
+							]
+						},
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "tongues"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "mage hand"
+									}
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Ileosa's Shell",
+			"source": "SaS",
+			"page": 49,
+			"level": 13,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"elven",
+					"giant",
+					"infernal",
+					"shadowtongue",
+					"thassilonian"
+				],
+				"notes": [
+					"Varisian (can't speak any languages)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 24
+				},
+				"athletics": {
+					"std": 27
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 5,
+				"con": 5,
+				"int": 0,
+				"wis": 5,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 24
+					}
+				},
+				"hp": [
+					{
+						"hp": 235,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "bleed",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 10,
+						"note": "except silver"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magic"
+					],
+					"name": "fangs",
+					"attack": 29,
+					"damage": "{@damage 3d12+8} piercing plus {@damage 2d6} {@condition persistent damage||persistent bleed} and blood feast"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magic"
+					],
+					"name": "claw",
+					"attack": 29,
+					"damage": "{@damage 3d8+8} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Escape From Hell",
+						"traits": [
+							"auditory",
+							"divine",
+							"emotion",
+							"fear",
+							"mental",
+							"necromancy"
+						],
+						"entries": [
+							"When Ileosa’s shell is reduced to 0 HP, the hollow corpse immediately melts into a pool of blood, at the center of which lies her still-beating heart. A moment later, a crimson ghostly shape—Queen Ileosa’s soul—rises from the heart. After the soul shrieks in relief at escaping from Hell, it rises through the ceiling and vanishes while the heart dies and rots. All creatures within 30 feet of the shell when this occurs must attempt a DC 30 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "A living creature becomes invigorated and elated by the sense of freedom from Hell, and becomes quickened for 1 minute. The creature can use the extra action each round only for Strike and Stride actions. An undead creature gains no benefit.",
+									"Success": "As success, but the creature can use the extra action only for Stride actions.",
+									"Failure": "The creature becomes frightened 1.",
+									"Critical Failure": "The creature becomes frightened 2."
+								}
+							}
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Blood Feast",
+						"entries": [
+							"When a creature takes damage from a fangs {@action Strike}, the creature must succeed at a DC 33 Fortitude save or become {@condition enfeebled||enfeebled 1} ({@condition enfeebled||enfeebled 1} and {@condition drained||drained 1} on a critical failure). The shell becomes {@condition quickened} for 1 round, and can use the extra action only for fangs {@action Strike} actions against a creature that is taking {@condition persistent damage||persistent bleed damage}. Further damage dealt by the shell increases the {@condition enfeebled} condition by 1 on a failed save, to a maximum of {@condition enfeebled||enfeebled 4}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Aliriel",
+			"source": "SaS",
+			"page": 47,
+			"description": "Female human strigoi necromancer (page 58)",
+			"level": 15,
+			"traits": [
+				"unique",
+				"le",
+				"shadow",
+				"undead",
+				"vampire"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"common",
+					"infernal",
+					"jotun",
+					"necril",
+					"shadowtongue",
+					"thassilonian",
+					"varisian"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 27
+				},
+				"arcana": {
+					"std": 29
+				},
+				"athletics": {
+					"std": 25
+				},
+				"deception": {
+					"std": 27
+				},
+				"occultism": {
+					"std": 27
+				},
+				"society": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 29
+				},
+				"thassilon lore": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 8,
+				"con": 4,
+				"int": 8,
+				"wis": 4,
+				"cha": 6
+			},
+			"items": [
+				"bracers of armor type II",
+				"ring of wizardry type IV"
+			],
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 210,
+						"abilities": [
+							"coffin restoration",
+							"fast healing 15",
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyze",
+					"poison",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "strigoi weaknesses"
+					}
+				],
+				"resistances": [
+					{
+						"name": "all physical",
+						"amount": 15,
+						"note": "except magical silver weapons or magical weapons shedding bright light"
+					}
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magic"
+					],
+					"name": "claw",
+					"attack": 29,
+					"damage": "{@damage 3d10+12} slashing plus Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Prepared",
+					"DC": 36,
+					"attack": 28,
+					"name": "Wizard Spells Prepared",
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "horrid wilting"
+								},
+								{
+									"name": "maze"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "eclipse burst"
+								},
+								{
+									"name": "magic missile"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "baleful polymorph"
+								},
+								{
+									"name": "vampiric exsanguination"
+								},
+								{
+									"name": "wall of force"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "cloudkill"
+								},
+								{
+									"name": "mind probe"
+								},
+								{
+									"name": "sending"
+								},
+								{
+									"name": "shadow walk"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": 2
+								},
+								{
+									"name": "grim tendrils",
+									"amount": 2
+								},
+								{
+									"name": "nightmare"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "mind reading"
+								},
+								{
+									"name": "slow",
+									"amount": 2
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "deafness"
+								},
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "spectral hand"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "ray of enfeeblement",
+									"amount": 2
+								},
+								{
+									"name": "true strike"
+								}
+							]
+						},
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
+								}
+							]
+						}
+					}
+				},
+				{
+					"type": "Focus",
+					"name": "Wizard School Spells",
+					"fp": 3,
+					"DC": 36,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "call of the grave"
+								},
+								{
+									"name": "overstuff"
+								},
+								{
+									"name": "take its course"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 33,
+					"rituals": [
+						{
+							"name": "call spirit"
+						},
+						{
+							"name": "create undead"
+						},
+						{
+							"name": "planar binding"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Slip Into Shadows",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"abjuration",
+							"divine"
+						],
+						"trigger": "Aliriel succeeds at a save against an effect that is not a darkness or light effect",
+						"entries": [
+							"Aliriel disappears into shadows at the last moment, critically succeeding at the save instead."
+						]
+					},
+					{
+						"name": "Shadow Escape",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"Speed 25 feet, fly 25 feet"
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Create Spawn",
+						"traits": [
+							"divine",
+							"downtime",
+							"necromancy"
+						],
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Domain of Dusk",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"divine",
+							"shadow"
+						],
+						"entries": [
+							"{@damage 8d6} negative damage (DC 34 basic Fortitude save)."
+						]
+					},
+					{
+						"name": "Dominate",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"enchantment",
+							"incapacitation",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"DC 34"
+						]
+					},
+					{
+						"name": "Drink Essence",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"When drinking essence, Aliriel regains 21 HP."
+						]
+					},
+					{
+						"name": "Shadow Form",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"transmutation",
+							"shadow"
+						],
+						"entries": []
+					},
+					{
+						"name": "Thassilonian",
+						"entries": [
+							"Necromancer Aliriel cannot cast abjuration or enchantment spells."
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 25
+			}
+		},
+		{
+			"name": "Strigoi Servants",
+			"source": "SaS",
+			"page": 25,
+			"level": 10,
+			"traits": [
+				"rare",
+				"le",
+				"medium",
+				"shadow",
+				"undead",
+				"vampire"
+			],
+			"perception": {
+				"std": 20
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril",
+					"shadowtongue",
+					"thassilonian"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 21
+				},
+				"athletics": {
+					"std": 21
+				},
+				"deception": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 23
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 7,
+				"con": 5,
+				"int": 3,
+				"wis": 4,
+				"cha": 3
+			},
+			"items": [
+				"+1 leather armor",
+				"+1 striking longsword",
+				"shortbow (20 arrows)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 21
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 130,
+						"abilities": [
+							"coffin restoration",
+							"fast healing 10",
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyze",
+					"poison",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "strigoi weaknesses"
+					}
+				],
+				"resistances": [
+					{
+						"name": "all physical",
+						"amount": 10,
+						"note": "except silver or weapons shedding bright light"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 21,
+					"damage": "{@damage 2d8+8} slashing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"versatile <P>"
+					],
+					"name": "longsword",
+					"attack": 22,
+					"damage": "{@damage 2d8+8} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"range <60 feet>"
+					],
+					"name": "shortbow",
+					"attack": 23,
+					"damage": "{@damage 1d6+8} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 27,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "levitate",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Drink Essence",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When drinking essence, the strigoi servant regains 13 HP."
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"The strigoi servant deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shadow Form",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"shadow",
+							"transmutation"
+						],
+						"entries": []
+					}
+				]
+			}
+		},
+		{
+			"name": "Bishop Keppira D'bear",
+			"source": "SaS",
+			"page": 26,
+			"description": "Female strigoi (page 58)",
+			"level": 11,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"shadow",
+				"undead",
+				"vampire"
+			],
+			"perception": {
+				"std": 20
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril",
+					"shadowtongue",
+					"thassilonian"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 22
+				},
+				"athletics": {
+					"std": 23
+				},
+				"deception": {
+					"std": 22
+				},
+				"stealth": {
+					"std": 22
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 7,
+				"con": 5,
+				"int": 3,
+				"wis": 5,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 31
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 22
+					}
+				},
+				"hp": [
+					{
+						"hp": 150,
+						"abilities": [
+							"coffin restoration",
+							"fast healing 10",
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyze",
+					"poison",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "strigoi weaknesses"
+					}
+				],
+				"resistances": [
+					{
+						"name": "all physical",
+						"amount": 10,
+						"note": "except silver or weapons shedding bright light"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 22,
+					"damage": "{@damage 2d8+8} slashing plus Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 27,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "levitate",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Blasphemous Invocation",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"While Bishop Keppira D'Bear lost her spellcasting abilities and other clerical powers upon being transformed into a strigoi, {@deity Urgathoa} is pleased with the development and granted the fallen bishop a boon. In time, and if she's allowed to continue her undeath, the bishop may well regain many of her spellcasting powers as a cleric of {@deity Urgathoa}, but until that time she can draw upon this connection to the goddess of undeath to utter a blasphemous invocation.",
+							"When she does so, shadows within a 20-foot emanation from Bishop Keppira twist, writhe, and animate before lashing out. All living creatures in the area must attempt a DC 30 Fortitude save. Bishop Keppira cannot use Blasphemous Invocation again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature takes {@damage 5d6} negative damage."
+									],
+									"Failure": [
+										"The creature takes {@damage 10d6} negative damage and is {@condition slowed||slowed 1} as their own shadows animate and pull against them."
+									],
+									"Critical Failure": [
+										"The creature takes {@damage 20d6} negative damage and is {@condition slowed||slowed 2} as their won shadows animate and pull against them."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Drink Essence",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When drinking essence, Bishop Keppira D'Bear regains 15 HP."
+						]
+					},
+					{
+						"name": "Shadow Form",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"shadow",
+							"transmutation"
+						],
+						"entries": [
+							"As strigoi."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Abridan Ashau",
+			"source": "SaS",
+			"page": 0,
+			"description": "Male human ex-cleric",
+			"level": 10,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 18
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"requian",
+					"shoanti",
+					"varisian"
+				]
+			},
+			"skills": {
+				"deception": {
+					"std": 22
+				},
+				"diplomacy": {
+					"std": 18
+				},
+				"medicine": {
+					"std": 20
+				},
+				"religion": {
+					"std": 18
+				},
+				"society": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": 1,
+				"wis": 2,
+				"cha": 4
+			},
+			"items": [
+				"+1 explorer's clothing (vestments of {@deity Pharasma})",
+				"major staff of healing (6 charges; Trick DC 30)",
+				"scroll of blindness (Trick DC 20)",
+				"scroll of crisis of faith (Trick DC 20)",
+				"4 scrolls of heal (heightened to 5th level; Trick DC 26)",
+				"scroll of flame strike (Trick DC 26)",
+				"3 scrolls of sound burst (heightened to 4th level; Trick DC 23)",
+				"religious symbol of {@deity Pharasma}",
+				"key ring (contains keys that unlock all doors in the cathedral)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 190
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"two-hand d8"
+					],
+					"name": "staff",
+					"attack": 16,
+					"damage": "{@damage 1d4+4} bludgeoning"
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 29,
+					"rituals": [
+						{
+							"name": "call spirit"
+						},
+						{
+							"name": "rest eternal",
+							"source": "APG"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "False Faith",
+						"entries": [
+							"Abridan is an ex-cleric. While he's lost the magical abilities that come from his connection to {@deity Pharasma}, he can still use the major staff of healing or any of his scrolls by tricking the item. Since he can't cast spells, he can't recharge his staff, and uses its remaining charges only as a last resort."
+						]
+					},
+					{
+						"name": "Marked by Urgathoa",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"divine",
+							"evil",
+							"necromancy"
+						],
+						"trigger": "Abridan dies before he's had a chance to atone for his blasphemies or has become an actual cleric of {@deity Urgathoa}",
+						"entries": [
+							"{@deity Urgathoa} watched Abridan's fall from grace, and if he dies before he finishes his conversion, her disappointment causes his body to decay as if he had been dead for a week. This process also causes all living creatures within 30 feet to take {@damage 11d6} negative damage (DC 33 basic Fortitude save). If steps are not thereafter taken to prevent his soul from returning (such as by casting {@spell gentle repose} on the partially decayed corpse), Abridan rises as a {@creature dybbuk|B3} on the site of his death a minute after the next sundown and seeks revenge on the PCs for killing him."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Trick Item",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"Abridan attempts to trick his staff or a scroll by attempting a {@skill Religion} check against the item's Trick DC listed above.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"For the rest of his turn, Abridan can spend actions to activate the staff or scroll as if he could normally use it."
+									],
+									"Failure": [
+										"Abridan can't use the item or try to trick it again this turn, but can try again on subsequent turns."
+									],
+									"Critical Failure": [
+										"Abridan can't use the item, and can't try to trick it again until his next daily preparation at sunrise."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Profane Ghouls",
+			"source": "SaS",
+			"page": 33,
+			"description": "Variant {@creature ghoul||ghouls}",
+			"level": 10,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"ghoul",
+				"undead"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 22
+				},
+				"athletics": {
+					"std": 17
+				},
+				"religion": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 20
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 6,
+				"con": 5,
+				"int": 3,
+				"wis": 5,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 19
+					}
+				},
+				"hp": [
+					{
+						"hp": 180,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"burrow": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse"
+					],
+					"name": "jaws",
+					"attack": 22,
+					"damage": "{@damage 2d10+7} piercing plus {@damage 2d6} negative and profane paralysis and ghoul fever"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "claw",
+					"attack": 22,
+					"damage": "{@damage 2d6+7} slashing plus {@damage 2d6} negative and profane paralysis"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Ghoul Fever",
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"As ghoul, but DC 29."
+						]
+					},
+					{
+						"name": "Profane Paralysis",
+						"traits": [
+							"incapacitation",
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"Any living, non-elf creature hit by the profane ghoul's attack must attempt a DC 29 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature is {@condition slowed||slowed 1}."
+									],
+									"Failure": [
+										"The creature is {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Profane Whispers",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"mental",
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"The ghoul whispers profane secrets of undeath.",
+							"Living creatures within 10 feet of the ghoul take {@damage 2d8} {@condition persistent damage||persistent mental damage}. Those with ghoul fever must also succeed at a DC 29 Will save or have the disease advance one step. The profane ghoul can't use Profane Whispers again for 24 hours."
+						]
+					},
+					{
+						"name": "Scuttle",
+						"traits": [
+							"move"
+						],
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The profane ghoul crawls on all fours, moving up to half its Speed. This movement doesn't trigger reactions."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Yniesse Zenderholm",
+			"source": "SaS",
+			"page": 35,
+			"level": 7,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 16
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"infernal"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 17
+				},
+				"crafting": {
+					"std": 12
+				},
+				"intimidation": {
+					"std": 14
+				},
+				"religion": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 0,
+				"con": 4,
+				"int": 1,
+				"wis": 3,
+				"cha": 1
+			},
+			"items": [
+				"lesser sturdy shield (Hardness 10, HP 80, BT 40)",
+				"+1 glamered Gray Maiden plate",
+				"+1 longsword",
+				"composite shortbow (20 arrows)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 120
+					}
+				]
+			},
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"versatile <P>"
+					],
+					"name": "longsword",
+					"attack": 18,
+					"damage": "{@damage 1d8+7} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"propulsive",
+						"range increment <60 feet>",
+						"reload <0>"
+					],
+					"name": "shortbow",
+					"attack": 11,
+					"damage": "{@damage 1d6+6} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Erinyes Fury",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The Erinyes Company agent is suffering from {@condition persistent damage}",
+						"entries": [
+							"The agent makes a {@action Strike}. If it hits, it deals an additional {@dice 1d6} points of {@condition persistent damage}; the type of this extra damage is the same as the {@condition persistent damage} from which they're suffering. The agent can choose to instead have this {@condition persistent damage} be lawful or evil damage. This counts as two attacks when calculating their multiple attack penalty."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Acolytes of Pharasma",
+			"source": "SaS",
+			"page": 35,
+			"description": "clerics of {@deity Pharasma}",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"n",
+				"medium",
+				"human",
+				"humanoid",
+				"n"
+			],
+			"perception": {
+				"std": 7
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"varisian"
+				]
+			},
+			"skills": {
+				"crafting": {
+					"std": 5
+				},
+				"diplomacy": {
+					"std": 4
+				},
+				"occultism": {
+					"std": 5
+				},
+				"religion": {
+					"std": 7
+				},
+				"society": {
+					"std": 5
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 2,
+				"con": -1,
+				"int": 2,
+				"wis": 4,
+				"cha": 1
+			},
+			"items": [
+				"dagger",
+				"religious symbol of {@deity Pharasma}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 15
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 2
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 16
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 4,
+					"damage": "{@damage 1d4+2} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 4,
+					"damage": "{@damage 1d4+2} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Prepared",
+					"DC": 17,
+					"attack": 9,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "disrupt undead"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "create water"
+								},
+								{
+									"name": "heal",
+									"amount": 2
+								},
+								{
+									"name": "mending"
+								}
+							]
+						}
+					}
+				},
+				{
+					"type": "Focus",
+					"name": "Cleric Domain Spells",
+					"fp": 1,
+					"DC": 17,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "healer's blessing"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Ibrique",
+			"source": "SaS",
+			"page": 36,
+			"description": "Female variant dero {@creature ghoul}",
+			"level": 13,
+			"traits": [
+				"unique",
+				"ce",
+				"small",
+				"ghoul",
+				"undead"
+			],
+			"perception": {
+				"std": 18
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"necril",
+					"undercommon"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 27
+				},
+				"crafting": {
+					"std": 25
+				},
+				"deception": {
+					"std": 24
+				},
+				"occultism": {
+					"std": 25
+				},
+				"performance": {
+					"std": 24
+				},
+				"stealth": {
+					"std": 27
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 8,
+				"con": 5,
+				"int": 6,
+				"wis": -1,
+				"cha": 5
+			},
+			"items": [
+				"{@runeItem leather||+1 armor potency||resilient||+1 resilient leather armor}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 35
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 21
+					}
+				},
+				"hp": [
+					{
+						"hp": 200
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "vulnerable to sunlight"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"burrow": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse"
+					],
+					"name": "jaws",
+					"attack": 27,
+					"damage": "{@damage 3d10+10} piercing plus {@damage 2d6} negative and profane paralysis and ghoul fever"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "claw",
+					"attack": 27,
+					"damage": "{@damage 3d6+10} slashing plus {@damage 2d6} negative and profane paralysis"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 33,
+					"attack": 27,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkness",
+									"amount": "at will"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion",
+									"amount": 3
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "modify memory"
+								},
+								{
+									"name": "phantasmal killer"
+								},
+								{
+									"name": "teleport"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "sound burst"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Cytillesh Stare",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"incapacitation",
+							"mental",
+							"visual"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Ibrique focuses her gaze on a creature she can see within 30 feet. The target is {@condition dazzled} for 1 round and must succeed at a DC 33 Will save or be {@condition confused} for 1 round."
+						]
+					},
+					{
+						"name": "Ghoul Fever",
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"As ghoul, but DC 33."
+						]
+					},
+					{
+						"name": "Profane Paralysis",
+						"traits": [
+							"incapacitation",
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"As {@creature profane ghouls|SaS|profane ghoul}, but DC 33."
+						]
+					}
+				],
+				"top": [
+					{
+						"name": "Vulnerable to Sunlight",
+						"entries": [
+							"Ibrique takes 20 damage for each hour she is exposed to sunlight."
+						]
+					}
+				]
+			}
+		}
+	]
+}
