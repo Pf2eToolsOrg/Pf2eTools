@@ -1,6 +1,50 @@
 {
 	"ability": [
 		{
+			"name": "Drink Blood",
+			"source": "B1",
+			"page": 319,
+			"add_hash": "True Vampire",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"creature": [
+				"True Vampire"
+			],
+			"traits": [
+				"divine",
+				"necromancy"
+			],
+			"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vampire’s reach.",
+			"entries": [
+				"The vampire sinks its fangs into that creature to drink its blood. This requires an {@skill Athletics} check against the victim’s Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained||drained 2} and the vampire regains HP equal to 10% of its maximum HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that’s already {@condition drained} doesn’t restore any HP to the vampire but increases the victim’s {@condition drained||drain} value by 1. A vampire can also consume blood that’s been emptied into a vessel for sustenance, but it gains no HP from doing so.",
+				"A victim’s {@condition drained} condition decreases by 1 per week. A blood transfusion, which requires a DC 20 {@skill Medicine} check and sufficient blood or a blood donor, reduces the {@condition drained||drain} by 1 after 10 minutes."
+			]
+		},
+		{
+			"name": "Drink Blood",
+			"source": "B1",
+			"page": 319,
+			"add_hash": "Vampire",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"creature": [
+				"Vampire"
+			],
+			"traits": [
+				"divine",
+				"necromancy"
+			],
+			"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vampire’s reach.",
+			"entries": [
+				"The vampire sinks its fangs into that creature to drink its blood. This requires an {@skill Athletics} check against the victim’s Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained||drained 1} and the vampire regains HP equal to 10% of its maximum HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that’s already {@condition drained} doesn’t restore any HP to the vampire but increases the victim’s {@condition drained||drain} value by 1. A vampire can also consume blood that’s been emptied into a vessel for sustenance, but it gains no HP from doing so.",
+				"A victim’s {@condition drained} condition decreases by 1 per week. A blood transfusion, which requires a DC 20 {@skill Medicine} check and sufficient blood or a blood donor, reduces the {@condition drained||drain} by 1 after 10 minutes."
+			]
+		},
+		{
 			"name": "Dominate",
 			"source": "B1",
 			"page": 319,
@@ -8,6 +52,9 @@
 				"number": 2,
 				"unit": "action"
 			},
+			"creature": [
+				"True Vampire"
+			],
 			"traits": [
 				"divine",
 				"enchantment",
