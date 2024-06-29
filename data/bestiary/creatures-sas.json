@@ -86,7 +86,7 @@
 				"cha": 9
 			},
 			"items": [
-				"staff of power"
+				"{@item staff of power}"
 			],
 			"defenses": {
 				"ac": {
@@ -163,6 +163,26 @@
 					"DC": 37,
 					"attack": 29,
 					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
 						"5": {
 							"spells": [
 								{
@@ -226,26 +246,6 @@
 									}
 								]
 							}
-						},
-						"0": {
-							"level": 8,
-							"spells": [
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "message"
-								},
-								{
-									"name": "produce flame"
-								},
-								{
-									"name": "read aura"
-								}
-							]
 						}
 					}
 				},
@@ -443,8 +443,8 @@
 				"cha": 5
 			},
 			"items": [
-				"+1 resilient studded leather armor",
-				"religious symbol"
+				"{@runeItem studded leather||+1 armor potency||resilient||+1 resilient studded leather armor}",
+				"{@item religious symbol (generic)||religious symbol}"
 			],
 			"defenses": {
 				"ac": {
@@ -1220,19 +1220,19 @@
 					"tradition": "occult",
 					"DC": 28,
 					"entry": {
-						"4": {
-							"spells": [
-								{
-									"name": "modify memory",
-									"note": "at will"
-								}
-							]
-						},
 						"0": {
 							"level": 5,
 							"spells": [
 								{
 									"name": "tongues"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "modify memory",
+									"note": "at will"
 								}
 							]
 						},
@@ -1380,7 +1380,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"When Ileosa’s shell is reduced to 0 HP, the hollow corpse immediately melts into a pool of blood, at the center of which lies her still-beating heart. A moment later, a crimson ghostly shape—Queen Ileosa’s soul—rises from the heart. After the soul shrieks in relief at escaping from Hell, it rises through the ceiling and vanishes while the heart dies and rots. All creatures within 30 feet of the shell when this occurs must attempt a DC 30 Will save.",
+							"When Ileosa's shell is reduced to 0 HP, the hollow corpse immediately melts into a pool of blood, at the center of which lies her still-beating heart. A moment later, a crimson ghostly shape\u2014Queen Ileosa's soul\u2014rises from the heart. After the soul shrieks in relief at escaping from Hell, it rises through the ceiling and vanishes while the heart dies and rots. All creatures within 30 feet of the shell when this occurs must attempt a DC 30 Will save.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1471,8 +1471,8 @@
 				"cha": 6
 			},
 			"items": [
-				"bracers of armor type II",
-				"ring of wizardry type IV"
+				"{@item bracers of armor (type II)||bracers of armor type II}",
+				"{@item ring of wizardry (type IV)||ring of wizardry type IV}"
 			],
 			"defenses": {
 				"ac": {
@@ -1538,39 +1538,76 @@
 					"attack": 28,
 					"name": "Wizard Spells Prepared",
 					"entry": {
-						"8": {
+						"0": {
+							"level": 8,
 							"spells": [
 								{
-									"name": "horrid wilting"
+									"name": "chill touch"
 								},
 								{
-									"name": "maze"
+									"name": "detect magic"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
 								}
 							]
 						},
-						"7": {
+						"1": {
 							"spells": [
 								{
-									"name": "dispel magic"
+									"name": "ray of enfeeblement",
+									"amount": 2
 								},
 								{
-									"name": "eclipse burst"
-								},
-								{
-									"name": "magic missile"
+									"name": "true strike"
 								}
 							]
 						},
-						"6": {
+						"2": {
 							"spells": [
 								{
-									"name": "baleful polymorph"
+									"name": "deafness"
 								},
 								{
-									"name": "vampiric exsanguination"
+									"name": "mirror image"
 								},
 								{
-									"name": "wall of force"
+									"name": "spectral hand"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "mind reading"
+								},
+								{
+									"name": "slow",
+									"amount": 2
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": 2
+								},
+								{
+									"name": "grim tendrils",
+									"amount": 2
+								},
+								{
+									"name": "nightmare"
 								}
 							]
 						},
@@ -1590,76 +1627,39 @@
 								}
 							]
 						},
-						"4": {
+						"6": {
 							"spells": [
 								{
-									"name": "dimension door",
-									"amount": 2
+									"name": "baleful polymorph"
 								},
 								{
-									"name": "grim tendrils",
-									"amount": 2
+									"name": "vampiric exsanguination"
 								},
 								{
-									"name": "nightmare"
+									"name": "wall of force"
 								}
 							]
 						},
-						"3": {
+						"7": {
 							"spells": [
 								{
-									"name": "blindness"
+									"name": "dispel magic"
 								},
 								{
-									"name": "mind reading"
+									"name": "eclipse burst"
 								},
 								{
-									"name": "slow",
-									"amount": 2
+									"name": "magic missile"
 								}
 							]
 						},
-						"2": {
+						"8": {
 							"spells": [
 								{
-									"name": "deafness"
+									"name": "horrid wilting"
 								},
 								{
-									"name": "mirror image"
-								},
-								{
-									"name": "spectral hand"
-								}
-							]
-						},
-						"1": {
-							"spells": [
-								{
-									"name": "ray of enfeeblement",
-									"amount": 2
-								},
-								{
-									"name": "true strike"
-								}
-							]
-						},
-						"0": {
-							"level": 8,
-							"spells": [
-								{
-									"name": "chill touch"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "electric arc"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "prestidigitation"
+									"name": "maze"
 								}
 							]
 						}
@@ -1869,9 +1869,9 @@
 				"cha": 3
 			},
 			"items": [
-				"+1 leather armor",
-				"+1 striking longsword",
-				"shortbow (20 arrows)"
+				"{@runeItem leather||+1 armor potency||+1 leather armor}",
+				"{@runeItem longsword||+1 weapon potency||striking|}",
+				"{@item shortbow} (20 {@item arrow (generic)||arrows})"
 			],
 			"defenses": {
 				"ac": {
@@ -2258,14 +2258,14 @@
 				"cha": 4
 			},
 			"items": [
-				"+1 explorer's clothing (vestments of {@deity Pharasma})",
-				"major staff of healing (6 charges; Trick DC 30)",
-				"scroll of blindness (Trick DC 20)",
-				"scroll of crisis of faith (Trick DC 20)",
-				"4 scrolls of heal (heightened to 5th level; Trick DC 26)",
-				"scroll of flame strike (Trick DC 26)",
-				"3 scrolls of sound burst (heightened to 4th level; Trick DC 23)",
-				"religious symbol of {@deity Pharasma}",
+				"+1 {@item explorer's clothing} (vestments of {@deity Pharasma})",
+				"{@item major staff of healing} (6 charges; Trick DC 30)",
+				"{@item 3rd-level spell scroll||scroll} of {@spell blindness} (Trick DC 20)",
+				"{@item 3rd-level spell scroll||scroll} of {@spell crisis of faith} (Trick DC 20)",
+				"4 {@item 5th-level spell scroll||scrolls} of {@spell heal} (heightened to 5th level; Trick DC 26)",
+				"{@item 5th-level spell scroll||scroll} of {@spell flame strike} (Trick DC 26)",
+				"3 {@item 4th-level spell scroll||scrolls} of {@spell sound burst} (heightened to 4th level; Trick DC 23)",
+				"{@item religious symbol (generic)||religious symbol} of {@deity Pharasma}",
 				"key ring (contains keys that unlock all doors in the cathedral)"
 			],
 			"defenses": {
@@ -2592,10 +2592,10 @@
 				"cha": 1
 			},
 			"items": [
-				"lesser sturdy shield (Hardness 10, HP 80, BT 40)",
-				"+1 glamered Gray Maiden plate",
-				"+1 longsword",
-				"composite shortbow (20 arrows)"
+				"{@item lesser sturdy shield} (Hardness 10, HP 80, BT 40)",
+				"{@runeItem Gray Maiden plate|SaS|+1 armor potency||glamered|}",
+				"{@runeItem longsword||+1 armor potency|}",
+				"{@item composite shortbow} (20 {@item arrow (generic)||arrows})"
 			],
 			"defenses": {
 				"ac": {
@@ -2733,8 +2733,8 @@
 				"cha": 1
 			},
 			"items": [
-				"dagger",
-				"religious symbol of {@deity Pharasma}"
+				"{@item dagger}",
+				"{@item religious symbol (generic)||religious symbol} of {@deity Pharasma}"
 			],
 			"defenses": {
 				"ac": {
