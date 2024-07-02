@@ -128,6 +128,16 @@
 			],
 			"subclasses": [
 				{
+					"name": "Harrow",
+					"shortName": "Harrow",
+					"type": "Bloodline",
+					"source": "SF0",
+					"page": 15,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Harrow|SF0|1"
+					]
+				},
+				{
 					"name": "Aberrant",
 					"shortName": "Aberrant",
 					"type": "Bloodline",
@@ -1063,6 +1073,67 @@
 		}
 	],
 	"subclassFeature": [
+		{
+			"name": "Bloodline",
+			"source": "SF0",
+			"page": 15,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"subclassShortName": "Harrow",
+			"subclassSource": "SF0",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Harrow",
+					"entries": [
+						"You have a deep connection to the harrow, perhaps passed on through generations or unlocked after you had a harrow reading performed for you. This connection gives you an uncanny influence over your own fate.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"{@filter occult|spells||tradition & spell list=occult}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"{@skill Occultism}, {@skill Performance}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"cantrip: {@spell detect magic}; 1st: {@spell ill omen|LOGM}; 2nd: {@spell augury}; 3rd: {@spell wanderer's guide}; 4th: {@spell suggestion}; 5th: {@spell shadow siphon}; 6th: {@spell true seeing}; 7th: {@spell retrocognition}; 8th: {@spell unrelenting observation}; 9th: {@spell weird}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"initial: {@spell unraveling blast|SF0}; advanced: {@spell invoke the harrow|SF0}; greater: {@spell rewrite possibility|SF0}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"You become enveloped in possibility, represented as multiple versions of yourself from your possible futures overlaid on each other. You gain {@condition concealed||concealment} for 1 round, but can't use the concealment to {@action Hide}."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "Bloodline",
 			"source": "CRB",

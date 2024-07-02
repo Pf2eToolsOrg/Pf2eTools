@@ -5231,6 +5231,11 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${renderer.render(item.onset)}</p>`);
 		}
 
+		// Horrible hacky arbitrary text line
+		if (item.topText) {
+			renderStack.push(renderer.render(item.topText.map((entry) => `{@b ${entry.name}} ${entry.entry}`).join("; ")));
+		}
+
 		renderStack.push(Renderer.item.getShieldStats(item));
 		renderStack.push(Renderer.item.getArmorStats(item));
 		renderStack.push(Renderer.item.getWeaponStats(item));

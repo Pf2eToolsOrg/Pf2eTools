@@ -1,0 +1,214 @@
+{
+	"item": [
+		{
+			"name": "The Brass Dwarf",
+			"source": "SF0",
+			"page": 4,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"abjuration",
+				"artifact",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Shields (Con)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful neutral"
+				}
+			],
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"entries": [
+				"{@i The Brass Dwarf} represents invulnerability. When you invest {@i The Brass Dwarf}, you gain resistance to fire equal to your level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"Choose {@trait acid}, {@trait cold}, {@trait electricity}, {@trait fire}, {@trait mental}, {@trait poison}, or {@trait sonic}. You can't choose the damage type for which {@i The Brass Dwarf} currently gives you resistance. You gain resistance to the damage you chose equal to your level, and you lose the prior resistance that {@i The Brass Dwarf} gave you. For 1 minute, you gain weakness equal to half your level to the damage type of the prior resistance."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Empty Throne",
+			"source": "SF0",
+			"page": 5,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Crowns (Cha)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful good"
+				}
+			],
+			"entries": [
+				"{@i The Empty Throne} represents great loss and wisdom from those who are now gone. As long as you have {@i The Empty Throne} invested, it grants you a +2 item bonus to {@skill Society} and {@skill Lore} checks made to {@action Recall Knowledge} regarding individuals who are no longer alive (such as checks to learn about Taldor's historical founder but not to learn about its current empress). This increases to a +3 item bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You overwhelm a target you can see within 60 feet with feelings of helplessness and loss. The creature must attempt a Will DC equal to your class DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The target is unaffected."
+								],
+								"Success": [
+									"The target can't benefit from circumstance or status bonuses for 1 round."
+								],
+								"Failure": [
+									"The target can't benefit from circumstance or status bonuses for 1 day, and the target's allies are unable to benefit from circumstance or status bonuses while within 15 feet of the target."
+								],
+								"Critical Failure": [
+									"As failure, except the duration is 1 week."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Paladin",
+			"source": "SF0",
+			"page": 5,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"abjuration",
+				"artifact",
+				"invested",
+				"magical"
+			],
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Hammers (Str)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful good"
+				}
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"entries": [
+				"{@i The Paladin} represents righteousness and resolute defense. As long as you have {@i The Paladin} invested, you gain the {@feat Shield Block} general feat. If you already possess this feat, you gain an additional reaction at the start of your turn that can only be used to {@feat Shield Block}.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "You fail or critically fail a saving throw",
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Adjust the result of your saving throw up by one degree of success."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Rabbit Prince",
+			"source": "SF0",
+			"page": 5,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Keys (Dex)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic neutral"
+				}
+			],
+			"category": "Artifact",
+			"entries": [
+				"{@i The Rabbit Prince} represents the unreliability of hand-to-hand combat and how even cunning foes can lose to lucky novices. As long as you have {@i The Rabbit Prince} invested, it grants you a +1 status bonus to attack rolls you make as a readied action.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"fortune"
+					],
+					"trigger": "You miss a creature with a melee weapon {@action Strike}",
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Reroll the triggering {@action Strike} with a +1 status bonus. If you hit, attempt a DC {@flatDC 15} flat check; on a failure, your weapon gains the {@condition broken} condition (if your weapon is already {@condition broken}, it's destroyed). If you're at least 14th level, this flat check is DC {@flatDC 10}. If you're at least 17th level, this flat check is DC {@flatDC 5}."
+					]
+				}
+			]
+		}
+	]
+}
