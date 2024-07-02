@@ -1670,6 +1670,7 @@ SRC_SoG0 = "SoG0";
 SRC_SoG1 = "SoG1";
 SRC_SoG2 = "SoG2";
 SRC_SoG3 = "SoG3";
+SRC_SoG4 = "SoG4";
 SRC_LOTXWG = "LOTXWG";
 SRC_WtD1 = "WtD1";
 SRC_WtD2 = "WtD2";
@@ -1824,6 +1825,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SoG0] = "Season of Ghosts Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG1] = "Season of Ghosts #1: The Summer That Never Was";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG2] = "Season of Ghosts #2: Let the Leaves Fall";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoG3] = "Season of Ghosts #3: No Breath to Cry";
+Parser.SOURCE_JSON_TO_FULL[SRC_SoG4] = "Season of Ghosts #4: To Bloom Below the Web";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOTXWG] = "Lost Omens: Tian Xia World Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WtD1] = "Wake the Dead #1";
 Parser.SOURCE_JSON_TO_FULL[SRC_WtD2] = "Wake the Dead #2";
@@ -1942,6 +1944,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SoG0] = "SoG0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG1] = "SoG1";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG2] = "SoG2";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoG3] = "SoG3";
+Parser.SOURCE_JSON_TO_ABV[SRC_SoG4] = "SoG4";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTXWG] = "LOTXWG";
 Parser.SOURCE_JSON_TO_ABV[SRC_WtD1] = "WtD1";
 Parser.SOURCE_JSON_TO_ABV[SRC_WtD2] = "WtD2";
@@ -2060,6 +2063,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SoG0] = "2023-10-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG1] = "2023-10-18";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG2] = "2023-11-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoG3] = "2023-12-23";
+Parser.SOURCE_JSON_TO_DATE[SRC_SoG4] = "2024-01-31";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTXWG] = "2024-04-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_WtD1] = "2023-05-31";
 Parser.SOURCE_JSON_TO_DATE[SRC_WtD2] = "2023-07-26";
@@ -2189,6 +2193,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SoG0] = "https://downloads.paizo.com/SeasonofGho
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG1] = "https://paizo.com/products/btq02efy";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG2] = "https://paizo.com/products/btq02eha";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoG3] = "https://paizo.com/products/btq02eje";
+Parser.SOURCE_JSON_TO_STORE[SRC_SoG4] = "https://paizo.com/products/btq02eno";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTXWG] = "https://paizo.com/products/btq02ex6";
 Parser.SOURCE_JSON_TO_STORE[SRC_WtD1] = "https://paizo.com/products/btq02eic";
 Parser.SOURCE_JSON_TO_STORE[SRC_WtD2] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022202011";
@@ -2276,6 +2281,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_SoG1,
 	SRC_SoG2,
 	SRC_SoG3,
+	SRC_SoG4,
 	SRC_DaLl,
 	SRC_MotM,
 	SRC_HStR,
@@ -2453,6 +2459,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_SoG1,
 	SRC_SoG2,
 	SRC_SoG3,
+	SRC_SoG4,
 	SRC_DaLl,
 	SRC_MotM,
 	SRC_HStR,

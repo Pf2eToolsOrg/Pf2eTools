@@ -1,6 +1,73 @@
 {
 	"action": [
 		{
+			"name": "Repair Karahai Bridge",
+			"source": "SoG4",
+			"page": 16,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"entries": [
+				"You create a plan for rebuilding Karahai Bridge and recruit a team to enact that plan over the course of 3 days. Attempt a {@dc 25} {@skill lore||Engineering Lore} check, a {@dc 27} {@skill Crafting} check, or a {@dc 29} {@skill Society} check; other PCs can {@action Aid} this check with any of those skills by spending the same amount of downtime providing that assistance. If a PC has access to spells or other magic effects that the GM decides could be of significant aid to the process, and that PC spends their downtime helping, that PC's magic grants the primary check a +1 status bonus. This bonus stacks with multiple different spellcasting PCs, up to a maximum status bonus of +3. Once this check has been attempted, the PCs don't need to spend more downtime on the project.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PCs hit upon a brilliant plan for the project, and the town's workers prove to be particularly skilled and exuberant. The bridge takes only 1 month to rebuild and is finished before the events of Chapter 2 begin.",
+						"Success": "The plans are solid and the project proceeds quickly without any major setbacks. The bridge takes 2 months to rebuild.",
+						"Failure": "The plans for rebuilding the bridge take longer to complete, and the project suffers several minor setbacks and delays. The bridge takes 3 months to complete and is thus unlikely to be finished before this adventure ends.",
+						"Critical Failure": "While the plans seem solid, disaster strikes several days into the job, resulting in several deaths (roll {@dice 1d8} if you wish to randomly determine how many of Willowshore's citizens perish in this event). The PCs must start over, taking the Rebuild Karahai Bridge downtime activity once more to get the project restarted, but the roll suffers a \u20134 penalty to the check as a result of the later start."
+					}
+				}
+			]
+		},
+		{
+			"name": "Free Shackled Soul",
+			"source": "SoG4",
+			"page": 50,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"exploration",
+				"linguistic",
+				"mental"
+			],
+			"entries": [
+				"You speak to a shackled soul for 10 minutes and help them to cast off their bonds by reminding them of what they loved in life. Each attempt requires a {@dc 28} skill check that's specific to the soul in question (and mentioned in each of the following encounters), or a {@dc 32} {@skill Diplomacy} or {@skill Intimidation} check. If you carry and display a significant token taken from the soul's murder scene, you gain a +3 item bonus to this check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You convince the soul to cast off its shackles; it rewards you as detailed in the following encounters before it fades away from Kugaptee's Grasp. Your words have been so compelling that rather than moving on to the afterlife, you allow the soul to return to life, as if from the effects of a {@ritual resurrect} ritual that had been heightened to 7th level.",
+						"Success": "As critical success, but the soul doesn't resurrect; instead, it moves on to the {@plane Boneyard} for its afterlife and remains dead in the living world.",
+						"Failure": "You fail to convince the soul to cast off its shackles but can attempt to do so again.",
+						"Critical Failure": "The soul spirals even deeper into its bondage to Kugaptee. It can't be freed until {@creature Heh Shan-Bao|SoG4} is defeated (upon which the shackled soul is freed automatically); no further attempts to Free this Shackled Soul can be attempted."
+					}
+				}
+			]
+		},
+		{
+			"name": "Search for Clues",
+			"source": "SoG4",
+			"page": 88,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"secret"
+			],
+			"entries": [
+				"You spend 10 minutes {@action investigate||Investigating} a body, object, or location, or 2 hours {@action gather information||Gathering Information} from potential witnesses; you then attempt one of the checks listed for the examination. An investigator can use {@action Pursue a Lead|APG} when they do so to gain that ability's bonus to their check and can use {@action Clue In|APG} to aid others in Searching for Clues.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You discover minor, moderate, and major clues.",
+						"Success": "You learn the minor and moderate clues.",
+						"Failure": "You learn the minor clues.",
+						"Critical Failure": "You learn the false lead and believe it to be a minor clue."
+					}
+				}
+			]
+		},
+		{
 			"name": "Invoke Eiseth",
 			"source": "SaS",
 			"page": 51,

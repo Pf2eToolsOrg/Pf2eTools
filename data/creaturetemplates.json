@@ -1,6 +1,152 @@
 {
 	"creatureTemplate": [
 		{
+			"name": "Path Maiden",
+			"source": "SoG4",
+			"page": 86,
+			"type": "Adjustment",
+			"entries": [
+				"Worshippers in Shenmen who devote their every breath to Pharasma only to defy the goddess with their last sometimes transform, upon death, into path maidens. The garments all path maidens wear are the last vestiges of their former faith, a permanent reminder of their disgrace."
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Creating a Path Maiden",
+						"entries": [
+							"It’s best to create custom path maidens to fill an adventure’s specific needs."
+						]
+					},
+					{
+						"type": "pf2-h4",
+						"name": "Path Maiden Abilities",
+						"entries": [
+							"A path maiden has the {@trait incorporeal}, {@trait spirit}, and {@trait undead} traits and is evil. All path maidens gain the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"source": "B1",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Telepathy",
+						"entries": [
+							"100 feet"
+						],
+						"generic": {
+							"source": "B1",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Saving Throws",
+						"entries": [
+							"+1 status to all saves vs. {@trait positive}"
+						]
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"source": "B2",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Immunities",
+						"entries": [
+							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}"
+						]
+					},
+					{
+						"name": "Resistances",
+						"entries": [
+							"All damage 5 (except force, {@item ghost touch}, or positive; double resistance to {@trait magical||non-magical}). This resistance increases to 10 at 9th level and 15 at 16th level."
+						]
+					},
+					{
+						"name": "Imprisoning Grave",
+						"generic": {
+							"source": "SoG4",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Limited Flight",
+						"generic": {
+							"source": "SoG4",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Apostate's Shroud",
+						"generic": {
+							"source": "SoG4",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Occult Innate Spells",
+						"entries": [
+							"All path maidens have a limited selection of {@trait occult} innate spells. A typical path maiden has six innate spells—two of a spell level equal to their actual level divided by 2 (rounded down), and then two more for the next two spell levels below that. In addition, all path maidens have the following cantrips (cast at a level equal to their highest-level innate spell): {@spell dancing lights}, {@spell ghost sound}, {@spell know direction}, {@spell mage hand}, and {@spell telekinetic projectile}. The path maiden’s spell DC and spell attack use high values, as defined on page 66 of the {@i Gamemastery Guide}."
+						]
+					}
+				]
+			},
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Special Abilities",
+						"entries": [
+							"Select two of the following abilities, or potentially three if the path maiden is 16th level or higher. For DCs, use the high DC value as defined on page 66 of the {@i Gamemastery Guide}."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Blasphemous Aura",
+						"generic": {
+							"tag": "ability",
+							"source": "SoG4"
+						}
+					},
+					{
+						"name": "Corrupting Doubt",
+						"generic": {
+							"tag": "ability",
+							"source": "SoG4"
+						}
+					},
+					{
+						"name": "Scorn Fate",
+						"generic": {
+							"tag": "ability",
+							"source": "SoG4"
+						}
+					},
+					{
+						"name": "Sour Victory",
+						"generic": {
+							"tag": "ability",
+							"source": "SoG4"
+						}
+					},
+					{
+						"name": "Vengeful Frenzy",
+						"generic": {
+							"tag": "ability",
+							"source": "SoG4"
+						}
+					}
+				]
+			}
+		},
+		{
 			"name": "Mohrg Spawn",
 			"source": "B2",
 			"page": 172,

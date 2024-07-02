@@ -1,0 +1,1123 @@
+{
+	"item": [
+		{
+			"name": "Energizing Pill",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 73,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"lozenge"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 180
+			},
+			"usage": "held in 1 hand",
+			"bulk": "-",
+			"category": "Consumable",
+			"entries": [
+				"This special blend of potent herbs comes in the form of a compact ball that allows it to be held in the mouth, where it remains for 1 hour. An energizing pill has a bitter taste at first, but the longer one lets it soak, the more complex and sweet its flavor grows. It heightens your reactions, granting you a +2 item bonus to initiative rolls with {@skill Perception}.",
+				{
+					
+					"type": "ability",
+					"name": "Secondary Effect",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "You would become {@condition clumsy}, {@condition drained}, {@condition enfeebled}, {@condition frightened}, {@condition sickened}, {@condition slowed}, or {@condition stupefied}",
+					"entries": [
+						"Reduce the value of the condition you just gained by 1; if this reduces the value to 0, you don't gain the triggering condition."
+					]
+				}
+			]
+		},
+		{
+			"name": "Silversoul Bomb",
+			"type": "Item",
+			"level": "3+",
+			"source": "SoG4",
+			"page": 73,
+			"traits": [
+				"rare",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"mental",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"This rare alchemical bomb gathers and concentrates the emotions that linger in a burial ground where generations of beloved ancestors have been interred, infusing that powerful emotional energy into the alchemically prepared powdered silver stored within the bomb. This energy glows with a soft, silver radiance and, if contained in a clear container, allows a silversoul bomb to be used as a {@item torch} to illuminate an area.",
+				"A silversoul bomb grants an item bonus to attack rolls and deals mental damage plus additional effects, according to the bomb's type. {@trait nindoru|SoG2|Nindorus} are particularly harmed by silversoul bombs and take the listed {@condition persistent damage||persistent mental damage}, according to the bomb's type. Against nindorus, the bomb's item bonus also applies to its save DC to resist being {@condition dazzled} or {@condition blinded}. Creatures that have weakness to silver (including most nindorus) have an equal amount of weakness to the mental damage caused by a silversoul bomb, due to the silver infused into the energy within."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "silversoul bomb",
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls, and the bomb deals {@damage 2d4} mental damage, {@damage 1d6} {@condition persistent damage||persistent mental damage} to {@trait nindoru|SoG2|nindorus}, and 2 mental splash damage. A creature that takes splash damage from the bomb and fails a {@dc 17} Fortitude save is {@condition dazzled} for 1 round as glowing silver particles cling to its face."
+					]
+				},
+				{
+					"variantType": "greater silversoul bomb",
+					"level": 11,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls, and the bomb deals {@damage 3d4} mental damage, {@damage 2d6} {@condition persistent damage||persistent mental damage} to {@trait nindoru|SoG2|nindorus}, and 3 mental splash damage. A creature that takes splash damage from the bomb and fails a {@dc 28} Fortitude save is {@condition blinded} for 1 round and then {@condition dazzled} for 1 round thereafter."
+					]
+				},
+				{
+					"variantType": "major silversoul bomb",
+					"level": 17,
+					"price": {
+						"amount": 2500,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls, and the bomb deals {@damage 4d4} mental damage, {@damage 3d6} {@condition persistent damage||persistent mental damage} to {@trait nindoru|SoG2|nindorus}, and 4 mental splash damage.  A creature that takes splash damage from the bomb is {@condition dazzled} for 1 round unless it fails a {@dc 37} Fortitude save, in which case it's permanently {@condition blinded}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ascendant Dragon Spirit",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 74,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"potion",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 250
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"This masterfully crafted spirit is mixed into a potent magical cocktail and packaged in a gourd with an engraving of a forest dragon coiling around it. Drinking it imparts an intriguing balance of woodsmoke, honey, and bright floral notes on the back end. When consumed, your arms become infused with the deadly power of a forest dragon. For 1 minute, your unarmed {@action strike||Strikes} deal an additional {@damage 1d6} poison damage and an additional {@damage 1d6} negative damage."
+			]
+		},
+		{
+			"name": "Panaceatic Salve",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 74,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"enchantment",
+				"magical",
+				"mental",
+				"oil"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 155
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Oil",
+			"entries": [
+				"This pungent herbal ointment was originally only intended for use as an analgesic. That being said, popular folklore around this salve claims it can do anything from curing fevers to repelling {@trait vampire|B1|vampires}, a reputation that, if nothing else, is easy to get swept up in. When you activate a dose of panaceatic salve by rubbing it on your skin, you gain {@dice 4d8+10} temporary Hit Points for 10 minutes. At the end of this duration, if you still retain at least 1 of these temporary Hit Points, you can attempt a new saving throw against an ongoing {@trait disease} or {@trait poison} affliction you're afflicted with; if you fail or critically fail this saving throw, you don't increase the affliction's stage."
+			]
+		},
+		{
+			"name": "Sanctified Beans",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 74,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"divine",
+				"magical",
+				"positive"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 250
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"These roasted soybeans are blessed by a priest to ward against all various forms of otherworldly influence but are most effective against {@trait incorporeal} evils, such as {@creature specter|B2|specters} or {@creature path maiden|SoG4|path maidens}. They can be safely eaten by living creatures and taste delicious when paired with rice wine. When you activate this item, choose an adjacent square to exhale into. You fill that square with soothing vapors that harm any {@trait fiend}, {@trait fey}, {@trait ghost}, {@trait spirit}, or {@trait undead} creature that ends their turn in that square for the next minute, causing them to take {@damage 4d8+4} good damage ({@dc 28} basic Will save). An incorporeal creature that takes this damage must also attempt a {@dc 28} Fortitude save to resist being affected as follows.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature becomes {@condition flat-footed} until the start of your next turn.",
+						"Failure": "The creature becomes {@condition slowed 1} for 1 round.",
+						"Critical Failure": "The creature becomes {@condition stunned 1} and is then {@condition slowed 1} for 1 round."
+					}
+				}
+			]
+		},
+		{
+			"name": "Taljjae Tassel",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 74,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"talisman",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 160
+			},
+			"usage": "affixed to a weapon",
+			"bulk": "-",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": [
+					"envision"
+				],
+				"trigger": "Your {@action Strike} with the affixed weapon was a critical success."
+			},
+			"category": "Talisman",
+			"entries": [
+				"The bright red tassels of the creature known as {@creature Taljjae|LOMM} are a ubiquitous motif in Hwanggot and are used as charms to pray for good fortune and reward for great effort. They adorn clothing, weapons, and even drinking gourds. These particular tassels carry within them a potent fraction of the mysterious fey's power. When you activate a {@i Taljjae tassel}, your weapon gains the properties of the {@item grievous} rune for the duration of the triggering attack."
+			]
+		},
+		{
+			"name": "Thousand-Year Dragonroot",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 74,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 180
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Dragonroots are pale, golden-rooted plants that grow throughout Tian Xia. Just as mandrake roots or ginseng roots are sometimes regarded to have almost humanoid shapes, these roots appear as if they were dragons. They're commonly used in the formulation of {@item healing potion (generic)||healing potions}, but the most sought-after have grown for centuries, for they're viable for enchantment into {@i thousand-year dragonroots}.",
+				"When you activate a {@i thousand-year dragonroot}, your body shimmers with golden light, providing illumination as a {@item torch}. You gain a fly Speed of 40 feet and fire resistance 5 for 1 minute."
+			]
+		},
+		{
+			"name": "Vengeful Demon's Tears",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 74,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"potion",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 160
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact}"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"{@i Vengeful demon's tears} is an infamously noxious spirit mixed into a potent magical cocktail and traditionally packaged in a gourd adorned with an engraving of a terrifying demonic face. Drinking it feels akin to lighting your throat on fire and putting it out with an herbal tonic. When you activate this potion, you gain the {@condition quickened} condition for 3 rounds and can use the extra action each round to {@action Strike}, {@action Stride}, or to take the following action.",
+				{
+					
+					"type": "ability",
+					"name": "Release the Demon",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"traits": [
+						"concentrate",
+						"healing"
+					],
+					"entries": [
+						"You focus on the sensation of life burning within your flesh and gain {@dice 2d8} temporary Hit Points for 1 round."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dragon Turtle Armor",
+			"type": "Item",
+			"level": 12,
+			"source": "SoG4",
+			"page": 75,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2000
+			},
+			"usage": "worn armor",
+			"bulk": 4,
+			"category": "Armor",
+			"entries": [
+				"This {@runeItem full plate||+1 armor potency||resilient|} is crafted from the most colorful fragments chipped from scales of a {@creature dragon turtle}'s shell, traditionally incorporating that motif in the form of a thicker, sturdier backplate. While wearing this armor, you aren't {@condition flat-footed} from creatures that {@quickref flank||3|flanking} you, and you ignore the armor's speed penalty when you {@action Swim} and its check penalty to {@skill Athletics} checks to Swim."
+			]
+		},
+		{
+			"name": "Evil-Reflecting Shield",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 75,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1250
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Shield",
+			"entries": [
+				"A bright, octagonal frame surrounds this circular mithral shield, which itself is polished to a mirrorlike sheen that reflects clear and true. While you have this {@item standard-grade mithral shield} (Hardness 5, HP 20, BT 10) raised, you gain its circumstance bonus to saving throws against spells with the {@trait evil} or {@trait negative} trait.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"components": [
+						"command"
+					],
+					"traits": [
+						"fortune"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"trigger": "You attempt a saving throw against an effect with the {@trait evil} or {@trait negative} traits",
+					"entries": [
+						"Your saving throw result is considered one degree better than the actual result. If this effect turns a success into a critical success, you can reflect some of the effect's power as a wave of magical backlash back to the source of the triggering effect, as long as the source is within 30 feet. When you do so, the target must succeed at a {@dc 28} Fortitude save or become {@condition stunned 1}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dragonfire Halfbow",
+			"type": "Item",
+			"level": 12,
+			"source": "SoG4",
+			"page": 75,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"fire",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1800
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Weapon",
+			"entries": [
+				"Crafted by layering bamboo with strips of sliced scales harvested from a fire-breathing dragon, this bow has a significant draw strength. This design is commonly seen in Hongal, as the shorter limbs allow for easier maneuvering on horseback. While the wielder of this {@runeItem composite shortbow||+2 weapon potency||striking|} is mounted, they apply the bow's item bonus to {@skill Nature} checks to {@action command an animal||Command your mount}.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You draw the bow back to its maximum draw length without nocking an arrow, and as you release the string, the {@i dragonfire halfbow} casts {@spell fireball} (heightened to 5th-level; {@dc 29} Reflex save), targeted at a point of your choosing within the spell's range. You and your mount are immune to the effects of this {@i fireball}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Four-Tiger Blade",
+			"type": "Item",
+			"level": 12,
+			"source": "SoG4",
+			"page": 75,
+			"traits": [
+				"rare",
+				"abjuration",
+				"divine"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2000
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Weapon",
+			"entries": [
+				"When a once-in-a-lifetime alignment of the stars shone through the roof of a secluded blacksmith's forge, the smith took advantage to craft their masterpiece. For two hours, they hammered a lump of ordinary steel into a divine blade, etching constellations and wards down its length, then shared their creation's formula with a small group of close associates before passing away.",
+				"These weapons are the {@i four-tiger blades}, and currently, only a dozen are known to exist—one associated with each month of the year. Each weapon is a {@runeItem longsword||+2 weapon potency||striking||ghost touch|} that leaves a noticeable trail of light originating from the engraved stars when it's swung. Those who pay close attention to the pattern of stars that shine on the blade might note that the depicted constellations change according to those currently in the night sky above.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"traits": [
+						"abjuration",
+						"divine",
+						"incapacitation"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"Attempt a Strike against a creature you believe to be {@trait possession||possessed}. This attack deals no damage on the creature, but if the target is possessed, the possessing creature must attempt a {@dc 29} Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The possessing creature is unaffected, and you remain unaware of if the target is actually possessed or not.",
+								"Success": "The possessing creature is unaffected, but you sense that creature's control over the target and confirm that the target is possessed.",
+								"Failure": "You confirm that the target is possessed. The possessing creature can't control the target for 1 minute.",
+								"Critical Failure": "You confirm the target is possessed an instant before you {@quickref counteract|CRB|3|counteracting|0} the possession, causing the possessing creature to vacate the target's body."
+							}
+						}
+					]
+				},
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"components": [
+						"command"
+					],
+					"trigger": "You attempt a {@action Strike} with the {@i four-tiger blade}",
+					"entries": [
+						"Until the start of your next turn, you gain resistance 10 to negative damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lumber Lord's Axe",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 76,
+			"traits": [
+				"uncommon",
+				"transmutation",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 900
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Weapon",
+			"entries": [
+				"This unassuming tool wouldn't look out of place on the belt of an industrious laborer. Grooves worn into the wooden handle over years of use and an irregularly sharpened blade give it the distinct impression of being cherished, and the potent scent of freshly chopped wood always clings to the axe's blade despite any attempt to clean it or remove the odor. A creature that holds or carries this {@runeItem battle axe||+2 weapon potency||striking||bane|SoM|+2 striking cold iron fungus and plant bane battle axe} feels an obligation to tell the truth and receives a \u20134 status penalty to its attempts to {@action Lie}.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "minute",
+						"number": 1
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You polish and sharpen the axe, after which its scent grows even more powerful and the axe's blade transforms into your choice of {@item standard-grade adamantine weapon||standard-grade adamantine} or {@item standard-grade mithral weapon||standard-grade mithral} for 1 hour; then after this duration, the lumber lord's axe reverts to cold iron."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sensei's Parasol",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 76,
+			"traits": [
+				"rare",
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1400
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Weapon",
+			"entries": [
+				"A master once said to his pupil that, in the hands of a skilled practitioner, even a parasol can become a deadly weapon. Returning the next day, the pupil excitedly turned over a parasol forged out of metal slats, explaining that it lowered the amount of skill one would need to exert deadly force. The master sighed, seeing that his pupil had failed to see the point, but accepted the gift nonetheless. Ingenuity was, after all, a virtue.",
+				"Since then, additional {@i sensei's parasols} have been crafted, and they're very sought after. This weapon functions as a {@runeItem bo staff||+2 weapon potency||striking|}.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You cause the metal slats of the parasol to open up, transforming it into a {@item moderate sturdy shield} (Hardness 13, HP 104 [BT 51]). You can {@action sustain an activation||sustain} this activation for up to 10 minutes, after which the {@i sensei's parasol} reverts back to bo-staff form. If it's {@condition broken} as a shield, it reverts to its undamaged bo-staff form. If it's destroyed as a shield, it reverts to bo-staff form and becomes {@condition broken}."
+					]
+				},
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"components": [
+						"envision"
+					],
+					"requirements": "The {@i sensei's parasol} is in bo-staff form and isn't {@condition broken}",
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"trigger": "A creature misses you with a melee {@action Strike}",
+					"entries": [
+						"You redirect the missed {@action Strike} to target a creature or object within the triggering creature's reach. The triggering creature rolls a new Strike against the new target to determine the results of the redirected attack."
+					]
+				}
+			]
+		},
+		{
+			"name": "Thundering Fury Dadao",
+			"type": "Item",
+			"level": 12,
+			"source": "SoG4",
+			"page": 75,
+			"traits": [
+				"rare",
+				"evocation",
+				"magical",
+				"sonic"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2000
+			},
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Weapon",
+			"entries": [
+				"This massive, curved blade roars when it crashes down on opponents, seemingly intent on subduing them with sheer force. It's said materials for the first {@i thundering fury dadaos} came from the hide of Yorak, the Horned Thunder, a legendary {@trait kaiju|FRP2} that roams the Shanguang desert. The lack of embellishments on this {@runeItem greatsword||+2 weapon potency||striking||thundering|} a weapon of deadly efficacy.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You infuse the {@i thundering fury dadao} with the speed of lightning and the force of thunder. The weapon gains the {@trait agile} and {@trait forceful} traits for one round. You can {@action sustain an activation||Sustain} this activation for up to 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dragon Turtle Artillery",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 76,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1000
+			},
+			"usage": "held in 2 hands",
+			"bulk": 3,
+			"category": "Held",
+			"entries": [
+				"One end of this heavy cylinder of steel has been forged in the likeness of a {@creature dragon turtle}'s head, the mouth gaping wide. Grips at the opposite end allow one to hold and aim this heavy cannon-like barrel with both hands. As long as you're carrying {@i dragon turtle artillery} while you're on a boat or ship, the DC for any effect to capsize that vehicle increases by 4.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"A 50-foot cone of steam blasts from the mouth of the cannon, dealing {@damage 10d6} fire damage to creatures in its area of effect ({@dc 27} basic Reflex save). This blast ignores the fire resistance normally granted to creatures by being underwater."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fan of Falling Words",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 76,
+			"traits": [
+				"uncommon",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 900
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This folding handheld paper fan appears blank when first found, but if the wielder unfolds its leaves as an {@action Interact} action, they display an ink-brush painting of the wielder's choice. The fan must be closed and opened again to display a different painting. While held, the {@i fan of falling words} grants you a +2 item bonus to {@skill Performance} checks to act or perform comedy, orate, or sing.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 3
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You manifest the tapestry of your words, causing the image you depict on the fan to leap off its leaves. The fan casts {@spell hallucinatory terrain} to your specifications ({@dc 27} Will save to {@quickref disbelieve||2|disbelieving illusions}). While this only takes three actions to perform (as opposed to the spell's normal 10 minutes of casting), the effect has no range, and the 50-foot burst it creates is centered on you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fortune Cord",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 77,
+			"traits": [
+				"uncommon",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1300
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"In many parts of Tian Xia, it's tradition to mint coins with holes in the centers for the purpose of being able to thread a cord through them and tie them off for security and ease of transaction. This immaculately braided red cord is made in this tradition and can hold up to 100 coins at any given time. As long as you carry a {@i fortune cord}, you gain a +2 item bonus to skill checks to {@action Earn Income}.",
+				"If you load up to 100 coins onto a {@i fortune cord} as part of your daily preparations, you can {@action activate an item||Activate} the magic item in two different ways until the next time you make your daily preparations, provided all the loaded coins are of the same type.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"requirements": "you have at least 50 coins loaded onto the {@i fortune cord}",
+					"entries": [
+						"You transform the fortune cord into a {@runeItem nunchaku||+2 weapon potency||striking|} for 1 minute. The type of coin loaded onto the cord determines the additional weapon property rune that manifests on this {@runeItem nunchaku||+2 weapon potency||striking|}, as follows.",
+						{
+							"type": "list",
+							"style": "list-no-bullets",
+							"items": [
+								"{@indentSubsequent {@b Copper:} {@i {@item corrosive} weapon}}",
+								"{@indentSubsequent {@b Silver:} {@i {@item shock} weapon}}",
+								"{@indentSubsequent {@b Gold:} {@i {@item flaming} weapon}}",
+								"{@indentSubsequent {@b Platinum:} {@i {@item frost} weapon}}"
+							]
+						}
+					]
+				},
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"{@trait manipulate}",
+						"{@action Interact}"
+					],
+					"entries": [
+						"You whip the fortune cord, causing 10 coins loaded onto it to detach and fire at a creature within 100 feet that you can see. That creature takes {@damage 4d6} damage ({@dc 28} basic Reflex save); the damage type depends on the type of coins you've loaded. Copper coins deal acid damage, silver coins deal electricity damage, gold coins deal fire damage, and platinum coins deal cold damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Jiang-Shi Bell",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 77,
+			"traits": [
+				"uncommon",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1200
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This ornate handbell creates a sonorous low-pitched tone when rung, as if sounding from a much larger bell than one carried in the hand. The bell is crafted of silver and polished to a reflective sheen, while the bell's wooden handle is carved with detailed images of various foodstuffs.",
+				"You can interact with a {@i jiang-shi bell} to brandish it against a jiang-shi vampire. If a jiang-shi gains the {@condition fleeing} condition as a result of a {@i jiang-shi bell} being brandished, they must run until they're at least 20 feet away. They take a -2 penalty to the Will save to any attempt to overcome their {@ability jiang-shi vulnerabilities|BotD|revulsion} toward this object.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"traits": [
+						"olfactory",
+						"visual"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"requirements": "you have at least 50 coins loaded onto the {@i fortune cord}",
+					"entries": [
+						"You ring the bell and create an illusory image of a delicious-looking banquet of food laid out on an altar in a 5-foot-square at any point within 30 feet of you that you can see. Any creature that must eat food to survive that's within 30 feet of the appearance of the illusory food must succeed at a {@dc 28} Will save or be so distracted by the food's sight and smell that they become {@condition fascinated} by it for 10 minutes.",
+						"This food's appearance can trigger any jiang-shi's {@ability jiang-shi vulnerabilities|BotD|Bitter Epiphany} weakness; if the food does so, the jiang-shi takes a \u20132 item penalty to its Will save to resist the effects of this weakness."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lacquered Waist Drum",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 77,
+			"traits": [
+				"uncommon",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1300
+			},
+			"usage": "held in 2 hands",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This hourglass-shaped drum has two heads, each of which produces a different sound when struck. When played together, the resonance of the two sounds is effective in repelling evil spirits. This drum can be played as an instrument, granting a +2 item bonus to {@skill Performance}.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "hour",
+						"number": 1
+					},
+					"entries": [
+						"You play both heads of the drums, generating a pulse of positive energy that targets one creature within 30 feet that has the {@trait undead} trait. This deals {@damage 5d8} positive damage ({@dc 28} Fortitude save) to that creature; if the undead also has the {@trait ghost} trait, the ghost becomes {@condition sickened 1} if it fails the save."
+					]
+				},
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 3
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "hour",
+						"number": 1
+					},
+					"entries": [
+						"You raucously play both heads of the drums, accompanied with shouting and dancing. This display generates a pulse of positive energy in a 30-foot emanation from you. All {@trait undead} creatures within this area must attempt a {@dc 28} Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature takes no damage.",
+								"Success": "The creature takes {@damage 2d8} positive damage.",
+								"Failure": "The creature takes {@damage 5d8} positive damage; if the creature has the {@trait ghost} trait, it becomes {@condition stupefied 1} for 1 minute.",
+								"Critical Failure": "The creature takes {@damage 10d8} positive damage; if the creature has the {@trait ghost} trait, it becomes {@condition stupefied 2} for 1 minute."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Moonsilver Necklace",
+			"type": "Item",
+			"level": 10,
+			"source": "SoG4",
+			"page": 78,
+			"traits": [
+				"uncommon",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1000
+			},
+			"usage": "worn",
+			"bulk": "-",
+			"category": "Worn",
+			"entries": [
+				"Those who are in tune with nature understand well the transience of life and the migration of souls. Just as the moon waxes and wanes, so too are the candles of life lit and extinguished. The ritual for creating this item requires an animal sacrifice in direct moonlight, the belief being that creatures sacrificed in this way are blessed to reincarnate into better lives. While wearing this silver, crescent-shaped necklace, your unarmed melee {@action strike||Strikes} are silver weapons with the properties of the {@item ghost touch} rune."
+			]
+		},
+		{
+			"name": "Phoenix Fulu Holder",
+			"type": "Item",
+			"level": 12,
+			"source": "SoG4",
+			"page": 78,
+			"traits": [
+				"rare",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2000
+			},
+			"category": "Other",
+			"entries": [
+				"This elegant wooden frame is decorated with numerous downy red feathers that feel almost uncomfortably hot to the touch. A {@i phoenix fulu holder} grants a sort of second \"life\" to any {@trait fulu} placed for a time within its frame, but also gives the fulu wielder a stylish and eye-catching way of displaying such a treasure. You can place any fulu into a {@i phoenix fulu holder} as an {@action Interact} action.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"requirements": "An 11th- or lower-level {@trait fulu} is stored in the {@i phoenix fulu holder}",
+					"entries": [
+						"You take the {@trait fulu} from the {@i phoenix fulu holder}, and an instant later, a glowing image of the fulu you removed manifests in the frame. If the previously stored fulu is consumed within the next 24 hours, the flickering image within the {@i phoenix fulu holder} becomes a solid and fully functional duplicate of that fulu. This duplicated fulu functions identically to the original fulu, but if not affixed within 24 hours of its formation, it fades away and vanishes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Purgatory Emissary's Staff",
+			"type": "Item",
+			"level": 12,
+			"source": "SoG4",
+			"page": 78,
+			"traits": [
+				"rare",
+				"magical",
+				"necromancy",
+				"staff"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1820
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Staff",
+			"entries": [
+				"This ash wood staff is topped by a long tassel of bleached-white horsehair. Historically carried by the most important of court officials throughout various regions and periods of Tian Xia's history, {@i purgatory emissary's staves} are also strongly associated with {@trait psychopomp||psychopomps} serving punitive sentences. It's thought this connection is a comical nod to the bureaucratic nature of the afterlife.",
+				"Psychopomps and spirits tend to regard you with a level of respect while you carry a {@i purgatory emissary's staff}. While you wield this staff, you receive a +2 item bonus to all skill checks made to adjust a {@trait psychopomp}'s or {@trait spirit}'s attitude.",
+				"When used as a weapon, a purgatory emissary's staff is a {@runeItem staff||+2 weapon potency||striking||ghost touch|}.",
+				{
+					
+					"type": "ability",
+					"components": [
+						"{@action Cast a Spell}"
+					],
+					"entries": [
+						"You expend a number of charges from the staff to cast a spell from its list.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold Cantrip} {@spell disrupt undead}",
+								"{@bold 1st} {@spell command}, {@spell sanctuary}",
+								"{@bold 2nd} {@spell remove fear}, {@spell see invisibility}",
+								"{@bold 3rd} {@spell searing light}, {@spell zone of truth}",
+								"{@bold 4th} {@spell dispel magic}, {@spell talking corpse}",
+								"{@bold 5th} {@spell banishment}, {@spell tongues}"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Skyfang Crystal",
+			"type": "Item",
+			"level": 12,
+			"source": "SoG4",
+			"page": 78,
+			"traits": [
+				"rare",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2000
+			},
+			"usage": "worn",
+			"bulk": "-",
+			"category": "Worn",
+			"entries": [
+				"A {@i skyfang crystal} appears as a softly glowing length of blue crystal shaped like a gently curved fang; it's typically affixed to a short length of chain, allowing it to be worn as a necklace or wrapped around a forearm. The light it sheds is equal in strength to that of a candle; it can't be extinguished but can be blocked simply by wrapping the crystal in cloth, wearing it under clothing, or keeping it in a container. The first of these magical crystals was believed to have been created by a dying sky dragon who'd spent her life fighting against evil spirits. She plucked a dozen of her smallest teeth from her jaw and offered them to her 12 most trusted allies so that they could continue to track down evil spirits and remain protected as they did so, even after she was gone. A {@i skyfang crystal} provides illumination as a candle that can't be extinguished, and as long as you have it invested, you gain mental resistance 10. If you're evil, you're {@condition enfeebled 2} while you have a {@i skyfang crystal} invested.",
+				{
+					
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"unit": "day",
+						"number": 1
+					},
+					"entries": [
+						"You touch the {@i skyfang crystal} to your brow and utter the name of a specific {@trait fiend} or {@trait spirit} you seek. If the target is on the same plane as you, the {@i skyfang crystal} pulses stronger with light when you face in the approximate direction of the named creature, allowing you to {@action Track} that creature. The DC for this check is equal to the creature's Will DC, and you can use {@skill Occultism}, {@skill Religion}, or {@skill Survival} to attempt the check. As long as you're tracking this fiend or spirit, you gain a +2 item bonus to saving throws against effects that creature generates. This effect persists until you activate the {@i skyfang crystal} again to track a different target."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infected Silver",
+			"type": "Item",
+			"level": 13,
+			"source": "SoG4",
+			"page": 84,
+			"traits": [
+				"rare",
+				"cursed",
+				"magical",
+				"necromancy"
+			],
+			"usage": "curses silver item",
+			"appliesTo": [
+				"Armor",
+				"Shield",
+				"Weapon",
+				"Other"
+			],
+			"category": "Curse",
+			"entries": [
+				"After 1 minute of carrying infected silver, it fuses to you. You become {@condition clumsy 1} and remain so as long as the curse persists. As long as you remain cursed, you take a \u20132 status penalties to all saving throws against {@trait mental} effects created by {@trait nindoru|SoG2|nindorus}."
+			]
+		},
+		{
+			"name": "Gossamer Sash",
+			"type": "Item",
+			"level": 11,
+			"source": "SoG4",
+			"page": 86,
+			"traits": [
+				"rare",
+				"consumable",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 250
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "hour"
+				},
+				"components": [
+					"envision",
+					"{@action Interact}",
+					"{@trait move}"
+				]
+			},
+			"category": "Held",
+			"entries": [
+				"This lightweight sash of spidersilk measures 20 feet long when fully unfurled. White at one end and shading to violet at the other, occult markings in silver thread are stitched along the sash's length. When a {@i gossamer sash} is held by up to 4 people and they spend 1 hour walking along any road in Shenmen between midnight and sunrise, they step into an {@plane immersive mindscape|DA} that appears to bea lonely mountainside road inhabited by {@creature path maiden|SoG4|path maidens} who are (at least initially) favorably disposed toward answering questions the travelers might have. Once the path maidens have answered their questions or are slain (whichever comes first), the mindscape ends, and those who traveled it are returned to the point on the road where they first activated the {@i gossamer sash}."
+			]
+		}
+	]
+}

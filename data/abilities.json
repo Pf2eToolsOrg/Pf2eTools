@@ -1,6 +1,142 @@
 {
 	"ability": [
 		{
+			"name": "Imprisoning Grave",
+			"source": "SoG4",
+			"page": 86,
+			"creature": [
+				"Path Maiden"
+			],
+			"traits": [
+				"aura",
+				"divine",
+				"necromancy"
+			],
+			"entries": [
+				"30 feet. The soul of a creature that dies within the {@creature path maiden|SoG4}'s aura is trapped within its corpse until its body spends 1 minute outside the aura. While trapped, the soul can't move on to the afterlife but can still be brought back to life or transformed into an {@trait undead} creature."
+			]
+		},
+		{
+			"name": "Limited Flight",
+			"source": "SoG4",
+			"page": 86,
+			"creature": [
+				"Path Maiden"
+			],
+			"entries": [
+				"A {@creature path maiden|SoG4} has a fly Speed equal to her Speed but can't fly higher than 10 feet above the ground, and if she ends her turn above a nonsolid surface, she vanishes and rematerializes on the last space she occupied over solid ground and becomes {@condition stunned 1}."
+			]
+		},
+		{
+			"name": "Apostate's Shroud",
+			"source": "SoG4",
+			"page": 86,
+			"creature": [
+				"Path Maiden"
+			],
+			"entries": [
+				"All {@creature path maiden|SoG4|path maidens} have an apostate's shroud unarmed attack that deals mental damage. This attack, which manifests as a whipping lash from the path maiden's sleeves or hem, has the {@trait agile}, {@trait finesse}, and {@trait magical traits}. A creature damaged by this attack must succeed at a Fortitude save against the path maiden's spell DC. On a failure, the creature becomes cursed for 1 hour; if the creature dies while cursed, it immediately rises from death as a {@trait ghost}. If the creature is a lower level than the path maiden that cursed it, it treats that path maiden as an ally and loyally obeys her; otherwise, it manifests as a free-willed ghost. In either case, it becomes {@ability site bound} to the site of their death."
+			]
+		},
+		{
+			"name": "Blasphemous Aura",
+			"source": "SoG4",
+			"page": 87,
+			"creature": [
+				"Path Maiden"
+			],
+			"traits": [
+				"abjuration",
+				"aura",
+				"evil",
+				"occult"
+			],
+			"entries": [
+				"30 feet. When a creature in the aura uses a spell or ability with the {@trait healing} trait, it must succeed at a Will save against the {@creature path maiden|SoG4}'s spell DC \u2013 3. On a failure, the amount of Hit Points restored by the spell or ability is halved. On a critical failure, the positive energy becomes negative energy, harming a living target instead of healing it."
+			]
+		},
+		{
+			"name": "Corrupting Doubt",
+			"source": "SoG4",
+			"page": 87,
+			"creature": [
+				"Path Maiden"
+			],
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental",
+				"occult"
+			],
+			"entries": [
+				"A creature damaged by the {@creature path maiden|SoG4}'s hand {@action Strike} must succeed at a Will save to avoid becoming {@condition slowed 1} for 1 round (slowed 2 on a critical failure)."
+			]
+		},
+		{
+			"name": "Scorn Fate",
+			"source": "SoG4",
+			"page": 87,
+			"creature": [
+				"Path Maiden"
+			],
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"curse",
+				"divination",
+				"misfortune",
+				"occult"
+			],
+			"entries": [
+				"The {@creature path maiden|SoG4} targets a creature she can see. The creature must attempt a Will save against the path maiden's spell DC. On a failure, the creature's next roll is cursed. If the result of the roll is a critical success, it becomes a regular success. A success becomes a failure, and a failure becomes a critical failure. That creature is then temporarily immune to Scorn Fate for 24 hours."
+			]
+		},
+		{
+			"name": "Sour Victory",
+			"source": "SoG4",
+			"page": 87,
+			"creature": [
+				"Path Maiden"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"curse",
+				"divination",
+				"misfortune",
+				"occult"
+			],
+			"trigger": "A creature scores a critical hit against the {@creature path maiden|SoG4}",
+			"entries": [
+				"The creature must attempt a Will save against the {@creature path maiden|SoG4}'s spell DC. On a failure, its next roll to attack the path maiden must be rolled twice, and it takes the worse result. That creature is then temporarily immune to Sour Victory for 24 hours."
+			]
+		},
+		{
+			"name": "Vengeful Frenzy",
+			"source": "SoG4",
+			"page": 87,
+			"creature": [
+				"Path Maiden"
+			],
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"emotion",
+				"enchantment",
+				"mental",
+				"occult"
+			],
+			"entries": [
+				"The {@creature path maiden|SoG4} targets a creature within 60 feet that she can see. The target must attempt a Will save against the path maiden's spell DC. On a failure, the target is {@condition confused} until the end of its next turn, but it can't attack path maidens or itself as the result of this confusion."
+			]
+		},
+		{
 			"name": "Drink Blood",
 			"source": "B1",
 			"page": 319,

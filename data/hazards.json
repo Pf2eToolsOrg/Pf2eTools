@@ -1,6 +1,152 @@
 {
 	"hazard": [
 		{
+			"name": "Unwelcome Facade",
+			"level": 10,
+			"source": "SoG4",
+			"page": 9,
+			"traits": [
+				"unique",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 32,
+				"minProf": "master"
+			},
+			"description": [
+				"An unsettling wave of malice and sinister energy ripples invisibly out from the manor, causing those who view the building to see a leering, evil face glaring at them from the structure's architecture."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 32} {@skill Occultism} or {@skill Religion} to exorcise the haunt, {@dc 35} {@skill Society} to approach the manor in a proper way that defers to its occupant's symbolic standing in the community; displaying an official pass that legally grants permission to enter the building reduces both of these DCs by 5 (provided the PCs approach the front door and not from another direction)."
+				]
+			},
+			"actions": [
+				{
+					"name": "Horrifying Vision",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental",
+						"occult"
+					],
+					"trigger": "A {@trait Small} or larger creature approaches within 30 feet of the house's exterior",
+					"entries": [
+						"A wave of malice fills the minds of all living creatures outside of the manor within 60 feet with overwhelming fear; each creature must attempt a {@dc 29} Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected and is temporarily immune to Horrifying Vision for 24 hours. In addition to this temporary immunity, the creature can attempt a {@dc 23} {@skill Occultism} or {@skill Religion} check as a free action to notice that despite there being only one face in the facade, several spiritual echoes seem to infuse the building. On a critical success, the creature realizes that only the most powerful force infusing the manor is evil and that the other elements are non-hostile spirits who are overwhelmed and trapped by that singular force.",
+								"Success": "The creature experiences a brief vision of the manor's facade twisting into an immense, horrific face and becomes {@condition frightened 1}. The creature can attempt the same {@skill Occultism} or {@skill Religion} check as above, but the DC increases to 33.",
+								"Failure": "As failure, but the creature becomes {@condition frightened 2} and is {@condition fleeing} for as long as it remains frightened. The creature can attempt the {@skill Occultism} or {@skill Religion} check to Recall Knowledge normally ({@dc 33}).",
+								"Critical Failure": "As failure, but the creature can't reduce its {@condition frightened} condition below 1 for 1 minute. In addition, the overwhelming fear causes the creature to become {@condition stupefied 1}; this condition persists until it's cured magically or the hazard is disabled."
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"The unwelcoming facade resets immediately if not disabled and can be triggered again the very next round."
+			]
+		},
+		{
+			"name": "Weakened Floor",
+			"level": 11,
+			"source": "SoG4",
+			"page": 11,
+			"traits": [
+				"unique",
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 23,
+				"minProf": "master"
+			},
+			"description": [
+				"The weakened floor gives way with a tremendous crash, dropping everything in the room into a muddy morass of toxic mold."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 33} {@skill Crafting} (master) three times to knock holes in the floor without triggering the spore cloud while simultaneously lightening the strain on the floor so it can be walked upon, {@dc 36} {@skill Stealth} (expert) to move carefully through the room for the remainder of your turn without triggering the hazard, or {@dc 36} {@skill Nature} (expert) twice once the trap is triggered to knock enough holes into the nearby walls to cause the spores to disperse"
+				]
+			},
+			"actions": [
+				{
+					"name": "Collapse Floor",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A round begins with a Small or larger creature standing on the floor in area A4",
+					"entries": [
+						"The floor of the entire room collapses in a thunderous crash, dropping all creatures in the room 5 feet into a soupy morass of mud, mold, and toxic fungus while a cloud of spores spews up into the air above. The room becomes greater difficult terrain. All creatures who were standing on the floor in the room fall {@condition prone} in the mess below unless they succeed at a {@dc 24} Reflex save, in which case they land on their feet. The hazard then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) Every round on its turn, the spores that now fill area A4 inflict {@damage 8d6} poison damage to all creatures in the room ({@dc 30} basic Fortitude save) as the cloud burns at exposed flesh; a creature that holds its breath gains a +4 circumstance bonus to this saving throw."
+			],
+			"reset": [
+				"One minute after nothing moves in the room, the spores settle down. The floor remains obvious and won't collapse further, but any creature that moves through the mold causes the spores to plume up again, re-triggering the trap."
+			]
+		},
+		{
+			"name": "Witherweird Runes",
+			"level": 13,
+			"source": "SoG4",
+			"page": 43,
+			"traits": [
+				"rare",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 27,
+				"minProf": "master"
+			},
+			"description": [
+				"Necromantic magic stored in runes painted in powdered bone and banshees' tears lash out at anyone other than {@creature Heh Shan-Bao|SoG3} who opens the secondary compartment."
+			],
+			"disable": {
+				"entries": [
+					"{@dc 37} {@action Disable a Device} to scratch out the runes and dissipate their magic harmlessly, {@dc 40} {@skill Arcana} to sabotage the spell and cause the runes to dry up and blow away as inert powder, or {@spell dispel magic} (7th level; {@quickref counteract|CRB|3|counteracting|0} DC 31) to counteract the runes"
+				]
+			},
+			"actions": [
+				{
+					"name": "Withering Wail",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"curse",
+						"necromancy"
+					],
+					"trigger": "Someone other than {@creature Heh Shan-Bao|SoG3} opens the secondary compartment",
+					"entries": [
+						"A howling, spectral face manifests out of the chest and screeches, causing all within area C4 to attempt a {@dc 33} Fortitude save; the sound also alerts the {@creature provincial jiang-shi|BotD|jiang-shi} in areas C3a and C6, who quickly come to investigate the sound.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes {@damage 7d6} negative damage.",
+								"Failure": "The creature takes {@damage 15d6} negative damage. In addition, their flesh withers and weakens, leaving them to appear old and decrepit—the creature becomes {@condition clumsy 1} and {@condition enfeebled 1} until the curse is removed.",
+								"Critical Failure": "The creature takes {@damage 30d6} negative damage and becomes cursed as failure, but becomes {@condition clumsy 2} and {@condition enfeebled 2}."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Paradox Engine",
 			"source": "SaS",
 			"page": 45,
