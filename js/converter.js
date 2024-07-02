@@ -674,7 +674,7 @@ class Converter {
 		const reSkill = /@skill ([^}|]*?)}/ig;
 		const entriesString = background.entries.filter(e => typeof e === "string").join(" ");
 		const lore = Array.from(new Set(Array.from(entriesString.matchAll(reLore)).filter(Boolean).map(m => m[1])));
-		const skills = Array.from(new Set(Array.from(entriesString.matchAll(reSkill)).filter(Boolean).map(m => m[1])));
+		const skills = Array.from(new Set(Array.from(entriesString.matchAll(reSkill)).filter(Boolean).map(m => m[1].toLowerCase())));
 		if (lore.length) background.lore = lore.map(l => l.replace(/ Lore/i, ""));
 		if (skills.length) background.skills = skills;
 	}
