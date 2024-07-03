@@ -4517,7 +4517,7 @@ Renderer.creature = {
 							for (let spell of sc.entry["constant"][clvl].spells) {
 								let bracket = ""
 								if (spell?.notes?.length || spell.starred) {
-									bracket = `${starred ? "*" : ""}${spell?.notes?.length ? ` (${spell.notes.join(", ")})` : ""}`
+									bracket = `${spell.starred ? "*" : ""}${spell?.notes?.length ? ` (${spell.notes.join(", ")})` : ""}`
 								}
 								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
 							}
