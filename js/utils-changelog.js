@@ -28,7 +28,7 @@ class UtilsChangelog {
 				let depth = -1;
 				lines.forEach(l => {
 					if (l.trim().startsWith("-")) {
-						const nxtDepth = l.length - l.trimLeft().length;
+						const nxtDepth = Math.ceil((l.length - l.trimLeft().length) / 2);
 
 						if (nxtDepth > depth) {
 							htmlStack += `${"<ul>".repeat(nxtDepth - depth)}<li>${cleanListLine(l)}</li>`;
