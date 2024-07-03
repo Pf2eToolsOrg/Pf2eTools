@@ -28,13 +28,13 @@ fi
     # The "hub" tool reads all text up to the first empty line as the release
     # title.
     # * For changelog entries with a title, this is formatted as
-    #   '<version>, "<title>" Edition' to match the format of the site's
+    #   '<version>, _"<title>"_ edition' to match the format of the site's
     #   changelog page.
     #
     # * For changelog entries without a title, this is formatted as simply
     #   '<version>'.
     echo -n "$version"
-    jq -r 'if has("title") then ", \(.title | tojson) Edition\n" else "\n" end' <<< "$changelog"
+    jq -r 'if has("title") then ", _\(.title | tojson)_ edition\n" else "\n" end' <<< "$changelog"
 
     # Some changelogs include an alternate title. This is included in the body
     # of the release notes and formatted as 'AKA "<altTitle>" Edition' to match

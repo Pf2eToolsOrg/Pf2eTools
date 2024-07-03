@@ -119,4 +119,4 @@ jobs:
          # endregion
 
          - name: Post Changelogs to Discord
-           run: bash ./.github/discord.sh --webhook-url="${{ secrets.DISCORD_WEBHOOK }}" --text "<@&901146147480043520>" --title "Pf2eTools $(head -n 1 RELEASE_NOTES.md)" --description "$(jq -Rs . <<< $(tail -n +2 "RELEASE_NOTES.md") | cut -c 2- | rev | cut -c 2- | rev)" --color "0x6f1c17" --url "https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/${{ env.RELEASE_VERSION }}" --timestamp
+           run: bash ./.github/discord.sh --webhook-url="${{ secrets.DISCORD_WEBHOOK }}" --text "<@&901146147480043520>" --title "Pf2eTools v$(head -n 1 RELEASE_NOTES.md | jq -Rs . | cut -c 2- | rev | cut -c 2- | rev)" --description "$(jq -Rs . <<< $(tail -n +2 "RELEASE_NOTES.md") | cut -c 2- | rev | cut -c 2- | rev)" --color "0x6f1c17" --url "https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/${{ env.RELEASE_VERSION }}" --timestamp

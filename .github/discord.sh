@@ -373,7 +373,7 @@ build() {
         [[ -z "${username}" ]] && \
         [[ -z "${avatar_url}" ]] && \
             echo "fatal: nothing to build" && exit 1
-    
+
     # if only specified modify but not username/avatar, exit with error
     [[ -n "${modify}" ]] && \
         [[ -z "${username}" ]] && \
@@ -474,7 +474,7 @@ send_file() {
         -F "payload_json=${_json}" \
         "${webhook_url}" >/dev/null 2>&1
 
-    # error checking 
+    # error checking
 
     sent_ok=$?
     [[ "${sent_ok}" -eq 0 ]] && exit 0

@@ -62,7 +62,7 @@ class UtilsChangelog {
 			// Earliest Github release was v0.1.2
 			const hasGithubRelease = vMajor || vMinor > 1 || vMinor === 1 && vPatch >= 2;
 
-			const titlePart = it.title ? `, &quot;<span ${it.titleAlt ? `class="help" title="AKA &quot;${it.titleAlt.escapeQuotes()}&quot; Edition"` : ""}>${it.title.escapeQuotes()}</span>&quot; Edition` : "";
+			const titlePart = it.title ? `, <i>&quot;<span ${it.titleAlt ? `class="help" title="AKA &quot;${it.titleAlt.escapeQuotes()}&quot; edition"` : ""}>${it.title.escapeQuotes()}</span>&quot;</i> edition` : "";
 			$wrp.prepend(`<div class="flex-col" id="v${it.ver}">
 				<div class="split-v-center">
 					<h${hLevel} class="bold">${hasGithubRelease ? `<a href="https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/v${it.ver}">` : ""}v${it.ver}${hasGithubRelease ? `</a>` : ""}${titlePart}</h${hLevel}>
