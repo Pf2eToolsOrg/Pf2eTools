@@ -6,6 +6,9 @@
 			"page": 45,
 			"type": "Disease",
 			"level": "Level Varies",
+			"traits": [
+				"disease"
+			],
 			"entries": [
 				"Caused by exposure to blightburn crystal, blightburn sickness burns and dissolves the afflicted creature from within. The target can't recover from the disease's {@condition drained} or {@condition sickened} condition except by magic. It's typically a 15th-level affliction (DC 32 Fortitude), but exposure to other forms of blightburn can change it.",
 				{
@@ -770,82 +773,6 @@
 			]
 		},
 		{
-			"name": "Blackfrost",
-			"source": "GW3",
-			"page": 76,
-			"type": "Curse",
-			"traits": [
-				"uncommon",
-				"cold",
-				"curse",
-				"disease",
-				"necromancy",
-				"occult"
-			],
-			"entries": [
-				"This affliction can't be reduced below stage 1, nor the damage from it healed, until successfully treated with {@spell remove curse} or a similar effect; the affliction can then be removed as a normal disease. A creature that dies from cold damage while cursed with blackfrost rises as a {@creature blackfrost dead|GW3} after 24 hours.",
-				{
-					"type": "affliction",
-					"savingThrow": "Fortitude",
-					"DC": 27,
-					"stages": [
-						{
-							"stage": 1,
-							"entry": "{@damage 4d6} cold damage",
-							"duration": "1 minute"
-						},
-						{
-							"stage": 2,
-							"entry": "weakness to cold 5 and {@condition drained 1}",
-							"duration": "1 day"
-						},
-						{
-							"stage": 3,
-							"entry": "weakness to cold 10 and {@condition drained 2}",
-							"duration": "1 day"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Soulforged Corruption",
-			"source": "SoM",
-			"page": 234,
-			"type": "Curse",
-			"traits": [
-				"curse",
-				"divine",
-				"enchantment"
-			],
-			"entries": [
-				"A successful {@spell remove curse} spell, rather than ending this curse, reduces its stage by 1 (to a minimum of stage 1).",
-				{
-					"type": "affliction",
-					"level": "your level",
-					"savingThrow": "Will",
-					"DC": "save against a {@table DC Adjustments||very hard} {@table DCs by Level||DC of the curse's level}",
-					"stages": [
-						{
-							"stage": 1,
-							"entry": "You suffer the effects of your armament's corruption flaw. If you try to manifest the armament's essence form, you must attempt a DC {@flatDC 5} flat check. If you fail, only the normal form manifests, and you can't try to manifest that armament's essence form again that day",
-							"duration": "1 day"
-						},
-						{
-							"stage": 2,
-							"entry": "You suffer the effects of your armament's corruption flaw, and any attempt to activate the armament's essence form fails",
-							"duration": "1 day"
-						},
-						{
-							"stage": 3,
-							"entry": "You permanently destroy your soulforged armament. You can't have a new soulforged armament until you remove the curse entirely with the {@ritual purify soul path|SoM} ritual",
-							"duration": "1 day"
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Tetanus",
 			"source": "GMG",
 			"page": 118,
@@ -932,6 +859,82 @@
 		}
 	],
 	"curse": [
+		{
+			"name": "Blackfrost",
+			"source": "GW3",
+			"page": 76,
+			"type": "Curse",
+			"traits": [
+				"uncommon",
+				"cold",
+				"curse",
+				"disease",
+				"necromancy",
+				"occult"
+			],
+			"entries": [
+				"This affliction can't be reduced below stage 1, nor the damage from it healed, until successfully treated with {@spell remove curse} or a similar effect; the affliction can then be removed as a normal disease. A creature that dies from cold damage while cursed with blackfrost rises as a {@creature blackfrost dead|GW3} after 24 hours.",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"DC": 27,
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 4d6} cold damage",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "weakness to cold 5 and {@condition drained 1}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "weakness to cold 10 and {@condition drained 2}",
+							"duration": "1 day"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Soulforged Corruption",
+			"source": "SoM",
+			"page": 234,
+			"type": "Curse",
+			"traits": [
+				"curse",
+				"divine",
+				"enchantment"
+			],
+			"entries": [
+				"A successful {@spell remove curse} spell, rather than ending this curse, reduces its stage by 1 (to a minimum of stage 1).",
+				{
+					"type": "affliction",
+					"level": "your level",
+					"savingThrow": "Will",
+					"DC": "save against a {@table DC Adjustments||very hard} {@table DCs by Level||DC of the curse's level}",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "You suffer the effects of your armament's corruption flaw. If you try to manifest the armament's essence form, you must attempt a DC {@flatDC 5} flat check. If you fail, only the normal form manifests, and you can't try to manifest that armament's essence form again that day",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "You suffer the effects of your armament's corruption flaw, and any attempt to activate the armament's essence form fails",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "You permanently destroy your soulforged armament. You can't have a new soulforged armament until you remove the curse entirely with the {@ritual purify soul path|SoM} ritual",
+							"duration": "1 day"
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "Face at the Foot of the Bed",
 			"source": "SoG2",
