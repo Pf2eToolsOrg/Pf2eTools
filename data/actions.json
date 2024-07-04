@@ -1,6 +1,26 @@
 {
 	"action": [
 		{
+			"name": "Investigate Domora",
+			"source": "GW2",
+			"page": 55,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"entries": [
+				"Over the course of the day, you sift through ruins, study relics, or comb through archives in order to learn about Domora. Attempt a skill check to determine how many Investigation Points (IP) your efforts yield. Which skills you can use and the DC for it depend on the site you visit.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 2 IP.",
+						"Success": "You gain 1 IP.",
+						"Critical Failure": "You make a false discovery and lose 1 IP."
+					}
+				}
+			]
+		},
+		{
 			"name": "Repair Karahai Bridge",
 			"source": "SoG4",
 			"page": 16,

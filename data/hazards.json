@@ -1,6 +1,380 @@
 {
 	"hazard": [
 		{
+			"name": "Test of the God Caller",
+			"source": "GW2",
+			"page": 63,
+			"level": 7,
+			"traits": [
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 12,
+				"minProf": "expert"
+			},
+			"description": [
+				"An incorporeal Sarkorian deity manifests before the party and challenges their resolve. Only aspirants whose motives are pure and whose hearts are in tune with the natural world can hope to overcome this \"test of the god caller.\""
+			],
+			"disable": {
+				"entries": [
+					"Three DC 27 {@skill Nature} or {@skill Occultism} (trained) checks can disable the haunt"
+				]
+			},
+			"actions": [
+				{
+					"name": "Manifest",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Sakuachi makes an offering at the well shrine",
+					"entries": [
+						"The Sarkorian deity inhabiting the well surges to life, manifesting as a large, ghostly beast surrounded by throngs of smaller animals. The rush of spiritual energy washes over everyone in the well, dealing {@damage 8d6} force damage (DC 25 basic Will save)."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The Sarkorian divinity commands a swarm of ghostly animals to overwhelm creatures in a 10-foot burst in the well. The haunt can select up to three different points to target, spending 1 action per burst. Creatures in an affected take {@damage 4d6} force damage and must attempt a DC 25 Will save. The haunt loses 1 action for each successful check to disable the haunt.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes half damage."
+						],
+						"Failure": [
+							"The target takes full damage and is {@condition flat-footed} until the beginning of the haunt's next turn."
+						],
+						"Critical Failure": [
+							"The target takes double damage, is {@condition flat-footed} until the beginning of the haunt's next turn, and is {@condition slowed||slowed 1} for 1 round."
+						]
+					}
+				}
+			],
+			"reset": [
+				"8 hours"
+			]
+		},
+		{
+			"name": "Toppling Shelves",
+			"source": "GW2",
+			"page": 58,
+			"level": 4,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 18,
+				"minProf": "trained",
+				"notes": "to notice the shelf's precarious instability"
+			},
+			"description": [
+				"This stone bookshelf is badly compromised. It's just one push away from toppling over."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Thievery} (expert) or {@skill Lore||Engineering Lore} (trained) to shore up the shelf"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hardness": {
+					"std": 8
+				},
+				"hp": {
+					"std": 30,
+					"notes": {
+						"std": "any attack that fails to destroy the shelf triggers its Topple reaction"
+					}
+				},
+				"bt": {
+					"std": 15
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Topple",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The shelf is attacked or touched forcefully (such as by a creature Shoved into it)",
+					"entries": [
+						"The shelf tumbles over in the direction opposite its triggering creature, crashing onto the ground in a 10-foot-by-10-foot area. Creatures in the area take {@damage 4d8+10} bludgeoning damage (DC 25 basic Reflex save). A creature that critically fails its save falls {@condition prone}. The affected area becomes difficult terrain.",
+						"If the toppling shelf crashes into a space occupied by another toppling shelf, it triggers that shelf's Topple reaction. This can result in a chain reaction that causes multiple shelves to Topple, one after the other."
+					]
+				}
+			]
+		},
+		{
+			"name": "Freezing Floor",
+			"source": "GW2",
+			"page": 50,
+			"level": 8,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 16,
+				"minProf": "expert",
+				"notes": "or DC 31 (master) to notice the cold fog rising from the floor"
+			},
+			"description": [
+				"The white brick floor radiates ice-cold air."
+			],
+			"disable": {
+				"entries": [
+					"DC 24 {@skill Thievery} (expert) to erase a rune, or {@spell dispel magic} (3rd level; counteract DC 24) to dispel a rune; all three runes must be erased or dispelled to disable the trap."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 17
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 56,
+					"notes": {
+						"std": "to destroy the bricks and disable the trap"
+					}
+				},
+				"bt": {
+					"std": 28
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Cold Snap",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps on the white bricks",
+					"entries": [
+						"The trap makes a frost jet {@action Strike} against the triggering creature and rolls initiative."
+					]
+				},
+				{
+					"name": "Frostbite",
+					"entries": [
+						"A creature that takes {@condition persistent damage||persistent cold damage} from the trap's frost jet {@action Strike} must attempt a DC 18 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature isn't affected and is immune to this frostbite effect for 24 hours."
+								],
+								"Success": [
+									"The creature isn't affected."
+								],
+								"Failure": [
+									"The creature can't stop shivering and becomes {@condition clumsy||clumsy 1}."
+								],
+								"Critical Failure": [
+									"As failure, and the creature becomes {@condition fatigued}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) With each action, the trap attempts a frost jet {@action Strike} against any creature standing on the white bricks. The trap loses 1 action per disabled or dispelled rune."
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "frost jet",
+					"attack": 20,
+					"damage": "{@damage 2d6} cold plus {@damage 1d4} {@condition persistent damage||persistent cold}",
+					"noMAP": true
+				}
+			],
+			"reset": [
+				"The trap deactivates and resets after 1 minute."
+			]
+		},
+		{
+			"name": "Valmar's Pit Trap",
+			"source": "GW2",
+			"page": 49,
+			"level": 4,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert"
+			},
+			"description": [
+				"The ground here is made of loosely packed soil that, when stepped upon, collapses."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Survival} (trained) to reinforce the dirt so it's safe to walk on, or DC 18 {@skill Thievery} (trained) to collapse the trap from a safe distance"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 10
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 2
+					},
+					"ref": {
+						"std": 3
+					}
+				},
+				"hardness": {
+					"std": 1
+				},
+				"hp": {
+					"std": 6
+				},
+				"bt": {
+					"std": 3
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Collapse",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps onto any space in the dotted area on the map, or at least 30 pounds of pressure is put on the area",
+					"entries": [
+						"The ground gives way. The triggering creature falls 20 feet down the hole, taking 10 bludgeoning damage and landing {@condition prone} in area {@b E10}. A creature can {@action Grab an Edge} to avoid falling."
+					]
+				}
+			],
+			"reset": [
+				"Creatures can still fall into the pit, but the soil must be replaced for the trap to become {@condition hidden} again."
+			]
+		},
+		{
+			"name": "Memory of Osoyo",
+			"source": "GW2",
+			"page": 34,
+			"level": 5,
+			"traits": [
+				"unique",
+				"complex",
+				"environmental",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 12,
+				"minProf": "expert"
+			},
+			"description": [
+				"The party's memories of Osoyo coalesce into a titanic mirage in the storm clouds above."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Occultism} (trained) or DC 24 {@skill Arcana} (trained) to divert the memory's rage; three total successful checks are required to disable the hazard"
+				]
+			},
+			"actions": [
+				{
+					"name": "Glacial Gust",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The characters' shared vision during Event 15 subsides",
+					"entries": [
+						"The memory of Osoyo unleashes a tremendous sigh of freezing wind, coating the deck of the {@i Mermaid's Tears} in ice in a 60-foot cone. (The hazard can choose any point for the cone to originate.) The area becomes difficult terrain. Creatures in the area must succeed at a DC 26 Fortitude save or take {@damage 1d6} {@condition persistent damage||persistent cold damage} as the freezing wind cuts to the bone. The hazard then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The memory of Osoyo gives a keening scream that shatters the layer of ice coating the deck of the {@i Mermaid's Tears}. Any creature on difficult terrain created by the memory's Glacial Gust takes {@damage 2d8+7} cold damage (DC 26 basic Reflex save) from the icy shrapnel."
+			]
+		},
+		{
+			"name": "Shroud of Silence",
+			"source": "GW2",
+			"page": 10,
+			"level": 4,
+			"traits": [
+				"environmental",
+				"magical"
+			],
+			"stealth": {
+				"dc": 25,
+				"minProf": "expert"
+			},
+			"description": [
+				"Sounds become muted in a 20-foot-wide, 100-foot-long segment of this street corridor."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Occultism} (expert) to twist the magic of the ley line around you, disabling the hazard for only you; or {@spell dispel magic} (4th level; counteract DC 23) to disable the hazard permanently"
+				]
+			},
+			"actions": [
+				{
+					"name": "Hush",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"illusion",
+						"occult"
+					],
+					"trigger": "A creature reaches the street's halfway point",
+					"entries": [
+						"Each creature in the affected area must succeed at a DC 23 Will saving throw or be silenced as long as it remains in the area. A silenced creature makes no sound and can't use abilities with the {@trait sonic} or {@trait auditory} traits, including spells with verbal components."
+					]
+				}
+			]
+		},
+		{
 			"name": "Unwelcome Facade",
 			"level": 10,
 			"source": "SoG4",

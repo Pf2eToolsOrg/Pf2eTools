@@ -2238,6 +2238,53 @@
 	],
 	"familiar": [
 		{
+			"name": "Spirit Guide",
+			"source": "GW2",
+			"page": 83,
+			"traits": [
+				"rare",
+				"beast",
+				"spirit"
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility independent|APG}",
+				"{@familiarAbility lifelink}",
+				"{@familiarAbility speech}"
+			],
+			"type": "Familiar",
+			"abilities": [
+				{
+					"name": "Spiritual Recall",
+					"traits": [
+						"magical",
+						"occult"
+					],
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "An {@trait attack} would reduce your familiar to 0 Hit Points",
+					"entries": [
+						"You use your bond to rescue your familiar. The familiar survives the attack with 1 Hit Point remaining and becomes {@trait incorporeal} until the end of your next turn."
+					]
+				},
+				{
+					"name": "Bound to Mortal",
+					"entries": [
+						"Your familiar gains unique benefits from its bond to you. Your familiar gains an additional 10 Hit Points and can make an either a jaws or claws unarmed attack using your normal melee attack bonus. You choose whether it has a jaws or claws unarmed attack when you first gain the spirit guide as your familiar. If it has a jaws unarmed attack, the attack deals {@damage 1d6} piercing damage and is in the {@group brawling} group. If you choose the claws unarmed attack, it deals {@damage 1d4} slashing damage, has the {@trait agile} trait, and is in the {@group brawling} group."
+					]
+				}
+			],
+			"fluff": [
+				"The spirit guide is a specific familiar you can gain during this adventure. Spirit guide familiars typically take the form of {@creature cunning fox|B3|cunning guides} or {@creature green monkey|GW2|nimble guides}."
+			]
+		},
+		{
 			"name": "House Drake",
 			"source": "SaS",
 			"traits": [

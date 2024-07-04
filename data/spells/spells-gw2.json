@@ -1,0 +1,182 @@
+{
+	"spell": [
+		{
+			"name": "Advanced Scurvy",
+			"source": "GW2",
+			"page": 80,
+			"level": 2,
+			"traits": [
+				"disease",
+				"necromancy"
+			],
+			"traditions": [
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"Your touch afflicts the target with an advanced form of scurvy, a mariner's disease stemming from improper nutrition. The symptoms of scurvy include fatigue, joint pain, loose teeth, and internal hemorrhaging.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition enfeebled||enfeebled 1} for 1 minute."
+						],
+						"Failure": [
+							"The target is afflicted with advanced scurvy at stage 1."
+						],
+						"Critical Failure": [
+							"The target is afflicted with advanced scurvy at stage 2."
+						]
+					}
+				},
+				{
+					"type": "affliction",
+					"name": "Advanced Scurvy",
+					"traits": [
+						"disease"
+					],
+					"level": 4,
+					"notes": [
+						"for 1 day after eating fresh fruit, a creature gains a +2 circumstance bonus to their next saving throw against this affliction;"
+					],
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition enfeebled||enfeebled 1} and the damage dealt by {@condition persistent damage||persistent bleed} effects is increased by 1",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition enfeebled||enfeebled 1}, {@condition fatigued}, and the damage dealt by {@condition persistent damage||persistent bleed} effects is increased by {@dice 1d4}",
+							"duration": "2 days"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition enfeebled||enfeebled 2}, {@condition fatigued}, and the damage dealt by {@condition persistent damage||persistent bleed} effects is increased by {@dice 1d6}",
+							"duration": "4 days"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Briny Bolt",
+			"source": "GW2",
+			"page": 80,
+			"level": 1,
+			"traits": [
+				"attack",
+				"evocation",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You hurl a bolt of saltwater from your extended hand. Make a ranged spell attack against a target within range.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature takes {@damage 4d6} bludgeoning damage and is {@condition blinded} for 1 round and {@condition dazzled} for 1 minute as saltwater sprays into its eyes. The creature can spend an {@action Interact} action to rub its eyes and end the {@condition blinded} condition, but not the {@condition dazzled} condition."
+						],
+						"Success": [
+							"The creature takes {@damage 2d6} bludgeoning damage and is {@condition blinded} for 1 round. The creature can spend an {@action Interact} action wiping the salt water from its eyes to end the {@condition blinded} condition."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Lashing Rope",
+			"source": "GW2",
+			"page": 81,
+			"level": 3,
+			"traits": [
+				"transmutation"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 50
+			},
+			"targets": "up to 50 feet of unattended rope or an inanimate rope-like object",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You cause a section of rope or a rope-like object to animate, slither to your square, and encircle you, wreathing you in twisting, lashing fibers.",
+				"When you {@action Cast a Spell||Cast the Spell} and each time you {@action Sustain a Spell||Sustain the Spell}, you can make a melee {@action Strike} with the rope, which uses and contributes to your multiple attack penalty. These rope {@action Strike||Strikes} are melee spell attacks; have the magical, reach, and trip weapon traits; and deal {@damage 2d6} slashing damage plus your spellcasting ability modifier.",
+				"If you critically fail a check to {@action Trip} using the rope, you can't make any more {@action Strike||Strikes} with it this turn, nor can you use it to make an {@action Attack of Opportunity} until the beginning of your next turn. This replaces the usual results of a critical failure to {@action Trip}."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage from your rope {@action Strike||Strikes} increases by {@dice 2d6}."
+					]
+				}
+			}
+		}
+	]
+}

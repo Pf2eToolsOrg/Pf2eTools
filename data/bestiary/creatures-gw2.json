@@ -1,0 +1,2513 @@
+{
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"GMG",
+				"B1",
+				"B2",
+				"B3"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		]
+	},
+	"creature": [
+		{
+			"name": "Capstan Swabbie",
+			"source": "GW2",
+			"page": 84,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 2,
+				"con": 5,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"items": [
+				"anchor"
+			],
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 115
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "anchor",
+					"attack": 18,
+					"damage": "{@damage 2d8+9} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"disarm",
+						"reach <10 feet>"
+					],
+					"name": "rope",
+					"attack": 18,
+					"damage": "{@damage 2d6+9} slashing plus {@ability Knockdown}"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"thrown <30 feet>",
+						"tethered"
+					],
+					"name": "anchor",
+					"attack": 14,
+					"damage": "{@damage 2d8+9} bludgeoning"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Attached Anchor",
+						"entries": [
+							"A capstan swabbie is attached to its anchor by a 100-foot-long rope, most of which it keeps coiled around its body. If the capstan swabbie tries to move more than 100 feet from its attached anchor, its Speed is reduced to 10 feet as it drags the anchor along with it. If this rope is severed (AC 12 when uncoiled, Hardness 4, HP 16), the capstan swabbie can move freely, but its ranged anchor {@action Strike} loses the {@trait tethered} trait."
+						]
+					},
+					{
+						"name": "Mate's Expertise",
+						"entries": [
+							"The capstan swabbie can use {@skill Athletics} to {@action Aid} an ally's {@skill Lore||Sailing Lore} check (to hoist or lower sails or the anchor, for instance). On a success or critical success, the capstan swabbie grants its ally a +2 circumstance bonus to the triggering check."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Jury-Rig",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The capstan swabbie uses built-in tools to quickly patch itself up. The swabbie gains 10 temporary Hit Points. The swabbie can also use this section on an adjacent section of a ship. The temporary Hit Points last for 1 minute. The target is then temporarily immune for 1 hour."
+						]
+					},
+					{
+						"name": "Loose the Pawls",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The capstan swabbie spins around rapidly, its loose ropes whipping everyone in reach. The capstan swabbie makes a rope {@action Strike} against each creature within 10 feet and compares its attack roll to the AC of each creature within 10 feet."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Kithangian",
+			"source": "GW2",
+			"page": 85,
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"ce",
+				"large",
+				"demon",
+				"fiend"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"draconic"
+				],
+				"abilities": [
+					"speak with animals",
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 20
+				},
+				"intimidation": {
+					"std": 20
+				},
+				"nature": {
+					"std": 21
+				},
+				"stealth": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 3,
+				"con": 5,
+				"int": -2,
+				"wis": 4,
+				"cha": 3
+			},
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 19
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 205
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 10
+					},
+					{
+						"name": "good",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "pincer",
+					"attack": 21,
+					"damage": "{@damage 2d12+9} slashing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "stinger",
+					"attack": 21,
+					"damage": "{@damage 2d8+9} piercing plus kithangian venom"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "All-Around Vision",
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Animal Kindness",
+						"entries": [
+							"Vulnerability Kithangians find kindness to animals revolting. The first time each round that a kithangian sees someone heal or otherwise provide aid to a creature that has the {@trait animal} trait, the kithangian takes {@damage 3d6} mental damage."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Animal Killer",
+						"entries": [
+							"A kithangian's melee Strikes deal an additional {@dice 2d6} damage to animals."
+						]
+					},
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The kithangian can take on the appearance of any Medium or Large animal. This doesn't change its Speed or their attack and damage modifiers with its Strikes, but it might change the damage type its Strikes deal.",
+							{
+								"type": "affliction",
+								"name": "Kithangian Venom",
+								"traits": [
+									"poison"
+								],
+								"DC": 25,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 2d6} poison damage",
+										"duration": "2 rounds"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} poison damage and {@condition sickened||sickened 1}",
+										"duration": "2 rounds"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 3d6} poison damage and {@condition sickened||sickened 2}",
+										"duration": "2 rounds"
+									}
+								]
+							}
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Rasping Tongues",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"requirements": "The kithangian has a creature {@condition grabbed} in one or both pincers",
+						"entries": [
+							"Barbed tongues slither out of the faces in the kithangian's pincers. The tongues burrow into {@condition grabbed} creatures and inject their minds with haunting psychic screams. Each {@condition grabbed} creature takes {@damage 2d8} piercing damage and {@damage 2d8} mental damage. A creature can try to resist the mental damage by attempting a DC 25 basic Will save."
+						]
+					}
+				]
+			},
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 25,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "command",
+									"amount": "at will",
+									"notes": [
+										"animals only"
+									]
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "paralyze",
+									"amount": 2
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "air walk"
+								},
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "abyssal pact",
+							"source": "B1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Glimmervine",
+			"source": "GW2",
+			"page": 86,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"n",
+				"medium",
+				"mindless",
+				"plant"
+			],
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "tremorsense",
+					"type": "precise",
+					"unit": "feet",
+					"number": 60
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 0,
+				"con": 3,
+				"int": -5,
+				"wis": 4,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 8
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 90
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "vine",
+					"attack": 14,
+					"traits": [
+						"reach <10 feet>"
+					],
+					"damage": "{@damage 2d6+8} bludgeoning plus {@ability Grab}"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Camouflage",
+						"entries": [
+							"The glimmervine can {@action Hide} in natural environments even if it doesn't have cover."
+						],
+						"generic": {
+							"tag": "feat"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 2d6+4} bludgeoning, DC 21"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Dazzling Blooms",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"visual"
+						],
+						"entries": [
+							"The glimmervine shakes its iridescent blossoms to astound nearby foes. All creatures within 30 feet, except other glimmervines, must attempt a DC 21 Fortitude save. The glimmervine then can't use Dazzling Blooms for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The creature is unaffected."
+									],
+									"Failure": [
+										"The creature is {@condition dazzled} for 1 round."
+									],
+									"Critical Failure": [
+										"The creature is {@condition blinded} for 1 round, then {@condition dazzled} for 1 round."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Kvernknurr",
+			"source": "GW2",
+			"page": 87,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"ce",
+				"large",
+				"amphibious",
+				"fey",
+				"water"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"jotun",
+					"sylvan"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"intimidation": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 10,
+					"in water": 12
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 2,
+				"con": 4,
+				"int": -1,
+				"wis": 1,
+				"cha": -2
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 80
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"damage": "{@damage 2d6+8} piercing plus {@ability Grab}"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <10 feet>"
+					],
+					"name": "fist",
+					"attack": 14,
+					"damage": "{@dice 2d4+8} fist"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Swallow Projectile",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature the kvernknurr can see targets it with a ranged {@action Strike}",
+						"requirements": "The kvernknurr doesn't have a creature {@condition grabbed} in its jaws",
+						"entries": [
+							"The kvernknurr attempts to swallow the projectile, gaining a +4 circumstance bonus to AC against the triggering attack. If the attack misses, the kvernknurr consumes the projectile harmlessly."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Swallow Whole",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Medium, {@damage 1d6+5} bludgeoning, Rupture 15"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Frightening Bellow",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"enchantment",
+							"fear",
+							"mental",
+							"primal"
+						],
+						"requirements": "The kvernknurr doesn't have a creature {@condition grabbed} in its jaws",
+						"entries": [
+							"The kvernknurr lets out a deep-throated shout to scare away its foes. Each non-kvernknurr creature within 60 feet must attempt a DC 20 Will save, and then they are temporarily immune to that kvenknurr's Frightening Bellow for 24 hours.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature is {@condition frightened||frightened 1}."
+									],
+									"Failure": [
+										"The creature is {@condition frightened||frightened 2}."
+									],
+									"Critical Failure": [
+										"The creature is {@condition frightened||frightened 2} and is {@condition fleeing} as long as it remains {@condition frightened}."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Myroga",
+			"source": "GW2",
+			"page": 88,
+			"level": 6,
+			"traits": [
+				"rare",
+				"ne",
+				"large",
+				"dragon"
+			],
+			"perception": {
+				"std": 17
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "ley line sense",
+					"type": "imprecise",
+					"unit": "mile",
+					"number": 1
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"draconic"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 15
+				},
+				"athletics": {
+					"std": 14
+				},
+				"intimidation": {
+					"std": 15
+				},
+				"occultism": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 4,
+				"int": 2,
+				"wis": 2,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 120
+					}
+				],
+				"immunities": [
+					"paralyzed",
+					"sleep"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 5,
+						"note": "while within 500 feet of a ley line"
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 50,
+				"abilities": [
+					"Damage {@damage 2d8+7} piercing"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <15 feet>"
+					],
+					"name": "tail",
+					"attack": 16,
+					"damage": "{@damage 2d6+7} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "talon",
+					"attack": 16,
+					"damage": "{@damage 2d6+7} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 23,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "grim tendrils",
+									"amount": 2
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Ley Line Sense",
+						"entries": [
+							"The myroga can sense the presence, direction, and strength of any ley line within 1 mile."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"components": [
+							"fangs only"
+						],
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Draconic Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The myroga makes two talon {@action Strike||Strikes} and one tail {@action Strike} in any order."
+						]
+					},
+					{
+						"name": "Ley Line Empowerment",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"force",
+							"occult"
+						],
+						"requirements": "The myroga is within 500 feet of a ley line",
+						"entries": [
+							"The myroga wreathes itself in raw destructive energy converted from the ley line's ambient magic. The myroga deals an additional {@damage 2d6} force damage with each of its next successful fangs, tail, and talon {@action Strike}. Once its dealt damage with one of these {@action Strike||Strikes}, the energy is discharged from that body part, but not the others."
+						]
+					},
+					{
+						"name": "Ley Line Rupture",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack",
+							"evocation",
+							"force",
+							"occult"
+						],
+						"requirements": "The myroga is within 500 feet of a ley line",
+						"entries": [
+							"The myroga diverts some of the ley line's magic into a deadly and distant explosion. The myroga creates a detonation of force in a 5-foot square within a mile of its ley line and that it can see, dealing {@damage 5d6} force damage to creatures (DC 24 basic Reflex save). A myroga can will the detonation into existence anywhere within a mile of the ley line, possibly allowing it to ignore cover the target might have from, for example, an obstacle between itself and the myroga."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Skin Beetle",
+			"source": "GW2",
+			"page": 89,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"n",
+				"tiny",
+				"animal"
+			],
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 10
+				},
+				"medicine": {
+					"std": 9
+				},
+				"stealth": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 4,
+				"con": 2,
+				"int": -5,
+				"wis": 2,
+				"cha": -2
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 55
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 15,
+				"fly": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "mandibles",
+					"attack": 13,
+					"damage": "{@damage 1d8+4} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range <30 feet>"
+					],
+					"name": "spit",
+					"attack": 13,
+					"damage": "{@damage 1d6+4} acid plus anesthetic saliva"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Surgical Mandibles",
+						"entries": [
+							"A skin beetle can use its mandibles as healer's tools."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Anesthetic Saliva",
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"A creature exposed to a skin beetle's saliva must succeed on a DC 19 Fortitude save or become {@condition clumsy||clumsy 1} for 1 round."
+						]
+					},
+					{
+						"name": "Harvest Flesh",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The skin beetle makes a mandibles {@action Strike} against an animal or humanoid. If the {@action Strike} deals damage, the beetle tears off a large portion of flesh, dealing an additional {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Skin Beetle Swarm",
+			"source": "GW2",
+			"page": 89,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"animal",
+				"swarm"
+			],
+			"perception": {
+				"std": 16
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 18
+				},
+				"stealth": {
+					"std": 18
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 6,
+				"con": 4,
+				"int": -5,
+				"wis": 3,
+				"cha": -2
+			},
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 20
+					},
+					"will": {
+						"std": 13
+					}
+				},
+				"hp": [
+					{
+						"hp": 125
+					}
+				],
+				"immunities": [
+					"precision",
+					"swarm mind"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 8
+					},
+					{
+						"name": "splash damage",
+						"amount": 8
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 8
+					},
+					{
+						"name": "slashing",
+						"amount": 8
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 15,
+				"fly": 15
+			},
+			"abilities": {
+				"bot": [
+					{
+						"name": "Swarming Bites",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the swarm's space takes {@damage 5d6} piercing damage (DC 23 basic Reflex save). A creature that fails the saving throw also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} and is {@condition clumsy||clumsy 1} as long as it's taking bleed damage."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Green Monkey",
+			"source": "GW2",
+			"page": 90,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"n",
+				"tiny",
+				"beast",
+				"incorporeal",
+				"spirit"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"sylvan"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 10
+				},
+				"survival": {
+					"std": 9
+				},
+				"thievery": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 4,
+				"con": 0,
+				"int": 2,
+				"wis": 2,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 50
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision"
+				],
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 4,
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs non-magical"
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"name": "jaws",
+					"attack": 12,
+					"damage": "{@damage 1d8+6} force"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 20,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "longstrider"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "spider climb"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Aura of Good Cheer",
+						"traits": [
+							"aura",
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"30 feet. The green monkey's affable demeanor is contagious. Allies within the aura gain a +1 status bonus to Will saves against {@trait emotion} effects."
+						]
+					},
+					{
+						"name": "Nimble Dodge",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The green monkey is targeted with a melee or ranged attack by an attacker it can see",
+						"entries": [
+							"The green monkey gains a +2 circumstance bonus to AC against the triggering attack."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Bond with Mortal",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"mental",
+							"necromancy",
+							"primal"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"The spirit guide forms a bond with a mortal creature. While the bond exists, the spirit guide's current and maximum Hit Points increase by 10, the spirit guide gains a +2 status bonus to attack and damage rolls, and the spirit guide and bonded mortal can communicate telepathically as long as they're on the same plane. The spirit guide can be bonded with only one mortal at a time, and can take this action again to end the bond or to form a new bond (which also ends the old bond). The bond ends if the spirit guide or the mortal dies.",
+							"This bond strengthens the spirit guide's connection to the Material Plane. While bonded, the spirit guide loses the {@trait incorporeal} and {@trait spirit} traits, loses their immunities and resistances, and changes their Strikes to deal the appropriate physical damage (typically piercing or slashing) instead of force damage."
+						]
+					},
+					{
+						"name": "Bonded Strike",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The spirit guide is currently Bonded with a Mortal",
+						"entries": [
+							"The spirit guide makes a jaws {@action Strike}. If this attack hits, the bonded mortal can spend their reaction to {@action Strike} the same target."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Stone-Breasted Owl",
+			"source": "GW2",
+			"page": 91,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"n",
+				"small",
+				"beast",
+				"incorporeal",
+				"spirit"
+			],
+			"perception": {
+				"std": 15
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"sylvan"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 12
+				},
+				"diplomacy": {
+					"std": 13
+				},
+				"nature": {
+					"std": 14
+				},
+				"survival": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 0,
+				"int": 2,
+				"wis": 5,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 9
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 75
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision"
+				],
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 5,
+						"note": "except force, {@item ghost touch}, or positive; double resistance vs non-magical"
+					}
+				]
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"name": "talon",
+					"attack": 13,
+					"damage": "{@damage 2d6+3} force"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 25,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "know direction"
+								},
+								{
+									"name": "stabilize"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "detect poison"
+								},
+								{
+									"name": "purify food and drink"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "remove fear"
+								},
+								{
+									"name": "restore senses"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "heal",
+									"amount": 2
+								},
+								{
+									"name": "remove disease"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Warning Hoot",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"auditory"
+						],
+						"trigger": "The stone-breasted owl is about to roll a {@skill Perception} or {@skill Survival} check to determine initiative",
+						"entries": [
+							"The stone-breasted owl lets out a hoot to warn allies, granting each ally a +1 circumstance bonus to their initiative roll."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Bond with Mortal",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"mental",
+							"necromancy",
+							"primal"
+						],
+						"entries": [
+							"As nimble green monkey, except HP increases by 14."
+						]
+					},
+					{
+						"name": "Bonded Strike",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The spirit guide is currently Bonded with a Mortal",
+						"entries": [
+							"The spirit guide makes a talon {@action Strike}. If this attack hits, the bonded mortal can spend their reaction to {@action Strike} the same target."
+						]
+					},
+					{
+						"name": "Empowered Healing",
+						"entries": [
+							"When the stone-breasted owl casts heal, it rolls {@dice d10|d10s} instead of {@dice d8|d8s}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Sakuachi",
+			"source": "GW2",
+			"page": 93,
+			"description": "Female human dream seer",
+			"level": 4,
+			"traits": [
+				"unique",
+				"ng",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 14
+			},
+			"languages": {
+				"languages": [
+					"celestial",
+					"common",
+					"elven",
+					"erutaki"
+				]
+			},
+			"skills": {
+				"astronomy lore": {
+					"std": 15
+				},
+				"fortune-telling lore": {
+					"std": 15
+				},
+				"medicine": {
+					"std": 10
+				},
+				"nature": {
+					"std": 12
+				},
+				"occultism": {
+					"std": 15
+				},
+				"religion": {
+					"std": 12
+				},
+				"survival": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 1,
+				"con": 2,
+				"int": 1,
+				"wis": 3,
+				"cha": 4
+			},
+			"items": [
+				"{@item padded armor}",
+				"{@item spear}",
+				"{@item standard astrolabe|GW2}",
+				"winter clothing"
+			],
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 60
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 9,
+					"damage": "{@damage 1d6} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"thrown <20 feet>"
+					],
+					"name": "spear",
+					"attack": 10,
+					"damage": "{@damage 1d6} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Prepared",
+					"DC": 18,
+					"attack": 12,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "bless"
+								},
+								{
+									"name": "liberating command",
+									"source": "LOGM"
+								},
+								{
+									"name": "sleep"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "silence"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Search the Stars",
+						"traits": [
+							"concentrate",
+							"manipulate"
+						],
+						"requirements": "Sakuachi is holding an astrolabe and can see the stars",
+						"entries": [
+							"Sakuachi spends 1 hour attempting to gain a vague glimpse of the future written in the stars. She attempts a DC 24 {@skill Lore||Fortune-Telling Lore} or {@skill Occultism} check.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"Sakuachi receives an accurate vision of an event to come within the next week. While this vision can be vague and confusing, it's typically true."
+									],
+									"Success": [
+										"As critical success, but the vision is of an event that will occur within the next day. If nothing noteworthy is to happen within the next day, she sees nothing written in the stars."
+									],
+									"Failure": [
+										"Sakuachi sees nothing written in the stars."
+									],
+									"Critical Failure": [
+										"Sakuachi misinterprets the writing in the stars and receives an inaccurate vision of an upcoming event. Such a vision looks the same as one achieved with a critical success, but is typically false."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Clog",
+			"source": "GW2",
+			"traits": [
+				"unique",
+				"n",
+				"huge",
+				"fungus",
+				"plant"
+			],
+			"description": "Elite {@creature tendriculos|B2}",
+			"level": 8,
+			"perception": {
+				"std": 17
+			},
+			"_copy": {
+				"name": "Tendriculos",
+				"source": "B2",
+				"applyTemplate": "elite"
+			}
+		},
+		{
+			"name": "Aspects of Ruun",
+			"source": "GW2",
+			"level": 5,
+			"otherSources": {
+				"Reprinted": [
+					"GW2|65"
+				]
+			},
+			"perception": {
+				"std": 15
+			},
+			"description": "Variant {@creature stone-breasted owl|GW2|stone-breasted owls}",
+			"page": 63,
+			"_copy": {
+				"name": "Stone-Breasted Owl",
+				"source": "GW2",
+				"_mod": {
+					"traits": [
+						{
+							"mode": "insertArr",
+							"items": "unique"
+						}
+					],
+					"defenses.hp": {
+						"mode": "setProps",
+						"props": [
+							{
+								"hp": 75
+							}
+						]
+					},
+					"defenses.immunities": {
+						"mode": "setProps",
+						"props": [
+							"cold",
+							"disease",
+							"paralyzed",
+							"poison",
+							"precision"
+						]
+					},
+					"defenses.resistances": {
+						"mode": "setProps",
+						"props": [
+							{
+								"name": "all damage",
+								"amount": 5,
+								"note": "except force, {@item ghost touch}, or positive; double resistance vs non-magical"
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Abyssal Muckragers",
+			"level": 4,
+			"source": "GW2",
+			"description": "{@trait CE} {@creature earthen destrier|B2|earthen destriers}",
+			"page": 62,
+			"_copy": {
+				"name": "Earthen Destrier",
+				"source": "B2",
+				"_mod": {
+					"traits": [
+						{
+							"mode": "insertArr",
+							"items": "unique"
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "n",
+							"items": "ce"
+						}
+					],
+					"defenses.hp": {
+						"mode": "setProps",
+						"props": [
+							{
+								"hp": 85
+							}
+						]
+					},
+					"defenses.immunities": {
+						"mode": "setProps",
+						"props": [
+							"bleed",
+							"paralyzed",
+							"poison",
+							"sleep"
+						]
+					},
+					"defenses.weaknesses": {
+						"mode": "setProps",
+						"props": [
+							{
+								"name": "cold iron",
+								"amount": 5
+							},
+							{
+								"name": "good",
+								"amount": 5
+							}
+						]
+					}
+				}
+			},
+			"perception": {
+				"std": 10
+			}
+		},
+		{
+			"name": "Demontangle",
+			"level": 5,
+			"source": "GW2",
+			"page": 59,
+			"perception": {
+				"std": 15
+			},
+			"description": "{@trait CE} variant {@creature gibbering mouther||gibbering mouthers}",
+			"_copy": {
+				"name": "Gibbering Mouther",
+				"source": "B1",
+				"_mod": {
+					"traits": [
+						{
+							"mode": "insertArr",
+							"items": "unique"
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "n",
+							"items": "ce"
+						}
+					],
+					"defenses.hp": {
+						"mode": "setProps",
+						"props": [
+							{
+								"hp": 140
+							}
+						]
+					},
+					"defenses.weaknesses": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "cold iron",
+								"amount": 5
+							},
+							{
+								"name": "good",
+								"amount": 5
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Alkoasha",
+			"source": "GW2",
+			"level": 9,
+			"page": 59,
+			"perception": {
+				"std": 19
+			},
+			"description": "{@trait CE} variant elite {@creature hydra}",
+			"_copy": {
+				"name": "Hydra",
+				"source": "B1",
+				"applyTemplate": "elite",
+				"_mod": {
+					"abilities.mid": {
+						"mode": "insertArr",
+						"items": {
+							"name": "Alkoasha's Head Regrowth",
+							"entries": [
+								"Alkoasha uses the same rules for a typical {@creature hydra||hydra's} head regrowth, except it starts the battle with 10 heads and each uncauterized stump regrows only one head, rather than two."
+							]
+						}
+					},
+					"traits": [
+						{
+							"mode": "replaceArr",
+							"replace": "n",
+							"items": "ce"
+						}
+					]
+				}
+			},
+			"speed": {
+				"walk": 25,
+				"burrow": 25
+			}
+		},
+		{
+			"name": "Valmar",
+			"source": "GW2",
+			"page": 50,
+			"description": "Elite {@creature umasi|B3}",
+			"level": 7,
+			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"aberration",
+				"humanoid"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "or {@skill Stealth} +15"
+				}
+			],
+			"items": [
+				"{@item steel shield} (Hardness 5, HP 20, BT 10)",
+				"{@runeItem war razor|TV|+1 weapon potency||striking|}",
+				"keys to the front door (area {@b E2}) and dungeon cell (area {@b E12})"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"backstabber",
+						"deadly <d8>",
+						"finesse",
+						"magical"
+					],
+					"name": "war razor",
+					"attack": 20,
+					"damage": "{@damage 2d4+10} slashing"
+				}
+			],
+			"_copy": {
+				"name": "Umasi",
+				"source": "B3"
+			}
+		},
+		{
+			"name": "Committee Loyalists",
+			"source": "GW2",
+			"page": 39,
+			"description": "{@creature virtuous defender|LOCG|Virtuous defenders}",
+			"level": 4,
+			"traits": [
+				"lg",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 10
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"varisian"
+				]
+			},
+			"skills": {
+				"diplomacy": {
+					"std": 12
+				},
+				"intimidation": {
+					"std": 11
+				},
+				"religion": {
+					"std": 9
+				},
+				"shining crusade lore": {
+					"std": 8
+				},
+				"survival": {
+					"std": 9
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 0,
+				"con": 3,
+				"int": 0,
+				"wis": 1,
+				"cha": 3
+			},
+			"items": [
+				"{@item composite longbow} (20 {@item arrow (generic)||arrows})",
+				"{@item full plate}",
+				"{@item longsword}",
+				"{@item steel shield} (Hardness 7, HP 30, BT 15)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 22,
+					"with shield raised": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 6,
+						"vs. damaging effects": 9
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 70
+					}
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"versatile <P>"
+					],
+					"name": "longsword",
+					"attack": 12,
+					"damage": "{@damage 1d8+6} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"range increment <100 feet>",
+						"reload <0>",
+						"volley <30 feet>"
+					],
+					"name": "composite longbow",
+					"attack": 8,
+					"damage": "{@damage 1d8+4} piercing"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Shield Ally",
+						"entries": [
+							"The Committee loyalist's shield is sturdier in their hands. The statistics for the shield above include this benefit; it's a normal steel shield for anyone else."
+						]
+					},
+					{
+						"name": "Retributive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The Committee loyalist can {@action Step} to put a foe in reach before making a melee {@action Retributive Strike}."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"Speed 20 feet"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			},
+			"spellcasting": [
+				{
+					"type": "Focus",
+					"name": "Champion Devotion Spells",
+					"fp": 1,
+					"DC": 19,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "lay on hands"
+								},
+								{
+									"name": "veil of confidence"
+								}
+							]
+						}
+					}
+				}
+			],
+			"speed": {
+				"walk": 20
+			}
+		},
+		{
+			"name": "Ghodrak the Quick",
+			"source": "GW2",
+			"page": 17,
+			"description": "Male hobgoblin leader of the Obsidian Oath",
+			"level": 5,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"goblin",
+				"humanoid"
+			],
+			"perception": {
+				"std": 15
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"goblin"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 13
+				},
+				"athletics": {
+					"std": 10
+				},
+				"diplomacy": {
+					"std": 12
+				},
+				"intimidation": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 13
+				},
+				"warfare lore": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": 1,
+				"wis": 1,
+				"cha": 2
+			},
+			"items": [
+				"Gray Post keys",
+				"{@item hatchet||hatchets} (4)",
+				"{@item leather||leather armor}",
+				"map of Skywatch"
+			],
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 80
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"sweep"
+					],
+					"name": "hatchet",
+					"attack": 14,
+					"damage": "{@damage 1d6+2} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"thrown <10 feet>"
+					],
+					"name": "hatchet",
+					"attack": 14,
+					"damage": "{@damage 1d6+2} slashing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Into the Fray",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "Ghodrak rolls initiative",
+						"entries": [
+							"Ghodrak {@action Interact||Interacts} to draw one of his hatchets. On his turn, before doing anything else, he can {@action Stride} toward an enemy he can see as a free action."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Axe Critical Specialization When",
+						"entries": [
+							"Ghodrak lands a critical hit with a hatchet {@action Strike}, he can choose one creature adjacent to the initial target (and within reach if the critical hit was a melee {@action Strike}). If the creature's AC is lower than Ghodrak's attack roll result for the critical hit, he deals damage to that creature equal to the result of the weapon damage die rolled. This amount isn't doubled, and no bonuses or other additional dice apply to this damage."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Apothecary's Cabinet",
+			"source": "GW2",
+			"page": 14,
+			"level": 6,
+			"traits": [
+				"rare",
+				"n",
+				"large",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": -3,
+				"con": 5,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 24,
+					"when broken": 20,
+					"abilities": [
+						"construct armor"
+					]
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 80
+					}
+				],
+				"hardness": 10,
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "drawer",
+					"attack": 17,
+					"damage": "{@damage 2d8+9} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical",
+						"thrown <20 feet>"
+					],
+					"name": "poison bottle",
+					"attack": 14,
+					"damage": "{@damage 2d6+3} bludgeoning plus poison stock"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Construct Armor",
+						"entries": [
+							"Like normal objects, an apothecary's cabinet has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an apothecary's cabinet is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 20."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Poison Stock",
+						"entries": [
+							"When the cabinet hits a creature with its poison bottle {@action Strike}, roll {@dice 1d4} to determine what kind of poison splashes onto the struck creature: {@b 1} nerve poison ({@condition clumsy||clumsy 1}); {@b 2} weakening poison ({@condition enfeebled||enfeebled 1}); {@b 3} noxious poison ({@condition sickened||sickened 1}); {@b 4} clouded mind poison ({@condition stupefied||stupefied 1}). The target must attempt a DC 24 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature takes {@damage 1d6} poison damage."
+									],
+									"Failure": [
+										"The creature takes {@damage 2d6} poison damage and is afflicted with the rolled poison's associated condition until the end of its next turn."
+									],
+									"Critical Failure": [
+										"The creature takes {@damage 2d6} poison damage and is afflicted with the rolled poison's associated condition for {@dice 1d4+1} rounds."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"source": "GW2",
+			"name": "Vhisa Resgrido",
+			"page": 13,
+			"description": "Female {@ancestry human||half-elf|half-elf} elite {@creature charlatan|GMG}",
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"elf",
+				"human",
+				"humanoid"
+			],
+			"level": 4,
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"_copy": {
+				"name": "Charlatan",
+				"source": "GMG",
+				"applyTemplate": "elite"
+			}
+		},
+		{
+			"source": "GW2",
+			"name": "Terner Sudes",
+			"page": 13,
+			"description": "NE male {@creature guide|GMG}",
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"level": 4,
+			"perception": {
+				"std": 14
+			},
+			"_copy": {
+				"name": "Guide",
+				"source": "GMG"
+			}
+		}
+	]
+}
