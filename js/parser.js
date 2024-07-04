@@ -1507,7 +1507,7 @@ BL_PREFIX = "Blood Lords: ";
 BL_PREFIX_SHORT = "BL: ";
 
 GW_PREFIX = "Gatewalkers: ";
-GW_PREFIX_SHORT = "GW: ";
+GW_PREFIX_SHORT = "Gw: ";
 
 SoG_PREFIX = "Season of Ghosts: ";
 SoG_PREFIX_SHORT = "SoG: ";
@@ -1534,7 +1534,7 @@ Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Outlaws of Alkenstar #(\d): /, replaceWith: "OoA$1: " },
 	{ re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: " },
 	{ re: /Blood Lords #(\d): /, replaceWith: "BL$1: " },
-	{ re: /Gatewalkers #(\d): /, replaceWith: "GW$1: " },
+	{ re: /Gatewalkers #(\d): /, replaceWith: "Gw$1: " },
 	{ re: /Season of Ghosts #(\d): /, replaceWith: "SoG$1: " },
 	{ re: /Sky King's Tomb #(\d): /, replaceWith: "SKT$1: " },
 	{ re: /Seven Dooms for Sandpoint #(\d): /, replaceWith: "7DfS$1: " },
@@ -1901,10 +1901,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_FRP2] = "FRP2";
 Parser.SOURCE_JSON_TO_ABV[SRC_FRP3] = "FRP3";
 Parser.SOURCE_JSON_TO_ABV[SRC_GnG] = "G&G";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
-Parser.SOURCE_JSON_TO_ABV[SRC_GW0] = "GW0";
-Parser.SOURCE_JSON_TO_ABV[SRC_GW1] = "GW1";
-Parser.SOURCE_JSON_TO_ABV[SRC_GW2] = "GW2";
-Parser.SOURCE_JSON_TO_ABV[SRC_GW3] = "GW3";
+Parser.SOURCE_JSON_TO_ABV[SRC_GW0] = "Gw0";
+Parser.SOURCE_JSON_TO_ABV[SRC_GW1] = "Gw1";
+Parser.SOURCE_JSON_TO_ABV[SRC_GW2] = "Gw2";
+Parser.SOURCE_JSON_TO_ABV[SRC_GW3] = "Gw3";
 Parser.SOURCE_JSON_TO_ABV[SRC_HPD] = "HPD";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "ACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
