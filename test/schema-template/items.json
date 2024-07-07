@@ -211,6 +211,27 @@
 						"uniqueItems": true,
 						"description": "An arbitrary line of text that appears in the 'top part' of the statblock, below traits but above the first horizontal line. It's formatted as `{@b <name1>} <entry1>; {@b <name2>} <entry 2>;...`."
 					},
+					"footers": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"entry": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"name",
+								"entry"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true,
+						"description": "An arbitrary block of text that appears at the bottom of the statblock, under a horizotnal rule. It's formatted as `{@b <name1>} <entries1>\n{@b <name2>} <entries2>\n...`."
+					},
 					"category": {
 						"type": "string",
 						"enum": [

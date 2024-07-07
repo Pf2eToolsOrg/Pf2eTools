@@ -5167,7 +5167,13 @@ Renderer.item = {
 			${Renderer.item.getSubHead(item)}
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
-			${item.craftReq || item.special || item.destruction || item["Tea Ceremony"] || item.gifts ? Renderer.utils.getDividerDiv() : ""}
+			${item.footers || item.craftReq || item.special || item.destruction || item["Tea Ceremony"] || item.gifts ? Renderer.utils.getDividerDiv() : ""}
+			${
+				item.footers.map((footer) => {
+					const renderer = Renderer.get();
+					return `<p class="pf2-stat pf2-stat__section"><strong>${footer.name}&nbsp;</strong>${renderer.render(footer.entries)}`
+				}).join("")
+			}
 			${Renderer.item.getGifts(item)}
 			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements" })}
 			${Renderer.generic.getSpecial(item, { title: "Destruction" })}
