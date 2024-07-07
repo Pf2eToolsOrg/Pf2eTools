@@ -7387,11 +7387,11 @@
 				"cha": 0
 			},
 			"items": [
-				"hammer",
-				"lantern",
-				"miner's harness (functions as leather armor)",
-				"pick",
-				"piton (5)"
+				"{@item hammer}",
+				"{@item lantern (generic)||lantern}",
+				"miner's harness (functions as {@item leather||leather armor})",
+				"{@item pick}",
+				"{@item piton} (5)"
 			],
 			"speed": {
 				"walk": 25
@@ -7402,7 +7402,7 @@
 					"name": "pick",
 					"attack": 6,
 					"traits": [
-						"fatal 1d10"
+						"fatal <1d10>"
 					],
 					"damage": "{@damage 1d6+2} piercing",
 					"types": [
@@ -7422,7 +7422,7 @@
 						],
 						"requirements": "The miner has their hammer in hand",
 						"entries": [
-							"The miner Interacts to draw a piton, then hammers it into a creature to pin them in place, attempting an {@skill Athletics} check against the target's Reflex DC. On a hit, the target is {@condition immobilized} until it removes the piton with a successful {@dc 10} {@skill Athletics} check made as an {@action Interact} action."
+							"The miner {@action Interact||Interacts} to draw a {@item piton}, then hammers it into a creature to pin them in place, attempting an {@skill Athletics} check against the target's Reflex DC. On a hit, the target is {@condition immobilized} until it removes the {@item piton} with a successful {@dc 10} {@skill Athletics} check made as an {@action Interact} action."
 						],
 						"name": "Piton Pin"
 					}
