@@ -95,13 +95,44 @@
 					"$ref": "#/definitions/spellTrait"
 				},
 				{
-					"$ref": "#/definitions/creatureTypeTrait"
+					"$ref": "#/definitions/ancestryHeritageTrait"
 				},
 				{
-					"$ref": "#/definitions/ancestryHeritageTrait"
+					"$ref": "#/definitions/creatureTypeTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"creatureTypeTrait": {
+			"type": "string",
+			"description": "A list of all Creature Type traits.",
+			"enum": [
+				"aberration",
+				"animal",
+				"astral",
+				"beast",
+				"celestial",
+				"construct",
+				"div",
+				"dragon",
+				"dream",
+				"eidolon",
+				"elemental",
+				"fey",
+				"fiend",
+				"fungus",
+				"giant",
+				"humanoid",
+				"kami",
+				"monitor",
+				"nindoru",
+				"ooze",
+				"petitioner",
+				"plant",
+				"spirit",
+				"time",
+				"undead"
+			]
 		},
 		"ancestryHeritageTrait": {
 			"type": "string",
@@ -163,36 +194,6 @@
 				"undine",
 				"vanara",
 				"vishkanya"
-			]
-		},
-		"creatureTypeTrait": {
-			"type": "string",
-			"description": "A list of all Creature Type traits.",
-			"enum": [
-				"aberration",
-				"animal",
-				"astral",
-				"beast",
-				"celestial",
-				"construct",
-				"div",
-				"dragon",
-				"dream",
-				"eidolon",
-				"elemental",
-				"fey",
-				"fiend",
-				"fungus",
-				"giant",
-				"humanoid",
-				"monitor",
-				"nindoru",
-				"ooze",
-				"petitioner",
-				"plant",
-				"spirit",
-				"time",
-				"undead"
 			]
 		},
 		"spellTrait": {
