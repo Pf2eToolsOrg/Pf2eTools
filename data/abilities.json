@@ -1,6 +1,65 @@
 {
 	"ability": [
 		{
+			"name": "Breathsense",
+			"page": 156,
+			"source": "BotD",
+			"creature": [
+				"Vampire, Jiang-Shi"
+			],
+			"entries": [
+				"60 feet (precise). A jiang-shi can't perceive living creatures beyond 5 feet except with their breathsense. A living creature within the listed range who holds its breath is {@condition invisible} to the jiang-shi for as long as it holds its breath. To hold its breath in this way, a creature must have one hand free to fully plug its nose or cover its mouth. (Refer to {@quickref page 478 of the {@i Core Rulebook}|CRB|3|drowning and suffocating} for the full rules on holding breath.)"
+			]
+		},
+		{
+			"name": "Rigor Mortis",
+			"page": 157,
+			"source": "BotD",
+			"creature": [
+				"Vampire, Jiang-Shi"
+			],
+			"entries": [
+				"The jiang-shi ignores difficult terrain and effects that would render them {@condition prone}. A jiang-shi can't take the {@action Drop Prone} action. When they {@action Leap} they don't trigger reactions that are normally triggered by move actions, such as {@action attack of opportunity||Attacks of Opportunity}."
+			]
+		},
+		{
+			"name": "Drain Qi",
+			"page": 157,
+			"source": "BotD",
+			"creature": [
+				"Vampire, Jiang-Shi"
+			],
+			"traits": [
+				"divine",
+				"necromancy"
+			],
+			"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the jiang-shi's reach",
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"The jiang-shi drains the victim's life energy, or qi, through their breath. This requires an Athletics check against the victim's Fortitude DC if the victim is grabbed and is automatic for any of the other conditions. The victim is {@condition drained||drained 1} and the jiang-shi regains HP equal to 10% of its maximum HP, gaining any excess as temporary Hit Points. Draining qi from a creature that's already {@condition drained} doesn't restore any HP to the jiang-shi but increases the victim's {@condition drained} condition value by 1, killing the victim when it reaches {@condition drained||drained 5}. If the victim has the ability to cast ki spells, it can spend 1 Focus Point to avoid becoming {@condition drained}. This protects it only from the current attack, not from subsequent attempts to Drain Qi.",
+				"A victim's {@condition drained} condition value decreases by 1 every week. If the creature restricts their diet to glutinous rice for at least 1 day and spends 10 minutes dancing, jogging, or otherwise engaging in vigorous physical activity by succeeding at a DC 25 Athletics check, it reduces its {@condition drained} condition by 1."
+			]
+		},
+		{
+			"name": "One More Breath",
+			"page": 156,
+			"source": "BotD",
+			"creature": [
+				"Vampire, Jiang-Shi"
+			],
+			"traits": [
+				"divine",
+				"necromancy",
+				"negative"
+			],
+			"entries": [
+				"Unlike other {@trait undead}, a jiang-shi isn't destroyed at 0 HP. Instead, they fall {@condition unconscious} and awaken in 1 minute with 1 Hit Point. Scattering at least 1 Bulk of glutinous rice or hen eggs on an {@condition unconscious} jiang-shi destroys them permanently. If the jiang-shi was reduced to 0 HP by an attack from a weapon made of {@item darkwood weapon (generic)||darkwood}, they're destroyed immediately."
+			]
+		},
+		{
 			"name": "Imprisoning Grave",
 			"source": "SoG4",
 			"page": 86,

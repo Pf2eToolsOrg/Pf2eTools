@@ -775,51 +775,6 @@
 						]
 					},
 					{
-						"name": "Mental Rebirth",
-						"traits": [
-							"curse",
-							"incapacitation",
-							"mental",
-							"necromancy",
-							"occult"
-						],
-						"entries": [
-							"Unlike most other undead, a vetalarana isn't destroyed when they reach 0 HP. Instead, their body is destroyed, crumbling to ash, and their mind is immediately transferred into a creature they rendered comatose through Drain Thoughts. This creature must be within 1 mile; if no such creature is in range, the vetalarana is destroyed.",
-							"The creature becomes {@condition controlled} by the vetalarana and loses the {@condition stupefied} and {@condition unconscious} conditions. If the creature {@condition controlled} by a vetalarana in this way is killed, the vetalarana's mind transfers to another creature within 1 mile who they rendered comatose through Drain Thoughts.",
-							"After {@dice 1d6} days of being {@condition controlled}, the {@condition controlled} creature dies, and its body transforms into that of the vetalarana who rendered it comatose."
-						]
-					},
-					{
-						"name": "Climb Speed",
-						"entries": [
-							"A vetalarana gains a climb Speed equal to their land Speed."
-						]
-					},
-					{
-						"name": "Claws",
-						"entries": [
-							"If the base creature had hands, its fingernails thicken and grow to terrible proportions, granting it an unarmed claw {@action Strike} that deals slashing damage, has the {@trait agile} trait, and can Grab. Use the moderate damage for the creature's level on the {@action Strike} Damage table on page 65 of the Gamemastery Guide."
-						]
-					},
-					{
-						"name": "Drain Thoughts",
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"divination",
-							"mental",
-							"occult"
-						],
-						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vetalarana's reach",
-						"entries": [
-							"The vetalarana seizes a creature and consumes its memories. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition stupefied||stupefied 1}, and the vetalarana regains HP equal to 10% of the vetalarana's maximum HP, gaining any excess as temporary Hit Points. Draining Thoughts from a creature that is already {@condition stupefied} doesn't restore any HP to the vetalarana but increases the victim's {@condition stupefied} value by 1. Additionally, the vetalarana views one of the victim's memories.",
-							"A victim's {@condition stupefied} condition value decreases by 1 every week.",
-							"A victim that becomes {@condition stupefied||stupefied 5} in this way is rendered comatose, becoming permanently {@condition unconscious}. As long as the vetalarana lives, a comatose victim can't regain consciousness, and its {@condition stupefied} condition doesn't decrease."
-						]
-					},
-					{
 						"name": "Vetalarana Vulnerabilities",
 						"entries": [
 							"All vetalaranas possess the following vulnerabilities.",
@@ -852,16 +807,23 @@
 						]
 					},
 					{
-						"name": "Warped Fulu",
+						"name": "Mental Rebirth",
+						"traits": [
+							"curse",
+							"incapacitation",
+							"mental",
+							"necromancy",
+							"occult"
+						],
 						"entries": [
-							"The jiang-shi has corrupted the fulu attached to their brow. The jiang-shi is immune to spells cast from a magic item without expending a spell slot, such as from a scroll or wand. A creature can {@action Steal} the fulu to remove it, rolling against the jiangshi's {@skill Perception} DC. This immediately ends the jiang-shi's immunity to these effects. If a creature then destroys the removed fulu with an {@action Interact} action, the jiang-shi also loses their fast healing ability. A jiang-shi can create a replacement fulu by spending 1 uninterrupted hour inscribing a strip of paper (or similar) with a writing instrument."
+							"Unlike most other undead, a vetalarana isn't destroyed when they reach 0 HP. Instead, their body is destroyed, crumbling to ash, and their mind is immediately transferred into a creature they rendered comatose through Drain Thoughts. This creature must be within 1 mile; if no such creature is in range, the vetalarana is destroyed. The creature becomes {@condition controlled} by the vetalarana and loses the {@condition stupefied} and {@condition unconscious} conditions. If the creature {@condition controlled} by a vetalarana in this way is killed, the vetalarana's mind transfers to another creature within 1 mile who they rendered comatose through Drain Thoughts.",
+							"After {@dice 1d6} days of being {@condition controlled}, the {@condition controlled} creature dies, and its body transforms into that of the vetalarana who rendered it comatose."
 						]
 					},
 					{
-						"name": "Rigor Mortis",
+						"name": "Climb Speed",
 						"entries": [
-							"The jiang-shi ignores {@quickref difficult terrain||3|terrain} and effects that would render them {@condition prone}. A jiang-shi can't take the Drop {@condition Prone} action.",
-							"When they {@action Leap} they don't trigger reactions that are normally triggered by move actions, such as Attacks of Opportunity."
+							"A vetalarana gains a climb Speed equal to their land Speed."
 						]
 					},
 					{
@@ -871,19 +833,21 @@
 						]
 					},
 					{
-						"name": "Drain Qi",
+						"name": "Drain Thoughts",
 						"activity": {
 							"number": 1,
 							"unit": "action"
 						},
 						"traits": [
-							"divine",
-							"necromancy"
+							"divination",
+							"mental",
+							"occult"
 						],
-						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the jiang-shi's reach",
+						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vetalarana's reach",
 						"entries": [
-							"The jiang-shi drains the victim's life energy, or qi, through their breath. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained||drained 1} and the jiang-shi regains HP equal to 10% of its maximum HP, gaining any excess as temporary Hit Points. Draining qi from a creature that's already {@condition drained} doesn't restore any HP to the jiang-shi but increases the victim's {@condition drained} condition value by 1, killing the victim when it reaches {@condition drained||drained 5}. If the victim has the ability to cast ki spells, it can spend 1 Focus Point to avoid becoming {@condition drained}. This protects it only from the current attack, not from subsequent attempts to Drain Qi.",
-							"A victim's {@condition drained} condition value decreases by 1 every week. If the creature restricts their diet to glutinous rice for at least 1 day and spends 10 minutes dancing, jogging, or otherwise engaging in vigorous physical activity by succeeding at a DC 25 {@skill Athletics} check, it reduces its {@condition drained} condition by 1."
+							"The vetalarana seizes a creature and consumes its memories. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition stupefied||stupefied 1}, and the vetalarana regains HP equal to 10% of the vetalarana's maximum HP, gaining any excess as temporary Hit Points. Draining Thoughts from a creature that is already {@condition stupefied} doesn't restore any HP to the vetalarana but increases the victim's {@condition stupefied} value by 1. Additionally, the vetalarana views one of the victim's memories.",
+							"A victim's {@condition stupefied} condition value decreases by 1 every week.",
+							"A victim that becomes {@condition stupefied||stupefied 5} in this way is rendered comatose, becoming permanently {@condition unconscious}. As long as the vetalarana lives, a comatose victim can't regain consciousness, and its {@condition stupefied} condition doesn't decrease."
 						]
 					}
 				]
@@ -900,12 +864,6 @@
 					}
 				],
 				"abilities": [
-					{
-						"name": "Occult Innate Spells",
-						"entries": [
-							"A vetalarana manipulator has {@spell tongues} as a constant occult innate spell."
-						]
-					},
 					{
 						"name": "Resistances",
 						"entries": [
@@ -947,6 +905,12 @@
 						]
 					},
 					{
+						"name": "Occult Innate Spells",
+						"entries": [
+							"A vetalarana manipulator has {@spell tongues} as a constant occult innate spell."
+						]
+					},
+					{
 						"name": "Paralyzing Claws",
 						"traits": [
 							"incapacitation",
@@ -967,6 +931,7 @@
 			"source": "BotD",
 			"page": 156,
 			"entries": [
+				"While it's best to create a jiang-shi from scratch, you can turn an existing living creature into a jiang-shi using the following steps.",
 				"Increase the creature's level by 1 and change its statistics as follows.",
 				{
 					"type": "list",
@@ -976,7 +941,7 @@
 						"Reduce its Speed by 10 feet, to a minimum of 15 feet.",
 						"Increase its damage with {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon's Breath Weapon), increase the damage by 2 instead.",
 						"Reduce its HP by the amount listed on the table.",
-						"The jiang-shi gains {@ability fast healing} and resistance to physical damage (except darkwood) as indicated on the table. These abilities are the reason the jiang-shi has less HP."
+						"The jiang-shi gains {@ability fast healing} and resistance to physical damage (except {@item darkwood (generic)||darkwood}) as indicated on the table. These abilities are the reason the jiang-shi has less HP."
 					]
 				},
 				{
@@ -1058,69 +1023,31 @@
 					},
 					{
 						"name": "One More Breath",
-						"traits": [
-							"divine",
-							"necromancy",
-							"negative"
-						],
-						"entries": [
-							"Unlike other undead, a jiang-shi isn't destroyed at 0 HP. Instead, they fall unconscious and awaken in 1 minute with 1 Hit Point. Scattering at least 1 Bulk of glutinous rice or hen eggs on an unconscious jiang-shi destroys them permanently. If the jiang-shi was reduced to 0 HP by an attack from a weapon made of darkwood, they're destroyed immediately."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "BotD"
+						}
 					},
 					{
 						"name": "Jiang-shi Vulnerabilities",
-						"entries": [
-							"All jiang-shi possess the following vulnerabilities.",
-							{
-								"type": "list",
-								"items": [
-									{
-										"type": "ability",
-										"name": "Revulsion",
-										"entries": [
-											"A jiang-shi can't voluntarily come within 10 feet of a brandished mirror or the sound of ringing handbells. A creature can {@action Interact} with a mirror or handbell to brandish or ring the item for 1 round (similar to {@action Raise a Shield||Raising a Shield}). If the jiang-shi involuntarily comes within 10 feet of an object of their revulsion, they gain the {@condition fleeing} condition, running from the object of their revulsion until they are 10 feet or farther from the object. After 1 round of being exposed to the object of their revulsion, a jiang-shi can attempt a DC 25 Will save as a single action, which has the {@trait concentrate} trait. On a success, they overcome their revulsions for {@dice 1d6} rounds (or 1 hour on a critical success)."
-										]
-									},
-									{
-										"type": "ability",
-										"name": "Bitter Epiphany",
-										"entries": [
-											"A jiang-shi is afflicted by severe melancholia when reminded of their debased nature and the truth of their existential disconnection from living beings. When a jiang-shi sees an altar with at least 1 Bulk of food offerings to ancestor spirits, they must attempt a DC 25 Will save. They are then temporarily immune to Bitter Epiphany for 1 minute.",
-											{
-												"type": "successDegree",
-												"entries": {
-													"Critical Success": [
-														"The jiang-shi is unaffected."
-													],
-													"Success": [
-														"The jiang-shi is {@condition stupefied||stupefied 1} for 1 round."
-													],
-													"Failure": [
-														"The jiang-shi is {@condition stupefied||stupefied 2} for 1 minute."
-													],
-													"Critical Failure": [
-														"The jiang-shi is {@condition stupefied||stupefied 2} and {@condition confused} for 1 minute."
-													]
-												}
-											}
-										]
-									}
-								]
-							}
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "BotD"
+						}
 					},
 					{
 						"name": "Warped Fulu",
-						"entries": [
-							"The jiang-shi has corrupted the fulu attached to their brow. The jiang-shi is immune to spells cast from a magic item without expending a spell slot, such as from a scroll or wand. A creature can {@action Steal} the fulu to remove it, rolling against the jiangshi's {@skill Perception} DC. This immediately ends the jiang-shi's immunity to these effects. If a creature then destroys the removed fulu with an {@action Interact} action, the jiang-shi also loses their fast healing ability. A jiang-shi can create a replacement fulu by spending 1 uninterrupted hour inscribing a strip of paper (or similar) with a writing instrument."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "BotD"
+						}
 					},
 					{
 						"name": "Rigor Mortis",
-						"entries": [
-							"The jiang-shi ignores {@quickref difficult terrain||3|terrain} and effects that would render them {@condition prone}. A jiang-shi can't take the Drop {@condition Prone} action.",
-							"When they {@action Leap} they don't trigger reactions that are normally triggered by move actions, such as Attacks of Opportunity."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "BotD"
+						}
 					},
 					{
 						"name": "Claws",
@@ -1130,19 +1057,10 @@
 					},
 					{
 						"name": "Drain Qi",
-						"activity": {
-							"number": 1,
-							"unit": "action"
-						},
-						"traits": [
-							"divine",
-							"necromancy"
-						],
-						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the jiang-shi's reach",
-						"entries": [
-							"The jiang-shi drains the victim's life energy, or qi, through their breath. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained||drained 1} and the jiang-shi regains HP equal to 10% of its maximum HP, gaining any excess as temporary Hit Points. Draining qi from a creature that's already {@condition drained} doesn't restore any HP to the jiang-shi but increases the victim's {@condition drained} condition value by 1, killing the victim when it reaches {@condition drained||drained 5}. If the victim has the ability to cast ki spells, it can spend 1 Focus Point to avoid becoming {@condition drained}. This protects it only from the current attack, not from subsequent attempts to Drain Qi.",
-							"A victim's {@condition drained} condition value decreases by 1 every week. If the creature restricts their diet to glutinous rice for at least 1 day and spends 10 minutes dancing, jogging, or otherwise engaging in vigorous physical activity by succeeding at a DC 25 {@skill Athletics} check, it reduces its {@condition drained} condition by 1."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "BotD"
+						}
 					}
 				]
 			},
@@ -1159,9 +1077,15 @@
 				],
 				"abilities": [
 					{
+						"name": "Resistances",
+						"entries": [
+							"The jiang-shi resists all physical damage (except {@trait magical} {@item darkwood (generic)||darkwood})."
+						]
+					},
+					{
 						"name": "Dark Enlightenment",
 						"entries": [
-							"The jiang-shi is no longer limited to seeing living creatures with only their breathsense, and they no longer have the Revulsion vulnerability. They can perceive living creatures normally with either darkvision or breathsense, and they can take the Drop {@condition Prone} action."
+							"The jiang-shi is no longer limited to seeing living creatures with only their breathsense, and they no longer have the Revulsion vulnerability. They can perceive living creatures normally with either darkvision or breathsense, and they can take the {@action Drop Prone} action."
 						]
 					},
 					{
@@ -1177,7 +1101,7 @@
 							"necromancy"
 						],
 						"entries": [
-							"The third time a jiang-shi successfully Drains Qi within a single minute, they become {@condition quickened} for 1 minute. They can use their extra action only to {@action Strike} or {@action Stride}."
+							"The third time a jiang-shi successfully {@ability Drain Qi|BotD|Drains Qi} within a single minute, they become {@condition quickened} for 1 minute. They can use their extra action only to {@action Strike} or {@action Stride}."
 						]
 					}
 				]
