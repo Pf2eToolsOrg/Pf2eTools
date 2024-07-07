@@ -1,6 +1,157 @@
 {
 	"place": [
 		{
+			"name": "Osprey Cove",
+			"source": "Rust",
+			"page": 7,
+			"category": "Settlement",
+			"level": 2,
+			"traits": [
+				"cg",
+				"village"
+			],
+			"description": "Isolated fishing commune",
+			"settlementData": {
+				"government": "Elders (communal)",
+				"population": {
+					"total": 120,
+					"ancestries": {
+						"humans": 85,
+						"other": 15
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Varisian"
+				],
+				"religions": [
+					"{@deity Desna}",
+					"{@deity Cayden Cailean}"
+				],
+				"threats": [
+					"feuds with {@settlement Iron Harbor|Rust}",
+					"meddling from New Thassilon",
+					"seasonal storms"
+				],
+				"features": [
+					{
+						"name": "Friendly Commune",
+						"entries": [
+							"While Osprey Cove's citizens look to a council of elders for advice, the citizens govern themselves in a cooperative communal style. The villagers are eager to help out each other, as success for one is success for all. While {@action Earn Income} checks are limited to 2nd-level or lower tasks, any attempt to {@action Earn Income} in Osprey Cove gains a +1 circumstance bonus as a result of this neighborly help."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Elder Anlorgog",
+					"alignment": "ng",
+					"gender": "nb",
+					"ancestry": "undine",
+					"position": "ranger",
+					"level": 2,
+					"bond": "helps direct village fishing efforts"
+				},
+				{
+					"name": "Elder Bo-Mel",
+					"alignment": "cg",
+					"gender": "m",
+					"ancestry": "dwarf",
+					"position": "farmer",
+					"level": 3,
+					"bond": "helps direct village farming and construction efforts"
+				},
+				{
+					"name": "Elder Johedia",
+					"alignment": "cg",
+					"gender": "f",
+					"ancestry": "half-elf",
+					"position": "oracle",
+					"level": 3,
+					"bond": "serves as the primary healer of Osprey Cove"
+				},
+				{
+					"name": "Elder Ordwi",
+					"alignment": "cg",
+					"gender": "f",
+					"ancestry": "human",
+					"position": "cleric",
+					"level": 2,
+					"bond": "is the youngest elder, still settling into her new role"
+				},
+				{
+					"name": "Elder Vandous",
+					"alignment": "cn",
+					"gender": "m",
+					"ancestry": "human",
+					"position": "fisher",
+					"level": 3,
+					"bond": "is the oldest of the village elders, a record keeper and historian"
+				}
+			]
+		},
+		{
+			"name": "Iron Harbor",
+			"source": "Rust",
+			"page": 11,
+			"category": "Settlement",
+			"level": 2,
+			"traits": [
+				"cn",
+				"village"
+			],
+			"description": "Remote Gorumite settlement",
+			"settlementData": {
+				"government": "High priest (religious leadership)",
+				"population": {
+					"total": 80,
+					"ancestries": {
+						"humans": 90,
+						"other": 10
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Varisian}"
+				],
+				"religions": [
+					"{@deity Gorum}"
+				],
+				"threats": [
+					"cult of Xar-Azmak",
+					"seasonal storms"
+				],
+				"features": [
+					{
+						"name": "Gorumite Village",
+						"entries": [
+							"As one would expect from a village led by worshippers of {@deity Gorum}, weapons and armor are easier to come by here. Treat Iron Harbor as a 3rd-level settlement for the purposes of purchasing weapons, armor, ammunition, and associated items."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Knurr Ragnulf",
+					"alignment": "cn",
+					"gender": "m",
+					"ancestry": "dwarf",
+					"position": "ex-cleric of {@deity Gorum}",
+					"level": 2,
+					"bond": "leader of Iron Harbor, currently corrupted by the cult of Xar-Azmak"
+				},
+				{
+					"name": "Elsie",
+					"alignment": "cn",
+					"gender": "f",
+					"ancestry": "halfling",
+					"position": "alchemist",
+					"level": 3,
+					"bond": "local alchemist, baker, and potential ally"
+				}
+			]
+		},
+		{
 			"name": "Egede",
 			"category": "Settlement",
 			"source": "GW2",

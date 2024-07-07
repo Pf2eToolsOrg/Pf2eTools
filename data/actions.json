@@ -1,6 +1,49 @@
 {
 	"action": [
 		{
+			"name": "Distract Crew",
+			"source": "Rust",
+			"page": 14,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"mental"
+			],
+			"entries": [
+				"Whether it's an attempt to engage the crew of the {@i Swordfish} from the pier in a confusing conversation, staging a distracting event, asking them about their reasons for being here, or simply attempting to chat up the crew, a creature does their best for 10 minutes to distract the guards on deck to give those sneaking onboard a better chance at success. Have the PC describe what they are doing to be distracting, and determine if they need to attempt a DC 15 {@skill Deception} check, a DC 17 {@skill Diplomacy} check, or a DC 13 {@skill Performance} check or {@skill Lore||Xin-Edasseril Lore} check. Only one attempt to Distract the Crew can be attempted at a time, but other PCs can attempt to {@action Aid} the Distract Crew attempt.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The crew becomes distracted. Grant all attempts to {@action Search Ship|Rust|Search the Ship} during this 10 minutes a +1 circumstance bonus.",
+						"Success": "The crew becomes distracted.",
+						"Failure": "The crew does not become distracted.",
+						"Critical Failure": "The crew becomes suspicious, and all attempts to {@action Search Ship|Rust|Search the Ship} during this 10 minutes take a -1 circumstance penalty."
+					}
+				}
+			]
+		},
+		{
+			"name": "Search Ship",
+			"source": "Rust",
+			"page": 15,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"entries": [
+				"The PC sneaks onto the {@i Swordfish} and skulks around the ship looking for clues for 10 minutes. If the crew is not distracted, have them attempt a DC 15 {@skill Stealth} check or a DC 13 {@skill Lore||Sailing Lore} check. If the crew is distracted, the DC is reduced by 5. If the crew is suspicious, the DC is increased by 5.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PC makes multiple discoveries. Roll three times on the {@table Swordfish Discoveries|Rust} table.",
+						"Success": "The PC makes a discovery! Roll once the {@table Swordfish Discoveries|Rust} table.",
+						"Failure": " The PC fails to make any discoveries but is not caught by the crew.",
+						"Critical Failure": "Not only does the PC fail to make any discoveries, but they are spotted by a deckhand! At this point, the PC can call for parley (in which case, proceed with Speaking to the Crew), attack (in which case, proceed with Getting in a Fight), or try to flee by attempting a second {@skill Stealth} check against the same DC. On a success, they escape capture, but the Swordfish's crew remains suspicious from this point onward and can no longer be distracted. On a failure, they're cornered and must either fight, talk, or surrender."
+					}
+				}
+			]
+		},
+		{
 			"name": "Investigate Domora",
 			"source": "GW2",
 			"page": 55,

@@ -1,6 +1,61 @@
 {
 	"disease": [
 		{
+			"name": "Rust Creep",
+			"source": "Rust",
+			"page": 19,
+			"type": "Disease",
+			"level": 2,
+			"traits": [
+				"rare",
+				"disease",
+				"divine",
+				"transmutation"
+			],
+			"entries": [
+				"Those afflicted by rust creep develop uncomfortable rustcolored bruises on their flesh and endure full-body aches like those one might experience after a long workout. As the affliction progresses, their bodies\u2014as well as the clothing and items they wear or carry\u2014increasingly break down until a painful death occurs. If a character successfully resists contracting rust creep, or recovers from a case of rust creep, they are temporarily immune to future rust creep infections for 24 hours.",
+				{
+					"type": "affliction",
+					"DC": 15,
+					"savingThrow": "Fortitude",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "\u22121 status penalty to {@skill Athletics} checks",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "as stage 1",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition enfeebled|| enfeebled 1}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@condition enfeebled|| enfeebled 1} and {@condition stupefied|| stupefied 1}, plus any armor, clothing and items you carry and that are of a level equal to or less than the disease become {@condition broken} as the decay spreads to them.",
+							"duration": "1 day; {@condition broken} items remain {@condition broken}"
+						},
+						{
+							"stage": 5,
+							"entry": "{@condition unconscious}"
+						},
+						{
+							"stage": 6,
+							"entry": "{@condition unconscious}"
+						},
+						{
+							"stage": 7,
+							"entry": "death"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Blightburn Sickness",
 			"source": "TV",
 			"page": 45,
