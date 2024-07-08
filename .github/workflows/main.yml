@@ -1,122 +1,121 @@
 name: Build and Deploy
 
 on:
-   push:
-      tags:
-         - 'v**'
-   # Allow running manually from the actions tab
-   # workflow_dispatch:
-   #    inputs:
-   #       message:
-   #           description: Input Version (ex. v0.7.4)
-   #           required: true
+    push:
+        tags:
+            - "v**"
+    # Allow running manually from the actions tab
+    # workflow_dispatch:
+    #    inputs:
+    #       message:
+    #           description: Input Version (ex. v0.7.4)
+    #           required: true
 
 env:
-   # See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
-   IMAGE_NAME: pf2etools
+    # See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
+    IMAGE_NAME: pf2etools
 
 concurrency:
-   group: "release"
-   cancel-in-progress: true
+    group: "release"
+    cancel-in-progress: true
 
 jobs:
-   build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
-         -  uses: actions/checkout@master
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
 
-         -  name: Clear caches
-            uses: easimon/wipe-cache@main
+            - name: Clear caches
+              uses: easimon/wipe-cache@main
 
-         # See: https://stackoverflow.com/a/58178121
-         -  name: Set Release Version
-            run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+            # See: https://stackoverflow.com/a/58178121
+            - name: Set Release Version
+              run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
-         - name: Generate Release Notes
-           run: bash ./.github/generate-release-notes.sh ${{ env.RELEASE_VERSION }} | tee RELEASE_NOTES.md
+            - name: Generate Release Notes
+              run: bash ./.github/generate-release-notes.sh ${{ env.RELEASE_VERSION }} | tee RELEASE_NOTES.md
 
-         - name: 'Upload Changelog MD'
-           uses: actions/upload-artifact@v2
-           with:
-              name: 'changelog'
-              path: RELEASE_NOTES.md
+            - name: Archive Release
+              run: |
+                  zip -r pf2ools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*img*' '*.editorconfig*' '*CNAME*' 'RELEASE_NOTES.md'
 
-         -  name: Archive Release
-            run: |
-               zip -r pf2ools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*img*' '*.editorconfig*' '*CNAME*' 'RELEASE_NOTES.md'
-         -  name: Set Deployed Flag
-            run: |
-               bash ./.github/set-deployed-flag.sh ${{ env.RELEASE_VERSION }}
-         # Builds the data
-         -  name: Build Site
-            run: |
-               sudo apt-get install -y hub
-               node --version
-               npm --version
-               npm i
-               npm run build:data:prod
-               npm run build
-         # Builds SEO pages
-         -  name: Build SEO Pages
-            env:
-               VET_BASE_SITE_URL: https://pf2etools.com/
-               VET_SEO_IS_SKIP_UA_ETC: true
-            run: |
-               npm run build:seo -- ${{ env.RELEASE_VERSION }}
-         # Merge and minify scripts, data, etc. + Build Service Worker
-         # Remove entries from the `.gitignore` so the gh-pages action can correctly add+commit them to the pages branch
-         -  name: Build Prod
-            env:
-               VET_BASE_SITE_URL: https://pf2etools.com/
-               VET_SEO_IS_SKIP_UA_ETC: true
-            run: |
-               npm run build:deploy:prod -- ${{ env.RELEASE_VERSION }}
-               sed -i 's/sitemap.xml//g' .gitignore
-               sed -i 's/sw.js//g' .gitignore
-               sed -i 's/sw-injector.js//g' .gitignore
-         # See: https://github.com/JamesIves/github-pages-deploy-action
-         -  name: Deploy
-            uses: JamesIves/github-pages-deploy-action@releases/v4
-            with:
-               branch: prod
-               folder: .
+            - name: Set Deployed Flag
+              run: |
+                  bash ./.github/set-deployed-flag.sh ${{ env.RELEASE_VERSION }}
 
-         -  name: Archive Images
-            run: |
-               zip -r -s 500m img-${{ env.RELEASE_VERSION }}.zip img/
-         -  name: Upload Release
-            continue-on-error: true
-            # Add the files one-by-one in an effort to avoid timeouts
-            run: |
-               hub release create -a pf2ools-${{ env.RELEASE_VERSION }}.zip -F RELEASE_NOTES.md ${{ env.RELEASE_VERSION }}
-               for f in $(find . -name 'img-${{ env.RELEASE_VERSION }}.*' -print); do hub release edit ${{ env.RELEASE_VERSION }} -m '' -a $f; done
-            env:
-               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # Builds the data
+            - name: Build Site
+              run: |
+                  sudo apt-get install -y hub
+                  node --version
+                  npm --version
+                  npm i
+                  npm run build:data:prod
+                  npm run build
 
-         # region See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
-         -  name: Build Image
-            run: |
-               docker build -t $IMAGE_NAME .
-         -  name: Log In to Registry
-            run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            # Builds SEO pages
+            - name: Build SEO Pages
+              env:
+                  VET_BASE_SITE_URL: https://pf2etools.com/
+                  VET_SEO_IS_SKIP_UA_ETC: true
+              run: |
+                  npm run build:seo -- ${{ env.RELEASE_VERSION }}
 
-         -  name: Push Image
-            run: |
-               IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-               # Change all uppercase to lowercase
-               IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-               # Strip git ref prefix from version
-               VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-               # Strip "v" prefix from tag name
-               [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-               echo IMAGE_ID=$IMAGE_ID
-               echo VERSION=$VERSION
-               docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-               # Always tag latest when pushing a tag, as we don't expect to ever merge old tags
-               [[ "${{ github.ref }}" == "refs/tags/"* ]] && docker tag $IMAGE_NAME $IMAGE_ID:latest
-               docker push $IMAGE_ID:$VERSION
-               docker push $IMAGE_ID:latest
-         # endregion
+            # Merge and minify scripts, data, etc. + Build Service Worker
+            # Remove entries from the `.gitignore` so the gh-pages action can correctly add+commit them to the pages branch
+            - name: Build Prod
+              env:
+                  VET_BASE_SITE_URL: https://pf2etools.com/
+                  VET_SEO_IS_SKIP_UA_ETC: true
+              run: |
+                  npm run build:deploy:prod -- ${{ env.RELEASE_VERSION }}
+                  sed -i 's/sitemap.xml//g' .gitignore
+                  sed -i 's/sw.js//g' .gitignore
+                  sed -i 's/sw-injector.js//g' .gitignore
 
-         - name: Post Changelogs to Discord
-           run: bash ./.github/discord.sh --webhook-url="${{ secrets.DISCORD_WEBHOOK }}" --text "<@&901146147480043520>" --title "Pf2eTools $(head -n 1 RELEASE_NOTES.md | sed -E "s/(\"[^\"]+\")( edition)/_\1_\2/" | jq -Rs . | cut -c 2- | rev | cut -c 2- | rev)" --description "$(jq -Rs . <<< $(tail -n +2 "RELEASE_NOTES.md") | cut -c 2- | rev | cut -c 2- | rev)" --color "0x6f1c17" --url "https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/${{ env.RELEASE_VERSION }}" --timestamp
+            # See: https://github.com/JamesIves/github-pages-deploy-action
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@releases/v4
+              with:
+                  branch: prod
+                  folder: .
+
+            - name: Archive Images
+              run: |
+                  zip -r -s 500m img-${{ env.RELEASE_VERSION }}.zip img/
+
+            - name: Upload Release
+              continue-on-error: true
+              # Add the files one-by-one in an effort to avoid timeouts
+              run: |
+                  hub release create -a pf2ools-${{ env.RELEASE_VERSION }}.zip -F RELEASE_NOTES.md ${{ env.RELEASE_VERSION }}
+                  for f in $(find . -name 'img-${{ env.RELEASE_VERSION }}.*' -print); do hub release edit ${{ env.RELEASE_VERSION }} -m '' -a $f; done
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            # region See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
+            - name: Build Image
+              run: |
+                  docker build -t $IMAGE_NAME .
+            - name: Log In to Registry
+              run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            - name: Push Image
+              run: |
+                  IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+                  # Change all uppercase to lowercase
+                  IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+                  # Strip git ref prefix from version
+                  VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+                  # Strip "v" prefix from tag name
+                  [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+                  echo IMAGE_ID=$IMAGE_ID
+                  echo VERSION=$VERSION
+                  docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+                  # Always tag latest when pushing a tag, as we don't expect to ever merge old tags
+                  [[ "${{ github.ref }}" == "refs/tags/"* ]] && docker tag $IMAGE_NAME $IMAGE_ID:latest
+                  docker push $IMAGE_ID:$VERSION
+                  docker push $IMAGE_ID:latest
+            # endregion
+            - name: Post Changelogs to Discord
+              run: bash ./.github/discord.sh --webhook-url="${{ secrets.DISCORD_WEBHOOK }}" --text "<@&901146147480043520>" --title "Pf2eTools $(head -n 1 RELEASE_NOTES.md | sed -E "s/(\"[^\"]+\")( edition)/_\1_\2/" | jq -Rs . | cut -c 2- | rev | cut -c 2- | rev)" --description "$(jq -Rs . <<< $(tail -n +2 "RELEASE_NOTES.md") | cut -c 2- | rev | cut -c 2- | rev)" --color "0x6f1c17" --url "https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/${{ env.RELEASE_VERSION }}" --timestamp
