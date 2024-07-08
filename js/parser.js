@@ -2302,7 +2302,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_HStR,
 	SRC_TEC,
 	SRC_SF0,
-	SRC_Rust
+	SRC_Rust,
 ]);
 Parser.SOURCES_VANILLA = new Set([
 	SRC_APG,

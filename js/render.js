@@ -5169,13 +5169,13 @@ Renderer.item = {
 			${Renderer.item.getVariantsHtml(item)}
 			${item.footers || item.craftReq || item.special || item.destruction || item["Tea Ceremony"] || item.gifts ? Renderer.utils.getDividerDiv() : ""}
 			${
-				item.footers ?
-					item.footers.map((footer) => {
-						const renderer = Renderer.get();
-						return `<p class="pf2-stat pf2-stat__section"><strong>${footer.name}&nbsp;</strong>${renderer.render(footer.entries)}`
-					}).join("")
-					: ""
-			}
+	item.footers
+		? item.footers.map((footer) => {
+			const renderer = Renderer.get();
+			return `<p class="pf2-stat pf2-stat__section"><strong>${footer.name}&nbsp;</strong>${renderer.render(footer.entries)}`
+		}).join("")
+		: ""
+}
 			${Renderer.item.getGifts(item)}
 			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements" })}
 			${Renderer.generic.getSpecial(item, { title: "Destruction" })}
@@ -5291,8 +5291,8 @@ Renderer.item = {
 				.forEach(skill => {
 					skills.push(`${skill.includes("Lore") ? `${renderer.render(`{@skill Lore||${skill}}`)}` : `${renderer.render(`{@skill ${skill}}`)}`}&nbsp;${renderer.render(`{@d20 ${item.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(item.skills[skill], { exclude: ["default"], dice: { name: skill } })}`);
 				});
-				renderStack.push(skills.join(", "))
-				if (item.skills.special) renderStack.push(`${skills.length ? "; " : ""}${item.skills.special}`);
+			renderStack.push(skills.join(", "))
+			if (item.skills.special) renderStack.push(`${skills.length ? "; " : ""}${item.skills.special}`);
 			renderStack.push(`</p>`);
 		}
 		if (item.abilityMods) {
@@ -5314,21 +5314,21 @@ Renderer.item = {
 					savingThrowRenderStack.push(
 						`<strong>Fort&nbsp;</strong>${Renderer.get().render(`{@d20 ${item.savingThrows.Fort.default}||Fort Save}`)
 						}${Renderer.utils.getNotes(item.savingThrows.Fort, { exclude: ["default", "abilities"], dice: { name: "Fort Save" } })
-						}`
+						}`,
 					);
 				}
 				if (item.savingThrows.Ref) {
 					savingThrowRenderStack.push(
 						`<strong>Ref&nbsp;</strong>${Renderer.get().render(`{@d20 ${item.savingThrows.Ref.default}||Ref Save}`)
 						}${Renderer.utils.getNotes(item.savingThrows.Ref, { exclude: ["default", "abilities"], dice: { name: "Ref Save" } })
-						}`
+						}`,
 					);
 				}
 				if (item.savingThrows.Will) {
 					savingThrowRenderStack.push(
 						`<strong>Will&nbsp;</strong>${Renderer.get().render(`{@d20 ${item.savingThrows.Will.default}||Will Save}`)
 						}${Renderer.utils.getNotes(item.savingThrows.Will, { exclude: ["default", "abilities"], dice: { name: "Will Save" } })
-						}`
+						}`,
 					);
 				}
 				if (item.ac) {

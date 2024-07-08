@@ -60,7 +60,7 @@ class UtilsChangelog {
 			htmlStack += `</div>`;
 
 			// Earliest Github release was v0.1.2
-			const hasGithubRelease = vMajor || vMinor > 1 || vMinor === 1 && vPatch >= 2;
+			const hasGithubRelease = vMajor || vMinor > 1 || (vMinor === 1 && vPatch >= 2);
 
 			const titlePart = it.title ? `, <i>&quot;<span ${it.titleAlt ? `class="help" title="AKA &quot;${it.titleAlt.escapeQuotes()}&quot; edition"` : ""}>${it.title.escapeQuotes()}</span>&quot;</i> edition` : "";
 			$wrp.prepend(`<div class="flex-col" id="v${it.ver}">
