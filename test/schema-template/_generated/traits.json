@@ -53,9 +53,6 @@
 					"$ref": "#/definitions/combatTrait"
 				},
 				{
-					"$ref": "#/definitions/spellTrait"
-				},
-				{
 					"$ref": "#/definitions/featTrait"
 				},
 				{
@@ -92,73 +89,19 @@
 					"$ref": "#/definitions/equipmentTrait"
 				},
 				{
+					"$ref": "#/definitions/itemTrait"
+				},
+				{
+					"$ref": "#/definitions/spellTrait"
+				},
+				{
 					"$ref": "#/definitions/ancestryHeritageTrait"
 				},
 				{
 					"$ref": "#/definitions/creatureTypeTrait"
-				},
-				{
-					"$ref": "#/definitions/itemTrait"
 				}
 			],
 			"uniqueItems": true
-		},
-		"itemTrait": {
-			"type": "string",
-			"description": "A list of all Item traits.",
-			"enum": [
-				"alchemical",
-				"apex",
-				"artifact",
-				"barding",
-				"bomb",
-				"catalyst",
-				"coda",
-				"companion",
-				"consumable",
-				"contact",
-				"contract",
-				"cursed",
-				"deflecting",
-				"drug",
-				"elixir",
-				"expandable",
-				"extradimensional",
-				"focused",
-				"foldaway",
-				"fulu",
-				"grimoire",
-				"harnessed",
-				"hefty",
-				"infused",
-				"ingested",
-				"inhaled",
-				"injury",
-				"integrated",
-				"intelligent",
-				"invested",
-				"launching",
-				"lozenge",
-				"magical",
-				"missive",
-				"mutagen",
-				"oil",
-				"poison",
-				"potion",
-				"precious",
-				"processed",
-				"relic",
-				"scroll",
-				"shield throw",
-				"snare",
-				"spellgun",
-				"staff",
-				"talisman",
-				"tattoo",
-				"tea",
-				"virulent",
-				"wand"
-			]
 		},
 		"creatureTypeTrait": {
 			"type": "string",
@@ -170,6 +113,7 @@
 				"beast",
 				"celestial",
 				"construct",
+				"div",
 				"dragon",
 				"dream",
 				"eidolon",
@@ -179,6 +123,7 @@
 				"fungus",
 				"giant",
 				"humanoid",
+				"kami",
 				"monitor",
 				"nindoru",
 				"ooze",
@@ -235,6 +180,7 @@
 				"poppet",
 				"ratfolk",
 				"reflection",
+				"reincarnated",
 				"shisk",
 				"shoony",
 				"skeleton",
@@ -248,6 +194,79 @@
 				"undine",
 				"vanara",
 				"vishkanya"
+			]
+		},
+		"spellTrait": {
+			"type": "string",
+			"description": "A list of all Spell traits.",
+			"enum": [
+				"amp",
+				"cantrip",
+				"composition",
+				"consecration",
+				"contingency",
+				"cursebound",
+				"incarnate",
+				"litany",
+				"summon",
+				"trial"
+			]
+		},
+		"itemTrait": {
+			"type": "string",
+			"description": "A list of all Item traits.",
+			"enum": [
+				"alchemical",
+				"apex",
+				"artifact",
+				"barding",
+				"bomb",
+				"catalyst",
+				"coda",
+				"companion",
+				"consumable",
+				"contact",
+				"contract",
+				"cursed",
+				"deflecting",
+				"drug",
+				"elixir",
+				"expandable",
+				"extradimensional",
+				"focused",
+				"foldaway",
+				"fulu",
+				"grimoire",
+				"harnessed",
+				"hefty",
+				"infused",
+				"ingested",
+				"inhaled",
+				"injury",
+				"integrated",
+				"intelligent",
+				"invested",
+				"launching",
+				"lozenge",
+				"magical",
+				"missive",
+				"mutagen",
+				"oil",
+				"poison",
+				"potion",
+				"precious",
+				"processed",
+				"relic",
+				"scroll",
+				"shield throw",
+				"snare",
+				"spellgun",
+				"staff",
+				"talisman",
+				"tattoo",
+				"tea",
+				"virulent",
+				"wand"
 			]
 		},
 		"equipmentTrait": {
@@ -659,21 +678,6 @@
 				"skill",
 				"social",
 				"vigilante"
-			]
-		},
-		"spellTrait": {
-			"type": "string",
-			"description": "A list of all Spell traits.",
-			"enum": [
-				"amp",
-				"cantrip",
-				"composition",
-				"consecration",
-				"contingency",
-				"cursebound",
-				"incarnate",
-				"litany",
-				"summon"
 			]
 		},
 		"combatTrait": {
