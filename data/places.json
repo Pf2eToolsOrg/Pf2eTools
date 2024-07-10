@@ -1,6 +1,70 @@
 {
 	"place": [
 		{
+			"name": "Kintargo",
+			"category": "Settlement",
+			"level": 12,
+			"source": "CC0",
+			"page": 16,
+			"traits": [
+				"city"
+			],
+			"description": "Avant-garde, recently Cheliax-emancipated trade hub and capital of Ravounel",
+			"settlementData": {
+				"government": "Mayor (elected leader)",
+				"population": {
+					"total": 15960,
+					"ancestries": {
+						"humans": 80,
+						"halflings": 6,
+						"hellspawn nephilim": 5,
+						"aiuvarin": 1,
+						"other": 8
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Diabolic}",
+					"{@language Elven}",
+					"{@language Halfling}"
+				],
+				"religions": [
+					"{@deity Calistria}",
+					"{@deity Cayden Cailean}",
+					"{@deity Irori}",
+					"{@deity Milani|LOGM}",
+					"{@deity Sarenrae}",
+					"{@deity Shelyn}",
+					"{@deity Zon-Kuthon}"
+				],
+				"threats": [
+					"competitive artists",
+					"criminal activity",
+					"lingering diabolic elements",
+					"political treachery"
+				],
+				"features": [
+					{
+						"name": "Trade Port",
+						"entries": [
+							"Kintargo is an important trade port. {@filter Common items of level 14 or lower|items||source=|Level=[0;14]|rarity=common} are available for purchase, and items above that level can be ordered and will arrive in the city after {@dice 1d4+2} days (or on the same day, if the shopper pays an extra 500 gp to have the item shipped via {@trait teleportation})."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Jilia Bainilus",
+					"descriptor": "inspiring",
+					"gender": "f",
+					"ancestry": "human",
+					"position": "politician",
+					"level": 11,
+					"bond": "mayor of Kintargo"
+				}
+			]
+		},
+		{
 			"name": "Osprey Cove",
 			"source": "Rust",
 			"page": 7,
