@@ -4774,7 +4774,7 @@ Renderer.deity = {
 			const pantheon = renderer.render(
 				deity.pantheonMembers.map(m => {
 					const [name, src] = m.split("|");
-					return `{@deity ${name}|${src}}`
+					return `{@deity ${name}|${src ?? "CRB"}}`;
 				}).join(", "),
 			);
 			renderStack.push(`<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${pantheon}</p>`);
@@ -5672,27 +5672,27 @@ Renderer.nation = {
 		return renderStack.join("")
 	},
 	getResidents (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
+		const renderer = Renderer.get();
+		const renderStack = [];
 		it.residents.forEach(element => {
-			const residentStack = []
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			renderStack.push(renderer.render(`<strong>${element.name}</strong> `))
+			const residentStack = [];
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+			renderStack.push(renderer.render(`<strong>${element.name}</strong> `));
 			if (element.alignment || element.gender || element.ancestry || element.position) {
-				renderStack.push(`(`)
-				if (element.alignment) residentStack.push(`{@trait ${element.alignment.toUpperCase()}}`)
+				renderStack.push(`(`);
+				if (element.alignment) residentStack.push(`{@trait ${element.alignment.toUpperCase()}}`);
 				if (element.descriptor) residentStack.push(element.descriptor);
-				if (element.gender) residentStack.push(Parser.genderToFull(element.gender))
-				if (element.ancestry) residentStack.push(element.ancestry)
-				if (element.position) residentStack.push(element.position)
-				if (element.level) residentStack.push(element.level)
-				renderStack.push(residentStack.join(" "))
-				renderStack.push(`) `)
+				if (element.gender) residentStack.push(Parser.genderToFull(element.gender));
+				if (element.ancestry) residentStack.push(element.ancestry);
+				if (element.position) residentStack.push(element.position);
+				if (element.level) residentStack.push(element.level);
+				renderStack.push(residentStack.join(" "));
+				renderStack.push(`) `);
 			}
-			if (element.bond) renderStack.push(element.bond)
-			renderStack.push(`</p>`)
+			if (element.bond) renderStack.push(element.bond);
+			renderStack.push(`</p>`);
 		});
-		return renderer.render(renderStack.join(""))
+		return renderer.render(renderStack.join(""));
 	},
 };
 
