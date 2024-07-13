@@ -2120,9 +2120,9 @@
 				"cha": 3
 			},
 			"items": [
-				"hand crossbow (20 bolts)",
-				"sap",
-				"studded leather armor"
+				"{@item hand crossbow} (20 {@item bolt (generic)||bolts})",
+				"{@item sap}",
+				"{@item studded leather||studded leather armor}"
 			],
 			"defenses": {
 				"ac": {
@@ -2197,12 +2197,17 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The charming scoundrel Strides twice. If they end their movement within melee reach of an enemy, they can {@action Feint}."
+							"The charming scoundrel {@action Stride||Strides} twice. If they end their movement within melee reach of an enemy, they can {@action Feint}."
 						]
 					},
 					{
-						"name": "Sneak Attack 2d6",
-						"entries": []
+						"name": "Sneak Attack",
+						"entries": [
+							"{@damage 2d6}"
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
