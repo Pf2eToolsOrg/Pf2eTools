@@ -1,6 +1,235 @@
 {
 	"relicGift": [
 		{
+			"name": "Creative Spark",
+			"tier": "minor",
+			"source": "LOHh",
+			"page": 114,
+			"traits": [
+				"conjuration",
+				"fire"
+			],
+			"aspects": [
+				"forge"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You strike the relic against a piece of flint and summon a {@creature fire wisp|B3} to assist you, which appears in an unoccupied square next to you. The fire wisp doesn't act in combat, but it can assist you while you {@action Craft} items. You gain a +1 bonus to {@skill Crafting} checks involving blacksmithing and general metalworking, increasing to +2 at 9th level and +3 at 17th level. Once per day, when you roll a critical failure on a {@skill Crafting} check related to blacksmithing, you get a failure instead. The wisp replaces the need for a forge while blacksmithing, but you still require other equipment and tools. The wisp remains for up to 10 minutes or until you {@action Dismiss} it. You can extend this duration by an additional 10 minutes if you feed the wisp one light Bulk worth of charcoal or firewood, or one pint of oil."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Forge Wield",
+			"tier": "minor",
+			"source": "LOHh",
+			"page": 114,
+			"traits": [
+				"transmutation"
+			],
+			"aspects": [
+				"forge"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You strike the relic against a non-magical metal object of 4 Bulk or less, repairing it. The object's edges glow white hot, and you restore 5 Hit Points to the object per level of the relic. If this repairs the item above its Broken Threshold, it is no longer broken. This ability cannot replace lost pieces or restore something that's been completely destroyed."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Work Harden",
+			"tier": "minor",
+			"source": "LOHh",
+			"page": 114,
+			"traits": [
+				"abjuration"
+			],
+			"aspects": [
+				"forge"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You strike the relic against a shield or armor made of metal, and steam pours from it like it's just been quenched. The target item hardens for 10 minutes, increasing its item bonus to AC by 1 if it's armor or its Hardness by 5 if it's a shield."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Elements of Creation",
+			"tier": "major",
+			"source": "LOHh",
+			"page": 114,
+			"traits": [
+				"air",
+				"conjuration",
+				"earth",
+				"water"
+			],
+			"aspects": [
+				"forge"
+			],
+			"prerequisites": "{@relicGift creative spark|LOHh} gift",
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"When you activate {@relicGift creative spark|LOHh}, you can choose to summon an {@creature air wisp|B3}, a {@creature water wisp|B3}, and an {@creature earth wisp|B3} in unoccupied squares next to you, in addition to the {@creature fire wisp|B3}. Unlike a typical earth wisp, the summoned earth wisp takes the form of a small iron creature resembling an anvil crossed with a horned beetle. Like the fire wisp, these additional wisps don't act in combat but can assist you while you {@action Craft} items. While all four wisps are assisting you, the bonus you gain from {@relicGift creative spark|LOHh} is doubled, and your outcome for {@skill Crafting} checks related to blacksmithing is one degree of success better than your roll. In addition, being assisted by all four wisps replaces the need for any equipment other than blacksmithing tools when crafting metal items. The wisps last for up to 10 minutes or until you {@action Dismiss} them all together as an action. If you extend the duration of the fire wisp, it also extends the duration for the other wisps."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsPassive"
+			]
+		},
+		{
+			"name": "Molten Crucible",
+			"tier": "major",
+			"source": "LOHh",
+			"page": 114,
+			"traits": [
+				"fire",
+				"transmutation"
+			],
+			"aspects": [
+				"forge"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You strike your relic against a weapon, armor, or shield made of metal. The item becomes red hot and, over the next 10 minutes, transforms into a different base item from the same category. This changes the item's base form while retaining its same materials, runes, and magical properties. Both base items must have an item level of 1 or less, and weapons must require the same number of hands. Specific items can't be changed in this way unless the GM expressly allows it. For example, a {@runeItem mace||+2 weapon potency||+2 cold iron mace} can become a {@runeItem longsword||+2 weapon potency||+2 cold iron longsword}, or {@item chain mail} can become {@item half plate}, but a {@item moonlit chain} can't be affected in this way."
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
+			"name": "Living Forge",
+			"tier": "grand",
+			"source": "LOHh",
+			"page": 114,
+			"traits": [
+				"polymorph",
+				"transmutation"
+			],
+			"aspects": [
+				"forge"
+			],
+			"entries": [
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The relic is absorbed into your body, and you transform into an elemental being of red-hot steel. You gain the effects of 7th-level {@spell elemental form} and use the statistics for the forge battle form. In this form, you can re-shape your limbs into different objects, such as a blade or hammer, by using an {@action Interact} action. Changing your limbs in this way allows you to choose between bludgeoning, physical, or slashing damage.",
+						{
+							"type": "list",
+							"items": [
+								"{@b Forge} Speed 30 feet; fire resistance 10, weakness 5 to cold and water; {@b Melee} {@as 1} forgestrike, {@b Damage} {@damage 1d10} {@trait modular}; {@damage 1d4} {@condition persistent damage||persistent fire}."
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"grantsAbility"
+			]
+		},
+		{
 			"name": "Intelligent Relic",
 			"source": "TV",
 			"page": 200,

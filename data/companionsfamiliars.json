@@ -1,6 +1,174 @@
 {
 	"companion": [
 		{
+			"name": "Augdunar",
+			"source": "LOHh",
+			"page": 109,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is an {@creature augdunar|LOHh}, a powerful breed of mule favored by the dwarves of Highhelm."
+			],
+			"size": [
+				"medium"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 1,
+				"con": 3,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 10,
+			"skill": "athletics",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise) 30 feet"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"special": "mount",
+			"support": "The augdunar shifts its weight, proffering you an item. You {@action Interact} to draw a weapon or item that is being carried by the augdunar.",
+			"maneuver": {
+				"name": "Weighted Kick",
+				"source": "LOHh",
+				"page": 109,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your augdunar gives a heavy kick with its hind legs, bringing the weight of its burden on the target. It makes a hoof {@action Strike}. On a successful hit, the augdunar automatically {@action shove||Shoves} the target back 5 feet (10 feet on a critical success)."
+				]
+			}
+		},
+		{
+			"name": "Draft Lizard",
+			"source": "LOHh",
+			"page": 109,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a {@creature draft lizard|LOHh|giant lizard}, used in the depths of Highhelm as mounts and pack animals."
+			],
+			"size": [
+				"medium"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "athletics",
+			"senses": {
+				"other": [
+					"{@ability darkvision}",
+					"{@ability scent} (imprecise) 30 feet"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"special": "mount",
+			"support": "Your draft lizard assists you in battle. You gain a +1 circumstance bonus on your next attack roll to {@action Strike} a foe within your draft lizard's reach. The bonus lasts until the first time you use it or until the beginning of your next turn, whichever comes first.",
+			"maneuver": {
+				"name": "Tail Swipe",
+				"source": "LOHh",
+				"page": 109,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your draft lizard sweeps its tail, making tail {@action strike||Strikes} against up to two adjacent foes. Each attack counts toward the draft lizard's multiple attack penalty, but the penalty only increases after all the attacks have been made."
+				]
+			}
+		},
+		{
+			"name": "Goat",
+			"source": "LOHh",
+			"page": 109,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a breed of mountain goat populous in the Five Kings Mountains."
+			],
+			"size": [
+				"medium"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "headbutt",
+					"traits": [
+						"shove"
+					],
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "acrobatics",
+			"senses": {
+				"other": [
+					"{@ability scent} (imprecise) 30 feet"
+				]
+			},
+			"speed": {
+				"walk": 35,
+				"climb": 15
+			},
+			"special": "mount",
+			"support": "Your goat boosts you up a wall, allowing you to reach greater heights. You climb up a surface as if you had rolled a success on a {@action Climb} action.",
+			"maneuver": {
+				"name": "Knock Aside",
+				"source": "LOHh",
+				"page": 109,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"requirements": "The animal companion's last action was a successful headbutt {@action Strike}.",
+				"entries": [
+					"The goat automatically pushes the target back 5 feet, or 10 feet if the required {@action Strike} was a critical hit."
+				]
+			}
+		},
+		{
 			"name": "Air Elemental",
 			"source": "RoE",
 			"page": 40,

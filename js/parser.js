@@ -1694,6 +1694,7 @@ SRC_TEC = "TEC";
 SRC_SF0 = "SF0";
 SRC_Rust = "Rust";
 SRC_CC0 = "CC0";
+SRC_LOHh = "LOHh";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
@@ -1852,6 +1853,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_TEC] = "The Enmity Cycle";
 Parser.SOURCE_JSON_TO_FULL[SRC_SF0] = "Stolen Fate Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_Rust] = "Rusthenge";
 Parser.SOURCE_JSON_TO_FULL[SRC_CC0] = "Curtain Call Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOHh] = "Lost Omens: Highhelm";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
@@ -1974,6 +1976,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_TEC] = "TEC";
 Parser.SOURCE_JSON_TO_ABV[SRC_SF0] = "SF0";
 Parser.SOURCE_JSON_TO_ABV[SRC_Rust] = "Rust";
 Parser.SOURCE_JSON_TO_ABV[SRC_CC0] = "CC0";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOHh] = "LOHh";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
@@ -2096,6 +2099,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_TEC] = "2023-05-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_SF0] = "2023-04-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_Rust] = "2023-10-18";
 Parser.SOURCE_JSON_TO_DATE[SRC_CC0] = "2024-07-10";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOHh] = "2023-06-28";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
@@ -2229,6 +2233,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_TEC] = "https://paizo.com/products/btq02e50";
 Parser.SOURCE_JSON_TO_STORE[SRC_SF0] = "https://downloads.paizo.com/StolenFatePlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_Rust] = "https://paizo.com/products/btq02epv";
 Parser.SOURCE_JSON_TO_STORE[SRC_CC0] = "https://downloads.paizo.com/CurtainCall_PlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOHh] = "https://paizo.com/products/btq02e6p";
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_AFoF,
 	SRC_AFFM,
@@ -2406,6 +2411,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_PFUM,
 	SRC_SoM,
 	SRC_LOTXWG,
+	SRC_LOHh,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;

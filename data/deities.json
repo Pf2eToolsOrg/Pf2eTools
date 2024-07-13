@@ -4494,10 +4494,24 @@
 		{
 			"name": "Angradd",
 			"alias": [
-				"The Forge-Fire"
+				"The Forge-Fire",
+				"Army-Cleaver",
+				"High Marshall",
+				"The Tempered"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|116"
+				]
+			},
+			"areasOfConcern": [
+				"fire",
+				"offensive war",
+				"tradition"
+			],
 			"alignment": {
 				"alignment": [
 					"lg"
@@ -4507,31 +4521,32 @@
 					"ln"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"seek and destroy evil",
-				"study evil to learn the best way to destroy it",
-				"train others in righteous ways"
-			],
-			"anathema": [
-				"allow weaker evils to survive due to the presence of larger evils",
-				"deceive others outside of tactical gain"
-			],
 			"font": [
 				"heal"
 			],
 			"divineAbility": {
 				"abilities": [
 					"strength",
-					"constitution"
+					"constitution",
+					"intelligence",
+					"wisdom"
 				],
-				"entry": "Strength or Constitution"
+				"entry": "{@footnote Strength or Constitution|Intelligence or Wisdom|Lost Omens: Highhelm, p116}"
+			},
+			"divineSkill": {
+				"skills": [
+					"athletics"
+				]
 			},
 			"domains": [
 				"fate",
 				"fire",
 				"protection",
 				"zeal"
+			],
+			"alternateDomains": [
+				"duty",
+				"knowledge"
 			],
 			"spells": {
 				"1": [
@@ -4544,14 +4559,48 @@
 					"fireball"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"athletics"
-				]
-			},
+			"edicts": [
+				"seek and destroy evil",
+				"study evil to learn the best way to destroy it",
+				"train others in righteous ways"
+			],
+			"anathema": [
+				"allow weaker evils to survive due to the presence of larger evils",
+				"deceive others outside of tactical gain"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"greataxe"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Angradd typically becomes clad in full-plate made of pure flame, emitting a comfortable heat for the caster and their allies while feeling like a roaring inferno to foes. They gain the following additional abilities.",
+				"speed": {
+					"walk": 40
+				},
+				"immune": [
+					"fire"
+				],
+				"melee": [
+					{
+						"name": "greataxe",
+						"traits": [
+							"reach <15 feet>",
+							"sweep"
+						],
+						"damage": "6d12+6",
+						"damageType": "slashing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "flaming salvo",
+						"range": 60,
+						"damage": "4d6+3",
+						"damageType": "fire",
+						"damage2": "2d6",
+						"damageType2": "{@condition persistent damage||persistent fire damage}"
+					}
 				]
 			}
 		},
@@ -6483,8 +6532,19 @@
 			"alias": [
 				"The Golden Gift"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|117"
+				]
+			},
+			"areasOfConcern": [
+				"marriage",
+				"passion",
+				"committed relationships"
+			],
 			"alignment": {
 				"alignment": [
 					"ng"
@@ -6495,17 +6555,6 @@
 					"cg"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"encourage those seeking love",
-				"seek the beauty in others",
-				"support others' relationships"
-			],
-			"anathema": [
-				"betray your spouse",
-				"disrupt a genuine marriage",
-				"prevent a suitor from seeking a partner"
-			],
 			"font": [
 				"heal"
 			],
@@ -6516,11 +6565,19 @@
 				],
 				"entry": "Wisdom or Charisma"
 			},
+			"divineSkill": {
+				"skills": [
+					"diplomacy"
+				]
+			},
 			"domains": [
 				"confidence",
 				"family",
 				"healing",
 				"passion"
+			],
+			"alternateDomains": [
+				"toil"
 			],
 			"spells": {
 				"1": [
@@ -6533,14 +6590,53 @@
 					"collective transposition"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"diplomacy"
-				]
-			},
+			"edicts": [
+				"encourage those seeking love",
+				"see the beauty in others",
+				"support others' relationships"
+			],
+			"anathema": [
+				"betray your spouse",
+				"disrupt a genuine marriage",
+				"prevent a suitor from seeking a partner"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"mace"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Bolka's skin typically turns golden brown and grows long ringlets of blonde hair. They gain the following additional abilities",
+				"speed": {
+					"walk": 60
+				},
+				"immune": [
+					"mental"
+				],
+				"melee": [
+					{
+						"name": "light mace",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach <15 feet>",
+							"shove"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "wedding bell",
+						"range": 120,
+						"traits": [
+							"auditory",
+							"nonlethal"
+						],
+						"damage": "6d6+3",
+						"damageType": "sonic"
+					}
 				]
 			}
 		},
@@ -8782,8 +8878,19 @@
 			"alias": [
 				"The Debt Minder"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|118"
+				]
+			},
+			"areasOfConcern": [
+				"debt",
+				"pursuit",
+				"vengeance"
+			],
 			"alignment": {
 				"alignment": [
 					"ln"
@@ -8793,19 +8900,9 @@
 					"le"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"help reclaim just debts",
-				"seek appropriate vengeance against transgressions"
-			],
-			"anathema": [
-				"allow a slight to go unrecognized",
-				"avoid repaying a debt",
-				"force others into debts you know are unpayable"
-			],
 			"font": [
-				"heal",
-				"harm"
+				"harm",
+				"heal"
 			],
 			"divineAbility": {
 				"abilities": [
@@ -8814,11 +8911,20 @@
 				],
 				"entry": "Constitution or Wisdom"
 			},
+			"divineSkill": {
+				"skills": [
+					"intimidation"
+				]
+			},
 			"domains": [
 				"knowledge",
 				"might",
 				"travel",
 				"vigil"
+			],
+			"alternateDomains": [
+				"fate",
+				"truth"
 			],
 			"spells": {
 				"1": [
@@ -8831,14 +8937,47 @@
 					"passwall"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"intimidation"
-				]
-			},
+			"edicts": [
+				"help reclaim just debts",
+				"seek appropriate vengeance against transgressions"
+			],
+			"anathema": [
+				"allow a slight to go unrecognized",
+				"avoid repaying a debt",
+				"force others into debts you know are unpayable"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"light pick"
+				]
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Dranngvit's eyes turn white, with a gaze that seems to judge every broken promise. They gain the following additional abilities.",
+				"speed": {
+					"walk": 50
+				},
+				"immune": [
+					"mental"
+				],
+				"melee": [
+					{
+						"name": "light pick",
+						"traits": [
+							"agile",
+							"fatal <d8>",
+							"reach <15 feet>"
+						],
+						"damage": "6d4+6",
+						"damageType": "piercing"
+					}
+				],
+				"ranged": [
+					{
+						"name": "collector's toll",
+						"range": 80,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
 				]
 			}
 		},
@@ -8847,11 +8986,13 @@
 			"alias": [
 				"The Dark Smith"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
 			"otherSources": {
 				"Expanded": [
-					"AoA4|62"
+					"AoA4|62",
+					"LOHh|124"
 				]
 			},
 			"alignment": {
@@ -8864,18 +9005,6 @@
 					"ce"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"achieve goals at any cost",
-				"continually improve your abilities",
-				"establish dominance",
-				"work ceaselessly"
-			],
-			"anathema": [
-				"fail to work toward goals or grow in skill",
-				"relax excessively or give in to sloth"
-			],
-			"hasLore": true,
 			"font": [
 				"harm"
 			],
@@ -8885,6 +9014,11 @@
 					"constitution"
 				],
 				"entry": "Constitution or Intelligence"
+			},
+			"divineSkill": {
+				"skills": [
+					"crafting"
+				]
 			},
 			"domains": [
 				"duty",
@@ -8908,38 +9042,83 @@
 					"dominate"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"crafting"
-				]
-			},
+			"edicts": [
+				"achieve goals at any cost",
+				"continually improve your abilities",
+				"establish dominance",
+				"work ceaselessly"
+			],
+			"anathema": [
+				"fail to work toward goals or grow in skill",
+				"relax excessively or give in to sloth"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"light hammer"
 				]
-			}
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Droskar has their skin turn the grimy gray of forge ash and sweat. They gain the following additional abilities. The Taskmaster's Grasp causes the target to become {@condition immobilized} for 1 round unless they succeed at a Reflex saving throw.",
+				"speed": {
+					"walk": 50
+				},
+				"immune": [
+					"immobilized"
+				],
+				"melee": [
+					{
+						"name": "hammer of toil",
+						"traits": [
+							"agile",
+							"reach <15 feet>",
+							"thrown <40 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "taskmaster manacles",
+						"range": 120,
+						"damage": "5d6+3",
+						"damageType": "bludgeoning",
+						"note": "plus Taskmaster's Grasp"
+					}
+				]
+			},
+			"hasLore": true
 		},
 		{
 			"name": "Dwarven Pantheon",
+			"category": "Pantheon",
 			"source": "LOGM",
 			"page": 92,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|125"
+				]
+			},
 			"pantheonMembers": [
-				"Torag|CRB",
-				"Magrim|LOGM",
 				"Angradd|LOGM",
-				"Dranngvit|LOGM",
-				"Folgrit|LOGM",
 				"Bolka|LOGM",
+				"Dranngvit|LOGM",
+				"Droskar|LOGM",
+				"Folgrit|LOGM",
 				"Grundinnar|LOGM",
 				"Kols|LOGM",
-				"Trudd|LOGM",
-				"Droskar|LOGM"
+				"Magrim|LOGM",
+				"Torag|CRB",
+				"Trudd|LOGM"
 			],
 			"areasOfConcern": [
 				"ancestry",
 				"crafting",
 				"dwarves",
 				"relationships"
+			],
+			"font": [
+				"heal"
 			],
 			"alignment": {
 				"alignment": [
@@ -8952,26 +9131,17 @@
 					"n"
 				]
 			},
-			"category": "Pantheon",
-			"edicts": [
-				"develop skills useful to your community (especially crafting, mining, and trading)",
-				"honor your ancestors through traditions and rituals"
-			],
-			"anathema": [
-				"dishonor your family",
-				"willingly break a contract or oath",
-				"irreparably damage an ancestral relic"
-			],
-			"hasLore": true,
-			"font": [
-				"heal"
-			],
 			"divineAbility": {
 				"abilities": [
 					"constitution",
 					"wisdom"
 				],
 				"entry": "Constitution or Wisdom"
+			},
+			"divineSkill": {
+				"skills": [
+					"diplomacy"
+				]
 			},
 			"domains": [
 				"creation",
@@ -8994,11 +9164,15 @@
 					"retrocognition"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"diplomacy"
-				]
-			},
+			"edicts": [
+				"develop skills useful to your community (especially crafting, mining, and trading)",
+				"honor your ancestors through tradition and rituals"
+			],
+			"anathema": [
+				"dishonor your family",
+				"willingly break a contract or oath",
+				"irreparably damage an ancestral relic"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"warhammer"
@@ -9631,8 +9805,19 @@
 			"alias": [
 				"The Watchful Mother"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|119"
+				]
+			},
+			"areasOfConcern": [
+				"children",
+				"hearths",
+				"mothers"
+			],
 			"alignment": {
 				"alignment": [
 					"lg"
@@ -9643,16 +9828,6 @@
 					"ng"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"maintain the sanctity of a home",
-				"remain patient with others",
-				"take in those without families"
-			],
-			"anathema": [
-				"abandon your family",
-				"fail to defend your neighbors"
-			],
 			"font": [
 				"heal"
 			],
@@ -9663,11 +9838,20 @@
 				],
 				"entry": "Constitution or Wisdom"
 			},
+			"divineSkill": {
+				"skills": [
+					"diplomacy"
+				]
+			},
 			"domains": [
 				"cities",
 				"family",
 				"repose",
 				"protection"
+			],
+			"alternateDomains": [
+				"duty",
+				"sorrow"
 			],
 			"spells": {
 				"1": [
@@ -9676,20 +9860,54 @@
 				"4": [
 					"fire shield"
 				],
-				"9": [
+				"6": [
 					"resplendent mansion"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"medicine"
-				]
-			},
+			"edicts": [
+				"maintain the sanctity of a home",
+				"remain patient with others",
+				"take in those without families"
+			],
+			"anathema": [
+				"abandon your family",
+				"fail to defend your neighbors"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"staff"
 				]
-			}
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Folgrit gains an ageless appearance, seeming both youthful and worldly at the same time. They gain the following additional abilities. The chastising shout {@action Strike} causes the target to become {@condition enfeebled} unless they succeed at a Will saving throw.",
+				"speed": {
+					"walk": 60
+				},
+				"immune": [
+					"negative"
+				],
+				"melee": [
+					{
+						"name": "matriarch staff",
+						"traits": [
+							"reach <15 feet>",
+							"two-hand <d8>"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "chastising shout",
+						"range": 120,
+						"damage": "5d6+6",
+						"damageType": "mental",
+						"note": "and {@condition enfeebled 1}"
+					}
+				]
+			},
+			"hasLore": true
 		},
 		{
 			"name": "Fumeiyoshi",
@@ -10945,8 +11163,20 @@
 			"alias": [
 				"The Peacemaker"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|120"
+				]
+			},
+			"areasOfConcern": [
+				"friendship",
+				"alliance",
+				"family",
+				"truth"
+			],
 			"alignment": {
 				"alignment": [
 					"lg"
@@ -10956,31 +11186,29 @@
 					"ng"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"attempt to bridge the gap between feuding sides",
-				"maintain just treaties",
-				"maintain relations with neighbors"
-			],
-			"anathema": [
-				"sow discord among friends and allies",
-				"attack during parley"
-			],
 			"font": [
 				"heal"
 			],
 			"divineAbility": {
 				"abilities": [
-					"charisma",
-					"constitution"
+					"constitution",
+					"charisma"
 				],
 				"entry": "Constitution or Charisma"
+			},
+			"divineSkill": {
+				"skills": [
+					"diplomacy"
+				]
 			},
 			"domains": [
 				"confidence",
 				"family",
 				"protection",
 				"truth"
+			],
+			"alternateDomains": [
+				"repose"
 			],
 			"spells": {
 				"1": [
@@ -10993,16 +11221,51 @@
 					"wall of force"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"diplomacy"
-				]
-			},
+			"edicts": [
+				"attempt to bridge the gap between feuding sides",
+				"maintain just treaties",
+				"maintain relations with neighbors"
+			],
+			"anathema": [
+				"sow discord among friends and allies",
+				"attack during parley"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"light hammer"
 				]
-			}
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Grundinnar becomes cleansed of all grime and speaks in a voice that cuts through even the loudest din of combat. They gain the following abilities. The demand for peace {@action Strike} causes the target to become {@condition stupefied} unless they succeed at a Will saving throw.",
+				"speed": {
+					"walk": 60
+				},
+				"immune": [
+					"negative"
+				],
+				"melee": [
+					{
+						"name": "light hammer",
+						"traits": [
+							"agile",
+							"reach <15 feet>",
+							"thrown <40 feet>"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "demand for peace",
+						"range": 120,
+						"damage": "5d6+6",
+						"damageType": "mental",
+						"note": "and {@condition stupefied 1}"
+					}
+				]
+			},
+			"hasLore": true
 		},
 		{
 			"name": "Gyronna",
@@ -13019,17 +13282,23 @@
 		},
 		{
 			"name": "Kols",
-			"hasLore": true,
 			"alias": [
-				"Oath-Keeper"
+				"The Oathkeeper"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
 			"otherSources": {
 				"Expanded": [
-					"LOKL|58"
+					"LOKL|48",
+					"LOHh|121"
 				]
 			},
+			"areasOfConcern": [
+				"duty",
+				"honor",
+				"promises"
+			],
 			"alignment": {
 				"alignment": [
 					"ln"
@@ -13039,25 +13308,9 @@
 					"ln"
 				]
 			},
-			"areasOfConcern": [
-				"duty",
-				"honor",
-				"promises"
-			],
-			"category": "Dwarven Gods",
-			"edicts": [
-				"seek those that break oaths and enforce just restitution",
-				"uphold your promises"
-			],
-			"anathema": [
-				"lie",
-				"dishonor yourself or your family",
-				"shirk your duties",
-				"break an oath"
-			],
 			"font": [
-				"heal",
-				"harm"
+				"harm",
+				"heal"
 			],
 			"divineAbility": {
 				"abilities": [
@@ -13066,11 +13319,21 @@
 				],
 				"entry": "Strength or Wisdom"
 			},
+			"divineSkill": {
+				"skills": [
+					"society"
+				]
+			},
 			"domains": [
 				"duty",
 				"knowledge",
 				"might",
 				"truth"
+			],
+			"alternateDomains": [
+				"confidence",
+				"glyph",
+				"secrecy"
 			],
 			"spells": {
 				"1": [
@@ -13083,7 +13346,23 @@
 					"unrelenting observation"
 				]
 			},
+			"edicts": [
+				"Seek those who break oaths and enforce just restitution",
+				"uphold your promises"
+			],
+			"anathema": [
+				"lie",
+				"dishonor yourself or your family",
+				"shirk your duties",
+				"break an oath"
+			],
+			"favoredWeapon": {
+				"weapons": [
+					"light hammer"
+				]
+			},
 			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Kols typically becomes a living embodiment of justice, with a tome of laws to protect the innocent, a gavel to subdue the guilty, and the wisdom and courage to discern which is which. They gain the following additional abilities.",
 				"speed": {
 					"walk": 50
 				},
@@ -13106,26 +13385,16 @@
 				"ranged": [
 					{
 						"name": "pronounce judgment",
+						"range": 120,
 						"traits": [
-							"auditory",
 							"nonlethal"
 						],
-						"range": 120,
-						"damage": "6d6+3",
-						"damageType": "sonic"
+						"damage": "6d6+3 sonic",
+						"damageType": "mental"
 					}
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"society"
-				]
-			},
-			"favoredWeapon": {
-				"weapons": [
-					"light hammer"
-				]
-			}
+			"hasLore": true
 		},
 		{
 			"name": "Korada",
@@ -14546,8 +14815,19 @@
 			"alias": [
 				"The Taskmaster"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|122"
+				]
+			},
+			"areasOfConcern": [
+				"death",
+				"fate",
+				"underworld"
+			],
 			"alignment": {
 				"alignment": [
 					"ln"
@@ -14558,19 +14838,6 @@
 					"n"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"perfect a craft or trade",
-				"carve runes",
-				"destroy undead",
-				"aid others with completing unfinished tasks"
-			],
-			"anathema": [
-				"treat gravesites irreverently",
-				"mistreat your tools",
-				"create undead",
-				"damage a soul"
-			],
 			"font": [
 				"heal"
 			],
@@ -14581,11 +14848,20 @@
 				],
 				"entry": "Constitution or Wisdom"
 			},
+			"divineSkill": {
+				"skills": [
+					"crafting"
+				]
+			},
 			"domains": [
 				"death",
 				"duty",
-				"glyph",
-				"fate"
+				"fate",
+				"glyph"
+			],
+			"alternateDomains": [
+				"creation",
+				"soul"
 			],
 			"spells": {
 				"1": [
@@ -14598,16 +14874,53 @@
 					"earthquake"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"crafting"
-				]
-			},
+			"edicts": [
+				"perfect a craft or trade",
+				"carve runes",
+				"destroy {@trait undead}",
+				"aid others with completing unfinished tasks"
+			],
+			"anathema": [
+				"treat gravesites irreverently",
+				"mistreat your tools",
+				"create {@trait undead}",
+				"damage a soul"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"warhammer"
 				]
-			}
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Magrim gains a dour expression, lacking any mirth, and their skin turns a pallid, corpse-like color. They gain the following abilities.",
+				"speed": {
+					"walk": 60
+				},
+				"immune": [
+					"drained",
+					"fatigued"
+				],
+				"melee": [
+					{
+						"name": "worker's hammer",
+						"traits": [
+							"reach <15 feet>",
+							"shove"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				],
+				"ranged": [
+					{
+						"name": "soul blast",
+						"range": 60,
+						"damage": "6d6",
+						"damageType": "force"
+					}
+				]
+			},
+			"hasLore": true
 		},
 		{
 			"name": "Mahathallah",
@@ -19864,43 +20177,55 @@
 		{
 			"name": "Trudd",
 			"alias": [
-				"The Mighty"
+				"The Might"
 			],
+			"category": "Dwarven Gods",
 			"source": "LOGM",
 			"page": 126,
+			"otherSources": {
+				"Expanded": [
+					"LOHh|123"
+				]
+			},
+			"areasOfConcern": [
+				"bravery",
+				"defense",
+				"strength"
+			],
 			"alignment": {
 				"alignment": [
 					"ng"
 				],
 				"followerAlignment": [
 					"lg",
-					"ng"
+					"ng",
+					"cg"
 				]
 			},
-			"category": "Dwarven Gods",
-			"edicts": [
-				"offer your strength to aid others",
-				"protect those weaker than you"
-			],
-			"anathema": [
-				"engage in petty showcases of strength",
-				"use your strength to take advantage of others"
-			],
 			"font": [
 				"heal"
 			],
 			"divineAbility": {
 				"abilities": [
-					"constitution",
-					"strength"
+					"strength",
+					"constitution"
 				],
 				"entry": "Strength or Constitution"
+			},
+			"divineSkill": {
+				"skills": [
+					"athletics"
+				]
 			},
 			"domains": [
 				"confidence",
 				"duty",
 				"might",
 				"protection"
+			],
+			"alternateDomains": [
+				"earth",
+				"zeal"
 			],
 			"spells": {
 				"1": [
@@ -19913,16 +20238,50 @@
 					"stoneskin"
 				]
 			},
-			"divineSkill": {
-				"skills": [
-					"athletics"
-				]
-			},
+			"edicts": [
+				"offer your strength to aid others",
+				"protect those weaker than you"
+			],
+			"anathema": [
+				"engage in petty demonstrations of strength",
+				"use your strength to take advantage of others"
+			],
 			"favoredWeapon": {
 				"weapons": [
 					"warhammer"
 				]
-			}
+			},
+			"avatar": {
+				"preface": "When casting the {@spell avatar} spell, a worshipper of Trudd gains dark, loam-colored skin, their muscles accentuated with steel blue light. They gain the following additional abilities. The crushing hammer {@action Strike} causes the target to become {@condition clumsy} unless they succeed at a Fortitude saving throw.",
+				"speed": {
+					"walk": 55
+				},
+				"immune": [
+					"mental"
+				],
+				"shield": 15,
+				"melee": [
+					{
+						"name": "crushing hammer",
+						"traits": [
+							"reach <15 feet>",
+							"shove"
+						],
+						"damage": "5d8+6",
+						"damageType": "bludgeoning",
+						"note": "and {@condition clumsy 1}"
+					}
+				],
+				"ranged": [
+					{
+						"name": "shield toss",
+						"range": 60,
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
+				]
+			},
+			"hasLore": true
 		},
 		{
 			"name": "Tsukiyo",
