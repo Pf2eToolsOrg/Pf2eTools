@@ -4294,34 +4294,34 @@ Renderer.creature = {
 	},
 
 	getLanguages (crLanguages) {
-		if (crLanguages == null) return ""
+		if (crLanguages == null) return "";
 
-		const renderer = Renderer.get()
+		const renderer = Renderer.get();
 
-		const languages = crLanguages.languages || []
-		const notes = crLanguages.notes || []
-		const abilities = crLanguages.abilities || []
+		const languages = crLanguages.languages || [];
+		const notes = crLanguages.notes || [];
+		const abilities = crLanguages.abilities || [];
 
 		if (languages.length !== 0 || notes.length !== 0 || abilities.length !== 0) {
-			const renderedNotes = notes.map(n => renderer.render(n));
-			const langs = languages.map(t => t.toTitleCase()).concat(renderedNotes);
+			const renderedNotes = notes.map(n => renderer.render(n)).join(", ");
+			const langs = languages.map(t => t.toTitleCase());
 
 			let renderStack = [];
 
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
-			renderStack.push(`<span>`)
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`);
+			renderStack.push(`<span>`);
 
-			renderStack.push(langs.length !== 0 ? langs.join(", ") : "— ")
+			renderStack.push(langs.length !== 0 ? `${langs.join(", ")}${notes.length ? ` ${renderedNotes}` : ""}` : notes.length ? renderedNotes : "— ");
 			if (abilities.length !== 0) {
-				if (langs !== 0) renderStack.push("; ")
-				renderStack.push(renderer.render(abilities.join(", ")))
+				if (langs !== 0) renderStack.push("; ");
+				renderStack.push(renderer.render(abilities.join(", ")));
 			}
-			renderStack.push(`</span>`)
-			renderStack.push(`</p>`)
+			renderStack.push(`</span>`);
+			renderStack.push(`</p>`);
 
-			return renderStack.join("")
-		} else return ""
+			return renderStack.join("");
+		} else return "";
 	},
 
 	getSkills (cr) {
