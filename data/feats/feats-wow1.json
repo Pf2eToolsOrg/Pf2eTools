@@ -40,7 +40,7 @@
 			],
 			"prerequisites": "{@feat Verduran Shadow Dedication|WoW1}, trained in {@skill Athletics}",
 			"entries": [
-				"You are as at home in the treetops as you are beneath their branches. You gain a climb Speed of 15 feet when moving through trees, vines, and other foliage. Whenever you succeed at an {@skill Athletics} check to {@action Climb} a tree or an {@skill Acrobatics} check to {@action Balance} on a branch, you get a critical success instead. You aren't {@condition flat-footed||off-guard} while {@action Climb||Climbing} or {@action Balance||Balancing} on a tree."
+				"You are as at home in the treetops as you are beneath their branches. You gain a climb Speed of 15 feet when moving through trees, vines, and other foliage. Whenever you succeed at an {@skill Athletics} check to {@action Climb} a tree or an {@skill Acrobatics} check to {@action Balance} on a branch, you get a critical success instead. You aren't {@condition off-guard|PC1} while {@action Climb||Climbing} or {@action Balance||Balancing} on a tree."
 			]
 		},
 		{
@@ -115,7 +115,7 @@
 							"The target falls and lands {@condition prone}, reducing the falling damage you take by an amount equal to twice your level. You then can make a melee {@action Strike} against the target. The {@action Strike} gains the deadly d8 weapon property and deals an additional {@damage 1d6} bludgeoning damage. This additional damage increases to {@dice 2d6} if you are a master in {@skill Athletics}, and to {@dice 3d6} if you are legendary in {@skill Athletics}."
 						],
 						"Success": [
-							"The target is {@condition flat-footed||off-guard} until the beginning of your next turn, reducing the falling damage you take by an amount equal to your level. You can then make a melee {@action Strike} against the target, adding the deadly d8 weapon property to the attack."
+							"The target is {@condition off-guard|PC1} until the beginning of your next turn, reducing the falling damage you take by an amount equal to your level. You can then make a melee {@action Strike} against the target, adding the deadly d8 weapon property to the attack."
 						],
 						"Failure": [
 							"You can make a {@action Strike} against the target."
@@ -148,7 +148,7 @@
 			"prerequisites": "{@feat Verduran Shadow Dedication|WoW1}, master in {@skill Survival}",
 			"trigger": "A creature targets you with an attack and you can see the attacker.",
 			"entries": [
-				"You sense how an incoming attack moves through ambient primal energy, predicting how best to dodge. The triggering attack targets your {@skill Survival} DC instead of your AC. Though this allows you to avoid taking penalties to your AC, it doesn't remove any conditions or other effects causing such penalties. For example, an enemy with sneak attack would still deal extra damage to you for being {@condition flat-footed||off-guard}, even though you wouldn't take the \u20132 circumstance penalty when defending against the attack."
+				"You sense how an incoming attack moves through ambient primal energy, predicting how best to dodge. The triggering attack targets your {@skill Survival} DC instead of your AC. Though this allows you to avoid taking penalties to your AC, it doesn't remove any conditions or other effects causing such penalties. For example, an enemy with sneak attack would still deal extra damage to you for being {@condition off-guard|PC1}, even though you wouldn't take the \u20132 circumstance penalty when defending against the attack."
 			]
 		}
 	]

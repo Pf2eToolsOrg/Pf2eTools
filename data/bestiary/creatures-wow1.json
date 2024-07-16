@@ -2476,7 +2476,7 @@
 					{
 						"name": "Sneak Attack",
 						"entries": [
-							"The logger deals {@dice 1d6} extra precision damage to creatures who are {@condition flat-footed||off-guard}."
+							"The logger deals {@dice 1d6} extra precision damage to creatures who are {@condition off-guard|PC1}."
 						],
 						"generic": {
 							"tag": "ability"
@@ -2552,9 +2552,9 @@
 										"type": "successDegree",
 										"entries": {
 											"Critical Success": "No effect.",
-											"Success": "The target's mind is clouded by feelings of rage and hate, causing it to be {@condition flat-footed||off-guard} against the hodag's next attack. It can't use actions with the {@trait concentrate} trait unless they also have the rage trait.",
-											"Failure": "As success, but the target is {@condition flat-footed||off-guard} until the end of the hodag's next turn. While {@condition flat-footed||off-guard}, it is unable to use actions with the {@trait concentrate} trait unless they also have the rage trait.",
-											"Critical Failure": "As failure, but the target is {@condition flat-footed||off-guard} until the hodag chooses a different target for its Vitriol."
+											"Success": "The target's mind is clouded by feelings of rage and hate, causing it to be {@condition off-guard|PC1} against the hodag's next attack. It can't use actions with the {@trait concentrate} trait unless they also have the rage trait.",
+											"Failure": "As success, but the target is {@condition off-guard|PC1} until the end of the hodag's next turn. While {@condition off-guard|PC1}, it is unable to use actions with the {@trait concentrate} trait unless they also have the rage trait.",
+											"Critical Failure": "As failure, but the target is {@condition off-guard|PC1} until the hodag chooses a different target for its Vitriol."
 										}
 									}
 								]
@@ -2562,7 +2562,7 @@
 							{
 								"name": "Sneak Attack",
 								"entries": [
-									"The hodag deals {@damage 2d6} extra precision damage to creatures who are {@condition flat-footed||off-guard}."
+									"The hodag deals {@damage 2d6} extra precision damage to creatures who are {@condition off-guard|PC1}."
 								]
 							}
 						]
