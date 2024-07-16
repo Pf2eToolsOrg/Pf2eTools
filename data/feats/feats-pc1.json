@@ -1,6 +1,175 @@
 {
 	"feat": [
 		{
+			"name": "Sneak Adept",
+			"remaster": true,
+			"source": "PC1",
+			"page": 175,
+			"level": 10,
+			"traits": [
+				"rogue"
+			],
+			"prerequisites": "master in {@skill Stealth}",
+			"entries": [
+				"It's almost impossible to spot you. When you roll a failure on a {@action Sneak} action, you get a success instead. You can still critically fail."
+			]
+		},
+		{
+			"name": "Camouflage",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 10,
+			"traits": [
+				"ranger"
+			],
+			"prerequisites": "master in {@skill Stealth}",
+			"entries": [
+				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Hide} and {@action Sneak} even without cover or being {@condition concealed}."
+			]
+		},
+		{
+			"name": "Rogue Dedication",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Rogue"
+				]
+			},
+			"traits": [
+				"archetype",
+				"dedication",
+				"multiclass"
+			],
+			"prerequisites": "Dexterity +2",
+			"entries": [
+				"You gain a skill feat and the rogue's surprise attack class feature (page 167). You become trained in light armor. In addition, you become trained in {@skill Stealth} or {@skill Thievery} plus one skill of your choice; if you are already trained in both {@skill Stealth} and {@skill Thievery}, you become trained in an additional skill of your choice. You become trained in rogue class DC."
+			]
+		},
+		{
+			"name": "Basic Trickery",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Rogue"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Rogue Dedication",
+			"entries": [
+				"You gain a 1st- or 2nd-level rogue feat."
+			]
+		},
+		{
+			"name": "Sneak Attacker",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Rogue"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Rogue Dedication",
+			"entries": [
+				"You gain the sneak attack class feature (page 167), except it deals {@dice 1d4} damage, increasing to {@dice 1d6} at 6th level. You don't increase the number of dice as you gain levels."
+			]
+		},
+		{
+			"name": "Advanced Trickery",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Rogue"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Basic Trickery",
+			"entries": [
+				"You gain one rogue feat. For the purpose of meeting its prerequisites, your rogue level is equal to half your character level."
+			],
+			"special": [
+				"You can select this feat more than once. Each time you select it, you gain another rogue feat."
+			]
+		},
+		{
+			"name": "Skill Mastery",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 8,
+			"featType": {
+				"archetype": [
+					"Rogue"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Rogue Dedication, trained in at least one skill and expert in at least one skill",
+			"entries": [
+				"Increase your proficiency rank in one of your skills from expert to master and in another of your skills from trained to expert. You gain a skill feat associated with one of the skills you chose; you must meet all its prerequisites."
+			],
+			"special": [
+				"You can select this feat up to five times."
+			]
+		},
+		{
+			"name": "Uncanny Dodge",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Rogue"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Rogue Dedication",
+			"entries": [
+				"You gain the deny advantage class feature (page 167)."
+			]
+		},
+		{
+			"name": "Evasiveness",
+			"remaster": true,
+			"source": "PC1",
+			"page": 221,
+			"level": 12,
+			"featType": {
+				"archetype": [
+					"Rogue"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Rogue Dedication, expert in Reflex saves",
+			"entries": [
+				"Your proficiency rank for Reflex saves increases to master."
+			]
+		},
+		{
 			"source": "PC1",
 			"remaster": true,
 			"page": 131,
