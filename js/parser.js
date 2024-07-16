@@ -1521,6 +1521,9 @@ SevenDfS_PREFIX_SHORT = "7DfS: ";
 SF_PREFIX = "Stolen Fate: ";
 SF_PREFIX_SHORT = "SF: ";
 
+WoW_PREFIX = "Wardens of Wildwood: ";
+WoW_PREFIX_SHORT = "WoW: ";
+
 CC_PREFIX = "Curtain Call: ";
 CC_PREFIX_SHORT = "CC: ";
 
@@ -1542,6 +1545,7 @@ Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Sky King's Tomb #(\d): /, replaceWith: "SKT$1: " },
 	{ re: /Seven Dooms for Sandpoint #(\d): /, replaceWith: "7DfS$1: " },
 	{ re: /Stolen Fate #(\d): /, replaceWith: "SF$1: " },
+	{ re: /Wardens of Wildwood #(\d): /, replaceWith: "WoW$1: " },
 	{ re: /Curtain Call #(\d): /, replaceWith: "CC$1: " },
 ];
 
@@ -1561,6 +1565,7 @@ Parser.SOURCE_PREFIX_TO_SHORT[SoG_PREFIX] = SoG_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[SKT_PREFIX] = SKT_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[SevenDfS_PREFIX] = SevenDfS_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[SF_PREFIX] = SF_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[WoW_PREFIX] = WoW_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[CC_PREFIX] = CC_PREFIX_SHORT;
 
 Parser.SOURCE_JSON_TO_FULL = {};
@@ -1574,6 +1579,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 /* PF2ETOOLS_SOURCE__OPEN */
 SRC_SKT0 = "SKT0";
 SRC_WoW0 = "WoW0";
+SRC_WoW1 = "WoW1";
 SRC_RoE = "RoE";
 SRC_TV = "TV";
 SRC_AAWS = "AAWS";
@@ -1697,6 +1703,7 @@ SRC_CC0 = "CC0";
 SRC_LOHh = "LOHh";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_WoW1] = "Wardens of Wildwood #1: Pactbreaker";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
 Parser.SOURCE_JSON_TO_FULL[SRC_TV] = "Treasure Vault";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
@@ -1856,6 +1863,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_CC0] = "Curtain Call Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOHh] = "Lost Omens: Highhelm";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
+Parser.SOURCE_JSON_TO_ABV[SRC_WoW1] = "WoW1";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_TV] = "TV";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
@@ -1979,6 +1987,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_CC0] = "CC0";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOHh] = "LOHh";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
+Parser.SOURCE_JSON_TO_DATE[SRC_WoW1] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_TV] = "2023-02-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
@@ -2103,6 +2112,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_LOHh] = "2023-06-28";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
 	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_WoW1] = "https://paizo.com/products/btq02ev4";
 Parser.SOURCE_JSON_TO_STORE[SRC_RoE] = "https://paizo.com/products/btq02eal";
 Parser.SOURCE_JSON_TO_STORE[SRC_TV] = "https://paizo.com/products/btq02eav";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] =
@@ -2306,6 +2316,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_ToK,
 	SRC_SKT0,
 	SRC_WoW0,
+	SRC_WoW1,
 	SRC_7DfS0,
 	SRC_SoG0,
 	SRC_SoG1,
@@ -2488,6 +2499,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_ToK,
 	SRC_SKT0,
 	SRC_WoW0,
+	SRC_WoW1,
 	SRC_7DfS0,
 	SRC_SoG0,
 	SRC_SoG1,

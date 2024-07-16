@@ -1,6 +1,60 @@
 {
 	"companion": [
 		{
+			"name": "Chetamog",
+			"source": "WoW1",
+			"type": "Companion",
+			"page": 86,
+			"fluff": [
+				"Your companion is a chetamog, a large tree-dwelling rodent that makes its home in the branches of the largest and most ancient trees of the Verduran Forest."
+			],
+			"size": [
+				"medium",
+				"large"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "survival",
+			"speed": {
+				"walk": 40
+			},
+			"special": "mount",
+			"support": "A chetamog ignores difficult terrain and greater difficult terrain from non-magical foliage.",
+			"maneuver": {
+				"name": "Scurry",
+				"source": "WoW1",
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"Your chetamog takes any combination of two {@action Stride} or {@action Climb} actions. It has a +10-foot circumstance bonus to its Speed during these Strides."
+				]
+			}
+		},
+		{
 			"name": "Augdunar",
 			"source": "LOHh",
 			"page": 109,

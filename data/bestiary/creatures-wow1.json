@@ -1,0 +1,3582 @@
+{
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"GMG",
+				"B1",
+				"B2",
+				"B3",
+				"BotD"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		]
+	},
+	"creature": [
+		{
+			"name": "Arboreal Sapling",
+			"source": "WoW1",
+			"page": 82,
+			"level": 2,
+			"traits": [
+				"large",
+				"plant"
+			],
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"arboreal",
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 8
+				},
+				"nature": {
+					"std": 5
+				},
+				"stealth": {
+					"std": 6,
+					"in forests": 10
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 0,
+				"con": 3,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 6
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 35
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "axe vulnerability"
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 3
+					},
+					{
+						"name": "piercing",
+						"amount": 3
+					}
+				]
+			},
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 11,
+					"damage": "{@damage 1d10+4} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "branch",
+					"attack": 10,
+					"damage": "{@damage 1d8+4} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Axe Vulnerability",
+						"entries": [
+							"An arboreal sapling takes 5 additional damage from axes."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Timber!",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An arboreal sapling that is not {@condition prone} either becomes {@condition prone} or is reduced to 0 HP",
+						"entries": [
+							"The arboreal sapling topples over, dealing {@damage 2d6} bludgeoning damage to itself and to creatures in a 10-foot line (DC 16 basic Reflex). Creatures that critically fail the saving throw are also knocked {@condition prone}."
+						]
+					},
+					{
+						"name": "Shaky Footing",
+						"entries": [
+							"When an arboreal sapling critically fails an attack roll or Reflex saving throw, it becomes {@condition prone} unless it succeeds at a DC {@flatDC 11} flat check."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Arboreal Shepherd",
+			"source": "WoW1",
+			"page": 82,
+			"level": 5,
+			"traits": [
+				"huge",
+				"plant"
+			],
+			"perception": {
+				"std": 15
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"arboreal",
+					"common",
+					"fey"
+				],
+				"abilities": [
+					"{@spell speak with animals|PC1}"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 11
+				},
+				"diplomacy": {
+					"std": 12
+				},
+				"nature": {
+					"std": 14
+				},
+				"stealth": {
+					"std": 8,
+					"in forests": 12
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 1,
+				"con": 3,
+				"int": 2,
+				"wis": 5,
+				"cha": 3
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 80
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "axe vulnerability"
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <15 feet>"
+					],
+					"name": "branch",
+					"attack": 15,
+					"damage": "{@damage 2d8+6} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 22,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "animal messenger",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "animal allies",
+									"source": "SoM",
+									"amount": 2
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Axe Vulnerability",
+						"entries": [
+							"An arboreal shepherd takes 5 additional damage from axes."
+						]
+					},
+					{
+						"name": "Defend the Friends",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An {@trait animal} within the arboreal shepherd's reach takes area damage or {@trait splash} damage from an effect",
+						"entries": [
+							"The arboreal shepherd partly shields the creature. Reduce the damage dealt to the {@trait animal} by an amount equal to {@dice 1d10} + the {@trait animal||animal's} weakness to the effect, if any. The arboreal shepherd takes an equal amount of damage."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Exalt the Little Ones",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"linguistic",
+							"primal"
+						],
+						"entries": [
+							"The arboreal shepherd encourages its friends to overcome titanic odds. For 1 round, allies with the {@trait animal} trait in a 50-foot radius gain a +1 status bonus to attack rolls, damage rolls, and saving throws. If the animals have the {@trait swarm} trait, the saving throw DCs to resist their damaging actions gain a +1 status bonus. This bonus increases to +2 for allies whose level is 2 or lower."
+						]
+					},
+					{
+						"name": "Healing Haven",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"healing",
+							"manipulate"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "hour"
+						},
+						"entries": [
+							"The arboreal shepherd scoops up a willing Medium or smaller {@trait animal} (or {@trait animal} with the {@trait swarm} trait) within its reach, sequestering the animal into a recess in the arboreal's trunk. While sequestered, the {@trait animal} cannot act, gains greater cover, and gains {@ability fast healing||fast healing 5}. At the beginning of its turn after regaining Hit Points, the {@trait animal} can choose to exit by reappearing in any space adjacent to the arboreal as a free action."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Arboreal Sapstriker",
+			"source": "WoW1",
+			"page": 83,
+			"level": 6,
+			"traits": [
+				"large",
+				"plant"
+			],
+			"perception": {
+				"std": 17
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"arboreal",
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"nature": {
+					"std": 11
+				},
+				"stealth": {
+					"std": 11,
+					"in forests": 15
+				},
+				"survival": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 5,
+				"int": 2,
+				"wis": 4,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 16
+					}
+				},
+				"hp": [
+					{
+						"hp": 115
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "axe vulnerability"
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"attack": 17,
+					"damage": "{@damage 2d8+6} bludgeoning plus sap"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"range increment <30 feet>"
+					],
+					"name": "sap",
+					"attack": 17,
+					"damage": "{@damage 2d6+6} bludgeoning plus sap"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Axe Vulnerability",
+						"entries": [
+							"An arboreal sapstriker takes 5 additional damage from axes."
+						]
+					},
+					{
+						"name": "Primal Sink",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "An arboreal sapstriker succeeds or critically succeeds at a saving throw against a {@trait primal} effect",
+						"entries": [
+							"The sapstriker gains a +1 status bonus to attack rolls, saving throws, skill checks, and sap saving throw DC for {@dice 1d4} rounds."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Amber Tomb",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A foe critically succeeds at a {@action Strike} against the arboreal sapstriker with a weapon that deals piercing or slashing damage, or a foe deals damage to an arboreal sapstriker with an axe",
+						"entries": [
+							"The arboreal sapstriker attempts to {@action Disarm} the triggering foe's weapon, using its Fortitude modifier in place of its {@skill Athletics} modifier. If it critically succeeds, the weapon is lodged into the sapstriker rather than falling to the ground. A creature can retrieve a lodged weapon by {@action Disarm||Disarming} the sapstriker as if it were wielding the weapon."
+						]
+					},
+					{
+						"name": "Sap",
+						"entries": [
+							"A creature that takes damage from an arboreal sapstriker's branch or sap {@action Strike} must succeed at a DC 23 Reflex save or take {@damage 1d8} {@condition persistent damage||persistent acid damage}. While taking the {@condition persistent damage}, a creature takes a \u201310-foot status penalty to its Speeds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Azhana",
+			"source": "WoW1",
+			"page": 84,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"small",
+				"fey"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey"
+				],
+				"abilities": [
+					"{@spell speak with animals|PC1}"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 8
+				},
+				"athletics": {
+					"std": 6
+				},
+				"diplomacy": {
+					"std": 10
+				},
+				"performance": {
+					"std": 10
+				},
+				"stealth": {
+					"std": 11
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 2,
+				"int": 1,
+				"wis": 2,
+				"cha": 4
+			},
+			"items": [
+				"shears"
+			],
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 45
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse",
+						"forceful",
+						"magical"
+					],
+					"name": "shears",
+					"attack": 11,
+					"damage": "{@damage 1d8+4} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 20,
+					"attack": 12,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "light",
+									"source": "PC1"
+								},
+								{
+									"name": "figment",
+									"source": "PC1"
+								},
+								{
+									"name": "tangle vine",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "sleep",
+									"amount": 3,
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "entangling flora",
+									"source": "PC1"
+								},
+								{
+									"name": "laughing fit",
+									"source": "PC1"
+								},
+								{
+									"name": "shape wood",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Shears",
+						"entries": [
+							"An azhana carries a pair of gardening shears about 10 inches long. In the hands of an azhana, these shears function as an {@item elven curve blade}. If an azhana's shears are lost or destroyed, they can make another pair with a week of work and a few scraps of metal."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Speak with Water",
+						"traits": [
+							"auditory",
+							"concentrate",
+							"primal"
+						],
+						"entries": [
+							"Once per day, four azhanas within 15 feet of each other can perform a 1-minute rite to communicate with an adjacent body of fresh water at least as large as an azhana. This ability functions like {@spell speak with stones|PC1}. Flowing water can generally speak about events happening upstream (even distantly upstream), but not events happening downstream."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Bee-Man of Bellis",
+			"source": "WoW1",
+			"page": 85,
+			"level": 9,
+			"traits": [
+				"unique",
+				"medium",
+				"aberration",
+				"animal",
+				"swarm"
+			],
+			"perception": {
+				"std": 21
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"wildsong"
+				],
+				"abilities": [
+					"{@spell speak with animals|PC1} (insects only)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 23
+				},
+				"intimidate": {
+					"std": 20
+				},
+				"stealth": {
+					"std": 20
+				},
+				"survival": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 7,
+				"con": 6,
+				"int": 4,
+				"wis": 4,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 21
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 155
+					}
+				],
+				"immunities": [
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"sleep",
+					"stunned",
+					"swarm mind"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 10
+					},
+					{
+						"name": "smoke susceptibility"
+					},
+					{
+						"name": "splash damage",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 10
+					},
+					{
+						"name": "piercing",
+						"amount": 10
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Apian Emissaries",
+						"entries": [
+							"The Bee-Man can use bees to duplicate the effects of {@spell vigilant eye|CRB} or {@spell message|PC1} at will, with a maximum range of 13 miles. A successful DC 20 {@skill Perception} check identifies the presence of the bees acting as the sensors for these spells, but a DC 24 (expert) {@skill Nature} check is required to realize they are behaving under outside influence."
+						]
+					},
+					{
+						"name": "Taboo Name",
+						"entries": [
+							"Whenever the Bee-Man's full name (Vernon Vestha) is spoken aloud by a creature within 13 miles, he hears it and immediately knows the speaker's direction and distance from him."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Smoke Susceptibility",
+						"entries": [
+							"The Bee-Man is {@condition slowed||slowed 1} for 1 round if he starts his turn in heavy smoke."
+						]
+					}
+				],
+				"bot": [
+					{
+						"type": "affliction",
+						"name": "Apitoxin",
+						"traits": [
+							"poison"
+						],
+						"DC": 25,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition enfeebled||enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled||enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled||enfeebled 2}",
+								"duration": "1 round"
+							}
+						]
+					},
+					{
+						"name": "Evasive Swarm",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "The Bee-Man moves at least 5 feet",
+						"entries": [
+							"The Bee-Man gains concealment against ranged attacks until the start of his next turn or until he makes an {@trait attack} action, whichever comes first."
+						]
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 50
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "slam",
+					"attack": 19,
+					"damage": "{@damage 2d6+9} piercing plus apitoxin",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 25,
+					"attack": 17,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "illusory disguise",
+									"amount": "at will",
+									"notes": [
+										"male {@trait human} only"
+									],
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "honeyed words",
+									"amount": 3,
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "summon animal",
+									"amount": 3,
+									"notes": [
+										"bee swarms only, treat as {@creature wasp swarm||wasp swarms}"
+									],
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals",
+										"notes": [
+											"insects only"
+										],
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "commune",
+							"source": "PC1"
+						},
+						{
+							"name": "geas",
+							"source": "PC1"
+						},
+						{
+							"name": "reincarnate",
+							"source": "APG"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Chetamog",
+			"source": "WoW1",
+			"page": 86,
+			"level": 2,
+			"traits": [
+				"large",
+				"animal"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 8
+				},
+				"athletics": {
+					"std": 6
+				},
+				"survival": {
+					"std": 6
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 3,
+				"int": -4,
+				"wis": 2,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 10
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 32
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 11,
+					"damage": "{@damage 1d8+4} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "claw",
+					"attack": 11,
+					"damage": "{@damage 1d6+4} slashing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Buck",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"DC 17"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Scurry",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The chetamog takes any combination of two {@action Stride} or {@action Climb} actions. It has a +10-foot circumstance bonus to its Speed during these actions."
+						]
+					},
+					{
+						"name": "Forest Passage",
+						"entries": [
+							"A chetamog ignores difficult terrain and greater difficult terrain from non-magical foliage."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Cythnophorian",
+			"source": "WoW1",
+			"page": 87,
+			"level": 8,
+			"traits": [
+				"unique",
+				"tiny",
+				"fungus",
+				"plant"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "lifesense",
+					"range": 30
+				}
+			],
+			"skills": {
+				"stealth": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 6,
+				"int": -2,
+				"wis": 2,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 161
+					}
+				],
+				"immunities": [
+					"mental"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tendril",
+					"attack": 18,
+					"damage": "{@damage 2d10+10} piercing plus creeping death and Fungal Possession"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Horrifying Display",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"emotion",
+							"fear",
+							"mental",
+							"visual"
+						],
+						"trigger": "The cythnophorian uses Fungal Possession",
+						"entries": [
+							"All creatures in a 10- foot emanation must attempt a DC 26 Will save or become {@condition sickened||sickened 1}, or {@condition sickened||sickened 2} on a critical failure. Affected creatures are off-guard for as long as they're {@condition sickened}. Once a creature attempts this save, it's temporarily immune for 1 minute."
+						]
+					}
+				],
+				"bot": [
+					{
+						"type": "affliction",
+						"name": "Creeping Death",
+						"traits": [
+							"contact",
+							"poison"
+						],
+						"DC": 22,
+						"savingThrow": "Fortitude",
+						"onset": "1 round",
+						"endnote": "A creature that dies while infected with creeping death immediately releases a burst of spores as if using the cythnophorian's Spore Cloud ability. If the corpse is not burned, it rises as the host of a new cythnophorian 12 hours later.",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition stunned||stunned 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 4d6} poison damage and {@condition stupefied||stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 6d6} poison damage and {@condition confused}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 4,
+								"entry": "{@damage 6d6} poison damage and {@condition controlled}",
+								"duration": "1 round"
+							}
+						]
+					},
+					{
+						"name": "Fungal Possession",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"manipulate",
+							"move",
+							"possession"
+						],
+						"requirements": "The cythnophorian's last action was a {@action Strike} that killed a target of size Medium or smaller",
+						"entries": [
+							"The cythnophorian rips itself out of its current host and burrows its way into the corpse of its latest victim, regaining {@dice 3d4} Hit Points and taking control of the corpse as its new host. The cythnophorian enters the space of its new host, and its former host's corpse falls to the ground in its previous space. Moving to a new host doesn't change the cythnophorian's abilities or movement Speeds."
+						]
+					},
+					{
+						"name": "Spore Cloud",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"incapacitation",
+							"poison"
+						],
+						"entries": [
+							"The cythnophorian emits a cloud of toxic spores, exposing all creatures within a 15-foot emanation to creeping death. The cythnophorian can't use Spore Cloud again for {@dice 1d4} rounds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ohancanu",
+			"source": "WoW1",
+			"page": 88,
+			"level": 5,
+			"traits": [
+				"large",
+				"fey"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 14
+				},
+				"intimidation": {
+					"std": 12
+				},
+				"warfare lore": {
+					"std": 22
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 2,
+				"con": 4,
+				"int": -2,
+				"wis": 2,
+				"cha": 0
+			},
+			"items": [
+				"{@item greataxe}",
+				"sack with 5 rocks"
+			],
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 80
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "white hairs (see above)"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>",
+						"sweep"
+					],
+					"name": "greataxe",
+					"attack": 15,
+					"damage": "{@damage 1d12+8} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <10 feet>"
+					],
+					"name": "fist",
+					"attack": 15,
+					"damage": "{@damage 1d8+8} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"brutal",
+						"range increment <120 feet>"
+					],
+					"name": "rock",
+					"attack": 13,
+					"damage": "{@damage 2d6+8} bludgeoning"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "White Hairs",
+						"entries": [
+							"An ohancanu has {@dice 2d4} white hairs that are connected to its essence. If a hair is plucked, the ohancanu gains the {@condition drained||drained 1} condition. This is cumulative with other {@condition drained} conditions, and if plucking a hair would increase their {@condition drained} value to 5 or more, the ohancanu falls {@condition unconscious}. A creature can {@action Steal} a white hair from an unaware ohancanu, though they always notice a successful theft. If an ohancanu is grappled, {@condition restrained}, or {@condition stunned}, a creature can attempt to pluck out a white hair by spending a single action, which has the {@trait attack} and {@trait manipulate} traits, to attempt either an {@skill Athletics} check against the ohancanu's Fortitude DC or a {@skill Thievery} check."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Catch Rock",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Denuded Outrage",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature plucks one of the ohancanu's white hairs",
+						"entries": [
+							"The ohancanu makes a fist {@action Strike} against the triggering creature. If the ohancanu is grappled or {@condition restrained}, they can instead attempt to {@action Escape}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Sudden Charge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The ohancanu strides twice. If they end their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
+						]
+					},
+					{
+						"name": "Throw Rock",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Twigjack Bramble",
+			"source": "WoW1",
+			"page": 89,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"gargantuan",
+				"fey",
+				"plant",
+				"troop"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 16
+				},
+				"athletics": {
+					"std": 13
+				},
+				"nature": {
+					"std": 11
+				},
+				"stealth": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 3,
+				"int": 1,
+				"wis": 3,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 102,
+						"notes": [
+							"16 squares"
+						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 68,
+						"squares": 12
+					},
+					{
+						"value": 34,
+						"squares": 8
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 10
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					},
+					{
+						"name": "splash damage",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"abilities": [
+					"troop movement"
+				]
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Troop Defenses",
+						"entries": [],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Clear Cut",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The twigjack bramble swarms over any creatures in their path, shredding their foes with razor-sharp thorns. The bramble Forms Up and Strides twice, moving through the space of any Medium or smaller creatures. Each creature whose space the bramble moves through takes {@damage 4d6} slashing damage (DC 21 basic Reflex save). On a critical failure, the creature is also knocked {@condition prone}."
+						]
+					},
+					{
+						"name": "Mass Bramble Jump",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"plant",
+							"primal",
+							"teleportation"
+						],
+						"entries": [
+							"The twigjack bramble uses Form Up to redistribute its squares into any configuration wherein all squares are in undergrowth, then instantly teleports to another square within 60 feet, using Form Up again on the target square. The configuration of the second Form Up must also place all of the bramble's squares in undergrowth. This movement doesn't trigger reactions."
+						]
+					},
+					{
+						"name": "Rain of Splinters",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The twigjack bramble launches a volley of splinters and brambles in a 10-foot burst within 30 feet that deals {@damage 4d6} piercing damage (DC 21 basic Reflex save). When the bramble is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
+						]
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the twigjack bramble {@action Stride||Strides}, it first Forms Up as a free action to condense into a 20-foot-by- 20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the bramble enters difficult terrain, the extra movement cost applies to the whole group."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Alyce Quinley",
+			"source": "WoW1",
+			"page": 91,
+			"description": "Female {@trait human} Eagle Knight",
+			"level": 6,
+			"traits": [
+				"unique",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 17
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"elven",
+					"fey"
+				]
+			},
+			"skills": {
+				"andoran lore": {
+					"std": 16
+				},
+				"athletics": {
+					"std": 14
+				},
+				"forest lore": {
+					"std": 12
+				},
+				"medicine": {
+					"std": 11
+				},
+				"nature": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 15
+				},
+				"survival": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 2,
+				"con": 3,
+				"int": 1,
+				"wis": 2,
+				"cha": 1
+			},
+			"items": [
+				"{@item bedroll}",
+				"{@item crossbow} (10 {@item bolt (generic)||bolts})",
+				"{@item lesser healing potion||lesser potion of healing} (2)",
+				"maps",
+				"pup tent",
+				"{@runeItem rapier||+1 weapon potency||striking|}",
+				"{@item scale mail}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 95
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly <1d8>",
+						"disarm",
+						"magical"
+					],
+					"name": "rapier",
+					"attack": 17,
+					"damage": "{@damage 2d6+6} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range increment <120 feet>",
+						"reload <1>"
+					],
+					"name": "crossbow",
+					"attack": 16,
+					"damage": "{@damage 1d8+8} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Liberating Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"requirements": "Alyce is wielding a melee weapon",
+						"trigger": "A creature within Alyce's reach attempts to apply the {@condition grabbed}, {@condition immobilized}, or {@condition restrained} condition to an ally",
+						"entries": [
+							"Alyce makes a melee {@action Strike} against the triggering creature. If the attack is a hit, the triggering ally can immediately use a reaction to {@action Escape}. If the attack is a critical hit, any {@condition grabbed}, {@condition immobilized}, or {@condition restrained} conditions imposed by the triggering action are negated."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "action",
+							"source": "PC1"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Hunt Prey",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Alyce designates a single creature as her prey and focuses her attacks against that creature. She must be able to see, hear, or otherwise detect the prey, or she must be tracking the prey during exploration.",
+							"She gains a +2 circumstance bonus to {@skill Perception} checks when she Seeks her prey and a +2 circumstance bonus to {@skill Survival} checks when she Tracks her prey. Alyce also ignores the penalty for making ranged attacks within her second {@trait range increment} against the prey she's hunting. Alyce can only have one creature designated as her prey at a time. If she uses {@action Hunt Prey} against a creature when she already has a creature designated, the prior creature loses the designation and the new prey gains the designation. Her designation lasts until her next daily preparations."
+						],
+						"generic": {
+							"tag": "action"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Emorga All-Seer",
+			"source": "WoW1",
+			"page": 93,
+			"description": "Female awakened immense tortoise soothsayer",
+			"level": 9,
+			"traits": [
+				"unique",
+				"gargantuan",
+				"animal"
+			],
+			"perception": {
+				"std": 21,
+				"for initiative": 11
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"druidic",
+					"fey"
+				],
+				"abilities": [
+					"{@spell speak with animals|PC1}",
+					"{@spell speak with plants|PC1}"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 16
+				},
+				"diplomacy": {
+					"std": 18
+				},
+				"medicine": {
+					"std": 19
+				},
+				"nature": {
+					"std": 21
+				},
+				"society": {
+					"std": 18
+				},
+				"soothsaying lore": {
+					"std": 23
+				},
+				"survival": {
+					"std": 19
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 0,
+				"con": 5,
+				"int": 4,
+				"wis": 6,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 29
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 20
+					}
+				},
+				"hp": [
+					{
+						"hp": 170
+					}
+				]
+			},
+			"speed": {
+				"walk": 10,
+				"swim": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 19,
+					"damage": "{@damage 2d10+10} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"attack": 19,
+					"damage": "{@damage 2d8+10} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 28,
+					"attack": 20,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "guidance",
+									"source": "PC1"
+								},
+								{
+									"name": "read aura",
+									"source": "PC1"
+								},
+								{
+									"name": "tangle vine",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "animal messenger",
+									"source": "PC1"
+								},
+								{
+									"name": "entangling flora",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "earthbind",
+									"source": "PC1"
+								},
+								{
+									"name": "safe passage",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "heal",
+									"source": "PC1"
+								},
+								{
+									"name": "mountain resilience",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "control water",
+									"source": "PC1"
+								},
+								{
+									"name": "speak with stones",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals",
+										"source": "PC1"
+									}
+								]
+							},
+							"4": {
+								"spells": [
+									{
+										"name": "speak with plants",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Read Nature's Omens",
+						"traits": [
+							"concentrate",
+							"primal"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"requirements": "Emorga can see a naturally occurring pattern such as ripples in a pond, a murmuration of birds wheeling across the sky, or a tangle of interwoven vines and flowers",
+						"entries": [
+							"Emorga spends 1 hour contemplating the pattern to receive a brief glimpse of possible futures, optionally posing a question about a specific person, place, or event. She attempts a DC 30 {@skill Nature} or {@skill Lore||Soothsaying Lore} check.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"Emorga receives a helpful premonition of one significant event that is to occur within one week. If she specified a specific subject, the premonition relates specifically to events affecting or involving that subject. These visions might be partial or unclear, but they are never purposely misleading."
+									],
+									"Success": [
+										"As critical success, but Emorga can only receive visions of events that will occur within the next {@dice 1d4} days."
+									],
+									"Failure": [
+										"Emorga receives no vision, or receives a vision of something insignificant or unrelated to her subject."
+									],
+									"Critical Failure": [
+										"Emorga incorrectly interprets the omens and receives a false vision. Treat as a critical success, but the vision is either wholly inaccurate or presented in a way that actively distorts its meaning."
+									]
+								}
+							}
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Take Cover",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Emorga withdraws into her shell, protecting her head and extremities from harm. She can't take move or attack actions while in this state, but gains a +4 circumstance bonus to AC and resistance 10 to physical attacks. She can end the state as a single action."
+						]
+					},
+					{
+						"name": "Trample",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Large or smaller, foot, DC 25"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			},
+			"rituals": [
+				{
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "commune",
+							"source": "PC1"
+						},
+						{
+							"name": "primal call",
+							"source": "PC1"
+						},
+						{
+							"name": "reincarnate",
+							"source": "APG"
+						},
+						{
+							"name": "plant growth",
+							"source": "PC1"
+						},
+						{
+							"name": "heartbond",
+							"source": "APG"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Usher",
+			"source": "WoW1",
+			"level": 7,
+			"perception": {
+				"std": 13
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"page": 51,
+			"traits": [
+				"medium",
+				"construct",
+				"mindless"
+			],
+			"description": "Variant {@creature giant animated statue} (Pathfinder Monster Core 19)",
+			"_copy": {
+				"name": "Giant Animated Statue",
+				"source": "B1",
+				"_mod": {
+					"abilities.mid": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Fey Fire",
+							"entries": [
+								"The construct's ranged {@action Strike}, Brazier, and Burn Alive abilities deal cold damage instead of fire damage, and they do not ignite combustible materials."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Lloyd the Leaper",
+			"source": "WoW1",
+			"page": 50,
+			"description": "Variant {@creature greater spring-heeled jack|LOMM}",
+			"initiative": {
+				"deception": {
+					"std": 18
+				}
+			},
+			"level": 8,
+			"traits": [
+				"small",
+				"fey"
+			],
+			"perception": {
+				"std": 17
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 16
+				},
+				"athletics": {
+					"std": 18,
+					"to {@action High Jump|PC1} or {@action Long Jump|PC1}": 22
+				},
+				"deception": {
+					"std": 18
+				},
+				"intimidation": {
+					"std": 15
+				},
+				"stealth": {
+					"std": 19
+				},
+				"thievery": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 6,
+				"con": 3,
+				"int": 2,
+				"wis": 3,
+				"cha": 4
+			},
+			"items": [
+				"{@i Sally Sharp-tongue} ({@runeItem war razor|TV|+1 weapon potency||striking||wounding|})",
+				"{@item unmemorable mantle|LOCG}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 20
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 135
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"backstabber",
+						"deadly <d8>",
+						"finesse",
+						"magical"
+					],
+					"name": "Sally Sharp-tongue",
+					"attack": 18,
+					"damage": "{@damage 3d4+7} slashing plus {@damage 1d6} bleed",
+					"types": [
+						"slashing",
+						"bleed"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 26,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "gentle landing",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "calm",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "magic passage",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "vanishing tracks",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Ghastly Visage",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"curse",
+							"emotion",
+							"fear",
+							"mental",
+							"primal",
+							"visual"
+						],
+						"entries": [
+							"Lloyd the Leaper locks eyes with a creature he can see within 30 feet. The target must immediately attempt a DC 23 Will save or become {@condition frightened||frightened 1} ({@condition frightened||frightened 2} on a critical failure), and it can't reduce its {@condition frightened} condition below 1 for 24 hours or until this {@trait curse} is removed. After attempting its save, the creature is temporarily immune to this ability for 24 hours."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "action",
+							"source": "PC1"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Haze of Dreams",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"incapacitation",
+							"mental",
+							"poison",
+							"primal",
+							"sleep"
+						],
+						"entries": [
+							"Lloyd exhales a cloud of clammy gray fog. Each creature in the area must attempt a DC 23 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected and becomes temporarily immune for 24 hours."
+									],
+									"Success": [
+										"The creature is {@condition stupefied||stupefied 1} for 1 round."
+									],
+									"Failure": [
+										"The creature falls {@condition unconscious}. It wakes up automatically if it's still {@condition unconscious} after 1 minute."
+									],
+									"Critical Failure": [
+										"The creature falls {@condition unconscious}. It wakes up automatically if it's still {@condition unconscious} after 1 hour."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"polymorph",
+							"primal"
+						],
+						"entries": [
+							"Lloyd takes on the appearance of a Small or Medium humanoid dressed in exquisite finery. This doesn't change his Speed or his attack and damage modifiers with his Strikes. When in this form, Lloyd gains a {@skill Diplomacy} modifier equal to his {@skill Intimidation} modifier."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Vanishing Leap",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"illusion",
+							"primal"
+						],
+						"trigger": "Lloyd uses Vault",
+						"entries": [
+							"Lloyd becomes {@condition invisible} for 1 round."
+						]
+					},
+					{
+						"name": "Vault",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"Lloyd jumps up to 20 feet in any direction, including vertically. This movement doesn't trigger reactions based on movement."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ohancanu (Covered In Bees)",
+			"source": "WoW1",
+			"level": 5,
+			"perception": {
+				"std": 12,
+				"when rolling initiative": 14
+			},
+			"page": 45,
+			"_copy": {
+				"name": "Ohancanu",
+				"source": "WoW1",
+				"_mod": {
+					"abilities.mid": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Covered In Bees!",
+							"entries": [
+								"Dozens of bees sting the ohancanu, dealing {@damage 2d6} {@condition persistent damage||persistent piercing damage}. The {@condition persistent damage||persistent damage ends} automatically if the ohancanu takes 10 or more damage from an area effect."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Silene",
+			"source": "WoW1",
+			"level": 8,
+			"perception": {
+				"std": 18
+			},
+			"description": "Variant {@creature waldgeist|BotD}",
+			"page": 43,
+			"traits": [
+				"unique",
+				"incorporeal",
+				"spirit",
+				"undead"
+			],
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"_copy": {
+				"name": "Waldgeist",
+				"source": "BotD",
+				"_mod": {
+					"abilities.mid": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Lumberjack's Bane",
+							"entries": [
+								"Silene's {@action Strike||Strikes} deal an additional {@damage 1d6} void damage to {@trait human||humans}, an additional {@damage 1d6} void damage to creatures wielding axes, or an additional {@damage 1d8} void damage to {@trait human||humans} wielding axes."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Hateful Logger",
+			"source": "WoW1",
+			"page": 41,
+			"level": 4,
+			"traits": [
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 11
+			},
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 12
+				},
+				"forest lore": {
+					"std": 12
+				},
+				"nature": {
+					"std": 10
+				},
+				"survival": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 2,
+				"con": 4,
+				"int": 1,
+				"wis": 0,
+				"cha": 1
+			},
+			"items": [
+				"{@item climbing kit}",
+				"{@item hatchet}",
+				"{@item padded armor}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 70
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "nonlethal",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"nonlethal"
+					],
+					"name": "fist",
+					"attack": 14,
+					"damage": "{@damage 1d4+8} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"name": "bite",
+					"attack": 14,
+					"damage": "{@damage 1d6+8} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Exhausted",
+						"entries": [
+							"Though their minds are suffused with hatred and rage, the loggers have not slept for several days and are ready to drop. They take a \u20132 status penalty to saving throws against effects with the {@trait sleep} trait."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Vitriol",
+						"entries": [
+							"As {@creature hateful hodag|WoW1}; DC 19"
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"The logger deals {@dice 1d6} extra precision damage to creatures who are {@condition flat-footed||off-guard}."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Hateful Bear",
+			"source": "WoW1",
+			"level": 6,
+			"perception": {
+				"std": 15
+			},
+			"description": "Variant {@creature cave bear||cave bears} (Pathfinder Monster Core)",
+			"page": 41,
+			"_copy": {
+				"name": "Cave Bear",
+				"source": "B1",
+				"_mod": {
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Vitriol",
+								"entries": [
+									"As {@creature hateful hodag|WoW1}; DC 22 Will save"
+								]
+							},
+							{
+								"name": "Sneak Attack",
+								"entries": [
+									"As {@creature hateful hodag|WoW1}."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Hateful Hodag",
+			"source": "WoW1",
+			"level": 7,
+			"perception": {
+				"std": 16
+			},
+			"description": "Elite variant {@creature hodag|B2}",
+			"page": 41,
+			"_copy": {
+				"name": "Hodag",
+				"source": "B2",
+				"_mod": {
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Vitriol",
+								"activity": {
+									"unit": "action",
+									"number": 1
+								},
+								"traits": [
+									"curse",
+									"emotion",
+									"mental",
+									"occult"
+								],
+								"entries": [
+									"The hateful hodag vomits a stream of caustic black sludge at a single foe it can detect within 15 feet. The hodag and the target each gain a +1 circumstance bonus on all attack rolls made against each other until the hodag chooses a different target for its Vitriol. The target must attempt a DC 24 Will save, with the following effects. The hodag cannot use Vitriol again for {@dice 1d4} rounds.",
+									{
+										"type": "successDegree",
+										"entries": {
+											"Critical Success": "No effect.",
+											"Success": "The target's mind is clouded by feelings of rage and hate, causing it to be {@condition flat-footed||off-guard} against the hodag's next attack. It can't use actions with the {@trait concentrate} trait unless they also have the rage trait.",
+											"Failure": "As success, but the target is {@condition flat-footed||off-guard} until the end of the hodag's next turn. While {@condition flat-footed||off-guard}, it is unable to use actions with the {@trait concentrate} trait unless they also have the rage trait.",
+											"Critical Failure": "As failure, but the target is {@condition flat-footed||off-guard} until the hodag chooses a different target for its Vitriol."
+										}
+									}
+								]
+							},
+							{
+								"name": "Sneak Attack",
+								"entries": [
+									"The hodag deals {@damage 2d6} extra precision damage to creatures who are {@condition flat-footed||off-guard}."
+								]
+							}
+						]
+					}
+				},
+				"applyTemplate": "elite"
+			}
+		},
+		{
+			"name": "Sigrid Jandevik",
+			"source": "WoW1",
+			"page": 39,
+			"description": "Female {@creature werebear} trader",
+			"level": 7,
+			"traits": [
+				"unique",
+				"large",
+				"beast",
+				"human",
+				"humanoid",
+				"werecreature"
+			],
+			"perception": {
+				"std": 15
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 17
+				},
+				"medicine": {
+					"std": 11
+				},
+				"mercantile lore": {
+					"std": 13
+				},
+				"nature": {
+					"std": 15
+				},
+				"stealth": {
+					"std": 12
+				},
+				"survival": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 3,
+				"con": 5,
+				"int": 2,
+				"wis": 4,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 140
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "silver",
+						"amount": 8
+					}
+				]
+			},
+			"speed": {
+				"abilities": [
+					"25"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <10 feet>"
+					],
+					"name": "claw",
+					"attack": 16,
+					"damage": "{@damage 2d8+10} slashing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "jaws",
+					"attack": 16,
+					"damage": "{@damage 2d10+10} piercing"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"polymorph",
+							"primal"
+						],
+						"entries": [
+							"Medium human with fist +16 for {@damage 1d4+10} bludgeoning, or grizzly bear with Speed 35 feet."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Besieged Logging Crew",
+			"source": "WoW1",
+			"page": 35,
+			"level": 4,
+			"traits": [
+				"gargantuan",
+				"human",
+				"humanoid",
+				"troop"
+			],
+			"perception": {
+				"std": 7
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 9
+				},
+				"athletics": {
+					"std": 12
+				},
+				"lumber lore": {
+					"std": 10
+				},
+				"nature": {
+					"std": 8
+				},
+				"survival": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": 1,
+				"wis": 2,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 10
+					}
+				},
+				"hp": [
+					{
+						"hp": 60
+					}
+				],
+				"thresholds": [
+					{
+						"value": 40,
+						"squares": 12
+					},
+					{
+						"value": 20,
+						"squares": 8
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 10
+					},
+					{
+						"name": "splash damage",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"abilities": [
+					"troop movement"
+				]
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Troop Defenses",
+						"entries": [],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Form Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					},
+					{
+						"name": "Hurl Axes",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The loggers draw their hatchets, then launch a ranged attack in the form of a volley. This volley is a 10-foot burst within 120 feet that deals {@damage 3d6} slashing damage (DC 18 basic Reflex save). When the crew is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
+						]
+					},
+					{
+						"name": "Tandem Chop",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The loggers engage in a coordinated axe attack against each enemy within 10 feet, with a DC 19 basic Reflex save. The damage depends on the number of actions expended.",
+							{
+								"type": "list",
+								"style": "list-hang",
+								"items": [
+									"{@as 1} {@damage 1d10} slashing damage",
+									"{@as 2} {@damage 3d6+7} slashing damage",
+									"{@as 3} {@damage 3d6+10} slashing damage"
+								]
+							}
+						]
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the loggers {@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move up to their Speed. This works just like a {@trait Gargantuan} creature moving; for instance, if any square of the logging crew enters difficult terrain, the extra movement cost applies to all the loggers."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Splintershank",
+			"source": "WoW1",
+			"page": 33,
+			"description": "Twigjack {@creature cult leader|B2}",
+			"level": 6,
+			"traits": [
+				"tiny",
+				"fey",
+				"plant"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 15
+				},
+				"athletics": {
+					"std": 13
+				},
+				"nature": {
+					"std": 11
+				},
+				"religion": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 3,
+				"int": 1,
+				"wis": 3,
+				"cha": 2
+			},
+			"items": [
+				"{@item wand of hawthorn|TV}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 95
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "claw",
+					"attack": 15,
+					"damage": "{@damage 2d6+7} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d6>",
+						"range increment <30 feet>"
+					],
+					"name": "splinter",
+					"attack": 15,
+					"damage": "{@damage 2d6+5} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Prepared",
+					"DC": 24,
+					"attack": 16,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "caustic blast",
+									"source": "PC1"
+								},
+								{
+									"name": "detect magic",
+									"source": "PC1"
+								},
+								{
+									"name": "puff of poison",
+									"source": "SoM"
+								},
+								{
+									"name": "prestidigitation",
+									"source": "PC1"
+								},
+								{
+									"name": "tangle vine",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear",
+									"source": "PC1"
+								},
+								{
+									"name": "runic body",
+									"source": "PC1"
+								},
+								{
+									"name": "tailwind",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "heal",
+									"source": "PC1"
+								},
+								{
+									"name": "oaken resilience",
+									"source": "PC1"
+								},
+								{
+									"name": "quench",
+									"source": "APG"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "slow",
+									"source": "PC1"
+								},
+								{
+									"name": "wall of thorns",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Bramble Jump",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"plant",
+							"primal",
+							"teleportation"
+						],
+						"requirements": "Splintershank is in the forest's undergrowth",
+						"entries": [
+							"Splintershank scrambles into the undergrowth and instantly teleports to a different square of undergrowth within 60 feet of him. This movement doesn't trigger reactions."
+						]
+					},
+					{
+						"name": "Splinter Spray",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Splintershank sprays a barrage of splinters and brambles from his body in a 15-foot cone, dealing {@damage 7d6} piercing damage (DC 24 basic Reflex save). He can't use Splinter Spray again for {@dice 1d4} rounds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Wraithvine",
+			"source": "WoW1",
+			"page": 30,
+			"level": 7,
+			"traits": [
+				"huge",
+				"fungus",
+				"plant",
+				"wraithvine"
+			],
+			"perception": {
+				"std": 15
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "lifesense",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"fey (can't speak any language)"
+				],
+				"abilities": [
+					"telepathy 120 feet (wraithvine children only)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 17
+				},
+				"stealth": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 2,
+				"con": 5,
+				"int": -2,
+				"wis": 3,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 13
+					}
+				},
+				"hp": [
+					{
+						"hp": 120
+					}
+				],
+				"immunities": [
+					"poison"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "piercing",
+						"amount": 5
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "bite",
+					"attack": 18,
+					"damage": "{@damage 2d10+11} piercing plus wraithvine venom"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <15 feet>"
+					],
+					"name": "tentacle",
+					"attack": 18,
+					"damage": "{@damage 2d6+11} bludgeoning plus {@ability Grab}"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Light Vulnerability",
+						"entries": [
+							"Whenever a wraithvine begins its turn in an area of magical light, it is {@condition slowed||slowed 1} on that turn."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"Tentacle only."
+						],
+						"generic": {
+							"tag": "action",
+							"source": "PC1"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Parasitic Rejuvenation",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "A creature the wraithvine has {@condition Grabbed} took damage from wraithvine venom (either from itself, or from a wraithvine child's venom) on its last turn, and the wraithvine hasn't used any other actions this turn",
+						"entries": [
+							"The wraithvine regains {@dice 3d8} HP and recovers from the {@condition fatigued} and {@condition slowed} conditions. It reduces any {@condition enfeebled} value it has by 2."
+						]
+					},
+					{
+						"name": "Wraithvine Venom",
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"As {@creature wraithvine offshoot|WoW1}; DC 25."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Wraithvine Offshoot",
+			"source": "WoW1",
+			"level": 4,
+			"perception": {
+				"std": 11
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "lifesense",
+					"range": 30
+				}
+			],
+			"languages": [
+				"common",
+				"fey"
+			],
+			"description": "Variant {@creature mandragora|B2}",
+			"page": 29,
+			"_copy": {
+				"name": "Mandragora",
+				"source": "B2",
+				"_mod": {
+					"traits": {
+						"mode": "insertArr",
+						"items": "unique"
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Vitality Drain",
+							"requirements": "The wraithvine offshoot has a creature {@condition grabbed}",
+							"entries": [
+								"The offshoot drains blood or ichor from the creature it has {@condition grabbed}, dealing {@damage 2d6} damage. If the creature has the {@trait plant} trait, the offshoot gains temporary Hit Points equal to the damage dealt. A creature that has its vitality drained by an offshoot is {@condition drained||drained 1} until it receives healing of any kind or amount."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Bystander",
+			"source": "WoW1",
+			"level": 2,
+			"description": "Variant elite {@creature guard|GMG}",
+			"page": 25,
+			"items": [
+				"{@item hide||hide armor}",
+				"{@item staff}",
+				"{@item sling} (20 {@item sling bullets||bullets})"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "staff",
+					"attack": 11,
+					"traits": [
+						"two-hand <d8>"
+					],
+					"damage": "{@damage 1d4+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "sling",
+					"attack": 9,
+					"traits": [
+						"range increment <50 feet>",
+						"reload <1>"
+					],
+					"damage": "{@damage 1d6+2} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"type": "Spontaneous",
+					"tradition": "primal",
+					"DC": 18,
+					"attack": 10,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "caustic blast",
+									"source": "PC1"
+								},
+								{
+									"name": "tangle vine",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "heal",
+									"source": "PC1"
+								},
+								{
+									"name": "runic weapon",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"_copy": {
+				"name": "Guard",
+				"source": "GMG",
+				"_mod": {
+					"abilities.top": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Conditioned Response",
+							"entries": [
+								"If he hears a bell ring, Tumbo bites a nearby metal lead or (if one is not available) an adjacent creature at the beginning of his turn, if possible."
+							]
+						}
+					}
+				},
+				"applyTemplate": "elite"
+			}
+		},
+		{
+			"name": "Tumbo",
+			"source": "WoW1",
+			"level": 2,
+			"perception": {
+				"std": 7
+			},
+			"description": "{@creature Spark bat|B2}",
+			"page": 16,
+			"_copy": {
+				"name": "Spark Bat",
+				"source": "B2",
+				"_mod": {
+					"traits": {
+						"mode": "insertArr",
+						"items": "unique"
+					},
+					"abilities.top": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Conditioned Response",
+							"entries": [
+								"If he hears a bell ring, Tumbo bites a nearby metal lead or (if one is not available) an adjacent creature at the beginning of his turn, if possible."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Inrik Vanderholl",
+			"source": "WoW1",
+			"level": 4,
+			"perception": {
+				"std": 15
+			},
+			"description": "{@ancestry Dwarf} elite {@creature tracker|GMG}",
+			"page": 10,
+			"items": [
+				"{@runeItem composite longbow||+1 weapon potency||striking||shock|}"
+			],
+			"attacks": [
+				{
+					"range": "ranged",
+					"name": "composite longbow",
+					"attack": 13,
+					"traits": [
+						"deadly <1d10>",
+						"magical",
+						"propulsive",
+						"range increment <100 feet>",
+						"reload <0>",
+						"volley <30 feet>"
+					],
+					"damage": "{@damage 2d8+7} piercing plus {@damage 1d6} electricity",
+					"types": [
+						"piercing",
+						"electricity"
+					]
+				}
+			],
+			"_copy": {
+				"name": "Tracker",
+				"source": "GMG",
+				"_mod": {
+					"traits": {
+						"mode": "insertArr",
+						"items": "unique"
+					}
+				},
+				"applyTemplate": "elite"
+			}
+		},
+		{
+			"name": "Stormdrinker",
+			"source": "WoW1",
+			"page": 16,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"large",
+				"plant"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey"
+				],
+				"notes": [
+					"(can't speak any language)"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 17
+				},
+				"stealth": {
+					"std": 13,
+					"in forests or swamps": 17
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 1,
+				"con": 5,
+				"int": -2,
+				"wis": 3,
+				"cha": -1
+			},
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hp": [
+					{
+						"hp": 145
+					}
+				],
+				"immunities": [
+					"electricity"
+				],
+				"resistances": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "vine",
+					"attack": 18,
+					"damage": "{@damage 2d10+8} bludgeoning plus Grab"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Absorb Shock",
+						"entries": [
+							"Whenever the stormdrinker would take electricity damage or is targeted with an {@trait electricity} effect, it gains 10 temporary HP, is {@condition quickened}, and increases the reach of its vine {@action Strike||Strikes} by 5 feet until the end of its next turn. It can use its extra action to {@action Stride}, {@action Strike}, or {@action Swim}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Lightning Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The stormdrinker is {@condition quickened} due to Absorb Shock",
+						"entries": [
+							"The stormdrinker dismisses its Absorb Shock benefits to expel lightning in a 60-foot line, dealing {@damage 8d6} electricity damage (DC 25 basic Reflex save)."
+						]
+					},
+					{
+						"name": "Ring Bell",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory"
+						],
+						"requirements": "The stormdrinker is carrying a bell",
+						"entries": [
+							"The stormdrinker rings its bell, signaling Tumbo to bite him once. (Multiple bites don't stack their effects on the stormdrinker.) The stormdrinker can't use this ability when it doesn't have its bell, such as if it is {@action Disarm||Disarmed}."
+						]
+					},
+					{
+						"name": "Vine Lash",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The stormdrinker makes a vine {@action Strike} against each creature within reach. Its multiple attack penalty increases only after all the attacks."
+						]
+					}
+				]
+			}
+		}
+	]
+}

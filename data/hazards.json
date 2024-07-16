@@ -1,6 +1,231 @@
 {
 	"hazard": [
 		{
+			"name": "Sarracenia's Ire",
+			"source": "WoW1",
+			"page": 42,
+			"level": 5,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 13,
+				"minProf": "expert",
+				"notes": "to recognize that the scene before them is an illusion."
+			},
+			"description": [
+				"As {@hazard Myristica's Despair|WoW1}."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Nature} (trained) to tame the primal energy, DC 24 {@skill Religion} (trained) to suppress the haunt, DC 25 {@skill Diplomacy} (trained) to console the dryad; three successes are required to disable the haunt."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "vitality",
+						"amount": 8
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Awaken",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"emotion",
+						"fear",
+						"mental",
+						"primal"
+					],
+					"trigger": "At least two creatures enter the grove",
+					"entries": [
+						"The illusion fades, and a sorrowful chill emanates from the giant tree. The haunt rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; emotion, mental, primal) Sarracenia's rage overwhelms up to two living creatures in the grove, each of which must attempt a DC 23 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is {@condition confused} for 1 round."
+						],
+						"Critical Failure": [
+							"For 1 round, the creature is {@condition confused}, is {@condition stupefied||stupefied 1}, and gains a +4 status bonus to damage rolls."
+						]
+					}
+				}
+			],
+			"reset": [
+				"Unless {@creature Silene|WoW1} is destroyed, this {@trait haunt} can recharge itself after 1 hour."
+			]
+		},
+		{
+			"name": "Myristica's Despair",
+			"source": "WoW1",
+			"page": 42,
+			"level": 5,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 13,
+				"minProf": "expert",
+				"notes": "to recognize that the scene before them is an illusion."
+			},
+			"description": [
+				"The illusion shatters, revealing the grove to be a lifeless scar and the seemingly peaceful loggers to be crawling aimlessly about the clearing, consumed by rage and lashing out at anything that comes near."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Nature} (trained) to tame the primal energy, DC 23 {@skill Diplomacy} (trained) to console the dryad, DC 24 {@skill Occultism} (trained) to identify and heal the emotional wounds; three successes are required to disable the haunt."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 15
+					},
+					"will": {
+						"std": 15
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 50
+				},
+				"bt": {
+					"std": 25
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "vitality",
+						"amount": 8
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Awaken",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"emotion",
+						"fear",
+						"mental",
+						"primal"
+					],
+					"trigger": "At least two creatures enter the grove",
+					"entries": [
+						"The illusion fades, and a sorrowful chill emanates from the giant tree. The haunt rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; {@trait emotion}, {@trait mental}, {@trait primal}) Myristica bemoans her grove's fate, overwhelming foes with sorrow. Each creature in the grove must attempt a DC 23 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is {@condition dazzled} for 1 round and takes {@damage 2d6} mental damage."
+						],
+						"Critical Failure": [
+							"The creature takes {@damage 2d6} mental damage, plus {@damage 2d6} {@condition persistent damage||persistent mental damage}. While taking this {@condition persistent damage}, they are {@condition dazzled}."
+						]
+					}
+				}
+			],
+			"reset": [
+				"Unless {@creature Silene|WoW1} is destroyed, this {@trait haunt} can recharge itself after 1 hour."
+			]
+		},
+		{
+			"name": "Bee-Induced Panic",
+			"source": "WoW1",
+			"page": 15,
+			"level": 5,
+			"traits": [
+				"unique",
+				"complex"
+			],
+			"description": [
+				"Enraged bees spread panic, causing the crowd to trample each other in a desperate attempt to escape."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Diplomacy} (expert) to calm the panicked crowd and guide them to safety, DC 20 {@skill Medicine} (trained) to attend to victims' injuries, or DC 21 {@skill Nature} (expert) to instruct the crowd on how best to protect themselves from bees. Alternatively, a PC able to communicate with insects can instead attempt a DC 18 {@skill Diplomacy} (trained) check to calm and redirect the bees. Three successful checks are required to completely disable the hazard. The hazard is automatically disabled after 5 rounds or once both swarms are defeated."
+				]
+			},
+			"routine": [
+				"{@as 3} Panicked attendees suffer stings and accidentally injure one another in their fear and confusion. Increase the Casualties score by 1. This increases to {@dice 1d3} if one swarm is stinging the crowd, and it increases to {@dice 1d3+1} if both swarms are stinging the crowd."
+			]
+		},
+		{
 			"name": "Rusty Floor Spikes",
 			"source": "Rust",
 			"page": 21,

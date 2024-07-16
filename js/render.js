@@ -975,6 +975,10 @@ function Renderer () {
 				textStack[0] += "; ";
 			}
 		}
+		if (entry.endnote != null) {
+			textStack[0] = textStack[0].replace(/; $/, ". ");
+			textStack[0] += renderer.render(entry.endnote);
+		}
 		if (entry.entries) {
 			textStack[0] += `<strong>Effect&nbsp;</strong>`;
 			entry.entries.forEach(it => this._recursiveRender(it, textStack, meta));
@@ -4257,6 +4261,7 @@ Renderer.creature = {
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(cr.traits)}
 			${Renderer.creature.getDescription(cr.description)}
+			${Renderer.creature.getInitiative(cr)}
 			${Renderer.creature.getPerception(cr)}
 			${Renderer.creature.getLanguages(cr.languages)}
 			${Renderer.creature.getSkills(cr)}
@@ -4281,6 +4286,33 @@ Renderer.creature = {
 		if (description) {
 			return `<p class="pf2-stat pf2-stat__section">${renderer.render(description)}</p>`;
 		} else return ""
+	},
+
+	getInitiative (cr) {
+		if (!cr.initiative) return "";
+
+		let renderStack = [];
+		const renderer = Renderer.get();
+
+		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
+		renderStack.push(`<strong>Initiative&nbsp;</strong>`)
+		let skills = []
+		Object.keys(cr.skills).filter(k => k !== "notes").forEach(skill => {
+			let renderedSkill = "";
+			if (skill === "lore") {
+				renderedSkill = `${skill.toTitleCase()} (${renderer.render(cr.skills[skill].note)}) ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std", "note"], dice: { name: skill } })}`;
+			} else {
+				renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
+			}
+			skills.push(renderedSkill)
+		});
+		let notes = cr.skills["notes"] || [];
+
+		renderStack.push(skills.sort().join("<span>, </span>"))
+		renderStack.push(notes.length !== 0 ? `<span>, </span>${notes.join("<span>, </span>")}` : "")
+		renderStack.push(`</p>`)
+
+		return renderStack.join("")
 	},
 
 	getPerception (cr) {
@@ -6022,7 +6054,11 @@ Renderer.settlement = {
 		renderStack.push(Renderer.utils.getDividerDiv())
 		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
 		renderStack.push(Renderer.settlement.getSubHeadTop(it))
+		if (it.settlementData && (it.religions || it.threats || it.features || it.residents))
+			renderStack.push(Renderer.utils.getDividerDiv());
 		renderStack.push(Renderer.settlement.getSubHeadBot(it))
+		if ((it.religions || it.threats || it.features) && it.residents)
+			renderStack.push(Renderer.utils.getDividerDiv());
 		renderStack.push(Renderer.nation.getResidents(it))
 		renderStack.push(Renderer.utils.getPageP(it))
 		return renderStack.join("")
@@ -6034,7 +6070,6 @@ Renderer.settlement = {
 		if (it.settlementData.government) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Government&nbsp;</strong>${it.settlementData.government}</p>`)
 		if (it.settlementData.population) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Population&nbsp;</strong>${Renderer.settlement.getPopulation(it.settlementData.population)}</p>`)
 		if (it.settlementData.languages) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.languages)}</p>`)
-		renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("")
 	},
 	getSubHeadBot (it) {
@@ -6043,7 +6078,6 @@ Renderer.settlement = {
 		if (it.settlementData.religions) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Religions&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.religions)}</p>`)
 		if (it.settlementData.threats) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Threats&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.threats)}</p>`)
 		if (it.settlementData.features) renderStack.push(renderer.render(Renderer.nation.getFeatures(it.settlementData)))
-		renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("")
 	},
 	getPopulation (it) {

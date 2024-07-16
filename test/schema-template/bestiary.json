@@ -103,6 +103,49 @@
 					"description": {
 						"type": "string"
 					},
+					"initiative": {
+						"type": "object",
+						"propertyNames": {
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/skillName"
+								},
+								{
+									"type": "string",
+									"pattern": "([a-z]+ |)lore( \\(.+?\\)|)$"
+								},
+								{
+									"const": "notes"
+								}
+							]
+						},
+						"properties": {
+							"notes": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"default": {
+									"type": "integer",
+									"minimum": 1
+								},
+								"note": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": {
+								"type": "integer"
+							},
+							"minProperties": 1
+						}
+					},
 					"perception": {
 						"type": "object",
 						"properties": {

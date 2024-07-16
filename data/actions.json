@@ -1,6 +1,209 @@
 {
 	"action": [
 		{
+			"name": "Negotiate Peace",
+			"source": "WoW1",
+			"page": 35,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"exploration",
+				"linguistic",
+				"mental"
+			],
+			"requirements": "The arboreals have an unfriendly or higher attitude toward the PCs.",
+			"entries": [
+				"You attempt to mediate the conflict between the loggers of Marin's Mill and the neighboring arboreals by making a case to their leader. Without any supporting evidence, convincing the angry arboreals to leave Marin's Mill alone requires a successful DC 32 {@skill Diplomacy} check. However, the PCs can lower this DC by successfully making any of the following arguments:",
+				{
+					"type": "list",
+					"items": [
+						"{@b The villagers of Marin's Mill are defending themselves against unprovoked twigjack attacks.} A first-hand account of the twigjack attacks reduces the DC by 5, although Ironbark openly questions whether the twigjack attacks were truly \"unprovoked.\" Providing plausible justification for the twigjack attacks by reporting on the worship site reduces the DC by an additional 2; if the PCs also provide proof of Splintershank's demise, they reduce the DC by an additional 3.",
+						"{@b The villagers actively want peace.} If the PCs can convince the loggers' leader, Declan Berk, to accompany them while they make their case before Ironbark, they reduce the DC by 4."
+					]
+				},
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, but Ironbark agrees to help the people of Marin's Mill repair the damage inflicted by the twigjacks in exchange for their assistance in replanting the burned trees.",
+						"Success": "Ironbark agrees to spare the town, although he and the arboreals remain suspicious and resentful of the people of Marin's Mill.",
+						"Failure": "Ironbark is unconvinced, and a new attempt to convince him cannot be made again for 12 hours.",
+						"Critical Failure": "As failure, but Ironbark's attitude toward the PCs decreases by one step, and a new attempt to convince him cannot be made for 24 hours."
+					}
+				}
+			]
+		},
+		{
+			"name": "Prismati Catch",
+			"source": "WoW1",
+			"page": 23,
+			"traits": [
+				"manipulate"
+			],
+			"entries": [
+				"You try to catch a prismati object that's thrown to you. Attempt a DC 18 {@skill Acrobatics}, {@skill Athletics}, or {@skill Lore||Games Lore} check, or a DC 18 Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You catch the thrown item.",
+						"Failure": "You fail to catch the thrown item, which lands outside of your dig and earns no points."
+					}
+				}
+			]
+		},
+		{
+			"name": "Prismati Throw",
+			"source": "WoW1",
+			"page": 22,
+			"traits": [
+				"manipulate"
+			],
+			"entries": [
+				"You throw one of the prismati objects toward a catcher atop the dig of your choice. Attempt a DC 15 {@skill Lore||Games Lore} check or a ranged {@action Strike} against AC 15, applying any range increment penalties to either roll.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your throw is practically perfect. Your intended catcher gains a +2 circumstance bonus on their check to {@action Prismati Catch|WoW1|Catch} the object, and any check to {@action Prismati Intercept|WoW1|Intercept} the throw takes a \u20132 penalty.",
+						"Success": "Your throw is accurate but must still be caught.",
+						"Failure": "Your throw goes wide, missing the target."
+					}
+				}
+			]
+		},
+		{
+			"name": "Prismati Intercept",
+			"source": "WoW1",
+			"page": 23,
+			"traits": [
+				"manipulate"
+			],
+			"entries": [
+				"You try to disrupt or even catch a prismati object that's thrown past you. Attempt a DC 18 {@skill Acrobatics}, {@skill Athletics}, or {@skill Lore||Games Lore} check, or a DC 18 Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You catch the object, ensuring it doesn't score any points.",
+						"Success": "You disrupt the object's trajectory, increasing the DC required to {@action Prismati Catch|WoW1|Catch} it by 4.",
+						"Failure": "You fail to disrupt the throw."
+					}
+				}
+			]
+		},
+		{
+			"name": "Prismati Maneuver",
+			"source": "WoW1",
+			"page": 22,
+			"traits": [
+				"move"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"You dash from one dig to another. Attempt a DC 25 {@skill Acrobatics}, {@skill Athletics}, or {@skill Lore||Games Lore} check. You gain a circumstance bonus to the check equal to your Speed divided by 5 (e.g., {@hit +5} for 25 feet).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You move to a dig up to two spaces away. Alternatively, you can move to an adjacent dig and then Arrange a Scarf as a free action.",
+						"Success": "You move to an adjacent dig.",
+						"Failure": "You make slow progress; you do not move, but your circumstance bonus to your next Prismati Maneuver check increases by 5."
+					}
+				}
+			]
+		},
+		{
+			"name": "Counter-quip",
+			"source": "WoW1",
+			"page": 20,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"exploration",
+				"linguistic"
+			],
+			"trigger": "A contestant attempts a skill check when targeting you with a Wildwood Flyte.",
+			"entries": [
+				"You deliver a snappy, witty rebuttal that deflects your opponent's mockery. Attempt a {@skill Deception}, {@skill Intimidation}, or {@skill Performance} check; the DC equals 10 + the opponent's modifier for the skill they used for the Wildwood Flyte.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your rebuttal is cleverer than the attack! Negate the Wildwood Flyte result, and your opponent loses 1 point.",
+						"Success": "Your witty response reduces the number of points you lose by 1 (minimum 0).",
+						"Failure": "No effect.",
+						"Critical Failure": "Your clumsy comeback only exacerbates the mockery, and you lose 1 additional point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Wildwood Flyte",
+			"source": "WoW1",
+			"page": 20,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"linguistic"
+			],
+			"entries": [
+				"You spontaneously compose and deliver a string of rhyming verse to ridicule a contestant. Attempt a {@skill Deception}, {@skill Intimidation}, or {@skill Performance} check against the target's DC associated with that skill. Because the audience gets bored easily, you take a \u20132 penalty to this check if you used this skill for your most recent Wildwood Flyte attempt.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You verbally eviscerate your target and delight the audience. You gain 1 point. Your target loses 2 points and is {@condition stupefied||stupefied 1} until they gain at least 1 point.",
+						"Success": "Your verbal takedown works well, earning widespread approval. You gain 1 point, and your target loses 1 point.",
+						"Failure": "Though coherent, your mockery has no effect.",
+						"Critical Failure": "Your flyting is so clumsy that you lose 1 point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Study",
+			"source": "WoW1",
+			"page": 19,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"secret",
+				"visual"
+			],
+			"trigger": "Your turn to Wildwood Flyte begins.",
+			"entries": [
+				"You examine a contestant's mannerisms and recall trivia about them to identify their weaknesses. Attempt a DC 20 {@skill Perception} check or relevant check to {@action Recall Knowledge} about the target.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, but the circumstance bonus increases to +3.",
+						"Success": "You identify one of the target's weaknesses. The first time you incorporate that weakness into your Wildwood Flyte against the target, you gain a +2 circumstance bonus to the accompanying skill check.",
+						"Failure": "No effect.",
+						"Critical Failure": "You mistakenly identify something about the target. Using this fake weakness against the target imposes a \u20132 penalty to your check to Wildwood Flyte."
+					}
+				}
+			]
+		},
+		{
+			"name": "Caber Toss",
+			"source": "WoW1",
+			"page": 17,
+			"traits": [
+				"concentrate",
+				"manipulate"
+			],
+			"entries": [
+				"You precariously heft a caber, jog a short distance, and heave it end over end. First, attempt a DC 19 {@skill Acrobatics} check to keep the caber balanced as you move. If you succeed, you gain a +1 circumstance bonus to the subsequent {@skill Athletics} check. If you critically succeed, increase the circumstance bonus to +3.",
+				"Second, attempt a DC 21 {@skill Athletics} check or a ranged attack against AC 22 (the caber belongs to the {@group club} weapon group) to hurl the caber.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your exceptional throw earns 4 points.",
+						"Success": "Your throw lands off-kilter yet earns {@dice 1d3} points.",
+						"Failure": "You struggle to throw the caber, earning no points.",
+						"Critical Failure": "You stumble while lifting or tossing the caber, injuring yourself in the process. You earn no points, you take {@dice 1d10} bludgeoning damage, and you are {@condition enfeebled||enfeebled 1} for the rest of the contest."
+					}
+				}
+			]
+		},
+		{
 			"name": "Tenacious Stance",
 			"source": "LOHh",
 			"page": 110,

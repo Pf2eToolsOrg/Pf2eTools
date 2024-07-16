@@ -1,6 +1,49 @@
 {
 	"ritual": [
 		{
+			"name": "Commune with Corazal",
+			"source": "WoW1",
+			"page": 31,
+			"level": 4,
+			"traits": [
+				"unique"
+			],
+			"cast": {
+				"number": 4,
+				"unit": "hour"
+			},
+			"secondaryCasters": {
+				"number": 3
+			},
+			"primaryCheck": {
+				"skills": [
+					"Nature"
+				],
+				"prof": "expert",
+				"entry": "DC 24 {@skill Nature} (master) or DC 29 {@skill Nature} (expert)"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Forest Lore",
+					"Perception",
+					"Survival"
+				],
+				"entry": "DC 24 {@skill Lore||Forest Lore}, {@skill Perception}, or {@skill Survival}"
+			},
+			"entries": [
+				"You tap into Corazal's innumerable senses to identify disturbances throughout the Verduran Forest.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You and Corazal successfully identify a flashpoint: an imminent event that could stoke distrust and unrest. You experience a sensory premonition of the event, can cast {@spell know the way|PC1} as a 7th-rank cantrip to point toward the location, and know which Elder Oak is closest to it.",
+						"Success": "As success, but the ritual heavily taxes your mind and body. You are {@condition drained||drained 1}, and until the {@condition drained} condition ends, you are also {@condition stupefied||stupefied 1}.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The ritual has no effect beyond burning your mind with conflicting information. You are {@condition drained||drained 2}, and until the {@condition drained} condition ends, you are also {@condition stupefied||stupefied 1} and have the {@feat Dubious Knowledge} skill feat. Whenever you would decrease this {@condition drained} value, the value does not decrease unless you succeed at a DC 11 flat check."
+					}
+				}
+			]
+		},
+		{
 			"name": "Phantom Ship",
 			"page": 81,
 			"source": "GW2",
