@@ -6049,19 +6049,17 @@ Renderer.settlement = {
 		const renderStack = [];
 		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
 
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_PLACES))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_PLACES, type: "SETTLEMENT", ...opts }))
-		renderStack.push(Renderer.utils.getDividerDiv())
-		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
-		renderStack.push(Renderer.settlement.getSubHeadTop(it))
-		if (it.settlementData && (it.religions || it.threats || it.features || it.residents))
-			renderStack.push(Renderer.utils.getDividerDiv());
-		renderStack.push(Renderer.settlement.getSubHeadBot(it))
-		if ((it.religions || it.threats || it.features) && it.residents)
-			renderStack.push(Renderer.utils.getDividerDiv());
-		renderStack.push(Renderer.nation.getResidents(it))
-		renderStack.push(Renderer.utils.getPageP(it))
-		return renderStack.join("")
+		renderStack.push(Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_PLACES));
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_PLACES, type: "SETTLEMENT", ...opts }));
+		renderStack.push(Renderer.utils.getDividerDiv());
+		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []));
+		renderStack.push(Renderer.settlement.getSubHeadTop(it));
+		if (it.settlementData && (it.religions || it.threats || it.features || it.residents)) renderStack.push(Renderer.utils.getDividerDiv());
+		renderStack.push(Renderer.settlement.getSubHeadBot(it));
+		if ((it.religions || it.threats || it.features) && it.residents) renderStack.push(Renderer.utils.getDividerDiv());
+		renderStack.push(Renderer.nation.getResidents(it));
+		renderStack.push(Renderer.utils.getPageP(it));
+		return renderStack.join("");
 	},
 	getSubHeadTop (it) {
 		const renderer = Renderer.get()
