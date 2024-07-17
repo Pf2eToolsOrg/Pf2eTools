@@ -37,7 +37,7 @@ jobs:
 
             - name: Archive Release
               run: |
-                  zip -r pf2ools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*img*' '*.editorconfig*' '*CNAME*' 'RELEASE_NOTES.md'
+                  zip -r Pf2eTools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*.editorconfig*' '*CNAME*' 'RELEASE_NOTES.md'
 
             - name: Set Deployed Flag
               run: |
@@ -80,16 +80,11 @@ jobs:
                   branch: prod
                   folder: .
 
-            - name: Archive Images
-              run: |
-                  zip -r -s 500m img-${{ env.RELEASE_VERSION }}.zip img/
-
             - name: Upload Release
               continue-on-error: true
               # Add the files one-by-one in an effort to avoid timeouts
               run: |
-                  hub release create -a pf2ools-${{ env.RELEASE_VERSION }}.zip -F RELEASE_NOTES.md ${{ env.RELEASE_VERSION }}
-                  for f in $(find . -name 'img-${{ env.RELEASE_VERSION }}.*' -print); do hub release edit ${{ env.RELEASE_VERSION }} -m '' -a $f; done
+                  hub release create -a Pf2eTools-${{ env.RELEASE_VERSION }}.zip -F RELEASE_NOTES.md ${{ env.RELEASE_VERSION }}
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
