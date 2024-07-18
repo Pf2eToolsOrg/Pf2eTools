@@ -217,7 +217,11 @@
 			"entries": [
 				"A sweltering heat and sparks of flame that take the form of tiny copies of you surround your body. You're hot to the touch, gaining resistance 5 to cold and fire. Whenever an adjacent creature {@action Strike||Strikes} you with a melee attack or touches you, it takes {@damage 1d6} {@condition persistent damage||persistent fire damage}. You gain the Thermal Eruption action.",
 				{
-					"name": "Thermal Eruption[two-actions]",
+					"name": "Thermal Eruption",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
 					"traits": [
 						"evocation",
 						"fire",
@@ -248,7 +252,11 @@
 			"entries": [
 				"Your body looks like it's made of flowing water, clear and pristine, providing a natural grace to all your movements. You gain a swim Speed equal to your land Speed. If you already had a swim Speed, it's increased by 10 feet. You gain the Water Transfer activity, which enables you to teleport through a body of water.",
 				{
-					"name": "Water Transfer[two-actions]",
+					"name": "Water Transfer",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
 					"traits": [
 						"conjuration",
 						"primal",

@@ -2143,10 +2143,13 @@
 						}
 					},
 					{
-						"name": "Possess Animal[two-actions]",
+						"name": "Possess Animal",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"entries": [
-							"The bhuta attempts to possess an adjacent animal.",
-							"They cast 9th-level heightened possession with the following changes: since the bhuta has no physical body, they're unaffected by that restriction. On a critical failure, the duration extends to 1 full day. While possessed by a bhuta, the animal casts no shadow."
+							"The bhuta attempts to possess an adjacent animal. They cast 9th-level heightened {@spell possession} with the following changes: since the bhuta has no physical body, they're unaffected by that restriction. On a critical failure, the duration extends to 1 full day. While possessed by a bhuta, the animal casts no shadow."
 						]
 					},
 					{
@@ -8175,7 +8178,11 @@
 						]
 					},
 					{
-						"name": "Totems of the Past[two-actions]",
+						"name": "Totems of the Past",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"traits": [
 							"enchantment",
 							"mental",
@@ -11137,7 +11144,11 @@
 						]
 					},
 					{
-						"name": "Sandstorm[three-actions]",
+						"name": "Sandstorm",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
 						"traits": [
 							"conjuration",
 							"divine",
@@ -11490,7 +11501,11 @@
 						]
 					},
 					{
-						"name": "Vengeful Suffocation[two-actions]",
+						"name": "Vengeful Suffocation",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"traits": [
 							"incapacitation",
 							"occult",
@@ -12009,13 +12024,13 @@
 					{
 						"name": "Self-Loathing",
 						"entries": [
-							"As pale stranger, but {@dc 33}."
+							"As {@creature pale stranger|BotD}, but {@dc 33}."
 						]
 					},
 					{
 						"name": "Undying Vendetta",
 						"entries": [
-							"As pale stranger."
+							"As {@creature pale stranger|BotD}."
 						]
 					}
 				],
@@ -12034,9 +12049,13 @@
 						}
 					},
 					{
-						"name": "Implacable Advance[two-actions]",
+						"name": "Implacable Advance",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"entries": [
-							"The silent stalker Strides twice and makes a claw {@action Strike}; they can ignore {@quickref difficult terrain||3|terrain} during these Strides if they advance toward their murderer. If they {@action Strike} and Grab their murderer this turn, they can Constrict as a free action immediately after the Grab."
+							"The silent stalker {@action Stride||Strides} twice and makes a claw {@action Strike}; they can ignore {@quickref difficult terrain||3|terrain} during these {@action Stride||Strides} if they advance toward their murderer. If they {@action Strike} and {@ability Grab} their murderer this turn, they can {@ability Constrict} as a free action immediately after the {@ability Grab}."
 						]
 					}
 				]
@@ -13308,7 +13327,11 @@
 				],
 				"bot": [
 					{
-						"name": "Draconic Frenzy[two-actions]",
+						"name": "Draconic Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"entries": [
 							"The skeletal drake makes two Fangs {@action Strike||Strikes} and one Tail {@action Strike} in any order."
 						]
@@ -13698,7 +13721,11 @@
 						}
 					},
 					{
-						"name": "Steal Soul[two-actions]",
+						"name": "Steal Soul",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
 						"traits": [
 							"necromancy",
 							"occult"
