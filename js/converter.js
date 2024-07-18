@@ -435,7 +435,7 @@ class Converter {
 	}
 	_parseCraftRequirements (obj, opts) {
 		opts = opts || {};
-		opts = MiscUtil.merge(opts, {getEntriesOpts: {doFinalize: true}});
+		opts = MiscUtil.merge(opts, {getEntriesOpts: {doFinalize: true}, asArray: true});
 		this._parseGenericProperty(obj, this._tokenizerUtils.craftRequirements, "craftReq", opts);
 	}
 	_parseDuration (obj, opts) {
@@ -604,7 +604,11 @@ class Converter {
 		this._parsedProperties.push(...tokenType);
 		this._consumeToken(tokenType);
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
-		obj[prop] = this._renderEntries(entries, {asString: true});
+		if (opts.asArray) {
+			obj[prop] = [this._renderEntries(entries, { asString: true })];
+		} else {
+			obj[prop] = this._renderEntries(entries, { asString: true });
+		}
 	}
 
 	_parseItemCategory (item) {
@@ -1828,7 +1832,7 @@ class Converter {
 		const variant = {};
 		const cachedParsedProps = this._parsedProperties;
 		if (this._tokenIsType(this._tokenizerUtils.sentences)) {
-			variant.name = this._renderEntries([this._consumeToken(this._tokenizerUtils.sentences)], {asString: true});
+			variant.variantType = this._renderEntries([this._consumeToken(this._tokenizerUtils.sentences)], {asString: true});
 		}
 		while (this._tokenIsType(this._tokenizerUtils.propertiesItemVariants)) {
 			this._parseProperty(variant);

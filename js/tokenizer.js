@@ -55,8 +55,8 @@ class TokenizerUtils {
 	}
 	static get activate () {
 		return [
-			{regex: /^Activate\s/, type: "ACTIVATE", lookbehind: /(\n|[;.)]\s)$/},
-			{regex: /^Activation\s/, type: "ACTIVATE", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Activate\b/, type: "ACTIVATE", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Activation\b/, type: "ACTIVATE", lookbehind: /(\n|[;.)]\s)$/},
 		]
 	}
 	static get ammunition () {
@@ -296,8 +296,8 @@ class TokenizerUtils {
 	}
 	static get attacks () {
 		return [
-			{regex: /^Melee\s(?![A-Z])/, type: "MELEE", lookbehind: /(\n|action?]\s?)$/},
-			{regex: /^Ranged\s(?![A-Z])/, type: "RANGED", lookbehind: /(\n|action?]\s?)$/},
+			{regex: /^Melee\b(?!\s?[A-Z])/, type: "MELEE", lookbehind: /(\n|action?]\s?)$/},
+			{regex: /^Ranged\b(?!\s?[A-Z])/, type: "RANGED", lookbehind: /(\n|action?]\s?)$/},
 		]
 	}
 	// TODO: Improve this pattern... need to catch "Arcane Spontaneous Spells", "Occult Spells", "Champion Devotion Spells", etc.
@@ -613,9 +613,9 @@ class TokenizerUtils {
 
 	static get actions () {
 		return [
-			{regex: /^\[one.action][\s;,.]/, type: "ACTION", lookaheadIncDepth: 1},
-			{regex: /^\[two.actions?][\s;,.]/, type: "TWO_ACTIONS", lookaheadIncDepth: 1},
-			{regex: /^\[three.actions?][\s;,.]/, type: "THREE_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^\[one.action][\s;,.]?/, type: "ACTION", lookaheadIncDepth: 1},
+			{regex: /^\[two.actions?][\s;,.]?/, type: "TWO_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^\[three.actions?][\s;,.]?/, type: "THREE_ACTIONS", lookaheadIncDepth: 1},
 			{regex: /^\[reaction][\s;,.]/, type: "REACTION", lookaheadIncDepth: 1},
 			{regex: /^\[free.action][\s;,.]/, type: "FREE_ACTION", lookaheadIncDepth: 1},
 			{regex: /^\[>][\s;,.]/, type: "ACTION", lookaheadIncDepth: 1},
