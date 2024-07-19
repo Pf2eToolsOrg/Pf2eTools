@@ -4296,19 +4296,19 @@ Renderer.creature = {
 
 		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 		renderStack.push(`<strong>Initiative&nbsp;</strong>`)
-		let skills = []
-		Object.keys(cr.skills).filter(k => k !== "notes").forEach(skill => {
+		const initiatives = []
+		Object.keys(cr.initiative).filter(k => k !== "notes").forEach(skill => {
 			let renderedSkill = "";
 			if (skill === "lore") {
-				renderedSkill = `${skill.toTitleCase()} (${renderer.render(cr.skills[skill].note)}) ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std", "note"], dice: { name: skill } })}`;
+				renderedSkill = `${skill.toTitleCase()} (${renderer.render(cr.initiative[skill].note)}) ${renderer.render(`{@d20 ${cr.initiative[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.initiative[skill], { exclude: ["std", "note"], dice: { name: skill } })}`;
 			} else {
-				renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
+				renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.initiative[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.initiative[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
 			}
-			skills.push(renderedSkill)
+			initiatives.push(renderedSkill)
 		});
-		let notes = cr.skills["notes"] || [];
+		const notes = cr.initiative["notes"] || [];
 
-		renderStack.push(skills.sort().join("<span>, </span>"))
+		renderStack.push(initiatives.sort().join("<span>, </span>"))
 		renderStack.push(notes.length !== 0 ? `<span>, </span>${notes.join("<span>, </span>")}` : "")
 		renderStack.push(`</p>`)
 
@@ -4316,6 +4316,8 @@ Renderer.creature = {
 	},
 
 	getPerception (cr) {
+		if (!cr.perception) return "";
+
 		const renderer = Renderer.get();
 		const perception = cr.perception;
 		const senses = cr.senses || [];

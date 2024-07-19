@@ -79,7 +79,7 @@
 				}
 			],
 			"routine": [
-				"(1 action; emotion, mental, primal) Sarracenia's rage overwhelms up to two living creatures in the grove, each of which must attempt a DC 23 Will save.",
+				"(1 action; {@trait emotion}, {@trait mental}, {@trait primal}) Sarracenia's rage overwhelms up to two living creatures in the grove, each of which must attempt a DC 23 Will save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1277,7 +1277,7 @@
 				}
 			],
 			"routine": [
-				"{@as 3} (arcane, conjuration) The slicing shadows congeal into the form of what appears to be the upper half of a skeletal, cowled humanoid: an {@creature owb prophet|B3}. This {@creature owb prophet|B3} is a creation of the paradox engine and does not have a forsaken patron. While the {@creature owb prophet|B3} is active, the paradox engine no longer uses its Slicing Shadows reaction; instead, the {@creature owb prophet|B3} focuses its attacks on creatures that attempt to damage or deactivate the engine. If the {@creature owb prophet|B3} is destroyed, the paradox engine's disable DCs and Hardness are reduced by 5. It thereafter functions as a simple hazard with the Slicing Shadows reaction, and resets after 1 round."
+				"{@as 3} ({@trait arcane}, {@trait conjuration}) The slicing shadows congeal into the form of what appears to be the upper half of a skeletal, cowled humanoid: an {@creature owb prophet|B3}. This {@creature owb prophet|B3} is a creation of the paradox engine and does not have a forsaken patron. While the {@creature owb prophet|B3} is active, the paradox engine no longer uses its Slicing Shadows reaction; instead, the {@creature owb prophet|B3} focuses its attacks on creatures that attempt to damage or deactivate the engine. If the {@creature owb prophet|B3} is destroyed, the paradox engine's disable DCs and Hardness are reduced by 5. It thereafter functions as a simple hazard with the Slicing Shadows reaction, and resets after 1 round."
 			],
 			"reset": [
 				"The paradox engine deactivates 1 minute, and its {@creature owb prophet|B3} returns to its interior after all creatures leave the area, but resets immediately thereafter."
@@ -1637,37 +1637,31 @@
 						"mental",
 						"occult"
 					],
-					"trigger": "Two or more characters enter area E3 and make any sound at all",
+					"trigger": "Two or more characters enter area {@b E3} and make any sound at all",
 					"entries": [
 						"Sounds or speech are amplified and garbled into a terrible, shrieking cry. All creatures in the area take {@damage 2d10+11} mental damage (DC 28 basic Will save). The trap then rolls initiative."
-					]
-				},
-				{
-					"name": "DC 28",
-					"entries": [
-						"Will save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": [
-									"The target is unaffected and is immune to the effects for 1 minute."
-								],
-								"Success": [
-									"The target takes half damage."
-								],
-								"Failure": [
-									"The target takes full damage and is {@condition sickened||sickened 1} by feelings of distrust and anxiety."
-								],
-								"Critical Failure": [
-									"The target takes double damage and is {@condition sickened||sickened 2}."
-								]
-							}
-						}
 					]
 				}
 			],
 			"routine": [
-				"(1 action; emotion, fear, mental, occult) The echoes continue to reverberate, tearing at those in the area and filling them with distrust of others. All creatures in the area take {@damage 2d10+11} mental damage and must attempt a"
+				"(1 action; {@trait emotion}, {@trait fear}, {@trait mental}, {@trait occult}) The echoes continue to reverberate, tearing at those in the area and filling them with distrust of others. All creatures in the area take {@damage 2d10+11} mental damage and must attempt a DC 28 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected and is immune to the effects for 1 minute."
+						],
+						"Success": [
+							"The target takes half damage."
+						],
+						"Failure": [
+							"The target takes full damage and is {@condition sickened||sickened 1} by feelings of distrust and anxiety."
+						],
+						"Critical Failure": [
+							"The target takes double damage and is {@condition sickened||sickened 2}."
+						]
+					}
+				}
 			],
 			"reset": [
 				"The hazard stops when there are no conscious creatures in area E3 and resets after 1 minute."
@@ -3505,7 +3499,7 @@
 				}
 			],
 			"routine": [
-				"(2 actions; emotion, enchantment, fear, incapacitation, mental, occult) The haunt uses its first action to {@action grapple} with Goh and attempts to pull him underwater. Goh has a Fortitude DC of 19. In order to pull Goh underwater, the haunt must critically succeed at its grapple check against him with a result of 29 or higher to successfully {@condition restrained||restrain} Goh. Goh is overwhelmed by terror and makes no attempt to escape, so it falls to the PCs to get him free from the haunt. If Goh is restrained and pulled underwater, the haunt must continue to grapple him in following rounds. If the haunt manages to critically succeed at grappling Goh while he's restrained, the man dies from a combination of fright and drowning, at which point the haunt immediately ends.",
+				"(2 actions; {@trait emotion}, {@trait enchantment}, {@trait fear}, {@trait incapacitation}, {@trait mental}, {@trait occult}) The haunt uses its first action to {@action grapple} with Goh and attempts to pull him underwater. Goh has a Fortitude DC of 19. In order to pull Goh underwater, the haunt must critically succeed at its grapple check against him with a result of 29 or higher to successfully {@condition restrained||restrain} Goh. Goh is overwhelmed by terror and makes no attempt to escape, so it falls to the PCs to get him free from the haunt. If Goh is restrained and pulled underwater, the haunt must continue to grapple him in following rounds. If the haunt manages to critically succeed at grappling Goh while he's restrained, the man dies from a combination of fright and drowning, at which point the haunt immediately ends.",
 				"If Goh is pulled free and taken out of the water, the haunt loses one action and no longer attempts to grapple him. The haunt uses its second action to manifest the image of a frightening watery drowned ghost, causing one creature it targets within 30 feet to attempt a {@dc 22} Will save (the haunt always targets a creature who attempted to free Goh from its grip if possible).",
 				{
 					"type": "successDegree",
@@ -4765,7 +4759,7 @@
 				}
 			],
 			"routine": [
-				"(1 action; illusion, mental, occult) The atmosphere continues to affect all creatures in the area, requiring a new Fortitude save each round against its Poisonous Atmosphere (above). A creature holding its breath gains a +2 circumstance bonus to the save."
+				"(1 action; {@trait illusion}, {@trait mental}, {@trait occult}) The atmosphere continues to affect all creatures in the area, requiring a new Fortitude save each round against its Poisonous Atmosphere (above). A creature holding its breath gains a +2 circumstance bonus to the save."
 			]
 		},
 		{
@@ -4979,7 +4973,7 @@
 				}
 			],
 			"routine": [
-				"(3 actions; conjuration, divine, teleportation) With spectral claws, the aiudara wraiths hurl trespassers through time and space. Each of the three wraiths has 1 action which it can use to make a forceful hand {@action Strike} against a creature within 60 feet. The haunt loses 1 action for each successful check to disable the haunt.",
+				"(3 actions; {@trait conjuration}, {@trait divine}, {@trait teleportation}) With spectral claws, the aiudara wraiths hurl trespassers through time and space. Each of the three wraiths has 1 action which it can use to make a forceful hand {@action Strike} against a creature within 60 feet. The haunt loses 1 action for each successful check to disable the haunt.",
 				"When the haunt rolls a critical hit to {@action Strike} a creature, the creature is instantly shunted to an empty space within 30 feet. The haunt chooses which space the creature is transported to."
 			],
 			"attacks": [
@@ -5186,7 +5180,7 @@
 				}
 			],
 			"routine": [
-				"(2 actions; cold, enchantment, mental, occult) The haunt uses its first action to light incense burners again, forcing any creature that isn't already {@condition unconscious} to save against that effect once more. Its second action is to cause any {@condition unconscious} creatures in the room to experience horrific, vivid dreams about being lost in the arctic during a blizzard, while enormous furred figures\u2014saumen kar\u2014lunge at them through the snow to attack repeatedly. Each {@condition unconscious} creature must attempt a DC 28 Fortitude saving throw. If at the end of the round there are no {@condition unconscious} creatures in the room, Etward's nightmare ends and the trap deactivates.",
+				"(2 actions; {@trait cold}, {@trait enchantment}, {@trait mental}, {@trait occult}) The haunt uses its first action to light incense burners again, forcing any creature that isn't already {@condition unconscious} to save against that effect once more. Its second action is to cause any {@condition unconscious} creatures in the room to experience horrific, vivid dreams about being lost in the arctic during a blizzard, while enormous furred figures\u2014saumen kar\u2014lunge at them through the snow to attack repeatedly. Each {@condition unconscious} creature must attempt a DC 28 Fortitude saving throw. If at the end of the round there are no {@condition unconscious} creatures in the room, Etward's nightmare ends and the trap deactivates.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -8959,7 +8953,7 @@
 				}
 			],
 			"routine": [
-				"(3 actions; misfortune) The gremlin horde hurls one tinkering curse with each action, targeting an item within 60 feet wielded or worn by a creature. The creature must attempt a DC 27 Will save. The gremlin horde loses 1 action for each gremlin gang that's scattered.",
+				"(3 actions; {@trait misfortune}) The gremlin horde hurls one tinkering curse with each action, targeting an item within 60 feet wielded or worn by a creature. The creature must attempt a DC 27 Will save. The gremlin horde loses 1 action for each gremlin gang that's scattered.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -20812,7 +20806,7 @@
 				}
 			],
 			"routine": [
-				"(1 action; illusion, incapacitation, occult) The haunt continues to confound victims' senses and inspire them to commit violence against each other. Each creature in the haunt's area must attempt a DC 26 Will save.",
+				"(1 action; {@trait illusion}, {@trait incapacitation}, {@trait occult}) The haunt continues to confound victims' senses and inspire them to commit violence against each other. Each creature in the haunt's area must attempt a DC 26 Will save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -21058,7 +21052,7 @@
 				}
 			],
 			"routine": [
-				"(1 action; auditory, enchantment, incapacitation, occult) The orchestra performs a raucous tune, compelling all creatures that can hear it to spend actions dancing.",
+				"(1 action; {@trait auditory}, {@trait enchantment}, {@trait incapacitation}, {@trait occult}) The orchestra performs a raucous tune, compelling all creatures that can hear it to spend actions dancing.",
 				"Each round, creature must attempt a DC 37 Will save; the results of this save modify the number of actions that the creature must spend dancing each round. If this would cause the creature to spend more actions dancing than it can use on its turn, the creature takes {@dice 10d6} damage (or double that on a critical failure) from moving faster than its body can manage.",
 				{
 					"type": "successDegree",

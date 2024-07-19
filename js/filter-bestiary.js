@@ -174,6 +174,7 @@ class PageFilterBestiary extends PageFilter {
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
 		cr._flanguages = cr._flanguages.map(l => l.replace(/\s\(.+/, "")).filter(l => !l.includes(" ")).map(l => l.toTitleCase());
+		cr._fPerception = (cr.perception && cr.perception.std) || cr.initiative.perception.std;
 		cr._fskills = new Set();
 		if (cr.skills) {
 			Object.keys(cr.skills).forEach((k) => {
@@ -244,7 +245,7 @@ class PageFilterBestiary extends PageFilter {
 		this._wisdomFilter.addItem(cr.abilityMods.wis);
 		this._charismaFilter.addItem(cr.abilityMods.cha);
 
-		this._perceptionFilter.addItem(cr.perception.std);
+		this._perceptionFilter.addItem(cr._fPerception);
 		this._preciseSenseFilter.addItem(cr._fSenses.precise);
 		this._impreciseSenseFilter.addItem(cr._fSenses.imprecise);
 		this._vagueSenseFilter.addItem(cr._fSenses.vague);
@@ -298,7 +299,7 @@ class PageFilterBestiary extends PageFilter {
 			c.level,
 			c._fTraits,
 			[
-				c.perception.std,
+				c._fPerception,
 				c._fSenses.precise,
 				c._fSenses.imprecise,
 				c._fSenses.vague,
