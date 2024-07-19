@@ -175,9 +175,18 @@ class AncestriesPage extends BaseComponent {
 		let isAddedAnyAncestry = false;
 		let isAddedAnyHeritage = false;
 
-		if (data.ancestry && data.ancestry.length) (isAddedAnyAncestry = true) && this._addData_addAncestryData(data.ancestry)
-		if (data.heritage && data.heritage.length) (isAddedAnyHeritage = true) && this._addData_addHeritageData(data.heritage)
-		if (data.versatileHeritage && data.versatileHeritage.length) (isAddedAnyHeritage = true) && this._addData_addVeHeritageData(data.versatileHeritage)
+		if (data.ancestry && data.ancestry.length) {
+			isAddedAnyAncestry = true;
+			this._addData_addAncestryData(data.ancestry);
+		}
+		if (data.heritage && data.heritage.length) {
+			isAddedAnyHeritage = true;
+			this._addData_addHeritageData(data.heritage);
+		}
+		if (data.versatileHeritage && data.versatileHeritage.length) {
+			isAddedAnyHeritage = true;
+			this._addData_addVeHeritageData(data.versatileHeritage);
+		}
 
 		if (isAddedAnyAncestry || isAddedAnyHeritage) {
 			this._list.update();

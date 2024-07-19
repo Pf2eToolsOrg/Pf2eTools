@@ -2682,7 +2682,7 @@ function Renderer () {
 		options = options || {};
 		if (entries.includes(e => typeof e !== "string")) return this.render(entries);
 		if (options.andOr === true) {
-			if (entries.find(element => element.includes("and" || ","))) return this.render(entries.join("; or "))
+			if (entries.find(element => element.includes("and") || element.includes(","))) return this.render(entries.join("; or "))
 			else return this.render(entries.join(" or "));
 		}
 		if (entries.find(element => element.includes(","))) return this.render(entries.join("; "));

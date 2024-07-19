@@ -180,8 +180,14 @@ class ClassesPage extends BaseComponent {
 		let isAddedAnyClass = false;
 		let isAddedAnySubclass = false;
 
-		if (data.class && data.class.length) (isAddedAnyClass = true) && this._addData_addClassData(data.class)
-		if (data.subclass && data.subclass.length) (isAddedAnySubclass = true) && this._addData_addSubclassData(data.subclass)
+		if (data.class && data.class.length) {
+			isAddedAnyClass = true;
+			this._addData_addClassData(data.class);
+		}
+		if (data.subclass && data.subclass.length) {
+			isAddedAnySubclass = true;
+			this._addData_addSubclassData(data.subclass);
+		}
 
 		if (isAddedAnyClass || isAddedAnySubclass) {
 			this._list.update();

@@ -2252,7 +2252,10 @@ class SourceUiUtil {
 				let incomplete = false;
 				[$iptName, $iptAbv, $iptJson].forEach($ipt => {
 					const val = $ipt.val();
-					if (!val || !val.trim()) (incomplete = true) && $ipt.addClass("form-control--error");
+					if (!val || !val.trim()) {
+						incomplete = true;
+						$ipt.addClass("form-control--error");
+					}
 				});
 				if (incomplete) return;
 

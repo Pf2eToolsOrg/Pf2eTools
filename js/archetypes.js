@@ -215,7 +215,10 @@ class ArchetypesPage extends BaseComponent {
 	_addData (data) {
 		let isAddedAnyArchetype = false;
 
-		if (data.archetype && data.archetype.length) (isAddedAnyArchetype = true) && this._addData_addArchetypeData(data.archetype)
+		if (data.archetype && data.archetype.length) {
+			isAddedAnyArchetype = true;
+			this._addData_addArchetypeData(data.archetype);
+		}
 
 		if (isAddedAnyArchetype) {
 			this._list.update();

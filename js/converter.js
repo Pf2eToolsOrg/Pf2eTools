@@ -28,7 +28,6 @@ class Converter {
 		this._tokenStack = [];
 		this._genericAbilityLookup = {};
 
-		// eslint-disable-next-line no-console
 		this._cbWarn = opts.cbWarn || (typeof module !== "undefined" ? it => { throw new Error(it) } : console.warn);
 	}
 

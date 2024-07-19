@@ -171,8 +171,7 @@ class PageFilterSpells extends PageFilter {
 			.concat(
 				spell.traditions
 					? spell.traditions
-						.map((x) => x.toLowerCase())
-						.includes("primal" || "arcane")
+						.some((x) => x.toLowerCase() === "primal" || x.toLowerCase() === "arcane")
 						? "Halcyon"
 						: []
 					: [],
@@ -256,15 +255,19 @@ class PageFilterSpells extends PageFilter {
 		}
 		// "Possible Elementalist Spell" shenanigans, could be optimised?
 		if (
-			!spell._fTraditions.includes("Elemental")
-			&& (spell.traits.some((trait) =>
-				trait.includes("Fire" || "Water" || "Earth" || "Air"),
+			!spell._fTraditions.includes("elemental")
+			&& (
+				(
+					spell.traits.some((trait) => ["fire", "water", "earth", "air"].includes(trait.toLowerCase()))
+				) || (
+					spell._fTraditions.includes("arcane")
+					&& spell._fTraditions.includes("occult")
+					&& spell._fTraditions.includes("primal")
+					&& spell._fTraditions.includes("divine")
+				)
 			)
-				|| (spell._fTraditions.includes("Arcane")
-					&& spell._fTraditions.includes("Occult")
-					&& spell._fTraditions.includes("Primal")
-					&& spell._fTraditions.includes("Divine")))
 		) { spell._fMisc.push("Possible Elementalist Spells"); }
+
 		// Remaster hack
 		if (spell.remaster) spell._fMisc.push("Remaster");
 	}
