@@ -313,8 +313,7 @@ class Converter {
 		return PropOrder.getOrdered(hazard, "hazard");
 	}
 
-	_parseTraits (obj, opts) {
-		opts = opts || {};
+	_parseTraits (obj) {
 		const traits = [];
 		while (this._tokenIsType(this._tokenizerUtils.traits)) {
 			const traitToken = this._consumeToken(this._tokenizerUtils.traits);
@@ -456,8 +455,7 @@ class Converter {
 			obj.duration = {unit: "unknown", entry: rendered};
 		}
 	}
-	_parseEffect (obj, opts) {
-		opts = opts || {};
+	_parseEffect (obj) {
 		this._consumeToken(this._tokenizerUtils.effect);
 		this._parsedProperties.push(...this._tokenizerUtils.effect);
 		this._parseEntries(obj, {noAbilities: true});
@@ -490,8 +488,7 @@ class Converter {
 			obj.frequency = {special: rendered};
 		}
 	}
-	_parseLevel (obj, opts) {
-		opts = opts || {};
+	_parseLevel (obj) {
 		const lvlToken = this._consumeToken(this._tokenizerUtils.level);
 		this._parsedProperties.push(...this._tokenizerUtils.level);
 		obj.level = Number(/\d+/.exec(lvlToken.value)[0]);
@@ -557,8 +554,7 @@ class Converter {
 		obj.savingThrow = {type: this._tokenizerUtils.savingThrows.filter(u => u.regex.test(rendered)).map(st => st.short)};
 		if (/basic/.test(rendered)) obj.savingThrow.basic = true;
 	}
-	_parseShieldData (obj, opts) {
-		opts = opts || {};
+	_parseShieldData (obj) {
 		const token = this._consumeToken(this._tokenizerUtils.shieldData);
 		const reHardness = /Hardness\s(\d+)/i;
 		const reHP = /HP\s(\d+)/;
@@ -644,6 +640,8 @@ class Converter {
 				return true
 			} else if (typeof e === "object" && e.entries != null) {
 				return e.entries.some(ee => typeof ee === "string" && regex.test(ee));
+			} else {
+				return false;
 			}
 		}).length > 0) {
 			item.category = "Rune";
@@ -1325,6 +1323,7 @@ class Converter {
 				if (creature.spellcasting && creature.spellcasting.some(sc => re.test(sc.name))) return true;
 				if (re.test(creature.name)) return true;
 				if (creature.abilities && Object.values(creature.abilities).flat().some(ab => ab.entries && ab.entries.some(e => typeof e === "string" && re.test(e)))) return true;
+				return false;
 			});
 			const lookup = lookupsFiltered.length === 1 ? lookupsFiltered[0] : lookups.find(it => it.source === SRC_CRB) || lookups.find(it => it.source === SRC_APG) || lookups[0];
 			ability.generic = {tag: "feat", source: lookup.source === Parser.TAG_TO_DEFAULT_SOURCE.feat ? undefined : lookup.source, add_hash: lookup.add_hash};

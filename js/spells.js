@@ -163,14 +163,8 @@ class SpellsPage extends ListPage {
 				const toRender = toList[Hist.lastLoadedId];
 
 				if (evt.shiftKey) {
-					let $content = ""
-					if (evt.ctrlKey) {
-						$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
-					} else {
-						$content = Renderer.hover.$getHoverContent_statsCode(toRender)
-					}
 					Renderer.hover.getShowWindow(
-						$content,
+						Renderer.hover.$getHoverContent_statsCode(toRender, !!evt.ctrlKey),
 						Renderer.hover.getWindowPositionFromEvent(evt),
 						{
 							title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,

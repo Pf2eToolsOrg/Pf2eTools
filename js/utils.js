@@ -3139,7 +3139,7 @@ DataUtil = {
 
 		async expandVariants (item) {
 			if (!item.variants) return [item];
-			const expanded = await Promise.all(item.variants.filter(x => { if (x.exists !== true) return x }).map(v => DataUtil.item._expandVariant(item, v)));
+			const expanded = await Promise.all(item.variants.filter((x) => !x.exists).map((v) => DataUtil.item._expandVariant(item, v)));
 			return [item, ...expanded];
 		},
 

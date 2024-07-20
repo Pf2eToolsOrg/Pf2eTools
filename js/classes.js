@@ -408,7 +408,7 @@ class ClassesPage extends BaseComponent {
 		let [[clsH, ...subs], [ftH, ...ftSubs]] = Hist.getDoubleHashParts();
 		if (clsH === "" && !subs.length) return;
 		subs = this.filterBox.setFromSubHashes(subs);
-		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs);
+		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs); // eslint-disable-line
 
 		const target = isInitialLoad ? this.__state : this._state;
 
@@ -427,7 +427,7 @@ class ClassesPage extends BaseComponent {
 		subs.forEach(sub => {
 			const unpacked = UrlUtil.unpackSubHash(sub);
 			if (!unpacked.state) return;
-			unpacked.state.map(it => {
+			unpacked.state.forEach(it => {
 				let [k, v] = it.split("=");
 				k = k.toLowerCase();
 				v = UrlUtil.mini.decompress(v);
@@ -1018,7 +1018,7 @@ class ClassesPage extends BaseComponent {
 
 			// FIXME: this works for now
 			const skipSort = lvlFeaturesFilt.filter(f => !f.preCalc).length;
-			const metasFeatureLinks = lvlFeaturesFilt.sort(skipSort ? () => {} : SortUtil.compareListNames)
+			const metasFeatureLinks = skipSort ? lvlFeaturesFilt : lvlFeaturesFilt.sort(SortUtil.compareListNames)
 				.map((it, ixFeature) => {
 					const featureId = `${ixLvl}-${lvlFeaturesFilt.filter(ft => !ft.preCalc).indexOf(it)}`;
 

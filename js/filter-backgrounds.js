@@ -60,16 +60,12 @@ class PageFilterBackgrounds extends PageFilter {
 		);
 		bg._fMisc = (bg.miscTags || []).map((tag) => {
 			switch (tag) {
-				case "ability":
-					return "Grants Ability";
-				case "equipment":
-					return "Grants Equipment";
-				case "sense":
-					return "Grants Sense";
-				case "situationalBenefit":
-					return "Grants Situational Benefit";
-				case "drawback":
-					return "Has Drawback";
+				case "ability": return "Grants Ability";
+				case "equipment": return "Grants Equipment";
+				case "sense": return "Grants Sense";
+				case "situationalBenefit": return "Grants Situational Benefit";
+				case "drawback": return "Has Drawback";
+				default: return "FILTER ERROR";
 			}
 		});
 	}

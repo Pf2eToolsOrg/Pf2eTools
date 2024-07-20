@@ -144,14 +144,8 @@ class ArchetypesPage extends BaseComponent {
 			return (evt) => {
 				const toRender = toList[archetypesPage._featId._];
 				if (evt.shiftKey) {
-					let $content = ""
-					if (evt.ctrlKey) {
-						$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
-					} else {
-						$content = Renderer.hover.$getHoverContent_statsCode(toRender)
-					}
 					Renderer.hover.getShowWindow(
-						$content,
+						Renderer.hover.$getHoverContent_statsCode(toRender, !!evt.ctrlKey),
 						Renderer.hover.getWindowPositionFromEvent(evt),
 						{
 							title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
@@ -166,14 +160,8 @@ class ArchetypesPage extends BaseComponent {
 			return (evt) => {
 				const toRender = toList[archetypesPage._archetypeId._];
 				if (evt.shiftKey) {
-					let $content = ""
-					if (evt.ctrlKey) {
-						$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
-					} else {
-						$content = Renderer.hover.$getHoverContent_statsCode(toRender)
-					}
 					Renderer.hover.getShowWindow(
-						$content,
+						Renderer.hover.$getHoverContent_statsCode(toRender, !!evt.ctrlKey),
 						Renderer.hover.getWindowPositionFromEvent(evt),
 						{
 							title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
@@ -415,7 +403,7 @@ class ArchetypesPage extends BaseComponent {
 		let [[arcH, ...subs], [ftH, ...ftSubs]] = Hist.getDoubleHashParts();
 		if (arcH === "" && !subs.length) return;
 		subs = this.filterBox.setFromSubHashes(subs);
-		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs);
+		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs); // eslint-disable-line
 
 		const target = isInitialLoad ? this.__state : this._state;
 
@@ -429,7 +417,7 @@ class ArchetypesPage extends BaseComponent {
 		subs.forEach(sub => {
 			const unpacked = UrlUtil.unpackSubHash(sub);
 			if (!unpacked.state) return;
-			unpacked.state.map(it => {
+			unpacked.state.forEach(it => {
 				let [k, v] = it.split("=");
 				k = k.toLowerCase();
 				v = UrlUtil.mini.decompress(v);

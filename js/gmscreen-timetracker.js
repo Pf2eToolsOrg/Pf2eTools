@@ -216,12 +216,12 @@ class TimeTrackerBase extends TimeTrackerComponent {
 				if (it.when.year != null && it.when.day != null) {
 					return it.when.year === year && it.when.day === dayOfYear;
 				}
-
 				// TODO consider expanding this in future
 				//  - will also require changes to the event creation/management UI
 				// else if (it.when.weekday != null) {...}
 				// else if (it.when.fortnightDay != null) {...}
 				// ... etc
+				return false;
 			})
 			.sort((a, b) => {
 				if (a.hasTime && !b.hasTime) return 1;
@@ -2062,6 +2062,8 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 						} else if (i === 1) {
 							const otherMoons = activeMoons.length - 1;
 							return `<div class="gm-time__calendar-moon-phase text-muted" title="${otherMoons} additional moon${otherMoons === 1 ? "" : "s"} not shown"><span class="glyphicon glyphicon-plus"/></div>`;
+						} else {
+							return "";
 						}
 					});
 
@@ -2629,7 +2631,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 	async _render_pGetEventTimeOfDay (eventYear, eventDay, isShiftDown) {
 		const {getTimeInfo} = this._parent;
 
-		let timeOfDay = null;
+		let timeOfDay;
 		if (isShiftDown) {
 			const {timeOfDaySecs} = getTimeInfo();
 			timeOfDay = timeOfDaySecs;

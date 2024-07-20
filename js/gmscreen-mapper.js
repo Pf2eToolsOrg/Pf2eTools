@@ -81,7 +81,7 @@ class DmMapper {
 			.removeClass("flex-col")
 			.addClass("text-center");
 
-		mapDatas.map(mapData => {
+		mapDatas.forEach((mapData) => {
 			$(`<div class="m-1 p-1 clickable gm-map__picker-wrp-img relative">
 							<div class="gm-map__picker-img" style="background-image: url(${mapData.hrefThumbnail || mapData.href})"></div>
 							<span class="absolute text-center gm-map__picker-disp-name">${mapData.name.escapeQuotes()}</span>

@@ -1938,9 +1938,8 @@ Renderer.dice.parsed = {
 			let out = "";
 			const view = this._nodes.slice();
 
-			let isNeg = false;
 			if (view[0].eq(Renderer.dice.tk.ADD) || view[0].eq(Renderer.dice.tk.SUB)) {
-				isNeg = view.shift().eq(Renderer.dice.tk.SUB);
+				const isNeg = view.shift().eq(Renderer.dice.tk.SUB);
 				if (isNeg) out += "-";
 			}
 

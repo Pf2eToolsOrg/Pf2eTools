@@ -2109,14 +2109,12 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SF0] = "2023-04-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_Rust] = "2023-10-18";
 Parser.SOURCE_JSON_TO_DATE[SRC_CC0] = "2024-07-10";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOHh] = "2023-06-28";
-Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] =
-	"https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] = "https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW1] = "https://paizo.com/products/btq02ev4";
 Parser.SOURCE_JSON_TO_STORE[SRC_RoE] = "https://paizo.com/products/btq02eal";
 Parser.SOURCE_JSON_TO_STORE[SRC_TV] = "https://paizo.com/products/btq02eav";
-Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] =
-	"https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_AFoF] = "https://paizo.com/products/btq02d8f";
 Parser.SOURCE_JSON_TO_STORE[SRC_AFFM] = "https://paizo.com/products/btq02eio";
 Parser.SOURCE_JSON_TO_STORE[SRC_AoA0] = "https://paizo.com/products/btq024wj";
@@ -2134,8 +2132,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_AoE4] = "https://paizo.com/products/btq0233p";
 Parser.SOURCE_JSON_TO_STORE[SRC_AoE5] = "https://paizo.com/products/btq02065";
 Parser.SOURCE_JSON_TO_STORE[SRC_AoE6] = "https://paizo.com/products/btq021cb";
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih";
-Parser.SOURCE_JSON_TO_STORE[SRC_AV0] =
-	"https://paizo.com/community/blog/v5748dyo6shjm";
+Parser.SOURCE_JSON_TO_STORE[SRC_AV0] = "https://paizo.com/community/blog/v5748dyo6shjm";
 Parser.SOURCE_JSON_TO_STORE[SRC_AV1] = "https://paizo.com/products/btq026kj";
 Parser.SOURCE_JSON_TO_STORE[SRC_AV2] = "https://paizo.com/products/btq027jm";
 Parser.SOURCE_JSON_TO_STORE[SRC_AV3] = "https://paizo.com/products/btq024xm";
@@ -2144,8 +2141,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_B1] = "https://paizo.com/products/btq01zp4";
 Parser.SOURCE_JSON_TO_STORE[SRC_B2] = "https://paizo.com/products/btq022yq";
 Parser.SOURCE_JSON_TO_STORE[SRC_B3] = "https://paizo.com/products/btq027mn";
 Parser.SOURCE_JSON_TO_STORE[SRC_BB] = "https://paizo.com/products/btq023dx";
-Parser.SOURCE_JSON_TO_STORE[SRC_BL0] =
-	"https://paizo.com/community/blog/v5748dyo6si34";
+Parser.SOURCE_JSON_TO_STORE[SRC_BL0] = "https://paizo.com/community/blog/v5748dyo6si34";
 Parser.SOURCE_JSON_TO_STORE[SRC_BL1] = "https://paizo.com/products/btq02art";
 Parser.SOURCE_JSON_TO_STORE[SRC_BL2] = "https://paizo.com/products/btq02asf";
 Parser.SOURCE_JSON_TO_STORE[SRC_BL3] = "https://paizo.com/products/btq02c11";
@@ -2166,15 +2162,13 @@ Parser.SOURCE_JSON_TO_STORE[SRC_EC4] = "https://paizo.com/products/btq0216l";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC5] = "https://paizo.com/products/btq021by";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC6] = "https://paizo.com/products/btq021f4";
 Parser.SOURCE_JSON_TO_STORE[SRC_FoP] = "https://paizo.com/products/btq01zoh";
-Parser.SOURCE_JSON_TO_STORE[SRC_FRP0] =
-	"https://paizo.com/community/blog/v5748dyo6shmo";
+Parser.SOURCE_JSON_TO_STORE[SRC_FRP0] = "https://paizo.com/community/blog/v5748dyo6shmo";
 Parser.SOURCE_JSON_TO_STORE[SRC_FRP1] = "https://paizo.com/products/btq027qd";
 Parser.SOURCE_JSON_TO_STORE[SRC_FRP2] = "https://paizo.com/products/btq027sp";
 Parser.SOURCE_JSON_TO_STORE[SRC_FRP3] = "https://paizo.com/products/btq027sq";
 Parser.SOURCE_JSON_TO_STORE[SRC_GnG] = "https://paizo.com/products/btq026mw";
 Parser.SOURCE_JSON_TO_STORE[SRC_GMG] = "https://paizo.com/products/btq022c1";
-Parser.SOURCE_JSON_TO_STORE[SRC_GW0] =
-	"https://paizo.com/community/blog/v5748dyo6si7s";
+Parser.SOURCE_JSON_TO_STORE[SRC_GW0] = "https://paizo.com/community/blog/v5748dyo6si7s";
 Parser.SOURCE_JSON_TO_STORE[SRC_GW1] = "https://paizo.com/products/btq02dsq";
 Parser.SOURCE_JSON_TO_STORE[SRC_GW2] = "https://paizo.com/products/btq02dw1";
 Parser.SOURCE_JSON_TO_STORE[SRC_GW3] = "https://paizo.com/products/btq02ef2";
@@ -2183,8 +2177,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOACLO] = "https://paizo.com/products/btq02ap2";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf";
-Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] =
-	"https://paizo-images.s3-us-west-2.amazonaws.com/image/download/PZO9303+Gods+%26+Magic+Web+Supplement.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/PZO9303+Gods+%26+Magic+Web+Supplement.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOIL] = "https://paizo.com/products/btq02dxx";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOKL] = "https://paizo.com/products/btq02c3a";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd";
@@ -2197,24 +2190,20 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOWG] = "https://paizo.com/products/btq01zoj";
 Parser.SOURCE_JSON_TO_STORE[SRC_LTiBA] = "https://paizo.com/products/btq024ys";
 Parser.SOURCE_JSON_TO_STORE[SRC_Mal] = "https://paizo.com/products/btq027qf";
 Parser.SOURCE_JSON_TO_STORE[SRC_NGD] = "https://paizo.com/products/btq027o0";
-Parser.SOURCE_JSON_TO_STORE[SRC_OoA0] =
-	"https://paizo.com/community/blog/v5748dyo6si08";
+Parser.SOURCE_JSON_TO_STORE[SRC_OoA0] = "https://paizo.com/community/blog/v5748dyo6si08";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA1] = "https://paizo.com/products/btq02ajl";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA2] = "https://paizo.com/products/btq02am3";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA3] = "https://paizo.com/products/btq02aot";
 Parser.SOURCE_JSON_TO_STORE[SRC_POS1] = "https://paizo.com/products/btq027oe";
-Parser.SOURCE_JSON_TO_STORE[SRC_PFUM] =
-	"https://www.kickstarter.com/projects/dynamiteent/pathfinder-fumbus?ref=Pf2eTools";
-Parser.SOURCE_JSON_TO_STORE[SRC_QFF0] =
-	"https://paizo.com/community/blog/v5748dyo6shx3";
+Parser.SOURCE_JSON_TO_STORE[SRC_PFUM] = "https://www.kickstarter.com/projects/dynamiteent/pathfinder-fumbus?ref=Pf2eTools";
+Parser.SOURCE_JSON_TO_STORE[SRC_QFF0] = "https://paizo.com/community/blog/v5748dyo6shx3";
 Parser.SOURCE_JSON_TO_STORE[SRC_QFF1] = "https://paizo.com/products/btq02asv";
 Parser.SOURCE_JSON_TO_STORE[SRC_QFF2] = "https://paizo.com/products/btq029ud";
 Parser.SOURCE_JSON_TO_STORE[SRC_QFF3] = "https://paizo.com/products/btq029wg";
 Parser.SOURCE_JSON_TO_STORE[SRC_SaS] = "https://paizo.com/products/btq02d7e";
 Parser.SOURCE_JSON_TO_STORE[SRC_Sli] = "https://paizo.com/products/btq023hg";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoM] = "https://paizo.com/products/btq027uy";
-Parser.SOURCE_JSON_TO_STORE[SRC_SoT0] =
-	"https://paizo.com/community/blog/v5748dyo6shr4";
+Parser.SOURCE_JSON_TO_STORE[SRC_SoT0] = "https://paizo.com/community/blog/v5748dyo6shr4";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoT1] = "https://paizo.com/products/btq026li";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoT2] = "https://paizo.com/products/btq026mv";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoT3] = "https://paizo.com/products/btq027kb";

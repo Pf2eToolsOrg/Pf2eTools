@@ -1213,7 +1213,7 @@ class InitiativeTracker {
 					bVal = $(b).find(".gm-init-row-link-name").text();
 				} else bVal = $(b).find(`input.${cfg.sort === ALPHA ? "name" : "score"}`).val();
 
-				let first = 0;
+				let first;
 				let second = 0;
 				if (cfg.sort === NUM) {
 					aVal = Number(aVal);

@@ -26,6 +26,8 @@ export default [...compat.extends("eslint:recommended"), {
 	rules: {
 		"accessor-pairs": "off",
 
+		"array-callback-return": "error",
+
 		"arrow-spacing": ["error", {
 			before: true,
 			after: true,
@@ -53,6 +55,7 @@ export default [...compat.extends("eslint:recommended"), {
 		"comma-style": ["error", "last"],
 		"constructor-super": "error",
 		curly: ["error", "multi-line"],
+		"default-case-last": "error",
 		"dot-location": ["error", "property"],
 
 		eqeqeq: ["error", "always", {
@@ -106,6 +109,7 @@ export default [...compat.extends("eslint:recommended"), {
 		"no-dupe-class-members": "error",
 		"no-dupe-keys": "error",
 		"no-duplicate-case": "error",
+		"no-duplicate-imports": "error",
 		"no-empty-character-class": "error",
 		"no-empty-pattern": "error",
 		"no-eval": "error",
@@ -184,6 +188,7 @@ export default [...compat.extends("eslint:recommended"), {
 		}],
 
 		"no-unreachable": "error",
+		"no-unreachable-loop": "error",
 		"no-unsafe-finally": "error",
 		"no-unsafe-negation": "error",
 
@@ -193,7 +198,7 @@ export default [...compat.extends("eslint:recommended"), {
 			allowTaggedTemplates: true,
 		}],
 
-		"no-unused-vars": "off",
+		"no-unused-vars": "off", // Too much legacy code from mothersite we might want later
 
 		"no-use-before-define": ["error", {
 			functions: false,
@@ -201,12 +206,14 @@ export default [...compat.extends("eslint:recommended"), {
 			variables: false,
 		}],
 
+		"no-useless-assignment": "error",
 		"no-useless-call": "error",
 		"no-useless-computed-key": "error",
 		"no-useless-constructor": "error",
 		"no-useless-escape": "error",
 		"no-useless-rename": "error",
 		"no-useless-return": "error",
+		"no-var": "error",
 		"no-whitespace-before-property": "error",
 		"no-with": "error",
 
@@ -236,7 +243,7 @@ export default [...compat.extends("eslint:recommended"), {
 			switches: "never",
 			classes: "never",
 		}],
-
+		"prefer-const": "off", // This should be on but no way am I trying to fix that
 		"prefer-promise-reject-errors": "error",
 		"rest-spread-spacing": ["error", "never"],
 
@@ -291,7 +298,5 @@ export default [...compat.extends("eslint:recommended"), {
 		quotes: ["error", "double", {
 			allowTemplateLiterals: true,
 		}],
-
-		"no-var": "error",
 	},
 }];

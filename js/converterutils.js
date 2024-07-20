@@ -290,7 +290,7 @@ class TagJsons {
 		if (DeityTag._INIT) obj = DeityTag.tryRun(obj);
 		if (GroupTag._INIT) obj = GroupTag.tryRun(obj);
 		if (ActionTag._INIT) obj = ActionTag.tryRun(obj);
-		obj = SkillTag.tryRun(obj);
+		obj = SkillTag.tryRun(obj); // eslint-disable-line
 		// obj = ItemTag.tryRun(obj);
 	}
 
@@ -376,7 +376,7 @@ SpellTag._SPELL_NAME_REGEX_LEVEL_CAST = null;
 // FIXME/TODO:
 class ItemTag {
 	static pInit (items) {
-		items = items || [];
+		items = items || []; // eslint-disable-line
 	}
 
 	static tryRun (it) {

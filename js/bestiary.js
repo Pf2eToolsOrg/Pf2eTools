@@ -260,14 +260,8 @@ class BestiaryPage extends ListPage {
 			const toRender = this._lastRendered.creature != null && this._lastRendered.isScaled ? this._lastRendered.creature : cr;
 
 			if (evt.shiftKey) {
-				let $content = ""
-				if (evt.ctrlKey) {
-					$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
-				} else {
-					$content = Renderer.hover.$getHoverContent_statsCode(toRender)
-				}
 				Renderer.hover.getShowWindow(
-					$content,
+					Renderer.hover.$getHoverContent_statsCode(toRender, !!evt.ctrlKey),
 					Renderer.hover.getWindowPositionFromEvent(evt),
 					{
 						title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,
@@ -517,7 +511,7 @@ class EncounterBuilderUtils {
 					customHashId: it.data.customHashId,
 					hash: UrlUtil.autoEncodeHash(cr),
 				}
-			}
+			} else return null;
 		}).filter(it => it && it.level !== 100).sort((a, b) => SortUtil.ascSort(b.level, a.level));
 	}
 

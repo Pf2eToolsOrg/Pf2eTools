@@ -155,8 +155,7 @@ class TraitIndexer extends Omnidexer {
 		this._index = {};
 	}
 
-	async pAddToIndex (arbiter, json, options) {
-		options = options || {};
+	async pAddToIndex (arbiter, json) {
 		const index = this._index;
 
 		const getToAdd = (it, i) => {

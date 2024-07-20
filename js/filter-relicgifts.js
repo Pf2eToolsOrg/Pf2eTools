@@ -34,6 +34,7 @@ class PageFilterRelicGifts extends PageFilter {
 				case "grantsPassive": return "Grants Passive Attribute";
 				case "isRune": return "Is Rune";
 				case "soulSeed": return "Soul Seed Gift";
+				default: return "FILTER ERROR";
 			}
 		});
 		if (it.prerequisites) it._fMisc.push("Has Prerequisites");

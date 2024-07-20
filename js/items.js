@@ -227,8 +227,8 @@ class ItemsPage extends ListPage {
 					case modes[2]: {
 						return value ? `${(Parser.DEFAULT_CURRENCY_CONVERSION_TABLE.find(it => it.coin === "gp").mult * value).toFixed(2).replace(/\.?0+$/, "")} gp` : "";
 					}
-					default:
-					case modes[0]: {
+					// modes[0] or ...
+					default: {
 						const CURRENCIES = ["gp", "sp", "cp"];
 						const coins = { cp: value };
 						CurrencyUtil.doSimplifyCoins(coins);
@@ -437,14 +437,8 @@ class ItemsPage extends ListPage {
 					}
 
 					if (evt.shiftKey) {
-						let $content = ""
-						if (evt.ctrlKey) {
-							$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
-						} else {
-							$content = Renderer.hover.$getHoverContent_statsCode(toRender)
-						}
 						Renderer.hover.getShowWindow(
-							$content,
+							Renderer.hover.$getHoverContent_statsCode(toRender, !!evt.ctrlKey),
 							Renderer.hover.getWindowPositionFromEvent(evt),
 							{
 								title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,

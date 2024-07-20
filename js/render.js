@@ -670,10 +670,10 @@ function Renderer () {
 		const labelRowIdx = entry.labelRowIdx ? entry.labelRowIdx : [0];
 		const labelColIdx = entry.labelColIdx ? entry.labelColIdx : [];
 		const minTo = entry.minimizeTo && !entry.minimizeTo.includes(rowIdx) ? `pf2-table--minimize` : "";
-		let row_styles = ""
-		let col_styles = ""
-		let cell_styles = ""
-		let type_styles = ""
+		let row_styles = "";
+		let col_styles = "";
+		let cell_styles = "";
+		let type_styles;
 		if (entry.rowStyles && typeof (entry.rowStyles[0]) === "string") {
 			row_styles = `${entry.rowStyles ? entry.rowStyles[rowIdx] || "" : ""}`;
 		} else if (entry.rowStyles) {
@@ -3315,7 +3315,7 @@ Renderer.utils = {
 				styles.push("pf2-trait--settlement");
 			}
 			if (options.doNotTagTraits) {
-				let finishedTrait = "";
+				let finishedTrait;
 				if (trait.includes(`{@`)) {
 					let traitRender = renderer.render(trait)
 					finishedTrait = [traitRender.slice(0, 2), ` class="${styles.join(" ")}" `, traitRender.slice(2)].join("");
@@ -3576,8 +3576,7 @@ Renderer.utils = {
 				if (blacklistKeys.has(k)) { return false; }
 				cntPrerequisites += 1;
 				switch (k) {
-					case "level":
-					{
+					case "level": {
 						if (typeof v === "number") {
 							if (isListMode) { return `Lvl ${v}`; } else { return `${Parser.getOrdinalForm(v)} level`; }
 						} else if (!v.class && !v.subclass) {
@@ -3610,8 +3609,7 @@ Renderer.utils = {
 						return isListMode ? (v.entrySummary || Renderer.stripTags(v.entry)) : (isTextOnly ? Renderer.stripTags(v.entry) : v.entry);
 					case "other":
 						return isListMode ? "Special" : (isTextOnly ? Renderer.stripTags(v) : v);
-					case "ability":
-					{
+					case "ability": {
 						let hadMultipleInner = false;
 						let hadMultiMultipleInner = false;
 						let allValuesEqual = null;
@@ -3656,16 +3654,13 @@ Renderer.utils = {
 							return `${joined}${allValuesEqual != null ? ` ${allValuesEqual}` : ""}`;
 						}
 					}
-					case "armor":
-					{
-						return
+					case "armor": {
+						return isListMode ? v.map(x => x.split("|")[0]).join("/") : v.map(it => `{@item ${it}}`).joinConjunct(", ", " or ");
 					}
-					case "weapon":
-					{
-						return
+					case "weapon": {
+						return isListMode ? v.map(x => x.split("|")[0]).join("/") : v.map(it => `{@item ${it}}`).joinConjunct(", ", " or ");
 					}
-					case "skill":
-					{
+					case "skill": {
 						renderStack = [...new Set()]
 						v.forEach(element => {
 							array = new Set()
@@ -3676,8 +3671,7 @@ Renderer.utils = {
 						});
 						return renderer.renderJoinCommaOrSemi(renderStack, { andOr: true });
 					}
-					default:
-						throw new Error(`Unhandled key: ${k}`);
+					default: throw new Error(`Unhandled key: ${k}`);
 				}
 			},
 			).filter(Boolean).join(", ");
@@ -4294,25 +4288,25 @@ Renderer.creature = {
 		let renderStack = [];
 		const renderer = Renderer.get();
 
-		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-		renderStack.push(`<strong>Initiative&nbsp;</strong>`)
-		const initiatives = []
+		renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+		renderStack.push(`<strong>Initiative&nbsp;</strong>`);
+		const initiatives = [];
 		Object.keys(cr.initiative).filter(k => k !== "notes").forEach(skill => {
-			let renderedSkill = "";
+			let renderedSkill;
 			if (skill === "lore") {
 				renderedSkill = `${skill.toTitleCase()} (${renderer.render(cr.initiative[skill].note)}) ${renderer.render(`{@d20 ${cr.initiative[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.initiative[skill], { exclude: ["std", "note"], dice: { name: skill } })}`;
 			} else {
 				renderedSkill = `${skill.toTitleCase()} ${renderer.render(`{@d20 ${cr.initiative[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.initiative[skill], { exclude: ["std"], raw: ["note"], dice: { name: skill } })}`;
 			}
-			initiatives.push(renderedSkill)
+			initiatives.push(renderedSkill);
 		});
 		const notes = cr.initiative["notes"] || [];
 
-		renderStack.push(initiatives.sort().join("<span>, </span>"))
-		renderStack.push(notes.length !== 0 ? `<span>, </span>${notes.join("<span>, </span>")}` : "")
-		renderStack.push(`</p>`)
+		renderStack.push(initiatives.sort().join("<span>, </span>"));
+		renderStack.push(notes.length !== 0 ? `<span>, </span>${notes.join("<span>, </span>")}` : "");
+		renderStack.push(`</p>`);
 
-		return renderStack.join("")
+		return renderStack.join("");
 	},
 
 	getPerception (cr) {
@@ -4367,7 +4361,7 @@ Renderer.creature = {
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
 			Object.keys(cr.skills).filter(k => k !== "notes").forEach(skill => {
-				let renderedSkill = "";
+				let renderedSkill;
 				if (skill === "lore") {
 					renderedSkill = `${skill.toTitleCase()} (${renderer.render(cr.skills[skill].note)}) ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill.toTitleCase()}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std", "note"], dice: { name: skill } })}`;
 				} else {
@@ -5451,14 +5445,15 @@ Renderer.item = {
 			const gifts = item.gifts;
 			const renderStack = [];
 
-			Object.keys(gifts).map((type) => {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${type.toTitleCase()} Gift${gifts[type].length > 1 ? "s" : ""}&nbsp;</strong>${gifts[type].map((gift) => {
-					let split = gift.split("|")
-					return `{@relicGift ${split[0].replace(/\(.+?\)/, "").trim()}|${split[1] ?? ""}|${split[0]}}`
-				}).join(", ")
-				}
-				</p>`);
-			})
+			Object.keys(gifts).forEach((type) => {
+				renderStack.push(
+					`<p class="pf2-stat pf2-stat__section"><strong>${type.toTitleCase()} Gift${gifts[type].length > 1 ? "s" : ""}&nbsp;</strong>${
+						gifts[type].map((gift) => {
+							let split = gift.split("|");
+							return `{@relicGift ${split[0].replace(/\(.+?\)/, "").trim()}|${split[1] ?? ""}|${split[0]}}`;
+						}).join(", ")
+					}</p>`);
+			});
 
 			return renderer.render(renderStack.join(""));
 		} else return "";
@@ -5827,8 +5822,7 @@ Renderer.organization = {
 };
 
 Renderer.creatureTemplate = {
-	getRenderedString (it, opts) {
-		opts = opts || {};
+	getRenderedString (it) {
 		return $$`
 			${Renderer.utils.getExcludedDiv(it, "creatureTemplate", UrlUtil.PG_CREATURETEMPLATE)}
 			${Renderer.utils.getNameDiv(it)}
@@ -5888,8 +5882,7 @@ Renderer.place = {
 };
 
 Renderer.event = {
-	getRenderedString (it, opts) {
-		opts = opts || {};
+	getRenderedString (it) {
 		return $$`
 			${Renderer.utils.getExcludedDiv(it, "event", UrlUtil.PG_EVENTS)}
 			${Renderer.utils.getNameDiv(it, { type: "EVENT" })}
@@ -6607,11 +6600,15 @@ Renderer.hover = {
 		} else {
 			if (meta.isFluff) {
 				// Try to fetch the fluff directly
-				toRender = await Renderer.hover.pCacheAndGet(`fluff__${page}`, source, hash);
-				// Fall back on fluff attached to the object itself
-				const entity = await Renderer.hover.pCacheAndGet(page, source, hash);
-				const pFnGetFluff = Renderer.hover._pageToFluffFn(page);
-				toRender = await pFnGetFluff(entity);
+				try {
+					toRender = await Renderer.hover.pCacheAndGet(`fluff__${page}`, source, hash);
+					if (!toRender) throw new Error("catch!");
+				} catch {
+					// Fall back on fluff attached to the object itself
+					const entity = await Renderer.hover.pCacheAndGet(page, source, hash);
+					const pFnGetFluff = Renderer.hover._pageToFluffFn(page);
+					toRender = await pFnGetFluff(entity);
+				}
 			} else toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
 		}
 
@@ -7216,14 +7213,11 @@ Renderer.hover = {
 						"animation": "initial", // Briefly remove the animation so we can calculate the height
 					});
 
-					let yPos = pos.y;
-
 					const { bottom: posBottom, height: winHeight } = $hov[0].getBoundingClientRect();
 					const height = position.window.innerHeight
 					if (posBottom > height) {
-						yPos = position.window.innerHeight - winHeight;
 						$hov.css({
-							"top": yPos,
+							"top": position.window.innerHeight - winHeight,
 							"animation": "",
 						});
 					}
@@ -8206,14 +8200,8 @@ Renderer.hover = {
 						const toRender = toList[Hist.lastLoadedId];
 
 						if (evt.shiftKey) {
-							let $content = ""
-							if (evt.ctrlKey) {
-								$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
-							} else {
-								$content = Renderer.hover.$getHoverContent_statsCode(toRender)
-							}
 							Renderer.hover.getShowWindow(
-								$content,
+								Renderer.hover.$getHoverContent_statsCode(toRender, !!evt.ctrlKey),
 								Renderer.hover.getWindowPositionFromEvent(evt),
 								{
 									title: `${toRender.name} \u2014 Source Data${evt.ctrlKey ? " (<span style='color:#FFFF00'>Dev</span>)" : ""}`,

@@ -1880,10 +1880,10 @@ class Filter extends FilterBase {
 					const hook = () => {
 						$btnText.text(`${nestName} [${this._nestsHidden[nestName] ? "+" : "\u2212"}]`);
 
-						const stats = {high: 0, low: 0, total: 0};
+						const stats = { high: 0, low: 0, total: 0 };
 						this._items
 							.filter(it => it.nest === nestName)
-							.find(it => {
+							.forEach(it => {
 								const key = this._state[it.item] === 1 ? "high" : this._state[it.item] ? "low" : "ignored";
 								stats[key]++;
 								stats.total++;
@@ -1901,7 +1901,7 @@ class Filter extends FilterBase {
 
 					this._items
 						.filter(it => it.nest === nestName)
-						.find(it => {
+						.forEach(it => {
 							this._addHook("state", it.item, hook);
 						});
 

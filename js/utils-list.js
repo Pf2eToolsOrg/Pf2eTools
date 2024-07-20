@@ -818,7 +818,7 @@ const ListUtil = {
 			const $sequence = generateSequence($eles, timers.length);
 
 			let total = 0;
-			timers.map((it, i) => {
+			timers.forEach((it, i) => {
 				total += it;
 				setTimeout(() => {
 					$sequence[i][0].click();

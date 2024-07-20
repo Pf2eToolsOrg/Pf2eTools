@@ -413,7 +413,7 @@ class AncestriesPage extends BaseComponent {
 		let [[ancH, ...subs], [ftH, ...ftSubs]] = Hist.getDoubleHashParts();
 		if (ancH === "" && !subs.length) return;
 		subs = this.filterBox.setFromSubHashes(subs);
-		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs);
+		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs); // eslint-disable-line
 
 		const target = isInitialLoad ? this.__state : this._state;
 
@@ -432,7 +432,7 @@ class AncestriesPage extends BaseComponent {
 		subs.forEach(sub => {
 			const unpacked = UrlUtil.unpackSubHash(sub);
 			if (!unpacked.state) return;
-			unpacked.state.map(it => {
+			unpacked.state.forEach(it => {
 				let [k, v] = it.split("=");
 				k = k.toLowerCase();
 				v = UrlUtil.mini.decompress(v);

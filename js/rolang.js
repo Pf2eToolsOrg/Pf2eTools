@@ -542,9 +542,8 @@ Ro_Parser._Exponent = class extends Ro_Parser._AbstractSymbol {
 		const out = await view.pop().pEvl(ctx, resolver);
 		if (out.isCancelled) return out;
 
-		let tmp = null;
 		while (view.length) {
-			tmp = await view.pop().pEvl(ctx, resolver);
+			const tmp = await view.pop().pEvl(ctx, resolver);
 			if (tmp.isCancelled) return tmp;
 			out.val = tmp.val ** out.val;
 		}
@@ -635,7 +634,7 @@ Ro_Parser._Expression = class extends Ro_Parser._AbstractSymbol {
 		let out = "";
 		const view = this._nodes.slice();
 
-		let isNeg = false;
+		let isNeg;
 		if (view[0].eq(Ro_Token.ADD) || view[0].eq(Ro_Token.SUB)) {
 			isNeg = view.shift().eq(Ro_Token.SUB);
 			if (isNeg) out += "-";
