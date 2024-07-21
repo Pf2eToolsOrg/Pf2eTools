@@ -1580,6 +1580,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 SRC_SKT0 = "SKT0";
 SRC_WoW0 = "WoW0";
 SRC_WoW1 = "WoW1";
+SRC_WoW2 = "WoW2";
 SRC_RoE = "RoE";
 SRC_TV = "TV";
 SRC_AAWS = "AAWS";
@@ -1704,6 +1705,7 @@ SRC_LOHh = "LOHh";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW1] = "Wardens of Wildwood #1: Pactbreaker";
+Parser.SOURCE_JSON_TO_FULL[SRC_WoW2] = "Wardens of Wildwood #2: Severed at the Root";
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
 Parser.SOURCE_JSON_TO_FULL[SRC_TV] = "Treasure Vault";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
@@ -1864,6 +1866,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOHh] = "Lost Omens: Highhelm";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW1] = "WoW1";
+Parser.SOURCE_JSON_TO_ABV[SRC_WoW2] = "WoW2";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_TV] = "TV";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
@@ -1988,6 +1991,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LOHh] = "LOHh";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW1] = "2024-04-23";
+Parser.SOURCE_JSON_TO_DATE[SRC_WoW2] = "2024-05-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_TV] = "2023-02-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
@@ -2112,6 +2116,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_LOHh] = "2023-06-28";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] = "https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW1] = "https://paizo.com/products/btq02ev4";
+Parser.SOURCE_JSON_TO_STORE[SRC_WoW2] = "https://paizo.com/products/btq02ewl";
 Parser.SOURCE_JSON_TO_STORE[SRC_RoE] = "https://paizo.com/products/btq02eal";
 Parser.SOURCE_JSON_TO_STORE[SRC_TV] = "https://paizo.com/products/btq02eav";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
@@ -2306,6 +2311,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_SKT0,
 	SRC_WoW0,
 	SRC_WoW1,
+	SRC_WoW2,
 	SRC_7DfS0,
 	SRC_SoG0,
 	SRC_SoG1,
@@ -2489,6 +2495,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_SKT0,
 	SRC_WoW0,
 	SRC_WoW1,
+	SRC_WoW2,
 	SRC_7DfS0,
 	SRC_SoG0,
 	SRC_SoG1,
@@ -2751,17 +2758,10 @@ Parser.parseSkills = function (array, opts) {
 	let newArray = opts.toTitleCase ? array.map((t) => t.toTitleCase()) : array;
 
 	return newArray.map((it) => {
-		if (opts.toTags) {
-			return `{@skill ${it.replace(/<.+>/g, "").trim()}||${it
-				.replace(/<|>/g, "")
-				.trim()}}`;
-		}
-		if (opts.toNaked) {
-			return it.replace(/<|>/g, "").trim();
-		}
-		if (opts.toNone) {
-			return it.replace(/<.+>/g, "").trim();
-		}
+		if (opts.toTags) return `{@skill ${it.replace(/<.+>/g, "").trim()}||${it.replace(/<|>/g, "").trim()}}`;
+		if (opts.toNaked) return it.replace(/<|>/g, "").trim();
+		if (opts.toNone) return it.replace(/<.+>/g, "").trim();
+		return it.toString();
 	});
 };
 
@@ -2786,16 +2786,9 @@ Parser.parseTraits = function (array, opts) {
 	let newArray = opts.toTitleCase ? array.map((t) => t.toTitleCase()) : array;
 
 	return newArray.map((it) => {
-		if (opts.toTags) {
-			return `{@trait ${it.replace(/<.+>/g, "").trim()}||${it
-				.replace(/<|>/g, "")
-				.trim()}}`;
-		}
-		if (opts.toNaked) {
-			return it.replace(/<|>/g, "").trim();
-		}
-		if (opts.toNone) {
-			return it.replace(/<.+>/g, "").trim();
-		}
+		if (opts.toTags) return `{@trait ${it.replace(/<.+>/g, "").trim()}||${it.replace(/<|>/g, "").trim()}}`;
+		if (opts.toNaked) return it.replace(/<|>/g, "").trim();
+		if (opts.toNone) return it.replace(/<.+>/g, "").trim();
+		return it.toString();
 	});
 };
