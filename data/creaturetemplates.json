@@ -1,6 +1,77 @@
 {
 	"creatureTemplate": [
 		{
+			"source": "WoW2",
+			"page": 85,
+			"type": "Adjustment",
+			"name": "Woodblessed",
+			"entries": [
+				"Woodblessed are those granted uncontrollable energy drawn from the Plane of Wood—a blessing that brings pain and eventual death."
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Creating Woodblessed",
+						"entries": [
+							"Apply the following to turn a living creature into a woodblessed.",
+							{
+								"type": "list",
+								"items": [
+									"Increase its level, AC, attack modifiers, DCs, saving throws, and skill modifiers by 1.",
+									"It gains the {@trait wood} trait, as well as weakness to fire and mental based on its level (GM Core 119).",
+									"It gains a splinter ranged {@action Strike} that deals piercing damage, is in the {@group brawling} group, and has a {@trait range increment} of 30 feet."
+								]
+							}
+						]
+					},
+					{
+						"type": "pf2-h4",
+						"name": "Woodblessed Abilities",
+						"entries": [
+							"All woodblessed gain the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Explosive End",
+						"generic": {
+							"source": "WoW2",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Luminant Aura",
+						"generic": {
+							"source": "WoW2",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Primal Innate Spells",
+						"entries": [
+							"A woodblessed can cast {@spell timber|RoE} as an innate {@trait primal} cantrip."
+						]
+					},
+					{
+						"name": "Reactive Flare",
+						"generic": {
+							"source": "WoW2",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Tap Planar Gate",
+						"generic": {
+							"source": "WoW2",
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
 			"name": "Path Maiden",
 			"source": "SoG4",
 			"page": 86,

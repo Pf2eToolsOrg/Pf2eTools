@@ -1,0 +1,208 @@
+{
+	"spell": [
+		{
+			"name": "Fungal Exhalation",
+			"source": "WoW2",
+			"page": 72,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"druid",
+				"focus",
+				"fungus"
+			],
+			"traditions": [
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"area": {
+				"entry": "15-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You exhale toxic mold spores that fill the area. You deal {@damage 6d4} poison damage to creatures in the area. On a failure, a creature is also {@condition sickened||sickened 1}, or {@condition sickened||sickened 2} on a critical failure. A creature that doesn't breathe is immune to this effect."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Hedge Prison",
+			"source": "WoW2",
+			"page": 72,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"druid",
+				"focus",
+				"plant"
+			],
+			"traditions": [
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 Medium or smaller creature",
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You conjure an intricate hedge prison to trap a creature, encasing them completely in a hollow cube of dense bushes. The hedge has AC 5, Hardness 5, and 20 Hit Points. It's immune to critical hits and precision damage.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature escapes the hedge before it fully forms."
+						],
+						"Success": [
+							"The creature is trapped inside the hedge, but the hedge's Hit Points are reduced by half."
+						],
+						"Failure": [
+							"The creature is trapped inside the hedge."
+						],
+						"Critical Failure": [
+							"The creature is trapped inside the hedge, and the hedge's Hit Points are increased by half."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The hedge's hardness increases to 7 and it's Hit Points increase to 30."
+					],
+					"5": [
+						"The hedge's hardness increases to 9 and it's Hit Points increase to 40. You can target a creature of Large size or smaller."
+					],
+					"6": [
+						"The hedge's hardness increases to 11 and its Hit Points increase to 50. You can target a creature of Large size or smaller."
+					],
+					"7": [
+						"The hedge's hardness increases to 13 and its Hit Points increase to 60. You can target a creature of Huge size or smaller."
+					],
+					"8": [
+						"The hedge's hardness increases to 15 and its Hit Points increase to 70. You can target a creature of Huge size or smaller."
+					],
+					"9": [
+						"The hedge's hardness increases to 17 and its Hit Points increase to 80. You can target a creature of Huge size or smaller."
+					]
+				}
+			}
+		},
+		{
+			"name": "Mushroom Patch",
+			"source": "WoW2",
+			"page": 73,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"druid",
+				"focus",
+				"fungus"
+			],
+			"traditions": [
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "10-foot-radius burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You cause mushrooms to sprout in the area. The area becomes difficult terrain. When the spell is cast and at the beginning of each round, the mushroom's release a cloud of irritating spores. Creatures in the area must attempt a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition dazzled} for 1 round. If the creature moves to outside area, they can spend 1 action to rub their eyes, removing the {@condition dazzled} condition."
+						],
+						"Failure": [
+							"The creature becomes {@condition dazzled} for 1 round."
+						],
+						"Critical Failure": [
+							"The creature becomes {@condition dazzled} and {@condition slowed||slowed 1} for 1 round."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The range increases to 90 feet and the area increases to a 20-foot-radius burst."
+					],
+					"6": [
+						"The range increases to 120 feet and the area increases to a 30-foot-radius burst."
+					],
+					"9": [
+						"The range increases to 150 feet, the area increases to a 40-foot-radius burst, and when a creature would become {@condition dazzled}, they become {@condition blinded} instead."
+					]
+				}
+			}
+		}
+	]
+}

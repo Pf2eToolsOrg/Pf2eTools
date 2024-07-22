@@ -136,6 +136,30 @@
 			],
 			"subclasses": [
 				{
+					"name": "Decay",
+					"shortName": "Decay",
+					"type": "Instinct",
+					"source": "WoW2",
+					"page": 70,
+					"subclassFeatures": [
+						"Instinct|Barbarian|CRB|Decay|WoW2|1",
+						"Weapon Specialization|Barbarian|CRB|Decay|WoW2|7",
+						"Raging Resistance|Barbarian|CRB|Decay|WoW2|9"
+					]
+				},
+				{
+					"name": "Ligneous",
+					"shortName": "Ligneous",
+					"type": "Instinct",
+					"source": "WoW2",
+					"page": 71,
+					"subclassFeatures": [
+						"Instinct|Barbarian|CRB|Ligneous|WoW2|1",
+						"Weapon Specialization|Barbarian|CRB|Ligneous|WoW2|7",
+						"Raging Resistance|Barbarian|CRB|Ligneous|WoW2|9"
+					]
+				},
+				{
 					"name": "Animal",
 					"shortName": "Animal",
 					"type": "Instinct",
@@ -1269,6 +1293,148 @@
 					"name": "Raging Resistance",
 					"entries": [
 						"Choose two associated magical traditions: {@trait arcane} and {@trait occult}, {@trait arcane} and {@trait primal}, {@trait divine} and {@trait occult}, or {@trait divine} and {@trait primal}. The resistance from your raging resistance class feature applies against all damage you take from spells cast with these two traditions of magic, regardless of the type of damage dealt by the spell."
+					]
+				}
+			]
+		},
+		{
+			"name": "Instinct",
+			"source": "WoW2",
+			"page": 70,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Decay",
+			"subclassSource": "WoW2",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Decay Instinct",
+					"entries": [
+						"Your rage is intrinsically tied to the decomposition of organic beings, and the new growth that decay allows. You may have meddled with ancient relics created by Ghorus, been infected by exposure to Ayrzul's Blight or the Tanglebriar, or been blessed by the green man Zibik. As you unleash your rage, you rot, becoming riddled with mold and flesh-eating fungi. Though this rot recedes when you let your emotions settle, it doesn't go away completely, and the scars left behind spread bit by bit throughout your lifetime, multiplying with every rage."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Anathema",
+					"entries": [
+						"Preventing the decomposition of dead creatures or plants is anathema to your instinct, as is destroying or interfering with the growth of molds or fungi in a natural setting. This doesn't prevent you from defending yourself against fungus creatures or hazards or harvesting fungi or molds solely for sustenance."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Rotting Rage (Instinct Ability)",
+					"entries": [
+						"When you rage, you can choose to increase the additional damage from {@action Rage} from 2 to 6 and change its damage type to poison, instead of the damage type for your weapon or unarmed attack. If you do this, your {@action Rage} action gains the primal and poison traits, and you take 1 damage at the end of each of your turns as your flesh decays. This damage can't be reduced or avoided by any means. You may make this choice only when your rage begins, and it remains in effect until your rage ends."
+					]
+				}
+			]
+		},
+		{
+			"name": "Weapon Specialization",
+			"source": "WoW2",
+			"page": 71,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Decay",
+			"subclassSource": "WoW2",
+			"level": 7,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Specialization Ability",
+					"entries": [
+						"When you use rotting rage, increase the additional damage from {@action Rage} from 6 to 10, but the damage you take at the end of your turn increases to 5. If you have greater weapon specialization, instead increase the damage from {@action Rage} when using rotting rage from 10 to 18, but the damage you take increases to 10."
+					]
+				}
+			]
+		},
+		{
+			"name": "Raging Resistance",
+			"source": "WoW2",
+			"page": 71,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Decay",
+			"subclassSource": "WoW2",
+			"level": 9,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Raging Resistance",
+					"entries": [
+						"You resist poison damage, as well as damage dealt by the attacks and abilities of creatures with the fungus trait, regardless of the damage type."
+					]
+				}
+			]
+		},
+		{
+			"name": "Instinct",
+			"source": "WoW2",
+			"page": 71,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Ligneous",
+			"subclassSource": "WoW2",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Ligneous Instinct",
+					"entries": [
+						"Your rage is powered by the steady growth of the natural world, from the blossoming of flowers to the cultivation of vegetables and the towering, imposing might of the grandest trees. You might be descended from powerful druids or dryads, been exposed to powerful primal magic, or been transformed by the resurgence of the Plane of Wood. As you unleash your rage, your flesh becomes covered in woody growths, which spread like bark across your body."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Anathema",
+					"entries": [
+						"Despoiling nature and killing plants unnecessarily is anathema to your instinct. Defending yourself against plant creatures or hazards is not."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Wooden Rage (Instinct Ability)",
+					"entries": [
+						"While raging, you can increase the additional damage from {@action Rage} from 2 to 6. If you do this, reduce your Speed by 10 feet, as the bark plates covering your body are a hinderance to mobility. This speed reduction can't be overcome by any means, though it can be offset by speed increases."
+					]
+				}
+			]
+		},
+		{
+			"name": "Weapon Specialization",
+			"source": "WoW2",
+			"page": 71,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Ligneous",
+			"subclassSource": "WoW2",
+			"level": 7,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Specialization",
+					"entries": [
+						"When you use wooden rage, increase the additional damage from {@action Rage} from 6 to 10. If you have greater weapon specialization, instead increase the damage from {@action Rage} when using wooden rage from 10 to 18."
+					]
+				}
+			]
+		},
+		{
+			"name": "Raging Resistance",
+			"source": "WoW2",
+			"page": 72,
+			"className": "Barbarian",
+			"classSource": "CRB",
+			"subclassShortName": "Ligneous",
+			"subclassSource": "WoW2",
+			"level": 9,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Raging Resistance",
+					"entries": [
+						"You resist piercing and slashing damage, but you gain weakness to fire equal to 3 + your Constitution modifier, as your bark-like flesh is highly flammable."
 					]
 				}
 			]

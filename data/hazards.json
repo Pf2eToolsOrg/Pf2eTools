@@ -1,6 +1,818 @@
 {
 	"hazard": [
 		{
+			"name": "Puncturing Spire",
+			"source": "WoW2",
+			"page": 55,
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "trained"
+			},
+			"description": [
+				"A metal spire bursts from the ground, skewering the target and knocking aside other creatures."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Arcana} or {@skill Occultism} (expert) to seal the planar breach, or DC 28 {@skill Nature} (master) to magically reinforce the ground and prevent a spire's emergence"
+				]
+			},
+			"actions": [
+				{
+					"name": "Pierce Realm",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature enters the area",
+					"entries": [
+						"A 60-foot-tall metal spire rises from the ground, puncturing the triggering creature and dealing {@damage 4d10+26} piercing damage (DC 32 basic Reflex save). On a critical failure, the creature is additionally impaled, becoming {@condition grabbed} until it Escapes (DC 30). A creature that Escapes is 60 feet in the air. Additionally, all creatures within 10- feet of the spire take {@damage 2d10+13} bludgeoning damage (DC 32 basic Reflex save). On a failure, they're knocked {@condition prone}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shadow Roil",
+			"source": "WoW2",
+			"page": 52,
+			"level": 10,
+			"traits": [
+				"rare",
+				"complex",
+				"magical",
+				"shadow",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 15,
+				"minProf": "expert"
+			},
+			"description": [
+				"A cyclone of living shadows and planar magic surges around the area, attracted to living creatures."
+			],
+			"disable": {
+				"entries": [
+					"DC 32 {@skill Arcana} or {@skill Occultism} (expert) to weaken the tornado; three successes in any combination are required to disable the trap."
+				]
+			},
+			"actions": [
+				{
+					"name": "Touch Down",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Two or more living creatures enter the area",
+					"entries": [
+						"A spiraling column of shadows and crackling planar magic gathers 20 feet away, becoming a whirling cyclone of darkness 15 feet wide and 100 feet tall. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The cyclone uses 3 actions to move, traveling up to 30 feet with each action and dealing {@damage 2d12+13} slashing damage to each creature in its path (DC 33 basic Reflex save). A creature needs to attempt only one save during the cyclone's movement, even if the cyclone moves over its space more than once. On a critical failure, a creature is swept up into the cyclone, becoming {@condition grabbed} ({@action Escape} DC 33). A creature {@condition grabbed} by the cyclone moves along with the cyclone and takes {@dice 1d12+7} additional slashing damage at the beginning of its turn, and it must attempt the basic Reflex save against the cyclone on the cyclone's turn, no matter where the cyclone moves. A creature that successfully {@action Escape||Escapes} from the cyclone falls from a height of {@dice 1d20} × 5 feet."
+			],
+			"reset": [
+				"The cyclone disperses after 1 minute and resets after 1 day."
+			]
+		},
+		{
+			"name": "Punish the Impertinent",
+			"source": "WoW2",
+			"page": 46,
+			"level": 10,
+			"traits": [
+				"unique",
+				"complex",
+				"magical",
+				"shadow",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 15,
+				"minProf": "expert"
+			},
+			"description": [
+				"Three shadow tendrils emerge from the ground and seize trespassers."
+			],
+			"disable": {
+				"entries": [
+					"DC 32 {@skill Arcana} or {@skill Occultism} (expert) to banish one of the three the shadow tendrils or DC 34 {@skill Thievery} (master) twice to confound the bowl's magical sensors; {@b Bypass} A creature who places an offering worth at least 10 gp into the bowl doesn't trigger the trap and isn't targeted by the trap."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 22
+					}
+				},
+				"hardness": {
+					"Shadow Tendril ": 15
+				},
+				"hp": {
+					"Shadow Tendril ": 30
+				},
+				"bt": {
+					"Shadow Tendril ": 15
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shadow Tendrils",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature passes by the statue without placing an offering worth at least 10 gp in the bowl",
+					"entries": [
+						"Shadow tendrils rise from the ground and make a lash {@action Strike} against the triggering creature. The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(2 actions per shadow tendril) On its turn, each shadow tendril uses 1 action to make a lash {@action Strike} against a creature in the area, then uses 1 action to Constrict a creature it has {@condition grabbed}. The shadow tendrils don't apply the trap's multiple attack penalty.",
+				{
+					"type": "attack",
+					"range": "Melee",
+					"traits": [
+						"reach <15 feet>"
+					],
+					"name": "lash",
+					"attack": 23,
+					"damage": "{@damage 2d12+13} bludgeoning plus {@ability Improved Grab} ({@action Escape} DC 33)"
+				},
+				{
+					"type": "ability",
+					"name": "Constrict",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 2d12} bludgeoning, DC 33"
+					],
+					"generic": {
+						"tag": "ability"
+					}
+				}
+			],
+			"reset": [
+				"The trap resets after 10 minutes."
+			]
+		},
+		{
+			"name": "Corazal Aflame",
+			"source": "WoW2",
+			"page": 35,
+			"level": 10,
+			"traits": [
+				"complex",
+				"environmental",
+				"fire"
+			],
+			"stealth": {
+				"bonus": -10
+			},
+			"description": [
+				"Fire burns Corazal and threatens to spread to the surrounding forest."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Nature} or {@skill Survival} (expert) to douse flames or DC 32 {@skill Athletics} (expert) to smother flames; on the sixth successful check, the flames go out. Casting a non-cantrip {@trait water} spell on the flames counts as one success."
+				]
+			},
+			"actions": [
+				{
+					"name": "Blaze",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature approaches Corazal",
+					"entries": [
+						"The flames blaze higher, dealing {@damage 2d12+13} fire damage to the triggering creature (DC 29 basic Reflex save). The hazard then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; {@trait fire}) On its turn, the fire deals {@damage 2d8+13} fire damage to creatures in the grove, plus an additional 6 fire damage to Corazal and any creature within 15 feet of them (DC 29 basic Reflex save)."
+			]
+		},
+		{
+			"name": "Poisonous Pollen Trap",
+			"source": "WoW2",
+			"page": 26,
+			"level": 8,
+			"traits": [
+				"rare",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 28,
+				"minProf": "expert"
+			},
+			"description": [
+				"Flowers carved into the door emit colorful pollen when the door is touched."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Thievery} (expert) to deface the flower carvings, DC 25 {@skill Nature} (expert) to neutralize the pollen, or {@spell dispel magic|PC1} (4th rank; counteract DC 26) to counteract the conjuration"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 13
+					}
+				},
+				"hardness": {
+					"std": 15
+				},
+				"hp": {
+					"std": 62
+				},
+				"bt": {
+					"std": 31
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Pollinate",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"mental",
+						"poison",
+						"primal"
+					],
+					"trigger": "The door is touched, or the lock is opened",
+					"entries": [
+						"The flowers spray poisonous pollen in a 30-foot cone. A creature in the area must attempt a DC 24 Fortitude save, with the following effect.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes {@damage 2d10+11} poison damage and becomes {@condition enfeebled||enfeebled 2}."
+								],
+								"Failure": [
+									"The creature takes {@damage 3d10+16} poison damage and {@damage 1d10} {@condition persistent damage||persistent poison damage}, becomes {@condition enfeebled||enfeebled 2}, and takes a \u20132 status penalty to {@skill Perception} checks for {@dice 1d4} hours."
+								],
+								"Critical Failure": [
+									"The creature takes {@damage 4d10+22} poison damage and {@damage 1d10} {@condition persistent damage||persistent poison damage}, becomes {@condition enfeebled||enfeebled 4}, and takes a \u20132 status penalty to {@skill Perception} checks and saves against poison for 24 hours."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"The trap resets after 1 hour."
+			]
+		},
+		{
+			"name": "Battering Door",
+			"source": "WoW2",
+			"page": 33,
+			"level": 9,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 33,
+				"minProf": "expert"
+			},
+			"description": [
+				"Animated door slams into trespassers."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Diplomacy} or {@skill Occultism} (master) to soothe the psychic impressions or DC 28 {@skill Thievery} (expert) to jam the door open"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 15
+					}
+				},
+				"hardness": {
+					"std": 16
+				},
+				"hp": {
+					"std": 70
+				},
+				"bt": {
+					"std": 35
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Batter Trespasser",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature passes through the door",
+					"entries": [
+						"The door slams into the triggering creature, dealing {@damage 4d10+26} bludgeoning damage (DC 28 basic Reflex save)."
+					]
+				}
+			],
+			"reset": [
+				"The trap resets automatically."
+			]
+		},
+		{
+			"name": "Consuming Cabinet",
+			"source": "WoW2",
+			"page": 33,
+			"level": 9,
+			"traits": [
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 20,
+				"minProf": "expert"
+			},
+			"description": [
+				"Animated cabinet imprisons intruders. The cabinet has two compartments; each can hold a single Medium creature or two Small-sized creatures or smaller."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Thievery} (expert) twice on cabinet; DC 28 {@skill Crafting} or {@skill Thievery} (expert) to remove each or two doors"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 15
+					}
+				},
+				"hardness": {
+					"Cabinet ": 16,
+					"Door ": 10
+				},
+				"hp": {
+					"Cabinet ": 70,
+					"Door ": 40
+				},
+				"bt": {
+					"Cabinet ": 35,
+					"Door ": 20
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "It's Alive!",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A living creature moves adjacent to the cabinet",
+					"entries": [
+						"The cabinet animates and makes a door {@action Strike} against one adjacent creature. The hazard then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The trap uses its first action to move directly toward the nearest living creature, its second action to make a door {@action Strike} against each adjacent creature, and its third action to Batter. This trap doesn't take a multiple attack penalty.",
+				{
+					"type": "item",
+					"name": "Speed",
+					"entries": [
+						"15 feet"
+					]
+				},
+				{
+					"type": "attack",
+					"range": "Melee",
+					"name": "door",
+					"attack": 21,
+					"damage": "{@damage 2d10+13} bludgeoning plus Capture"
+				},
+				{
+					"type": "item",
+					"name": "Capture",
+					"entries": [
+						"The target is trapped inside the cabinet's interior, gaining the {@condition grabbed} condition until it {@action Escape||Escapes} (DC 32), another creature {@action Force Open||Forces Open} the cabinet door (DC 32), or that cabinet door is destroyed. Each of the two cabinet interiors can contain one Medium creature, or two Small-sized creatures or smaller."
+					]
+				},
+				{
+					"name": "Batter",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"The cabinet shakes, dealing {@damage 2d10+13} bludgeoning damage to all creatures it has {@condition grabbed}."
+					]
+				}
+			],
+			"reset": [
+				"The trap resets after 1 hour."
+			]
+		},
+		{
+			"name": "Flinging Tools",
+			"source": "WoW2",
+			"page": 34,
+			"level": 9,
+			"traits": [
+				"complex",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 19,
+				"minProf": "expert"
+			},
+			"description": [
+				"Animated awls, hammers, nails, and other tools hurl themselves off the tool bench at intruders."
+			],
+			"disable": {
+				"entries": [
+					"DC 33 {@skill Diplomacy} (master) to soothe the psychic echoes, DC 32 {@skill Religion} (expert) to overwhelm the area's energy, or DC 32 {@skill Occultism} (expert) to counter the psychic echoes; on the third successful check, the psychic echoes are disrupted, and the trap is destroyed."
+				]
+			},
+			"actions": [
+				{
+					"name": "Tool Volley",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A living creature comes within 15 feet of the trap",
+					"entries": [
+						"The trap makes a tool {@action Strike} against the triggering creature. The trap then rolls initiative."
+					]
+				},
+				{
+					"name": "Continuous Barrage",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "A creature within 15 feet finishes an action",
+					"entries": [
+						"The trap makes a tool {@action Strike} against the triggering creature."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The trap launches one tool against every living creature within 15 feet as 1 action. Because it flings tools continuously, the trap can also use the Continuous Barrage free action to fling tools at each creature during that creature's turn."
+			],
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "tool",
+					"attack": 21,
+					"noMAP": true,
+					"damage": "{@damage 2d10+13} bludgeoning"
+				}
+			],
+			"reset": [
+				"The trap resets after 1 hour."
+			]
+		},
+		{
+			"name": "Spitting Daffodil",
+			"source": "WoW2",
+			"page": 25,
+			"level": 6,
+			"traits": [
+				"rare",
+				"environmental",
+				"plant"
+			],
+			"stealth": {
+				"dc": 21,
+				"minProf": "expert"
+			},
+			"description": [
+				"Daffodils spit acidic nectar at non-plant creatures in the area."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Thievery} (expert) or DC 25 {@skill Survival} (trained) to remove the plant's motion sensing filaments"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 17
+					}
+				},
+				"hp": {
+					"std": 54
+				},
+				"bt": {
+					"std": 27
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Spit Nectar",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"acid",
+						"primal"
+					],
+					"trigger": "A non-plant creature comes within 10 feet",
+					"entries": [
+						"The daffodils spit nectar at all non-plant creatures within 10 feet, dealing {@damage 4d8+18} acid damage (DC 27 basic Reflex save)."
+					]
+				}
+			],
+			"reset": [
+				"The daffodils replenish their nectar and filaments after 24 hours."
+			]
+		},
+		{
+			"name": "Unwelcome Guests",
+			"source": "WoW2",
+			"page": 20,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 28,
+				"minProf": "expert"
+			},
+			"description": [
+				"Unwelcome guests who touch this hatch are cursed."
+			],
+			"disable": {
+				"entries": [
+					"DC 28 {@skill Occultism} (expert) to drain the magic from the curse, DC 31 {@skill Thievery} (master) to unweave the curse's bindings, or {@spell dispel magic|PC1} (4th rank, counteract DC 28) to counteract the curse"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 13
+					}
+				}
+			},
+			"actions": [
+				{
+					"name": "Curse Trespassers",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"curse",
+						"necromancy",
+						"occult"
+					],
+					"trigger": "A creature touches the hatch",
+					"entries": [
+						"The triggering creature takes {@damage 3d10+22} force damage and is knocked back 10 feet. A creature that succeeds at a DC 30 Will save takes half damage and isn't moved. On a failure, the creature is additionally cursed. A cursed creature takes a \u20132 penalty to Will saves, and whenever the cursed creature becomes affected by a spell, the creature takes {@damage 1d10} force damage. The curse remains until removed by {@spell cleanse affliction|PC1} or similar magic."
+					]
+				}
+			],
+			"reset": [
+				"The trap resets when the hatch is shut."
+			]
+		},
+		{
+			"name": "Bloodletting Snare",
+			"source": "WoW2",
+			"page": 20,
+			"level": 6,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 28,
+				"minProf": "expert"
+			},
+			"description": [
+				"Slender razor wire snags a creature, hauling them up into the air while causing deep, bloody wounds."
+			],
+			"disable": {
+				"entries": [
+					"DC 25 {@skill Survival} (expert) or {@skill Thievery} (expert) to snip the wire without getting snared"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 17
+					},
+					"ref": {
+						"std": 11
+					}
+				},
+				"hardness": {
+					"std": 12
+				},
+				"hp": {
+					"std": 48
+				},
+				"bt": {
+					"std": 24
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Snare",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps into the square with the snare tripwire",
+					"entries": [
+						"The bloodletting snare makes a snare {@action Strike} against the triggering creature."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly d10"
+					],
+					"name": "snare",
+					"attack": 20,
+					"damage": "{@damage 4d8+12} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}, and the target is {@condition grabbed} and pulled off the ground ({@action Escape} DC 26). The {@condition persistent damage||persistent bleed} can't be stopped while the creature is {@condition grabbed}."
+				}
+			]
+		},
+		{
+			"name": "Razor Snare",
+			"source": "WoW2",
+			"page": 10,
+			"level": 4,
+			"traits": [
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 25
+			},
+			"description": [
+				"Slender razor wire snags a creature, yanking its feet to knock it down."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Survival} or {@skill Thievery} (trained) to snip the wire without getting snared"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 8
+					}
+				},
+				"hardness": {
+					"std": 10
+				},
+				"hp": {
+					"std": 40
+				},
+				"bt": {
+					"std": 20
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Snag",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps into the square with the snare tripwire",
+					"entries": [
+						"The snare makes a snare {@action Strike} against the triggering creature."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "snare",
+					"attack": 15,
+					"damage": "{@damage 4d6+10} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed}, and the target is {@condition grabbed} ({@action Escape} DC 23). On a critical hit, the target is also knocked {@condition prone}."
+				}
+			]
+		},
+		{
 			"name": "Sarracenia's Ire",
 			"source": "WoW1",
 			"page": 42,

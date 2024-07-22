@@ -1,6 +1,50 @@
 {
 	"ritual": [
 		{
+			"name": "Drain Planar connection",
+			"source": "WoW2",
+			"page": 60,
+			"level": 5,
+			"traits": [
+				"unique"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "six sets of rare herbs, each worth a total of 50 gp",
+			"secondaryCasters": {
+				"number": 5
+			},
+			"primaryCheck": {
+				"skills": [
+					"Nature"
+				],
+				"prof": "master",
+				"entry": " DC 31 Nature (master)"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Diplomacy",
+					"Nature",
+					"Occultism"
+				],
+				"entry": "DC 26 {@skill Diplomacy} or {@skill Nature} or {@skill Occultism}"
+			},
+			"entries": [
+				"You draw the planar energy from Idyllis, through the ley lines, and into the six latticework spheres.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You sever Idyllis's connection to the {@plane Plane of Wood|RoE} permanently.",
+						"Success": "You sever Idyllis's connection to the {@plane Plane of Wood|RoE} for 10 years.",
+						"Failure": "You sever Idyllis's connection to the {@plane Plane of Wood|RoE} for 1 year, but the ritual backfires, dealing {@damage 4d12+26} force damage to all secondary casters (DC 26 basic Reflex save)\u2014this damage kills Madge.",
+						"Critical Failure": "The ritual backfires as a failure but doesn't sever Idyllis's connection."
+					}
+				}
+			]
+		},
+		{
 			"name": "Commune with Corazal",
 			"source": "WoW1",
 			"page": 31,

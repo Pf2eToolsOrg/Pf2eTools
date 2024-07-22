@@ -1,6 +1,39 @@
 {
 	"action": [
 		{
+			"name": "Unwavering Resilience",
+			"source": "WoW2",
+			"page": 69,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You attempt a saving throw against a {@trait poison}, {@trait disease}, or {@trait mental} effect, but you haven't rolled yet.",
+			"entries": [
+				"You tap into the power of the {@plane Plane of Wood|RoE}, gaining strength and mental fortitude. You gain a +1 circumstance bonus on the triggering save. If you critically succeed at this saving throw, you become bolstered by your success; blossoms and new growth temporarily sprout all over your body, and you gain a number of temporary Hit Point equal to your level. These temporary Hit Points last for one minute. When there temporary Hit Points are lost, the verdant growth subsides."
+			]
+		},
+		{
+			"name": "Defend Tern Hill",
+			"source": "WoW2",
+			"page": 8,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You spend 8 hours performing tasks to aid in the defense of Tern Hill and its people, such as constructing fortifications, setting snares, patrolling, or training other members of the Rootweft. Roll a skill check related to the specific task you perform. The GM determines which skill or other check is required, such as {@skill Crafting} to build a barrier, {@skill Perception} to man a watch post, or {@skill Diplomacy} to train noncombatants. You earn a number of Defense Points based on your check result.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Tern Hill gains 2 Defense Points.",
+						"Success": "Tern Hill gains 1 Defense Point.",
+						"Failure": "Your efforts earn no Defense Points.",
+						"Critical Failure": "Tern Hill loses 1 Defense Point. This can't reduce the total Defense Points to less than 0."
+					}
+				}
+			]
+		},
+		{
 			"name": "Negotiate Peace",
 			"source": "WoW1",
 			"page": 35,
