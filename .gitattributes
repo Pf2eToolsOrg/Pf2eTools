@@ -1,2 +1,23 @@
-*.js              text eol=lf
-*.json            text eol=lf
+# Auto detect text files and perform LF normalization
+*             text=auto eol=lf
+
+# Documents
+*.md          text diff=markdown
+*.license     text
+
+# Graphics and assets
+*.gif         binary
+*.icns        binary
+*.ico         binary
+*.jpg         binary
+*.jpeg        binary
+*.otf         binary
+*.png         binary
+*.svg         binary
+*.ttf         binary
+*.webp        binary
+*.woff        binary
+*.woff2       binary
+
+# Overrides
+*.license     linguist-documentation
