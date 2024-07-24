@@ -3469,9 +3469,9 @@
 							"number": 1,
 							"unit": "reaction"
 						},
-						"trigger": "The Stabbing Beast is transformed with Change",
+						"trigger": "The Stabbing Beast is transformed with {@ability Change Shape} and rolls for initiative",
 						"entries": [
-							"Shape and rolls for initiative; The Stabbing Beast ends {@action Change Shape|LOAG}."
+							"The Stabbing Beast ends {@ability Change Shape}."
 						],
 						"name": "True Appearance"
 					}
@@ -3502,6 +3502,7 @@
 						"name": "Blinding Stream"
 					},
 					{
+						"name": "Change Shape",
 						"activity": {
 							"number": 1,
 							"unit": "action"
@@ -3513,12 +3514,54 @@
 							"transmutation"
 						],
 						"entries": [
-							"The Stabbing Beast takes on the appearance of a Medium humanoid with a scorpion's tail and chitinous, full-body plate armor. This doesn't change their."
+							"The Stabbing Beast takes on the appearance of a Medium humanoid with a scorpion's tail and chitinous, full-body plate armor. This doesn't change their Speed or {@action Strike||Strikes}, except that their reach becomes 5 feet and they can't make pincer {@action Strike||Strikes}."
 						],
-						"name": "Change Shape",
 						"generic": {
 							"tag": "ability"
 						}
+					},
+					{
+						"name": "Conjure Swords",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"conjuration",
+							"divine"
+						],
+						"requirements": "The Stabbing Beast is using {@action Change Shape|LOAG}",
+						"entries": [
+							"The Stabbing Beast summons one or two {@runeItem shortsword||+2 weapon potency||greater striking||keen|} into their hands. These weapons disappear if they leave the Stabbing Beast's grasp or if the Stabbing Beast ends {@ability Change Shape}.",
+							{
+								"type": "affliction",
+								"name": "Stabbing Beast Venom",
+								"traits": [
+									"poison"
+								],
+								"DC": 36,
+								"note": "While a creature is {@condition enfeebled} from this poison, it is {@condition doomed||doomed 1};",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 3d6} poison damage and {@condition enfeebled||enfeebled 2}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 4d6} poison damage and {@condition enfeebled||enfeebled 2}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 6d6} poison damage and {@condition enfeebled||enfeebled 3}",
+										"duration": "1 round"
+									}
+								]
+							}
+						]
 					}
 				]
 			},
