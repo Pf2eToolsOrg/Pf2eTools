@@ -343,6 +343,12 @@
 								"alignment": {
 									"$ref": "utils.json#/definitions/alignmentTags"
 								},
+								"descriptor": {
+									"type": "string",
+									"regex": "^[a-z]",
+									"minLength": 1,
+									"description": "Remaster places don't have alignment, they have ✨ descriptors ✨ (in lowercase)"
+								},
 								"gender": {
 									"type": "string",
 									"description": "nb: non-binary\nm: male\nf: female\ngf: genderfluid\na: agender",
