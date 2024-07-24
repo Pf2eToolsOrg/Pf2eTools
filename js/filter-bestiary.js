@@ -174,7 +174,7 @@ class PageFilterBestiary extends PageFilter {
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
 		cr._flanguages = cr._flanguages.map(l => l.replace(/\s\(.+/, "")).filter(l => !l.includes(" ")).map(l => l.toTitleCase());
-		cr._fPerception = (cr.perception && cr.perception.std) || cr.initiative.perception.std;
+		cr._fPerception = cr.perception && cr.perception.std ? cr.perception.std : cr.initiative && cr.initiative.perception.std ? cr.initiative.std : 0;
 		cr._fskills = new Set();
 		if (cr.skills) {
 			Object.keys(cr.skills).forEach((k) => {
