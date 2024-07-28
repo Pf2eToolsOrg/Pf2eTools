@@ -955,7 +955,7 @@ class ClassesPage extends BaseComponent {
 							lvlFeaturesFilt.push({
 								name: "class feat",
 								source: cls.source,
-								$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">class feat</a>`),
+								$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">${this.activeClass.name.toLowerCase()} feat</a>`),
 								preCalc: true,
 							});
 							break;
@@ -1000,7 +1000,7 @@ class ClassesPage extends BaseComponent {
 							lvlFeaturesFilt.push({
 								name: "ability boosts",
 								source: cls.source,
-								$lnk: $(`<span>ability boosts</span>`),
+								$lnk: $(`<span>${this.activeClass.remaster ? "attribute" : "ability"} boosts</span>`),
 								preCalc: true,
 							});
 							break;
@@ -1017,10 +1017,11 @@ class ClassesPage extends BaseComponent {
 			});
 
 			// FIXME: this works for now
+			// (it really doesn't)
 			const skipSort = lvlFeaturesFilt.filter(f => !f.preCalc).length;
-			const metasFeatureLinks = skipSort ? lvlFeaturesFilt : lvlFeaturesFilt.sort(SortUtil.compareListNames)
+			const metasFeatureLinks = lvlFeaturesFilt.sort(SortUtil.compareListNames)
 				.map((it, ixFeature) => {
-					const featureId = `${ixLvl}-${lvlFeaturesFilt.filter(ft => !ft.preCalc).indexOf(it)}`;
+					const featureId = `${ixLvl}-${lvlFeatures.indexOf(it)}`;
 
 					let $lnk;
 					let name;
@@ -1055,6 +1056,7 @@ class ClassesPage extends BaseComponent {
 					}
 
 					if (ixFeature === 0) $lnk.html($lnk.html().uppercaseFirst());
+
 					return {
 						name,
 						$wrpLink: $$`<span>${$lnk}${ixFeature === lvlFeaturesFilt.length - 1 ? "" : ", "}</span>`,
@@ -1062,6 +1064,7 @@ class ClassesPage extends BaseComponent {
 						source,
 					};
 				});
+
 			return {
 				$row: $$`<div class="pf2-table__entry pf2-table--minimize ${ixLvl % 2 ? "odd" : ""}">${ixLvl + 1}</div>
 					<div class="pf2-table__entry pf2-table--minimize ${ixLvl % 2 ? "odd" : ""}">${metasFeatureLinks.length ? metasFeatureLinks.map(it => it.$wrpLink) : `\u2014`}</div>`,
