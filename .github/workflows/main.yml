@@ -23,6 +23,17 @@ jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
         steps:
+            - name: Update Cloudflare Branch
+              continue-on-error: true
+              run: |
+                git config --global user.name '${{ github.actor }}'
+                git config --global user.email '${{ github.actor }}@users.noreply.github.com'
+                git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
+                git fetch origin "main"
+                git checkout main
+                git merge dev
+                git push
+
             - uses: actions/checkout@master
 
             - name: Clear caches
@@ -94,16 +105,6 @@ jobs:
                   docker build -t $IMAGE_NAME .
             - name: Log In to Registry
               run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-            - name: Update Cloudflare Branch
-              run: |
-                git config --global user.name '${{ github.actor }}'
-                git config --global user.email '${{ github.actor }}@users.noreply.github.com'
-                git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
-                git fetch origin "main"
-                git checkout main
-                git merge dev
-                git push
 
             - name: Push Image
               run: |
