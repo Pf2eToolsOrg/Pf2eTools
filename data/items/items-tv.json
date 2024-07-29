@@ -17957,7 +17957,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"A common sight at political gatherings, a diplomat's charcuterie has fine meats, cheeses, nuts, fruits, and other finger foods mixed with reagents to engender {@condition friendly} feelings between those consuming them. Contents of the plate vary by chef and the intended palates, from the hearty sausages and hard cheese of charcuterie from the Lands of the Linnorm Kings to the hot-pepper cheese curds and smoked almonds of Thuvian platters. After Activating the charcuterie by eating it, you gain a +1 item bonus to {@skill Diplomacy} checks to {@action Make an Impression} and {@skill Perception} checks to {@action Sense Motive}. These bonuses last 24 hours or until you make your next daily preparations, whichever comes first."
+				"A common sight at political gatherings, a diplomat's charcuterie has fine meats, cheeses, nuts, fruits, and other finger foods mixed with reagents to engender friendly feelings between those consuming them. Contents of the plate vary by chef and the intended palates, from the hearty sausages and hard cheese of charcuterie from the Lands of the Linnorm Kings to the hot-pepper cheese curds and smoked almonds of Thuvian platters. After {@action Activate an Item||Activating} the charcuterie by eating it, you gain a +1 item bonus to {@skill Diplomacy} checks to {@action Make an Impression} and {@skill Perception} checks to {@action Sense Motive}. These bonuses last 24 hours or until you make your next daily preparations, whichever comes first."
 			]
 		},
 		{
@@ -18751,13 +18751,13 @@
 			},
 			"category": "Elixir",
 			"entries": [
-				"Hot tea with a comforting, flowery aroma, a soothing toddy grants you a +1 item bonus to saving throws against {@trait emotion} effects and against effects with {@trait a} trait determined by the liquor mixed into the tea when it's created. These benefits last for 1 hour.",
+				"Hot tea with a comforting, flowery aroma, a soothing toddy grants you a +1 item bonus to saving throws against {@trait emotion} effects and against effects with a trait determined by the liquor mixed into the tea when it's created. These benefits last for 1 hour.",
 				{
 					"type": "list",
 					"items": [
-						"Amaretto Auditory",
-						"Limoncello Olfactory",
-						"Whiskey Visual"
+						"Amaretto {@trait Auditory}",
+						"Limoncello {@trait Olfactory}",
+						"Whiskey {@trait Visual}"
 					]
 				}
 			]
@@ -24080,7 +24080,7 @@
 			},
 			"category": "Potion",
 			"entries": [
-				"{@deity Rovagug}'s mud smells and tastes like wet, sour earth. For 1 hour after you drink it, you have a +2 item bonus to saving throws against {@trait incapacitation} effects. Also, you can use a single action to breathe out a 20-foot cone of bitter vapor that causes an earth-shaking rumble that can be heard for 100 feet.",
+				"{@deity Rovagug||Rovagug's} mud smells and tastes like wet, sour earth. For 1 hour after you drink it, you have a +2 item bonus to saving throws against {@trait incapacitation} effects. Also, you can use a single action to breathe out a 20-foot cone of bitter vapor that causes an earth-shaking rumble that can be heard for 100 feet.",
 				"Creatures and objects in the area take {@dice 5d6} damage (DC 30 basic Fortitude save), decreasing Hardness by 5. An object's Hardness remains lowered for {@dice 1d4} rounds, and you can't use this breath again for the same amount of time."
 			],
 			"generic": "G",
@@ -24092,7 +24092,7 @@
 						"coin": "gp"
 					},
 					"entries": [],
-					"variantType": "{@deity Rovagug}'s mud"
+					"variantType": "Rovagug's mud"
 				},
 				{
 					"level": 18,
@@ -24103,7 +24103,7 @@
 					"entries": [
 						"The damage is {@dice 8d6}, the save DC is 38, and Hardness decreases by 10."
 					],
-					"variantType": "greater {@deity Rovagug}'s mud"
+					"variantType": "greater Rovagug's mud"
 				}
 			]
 		},
@@ -25435,11 +25435,10 @@
 				"components": [
 					"{@action Perform}"
 				],
-				"requirements": "You are untrained in"
+				"requirements": "You are untrained in {@skill Performance}."
 			},
 			"category": "Consumable",
 			"entries": [
-				"{@skill Performance}.",
 				"Made of polished wood, a neophyte's fipple is a block flute enchanted to guarantee melodic sound. When you {@action Perform} a song on the fipple to Activate it, your ability modifier, proficiency bonus, and item bonus for the {@skill Performance} check total +7, regardless of what they would normally be. Add other bonuses and penalties to the check normally. Once the magic is used, the fipple remains as a mundane instrument."
 			]
 		},
