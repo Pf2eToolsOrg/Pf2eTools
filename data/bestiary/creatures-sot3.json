@@ -498,10 +498,13 @@
 				],
 				"bot": [
 					{
-						"name": "Sneak Attack The",
+						"name": "Sneak Attack",
 						"entries": [
-							"Abendego priest deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
-						]
+							"The Abendego priest deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"name": "Steady Spellcasting",
@@ -3013,7 +3016,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The Norgorberite spy Interacts to draw a weapon, then {@action Strike||Strikes} with that weapon."
+							"The Norgorberite spy {@action Interact||Interacts} to draw a weapon, then {@action Strike||Strikes} with that weapon."
 						],
 						"generic": {
 							"tag": "feat",
@@ -3021,10 +3024,13 @@
 						}
 					},
 					{
-						"name": "Sneak Attack The",
+						"name": "Sneak Attack",
 						"entries": [
-							"Norgorberite spy deals an additional {@damage 4d6} precision damage to {@condition flat-footed} creatures or creatures within reach of at least two of their allies."
-						]
+							"The Norgorberite spy deals an additional {@damage 4d6} precision damage to {@condition flat-footed} creatures or creatures within reach of at least two of their allies."
+						],
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"name": "Surprise Attack",
