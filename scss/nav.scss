@@ -37,7 +37,7 @@
 
 		&:focus,
 		&:hover {
-			background-color: lighten($rgb-bg--night, 2%);
+			background-color: color.adjust($rgb-bg--night, $lightness: 2%);
 			color: white;
 		}
 	}
@@ -52,7 +52,7 @@
 	.nav li.open > a,
 	.nav li.open > a:focus,
 	.nav li.open > a:hover {
-		background-color: lighten($rgb-bg--night, 2%);
+		background-color: color.adjust($rgb-bg--night, $lightness: 2%);
 		border-left: 1px solid $rgb-link-blue;
 		border-right: 1px solid $rgb-link-blue;
 		border-color: $rgb-link-blue;

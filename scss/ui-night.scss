@@ -102,7 +102,7 @@ Shared UI components
 		border-color: $rgb-border-grey--night;
 
 		&:active {
-			@include shadow-active--night();
+			@include shadow-active--night;
 		}
 
 		&[data-state='0'] {
@@ -111,12 +111,12 @@ Shared UI components
 
 		&[data-state='1'] {
 			background: $rgb-border-grey--night;
-			border-color: lighten($rgb-border-grey--night, 10%);
+			border-color: color.adjust($rgb-border-grey--night, $lightness: 10%);
 		}
 
 		&[data-state='2'] {
 			background: $rgb-border-grey--night;
-			border-color: lighten($rgb-border-grey--night, 10%);
+			border-color: color.adjust($rgb-border-grey--night, $lightness: 10%);
 
 			&::before {
 				color: $rgb-bg--night;
@@ -125,7 +125,7 @@ Shared UI components
 
 		&[data-state='3'] {
 			background: repeating-linear-gradient(135deg, $rgb-bg--night, $rgb-bg--night 10px, $rgb-border-grey--night 10px, $rgb-border-grey--night 20px);
-			border-color: lighten($rgb-border-grey--night, 10%);
+			border-color: color.adjust($rgb-border-grey--night, $lightness: 10%);
 		}
 	}
 }
@@ -206,14 +206,14 @@ Shared UI components
 		}
 
 		&:hover {
-			background: darken($rgb-border-grey--night, $pct-darken-hover);
+			background: color.adjust($rgb-border-grey--night, $lightness: - $pct-darken-hover);
 			color: white;
 		}
 
 		&:active,
 		&:focus,
 		&:active:focus {
-			background: darken($rgb-border-grey--night, $pct-darken-active);
+			background: color.adjust($rgb-border-grey--night, $lightness: - $pct-darken-active);
 			color: white;
 		}
 	}
@@ -240,7 +240,7 @@ Shared UI components
 
 		&:focus.active,
 		&:hover.active {
-			background: lighten($rgb-bg--alt-night, $pct-darken-active);
+			background: color.adjust($rgb-bg--alt-night, $lightness: $pct-darken-active);
 		}
 	}
 }
@@ -255,7 +255,7 @@ Shared UI components
 
 			&--hover,
 			&:hover {
-				background: lighten($rgb-border-grey--trans, 10%);
+				background: color.adjust($rgb-border-grey--trans, $lightness: 10%);
 				border-color: $rgb-font--night;
 			}
 		}

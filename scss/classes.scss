@@ -1,4 +1,5 @@
-@import 'vars';
+@use "sass:color";
+@use 'vars';
 
 // region class
 .cls__ {
@@ -30,7 +31,7 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-name-red, $pct-darken-active);
+				background: color.adjust($rgb-name-red, $lightness: - $pct-darken-active);
 			}
 		}
 	}
@@ -43,7 +44,7 @@
 		&--active-fresh {
 			color: white;
 			background: $rgb-subclass;
-			border-color: darken($rgb-subclass, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -51,15 +52,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass, $pct-darken-active);
-				border-color: darken($rgb-subclass, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-reprinted {
 			color: white;
 			background: $rgb-subclass--stale;
-			border-color: darken($rgb-subclass--stale, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass--stale, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -67,15 +68,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass--stale, $pct-darken-active);
-				border-color: darken($rgb-subclass--stale, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass--stale, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass--stale, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-spicy {
 			color: white;
 			background: $rgb-subclass-ua;
-			border-color: darken($rgb-subclass-ua, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass-ua, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -83,15 +84,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass-ua, $pct-darken-active);
-				border-color: darken($rgb-subclass-ua, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass-ua, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass-ua, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-stale {
 			color: white;
 			background: $rgb-subclass-ua--stale;
-			border-color: darken($rgb-subclass-ua--stale, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass-ua--stale, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -99,15 +100,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass-ua--stale, $pct-darken-active);
-				border-color: darken($rgb-subclass-ua--stale, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass-ua--stale, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass-ua--stale, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-brew {
 			color: white;
 			background: $rgb-class-brew;
-			border-color: darken($rgb-class-brew, $pct-darken-border);
+			border-color: color.adjust($rgb-class-brew, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -115,8 +116,8 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-class-brew, $pct-darken-active);
-				border-color: darken($rgb-class-brew, $pct-darken-border--active);
+				background: color.adjust($rgb-class-brew, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-class-brew, $lightness: - $pct-darken-border--active);
 			}
 		}
 	}
@@ -149,7 +150,7 @@
 			&:active:focus,
 			&:active:hover {
 				color: $rgb-off-black;
-				background: darken($rgb-name-red--night, $pct-darken-active);
+				background: color.adjust($rgb-name-red--night, $lightness: - $pct-darken-active);
 			}
 		}
 	}
@@ -162,7 +163,7 @@
 		&--active-fresh {
 			color: white;
 			background: $rgb-subclass--night;
-			border-color: darken($rgb-subclass--night, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass--night, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -170,15 +171,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass--night, $pct-darken-active);
-				border-color: darken($rgb-subclass--night, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass--night, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass--night, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-reprinted {
 			color: white;
 			background: $rgb-subclass--night-stale;
-			border-color: darken($rgb-subclass--night-stale, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass--night-stale, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -186,15 +187,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass--night-stale, $pct-darken-active);
-				border-color: darken($rgb-subclass--night-stale, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass--night-stale, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass--night-stale, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-spicy {
 			color: white;
 			background: $rgb-subclass-ua--night;
-			border-color: darken($rgb-subclass-ua--night, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass-ua--night, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -202,15 +203,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass-ua--night, $pct-darken-active);
-				border-color: darken($rgb-subclass-ua--night, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass-ua--night, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass-ua--night, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-stale {
 			color: white;
 			background: $rgb-subclass-ua--night-stale;
-			border-color: darken($rgb-subclass-ua--night-stale, $pct-darken-border);
+			border-color: color.adjust($rgb-subclass-ua--night-stale, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -218,15 +219,15 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-subclass-ua--night-stale, $pct-darken-active);
-				border-color: darken($rgb-subclass-ua--night-stale, $pct-darken-border--active);
+				background: color.adjust($rgb-subclass-ua--night-stale, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-subclass-ua--night-stale, $lightness: - $pct-darken-border--active);
 			}
 		}
 
 		&--active-brew {
 			color: white;
 			background: $rgb-class-brew--night;
-			border-color: darken($rgb-class-brew--night, $pct-darken-border);
+			border-color: color.adjust($rgb-class-brew--night, $lightness: - $pct-darken-border);
 
 			&:active,
 			&:focus,
@@ -234,8 +235,8 @@
 			&:active:focus,
 			&:active:hover {
 				color: white;
-				background: darken($rgb-class-brew--night, $pct-darken-active);
-				border-color: darken($rgb-class-brew--night, $pct-darken-border--active);
+				background: color.adjust($rgb-class-brew--night, $lightness: - $pct-darken-active);
+				border-color: color.adjust($rgb-class-brew--night, $lightness: - $pct-darken-border--active);
 			}
 		}
 	}
@@ -265,7 +266,7 @@
 	&__ {
 		&disp-name {
 			font-size: 1.8em;
-			font-family: 'Andada', serif;
+			font-family: Andada, serif;
 			font-variant: small-caps;
 			font-weight: 500;
 			padding-left: 0.2em;
@@ -341,7 +342,7 @@
 .cls-side__ {
 	&name {
 		font-size: 1.8em;
-		font-family: 'Andada', serif;
+		font-family: Andada, serif;
 		font-variant: small-caps;
 		font-weight: 500;
 	}
@@ -449,7 +450,7 @@
 	&msg-no-content {
 		height: 40px;
 		color: $rgb-name-red;
-		font-family: 'Andada', serif;
+		font-family: Andada, serif;
 		font-variant: small-caps;
 		font-weight: 500;
 		line-height: 2.3em;
@@ -552,7 +553,7 @@
 	}
 
 	&btn-tab.active {
-		border-color: darken($rgb-active-blue, $pct-darken-border);
+		border-color: color.adjust($rgb-active-blue, $lightness: - $pct-darken-border);
 	}
 
 	&btn-tab.active.spicy-sauce {
@@ -561,7 +562,7 @@
 	}
 
 	&btn-tab.active.spicy-sauce {
-		border-color: darken($rgb-subclass-ua, $pct-darken-border);
+		border-color: color.adjust($rgb-subclass-ua, $lightness: - $pct-darken-border);
 	}
 
 	&btn-tab.active.refreshing-brew {
@@ -570,7 +571,7 @@
 	}
 
 	&btn-tab.active.refreshing-brew {
-		border-color: darken($rgb-class-brew, $pct-darken-border);
+		border-color: color.adjust($rgb-class-brew, $lightness: - $pct-darken-border);
 	}
 	// endregion
 }
@@ -597,7 +598,7 @@
 	max-height: calc(100vh - 30px);
 	padding-right: 9px;
 	padding-left: 9px;
-	font-family: 'Andada', serif;
+	font-family: Andada, serif;
 	font-variant: small-caps;
 	font-weight: 500;
 
@@ -638,7 +639,7 @@
 		}
 
 		&item {
-			@include overflow-dots();
+			@include overflow-dots;
 
 			cursor: pointer;
 			user-select: none;

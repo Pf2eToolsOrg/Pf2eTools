@@ -2,6 +2,7 @@
 Shared UI components
  */
 
+@use "sass:color";
 @import 'vars';
 
 /* region Misc/Shared */
@@ -129,7 +130,7 @@ Shared UI components
 		}
 
 		&--fullscreen {
-			@include shadow-2();
+			@include shadow-2;
 		}
 	}
 
@@ -137,7 +138,7 @@ Shared UI components
 		border-top: 1px solid $rgb-border-grey--trans;
 
 		&--fullscreen {
-			@include shadow-2();
+			@include shadow-2;
 		}
 	}
 
@@ -171,19 +172,19 @@ Shared UI components
 		max-height: 400px;
 		min-height: 400px;
 
-		@media (max-width: 767px) {
+		@media (width <= 767px) {
 			min-width: 0;
 		}
 
-		@media (min-width: 768px) {
+		@media (width >= 768px) {
 			max-width: 750px;
 		}
 
-		@media (min-width: 992px) {
+		@media (width >= 992px) {
 			max-width: 970px;
 		}
 
-		@media (min-width: 1200px) {
+		@media (width >= 1200px) {
 			max-width: 1170px;
 		}
 
@@ -251,8 +252,7 @@ Shared UI components
 		padding: 3px;
 		transform: translateZ(0);
 		height: 100%;
-		overflow-y: auto;
-		overflow-x: hidden;
+		overflow: hidden auto;
 		font-size: 11.2px;
 	}
 
@@ -269,7 +269,7 @@ Shared UI components
 		}
 
 		&:focus {
-			@include row-glow-active();
+			@include row-glow-active;
 		}
 	}
 
@@ -285,7 +285,7 @@ Shared UI components
 		width: 100%;
 	}
 
-	&ipt-search-sub-ipt[type=radio] {
+	&ipt-search-sub-ipt[type="radio"] {
 		display: inline-block;
 		margin: 0 3px 0 0;
 	}
@@ -300,7 +300,7 @@ Shared UI components
 		padding-left: 0;
 
 		/* TODO switch this field to a validated text-type input, instead of a number */
-		&[type=number]::-webkit-inner-spin-button {
+		&[type="number"]::-webkit-inner-spin-button {
 			margin: 0;
 			/* stylelint-disable-next-line property-no-vendor-prefix */
 			-webkit-appearance: none;
@@ -335,7 +335,7 @@ Shared UI components
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-family: 'Andada', serif;
+		font-family: Andada, serif;
 		font-variant: small-caps;
 		font-weight: 500;
 	}
@@ -362,8 +362,7 @@ Shared UI components
 	&wrp-tab-body {
 		width: 100%;
 		height: 100%;
-		overflow-y: auto;
-		overflow-x: hidden;
+		overflow: hidden auto;
 
 		&--border {
 			padding: 3px 0;
@@ -383,7 +382,7 @@ Shared UI components
 /* region Proficiency */
 .ui-prof__ {
 	&btn-cycle {
-		@include cb-custom();
+		@include cb-custom;
 
 		&[data-state='0'] {
 			background: white;
@@ -391,12 +390,12 @@ Shared UI components
 
 		&[data-state='1'] {
 			background: $rgb-cb-grey;
-			border-color: lighten($rgb-cb-grey, 15%);
+			border-color: color.adjust($rgb-cb-grey, $lightness: 15%);
 		}
 
 		&[data-state='2'] {
 			background: $rgb-cb-grey;
-			border-color: lighten($rgb-cb-grey, 15%);
+			border-color: color.adjust($rgb-cb-grey, $lightness: 15%);
 			display: flex;
 			line-height: 14px;
 			-moz-osx-font-smoothing: grayscale;
@@ -404,7 +403,7 @@ Shared UI components
 			font-style: normal;
 			font-variant: normal;
 			text-rendering: auto;
-			font-family: 'Font Awesome 5 Pro';
+			font-family: 'Font Awesome 5 Pro', monospace;
 			font-weight: 900;
 			color: white;
 			font-size: 12px;
@@ -416,7 +415,7 @@ Shared UI components
 
 		&[data-state='3'] {
 			background: repeating-linear-gradient(135deg, white, white 10px, $rgb-cb-grey 10px, $rgb-cb-grey 20px);
-			border-color: lighten($rgb-cb-grey, 15%);
+			border-color: color.adjust($rgb-cb-grey, $lightness: 15%);
 		}
 	}
 }
@@ -446,7 +445,7 @@ Shared UI components
 		transform-origin: top;
 		pointer-events: none;
 		user-select: none;
-		box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75);
+		box-shadow: 0 0 2px 0 rgb(0 0 0 / 75%);
 	}
 }
 /* endregion */
@@ -463,10 +462,7 @@ Shared UI components
 .ui-drag__ {
 	&wrp-drag-block {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 	}
 
 	&wrp-drag-dummy--highlight {
@@ -512,7 +508,7 @@ Shared UI components
 	}
 
 	&child {
-		@include shadow-1();
+		@include shadow-1;
 
 		display: none;
 		position: absolute;
@@ -537,7 +533,7 @@ Shared UI components
 /* region Context menu */
 .ui-ctx {
 	&__wrp {
-		@include shadow-1--dark();
+		@include shadow-1--dark;
 
 		z-index: $z-context-menu;
 		font-size: 14px;
@@ -658,7 +654,7 @@ Shared UI components
 	}
 
 	&disp-copied {
-		@include shadow-2();
+		@include shadow-2;
 
 		position: fixed;
 		white-space: nowrap;
@@ -710,7 +706,6 @@ Shared UI components
 	&btn-ticker {
 		transition: opacity $time-2-frames;
 		opacity: 0;
-
 		padding: 0;
 		width: 14px;
 		height: 10px;
@@ -718,7 +713,6 @@ Shared UI components
 		font-size: 14px;
 		line-height: 10px;
 		border-radius: 0;
-
 		background: #0003;
 		color: $rgb-off-black;
 
@@ -808,7 +802,7 @@ Shared UI components
 
 		&:focus.active,
 		&:hover.active {
-			background: darken($rgb-bg--alt, $pct-darken-active);
+			background: color.adjust($rgb-bg--alt, $lightness: - $pct-darken-active);
 		}
 	}
 }
@@ -823,7 +817,7 @@ Shared UI components
 			font-size: 14px;
 		}
 
-		//&wrp-top {}
+		// &wrp-top {}
 
 		&thumb {
 			width: 14px;
@@ -835,8 +829,8 @@ Shared UI components
 
 			&--hover,
 			&:hover {
-				background: darken($rgb-bg--alt, 10%);
-				border-color: darken($rgb-border-grey, 10%);
+				background: color.adjust($rgb-bg--alt, $lightness: -10%);
+				border-color: color.adjust($rgb-border-grey, $lightness: -10%);
 			}
 		}
 
@@ -891,7 +885,7 @@ Shared UI components
 
 			&--major {
 				height: 6px;
-				background: darken($rgb-border-grey, 15%);
+				background: color.adjust($rgb-border-grey, $lightness: -15%);
 			}
 		}
 

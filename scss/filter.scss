@@ -171,7 +171,7 @@ $flt-ignore--hover: #e6e6e6;
 				background: repeating-linear-gradient(135deg, $rgb-active-blue, $rgb-active-blue $fltr-stripe, transparent $fltr-stripe, transparent $fltr-2stripe);
 
 				&:hover {
-					background: repeating-linear-gradient(135deg, darken($rgb-active-blue, $pct-darken-hover), darken($rgb-active-blue, $pct-darken-hover) $fltr-stripe, transparent $fltr-stripe, transparent $fltr-2stripe);
+					background: repeating-linear-gradient(135deg, color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover), color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover) $fltr-stripe, transparent $fltr-stripe, transparent $fltr-2stripe);
 				}
 
 				span {
@@ -185,7 +185,7 @@ $flt-ignore--hover: #e6e6e6;
 				color: white;
 
 				&:hover {
-					background: darken($rgb-active-blue, $pct-darken-hover);
+					background: color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover);
 				}
 			}
 
@@ -193,7 +193,7 @@ $flt-ignore--hover: #e6e6e6;
 				background: repeating-linear-gradient(135deg, transparent, transparent $fltr-stripe, $rgb-active-red $fltr-stripe, $rgb-active-red $fltr-2stripe);
 
 				&:hover {
-					background: repeating-linear-gradient(135deg, transparent, transparent $fltr-stripe, darken($rgb-active-red, $pct-darken-hover) $fltr-stripe, darken($rgb-active-red, $pct-darken-hover) $fltr-2stripe);
+					background: repeating-linear-gradient(135deg, transparent, transparent $fltr-stripe, color.adjust($rgb-active-red, $lightness: - $pct-darken-hover) $fltr-stripe, color.adjust($rgb-active-red, $lightness: - $pct-darken-hover) $fltr-2stripe);
 				}
 
 				span {
@@ -207,7 +207,7 @@ $flt-ignore--hover: #e6e6e6;
 				color: white;
 
 				&:hover {
-					background: darken($rgb-active-red, $pct-darken-hover);
+					background: color.adjust($rgb-active-red, $lightness: - $pct-darken-hover);
 				}
 			}
 
@@ -216,7 +216,7 @@ $flt-ignore--hover: #e6e6e6;
 				color: white;
 
 				&:hover {
-					background: repeating-linear-gradient(135deg, darken($rgb-active-blue, $pct-darken-hover), darken($rgb-active-blue, $pct-darken-hover) $fltr-stripe, darken($rgb-active-red, $pct-darken-hover) $fltr-stripe, darken($rgb-active-red, $pct-darken-hover) $fltr-2stripe);
+					background: repeating-linear-gradient(135deg, color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover), color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover) $fltr-stripe, color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover) $fltr-stripe, color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover) $fltr-2stripe);
 				}
 			}
 		}
@@ -264,23 +264,23 @@ $flt-ignore--hover: #e6e6e6;
 				background-color: $flt-ignore--hover;
 			}
 
-			&[state=yes] {
+			&[state="yes"] {
 				background: $rgb-active-blue;
 				color: white;
-				border: 1px solid darken($rgb-active-blue, $pct-darken-border);
+				border: 1px solid color.adjust($rgb-active-blue, $lightness: - $pct-darken-border);
 
 				&:hover {
-					background: darken($rgb-active-blue, $pct-darken-hover);
+					background: color.adjust($rgb-active-blue, $lightness: - $pct-darken-hover);
 				}
 			}
 
-			&[state=no] {
+			&[state="no"] {
 				background: $rgb-active-red;
 				color: white;
-				border: 1px solid darken($rgb-active-red, $pct-darken-border);
+				border: 1px solid color.adjust($rgb-active-red, $lightness: - $pct-darken-border);
 
 				&:hover {
-					background: darken($rgb-active-red, $pct-darken-hover);
+					background: color.adjust($rgb-active-red, $lightness: - $pct-darken-hover);
 				}
 			}
 		}
@@ -342,23 +342,23 @@ $flt-ignore--hover: #e6e6e6;
 				text-decoration: red line-through;
 			}
 
-			&[state=yes] {
+			&[state="yes"] {
 				background: $rgb-active-blue;
 				color: white;
 				display: block;
 			}
 
-			&--default-sel[state=yes] {
+			&--default-sel[state="yes"] {
 				background: #48637a;
 			}
 
-			&[state=no] {
+			&[state="no"] {
 				background: $rgb-name-red;
 				color: white;
 				display: block;
 			}
 
-			&--default-desel[state=no] {
+			&--default-desel[state="no"] {
 				background: #7a564f;
 			}
 		}
@@ -449,7 +449,7 @@ $flt-ignore--hover: #e6e6e6;
 
 	&-cls__ {
 		&tgl {
-			@include cb-custom();
+			@include cb-custom;
 
 			border-radius: 7px;
 		}
