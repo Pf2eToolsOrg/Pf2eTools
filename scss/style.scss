@@ -1,9 +1,10 @@
-@import 'vars';
+@use "sass:color";
+@use 'vars';
 
 .page__ {
 	&header {
 		padding: 0 15px 1px;
-		box-shadow: 0 1px 4px $rgb-shadow-grey--dark;
+		box-shadow: 0 1px 4px vars.$rgb-shadow-grey--dark;
 		color: white;
 		background-color: #002664;
 		min-height: 0;
@@ -52,14 +53,14 @@
 		min-height: 33px;
 		flex-shrink: 0;
 
-		@media (max-width: $max-width-screen-sm) {
+		@media (max-width: vars.$max-width-screen-sm) {
 			width: 100%;
 			display: flex;
 		}
 	}
 
 	&nav-inner {
-		@media (max-width: $max-width-screen-sm) {
+		@media (max-width: vars.$max-width-screen-sm) {
 			display: flex;
 			margin-top: 3px;
 			flex-direction: column;
@@ -74,10 +75,10 @@
 	}
 
 	&wrp-download {
-		@include shadow-1;
+		@include vars.shadow-1;
 
 		position: fixed;
-		z-index: $z-temp-effect;
+		z-index: vars.$z-temp-effect;
 		top: 5px;
 		min-height: 40px;
 		min-width: 100px;
@@ -96,12 +97,12 @@
 	}
 
 	&wrp-download-bar {
-		border: 1px solid $rgb-active-blue--dark;
+		border: 1px solid vars.$rgb-active-blue--dark;
 		height: 34px;
 		border-radius: 4px;
 
 		&--error {
-			border-color: $rgb-active-red--dark;
+			border-color: vars.$rgb-active-red--dark;
 		}
 	}
 
@@ -110,10 +111,10 @@
 		top: 0;
 		bottom: 0;
 		left: 0;
-		background: $rgb-active-blue;
+		background: vars.$rgb-active-blue;
 
 		&--error {
-			background: $rgb-active-red;
+			background: vars.$rgb-active-red;
 		}
 	}
 
@@ -127,16 +128,16 @@
 
 .night-mode .page__ {
 	&wrp-download {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	&disp-download-progress-text {
-		color: $rgb-off-black;
+		color: vars.$rgb-off-black;
 	}
 }
 
 #navigation .page__nav-hidden-mobile {
-	@media (max-width: $max-width-screen-sm) {
+	@media (max-width: vars.$max-width-screen-sm) {
 		display: none;
 		margin-left: 0;
 	}
@@ -150,13 +151,13 @@
 	}
 }
 
-@media (max-width: $max-width-screen-sm) {
+@media (max-width: vars.$max-width-screen-sm) {
 	.nav > li > a {
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 	}
 
 	.night-mode .nav > li > a {
-		border-color: $rgb-border-grey--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 
 	.nav .caret--right {
@@ -170,7 +171,7 @@
 }
 
 #legal-notice {
-	@include shadow-1;
+	@include vars.shadow-1;
 
 	position: fixed;
 	z-index: 10000;
@@ -196,7 +197,7 @@
 	height: 100vh;
 	width: 100%;
 
-	@media (max-width: $max-width-screen-md) {
+	@media (max-width: vars.$max-width-screen-md) {
 		bottom: auto;
 		height: initial;
 		min-height: 100vh;
@@ -217,7 +218,7 @@
 	height: 100%;
 	min-height: 0;
 
-	@media (max-width: $max-width-screen-md) {
+	@media (max-width: vars.$max-width-screen-md) {
 		flex-direction: column;
 		max-height: none;
 		height: initial;
@@ -227,17 +228,17 @@
 
 /* side menu */
 .sidemenu {
-	@include shadow-1;
+	@include vars.shadow-1;
 
 	background: white;
-	border: 1px solid $rgb-border-grey;
+	border: 1px solid vars.$rgb-border-grey;
 	position: fixed;
-	z-index: $z-side-menu;
+	z-index: vars.$z-side-menu;
 	top: 0;
 	bottom: 0;
 	left: -260px;
 	width: 250px;
-	transition: left $time-3-frames;
+	transition: left vars.$time-3-frames;
 	cursor: default;
 	display: flex;
 	flex-direction: column;
@@ -249,17 +250,17 @@
 	}
 
 	&__toggle {
-		@include shadow-1;
+		@include vars.shadow-1;
 
 		background: lightgrey;
 		position: absolute;
-		z-index: $z-side-menu;
+		z-index: vars.$z-side-menu;
 		top: 46px;
 		left: -7px;
 		width: 32px;
 		height: 32px;
 		cursor: pointer;
-		transition: left $time-3-frames;
+		transition: left vars.$time-3-frames;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
@@ -282,7 +283,7 @@
 
 	&__toggle:hover .sidemenu {
 		left: 0;
-		transition: left $time-3-frames;
+		transition: left vars.$time-3-frames;
 
 		&--offset {
 			left: -12px;
@@ -302,7 +303,7 @@
 	}
 
 	&__row__divider {
-		background: $rgb-border-grey--trans;
+		background: vars.$rgb-border-grey--trans;
 		height: 1px;
 		width: calc(100% - 16px);
 		margin: 2px 8px 7px;
@@ -335,7 +336,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 }
 
 .night-mode .sidemenu {
-	border-color: $rgb-border-grey--night;
+	border-color: vars.$rgb-border-grey--night;
 }
 
 /* *** */
@@ -349,10 +350,10 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	}
 
 	&output {
-		@include shadow-1;
+		@include vars.shadow-1;
 
 		position: absolute;
-		z-index: $z-omnisearch;
+		z-index: vars.$z-omnisearch;
 		padding: 0.2em 0.7em;
 		border-radius: 0.2em;
 		border: 1px solid rgb(0 0 0 / 15%);
@@ -369,30 +370,30 @@ input[type="checkbox"].sidemenu__row__label__cb {
 			min-width: 270px;
 		}
 
-		@media only screen and (min-width: $min-width-screen-xs) {
+		@media only screen and (min-width: vars.$min-width-screen-xs) {
 			max-width: 460px;
 			min-width: 430px;
 		}
 
-		@media only screen and (min-width: $min-width-screen-sm) {
+		@media only screen and (min-width: vars.$min-width-screen-sm) {
 			max-width: 740px;
 			min-width: 500px;
 		}
 
-		@media only screen and (max-width: $max-width-screen-sm) {
+		@media only screen and (max-width: vars.$max-width-screen-sm) {
 			top: 40px;
 		}
 	}
 
 	&wrp-input {
-		@media only screen and (max-width: $max-width-screen-sm) {
+		@media only screen and (max-width: vars.$max-width-screen-sm) {
 			margin-top: 2px;
 			margin-left: 0;
 		}
 
 		&--scrolled {
 			position: fixed;
-			z-index: $z-omnisearch;
+			z-index: vars.$z-omnisearch;
 			top: 5px;
 			right: 10px;
 			width: 85px;
@@ -402,12 +403,12 @@ input[type="checkbox"].sidemenu__row__label__cb {
 			.omni__input {
 				min-width: initial;
 				border-top-left-radius: 4px;
-				border-top-color: $rgb-border-grey;
+				border-top-color: vars.$rgb-border-grey;
 			}
 
 			.omni__submit {
 				border-top-right-radius: 4px;
-				border-top-color: $rgb-border-grey;
+				border-top-color: vars.$rgb-border-grey;
 			}
 
 			input {
@@ -434,7 +435,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 		height: 32px;
 		min-width: 100px;
 
-		@media (min-width: $min-width-screen-md) {
+		@media (min-width: vars.$min-width-screen-md) {
 			border-top-left-radius: 0;
 			border-top-color: transparent;
 		}
@@ -444,7 +445,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 		height: 32px;
 		padding: 3px 7px;
 
-		@media (min-width: $min-width-screen-md) {
+		@media (min-width: vars.$min-width-screen-md) {
 			border-top-right-radius: 0;
 			border-top-color: transparent;
 		}
@@ -467,7 +468,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 		cursor: pointer;
 
 		&:hover {
-			color: $rgb-active-blue;
+			color: vars.$rgb-active-blue;
 		}
 	}
 
@@ -505,7 +506,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	top: 0;
 	margin-left: auto;
 	padding: 2px;
-	color: $rgb-bg--alt;
+	color: vars.$rgb-bg--alt;
 	cursor: pointer;
 	font-size: 12px;
 	width: 18px;
@@ -520,7 +521,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	&:hover,
 	&:active,
 	&:visited {
-		color: color.adjust($rgb-bg--alt, $lightness: - $pct-darken-hover);
+		color: color.adjust(vars.$rgb-bg--alt, $lightness: - vars.$pct-darken-hover);
 		text-decoration: none;
 	}
 }
@@ -559,10 +560,10 @@ input[type="checkbox"].sidemenu__row__label__cb {
 
 /* roller */
 .rollbox-min {
-	@include shadow-1;
+	@include vars.shadow-1;
 
 	position: fixed;
-	z-index: $z-rollerbox-hidden;
+	z-index: vars.$z-rollerbox-hidden;
 	right: 7px;
 	bottom: 0;
 	color: rgb(255 255 255 / 70%);
@@ -579,13 +580,13 @@ input[type="checkbox"].sidemenu__row__label__cb {
 }
 
 .rollbox {
-	@include shadow-1;
+	@include vars.shadow-1;
 
 	display: none;
 	position: fixed;
 	width: 260px;
 	height: 335px;
-	z-index: $z-rollerbox-active;
+	z-index: vars.$z-rollerbox-active;
 	border: 1px solid rgb(0 0 0 / 15%);
 	right: 1em;
 	bottom: 0;
@@ -676,11 +677,11 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	}
 
 	.out-roll .out-roll-item .roll-min {
-		color: $rgb-roll-min;
+		color: vars.$rgb-roll-min;
 	}
 
 	.out-roll .out-roll-item .roll-max {
-		color: $rgb-roll-max;
+		color: vars.$rgb-roll-max;
 	}
 
 	.out-roll .out-roll-id {
@@ -710,15 +711,15 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	}
 
 	&success {
-		text-decoration: $rgb-roll-max--muted underline;
+		text-decoration: vars.$rgb-roll-max--muted underline;
 	}
 
 	&min--muted {
-		color: $rgb-roll-min--muted;
+		color: vars.$rgb-roll-min--muted;
 	}
 
 	&max--muted {
-		color: $rgb-roll-max--muted;
+		color: vars.$rgb-roll-max--muted;
 	}
 
 	&exploded {
@@ -726,11 +727,11 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	}
 
 	&min--muted {
-		color: $rgb-roll-min--muted;
+		color: vars.$rgb-roll-min--muted;
 	}
 
 	&max--muted {
-		color: $rgb-roll-max--muted;
+		color: vars.$rgb-roll-max--muted;
 	}
 }
 
@@ -798,7 +799,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	flex-shrink: 1;
 	background: #f6f4f2;
 
-	@media (max-width: $max-width-screen-md) {
+	@media (max-width: vars.$max-width-screen-md) {
 		overflow-y: initial;
 	}
 }
@@ -844,13 +845,13 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	font-size: 0.8em;
 
 	&--stats {
-		@media (min-width: $min-width-screen-md) {
+		@media (min-width: vars.$min-width-screen-md) {
 			overflow-y: scroll;
 			margin-right: -9px;
 		}
 	}
 
-	@media (max-width: $max-width-screen-md) {
+	@media (max-width: vars.$max-width-screen-md) {
 		max-height: 40vh;
 	}
 
@@ -865,7 +866,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 	}
 
 	.list-multi-selected {
-		@include row-glow-active;
+		@include vars.row-glow-active;
 	}
 }
 
@@ -899,8 +900,8 @@ input[type="checkbox"].sidemenu__row__label__cb {
 		}
 
 		.wrp-cb-all {
-			border-bottom: 1px solid $rgb-border-grey;
-			border-right: 1px solid $rgb-border-grey;
+			border-bottom: 1px solid vars.$rgb-border-grey;
+			border-right: 1px solid vars.$rgb-border-grey;
 			line-height: 14px;
 			border-bottom-right-radius: 3px;
 			text-align: center;
@@ -939,7 +940,7 @@ input[type="checkbox"].sidemenu__row__label__cb {
 .night-mode .manbrew {
 	&__filtertools {
 		.wrp-cb-all {
-			border-color: $rgb-border-grey--night;
+			border-color: vars.$rgb-border-grey--night;
 		}
 	}
 }
@@ -1014,7 +1015,7 @@ th.border-thin {
 }
 
 td.divider div {
-	background: $rgb-name-red;
+	background: vars.$rgb-name-red;
 	height: 2px;
 	margin: 6px 0;
 }
@@ -1040,12 +1041,12 @@ tr.text.compact > td p:last-child {
 }
 
 span.dc-roller[mode="dice"] {
-	color: $rgb-link-blue;
+	color: vars.$rgb-link-blue;
 	cursor: pointer;
 }
 
 .night-mode span.dc-roller[mode="dice"] {
-	color: $rgb-link-blue--night;
+	color: vars.$rgb-link-blue--night;
 }
 
 div#lootoutput {
@@ -1068,7 +1069,7 @@ div#lootoutput {
 		top: 23px;
 		left: 0;
 		background: white;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 		width: calc(100% - 30px);
 		margin: 0 10px;
 		padding: 5px 7px 10px;
@@ -1120,8 +1121,8 @@ div#lootoutput {
 		font-size: 1.6rem;
 		font-family: Andada, serif;
 		font-variant: small-caps;
-		border-bottom: 2px solid $rgb-name-red;
-		color: $rgb-name-red;
+		border-bottom: 2px solid vars.$rgb-name-red;
+		color: vars.$rgb-name-red;
 		vertical-align: bottom !important;
 		padding-left: 0.2rem;
 	}
@@ -1129,28 +1130,28 @@ div#lootoutput {
 	&wrp-token {
 		display: block;
 		position: absolute;
-		z-index: $z-token-image;
+		z-index: vars.$z-token-image;
 		top: 0;
 		right: 0.5rem;
 		width: auto;
 		max-width: 11rem;
 		height: auto;
-		transition: opacity $time-2-frames, max-width $time-2-frames, right $time-2-frames;
+		transition: opacity vars.$time-2-frames, max-width vars.$time-2-frames, right vars.$time-2-frames;
 
 		&:hover {
 			max-width: 100%;
 			right: 0;
 			opacity: 1 !important;
-			transition: opacity $time-2-frames, max-width $time-2-frames, right $time-2-frames;
+			transition: opacity vars.$time-2-frames, max-width vars.$time-2-frames, right vars.$time-2-frames;
 
 			.mon__btn-token-cycle {
 				opacity: 1;
-				transition: opacity $time-2-frames;
+				transition: opacity vars.$time-2-frames;
 			}
 
 			.mon__wrp-token-footer {
 				opacity: 1;
-				transition: opacity $time-2-frames;
+				transition: opacity vars.$time-2-frames;
 			}
 		}
 	}
@@ -1169,12 +1170,12 @@ div#lootoutput {
 		justify-content: center;
 		width: 40px;
 		height: 40px;
-		background: $rgb-shadow-grey--dark;
+		background: vars.$rgb-shadow-grey--dark;
 		cursor: pointer;
 		color: white;
-		border: 1px solid $rgb-border-grey--trans;
+		border: 1px solid vars.$rgb-border-grey--trans;
 		opacity: 0;
-		transition: opacity $time-2-frames;
+		transition: opacity vars.$time-2-frames;
 
 		&--left {
 			left: 0;
@@ -1205,24 +1206,24 @@ div#lootoutput {
 		align-items: center;
 		justify-content: center;
 		opacity: 0;
-		transition: opacity $time-2-frames;
+		transition: opacity vars.$time-2-frames;
 	}
 
 	&token-footer {
-		background: $rgb-shadow-grey--dark;
+		background: vars.$rgb-shadow-grey--dark;
 		color: white;
 		font-family: Andada, serif;
 		font-variant: small-caps;
 		font-size: 16px;
 		border-radius: 5px;
 		padding: 1px 5px;
-		border: 1px solid $rgb-border-grey--trans;
+		border: 1px solid vars.$rgb-border-grey--trans;
 	}
 }
 
 .night-mode .mon__ {
 	&cr_slider_wrp {
-		border-color: $rgb-border-grey--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 }
 
@@ -1300,21 +1301,21 @@ tr th.mon__name--token {
 
 img.token {
 	position: absolute;
-	z-index: $z-token-image;
+	z-index: vars.$z-token-image;
 	top: 0;
 	right: 0.5rem;
 	float: right;
 	width: auto;
 	max-width: 11rem;
 	height: auto;
-	transition: opacity $time-2-frames, max-width $time-2-frames, right $time-2-frames;
+	transition: opacity vars.$time-2-frames, max-width vars.$time-2-frames, right vars.$time-2-frames;
 }
 
 img.token:hover {
 	max-width: 100%;
 	right: 0;
 	opacity: 1 !important;
-	transition: opacity $time-2-frames, max-width $time-2-frames, right $time-2-frames;
+	transition: opacity vars.$time-2-frames, max-width vars.$time-2-frames, right vars.$time-2-frames;
 }
 
 .stats p.subtrait {
@@ -1345,11 +1346,11 @@ img.token:hover {
 }
 
 .panel-add {
-	color: $rgb-border-grey;
+	color: vars.$rgb-border-grey;
 }
 
 .btn-panel-add {
-	border: 1px solid $rgb-border-grey;
+	border: 1px solid vars.$rgb-border-grey;
 
 	&:hover,
 	&.faux-hover {
@@ -1358,7 +1359,7 @@ img.token:hover {
 }
 
 .night-mode .btn-panel-add {
-	border-color: $rgb-border-grey--night;
+	border-color: vars.$rgb-border-grey--night;
 }
 
 .panel-content-wrapper-inner {
@@ -1370,8 +1371,8 @@ img.token:hover {
 .panel-control-bottom,
 .panel-control-left,
 .panel-control-middle {
-	background: $rgb-border-grey--trans;
-	border: 1px solid $rgb-border-grey;
+	background: vars.$rgb-border-grey--trans;
+	border: 1px solid vars.$rgb-border-grey;
 }
 
 .night-mode {
@@ -1396,13 +1397,13 @@ img.token:hover {
 }
 
 .btn-spotlight:focus {
-	color: $rgb-off-black;
+	color: vars.$rgb-off-black;
 	background-color: #d2dee6;
 	border-color: #85898c;
 }
 
 .btn-spotlight:hover {
-	color: $rgb-off-black;
+	color: vars.$rgb-off-black;
 	background-color: #d2dee6;
 	border-color: #85898c;
 }
@@ -1413,15 +1414,15 @@ img.token:hover {
 }
 
 .underline-tabs {
-	border-top: 1px solid $rgb-border-grey;
+	border-top: 1px solid vars.$rgb-border-grey;
 }
 
 .night-mode .underline-tabs {
-	border-color: $rgb-border-grey--night;
+	border-color: vars.$rgb-border-grey--night;
 }
 
 .panel-content-wrapper-inner td div.border {
-	background-color: $rgb-name-red;
+	background-color: vars.$rgb-name-red;
 }
 
 .panel-history-control-remove {
@@ -1429,8 +1430,8 @@ img.token:hover {
 }
 
 .panel-history-control-middle {
-	background: $rgb-border-grey--trans;
-	border: 1px solid $rgb-border-grey;
+	background: vars.$rgb-border-grey--trans;
+	border: 1px solid vars.$rgb-border-grey;
 }
 
 .night-mode .panel-history-control-middle {
@@ -1499,7 +1500,7 @@ img.token:hover {
 		display: flex;
 		justify-content: space-between;
 		font-variant: small-caps;
-		border-bottom: 1px solid $rgb-border-grey;
+		border-bottom: 1px solid vars.$rgb-border-grey;
 	}
 
 	&h_name,
@@ -1584,7 +1585,7 @@ img.token:hover {
 
 .night-mode .initp__ {
 	&header {
-		border-color: $rgb-border-grey--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 }
 
@@ -1735,7 +1736,7 @@ input[type="checkbox"].readonly {
 }
 
 .lst__row--focusable:focus {
-	@include row-glow-active;
+	@include vars.row-glow-active;
 }
 
 .sublist {
@@ -1760,7 +1761,7 @@ input[type="checkbox"].readonly {
 		min-height: 75px;
 		max-height: 80%;
 
-		@media (max-width: $max-width-screen-md) {
+		@media (max-width: vars.$max-width-screen-md) {
 			max-height: 40vh;
 			height: initial;
 		}
@@ -1777,7 +1778,7 @@ input[type="checkbox"].readonly {
 
 		&ele-resize {
 			background-color: #aaa4;
-			border: 1px solid $rgb-border-grey--trans-muted;
+			border: 1px solid vars.$rgb-border-grey--trans-muted;
 			position: absolute;
 			bottom: 0;
 			height: 1px;
@@ -1822,7 +1823,7 @@ input[type="checkbox"].readonly {
 
 .night-mode .ecgen__ {
 	&wrp {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 }
 
@@ -2064,35 +2065,35 @@ tr.regionaleffect {
 
 .f-all-wrapper {
 	position: fixed;
-	z-index: $z-book-find;
+	z-index: vars.$z-book-find;
 	right: calc((50vw - (1170px / 2)) + 1.5em);
 	bottom: 10px;
 	left: calc(((100vw - (1170px * (4 / 6))) / 2) + 1.5em);
 	padding: 0 20px;
 }
 
-@media (max-width: $max-width-screen-lg) {
+@media (max-width: vars.$max-width-screen-lg) {
 	.f-all-wrapper {
 		right: calc((50vw - (970px / 2)) + 1.5em);
 		left: calc(((100vw - (970px * (4 / 6))) / 2) + 1.5em);
 	}
 }
 
-@media (max-width: $max-width-screen-md) {
+@media (max-width: vars.$max-width-screen-md) {
 	.f-all-wrapper {
 		right: calc(((100vw - 750px) / 2) + 1.5em);
 		left: calc(((100vw - 750px) / 2) + 1.5em);
 	}
 }
 
-@media only screen and (max-width: $max-width-screen-sm) {
+@media only screen and (max-width: vars.$max-width-screen-sm) {
 	.f-all-wrapper {
 		right: calc(((100vw - 750px) / 2) + 1.5em);
 		left: calc(((100vw - 750px) / 2) + 1.5em);
 	}
 }
 
-@media only screen and (max-width: $max-width-screen-xs) {
+@media only screen and (max-width: vars.$max-width-screen-xs) {
 	.f-all-wrapper {
 		right: calc(3.5em);
 		left: calc(3.5em);
@@ -2104,7 +2105,7 @@ tr.regionaleffect {
 }
 
 .f-all-out {
-	@include shadow-1;
+	@include vars.shadow-1;
 
 	overflow-y: auto;
 	max-height: 400px;
@@ -2127,7 +2128,7 @@ tr.regionaleffect {
 }
 
 .highlight {
-	background-color: $rgb-bg-highlight;
+	background-color: vars.$rgb-bg-highlight;
 }
 
 /* *** */
@@ -2147,24 +2148,24 @@ ul.list li:hover {
 
 @media only screen and (width >= 1600px) {
 	#listcontainer.book-contents {
-		@include shadow-1;
+		@include vars.shadow-1;
 
 		background: white;
 	}
 }
 
 .shadow-big {
-	@include shadow-1;
+	@include vars.shadow-1;
 }
 
 .night-mode .night__ {
 	&shadow-big {
-		@include shadow-1;
+		@include vars.shadow-1;
 	}
 }
 
 .stats--book {
-	@include shadow-1;
+	@include vars.shadow-1;
 
 
 	::selection {
@@ -2176,7 +2177,7 @@ ul.list li:hover {
 
 .prntv {
 	position: fixed;
-	z-index: $z-bookmode;
+	z-index: vars.$z-bookmode;
 	inset: 0;
 	width: 100vw;
 	height: 100vh;
@@ -2230,7 +2231,7 @@ ul.list li:hover {
 			width: 100%;
 			display: inline-block;
 			border-radius: 0.2em;
-			border: $rgb-border-grey 1px solid;
+			border: vars.$rgb-border-grey 1px solid;
 		}
 
 		&no-breaks {
@@ -2244,7 +2245,7 @@ ul.list li:hover {
 .night-mode .prntv {
 	&__ {
 		&wrp-item {
-			border-color: $rgb-border-grey--night;
+			border-color: vars.$rgb-border-grey--night;
 		}
 	}
 }
@@ -2299,8 +2300,8 @@ th.border {
 		margin-top: -1px;
 		padding: 1px 0 1px 5px;
 		text-decoration: none;
-		border-bottom: 1px solid $rgb-border-grey;
-		border-top: 1px solid $rgb-border-grey;
+		border-bottom: 1px solid vars.$rgb-border-grey;
+		border-top: 1px solid vars.$rgb-border-grey;
 		justify-content: space-between;
 	}
 
@@ -2315,12 +2316,12 @@ th.border {
 			display: flex;
 			flex-direction: column;
 			position: fixed;
-			z-index: $z-omnisearch - 1;
+			z-index: vars.$z-omnisearch - 1;
 			top: 42px;
 			right: 10px;
 			padding: 2px 0;
 
-			@media (max-width: $max-width-screen-sm) {
+			@media (max-width: vars.$max-width-screen-sm) {
 				display: none;
 			}
 		}
@@ -2350,11 +2351,11 @@ th.border {
 
 .night-mode .bk__ {
 	&contents-header {
-		border-color: $rgb-border-grey--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 
 	&overlay-loading {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 		border-bottom-color: #565656;
 	}
 }
@@ -2366,11 +2367,11 @@ th.border {
 
 	&wrp-bookshelf-item,
 	&wrp-bookshelf-item:hover {
-		@include shadow-1;
+		@include vars.shadow-1;
 
-		border: 2px solid $rgb-border-grey;
-		color: $rgb-off-black;
-		text-decoration-color: $rgb-off-black;
+		border: 2px solid vars.$rgb-border-grey;
+		color: vars.$rgb-off-black;
+		text-decoration-color: vars.$rgb-off-black;
 	}
 
 	&bookshelf-item-name {
@@ -2390,10 +2391,10 @@ th.border {
 .night-mode .bks__ {
 	&wrp-bookshelf-item,
 	&wrp-bookshelf-item:hover {
-		background: $rgb-bg--night;
-		border-color: $rgb-border-grey--night;
-		color: $rgb-font--night;
-		text-decoration-color: $rgb-font--night;
+		background: vars.$rgb-bg--night;
+		border-color: vars.$rgb-border-grey--night;
+		color: vars.$rgb-font--night;
+		text-decoration-color: vars.$rgb-font--night;
 	}
 }
 
@@ -2420,11 +2421,11 @@ th.border {
 /* start section: lootgen */
 
 #lootgen hr {
-	border-top: 2px solid $rgb-border-grey;
+	border-top: 2px solid vars.$rgb-border-grey;
 }
 
 .night-mode #lootgen hr {
-	border-top: 2px solid $rgb-border-grey--night;
+	border-top: 2px solid vars.$rgb-border-grey--night;
 }
 
 /* end section: lootgen */
@@ -2551,7 +2552,7 @@ ul.list.books > li > a > span.name:hover {
 		margin: 20px 20px 5px;
 		box-shadow: 0 0 3px 0 black;
 		border-radius: 4px;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 		background: #f0f0f0;
 	}
 
@@ -2566,15 +2567,15 @@ ul.list.books > li > a > span.name:hover {
 		background: gold;
 		width: 0;
 		text-align: right;
-		color: $rgb-off-black;
+		color: vars.$rgb-off-black;
 	}
 }
 
 .toast {
-	@include shadow-1;
+	@include vars.shadow-1;
 
 	position: fixed;
-	z-index: $z-temp-effect;
+	z-index: vars.$z-temp-effect;
 	top: -50px;
 	min-height: 40px;
 	min-width: 600px;
@@ -2590,30 +2591,30 @@ ul.list.books > li > a > span.name:hover {
 	border: 1px solid transparent;
 	border-radius: 4px;
 	opacity: 1;
-	transition: top $time-5-frames;
+	transition: top vars.$time-5-frames;
 
 	&--animate:nth-of-type(1) {
 		top: 5px;
-		transition: top $time-5-frames;
+		transition: top vars.$time-5-frames;
 	}
 
 	&--animate:nth-of-type(2) {
 		top: 50px;
-		transition: top $time-5-frames;
+		transition: top vars.$time-5-frames;
 	}
 
 	&--animate:nth-of-type(3) {
 		top: 95px;
-		transition: top $time-5-frames;
+		transition: top vars.$time-5-frames;
 	}
 
 	&--animate:nth-of-type(4) {
 		top: 140px;
-		transition: top $time-5-frames;
+		transition: top vars.$time-5-frames;
 	}
 
 	&--deleted {
-		z-index: $z-temp-effect - 1;
+		z-index: vars.$z-temp-effect - 1;
 	}
 
 	&__wrp-control {
@@ -2643,25 +2644,25 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	&--type-success {
-		color: $rgb-alert-text-success;
+		color: vars.$rgb-alert-text-success;
 		background-color: #dff0d8;
 		border-color: #d6e9c6;
 	}
 
 	&--type-info {
-		color: $rgb-alert-text-info;
+		color: vars.$rgb-alert-text-info;
 		background-color: #d9edf7;
 		border-color: #bce8f1;
 	}
 
 	&--type-warning {
-		color: $rgb-alert-text-warning;
+		color: vars.$rgb-alert-text-warning;
 		background-color: #fcf8e3;
 		border-color: #faebcc;
 	}
 
 	&--type-danger {
-		color: $rgb-alert-text-danger;
+		color: vars.$rgb-alert-text-danger;
 		background-color: #f2dede;
 		border-color: #ebccd1;
 	}
@@ -2754,15 +2755,15 @@ ul.list.books > li > a > span.name:hover {
 /* Night Mode */
 .night-mode {
 	body {
-		color: $rgb-font--night;
-		background: $rgb-bg--night url('data:image/png;base64,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') repeat scroll left top;
+		color: vars.$rgb-font--night;
+		background: vars.$rgb-bg--night url('data:image/png;base64,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') repeat scroll left top;
 		// background: #1c1c1c; // Consider using this as an alternate background
 	}
 
 	.page__ {
 		&header {
-			color: $rgb-font--night;
-			background: $rgb-off-black;
+			color: vars.$rgb-font--night;
+			background: vars.$rgb-off-black;
 		}
 
 		&title--home {
@@ -2783,16 +2784,16 @@ ul.list.books > li > a > span.name:hover {
 	.page__nav-inner > li.active > a,
 	.page__nav-inner > li.active > a:focus,
 	.page__nav-inner > li.active > a:hover {
-		background-color: $rgb-off-black;
+		background-color: vars.$rgb-off-black;
 		border-top: 0;
-		border-color: $rgb-border-grey--night;
+		border-color: vars.$rgb-border-grey--night;
 		border-left-color: transparent;
 		border-right-color: transparent;
 		color: #d0d0d0;
 	}
 
 	.text-muted {
-		color: color.adjust($rgb-font--night, $lightness: -15%) !important;
+		color: color.adjust(vars.$rgb-font--night, $lightness: -15%) !important;
 	}
 
 	h1,
@@ -2801,53 +2802,53 @@ ul.list.books > li > a > span.name:hover {
 	h4,
 	h5,
 	h6 {
-		color: $rgb-font--night;
+		color: vars.$rgb-font--night;
 	}
 
 	pre {
-		color: $rgb-font--night;
-		background: $rgb-bg--night;
-		border-color: $rgb-border-grey--night;
+		color: vars.$rgb-font--night;
+		background: vars.$rgb-bg--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 
 	hr {
-		border-color: $rgb-border-grey--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 
 	#legal-notice {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 		color: #999;
 	}
 
 	a,
 	.roller {
-		color: $rgb-link-blue--night;
+		color: vars.$rgb-link-blue--night;
 	}
 
 	.hwin__top-border-icon {
-		color: $rgb-font--night;
+		color: vars.$rgb-font--night;
 
 		&:hover {
-			color: color.adjust($rgb-font--night, $lightness: $pct-darken-hover);
+			color: color.adjust(vars.$rgb-font--night, $lightness: vars.$pct-darken-hover);
 		}
 	}
 
 	.text-muted {
 		a,
 		.roller {
-			color: $rgb-link-blue--muted-night;
+			color: vars.$rgb-link-blue--muted-night;
 		}
 	}
 
 	.nav > li:not(.active) > a {
-		color: $rgb-font--night;
-		background-color: $rgb-bg--night;
-		border: 1px solid $rgb-border-grey--trans-night;
+		color: vars.$rgb-font--night;
+		background-color: vars.$rgb-bg--night;
+		border: 1px solid vars.$rgb-border-grey--trans-night;
 		border-top: 0;
 
 		&:focus,
 		&:hover {
-			background-color: color.adjust($rgb-bg--night, $lightness: 2%);
+			background-color: color.adjust(vars.$rgb-bg--night, $lightness: 2%);
 			color: white;
 		}
 	}
@@ -2866,16 +2867,16 @@ ul.list.books > li > a > span.name:hover {
 	.nav li.open > a,
 	.nav li.open > a:focus,
 	.nav li.open > a:hover {
-		background-color: color.adjust($rgb-bg--night, $lightness: 2%);
-		border-left: 1px solid $rgb-link-blue;
-		border-right: 1px solid $rgb-link-blue;
-		border-color: $rgb-link-blue;
+		background-color: color.adjust(vars.$rgb-bg--night, $lightness: 2%);
+		border-left: 1px solid vars.$rgb-link-blue;
+		border-right: 1px solid vars.$rgb-link-blue;
+		border-color: vars.$rgb-link-blue;
 	}
 
 	.nav li.active.open > a,
 	.nav li.active.open > a:focus,
 	.nav li.active.open > a:hover {
-		background-color: $rgb-off-black;
+		background-color: vars.$rgb-off-black;
 		color: white;
 	}
 
@@ -2891,25 +2892,25 @@ ul.list.books > li > a > span.name:hover {
 	.btn-default:hover,
 	.btn-default:focus,
 	.btn-default:active {
-		background-color: $rgb-form-control-bg--night;
-		color: $rgb-font--night;
-		border-color: $rgb-border-grey--night;
+		background-color: vars.$rgb-form-control-bg--night;
+		color: vars.$rgb-font--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 
 	.btn-primary,
 	.btn-primary:hover,
 	.btn-primary:focus,
 	.btn-primary:active {
-		background-color: $rgb-btn-primary-blue--night;
-		color: $rgb-font--night;
+		background-color: vars.$rgb-btn-primary-blue--night;
+		color: vars.$rgb-font--night;
 	}
 
 	.btn-danger,
 	.btn-danger:hover,
 	.btn-danger:focus,
 	.btn-danger:active {
-		background-color: $rgb-btn-danger-red--night;
-		color: $rgb-font--night;
+		background-color: vars.$rgb-btn-danger-red--night;
+		color: vars.$rgb-font--night;
 	}
 
 	.btn-danger:hover {
@@ -2920,24 +2921,24 @@ ul.list.books > li > a > span.name:hover {
 	.btn-warning:hover,
 	.btn-warning:focus,
 	.btn-warning:active {
-		background-color: $rgb-btn-warning-orange--night;
-		color: $rgb-font--night;
+		background-color: vars.$rgb-btn-warning-orange--night;
+		color: vars.$rgb-font--night;
 	}
 
 	.btn-info,
 	.btn-info:hover,
 	.btn-info:focus,
 	.btn-info:active {
-		background-color: $rgb-btn-info-blue--night;
-		color: $rgb-font--night;
+		background-color: vars.$rgb-btn-info-blue--night;
+		color: vars.$rgb-font--night;
 	}
 
 	.btn-success,
 	.btn-success:hover,
 	.btn-success:focus,
 	.btn-success:active {
-		background-color: $rgb-btn-success-green--night;
-		color: $rgb-font--night;
+		background-color: vars.$rgb-btn-success-green--night;
+		color: vars.$rgb-font--night;
 	}
 
 	.btn-default.active {
@@ -2961,19 +2962,19 @@ ul.list.books > li > a > span.name:hover {
 
 	dialog.dialog-modal,
 	.dropdown-menu {
-		background: $rgb-bg--night;
-		color: $rgb-font--night;
+		background: vars.$rgb-bg--night;
+		color: vars.$rgb-font--night;
 		box-shadow: 0 6px 12px rgb(0 0 0 / 56%);
 	}
 
 	.dropdown-menu > li {
 		> a,
 		> span {
-			color: $rgb-font--night;
+			color: vars.$rgb-font--night;
 
 			&:focus,
 			&:hover {
-				background-color: $rgb-bg--alt-night;
+				background-color: vars.$rgb-bg--alt-night;
 				color: white;
 			}
 		}
@@ -2982,12 +2983,12 @@ ul.list.books > li > a > span.name:hover {
 			> a,
 			> span {
 				color: white;
-				background-color: $rgb-btn-danger-bg-red--night;
+				background-color: vars.$rgb-btn-danger-bg-red--night;
 
 				&:focus,
 				&:hover {
 					color: white;
-					background-color: $rgb-btn-danger-border-red;
+					background-color: vars.$rgb-btn-danger-border-red;
 				}
 			}
 		}
@@ -3004,11 +3005,11 @@ ul.list.books > li > a > span.name:hover {
 		&.disabled {
 			> a,
 			> span {
-				color: $rgb-ctx-item-text-disabled;
+				color: vars.$rgb-ctx-item-text-disabled;
 
 				&:focus,
 				&:hover {
-					color: $rgb-ctx-item-text-disabled;
+					color: vars.$rgb-ctx-item-text-disabled;
 					background: transparent;
 				}
 			}
@@ -3016,22 +3017,22 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.dropdown-menu .divider {
-		background-color: $rgb-border-grey--night;
+		background-color: vars.$rgb-border-grey--night;
 	}
 
 	select,
 	input {
-		background-color: $rgb-bg--night;
-		color: $rgb-font--night;
+		background-color: vars.$rgb-bg--night;
+		color: vars.$rgb-font--night;
 	}
 
 	select option {
-		color: $rgb-font--night;
-		background: $rgb-bg--night;
+		color: vars.$rgb-font--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.list .row {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	/* Bootstrap overrides */
@@ -3045,14 +3046,14 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.don__bar {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.input-group-addon,
 	.form-control {
-		background: $rgb-form-control-bg--night;
-		color: $rgb-font--night;
-		border-color: $rgb-border-grey--night;
+		background: vars.$rgb-form-control-bg--night;
+		color: vars.$rgb-font--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 
 	.form-control[disabled] {
@@ -3092,26 +3093,26 @@ ul.list.books > li > a > span.name:hover {
 		&wrp-input {
 			&--scrolled {
 				.omni__input {
-					border-color: $rgb-border-grey--night;
-					background-color: $rgb-bg--night;
+					border-color: vars.$rgb-border-grey--night;
+					background-color: vars.$rgb-bg--night;
 					color: transparent;
 
 					&:focus,
 					&:focus-within,
 					&:active,
 					&:hover {
-						color: $rgb-font--night;
+						color: vars.$rgb-font--night;
 					}
 				}
 
 				.omni__submit {
-					border-color: $rgb-border-grey--night;
+					border-color: vars.$rgb-border-grey--night;
 				}
 			}
 		}
 
 		&input {
-			@media (min-width: $min-width-screen-md) {
+			@media (min-width: vars.$min-width-screen-md) {
 				border-top-color: transparent;
 			}
 
@@ -3121,17 +3122,17 @@ ul.list.books > li > a > span.name:hover {
 		}
 
 		&submit {
-			border-top-color: $rgb-border-grey--night;
+			border-top-color: vars.$rgb-border-grey--night;
 
-			@media (min-width: $min-width-screen-md) {
+			@media (min-width: vars.$min-width-screen-md) {
 				border-top-color: transparent;
 			}
 
 			&.btn-default:active:focus,
 			&.btn-default:active:hover,
 			&.btn-default {
-				background-color: $rgb-bg--night;
-				color: $rgb-font--night;
+				background-color: vars.$rgb-bg--night;
+				color: vars.$rgb-font--night;
 			}
 		}
 	}
@@ -3139,7 +3140,7 @@ ul.list.books > li > a > span.name:hover {
 	#pointbuy {
 		input {
 			&[type='number'] {
-				border: 1px solid $rgb-border-grey--night;
+				border: 1px solid vars.$rgb-border-grey--night;
 				outline-offset: 0;
 				outline: none;
 			}
@@ -3151,7 +3152,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	ul.list li:hover {
-		background: $rgb-off-black;
+		background: vars.$rgb-off-black;
 	}
 
 	.book-contents .list li:hover {
@@ -3160,12 +3161,12 @@ ul.list.books > li > a > span.name:hover {
 
 	.list--stats > .row,
 	.stats {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	@media only screen and (width >= 1600px) {
 		#listcontainer.book-contents {
-			background: $rgb-bg--night;
+			background: vars.$rgb-bg--night;
 			border-right: 1px solid #404040;
 		}
 	}
@@ -3177,7 +3178,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.hwin__wrp-table {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.wrp-stats-table {
@@ -3191,11 +3192,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	tr.text td {
-		color: $rgb-font--night !important;
+		color: vars.$rgb-font--night !important;
 	}
 
 	tr.text td {
-		color: $rgb-font--night !important;
+		color: vars.$rgb-font--night !important;
 	}
 
 	.mon__ {
@@ -3204,7 +3205,7 @@ ul.list.books > li > a > span.name:hover {
 			background: rgb(255 255 255 / 15%);
 
 			&:hover {
-				color: $rgb-font--night;
+				color: vars.$rgb-font--night;
 			}
 		}
 
@@ -3218,11 +3219,11 @@ ul.list.books > li > a > span.name:hover {
 	tr.action td,
 	tr.reaction td,
 	tr.legendary td {
-		color: $rgb-font--night !important;
+		color: vars.$rgb-font--night !important;
 	}
 
 	.life__output {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.f-all-wrapper > input,
@@ -3249,7 +3250,7 @@ ul.list.books > li > a > span.name:hover {
 
 
 	.stats .divider div {
-		background-color: $rgb-name-red--night;
+		background-color: vars.$rgb-name-red--night;
 	}
 
 	.wrp-stats-table {
@@ -3264,7 +3265,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#please-select-message.showing > td {
-		color: $rgb-name-red--night;
+		color: vars.$rgb-name-red--night;
 	}
 
 	#actions,
@@ -3273,18 +3274,18 @@ ul.list.books > li > a > span.name:hover {
 	#lairactions,
 	#regionaleffects {
 		td {
-			border-bottom-color: $rgb-name-red--night;
-			color: $rgb-name-red--night;
+			border-bottom-color: vars.$rgb-name-red--night;
+			color: vars.$rgb-name-red--night;
 		}
 	}
 
 	.mon__stat-header-underline {
-		border-bottom-color: $rgb-name-red--night;
-		color: $rgb-name-red--night;
+		border-bottom-color: vars.$rgb-name-red--night;
+		color: vars.$rgb-name-red--night;
 	}
 
 	.source {
-		$rgb-source-PHB: $rgb-subclass--night;
+		$rgb-source-PHB: vars.$rgb-subclass--night;
 		$rgb-source-SADS: #4f63f5;
 
 		&PHB {
@@ -3332,7 +3333,7 @@ ul.list.books > li > a > span.name:hover {
 	ul.list.books > li > a > span.showhide:hover,
 	ul.list.books > li > a > span.name:hover,
 	.bk__contents-toggle-all:hover {
-		background: $rgb-off-black;
+		background: vars.$rgb-off-black;
 	}
 
 	ul.list.contents > li > ul.bk-contents > li a:hover {
@@ -3344,7 +3345,7 @@ ul.list.books > li > a > span.name:hover {
 	ul.bk-headers > li > a:hover,
 	li.contents-item > ul > ul.active > li > a:hover,
 	ul.list.contents > li > ul.bk-headers a:hover {
-		background: $rgb-off-black;
+		background: vars.$rgb-off-black;
 	}
 
 	ul.list.encounters li:nth-child(odd),
@@ -3374,11 +3375,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#rulescontent caption {
-		color: $rgb-font--night;
+		color: vars.$rgb-font--night;
 	}
 
 	tr.trait td {
-		color: $rgb-font--night !important;
+		color: vars.$rgb-font--night !important;
 	}
 
 	::-webkit-scrollbar-thumb {
@@ -3387,25 +3388,25 @@ ul.list.books > li > a > span.name:hover {
 
 	/**** Search and filter bar ****/
 	.ui-slider {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.ui-slider .ui-slider-tip {
-		background: $rgb-off-black;
-		color: $rgb-font--night;
+		background: vars.$rgb-off-black;
+		color: vars.$rgb-font--night;
 	}
 
 	.ui-slider-pips .ui-slider-pip {
-		color: $rgb-border-grey;
+		color: vars.$rgb-border-grey;
 	}
 
 	.ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
 	.ui-slider .ui-slider-label {
-		color: $rgb-link-blue--night;
+		color: vars.$rgb-link-blue--night;
 	}
 
 	.ui-slider-pips .ui-slider-line {
-		background-color: $rgb-link-blue;
+		background-color: vars.$rgb-link-blue;
 	}
 
 	.ui-slider .ui-slider-handle,
@@ -3418,17 +3419,17 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.mon__cr_slider_wrp {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 		color: #bbb;
 	}
 
 	.hwin table.summary-noback th,
 	.hwin table.summary th {
-		color: $rgb-font--night;
+		color: vars.$rgb-font--night;
 	}
 
 	.hwin .hoverborder .window-title {
-		color: $rgb-font--night;
+		color: vars.$rgb-font--night;
 	}
 
 	.rollbox {
@@ -3479,7 +3480,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-add {
-		color: $rgb-border-grey;
+		color: vars.$rgb-border-grey;
 	}
 
 	.btn-panel-add {
@@ -3490,20 +3491,20 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-wrapper-inner {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.panel-addmenu-tab-head[active='true'] {
-		background-color: $rgb-btn-default-active--night !important;
+		background-color: vars.$rgb-btn-default-active--night !important;
 	}
 
 	.panel-content-wrapper-inner td div.border,
 	.hwin td div.border {
-		background-color: $rgb-name-red--night;
+		background-color: vars.$rgb-name-red--night;
 	}
 
 	.initial-message {
-		color: $rgb-name-red--night;
+		color: vars.$rgb-name-red--night;
 	}
 
 	.ui-modal__row-sep {
@@ -3511,7 +3512,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-textarea {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.gm-init-row.gm-init-row-active input,
@@ -3520,11 +3521,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.gm__panel-bg {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.content-tab-bar {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.homebrew-section {
@@ -3540,8 +3541,8 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.highlight {
-		color: $rgb-bg--night;
-		background-color: $rgb-bg-highlight--night;
+		color: vars.$rgb-bg--night;
+		background-color: vars.$rgb-bg-highlight--night;
 	}
 
 	/* *** */
@@ -3552,7 +3553,7 @@ ul.list.books > li > a > span.name:hover {
 		color: #bbb;
 
 		.ace_gutter {
-			background: $rgb-off-black;
+			background: vars.$rgb-off-black;
 			color: #bbb;
 		}
 
@@ -3588,7 +3589,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 
 	.sidemenu__toggle {
@@ -3596,7 +3597,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu__burger {
-		background: $rgb-bg--night;
+		background: vars.$rgb-bg--night;
 	}
 	/* *** */
 
@@ -3608,7 +3609,7 @@ ul.list.books > li > a > span.name:hover {
 
 	/* generic UI */
 	.ui-modal__row--cb:hover {
-		background: $rgb-bg--alt-night;
+		background: vars.$rgb-bg--alt-night;
 	}
 	/* *** */
 }

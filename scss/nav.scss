@@ -1,4 +1,5 @@
-@import 'vars';
+@use "sass:color";
+@use 'vars';
 
 // region Old
 .nav {
@@ -9,13 +10,13 @@
 	}
 }
 
-@media (max-width: $max-width-screen-sm) {
+@media (max-width: vars.$max-width-screen-sm) {
 	.nav > li > a {
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 	}
 
 	.night-mode .nav > li > a {
-		border-color: $rgb-border-grey--night;
+		border-color: vars.$rgb-border-grey--night;
 	}
 
 	.nav .caret--right {
@@ -30,14 +31,14 @@
 
 .night-mode {
 	.nav > li:not(.active) > a {
-		color: $rgb-font--night;
-		background-color: $rgb-bg--night;
-		border: 1px solid $rgb-border-grey--trans-night;
+		color: vars.$rgb-font--night;
+		background-color: vars.$rgb-bg--night;
+		border: 1px solid vars.$rgb-border-grey--trans-night;
 		border-top: 0;
 
 		&:focus,
 		&:hover {
-			background-color: color.adjust($rgb-bg--night, $lightness: 2%);
+			background-color: color.adjust(vars.$rgb-bg--night, $lightness: 2%);
 			color: white;
 		}
 	}
@@ -52,16 +53,16 @@
 	.nav li.open > a,
 	.nav li.open > a:focus,
 	.nav li.open > a:hover {
-		background-color: color.adjust($rgb-bg--night, $lightness: 2%);
-		border-left: 1px solid $rgb-link-blue;
-		border-right: 1px solid $rgb-link-blue;
-		border-color: $rgb-link-blue;
+		background-color: color.adjust(vars.$rgb-bg--night, $lightness: 2%);
+		border-left: 1px solid vars.$rgb-link-blue;
+		border-right: 1px solid vars.$rgb-link-blue;
+		border-color: vars.$rgb-link-blue;
 	}
 
 	.nav li.active.open > a,
 	.nav li.active.open > a:focus,
 	.nav li.active.open > a:hover {
-		background-color: $rgb-off-black;
+		background-color: vars.$rgb-off-black;
 	}
 }
 // endregion
@@ -91,16 +92,16 @@
 
 			&:focus,
 			&:hover {
-				background-color: $rgb-bg--alt;
+				background-color: vars.$rgb-bg--alt;
 			}
 
 			&--active {
-				background: $rgb-active-blue;
+				background: vars.$rgb-active-blue;
 				color: white;
 
 				&:focus,
 				&:hover {
-					background: $rgb-active-blue--light;
+					background: vars.$rgb-active-blue--light;
 				}
 			}
 		}
@@ -113,21 +114,21 @@
 
 		&lnk-item {
 			padding: 3px 20px;
-			color: $rgb-off-black;
+			color: vars.$rgb-off-black;
 
 			&:focus,
 			&:hover {
-				background-color: $rgb-bg--alt;
+				background-color: vars.$rgb-bg--alt;
 				text-decoration: none;
 			}
 
 			&--active {
-				background: $rgb-active-blue;
+				background: vars.$rgb-active-blue;
 				color: white;
 
 				&:focus,
 				&:hover {
-					background: $rgb-active-blue--light;
+					background: vars.$rgb-active-blue--light;
 					color: white;
 				}
 			}
@@ -140,7 +141,7 @@
 		&head {
 			&:focus,
 			&:hover {
-				background-color: $rgb-bg--alt-night;
+				background-color: vars.$rgb-bg--alt-night;
 				color: white;
 			}
 
@@ -149,17 +150,17 @@
 
 				&:focus,
 				&:hover {
-					background: $rgb-active-blue--light;
+					background: vars.$rgb-active-blue--light;
 				}
 			}
 		}
 
 		&lnk-item {
-			color: $rgb-font--night;
+			color: vars.$rgb-font--night;
 
 			&:focus,
 			&:hover {
-				background-color: $rgb-bg--alt-night;
+				background-color: vars.$rgb-bg--alt-night;
 				color: white;
 			}
 
@@ -168,7 +169,7 @@
 
 				&:focus,
 				&:hover {
-					background: $rgb-active-blue--light;
+					background: vars.$rgb-active-blue--light;
 				}
 			}
 		}
