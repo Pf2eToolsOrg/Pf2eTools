@@ -6,7 +6,7 @@ class UtilsLicenses {
 			name: "Community Use Policy",
 			type: "pf2-red-box",
 			entries: [
-				"Pf2etools uses trademarks and/or copyrights owned by Paizo Inc., used under {@link Paizo's Community Use Policy|https://paizo.com/communityuse}. We are expressly prohibited from charging you to use or access this content. Pf2etools is not published, endorsed, or specifically approved by Paizo. For more information about Paizo Inc. and Paizo products, visit {@link paizo.com|https://paizo.com}.",
+				"Pf2eTools uses trademarks and/or copyrights owned by Paizo Inc., used under Paizo's {@link Community Use Policy|https://paizo.com/licenses/communityuse}. We are expressly prohibited from charging you to use or access this content. Pf2eTools is not published, endorsed, or specifically approved by Paizo. For more information about Paizo Inc. and Paizo products, visit {@link paizo.com}.",
 			],
 		};
 		const OGL = {
