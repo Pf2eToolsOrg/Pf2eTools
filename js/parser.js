@@ -643,8 +643,10 @@ Parser.genderToFull = function (g) {
 			return "genderfluid";
 		case "nb":
 			return "nonbinary";
+		case "p":
+			return "pangender";
 		default:
-			return "";
+			return g;
 	}
 };
 Parser.savingThrowAbvToFull = function (abv) {
