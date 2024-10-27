@@ -4380,6 +4380,7 @@ Renderer.creature = {
 	},
 
 	getAbilityMods (mods) {
+		if (!mods) return "";
 		const renderer = Renderer.get();
 		return `<p class="pf2-stat pf2-stat__section">
 			<strong>Str&nbsp;</strong>${renderer.render(`{@d20 ${mods.str}||Strength}`)}
@@ -4403,7 +4404,7 @@ Renderer.creature = {
 	},
 
 	getDefenses (creature) {
-		if (!creature.defenses) return "";
+		if (!Object.keys(creature.defenses ?? {}).length) return "";
 		const acPart = Renderer.creature.getDefenses_getACPart(creature);
 		const savingThrowPart = Renderer.creature.getDefenses_getSavingThrowPart(creature);
 		const hpParts = Renderer.creature.getDefenses_getHPParts(creature);
@@ -4491,6 +4492,7 @@ Renderer.creature = {
 	},
 
 	getSpeed (cr) {
+		if (!cr.speed) return "";
 		const renderer = Renderer.get();
 		const speeds = cr.speed.walk != null ? [`${cr.speed.walk} feet`] : [];
 		speeds.push(...Object.keys(cr.speed).filter(k => !(["abilities", "walk", "speedNote"].includes(k))).map(k => `${k} ${cr.speed[k]} feet`));
@@ -4566,7 +4568,16 @@ Renderer.creature = {
 		const renderRitual = (r) => {
 			return `{@ritual ${r.name}|${r.source || ""}}${r.notes == null && r.level == null ? "" : ` (${[Parser.getOrdinalForm(r.level)].concat(...(r.notes || [])).filter(Boolean).join(", ")})`}`;
 		};
-		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""}Rituals</strong>${rf.DC ? ` DC ${rf.DC};` : ""} ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
+		return cr.rituals.map(
+			(rf) =>
+				`<p class="pf2-stat pf2-stat__section"><strong>${
+					rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""
+				}Rituals</strong>${
+					rf.DC ? ` DC ${rf.DC};` : ""
+				} ${renderer.render(
+					rf.rituals.map((r) => renderRitual(r)).join(", "),
+				)}${rf.note ? `; ${rf.note}` : ""}`,
+		);
 	},
 
 	getRenderedAbility (ability, opts) {
