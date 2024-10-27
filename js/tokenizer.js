@@ -17,8 +17,8 @@ class TokenizerUtils {
 
 	static get dataHeaders () {
 		return [
-			{regex: /^(.+)\s(SPELL|CANTRIP|FOCUS) (\d{1,2})\s/, type: "SPELL", mode: "spell"},
-			{regex: /^([^\n[]*?)\s(\[.+]\s)?FEAT (\d{1,2})\s/, type: "FEAT", mode: "feat"},
+			{regex: /^([^[]+?)\s(\[.+\]\s)?(SPELL|CANTRIP|FOCUS) (\d{1,2})\s/, type: "SPELL", mode: "spell"},
+			{regex: /^([^\n[]+?)\s(\[.+]\s)?FEAT (\d{1,2})\s/, type: "FEAT", mode: "feat"},
 			{regex: /^(.+)\s(ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\s/, type: "ITEM", mode: "item"},
 			{regex: /^(.*?)\sBACKGROUND\s/, type: "BACKGROUND", mode: "background"},
 			{regex: /^(.*?)\sCREATURE (–?\d{1,2})\s/, type: "CREATURE", mode: "creature"},
@@ -124,7 +124,7 @@ class TokenizerUtils {
 	}
 	static get savingThrow () {
 		return [
-			{regex: /^Saving Throw\s/, type: "SAVING_THROW", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 2},
+			{regex: /^(?:Saving Throw|Defense)\s/, type: "SAVING_THROW", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 2},
 		]
 	}
 	static get shieldData () {

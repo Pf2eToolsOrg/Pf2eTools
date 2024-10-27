@@ -155,7 +155,7 @@ class Converter {
 		this._tokenStack.reverse();
 		this._parsedProperties = [];
 		const headerToken = this._consumeToken("SPELL");
-		const [match, name, type, level] = this._tokenizerUtils.dataHeaders.find(it => it.type === "SPELL").regex.exec(headerToken.value);
+		const [match, name, activity, type, level] = this._tokenizerUtils.dataHeaders.find(it => it.type === "SPELL").regex.exec(headerToken.value);
 		const spell = {};
 		spell.name = name.toTitleCase();
 		if (type.toTitleCase() !== "Spell") {
@@ -177,6 +177,32 @@ class Converter {
 
 		if (spell.traditions) {
 			spell.traditions = spell.traditions.map(t => t.toLowerCase());
+		}
+
+		if (!spell.cast) {
+			if (activity.match(/^\[one-action\]\s$/i)) {
+				spell.cast = {
+					number: 1,
+					unit: "action",
+				}
+			} else if (activity.match(/^\[two-actions\]\s$/i)) {
+				spell.cast = {
+					number: 2,
+					unit: "action",
+				};
+			} else if (activity.match(/^\[three-actions\]\s$/i)) {
+				spell.cast = {
+					number: 3,
+					unit: "action",
+				};
+			} else if (activity.match(/^\[reaction\]\s$/i)) {
+				spell.cast = {
+					number: 1,
+					unit: "reaction",
+				};
+			} else {
+				this._cbWarn(`Could not parse casting activity for "${spell.name}"!`);
+			}
 		}
 
 		return PropOrder.getOrdered(spell, "spell");
@@ -1597,7 +1623,7 @@ class Converter {
 
 		// TODO: Merge cases act-txt-act into act/ or even a different system entirely
 		const _parseTime = (timeText) => {
-			const regExpTime = new RegExp(`(\\d+) (${this._tokenizerUtils.timeUnits.map(u => u.regex.source).join("|")})`);
+			const regExpTime = new RegExp(`(\\d+) (${this._tokenizerUtils.timeUnits.map(u => u.regex.source).join("|")})`, "i");
 			const matchedTime = timeText.match(regExpTime);
 			if (matchedTime) obj.activity = {number: Number(matchedTime[1]), unit: this._tokenizerUtils.timeUnits.find(u => u.regex.test(matchedTime[2])).unit};
 			else obj.activity = {unit: "varies", entry: timeText};
