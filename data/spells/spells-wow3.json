@@ -1,0 +1,290 @@
+{
+	"spell": [
+		{
+			"name": "Boomerang Shot",
+			"source": "WoW3",
+			"page": 78,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You launch a curved length of wood at a foe that arcs around objects and obstacles to strike from an unexpected direction. Make a spell attack roll against the target's AC. This attack ignores the target's {@condition concealed} condition and ignores all cover except greater cover. If you hit, the projectile deals {@damage 7d10} bludgeoning damage."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"The damage increases to {@dice 9d10}."
+					],
+					"9": [
+						"The damage increases to {@dice 12d10}, and the attack ignores cover completely."
+					]
+				}
+			}
+		},
+		{
+			"name": "Bramble Bush",
+			"source": "WoW3",
+			"page": 78,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "5-foot cube",
+				"types": [
+					"Misc."
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"In a sudden burst of growth, you cause a thorned bush to sprout from the ground, lash around, and wither. Any creature in the area takes {@damage 1d4} piercing damage with a basic Reflex saving throw.",
+				"Until the start of your next turn, the area is difficult terrain and hazardous terrain. Any creature entering the square takes {@damage 1d4} piercing damage with a basic Reflex saving throw."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The initial damage increases by {@damage 1d4}, and the damage dealt by hazardous terrain increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Conjured Conveyance",
+			"source": "WoW3",
+			"page": 78,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You conjure an intricate vehicle, carved entirely from wood, to serve as a method of conveyance. The vehicle appears in an unoccupied area of your choice within range. The vehicle can be piloted using {@skill Arcana}, {@skill Lore||Driving Lore}, or {@skill Nature} skill checks. The DC to pilot the vehicle and the DC of the vehicle's collision are equal to your spell DC. The vehicle's remaining statistics are presented below.",
+				"When you {@action Cast a Spell||Cast this Spell}, choose whether to create a {@trait Large} skiff, a {@trait Large} wagon, or a {@trait Medium} cycle. With the GM's permission, you might instead summon a different vehicle of your choice with a maximum level of 1; this vehicle must be made primarily of plant matter, have common rarity, and be {@trait Large} or smaller.",
+				{
+					"type": "pf2-options",
+					"skipSort": true,
+					"items": [
+						{
+							"type": "item",
+							"entries": [
+								"{@b Large Skiff\u2014Space} 15 feet long, 5 feet wide, 3 feet high; {@b Crew} 1 pilot; {@b Passengers} 3; {@b Speed} swim 30 feet (magical)"
+							]
+						},
+						{
+							"type": "item",
+							"entries": [
+								"{@b Large Wagon\u2014Space} 10 feet long, 10 feet wide, 7 feet high; {@b Crew} 1 pilot; {@b Passengers} 3; {@b Speed} 35 feet (magical)"
+							]
+						},
+						{
+							"type": "item",
+							"entries": [
+								"{@b Medium Cycle\u2014Space} 5 feet long, 3 feet wide, 3 feet high; {@b Crew} 1 pilot; {@b Passengers} 0; {@b Speed} 40 feet (magical)"
+							]
+						},
+						{
+							"type": "item",
+							"entries": [
+								"{@b AC} 13; {@b Fortitude} {@d20 +8}"
+							]
+						},
+						{
+							"type": "item",
+							"entries": [
+								"{@b Hardness} 5, {@b HP} 40 (BT 20); {@b Immunities} critical hits, object immunities, precision damage; {@b Weaknesses} fire 5, slashing 5"
+							]
+						},
+						{
+							"type": "item",
+							"entries": [
+								"{@b Collision} {@dice 2d6}"
+							]
+						}
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The vehicle's AC increases by 2, Fortitude bonus increases by 2, Hardness increases by 1, HP increases by 20, and the collision damage increases by {@damage 1d6}. In addition, the maximum level of vehicle you can summon with GM permission increases by 2. The duration increases by 1 hour."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cordyceps Command",
+			"source": "WoW3",
+			"page": 79,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"fungus",
+				"concentrate",
+				"incapacitation",
+				"manipulate",
+				"poison"
+			],
+			"traditions": [
+				"primal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "unknown",
+				"entry": "{@note No casting time listed}"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"entries": [
+				"You conjure a mote of cordyceps spores uniquely tailored to the target before whisking it at them. When you {@action Cast a Spell||Cast this Spell}, choose one of the following behaviors that the fungus compels: ascend, consume, descend, or lure. While the target is {@condition controlled} by the cordyceps toxin's stage 3 effects, it performs that behavior. This control might include risky behavior (such as climbing down a precarious cliff or weaving between armed foes), but it doesn't compel outright lethal actions (such as leaping off the top of that same cliff). If the behavior directly leads to harm (such as falling off the cliff) or {@condition hostile} actions (such as being attacked by creatures that can now reach the descending creature), the target gains a +4 bonus to their next saving throw against the poison.",
+				"{@b Ascend:} The creature tries to reach higher altitudes by any reasonable means, such as {@action Climb||Climbing}, seeking stairs, or even stacking debris to jump atop of in an attempt to be as high up as possible.",
+				"{@b Consume:} The creature greedily eats or drinks whatever is nearby, using actions to draw and consume elixirs, food, or other consumable items. If the creature has a jaws {@action Strike}, fangs {@action Strike}, or similar unarmed {@action Strike}, the creature can instead chase after and use that {@action Strike} against edible targets. If no other food or drink is accessible, the creature attempts to steal or seek nearby nutrition.",
+				"{@b Descend:} The creature tries to reach lower altitudes by any reasonable means, such as {@action Climb||Climbing}, descending while flying, or even falling {@condition prone} and attempting to burrow into the ground.",
+				"{@b Lure:} The creature moves toward an exposed location and attempts to get bystanders' attention, such as by gesticulating, Performing, or igniting light sources. The target is {@condition off-guard|PC1} while {@condition controlled} in this way.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"The target is afflicted with cordyceps toxin at stage 1."
+						],
+						"Critical Failure": [
+							"The target is afflicted with cordyceps toxin at stage 2."
+						]
+					}
+				},
+				{
+					"type": "affliction",
+					"name": "Cordyceps Toxin",
+					"traits": [
+						"poison"
+					],
+					"DC": 28,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition stupefied||stupefied 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition confused}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition controlled}",
+							"duration": "1 round"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reed Whistle",
+			"source": "WoW3",
+			"page": 79,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "1 hour or until expended"
+			},
+			"entries": [
+				"You enchant a blade of grass that you can easily hold in your mouth without inhibiting your speech or other actions. As a reaction, you can reduce the spell's remaining duration by 1 hour to {@action Point Out} a creature you detect as you sharply whistle through the reed. You and your allies also gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} the creature for {@dice 1d4} rounds."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The spell's duration becomes 4 hours."
+					]
+				}
+			}
+		}
+	]
+}

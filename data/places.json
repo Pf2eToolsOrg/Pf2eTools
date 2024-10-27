@@ -1,6 +1,74 @@
 {
 	"place": [
 		{
+			"name": "Cradle of Knot",
+			"level": 12,
+			"category": "Settlement",
+			"source": "WoW3",
+			"page": 67,
+			"traits": [
+				"town",
+				"wood"
+			],
+			"description": "Outpost on the blighted borderlands",
+			"settlementData": {
+				"government": "Steward Branch (enforcers of immutable laws) and Council Branch (democratically elected officials)",
+				"population": {
+					"total": 3400,
+					"ancestries": {
+						"ardande": 75,
+						"wood elementals": 15,
+						"other ancestries": 10
+					}
+				},
+				"languages": [
+					"{@language Arboreal|B1}",
+					"Fey",
+					"Muan"
+				],
+				"religions": [
+					"Elemental Lords of Wood ({@deity Shumunue|RoE} and {@deity Verilorn|RoE})",
+					"{@deity Green Faith} (primarily {@deity Zibik|WoW3})"
+				],
+				"threats": [
+					"{@affliction Ayrzul's Blight|WoW3}",
+					"blighted creatures",
+					"blight dwellers",
+					"environmental hazards"
+				],
+				"features": [
+					{
+						"name": "Insular",
+						"entries": [
+							"Cradle of Knot's residents put little trust in outsiders. NPCs are {@condition unfriendly} to strangers by default, and {@condition hostile} toward those who've garnered the disapproval of a Branch."
+						]
+					},
+					{
+						"name": "Reputation Economy",
+						"entries": [
+							"Cradle of Knot uses reputation as a vague currency. Outsiders (\"rootless\") must pay double the typical price for goods and services until they've \"put down roots.\""
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Errashid Emetra",
+					"gender": "p",
+					"ancestry": "{@creature kizidhar shuyookh|RoE}",
+					"position": "authoritarian",
+					"bond": "Despite Errashid's insistence on rigid adherence to laws and norms, residents trust them to know what's best for the community's survival."
+				},
+				{
+					"name": "Jial Yun",
+					"gender": "m",
+					"ancestry": "ardande",
+					"position": "caretaker",
+					"bond": "For many years, Jial was the only persistent member of the Council Branch. Already an elder prior to the community's founding, he's grown too old for official duties."
+				}
+			]
+		},
+		{
 			"name": "Wispil",
 			"level": 5,
 			"category": "Settlement",
@@ -3495,7 +3563,7 @@
 					}
 				},
 				"languages": [
-					"{@language Arboreal}",
+					"{@language Arboreal|B1}",
 					"{@language Elven}",
 					"{@language Halfling}",
 					"{@language Mwangi}",

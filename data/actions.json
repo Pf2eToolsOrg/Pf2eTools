@@ -1,6 +1,44 @@
 {
 	"action": [
 		{
+			"name": "Search for Speakers",
+			"page": 48,
+			"source": "WoW3",
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You contribute your efforts to the day's search for Zibik's speakers, whether by helping directly, by looking out for danger, by navigating terrain, or by keeping companions safe and healthy. Choose an option from the current region's Exploration skills and attempt a check against the listed DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The party gains 2 Search Points.",
+						"Success": "The party gains 1 Search Point.",
+						"Failure": "The part loses 1 Search Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Support the Siege Effort",
+			"source": "WoW3",
+			"page": 15,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You spend 4 hours performing tasks to aid in the siege of Arenway, such as repairing structures, preparing meals, persuading captives to join the Rootweft Lodge, treating injured Rootweft warriors, or scouting the area. Roll a skill check related to the task you perform\u2014the GM determines the specific skill required and the DC, and you earn Siege Points based on the result of your check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 2 Siege Points.",
+						"Success": "You gain 1 Siege Point.",
+						"Critical Failure": "You lose 1 Siege Point."
+					}
+				}
+			]
+		},
+		{
 			"name": "Unwavering Resilience",
 			"source": "WoW2",
 			"page": 69,
