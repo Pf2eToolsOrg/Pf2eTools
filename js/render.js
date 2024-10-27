@@ -5235,7 +5235,7 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.usage != null) renderStack.push(`<strong>Usage&nbsp;</strong>${renderer.render(item.usage)}`);
 			if (item.usage != null && item.bulk != null) renderStack.push("; ");
-			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
+			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}${item.bulkNote ? ` (${item.bulkNote})` : ""}`);
 			renderStack.push(`</p>`);
 		}
 		if (item.duration) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Duration&nbsp;</strong>${renderer.render(Parser.durationToFull(item.duration))}</p>`);
@@ -5415,7 +5415,7 @@ Renderer.item = {
 			let miniStack = [];
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			if (item.usage) miniStack.push(`<strong>Usage&nbsp;</strong>${item.usage}`);
-			if (item.bulk) miniStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
+			if (item.bulk) miniStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}${item.bulkNote ? ` (${item.bulkNote})` : ""}`);
 			if (siegeData.space) miniStack.push(`<strong>Space&nbsp;</strong>${Object.entries(siegeData.space).map(([k, v]) => `${v.number} ${v.unit} ${k}`).join(", ")}`);
 			renderStack.push(miniStack.join("; "));
 			renderStack.push(`</p>`);
@@ -5517,7 +5517,7 @@ Renderer.item = {
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
-			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
+			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}${v.bulkNote ? ` (${v.bulkNote})` : ""}`);
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			renderStack.push(`</p>`);
 			if (v.entries != null && v.entries.length) {
