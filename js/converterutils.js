@@ -481,8 +481,8 @@ FeatTag._FEATS_REGEX_NAMES = null;
 class TraitTag {
 	static init(traits) {
 		traits = (traits || [])
-			.filter((t) => !t.name.match(/^\[/) && t.name.length > 1 && t.name !== "Any")
-			.map((t) => t.name.toLowerCase());
+			.filter((t) => t.name !== "Any")
+			.map((t) => t.name.toLowerCase().replace(/([\[\]\(\)\{\}])/g,"\\$1"));
 		TraitTag._TRAITS_REGEX_EFFECT = new RegExp(
 			` (${traits.join("|")}) (effect|trait|creature|object|item|spell)`,
 			"gi"
