@@ -394,7 +394,10 @@
 			},
 			"defenses": {
 				"ac": {
-					"std": null
+					"std": 46,
+					"notes": [
+						"all-around vision"
+					]
 				},
 				"savingThrows": {
 					"fort": {
@@ -471,7 +474,7 @@
 					],
 					"name": "tail",
 					"attack": 39,
-					"damage": "{@damage 4d10+18} slashing plus {@damage 2d6} negative and"
+					"damage": "{@damage 4d10+18} slashing plus {@damage 2d6} negative and {@ability Improved Knockdown}"
 				},
 				{
 					"range": "Ranged",
@@ -523,7 +526,7 @@
 							"evocation"
 						],
 						"entries": [
-							"30 feet. {@damage 5d6} cold damage ({@dc 41} basic Reflex save). On a failure, the creature takes a \u201315-foot status penalty to its Speeds for 1 round."
+							"30 feet. {@damage 5d6} cold damage ({@dc 41} basic Reflex save). On a failure, the creature takes a \u2212315-foot status penalty to its Speeds for 1 round."
 						]
 					},
 					{
@@ -534,17 +537,11 @@
 						},
 						"trigger": "A creature moves from beyond the reach of the benthic reaver's tail to within the reach of the benthic reaver's tail",
 						"entries": [
-							"The benthic reaver makes a tail {@action Strike} against the triggering creature and can use Improved Knockdown if the attack hits, even if it isn't the benthic reaver's turn. If the benthic reaver knocks the target {@condition prone}, it disrupts the triggering move action."
+							"The benthic reaver makes a tail {@action Strike} against the triggering creature and can use {@action Improved Knockdown} if the attack hits, even if it isn't the benthic reaver's turn. If the benthic reaver knocks the target {@condition prone}, it disrupts the triggering {@trait move} action."
 						]
 					}
 				],
 				"bot": [
-					{
-						"name": "Improved Knockdown",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"name": "Numbing Ice",
 						"traits": [
@@ -569,13 +566,7 @@
 							"mental"
 						],
 						"entries": [
-							"The benthic reaver unleashes a cry of mourning. All creatures within 60 feet must attempt a"
-						]
-					},
-					{
-						"name": "{@dc 41}",
-						"entries": [
-							"Will save to resist. The benthic reaver can't use Song of the Lost for {@dice 1d4} rounds.",
+							"The benthic reaver unleashes a cry of mourning. All creatures within 60 feet must attempt a {@dc 41} Will save to resist. The benthic reaver can't use Song of the Lost for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -589,10 +580,20 @@
 										"The creature is {@condition frightened||frightened 2}."
 									],
 									"Critical Failure": [
-										"As failure, but the creature is also {@condition stunned||stunned 1} with sympathy. Tail Sweep {@as 2} The benthic reaver makes a tail {@action Strike} against each enemy within its reach. These attacks count toward the benthic reaver's multiple attack penalty, but the multiple attack penalty doesn't increase until after the benthic reaver makes all its attacks."
+										"As failure, but the creature is also {@condition stunned||stunned 1} with sympathy."
 									]
 								}
 							}
+						]
+					},
+					{
+						"name": "Tail Sweep",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"entries": [
+							"The benthic reaver makes a tail {@action Strike} against each enemy within its reach. These attacks count toward the benthic reaver's multiple attack penalty, but the multiple attack penalty doesn't increase until after the benthic reaver makes all its attacks."
 						]
 					}
 				]
