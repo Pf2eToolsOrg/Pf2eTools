@@ -691,9 +691,9 @@ class Converter {
 		const scores = [];
 		const entriesString = background.entries.filter(e => typeof e === "string").join(" ");
 		this._tokenizerUtils.abilityScores.forEach(it => {
-			if (it.regex.test(entriesString)) scores.push(it.full);
+			if (it.regex.test(entriesString)) scores.push(it.full.toLowerCase());
 		});
-		if (reFree.test(entriesString)) scores.push("Free");
+		if (reFree.test(entriesString)) scores.push("free");
 		if (scores.length) background.boosts = scores;
 	}
 	_parseBackgroundSkills (background) {

@@ -198,7 +198,7 @@ SkillTag._LORE_REGEX = new RegExp(/((?:[A-Z][^\s,;]+ )+)?Lore/g);
 SkillTag._SKILLS_REGEX = new RegExp(/(Acrobatics|Arcana|Athletics|Crafting|Deception|Diplomacy|Intimidation|Medicine|Nature|Occultism|Performance|Religion|Society|Stealth|Survival|Thievery|Perception)/g);
 
 class ConditionTag {
-	static tryRun(it) {
+	static tryRun (it) {
 		return TaggerUtils.WALKER.walk(it, {
 			string: (str) => {
 				const ptrStack = { _: "" };
@@ -210,7 +210,7 @@ class ConditionTag {
 		});
 	}
 
-	static _fnTag(str) {
+	static _fnTag (str) {
 		return str
 			.replace(ConditionTag._CONDITIONS_REGEX, (...m) => {
 				const condition = m[1].replace(/\W/, "-");
@@ -220,7 +220,7 @@ class ConditionTag {
 			})
 			.replace(
 				/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|void|vitality)(?: damage)?)/gi,
-				(...m) => `{@condition persistent damage${m[2] ? "" : `||persistent ${m[1]}`}}`
+				(...m) => `{@condition persistent damage${m[2] ? "" : `||persistent ${m[1]}`}}`,
 			);
 	}
 }
@@ -479,19 +479,19 @@ FeatTag._FEATS_REGEX_FEAT = null;
 FeatTag._FEATS_REGEX_NAMES = null;
 
 class TraitTag {
-	static init(traits) {
+	static init (traits) {
 		traits = (traits || [])
 			.filter((t) => t.name !== "Any")
-			.map((t) => t.name.toLowerCase().replace(/([\[\]\(\)\{\}])/g,"\\$1"));
+			.map((t) => t.name.toLowerCase().replace(/([[]\(\)\{\}])/g, "\\$1"));
 		TraitTag._TRAITS_REGEX_EFFECT = new RegExp(
 			` (${traits.join("|")}) (effect|trait|creature|object|item|spell)`,
-			"gi"
+			"gi",
 		);
 		TraitTag._TRAITS_REGEX_AND = new RegExp(` (${traits.join("|")})(,? and|,? or) {@trait`, "gi");
 		if (traits.length) TraitTag._INIT = true;
 	}
 
-	static tryRun(it) {
+	static tryRun (it) {
 		return TaggerUtils.WALKER.walk(it, {
 			string: (str) => {
 				const ptrStack = { _: "" };
@@ -503,7 +503,7 @@ class TraitTag {
 		});
 	}
 
-	static _fnTag(str) {
+	static _fnTag (str) {
 		return str
 			.replace(TraitTag._TRAITS_REGEX_EFFECT, (...m) => ` {@trait ${m[1]}} ${m[2]}`)
 			.replace(TraitTag._TRAITS_REGEX_AND, (...m) => ` {@trait ${m[1]}}${m[2]} {@trait`);
