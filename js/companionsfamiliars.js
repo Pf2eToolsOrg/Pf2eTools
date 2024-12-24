@@ -1,8 +1,8 @@
 "use strict";
+
 class CompanionsFamiliarsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterCompanionsFamiliars();
-
 		super({
 			dataSource: "data/companionsfamiliars.json",
 
@@ -26,7 +26,7 @@ class CompanionsFamiliarsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-6 pl-0">${it.name}</span>
+			<span class="bold col-6 pl-0">${it.name}${it.add_hash ? `<span class="ve-muted"> (${it.add_hash})</span>` : ""}</span>
 			<span class="col-3 text-center">${it.type}</span>
 			<span class="col-3 ${Parser.sourceJsonToColor(it.source)} text-center" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -64,7 +64,7 @@ class CompanionsFamiliarsPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-6 pl-0">${it.name}</span>
+				<span class="bold col-6 pl-0">${it.name}${it.add_hash ? `<span class="ve-muted"> (${it.add_hash})</span>` : ""}</span>
 				<span class="col-6 text-center">${it.type}</span>
 			</a>
 		</li>`)
