@@ -1,6 +1,81 @@
 {
 	"place": [
 		{
+			"name": "Greengold",
+			"level": 7,
+			"category": "Settlement",
+			"source": "SW0",
+			"remaster": true,
+			"page": 17,
+			"traits": [
+				"city",
+				"elf"
+			],
+			"settlementData": {
+				"government": "Mayor (elected leader)",
+				"population": {
+					"total": 10400,
+					"ancestries": {
+						"elves": 50,
+						"humans": 35,
+						"aiuvarins": 10,
+						"other": 5
+					}
+				},
+				"languages": [
+					"{@language Common}",
+					"{@language Elven}"
+				],
+				"religions": [
+					"{@deity Calistria}",
+					"{@deity Desna}",
+					"{@deity elven pantheon|LOGM}"
+				],
+				"threats": [
+					"hidden agents of {@deity Treerazer|B1}",
+					"plague barges",
+					"political unrest"
+				],
+				"features": [
+					{
+						"name": "Welcoming of Diversity",
+						"entries": [
+							"While most who live in Greengold are of {@ancestry elf||PC1|elven} or {@ancestry human|PC1} ancestry, the town welcomes all ancestries. People of ancestries other than {@ancestry elf|PC1} or {@ancestry human|PC1} find locals easier to speak with and gain a +2 circumstance bonus to checks to {@action Gather Information|PC1} in town or to {@skill Performance} checks to {@action Earn Income|PC1}."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Nalora",
+					"descriptor": "flirtatious",
+					"gender": "gf",
+					"ancestry": "{@ancestry elf|PC1}",
+					"position": "cleric of {@deity Calistria|PC1}",
+					"level": 9,
+					"bond": "Luminary Companion of the church of {@deity Calistria|PC1} and Greengold’s religious leader"
+				},
+				{
+					"name": "Nuandiall Ciranviash",
+					"descriptor": "stoic",
+					"gender": "m",
+					"ancestry": "{@ancestry elf|PC1}",
+					"position": "fighter",
+					"level": 10,
+					"bond": "commander of Greengold’s defense force"
+				},
+				{
+					"name": "Selwyn Vanaidori",
+					"descriptor": "gregarious",
+					"gender": "m",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "mayor",
+					"level": 9,
+					"bond": "current mayor of Greengold"
+				}
+			]
+		},
+		{
 			"name": "Cradle of Knot",
 			"level": 12,
 			"category": "Settlement",
