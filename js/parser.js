@@ -1627,6 +1627,7 @@ SRC_CFD = "CFD";
 SRC_CHD = "CHD";
 SRC_CRB = "CRB";
 SRC_PC1 = "PC1";
+SRC_PC2 = "PC2";
 SRC_DA = "DA";
 SRC_EC0 = "EC0";
 SRC_EC1 = "EC1";
@@ -1765,6 +1766,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_CFD] = "Critical Fumble Deck";
 Parser.SOURCE_JSON_TO_FULL[SRC_CHD] = "Critical Hit Deck";
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
 Parser.SOURCE_JSON_TO_FULL[SRC_PC1] = "Player Core";
+Parser.SOURCE_JSON_TO_FULL[SRC_PC2] = "Player Core 2";
 Parser.SOURCE_JSON_TO_FULL[SRC_DA] = "Dark Archive";
 Parser.SOURCE_JSON_TO_FULL[SRC_EC0] = "Extinction Curse Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_EC1] =
@@ -1919,6 +1921,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_CFD] = "CFD";
 Parser.SOURCE_JSON_TO_ABV[SRC_CHD] = "CHD";
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 Parser.SOURCE_JSON_TO_ABV[SRC_PC1] = "PC1";
+Parser.SOURCE_JSON_TO_ABV[SRC_PC2] = "PC2";
 Parser.SOURCE_JSON_TO_ABV[SRC_DA] = "DA";
 Parser.SOURCE_JSON_TO_ABV[SRC_EC0] = "EC0";
 Parser.SOURCE_JSON_TO_ABV[SRC_EC1] = "EC1";
@@ -2047,6 +2050,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_CFD] = "2019-10-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_CHD] = "2019-10-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_PC1] = "2023-11-15";
+Parser.SOURCE_JSON_TO_DATE[SRC_PC2] = "2024-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_DA] = "2022-07-27";
 Parser.SOURCE_JSON_TO_DATE[SRC_EC0] = "2020-01-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_EC1] = "2020-01-30";
@@ -2176,6 +2180,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_CFD] = "https://paizo.com/products/btq024ud";
 Parser.SOURCE_JSON_TO_STORE[SRC_CHD] = "https://paizo.com/products/btq024tn";
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";
 Parser.SOURCE_JSON_TO_STORE[SRC_PC1] = "https://paizo.com/products/btq02ej2";
+Parser.SOURCE_JSON_TO_STORE[SRC_PC2] = "https://paizo.com/products/btq02ej5";
 Parser.SOURCE_JSON_TO_STORE[SRC_DA] = "https://paizo.com/products/btq02arq";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC0] = "https://paizo.com/products/btq022ks";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC1] = "https://paizo.com/products/btq01zqb";
@@ -2355,6 +2360,7 @@ Parser.SOURCES_VANILLA = new Set([
 	SRC_BotD,
 	SRC_CRB,
 	SRC_PC1,
+	SRC_PC2,
 	SRC_DA,
 	SRC_GnG,
 	SRC_GMG,
@@ -2417,6 +2423,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_CHD,
 	SRC_CRB,
 	SRC_PC1,
+	SRC_PC2,
 	SRC_DA,
 	SRC_GnG,
 	SRC_GMG,
