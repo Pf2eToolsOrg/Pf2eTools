@@ -23,7 +23,7 @@
 				"Astrology"
 			],
 			"feats": [
-				"Oddity Identification"
+				"Oddity Identification|PC1"
 			]
 		},
 		{
@@ -93,8 +93,10 @@
 				"free"
 			],
 			"skills": [
-				"society",
-				"lore"
+				"society"
+			],
+			"lore": [
+				"Your City"
 			],
 			"feats": [
 				"Glean Contents|PC2"
@@ -121,7 +123,7 @@
 				"Piloting"
 			],
 			"feats": [
-				"Assurance"
+				"Assurance|PC1"
 			]
 		},
 		{
@@ -146,7 +148,7 @@
 				"Warfare"
 			],
 			"feats": [
-				"Lengthy Diversion"
+				"Lengthy Diversion|PC1"
 			]
 		},
 		{
@@ -190,8 +192,13 @@
 				"free"
 			],
 			"skills": [
-				"religion",
-				"lore"
+				"religion"
+			],
+			"lore": [
+				"Your Patron Deity"
+			],
+			"feats": [
+				"Pilgrim's Token|PC2"
 			]
 		},
 		{
@@ -211,11 +218,13 @@
 				"free"
 			],
 			"skills": [
-				"society",
-				"lore"
+				"society"
+			],
+			"lore": [
+				"Your Settlement"
 			],
 			"feats": [
-				"Streetwise"
+				"Streetwise|PC1"
 			]
 		},
 		{
@@ -284,11 +293,13 @@
 				"free"
 			],
 			"skills": [
-				"survival",
-				"lore"
+				"survival"
+			],
+			"lore": [
+				"Your Settlement"
 			],
 			"feats": [
-				"Forager"
+				"Forager|PC1"
 			]
 		},
 		{
@@ -312,7 +323,7 @@
 				"Labor"
 			],
 			"feats": [
-				"Read Lips"
+				"Read Lips|PC1"
 			]
 		},
 		{
@@ -358,11 +369,13 @@
 				"free"
 			],
 			"skills": [
-				"intimidation",
-				"lore"
+				"intimidation"
+			],
+			"lore": [
+				"Your Settlement"
 			],
 			"feats": [
-				"Quick Coercion"
+				"Quick Coercion|PC1"
 			]
 		},
 		{
@@ -388,7 +401,7 @@
 				"Genealogy"
 			],
 			"feats": [
-				"Fascinating Performance"
+				"Fascinating Performance|PC1"
 			]
 		},
 		{
@@ -428,8 +441,9 @@
 				"charisma",
 				"free"
 			],
-			"skills": [
-				"lore"
+			"lore": [
+				"Shelyn",
+				"Specific deity"
 			],
 			"spells": [
 				"guidance|PC1"
@@ -504,7 +518,7 @@
 				"survival"
 			],
 			"feats": [
-				"Forager"
+				"Forager|PC1"
 			],
 			"miscTags": [
 				"sense"
@@ -520,7 +534,7 @@
 			"entries": [
 				"You have spent time in the First World or another realm of the fey and aren't entirely the same person you were before. Perhaps you made a purchase at the legendary Witchmarket or partook deeply of fey food and wine. Whatever the case, willingly or inadvertently, you made a bargain with the fey, the benefits of which come at a price.",
 				"Choose two attribute boosts. One must be to Dexterity or Charisma, and one is a free attribute boost.",
-				"You are trained in {@skill Lore|PC1|Fey Lore} and gain the Fey's Fortune free action. You gain an anathema as part of your pact with the fey. If you violate this anathema, you lose Fey's Fortune until you receive the effects of a successful atone ritual using the {@skill Nature|PC1} skill. The exact anathema is up to you and the GM, but the most common requirement is that you must fulfill a single request from any fey who knows your name.",
+				"You are trained in {@skill Lore|PC1|Fey Lore} and gain the Fey's Fortune free action. You gain an anathema as part of your pact with the fey. If you violate this anathema, you lose Fey's Fortune until you receive the effects of a successful {@ritual atone|PC1} ritual using the {@skill Nature|PC1} skill. The exact anathema is up to you and the GM, but the most common requirement is that you must fulfill a single request from any fey who knows your name.",
 				{
 					"name": "Fey's Fortune",
 					"activity": {
@@ -554,7 +568,8 @@
 				"Fey"
 			],
 			"miscTags": [
-				"ability"
+				"ability",
+				"drawback"
 			]
 		},
 		{
@@ -568,7 +583,7 @@
 				"You are followed by a spirit or entity, either from childhood or since a momentous event. You and others may have seen this entity. You have studied esoteric subjects trying to understand your situation, but this presence in your life remains a mystery.",
 				"Whatever this entity is or wants, it influences your life in subtle ways, and not always for the better. Sometimes the entity helps you, but at other times, its influence is malevolent or harmful.",
 				"The entity is most likely to surface in stressful situations. Choose two attribute boosts. One must be to Wisdom or Charisma, and one is a free attribute boost.",
-				"You are trained in {@skill Occultism|PC1} and an additional skill in which the haunting entity is well-versed, determined by the GM. Any time you attempt a skill check for the entity's skill, the GM can offer you a +1 circumstance bonus to the check, as though the entity were Aiding you. If you accept but fail the check, you are {@condition frightened|PC1|frightened 2} ({@condition frightened|PC1|frightened 4} on a critical failure). The initial {@condition frightened|PC1} value can't be reduced by effects that would reduce or prevent the condition (such as a fighter's bravery)."
+				"You are trained in {@skill Occultism|PC1} and an additional skill in which the haunting entity is well-versed, determined by the GM. Any time you attempt a skill check for the entity's skill, the GM can offer you a +1 circumstance bonus to the check, as though the entity were {@action Aid|PC1|Aiding} you. If you accept but fail the check, you are {@condition frightened|PC1|frightened 2} ({@condition frightened|PC1|frightened 4} on a critical failure). The initial {@condition frightened|PC1} value can't be reduced by effects that would reduce or prevent the condition (such as a {@class fighter|PC1|fighter's} {@classFeature bravery|fighter|PC1|3})."
 			],
 			"boosts": [
 				"wisdom",
@@ -601,8 +616,10 @@
 				"free"
 			],
 			"lore": [
-				"Additional",
 				"Boneyard"
+			],
+			"feats": [
+				"Additional Lore|PC1"
 			]
 		},
 		{
@@ -626,8 +643,7 @@
 				"society"
 			],
 			"feats": [
-				"Courtly Graces",
-				"Leverage Connections|PC2"
+				"Courtly Graces|PC1"
 			]
 		}
 	]
