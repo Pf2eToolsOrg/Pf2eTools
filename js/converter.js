@@ -687,7 +687,7 @@ class Converter {
 	}
 
 	_parseBackgroundAbilityBoosts (background) {
-		const reFree = /free\sability\sboost/i;
+		const reFree = /free\s(ability|attribute)\sboost/i;
 		const scores = [];
 		const entriesString = background.entries.filter(e => typeof e === "string").join(" ");
 		this._tokenizerUtils.abilityScores.forEach(it => {
