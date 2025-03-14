@@ -6150,7 +6150,7 @@ Renderer.spell = {
 		if (sp.targets != null) targetingParts.push(`<strong>Targets&nbsp;</strong>${renderer.render(sp.targets)}`);
 
 		const stDurationParts = [];
-		if (sp.savingThrow != null && sp.savingThrow.hidden !== true) stDurationParts.push(`<strong>${sp.remaster ? "Defense" : "Saving Throw"}&nbsp;</strong>${sp.savingThrow.basic ? "basic " : ""}${sp.savingThrow.entry ?? sp.savingThrow.type.map(t => Parser.savingThrowAbvToFull(t)).join(" or ")}`);
+		if (sp.savingThrow != null && sp.savingThrow.hidden !== true) stDurationParts.push(`<strong>${sp.remaster ? "Defense" : "Saving Throw"}&nbsp;</strong>${sp.savingThrow.entry ?? `${sp.savingThrow.basic ? "basic " : ""}${sp.savingThrow.type.map(t => Parser.savingThrowAbvToFull(t)).join(" or ")}`}`);
 		const duration = Parser.durationToFull(sp.duration);
 		if (sp.duration) stDurationParts.push(`<strong>Duration&nbsp;</strong>${renderer.render(duration)}`);
 
