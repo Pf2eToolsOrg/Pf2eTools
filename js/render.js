@@ -6157,7 +6157,7 @@ Renderer.spell = {
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${renderer.render(sp.traditions.map(it => `{@trait ${it}}`).join(", ").toLowerCase())}</p>` : ""}
 		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it.toLowerCase()}|deities||domain=${it.replace("(Apocryphal)", "")}}`).join(", "))}` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[0]}</strong> ${renderer.render(sp.subclass[k].map(it => `{@class ${k.split("|")[1]}|${k.split("|")[2] ?? "CRB"}|${it.split("|")[0].toLowerCase()}|${it}}`).join(", "))}</p>`) : ""}
-		${sp.remaster ? "" : `<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castPart}</p>`}
+		${sp.remaster && sp.cast.unit.endsWith("action") ? "" : `<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castPart}</p>`}
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
 		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}`;
