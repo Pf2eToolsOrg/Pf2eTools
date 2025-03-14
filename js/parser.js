@@ -660,6 +660,8 @@ Parser.savingThrowAbvToFull = function (abv) {
 		case "w":
 		case "will":
 			return "Will";
+		case "ac":
+			return "AC";
 		default:
 			throw new Error(`Unknown saving throw abv ${abv}.`);
 	}
