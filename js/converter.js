@@ -616,10 +616,20 @@ class Converter {
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const altTraditions = entries.map(e => this._renderToken(e)).join(" ").split(", ").map(tr => tr.trim().toTitleCase());
 		obj.subclass = obj.subclass || {};
-		const key = `${this._tokenizerUtils.traditionsSubclasses.find(it => it.type === token.type).class}|${token.value.trim()}`;
 		if (token.type === "DOMAIN") {
 			obj.domains = altTraditions;
 		} else {
+			const subclass = token.value.trim();
+			const classe = this._tokenizerUtils.traditionsSubclasses.find((it) => it.type === token.type).class;
+			let source;
+			if (classe === "Witch") {
+				source = this._remaster ? "PC1" : "APG";
+			} else if (classe === "Oracle") {
+				source = this._remaster ? "PC2" : "APG";
+			} else if (classe === "Bard" && this._remaster) {
+				source = "PC1";
+			}
+			const key = `${subclass}|${classe}${source ? `|${source}` : ""}`;
 			obj.subclass[key] = altTraditions;
 		}
 	}

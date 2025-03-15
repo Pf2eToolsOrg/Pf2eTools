@@ -144,9 +144,11 @@ class TokenizerUtils {
 	}
 	static get traditionsSubclasses () {
 		return [
-			{regex: /^Domain\s/, type: "DOMAIN", class: "Cleric", lookbehind: /(\n|[;.)]\s)$/},
-			{regex: /^Mystery\s/, type: "MYSTERY", class: "Oracle", lookbehind: /(\n|[;.)]\s)$/},
-			{regex: /^Patron\s/, type: "PATRON", class: "Witch", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Domains?\s/, type: "DOMAIN", class: "Cleric", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Myster(y|ies)\s/, type: "MYSTERY", class: "Oracle", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Patrons?\s/, type: "PATRON", class: "Witch", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Lessons?\s/, type: "LESSON", class: "Witch", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Muses?\s/, type: "MUSE", class: "Bard", lookbehind: /(\n|[;.)]\s)$/},
 		]
 	}
 	static get trigger () {
