@@ -21,6 +21,7 @@ class Converter {
 
 		this._string = "";
 		this._page = 0;
+		this._remaster = false;
 		this._tokenizer = new Tokenizer(config);
 		this._tokenizerUtils = opts.tokenizerUtilsClass || TokenizerUtils;
 		this._parsedData = null;
@@ -69,6 +70,7 @@ class Converter {
 		this._parsedData = {};
 		this._string = "";
 		this._page = 0;
+		this._remaster = false;
 		this._tokenStack = [];
 		this._isParsingCreature = null;
 		this._parsing = null;
@@ -89,6 +91,7 @@ class Converter {
 
 		this._string = this._preprocessString(string);
 		this._page = opts.initialPage || 0;
+		this._remaster = opts.remaster || false;
 		this._source = opts.source || "SOURCE";
 		this._avgLineLength = opts.avgLineLength || 58;
 		this._tokenizer.init(this._string);
@@ -164,6 +167,7 @@ class Converter {
 		spell.level = Number(level);
 		spell.source = this._source;
 		spell.page = this._page;
+		if (this._remaster) spell.remaster = this._remaster;
 		spell.entries = [""];
 		this._parsing = spell.name;
 		this._parseTraits(spell);
@@ -219,6 +223,7 @@ class Converter {
 		feat.level = Number(level);
 		feat.source = this._source;
 		feat.page = this._page;
+		if (this._remaster) feat.remaster = this._remaster;
 		feat.entries = [""];
 		this._parsing = feat.name;
 		this._parseTraits(feat);
@@ -243,6 +248,7 @@ class Converter {
 		item.level = Number.isNaN(Number(level)) ? level : Number(level);
 		item.source = this._source;
 		item.page = this._page;
+		if (this._remaster) item.remaster = this._remaster;
 		item.entries = [""];
 		this._parsing = item.name;
 		this._parseTraits(item);
@@ -271,6 +277,7 @@ class Converter {
 		background.name = name.toTitleCase();
 		background.source = this._source;
 		background.page = this._page;
+		if (this._remaster) background.remaster = this._remaster;
 		this._parsing = background.name;
 		this._parseTraits(background);
 		this._parseProperties(background);
@@ -298,6 +305,7 @@ class Converter {
 		creature.level = Number(level);
 		creature.source = this._source;
 		creature.page = this._page;
+		if (this._remaster) creature.remaster = this._remaster;
 		this._parsing = creature.name;
 		this._parseTraits(creature);
 		if (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
@@ -327,6 +335,7 @@ class Converter {
 		hazard.level = Number(level);
 		hazard.source = this._source;
 		hazard.page = this._page;
+		if (this._remaster) hazard.remaster = this._remaster;
 		this._parsing = hazard.name;
 		this._parseTraits(hazard);
 		this._parseHazardProperties(hazard);
