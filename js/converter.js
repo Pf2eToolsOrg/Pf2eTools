@@ -184,17 +184,17 @@ class Converter {
 		}
 
 		if (!spell.cast) {
-			if (activity.match(/^\[one-action\]\s$/i)) {
+			if (activity.match(/^\[one.action\]\s$/i)) {
 				spell.cast = {
 					number: 1,
 					unit: "action",
 				}
-			} else if (activity.match(/^\[two-actions\]\s$/i)) {
+			} else if (activity.match(/^\[two.actions\]\s$/i)) {
 				spell.cast = {
 					number: 2,
 					unit: "action",
 				};
-			} else if (activity.match(/^\[three-actions\]\s$/i)) {
+			} else if (activity.match(/^\[three.actions\]\s$/i)) {
 				spell.cast = {
 					number: 3,
 					unit: "action",
@@ -203,6 +203,11 @@ class Converter {
 				spell.cast = {
 					number: 1,
 					unit: "reaction",
+				};
+			} else if (activity.match(/^\[free.action\]\s$/i)) {
+				spell.cast = {
+					number: 1,
+					unit: "free",
 				};
 			} else {
 				this._cbWarn(`Could not parse casting activity for "${spell.name}"!`);
@@ -354,8 +359,7 @@ class Converter {
 			const traitToken = this._consumeToken(this._tokenizerUtils.traits);
 			traits.push(traitToken.value.trim().toLowerCase());
 		}
-		if (traits.length === 0) return;
-		obj.traits = traits;
+		if (traits.length) obj.traits = traits;
 	}
 	_parseProperties (obj, opts) {
 		while (this._tokenStack.length) {
