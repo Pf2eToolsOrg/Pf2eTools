@@ -862,6 +862,7 @@ class TokenizerUtils {
 			{regex: /Fort/, unit: "Fort", full: "Fortitude", short: "F"},
 			{regex: /Reflex/, unit: "Reflex", full: "Reflex", short: "R"},
 			{regex: /Will/, unit: "Will", full: "Will", short: "W"},
+			{regex: /AC/, unit: "AC", full: "AC", short: "AC"},
 		]
 	}
 	static get abilityScores () {
