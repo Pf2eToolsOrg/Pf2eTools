@@ -1916,7 +1916,7 @@ class Converter {
 		} else if (token.type === "CR_SPELL") {
 			return token.value.trim().toLowerCase().replaceAll(/\n/g, " ");
 		}
-		throw new Error(`Unimplemented rendering of token with type "${token.type ? token.type : "???"}"`)
+		throw new Error(`Unimplemented rendering of token with type "${token.type || "???"}"`)
 	}
 	_renderEntries (tokens, opts) {
 		opts = opts || {};

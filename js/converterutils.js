@@ -482,12 +482,12 @@ class TraitTag {
 	static init (traits) {
 		traits = (traits || [])
 			.filter((t) => t.name !== "Any")
-			.map((t) => t.name.toLowerCase().replace(/([[]\(\)\{\}])/g, "\\$1"));
+			.map((t) => t.name.toLowerCase().replace(/([()[\]{}])/g, "\\$1"));
 		TraitTag._TRAITS_REGEX_EFFECT = new RegExp(
 			` (${traits.join("|")}) (effect|trait|creature|object|item|spell)`,
 			"gi",
 		);
-		TraitTag._TRAITS_REGEX_AND = new RegExp(` (${traits.join("|")})(,? and|,? or) {@trait`, "gi");
+		TraitTag._TRAITS_REGEX_AND = new RegExp(`\\s(${traits.join("|")})(,? and|,? or) {@trait`, "gi");
 		if (traits.length) TraitTag._INIT = true;
 	}
 
