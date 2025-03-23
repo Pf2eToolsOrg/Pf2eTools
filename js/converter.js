@@ -443,7 +443,18 @@ class Converter {
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const components = [];
 
-		if (this._tokensAreTypes(entries, [this._tokenizerUtils.actions, this._tokenizerUtils.sentences])) {
+		if (this._remaster) {
+			const regExpTime = new RegExp(
+				`(\\d+) (${this._tokenizerUtils.timeUnits.map((u) => u.regex.source).join("|")})`,
+			);
+			const matchedTime = this._renderToken(entries[0]).match(regExpTime);
+			if (matchedTime) {
+				obj.cast = {
+					number: Number(matchedTime[1]),
+					unit: this._tokenizerUtils.timeUnits.find((u) => u.regex.test(matchedTime[2])).unit,
+				};
+			} else obj.cast = { number: 1, unit: "varies", entry: this._renderToken(entries[0]) };
+		} else if (this._tokensAreTypes(entries, [this._tokenizerUtils.actions, this._tokenizerUtils.sentences])) {
 			obj.cast = this._renderToken(entries[0], {asObject: true});
 			Object.entries(this._tokenizerUtils.spellComponents).forEach(([key, regexp]) => {
 				if (regexp.test(entries[1].value)) components.push(key);
@@ -590,7 +601,15 @@ class Converter {
 		this._parsedProperties.push(...this._tokenizerUtils.savingThrow);
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const rendered = this._renderEntries(entries, {asString: true});
-		obj.savingThrow = {type: this._tokenizerUtils.savingThrows.filter(u => u.regex.test(rendered)).map(st => st.short)};
+		obj.savingThrow = {
+			type: [
+				...new Set(
+					this._tokenizerUtils.savingThrows
+						.filter((u) => u.regex.test(rendered))
+						.map((st) => st.short),
+				),
+			],
+		};
 		if (/basic/.test(rendered)) obj.savingThrow.basic = true;
 	}
 	_parseShieldData (obj) {
@@ -1153,7 +1172,7 @@ class Converter {
 		const type = this._tokenizerUtils.spellTypes.find(it => it.regex.test(name));
 		if (tradition) casting.tradition = tradition.unit.toLowerCase();
 		if (type) casting.type = type.unit.toTitleCase();
-		else casting.type = "Focus";
+		else casting.focus = true;
 
 		if (!casting.type || !casting.tradition
 			|| (!name.localeCompare(`${casting.type} ${casting.tradition}`, { sensitivity: "base" })

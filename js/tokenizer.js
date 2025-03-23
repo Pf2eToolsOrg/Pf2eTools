@@ -556,16 +556,16 @@ class TokenizerUtils {
 
 	static get amp () {
 		return [
-			{regex: /^Amp Heightened\s\(\+\d+\)[\s:]/, type: "AMP_HEIGHTENED_PLUS_X", lookbehind: /\n$/},
-			{regex: /^Amp Heightened\s\(\d+(st|nd|rd|th)\)[\s:]/, type: "AMP_HEIGHTENED_X", lookbehind: /\n$/},
+			{regex: /^Amp Heightened\s?\(\+\d+\)([\s:]|\b(?=\S))/, type: "AMP_HEIGHTENED_PLUS_X", lookbehind: /\n$/},
+			{regex: /^Amp Heightened\s?\(\d+(st|nd|rd|th)\)([\s:]|\b(?=\S))/, type: "AMP_HEIGHTENED_X", lookbehind: /\n$/},
 			{regex: /^Amp Heightened[\s:]/, type: "AMP_HEIGHTENED", lookbehind: /\n$/},
 			{regex: /^Amp[\s:]/, type: "AMP", lookbehind: /\n$/},
 		]
 	}
 	static get heightened () {
 		return [
-			{regex: /^Heightened\s\(\+\d+\)[\s:]/, type: "HEIGHTENED_PLUS_X"},
-			{regex: /^Heightened\s\(\d+(st|nd|rd|th)\)[\s:]/, type: "HEIGHTENED_X"},
+			{regex: /^Heightened\s?\(\+\d+\)([\s:]|\b(?=\S))/, type: "HEIGHTENED_PLUS_X"},
+			{regex: /^Heightened\s?\(\d+(st|nd|rd|th)\)([\s:]|\b(?=\S))/, type: "HEIGHTENED_X"},
 			{regex: /^Heightened[\s:]/, type: "HEIGHTENED"},
 		]
 	}
