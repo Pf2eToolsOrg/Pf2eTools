@@ -1,6 +1,192 @@
 {
 	"companion": [
 		{
+			"name": "Ape",
+			"source": "PC1",
+			"remaster": true,
+			"page": 206,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is an ape or other primate."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "intimidation",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"support": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape’s reach, the creature becomes {@condition frightened|PC1|frightened 1}.",
+			"maneuver": {
+				"name": "Frightning Display",
+				"source": "PC1",
+				"page": 206,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"Your ape makes a loud and frightening display, throwing a foe off balance. The ape attempts to {@action Demoralize|PC1} the target creature; this display gains the {@trait visual} trait and doesn’t require language. While frightened by this ability, the target is {@condition off-guard|PC1} to your ape."
+				]
+			}
+		},
+		{
+			"name": "Arboreal Sapling",
+			"source": "PC1",
+			"remaster": true,
+			"page": 206,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a walking tree, a cousin of the great arboreal wardens and regents. An arboreal sapling has the {@trait plant} trait instead of the {@trait animal} trait, but it otherwise functions normally as an animal companion. They are typically only selected by {@class druid|PC1|animal order druids|animal} who are also members of the {@class druid|PC1|leaf order|leaf}."
+			],
+			"access": "You are a member of the {@class druid|PC1|leaf order|leaf}.",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"support": "Your arboreal sapling plants roots around your foe, impeding its movement. Until the start of your next turn, if you hit and deal damage to a creature in your arboreal sapling's reach, the first square the creature moves into after taking that damage is {@quickref difficult terrain|PC1|3|terrain}.",
+			"maneuver": {
+				"name": "Throw Rock",
+				"source": "PC1",
+				"page": 207,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"The arboreal sapling {@action Interact|PC1|Interacts} to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock Strike that deals {@damage 2d6} bludgeoning ({@damage 3d6} for a specialized companion) damage with a range increment of 30 feet."
+				]
+			},
+			"traits": [
+				"uncommon"
+			]
+		},
+		{
+			"name": "Badger",
+			"source": "PC1",
+			"remaster": true,
+			"page": 207,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a badger, wolverine, or other big mustelid."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "survival",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				],
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"burrow": 10,
+				"climb": 10
+			},
+			"support": "Your badger digs around your foe’s position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can’t use a {@action Step|PC1} action (unless it can {@action Step|PC1} through {@quickref difficult terrain|PC1|3|terrain}) until it moves from its current position.",
+			"maneuver": {
+				"name": "Badger Rage",
+				"source": "PC1",
+				"page": 207,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"traits": [
+					"concentrate",
+					"emotion",
+					"mental"
+				],
+				"requirements": "The badger isn't {@condition fatigued|PC1} or raging.",
+				"entries": [
+					"The badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls {@condition unconscious|PC1}, whichever comes first. It can’t voluntarily stop raging. While raging, the badger is affected in the following ways.",
+					{
+						"type": "list",
+						"items": [
+							"It deals 4 additional damage with its bite attacks and 2 additional damage with its claw attacks.",
+							"It takes a –1 penalty to AC",
+							"It can't use actions that have the {@trait concentrate} trait. The animal companion can {@action Seek|PC1} even while raging."
+						]
+					},
+					"After it has stopped raging, it can't use Badger Rage again for 1 minute."
+				]
+			}
+		},
+		{
 			"name": "Chetamog",
 			"source": "WoW1",
 			"type": "Companion",
@@ -2309,6 +2495,124 @@
 	],
 	"companionAbility": [
 		{
+			"name": "Ambusher",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"In your companion’s natural environment, it can use a {@action Sneak|PC1} action even if it’s currently {@condition observed|PC1}. Its proficiency rank in {@skill Stealth|PC1} increases to expert (or master if it was already an expert from its type), and its Dexterity modifier increases by 1. Its proficiency rank for unarmored defense increases to expert."
+			]
+		},
+		{
+			"name": "Bully",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion terrorizes foes with dominance displays and pushes them around the battlefield. Its proficiency ranks for {@skill Athletics|PC1} and {@skill Intimidation|PC1} increase to expert (or master if it was already expert from its type), its Strength modifier increases by 1, and its Charisma modifier increases by 3."
+			]
+		},
+		{
+			"name": "Daredevil",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion joins the fray with graceful leaps and dives. It gains the deny advantage ability, so it isn’t {@condition off-guard|PC1} to {@condition hidden|PC1}, {@condition undetected|PC1}, or {@condition flanking|PC1} creatures unless such a creature’s level is greater than yours. Its proficiency rank in {@skill Acrobatics|PC1} increases to master, and its Dexterity modifier increases by 1. Its proficiency rank in unarmored defense increases to expert."
+			]
+		},
+		{
+			"name": "Racer",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion races. It gains a +10-foot status bonus to its Speed, swim Speed, or fly Speed (your choice). Its proficiency in Fortitude saves increases to legendary, and its Constitution modifier increases by 1."
+			]
+		},
+		{
+			"name": "Tracker",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion is an incredible tracker. It can move at full Speed while following tracks. Its proficiency rank in {@skill Survival|PC1} increases to expert (or master if it was already an expert from its type), and its Wisdom modifier increases by 1."
+			]
+		},
+		{
+			"name": "Wrecker",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion smashes things. Its unarmed attacks ignore half an object’s Hardness. Its {@skill Athletics|PC1} proficiency increases to master, and its Strength modifier increases by 1."
+			]
+		},
+		{
+			"name": "Mature",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 1,
+			"entries": [
+				"When you advance a young animal companion to a mature animal companion:",
+				{
+					"type": "list",
+					"items": [
+						"If your companion is Medium or smaller, it grows by one size.",
+						"Increase its Strength, Dexterity, Constitution, and Wisdom modifiers by 1.",
+						"Increase its proficiency rank for {@skill Perception|PC1} and all saving throws to expert. Increase its proficiency ranks in {@skill Intimidation|PC1}, {@skill Stealth|PC1}, and {@skill Survival|PC1} to trained, and if it was already trained in one of those skills from its type, increase its proficiency rank in that skill to expert.",
+						"Increase its unarmed attack damage from one die to two dice (for instance {@damage 1d8} to {@damage 2d8})."
+					]
+				}
+			]
+		},
+		{
+			"name": "Nimble",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 2,
+			"entries": [
+				"To advance a {@companionAbility mature|PC1} animal companion to a nimble animal companion:",
+				{
+					"type": "list",
+					"items": [
+						"Increase its Dexterity modifier by 2 and its Strength, Constitution, and Wisdom modifiers by 1.",
+						"Increase its proficiency ranks in {@skill Acrobatics|PC1} to expert.",
+						"It deals 2 additional damage with its unarmed attacks. Its attacks become {@trait magical} for the purpose of ignoring resistances.",
+						"It learns the advanced maneuver for its type."
+					]
+				}
+			]
+		},
+		{
+			"name": "Savage",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 2,
+			"entries": [
+				"To advance a {@companionAbility mature|PC1} animal companion to a savage animal companion:",
+				{
+					"type": "list",
+					"items": [
+						"If your companion is Medium or smaller, it grows by one size.",
+						"Increase its Strength modifier by 2 and its Dexterity, Constitution, and Wisdom modifiers by 1.",
+						"Increase its proficiency rank in {@skill Athletics|PC1} to expert.",
+						"It deals 3 additional damage with its unarmed attacks. Its attacks become {@trait magical} for the purpose of ignoring resistances.",
+						"It learns the advanced maneuver for its type."
+					]
+				}
+			]
+		},
+		{
 			"name": "Unseen",
 			"source": "DA",
 			"page": 65,
@@ -2324,6 +2628,15 @@
 			"tier": 2,
 			"entries": [
 				"To advance a mature animal companion to a nimble animal companion, increase its Dexterity modifier by 2 and its Strength, Constitution, and Wisdom modifiers by 1. It deals 2 additional damage with its unarmed attacks. Increase its proficiency ranks in {@skill Acrobatics} and unarmored defense to expert. It also learns the advanced maneuver for its type. Its attacks become {@trait magical} for the purpose of ignoring resistances."
+			]
+		},
+		{
+			"name": "Mature",
+			"source": "CRB",
+			"page": 214,
+			"tier": 1,
+			"entries": [
+				"To advance a young animal companion to a mature animal companion (usually a result of one of your class feat choices), increase its Strength, Dexterity, Constitution, and Wisdom modifiers by 1. Increase its unarmed attack damage from one die to two dice (for instance {@damage 1d8} to {@damage 2d8}), and its proficiency rank for {@skill Perception|PC1} and all saving throws to expert. Increase its proficiency ranks in {@skill Intimidation|PC1}, {@skill Stealth|PC1}, and {@skill Survival|PC1} to trained, and if it was already trained in one of those skills from its type, increase its proficiency rank in that skill to expert. If your attack companion is Medium or smaller, it grows by one size."
 			]
 		},
 		{
@@ -3639,12 +3952,322 @@
 	],
 	"familiarAbility": [
 		{
+			"name": "Accompanist",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar helps you perform. Whenever you attempt a {@skill Performance|PC1} check, if your familiar is nearby and can act, it accompanies you with chirps, claps, or its own miniature instrument. This grants you a +1 circumstance bonus, or +2 if you’re a master in {@skill Performance|PC1}."
+			]
+		},
+		{
+			"name": "Construct",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait construct} trait instead of the {@trait animal} trait. The familiar is immune to death effects, {@condition disease|PC1}, {@condition doomed|PC1}, {@condition drained|PC1}, {@condition fatigued|PC1}, {@trait healing}, {@trait nonlethal} attacks, {@condition paralyzed|PC1}, {@trait poison}, {@condition sickened|PC1}, {@trait spirit}, {@condition unconscious|PC1}, {@trait vitality}, and {@trait void}. Your familiar must have the tough {@feat pet|PC1} ability to select this."
+			]
+		},
+		{
+			"name": "Damage Avoidance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Choose one type of save. Your familiar takes no damage when it rolls a success on that type of save; this doesn’t prevent effects other than damage."
+			]
+		},
+		{
+			"name": "Dragon",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait dragon} trait instead of the {@trait animal} trait."
+			]
+		},
+		{
+			"name": "Elemental",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@condition persistent damage|PC1|bleed}, {@condition paralyzed|PC1}, {@condition poison|PC1}, {@condition sleep|PC1}, and the element matching its trait. Your familiar must have the {@familiarAbility resistance|PC1} familiar ability to select this."
+			]
+		},
+		{
+			"name": "Focused Rejuvenation",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"When you {@action Refocus|PC1}, you generate magical energy that heals your familiar. Your familiar regains 1 Hit Point per level whenever you {@action Refocus|PC1}."
+			]
+		},
+		{
+			"name": "Fungus",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait fungus} trait instead of the {@trait animal} trait."
+			]
+		},
+		{
+			"name": "Independent",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"In an encounter, if you don’t {@action Command an Animal|PC1|Command} your familiar, it still gains 1 action each round. Typically, you still decide how it spends that action, but, the GM might determine that your familiar chooses its own tactics rather than performing your preferred action. This doesn’t work with {@familiarAbility valet|PC1} or similar abilities that require a command, if you’re capable of riding your familiar, or similar situations."
+			]
+		},
+		{
+			"name": "Kinspeech",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can understand and speak with animals of the same species. To select this, your familiar must be an {@trait animal}, it must have the {@familiarAbility speech|PC1} ability, and you must be at least 6th level."
+			]
+		},
+		{
+			"name": "Major Resistance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar increases the resistance it gains from its {@familiarAbility resistance|PC1} familiar ability to a value equal to your level. To select this you must be at least 8th level."
+			]
+		},
+		{
+			"name": "Master’s Form",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can change shape as a single action, transforming into a humanoid of your ancestry with the same age, gender, and build of its true form, though it always maintains a clearly unnatural remnant of its nature, such as a cat’s eyes or a serpent’s tongue. This form is always the same each time it uses this ability. This otherwise uses the effects of humanoid form, except the change is purely cosmetic. It only appears humanoid and gains no new capabilities. Your familiar must have the {@familiarAbility manual dexterity|PC1} and {@familiarAbility speech|PC1} abilities to select this."
+			]
+		},
+		{
+			"name": "Partner in Crime",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar is your criminal associate. Despite being a {@trait minion}, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid|PC1} you on a {@skill Deception|PC1} or {@skill Thievery|PC1} skill check (it still has to prepare to help you as normal for the {@action Aid|PC1} reaction). It automatically succeeds at its check to {@action Aid|PC1} you with those skills or automatically critically succeeds if you’re a master of the skill in question."
+			]
+		},
+		{
+			"name": "Plant",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait plant} trait instead of the {@trait animal} trait."
+			]
+		},
+		{
+			"name": "Plant Form",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your plant familiar can change shape as a single action, transforming into a Tiny plant of a type roughly similar to the familiar’s nature. This otherwise uses the effects of one with plants. You must have a familiar with the {@trait plant} trait to select this ability."
+			]
+		},
+		{
+			"name": "Resistance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Choose two of the following: acid, cold, electricity, fire, poison, or sonic. Your familiar gains resistance equal to half your level (minimum resistance 1) against the chosen damage types."
+			]
+		},
+		{
+			"name": "Skilled",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Choose a skill other than {@skill Acrobatics|PC1} or {@skill Stealth|PC1}. Your familiar’s modifier for that skill is equal to your level plus your spellcasting attribute modifier, rather than just your level. You can select this ability repeatedly, choosing a different skill each time."
+			]
+		},
+		{
+			"name": "Speech",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar understands and speaks a language you know."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Choose a spell in your repertoire or that you prepared today at least 5 levels lower than your highest-rank spell slot. Your familiar can {@action Cast a Spell|PC1|Cast that Spell} once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-rank spells using spell slots to select this."
+			]
+		},
+		{
+			"name": "Toolbearer",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can carry a toolkit of up to light Bulk. So long as your familiar is adjacent to you, you can draw and replace the tools as part of the action that uses them as if you were wearing them. Your familiar must have the {@familiarAbility manual dexterity|PC1} ability to select this."
+			]
+		},
+		{
+			"name": "Touch Telepathy",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can telepathically communicate with you via touch. If it also has the {@familiarAbility speech|PC1} ability, it can telepathically communicate via touch with any creature if they share a language."
+			]
+		},
+		{
+			"name": "Valet",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"You can command your familiar to deliver you items more efficiently. Your familiar doesn’t use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar {@action Interact|PC1} to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can’t use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way."
+			]
+		},
+		{
+			"name": "Absorb Familiar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Your familiar can transform into a mark you carry on your flesh, typically seeming like a birthmark, tattoo, or gem that vaguely resembles its normal form. When transformed, the familiar can’t act except to turn back into a familiar. It isn’t affected by area effects and must be targeted separately to affect it, which requires knowledge that it’s a creature. This means you and your allies can heal or assist the familiar while most enemies stay unaware of its true nature. Creatures must attempt a DC 20 {@skill Perception|PC1} check to {@action Seek|PC1} to realize a it is actually a familiar. Your familiar can still communicate its feelings empathically. Transforming the familiar between forms is a 1-minute activity that has the {@trait concentrate} trait."
+			]
+		},
+		{
+			"name": "Cantrip Connection",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"You can prepare an additional {@trait cantrip} or, if you have a repertoire, designate a {@trait cantrip} to add to your repertoire every time you select this ability; you can retrain it but can’t otherwise change it. You must be able to prepare {@trait cantrip||cantrips} or add them to your repertoire to select this."
+			]
+		},
+		{
+			"name": "Familiar Focus",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to restore 1 Focus Point to your focus pool, up to your usual maximum. You must have a focus pool to select this."
+			]
+		},
+		{
+			"name": "Innate Surge",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, you can draw upon your familiar’s innate magic to replenish your own. You can cast one innate spell gained from an ancestry feat that you have already cast today. You must still {@action Cast a Spell|PC1|Cast the Spell} and meet the spell’s other requirements."
+			]
+		},
+		{
+			"name": "Lifelink",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"If your familiar would be reduced to 0 HP by damage, as a reaction with the {@trait concentrate} trait, you can take all the damage, and your familiar takes none. However, special effects that would occur due to that damage (such as snake venom) still apply."
+			]
+		},
+		{
+			"name": "Share Senses",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once every 10 minutes, you can use a single action with the {@trait concentrate} trait to project your senses into your familiar. When you do, you lose all sensory information from your own body, but can sense through your familiar’s body for up to 1 minute. You can {@action Dismiss|PC1} this effect."
+			]
+		},
+		{
+			"name": "Spell Battery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"You gain one additional spell slot at least 3 ranks lower than your highest-rank spell slot; you must be able to cast 4th-rank spells using spell slots to select this master ability."
+			]
+		},
+		{
+			"name": "Spell Delivery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn’t reach the target to touch it this turn, the spell has no effect."
+			]
+		},
+		{
+			"name": "Recall Familiar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, you can use a 3-action activity, which has the {@trait concentrate} trait, to teleport your familiar to your space. Your familiar must be within 1 mile or the attempt to summon it fails. This is a {@trait teleportation} effect."
+			]
+		},
+		{
+			"name": "Restorative Familiar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to give up some of its energy and heal you. It must be in your space to do so. You restore a number of Hit Points equal to {@dice 1d8} times half your level (minimum {@dice 1d8})."
+			]
+		},
+		{
 			"name": "Elemental",
 			"source": "RoE",
 			"page": 42,
 			"type": "Familiar",
 			"entries": [
-				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@trait bleed}, {@trait paralyzed}, {@trait poison}, {@trait sleep}, and the element matching its trait. Your familiar must have the resistance familiar ability to select this, unless it's a specific familiar. You can't select this ability if your familiar has a trait other than {@trait animal} (such as a leshy familiar or an undead familiar)."
+				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@trait bleed}, {@trait paralyzed}, {@trait poison}, {@trait sleep}, and the element matching its trait. Your familiar must have the {@familiarAbility resistance|PC1} familiar ability to select this, unless it's a specific familiar. You can't select this ability if your familiar has a trait other than {@trait animal} (such as a {@trait leshy} familiar or an {@trait undead} familiar)."
 			]
 		},
 		{
