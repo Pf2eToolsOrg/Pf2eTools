@@ -1,6 +1,6038 @@
 {
 	"spell": [
 		{
+			"name": "Allegro",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Cantrip",
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"concentrate",
+				"emotion",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 ally",
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You perform rapidly, speeding up your ally. The ally becomes {@condition quickened|PC1} and can use the additional action to {@action Strike|PC1}, {@action Stride|PC1}, or {@action Step|PC1}."
+			]
+		},
+		{
+			"name": "Counter Performance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"bard",
+				"composition",
+				"concentrate",
+				"focus",
+				"fortune",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You or an ally within 60 feet rolls a saving throw against an {@trait auditory} or {@trait visual} effect.",
+			"area": {
+				"entry": "60-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"entries": [
+				"Your performance protects you and your allies. Roll a {@skill Performance|PC1} check for a type you know\u2014it must be an auditory performance if the trigger was auditory or a visual one for a visual trigger, and this action gains the traits for the type of performance. You and allies in the area can use the better result between your {@skill Performance|PC1} check and the saving throw."
+			]
+		},
+		{
+			"name": "Courageous Anthem",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"concentrate",
+				"emotion",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "60-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You inspire yourself and your allies with words or tunes of encouragement. You and all allies in the area gain a +1 status bonus to attack rolls, damage rolls, and saves against {@trait fear} effects."
+			]
+		},
+		{
+			"name": "Dirge of Doom",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"concentrate",
+				"emotion",
+				"fear",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "30-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"Enemies within the area are {@condition frightened|PC1|frightened 1}. They can't reduce their {@condition frightened|PC1} value below 1 while they remain in the area."
+			]
+		},
+		{
+			"name": "Fatal Aria",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Focus",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"bard",
+				"composition",
+				"concentrate",
+				"death",
+				"emotion",
+				"focus",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You perform music so perfect that the target may die of joy or sorrow. Once targeted, the creature becomes temporarily immune for 1 minute. The effect of the spell depends on the target's level and current Hit Points.",
+				{
+					"type": "lvlEffect",
+					"entries": [
+						{
+							"range": "16th or Lower",
+							"entry": [
+								"The target dies instantly."
+							]
+						},
+						{
+							"range": "17th",
+							"entry": [
+								"If the target has 50 Hit Points or fewer, it dies instantly; otherwise, it drops to 0 Hit Points and becomes {@condition dying|PC1|dying 1}."
+							]
+						},
+						{
+							"range": "18th or Higher",
+							"entry": [
+								"The target takes 50 damage. If this brings it to 0 Hit Points, it dies instantly."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fortissimo Composition",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"bard",
+				"concentrate",
+				"focus",
+				"spellshape"
+			],
+			"subclass": {
+				"Muse|Bard|PC1": [
+					"Maestro"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "free"
+			},
+			"entries": [
+				"You call upon your muse to greatly increase the benefits you provide with your {@spell courageous anthem|PC1}, {@spell rallying anthem|PC1}, or {@spell song of strength|PC1} composition. If your next action is to cast one of these compositions, attempt a {@skill Performance|PC1} check. The DC is usually the highest Will DC of the composition's targets, but the GM can assign a different DC based on the circumstances.",
+				"The effect of your composition depends on the result of your check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The status bonus from your composition increases to +3."
+						],
+						"Success": [
+							"The status bonus from your composition increases to +2."
+						],
+						"Failure": [
+							"Your composition provides only its normal bonus of +1, but you don't spend the Focus Point for casting this spell."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "House of Imaginary Walls",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Cantrip",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"illusion",
+				"manipulate",
+				"visual"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You mime an {@condition invisible|PC1|invisible} 10-foot-by-10-foot wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even {@trait incorporeal} creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that disbelieves the illusion is temporarily immune to your house of imaginary walls for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's rank, and HP equal to quadruple the spell's rank."
+			]
+		},
+		{
+			"name": "Hymn of Healing",
+			"source": "PC1",
+			"remaster": true,
+			"page": 370,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"bard",
+				"composition",
+				"concentrate",
+				"focus",
+				"healing",
+				"vitality"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "you or 1 ally",
+			"duration": {
+				"sustained": true,
+				"number": 4,
+				"unit": "round"
+			},
+			"entries": [
+				"Your glorious singing mends wounds and provides a temporary respite from harm. The target gains fast healing 2. When you {@action Cast a Spell|PC1|Cast the Spell} and the first time each round you {@action Sustain|PC1|Sustain the Spell}, the target gains 2 temporary Hit Points, which last for 1 round."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The fast healing and temporary Hit Points each increase by 2."
+					]
+				}
+			},
+			"miscTags": [
+				"THP"
+			]
+		},
+		{
+			"name": "Lingering Composition",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"bard",
+				"concentrate",
+				"focus",
+				"spellshape"
+			],
+			"subclass": {
+				"Muse|Bard|PC1": [
+					"Maestro"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "free"
+			},
+			"entries": [
+				"You add a flourish to your composition to extend its benefits. If your next action is to cast a cantrip composition with a duration of 1 round, attempt a {@skill Performance|PC1} check. The DC is usually a standard-difficulty DC of a level equal to the highestlevel target of your composition, but the GM can assign a different DC based on the circumstances. The effect depends on the result of your check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The composition lasts 4 rounds."
+						],
+						"Success": [
+							"The composition lasts 3 rounds."
+						],
+						"Failure": [
+							"The composition lasts 1 round, but you don't spend the Focus Point for casting this spell."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Loremaster's Etude",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"bard",
+				"focus",
+				"fortune",
+				"manipulate"
+			],
+			"subclass": {
+				"Muse|Bard|PC1": [
+					"Enigma"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "free"
+			},
+			"trigger": "You or an ally within range attempts a skill check to {@action Recall Knowledge|PC1}",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "you or the triggering ally",
+			"entries": [
+				"You call upon your muse's deep mysteries, granting the target a greater ability to think and recall information. Roll the triggering {@action Recall Knowledge|PC1} skill check twice and use the higher result."
+			]
+		},
+		{
+			"name": "Ode to Ouroboros",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Focus",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"bard",
+				"composition",
+				"concentrate",
+				"focus"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A creature's {@condition dying|PC1} condition would reach the value at which they would die.",
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "the triggering creature",
+			"entries": [
+				"Your ode staves off death. The target's {@condition dying|PC1} condition remains 1 below the value at which it dies. This doesn't help prevent death from effects that kill the target without increasing its {@condition dying|PC1} condition, such as disintegrate and {@trait death} effects."
+			]
+		},
+		{
+			"name": "Pied Piping",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Focus",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"bard",
+				"composition",
+				"concentrate",
+				"focus",
+				"incapacitation",
+				"mental",
+				"sonic"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "5-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your performance enraptures listeners, compelling them to follow you. Each creature within the emanation must attempt a Will save when you {@action Cast a Spell|PC1|Cast the Spell|PC1} or the first time they enter the area, after which they become temporarily immune for 1 day. Once per turn, you can {@action Sustain|PC1} the composition to increase the emanation's radius by 5 feet. You can {@action Dismiss|PC1} the spell.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition fascinated|PC1} with you."
+						],
+						"Failure": [
+							"The creature is {@condition fascinated|PC1} by you and uses all its actions to move toward you and compliment your performance.",
+							"This effect ends if a {@condition hostile|PC1} action is used against the affected creature."
+						],
+						"Critical Failure": [
+							"The target gains the {@trait minion} trait and is {@condition controlled|PC1} by you. This effect ends if a {@condition hostile|PC1} action is used against the affected creature, or if you direct the creature to use any action that causes it harm."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Rallying Anthem",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Cantrip",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"concentrate",
+				"emotion",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "60-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"Your song moves allies to protect themselves more effectively. You and all allies in the area gain a +1 status bonus to AC and saving throws, as well as resistance equal to half the spell's rank to physical damage."
+			]
+		},
+		{
+			"name": "Song of Marching",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Cantrip",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"concentrate",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "60-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You maintain a brisk performance that keeps allies on the move. You and your allies in the area can {@action Hustle|PC1} for the spell's duration, in addition to your other exploration activities (your exploration activity is {@action Sustain|PC1|Sustaining this Spell}). You and your allies then become temporarily immune for 1 day.",
+				"If you enter an encounter while performing this song, you can use your {@skill Performance|PC1} modifier for the initiative roll. You and your affected allies also receive a +1 status bonus to that initiative roll."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"You can {@action Sustain|PC1|Sustain the Spell} for up to 2 hours."
+					],
+					"9": [
+						"You can {@action Sustain|PC1|Sustain the Spell} for up to 4 hours"
+					]
+				}
+			}
+		},
+		{
+			"name": "Song of Strength",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"concentrate",
+				"emotion",
+				"mental"
+			],
+			"subclass": {
+				"Muse|Bard|PC1": [
+					"Warrior"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "60-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You bolster your allies' physical strength with a hearty exhortation. You and your allies gain a +1 status bonus to {@skill Athletics|PC1} checks and to their DCs against {@skill Athletics|PC1} skill actions such as {@action Disarm|PC1}, {@action Reposition|PC1}, {@action Shove|PC1}, and {@action Trip|PC1}."
+			]
+		},
+		{
+			"name": "Soothing Ballad",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Focus",
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"bard",
+				"composition",
+				"concentrate",
+				"emotion",
+				"focus",
+				"healing",
+				"manipulate",
+				"mental"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "you and up to 9 allies",
+			"entries": [
+				"You draw upon your muse to soothe your allies. Choose one of the following three effects:",
+				{
+					"type": "list",
+					"items": [
+						"The spell attempts to counteract {@trait fear} effects on the targets.",
+						"The spell attempts to counteract effects imposing paralysis on the targets.",
+						"The spell restores {@dice 7d8} Hit Points to the targets."
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"When used to heal, soothing ballad restores {@dice 1d8} more Hit Points."
+					]
+				}
+			}
+		},
+		{
+			"name": "Symphony of the Unfettered Heart",
+			"source": "PC1",
+			"remaster": true,
+			"page": 371,
+			"type": "Focus",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"bard",
+				"composition",
+				"concentrate",
+				"focus"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "you or 1 ally",
+			"entries": [
+				"Your symphony lifts listeners from their worldly concerns. Attempt a {@skill Performance|PC1} check to counteract an effect applying one of the following conditions to the target: {@condition grabbed|PC1}, {@condition immobilized|PC1}, {@condition paralyzed|PC1}, {@condition restrained|PC1}, {@condition slowed|PC1}, or {@condition stunned|PC1}. If you fail, you can't target the same effect on the target for 1 day.",
+				"Use the condition's source to determine the counteract DC (for example, the {@action Escape|PC1} DC for {@condition grabbed|PC1})."
+			],
+			"heightened": {
+				"X": {
+					"9": [
+						"You can target up to four creatures."
+					]
+				}
+			}
+		},
+		{
+			"name": "Triple Time",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Cantrip",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"emotion",
+				"manipulate",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "60-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"Your music sets a fast pace. You and all allies in the area gain a +10-foot status bonus to all Speeds for 1 round."
+			]
+		},
+		{
+			"name": "Uplifting Overture",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"bard",
+				"cantrip",
+				"composition",
+				"concentrate",
+				"emotion",
+				"mental"
+			],
+			"subclass": {
+				"Muse|Bard|PC1": [
+					"Maestro"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 ally",
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"Your performance makes allies feel they can succeed at anything. This counts as having prepared to {@action Aid|PC1} your ally on a skill check of your choice. When you later use the {@action Aid|PC1} reaction, you can roll {@skill Performance|PC1} instead of the normal skill check, and if you roll a failure, you get a success instead. If you are legendary in {@skill Performance|PC1}, you automatically critically succeed.",
+				"The GM might rule that you can't use this ability if the act of encouraging your ally would interfere with the skill check (such as a check to {@action Sneak|PC1} quietly or maintain a disguise)."
+			]
+		},
+		{
+			"name": "Pushing Gust",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"air",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"air"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 500
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"Giving the air a push, you buffet the target with a powerful gust of wind; it must attempt a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is pushed 5 feet away from you."
+						],
+						"Failure": [
+							"The target is pushed 10 feet away from you."
+						],
+						"Critical Failure": [
+							"The target is pushed 10 feet away from you and knocked {@condition prone|PC1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Disperse into Air",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"air",
+				"cleric",
+				"focus",
+				"manipulate",
+				"polymorph"
+			],
+			"domains": [
+				"air"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You take damage from an enemy or a hazard.",
+			"entries": [
+				"After taking the triggering damage, you transform into air. Until the end of the current turn, you can't be attacked or targeted, you don't take up space, you can't act, and any auras or emanations you have are suppressed. At the end of the turn, you re-form in any space you can occupy within 15 feet of where you were when you dispersed. Any auras or emanations you had are restored as long as their duration didn't run out while you were dispersed."
+			]
+		},
+		{
+			"name": "Ignite Ambition",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"mental",
+				"subtle"
+			],
+			"domains": [
+				"ambition"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You or an ally in range attempt to use a {@trait mental} effect to convince a creature to do something (such as a {@action Coerce|PC1}, {@action Request|PC1}, or a {@spell suggestion|PC1} spell).",
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "one creature being influenced",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You strengthen the target's ambition, increase its resentment of its allies, and make its allegiances more susceptible to change. It must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected and realized you attempted to influence its reaction with magic."
+						],
+						"Success": [
+							"The target takes a \u20131 status penalty to its defenses against the triggering effect. This penalty is \u20132 if the target is being encouraged to advance its own ambitions. The target doesn't realize you {@action Cast a Spell|PC1|Cast the Spell} on it."
+						],
+						"Failure": [
+							"As success, but the status penalty is \u20134 if the target is being encouraged to advance its own ambitions."
+						],
+						"Critical Failure": [
+							"As success, but the creature automatically follows a suggestion that advances its own ambitions."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Competitive Edge",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"mental"
+			],
+			"domains": [
+				"ambition"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your competitiveness drives you to prove yourself against the opposition. You gain a +1 status bonus to attack rolls and skill checks. If an enemy within 20 feet critically succeeds at an attack roll or skill check, your status bonus increases to +3 for attack rolls or that specific skill check (whichever the foe critically succeeded at) for 1 round."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"Increase the base bonus to +2 and the increased bonus after an enemy critically succeeds to +4."
+					]
+				}
+			}
+		},
+		{
+			"name": "Face in the Crowd",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"visual"
+			],
+			"domains": [
+				"cities"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"While in a crowd of roughly similar creatures, your appearance becomes bland and nondescript. You gain a +2 status bonus to {@skill Deception|PC1} and {@skill Stealth|PC1} checks to go incognito among the crowd, and you ignore difficult terrain caused by the crowd.",
+				"This counts as setting up a disguise for the {@action Impersonate|PC1} use of {@skill Deception|PC1} and you add your level even if you're untrained."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The spell gains a range of 10 feet and can target up to 10 creatures."
+					]
+				}
+			}
+		},
+		{
+			"name": "Pulse of Civilization",
+			"source": "PC1",
+			"remaster": true,
+			"page": 372,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"scrying"
+			],
+			"domains": [
+				"cities"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "mile",
+				"number": 25
+			},
+			"duration": {
+				"number": 8,
+				"unit": "hour"
+			},
+			"entries": [
+				"You tap into the zeitgeist of any settlements in range. You learn the names of the settlements. On all {@skill Lore|PC1} checks to {@action Recall Knowledge|PC1} about those settlements or to {@action Gather Information|PC1} in or about those settlements, you gain a +2 status bonus and use your level as your proficiency bonus even if you're untrained. When you {@action Cast a Spell|PC1|Cast the Spell}, you can immediately {@action Recall Knowledge|PC1} about one of the settlements using its {@skill Lore|PC1} skill (such as {@skill Lore|PC1|Absalom Lore}), which benefits from the bonus. If you cast pulse of civilization again, any previous casting ends."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"The range is 100 miles."
+					],
+					"7": [
+						"The range is 500 miles and the bonus is +3."
+					]
+				}
+			}
+		},
+		{
+			"name": "Veil of Confidence",
+			"source": "PC1",
+			"remaster": true,
+			"page": 373,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"mental"
+			],
+			"domains": [
+				"confidence"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You surround yourself in confidence. You reduce your current {@condition frightened|PC1} condition by 1, and whenever you would become {@condition frightened|PC1} during the duration, reduce the amount by 1. If you critically fail a save against a {@trait fear} effect, veil of confidence reduces your {@condition frightened|PC1} value from that effect, and then ends."
+			]
+		},
+		{
+			"name": "Delusional Pride",
+			"source": "PC1",
+			"remaster": true,
+			"page": 373,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"confidence"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You make the target overconfident, leading it to ascribe failure to external factors. The target attempts a Will save to determine the spell's duration and is temporarily immune for 24 hours regardless of the save's result.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The duration is 1 round. If the target fails at an attack roll or skill check, it takes a \u20131 status penalty to attack rolls and skill checks until the end of its turn (or the end of its next turn, if it attempted the roll outside its turn). If the creature fails a second time while taking this penalty, the penalty increases to \u20132."
+						],
+						"Failure": [
+							"As success, but the duration is 10 minutes."
+						],
+						"Critical Failure": [
+							"As success, but the duration is 24 hours."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Creative Splash",
+			"source": "PC1",
+			"remaster": true,
+			"page": 373,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"illusion",
+				"manipulate",
+				"visual"
+			],
+			"domains": [
+				"creation"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "5-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"A deluge of paint or colorful illusions descend on the area, reflecting your personal creative specialty. Roll {@dice 1d4} to determine the color of the illusion. Each creature in the area must succeed at a Will save or take the effect listed on the table for the color.",
+				{
+					"type": "table",
+					"colSizes": [
+						1,
+						1,
+						3,
+						3
+					],
+					"rollable": true,
+					"rows": [
+						[
+							"{@dice 1d4}",
+							"Color",
+							"Failure",
+							"Critical Failure"
+						],
+						[
+							"1",
+							"White",
+							"{@condition dazzled|PC1|Dazzled} 1 round",
+							"{@condition dazzled|PC1|Dazzled} 1 minute"
+						],
+						[
+							"2",
+							"Red",
+							"{@condition enfeebled|PC1|Enfeebled 1} for 1 round",
+							"{@condition enfeebled|PC1|Enfeebled 2} for 1 round"
+						],
+						[
+							"3",
+							"Yellow",
+							"{@condition frightened|PC1|Frightened 1}",
+							"{@condition frightened|PC1|Frightened 2}"
+						],
+						[
+							"4",
+							"Blue",
+							"{@condition clumsy|PC1|Clumsy 1} for 1 round",
+							"{@condition clumsy|PC1|Clumsy 2} for 1 round"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Artistic Flourish",
+			"source": "PC1",
+			"remaster": true,
+			"page": 373,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"creation"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 15
+			},
+			"targets": "1 item or work of art that fits entirely within the range",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You transform the target into a form that more closes matches your creative vision. It's clearly the same item, but with aesthetic details you choose. The target is a beautiful and impressive piece for its new quality, but the effect is obviously magical and temporary, so its monetary value doesn't change. If you're an expert in {@skill Crafting|PC1}, the item grants a +1 item bonus to attack rolls if it's a weapon or skill checks if it's a skill tool.",
+				"When you {@action Cast a Spell|PC1|Cast this Spell}, any previous casting ends."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"If you're a master in {@skill Crafting|PC1}, the item grants a +2 item bonus."
+					],
+					"10": [
+						"If you're legendary in {@skill Crafting|PC1}, the item grants a +3 item bonus."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cloak of Shadow",
+			"source": "PC1",
+			"remaster": true,
+			"page": 373,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"aura",
+				"cleric",
+				"darkness",
+				"focus",
+				"manipulate",
+				"shadow"
+			],
+			"domains": [
+				"darkness"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You drape the target in a mantle of swirling shadows that make it harder to see. The cloak reduces bright light within a 20-foot emanation to dim light. This is a form of magical darkness and can therefore overcome non-magical light or attempt to counteract magical light as described on page 431.",
+				"The target can use {@condition concealed|PC1} condition gained from the shadows to {@action Hide|PC1}, though observant creatures can still follow the moving aura of shadow, making it difficult for the target to become completely {@condition undetected|PC1}. The target can use an {@action Interact|PC1} action to remove the cloak and leave it behind as a decoy, where it remains, reducing light for the rest of the spell's duration. If anyone picks up the cloak after it's been removed by the original target, the cloak evaporates and the spell ends."
+			]
+		},
+		{
+			"name": "Darkened Sight",
+			"source": "PC1",
+			"remaster": true,
+			"page": 373,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"darkness",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"darkness"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You infuse a creature's vision with darkness. It receives greater darkvision, allowing it to see even in magical darkness."
+			]
+		},
+		{
+			"name": "Death's Call",
+			"source": "PC1",
+			"remaster": true,
+			"page": 373,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus"
+			],
+			"domains": [
+				"death"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A living creature within 20 feet of you dies, or an {@trait undead} creature within 20 feet of you is destroyed.",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Seeing another pass from this world invigorates you. You gain temporary Hit Points equal to the triggering creature's level plus your spellcasting attribute modifier. If the triggering creature was undead, double the number of temporary Hit Points you gain. These last for the duration of the spell, and the spell ends if all the temporary Hit Points are depleted earlier."
+			]
+		},
+		{
+			"name": "Eradicate Undeath",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"vitality"
+			],
+			"domains": [
+				"death"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "30-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				],
+				"basic": true
+			},
+			"entries": [
+				"A massive deluge of life energy causes the undead to fall apart. Each {@trait undead} creature in the area takes {@damage 4d12} vitality damage."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d12}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cry of Destruction",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"sonic"
+			],
+			"domains": [
+				"destruction"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "15-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				],
+				"basic": true
+			},
+			"entries": [
+				"Your voice booms, smashing what's in front of you. Each creature and unattended object in the area takes {@damage 1d8} sonic damage. If you already dealt damage to an enemy this turn with a {@action Strike|PC1} or spell, increase the damage dice from this spell to {@dice d12|d12s}."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Destructive Aura",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"aura",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"destruction"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "15-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Swirling sands of divine devastation surround you, weakening the defenses of all they touch. Reduce the resistances of yourself and creatures in the area by 2."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"Reduce the resistances by an additional 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Sweet Dream",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"cleric",
+				"concentrate",
+				"focus",
+				"linguistic",
+				"manipulate",
+				"mental",
+				"sleep"
+			],
+			"domains": [
+				"dreams"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"With soothing words, you lull the target into an enchanting dream. When you {@action Cast a Spell|PC1|Cast the Spell}, the target falls {@condition unconscious|PC1} if it wasn't already. While {@condition unconscious|PC1}, it experiences a dream of your choice, though lucidly enough it can wake when it pleases.",
+				"If it wakes up before 1 minute of sleep has passed, the spell ends.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Dream of Insight} +1 status bonus to Intelligence-based skill checks",
+						"{@b Dream of Glamor} +1 status bonus to Charisma-based skill checks",
+						"{@b Dream of Voyaging} +5-foot status bonus to Speed"
+					]
+				},
+				"If you {@action Cast a Spell|PC1|Cast this Spell} again, any previous sweet dream you cast ends."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The bonus for a dream of insight or glamor is +2."
+					],
+					"7": [
+						"The bonus for a dream of insight or glamor is +3."
+					]
+				}
+			}
+		},
+		{
+			"name": "Dreamer's Call",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"illusion",
+				"incapacitation",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"dreams"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"You create a vivid, illusory daydream drawn from the images of the target's dreams. The daydream appears in an unoccupied space in range, and you attempt to draw the target toward it.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target's attention wavers. It becomes {@condition fascinated|PC1} by the daydream."
+						],
+						"Failure": [
+							"The target is {@condition fascinated|PC1} with the daydream and pursues a course of action you choose as its first action after you {@action Cast a Spell|PC1|Cast the Spell}: approach the daydream, run away from it (as the {@condition fleeing|PC1} condition), {@action Release|PC1} what it's holding as an offering, or {@action Drop Prone|PC1} in obeisance."
+						],
+						"Critical Failure": [
+							"As failure, but the target follows the course of action for as many actions as possible for the spell's duration, and does nothing else."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Hurtling Stone",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"attack",
+				"cleric",
+				"earth",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"earth"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You evoke a magical stone and throw it, with divine guide to your aim. The stone deals {@damage 2d6} bludgeoning damage depending on your spell attack roll against the target's AC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target takes double damage and you can push it up to 10 feet."
+						],
+						"Success": [
+							"The target takes full damage and you can push it up to 5 feet."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The stone's damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Localized Quake",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"earth",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"earth"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "15-foot emanation or 15-foot cone",
+				"types": [
+					"Emanation",
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You shake the earth, toppling nearby creatures. Choose whether the spell's area is a 15-foot emanation or a 15-foot cone when you cast it. Each creature in the area standing on solid ground takes {@damage 4d6} bludgeoning damage with a basic Reflex saving throw. A creature that fails its save also falls {@condition prone|PC1}."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the damage by {@dice 2d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Soothing Words",
+			"source": "PC1",
+			"remaster": true,
+			"page": 374,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"family"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 ally",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You attempt to calm the target by uttering soothing words in a calm and even tone. The target gains a +1 status bonus to Will saving throws. This bonus increases to +2 against {@trait emotion} effects.",
+				"In addition, when you {@action Cast a Spell|PC1|Cast this Spell}, you can attempt to counteract one {@trait emotion} effect on the target."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"The bonus to saves increases to +2, or +3 against {@trait emotion} effects."
+					]
+				}
+			}
+		},
+		{
+			"name": "Unity",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"fortune"
+			],
+			"domains": [
+				"family"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You and 1 or more allies within range are targeted by a spell or ability that allows a saving throw.",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "each ally targeted by the triggering spell",
+			"entries": [
+				"You put up a united defense. Each ally can use your saving throw modifier instead of its own against the triggering spell. Each ally decides individually which modifier to use."
+			]
+		},
+		{
+			"name": "Read Fate",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"prediction"
+			],
+			"domains": [
+				"fate"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature other than you",
+			"entries": [
+				"You attempt to learn more about the target's fate in the short term, usually within the next day for most prosaic creatures, or the next hour or less for someone likely to have multiple rapid experiences, such as someone actively adventuring.",
+				"You learn a single enigmatic word connected to the creature's fate in that time frame. Fate is notoriously inscrutable, and the word isn't necessarily meant to be taken at face value, so the meaning is often clear only in hindsight. The GM rolls a secret DC {@flatDC 6} flat check. If the creature's fate is too uncertain, or on a failed flat check, the spell yields the word \"inconclusive. \" Either way, the creature is then temporarily immune for 24 hours."
+			]
+		},
+		{
+			"name": "Tempt Fate",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"fortune",
+				"manipulate"
+			],
+			"domains": [
+				"fate"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You or an ally within range attempts a saving throw.",
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"targets": "the triggering creature",
+			"entries": [
+				"You twist the forces of fate to make a moment dire or uneventful, with no in-between. The target gains a +1 status bonus to the triggering saving throw. If the saving throw's result is a success, it becomes a critical success. If it's a failure, it becomes a critical failure, and the critical failure can't be reduced by abilities that usually reduce critical failure.",
+				"If the triggering ability did not have both a critical success and critical failure condition, tempt fate fails, but you don't expend the Focus Point for {@action Cast a Spell|PC1|Casting this Spell}."
+			],
+			"heightened": {
+				"X": {
+					"8": [
+						"The bonus on the saving throw is +2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Fire Ray",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"attack",
+				"cleric",
+				"concentrate",
+				"fire",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"fire"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": []
+			},
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"A blazing band of fire arcs through the air, lighting your opponent and the ground they stand upon on fire. Make a spell attack roll against the target's AC. The ray deals {@damage 2d6} fire damage on a hit (or double damage on a critical hit). On any result other than a critical failure, the ground in the target's space catches fire, dealing {@damage 1d6} fire damage to each creature that ends its turn in one of the squares."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The ray's initial damage increases by {@damage 2d6}, and the fire damage dealt by the burning space increases by {@dice 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Flame Barrier",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus"
+			],
+			"domains": [
+				"fire"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "An effect would deal fire damage to you or an ally within range.",
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "one creature that would take fire damage from the triggering effect",
+			"entries": [
+				"You swiftly deflect incoming flames. The target gains fire resistance 15 against the triggering effect."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The resistance increases by 5."
+					]
+				}
+			}
+		},
+		{
+			"name": "Unimpeded Stride",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"freedom"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"Divine grace ensure that nothing can keep you prisoner or hold you back. You immediately escape from every {@trait magical} effect that has you {@condition immobilized|PC1} or {@condition grabbed|PC1} unless the effect is of a higher rank than your {@spell unimpeded stride|PC1} spell. You then {@action Stride|PC1}. During this movement, you ignore difficult terrain and any circumstance or status penalties to your Speed."
+			]
+		},
+		{
+			"name": "Word of Freedom",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"mental"
+			],
+			"domains": [
+				"freedom"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You utter a liberating word of power that frees a creature. You suppress one of the following conditions of your choice: {@condition confused|PC1}, {@condition frightened|PC1}, {@condition grabbed|PC1}, {@condition paralyzed|PC1}, or {@condition restrained|PC1}. The target isn't affected by the chosen condition, and if you suppress the {@condition grabbed|PC1} or {@condition restrained|PC1} condition, the target automatically breaks free from the grab or restraint when you {@action Cast a Spell|PC1|Cast the Spell}.",
+				"If you don't remove the effect that provided the condition, the condition returns after the spell ends. For example, if a spell was making the target {@condition confused|PC1} for 1 minute, word of freedom would let the target act normally for a round, but the {@condition confused|PC1} condition would return afterward."
+			]
+		},
+		{
+			"name": "Healer's Blessing",
+			"source": "PC1",
+			"remaster": true,
+			"page": 375,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus"
+			],
+			"domains": [
+				"healing"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing living creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your words bless a creature with an enhanced connection to vital energy. When the target regains Hit Points from a healing {@trait vitality} spell, it regains 2 additional Hit Points. The target regains additional Hit Points from {@spell healer's blessing|PC1} only the first time it regains HP from a given {@trait healing} spell, so a spell that heals the creature repeatedly over a duration would restore additional Hit Points only once, when they are first healed."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The additional healing increases by 2 HP."
+					]
+				}
+			}
+		},
+		{
+			"name": "Rebuke Death",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"healing",
+				"manipulate",
+				"vitality"
+			],
+			"domains": [
+				"healing"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 3}"
+			},
+			"area": {
+				"entry": "20-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"targets": "1 living creature per action spent to {@action Cast a Spell|PC1|Cast this Spell}",
+			"entries": [
+				"You snatch creatures from the jaws of death, restoring them without the strain of a typical close call. You can spend 1 to 3 actions {@action Cast a Spell|PC1|Casting this Spell}, and you can target a number of creatures equal to the actions spent. Each target regains {@dice 3d6} Hit Points. If the target had the {@condition dying|PC1} condition, coming back from {@condition dying|PC1} due to this healing doesn't increase its {@condition wounded|PC1} condition."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the healing by {@dice 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Overstuff",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"indulgence"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 living creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"Huge amounts of food and drink fill the target. It receives a full meal's worth of nourishment and must attempt a Fortitude save. A target {@condition sickened|PC1} by this spell takes a \u201310-foot status penalty to its Speed until it's no longer {@condition sickened|PC1}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition sickened|PC1|sickened 1}, but if it spends an action to end the condition, it succeeds automatically."
+						],
+						"Failure": [
+							"The target is {@condition sickened|PC1|sickened 1}."
+						],
+						"Critical Failure": [
+							"The target is {@condition sickened|PC1|sickened 2}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Take Its Course",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"indulgence"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"When someone has overindulged, you can hasten them past the worst of their affliction or intensify their misery. This spell attempts to progress a disease affliction, a poison affliction, or {@condition persistent damage|PC1|persistent poison damage} affecting the target. If the target is affected by more than one of these, choose from among those you are aware of; otherwise, the GM chooses randomly. An unwilling target can attempt a Will save to negate take its course.",
+				"The effect of this spell depends on whether you're attempting to end an affliction or {@condition persistent damage|PC1|persistent poison damage}, and whether you are attempting to help or hinder the target's recovery.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Affliction} The target immediately attempts its next saving throw against the affliction. You can grant the creature your choice of a +2 status bonus or a \u20132 status penalty to its saving throw against the affliction.",
+						"{@b Persistent Poison} You can cause the target to take the {@condition persistent damage|PC1|persistent poison damage} immediately when you {@action Cast a Spell|PC1|Cast this Spell} (in addition to taking it at the end of its next turn). Whether or not you do so, the target attempts an additional flat check against the {@condition persistent damage|PC1|persistent poison damage}. You can set the DC of that flat check to 5 or 20 instead of the normal DC."
+					]
+				}
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"You can attempt to progress any number of the target's eligible afflictions and {@condition persistent damage|PC1|persistent poison damage}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Scholarly Recollection",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"fortune"
+			],
+			"domains": [
+				"knowledge"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You attempt a {@skill Perception|PC1} check to {@action Seek|PC1}, or you attempt a skill check to {@action Recall Knowledge|PC1} with a skill you're trained in.",
+			"entries": [
+				"Speaking a short prayer as you gather your thoughts, you're blessed to find yourself pointed in the right direction. The GM rolls the triggering check twice and uses the better result."
+			]
+		},
+		{
+			"name": "Know the Enemy",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"fortune",
+				"manipulate"
+			],
+			"domains": [
+				"knowledge"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You roll initiative and can see a creature, you succeed at an attack roll against a creature, or a creature fails a saving throw against one of your spells.",
+			"entries": [
+				"You quickly remind yourself of useful information. Use a {@action Recall Knowledge|PC1} action, rolling the appropriate skill check to identify the triggering creature's abilities. You can roll your check twice and use the better result."
+			]
+		},
+		{
+			"name": "Bit of Luck",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"fortune",
+				"manipulate"
+			],
+			"domains": [
+				"luck"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You tilt the scales of luck slightly to protect a creature from disaster. When the target would attempt a saving throw, it can roll twice and use the better result. Once it does this, the spell ends.",
+				"If you cast {@spell bit of luck|PC1} again, any previous bit of luck you cast that's still in effect ends. After a creature has been targeted with bit of luck, it becomes temporarily immune for 24 hours."
+			]
+		},
+		{
+			"name": "Lucky Break",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"fortune"
+			],
+			"domains": [
+				"luck"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You fail, but don't critically fail, a saving throw.",
+			"entries": [
+				"Reroll the saving throw and use the better result. You then become temporarily immune for 10 minutes."
+			]
+		},
+		{
+			"name": "Magic's Vessel",
+			"source": "PC1",
+			"remaster": true,
+			"page": 376,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"magic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"duration": {
+				"unit": "unknown",
+				"entry": "sustained up to 1 minute"
+			},
+			"entries": [
+				"A creature becomes a divine receptacle for pure magical energy. The target gains a +1 status bonus to saving throws. Each time you {@action Cast a Spell|PC1} from your spell slots, you automatically {@action Sustain|PC1|Sustain this Spell} and grant its target resistance to damage from spells equal to the spell's rank, until the start of your next turn."
+			]
+		},
+		{
+			"name": "Mystic Beacon",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"magic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"The next damaging or healing spell the target casts before the start of your next turn deals damage or restores Hit Points as if the spell were heightened 1 rank higher than its actual rank. This applies only to initial healing or damage when the spell is cast, not any ongoing effects. The spell otherwise functions at its actual rank. Once the target casts the spell, mystic beacon ends."
+			]
+		},
+		{
+			"name": "Athletic Rush",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"might"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"Your body fills with physical power and skill. You gain a +10-foot status bonus to Speed and a +2 status bonus to {@skill Athletics|PC1} checks. As a part of {@action Cast a Spell|PC1|Casting this Spell}, you can use a {@action Stride|PC1}, {@action Leap|PC1}, {@action Climb|PC1}, or {@action Swim|PC1} action. The spell's bonuses apply during that action."
+			]
+		},
+		{
+			"name": "Enduring Might",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"might"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "An attack or effect would deal damage to you.",
+			"entries": [
+				"Your own might mingles with divine power to protect you from harm. You gain resistance equal to 8 plus your Strength modifier against all damage from the triggering attack or effect."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The resistance increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Moonbeam",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"attack",
+				"cleric",
+				"concentrate",
+				"fire",
+				"focus",
+				"light",
+				"manipulate"
+			],
+			"domains": [
+				"moon"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": []
+			},
+			"entries": [
+				"You shine a ray of moonlight. Make a spell attack roll. The beam of light deals {@damage 2d6} fire damage. This is silver damage for the purposes of weaknesses, resistances, and the like.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The beam deals double damage, and the target is {@condition dazzled|PC1} for 1 minute."
+						],
+						"Success": [
+							"The beam deals full damage, and the target is {@condition dazzled|PC1} for 1 round."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The ray's damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Touch of the Moon",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"light",
+				"manipulate"
+			],
+			"domains": [
+				"moon"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"When you touch the target, a symbol of the moon appears on its forehead, glowing with soft moonlight. The target glows with dim light in a 20-foot radius. It also gets a benefit based on a phase of the moon, starting with the new moon and changing to the next phase at the end of each of its turns.",
+				{
+					"type": "list",
+					"items": [
+						"{@b New Moon} The target receives no benefit.",
+						"{@b Waxing Moon} The target gains a +1 status bonus to attack rolls and a +4 status bonus to damage rolls.",
+						"{@b Full Moon} The target gains a +1 status bonus to attack rolls, AC, and saves, and a +4 status bonus to damage.",
+						"{@b Waning Moon} The target gains a +1 status bonus to AC and saving throws. After this phase, return to the new moon."
+					]
+				}
+			]
+		},
+		{
+			"name": "Vibrant Thorns",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"morph",
+				"plant",
+				"wood"
+			],
+			"domains": [
+				"nature"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your body sprouts brambly thorns that thrive on life magic. Adjacent creatures that hit you with a melee attack, as well as creatures that hit you with unarmed attacks, take 1 piercing damage each time they do. Anytime you cast a {@trait vitality} spell, the thorns' damage increases to {@dice 1d6} until the start of your next turn."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by 1, or {@dice 1d6} after you cast a {@trait vitality} spell."
+					]
+				}
+			}
+		},
+		{
+			"name": "Nature's Bounty",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"plant",
+				"vitality"
+			],
+			"domains": [
+				"nature"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "You have a free hand.",
+			"entries": [
+				"A palm-sized raw fruit or vegetable of your choice appears in your open hand. A creature can consume the food with an {@action Interact|PC1} action to regain {@dice 3d10+12} Hit Points and be nourished as if it had eaten a meal. If uneaten, the food crumbles to dust after 1 minute."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The Hit Points restored increase by 6."
+					]
+				}
+			}
+		},
+		{
+			"name": "Waking Nightmare",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"fear",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"nightmares"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You fill the creature's mind with a terrifying vision. The target must attempt a Will save. A creature {@condition frightened|PC1} by this spell takes 1 additional mental damage each time it's hit by a {@action Strike|PC1}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition frightened|PC1|frightened 1}."
+						],
+						"Failure": [
+							"The target is {@condition frightened|PC1|frightened 2}. If it's asleep, it wakes up and is {@condition paralyzed|PC1} for 1 round."
+						],
+						"Critical Failure": [
+							"As failure, but {@condition frightened|PC1|frightened 3}."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The mental damage increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Shared Nightmare",
+			"source": "PC1",
+			"remaster": true,
+			"page": 377,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"incapacitation",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"nightmares"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"Merging minds with the target, you swap distressing visions. One of you will become {@condition confused|PC1}, based on the target's Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"You are {@condition confused|PC1} for 1 round."
+						],
+						"Success": [
+							"At the start of your next turn, you spend your first action with the {@condition confused|PC1} condition, then act normally."
+						],
+						"Failure": [
+							"The target spends the first action of each of its turns {@condition confused|PC1}. The duration is 1 minute."
+						],
+						"Critical Failure": [
+							"The target is {@condition confused|PC1}. The duration is 1 minute."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Savor the Sting",
+			"source": "PC1",
+			"remaster": true,
+			"page": 378,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"mental",
+				"nonlethal"
+			],
+			"domains": [
+				"pain"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You inflict pain upon the target and revel in their anguish. This deals {@damage 1d4} mental damage and {@damage 1d4} {@condition persistent damage|PC1|persistent mental damage}; the target must attempt a Will save. As long as the target is taking {@condition persistent damage|PC1} from this spell, you gain a +1 status bonus to attack rolls and skill checks against the target.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected.",
+							"SuccessThe target takes half damage and no {@condition persistent damage|PC1}."
+						],
+						"Failure": [
+							"The target takes full initial and {@condition persistent damage|PC1}."
+						],
+						"Critical Failure": [
+							"The target takes double initial and {@condition persistent damage|PC1}."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The initial damage increases by {@damage 1d4} and the {@condition persistent damage|PC1} increases by {@damage 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Retributive Pain",
+			"source": "PC1",
+			"remaster": true,
+			"page": 378,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"mental",
+				"nonlethal"
+			],
+			"domains": [
+				"pain"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A creature in range damages you.",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "the triggering creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You vengefully reflect your pain upon your tormentor. The target takes mental damage equal to half the triggering damage."
+			]
+		},
+		{
+			"name": "Charming Touch",
+			"source": "PC1",
+			"remaster": true,
+			"page": 378,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"emotion",
+				"focus",
+				"incapacitation",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"passion"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature that could find you attractive",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You infuse your target with attraction, causing it to act friendlier toward you. The target attempts a Will save. It gains a +4 circumstance bonus to this save if you or your allies recently threatened or were {@condition hostile|PC1} to it.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected and aware you tried to charm it."
+						],
+						"Success": [
+							"The target is unaffected but thinks your spell was something harmless instead of charming touch, unless it identifies the spell (see Identifying Spells on page 303)."
+						],
+						"Failure": [
+							"The target's attitude becomes {@condition friendly|PC1} toward you.",
+							"If it was {@condition friendly|PC1}, it becomes {@condition helpful|PC1}. It can't use {@condition hostile|PC1} actions against you. If you use a {@condition hostile|PC1} action against the target, the spell ends. You can {@action Dismiss|PC1} the spell. After the spell ends, the target doesn't necessarily realize it was charmed unless its friendship with you or the actions you convinced it to take clash with its expectations. If it doesn't realize you charmed it, you could potentially convince it to continue being your friend via mundane means."
+						],
+						"Critical Failure": [
+							"As failure, but the target is {@condition helpful|PC1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Captivating Adoration",
+			"source": "PC1",
+			"remaster": true,
+			"page": 378,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"aura",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"manipulate",
+				"mental",
+				"visual"
+			],
+			"domains": [
+				"passion"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "15-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You become intensely entrancing, and creatures are distracted by you as long as they remain within the area. You can exclude any creatures you choose from the effects. If a creature is in the aura when you {@action Cast a Spell|PC1|Cast the Spell} or when it enters the aura for the first time, it must attempt a Will saving throw. If a creature leaves and reenters, it uses the results of its original save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected and temporarily immune for 1 hour."
+						],
+						"Success": [
+							"The creature is {@condition fascinated|PC1} with you for its next action, then is temporarily immune for 1 hour."
+						],
+						"Failure": [
+							"The creature is {@condition fascinated|PC1} with you."
+						],
+						"Critical Failure": [
+							"The creature is {@condition fascinated|PC1} with you, and its attitude toward you improves by one step."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the size of the emanation by 15 feet."
+					]
+				}
+			}
+		},
+		{
+			"name": "Perfected Mind",
+			"source": "PC1",
+			"remaster": true,
+			"page": 378,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus"
+			],
+			"domains": [
+				"perfection"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"You meditate upon perfection to remove all distractions from your mind. Attempt a new Will save against one {@trait mental} effect currently affecting you that required a Will save. Use the result of this new save to determine the outcome of the {@trait mental} effect, unless the new save would have a worse result than the original save, in which case nothing happens. You can use perfected mind against a given effect only once."
+			]
+		},
+		{
+			"name": "Perfected Body",
+			"source": "PC1",
+			"remaster": true,
+			"page": 378,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus"
+			],
+			"domains": [
+				"perfection"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You fail or critically fail a saving throw against an effect that has the morph, {@trait poison}, or {@trait polymorph} trait, or that would make you {@condition clumsy|PC1}, {@condition doomed|PC1}, {@condition enfeebled|PC1}, {@condition petrified|PC1}, or {@condition sickened|PC1}.",
+			"entries": [
+				"Your body's perfection keeps you just a little bit healthier than most. You get a failure if you rolled a critical failure or a success if you rolled a failure."
+			]
+		},
+		{
+			"name": "Protector's Sacrifice",
+			"source": "PC1",
+			"remaster": true,
+			"page": 378,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"protection"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "An ally within 30 feet takes damage.",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"entries": [
+				"You protect your ally by suffering in their stead. Reduce the damage the ally would take by 3. You redirect this damage to yourself, but your immunities, weaknesses, resistances and so on do not apply.",
+				"You aren't subject to any conditions or other effects of whatever damaged your ally (such as poison from a venomous bite). Your ally is still subject to those effects even if you redirect all of the triggering damage to yourself."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage you redirect increases by 3."
+					]
+				}
+			}
+		},
+		{
+			"name": "Protector's Sphere",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"aura",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"protection"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "15-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"A protective aura emanates out from you, safeguarding you and your allies. You gain resistance 3 to all damage. Your allies also gain this resistance while in the aura."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The resistance increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Whispering Quiet",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"sonic"
+			],
+			"domains": [
+				"secrecy"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "15-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You suppress sound in an area, preventing anyone from giving away valuable secrets. This doesn't prevent those in the area from talking or {@action Cast a Spell|PC1|Casting a Spell}, but no creature more than 5 feet away can hear its voice without succeeding at a {@skill Perception|PC1} check against your spell DC, which might interfere with {@trait auditory} or {@trait linguistic} effects as well as communication. Other sounds created in the area are muffled to a similar volume unless that sound is created by an effect with the {@trait sonic} trait."
+			]
+		},
+		{
+			"name": "Safeguard Secret",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"secrecy"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "you and any number of willing allies",
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You ensure a secret remains safe from prying spies. Choose one piece of information that at least some of the targets know, such as \"the location of the stolen treasure\" or \"the password to enter the guild house. \" The spell grants those who know the piece of knowledge you have chosen a +4 status bonus to skill checks (typically {@skill Deception|PC1} checks) to conceal this knowledge, to saving throws against spells that specifically attempt to obtain this knowledge from them, and to effects that would force them to reveal it. If you {@action Cast a Spell|PC1|Cast this Spell} again, any previous safeguard secret you had cast ends."
+			]
+		},
+		{
+			"name": "Dazzling Flash",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"light",
+				"manipulate",
+				"visual"
+			],
+			"domains": [
+				"sun"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "15-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"You raise your religious symbol and create a blinding flash of light. Each creature in the area must attempt a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition dazzled|PC1} for 1 round."
+						],
+						"Failure": [
+							"The creature is {@condition blinded|PC1} for 1 round and {@condition dazzled|PC1} for 1 minute. The creature can spend an {@action Interact|PC1} action rubbing its eyes to end the {@condition blinded|PC1} condition."
+						],
+						"Critical Failure": [
+							"The creature is {@condition blinded|PC1} for 1 round and {@condition dazzled|PC1} for 1 hour."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The area increases to a 30-foot cone."
+					]
+				}
+			}
+		},
+		{
+			"name": "Vital Luminance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"aura",
+				"cleric",
+				"focus",
+				"light",
+				"manipulate",
+				"vitality"
+			],
+			"domains": [
+				"sun"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Drawing life force into yourself, you become a beacon of vitality.",
+				"You glow with bright light in a 30-foot emanation (and dim light to the next 30 feet), and you gain an internal pool of light called a luminance reservoir, which begins with a value of 4. At the start of each of your turns, increase your reservoir by 4.",
+				"If an {@trait undead} creature damages you with an attack or spell while it's within the bright light of your aura, that creature takes vitality damage equal to half your luminance reservoir value. It takes this damage only the first time it damages you in a round.",
+				"You can {@action Dismiss|PC1} this Spell. When you do, you can target a creature within your light and direct the vitality energy into it. The target must be a willing living creature or an {@trait undead} creature. This heals a living target or deals vitality damage to an undead target equal to your luminance reservoir's value.",
+				"If you {@action Cast a Spell|PC1|Cast this Spell} again, any previous casting ends."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Both the initial value of your luminance reservoir and the amount it increases each turn increase by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Agile Feet",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"travel"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"The blessings of your god make your feet faster and your movements more fluid. You gain a +5-foot status bonus to your Speed and ignore difficult terrain. As part of casting agile feet, you can {@action Step|PC1}, {@action Stride|PC1}, or {@action Tumble Through|PC1}; you can instead {@action Burrow|PC1}, {@action Climb|PC1}, {@action Fly|PC1}, or {@action Swim|PC1} if you have the appropriate Speed."
+			]
+		},
+		{
+			"name": "Traveler's Transit",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"travel"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 5,
+				"unit": "minute"
+			},
+			"entries": [
+				"You add power to your muscles, allowing you to swim or climb walls with ease. When you {@action Cast a Spell|PC1|Cast this Spell}, you gain either a climb Speed or a swim Speed. The Speed is equal to your land Speed."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"You can choose to gain a fly Speed."
+					]
+				}
+			}
+		},
+		{
+			"name": "Sudden Shift",
+			"source": "PC1",
+			"remaster": true,
+			"page": 379,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate"
+			],
+			"domains": [
+				"trickery"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "An enemy misses you with a melee attack.",
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"You swiftly move from a dangerous spot and veil yourself. You {@action Step|PC1} and become {@condition concealed|PC1}."
+			]
+		},
+		{
+			"name": "Trickster's Twin",
+			"source": "PC1",
+			"remaster": true,
+			"page": 380,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"illusion",
+				"manipulate",
+				"visual"
+			],
+			"domains": [
+				"trickey"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You rarely settle for being in just one place. Choose a location within 100 feet of the target that the target can see. You create an illusion of yourself there that only it can see and that mimics all your actions. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target believes you're in the designated location and can't see you in your actual location. The target automatically disbelieves the illusion when you use an action that doesn't make sense in the illusion's position, or if the target attacks, touches, Seeks, or otherwise engages with the illusion. If you use a {@condition hostile|PC1} action against the target, the spell ends."
+						],
+						"Failure": [
+							"As success, but the target must succeed at a Will save to disbelieve the illusion when one of the listed events occurs."
+						],
+						"Critical Failure": [
+							"As success, but the target must critically succeed at a Will save to disbelieve when one of the listed events occurs."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Word of Truth",
+			"source": "PC1",
+			"remaster": true,
+			"page": 380,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus"
+			],
+			"domains": [
+				"truth"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You speak a statement that you believe to be true and that is free of any attempt to deceive through twisting words, omission, and so on. The statement must be 25 words or fewer. A symbol of your deity glows above your head and lasts for the spell's duration, and anyone who sees you and hears you speak knows instinctively that you believe what you say is true. This assurance of honesty grants you a +2 status bonus to {@skill Diplomacy|PC1} checks as long as the symbol persists. You can {@action Dismiss|PC1} the spell, and if you say something that you don't believe is entirely true, the spell ends before you complete your statement."
+			]
+		},
+		{
+			"name": "Glimpse the Truth",
+			"source": "PC1",
+			"remaster": true,
+			"page": 380,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"aura",
+				"cleric",
+				"focus",
+				"manipulate",
+				"revelation"
+			],
+			"domains": [
+				"truth"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "30-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"Divine insight lets you see things as they are, unveiled by attempts to magically cloak the truth. The GM attempts a secret counteract check against each illusion that is at least partially within the area. Instead of counteracting the illusion, you see through it (for instance, if the check succeeds against an {@spell illusory disguise|PC1} spell, you see the creature's true form but illusory disguise doesn't end). Each time a new illusion comes into the aura during the duration of the spell, the GM attempts a secret counteract check for that illusion."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"You can allow everyone within range of the emanation to see through any illusions you succeed against, not just yourself."
+					]
+				}
+			}
+		},
+		{
+			"name": "Touch of Obedience",
+			"source": "PC1",
+			"remaster": true,
+			"page": 380,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"tyranny"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 living creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"Your imperious touch erodes the target's willpower, making it easier to control. The target attempts a Will save. Regardless of the result, it's then temporarily immune for 1 hour.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition stupefied|PC1|stupefied 1} until the end of your next turn."
+						],
+						"Failure": [
+							"The target is {@condition stupefied|PC1|stupefied 2} until the end of your next turn."
+						],
+						"Critical Failure": [
+							"The target is {@condition stupefied|PC1|stupefied 2} for 1 minute and is forced to its knees, becoming {@condition prone|PC1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Commanding Lash",
+			"source": "PC1",
+			"remaster": true,
+			"page": 380,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"linguistic",
+				"manipulate",
+				"mental"
+			],
+			"domains": [
+				"tyranny"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "Your most recent action dealt damage to a target.",
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"targets": "a creature you dealt damage to on your most recent action",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"With the threat of more pain, you compel a creature you've recently harmed. You issue a command to the target, with the effects of the spell command. If the target is {@condition frightened|PC1}, {@condition stupefied|PC1}, or taking {@condition persistent damage|PC1}, it takes a \u20132 circumstance penalty to the save. Regardless of the result, the target is then temporarily immune for 1 hour."
+			]
+		},
+		{
+			"name": "Touch of Undeath",
+			"source": "PC1",
+			"remaster": true,
+			"page": 380,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"void"
+			],
+			"domains": [
+				"undeath"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 living creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You attack the target's life force with undeath, dealing {@damage 1d6} void damage. The target must attempt a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes half damage."
+						],
+						"Failure": [
+							"The target takes full damage, and {@trait vitality} effects heal it only half as much as normal for 1 round."
+						],
+						"Critical Failure": [
+							"The target takes double damage, and {@trait vitality} effects heal it only half as much as normal for 1 minute."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Malignant Sustenance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 380,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"void"
+			],
+			"domains": [
+				"undeath"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 willing {@trait undead} creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You embed a seed of void energy in an {@trait undead} creature, restoring its unnatural vigor over time. The target gains fast healing 7."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The fast healing increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Tidal Surge",
+			"source": "PC1",
+			"remaster": true,
+			"page": 381,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"water"
+			],
+			"domains": [
+				"water"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You call forth a tremendous wave to move the target either in a body of water or on the ground. You move the target up to 10 feet in any direction along the ground or 20 feet through a body of water. An unwilling target can attempt a Fortitude save, and it avoids being moved if it succeeds."
+			]
+		},
+		{
+			"name": "Downpour",
+			"source": "PC1",
+			"remaster": true,
+			"page": 381,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"water"
+			],
+			"domains": [
+				"water"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "30-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You call forth a torrential downpour, which extinguishes nonmagical flames. Creatures in the area are {@condition concealed|PC1} and gain fire resistance 10. Creatures outside the area are {@condition concealed|PC1} to those inside the area. If a creature with weakness to water ends its turn in the area, the downpour triggers its weakness."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The fire resistance increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Appearance of Wealth",
+			"source": "PC1",
+			"remaster": true,
+			"page": 381,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"focus",
+				"illusion",
+				"manipulate"
+			],
+			"domains": [
+				"wealth"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "5-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You create a brief vision of immense wealth filling the spell's area.",
+				"Each creature within 20 feet of the area that could be enticed by material wealth must attempt a Will saving throw. A creature that enters the area automatically disbelieves the illusion, and disbelieving the illusion ends any {@condition fascinated|PC1} condition imposed by the spell. As long as you {@action Sustain|PC1|Sustain the Spell}, other creatures react to the treasure like they would any other illusion, but they are not at risk of becoming {@condition fascinated|PC1}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature disbelieves the illusion and is unaffected by it."
+						],
+						"Success": [
+							"The creature is {@condition fascinated|PC1} by the wealth until it has completed its first action on its next turn."
+						],
+						"Failure": [
+							"The creature is {@condition fascinated|PC1} by the illusion."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Precious Metals",
+			"source": "PC1",
+			"remaster": true,
+			"page": 381,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"metal"
+			],
+			"domains": [
+				"wealth"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 metal shield or weapon, 1 suit of metal armor, or up to 1 Bulk of metal material (such as coins or metal-tipped ammunition)",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your deity blesses base metals to transform them into precious materials. The metal in the target transforms from its normal metal into cold iron, copper, gold, iron, silver, or steel. If the spell's rank is 8th or higher, add adamantine and dawnsilver to the options. If you transform an object into copper, gold, or silver, its Hardness is reduced to 1. Otherwise, its Hardness is increased to 10 if it was lower. An item transmuted in this way deals damage according to its new material. For example, a steel sword transmuted to cold iron would deal additional damage to a creature with a weakness to cold iron. It can have other effects of the new material at the GM's discretion.",
+				"This change is clearly magical and temporary, so the item's monetary value doesn't change; you couldn't transmute copper coins to gold and use them to purchase something."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"If you increase the Hardness of the object, the new Hardness is 2 higher."
+					]
+				}
+			}
+		},
+		{
+			"name": "Weapon Surge",
+			"source": "PC1",
+			"remaster": true,
+			"page": 381,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"focus",
+				"manipulate",
+				"sanctified"
+			],
+			"domains": [
+				"zeal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 weapon you're wielding",
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"Holding your weapon aloft, you fill it with divine energy. On your next {@action Strike|PC1} with that weapon before the start of your next turn, you gain a +1 status bonus to the attack roll, the weapon deals an additional {@damage 1d6} spirit damage, and the {@action Strike|PC1} gains the sanctified trait. Weapon surge ends once you complete this {@action Strike|PC1} or the weapon leaves your possession."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"The attack deals {@dice 2d6} additional spirit damage."
+					],
+					"9": [
+						"The attack deals {@dice 3d6} additional spirit damage."
+					]
+				}
+			}
+		},
+		{
+			"name": "Zeal for Battle",
+			"source": "PC1",
+			"remaster": true,
+			"page": 381,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"cleric",
+				"concentrate",
+				"emotion",
+				"focus",
+				"fortune",
+				"mental"
+			],
+			"domains": [
+				"zeal"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You and at least 1 ally are about to roll initiative.",
+			"range": {
+				"unit": "feet",
+				"number": 10
+			},
+			"targets": "you and the triggering ally",
+			"entries": [
+				"You stoke the righteous anger within yourself and an ally. You and the target ally each roll a d20 and use the higher result for both your initiative rolls. You each still use your own {@skill Perception|PC1} modifier or other statistic to determine your results."
+			]
+		},
+		{
+			"name": "Primal Summons",
+			"source": "PC1",
+			"remaster": true,
+			"page": 381,
+			"type": "Focus",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"druid",
+				"focus"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "free"
+			},
+			"entries": [
+				"You enhance a {@trait summoned} creature with the power of the elements. If your next action is to cast either summon animal or summon plant or fungus, choose air, earth, fire, metal, water, or wood; the creature you summon gains the corresponding abilities.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Air} The creature gains a fly Speed of 60 feet.",
+						"{@b Earth} The creature gains a burrow Speed of 20 feet, reduces its land Speed by 10 feet (minimum 5 feet), and gains resistance 5 to physical damage.",
+						"{@b Fire} The creature's Strikes deal {@dice 1d6} extra fire damage, and it gains resistance 10 to fire and weakness 5 to cold and water.",
+						"{@b Metal} The creature's Strikes deal {@dice 1d6} extra electricity damage, and it gains resistance 5 to electricity.",
+						"{@b Water} The creature gains a swim Speed of 60 feet, can spend 1 action after a melee attack to attempt a {@action Shove|PC1} (ignoring multiple attack penalty), and gains resistance 5 to fire.",
+						"{@b Wood} The creature gains a climb Speed of 30 feet and resistance 2 to bludgeoning and piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Heal Animal",
+			"source": "PC1",
+			"remaster": true,
+			"page": 382,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"druid",
+				"focus",
+				"healing",
+				"manipulate",
+				"vitality"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 2}"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 willing living animal",
+			"entries": [
+				"You heal an animal's wounds, restoring {@dice 1d8} Hit Points to the target. The number of actions spent {@action Cast a Spell|PC1|Casting this Spell} determines its effect.",
+				"{@as 1} The spell has a range of touch.",
+				"{@as 2} (concentrate) The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The amount of healing increases by {@dice 1d8}, and the additional healing for the 2-action version increases by 8."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cornucopia",
+			"source": "PC1",
+			"remaster": true,
+			"page": 382,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"druid",
+				"focus",
+				"healing",
+				"manipulate",
+				"plant",
+				"vitality"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"Vines twine into a wicker horn in your hands, and out spills a single fruit, nut, or similar small bit of produce. A creature who eats the produce with an {@action Interact|PC1} action regains {@dice 1d6+4} HP. The cornucopia, as well as any unconsumed pieces of fruit, wither away at the end of the duration."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The cornucopia produces an additional piece of food. A creature can consume any amount of food from the same casting with a single {@action Interact|PC1} action. Eating six pieces of produce from the cornucopia gives as much nourishment as one square meal for a typical human."
+					]
+				}
+			}
+		},
+		{
+			"name": "Impaling Briars",
+			"source": "PC1",
+			"remaster": true,
+			"page": 382,
+			"type": "Focus",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"druid",
+				"focus",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "ground within a 100-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"The ground within the area transforms into a mass of dangerous briars that assault and impede your foes. When you {@action Cast a Spell|PC1|Cast the Spell} and the first time you {@action Sustain|PC1} it each turn on subsequent rounds, select one of the following effects to occur in the area.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Ensnare} The briars clump around your foes, attempting to hold them in place. A foe within the area (or flying at most 20 feet above the area) must attempt a Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to all Speeds for 1 round, and on a critical failure, it is {@condition immobilized|PC1} for 1 round unless it Escapes.",
+						"{@b Impede} The briars twist and writhe, making the entire area difficult terrain.",
+						"{@b Wall} A wall of thorns appears in the area, lasting for 1 round. The wall is greater difficult terrain instead of difficult terrain."
+					]
+				},
+				"In addition, once per round you can direct the briars to impale any target in the area (or flying up to 20 feet above the area) that you can see by using a single action, which has the {@trait concentrate} and {@trait manipulate} traits. Make a spell attack roll. On a success, the target takes {@damage 10d6} piercing damage and takes a \u201310- foot circumstance penalty to all Speeds for 1 round; on a critical success, the target is {@condition immobilized|PC1} for 1 round unless it {@action Escape|PC1|Escapes}."
+			]
+		},
+		{
+			"name": "Storm Lord",
+			"source": "PC1",
+			"remaster": true,
+			"page": 382,
+			"type": "Focus",
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"air",
+				"concentrate",
+				"druid",
+				"electricity",
+				"focus",
+				"manipulate"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"requirements": "You are outdoors and aboveground.",
+			"area": {
+				"entry": "100-foot emanation, which includes you",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"The sky above you darkens in a matter of moments, swirling with ominous clouds punctuated by flashes of lighting. When you {@action Cast a Spell|PC1|Cast the Spell} and the first time you Sustain it each turn on subsequent rounds, select one of the following effects to occur in the area.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Calm} No additional effect.",
+						"{@b Fog} Heavy fog rolls in, with the effects of mist.",
+						"{@b Rain} Torrential rain falls from the sky, dousing ordinary flames. Creatures in the area take a \u20132 circumstance penalty to {@skill Acrobatics|PC1} and {@skill Perception|PC1} checks.",
+						"{@b Wind} Powerful winds buffet the area in all directions."
+					]
+				},
+				"Ranged attacks take a \u20134 circumstance penalty, and the area is difficult terrain for flying creatures.",
+				"In addition, once per round you can use a single action, which has the {@trait concentrate} and {@trait manipulate} traits, to call down a bolt of lightning, striking any target in range that you can see. You deal {@damage 10d6} electricity damage to the target; it must attempt a basic Reflex save. On a failure, it is also {@condition deafened|PC1} for 1 round."
+			]
+		},
+		{
+			"name": "Stormwind Flight",
+			"source": "PC1",
+			"remaster": true,
+			"page": 382,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"air",
+				"concentrate",
+				"druid",
+				"focus",
+				"manipulate"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Powerful winds carry you through the air, giving you a fly Speed equal to your Speed. When this spell's duration would end, if you're still flying, you float to the ground, as gentle landing."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"When you fly using stormwind flight, you ignore difficult terrain from wind."
+					]
+				}
+			}
+		},
+		{
+			"name": "Tempest Surge",
+			"source": "PC1",
+			"remaster": true,
+			"page": 382,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"air",
+				"concentrate",
+				"druid",
+				"electricity",
+				"focus",
+				"manipulate"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage to the target with a basic Reflex save. On a failure, the target also is {@condition clumsy|PC1|clumsy 2} for 1 round and takes 1 {@condition persistent damage|PC1|persistent electricity damage}."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The initial damage increases by {@damage 1d12}, and the {@condition persistent damage|PC1|persistent electricity damage} on a failure increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Untamed Form",
+			"source": "PC1",
+			"remaster": true,
+			"page": 382,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"druid",
+				"focus",
+				"manipulate",
+				"polymorph"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 2}"
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You reach within for a different part of yourself, and you set it free, transforming your body into another form. You polymorph into any form listed in {@spell pest form|PC1}, which lasts 10 minutes. All other untamed form shapes last 1 minute. You can add more shapes to your untamed form list with druid feats; your feat might grant you some or all of the shapes from a given {@trait polymorph} spell.",
+				"When you transform into a shape granted by a spell, you gain all the effects of the shape you chose from a version of the spell heightened to untamed form's rank. Untamed form allows you to use your own shapeshifting training more easily than most {@trait polymorph} spells. When you choose to use your own attack modifier while polymorphed instead of the form's default attack modifier, you gain a +2 status bonus to your attack rolls."
+			],
+			"heightened": {
+				"X": {
+					"2": [
+						"You can transform into shapes listed in {@spell animal form|PC1}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Untamed Shift",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"druid",
+				"focus",
+				"manipulate",
+				"morph"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You transform just a part of your body. Choose any one effect that matches an untamed order feat you have.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@feat Untamed Form|PC1}} Your hands transform into incredibly sharp claws. Untamed claws are an unarmed attack, have the {@trait agile} and {@trait finesse} traits, and deal {@damage 1d6} slashing damage. You can still hold and use items with your hands while they're transformed by this spell, but you must have a hand free to attack with it.",
+						"{@b {@feat Insect Shape|PC1}} Your mouth becomes deadly jaws. Untamed jaws are an unarmed attack that deal {@damage 1d8} piercing damage.",
+						"{@b {@feat Elemental Shape|PC1} You shift your body to be partially composed of elemental matter, granting you resistance 5 to critical hits and precision damage.",
+						"{@b {@feat Plant Shape|PC1}} Your arms become long vines, increasing your reach to 10 feet (or 15 feet with a reach weapon).",
+						"{@b {@feat Soaring Shape|PC1}} You must cast untamed shift using 2 actions for this benefit. You grow wings from your back, gaining a fly Speed of 30 feet."
+					]
+				}
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"You can choose up to two effects from the list. Untamed claws leave terrible, ragged wounds that also deal {@damage 2d6} {@condition persistent damage|PC1|persistent bleed damage} on a hit, and untamed jaws are envenomed, also dealing {@damage 2d6} {@condition persistent damage|PC1|persistent poison damage} on a hit."
+					],
+					"10": [
+						"You can choose up to three effects from the list. Untamed claws deal {@damage 4d6} {@condition persistent damage|PC1|persistent bleed damage} on a hit, and untamed jaws deal {@damage 4d6} {@condition persistent damage|PC1|persistent poison damage} on a hit."
+					]
+				}
+			}
+		},
+		{
+			"name": "Gravity Weapon",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"ranger"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You build up gravitational force and funnel it into your blows, leading to more powerful attacks with blade and bow alike. On your first weapon {@action Strike|PC1} each round, you gain a status bonus to damage equal to twice the number of weapon damage dice."
+			]
+		},
+		{
+			"name": "Heal Companion",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"healing",
+				"ranger",
+				"vitality"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 2}"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "your animal companion",
+			"entries": [
+				"You heal your animal companion's wounds. You restore {@dice 1d10} Hit Points to your animal companion. The number of actions you spend {@action Cast a Spell|PC1|Casting this Spell} determines range and other parameters.",
+				"{@as 1} (manipulate) The spell has a range of touch.",
+				"{@as 2} (concentrate, manipulate) The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The amount of healing increases by {@dice 1d10}, and the additional healing for the 2-action version increases by 8."
+					]
+				}
+			}
+		},
+		{
+			"name": "Magic Hide",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"manipulate",
+				"ranger"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "your animal companion",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your animal companion grows a thicker hide, matted fur, or a harder shell, granting it a +1 status bonus to AC."
+			]
+		},
+		{
+			"name": "Animal Feature",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"morph",
+				"ranger"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Without fully transforming your body, you gain one animalistic feature, which you select from the list below each time you {@action Cast a Spell|PC1|Cast the Spell}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Cat} Eyes You gain low-light vision.",
+						"{@b Claws} You gain a claw attack that deals {@damage 1d6} slashing damage and has the agile, {@trait finesse}, and {@trait unarmed} traits.",
+						"{@b Jaws} You gain a jaws attack that deals {@damage 1d8} piercing damage and has the {@trait unarmed} trait."
+					]
+				}
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"Add the following options to the list.",
+						{
+							"type": "list",
+							"items": [
+								"{@b Fish Tail} You gain a swim Speed equal to your land Speed.",
+								"{@b Owl Eyes} You gain darkvision.",
+								"{@b Wings} You gain a fly Speed equal to your land Speed."
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Enlarge Companion",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"polymorph",
+				"ranger"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "your animal companion",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your animal companion grows much larger, towering over its foes in battle. Your animal companion becomes Large, gaining the effects of a 2nd-rank {@spell enlarge|PC1} spell."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"Your animal companion instead becomes Huge, gaining the benefits of a 4th-rank {@spell enlarge|PC1} spell."
+					]
+				}
+			}
+		},
+		{
+			"name": "Hunter's Luck",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"fortune",
+				"ranger"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "free"
+			},
+			"trigger": "You attempt a check to {@action Recall Knowledge|PC1} about a creature, but you haven't rolled yet.",
+			"entries": [
+				"You have a preternatural ability to remember details about your foes. Roll the triggering check twice and use the better result."
+			]
+		},
+		{
+			"name": "Soothing Mist",
+			"source": "PC1",
+			"remaster": true,
+			"page": 383,
+			"type": "Focus",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"healing",
+				"manipulate",
+				"ranger",
+				"vitality"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing living creature or 1 {@trait undead} creature",
+			"entries": [
+				"You call forth a magical mist that envelops a creature. The mist restores {@dice 2d8} Hit Points to a target living creature and ends one source of {@condition persistent damage|PC1|persistent acid}, bleed, fire, poison, or void damage affecting it. If the creature is taking {@condition persistent damage|PC1} from multiple sources, you select which one is removed. Against an undead target, you deal {@damage 2d8} vitality damage (basic Fortitude save); if it fails the save, it also takes 2 {@condition persistent damage|PC1|persistent vitality damage}."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The amount of healing (or damage to an undead target) increases by {@dice 1d8}, and the {@condition persistent damage|PC1|persistent vitality damage} to an {@trait undead} creature increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Ephemeral Tracking",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"ranger"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You can look at currents in the air and water and see tracks that you can follow just as you would on land. You can use {@skill Survival|PC1} to {@action Track|PC1} through both air and water, noticing aerial or aquatic \"tracks\" of all creatures who passed nearby in the last hour. It's more difficult to {@action Track|PC1} in this way: the DC to {@action Track|PC1} through air or water is always at least 30, or higher after precipitation or wind (in the air) or heavy tides or currents (in the water). It's possible to {@action Cover Tracks|PC1} against this spell, but creatures might not realize they need to do so."
+			]
+		},
+		{
+			"name": "Ranger's Bramble",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"plant",
+				"ranger"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 100
+			},
+			"area": {
+				"entry": "all squares that contain plants in a 5-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You cause plants in the area to entangle your foes, with the effects of entangling flora. A creature that critically fails the save takes {@damage 2d4} {@condition persistent damage|PC1|persistent bleed damage} in addition to being {@condition immobilized|PC1}. Escaping your bramble doesn't end the bleed damage."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The bleed damage on a critical failure increases by {@dice 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Hunter's Vision",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"ranger"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 hunted prey",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your target glows with a magical aura visible only to you and those who follow your lead. Your target is visible to you and others sharing your {@action Hunt Prey|PC1} benefits even if it wouldn't normally be due to lighting or the {@condition concealed|PC1} or {@condition invisible|PC1} conditions, though cover from opaque objects still blocks your sight. You ignore the flat check against the target due to the {@condition concealed|PC1} condition, and the target isn't automatically {@condition hidden|PC1} from you due to darkness or being {@condition invisible|PC1}."
+			]
+		},
+		{
+			"name": "Terrain Transposition",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"ranger",
+				"teleportation"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 90
+			},
+			"entries": [
+				"You mystically transpose your current location with another. While in a wilderness environment, you transport yourself and items you're holding to a clear space you can see within range.",
+				"If you have {@feat Favored Terrain|PC1} and both your starting and ending position are in your favored terrain, the range increases to 180 feet. If you have an animal companion and it is adjacent to you, you can transport it along with you to an adjacent open space, but if this spell would bring any other creature with you, even in an extradimensional container, the spell is lost."
+			]
+		},
+		{
+			"name": "Blood Ward",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Protection"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron's aegis descends to shield a target from harm. Designate one of the following creature traits: {@trait aberration}, {@trait animal}. The target gains a +1 status bonus to its saving throws and AC against creatures with that trait."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"The status bonus increases to +2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Cackle",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"hex",
+				"witch"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "free"
+			},
+			"entries": [
+				"With a quick burst of laughter, you prolong a {@trait magical} effect you created. You {@action Sustain|PC1} a spell."
+			]
+		},
+		{
+			"name": "Curse of Death",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"curse",
+				"death",
+				"focus",
+				"hex",
+				"manipulate",
+				"void",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Death"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron wraps a hand around your target's heart. The target must attempt a Fortitude saving throw. Regardless of the result, the target is temporarily immune to all curses of death for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is afflicted with the curse of death at stage 1, and the stage of the curse can't increase beyond stage 1."
+						],
+						"Failure": [
+							"The target is afflicted with the curse of death at stage 1."
+						],
+						"Critical Failure": [
+							"The target is afflicted with the curse of death at stage 2."
+						]
+					}
+				},
+				{
+					"name": "Curse of Death",
+					"type": "affliction",
+					"traits": [
+						"curse",
+						"death",
+						"void"
+					],
+					"note": "This curse ends immediately when the spell ends",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 4d6} void damage and {@condition fatigued|PC1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 8d6} void damage and {@condition fatigued|PC1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 12d6} void damage and {@condition fatigued|PC1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 4,
+							"entry": "death"
+						}
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the void damage taken on a success and during the first three stages of the curse by {@dice 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Deceiver's Cloak",
+			"source": "PC1",
+			"remaster": true,
+			"page": 384,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"hex",
+				"illusion",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Mischief"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"Your patron drapes a cloak of illusion about you, making you appear as another creature of the same body shape with roughly similar height and weight as yourself. This has the effects of 3rd-rank {@spell illusory disguise|PC1}."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"You can appear as any creature of the same size, even with a completely different body shape."
+					]
+				}
+			}
+		},
+		{
+			"name": "Elemental Betrayal",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"hex",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Elements"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron uses its superior command of the elements, empowering them to undermine your foe. When you {@action Cast a Spell|PC1|Cast this Spell}, choose {@trait air}, {@trait earth}, {@trait metal}, {@trait fire}, {@trait water}, or {@trait wood}. The target gains weakness 2 to that trait."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"Increase the weakness by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Life Boost",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"healing",
+				"hex",
+				"manipulate",
+				"vitality",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Life"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 4,
+				"unit": "round"
+			},
+			"entries": [
+				"Life force from your patron floods into the target, ensuring they can continue doing your patron's will for just a little longer. The target gains fast healing 2."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The fast healing increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Malicious Shadow",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"hex",
+				"manipulate",
+				"shadow",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Shadow"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": []
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron warps the target's shadow into a deadly form, such as strangling hands, a dangerous weapon, harrying runes, or the like. The shadow moves along with the target, always remaining within reach. When you {@action Cast a Spell|PC1|Cast the Spell}, and each time you {@action Sustain|PC1} it, the shadow {@action Strike|PC1|Strikes} the target. The shadow's {@action Strike|PC1|Strikes} are melee spell attacks that deal damage equal to {@dice 1d10} plus your spellcasting attribute modifier. You choose the type of damage (bludgeoning, piercing, or slashing) when you {@action Cast a Spell|PC1|Cast the Spell}. The shadow uses and contributes to your multiple attack penalty.",
+				"The shadow doesn't take up space, grant flanking, or have any other attributes a creature would. The shadow can't make any attacks other than its {@action Strike|PC1}.",
+				"The shadow vanishes if the target ceases to cast a shadow (usually if it moves into complete darkness or light). If another effect is controlling the target's shadow when you cast {@spell malicious shadow|PC1}, you can attempt to counteract that effect to temporarily take control of the shadow for malicious shadow's duration."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The {@action Strike|PC1} damage increases by {@damage 1d10}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Needle of Vengeance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"hex",
+				"manipulate",
+				"mental",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Vengeance"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 enemy",
+			"savingThrow": {
+				"type": [
+					"W"
+				],
+				"basic": true
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"A long, jagged needle jabs into the target foe's psyche whenever it tries to attack a creature your patron holds in special regard.",
+				"Name yourself or one of your allies. The target takes 2 mental damage any time it uses a {@condition hostile|PC1} action against the named creature, with a basic Will save."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the damage by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Patron's Puppet",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"hex",
+				"witch"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "free"
+			},
+			"trigger": "Your turn begins.",
+			"entries": [
+				"At your unspoken plea, your patron temporarily assumes control over your familiar. You Command your familiar, allowing it to take its normal actions this turn. Your Command does not have the {@trait auditory} or {@trait concentrate} traits; your patron simply moves its agent directly."
+			]
+		},
+		{
+			"name": "Personal Blizzard",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cold",
+				"focus",
+				"hex",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Snow"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron's breath becomes a blizzard of obscuring, scouring ice that follows your target. The target attempts a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes {@damage 1d6} cold damage, and the spell ends."
+						],
+						"Failure": [
+							"The target takes {@damage 1d6} cold damage and {@damage 1d6} {@condition persistent damage|PC1|persistent cold damage}. The {@condition persistent damage|PC1} automatically ends when the spell ends. It is {@condition concealed|PC1} to other creatures, and other creatures are {@condition concealed|PC1} to it."
+						],
+						"Critical Failure": [
+							"As failure, but both the cold damage and the {@condition persistent damage|PC1|persistent cold damage} are {@dice 2d6}."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The cold damage and {@condition persistent damage|PC1|persistent cold damage} increase by 1 (2 on a critical failure)."
+					]
+				}
+			}
+		},
+		{
+			"name": "Phase Familiar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "Your familiar would take damage.",
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "your familiar",
+			"entries": [
+				"Your patron momentarily recalls your familiar to the ether, shifting it from its solid, physical form into a ghostly version of itself. Against the triggering damage, your familiar gains resistance 5 to all damage and is immune to precision damage."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"Increase the resistance by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Restorative Moment",
+			"source": "PC1",
+			"remaster": true,
+			"page": 385,
+			"type": "Focus",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Renewal"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"entries": [
+				"Your patron weaves the threads of time around the target, giving them some of the benefits of a day's passage. The target decreases the values of any {@condition doomed|PC1} and {@condition drained|PC1} conditions it has by 1 and can immediately attempt one saving throw against each affliction it has with a stage length of 1 day or less. The target is then temporarily immune for 1 day."
+			]
+		},
+		{
+			"name": "Veil of Dreams",
+			"source": "PC1",
+			"remaster": true,
+			"page": 386,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"hex",
+				"manipulate",
+				"mental",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Dreams"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron draws the target into a drowsy state, causing daydreams and sluggishness. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes a \u20131 status penalty to {@skill Perception|PC1}, attack rolls, and Will saves. This penalty increases to \u20132 for Will saves against {@trait sleep} effects."
+						],
+						"Failure": [
+							"As success, and any time the target uses a concentrate action, it must succeed at a DC {@flatDC 5} flat check or the action is disrupted."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Clinging Ice",
+			"source": "PC1",
+			"remaster": true,
+			"page": 386,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"cold",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"Silence in Snow"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Freezing sleet and heavy snowfall collect on the target's feet and legs, dealing {@damage 1d4} cold damage and other effects depending on its Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes half damage."
+						],
+						"Failure": [
+							"The target takes full damage and a \u20135-foot circumstance penalty to its Speeds until the spell ends."
+						],
+						"Critical Failure": [
+							"The target takes double damage and a \u201310-foot circumstance penalty to its Speeds until the spell ends."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Discern Secrets",
+			"source": "PC1",
+			"remaster": true,
+			"page": 386,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"The Inscribed One"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron deigns to whisper a few secrets. The target can {@action Recall Knowledge|PC1}, {@action Seek|PC1}, or {@action Sense Motive|PC1} as a free action. The target gains a +1 status bonus to the statistic used for the roll (a skill or {@skill Perception|PC1}) on the roll and as long as you {@action Sustain|PC1} the spell. The target is temporarily immune to discern secrets for 1 minute."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"You can target two creatures instead of one."
+					]
+				}
+			}
+		},
+		{
+			"name": "Evil Eye",
+			"source": "PC1",
+			"remaster": true,
+			"page": 386,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"curse",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"The Resentment"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron's resentment manifests in a baleful, envious gaze. The target becomes {@condition sickened|PC1|sickened 1} if it fails a Will save (or {@condition sickened|PC1|sickened 2} on a critical failure). This condition value can't be reduced below 1 while the spell is active and you can see the target."
+			]
+		},
+		{
+			"name": "Nudge Fate",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"concentrate",
+				"hex",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"Spinner of Threads"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"The barest spin of your patron's spool is enough to alter fate.",
+				"When the target fails an attack roll, skill check, or saving throw and a +1 status bonus would turn a critical failure into a failure, or failure into a success, you grant the target a +1 status bonus to the check retroactively, changing the outcome appropriately. The spell then ends.",
+				"If you cast {@spell nudge fate|PC1} while a previous casting of this hex is still in effect, the previous effect ends."
+			]
+		},
+		{
+			"name": "Shroud of Night",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"darkness",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"Starless Shadow"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron blankets the target's eyes in darkness. If you cast this hex on a willing ally (for instance, one with light blindness), the ally can choose which result it gets without rolling.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"The target is shrouded in murky darkness. It treats bright light as dim light, and unless it has greater darkvision, all creatures are {@condition concealed|PC1} to it."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Stoke the Heart",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"concentrate",
+				"emotion",
+				"hex",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"Faith's Flamekeeper"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron fills a creature with fervor, empowering their blows. The target gains a +2 status bonus to damage rolls."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The status bonus to damage increases by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Wilding Word",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cantrip",
+				"hex",
+				"mental",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"Wilding Steward"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron's majesty\u2014or their displeasure\u2014comes in a growl from your throat, making other creatures reluctant to harm you.",
+				"The target must attempt a Will save; if the creature is an {@trait animal}, {@trait fungus}, or {@trait plant}, it takes a \u20131 circumstance penalty to its save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"When the target attempts an attack roll or skill check that would harm you, it takes a \u20132 status penalty to its roll."
+						],
+						"Failure": [
+							"As success, but the target also becomes {@condition sickened|PC1|sickened 1} each time it damages you."
+						],
+						"Critical Failure": [
+							"As failure, but the {@condition sickened|PC1} value is 2"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Protective Wards",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"aura",
+				"focus",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "5-foot emanation centered on you",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You expand a ring of glyphs that shields your allies. You and any allies in the area gain a +1 status bonus to AC. Each time you {@action Sustain|PC1|Sustain the Spell}, the emanation's radius increases by 5 feet, to a maximum of 30 feet."
+			]
+		},
+		{
+			"name": "Rune of Observation",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 500
+			},
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You inscribe an {@condition invisible|PC1} eye-shaped rune in the air, creating a sensor as {@spell clairvoyance|PC1}. When created, this eye must be in your line of sight.",
+				"Each time the spell's duration ends, you can spend 1 Focus Point as a free action to extend the duration for another hour, though as normal, it ends immediately during your next daily preparations."
+			]
+		},
+		{
+			"name": "Force Bolt",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"focus",
+				"force",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You fire an arrow-shaped bolt of force, one of the most common and reliable forms of battle magic. It automatically hits and deals {@damage 1d4+1} force damage to the target."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage increases by {@damage 1d4+1}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Energy Absorption",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"focus",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "An effect would deal acid, cold, electricity, or fire damage to you.",
+			"entries": [
+				"You're used to mitigating the damage done by bombs, siege engines, and magical artillery. You gain resistance 15 to your choice of acid, cold, electricity, or fire damage from the triggering effect. The resistance applies only to the triggering effect's initial damage."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The resistance increases by 5."
+					]
+				}
+			}
+		},
+		{
+			"name": "Fortify Summoning",
+			"source": "PC1",
+			"remaster": true,
+			"page": 387,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature you summoned",
+			"entries": [
+				"As you call a creature to your side, your magic transforms its body, heightening its ferocity and fortifying its resilience.",
+				"The target gains a +1 status bonus to all checks and DCs (including its AC) for the duration of its summoning, up to 1 minute."
+			]
+		},
+		{
+			"name": "Spiral of Horrors",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"aura",
+				"concentrate",
+				"emotion",
+				"fear",
+				"focus",
+				"manipulate",
+				"mental",
+				"wizard"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "30-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Shades and spirits howl and whirl around you in a display that strikes fear into the hearts of all who witness it. Enemies in the area are {@condition frightened|PC1|frightened 1} and can't reduce their {@condition frightened|PC1} value below 1 for the spell's duration."
+			]
+		},
+		{
+			"name": "Earthworks",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"earth",
+				"focus",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 3}"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"area": {
+				"entry": "5-foot burst or more",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"With a ripple of earth, you raise small barriers from the ground. The ground in the area becomes difficult terrain. The spell's area is a 5-foot burst if you spent 1 action to cast it, a 10-foot burst if you spent 2 actions, or a 15-foot burst if you spent 3 actions. A creature can {@action Interact|PC1} to clear the barriers from one 5-foot square adjacent to it."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"You pull the barriers to float in the air, causing the spell to function as difficult terrain for flying creatures."
+					]
+				}
+			}
+		},
+		{
+			"name": "Community Restoration",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"healing",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You {@action Cast a Spell|PC1} from a wizard spell slot, and the spell affects one or more willing allies without damaging them.",
+			"entries": [
+				"When you use your magic to support your allies, shared strength bolsters you all. You gain 2 temporary Hit Points per rank of the triggering spell, and can grant an equal number divided as you choose among allies affected by the triggering spell. These temporary Hit Points last for 1 minute."
+			]
+		},
+		{
+			"name": "Charming Push",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"incapacitation",
+				"mental",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "turn"
+			},
+			"entries": [
+				"You push at the target's mind to deflect their ire. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes a \u20131 circumstance penalty to attack rolls and damage rolls against you."
+						],
+						"Failure": [
+							"The target can't use {@condition hostile|PC1} actions against you."
+						],
+						"Critical Failure": [
+							"The target is {@condition stunned|PC1|stunned 1} and can't use {@condition hostile|PC1} actions against you."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Invisibility Cloak",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"focus",
+				"illusion",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You become {@condition invisible|PC1}, with the same restrictions as the 2nd-rank {@spell invisibility|PC1} spell."
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"The duration increases to 10 minutes."
+					],
+					"8": [
+						"The duration increases to 1 hour."
+					]
+				}
+			}
+		},
+		{
+			"name": "Scramble Body",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 living creature",
+			"savingThrow": {
+				"type": [
+					"F",
+					"F"
+				]
+			},
+			"entries": [
+				"Your magic throws the creature's biology into disarray, inducing nausea, fever, and other unpleasant conditions.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"The target becomes {@condition sickened|PC1|sickened 1}."
+						],
+						"Critical Failure": [
+							"The target becomes {@condition sickened|PC1|sickened 2} and {@condition slowed|PC1|slowed 1} as long as it's {@condition sickened|PC1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Shifting Form",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"morph",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You change your body to better suit the moment. You gain one of the following abilities of your choice. You can {@action Dismiss|PC1} this spell.",
+				{
+					"type": "list",
+					"items": [
+						"You gain a 20-foot status bonus to your Speed.",
+						"You gain a climb or swim Speed equal to half your Speed.",
+						"You gain darkvision.",
+						"You gain a pair of claws. These are agile finesse unarmed attacks that deal {@damage 1d8} slashing damage.",
+						"You gain scent 60 feet (imprecise)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hand of the Apprentice",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"attack",
+				"focus",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 500
+			},
+			"targets": "1 creature",
+			"entries": [
+				"You take advantage of one of the most fundamental lessons of magic to levitate and propel your weapon. You hurl a held melee weapon with which you are trained at the target, making a spell attack roll. On a success, you deal the weapon's damage as if you had hit with a melee {@action Strike|PC1}, but add your spellcasting attribute modifier to damage, rather than your Strength modifier. On a critical success, you deal double damage, and you add the weapon's critical specialization effect. Regardless of the outcome, the weapon flies back to you and returns to your hand."
+			]
+		},
+		{
+			"name": "Interdisciplinary Incantation",
+			"source": "PC1",
+			"remaster": true,
+			"page": 388,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A creature within 30 feet casts an {@trait arcane} spell.",
+			"entries": [
+				"You gather the embers of another caster's spell, using your understanding of unified magic to pick apart their formulas and incantations well enough to imitate the spell yourself, if only for a short time. Until the end of your next turn, you can {@action Cast a Spell|PC1|Cast the triggering Spell} by expending a wizard spell slot of the same rank. That caster's spells can't trigger your {@spell interdisciplinary incantation|PC1} again for 24 hours."
+			]
+		},
+		{
 			"name": "Acid Grip",
 			"source": "PC1",
 			"remaster": true,
