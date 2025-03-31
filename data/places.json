@@ -1,6 +1,83 @@
 {
 	"place": [
 		{
+			"name": "Talmandor's Bounty",
+			"level": 4,
+			"category": "Settlement",
+			"source": "SoB0",
+			"remaster": true,
+			"page": 12,
+			"traits": [
+				"town"
+			],
+			"description": "A small but important trading port between two continents, located on an island above the sunken ruins of one of humanity’s greatest and most advanced civilizations.",
+			"settlementData": {
+				"government": "Governor (appointed leader)",
+				"population": {
+					"total": 865,
+					"ancestries": {
+						"humans": 60,
+						"aiuvarin": 9,
+						"halflings": 8,
+						"dromaar": 7,
+						"elves": 6,
+						"dwarfs": 5,
+						"others": 5
+					}
+				},
+				"languages": [
+					"{@language Common|PC1}",
+					"{@language Dwarven|PC1}",
+					"{@language Elven|PC1}",
+					"{@language Halfling|PC1}",
+					"{@language Thalassic|PC1} ({@trait rare})"
+				],
+				"religions": [
+					"{@deity Abadar|PC1}",
+					"{@deity Besmara|DM}",
+					"{@deity Calistria|PC1}",
+					"{@deity Cayden Cailean|PC1}",
+					"{@deity Erastil|PC1}",
+					"{@deity Gozreh|PC1}"
+				],
+				"threats": [
+					"dangerous wildlife",
+					"hostile intelligent sea creatures",
+					"malfunctioning Azlanti constructs",
+					"pirates",
+					"sinister seekers of ancient Azlanti magic and technology"
+				],
+				"features": [
+					{
+						"name": "Valuable Trading Port",
+						"entries": [
+							"Talmandor’s Bounty has a small population, but its settlement level reflects its economy and value to multiple parties. Ships traveling between Arcadia and Avistan regularly visit the port to trade, replenish provisions, and make mid-journey repairs. Raw materials, worked goods, and rare antiquities all move through the port. This trade is supplemented by the settlement’s robust natural and agricultural resources."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Ramona Avandth",
+					"descriptor": "seasoned",
+					"gender": "f",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "governor",
+					"level": 8,
+					"bond": "Long-term leader who has navigated the settlement through good times and bad, including one major crisis."
+				},
+				{
+					"name": "Josia Scaleheart",
+					"descriptor": "conflicted",
+					"gender": "f",
+					"ancestry": "{@ancestry dwarf|PC1|dwarven}",
+					"position": "cleric of {@deity Abadar|PC1}",
+					"level": 3,
+					"bond": "A newly transferred cleric appointed to replace the previous priest, who testified on behalf of the governor during her recent trial."
+				}
+			]
+		},
+		{
 			"name": "Greengold",
 			"level": 7,
 			"category": "Settlement",
@@ -23,13 +100,13 @@
 					}
 				},
 				"languages": [
-					"{@language Common}",
-					"{@language Elven}"
+					"{@language Common|PC1}",
+					"{@language Elven|PC1}"
 				],
 				"religions": [
-					"{@deity Calistria}",
-					"{@deity Desna}",
-					"{@deity elven pantheon|LOGM}"
+					"{@deity Calistria|PC1}",
+					"{@deity Desna|PC1}",
+					"{@deity elven pantheon|DM}"
 				],
 				"threats": [
 					"hidden agents of {@deity Treerazer|B1}",
@@ -40,7 +117,7 @@
 					{
 						"name": "Welcoming of Diversity",
 						"entries": [
-							"While most who live in Greengold are of {@ancestry elf||PC1|elven} or {@ancestry human|PC1} ancestry, the town welcomes all ancestries. People of ancestries other than {@ancestry elf|PC1} or {@ancestry human|PC1} find locals easier to speak with and gain a +2 circumstance bonus to checks to {@action Gather Information|PC1} in town or to {@skill Performance} checks to {@action Earn Income|PC1}."
+							"While most who live in Greengold are of {@ancestry elf||PC1|elven} or {@ancestry human|PC1} ancestry, the town welcomes all ancestries. People of ancestries other than {@ancestry elf|PC1} or {@ancestry human|PC1} find locals easier to speak with and gain a +2 circumstance bonus to checks to {@action Gather Information|PC1} in town or to {@skill Performance|PC1} checks to {@action Earn Income|PC1}."
 						]
 					}
 				]
@@ -104,7 +181,7 @@
 				],
 				"religions": [
 					"Elemental Lords of Wood ({@deity Shumunue|RoE} and {@deity Verilorn|RoE})",
-					"{@deity Green Faith} (primarily {@deity Zibik|WoW3})"
+					"{@deity Green Faith|PC1} (primarily {@deity Zibik|WoW3})"
 				],
 				"threats": [
 					"{@affliction Ayrzul's Blight|WoW3}",
@@ -116,7 +193,7 @@
 					{
 						"name": "Insular",
 						"entries": [
-							"Cradle of Knot's residents put little trust in outsiders. NPCs are {@condition unfriendly} to strangers by default, and {@condition hostile} toward those who've garnered the disapproval of a Branch."
+							"Cradle of Knot's residents put little trust in outsiders. NPCs are {@condition unfriendly|PC1} to strangers by default, and {@condition hostile|PC1} toward those who've garnered the disapproval of a Branch."
 						]
 					},
 					{
@@ -164,8 +241,8 @@
 					}
 				},
 				"languages": [
-					"{@language Common}",
-					"{@language Gnomish}"
+					"{@language Common|PC1}",
+					"{@language Gnomish|PC1}"
 				]
 			},
 			"residents": [
@@ -178,13 +255,13 @@
 				{
 					"name": "Dougal Greenbelt",
 					"gender": "m",
-					"ancestry": "gnome",
+					"ancestry": "{@ancestry gnome|PC1}",
 					"bond": "mayor of Wispil"
 				},
 				{
 					"name": "Dervin Feld",
 					"gender": "m",
-					"ancestry": "human",
+					"ancestry": "{@ancestry human|PC1}",
 					"bond": "Wispil city councilman, logging operations overseer, and local representative of Imperial Naval Shipyards"
 				}
 			]
@@ -208,21 +285,21 @@
 					}
 				},
 				"languages": [
-					"{@language Common}",
-					"{@language Gnomish}"
+					"{@language Common|PC1}",
+					"{@language Gnomish|PC1}"
 				]
 			},
 			"residents": [
 				{
 					"name": "Adeline Moretta",
 					"gender": "f",
-					"ancestry": "human",
+					"ancestry": "{@ancestry human|PC1}",
 					"bond": "elected municipal leader"
 				},
 				{
 					"name": "Evandio Birchwood",
 					"gender": "nb",
-					"ancestry": "gnome",
+					"ancestry": "{@ancestry gnome|PC1}",
 					"position": "druid",
 					"bond": "doctor and apothecary"
 				}
@@ -251,19 +328,19 @@
 					}
 				},
 				"languages": [
-					"{@language Common}",
-					"{@language Diabolic}",
-					"{@language Elven}",
-					"{@language Halfling}"
+					"{@language Common|PC1}",
+					"{@language Diabolic|PC1}",
+					"{@language Elven|PC1}",
+					"{@language Halfling|PC1}"
 				],
 				"religions": [
-					"{@deity Calistria}",
-					"{@deity Cayden Cailean}",
-					"{@deity Irori}",
-					"{@deity Milani|LOGM}",
-					"{@deity Sarenrae}",
-					"{@deity Shelyn}",
-					"{@deity Zon-Kuthon}"
+					"{@deity Calistria|PC1}",
+					"{@deity Cayden Cailean|PC1}",
+					"{@deity Irori|PC1}",
+					"{@deity Milani|DM}",
+					"{@deity Sarenrae|PC1}",
+					"{@deity Shelyn|PC1}",
+					"{@deity Zon-Kuthon|PC1}"
 				],
 				"threats": [
 					"competitive artists",
