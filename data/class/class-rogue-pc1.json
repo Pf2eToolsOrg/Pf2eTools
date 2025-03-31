@@ -1,0 +1,637 @@
+{
+	"class": [
+		{
+			"name": "Rogue",
+			"source": "PC1",
+			"remaster": true,
+			"page": 165,
+			"keyAbility": "Dexterity or Other",
+			"hp": 8,
+			"initialProficiencies": {
+				"perception": "E",
+				"fort": "T",
+				"ref": "E",
+				"will": "E",
+				"skills": {
+					"t": [
+						{
+							"skill": ["Stealth"]
+						},
+						{
+							"skill": ["Subclass Dependant"],
+							"entry": "one or more skills determined by your rogue's racket"
+						}
+					],
+					"add": 7
+				},
+				"attacks": {
+					"t": ["simple weapons", "martial weapons", "unarmed attacks"]
+				},
+				"defenses": {
+					"t": ["light armor", "unarmored defense"]
+				},
+				"classDc": {
+					"prof": "T",
+					"entry": "Trained in rogue class DC"
+				}
+			},
+			"advancement": {
+				"classFeats": [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+				"skillFeats": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+				"generalFeats": [3, 7, 11, 15, 19],
+				"ancestryFeats": [5, 9, 13, 17],
+				"skillIncrease": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+				"abilityBoosts": [5, 10, 15, 20]
+			},
+			"classFeatures": [
+				"Ancestry and Background|Rogue|PC1|1",
+				"Attribute Boosts|Rogue|PC1|1",
+				"Initial Proficiencies|Rogue|PC1|1",
+				{
+					"classFeature": "Rogue's Racket|Rogue|PC1|1",
+					"gainSubclassFeature": true
+				},
+				"Sneak Attack|Rogue|PC1|1",
+				"Surprise Attack|Rogue|PC1|1",
+				"Rogue Feats|Rogue|PC1|1",
+				"Skill Feats|Rogue|PC1|1",
+				"Skill Increases|Rogue|PC1|2",
+				"Deny Advantage|Rogue|PC1|3",
+				"General Feats|Rogue|PC1|3",
+				"Ancestry Feats|Rogue|PC1|5",
+				"Weapon Tricks|Rogue|PC1|5",
+				"Evasive Reflexes|Rogue|PC1|7",
+				"Perception Mastery|Rogue|PC1|7",
+				"Weapon Specialization|Rogue|PC1|7",
+				"Debilitating Strikes|Rogue|PC1|9",
+				"Rogue Resilience|Rogue|PC1|9",
+				"Rogue Expertise|Rogue|PC1|11",
+				"Greater Rogue Reflexes|Rogue|PC1|13",
+				"Perception Legend|Rogue|PC1|13",
+				"Light Armor Expertise|Rogue|PC1|13",
+				"Master Tricks|Rogue|PC1|13",
+				"Double Debilitation|Rogue|PC1|15",
+				"Greater Weapon Specialization|Rogue|PC1|15",
+				"Agile Mind|Rogue|PC1|17",
+				"Light Armor Mastery|Rogue|PC1|19",
+				"Master Strike|Rogue|PC1|19"
+			],
+			"subclasses": [
+				{
+					"name": "Mastermind",
+					"type": "Rogue's Racket",
+					"shortName": "Mastermind",
+					"source": "PC1",
+					"remaster": true,
+					"page": 166,
+					"subclassFeatures": ["Rogue's Racket|Rogue|PC1|Mastermind|PC1|1"]
+				},
+				{
+					"name": "Ruffian",
+					"type": "Rogue's Racket",
+					"shortName": "Ruffian",
+					"source": "PC1",
+					"remaster": true,
+					"page": 166,
+					"subclassFeatures": ["Rogue's Racket|Rogue|PC1|Ruffian|PC1|1"]
+				},
+				{
+					"name": "Scoundrel",
+					"type": "Rogue's Racket",
+					"shortName": "Scoundrel",
+					"source": "PC1",
+					"remaster": true,
+					"page": 166,
+					"subclassFeatures": ["Rogue's Racket|Rogue|PC1|Scoundrel|PC1|1"]
+				},
+				{
+					"name": "Thief",
+					"type": "Rogue's Racket",
+					"shortName": "Thief",
+					"source": "PC1",
+					"remaster": true,
+					"page": 167,
+					"subclassFeatures": ["Rogue's Racket|Rogue|PC1|Thief|PC1|1"]
+				}
+			],
+			"flavor": [
+				"You are skilled and opportunistic. Using your sharp wits and quick reactions, you take advantage of your opponents' missteps and strike where it hurts most. You play a dangerous game, seeking thrills and testing your skills, and likely don't care much for any laws that happen to get in your way. While the path of every rogue is unique and riddled with danger, the one thing you all share in common is the breadth and depth of your skills."
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"page": 165,
+					"name": "During combat encounters...",
+					"entries": [
+						"You move about stealthily so you can catch foes unawares. You're a precision instrument, more useful against a tough boss or distant spellcaster than against rank-and-file soldiers."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 165,
+					"name": "During social encounters...",
+					"entries": [
+						"Your skills give you multiple tools to influence your opposition. Pulling cons and ferreting out information are second nature to you."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 165,
+					"name": "While exploring...",
+					"entries": [
+						"You sneak to get the drop on foes and scout for danger or traps. You're a great asset, since you can disable traps, solve puzzles, and anticipate dangers."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 165,
+					"name": "In downtime...",
+					"entries": [
+						"You might pick pockets or trade in illegal goods. You can also become part of a thieves' guild, or even found one of your own."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 165,
+					"name": "You Might...",
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"Hone your skills through intense practice, both on your own and out in the world.",
+								"Know where to attain illicit goods.",
+								"Skirt or break the law because you think it's meaningless or have your own code."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 165,
+					"name": "Others Probably...",
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"Find you charming or fascinating, even if they think they know better than to trust you.",
+								"Come to you when they need someone who is willing to take risks or use questionable methods.",
+								"Suspect you're motivated primarily by greed."
+							]
+						}
+					]
+				}
+			],
+			"summary": {
+				"text": "The rogue is a multitalented master of skulduggery who strikes when enemies least expect it.",
+				"images": ["https://2e.aonprd.com/Images/Classes/Iconic_Merisiel.png"],
+				"keyAbility": "Dexterity or other",
+				"sndAbility": "Charisma, Constitution"
+			}
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Ancestry and Background",
+			"source": "PC1",
+			"remaster": true,
+			"page": 166,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 1,
+			"entries": [
+				"In addition to what you get from your class at 1st level, you have the benefits of your selected ancestry and background. These are described in Chapter 2."
+			]
+		},
+		{
+			"name": "Attribute Boosts",
+			"source": "PC1",
+			"remaster": true,
+			"page": 166,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 1,
+			"entries": [
+				"In addition to what you get from your class at 1st level, you have four free boosts to different attribute modifiers.",
+				"At 5th level and every 5 levels thereafter, you get four free boosts to different attribute modifiers. If an attribute modifier is already +4 or higher, it takes two boosts to increase it; you get a partial boost and must boost that attribute again at a later level to increase it by 1."
+			]
+		},
+		{
+			"name": "Initial Proficiencies",
+			"source": "PC1",
+			"remaster": true,
+			"page": 166,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 1,
+			"entries": [
+				"At 1st level you gain a number of proficiencies that represent your basic training. These are noted at the start of this class."
+			]
+		},
+		{
+			"name": "Rogue's Racket",
+			"source": "PC1",
+			"remaster": true,
+			"page": 166,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"subclasses": "Rogue's Racket",
+			"level": 1,
+			"type": "Rogue's Racket",
+			"entries": [
+				"You've begun to develop your techniques and approach to a job, while building your reputation in rogues' circles. Choose a rogue's racket from the list below."
+			]
+		},
+		{
+			"name": "Sneak Attack",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 1,
+			"entries": [
+				"When your enemy can't properly defend itself, you take advantage to deal extra damage. If you {@action Strike|PC1} a creature that has the {@condition off-guard|PC1} condition with an {@trait agile} or {@trait finesse} melee weapon, an {@trait agile} or {@trait finesse} unarmed attack, a ranged weapon attack, or a ranged unarmed attack, you deal an extra {@dice 1d6} precision damage. For a ranged attack with a thrown melee weapon, that weapon must also be {@trait agile} or {@trait finesse}.",
+				"As your rogue level increases, so does the number of damage dice for your sneak attack. Increase the number of dice by one at 5th, 11th, and 17th levels."
+			]
+		},
+		{
+			"name": "Surprise Attack",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 1,
+			"entries": [
+				"You spring into combat faster than foes can react. On the first round of combat, if you roll {@skill Deception|PC1} or {@skill Stealth|PC1} for initiative, creatures that haven't acted are {@condition off-guard|PC1} to you."
+			]
+		},
+		{
+			"name": "Rogue Feats",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 1,
+			"entries": [
+				"At 1st level and every even-numbered level, you gain a {@filter rogue class feat|feats||type=class|Class=rogue|level=[1;1]}."
+			]
+		},
+		{
+			"name": "Skill Feats",
+			"page": 167,
+			"source": "PC1",
+			"remaster": true,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 1,
+			"entries": [
+				"You gain skill feats more often than others. At 1st level and every level thereafter, you gain a {@filter skill feat|feats||type=skill;!archetype}."
+			]
+		},
+		{
+			"name": "Skill Increases",
+			"page": 167,
+			"source": "PC1",
+			"remaster": true,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 2,
+			"entries": [
+				"You gain more skill increases than members of other classes. At 2nd level and every level thereafter, you gain a skill increase. You can use this increase to either become trained in one skill you're untrained in or become an expert in one skill in which you're already trained.",
+				"At 7th level, you can use skill increases to become a master in a skill in which you're already an expert, and at 15th level, you can use them to become legendary in a skill in which you're already a master."
+			]
+		},
+		{
+			"name": "Deny Advantage",
+			"page": 167,
+			"source": "PC1",
+			"remaster": true,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 3,
+			"entries": [
+				"As someone who takes advantage of openings, you are careful not to leave such gaps yourself. You aren't {@condition off-guard|PC1} to {@condition hidden|PC1}, {@condition undetected|PC1}, or flanking creatures of your level or lower, or creatures of your level or lower using surprise attack. However, they can still help their allies flank."
+			]
+		},
+		{
+			"name": "General Feats",
+			"page": 167,
+			"source": "PC1",
+			"remaster": true,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general|level=[1;3]}."
+			]
+		},
+		{
+			"name": "Ancestry Feats",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 5,
+			"entries": [
+				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|feats||type=ancestry} at 5th level and every 4 levels thereafter. The list of ancestry feats available to you can be found in your ancestry's entry in Chapter 2."
+			]
+		},
+		{
+			"name": "Weapon Tricks",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 5,
+			"entries": [
+				"You gain expert proficiency in simple weapons, martial weapons, and unarmed attacks. When you critically succeed at an attack roll against an {@condition off-guard|PC1} creature while using an {@trait agile} or {@trait finesse} weapon or an {@trait agile} or {@trait finesse} unarmed attack, you apply the critical specialization effect for that weapon or unarmed attack."
+			]
+		},
+		{
+			"name": "Evasive Reflexes",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 7,
+			"entries": [
+				"You've learned to move quickly to avoid explosions, dragons' breath, and worse. Your proficiency rank for Reflex saves increases to master. When you roll a success on a Reflex save, you get a critical success instead."
+			]
+		},
+		{
+			"name": "Perception Mastery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 7,
+			"entries": [
+				"Through your adventures, you've developed keen awareness and attention to detail. Your proficiency rank for {@skill Perception|PC1} increases to master."
+			]
+		},
+		{
+			"name": "Weapon Specialization",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 7,
+			"entries": [
+				"You've learned how to inflict greater injuries with the weapons you know best. You deal 2 additional damage with weapons and unarmed attacks in which you're an expert. This damage increases to 3 if you're a master, and 4 if you're legendary."
+			]
+		},
+		{
+			"name": "Debilitating Strikes",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 9,
+			"entries": [
+				"When taking advantage of an opening, you both hinder and harm your foe. You gain the {@action Debilitating Strike|PC1} free action.",
+				{
+					"type": "data",
+					"tag": "action",
+					"name": "Debilitating Strike",
+					"source": "PC1"
+				}
+			]
+		},
+		{
+			"name": "Rogue Resilience",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 9,
+			"entries": [
+				"Your physique is incredibly hardy. Your proficiency rank for Fortitude saves increases to expert. When you roll a success on a Fortitude save, you get a critical success instead."
+			]
+		},
+		{
+			"name": "Rogue Expertise",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 11,
+			"entries": [
+				"Your techniques are now harder to resist. Your proficiency rank for your rogue class DC increases to expert."
+			]
+		},
+		{
+			"name": "Greater Rogue Reflexes",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 13,
+			"entries": [
+				"You elude danger to a degree that few can match. Your proficiency rank for Reflex saves increases to legendary. When you roll a critical failure on a Reflex save, you get a failure instead. When you roll a failure on a Reflex save against a damaging effect, you take half damage."
+			]
+		},
+		{
+			"name": "Perception Legend",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 13,
+			"entries": [
+				"You notice things almost impossible for an ordinary person to detect. Your proficiency rank for {@skill Perception|PC1} increases to legendary."
+			]
+		},
+		{
+			"name": "Light Armor Expertise",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 13,
+			"entries": [
+				"You've learned how to dodge while wearing light or no armor. Your proficiency ranks for light armor and unarmored defense increase to expert."
+			]
+		},
+		{
+			"name": "Master Tricks",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 13,
+			"entries": [
+				"You've mastered a rogue's fighting moves. Your proficiency ranks increase to master for all simple weapons, martial weapons, and unarmed attacks."
+			]
+		},
+		{
+			"name": "Double Debilitation",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 15,
+			"entries": [
+				"Your opportunistic attacks are particularly detrimental. When you use {@action Debilitating Strike|PC1}, you can apply two debilitations simultaneously; removing one removes both."
+			]
+		},
+		{
+			"name": "Greater Weapon Specialization",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 15,
+			"entries": [
+				"Your damage from weapon specialization increases to 4 with weapons and unarmed attacks in which you're an expert, 6 if you're a master, and 8 if you're legendary."
+			]
+		},
+		{
+			"name": "Agile Mind",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 17,
+			"entries": [
+				"You play mental games and employ cognitive tricks to throw off mind-altering effects. Your proficiency rank for Will saves increases to master. When you roll a success at a Will save, you get a critical success instead."
+			]
+		},
+		{
+			"name": "Light Armor Mastery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 19,
+			"entries": [
+				"Your skill with light armor improves, increasing your ability to dodge blows. Your proficiency ranks for light armor and unarmored defense increase to master."
+			]
+		},
+		{
+			"name": "Master Strike",
+			"page": 168,
+			"source": "PC1",
+			"remaster": true,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"level": 19,
+			"entries": [
+				"You can incapacitate an unwary foe with a single strike. Your proficiency rank for your rogue class DC increases to master. You gain the {@action Master Strike|PC1} free action.",
+				{
+					"type": "data",
+					"tag": "action",
+					"name": "Master Strike",
+					"source": "PC1"
+				}
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Rogue's Racket",
+			"source": "PC1",
+			"remaster": true,
+			"page": 166,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"subclassShortName": "Mastermind",
+			"subclassSource": "PC1",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Mastermind",
+					"entries": [
+						"You rely on your intellect to craft intricate schemes, planning 10 steps ahead where others might plan three. You might be a driven detective, a spymaster in the service of a powerful house, or an aspiring crime lord or information broker",
+						"If you successfully identify a creature using {@action Recall Knowledge|PC1}, that creature is {@condition off-guard|PC1} against your attacks until the start of your next turn; if you critically succeed, it's {@condition off-guard|PC1} against your attacks for 1 minute.",
+						"You're trained in {@skill Society|PC1} and one of the following skills of your choice: {@skill Arcana|PC1}, {@skill Nature|PC1}, {@skill Occultism|PC1}, or {@skill Religion|PC1}. You can choose Intelligence as your key attribute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rogue's Racket",
+			"source": "PC1",
+			"remaster": true,
+			"page": 166,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"subclassShortName": "Ruffian",
+			"subclassSource": "PC1",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Ruffian",
+					"entries": [
+						"You prefer the direct approach: strong-arming or intimidation. You might be an enforcer for organized crime, a highway bandit, or a noble who bullies others with threats of your family's power.",
+						"You use whatever tools you have to get the job done. You can deal sneak attack damage with any weapon, not just the weapons listed in the sneak attack class feature. This benefit doesn't apply to a simple weapon with a damage die greater than {@dice d8} or a martial or advanced weapon with a damage die greater than {@dice d6}. (Apply any abilities that alter the damage die size first.) Critical hits you make with these weapons gain the weapon's critical specialization benefit if the target is {@condition off-guard|PC1} to you.",
+						"You're trained in {@skill Intimidation|PC1} and medium armor. You can choose Strength as your key attribute. When you gain light armor expertise, you also gain expert proficiency in medium armor, and when you gain light armor mastery, you also gain master proficiency in medium armor."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rogue's Racket",
+			"source": "PC1",
+			"remaster": true,
+			"page": 166,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"subclassShortName": "Scoundrel",
+			"subclassSource": "PC1",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Scoundrel",
+					"entries": [
+						"You use fast-talking, flattery, and a silver tongue to avoid danger and escape tricky situations. You might be a grifter or con artist, or you might use your skills in certain reputable professions, like a barrister or diplomat.",
+						"When you successfully {@action Feint|PC1}, the target is {@condition off-guard|PC1} against your melee attacks until the end of your next turn. On a critical success, the target is {@condition off-guard|PC1} against all melee attacks until the end of your next turn, not just yours. If you {@action Feint|PC1} while wielding an agile or finesse melee weapon, you can {@action Step|PC1} immediately after the {@action Feint|PC1} as a free action.",
+						"You're trained in {@skill Deception|PC1} and {@skill Diplomacy|PC1}. You can choose Charisma as your key ability score."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rogue's Racket",
+			"source": "PC1",
+			"remaster": true,
+			"page": 167,
+			"className": "Rogue",
+			"classSource": "PC1",
+			"subclassShortName": "Thief",
+			"subclassSource": "PC1",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Thief",
+					"entries": [
+						"Nothing beats the thrill of taking something that belongs to someone else. You might be a pickpocket working the streets, a cat burglar sneaking through windows, or even a consultant, testing your clients' vaults for openings.",
+						"When a fight breaks out, you prefer swift, lightweight weapons, and you strike where it hurts. When you attack with a {@trait finesse} melee weapon or {@trait finesse} melee unarmed attack, you can add your Dexterity modifier to damage rolls instead of your Strength modifier.",
+						"You are trained in {@skill Thievery|PC1}."
+					]
+				}
+			]
+		}
+	]
+}
