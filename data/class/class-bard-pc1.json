@@ -15,22 +15,36 @@
 				"skills": {
 					"t": [
 						{
-							"skill": ["Occultism"]
+							"skill": [
+								"Occultism"
+							]
 						},
 						{
-							"skill": ["Performance"]
+							"skill": [
+								"Performance"
+							]
 						}
 					],
 					"add": 4
 				},
 				"attacks": {
-					"t": ["simple weapons", "martial weapons", "unarmed attacks"]
+					"t": [
+						"simple weapons",
+						"martial weapons",
+						"unarmed attacks"
+					]
 				},
 				"defenses": {
-					"t": ["light armor", "unarmored defense"]
+					"t": [
+						"light armor",
+						"unarmored defense"
+					]
 				},
 				"spells": {
-					"t": ["spell attack modifier", "spell DC"]
+					"t": [
+						"spell attack modifier",
+						"spell DC"
+					]
 				},
 				"classDc": {
 					"prof": "t",
@@ -38,12 +52,61 @@
 				}
 			},
 			"advancement": {
-				"classFeats": [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
-				"skillFeats": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
-				"generalFeats": [3, 7, 11, 15, 19],
-				"ancestryFeats": [5, 9, 13, 17],
-				"skillIncrease": [3, 5, 7, 9, 11, 13, 15, 17, 19],
-				"abilityBoosts": [5, 10, 15, 20]
+				"classFeats": [
+					1,
+					2,
+					4,
+					6,
+					8,
+					10,
+					12,
+					14,
+					16,
+					18,
+					20
+				],
+				"skillFeats": [
+					2,
+					4,
+					6,
+					8,
+					10,
+					12,
+					14,
+					16,
+					18,
+					20
+				],
+				"generalFeats": [
+					3,
+					7,
+					11,
+					15,
+					19
+				],
+				"ancestryFeats": [
+					5,
+					9,
+					13,
+					17
+				],
+				"skillIncrease": [
+					3,
+					5,
+					7,
+					9,
+					11,
+					13,
+					15,
+					17,
+					19
+				],
+				"abilityBoosts": [
+					5,
+					10,
+					15,
+					20
+				]
 			},
 			"classFeatures": [
 				"Ancestry and Background|Bard|PC1|1",
@@ -83,7 +146,9 @@
 					"source": "PC1",
 					"remaster": true,
 					"page": 98,
-					"subclassFeatures": ["Muses|Bard|PC1|Enigma|PC1|1"]
+					"subclassFeatures": [
+						"Muses|Bard|PC1|Enigma|PC1|1"
+					]
 				},
 				{
 					"name": "Maestro",
@@ -92,7 +157,9 @@
 					"source": "PC1",
 					"remaster": true,
 					"page": 98,
-					"subclassFeatures": ["Muses|Bard|PC1|Maestro|PC1|1"]
+					"subclassFeatures": [
+						"Muses|Bard|PC1|Maestro|PC1|1"
+					]
 				},
 				{
 					"name": "Polymath",
@@ -101,7 +168,9 @@
 					"source": "PC1",
 					"remaster": true,
 					"page": 98,
-					"subclassFeatures": ["Muses|Bard|PC1|Polymath|PC1|1"]
+					"subclassFeatures": [
+						"Muses|Bard|PC1|Polymath|PC1|1"
+					]
 				},
 				{
 					"name": "Warrior",
@@ -110,7 +179,9 @@
 					"source": "PC1",
 					"remaster": true,
 					"page": 98,
-					"subclassFeatures": ["Muses|Bard|PC1|Warrior|PC1|1"]
+					"subclassFeatures": [
+						"Muses|Bard|PC1|Warrior|PC1|1"
+					]
 				}
 			],
 			"flavor": [
@@ -128,7 +199,9 @@
 					"type": "pf2-h3",
 					"page": 95,
 					"name": "During social encounters...",
-					"entries": ["You persuade, prevaricate, and threaten with ease."]
+					"entries": [
+						"You persuade, prevaricate, and threaten with ease."
+					]
 				},
 				{
 					"type": "pf2-h3",
@@ -179,7 +252,9 @@
 			],
 			"summary": {
 				"text": "Skilled performances and secrets of the occult enable the bard to distract foes and inspire allies.",
-				"images": ["https://2e.aonprd.com/Images/Classes/Iconic_Lem.png"],
+				"images": [
+					"https://2e.aonprd.com/Images/Classes/Iconic_Lem.png"
+				],
 				"keyAbility": "Charisma",
 				"sndAbility": "Constitution, Dexterity"
 			}
@@ -242,15 +317,27 @@
 				},
 				{
 					"type": "table",
-					"minimizeTo": [0, 1],
+					"minimizeTo": [
+						0,
+						1
+					],
 					"name": "Bard Spells per Day",
 					"spans": [
 						[
-							[1, 2],
-							[2, 13]
+							[
+								1,
+								2
+							],
+							[
+								2,
+								13
+							]
 						]
 					],
-					"labelRowIdx": [0, 1],
+					"labelRowIdx": [
+						0,
+						1
+					],
 					"cellStyles": [
 						{
 							"row": 0,
@@ -276,28 +363,304 @@
 						"* The magnum opus class feature gives you a 10th-rank spell slot that works a bit differently from other spell slots."
 					],
 					"rows": [
-						["Your", "Rank"],
-						["Spell Rank", "Cantrips", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"],
-						[1, 5, 2, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[2, 5, 3, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[3, 5, 3, 2, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[4, 5, 3, 3, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[5, 5, 3, 3, 2, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[6, 5, 3, 3, 3, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[7, 5, 3, 3, 3, 2, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[8, 5, 3, 3, 3, 3, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[9, 5, 3, 3, 3, 3, 2, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[10, 5, 3, 3, 3, 3, 3, "\u2014", "\u2014", "\u2014", "\u2014", "\u2014"],
-						[11, 5, 3, 3, 3, 3, 3, 2, "\u2014", "\u2014", "\u2014", "\u2014"],
-						[12, 5, 3, 3, 3, 3, 3, 3, "\u2014", "\u2014", "\u2014", "\u2014"],
-						[13, 5, 3, 3, 3, 3, 3, 3, 2, "\u2014", "\u2014", "\u2014"],
-						[14, 5, 3, 3, 3, 3, 3, 3, 3, "\u2014", "\u2014", "\u2014"],
-						[15, 5, 3, 3, 3, 3, 3, 3, 3, 2, "\u2014", "\u2014"],
-						[16, 5, 3, 3, 3, 3, 3, 3, 3, 3, "\u2014", "\u2014"],
-						[17, 5, 3, 3, 3, 3, 3, 3, 3, 3, 2, "\u2014"],
-						[18, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, "\u2014"],
-						[19, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, "1*"],
-						[20, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, "1*"]
+						[
+							"Your",
+							"Rank"
+						],
+						[
+							"Spell Rank",
+							"Cantrips",
+							"1st",
+							"2nd",
+							"3rd",
+							"4th",
+							"5th",
+							"6th",
+							"7th",
+							"8th",
+							"9th",
+							"10th"
+						],
+						[
+							1,
+							5,
+							2,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							2,
+							5,
+							3,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							3,
+							5,
+							3,
+							2,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							4,
+							5,
+							3,
+							3,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							5,
+							5,
+							3,
+							3,
+							2,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							6,
+							5,
+							3,
+							3,
+							3,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							7,
+							5,
+							3,
+							3,
+							3,
+							2,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							8,
+							5,
+							3,
+							3,
+							3,
+							3,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							9,
+							5,
+							3,
+							3,
+							3,
+							3,
+							2,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							10,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							11,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							2,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							12,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							"\u2014",
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							13,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							2,
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							14,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							"\u2014",
+							"\u2014",
+							"\u2014"
+						],
+						[
+							15,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							2,
+							"\u2014",
+							"\u2014"
+						],
+						[
+							16,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							"\u2014",
+							"\u2014"
+						],
+						[
+							17,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							2,
+							"\u2014"
+						],
+						[
+							18,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							"\u2014"
+						],
+						[
+							19,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							"1*"
+						],
+						[
+							20,
+							5,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							3,
+							"1*"
+						]
 					]
 				}
 			]

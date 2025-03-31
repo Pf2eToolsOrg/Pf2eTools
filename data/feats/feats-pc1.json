@@ -68,6 +68,9 @@
 			],
 			"entries": [
 				"Your innate connection to stone makes you adept at moving across uneven surfaces. You can ignore difficult terrain caused by stone (such as rubble or gravel) and uneven ground made of stone and earth. In addition, when you use the {@skill Acrobatics|PC1} skill to {@action Balance|PC1} on narrow surfaces or uneven ground made of stone or earth, you aren't {@condition off-guard|PC1}, and when you roll a success at one of these {@skill Acrobatics|PC1} checks, you get a critical success instead."
+			],
+			"leadsTo": [
+				"Boulder Roll|PC1"
 			]
 		},
 		{
@@ -208,6 +211,9 @@
 			"entries": [
 				"You have a deep reverence for and connection to stone. You can cast {@spell one with stone|PC1} as a 3rd-rank divine innate spell once per day.",
 				"If you have the {@feat Stonemason's Eye|PC1} feat, you can attempt to find unusual stonework and stonework traps that require legendary proficiency in {@skill Perception|PC1}. If you have both Stonemason's Eye and legendary proficiency in {@skill Perception|PC1}, when the GM rolls a secret check for you to notice unusual stonework, you keep your bonus from {@feat Stonemason's Eye|PC1}."
+			],
+			"leadsTo": [
+				"Stonegate|PC1"
 			]
 		},
 		{
@@ -292,6 +298,10 @@
 			"prerequisites": "at least 100 years old",
 			"entries": [
 				"You have accumulated a vast array of lived knowledge over the years. During your daily preparations, you can reflect upon your life experiences to gain the trained proficiency rank in one skill of your choice. This proficiency lasts until you prepare again. Since this proficiency is temporary, you can't use it as a prerequisite for a skill increase or a permanent character option like a feat."
+			],
+			"leadsTo": [
+				"Expert Longevity|PC1",
+				"Universal Longevity|PC1"
 			]
 		},
 		{
@@ -861,6 +871,9 @@
 			"trigger": "An ally ends a move action adjacent to you.",
 			"entries": [
 				"You take advantage of your ally's movement to adjust your position. You {@action Step|PC1}."
+			],
+			"leadsTo": [
+				"Skittering Scuttle|PC1"
 			]
 		},
 		{
@@ -892,6 +905,9 @@
 						]
 					}
 				}
+			],
+			"leadsTo": [
+				"Loud Singer|PC1"
 			]
 		},
 		{
@@ -947,6 +963,9 @@
 			],
 			"entries": [
 				"Taller folk rarely pay attention to the shadows at their feet, and you take full advantage of this. You can move 5 feet farther when you take the {@action Sneak|PC1} action, up to your Speed. In addition, as long as you continue to use {@action Sneak|PC1} actions and succeed at your {@skill Stealth|PC1} check, you don't become {@condition observed|PC1} if you don't have cover or greater cover and aren't {@condition concealed|PC1} at the end of the {@action Sneak|PC1} action, as long as you have cover or greater cover or are {@condition concealed|PC1} at the end of your turn."
+			],
+			"leadsTo": [
+				"Very, Very Sneaky|PC1"
 			]
 		},
 		{
@@ -1090,6 +1109,9 @@
 			],
 			"entries": [
 				"You have learned to remain {@condition hidden|PC1} by using larger folk as a distraction to avoid drawing attention to yourself. You can use creatures that are at least one size larger than you (usually Medium or larger) as cover for the {@action Hide|PC1} and {@action Sneak|PC1} actions, though you still can't use such creatures as cover for other uses, such as the {@action Take Cover|PC1} action."
+			],
+			"leadsTo": [
+				"Ceaseless Shadows|PC1"
 			]
 		},
 		{
@@ -1141,6 +1163,9 @@
 			"trigger": "You fail a skill check or saving throw.",
 			"entries": [
 				"Your happy-go-lucky nature makes it seem like misfortune avoids you, and to an extent, that might even be true. You can reroll the triggering check, but you must use the new result, even if it's worse."
+			],
+			"leadsTo": [
+				"Guiding Luck|PC1"
 			]
 		},
 		{
@@ -1254,6 +1279,10 @@
 			"trigger": "A Large or larger enemy ends a move action adjacent to you.",
 			"entries": [
 				"You are an expert at avoiding the lumbering footsteps of larger creatures. You {@action Step|PC1} to another space adjacent to the enemy."
+			],
+			"leadsTo": [
+				"Dance Underfoot|PC1",
+				"Toppling Dance|PC1"
 			]
 		},
 		{
@@ -1268,6 +1297,9 @@
 			"prerequisites": "{@feat Step Lively|PC1}",
 			"entries": [
 				"You dart under the legs of your enemies in combat. You can end a successful {@action Tumble Through|PC1} action in a Large or larger enemy's space. Also, when using the {@feat Step Lively|PC1} feat, you can {@action Step|PC1} into the triggering enemy's space. The enemy must have limbs or otherwise leave you enough room for this maneuver, as determined by the GM. For instance, you could share space with a giant or dragon, but not an ooze."
+			],
+			"leadsTo": [
+				"Toppling Dance|PC1"
 			]
 		},
 		{
@@ -1414,6 +1446,9 @@
 			"trigger": "You attempt a saving throw against a spell or {@trait magical} effect, but haven't rolled yet.",
 			"entries": [
 				"You notice spirits that inhabit objects, learning which bring good fortune and which are unlucky. You focus on the power of a lucky object, granting you a +1 circumstance bonus to your saving throw against the triggering effect."
+			],
+			"leadsTo": [
+				"Lucky Keepsake|PC1"
 			]
 		},
 		{
@@ -1427,6 +1462,9 @@
 			],
 			"entries": [
 				"Your body produces a nearly endless supply of hard seedpods. You gain a seedpod ranged unarmed attack with a range increment of 30 feet that deals {@damage 1d4} bludgeoning damage. On a critical hit, a seedpod bursts, issuing forth a tangle of vegetation that imposes a \u201310-foot circumstance penalty on the target's Speed until the start of your next turn. Seedpods do not add critical specialization effects."
+			],
+			"leadsTo": [
+				"Thorned Seedpod|PC1"
 			]
 		},
 		{
@@ -1693,6 +1731,13 @@
 			"trigger": "You would be reduced to 0 Hit Points but not immediately killed.",
 			"entries": [
 				"Fierceness in battle runs through your blood, and you refuse to fall from your injuries no matter how terrible they may be. You avoid being knocked out and remain at 1 Hit Point, and your {@condition wounded|PC1} condition increases by 1."
+			],
+			"leadsTo": [
+				"Defy Death|PC1",
+				"Undying Ferocity|PC1",
+				"Incredible Ferocity|PC1",
+				"Ferocious Beasts|PC1",
+				"Rampaging Ferocity|PC1"
 			]
 		},
 		{
@@ -1726,6 +1771,10 @@
 			"trigger": "You attempt a saving throw against a spell or {@trait magical} effect, and have not yet rolled.",
 			"entries": [
 				"You defend yourself against magic by relying on techniques derived from orc cultural superstitions. You gain a +1 circumstance bonus to your saving throw against the triggering spell or {@trait magical} effect."
+			],
+			"leadsTo": [
+				"Pervasive Superstition|PC1",
+				"Spell Devourer|PC1"
 			]
 		},
 		{
@@ -2136,6 +2185,10 @@
 			],
 			"entries": [
 				"You descend from an angel, a winged messenger from Nirvana or one of the other celestial realms. You gain the trained proficiency rank in {@skill Society|PC1}. If you would automatically become trained in {@skill Society|PC1} (from your background or class, for example), you instead become trained in a skill of your choice. You know the {@language Empyrean|PC1} language, and you gain the {@feat Multilingual|PC1} skill feat."
+			],
+			"leadsTo": [
+				"Celestial Magic|PC1",
+				"Celestial Mercy|PC1"
 			]
 		},
 		{
@@ -2150,6 +2203,10 @@
 			],
 			"entries": [
 				"Your lineage traces back to a daemon, one of the manifestations of horrific forms of death that devour souls within their foul home of Abaddon. As a result, you cling tenaciously to the last shreds of your own life force. You gain the {@feat Diehard|PC1} general feat."
+			],
+			"leadsTo": [
+				"Fiendish Magic|PC1",
+				"Slip Sideways|PC1"
 			]
 		},
 		{
@@ -2164,6 +2221,10 @@
 			],
 			"entries": [
 				"Your lineage descends from devils, conniving schemers of Hell. You're as skilled at noticing lies and twisted wordings as you are at constructing them. You are trained in {@skill Deception|PC1} and {@skill Lore|PC1|Legal Lore}. If you were already trained in {@skill Deception|PC1} (from your background or class, for example), you instead become trained in a skill of your choice. You also gain the {@feat Lie to Me|PC1} skill feat."
+			],
+			"leadsTo": [
+				"Fiendish Magic|PC1",
+				"Slip Sideways|PC1"
 			]
 		},
 		{
@@ -2178,6 +2239,10 @@
 			],
 			"entries": [
 				"You trace your lineage to archons, guardians of the seventiered mountain of Heaven and nurturers of law and virtue within mortals. You gain a +1 circumstance bonus to saves against {@trait emotion} effects, and if you roll a success on a save against an {@trait emotion} effect, you get a critical success instead."
+			],
+			"leadsTo": [
+				"Celestial Magic|PC1",
+				"Celestial Mercy|PC1"
 			]
 		},
 		{
@@ -2192,6 +2257,10 @@
 			],
 			"entries": [
 				"Your blood sings with the liberating power of the azatas, living embodiments of freedom from the wild realm of Elysium. You gain a +1 circumstance bonus to {@action Escape|PC1}. When you roll a critical failure on a check to {@action Escape|PC1}, you get a failure instead, and when you roll a success, you get a critical success instead."
+			],
+			"leadsTo": [
+				"Celestial Magic|PC1",
+				"Celestial Mercy|PC1"
 			]
 		},
 		{
@@ -2207,6 +2276,10 @@
 			"entries": [
 				"Your blood bears the mark of a demon, a living embodiment of sin from the fetid depths of the Outer Rifts. Demonic power pulses through your veins and manifests in a different way for each pitborn, whether you have webbed fingers and thrive in the water, large hands capable of wrestling larger foes, or some other manifestation. You are trained in {@skill Athletics|PC1}. If you were already trained in {@skill Athletics|PC1} (from your background or class, for example), you instead become trained in a skill of your choice.",
 				"You also gain any one {@filter common 1st-level skill feat|feats||type=skill|Level=[1]|skill=athletics|rarity=common} with a prerequisite of trained in {@skill Athletics|PC1}, as reflects the manifestation of your fiendish blood."
+			],
+			"leadsTo": [
+				"Fiendish Magic|PC1",
+				"Slip Sideways|PC1"
 			]
 		},
 		{
@@ -2398,6 +2471,9 @@
 			},
 			"entries": [
 				"With effort, you can call forth magical wings from your back, similar in appearance to those of your extraplanar forebear, whether they be elegantly feathered wings or ominous bat wings. These wings remain for 10 minutes. You gain a fly Speed equal to your Speed while you've manifested your wings."
+			],
+			"leadsTo": [
+				"Eternal Wings|PC1"
 			]
 		},
 		{
@@ -2672,6 +2748,9 @@
 			],
 			"entries": [
 				"You're resilient to performative influences that aren't your own. You gain a +1 circumstance bonus to saving throws against effects with the auditory, illusion, linguistic, {@trait sonic}, or {@trait visual} traits."
+			],
+			"leadsTo": [
+				"Educate Allies|PC1"
 			]
 		},
 		{
@@ -2734,6 +2813,10 @@
 			"entries": [
 				"You keep a book of occult spells, similar to a wizard's spellbook, and can use its spells to supplement your spell repertoire. Add all the spells in your repertoire to this book for free. You can use the {@skill Occultism|PC1} skill to {@action Learn Spells|Learn a Spell} and add them to your spellbook by paying the appropriate cost.",
 				"During your daily preparations, choose any one spell from your book of occult spells. If that spell is already in your spell repertoire, you can treat it as an additional signature spell that day. If it isn't in your repertoire, treat it as though it were until your next daily preparations."
+			],
+			"leadsTo": [
+				"Eclectic Polymath|PC1",
+				"Impossible Polymath|PC1"
 			]
 		},
 		{
@@ -2847,6 +2930,9 @@
 			"prerequisites": "{@class bard|PC1|warrior muse|warrior}",
 			"entries": [
 				"With a rousing call, you exhort an ally to advance. If your next action is to cast the {@spell courageous anthem|PC1} composition cantrip, one ally of your choice who gains a status bonus from the spell can immediately use their reaction to {@action Stride|PC1}."
+			],
+			"leadsTo": [
+				"Courageous Onslaught|PC1"
 			]
 		},
 		{
@@ -2901,6 +2987,9 @@
 			],
 			"entries": [
 				"You learn the {@spell rallying anthem|PC1} composition cantrip, which protects you and allies."
+			],
+			"leadsTo": [
+				"Defensive Coordination|PC1"
 			]
 		},
 		{
@@ -2959,6 +3048,9 @@
 			"entries": [
 				"You can procure information with confidence. Whenever you {@action Recall Knowledge|PC1} using any skill (including {@skill Lore|PC1|Bardic Lore}), you can forgo rolling your check to instead receive a result of 10 + your proficiency bonus (don't apply any other bonuses, penalties, or modifiers).",
 				"As long as you are an expert in a skill, you meet the prerequisites for the {@feat Automatic Knowledge|PC1} skill feat for that skill, even if you don't have the {@feat Assurance|PC1} feat for that skill."
+			],
+			"leadsTo": [
+				"Enigma's Knowledge|PC1"
 			]
 		},
 		{
@@ -3035,6 +3127,9 @@
 			"entries": [
 				"You can perform multiple compositions simultaneously, typically by performing in multiple ways at the same time, using special vocal techniques to double your voice, or creating occult magic that replicates your song or speech.",
 				"If your next action is to cast a composition, it becomes a harmonized composition. Unlike a normal composition, a harmonized composition doesn't end if you cast another composition, and you can cast another composition on the same turn as a harmonized one. Casting another harmonized composition ends any harmonized composition you already have in effect."
+			],
+			"leadsTo": [
+				"Symphony of the Muse|PC1"
 			]
 		},
 		{
@@ -3220,6 +3315,10 @@
 			"prerequisites": "{@class bard|PC1|warrior muse|warrior}",
 			"entries": [
 				"With a mighty shout, you can stir an ally to attack. If your next action is to cast the {@spell courageous anthem|PC1} composition cantrip, one ally of your choice who gains a status bonus from the spell can immediately use their reaction to make a melee {@action Strike|PC1}."
+			],
+			"leadsTo": [
+				"Shared Assault|PC1",
+				"Courageous Onslaught|PC1"
 			]
 		},
 		{
@@ -3726,6 +3825,9 @@
 			"prerequisites": "holy or unholy trait",
 			"entries": [
 				"Your deity's grace doesn't extend to your sworn enemies. When you cast a {@spell harm|PC1} or {@spell heal|PC1} spell, you can add your {@trait holy|PC1} or {@trait unholy|PC1} trait to it. If you do, the spell deals damage to creatures with the opposing trait, even if it wouldn't normally damage them. The spell deals spirit damage when used this way. For example, if you are {@trait holy|PC1}, you could add the {@trait holy|PC1} trait to a {@spell heal|PC1} spell and deal spirit damage to a fiend that has the {@trait unholy|PC1} trait."
+			],
+			"leadsTo": [
+				"Castigating Weapon|PC1"
 			]
 		},
 		{
@@ -3744,6 +3846,11 @@
 			],
 			"special": [
 				"You can select this feat multiple times, selecting a different domain each time and gaining its domain spell."
+			],
+			"leadsTo": [
+				"Advanced Domain|PC1",
+				"Deity's Protection|PC1",
+				"Shield of Faith|PC1"
 			]
 		},
 		{
@@ -3772,6 +3879,9 @@
 			"prerequisites": "healing font",
 			"entries": [
 				"Your vitality is even more vibrant and restorative. When you cast {@spell heal|PC1}, you roll d10s instead of d8s."
+			],
+			"leadsTo": [
+				"Magic Hands|PC1"
 			]
 		},
 		{
@@ -3792,6 +3902,9 @@
 			"trigger": "You are about to roll a saving throw against a hazard.",
 			"entries": [
 				"Your deity grants you a moment's foresight. You gain a +2 circumstance bonus to the triggering saving throw."
+			],
+			"leadsTo": [
+				"Shared Avoidance|PC1"
 			]
 		},
 		{
@@ -3863,6 +3976,10 @@
 						"{@b Weapon} The wielder gains a +1 status bonus to damage rolls with the weapon."
 					]
 				}
+			],
+			"leadsTo": [
+				"Emblazon Energy|PC1",
+				"Emblazon Antimagic|PC1"
 			]
 		},
 		{
@@ -3925,6 +4042,9 @@
 			"prerequisites": "harmful font or healing font, deity that allows clerics to have both fonts",
 			"entries": [
 				"As you explore your deity's aspects, you move beyond restrictions on healing or harming. You can prepare either {@spell harm|PC1} or {@spell heal|PC1} in the spell slots gained from the harmful font or healing font."
+			],
+			"leadsTo": [
+				"Ebb and Flow|PC1"
 			]
 		},
 		{
@@ -3959,6 +4079,9 @@
 			"entries": [
 				"You siphon the energies of life and death through a melee attack and into your foe. Make a melee {@action Strike|PC1}. On a hit, you cast the 1-action version of the expended spell to damage the target, in addition to the normal damage from your {@action Strike|PC1}. The target automatically gets a failure on its save (or a critical failure if your {@action Strike|PC1} was a critical hit). The spell doesn't have the {@trait manipulate} trait when cast this way.",
 				"The spell is expended with no effect if your {@action Strike|PC1} fails or hits a creature that isn't damaged by that energy type (such as if you hit a non-undead creature with a {@spell heal|PC1} spell)."
+			],
+			"leadsTo": [
+				"Rebounding Smite|PC1"
 			]
 		},
 		{
@@ -4011,6 +4134,9 @@
 			"entries": [
 				"You present your religious symbol emphatically. You gain a +2 circumstance bonus to saving throws until the start of your next turn. While it's raised, if you roll a success at a saving throw against a {@trait vitality} or {@trait void} effect, you get a critical success instead.",
 				"If the religious symbol you're raising is a shield, such as with {@feat Emblazon Armaments|PC1}, you gain the effects of {@action Raise a Shield|PC1} when you use this action and the effects of this action when you {@action Raise a Shield|PC1}."
+			],
+			"leadsTo": [
+				"Sapping Symbol|PC1"
 			]
 		},
 		{
@@ -4175,6 +4301,9 @@
 			],
 			"special": [
 				"You can select this feat multiple times. Each time, you must select a different advanced domain spell."
+			],
+			"leadsTo": [
+				"Deity's Protection|PC1"
 			]
 		},
 		{
@@ -4261,6 +4390,9 @@
 			"entries": [
 				"You touch a weapon and bring it into concordance with your deity. For 1 round, that weapon gains your {@trait holy|PC1} or {@trait unholy|PC1} trait. It also deals an additional {@damage 2d6} spirit damage to creatures of the opposed trait. For example, if you are {@trait holy|PC1}, the weapon would deal an extra {@damage 2d6} spirit damage to {@trait unholy|PC1} creatures.",
 				"If you use Sanctify Armament again, any previous use of it expires."
+			],
+			"leadsTo": [
+				"Lasting Armament|PC1"
 			]
 		},
 		{
@@ -4363,6 +4495,9 @@
 			"prerequisites": "expert in your deity's favored weapon",
 			"entries": [
 				"Striking out against your enemies draws praise and protection from your deity. When you damage a creature with a {@action Strike|PC1} using your deity's favored weapon, you gain a number of temporary Hit Points equal to half your level, or equal to your level if the {@action Strike|PC1} was a critical hit. These temporary Hit Points last until the start of your next turn."
+			],
+			"leadsTo": [
+				"Shared Replenishment|PC1"
 			]
 		},
 		{
@@ -4604,6 +4739,9 @@
 			"trigger": "You fail a saving throw against a {@trait mental} effect.",
 			"entries": [
 				"Your deity sends you a vision of faith to steel you against mental attacks. Reroll the triggering saving throw with a +2 circumstance bonus. You must use the second result, even if it's worse."
+			],
+			"leadsTo": [
+				"Shared Clarity|PC1"
 			]
 		},
 		{
@@ -4623,6 +4761,9 @@
 			"requirements": "You have a {@spell banishment|PC1} spell prepared.",
 			"entries": [
 				"The force of your blow sends your victim back to its home plane. You expend a {@spell banishment|PC1} spell you have prepared, affecting the creature you critically hit without needing to cast the spell. The creature can attempt to resist the spell as normal."
+			],
+			"leadsTo": [
+				"Improved Swift Banishment|PC1"
 			]
 		},
 		{
@@ -4872,6 +5013,13 @@
 			"prerequisites": "animal order",
 			"entries": [
 				"You gain the service of a {@quickref young animal companion|PC1|0|young animal companions} that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities."
+			],
+			"leadsTo": [
+				"Mature Animal Companion (Druid)|PC1",
+				"Incredible Companion (Druid)|PC1",
+				"Primal Howl|PC1",
+				"Specialized Companion (Druid)|PC1",
+				"Instinctive Support|PC1"
 			]
 		},
 		{
@@ -4962,6 +5110,9 @@
 			"entries": [
 				"You cultivate a seed that can sprout into a wooden staff, vine whip, or another weapon. You spend 10 minutes focusing primal energy into a seed, imprinting it with the potential of a single level 0 weapon you are trained with and that has no mechanical parts or metal components. When holding the imprinted seed, you can use an {@action Interact|PC1} action to cause it to immediately grow into that weapon; a second {@action Interact|PC1} action returns it to seed form. The verdant weapon can be etched with runes or affixed with talismans as normal, which are suppressed when the weapon is in seed form.",
 				"You can have only one verdant seed at a time. If you prepare a second, your first verdant seed immediately becomes a mundane seed; any runes on the previous seed transfer to the new seed at no cost, but inapplicable runes are suppressed."
+			],
+			"leadsTo": [
+				"Pristine Weapon|PC1"
 			]
 		},
 		{
@@ -4996,6 +5147,20 @@
 			"prerequisites": "untamed order",
 			"entries": [
 				"You are one with the wild, always changing and adapting to meet any challenge. You gain the {@spell untamed form|PC1} order spell, which lets you transform into a variety of shapes that you can expand with druid feats."
+			],
+			"leadsTo": [
+				"Anthropomorphic Shape|PC1",
+				"Form Control|PC1",
+				"Perfect Form Control|PC1",
+				"Insect Shape|PC1",
+				"Ferocious Shape|PC1",
+				"Soaring Shape|PC1",
+				"Dragon Shape|PC1",
+				"Reactive Transformation|PC1",
+				"True Shapeshifter|PC1",
+				"Elemental Shape|PC1",
+				"Plant Shape|PC1",
+				"Monstrosity Shape|PC1"
 			]
 		},
 		{
@@ -5009,6 +5174,9 @@
 			],
 			"entries": [
 				"You call upon the creatures of nature to come to your aid. You can spend 10 minutes in concert with nature to replace a spell you've prepared in one of your druid spell slots with a {@spell summon animal|PC1} or {@spell summon plant or fungus|PC1} spell of the same rank."
+			],
+			"leadsTo": [
+				"Primal Summons|PC1"
 			]
 		},
 		{
@@ -5040,6 +5208,9 @@
 			],
 			"special": [
 				"You can take this feat multiple times. Each time you do, you must choose a different order other than your own."
+			],
+			"leadsTo": [
+				"Order Magic|PC1"
 			]
 		},
 		{
@@ -5114,6 +5285,9 @@
 			"prerequisites": "{@feat Untamed Form|PC1}",
 			"entries": [
 				"With additional care and effort, you can take on an alternate shape for a longer period of time. If your next action is to cast {@spell untamed form|PC1}, the spell's rank is 2 lower than normal (minimum 1st rank), but you can remain transformed for up to 1 hour or the listed duration (whichever is longer). You can still {@action Dismiss|PC1} {@spell untamed form|PC1} as normal."
+			],
+			"leadsTo": [
+				"Perfect Form Control|PC1"
 			]
 		},
 		{
@@ -5152,6 +5326,11 @@
 			"entries": [
 				"Your animal companion has grown up over the course of your adventures, becoming a {@quickref specialized animal companion|PC1|0|Mature Animal Companions} and gaining additional capabilities.",
 				"Your animal companion has greater independence. During an encounter, even if you don't use the {@action Command an Animal|PC1} action, your animal companion can still use 1 action that round on your turn to {@action Stride|PC1} or {@action Strike|PC1}. It can do this at any point during your turn, as long as you aren't currently taking an action. If it does, that's all the actions it gets that round\u2014you can't Command it later."
+			],
+			"leadsTo": [
+				"Incredible Companion (Druid)|PC1",
+				"Primal Howl|PC1",
+				"Specialized Companion (Druid)|PC1"
 			]
 		},
 		{
@@ -5377,6 +5556,10 @@
 			"prerequisites": "{@feat Mature Animal Companion (Druid)|PC1}",
 			"entries": [
 				"Your animal companion continues to grow and develop. It becomes either a {@companionAbility nimble|PC1} or {@companionAbility savage|PC1} animal companion, gaining additional capabilities determined by the type."
+			],
+			"leadsTo": [
+				"Primal Howl|PC1",
+				"Specialized Companion (Druid)|PC1"
 			]
 		},
 		{
@@ -5412,6 +5595,11 @@
 			"prerequisites": "{@feat Untamed Form|PC1}",
 			"entries": [
 				"Wings free you from the shackles of the ground below. Add the bat and bird shapes in {@spell aerial form|PC1} to your untamed form list. If you have {@feat Insect Shape|PC1}, you also add the wasp shape to your untamed form list. If you have {@feat Ferocious Shape|PC1}, you also add the pterosaur shape to your {@spell untamed form|PC1} list. Whenever you use {@spell untamed form|PC1} to take a shape that grants you a specific {@skill Acrobatics|PC1} modifier, you gain a +1 status bonus to {@skill Acrobatics|PC1} checks."
+			],
+			"leadsTo": [
+				"Dragon Shape|PC1",
+				"Reactive Transformation|PC1",
+				"True Shapeshifter|PC1"
 			]
 		},
 		{
@@ -5426,6 +5614,9 @@
 			"prerequisites": "storm order",
 			"entries": [
 				"You bid the winds to aid you, carrying you through the air and allowing you passage through the strongest headwinds. You gain the {@spell stormwind flight|PC1} order spell."
+			],
+			"leadsTo": [
+				"Invoke Disaster|PC1"
 			]
 		},
 		{
@@ -5440,6 +5631,9 @@
 			"prerequisites": "{@feat Untamed Form|PC1}",
 			"entries": [
 				"You understand the fundamental elements of nature such that you can imbue them into your body and manifest as a living embodiment of those elements. Add the shapes in {@spell elemental form|PC1} to your {@spell untamed form|PC1} list. Whenever you're polymorphed into another shape using {@spell untamed form|PC1}, you gain resistance 5 to fire."
+			],
+			"leadsTo": [
+				"Reactive Transformation|PC1"
 			]
 		},
 		{
@@ -5493,6 +5687,9 @@
 			"entries": [
 				"You can take the shape of a {@trait plant} creature. If you don't have {@spell untamed form|PC1}, you can cast {@spell plant form|PC1} once per day, heightened to the same rank as your highest-rank druid spell slot.",
 				"If you do have {@spell untamed form|PC1}, add the shapes listed in {@spell plant form|PC1} to your {@spell untamed form|PC1} list, and whenever you're polymorphed into another shape using {@spell untamed form|PC1}, you gain resistance 5 to poison."
+			],
+			"leadsTo": [
+				"Reactive Transformation|PC1"
 			]
 		},
 		{
@@ -5589,6 +5786,10 @@
 			"prerequisites": "{@feat Soaring Shape|PC1}",
 			"entries": [
 				"You can take on the shape of some of the world's most fearsome creatures. Add the shapes listed in {@spell dragon form|PC1} to your {@spell untamed form|PC1} list. Whenever you're polymorphed into another shape using {@spell untamed form|PC1}, you gain resistance 5 to your choice of acid, cold, electricity, fire, or poison."
+			],
+			"leadsTo": [
+				"Reactive Transformation|PC1",
+				"True Shapeshifter|PC1"
 			]
 		},
 		{
@@ -5949,6 +6150,9 @@
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
 				"You lash out at your foe with both weapons. Make two Strikes, one with each of your two melee weapons, each using your current multiple attack penalty. Both Strikes must have the same target. If the second {@action Strike|PC1} is made with a weapon that doesn't have the {@trait agile} trait, it takes a \u20132 penalty. If both attacks hit, combine their damage, and then add any other applicable effects from both weapons. You add any precision damage only once, to the attack of your choice. Combine the damage from both Strikes and apply resistances and weaknesses only once. This counts as two attacks when calculating your multiple attack penalty."
+			],
+			"leadsTo": [
+				"Graceful Poise|PC1"
 			]
 		},
 		{
@@ -6068,6 +6272,9 @@
 			],
 			"entries": [
 				"You unleash a particularly powerful attack that clobbers your foe but leaves you a bit unsteady. Make a melee {@action Strike|PC1}. This counts as two attacks when calculating your multiple attack penalty. If this {@action Strike|PC1} hits, you deal an extra die of weapon damage. If you're at least 10th level, increase this to two extra dice, and if you're at least 18th level, increase it to three extra dice."
+			],
+			"leadsTo": [
+				"Furious Focus|PC1"
 			]
 		},
 		{
@@ -6086,6 +6293,10 @@
 			"trigger": "You use the {@feat Shield Block|PC1} reaction, and the opponent that triggered {@feat Shield Block|PC1} is adjacent to you and is your size or smaller.",
 			"entries": [
 				"You push back as you block, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically {@action Shove||Shoving} it 5 feet or causing it to become {@condition off-guard|PC1} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition off-guard|PC1}. If it chooses to be moved, you choose the direction. If the {@action Shove|PC1} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition off-guard|PC1} instead of being moved."
+			],
+			"leadsTo": [
+				"Powerful Shove|PC1",
+				"Flinging Shove|PC1"
 			]
 		},
 		{
@@ -6153,6 +6364,10 @@
 						]
 					}
 				}
+			],
+			"leadsTo": [
+				"Powerful Shove|PC1",
+				"Flinging Shove|PC1"
 			]
 		},
 		{
@@ -6190,6 +6405,12 @@
 			"requirements": "You are wielding a single one-handed melee weapon and hold nothing else in your hands.",
 			"entries": [
 				"You can parry attacks against you with your one-handed weapon. You gain a +2 circumstance bonus to AC until the start of your next turn as long as you continue to meet the requirements."
+			],
+			"leadsTo": [
+				"Dueling Riposte|PC1",
+				"Improved Dueling Riposte|PC1",
+				"Guiding Riposte|PC1",
+				"Dueling Dance|PC1"
 			]
 		},
 		{
@@ -6246,6 +6467,9 @@
 			"requirements": "You are wielding a melee weapon.",
 			"entries": [
 				"You attack an enemy at the edge of your reach. Make a {@action Strike|PC1} with a melee weapon, increasing your reach by 5 feet for that {@action Strike|PC1}. If the weapon has the {@trait disarm}, {@trait shove}, or {@trait trip} trait, you can use the corresponding action instead of a {@action Strike|PC1}."
+			],
+			"leadsTo": [
+				"Lunging Stance|PC1"
 			]
 		},
 		{
@@ -6312,6 +6536,9 @@
 			"prerequisites": "trained in {@skill Athletics|PC1}",
 			"entries": [
 				"You rush forward, moving enemies aside to reach your foe. You {@action Stride|PC1}, attempting to move through your enemies' spaces, and make a melee {@action Strike|PC1}. Roll an {@skill Athletics|PC1} check and compare the result to the Fortitude DC of each creature whose space you attempt to move through during your {@action Stride|PC1}, moving through their space on a success but ending your movement before entering their space on a failure. You can use Barreling Charge to {@action Burrow|PC1}, {@action Climb|PC1}, {@action Fly|PC1}, or {@action Swim|PC1} instead of {@action Stride|PC1} if you have the corresponding movement type."
+			],
+			"leadsTo": [
+				"Overpowering Charge|PC1"
 			]
 		},
 		{
@@ -6331,6 +6558,10 @@
 			"requirements": "You are wielding a ranged weapon with reload 0.",
 			"entries": [
 				"You shoot twice in blindingly fast succession. Make two {@action Strike||Strikes}, each against a separate target and with a \u20132 penalty. Both attacks count toward your multiple attack penalty, but the penalty doesn't increase until after you've made both of them."
+			],
+			"leadsTo": [
+				"Triple Shot|PC1",
+				"Multishot Stance|PC1"
 			]
 		},
 		{
@@ -6435,6 +6666,9 @@
 			"prerequisites": "trained in {@skill Athletics|PC1}",
 			"entries": [
 				"You make an attack to knock a foe off balance, then follow up immediately with a sweep to topple them. Make a melee {@action Strike|PC1}. If it hits and deals damage, you can attempt an {@skill Athletics|PC1} check to {@action Trip|PC1} the creature you hit. If you're wielding a two-handed melee weapon, you can ignore {@action Trip|PC1}'s requirement that you have a hand free. Both attacks count toward your multiple attack penalty, but the penalty doesn't increase until after you've made both of them."
+			],
+			"leadsTo": [
+				"Crashing Slam|PC1"
 			]
 		},
 		{
@@ -6618,6 +6852,9 @@
 			],
 			"special": [
 				"If you have the {@feat Shield Block|PC1} reaction, damage you take as a result of a Reflex save can trigger that reaction, even if the damage isn't physical damage."
+			],
+			"leadsTo": [
+				"Improved Reflexive Shield|PC1"
 			]
 		},
 		{
@@ -6655,6 +6892,9 @@
 			],
 			"entries": [
 				"You adopt a stance to rebound your thrown weapons toward you. While you are in this stance, any thrown weapons you use as part of a ranged {@action Strike|PC1} to deal bludgeoning or slashing damage immediately return to your hand, enabling you to use them for additional Strikes. You must be within the weapon's listed range increment and have a hand free to catch the weapon. If you make a ranged {@action Strike|PC1} with a thrown weapon outside of its listed range increment, it instead flies back toward you a number of feet equal to its listed range increment and then falls to the ground."
+			],
+			"leadsTo": [
+				"Ricochet Feint|PC1"
 			]
 		},
 		{
@@ -6752,6 +6992,10 @@
 			"requirements": "You are benefiting from {@feat Dueling Parry|PC1}.",
 			"entries": [
 				"You elegantly counterattack against your flailing enemy. Make a melee {@action Strike|PC1} against or attempt to {@action Disarm|PC1} the triggering creature."
+			],
+			"leadsTo": [
+				"Improved Dueling Riposte|PC1",
+				"Guiding Riposte|PC1"
 			]
 		},
 		{
@@ -6788,6 +7032,9 @@
 			],
 			"entries": [
 				"By spending a moment to focus, you can ensure your attack strikes true. Make a ranged weapon {@action Strike|PC1}. On this {@action Strike|PC1}, you gain a +2 circumstance bonus to the attack roll and ignore the target's {@condition concealed|PC1} condition."
+			],
+			"leadsTo": [
+				"Incredible Ricochet|PC1"
 			]
 		},
 		{
@@ -6950,6 +7197,9 @@
 			"requirements": "You're aware of the attack, not {@condition off-guard|PC1} against it, and either have a hand free or are wielding a melee weapon.}",
 			"entries": [
 				"You can knock aside ranged attacks. You gain a +4 circumstance bonus to AC against the triggering attack. If the attack misses, you knocked or cut it out of the air."
+			],
+			"leadsTo": [
+				"Smash from the Air|PC1"
 			]
 		},
 		{
@@ -7115,6 +7365,9 @@
 			"requirements": "You are benefiting from {@feat Twin Parry (Fighter)|PC1}.",
 			"entries": [
 				"A clever parry with one weapon leaves your opponent open to an attack with the other weapon. Make a melee {@action Strike|PC1} or {@action Disarm|PC1} action against the triggering opponent."
+			],
+			"leadsTo": [
+				"Improved Twin Riposte (Fighter)|PC1"
 			]
 		},
 		{
@@ -7384,6 +7637,9 @@
 			"trigger": "You roll initiative.",
 			"entries": [
 				"At the first sign of trouble, often before you consciously realize the danger, you drop into a stance with a mere thought. Use an action that has the {@trait stance} trait."
+			],
+			"leadsTo": [
+				"Master of Many Styles|PC1"
 			]
 		},
 		{
@@ -7637,6 +7893,13 @@
 			],
 			"entries": [
 				"You gain the service of a {@quickref young animal companion|PC1|0|young animal companions} that travels with you and obeys simple commands. See {@quickref Animal Companions|PC1|0|Animal Companions}. When you {@action Hunt Prey|PC1}, your animal companion gains the action's benefits and your hunter's edge benefit if you have one."
+			],
+			"leadsTo": [
+				"Mature Animal Companion (Ranger)|PC1",
+				"Incredible Companion (Ranger)|PC1",
+				"Specialized Companion (Ranger)|PC1",
+				"Stealthy Companion|PC1",
+				"Masterful Companion|PC1"
 			]
 		},
 		{
@@ -7692,6 +7955,11 @@
 			],
 			"special": [
 				"You can take this feat multiple times, choosing a different initial warden spell each time."
+			],
+			"leadsTo": [
+				"Advanced Warden|PC1",
+				"Masterful Warden|PC1",
+				"Peerless Warden|PC1"
 			]
 		},
 		{
@@ -7706,6 +7974,11 @@
 			"entries": [
 				"You quickly assess your prey and apply what you know. As part of the action used to Hunt your Prey, you can attempt a check to {@action Recall Knowledge|PC1} about your prey. When you critically succeed at identifying your hunted prey with {@action Recall Knowledge|PC1}, you note a weakness in the creature's defenses in addition to any other benefits. You and allies you tell gain a +1 circumstance bonus to your next attack roll against that prey.",
 				"You can give bonuses from Monster Hunter only once per day against a particular creature."
+			],
+			"leadsTo": [
+				"Monster Warden|PC1",
+				"Master Monster Hunter|PC1",
+				"Legendary Monster Hunter|PC1"
 			]
 		},
 		{
@@ -7764,6 +8037,9 @@
 						"{@b Swamp} You can move across bogs at full Speed, even if they are deep enough to be greater difficult terrain or to normally require you to {@action Swim|PC1}."
 					]
 				}
+			],
+			"leadsTo": [
+				"Terrain Master|PC1"
 			]
 		},
 		{
@@ -7876,6 +8152,9 @@
 			],
 			"entries": [
 				"Your experience in the field has taught you how to focus your aim at a distance, increasing your accuracy. Double your weapons' range increments."
+			],
+			"leadsTo": [
+				"Legendary Shot|PC1"
 			]
 		},
 		{
@@ -7947,6 +8226,10 @@
 			"entries": [
 				"You can use two weapons to deflect attacks. You gain a +1 circumstance bonus to AC until the start of your next turn, or a +2 circumstance bonus if either weapon has the {@trait parry} trait.",
 				"You lose this circumstance bonus if you no longer meet this feat's requirement."
+			],
+			"leadsTo": [
+				"Twin Riposte (Ranger)|PC1",
+				"Improved Twin Riposte (Ranger)|PC1"
 			]
 		},
 		{
@@ -7997,6 +8280,10 @@
 			"prerequisites": "{@feat Animal Companion (Ranger)|PC1}",
 			"entries": [
 				"Your animal companion becomes a {@quickref mature animal companion|PC1|0|Mature Animal Companions} and gains additional capabilities. Your animal companion has greater independence. During an encounter, even if you don't use the {@action Command an Animal|PC1} action, your animal companion can still use 1 action that round on your turn to {@action Stride|PC1} or {@action Strike|PC1}. It can do this at any point during your turn, as long as you aren't currently taking an action. If it does, that's all the actions it gets that round\u2014you can't Command it later."
+			],
+			"leadsTo": [
+				"Incredible Companion (Ranger)|PC1",
+				"Specialized Companion (Ranger)|PC1"
 			]
 		},
 		{
@@ -8123,6 +8410,10 @@
 			],
 			"entries": [
 				"You point out vulnerabilities present in your hunted prey, granting the benefits listed in {@action Hunt Prey|PC1} and your hunter's edge to an ally until the end of their next turn. Depending on whether you call out or use gestures, this action gains either the {@trait auditory} or {@trait visual} trait."
+			],
+			"leadsTo": [
+				"Shared Prey|PC1",
+				"Triple Threat|PC1"
 			]
 		},
 		{
@@ -8137,6 +8428,10 @@
 			"prerequisites": "master in {@skill Stealth|PC1}",
 			"entries": [
 				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Hide|PC1} and {@action Sneak|PC1} even without cover or being {@condition concealed|PC1}."
+			],
+			"leadsTo": [
+				"Stealthy Companion|PC1",
+				"Shadow Hunter|PC1"
 			]
 		},
 		{
@@ -8152,6 +8447,9 @@
 			"prerequisites": "{@feat Mature Animal Companion (Ranger)|PC1}",
 			"entries": [
 				"Your animal companion continues to grow and develop. It becomes a {@companionAbility nimble|PC1} or {@companionAbility savage|PC1} animal companion (your choice), gaining additional capabilities determined by the type of companion."
+			],
+			"leadsTo": [
+				"Specialized Companion (Ranger)|PC1"
 			]
 		},
 		{
@@ -8166,6 +8464,9 @@
 			"prerequisites": "master in {@skill Nature|PC1}, {@feat Monster Hunter|PC1}",
 			"entries": [
 				"You have a nearly encyclopedic knowledge of all creatures of the world. You can use {@skill Nature|PC1} to {@action Recall Knowledge|PC1} to identify any creature. In addition, you gain the benefits of {@feat Monster Hunter|PC1} (and {@feat Monster Warden|PC1}, if you have it) on a success as well as a critical success."
+			],
+			"leadsTo": [
+				"Legendary Monster Hunter|PC1"
 			]
 		},
 		{
@@ -8222,6 +8523,9 @@
 			"requirements": "You are benefiting from {@feat Twin Parry (Ranger)|PC1}",
 			"entries": [
 				"A clever parry with one weapon leaves your opponent open to an attack with the other weapon. Make a melee {@action Strike|PC1} or use a {@action Disarm|PC1} action against the triggering opponent"
+			],
+			"leadsTo": [
+				"Improved Twin Riposte (Ranger)|PC1"
 			]
 		},
 		{
@@ -8249,6 +8553,9 @@
 			],
 			"entries": [
 				"The sheer power of your attacks, or the overwhelming number of them, leaves an enemy flustered. If you critically hit your hunted prey with a ranged weapon, or hit it at least twice on the same turn with a ranged weapon, it's {@condition off-guard|PC1} until the start of your next turn."
+			],
+			"leadsTo": [
+				"Greater Distracting Shot|PC1"
 			]
 		},
 		{
@@ -8262,6 +8569,10 @@
 			],
 			"entries": [
 				"You can focus on two foes at once, hunting both of them down. When you use the {@action Hunt Prey|PC1} action, you can pick two creatures as your prey."
+			],
+			"leadsTo": [
+				"Shared Prey|PC1",
+				"Triple Threat|PC1"
 			]
 		},
 		{
@@ -8351,6 +8662,9 @@
 			"prerequisites": "{@feat Double Prey|PC1}, {@feat Warden's Boon|PC1}",
 			"entries": [
 				"Hunting as a duo, you and your ally both single out your prey. When you use {@action Hunt Prey|PC1} and select only one prey, you can grant your {@action Hunt Prey|PC1} benefits and hunter's edge to an ally in addition to gaining them yourself. The ally retains these benefits until you use {@action Hunt Prey|PC1} again."
+			],
+			"leadsTo": [
+				"Triple Threat|PC1"
 			]
 		},
 		{
@@ -8636,6 +8950,10 @@
 			"requirements": "You are not {@condition encumbered|PC1}.",
 			"entries": [
 				"You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack."
+			],
+			"leadsTo": [
+				"Nimble Roll|PC1",
+				"Nimble Strike|PC1"
 			]
 		},
 		{
@@ -8724,6 +9042,9 @@
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
 				"You use an attack with one weapon to distract your foe from a second attack coming at a different angle. Make one Strike with each of your two melee weapons, both against the same target. The target is automatically {@condition off-guard|PC1} against the second attack. Apply your multiple attack penalty to the Strikes normally.}"
+			],
+			"leadsTo": [
+				"Twin Distraction|PC1"
 			]
 		},
 		{
@@ -8942,6 +9263,9 @@
 			"special": [
 				"During your daily preparations, you can prepare a number of simple injury poisons equal to your rogue level.",
 				"These follow the rules for injury poisons, except that they deal {@damage 1d4} poison damage with no saving throw. Only you can apply these poisons properly, and they expire the next time you prepare."
+			],
+			"leadsTo": [
+				"Improved Poison Weapon|PC1"
 			]
 		},
 		{
@@ -9381,6 +9705,9 @@
 			"entries": [
 				"You throw yourself into a roll to escape imminent danger. You can use {@feat Nimble Dodge|PC1} before attempting a Reflex save in addition to its original trigger. If you do, the circumstance bonus applies to your Reflex save against the triggering effect.",
 				"When you use {@feat Nimble Dodge|PC1} and the triggering attack fails or critically fails, or when you succeed or critically succeed at the saving throw, you can also {@action Stride|PC1} up to 10 feet as part of the reaction. If you do, the reaction gains the {@trait move} trait. You can use Nimble Roll while Flying or Swimming instead of Striding if you have the corresponding movement type."
+			],
+			"leadsTo": [
+				"Nimble Strike|PC1"
 			]
 		},
 		{
@@ -9430,6 +9757,9 @@
 			],
 			"entries": [
 				"You adopt a stance to rebound your thrown weapons toward you. While you are in this stance, any thrown weapons you use as part of a ranged {@action Strike|PC1} to deal bludgeoning or slashing damage immediately return to your hand, enabling you to use them for additional Strikes. You must be within the weapon's listed range increment and have a hand free to catch the weapon. If you make a ranged {@action Strike|PC1} with a thrown weapon outside of its listed range increment, it instead flies back toward you a number of feet equal to its listed range increment and then falls to the ground."
+			],
+			"leadsTo": [
+				"Ricochet Feint|PC1"
 			]
 		},
 		{
@@ -9463,6 +9793,9 @@
 			"prerequisites": "sneak attack",
 			"entries": [
 				"Your attacks deal more damage, even against creatures that aren't {@condition off-guard|PC1}. When you succeed or critically succeed at a {@action Strike|PC1} against a creature that isn't {@condition off-guard|PC1}, you also deal {@damage 1d6} precision damage. This applies only if you're using a weapon or unarmed attack you could deal sneak attack damage with. At 14th level, if you would normally deal {@dice 3d6} or more sneak attack damage to {@condition off-guard|PC1} creatures, you deal {@damage 2d6} precision damage to creatures that aren't {@condition off-guard|PC1}."
+			],
+			"leadsTo": [
+				"Impossible Striker|PC1"
 			]
 		},
 		{
@@ -9966,6 +10299,9 @@
 			"entries": [
 				"You use clever tactics to mislead your foes as you sneak away. You {@action Sneak|PC1} while leaving a decoy behind. The decoy acts as the spell mislead, though you aren't {@condition invisible|PC1}, just {@condition undetected|PC1}.",
 				"You can continue to concentrate to move your decoy, as with the spell, whether or not you remain {@condition hidden|PC1} throughout the duration. Once you use Perfect Distraction, you need to spend 10 minutes to set up another decoy before you can use it again."
+			],
+			"leadsTo": [
+				"Reactive Distraction|PC1"
 			]
 		},
 		{
@@ -10133,6 +10469,10 @@
 			"entries": [
 				"You can brew magic in your cauldron, creating useful magical concoctions. You can use the {@action Craft|PC1} activity to create oils and potions. You immediately gain the formulas for four common 1st-level oils or potions. At 4th level and every 2 levels beyond that, you gain the formula for a common oil or potion of that level or lower (a 4th-level potion if you're 4th level, a 6th-level potion if you're 6th level, and so on). If you have a familiar, you can have your familiar learn these formulas rather than storing them in a formula book. Your familiar can learn new formulas in the same way it learns new spells, and these formulas are transferred from a slain familiar to a new familiar in the same way spells are.",
 				"During your daily preparations, you can create one temporary oil or potion using a formula you know. If you have master proficiency in spell DC, you can create a batch of two temporary oils or potions during your daily preparations, and if you have legendary proficiency, you can create a batch of three. Any items you create this way become inert bottles of liquid the next time you make your daily preparations, and any remaining effects of the temporary items end. A temporary oil or potion has no value."
+			],
+			"leadsTo": [
+				"Witch's Bottle|PC1",
+				"Double, Double|PC1"
 			]
 		},
 		{
@@ -10155,6 +10495,9 @@
 			],
 			"special": [
 				"This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, primal, or occult)."
+			],
+			"leadsTo": [
+				"Reflect Spell (Witch)|PC1"
 			]
 		},
 		{
@@ -10219,6 +10562,9 @@
 			],
 			"special": [
 				"You can take this feat more than once, gaining a different unarmed attack each time."
+			],
+			"leadsTo": [
+				"Sympathetic Strike|PC1"
 			]
 		},
 		{
@@ -10284,6 +10630,9 @@
 			],
 			"special": [
 				"Add the bonus familiar abilities you gain for being a witch to this amount."
+			],
+			"leadsTo": [
+				"Incredible Familiar (Witch)|PC1"
 			]
 		},
 		{
@@ -10395,6 +10744,9 @@
 			],
 			"special": [
 				"This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, occult, or primal)."
+			],
+			"leadsTo": [
+				"Witch's Communion|PC1"
 			]
 		},
 		{
@@ -10847,6 +11199,10 @@
 			"trigger": "A creature Casts a Spell that you have prepared.",
 			"entries": [
 				"When a foe Casts a Spell and you can see its manifestations, you can use your own magic to counter it. You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell."
+			],
+			"leadsTo": [
+				"Clever Counterspell|PC1",
+				"Reflect Spell|PC1"
 			]
 		},
 		{
@@ -11584,6 +11940,16 @@
 				"You gain a spell repertoire with two common cantrips from the occult spell list or any other occult cantrips you've learned or discovered. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for bard archetype spells is Charisma, and they are occult bard spells.",
 				"You become trained in {@skill Occultism|PC1} and {@skill Performance|PC1}; for each of these skills in which you were already trained, you instead become trained in a skill of your choice.",
 				"Choose a muse as you would if you were a bard. You can take that muse's feats, but you don't gain the starting feat, spell or any other abilities the choice of muse grants."
+			],
+			"leadsTo": [
+				"Basic Bard Spellcasting|PC1",
+				"Occult Breadth|PC1",
+				"Expert Bard Spellcasting|PC1",
+				"Master Bard Spellcasting|PC1",
+				"Basic Muse's Whispers|PC1",
+				"Advanced Muse's Whispers|PC1",
+				"Counter Perform|PC1",
+				"Anthemic Performance|PC1"
 			]
 		},
 		{
@@ -11603,6 +11969,11 @@
 			"prerequisites": "{@feat Bard Dedication|PC1}",
 			"entries": [
 				"You gain the basic spellcasting benefits. Each time you gain a spell slot of a new rank from the bard archetype, add a common occult spell of the appropriate rank, or another appropriate occult spell you learned or discovered, to your repertoire."
+			],
+			"leadsTo": [
+				"Occult Breadth|PC1",
+				"Expert Bard Spellcasting|PC1",
+				"Master Bard Spellcasting|PC1"
 			]
 		},
 		{
@@ -11617,6 +11988,9 @@
 			"prerequisites": "{@feat Bard Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level bard|feats||Class=bard|level=[1;2]} feat."
+			],
+			"leadsTo": [
+				"Advanced Muse's Whispers|PC1"
 			]
 		},
 		{
@@ -11715,6 +12089,9 @@
 			"prerequisites": "{@feat Basic Bard Spellcasting|PC1}, master in {@skill Occultism|PC1}",
 			"entries": [
 				"You gain the expert spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Bard Spellcasting|PC1"
 			]
 		},
 		{
@@ -11756,6 +12133,14 @@
 			"entries": [
 				"You cast spells like a cleric. You gain the {@action Cast a Spell|PC1} activity. You can prepare two common cantrips each day from the divine spell list or any other divine cantrips you have access to. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for cleric archetype spells is Wisdom, and they are divine cleric spells.",
 				"Choose a deity as you would if you were a cleric. You become bound by that deity's anathema and can receive that deity's divine sanctification. You become trained in {@skill Religion|PC1} and your deity's associated skill; for each of these skills in which you were already trained, you instead become trained in a skill of your choice. You don't gain any other abilities from your choice of deity."
+			],
+			"leadsTo": [
+				"Basic Cleric Spellcasting|PC1",
+				"Divine Breadth|PC1",
+				"Expert Cleric Spellcasting|PC1",
+				"Master Cleric Spellcasting|PC1",
+				"Basic Dogma|PC1",
+				"Advanced Dogma|PC1"
 			]
 		},
 		{
@@ -11775,6 +12160,11 @@
 			"prerequisites": "{@feat Cleric Dedication|PC1}",
 			"entries": [
 				"You gain the basic spellcasting benefits. You can prepare your deity's spells in your spell slots of the appropriate rank from the cleric archetype."
+			],
+			"leadsTo": [
+				"Divine Breadth|PC1",
+				"Expert Cleric Spellcasting|PC1",
+				"Master Cleric Spellcasting|PC1"
 			]
 		},
 		{
@@ -11794,6 +12184,9 @@
 			"prerequisites": "{@feat Cleric Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level cleric|feats||Class=cleric|level=[1;2]} feat."
+			],
+			"leadsTo": [
+				"Advanced Dogma|PC1"
 			]
 		},
 		{
@@ -11854,6 +12247,9 @@
 			"prerequisites": "{@feat Basic Cleric Spellcasting|PC1}, master in {@skill Religion|PC1}",
 			"entries": [
 				"You gain the expert spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Cleric Spellcasting|PC1"
 			]
 		},
 		{
@@ -11896,6 +12292,15 @@
 				"You cast spells like a druid. You gain the {@action Cast a Spell|PC1} activity. You can prepare two common cantrips each day from the primal spell list or any other primal cantrips you learn or discover. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for druid archetype spells is Wisdom, and they are primal druid spells.",
 				"You learn the {@language Wildsong|PC1} language, and you are bound by the druid's anathema.",
 				"Choose a druidic order. You become a member of that order and are also bound by its specific anathema, allowing you to take the order's feats. You become trained in {@skill Nature|PC1} and your order's associated skill; for each of these skills in which you were already trained, you become trained in a skill of your choice. You don't gain any other abilities from your choice of order."
+			],
+			"leadsTo": [
+				"Basic Druid Spellcasting|PC1",
+				"Primal Breadth|PC1",
+				"Expert Druid Spellcasting|PC1",
+				"Master Druid Spellcasting|PC1",
+				"Basic Wilding|PC1",
+				"Advanced Wilding|PC1",
+				"Order Spell|PC1"
 			]
 		},
 		{
@@ -11915,6 +12320,11 @@
 			"prerequisites": "{@feat Druid Dedication|PC1}",
 			"entries": [
 				"You gain the basic spellcasting benefits."
+			],
+			"leadsTo": [
+				"Primal Breadth|PC1",
+				"Expert Druid Spellcasting|PC1",
+				"Master Druid Spellcasting|PC1"
 			]
 		},
 		{
@@ -11934,6 +12344,9 @@
 			"prerequisites": "{@feat Druid Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level druid|feats||Class=druid|level=[1;2]} feat."
+			],
+			"leadsTo": [
+				"Advanced Wilding|PC1"
 			]
 		},
 		{
@@ -12013,6 +12426,9 @@
 			"prerequisites": "{@feat Basic Druid Spellcasting|PC1}, master in {@skill Nature|PC1}",
 			"entries": [
 				"You gain the expert spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Druid Spellcasting|PC1"
 			]
 		},
 		{
@@ -12053,6 +12469,13 @@
 			"prerequisites": "Strength +2, Dexterity +2",
 			"entries": [
 				"You become trained in martial weapons. You become trained in your choice of {@skill Acrobatics|PC1} or {@skill Athletics|PC1}; if you are already trained in both of these skills, you instead become trained in a skill of your choice. You become trained in fighter class DC."
+			],
+			"leadsTo": [
+				"Basic Maneuver|PC1",
+				"Advanced Maneuver|PC1",
+				"Fighter Resiliency|PC1",
+				"Reactive Striker|PC1",
+				"Diverse Weapon Expert|PC1"
 			]
 		},
 		{
@@ -12072,6 +12495,9 @@
 			"prerequisites": "{@feat Fighter Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level fighter|feats||Class=fighter|level=[1;2]} feat."
+			],
+			"leadsTo": [
+				"Advanced Maneuver|PC1"
 			]
 		},
 		{
@@ -12173,6 +12599,12 @@
 			"entries": [
 				"You become trained in {@skill Survival|PC1}; if you were already trained in {@skill Survival|PC1}, you instead become trained in another skill of your choice. You become trained in ranger class DC. If you gain a warden spell through this archetype, you become trained in spell attacks and spell DCs. Your spellcasting attribute is Wisdom.",
 				"You can use the {@action Hunt Prey|PC1} action."
+			],
+			"leadsTo": [
+				"Basic Hunter's Trick|PC1",
+				"Advanced Hunter's Trick|PC1",
+				"Ranger Resiliency|PC1",
+				"Master Spotter|PC1"
 			]
 		},
 		{
@@ -12192,6 +12624,9 @@
 			"prerequisites": "{@feat Ranger Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level ranger|feats||Class=ranger|level=[1;2]} feat."
+			],
+			"leadsTo": [
+				"Advanced Hunter's Trick|PC1"
 			]
 		},
 		{
@@ -12273,6 +12708,14 @@
 			"prerequisites": "Dexterity +2",
 			"entries": [
 				"You gain a skill feat and the rogue's surprise attack class feature. You become trained in light armor. In addition, you become trained in {@skill Stealth|PC1} or {@skill Thievery|PC1} plus one skill of your choice; if you are already trained in both {@skill Stealth|PC1} and {@skill Thievery|PC1}, you become trained in an additional skill of your choice. You become trained in rogue class DC."
+			],
+			"leadsTo": [
+				"Basic Trickery|PC1",
+				"Advanced Trickery|PC1",
+				"Sneak Attacker|PC1",
+				"Skill Mastery|PC1",
+				"Uncanny Dodge|PC1",
+				"Evasiveness|PC1"
 			]
 		},
 		{
@@ -12292,6 +12735,9 @@
 			"prerequisites": "{@feat Rogue Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level rogue|feats||Class=rogue|level=[1;2]} feat."
+			],
+			"leadsTo": [
+				"Advanced Trickery|PC1"
 			]
 		},
 		{
@@ -12415,6 +12861,14 @@
 			"entries": [
 				"You cast spells like a witch. Choose a patron; you gain a familiar with two common cantrips of your choice from your chosen patron's tradition, but aside from the tradition, you don't gain any other effects the patron would usually grant. Your familiar gains the normal number of abilities for a familiar instead of those a witch familiar normally gets.",
 				"You gain the {@action Cast a Spell|PC1} activity. You can prepare one cantrip each day from your familiar. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for witch archetype spells is Intelligence, and they are witch spells of your patron's tradition. You become trained in the skill associated with the patron's tradition; if you were already trained in it, you instead become trained in a skill of your choice."
+			],
+			"leadsTo": [
+				"Basic Witch Spellcasting|PC1",
+				"Patron's Breadth|PC1",
+				"Expert Witch Spellcasting|PC1",
+				"Master Witch Spellcasting|PC1",
+				"Basic Witchcraft|PC1",
+				"Advanced Witchcraft|PC1"
 			]
 		},
 		{
@@ -12434,6 +12888,11 @@
 			"prerequisites": "{@feat Witch Dedication|PC1}",
 			"entries": [
 				"You gain the basic spellcasting benefits. Each time you gain a spell slot of a new rank from the witch archetype, add two common spells of that rank to your familiar."
+			],
+			"leadsTo": [
+				"Patron's Breadth|PC1",
+				"Expert Witch Spellcasting|PC1",
+				"Master Witch Spellcasting|PC1"
 			]
 		},
 		{
@@ -12453,6 +12912,9 @@
 			"prerequisites": "{@feat Witch Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level witch|feats||Class=witch|level=[1;2]} feat of your choice. You can select three familiar abilities for your familiar each day, instead of two."
+			],
+			"leadsTo": [
+				"Advanced Witchcraft|PC1"
 			]
 		},
 		{
@@ -12513,6 +12975,9 @@
 			"prerequisites": "{@feat Basic Witch Spellcasting|PC1}, master in the skill associated with your patron's tradition",
 			"entries": [
 				"You gain the expert spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Witch Spellcasting|PC1"
 			]
 		},
 		{
@@ -12554,6 +13019,15 @@
 			"entries": [
 				"You cast spells like a wizard, gaining a spellbook with four common arcane cantrips of your choice. You gain the {@action Cast a Spell|PC1} activity. You can prepare two cantrips each day from your spellbook. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for wizard archetype spells is Intelligence, and they are arcane wizard spells.",
 				"You become trained in {@skill Arcana|PC1}; if you were already trained in {@skill Arcana|PC1}, you instead become trained in a skill of your choice. Select a school; you don't gain any abilities from your choice of school, but qualify for feats as a member."
+			],
+			"leadsTo": [
+				"Arcane School Spell|PC1",
+				"Basic Arcana|PC1",
+				"Advanced Arcana|PC1",
+				"Basic Wizard Spellcasting|PC1",
+				"Arcane Breadth|PC1",
+				"Expert Wizard Spellcasting|PC1",
+				"Master Wizard Spellcasting|PC1"
 			]
 		},
 		{
@@ -12592,6 +13066,9 @@
 			"prerequisites": "{@feat Wizard Dedication|PC1}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level wizard|feats||Class=wizard|level=[1;2]} feat of your choice."
+			],
+			"leadsTo": [
+				"Advanced Arcana|PC1"
 			]
 		},
 		{
@@ -12611,6 +13088,11 @@
 			"prerequisites": "{@feat Wizard Dedication|PC1}",
 			"entries": [
 				"You gain the basic spellcasting benefits. Each time you gain a spell slot of a new rank from the wizard archetype, add two common spells of that rank to your spellbook."
+			],
+			"leadsTo": [
+				"Arcane Breadth|PC1",
+				"Expert Wizard Spellcasting|PC1",
+				"Master Wizard Spellcasting|PC1"
 			]
 		},
 		{
@@ -12671,6 +13153,9 @@
 			"prerequisites": "{@feat Basic Wizard Spellcasting|PC1}, master in {@skill Arcana|PC1}",
 			"entries": [
 				"You gain the expert spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Wizard Spellcasting|PC1"
 			]
 		},
 		{
@@ -12815,6 +13300,9 @@
 			],
 			"special": [
 				"You can select this feat multiple times. Each time, choose a different skill and gain the benefits for that skill."
+			],
+			"leadsTo": [
+				"Automatic Knowledge|PC1"
 			]
 		},
 		{
@@ -12979,6 +13467,9 @@
 			"prerequisites": "trained in {@skill Acrobatics|PC1}",
 			"entries": [
 				"Your catlike aerial acrobatics allow you to cushion your falls. Treat falls as 10 feet shorter. If you're an expert in {@skill Acrobatics|PC1}, treat falls as 25 feet shorter and 50 feet if you're a master. If you're legendary in {@skill Acrobatics|PC1}, you always land on your feet and don't take damage, regardless of the distance of the fall."
+			],
+			"leadsTo": [
+				"Leshy Glide|PC1"
 			]
 		},
 		{
@@ -13087,6 +13578,9 @@
 			"prerequisites": "trained in {@skill Society|PC1}",
 			"entries": [
 				"You were raised among the nobility or have learned proper etiquette and bearing, allowing you to present yourself as a noble and play games of influence and politics. Unless you are intentionally presenting yourself differently, anyone who speaks with you will assume you are a noble or closely associated with the nobility (such as a prominent servant). You can use {@skill Society|PC1} to {@action Make an Impression|PC1} on a noble, as well as with {@action Impersonate|PC1} to pretend to be a type of noble or a specific individual noble. If you use the normal skills in those situations, you receive a +1 circumstance bonus to the check instead."
+			],
+			"leadsTo": [
+				"Leverage Connections|PC2"
 			]
 		},
 		{
@@ -13115,6 +13609,9 @@
 			],
 			"entries": [
 				"It takes more to kill you than most. You die from the {@condition dying|PC1} condition at {@condition dying||dying 5}, rather than {@condition dying||dying 4}."
+			],
+			"leadsTo": [
+				"Numb to Death|PC2"
 			]
 		},
 		{
@@ -13204,6 +13701,9 @@
 			"prerequisites": "trained in {@skill Survival|PC1}",
 			"entries": [
 				"Tracking is second nature to you, and when necessary you can follow a trail without pause. You can {@action Track|PC1} while moving at full Speed by taking a \u20135 penalty to your {@skill Survival|PC1} check. If you're a master in {@skill Survival|PC1}, you don't take the \u20135 penalty. If you're legendary in {@skill Survival|PC1}, you no longer need to roll a new {@skill Survival|PC1} check every hour when tracking, though you still need to roll whenever there are significant changes in the trail."
+			],
+			"leadsTo": [
+				"Swift Tracker|PC1"
 			]
 		},
 		{
@@ -13741,6 +14241,9 @@
 			],
 			"special": [
 				"You can select this feat multiple times. Each time, you learn additional languages."
+			],
+			"leadsTo": [
+				"Legendary Linguist|PC1"
 			]
 		},
 		{
@@ -13874,6 +14377,10 @@
 			"prerequisites": "trained in {@skill Thievery|PC1}",
 			"entries": [
 				"You can {@action Steal|PC1} or {@action Palm an Object|PC1} that's closely guarded, such as in a pocket, without taking the \u20135 penalty. You can't steal objects that would be extremely noticeable or time consuming to remove (like worn shoes or armor or actively wielded objects). If you're a master in {@skill Thievery|PC1}, you can attempt to {@action Steal|PC1} from a creature in combat or otherwise on guard. When doing so, Stealing requires 2 actions instead of 1, and you take a \u20135 penalty."
+			],
+			"leadsTo": [
+				"Plant Evidence|PC1",
+				"Legendary Thief|PC1"
 			]
 		},
 		{
@@ -13933,6 +14440,9 @@
 			"requirements": "You haven't used this ability since the last time you were able to purchase goods.",
 			"entries": [
 				"You regularly create convoluted plans and contingencies, using your resources to enact them. You take 1 minute to remove your backpack, then carefully remove an item you hadn't previously declared that you purchased\u2014you intuited that you would come to need the item and purchased it at the latest opportunity. The item must be a piece of adventuring gear (from the table on page 291 or other sources of adventuring gear), and can't be a weapon, armor, alchemical item, magic item, or other treasure. It must be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you {@condition encumbered|PC1}."
+			],
+			"leadsTo": [
+				"Prescient Consumable|PC1"
 			]
 		},
 		{
@@ -14023,6 +14533,9 @@
 			"prerequisites": "master in {@skill Arcana|PC1}, {@skill Nature|PC1}, {@skill Occultism|PC1}, or {@skill Religion|PC1}",
 			"entries": [
 				"Recognize Spell You Recognize Spells swiftly. Once per round, you can Recognize a Spell using a skill in which you're a master as a free action."
+			],
+			"leadsTo": [
+				"Clever Counterspell|PC1"
 			]
 		},
 		{
@@ -14053,6 +14566,9 @@
 			"prerequisites": "trained in {@skill Acrobatics|PC1}",
 			"entries": [
 				"You {@action Squeeze|PC1} 5 feet per round (10 feet on a critical success). If you're legendary in {@skill Acrobatics|PC1}, you {@action Squeeze|PC1} at full Speed."
+			],
+			"leadsTo": [
+				"Implausible Infiltration|PC1"
 			]
 		},
 		{
@@ -14284,6 +14800,11 @@
 			"trigger": "While you have your shield raised, you would take physical damage (bludgeoning, piercing, or slashing) from an attack.",
 			"entries": [
 				"You snap your shield in place to ward off a blow. Your shield prevents you from taking an amount of damage up to the shield's Hardness. You and the shield each take any remaining damage, possibly breaking or destroying the shield."
+			],
+			"leadsTo": [
+				"Channeling Block|PC1",
+				"Shield Warden|PC1",
+				"Quick Shield Block|PC1"
 			]
 		},
 		{
@@ -14418,6 +14939,9 @@
 						"*Requires {@feat Alchemical Crafting|PC1} to {@action Craft|PC1}."
 					]
 				}
+			],
+			"leadsTo": [
+				"Impeccable Crafting|PC1"
 			]
 		},
 		{
@@ -14448,6 +14972,9 @@
 			"prerequisites": "trained in {@skill Society|PC1}",
 			"entries": [
 				"You know about life on the streets and feel the pulse of your local settlement. You can use your {@skill Society|PC1} modifier instead of your {@skill Diplomacy|PC1} modifier to {@action Gather Information|PC1}. In any settlement you frequent regularly, you can use the {@action Recall Knowledge|PC1} action with {@skill Society|PC1} to know the same sorts of information that you could discover with {@skill Diplomacy|PC1} to {@action Gather Information|PC1}. The DC is usually significantly higher, but you know the information without spending time gathering it. If you fail to recall the information, you can still subsequently attempt to {@action Gather Information|PC1} normally."
+			],
+			"leadsTo": [
+				"Leverage Connections|PC2"
 			]
 		},
 		{
@@ -14508,6 +15035,9 @@
 			"prerequisites": "master in {@skill Stealth|PC1}",
 			"entries": [
 				"You can move your full Speed when you {@action Sneak|PC1}. You can use Swift {@action Sneak|PC1} while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type."
+			],
+			"leadsTo": [
+				"Legendary Sneak|PC1"
 			]
 		},
 		{
@@ -14790,6 +15320,9 @@
 						]
 					]
 				}
+			],
+			"leadsTo": [
+				"Legendary Performer|PC1"
 			]
 		},
 		{
