@@ -2962,8 +2962,8 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target becomes {@frightened|PC1|frightened 2}.",
-						"Success": "The target becomes {@frightened|PC1|frightened 1}."
+						"Critical Success": "The target becomes {@condition frightened|PC1|frightened 2}.",
+						"Success": "The target becomes {@condition frightened|PC1|frightened 1}."
 					}
 				}
 			]
@@ -12347,25 +12347,6 @@
 						"Critical Failure": "You anger the deity. The copper coin vanishes, you can't attempt to invoke a blessing at this shrine again for 1 week, and you become {@condition stupefied||stupefied 1} for 1 hour."
 					}
 				}
-			]
-		},
-		{
-			"name": "Reactive Strike",
-			"page": 138,
-			"otherSources": {
-				"Reprinted": [
-					"PC1|422"
-				]
-			},
-			"source": "PC1",
-			"remaster": true,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a {@trait move} action it's using.",
-			"entries": [
-				"You lash out at a foe that leaves an opening. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a {@trait manipulate} action, you disrupt that action. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
 			]
 		}
 	]
